@@ -1,0 +1,16 @@
+SET(USE_ALSA TRUE CACHE BOOL "enable/disable alsa plugin")
+SET(USE_JACK TRUE CACHE BOOL "enable/disable jack plugin")
+
+IF(USE_ALSA)
+MESSAGE( STATUS "ALSA ON")
+add_subdirectory(alsa)
+ELSE(USE_MAD)
+MESSAGE( STATUS "ALSA OFF")
+ENDIF(USE_ALSA)
+
+IF(USE_JACK)
+MESSAGE( STATUS "JACK ON")
+add_subdirectory(jack)
+ELSE(USE_FLAC)
+MESSAGE( STATUS "JACK OFF")
+ENDIF(USE_JACK)

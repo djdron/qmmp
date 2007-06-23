@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>qmmp_ru.qm</file>
+    <file>qmmp_tr.qm</file>
+    <file>qmmp_zh_CN.qm</file>
+  </qresource>
+</RCC>
