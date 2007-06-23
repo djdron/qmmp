@@ -32,7 +32,7 @@ QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent
 {	
 	QStringList tmp;
 	for(int i = 1;i < argc;i++)
-		tmp << QString(argv[i]);
+		tmp << QString::fromLocal8Bit(argv[i]);
 
 	argString = tmp.join("\n");
 	

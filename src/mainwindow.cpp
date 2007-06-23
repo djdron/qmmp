@@ -136,7 +136,7 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
 
     m_playListModel->readSettings();
     char buf[PATH_MAX + 1];
-    QString cwd(getcwd(buf,PATH_MAX));
+    QString cwd = QString::fromLocal8Bit(getcwd(buf,PATH_MAX));
     processCommandArgs(args,cwd);
 }
 
