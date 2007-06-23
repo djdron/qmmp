@@ -1,0 +1,3 @@
+Thanks to:
+
+    Vadim Kalinnikov <moose@ylsoftware.com> (project hosting)
