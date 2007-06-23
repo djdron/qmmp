@@ -1,0 +1,39 @@
+               PyQMMP - Python Bindings for the QMMP Library
+
+
+INTRODUCTION
+
+These are the Python bindings for the QMMP library.  You must also have
+PyQt and the SIP Python bindings generator installed.
+
+The homepage of PyQt is http://www.riverbankcomputing.co.uk/pyqt/.
+
+The homepage of SIP is http://www.riverbankcomputing.co.uk/sip/.
+
+
+INSTALLATION
+
+The first step is to configure PyQMMP by running the following command.
+
+	python configure.py (PyQMMP directory should be placed in lib/ directory of QMMP source tree)
+
+If you have multiple versions of Python installed then make sure you use the
+interpreter for which you wish to generate bindings for.
+
+The configure.py script takes many options.  Use the "-h" command line option
+to display a full list of the available options.
+
+The next step is to build PyQMMP using your platform's make command.
+
+	make
+
+The final step is to install PyQMMP by running the following command.
+(Depending on your system you may require root or administrator privileges.)
+
+	make install
+
+
+THE REST OF THE DISTRIBUTION
+
+The "example" directory contain simple demo how to use PyQMMP.
+
