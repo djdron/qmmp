@@ -123,9 +123,10 @@ INCLUDEPATH += ../lib
 RESOURCES = images/images.qrc \
             stuff.qrc 
 #	    translations/qmmp_locales.qrc
+
 #TRANSLATIONS = translations/qmmp_ru.ts \
-	       translations/qmmp_tr.ts \
-	       translations/qmmp_zh_CN.ts
+#	       translations/qmmp_tr.ts \
+#	       translations/qmmp_zh_CN.ts
 TEMPLATE = app
 script.files += ../bin/qmmp
 script.path = /bin 
