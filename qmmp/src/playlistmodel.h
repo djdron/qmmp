@@ -279,6 +279,12 @@ private:
 	  * Is someone of file loaders is running?
 	  */
 	 bool isFileLoaderRunning()const;
+     
+     /*!
+      * Removes items from model. If \b inverted is \b false - 
+      * selected items will be removed, else - unselected.
+      */
+     void removeSelection(bool inverted = false);
 
 private:
     QList <MediaFile*> m_files;
