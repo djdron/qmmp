@@ -202,43 +202,31 @@ void PlayListModel::setSelected ( int row, bool yes )
 
 void PlayListModel::removeSelected()
 {
-    int i = 0;
-    while ( !m_files.isEmpty() && i<m_files.size() )
-    {
-        if ( m_files.at ( i )->isSelected() )
-        {
-            MediaFile* f = m_files.takeAt ( i );
-            m_total_length -= f->length();
-            if (m_total_length < 0)
-                m_total_length = 0;
-            delete f;
-
-            if ( m_current >= i && m_current!=0 )
-                m_current--;
-        }
-        else
-            i++;
-    }
-    if (!m_files.isEmpty())
-        m_currentItem = m_files.at(m_current);
-
-    m_play_state->prepare();
-
-    emit listChanged();
+    removeSelection(false);
 }
 
 void PlayListModel::removeUnselected()
 {
+    removeSelection(true);
+}
+
+void PlayListModel::removeSelection(bool inverted)
+{
     int i = 0;
-    while ( !m_files.isEmpty() &&i<m_files.size() )
+
+    int select_after_delete = -1;
+
+    while ( !m_files.isEmpty() && i<m_files.size() )
     {
-        if ( !m_files.at ( i )->isSelected() )
+        if ( m_files.at ( i )->isSelected() ^ inverted )
         {
             MediaFile* f = m_files.takeAt ( i );
             m_total_length -= f->length();
             if (m_total_length < 0)
                 m_total_length = 0;
             delete f;
+
+            select_after_delete = i;
 
             if ( m_current >= i && m_current!=0 )
                 m_current--;
@@ -249,6 +237,11 @@ void PlayListModel::removeUnselected()
 
     if (!m_files.isEmpty())
         m_currentItem = m_files.at(m_current);
+
+    if(select_after_delete >= m_files.count())
+        select_after_delete = m_files.count() - 1;
+
+    setSelected(select_after_delete,true);
 
     m_play_state->prepare();
 
@@ -813,6 +806,8 @@ void PlayListModel::preparePlayState()
 {
     m_play_state->prepare();
 }
+
+
 
 
 
