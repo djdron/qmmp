@@ -38,12 +38,12 @@ Tag::Tag(const QString &source)
         m_title = QString::fromUtf8(m_tag->title().toCString(TRUE)).trimmed();
         m_year = 0;
         m_track = 0;
-        if(fileRef.audioProperties())
-            m_length = fileRef.audioProperties()->length();
         m_empty = FALSE;
     }
     else
         m_tag = 0;
+    if(fileRef.audioProperties())
+        m_length = fileRef.audioProperties()->length();
 }
 
 
