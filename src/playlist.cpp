@@ -139,6 +139,13 @@ void PlayList::createActions()
     m_addMenu->addAction ( addDirAct );
     connect ( addDirAct, SIGNAL ( triggered() ), parent(), SLOT ( addDir () ) );
     m_actions << addDirAct;
+
+    QAction *addUrlAct = new QAction ( tr ( "&Add Url" ),this );
+    addUrlAct->setShortcut ( tr ( "U" ) );
+    m_addMenu->addAction ( addUrlAct );
+    connect ( addUrlAct, SIGNAL ( triggered() ), parent(), SLOT ( addUrl () ) );
+    m_actions << addDirAct;
+
     //remove menu
     QAction *remSelAct = new QAction ( tr ( "&Remove Selected" ),this );
     remSelAct->setShortcut ( tr ( "Del" ) );

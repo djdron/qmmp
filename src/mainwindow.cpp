@@ -42,6 +42,7 @@
 #include "tcpserver.h"
 #include "jumptotrackdialog.h"
 #include "aboutdialog.h"
+#include <addurldialog.h>
 
 MainWindow::MainWindow(const QStringList& args, QWidget *parent)
         : QMainWindow(parent)
@@ -672,6 +673,13 @@ void MainWindow::handleCloseRequest()
         toggleVisibility();
     else
         QApplication::closeAllWindows();
+}
+
+
+
+void MainWindow::addUrl( )
+{
+    AddUrlDialog::popup(this,m_playListModel);
 }
 
 

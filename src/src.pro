@@ -132,3 +132,7 @@ script.files += ../bin/qmmp
 script.path = /bin 
 target.path = /bin
 INSTALLS += target script
+
+HEADERS += addurldialog.h
+SOURCES += addurldialog.cpp
+FORMS += addurldialog.ui
