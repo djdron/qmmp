@@ -34,7 +34,7 @@ MediaFile::MediaFile(QString path)
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QString format = settings.value("PlayList/title_format", "%p - %t").toString();
     bool use_meta = settings.value ("PlayList/load_metadata", TRUE).toBool();
-    if (use_meta && m_tag && !m_tag->isEmpty())
+    if (use_meta && m_tag && !m_tag->isEmpty() && !path.startsWith("http://"))
     {
         m_year = m_tag->year();
         //m_title = m_tag->artist()+" - "+m_tag->title();

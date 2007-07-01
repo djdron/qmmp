@@ -94,6 +94,7 @@ private slots:
     void showSettings();
     void addDir();
     void addFile();
+    void addUrl();
     void updateEQ();
     void updatePreset();
     void updateSkin();
