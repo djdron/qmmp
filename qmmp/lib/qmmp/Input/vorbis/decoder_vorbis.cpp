@@ -166,6 +166,7 @@ void DecoderVorbis::flush(bool final)
 
 bool DecoderVorbis::initialize()
 {
+    qDebug("DecoderVorbis: initialize");
     bks = blockSize();
 
     inited = user_stop = done = finish = FALSE;
@@ -174,10 +175,9 @@ bool DecoderVorbis::initialize()
     output_size = 0;
     seekTime = -1.0;
     totalTime = 0.0;
-
     if (! input())
     {
-        error("DecoderVorbis: cannot initialize.  No input.");
+        qDebug("DecoderVorbis: cannot initialize.  No input");
 
         return FALSE;
     }
@@ -189,11 +189,10 @@ bool DecoderVorbis::initialize()
 
     if (! input()->isOpen())
     {
-        //if (! input()->open(IO_ReadOnly)) {
         if (! input()->open(QIODevice::ReadOnly))
         {
-            //error("DecoderVorbis: Failed to open input. Error " +
-            //  QString::number(input()->status()) + ".");
+            qWarning(qPrintable("DecoderVorbis: failed to open input. " +
+                    input()->errorString () + "."));
             return FALSE;
         }
     }
@@ -207,7 +206,7 @@ bool DecoderVorbis::initialize()
         };
     if (ov_open_callbacks(this, &oggfile, NULL, 0, oggcb) < 0)
     {
-        error("DecoderVorbis: Cannot open stream.");
+        qWarning("DecoderVorbis: cannot open stream");
 
         return FALSE;
     }
@@ -251,8 +250,8 @@ void DecoderVorbis::seek(double pos)
 
 void DecoderVorbis::deinit()
 {
-    ov_clear(&oggfile);
-
+    if(inited)
+        ov_clear(&oggfile);
     inited = user_stop = done = finish = FALSE;
     len = freq = bitrate = 0;
     stat = chan = 0;
@@ -297,10 +296,12 @@ void DecoderVorbis::run()
 
             output_size = long(ov_time_tell(&oggfile)) * long(freq * chan * 2);
         }
-
-        len = ov_read(&oggfile, (char *) (output_buf + output_at), bks, 0, 2, 1,
-                      &section);
-
+        len = -1;
+        while(len < 0)
+        {
+            len = ov_read(&oggfile, (char *) (output_buf + output_at), bks, 0, 2, 1,
+                        &section);
+        }
         if (len > 0)
         {
             bitrate = ov_bitrate_instant(&oggfile) / 1000;
