@@ -24,6 +24,7 @@
 
 #include "decoderfactory.h"
 #include "constants.h"
+#include "streamreader.h"
 
 #include "soundcore.h"
 
@@ -71,7 +72,13 @@ bool SoundCore::play(const QString &source)
         m_error = DecoderError;
         return FALSE;
     }
-    m_input = new QFile(source);
+    if(source.left(4) == "http")
+    {
+        m_input = new StreamReader(source, this);
+        //m_input->open(QIODevice::ReadOnly);
+    }
+    else
+        m_input = new QFile(source);
 
     m_error = OutputError;
     if (!m_output)
@@ -96,10 +103,6 @@ bool SoundCore::play(const QString &source)
         m_output->addVisual(m_vis);
     }
 
-    //if (m_decoder && ! m_decoder->factory()->supports(source))
-      //  m_decoder = 0;
-
-
     if (! m_decoder)
     {
         qDebug ("SoundCore: creating decoder");
@@ -119,14 +122,17 @@ bool SoundCore::play(const QString &source)
         setEQ(m_bands, m_preamp);
         setEQEnabled(m_useEQ);
     }
+    qDebug("Decoder create OK");
 
     if (m_decoder->initialize())
     {
         m_output->start();
         m_decoder->start();
         m_error = NoError;
+        
         return TRUE;
     }
+    qDebug("12345678");
     stop();
     return FALSE;
 }
@@ -178,16 +184,17 @@ void SoundCore::stop()
     {
         m_output->uninitialize();
     }
-    if (m_input)
-    {
-        delete m_input;
-        m_input = 0;
-    }
+    
     //display->setTime(0);
     if (m_decoder)
     {
         delete m_decoder;
         m_decoder = 0;
+    }
+    if (m_input)
+    {
+        delete m_input;
+        m_input = 0;
     }
     // recreate output
     if (m_update && m_output)
