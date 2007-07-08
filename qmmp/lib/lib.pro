@@ -15,14 +15,18 @@ HEADERS += recycler.h \
            equ\iir.h \
            decoderfactory.h \
            soundcore.h \
-           visualization.h
+           visualization.h \
+           streamreader.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
            equ\iir.c \
            equ\iir_cfs.c \
            equ\iir_fpu.c \
-           soundcore.cpp
+           soundcore.cpp \
+           streamreader.cpp
+
+QT += network
 TARGET = qmmp
 CONFIG += release \
 warn_on \
