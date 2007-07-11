@@ -255,6 +255,7 @@ void PlayList::createActions()
 //  Playlist Menu
     QAction *newListAct = new QAction ( tr ( "&New List" ),this );
     newListAct->setShortcut ( tr ( "Shift+N" ) );
+    m_actions << newListAct;
     m_playlistMenu->addAction ( newListAct );
     connect ( newListAct, SIGNAL ( triggered() ), this, SIGNAL ( newPlaylist() ) );
     m_playlistMenu->addSeparator();
