@@ -328,7 +328,9 @@ void PlayListModel::addFile(const QString& path)
 {
     if (path.isEmpty ())
         return;
-    if (Decoder::supports(path))
+    if(path.startsWith("http://"))
+        load(new MediaFile(path));
+    else if (Decoder::supports(path))
         load(new MediaFile(path));
 
     m_play_state->prepare();
