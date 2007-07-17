@@ -23,9 +23,9 @@
 #include <QObject>
 #include <QIODevice>
 #include <QHttp>
+#include <QUrl>
 #define BUFFER_SIZE 524288
 
-class QUrl;
 class QFileInfo;
 
 /**
@@ -39,6 +39,9 @@ public:
 
     ~StreamReader();
 
+    /** 
+     *  QIODevice API
+     */
     bool atEnd () const;
     qint64 bytesAvailable () const;
     qint64 bytesToWrite () const;
@@ -52,6 +55,11 @@ public:
     qint64 size () const;
     bool waitForBytesWritten ( int msecs );
     bool waitForReadyRead ( int msecs );
+
+    /**
+     *  returns content type of a stream
+     */
+    const QString &contentType();
 
 protected:
     qint64 readData(char*, qint64);
@@ -67,11 +75,13 @@ private slots:
 
 private:
     void fillBuffer();
-    QString m_name;
-    QHttp *http;
-    bool httpRequestAborted;
-    int httpGetId;
-    bool f;
+    QUrl m_url;
+    QHttp* m_http;
+    bool m_httpRequestAborted;
+    int m_httpGetId;
+    int m_pos;
+    int m_size;
+    QString m_contentType;
 };
 
 #endif
