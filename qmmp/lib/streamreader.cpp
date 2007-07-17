@@ -26,23 +26,29 @@
 StreamReader::StreamReader(const QString &name, QObject *parent)
         : QIODevice(parent)
 {
-
-    m_name =name;
     qDebug(qPrintable(name));
-    http = new QHttp(this);
+    m_http = new QHttp(this);
 
-    connect(http, SIGNAL(requestFinished(int, bool)),
+    m_pos = 0;
+
+    connect(m_http, SIGNAL(requestFinished(int, bool)),
             this, SLOT(httpRequestFinished(int, bool)));
-    connect(http, SIGNAL(dataReadProgress(int, int)),
+    connect(m_http, SIGNAL(dataReadProgress(int, int)),
             this, SLOT(updateDataReadProgress(int, int)));
-    connect(http, SIGNAL(responseHeaderReceived(const QHttpResponseHeader &)),
+    connect(m_http, SIGNAL(responseHeaderReceived(const QHttpResponseHeader &)),
             this, SLOT(readResponseHeader(const QHttpResponseHeader &)));
+
+    m_url = QUrl(name);
+
+    m_http->setHost(m_url.host(), m_url.port() != -1 ? m_url.port() : 80);
+    if (!m_url.userName().isEmpty())
+        m_http->setUser(m_url.userName(), m_url.password());
 }
+
 StreamReader::~StreamReader()
 {
-    http->abort();
+    m_http->abort();
 }
-
 
 bool StreamReader::atEnd () const
 {
@@ -51,7 +57,7 @@ bool StreamReader::atEnd () const
 
 qint64 StreamReader::bytesAvailable () const
 {
-    return http->bytesAvailable ();
+    return m_http->bytesAvailable ();
 }
 
 qint64 StreamReader::bytesToWrite () const
@@ -66,8 +72,8 @@ bool StreamReader::canReadLine () const
 
 void StreamReader::close ()
 {
-    httpRequestAborted = TRUE;
-    http->close();
+    m_httpRequestAborted = TRUE;
+    m_http->close();
 }
 
 bool StreamReader::isSequential () const
@@ -80,7 +86,7 @@ bool StreamReader::open ( OpenMode mode )
     if (mode != QIODevice::ReadOnly)
         return FALSE;
     downloadFile();
-    if (httpRequestAborted)
+    if (m_httpRequestAborted)
         return FALSE;
     setOpenMode(QIODevice::ReadOnly);
     return TRUE;
@@ -88,7 +94,7 @@ bool StreamReader::open ( OpenMode mode )
 
 qint64 StreamReader::pos () const
 {
-    return 0;
+    return m_pos;
 }
 
 bool StreamReader::reset ()
@@ -120,7 +126,7 @@ bool StreamReader::waitForReadyRead ( int msecs )
 
 qint64 StreamReader::readData(char* data, qint64 maxlen)
 {
-    return http->read (data, maxlen);
+    return m_http->read (data, maxlen);
 }
 
 qint64 StreamReader::writeData(const char*, qint64)
@@ -130,18 +136,11 @@ qint64 StreamReader::writeData(const char*, qint64)
 
 void StreamReader::downloadFile()
 {
-    QUrl url(m_name);
-
-    http->setHost(url.host(), url.port() != -1 ? url.port() : 80);
-    if (!url.userName().isEmpty())
-        http->setUser(url.userName(), url.password());
-
-    httpRequestAborted = false;
-    f = false;
+    m_httpRequestAborted = FALSE;
     qDebug("StreamReader: connecting...");
-    httpGetId = http->get(url.path(), 0);
+    m_httpGetId = m_http->get(m_url.path(), 0);
     qDebug("StreamReader: buffering...");
-    while (http->bytesAvailable () < BUFFER_SIZE*0.5 && !httpRequestAborted)
+    while (m_http->bytesAvailable () < BUFFER_SIZE*0.5 && !m_httpRequestAborted)
     {
         qApp->processEvents();
     }
@@ -150,23 +149,23 @@ void StreamReader::downloadFile()
 
 void StreamReader::cancelDownload()
 {
-    httpRequestAborted = true;
-    http->abort();
+    m_httpRequestAborted = true;
+    m_http->abort();
 }
 
 void StreamReader::httpRequestFinished(int requestId, bool error)
 {
-    if (httpRequestAborted)
+    if (m_httpRequestAborted)
     {
         return;
     }
 
-    if (requestId != httpGetId)
+    if (requestId != m_httpGetId)
         return;
 
     if (error)
     {
-        qDebug(qPrintable(QString("StreamReader: %1").arg(http->errorString())));
+        qDebug(qPrintable(QString("StreamReader: %1").arg(m_http->errorString())));
     }
     else
     {
@@ -177,32 +176,51 @@ void StreamReader::httpRequestFinished(int requestId, bool error)
 
 void StreamReader::readResponseHeader(const QHttpResponseHeader &responseHeader)
 {
+    m_contentType = responseHeader.contentType ();
     if (responseHeader.statusCode() != 200)
     {
         qDebug(qPrintable(QString("Download failed: %1.") .arg(responseHeader.reasonPhrase())));
-        httpRequestAborted = true;
-        http->abort();
+        m_httpRequestAborted = true;
+        m_http->abort();
         return;
     }
 }
 
 void StreamReader::updateDataReadProgress(int bytesRead, int totalBytes)
 {
+    m_pos = bytesRead;
+    m_size = totalBytes;
     fillBuffer();
-    //qDebug("%d, %d, %d",bytesRead,totalBytes,http->bytesAvailable ());
 }
 
 void StreamReader::fillBuffer()
 {
-    if (http->bytesAvailable () > BUFFER_SIZE && !httpRequestAborted)
+    if (m_http->bytesAvailable () > BUFFER_SIZE && !m_httpRequestAborted)
     {
-        while (http->bytesAvailable () > BUFFER_SIZE*0.75 && !httpRequestAborted)
+        while (m_http->bytesAvailable () > BUFFER_SIZE*0.75 && !m_httpRequestAborted)
         {
             qDebug("StreamReader: skipping data...");
             char *data = new char[BUFFER_SIZE/20];
-            http->read (data, BUFFER_SIZE/20);
+            m_http->read (data, BUFFER_SIZE/20);
             qApp->processEvents();
             delete data;
         }
     }
+}
+
+const QString &StreamReader::contentType()
+{
+    if(!m_contentType.isEmpty())
+        return m_contentType;
+    m_httpRequestAborted = FALSE;
+    qDebug("StreamReader: reading content type");
+    m_httpGetId = m_http->get(m_url.path(), 0);
+    while (m_contentType.isEmpty() && !m_httpRequestAborted)
+    {
+        qApp->processEvents();
+    }
+    qDebug("StreamReader: content type:  %s", qPrintable(m_contentType));
+    //m_http->abort();
+    m_http->close();
+    return m_contentType;
 }
