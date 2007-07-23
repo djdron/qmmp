@@ -37,17 +37,17 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");
     int pos = ui.id3v1EncComboBox->findText
-        (settings.value("ID3v1_encoding",ui.id3v1EncComboBox->itemText(0)).toString());
+        (settings.value("ID3v1_encoding","UTF-8").toString());
     ui.id3v1EncComboBox->setCurrentIndex(pos);
     pos = ui.id3v2EncComboBox->findText
-        (settings.value("ID3v2_encoding",ui.id3v2EncComboBox->itemText(0)).toString());
+        (settings.value("ID3v2_encoding","UTF-8").toString());
     ui.id3v2EncComboBox->setCurrentIndex(pos);
 
     ui.id3v1CheckBox->setChecked(settings.value("ID3v1_enable", TRUE).toBool());
     ui.id3v2CheckBox->setChecked(settings.value("ID3v2_enable", TRUE).toBool());
     ui.id3v1EncComboBox->setEnabled(ui.id3v1CheckBox->isChecked());
     ui.id3v2EncComboBox->setEnabled(ui.id3v2CheckBox->isChecked());
-    ui.defTagComboBox->setCurrentIndex(settings.value("ID3_version", 1).toInt() - 1);
+    ui.defTagComboBox->setCurrentIndex(settings.value("ID3_version", 2).toInt() - 1);
 
     settings.endGroup();
     connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));

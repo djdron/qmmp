@@ -57,6 +57,9 @@
             <height>16777215</height>
            </size>
           </property>
+          <property name="currentIndex" >
+           <number>1</number>
+          </property>
           <item>
            <property name="text" >
             <string>ID3v1</string>
@@ -117,13 +120,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="id3v1EncComboBox" >
-          <item>
-           <property name="text" >
-            <string>Default</string>
-           </property>
-          </item>
-         </widget>
+         <widget class="QComboBox" name="id3v1EncComboBox" />
         </item>
         <item>
          <spacer>
@@ -159,13 +156,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="id3v2EncComboBox" >
-          <item>
-           <property name="text" >
-            <string>Default</string>
-           </property>
-          </item>
-         </widget>
+         <widget class="QComboBox" name="id3v2EncComboBox" />
         </item>
         <item>
          <spacer>
