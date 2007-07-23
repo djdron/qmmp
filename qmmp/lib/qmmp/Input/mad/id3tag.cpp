@@ -44,19 +44,19 @@ ID3Tag::ID3Tag(const QString &source): FileTag(), m_tag(0)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");
     QTextCodec *codec_v1 =
-        QTextCodec::codecForName(settings.value("ID3v1_encoding","" )
+        QTextCodec::codecForName(settings.value("ID3v1_encoding","UTF-8" )
                                  .toByteArray ());
     QTextCodec *codec_v2 =
-        QTextCodec::codecForName(settings.value("ID3v2_encoding","" )
+        QTextCodec::codecForName(settings.value("ID3v2_encoding","UTF-8" )
                                  .toByteArray ());
     if(!codec_v1)
-        codec_v1 = QTextCodec::codecForLocale ();
+        codec_v1 = QTextCodec::codecForName ("UTF-8");
     if(!codec_v2)
         codec_v2 = QTextCodec::codecForName ("UTF-8");
 
     QTextCodec *codec = 0;
 
-    int ver = settings.value("ID3_version", 1).toInt();
+    int ver = settings.value("ID3_version", 2).toInt();
     if (ver == 1 && settings.value("ID3v1_enable", TRUE).toBool() &&
             fileRef.ID3v1Tag())
     {
