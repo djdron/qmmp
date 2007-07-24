@@ -21,8 +21,8 @@
 #include <QEvent>
 #include <QMenu>
 #include <QInputDialog>
-#include <QFileDialog>
 
+#include "filedialog.h"
 #include "skin.h"
 #include "eqslider.h"
 #include "eqtitlebar.h"
@@ -377,9 +377,10 @@ void EqWidget::importWinampEQF()
     char header[31];
     char name[257];
     char bands[11];
-    QString path = QFileDialog::getOpenFileName(this, tr("Import Preset"),
-                                                 "/home",
-                                                 "Winamp EQF (*.q1)");
+        QString path = FileDialog::getOpenFileName(this, tr("Import Preset"),
+                                                     "/home",
+                                                     QString("Winamp EQF (*.q1)"),NULL,true);
+
     QFile file(path);
     file.open(QIODevice::ReadOnly);
     file.read ( header, 31);

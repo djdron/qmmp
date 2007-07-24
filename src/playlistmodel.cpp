@@ -361,6 +361,23 @@ void PlayListModel::addDirectory(const QString& s)
     f_loader->start(QThread::IdlePriority);
 }
 
+void PlayListModel::addFileList(const QStringList &l)
+{
+    foreach(QString str,l)
+    {
+        QFileInfo f_info(str);
+        if (f_info.exists())
+        {
+            if (f_info.isDir())
+                addDirectory(str);
+            else
+                addFile(str);
+        }
+        // Do processing the rest of events to avoid GUI freezing
+        QApplication::processEvents(QEventLoop::AllEvents,10);
+    }
+}
+
 bool PlayListModel::setFileList(const QStringList & l)
 {
     bool model_cleared = FALSE;
@@ -379,7 +396,7 @@ bool PlayListModel::setFileList(const QStringList & l)
             else
                 addFile(str);
         }
-        // Do the processing the rest of events to avoid GUI freezing
+        // Do processing the rest of events to avoid GUI freezing
         QApplication::processEvents(QEventLoop::AllEvents,10);
     }
 
@@ -763,9 +780,9 @@ void PlayListModel::savePlaylist(const QString & f_name)
 
 void PlayListModel::loadExternalPlaylistFormats()
 {
-    QDir pluginsDir (qApp->applicationDirPath());
-    pluginsDir.cdUp();
-    pluginsDir.cd("Plugins/PlaylistFormats");
+    QDir pluginsDir (QDir::homePath()+"/.qmmp/plugins/PlaylistFormats");
+    //pluginsDir.cdUp();
+    //pluginsDir.cd("plugins/PlaylistFormats");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

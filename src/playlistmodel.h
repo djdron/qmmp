@@ -92,25 +92,6 @@ public:
     QList <QString> getTitles(int,int);
     QList <QString> getTimes(int,int);
 
-    void addFile(const QString&);
-	 
-	 /*!
-	  * Adds the list \b l of files to the model.
-	  */
-    void addFiles(const QStringList& l);
-	 
-	 /*!
-	  * Adds \b dir to the model.
-	  */
-    void addDirectory(const QString& dir);
-	 
-	 /*!
-	  * Loads list of files (regular files or directories),
-	  * returns \b TRUE if at least one file has been successfully loaded,
-	  * otherwise \b FALSE
-	  */
-	 bool setFileList(const QStringList&);
-	 
     void moveItems(int from,int to);
 
     /*!
@@ -174,7 +155,7 @@ public:
 	  *  Registers playlist format parser.
 	  */
 	 bool registerPlaylistFormat(PlaylistFormat* p);
-	 
+
 	 /*!
 	  * Checks and loads external playlist format plugins
 	  */
@@ -184,7 +165,7 @@ public:
 	  * Returns vector of reistered format parsers.
 	  */
 	 const QList<PlaylistFormat*> registeredPlaylistFormats()const{return m_registered_pl_formats.values();}
-	 
+
 	 const QStringList registeredPlaylistFormatNames()const{return m_registered_pl_formats.keys();}
 
 	 /*!
@@ -217,6 +198,26 @@ public slots:
     void showDetails();
 	 void doCurrentVisibleRequest();
 
+    void addFile(const QString&);
+
+	 /*!
+	  * Adds the list \b l of files to the model.
+	  */
+    void addFiles(const QStringList& l);
+
+	 /*!
+	  * Adds \b dir to the model.
+	  */
+    void addDirectory(const QString& dir);
+
+	 /*!
+	  * Loads list of files (regular files or directories),
+	  * returns \b TRUE if at least one file has been successfully loaded,
+	  * otherwise \b FALSE
+	  */
+	 bool setFileList(const QStringList&);
+
+    void addFileList(const QStringList &l);
 
     void randomizeList();
     void reverseList();
@@ -245,12 +246,12 @@ public slots:
      * Adds selected items to play queue.
      */
     void addToQueue();
-	 
+
 	 /*!
 	  * Sets \b f media file to queue.
 	  */
 	 void setQueued(MediaFile* f);
-	 
+
 	 void preparePlayState();
 
 private:
@@ -268,20 +269,20 @@ private:
      * Returns bottommost row in current selection
      */
     int bottommostInSelection(int);
-	 
+
 	 /*!
 	  * Creates and initializes file loader object.
 	  */
 	 FileLoader* createFileLoader();
-	 
-	 
+
+
 	 /*!
 	  * Is someone of file loaders is running?
 	  */
 	 bool isFileLoaderRunning()const;
-     
+
      /*!
-      * Removes items from model. If \b inverted is \b false - 
+      * Removes items from model. If \b inverted is \b false -
       * selected items will be removed, else - unselected.
       */
      void removeSelection(bool inverted = false);
@@ -321,15 +322,15 @@ private:
 	 bool m_block_update_signals;
 
 	 int m_total_length;
-	 
+
 	 typedef QPointer<FileLoader> GuardedFileLoader;
-	 
+
 	 /*! Vector of currently running file loaders.
 	  *  All loaders are automatically sheduled for deletion
 	  * when finished.
 	  */
 	 QVector<GuardedFileLoader> m_running_loaders;
-	 
+
 	 friend class MainWindow;
 };
 

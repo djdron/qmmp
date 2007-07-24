@@ -32,6 +32,7 @@
 #include <outputfactory.h>
 
 #include "skin.h"
+#include "filedialog.h"
 #include "pluginitem.h"
 #include "configdialog.h"
 
@@ -49,6 +50,7 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
     connect ( this, SIGNAL(accepted()),SLOT(saveSettings()));
     ui.listWidget->setIconSize ( QSize ( 69,29 ) );
     m_skin = Skin::getPointer();
+    ui.fileDialogComboBox->insertItems(0,FileDialog::registeredFactories());
     readSettings();
     loadSkins();
     loadPluginsInfo();
@@ -86,6 +88,15 @@ void ConfigDialog::readSettings()
 
     ui.hideToTrayRadioButton->setChecked(settings.value("Tray/hide_on_close", FALSE).toBool());
     ui.closeGroupBox->setEnabled(ui.trayCheckBox->isChecked());
+
+    QString f_dialogName =
+        settings.value("FileDialog",QtFileDialogFactory::QtFileDialogFactoryName).toString();
+
+    int ind = FileDialog::registeredFactories().indexOf(f_dialogName);
+    if(ind != -1)
+        ui.fileDialogComboBox->setCurrentIndex(ind);
+    else
+        ui.fileDialogComboBox->setCurrentIndex(0);
 }
 
 void ConfigDialog::changePage ( QListWidgetItem *current, QListWidgetItem *previous )
@@ -329,6 +340,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("Tray/message_delay", ui.messageDelaySpinBox->value());
     settings.setValue ("Tray/show_tooltip", ui.toolTipCheckBox->isChecked());
     settings.setValue ("Tray/hide_on_close",ui.hideToTrayRadioButton->isChecked());
+    settings.setValue ("FileDialog", ui.fileDialogComboBox->currentText());
 }
 
 

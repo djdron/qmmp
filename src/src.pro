@@ -8,7 +8,8 @@ include(../qmmp.pri)
 FORMS += configdialog.ui \
          preseteditor.ui \
          jumptotrackdialog.ui \
-         aboutdialog.ui
+         aboutdialog.ui 
+         
 HEADERS += mainwindow.h \
            fileloader.h \
            button.h \
@@ -54,7 +55,10 @@ HEADERS += mainwindow.h \
            jumptotrackdialog.h \
            aboutdialog.h \
            timeindicator.h \
- keyboardmanager.h
+           keyboardmanager.h \
+           filedialog.h 
+           
+           
 SOURCES += mainwindow.cpp \
            mp3player.cpp \
            fileloader.cpp \
@@ -99,7 +103,11 @@ SOURCES += mainwindow.cpp \
 	   jumptotrackdialog.cpp \
 	   aboutdialog.cpp \
            timeindicator.cpp \
- keyboardmanager.cpp
+           keyboardmanager.cpp \
+           filedialog.cpp 
+           
+           
+           
 contains(CONFIG,XSPF_PLUGIN){
     message(*********************************************)
     message(*  XSPF support will be compiled as plugin  *)
