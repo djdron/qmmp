@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS><TS version="1.1" language="ru">
 <context>
     <name>DecoderFLACFactory</name>
     <message>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="283"/>
         <source>Album:</source>
-        <translation>Алюбом:</translation>
+        <translation>Альбом:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="293"/>
