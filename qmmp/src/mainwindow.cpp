@@ -43,6 +43,7 @@
 #include "jumptotrackdialog.h"
 #include "aboutdialog.h"
 #include <addurldialog.h>
+#include "filedialog.h"
 
 MainWindow::MainWindow(const QStringList& args, QWidget *parent)
         : QMainWindow(parent)
@@ -134,6 +135,9 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
     // Starting the TcpServer
 
     new TcpServer(this);
+
+    FileDialog::registerBuiltinFactories();
+    FileDialog::registerExternalFactories();
 
     m_playListModel->readSettings();
     char buf[PATH_MAX + 1];
@@ -337,6 +341,7 @@ void MainWindow::closeEvent ( QCloseEvent *)
 
 void MainWindow::addDir()
 {
+    /*
     QString s = QFileDialog::getExistingDirectory(
                     this,
                     tr("Choose a directory"),
@@ -347,10 +352,24 @@ void MainWindow::addDir()
         return;
     m_playListModel->addDirectory(s);
     m_lastDir = s+"../";
+*/
+    if(FileDialog::isModal())
+    {
+        qWarning("void MainWindow::addDir()");
+        QString s = FileDialog::getExistingDirectory(this,tr("Choose a directory"),m_lastDir);
+
+        if (s.isEmpty())
+            return;
+        m_playListModel->addDirectory(s);
+        m_lastDir = s+"../";
+    }
+    else
+        FileDialog::popup(m_playListModel,m_lastDir,FileDialog::AddDirs,Decoder::nameFilters());
 }
 
 void MainWindow::addFile()
 {
+    /*
     QStringList files = QFileDialog::getOpenFileNames(
                             this,
                             tr("Select one or more files to open"),
@@ -358,12 +377,34 @@ void MainWindow::addFile()
                             Decoder::filter());
     if (files.isEmpty ())
         return;
-    /*
-      foreach(QString s, files)
-      m_playListModel->load(new MediaFile(s));
-    */
+
+    //  foreach(QString s, files)
+    //  m_playListModel->load(new MediaFile(s));
+
     m_playListModel->addFiles(files);
     m_lastDir = files.at(0);
+*/
+
+
+    if(FileDialog::isModal())
+    {
+        QStringList files = FileDialog::getOpenFileNames(
+                                this,
+                                tr("Select one or more files to open"),
+                                m_lastDir,
+                                Decoder::filter());
+        if (files.isEmpty ())
+            return;
+        /*
+          foreach(QString s, files)
+          m_playListModel->load(new MediaFile(s));
+        */
+        m_playListModel->addFiles(files);
+        m_lastDir = files.at(0);
+    }
+    else
+        FileDialog::popup(m_playListModel,m_lastDir,FileDialog::AddFiles,Decoder::nameFilters());
+
 }
 
 void MainWindow::clear()
@@ -565,16 +606,36 @@ void MainWindow::loadPlaylist()
         l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        QString f_name = QFileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
-        if (!f_name.isEmpty())
+        if(FileDialog::isModal())
         {
-            m_playListModel->loadPlaylist(f_name);
-            m_playlistName = QFileInfo(f_name).baseName();
+            //qWarning("Modal");
+            QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
+            if (!f_name.isEmpty())
+            {
+                m_playListModel->loadPlaylist(f_name);
+                m_playlistName = QFileInfo(f_name).baseName();
+            }
+            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
-        m_lastDir = QFileInfo(f_name).absoluteDir().path();
+        else //FileDialog::popup(m_playListModel,m_lastDir,FileDialog::AddFiles,Decoder::nameFilters());
+            // TODO: implement playlist loading with nonmodal dialogs
+            // For now we'll use default dialog
+        {
+            //qWarning("Modal");
+            QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask,0,true);
+            if (!f_name.isEmpty())
+            {
+                m_playListModel->loadPlaylist(f_name);
+                m_playlistName = QFileInfo(f_name).baseName();
+            }
+            m_lastDir = QFileInfo(f_name).absoluteDir().path();
+        }
     }
     else
+    {
+        //qWarning("Non Modal");
         qWarning("Error: There is no registered playlist parsers");
+    }
 }
 
 void MainWindow::savePlaylist()
@@ -587,15 +648,31 @@ void MainWindow::savePlaylist()
         l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        QString f_name = QFileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
-                         m_playlistName + "." + l[0],mask);
-
-        if (!f_name.isEmpty())
+        if(FileDialog::isModal())
         {
-            m_playListModel->savePlaylist(f_name);
-            m_playlistName = QFileInfo(f_name).baseName();
+            QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
+                             m_playlistName + "." + l[0],mask);
+
+            if (!f_name.isEmpty())
+            {
+                m_playListModel->savePlaylist(f_name);
+                m_playlistName = QFileInfo(f_name).baseName();
+            }
+            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
-        m_lastDir = QFileInfo(f_name).absoluteDir().path();
+        else // TODO: implement saving playlists with nonmodal dialogs
+            // For now we'll use default dialog
+        {
+            QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
+                    m_playlistName + "." + l[0],mask,0,true);
+
+            if (!f_name.isEmpty())
+            {
+                m_playListModel->savePlaylist(f_name);
+                m_playlistName = QFileInfo(f_name).baseName();
+            }
+            m_lastDir = QFileInfo(f_name).absoluteDir().path();
+        }
     }
     else
         qWarning("Error: There is no registered playlist parsers");
