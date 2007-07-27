@@ -30,6 +30,7 @@ class QTranslator;
 class Decoder;
 class Output;
 class FileTag;
+class QStringList;
 
 class DecoderFactory
 {
@@ -39,6 +40,7 @@ public:
     virtual const QString &name() const = 0;
     virtual const QString &filter() const = 0;
     virtual const QString &description() const = 0; //i.e. file description
+    virtual const QStringList &contentTypes() const = 0;
     virtual Decoder *create(QObject *, QIODevice *, Output *) = 0; 
     virtual FileTag *createTag(const QString &source) = 0;
     virtual void showDetails(QWidget *parent, const QString &path) = 0;

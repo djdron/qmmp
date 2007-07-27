@@ -36,6 +36,12 @@ const QString &DecoderMPCFactory::description() const
     return desc;
 }
 
+const QStringList &DecoderMPCFactory::contentTypes() const
+{
+    static QStringList types;
+    //types << "" << "";
+    return types;
+}
 
 Decoder *DecoderMPCFactory::create(QObject *parent, QIODevice *input,
                                    Output *output)

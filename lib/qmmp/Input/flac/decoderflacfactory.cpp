@@ -36,6 +36,12 @@ const QString &DecoderFLACFactory::description() const
     return desc;
 }
 
+const QStringList &DecoderFLACFactory::contentTypes() const
+{
+    static QStringList types;
+    //types << "" << "";
+    return types;
+}
 
 Decoder *DecoderFLACFactory::create(QObject *parent, QIODevice *input,
                                     Output *output)

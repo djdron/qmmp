@@ -75,7 +75,6 @@ bool SoundCore::play(const QString &source)
     if(source.left(4) == "http")
     {
         m_input = new StreamReader(source, this);
-        //m_input->open(QIODevice::ReadOnly);
     }
     else
         m_input = new QFile(source);

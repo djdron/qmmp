@@ -16,7 +16,8 @@ HEADERS += recycler.h \
            decoderfactory.h \
            soundcore.h \
            visualization.h \
-           streamreader.h
+           streamreader.h \
+           downloader.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
@@ -24,17 +25,17 @@ SOURCES += recycler.cpp \
            equ\iir_cfs.c \
            equ\iir_fpu.c \
            soundcore.cpp \
-           streamreader.cpp
+           streamreader.cpp \
+           downloader.cpp
 
-QT += network
 TARGET = qmmp
 CONFIG += release \
 warn_on \
 qt \
-thread
+thread \
+link_pkgconfig
 
 TEMPLATE = lib
+PKGCONFIG += libcurl
 target.path = /lib
 INSTALLS += target
-
-

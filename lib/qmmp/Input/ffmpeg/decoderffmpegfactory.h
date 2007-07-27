@@ -44,6 +44,7 @@ public:
     const QString &name() const;
     const QString &filter() const;
     const QString &description() const;
+    const QStringList &contentTypes() const;
     Decoder *create(QObject *, QIODevice *, Output *);
     FileTag *createTag(const QString &source);
     void showDetails(QWidget *parent, const QString &path);
