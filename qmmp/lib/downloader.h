@@ -17,71 +17,51 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef STREAMREADER_H
-#define STREAMREADER_H
+#ifndef DOWNLOADER_H
+#define DOWNLOADER_H
 
-#include <QObject>
-#include <QIODevice>
-#include <QUrl>
-#define BUFFER_SIZE 524288
+#include <QThread>
+#include <QMutex>
+#include <QByteArray>
 
-class QFileInfo;
-
-class Downloader;
+#include <curl/curl.h>
 
 /**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
+	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class StreamReader : public QIODevice
+
+struct Stream
 {
-    Q_OBJECT
+    char *buf;
+    int buf_fill;
+    QString content_type;
+    bool aborted;
+};
+
+class Downloader : public QThread
+{
+Q_OBJECT
 public:
-    StreamReader(const QString &name, QObject *parent = 0);
+    Downloader(QObject *parent, const QString &url);
 
-    ~StreamReader();
+    ~Downloader();
 
-    /** 
-     *  QIODevice API
-     */
-    bool atEnd () const;
-    qint64 bytesAvailable () const;
-    qint64 bytesToWrite () const;
-    bool canReadLine () const;
-    void close ();
-    bool isSequential () const;
-    bool open ( OpenMode mode );
-    qint64 pos () const;
-    bool reset ();
-    bool seek ( qint64 pos );
-    qint64 size () const;
-    bool waitForBytesWritten ( int msecs );
-    bool waitForReadyRead ( int msecs );
-
-    /**
-     *  returns content type of a stream
-     */
-    const QString &contentType();
-
-protected:
-    qint64 readData(char*, qint64);
-    qint64 writeData(const char*, qint64);
-
-
-private slots:
-    void downloadFile();
-    void cancelDownload();
-    void httpRequestFinished(int, bool);
-    void updateDataReadProgress(int bytesRead, int totalBytes);
+    qint64 read(char* data, qint64 maxlen);
+    Stream *stream();
+    QMutex *mutex();
+    QString contentType();
+    void abort();
+    int bytesAvailable();
 
 private:
-    void fillBuffer();
-    QUrl m_url;
-    bool m_httpRequestAborted;
-    int m_httpGetId;
-    int m_pos;
-    int m_size;
-    QString m_contentType;
-    Downloader *m_downloader;
+    CURL *m_handle;
+    QMutex m_mutex;
+    Stream m_stream;
+    QString m_url;
+
+protected:
+    void run();
+
 };
 
 #endif

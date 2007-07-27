@@ -35,6 +35,13 @@ const QString &DecoderVorbisFactory::description() const
     return desc;
 }
 
+const QStringList &DecoderVorbisFactory::contentTypes() const
+{
+    static QStringList types;
+    types << "application/ogg" << "audio/x-vorbis+ogg";
+    return types;
+}
+
 Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
                                    Output *output)
 {

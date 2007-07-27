@@ -40,6 +40,13 @@ const QString &DecoderMADFactory::description() const
     return desc;
 }
 
+const QStringList &DecoderMADFactory::contentTypes() const
+{
+    static QStringList types;
+    types << "audio/mp3" << "audio/mpeg";
+    return types;
+}
+
 Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *output)
 {
     return new DecoderMAD(parent, this, input, output);

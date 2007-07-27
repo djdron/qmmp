@@ -43,6 +43,7 @@ public:
     const QString &name() const;
     const QString &filter() const; // file extension, ie. ".mp3" or ".ogg"
     const QString &description() const; // file type, ie. "MPEG Audio Files"
+    const QStringList &contentTypes() const;
     Decoder *create(QObject *, QIODevice *, Output *);
     FileTag *createTag(const QString &source);
     void showDetails(QWidget *parent, const QString &path);

@@ -12,6 +12,7 @@
 #include <QMutex>
 #include <QWaitCondition>
 #include <QObject>
+#include <QStringList>
 
 
 #include "fileinfo.h"
@@ -126,6 +127,7 @@ public:
     //static void registerFactory(DecoderFactory *);
     static Decoder *create(QObject *, const QString &, QIODevice *, Output *);
     static DecoderFactory *findFactory(const QString&);
+    static DecoderFactory *findByContentType(const QString&);
     static FileTag *createTag(const QString&);
     static QString filter();
     static QStringList nameFilters();

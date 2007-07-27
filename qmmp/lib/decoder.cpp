@@ -15,6 +15,7 @@
 #include "output.h"
 #include "visualization.h"
 #include "decoderfactory.h"
+#include "streamreader.h"
 extern "C"{
 #include "equ/iir.h" 
 }
@@ -134,8 +135,14 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
                          Output *output)
 {
     Decoder *decoder = 0;
+    qDebug(qPrintable(source));
+    DecoderFactory *fact = 0;
 
-    DecoderFactory *fact = Decoder::findFactory(source);
+    StreamReader* reader = qobject_cast<StreamReader *>(input);
+    if(reader)
+        fact = Decoder::findByContentType(reader->contentType());
+    else
+        fact = Decoder::findFactory(source);
     if (fact)
     {
         decoder = fact->create(parent, input, output);
@@ -153,6 +160,26 @@ DecoderFactory *Decoder::findFactory(const QString& source)
                 !blacklist.contains(files.at(i).section('/',-1)))
         {
             return factories->at(i);
+        }
+    }
+    qDebug("Decoder: unable to find factory");
+    return 0;
+}
+
+DecoderFactory *Decoder::findByContentType(const QString& type)
+{
+    checkFactories();
+    for (int i=0; i<factories->size(); ++i)
+    {
+        if (!blacklist.contains(files.at(i).section('/',-1)))
+        {
+            QStringList types = factories->at(i)->contentTypes();
+            for(int j=0; j<types.size(); ++j)
+            {
+                qDebug(qPrintable(types[j]+" "+type));
+                if(type == types[j])
+                    return factories->at(i);
+            }
         }
     }
     qDebug("Decoder: unable to find factory");

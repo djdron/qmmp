@@ -91,3 +91,14 @@ Version 0.1.2
 * added custom close action (Vladimir Kuznetsov)
 * fixed and improved cmake scripts
 * fixed "Delete" hotkey in Russian translation
+
+Version 0.1.3
+* added Chinese Simplified translation (l on)
+* added Ukrainian translation (Gennadi Motsyo)
+* added codings fix for command line (Vladimir Kuznetsov)
+* fixed next song selection after deletion selected (Vladimir Kuznetsov)
+* fixed zero duration bug in mpc, flac, vorbis plugins
+* fixed some non-critcical bugs in Ogg Vorbis plugin
+* added Shift+N hotkey for all windows
+* set using UTF-8 by default in mad plugin
+* fixed russian translation in the flac plugin
