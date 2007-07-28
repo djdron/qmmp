@@ -43,26 +43,28 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     Downloader *dl = (Downloader *)pointer;
     dl->mutex()->lock ();
     size_t data_size = size * nmemb;
-    if (data_size < 2)
+    if (data_size < 3)
+    {
+        dl->mutex()->unlock();
         return data_size;
+    }
 
     //qDebug("header received: %s", (char*) data);
     QString str = QString::fromAscii((char *) data, data_size);
     str = str.trimmed ();
-    if (str.contains("Content-Type"))
+    if (str.left(4).contains("HTTP") || str.left(4).contains("ICY"))
     {
-        str = str.right(str.size() - str.indexOf(":") - 1);
-        qDebug(qPrintable(QString("content-type: ")+str.trimmed()));
-        dl->stream()->content_type = str.trimmed();
+        qDebug("Downloader: header received");
     }
-    if (str.contains("content-type"))
+    else
     {
-        str = str.right(str.size() - str.indexOf(":") - 1);
-        qDebug(qPrintable(QString("content-type: ")+str.trimmed()));
-        dl->stream()->content_type = str.trimmed();
+        QString key = str.left(str.indexOf(":")).trimmed();
+        QString value = str.right(str.size() - str.indexOf(":") - 1).trimmed();
+        dl->stream()->header.insert(key, value);
+        qDebug("Downloader: key=%s, value=%s",qPrintable(key),qPrintable(value));
     }
     dl->mutex()->unlock();
-    return size * nmemb;
+    return data_size;
 }
 
 int curl_progress(void *pointer, double dltotal, double dlnow, double ultotal, double ulnow)
@@ -122,7 +124,12 @@ QMutex *Downloader::mutex()
 
 QString Downloader::contentType()
 {
-    return m_stream.content_type;
+    QString content;
+    if (m_stream.header.contains("Content-Type"))
+        content = m_stream.header.value("Content-Type");
+    if (m_stream.header.contains("content-type"))
+        content = m_stream.header.value("content-type");
+    return content;
 }
 
 void Downloader::abort()
@@ -188,6 +195,7 @@ void Downloader::run()
     m_stream.buf_fill = 0;
     m_stream.buf = 0;
     m_stream.aborted = FALSE;
+    m_stream.header.clear ();
     int return_code, response;
     qDebug("Downloader: starting libcurl");
     m_mutex.unlock();

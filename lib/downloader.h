@@ -23,6 +23,7 @@
 #include <QThread>
 #include <QMutex>
 #include <QByteArray>
+#include <QMap>
 
 #include <curl/curl.h>
 
@@ -36,6 +37,7 @@ struct Stream
     int buf_fill;
     QString content_type;
     bool aborted;
+    QMap <QString, QString> header;
 };
 
 class Downloader : public QThread
