@@ -173,11 +173,10 @@ DecoderFactory *Decoder::findByContentType(const QString& type)
     {
         if (!blacklist.contains(files.at(i).section('/',-1)))
         {
-            QStringList types = factories->at(i)->contentTypes();
+            QStringList types = factories->at(i)->contentType().split(";");
             for(int j=0; j<types.size(); ++j)
             {
-                qDebug(qPrintable(types[j]+" "+type));
-                if(type == types[j])
+                if(type == types[j] && !types[j].isEmpty())
                     return factories->at(i);
             }
         }

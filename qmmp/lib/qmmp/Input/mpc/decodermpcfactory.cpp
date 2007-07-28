@@ -36,10 +36,9 @@ const QString &DecoderMPCFactory::description() const
     return desc;
 }
 
-const QStringList &DecoderMPCFactory::contentTypes() const
+const QString &DecoderMPCFactory::contentType() const
 {
-    static QStringList types;
-    //types << "" << "";
+    static QString types;
     return types;
 }
 

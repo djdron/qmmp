@@ -40,10 +40,9 @@ const QString &DecoderMADFactory::description() const
     return desc;
 }
 
-const QStringList &DecoderMADFactory::contentTypes() const
+const QString &DecoderMADFactory::contentType() const
 {
-    static QStringList types;
-    types << "audio/mp3" << "audio/mpeg";
+    static QString types("audio/mp3;audio/mpeg");
     return types;
 }
 
