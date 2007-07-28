@@ -35,10 +35,9 @@ const QString &DecoderVorbisFactory::description() const
     return desc;
 }
 
-const QStringList &DecoderVorbisFactory::contentTypes() const
+const QString &DecoderVorbisFactory::contentType() const
 {
-    static QStringList types;
-    types << "application/ogg" << "audio/x-vorbis+ogg";
+    static QString types("application/ogg;audio/x-vorbis+ogg");
     return types;
 }
 

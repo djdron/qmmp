@@ -128,10 +128,8 @@ bool SoundCore::play(const QString &source)
         m_output->start();
         m_decoder->start();
         m_error = NoError;
-        
         return TRUE;
     }
-    qDebug("12345678");
     stop();
     return FALSE;
 }

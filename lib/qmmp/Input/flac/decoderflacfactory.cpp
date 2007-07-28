@@ -36,9 +36,9 @@ const QString &DecoderFLACFactory::description() const
     return desc;
 }
 
-const QStringList &DecoderFLACFactory::contentTypes() const
+const QString &DecoderFLACFactory::contentType() const
 {
-    static QStringList types;
+    static QString types;
     //types << "" << "";
     return types;
 }

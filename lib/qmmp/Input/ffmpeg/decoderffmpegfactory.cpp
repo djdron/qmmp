@@ -34,9 +34,9 @@ const QString &DecoderFFmpegFactory::description() const
     return desc;
 }
 
-const QStringList &DecoderFFmpegFactory::contentTypes() const
+const QString &DecoderFFmpegFactory::contentType() const
 {
-    static QStringList types;
+    static QString types;
     //types << "" << "";
     return types;
 }
