@@ -51,15 +51,15 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     str = str.trimmed ();
     if (str.contains("Content-Type"))
     {
-        str = str.right(str.indexOf(":") + 3);
-        qDebug(qPrintable(QString("content-type: ")+str));
-        dl->stream()->content_type = str;
+        str = str.right(str.size() - str.indexOf(":") - 1);
+        qDebug(qPrintable(QString("content-type: ")+str.trimmed()));
+        dl->stream()->content_type = str.trimmed();
     }
     if (str.contains("content-type"))
     {
-        str = str.right(str.indexOf(":")-2);
-        qDebug(qPrintable(QString("content-type: ")+str));
-        dl->stream()->content_type = str;
+        str = str.right(str.size() - str.indexOf(":") - 1);
+        qDebug(qPrintable(QString("content-type: ")+str.trimmed()));
+        dl->stream()->content_type = str.trimmed();
     }
     dl->mutex()->unlock();
     return size * nmemb;
@@ -80,7 +80,6 @@ Downloader::Downloader(QObject *parent, const QString &url)
         : QThread(parent)
 {
     m_url = url;
-    qDebug("Downloader: url: %s",qPrintable(url));
     curl_global_init(CURL_GLOBAL_ALL);
     m_stream.buf_fill = 0;
     m_stream.buf = 0;
