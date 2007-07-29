@@ -129,6 +129,8 @@ QString Downloader::contentType()
         content = m_stream.header.value("Content-Type");
     if (m_stream.header.contains("content-type"))
         content = m_stream.header.value("content-type");
+    if (m_stream.header.contains("Content-type"))
+        content = m_stream.header.value("content-type");
     return content;
 }
 
@@ -178,7 +180,7 @@ void Downloader::run()
     curl_easy_setopt(m_handle, CURLOPT_PROGRESSFUNCTION, curl_progress);
     // Any kind of authentication
     curl_easy_setopt(m_handle, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-    //curl_easy_setopt(m_handle, CURLOPT_VERBOSE, 1);
+    curl_easy_setopt(m_handle, CURLOPT_VERBOSE, 1);
     // Auto referrer
     curl_easy_setopt(m_handle, CURLOPT_AUTOREFERER, 1);
     // Follow redirections
