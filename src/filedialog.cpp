@@ -28,6 +28,7 @@ bool FileDialog::isModal()
 
 void FileDialog::init(QObject* o)
 {
+    qWarning("void FileDialog::init(QObject* o)");
     if(!m_initialized && !instance()->modal())
     {
         PlayListModel* model = NULL;
@@ -200,9 +201,9 @@ FileDialog* FileDialog::instance()
         if(!_instance)
             _instance = factories[QtFileDialogFactory::QtFileDialogFactoryName]->create();
     }
-    else if(!_instance->modal())
+    //else if(!_instance->modal())
             //return _instance;
-            _instance->raise();
+      //      _instance->raise();
 
     return _instance;
 
@@ -240,6 +241,7 @@ QStringList FileDialog::registeredFactories()
 
 void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)
 {
+    qWarning("void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)");
 	instance()->init(o);
 	instance()->raise(d,m,f);
 }

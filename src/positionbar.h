@@ -42,6 +42,7 @@ public:
 
 public slots:
     void setValue(int);
+    int value()const{return m_value;}
     void setMax(int);
 
 signals:
