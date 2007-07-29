@@ -45,6 +45,8 @@
 #include <addurldialog.h>
 #include "filedialog.h"
 
+#define KEY_OFFSET 10
+
 MainWindow::MainWindow(const QStringList& args, QWidget *parent)
         : QMainWindow(parent)
 {
@@ -52,6 +54,7 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
     seeking = FALSE;
     m_update = FALSE;
     m_paused = FALSE;
+    m_elapsed = 0;
 
     setWindowIcon( QIcon(":/qmmp.xpm") );
 
@@ -212,7 +215,19 @@ void MainWindow::replay()
 
 void MainWindow::seek(int pos)
 {
-    m_core->seek(pos);
+    if(!seeking)
+        m_core->seek(pos);
+}
+
+
+void MainWindow::forward()
+{
+    seek(m_elapsed + KEY_OFFSET);
+}
+
+void MainWindow::backward()
+{
+    seek(m_elapsed - KEY_OFFSET);
 }
 
 void MainWindow::setVolume(int volume, int balance)
@@ -247,6 +262,7 @@ void MainWindow::next()
     if (m_core->isInitialized())
     {
         stop();
+        m_elapsed = 0;
         play();
     }
     else
@@ -295,27 +311,31 @@ void MainWindow::showOutputState(const OutputState &st)
     m_playlist->setInfo(st, m_core->length(), m_playListModel->totalLength());
     switch ((int) st.type())
     {
-    case OutputState::Playing:
-    {
-        m_tray->setIcon ( QIcon(":/play.png") );
-        if (m_showMessage && m_playListModel->currentItem())
-            m_tray->showMessage ( tr("Now Playing"),
-                                  m_playListModel->currentItem()->title(),
-                                  QSystemTrayIcon::Information, m_messageDelay );
-        if (m_showToolTip && m_playListModel->currentItem())
-            m_tray->setToolTip (m_playListModel->currentItem()->title());
-        break;
-    }
-    case OutputState::Paused:
-    {
-        m_tray->setIcon ( QIcon(":/pause.png") );
-        break;
-    }
-    case OutputState::Stopped:
-    {
-        m_tray->setIcon ( QIcon(":/stop.png") );
-        break;
-    }
+        case OutputState::Playing:
+        {
+            m_tray->setIcon ( QIcon(":/play.png") );
+            if (m_showMessage && m_playListModel->currentItem())
+                m_tray->showMessage ( tr("Now Playing"),
+                                    m_playListModel->currentItem()->title(),
+                                    QSystemTrayIcon::Information, m_messageDelay );
+            if (m_showToolTip && m_playListModel->currentItem())
+                m_tray->setToolTip (m_playListModel->currentItem()->title());
+            break;
+        }
+        case OutputState::Paused:
+        {
+            m_tray->setIcon ( QIcon(":/pause.png") );
+            break;
+        }
+        case OutputState::Stopped:
+        {
+            m_tray->setIcon ( QIcon(":/stop.png") );
+            break;
+        }
+        case OutputState::Info:
+        {
+            m_elapsed = st.elapsedSeconds();
+        }
     }
 
 }
@@ -556,6 +576,15 @@ void MainWindow::createActions()
     Dock::getPointer()->addActions(m_mainMenu->actions());
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Exit"),this, SLOT(close ()), tr("Ctrl+Q"));
+
+    QAction* forward = new QAction(this);
+    forward->setShortcut(QKeySequence(Qt::Key_Right));
+    connect(forward,SIGNAL(triggered(bool)),this,SLOT(forward()));
+    QAction* backward = new QAction(this);
+    backward->setShortcut(QKeySequence(Qt::Key_Left));
+    connect(backward,SIGNAL(triggered(bool)),this,SLOT(backward()));
+
+    Dock::getPointer()->addActions( QList<QAction*>() << forward << backward );
     Dock::getPointer()->addActions(m_mainMenu->actions());
 }
 

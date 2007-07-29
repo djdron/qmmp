@@ -24,6 +24,7 @@
 
 class TimeIndicator;
 
+
 #include "pixmapwidget.h"
 
 /**
@@ -73,6 +74,7 @@ signals:
     void shuffleToggled(bool);
 protected:
     void wheelEvent(QWheelEvent *);
+    void mousePressEvent(QMouseEvent*);
 
 private slots:
     void updateSkin();

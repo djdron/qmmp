@@ -36,6 +36,7 @@ TitleBar::TitleBar(QWidget *parent)
     mw = qobject_cast<MainWindow*>(parent);
     //buttons
     menu = new Button(this,Skin::BT_MENU_N,Skin::BT_MENU_P);
+    connect(menu,SIGNAL(clicked()),this,SLOT(showMainMenu()));
     menu->move(6,3);
     minimize = new Button(this,Skin::BT_MINIMIZE_N,Skin::BT_MINIMIZE_P);
     minimize->move(244,3);
@@ -108,4 +109,9 @@ void TitleBar::setActive(bool a)
 void TitleBar::updateSkin()
 {
     setActive(FALSE);
+}
+
+void TitleBar::showMainMenu()
+{
+    mw->menu()->exec(menu->mapToGlobal(menu->pos()));
 }

@@ -19,6 +19,7 @@
  ***************************************************************************/
 #include <QPainter>
 #include <QSettings>
+#include <QMouseEvent>
 
 #include "skin.h"
 #include "timeindicator.h"
@@ -68,12 +69,12 @@ void TimeIndicator::reset()
 
 void TimeIndicator::mousePressEvent(QMouseEvent* e )
 {
-    if (m_needToShowTime)
+    if (m_needToShowTime && e->button() & Qt::LeftButton)
     {
         m_elapsed = m_elapsed ? false : true;
         setTime(m_time);
-        PixmapWidget::mousePressEvent(e);
     }
+    PixmapWidget::mousePressEvent(e);
 }
 
 void TimeIndicator::setSongDuration(int d)

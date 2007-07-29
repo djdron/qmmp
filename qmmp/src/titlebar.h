@@ -48,6 +48,7 @@ public:
 
 private slots:
     void updateSkin();
+    void showMainMenu();
 
 private:
     Skin *skin;

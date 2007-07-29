@@ -98,6 +98,9 @@ private slots:
     void updateEQ();
     void updatePreset();
     void updateSkin();
+    
+    void forward();
+    void backward();
 
     void jumpToFile();
 
@@ -132,7 +135,8 @@ private:
     Skin *m_skin;
     QString m_playlistName;
     JumpToTrackDialog* m_jumpDialog;
-	 bool m_hide_on_titlebar_close;
+    bool m_hide_on_titlebar_close;
+    int m_elapsed;
 };
 
 #endif

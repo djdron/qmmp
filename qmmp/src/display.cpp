@@ -22,6 +22,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QSettings>
+#include <QMenu>
 
 #include <output.h>
 #include "skin.h"
@@ -157,6 +158,7 @@ void MainDisplay::setMaxTime ( long mt ) // TODO: should be removed
     m_timeIndicator->setSongDuration(mt);
 }
 
+
 void MainDisplay::updateSkin()
 {
     setPixmap ( m_skin->getMain() );
@@ -272,4 +274,16 @@ void MainDisplay::hideTimeDisplay()
 {
     m_timeIndicator->setNeedToShowTime(false);
 }
+
+
+
+void MainDisplay::mousePressEvent(QMouseEvent *e)
+{
+    if( e->button() == Qt::RightButton)
+    {
+        m_mw->menu()->exec(e->globalPos());
+    }
+    PixmapWidget::mousePressEvent(e);
+}
+
 
