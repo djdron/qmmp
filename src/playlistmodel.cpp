@@ -363,7 +363,7 @@ void PlayListModel::addDirectory(const QString& s)
 
 void PlayListModel::addFileList(const QStringList &l)
 {
-    qWarning("void PlayListModel::addFileList(const QStringList &l)");
+//    qWarning("void// PlayListModel::addFileList(const QStringList &l)");
     foreach(QString str,l)
     {
         QFileInfo f_info(str);
