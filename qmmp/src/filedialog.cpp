@@ -241,7 +241,7 @@ QStringList FileDialog::registeredFactories()
 
 void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)
 {
-    qWarning("void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)");
+//    qWarning("void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)");
 	instance()->init(o);
 	instance()->raise(d,m,f);
 }
