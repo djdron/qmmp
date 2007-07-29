@@ -127,10 +127,10 @@ QString Downloader::contentType()
     QString content;
     if (m_stream.header.contains("Content-Type"))
         content = m_stream.header.value("Content-Type");
-    if (m_stream.header.contains("content-type"))
+    else if (m_stream.header.contains("content-type"))
         content = m_stream.header.value("content-type");
-    if (m_stream.header.contains("Content-type"))
-        content = m_stream.header.value("content-type");
+    else if (m_stream.header.contains("Content-type"))
+        content = m_stream.header.value("Content-type");
     return content;
 }
 
