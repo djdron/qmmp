@@ -114,7 +114,7 @@ private:
     void readSettings();
     void writeSettings();
     void createActions();
-    double seeking;
+    bool seeking;
     SoundCore *m_core;
     QMenu *m_mainMenu;
     MainDisplay *display;

@@ -227,7 +227,7 @@ void MainWindow::forward()
 
 void MainWindow::backward()
 {
-    seek(m_elapsed - KEY_OFFSET);
+    seek(qMax(0,m_elapsed - KEY_OFFSET));
 }
 
 void MainWindow::setVolume(int volume, int balance)
