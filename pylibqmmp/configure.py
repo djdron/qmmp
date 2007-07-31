@@ -1,13 +1,6 @@
 # This script configures PyQMMP and generates the Makefiles.
 #
-# Copyright (c) 2004
-# 	Integrated Computer Solutions, Inc. <info@ics.com>
-#
 # This file is part of PyQMMP.
-#
-# This copy of PyQMMP is licensed for use under the terms of the
-# PyQMMP Commercial License Agreement version ICS-2.6.  See the file
-# LICENSE for more details.
 #
 # PyQMMP is supplied WITHOUT ANY WARRANTY; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -72,8 +65,8 @@ def usage(rcode = 2):
     print "    -g      always release the GIL (SIP v3.x behaviour)"
     print "    -j #    split the concatenated C++ source files into # pieces [default 1]"
     print "    -k      build the PyQMMP modules as static libraries"
-    print "    -n dir  the directory containing the QicsTable header files [default %s]" % opt_qmmpincdir
-    print "    -o dir  the directory containing the QicsTable library [default %s]" % opt_qmmplibdir
+    print "    -n dir  the directory containing the  header files [default %s]" % opt_qmmpincdir
+    print "    -o dir  the directory containing the  library [default %s]" % opt_qmmplibdir
     print "    -r      generate code with tracing enabled [default disabled]"
     print "    -u      build with debugging symbols"
     print "    -v dir  where the PyQMMP .sip files will be installed [default %s]" % opt_pyqmmpsipdir
@@ -114,34 +107,6 @@ def create_config(module, template):
     sipconfig.create_config_module(module, template, content)
 
 
-def check_qmmp():
-    """See if QicsTable can be found and what its version is.
-    """
-    # Find the QicsTable header files.
-    nspace = os.path.join(opt_qmmpincdir, "QicsNamespace.h")
-
-    if os.access(nspace, os.F_OK):
-        # Get the version number string.
-        _, vstr = sipconfig.read_version(nspace, "QicsTable", None, "QICSTABLE_VERSION")
-
-        # Extract the version number and hope that the format is consistent.
-        try:
-            vlist = string.split(vstr)
-            maj, min, bug = string.split(vlist[1], ".")
-            versnr = (int(maj) << 16) | (int(min) << 8) | int(bug)
-            vstr = string.join(vlist[1:])
-        except:
-            raise ValueError, "Unable to extract version number from QICSTABLE_VERSION in QicsNamespace.h"
-
-        if glob.glob(os.path.join(opt_qmmplibdir, "*qmmp*")):
-            global qmmp_version
-            qmmp_version = versnr
-
-            sipconfig.inform("QicsTable %s is being used." % vstr)
-        else:
-            sipconfig.inform("The QicsTable library could not be found in %s and so the qmmp module will not be built. If QicsTable is installed then use the -o argument to explicitly specify the correct directory." % opt_qmmplibdir)
-    else:
-        sipconfig.inform("QicsNamespace.h could not be found in %s and so the qmmp module will not be built. If QicsTable is installed then use the -n argument to explicitly specify the correct directory." % opt_qmmpincdir)
 
 
 def set_sip_flags():
@@ -151,7 +116,7 @@ def set_sip_flags():
     # For new version of PyQt (same 4 >) we must use pyqtcfg.pyqt_sip_flags but not pyqtcfg.pyqt_qt_sip_flags
     qmmp_sip_flags = string.split(pyqtcfg.pyqt_sip_flags)
 
-    # Handle the QicsTable version tag.  At the moment QicsTable doesn't have
+    # Handle the  version tag.  At the moment  doesn't have
     # multiple versions.  When it does, add them and the %Timeline tags to this
     # disctionary.
     qmmp_tags = {
@@ -159,7 +124,7 @@ def set_sip_flags():
 
     if qmmp_tags:
         qmmp_sip_flags.append("-t")
-        qmmp_sip_flags.append(sipconfig.version_to_sip_tag(qmmp_version, qmmp_tags, "QicsTable"))
+        qmmp_sip_flags.append(sipconfig.version_to_sip_tag(qmmp_version, qmmp_tags, ""))
 
 
 def generate_code(mname, imports=None, extra_cflags=None, extra_cxxflags="-I%s/Qt3Support/ -I%s/QtXml/ -I%s/QtGui/ -I%s -I../../ -L../../" % (pyqtcfg.qt_inc_dir, pyqtcfg.qt_inc_dir, pyqtcfg.qt_inc_dir, pyqtcfg.qt_inc_dir), extra_define=None, extra_include_dir=None, extra_lflags="-lQt3Support", extra_lib_dir=None, extra_lib=None, sip_flags=None):
@@ -436,10 +401,10 @@ def main(argv):
         if minv:
             sipconfig.error("This version of PyQMMP requires SIP v%s or later" % sipconfig.version_to_string(minv))
 
-    # Check for QicsTable.
+    # Check for .
     #check_qmmp()
 
-    # If QicsTable wasn't found then there is no point carrying on.  An
+    # If  wasn't found then there is no point carrying on.  An
     # appropriate error message will already have been displayed.
     #if qmmp_version is None:
      #   sys.exit(1)

@@ -1,11 +1,4 @@
-# Copyright (c) 2004
-# 	Integrated Computer Solutions, Inc. <info@ics.com>
-#
 # This file is part of PyQMMP.
-#
-# This copy of PyQMMP is licensed for use under the terms of the
-# PyQMMP Commercial License Agreement version ICS-2.6.  See the file
-# LICENSE for more details.
 #
 # PyQMMP is supplied WITHOUT ANY WARRANTY; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -41,7 +34,7 @@ class Configuration(pyqtconfig.Configuration):
         pyqtconfig.Configuration.__init__(self, cfg)
 
 
-class QicsTableModuleMakefile(pyqtconfig.QtModuleMakefile):
+class PyQmmpMakefile(pyqtconfig.QtModuleMakefile):
     """The Makefile class for modules that %Import qmmp.
     """
     def finalise(self):
