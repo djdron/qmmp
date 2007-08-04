@@ -172,7 +172,7 @@ void ConfigDialog::loadPluginsInfo()
         checkBox->setChecked(item->isSelected());
         ui.inputPluginTable->setCellWidget ( i, 0, checkBox );
         ui.inputPluginTable->setItem ( i,1,
-                                       new QTableWidgetItem (item->factory()->name()) );
+                                       new QTableWidgetItem (item->factory()->properties().name) );
         ui.inputPluginTable->setItem ( i,2, new QTableWidgetItem (files.at (i)) );
     }
     ui.inputPluginTable->resizeColumnToContents ( 0 );

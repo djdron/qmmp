@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *   Copyright (C) 2006 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
@@ -31,15 +32,25 @@ class Decoder;
 class Output;
 class FileTag;
 
+struct DecoderProperties
+{
+    QString name;
+    QString filter;
+    QString description;
+    QString contentType;
+    bool hasAbout;
+    bool hasSettings;
+    //bool streamSupport;
+    //bool needInput;
+};
+
 class DecoderFactory
 {
 public:
     virtual ~DecoderFactory() {}
     virtual bool supports(const QString &source) const = 0;
-    virtual const QString &name() const = 0;
-    virtual const QString &filter() const = 0;
-    virtual const QString &description() const = 0; //i.e. file description
-    virtual const QString &contentType() const = 0;
+    virtual bool canDecode(QIODevice *) const = 0;
+    virtual const DecoderProperties &properties() const = 0;
     virtual Decoder *create(QObject *, QIODevice *, Output *) = 0; 
     virtual FileTag *createTag(const QString &source) = 0;
     virtual void showDetails(QWidget *parent, const QString &path) = 0;
