@@ -103,7 +103,7 @@ QStringList Decoder::all()
     DecoderFactory *fact;
     foreach(fact, *factories)
     {
-        l << fact->description();
+        l << fact->properties().description;
     }
     return l;
 }
@@ -173,7 +173,7 @@ DecoderFactory *Decoder::findByContentType(const QString& type)
     {
         if (!blacklist.contains(files.at(i).section('/',-1)))
         {
-            QStringList types = factories->at(i)->contentType().split(";");
+            QStringList types = factories->at(i)->properties().contentType.split(";");
             for(int j=0; j<types.size(); ++j)
             {
                 if(type == types[j] && !types[j].isEmpty())
@@ -207,8 +207,8 @@ QString Decoder::filter()
         if (!blacklist.contains(files.at(i).section('/',-1)))
         {
             fact = (*factories)[i];
-            allflt +=fact->filter().toLower() +" ";
-            flt += fact->description() + " (" + fact->filter().toLower() + ")";
+            allflt +=fact->properties().filter.toLower() +" ";
+            flt += fact->properties().description + " (" + fact->properties().filter + ")";
             flt += ";;";
         }
     }
@@ -227,7 +227,7 @@ QStringList Decoder::nameFilters()
     for (int i=0; i<factories->size(); ++i)
     {
         if (!blacklist.contains(files.at(i).section('/',-1)))
-            filters << factories->at(i)->filter().split(" ", QString::SkipEmptyParts);
+            filters << factories->at(i)->properties().filter.split(" ", QString::SkipEmptyParts);
     }
     return filters;
 }
