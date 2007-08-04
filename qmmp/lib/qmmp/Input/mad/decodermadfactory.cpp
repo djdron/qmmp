@@ -22,28 +22,22 @@ bool DecoderMADFactory::supports(const QString &source) const
     return ext == ".mp1" || ext == ".mp2" || ext == ".mp3";
 }
 
-const QString &DecoderMADFactory::name() const
+bool DecoderMADFactory::canDecode(QIODevice *input) const
 {
-    static QString name (tr("MPEG Plugin"));
-    return name;
+    static bool c = FALSE;
+    return c;
 }
 
-const QString &DecoderMADFactory::filter() const
+const DecoderProperties &DecoderMADFactory::properties() const
 {
-    static QString filter("*.mp1 *.mp2 *.mp3");
-    return filter;
-}
-
-const QString &DecoderMADFactory::description() const
-{
-    static QString desc(tr("MPEG Files"));
-    return desc;
-}
-
-const QString &DecoderMADFactory::contentType() const
-{
-    static QString types("audio/mp3;audio/mpeg");
-    return types;
+    static DecoderProperties properties;
+    properties.name = tr("MPEG Plugin");
+    properties.filter = "*.mp1 *.mp2 *.mp3";
+    properties.description = tr("MPEG Files");
+    properties.contentType = "audio/mp3;audio/mpeg";
+    properties.hasAbout = TRUE;
+    properties.hasSettings = TRUE;
+    return properties;
 }
 
 Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *output)

@@ -16,31 +16,22 @@ bool DecoderFLACFactory::supports(const QString &source) const
     return (source.right(5).toLower() == ".flac");
 }
 
-const QString &DecoderFLACFactory::name() const
+bool DecoderFLACFactory::canDecode(QIODevice *input) const
 {
-    static QString name (tr("FLAC Plugin"));
-    return name;
+    static bool c = FALSE;
+    return c;
 }
 
-
-const QString &DecoderFLACFactory::filter() const
+const DecoderProperties &DecoderFLACFactory::properties() const
 {
-    static QString filter("*.flac");
-    return filter;
-}
-
-
-const QString &DecoderFLACFactory::description() const
-{
-    static QString desc(tr("FLAC Files"));
-    return desc;
-}
-
-const QString &DecoderFLACFactory::contentType() const
-{
-    static QString types;
-    //types << "" << "";
-    return types;
+    static DecoderProperties properties;
+    properties.name = tr("FLAC Plugin");
+    properties.filter = "*.flac";
+    properties.description = tr("FLAC Files");
+    //properties.contentType = ;
+    properties.hasAbout = TRUE;
+    properties.hasSettings = FALSE;
+    return properties;
 }
 
 Decoder *DecoderFLACFactory::create(QObject *parent, QIODevice *input,

@@ -41,11 +41,8 @@ Q_INTERFACES(DecoderFactory);
 
 public:
     bool supports(const QString &source) const;
-    const QString &name() const;
-    const QString &filter() const;
-    const QString &description() const;
-    const QString &contentType() const;
-    Decoder *create(QObject *, QIODevice *, Output *);
+    bool canDecode(QIODevice *input) const;
+    const DecoderProperties &properties() const;
     FileTag *createTag(const QString &source);
     void showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);

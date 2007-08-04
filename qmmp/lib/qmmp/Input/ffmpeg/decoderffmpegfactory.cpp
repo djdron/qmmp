@@ -14,31 +14,22 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
     return (source.right(4).toLower() == ".wma" || source.right(4).toLower() == ".wav");
 }
 
-const QString &DecoderFFmpegFactory::name() const
+bool DecoderFFmpegFactory::canDecode(QIODevice *input) const
 {
-    static QString name (tr("FFmpeg Plugin"));
-    return name;
+    static bool c = FALSE;
+    return c;
 }
 
-
-const QString &DecoderFFmpegFactory::filter() const
+const DecoderProperties &DecoderFFmpegFactory::properties() const
 {
-    static QString filter("*.wma *.wav");
-    return filter;
-}
-
-
-const QString &DecoderFFmpegFactory::description() const
-{
-    static QString desc(tr("WMA Files"));
-    return desc;
-}
-
-const QString &DecoderFFmpegFactory::contentType() const
-{
-    static QString types;
-    //types << "" << "";
-    return types;
+    static DecoderProperties properties;
+    properties.name = tr("WMA Files");
+    properties.filter = "*.wma *.wav";
+    properties.description = tr("WMA Files");
+    //properties.contentType = "";
+    properties.hasAbout = TRUE;
+    properties.hasSettings = FALSE;
+    return properties;
 }
 
 Decoder *DecoderFFmpegFactory::create(QObject *parent, QIODevice *input,

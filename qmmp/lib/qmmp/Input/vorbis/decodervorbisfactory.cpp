@@ -12,11 +12,10 @@
 
 bool DecoderVorbisFactory::supports(const QString &source) const
 {
-    //TODO: FLAC?
     return source.right(4).toLower() == ".ogg";
 }
 
-const QString &DecoderVorbisFactory::name() const
+/*const QString &DecoderVorbisFactory::name() const
 {
     static QString name (tr("Ogg Vorbis Plugin"));
     return name;
@@ -39,6 +38,24 @@ const QString &DecoderVorbisFactory::contentType() const
 {
     static QString types("application/ogg;audio/x-vorbis+ogg");
     return types;
+}*/
+
+bool DecoderVorbisFactory::canDecode(QIODevice *input) const
+{
+    static bool c = FALSE;
+    return c;
+}
+
+const DecoderProperties &DecoderVorbisFactory::properties() const
+{
+    static DecoderProperties properties;
+    properties.name = tr("Ogg Vorbis Plugin");
+    properties.filter = "*.ogg";
+    properties.description = tr("Ogg Vorbis Files");
+    properties.contentType = "application/ogg;audio/x-vorbis+ogg";
+    properties.hasAbout = TRUE;
+    properties.hasSettings = FALSE;
+    return properties;
 }
 
 Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
