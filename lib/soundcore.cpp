@@ -121,7 +121,7 @@ bool SoundCore::play(const QString &source)
         setEQ(m_bands, m_preamp);
         setEQEnabled(m_useEQ);
     }
-    qDebug("Decoder create OK");
+    qDebug("SoundCore: decoder was created successfully");
 
     if (m_decoder->initialize())
     {

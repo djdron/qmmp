@@ -268,7 +268,7 @@ void PlayListModel::showDetails()
     {
         if ( m_files.at ( i )->isSelected() )
         {
-            DecoderFactory *fact = Decoder::findFactory ( m_files.at ( i )->path() );
+            DecoderFactory *fact = Decoder::findByPath ( m_files.at ( i )->path() );
             if ( fact )
                 fact->showDetails ( 0, m_files.at ( i )->path() );
 

@@ -138,19 +138,32 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
     qDebug(qPrintable(source));
     DecoderFactory *fact = 0;
 
-    StreamReader* reader = qobject_cast<StreamReader *>(input);
-    if(reader)
-        fact = Decoder::findByContentType(reader->contentType());
+    if(!input->open(QIODevice::ReadOnly))
+    {
+        qDebug("Decoder: cannot open input");
+        return decoder;
+    } 
+    StreamReader* sreader = qobject_cast<StreamReader *>(input);
+    if(sreader)
+    {
+        fact = Decoder::findByMime(sreader->contentType());
+        if(!fact)
+            fact = Decoder::findByContent(sreader);
+    }
     else
-        fact = Decoder::findFactory(source);
+        fact = Decoder::findByPath(source);
+
     if (fact)
     {
         decoder = fact->create(parent, input, output);
     }
+    if(!decoder)
+        input->close();
+
     return decoder;
 }
 
-DecoderFactory *Decoder::findFactory(const QString& source)
+DecoderFactory *Decoder::findByPath(const QString& source)
 {
     checkFactories();
 
@@ -162,11 +175,11 @@ DecoderFactory *Decoder::findFactory(const QString& source)
             return factories->at(i);
         }
     }
-    qDebug("Decoder: unable to find factory");
+    qDebug("Decoder: unable to find factory by path");
     return 0;
 }
 
-DecoderFactory *Decoder::findByContentType(const QString& type)
+DecoderFactory *Decoder::findByMime(const QString& type)
 {
     checkFactories();
     for (int i=0; i<factories->size(); ++i)
@@ -181,13 +194,29 @@ DecoderFactory *Decoder::findByContentType(const QString& type)
             }
         }
     }
-    qDebug("Decoder: unable to find factory");
+    qDebug("Decoder: unable to find factory by mime");
+    return 0;
+}
+
+DecoderFactory *Decoder::findByContent(QIODevice *input)
+{
+    checkFactories();
+
+    for (int i=0; i<factories->size(); ++i)
+    {
+        if (factories->at(i)->canDecode(input) &&
+                !blacklist.contains(files.at(i).section('/',-1)))
+        {
+            return factories->at(i);
+        }
+    }
+    qDebug("Decoder: unable to find factory by content");
     return 0;
 }
 
 FileTag *Decoder::createTag(const QString& source)
 {
-    DecoderFactory *fact = Decoder::findFactory(source);
+    DecoderFactory *fact = Decoder::findByPath(source);
     if (fact)
     {
         return fact->createTag(source);

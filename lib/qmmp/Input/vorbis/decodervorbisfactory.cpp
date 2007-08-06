@@ -42,8 +42,12 @@ const QString &DecoderVorbisFactory::contentType() const
 
 bool DecoderVorbisFactory::canDecode(QIODevice *input) const
 {
-    static bool c = FALSE;
-    return c;
+    char buf[36];
+    if (input->peek(buf, 36) == 36 && !memcmp(buf, "OggS", 4)
+            && !memcmp(buf + 29, "vorbis", 6))
+        return TRUE;
+
+    return FALSE;
 }
 
 const DecoderProperties &DecoderVorbisFactory::properties() const
