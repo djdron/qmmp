@@ -126,8 +126,9 @@ public:
     static bool supports(const QString &);
     //static void registerFactory(DecoderFactory *);
     static Decoder *create(QObject *, const QString &, QIODevice *, Output *);
-    static DecoderFactory *findFactory(const QString&);
-    static DecoderFactory *findByContentType(const QString&);
+    static DecoderFactory *findByPath(const QString&);
+    static DecoderFactory *findByMime(const QString&);
+    static DecoderFactory *findByContent(QIODevice *);
     static FileTag *createTag(const QString&);
     static QString filter();
     static QStringList nameFilters();

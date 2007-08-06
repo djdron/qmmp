@@ -77,18 +77,20 @@ bool StreamReader::open ( OpenMode mode )
     return TRUE;
 }
 
-qint64 StreamReader::pos () const
+/*qint64 StreamReader::pos () const
 {
     return m_pos;
-}
+}*/
 
 bool StreamReader::reset ()
 {
+    QIODevice::reset();
     return TRUE;
 }
 
 bool StreamReader::seek ( qint64 pos )
 {
+    QIODevice::seek(pos);
     return FALSE;
 }
 
@@ -192,8 +194,6 @@ void StreamReader::fillBuffer()
 
 const QString &StreamReader::contentType()
 {
-    //Downloader* dw = new Downloader(this, "http://127.0.0.1:8000/");
-    m_downloader->start();
     while (m_contentType.isEmpty() && m_downloader->isRunning())
     {
         m_downloader->mutex()->lock ();
@@ -201,8 +201,6 @@ const QString &StreamReader::contentType()
         m_downloader->mutex()->unlock();
         qApp->processEvents();
     }
-    //m_contentType = dw->contentType();
-    m_downloader->abort();
     qDebug("StreamReader: content type: %s", qPrintable(m_contentType));
     return m_contentType;
 }

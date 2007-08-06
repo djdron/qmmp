@@ -1,6 +1,7 @@
 #include <QtGui>
 #include <QDialog>
 #include <QMessageBox>
+#include <mad.h>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/id3v1tag.h>
@@ -24,8 +25,25 @@ bool DecoderMADFactory::supports(const QString &source) const
 
 bool DecoderMADFactory::canDecode(QIODevice *input) const
 {
-    static bool c = FALSE;
-    return c;
+    char buf[16 * 512];
+
+    if (input->peek(buf,sizeof(buf)) == sizeof(buf))
+    {
+        struct mad_stream stream;
+        struct mad_header header;
+        int dec_res;
+
+        mad_stream_init (&stream);
+        mad_header_init (&header);
+        mad_stream_buffer (&stream, (unsigned char *) buf, sizeof(buf));
+        stream.error = MAD_ERROR_NONE;
+
+        while((dec_res = mad_header_decode(&header, &stream)) == -1
+                && MAD_RECOVERABLE(stream.error))
+        ;
+        return dec_res != -1 ? TRUE: FALSE;
+    }
+    return FALSE;
 }
 
 const DecoderProperties &DecoderMADFactory::properties() const

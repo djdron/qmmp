@@ -50,7 +50,7 @@ public:
     void close ();
     bool isSequential () const;
     bool open ( OpenMode mode );
-    qint64 pos () const;
+    //qint64 pos () const;
     bool reset ();
     bool seek ( qint64 pos );
     qint64 size () const;
