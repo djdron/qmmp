@@ -61,11 +61,8 @@ void SettingsDialog::writeSettings()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");
-    if(ui.id3v1EncComboBox->currentIndex() > 0)
-        settings.setValue("ID3v1_encoding", ui.id3v1EncComboBox->currentText());
-    if(ui.id3v2EncComboBox->currentIndex() > 0)
-        settings.setValue("ID3v2_encoding", ui.id3v2EncComboBox->currentText());
-
+    settings.setValue("ID3v1_encoding", ui.id3v1EncComboBox->currentText());
+    settings.setValue("ID3v2_encoding", ui.id3v2EncComboBox->currentText());
     settings.setValue("ID3v1_enable", ui.id3v1CheckBox->isChecked());
     settings.setValue("ID3v2_enable", ui.id3v2CheckBox->isChecked());
     settings.setValue("ID3_version", ui.defTagComboBox->currentIndex()+1);
