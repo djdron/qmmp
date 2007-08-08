@@ -217,7 +217,7 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
 FileTag *Decoder::createTag(const QString& source)
 {
     DecoderFactory *fact = Decoder::findByPath(source);
-    if (fact)
+    if (fact && QFile::exists(source))
     {
         return fact->createTag(source);
     }
