@@ -463,7 +463,8 @@ void DecoderFLAC::seek(double pos)
 
 void DecoderFLAC::deinit()
 {
-    FLAC__stream_decoder_finish (data()->decoder);
+    if(data())
+        FLAC__stream_decoder_finish (data()->decoder);
     inited = user_stop = done = finish = FALSE;
     len = freq = bitrate = 0;
     stat = chan = 0;
