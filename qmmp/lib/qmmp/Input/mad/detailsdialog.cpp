@@ -20,6 +20,8 @@
 #include <QTextCodec>
 #include <QSettings>
 #include <QDir>
+#include <QFile>
+
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/id3v1tag.h>
@@ -39,6 +41,9 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     m_path = path;
     setWindowTitle (path.section('/',-1));
     ui.pathLineEdit->setText(m_path);
+
+    if(!QFile::exists(m_path))
+        return;
 
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");

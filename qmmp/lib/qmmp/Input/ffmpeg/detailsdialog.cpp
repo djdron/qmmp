@@ -23,7 +23,7 @@ extern "C"
 #include <ffmpeg/avformat.h>
 #include <ffmpeg/avcodec.h>
 }
-
+#include <QFile>
 
 #include "detailsdialog.h"
 
@@ -37,8 +37,8 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     path.section('/',-1);
 
     ui.pathLineEdit->setText(m_path);
-    loadInfo();
-
+    if(QFile::exists(m_path))
+        loadInfo();
 }
 
 
@@ -81,7 +81,7 @@ void DetailsDialog::loadInfo()
     ui.bitrateLabel->setText(text+" "+tr("kbps"));
 
     AVCodecContext *c = 0;
-    int wma_idx;
+    uint wma_idx;
 
     for (wma_idx = 0; wma_idx < in->nb_streams; wma_idx++)
     {

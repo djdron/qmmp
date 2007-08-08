@@ -21,6 +21,8 @@
 #include <taglib/fileref.h>
 #include <taglib/mpcfile.h>
 
+#include <QFile>
+
 #include "detailsdialog.h"
 
 DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
@@ -32,9 +34,11 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     setWindowTitle (path.section('/',-1));
     path.section('/',-1);
     ui.pathLineEdit->setText(m_path);
-    loadMPCInfo();
-    loadTag();
-
+    if(QFile::exists(m_path))
+    {
+        loadMPCInfo();
+        loadTag();
+    }
 }
 
 
