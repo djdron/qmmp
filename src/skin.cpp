@@ -248,8 +248,8 @@ void Skin::loadPlayList()
 
     buttons[PL_BT_ADD] = pixmap->copy ( 11,80,25,18 );
     buttons[PL_BT_SUB] = pixmap->copy ( 40,80,25,18 );
-    buttons[PL_BT_SEL] = pixmap->copy ( 69,80,25,18 );
-    buttons[PL_BT_SORT] = pixmap->copy ( 98,80,25,18 );
+    buttons[PL_BT_SEL] = pixmap->copy ( 70,80,25,18 );
+    buttons[PL_BT_SORT] = pixmap->copy ( 99,80,25,18 );
     buttons[PL_BT_LST] = pixmap->copy(229, 80, 25, 18);
     buttons[PL_BT_SCROLL_N] = pixmap->copy ( 52,53,8,18 );
     buttons[PL_BT_SCROLL_P] = pixmap->copy ( 61,53,8,18 );
