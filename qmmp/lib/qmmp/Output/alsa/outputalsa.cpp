@@ -302,7 +302,8 @@ void OutputALSA::run()
                 }
                 else if (m == -EAGAIN)
                 {
-                    usleep(500);
+                    //usleep(500);
+                    snd_pcm_wait(pcm_handle, 500);
                 }
                 else if (m == -EPIPE)
                 {
