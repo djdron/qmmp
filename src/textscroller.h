@@ -46,6 +46,10 @@ private slots:
     void addOffset();
     void updateSkin();
 
+protected:
+    void hideEvent ( QHideEvent *);
+    void showEvent ( QShowEvent *);
+
 private:
     bool m_update;
     static TextScroller *pointer;

@@ -45,7 +45,8 @@ TextScroller::TextScroller ( QWidget *parent )
     readSettings();
     m_timer = new QTimer ( this );
     connect ( m_timer, SIGNAL ( timeout() ),SLOT ( addOffset() ) );
-    m_timer -> start ( 50 );
+    m_timer->setInterval(50);
+    m_timer->start();
     updateSkin();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 }
@@ -102,4 +103,14 @@ void TextScroller::readSettings()
         m_update = TRUE;
         m_metrics = new QFontMetrics(m_font);
     }
+}
+
+void TextScroller::hideEvent ( QHideEvent *)
+{
+    m_timer->stop();
+}
+
+void TextScroller::showEvent ( QShowEvent *)
+{
+    m_timer->start();
 }

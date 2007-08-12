@@ -130,6 +130,10 @@ public:
     void setFrameRate( int newfps );
     int frameRate() const { return fps; }
 
+protected:
+    void hideEvent ( QHideEvent *);
+    void showEvent ( QShowEvent *);
+
 public slots:
 void timeout();
 
