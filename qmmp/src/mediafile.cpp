@@ -51,7 +51,8 @@ MediaFile::MediaFile(QString path)
         //m_title.replace("%c",);
     }
     else
-        m_title = m_path.section('/',-1);
+        m_title = path.startsWith("http://") ? m_path: m_path.section('/',-1);
+
 }
 
 
