@@ -189,6 +189,7 @@ void MainWindow::play()
         case SoundCore::DecoderError:
         {
             //error in decoder, so we should try to play next song
+            qApp->processEvents();
             if (!m_playListModel->isEmptyQueue())
             {
                 m_playListModel->setCurrentToQueued();
