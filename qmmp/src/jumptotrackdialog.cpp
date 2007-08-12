@@ -30,6 +30,7 @@ JumpToTrackDialog::JumpToTrackDialog(QWidget* parent, Qt::WFlags fl)
 : QDialog( parent, fl )
 {
 	setupUi(this);
+	setAttribute(Qt::WA_QuitOnClose, FALSE);
 	m_playListModel = 0;
 	m_listModel = new QStringListModel(this);
 	

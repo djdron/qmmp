@@ -42,6 +42,7 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
         : QDialog( parent, fl )
 {
     setupUi(this);
+    setAttribute(Qt::WA_QuitOnClose, FALSE);
     licenseTextEdit->setPlainText(getstringFromResource(":COPYING"));
     aboutTextEdit->setHtml(getstringFromResource(tr(":/html/about_en.html")));
     authorsTextEdit->setPlainText(getstringFromResource(tr(":/html/authors_en.txt")));

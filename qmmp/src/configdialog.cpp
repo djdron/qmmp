@@ -40,6 +40,7 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
         : QDialog ( parent )
 {
     ui.setupUi ( this );
+    setAttribute(Qt::WA_QuitOnClose, FALSE);
     connect ( ui. contentsWidget,
               SIGNAL ( currentItemChanged ( QListWidgetItem *, QListWidgetItem * ) ),
               this, SLOT ( changePage ( QListWidgetItem *, QListWidgetItem* ) ) );
