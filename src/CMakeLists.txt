@@ -73,6 +73,8 @@ SET(libsrc_SRCS
   aboutdialog.cpp
   timeindicator.cpp
   keyboardmanager.cpp
+  addurldialog.cpp
+  filedialog.cpp
 )
 
 SET(libsrc_MOC_HDRS
@@ -122,6 +124,8 @@ SET(libsrc_MOC_HDRS
   aboutdialog.h
   timeindicator.h
   keyboardmanager.h
+  addurldialog.h
+  filedialog.h
 )
 
 SET(libsrc_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
@@ -139,6 +143,7 @@ SET(libsrc_UIS
   preseteditor.ui
   jumptotrackdialog.ui
   aboutdialog.ui
+  addurldialog.ui
 )
 
 SET(src_FILES
