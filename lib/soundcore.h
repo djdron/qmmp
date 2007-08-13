@@ -158,6 +158,7 @@ private:
     bool m_paused;
     bool m_useEQ;
     bool m_update;
+    bool m_block;
     int m_preamp;
     int m_bands[10];
     Visualization *m_vis;
