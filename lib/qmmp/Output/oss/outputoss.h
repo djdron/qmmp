@@ -1,8 +1,24 @@
-// Copyright (c) 2000-2001 Brad Hughes <bhughes@trolltech.com>
-//
-// Use, modification and distribution is allowed without limitation,
-// warranty, or liability of any kind.
-//
+/***************************************************************************
+ *   Copyright (C) 2007 by Uriy Zhuravlev stalkerg@gmail.com               *
+ *                                                                         *
+ *   Copyright (c) 2000-2001 Brad Hughes bhughes@trolltech.com             *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 
 #ifndef   OUTPUTOSS_H
 #define   OUTPUTOSS_H
@@ -11,15 +27,10 @@ class OutputOSS;
 
 #include <output.h>
 #include <QObject>
-/*
-#if defined( Q_OS_WIN32 )
-#include <dsound.h>
-#include "constants.h"
-#endif
-*/
 
 class OutputOSS : public Output
 {
+Q_OBJECT
 public:
     OutputOSS(QObject * parent = 0);
     virtual ~OutputOSS();
@@ -54,25 +65,11 @@ private:
     long m_totalWritten, m_currentSeconds, m_bps;
     int stat;
     int m_rate, m_frequency, m_channels, m_precision;
-//#if defined(_OS_UNIX_) || defined(Q_OS_UNIX)
+
     bool do_select;
     int m_audio_fd, m_mixer_fd;
     long bl, br;
-
-/*#elif defined( _OS_WIN32_ ) || defined( Q_OS_WIN32 )
-    LPDIRECTSOUND lpds;
-    LPDIRECTSOUNDBUFFER lpdsb;
-    LPDIRECTSOUNDNOTIFY lpdsn;
-    PCMWAVEFORMAT pcmwf;
-    Qt::HANDLE hNotifyEvent;
-    DSBPOSITIONNOTIFY notifies[ BUFFERBLOCKS ];
-    DWORD currentLatency;
-// Not sure we need this
-//   DSCAPS dsCaps;
-//
-//#endif
-*/
 };
 
 
-#endif // __audiooutout_h
+#endif
