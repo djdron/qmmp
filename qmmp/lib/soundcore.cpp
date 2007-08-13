@@ -37,6 +37,7 @@ SoundCore::SoundCore(QObject *parent)
     m_paused = FALSE;
     m_useEQ = FALSE;
     m_update = FALSE;
+    m_block = FALSE;
     m_preamp = 0;
     m_vis = 0;
     for (int i = 1; i < 10; ++i)
@@ -104,12 +105,14 @@ bool SoundCore::play(const QString &source)
 
     if (! m_decoder)
     {
+        m_block = TRUE;
         qDebug ("SoundCore: creating decoder");
         m_decoder = Decoder::create(this, source, m_input, m_output);
 
         if (! m_decoder)
         {
             qWarning("SoundCore: unsupported fileformat");
+            m_block = FALSE;
             stop();
             emit decoderStateChanged(DecoderState(DecoderState::Error));
             return FALSE;
@@ -128,9 +131,11 @@ bool SoundCore::play(const QString &source)
         m_output->start();
         m_decoder->start();
         m_error = NoError;
+        m_block = FALSE;
         return TRUE;
     }
     stop();
+    m_block = FALSE;
     return FALSE;
 }
 
@@ -141,6 +146,8 @@ uint SoundCore::error()
 
 void SoundCore::stop()
 {
+    if(m_block)
+        return;
     m_paused = FALSE;
     if (m_decoder && m_decoder->isRunning())
     {
