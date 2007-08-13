@@ -24,6 +24,8 @@ SET(libqmmp_SRCS
     equ/iir_cfs.c
     equ/iir_fpu.c
     soundcore.cpp
+    streamreader.cpp
+    downloader.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -40,6 +42,8 @@ SET(libqmmp_MOC_HDRS
   equ/iir.h
   decoderfactory.h
   soundcore.h
+  streamreader.h
+  downloader.h
 )
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
@@ -48,6 +52,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 
 ADD_LIBRARY(qmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
-target_link_libraries(qmmp ${QT_LIBRARIES})
+target_link_libraries(qmmp ${QT_LIBRARIES} curl)
 install(TARGETS qmmp LIBRARY DESTINATION lib)
 
