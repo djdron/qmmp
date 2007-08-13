@@ -19,9 +19,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-#include <qobject.h>
-#include <qapplication.h>
+#include <QApplication>
 
 #include "outputoss.h"
 #include "constants.h"
@@ -72,7 +70,6 @@ void OutputOSS::seek(long pos)
     m_currentSeconds = -1;
 }
 
-//#if defined(_OS_UNIX_) || defined(Q_OS_UNIX)
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -80,7 +77,7 @@ void OutputOSS::seek(long pos)
 #include <sys/time.h>
 
 #if defined(__FreeBSD__)
-#    include <machine/soundcard.h>
+#  include <sys/soundcard.h>
 #elif defined(__linux__)
 #  include <linux/soundcard.h>
 #elif defined(__bsdi__)
