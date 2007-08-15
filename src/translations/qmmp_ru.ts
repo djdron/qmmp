@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -198,7 +199,7 @@
     <message>
         <location filename="../configdialog.ui" line="486"/>
         <source>Message delay, ms:</source>
-        <translation>Задержка сообщение, мс:</translation>
+        <translation>Задержка сообщения, мс:</translation>
     </message>
     <message>
         <location filename="../configdialog.ui" line="496"/>
