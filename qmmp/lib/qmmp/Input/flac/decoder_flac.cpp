@@ -24,8 +24,8 @@
 #include "output.h"
 #include "recycler.h"
 
-#include <qobject.h>
-#include <qiodevice.h>
+#include <QObject>
+#include <QIODevice>
 #include <FLAC/all.h>
 #include "decoder_flac.h"
 

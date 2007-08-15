@@ -31,8 +31,12 @@ SymbolDisplay::SymbolDisplay ( QWidget *parent, int digits )
     m_skin = Skin::getPointer();
     connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT (draw()));
     draw();
-    for(int i=0; i<m_digits; ++i)
+    for (int i=0; i<m_digits; ++i)
+#ifdef Q_OS_FREEBSD
+        m_max += 9 * (int) pow(10,i);
+#else
         m_max += 9 * (int) exp10(i);
+#endif
 }
 
 
@@ -79,7 +83,7 @@ void SymbolDisplay::draw()
 
 void SymbolDisplay::display(int val)
 {
-    if(val < m_max)
+    if (val < m_max)
         display(QString::number(val));
     else
         display(QString("%1h").arg(val/100));
