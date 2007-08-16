@@ -89,7 +89,7 @@ ID3Tag::ID3Tag(const QString &source): FileTag(), m_tag(0)
             if (settings.value("ID3v1_enable", TRUE).toBool() &&
                     fileRef.ID3v1Tag())
             {
-                if(fileRef.ID3v1Tag()->isEmpty())
+                if(!fileRef.ID3v1Tag()->isEmpty())
                 {
                     m_tag = fileRef.ID3v1Tag();
                     codec = codec_v1;
