@@ -16,13 +16,12 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
 
 bool DecoderFFmpegFactory::canDecode(QIODevice *input) const
 {
-    static bool c = FALSE;
-    return c;
+    return FALSE;
 }
 
-const DecoderProperties &DecoderFFmpegFactory::properties() const
+const DecoderProperties DecoderFFmpegFactory::properties() const
 {
-    static DecoderProperties properties;
+    DecoderProperties properties;
     properties.name = tr("WMA Files");
     properties.filter = "*.wma *.wav";
     properties.description = tr("WMA Files");
