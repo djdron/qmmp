@@ -15,7 +15,6 @@
 #include <QStringList>
 
 
-#include "fileinfo.h"
 #include "filetag.h"
 
 class QObject;
