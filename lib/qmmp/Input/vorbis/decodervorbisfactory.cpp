@@ -15,31 +15,6 @@ bool DecoderVorbisFactory::supports(const QString &source) const
     return source.right(4).toLower() == ".ogg";
 }
 
-/*const QString &DecoderVorbisFactory::name() const
-{
-    static QString name (tr("Ogg Vorbis Plugin"));
-    return name;
-}
-
-const QString &DecoderVorbisFactory::filter() const
-{
-    static QString filter("*.ogg");
-    return filter;
-}
-
-
-const QString &DecoderVorbisFactory::description() const
-{
-    static QString desc(tr("Ogg Vorbis Files"));
-    return desc;
-}
-
-const QString &DecoderVorbisFactory::contentType() const
-{
-    static QString types("application/ogg;audio/x-vorbis+ogg");
-    return types;
-}*/
-
 bool DecoderVorbisFactory::canDecode(QIODevice *input) const
 {
     char buf[36];
@@ -50,9 +25,9 @@ bool DecoderVorbisFactory::canDecode(QIODevice *input) const
     return FALSE;
 }
 
-const DecoderProperties &DecoderVorbisFactory::properties() const
+const DecoderProperties DecoderVorbisFactory::properties() const
 {
-    static DecoderProperties properties;
+    DecoderProperties properties;
     properties.name = tr("Ogg Vorbis Plugin");
     properties.filter = "*.ogg";
     properties.description = tr("Ogg Vorbis Files");

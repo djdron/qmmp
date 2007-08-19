@@ -18,13 +18,12 @@ bool DecoderFLACFactory::supports(const QString &source) const
 
 bool DecoderFLACFactory::canDecode(QIODevice *input) const
 {
-    static bool c = FALSE;
-    return c;
+    return FALSE;
 }
 
-const DecoderProperties &DecoderFLACFactory::properties() const
+const DecoderProperties DecoderFLACFactory::properties() const
 {
-    static DecoderProperties properties;
+    DecoderProperties properties;
     properties.name = tr("FLAC Plugin");
     properties.filter = "*.flac";
     properties.description = tr("FLAC Files");

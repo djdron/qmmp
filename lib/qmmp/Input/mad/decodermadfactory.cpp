@@ -46,9 +46,9 @@ bool DecoderMADFactory::canDecode(QIODevice *input) const
     return FALSE;
 }
 
-const DecoderProperties &DecoderMADFactory::properties() const
+const DecoderProperties DecoderMADFactory::properties() const
 {
-    static DecoderProperties properties;
+    DecoderProperties properties;
     properties.name = tr("MPEG Plugin");
     properties.filter = "*.mp1 *.mp2 *.mp3";
     properties.description = tr("MPEG Files");

@@ -16,41 +16,14 @@ bool DecoderMPCFactory::supports(const QString &source) const
     return (source.right(4).toLower() == ".mpc");
 }
 
-/*const QString &DecoderMPCFactory::name() const
-{
-    static QString name (tr("Musepack Plugin"));
-    return name;
-}
-
-
-const QString &DecoderMPCFactory::filter() const
-{
-    static QString filter("*.mpc");
-    return filter;
-}
-
-
-const QString &DecoderMPCFactory::description() const
-{
-    static QString desc(tr("Musepack Files"));
-    return desc;
-}
-
-const QString &DecoderMPCFactory::contentType() const
-{
-    static QString types;
-    return types;
-}*/
-
 bool DecoderMPCFactory::canDecode(QIODevice *input) const
 {
-    static bool c = FALSE;
-    return c;
+    return FALSE;
 }
 
-const DecoderProperties &DecoderMPCFactory::properties() const
+const DecoderProperties DecoderMPCFactory::properties() const
 {
-    static DecoderProperties properties;
+    DecoderProperties properties;
     properties.name = tr("Musepack Plugin");
     properties.filter = "*.mpc";
     properties.description = tr("Musepack Files");

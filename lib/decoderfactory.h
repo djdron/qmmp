@@ -50,7 +50,7 @@ public:
     virtual ~DecoderFactory() {}
     virtual bool supports(const QString &source) const = 0;
     virtual bool canDecode(QIODevice *) const = 0;
-    virtual const DecoderProperties &properties() const = 0;
+    virtual const DecoderProperties properties() const = 0;
     virtual Decoder *create(QObject *, QIODevice *, Output *) = 0; 
     virtual FileTag *createTag(const QString &source) = 0;
     virtual void showDetails(QWidget *parent, const QString &path) = 0;
