@@ -20,6 +20,7 @@ SET(libqmmp_SRCS
     recycler.cpp
     decoder.cpp
     output.cpp
+    filetag.cpp
     equ/iir.c
     equ/iir_cfs.c
     equ/iir_fpu.c

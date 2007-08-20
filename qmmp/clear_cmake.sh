@@ -49,3 +49,7 @@ clean
 cd ..
 cd jack 
 clean
+#clean oss
+cd ..
+cd oss
+clean

@@ -61,11 +61,9 @@ SET(libffmpeg_SRCS
   decoder_ffmpeg.cpp
   decoderffmpegfactory.cpp
   detailsdialog.cpp
-  tag.cpp
 )
 
 SET(libffmpeg_MOC_HDRS
-  tag.h
   decoderffmpegfactory.h
   decoder_ffmpeg.h
   detailsdialog.h
