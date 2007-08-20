@@ -54,13 +54,11 @@ SET(libmad_SRCS
   decoder_mad.cpp
   decodermadfactory.cpp
   detailsdialog.cpp
-  id3tag.cpp
   settingsdialog.cpp
 )
 
 SET(libmad_MOC_HDRS
   settingsdialog.h
-  id3tag.h
   decodermadfactory.h
   decoder_mad.h
   detailsdialog.h

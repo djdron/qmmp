@@ -53,11 +53,9 @@ SET(libflac_SRCS
   decoder_flac.cpp
   decoderflacfactory.cpp
   detailsdialog.cpp
-  tag.cpp
 )
 
 SET(libflac_MOC_HDRS
-  tag.h
   decoderflacfactory.h
   decoder_flac.h
   detailsdialog.h

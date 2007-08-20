@@ -64,11 +64,9 @@ SET(libvorbis_SRCS
   decoder_vorbis.cpp
   decodervorbisfactory.cpp
   detailsdialog.cpp
-  tag.cpp
 )
 
 SET(libvorbis_MOC_HDRS
-  tag.h
   decodervorbisfactory.h
   decoder_vorbis.h
   detailsdialog.h

@@ -47,11 +47,9 @@ SET(libmpc_SRCS
   decoder_mpc.cpp
   decodermpcfactory.cpp
   detailsdialog.cpp
-  tag.cpp
 )
 
 SET(libmpc_MOC_HDRS
-  tag.h
   decodermpcfactory.h
   decoder_mpc.h
   detailsdialog.h
