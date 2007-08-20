@@ -275,7 +275,7 @@ void DecoderVorbis::updateTags()
                          + strlen ("title=")));
         else if (!strncasecmp(comments->user_comments[i],
                               "artist=", strlen ("artist=")))
-            tag.setValue(FileTag::TITLE,
+            tag.setValue(FileTag::ARTIST,
                          QString::fromUtf8(comments->user_comments[i]
                                            + strlen ("artist=")));
         else if (!strncasecmp(comments->user_comments[i],
@@ -283,6 +283,15 @@ void DecoderVorbis::updateTags()
             tag.setValue(FileTag::ALBUM,
                          QString::fromUtf8(comments->user_comments[i]
                                            + strlen ("album=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "comment=", strlen ("comment=")))
+            tag.setValue(FileTag::COMMENT,
+                         QString::fromUtf8(comments->user_comments[i]
+                                           + strlen ("comment=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "genre=", strlen ("genre=")))
+            tag.setValue(FileTag::GENRE, QString::fromUtf8 (comments->user_comments[i]
+                         + strlen ("genre=")));
         else if (!strncasecmp(comments->user_comments[i],
                               "tracknumber=",
                               strlen ("tracknumber=")))
@@ -292,7 +301,13 @@ void DecoderVorbis::updateTags()
                               "track=", strlen ("track=")))
             tag.setValue(FileTag::TRACK, atoi (comments->user_comments[i]
                                                + strlen ("track=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "date=", strlen ("date=")))
+            tag.setValue(FileTag::YEAR, atoi (comments->user_comments[i]
+                                               + strlen ("date=")));
+
     }
+    tag.setValue(FileTag::LENGTH, uint(totalTime));
     dispatch(tag);
 }
 
