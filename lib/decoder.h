@@ -40,7 +40,7 @@ public:
         m_type = st.type();
         if (m_type == Info)
             m_tag = new FileTag(*st.tag());
-        if (m_type == Error)
+        else if (m_type == Error)
             m_error_msg = new QString(*st.errorMessage());
     }
 
