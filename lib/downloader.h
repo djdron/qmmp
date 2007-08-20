@@ -38,6 +38,8 @@ struct Stream
     QString content_type;
     bool aborted;
     QMap <QString, QString> header;
+    bool icy_meta_data;
+    int icy_metaint;
 };
 
 class Downloader : public QThread
@@ -56,10 +58,13 @@ public:
     int bytesAvailable();
 
 private:
+    qint64 readBuffer(char* data, qint64 maxlen);
+    void readICYMetaData();
     CURL *m_handle;
     QMutex m_mutex;
     Stream m_stream;
     QString m_url;
+    int m_metacount;
 
 protected:
     void run();
