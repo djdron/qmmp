@@ -157,6 +157,7 @@ bool DecoderFFmpeg::initialize()
     output_bytes = 0;
 
     QString filename = qobject_cast<QFile*>(input())->fileName ();
+    input()->close();
     avcodec_init();
     avcodec_register_all();
     av_register_all();
