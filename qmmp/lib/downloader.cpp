@@ -17,9 +17,11 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "downloader.h"
 
-static int stop;
+#include <QApplication>
+
+
+#include "downloader.h"
 
 //curl callbacks
 static size_t curl_write_data(void *data, size_t size, size_t nmemb,
@@ -52,16 +54,27 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     //qDebug("header received: %s", (char*) data);
     QString str = QString::fromAscii((char *) data, data_size);
     str = str.trimmed ();
-    if (str.left(4).contains("HTTP") || str.left(4).contains("ICY"))
+    if (str.left(4).contains("HTTP"))
     {
         qDebug("Downloader: header received");
+        //TODO open metadata socket
+    }
+    else if (str.left(4).contains("ICY"))
+    {
+        qDebug("Downloader: shoutcast header received");
+        dl->stream()->icy_meta_data = TRUE;
     }
     else
     {
-        QString key = str.left(str.indexOf(":")).trimmed();
-        QString value = str.right(str.size() - str.indexOf(":") - 1).trimmed();
+        QString key = str.left(str.indexOf(":")).trimmed().toLower();
+        QString value = str.right(str.size() - str.indexOf(":") - 1).trimmed().toLower();
         dl->stream()->header.insert(key, value);
         qDebug("Downloader: key=%s, value=%s",qPrintable(key),qPrintable(value));
+
+        if (dl->stream()->icy_meta_data && (key == "icy-metaint"))
+        {
+            dl->stream()->icy_metaint = value.toInt();
+        }
     }
     dl->mutex()->unlock();
     return data_size;
@@ -85,8 +98,11 @@ Downloader::Downloader(QObject *parent, const QString &url)
     curl_global_init(CURL_GLOBAL_ALL);
     m_stream.buf_fill = 0;
     m_stream.buf = 0;
-
+    m_stream.icy_meta_data = FALSE;
     m_stream.aborted = TRUE;
+    m_stream.icy_metaint = 0;
+    m_handle = 0;
+    m_metacount = 0;
 }
 
 
@@ -98,18 +114,36 @@ Downloader::~Downloader()
 
 qint64 Downloader::read(char* data, qint64 maxlen)
 {
+
+    qint64 len = 0;
     m_mutex.lock();
-    if (m_stream.buf_fill>0 && !m_stream.aborted)
+    if (!m_stream.icy_meta_data || m_stream.icy_metaint == 0)
+        len = readBuffer(data, maxlen);
+    else
     {
-        int len = qMin<qint64>(m_stream.buf_fill, maxlen);
-        memcpy(data, m_stream.buf, len);
-        m_stream.buf_fill -= len;
-        memmove(m_stream.buf, m_stream.buf + len, m_stream.buf_fill);
-        m_mutex.unlock();
-        return len;
+        qint64 nread = 0;
+        qint64 to_read;
+        while (maxlen > nread && m_stream.buf_fill > nread)
+        {
+            to_read = qMin<qint64>(m_stream.icy_metaint - m_metacount, maxlen - nread);
+            //to_read = (maxlen - nread);
+            qint64 res = readBuffer(data + nread, to_read);
+            nread += res;
+            m_metacount += res;
+            if (m_metacount == m_stream.icy_metaint)
+            {
+                m_metacount = 0;
+                m_mutex.unlock();
+                readICYMetaData();
+                m_mutex.lock();
+            }
+
+        }
+        len = nread;
+
     }
     m_mutex.unlock();
-    return 0;
+    return len;
 }
 
 Stream *Downloader::stream()
@@ -125,12 +159,8 @@ QMutex *Downloader::mutex()
 QString Downloader::contentType()
 {
     QString content;
-    if (m_stream.header.contains("Content-Type"))
-        content = m_stream.header.value("Content-Type");
-    else if (m_stream.header.contains("content-type"))
+    if (m_stream.header.contains("content-type"))
         content = m_stream.header.value("content-type");
-    else if (m_stream.header.contains("Content-type"))
-        content = m_stream.header.value("Content-type");
     return content;
 }
 
@@ -146,7 +176,11 @@ void Downloader::abort()
     m_stream.aborted = TRUE;
     m_mutex.unlock();
     wait();
-    curl_easy_cleanup(m_handle);
+    if (m_handle)
+    {
+        curl_easy_cleanup(m_handle);
+        m_handle = 0;
+    }
 }
 
 int Downloader::bytesAvailable()
@@ -180,7 +214,7 @@ void Downloader::run()
     curl_easy_setopt(m_handle, CURLOPT_PROGRESSFUNCTION, curl_progress);
     // Any kind of authentication
     curl_easy_setopt(m_handle, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-    curl_easy_setopt(m_handle, CURLOPT_VERBOSE, 1);
+    //curl_easy_setopt(m_handle, CURLOPT_VERBOSE, 1);
     // Auto referrer
     curl_easy_setopt(m_handle, CURLOPT_AUTOREFERER, 1);
     // Follow redirections
@@ -198,7 +232,7 @@ void Downloader::run()
     m_stream.buf = 0;
     m_stream.aborted = FALSE;
     m_stream.header.clear ();
-    int return_code, response;
+    int return_code;
     qDebug("Downloader: starting libcurl");
     m_mutex.unlock();
     return_code = curl_easy_perform(m_handle);
@@ -212,4 +246,43 @@ void Downloader::run()
     m_stream.buf = 0;
     m_mutex.unlock();
     qDebug("Downloader: thread exited");
+}
+
+qint64 Downloader::readBuffer(char* data, qint64 maxlen)
+{
+    if (m_stream.buf_fill > 0 && !m_stream.aborted)
+    {
+        int len = qMin<qint64>(m_stream.buf_fill, maxlen);
+        memcpy(data, m_stream.buf, len);
+        m_stream.buf_fill -= len;
+        memmove(m_stream.buf, m_stream.buf + len, m_stream.buf_fill);
+        return len;
+    }
+    return 0;
+}
+
+void Downloader::readICYMetaData()
+{
+    uint8_t packet_size;
+    m_metacount = 0;
+    m_mutex.lock();
+    readBuffer((char *)&packet_size, sizeof(packet_size));
+    if (packet_size == 0)
+        qDebug("zero");
+    else
+    {
+        int size = packet_size * 16;
+        char packet[size];
+        while(m_stream.buf_fill < size && isRunning())
+        {
+            m_mutex.unlock();
+            qApp->processEvents();
+            m_mutex.lock();
+        }
+        readBuffer(packet, size);
+        qDebug(packet);
+
+    }
+    m_mutex.unlock();
+
 }
