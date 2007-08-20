@@ -17,81 +17,84 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "tag.h"
+#include "filetag.h"
 
-Tag::Tag(const QString &source)
-        : FileTag()
-{
-    m_length = 0;
-    m_year = 0;
-    m_track = 0;
-    m_empty = TRUE;
-    TagLib::FileRef fileRef(source.toLocal8Bit ());
-
-    m_tag = fileRef.tag();
-    if(m_tag && !m_tag->isEmpty())
-    {
-        m_album = QString::fromUtf8(m_tag->album().toCString(TRUE)).trimmed();
-        m_artist = QString::fromUtf8(m_tag->artist().toCString(TRUE)).trimmed();
-        m_comment = QString::fromUtf8(m_tag->comment().toCString(TRUE)).trimmed();
-        m_genre = QString::fromUtf8(m_tag->genre().toCString(TRUE)).trimmed();
-        m_title = QString::fromUtf8(m_tag->title().toCString(TRUE)).trimmed();
-        m_year = 0;
-        m_track = 0;
-        m_empty = FALSE;
-    }
-    else
-        m_tag = 0;
-    if(fileRef.audioProperties())
-        m_length = fileRef.audioProperties()->length();
-}
-
-
-Tag::~Tag()
+FileTag::FileTag()
 {}
 
-
-bool Tag::isEmpty()
+FileTag::FileTag(const FileTag &other)
 {
-    return m_empty;
+    *this = other;
 }
 
-QString Tag::album()
+FileTag::~FileTag()
+{}
+
+void FileTag::operator=(const FileTag &tag)
 {
-    return m_album;
+    setValue(TITLE,tag.title ());
+    setValue(ARTIST,tag.artist ());
+    setValue(ALBUM,tag.album ());
+    setValue(COMMENT,tag.comment ());
+    setValue(GENRE,tag.genre ());
+    setValue(YEAR,tag.year ());
+    setValue(TRACK,tag.track ());
+    setValue(LENGTH,tag.length ());
 }
 
-QString Tag::artist()
+void FileTag::setValue(uint name, const QString &value)
 {
-    return m_artist;
+    if (!value.isEmpty())
+        m_strValues.insert (name, value);
 }
 
-QString Tag::comment()
+void FileTag::setValue(uint name, const uint &value)
 {
-    return m_comment;
+    if (value > 0)
+        m_numValues.insert (name, value);
 }
 
-QString Tag::genre()
+const QString FileTag::title () const
 {
-    return m_genre;
+    return m_strValues[TITLE];
 }
 
-QString Tag::title()
+const QString FileTag::artist () const
 {
-    return m_title;
+    return m_strValues[ARTIST];
 }
 
-uint Tag::length()
+const QString FileTag::album () const
 {
-    return m_length;
+    return m_strValues[ALBUM];
 }
 
-uint Tag::track()
+const QString FileTag::comment () const
 {
-    return m_track;
+    return m_strValues[COMMENT];
 }
 
-uint Tag::year()
+const QString FileTag::genre () const
 {
-    return m_year;
+    return m_strValues[GENRE];
+}
+
+const uint FileTag::year () const
+{
+    return m_numValues[YEAR];
+}
+
+const uint FileTag::track () const
+{
+    return m_numValues[TRACK];
+}
+
+const uint FileTag::length () const
+{
+    return m_numValues[LENGTH];
+}
+
+const bool FileTag::isEmpty () const
+{
+    return m_strValues.isEmpty();
 }

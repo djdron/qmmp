@@ -277,6 +277,11 @@ void Decoder::dispatch(DecoderState::Type st)
     emit stateChanged(DecoderState(st));
 }
 
+void Decoder::dispatch(const FileTag &tag)
+{
+    emit stateChanged(DecoderState(tag));
+}
+
 void Decoder::error(const QString &e)
 {
     emit stateChanged(DecoderState(e));
@@ -322,4 +327,3 @@ void Decoder::setEQ(int bands[10], int preamp)
         set_gain(i,1, 0.03*value+0.000999999*value*value);
     }
 }
-

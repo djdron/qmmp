@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                       *
- *   forkotov02@hotmail.ru                                                     *
+ *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,24 +20,48 @@
 #ifndef FILETAG_H
 #define FILETAG_H
 
-
 #include <QString>
+#include <QMap>
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class FileTag
 {
 public:
-    FileTag() {};
+    FileTag();
+    FileTag(const FileTag &other);
 
-    virtual ~FileTag() {};
-    virtual QString title () = 0;
-    virtual QString artist () = 0;
-    virtual QString album () = 0;
-    virtual QString comment () = 0 ;
-    virtual QString genre () = 0;
-    virtual uint year () = 0;
-    virtual uint track () = 0;
-    virtual uint length () = 0;
-    virtual bool isEmpty () = 0;
+    ~FileTag();
+
+    enum Type
+    {
+        TITLE = 0,
+        ARTIST,
+        ALBUM,
+        COMMENT,
+        GENRE,
+        YEAR,
+        TRACK,
+        LENGTH
+    };
+
+    void operator=(const FileTag &tag);
+    void setValue(uint name, const QString &value);
+    void setValue(uint name, const uint &value);
+    const QString title () const;
+    const QString artist () const;
+    const QString album () const;
+    const QString comment () const;
+    const QString genre () const;
+    const uint year () const;
+    const uint track () const;
+    const uint length () const;
+    const bool isEmpty () const;
+
+private:
+    QMap <uint, QString> m_strValues;
+    QMap <uint, uint> m_numValues;
 
 };
 

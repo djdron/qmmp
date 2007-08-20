@@ -32,26 +32,45 @@ class Visualization;
 class DecoderState
 {
 public:
-    enum Type { Decoding, Stopped, Finished, Error };
+    enum Type { Decoding, Stopped, Finished, Info, Error };
+
+    DecoderState(const DecoderState &st)
+            : m_error_msg(0), m_tag(0)
+    {
+        m_type = st.type();
+        if (m_type == Info)
+            m_tag = new FileTag(*st.tag());
+        if (m_type == Error)
+            m_error_msg = new QString(*st.errorMessage());
+    }
+
 
     DecoderState(Type t)
-            : m_type(t), m_error_msg(0)
+            : m_type(t), m_error_msg(0), m_tag(0)
     {}
 
     DecoderState(const QString &e)
-            : m_type(Error)
+            : m_type(Error), m_tag(0)
     {
         m_error_msg = new QString(e);
     }
 
     DecoderState()
-            : m_type(Stopped), m_error_msg(0)
+            : m_type(Stopped), m_error_msg(0), m_tag(0)
     {}
+
+    DecoderState(const FileTag &tag)
+            : m_type(Info), m_error_msg(0),  m_tag(0)
+    {
+        m_tag = new FileTag(tag);
+    }
 
     ~DecoderState()
     {
         if (m_error_msg)
-           delete m_error_msg;
+            delete m_error_msg;
+        if (m_tag)
+            delete m_tag;
     }
 
     const QString *errorMessage() const
@@ -62,20 +81,25 @@ public:
     {
         return m_type;
     }
+    const FileTag *tag() const
+    {
+        return m_tag;
+    }
 
 private:
     Type m_type;
     const QString *m_error_msg;
+    FileTag *m_tag;
 };
 
 
 
 class Decoder : public QThread
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    Decoder(QObject *parent, DecoderFactory *d, 
-               QIODevice *i, Output *o);
+    Decoder(QObject *parent, DecoderFactory *d,
+            QIODevice *i, Output *o);
     virtual ~Decoder();
 
     // Standard Decoder API
@@ -118,7 +142,10 @@ public:
     }
     ulong produceSound(char *data, ulong output_bytes, ulong bitrate, int nch);
     void setEQ(int bands[10], int preamp);
-    void setEQEnabled(bool on) { m_useEQ = on; };
+    void setEQEnabled(bool on)
+    {
+        m_useEQ = on;
+    };
 
     // static methods
     static QStringList all();
@@ -140,6 +167,7 @@ signals:
 protected:
     void dispatch(DecoderState::Type);
     void dispatch(const DecoderState&);
+    void dispatch(const FileTag&);
     void error(const QString&);
 
 private:
