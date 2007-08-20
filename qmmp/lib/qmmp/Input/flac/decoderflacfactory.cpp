@@ -4,7 +4,6 @@
 
 #include "detailsdialog.h"
 #include "decoder_flac.h"
-#include "tag.h"
 #include "decoderflacfactory.h"
 
 
@@ -41,8 +40,31 @@ Decoder *DecoderFLACFactory::create(QObject *parent, QIODevice *input,
 
 FileTag *DecoderFLACFactory::createTag(const QString &source)
 {
-    FileTag *tag = new Tag(source);
-    return tag;
+    FileTag *ftag = new FileTag();
+
+    TagLib::FileRef fileRef(source.toLocal8Bit ());
+    TagLib::Tag *tag = fileRef.tag();
+
+    if (tag && !tag->isEmpty())
+    {
+        ftag->setValue(FileTag::ALBUM,
+                       QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::ARTIST,
+                       QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::COMMENT,
+                       QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::GENRE,
+                       QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::TITLE,
+                       QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::YEAR, tag->year());
+        ftag->setValue(FileTag::TRACK, tag->track());
+    }
+
+    if (fileRef.audioProperties())
+        ftag->setValue(FileTag::LENGTH, fileRef.audioProperties()->length());
+
+    return ftag;
 }
 
 void DecoderFLACFactory::showDetails(QWidget *parent, const QString &path)

@@ -1,11 +1,9 @@
 FORMS += detailsdialog.ui 
 HEADERS += decodermpcfactory.h \
            decoder_mpc.h \
-	   tag.h \
 	   detailsdialog.h
 SOURCES += decoder_mpc.cpp \
            decodermpcfactory.cpp \
-	   tag.cpp \
 	   detailsdialog.cpp
 DESTDIR = ../
 QMAKE_CLEAN += ../libmpc.so

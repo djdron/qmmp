@@ -8,13 +8,11 @@ FORMS += detailsdialog.ui \
 HEADERS += decodermadfactory.h \
            decoder_mad.h \
            detailsdialog.h \
-           settingsdialog.h \
-           id3tag.h 
+           settingsdialog.h
 SOURCES += decoder_mad.cpp \
            decodermadfactory.cpp \
            detailsdialog.cpp \
-           settingsdialog.cpp \
-           id3tag.cpp 
+           settingsdialog.cpp
 DESTDIR = ../
 QMAKE_CLEAN += ../libmad.so
 INCLUDEPATH += ../../../

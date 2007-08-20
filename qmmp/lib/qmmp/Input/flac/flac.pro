@@ -4,14 +4,12 @@
 # ???? - ??????????:  
 
 FORMS += detailsdialog.ui 
-HEADERS += tag.h \
-	   decoderflacfactory.h \
+HEADERS += decoderflacfactory.h \
            decoder_flac.h \
-           detailsdialog.h 
+           detailsdialog.h
 SOURCES += decoder_flac.cpp \
            decoderflacfactory.cpp \
-           detailsdialog.cpp \
-           tag.cpp 
+           detailsdialog.cpp
 DESTDIR = ../
 QMAKE_CLEAN += ../libflac.so
 INCLUDEPATH += ../../../

@@ -265,7 +265,6 @@ void DecoderVorbis::updateTags()
     vorbis_comment *comments;
 
     FileTag tag;
-    //TODO add all tags
     comments = ov_comment (&oggfile, -1);
     for (i = 0; i < comments->comments; i++)
     {

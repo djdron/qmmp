@@ -1,10 +1,8 @@
 FORMS += detailsdialog.ui 
 HEADERS += decoderffmpegfactory.h \
-           tag.h \
-	   detailsdialog.h \
+           detailsdialog.h \
            decoder_ffmpeg.h
-SOURCES += tag.cpp \
-	   detailsdialog.cpp \
+SOURCES += detailsdialog.cpp \
            decoder_ffmpeg.cpp \
 	   decoderffmpegfactory.cpp
 DESTDIR = ../
