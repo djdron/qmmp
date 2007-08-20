@@ -6,12 +6,10 @@
 FORMS += detailsdialog.ui 
 HEADERS += decodervorbisfactory.h \
            decoder_vorbis.h \
-           detailsdialog.h \
-           tag.h 
+           detailsdialog.h
 SOURCES += decoder_vorbis.cpp \
            decodervorbisfactory.cpp \
-           detailsdialog.cpp \
-           tag.cpp 
+           detailsdialog.cpp
 DESTDIR = ../
 QMAKE_CLEAN += ../libvorbis.so
 INCLUDEPATH += ../../../

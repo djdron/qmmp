@@ -26,7 +26,8 @@ SOURCES += recycler.cpp \
            equ\iir_fpu.c \
            soundcore.cpp \
            streamreader.cpp \
-           downloader.cpp
+           downloader.cpp \
+ filetag.cpp
 
 TARGET = qmmp
 CONFIG += release \

@@ -9,6 +9,7 @@
 #include "buffer.h"
 #include "output.h"
 #include "recycler.h"
+#include "filetag.h"
 
 #include <QObject>
 #include <QIODevice>
@@ -192,7 +193,7 @@ bool DecoderVorbis::initialize()
         if (! input()->open(QIODevice::ReadOnly))
         {
             qWarning(qPrintable("DecoderVorbis: failed to open input. " +
-                    input()->errorString () + "."));
+                                input()->errorString () + "."));
             return FALSE;
         }
     }
@@ -250,12 +251,49 @@ void DecoderVorbis::seek(double pos)
 
 void DecoderVorbis::deinit()
 {
-    if(inited)
+    if (inited)
         ov_clear(&oggfile);
     inited = user_stop = done = finish = FALSE;
     len = freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
+}
+
+void DecoderVorbis::updateTags()
+{
+    int i;
+    vorbis_comment *comments;
+
+    FileTag tag;
+    //TODO add all tags
+    comments = ov_comment (&oggfile, -1);
+    for (i = 0; i < comments->comments; i++)
+    {
+        if (!strncasecmp(comments->user_comments[i], "title=",
+                         strlen ("title=")))
+            tag.setValue(FileTag::TITLE, QString::fromUtf8(comments->user_comments[i]
+                         + strlen ("title=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "artist=", strlen ("artist=")))
+            tag.setValue(FileTag::TITLE,
+                         QString::fromUtf8(comments->user_comments[i]
+                                           + strlen ("artist=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "album=", strlen ("album=")))
+            tag.setValue(FileTag::ALBUM,
+                         QString::fromUtf8(comments->user_comments[i]
+                                           + strlen ("album=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "tracknumber=",
+                              strlen ("tracknumber=")))
+            tag.setValue(FileTag::TRACK, atoi (comments->user_comments[i]
+                                               + strlen ("tracknumber=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "track=", strlen ("track=")))
+            tag.setValue(FileTag::TRACK, atoi (comments->user_comments[i]
+                                               + strlen ("track=")));
+    }
+    dispatch(tag);
 }
 
 void DecoderVorbis::run()
@@ -283,6 +321,7 @@ void DecoderVorbis::run()
     }
 
     int section = 0;
+    int last_section = -1;
 
     while (! done && ! finish)
     {
@@ -297,11 +336,15 @@ void DecoderVorbis::run()
             output_size = long(ov_time_tell(&oggfile)) * long(freq * chan * 2);
         }
         len = -1;
-        while(len < 0)
+        while (len < 0)
         {
             len = ov_read(&oggfile, (char *) (output_buf + output_at), bks, 0, 2, 1,
-                        &section);
+                          &section);
         }
+        if (section != last_section)
+            updateTags();
+        last_section = section;
+
         if (len > 0)
         {
             bitrate = ov_bitrate_instant(&oggfile) / 1000;

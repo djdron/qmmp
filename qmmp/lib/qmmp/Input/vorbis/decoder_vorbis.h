@@ -39,6 +39,8 @@ private:
     void flush(bool = FALSE);
     void deinit();
 
+    void updateTags();
+
     bool inited, user_stop;
     int stat;
 

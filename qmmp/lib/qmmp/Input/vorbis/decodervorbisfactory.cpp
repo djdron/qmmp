@@ -1,10 +1,10 @@
 #include <QtGui>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
+#include <tag.h>
 
 #include "detailsdialog.h"
 #include "decoder_vorbis.h"
-#include "tag.h"
 #include "decodervorbisfactory.h"
 
 
@@ -38,15 +38,38 @@ const DecoderProperties DecoderVorbisFactory::properties() const
 }
 
 Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
-                                   Output *output)
+                                      Output *output)
 {
     return new DecoderVorbis(parent, this, input, output);
 }
 
 FileTag *DecoderVorbisFactory::createTag(const QString &source)
 {
-    FileTag *tag = new Tag(source);
-    return tag;
+    FileTag *ftag = new FileTag();
+
+    TagLib::FileRef fileRef(source.toLocal8Bit ());
+    TagLib::Tag *tag = fileRef.tag();
+
+    if (tag && !tag->isEmpty())
+    {
+        ftag->setValue(FileTag::ALBUM,
+                      QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::ARTIST,
+                      QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::COMMENT,
+                      QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::GENRE,
+                      QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
+        ftag->setValue(FileTag::TITLE,
+                      QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
+        //year - ?;
+        //track - ?;
+    }
+
+    if (fileRef.audioProperties())
+        ftag->setValue(FileTag::LENGTH, fileRef.audioProperties()->length());
+
+    return ftag;
 }
 
 void DecoderVorbisFactory::showDetails(QWidget *parent, const QString &path)
