@@ -36,7 +36,7 @@ public:
     MediaFile(QString);
 
     ~MediaFile();
-    MediaFile &operator=(const MediaFile &other);
+    //MediaFile &operator=(const MediaFile &other);
 
     const QString path()const;
     const QString title()const;
@@ -47,15 +47,19 @@ public:
     bool isSelected()const;
     bool isCurrent();
     void setCurrent(bool);
+    void updateTags(const FileTag*);
 
 
 private:
+    void readMetadata();
     QString m_path;
     QString m_title;
     uint m_year;
     FileTag *m_tag;
     bool m_selected;
     bool m_current;
+    bool m_use_meta;
+    QString m_format;
 
 };
 

@@ -29,30 +29,19 @@ MediaFile::MediaFile(QString path)
     m_selected = FALSE;
     m_current = FALSE;
     m_path = path;
-    m_tag = Decoder::createTag(path);
-    //format
+    m_tag = 0;
+
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    QString format = settings.value("PlayList/title_format", "%p - %t").toString();
-    bool use_meta = settings.value ("PlayList/load_metadata", TRUE).toBool();
-    if (use_meta && m_tag && !m_tag->isEmpty() && !path.startsWith("http://"))
+    m_use_meta = settings.value ("PlayList/load_metadata", TRUE).toBool();
+    //format
+    m_format = settings.value("PlayList/title_format", "%p - %t").toString();
+    if (m_use_meta && !path.startsWith("http://"))
     {
-        m_year = m_tag->year();
-        //m_title = m_tag->artist()+" - "+m_tag->title();
-        m_title = format;
-        m_title.replace("%p",m_tag->artist());
-        m_title.replace("%a",m_tag->album());
-        m_title.replace("%t",m_tag->title());
-        m_title.replace("%n",QString("%1").arg(m_tag->track()));
-        m_title.replace("%g",m_tag->genre ());
-        m_title.replace("%f",m_path.section('/',-1));
-        m_title.replace("%F",m_path);
-        //m_title.replace("%d",);
-        m_title.replace("%y",QString("%1").arg(m_tag->year ()));
-        //m_title.replace("%c",);
+        m_tag = Decoder::createTag(path);
+        readMetadata();
     }
     else
         m_title = path.startsWith("http://") ? m_path: m_path.section('/',-1);
-
 }
 
 
@@ -71,12 +60,12 @@ const QString MediaFile::fileName() const
     return m_path.section('/',-1);
 }
 
-const QString MediaFile::title()const
+const QString MediaFile::title() const
 {
     return m_title;
 }
 
-int MediaFile::length()const
+int MediaFile::length() const
 {
     if (m_tag)
         return m_tag->length();
@@ -89,12 +78,12 @@ void MediaFile::setSelected(bool yes)
     m_selected = yes;
 }
 
-bool MediaFile::isSelected()const
+bool MediaFile::isSelected() const
 {
     return m_selected;
 }
 
-uint MediaFile::year()const
+uint MediaFile::year() const
 {
     return m_year;
 }
@@ -107,4 +96,35 @@ bool MediaFile::isCurrent()
 void MediaFile::setCurrent(bool cur)
 {
     m_current = cur;
+}
+
+void MediaFile::updateTags(const FileTag *tag)
+{
+    if (m_tag)
+    {
+        delete m_tag;
+        m_tag = 0;
+    }
+    if (!tag->isEmpty())
+        m_tag = new FileTag(*tag);
+    readMetadata();
+}
+
+void MediaFile::readMetadata()
+{
+    if (m_use_meta && m_tag && !m_tag->isEmpty())
+    {
+        m_year = m_tag->year();
+        m_title = m_format;
+        m_title.replace("%p",m_tag->artist());
+        m_title.replace("%a",m_tag->album());
+        m_title.replace("%t",m_tag->title());
+        m_title.replace("%n",QString("%1").arg(m_tag->track()));
+        m_title.replace("%g",m_tag->genre ());
+        m_title.replace("%f",m_path.section('/',-1));
+        m_title.replace("%F",m_path);
+        //m_title.replace("%d",);
+        m_title.replace("%y",QString("%1").arg(m_tag->year ()));
+        //m_title.replace("%c",);
+    }
 }

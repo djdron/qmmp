@@ -44,6 +44,7 @@
 #include "aboutdialog.h"
 #include <addurldialog.h>
 #include "filedialog.h"
+#include "listwidget.h"
 
 #define KEY_OFFSET 10
 
@@ -216,7 +217,7 @@ void MainWindow::replay()
 
 void MainWindow::seek(int pos)
 {
-    if(!seeking)
+    if (!seeking)
         m_core->seek(pos);
 }
 
@@ -312,31 +313,31 @@ void MainWindow::showOutputState(const OutputState &st)
     m_playlist->setInfo(st, m_core->length(), m_playListModel->totalLength());
     switch ((int) st.type())
     {
-        case OutputState::Playing:
-        {
-            m_tray->setIcon ( QIcon(":/play.png") );
-            if (m_showMessage && m_playListModel->currentItem())
-                m_tray->showMessage ( tr("Now Playing"),
-                                    m_playListModel->currentItem()->title(),
-                                    QSystemTrayIcon::Information, m_messageDelay );
-            if (m_showToolTip && m_playListModel->currentItem())
-                m_tray->setToolTip (m_playListModel->currentItem()->title());
-            break;
-        }
-        case OutputState::Paused:
-        {
-            m_tray->setIcon ( QIcon(":/pause.png") );
-            break;
-        }
-        case OutputState::Stopped:
-        {
-            m_tray->setIcon ( QIcon(":/stop.png") );
-            break;
-        }
-        case OutputState::Info:
-        {
-            m_elapsed = st.elapsedSeconds();
-        }
+    case OutputState::Playing:
+    {
+        m_tray->setIcon ( QIcon(":/play.png") );
+        if (m_showMessage && m_playListModel->currentItem())
+            m_tray->showMessage ( tr("Now Playing"),
+                                  m_playListModel->currentItem()->title(),
+                                  QSystemTrayIcon::Information, m_messageDelay );
+        if (m_showToolTip && m_playListModel->currentItem())
+            m_tray->setToolTip (m_playListModel->currentItem()->title());
+        break;
+    }
+    case OutputState::Paused:
+    {
+        m_tray->setIcon ( QIcon(":/pause.png") );
+        break;
+    }
+    case OutputState::Stopped:
+    {
+        m_tray->setIcon ( QIcon(":/stop.png") );
+        break;
+    }
+    case OutputState::Info:
+    {
+        m_elapsed = st.elapsedSeconds();
+    }
     }
 
 }
@@ -347,6 +348,22 @@ void MainWindow::showDecoderState(const DecoderState &st)
     case DecoderState::Finished:
     {
         next();
+        break;
+    }
+    case DecoderState::Info:
+    {
+        qDebug("file info:");
+        qDebug("ARTIST = %s", qPrintable(st.tag()->artist()));
+        qDebug("TITLE = %s", qPrintable(st.tag()->title()));
+        qDebug("ALBUM = %s", qPrintable(st.tag()->album()));
+        qDebug("COMMENT = %s", qPrintable(st.tag()->comment()));
+        qDebug("GENRE = %s", qPrintable(st.tag()->genre()));
+        qDebug("YEAR = %d", st.tag()->year());
+        qDebug("TRACK = %d", st.tag()->track());
+        qDebug("LENGTH = %d", st.tag()->length());
+
+        m_playlist->currentItem()->updateTags(st.tag());
+        m_playlist->listWidget()->updateList();
         break;
     }
     }
@@ -373,8 +390,8 @@ void MainWindow::addDir()
         return;
     m_playListModel->addDirectory(s);
     m_lastDir = s+"../";
-*/
-    if(FileDialog::isModal())
+    */
+    if (FileDialog::isModal())
     {
         qWarning("void MainWindow::addDir()");
         QString s = FileDialog::getExistingDirectory(this,tr("Choose a directory"),m_lastDir);
@@ -404,10 +421,10 @@ void MainWindow::addFile()
 
     m_playListModel->addFiles(files);
     m_lastDir = files.at(0);
-*/
+    */
 
 
-    if(FileDialog::isModal())
+    if (FileDialog::isModal())
     {
         QStringList files = FileDialog::getOpenFileNames(
                                 this,
@@ -636,7 +653,7 @@ void MainWindow::loadPlaylist()
         l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        if(FileDialog::isModal())
+        if (FileDialog::isModal())
         {
             //qWarning("Modal");
             QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
@@ -678,7 +695,7 @@ void MainWindow::savePlaylist()
         l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        if(FileDialog::isModal())
+        if (FileDialog::isModal())
         {
             QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
                              m_playlistName + "." + l[0],mask);
@@ -694,7 +711,7 @@ void MainWindow::savePlaylist()
             // For now we'll use default dialog
         {
             QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
-                    m_playlistName + "." + l[0],mask,0,true);
+                             m_playlistName + "." + l[0],mask,0,true);
 
             if (!f_name.isEmpty())
             {
