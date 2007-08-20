@@ -1,8 +1,12 @@
 #include <QtGui>
 
+extern "C"{
+#include <ffmpeg/avformat.h>
+#include <ffmpeg/avcodec.h>
+}
+
 #include "detailsdialog.h"
 #include "decoder_ffmpeg.h"
-#include "tag.h"
 #include "decoderffmpegfactory.h"
 
 
@@ -14,7 +18,7 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
     return (source.right(4).toLower() == ".wma" || source.right(4).toLower() == ".wav");
 }
 
-bool DecoderFFmpegFactory::canDecode(QIODevice *input) const
+bool DecoderFFmpegFactory::canDecode(QIODevice *) const
 {
     return FALSE;
 }
@@ -39,8 +43,25 @@ Decoder *DecoderFFmpegFactory::create(QObject *parent, QIODevice *input,
 
 FileTag *DecoderFFmpegFactory::createTag(const QString &source)
 {
-    FileTag *tag = new Tag(source);
-    return tag;
+    FileTag *ftag = new FileTag();
+    avcodec_init();
+    avcodec_register_all();
+    av_register_all();
+    AVFormatContext *in;
+
+    if (av_open_input_file(&in, source.toLocal8Bit(), NULL,0, NULL) < 0)
+        return ftag;
+    av_find_stream_info(in);
+    ftag->setValue(FileTag::ALBUM, QString::fromUtf8(in->album).trimmed());
+    ftag->setValue(FileTag::ARTIST, QString::fromUtf8(in->author).trimmed());
+    ftag->setValue(FileTag::COMMENT, QString::fromUtf8(in->comment).trimmed());
+    ftag->setValue(FileTag::GENRE, QString::fromUtf8(in->genre).trimmed());
+    ftag->setValue(FileTag::TITLE, QString::fromUtf8(in->title).trimmed());
+    ftag->setValue(FileTag::YEAR, in->year);
+    ftag->setValue(FileTag::TRACK, in->track);
+    ftag->setValue(FileTag::LENGTH ,int(in->duration/AV_TIME_BASE));
+    av_close_input_file(in);
+    return ftag;
 }
 
 void DecoderFFmpegFactory::showDetails(QWidget *parent, const QString &path)

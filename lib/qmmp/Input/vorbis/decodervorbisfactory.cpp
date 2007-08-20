@@ -62,8 +62,8 @@ FileTag *DecoderVorbisFactory::createTag(const QString &source)
                       QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
         ftag->setValue(FileTag::TITLE,
                       QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
-        //year - ?;
-        //track - ?;
+        ftag->setValue(FileTag::YEAR, tag->year());
+        ftag->setValue(FileTag::TRACK, tag->track());
     }
 
     if (fileRef.audioProperties())

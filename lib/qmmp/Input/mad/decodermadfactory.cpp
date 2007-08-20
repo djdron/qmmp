@@ -12,7 +12,6 @@
 #include "detailsdialog.h"
 #include "settingsdialog.h"
 #include "decoder_mad.h"
-#include "id3tag.h"
 #include "decodermadfactory.h"
 
 // DecoderMADFactory
@@ -38,9 +37,9 @@ bool DecoderMADFactory::canDecode(QIODevice *input) const
         mad_stream_buffer (&stream, (unsigned char *) buf, sizeof(buf));
         stream.error = MAD_ERROR_NONE;
 
-        while((dec_res = mad_header_decode(&header, &stream)) == -1
+        while ((dec_res = mad_header_decode(&header, &stream)) == -1
                 && MAD_RECOVERABLE(stream.error))
-        ;
+            ;
         return dec_res != -1 ? TRUE: FALSE;
     }
     return FALSE;
@@ -65,8 +64,95 @@ Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *ou
 
 FileTag *DecoderMADFactory::createTag(const QString &source)
 {
-    FileTag *tag = new ID3Tag(source);
-    return tag;
+    FileTag *ftag = new FileTag();
+    TagLib::Tag *tag = 0;
+    TagLib::MPEG::File fileRef(source.toLocal8Bit ());
+
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.beginGroup("MAD");
+    QTextCodec *codec_v1 =
+        QTextCodec::codecForName(settings.value("ID3v1_encoding","UTF-8" )
+                                 .toByteArray ());
+    QTextCodec *codec_v2 =
+        QTextCodec::codecForName(settings.value("ID3v2_encoding","UTF-8" )
+                                 .toByteArray ());
+    if (!codec_v1)
+        codec_v1 = QTextCodec::codecForName ("UTF-8");
+    if (!codec_v2)
+        codec_v2 = QTextCodec::codecForName ("UTF-8");
+
+    QTextCodec *codec = 0;
+
+    int ver = settings.value("ID3_version", 2).toInt();
+    if (ver == 1 && settings.value("ID3v1_enable", TRUE).toBool() &&
+            fileRef.ID3v1Tag())
+    {
+        tag = fileRef.ID3v1Tag();
+        codec = codec_v1;
+        if (tag->isEmpty())
+        {
+            tag = 0;
+            if (settings.value("ID3v2_enable", TRUE).toBool() &&
+                    fileRef.ID3v2Tag())
+            {
+                if (!fileRef.ID3v2Tag()->isEmpty())
+                {
+                    tag = fileRef.ID3v2Tag();
+                    codec = codec_v2;
+                }
+            }
+        }
+    }
+    else
+        ver = 2;
+    if (ver == 2 && settings.value("ID3v2_enable", TRUE).toBool() &&
+            fileRef.ID3v2Tag())
+    {
+        tag = fileRef.ID3v2Tag();
+        codec = codec_v2;
+        if (tag->isEmpty())
+        {
+            tag = 0;
+            if (settings.value("ID3v1_enable", TRUE).toBool() &&
+                    fileRef.ID3v1Tag())
+            {
+                if (!fileRef.ID3v1Tag()->isEmpty())
+                {
+                    tag = fileRef.ID3v1Tag();
+                    codec = codec_v1;
+                }
+            }
+        }
+    }
+    settings.endGroup();
+
+    if (tag && codec)
+    {
+        bool utf = codec->name ().contains("UTF");
+        TagLib::String album = tag->album();
+        TagLib::String artist = tag->artist();
+        TagLib::String comment = tag->comment();
+        TagLib::String genre = tag->genre();
+        TagLib::String title = tag->title();
+
+        ftag->setValue(FileTag::ALBUM,
+                       codec->toUnicode(album.toCString(utf)).trimmed());
+        ftag->setValue(FileTag::ARTIST,
+                       codec->toUnicode(artist.toCString(utf)).trimmed());
+        ftag->setValue(FileTag::COMMENT,
+                       codec->toUnicode(comment.toCString(utf)).trimmed());
+        ftag->setValue(FileTag::GENRE,
+                       codec->toUnicode(genre.toCString(utf)).trimmed());
+        ftag->setValue(FileTag::TITLE,
+                       codec->toUnicode(title.toCString(utf)).trimmed());
+        ftag->setValue(FileTag::YEAR,
+                       tag->year());
+        ftag->setValue(FileTag::TRACK,
+                       tag->track());
+    }
+    if (fileRef.audioProperties())
+        ftag->setValue(FileTag::LENGTH,fileRef.audioProperties()->length());
+    return ftag;
 }
 
 void DecoderMADFactory::showDetails(QWidget *parent, const QString &path)
