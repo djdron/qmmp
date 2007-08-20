@@ -41,7 +41,7 @@ MediaFile::MediaFile(QString path)
         readMetadata();
     }
     else
-        m_title = path.startsWith("http://") ? m_path: m_path.section('/',-1);
+        m_title = m_path.startsWith("http://") ? m_path: m_path.section('/',-1);
 }
 
 
@@ -127,4 +127,6 @@ void MediaFile::readMetadata()
         m_title.replace("%y",QString("%1").arg(m_tag->year ()));
         //m_title.replace("%c",);
     }
+    else
+        m_title = m_path.startsWith("http://") ? m_path: m_path.section('/',-1);
 }
