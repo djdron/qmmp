@@ -16,3 +16,11 @@ contains(CONFIG, JACK_PLUGIN){
     message(* JACK plugin enabled *)
     message(***********************)
 }
+
+contains(CONFIG, OSS_PLUGIN){
+    SUBDIRS += oss
+    message(**********************)
+    message(* OSS plugin enabled *)
+    message(**********************)
+}
+
