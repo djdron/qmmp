@@ -62,7 +62,6 @@ public:
 private:
     QMap <uint, QString> m_strValues;
     QMap <uint, uint> m_numValues;
-
 };
 
 #endif

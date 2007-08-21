@@ -131,6 +131,8 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
             SLOT(showOutputState(const OutputState&)));
     connect(m_core, SIGNAL(decoderStateChanged(const DecoderState&)),
             SLOT(showDecoderState(const DecoderState&)));
+    connect(m_core, SIGNAL(titleChanged(const QString&)),
+            SLOT(changeTitle(const QString&)));
 
     connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
     updateEQ();
@@ -367,6 +369,12 @@ void MainWindow::showDecoderState(const DecoderState &st)
         break;
     }
     }
+}
+
+void MainWindow::changeTitle(const QString &title)
+{
+    m_playlist->currentItem()->changeTitle(title);
+    m_playlist->listWidget()->updateList();
 }
 
 void MainWindow::closeEvent ( QCloseEvent *)

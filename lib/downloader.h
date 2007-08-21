@@ -56,15 +56,21 @@ public:
     QString contentType();
     void abort();
     int bytesAvailable();
+    const QString& title() const;
+
+signals:
+    void titleChanged ();
 
 private:
     qint64 readBuffer(char* data, qint64 maxlen);
     void readICYMetaData();
+    void parseICYMetaData(char *data);
     CURL *m_handle;
     QMutex m_mutex;
     Stream m_stream;
     QString m_url;
     int m_metacount;
+    QString m_title;
 
 protected:
     void run();
