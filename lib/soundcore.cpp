@@ -248,15 +248,14 @@ void SoundCore::seek(int pos)
     {
         m_output->mutex()->lock ();
         m_output->seek(pos);
-
+        m_output->mutex()->unlock();
         if (m_decoder && m_decoder->isRunning())
         {
             m_decoder->mutex()->lock ();
             m_decoder->seek(pos);
             m_decoder->mutex()->unlock();
         }
-
-        m_output->mutex()->unlock();
+        //m_output->mutex()->unlock();
     }
 }
 
