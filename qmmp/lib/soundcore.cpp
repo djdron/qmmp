@@ -54,11 +54,11 @@ SoundCore::SoundCore(QObject *parent)
 
     QList<OutputFactory*> *outputFactories = Output::outputFactories();
     foreach(OutputFactory* of, *outputFactories)
-        qApp->installTranslator(of->createTranslator(this));
+    qApp->installTranslator(of->createTranslator(this));
 
     QList<DecoderFactory*> *decoderFactories = Decoder::decoderFactories();
     foreach(DecoderFactory* df, *decoderFactories)
-        qApp->installTranslator(df->createTranslator(this));
+    qApp->installTranslator(df->createTranslator(this));
 }
 
 
@@ -73,9 +73,11 @@ bool SoundCore::play(const QString &source)
         m_error = DecoderError;
         return FALSE;
     }
-    if(source.left(4) == "http")
+    if (source.left(4) == "http")
     {
         m_input = new StreamReader(source, this);
+        connect(m_input, SIGNAL(titleChanged(const QString&)),
+                SIGNAL(titleChanged(const QString&)));
     }
     else
         m_input = new QFile(source);
@@ -97,7 +99,7 @@ bool SoundCore::play(const QString &source)
 
     m_error = DecoderError;
 
-    if(m_vis)
+    if (m_vis)
     {
         m_vis->setOutput(m_output);
         m_output->addVisual(m_vis);
@@ -146,7 +148,7 @@ uint SoundCore::error()
 
 void SoundCore::stop()
 {
-    if(m_block)
+    if (m_block)
         return;
     m_paused = FALSE;
     if (m_decoder && m_decoder->isRunning())
@@ -188,7 +190,7 @@ void SoundCore::stop()
     {
         m_output->uninitialize();
     }
-    
+
     //display->setTime(0);
     if (m_decoder)
     {

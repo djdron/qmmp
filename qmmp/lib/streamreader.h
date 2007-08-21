@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QIODevice>
 #include <QUrl>
+
 #define BUFFER_SIZE 524288
 
 class QFileInfo;
@@ -62,24 +63,21 @@ public:
      */
     const QString &contentType();
 
+signals:
+    void titleChanged(const QString&);
+
 protected:
     qint64 readData(char*, qint64);
     qint64 writeData(const char*, qint64);
 
 
 private slots:
-    void downloadFile();
-    void cancelDownload();
-    void httpRequestFinished(int, bool);
-    void updateDataReadProgress(int bytesRead, int totalBytes);
+    void updateTitle();
 
 private:
+    void downloadFile();
     void fillBuffer();
     QUrl m_url;
-    bool m_httpRequestAborted;
-    int m_httpGetId;
-    int m_pos;
-    int m_size;
     QString m_contentType;
     Downloader *m_downloader;
 };

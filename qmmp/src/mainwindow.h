@@ -88,6 +88,7 @@ protected:
 private slots:
     void showOutputState(const OutputState&);
     void showDecoderState(const DecoderState&);
+    void changeTitle(const QString&);
     void clear();
     void startSeek();
     void endSeek();
@@ -98,17 +99,13 @@ private slots:
     void updateEQ();
     void updatePreset();
     void updateSkin();
-    
     void forward();
     void backward();
-
     void jumpToFile();
-
     void toggleVisibility();
     void trayActivated(QSystemTrayIcon::ActivationReason);
     void about();
-	 
-	 void handleCloseRequest();
+    void handleCloseRequest();
 
 private:
     void readSettings();

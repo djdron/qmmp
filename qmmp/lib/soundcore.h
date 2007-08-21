@@ -150,6 +150,14 @@ signals:
     */
     void outputStateChanged(const OutputState& state);
 
+    /*!
+    *  This signal is emited when the title of the stream changes.
+    *  The argument \b title is the new title of the stream.
+    *  Signal emits with the shoutcast server stream only.
+    *  For another servers use decoderStateChanged()
+    */
+    void titleChanged(const QString& title);
+
 private:
     Decoder* m_decoder;
     Output* m_output;

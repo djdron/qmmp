@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QApplication>
-
+#include <QStringList>
 
 #include "downloader.h"
 
@@ -261,15 +261,18 @@ qint64 Downloader::readBuffer(char* data, qint64 maxlen)
     return 0;
 }
 
+const QString &Downloader::title() const
+{
+    return m_title;
+}
+
 void Downloader::readICYMetaData()
 {
     uint8_t packet_size;
     m_metacount = 0;
     m_mutex.lock();
     readBuffer((char *)&packet_size, sizeof(packet_size));
-    if (packet_size == 0)
-        qDebug("zero");
-    else
+    if (packet_size != 0)
     {
         int size = packet_size * 16;
         char packet[size];
@@ -280,9 +283,25 @@ void Downloader::readICYMetaData()
             m_mutex.lock();
         }
         readBuffer(packet, size);
-        qDebug(packet);
-
+        qDebug("Downloader: ICY metadata: %s", packet);
+        parseICYMetaData(packet);
     }
     m_mutex.unlock();
 
+}
+
+void Downloader::parseICYMetaData(char *data)
+{
+    QString str(data);
+    QStringList list(str.split(";", QString::SkipEmptyParts));
+    foreach(QString line, list)
+    {
+        if (line.contains("StreamTitle="))
+        {
+            line = line.right(line.size() - line.indexOf("=") - 1).trimmed();
+            m_title = line.remove("'");
+            emit titleChanged ();
+            break;
+        }
+    }
 }

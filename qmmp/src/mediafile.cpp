@@ -130,3 +130,9 @@ void MediaFile::readMetadata()
     else
         m_title = m_path.startsWith("http://") ? m_path: m_path.section('/',-1);
 }
+
+void MediaFile::changeTitle(const QString &newtitle)
+{
+    m_title = newtitle;
+}
+
