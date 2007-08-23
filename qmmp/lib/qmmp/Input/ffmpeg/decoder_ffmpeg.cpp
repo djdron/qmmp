@@ -42,7 +42,6 @@ DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, QIODevice *i, O
     bks = 0;
     done = FALSE;
     finish = FALSE;
-    len = 0;
     freq = 0;
     bitrate = 0;
     seekTime = -1.0;
@@ -70,7 +69,7 @@ DecoderFFmpeg::~DecoderFFmpeg()
         delete [] output_buf;
     output_buf = 0;
 
-    if(ic)
+    if (ic)
         av_close_input_file(ic);
 }
 
@@ -125,7 +124,7 @@ bool DecoderFFmpeg::initialize()
 {
     bks = blockSize();
     inited = user_stop = done = finish = FALSE;
-    len = freq = bitrate = 0;
+    freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
     seekTime = -1.0;
@@ -213,9 +212,8 @@ void DecoderFFmpeg::seek(double pos)
 
 void DecoderFFmpeg::deinit()
 {
-    //FLAC__stream_decoder_finish (data()->decoder);
     inited = user_stop = done = finish = FALSE;
-    len = freq = bitrate = 0;
+    freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
 }
@@ -225,7 +223,7 @@ void DecoderFFmpeg::run()
 //     mpc_uint32_t vbrAcc = 0;
 //     mpc_uint32_t vbrUpd = 0;
     uint8_t *inbuf_ptr;
-    int out_size, size, len;
+    int out_size, size;
     AVPacket pkt;
 
     mutex()->lock ();
@@ -253,12 +251,12 @@ void DecoderFFmpeg::run()
             timestamp = int64_t(seekTime)*AV_TIME_BASE;
             if (ic->start_time != AV_NOPTS_VALUE)
                 timestamp += ic->start_time;
-            av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_ANY);
+            av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
+            avcodec_flush_buffers(c);
             seekTime = -1.0;
         }
 
         int l = 0;
-        len = 0;
         if (av_read_frame(ic, &pkt) < 0)
         {
             finish = TRUE;
@@ -267,22 +265,22 @@ void DecoderFFmpeg::run()
         size = pkt.size;
         inbuf_ptr = pkt.data;
 
-        len = 0;
         out_size = 0;
         while (size > 0)
         {
-            //mutex()->lock();
             l = avcodec_decode_audio(c, (int16_t *)(wma_outbuf), &out_size, inbuf_ptr, size);
 
+            if(l < 0)
+                goto end;
             ffmpeg_out(out_size);
             size -= l;
             inbuf_ptr += l;
-            if (pkt.data) av_free_packet(&pkt);
-            len = out_size;
+            if (pkt.data) 
+                av_free_packet(&pkt);
         }
         bitrate = c->bit_rate/1024;
 end:
-        if (len == 0 || finish)
+        if (finish)
         {
             flush(TRUE);
 

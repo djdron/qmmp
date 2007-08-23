@@ -68,7 +68,7 @@ private:
 
     unsigned int bks;
     bool done, finish;
-    long len, freq, bitrate;
+    long freq, bitrate;
     int chan;
     unsigned long output_size;
     double totalTime, seekTime;
