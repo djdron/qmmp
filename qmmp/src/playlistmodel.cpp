@@ -26,6 +26,7 @@
 #include <QPluginLoader>
 #include <QApplication>
 #include <QTimer>
+#include <QSettings>
 
 #include <time.h>
 
@@ -102,7 +103,7 @@ MediaFile* PlayListModel::currentItem()
     if ( m_files.isEmpty() )
         return 0;
     else
-        return m_files.at ( m_current );
+        return m_files.at ( qMin(m_files.size() - 1, m_current));
 }
 
 int PlayListModel::currentRow()
@@ -188,16 +189,16 @@ QList <QString> PlayListModel::getTimes ( int b,int l )
 
 bool PlayListModel::isSelected ( int row )
 {
-	if(m_files.count() > row && row >= 0)
-      return m_files.at ( row )->isSelected();
-	
-	return false;
+    if (m_files.count() > row && row >= 0)
+        return m_files.at ( row )->isSelected();
+
+    return false;
 }
 
 void PlayListModel::setSelected ( int row, bool yes )
 {
-	if(m_files.count() > row && row >= 0)
-    	m_files.at ( row )->setSelected ( yes );
+    if (m_files.count() > row && row >= 0)
+        m_files.at ( row )->setSelected ( yes );
 }
 
 void PlayListModel::removeSelected()
@@ -238,7 +239,7 @@ void PlayListModel::removeSelection(bool inverted)
     if (!m_files.isEmpty())
         m_currentItem = m_files.at(m_current);
 
-    if(select_after_delete >= m_files.count())
+    if (select_after_delete >= m_files.count())
         select_after_delete = m_files.count() - 1;
 
     setSelected(select_after_delete,true);
@@ -281,6 +282,9 @@ void PlayListModel::showDetails()
 
 void PlayListModel::readSettings()
 {
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_current = settings.value("Playlist/current",0).toInt();
+
     QFile file ( QDir::homePath() +"/.qmmp/playlist.txt" );
     file.open ( QIODevice::ReadOnly );
 
@@ -296,18 +300,21 @@ void PlayListModel::readSettings()
 
     file.close ();
 
+    if(m_current > files.count() - 1)
+        m_current = 0;
+
     int preload = (files.count() < 100) ? files.count() : 100;
 
     for (int i = 0;i < preload;i++)
-	 {
+    {
         load(new MediaFile(files.takeAt(0)));
-	 }
+    }
 
 
     if (files.isEmpty())
-       return;
+        return;
 
-	 FileLoader* f_loader = createFileLoader();
+    FileLoader* f_loader = createFileLoader();
 
     f_loader->setFilesToLoad(files);
     //f_loader->start(QThread::IdlePriority);
@@ -322,13 +329,15 @@ void PlayListModel::writeSettings()
     foreach ( MediaFile* m, m_files )
     file.write ( m->path().toUtf8 () +"\n" );
     file.close ();
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.setValue("Playlist/current", m_current);
 }
 
 void PlayListModel::addFile(const QString& path)
 {
     if (path.isEmpty ())
         return;
-    if(path.startsWith("http://"))
+    if (path.startsWith("http://"))
         load(new MediaFile(path));
     else if (Decoder::supports(path))
         load(new MediaFile(path));
@@ -528,24 +537,24 @@ void PlayListModel::addToQueue()
     QList<MediaFile*> selected_items = getSelectedItems();
     foreach(MediaFile* file,selected_items)
     {/*
-        if (isQueued(file))
-            m_queued_songs.removeAt(m_queued_songs.indexOf(file));
-        else
-            m_queued_songs.append(file);
-		 */
-		 setQueued(file);
+                if (isQueued(file))
+                    m_queued_songs.removeAt(m_queued_songs.indexOf(file));
+                else
+                    m_queued_songs.append(file);
+                 */
+        setQueued(file);
     }
     emit listChanged();
 }
 
 void PlayListModel::setQueued(MediaFile* file)
 {
-	if (isQueued(file))
-		m_queued_songs.removeAt(m_queued_songs.indexOf(file));
-	else
-		m_queued_songs.append(file);
-	
-	emit listChanged();
+    if (isQueued(file))
+        m_queued_songs.removeAt(m_queued_songs.indexOf(file));
+    else
+        m_queued_songs.append(file);
+
+    emit listChanged();
 }
 
 bool PlayListModel::isQueued(MediaFile* f) const
