@@ -50,10 +50,6 @@ DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, QIODevice *i, O
     output_size = 0;
     ic = 0;
     wma_outbuf = 0;
-
-
-
-
 }
 
 
@@ -331,7 +327,7 @@ void DecoderFFmpeg::ffmpeg_out(int size)
         return;
     int at = 0;
     int to_copy = 0;
-    while (size > 0)
+    while (size > 0 && !user_stop)
     {
         to_copy = qMin(int(globalBufferSize - output_at), int(size) );
         memmove ( (char *) (output_buf + output_at), wma_outbuf + at, to_copy);
