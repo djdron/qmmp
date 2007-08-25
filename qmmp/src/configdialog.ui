@@ -124,6 +124,11 @@
          <iconset resource="images/images.qrc" >:/advanced.png</iconset>
         </property>
        </item>
+       <item>
+        <property name="text" >
+         <string>Connectivity</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item>
@@ -760,6 +765,108 @@
          </item>
         </layout>
        </widget>
+       <widget class="QWidget" name="network" >
+        <layout class="QVBoxLayout" >
+         <item>
+          <widget class="QGroupBox" name="groupBox_5" >
+           <property name="title" >
+            <string>Proxy</string>
+           </property>
+           <property name="flat" >
+            <bool>false</bool>
+           </property>
+           <property name="checkable" >
+            <bool>false</bool>
+           </property>
+           <layout class="QGridLayout" >
+            <item row="0" column="0" colspan="2" >
+             <widget class="QCheckBox" name="enableProxyCheckBox" >
+              <property name="text" >
+               <string>Enable proxy usage</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label_5" >
+              <property name="text" >
+               <string>Proxy host name:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QLineEdit" name="hostLineEdit" />
+            </item>
+            <item row="2" column="0" >
+             <widget class="QLabel" name="label_6" >
+              <property name="text" >
+               <string>Proxy port:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QLineEdit" name="portLineEdit" />
+            </item>
+            <item row="3" column="0" colspan="2" >
+             <widget class="QCheckBox" name="authProxyCheckBox" >
+              <property name="text" >
+               <string>Use authentication with proxy</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" >
+             <widget class="QLabel" name="label_7" >
+              <property name="text" >
+               <string>Proxy user name:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1" >
+             <widget class="QLineEdit" name="proxyUserLineEdit" />
+            </item>
+            <item row="5" column="0" >
+             <widget class="QLabel" name="label_8" >
+              <property name="text" >
+               <string>Proxy password:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1" >
+             <widget class="QLineEdit" name="proxyPasswLineEdit" >
+              <property name="echoMode" >
+               <enum>QLineEdit::Password</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -823,7 +930,7 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>510</x>
+     <x>590</x>
      <y>364</y>
     </hint>
     <hint type="destinationlabel" >
@@ -839,12 +946,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>344</x>
-     <y>66</y>
+     <x>550</x>
+     <y>64</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>177</x>
-     <y>113</y>
+     <x>383</x>
+     <y>118</y>
     </hint>
    </hints>
   </connection>
@@ -909,6 +1016,70 @@
     <hint type="destinationlabel" >
      <x>436</x>
      <y>175</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enableProxyCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>hostLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>305</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>424</x>
+     <y>82</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enableProxyCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>portLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>506</x>
+     <y>56</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>506</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>authProxyCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>proxyUserLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>318</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>326</x>
+     <y>163</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>authProxyCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>proxyPasswLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>264</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>334</x>
+     <y>204</y>
     </hint>
    </hints>
   </connection>

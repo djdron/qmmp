@@ -94,10 +94,26 @@ void ConfigDialog::readSettings()
         settings.value("FileDialog",QtFileDialogFactory::QtFileDialogFactoryName).toString();
 
     int ind = FileDialog::registeredFactories().indexOf(f_dialogName);
-    if(ind != -1)
+    if (ind != -1)
         ui.fileDialogComboBox->setCurrentIndex(ind);
     else
         ui.fileDialogComboBox->setCurrentIndex(0);
+
+    //proxy settings
+    ui.enableProxyCheckBox->setChecked(
+        settings.value ("Proxy/use_proxy", FALSE).toBool());
+    ui.authProxyCheckBox->setChecked(
+        settings.value ("Proxy/authentication", FALSE).toBool());
+
+    ui.hostLineEdit->setText(settings.value("Proxy/host").toString());
+    ui.portLineEdit->setText(settings.value("Proxy/port").toString());
+    ui.proxyUserLineEdit->setText(settings.value("Proxy/user").toString());
+    ui.proxyPasswLineEdit->setText(settings.value("Proxy/passw").toString());
+
+    ui.hostLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
+    ui.portLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
+    ui.proxyUserLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
+    ui.proxyPasswLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
 }
 
 void ConfigDialog::changePage ( QListWidgetItem *current, QListWidgetItem *previous )
@@ -342,6 +358,11 @@ void ConfigDialog::saveSettings()
     settings.setValue ("Tray/show_tooltip", ui.toolTipCheckBox->isChecked());
     settings.setValue ("Tray/hide_on_close",ui.hideToTrayRadioButton->isChecked());
     settings.setValue ("FileDialog", ui.fileDialogComboBox->currentText());
+    settings.setValue ("Proxy/use_proxy", ui.enableProxyCheckBox->isChecked());
+    settings.setValue ("Proxy/authentication", ui.authProxyCheckBox->isChecked());
+    settings.setValue ("Proxy/host",ui.hostLineEdit->text());
+    settings.setValue ("Proxy/port",ui.portLineEdit->text());
+    settings.setValue ("Proxy/user",ui.proxyUserLineEdit->text());
+    settings.setValue ("Proxy/passw",ui.proxyPasswLineEdit->text());
 }
-
 
