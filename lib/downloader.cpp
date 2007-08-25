@@ -20,6 +20,8 @@
 
 #include <QApplication>
 #include <QStringList>
+#include <QSettings>
+#include <QDir>
 
 #include "downloader.h"
 
@@ -195,6 +197,21 @@ void Downloader::run()
 {
     qDebug("Downloader: starting download thread");
     m_handle = curl_easy_init();
+
+    //proxy
+    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    if (settings.value ("Proxy/use_proxy", FALSE).toBool())
+        curl_easy_setopt(m_handle, CURLOPT_PROXY,
+                         (settings.value("Proxy/host").toString()+":"+
+                          settings.value("Proxy/port").toString()).
+                         toLatin1 ().constData ());
+
+    if (settings.value ("Proxy/authentication", FALSE).toBool())
+        curl_easy_setopt(m_handle, CURLOPT_PROXYUSERPWD,
+                         (settings.value("Proxy/user").toString()+":"+
+                          settings.value("Proxy/passw").toString()).
+                         toLatin1 ().constData ());
+
     // Set url to download
     curl_easy_setopt(m_handle, CURLOPT_URL, m_url.toAscii().constData());
     //qDebug("Downloader: url: %s", qPrintable(url));
@@ -276,7 +293,7 @@ void Downloader::readICYMetaData()
     {
         int size = packet_size * 16;
         char packet[size];
-        while(m_stream.buf_fill < size && isRunning())
+        while (m_stream.buf_fill < size && isRunning())
         {
             m_mutex.unlock();
             qApp->processEvents();
