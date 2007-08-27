@@ -17,45 +17,44 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
-#include <QtGui>
+#include <QSettings>
+#include <QDir>
 
 #include "settingsdialog.h"
-#include "outputoss.h"
-#include "outputossfactory.h"
 
-
-const QString& OutputOSSFactory::name() const
+SettingsDialog::SettingsDialog ( QWidget *parent )
+        : QDialog ( parent )
 {
-    static QString name(tr("OSS Plugin"));
-    return name;
+    ui.setupUi ( this );
+    setAttribute ( Qt::WA_DeleteOnClose );
+    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.beginGroup("OSS");
+    ui.lineEdit->insert(settings.value("device","/dev/dsp").toString());
+    ui.lineEdit_2->insert(settings.value("mixer_device","/dev/mixer").toString());
+    ui.bufferSpinBox->setValue(settings.value("buffer_time",500).toInt());
+    ui.periodSpinBox->setValue(settings.value("period_time",100).toInt());
+
+    settings.endGroup();
 }
 
-Output* OutputOSSFactory::create(QObject* parent)
+
+SettingsDialog::~SettingsDialog()
+{}
+
+
+
+void SettingsDialog::writeSettings()
 {
-    return new OutputOSS(parent);
+    qDebug("SettingsDialog (OSS):: writeSettings()");
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.beginGroup("OSS");
+    settings.setValue("device", ui.lineEdit->text());
+    settings.setValue("buffer_time",ui.bufferSpinBox->value());
+    settings.setValue("period_time",ui.periodSpinBox->value());
+    settings.setValue("mixer_device", ui.lineEdit_2->text());
+    settings.endGroup();
+    accept();
 }
 
-void OutputOSSFactory::showSettings(QWidget* parent)
-{
-    SettingsDialog *s = new SettingsDialog(parent);
-    s -> show();
-}
 
-void OutputOSSFactory::showAbout(QWidget *parent)
-{
-QMessageBox::about (parent, tr("About OSS Output Plugin"),
-                        tr("Qmmp OSS Output Plugin")+"\n"+
-                        tr("Writen by: Yuriy Zhuravlev <slalkerg@gmail.com>")+"\n"+
-                        tr("Based on code by:Brad Hughes <bhughes@trolltech.com>"));
-}
-
-QTranslator *OutputOSSFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/oss_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN(OutputOSSFactory)

@@ -17,45 +17,31 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#include <QtGui>
-
-#include "settingsdialog.h"
-#include "outputoss.h"
-#include "outputossfactory.h"
+#include <QDialog>
 
 
-const QString& OutputOSSFactory::name() const
+#include "ui_settingsdialog.h"
+
+/**
+	@author Yuriy Zhuravlev <stalkerg@gmail.com>
+*/
+class SettingsDialog : public QDialog
 {
-    static QString name(tr("OSS Plugin"));
-    return name;
-}
+Q_OBJECT
+public:
+    SettingsDialog(QWidget *parent = 0);
 
-Output* OutputOSSFactory::create(QObject* parent)
-{
-    return new OutputOSS(parent);
-}
+    ~SettingsDialog();
 
-void OutputOSSFactory::showSettings(QWidget* parent)
-{
-    SettingsDialog *s = new SettingsDialog(parent);
-    s -> show();
-}
+private slots:
+    void writeSettings();
 
-void OutputOSSFactory::showAbout(QWidget *parent)
-{
-QMessageBox::about (parent, tr("About OSS Output Plugin"),
-                        tr("Qmmp OSS Output Plugin")+"\n"+
-                        tr("Writen by: Yuriy Zhuravlev <slalkerg@gmail.com>")+"\n"+
-                        tr("Based on code by:Brad Hughes <bhughes@trolltech.com>"));
-}
+private:
+    Ui::SettingsDialog ui;
 
-QTranslator *OutputOSSFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/oss_plugin_") + locale);
-    return translator;
-}
+};
 
-Q_EXPORT_PLUGIN(OutputOSSFactory)
+#endif

@@ -29,6 +29,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <QtGlobal>
+#include <QSettings>
+#include <QDir>
 
 #include <iostream>
 
@@ -93,7 +95,10 @@ OutputOSS::OutputOSS(QObject * parent)
       do_select(TRUE),
       m_audio_fd(-1), m_mixer_fd(-1)
 {
+QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
 m_master = true;
+m_audio_device = settings.value("OSS/device","/dev/dsp").toString();
+m_mixer_device = settings.value("OSS/mixer_device","/dev/mixer").toString();
 openMixer();
 }
 
@@ -249,13 +254,7 @@ void OutputOSS::resetDSP()
 bool OutputOSS::initialize()
 {
     m_inited = m_pause = m_play = m_userStop = FALSE;
-    m_audio_device = "/dev/dsp";
-    m_mixer_device = "/dev/mixer";
-    /*if (!audio_device) {
-        error(QString("AudioOutput: cannot initialize, no device name"));
 
-	return FALSE;
-    }*/
 
     reset();
     if (m_audio_fd < 0)
