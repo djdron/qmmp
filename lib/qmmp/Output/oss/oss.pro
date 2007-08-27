@@ -1,12 +1,13 @@
-
+FORMS += settingsdialog.ui
 
 HEADERS += outputossfactory.h \
-           outputoss.h 
+           outputoss.h \
+	   settingsdialog.h
            
 
 SOURCES += outputossfactory.cpp \
-           outputoss.cpp 
-           
+           outputoss.cpp \ 
+           settingsdialog.cpp
 
 INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../
