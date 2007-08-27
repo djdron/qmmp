@@ -64,7 +64,7 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     else if (str.left(4).contains("ICY"))
     {
         qDebug("Downloader: shoutcast header received");
-        dl->stream()->icy_meta_data = TRUE;
+        //dl->stream()->icy_meta_data = TRUE;
     }
     else
     {
@@ -73,9 +73,10 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
         dl->stream()->header.insert(key, value);
         qDebug("Downloader: key=%s, value=%s",qPrintable(key),qPrintable(value));
 
-        if (dl->stream()->icy_meta_data && (key == "icy-metaint"))
+        if (key == "icy-metaint")
         {
             dl->stream()->icy_metaint = value.toInt();
+            dl->stream()->icy_meta_data = TRUE;
         }
     }
     dl->mutex()->unlock();
@@ -317,7 +318,8 @@ void Downloader::parseICYMetaData(char *data)
         {
             line = line.right(line.size() - line.indexOf("=") - 1).trimmed();
             m_title = line.remove("'");
-            emit titleChanged ();
+            if(!m_title.isEmpty())
+                emit titleChanged ();
             break;
         }
     }
