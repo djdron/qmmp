@@ -136,13 +136,10 @@ void StreamReader::updateTitle()
 
 const QString &StreamReader::contentType()
 {
-    while (m_contentType.isEmpty() && m_downloader->isRunning())
-    {
-        m_downloader->mutex()->lock ();
-        m_contentType = m_downloader->contentType();
-        m_downloader->mutex()->unlock();
-        qApp->processEvents();
-    }
+    m_downloader->mutex()->lock ();
+    m_contentType = m_downloader->contentType();
+    m_downloader->mutex()->unlock();
+    qApp->processEvents();
     qDebug("StreamReader: content type: %s", qPrintable(m_contentType));
     return m_contentType;
 }
