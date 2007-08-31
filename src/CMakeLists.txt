@@ -75,6 +75,7 @@ SET(libsrc_SRCS
   keyboardmanager.cpp
   addurldialog.cpp
   filedialog.cpp
+  skinreader.cpp
 )
 
 SET(libsrc_MOC_HDRS
@@ -126,6 +127,7 @@ SET(libsrc_MOC_HDRS
   keyboardmanager.h
   addurldialog.h
   filedialog.h
+  skinreader.h
 )
 
 SET(libsrc_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)

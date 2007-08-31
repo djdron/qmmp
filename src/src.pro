@@ -9,7 +9,7 @@ FORMS += configdialog.ui \
          preseteditor.ui \
          jumptotrackdialog.ui \
          aboutdialog.ui 
-         
+
 HEADERS += mainwindow.h \
            fileloader.h \
            button.h \
@@ -57,8 +57,8 @@ HEADERS += mainwindow.h \
            timeindicator.h \
            keyboardmanager.h \
            filedialog.h 
-           
-           
+
+
 SOURCES += mainwindow.cpp \
            mp3player.cpp \
            fileloader.cpp \
@@ -105,9 +105,9 @@ SOURCES += mainwindow.cpp \
            timeindicator.cpp \
            keyboardmanager.cpp \
            filedialog.cpp 
-           
-           
-           
+
+
+
 contains(CONFIG,XSPF_PLUGIN){
     message(*********************************************)
     message(*  XSPF support will be compiled as plugin  *)
@@ -141,6 +141,8 @@ script.path = /bin
 target.path = /bin
 INSTALLS += target script
 
-HEADERS += addurldialog.h
-SOURCES += addurldialog.cpp
+HEADERS += addurldialog.h \
+ skinreader.h
+SOURCES += addurldialog.cpp \
+ skinreader.cpp
 FORMS += addurldialog.ui

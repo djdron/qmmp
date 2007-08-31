@@ -35,6 +35,7 @@
 #include "filedialog.h"
 #include "pluginitem.h"
 #include "configdialog.h"
+#include "skinreader.h"
 
 ConfigDialog::ConfigDialog ( QWidget *parent )
         : QDialog ( parent )
@@ -53,6 +54,8 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
     m_skin = Skin::getPointer();
     ui.fileDialogComboBox->insertItems(0,FileDialog::registeredFactories());
     readSettings();
+    SkinReader reader;
+    reader.updateCache();
     loadSkins();
     loadPluginsInfo();
     loadFonts();
@@ -143,6 +146,7 @@ void ConfigDialog::loadSkins()
     m_skinList << fileInfo;
 
     findSkins(QDir::homePath() +"/.qmmp/skins");
+    findSkins(QDir::homePath() +"/.qmmp/cache/skins");
     connect ( ui.listWidget, SIGNAL ( itemClicked ( QListWidgetItem* ) ),
               this, SLOT ( changeSkin() ) );
 }
@@ -150,13 +154,12 @@ void ConfigDialog::loadSkins()
 void ConfigDialog::findSkins(const QString &path)
 {
     QDir dir(path);
-    dir.setFilter ( QDir::Dirs );
+    dir.setFilter ( QDir::Dirs | QDir::NoDotAndDotDot);
     QList <QFileInfo> fileList = dir.entryInfoList();
-    if ( fileList.count() == 2 )
+    if ( fileList.count() == 0 )
         return;
-    for ( int i = 2; i < fileList.size(); ++i )
+    foreach (QFileInfo fileInfo, fileList)
     {
-        QFileInfo fileInfo = fileList.at ( i );
         QPixmap preview = Skin::getPixmap ( "main", QDir ( fileInfo.filePath() ) );
         if ( !preview.isNull() )
         {
