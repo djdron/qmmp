@@ -179,8 +179,18 @@ void Skin::loadPosBar()
     if (!pixmap)
         pixmap = getDummyPixmap("posbar");
 
-    buttons[BT_POSBAR_N] = pixmap->copy ( 248,0,29, pixmap->height());
-    buttons[BT_POSBAR_P] = pixmap->copy ( 278,0,29, pixmap->height());
+    if (pixmap->width() > 249)
+    {
+        buttons[BT_POSBAR_N] = pixmap->copy ( 248,0,29, pixmap->height());
+        buttons[BT_POSBAR_P] = pixmap->copy ( 278,0,29, pixmap->height());
+    }
+    else
+    {
+        QPixmap dummy(29, pixmap->height());
+        dummy.fill(Qt::transparent);
+        buttons[BT_POSBAR_N] = dummy;
+        buttons[BT_POSBAR_P] = dummy;
+    }
     posbar = pixmap->copy ( 0,0,248,pixmap->height() );
     delete pixmap;
 
