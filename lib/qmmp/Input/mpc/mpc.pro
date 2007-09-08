@@ -18,5 +18,10 @@ LIBS += -lqmmp -L/usr/lib -lmpcdec -I/usr/include
 PKGCONFIG += taglib 
 #TRANSLATIONS = translations/mpc_plugin_ru.ts
 #RESOURCES = translations/translations.qrc
-target.path = /lib/qmmp/Input
+
+isEmpty (LIB_DIR){
+LIB_DIR = /lib
+}
+
+target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target

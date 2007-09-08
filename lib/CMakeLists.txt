@@ -51,8 +51,14 @@ QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+SET_DIRECTORY_PROPERTIES(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES config.h)
+
+EXEC_PROGRAM(echo ${CMAKE_CURRENT_BINARY_DIR} ARGS "\"#ifndef CONFIG_H\"" > ./config.h)
+EXEC_PROGRAM(echo ${CMAKE_CURRENT_BINARY_DIR} ARGS "\"#define CONFIG_H\"" >> ./config.h)
+EXEC_PROGRAM(echo ${CMAKE_CURRENT_BINARY_DIR} ARGS "\"#define LIB_DIR \\\"/${LIB_DIR}\\\"\"" >> ./config.h)
+EXEC_PROGRAM(echo ${CMAKE_CURRENT_BINARY_DIR} ARGS "\"#endif\"" >> ./config.h)
+
 
 ADD_LIBRARY(qmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
 target_link_libraries(qmmp ${QT_LIBRARIES} curl)
-install(TARGETS qmmp LIBRARY DESTINATION lib)
-
+install(TARGETS qmmp LIBRARY DESTINATION ${LIB_DIR})

@@ -87,4 +87,4 @@ ADD_LIBRARY(mad SHARED ${libmad_SRCS} ${libmad_MOC_SRCS} ${libmad_UIS_H}
   ${libmad_RCC_SRCS})
 
 target_link_libraries(mad ${QT_LIBRARIES} -lqmmp ${MAD_LINK_FLAGS} ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS mad DESTINATION lib/qmmp/Input)
+install(TARGETS mad DESTINATION ${LIB_DIR}/qmmp/Input)

@@ -93,4 +93,4 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(vorbis SHARED ${libvorbis_SRCS} ${libvorbis_MOC_SRCS} ${libvorbis_UIS_H}
   ${libvorbis_RCC_SRCS})
 target_link_libraries(vorbis ${QT_LIBRARIES} -lqmmp ${VORBIS_LINK_FLAGS} ${VORBISFILE_LINK_FLAGS} ${OGG_LINK_FLAGS} ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS vorbis DESTINATION lib/qmmp/Input)
+install(TARGETS vorbis DESTINATION ${LIB_DIR}/qmmp/Input)

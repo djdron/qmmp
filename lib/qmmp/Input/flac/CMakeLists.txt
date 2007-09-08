@@ -82,5 +82,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(flac SHARED ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_UIS_H}
   ${libflac_RCC_SRCS})
 target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LINK_FLAGS} ${FLAC_CFLAGS} ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS flac DESTINATION lib/qmmp/Input)
+install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input)
 

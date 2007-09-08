@@ -61,5 +61,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(alsa SHARED ${libalsa_SRCS} ${libalsa_MOC_SRCS} ${libalsa_UIS_H}
   ${libalsa_RCC_SRCS})
 target_link_libraries(alsa ${QT_LIBRARIES} -lqmmp -lasound)
-install(TARGETS alsa DESTINATION lib/qmmp/Output)
+install(TARGETS alsa DESTINATION ${LIB_DIR}/qmmp/Output)
 

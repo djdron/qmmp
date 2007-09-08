@@ -70,5 +70,5 @@ QT4_WRAP_CPP(libjack_MOC_SRCS ${libjack_MOC_HDRS})
 
 ADD_LIBRARY(jack SHARED ${libjack_SRCS} ${libjack_MOC_SRCS} ${libjack_RCC_SRCS})
 target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LINK_FLAGS} ${SAMPLERATE_LINK_FLAGS})
-install(TARGETS jack DESTINATION lib/qmmp/Output)
+install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output)
 
