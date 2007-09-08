@@ -57,7 +57,7 @@ static void checkFactories()
 
         QDir pluginsDir (qApp->applicationDirPath());
         pluginsDir.cdUp();
-        pluginsDir.cd("lib/qmmp/Input");
+        pluginsDir.cd("./"LIB_DIR"/qmmp/Input");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

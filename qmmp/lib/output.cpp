@@ -10,6 +10,7 @@
 #include <QApplication>
 #include <QTimer>
 
+#include "constants.h"
 #include "output.h"
 #include "visualization.h"
 
@@ -30,7 +31,7 @@ static void checkFactories()
 
         QDir pluginsDir ( qApp->applicationDirPath() );
         pluginsDir.cdUp();
-        pluginsDir.cd ( "lib/qmmp/Output" );
+        pluginsDir.cd ( "./"LIB_DIR"/qmmp/Output" );
         foreach ( QString fileName, pluginsDir.entryList ( QDir::Files ) )
         {
             QPluginLoader loader ( pluginsDir.absoluteFilePath ( fileName ) );

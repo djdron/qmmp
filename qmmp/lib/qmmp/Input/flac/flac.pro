@@ -23,6 +23,10 @@ LIBS += -lqmmp -L/usr/lib -I/usr/include
 PKGCONFIG += taglib flac
 #TRANSLATIONS = translations/flac_plugin_ru.ts
 #RESOURCES = translations/translations.qrc
-target.path = /lib/qmmp/Input
+
+isEmpty (LIB_DIR){
+LIB_DIR = /lib
+}
+target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
 

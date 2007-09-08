@@ -63,5 +63,5 @@ QT4_WRAP_UI(liboss_UIS_H ${liboss_UIS})
 
 ADD_LIBRARY(oss SHARED ${liboss_SRCS} ${liboss_MOC_SRCS} ${liboss_UIS_H})
 target_link_libraries(oss ${QT_LIBRARIES} -lqmmp )
-install(TARGETS oss DESTINATION lib/qmmp/Output)
+install(TARGETS oss DESTINATION ${LIB_DIR}/qmmp/Output)
 

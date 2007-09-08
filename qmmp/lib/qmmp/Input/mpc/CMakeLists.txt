@@ -76,7 +76,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(mpc SHARED ${libmpc_SRCS} ${libmpc_MOC_SRCS} ${libmpc_UIS_H}
   ${libmpc_RCC_SRCS})
 target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp -lmpcdec ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS mpc DESTINATION lib/qmmp/Input)
+install(TARGETS mpc DESTINATION ${LIB_DIR}/qmmp/Input)
 
 # clean remaining files
 

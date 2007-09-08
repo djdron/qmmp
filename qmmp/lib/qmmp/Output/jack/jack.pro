@@ -22,5 +22,10 @@ LIBS += -lqmmp
 PKGCONFIG += jack samplerate
 #TRANSLATIONS = translations/jack_plugin_ru.ts
 #RESOURCES = translations/translations.qrc
-target.path = /lib/qmmp/Output
+
+isEmpty (LIB_DIR){
+LIB_DIR = /lib
+}
+
+target.path = $$LIB_DIR/qmmp/Output
 INSTALLS += target

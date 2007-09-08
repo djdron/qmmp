@@ -90,5 +90,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(ffmpeg SHARED ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS})
 target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${LIBAVCODEC_LINK_FLAGS} ${LIBAVFORMAT_LINK_FLAGS} ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS ffmpeg DESTINATION lib/qmmp/Input)
+install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input)
 
