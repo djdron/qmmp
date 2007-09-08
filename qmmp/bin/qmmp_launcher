@@ -5,4 +5,4 @@ printf '\nSetting LD_LIBRARY_PATH to '$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 printf '\n'$LD_LIBRARY_PATH
 printf '\n'
-exec $MYDIR/qmmp.real "$@"
+exec $MYDIR/qmmp "$@"

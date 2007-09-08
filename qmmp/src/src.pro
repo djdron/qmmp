@@ -122,7 +122,7 @@ contains(CONFIG,XSPF_PLUGIN){
 }
 
 QT += network
-TARGET = ../bin/qmmp.real
+TARGET = ../bin/qmmp
 CONFIG += thread release \
 warn_on
 QMAKE_LIBDIR += ../lib
@@ -135,11 +135,9 @@ RESOURCES = images/images.qrc \
 #TRANSLATIONS = translations/qmmp_ru.ts \
 #	       translations/qmmp_tr.ts \
 #	       translations/qmmp_zh_CN.ts
-TEMPLATE = app
-script.files += ../bin/qmmp
-script.path = /bin 
+TEMPLATE = app 
 target.path = /bin
-INSTALLS += target script
+INSTALLS += target
 
 HEADERS += addurldialog.h \
  skinreader.h
