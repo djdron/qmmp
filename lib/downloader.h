@@ -27,8 +27,10 @@
 
 #include <curl/curl.h>
 
+#define BUFFER_SIZE 128000 
+
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
 struct Stream
@@ -44,7 +46,7 @@ struct Stream
 
 class Downloader : public QThread
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     Downloader(QObject *parent, const QString &url);
 
@@ -57,9 +59,12 @@ public:
     void abort();
     int bytesAvailable();
     const QString& title() const;
+    void checkBuffer();
+    bool isReady();
 
 signals:
-    void titleChanged ();
+    void titleChanged();
+    void readyRead();
 
 private:
     qint64 readBuffer(char* data, qint64 maxlen);
@@ -71,6 +76,7 @@ private:
     QString m_url;
     int m_metacount;
     QString m_title;
+    bool m_ready;
 
 protected:
     void run();

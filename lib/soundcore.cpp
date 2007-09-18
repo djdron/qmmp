@@ -78,6 +78,7 @@ bool SoundCore::play(const QString &source)
         m_input = new StreamReader(source, this);
         connect(m_input, SIGNAL(titleChanged(const QString&)),
                 SIGNAL(titleChanged(const QString&)));
+        connect(m_input, SIGNAL(readyRead()),SLOT(decode()));
     }
     else
         m_input = new QFile(source);
@@ -93,6 +94,7 @@ bool SoundCore::play(const QString &source)
         }
         connect(m_output, SIGNAL(stateChanged(const OutputState&)),
                 SIGNAL(outputStateChanged(const OutputState&)));
+        connect(m_input, SIGNAL(readyRead()),SLOT(read()));
     }
     if (! m_output->initialize())
         return FALSE;
@@ -104,41 +106,13 @@ bool SoundCore::play(const QString &source)
         m_vis->setOutput(m_output);
         m_output->addVisual(m_vis);
     }
+    m_source = source;
+    if (source.left(4) != "http")
+        return decode();
+    else
+        qobject_cast<StreamReader *>(m_input)->downloadFile();
+    return TRUE;
 
-    if (! m_decoder)
-    {
-        m_block = TRUE;
-        qDebug ("SoundCore: creating decoder");
-        m_decoder = Decoder::create(this, source, m_input, m_output);
-
-        if (! m_decoder)
-        {
-            qWarning("SoundCore: unsupported fileformat");
-            m_block = FALSE;
-            stop();
-            emit decoderStateChanged(DecoderState(DecoderState::Error));
-            return FALSE;
-        }
-        qDebug ("ok");
-        m_decoder->setBlockSize(globalBlockSize);
-        connect(m_decoder, SIGNAL(stateChanged(const DecoderState&)),
-                SIGNAL(decoderStateChanged(const DecoderState&)));
-        setEQ(m_bands, m_preamp);
-        setEQEnabled(m_useEQ);
-    }
-    qDebug("SoundCore: decoder was created successfully");
-
-    if (m_decoder->initialize())
-    {
-        m_output->start();
-        m_decoder->start();
-        m_error = NoError;
-        m_block = FALSE;
-        return TRUE;
-    }
-    stop();
-    m_block = FALSE;
-    return FALSE;
 }
 
 uint SoundCore::error()
@@ -157,7 +131,6 @@ void SoundCore::stop()
         m_decoder->stop();
         m_decoder->mutex()->unlock();
     }
-
     if (m_output)
     {
         m_output->mutex()->lock ();
@@ -172,20 +145,16 @@ void SoundCore::stop()
         m_decoder->cond()->wakeAll();
         m_decoder->mutex()->unlock();
     }
-
     if (m_output)
     {
         m_output->recycler()->mutex()->lock ();
         m_output->recycler()->cond()->wakeAll();
         m_output->recycler()->mutex()->unlock();
     }
-
     if (m_decoder)
         m_decoder->wait();
-
     if (m_output)
         m_output->wait();
-
     if (m_output && m_output->isInitialized())
     {
         m_output->uninitialize();
@@ -323,4 +292,42 @@ void SoundCore::updateConfig()
 void SoundCore::addVisualization(Visualization *visual)
 {
     m_vis = visual;
+}
+
+bool SoundCore::decode()
+{
+    if (! m_decoder)
+    {
+        m_block = TRUE;
+        qDebug ("SoundCore: creating decoder");
+        m_decoder = Decoder::create(this, m_source, m_input, m_output);
+
+        if (! m_decoder)
+        {
+            qWarning("SoundCore: unsupported fileformat");
+            m_block = FALSE;
+            stop();
+            emit decoderStateChanged(DecoderState(DecoderState::Error));
+            return FALSE;
+        }
+        qDebug ("ok");
+        m_decoder->setBlockSize(globalBlockSize);
+        connect(m_decoder, SIGNAL(stateChanged(const DecoderState&)),
+                SIGNAL(decoderStateChanged(const DecoderState&)));
+        setEQ(m_bands, m_preamp);
+        setEQEnabled(m_useEQ);
+    }
+    qDebug("SoundCore: decoder was created successfully");
+
+    if (m_decoder->initialize())
+    {
+        m_output->start();
+        m_decoder->start();
+        m_error = NoError;
+        m_block = FALSE;
+        return TRUE;
+    }
+    stop();
+    m_block = FALSE;
+    return FALSE;
 }

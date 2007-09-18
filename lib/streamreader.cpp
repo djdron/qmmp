@@ -28,6 +28,7 @@ StreamReader::StreamReader(const QString &name, QObject *parent)
 {
     m_downloader = new Downloader(this, name);
     connect(m_downloader, SIGNAL(titleChanged()),SLOT(updateTitle()));
+    connect(m_downloader, SIGNAL(readyRead()), SIGNAL(readyRead()));
 }
 
 StreamReader::~StreamReader()
@@ -70,9 +71,9 @@ bool StreamReader::open ( OpenMode mode )
 {
     if (mode != QIODevice::ReadOnly)
         return FALSE;
-    downloadFile();
+    //downloadFile();
     setOpenMode(QIODevice::ReadOnly);
-    if (m_downloader->isRunning())
+    if (m_downloader->isRunning() && m_downloader->isReady())
         return TRUE;
     else
         return FALSE;
@@ -119,14 +120,7 @@ qint64 StreamReader::writeData(const char*, qint64)
 
 void StreamReader::downloadFile()
 {
-    qDebug("StreamReader: buffering...");
     m_downloader->start();
-    while (m_downloader->bytesAvailable () < BUFFER_SIZE*0.5 && m_downloader->isRunning ())
-    {
-        qApp->processEvents();
-        //sleep(1);
-    }
-    qDebug("StreamReader: ready");
 }
 
 void StreamReader::updateTitle()
