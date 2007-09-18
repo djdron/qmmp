@@ -24,8 +24,6 @@
 #include <QIODevice>
 #include <QUrl>
 
-#define BUFFER_SIZE 524288
-
 class QFileInfo;
 
 class Downloader;
@@ -62,9 +60,11 @@ public:
      *  returns content type of a stream
      */
     const QString &contentType();
+    void downloadFile();
 
 signals:
     void titleChanged(const QString&);
+    void readyRead();
 
 protected:
     qint64 readData(char*, qint64);
@@ -75,7 +75,7 @@ private slots:
     void updateTitle();
 
 private:
-    void downloadFile();
+    //void downloadFile();
     void fillBuffer();
     QUrl m_url;
     QString m_contentType;

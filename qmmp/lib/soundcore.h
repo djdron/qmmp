@@ -20,7 +20,9 @@
 #ifndef SOUNDCORE_H
 #define SOUNDCORE_H
 
+
 #include <QObject>
+#include <QString>
 
 #include "decoder.h"
 #include "output.h"
@@ -158,6 +160,9 @@ signals:
     */
     void titleChanged(const QString& title);
 
+private slots:
+    bool decode();
+
 private:
     Decoder* m_decoder;
     Output* m_output;
@@ -170,6 +175,7 @@ private:
     int m_preamp;
     int m_bands[10];
     Visualization *m_vis;
+    QString m_source;
 };
 
 #endif

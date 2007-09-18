@@ -38,6 +38,7 @@ static size_t curl_write_data(void *data, size_t size, size_t nmemb,
     dl->stream()->buf = (char *)realloc (dl->stream()->buf, dl->stream()->buf_fill);
     memcpy (dl->stream()->buf + buf_start, data, data_size);
     dl->mutex()->unlock();
+    dl->checkBuffer();
     return data_size;
 }
 
@@ -232,7 +233,7 @@ void Downloader::run()
     curl_easy_setopt(m_handle, CURLOPT_PROGRESSFUNCTION, curl_progress);
     // Any kind of authentication
     curl_easy_setopt(m_handle, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-    //curl_easy_setopt(m_handle, CURLOPT_VERBOSE, 1);
+    curl_easy_setopt(m_handle, CURLOPT_VERBOSE, 1);
     // Auto referrer
     curl_easy_setopt(m_handle, CURLOPT_AUTOREFERER, 1);
     // Follow redirections
@@ -250,6 +251,7 @@ void Downloader::run()
     m_stream.buf = 0;
     m_stream.aborted = FALSE;
     m_stream.header.clear ();
+    m_ready  = FALSE;
     int return_code;
     qDebug("Downloader: starting libcurl");
     m_mutex.unlock();
@@ -282,6 +284,22 @@ qint64 Downloader::readBuffer(char* data, qint64 maxlen)
 const QString &Downloader::title() const
 {
     return m_title;
+}
+
+void Downloader::checkBuffer()
+{
+    if(m_stream.buf_fill > BUFFER_SIZE && !m_ready)
+    {
+        m_ready  = TRUE;
+        qDebug("Downloader: ready");
+        emit readyRead();
+    }
+
+}
+
+bool Downloader::isReady()
+{
+    return m_ready;
 }
 
 void Downloader::readICYMetaData()
