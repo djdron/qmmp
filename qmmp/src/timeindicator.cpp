@@ -34,6 +34,7 @@ TimeIndicator::TimeIndicator ( QWidget *parent )
     readSettings();
     m_needToShowTime = false;
     updateSkin();
+    reset();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 }
 
