@@ -28,7 +28,7 @@ TimeIndicator::TimeIndicator ( QWidget *parent )
         : PixmapWidget ( parent )
 {
     m_skin = Skin::getPointer();
-    m_pixmap = QPixmap ( 65,20 );
+    m_pixmap = QPixmap ( 65,13 );
     m_elapsed = true;
     m_time = m_songDuration = 0;
     readSettings();
