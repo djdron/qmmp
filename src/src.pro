@@ -47,16 +47,15 @@ HEADERS += mainwindow.h \
            playlistformat.h \
            playlistcontrol.h \
            version.h \
-           tcpserver.h \
            qmmpstarter.h \
-           guard.h \
            eqpreset.h \
            preseteditor.h \
            jumptotrackdialog.h \
            aboutdialog.h \
            timeindicator.h \
            keyboardmanager.h \
-           filedialog.h 
+           filedialog.h \
+	   unixdomainsocket.h
 
 
 SOURCES += mainwindow.cpp \
@@ -96,15 +95,14 @@ SOURCES += mainwindow.cpp \
 	   playlistformat.cpp \
 	   playlistcontrol.cpp \
 	   qmmpstarter.cpp \
-	   tcpserver.cpp \
-	   guard.cpp \
            eqpreset.cpp \
            preseteditor.cpp \
 	   jumptotrackdialog.cpp \
 	   aboutdialog.cpp \
            timeindicator.cpp \
            keyboardmanager.cpp \
-           filedialog.cpp 
+           filedialog.cpp \
+	   unixdomainsocket.cpp
 
 
 

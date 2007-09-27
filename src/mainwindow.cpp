@@ -39,7 +39,6 @@
 #include "eqwidget.h"
 #include "mainvisual.h"
 #include  "playlistformat.h"
-#include "tcpserver.h"
 #include "jumptotrackdialog.h"
 #include "aboutdialog.h"
 #include <addurldialog.h>
@@ -137,10 +136,6 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
     connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
     updateEQ();
     updateSkin();
-
-    // Starting the TcpServer
-
-    new TcpServer(this);
 
     FileDialog::registerBuiltinFactories();
     FileDialog::registerExternalFactories();
@@ -764,9 +759,17 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
             else if (str == "--pause")
                 pause();
             else if (str == "--next")
+            {
                 next();
+                if(!m_core->isInitialized())
+                    play();
+            }
             else if (str == "--previous")
+            {
                 previous();
+                if(!m_core->isInitialized())
+                    play();
+            }
             else if (str == "--play-pause")
                 playPause();
             else
@@ -781,8 +784,6 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
                     full_path_list << s;
                 else
                     full_path_list << cwd + "/" + s;
-                //qWarning("Current working dir: %s",qPrintable(workingDir));
-                //qWarning("Full path to play: %s",qPrintable(workingDir + "/" + s));
             }
             setFileList(full_path_list);
         }
