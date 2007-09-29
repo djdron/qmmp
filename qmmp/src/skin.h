@@ -111,9 +111,9 @@ public:
     {
         return m_pledit_txt[c];
     };
-    const QColor getVisBarColor(int n) const
+    const QColor getVisColor(int n) const
     {
-        return m_vis_bars[n];
+        return m_vis_colors[n];
     };
     const QRegion getMWRegion() const
     {
@@ -123,10 +123,14 @@ public:
     {
         return m_plRegion;
     };
+    const QColor scrollerTextColor() const
+    {
+        return m_scroller_color;
+    };
 
     enum Buttons
     {
-        BT_PREVIOUS_N,
+        BT_PREVIOUS_N = 0,
         BT_PREVIOUS_P,
         BT_PLAY_N,
         BT_PLAY_P,
@@ -206,14 +210,14 @@ public:
     };
     enum TitleBar
     {
-        TITLEBAR_A,
+        TITLEBAR_A = 0,
         TITLEBAR_I,
         STATUSBAR_A,
         STATUSBAR_I
     };
     enum PlayList
     {
-        PL_CORNER_UL_A,
+        PL_CORNER_UL_A = 0,
         PL_CORNER_UL_I,
         PL_CORNER_UR_A,
         PL_CORNER_UR_I,
@@ -233,25 +237,24 @@ public:
     };
     enum Equalizer
     {
-        EQ_MAIN,
+        EQ_MAIN = 0,
         EQ_TITLEBAR_A,
         EQ_TITLEBAR_I,
         EQ_GRAPH,
     };
     enum MonoSter
     {
-        MONO_A,
+        MONO_A = 0,
         MONO_I,
         STEREO_A,
         STEREO_I,
     };
     enum OtherParts
     {
-        PLAY,
+        PLAY = 0,
         PAUSE,
         STOP,
     };
-
 signals:
     void skinChanged();
 
@@ -275,6 +278,7 @@ private:
     QMap<uint, QPixmap> m_parts;
     QMap<QChar, QPixmap> m_letters;
     QMap<QByteArray, QByteArray> m_pledit_txt;
+    QColor m_scroller_color;
     QPixmap m_main;
     QPixmap posbar;
     QList<QPixmap> m_numbers;
@@ -282,7 +286,7 @@ private:
     QList<QPixmap> m_eq_spline;
     QList<QPixmap> m_volume;
     QList<QPixmap> m_balance;
-    QList<QColor> m_vis_bars;
+    QList<QColor> m_vis_colors;
     QRegion m_mwRegion;
     QRegion m_plRegion;
 
@@ -301,6 +305,7 @@ private:
     void loadVolume();
     void loadBalance();
     void loadRegion();
+    void loadColors();
     QRegion createRegion(const QString &path, const QString &key);
 
 };

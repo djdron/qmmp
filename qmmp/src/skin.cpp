@@ -22,11 +22,9 @@
 #include <QSettings>
 #include <QPainter>
 #include <QPolygon>
+#include <QImage>
 
 #include "skin.h"
-
-
-
 
 Skin *Skin::pointer = 0;
 
@@ -96,12 +94,14 @@ void Skin::setSkin ( const QString& path )
     m_eq_bar.clear();
     m_eq_spline.clear();
     loadEqMain();
+    m_vis_colors.clear();
     loadVisColor();
     loadLetters();
     loadMonoSter();
     loadVolume();
     loadBalance();
     loadRegion();
+    loadColors();
 
     emit skinChanged();
 }
@@ -370,7 +370,7 @@ void Skin::loadEqMain()
 
 void Skin::loadVisColor()
 {
-    QList <QColor> colors;
+    //QList <QColor> colors;
     m_skin_dir.setFilter ( QDir::Files | QDir::Hidden | QDir::NoSymLinks );
     QString path;
     QFileInfoList list = m_skin_dir.entryInfoList();
@@ -413,23 +413,19 @@ void Skin::loadVisColor()
             int r = list.at ( 0 ).toInt();
             int g = list.at ( 1 ).toInt();
             int b = list.at ( 2 ).toInt();
-            colors << QColor ( r,g,b );
+            m_vis_colors << QColor ( r,g,b );
         }
         else if ( line.length() == 0 )
         {
             break;
         }
     }
-    if ( colors.size() <24 )
+    if (m_vis_colors.size() < 24)
     {
         qWarning ( "Skin: cannot parse viscolor.txt" );
-        while ( colors.size() <24 )
-            colors << QColor ( 0,0,0 );
+        while (m_vis_colors.size() < 24)
+            m_vis_colors << QColor (0,0,0);
     }
-    m_vis_bars.clear();
-    for ( j = 17; j > 1; --j )
-        m_vis_bars << colors.at ( j );
-
 }
 
 void Skin::loadShufRep()
@@ -465,7 +461,7 @@ void Skin::loadShufRep()
 
 }
 
-void Skin::loadLetters ( void )
+void Skin::loadLetters( void )
 {
     QPixmap *img = getPixmap("text");
 
@@ -705,3 +701,30 @@ QPixmap * Skin::getDummyPixmap(const QString& name)
     return 0;
 }
 
+void Skin::loadColors()
+{
+    //extract color from image
+    QPixmap pix =  m_letters['*'];
+    QImage img = pix.toImage();
+    img = img.convertToFormat(QImage::Format_Indexed8);
+
+    QPixmap pix2 = m_letters[' '];
+    QImage img2 = pix2.toImage();
+    img2 = img2.convertToFormat(QImage::Format_Indexed8);
+    QVector<QRgb> c1 = img.colorTable ();
+    QVector<QRgb> c2 = img2.colorTable ();
+    //qDebug("%d -- %d", img.numColors (), img2.numColors ());
+    QColor color;
+    color.setNamedColor(getPLValue("normal"));
+
+    for (int i = 0; i < c1.size(); ++i)
+    {
+        if (c2.indexOf(c1[i]) == -1)
+        {
+            if(img.numColors () == img2.numColors () + 1)
+                color = QColor(c1[i]);
+            break;
+        }
+    }
+    m_scroller_color = color;
+}
