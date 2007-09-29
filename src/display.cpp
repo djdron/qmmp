@@ -78,8 +78,8 @@ MainDisplay::MainDisplay ( QWidget *parent )
     posbar = new PositionBar ( this );
     posbar->move ( 16,72 );
     //connect(posbar, SIGNAL(sliderMoved(int)), SLOT(setTime(int)));
-    MainVisual* vis = new MainVisual ( this,"" );
-    vis->setGeometry ( 24,39,75,20 );
+    MainVisual* vis = new MainVisual (this);
+    vis->move(24,39);
     vis->show();
 
     m_eqButton = new ToggleButton ( this,Skin::BT_EQ_ON_N,Skin::BT_EQ_ON_P,

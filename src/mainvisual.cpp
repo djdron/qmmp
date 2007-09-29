@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,10 +20,14 @@
 #include <QTimer>
 #include <QSettings>
 #include <QPainter>
+#include <QMenu>
+#include <QActionGroup>
+
 #include <buffer.h>
 #include <constants.h>
 #include <output.h>
 #include <math.h>
+#include <stdlib.h>
 
 #include "skin.h"
 #include "fft.h"
@@ -40,89 +44,62 @@ MainVisual *MainVisual::getPointer()
     return pointer;
 }
 
-MainVisual::MainVisual ( QWidget *parent, const char *name )
-        : QWidget ( parent ), vis ( 0 ), playing ( FALSE ), fps ( 20 )
+MainVisual::MainVisual ( QWidget *parent)
+        : QWidget ( parent ), m_vis ( 0 ), m_playing ( FALSE ), m_fps ( 20 )
 {
-    //setVisual(new MonoScope);
-    setVisual ( new StereoAnalyzer );
-    timer = new QTimer ( this );
-    connect ( timer, SIGNAL ( timeout() ), this, SLOT ( timeout() ) );
-    timer->setInterval ( 1000 / fps );
-    timer->start();
-    nodes.clear();
+    m_transparent = FALSE;
+    m_draw = TRUE;
+    m_skin = Skin::getPointer();
+    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSettings()));
+    resize(75,20);
+    m_pixmap = QPixmap (75,20);
+    m_timer = new QTimer (this);
+    connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
+    m_nodes.clear();
+    createMenu();
+    readSettings();
     pointer = this;
-
 }
 
 MainVisual::~MainVisual()
 {
-    delete vis;
-    vis = 0;
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    if (m_vis)
+    {
+        settings.setValue("Visualization/type",m_vis->name());
+        delete m_vis;
+        m_vis = 0;
+    }
+    else
+        settings.setValue("Visualization/type", "None");
+    settings.setValue("Visualization/rate", 1000/m_timer->interval());
 }
 
-/*void MainVisual::setVisual( const QString &visualname )
+void MainVisual::setVisual (VisualBase *newvis)
 {
-    VisualBase *newvis = 0;
-
-    if ( visualname == "Mono Scope" )
-   newvis = new MonoScope;
-    else if (visualname == "Stereo Scope" )
-   newvis = new StereoScope;
-#ifdef FFTW
-    else if ( visualname == "Mono Analyzer" )
-   newvis = new MonoAnalyzer;
-    else if ( visualname == "Stereo Analyzer" )
-   newvis =  new StereoAnalyzer;
-    else if ( visualname == "Mono Topograph" )
-   newvis = new MonoTopograph;
-    else if ( visualname == "Stereo Topograph" )
-   newvis = new StereoTopograph;
-    else if ( visualname == "Stereo Spectroscope" )
-   newvis = new StereoSpectroscope;
-    else if ( visualname == "Mono Spectroscope" )
-   newvis = new MonoSpectroscope;
-#endif // FFTW
-
-    setVisual( newvis );
-}*/
-
-void MainVisual::setVisual ( VisualBase *newvis )
-{
-    //delete vis;
-
-    vis = newvis;
-    if ( vis )
-        vis->resize ( size() );
-
-    // force an update
-    //timer->stop();
-//     timer->start( 1000 / fps );
-}
-
-void MainVisual::configChanged ( QSettings &settings )
-{
-    /*QString newvis = settings.readEntry( "/MQ3/Visual/mode", "Mono Analyzer" );
-    setVisual( newvis );*/
-
-    //fps = settings.readNumEntry("/MQ3/Visual/frameRate", 20);
-    fps = 20;
-    timer->stop();
-    timer->start ( 1000 / fps );
-    if ( vis )
-        vis->configChanged ( settings );
+    m_timer->stop();
+    if (m_vis)
+        delete m_vis;
+    m_vis = newvis;
+    if (m_vis)
+        m_timer->start();
+    else
+    {
+        m_pixmap.fill (Qt::transparent);
+        update();
+    }
 }
 
 void MainVisual::prepare()
 {
-    //nodes.setAutoDelete(TRUE);
-    nodes.clear();  //TODO memory leak??
-    //nodes.setAutoDelete(FALSE);
+    while (!m_nodes.isEmpty())
+        delete m_nodes.takeFirst();
 }
 
 void MainVisual::add ( Buffer *b, unsigned long w, int c, int p )
 {
-    if(!timer->isActive ())
-        return; 
+    if (!m_timer->isActive () || !m_vis)
+        return;
     long len = b->nbytes, cnt;
     short *l = 0, *r = 0;
 
@@ -130,7 +107,6 @@ void MainVisual::add ( Buffer *b, unsigned long w, int c, int p )
     len /= ( p / 8 );
     if ( len > 512 )
         len = 512;
-    //len = 512;
     cnt = len;
 
     if ( c == 2 )
@@ -155,7 +131,7 @@ void MainVisual::add ( Buffer *b, unsigned long w, int c, int p )
     else
         len = 0;
 
-    nodes.append ( new VisualNode ( l, r, len, w ) );
+    m_nodes.append ( new VisualNode ( l, r, len, w ) );
 }
 
 void MainVisual::timeout()
@@ -173,15 +149,15 @@ void MainVisual::timeout()
 
         mutex()->lock ();
         VisualNode *prev = 0;
-        while ( ( !nodes.isEmpty() ) )
+        while ((!m_nodes.isEmpty()))
         {
-            node = nodes.first();
+            node = m_nodes.first();
             /*if ( node->offset > synctime )
                break;*/
 
             if ( prev )
                 delete prev;
-            nodes.removeFirst();
+            m_nodes.removeFirst();
 
             prev = node;
 
@@ -191,584 +167,318 @@ void MainVisual::timeout()
     }
 
     bool stop = TRUE;
-    if ( vis )
-        stop = vis->process ( node );
+    if ( m_vis )
+        stop = m_vis->process ( node );
     delete node;
 
-    if ( vis )
+    if ( m_vis )
     {
-        pixmap.fill ( Qt::transparent );
-        QPainter p ( &pixmap );
-        //vis->draw( &p, backgroundColor() );
-        vis->draw ( &p, "Green" );
+        if (m_draw)
+            drawBackGround();
+        m_draw = FALSE;
+        m_pixmap = m_bg;
+        QPainter p(&m_pixmap);
+        m_vis->draw (&p);
     }
     else
-        //pixmap.fill( backgroundColor() );
-        pixmap.fill ( "Red" );
-    //bitBlt(this, 0, 0, &pixmap);
-//     QPainter painter(this);
-//     painter.drawPixmap(0,0,pixmap);
+        m_pixmap.fill("Red");
     update();
-    /*if (! playing && stop)
-    timer->stop();*/
 }
 
 void MainVisual::paintEvent ( QPaintEvent * )
 {
-    //bitBlt(this, 0, 0, &pixmap);
     QPainter painter ( this );
-    painter.drawPixmap ( 0,0,pixmap );
-}
-
-void MainVisual::resizeEvent ( QResizeEvent *event )
-{
-    pixmap = QPixmap ( event->size() );
-    /*pixmap.resize(event->size());
-    pixmap.fill(backgroundColor());
-    QWidget::resizeEvent( event );*/
-    if ( vis )
-        vis->resize ( size() );
-}
-
-/*void MainVisual::customEvent(QCustomEvent *event)
-{
-    switch (event->type()) {
-    case OutputEvent::Playing:
-   playing = TRUE;
-   // fall through intended
-
-    case OutputEvent::Info:
-    case OutputEvent::Buffering:
-    case OutputEvent::Paused:
-   if (! timer->isActive())
-       timer->start(1000 / fps);
-
-   break;
-
-    case OutputEvent::Stopped:
-    case OutputEvent::Error:
-   playing = FALSE;
-   break;
-
-    default:
-   ;
-    }
-}*/
-
-QStringList MainVisual::visuals()
-{
-    QStringList list;
-    list << "Stereo Scope";
-    list << "Mono Scope";
-#ifdef FFTW
-    list << "Stereo Analyzer";
-    list << "Mono Analyzer";
-    list << "Stereo Topograph";
-    list << "Mono Topograph";
-    list << "Stereo Spectroscope";
-    list << "Mono Spectroscope";
-#endif // FFTW
-
-    return list;
+    painter.drawPixmap ( 0,0,m_pixmap );
 }
 
 void MainVisual::hideEvent ( QHideEvent *)
 {
-    timer->stop();
+    m_timer->stop();
 }
 
 void MainVisual::showEvent ( QShowEvent *)
 {
-    timer->start();
+    if (m_vis)
+        m_timer->start();
 }
 
-MonoScope::MonoScope()
-{}
-
-MonoScope::~MonoScope()
-{}
-
-bool MonoScope::process ( VisualNode *node )
+void MainVisual::mousePressEvent (QMouseEvent *e)
 {
-    bool allZero = TRUE;
-    int i;
-    long s, index, indexTo, step = 512 / size.width();
-    double *magnitudesp = magnitudes.data();
-    double val, tmp;
-
-    if ( node )
-    {
-
-        index = 0;
-        for ( i = 0; i < size.width(); i++ )
-        {
-            indexTo = index + step;
-
-            if ( rubberband )
-            {
-                val = magnitudesp[ i ];
-                if ( val < 0. )
-                {
-                    val += falloff;
-                    if ( val > 0. )
-                        val = 0.;
-                }
-                else
-                {
-                    val -= falloff;
-                    if ( val < 0. )
-                        val = 0.;
-                }
-            }
-            else
-                val = 0.;
-
-            for ( s = index; s < indexTo && s < node->length; s++ )
-            {
-                tmp = ( double ( node->left[s] ) +
-                        ( node->right ? double ( node->right[s] ) : 0 ) *
-                        double ( size.height() / 2 ) ) / 65536.;
-                if ( tmp > 0 )
-                    val = ( tmp > val ) ? tmp : val;
-                else
-                    val = ( tmp < val ) ? tmp : val;
-            }
-
-            if ( val != 0. )
-                allZero = FALSE;
-            magnitudesp[ i ] = val;
-            index = indexTo;
-        }
-    }
-    else if ( rubberband )
-    {
-        for ( i = 0; i < size.width(); i++ )
-        {
-            val = magnitudesp[ i ];
-            if ( val < 0 )
-            {
-                val += 2;
-                if ( val > 0. )
-                    val = 0.;
-            }
-            else
-            {
-                val -= 2;
-                if ( val < 0. )
-                    val = 0.;
-            }
-
-            if ( val != 0. )
-                allZero = FALSE;
-            magnitudesp[ i ] = val;
-        }
-    }
+    if (e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
     else
     {
-        for ( i = 0; i < size.width(); i++ )
-            magnitudesp[ i ] = 0.;
-    }
+        if (!m_vis)
+            setVisual(new Analyzer);
+        else if (m_vis->name() == "Analyzer")
+            setVisual(new Scope);
+        else if (m_vis->name() == "Scope")
+            setVisual(0);
 
-    return allZero;
-}
-
-void MonoScope::draw ( QPainter *p, const QColor &back )
-{
-    double *magnitudesp = magnitudes.data();
-    double r, g, b, per;
-
-    p->fillRect ( 0, 0, size.width(), size.height(), back );
-    for ( int i = 1; i < size.width(); i++ )
-    {
-        per = double ( magnitudesp[ i ] ) /
-              double ( size.height() / 4 );
-        if ( per < 0.0 )
-            per = -per;
-        if ( per > 1.0 )
-            per = 1.0;
-        else if ( per < 0.0 )
-            per = 0.0;
-
-        r = startColor.red() + ( targetColor.red() -
-                                 startColor.red() ) * ( per * per );
-        g = startColor.green() + ( targetColor.green() -
-                                   startColor.green() ) * ( per * per );
-        b = startColor.blue() + ( targetColor.blue() -
-                                  startColor.blue() ) * ( per * per );
-
-        if ( r > 255.0 )
-            r = 255.0;
-        else if ( r < 0.0 )
-            r = 0;
-
-        if ( g > 255.0 )
-            g = 255.0;
-        else if ( g < 0.0 )
-            g = 0;
-
-        if ( b > 255.0 )
-            b = 255.0;
-        else if ( b < 0.0 )
-            b = 0;
-
-        p->setPen ( QColor ( int ( r ), int ( g ), int ( b ) ) );
-        p->drawLine ( i - 1, size.height() / 2 + int ( magnitudesp[ i - 1 ] ),
-                      i, int ( size.height() / 2 + magnitudesp[ i ] ) );
-        //qDebug("draw %d", int(magnitudesp[ i ]));
-    }
-}
-
-StereoScope::StereoScope()
-        : rubberband ( true ), falloff ( 1.0 ), fps ( 20 )
-{
-    startColor = Qt::white;
-
-    /*val = settings.readEntry("/MQ3/Scope/targetColor");
-    if (! val.isEmpty())
-    targetColor = QColor(val);
-    else*/
-    targetColor = Qt::red;
-}
-
-StereoScope::~StereoScope()
-{}
-
-void StereoScope::resize ( const QSize &newsize )
-{
-    size = newsize;
-
-    uint os = magnitudes.size();
-    magnitudes.resize ( size.width() * 2 );
-    for ( ; os < magnitudes.size(); os++ )
-        magnitudes[os] = 0.0;
-}
-
-void StereoScope::configChanged ( QSettings &settings )
-{
-    QString val;
-
-    // need the framerate for the fall off speed
-    //fps = settings.readNumEntry("/MQ3/Visual/frameRate", 20);
-    fps = 20;
-    /*val = settings.readEntry("/MQ3/Scope/startColor");
-    if (! val.isEmpty())
-        startColor = QColor(val);
-    else*/
-    startColor = Qt::green;
-
-    /*val = settings.readEntry("/MQ3/Scope/targetColor");
-    if (! val.isEmpty())
-    targetColor = QColor(val);
-    else*/
-    targetColor = Qt::red;
-
-    //rubberband = settings.readBoolEntry( "/MQ3/Scope/enableRubberBand", true );
-    rubberband = TRUE;
-    //val = settings.readEntry( "/MQ3/Scope/fallOffSpeed", "Normal" );
-    val == "Normal";
-    if ( val == "Slow" )
-        falloff = .125;
-    else if ( val == "Fast" )
-        falloff = .5;
-    else
-        falloff = .25;
-
-    falloff *= ( 80. / double ( fps ) );
-
-    resize ( size );
-}
-
-bool StereoScope::process ( VisualNode *node )
-{
-    bool allZero = TRUE;
-    int i;
-    long s, index, indexTo, step = 256 / size.width();
-    double *magnitudesp = magnitudes.data();
-    double valL, valR, tmpL, tmpR;
-
-    if ( node )
-    {
-        index = 0;
-        for ( i = 0; i < size.width(); i++ )
+        QString str = "Off";
+        if (m_vis)
+            str = m_vis->name();
+        foreach(QAction *act, m_visModeGroup->actions ())
+        if (str == act->data().toString())
         {
-            indexTo = index + step;
-
-            if ( rubberband )
-            {
-                valL = magnitudesp[ i ];
-                valR = magnitudesp[ i + size.width() ];
-                if ( valL < 0. )
-                {
-                    valL += falloff;
-                    if ( valL > 0. )
-                        valL = 0.;
-                }
-                else
-                {
-                    valL -= falloff;
-                    if ( valL < 0. )
-                        valL = 0.;
-                }
-                if ( valR < 0. )
-                {
-                    valR += falloff;
-                    if ( valR > 0. )
-                        valR = 0.;
-                }
-                else
-                {
-                    valR -= falloff;
-                    if ( valR < 0. )
-                        valR = 0.;
-                }
-            }
-            else
-                valL = valR = 0.;
-
-            for ( s = index; s < indexTo && s < node->length; s++ )
-            {
-                tmpL = ( ( node->left ?
-                           double ( node->left[s] ) : 0. ) *
-                         double ( size.height() / 4 ) ) / 32768.;
-                tmpR = ( ( node->right ?
-                           double ( node->right[s] ) : 0. ) *
-                         double ( size.height() / 4 ) ) / 32768.;
-                if ( tmpL > 0 )
-                    valL = ( tmpL > valL ) ? tmpL : valL;
-                else
-                    valL = ( tmpL < valL ) ? tmpL : valL;
-                if ( tmpR > 0 )
-                    valR = ( tmpR > valR ) ? tmpR : valR;
-                else
-                    valR = ( tmpR < valR ) ? tmpR : valR;
-            }
-
-            if ( valL != 0. || valR != 0. )
-                allZero = FALSE;
-
-            magnitudesp[ i ] = valL;
-            magnitudesp[ i + size.width() ] = valR;
-
-            index = indexTo;
+            act->setChecked(TRUE);
+            break;
         }
     }
-    else if ( rubberband )
+}
+
+void MainVisual::drawBackGround()
+{
+    m_bg = QPixmap (75,20);
+    if (m_transparent)
     {
-        for ( i = 0; i < size.width(); i++ )
+        m_bg.fill(Qt::transparent);
+        return;
+    }
+    QPainter painter(&m_bg);
+    for (int x = 0; x < 75; x += 2)
+    {
+        painter.setPen(m_skin->getVisColor(0));
+        painter.drawLine(x + 1, 0, x + 1, 20);
+        for (int y = 0; y < 20; y +=2)
         {
-            valL = magnitudesp[ i ];
-            if ( valL < 0 )
-            {
-                valL += 2;
-                if ( valL > 0. )
-                    valL = 0.;
-            }
-            else
-            {
-                valL -= 2;
-                if ( valL < 0. )
-                    valL = 0.;
-            }
-
-            valR = magnitudesp[ i + size.width() ];
-            if ( valR < 0. )
-            {
-                valR += falloff;
-                if ( valR > 0. )
-                    valR = 0.;
-            }
-            else
-            {
-                valR -= falloff;
-                if ( valR < 0. )
-                    valR = 0.;
-            }
-
-            if ( valL != 0. || valR != 0. )
-                allZero = FALSE;
-
-            magnitudesp[ i ] = valL;
-            magnitudesp[ i + size.width() ] = valR;
+            painter.setPen(m_skin->getVisColor(0));
+            painter.drawPoint(x,y);
+            painter.setPen(m_skin->getVisColor(1));
+            painter.drawPoint(x,y + 1);
         }
     }
+}
+
+void MainVisual::updateSettings()
+{
+    drawBackGround();
+    m_pixmap = m_bg;
+    update();
+    QAction *act = m_fpsGroup->checkedAction ();
+    if (act)
+        m_timer->setInterval (1000/act->data().toInt());
     else
-    {
-        for ( i = 0; ( unsigned ) i < magnitudes.size(); i++ )
-            magnitudesp[ i ] = 0.;
-    }
+        m_timer->setInterval (40);
 
-    return allZero;
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    act = m_peaksFalloffGroup->checkedAction ();
+    if (act)
+        settings.setValue("Visualization/peaks_falloff", act->data().toInt());
+    else
+        settings.setValue("Visualization/peaks_falloff", 3);
+
+    act = m_analyzerFalloffGroup->checkedAction ();
+    if (act)
+        settings.setValue("Visualization/analyzer_falloff", act->data().toInt());
+    else
+        settings.setValue("Visualization/analyzer_falloff", 3);
+
+    settings.setValue("Visualization/show_peaks", m_peaksAction->isChecked());
+
+    act = m_analyzerModeGroup->checkedAction();
+    if (act)
+        settings.setValue("Visualization/analyzer_mode", act->data().toInt());
+    else
+        settings.setValue("Visualization/analyzer_mode", 0);
+
+    act = m_analyzerTypeGroup->checkedAction();
+    if (act)
+        settings.setValue("Visualization/analyzer_type", act->data().toInt());
+    else
+        settings.setValue("Visualization/analyzer_type", 1);
+
+    act = m_visModeGroup->checkedAction ();
+    QString visName;
+    if (act)
+        visName = act->data().toString();
+    else
+        visName == "Off";
+
+    if (visName == "Analyzer")
+        setVisual(new Analyzer);
+    else if (visName == "Scope")
+        setVisual(new Scope);
+    else
+        setVisual(0);
+
 }
 
-void StereoScope::draw ( QPainter *p, const QColor &back )
+void MainVisual::createMenu()
 {
-    double *magnitudesp = magnitudes.data();
-    double r, g, b, per;
-
-    p->fillRect ( 0, 0, size.width(), size.height(), back );
-    for ( int i = 1; i < size.width(); i++ )
+    m_menu = new QMenu (this);
+    connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(updateSettings()));
+    QMenu *visMode = m_menu->addMenu(tr("Visualization Mode"));
+    m_visModeGroup = new QActionGroup(this);
+    m_visModeGroup->setExclusive(TRUE);
+    m_visModeGroup->addAction(tr("Analyzer"))->setData("Analyzer");
+    m_visModeGroup->addAction(tr("Scope"))->setData("Scope");
+    m_visModeGroup->addAction(tr("Off"))->setData("Off");
+    foreach(QAction *act, m_visModeGroup->actions ())
     {
-        // left
-        per = double ( magnitudesp[ i ] * 2 ) /
-              double ( size.height() / 4 );
-        if ( per < 0.0 )
-            per = -per;
-        if ( per > 1.0 )
-            per = 1.0;
-        else if ( per < 0.0 )
-            per = 0.0;
-
-        r = startColor.red() + ( targetColor.red() -
-                                 startColor.red() ) * ( per * per );
-        g = startColor.green() + ( targetColor.green() -
-                                   startColor.green() ) * ( per * per );
-        b = startColor.blue() + ( targetColor.blue() -
-                                  startColor.blue() ) * ( per * per );
-
-        if ( r > 255.0 )
-            r = 255.0;
-        else if ( r < 0.0 )
-            r = 0;
-
-        if ( g > 255.0 )
-            g = 255.0;
-        else if ( g < 0.0 )
-            g = 0;
-
-        if ( b > 255.0 )
-            b = 255.0;
-        else if ( b < 0.0 )
-            b = 0;
-
-        p->setPen ( QColor ( int ( r ), int ( g ), int ( b ) ) );
-        /*p->drawLine ( i - 1, ( size.height() / 4 ) + int ( magnitudesp[ i - 1 ] ),
-                      i, ( size.height() / 4 ) + int ( magnitudesp[ i ] ) );*/
-
-        //right
-        per = double ( magnitudesp[ i + size.width() ] * 2 ) /
-              double ( size.height() / 4 );
-        if ( per < 0.0 )
-            per = -per;
-        if ( per > 1.0 )
-            per = 1.0;
-        else if ( per < 0.0 )
-            per = 0.0;
-
-        r = startColor.red() + ( targetColor.red() -
-                                 startColor.red() ) * ( per * per );
-        g = startColor.green() + ( targetColor.green() -
-                                   startColor.green() ) * ( per * per );
-        b = startColor.blue() + ( targetColor.blue() -
-                                  startColor.blue() ) * ( per * per );
-
-        if ( r > 255.0 )
-            r = 255.0;
-        else if ( r < 0.0 )
-            r = 0;
-
-        if ( g > 255.0 )
-            g = 255.0;
-        else if ( g < 0.0 )
-            g = 0;
-
-        if ( b > 255.0 )
-            b = 255.0;
-        else if ( b < 0.0 )
-            b = 0;
-
-        p->setPen ( QColor ( int ( r ), int ( g ), int ( b ) ) );
-        /*p->drawLine ( i - 1, ( size.height() * 3 / 4 ) +
-                      int ( magnitudesp[ i + size.width() - 1 ] ),
-                      i, ( size.height() * 3 / 4 ) + int ( magnitudesp[ i + size.width() ] ) );*/
+        act->setCheckable(TRUE);
+        visMode->addAction(act);
     }
+
+    QMenu *analyzerMode = m_menu->addMenu(tr("Analyzer Mode"));
+    m_analyzerModeGroup = new QActionGroup(this);
+    m_analyzerTypeGroup = new QActionGroup(this);
+    m_analyzerModeGroup->addAction(tr("Normal"))->setData(0);
+    m_analyzerModeGroup->addAction(tr("Fire"))->setData(1);
+    m_analyzerModeGroup->addAction(tr("Vertical Lines"))->setData(2);
+    m_analyzerTypeGroup->addAction(tr("Lines"))->setData(0);
+    m_analyzerTypeGroup->addAction(tr("Bars"))->setData(1);
+    foreach(QAction *act, m_analyzerModeGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        analyzerMode->addAction(act);
+    }
+    analyzerMode->addSeparator ();
+    foreach(QAction *act, m_analyzerTypeGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        analyzerMode->addAction(act);
+    }
+    analyzerMode->addSeparator ();
+    m_peaksAction = analyzerMode->addAction(tr("Peaks"));
+    m_peaksAction->setCheckable(TRUE);
+
+
+    QMenu *refreshRate = m_menu->addMenu(tr("Refresh Rate"));
+    m_fpsGroup = new QActionGroup(this);
+    m_fpsGroup->setExclusive(TRUE);
+    m_fpsGroup->addAction(tr("50 fps"))->setData(50);
+    m_fpsGroup->addAction(tr("25 fps"))->setData(25);
+    m_fpsGroup->addAction(tr("10 fps"))->setData(10);
+    m_fpsGroup->addAction(tr("5 fps"))->setData(5);
+    foreach(QAction *act, m_fpsGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        refreshRate->addAction(act);
+    }
+
+    QMenu *analyzerFalloff = m_menu->addMenu(tr("Analyzer Falloff"));
+    m_analyzerFalloffGroup = new QActionGroup(this);
+    m_analyzerFalloffGroup->setExclusive(TRUE);
+    m_analyzerFalloffGroup->addAction(tr("Slowest"))->setData(1);
+    m_analyzerFalloffGroup->addAction(tr("Slow"))->setData(2);
+    m_analyzerFalloffGroup->addAction(tr("Medium"))->setData(3);
+    m_analyzerFalloffGroup->addAction(tr("Fast"))->setData(4);
+    m_analyzerFalloffGroup->addAction(tr("Fastest"))->setData(5);
+    foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        analyzerFalloff->addAction(act);
+    }
+
+    QMenu *peaksFalloff = m_menu->addMenu(tr("Peaks Falloff"));
+    m_peaksFalloffGroup = new QActionGroup(this);
+    m_peaksFalloffGroup->setExclusive(TRUE);
+    m_peaksFalloffGroup->addAction(tr("Slowest"))->setData(1);
+    m_peaksFalloffGroup->addAction(tr("Slow"))->setData(2);
+    m_peaksFalloffGroup->addAction(tr("Medium"))->setData(3);
+    m_peaksFalloffGroup->addAction(tr("Fast"))->setData(4);
+    m_peaksFalloffGroup->addAction(tr("Fastest"))->setData(5);
+    foreach(QAction *act, m_peaksFalloffGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        peaksFalloff->addAction(act);
+    }
+    update();
 }
 
-StereoAnalyzer::StereoAnalyzer()
-        : scaleFactor ( 1.0 ), falloff ( 1.0 ), analyzerBarWidth ( 4 ), fps ( 20 )
+
+void MainVisual::readSettings()
 {
-    //plan =  rfftw_create_plan(512, FFTW_REAL_TO_COMPLEX, FFTW_ESTIMATE);
-    startColor = Qt::green;
-    targetColor = Qt::red;
-    falloff = .5;
-    for ( int i = 0; i< 19; ++i )
-        intern_vis_data[i] = 0;
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+
+    QString name = settings.value("Visualization/type","Analyzer").toString();
+    m_visModeGroup->actions ()[0]->setChecked(TRUE);
+    foreach(QAction *act, m_visModeGroup->actions ())
+    if (name == act->data().toString())
+        act->setChecked(TRUE);
+
+    m_peaksAction->setChecked(
+        settings.value("Visualization/show_peaks", TRUE).toBool());
+
+    int fps = settings.value("Visualization/rate", 25).toInt();
+    m_fpsGroup->actions ()[1]->setChecked(TRUE);
+    foreach(QAction *act, m_fpsGroup->actions ())
+    if (fps == act->data().toInt())
+        act->setChecked(TRUE);
+
+    int mode = settings.value("Visualization/analyzer_mode", 0).toInt();
+    m_analyzerModeGroup->actions ()[0]->setChecked(TRUE);
+    foreach(QAction *act, m_analyzerModeGroup->actions ())
+    if (mode == act->data().toInt())
+        act->setChecked(TRUE);
+
+    int type = settings.value("Visualization/analyzer_type", 1).toInt();
+    m_analyzerTypeGroup->actions ()[1]->setChecked(TRUE);
+    foreach(QAction *act, m_analyzerTypeGroup->actions ())
+    if (type == act->data().toInt())
+        act->setChecked(TRUE);
+
+    int speed = settings.value("Visualization/peaks_falloff", 3).toInt();
+    m_peaksFalloffGroup->actions ()[2]->setChecked(TRUE);
+    foreach(QAction *act, m_peaksFalloffGroup->actions ())
+    if (speed == act->data().toInt())
+        act->setChecked(TRUE);
+
+    speed = settings.value("Visualization/analyzer_falloff", 3).toInt();
+    m_analyzerFalloffGroup->actions ()[2]->setChecked(TRUE);
+    foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+    if (speed == act->data().toInt())
+        act->setChecked(TRUE);
+
+    updateSettings();
+}
+
+Analyzer::Analyzer()
+        : m_analyzerBarWidth ( 4 ), m_fps ( 20 )
+{
+    m_size = QSize(75,20);
+    for ( int i = 0; i< 75; ++i )
+    {
+        m_intern_vis_data[i] = 0;
+        m_peaks[i] = 0;
+    }
     m_skin = Skin::getPointer();
+
+    double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
+    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
+
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_peaks_falloff =
+        peaks_speed[settings.value("Visualization/peaks_falloff", 3).toInt()-1];
+    m_analyzer_falloff =
+        analyzer_speed[settings.value("Visualization/analyzer_falloff", 3).toInt()-1];
+    m_show_peaks = settings.value("Visualization/show_peaks", TRUE).toBool();
+
+    m_lines = settings.value("Visualization/analyzer_type", 1).toInt() == 0;
+    m_mode = settings.value("Visualization/analyzer_mode", 0).toInt();
 }
 
-StereoAnalyzer::~StereoAnalyzer()
+Analyzer::~Analyzer()
+{}
+
+bool Analyzer::process ( VisualNode *node )
 {
-    //rfftw_destroy_plan(plan);
-}
-
-void StereoAnalyzer::resize ( const QSize &newsize )
-{
-    size = newsize;
-
-    scale.setMax ( 192, size.width() / analyzerBarWidth );
-
-    rects.resize ( scale.range() );
-    int i = 0, w = 0;
-    for ( ; ( unsigned ) i < rects.count(); i++, w += analyzerBarWidth )
-        rects[i].setRect ( w, size.height() / 2, analyzerBarWidth - 1, 1 );
-
-    int os = magnitudes.size();
-    magnitudes.resize ( scale.range() * 2 );
-    for ( ; ( unsigned ) os < magnitudes.size(); os++ )
-        magnitudes[os] = 0.0;
-
-    // scaleFactor = double( size.height() / 2 ) / log( 512.0 );
-}
-
-void StereoAnalyzer::configChanged ( QSettings &settings )
-{
-    QString val;
-
-    // need the framerate for the fall off speed
-    /*fps = settings.readNumEntry("/MQ3/Visual/frameRate", 20);
-
-    val = settings.readEntry("/MQ3/Analyzer/startColor");
-    if (! val.isEmpty())
-        startColor = QColor(val);
-    else
-    startColor = Qt::green;
-
-    val = settings.readEntry("/MQ3/Analyzer/targetColor");
-    if (! val.isEmpty())
-    targetColor = QColor(val);
-    else
-    targetColor = Qt::red;
-
-    analyzerBarWidth = settings.readNumEntry( "/MQ3/Analyzer/barWidth", 4 );
-
-    val = settings.readEntry( "/MQ3/Analyzer/fallOffSpeed", "Normal" );
-    if ( val == "Slow" )
-    falloff = .25;
-    else if ( val == "Fast" )
-    falloff = 1.;
-    else
-    falloff = .5;
-
-    falloff *= ( 80. / double( fps ) );
-
-    resize( size );*/
-}
-
-bool StereoAnalyzer::process ( VisualNode *node )
-{
-    bool allZero = TRUE;
-    uint i;
-    long w = 0, index;
-    QRect *rectsp = rects.data();
-    double *magnitudesp = magnitudes.data();
-    double magL, magR, tmp;
     static fft_state *state = 0;
     if ( !state )
         state = fft_init();
-    //if(node)
-    //float tmp_out[512];
     short dest[256];
 
-    const int xscale[] =
+    const int xscale_long[] =
+        {
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+            35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+            52, 53, 54, 55, 56, 57, 58, 61, 66, 71, 76, 81, 87, 93, 100, 107,
+            114, 122, 131, 140, 150, 161, 172, 184, 255
+        };
+
+    const int xscale_short[] =
         {
             0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 15, 20, 27,
             36, 47, 62, 82, 107, 141, 184, 255
@@ -776,158 +486,133 @@ bool StereoAnalyzer::process ( VisualNode *node )
 
     if ( node )
     {
-        i = node->length;
-        //fast_real_set_from_short(lin, node->left, node->length);
-        //if (node->right)
-        //fast_real_set_from_short(rin, node->right, node->length);
-        //fft_perform ( node->left, tmp_out, state );
-        /*for(int j = 0; j<256; ++j  )
-           dest*/
-
-        //calc_mono_freq ( short dest[2][256], short src[2][512], int nch )
-
+        //i = node->length;
         calc_freq ( dest, node->left );
-
     }
     else
         return FALSE;
     const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
-    int max = 19, y, j;
-    //int intern_vis_data[19];
+    int max = m_lines ? 75 : 19, y, j;
 
     for ( int i = 0; i < max; i++ )
     {
-        for ( j = xscale[i], y = 0; j < xscale[i + 1]; j++ )
-        {
-            if ( dest[j] > y )
-                y = dest[j];
-        }
+        if (m_lines)
+            for ( j = xscale_long[i], y = 0; j < xscale_long[i + 1]; j++ )
+            {
+                if ( dest[j] > y )
+                    y = dest[j];
+            }
+        else
+            for ( j = xscale_short[i], y = 0; j < xscale_short[i + 1]; j++ )
+            {
+                if ( dest[j] > y )
+                    y = dest[j];
+            }
         y >>= 7;
+        int magnitude = 0;
         if ( y != 0 )
         {
-            intern_vis_data[i] = log ( y ) * y_scale;
-            //qDebug("%d",y);
-            if ( intern_vis_data[i] > 15 )
-                intern_vis_data[i] = 15;
-            if ( intern_vis_data[i] < 0 )
-                intern_vis_data[i] = 0;
+            magnitude = int(log (y) * y_scale);
+            if ( magnitude > 15 )
+                magnitude = 15;
+            if ( magnitude < 0 )
+                magnitude = 0;
+        }
+
+        m_intern_vis_data[i] -= m_analyzer_falloff;
+        m_intern_vis_data[i] = magnitude > m_intern_vis_data[i]
+                               ? magnitude : m_intern_vis_data[i];
+        if (m_show_peaks)
+        {
+            m_peaks[i] -= m_peaks_falloff;
+            m_peaks[i] = magnitude > m_peaks[i]
+                         ? magnitude : m_peaks[i];
         }
     }
     return TRUE;
-
-//     fast_reals_set(lin + i, rin + i, 0, 512 - i);
-
-    //rfftw_one(plan, lin, lout);
-    //rfftw_one(plan, rin, rout);
-
-    /*index = 1;
-    for ( i = 0; i < rects.count(); i++, w += analyzerBarWidth )
-    {
-       magL = (log(lout[index] * lout[index] +
-              lout[512 - index] * lout[512 - index]) - 22.0) *
-              scaleFactor;
-       magR = (log(rout[index] * rout[index] +
-              rout[512 - index] * rout[512 - index]) - 22.0) *
-              scaleFactor;*/
-    //magL = fftperform()*/
-    /*magL = ( log ( tmp_out[index] * tmp_out[index] +
-                   tmp_out[512 - index] * tmp_out[512 - index] ) - 22.0 ) *
-           scaleFactor;
-
-    if ( magL > size.height() )
-       magL = size.height() ;
-    if ( magL < magnitudesp[i] )
-    {
-       tmp = magnitudesp[i] - falloff;
-       if ( tmp < magL )
-          tmp = magL;
-       magL = tmp;
-    }
-    if ( magL < 1. )
-       magL = 1.;
-
-    if ( magR > size.height() )
-       magR = size.height();
-    if ( magR < magnitudesp[i + scale.range() ] )
-    {
-       tmp = magnitudesp[i + scale.range() ] - falloff;
-       if ( tmp < magR )
-          tmp = magR;
-       magR = tmp;
-    }
-    if ( magR < 1. )
-       magR = 1.;
-
-    if ( magR != 1 || magL != 1 )
-       allZero = FALSE;
-
-    magnitudesp[i] = magL;
-    magnitudesp[i + scale.range() ] = magR;
-
-    //rectsp[i].setTop ( size.height() / 2 - int ( magL ) );
-    //rectsp[i].setBottom ( size.height() / 2 + int ( magR ) );
-    rectsp[i].setTop ( size.height() - int ( magL ) );
-    rectsp[i].setBottom ( size.height() );
-
-    index = scale[i];
-    }
-
-    return allZero;*/
 }
 
-void StereoAnalyzer::draw ( QPainter *p, const QColor &back )
+void Analyzer::draw ( QPainter *p)
 {
-    p->setPen ( "Cyan" );
-    //p->fillRect ( 0, 0, size.width(), size.height(), Qt::transparent );
-    //int intern_vis_data[19];
-    //qDebug("%d",int(intern_vis_data[3]));
-    //p->fill(Qt::transparent);
-    for ( int j= 0; j<19; ++j )
-    {
-        for ( int i = 0; i<=intern_vis_data[j]; ++i )
+    if (m_lines)
+        for ( int j = 0; j < 75; ++j )
         {
-            p->setPen ( m_skin->getVisBarColor ( i ) );
-            p->drawLine ( j*4,size.height()-i, ( j+1 ) *4-2,size.height()-i );
+            for ( int i = 0; i <= m_intern_vis_data[j]; ++i )
+            {
+                if (m_mode == 0)
+                    p->setPen (m_skin->getVisColor (18-i));
+                else if (m_mode == 1)
+                    p->setPen (m_skin->getVisColor (3+(int(m_intern_vis_data[j])-i)));
+                else
+                    p->setPen (m_skin->getVisColor (18-int(m_intern_vis_data[j])));
+                p->drawPoint (j, m_size.height()-i);
+            }
+            p->setPen (m_skin->getVisColor (23));
+            if (m_show_peaks)
+                p->drawPoint (j, m_size.height()-int(m_peaks[j]));
         }
-    }
-    for ( int i = 0; i< 19; ++i )
-        intern_vis_data[i] = 0;
-    //update();
-    /*QRect *rectsp = rects.data();
-    double r, g, b, per;
+    else
+        for (int j = 0; j < 19; ++j)
+        {
+            for (int i = 0; i <= m_intern_vis_data[j]; ++i)
+            {
+                if (m_mode == 0)
+                    p->setPen (m_skin->getVisColor (18-i));
+                else if (m_mode == 1)
+                    p->setPen (m_skin->getVisColor (3+(int(m_intern_vis_data[j])-i)));
+                else
+                    p->setPen (m_skin->getVisColor (18-int(m_intern_vis_data[j])));
+                p->drawLine (j*4,m_size.height()-i, (j+1)*4-2,m_size.height()-i);
+            }
+            p->setPen (m_skin->getVisColor (23));
+            if (m_show_peaks)
+                p->drawLine (j*4,m_size.height()-int(m_peaks[j]),
+                             (j+1) *4-2,m_size.height()-int(m_peaks[j]));
+        }
+}
 
-    p->fillRect ( 0, 0, size.width(), size.height(), back );
-    for ( uint i = 0; i < rects.count(); i++ )
+Scope::Scope()
+{
+    for (int i = 0; i< 75; ++i)
+        m_intern_vis_data[i] = 7;
+    m_skin = Skin::getPointer();
+}
+
+Scope::~Scope()
+{}
+
+bool Scope::process(VisualNode *node)
+{
+    if (!node)
+        return FALSE;
+
+    int step = (node->length << 8)/74;
+    int pos = 0;
+
+    for (int i = 0; i < 75; ++i)
     {
-       per = double ( rectsp[i].height() - 2 ) / double ( size.height() );
-       if ( per > 1.0 )
-          per = 1.0;
-       else if ( per < 0.0 )
-          per = 0.0;
+        pos += step;
+        m_intern_vis_data[i] = (node->left[pos >> 8] >> 12);
 
-       r = startColor.red() + ( targetColor.red() -
-                                startColor.red() ) * ( per * per );
-       g = startColor.green() + ( targetColor.green() -
-                                  startColor.green() ) * ( per * per );
-       b = startColor.blue() + ( targetColor.blue() -
-                                 startColor.blue() ) * ( per * per );
+        if (m_intern_vis_data[i] > 5)
+            m_intern_vis_data[i] = 5;
+        else if (m_intern_vis_data[i] < -5)
+            m_intern_vis_data[i] = -5;
+    }
+    return TRUE;
+}
 
-       if ( r > 255.0 )
-          r = 255.0;
-       else if ( r < 0.0 )
-          r = 0;
-
-       if ( g > 255.0 )
-          g = 255.0;
-       else if ( g < 0.0 )
-          g = 0;
-
-       if ( b > 255.0 )
-          b = 255.0;
-       else if ( b < 0.0 )
-          b = 0;
-
-       p->fillRect ( rectsp[i], QColor ( int ( r ), int ( g ), int ( b ) ) );
-    }*/
-
+void Scope::draw(QPainter *p)
+{
+    for ( int i = 0; i<73; ++i )
+    {
+        int h1 = 10 - m_intern_vis_data[i];
+        int h2 = 10 - m_intern_vis_data[i+1];
+        if (h1 > h2)
+            qSwap(h1, h2);
+        p->setPen (m_skin->getVisColor(19 + (10 - h2)/2 ));
+        p->drawLine(i, h1, i, h2);
+    }
+    for ( int i = 0; i< 75; ++i )
+        m_intern_vis_data[i] = 0;
 }

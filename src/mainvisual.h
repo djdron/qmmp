@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,6 +29,9 @@
 
 class QSettings;
 class QTimer;
+class QMenu;
+class QActionGroup;
+
 class Buffer;
 
 
@@ -36,16 +39,16 @@ class VisualNode
 {
 public:
     VisualNode(short *l, short *r, unsigned long n, unsigned long o)
-   : left(l), right(r), length(n), offset(o)
+            : left(l), right(r), length(n), offset(o)
     {
-   // left and right are allocated and then passed to this class
-   // the code that allocated left and right should give up all ownership
+        // left and right are allocated and then passed to this class
+        // the code that allocated left and right should give up all ownership
     }
 
     ~VisualNode()
     {
-   delete [] left;
-   delete [] right;
+        delete [] left;
+        delete [] right;
     }
 
     short *left, *right;
@@ -55,128 +58,125 @@ public:
 class VisualBase
 {
 public:
-    virtual ~VisualBase() {}
-    // return true if the output should stop
-    virtual bool process( VisualNode *node ) = 0;
-    virtual void draw( QPainter *, const QColor & ) = 0;
-    virtual void resize( const QSize &size ) = 0;
-    virtual void configChanged( QSettings & ) = 0;
+    virtual ~VisualBase()
+    {}
+    virtual bool process(VisualNode *node) = 0;
+    virtual void draw(QPainter *) = 0;
+    virtual const QString name() = 0;
 };
 
-class StereoScope : public VisualBase
-{
-public:
-    StereoScope();
-    virtual ~StereoScope();
-
-    void resize( const QSize &size );
-    void configChanged(QSettings &settings);
-    bool process( VisualNode *node );
-    void draw( QPainter *p, const QColor &back );
-
-protected:
-    QColor startColor, targetColor;
-    //QMemArray<double> magnitudes;
-    QVector <double> magnitudes;
-    QSize size;
-    bool rubberband;
-    double falloff;
-    int fps;
-};
-
-class MonoScope : public StereoScope
-{
-public:
-    MonoScope();
-    virtual ~MonoScope();
-
-    bool process( VisualNode *node );
-    void draw( QPainter *p, const QColor &back );
-};
-
-
-
+class Skin;
 
 class MainVisual : public QWidget, public Visualization
 {
     Q_OBJECT
 
 public:
-    MainVisual( QWidget *parent = 0, const char * = 0 );
+    MainVisual( QWidget *parent = 0);
     virtual ~MainVisual();
 
-    //static Prefs *createPrefs( const QString &visualname,
-      //          QWidget *parent, const char *name );
     static MainVisual *getPointer();
 
-    VisualBase *visual() const { return vis; }
+    VisualBase *visual() const
+    {
+        return m_vis;
+    }
     void setVisual( VisualBase *newvis );
-    //void setVisual( const QString &visualname );
 
     void add(Buffer *, unsigned long, int, int);
     void prepare();
 
     void configChanged(QSettings &settings);
 
-    QSize minimumSizeHint() const { return sizeHint(); }
-    QSize sizeHint() const { return QSize(4*4*4*2, 3*3*3*2); }
-
     void paintEvent( QPaintEvent * );
-    void resizeEvent( QResizeEvent * );
-    //void customEvent( QCustomEvent * );
 
     static QStringList visuals();
 
     void setFrameRate( int newfps );
-    int frameRate() const { return fps; }
+    int frameRate() const
+    {
+        return m_fps;
+    }
 
 protected:
-    void hideEvent ( QHideEvent *);
-    void showEvent ( QShowEvent *);
+    virtual void hideEvent (QHideEvent *);
+    virtual void showEvent (QShowEvent *);
+    virtual void mousePressEvent (QMouseEvent *);
 
 public slots:
-void timeout();
+    void timeout();
+
+private slots:
+    void updateSettings();
 
 private:
+    void drawBackGround();
+    void createMenu();
+    void readSettings();
     static MainVisual *pointer;
-    VisualBase *vis;
-    QPixmap pixmap;
-    //QPtrList<VisualNode> nodes;
-    QList <VisualNode*> nodes;
-    QTimer *timer;
-    bool playing;
-    int fps;
+    VisualBase *m_vis;
+    QPixmap m_pixmap;
+    QPixmap m_bg;
+    QList <VisualNode*> m_nodes;
+    QTimer *m_timer;
+    bool m_playing;
+    int m_fps;
+    bool m_transparent;
+    bool m_draw;
+    Skin *m_skin;
+    //menu and actions
+    QMenu *m_menu;
+    //action groups
+    QActionGroup *m_visModeGroup;
+    QActionGroup *m_fpsGroup;
+    QActionGroup *m_peaksFalloffGroup;
+    QActionGroup *m_analyzerFalloffGroup;
+    QActionGroup *m_analyzerModeGroup;
+    QActionGroup *m_analyzerTypeGroup;
+    QAction *m_peaksAction;
 };
 
-class Skin;
-
-class StereoAnalyzer : public VisualBase
+class Analyzer : public VisualBase
 {
 public:
-    StereoAnalyzer();
-    virtual ~StereoAnalyzer();
+    Analyzer();
+    virtual ~Analyzer();
 
-
-    void resize( const QSize &size );
-    void configChanged(QSettings &settings);
-    bool process( VisualNode *node );
-    void draw( QPainter *p, const QColor &back );
-
-protected:
-    QColor startColor, targetColor;
-    //QMemArray<QRect> rects;
-    QVector <QRect> rects;
-    QVector <double> magnitudes;
-    //QMemArray<double> magnitudes;
-    QSize size;
-    LogScale scale;
-    double scaleFactor, falloff;
-    int analyzerBarWidth, fps;
-    //rfftw_plan plan;
-    //fftw_real lin[512], rin[512], lout[1024], rout[1024];
-    int intern_vis_data[19];
+    bool process(VisualNode *node);
+    void draw(QPainter *p);
+    const QString name() 
+    {
+        return "Analyzer";
+    };
 
 private:
+    QSize m_size;
+    int m_analyzerBarWidth, m_fps;
+    double m_intern_vis_data[75];
+    double m_peaks[75];
+    double m_peaks_falloff;
+    double m_analyzer_falloff;
+    bool m_show_peaks;
+    bool m_lines;
+    int m_mode;
+    Skin *m_skin;
+};
+
+class Scope : public VisualBase
+{
+public:
+    Scope();
+    virtual ~Scope();
+
+    bool process(VisualNode *node);
+    void draw(QPainter *p);
+    const QString name() 
+    {
+        return "Scope";
+    };
+
+private:
+    int m_intern_vis_data[75];
     Skin *m_skin;
 };
 
