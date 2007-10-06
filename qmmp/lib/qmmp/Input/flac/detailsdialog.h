@@ -35,9 +35,12 @@ public:
 
     ~DetailsDialog();
 
+private slots:
+    void saveTag();
+
 private:
     void loadFLACInfo();
-    void loadTag();  
+    void loadTag();
     Ui::DetailsDialog ui;
     QString m_path;
 

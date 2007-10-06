@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
@@ -42,28 +43,29 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     setWindowTitle (path.section('/',-1));
     ui.pathLineEdit->setText(m_path);
 
-    if(!QFile::exists(m_path))
+    if (!QFile::exists(m_path))
         return;
 
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");
-    QTextCodec *codec_v1 =
+    m_codec_v1 =
         QTextCodec::codecForName(settings.value("ID3v1_encoding","UTF-8" )
                                  .toByteArray ());
-    QTextCodec *codec_v2 =
+    m_codec_v2 =
         QTextCodec::codecForName(settings.value("ID3v2_encoding","UTF-8" )
                                  .toByteArray ());
-    if (!codec_v1)
-        codec_v1 = QTextCodec::codecForName ("UTF-8");
-    if (!codec_v2)
-        codec_v2 = QTextCodec::codecForName ("UTF-8");
+    if (!m_codec_v1)
+        m_codec_v1 = QTextCodec::codecForName ("UTF-8");
+    if (!m_codec_v2)
+        m_codec_v2 = QTextCodec::codecForName ("UTF-8");
     settings.endGroup();
 
     loadMPEGInfo();
-    m_codec = codec_v1;
     loadID3v1Tag();
-    m_codec = codec_v2;
     loadID3v2Tag();
+    QFileInfo info(m_path);
+    ui.saveV1Button->setEnabled(info.isWritable());
+    ui.saveV2Button->setEnabled(info.isWritable());
 }
 
 
@@ -119,27 +121,28 @@ void DetailsDialog::loadID3v1Tag()
 
     if (f.ID3v1Tag())
     {
-        bool utf = m_codec->name().contains("UTF");
+        bool utf = m_codec_v1->name().contains("UTF");
         TagLib::String title = f.ID3v1Tag()->title();
         TagLib::String artist = f.ID3v1Tag()->artist();
         TagLib::String album = f.ID3v1Tag()->album();
         TagLib::String comment = f.ID3v1Tag()->comment();
         TagLib::String genre = f.ID3v1Tag()->genre();
-        QString string = m_codec->toUnicode(title.toCString(utf)).trimmed();
+        QString string = m_codec_v1->toUnicode(title.toCString(utf)).trimmed();
         ui.titleLineEdit_v1->setText(string);
-        string = m_codec->toUnicode(artist.toCString(utf)).trimmed();
+        string = m_codec_v1->toUnicode(artist.toCString(utf)).trimmed();
         ui.artistLineEdit_v1->setText(string);
-        string = m_codec->toUnicode(album.toCString(utf)).trimmed();
+        string = m_codec_v1->toUnicode(album.toCString(utf)).trimmed();
         ui.albumLineEdit_v1->setText(string);
-        string = m_codec->toUnicode(comment.toCString(utf)).trimmed();
+        string = m_codec_v1->toUnicode(comment.toCString(utf)).trimmed();
         ui.commentLineEdit_v1->setText(string);
         string = QString("%1").arg(f.ID3v1Tag()->year());
         ui.yearLineEdit_v1->setText(string);
         string = QString("%1").arg(f.ID3v1Tag()->track());
         ui.trackLineEdit_v1->setText(string);
-        string = m_codec->toUnicode(genre.toCString(utf)).trimmed();
+        string = m_codec_v1->toUnicode(genre.toCString(utf)).trimmed();
         ui.genreLineEdit_v1->setText(string);
     }
+    connect(ui.saveV1Button, SIGNAL(clicked()), SLOT(saveID3v1Tag()));
 }
 
 void DetailsDialog::loadID3v2Tag()
@@ -148,26 +151,71 @@ void DetailsDialog::loadID3v2Tag()
 
     if (f.ID3v2Tag())
     {
-        bool utf = m_codec->name().contains("UTF");
+        bool utf = m_codec_v2->name().contains("UTF");
         TagLib::String title = f.ID3v2Tag()->title();
         TagLib::String artist = f.ID3v2Tag()->artist();
         TagLib::String album = f.ID3v2Tag()->album();
         TagLib::String comment = f.ID3v2Tag()->comment();
         TagLib::String genre = f.ID3v2Tag()->genre();
-        QString string = m_codec->toUnicode(title.toCString(utf)).trimmed();
+        QString string = m_codec_v2->toUnicode(title.toCString(utf)).trimmed();
         ui.titleLineEdit_v2->setText(string);
-        string = m_codec->toUnicode(artist.toCString(utf)).trimmed();
+        string = m_codec_v2->toUnicode(artist.toCString(utf)).trimmed();
         ui.artistLineEdit_v2->setText(string);
-        string = m_codec->toUnicode(album.toCString(utf)).trimmed();
+        string = m_codec_v2->toUnicode(album.toCString(utf)).trimmed();
         ui.albumLineEdit_v2->setText(string);
-        string = m_codec->toUnicode(comment.toCString(utf)).trimmed();
+        string = m_codec_v2->toUnicode(comment.toCString(utf)).trimmed();
         ui.commentLineEdit_v2->setText(string);
         string = QString("%1").arg(f.ID3v2Tag()->year());
         ui.yearLineEdit_v2->setText(string);
         string = QString("%1").arg(f.ID3v2Tag()->track());
         ui.trackLineEdit_v2->setText(string);
-        string = m_codec->toUnicode(genre.toCString(utf)).trimmed();
+        string = m_codec_v2->toUnicode(genre.toCString(utf)).trimmed();
         ui.genreLineEdit_v2->setText(string);
     }
+    connect(ui.saveV2Button, SIGNAL(clicked()), SLOT(saveID3v2Tag()));
 }
 
+void DetailsDialog::saveID3v1Tag()
+{
+    TagLib::MPEG::File f (m_path.toLocal8Bit());
+
+    TagLib::String::Type type = TagLib::String::Latin1;
+
+    if (m_codec_v1->name().contains("UTF"))
+        return;
+
+    f.ID3v1Tag(TRUE)->setTitle(TagLib::String(m_codec_v1->fromUnicode(ui.titleLineEdit_v1->text()).constData(), type));
+    f.ID3v1Tag()->setArtist(TagLib::String(m_codec_v1->fromUnicode(ui.artistLineEdit_v1->text()).constData(), type));
+    f.ID3v1Tag()->setAlbum(TagLib::String(m_codec_v1->fromUnicode(ui.albumLineEdit_v1->text()).constData(), type));
+    f.ID3v1Tag()->setComment(TagLib::String(m_codec_v1->fromUnicode(ui.commentLineEdit_v2->text()).constData(), type));
+    f.ID3v1Tag()->setGenre(TagLib::String(m_codec_v1->fromUnicode(ui.genreLineEdit_v1->text()).constData(), type));
+    f.ID3v1Tag()->setYear(ui.yearLineEdit_v1->text().toUInt());
+    f.ID3v1Tag()->setTrack(ui.trackLineEdit_v1->text().toUInt());
+
+    f.save();
+}
+
+void DetailsDialog::saveID3v2Tag()
+{
+    TagLib::MPEG::File f (m_path.toLocal8Bit());
+
+    TagLib::String::Type type = TagLib::String::Latin1;
+
+    if (m_codec_v2->name().contains("UTF"))
+    {
+        TagLib::ID3v2::FrameFactory *factory = TagLib::ID3v2::FrameFactory::instance();
+        factory->setDefaultTextEncoding(TagLib::String::UTF8);
+        f.setID3v2FrameFactory(factory);
+        type = TagLib::String::UTF8;
+    }
+
+    f.ID3v2Tag(TRUE)->setTitle(TagLib::String(m_codec_v2->fromUnicode(ui.titleLineEdit_v2->text()).constData(), type));
+    f.ID3v2Tag()->setArtist(TagLib::String(m_codec_v2->fromUnicode(ui.artistLineEdit_v2->text()).constData(), type));
+    f.ID3v2Tag()->setAlbum(TagLib::String(m_codec_v2->fromUnicode(ui.albumLineEdit_v2->text()).constData(), type));
+    f.ID3v2Tag()->setComment(TagLib::String(m_codec_v2->fromUnicode(ui.commentLineEdit_v2->text()).constData(), type));
+    f.ID3v2Tag()->setGenre(TagLib::String(m_codec_v2->fromUnicode(ui.genreLineEdit_v2->text()).constData(), type));
+    f.ID3v2Tag()->setYear(ui.yearLineEdit_v2->text().toUInt());
+    f.ID3v2Tag()->setTrack(ui.trackLineEdit_v2->text().toUInt());
+
+    f.save();
+}

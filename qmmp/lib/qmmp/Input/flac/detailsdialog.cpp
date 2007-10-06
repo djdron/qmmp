@@ -22,8 +22,11 @@
 #include <taglib/flacfile.h>
 
 #include <QFile>
+#include <QFileInfo>
 
 #include "detailsdialog.h"
+
+#define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
 
 DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
         : QDialog(parent)
@@ -34,7 +37,7 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     setWindowTitle (path.section('/',-1));
     path.section('/',-1);
     ui.pathLineEdit->setText(m_path);
-    if(QFile::exists(m_path))
+    if (QFile::exists(m_path))
     {
         loadFLACInfo();
         loadTag();
@@ -94,5 +97,22 @@ void DetailsDialog::loadTag()
         string = QString::fromUtf8(genre.toCString(TRUE)).trimmed();
         ui.genreLineEdit->setText(string);
     }
+    QFileInfo info(m_path);
+    ui.saveButton->setEnabled(info.isWritable());
+    connect(ui.saveButton, SIGNAL(clicked()), SLOT(saveTag()));
 }
 
+void DetailsDialog::saveTag()
+{
+    TagLib::FileRef f (m_path.toLocal8Bit());
+
+    f.tag()->setTitle(QStringToTString_qt4(ui.titleLineEdit->text()));
+    f.tag()->setArtist(QStringToTString_qt4(ui.artistLineEdit->text()));
+    f.tag()->setAlbum(QStringToTString_qt4(ui.albumLineEdit->text()));
+    f.tag()->setComment(QStringToTString_qt4(ui.commentLineEdit->text()));
+    f.tag()->setGenre(QStringToTString_qt4(ui.genreLineEdit->text()));
+    f.tag()->setYear(ui.yearLineEdit->text().toUInt());
+    f.tag()->setTrack(ui.trackLineEdit->text().toUInt());
+
+    f.save();
+}
