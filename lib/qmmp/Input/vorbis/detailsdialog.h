@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                       *
- *   forkotov02@hotmail.ru                                                     *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -35,9 +35,12 @@ public:
 
     ~DetailsDialog();
 
+private slots:
+    void saveTag();
+
 private:
     void loadVorbisInfo();
-    void loadTag();  
+    void loadTag();
     Ui::DetailsDialog ui;
     QString m_path;
 

@@ -38,13 +38,18 @@ public:
 
     ~DetailsDialog();
 
+private slots:
+    void saveID3v1Tag();
+    void saveID3v2Tag();
+
 private:
     void loadMPEGInfo();
     void loadID3v1Tag(); 
     void loadID3v2Tag(); 
     Ui::DetailsDialog ui;
     QString m_path;
-    QTextCodec *m_codec;
+    QTextCodec *m_codec_v1;
+    QTextCodec *m_codec_v2;
 
 };
 
