@@ -97,7 +97,6 @@ private slots:
     void addFile();
     void addUrl();
     void updateEQ();
-    void updatePreset();
     void updateSkin();
     void forward();
     void backward();

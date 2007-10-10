@@ -48,6 +48,7 @@ public:
     bool isCurrent();
     void setCurrent(bool);
     void updateTags(const FileTag*);
+    void updateTags();
     void changeTitle(const QString&);
 
 
