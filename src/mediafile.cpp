@@ -110,6 +110,20 @@ void MediaFile::updateTags(const FileTag *tag)
     readMetadata();
 }
 
+void MediaFile::updateTags()
+{
+    if (m_path.startsWith("http://"))
+        return;
+
+    if (m_tag)
+    {
+        delete m_tag;
+        m_tag = 0;
+    }
+    m_tag = Decoder::createTag(m_path);
+    readMetadata();
+}
+
 void MediaFile::readMetadata()
 {
     if (m_use_meta && m_tag && !m_tag->isEmpty())

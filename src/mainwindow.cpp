@@ -166,6 +166,8 @@ void MainWindow::play()
         return;
 
     m_equalizer->loadPreset(m_playListModel->currentItem()->fileName());
+    m_playListModel->currentItem()->updateTags();
+    m_playlist->listWidget()->updateList();
     QString s = m_playListModel->currentItem()->path();
     if (s.isEmpty())
         return;
@@ -292,12 +294,6 @@ void MainWindow::updateEQ()
         b[i] = m_equalizer->gain(i);
     m_core->setEQ(b, m_equalizer->preamp());
     m_core->setEQEnabled(m_equalizer->isEQEnabled());
-}
-
-void MainWindow::updatePreset()
-{
-    //if(m_playListModel->currentItem())
-    //  m_equalizer->setPresetName(m_playListModel->currentItem()->fileName());
 }
 
 void MainWindow::showOutputState(const OutputState &st)
@@ -807,8 +803,6 @@ void MainWindow::handleCloseRequest()
     else
         QApplication::closeAllWindows();
 }
-
-
 
 void MainWindow::addUrl( )
 {
