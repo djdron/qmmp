@@ -44,7 +44,7 @@ public:
     const DecoderProperties properties() const;
     Decoder *create(QObject *, QIODevice *, Output *);
     FileTag *createTag(const QString &source);
-    void showDetails(QWidget *parent, const QString &path);
+    QObject* showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

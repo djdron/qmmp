@@ -24,7 +24,7 @@
 
 #include "mediafile.h"
 
-MediaFile::MediaFile(QString path)
+MediaFile::MediaFile(const QString& path) : m_flag(FREE)
 {
     m_selected = FALSE;
     m_current = FALSE;
@@ -114,7 +114,6 @@ void MediaFile::updateTags()
 {
     if (m_path.startsWith("http://"))
         return;
-
     if (m_tag)
     {
         delete m_tag;
@@ -148,5 +147,16 @@ void MediaFile::readMetadata()
 void MediaFile::changeTitle(const QString &newtitle)
 {
     m_title = newtitle;
+}
+
+void MediaFile::setFlag(FLAGS f)
+{
+    m_flag = f;
+}
+
+
+MediaFile::FLAGS MediaFile::flag() const
+{
+    return m_flag;
 }
 

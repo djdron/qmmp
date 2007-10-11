@@ -67,10 +67,11 @@ FileTag *DecoderMPCFactory::createTag(const QString &source)
     return ftag;
 }
 
-void DecoderMPCFactory::showDetails(QWidget *parent, const QString &path)
+QObject* DecoderMPCFactory::showDetails(QWidget *parent, const QString &path)
 {
     DetailsDialog *d = new DetailsDialog(parent, path);
     d -> show();
+    return d;
 }
 
 void DecoderMPCFactory::showSettings(QWidget *)
