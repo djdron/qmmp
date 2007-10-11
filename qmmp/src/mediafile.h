@@ -31,12 +31,20 @@ class FileTag;
 class MediaFile
 {
 public:
-    MediaFile()
+    /*!
+     * Current state of media file.
+     * FREE - instance is free and may be deleted
+     * EDITING - instance is currently busy in some kind of operation(tags editing etc.)
+     * and can't be deleted at the moment. Set flag SCHEDULED_FOR_DELETION for it 
+     * instead of delete operator call.
+     */
+    enum FLAGS{FREE = 0,EDITING,SCHEDULED_FOR_DELETION};
+
+    MediaFile() : m_flag(FREE)
     {};
-    MediaFile(QString);
+    MediaFile(const QString&);
 
     ~MediaFile();
-    //MediaFile &operator=(const MediaFile &other);
 
     const QString path()const;
     const QString title()const;
@@ -50,7 +58,8 @@ public:
     void updateTags(const FileTag*);
     void updateTags();
     void changeTitle(const QString&);
-
+    FLAGS flag()const;
+    void setFlag(FLAGS);
 
 private:
     void readMetadata();
@@ -62,6 +71,7 @@ private:
     bool m_current;
     bool m_use_meta;
     QString m_format;
+    FLAGS m_flag;
 
 };
 

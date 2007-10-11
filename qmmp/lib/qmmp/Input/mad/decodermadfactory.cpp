@@ -155,10 +155,11 @@ FileTag *DecoderMADFactory::createTag(const QString &source)
     return ftag;
 }
 
-void DecoderMADFactory::showDetails(QWidget *parent, const QString &path)
+QObject* DecoderMADFactory::showDetails(QWidget *parent, const QString &path)
 {
     DetailsDialog *d = new DetailsDialog(parent, path);
     d -> show();
+    return d;
 }
 
 void DecoderMADFactory::showSettings(QWidget *parent)

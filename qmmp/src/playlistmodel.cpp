@@ -43,6 +43,28 @@
 
 #define INVALID_ROW -1
 
+TagUpdater::TagUpdater(QObject* o,MediaFile* f):m_observable(o),m_file(f)
+{
+    m_file->setFlag(MediaFile::EDITING);
+    connect (m_observable, SIGNAL(destroyed (QObject * )),SLOT(updateTag()));
+    connect (m_observable, SIGNAL(destroyed (QObject * )),SLOT(deleteLater()));
+}
+
+void TagUpdater::updateTag()
+{
+    if(m_file->flag() == MediaFile::SCHEDULED_FOR_DELETION)
+    {
+        delete m_file;
+        m_file = NULL;
+    }
+    else
+    {
+        m_file->updateTags();
+        m_file->setFlag(MediaFile::FREE);
+    }
+}
+
+
 PlayListModel::PlayListModel ( QObject *parent )
         : QObject ( parent ) , m_selection()
 {
@@ -60,8 +82,6 @@ PlayListModel::PlayListModel ( QObject *parent )
     registerPlaylistFormat( new XSPFPlaylistFormat);
 #endif
     loadExternalPlaylistFormats();
-
-    //qRegisterMetaType<MediaFile*>("MediaFileStar");
 }
 
 PlayListModel::~PlayListModel()
@@ -145,7 +165,6 @@ void PlayListModel::clear()
     {
         if (!l.isNull())
         {
-            qWarning("void PlayListModel::clear()");
             l->finish();
             l->wait();
         }
@@ -155,7 +174,18 @@ void PlayListModel::clear()
 
     m_current = 0;
     while ( !m_files.isEmpty() )
-        delete m_files.takeFirst();
+    {
+        MediaFile* mf = m_files.takeFirst();
+
+        if(mf->flag() == MediaFile::FREE)
+        {
+            delete mf;
+        }
+        else if(mf->flag() == MediaFile::EDITING)
+        {
+            mf->setFlag(MediaFile::SCHEDULED_FOR_DELETION);
+        }
+    }
 
     m_total_length = 0;
     m_play_state->resetState();
@@ -225,7 +255,14 @@ void PlayListModel::removeSelection(bool inverted)
             m_total_length -= f->length();
             if (m_total_length < 0)
                 m_total_length = 0;
-            delete f;
+
+            if(f->flag() == MediaFile::FREE)
+            {
+                delete f;
+                f = NULL;
+            }
+            else if(f->flag() == MediaFile::EDITING)
+                f->setFlag(MediaFile::SCHEDULED_FOR_DELETION);
 
             select_after_delete = i;
 
@@ -271,7 +308,15 @@ void PlayListModel::showDetails()
         {
             DecoderFactory *fact = Decoder::findByPath ( m_files.at ( i )->path() );
             if ( fact )
-                fact->showDetails ( 0, m_files.at ( i )->path() );
+            {
+                QObject* o = fact->showDetails ( 0, m_files.at ( i )->path() );
+                if(o)
+                {
+                    TagUpdater *updater = new TagUpdater(o,m_files.at(i));
+                    m_editing_files.append(m_files.at(i));
+                    connect (updater, SIGNAL(destroyed (QObject * )),SIGNAL(listChanged()));
+                }
+            }
 
             return;
         }
@@ -838,6 +883,12 @@ void PlayListModel::preparePlayState()
 {
     m_play_state->prepare();
 }
+
+
+
+
+
+
 
 
 

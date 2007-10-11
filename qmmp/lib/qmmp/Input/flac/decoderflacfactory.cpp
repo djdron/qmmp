@@ -67,10 +67,11 @@ FileTag *DecoderFLACFactory::createTag(const QString &source)
     return ftag;
 }
 
-void DecoderFLACFactory::showDetails(QWidget *parent, const QString &path)
+QObject* DecoderFLACFactory::showDetails(QWidget *parent, const QString &path)
 {
     DetailsDialog *d = new DetailsDialog(parent, path);
     d -> show();
+    return d;
 }
 
 void DecoderFLACFactory::showSettings(QWidget *)

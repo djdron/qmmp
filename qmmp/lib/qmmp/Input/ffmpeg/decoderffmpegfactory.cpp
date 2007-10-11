@@ -64,10 +64,11 @@ FileTag *DecoderFFmpegFactory::createTag(const QString &source)
     return ftag;
 }
 
-void DecoderFFmpegFactory::showDetails(QWidget *parent, const QString &path)
+QObject* DecoderFFmpegFactory::showDetails(QWidget *parent, const QString &path)
 {
     DetailsDialog *d = new DetailsDialog(parent, path);
     d -> show();
+    return d;
 }
 
 void DecoderFFmpegFactory::showSettings(QWidget *)

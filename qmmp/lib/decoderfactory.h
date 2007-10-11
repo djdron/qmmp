@@ -53,7 +53,7 @@ public:
     virtual const DecoderProperties properties() const = 0;
     virtual Decoder *create(QObject *, QIODevice *, Output *) = 0; 
     virtual FileTag *createTag(const QString &source) = 0;
-    virtual void showDetails(QWidget *parent, const QString &path) = 0;
+    virtual QObject* showDetails(QWidget *parent, const QString &path) = 0;
     virtual void showSettings(QWidget *parent) = 0;
     virtual void showAbout(QWidget *parent) = 0;
     virtual QTranslator *createTranslator(QObject *parent) = 0;

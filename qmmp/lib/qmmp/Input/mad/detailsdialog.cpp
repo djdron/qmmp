@@ -187,7 +187,7 @@ void DetailsDialog::saveID3v1Tag()
     f.ID3v1Tag(TRUE)->setTitle(TagLib::String(m_codec_v1->fromUnicode(ui.titleLineEdit_v1->text()).constData(), type));
     f.ID3v1Tag()->setArtist(TagLib::String(m_codec_v1->fromUnicode(ui.artistLineEdit_v1->text()).constData(), type));
     f.ID3v1Tag()->setAlbum(TagLib::String(m_codec_v1->fromUnicode(ui.albumLineEdit_v1->text()).constData(), type));
-    f.ID3v1Tag()->setComment(TagLib::String(m_codec_v1->fromUnicode(ui.commentLineEdit_v2->text()).constData(), type));
+    f.ID3v1Tag()->setComment(TagLib::String(m_codec_v1->fromUnicode(ui.commentLineEdit_v1->text()).constData(), type));
     f.ID3v1Tag()->setGenre(TagLib::String(m_codec_v1->fromUnicode(ui.genreLineEdit_v1->text()).constData(), type));
     f.ID3v1Tag()->setYear(ui.yearLineEdit_v1->text().toUInt());
     f.ID3v1Tag()->setTrack(ui.trackLineEdit_v1->text().toUInt());

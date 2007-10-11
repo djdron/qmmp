@@ -72,10 +72,11 @@ FileTag *DecoderVorbisFactory::createTag(const QString &source)
     return ftag;
 }
 
-void DecoderVorbisFactory::showDetails(QWidget *parent, const QString &path)
+QObject* DecoderVorbisFactory::showDetails(QWidget *parent, const QString &path)
 {
     DetailsDialog *d = new DetailsDialog(parent, path);
     d -> show();
+    return d;
 }
 
 void DecoderVorbisFactory::showSettings(QWidget *)

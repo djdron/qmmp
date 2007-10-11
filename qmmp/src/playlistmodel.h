@@ -63,6 +63,22 @@ struct SimpleSelection
 	 QList<int>m_selected_rows;
 };
 
+/*!
+ * Helper class used for tags update after details dialog closing.
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
+ */
+class TagUpdater : public QObject
+{
+Q_OBJECT
+    QObject* m_observable;
+    MediaFile* m_file;
+public:
+    TagUpdater(QObject* o,MediaFile* f);
+protected slots:
+    void updateTag();
+};
+    
+
 class PlayListModel : public QObject
 {
     Q_OBJECT
@@ -288,7 +304,9 @@ private:
      void removeSelection(bool inverted = false);
 
 private:
+    
     QList <MediaFile*> m_files;
+    QList <MediaFile*> m_editing_files;
     MediaFile* m_currentItem;
 
     int m_current;
