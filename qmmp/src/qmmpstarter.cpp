@@ -27,7 +27,7 @@
 #include "version.h"
 #include "qmmpstarter.h"
 
-#define MAXCOMMANDSIZE 64
+#define MAXCOMMANDSIZE 1024
 
 QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent),mw(NULL)
 {	
