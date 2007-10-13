@@ -24,7 +24,7 @@
 #include "outputoss.h"
 #include "constants.h"
 #include "buffer.h"
-#include "visualization.h"
+#include "visual.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -155,8 +155,6 @@ void OutputOSS::configure(long freq, int chan, int prec, int rate)
     }
 
     m_rate = rate;
-
-    prepareVisuals();
 }
 
 

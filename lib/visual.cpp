@@ -17,58 +17,37 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef VISUALIZATION_H
-#define VISUALIZATION_H
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+#include "visual.h"
 
-#include <QMutex>
 
-class Buffer;
-class Decoder;
-class Output;
+Visual::Visual()
+{}
 
-class Visualization
+Visual::~Visual()
+{}
+
+Decoder *Visual::decoder() const
 {
-public:
-    Visualization() {};
+    return m_decoder;
+}
 
-    virtual ~Visualization() {};
+void Visual::setDecoder(Decoder *decoder)
+{
+    m_decoder = decoder;
+}
 
-    virtual void add(Buffer *, unsigned long, int, int) = 0;
-    virtual void prepare() = 0;
+Output *Visual::output() const
+{
+    return m_output;
+}
 
-    Decoder *decoder() const
-    {
-        return m_decoder;
-    }
-    void setDecoder(Decoder *decoder)
-    {
-        m_decoder = decoder;
-    }
+void Visual::setOutput(Output *output)
+{
+    m_output = output;
+}
 
-    Output *output() const
-    {
-        return m_output;
-    }
-    void setOutput(Output *output)
-    {
-        m_output = output;
-    }
-
-    QMutex *mutex()
-    {
-        return &m_mutex;
-    }
-
-
-private:
-    Decoder *m_decoder;
-    Output *m_output;
-    QMutex m_mutex;
-
-};
-
-#endif
+QMutex *Visual::mutex()
+{
+    return &m_mutex;
+}

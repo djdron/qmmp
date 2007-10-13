@@ -5,8 +5,8 @@
 // warranty, or liability of any kind.
 //
 
-#ifndef   __output_h
-#define   __output_h
+#ifndef   OUTPUT_H
+#define   OUTPUT_H
 
 class Output;
 
@@ -15,7 +15,8 @@ class Output;
 #include <QEvent>
 #include <QList>
 #include <QIODevice>
-#include <outputfactory.h>
+#include "visual.h"
+#include "outputfactory.h"
 
 #include "recycler.h"
 
@@ -153,8 +154,8 @@ public:
         return &r;
     }
 
-    void addVisual(Visualization *);
-    void removeVisual(Visualization *);
+    void addVisual(Visual*);
+    void removeVisual(Visual*);
 
     QMutex *mutex()
     {
@@ -198,14 +199,14 @@ protected:
     void dispatchVolume(int L, int R);
     void error(const QString &e);
     void dispatchVisual(Buffer *, unsigned long, int, int);
-    void prepareVisuals();
+    void clearVisuals();
 
 private:
     QMutex mtx;
     Recycler r;
-    QList<Visualization *> visuals;
+    QList<Visual*> visuals;
     VolumeType m_vol;
 };
 
 
-#endif // __output_h
+#endif // OUTPUT_H

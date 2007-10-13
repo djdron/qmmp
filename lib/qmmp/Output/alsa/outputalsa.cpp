@@ -32,7 +32,7 @@
 #include "outputalsa.h"
 #include "constants.h"
 #include "buffer.h"
-#include "visualization.h"
+#include "visual.h"
 
 OutputALSA::OutputALSA(QObject * parent)
         : Output(parent, Output::Custom), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
@@ -172,7 +172,6 @@ void OutputALSA::configure(long freq, int chan, int prec, int brate)
             qWarning("OutputALSA: Error setting HW params.");
             return;
         }
-        prepareVisuals();
     }
 }
 

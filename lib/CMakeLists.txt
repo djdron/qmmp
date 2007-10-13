@@ -17,6 +17,7 @@ ADD_DEFINITIONS(-DQT_THREAD)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(libqmmp_SRCS
+    visual.cpp
     recycler.cpp
     decoder.cpp
     output.cpp
@@ -30,7 +31,7 @@ SET(libqmmp_SRCS
 )
 
 SET(libqmmp_MOC_HDRS
-  visualization.h
+  visual.h
   recycler.h
   buffer.h
   constants.h

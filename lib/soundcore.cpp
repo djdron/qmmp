@@ -289,7 +289,7 @@ void SoundCore::updateConfig()
     stop();
 }
 
-void SoundCore::addVisualization(Visualization *visual)
+void SoundCore::addVisualization(Visual *visual)
 {
     m_vis = visual;
 }

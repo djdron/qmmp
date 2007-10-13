@@ -44,10 +44,9 @@ MainVisual *MainVisual::getPointer()
     return pointer;
 }
 
-MainVisual::MainVisual ( QWidget *parent)
-        : QWidget ( parent ), m_vis ( 0 ), m_playing ( FALSE ), m_fps ( 20 )
+MainVisual::MainVisual (QWidget *parent)
+        : QWidget (parent), m_vis (0), m_playing (FALSE)
 {
-    m_transparent = FALSE;
     m_draw = TRUE;
     m_skin = Skin::getPointer();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSettings()));
@@ -90,10 +89,13 @@ void MainVisual::setVisual (VisualBase *newvis)
     }
 }
 
-void MainVisual::prepare()
+void MainVisual::clear()
 {
     while (!m_nodes.isEmpty())
         delete m_nodes.takeFirst();
+    if (m_vis)
+        m_vis->clear();
+    update();
 }
 
 void MainVisual::add ( Buffer *b, unsigned long w, int c, int p )
@@ -138,7 +140,7 @@ void MainVisual::timeout()
 {
     VisualNode *node = 0;
 
-    if ( /*playing &&*/ output() )
+    if ( /*playing &&*/ output())
     {
         //output()->mutex()->lock ();
         //long olat = output()->latency();
@@ -166,9 +168,8 @@ void MainVisual::timeout()
         node = prev;
     }
 
-    bool stop = TRUE;
-    if ( m_vis )
-        stop = m_vis->process ( node );
+    if (m_vis)
+        m_vis->process ( node );
     delete node;
 
     if ( m_vis )
@@ -230,11 +231,6 @@ void MainVisual::mousePressEvent (QMouseEvent *e)
 void MainVisual::drawBackGround()
 {
     m_bg = QPixmap (75,20);
-    if (m_transparent)
-    {
-        m_bg.fill(Qt::transparent);
-        return;
-    }
     QPainter painter(&m_bg);
     for (int x = 0; x < 75; x += 2)
     {
@@ -438,11 +434,7 @@ Analyzer::Analyzer()
         : m_analyzerBarWidth ( 4 ), m_fps ( 20 )
 {
     m_size = QSize(75,20);
-    for ( int i = 0; i< 75; ++i )
-    {
-        m_intern_vis_data[i] = 0;
-        m_peaks[i] = 0;
-    }
+    clear();
     m_skin = Skin::getPointer();
 
     double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
@@ -461,6 +453,15 @@ Analyzer::Analyzer()
 
 Analyzer::~Analyzer()
 {}
+
+void Analyzer::clear()
+{
+    for ( int i = 0; i< 75; ++i )
+    {
+        m_intern_vis_data[i] = 0;
+        m_peaks[i] = 0;
+    }
+}
 
 bool Analyzer::process ( VisualNode *node )
 {
@@ -573,9 +574,14 @@ void Analyzer::draw ( QPainter *p)
 
 Scope::Scope()
 {
+    clear();
+    m_skin = Skin::getPointer();
+}
+
+void Scope::clear()
+{
     for (int i = 0; i< 75; ++i)
         m_intern_vis_data[i] = 7;
-    m_skin = Skin::getPointer();
 }
 
 Scope::~Scope()

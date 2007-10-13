@@ -26,7 +26,7 @@
 
 #include "decoder.h"
 #include "output.h"
-#include "visualization.h"
+#include "visual.h"
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -136,7 +136,7 @@ public:
     /*!
     * adds visualization
     */
-    void addVisualization(Visualization *visual);
+    void addVisualization(Visual *visual);
 
 signals:
 
@@ -174,7 +174,7 @@ private:
     bool m_block;
     int m_preamp;
     int m_bands[10];
-    Visualization *m_vis;
+    Visual *m_vis;
     QString m_source;
 };
 
