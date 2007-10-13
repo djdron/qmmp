@@ -7,7 +7,7 @@
 #include "outputjack.h"
 #include "constants.h"
 #include "buffer.h"
-#include "visualization.h"
+#include "visual.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -75,8 +75,6 @@ void OutputJACK::configure(long freq, int chan, int prec, int brate)
     else
         m_configure = TRUE;
 
-
-    prepareVisuals();
     qDebug("OutputJACK: configure end");
 }
 

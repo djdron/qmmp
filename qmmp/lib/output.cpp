@@ -12,7 +12,6 @@
 
 #include "constants.h"
 #include "output.h"
-#include "visualization.h"
 
 #include <stdio.h>
 
@@ -131,18 +130,18 @@ void Output::error ( const QString &e )
 }
 
 
-void Output::addVisual ( Visualization *v )
+void Output::addVisual ( Visual *v )
 {
-    if ( visuals.indexOf ( v ) == -1 )
+    if (visuals.indexOf (v) == -1)
     {
-        visuals.append ( v );
+        visuals.append (v);
     }
 }
 
 
-void Output::removeVisual ( Visualization *v )
+void Output::removeVisual (Visual *v)
 {
-    visuals.removeAll ( v );
+    visuals.removeAll (v);
 }
 
 void Output::dispatchVisual ( Buffer *buffer, unsigned long written,
@@ -150,8 +149,8 @@ void Output::dispatchVisual ( Buffer *buffer, unsigned long written,
 {
     if ( ! buffer || !visuals.size())
         return;
-    Visualization *visual = 0;
-    foreach (visual , visuals );
+    Visual* visual = 0;
+    foreach (visual , visuals);
     {
         visual->mutex()->lock ();
         visual->add ( buffer, written, chan, prec );
@@ -160,20 +159,21 @@ void Output::dispatchVisual ( Buffer *buffer, unsigned long written,
 }
 
 
-void Output::prepareVisuals()
+void Output::clearVisuals()
 {
-    //Visual *visual = visuals.first();
-    /*while (visual) {
-    visual->mutex()->lock();
-    visual->prepare();
-    visual->mutex()->unlock();
-
-    visual = visuals.next();
-    }*/
+    Visual *visual = 0;
+    foreach (visual, visuals );
+    {
+        visual->mutex()->lock ();
+        visual->clear();
+        visual->mutex()->unlock();
+    }
 }
 
 void Output::dispatch(OutputState::Type st)
 {
+    if(st == OutputState::Stopped)
+        clearVisuals();
     emit stateChanged ( OutputState(st) );
 }
 
@@ -184,6 +184,8 @@ void Output::dispatch(long s, unsigned long w, int b, int f, int p, int c)
 
 void Output::dispatch ( const OutputState &st )
 {
+    if(st.type() == OutputState::Stopped)
+        clearVisuals();
     emit stateChanged ( st );
 }
 

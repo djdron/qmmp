@@ -13,7 +13,7 @@
 #include "constants.h"
 #include "buffer.h"
 #include "output.h"
-#include "visualization.h"
+#include "visual.h"
 #include "decoderfactory.h"
 #include "streamreader.h"
 extern "C"{

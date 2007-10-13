@@ -22,7 +22,7 @@
 
 #include <QWidget>
 #include <QResizeEvent>
-#include <visualization.h>
+#include <visual.h>
 #include <constants.h>
 
 #include "logscale.h"
@@ -59,7 +59,8 @@ class VisualBase
 {
 public:
     virtual ~VisualBase()
-    {}
+    {};
+    virtual void clear() = 0;
     virtual bool process(VisualNode *node) = 0;
     virtual void draw(QPainter *) = 0;
     virtual const QString name() = 0;
@@ -67,7 +68,7 @@ public:
 
 class Skin;
 
-class MainVisual : public QWidget, public Visualization
+class MainVisual : public QWidget, public Visual
 {
     Q_OBJECT
 
@@ -77,26 +78,11 @@ public:
 
     static MainVisual *getPointer();
 
-    VisualBase *visual() const
-    {
-        return m_vis;
-    }
     void setVisual( VisualBase *newvis );
 
     void add(Buffer *, unsigned long, int, int);
-    void prepare();
-
-    void configChanged(QSettings &settings);
-
+    void clear();
     void paintEvent( QPaintEvent * );
-
-    static QStringList visuals();
-
-    void setFrameRate( int newfps );
-    int frameRate() const
-    {
-        return m_fps;
-    }
 
 protected:
     virtual void hideEvent (QHideEvent *);
@@ -120,8 +106,6 @@ private:
     QList <VisualNode*> m_nodes;
     QTimer *m_timer;
     bool m_playing;
-    int m_fps;
-    bool m_transparent;
     bool m_draw;
     Skin *m_skin;
     //menu and actions
@@ -142,6 +126,7 @@ public:
     Analyzer();
     virtual ~Analyzer();
 
+    void clear();
     bool process(VisualNode *node);
     void draw(QPainter *p);
     const QString name() 
@@ -168,6 +153,7 @@ public:
     Scope();
     virtual ~Scope();
 
+    void clear();
     bool process(VisualNode *node);
     void draw(QPainter *p);
     const QString name() 
