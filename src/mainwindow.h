@@ -41,6 +41,7 @@ class MainVisual;
 class Skin;
 class SoundCore;
 class JumpToTrackDialog;
+class VisualMenu;
 
 class QMenu;
 class QKeyEvent;
@@ -133,6 +134,7 @@ private:
     JumpToTrackDialog* m_jumpDialog;
     bool m_hide_on_titlebar_close;
     int m_elapsed;
+    VisualMenu *m_visMenu;
 };
 
 #endif

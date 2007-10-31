@@ -138,7 +138,9 @@ target.path = /bin
 INSTALLS += target
 
 HEADERS += addurldialog.h \
- skinreader.h
+ skinreader.h \
+ visualmenu.h
 SOURCES += addurldialog.cpp \
- skinreader.cpp
+ skinreader.cpp \
+ visualmenu.cpp
 FORMS += addurldialog.ui

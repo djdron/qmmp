@@ -28,9 +28,13 @@
 
 #include "soundcore.h"
 
+
+SoundCore *SoundCore::m_instance = 0;
+
 SoundCore::SoundCore(QObject *parent)
         : QObject(parent)
 {
+    m_instance = this;
     m_decoder = 0;
     m_output = 0;
     m_input = 0;
@@ -40,6 +44,7 @@ SoundCore::SoundCore(QObject *parent)
     m_block = FALSE;
     m_preamp = 0;
     m_vis = 0;
+    m_parentWidget = 0;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
     m_error = NoError;
@@ -101,11 +106,17 @@ bool SoundCore::play(const QString &source)
 
     m_error = DecoderError;
 
-    if (m_vis)
+    Visual *visual = 0;
+    foreach(visual, m_visuals)
+        m_output->addVisual(visual);
+
+    VisualFactory* factory;
+    foreach(factory, *Visual::visualFactories())
     {
-        m_vis->setOutput(m_output);
-        m_output->addVisual(m_vis);
+        if(Visual::isEnabled(factory))
+            m_output->addVisual(factory, m_parentWidget);
     }
+
     m_source = source;
     if (source.left(4) != "http")
         return decode();
@@ -181,6 +192,12 @@ void SoundCore::stop()
         if (!m_output)
         {
             qWarning("SoundCore: unable to create output");
+        }
+        VisualFactory* factory;
+        foreach(factory, *Visual::visualFactories())
+        {
+            if(Visual::isEnabled(factory))
+                m_output->addVisual(factory, m_parentWidget);
         }
         connect(m_output, SIGNAL(stateChanged(const OutputState&)),
                 SIGNAL(outputStateChanged(const OutputState&)));
@@ -291,7 +308,12 @@ void SoundCore::updateConfig()
 
 void SoundCore::addVisualization(Visual *visual)
 {
-    m_vis = visual;
+    if (m_visuals.indexOf (visual) == -1)
+    {
+        m_visuals.append(visual);
+        if(m_output)
+            m_output->addVisual(visual);
+    }
 }
 
 bool SoundCore::decode()
@@ -330,4 +352,41 @@ bool SoundCore::decode()
     stop();
     m_block = FALSE;
     return FALSE;
+}
+
+void SoundCore::showVisualization(QWidget *parent)
+{
+    if (!m_parentWidget)
+    {
+        m_parentWidget = parent;
+        if(!m_output)
+            return;
+        VisualFactory* factory;
+        foreach(factory, *Visual::visualFactories())
+        {
+            if(Visual::isEnabled(factory))
+                m_output->addVisual(factory, m_parentWidget);
+        }
+    }
+}
+
+void SoundCore::addVisual(VisualFactory *factory, QWidget *parent)
+{
+    if(m_output)
+        m_output->addVisual(factory, parent);
+    else
+        Visual::setEnabled(factory, TRUE);
+}
+
+void SoundCore::removeVisual(VisualFactory *factory)
+{
+    if(m_output)
+        m_output->removeVisual(factory);
+    else
+        Visual::setEnabled(factory, FALSE);
+}
+
+SoundCore* SoundCore::instance()
+{
+    return m_instance;
 }

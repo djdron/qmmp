@@ -238,7 +238,7 @@
                <string>Player:</string>
               </property>
               <property name="alignment" >
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -254,7 +254,7 @@
                <string>Playlist:</string>
               </property>
               <property name="alignment" >
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -534,6 +534,23 @@
              </property>
              <item>
               <widget class="QTableWidget" name="outputPluginTable" >
+               <property name="selectionMode" >
+                <enum>QAbstractItemView::SingleSelection</enum>
+               </property>
+               <property name="selectionBehavior" >
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="tab" >
+            <attribute name="title" >
+             <string>Visualization</string>
+            </attribute>
+            <layout class="QHBoxLayout" >
+             <item>
+              <widget class="QTableWidget" name="visualPluginTable" >
                <property name="selectionMode" >
                 <enum>QAbstractItemView::SingleSelection</enum>
                </property>

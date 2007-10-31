@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,6 +34,7 @@ class QFileInfo;
 class Skin;
 class InputPluginItem;
 class OutputPluginItem;
+class VisualPluginItem;
 
 class ConfigDialog : public QDialog
 {
@@ -69,6 +70,7 @@ private:
 
     QList <InputPluginItem*> m_inputPluginItems;
     QList <OutputPluginItem*> m_outputPluginItems;
+    QList <VisualPluginItem*> m_visualPluginItems;
 };
 
 #endif

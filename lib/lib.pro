@@ -17,7 +17,8 @@ HEADERS += recycler.h \
            soundcore.h \
            streamreader.h \
            downloader.h \
- visual.h
+           visual.h \
+           visualfactory.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
@@ -28,7 +29,7 @@ SOURCES += recycler.cpp \
            streamreader.cpp \
            downloader.cpp \
            filetag.cpp \
- visual.cpp
+           visual.cpp
 
 TARGET = qmmp
 CONFIG += release \
@@ -53,7 +54,7 @@ unix {
     system($$LINE2)
     system($$LINE3)
     system($$LINE4)
-    QMAKE_CLEAN += ./config.h
+    QMAKE_CLEAN = ./config.h
 }
 
 target.path = $$LIB_DIR

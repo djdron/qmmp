@@ -44,6 +44,7 @@
 #include <addurldialog.h>
 #include "filedialog.h"
 #include "listwidget.h"
+#include "visualmenu.h"
 
 #define KEY_OFFSET 10
 
@@ -124,7 +125,8 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
     m_vis = MainVisual::getPointer();
 
     m_core = new SoundCore(this);
-    m_core -> addVisualization(m_vis);
+    m_core->addVisualization(m_vis);
+    m_core->showVisualization(this);
 
     connect(m_core, SIGNAL(outputStateChanged(const OutputState&)),
             SLOT(showOutputState(const OutputState&)));
@@ -459,7 +461,7 @@ void MainWindow::endSeek()
     seeking = FALSE;
 }
 
-void MainWindow::changeEvent ( QEvent * event )
+void MainWindow::changeEvent (QEvent * event)
 {
     if (event->type() == QEvent::ActivationChange)
     {
@@ -538,6 +540,7 @@ void MainWindow::showSettings()
         m_playlist->readSettings();
         TextScroller::getPointer()->readSettings();
         m_core->updateConfig();
+        m_visMenu->updateActions();
     }
     delete m_confDialog;
 }
@@ -586,6 +589,10 @@ void MainWindow::createActions()
     m_mainMenu->addAction(tr("&Queue"),m_playListModel, SLOT(addToQueue()), tr("Q"));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Jump To File"),this, SLOT(jumpToFile()), tr("J"));
+    m_mainMenu->addSeparator();
+    m_visMenu = new VisualMenu(this);
+    m_mainMenu->addMenu(m_visMenu);
+
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Settings"),this, SLOT(showSettings()), tr("Ctrl+P"));
     m_mainMenu->addSeparator();
@@ -808,5 +815,3 @@ void MainWindow::addUrl( )
 {
     AddUrlDialog::popup(this,m_playListModel);
 }
-
-

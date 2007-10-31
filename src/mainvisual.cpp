@@ -45,7 +45,7 @@ MainVisual *MainVisual::getPointer()
 }
 
 MainVisual::MainVisual (QWidget *parent)
-        : QWidget (parent), m_vis (0), m_playing (FALSE)
+        : Visual (parent), m_vis (0), m_playing (FALSE)
 {
     m_draw = TRUE;
     m_skin = Skin::getPointer();
@@ -72,6 +72,8 @@ MainVisual::~MainVisual()
     else
         settings.setValue("Visualization/type", "None");
     settings.setValue("Visualization/rate", 1000/m_timer->interval());
+    while (!m_nodes.isEmpty())
+        delete m_nodes.takeFirst();
 }
 
 void MainVisual::setVisual (VisualBase *newvis)
