@@ -17,76 +17,34 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLUGINITEM_H
-#define PLUGINITEM_H
 
-#include <QObject>
+#ifndef VISUALFACTORY_H
+#define VISUALFACTORY_H
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+class QObject;
+class QWidget;
+class QTranslator;
 
-class DecoderFactory;
-class OutputFactory;
-class VisualFactory;
+class Visual;
 
-class InputPluginItem : public QObject
+struct VisualProperties
 {
-    Q_OBJECT
-public:
-    InputPluginItem(QObject *parent, DecoderFactory *fact, const QString &filePath);
-
-    ~InputPluginItem();
-
-    bool isSelected();
-    DecoderFactory * factory();
-
-public slots:
-    void setSelected(bool);
-
-private:
-    QString m_fileName;
-    DecoderFactory *m_factory;
-
+    QString name;
+    bool hasAbout;
+    bool hasSettings;
 };
 
-class OutputPluginItem : public QObject
+class VisualFactory
 {
-    Q_OBJECT
 public:
-    OutputPluginItem(QObject *parent, OutputFactory *fact, const QString &filePath);
-
-    ~OutputPluginItem();
-
-    bool isSelected();
-    OutputFactory * factory();
-
-public slots:
-    void select();
-
-private:
-    QString m_fileName;
-    OutputFactory *m_factory;
-
+    virtual ~VisualFactory() {}
+    virtual const VisualProperties properties() const = 0;
+    virtual Visual *create(QWidget *parent) = 0;
+    virtual void showSettings(QWidget *parent) = 0;
+    virtual void showAbout(QWidget *parent) = 0;
+    virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
-class VisualPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    VisualPluginItem(QObject *parent, VisualFactory *fact, const QString &filePath);
-
-    ~VisualPluginItem();
-
-    bool isSelected();
-    VisualFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    QString m_fileName;
-    VisualFactory *m_factory;
-};
+Q_DECLARE_INTERFACE(VisualFactory, "VisualFactory/1.0");
 
 #endif

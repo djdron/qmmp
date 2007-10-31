@@ -138,6 +138,23 @@ public:
     */
     void addVisualization(Visual *visual);
 
+    /*!
+    * shows enabled visualization with parent widget \b parent
+    */
+    void showVisualization(QWidget *parent);
+
+    /*!
+    * adds visualization by factory \b factory
+    */
+    void addVisual(VisualFactory *factory, QWidget *parent);
+
+    /*!
+    * removes visualization by factory \b factory
+    */
+    void removeVisual(VisualFactory *factory);
+
+    static SoundCore* instance();
+
 signals:
 
     /*!
@@ -175,7 +192,10 @@ private:
     int m_preamp;
     int m_bands[10];
     Visual *m_vis;
+    QList <Visual*> m_visuals;
     QString m_source;
+    QWidget *m_parentWidget;
+    static SoundCore* m_instance;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,15 +25,20 @@
 */
 
 #include <QMutex>
+#include <QStringList>
+#include <QWidget>
+#include <QMap>
 
 class Buffer;
 class Decoder;
 class Output;
+class VisualFactory;
 
-class Visual
+class Visual : public QWidget
 {
+    Q_OBJECT
 public:
-    Visual();
+    Visual(QWidget *parent);
 
     virtual ~Visual();
 
@@ -46,11 +51,19 @@ public:
     void setOutput(Output *output);
     QMutex *mutex();
 
+    //static methods
+    static QList<VisualFactory*> *visualFactories();
+    static QStringList visualFiles();
+    static void setEnabled(VisualFactory* factory, bool enable = TRUE);
+    static bool isEnabled(VisualFactory* factory);
+
+protected:
+    virtual void closeEvent (QCloseEvent *);
+
 private:
     Decoder *m_decoder;
     Output *m_output;
     QMutex m_mutex;
-
 };
 
 #endif

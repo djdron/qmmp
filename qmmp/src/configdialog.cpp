@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,6 +30,7 @@
 #include <output.h>
 #include <decoderfactory.h>
 #include <outputfactory.h>
+#include <visualfactory.h>
 
 #include "skin.h"
 #include "filedialog.h"
@@ -42,6 +43,7 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
 {
     ui.setupUi ( this );
     setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_DeleteOnClose, FALSE);
     connect ( ui. contentsWidget,
               SIGNAL ( currentItemChanged ( QListWidgetItem *, QListWidgetItem * ) ),
               this, SLOT ( changePage ( QListWidgetItem *, QListWidgetItem* ) ) );
@@ -68,6 +70,8 @@ ConfigDialog::~ConfigDialog()
         delete m_outputPluginItems.takeFirst();
     while (!m_inputPluginItems.isEmpty())
         delete m_outputPluginItems.takeFirst();
+    while (!m_visualPluginItems.isEmpty())
+        delete m_visualPluginItems.takeFirst();
 }
 
 void ConfigDialog::readSettings()
@@ -226,7 +230,37 @@ void ConfigDialog::loadPluginsInfo()
     ui.outputPluginTable->resizeColumnToContents ( 0 );
     ui.outputPluginTable->resizeColumnToContents ( 1 );
     ui.outputPluginTable->resizeRowsToContents ();
+    /*
+        load visual plugin information
+    */
+    QList <VisualFactory *> *visuals = 0;
+    visuals = Visual::visualFactories();
+    files = Visual::visualFiles();
+    ui.visualPluginTable->setColumnCount ( 3 );
+    ui.visualPluginTable->verticalHeader()->hide();
+    ui.visualPluginTable->setHorizontalHeaderLabels ( QStringList()
+            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
+    ui.visualPluginTable->setRowCount ( visuals->count () );
+
+    for ( int i = 0; i < visuals->count (); ++i )
+    {
+        VisualPluginItem *item = new VisualPluginItem(this,visuals->at(i),files.at(i));
+        m_visualPluginItems.append(item);
+        QCheckBox* button = new QCheckBox (ui.visualPluginTable);
+        connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
+        button->setChecked (item->isSelected());
+        ui.visualPluginTable->setCellWidget ( i, 0, button );
+        ui.visualPluginTable->setItem (i,1,
+                            new QTableWidgetItem (item->factory()->properties().name));
+        ui.visualPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i)));
+    }
+
+    ui.visualPluginTable->resizeColumnToContents ( 0 );
+    ui.visualPluginTable->resizeColumnToContents ( 1 );
+    ui.visualPluginTable->resizeRowsToContents ();
+
 }
+
 
 void ConfigDialog::loadFonts()
 {
@@ -293,6 +327,14 @@ void ConfigDialog::showPluginSettings()
         m_outputPluginItems.at(row)->factory()->showSettings ( this );
         break;
     }
+    case 2:
+    {
+        int row = ui.visualPluginTable->currentRow ();
+        if ( m_visualPluginItems.isEmpty() || row < 0 )
+            return;
+        m_visualPluginItems.at(row)->factory()->showSettings ( this );
+        break;
+    }
     }
 }
 
@@ -317,6 +359,14 @@ void ConfigDialog::showPluginInfo()
         if ( m_outputPluginItems.isEmpty() || row < 0 )
             return;
         m_outputPluginItems.at(row)->factory()->showAbout ( this );
+        break;
+    }
+    case 2:
+    {
+        int row = ui.visualPluginTable->currentRow ();
+        if ( m_visualPluginItems.isEmpty() || row < 0 )
+            return;
+        m_visualPluginItems.at(row)->factory()->showAbout ( this );
         break;
     }
     }

@@ -17,76 +17,24 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLUGINITEM_H
-#define PLUGINITEM_H
+#ifndef VISUALMENU_H
+#define VISUALMENU_H
 
-#include <QObject>
+#include <QMenu>
 
 /**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
+	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
-class DecoderFactory;
-class OutputFactory;
-class VisualFactory;
-
-class InputPluginItem : public QObject
+class VisualMenu : public QMenu
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    InputPluginItem(QObject *parent, DecoderFactory *fact, const QString &filePath);
+    VisualMenu(QWidget *parent = 0);
 
-    ~InputPluginItem();
+    ~VisualMenu();
 
-    bool isSelected();
-    DecoderFactory * factory();
+void updateActions();
 
-public slots:
-    void setSelected(bool);
-
-private:
-    QString m_fileName;
-    DecoderFactory *m_factory;
-
-};
-
-class OutputPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    OutputPluginItem(QObject *parent, OutputFactory *fact, const QString &filePath);
-
-    ~OutputPluginItem();
-
-    bool isSelected();
-    OutputFactory * factory();
-
-public slots:
-    void select();
-
-private:
-    QString m_fileName;
-    OutputFactory *m_factory;
-
-};
-
-class VisualPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    VisualPluginItem(QObject *parent, VisualFactory *fact, const QString &filePath);
-
-    ~VisualPluginItem();
-
-    bool isSelected();
-    VisualFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    QString m_fileName;
-    VisualFactory *m_factory;
 };
 
 #endif

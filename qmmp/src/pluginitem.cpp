@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,8 @@
 
 #include <decoderfactory.h>
 #include <outputfactory.h>
+#include <visualfactory.h>
+#include <soundcore.h>
 
 #include "pluginitem.h"
 
@@ -86,6 +88,36 @@ bool OutputPluginItem::isSelected()
 }
 
 OutputFactory *OutputPluginItem::factory()
+{
+   return m_factory;
+}
+
+/*Visual*/
+VisualPluginItem::VisualPluginItem(QObject *parent, VisualFactory *fact,
+                                   const QString &filePath): QObject(parent)
+{
+    m_fileName = filePath.section('/',-1);
+    m_factory = fact;
+}
+
+
+VisualPluginItem::~VisualPluginItem()
+{}
+
+void VisualPluginItem::select(bool on)
+{
+    if(on)
+        SoundCore::instance()->addVisual(m_factory, 0);
+    else
+        SoundCore::instance()->removeVisual(m_factory);
+}
+
+bool VisualPluginItem::isSelected()
+{
+    return Visual::isEnabled(m_factory);
+}
+
+VisualFactory *VisualPluginItem::factory()
 {
    return m_factory;
 }

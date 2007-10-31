@@ -17,12 +17,11 @@ class Output;
 #include <QIODevice>
 #include "visual.h"
 #include "outputfactory.h"
+#include "visualfactory.h"
 
 #include "recycler.h"
 
 class QTimer;
-
-class Visualization;
 
 
 class OutputState
@@ -154,9 +153,6 @@ public:
         return &r;
     }
 
-    void addVisual(Visual*);
-    void removeVisual(Visual*);
-
     QMutex *mutex()
     {
         return &mtx;
@@ -166,6 +162,12 @@ public:
     {
         return m_vol;
     };
+
+    //visualization
+    void addVisual(Visual*);
+    void removeVisual(Visual*);
+    void addVisual(VisualFactory *factory, QWidget *parent);
+    void removeVisual(VisualFactory *factory);
 
     // abstract
     virtual bool isInitialized() const = 0;
@@ -204,7 +206,8 @@ protected:
 private:
     QMutex mtx;
     Recycler r;
-    QList<Visual*> visuals;
+    QList<Visual*> visuals; //external visualization
+    QMap<VisualFactory*, Visual*> m_vis_map; //internal visualization
     VolumeType m_vol;
 };
 

@@ -17,76 +17,37 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLUGINITEM_H
-#define PLUGINITEM_H
 
-#include <QObject>
+#include <QAction>
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+#include <visual.h>
+#include <visualfactory.h>
 
-class DecoderFactory;
-class OutputFactory;
-class VisualFactory;
+#include "pluginitem.h"
+#include "visualmenu.h"
 
-class InputPluginItem : public QObject
+VisualMenu::VisualMenu(QWidget *parent)
+ : QMenu(tr("Visualization"), parent)
 {
-    Q_OBJECT
-public:
-    InputPluginItem(QObject *parent, DecoderFactory *fact, const QString &filePath);
+    VisualFactory *factory = 0;
+    foreach(factory, *Visual::visualFactories())
+    {
+        QAction *act = this->addAction(factory->properties().name);
+        act->setCheckable (TRUE);
+        act->setChecked (Visual::isEnabled(factory));
+        VisualPluginItem *vi = new VisualPluginItem(this,factory, "");
+        connect(act, SIGNAL(toggled(bool)), vi, SLOT(select(bool)));
+    }
+}
 
-    ~InputPluginItem();
-
-    bool isSelected();
-    DecoderFactory * factory();
-
-public slots:
-    void setSelected(bool);
-
-private:
-    QString m_fileName;
-    DecoderFactory *m_factory;
-
-};
-
-class OutputPluginItem : public QObject
+VisualMenu::~VisualMenu()
 {
-    Q_OBJECT
-public:
-    OutputPluginItem(QObject *parent, OutputFactory *fact, const QString &filePath);
+}
 
-    ~OutputPluginItem();
-
-    bool isSelected();
-    OutputFactory * factory();
-
-public slots:
-    void select();
-
-private:
-    QString m_fileName;
-    OutputFactory *m_factory;
-
-};
-
-class VisualPluginItem : public QObject
+void VisualMenu::updateActions()
 {
-    Q_OBJECT
-public:
-    VisualPluginItem(QObject *parent, VisualFactory *fact, const QString &filePath);
-
-    ~VisualPluginItem();
-
-    bool isSelected();
-    VisualFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    QString m_fileName;
-    VisualFactory *m_factory;
-};
-
-#endif
+    for(int i = 0; i < Visual::visualFactories()->size(); ++i)
+    {
+        actions()[i]->setChecked(Visual::isEnabled(Visual::visualFactories()->at(i)));
+    }
+}

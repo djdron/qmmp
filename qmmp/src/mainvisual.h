@@ -68,7 +68,7 @@ public:
 
 class Skin;
 
-class MainVisual : public QWidget, public Visual
+class MainVisual : public Visual
 {
     Q_OBJECT
 
