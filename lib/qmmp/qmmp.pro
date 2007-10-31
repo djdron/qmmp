@@ -1,4 +1,5 @@
 
 SUBDIRS += Input \
-           Output 
+           Output \
+	   Visual 
 TEMPLATE = subdirs
