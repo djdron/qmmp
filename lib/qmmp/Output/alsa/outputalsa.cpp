@@ -261,6 +261,7 @@ void OutputALSA::run()
 
         done = m_userStop;
 
+        //qDebug("x1");
         while (! done && (recycler()->empty() || m_pause))
         {
             mutex()->unlock();
@@ -269,8 +270,8 @@ void OutputALSA::run()
             mutex()->lock ();
             done = m_userStop;
             status();
-
         }
+        //qDebug("x2");
 
         if (! b)
         {
@@ -301,8 +302,9 @@ void OutputALSA::run()
                 }
                 else if (m == -EAGAIN)
                 {
-                    //usleep(500);
+                    mutex()->unlock();
                     snd_pcm_wait(pcm_handle, 500);
+                    mutex()->lock();
                 }
                 else if (m == -EPIPE)
                 {
@@ -463,7 +465,7 @@ void OutputALSA::parseMixerName(char *str, char **name, int *index)
 
 snd_mixer_elem_t* OutputALSA::getMixerElem(snd_mixer_t *mixer, char *name, int index)
 {
-    snd_mixer_selem_id_t *selem_id;
+    snd_mixer_selem_id_t* selem_id;
     snd_mixer_elem_t* elem;
     snd_mixer_selem_id_alloca(&selem_id);
 
