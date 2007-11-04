@@ -1,0 +1,70 @@
+project(libanalyzer)
+
+cmake_minimum_required(VERSION 2.4.0)
+
+
+
+INCLUDE(FindQt4)
+
+find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
+include(${QT_USE_FILE})
+
+# qt plugin
+ADD_DEFINITIONS( -Wall )
+ADD_DEFINITIONS(${QT_DEFINITIONS})
+ADD_DEFINITIONS(-DQT_PLUGIN)
+ADD_DEFINITIONS(-DQT_NO_DEBUG)
+ADD_DEFINITIONS(-DQT_SHARED)
+ADD_DEFINITIONS(-DQT_THREAD)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+SET(QT_INCLUDES
+  ${QT_INCLUDES}
+  ${CMAKE_CURRENT_BINARY_DIR}/../../../
+)
+
+# libqmmp
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+
+SET(libanalyzer_SRCS
+    analyzer.cpp
+    colorwidget.cpp
+    settingsdialog.cpp
+    visualanalyzerfactory.cpp
+    fft.c
+)
+
+SET(libanalyzer_MOC_HDRS
+    analyzer.h
+    colorwidget.h
+    fft.h
+    inlines.h
+    settingsdialog.h
+    visualanalyzerfactory.h
+)
+
+#SET(libanalyzer_RCCS translations/translations.qrc)
+
+#QT4_ADD_RESOURCES(libanalyzer_RCC_SRCS ${libanalyzer_RCCS})
+
+QT4_WRAP_CPP(libanalyzer_MOC_SRCS ${libanalyzer_MOC_HDRS})
+
+# user interface
+
+
+SET(libanalyzer_UIS
+    settingsdialog.ui
+)
+
+QT4_WRAP_UI(libanalyzer_UIS_H ${libanalyzer_UIS})
+# Don't forget to include output directory, otherwise
+# the UI file won't be wrapped!
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+ADD_LIBRARY(analyzer SHARED ${libanalyzer_SRCS} ${libanalyzer_MOC_SRCS} ${libanalyzer_UIS_H}
+  ${libanalyzer_RCC_SRCS})
+target_link_libraries(analyzer ${QT_LIBRARIES} -lqmmp)
+install(TARGETS analyzer DESTINATION ${LIB_DIR}/qmmp/Visual PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
+

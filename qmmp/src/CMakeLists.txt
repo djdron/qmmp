@@ -28,106 +28,106 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../lib)
 link_directories(${CMAKE_INSTALL_PREFIX}/lib)
 
 SET(libsrc_SRCS
-  mainwindow.cpp
-  mp3player.cpp
-  fileloader.cpp
+  aboutdialog.cpp
+  addurldialog.cpp
+  balancebar.cpp
   button.cpp
-  display.cpp
-  skin.cpp
-  titlebar.cpp
-  positionbar.cpp
-  number.cpp
-  playlist.cpp
-  mediafile.cpp
-  listwidget.cpp
-  playlistmodel.cpp
-  pixmapwidget.cpp
-  playlisttitlebar.cpp
   configdialog.cpp
-  playlistslider.cpp
+  display.cpp
   dock.cpp
-  eqwidget.cpp
-  eqtitlebar.cpp
-  eqslider.cpp
-  togglebutton.cpp
   eqgraph.cpp
-  mainvisual.cpp
-  fft.c
+  eqpreset.cpp
+  eqslider.cpp
+  eqtitlebar.cpp
+  eqwidget.cpp
+  filedialog.cpp
+  fileloader.cpp
+  jumptotrackdialog.cpp
+  keyboardmanager.cpp
+  listwidget.cpp
   logscale.cpp
-  textscroller.cpp
+  mainvisual.cpp
+  mainwindow.cpp
+  mediafile.cpp
   monostereo.cpp
+  mp3player.cpp
+  number.cpp
+  pixmapwidget.cpp
+  playlistcontrol.cpp
+  playlist.cpp
+  playlistformat.cpp
+  playlistmodel.cpp
+  playlistslider.cpp
+  playlisttitlebar.cpp
+  playstate.cpp
   playstatus.cpp
   pluginitem.cpp
-  volumebar.cpp
-  balancebar.cpp
-  playstate.cpp
-  symboldisplay.cpp
-  playlistformat.cpp
-  playlistcontrol.cpp
-  qmmpstarter.cpp
-  tcpserver.cpp
-  guard.cpp
-  eqpreset.cpp
+  positionbar.cpp
   preseteditor.cpp
-  jumptotrackdialog.cpp
-  aboutdialog.cpp
-  timeindicator.cpp
-  keyboardmanager.cpp
-  addurldialog.cpp
-  filedialog.cpp
+  qmmpstarter.cpp
+  skin.cpp
   skinreader.cpp
+  symboldisplay.cpp
+  textscroller.cpp
+  timeindicator.cpp
+  titlebar.cpp
+  togglebutton.cpp
+  unixdomainsocket.cpp
+  visualmenu.cpp
+  volumebar.cpp
+  fft.c
 )
 
 SET(libsrc_MOC_HDRS
-  mainwindow.h
-  fileloader.h
+  aboutdialog.h
+  addurldialog.h
+  balancebar.h
   button.h
-  display.h
-  skin.h
-  titlebar.h
-  positionbar.h
-  number.h
-  playlist.h
-  mediafile.h
-  listwidget.h
-  playlistmodel.h
-  pixmapwidget.h
-  playlisttitlebar.h
   configdialog.h
-  playlistslider.h
+  display.h
   dock.h
-  eqwidget.h
-  eqtitlebar.h
-  eqslider.h
-  togglebutton.h
   eqgraph.h
-  mainvisual.h
-  inlines.h
+  eqpreset.h
+  eqslider.h
+  eqtitlebar.h
+  eqwidget.h
   fft.h
+  filedialog.h
+  fileloader.h
+  inlines.h
+  jumptotrackdialog.h
+  keyboardmanager.h
+  listwidget.h
   logscale.h
-  textscroller.h
+  mainvisual.h
+  mainwindow.h
+  mediafile.h
   monostereo.h
+  number.h
+  pixmapwidget.h
+  playlistcontrol.h
+  playlistformat.h
+  playlist.h
+  playlistmodel.h
+  playlistslider.h
+  playlisttitlebar.h
+  playstate.h
   playstatus.h
   pluginitem.h
-  volumebar.h
-  balancebar.h
-  playstate.h
-  symboldisplay.h
-  playlistformat.h
-  playlistcontrol.h
-  version.h
-  tcpserver.h
-  qmmpstarter.h
-  guard.h
-  eqpreset.h
+  positionbar.h
   preseteditor.h
-  jumptotrackdialog.h
-  aboutdialog.h
-  timeindicator.h
-  keyboardmanager.h
-  addurldialog.h
-  filedialog.h
+  qmmpstarter.h
+  skin.h
   skinreader.h
+  symboldisplay.h
+  textscroller.h
+  timeindicator.h
+  titlebar.h
+  togglebutton.h
+  unixdomainsocket.h
+  version.h
+  visualmenu.h
+  volumebar.h
 )
 
 SET(libsrc_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
@@ -157,4 +157,4 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_EXECUTABLE(qmmp ${libsrc_SRCS} ${libsrc_MOC_SRCS} ${libsrc_UIS_H}
   ${libsrc_RCC_SRCS})
 target_link_libraries(qmmp ${QT_LIBRARIES} -lqmmp)
-install(TARGETS qmmp DESTINATION bin PERMISSIONS WORLD_EXECUTE OWNER_READ OWNER_WRITE)
+install(TARGETS qmmp DESTINATION bin PERMISSIONS PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
