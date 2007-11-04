@@ -1,55 +1,63 @@
 #!/bin/sh
 
 
-clean () { rm -rf CMakeFiles; rm -f Makefile; rm -f cmake_install.cmake; rm -f CMakeCache.txt; }
+clear () { rm -rf CMakeFiles; rm -f Makefile; rm -f cmake_install.cmake; rm -f CMakeCache.txt; }
 
-make clean
-clean
+make clear
+clear
 #clear src 
 cd src
-clean
+clear
 cd ..
 #clear lib
 cd lib
-clean
+clear
 #clear qmmp
 cd qmmp
-clean
+clear
 #clear Input
 cd Input
-clean
+clear
 #clear ffmpeg
 cd ffmpeg
-clean
+clear
 #clear mad
 cd ..
 cd mad
-clean
+clear
 #clear mpc
 cd ..
 cd mpc 
-clean
+clear
 #clear flac
 cd ..
 cd flac
-clean
+clear
 #clear vorbis
 cd ..
 cd vorbis
-clean
+clear
 #clear Output
 cd ..
 cd ..
 cd Output 
-clean
+clear
 #clear alsa
 cd alsa 
-clean
+clear
 #clear jack
 cd ..
 cd jack 
-clean
-#clean oss
+clear
+#clear oss
 cd ..
 cd oss
-clean
+clear
+#clear visual
+cd ..
+cd ..
+cd Visual
+clear
+cd analyzer
+clear
+
