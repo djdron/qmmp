@@ -261,7 +261,6 @@ void OutputALSA::run()
 
         done = m_userStop;
 
-        //qDebug("x1");
         while (! done && (recycler()->empty() || m_pause))
         {
             mutex()->unlock();
@@ -271,7 +270,6 @@ void OutputALSA::run()
             done = m_userStop;
             status();
         }
-        //qDebug("x2");
 
         if (! b)
         {
