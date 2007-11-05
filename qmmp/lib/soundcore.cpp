@@ -243,7 +243,6 @@ void SoundCore::seek(int pos)
             m_decoder->seek(pos);
             m_decoder->mutex()->unlock();
         }
-        //m_output->mutex()->unlock();
     }
 }
 
