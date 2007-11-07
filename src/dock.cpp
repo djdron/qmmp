@@ -237,3 +237,9 @@ void Dock::addActions ( QList<QAction *> actions )
       m_widgetList.at ( i )->addActions ( actions );
 }
 
+bool Dock::isUnder(QWidget* upper, QWidget* nether)
+{
+    if (!isDocked(upper, nether))
+        return FALSE;
+    return abs (upper->y() + upper->height() - nether->y()) < 2;
+}

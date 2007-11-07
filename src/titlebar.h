@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                       *
- *   forkotov02@hotmail.ru                                                     *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -51,13 +51,13 @@ private slots:
     void showMainMenu();
 
 private:
-    Skin *skin;
-    QPoint pos;
-    MainWindow *mw;
-    Button *menu;
-    Button *minimize;
-    Button *shade;
-    Button *close;
+    Skin *m_skin;
+    QPoint m_pos;
+    MainWindow *m_mw;
+    Button *m_menu;
+    Button *m_minimize;
+    Button *m_shade;
+    Button *m_close;
     int x_diff, y_diff;
     
 

@@ -164,6 +164,8 @@ public:
         PL_BT_LST,
         PL_BT_SCROLL_N,
         PL_BT_SCROLL_P,
+        PL_BT_CLOSE_N,
+        PL_BT_CLOSE_P,
         /* eqmain.* */
         EQ_BT_BAR_N,
         EQ_BT_BAR_P,
@@ -177,6 +179,8 @@ public:
         EQ_BT_AUTO_1_P,
         EQ_BT_AUTO_0_N,
         EQ_BT_AUTO_0_P,
+        EQ_BT_CLOSE_N,
+        EQ_BT_CLOSE_P,
         /* shufrep.* */
         BT_EQ_ON_N,
         BT_EQ_ON_P,
@@ -186,6 +190,8 @@ public:
         BT_PL_ON_P,
         BT_PL_OFF_N,
         BT_PL_OFF_P,
+        BT_PL_CLOSE_N,
+        BT_PL_CLOSE_P,
         REPEAT_ON_N,
         REPEAT_ON_P,
         REPEAT_OFF_N,
@@ -200,13 +206,6 @@ public:
         /* balance.* */
         BT_BAL_N,
         BT_BAL_P,
-        // Playlist play/stop buttons
-        /*BT_PL_PLAY,
-         BT_PL_STOP,
-          BT_PL_PAUSE,
-          BT_PL_NEXT,
-        BT_PL_PREV,
-          BT_PL_EJECT*/
     };
     enum TitleBar
     {

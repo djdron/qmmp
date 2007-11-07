@@ -168,14 +168,16 @@ void MainDisplay::setEQ ( QWidget* w )
 {
     m_equlizer = w;
     m_eqButton->setON ( m_equlizer->isVisible() );
-    connect ( m_eqButton, SIGNAL ( clicked ( bool ) ), m_equlizer, SLOT ( setVisible ( bool ) ) );
+    connect (m_eqButton, SIGNAL (clicked(bool)), m_equlizer, SLOT (setVisible (bool)));
+    connect (m_equlizer, SIGNAL (closed ()), m_eqButton, SLOT (click()));
 }
 
 void MainDisplay::setPL ( QWidget* w )
 {
     m_playlist = w;
     m_plButton->setON ( m_playlist->isVisible() );
-    connect ( m_plButton, SIGNAL ( clicked ( bool ) ), m_playlist, SLOT ( setVisible ( bool ) ) );
+    connect (m_plButton, SIGNAL (clicked (bool)), m_playlist, SLOT (setVisible (bool)));
+    connect (m_playlist, SIGNAL (closed ()), m_plButton, SLOT (click()));
 }
 
 void MainDisplay::setInfo(const OutputState &st)
@@ -185,39 +187,39 @@ void MainDisplay::setInfo(const OutputState &st)
     switch ( ( int ) st.type() )
     {
     case OutputState::Info:
-        {
-            //if ( seeking )
-            // break;
-            setTime ( st.elapsedSeconds() );
-            m_kbps->display ( st.bitrate() );
-            m_freq->display ( st.frequency() /1000 );
-            m_monoster->setChannels ( st.channels() );
-            update();
-            break;
-        }
+    {
+        //if ( seeking )
+        // break;
+        setTime ( st.elapsedSeconds() );
+        m_kbps->display ( st.bitrate() );
+        m_freq->display ( st.frequency() /1000 );
+        m_monoster->setChannels ( st.channels() );
+        update();
+        break;
+    }
     case OutputState::Playing:
-        {
-            m_playstatus->setStatus(PlayStatus::PLAY);
-            m_timeIndicator->setNeedToShowTime(true);
-            break;
-        }
+    {
+        m_playstatus->setStatus(PlayStatus::PLAY);
+        m_timeIndicator->setNeedToShowTime(true);
+        break;
+    }
     case OutputState::Buffering:
-        {
-            //ui.label->setText("Buffering");
-            break;
-        }
+    {
+        //ui.label->setText("Buffering");
+        break;
+    }
     case OutputState::Paused:
-        {
-            m_playstatus->setStatus(PlayStatus::PAUSE);
-            break;
-        }
+    {
+        m_playstatus->setStatus(PlayStatus::PAUSE);
+        break;
+    }
     case OutputState::Stopped:
-        {
-            m_playstatus->setStatus(PlayStatus::STOP);
-            m_monoster->setChannels (0);
-            //m_timeIndicator->setNeedToShowTime(false);
-            break;
-        }
+    {
+        m_playstatus->setStatus(PlayStatus::STOP);
+        m_monoster->setChannels (0);
+        //m_timeIndicator->setNeedToShowTime(false);
+        break;
+    }
     case OutputState::Volume:
         //qDebug("volume %d, %d", st.rightVolume(), st.leftVolume());
         int maxVol = qMax(st.leftVolume(),st.rightVolume());
@@ -276,10 +278,9 @@ void MainDisplay::hideTimeDisplay()
 }
 
 
-
 void MainDisplay::mousePressEvent(QMouseEvent *e)
 {
-    if( e->button() == Qt::RightButton)
+    if ( e->button() == Qt::RightButton)
     {
         m_mw->menu()->exec(e->globalPos());
     }

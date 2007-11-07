@@ -44,12 +44,12 @@ public:
     void updateDock();
     QPoint snap(QPoint, QWidget*, QWidget*);
     void addActions(QList<QAction *> actions);
-    
 
     ~Dock();
 
 private:
     bool isDocked(QWidget*, QWidget*);
+    bool isUnder(QWidget*, QWidget*);
     static Dock *pointer;
     QWidget *m_mainWidget;
     QList <QWidget *> m_widgetList;

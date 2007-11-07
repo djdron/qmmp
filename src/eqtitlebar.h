@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,6 +30,7 @@ class QMouseEvent;
 
 class Skin;
 class MainWindow;
+class Button;
 
 class EqTitleBar : public PixmapWidget
 {
@@ -47,6 +48,7 @@ private:
     QPoint m_pos;
     QWidget* m_eq;
     MainWindow* m_mw;
+    Button* m_close;
 
 protected:
     void mousePressEvent(QMouseEvent*);

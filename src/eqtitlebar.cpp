@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include "skin.h"
 #include "dock.h"
 #include "mainwindow.h"
+#include "button.h"
 
 #include "eqtitlebar.h"
 
@@ -30,9 +31,12 @@ EqTitleBar::EqTitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
     m_skin = Skin::getPointer();
-    setActive(FALSE);
     m_eq = parentWidget();
     m_mw = qobject_cast<MainWindow*>(m_eq->parent());
+    m_close = new Button(this, Skin::EQ_BT_CLOSE_N, Skin::EQ_BT_CLOSE_P);
+    connect(m_close, SIGNAL(clicked()),m_eq, SIGNAL(closed()));
+    m_close->move(264,3);
+    setActive(FALSE);
 }
 
 
@@ -42,24 +46,30 @@ EqTitleBar::~EqTitleBar()
 void EqTitleBar::setActive(bool active)
 {
     if (active)
-       setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_A));
+    {
+        setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_A));
+        m_close->show();
+    }
     else
-       setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_I));
+    {
+        setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_I));
+        m_close->hide();
+    }
 }
 
 void EqTitleBar::mousePressEvent(QMouseEvent* event)
 {
-    switch((int) event->button ())
+    switch ((int) event->button ())
     {
-         case Qt::LeftButton:
-             {
-                 m_pos = event->pos();
-                 break;
-             }
-         case Qt::RightButton:
-             {
-                 m_mw->menu()->exec(event->globalPos());
-             }
+    case Qt::LeftButton:
+    {
+        m_pos = event->pos();
+        break;
+    }
+    case Qt::RightButton:
+    {
+        m_mw->menu()->exec(event->globalPos());
+    }
     }
 }
 

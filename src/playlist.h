@@ -67,6 +67,7 @@ class PlayList : public QWidget
         void loadPlaylist();
         void savePlaylist();
         void newPlaylist();
+        void closed();
 
     private slots:
         void showAddMenu();

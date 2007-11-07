@@ -22,6 +22,7 @@
 #include <QMenu>
 
 #include "dock.h"
+#include "button.h"
 #include "playlisttitlebar.h"
 #include "skin.h"
 
@@ -30,11 +31,17 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
 {
     m_active = FALSE;
     m_skin = Skin::getPointer();
-    resize(275,20);
+
     setSizeIncrement(25,1);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     m_pl = qobject_cast<PlayList*>(parent);
     m_mw = qobject_cast<MainWindow*>(m_pl->parent());
+
+    m_close = new Button(this,Skin::PL_BT_CLOSE_N, Skin::PL_BT_CLOSE_P);
+    connect (m_close, SIGNAL(clicked()), m_pl, SIGNAL(closed()));
+    m_close->move(264,3);
+    resize(275,20);
+    //setActive(FALSE);
 }
 
 
@@ -42,6 +49,7 @@ PlayListTitleBar::~PlayListTitleBar()
 {}
 void PlayListTitleBar::drawPixmap(int sx)
 {
+    m_close->move(264+sx*25,3);
     QPixmap pixmap(275+sx*25,20);
     pixmap.fill("black");
     QPainter paint;
@@ -55,6 +63,7 @@ void PlayListTitleBar::drawPixmap(int sx)
         }
         paint.drawPixmap(100-12+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_A));
         paint.drawPixmap(250+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_A));
+        m_close->show();
     }
     else
     {
@@ -65,6 +74,7 @@ void PlayListTitleBar::drawPixmap(int sx)
         }
         paint.drawPixmap(100-12+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_I));
         paint.drawPixmap(250+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_I));
+        m_close->hide();
     }
     paint.end();
     setPixmap(pixmap);

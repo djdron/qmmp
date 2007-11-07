@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,23 +31,23 @@
 TitleBar::TitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
-    skin = Skin::getPointer();
-    setPixmap(skin->getTitleBar(Skin::TITLEBAR_A));
-    mw = qobject_cast<MainWindow*>(parent);
+    m_skin = Skin::getPointer();
+    setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
+    m_mw = qobject_cast<MainWindow*>(parent);
     //buttons
-    menu = new Button(this,Skin::BT_MENU_N,Skin::BT_MENU_P);
-    connect(menu,SIGNAL(clicked()),this,SLOT(showMainMenu()));
-    menu->move(6,3);
-    minimize = new Button(this,Skin::BT_MINIMIZE_N,Skin::BT_MINIMIZE_P);
-    minimize->move(244,3);
-    connect(minimize, SIGNAL(clicked()), mw, SLOT(showMinimized()));
-    shade = new Button(this,Skin::BT_SHADE1_N,Skin::BT_SHADE1_P);
-    shade->move(254,3);
-    close = new Button(this,Skin::BT_CLOSE_N,Skin::BT_CLOSE_P);
-    close->move(264,3);
-	 connect(close, SIGNAL(clicked()), mw, SLOT(handleCloseRequest()));
+    m_menu = new Button(this,Skin::BT_MENU_N,Skin::BT_MENU_P);
+    connect(m_menu,SIGNAL(clicked()),this,SLOT(showMainMenu()));
+    m_menu->move(6,3);
+    m_minimize = new Button(this,Skin::BT_MINIMIZE_N,Skin::BT_MINIMIZE_P);
+    m_minimize->move(244,3);
+    connect(m_minimize, SIGNAL(clicked()), m_mw, SLOT(showMinimized()));
+    m_shade = new Button(this,Skin::BT_SHADE1_N,Skin::BT_SHADE1_P);
+    m_shade->move(254,3);
+    m_close = new Button(this,Skin::BT_CLOSE_N,Skin::BT_CLOSE_P);
+    m_close->move(264,3);
+    connect(m_close, SIGNAL(clicked()), m_mw, SLOT(handleCloseRequest()));
     setActive(FALSE);
-    connect(skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 }
 
 
@@ -62,16 +62,16 @@ void TitleBar::mousePressEvent(QMouseEvent* event)
     {
          case Qt::LeftButton:
              {
-                 pos = event->pos();
-                 PlayList *pl = mw->getPLPointer();
+                 m_pos = event->pos();
+                 PlayList *pl = m_mw->getPLPointer();
                  Dock::getPointer()->calculateDistances();
-                 x_diff = - mw->x() + pl->x();
-                 y_diff = - mw->y() + pl->y();
+                 x_diff = - m_mw->x() + pl->x();
+                 y_diff = - m_mw->y() + pl->y();
                  break;
              }
          case Qt::RightButton:
              {
-                 mw->menu()->exec(event->globalPos());
+                 m_mw->menu()->exec(event->globalPos());
              }
     }
 }
@@ -82,27 +82,27 @@ void TitleBar::mouseReleaseEvent(QMouseEvent*)
 }
 void TitleBar::mouseMoveEvent(QMouseEvent* event)
 {
-    QPoint npos = (event->globalPos()-pos);
-    Dock::getPointer()->move(mw, npos);
+    QPoint npos = (event->globalPos()-m_pos);
+    Dock::getPointer()->move(m_mw, npos);
 }
 
 void TitleBar::setActive(bool a)
 {
     if(a)
     {
-        setPixmap(skin->getTitleBar(Skin::TITLEBAR_A));
-        menu->show();
-        minimize->show();
-        shade->show();
-        close->show();
+        setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
+        m_menu->show();
+        m_minimize->show();
+        m_shade->show();
+        m_close->show();
     }
     else
     {
-        setPixmap(skin->getTitleBar(Skin::TITLEBAR_I));
-        menu->hide();
-        minimize->hide();
-        shade->hide();
-        close->hide();
+        setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_I));
+        m_menu->hide();
+        m_minimize->hide();
+        m_shade->hide();
+        m_close->hide();
     }
 }
 
@@ -113,5 +113,5 @@ void TitleBar::updateSkin()
 
 void TitleBar::showMainMenu()
 {
-    mw->menu()->exec(menu->mapToGlobal(menu->pos()));
+    m_mw->menu()->exec(m_menu->mapToGlobal(m_menu->pos()));
 }
