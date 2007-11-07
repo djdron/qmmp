@@ -54,6 +54,7 @@ public:
 
 signals:
     void valueChanged();
+    void closed();
 
 private slots:
     void updateSkin();

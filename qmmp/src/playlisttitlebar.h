@@ -29,6 +29,7 @@
 */
 class Skin;
 class MainWindow;
+class Button;
 
 class PlayListTitleBar : public PixmapWidget
 {
@@ -50,6 +51,7 @@ private:
     bool m_active;
     PlayList* m_pl;
     MainWindow* m_mw;
+    Button* m_close;
 
 protected:
     void resizeEvent(QResizeEvent*);

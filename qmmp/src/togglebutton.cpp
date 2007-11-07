@@ -50,6 +50,13 @@ void ToggleButton::updateSkin()
    setON ( m_on );
 }
 
+void ToggleButton::click()
+{
+    m_on = !m_on;
+    setON (m_on);
+    emit clicked(m_on);
+}
+
 void ToggleButton::setON ( bool on )
 {
    m_on = on;

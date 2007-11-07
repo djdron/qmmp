@@ -264,6 +264,9 @@ void Skin::loadPlayList()
     buttons[PL_BT_SCROLL_N] = pixmap->copy ( 52,53,8,18 );
     buttons[PL_BT_SCROLL_P] = pixmap->copy ( 61,53,8,18 );
 
+    buttons[PL_BT_CLOSE_N] = pixmap->copy (167,3,9,9);
+    buttons[PL_BT_CLOSE_P] = pixmap->copy (52,42,9,9);
+
 }
 
 QPixmap *Skin::getPixmap ( const QString& name )
@@ -360,6 +363,9 @@ void Skin::loadEqMain()
     buttons[ EQ_BT_AUTO_0_N ] = pixmap->copy ( 35, 119,33,12 );
     buttons[ EQ_BT_AUTO_0_P ] = pixmap->copy ( 212,119,33,12 );
 
+    buttons[ EQ_BT_CLOSE_N ] = pixmap->copy ( 0,116,9,9 );
+    buttons[ EQ_BT_CLOSE_P ] = pixmap->copy ( 0,125,9,9 );
+
     for ( int i = 0; i < 19; ++i )
     {
         m_eq_spline << pixmap->copy ( 115, 294+i, 1, 1 );
@@ -444,6 +450,9 @@ void Skin::loadShufRep()
     buttons[ BT_PL_ON_P ] = pixmap->copy ( 69,73,23,12 );
     buttons[ BT_PL_OFF_N ] = pixmap->copy ( 23,61,23,12 );
     buttons[ BT_PL_OFF_P ] = pixmap->copy ( 69,61,23,12 );
+
+    //buttons[ BT_PL_CLOSE_N ] = pixmap->copy ();
+    //buttons[ BT_PL_CLOSE_P ] = pixmap->copy ();
 
     buttons[REPEAT_ON_N] = pixmap->copy ( 0,30, 28, 15 );
     buttons[REPEAT_ON_P] = pixmap->copy ( 0,45, 28, 15 );

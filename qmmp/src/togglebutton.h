@@ -41,6 +41,9 @@ public:
 signals:
     void clicked(bool);
 
+public slots:
+    void click();
+
 private slots:
     void updateSkin();
 
