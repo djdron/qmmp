@@ -262,9 +262,11 @@ void DecoderFFmpeg::run()
         inbuf_ptr = pkt.data;
 
         out_size = 0;
+
         while (size > 0)
         {
-            l = avcodec_decode_audio(c, (int16_t *)(wma_outbuf), &out_size, inbuf_ptr, size);
+            out_size = AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t);
+            l = avcodec_decode_audio2(c, (int16_t *)(wma_outbuf), &out_size, inbuf_ptr, size);
 
             if(l < 0)
                 goto end;
