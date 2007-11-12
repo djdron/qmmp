@@ -63,7 +63,7 @@ private:
 
     AVFormatContext *ic;
     AVCodecContext *c;
-    int wma_st_buff, wma_idx, wma_idx2;
+    uint wma_st_buff, wma_idx, wma_idx2;
     uint8_t *wma_outbuf;
 
     unsigned int bks;
@@ -75,4 +75,4 @@ private:
 };
 
 
-#endif // __decoder_mpc_h
+#endif // __decoder_ffmpeg_h
