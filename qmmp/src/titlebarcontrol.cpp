@@ -17,66 +17,42 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef TITLEBAR_H
-#define TITLEBAR_H
 
-#include <QMainWindow>
-#include <QPoint>
+#include <QMouseEvent>
 
-#include "pixmapwidget.h"
-#include "playlist.h"
-#include "mainwindow.h"
+#include "titlebarcontrol.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class MainWindow;
-class QMouseEvent;
-
-class Skin;
-class Button;
-class SymbolDisplay;
-class TitleBarControl;
-class ShadedVisual;
-
-class TitleBar : public PixmapWidget
+TitleBarControl::TitleBarControl(QWidget *parent)
+ : QWidget(parent)
 {
-Q_OBJECT
-public:
-    TitleBar(QWidget *parent = 0);
-
-    ~TitleBar();
-
-    void setActive(bool);
-    void setInfo(const OutputState &st);
-
-private slots:
-    void updateSkin();
-    void showMainMenu();
-    void shade();
-
-private:
-    Skin *m_skin;
-    QPoint m_pos;
-    MainWindow *m_mw;
-    Button *m_menu;
-    Button *m_minimize;
-    Button *m_shade;
-    Button *m_shade2;
-    Button *m_close;
-    SymbolDisplay *m_currentTime;
-    QString formatTime (int);
-    bool m_shaded;
-    bool m_align;
-    TitleBarControl *m_control;
-    ShadedVisual *m_visual;
-
-protected:
-    void mousePressEvent(QMouseEvent*);
-    void mouseReleaseEvent(QMouseEvent*);
-    void mouseMoveEvent(QMouseEvent*);
-};
+    //setAutoFillBackground(TRUE);
+    setFixedSize(57,10);
+}
 
 
+TitleBarControl::~TitleBarControl()
+{
+}
 
-#endif
+void TitleBarControl::mousePressEvent (QMouseEvent *)
+{}
+
+void TitleBarControl::mouseReleaseEvent (QMouseEvent * event)
+{
+    QPoint pt = event->pos();
+    if(QRect(0,0,8,10).contains(pt))
+        emit previousClicked();
+    else if(QRect(8,0,11,10).contains(pt))
+        emit playClicked();
+    else if(QRect(19,0,10,10).contains(pt))
+        emit pauseClicked();
+    else if(QRect(29,0,8,10).contains(pt))
+        emit stopClicked();
+    else if(QRect(37,0,10,10).contains(pt))
+        emit nextClicked();
+    else if(QRect(47,0,10,10).contains(pt))
+        emit ejectClicked();
+}
+
+void TitleBarControl::mouseMoveEvent(QMouseEvent*)
+{}

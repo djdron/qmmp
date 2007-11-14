@@ -76,6 +76,8 @@ SET(libsrc_SRCS
   visualmenu.cpp
   volumebar.cpp
   fft.c
+  shadedvisual.cpp
+  titlebarcontrol.cpp
 )
 
 SET(libsrc_MOC_HDRS
@@ -128,6 +130,8 @@ SET(libsrc_MOC_HDRS
   version.h
   visualmenu.h
   volumebar.h
+  shadedvisual.h
+  titlebarcontrol.h
 )
 
 SET(libsrc_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)

@@ -134,7 +134,7 @@ public:
 
     //visualization
     /*!
-    * adds visualization
+    * adds visualization \b visual
     */
     void addVisualization(Visual *visual);
 
@@ -152,6 +152,11 @@ public:
     * removes visualization by factory \b factory
     */
     void removeVisual(VisualFactory *factory);
+
+    /*!
+    * removes visualization \b visual
+    */
+    void removeVisual(Visual *visual);
 
     static SoundCore* instance();
 

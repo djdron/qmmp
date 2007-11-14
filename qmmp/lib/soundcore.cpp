@@ -385,6 +385,16 @@ void SoundCore::removeVisual(VisualFactory *factory)
         Visual::setEnabled(factory, FALSE);
 }
 
+void SoundCore::removeVisual(Visual *visual)
+{
+    if (m_visuals.indexOf (visual) != -1)
+    {
+        m_visuals.removeAll(visual);
+        if(m_output)
+            m_output->removeVisual(visual);
+    }
+}
+
 SoundCore* SoundCore::instance()
 {
     return m_instance;

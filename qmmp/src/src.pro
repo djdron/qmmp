@@ -139,8 +139,12 @@ INSTALLS += target
 
 HEADERS += addurldialog.h \
  skinreader.h \
- visualmenu.h
+ visualmenu.h \
+ titlebarcontrol.h \
+ shadedvisual.h
 SOURCES += addurldialog.cpp \
  skinreader.cpp \
- visualmenu.cpp
+ visualmenu.cpp \
+ titlebarcontrol.cpp \
+ shadedvisual.cpp
 FORMS += addurldialog.ui

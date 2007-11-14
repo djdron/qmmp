@@ -106,6 +106,7 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
 
     createActions();
 
+    m_core = new SoundCore(this);
     m_titlebar = new TitleBar(this);
     m_titlebar->move(0,0);
     m_titlebar->show();
@@ -124,7 +125,6 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
 
     m_vis = MainVisual::getPointer();
 
-    m_core = new SoundCore(this);
     m_core->addVisualization(m_vis);
     m_core->showVisualization(this);
 
@@ -306,6 +306,7 @@ void MainWindow::showOutputState(const OutputState &st)
 
     display->setInfo(st);
     m_playlist->setInfo(st, m_core->length(), m_playListModel->totalLength());
+    m_titlebar->setInfo(st);
     switch ((int) st.type())
     {
     case OutputState::Playing:
