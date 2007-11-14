@@ -82,7 +82,7 @@ public:
 
     void add(Buffer *, unsigned long, int, int);
     void clear();
-    void paintEvent( QPaintEvent * );
+    void paintEvent(QPaintEvent *);
 
 protected:
     virtual void hideEvent (QHideEvent *);

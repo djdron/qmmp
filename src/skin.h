@@ -153,6 +153,9 @@ public:
         BT_SHADE1_P,
         BT_SHADE2_N,
         BT_SHADE2_P,
+        BT_CLOSE_SHADED_N,
+        BT_CLOSE_SHADED_P,
+
         /* posbar.* */
         BT_POSBAR_N,
         BT_POSBAR_P,
@@ -211,8 +214,8 @@ public:
     {
         TITLEBAR_A = 0,
         TITLEBAR_I,
-        STATUSBAR_A,
-        STATUSBAR_I
+        TITLEBAR_SHADED_A,
+        TITLEBAR_SHADED_I,
     };
     enum PlayList
     {

@@ -165,8 +165,8 @@ void Skin::loadTitleBar()
     buttons[BT_SHADE2_P] = pixmap->copy ( 9,27,9,9 );
     titlebar[TITLEBAR_A] = pixmap->copy ( 27, 0,275,14 );
     titlebar[TITLEBAR_I] = pixmap->copy ( 27,15,275,14 );
-    titlebar[STATUSBAR_A] = pixmap->copy ( 27,29,275,14 );
-    titlebar[STATUSBAR_I] = pixmap->copy ( 27,42,275,14 );
+    titlebar[TITLEBAR_SHADED_A] = pixmap->copy ( 27,29,275,14 );
+    titlebar[TITLEBAR_SHADED_I] = pixmap->copy ( 27,42,275,14 );
     delete pixmap;
 
 }

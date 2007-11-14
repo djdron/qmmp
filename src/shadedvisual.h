@@ -17,66 +17,53 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef TITLEBAR_H
-#define TITLEBAR_H
+#ifndef SHADEDVISUAL_H
+#define SHADEDVISUAL_H
 
-#include <QMainWindow>
-#include <QPoint>
 
-#include "pixmapwidget.h"
-#include "playlist.h"
-#include "mainwindow.h"
+#include <QPainter>
+#include <visual.h>
+#include <buffer.h>
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class MainWindow;
-class QMouseEvent;
+class QTimer;
+class QPixmap;
 
 class Skin;
-class Button;
-class SymbolDisplay;
-class TitleBarControl;
-class ShadedVisual;
+class VisualNode;
 
-class TitleBar : public PixmapWidget
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class ShadedVisual : public Visual
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    TitleBar(QWidget *parent = 0);
+    ShadedVisual(QWidget *parent = 0);
 
-    ~TitleBar();
+    ~ShadedVisual();
 
-    void setActive(bool);
-    void setInfo(const OutputState &st);
+    void add(Buffer *, unsigned long, int, int);
+    void clear();
+
+    void paintEvent (QPaintEvent *);
+    void hideEvent (QHideEvent *);
+    void showEvent (QShowEvent *);
+
+public slots:
+    void timeout();
 
 private slots:
     void updateSkin();
-    void showMainMenu();
-    void shade();
 
 private:
+    void process (VisualNode *node);
+    void draw (QPainter *);
     Skin *m_skin;
-    QPoint m_pos;
-    MainWindow *m_mw;
-    Button *m_menu;
-    Button *m_minimize;
-    Button *m_shade;
-    Button *m_shade2;
-    Button *m_close;
-    SymbolDisplay *m_currentTime;
-    QString formatTime (int);
-    bool m_shaded;
-    bool m_align;
-    TitleBarControl *m_control;
-    ShadedVisual *m_visual;
+    QTimer *m_timer;
+    QPixmap m_pixmap;
+    QList <VisualNode*> m_nodes;
+    double m_l, m_r;
 
-protected:
-    void mousePressEvent(QMouseEvent*);
-    void mouseReleaseEvent(QMouseEvent*);
-    void mouseMoveEvent(QMouseEvent*);
 };
-
-
 
 #endif

@@ -36,6 +36,8 @@ class Dock : public QObject
 public:
     Dock(QObject *parent = 0);
 
+    ~Dock();
+
     static Dock *getPointer();
     void setMainWidget(QWidget*);
     void addWidget(QWidget *);
@@ -44,12 +46,11 @@ public:
     void updateDock();
     QPoint snap(QPoint, QWidget*, QWidget*);
     void addActions(QList<QAction *> actions);
-
-    ~Dock();
+    void align(QWidget*, int dy);
 
 private:
     bool isDocked(QWidget*, QWidget*);
-    bool isUnder(QWidget*, QWidget*);
+    bool isUnder(QWidget*, QWidget*, int);
     static Dock *pointer;
     QWidget *m_mainWidget;
     QList <QWidget *> m_widgetList;
@@ -57,8 +58,6 @@ private:
     QList <int> x_list;
     QList <int> y_list;
     QList <QAction *> m_actions;
-
-
 };
 
 #endif
