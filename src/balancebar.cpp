@@ -88,11 +88,7 @@ void BalanceBar::mouseReleaseEvent(QMouseEvent*)
 {
     m_moving = FALSE;
     draw(FALSE);
-    if (m_value!=m_old)
-    {
-        m_old = m_value;
-    }
-
+    m_old = m_value;
 }
 
 void BalanceBar::setValue(int v)

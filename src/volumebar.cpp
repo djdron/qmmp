@@ -89,12 +89,7 @@ void VolumeBar::mouseReleaseEvent(QMouseEvent*)
 {
     m_moving = FALSE;
     draw(FALSE);
-    if (m_value!=m_old)
-    {
-        m_old = m_value;
-        //mw->seek(m_value);
-    }
-
+    m_old = m_value;
 }
 
 void VolumeBar::setValue(int v)
