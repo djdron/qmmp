@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -91,6 +91,7 @@ void Skin::setSkin ( const QString& path )
     m_pl_parts.clear();
     loadPlayList();
     m_eq_parts.clear();
+    loadEq_ex();
     m_eq_bar.clear();
     m_eq_spline.clear();
     loadEqMain();
@@ -365,6 +366,7 @@ void Skin::loadEqMain()
 
     buttons[ EQ_BT_CLOSE_N ] = pixmap->copy ( 0,116,9,9 );
     buttons[ EQ_BT_CLOSE_P ] = pixmap->copy ( 0,125,9,9 );
+    buttons[ EQ_BT_SHADE1_N ] = pixmap->copy ( 254,137,9,9 );
 
     for ( int i = 0; i < 19; ++i )
     {
@@ -372,6 +374,28 @@ void Skin::loadEqMain()
     }
     delete pixmap;
 
+}
+
+void Skin::loadEq_ex()
+{
+    QPixmap *pixmap = getPixmap ("eq_ex");
+
+    if (!pixmap)
+        pixmap = getDummyPixmap("eq_ex");
+
+    buttons[ EQ_BT_SHADE1_P ] = pixmap->copy (1,38,9,9);
+    buttons[ EQ_BT_SHADE2_N ] = pixmap->copy (254,3,9,9);
+    buttons[ EQ_BT_SHADE2_P ] = pixmap->copy (1,47,9,9);
+    m_eq_parts[ EQ_TITLEBAR_SHADED_A ] = pixmap->copy(0,0,275,14);
+    m_eq_parts[ EQ_TITLEBAR_SHADED_I ] = pixmap->copy(0,15,275,14);
+    m_eq_parts[ EQ_VOLUME1 ] = pixmap->copy(1,30,3,8);
+    m_eq_parts[ EQ_VOLUME2 ] = pixmap->copy(4,30,3,8);
+    m_eq_parts[ EQ_VOLUME3 ] = pixmap->copy(7,30,3,8);
+    m_eq_parts[ EQ_BALANCE1 ] = pixmap->copy(11,30,3,8);
+    m_eq_parts[ EQ_BALANCE2 ] = pixmap->copy(14,30,3,8);
+    m_eq_parts[ EQ_BALANCE3 ] = pixmap->copy(17,30,3,8);
+
+    delete pixmap;
 }
 
 void Skin::loadVisColor()

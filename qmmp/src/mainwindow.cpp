@@ -307,6 +307,7 @@ void MainWindow::showOutputState(const OutputState &st)
     display->setInfo(st);
     m_playlist->setInfo(st, m_core->length(), m_playListModel->totalLength());
     m_titlebar->setInfo(st);
+    m_equalizer->setInfo(st);
     switch ((int) st.type())
     {
     case OutputState::Playing:
