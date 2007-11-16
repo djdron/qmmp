@@ -3,7 +3,7 @@
 
 clear () { rm -rf CMakeFiles; rm -f Makefile; rm -f cmake_install.cmake; rm -f CMakeCache.txt; }
 
-make clear
+make clean
 clear
 #clear src 
 cd src

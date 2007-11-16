@@ -17,57 +17,61 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef EQTITLEBAR_H
-#define EQTITLEBAR_H
+#ifndef SHADEDBAR_H
+#define SHADEDBAR_H
 
-#include <pixmapwidget.h>
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+#include <QWidget>
 
 class QMouseEvent;
+class QPaintEvent;
 
 class Skin;
-class MainWindow;
-class Button;
-class ShadedBar;
 
-class EqTitleBar : public PixmapWidget
+
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class ShadedBar : public QWidget
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    EqTitleBar(QWidget *parent = 0);
+    ShadedBar(QWidget *parent = 0, uint slider1 = 0, uint slider2 = 0, uint slider3 = 0);
 
-    ~EqTitleBar();
+    ~ShadedBar();
+    int value()
+    {
+        return m_value;
+    };
+    int isPressed()
+    {
+        return m_moving;
+    }
+    void setRange(int min, int max);
 
-    void setActive(bool);
-    void setVolume(int left, int right);
+public slots:
+    void setValue(int);
+
+signals:
+    void sliderMoved (int);
 
 private slots:
-    void shade();
-    void updateVolume();
+    void updateSkin();
 
 private:
-    Skin* m_skin;
-    bool m_active;
-    int m_left;
-    int m_right;
-    QPoint m_pos;
-    QWidget* m_eq;
-    MainWindow* m_mw;
-    Button* m_close;
-    Button* m_shade;
-    Button* m_shade2;
-    bool m_shaded, m_align;
-    ShadedBar* m_volumeBar;
-    ShadedBar* m_balanceBar;
+    Skin *m_skin;
+    bool m_moving;
+    int press_pos;
+    int m_max, m_min, m_pos, m_value, m_old, m_x;
+    QPixmap m_pixmap;
+    int convert(int);   // value = convert(position);
+    void draw();
+    uint m_slider1, m_slider2, m_slider3;
 
 protected:
     void mousePressEvent(QMouseEvent*);
     void mouseReleaseEvent(QMouseEvent*);
     void mouseMoveEvent(QMouseEvent*);
-
+    void paintEvent(QPaintEvent*);
 };
 
 #endif

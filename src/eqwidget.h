@@ -21,6 +21,7 @@
 #define EQWIDGET_H
 
 #include <pixmapwidget.h>
+#include <output.h>
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -51,6 +52,11 @@ public:
     * necessary for auto-load presets
     */
     void loadPreset(const QString &name);
+
+    /*!
+    * shows output volume and balance. Necessare for the shaded mode
+    */
+    void setInfo(const OutputState &st);
 
 signals:
     void valueChanged();

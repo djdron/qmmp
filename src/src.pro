@@ -141,10 +141,12 @@ HEADERS += addurldialog.h \
  skinreader.h \
  visualmenu.h \
  titlebarcontrol.h \
- shadedvisual.h
+ shadedvisual.h \
+ shadedbar.h
 SOURCES += addurldialog.cpp \
  skinreader.cpp \
  visualmenu.cpp \
  titlebarcontrol.cpp \
- shadedvisual.cpp
+ shadedvisual.cpp \
+ shadedbar.cpp
 FORMS += addurldialog.ui

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -184,6 +184,13 @@ public:
         EQ_BT_AUTO_0_P,
         EQ_BT_CLOSE_N,
         EQ_BT_CLOSE_P,
+        EQ_BT_SHADE1_N,
+
+        /* eq_ex.* */
+        EQ_BT_SHADE1_P,
+        EQ_BT_SHADE2_N,
+        EQ_BT_SHADE2_P,
+
         /* shufrep.* */
         BT_EQ_ON_N,
         BT_EQ_ON_P,
@@ -243,6 +250,14 @@ public:
         EQ_TITLEBAR_A,
         EQ_TITLEBAR_I,
         EQ_GRAPH,
+        EQ_TITLEBAR_SHADED_A,
+        EQ_TITLEBAR_SHADED_I,
+        EQ_VOLUME1,
+        EQ_VOLUME2,
+        EQ_VOLUME3,
+        EQ_BALANCE1,
+        EQ_BALANCE2,
+        EQ_BALANCE3,
     };
     enum MonoSter
     {
@@ -300,6 +315,7 @@ private:
     void loadPlayList();
     void loadPLEdit();
     void loadEqMain();
+    void loadEq_ex();
     void loadVisColor();
     void loadShufRep();
     void loadLetters();
