@@ -28,7 +28,7 @@
 #include "shadedvisual.h"
 
 ShadedVisual::ShadedVisual(QWidget *parent)
- : Visual(parent)
+        : Visual(parent)
 {
     setFixedSize(38,5);
     m_pixmap = QPixmap (38,5);
@@ -43,10 +43,9 @@ ShadedVisual::ShadedVisual(QWidget *parent)
 
 
 ShadedVisual::~ShadedVisual()
-{
-}
+{}
 
-void ShadedVisual::add(Buffer *b, unsigned long w, int c, int p) 
+void ShadedVisual::add(Buffer *b, unsigned long w, int c, int p)
 {
     if (!m_timer->isActive ())
         return;
@@ -87,7 +86,7 @@ void ShadedVisual::add(Buffer *b, unsigned long w, int c, int p)
 
 void ShadedVisual::clear()
 {
-     while (!m_nodes.isEmpty())
+    while (!m_nodes.isEmpty())
         m_nodes.removeFirst();
     m_l = 0;
     m_r = 0;
@@ -148,15 +147,22 @@ void ShadedVisual::process (VisualNode *node)
     for (int i = 0; i < 75; ++i)
     {
         pos += step;
-        j_l = abs((node->left[pos >> 8] >> 12));
-        j_r = abs((node->right[pos >> 8] >> 12));
 
-        if (j_l > 15)
-            j_l = 15;
-        if (j_r > 15)
-            j_r = 15;
-        l = qMax(l, j_l);
-        r = qMax(r, j_r);
+        if (node->left)
+        {
+            j_l = abs((node->left[pos >> 8] >> 12));
+
+            if (j_l > 15)
+                j_l = 15;
+            l = qMax(l, j_l);
+        }
+        if (node->right)
+        {
+            j_r = abs((node->right[pos >> 8] >> 12));
+            if (j_r > 15)
+                j_r = 15;
+            r = qMax(r, j_r);
+        }
     }
     m_l -= 0.5;
     m_l = m_l > l ? m_l : l;
@@ -166,11 +172,11 @@ void ShadedVisual::process (VisualNode *node)
 
 void ShadedVisual::draw (QPainter *p)
 {
-    for(int i = 0; i < m_l; ++i)
+    for (int i = 0; i < m_l; ++i)
     {
         p->fillRect (i*3, 0, 3, 2, QBrush(m_skin->getVisColor (17-i)));
     }
-    for(int i = 0; i < m_r; ++i)
+    for (int i = 0; i < m_r; ++i)
     {
         p->fillRect (i*3, 3, 3, 2, QBrush(m_skin->getVisColor (17-i)));
     }
