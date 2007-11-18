@@ -169,6 +169,11 @@ public:
         PL_BT_SCROLL_P,
         PL_BT_CLOSE_N,
         PL_BT_CLOSE_P,
+        PL_BT_SHADE1_N,
+        PL_BT_SHADE1_P,
+        PL_BT_SHADE2_N,
+        PL_BT_SHADE2_P,
+
         /* eqmain.* */
         EQ_BT_BAR_N,
         EQ_BT_BAR_P,
@@ -242,7 +247,11 @@ public:
         PL_RSBAR,
         PL_SFILL1,
         PL_SFILL2,
-        PL_CONTROL
+        PL_CONTROL,
+        PL_TITLEBAR_SHADED1_A,
+        PL_TITLEBAR_SHADED1_I,
+        PL_TITLEBAR_SHADED2,
+        PL_TFILL_SHADED,
     };
     enum Equalizer
     {

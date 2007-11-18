@@ -254,6 +254,10 @@ void Skin::loadPlayList()
     m_pl_parts[PL_RSBAR] = pixmap->copy ( 126,72,150,38 );
     m_pl_parts[PL_SFILL1] = pixmap->copy ( 179,0,25,38 );
     m_pl_parts[PL_SFILL2] = pixmap->copy ( 250,21,75,38 );
+    m_pl_parts[PL_TITLEBAR_SHADED1_A] = pixmap->copy ( 99,42,50,14 );
+    m_pl_parts[PL_TITLEBAR_SHADED1_I] = pixmap->copy ( 99,57,50,14 );
+    m_pl_parts[PL_TITLEBAR_SHADED2] = pixmap->copy ( 72,42,25,14 );
+    m_pl_parts[PL_TFILL_SHADED] = pixmap->copy ( 72,57,25,14 );
 
     m_pl_parts[PL_CONTROL] = pixmap->copy(129,94,60,8);
 
@@ -267,6 +271,10 @@ void Skin::loadPlayList()
 
     buttons[PL_BT_CLOSE_N] = pixmap->copy (167,3,9,9);
     buttons[PL_BT_CLOSE_P] = pixmap->copy (52,42,9,9);
+    buttons[PL_BT_SHADE1_N] = pixmap->copy (158,3,9,9);
+    buttons[PL_BT_SHADE1_P] = pixmap->copy (62,42,9,9);
+    buttons[PL_BT_SHADE2_N] = pixmap->copy (129,45,9,9);
+    buttons[PL_BT_SHADE2_P] = pixmap->copy (150,42,9,9);
 
 }
 
