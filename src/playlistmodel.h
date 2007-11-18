@@ -43,7 +43,7 @@ struct SimpleSelection
 {
     SimpleSelection()
     {
-		 ;
+        ;
     }
     inline bool isValid()const
     {
@@ -60,7 +60,7 @@ struct SimpleSelection
     int m_bottom;
     int m_top;
     int m_anchor;
-	 QList<int>m_selected_rows;
+    QList<int>m_selected_rows;
 };
 
 /*!
@@ -69,7 +69,7 @@ struct SimpleSelection
  */
 class TagUpdater : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
     QObject* m_observable;
     MediaFile* m_file;
 public:
@@ -77,7 +77,7 @@ public:
 protected slots:
     void updateTag();
 };
-    
+
 
 class PlayListModel : public QObject
 {
@@ -115,7 +115,10 @@ public:
      */
     bool isQueued(MediaFile* f) const;
 
-	 bool isRepeatableList()const{return is_repeatable_list;}
+    bool isRepeatableList()const
+    {
+        return is_repeatable_list;
+    }
 
     /*!
      * Sets current song to the file that is nex in queue, if queue is empty - does nothing
@@ -150,7 +153,10 @@ public:
      */
     QList<MediaFile*> getSelectedItems()const;
 
-	 QList<MediaFile*> items()const{return m_files;}
+    QList<MediaFile*> items()const
+    {
+        return m_files;
+    }
 
     /*!
      * Returns number of first item that selected upper the \b row item.
@@ -162,49 +168,61 @@ public:
      */
     int firstSelectedLower(int row);
 
-	 /*!
-	  * Returns total lenght in seconds of all songs.
-	  */
-	 int totalLength()const{return m_total_length;}
+    /*!
+     * Returns total lenght in seconds of all songs.
+     */
+    int totalLength()const
+    {
+        return m_total_length;
+    }
 
-	 /*!
-	  *  Registers playlist format parser.
-	  */
-	 bool registerPlaylistFormat(PlaylistFormat* p);
+    /*!
+     *  Registers playlist format parser.
+     */
+    bool registerPlaylistFormat(PlaylistFormat* p);
 
-	 /*!
-	  * Checks and loads external playlist format plugins
-	  */
-	 void loadExternalPlaylistFormats();
+    /*!
+     * Checks and loads external playlist format plugins
+     */
+    void loadExternalPlaylistFormats();
 
-	 /*!
-	  * Returns vector of reistered format parsers.
-	  */
-	 const QList<PlaylistFormat*> registeredPlaylistFormats()const{return m_registered_pl_formats.values();}
+    /*!
+     * Returns vector of reistered format parsers.
+     */
+    const QList<PlaylistFormat*> registeredPlaylistFormats()const
+    {
+        return m_registered_pl_formats.values();
+    }
 
-	 const QStringList registeredPlaylistFormatNames()const{return m_registered_pl_formats.keys();}
+    const QStringList registeredPlaylistFormatNames()const
+    {
+        return m_registered_pl_formats.keys();
+    }
 
-	 /*!
-	  * Loads playlist with \b f_name name.
-	  */
-	 void loadPlaylist(const QString& f_name);
+    /*!
+     * Loads playlist with \b f_name name.
+     */
+    void loadPlaylist(const QString& f_name);
 
-	 /*!
-	  * Saves current songs to the playlist with \b f_name name.
-	  */
-	 void savePlaylist(const QString& f_name);
+    /*!
+     * Saves current songs to the playlist with \b f_name name.
+     */
+    void savePlaylist(const QString& f_name);
 
     /*!
      * Enum of available sort modes
      */
-    enum SortMode{ TITLE,FILENAME,PATH_AND_FILENAME,DATE };
+    enum SortMode
+    {
+        TITLE,FILENAME,PATH_AND_FILENAME,DATE
+    };
 
 signals:
     void listChanged();
     void currentChanged();
 
 public slots:
-	 void load(MediaFile *);
+    void load(MediaFile *);
     void clear();
     void clearSelection();
     void removeSelected();
@@ -212,26 +230,26 @@ public slots:
     void invertSelection();
     void selectAll();
     void showDetails();
-	 void doCurrentVisibleRequest();
+    void doCurrentVisibleRequest();
 
     void addFile(const QString&);
 
-	 /*!
-	  * Adds the list \b l of files to the model.
-	  */
+    /*!
+     * Adds the list \b l of files to the model.
+     */
     void addFiles(const QStringList& l);
 
-	 /*!
-	  * Adds \b dir to the model.
-	  */
+    /*!
+     * Adds \b dir to the model.
+     */
     void addDirectory(const QString& dir);
 
-	 /*!
-	  * Loads list of files (regular files or directories),
-	  * returns \b TRUE if at least one file has been successfully loaded,
-	  * otherwise \b FALSE
-	  */
-	 bool setFileList(const QStringList&);
+    /*!
+     * Loads list of files (regular files or directories),
+     * returns \b TRUE if at least one file has been successfully loaded,
+     * otherwise \b FALSE
+     */
+    bool setFileList(const QStringList&);
 
     void addFileList(const QStringList &l);
 
@@ -263,12 +281,12 @@ public slots:
      */
     void addToQueue();
 
-	 /*!
-	  * Sets \b f media file to queue.
-	  */
-	 void setQueued(MediaFile* f);
+    /*!
+     * Sets \b f media file to queue.
+     */
+    void setQueued(MediaFile* f);
 
-	 void preparePlayState();
+    void preparePlayState();
 
 private:
 
@@ -286,36 +304,39 @@ private:
      */
     int bottommostInSelection(int);
 
-	 /*!
-	  * Creates and initializes file loader object.
-	  */
-	 FileLoader* createFileLoader();
+    /*!
+     * Creates and initializes file loader object.
+     */
+    FileLoader* createFileLoader();
 
 
-	 /*!
-	  * Is someone of file loaders is running?
-	  */
-	 bool isFileLoaderRunning()const;
+    /*!
+     * Is someone of file loaders is running?
+     */
+    bool isFileLoaderRunning()const;
 
-     /*!
-      * Removes items from model. If \b inverted is \b false -
-      * selected items will be removed, else - unselected.
-      */
-     void removeSelection(bool inverted = false);
+    /*!
+     * Removes items from model. If \b inverted is \b false -
+     * selected items will be removed, else - unselected.
+     */
+    void removeSelection(bool inverted = false);
 
 private:
-    
+
     QList <MediaFile*> m_files;
     QList <MediaFile*> m_editing_files;
     MediaFile* m_currentItem;
 
     int m_current;
-	 void readSettings();
+    void readSettings();
     void writeSettings();
 
-	 void setUpdatesEnabled(bool);
+    void setUpdatesEnabled(bool);
 
-	 bool updatesEnabled()const{return !m_block_update_signals;}
+    bool updatesEnabled()const
+    {
+        return !m_block_update_signals;
+    }
 
     /*!
      * This flyweight object represents current selection.
@@ -327,29 +348,29 @@ private:
      */
     QList<MediaFile*>m_queued_songs;
 
-	 QMap<QString,PlaylistFormat* > m_registered_pl_formats;
+    QMap<QString,PlaylistFormat* > m_registered_pl_formats;
 
     /*!
      * Is playlist repeatable?
      */
     bool is_repeatable_list;
 
-	 /// Current playing state (Normal or Shuffle)
-	 PlayState* m_play_state;
+    /// Current playing state (Normal or Shuffle)
+    PlayState* m_play_state;
 
-	 bool m_block_update_signals;
+    bool m_block_update_signals;
 
-	 int m_total_length;
+    int m_total_length;
 
-	 typedef QPointer<FileLoader> GuardedFileLoader;
+    typedef QPointer<FileLoader> GuardedFileLoader;
 
-	 /*! Vector of currently running file loaders.
-	  *  All loaders are automatically sheduled for deletion
-	  * when finished.
-	  */
-	 QVector<GuardedFileLoader> m_running_loaders;
+    /*! Vector of currently running file loaders.
+     *  All loaders are automatically sheduled for deletion
+     * when finished.
+     */
+    QVector<GuardedFileLoader> m_running_loaders;
 
-	 friend class MainWindow;
+    friend class MainWindow;
 };
 
 

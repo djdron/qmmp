@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,6 +30,7 @@
 class Skin;
 class MainWindow;
 class Button;
+class PlayListModel;
 
 class PlayListTitleBar : public PixmapWidget
 {
@@ -40,18 +41,32 @@ public:
     ~PlayListTitleBar();
 
     void setActive(bool);
+    void setModel(PlayListModel *model);
+    void readSettings();
 
 private slots:
     void updateSkin();
+    void shade();
+    void showCurrent();
 
 private:
     void drawPixmap(int);
+    void truncate();
     Skin *m_skin;
     QPoint pos;
     bool m_active;
     PlayList* m_pl;
     MainWindow* m_mw;
     Button* m_close;
+    Button* m_shade;
+    Button* m_shade2;
+    bool m_shaded;
+    bool m_align, m_resize;
+    int m_height;
+    PlayListModel* m_model;
+    QString m_text;
+    QString m_truncatedText;
+    QFont m_font;
 
 protected:
     void resizeEvent(QResizeEvent*);

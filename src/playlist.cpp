@@ -56,9 +56,6 @@ PlayList::PlayList ( QWidget *parent )
     resize ( 275,116 );
     setMinimumSize ( 275,116 );
     setBaseSize ( 275,116 );
-    m_titleBar = new PlayListTitleBar ( this );
-    m_titleBar->show();
-    m_titleBar->move ( 0,0 );
     m_listWidget = new ListWidget ( this );
     m_listWidget->show();
     m_listWidget->setGeometry ( 12,20,243,58 );
@@ -110,6 +107,8 @@ PlayList::PlayList ( QWidget *parent )
     connect ( m_pl_control, SIGNAL ( pauseClicked() ), SIGNAL ( pause() ) );
     connect ( m_pl_control, SIGNAL ( stopClicked() ), SIGNAL ( stop() ) );
     connect ( m_pl_control, SIGNAL ( ejectClicked() ), SIGNAL ( eject() ) );
+    m_titleBar = new PlayListTitleBar ( this );
+    m_titleBar->move ( 0,0 );
     readSettings();
 }
 
@@ -310,6 +309,8 @@ void PlayList::resizeEvent ( QResizeEvent *e )
 {
     int sx = ( e->size().width()-275 ) /25;
     int sy = ( e->size().height()-116 ) /29;
+    if (sx < 0 || sy < 0)
+        return;
 
     m_titleBar->resize ( 275+25*sx,20 );
     m_plslider->resize ( 20,58+sy*29 );
@@ -359,8 +360,9 @@ void PlayList::mouseReleaseEvent ( QMouseEvent * )
 void PlayList::setModel ( PlayListModel *model )
 {
     m_playListModel = model;
-    m_listWidget->setModel ( model );
-    m_keyboardManager->setModel ( model );
+    m_listWidget->setModel (model);
+    m_keyboardManager->setModel (model);
+    m_titleBar->setModel (model);
     createActions();
 }
 
@@ -377,14 +379,14 @@ void PlayList::readSettings()
     if ( m_update )
     {
         m_listWidget->readSettings();
+        m_titleBar->readSettings();
     }
     else
     {
-        QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+        QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
         settings.beginGroup ( "PlayList" );
-        //geometry
-        resize ( settings.value ( "size", QSize ( 275, 116 ) ).toSize() );
-        move ( settings.value ( "pos", QPoint ( 100, 332 ) ).toPoint() );
+        //position
+        move ( settings.value ("pos", QPoint ( 100, 332 ) ).toPoint());
         settings.endGroup();
         m_update = TRUE;
     }
@@ -395,8 +397,7 @@ void PlayList::writeSettings()
 {
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     settings.beginGroup ( "PlayList" );
-    //geometry
-    settings.setValue ( "size", size() );
+    //position
     settings.setValue ( "pos", this->pos() );
     settings.endGroup();
 }
@@ -437,7 +438,7 @@ QString PlayList::formatTime ( int sec )
     return str_minutes + ":" + str_seconds;
 }
 
-void PlayList::setInfo ( const OutputState &st,int length_current, int length_total )
+void PlayList::setInfo (const OutputState &st,int length_current, int length_total)
 {
     if ( st.type() == OutputState::Info )
     {

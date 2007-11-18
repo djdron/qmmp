@@ -46,7 +46,7 @@ ListWidget::ListWidget(QWidget *parent)
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
     m_prev_y = 0;
-	 m_anchor_row = INVALID_ROW;
+    m_anchor_row = INVALID_ROW;
 
     m_first = 0;
     m_rows = 0;
@@ -176,69 +176,69 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
         if (m_model->isSelected(row) && (e->modifiers() == Qt::NoModifier))
             m_select_on_release = TRUE;
-		  
-		  //qWarning("m_prev_clicked_row: %d",m_prev_clicked_row);
-		  
+
+        //qWarning("m_prev_clicked_row: %d",m_prev_clicked_row);
+
         m_pressed_row = row;
         if ((Qt::ShiftModifier & e->modifiers()))
         {
-			  
-			  if(m_pressed_row > m_anchor_row)
-			  {
-				  //int upper_selected = m_model->firstSelectedUpper(m_anchor_row);
-				  //if (INVALID_ROW != upper_selected)
-				  //{
-					  /*for (int j = upper_selected;j < m_anchor_row;j++)
-					  {
-						  m_model->setSelected(j, false);
-					  }*/
-					  m_model->clearSelection();
-					  for (int j = m_anchor_row;j <= m_pressed_row;j++)
-					  {
-						  m_model->setSelected(j, true);
-					  }
-				  //}
-			  }
-			  else
-			  {
-				  m_model->clearSelection();
-				  for (int j = m_anchor_row;j >= m_pressed_row;j--)
-				  {
-					  m_model->setSelected(j, true);
-				  }
-			  }
-			  
-			  /*
-            int upper_selected = m_model->firstSelectedUpper(row);
-            int lower_selected = m_model->firstSelectedLower(row);
-            if (INVALID_ROW != upper_selected)
+
+            if (m_pressed_row > m_anchor_row)
             {
-                for (int j = upper_selected;j <= row;j++)
+                //int upper_selected = m_model->firstSelectedUpper(m_anchor_row);
+                //if (INVALID_ROW != upper_selected)
+                //{
+                /*for (int j = upper_selected;j < m_anchor_row;j++)
+                {
+                 m_model->setSelected(j, false);
+                }*/
+                m_model->clearSelection();
+                for (int j = m_anchor_row;j <= m_pressed_row;j++)
                 {
                     m_model->setSelected(j, true);
                 }
-            }
-            else if (INVALID_ROW != lower_selected)
-            {
-                for (int j = row;j <= lower_selected;j++)
-                {
-                    m_model->setSelected(j, true);
-                }
+                //}
             }
             else
-                m_model->setSelected(row, true);
-			  */
+            {
+                m_model->clearSelection();
+                for (int j = m_anchor_row;j >= m_pressed_row;j--)
+                {
+                    m_model->setSelected(j, true);
+                }
+            }
+
+            /*
+                   int upper_selected = m_model->firstSelectedUpper(row);
+                   int lower_selected = m_model->firstSelectedLower(row);
+                   if (INVALID_ROW != upper_selected)
+                   {
+                       for (int j = upper_selected;j <= row;j++)
+                       {
+                           m_model->setSelected(j, true);
+                       }
+                   }
+                   else if (INVALID_ROW != lower_selected)
+                   {
+                       for (int j = row;j <= lower_selected;j++)
+                       {
+                           m_model->setSelected(j, true);
+                       }
+                   }
+                   else
+                       m_model->setSelected(row, true);
+            */
         }
         else
         {
             if (!m_model->isSelected(row) || (Qt::ControlModifier & e->modifiers()))
                 m_model->setSelected(row, !m_model->isSelected(row));
         }
-		  
-		  if(m_model->getSelection(m_pressed_row).count() == 1)
-			  m_anchor_row = m_pressed_row;
-		  //qWarning("m_anchor_row: %d",m_anchor_row);
-		  
+
+        if (m_model->getSelection(m_pressed_row).count() == 1)
+            m_anchor_row = m_pressed_row;
+        //qWarning("m_anchor_row: %d",m_anchor_row);
+
         update();
     }
     QWidget::mousePressEvent(e);
@@ -441,8 +441,8 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
     {
         m_model->clearSelection();
         m_model->setSelected(m_pressed_row,true);
-		  //if(e->modifiers() != Qt::ShiftModifier)
-			  m_anchor_row = m_pressed_row;
+        //if(e->modifiers() != Qt::ShiftModifier)
+        m_anchor_row = m_pressed_row;
         m_select_on_release = FALSE;
     }
     m_pressed_row = INVALID_ROW;
