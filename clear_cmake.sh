@@ -60,4 +60,10 @@ cd Visual
 clear
 cd analyzer
 clear
-
+#clear effect
+cd ..
+cd ..
+cd Effect
+clear
+cd srconverter
+clear

@@ -10,94 +10,111 @@
 
 
 Recycler::Recycler ( unsigned int sz )
-		: add_index ( 0 ), done_index ( 0 ), current_count ( 0 )
+        : add_index ( 0 ), done_index ( 0 ), current_count ( 0 )
 {
-	buffer_count = ( sz / Buffer::size() );
-	if ( buffer_count < 1 )
-	{
-		buffer_count = 1;
-	}
+    buffer_count = ( sz / Buffer::size() );
+    if ( buffer_count < 1 )
+    {
+        buffer_count = 1;
+    }
 
-	buffers = new Buffer*[buffer_count];
+    buffers = new Buffer*[buffer_count];
 
-	for ( unsigned int i = 0; i < buffer_count; i ++ )
-	{
-		buffers[i] = new Buffer;
-	}
+    for ( unsigned int i = 0; i < buffer_count; i ++ )
+    {
+        buffers[i] = new Buffer;
+    }
 }
 
 
 Recycler::~Recycler()
 {
-	for ( unsigned int i = 0; i < buffer_count; i++ )
-	{
-		delete buffers[i];
-		buffers[i] = 0;
-	}
+    for ( unsigned int i = 0; i < buffer_count; i++ )
+    {
+        delete buffers[i];
+        buffers[i] = 0;
+    }
 
-	delete [] buffers;
+    delete [] buffers;
 }
 
 
 bool Recycler::full() const
 {
-	return current_count == buffer_count;
+    return current_count == buffer_count;
 }
 
 
 bool Recycler::empty() const
 {
-	return current_count == 0;
+    return current_count == 0;
 }
 
 
 int Recycler::available() const
 {
-	return buffer_count - current_count;
+    return buffer_count - current_count;
 }
-
 
 int Recycler::used() const
 {
-	return current_count;
+    return current_count;
 }
 
 
-Buffer *Recycler::get()
+Buffer *Recycler::get(unsigned long size)
 {
-	if ( full() )
-		return 0;
-	return buffers[add_index];
+    if (full())
+        return 0;
+    if(size > Buffer::size() + buffers[add_index]->exceeding)
+    {
+        delete buffers[add_index]->data;
+        buffers[add_index]->data = new unsigned char[size];
+        buffers[add_index]->exceeding = size - Buffer::size();
+        //qDebug("new size = %d, index = %d", size, add_index);
+    }
+
+    return buffers[add_index];
 }
 
 
 void Recycler::add()
 {
-	add_index = ++add_index % buffer_count;
-	current_count++;
+    add_index = ++add_index % buffer_count;
+    current_count++;
 }
 
 
 Buffer *Recycler::next()
 {
-	return buffers[done_index];
+    return buffers[done_index];
 }
 
 
 void Recycler::done()
 {
-	done_index = ++done_index % buffer_count;
-	current_count--;
+    done_index = ++done_index % buffer_count;
+    current_count--;
 }
 
 
 void Recycler::clear()
 {
-	add_index = done_index = current_count = 0;
+    add_index = done_index = current_count = 0;
+    /*for ( unsigned int i = 0; i < buffer_count; i ++ )
+    {
+        if(buffers[i]->exceeding > 0)
+        {
+            delete buffers[i]->data;
+            buffers[i]->data = new unsigned char[Buffer::size()];
+            buffers[i]->exceeding = 0;
+            buffers[i]->nbytes = 0;
+        }
+    }*/
 }
 
 
 unsigned int Recycler::size() const
 {
-	return buffer_count * Buffer::size();
+    return buffer_count * Buffer::size();
 }

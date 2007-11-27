@@ -179,8 +179,7 @@ bool DecoderFFmpeg::initialize()
 
     totalTime = ic->duration/AV_TIME_BASE;
 
-    if (output())
-        output()->configure(c->sample_rate, c->channels, 16, c->bit_rate);
+    configure(c->sample_rate, c->channels, 16, c->bit_rate);
 
     bitrate = c->bit_rate;
     chan = c->channels;

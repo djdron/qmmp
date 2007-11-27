@@ -109,8 +109,7 @@ bool DecoderMAD::initialize()
         qDebug("DecoderMAD: Cannot find a valid MPEG header.");
         return FALSE;
     }
-    if (output())
-        output()->configure(freq, channels, 16, bitrate);
+    configure(freq, channels, 16, bitrate);
 
     inited = TRUE;
     return TRUE;
@@ -308,7 +307,6 @@ void DecoderMAD::flush(bool final)
         while ((! done && ! finish) && output()->recycler()->full())
         {
             mutex()->unlock();
-
             output()->recycler()->cond()->wait(output()->recycler()->mutex());
 
             mutex()->lock();

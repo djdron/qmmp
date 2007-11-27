@@ -26,7 +26,7 @@ public:
     int used() const;
 
     Buffer *next(); // get next in queue
-    Buffer *get(); // get next in recycle
+    Buffer *get(unsigned long size); // get next in recycle
 
     void add(); // add to queue
     void done(); // add to recycle

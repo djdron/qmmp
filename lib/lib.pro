@@ -18,7 +18,9 @@ HEADERS += recycler.h \
            streamreader.h \
            downloader.h \
            visual.h \
-           visualfactory.h
+           visualfactory.h \
+ effect.h \
+ effectfactory.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
@@ -29,7 +31,8 @@ SOURCES += recycler.cpp \
            streamreader.cpp \
            downloader.cpp \
            filetag.cpp \
-           visual.cpp
+           visual.cpp \
+ effect.cpp
 
 TARGET = qmmp
 CONFIG += release \

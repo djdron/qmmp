@@ -17,62 +17,32 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
 
-#include <QDialog>
-#include <QTreeWidgetItem>
+#include <QSettings>
+#include <QDir>
 
-#include "ui_configdialog.h"
+#include "settingsdialog.h"
 
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class QFileInfo;
-
-class Skin;
-class InputPluginItem;
-class OutputPluginItem;
-class VisualPluginItem;
-class EffectPluginItem;
-
-class ConfigDialog : public QDialog
+SettingsDialog::SettingsDialog(QWidget *parent)
+ : QDialog(parent)
 {
-    Q_OBJECT
-public:
-    ConfigDialog(QWidget *parent = 0);
-
-    ~ConfigDialog();
-
-private slots:
-    void changePage(QListWidgetItem *current, QListWidgetItem *previous);
-    void changeSkin();
-    void setPlFont();
-    void setMainFont();
-    void showPluginSettings();
-    void showPluginInfo();
-    void addTitleString( QAction * );
-    void saveSettings();
-
-private:
-    void readSettings();
-    void loadSkins();
-    void findSkins(const QString &path);
-    void loadPluginsInfo();
-    void loadFonts();
-    void createMenus();
+    ui.setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    ui.srSpinBox->setValue(settings.value("SRC/sample_rate",48000).toInt());
+    ui.engineComboBox->setCurrentIndex(settings.value("SRC/engine", 0).toInt());
+    connect (ui.okButton, SIGNAL(clicked()),SLOT(writeSettings()));
+}
 
 
-    QList <QFileInfo> m_skinList;
-    Ui::ConfigDialog ui;
-    Skin *m_skin;
-    QPixmap pixmap;
+SettingsDialog::~SettingsDialog()
+{
+}
 
-    QList <InputPluginItem*> m_inputPluginItems;
-    QList <OutputPluginItem*> m_outputPluginItems;
-    QList <VisualPluginItem*> m_visualPluginItems;
-    QList <EffectPluginItem*> m_effectPluginItems;
-};
-
-#endif
+void SettingsDialog::writeSettings()
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.setValue("SRC/sample_rate",ui.srSpinBox->value());
+    settings.setValue("SRC/engine", ui.engineComboBox->currentIndex());
+    accept();
+}

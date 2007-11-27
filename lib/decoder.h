@@ -14,7 +14,6 @@
 #include <QObject>
 #include <QStringList>
 
-
 #include "filetag.h"
 
 class QObject;
@@ -26,6 +25,7 @@ class Buffer;
 class Recycler;
 class Output;
 class Visualization;
+class Effect;
 
 
 
@@ -47,7 +47,7 @@ public:
 
     DecoderState(Type t)
             : m_type(t), m_error_msg(0), m_tag(0)
-    {}
+{}
 
     DecoderState(const QString &e)
             : m_type(Error), m_tag(0)
@@ -119,7 +119,7 @@ public:
     }
     Output *output()
     {
-        return out;
+        return m_output;
     }
 
     QMutex *mutex()
@@ -165,6 +165,7 @@ signals:
     void stateChanged(const DecoderState&);
 
 protected:
+    void configure(long freq, int channels, int prec, int bitrate);
     void dispatch(DecoderState::Type);
     void dispatch(const DecoderState&);
     void dispatch(const FileTag&);
@@ -173,9 +174,9 @@ protected:
 private:
     DecoderFactory *fctry;
 
-    QList<QObject*> listeners;
+    QList <Effect*> m_effects;
     QIODevice *in;
-    Output *out;
+    Output *m_output;
 
     QMutex mtx;
     QWaitCondition cnd;
@@ -183,6 +184,7 @@ private:
     uint blksize;
     bool m_eqInited;
     bool m_useEQ;
+
 };
 
 #endif // DECODER_H

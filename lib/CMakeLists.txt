@@ -28,6 +28,7 @@ SET(libqmmp_SRCS
     soundcore.cpp
     streamreader.cpp
     downloader.cpp
+    effect.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -46,6 +47,8 @@ SET(libqmmp_MOC_HDRS
   soundcore.h
   streamreader.h
   downloader.h
+  effectfactory.h
+  effect.h
 )
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})

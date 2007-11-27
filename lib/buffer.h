@@ -9,27 +9,34 @@
 
 #include "constants.h"
 
-class Buffer {
+class Buffer
+{
 public:
     Buffer()
     {
-	data = new unsigned char[Buffer::size()];
-	nbytes = 0;
-	rate = 0;
+        data = new unsigned char[Buffer::size()];
+        nbytes = 0;
+        rate = 0;
+        exceeding = 0;
     }
     ~Buffer()
     {
-	delete data;
-	data = 0;
-	nbytes = 0;
-	rate = 0;
+        delete data;
+        data = 0;
+        nbytes = 0;
+        rate = 0;
+        exceeding = 0;
     }
 
     unsigned char *data;
     unsigned long nbytes;
     unsigned long rate;
+    unsigned long exceeding;
 
-    static unsigned long size() { return globalBlockSize; }
+    static unsigned long size()
+    {
+        return globalBlockSize;
+    }
 };
 
 

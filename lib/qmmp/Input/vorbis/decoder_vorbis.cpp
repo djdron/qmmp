@@ -226,8 +226,7 @@ bool DecoderVorbis::initialize()
         chan = ogginfo->channels;
     }
 
-    if (output())
-        output()->configure(freq, chan, 16, bitrate);
+    configure(freq, chan, 16, bitrate);
 
     inited = TRUE;
     return TRUE;

@@ -8,7 +8,11 @@
 #include <QStringList>
 #include <QApplication>
 #include <QSettings>
+#include <math.h>
 
+
+#include "effect.h"
+#include "effectfactory.h"
 
 #include "constants.h"
 #include "buffer.h"
@@ -16,27 +20,32 @@
 #include "visual.h"
 #include "decoderfactory.h"
 #include "streamreader.h"
-extern "C"{
-#include "equ/iir.h" 
+extern "C"
+{
+#include "equ/iir.h"
 }
 #include "decoder.h"
 
 
 Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : QThread(parent), fctry(d), in(i), out(o), blksize(0),m_eqInited(FALSE),
+        : QThread(parent), fctry(d), in(i), m_output(o),m_eqInited(FALSE),
         m_useEQ(FALSE)
 {
-    out->recycler()->clear();
+    m_output->recycler()->clear();
     int b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
     qRegisterMetaType<DecoderState>("DecoderState");
+
+
+    blksize = Buffer::size();
+    m_effects = Effect::create(this);
 }
 
 Decoder::~Decoder()
 {
     fctry = 0;
     in = 0;
-    out = 0;
+    m_output = 0;
     blksize = 0;
 }
 
@@ -138,16 +147,16 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
     qDebug(qPrintable(source));
     DecoderFactory *fact = 0;
 
-    if(!input->open(QIODevice::ReadOnly))
+    if (!input->open(QIODevice::ReadOnly))
     {
         qDebug("Decoder: cannot open input");
         return decoder;
-    } 
+    }
     StreamReader* sreader = qobject_cast<StreamReader *>(input);
-    if(sreader)
+    if (sreader)
     {
         fact = Decoder::findByMime(sreader->contentType());
-        if(!fact)
+        if (!fact)
             fact = Decoder::findByContent(sreader);
     }
     else
@@ -157,7 +166,7 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
     {
         decoder = fact->create(parent, input, output);
     }
-    if(!decoder)
+    if (!decoder)
         input->close();
 
     return decoder;
@@ -187,9 +196,9 @@ DecoderFactory *Decoder::findByMime(const QString& type)
         if (!blacklist.contains(files.at(i).section('/',-1)))
         {
             QStringList types = factories->at(i)->properties().contentType.split(";");
-            for(int j=0; j<types.size(); ++j)
+            for (int j=0; j<types.size(); ++j)
             {
-                if(type == types[j] && !types[j].isEmpty())
+                if (type == types[j] && !types[j].isEmpty())
                     return factories->at(i);
             }
         }
@@ -290,7 +299,6 @@ void Decoder::error(const QString &e)
 ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int nch)
 {
     ulong sz = output_bytes < blksize ? output_bytes : blksize;
-    Buffer *b = output()->recycler()->get();
 
     if (!m_eqInited)
     {
@@ -301,12 +309,38 @@ ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int n
     {
         iir((void*) data,sz,nch);
     }
-    memcpy(b->data, data, sz);
 
-    if (sz != blksize)
-        memset(b->data + sz, 0, blksize - sz);
+    char *out_data = data;
+    char *prev_data = data;
+    ulong w = sz;
+    Effect* effect = 0;
+    foreach(effect, m_effects)
+    {
+        w = effect->process(prev_data, sz, &out_data);
 
-    b->nbytes = blksize;
+        if(w <= 0)
+        {
+            // copy data if plugin can not procees it
+            w = sz;
+            out_data = new char[w];
+            memcpy(out_data, prev_data, w);
+        }
+        if(data != prev_data)
+            delete prev_data;
+        prev_data = out_data;
+    }
+
+    Buffer *b = output()->recycler()->get(w);
+
+    memcpy(b->data, out_data, w);
+
+    if (data != out_data)
+        delete out_data;
+
+    if (w < blksize + b->exceeding)
+        memset(b->data + w, 0, blksize + b->exceeding - w);
+
+    b->nbytes = w;// blksize;
     b->rate = bitrate;
 
     output()->recycler()->add();
@@ -314,6 +348,20 @@ ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int n
     output_bytes -= sz;
     memmove(data, data + sz, output_bytes);
     return sz;
+}
+
+void Decoder::configure(long freq, int channels, int prec, int bitrate)
+{
+    Effect* effect = 0;
+    foreach(effect, m_effects)
+    {
+        effect->configure(freq, channels, prec);
+        freq = m_effects.at(0)->frequency();
+        channels = effect->channels();
+        prec = effect->resolution();
+    }
+    if (m_output)
+        m_output->configure(freq, channels, prec, bitrate);
 }
 
 void Decoder::setEQ(int bands[10], int preamp)

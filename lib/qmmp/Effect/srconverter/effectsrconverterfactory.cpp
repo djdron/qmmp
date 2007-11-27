@@ -17,62 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
 
-#include <QDialog>
-#include <QTreeWidgetItem>
+#include <QtGui>
 
-#include "ui_configdialog.h"
+#include "settingsdialog.h"
+#include "effectsrconverterfactory.h"
+#include "srconverter.h"
 
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class QFileInfo;
-
-class Skin;
-class InputPluginItem;
-class OutputPluginItem;
-class VisualPluginItem;
-class EffectPluginItem;
-
-class ConfigDialog : public QDialog
+const EffectProperties EffectSRConverterFactory::properties() const
 {
-    Q_OBJECT
-public:
-    ConfigDialog(QWidget *parent = 0);
-
-    ~ConfigDialog();
-
-private slots:
-    void changePage(QListWidgetItem *current, QListWidgetItem *previous);
-    void changeSkin();
-    void setPlFont();
-    void setMainFont();
-    void showPluginSettings();
-    void showPluginInfo();
-    void addTitleString( QAction * );
-    void saveSettings();
-
-private:
-    void readSettings();
-    void loadSkins();
-    void findSkins(const QString &path);
-    void loadPluginsInfo();
-    void loadFonts();
-    void createMenus();
-
-
-    QList <QFileInfo> m_skinList;
-    Ui::ConfigDialog ui;
-    Skin *m_skin;
-    QPixmap pixmap;
-
-    QList <InputPluginItem*> m_inputPluginItems;
-    QList <OutputPluginItem*> m_outputPluginItems;
-    QList <VisualPluginItem*> m_visualPluginItems;
-    QList <EffectPluginItem*> m_effectPluginItems;
+    EffectProperties properties;
+    properties.name = tr("SRC Plugin");
+    return properties;
 };
 
-#endif
+Effect *EffectSRConverterFactory::create(QObject *parent) 
+{
+    return new SRConverter(parent);
+};
+
+void EffectSRConverterFactory::showSettings(QWidget *parent) 
+{
+    SettingsDialog *s = new SettingsDialog(parent);
+    s ->show();
+};
+
+void EffectSRConverterFactory::showAbout(QWidget *parent) 
+{
+     QMessageBox::about (parent, tr("About Sample Rate Converter Plugin"),
+                        tr("Qmmp Sample Rate Converter Plugin")+"\n"+
+                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+};
+
+QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent) 
+{
+    return 0;
+};
+
+Q_EXPORT_PLUGIN(EffectSRConverterFactory)

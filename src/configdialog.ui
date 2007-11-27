@@ -561,6 +561,20 @@
              </item>
             </layout>
            </widget>
+           <widget class="QWidget" name="tab_2" >
+            <attribute name="title" >
+             <string>Effects</string>
+            </attribute>
+            <layout class="QVBoxLayout" >
+             <item>
+              <widget class="QTableWidget" name="effectPluginTable" >
+               <property name="selectionBehavior" >
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
            <widget class="QWidget" name="fileDialogTab" >
             <attribute name="title" >
              <string>File Dialog</string>
