@@ -24,6 +24,8 @@
 #include <decoderfactory.h>
 #include <outputfactory.h>
 #include <visualfactory.h>
+#include <effectfactory.h>
+#include <effect.h>
 #include <soundcore.h>
 
 #include "pluginitem.h"
@@ -118,6 +120,33 @@ bool VisualPluginItem::isSelected()
 }
 
 VisualFactory *VisualPluginItem::factory()
+{
+   return m_factory;
+}
+
+/*Effect*/
+EffectPluginItem::EffectPluginItem(QObject *parent, EffectFactory *fact,
+                                   const QString &filePath): QObject(parent)
+{
+    m_fileName = filePath.section('/',-1);
+    m_factory = fact;
+}
+
+
+EffectPluginItem::~EffectPluginItem()
+{}
+
+void EffectPluginItem::select(bool on)
+{
+    Effect::setEnabled(m_factory, on);
+}
+
+bool EffectPluginItem::isSelected()
+{
+    return Effect::isEnabled(m_factory);
+}
+
+EffectFactory *EffectPluginItem::factory()
 {
    return m_factory;
 }

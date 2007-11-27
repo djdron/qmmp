@@ -31,6 +31,8 @@
 #include <decoderfactory.h>
 #include <outputfactory.h>
 #include <visualfactory.h>
+#include <effectfactory.h>
+#include <effect.h>
 
 #include "skin.h"
 #include "filedialog.h"
@@ -72,6 +74,8 @@ ConfigDialog::~ConfigDialog()
         delete m_outputPluginItems.takeFirst();
     while (!m_visualPluginItems.isEmpty())
         delete m_visualPluginItems.takeFirst();
+    while (!m_effectPluginItems.isEmpty())
+        delete m_effectPluginItems.takeFirst();
 }
 
 void ConfigDialog::readSettings()
@@ -259,6 +263,34 @@ void ConfigDialog::loadPluginsInfo()
     ui.visualPluginTable->resizeColumnToContents ( 1 );
     ui.visualPluginTable->resizeRowsToContents ();
 
+    /*
+        load effect plugin information
+    */
+    QList <EffectFactory *> *effects = 0;
+    effects = Effect::effectFactories();
+    files = Effect::effectFiles();
+    ui.effectPluginTable->setColumnCount ( 3 );
+    ui.effectPluginTable->verticalHeader()->hide();
+    ui.effectPluginTable->setHorizontalHeaderLabels ( QStringList()
+            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
+    ui.effectPluginTable->setRowCount ( visuals->count () );
+
+    for ( int i = 0; i < effects->count (); ++i )
+    {
+        EffectPluginItem *item = new EffectPluginItem(this,effects->at(i),files.at(i));
+        m_effectPluginItems.append(item);
+        QCheckBox* button = new QCheckBox (ui.effectPluginTable);
+        connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
+        button->setChecked (item->isSelected());
+        ui.effectPluginTable->setCellWidget ( i, 0, button );
+        ui.effectPluginTable->setItem (i,1,
+                            new QTableWidgetItem (item->factory()->properties().name));
+        ui.effectPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i)));
+    }
+
+    ui.effectPluginTable->resizeColumnToContents ( 0 );
+    ui.effectPluginTable->resizeColumnToContents ( 1 );
+    ui.effectPluginTable->resizeRowsToContents ();
 }
 
 
@@ -335,6 +367,14 @@ void ConfigDialog::showPluginSettings()
         m_visualPluginItems.at(row)->factory()->showSettings ( this );
         break;
     }
+    case 3:
+    {
+        int row = ui.effectPluginTable->currentRow ();
+        if ( m_effectPluginItems.isEmpty() || row < 0 )
+            return;
+        m_effectPluginItems.at(row)->factory()->showSettings ( this );
+        break;
+    }
     }
 }
 
@@ -367,6 +407,14 @@ void ConfigDialog::showPluginInfo()
         if ( m_visualPluginItems.isEmpty() || row < 0 )
             return;
         m_visualPluginItems.at(row)->factory()->showAbout ( this );
+        break;
+    }
+    case 3:
+    {
+        int row = ui.effectPluginTable->currentRow ();
+        if ( m_effectPluginItems.isEmpty() || row < 0 )
+            return;
+        m_effectPluginItems.at(row)->factory()->showAbout ( this );
         break;
     }
     }

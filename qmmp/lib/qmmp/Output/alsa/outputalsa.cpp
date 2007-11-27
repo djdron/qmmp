@@ -87,10 +87,6 @@ long OutputALSA::written()
 
 void OutputALSA::seek(long pos)
 {
-    recycler()->mutex()->lock ();
-    recycler()->clear();
-    recycler()->mutex()->unlock();
-
     m_totalWritten = (pos * m_bps);
     m_currentSeconds = -1;
 }

@@ -17,62 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
 #include <QDialog>
-#include <QTreeWidgetItem>
 
-#include "ui_configdialog.h"
-
+#include "ui_settingsdialog.h"
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class QFileInfo;
-
-class Skin;
-class InputPluginItem;
-class OutputPluginItem;
-class VisualPluginItem;
-class EffectPluginItem;
-
-class ConfigDialog : public QDialog
+class SettingsDialog : public QDialog
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    ConfigDialog(QWidget *parent = 0);
+    SettingsDialog(QWidget *parent = 0);
 
-    ~ConfigDialog();
+    ~SettingsDialog();
 
 private slots:
-    void changePage(QListWidgetItem *current, QListWidgetItem *previous);
-    void changeSkin();
-    void setPlFont();
-    void setMainFont();
-    void showPluginSettings();
-    void showPluginInfo();
-    void addTitleString( QAction * );
-    void saveSettings();
+    void writeSettings();
 
 private:
-    void readSettings();
-    void loadSkins();
-    void findSkins(const QString &path);
-    void loadPluginsInfo();
-    void loadFonts();
-    void createMenus();
+    Ui::SettingsDialog ui;
 
-
-    QList <QFileInfo> m_skinList;
-    Ui::ConfigDialog ui;
-    Skin *m_skin;
-    QPixmap pixmap;
-
-    QList <InputPluginItem*> m_inputPluginItems;
-    QList <OutputPluginItem*> m_outputPluginItems;
-    QList <VisualPluginItem*> m_visualPluginItems;
-    QList <EffectPluginItem*> m_effectPluginItems;
 };
 
 #endif

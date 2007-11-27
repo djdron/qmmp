@@ -245,8 +245,7 @@ bool DecoderMPC::initialize()
     if (mpc_streaminfo_read (&m_data->info, &m_data->reader) != ERROR_CODE_OK)
         return FALSE;
     chan = data()->info.channels;
-    if (output())
-        output()->configure(data()->info.sample_freq, chan, 16, data()->info.bitrate);
+    configure(data()->info.sample_freq, chan, 16, data()->info.bitrate);
 
     mpc_decoder_setup (&data()->decoder, &data()->reader);
 

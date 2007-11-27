@@ -17,96 +17,44 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLUGINITEM_H
-#define PLUGINITEM_H
+#ifndef SRCONVERTER_H
+#define SRCONVERTER_H
 
-#include <QObject>
+#include <effect.h>
+
+extern "C"
+{
+#include <samplerate.h>
+}
 
 /**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class DecoderFactory;
-class OutputFactory;
-class VisualFactory;
-class EffectFactory;
-
-class InputPluginItem : public QObject
+class SRConverter : public Effect
 {
     Q_OBJECT
 public:
-    InputPluginItem(QObject *parent, DecoderFactory *fact, const QString &filePath);
+    SRConverter(QObject *parent = 0);
 
-    ~InputPluginItem();
+    virtual ~SRConverter();
 
-    bool isSelected();
-    DecoderFactory * factory();
-
-public slots:
-    void setSelected(bool);
-
-private:
-    QString m_fileName;
-    DecoderFactory *m_factory;
-
-};
-
-class OutputPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    OutputPluginItem(QObject *parent, OutputFactory *fact, const QString &filePath);
-
-    ~OutputPluginItem();
-
-    bool isSelected();
-    OutputFactory * factory();
-
-public slots:
-    void select();
+    //bool process(char *in_data, char *out_data, const ulong maxsize, ulong &rbytes, ulong &wbytes);
+    const ulong process(char *in_data, const ulong size, char **out_data);
+    void configure(ulong freq, int chan, int res);
+    const ulong frequency();
 
 private:
-    QString m_fileName;
-    OutputFactory *m_factory;
-
-};
-
-class VisualPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    VisualPluginItem(QObject *parent, VisualFactory *fact, const QString &filePath);
-
-    ~VisualPluginItem();
-
-    bool isSelected();
-    VisualFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    QString m_fileName;
-    VisualFactory *m_factory;
-};
-
-class EffectPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    EffectPluginItem(QObject *parent, EffectFactory *fact, const QString &filePath);
-
-    ~EffectPluginItem();
-
-    bool isSelected();
-    EffectFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    QString m_fileName;
-    EffectFactory *m_factory;
+    void freeSRC();
+    SRC_STATE *m_src_state;
+    SRC_DATA m_src_data;
+    int m_overSamplingFs;
+    int m_srcError;
+    int m_converter_type;
+    bool m_isSrcAlloc;
+    float *m_srcIn, *m_srcOut;
+    short *m_wOut;
+    ulong m_freq;
 };
 
 #endif

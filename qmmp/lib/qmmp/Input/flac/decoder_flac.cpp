@@ -436,8 +436,7 @@ bool DecoderFLAC::initialize()
         return FALSE;
     }
     chan = data()->channels;
-    if (output())
-        output()->configure(data()->sample_rate, data()->channels, 16, bitrate);
+    configure(data()->sample_rate, data()->channels, 16, bitrate);
     totalTime = data()->length;
 
     inited = TRUE;
