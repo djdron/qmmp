@@ -39,7 +39,6 @@ public:
 
     virtual ~SRConverter();
 
-    //bool process(char *in_data, char *out_data, const ulong maxsize, ulong &rbytes, ulong &wbytes);
     const ulong process(char *in_data, const ulong size, char **out_data);
     void configure(ulong freq, int chan, int res);
     const ulong frequency();
