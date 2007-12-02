@@ -37,6 +37,10 @@ clear
 cd ..
 cd vorbis
 clear
+#clear sndfile
+cd ..
+cd sndfile
+clear
 #clear Output
 cd ..
 cd ..
