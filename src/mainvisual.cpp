@@ -212,9 +212,9 @@ void MainVisual::mousePressEvent (QMouseEvent *e)
     else
     {
         if (!m_vis)
-            setVisual(new Analyzer);
+            setVisual(new mainvisual::Analyzer);
         else if (m_vis->name() == "Analyzer")
-            setVisual(new Scope);
+            setVisual(new mainvisual::Scope);
         else if (m_vis->name() == "Scope")
             setVisual(0);
 
@@ -294,9 +294,9 @@ void MainVisual::updateSettings()
         visName == "Off";
 
     if (visName == "Analyzer")
-        setVisual(new Analyzer);
+        setVisual(new mainvisual::Analyzer);
     else if (visName == "Scope")
-        setVisual(new Scope);
+        setVisual(new mainvisual::Scope);
     else
         setVisual(0);
 
@@ -431,6 +431,8 @@ void MainVisual::readSettings()
 
     updateSettings();
 }
+
+using namespace mainvisual;
 
 Analyzer::Analyzer()
         : m_analyzerBarWidth ( 4 ), m_fps ( 20 )
