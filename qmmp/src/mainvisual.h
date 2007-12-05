@@ -120,6 +120,8 @@ private:
     QAction *m_peaksAction;
 };
 
+namespace mainvisual
+{
 class Analyzer : public VisualBase
 {
 public:
@@ -165,5 +167,6 @@ private:
     int m_intern_vis_data[75];
     Skin *m_skin;
 };
+}
 
 #endif
