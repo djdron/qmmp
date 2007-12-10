@@ -279,10 +279,7 @@ void OutputALSA::run()
 
         if (b)
         {
-
-            l = qMin(int(globalBlockSize*2), int(b->nbytes - n));
-            l = snd_pcm_bytes_to_frames(pcm_handle, l);
-            //l = qMin(aval, int(l));
+            l = snd_pcm_bytes_to_frames(pcm_handle, b->nbytes - n);
             while (l>0)
             {
                 m = snd_pcm_writei (pcm_handle, b->data+n, l);
