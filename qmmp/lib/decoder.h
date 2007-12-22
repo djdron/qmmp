@@ -146,6 +146,7 @@ public:
     {
         m_useEQ = on;
     };
+    void setVolume(int, int);
 
     // static methods
     static QStringList all();
@@ -173,6 +174,7 @@ protected:
 
 private:
     DecoderFactory *fctry;
+    void changeVolume(char *data, ulong sz, int channels);
 
     QList <Effect*> m_effects;
     QIODevice *in;
@@ -184,6 +186,9 @@ private:
     uint blksize;
     bool m_eqInited;
     bool m_useEQ;
+    bool m_useVolume;
+    int m_volL;
+    int m_volR;
 
 };
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,8 +37,8 @@ Q_OBJECT
 Q_INTERFACES(OutputFactory);
 
 public:
-    const QString& name() const;
-    Output* create(QObject* parent);
+    const OutputProperties properties() const;
+    Output* create(QObject* parent, bool volume);
     void showSettings(QWidget* parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

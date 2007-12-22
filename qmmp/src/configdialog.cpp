@@ -125,6 +125,8 @@ void ConfigDialog::readSettings()
     ui.portLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
     ui.proxyUserLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
     ui.proxyPasswLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
+
+    ui.softVolumeCheckBox->setChecked(settings.value("Volume/software_volume", FALSE).toBool());
 }
 
 void ConfigDialog::changePage ( QListWidgetItem *current, QListWidgetItem *previous )
@@ -227,7 +229,7 @@ void ConfigDialog::loadPluginsInfo()
         button->setChecked ( item->isSelected() );
         ui.outputPluginTable->setCellWidget ( i, 0, button );
         ui.outputPluginTable->setItem (i,1,
-                                       new QTableWidgetItem (item->factory()->name()));
+                                       new QTableWidgetItem (item->factory()->properties().name));
         ui.outputPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i)));
     }
 
@@ -465,5 +467,6 @@ void ConfigDialog::saveSettings()
     settings.setValue ("Proxy/port",ui.portLineEdit->text());
     settings.setValue ("Proxy/user",ui.proxyUserLineEdit->text());
     settings.setValue ("Proxy/passw",ui.proxyPasswLineEdit->text());
+    settings.setValue ("Volume/software_volume", ui.softVolumeCheckBox->isChecked());
 }
 

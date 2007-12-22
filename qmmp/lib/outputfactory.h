@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                       *
- *   forkotov02@hotmail.ru                                                     *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -30,12 +30,19 @@ class QTranslator;
 class Decoder;
 class Output;
 
+struct OutputProperties
+{
+    QString name;
+    bool hasAbout;
+    bool hasSettings;
+};
+
 class OutputFactory
 {
 public:
     virtual ~OutputFactory() {} 
-    virtual const QString &name() const = 0;
-    virtual Output *create(QObject *) = 0;
+    virtual const OutputProperties properties() const = 0;
+    virtual Output *create(QObject *, bool) = 0;
     virtual void showSettings(QWidget *parent) = 0;
     virtual void showAbout(QWidget *parent) = 0;
     virtual QTranslator *createTranslator(QObject *parent) = 0;

@@ -34,8 +34,8 @@
 #include "buffer.h"
 #include "visual.h"
 
-OutputALSA::OutputALSA(QObject * parent)
-        : Output(parent, Output::Custom), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
+OutputALSA::OutputALSA(QObject * parent, bool useVolume)
+        : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
         m_userStop(FALSE), m_totalWritten(0), m_currentSeconds(-1),
         m_bps(-1), m_frequency(-1), m_channels(-1), m_precision(-1)
 {
@@ -47,16 +47,19 @@ OutputALSA::OutputALSA(QObject * parent)
     pcm_handle = 0;
     //alsa mixer
     mixer = 0;
-    QString card = settings.value("ALSA/mixer_card","hw:0").toString();
-    QString dev = settings.value("ALSA/mixer_device", "PCM").toString();
-    setupMixer(card, dev);
+    if (useVolume)
+    {
+        QString card = settings.value("ALSA/mixer_card","hw:0").toString();
+        QString dev = settings.value("ALSA/mixer_device", "PCM").toString();
+        setupMixer(card, dev);
+    }
 }
 
 OutputALSA::~OutputALSA()
 {
     uninitialize();
     free (pcm_name);
-    if(mixer)
+    if (mixer)
         snd_mixer_close(mixer);
 }
 
@@ -295,7 +298,7 @@ void OutputALSA::run()
                 {
                     mutex()->unlock();
                     snd_pcm_wait(pcm_handle, 500);
-                    mutex()->lock();
+                    mutex()->lock ();
                 }
                 else if (m == -EPIPE)
                 {

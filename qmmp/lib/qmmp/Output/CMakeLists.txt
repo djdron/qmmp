@@ -1,6 +1,6 @@
 SET(USE_ALSA TRUE CACHE BOOL "enable/disable alsa plugin")
-SET(USE_JACK TRUE CACHE BOOL "enable/disable jack plugin")
-SET(USE_OSS TRUE CACHE BOOL "enable/disable oss plugin")
+SET(USE_JACK FALSE CACHE BOOL "enable/disable jack plugin")
+SET(USE_OSS FALSE CACHE BOOL "enable/disable oss plugin")
 
 IF(USE_ALSA)
 MESSAGE( STATUS "ALSA ON")

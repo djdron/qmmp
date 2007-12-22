@@ -57,7 +57,7 @@ void Output::registerFactory ( OutputFactory *fact )
     factories->append ( fact );
 }
 
-Output *Output::create ( QObject *parent )
+Output *Output::create (QObject *parent)
 {
     Output *output = 0;
 
@@ -77,27 +77,20 @@ Output *Output::create ( QObject *parent )
             j = i;
     }
     OutputFactory *fact = factories->at (j);
-    if ( fact )
+    bool useVolume = !settings.value("Volume/software_volume", FALSE).toBool();
+    if (fact)
     {
-        output = fact->create (parent);
-    }
-    switch ((int) output->volumeControl())
-    {
-    case Output::Standard:
-    {
-        break;
-    }
-    case Output::Custom:
-    {
-        timer = new QTimer(output);
-        connect(timer, SIGNAL(timeout()), output, SLOT(checkVolume()));
-        timer->start(125);
-        break;
-    }
-    case Output::Disabled:
-    {
-        break;
-    }
+        output = fact->create (parent, useVolume);
+        if(useVolume)
+        {
+            timer = new QTimer(output);
+            connect(timer, SIGNAL(timeout()), output, SLOT(checkVolume()));
+            timer->start(125);
+        }
+        else
+        {
+            QTimer::singleShot(125, output, SLOT(checkSoftwareVolume()));
+        }
     }
     return output;
 }
@@ -114,10 +107,9 @@ QStringList Output::outputFiles()
     return files;
 }
 
-Output::Output ( QObject* parent, VolumeType vt) : QThread (parent), r (stackSize())
+Output::Output (QObject* parent) : QThread (parent), r (stackSize())
 {
     qRegisterMetaType<OutputState>("OutputState");
-    m_vol = vt;
 }
 
 
@@ -248,3 +240,12 @@ void Output::dispatchVolume(int L, int R)
 {
     emit stateChanged ( OutputState(L, R) );
 }
+
+void Output::checkSoftwareVolume()
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    int L = settings.value("Volume/left", 80).toInt();
+    int R = settings.value("Volume/right", 80).toInt();
+    dispatchVolume(L, R);
+}
+

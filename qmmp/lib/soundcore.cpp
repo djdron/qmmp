@@ -21,6 +21,8 @@
 #include <QIODevice>
 #include <QFile>
 #include <QApplication>
+#include <QSettings>
+#include <QDir>
 
 #include "decoderfactory.h"
 #include "constants.h"
@@ -111,12 +113,12 @@ bool SoundCore::play(const QString &source)
 
     Visual *visual = 0;
     foreach(visual, m_visuals)
-        m_output->addVisual(visual);
+    m_output->addVisual(visual);
 
     VisualFactory* factory;
     foreach(factory, *Visual::visualFactories())
     {
-        if(Visual::isEnabled(factory))
+        if (Visual::isEnabled(factory))
             m_output->addVisual(factory, m_parentWidget);
     }
 
@@ -199,7 +201,7 @@ void SoundCore::stop()
         VisualFactory* factory;
         foreach(factory, *Visual::visualFactories())
         {
-            if(Visual::isEnabled(factory))
+            if (Visual::isEnabled(factory))
                 m_output->addVisual(factory, m_parentWidget);
         }
         connect(m_output, SIGNAL(stateChanged(const OutputState&)),
@@ -299,7 +301,22 @@ void SoundCore::setEQEnabled(bool on)
 
 void SoundCore::setVolume(int L, int R)
 {
-    if (m_output)
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    bool sofVolume = settings.value("Volume/software_volume", FALSE).toBool();
+    if (sofVolume)
+    {
+        L = qMin(L,100);
+        R = qMin(R,100);
+        L = qMax(L,0);
+        R = qMax(R,0);
+        settings.setValue("Volume/left", L);
+        settings.setValue("Volume/right", R);
+        if (m_decoder)
+            m_decoder->setVolume(L,R);
+        if (m_output)
+            m_output->checkSoftwareVolume();
+    }
+    else if (m_output)
         m_output->setVolume(L,R);
 }
 
@@ -316,7 +333,7 @@ void SoundCore::addVisualization(Visual *visual)
     if (m_visuals.indexOf (visual) == -1)
     {
         m_visuals.append(visual);
-        if(m_output)
+        if (m_output)
             m_output->addVisual(visual);
     }
 }
@@ -364,12 +381,12 @@ void SoundCore::showVisualization(QWidget *parent)
     if (!m_parentWidget)
     {
         m_parentWidget = parent;
-        if(!m_output)
+        if (!m_output)
             return;
         VisualFactory* factory;
         foreach(factory, *Visual::visualFactories())
         {
-            if(Visual::isEnabled(factory))
+            if (Visual::isEnabled(factory))
                 m_output->addVisual(factory, m_parentWidget);
         }
     }
@@ -377,7 +394,7 @@ void SoundCore::showVisualization(QWidget *parent)
 
 void SoundCore::addVisual(VisualFactory *factory, QWidget *parent)
 {
-    if(m_output)
+    if (m_output)
         m_output->addVisual(factory, parent);
     else
         Visual::setEnabled(factory, TRUE);
@@ -385,7 +402,7 @@ void SoundCore::addVisual(VisualFactory *factory, QWidget *parent)
 
 void SoundCore::removeVisual(VisualFactory *factory)
 {
-    if(m_output)
+    if (m_output)
         m_output->removeVisual(factory);
     else
         Visual::setEnabled(factory, FALSE);
@@ -396,7 +413,7 @@ void SoundCore::removeVisual(Visual *visual)
     if (m_visuals.indexOf (visual) != -1)
     {
         m_visuals.removeAll(visual);
-        if(m_output)
+        if (m_output)
             m_output->removeVisual(visual);
     }
 }

@@ -35,10 +35,12 @@ Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
     int b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
     qRegisterMetaType<DecoderState>("DecoderState");
-
-
     blksize = Buffer::size();
     m_effects = Effect::create(this);
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_useVolume = settings.value("Volume/software_volume", FALSE).toBool();
+    m_volL = settings.value("Volume/left", 80).toInt();
+    m_volR = settings.value("Volume/right", 80).toInt();
 }
 
 Decoder::~Decoder()
@@ -300,16 +302,19 @@ ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int n
 {
     ulong sz = output_bytes < blksize ? output_bytes : blksize;
 
-    if (!m_eqInited)
-    {
-        init_iir();
-        m_eqInited = TRUE;
-    }
     if (m_useEQ)
     {
+        if (!m_eqInited)
+        {
+            init_iir();
+            m_eqInited = TRUE;
+        }
         iir((void*) data,sz,nch);
     }
-
+    if (m_useVolume)
+    {
+        changeVolume(data, sz, nch);
+    }
     char *out_data = data;
     char *prev_data = data;
     ulong w = sz;
@@ -318,14 +323,14 @@ ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int n
     {
         w = effect->process(prev_data, sz, &out_data);
 
-        if(w <= 0)
+        if (w <= 0)
         {
             // copy data if plugin can not procees it
             w = sz;
             out_data = new char[w];
             memcpy(out_data, prev_data, w);
         }
-        if(data != prev_data)
+        if (data != prev_data)
             delete prev_data;
         prev_data = out_data;
     }
@@ -374,4 +379,23 @@ void Decoder::setEQ(int bands[10], int preamp)
         set_gain(i,0, 0.03*value+0.000999999*value*value);
         set_gain(i,1, 0.03*value+0.000999999*value*value);
     }
+}
+
+void Decoder::changeVolume(char *data, ulong sz, int channels)
+{
+    int r = pow( 10, (m_volR - 100)/40.0 ) * 256;
+    int l = pow( 10, (m_volL - 100)/40.0 ) * 256;
+    for (ulong i = 0; i < sz/2; i+=2)
+    {
+        ((short*)data)[i]*= r/256.0;
+        ((short*)data)[i+1]*= l/256.0;
+    }
+}
+
+void Decoder::setVolume(int l, int r)
+{
+    mtx.lock();
+    m_volR = l;
+    m_volL = r;
+    mtx.unlock();
 }

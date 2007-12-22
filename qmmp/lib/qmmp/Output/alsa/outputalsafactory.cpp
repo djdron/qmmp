@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,15 +25,18 @@
 #include "outputalsafactory.h"
 
 
-const QString& OutputALSAFactory::name() const
+const OutputProperties OutputALSAFactory::properties() const
 {
-   static QString name(tr("ALSA Plugin"));
-   return name;
+    OutputProperties properties;
+    properties.name = tr("ALSA Plugin");
+    properties.hasAbout = TRUE;
+    properties.hasSettings = TRUE;
+    return properties;
 }
 
-Output* OutputALSAFactory::create(QObject* parent)
+Output* OutputALSAFactory::create(QObject* parent, bool volume)
 {
-    return new OutputALSA(parent);
+    return new OutputALSA(parent, volume);
 }
 
 void OutputALSAFactory::showSettings(QWidget* parent)

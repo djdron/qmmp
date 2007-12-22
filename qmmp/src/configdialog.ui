@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>601</width>
-    <height>375</height>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -651,21 +651,6 @@
        </widget>
        <widget class="QWidget" name="page_2" >
         <layout class="QVBoxLayout" >
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <property name="leftMargin" >
-          <number>9</number>
-         </property>
-         <property name="topMargin" >
-          <number>9</number>
-         </property>
-         <property name="rightMargin" >
-          <number>9</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>9</number>
-         </property>
          <item>
           <widget class="QGroupBox" name="groupBox_4" >
            <property name="title" >
@@ -726,7 +711,7 @@
                <string>Message delay, ms:</string>
               </property>
               <property name="alignment" >
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
               </property>
              </widget>
             </item>
@@ -782,17 +767,20 @@
           </widget>
          </item>
          <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Vertical</enum>
+          <widget class="QGroupBox" name="groupBox_6" >
+           <property name="title" >
+            <string>Audio</string>
            </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
+           <layout class="QVBoxLayout" >
+            <item>
+             <widget class="QCheckBox" name="softVolumeCheckBox" >
+              <property name="text" >
+               <string>Use software volume control</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
        </widget>

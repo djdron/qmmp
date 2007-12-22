@@ -143,9 +143,7 @@ class Output : public QThread
     Q_OBJECT
 public:
 
-    enum VolumeType { Standard, Custom, Disabled };
-
-    Output(QObject * parent = 0, VolumeType vt = Standard);
+    Output(QObject * parent = 0);
     ~Output();
 
     Recycler *recycler()
@@ -157,11 +155,6 @@ public:
     {
         return &mtx;
     }
-
-    VolumeType volumeControl()
-    {
-        return m_vol;
-    };
 
     //visualization
     void addVisual(Visual*);
@@ -188,8 +181,8 @@ public:
     static QStringList outputFiles();
 
 public slots:
-    virtual void checkVolume()
-    {};
+    virtual void checkVolume(){};
+    void checkSoftwareVolume();
 
 signals:
     void stateChanged(const OutputState&);
@@ -208,7 +201,6 @@ private:
     Recycler r;
     QList<Visual*> visuals; //external visualization
     QMap<VisualFactory*, Visual*> m_vis_map; //internal visualization
-    VolumeType m_vol;
 };
 
 
