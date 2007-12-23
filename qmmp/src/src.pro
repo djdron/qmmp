@@ -55,7 +55,8 @@ HEADERS += mainwindow.h \
            timeindicator.h \
            keyboardmanager.h \
            filedialog.h \
-	   unixdomainsocket.h
+	   unixdomainsocket.h \
+	   commandlineoption.h
 
 
 SOURCES += mainwindow.cpp \
@@ -102,7 +103,8 @@ SOURCES += mainwindow.cpp \
            timeindicator.cpp \
            keyboardmanager.cpp \
            filedialog.cpp \
-	   unixdomainsocket.cpp
+	   unixdomainsocket.cpp \
+	   commandlineoption.cpp
 
 
 

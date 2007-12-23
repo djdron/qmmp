@@ -45,10 +45,11 @@
 #include "filedialog.h"
 #include "listwidget.h"
 #include "visualmenu.h"
+#include "commandlineoption.h"
 
 #define KEY_OFFSET 10
 
-MainWindow::MainWindow(const QStringList& args, QWidget *parent)
+MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_manager, QWidget *parent)
         : QMainWindow(parent)
 {
     m_vis = 0;
@@ -56,6 +57,7 @@ MainWindow::MainWindow(const QStringList& args, QWidget *parent)
     m_update = FALSE;
     m_paused = FALSE;
     m_elapsed = 0;
+    m_option_manager = option_manager;
 
     setWindowIcon( QIcon(":/qmmp.xpm") );
 
@@ -588,6 +590,7 @@ void MainWindow::createActions()
     m_mainMenu->addAction(tr("&Stop"),this, SLOT(stop()), tr("V"));
     m_mainMenu->addAction(tr("&Previous"),this, SLOT(previous()), tr("Z"));
     m_mainMenu->addAction(tr("&Next"),this, SLOT(next()), tr("B"));
+    m_mainMenu->addAction(tr("P&lay/Pause"),this, SLOT(playPause()), tr("Space"));
     m_mainMenu->addAction(tr("&Queue"),m_playListModel, SLOT(addToQueue()), tr("Q"));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Jump To File"),this, SLOT(jumpToFile()), tr("J"));
@@ -754,29 +757,10 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
         QString str = slist[0];
         if (str.startsWith("--")) // is it a command?
         {
-            if (str == "--play")
-                play();
-            else if (str == "--stop")
+            if (m_option_manager->hasOption(str))
             {
-                stop();
-                display->hideTimeDisplay();
+                m_option_manager->executeCommand(str,this);
             }
-            else if (str == "--pause")
-                pause();
-            else if (str == "--next")
-            {
-                next();
-                if(!m_core->isInitialized())
-                    play();
-            }
-            else if (str == "--previous")
-            {
-                previous();
-                if(!m_core->isInitialized())
-                    play();
-            }
-            else if (str == "--play-pause")
-                playPause();
             else
                 return false;
         }
@@ -816,4 +800,21 @@ void MainWindow::handleCloseRequest()
 void MainWindow::addUrl( )
 {
     AddUrlDialog::popup(this,m_playListModel);
+}
+
+SoundCore * MainWindow::soundCore() const
+{
+    return m_core;
+}
+
+MainDisplay * MainWindow::mainDisplay() const
+{
+    return display;
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *ke)
+{
+    QKeyEvent event = QKeyEvent(ke->type(), ke->key(), 
+                                ke->modifiers(), ke->text(),ke->isAutoRepeat(), ke->count());
+    QApplication::sendEvent(m_playlist,&event);
 }

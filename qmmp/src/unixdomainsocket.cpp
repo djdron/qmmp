@@ -7,14 +7,14 @@
 
 
 UnixDomainSocket::UnixDomainSocket(QObject * parent ) : QUdpSocket(parent){
-    _binded = false;
+    _bound = false;
     _s = socket(AF_UNIX, SOCK_DGRAM, 0);
     this->setSocketDescriptor(_s);
 }
 
 UnixDomainSocket::~UnixDomainSocket(){
 
-    if(_binded){
+    if(_bound){
         ::unlink(_local.sun_path);
     }
 }
@@ -28,7 +28,7 @@ bool UnixDomainSocket::bind(const QString& path){
     len = strlen(_local.sun_path) + sizeof(_local.sun_family);
     bool res = !(::bind(_s, (struct sockaddr *)&_local, len));
     if(res)
-	_binded = true;
+	_bound = true;
     return res;
 }
 
@@ -49,7 +49,7 @@ bool UnixDomainSocket::alive(const QString& path)
     }
     return true;
 }
-
+// 
 void UnixDomainSocket::writeDatagram(const char* command,const QString& path)
 {
     socklen_t len;

@@ -38,7 +38,7 @@ public slots:
 private:
     unsigned int _s;
     struct sockaddr_un _local;
-    bool _binded;
+    bool _bound;
 };
 
 

@@ -27,7 +27,7 @@
 
 class UnixDomainSocket;
 class MainWindow;
-
+class CommandLineOptionManager;
 
 /*!
  *	QMMPStarter represents wrapper object that is responsible
@@ -65,6 +65,7 @@ private:
 	 MainWindow* mw;
      UnixDomainSocket* m_sock;
 	 QString argString;
+     CommandLineOptionManager* m_option_manager;
 };
 
 #endif 

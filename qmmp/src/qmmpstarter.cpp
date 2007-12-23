@@ -26,11 +26,13 @@
 #include "mainwindow.h"
 #include "version.h"
 #include "qmmpstarter.h"
+#include "commandlineoption.h"
 
 #define MAXCOMMANDSIZE 1024
 
 QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent),mw(NULL)
 {	
+    m_option_manager = new CommandLineOptionManager();
 	QStringList tmp;
 	for(int i = 1;i < argc;i++)
 		tmp << QString::fromLocal8Bit(argv[i]);
@@ -49,12 +51,7 @@ QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent
 	}
 	
 	if(argString.startsWith("--") &&  // command?
-		  argString != "--play" && 
-		  argString != "--previous" && 
-		  argString != "--next" && 
-		  argString != "--stop" && 
-		  argString != "--pause" &&
-		  argString != "--play-pause" 
+          !m_option_manager->hasOption(argString)
 	  )
 	{
 		qFatal("QMMP: Unknown command...");
@@ -85,7 +82,6 @@ QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent
 
 QMMPStarter::~ QMMPStarter()
 {
-    qWarning("QMMPStarter::~ QMMPStarter()");
 	if(mw) delete mw;
 }
 
@@ -93,7 +89,7 @@ void QMMPStarter::startMainWindow()
 {
     connect(m_sock, SIGNAL(readyRead()),this, SLOT(readCommand()));
     QStringList arg_l = argString.split("\n", QString::SkipEmptyParts);
-    mw = new MainWindow(arg_l,0);
+    mw = new MainWindow(arg_l,m_option_manager,0);
 }
 
 void QMMPStarter::writeCommand()
@@ -137,14 +133,14 @@ void QMMPStarter::printUsage()
 			"Usage: qmmp [options] [files] \n"
 			"Options:\n"
 			"--------\n"
-			"--help              Display this text and exit.\n"
-			"--previous          Skip backwards in playlist\n"
-			"--play              Start playing current playlist\n"
-			"--pause             Pause current song\n"
-			"--play-pause        Pause if playing, play otherwise\n"
-			"--stop              Stop current song\n"
-			"--next              Skip forward in playlist\n"
-			"--version           Print version number and exit.\n\n"
+            );
+    for(int i = 0; i< m_option_manager->count();i++)
+    {
+        qWarning(qPrintable((*m_option_manager)[i]->helpString()));
+    }
+    qWarning(
+            "--help               Display this text and exit.\n"
+			"--version            Print version number and exit.\n\n"
 			"Ideas, patches, bugreports send to forkotov02@hotmail.ru\n"
 			  );
 }

@@ -45,28 +45,25 @@ class VisualMenu;
 
 class QMenu;
 class QKeyEvent;
-
+class CommandLineOptionManager;
 
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    MainWindow(const QStringList& args, QWidget *parent);
+    MainWindow(const QStringList& args,CommandLineOptionManager*, QWidget *parent);
 
     ~MainWindow();
 
-    PlayList *getPLPointer()
-    {
-        return m_playlist;
-    }
+    PlayList *getPLPointer(){return m_playlist;}
 
     void seek(int);
     QMenu* menu();
     void setVolume(int volume, int balance);
-
-    bool processCommandArgs(const QStringList &slist,const QString& cwd);
-
+    SoundCore* soundCore()const;
+    MainDisplay* mainDisplay()const;
+    bool processCommandArgs(const QStringList &list,const QString& cwd);
 public slots:
     void previous();
     void play();
@@ -75,6 +72,12 @@ public slots:
     void stop();
     void next();
     void replay();
+    void jumpToFile();
+    void toggleVisibility();
+
+    void addDir();
+    void addFile();
+    void addUrl();
 
     void newPlaylist();
     void loadPlaylist();
@@ -85,6 +88,7 @@ public slots:
 protected:
     virtual  void closeEvent ( QCloseEvent *);
     virtual  void changeEvent ( QEvent * event );
+    virtual void keyPressEvent ( QKeyEvent* );
 
 private slots:
     void showOutputState(const OutputState&);
@@ -94,15 +98,10 @@ private slots:
     void startSeek();
     void endSeek();
     void showSettings();
-    void addDir();
-    void addFile();
-    void addUrl();
     void updateEQ();
     void updateSkin();
     void forward();
     void backward();
-    void jumpToFile();
-    void toggleVisibility();
     void trayActivated(QSystemTrayIcon::ActivationReason);
     void about();
     void handleCloseRequest();
@@ -135,6 +134,7 @@ private:
     bool m_hide_on_titlebar_close;
     int m_elapsed;
     VisualMenu *m_visMenu;
+    CommandLineOptionManager* m_option_manager;
 };
 
 #endif
