@@ -81,7 +81,7 @@ Output *Output::create (QObject *parent)
     if (fact)
     {
         output = fact->create (parent, useVolume);
-        if(useVolume)
+        if (useVolume)
         {
             timer = new QTimer(output);
             connect(timer, SIGNAL(timeout()), output, SLOT(checkVolume()));
@@ -110,6 +110,8 @@ QStringList Output::outputFiles()
 Output::Output (QObject* parent) : QThread (parent), r (stackSize())
 {
     qRegisterMetaType<OutputState>("OutputState");
+    m_bl = -1;
+    m_br = -1;
 }
 
 
@@ -239,6 +241,22 @@ void Output::dispatch ( const OutputState &st )
 void Output::dispatchVolume(int L, int R)
 {
     emit stateChanged ( OutputState(L, R) );
+}
+
+void Output::checkVolume()
+{
+    int ll = 0, lr = 0;
+    volume(&ll,&lr);
+    ll = (ll > 100) ? 100 : ll;
+    lr = (lr > 100) ? 100 : lr;
+    ll = (ll < 0) ? 0 : ll;
+    lr = (lr < 0) ? 0 : lr;
+    if (m_bl!=ll || m_br!=lr)
+    {
+        m_bl = ll;
+        m_br = lr;
+        dispatchVolume(ll,lr);
+    }
 }
 
 void Output::checkSoftwareVolume()

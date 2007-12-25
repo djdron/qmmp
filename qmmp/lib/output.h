@@ -181,7 +181,7 @@ public:
     static QStringList outputFiles();
 
 public slots:
-    virtual void checkVolume(){};
+    void checkVolume();
     void checkSoftwareVolume();
 
 signals:
@@ -201,6 +201,7 @@ private:
     Recycler r;
     QList<Visual*> visuals; //external visualization
     QMap<VisualFactory*, Visual*> m_vis_map; //internal visualization
+    int m_bl, m_br;
 };
 
 
