@@ -31,9 +31,19 @@ const QString& OutputOSSFactory::name() const
     return name;
 }
 
-Output* OutputOSSFactory::create(QObject* parent)
+Output* OutputOSSFactory::create(QObject* parent,bool)
 {
     return new OutputOSS(parent);
+}
+
+const OutputProperties OutputOSSFactory::properties() const
+{
+    OutputProperties properties;
+    properties.name = name();
+    properties.hasAbout = TRUE;
+    properties.hasSettings = TRUE;
+    return properties;
+		    
 }
 
 void OutputOSSFactory::showSettings(QWidget* parent)

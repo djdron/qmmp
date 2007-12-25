@@ -75,13 +75,15 @@ void CommandLineOptionManager::registerBuiltingCommandLineOptions()
 
 void CommandLineOptionManager::registerExternalCommandLineOptions()
 {
-    QDir pluginsDir (QDir::homePath()+"/.qmmp/plugins/CommanLineOptions");
+    QDir pluginsDir (QDir::homePath()+"/.qmmp/plugins/CommandLineOptions");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject *plugin = loader.instance();
         if (loader.isLoaded())
             qDebug("CommandLineOption: plugin loaded - %s", qPrintable(fileName));
+        else
+            qWarning(qPrintable(loader.errorString()));
 
         CommandLineOption *cmd_option = 0;
         if (plugin)

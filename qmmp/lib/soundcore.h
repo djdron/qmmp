@@ -124,6 +124,8 @@ public:
     * \b L and \b R should be 0..100
     */
     void setVolume(int L, int R);
+    
+    void volume(int*, int*);
 
     //config
 

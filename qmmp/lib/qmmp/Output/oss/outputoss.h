@@ -45,6 +45,7 @@ public:
     long latency();
     void seek(long);
     void setVolume(int l, int r);
+    void volume(int* l,int* r);
     void checkVolume();
 
 private:

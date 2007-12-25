@@ -172,8 +172,8 @@ public:
     virtual long written() = 0;
     virtual long latency() = 0;
     virtual void seek(long) = 0;
-    virtual void setVolume(int, int)
-    {};
+    virtual void setVolume(int, int){};
+    virtual void volume(int*, int*){};
 
     static void registerFactory(OutputFactory *);
     static Output *create(QObject *);

@@ -88,7 +88,7 @@ void OutputOSS::seek(long pos)
 
 
 OutputOSS::OutputOSS(QObject * parent)
-    : Output(parent, Output::Custom), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
+    : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
       m_userStop(FALSE),
       m_totalWritten(0), m_currentSeconds(-1),
       m_bps(1), m_frequency(-1), m_channels(-1), m_precision(-1),
@@ -424,7 +424,6 @@ void OutputOSS::run()
 
 void OutputOSS::setVolume(int l, int r)
 {
-
     int v, devs;
     long cmd;
 
@@ -441,6 +440,32 @@ void OutputOSS::setVolume(int l, int r)
         v = (r << 8) | l;
         ioctl(m_mixer_fd, cmd, &v);
 }
+
+void OutputOSS::volume(int *ll,int *rr)
+{
+    *ll = 0; 
+    *rr = 0;
+    int  cmd;
+    int v, devs;
+
+    ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
+    if ((devs & SOUND_MASK_PCM) && (m_master == 0))
+        cmd = SOUND_MIXER_READ_PCM;
+    else if ((devs & SOUND_MASK_VOLUME) && (m_master == 1))
+        cmd = SOUND_MIXER_READ_VOLUME;
+    else
+        return;
+
+    ioctl(m_mixer_fd, cmd, &v);
+    *ll = (v & 0xFF00) >> 8;
+    *rr = (v & 0x00FF);
+
+    *ll = (*ll > 100) ? 100 : *ll;
+    *rr = (*rr > 100) ? 100 : *rr;
+    *ll = (*ll < 0) ? 0 : *ll;
+    *rr = (*rr < 0) ? 0 : *rr;
+}
+
 
 void OutputOSS::checkVolume()
 {

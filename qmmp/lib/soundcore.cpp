@@ -320,6 +320,20 @@ void SoundCore::setVolume(int L, int R)
         m_output->setVolume(L,R);
 }
 
+void SoundCore::volume(int *left, int *right)
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    bool sofVolume = settings.value("Volume/software_volume", FALSE).toBool();
+    if (sofVolume)
+    {
+        *left = settings.value("Volume/left", 0).toInt();
+        *right = settings.value("Volume/right", 0).toInt();
+    }
+    else if (m_output)
+        m_output->volume(left,right);
+    return;
+}
+
 void SoundCore::updateConfig()
 {
     m_update = TRUE;
@@ -422,3 +436,5 @@ SoundCore* SoundCore::instance()
 {
     return m_instance;
 }
+
+
