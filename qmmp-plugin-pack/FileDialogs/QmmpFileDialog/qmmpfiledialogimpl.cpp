@@ -5,7 +5,8 @@
 
 QmmpFileDialogImpl::QmmpFileDialogImpl( QWidget * parent, Qt::WindowFlags f) : QDialog(parent,f)
 {
-	setupUi(this);
+    setupUi(this);
+    setAttribute(Qt::WA_QuitOnClose, FALSE);
     m_model = new QDirModel(this);
     m_model->setSorting(QDir::Type /*| QDir::Name*/);
     fileListView->setModel(m_model); 
@@ -24,14 +25,12 @@ void QmmpFileDialogImpl::on_lookInComboBox_activated(const QString&)
 
 void QmmpFileDialogImpl::on_upToolButton_clicked()
 {
-	//qWarning("TODO: %s	%d",__FILE__,__LINE__);
     fileListView->setRootIndex(m_model->parent(fileListView->rootIndex()));
     lookInComboBox->setEditText(m_model->filePath(fileListView->rootIndex()));
 }
 
 void QmmpFileDialogImpl::on_fileListView_doubleClicked(const QModelIndex& ind)
 {
-	//qWarning("TODO: %s	%d",__FILE__,__LINE__);
     if(ind.isValid())
     {
         QFileInfo info = m_model->fileInfo(ind);
@@ -52,7 +51,7 @@ void QmmpFileDialogImpl::on_fileListView_doubleClicked(const QModelIndex& ind)
 
 void QmmpFileDialogImpl::on_fileNameLineEdit_returnPressed()
 {
-	qWarning("TODO: %s	%d",__FILE__,__LINE__);
+	on_addPushButton_clicked();
 }
 
 void QmmpFileDialogImpl::on_addPushButton_clicked()
@@ -87,7 +86,6 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
     fileListView->setRootIndex(m_model->index(d));
     m_model->sort(0);
     lookInComboBox->setEditText(d);
-    //m_model->setNameFilters(mask);
 }
 
 void QmmpFileDialogImpl::on_listToolButton_toggled(bool yes)
