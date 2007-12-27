@@ -42,8 +42,8 @@ Q_OBJECT
         virtual QString saveFileName ( QWidget* , const QString& ,const QString& , const QString& , QString* );
         virtual bool modal()const{ return TRUE;}
         virtual ~FileDialog(){;}
-		  virtual void init(QObject*);
-		  virtual void raise(const QString& = QString(),Mode = AddFiles,const QStringList& = QStringList()){;}
+        void init(QObject*);
+        virtual void raise(const QString& = QString(),Mode = AddFiles,const QStringList& = QStringList()){;}
 
         static bool registerFactory(FileDialogFactory*);
     public:

@@ -26,9 +26,9 @@ bool FileDialog::isModal()
     return instance()->modal();
 }
 
+
 void FileDialog::init(QObject* o)
 {
-    qWarning("void FileDialog::init(QObject* o)");
     if(!m_initialized && !instance()->modal())
     {
         PlayListModel* model = NULL;
@@ -130,7 +130,6 @@ void FileDialog::registerExternalFactories()
 
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
-        //qWarning("file dialog path: %s",qPrintable(fileName));
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject *plugin = loader.instance();
         if (loader.isLoaded())
@@ -164,7 +163,6 @@ QString FileDialog::m_current_factory = QString();
 
 FileDialog* FileDialog::instance()
 {
-    //qWarning("INSTANCE");
     if(_instance && _instance->modal())
     {
         delete _instance;
@@ -188,13 +186,13 @@ FileDialog* FileDialog::instance()
         if(_instance)
             delete _instance;
 
-        qWarning("%s\t%s",qPrintable(m_current_factory),qPrintable(f_dialogName));
         foreach(QString name,names)
         {
                 if(name == f_dialogName)
                 {
                     _instance = factories[name]->create();
                     m_current_factory = f_dialogName;
+                    break;
                 }
         }
 
@@ -204,7 +202,6 @@ FileDialog* FileDialog::instance()
     //else if(!_instance->modal())
             //return _instance;
       //      _instance->raise();
-
     return _instance;
 
 }
@@ -241,9 +238,9 @@ QStringList FileDialog::registeredFactories()
 
 void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)
 {
-//    qWarning("void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)");
-	instance()->init(o);
-	instance()->raise(d,m,f);
+	FileDialog* inst = instance();
+    inst->init(o);
+	inst->raise(d,m,f);
 }
 
 
