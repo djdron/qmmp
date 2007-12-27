@@ -36,6 +36,8 @@ public:
 
     ~SettingsDialog();
 
+    enum TagType {ID3v1 = 0, ID3v2, APE, Disabled};
+
 private slots:
     void writeSettings();
 

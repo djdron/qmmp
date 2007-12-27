@@ -27,6 +27,7 @@
 #include <taglib/fileref.h>
 #include <taglib/id3v1tag.h>
 #include <taglib/id3v2tag.h>
+#include <taglib/apetag.h>
 #include <taglib/tfile.h>
 #include <taglib/mpegfile.h>
 #include <taglib/mpegheader.h>
@@ -58,14 +59,30 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
         m_codec_v1 = QTextCodec::codecForName ("UTF-8");
     if (!m_codec_v2)
         m_codec_v2 = QTextCodec::codecForName ("UTF-8");
+
+    QString tag_name = settings.value("current_tag","ID3v2").toString ();
+
+    if (tag_name == "ID3v1")
+        ui.id3v1RadioButton->setChecked(TRUE);
+    else if (tag_name == "ID3v2")
+        ui.id3v2RadioButton->setChecked(TRUE);
+    else if (tag_name == "APE")
+        ui.apeRadioButton->setChecked(TRUE);
+    else
+        ui.id3v2RadioButton->setChecked(TRUE);
+
     settings.endGroup();
 
     loadMPEGInfo();
-    loadID3v1Tag();
-    loadID3v2Tag();
     QFileInfo info(m_path);
-    ui.saveV1Button->setEnabled(info.isWritable());
-    ui.saveV2Button->setEnabled(info.isWritable());
+    m_rw = info.isWritable();
+    loadTag();
+    connect(ui.saveButton, SIGNAL(clicked()), SLOT(save()));
+    connect(ui.createButton, SIGNAL(clicked()), SLOT(create()));
+    connect(ui.deleteButton, SIGNAL(clicked()), SLOT(deleteTag()));
+    connect(ui.id3v1RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
+    connect(ui.id3v2RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
+    connect(ui.apeRadioButton, SIGNAL(clicked()), SLOT(loadTag()));
 }
 
 
@@ -115,107 +132,163 @@ void DetailsDialog::loadMPEGInfo()
         ui.originalLabel->setText(tr("No"));
 }
 
-void DetailsDialog::loadID3v1Tag()
+void DetailsDialog::loadTag()
 {
     TagLib::MPEG::File f (m_path.toLocal8Bit());
+    QTextCodec *codec = QTextCodec::codecForName ("UTF-8");
+    TagLib::Tag *tag = 0;
 
-    if (f.ID3v1Tag())
+    if (selectedTag() == TagLib::MPEG::File::ID3v1)
     {
-        bool utf = m_codec_v1->name().contains("UTF");
-        TagLib::String title = f.ID3v1Tag()->title();
-        TagLib::String artist = f.ID3v1Tag()->artist();
-        TagLib::String album = f.ID3v1Tag()->album();
-        TagLib::String comment = f.ID3v1Tag()->comment();
-        TagLib::String genre = f.ID3v1Tag()->genre();
-        QString string = m_codec_v1->toUnicode(title.toCString(utf)).trimmed();
-        ui.titleLineEdit_v1->setText(string);
-        string = m_codec_v1->toUnicode(artist.toCString(utf)).trimmed();
-        ui.artistLineEdit_v1->setText(string);
-        string = m_codec_v1->toUnicode(album.toCString(utf)).trimmed();
-        ui.albumLineEdit_v1->setText(string);
-        string = m_codec_v1->toUnicode(comment.toCString(utf)).trimmed();
-        ui.commentLineEdit_v1->setText(string);
-        string = QString("%1").arg(f.ID3v1Tag()->year());
-        ui.yearLineEdit_v1->setText(string);
-        string = QString("%1").arg(f.ID3v1Tag()->track());
-        ui.trackLineEdit_v1->setText(string);
-        string = m_codec_v1->toUnicode(genre.toCString(utf)).trimmed();
-        ui.genreLineEdit_v1->setText(string);
+        tag = f.ID3v1Tag();
+        codec = m_codec_v1;
+        ui.tagGroupBox->setTitle(tr("ID3v1 Tag"));
     }
-    connect(ui.saveV1Button, SIGNAL(clicked()), SLOT(saveID3v1Tag()));
+    else if (selectedTag() == TagLib::MPEG::File::ID3v2)
+    {
+        tag = f.ID3v2Tag();
+        codec = m_codec_v2;
+        ui.tagGroupBox->setTitle(tr("ID3v2 Tag"));
+    }
+    else if (selectedTag() == TagLib::MPEG::File::APE)
+    {
+        ui.tagGroupBox->setTitle(tr("APE Tag"));
+        tag = f.APETag();
+    }
+    ui.saveButton->setEnabled(tag && m_rw);
+    ui.createButton->setEnabled(!tag && m_rw);
+    ui.deleteButton->setEnabled(tag && m_rw);
+    ui.tagsWidget->setEnabled(tag);
+    //clear old values
+    ui.titleLineEdit->clear();
+    ui.artistLineEdit->clear();
+    ui.albumLineEdit->clear();
+    ui.commentLineEdit->clear();
+    ui.yearLineEdit->clear();
+    ui.trackLineEdit->clear();
+    ui.genreLineEdit->clear();
+
+    if (tag)
+    {
+        bool utf = codec->name().contains("UTF");
+        TagLib::String title = tag->title();
+        TagLib::String artist = tag->artist();
+        TagLib::String album = tag->album();
+        TagLib::String comment = tag->comment();
+        TagLib::String genre = tag->genre();
+        QString string = codec->toUnicode(title.toCString(utf)).trimmed();
+        ui.titleLineEdit->setText(string);
+        string = codec->toUnicode(artist.toCString(utf)).trimmed();
+        ui.artistLineEdit->setText(string);
+        string = codec->toUnicode(album.toCString(utf)).trimmed();
+        ui.albumLineEdit->setText(string);
+        string = codec->toUnicode(comment.toCString(utf)).trimmed();
+        ui.commentLineEdit->setText(string);
+        string = QString("%1").arg(tag->year());
+        ui.yearLineEdit->setText(string);
+        string = QString("%1").arg(tag->track());
+        ui.trackLineEdit->setText(string);
+        string = codec->toUnicode(genre.toCString(utf)).trimmed();
+        ui.genreLineEdit->setText(string);
+    }
 }
 
-void DetailsDialog::loadID3v2Tag()
+void DetailsDialog::save()
 {
-    TagLib::MPEG::File f (m_path.toLocal8Bit());
-
-    if (f.ID3v2Tag())
-    {
-        bool utf = m_codec_v2->name().contains("UTF");
-        TagLib::String title = f.ID3v2Tag()->title();
-        TagLib::String artist = f.ID3v2Tag()->artist();
-        TagLib::String album = f.ID3v2Tag()->album();
-        TagLib::String comment = f.ID3v2Tag()->comment();
-        TagLib::String genre = f.ID3v2Tag()->genre();
-        QString string = m_codec_v2->toUnicode(title.toCString(utf)).trimmed();
-        ui.titleLineEdit_v2->setText(string);
-        string = m_codec_v2->toUnicode(artist.toCString(utf)).trimmed();
-        ui.artistLineEdit_v2->setText(string);
-        string = m_codec_v2->toUnicode(album.toCString(utf)).trimmed();
-        ui.albumLineEdit_v2->setText(string);
-        string = m_codec_v2->toUnicode(comment.toCString(utf)).trimmed();
-        ui.commentLineEdit_v2->setText(string);
-        string = QString("%1").arg(f.ID3v2Tag()->year());
-        ui.yearLineEdit_v2->setText(string);
-        string = QString("%1").arg(f.ID3v2Tag()->track());
-        ui.trackLineEdit_v2->setText(string);
-        string = m_codec_v2->toUnicode(genre.toCString(utf)).trimmed();
-        ui.genreLineEdit_v2->setText(string);
-    }
-    connect(ui.saveV2Button, SIGNAL(clicked()), SLOT(saveID3v2Tag()));
-}
-
-void DetailsDialog::saveID3v1Tag()
-{
-    TagLib::MPEG::File f (m_path.toLocal8Bit());
-
+    TagLib::MPEG::File* f = new  TagLib::MPEG::File(m_path.toLocal8Bit());
     TagLib::String::Type type = TagLib::String::Latin1;
 
-    if (m_codec_v1->name().contains("UTF"))
-        return;
+    QTextCodec *codec = 0;
+    TagLib::Tag *tag = 0;
 
-    f.ID3v1Tag(TRUE)->setTitle(TagLib::String(m_codec_v1->fromUnicode(ui.titleLineEdit_v1->text()).constData(), type));
-    f.ID3v1Tag()->setArtist(TagLib::String(m_codec_v1->fromUnicode(ui.artistLineEdit_v1->text()).constData(), type));
-    f.ID3v1Tag()->setAlbum(TagLib::String(m_codec_v1->fromUnicode(ui.albumLineEdit_v1->text()).constData(), type));
-    f.ID3v1Tag()->setComment(TagLib::String(m_codec_v1->fromUnicode(ui.commentLineEdit_v1->text()).constData(), type));
-    f.ID3v1Tag()->setGenre(TagLib::String(m_codec_v1->fromUnicode(ui.genreLineEdit_v1->text()).constData(), type));
-    f.ID3v1Tag()->setYear(ui.yearLineEdit_v1->text().toUInt());
-    f.ID3v1Tag()->setTrack(ui.trackLineEdit_v1->text().toUInt());
-
-    f.save();
-}
-
-void DetailsDialog::saveID3v2Tag()
-{
-    TagLib::MPEG::File f (m_path.toLocal8Bit());
-
-    TagLib::String::Type type = TagLib::String::Latin1;
-
-    if (m_codec_v2->name().contains("UTF"))
+    if (selectedTag() == TagLib::MPEG::File::ID3v1)
     {
-        TagLib::ID3v2::FrameFactory *factory = TagLib::ID3v2::FrameFactory::instance();
-        factory->setDefaultTextEncoding(TagLib::String::UTF8);
-        f.setID3v2FrameFactory(factory);
+        codec = m_codec_v1;
+        tag = f->ID3v1Tag(TRUE);
+        if (codec->name().contains("UTF"))
+        {
+            delete f;
+            loadTag();
+        }
+    }
+    if (selectedTag() == TagLib::MPEG::File::ID3v2)
+    {
+        codec = m_codec_v2;
+        tag = f->ID3v2Tag(TRUE);
+        if (codec->name().contains("UTF"))
+        {
+            TagLib::ID3v2::FrameFactory *factory = TagLib::ID3v2::FrameFactory::instance();
+            factory->setDefaultTextEncoding(TagLib::String::UTF8);
+            f->setID3v2FrameFactory(factory);
+            type = TagLib::String::UTF8;
+        }
+    }
+    if (selectedTag() == TagLib::MPEG::File::APE)
+    {
+        codec = QTextCodec::codecForName ("UTF-8");
+        tag = f->APETag(TRUE);
         type = TagLib::String::UTF8;
     }
 
-    f.ID3v2Tag(TRUE)->setTitle(TagLib::String(m_codec_v2->fromUnicode(ui.titleLineEdit_v2->text()).constData(), type));
-    f.ID3v2Tag()->setArtist(TagLib::String(m_codec_v2->fromUnicode(ui.artistLineEdit_v2->text()).constData(), type));
-    f.ID3v2Tag()->setAlbum(TagLib::String(m_codec_v2->fromUnicode(ui.albumLineEdit_v2->text()).constData(), type));
-    f.ID3v2Tag()->setComment(TagLib::String(m_codec_v2->fromUnicode(ui.commentLineEdit_v2->text()).constData(), type));
-    f.ID3v2Tag()->setGenre(TagLib::String(m_codec_v2->fromUnicode(ui.genreLineEdit_v2->text()).constData(), type));
-    f.ID3v2Tag()->setYear(ui.yearLineEdit_v2->text().toUInt());
-    f.ID3v2Tag()->setTrack(ui.trackLineEdit_v2->text().toUInt());
+    tag->setTitle(TagLib::String(codec->fromUnicode(ui.titleLineEdit->text()).constData(), type));
+    tag->setArtist(TagLib::String(codec->fromUnicode(ui.artistLineEdit->text()).constData(), type));
+    tag->setAlbum(TagLib::String(codec->fromUnicode(ui.albumLineEdit->text()).constData(), type));
+    tag->setComment(TagLib::String(codec->fromUnicode(ui.commentLineEdit->text()).constData(), type));
+    tag->setGenre(TagLib::String(codec->fromUnicode(ui.genreLineEdit->text()).constData(), type));
+    tag->setYear(ui.yearLineEdit->text().toUInt());
+    tag->setTrack(ui.trackLineEdit->text().toUInt());
 
-    f.save();
+    f->save(selectedTag(), FALSE);
+    delete f;
+    loadTag();
+}
+
+void DetailsDialog::create()
+{
+    TagLib::MPEG::File *f = new TagLib::MPEG::File (m_path.toLocal8Bit());
+    TagLib::Tag *tag = 0;
+    if (selectedTag() == TagLib::MPEG::File::ID3v1)
+        tag = f->ID3v1Tag(TRUE);
+    else if (selectedTag() == TagLib::MPEG::File::ID3v2)
+        tag = f->ID3v2Tag(TRUE);
+    else if (selectedTag() == TagLib::MPEG::File::APE)
+        tag = f->APETag(TRUE);
+
+    f->save(selectedTag(), FALSE);
+    delete f;
+    loadTag();
+    ui.tagsWidget->setEnabled(TRUE);
+    ui.saveButton->setEnabled(m_rw);
+}
+
+void DetailsDialog::deleteTag()
+{
+    TagLib::MPEG::File *f = new TagLib::MPEG::File (m_path.toLocal8Bit());
+    f->strip(selectedTag());
+    delete f;
+    loadTag();
+}
+
+uint DetailsDialog::selectedTag()
+{
+    if (ui.id3v1RadioButton->isChecked())
+        return TagLib::MPEG::File::ID3v1;
+    else if (ui.id3v2RadioButton->isChecked())
+        return TagLib::MPEG::File::ID3v2;
+    else if (ui.apeRadioButton->isChecked())
+        return TagLib::MPEG::File::APE;
+    return TagLib::MPEG::File::ID3v2;
+}
+
+void DetailsDialog::closeEvent (QCloseEvent *)
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.beginGroup("MAD");
+    if (ui.id3v1RadioButton->isChecked())
+        settings.setValue("current_tag","ID3v1");
+    else if (ui.id3v2RadioButton->isChecked())
+        settings.setValue("current_tag","ID3v2");
+    else if (ui.apeRadioButton->isChecked())
+        settings.setValue("current_tag","APE");
+    settings.endGroup();
 }

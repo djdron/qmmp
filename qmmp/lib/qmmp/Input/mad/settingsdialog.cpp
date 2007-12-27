@@ -43,11 +43,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         (settings.value("ID3v2_encoding","UTF-8").toString());
     ui.id3v2EncComboBox->setCurrentIndex(pos);
 
-    ui.id3v1CheckBox->setChecked(settings.value("ID3v1_enable", TRUE).toBool());
-    ui.id3v2CheckBox->setChecked(settings.value("ID3v2_enable", TRUE).toBool());
-    ui.id3v1EncComboBox->setEnabled(ui.id3v1CheckBox->isChecked());
-    ui.id3v2EncComboBox->setEnabled(ui.id3v2CheckBox->isChecked());
-    ui.defTagComboBox->setCurrentIndex(settings.value("ID3_version", 2).toInt() - 1);
+    ui.firstTagComboBox->setCurrentIndex(settings.value("tag_1", ID3v2).toInt());
+    ui.secondTagComboBox->setCurrentIndex(settings.value("tag_2", Disabled).toInt());
+    ui.thirdTagComboBox->setCurrentIndex(settings.value("tag_3", Disabled).toInt());
 
     settings.endGroup();
     connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
@@ -63,10 +61,9 @@ void SettingsDialog::writeSettings()
     settings.beginGroup("MAD");
     settings.setValue("ID3v1_encoding", ui.id3v1EncComboBox->currentText());
     settings.setValue("ID3v2_encoding", ui.id3v2EncComboBox->currentText());
-    settings.setValue("ID3v1_enable", ui.id3v1CheckBox->isChecked());
-    settings.setValue("ID3v2_enable", ui.id3v2CheckBox->isChecked());
-    settings.setValue("ID3_version", ui.defTagComboBox->currentIndex()+1);
-
+    settings.setValue("tag_1", ui.firstTagComboBox->currentIndex());
+    settings.setValue("tag_2", ui.secondTagComboBox->currentIndex());
+    settings.setValue("tag_3", ui.thirdTagComboBox->currentIndex());
     settings.endGroup();
     accept();
 }

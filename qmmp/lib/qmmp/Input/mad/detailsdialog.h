@@ -25,31 +25,38 @@
 #include "ui_detailsdialog.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
 class QTextCodec;
 
 class DetailsDialog : public QDialog
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     DetailsDialog(QWidget *parent = 0, const QString &path = 0);
 
     ~DetailsDialog();
 
+protected:
+    virtual void closeEvent (QCloseEvent *);
+
 private slots:
-    void saveID3v1Tag();
-    void saveID3v2Tag();
+    void save();
+    void create();
+    void deleteTag();
+    void loadTag();
 
 private:
     void loadMPEGInfo();
-    void loadID3v1Tag(); 
-    void loadID3v2Tag(); 
+    uint selectedTag();
+    //void loadTag();
+    //void loadID3v2Tag();
     Ui::DetailsDialog ui;
     QString m_path;
     QTextCodec *m_codec_v1;
     QTextCodec *m_codec_v2;
+    bool m_rw;
 
 };
 

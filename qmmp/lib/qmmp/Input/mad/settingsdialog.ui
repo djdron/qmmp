@@ -5,44 +5,32 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>333</width>
-    <height>224</height>
+    <width>242</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>MPEG Plugin Settings</string>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>8</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
    <item>
-    <widget class="QGroupBox" name="groupBox" >
+    <widget class="QGroupBox" name="groupBox_2" >
      <property name="title" >
-      <string>ID3 Tags</string>
+      <string>Tag Priority</string>
      </property>
      <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>8</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
       <item>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
         <item>
          <widget class="QLabel" name="label_15_2" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text" >
-           <string>Default tag version:</string>
+           <string>First:</string>
           </property>
           <property name="alignment" >
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -50,15 +38,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="defTagComboBox" >
-          <property name="maximumSize" >
-           <size>
-            <width>67</width>
-            <height>16777215</height>
-           </size>
-          </property>
+         <widget class="QComboBox" name="firstTagComboBox" >
           <property name="currentIndex" >
-           <number>1</number>
+           <number>0</number>
           </property>
           <item>
            <property name="text" >
@@ -70,44 +52,139 @@
             <string>ID3v2</string>
            </property>
           </item>
+          <item>
+           <property name="text" >
+            <string>APE</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Disabled</string>
+           </property>
+          </item>
          </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QCheckBox" name="id3v1CheckBox" >
-        <property name="text" >
-         <string>Enable ID3v1</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="id3v2CheckBox" >
-        <property name="text" >
-         <string>Enable ID3v2</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" >
+        <item>
+         <widget class="QLabel" name="label_15_3" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Second:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="secondTagComboBox" >
+          <property name="currentIndex" >
+           <number>0</number>
+          </property>
+          <item>
+           <property name="text" >
+            <string>ID3v1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>ID3v2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>APE</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Disabled</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
+        <item>
+         <widget class="QLabel" name="label_15_4" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Third:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="thirdTagComboBox" >
+          <property name="currentIndex" >
+           <number>0</number>
+          </property>
+          <item>
+           <property name="text" >
+            <string>ID3v1</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>ID3v2</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>APE</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Disabled</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Encodings</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <item>
+       <layout class="QHBoxLayout" >
         <property name="spacing" >
          <number>6</number>
+        </property>
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="label_17_2_2" >
@@ -122,28 +199,24 @@
         <item>
          <widget class="QComboBox" name="id3v1EncComboBox" />
         </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
         <property name="spacing" >
          <number>6</number>
+        </property>
+        <property name="leftMargin" >
+         <number>0</number>
+        </property>
+        <property name="topMargin" >
+         <number>0</number>
+        </property>
+        <property name="rightMargin" >
+         <number>0</number>
+        </property>
+        <property name="bottomMargin" >
+         <number>0</number>
         </property>
         <item>
          <widget class="QLabel" name="label_18_2_2" >
@@ -158,19 +231,6 @@
         <item>
          <widget class="QComboBox" name="id3v2EncComboBox" />
         </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </item>
      </layout>
@@ -178,11 +238,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
@@ -230,38 +299,6 @@
     <hint type="destinationlabel" >
      <x>179</x>
      <y>224</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>id3v2CheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>id3v2EncComboBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>84</x>
-     <y>104</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>165</x>
-     <y>163</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>id3v1CheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>id3v1EncComboBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>95</x>
-     <y>73</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>165</x>
-     <y>133</y>
     </hint>
    </hints>
   </connection>

@@ -6,6 +6,7 @@
 #include <taglib/fileref.h>
 #include <taglib/id3v1tag.h>
 #include <taglib/id3v2tag.h>
+#include <taglib/apetag.h>
 #include <taglib/tfile.h>
 #include <taglib/mpegfile.h>
 
@@ -83,46 +84,41 @@ FileTag *DecoderMADFactory::createTag(const QString &source)
 
     QTextCodec *codec = 0;
 
-    int ver = settings.value("ID3_version", 2).toInt();
-    if (ver == 1 && settings.value("ID3v1_enable", TRUE).toBool() &&
-            fileRef.ID3v1Tag())
+    uint tag_array[3];
+    tag_array[0] = settings.value("tag_1", SettingsDialog::ID3v2).toInt();
+    tag_array[1] = settings.value("tag_2", SettingsDialog::Disabled).toInt();
+    tag_array[2] = settings.value("tag_3", SettingsDialog::Disabled).toInt();
+
+
+    for (int i = 0; i < 3; ++i)
     {
-        tag = fileRef.ID3v1Tag();
-        codec = codec_v1;
-        if (tag->isEmpty())
+        switch ((uint) tag_array[i])
         {
-            tag = 0;
-            if (settings.value("ID3v2_enable", TRUE).toBool() &&
-                    fileRef.ID3v2Tag())
-            {
-                if (!fileRef.ID3v2Tag()->isEmpty())
-                {
-                    tag = fileRef.ID3v2Tag();
-                    codec = codec_v2;
-                }
-            }
-        }
-    }
-    else
-        ver = 2;
-    if (ver == 2 && settings.value("ID3v2_enable", TRUE).toBool() &&
-            fileRef.ID3v2Tag())
-    {
-        tag = fileRef.ID3v2Tag();
-        codec = codec_v2;
-        if (tag->isEmpty())
+        case SettingsDialog::ID3v1:
         {
-            tag = 0;
-            if (settings.value("ID3v1_enable", TRUE).toBool() &&
-                    fileRef.ID3v1Tag())
-            {
-                if (!fileRef.ID3v1Tag()->isEmpty())
-                {
-                    tag = fileRef.ID3v1Tag();
-                    codec = codec_v1;
-                }
-            }
+            codec = codec_v1;
+            tag = fileRef.ID3v1Tag();
+            break;
         }
+        case SettingsDialog::ID3v2:
+        {
+            codec = codec_v2;
+            tag = fileRef.ID3v2Tag();
+            break;
+        }
+        case SettingsDialog::APE:
+        {
+            codec = QTextCodec::codecForName ("UTF-8");
+            tag = fileRef.APETag();
+            break;
+        }
+        case SettingsDialog::Disabled:
+        {
+            break;
+        }
+        }
+        if(tag && !tag->isEmpty())
+            break;
     }
     settings.endGroup();
 
