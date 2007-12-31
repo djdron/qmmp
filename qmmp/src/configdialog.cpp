@@ -204,6 +204,8 @@ void ConfigDialog::loadPluginsInfo()
         ui.inputPluginTable->setItem ( i,1,
                                        new QTableWidgetItem (item->factory()->properties().name) );
         ui.inputPluginTable->setItem ( i,2, new QTableWidgetItem (files.at (i)) );
+        ui.inputPluginTable->item(i,1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui.inputPluginTable->item(i,2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
     ui.inputPluginTable->resizeColumnToContents ( 0 );
     ui.inputPluginTable->resizeColumnToContents ( 1 );
@@ -231,6 +233,8 @@ void ConfigDialog::loadPluginsInfo()
         ui.outputPluginTable->setItem (i,1,
                                        new QTableWidgetItem (item->factory()->properties().name));
         ui.outputPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i)));
+        ui.outputPluginTable->item(i,1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui.outputPluginTable->item(i,2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
 
     ui.outputPluginTable->resizeColumnToContents ( 0 );
@@ -259,6 +263,8 @@ void ConfigDialog::loadPluginsInfo()
         ui.visualPluginTable->setItem (i,1,
                             new QTableWidgetItem (item->factory()->properties().name));
         ui.visualPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i)));
+        ui.visualPluginTable->item(i,1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui.visualPluginTable->item(i,2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
 
     ui.visualPluginTable->resizeColumnToContents ( 0 );
@@ -288,6 +294,8 @@ void ConfigDialog::loadPluginsInfo()
         ui.effectPluginTable->setItem (i,1,
                             new QTableWidgetItem (item->factory()->properties().name));
         ui.effectPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i)));
+        ui.effectPluginTable->item(i,1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui.effectPluginTable->item(i,2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
 
     ui.effectPluginTable->resizeColumnToContents ( 0 );
