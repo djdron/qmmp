@@ -43,7 +43,6 @@ const OutputProperties OutputOSSFactory::properties() const
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
     return properties;
-		    
 }
 
 void OutputOSSFactory::showSettings(QWidget* parent)

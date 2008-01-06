@@ -47,7 +47,7 @@ void OutputJACK::seek(long pos)
     m_currentSeconds = -1;
 }
 
-OutputJACK::OutputJACK(QObject * parent)
+OutputJACK::OutputJACK(QObject * parent, bool useVolume)
         : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
         m_userStop(FALSE), m_totalWritten(0), m_currentSeconds(-1),
         m_bps(-1), m_frequency(-1), m_channels(-1), m_precision(-1)

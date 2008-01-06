@@ -24,13 +24,16 @@
 #include "outputjackfactory.h"
 
 
-const QString& OutputJACKFactory::name() const
+const OutputProperties OutputJACKFactory::properties() const
 {
-    static QString name(tr("JACK Plugin"));
-    return name;
+    OutputProperties properties;
+    properties.name = tr("JACK Plugin");
+    properties.hasAbout = TRUE;
+    properties.hasSettings = TRUE;
+    return properties;
 }
 
-Output* OutputJACKFactory::create(QObject* parent)
+Output* OutputJACKFactory::create(QObject* parent, bool volume)
 {
     return new OutputJACK(parent);
 }

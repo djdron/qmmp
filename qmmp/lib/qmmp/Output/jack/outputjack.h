@@ -16,7 +16,7 @@ class OutputJACK : public Output
 {
     Q_OBJECT
 public:
-    OutputJACK(QObject * parent = 0);
+    OutputJACK(QObject * parent = 0, bool useVolume = TRUE);
     ~OutputJACK();
     bool initialize();
     bool isInitialized() const
