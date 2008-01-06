@@ -113,6 +113,7 @@ Downloader::Downloader(QObject *parent, const QString &url)
 Downloader::~Downloader()
 {
     abort();
+    curl_global_cleanup();
 }
 
 
@@ -199,36 +200,33 @@ void Downloader::run()
 {
     qDebug("Downloader: starting download thread");
     m_handle = curl_easy_init();
-
     //proxy
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     if (settings.value ("Proxy/use_proxy", FALSE).toBool())
         curl_easy_setopt(m_handle, CURLOPT_PROXY,
-                         (settings.value("Proxy/host").toString()+":"+
+                         strdup((settings.value("Proxy/host").toString()+":"+
                           settings.value("Proxy/port").toString()).
-                         toLatin1 ().constData ());
+                         toLatin1 ().constData ()));
 
     if (settings.value ("Proxy/authentication", FALSE).toBool())
         curl_easy_setopt(m_handle, CURLOPT_PROXYUSERPWD,
-                         (settings.value("Proxy/user").toString()+":"+
+                         strdup((settings.value("Proxy/user").toString()+":"+
                           settings.value("Proxy/passw").toString()).
-                         toLatin1 ().constData ());
+                         toLatin1 ().constData ()));
 
     // Set url to download
-    curl_easy_setopt(m_handle, CURLOPT_URL, m_url.toAscii().constData());
-    //qDebug("Downloader: url: %s", qPrintable(url));
+    curl_easy_setopt(m_handle, CURLOPT_URL, strdup(m_url.toAscii().constData()));
     // callback for wrting
     curl_easy_setopt(m_handle, CURLOPT_WRITEFUNCTION, curl_write_data);
     // Set destination file
     curl_easy_setopt(m_handle, CURLOPT_WRITEDATA, this);
     curl_easy_setopt(m_handle, CURLOPT_HEADERDATA, this);
     curl_easy_setopt(m_handle, CURLOPT_HEADERFUNCTION, curl_header);
-    // Some SSL mambo jambo
+    // Disable SSL
     curl_easy_setopt(m_handle, CURLOPT_SSL_VERIFYPEER, FALSE);
     curl_easy_setopt(m_handle, CURLOPT_SSL_VERIFYHOST, 0);
-    // Disable progress meter
+    // Enable progress meter
     curl_easy_setopt(m_handle, CURLOPT_NOPROGRESS, 0);
-
     curl_easy_setopt(m_handle, CURLOPT_PROGRESSDATA, this);
     curl_easy_setopt(m_handle, CURLOPT_PROGRESSFUNCTION, curl_progress);
     // Any kind of authentication
@@ -238,6 +236,8 @@ void Downloader::run()
     curl_easy_setopt(m_handle, CURLOPT_AUTOREFERER, 1);
     // Follow redirections
     curl_easy_setopt(m_handle, CURLOPT_FOLLOWLOCATION, 1);
+    curl_easy_setopt(m_handle, CURLOPT_FAILONERROR, 1);
+    curl_easy_setopt(m_handle, CURLOPT_MAXREDIRS, 15);
     // user agent
     curl_easy_setopt(m_handle, CURLOPT_USERAGENT, "qmmp/0.2");
     curl_easy_setopt(m_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
@@ -256,7 +256,7 @@ void Downloader::run()
     qDebug("Downloader: starting libcurl");
     m_mutex.unlock();
     return_code = curl_easy_perform(m_handle);
-    //qDebug("curl_easy_perform %d", return_code);
+    qDebug("curl_easy_perform %d", return_code);
 
     m_mutex.lock();
     m_stream.aborted = TRUE;
