@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include <QFileInfo>
 #include <QProcess>
 #include <QByteArray>
+#include <QApplication>
 #include <QFile>
 
 #include "skinreader.h"
@@ -47,6 +48,9 @@ void SkinReader::updateCache()
     QDir dir(QDir::homePath() +"/.qmmp/skins");
     dir.setFilter( QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     QFileInfoList f = dir.entryInfoList();
+    dir.setPath(qApp->applicationDirPath()+"/../share/qmmp/skins");
+    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    f << dir.entryInfoList();
     //clear removed skins from cache
     QDir cache_dir(QDir::homePath() +"/.qmmp/cache/skins");
     cache_dir.setFilter(QDir::Dirs | QDir::Hidden | QDir::NoDotAndDotDot);
