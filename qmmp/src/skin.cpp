@@ -138,7 +138,7 @@ void Skin::loadButtons()
     buttons[BT_STOP_P] = pixmap->copy ( 69,18,23,18 );
 
     buttons[BT_NEXT_N] = pixmap->copy ( 92, 0,22,18 );
-    buttons[BT_NEXT_P] = pixmap->copy ( 92,16,22,18 );
+    buttons[BT_NEXT_P] = pixmap->copy ( 92,18,22,18 );
 
     buttons[BT_EJECT_N] = pixmap->copy ( 114, 0,22,16 );
     buttons[BT_EJECT_P] = pixmap->copy ( 114,16,22,16 );
