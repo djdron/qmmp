@@ -26,6 +26,8 @@
 #include <math.h>
 
 #include <soundcore.h>
+#include <qmmpui/generalhandler.h>
+#include <qmmpui/general.h>
 
 #include "textscroller.h"
 #include "mainwindow.h"
@@ -114,11 +116,6 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
     m_titlebar->show();
     m_titlebar->setActive(TRUE);
 
-    m_tray = new QSystemTrayIcon( this );
-    m_tray->setIcon ( QIcon(":/stop.png") );
-    m_tray->setContextMenu( m_mainMenu );
-    connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
-
     readSettings();
     dock->updateDock();
 
@@ -143,6 +140,15 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
 
     FileDialog::registerBuiltinFactories();
     FileDialog::registerExternalFactories();
+
+    m_generalHandler = new GeneralHandler(this);
+    connect(m_generalHandler, SIGNAL(playCalled()), SLOT(play()));
+    connect(m_generalHandler, SIGNAL(nextCalled()), SLOT(next()));
+    connect(m_generalHandler, SIGNAL(previousCalled()), SLOT(previous()));
+    connect(m_generalHandler, SIGNAL(stopCalled()), SLOT(stop()));
+    connect(m_generalHandler, SIGNAL(pauseCalled()), SLOT(pause()));
+    connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
+    connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
 
     m_playListModel->readSettings();
     char buf[PATH_MAX + 1];
@@ -314,23 +320,38 @@ void MainWindow::showOutputState(const OutputState &st)
     {
     case OutputState::Playing:
     {
-        m_tray->setIcon ( QIcon(":/play.png") );
-        if (m_showMessage && m_playListModel->currentItem())
-            m_tray->showMessage ( tr("Now Playing"),
-                                  m_playListModel->currentItem()->title(),
-                                  QSystemTrayIcon::Information, m_messageDelay );
-        if (m_showToolTip && m_playListModel->currentItem())
-            m_tray->setToolTip (m_playListModel->currentItem()->title());
+        m_generalHandler->setState(General::Playing);
+        if (m_playListModel->currentItem())
+        {
+            SongInfo info;
+            FileTag *tag = m_playListModel->currentItem()->tag();
+            if (tag && !tag->isEmpty())
+            {
+                info.setValue(SongInfo::TITLE, tag->title());
+                info.setValue(SongInfo::ARTIST, tag->artist());
+                info.setValue(SongInfo::ALBUM, tag->album());
+                info.setValue(SongInfo::COMMENT, tag->comment());
+                info.setValue(SongInfo::GENRE, tag->genre());
+                info.setValue(SongInfo::YEAR, tag->year());
+                info.setValue(SongInfo::TRACK, tag->track());
+                info.setValue(SongInfo::LENGTH, tag->length());
+            }
+            else
+                info.setValue(SongInfo::TITLE, m_playlist->currentItem()->title());
+            info.setValue(SongInfo::STREAM,
+                          m_playlist->currentItem()->path().startsWith("http://"));
+            m_generalHandler->setSongInfo(info);
+        }
         break;
     }
     case OutputState::Paused:
     {
-        m_tray->setIcon ( QIcon(":/pause.png") );
+        m_generalHandler->setState(General::Paused);
         break;
     }
     case OutputState::Stopped:
     {
-        m_tray->setIcon ( QIcon(":/stop.png") );
+        m_generalHandler->setState(General::Stopped);
         break;
     }
     case OutputState::Info:
@@ -360,9 +381,26 @@ void MainWindow::showDecoderState(const DecoderState &st)
         qDebug("YEAR = %d", st.tag()->year());
         qDebug("TRACK = %d", st.tag()->track());
         qDebug("LENGTH = %d", st.tag()->length());
-
-        m_playlist->currentItem()->updateTags(st.tag());
-        m_playlist->listWidget()->updateList();
+        if (m_playlist->currentItem())
+        {
+            if (!st.tag()->isEmpty())
+            {
+                SongInfo info;
+                info.setValue(SongInfo::TITLE, st.tag()->title());
+                info.setValue(SongInfo::ARTIST, st.tag()->artist());
+                info.setValue(SongInfo::ALBUM, st.tag()->album());
+                info.setValue(SongInfo::COMMENT, st.tag()->comment());
+                info.setValue(SongInfo::GENRE, st.tag()->genre());
+                info.setValue(SongInfo::YEAR, st.tag()->year());
+                info.setValue(SongInfo::TRACK, st.tag()->track());
+                info.setValue(SongInfo::LENGTH, st.tag()->length());
+                info.setValue(SongInfo::STREAM,
+                              m_playlist->currentItem()->path().startsWith("http://"));
+                m_generalHandler->setSongInfo(info);
+            }
+            m_playlist->currentItem()->updateTags(st.tag());
+            m_playlist->listWidget()->updateList();
+        }
         break;
     }
     }
@@ -370,8 +408,13 @@ void MainWindow::showDecoderState(const DecoderState &st)
 
 void MainWindow::changeTitle(const QString &title)
 {
-    m_playlist->currentItem()->changeTitle(title);
+    if (m_playlist->currentItem())
+        m_playlist->currentItem()->changeTitle(title);
     m_playlist->listWidget()->updateList();
+    SongInfo info;
+    info.setValue(SongInfo::TITLE, title);
+    info.setValue(SongInfo::STREAM, TRUE);
+    m_generalHandler->setSongInfo(info);
 }
 
 void MainWindow::closeEvent ( QCloseEvent *)
@@ -502,17 +545,6 @@ void MainWindow::readSettings()
 
         m_update = TRUE;
     }
-    //tray
-    settings.beginGroup("Tray");
-    m_tray->setVisible(settings.value("enabled",TRUE).toBool());
-    m_showMessage = settings.value("show_message",TRUE).toBool();
-    m_messageDelay = settings.value("message_delay",2000).toInt();
-    m_showToolTip = settings.value("show_tooltip", FALSE).toBool();
-    m_hide_on_titlebar_close = settings.value("hide_on_close",FALSE).toBool();
-    if (!m_showToolTip)
-        m_tray->setToolTip(QString());
-    settings.endGroup();
-
 }
 
 void MainWindow::writeSettings()
@@ -544,6 +576,7 @@ void MainWindow::showSettings()
         m_playlist->readSettings();
         TextScroller::getPointer()->readSettings();
         m_core->updateConfig();
+        m_generalHandler->updateConfig();
         m_visMenu->updateActions();
     }
     delete m_confDialog;
@@ -574,12 +607,6 @@ void MainWindow::toggleVisibility()
         if (m_equalizer->isVisible())
             m_equalizer->hide();
     }
-}
-
-void MainWindow::trayActivated(QSystemTrayIcon::ActivationReason reason)
-{
-    if (reason == QSystemTrayIcon::Trigger)
-        toggleVisibility();
 }
 
 void MainWindow::createActions()
@@ -791,10 +818,10 @@ void MainWindow::jumpToFile()
 
 void MainWindow::handleCloseRequest()
 {
-    if (m_hide_on_titlebar_close && m_tray->isVisible())
-        toggleVisibility();
-    else
-        QApplication::closeAllWindows();
+    //if (m_hide_on_titlebar_close && m_tray->isVisible())
+    /*toggleVisibility();
+    else*/
+    QApplication::closeAllWindows();
 }
 
 void MainWindow::addUrl( )
@@ -814,7 +841,7 @@ MainDisplay * MainWindow::mainDisplay() const
 
 void MainWindow::keyPressEvent(QKeyEvent *ke)
 {
-    QKeyEvent event = QKeyEvent(ke->type(), ke->key(), 
+    QKeyEvent event = QKeyEvent(ke->type(), ke->key(),
                                 ke->modifiers(), ke->text(),ke->isAutoRepeat(), ke->count());
     QApplication::sendEvent(m_playlist,&event);
 }

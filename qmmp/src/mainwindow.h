@@ -21,7 +21,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSystemTrayIcon>
+
 
 #include "output.h"
 #include "decoder.h"
@@ -42,6 +42,7 @@ class Skin;
 class SoundCore;
 class JumpToTrackDialog;
 class VisualMenu;
+class GeneralHandler;
 
 class QMenu;
 class QKeyEvent;
@@ -102,7 +103,7 @@ private slots:
     void updateSkin();
     void forward();
     void backward();
-    void trayActivated(QSystemTrayIcon::ActivationReason);
+    //void trayActivated(QSystemTrayIcon::ActivationReason);
     void about();
     void handleCloseRequest();
 
@@ -122,7 +123,6 @@ private:
     EqWidget *m_equalizer;
     MainVisual *m_vis;
     QString m_lastDir;
-    QSystemTrayIcon *m_tray;
     bool m_update;
     bool m_showMessage;
     int m_messageDelay;
@@ -135,6 +135,7 @@ private:
     int m_elapsed;
     VisualMenu *m_visMenu;
     CommandLineOptionManager* m_option_manager;
+    GeneralHandler *m_generalHandler;
 };
 
 #endif

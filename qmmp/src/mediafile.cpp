@@ -160,3 +160,10 @@ MediaFile::FLAGS MediaFile::flag() const
     return m_flag;
 }
 
+FileTag *MediaFile::tag()
+{
+    if(m_tag && m_tag->isEmpty())
+        return 0;
+    return m_tag;
+}
+

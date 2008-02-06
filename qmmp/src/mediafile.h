@@ -60,6 +60,7 @@ public:
     void changeTitle(const QString&);
     FLAGS flag()const;
     void setFlag(FLAGS);
+    FileTag *tag();
 
 private:
     void readMetadata();

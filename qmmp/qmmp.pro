@@ -1,2 +1,2 @@
 TEMPLATE = subdirs
-SUBDIRS = lib src lib/qmmp
+SUBDIRS = lib src/qmmpui src lib/qmmp

@@ -55,8 +55,8 @@ HEADERS += mainwindow.h \
            timeindicator.h \
            keyboardmanager.h \
            filedialog.h \
-	   unixdomainsocket.h \
-	   commandlineoption.h
+           unixdomainsocket.h \
+           commandlineoption.h
 
 
 SOURCES += mainwindow.cpp \
@@ -91,20 +91,20 @@ SOURCES += mainwindow.cpp \
            pluginitem.cpp \
            volumebar.cpp \
            balancebar.cpp \
-	   playstate.cpp \
-	   symboldisplay.cpp \
-	   playlistformat.cpp \
-	   playlistcontrol.cpp \
-	   qmmpstarter.cpp \
+           playstate.cpp \
+           symboldisplay.cpp \
+           playlistformat.cpp \
+           playlistcontrol.cpp \
+           qmmpstarter.cpp \
            eqpreset.cpp \
            preseteditor.cpp \
-	   jumptotrackdialog.cpp \
-	   aboutdialog.cpp \
+           jumptotrackdialog.cpp \
+           aboutdialog.cpp \
            timeindicator.cpp \
            keyboardmanager.cpp \
            filedialog.cpp \
-	   unixdomainsocket.cpp \
-	   commandlineoption.cpp
+           unixdomainsocket.cpp \
+           commandlineoption.cpp
 
 
 
@@ -125,17 +125,17 @@ QT += network
 TARGET = ../bin/qmmp
 CONFIG += thread release \
 warn_on
-QMAKE_LIBDIR += ../lib
-LIBS += -Wl,-rpath,../lib -lqmmp
+QMAKE_LIBDIR += ../lib qmmpui
+LIBS += -Wl,-rpath,../lib -lqmmp -lqmmpui
 INCLUDEPATH += ../lib
 RESOURCES = images/images.qrc \
-            stuff.qrc 
-#	    translations/qmmp_locales.qrc
+            stuff.qrc
+#   translations/qmmp_locales.qrc
 
 #TRANSLATIONS = translations/qmmp_ru.ts \
-#	       translations/qmmp_tr.ts \
-#	       translations/qmmp_zh_CN.ts
-TEMPLATE = app 
+#       translations/qmmp_tr.ts \
+#       translations/qmmp_zh_CN.ts
+TEMPLATE = app
 target.path = /bin
 INSTALLS += target
 
@@ -152,3 +152,4 @@ SOURCES += addurldialog.cpp \
  shadedvisual.cpp \
  shadedbar.cpp
 FORMS += addurldialog.ui
+

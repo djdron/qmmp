@@ -2,5 +2,6 @@
 SUBDIRS += Input \
            Output \
 	   Visual \
-	   Effect 
+	   Effect \
+	   General 
 TEMPLATE = subdirs

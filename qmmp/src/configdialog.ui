@@ -77,6 +77,9 @@
        <property name="resizeMode" >
         <enum>QListView::Adjust</enum>
        </property>
+       <property name="spacing" >
+        <number>2</number>
+       </property>
        <property name="viewMode" >
         <enum>QListView::ListMode</enum>
        </property>
@@ -90,7 +93,7 @@
         <bool>false</bool>
        </property>
        <property name="currentRow" >
-        <number>0</number>
+        <number>-1</number>
        </property>
        <item>
         <property name="text" >
@@ -127,6 +130,9 @@
        <item>
         <property name="text" >
          <string>Connectivity</string>
+        </property>
+        <property name="icon" >
+         <iconset resource="images/images.qrc" >:/network.png</iconset>
         </property>
        </item>
       </widget>
@@ -575,6 +581,20 @@
              </item>
             </layout>
            </widget>
+           <widget class="QWidget" name="tab_3" >
+            <attribute name="title" >
+             <string>General</string>
+            </attribute>
+            <layout class="QVBoxLayout" >
+             <item>
+              <widget class="QTableWidget" name="generalPluginTable" >
+               <property name="selectionBehavior" >
+                <enum>QAbstractItemView::SelectRows</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
            <widget class="QWidget" name="fileDialogTab" >
             <attribute name="title" >
              <string>File Dialog</string>
@@ -652,121 +672,6 @@
        <widget class="QWidget" name="page_2" >
         <layout class="QVBoxLayout" >
          <item>
-          <widget class="QGroupBox" name="groupBox_4" >
-           <property name="title" >
-            <string>Tray Icon</string>
-           </property>
-           <layout class="QGridLayout" >
-            <property name="leftMargin" >
-             <number>9</number>
-            </property>
-            <property name="topMargin" >
-             <number>9</number>
-            </property>
-            <property name="rightMargin" >
-             <number>9</number>
-            </property>
-            <property name="bottomMargin" >
-             <number>9</number>
-            </property>
-            <property name="horizontalSpacing" >
-             <number>6</number>
-            </property>
-            <property name="verticalSpacing" >
-             <number>6</number>
-            </property>
-            <item row="2" column="0" >
-             <widget class="QCheckBox" name="toolTipCheckBox" >
-              <property name="text" >
-               <string>Show tooltip</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0" >
-             <widget class="QCheckBox" name="messageCheckBox" >
-              <property name="text" >
-               <string>Show message</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1" >
-             <widget class="QSpinBox" name="messageDelaySpinBox" >
-              <property name="minimum" >
-               <number>100</number>
-              </property>
-              <property name="maximum" >
-               <number>10000</number>
-              </property>
-              <property name="singleStep" >
-               <number>100</number>
-              </property>
-              <property name="value" >
-               <number>1000</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0" >
-             <widget class="QLabel" name="label_3" >
-              <property name="text" >
-               <string>Message delay, ms:</string>
-              </property>
-              <property name="alignment" >
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0" colspan="2" >
-             <widget class="QCheckBox" name="trayCheckBox" >
-              <property name="text" >
-               <string>Show tray icon</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QGroupBox" name="closeGroupBox" >
-           <property name="title" >
-            <string>Action On Close</string>
-           </property>
-           <layout class="QVBoxLayout" >
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <property name="leftMargin" >
-             <number>9</number>
-            </property>
-            <property name="topMargin" >
-             <number>9</number>
-            </property>
-            <property name="rightMargin" >
-             <number>9</number>
-            </property>
-            <property name="bottomMargin" >
-             <number>9</number>
-            </property>
-            <item>
-             <widget class="QRadioButton" name="hideToTrayRadioButton" >
-              <property name="text" >
-               <string>Hide to tray</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="quitRadioButton" >
-              <property name="text" >
-               <string>Quit</string>
-              </property>
-              <property name="checked" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
           <widget class="QGroupBox" name="groupBox_6" >
            <property name="title" >
             <string>Audio</string>
@@ -781,6 +686,19 @@
             </item>
            </layout>
           </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>20</width>
+             <height>251</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
@@ -955,86 +873,6 @@
     <hint type="destinationlabel" >
      <x>316</x>
      <y>340</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>trayCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>toolTipCheckBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>550</x>
-     <y>64</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>383</x>
-     <y>118</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>trayCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>messageDelaySpinBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>208</x>
-     <y>55</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>469</x>
-     <y>148</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>trayCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>messageCheckBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>262</x>
-     <y>55</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>258</x>
-     <y>76</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>messageCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>messageDelaySpinBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>307</x>
-     <y>82</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>469</x>
-     <y>148</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>trayCheckBox</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>closeGroupBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>376</x>
-     <y>56</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>436</x>
-     <y>175</y>
     </hint>
    </hints>
   </connection>

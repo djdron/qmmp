@@ -30,6 +30,7 @@ class DecoderFactory;
 class OutputFactory;
 class VisualFactory;
 class EffectFactory;
+class GeneralFactory;
 
 class InputPluginItem : public QObject
 {
@@ -107,6 +108,25 @@ public slots:
 private:
     QString m_fileName;
     EffectFactory *m_factory;
+};
+
+class GeneralPluginItem : public QObject
+{
+    Q_OBJECT
+public:
+    GeneralPluginItem(QObject *parent, GeneralFactory *fact, const QString &filePath);
+
+    ~GeneralPluginItem();
+
+    bool isSelected();
+    GeneralFactory * factory();
+
+public slots:
+    void select(bool);
+
+private:
+    QString m_fileName;
+    GeneralFactory *m_factory;
 };
 
 #endif

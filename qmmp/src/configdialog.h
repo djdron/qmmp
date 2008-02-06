@@ -36,6 +36,7 @@ class InputPluginItem;
 class OutputPluginItem;
 class VisualPluginItem;
 class EffectPluginItem;
+class GeneralPluginItem;
 
 class ConfigDialog : public QDialog
 {
@@ -73,6 +74,7 @@ private:
     QList <OutputPluginItem*> m_outputPluginItems;
     QList <VisualPluginItem*> m_visualPluginItems;
     QList <EffectPluginItem*> m_effectPluginItems;
+    QList <GeneralPluginItem*> m_generalPluginItems;
 };
 
 #endif

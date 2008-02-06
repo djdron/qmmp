@@ -1,14 +1,12 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
-    <file>play.png</file>
-    <file>pause.png</file>
-    <file>stop.png</file>
     <file>qmmp.xpm</file>
     <file>interface.png</file>
     <file>playlist.png</file>
     <file>advanced.png</file>
     <file>plugins.png</file>
+    <file>network.png</file>
     <file>logo-qmmp.png</file>
   </qresource>
 </RCC>

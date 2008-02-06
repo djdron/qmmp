@@ -33,6 +33,9 @@
 #include <visualfactory.h>
 #include <effectfactory.h>
 #include <effect.h>
+#include <qmmpui/generalfactory.h>
+#include <qmmpui/general.h>
+
 
 #include "skin.h"
 #include "filedialog.h"
@@ -85,22 +88,6 @@ void ConfigDialog::readSettings()
         settings.value ( "PlayList/title_format", "%p - %t").toString());
     ui.metadataCheckBox->setChecked(
         settings.value ( "PlayList/load_metadata", TRUE).toBool());
-    ui.trayCheckBox->setChecked(
-        settings.value("Tray/enabled",TRUE).toBool());
-    ui.messageCheckBox->setChecked(
-        settings.value("Tray/show_message",TRUE).toBool());
-    ui.messageDelaySpinBox->setValue(settings.value("Tray/message_delay",
-                                     2000).toInt());
-    ui.messageCheckBox->setEnabled(ui.trayCheckBox->isChecked());
-    ui.messageDelaySpinBox->setEnabled(ui.trayCheckBox->isChecked() ||
-                                       ui.messageCheckBox->isChecked() );
-    ui.toolTipCheckBox->setEnabled(ui.trayCheckBox->isChecked());
-    ui.toolTipCheckBox->setChecked(
-        settings.value("Tray/show_tooltip",FALSE).toBool());
-
-    ui.hideToTrayRadioButton->setChecked(settings.value("Tray/hide_on_close", FALSE).toBool());
-    ui.closeGroupBox->setEnabled(ui.trayCheckBox->isChecked());
-
     QString f_dialogName =
         settings.value("FileDialog",QtFileDialogFactory::QtFileDialogFactoryName).toString();
 
@@ -302,6 +289,37 @@ void ConfigDialog::loadPluginsInfo()
     ui.effectPluginTable->resizeColumnToContents ( 0 );
     ui.effectPluginTable->resizeColumnToContents ( 1 );
     ui.effectPluginTable->resizeRowsToContents ();
+
+     /*
+        load general plugin information
+    */
+    QList <GeneralFactory *> *generals = 0;
+    generals = General::generalFactories();
+    files = General::generalFiles();
+    ui.generalPluginTable->setColumnCount ( 3 );
+    ui.generalPluginTable->verticalHeader()->hide();
+    ui.generalPluginTable->setHorizontalHeaderLabels ( QStringList()
+            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
+    ui.generalPluginTable->setRowCount ( generals->count () );
+
+    for ( int i = 0; i < generals->count (); ++i )
+    {
+        GeneralPluginItem *item = new GeneralPluginItem(this,generals->at(i),files.at(i));
+        m_generalPluginItems.append(item);
+        QCheckBox* button = new QCheckBox (ui.generalPluginTable);
+        connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
+        button->setChecked (item->isSelected());
+        ui.generalPluginTable->setCellWidget ( i, 0, button );
+        ui.generalPluginTable->setItem (i,1,
+                            new QTableWidgetItem (item->factory()->properties().name));
+        ui.generalPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i)));
+        ui.generalPluginTable->item(i,1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui.generalPluginTable->item(i,2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+    }
+
+    ui.generalPluginTable->resizeColumnToContents ( 0 );
+    ui.generalPluginTable->resizeColumnToContents ( 1 );
+    ui.generalPluginTable->resizeRowsToContents ();
 }
 
 
@@ -386,6 +404,14 @@ void ConfigDialog::showPluginSettings()
         m_effectPluginItems.at(row)->factory()->showSettings ( this );
         break;
     }
+    case 4:
+    {
+        int row = ui.generalPluginTable->currentRow ();
+        if ( m_generalPluginItems.isEmpty() || row < 0 )
+            return;
+        m_generalPluginItems.at(row)->factory()->showSettings ( this );
+        break;
+    }
     }
 }
 
@@ -428,6 +454,14 @@ void ConfigDialog::showPluginInfo()
         m_effectPluginItems.at(row)->factory()->showAbout ( this );
         break;
     }
+    case 4:
+    {
+        int row = ui.generalPluginTable->currentRow ();
+        if ( m_generalPluginItems.isEmpty() || row < 0 )
+            return;
+        m_generalPluginItems.at(row)->factory()->showAbout ( this );
+        break;
+    }
     }
 }
 
@@ -463,12 +497,6 @@ void ConfigDialog::saveSettings()
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue ("PlayList/title_format", ui.formatLineEdit->text());
     settings.setValue ("PlayList/load_metadata", ui.metadataCheckBox->isChecked());
-    settings.setValue ("MainWindow/tray_enabled", ui.trayCheckBox->isChecked());
-    settings.setValue ("Tray/enabled", ui.trayCheckBox->isChecked());
-    settings.setValue ("Tray/show_message", ui.messageCheckBox->isChecked());
-    settings.setValue ("Tray/message_delay", ui.messageDelaySpinBox->value());
-    settings.setValue ("Tray/show_tooltip", ui.toolTipCheckBox->isChecked());
-    settings.setValue ("Tray/hide_on_close",ui.hideToTrayRadioButton->isChecked());
     settings.setValue ("FileDialog", ui.fileDialogComboBox->currentText());
     settings.setValue ("Proxy/use_proxy", ui.enableProxyCheckBox->isChecked());
     settings.setValue ("Proxy/authentication", ui.authProxyCheckBox->isChecked());

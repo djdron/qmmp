@@ -27,6 +27,8 @@
 #include <effectfactory.h>
 #include <effect.h>
 #include <soundcore.h>
+#include <qmmpui/generalfactory.h>
+#include <qmmpui/general.h>
 
 #include "pluginitem.h"
 
@@ -150,3 +152,31 @@ EffectFactory *EffectPluginItem::factory()
 {
    return m_factory;
 }
+
+/*General*/
+GeneralPluginItem::GeneralPluginItem(QObject *parent, GeneralFactory *fact,
+                                   const QString &filePath): QObject(parent)
+{
+    m_fileName = filePath.section('/',-1);
+    m_factory = fact;
+}
+
+
+GeneralPluginItem::~GeneralPluginItem()
+{}
+
+void GeneralPluginItem::select(bool on)
+{
+    General::setEnabled(m_factory, on);
+}
+
+bool GeneralPluginItem::isSelected()
+{
+    return General::isEnabled(m_factory);
+}
+
+GeneralFactory *GeneralPluginItem::factory()
+{
+   return m_factory;
+}
+
