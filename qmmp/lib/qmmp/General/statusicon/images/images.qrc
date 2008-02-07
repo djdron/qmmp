@@ -1,8 +1,0 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
-  <qresource>
-    <file>tray_play.png</file>
-    <file>tray_pause.png</file>
-    <file>tray_stop.png</file>
-  </qresource>
-</RCC>
