@@ -1,0 +1,12 @@
+This is simple example of custom Playlist Format plugin.
+It represents CVS semicolon-separated format storage.
+This plugin developed mostly for QMMP customizing demonstration.
+
+Build: Change QMMPROOT variable in .pro file according your
+QMMP build tree location.Then  qmake && make
+
+Install: copy library into ~/.qmmp/plugins/PlaylistFormats directory.
+
+
+                                            vovanec@gmail.com
+

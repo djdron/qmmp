@@ -1,0 +1,12 @@
+Core Developers:
+
+    Ilya Kotov <forkotov02@hotmail.ru> (idea and base code)
+    Vladimir Kuznetsov <vovanec@gmail.com> (look&feel and many improvements)
+
+Plugin Developers:
+
+    Yuriy Zhuravlev <stalkerg@gmail.com> (jack plugin)
+
+Turkish translation: 
+
+    Mustafa GUNAY <mustafagunay@gmail.com>

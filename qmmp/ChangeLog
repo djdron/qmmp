@@ -1,0 +1,106 @@
+Changelog of Qt-based Multimedia Player
+
+--------------
+Version 0.0.1
+* first test release
+
+Version 0.0.2
+* fixed bug in FLAC plugin
+* fixed fft.c: changed g_malloc() to malloc()
+* fixed UTF bug in FLAC plugin
+* fixed UTF bug in Ogg Vorbis plugin
+
+Version 0.0.3
+* added tray support (based on Pavel's Kirpichev's patch)
+* added menu and hot keys support
+* added directory $HOME/.qmmp/skins in skin search pathes
+* fixed UTF bug in FLAC plugin (previous correction dasn't fix bug)
+* fixed UTF bug in Ogg Vorbis plugin (previous correction dasn't fix bug)
+* fixed bug in playlist which can cause program crash
+* add drag&drop support (thanks to Vladimir Kuznetsov)
+
+Version 0.0.4
+* added shift insertion support (Vladimir Kuznetsov)
+* added inserted songs moving (Vladimir Kuznetsov)
+* added queue support (Vladimir Kuznetsov)
+* added sort menu (Vladimir Kuznetsov)
+* added shuffle and repeat functions (Vladimir Kuznetsov)
+* improved playlist slider
+* added volume and balance control
+* fixed some bugs in mad plugin
+* various improves in plugin system
+
+Version 0.0.5
+* added playlist indicators (Vladimir Kuznetsov)
+* added playlist control buttons (Vladimir Kuznetsov)
+* improved shuffle and repeate functions (Vladimir Kuznetsov)
+* added support for m3u, pls, xspf playlists (Vladimir Kuznetsov)
+* added region.txt file support
+* added scroll control for equalizer bars
+* added autosave equalizer settings
+* added Jack support plugin (Yuriy Zhuravlev)
+* added Musepack support plugin
+* fixed program crush with some skins
+* fixed bug in balance control
+* fixed bug in alsa plugin which cause crush in some soundcards (thanks to Vadim Kalinnikov)
+* fixed bug in processing of double click on playlist
+
+Version 0.0.6
+* improved insertion (Vladimir Kuznetsov)
+* added command line support (Vladimir Kuznetsov)
+* added playlist loading by thread (Vladimir Kuznetsov)
+* added equalizer preset support
+* added ffmpeg support plugin for playing WMA files
+* fixed bug in mad plugin, which cause program crash with invalid file pathes
+* fixed bug in Jack plugin, which cause program crash when Jack server is 
+  not running (Yuriy Zhuravlev)
+* added pkgconfig support for building
+
+Version 0.1
+* added jump to file dialog (Vladimir Kuznetsov)
+* added about dialog (Vladimir Kuznetsov)
+* added russian translation
+* added installation support
+* added cmake support(experimental)
+* added default skin
+* improved settings dialog
+* fixed "accertion failed" bug
+* fixed hotkeys in playlist menu
+* added english readme (Vladimir Kuznetsov)
+* fixed showing bitrate over 999 kbps
+* added Winamp EQF import
+* added rest time show (Vladimir Kuznetsov)
+* fixed time indicator blinking (Vladimir Kuznetsov)
+* fixed "segmentation failed" with some buggy skins (Vladimir Kuznetsov)
+* fixed parsing some skins
+
+Version 0.1.1
+* fixed ffmpeg plugin build
+* fixed playlist file types (Vladimir Kuznetsov)
+* fixed zero duration bug in mad plugin
+* fixed codepage in about dialog
+* fixed bug in cmake build scripts, which cause conflict in translation resources
+
+Version 0.1.2
+* fixed "segmentation failed" in remaining time mode (Vladimir Kuznetsov)
+* fixed "segmentation failed" when resume playback with empty playlist
+* fixed settings saving in tray mode
+* added hotkeys in playlist (Up, Down, Alt- and Shift- modifiers) (Vladimir Kuznetsov)
+* added broken files skiping (Vladimir Kuznetsov)
+* added Turkish translation (Mustafa GUNAY)
+* added custom close action (Vladimir Kuznetsov)
+* fixed and improved cmake scripts
+* fixed "Delete" hotkey in Russian translation
+
+Version 0.1.3
+* added Chinese Simplified translation (l on)
+* added Ukrainian translation (Gennadi Motsyo)
+* added codings fix for command line (Vladimir Kuznetsov)
+* fixed next song selection after deletion selected (Vladimir Kuznetsov)
+* fixed zero duration bug in mpc, flac, vorbis plugins
+* fixed some non-critcical bugs in Ogg Vorbis plugin
+* added Shift+N hotkey for all windows
+* set using UTF-8 by default in mad plugin
+* fixed russian translation in the flac plugin
+* added current song position navigation with Left/Right cursor buttons
+* added main menu popup on main display

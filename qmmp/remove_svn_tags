@@ -1,0 +1,31 @@
+#!/bin/sh
+
+######################################
+# Removes svn tags from qmmp package #
+######################################
+
+rm_dir='.build'
+
+walk_dirs(){
+
+    for file in `ls -a`
+    do
+	if [ -d $file ]
+	then
+	    if [ $file == $rm_dir ]
+	    then
+		echo "Removing $rm_dir directory..."
+		rm -rf $rm_dir
+	    elif [[ $file != '.' && $file != '..' ]]
+	    then
+		echo "Entering $file"
+		cd $file;
+		walk_dirs;
+		cd ..
+	    fi
+	fi
+    done
+	    
+}
+
+walk_dirs

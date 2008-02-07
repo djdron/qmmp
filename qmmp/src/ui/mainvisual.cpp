@@ -1,0 +1,628 @@
+/***************************************************************************
+ *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+#include <QTimer>
+#include <QSettings>
+#include <QPainter>
+#include <QMenu>
+#include <QActionGroup>
+
+#include <buffer.h>
+#include <constants.h>
+#include <output.h>
+#include <math.h>
+#include <stdlib.h>
+
+#include "skin.h"
+#include "fft.h"
+#include "inlines.h"
+#include "mainvisual.h"
+
+
+MainVisual *MainVisual::pointer = 0;
+
+MainVisual *MainVisual::getPointer()
+{
+    if ( !pointer )
+        qFatal ( "MainVisual: this object not created!" );
+    return pointer;
+}
+
+MainVisual::MainVisual (QWidget *parent)
+        : Visual (parent), m_vis (0), m_playing (FALSE)
+{
+    m_draw = TRUE;
+    m_skin = Skin::getPointer();
+    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSettings()));
+    resize(75,20);
+    m_pixmap = QPixmap (75,20);
+    m_timer = new QTimer (this);
+    connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
+    m_nodes.clear();
+    createMenu();
+    readSettings();
+    pointer = this;
+}
+
+MainVisual::~MainVisual()
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    if (m_vis)
+    {
+        settings.setValue("Visualization/type",m_vis->name());
+        delete m_vis;
+        m_vis = 0;
+    }
+    else
+        settings.setValue("Visualization/type", "None");
+    settings.setValue("Visualization/rate", 1000/m_timer->interval());
+    while (!m_nodes.isEmpty())
+        delete m_nodes.takeFirst();
+}
+
+void MainVisual::setVisual (VisualBase *newvis)
+{
+    m_timer->stop();
+    if (m_vis)
+        delete m_vis;
+    m_vis = newvis;
+    if (m_vis)
+        m_timer->start();
+    else
+    {
+        m_pixmap.fill (Qt::transparent);
+        update();
+    }
+}
+
+void MainVisual::clear()
+{
+    while (!m_nodes.isEmpty())
+        delete m_nodes.takeFirst();
+    if (m_vis)
+        m_vis->clear();
+    update();
+}
+
+void MainVisual::add ( Buffer *b, unsigned long w, int c, int p )
+{
+    if (!m_timer->isActive () || !m_vis)
+        return;
+    long len = b->nbytes, cnt;
+    short *l = 0, *r = 0;
+
+    len /= c;
+    len /= ( p / 8 );
+    if ( len > 512 )
+        len = 512;
+    cnt = len;
+
+    if ( c == 2 )
+    {
+        l = new short[len];
+        r = new short[len];
+
+        if ( p == 8 )
+            stereo16_from_stereopcm8 ( l, r, b->data, cnt );
+        else if ( p == 16 )
+            stereo16_from_stereopcm16 ( l, r, ( short * ) b->data, cnt );
+    }
+    else if ( c == 1 )
+    {
+        l = new short[len];
+
+        if ( p == 8 )
+            mono16_from_monopcm8 ( l, b->data, cnt );
+        else if ( p == 16 )
+            mono16_from_monopcm16 ( l, ( short * ) b->data, cnt );
+    }
+    else
+        len = 0;
+
+    m_nodes.append ( new VisualNode ( l, r, len, w ) );
+}
+
+void MainVisual::timeout()
+{
+    VisualNode *node = 0;
+
+    if ( /*playing &&*/ output())
+    {
+        //output()->mutex()->lock ();
+        //long olat = output()->latency();
+        //long owrt = output()->written();
+        //output()->mutex()->unlock();
+
+        //long synctime = owrt < olat ? 0 : owrt - olat;
+
+        mutex()->lock ();
+        VisualNode *prev = 0;
+        while ((!m_nodes.isEmpty()))
+        {
+            node = m_nodes.first();
+            /*if ( node->offset > synctime )
+               break;*/
+
+            if ( prev )
+                delete prev;
+            m_nodes.removeFirst();
+
+            prev = node;
+
+        }
+        mutex()->unlock();
+        node = prev;
+    }
+
+    if (m_vis)
+        m_vis->process ( node );
+    delete node;
+
+    if ( m_vis )
+    {
+        if (m_draw)
+            drawBackGround();
+        m_draw = FALSE;
+        m_pixmap = m_bg;
+        QPainter p(&m_pixmap);
+        m_vis->draw (&p);
+    }
+    else
+        m_pixmap.fill("Red");
+    update();
+}
+
+void MainVisual::paintEvent ( QPaintEvent * )
+{
+    QPainter painter ( this );
+    painter.drawPixmap ( 0,0,m_pixmap );
+}
+
+void MainVisual::hideEvent ( QHideEvent *)
+{
+    m_timer->stop();
+}
+
+void MainVisual::showEvent ( QShowEvent *)
+{
+    if (m_vis)
+        m_timer->start();
+}
+
+void MainVisual::mousePressEvent (QMouseEvent *e)
+{
+    if (e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
+    else
+    {
+        if (!m_vis)
+            setVisual(new mainvisual::Analyzer);
+        else if (m_vis->name() == "Analyzer")
+            setVisual(new mainvisual::Scope);
+        else if (m_vis->name() == "Scope")
+            setVisual(0);
+
+        QString str = "Off";
+        if (m_vis)
+            str = m_vis->name();
+        foreach(QAction *act, m_visModeGroup->actions ())
+        if (str == act->data().toString())
+        {
+            act->setChecked(TRUE);
+            break;
+        }
+    }
+}
+
+void MainVisual::drawBackGround()
+{
+    m_bg = QPixmap (75,20);
+    QPainter painter(&m_bg);
+    for (int x = 0; x < 75; x += 2)
+    {
+        painter.setPen(m_skin->getVisColor(0));
+        painter.drawLine(x + 1, 0, x + 1, 20);
+        for (int y = 0; y < 20; y +=2)
+        {
+            painter.setPen(m_skin->getVisColor(0));
+            painter.drawPoint(x,y);
+            painter.setPen(m_skin->getVisColor(1));
+            painter.drawPoint(x,y + 1);
+        }
+    }
+}
+
+void MainVisual::updateSettings()
+{
+    drawBackGround();
+    m_pixmap = m_bg;
+    update();
+    QAction *act = m_fpsGroup->checkedAction ();
+    if (act)
+        m_timer->setInterval (1000/act->data().toInt());
+    else
+        m_timer->setInterval (40);
+
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    act = m_peaksFalloffGroup->checkedAction ();
+    if (act)
+        settings.setValue("Visualization/peaks_falloff", act->data().toInt());
+    else
+        settings.setValue("Visualization/peaks_falloff", 3);
+
+    act = m_analyzerFalloffGroup->checkedAction ();
+    if (act)
+        settings.setValue("Visualization/analyzer_falloff", act->data().toInt());
+    else
+        settings.setValue("Visualization/analyzer_falloff", 3);
+
+    settings.setValue("Visualization/show_peaks", m_peaksAction->isChecked());
+
+    act = m_analyzerModeGroup->checkedAction();
+    if (act)
+        settings.setValue("Visualization/analyzer_mode", act->data().toInt());
+    else
+        settings.setValue("Visualization/analyzer_mode", 0);
+
+    act = m_analyzerTypeGroup->checkedAction();
+    if (act)
+        settings.setValue("Visualization/analyzer_type", act->data().toInt());
+    else
+        settings.setValue("Visualization/analyzer_type", 1);
+
+    act = m_visModeGroup->checkedAction ();
+    QString visName;
+    if (act)
+        visName = act->data().toString();
+    else
+        visName == "Off";
+
+    if (visName == "Analyzer")
+        setVisual(new mainvisual::Analyzer);
+    else if (visName == "Scope")
+        setVisual(new mainvisual::Scope);
+    else
+        setVisual(0);
+
+}
+
+void MainVisual::createMenu()
+{
+    m_menu = new QMenu (this);
+    connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(updateSettings()));
+    QMenu *visMode = m_menu->addMenu(tr("Visualization Mode"));
+    m_visModeGroup = new QActionGroup(this);
+    m_visModeGroup->setExclusive(TRUE);
+    m_visModeGroup->addAction(tr("Analyzer"))->setData("Analyzer");
+    m_visModeGroup->addAction(tr("Scope"))->setData("Scope");
+    m_visModeGroup->addAction(tr("Off"))->setData("Off");
+    foreach(QAction *act, m_visModeGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        visMode->addAction(act);
+    }
+
+    QMenu *analyzerMode = m_menu->addMenu(tr("Analyzer Mode"));
+    m_analyzerModeGroup = new QActionGroup(this);
+    m_analyzerTypeGroup = new QActionGroup(this);
+    m_analyzerModeGroup->addAction(tr("Normal"))->setData(0);
+    m_analyzerModeGroup->addAction(tr("Fire"))->setData(1);
+    m_analyzerModeGroup->addAction(tr("Vertical Lines"))->setData(2);
+    m_analyzerTypeGroup->addAction(tr("Lines"))->setData(0);
+    m_analyzerTypeGroup->addAction(tr("Bars"))->setData(1);
+    foreach(QAction *act, m_analyzerModeGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        analyzerMode->addAction(act);
+    }
+    analyzerMode->addSeparator ();
+    foreach(QAction *act, m_analyzerTypeGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        analyzerMode->addAction(act);
+    }
+    analyzerMode->addSeparator ();
+    m_peaksAction = analyzerMode->addAction(tr("Peaks"));
+    m_peaksAction->setCheckable(TRUE);
+
+
+    QMenu *refreshRate = m_menu->addMenu(tr("Refresh Rate"));
+    m_fpsGroup = new QActionGroup(this);
+    m_fpsGroup->setExclusive(TRUE);
+    m_fpsGroup->addAction(tr("50 fps"))->setData(50);
+    m_fpsGroup->addAction(tr("25 fps"))->setData(25);
+    m_fpsGroup->addAction(tr("10 fps"))->setData(10);
+    m_fpsGroup->addAction(tr("5 fps"))->setData(5);
+    foreach(QAction *act, m_fpsGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        refreshRate->addAction(act);
+    }
+
+    QMenu *analyzerFalloff = m_menu->addMenu(tr("Analyzer Falloff"));
+    m_analyzerFalloffGroup = new QActionGroup(this);
+    m_analyzerFalloffGroup->setExclusive(TRUE);
+    m_analyzerFalloffGroup->addAction(tr("Slowest"))->setData(1);
+    m_analyzerFalloffGroup->addAction(tr("Slow"))->setData(2);
+    m_analyzerFalloffGroup->addAction(tr("Medium"))->setData(3);
+    m_analyzerFalloffGroup->addAction(tr("Fast"))->setData(4);
+    m_analyzerFalloffGroup->addAction(tr("Fastest"))->setData(5);
+    foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        analyzerFalloff->addAction(act);
+    }
+
+    QMenu *peaksFalloff = m_menu->addMenu(tr("Peaks Falloff"));
+    m_peaksFalloffGroup = new QActionGroup(this);
+    m_peaksFalloffGroup->setExclusive(TRUE);
+    m_peaksFalloffGroup->addAction(tr("Slowest"))->setData(1);
+    m_peaksFalloffGroup->addAction(tr("Slow"))->setData(2);
+    m_peaksFalloffGroup->addAction(tr("Medium"))->setData(3);
+    m_peaksFalloffGroup->addAction(tr("Fast"))->setData(4);
+    m_peaksFalloffGroup->addAction(tr("Fastest"))->setData(5);
+    foreach(QAction *act, m_peaksFalloffGroup->actions ())
+    {
+        act->setCheckable(TRUE);
+        peaksFalloff->addAction(act);
+    }
+    update();
+}
+
+
+void MainVisual::readSettings()
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+
+    QString name = settings.value("Visualization/type","Analyzer").toString();
+    m_visModeGroup->actions ()[0]->setChecked(TRUE);
+    foreach(QAction *act, m_visModeGroup->actions ())
+    if (name == act->data().toString())
+        act->setChecked(TRUE);
+
+    m_peaksAction->setChecked(
+        settings.value("Visualization/show_peaks", TRUE).toBool());
+
+    int fps = settings.value("Visualization/rate", 25).toInt();
+    m_fpsGroup->actions ()[1]->setChecked(TRUE);
+    foreach(QAction *act, m_fpsGroup->actions ())
+    if (fps == act->data().toInt())
+        act->setChecked(TRUE);
+
+    int mode = settings.value("Visualization/analyzer_mode", 0).toInt();
+    m_analyzerModeGroup->actions ()[0]->setChecked(TRUE);
+    foreach(QAction *act, m_analyzerModeGroup->actions ())
+    if (mode == act->data().toInt())
+        act->setChecked(TRUE);
+
+    int type = settings.value("Visualization/analyzer_type", 1).toInt();
+    m_analyzerTypeGroup->actions ()[1]->setChecked(TRUE);
+    foreach(QAction *act, m_analyzerTypeGroup->actions ())
+    if (type == act->data().toInt())
+        act->setChecked(TRUE);
+
+    int speed = settings.value("Visualization/peaks_falloff", 3).toInt();
+    m_peaksFalloffGroup->actions ()[2]->setChecked(TRUE);
+    foreach(QAction *act, m_peaksFalloffGroup->actions ())
+    if (speed == act->data().toInt())
+        act->setChecked(TRUE);
+
+    speed = settings.value("Visualization/analyzer_falloff", 3).toInt();
+    m_analyzerFalloffGroup->actions ()[2]->setChecked(TRUE);
+    foreach(QAction *act, m_analyzerFalloffGroup->actions ())
+    if (speed == act->data().toInt())
+        act->setChecked(TRUE);
+
+    updateSettings();
+}
+
+using namespace mainvisual;
+
+Analyzer::Analyzer()
+        : m_analyzerBarWidth ( 4 ), m_fps ( 20 )
+{
+    m_size = QSize(75,20);
+    clear();
+    m_skin = Skin::getPointer();
+
+    double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
+    double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
+
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_peaks_falloff =
+        peaks_speed[settings.value("Visualization/peaks_falloff", 3).toInt()-1];
+    m_analyzer_falloff =
+        analyzer_speed[settings.value("Visualization/analyzer_falloff", 3).toInt()-1];
+    m_show_peaks = settings.value("Visualization/show_peaks", TRUE).toBool();
+
+    m_lines = settings.value("Visualization/analyzer_type", 1).toInt() == 0;
+    m_mode = settings.value("Visualization/analyzer_mode", 0).toInt();
+}
+
+Analyzer::~Analyzer()
+{}
+
+void Analyzer::clear()
+{
+    for ( int i = 0; i< 75; ++i )
+    {
+        m_intern_vis_data[i] = 0;
+        m_peaks[i] = 0;
+    }
+}
+
+bool Analyzer::process ( VisualNode *node )
+{
+    static fft_state *state = 0;
+    if ( !state )
+        state = fft_init();
+    short dest[256];
+
+    const int xscale_long[] =
+        {
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+            35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+            52, 53, 54, 55, 56, 57, 58, 61, 66, 71, 76, 81, 87, 93, 100, 107,
+            114, 122, 131, 140, 150, 161, 172, 184, 255
+        };
+
+    const int xscale_short[] =
+        {
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 15, 20, 27,
+            36, 47, 62, 82, 107, 141, 184, 255
+        };
+
+    if ( node )
+    {
+        //i = node->length;
+        calc_freq ( dest, node->left );
+    }
+    else
+        return FALSE;
+    const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
+    int max = m_lines ? 75 : 19, y, j;
+
+    for ( int i = 0; i < max; i++ )
+    {
+        if (m_lines)
+            for ( j = xscale_long[i], y = 0; j < xscale_long[i + 1]; j++ )
+            {
+                if ( dest[j] > y )
+                    y = dest[j];
+            }
+        else
+            for ( j = xscale_short[i], y = 0; j < xscale_short[i + 1]; j++ )
+            {
+                if ( dest[j] > y )
+                    y = dest[j];
+            }
+        y >>= 7;
+        int magnitude = 0;
+        if ( y != 0 )
+        {
+            magnitude = int(log (y) * y_scale);
+            if ( magnitude > 15 )
+                magnitude = 15;
+            if ( magnitude < 0 )
+                magnitude = 0;
+        }
+
+        m_intern_vis_data[i] -= m_analyzer_falloff;
+        m_intern_vis_data[i] = magnitude > m_intern_vis_data[i]
+                               ? magnitude : m_intern_vis_data[i];
+        if (m_show_peaks)
+        {
+            m_peaks[i] -= m_peaks_falloff;
+            m_peaks[i] = magnitude > m_peaks[i]
+                         ? magnitude : m_peaks[i];
+        }
+    }
+    return TRUE;
+}
+
+void Analyzer::draw ( QPainter *p)
+{
+    if (m_lines)
+        for ( int j = 0; j < 75; ++j )
+        {
+            for ( int i = 0; i <= m_intern_vis_data[j]; ++i )
+            {
+                if (m_mode == 0)
+                    p->setPen (m_skin->getVisColor (18-i));
+                else if (m_mode == 1)
+                    p->setPen (m_skin->getVisColor (3+(int(m_intern_vis_data[j])-i)));
+                else
+                    p->setPen (m_skin->getVisColor (18-int(m_intern_vis_data[j])));
+                p->drawPoint (j, m_size.height()-i);
+            }
+            p->setPen (m_skin->getVisColor (23));
+            if (m_show_peaks)
+                p->drawPoint (j, m_size.height()-int(m_peaks[j]));
+        }
+    else
+        for (int j = 0; j < 19; ++j)
+        {
+            for (int i = 0; i <= m_intern_vis_data[j]; ++i)
+            {
+                if (m_mode == 0)
+                    p->setPen (m_skin->getVisColor (18-i));
+                else if (m_mode == 1)
+                    p->setPen (m_skin->getVisColor (3+(int(m_intern_vis_data[j])-i)));
+                else
+                    p->setPen (m_skin->getVisColor (18-int(m_intern_vis_data[j])));
+                p->drawLine (j*4,m_size.height()-i, (j+1)*4-2,m_size.height()-i);
+            }
+            p->setPen (m_skin->getVisColor (23));
+            if (m_show_peaks)
+                p->drawLine (j*4,m_size.height()-int(m_peaks[j]),
+                             (j+1) *4-2,m_size.height()-int(m_peaks[j]));
+        }
+}
+
+Scope::Scope()
+{
+    clear();
+    m_skin = Skin::getPointer();
+}
+
+void Scope::clear()
+{
+    for (int i = 0; i< 75; ++i)
+        m_intern_vis_data[i] = 7;
+}
+
+Scope::~Scope()
+{}
+
+bool Scope::process(VisualNode *node)
+{
+    if (!node)
+        return FALSE;
+
+    int step = (node->length << 8)/74;
+    int pos = 0;
+
+    for (int i = 0; i < 75; ++i)
+    {
+        pos += step;
+        m_intern_vis_data[i] = (node->left[pos >> 8] >> 12);
+
+        if (m_intern_vis_data[i] > 5)
+            m_intern_vis_data[i] = 5;
+        else if (m_intern_vis_data[i] < -5)
+            m_intern_vis_data[i] = -5;
+    }
+    return TRUE;
+}
+
+void Scope::draw(QPainter *p)
+{
+    for ( int i = 0; i<73; ++i )
+    {
+        int h1 = 10 - m_intern_vis_data[i];
+        int h2 = 10 - m_intern_vis_data[i+1];
+        if (h1 > h2)
+            qSwap(h1, h2);
+        p->setPen (m_skin->getVisColor(19 + (10 - h2)/2 ));
+        p->drawLine(i, h1, i, h2);
+    }
+    for ( int i = 0; i< 75; ++i )
+        m_intern_vis_data[i] = 0;
+}
