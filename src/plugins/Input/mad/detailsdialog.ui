@@ -1,0 +1,392 @@
+<ui version="4.0" >
+ <class>DetailsDialog</class>
+ <widget class="QDialog" name="DetailsDialog" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>593</width>
+    <height>402</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Details</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item row="0" column="0" colspan="3" >
+    <layout class="QHBoxLayout" >
+     <item>
+      <widget class="QLabel" name="label_28" >
+       <property name="text" >
+        <string>File path:</string>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="pathLineEdit" >
+       <property name="readOnly" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item rowspan="2" row="1" column="0" >
+    <layout class="QVBoxLayout" >
+     <item>
+      <widget class="QGroupBox" name="groupBox_3" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title" >
+        <string>Tag Choice</string>
+       </property>
+       <layout class="QHBoxLayout" >
+        <item>
+         <widget class="QRadioButton" name="id3v1RadioButton" >
+          <property name="text" >
+           <string>ID3v1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="id3v2RadioButton" >
+          <property name="text" >
+           <string>ID3v2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="apeRadioButton" >
+          <property name="text" >
+           <string>APE</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox" >
+       <property name="minimumSize" >
+        <size>
+         <width>200</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="title" >
+        <string>MPEG Info</string>
+       </property>
+       <layout class="QGridLayout" >
+        <item row="0" column="0" >
+         <widget class="QLabel" name="label" >
+          <property name="text" >
+           <string>MPEG level:</string>
+          </property>
+          <property name="textFormat" >
+           <enum>Qt::AutoText</enum>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <widget class="QLabel" name="levelLabel" >
+          <property name="text" >
+           <string>-</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QLabel" name="label_2" >
+          <property name="text" >
+           <string>Bit rate:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QLabel" name="bitRateLabel" >
+          <property name="text" >
+           <string>-</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" >
+         <widget class="QLabel" name="label_3" >
+          <property name="text" >
+           <string>Sample rate:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" >
+         <widget class="QLabel" name="sampleRateLabel" >
+          <property name="text" >
+           <string>-</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" >
+         <widget class="QLabel" name="label_5" >
+          <property name="text" >
+           <string>File size:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1" >
+         <widget class="QLabel" name="fileSizeLabel" >
+          <property name="text" >
+           <string>-</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0" >
+         <widget class="QLabel" name="label_6" >
+          <property name="text" >
+           <string>Mode:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1" >
+         <widget class="QLabel" name="modeLabel" >
+          <property name="text" >
+           <string>-</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" >
+         <widget class="QLabel" name="label_8" >
+          <property name="text" >
+           <string>Copyright:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1" >
+         <widget class="QLabel" name="copyrightLabel" >
+          <property name="text" >
+           <string>-</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0" >
+         <widget class="QLabel" name="label_9" >
+          <property name="text" >
+           <string>Original:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1" >
+         <widget class="QLabel" name="originalLabel" >
+          <property name="text" >
+           <string>-</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1" colspan="2" >
+    <widget class="QGroupBox" name="tagGroupBox" >
+     <property name="title" >
+      <string>ID3v1 Tag</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <item>
+       <widget class="QWidget" native="1" name="tagsWidget" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <layout class="QGridLayout" >
+         <item row="0" column="0" >
+          <widget class="QLabel" name="label_21" >
+           <property name="text" >
+            <string>Title:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" colspan="3" >
+          <widget class="QLineEdit" name="titleLineEdit" />
+         </item>
+         <item row="1" column="0" >
+          <widget class="QLabel" name="label_22" >
+           <property name="text" >
+            <string>Artist:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" colspan="3" >
+          <widget class="QLineEdit" name="artistLineEdit" />
+         </item>
+         <item row="2" column="0" >
+          <widget class="QLabel" name="label_23" >
+           <property name="text" >
+            <string>Album:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1" colspan="3" >
+          <widget class="QLineEdit" name="albumLineEdit" />
+         </item>
+         <item row="3" column="0" >
+          <widget class="QLabel" name="label_24" >
+           <property name="text" >
+            <string>Comment:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1" colspan="3" >
+          <widget class="QLineEdit" name="commentLineEdit" />
+         </item>
+         <item row="4" column="0" >
+          <widget class="QLabel" name="label_25" >
+           <property name="text" >
+            <string>Year:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1" >
+          <widget class="QLineEdit" name="yearLineEdit" />
+         </item>
+         <item row="4" column="2" >
+          <widget class="QLabel" name="label_26" >
+           <property name="text" >
+            <string>Track number:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3" >
+          <widget class="QLineEdit" name="trackLineEdit" />
+         </item>
+         <item row="5" column="0" >
+          <widget class="QLabel" name="label_27" >
+           <property name="text" >
+            <string>Genre:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1" colspan="3" >
+          <widget class="QLineEdit" name="genreLineEdit" />
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <item>
+         <widget class="QPushButton" name="createButton" >
+          <property name="text" >
+           <string>Create</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="deleteButton" >
+          <property name="text" >
+           <string>Delete</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="saveButton" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="text" >
+           <string>Save</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>111</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="pushButton_3" >
+     <property name="text" >
+      <string>Close</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>DetailsDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>623</x>
+     <y>353</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>539</x>
+     <y>352</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

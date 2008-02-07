@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>cdup.png</file>
+    <file>detail.png</file>
+    <file>list.png</file>
+  </qresource>
+</RCC>

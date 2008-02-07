@@ -79,6 +79,7 @@ SET(libsrc_SRCS
   shadedvisual.cpp
   titlebarcontrol.cpp
   shadedbar.cpp
+  commandlineoption.cpp
 )
 
 SET(libsrc_MOC_HDRS
@@ -134,6 +135,7 @@ SET(libsrc_MOC_HDRS
   shadedvisual.h
   titlebarcontrol.h
   shadedbar.h
+  commandlineoption.h
 )
 
 SET(libsrc_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
