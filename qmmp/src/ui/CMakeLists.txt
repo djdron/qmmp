@@ -1,0 +1,169 @@
+project(ui)
+
+cmake_minimum_required(VERSION 2.4.0)
+
+SET(QT_USE_QTXML TRUE)
+SET(QT_USE_QTNETWORK TRUE)
+
+INCLUDE(UsePkgConfig)
+INCLUDE(FindQt4)
+
+find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
+include(${QT_USE_FILE})
+
+ADD_DEFINITIONS( -Wall )
+ADD_DEFINITIONS(-DQT_NO_DEBUG)
+ADD_DEFINITIONS(-DQT_THREAD)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+
+# libqmmp & libqmmpui
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmpui)
+
+link_directories(${CMAKE_INSTALL_PREFIX}/lib)
+link_directories(${CMAKE_INSTALL_PREFIX}/lib64)
+
+SET(ui_SRCS
+    fft.c
+    aboutdialog.cpp
+    addurldialog.cpp
+    balancebar.cpp
+    button.cpp
+    commandlineoption.cpp
+    configdialog.cpp
+    display.cpp
+    dock.cpp
+    eqgraph.cpp
+    eqpreset.cpp
+    eqslider.cpp
+    eqtitlebar.cpp
+    eqwidget.cpp
+    filedialog.cpp
+    fileloader.cpp
+    jumptotrackdialog.cpp
+    keyboardmanager.cpp
+    listwidget.cpp
+    logscale.cpp
+    mainvisual.cpp
+    mainwindow.cpp
+    mediafile.cpp
+    monostereo.cpp
+    mp3player.cpp
+    number.cpp
+    pixmapwidget.cpp
+    playlistcontrol.cpp
+    playlist.cpp
+    playlistformat.cpp
+    playlistmodel.cpp
+    playlistslider.cpp
+    playlisttitlebar.cpp
+    playstate.cpp
+    playstatus.cpp
+    pluginitem.cpp
+    positionbar.cpp
+    preseteditor.cpp
+    qmmpstarter.cpp
+    shadedbar.cpp
+    shadedvisual.cpp
+    skin.cpp
+    skinreader.cpp
+    symboldisplay.cpp
+    textscroller.cpp
+    timeindicator.cpp
+    titlebarcontrol.cpp
+    titlebar.cpp
+    togglebutton.cpp
+    unixdomainsocket.cpp
+    visualmenu.cpp
+    volumebar.cpp
+)
+
+SET(ui_MOC_HDRS
+    aboutdialog.h
+    addurldialog.h
+    balancebar.h
+    button.h
+    commandlineoption.h
+    configdialog.h
+    display.h
+    dock.h
+    eqgraph.h
+    eqpreset.h
+    eqslider.h
+    eqtitlebar.h
+    eqwidget.h
+    fft.h
+    filedialog.h
+    fileloader.h
+    inlines.h
+    jumptotrackdialog.h
+    keyboardmanager.h
+    listwidget.h
+    logscale.h
+    mainvisual.h
+    mainwindow.h
+    mediafile.h
+    monostereo.h
+    number.h
+    pixmapwidget.h
+    playlistcontrol.h
+    playlistformat.h
+    playlist.h
+    playlistmodel.h
+    playlistslider.h
+    playlisttitlebar.h
+    playstate.h
+    playstatus.h
+    pluginitem.h
+    positionbar.h
+    preseteditor.h
+    qmmpstarter.h
+    shadedbar.h
+    shadedvisual.h
+    skin.h
+    skinreader.h
+    symboldisplay.h
+    textscroller.h
+    timeindicator.h
+    titlebarcontrol.h
+    titlebar.h
+    togglebutton.h
+    unixdomainsocket.h
+    version.h
+    visualmenu.h
+    volumebar.h
+)
+
+SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
+
+QT4_ADD_RESOURCES(ui_RCC_SRCS ${ui_RCCS})
+
+QT4_AUTOMOC(${ui_MOC_SRC})
+QT4_WRAP_CPP(ui_MOC_SRCS ${ui_MOC_HDRS})
+
+# user interface
+
+
+SET(ui_UIS
+    forms/aboutdialog.ui
+    forms/addurldialog.ui
+    forms/configdialog.ui
+    forms/jumptotrackdialog.ui
+    forms/preseteditor.ui
+)
+
+QT4_WRAP_UI(ui_UIS_H ${ui_UIS})
+# Don't forget to include output directory, otherwise
+# the UI file won't be wrapped!
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+ADD_EXECUTABLE(qmmp ${ui_SRCS} ${ui_MOC_SRCS} ${ui_UIS_H}
+  ${ui_RCC_SRCS})
+target_link_libraries(qmmp ${QT_LIBRARIES} -lqmmp -lqmmpui)
+install(TARGETS qmmp DESTINATION bin)
+#install(FILES qmmp.desktop DESTINATION share/applications)
+#install(FILES images/qmmp.xpm DESTINATION share/pixmaps)

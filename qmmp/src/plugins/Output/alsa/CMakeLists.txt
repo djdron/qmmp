@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 SET(libalsa_SRCS
   outputalsa.cpp

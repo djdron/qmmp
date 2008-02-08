@@ -20,7 +20,7 @@
 #ifndef SRCONVERTER_H
 #define SRCONVERTER_H
 
-#include <effect.h>
+#include <qmmp/effect.h>
 
 extern "C"
 {

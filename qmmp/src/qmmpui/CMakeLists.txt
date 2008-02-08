@@ -1,4 +1,4 @@
-project(libqmmp)
+project(libqmmpui)
 
 cmake_minimum_required(VERSION 2.4.0)
 
@@ -9,49 +9,26 @@ include(${QT_USE_FILE})
 # qt lib
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
-#ADD_DEFINITIONS(-DQT_PLUGIN)
 ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_SHARED)
 ADD_DEFINITIONS(-DQT_THREAD)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-SET(libqmmp_SRCS
-    visual.cpp
-    recycler.cpp
-    decoder.cpp
-    output.cpp
-    filetag.cpp
-    equ/iir.c
-    equ/iir_cfs.c
-    equ/iir_fpu.c
-    soundcore.cpp
-    streamreader.cpp
-    downloader.cpp
-    effect.cpp
+SET(libqmmpui_SRCS
+    general.cpp
+    generalhandler.cpp
+    songinfo.cpp
 )
 
-SET(libqmmp_MOC_HDRS
-  visual.h
-  recycler.h
-  buffer.h
-  constants.h
-  decoder.h
-  output.h
-  filetag.h
-  outputfactory.h
-  equ/iir_cfs.h
-  equ/iir_fpu.h
-  equ/iir.h
-  decoderfactory.h
-  soundcore.h
-  streamreader.h
-  downloader.h
-  effectfactory.h
-  effect.h
+SET(libqmmpui_MOC_HDRS
+    generalfactory.h
+    general.h
+    generalhandler.h
+    songinfo.h
 )
 
-QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
+QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
@@ -62,7 +39,8 @@ EXEC_PROGRAM(echo ${CMAKE_CURRENT_BINARY_DIR} ARGS "\"#define CONFIG_H\"" >> ./c
 EXEC_PROGRAM(echo ${CMAKE_CURRENT_BINARY_DIR} ARGS "\"#define LIB_DIR \\\"/${LIB_DIR}\\\"\"" >> ./config.h)
 EXEC_PROGRAM(echo ${CMAKE_CURRENT_BINARY_DIR} ARGS "\"#endif\"" >> ./config.h)
 
+ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS})
+target_link_libraries(qmmpui ${QT_LIBRARIES})
 
-ADD_LIBRARY(qmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
-target_link_libraries(qmmp ${QT_LIBRARIES} curl)
-install(TARGETS qmmp LIBRARY DESTINATION ${LIB_DIR})
+install(TARGETS qmmpui LIBRARY DESTINATION ${LIB_DIR})
+

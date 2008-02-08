@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libvorbis and taglib
 PKGCONFIG(ogg OGG_INCLUDE_DIR OGG_LINK_DIR OGG_LINK_FLAGS OGG_CFLAGS)

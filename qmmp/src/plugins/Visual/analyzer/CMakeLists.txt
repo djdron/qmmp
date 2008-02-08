@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 SET(libanalyzer_SRCS
     analyzer.cpp
@@ -66,5 +66,4 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(analyzer SHARED ${libanalyzer_SRCS} ${libanalyzer_MOC_SRCS} ${libanalyzer_UIS_H}
   ${libanalyzer_RCC_SRCS})
 target_link_libraries(analyzer ${QT_LIBRARIES} -lqmmp)
-install(TARGETS analyzer DESTINATION ${LIB_DIR}/qmmp/Visual PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
-
+install(TARGETS analyzer DESTINATION ${LIB_DIR}/qmmp/Visual)
