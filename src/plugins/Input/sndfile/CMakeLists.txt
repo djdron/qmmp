@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libsndfile
 PKGCONFIG(sndfile SNDFILE_INCLUDE_DIR SNDFILE_LINK_DIR SNDFILE_LINK_FLAGS SNDFILE_CFLAGS)

@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libmad and taglib
 PKGCONFIG(mad MAD_INCLUDE_DIR MAD_LINK_DIR MAD_LINK_FLAGS MAD_CFLAGS)

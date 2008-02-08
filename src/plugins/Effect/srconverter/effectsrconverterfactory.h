@@ -23,8 +23,8 @@
 
 #include <QObject>
 
-#include <effectfactory.h>
-#include <effect.h>
+#include <qmmp/effectfactory.h>
+#include <qmmp/effect.h>
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>

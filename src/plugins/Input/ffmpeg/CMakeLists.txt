@@ -28,7 +28,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libffmpeg and taglib
 PKGCONFIG(libavcodec LIBAVCODEC_INCLUDE_DIR LIBAVCODEC_LINK_DIR LIBAVCODEC_LINK_FLAGS LIBAVCODEC_CFLAGS)

@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 PKGCONFIG(samplerate SAMPLERATE_INCLUDE_DIR SAMPLERATE_LINK_DIR SAMPLERATE_LINK_FLAGS SAMPLERATE_CFLAGS)
 

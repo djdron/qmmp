@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libflac and taglib
 PKGCONFIG(flac FLAC_INCLUDE_DIR FLAC_LINK_DIR FLAC_LINK_FLAGS FLAC_CFLAGS)

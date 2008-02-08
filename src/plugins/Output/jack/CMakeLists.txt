@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libjack and taglib
 PKGCONFIG(jack JACK_INCLUDE_DIR JACK_LINK_DIR JACK_LINK_FLAGS JACK_CFLAGS)
