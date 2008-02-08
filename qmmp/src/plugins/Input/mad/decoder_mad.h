@@ -4,12 +4,12 @@
 // warranty, or liability of any kind.
 //
 
-#ifndef   __decoder_mad_h
-#define   __decoder_mad_h
+#ifndef   DECODER_MAD_H
+#define   DECODER_MAD_H
 
 class DecoderMAD;
 
-#include "decoder.h"
+#include <qmmp/decoder.h>
 #include "decodermadfactory.h"
 
 extern "C" {

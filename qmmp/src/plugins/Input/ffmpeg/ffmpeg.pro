@@ -6,16 +6,16 @@ HEADERS += decoderffmpegfactory.h \
            decoder_ffmpeg.h
 SOURCES += detailsdialog.cpp \
            decoder_ffmpeg.cpp \
-	   decoderffmpegfactory.cpp
-	   
-	   
+           decoderffmpegfactory.cpp
+
+
 QMAKE_CLEAN = ../libffmpeg.so
 
 TARGET=$$PLUGINS_PREFIX/Input/ffmpeg
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libffmpeg.so
 
 
-INCLUDEPATH += ../../../qmmp
+INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin \

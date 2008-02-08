@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,8 +26,8 @@
 #include <QIODevice>
 #include <QWidget>
 
-#include <output.h>
-#include <outputfactory.h>
+#include <qmmp/output.h>
+#include <qmmp/outputfactory.h>
 
 
 class OutputALSAFactory : public QObject,

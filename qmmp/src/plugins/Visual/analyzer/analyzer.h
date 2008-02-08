@@ -22,8 +22,8 @@
 
 #include <QWidget>
 #include <QResizeEvent>
-#include <visual.h>
-#include <constants.h>
+#include <qmmp/visual.h>
+#include <qmmp/constants.h>
 #include <QDir>
 
 class QSettings;

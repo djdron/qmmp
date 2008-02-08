@@ -22,9 +22,9 @@
 #include <QApplication>
 
 #include "outputoss.h"
-#include "constants.h"
-#include "buffer.h"
-#include "visual.h"
+#include <qmmp/constants.h>
+#include <qmmp/buffer.h>
+#include <qmmp/visual.h>
 
 #include <stdio.h>
 #include <string.h>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,9 +25,9 @@
 #include <QIODevice>
 #include <QWidget>
 
-#include <decoder.h>
-#include <output.h>
-#include <decoderfactory.h>
+#include <qmmp/decoder.h>
+#include <qmmp/output.h>
+#include <qmmp/decoderfactory.h>
 
 
 

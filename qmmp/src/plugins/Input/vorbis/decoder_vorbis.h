@@ -4,10 +4,10 @@
 // warranty, or liability of any kind.
 //
 
-#ifndef __decoder_vorbis_h
-#define __decoder_vorbis_h
+#ifndef DECODER_VORBIS_H
+#define DECODER_VORBIS_H
 
-#include "decoder.h"
+#include <qmmp/decoder.h>
 
 #include <vorbis/vorbisfile.h>
 

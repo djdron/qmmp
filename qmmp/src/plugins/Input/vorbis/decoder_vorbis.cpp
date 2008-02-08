@@ -4,17 +4,17 @@
 // warranty, or liability of any kind.
 //
 
-#include "decoder_vorbis.h"
-#include "constants.h"
-#include "buffer.h"
-#include "output.h"
-#include "recycler.h"
-#include "filetag.h"
+
+#include <qmmp/constants.h>
+#include <qmmp/buffer.h>
+#include <qmmp/output.h>
+#include <qmmp/recycler.h>
+#include <qmmp/filetag.h>
 
 #include <QObject>
 #include <QIODevice>
 
-
+#include "decoder_vorbis.h"
 // ic functions for OggVorbis
 
 static size_t oggread (void *buf, size_t size, size_t nmemb, void *src)

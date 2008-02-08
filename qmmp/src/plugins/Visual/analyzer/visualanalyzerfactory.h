@@ -23,8 +23,8 @@
 
 #include <QObject>
 
-#include <visualfactory.h>
-#include <visual.h>
+#include <qmmp/visualfactory.h>
+#include <qmmp/visual.h>
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>

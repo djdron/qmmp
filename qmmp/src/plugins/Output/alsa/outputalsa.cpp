@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,10 +29,10 @@
 #include <string.h>
 #include <iostream>
 
+#include <qmmp/constants.h>
+#include <qmmp/buffer.h>
+#include <qmmp/visual.h>
 #include "outputalsa.h"
-#include "constants.h"
-#include "buffer.h"
-#include "visual.h"
 
 OutputALSA::OutputALSA(QObject * parent, bool useVolume)
         : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
