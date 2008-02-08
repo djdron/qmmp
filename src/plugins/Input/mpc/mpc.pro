@@ -3,16 +3,16 @@ include(../../plugins.pri)
 FORMS += detailsdialog.ui 
 HEADERS += decodermpcfactory.h \
            decoder_mpc.h \
-	   detailsdialog.h
+           detailsdialog.h
 SOURCES += decoder_mpc.cpp \
            decodermpcfactory.cpp \
-	   detailsdialog.cpp
+           detailsdialog.cpp
 
 TARGET=$$PLUGINS_PREFIX/Input/mpc
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmpc.so
-	   
 
-INCLUDEPATH += ../../../qmmp
+
+INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin \

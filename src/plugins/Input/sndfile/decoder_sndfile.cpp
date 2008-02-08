@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,12 +22,10 @@
 #include <QFile>
 #include <QFileInfo>
 
-
-
-#include "constants.h"
-#include "buffer.h"
-#include "output.h"
-#include "recycler.h"
+#include <qmmp/constants.h>
+#include <qmmp/buffer.h>
+#include <qmmp/output.h>
+#include <qmmp/recycler.h>
 
 #include "decoder_sndfile.h"
 

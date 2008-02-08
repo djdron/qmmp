@@ -18,12 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef __decoder_flac_h
-#define __decoder_flac_h
+#ifndef DECODER_FLAC_H
+#define DECODER_FLAC_H
 
-class DecoderOgg;
-
-#include "decoder.h"
+#include <qmmp/decoder.h>
 
 #include <FLAC/all.h>
 

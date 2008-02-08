@@ -19,10 +19,10 @@
  ***************************************************************************/
 
 
-#include "constants.h"
-#include "buffer.h"
-#include "output.h"
-#include "recycler.h"
+#include <qmmp/constants.h>
+#include <qmmp/buffer.h>
+#include <qmmp/output.h>
+#include <qmmp/recycler.h>
 
 #include <QObject>
 #include <QIODevice>

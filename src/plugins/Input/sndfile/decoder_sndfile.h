@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,7 @@
 extern "C"{
 #include <sndfile.h>
 }
-#include "decoder.h"
+#include <qmmp/decoder.h>
 
 
 class DecoderSndFile : public Decoder

@@ -3,12 +3,12 @@ include(../../plugins.pri)
 HEADERS += decodersndfilefactory.h \
            decoder_sndfile.h 
 SOURCES += decoder_sndfile.cpp \
-	   decodersndfilefactory.cpp
+           decodersndfilefactory.cpp
 
 TARGET=$$PLUGINS_PREFIX/Input/sndfile
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libsndfile.so
-	  
-INCLUDEPATH += ../../../qmmp
+
+INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin \

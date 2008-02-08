@@ -1,9 +1,9 @@
 #include <QtGui>
 
 #include "decoder_mad.h"
-#include "constants.h"
-#include "buffer.h"
-#include "output.h"
+#include <qmmp/constants.h>
+#include <qmmp/buffer.h>
+#include <qmmp/output.h>
 
 #include <math.h>
 #include <stdio.h>

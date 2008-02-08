@@ -12,7 +12,7 @@ TARGET=$$PLUGINS_PREFIX/Output/jack
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Output/libjack.so
 
 
-INCLUDEPATH += ../../../qmmp
+INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../../lib
 CONFIG += release \
 warn_on \

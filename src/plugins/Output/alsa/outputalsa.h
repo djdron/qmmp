@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,15 +23,13 @@
 
 class OutputALSA;
 
-#include <output.h>
+
 #include <QObject>
 extern "C" {
 #include <alsa/asoundlib.h>
 }
-#if defined( Q_OS_WIN32 )
-#include <dsound.h>
-#include "constants.h"
-#endif
+
+#include <qmmp/output.h>
 
 
 class OutputALSA : public Output

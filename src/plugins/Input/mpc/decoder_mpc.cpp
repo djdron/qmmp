@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,10 +22,10 @@
 #include <QObject>
 #include <QIODevice>
 
-#include "constants.h"
-#include "buffer.h"
-#include "output.h"
-#include "recycler.h"
+#include <qmmp/constants.h>
+#include <qmmp/buffer.h>
+#include <qmmp/output.h>
+#include <qmmp/recycler.h>
 
 #include "decoder_mpc.h"
 

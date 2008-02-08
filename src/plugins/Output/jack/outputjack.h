@@ -3,7 +3,7 @@
 
 class OutputJACK;
 
-#include <output.h>
+#include <qmmp/output.h>
 #include <QObject>
 extern "C"
 {

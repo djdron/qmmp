@@ -4,19 +4,19 @@ TARGET=$$PLUGINS_PREFIX/Visual/analyzer
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Visual/libanalyzer.so
 
 
-#FORMS += detailsdialog.ui 
+FORMS += settingsdialog.ui
 HEADERS += analyzer.h \
- fft.h \
- visualanalyzerfactory.h \
- inlines.h \
- colorwidget.h \
- settingsdialog.h
-SOURCES += analyzer.cpp \
- fft.c \
- visualanalyzerfactory.cpp \
- colorwidget.cpp \
- settingsdialog.cpp
-INCLUDEPATH += ../../../qmmp
+           fft.h \
+           visualanalyzerfactory.h \
+           inlines.h \
+           colorwidget.h \
+           settingsdialog.h
+           SOURCES += analyzer.cpp \
+           fft.c \
+           visualanalyzerfactory.cpp \
+           colorwidget.cpp \
+           settingsdialog.cpp
+INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin
@@ -31,5 +31,5 @@ isEmpty(LIB_DIR){
 }
 target.path = $$LIB_DIR/qmmp/Visual
 INSTALLS += target
-FORMS += settingsdialog.ui
+
 

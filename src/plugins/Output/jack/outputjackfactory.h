@@ -26,8 +26,8 @@
 #include <QIODevice>
 #include <QWidget>
 
-#include <output.h>
-#include <outputfactory.h>
+#include <qmmp/output.h>
+#include <qmmp/outputfactory.h>
 
 
 class OutputJACKFactory : public QObject,

@@ -20,7 +20,7 @@ SOURCES += decoder_mad.cpp \
 TARGET=$$PLUGINS_PREFIX/Input/mad
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmad.so
 
-INCLUDEPATH += ../../../qmmp
+INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin \

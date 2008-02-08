@@ -23,13 +23,12 @@
 #include <QMenu>
 #include <QActionGroup>
 
-#include <buffer.h>
-#include <constants.h>
-#include <output.h>
+#include <qmmp/buffer.h>
+#include <qmmp/constants.h>
+#include <qmmp/output.h>
 #include <math.h>
 #include <stdlib.h>
 
-//#include "skin.h"
 #include "fft.h"
 #include "inlines.h"
 #include "analyzer.h"

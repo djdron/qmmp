@@ -25,7 +25,7 @@
 
 class OutputOSS;
 
-#include <output.h>
+#include <qmmp/output.h>
 #include <QObject>
 
 class OutputOSS : public Output

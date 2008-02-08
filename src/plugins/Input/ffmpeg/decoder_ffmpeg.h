@@ -25,7 +25,7 @@ extern "C"{
 #include <ffmpeg/avformat.h>
 #include <ffmpeg/avcodec.h>
 }
-#include "decoder.h"
+#include <qmmp/decoder.h>
 
 class DecoderFFmpeg : public Decoder
 {

@@ -25,10 +25,10 @@
 #include <QIODevice>
 #include <QWidget>
 
-#include <decoder.h>
-#include <output.h>
-#include <decoderfactory.h>
-#include <filetag.h>
+#include <qmmp/decoder.h>
+#include <qmmp/output.h>
+#include <qmmp/decoderfactory.h>
+#include <qmmp/filetag.h>
 
 
 

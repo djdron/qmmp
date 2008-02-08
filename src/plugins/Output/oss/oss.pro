@@ -3,8 +3,8 @@ FORMS += settingsdialog.ui
 
 HEADERS += outputossfactory.h \
            outputoss.h \
-	   settingsdialog.h
-           
+           settingsdialog.h
+
 
 SOURCES += outputossfactory.cpp \
            outputoss.cpp \ 
@@ -14,12 +14,12 @@ TARGET=$$PLUGINS_PREFIX/Output/oss
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Output/liboss.so
 
 
-INCLUDEPATH += ../../../qmmp
+INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../../lib
 CONFIG += release \
 warn_on \
 thread \
-plugin 
+plugin
 
 TEMPLATE = lib
 LIBS += -lqmmp

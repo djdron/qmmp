@@ -25,7 +25,6 @@
 extern "C"{
 #include <alsa/asoundlib.h> 
 }
-//#include <alsa/pcm_plugin.h>
 
 #include "ui_settingsdialog.h"
 
