@@ -1,8 +1,8 @@
 project(libdbuscontrol)
 
-cmake_minimum_required(VERSION 2.4.0)
+cmake_minimum_required(VERSION 2.4.8 FATAL_ERROR)
 
-
+SET (QT_USE_QTDBUS TRUE)
 
 INCLUDE(FindQt4)
 
@@ -17,14 +17,9 @@ ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_SHARED)
 ADD_DEFINITIONS(-DQT_THREAD)
 
-SET(QT_USE_QTDBUS TRUE)
+
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-
-SET(QT_INCLUDES
-  ${QT_INCLUDES}
-  ${CMAKE_CURRENT_BINARY_DIR}/../../../
-)
 
 # libqmmpui
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)

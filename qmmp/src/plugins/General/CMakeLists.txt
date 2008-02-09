@@ -4,7 +4,7 @@ SET(USE_STATICON TRUE CACHE BOOL "enable/disable status icon plugin")
 
 IF(USE_DBUS)
 MESSAGE(STATUS "DBUS ON")
-#add_subdirectory(dbuscontrol)
+add_subdirectory(dbuscontrol)
 ELSE(USE_DBUS)
 MESSAGE(STATUS "DBUS OFF")
 ENDIF(USE_DBUS)
