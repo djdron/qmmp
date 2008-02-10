@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,7 +36,7 @@ class InputPluginItem : public QObject
 {
     Q_OBJECT
 public:
-    InputPluginItem(QObject *parent, DecoderFactory *fact, const QString &filePath);
+    InputPluginItem(QObject *parent, DecoderFactory *fact);
 
     ~InputPluginItem();
 
@@ -47,7 +47,6 @@ public slots:
     void setSelected(bool);
 
 private:
-    QString m_fileName;
     DecoderFactory *m_factory;
 
 };
@@ -56,7 +55,7 @@ class OutputPluginItem : public QObject
 {
     Q_OBJECT
 public:
-    OutputPluginItem(QObject *parent, OutputFactory *fact, const QString &filePath);
+    OutputPluginItem(QObject *parent, OutputFactory *fact);
 
     ~OutputPluginItem();
 
@@ -67,7 +66,6 @@ public slots:
     void select();
 
 private:
-    QString m_fileName;
     OutputFactory *m_factory;
 
 };
@@ -76,7 +74,7 @@ class VisualPluginItem : public QObject
 {
     Q_OBJECT
 public:
-    VisualPluginItem(QObject *parent, VisualFactory *fact, const QString &filePath);
+    VisualPluginItem(QObject *parent, VisualFactory *fact);
 
     ~VisualPluginItem();
 
@@ -87,7 +85,6 @@ public slots:
     void select(bool);
 
 private:
-    QString m_fileName;
     VisualFactory *m_factory;
 };
 
@@ -95,7 +92,7 @@ class EffectPluginItem : public QObject
 {
     Q_OBJECT
 public:
-    EffectPluginItem(QObject *parent, EffectFactory *fact, const QString &filePath);
+    EffectPluginItem(QObject *parent, EffectFactory *fact);
 
     ~EffectPluginItem();
 
@@ -106,7 +103,6 @@ public slots:
     void select(bool);
 
 private:
-    QString m_fileName;
     EffectFactory *m_factory;
 };
 
@@ -114,7 +110,7 @@ class GeneralPluginItem : public QObject
 {
     Q_OBJECT
 public:
-    GeneralPluginItem(QObject *parent, GeneralFactory *fact, const QString &filePath);
+    GeneralPluginItem(QObject *parent, GeneralFactory *fact);
 
     ~GeneralPluginItem();
 
@@ -125,7 +121,6 @@ public slots:
     void select(bool);
 
 private:
-    QString m_fileName;
     GeneralFactory *m_factory;
 };
 

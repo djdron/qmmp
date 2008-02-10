@@ -35,7 +35,7 @@ VisualMenu::VisualMenu(QWidget *parent)
         QAction *act = this->addAction(factory->properties().name);
         act->setCheckable (TRUE);
         act->setChecked (Visual::isEnabled(factory));
-        VisualPluginItem *vi = new VisualPluginItem(this,factory, "");
+        VisualPluginItem *vi = new VisualPluginItem(this,factory);
         connect(act, SIGNAL(toggled(bool)), vi, SLOT(select(bool)));
     }
 }

@@ -147,13 +147,12 @@ public:
         m_useEQ = on;
     };
     void setVolume(int, int);
-    
+
     void volume(int*, int*);
 
     // static methods
     static QStringList all();
     static bool supports(const QString &);
-    //static void registerFactory(DecoderFactory *);
     static Decoder *create(QObject *, const QString &, QIODevice *, Output *);
     static DecoderFactory *findByPath(const QString&);
     static DecoderFactory *findByMime(const QString&);
@@ -163,6 +162,8 @@ public:
     static QStringList nameFilters();
     static QList<DecoderFactory*> *decoderFactories();
     static QStringList decoderFiles();
+    static void setEnabled(DecoderFactory* factory, bool enable = TRUE);
+    static bool isEnabled(DecoderFactory* factory);
 
 signals:
     void stateChanged(const DecoderState&);

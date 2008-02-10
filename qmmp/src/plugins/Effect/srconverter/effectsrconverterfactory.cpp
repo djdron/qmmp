@@ -28,6 +28,8 @@ const EffectProperties EffectSRConverterFactory::properties() const
 {
     EffectProperties properties;
     properties.name = tr("SRC Plugin");
+    properties.hasSettings = TRUE;
+    properties.hasAbout = TRUE;
     return properties;
 };
 

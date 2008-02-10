@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,11 +33,9 @@
 #include "pluginitem.h"
 
 /*Input*/
-InputPluginItem::InputPluginItem(QObject *parent, DecoderFactory *fact,
-                                                     const QString &filePath)
+InputPluginItem::InputPluginItem(QObject *parent, DecoderFactory *fact)
         : QObject(parent)
 {
-    m_fileName = filePath.section('/',-1);
     m_factory = fact;
 }
 
@@ -46,9 +44,7 @@ InputPluginItem::~InputPluginItem()
 
 bool InputPluginItem::isSelected()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    QStringList blacklist = settings.value("Decoder/disabled_plugins").toStringList();
-    return !blacklist.contains(m_fileName);
+    return Decoder::isEnabled(m_factory);
 }
 
 DecoderFactory* InputPluginItem::factory()
@@ -58,20 +54,12 @@ DecoderFactory* InputPluginItem::factory()
 
 void InputPluginItem::setSelected(bool select)
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    QStringList blacklist = settings.value("Decoder/disabled_plugins").toStringList();
-    if (select)
-        blacklist.removeAll (m_fileName);
-    else
-        blacklist.append (m_fileName);
-    settings.setValue("Decoder/disabled_plugins", blacklist);
+    Decoder::setEnabled(m_factory, select);
 }
 
 /*Output*/
-OutputPluginItem::OutputPluginItem(QObject *parent, OutputFactory *fact,
-                                   const QString &filePath): QObject(parent)
+OutputPluginItem::OutputPluginItem(QObject *parent, OutputFactory *fact): QObject(parent)
 {
-    m_fileName = filePath.section('/',-1);
     m_factory = fact;
 }
 
@@ -81,14 +69,12 @@ OutputPluginItem::~OutputPluginItem()
 
 void OutputPluginItem::select()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    settings.setValue("Output/plugin_file", m_fileName);
+    Output::setEnabled(m_factory);
 }
 
 bool OutputPluginItem::isSelected()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    return m_fileName == settings.value("Output/plugin_file","libalsa.so").toString();
+    return Output::isEnabled(m_factory);
 }
 
 OutputFactory *OutputPluginItem::factory()
@@ -97,10 +83,8 @@ OutputFactory *OutputPluginItem::factory()
 }
 
 /*Visual*/
-VisualPluginItem::VisualPluginItem(QObject *parent, VisualFactory *fact,
-                                   const QString &filePath): QObject(parent)
+VisualPluginItem::VisualPluginItem(QObject *parent, VisualFactory *fact): QObject(parent)
 {
-    m_fileName = filePath.section('/',-1);
     m_factory = fact;
 }
 
@@ -127,10 +111,8 @@ VisualFactory *VisualPluginItem::factory()
 }
 
 /*Effect*/
-EffectPluginItem::EffectPluginItem(QObject *parent, EffectFactory *fact,
-                                   const QString &filePath): QObject(parent)
+EffectPluginItem::EffectPluginItem(QObject *parent, EffectFactory *fact): QObject(parent)
 {
-    m_fileName = filePath.section('/',-1);
     m_factory = fact;
 }
 
@@ -154,13 +136,10 @@ EffectFactory *EffectPluginItem::factory()
 }
 
 /*General*/
-GeneralPluginItem::GeneralPluginItem(QObject *parent, GeneralFactory *fact,
-                                   const QString &filePath): QObject(parent)
+GeneralPluginItem::GeneralPluginItem(QObject *parent, GeneralFactory *fact): QObject(parent)
 {
-    m_fileName = filePath.section('/',-1);
     m_factory = fact;
 }
-
 
 GeneralPluginItem::~GeneralPluginItem()
 {}
