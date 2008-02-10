@@ -67,16 +67,15 @@ Output *Output::create (QObject *parent)
         qDebug("Output: unable to find output plugins");
         return output;
     }
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    QString pluginFileName =
-        settings.value("Output/plugin_file","libalsa.so").toString();
-    int j = 0;
-    for (int i = 0; i < factories->size(); ++i)
+    OutputFactory *fact = 0;
+    foreach(fact, *factories)
     {
-        if (files.at(i).section('/',-1) == pluginFileName)
-            j = i;
+        if(isEnabled(fact))
+            break;
+        else
+            fact = factories->at(0);
     }
-    OutputFactory *fact = factories->at (j);
+    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     bool useVolume = !settings.value("Volume/software_volume", FALSE).toBool();
     if (fact)
     {
@@ -105,6 +104,27 @@ QStringList Output::outputFiles()
 {
     checkFactories();
     return files;
+}
+
+void Output::setEnabled(OutputFactory* factory)
+{
+    checkFactories();
+    if (!factories->contains(factory))
+        return;
+
+    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.setValue ("Output/plugin_file", name);
+}
+
+bool Output::isEnabled(OutputFactory* factory)
+{
+    checkFactories();
+    if(!factories->contains(factory))
+        return FALSE;
+    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    return name == settings.value("Output/plugin_file", "libalsa.so").toString();
 }
 
 Output::Output (QObject* parent) : QThread (parent), r (stackSize())

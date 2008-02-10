@@ -179,6 +179,8 @@ public:
     static Output *create(QObject *);
     static QList<OutputFactory*> *outputFactories();
     static QStringList outputFiles();
+    static void setEnabled(OutputFactory* factory);
+    static bool isEnabled(OutputFactory* factory);
 
 public slots:
     void checkVolume();

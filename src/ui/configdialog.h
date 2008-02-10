@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -53,8 +53,9 @@ private slots:
     void setMainFont();
     void showPluginSettings();
     void showPluginInfo();
-    void addTitleString( QAction * );
+    void addTitleString(QAction *);
     void saveSettings();
+    void updateButtons();
 
 private:
     void readSettings();
