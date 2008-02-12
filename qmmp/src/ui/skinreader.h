@@ -21,6 +21,8 @@
 #define SKINREADER_H
 
 #include <QObject>
+#include <QMap>
+#include <QPixmap>
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,12 +37,16 @@ public:
 
     ~SkinReader();
 
-    void updateCache();
+    void generateThumbs();
+    void unpackSkin(const QString &path);
+    const QStringList skins();
+    const QPixmap getPreview(const QString &skinPath);
 
 private:
     QProcess *m_process;
-    void untar(const QString &from, const QString &to);
-    void unzip(const QString &from, const QString &to);
+    void untar(const QString &from, const QString &to, bool preview);
+    void unzip(const QString &from, const QString &to,  bool preview);
+    QMap <QString, QString> m_previewMap;
 };
 
 #endif

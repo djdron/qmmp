@@ -68,8 +68,8 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
     m_skin = Skin::getPointer();
     ui.fileDialogComboBox->insertItems(0,FileDialog::registeredFactories());
     readSettings();
-    SkinReader reader;
-    reader.updateCache();
+    m_reader = new SkinReader(this);
+    m_reader->generateThumbs();
     loadSkins();
     loadPluginsInfo();
     loadFonts();
@@ -133,8 +133,17 @@ void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previo
 void ConfigDialog::changeSkin()
 {
     int row = ui.listWidget->currentRow();
-    QString path = m_skinList.at ( row ).canonicalFilePath();
-    m_skin->setSkin ( path );
+    QString path;
+    if (m_skinList.at (row).isDir())
+    {
+        path = m_skinList.at (row).canonicalFilePath();
+        m_skin->setSkin (path);
+    }
+    else if (m_skinList.at (row).isFile())
+    {
+        m_reader->unpackSkin(m_skinList.at (row).canonicalFilePath());
+        m_skin->setSkin(QDir::homePath() +"/.qmmp/cache/skin");
+    }
 }
 
 void ConfigDialog::loadSkins()
@@ -143,15 +152,22 @@ void ConfigDialog::loadSkins()
     QFileInfo fileInfo (":/default");
     QPixmap preview = Skin::getPixmap ("main", QDir (fileInfo.filePath()));
     QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
-    item->setIcon ( preview );
-    ui.listWidget->addItem ( item );
+    item->setIcon (preview);
+    ui.listWidget->addItem (item);
     m_skinList << fileInfo;
 
     findSkins(QDir::homePath() +"/.qmmp/skins");
-    findSkins(QDir::homePath() +"/.qmmp/cache/skins");
     findSkins(qApp->applicationDirPath()+"/../share/qmmp/skins");
-    connect ( ui.listWidget, SIGNAL ( itemClicked ( QListWidgetItem* ) ),
-              this, SLOT ( changeSkin() ) );
+    foreach(QString path, m_reader->skins())
+    {
+        QListWidgetItem *item = new QListWidgetItem (path.section('/', -1));
+        item->setIcon (m_reader->getPreview(path));
+        item->setToolTip(tr("Archived skin") + " " + path);
+        ui.listWidget->addItem (item);
+        m_skinList << QFileInfo(path);
+    }
+    connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)),
+              this, SLOT (changeSkin()));
 }
 
 void ConfigDialog::findSkins(const QString &path)
@@ -163,12 +179,13 @@ void ConfigDialog::findSkins(const QString &path)
         return;
     foreach (QFileInfo fileInfo, fileList)
     {
-        QPixmap preview = Skin::getPixmap ( "main", QDir ( fileInfo.filePath() ) );
-        if ( !preview.isNull() )
+        QPixmap preview = Skin::getPixmap ("main", QDir(fileInfo.filePath ()));
+        if (!preview.isNull())
         {
-            QListWidgetItem *item = new QListWidgetItem ( fileInfo.fileName () );
-            item->setIcon ( preview );
-            ui.listWidget->addItem ( item );
+            QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
+            item->setIcon (preview);
+            item->setToolTip(tr("Unarchived skin") + " " + fileInfo.filePath ());
+            ui.listWidget->addItem (item);
             m_skinList << fileInfo;
         }
     }
@@ -336,16 +353,16 @@ void ConfigDialog::loadPluginsInfo()
 
 void ConfigDialog::loadFonts()
 {
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     QString fontname = settings.value ( "PlayList/Font","" ).toString();
-    if ( fontname.isEmpty () )
-        fontname = QFont ( "Helvetica [Cronyx]", 10 ).toString();
-    ui.plFontLabel -> setText ( fontname );
+    if (fontname.isEmpty ())
+        fontname = QFont ("Helvetica [Cronyx]", 10).toString();
+    ui.plFontLabel->setText (fontname);
 
-    fontname = settings.value ( "MainWindow/Font","" ).toString();
-    if ( fontname.isEmpty () )
-        fontname = QFont ( "Helvetica [Cronyx]", 9 ).toString();
-    ui.mainFontLabel -> setText ( fontname );
+    fontname = settings.value ("MainWindow/Font","").toString();
+    if (fontname.isEmpty ())
+        fontname = QFont ("Helvetica [Cronyx]", 9).toString();
+    ui.mainFontLabel->setText (fontname);
 }
 
 void ConfigDialog::setPlFont()
@@ -378,7 +395,7 @@ void ConfigDialog::setMainFont()
 
 void ConfigDialog::showPluginSettings()
 {
-    switch ( ( int ) ui.pluginsTab -> currentIndex () )
+    switch ((int) ui.pluginsTab -> currentIndex ())
     {
     case 0:
     {
