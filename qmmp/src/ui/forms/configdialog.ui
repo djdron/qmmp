@@ -270,7 +270,7 @@
             <item row="1" column="1" >
              <widget class="QLabel" name="plFontLabel" >
               <property name="frameShape" >
-               <enum>QFrame::Panel</enum>
+               <enum>QFrame::StyledPanel</enum>
               </property>
               <property name="frameShadow" >
                <enum>QFrame::Sunken</enum>
@@ -290,7 +290,7 @@
             <item row="0" column="1" >
              <widget class="QLabel" name="mainFontLabel" >
               <property name="frameShape" >
-               <enum>QFrame::Panel</enum>
+               <enum>QFrame::StyledPanel</enum>
               </property>
               <property name="frameShadow" >
                <enum>QFrame::Sunken</enum>
