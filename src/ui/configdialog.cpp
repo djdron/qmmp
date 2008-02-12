@@ -355,25 +355,26 @@ void ConfigDialog::loadFonts()
 {
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     QString fontname = settings.value ( "PlayList/Font","" ).toString();
-    if (fontname.isEmpty ())
-        fontname = QFont ("Helvetica [Cronyx]", 10).toString();
-    ui.plFontLabel->setText (fontname);
+    QFont font;
+    font.fromString(fontname);
+    ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    ui.plFontLabel->setFont(font);
 
     fontname = settings.value ("MainWindow/Font","").toString();
-    if (fontname.isEmpty ())
-        fontname = QFont ("Helvetica [Cronyx]", 9).toString();
-    ui.mainFontLabel->setText (fontname);
+    font.fromString(fontname);
+    ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    ui.mainFontLabel->setFont(font);
 }
 
 void ConfigDialog::setPlFont()
 {
     bool ok;
-    QFont font;
-    font.fromString ( ui.plFontLabel->text() );
+    QFont font = ui.plFontLabel->font();
     font = QFontDialog::getFont ( &ok, font, this );
-    if ( ok )
+    if (ok)
     {
-        ui.plFontLabel -> setText ( font.toString () );
+        ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+        ui.plFontLabel->setFont(font);
         QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
         settings.setValue ( "PlayList/Font", font.toString() );
     }
@@ -382,12 +383,12 @@ void ConfigDialog::setPlFont()
 void ConfigDialog::setMainFont()
 {
     bool ok;
-    QFont font;
-    font.fromString ( ui.plFontLabel->text() );
-    font = QFontDialog::getFont ( &ok, font, this );
+    QFont font = ui.plFontLabel->font();
+    font = QFontDialog::getFont (&ok, font, this);
     if ( ok )
     {
-        ui.mainFontLabel -> setText ( font.toString () );
+        ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+        ui.mainFontLabel->setFont(font);
         QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
         settings.setValue ( "MainWindow/Font", font.toString() );
     }
