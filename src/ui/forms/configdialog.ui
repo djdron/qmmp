@@ -93,14 +93,14 @@
         <bool>false</bool>
        </property>
        <property name="currentRow" >
-        <number>-1</number>
+        <number>0</number>
        </property>
        <item>
         <property name="text" >
          <string>Appearance</string>
         </property>
         <property name="icon" >
-         <iconset resource="images/images.qrc" >:/interface.png</iconset>
+         <iconset resource="../images/images.qrc" >:/interface.png</iconset>
         </property>
        </item>
        <item>
@@ -108,7 +108,7 @@
          <string>Playlist</string>
         </property>
         <property name="icon" >
-         <iconset resource="images/images.qrc" >:/playlist.png</iconset>
+         <iconset resource="../images/images.qrc" >:/playlist.png</iconset>
         </property>
        </item>
        <item>
@@ -116,7 +116,7 @@
          <string>Plugins</string>
         </property>
         <property name="icon" >
-         <iconset resource="images/images.qrc" >:/plugins.png</iconset>
+         <iconset resource="../images/images.qrc" >:/plugins.png</iconset>
         </property>
        </item>
        <item>
@@ -124,7 +124,7 @@
          <string>Advanced</string>
         </property>
         <property name="icon" >
-         <iconset resource="images/images.qrc" >:/advanced.png</iconset>
+         <iconset resource="../images/images.qrc" >:/advanced.png</iconset>
         </property>
        </item>
        <item>
@@ -132,7 +132,7 @@
          <string>Connectivity</string>
         </property>
         <property name="icon" >
-         <iconset resource="images/images.qrc" >:/network.png</iconset>
+         <iconset resource="../images/images.qrc" >:/plugins.png</iconset>
         </property>
        </item>
       </widget>
@@ -191,6 +191,9 @@
             </property>
             <item>
              <widget class="QListWidget" name="listWidget" >
+              <property name="alternatingRowColors" >
+               <bool>true</bool>
+              </property>
               <property name="movement" >
                <enum>QListView::Static</enum>
               </property>
@@ -857,7 +860,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="images/images.qrc" />
+  <include location="../images/images.qrc" />
  </resources>
  <connections>
   <connection>

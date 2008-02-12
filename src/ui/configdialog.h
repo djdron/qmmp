@@ -37,6 +37,7 @@ class OutputPluginItem;
 class VisualPluginItem;
 class EffectPluginItem;
 class GeneralPluginItem;
+class SkinReader;
 
 class ConfigDialog : public QDialog
 {
@@ -70,6 +71,7 @@ private:
     Ui::ConfigDialog ui;
     Skin *m_skin;
     QPixmap pixmap;
+    SkinReader *m_reader;
 
     QList <InputPluginItem*> m_inputPluginItems;
     QList <OutputPluginItem*> m_outputPluginItems;
