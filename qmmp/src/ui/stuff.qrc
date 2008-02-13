@@ -2,6 +2,7 @@
 <RCC version="1.0">
   <qresource>
     <file>../../COPYING</file>
+    <file>txt/description_en.txt</file>
     <file>html/about_en.html</file>
     <file>html/about_ru.html</file>
     <file>html/authors_en.txt</file>
