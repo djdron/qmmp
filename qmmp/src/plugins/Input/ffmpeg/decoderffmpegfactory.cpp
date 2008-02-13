@@ -15,7 +15,7 @@ extern "C"{
 bool DecoderFFmpegFactory::supports(const QString &source) const
 {
 
-    return (source.right(4).toLower() == ".wma" || source.right(4).toLower() == ".wav");
+    return (source.right(4).toLower() == ".wma");
 }
 
 bool DecoderFFmpegFactory::canDecode(QIODevice *) const
@@ -26,8 +26,8 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *) const
 const DecoderProperties DecoderFFmpegFactory::properties() const
 {
     DecoderProperties properties;
-    properties.name = tr("WMA Files");
-    properties.filter = "*.wma *.wav";
+    properties.name = tr("FFMPEG Plugin");
+    properties.filter = "*.wma";
     properties.description = tr("WMA Files");
     //properties.contentType = "";
     properties.hasAbout = TRUE;
