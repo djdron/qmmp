@@ -13,11 +13,20 @@
    <string>About Qmmp</string>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
    <property name="spacing" >
     <number>6</number>
+   </property>
+   <property name="leftMargin" >
+    <number>9</number>
+   </property>
+   <property name="topMargin" >
+    <number>9</number>
+   </property>
+   <property name="rightMargin" >
+    <number>9</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>9</number>
    </property>
    <item>
     <widget class="QLabel" name="pixmapLabel" >
@@ -25,7 +34,7 @@
       <string/>
      </property>
      <property name="pixmap" >
-      <pixmap resource="images/images.qrc" >:/logo-qmmp.png</pixmap>
+      <pixmap resource="../images/images.qrc" >:/logo-qmmp.png</pixmap>
      </property>
      <property name="alignment" >
       <set>Qt::AlignCenter</set>
@@ -42,10 +51,22 @@
        <string>About</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>9</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>9</number>
+       </property>
+       <property name="rightMargin" >
+        <number>9</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>9</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>6</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>6</number>
        </property>
        <item row="0" column="0" >
@@ -62,10 +83,22 @@
        <string>Authors</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>9</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>9</number>
+       </property>
+       <property name="rightMargin" >
+        <number>9</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>9</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>6</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>6</number>
        </property>
        <item row="0" column="0" >
@@ -77,16 +110,35 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Translators</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <item>
+        <widget class="QTextEdit" name="textEdit" />
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="thanksToTab" >
       <attribute name="title" >
        <string>Thanks To</string>
       </attribute>
       <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
        <property name="spacing" >
         <number>6</number>
+       </property>
+       <property name="leftMargin" >
+        <number>9</number>
+       </property>
+       <property name="topMargin" >
+        <number>9</number>
+       </property>
+       <property name="rightMargin" >
+        <number>9</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>9</number>
        </property>
        <item>
         <widget class="QTextEdit" name="thanksToTextEdit" >
@@ -102,10 +154,22 @@
        <string>License Agreement</string>
       </attribute>
       <layout class="QGridLayout" >
-       <property name="margin" >
+       <property name="leftMargin" >
         <number>9</number>
        </property>
-       <property name="spacing" >
+       <property name="topMargin" >
+        <number>9</number>
+       </property>
+       <property name="rightMargin" >
+        <number>9</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>9</number>
+       </property>
+       <property name="horizontalSpacing" >
+        <number>6</number>
+       </property>
+       <property name="verticalSpacing" >
         <number>6</number>
        </property>
        <item row="0" column="0" >
@@ -135,7 +199,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="images/images.qrc" />
+  <include location="../images/images.qrc" />
  </resources>
  <connections>
   <connection>

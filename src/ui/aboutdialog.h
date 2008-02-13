@@ -38,6 +38,9 @@ public:
 protected slots:
     virtual void accept();
 
+private:
+    QString loadAbout();
+
 };
 
 #endif

@@ -19,10 +19,22 @@
 ***************************************************************************/
 
 
-#include "aboutdialog.h"
-
 #include <QFile>
 #include <QTextStream>
+
+#include <decoder.h>
+#include <decoderfactory.h>
+#include <output.h>
+#include <outputfactory.h>
+#include <visual.h>
+#include <visualfactory.h>
+#include <effect.h>
+#include <effectfactory.h>
+#include <qmmpui/general.h>
+#include <qmmpui/generalfactory.h>
+#include "version.h"
+
+#include "aboutdialog.h"
 
 static QString getstringFromResource(const QString& res_file)
 {
@@ -44,7 +56,7 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     licenseTextEdit->setPlainText(getstringFromResource(":COPYING"));
-    aboutTextEdit->setHtml(getstringFromResource(tr(":/html/about_en.html")));
+    aboutTextEdit->setHtml(loadAbout());
     authorsTextEdit->setPlainText(getstringFromResource(tr(":/html/authors_en.txt")));
     thanksToTextEdit->setPlainText(getstringFromResource(tr(":/html/thanks_en.txt")));
 }
@@ -58,6 +70,63 @@ void AboutDialog::accept()
     QDialog::accept();
 }
 
+QString AboutDialog::loadAbout()
+{
+    QString text;
+    text.append("<head>");
+    text.append("<META content=\"text/html; charset=UTF-8\">");
+    text.append("</head>");
+    text.append("<h3>"+tr("Qt-based Multimedia Player (Qmmp)")+"</h3>");
+    text.append("<h4>"+tr("Version:")+" "+ QMMP_STR_VERSION "</h4>");
+    text.append("<p>"+getstringFromResource(tr(":txt/description_en.txt"))+"</p>");
+    text.append("<h5>"+tr("Input plugins:")+"</h5>");
+    text.append("<ul type=\"square\">");
+    foreach(DecoderFactory *fact, *Decoder::decoderFactories())
+    {
+        text.append("<li>");
+        text.append(fact->properties().name);
+        text.append("</li>");
+    }
+    text.append("</ul>");
+    text.append("<h5>"+tr("Output plugins:")+"</h5>");
+    text.append("<ul type=\"square\">");
+    foreach(OutputFactory *fact, *Output::outputFactories())
+    {
+        text.append("<li>");
+        text.append(fact->properties().name);
+        text.append("</li>");
+    }
+    text.append("</ul>");
+    text.append("<h5>"+tr("Visual plugins:")+"</h5>");
+    text.append("<ul type=\"square\">");
+    foreach(VisualFactory *fact, *Visual::visualFactories())
+    {
+        text.append("<li>");
+        text.append(fact->properties().name);
+        text.append("</li>");
+    }
+    text.append("</ul>");
+    text.append("<h5>"+tr("Effect plugins:")+"</h5>");
+    text.append("<ul type=\"square\">");
+    foreach(EffectFactory *fact, *Effect::effectFactories())
+    {
+        text.append("<li>");
+        text.append(fact->properties().name);
+        text.append("</li>");
+    }
+    text.append("</ul>");
+    text.append("<h5>"+tr("General plugins:")+"</h5>");
+    text.append("<ul type=\"square\">");
+    foreach(GeneralFactory *fact, *General::generalFactories())
+    {
+        text.append("<li>");
+        text.append(fact->properties().name);
+        text.append("</li>");
+    }
+    text.append("</ul>");
+
+    return text;
+}
 
 
 
