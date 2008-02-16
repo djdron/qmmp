@@ -5,7 +5,11 @@ Core Developers:
 
 Plugin Developers:
 
-    Yuriy Zhuravlev <stalkerg@gmail.com> (jack plugin)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (jack & oss plugin)
+
+Artwork:
+
+    Andrey Adreev <andreev00@gmail.com>
 
 Turkish translation: 
 
