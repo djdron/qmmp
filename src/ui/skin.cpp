@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -102,8 +102,6 @@ void Skin::setSkin ( const QString& path )
     loadVolume();
     loadBalance();
     loadRegion();
-    loadColors();
-
     emit skinChanged();
 }
 
@@ -334,7 +332,10 @@ void Skin::loadPLEdit()
             break;
         }
     }
-
+    if(!m_pledit_txt.keys().contains("mbbg"))
+        m_pledit_txt["mbbg"] = m_pledit_txt["normalbg"];
+     if(!m_pledit_txt.keys().contains("mbfg"))
+        m_pledit_txt["mbfg"] = m_pledit_txt["normal"];
 }
 
 void Skin::loadEqMain()
@@ -740,32 +741,4 @@ QPixmap * Skin::getDummyPixmap(const QString& name)
     }
     qFatal("Skin:: default skin corrupted");
     return 0;
-}
-
-void Skin::loadColors()
-{
-    //extract color from image
-    QPixmap pix =  m_letters['*'];
-    QImage img = pix.toImage();
-    img = img.convertToFormat(QImage::Format_Indexed8);
-
-    QPixmap pix2 = m_letters[' '];
-    QImage img2 = pix2.toImage();
-    img2 = img2.convertToFormat(QImage::Format_Indexed8);
-    QVector<QRgb> c1 = img.colorTable ();
-    QVector<QRgb> c2 = img2.colorTable ();
-    //qDebug("%d -- %d", img.numColors (), img2.numColors ());
-    QColor color;
-    color.setNamedColor(getPLValue("normal"));
-
-    for (int i = 0; i < c1.size(); ++i)
-    {
-        if (c2.indexOf(c1[i]) == -1)
-        {
-            if(img.numColors () == img2.numColors () + 1)
-                color = QColor(c1[i]);
-            break;
-        }
-    }
-    m_scroller_color = color;
 }
