@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,7 +38,7 @@ TextScroller::TextScroller ( QWidget *parent )
 {
     pointer = this;
     m_skin = Skin::getPointer();
-    m_pixmap = QPixmap ( 154,15 );
+    m_pixmap = QPixmap ( 150,15 );
     x = 0;
     m_text = "Qt-based Multimedia Player (Qmmp " + QString(QMMP_STR_VERSION) + ")";
     m_update = FALSE;
@@ -82,15 +82,13 @@ void TextScroller::setText(const QString& text)
 
 void TextScroller::updateSkin()
 {
-    m_color.setNamedColor(m_skin->getPLValue("normal"));
+    m_color.setNamedColor(m_skin->getPLValue("mbfg"));
 }
 
 void TextScroller::readSettings()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     QString fontname = settings.value("MainWindow/Font","").toString();
-    if (fontname.isEmpty ())
-        fontname = QFont("Helvetica [Cronyx]", 9).toString();
     m_font.fromString(fontname);
 
     if (m_update)

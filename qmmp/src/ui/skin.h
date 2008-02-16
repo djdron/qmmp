@@ -123,10 +123,6 @@ public:
     {
         return m_plRegion;
     };
-    const QColor scrollerTextColor() const
-    {
-        return m_scroller_color;
-    };
 
     enum Buttons
     {
@@ -304,7 +300,6 @@ private:
     QMap<uint, QPixmap> m_parts;
     QMap<QChar, QPixmap> m_letters;
     QMap<QByteArray, QByteArray> m_pledit_txt;
-    QColor m_scroller_color;
     QPixmap m_main;
     QPixmap posbar;
     QList<QPixmap> m_numbers;
@@ -332,7 +327,6 @@ private:
     void loadVolume();
     void loadBalance();
     void loadRegion();
-    void loadColors();
     QRegion createRegion(const QString &path, const QString &key);
 
 };

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -65,8 +65,6 @@ void ListWidget::readSettings()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     QString fontname = settings.value("PlayList/Font","").toString();
-    if (fontname.isEmpty ())
-        fontname = QFont("Helvetica [Cronyx]", 10).toString();
     m_font.fromString(fontname);
 
     if (m_update)
