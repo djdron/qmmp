@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -129,15 +129,14 @@ void PlayListTitleBar::drawPixmap(int sx)
     }
     if (m_shaded)
     {
-        //draw text background
-        for (int i = 0; i < 47 + sx*5; ++i)
-        {
-            paint.drawPixmap(8+i*5,2,m_skin->getLetter(' '));
-            paint.drawPixmap(8+i*5,6,m_skin->getLetter(' '));
-        }
+        QColor col;
+        col.setNamedColor(QString(m_skin->getPLValue("mbbg")));
+        paint.setBrush(QBrush(col));
+        paint.setPen(col);
+        paint.drawRect(8,1, 235 + sx*25, 11);
         //draw text
         paint.setFont(m_font);
-        paint.setPen(QString(m_skin->getPLValue("normal")));
+        paint.setPen(QString(m_skin->getPLValue("mbfg")));
         paint.drawText(9, 11, m_truncatedText);
     }
     paint.end();
