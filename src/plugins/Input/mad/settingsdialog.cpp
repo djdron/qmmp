@@ -37,7 +37,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");
     int pos = ui.id3v1EncComboBox->findText
-        (settings.value("ID3v1_encoding","UTF-8").toString());
+        (settings.value("ID3v1_encoding","ISO-8859-1").toString());
     ui.id3v1EncComboBox->setCurrentIndex(pos);
     pos = ui.id3v2EncComboBox->findText
         (settings.value("ID3v2_encoding","UTF-8").toString());

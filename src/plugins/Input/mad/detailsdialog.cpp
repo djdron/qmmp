@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,13 +50,13 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");
     m_codec_v1 =
-        QTextCodec::codecForName(settings.value("ID3v1_encoding","UTF-8" )
+        QTextCodec::codecForName(settings.value("ID3v1_encoding", "ISO-8859-1" )
                                  .toByteArray ());
     m_codec_v2 =
-        QTextCodec::codecForName(settings.value("ID3v2_encoding","UTF-8" )
+        QTextCodec::codecForName(settings.value("ID3v2_encoding", "UTF-8" )
                                  .toByteArray ());
     if (!m_codec_v1)
-        m_codec_v1 = QTextCodec::codecForName ("UTF-8");
+        m_codec_v1 = QTextCodec::codecForName ("ISO-8859-1");
     if (!m_codec_v2)
         m_codec_v2 = QTextCodec::codecForName ("UTF-8");
 
@@ -171,6 +171,8 @@ void DetailsDialog::loadTag()
     if (tag)
     {
         bool utf = codec->name().contains("UTF");
+        if(utf)
+            codec = QTextCodec::codecForName ("UTF-8");
         TagLib::String title = tag->title();
         TagLib::String artist = tag->artist();
         TagLib::String album = tag->album();
@@ -215,12 +217,14 @@ void DetailsDialog::save()
     {
         codec = m_codec_v2;
         tag = f->ID3v2Tag(TRUE);
+
         if (codec->name().contains("UTF"))
         {
+            type = TagLib::String::UTF8;   //FIXME add utf-16 (LE, BE) support
+            codec = QTextCodec::codecForName ("UTF-8");
             TagLib::ID3v2::FrameFactory *factory = TagLib::ID3v2::FrameFactory::instance();
-            factory->setDefaultTextEncoding(TagLib::String::UTF8);
+            factory->setDefaultTextEncoding(type);
             f->setID3v2FrameFactory(factory);
-            type = TagLib::String::UTF8;
         }
     }
     if (selectedTag() == TagLib::MPEG::File::APE)
