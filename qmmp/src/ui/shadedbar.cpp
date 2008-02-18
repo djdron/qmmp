@@ -82,7 +82,6 @@ void ShadedBar::mouseMoveEvent (QMouseEvent *e)
             m_value = convert(po);
             draw();
             emit sliderMoved(m_value);
-            qDebug("%d", m_value);
         }
     }
 }
