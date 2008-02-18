@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,8 +50,6 @@ private slots:
 private:
     void loadMPEGInfo();
     uint selectedTag();
-    //void loadTag();
-    //void loadID3v2Tag();
     Ui::DetailsDialog ui;
     QString m_path;
     QTextCodec *m_codec_v1;
