@@ -53,7 +53,7 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
         QTextCodec::codecForName(settings.value("ID3v1_encoding", "ISO-8859-1" )
                                  .toByteArray ());
     m_codec_v2 =
-        QTextCodec::codecForName(settings.value("ID3v2_encoding", "UTF-8" )
+        QTextCodec::codecForName(settings.value("ID3v2_encoding","UTF-8" )
                                  .toByteArray ());
     if (!m_codec_v1)
         m_codec_v1 = QTextCodec::codecForName ("ISO-8859-1");
@@ -171,7 +171,7 @@ void DetailsDialog::loadTag()
     if (tag)
     {
         bool utf = codec->name().contains("UTF");
-        if(utf)
+        if (utf)
             codec = QTextCodec::codecForName ("UTF-8");
         TagLib::String title = tag->title();
         TagLib::String artist = tag->artist();
@@ -220,11 +220,19 @@ void DetailsDialog::save()
 
         if (codec->name().contains("UTF"))
         {
-            type = TagLib::String::UTF8;   //FIXME add utf-16 (LE, BE) support
+            type = TagLib::String::UTF8;
+            if (codec->name().contains("UTF-16"))
+                type = TagLib::String::UTF16;
+            else if (codec->name().contains("UTF-16LE"))
+                type = TagLib::String::UTF16LE;
+            else if (codec->name().contains("UTF-16BE"))
+                type = TagLib::String::UTF16BE;
+
             codec = QTextCodec::codecForName ("UTF-8");
             TagLib::ID3v2::FrameFactory *factory = TagLib::ID3v2::FrameFactory::instance();
             factory->setDefaultTextEncoding(type);
             f->setID3v2FrameFactory(factory);
+            type = TagLib::String::UTF8;
         }
     }
     if (selectedTag() == TagLib::MPEG::File::APE)
