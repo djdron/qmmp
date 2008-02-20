@@ -16,9 +16,14 @@ QMAKE_LIBDIR += ../../../../lib
 CONFIG += release \
 warn_on \
 thread \
-plugin 
+plugin \
+link_pkgconfig
+
 TEMPLATE = lib
-LIBS += -lqmmp -lasound
+LIBS += -lqmmp 
+#-lasound
+PKGCONFIG += alsa
+
 FORMS += settingsdialog.ui
 #TRANSLATIONS = translations/alsa_plugin_ru.ts
 #RESOURCES = translations/translations.qrc
