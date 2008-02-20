@@ -21,7 +21,7 @@
 #define EQWIDGET_H
 
 #include <pixmapwidget.h>
-#include <output.h>
+#include <qmmp/output.h>
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>

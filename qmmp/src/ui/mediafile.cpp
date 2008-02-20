@@ -20,7 +20,7 @@
 #include <QSettings>
 #include <QDir>
 
-#include <decoder.h>
+#include <qmmp/decoder.h>
 
 #include "mediafile.h"
 

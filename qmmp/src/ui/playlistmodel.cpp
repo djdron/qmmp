@@ -30,8 +30,8 @@
 
 #include <time.h>
 
-#include <decoder.h>
-#include <decoderfactory.h>
+#include <qmmp/decoder.h>
+#include <qmmp/decoderfactory.h>
 
 #include "fileloader.h"
 #include "playlistmodel.h"

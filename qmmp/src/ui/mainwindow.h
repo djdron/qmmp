@@ -22,12 +22,12 @@
 
 #include <QMainWindow>
 
+#include <qmmp/output.h>
+#include <qmmp/decoder.h>
+#include <qmmp/decoderfactory.h>
 
-#include "output.h"
-#include "decoder.h"
 #include "display.h"
 #include "mediafile.h"
-#include "decoderfactory.h"
 #include "titlebar.h"
 
 /**

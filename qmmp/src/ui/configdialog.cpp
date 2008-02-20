@@ -26,13 +26,13 @@
 #include <QRadioButton>
 #include <QMenu>
 
-#include <decoder.h>
-#include <output.h>
-#include <decoderfactory.h>
-#include <outputfactory.h>
-#include <visualfactory.h>
-#include <effectfactory.h>
-#include <effect.h>
+#include <qmmp/decoder.h>
+#include <qmmp/output.h>
+#include <qmmp/decoderfactory.h>
+#include <qmmp/outputfactory.h>
+#include <qmmp/visualfactory.h>
+#include <qmmp/effectfactory.h>
+#include <qmmp/effect.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 

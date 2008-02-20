@@ -1,10 +1,15 @@
+# ???? ?????? ? KDevelop ?????????? qmake.
+# ------------------------------------------- 
+# ?????????? ???????????? ???????? ???????? ???????: ./src
+# ???? - ??????????:  ../bin/mp3player
+
 include(../../qmmp.pri)
 
 FORMS += ./forms/configdialog.ui \
          ./forms/preseteditor.ui \
          ./forms/jumptotrackdialog.ui \
          ./forms/aboutdialog.ui \
-	 ./forms/addurldialog.ui
+         ./forms/addurldialog.ui
 
 HEADERS += mainwindow.h \
            fileloader.h \
@@ -106,12 +111,18 @@ SOURCES += mainwindow.cpp \
            filedialog.cpp \
            unixdomainsocket.cpp \
            commandlineoption.cpp \
-	   addurldialog.cpp \
-	   skinreader.cpp \
-	   visualmenu.cpp \
-	   titlebarcontrol.cpp \
-	   shadedvisual.cpp \
-	   shadedbar.cpp
+           addurldialog.cpp \
+           skinreader.cpp \
+           visualmenu.cpp \
+           titlebarcontrol.cpp \
+           shadedvisual.cpp \
+           shadedbar.cpp
+
+#Some conf to redirect intermediate stuff in separate dirs
+UI_DIR=./.build/ui/
+MOC_DIR=./.build/moc/
+OBJECTS_DIR=./.build/obj
+
 
 QT += network xml
 TARGET = ../../bin/qmmp
@@ -120,7 +131,7 @@ warn_on
 QMAKE_LIBDIR += ../../lib qmmpui
 LIBS += -Wl,-rpath,../lib
 LIBS += -L../../lib -lqmmp -lqmmpui
-INCLUDEPATH += ../qmmp ../
+INCLUDEPATH += ../
 RESOURCES = images/images.qrc \
             stuff.qrc
 TEMPLATE = app

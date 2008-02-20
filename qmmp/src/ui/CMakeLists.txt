@@ -19,7 +19,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 
 # libqmmp & libqmmpui
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmpui)

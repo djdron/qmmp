@@ -24,7 +24,7 @@
 #include <QMenu>
 #include <QSettings>
 
-#include <soundcore.h>
+#include <qmmp/soundcore.h>
 #include "symboldisplay.h"
 #include "skin.h"
 #include "button.h"

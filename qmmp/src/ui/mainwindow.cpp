@@ -25,13 +25,12 @@
 
 #include <math.h>
 
-#include <soundcore.h>
+#include <qmmp/soundcore.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/general.h>
 
 #include "textscroller.h"
 #include "mainwindow.h"
-#include "constants.h"
 #include "fileloader.h"
 #include "skin.h"
 #include "playlist.h"
@@ -43,7 +42,7 @@
 #include  "playlistformat.h"
 #include "jumptotrackdialog.h"
 #include "aboutdialog.h"
-#include <addurldialog.h>
+#include "addurldialog.h"
 #include "filedialog.h"
 #include "listwidget.h"
 #include "visualmenu.h"
