@@ -29,6 +29,7 @@
 #include <qmmp/soundcore.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
+#include <qmmpui/generalhandler.h>
 
 #include "pluginitem.h"
 
@@ -146,7 +147,7 @@ GeneralPluginItem::~GeneralPluginItem()
 
 void GeneralPluginItem::select(bool on)
 {
-    General::setEnabled(m_factory, on);
+    GeneralHandler::instance()->setEnabled(m_factory, on);
 }
 
 bool GeneralPluginItem::isSelected()

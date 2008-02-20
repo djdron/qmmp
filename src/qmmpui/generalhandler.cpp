@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDialog>
 #include "general.h"
 #include "generalfactory.h"
 
@@ -37,7 +38,7 @@ GeneralHandler::GeneralHandler(QObject *parent)
         {
             General *general = factory->create(parent);
             connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
-            m_generals.append(general);
+            m_generals.insert(factory, general);
         }
     }
 }
@@ -54,7 +55,7 @@ void GeneralHandler::setState(uint state)
     if (state == General::Stopped)
         m_songInfo.clear();
 
-    foreach(general, m_generals)
+    foreach(general, m_generals.values())
     {
         general->setState(state);
     }
@@ -68,31 +69,55 @@ void GeneralHandler::setSongInfo(const SongInfo &info)
     {
         m_songInfo = info;
         General *general;
-        foreach(general, m_generals)
+        foreach(general, m_generals.values())
         {
             general->setSongInfo(m_songInfo);
         }
     }
 }
 
-void GeneralHandler::updateConfig()
+void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
 {
-    while (!m_generals.isEmpty())
-        delete m_generals.takeFirst();
-
-    GeneralFactory* factory;
-    foreach(factory, *General::generalFactories())
+    if(enable == m_generals.keys().contains(factory))
+        return;
+    if(enable)
     {
-        if (General::isEnabled(factory))
+        General *general = factory->create(parent());
+        connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+        m_generals.insert(factory, general);
+        if (m_state != General::Stopped)
         {
-            General *general = factory->create(parent());
-            connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
-            m_generals.append(general);
             general->setState(m_state);
-            if (m_state != General::Stopped)
-                general->setSongInfo(m_songInfo);
+            general->setSongInfo(m_songInfo);
         }
     }
+    else
+    {
+        delete m_generals.value(factory);
+        m_generals.remove(factory);
+    }
+    General::setEnabled(factory, enable);
+}
+
+void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget)
+{
+    QDialog *dialog = factory->createConfigDialog(parentWidget);
+    if(!dialog)
+        return;
+
+    if(dialog->exec() == QDialog::Accepted && m_generals.keys().contains(factory))
+    {
+        delete m_generals.value(factory);
+        General *general = factory->create(parent());
+        connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+        m_generals[factory] = general;
+        if (m_state != General::Stopped)
+        {
+            general->setState(m_state);
+            general->setSongInfo(m_songInfo);
+        }
+    }
+    delete dialog;
 }
 
 GeneralHandler* GeneralHandler::instance()
