@@ -22,14 +22,14 @@
 #include <QFile>
 #include <QTextStream>
 
-#include <decoder.h>
-#include <decoderfactory.h>
-#include <output.h>
-#include <outputfactory.h>
-#include <visual.h>
-#include <visualfactory.h>
-#include <effect.h>
-#include <effectfactory.h>
+#include <qmmp/decoder.h>
+#include <qmmp/decoderfactory.h>
+#include <qmmp/output.h>
+#include <qmmp/outputfactory.h>
+#include <qmmp/visual.h>
+#include <qmmp/visualfactory.h>
+#include <qmmp/effect.h>
+#include <qmmp/effectfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalfactory.h>
 #include "version.h"
@@ -127,6 +127,3 @@ QString AboutDialog::loadAbout()
 
     return text;
 }
-
-
-

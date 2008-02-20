@@ -39,7 +39,7 @@
 #include "symboldisplay.h"
 #include "playlistcontrol.h"
 #include "keyboardmanager.h"
-#include <output.h>
+#include <qmmp/output.h>
 
 PlayList::PlayList ( QWidget *parent )
         : QWidget ( parent )

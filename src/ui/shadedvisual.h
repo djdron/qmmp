@@ -22,8 +22,8 @@
 
 
 #include <QPainter>
-#include <visual.h>
-#include <buffer.h>
+#include <qmmp/visual.h>
+#include <qmmp/buffer.h>
 
 class QTimer;
 class QPixmap;

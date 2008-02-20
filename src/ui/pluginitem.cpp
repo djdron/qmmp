@@ -21,12 +21,12 @@
 #include <QSettings>
 #include <QDir>
 
-#include <decoderfactory.h>
-#include <outputfactory.h>
-#include <visualfactory.h>
-#include <effectfactory.h>
-#include <effect.h>
-#include <soundcore.h>
+#include <qmmp/decoderfactory.h>
+#include <qmmp/outputfactory.h>
+#include <qmmp/visualfactory.h>
+#include <qmmp/effectfactory.h>
+#include <qmmp/effect.h>
+#include <qmmp/soundcore.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 

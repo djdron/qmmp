@@ -24,7 +24,7 @@
 #include <QSettings>
 #include <QMenu>
 
-#include <output.h>
+#include <qmmp/output.h>
 #include "skin.h"
 #include "mainvisual.h"
 #include "button.h"

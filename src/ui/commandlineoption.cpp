@@ -23,7 +23,7 @@
 
 #include "commandlineoption.h"
 #include "mainwindow.h"
-#include <soundcore.h>
+#include <qmmp/soundcore.h>
 
 
 // Command option manager methods

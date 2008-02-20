@@ -20,8 +20,8 @@
 
 #include <QAction>
 
-#include <visual.h>
-#include <visualfactory.h>
+#include <qmmp/visual.h>
+#include <qmmp/visualfactory.h>
 
 #include "pluginitem.h"
 #include "visualmenu.h"
