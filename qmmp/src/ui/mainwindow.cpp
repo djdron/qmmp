@@ -575,7 +575,6 @@ void MainWindow::showSettings()
         m_playlist->readSettings();
         TextScroller::getPointer()->readSettings();
         m_core->updateConfig();
-        m_generalHandler->updateConfig();
         m_visMenu->updateActions();
     }
     delete m_confDialog;

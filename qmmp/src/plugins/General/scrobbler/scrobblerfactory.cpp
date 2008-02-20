@@ -38,10 +38,9 @@ General *ScrobblerFactory::create(QObject *parent)
     return new Scrobbler(parent);
 }
 
-void ScrobblerFactory::showSettings(QWidget *parent)
+QDialog *ScrobblerFactory::createConfigDialog(QWidget *parent)
 {
-    SettingsDialog *dialog = new SettingsDialog(parent);
-    dialog->show();
+    return new SettingsDialog(parent);
 }
 
 void ScrobblerFactory::showAbout(QWidget *parent)

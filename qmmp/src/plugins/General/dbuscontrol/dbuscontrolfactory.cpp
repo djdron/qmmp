@@ -37,8 +37,10 @@ General *DBUSControlFactory::create(QObject *parent)
     return new DBUSControl(parent);
 }
 
-void DBUSControlFactory::showSettings(QWidget *)
-{}
+QDialog *DBUSControlFactory::createConfigDialog(QWidget *parent)
+{
+    return 0;
+}
 
 void DBUSControlFactory::showAbout(QWidget *parent)
 {

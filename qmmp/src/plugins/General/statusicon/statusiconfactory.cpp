@@ -38,10 +38,9 @@ General *StatusIconFactory::create(QObject *parent)
     return new StatusIcon(parent);
 }
 
-void StatusIconFactory::showSettings(QWidget *parent)
+QDialog *StatusIconFactory::createConfigDialog(QWidget *parent)
 {
-    SettingsDialog *s = new SettingsDialog(parent);
-    s->show();
+    return new SettingsDialog(parent);
 }
 
 void StatusIconFactory::showAbout(QWidget *parent)

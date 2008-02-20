@@ -39,7 +39,8 @@ public:
     ~GeneralHandler();
 
     void setSongInfo(const SongInfo &info);
-    void updateConfig();
+    void setEnabled(GeneralFactory* factory, bool enable);
+    void showSettings(GeneralFactory* factory, QWidget* parentWidget);
     static GeneralHandler* instance();
 
 signals:
@@ -59,7 +60,7 @@ private slots:
 
 private:
     void connectSignals(General*);
-    QList <General*> m_generals;
+    QMap <GeneralFactory*, General*> m_generals;
     SongInfo m_songInfo;
     uint m_state;
     static GeneralHandler* m_instance;

@@ -35,6 +35,7 @@
 #include <qmmp/effect.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
+#include <qmmpui/generalhandler.h>
 
 
 #include "skin.h"
@@ -438,7 +439,7 @@ void ConfigDialog::showPluginSettings()
         int row = ui.generalPluginTable->currentRow ();
         if ( m_generalPluginItems.isEmpty() || row < 0 )
             return;
-        m_generalPluginItems.at(row)->factory()->showSettings ( this );
+        GeneralHandler::instance()->showSettings(m_generalPluginItems.at(row)->factory(), this);
         break;
     }
     }
