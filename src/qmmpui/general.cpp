@@ -62,14 +62,12 @@ static void checkFactories()
 }
 
 General::General(QObject *parent)
- : QObject(parent)
-{
-}
+        : QObject(parent)
+{}
 
 
 General::~General()
-{
-}
+{}
 
 void General::setState(const uint&)
 {}
@@ -84,6 +82,9 @@ QList<GeneralFactory*> *General::generalFactories()
     return factories;
 }
 
+void General::updateVolume(int left, int right)
+{}
+
 QStringList General::generalFiles()
 {
     checkFactories();
@@ -93,14 +94,14 @@ QStringList General::generalFiles()
 void General::setEnabled(GeneralFactory* factory, bool enable)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if (!factories->contains(factory))
         return;
 
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QStringList genList = settings.value("General/plugin_files").toStringList();
 
-    if(enable)
+    if (enable)
     {
         if (!genList.contains(name))
             genList << name;
@@ -113,7 +114,7 @@ void General::setEnabled(GeneralFactory* factory, bool enable)
 bool General::isEnabled(GeneralFactory* factory)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if (!factories->contains(factory))
         return FALSE;
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
@@ -155,3 +156,9 @@ void General::toggleVisibility()
 {
     emit commandCalled(ToggleVisibility);
 }
+
+void General::setVolume(int left, int right)
+{
+    emit volumeChanged(left, right);
+}
+

@@ -58,6 +58,7 @@ public:
 
     virtual void setState(const uint &state);
     virtual void setSongInfo(const SongInfo &song);
+    virtual void updateVolume(int left, int right);
 
     //static methods
     static QList<GeneralFactory*> *generalFactories();
@@ -67,6 +68,7 @@ public:
 
 signals:
     void commandCalled(uint command);
+    void volumeChanged(int left, int right);
 
 public slots:
     void play();
@@ -76,6 +78,7 @@ public slots:
     void previous();
     void exit();
     void toggleVisibility();
+    void setVolume(int left, int right);
 
 private:
     QMap <uint, QString> m_strValues;

@@ -148,6 +148,8 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
     connect(m_generalHandler, SIGNAL(pauseCalled()), SLOT(pause()));
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
+    connect(m_generalHandler, SIGNAL(volumeChanged(int, int)),
+            m_core, SLOT(setVolume(int, int)));
 
     m_playListModel->readSettings();
     char buf[PATH_MAX + 1];
@@ -356,6 +358,11 @@ void MainWindow::showOutputState(const OutputState &st)
     case OutputState::Info:
     {
         m_elapsed = st.elapsedSeconds();
+        break;
+    }
+    case OutputState::Volume:
+    {
+        m_generalHandler->updateVolume(st.leftVolume(), st.rightVolume());
     }
     }
 

@@ -39,6 +39,7 @@ public:
     ~GeneralHandler();
 
     void setSongInfo(const SongInfo &info);
+    void updateVolume(int left, int right);
     void setEnabled(GeneralFactory* factory, bool enable);
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
     static GeneralHandler* instance();
@@ -51,6 +52,7 @@ signals:
     void previousCalled();
     void exitCalled();
     void toggleVisibilityCalled();
+    void volumeChanged(int left, int right);
 
 public slots:
     void setState(uint state);
@@ -63,6 +65,7 @@ private:
     QMap <GeneralFactory*, General*> m_generals;
     SongInfo m_songInfo;
     uint m_state;
+    int m_left, m_right;
     static GeneralHandler* m_instance;
 
 };
