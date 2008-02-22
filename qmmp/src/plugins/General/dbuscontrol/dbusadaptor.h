@@ -41,6 +41,7 @@ public slots:
     void previous();
     void pause();
     void exit();
+    void setVolume(int, int);
 
 };
 

@@ -59,4 +59,7 @@ void DBUSAdaptor::exit()
     QMetaObject::invokeMethod(parent(), "exit");
 }
 
-
+void DBUSAdaptor::setVolume(int left, int right)
+{
+    QMetaObject::invokeMethod(parent(), "setVolume", Q_ARG(int, left), Q_ARG(int, right));
+}

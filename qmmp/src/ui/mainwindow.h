@@ -65,6 +65,7 @@ public:
     SoundCore* soundCore()const;
     MainDisplay* mainDisplay()const;
     bool processCommandArgs(const QStringList &list,const QString& cwd);
+
 public slots:
     void previous();
     void play();

@@ -30,6 +30,8 @@ GeneralHandler::GeneralHandler(QObject *parent)
         : QObject(parent)
 {
     m_instance = this;
+    m_left = 0;
+    m_right = 0;
     m_state = General::Stopped;
     GeneralFactory* factory;
     foreach(factory, *General::generalFactories())
@@ -38,6 +40,7 @@ GeneralHandler::GeneralHandler(QObject *parent)
         {
             General *general = factory->create(parent);
             connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+            connect(general, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
             m_generals.insert(factory, general);
         }
     }
@@ -76,15 +79,28 @@ void GeneralHandler::setSongInfo(const SongInfo &info)
     }
 }
 
+void GeneralHandler::updateVolume(int left, int right)
+{
+    m_left = left;
+    m_right = right;
+    General *general;
+    foreach(general, m_generals.values())
+    {
+        general->updateVolume(left, right);
+    }
+}
+
 void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
 {
-    if(enable == m_generals.keys().contains(factory))
+    if (enable == m_generals.keys().contains(factory))
         return;
-    if(enable)
+    if (enable)
     {
         General *general = factory->create(parent());
         connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+        connect(general, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
         m_generals.insert(factory, general);
+        general->updateVolume(m_left, m_right);
         if (m_state != General::Stopped)
         {
             general->setState(m_state);
@@ -102,15 +118,17 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
 void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget)
 {
     QDialog *dialog = factory->createConfigDialog(parentWidget);
-    if(!dialog)
+    if (!dialog)
         return;
 
-    if(dialog->exec() == QDialog::Accepted && m_generals.keys().contains(factory))
+    if (dialog->exec() == QDialog::Accepted && m_generals.keys().contains(factory))
     {
         delete m_generals.value(factory);
         General *general = factory->create(parent());
         connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+        connect(general, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
         m_generals[factory] = general;
+        general->updateVolume(m_left, m_right);
         if (m_state != General::Stopped)
         {
             general->setState(m_state);

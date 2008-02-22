@@ -51,13 +51,7 @@ public:
 
     ~SoundCore();
 
-
-    //control
-
-    /*!
-    *  This function plays file with given path, returns \b TRUE if all is OK, otherwise \b FALSE
-    */
-    bool play(const QString &source);
+    // properties
 
     /*!
     *  Returns the playback error status.
@@ -65,23 +59,6 @@ public:
     *  the reason why the operation failed.
     */
     uint error();
-
-    /*!
-    *  Stops playing
-    */
-    void stop();
-
-    /*!
-    *  Pauses/resumes playing
-    */
-    void pause();
-
-    /*!
-    *This function sets the current play position to \b pos
-    */
-    void seek(int pos);
-
-    // properties
 
     /*!
     * Returns length in seconds
@@ -119,12 +96,6 @@ public:
 
     //volume
 
-    /*!
-    * Sets volume. \b L - volume of left channel. \b R - volume of right channel.
-    * \b L and \b R should be 0..100
-    */
-    void setVolume(int L, int R);
-    
     void volume(int*, int*);
 
     //config
@@ -161,6 +132,38 @@ public:
     void removeVisual(Visual *visual);
 
     static SoundCore* instance();
+
+public slots:
+
+    /*!
+    * Sets volume. \b L - volume of left channel. \b R - volume of right channel.
+    * \b L and \b R should be 0..100
+    */
+    void setVolume(int L, int R);
+
+    //control
+
+    /*!
+    *  This function plays file with given path, returns \b TRUE if all is OK, otherwise \b FALSE
+    */
+    bool play(const QString &source);
+
+
+    /*!
+    *  Stops playing
+    */
+    void stop();
+
+    /*!
+    *  Pauses/resumes playing
+    */
+    void pause();
+
+    /*!
+    *This function sets the current play position to \b pos
+    */
+    void seek(int pos);
+
 
 signals:
 
