@@ -93,7 +93,7 @@
         <bool>false</bool>
        </property>
        <property name="currentRow" >
-        <number>0</number>
+        <number>-1</number>
        </property>
        <item>
         <property name="text" >
@@ -132,7 +132,7 @@
          <string>Connectivity</string>
         </property>
         <property name="icon" >
-         <iconset resource="../images/images.qrc" >:/plugins.png</iconset>
+         <iconset resource="../images/images.qrc" >:/network.png</iconset>
         </property>
        </item>
       </widget>
