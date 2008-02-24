@@ -631,9 +631,10 @@ void MainWindow::createActions()
     m_mainMenu->addMenu(m_visMenu);
 
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(tr("&Settings"),this, SLOT(showSettings()), tr("Ctrl+P"));
+    m_mainMenu->addAction(tr("&Settings"), this, SLOT(showSettings()), tr("Ctrl+P"));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(tr("&About"),this, SLOT(about()));
+    m_mainMenu->addAction(tr("&About"), this, SLOT(about()));
+    m_mainMenu->addAction(tr("&About Qt"), qApp, SLOT(aboutQt()));
     Dock::getPointer()->addActions(m_mainMenu->actions());
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Exit"),this, SLOT(close ()), tr("Ctrl+Q"));
