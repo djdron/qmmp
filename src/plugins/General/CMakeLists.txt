@@ -1,6 +1,7 @@
 SET(USE_DBUS TRUE CACHE BOOL "enable/disable dbus plugin")
 SET(USE_SCROBBLER TRUE CACHE BOOL "enable/disable scrobbler plugin")
 SET(USE_STATICON TRUE CACHE BOOL "enable/disable status icon plugin")
+SET(USE_NOTIFIER TRUE CACHE BOOL "enable/disable notifier plugin")
 
 IF(USE_DBUS)
 MESSAGE(STATUS "DBUS ON")
@@ -22,3 +23,10 @@ add_subdirectory(statusicon)
 ELSE(USE_STATICON)
 MESSAGE( STATUS "STATICON OFF")
 ENDIF(USE_STATICON)
+
+IF(USE_NOTIFIER)
+MESSAGE(STATUS "NOTIFIER ON")
+add_subdirectory(notifier)
+ELSE(USE_NOTIFIER)
+MESSAGE(STATUS "NOTIFIER OFF")
+ENDIF(USE_NOTIFIER)

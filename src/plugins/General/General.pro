@@ -1,4 +1,5 @@
 SUBDIRS += statusicon \
            scrobbler \
-           dbuscontrol
+           dbuscontrol \
+           notifier
 TEMPLATE = subdirs
