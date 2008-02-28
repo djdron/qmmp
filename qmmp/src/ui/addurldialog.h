@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,7 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
- 
+
 #ifndef ADDURLDIALOG_H
 #define ADDURLDIALOG_H
 
@@ -34,18 +34,19 @@ class PlayListModel;
 
 class AddUrlDialog : public QDialog , private Ui::AddUrlDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 public:
     static void popup(QWidget* parent ,PlayListModel*);
 protected:
-  AddUrlDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
-  ~AddUrlDialog();
+    AddUrlDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
+    ~AddUrlDialog();
 protected slots:
-  virtual void accept();
+    virtual void accept();
 private:
     void setModel(PlayListModel*);
     static QPointer<AddUrlDialog> instance;
     PlayListModel* m_model;
+    QStringList m_history;
 
 };
 #endif //ADDURLDIALOG_H
