@@ -26,7 +26,7 @@ SET(QT_INCLUDES
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # alsa
 PKGCONFIG(alsa ALSA_INCLUDE_DIR ALSA_LINK_DIR ALSA_LINK_FLAGS ALSA_CFLAGS)
