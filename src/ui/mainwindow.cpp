@@ -335,10 +335,10 @@ void MainWindow::showOutputState(const OutputState &st)
                 info.setValue(SongInfo::GENRE, tag->genre());
                 info.setValue(SongInfo::YEAR, tag->year());
                 info.setValue(SongInfo::TRACK, tag->track());
-                info.setValue(SongInfo::LENGTH, tag->length());
             }
             else
                 info.setValue(SongInfo::TITLE, m_playlist->currentItem()->title());
+            info.setValue(SongInfo::LENGTH, (uint) m_playlist->currentItem()->length());
             info.setValue(SongInfo::STREAM,
                           m_playlist->currentItem()->path().startsWith("http://"));
             m_generalHandler->setSongInfo(info);
