@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,46 +18,54 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QSettings>
+#include <QDir>
 #include "addurldialog.h"
-
 #include "playlistmodel.h"
+
+#define HISTORY_SIZE 10
 
 AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(parent,f)
 {
-  setupUi(this);
-  setAttribute(Qt::WA_DeleteOnClose);
+    setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_history = settings.value("URLDialog/history").toStringList();
+    urlComboBox->addItems(m_history);
 }
 
 AddUrlDialog::~AddUrlDialog()
-{}
-
-
+{
+    if ( m_history.size() > HISTORY_SIZE)
+        m_history.removeLast();
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.setValue("URLDialog/history", m_history);
+}
 
 QPointer<AddUrlDialog> AddUrlDialog::instance = 0;
 
 void AddUrlDialog::popup(QWidget* parent,PlayListModel* model )
 {
-    if(!instance) 
+    if (!instance)
     {
         instance = new AddUrlDialog(parent);
         instance->setModel(model);
     }
-    
     instance->show();
     instance->raise();
 }
 
 void AddUrlDialog::accept( )
 {
-    if(!urlComboBox->currentText().isEmpty())
+    if (!urlComboBox->currentText().isEmpty())
     {
         QString s = urlComboBox->currentText();
-        if(!s.startsWith("http://"))
+        if (!s.startsWith("http://"))
             s.prepend("http://");
-        
         m_model->addFile(s);
+        m_history.removeAll(s);
+        m_history.prepend(s);
     }
-    
     QDialog::accept();
 }
 
