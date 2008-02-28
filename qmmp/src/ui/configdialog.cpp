@@ -62,6 +62,7 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
     connect (this, SIGNAL(accepted()),SLOT(saveSettings()));
     connect (ui.inputPluginTable, SIGNAL(cellPressed(int, int)), SLOT(updateButtons()));
     connect (ui.outputPluginTable, SIGNAL(cellPressed(int, int)), SLOT(updateButtons()));
+    connect (ui.visualPluginTable, SIGNAL(cellPressed(int, int)), SLOT(updateButtons()));
     connect (ui.generalPluginTable, SIGNAL(cellPressed(int, int)), SLOT(updateButtons()));
     connect (ui.effectPluginTable, SIGNAL(cellPressed(int, int)), SLOT(updateButtons()));
     connect (ui.pluginsTab, SIGNAL(currentChanged(int)), SLOT(updateButtons()));
