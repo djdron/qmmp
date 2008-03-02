@@ -77,3 +77,9 @@ PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
 
 PopupWidget::~PopupWidget()
 {}
+
+void PopupWidget::mousePressEvent (QMouseEvent *)
+{
+    deleteLater();
+}
+
