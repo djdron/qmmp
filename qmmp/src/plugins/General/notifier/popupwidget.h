@@ -49,6 +49,8 @@ public:
         CENTER
     };
 
+virtual void mousePressEvent (QMouseEvent *);
+
 };
 
 #endif
