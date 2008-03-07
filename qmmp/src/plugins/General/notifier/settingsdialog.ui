@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>268</width>
-    <height>273</height>
+    <width>278</width>
+    <height>355</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -14,172 +14,200 @@
   </property>
   <layout class="QVBoxLayout" >
    <item>
-    <widget class="QGroupBox" name="groupBox_4" >
+    <widget class="QGroupBox" name="groupBox_2" >
      <property name="title" >
-      <string>General</string>
+      <string>Psi Notification</string>
      </property>
-     <widget class="QLabel" name="label_3" >
-      <property name="geometry" >
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>141</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text" >
-       <string>Message delay, ms:</string>
-      </property>
-      <property name="alignment" >
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="messageDelaySpinBox" >
-      <property name="geometry" >
-       <rect>
-        <x>140</x>
-        <y>30</y>
-        <width>71</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="minimum" >
-       <number>100</number>
-      </property>
-      <property name="maximum" >
-       <number>10000</number>
-      </property>
-      <property name="singleStep" >
-       <number>100</number>
-      </property>
-      <property name="value" >
-       <number>1000</number>
-      </property>
-     </widget>
+     <layout class="QVBoxLayout" >
+      <item>
+       <widget class="QCheckBox" name="psiCheckBox" >
+        <property name="text" >
+         <string>Enable Psi notification</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Position</string>
+      <string>Desktop Notification</string>
      </property>
      <layout class="QGridLayout" >
-      <item row="0" column="0" >
-       <widget class="QPushButton" name="topLeftButton" >
+      <item row="0" column="0" colspan="2" >
+       <widget class="QCheckBox" name="desktopCheckBox" >
         <property name="text" >
-         <string/>
-        </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QPushButton" name="topButton" >
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" >
-       <widget class="QPushButton" name="topRightButton" >
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
+         <string>Enable desktop notification</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0" >
-       <widget class="QPushButton" name="leftButton" >
+       <widget class="QLabel" name="label_3" >
         <property name="text" >
-         <string/>
+         <string>Message delay, ms:</string>
         </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2" >
-       <widget class="QPushButton" name="rightButton" >
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QPushButton" name="bottomLeftButton" >
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QPushButton" name="bottomButton" >
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" >
-       <widget class="QPushButton" name="bottomRightButton" >
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="checkable" >
-         <bool>true</bool>
-        </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
       <item row="1" column="1" >
-       <widget class="QPushButton" name="centerButton" >
-        <property name="text" >
-         <string/>
+       <widget class="QSpinBox" name="messageDelaySpinBox" >
+        <property name="minimum" >
+         <number>100</number>
         </property>
-        <property name="checkable" >
-         <bool>true</bool>
+        <property name="maximum" >
+         <number>10000</number>
         </property>
-        <property name="autoExclusive" >
-         <bool>true</bool>
+        <property name="singleStep" >
+         <number>100</number>
+        </property>
+        <property name="value" >
+         <number>1000</number>
         </property>
        </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Position</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <layout class="QGridLayout" >
+        <item row="0" column="0" >
+         <widget class="QPushButton" name="topLeftButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <widget class="QPushButton" name="topButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2" >
+         <widget class="QPushButton" name="topRightButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QPushButton" name="leftButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QPushButton" name="centerButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2" >
+         <widget class="QPushButton" name="rightButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" >
+         <widget class="QPushButton" name="bottomLeftButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" >
+         <widget class="QPushButton" name="bottomButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2" >
+         <widget class="QPushButton" name="bottomRightButton" >
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="1" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>

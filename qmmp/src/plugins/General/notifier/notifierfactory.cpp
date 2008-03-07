@@ -46,7 +46,7 @@ QDialog *NotifierFactory::createConfigDialog(QWidget *parent)
 void NotifierFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Notifier Plugin"),
-                        tr("Qmmp Desktop Notifier Plugin")+"\n"+
+                        tr("Qmmp Notifier Plugin")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 

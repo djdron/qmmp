@@ -43,6 +43,8 @@ public:
 
 private:
     QPointer<PopupWidget> m_popupWidget;
+    bool m_desktop;
+    bool m_psi;
 
 };
 
