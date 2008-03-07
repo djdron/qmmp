@@ -44,6 +44,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
     m_buttons.value(pos)->setChecked(TRUE);
+    ui.psiCheckBox->setChecked(settings.value("psi_notification", FALSE).toBool());
+    ui.desktopCheckBox->setChecked(settings.value("desktop_notification", TRUE).toBool());
     settings.endGroup();
     connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
 }
@@ -64,6 +66,8 @@ void SettingsDialog::writeSettings()
             pos = m_buttons.key(button);
     }
     settings.setValue("message_pos", pos);
+    settings.setValue("psi_notification", ui.psiCheckBox->isChecked());
+    settings.setValue("desktop_notification", ui.desktopCheckBox->isChecked());
     settings.endGroup();
     accept();
 }
