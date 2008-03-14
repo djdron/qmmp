@@ -1,6 +1,9 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
+ *                                                                         *
+ *   Based on Promoe, an XMMS2 Client                                      *
+ *   Copyright (C) 2005-2006 by XMMS2 Team                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,6 +20,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef SKIN_H
 #define SKIN_H
 
@@ -25,10 +29,6 @@
 #include <QPixmap>
 #include <QDir>
 #include <QRegion>
-
-/*
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 
 
 class Skin : public QObject

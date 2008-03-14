@@ -2,11 +2,43 @@ Core Developers:
 
     Ilya Kotov <forkotov02@hotmail.ru> (idea and base code)
     Vladimir Kuznetsov <vovanec@gmail.com> (look&feel and many improvements)
-    
+
 Plugin Developers:
 
-    Yuriy Zhuravlev <stalkerg@gmail.com> (jack plugin)
-    
+    Yuriy Zhuravlev <stalkerg@gmail.com> (jack and oss plugins)
+
+Artwork:
+
+    Andrey Adreev <andreev00@gmail.com>
+
+Translators:
+
+
 Thanks to:
 
     Vadim Kalinnikov <moose@ylsoftware.com> (project hosting)
+
+Based on:
+
+Mq3 - simple mp3 player using Qt (c) 2000
+
+    Brad Hughes <bhughes@trolltech.com>
+
+Promoe - XMMS2 Client (c) 2005-2006
+
+    Tobias Bengtsson <tobbe@tobbe.nu>
+    Chris Gilbert <neovanglist@neovanglist.net>
+    Jonne Lehtinen <jonne.lehtinen@tut.fi>
+    Tobias Rundström <tru@xmms.org>
+    Daniel Svensson <daniel@nittionio.nu>
+
+EQ - A graphical equalizer plugin for XMMS (C) 2002-2006
+
+    Felipe Rivera <liebremx at users.sourceforge.net>
+
+Iterative implementation of a FFT (C) 1999
+
+    Richard Boulton <richard@tartarus.org>
+
+
+
