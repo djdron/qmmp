@@ -124,7 +124,7 @@ void SkinReader::unpackSkin(const QString &path)
     foreach(QFileInfo file, f)
         dir.remove(file.fileName());
     //unpack
-    if (path.endsWith(".tgz") || path.endsWith(".tar.gz"))
+    if (path.endsWith(".tgz") || path.endsWith(".tar.gz") || path.endsWith(".tar.bz2"))
         untar(path, QDir::homePath() +"/.qmmp/cache/skin", FALSE);
     if (path.endsWith(".zip") || path.endsWith(".wsz"))
         unzip(path, QDir::homePath() +"/.qmmp/cache/skin", FALSE);
