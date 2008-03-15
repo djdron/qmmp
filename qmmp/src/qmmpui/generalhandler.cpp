@@ -138,6 +138,17 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
     delete dialog;
 }
 
+bool GeneralHandler::visibilityControl()
+{
+    GeneralFactory* factory;
+    foreach(factory, *General::generalFactories())
+    {
+        if (General::isEnabled(factory) && factory->properties().visibilityControl)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 GeneralHandler* GeneralHandler::instance()
 {
     return m_instance;

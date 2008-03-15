@@ -34,6 +34,7 @@ struct GeneralProperties
     QString name;
     bool hasAbout;
     bool hasSettings;
+    bool visibilityControl;
 };
 
 class GeneralFactory

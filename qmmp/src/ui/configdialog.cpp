@@ -122,6 +122,8 @@ void ConfigDialog::readSettings()
     ui.proxyUserLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
     ui.proxyPasswLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
 
+    ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", FALSE).toBool());
+    ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", FALSE).toBool());
     ui.softVolumeCheckBox->setChecked(settings.value("Volume/software_volume", FALSE).toBool());
 }
 
@@ -130,6 +132,7 @@ void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previo
     if (!current)
         current = previous;
     ui.stackedWidget->setCurrentIndex (ui.contentsWidget->row (current));
+    ui.visibilityGroupBox->setEnabled(GeneralHandler::instance()->visibilityControl());
 }
 
 void ConfigDialog::changeSkin()
@@ -533,6 +536,8 @@ void ConfigDialog::saveSettings()
     settings.setValue ("Proxy/user",ui.proxyUserLineEdit->text());
     settings.setValue ("Proxy/passw",ui.proxyPasswLineEdit->text());
     settings.setValue ("Volume/software_volume", ui.softVolumeCheckBox->isChecked());
+    settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
+    settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
 }
 
 void ConfigDialog::updateButtons()

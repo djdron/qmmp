@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -155,6 +155,8 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
     char buf[PATH_MAX + 1];
     QString cwd = QString::fromLocal8Bit(getcwd(buf,PATH_MAX));
     processCommandArgs(args,cwd);
+    if(m_startHidden && m_generalHandler->visibilityControl())
+        toggleVisibility();
 }
 
 
@@ -532,8 +534,10 @@ void MainWindow::readSettings()
         move(settings.value("pos", QPoint(100, 100)).toPoint());
         //last directory
         m_lastDir = settings.value("last_dir","/").toString();
+        m_startHidden = settings.value("start_hidden", FALSE).toBool();
         settings.endGroup();
         show();
+
         //visibility
         m_playlist->setVisible(settings.value("Playlist/visible",TRUE).toBool());
         m_equalizer->setVisible(settings.value("Equalizer/visible",TRUE).toBool());
@@ -551,6 +555,7 @@ void MainWindow::readSettings()
 
         m_update = TRUE;
     }
+    m_hideOnClose = settings.value("MainWindow/hide_on_close", FALSE).toBool();
 }
 
 void MainWindow::writeSettings()
@@ -825,10 +830,10 @@ void MainWindow::jumpToFile()
 
 void MainWindow::handleCloseRequest()
 {
-    //if (m_hide_on_titlebar_close && m_tray->isVisible())
-    /*toggleVisibility();
-    else*/
-    QApplication::closeAllWindows();
+    if (m_hideOnClose && m_generalHandler->visibilityControl())
+        toggleVisibility();
+    else
+        QApplication::closeAllWindows();
 }
 
 void MainWindow::addUrl( )

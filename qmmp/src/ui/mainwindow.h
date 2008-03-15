@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -132,7 +132,7 @@ private:
     Skin *m_skin;
     QString m_playlistName;
     JumpToTrackDialog* m_jumpDialog;
-    bool m_hide_on_titlebar_close;
+    bool m_hideOnClose, m_startHidden;
     int m_elapsed;
     VisualMenu *m_visMenu;
     CommandLineOptionManager* m_option_manager;
