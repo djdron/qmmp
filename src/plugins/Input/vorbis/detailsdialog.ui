@@ -5,25 +5,36 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>536</width>
-    <height>375</height>
+    <width>545</width>
+    <height>374</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Details</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>8</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label_28" >
+     <property name="text" >
+      <string>File path:</string>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="3" >
+    <widget class="QLineEdit" name="pathLineEdit" >
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item rowspan="2" row="1" column="0" colspan="2" >
     <widget class="QGroupBox" name="groupBox" >
      <property name="minimumSize" >
       <size>
-       <width>220</width>
+       <width>0</width>
        <height>16</height>
       </size>
      </property>
@@ -31,10 +42,22 @@
       <string>Ogg Vorbis Info</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>8</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>8</number>
+      </property>
+      <property name="rightMargin" >
+       <number>8</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>8</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>6</number>
+      </property>
+      <property name="verticalSpacing" >
        <number>6</number>
       </property>
       <item row="2" column="1" >
@@ -123,10 +146,22 @@
          <set>Qt::AlignHCenter</set>
         </property>
         <layout class="QGridLayout" >
-         <property name="margin" >
+         <property name="leftMargin" >
           <number>8</number>
          </property>
-         <property name="spacing" >
+         <property name="topMargin" >
+          <number>8</number>
+         </property>
+         <property name="rightMargin" >
+          <number>8</number>
+         </property>
+         <property name="bottomMargin" >
+          <number>8</number>
+         </property>
+         <property name="horizontalSpacing" >
+          <number>6</number>
+         </property>
+         <property name="verticalSpacing" >
           <number>6</number>
          </property>
          <item row="1" column="1" >
@@ -199,49 +234,10 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="1" colspan="3" >
-    <widget class="QLineEdit" name="pathLineEdit" >
-     <property name="readOnly" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label_28" >
-     <property name="text" >
-      <string>File path:</string>
-     </property>
-     <property name="alignment" >
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3" >
-    <widget class="QPushButton" name="pushButton_3" >
-     <property name="text" >
-      <string>Close</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>111</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="1" column="2" colspan="2" >
     <widget class="QGroupBox" name="groupBox_2" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>5</vsizetype>
+      <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -250,13 +246,25 @@
       <string>Ogg Vorbis Tag</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="margin" >
+      <property name="leftMargin" >
        <number>8</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin" >
+       <number>8</number>
+      </property>
+      <property name="rightMargin" >
+       <number>8</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>8</number>
+      </property>
+      <property name="horizontalSpacing" >
        <number>6</number>
       </property>
-      <item row="6" column="1" colspan="2" >
+      <property name="verticalSpacing" >
+       <number>6</number>
+      </property>
+      <item row="6" column="1" >
        <widget class="QPushButton" name="saveButton" >
         <property name="enabled" >
          <bool>false</bool>
@@ -275,7 +283,7 @@
          <string>Track number:</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -288,7 +296,7 @@
          <string>Year:</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -298,7 +306,7 @@
          <string>Genre:</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -308,7 +316,7 @@
          <string>Comment:</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -318,7 +326,7 @@
          <string>Album:</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -328,7 +336,7 @@
          <string>Artist:</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -338,7 +346,7 @@
          <string>Title:</string>
         </property>
         <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -358,6 +366,26 @@
        <widget class="QLineEdit" name="genreLineEdit" />
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>111</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="pushButton_3" >
+     <property name="text" >
+      <string>Close</string>
+     </property>
     </widget>
    </item>
   </layout>
