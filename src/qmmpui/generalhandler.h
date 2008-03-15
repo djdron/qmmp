@@ -42,6 +42,7 @@ public:
     void updateVolume(int left, int right);
     void setEnabled(GeneralFactory* factory, bool enable);
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
+    bool visibilityControl();
     static GeneralHandler* instance();
 
 signals:

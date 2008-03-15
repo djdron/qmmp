@@ -30,6 +30,7 @@ const GeneralProperties NotifierFactory::properties() const
     properties.name = tr("Notifier Plugin");
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
+    properties.visibilityControl = FALSE;
     return properties;
 }
 

@@ -691,14 +691,37 @@
           </widget>
          </item>
          <item>
+          <widget class="QGroupBox" name="visibilityGroupBox" >
+           <property name="title" >
+            <string>Visibility Control</string>
+           </property>
+           <layout class="QVBoxLayout" >
+            <item>
+             <widget class="QCheckBox" name="hideOnCloseCheckBox" >
+              <property name="text" >
+               <string>Hide on close</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="hiddenCheckBox" >
+              <property name="text" >
+               <string>Start hidden</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
           <spacer>
            <property name="orientation" >
             <enum>Qt::Vertical</enum>
            </property>
            <property name="sizeHint" >
             <size>
-             <width>20</width>
-             <height>251</height>
+             <width>387</width>
+             <height>151</height>
             </size>
            </property>
           </spacer>

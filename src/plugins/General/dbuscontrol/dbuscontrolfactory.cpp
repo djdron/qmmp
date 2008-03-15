@@ -29,6 +29,7 @@ const GeneralProperties DBUSControlFactory::properties() const
     properties.name = tr("D-Bus Plugin");
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
+    properties.visibilityControl = FALSE;
     return properties;
 }
 

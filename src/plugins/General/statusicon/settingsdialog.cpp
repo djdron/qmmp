@@ -32,7 +32,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.messageCheckBox->setChecked(settings.value("show_message",TRUE).toBool());
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     ui.toolTipCheckBox->setChecked(settings.value("show_tooltip",FALSE).toBool());
-    ui.hideToTrayRadioButton->setChecked(settings.value("hide_on_close", FALSE).toBool());
     settings.endGroup();
     connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
 }
@@ -48,7 +47,6 @@ void SettingsDialog::writeSettings()
     settings.setValue ("show_message", ui.messageCheckBox->isChecked());
     settings.setValue ("message_delay", ui.messageDelaySpinBox->value());
     settings.setValue ("show_tooltip", ui.toolTipCheckBox->isChecked());
-    settings.setValue ("hide_on_close", ui.hideToTrayRadioButton->isChecked());
     settings.endGroup();
     accept();
 }
