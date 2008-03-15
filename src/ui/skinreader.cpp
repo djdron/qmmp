@@ -93,7 +93,7 @@ void SkinReader::generateThumbs()
                    qPrintable(fileInfo.fileName ()));
             QString name = fileInfo.fileName ().toLower();
 
-            if (name.endsWith(".tgz") || name.endsWith(".tar.gz"))
+            if (name.endsWith(".tgz") || name.endsWith(".tar.gz") || name.endsWith(".tar.bz2"))
                 untar(fileInfo.filePath (), cache_dir.absolutePath (), TRUE);
             if (name.endsWith(".zip") || name.endsWith(".wsz"))
                 unzip(fileInfo.filePath (), cache_dir.absolutePath (), TRUE);
