@@ -26,16 +26,17 @@
 DBUSControl::DBUSControl(Control *control, QObject *parent)
         : General(parent)
 {
-    m_adaptor = new DBUSAdaptor(control);
+    new DBUSAdaptor(control, this);
     QDBusConnection connection = QDBusConnection::sessionBus();
-    connection.registerObject("/Qmmp", control);
+    connection.registerObject("/Qmmp", this);
     connection.registerService("org.qmmp.dbus");
+    m_left = 0;
+    m_right = 0;
 }
 
 
 DBUSControl::~DBUSControl()
 {
-    delete m_adaptor;
 }
 
 void DBUSControl::setState(const uint &state)
@@ -60,3 +61,20 @@ void DBUSControl::setState(const uint &state)
 void DBUSControl::setSongInfo(const SongInfo&)
 {
 }
+
+void DBUSControl::setVolume(int left, int right)
+{
+    m_left = left;
+    m_right = right;
+}
+
+int DBUSControl::leftVolume()
+{
+    return m_left;
+}
+
+int DBUSControl::rightVolume()
+{
+    return m_right;
+}
+
