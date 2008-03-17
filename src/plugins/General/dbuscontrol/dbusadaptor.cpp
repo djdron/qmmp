@@ -17,49 +17,83 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#include <qmmpui/control.h>
+
 #include "dbusadaptor.h"
 
-DBUSAdaptor::DBUSAdaptor(QObject *parent)
- : QDBusAbstractAdaptor(parent)
+DBUSAdaptor::DBUSAdaptor(Control *ctrl, QObject *parent)
+        : QDBusAbstractAdaptor(parent)
 {
+    m_control = ctrl;
     setAutoRelaySignals(TRUE);
 }
 
 DBUSAdaptor::~DBUSAdaptor()
+{}
+
+int DBUSAdaptor::volume()
 {
+    int left, right;
+    QMetaObject::invokeMethod(parent(), "leftVolume", Q_RETURN_ARG(int, left));
+    QMetaObject::invokeMethod(parent(), "rightVolume", Q_RETURN_ARG(int, right));
+    return qMax(left, right);
+}
+
+void DBUSAdaptor::setVolume(int volume)
+{
+    volume = qMin(volume, 100);
+    volume = qMax(volume, 0);
+    int bal = balance();
+    int left = volume-qMax(bal,0)*volume/100;
+    int right = volume+qMin(bal,0)*volume/100;
+    QMetaObject::invokeMethod(m_control, "setVolume", Q_ARG(int, left), Q_ARG(int, right));
+}
+
+int DBUSAdaptor::balance()
+{
+    int left, right;
+    QMetaObject::invokeMethod(parent(), "leftVolume", Q_RETURN_ARG(int, left));
+    QMetaObject::invokeMethod(parent(), "rightVolume", Q_RETURN_ARG(int, right));
+    return (right-left)*100/qMax(left, right);
+}
+
+void DBUSAdaptor::setBalance(int bal)
+{
+    bal = qMin(bal,100);
+    bal = qMax(bal,-100);
+    int left = volume()-qMax(bal,0)*volume()/100;
+    int right = volume()+qMin(bal,0)*volume()/100;
+    QMetaObject::invokeMethod(m_control, "setVolume", Q_ARG(int, left), Q_ARG(int, right));
 }
 
 void DBUSAdaptor::play()
 {
-    QMetaObject::invokeMethod(parent(), "play");
+    QMetaObject::invokeMethod(m_control, "play");
 }
 
 void DBUSAdaptor::stop()
 {
-    QMetaObject::invokeMethod(parent(), "stop");
+    QMetaObject::invokeMethod(m_control, "stop");
 }
 
 void DBUSAdaptor::next()
 {
-    QMetaObject::invokeMethod(parent(), "next");
+    QMetaObject::invokeMethod(m_control, "next");
 }
 
 void DBUSAdaptor::previous()
 {
-    QMetaObject::invokeMethod(parent(), "previous");
+    QMetaObject::invokeMethod(m_control, "previous");
 }
 
 void DBUSAdaptor::pause()
 {
-    QMetaObject::invokeMethod(parent(), "pause");
+    QMetaObject::invokeMethod(m_control, "pause");
 }
 
 void DBUSAdaptor::exit()
 {
-    QMetaObject::invokeMethod(parent(), "exit");
+    QMetaObject::invokeMethod(m_control, "exit");
 }
 
-void DBUSAdaptor::setVolume(int left, int right)
-{
-    QMetaObject::invokeMethod(parent(), "setVolume", Q_ARG(int, left), Q_ARG(int, right));
-}

@@ -40,10 +40,15 @@ public:
 
     void setState(const uint& state);
     void setSongInfo(const SongInfo &song);
+    void setVolume(int left, int right);
+
+public slots:
+    int leftVolume();
+    int rightVolume();
 
 private:
     DBUSAdaptor *m_adaptor;
-
+    int m_left, m_right;
 };
 
 #endif

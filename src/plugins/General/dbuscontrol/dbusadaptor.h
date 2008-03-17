@@ -22,6 +22,8 @@
 
 #include <QtDBus>
 
+class Control;
+
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -29,10 +31,18 @@ class DBUSAdaptor : public QDBusAbstractAdaptor
 {
 Q_OBJECT
 Q_CLASSINFO("D-Bus Interface", "org.qmmp.dbus")
+Q_PROPERTY(int volume READ volume WRITE setVolume)
+Q_PROPERTY(int balance READ balance WRITE setBalance)
+
 public:
-    DBUSAdaptor(QObject *parent = 0);
+    DBUSAdaptor(Control *ctrl, QObject *parent = 0);
 
     ~DBUSAdaptor();
+
+    int volume();
+    void setVolume(int);
+    int balance();
+    void setBalance(int);
 
 public slots:
     void play();
@@ -41,8 +51,9 @@ public slots:
     void previous();
     void pause();
     void exit();
-    void setVolume(int, int);
 
+private:
+    Control *m_control;
 };
 
 #endif
