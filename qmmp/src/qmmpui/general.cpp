@@ -63,7 +63,9 @@ static void checkFactories()
 
 General::General(QObject *parent)
         : QObject(parent)
-{}
+{
+    Q_UNUSED(parent);
+}
 
 
 General::~General()
@@ -82,7 +84,7 @@ QList<GeneralFactory*> *General::generalFactories()
     return factories;
 }
 
-void General::updateVolume(int left, int right)
+void General::setVolume(int left, int right)
 {}
 
 QStringList General::generalFiles()
@@ -120,45 +122,5 @@ bool General::isEnabled(GeneralFactory* factory)
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QStringList genList = settings.value("General/plugin_files").toStringList();
     return genList.contains(name);
-}
-
-void General::play()
-{
-    emit commandCalled(Play);
-}
-
-void General::pause()
-{
-    emit commandCalled(Pause);
-}
-
-void General::stop()
-{
-    emit commandCalled(Stop);
-}
-
-void General::next()
-{
-    emit commandCalled(Next);
-}
-
-void General::previous()
-{
-    emit commandCalled(Previous);
-}
-
-void General::exit()
-{
-    emit commandCalled(Exit);
-}
-
-void General::toggleVisibility()
-{
-    emit commandCalled(ToggleVisibility);
-}
-
-void General::setVolume(int left, int right)
-{
-    emit volumeChanged(left, right);
 }
 

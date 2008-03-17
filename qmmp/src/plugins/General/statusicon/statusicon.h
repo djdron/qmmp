@@ -24,7 +24,7 @@
 
 #include <qmmpui/general.h>
 
-
+class Control;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -34,7 +34,7 @@ class StatusIcon : public General
 {
 Q_OBJECT
 public:
-    StatusIcon(QObject *parent = 0);
+    StatusIcon(Control *control, QObject *parent = 0);
 
     ~StatusIcon();
 
@@ -52,6 +52,7 @@ private:
     bool m_hideToTray;
     bool m_enabled;
     int m_messageDelay;
+    Control *m_control;
 
 };
 

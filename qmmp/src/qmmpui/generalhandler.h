@@ -25,6 +25,7 @@
 #include "songinfo.h"
 
 class General;
+class Control;
 class GeneralFactory;
 
 /**
@@ -39,7 +40,7 @@ public:
     ~GeneralHandler();
 
     void setSongInfo(const SongInfo &info);
-    void updateVolume(int left, int right);
+    void setVolume(int left, int right);
     void setEnabled(GeneralFactory* factory, bool enable);
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
     bool visibilityControl();
@@ -65,6 +66,7 @@ private:
     void connectSignals(General*);
     QMap <GeneralFactory*, General*> m_generals;
     SongInfo m_songInfo;
+    Control* m_control;
     uint m_state;
     int m_left, m_right;
     static GeneralHandler* m_instance;

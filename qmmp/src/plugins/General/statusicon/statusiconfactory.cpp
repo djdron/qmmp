@@ -34,9 +34,9 @@ const GeneralProperties StatusIconFactory::properties() const
     return properties;
 }
 
-General *StatusIconFactory::create(QObject *parent)
+General *StatusIconFactory::create(Control *control, QObject *parent)
 {
-    return new StatusIcon(parent);
+    return new StatusIcon(control, parent);
 }
 
 QDialog *StatusIconFactory::createConfigDialog(QWidget *parent)

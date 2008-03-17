@@ -23,24 +23,26 @@
 #include <QDir>
 #include <QTimer>
 #include <QCoreApplication>
+#include <qmmpui/control.h>
 
 #include "statusicon.h"
 
-StatusIcon::StatusIcon(QObject *parent)
+StatusIcon::StatusIcon(Control *control, QObject *parent)
         : General(parent)
 {
+    m_control = control;
     m_tray = new QSystemTrayIcon(this);
     connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
     m_tray->setIcon ( QIcon(":/tray_stop.png"));
     m_tray->show();
     QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
-    menu->addAction(tr("Play"), this, SLOT(play()));
-    menu->addAction(tr("Pause"), this, SLOT(pause()));
-    menu->addAction(tr("Stop"), this, SLOT(stop()));
-    menu->addAction(tr("Next"), this, SLOT(next()));
-    menu->addAction(tr("Previous"), this, SLOT(previous()));
+    menu->addAction(tr("Play"), control, SLOT(play()));
+    menu->addAction(tr("Pause"), control, SLOT(pause()));
+    menu->addAction(tr("Stop"), control, SLOT(stop()));
+    menu->addAction(tr("Next"), control, SLOT(next()));
+    menu->addAction(tr("Previous"), control, SLOT(previous()));
     menu->addSeparator();
-    menu->addAction(tr("Exit"), this, SLOT(exit()));
+    menu->addAction(tr("Exit"), control, SLOT(exit()));
     m_tray->setContextMenu(menu);
 
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
@@ -100,7 +102,7 @@ void StatusIcon::setSongInfo(const SongInfo &song)
 void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger)
-        toggleVisibility();
+        m_control->toggleVisibility();
 }
 
 void StatusIcon::enable()

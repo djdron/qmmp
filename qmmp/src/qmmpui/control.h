@@ -17,43 +17,47 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef CONTROL_H
+#define CONTROL_H
 
-#include <QtGui>
+#include <QObject>
 
-#include "notifier.h"
-#include "settingsdialog.h"
-#include "notifierfactory.h"
-
-const GeneralProperties NotifierFactory::properties() const
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class Control : public QObject
 {
-    GeneralProperties properties;
-    properties.name = tr("Notifier Plugin");
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
-}
+Q_OBJECT
+public:
+    Control(QObject *parent = 0);
 
-General *NotifierFactory::create(Control*, QObject *parent)
-{
-    return new Notifier(parent);
-}
+    ~Control();
 
-QDialog *NotifierFactory::createConfigDialog(QWidget *parent)
-{
-    return new SettingsDialog(parent);
-}
+    enum Command
+    {
+        Play = 0,
+        Stop,
+        Pause,
+        Previous,
+        Next,
+        Exit,
+        ToggleVisibility
+    };
 
-void NotifierFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About Notifier Plugin"),
-                        tr("Qmmp Notifier Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-}
+signals:
+    void commandCalled(uint command);
+    void volumeChanged(int left, int right);
 
-QTranslator *NotifierFactory::createTranslator(QObject*)
-{
-    return 0;
-}
+public slots:
+    void play();
+    void pause();
+    void stop();
+    void next();
+    void previous();
+    void exit();
+    void toggleVisibility();
+    void setVolume(int left, int right);
 
-Q_EXPORT_PLUGIN(NotifierFactory)
+};
+
+#endif

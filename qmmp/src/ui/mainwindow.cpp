@@ -364,7 +364,7 @@ void MainWindow::showOutputState(const OutputState &st)
     }
     case OutputState::Volume:
     {
-        m_generalHandler->updateVolume(st.leftVolume(), st.rightVolume());
+        m_generalHandler->setVolume(st.leftVolume(), st.rightVolume());
     }
     }
 

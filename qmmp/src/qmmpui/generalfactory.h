@@ -26,6 +26,7 @@
 class QObject;
 class QTranslator;
 class QDialog;
+class Control;
 
 class General;
 
@@ -42,7 +43,7 @@ class GeneralFactory
 public:
     virtual ~GeneralFactory() {}
     virtual const GeneralProperties properties() const = 0;
-    virtual General *create(QObject *parent) = 0;
+    virtual General *create(Control *control, QObject *parent) = 0;
     virtual QDialog *createConfigDialog(QWidget *parent) = 0;
     virtual void showAbout(QWidget *parent) = 0;
     virtual QTranslator *createTranslator(QObject *parent) = 0;

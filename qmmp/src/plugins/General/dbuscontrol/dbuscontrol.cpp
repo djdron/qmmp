@@ -18,21 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <qmmpui/control.h>
+
 #include "dbusadaptor.h"
 #include "dbuscontrol.h"
 
-DBUSControl::DBUSControl(QObject *parent)
+DBUSControl::DBUSControl(Control *control, QObject *parent)
         : General(parent)
 {
-    new DBUSAdaptor(this);
+    m_adaptor = new DBUSAdaptor(control);
     QDBusConnection connection = QDBusConnection::sessionBus();
-    connection.registerObject("/Qmmp", this);
+    connection.registerObject("/Qmmp", control);
     connection.registerService("org.qmmp.dbus");
 }
 
 
 DBUSControl::~DBUSControl()
-{}
+{
+    delete m_adaptor;
+}
 
 void DBUSControl::setState(const uint &state)
 {
@@ -40,22 +44,19 @@ void DBUSControl::setState(const uint &state)
     {
     case General::Playing:
     {
-        //m_tray->setIcon(QIcon(":/tray_play.png"));
         break;
     }
     case General::Paused:
     {
-        //m_tray->setIcon(QIcon(":/tray_pause.png"));
         break;
     }
     case General::Stopped:
     {
-        //m_tray->setIcon(QIcon(":/tray_stop.png"));
         break;
     }
     }
 }
 
-void DBUSControl::setSongInfo(const SongInfo &song)
+void DBUSControl::setSongInfo(const SongInfo&)
 {
 }
