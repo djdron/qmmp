@@ -21,6 +21,7 @@
 #include <QDialog>
 #include "general.h"
 #include "generalfactory.h"
+#include "control.h"
 
 #include "generalhandler.h"
 
@@ -34,13 +35,14 @@ GeneralHandler::GeneralHandler(QObject *parent)
     m_right = 0;
     m_state = General::Stopped;
     GeneralFactory* factory;
+    m_control = new Control(this);
+    connect(m_control, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+    connect(m_control, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
     foreach(factory, *General::generalFactories())
     {
         if (General::isEnabled(factory))
         {
-            General *general = factory->create(parent);
-            connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
-            connect(general, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+            General *general = factory->create(m_control, parent);
             m_generals.insert(factory, general);
         }
     }
@@ -79,14 +81,14 @@ void GeneralHandler::setSongInfo(const SongInfo &info)
     }
 }
 
-void GeneralHandler::updateVolume(int left, int right)
+void GeneralHandler::setVolume(int left, int right)
 {
     m_left = left;
     m_right = right;
     General *general;
     foreach(general, m_generals.values())
     {
-        general->updateVolume(left, right);
+        general->setVolume(left, right);
     }
 }
 
@@ -96,11 +98,9 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
         return;
     if (enable)
     {
-        General *general = factory->create(parent());
-        connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
-        connect(general, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+        General *general = factory->create(m_control, parent());
         m_generals.insert(factory, general);
-        general->updateVolume(m_left, m_right);
+        general->setVolume(m_left, m_right);
         if (m_state != General::Stopped)
         {
             general->setState(m_state);
@@ -124,11 +124,9 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
     if (dialog->exec() == QDialog::Accepted && m_generals.keys().contains(factory))
     {
         delete m_generals.value(factory);
-        General *general = factory->create(parent());
-        connect(general, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
-        connect(general, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+        General *general = factory->create(m_control, parent());
         m_generals[factory] = general;
-        general->updateVolume(m_left, m_right);
+        general->setVolume(m_left, m_right);
         if (m_state != General::Stopped)
         {
             general->setState(m_state);
@@ -158,37 +156,37 @@ void GeneralHandler::processCommand(uint command)
 {
     switch ((uint) command)
     {
-    case General::Play:
+    case Control::Play:
     {
         emit playCalled();
         break;
     }
-    case General::Stop:
+    case Control::Stop:
     {
         emit stopCalled();
         break;
     }
-    case General::Pause:
+    case Control::Pause:
     {
         emit pauseCalled();
         break;
     }
-    case General::Previous:
+    case Control::Previous:
     {
         emit previousCalled();
         break;
     }
-    case General::Next:
+    case Control::Next:
     {
         emit nextCalled();
         break;
     }
-    case General::Exit:
+    case Control::Exit:
     {
         emit exitCalled();
         break;
     }
-    case General::ToggleVisibility:
+    case Control::ToggleVisibility:
     {
         emit toggleVisibilityCalled();
         break;

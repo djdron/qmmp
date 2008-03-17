@@ -27,6 +27,7 @@
 #include <QTranslator>
 
 #include <qmmpui/general.h>
+#include <qmmpui/control.h>
 #include <qmmpui/generalfactory.h>
 
 class DBUSControlFactory : public QObject, public GeneralFactory
@@ -35,7 +36,7 @@ Q_OBJECT
 Q_INTERFACES(GeneralFactory);
 public:
     const GeneralProperties properties() const;
-    General *create(QObject *parent);
+    General *create(Control *control, QObject *parent);
     QDialog *createConfigDialog(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

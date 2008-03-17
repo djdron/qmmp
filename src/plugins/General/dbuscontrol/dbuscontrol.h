@@ -23,6 +23,9 @@
 
 #include <qmmpui/general.h>
 
+class Control;
+class DBUSAdaptor;
+
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -31,12 +34,15 @@ class DBUSControl : public General
 {
 Q_OBJECT
 public:
-    DBUSControl(QObject *parent = 0);
+    DBUSControl(Control *control, QObject *parent = 0);
 
     ~DBUSControl();
 
     void setState(const uint& state);
     void setSongInfo(const SongInfo &song);
+
+private:
+    DBUSAdaptor *m_adaptor;
 
 };
 

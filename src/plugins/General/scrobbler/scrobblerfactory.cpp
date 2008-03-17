@@ -34,7 +34,7 @@ const GeneralProperties ScrobblerFactory::properties() const
     return properties;
 }
 
-General *ScrobblerFactory::create(QObject *parent)
+General *ScrobblerFactory::create(Control*, QObject *parent)
 {
     return new Scrobbler(parent);
 }
@@ -51,7 +51,7 @@ void ScrobblerFactory::showAbout(QWidget *parent)
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
+QTranslator *ScrobblerFactory::createTranslator(QObject*)
 {
     return 0;
 }

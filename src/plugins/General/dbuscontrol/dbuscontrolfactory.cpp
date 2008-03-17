@@ -33,12 +33,12 @@ const GeneralProperties DBUSControlFactory::properties() const
     return properties;
 }
 
-General *DBUSControlFactory::create(QObject *parent)
+General *DBUSControlFactory::create(Control *control, QObject *parent)
 {
-    return new DBUSControl(parent);
+    return new DBUSControl(control, parent);
 }
 
-QDialog *DBUSControlFactory::createConfigDialog(QWidget *parent)
+QDialog *DBUSControlFactory::createConfigDialog(QWidget *)
 {
     return 0;
 }
@@ -50,7 +50,7 @@ void DBUSControlFactory::showAbout(QWidget *parent)
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *DBUSControlFactory::createTranslator(QObject *parent)
+QTranslator *DBUSControlFactory::createTranslator(QObject *)
 {
     return 0;
 }

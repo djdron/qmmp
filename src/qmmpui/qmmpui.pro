@@ -31,8 +31,10 @@ INSTALLS += target
 HEADERS += general.h \
 generalfactory.h \
  generalhandler.h \
- songinfo.h
+ songinfo.h \
+ control.h
 SOURCES += general.cpp \
  generalhandler.cpp \
- songinfo.cpp
+ songinfo.cpp \
+ control.cpp
 

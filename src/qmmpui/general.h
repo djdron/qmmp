@@ -27,6 +27,8 @@
 #include "songinfo.h"
 #include "generalfactory.h"
 
+class Control;
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -45,40 +47,15 @@ public:
         Stopped
     };
 
-    enum Command
-    {
-        Play = 0,
-        Stop,
-        Pause,
-        Previous,
-        Next,
-        Exit,
-        ToggleVisibility
-    };
-
     virtual void setState(const uint &state);
     virtual void setSongInfo(const SongInfo &song);
-    virtual void updateVolume(int left, int right);
+    virtual void setVolume(int left, int right);
 
     //static methods
     static QList<GeneralFactory*> *generalFactories();
     static QStringList generalFiles();
     static void setEnabled(GeneralFactory* factory, bool enable = TRUE);
     static bool isEnabled(GeneralFactory* factory);
-
-signals:
-    void commandCalled(uint command);
-    void volumeChanged(int left, int right);
-
-public slots:
-    void play();
-    void pause();
-    void stop();
-    void next();
-    void previous();
-    void exit();
-    void toggleVisibility();
-    void setVolume(int left, int right);
 
 private:
     QMap <uint, QString> m_strValues;

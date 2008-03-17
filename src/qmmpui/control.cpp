@@ -3,57 +3,69 @@
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
+ *   it under the terms of the GNU Control Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
  *   This program is distributed in the hope that it will be useful,       *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
+ *   GNU Control Public License for more details.                          *
  *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
+ *   You should have received a copy of the GNU Control Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#include "control.h"
 
-#include <QtGui>
-
-#include "notifier.h"
-#include "settingsdialog.h"
-#include "notifierfactory.h"
-
-const GeneralProperties NotifierFactory::properties() const
+Control::Control(QObject *parent)
+ : QObject(parent)
 {
-    GeneralProperties properties;
-    properties.name = tr("Notifier Plugin");
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
 }
 
-General *NotifierFactory::create(Control*, QObject *parent)
+
+Control::~Control()
 {
-    return new Notifier(parent);
 }
 
-QDialog *NotifierFactory::createConfigDialog(QWidget *parent)
+void Control::play()
 {
-    return new SettingsDialog(parent);
+    emit commandCalled(Play);
 }
 
-void NotifierFactory::showAbout(QWidget *parent)
+void Control::pause()
 {
-    QMessageBox::about (parent, tr("About Notifier Plugin"),
-                        tr("Qmmp Notifier Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+    emit commandCalled(Pause);
 }
 
-QTranslator *NotifierFactory::createTranslator(QObject*)
+void Control::stop()
 {
-    return 0;
+    emit commandCalled(Stop);
 }
 
-Q_EXPORT_PLUGIN(NotifierFactory)
+void Control::next()
+{
+    emit commandCalled(Next);
+}
+
+void Control::previous()
+{
+    emit commandCalled(Previous);
+}
+
+void Control::exit()
+{
+    emit commandCalled(Exit);
+}
+
+void Control::toggleVisibility()
+{
+    emit commandCalled(ToggleVisibility);
+}
+
+void Control::setVolume(int left, int right)
+{
+    emit volumeChanged(left, right);
+}
+
