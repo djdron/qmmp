@@ -33,10 +33,12 @@ GeneralHandler::GeneralHandler(QObject *parent)
     m_instance = this;
     m_left = 0;
     m_right = 0;
+    m_time = 0;
     m_state = General::Stopped;
     GeneralFactory* factory;
     m_control = new Control(this);
     connect(m_control, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+    connect(m_control, SIGNAL(seekCalled(int)), SIGNAL(seekCalled(int)));
     connect(m_control, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
     foreach(factory, *General::generalFactories())
     {
@@ -58,7 +60,10 @@ void GeneralHandler::setState(uint state)
     m_state = state;
     General *general;
     if (state == General::Stopped)
+    {
         m_songInfo.clear();
+        m_time = 0;
+    }
 
     foreach(general, m_generals.values())
     {
@@ -92,6 +97,18 @@ void GeneralHandler::setVolume(int left, int right)
     }
 }
 
+void GeneralHandler::setTime(int time)
+{
+    if(m_time == time)
+        return;
+    m_time = time;
+    General *general;
+    foreach(general, m_generals.values())
+    {
+        general->setTime(time);
+    }
+}
+
 void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
 {
     if (enable == m_generals.keys().contains(factory))
@@ -105,6 +122,7 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
         {
             general->setState(m_state);
             general->setSongInfo(m_songInfo);
+            general->setTime(m_time);
         }
     }
     else
