@@ -20,6 +20,7 @@
 
 #include <qmmpui/control.h>
 
+#include "dbuscontrol.h"
 #include "dbusadaptor.h"
 
 DBUSAdaptor::DBUSAdaptor(Control *ctrl, QObject *parent)
@@ -27,6 +28,7 @@ DBUSAdaptor::DBUSAdaptor(Control *ctrl, QObject *parent)
 {
     m_control = ctrl;
     setAutoRelaySignals(TRUE);
+    connect(parent, SIGNAL(stateChanged()), SLOT (processState()));
 }
 
 DBUSAdaptor::~DBUSAdaptor()
@@ -67,6 +69,56 @@ void DBUSAdaptor::setBalance(int bal)
     QMetaObject::invokeMethod(m_control, "setVolume", Q_ARG(int, left), Q_ARG(int, right));
 }
 
+int DBUSAdaptor::length()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->length();
+}
+
+int DBUSAdaptor::year()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->year();
+}
+
+QString DBUSAdaptor::title()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->title();
+}
+
+QString DBUSAdaptor::artist()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->artist();
+}
+
+QString DBUSAdaptor::album()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->album();
+}
+
+QString DBUSAdaptor::comment()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->comment();
+}
+
+QString DBUSAdaptor::genre()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->genre();
+}
+
+bool DBUSAdaptor::isPlaying()
+{
+    return qobject_cast<DBUSControl *>(parent())->state() == General::Playing;
+}
+
+bool DBUSAdaptor::isPaused()
+{
+     return qobject_cast<DBUSControl *>(parent())->state() == General::Paused;
+}
+
+bool DBUSAdaptor::isStopped()
+{
+     return qobject_cast<DBUSControl *>(parent())->state() == General::Stopped;
+}
+
 void DBUSAdaptor::play()
 {
     QMetaObject::invokeMethod(m_control, "play");
@@ -92,8 +144,24 @@ void DBUSAdaptor::pause()
     QMetaObject::invokeMethod(m_control, "pause");
 }
 
+void DBUSAdaptor::toggleVisibility()
+{
+    QMetaObject::invokeMethod(m_control, "toggleVisibility");
+}
+
 void DBUSAdaptor::exit()
 {
     QMetaObject::invokeMethod(m_control, "exit");
+}
+
+void DBUSAdaptor::processState()
+{
+    uint state = qobject_cast<DBUSControl *>(parent())->state();
+    if(state == General::Playing)
+        emit started();
+    else if(state == General::Stopped)
+        emit stopped();
+    else if(state == General::Paused)
+        emit paused();
 }
 
