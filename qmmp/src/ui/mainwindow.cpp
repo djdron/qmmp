@@ -188,6 +188,7 @@ void MainWindow::play()
     if (m_core->play(s))
     {
         display->setTime(0);
+        m_generalHandler->setTime(0);
         display->setMaxTime(m_core->length());
     }
     else
@@ -325,7 +326,6 @@ void MainWindow::showOutputState(const OutputState &st)
     case OutputState::Playing:
     {
         m_generalHandler->setState(General::Playing);
-        m_generalHandler->setTime(st.elapsedSeconds());
         if (m_playListModel->currentItem())
         {
             SongInfo info;
@@ -361,6 +361,7 @@ void MainWindow::showOutputState(const OutputState &st)
     }
     case OutputState::Info:
     {
+        m_generalHandler->setTime(st.elapsedSeconds());
         m_elapsed = st.elapsedSeconds();
         break;
     }
