@@ -42,12 +42,16 @@ public:
     void setState(const uint& state);
     void setSongInfo(const SongInfo &song);
     void setVolume(int left, int right);
+    void setTime(int time);
     //helper functions
     SongInfo *info();
     uint state();
+    int elapsedTime();
 
 signals:
     void stateChanged();
+    void timeChanged();
+    void volumeChanged();
 
 public slots:
     int leftVolume();
@@ -58,6 +62,7 @@ private:
     int m_left, m_right;
     SongInfo m_song;
     uint m_state;
+    int m_time;
 };
 
 #endif

@@ -43,6 +43,8 @@ Q_PROPERTY(QString genre READ genre)
 Q_PROPERTY(bool isPlaying READ isPlaying)
 Q_PROPERTY(bool isPaused READ isPaused)
 Q_PROPERTY(bool isStopped READ isStopped)
+Q_PROPERTY(int elapsedTime READ elapsedTime)
+
 
 public:
     DBUSAdaptor(Control *ctrl, QObject *parent = 0);
@@ -63,11 +65,14 @@ public:
     bool isPlaying();
     bool isPaused();
     bool isStopped();
+    int elapsedTime();
 
 signals:
     void started();
     void paused();
     void stopped();
+    void volumeChanged(int vol, int bal);
+    void timeChanged(int newTime);
 
 public slots:
     void play();
@@ -77,9 +82,12 @@ public slots:
     void pause();
     void toggleVisibility();
     void exit();
+    void seek(int time);
 
 private slots:
     void processState();
+    void processVolume();
+    void processTime();
 
 private:
     Control *m_control;

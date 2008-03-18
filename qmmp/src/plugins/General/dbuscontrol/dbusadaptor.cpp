@@ -29,6 +29,8 @@ DBUSAdaptor::DBUSAdaptor(Control *ctrl, QObject *parent)
     m_control = ctrl;
     setAutoRelaySignals(TRUE);
     connect(parent, SIGNAL(stateChanged()), SLOT (processState()));
+    connect(parent, SIGNAL(volumeChanged()), SLOT (processVolume()));
+    connect(parent, SIGNAL(timeChanged()), SLOT (processTime()));
 }
 
 DBUSAdaptor::~DBUSAdaptor()
@@ -119,6 +121,11 @@ bool DBUSAdaptor::isStopped()
      return qobject_cast<DBUSControl *>(parent())->state() == General::Stopped;
 }
 
+int DBUSAdaptor::elapsedTime()
+{
+    return qobject_cast<DBUSControl *>(parent())->elapsedTime();
+}
+
 void DBUSAdaptor::play()
 {
     QMetaObject::invokeMethod(m_control, "play");
@@ -154,6 +161,13 @@ void DBUSAdaptor::exit()
     QMetaObject::invokeMethod(m_control, "exit");
 }
 
+void DBUSAdaptor::seek(int time)
+{
+    if ((time < 0) || (time > length()))
+        return;
+    QMetaObject::invokeMethod(m_control, "seek", Q_ARG(int, time));
+}
+
 void DBUSAdaptor::processState()
 {
     uint state = qobject_cast<DBUSControl *>(parent())->state();
@@ -165,3 +179,12 @@ void DBUSAdaptor::processState()
         emit paused();
 }
 
+void DBUSAdaptor::processVolume()
+{
+    emit volumeChanged(volume(), balance());
+}
+
+void DBUSAdaptor::processTime()
+{
+    emit timeChanged(elapsedTime());
+}
