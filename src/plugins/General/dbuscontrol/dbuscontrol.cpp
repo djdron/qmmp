@@ -32,6 +32,7 @@ DBUSControl::DBUSControl(Control *control, QObject *parent)
     connection.registerService("org.qmmp.dbus");
     m_left = 0;
     m_right = 0;
+    m_state = General::Stopped;
 }
 
 
@@ -41,6 +42,8 @@ DBUSControl::~DBUSControl()
 
 void DBUSControl::setState(const uint &state)
 {
+    m_state = state;
+    emit stateChanged();
     switch ((uint) state)
     {
     case General::Playing:
@@ -53,19 +56,31 @@ void DBUSControl::setState(const uint &state)
     }
     case General::Stopped:
     {
+        m_song = SongInfo();
         break;
     }
     }
 }
 
-void DBUSControl::setSongInfo(const SongInfo&)
+void DBUSControl::setSongInfo(const SongInfo &song)
 {
+    m_song = song;
 }
 
 void DBUSControl::setVolume(int left, int right)
 {
     m_left = left;
     m_right = right;
+}
+
+SongInfo *DBUSControl::info()
+{
+    return &m_song;
+}
+
+uint DBUSControl::state()
+{
+    return m_state;
 }
 
 int DBUSControl::leftVolume()

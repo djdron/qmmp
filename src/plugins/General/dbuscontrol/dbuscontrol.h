@@ -38,9 +38,16 @@ public:
 
     ~DBUSControl();
 
+    //general api
     void setState(const uint& state);
     void setSongInfo(const SongInfo &song);
     void setVolume(int left, int right);
+    //helper functions
+    SongInfo *info();
+    uint state();
+
+signals:
+    void stateChanged();
 
 public slots:
     int leftVolume();
@@ -49,6 +56,8 @@ public slots:
 private:
     DBUSAdaptor *m_adaptor;
     int m_left, m_right;
+    SongInfo m_song;
+    uint m_state;
 };
 
 #endif
