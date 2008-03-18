@@ -59,7 +59,6 @@ public:
 
     PlayList *getPLPointer(){return m_playlist;}
 
-    void seek(int);
     QMenu* menu();
     void setVolume(int volume, int balance);
     SoundCore* soundCore()const;
@@ -67,6 +66,7 @@ public:
     bool processCommandArgs(const QStringList &list,const QString& cwd);
 
 public slots:
+    void seek(int);
     void previous();
     void play();
     void pause();
