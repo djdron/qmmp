@@ -146,6 +146,7 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
     connect(m_generalHandler, SIGNAL(previousCalled()), SLOT(previous()));
     connect(m_generalHandler, SIGNAL(stopCalled()), SLOT(stop()));
     connect(m_generalHandler, SIGNAL(pauseCalled()), SLOT(pause()));
+    connect(m_generalHandler, SIGNAL(seekCalled(int)), SLOT(seek(int)));
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
     connect(m_generalHandler, SIGNAL(volumeChanged(int, int)),
@@ -324,6 +325,7 @@ void MainWindow::showOutputState(const OutputState &st)
     case OutputState::Playing:
     {
         m_generalHandler->setState(General::Playing);
+        m_generalHandler->setTime(st.elapsedSeconds());
         if (m_playListModel->currentItem())
         {
             SongInfo info;

@@ -77,6 +77,9 @@ void General::setState(const uint&)
 void General::setSongInfo(const SongInfo &song)
 {}
 
+void General::setTime(int)
+{}
+
 
 QList<GeneralFactory*> *General::generalFactories()
 {

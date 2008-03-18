@@ -50,6 +50,7 @@ public:
     virtual void setState(const uint &state);
     virtual void setSongInfo(const SongInfo &song);
     virtual void setVolume(int left, int right);
+    virtual void setTime(int time);
 
     //static methods
     static QList<GeneralFactory*> *generalFactories();

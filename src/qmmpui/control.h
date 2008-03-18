@@ -46,6 +46,7 @@ public:
 
 signals:
     void commandCalled(uint command);
+    void seekCalled(int pos);
     void volumeChanged(int left, int right);
 
 public slots:
@@ -54,6 +55,7 @@ public slots:
     void stop();
     void next();
     void previous();
+    void seek(int pos);
     void exit();
     void toggleVisibility();
     void setVolume(int left, int right);

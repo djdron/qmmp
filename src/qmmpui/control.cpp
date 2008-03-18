@@ -54,6 +54,11 @@ void Control::previous()
     emit commandCalled(Previous);
 }
 
+void Control::seek(int pos)
+{
+    emit seekCalled(pos);
+}
+
 void Control::exit()
 {
     emit commandCalled(Exit);
