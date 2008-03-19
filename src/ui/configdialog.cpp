@@ -388,7 +388,7 @@ void ConfigDialog::setPlFont()
 void ConfigDialog::setMainFont()
 {
     bool ok;
-    QFont font = ui.plFontLabel->font();
+    QFont font = ui.mainFontLabel->font();
     font = QFontDialog::getFont (&ok, font, this);
     if ( ok )
     {
