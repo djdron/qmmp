@@ -60,9 +60,9 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="canselButton" >
+      <widget class="QPushButton" name="cancelButton" >
        <property name="text" >
-        <string>Cansel</string>
+        <string>Cancel</string>
        </property>
       </widget>
      </item>
@@ -73,7 +73,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>canselButton</sender>
+   <sender>cancelButton</sender>
    <signal>clicked()</signal>
    <receiver>SettingsDialog</receiver>
    <slot>reject()</slot>
