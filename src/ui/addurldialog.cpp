@@ -20,7 +20,11 @@
 
 #include <QSettings>
 #include <QDir>
+#include <QHttp>
+#include <QUrl>
+#include <QMessageBox>
 #include "addurldialog.h"
+#include "playlistformat.h"
 #include "playlistmodel.h"
 
 #define HISTORY_SIZE 10
@@ -29,9 +33,14 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
 {
     setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_QuitOnClose, FALSE);
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
+    m_http = new QHttp(this);
+    connect(m_http, SIGNAL(requestFinished (int, bool)), SLOT(processResponse(int, bool)));
+    connect(m_http, SIGNAL(readyRead (const QHttpResponseHeader&)),
+            SLOT(readResponse(const QHttpResponseHeader&)));
 }
 
 AddUrlDialog::~AddUrlDialog()
@@ -40,6 +49,7 @@ AddUrlDialog::~AddUrlDialog()
         m_history.removeLast();
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue("URLDialog/history", m_history);
+    m_http->close();
 }
 
 QPointer<AddUrlDialog> AddUrlDialog::instance = 0;
@@ -62,9 +72,45 @@ void AddUrlDialog::accept( )
         QString s = urlComboBox->currentText();
         if (!s.startsWith("http://"))
             s.prepend("http://");
-        m_model->addFile(s);
         m_history.removeAll(s);
         m_history.prepend(s);
+        //TODO this code should be removed
+        foreach(PlaylistFormat* prs, m_model->registeredPlaylistFormats())
+        {
+            if (prs->hasFormat(QFileInfo(s).suffix().toLower()))
+            {
+                //download playlist;
+                QUrl url(s);
+                m_http->setHost(url.host(), url.port(80));
+                m_http->get(url.path()); //TODO proxy support
+                addButton->setEnabled(FALSE);
+                return;
+            }
+        }
+        m_model->addFile(s);
+    }
+    QDialog::accept();
+}
+
+void AddUrlDialog::processResponse(int, bool error)
+{
+    if (error)
+    {
+        QMessageBox::critical (this, tr("Error"), m_http->errorString ());
+        QDialog::accept();
+    }
+}
+
+void AddUrlDialog::readResponse(const QHttpResponseHeader&)
+{
+    QString s = urlComboBox->currentText();
+    foreach(PlaylistFormat* prs, m_model->registeredPlaylistFormats())
+    {
+        if (prs->hasFormat(QFileInfo(s).suffix().toLower()))
+        {
+            m_model->addFiles(prs->decode(m_http->readAll()));
+            break;
+        }
     }
     QDialog::accept();
 }

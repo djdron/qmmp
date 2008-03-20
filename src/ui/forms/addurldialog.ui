@@ -6,33 +6,56 @@
     <x>0</x>
     <y>0</y>
     <width>394</width>
-    <height>80</height>
+    <height>77</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Enter URL to add</string>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
+  <layout class="QGridLayout" >
+   <property name="leftMargin" >
+    <number>5</number>
    </property>
-   <property name="spacing" >
-    <number>6</number>
+   <property name="topMargin" >
+    <number>5</number>
    </property>
-   <item>
+   <property name="rightMargin" >
+    <number>5</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>5</number>
+   </property>
+   <item row="0" column="0" colspan="3" >
     <widget class="QComboBox" name="urlComboBox" >
      <property name="editable" >
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QDialogButtonBox" name="buttonBox" >
+   <item row="1" column="0" >
+    <spacer>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="standardButtons" >
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Ok</set>
+     <property name="sizeHint" >
+      <size>
+       <width>181</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QPushButton" name="addButton" >
+     <property name="text" >
+      <string>&amp;Add</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="cancelButton" >
+     <property name="text" >
+      <string>&amp;Cancel</string>
      </property>
     </widget>
    </item>
@@ -41,34 +64,34 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
+   <sender>addButton</sender>
+   <signal>clicked()</signal>
    <receiver>AddUrlDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel" >
      <x>248</x>
-     <y>254</y>
+     <y>51</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>157</x>
-     <y>274</y>
+     <x>184</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
    <receiver>AddUrlDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>316</x>
-     <y>260</y>
+     <x>343</x>
+     <y>62</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>286</x>
-     <y>274</y>
+     <x>392</x>
+     <y>60</y>
     </hint>
    </hints>
   </connection>
