@@ -801,7 +801,7 @@ void PlayListModel::loadPlaylist(const QString & f_name)
 
     foreach(PlaylistFormat* prs,m_registered_pl_formats.values())
     {
-        if (prs->hasFormat(QFileInfo(f_name).completeSuffix().toLower()))
+        if (prs->hasFormat(QFileInfo(f_name).suffix().toLower()))
         {
             QFile file(f_name);
             if (file.open(QIODevice::ReadOnly))
@@ -820,7 +820,7 @@ void PlayListModel::savePlaylist(const QString & f_name)
 {
     foreach(PlaylistFormat* prs,m_registered_pl_formats.values())
     {
-        if (prs->hasFormat(QFileInfo(f_name).completeSuffix().toLower()))
+        if (prs->hasFormat(QFileInfo(f_name).suffix().toLower()))
         {
             QFile file(f_name);
             if (file.open(QIODevice::WriteOnly))
