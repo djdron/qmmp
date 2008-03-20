@@ -46,7 +46,6 @@ public:
 
 private slots:
     void processResponse(int, bool);
-    void processResponseHeader(const QHttpResponseHeader &);
     void readResponse(const QHttpResponseHeader&);
 
 private:
