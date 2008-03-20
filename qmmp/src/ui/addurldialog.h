@@ -25,8 +25,10 @@
 #include <QDialog>
 #include <QPointer>
 
+class QHttp;
 
 class PlayListModel;
+class QHttpResponseHeader;
 
 /**
    @author Vladimir Kuznetsov <vovanec@gmail.com>
@@ -37,16 +39,24 @@ class AddUrlDialog : public QDialog , private Ui::AddUrlDialog
     Q_OBJECT
 public:
     static void popup(QWidget* parent ,PlayListModel*);
+
 protected:
     AddUrlDialog( QWidget * parent = 0, Qt::WindowFlags f = 0 );
     ~AddUrlDialog();
+
 protected slots:
     virtual void accept();
+
+private slots:
+    void processResponse(int, bool);
+    void readResponse(const QHttpResponseHeader&);
+
 private:
     void setModel(PlayListModel*);
     static QPointer<AddUrlDialog> instance;
     PlayListModel* m_model;
     QStringList m_history;
+    QHttp *m_http;
 
 };
 #endif //ADDURLDIALOG_H
