@@ -202,7 +202,7 @@ bool OutputALSA::initialize()
 {
     m_inited = m_pause = m_play = m_userStop = FALSE;
 
-    if (!pcm_handle)
+    if (pcm_handle)
         return FALSE;
 
     m_currentSeconds = -1;
