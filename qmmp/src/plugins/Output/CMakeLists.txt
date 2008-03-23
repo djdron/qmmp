@@ -1,6 +1,7 @@
 SET(USE_ALSA TRUE CACHE BOOL "enable/disable alsa plugin")
 SET(USE_JACK TRUE CACHE BOOL "enable/disable jack plugin")
 SET(USE_OSS TRUE CACHE BOOL "enable/disable oss plugin")
+SET(USE_PULSE TRUE CACHE BOOL "enable/disable pulse audio plugin")
 
 IF(USE_ALSA)
 MESSAGE( STATUS "ALSA ON")
@@ -22,3 +23,10 @@ add_subdirectory(oss)
 ELSE(USE_OSS)
 MESSAGE( STATUS "OSS OFF")
 ENDIF(USE_OSS)
+
+IF(USE_PULSE)
+MESSAGE( STATUS "PULSE AUDIO ON")
+add_subdirectory(pulseaudio)
+ELSE(USE_PULSE)
+MESSAGE( STATUS "PULSE AUDIO ON")
+ENDIF(USE_PULSE)
