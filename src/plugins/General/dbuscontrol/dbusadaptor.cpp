@@ -59,7 +59,10 @@ int DBUSAdaptor::balance()
     int left, right;
     QMetaObject::invokeMethod(parent(), "leftVolume", Q_RETURN_ARG(int, left));
     QMetaObject::invokeMethod(parent(), "rightVolume", Q_RETURN_ARG(int, right));
-    return (right-left)*100/qMax(left, right);
+    if(left || right)
+        return (right-left)*100/qMax(left, right);
+    else
+        return 0;
 }
 
 void DBUSAdaptor::setBalance(int bal)
