@@ -21,9 +21,8 @@ isEmpty(LIB_DIR){
 }
 target.path = $$LIB_DIR/qmmp/General
 INSTALLS += target
-#FORMS += settingsdialog.ui
 
-RESOURCES += images/images.qrc
+RESOURCES += images/tray_images.qrc
 
 
 HEADERS += statusiconfactory.h \
