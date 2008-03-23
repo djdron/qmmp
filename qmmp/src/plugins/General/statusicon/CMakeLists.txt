@@ -42,7 +42,7 @@ SET(libstatusicon_MOC_HDRS
 
 #SET(libstatusicon_RCCS translations/translations.qrc)
 
-SET(libstatusicon_RCCS images/images.qrc)
+SET(libstatusicon_RCCS images/tray_images.qrc)
 
 QT4_ADD_RESOURCES(libstatusicon_RCC_SRCS ${libstatusicon_RCCS})
 
