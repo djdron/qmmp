@@ -22,6 +22,7 @@
 #include <QStringList>
 #include <QSettings>
 #include <QDir>
+#include <stdint.h>
 
 #include "downloader.h"
 
