@@ -73,9 +73,9 @@ static void checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-            {
                 qDebug("Decoder: plugin loaded - %s", qPrintable(fileName));
-            }
+            else
+                qWarning("Decoder: %s", qPrintable(loader.errorString ()));
             DecoderFactory *factory = 0;
             if (plugin)
                 factory = qobject_cast<DecoderFactory *>(plugin);

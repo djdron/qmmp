@@ -48,9 +48,10 @@ static void checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-            {
                 qDebug("Visual: plugin loaded - %s", qPrintable(fileName));
-            }
+            else
+                qWarning("Visual: %s", qPrintable(loader.errorString ()));
+
             VisualFactory *factory = 0;
             if (plugin)
                 factory = qobject_cast<VisualFactory *>(plugin);
@@ -116,14 +117,14 @@ QStringList Visual::visualFiles()
 void Visual::setEnabled(VisualFactory* factory, bool enable)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if (!factories->contains(factory))
         return;
 
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QStringList visList = settings.value("Visualization/plugin_files").toStringList();
 
-    if(enable)
+    if (enable)
     {
         if (!visList.contains(name))
             visList << name;
@@ -136,7 +137,7 @@ void Visual::setEnabled(VisualFactory* factory, bool enable)
 bool Visual::isEnabled(VisualFactory* factory)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if (!factories->contains(factory))
         return FALSE;
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );

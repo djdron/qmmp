@@ -45,9 +45,10 @@ static void checkFactories()
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-            {
                 qDebug("General: plugin loaded - %s", qPrintable(fileName));
-            }
+            else
+                qWarning("General: %s", qPrintable(loader.errorString ()));
+
             GeneralFactory *factory = 0;
             if (plugin)
                 factory = qobject_cast<GeneralFactory *>(plugin);
