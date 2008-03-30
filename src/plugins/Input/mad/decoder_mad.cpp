@@ -336,6 +336,7 @@ void DecoderMAD::flush(bool final)
 
 void DecoderMAD::run()
 {
+    int skip_frames = 0;
     mutex()->lock();
 
     if (! inited)
@@ -343,6 +344,7 @@ void DecoderMAD::run()
         mutex()->unlock();
         return;
     }
+    
 
     DecoderState::Type stat = DecoderState::Decoding;
 
@@ -359,9 +361,15 @@ void DecoderMAD::run()
             long seek_pos = long(seekTime * input()->size() / totalTime);
             input()->seek(seek_pos);
             output_size = long(seekTime) * long(freq * channels * 16 / 2);
+            mad_frame_mute(&frame);
+            mad_synth_mute(&synth);
+            stream.error = MAD_ERROR_BUFLEN;
+            stream.sync = 0;
             input_bytes = 0;
             output_at = 0;
             output_bytes = 0;
+            stream.next_frame = 0;
+            skip_frames = 2;
             eof = false;
         }
 
@@ -375,7 +383,7 @@ void DecoderMAD::run()
                 memmove(input_buf, stream.next_frame, input_bytes);
             }
 
-            if (input_bytes < globalBufferSize)
+            if (input_bytes < globalBufferSize && seekTime == -1.)
             {
                 int len = input()->read((char *) input_buf + input_bytes,
                                         globalBufferSize - input_bytes);
@@ -425,20 +433,12 @@ void DecoderMAD::run()
                 break;
             }
 
-            if (useeq)
+            if(skip_frames)
             {
-                unsigned int nch, ch, ns, s, sb;
-
-                nch = MAD_NCHANNELS(&frame.header);
-                ns  = MAD_NSBSAMPLES(&frame.header);
-
-                for (ch = 0; ch < nch; ++ch)
-                    for (s = 0; s < ns; ++s)
-                        for (sb = 0; sb < 32; ++sb)
-                            frame.sbsample[ch][s][sb] =
-                                mad_f_mul(frame.sbsample[ch][s][sb], eqbands[sb]);
+                skip_frames-- ;
+                mutex()->unlock();
+                continue;
             }
-
             mad_synth_frame(&synth, &frame);
             madOutput();
             mutex()->unlock();

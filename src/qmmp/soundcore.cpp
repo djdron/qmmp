@@ -239,9 +239,9 @@ void SoundCore::seek(int pos)
 {
     if (m_output && m_output->isRunning())
     {
-        m_output->recycler()->mutex()->lock ();
+        /*m_output->recycler()->mutex()->lock ();
         m_output->recycler()->clear ();
-        m_output->recycler()->mutex()->unlock ();
+        m_output->recycler()->mutex()->unlock ();*/
         m_output->mutex()->lock ();
         m_output->seek(pos);
         m_output->mutex()->unlock();
