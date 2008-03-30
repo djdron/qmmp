@@ -487,18 +487,17 @@ void OutputALSA::setVolume(int l, int r)
 
 void OutputALSA::volume(int *l, int *r)
 {
- if (!pcm_element)
- return;
+    if (!pcm_element)
+        return;
 
- long ll = *l, lr = *r;
- snd_mixer_handle_events(mixer);
- snd_mixer_selem_get_playback_volume(pcm_element,
- SND_MIXER_SCHN_FRONT_LEFT, &ll);
- snd_mixer_selem_get_playback_volume(pcm_element,
- SND_MIXER_SCHN_FRONT_RIGHT, &lr);
- *l = ll;
- *l = lr;
-
+    long ll = *l, lr = *r;
+    snd_mixer_handle_events(mixer);
+    snd_mixer_selem_get_playback_volume(pcm_element,
+                                        SND_MIXER_SCHN_FRONT_LEFT, &ll);
+    snd_mixer_selem_get_playback_volume(pcm_element,
+                                        SND_MIXER_SCHN_FRONT_RIGHT, &lr);
+    *l = ll;
+    *r = lr;
 }
 
 int OutputALSA::getMixer(snd_mixer_t **mixer, QString card)
