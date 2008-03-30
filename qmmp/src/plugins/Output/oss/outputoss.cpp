@@ -64,9 +64,9 @@ long OutputOSS::written()
 
 void OutputOSS::seek(long pos)
 {
-    recycler()->mutex()->lock();
+    /*recycler()->mutex()->lock();
     recycler()->clear();
-    recycler()->mutex()->unlock();
+    recycler()->mutex()->unlock();*/
 
     m_totalWritten = (pos * m_bps);
     m_currentSeconds = -1;
