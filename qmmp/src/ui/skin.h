@@ -31,6 +31,7 @@
 #include <QRegion>
 
 
+
 class Skin : public QObject
 {
     Q_OBJECT
@@ -282,6 +283,8 @@ signals:
 
 private:
     QPixmap *getPixmap(const QString&);
+    const QString findFile(const QString&, QDir);
+    const QString findFile(const QString&, const QString&);
 
     /*!
      * As far as there is no standard in skin making we cannot be sure

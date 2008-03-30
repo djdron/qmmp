@@ -27,6 +27,7 @@
 #include <QPainter>
 #include <QPolygon>
 #include <QImage>
+#include <QBuffer>
 
 #include "skin.h"
 
@@ -78,8 +79,8 @@ void Skin::setSkin ( const QString& path )
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue("skin_path",path);
 
-    qDebug ( path.toAscii() );    //TODO don't clear lists
-    m_skin_dir = QDir ( path );
+    qDebug ("Skin: set skin %s",qPrintable(path));    //TODO don't clear lists
+    m_skin_dir = QDir (path);
 
     m_pledit_txt.clear();
     loadPLEdit();
@@ -280,15 +281,15 @@ void Skin::loadPlayList()
 
 }
 
-QPixmap *Skin::getPixmap ( const QString& name )
+QPixmap *Skin::getPixmap (const QString& name)
 {
     m_skin_dir.setFilter ( QDir::Files | QDir::Hidden | QDir::NoSymLinks );
     QFileInfoList f = m_skin_dir.entryInfoList();
-    for ( int j = 0; j < f.size(); ++j )
+    for (int j = 0; j < f.size(); ++j)
     {
         QFileInfo fileInfo = f.at ( j );
         QString fn = fileInfo.fileName().toLower();
-        if ( fn.section ( ".",0,0 ) == name )
+        if (fn.section (".",0,0) == name)
         {
             return new QPixmap ( fileInfo.filePath() );
         }
@@ -298,30 +299,15 @@ QPixmap *Skin::getPixmap ( const QString& name )
 
 void Skin::loadPLEdit()
 {
-    m_skin_dir.setFilter ( QDir::Files | QDir::Hidden | QDir::NoSymLinks );
-    QString path;
-    QFileInfoList list = m_skin_dir.entryInfoList();
-    for ( int i = 0; i < list.size(); ++i )
-    {
-        QFileInfo fileInfo = list.at ( i );
-        if ( fileInfo.fileName().toLower() == "pledit.txt" )
-        {
-            path = fileInfo.filePath ();
-            break;
-        }
-    }
+    QString path = findFile("pledit.txt", m_skin_dir);
+    if(path.isEmpty())
+        path = findFile("pledit.txt", ":/default");
+    if(path.isEmpty())
+        qFatal("Skin: invalid default skin");
 
-    if ( path.isNull () )
-    {
-        qDebug ( "Skin: Cannot find pledit.txt" );
-        return;
-    }
-
-
-    QFile file ( path );
-
-    if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
-        return;
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        qFatal("Skin: unable to open %s", qPrintable(path));
 
     while ( !file.atEnd () )
     {
@@ -336,9 +322,9 @@ void Skin::loadPLEdit()
             break;
         }
     }
-    if(!m_pledit_txt.keys().contains("mbbg"))
+    if (!m_pledit_txt.keys().contains("mbbg"))
         m_pledit_txt["mbbg"] = m_pledit_txt["normalbg"];
-     if(!m_pledit_txt.keys().contains("mbfg"))
+    if (!m_pledit_txt.keys().contains("mbfg"))
         m_pledit_txt["mbfg"] = m_pledit_txt["normal"];
 }
 
@@ -413,38 +399,22 @@ void Skin::loadEq_ex()
 
 void Skin::loadVisColor()
 {
-    //QList <QColor> colors;
-    m_skin_dir.setFilter ( QDir::Files | QDir::Hidden | QDir::NoSymLinks );
-    QString path;
-    QFileInfoList list = m_skin_dir.entryInfoList();
-    for ( int i = 0; i < list.size(); ++i )
-    {
-        QFileInfo fileInfo = list.at ( i );
-        if ( fileInfo.fileName().toLower() == "viscolor.txt" )
-        {
-            path = fileInfo.filePath ();
-            break;
-        }
-    }
+    QString path = findFile("viscolor.txt", m_skin_dir);
+    if(path.isEmpty())
+        path = findFile("viscolor.txt", ":/default");
+    if(path.isEmpty())
+        qFatal("Skin: invalid default skin");
 
-    if ( path.isNull () )
-    {
-        qDebug ( "Skin: Cannot find viscolor.txt" );
-        return;
-    }
-
-
-    QFile file ( path );
-
-    if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) )
-        return;
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        qFatal("Skin: unable to open %s", qPrintable(path));
 
     int j = 0;
     while ( !file.atEnd () && j<24 )
     {
         j++;
         QByteArray line = file.readLine ();
-        QString tmp = QString::fromAscii ( line );
+        QString tmp = QString::fromAscii (line);
         tmp = tmp.trimmed ();
         int i = tmp.indexOf ( "//" );
         if ( i>0 )
@@ -674,18 +644,7 @@ void Skin::loadRegion()
 {
     m_mwRegion = QRegion();
     m_plRegion = QRegion();
-    m_skin_dir.setFilter ( QDir::Files | QDir::Hidden | QDir::NoSymLinks );
-    QString path;
-    QFileInfoList list = m_skin_dir.entryInfoList();
-    for ( int i = 0; i < list.size(); ++i )
-    {
-        QFileInfo fileInfo = list.at ( i );
-        if ( fileInfo.fileName().toLower() == "region.txt" )
-        {
-            path = fileInfo.filePath ();
-            break;
-        }
-    }
+    QString path = findFile("region.txt", m_skin_dir);
 
     if ( path.isNull () )
     {
@@ -743,6 +702,28 @@ QPixmap * Skin::getDummyPixmap(const QString& name)
             return new QPixmap ( fileInfo.filePath() );
         }
     }
-    qFatal("Skin:: default skin corrupted");
+    qFatal("Skin: default skin corrupted");
     return 0;
+}
+
+const QString Skin::findFile(const QString &name, QDir dir)
+{
+    dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    QString path;
+    QFileInfoList list = dir.entryInfoList();
+    for (int i = 0; i < list.size(); ++i)
+    {
+        QFileInfo fileInfo = list.at ( i );
+        if ( fileInfo.fileName().toLower() == name )
+        {
+            path = fileInfo.filePath ();
+            break;
+        }
+    }
+    return path;
+}
+
+const QString Skin::findFile(const QString &name, const QString &dir)
+{
+    return findFile(name, QDir(dir));
 }
