@@ -8,5 +8,6 @@
     <file>qmmp_zh_TW.qm</file>
     <file>qmmp_cs.qm</file>
     <file>qmmp_pt_BR.qm</file>
+    <file>qmmp_de.qm</file>
   </qresource>
 </RCC>

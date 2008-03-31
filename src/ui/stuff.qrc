@@ -21,6 +21,8 @@
 
     <file>txt/authors_zh_CN.txt</file>
     <file>txt/thanks_zh_CN.txt</file>
+    
+    <file>txt/thanks_de.txt</file>
 
     <file>default/balance.png</file>
     <file>default/eqmain.png</file>

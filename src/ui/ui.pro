@@ -59,11 +59,11 @@ HEADERS += mainwindow.h \
            unixdomainsocket.h \
            commandlineoption.h \
            addurldialog.h \
-	   skinreader.h \
-	   visualmenu.h \ 
-	   titlebarcontrol.h \
-	   shadedvisual.h \
-	   shadedbar.h
+           skinreader.h \
+           visualmenu.h \
+           titlebarcontrol.h \
+           shadedvisual.h \
+           shadedbar.h
 
 SOURCES += mainwindow.cpp \
            mp3player.cpp \
@@ -141,9 +141,15 @@ INSTALLS += target
 
 #RESOURCES += translations/qmmp_locales.qrc
 
-#TRANSLATIONS = translations/qmmp_ru.ts \
-#       translations/qmmp_tr.ts \
-#       translations/qmmp_zh_CN.ts
+TRANSLATIONS = translations/qmmp_ru.ts \
+               translations/qmmp_tr.ts \
+               translations/qmmp_zh_CN.ts \
+               translations/qmmp_cs.ts \
+               translations/qmmp_pt_BR.ts \
+               translations/qmmp_uk_UA.ts \
+               translations/qmmp_zh_TW.ts \
+               translations/qmmp_de.ts
+
 
 
 
