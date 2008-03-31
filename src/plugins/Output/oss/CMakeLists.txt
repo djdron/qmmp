@@ -49,7 +49,7 @@ SET(liboss_MOC_HDRS
   settingsdialog.h
 )
 
-#SET(libjack_RCCS translations/translations.qrc)
+SET(libjack_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libjack_RCC_SRCS ${libjack_RCCS})
 

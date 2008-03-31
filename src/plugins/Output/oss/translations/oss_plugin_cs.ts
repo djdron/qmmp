@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="pl">
-<defaultcodec></defaultcodec>
 <context>
     <name>OutputOSSFactory</name>
     <message>
@@ -9,22 +8,22 @@
         <translation>Plugin OSS</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="47"/>
+        <location filename="../outputossfactory.cpp" line="56"/>
         <source>About OSS Output Plugin</source>
         <translation>O pluginu OSS</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="48"/>
+        <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
         <translation>Výstupní plugin Qmmp OSS</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="49"/>
+        <location filename="../outputossfactory.cpp" line="58"/>
         <source>Writen by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
         <translation>Autor: Jurij Žuravljov &lt;slalkerg@gmail.com&gt;</translation>
     </message>
     <message>
-        <location filename="../outputossfactory.cpp" line="50"/>
+        <location filename="../outputossfactory.cpp" line="59"/>
         <source>Based on code by:Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
         <translation>Založeno na kódu Brada Hughese &lt;bhughes@trolltech.com&gt;</translation>
     </message>
@@ -32,57 +31,57 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../ui_settingsdialog.h" line="202"/>
+        <location filename="../settingsdialog.ui" line="13"/>
         <source>OSS Plugin Settings</source>
         <translation>Nastavení pluginu OSS</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="207"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Device Settings</source>
         <translation>Nastavení zařízení</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="203"/>
+        <location filename="../settingsdialog.ui" line="62"/>
         <source>Audio device</source>
         <translation>Zvukové zařízení</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="205"/>
+        <location filename="../settingsdialog.ui" line="78"/>
         <source>Mixer device</source>
         <translation>Ovládání hlasitosti</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="213"/>
+        <location filename="../settingsdialog.ui" line="113"/>
         <source>Advanced Settings</source>
         <translation>Pokročilá nastavení</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="208"/>
+        <location filename="../settingsdialog.ui" line="134"/>
         <source>Soundcard</source>
         <translation>Zvuková karta</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="209"/>
+        <location filename="../settingsdialog.ui" line="210"/>
         <source>Buffer time (ms):</source>
         <translation>Velikost bufferu (ms):</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="210"/>
+        <location filename="../settingsdialog.ui" line="220"/>
         <source>Period time (ms):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="212"/>
+        <location filename="../settingsdialog.ui" line="250"/>
         <source>PCM over Master</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="214"/>
+        <location filename="../settingsdialog.ui" line="277"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../ui_settingsdialog.h" line="215"/>
+        <location filename="../settingsdialog.ui" line="284"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
