@@ -3,22 +3,22 @@
 <context>
     <name>OutputALSAFactory</name>
     <message>
-        <location filename="../outputalsafactory.cpp" line="30"/>
+        <location filename="../outputalsafactory.cpp" line="31"/>
         <source>ALSA Plugin</source>
         <translation>Модуль ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="47"/>
+        <location filename="../outputalsafactory.cpp" line="50"/>
         <source>About ALSA Output Plugin</source>
         <translation>О модуле вывода ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="48"/>
+        <location filename="../outputalsafactory.cpp" line="51"/>
         <source>Qmmp ALSA Output Plugin</source>
         <translation>Модуль вывода ALSA для Qmmp</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="49"/>
+        <location filename="../outputalsafactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
