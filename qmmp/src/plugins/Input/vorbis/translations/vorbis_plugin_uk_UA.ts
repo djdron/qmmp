@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ru">
+<!DOCTYPE TS><TS version="1.1" language="uk">
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
@@ -10,27 +10,27 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="33"/>
         <source>Ogg Vorbis Files</source>
-        <translation>Файлы Ogg Vorbis</translation>
+        <translation type="unfinished">Файли Ogg Vorbis</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="90"/>
         <source>About Ogg Vorbis Audio Plugin</source>
-        <translation>Об аудио-модуле Ogg Vorbis</translation>
+        <translation type="unfinished">Про аудіо-модуль Ogg Vorbis</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="91"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
-        <translation>Аудио-модуль Ogg Vorbis для Qmmp</translation>
+        <translation type="unfinished">Аудіо-модуль Ogg Vorbis для Qmmp</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="92"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="94"/>
         <source>Source code based on mq3 progect</source>
-        <translation>Исходный код основан на проекте mq3</translation>
+        <translation type="unfinished">Вихідний код базується на проекті mq3</translation>
     </message>
 </context>
 <context>
@@ -43,17 +43,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="273"/>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation type="unfinished">Зберегти</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="283"/>
         <source>Track number:</source>
-        <translation>Номер трека:</translation>
+        <translation type="unfinished">Номер треку:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="296"/>
         <source>Year:</source>
-        <translation>Год:</translation>
+        <translation type="unfinished">Рік:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="306"/>
@@ -63,7 +63,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="316"/>
         <source>Comment:</source>
-        <translation>Комментарий:</translation>
+        <translation type="unfinished">Коментар:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="326"/>
@@ -73,17 +73,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="336"/>
         <source>Artist:</source>
-        <translation>Исполнитель:</translation>
+        <translation type="unfinished">Виконавець:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="346"/>
         <source>Title:</source>
-        <translation>Название:</translation>
+        <translation type="unfinished">Назва:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="387"/>
         <source>Close</source>
-        <translation>Закрыть</translation>
+        <translation type="unfinished">Закрити</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="197"/>
@@ -93,52 +93,52 @@
     <message>
         <location filename="../detailsdialog.ui" line="227"/>
         <source>File size:</source>
-        <translation>Размер файла:</translation>
+        <translation type="unfinished">Розмір файлу:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="100"/>
         <source>Sample rate:</source>
-        <translation>Дискретизация:</translation>
+        <translation type="unfinished">Дискретизація:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
-        <translation>Путь к файлу:</translation>
+        <translation type="unfinished">Шлях до файлу:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Ogg Vorbis Info</source>
-        <translation>Информация Ogg Vorbis</translation>
+        <translation type="unfinished">Інформація Ogg Vorbis</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="83"/>
         <source>Length:</source>
-        <translation>Длительность:</translation>
+        <translation type="unfinished">Тривалість:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="120"/>
         <source>Channels:</source>
-        <translation>Каналов:</translation>
+        <translation type="unfinished">Каналів:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="143"/>
         <source>Bit Rate</source>
-        <translation>Битовая частота</translation>
+        <translation type="unfinished">Бітова частота</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="187"/>
         <source>Minimum:</source>
-        <translation>Минимальная:</translation>
+        <translation type="unfinished">Мінімальна:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="204"/>
         <source>Maximum:</source>
-        <translation>Максимальная:</translation>
+        <translation type="unfinished">Максимальна:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="214"/>
         <source>Nominal:</source>
-        <translation>Номинальная:</translation>
+        <translation type="unfinished">Номінальна:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="246"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="13"/>
         <source>Details</source>
-        <translation>Информация</translation>
+        <translation type="unfinished">Інформація</translation>
     </message>
 </context>
 </TS>

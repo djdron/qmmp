@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ru">
+<!DOCTYPE TS><TS version="1.1" language="zh_TW">
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="31"/>
         <source>Ogg Vorbis Plugin</source>
-        <translation>Модуль Ogg Vorbis</translation>
+        <translation>Ogg Vorbis 插件</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="33"/>
         <source>Ogg Vorbis Files</source>
-        <translation>Файлы Ogg Vorbis</translation>
+        <translation>Ogg Vorbis 檔案</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="90"/>
         <source>About Ogg Vorbis Audio Plugin</source>
-        <translation>Об аудио-модуле Ogg Vorbis</translation>
+        <translation>關于 Ogg Vorbis 聲訊插件</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="91"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
-        <translation>Аудио-модуль Ogg Vorbis для Qmmp</translation>
+        <translation>Qmmp Ogg Vorbis 聲訊插件</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="92"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="94"/>
         <source>Source code based on mq3 progect</source>
-        <translation>Исходный код основан на проекте mq3</translation>
+        <translation>來源碼基于 mq3 項目</translation>
     </message>
 </context>
 <context>
@@ -38,127 +38,127 @@
     <message>
         <location filename="../detailsdialog.cpp" line="61"/>
         <source>Hz</source>
-        <translation>Гц</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="273"/>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation>儲存</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="283"/>
         <source>Track number:</source>
-        <translation>Номер трека:</translation>
+        <translation>軌迹：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="296"/>
         <source>Year:</source>
-        <translation>Год:</translation>
+        <translation>年代：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="306"/>
         <source>Genre:</source>
-        <translation>Жанр:</translation>
+        <translation>流派：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="316"/>
         <source>Comment:</source>
-        <translation>Комментарий:</translation>
+        <translation>備注：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="326"/>
         <source>Album:</source>
-        <translation>Альбом:</translation>
+        <translation>專輯：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="336"/>
         <source>Artist:</source>
-        <translation>Исполнитель:</translation>
+        <translation>兿術家：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="346"/>
         <source>Title:</source>
-        <translation>Название:</translation>
+        <translation>標題：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="387"/>
         <source>Close</source>
-        <translation>Закрыть</translation>
+        <translation>關閉</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="197"/>
         <source>-</source>
-        <translation></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="227"/>
         <source>File size:</source>
-        <translation>Размер файла:</translation>
+        <translation>檔案大小：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="100"/>
         <source>Sample rate:</source>
-        <translation>Дискретизация:</translation>
+        <translation>取様率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
-        <translation>Путь к файлу:</translation>
+        <translation>檔案路徑：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Ogg Vorbis Info</source>
-        <translation>Информация Ogg Vorbis</translation>
+        <translation>Ogg Vorbis 資訊</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="83"/>
         <source>Length:</source>
-        <translation>Длительность:</translation>
+        <translation>長度：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="120"/>
         <source>Channels:</source>
-        <translation>Каналов:</translation>
+        <translation>音響通道：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="143"/>
         <source>Bit Rate</source>
-        <translation>Битовая частота</translation>
+        <translation>位速率</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="187"/>
         <source>Minimum:</source>
-        <translation>Минимальная:</translation>
+        <translation>最小位速率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="204"/>
         <source>Maximum:</source>
-        <translation>Максимальная:</translation>
+        <translation>最大位速率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="214"/>
         <source>Nominal:</source>
-        <translation>Номинальная:</translation>
+        <translation>名義位速率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="246"/>
         <source>Ogg Vorbis Tag</source>
-        <translation>Оgg Vorbis-тег</translation>
+        <translation>Ogg Vorbis 標簽</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
         <source>kbps</source>
-        <translation>Кб/с</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="70"/>
         <source>KB</source>
-        <translation>Кб</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="13"/>
         <source>Details</source>
-        <translation>Информация</translation>
+        <translation>詳細資料</translation>
     </message>
 </context>
 </TS>

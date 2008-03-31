@@ -20,8 +20,12 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib
 PKGCONFIG += taglib ogg vorbisfile vorbis
-#TRANSLATIONS = translations/vorbis_plugin_ru.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/vorbis_plugin_ru.ts \
+               translations/vorbis_plugin_uk_UA.ts \
+               translations/vorbis_plugin_zh_CN.ts \
+               translations/vorbis_plugin_zh_TW.ts \
+               translations/vorbis_plugin_cs.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){
 LIB_DIR = /lib
