@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ru">
+<!DOCTYPE TS><TS version="1.1" language="zh_TW">
 <context>
     <name>DecoderMADFactory</name>
     <message>
         <location filename="../decodermadfactory.cpp" line="52"/>
         <source>MPEG Plugin</source>
-        <translation>Модуль MPEG</translation>
+        <translation>MPEG 插件</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="54"/>
         <source>MPEG Files</source>
-        <translation>Файлы MPEG</translation>
+        <translation>MPEG 檔案</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="168"/>
         <source>About MPEG Audio Plugin</source>
-        <translation>Об аудио-модуле MPEG</translation>
+        <translation>關于 MPEG 聲訊插件</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="169"/>
         <source>Qmmp MPEG Audio Plugin</source>
-        <translation>Аудио-модуль MPEG для Qmmp</translation>
+        <translation>Qmmp MPEG 聲訊插件</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="170"/>
         <source>Compiled against libmad version:</source>
-        <translation>Собрано с версией libmad:</translation>
+        <translation>編譯基于 libmad 的版本：</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="174"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="176"/>
         <source>Source code based on mq3 progect</source>
-        <translation>Исходный код основан на проекте mq3</translation>
+        <translation>來源碼基于 mq3 項目</translation>
     </message>
 </context>
 <context>
@@ -43,137 +43,137 @@
     <message>
         <location filename="../detailsdialog.cpp" line="103"/>
         <source>Hz</source>
-        <translation>Гц</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="130"/>
         <source>Yes</source>
-        <translation>Есть</translation>
+        <translation>是</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="132"/>
         <source>No</source>
-        <translation>Нет</translation>
+        <translation>否</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="223"/>
         <source>ID3v1 Tag</source>
-        <translation>ID3v1-тег</translation>
+        <translation>ID3v1 標簽</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="461"/>
         <source>Save</source>
-        <translation>Сохранить</translation>
+        <translation>儲存</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="377"/>
         <source>Track number:</source>
-        <translation>Номер трека:</translation>
+        <translation>軌迹：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="351"/>
         <source>Year:</source>
-        <translation>Год:</translation>
+        <translation>年代：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="403"/>
         <source>Genre:</source>
-        <translation>Жанр:</translation>
+        <translation>流派：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="325"/>
         <source>Comment:</source>
-        <translation>Комментарий:</translation>
+        <translation>備注：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="299"/>
         <source>Album:</source>
-        <translation>Альбом:</translation>
+        <translation>專輯：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="273"/>
         <source>Artist:</source>
-        <translation>Исполнитель:</translation>
+        <translation>兿術家：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="247"/>
         <source>Title:</source>
-        <translation>Название:</translation>
+        <translation>標題：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="484"/>
         <source>Close</source>
-        <translation>Закрыть</translation>
+        <translation>關閉</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="151"/>
         <source>ID3v2 Tag</source>
-        <translation>ID3v2-тег</translation>
+        <translation>ID3v2 標簽</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="90"/>
         <source>MPEG Info</source>
-        <translation>Информация MPEG</translation>
+        <translation>MPEG 資訊</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="211"/>
         <source>-</source>
-        <translation></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="201"/>
         <source>Original:</source>
-        <translation>Оригинальный:</translation>
+        <translation>原創：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="184"/>
         <source>Copyright:</source>
-        <translation>Авторские права:</translation>
+        <translation>版權：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="167"/>
         <source>Mode:</source>
-        <translation>Режим:</translation>
+        <translation>聲道型態：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="150"/>
         <source>File size:</source>
-        <translation>Размер файла:</translation>
+        <translation>檔案大小：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="133"/>
         <source>Sample rate:</source>
-        <translation>Дискретизация:</translation>
+        <translation>取様率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="116"/>
         <source>Bit rate:</source>
-        <translation>Битовая частота:</translation>
+        <translation>位速率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="96"/>
         <source>MPEG level:</source>
-        <translation>Уровень MPEG:</translation>
+        <translation>MPEG 級彆：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="27"/>
         <source>File path:</source>
-        <translation>Путь к файлу:</translation>
+        <translation>檔案路徑：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="119"/>
         <source>KB</source>
-        <translation>Кб</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
         <source>Details</source>
-        <translation>Информация</translation>
+        <translation>詳細資料</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="101"/>
         <source>kbps</source>
-        <translation>Кб/с</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="155"/>
@@ -188,12 +188,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="60"/>
         <source>ID3v1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ID3v1</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="67"/>
         <source>ID3v2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ID3v2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
@@ -216,37 +216,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="141"/>
         <source>ID3v1</source>
-        <translation></translation>
+        <translation>ID3v1</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="146"/>
         <source>ID3v2</source>
-        <translation></translation>
+        <translation>ID3v2</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="192"/>
         <source>ID3v1 encoding:</source>
-        <translation>Кодировка ID3v1:</translation>
+        <translation>ID3v1 編碼：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="224"/>
         <source>ID3v2 encoding:</source>
-        <translation>Кодировка ID3v2:</translation>
+        <translation>ID3v2 編碼：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="272"/>
         <source>OK</source>
-        <translation>Применить</translation>
+        <translation>確定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="279"/>
         <source>Cancel</source>
-        <translation>Отмена</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>MPEG Plugin Settings</source>
-        <translation>Настройка модуля MPEG</translation>
+        <translation>MPEG 插件設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
