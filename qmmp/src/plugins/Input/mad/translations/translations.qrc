@@ -2,5 +2,9 @@
 <RCC version="1.0">
   <qresource>
     <file>mad_plugin_ru.qm</file>
+    <file>mad_plugin_uk_UA.qm</file>
+    <file>mad_plugin_zh_CN.qm</file>
+    <file>mad_plugin_zh_TW.qm</file>
+    <file>mad_plugin_cs.qm</file>
   </qresource>
 </RCC>
