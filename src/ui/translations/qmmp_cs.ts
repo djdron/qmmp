@@ -86,13 +86,13 @@
 <context>
     <name>AddUrlDialog</name>
     <message>
-        <location filename="../addurldialog.cpp" line="99"/>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
+        <translation>Přidat URL</translation>
+    </message>
+    <message>
+        <location filename="../addurldialog.cpp" line="99"/>
+        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -269,6 +269,51 @@
         <translation>Zavřít</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="132"/>
+        <source>Connectivity</source>
+        <translation>Síť</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="603"/>
+        <source>File Dialog</source>
+        <translation>Souborový dialog</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="736"/>
+        <source>Proxy</source>
+        <translation>Proxy</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="748"/>
+        <source>Enable proxy usage</source>
+        <translation>Povolit používání proxy</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="755"/>
+        <source>Proxy host name:</source>
+        <translation>Adresa proxy:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="768"/>
+        <source>Proxy port:</source>
+        <translation>Port proxy:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="781"/>
+        <source>Use authentication with proxy</source>
+        <translation>Použít autorizaci pro proxy</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="788"/>
+        <source>Proxy user name:</source>
+        <translation>Uživatelské jméno:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="801"/>
+        <source>Proxy password:</source>
+        <translation>Heslo:</translation>
+    </message>
+    <message>
         <location filename="../configdialog.cpp" line="170"/>
         <source>Archived skin</source>
         <translation type="unfinished"></translation>
@@ -276,11 +321,6 @@
     <message>
         <location filename="../configdialog.cpp" line="192"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="132"/>
-        <source>Connectivity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -296,11 +336,6 @@
     <message>
         <location filename="../forms/configdialog.ui" line="589"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="603"/>
-        <source>File Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -326,41 +361,6 @@
     <message>
         <location filename="../forms/configdialog.ui" line="709"/>
         <source>Start hidden</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="736"/>
-        <source>Proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="748"/>
-        <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="755"/>
-        <source>Proxy host name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="768"/>
-        <source>Proxy port:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="781"/>
-        <source>Use authentication with proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="788"/>
-        <source>Proxy user name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="801"/>
-        <source>Proxy password:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -653,7 +653,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="636"/>
         <source>&amp;Jump To File</source>
-        <translation>Pře&amp;skočit na soubor</translation>
+        <translation>Přeskočit na soubo&amp;r</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="636"/>
@@ -861,12 +861,12 @@
     <message>
         <location filename="../playlist.cpp" line="142"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat &amp;URL</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="143"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>U</translation>
     </message>
 </context>
 <context>
