@@ -1,0 +1,12 @@
+核心开发：
+
+    Ilya Kotov <forkotov02@hotmail.ru> (idea and base code)
+    Vladimir Kuznetsov <vovanec@gmail.com> (look&feel and many improvements)
+
+插件开发：
+
+    Yuriy Zhuravlev <stalkerg@gmail.com> (jack plugin)
+
+简体中文翻译：
+
+	李红昆 <lon83129@126.com>
