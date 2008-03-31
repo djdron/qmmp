@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ru">
+<!DOCTYPE TS><TS version="1.1" language="de">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="13"/>
         <source>About Qmmp</source>
-        <translation>О Qmmp</translation>
+        <translation>Über Qmmp</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="51"/>
         <source>About</source>
-        <translation>О программе</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="154"/>
-        <source>License Agreement</source>
-        <translation>Лицензия</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="83"/>
         <source>Authors</source>
-        <translation>Авторы</translation>
+        <translation>Autoren</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="125"/>
         <source>Thanks To</source>
-        <translation>Благодарности</translation>
+        <translation>Dank an</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="154"/>
+        <source>License Agreement</source>
+        <translation>Lizenz</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="60"/>
@@ -86,13 +86,13 @@
 <context>
     <name>AddUrlDialog</name>
     <message>
-        <location filename="../addurldialog.cpp" line="99"/>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
+        <translation>URL eingeben und hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../addurldialog.cpp" line="99"/>
+        <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -111,87 +111,107 @@
     <message>
         <location filename="../configdialog.cpp" line="334"/>
         <source>Enabled</source>
-        <translation>Включён</translation>
+        <translation>Aktiviert</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="334"/>
         <source>Description</source>
-        <translation>Описание</translation>
+        <translation>Beschreibung</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="508"/>
         <source>Filename</source>
-        <translation>Имя файла</translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="503"/>
         <source>Artist</source>
-        <translation>Исполнитель</translation>
+        <translation>Künstler</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="504"/>
         <source>Album</source>
-        <translation>Альбом</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="505"/>
         <source>Title</source>
-        <translation>Название</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="506"/>
         <source>Tracknumber</source>
-        <translation>Номер трека</translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="507"/>
         <source>Genre</source>
-        <translation>Жанр</translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="509"/>
         <source>Filepath</source>
-        <translation>Путь к файлу</translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="510"/>
         <source>Date</source>
-        <translation>Дата</translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="511"/>
         <source>Year</source>
-        <translation>Год</translation>
+        <translation>Jahr</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="512"/>
         <source>Comment</source>
-        <translation>Комментарий</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="13"/>
         <source>Qmmp Settings</source>
-        <translation>Настройки Qmmp</translation>
+        <translation>Qmmp Einstellungen</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="100"/>
+        <source>Appearance</source>
+        <translation>Erscheinungsbild</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="108"/>
+        <source>Playlist</source>
+        <translation>Wiedergabeliste</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="116"/>
+        <source>Plugins</source>
+        <translation>Plugins</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="124"/>
+        <source>Advanced</source>
+        <translation>Erweitert</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="174"/>
         <source>Skins</source>
-        <translation>Обложки</translation>
+        <translation>Symbolthema</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="217"/>
         <source>Fonts</source>
-        <translation>Шрифты</translation>
+        <translation>Schriftart</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="247"/>
         <source>Player:</source>
-        <translation>Плеер:</translation>
+        <translation>Player:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="263"/>
         <source>Playlist:</source>
-        <translation>Список:</translation>
+        <translation>Wiedergabeliste:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="299"/>
@@ -206,67 +226,92 @@
     <message>
         <location filename="../forms/configdialog.ui" line="338"/>
         <source>Metadata</source>
-        <translation>Метаданные</translation>
+        <translation>Metadaten</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="362"/>
         <source>Load metadata from files</source>
-        <translation>Считывать метаданные из файлов</translation>
+        <translation>Metadaten aus Dateien laden</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="372"/>
         <source>Song Display</source>
-        <translation>Список песен</translation>
+        <translation>Titelanzeige</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="393"/>
         <source>Title format:</source>
-        <translation>Формат названия:</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="488"/>
-        <source>Input</source>
-        <translation>Ввод</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="526"/>
-        <source>Output</source>
-        <translation>Вывод</translation>
+        <translation>Titelformat:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="451"/>
         <source>Preferences</source>
-        <translation>Настройки</translation>
+        <translation>Konfiguration</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="458"/>
         <source>Information</source>
-        <translation>Информация</translation>
+        <translation>Information</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="100"/>
-        <source>Appearance</source>
-        <translation>Внешний вид</translation>
+        <location filename="../forms/configdialog.ui" line="488"/>
+        <source>Input</source>
+        <translation>Eingabe</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="108"/>
-        <source>Playlist</source>
-        <translation>Список</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="116"/>
-        <source>Plugins</source>
-        <translation>Модули</translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="124"/>
-        <source>Advanced</source>
-        <translation>Дополнительно</translation>
+        <location filename="../forms/configdialog.ui" line="526"/>
+        <source>Output</source>
+        <translation>Ausgabe</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="877"/>
         <source>Close</source>
-        <translation>Закрыть</translation>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="132"/>
+        <source>Connectivity</source>
+        <translation>Verbindung</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="603"/>
+        <source>File Dialog</source>
+        <translation>Datei-Dialog</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="736"/>
+        <source>Proxy</source>
+        <translation>Proxy</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="748"/>
+        <source>Enable proxy usage</source>
+        <translation>Proxy aktivieren</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="755"/>
+        <source>Proxy host name:</source>
+        <translation>Name des Proxyservers:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="768"/>
+        <source>Proxy port:</source>
+        <translation>Proxy-Port:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="781"/>
+        <source>Use authentication with proxy</source>
+        <translation>Benutze Authentisierung mit Proxyserver</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="788"/>
+        <source>Proxy user name:</source>
+        <translation>Benutzername für Proxyserver:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="801"/>
+        <source>Proxy password:</source>
+        <translation>Passwort für Proxyserver:</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="170"/>
@@ -276,11 +321,6 @@
     <message>
         <location filename="../configdialog.cpp" line="192"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="132"/>
-        <source>Connectivity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -296,11 +336,6 @@
     <message>
         <location filename="../forms/configdialog.ui" line="589"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="603"/>
-        <source>File Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -328,93 +363,58 @@
         <source>Start hidden</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="736"/>
-        <source>Proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="748"/>
-        <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="755"/>
-        <source>Proxy host name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="768"/>
-        <source>Proxy port:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="781"/>
-        <source>Use authentication with proxy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="788"/>
-        <source>Proxy user name:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="801"/>
-        <source>Proxy password:</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>EqWidget</name>
     <message>
         <location filename="../eqwidget.cpp" line="172"/>
         <source>preset</source>
-        <translation>предустановка</translation>
+        <translation>Voreinstellung</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="258"/>
         <source>&amp;Load/Delete</source>
-        <translation>&amp;Загрузить/Удалить</translation>
+        <translation>&amp;Laden/Löschen</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="260"/>
         <source>&amp;Save Preset</source>
-        <translation>&amp;Сохранить предустановку</translation>
+        <translation>&amp;Voreinstellung speichern</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="261"/>
         <source>&amp;Save Auto-load Preset</source>
-        <translation>&amp;Сохранить авто-предустановку</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="264"/>
-        <source>&amp;Clear</source>
-        <translation>&amp;Очистить</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="293"/>
-        <source>Saving Preset</source>
-        <translation>Сохранение предустановки</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="294"/>
-        <source>Preset name:</source>
-        <translation>Имя предустановки:</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="295"/>
-        <source>preset #</source>
-        <translation>предустановка #</translation>
+        <translation>&amp;Automatische Voreinstellungen speichern</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="262"/>
         <source>&amp;Import</source>
-        <translation>&amp;Импортировать</translation>
+        <translation>&amp;Importieren</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="264"/>
+        <source>&amp;Clear</source>
+        <translation>&amp;Leeren</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="293"/>
+        <source>Saving Preset</source>
+        <translation>Voreinstellung speichern</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="294"/>
+        <source>Preset name:</source>
+        <translation>Name der Voreinstellung:</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="295"/>
+        <source>preset #</source>
+        <translation>Voreinstellung #</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="389"/>
         <source>Import Preset</source>
-        <translation>Импорт предустановки</translation>
+        <translation>Voreinstellung importieren</translation>
     </message>
 </context>
 <context>
@@ -422,37 +422,37 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="123"/>
         <source>Unqueue</source>
-        <translation>Снять с очереди</translation>
+        <translation>Aus Warteschlange entfernen</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="125"/>
         <source>Queue</source>
-        <translation>В очередь</translation>
+        <translation>In Warteschlange</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="13"/>
         <source>Jump To Track</source>
-        <translation>Перейти к треку</translation>
+        <translation>Springe zu Titel</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="33"/>
         <source>Filter</source>
-        <translation>Фильтр</translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="86"/>
         <source>Refresh</source>
-        <translation>Обновить</translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="93"/>
         <source>Jump To</source>
-        <translation>Перейти к</translation>
+        <translation>Springe zu</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="100"/>
         <source>Close</source>
-        <translation>Закрыть</translation>
+        <translation>Schließen</translation>
     </message>
 </context>
 <context>
@@ -578,127 +578,127 @@
     <message>
         <location filename="../mainwindow.cpp" line="695"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="456"/>
         <source>Choose a directory</source>
-        <translation>Выберите директорию</translation>
+        <translation>Verzeichnis wählen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="490"/>
         <source>Select one or more files to open</source>
-        <translation>Выберите один или несколько файлов</translation>
+        <translation>Eine oder mehrere Dateien zu Öffnen auswählen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
         <source>&amp;Play</source>
-        <translation>&amp;Воспроизвести</translation>
+        <translation>&amp;Wiedergabe</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
         <source>&amp;Pause</source>
-        <translation>&amp;Приостановить</translation>
+        <translation>&amp;Pause</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation>C</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
         <source>&amp;Stop</source>
-        <translation>&amp;Стоп</translation>
+        <translation>&amp;Stop</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation>V</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="631"/>
         <source>&amp;Previous</source>
-        <translation>&amp;Назад</translation>
+        <translation>&amp;Vorheriger Titel</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="631"/>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation>Z</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="632"/>
         <source>&amp;Next</source>
-        <translation>&amp;Вперёд</translation>
+        <translation>&amp;Nächster Titel</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="632"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="634"/>
         <source>&amp;Queue</source>
-        <translation>&amp;В очередь</translation>
+        <translation>&amp;Warteschlange</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="634"/>
         <source>Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="636"/>
         <source>&amp;Jump To File</source>
-        <translation>&amp;Перейти к файлу</translation>
+        <translation>&amp;Springe zu Titel</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="636"/>
         <source>J</source>
-        <translation type="unfinished"></translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>&amp;Settings</source>
-        <translation>&amp;Настройки</translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="642"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="648"/>
-        <source>&amp;Exit</source>
-        <translation>&amp;Выход</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="648"/>
-        <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="724"/>
-        <source>Open Playlist</source>
-        <translation>Открыть список</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="765"/>
-        <source>Save Playlist</source>
-        <translation>Сохранить список</translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="644"/>
         <source>&amp;About</source>
-        <translation>&amp;О программе</translation>
+        <translation>Ü&amp;ber</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="648"/>
+        <source>&amp;Exit</source>
+        <translation>&amp;Beenden</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="648"/>
+        <source>Ctrl+Q</source>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="749"/>
         <source>Playlist Files</source>
-        <translation>Файлы списков</translation>
+        <translation>Wiedergabelisten</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="724"/>
+        <source>Open Playlist</source>
+        <translation>Wiedergabeliste öffnen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="765"/>
+        <source>Save Playlist</source>
+        <translation>Wiedergabeliste speichern</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="633"/>
@@ -719,154 +719,154 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="131"/>
-        <source>F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="137"/>
-        <source>D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="169"/>
-        <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="248"/>
-        <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="263"/>
-        <source>O</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../playlist.cpp" line="130"/>
         <source>&amp;Add File</source>
-        <translation>&amp;Добавить файл</translation>
+        <translation>&amp;Datei hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="131"/>
+        <source>F</source>
+        <translation>F</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="136"/>
         <source>&amp;Add Directory</source>
-        <translation>&amp;Добавить директорию</translation>
+        <translation>&amp;Verzeichnis hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="137"/>
+        <source>D</source>
+        <translation>D</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="149"/>
         <source>&amp;Remove Selected</source>
-        <translation>&amp;Удалить выделенное</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="156"/>
-        <source>&amp;Remove All</source>
-        <translation>&amp;Удалить всё</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="162"/>
-        <source>&amp;Remove Unselected</source>
-        <translation>&amp;Удалить невыделенное</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="168"/>
-        <source>&amp;View Track Details</source>
-        <translation>&amp;Информация</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="177"/>
-        <source>Sort List</source>
-        <translation>Сортировать</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="203"/>
-        <source>By Title</source>
-        <translation>По названию</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="207"/>
-        <source>By Filename</source>
-        <translation>По имени файла</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="211"/>
-        <source>By Path + Filename</source>
-        <translation>По пути и файлу</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="215"/>
-        <source>By Date</source>
-        <translation>По дате</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="201"/>
-        <source>Sort Selection</source>
-        <translation>Сортировать выделенное</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="225"/>
-        <source>Randomize List</source>
-        <translation>Перемешать</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="226"/>
-        <source>Reverse List</source>
-        <translation>Перевернуть</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="233"/>
-        <source>Invert Selection</source>
-        <translation>Инвертировать выделение</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="240"/>
-        <source>&amp;Select None</source>
-        <translation>&amp;Снять выделение</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="247"/>
-        <source>&amp;Select All</source>
-        <translation>&amp;Выделить всё</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="255"/>
-        <source>&amp;New List</source>
-        <translation>&amp;Новый лист</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="256"/>
-        <source>Shift+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="262"/>
-        <source>&amp;Load List</source>
-        <translation>&amp;Загрузить лист</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="267"/>
-        <source>&amp;Save List</source>
-        <translation>&amp;Сохранить лист</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="268"/>
-        <source>Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ausgewählte entfernen</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="150"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation>Entf</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="156"/>
+        <source>&amp;Remove All</source>
+        <translation>Alle &amp;entfernen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="162"/>
+        <source>&amp;Remove Unselected</source>
+        <translation>&amp;Nicht ausgewählte entfernen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="168"/>
+        <source>&amp;View Track Details</source>
+        <translation>&amp;Titeldetails anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="169"/>
+        <source>Alt+I</source>
+        <translation>Alt+I</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="177"/>
+        <source>Sort List</source>
+        <translation>Wiedergabeliste sortieren</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="203"/>
+        <source>By Title</source>
+        <translation>Nach Titel</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="207"/>
+        <source>By Filename</source>
+        <translation>Nach Dateinamen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="211"/>
+        <source>By Path + Filename</source>
+        <translation>Nach Pfad + Dateinamen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="215"/>
+        <source>By Date</source>
+        <translation>Nach Datum</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="201"/>
+        <source>Sort Selection</source>
+        <translation>Auswahl sortieren</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="225"/>
+        <source>Randomize List</source>
+        <translation>Zufällige Wiedergabe</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="226"/>
+        <source>Reverse List</source>
+        <translation>Wiedergabeliste umkehren</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="233"/>
+        <source>Invert Selection</source>
+        <translation>Auswahl umkehren</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="240"/>
+        <source>&amp;Select None</source>
+        <translation>&amp;Keine auswählen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="247"/>
+        <source>&amp;Select All</source>
+        <translation>Alle aus&amp;wählen</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="248"/>
+        <source>Ctrl+A</source>
+        <translation>Ctrl+A</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="255"/>
+        <source>&amp;New List</source>
+        <translation>&amp;Neue Wiedergabeliste</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="256"/>
+        <source>Shift+N</source>
+        <translation>Shift+N</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="262"/>
+        <source>&amp;Load List</source>
+        <translation>Wiedergabeliste &amp;laden</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="263"/>
+        <source>O</source>
+        <translation>O</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="267"/>
+        <source>&amp;Save List</source>
+        <translation>Wiedergabeliste &amp;speichern</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="268"/>
+        <source>Shift+S</source>
+        <translation>Shift+S</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="142"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;URL hinzufügen</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="143"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>U</translation>
     </message>
 </context>
 <context>
@@ -874,27 +874,27 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="13"/>
         <source>Preset Editor</source>
-        <translation>Редактор предустановок</translation>
+        <translation>Voreinstellungen editieren</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="28"/>
         <source>Load</source>
-        <translation>Загрузить</translation>
+        <translation>Laden</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="35"/>
         <source>Delete</source>
-        <translation>Удалить</translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="46"/>
         <source>Preset</source>
-        <translation>Предустановка</translation>
+        <translation>Voreinstellung</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="62"/>
         <source>Auto-preset</source>
-        <translation>Авто-предустановка</translation>
+        <translation>Automatische Voreinstellung</translation>
     </message>
 </context>
 <context>
