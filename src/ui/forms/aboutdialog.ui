@@ -116,7 +116,11 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <item>
-        <widget class="QTextEdit" name="textEdit" />
+        <widget class="QTextEdit" name="translatorsTextEdit" >
+         <property name="readOnly" >
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

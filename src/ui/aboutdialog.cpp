@@ -59,6 +59,7 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
     aboutTextEdit->setHtml(loadAbout());
     authorsTextEdit->setPlainText(getstringFromResource(tr(":/txt/authors_en.txt")));
     thanksToTextEdit->setPlainText(getstringFromResource(tr(":/txt/thanks_en.txt")));
+    translatorsTextEdit->setPlainText(getstringFromResource(tr(":/txt/translators_en.txt")));
 }
 
 AboutDialog::~AboutDialog()
