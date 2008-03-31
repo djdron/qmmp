@@ -13,7 +13,7 @@
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="154"/>
+        <location filename="../forms/aboutdialog.ui" line="158"/>
         <source>License Agreement</source>
         <translation>许可协议</translation>
     </message>
@@ -23,7 +23,7 @@
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="125"/>
+        <location filename="../forms/aboutdialog.ui" line="129"/>
         <source>Thanks To</source>
         <translation>感谢</translation>
     </message>
@@ -38,48 +38,53 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="79"/>
+        <location filename="../aboutdialog.cpp" line="80"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="80"/>
+        <location filename="../aboutdialog.cpp" line="81"/>
         <source>Version:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="81"/>
+        <location filename="../aboutdialog.cpp" line="82"/>
         <source>:txt/description_en.txt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="82"/>
+        <location filename="../aboutdialog.cpp" line="83"/>
         <source>Input plugins:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="91"/>
+        <location filename="../aboutdialog.cpp" line="92"/>
         <source>Output plugins:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="100"/>
+        <location filename="../aboutdialog.cpp" line="101"/>
         <source>Visual plugins:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="109"/>
+        <location filename="../aboutdialog.cpp" line="110"/>
         <source>Effect plugins:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../aboutdialog.cpp" line="118"/>
+        <location filename="../aboutdialog.cpp" line="119"/>
         <source>General plugins:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="115"/>
         <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="62"/>
+        <source>:/txt/translators_en.txt</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
