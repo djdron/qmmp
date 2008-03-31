@@ -57,8 +57,8 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     licenseTextEdit->setPlainText(getstringFromResource(":COPYING"));
     aboutTextEdit->setHtml(loadAbout());
-    authorsTextEdit->setPlainText(getstringFromResource(tr(":/html/authors_en.txt")));
-    thanksToTextEdit->setPlainText(getstringFromResource(tr(":/html/thanks_en.txt")));
+    authorsTextEdit->setPlainText(getstringFromResource(tr(":/txt/authors_en.txt")));
+    thanksToTextEdit->setPlainText(getstringFromResource(tr(":/txt/thanks_en.txt")));
 }
 
 AboutDialog::~AboutDialog()

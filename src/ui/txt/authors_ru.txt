@@ -5,10 +5,5 @@
 
 Разработчики модулей:
 
-    Юрий Журавлёв <stalkerg@gmail.com> (модули jack и oss)
-
-Дизайн:
-
-    Андрей Андреев <andreev00@gmail.com>
-
+    Юрий Журавлёв <stalkerg@gmail.com> (модуль jack)
 

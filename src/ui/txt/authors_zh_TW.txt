@@ -1,16 +1,17 @@
-核心开发：
+核心開發：
 
     Ilya Kotov <forkotov02@hotmail.ru> (idea and base code)
     Vladimir Kuznetsov <vovanec@gmail.com> (look&feel and many improvements)
 
-插件开发：
+插件開發：
 
     Yuriy Zhuravlev <stalkerg@gmail.com> (jack plugin)
-
-土耳其语翻译：
-
-    Mustafa GUNAY <mustafagunay@gmail.com>
 
 简体中文翻译：
 
 	李红昆 <lon83129@126.com>
+
+繁體中文翻譯：
+
+	李红昆 <lon83129@126.com>
+
