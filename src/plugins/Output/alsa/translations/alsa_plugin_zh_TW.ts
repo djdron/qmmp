@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS><TS version="1.1" language="zh_TW">
 <context>
     <name>OutputALSAFactory</name>
     <message>
         <location filename="../outputalsafactory.cpp" line="31"/>
         <source>ALSA Plugin</source>
-        <translation>Plugin ALSA</translation>
+        <translation>ALSA 插件</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="50"/>
         <source>About ALSA Output Plugin</source>
-        <translation>O pluginu ALSA</translation>
+        <translation>關于 ALSA 匯出插件</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="51"/>
         <source>Qmmp ALSA Output Plugin</source>
-        <translation>Výstupní plugin Qmmp ALSA</translation>
+        <translation>Qmmp ALSA 匯出插件</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
-        <source>ALSA Plugin Settings</source>
-        <translation>Nastavení pluginu ALSA</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Device Settings</source>
-        <translation>Nastavení zařízení</translation>
+        <translation>裝置設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Audio device</source>
-        <translation>Zvukové zařízení</translation>
+        <translation>聲訊裝置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Mixer</source>
-        <translation>Mixér</translation>
+        <translation>混頻</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="73"/>
         <source>Mixer card:</source>
-        <translation>Zvuková karta:</translation>
+        <translation>混頻卡：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="83"/>
         <source>Mixer device:</source>
-        <translation>Ovládání hlasitosti:</translation>
+        <translation>混頻裝置：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Advanced Settings</source>
-        <translation>Pokročilá nastavení</translation>
+        <translation>進階設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="112"/>
         <source>Soundcard</source>
-        <translation>Zvuková karta</translation>
+        <translation>音效卡</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="176"/>
         <source>Buffer time (ms):</source>
-        <translation>Velikost bufferu (ms):</translation>
+        <translation>緩衝時間(ms)：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="186"/>
         <source>Period time (ms):</source>
-        <translation type="unfinished">Délka periody (ms):</translation>
+        <translation>周期時間(ms)：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="229"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>取消</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="236"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>確認</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="13"/>
+        <source>ALSA Plugin Settings</source>
+        <translation>ALSA 插件設定</translation>
     </message>
 </context>
 </TS>
