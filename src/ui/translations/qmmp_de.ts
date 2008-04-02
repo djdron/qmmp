@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -30,62 +31,62 @@
     <message>
         <location filename="../aboutdialog.cpp" line="60"/>
         <source>:/txt/authors_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/authors_de.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
         <source>:/txt/thanks_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/thanks_de.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="80"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt-basierender Multimedia Player (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Version:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="82"/>
         <source>:txt/description_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:txt/description_de.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>Input plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekoder:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="92"/>
         <source>Output plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabe:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="101"/>
         <source>Visual plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualisierung:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="110"/>
         <source>Effect plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Effekte:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="119"/>
         <source>General plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgemein:</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="115"/>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzer</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
         <source>:/txt/translators_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/translators_de.txt</translation>
     </message>
 </context>
 <context>
@@ -98,17 +99,17 @@
     <message>
         <location filename="../addurldialog.cpp" line="99"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hinzufügen</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Abbrechen</translation>
     </message>
 </context>
 <context>
@@ -321,52 +322,52 @@
     <message>
         <location filename="../configdialog.cpp" line="170"/>
         <source>Archived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivierter Skin</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="192"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht archivierter Skin</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="558"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualisierung</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="575"/>
         <source>Effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Effekte</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="589"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgemein</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="680"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="686"/>
         <source>Use software volume control</source>
-        <translation type="unfinished"></translation>
+        <translation>Softwaregesteuerte Lautstärkeregelung</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="696"/>
         <source>Visibility Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Tray-Steuerung</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="702"/>
         <source>Hide on close</source>
-        <translation type="unfinished"></translation>
+        <translation>Beim Schließen minimieren</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="709"/>
         <source>Start hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimiert starten</translation>
     </message>
 </context>
 <context>
@@ -465,117 +466,117 @@
     <message>
         <location filename="../mainvisual.cpp" line="309"/>
         <source>Visualization Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualisierungsmodus</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="312"/>
         <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Analyzer</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="313"/>
         <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <translation>Oszilloskop</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="314"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Aus</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="321"/>
         <source>Analyzer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Analyzer-Modus</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="324"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="325"/>
         <source>Fire</source>
-        <translation type="unfinished"></translation>
+        <translation>Feuer</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="326"/>
         <source>Vertical Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikale Linien</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="327"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Linien</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="328"/>
         <source>Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Balken</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="341"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Spitzen</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="345"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiederholfrequenz</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="348"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>50 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="349"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>25 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="350"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>10 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="351"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>5 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="358"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Analyzer Fall-off</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="375"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>Sehr langsam</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="376"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>Langsam</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="377"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittel</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="378"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>Schnell</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="379"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>Sehr schnell</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="372"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Peaks Fall-off</translation>
     </message>
 </context>
 <context>
@@ -708,17 +709,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="633"/>
         <source>P&amp;lay/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Wieder&amp;gabe/Pause</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="633"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Leertaste</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="645"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Übe&amp;r Qt</translation>
     </message>
 </context>
 <context>
@@ -907,7 +908,7 @@
     <message>
         <location filename="../visualmenu.cpp" line="30"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualisierung</translation>
     </message>
 </context>
 </TS>

@@ -1,0 +1,1 @@
+Diese Programm ist ein Audio-Player, der die Qt-Bibliotheken verwendet.

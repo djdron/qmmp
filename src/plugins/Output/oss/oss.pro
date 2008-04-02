@@ -24,7 +24,8 @@ plugin
 TEMPLATE = lib
 LIBS += -lqmmp
 
-TRANSLATIONS = translations/oss_plugin_cs.ts
+TRANSLATIONS = translations/oss_plugin_cs.ts \
+               translations/oss_plugin_de.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR){

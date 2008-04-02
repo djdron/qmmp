@@ -1,0 +1,24 @@
+Brasilianisch Portugiesisch:
+    Klaos Lacerda
+    Bruno Gonçalves
+
+Chinesisch (Langzeichen):
+    lon <lon83129@126.com>
+
+Chinesisch (Kurzzeichen):
+    lon <lon83129@126.com>
+
+Tschechisch:
+    Karel Volný <kvolny@redhat.com>
+
+Deutsch:
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+
+Russisch:
+    Ilya Kotov <for_kotov@hotmail.ru>
+
+Türkisch:
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+
+Ukrainisch:
+    Gennadi Motsyo <drool@altlinux.ru>
