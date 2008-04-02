@@ -25,7 +25,8 @@ TRANSLATIONS = translations/mpc_plugin_ru.ts \
                translations/mpc_plugin_uk_UA.ts \
                translations/mpc_plugin_zh_CN.ts \
                translations/mpc_plugin_zh_TW.ts \
-               translations/mpc_plugin_cs.ts
+               translations/mpc_plugin_cs.ts \
+               translations/mpc_plugin_de.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

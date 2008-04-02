@@ -24,7 +24,8 @@ TRANSLATIONS = translations/flac_plugin_ru.ts \
                translations/flac_plugin_uk_UA.ts \
                translations/flac_plugin_zh_CN.ts \
                translations/flac_plugin_zh_TW.ts \
-               translations/flac_plugin_cs.ts
+               translations/flac_plugin_cs.ts \
+               translations/flac_plugin_de.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

@@ -6,5 +6,6 @@
     <file>mpc_plugin_zh_CN.qm</file>
     <file>mpc_plugin_zh_TW.qm</file>
     <file>mpc_plugin_cs.qm</file>
+    <file>mpc_plugin_de.qm</file>
   </qresource>
 </RCC>

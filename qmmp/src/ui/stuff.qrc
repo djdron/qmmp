@@ -25,6 +25,8 @@
     
     <file>txt/authors_de.txt</file>
     <file>txt/thanks_de.txt</file>
+    <file>txt/translators_de.txt</file>
+    <file>txt/description_de.txt</file>
 
     <file>default/balance.png</file>
     <file>default/eqmain.png</file>
