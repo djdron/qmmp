@@ -687,6 +687,16 @@ static bool _dateGreaterComparator(MediaFile* s1,MediaFile* s2)
     return s1->year() > s2->year();
 }
 
+static bool _trackLessComparator(MediaFile* s1,MediaFile* s2)
+{
+    return s1->track() < s2->track();
+}
+
+static bool _trackGreaterComparator(MediaFile* s1,MediaFile* s2)
+{
+    return s1->track() > s2->track();
+}
+
 // This is main sort method
 void PlayListModel::doSort(int sort_mode,QList<MediaFile*>& list_to_sort)
 {
@@ -718,6 +728,10 @@ void PlayListModel::doSort(int sort_mode,QList<MediaFile*>& list_to_sort)
         compareGreaterFunc = _dateGreaterComparator;
         break;
         //qWarning("TODO Sort by Date: %s\t%d",__FILE__,__LINE__);
+    case TRACK:
+        compareLessFunc = _trackLessComparator;
+        compareGreaterFunc = _trackGreaterComparator;
+        break;
     default:
         compareLessFunc = _titleLessComparator;
         compareGreaterFunc = _titleGreaterComparator;

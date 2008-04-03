@@ -193,6 +193,10 @@ void PlayList::createActions()
     connect ( dateAct, SIGNAL ( triggered ( bool ) ), signalMapper, SLOT ( map() ) );
     signalMapper->setMapping ( dateAct, PlayListModel::DATE );
 
+    QAction* trackAct = sort_mode_menu->addAction ( tr ( "By Track Number" ) );
+    connect ( trackAct, SIGNAL ( triggered ( bool ) ), signalMapper, SLOT ( map() ) );
+    signalMapper->setMapping ( trackAct, PlayListModel::TRACK );
+
     connect ( signalMapper, SIGNAL ( mapped ( int ) ),
               m_playListModel, SLOT ( sort ( int ) ) );
 
@@ -215,6 +219,10 @@ void PlayList::createActions()
     dateAct = sort_mode_menu->addAction ( tr ( "By Date" ) );
     connect ( dateAct, SIGNAL ( triggered ( bool ) ), signalMapper, SLOT ( map() ) );
     signalMapper->setMapping ( dateAct, PlayListModel::DATE );
+
+    trackAct = sort_mode_menu->addAction ( tr ( "By Track Number" ) );
+    connect ( trackAct, SIGNAL ( triggered ( bool ) ), signalMapper, SLOT ( map() ) );
+    signalMapper->setMapping ( trackAct, PlayListModel::TRACK );
 
     connect ( signalMapper, SIGNAL ( mapped ( int ) ),
               m_playListModel, SLOT ( sortSelection ( int ) ) );

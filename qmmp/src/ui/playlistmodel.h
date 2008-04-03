@@ -214,7 +214,7 @@ public:
      */
     enum SortMode
     {
-        TITLE,FILENAME,PATH_AND_FILENAME,DATE
+        TITLE,FILENAME,PATH_AND_FILENAME,DATE,TRACK
     };
 
 signals:

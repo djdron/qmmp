@@ -51,6 +51,7 @@ public:
     const QString fileName()const;
     uint year()const;
     int length()const;
+    uint track()const;
     void setSelected(bool);
     bool isSelected()const;
     bool isCurrent();
@@ -66,7 +67,7 @@ private:
     void readMetadata();
     QString m_path;
     QString m_title;
-    uint m_year;
+    uint m_year, m_track;
     FileTag *m_tag;
     bool m_selected;
     bool m_current;
