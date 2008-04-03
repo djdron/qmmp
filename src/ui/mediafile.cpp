@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,6 +30,8 @@ MediaFile::MediaFile(const QString& path) : m_flag(FREE)
     m_current = FALSE;
     m_path = path;
     m_tag = 0;
+    m_year = 0;
+    m_track = 0;
 
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     m_use_meta = settings.value ("PlayList/load_metadata", TRUE).toBool();
@@ -88,6 +90,11 @@ uint MediaFile::year() const
     return m_year;
 }
 
+uint MediaFile::track() const
+{
+    return m_track;
+}
+
 bool MediaFile::isCurrent()
 {
     return m_current;
@@ -128,6 +135,7 @@ void MediaFile::readMetadata()
     if (m_use_meta && m_tag && !m_tag->isEmpty())
     {
         m_year = m_tag->year();
+        m_track = m_tag->track();
         m_title = m_format;
         m_title.replace("%p",m_tag->artist());
         m_title.replace("%a",m_tag->album());
