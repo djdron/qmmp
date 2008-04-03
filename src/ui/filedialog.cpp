@@ -261,7 +261,7 @@ QString QtFileDialog::existingDirectory(QWidget * parent, const QString & captio
 QString QtFileDialog::openFileName(QWidget * parent,const QString & caption,const QString & dir,const QString & filter,
                 QString * selectedFilter)
 {
-    return QFileDialog::getOpenFileName(parent,caption,dir,filter,selectedFilter);
+    return QFileDialog::getOpenFileName(parent,caption,dir,filter);
 }
 
 QStringList QtFileDialog::openFileNames(QWidget * parent, const QString & caption , const QString & dir ,

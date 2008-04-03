@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,7 @@
 #include <QApplication>
 #include <QTranslator>
 #include <QLocale>
+#include <QLibraryInfo>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
     QTranslator translator;
     QString locale = QLocale::system().name();
     translator.load(QString(":/qmmp_") + locale);
+    translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qt_" + locale);
     a.installTranslator(&translator);
 
     QMMPStarter starter(argc,argv);
