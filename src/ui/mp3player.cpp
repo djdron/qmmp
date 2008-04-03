@@ -40,8 +40,11 @@ int main(int argc, char *argv[])
     QTranslator translator;
     QString locale = QLocale::system().name();
     translator.load(QString(":/qmmp_") + locale);
-    translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qt_" + locale);
     a.installTranslator(&translator);
+
+    QTranslator qt_translator;
+    qt_translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qt_" + locale);
+    a.installTranslator(&qt_translator);
 
     QMMPStarter starter(argc,argv);
     Q_UNUSED(starter)
