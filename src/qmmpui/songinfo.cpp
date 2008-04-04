@@ -41,6 +41,7 @@ void SongInfo::operator=(const SongInfo &info)
     setValue(TRACK,info.track ());
     setValue(LENGTH,info.length ());
     setValue(STREAM,info.isStream());
+    setValue(PATH,info.path());
 }
 
 bool SongInfo::operator==(const SongInfo &info)
@@ -52,7 +53,8 @@ bool SongInfo::operator==(const SongInfo &info)
            genre() == info.genre() &&
            track() == info.track() &&
            year() == info.year() &&
-           isStream() == info.isStream();
+           isStream() == info.isStream() &&
+           path() == info.path();
 }
 
 bool SongInfo::operator!=(const SongInfo &info)
@@ -60,21 +62,26 @@ bool SongInfo::operator!=(const SongInfo &info)
     return !operator==(info);
 }
 
-void SongInfo::setValue(uint name, const QString &value)
+void SongInfo::setValue(uint key, const QString &value)
 {
     if (!value.isEmpty())
-        m_strValues.insert (name, value);
+    {
+        if (key == PATH)
+            m_path = value;
+        else
+            m_strValues.insert (key, value);
+    }
 }
 
-void SongInfo::setValue(uint name, const uint &value)
+void SongInfo::setValue(uint key, const uint &value)
 {
     if (value > 0)
-        m_numValues.insert (name, value);
+        m_numValues.insert (key, value);
 }
 
-void SongInfo::setValue(uint name, const bool &value)
+void SongInfo::setValue(uint key, const bool &value)
 {
-    if(name == STREAM)
+    if(key == STREAM)
         m_stream = value;
 }
 
@@ -101,6 +108,11 @@ const QString SongInfo::comment () const
 const QString SongInfo::genre () const
 {
     return m_strValues[GENRE];
+}
+
+const QString SongInfo::path () const
+{
+    return m_path;
 }
 
 const uint SongInfo::year () const
