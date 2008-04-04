@@ -345,6 +345,7 @@ void MainWindow::showOutputState(const OutputState &st)
             info.setValue(SongInfo::LENGTH, (uint) m_playlist->currentItem()->length());
             info.setValue(SongInfo::STREAM,
                           m_playlist->currentItem()->path().startsWith("http://"));
+            info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
             m_generalHandler->setSongInfo(info);
         }
         break;
@@ -407,6 +408,7 @@ void MainWindow::showDecoderState(const DecoderState &st)
                 info.setValue(SongInfo::LENGTH, st.tag()->length());
                 info.setValue(SongInfo::STREAM,
                               m_playlist->currentItem()->path().startsWith("http://"));
+                info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
                 m_generalHandler->setSongInfo(info);
             }
             m_playlist->currentItem()->updateTags(st.tag());

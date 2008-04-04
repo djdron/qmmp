@@ -45,20 +45,22 @@ public:
         YEAR,
         TRACK,
         LENGTH,
-        STREAM
+        STREAM,
+        PATH
     };
 
     void operator=(const SongInfo &info);
     bool operator==(const SongInfo &info);
     bool operator!=(const SongInfo &info);
-    void setValue(uint name, const QString &value);
-    void setValue(uint name, const uint &value);
-    void setValue(uint name, const bool &value);
+    void setValue(uint key, const QString &value);
+    void setValue(uint key, const uint &value);
+    void setValue(uint key, const bool &value);
     const QString title () const;
     const QString artist () const;
     const QString album () const;
     const QString comment () const;
     const QString genre () const;
+    const QString path () const;
     const uint year () const;
     const uint track () const;
     const uint length () const;
@@ -70,6 +72,7 @@ private:
     QMap <uint, QString> m_strValues;
     QMap <uint, uint> m_numValues;
     bool m_stream;
+    QString m_path;
 
 };
 
