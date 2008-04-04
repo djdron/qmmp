@@ -67,6 +67,7 @@ void DBUSControl::setState(const uint &state)
 void DBUSControl::setSongInfo(const SongInfo &song)
 {
     m_song = song;
+    emit songChanged();
 }
 
 void DBUSControl::setVolume(int left, int right)

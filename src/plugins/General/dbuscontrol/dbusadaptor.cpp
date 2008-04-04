@@ -31,6 +31,7 @@ DBUSAdaptor::DBUSAdaptor(Control *ctrl, QObject *parent)
     connect(parent, SIGNAL(stateChanged()), SLOT (processState()));
     connect(parent, SIGNAL(volumeChanged()), SLOT (processVolume()));
     connect(parent, SIGNAL(timeChanged()), SLOT (processTime()));
+    connect(parent, SIGNAL(songChanged()), SIGNAL(songChanged()));
 }
 
 DBUSAdaptor::~DBUSAdaptor()
@@ -107,6 +108,11 @@ QString DBUSAdaptor::comment()
 QString DBUSAdaptor::genre()
 {
     return qobject_cast<DBUSControl *>(parent())->info()->genre();
+}
+
+QString DBUSAdaptor::path()
+{
+    return qobject_cast<DBUSControl *>(parent())->info()->path();
 }
 
 bool DBUSAdaptor::isPlaying()

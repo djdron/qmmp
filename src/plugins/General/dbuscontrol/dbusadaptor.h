@@ -40,6 +40,7 @@ Q_PROPERTY(QString artist READ artist)
 Q_PROPERTY(QString album READ album)
 Q_PROPERTY(QString comment READ comment)
 Q_PROPERTY(QString genre READ genre)
+Q_PROPERTY(QString path READ path)
 Q_PROPERTY(bool isPlaying READ isPlaying)
 Q_PROPERTY(bool isPaused READ isPaused)
 Q_PROPERTY(bool isStopped READ isStopped)
@@ -62,6 +63,7 @@ public:
     QString album();
     QString comment();
     QString genre();
+    QString path();
     bool isPlaying();
     bool isPaused();
     bool isStopped();
@@ -73,6 +75,7 @@ signals:
     void stopped();
     void volumeChanged(int vol, int bal);
     void timeChanged(int newTime);
+    void songChanged();
 
 public slots:
     void play();
