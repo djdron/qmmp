@@ -52,6 +52,7 @@ signals:
     void stateChanged();
     void timeChanged();
     void volumeChanged();
+    void songChanged();
 
 public slots:
     int leftVolume();
