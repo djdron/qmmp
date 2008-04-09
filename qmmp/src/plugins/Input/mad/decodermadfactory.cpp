@@ -1,6 +1,7 @@
 #include <QtGui>
 #include <QDialog>
 #include <QMessageBox>
+#include <QFile>
 #include <mad.h>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
@@ -20,7 +21,21 @@
 bool DecoderMADFactory::supports(const QString &source) const
 {
     QString ext = source.right(4).toLower();
-    return ext == ".mp1" || ext == ".mp2" || ext == ".mp3";
+    if (ext == ".mp1" || ext == ".mp2" || ext == ".mp3")
+        return TRUE;
+    else if (ext == ".wav") //check for mp3 wav files
+    {
+        QFile file(source);
+        file.open(QIODevice::ReadOnly);
+        char buf[22];
+        file.peek(buf,sizeof(buf));
+        file.close();
+        if (!memcmp(buf + 8, "WAVE", 4) && !memcmp(buf + 20, "U" ,1))
+        {
+            return TRUE;
+        }
+    }
+    return FALSE;
 }
 
 bool DecoderMADFactory::canDecode(QIODevice *input) const
@@ -50,7 +65,7 @@ const DecoderProperties DecoderMADFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("MPEG Plugin");
-    properties.filter = "*.mp1 *.mp2 *.mp3";
+    properties.filter = "*.mp1 *.mp2 *.mp3 *.wav";
     properties.description = tr("MPEG Files");
     properties.contentType = "audio/mp3;audio/mpeg";
     properties.hasAbout = TRUE;
@@ -87,7 +102,7 @@ FileTag *DecoderMADFactory::createTag(const QString &source)
         case SettingsDialog::ID3v1:
         {
             codec = QTextCodec::codecForName(settings.value("ID3v1_encoding","ISO-8859-1")
-                                 .toByteArray ());
+                                             .toByteArray ());
             tag = fileRef.ID3v1Tag();
             break;
         }
@@ -95,7 +110,7 @@ FileTag *DecoderMADFactory::createTag(const QString &source)
         {
             QByteArray name;
             name = settings.value("ID3v2_encoding","UTF-8").toByteArray ();
-            if(name.contains("UTF"))
+            if (name.contains("UTF"))
                 codec = QTextCodec::codecForName ("UTF-8");
             else
                 codec = QTextCodec::codecForName(name);
@@ -113,12 +128,12 @@ FileTag *DecoderMADFactory::createTag(const QString &source)
             break;
         }
         }
-        if(tag && !tag->isEmpty())
+        if (tag && !tag->isEmpty())
             break;
     }
     settings.endGroup();
 
-    if(!codec)
+    if (!codec)
         codec = QTextCodec::codecForName ("UTF-8");
 
     if (tag && codec)
