@@ -18,7 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include <QtGui>
+extern "C"{
 #include <sndfile.h>
+}
 
 #include "decoder_sndfile.h"
 #include "decodersndfilefactory.h"
@@ -29,16 +31,27 @@
 bool DecoderSndFileFactory::supports(const QString &source) const
 {
 
-    return (source.right(4).toLower() == ".wav") ||
-           (source.right(3).toLower() == ".au") ||
-           (source.right(4).toLower() == ".snd") ||
-           (source.right(4).toLower() == ".aif") ||
-           (source.right(5).toLower() == ".aiff") ||
-           (source.right(5).toLower() == ".8svx") ||
-           (source.right(4).toLower() == ".wav") ||
-           (source.right(4).toLower() == ".sph") ||
-           (source.right(3).toLower() == ".sf") ||
-           (source.right(4).toLower() == ".voc");
+    if ((source.right(3).toLower() == ".au") ||
+        (source.right(4).toLower() == ".snd") ||
+        (source.right(4).toLower() == ".aif") ||
+        (source.right(5).toLower() == ".aiff") ||
+        (source.right(5).toLower() == ".8svx") ||
+        (source.right(4).toLower() == ".sph") ||
+        (source.right(3).toLower() == ".sf") ||
+        (source.right(4).toLower() == ".voc"))
+        return TRUE;
+    else if (source.right(4).toLower() == ".wav")
+    {
+        //try top open the file
+        SF_INFO snd_info;
+        SNDFILE *sndfile = sf_open(source.toLocal8Bit(), SFM_READ, &snd_info);
+        if(!sndfile)
+            return FALSE;
+        sf_close (sndfile);
+        sndfile = 0;
+        return TRUE;
+    }
+    return FALSE;
 }
 
 bool DecoderSndFileFactory::canDecode(QIODevice *) const
@@ -99,6 +112,8 @@ FileTag *DecoderSndFileFactory::createTag(const QString &source)
 
 QObject* DecoderSndFileFactory::showDetails(QWidget *parent, const QString &path)
 {
+    Q_UNUSED(parent);
+    Q_UNUSED(path);
     return 0;
 }
 
