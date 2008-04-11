@@ -74,9 +74,6 @@ protected:
 public slots:
     void timeout();
 
-private slots:
-    void updateSettings();
-
 private:
     bool process(VisualNode *node);
     void draw(QPainter *p);
