@@ -152,7 +152,6 @@ void Output::error ( const QString &e )
     emit stateChanged ( OutputState ( e ) );
 }
 
-
 void Output::addVisual ( Visual *v )
 {
     if (visuals.indexOf (v) == -1)
@@ -171,8 +170,19 @@ void Output::removeVisual (Visual *v)
     {
         VisualFactory *factory = m_vis_map.key(v);
         m_vis_map.remove(factory);
-        //Visual::setEnabled(factory, FALSE);
     }
+}
+
+void Output::processCloseEvent(Visual *v, QCloseEvent *event)
+{
+    if(event->spontaneous () && m_vis_map.key(v))
+    {
+        VisualFactory *factory = m_vis_map.key(v);
+        m_vis_map.remove(factory);
+        Visual::setEnabled(factory, FALSE);
+        dispatch(OutputState::VisualRemoved);
+    }
+    removeVisual (v);
 }
 
 void Output::addVisual(VisualFactory *factory, QWidget *parent)

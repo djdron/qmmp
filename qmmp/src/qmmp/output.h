@@ -28,7 +28,7 @@ class OutputState
 {
 public:
 
-    enum Type { Playing, Buffering, Info, Paused, Stopped, Volume, Error };
+    enum Type { Playing, Buffering, Info, Paused, Stopped, Volume, Error, VisualRemoved };
 
     OutputState()
             : m_type(Stopped),  m_error_msg(0), m_elasped_seconds(0),
@@ -161,6 +161,7 @@ public:
     void removeVisual(Visual*);
     void addVisual(VisualFactory *factory, QWidget *parent);
     void removeVisual(VisualFactory *factory);
+    void processCloseEvent(Visual *v, QCloseEvent *event);
 
     // abstract
     virtual bool isInitialized() const = 0;
@@ -173,7 +174,7 @@ public:
     virtual long latency() = 0;
     virtual void seek(long) = 0;
     virtual void setVolume(int, int){};
-    virtual void volume(int*, int*){};
+    virtual void volume(int *, int *){};
 
     static void registerFactory(OutputFactory *);
     static Output *create(QObject *);

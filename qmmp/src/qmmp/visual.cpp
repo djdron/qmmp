@@ -147,6 +147,6 @@ bool Visual::isEnabled(VisualFactory* factory)
 
 void Visual::closeEvent (QCloseEvent *event)
 {
-    m_output->removeVisual(this);
+    m_output->processCloseEvent(this, event);
     QWidget::closeEvent(event);
 }
