@@ -369,9 +369,13 @@ void MainWindow::showOutputState(const OutputState &st)
     case OutputState::Volume:
     {
         m_generalHandler->setVolume(st.leftVolume(), st.rightVolume());
+        break;
+    }
+    case OutputState::VisualRemoved:
+    {
+         m_visMenu->updateActions();
     }
     }
-
 }
 void MainWindow::showDecoderState(const DecoderState &st)
 {
