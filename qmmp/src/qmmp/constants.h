@@ -1,10 +1,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#ifdef Q_OS_UNIX
-#include "config.h"
-#endif
-
 #define VERSION "0.2.0"
 
 #ifndef LIB_DIR

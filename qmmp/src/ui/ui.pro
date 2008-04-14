@@ -139,7 +139,7 @@ target.path = /bin
 INSTALLS += target
 
 
-#RESOURCES += translations/qmmp_locales.qrc
+RESOURCES += translations/qmmp_locales.qrc
 
 TRANSLATIONS = translations/qmmp_ru.ts \
                translations/qmmp_tr.ts \

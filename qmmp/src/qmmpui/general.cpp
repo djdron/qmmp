@@ -23,7 +23,6 @@
 #include <QList>
 #include <QApplication>
 
-#include "config.h"
 #include "general.h"
 
 
