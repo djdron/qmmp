@@ -45,6 +45,20 @@ Scrobbler::Scrobbler(QObject *parent)
     m_login = settings.value("login").toString();
     m_passw = settings.value("password").toString();
     settings.endGroup();
+    //use global proxy settings
+    if (settings.value ("Proxy/use_proxy", FALSE).toBool())
+    {
+
+        if (settings.value ("Proxy/authentication", FALSE).toBool())
+            m_http->setProxy(settings.value("Proxy/host").toString(),
+                             settings.value("Proxy/port").toInt(),
+                             settings.value("Proxy/user").toString(),
+                             settings.value("Proxy/passw").toString());
+        else
+            m_http->setProxy(settings.value("Proxy/host").toString(),
+                             settings.value("Proxy/port").toInt());
+    }
+
     m_disabled = m_login.isEmpty() || m_passw.isEmpty();
     m_passw = QString(QCryptographicHash::hash(m_passw.toAscii(), QCryptographicHash::Md5).toHex());
     connect(m_http, SIGNAL(requestFinished (int, bool)), SLOT(processResponse(int, bool)));
@@ -56,7 +70,6 @@ Scrobbler::Scrobbler(QObject *parent)
     m_submitid = 0;
     if (!m_disabled)
         handshake();
-    //TODO proxy support
 }
 
 
