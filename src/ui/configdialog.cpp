@@ -214,9 +214,9 @@ void ConfigDialog::loadPluginsInfo()
         InputPluginItem *item = new InputPluginItem(this, decoders->at(i));
         m_inputPluginItems.append(item);
         QCheckBox* checkBox = new QCheckBox ( ui.inputPluginTable );
+        ui.inputPluginTable->setCellWidget ( i, 0, checkBox );
         checkBox->setChecked(item->isSelected());
         connect(checkBox, SIGNAL(toggled(bool)), item, SLOT(setSelected(bool)));
-        ui.inputPluginTable->setCellWidget ( i, 0, checkBox );
         ui.inputPluginTable->setItem ( i,1,
                                        new QTableWidgetItem (item->factory()->properties().name));
         ui.inputPluginTable->setItem ( i,2, new QTableWidgetItem (files.at (i).section('/',-1)));
@@ -244,9 +244,9 @@ void ConfigDialog::loadPluginsInfo()
         OutputPluginItem *item = new OutputPluginItem(this,outputs->at(i));
         m_outputPluginItems.append(item);
         QRadioButton* button = new QRadioButton ( ui.outputPluginTable );
+        ui.outputPluginTable->setCellWidget ( i, 0, button );
         button->setChecked ( item->isSelected() );
         connect(button, SIGNAL(pressed ()), item, SLOT(select()));
-        ui.outputPluginTable->setCellWidget ( i, 0, button );
         ui.outputPluginTable->setItem (i,1,
                                        new QTableWidgetItem (item->factory()->properties().name));
         ui.outputPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i).section('/',-1)));
@@ -275,9 +275,9 @@ void ConfigDialog::loadPluginsInfo()
         VisualPluginItem *item = new VisualPluginItem(this,visuals->at(i));
         m_visualPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.visualPluginTable);
+        ui.visualPluginTable->setCellWidget ( i, 0, button );
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
-        ui.visualPluginTable->setCellWidget ( i, 0, button );
         ui.visualPluginTable->setItem (i,1,
                                        new QTableWidgetItem (item->factory()->properties().name));
         ui.visualPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i).section('/',-1)));
@@ -307,9 +307,9 @@ void ConfigDialog::loadPluginsInfo()
         EffectPluginItem *item = new EffectPluginItem(this,effects->at(i));
         m_effectPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.effectPluginTable);
+        ui.effectPluginTable->setCellWidget ( i, 0, button );
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
-        ui.effectPluginTable->setCellWidget ( i, 0, button );
         ui.effectPluginTable->setItem (i,1,
                                        new QTableWidgetItem (item->factory()->properties().name));
         ui.effectPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i).section('/',-1)));
@@ -339,9 +339,9 @@ void ConfigDialog::loadPluginsInfo()
         GeneralPluginItem *item = new GeneralPluginItem(this,generals->at(i));
         m_generalPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.generalPluginTable);
+        ui.generalPluginTable->setCellWidget ( i, 0, button );
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
-        ui.generalPluginTable->setCellWidget ( i, 0, button );
         ui.generalPluginTable->setItem (i,1,
                                         new QTableWidgetItem (item->factory()->properties().name));
         ui.generalPluginTable->setItem (i,2, new QTableWidgetItem (files.at(i).section('/',-1)));
