@@ -23,6 +23,7 @@
 #include <QIODevice>
 #include <QFile>
 #include <math.h>
+#include <stdint.h>
 
 #include <qmmp/constants.h>
 #include <qmmp/buffer.h>
