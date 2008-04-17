@@ -128,17 +128,6 @@ bool DecoderWavPack::initialize()
     m_output_at = 0;
     m_output_bytes = 0;
 
-    if (! input())
-    {
-        error("DecoderWavPack: cannot initialize.  No input.");
-        return FALSE;
-    }
-
-    if (! m_output_buf)
-        m_output_buf = new char[globalBufferSize];
-    m_output_at = 0;
-    m_output_bytes = 0;
-
     QString filename = qobject_cast<QFile*>(input())->fileName ();
     input()->close();
 
