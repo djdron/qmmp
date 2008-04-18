@@ -65,6 +65,7 @@ public:
 
 private:
     void readMetadata();
+    QString printTag(QString str, QString regExp, QString tagStr);
     QString m_path;
     QString m_title;
     uint m_year, m_track;
