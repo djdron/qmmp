@@ -137,16 +137,14 @@ void MediaFile::readMetadata()
         m_year = m_tag->year();
         m_track = m_tag->track();
         m_title = m_format;
-        m_title.replace("%p",m_tag->artist());
-        m_title.replace("%a",m_tag->album());
-        m_title.replace("%t",m_tag->title());
-        m_title.replace("%n",QString("%1").arg(m_tag->track()));
-        m_title.replace("%g",m_tag->genre ());
-        m_title.replace("%f",m_path.section('/',-1));
-        m_title.replace("%F",m_path);
-        //m_title.replace("%d",);
-        m_title.replace("%y",QString("%1").arg(m_tag->year ()));
-        //m_title.replace("%c",);
+        m_title = printTag(m_title, "%p", m_tag->artist());
+        m_title = printTag(m_title, "%a", m_tag->album());
+        m_title = printTag(m_title, "%t", m_tag->title());
+        m_title = printTag(m_title, "%n", QString("%1").arg(m_tag->track()));
+        m_title = printTag(m_title, "%g", m_tag->genre());
+        m_title = printTag(m_title, "%f", m_path.section('/',-1));
+        m_title = printTag(m_title, "%F", m_path);
+        m_title = printTag(m_title, "%y", QString("%1").arg(m_tag->year ()));
     }
     else
         m_title = m_path.startsWith("http://") ? m_path: m_path.section('/',-1);
@@ -173,5 +171,30 @@ FileTag *MediaFile::tag()
     if(m_tag && m_tag->isEmpty())
         return 0;
     return m_tag;
+}
+
+QString MediaFile::printTag(QString str, QString regExp, QString tagStr)
+{
+    if(!tagStr.isEmpty())
+        str.replace(regExp, tagStr);
+    else
+    {
+            //remove unused separators
+            int regExpPos = str.indexOf(regExp);
+            if(regExpPos < 0)
+                return str;
+            int nextPos = str.indexOf("%", regExpPos + 1);
+            if(nextPos < 0)
+            {
+                //last separator
+                regExpPos = m_format.lastIndexOf(regExp);
+                nextPos = m_format.lastIndexOf("%", regExpPos - 1);
+                QString lastSep = m_format.right (m_format.size() - nextPos - 2);
+                str.remove(lastSep);
+            }
+            else
+                str.remove ( regExpPos, nextPos - regExpPos);
+    }
+    return str;
 }
 
