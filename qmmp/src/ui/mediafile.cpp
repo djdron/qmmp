@@ -132,6 +132,7 @@ void MediaFile::updateTags()
 
 void MediaFile::readMetadata()
 {
+    m_title.clear();
     if (m_use_meta && m_tag && !m_tag->isEmpty())
     {
         m_year = m_tag->year();
@@ -146,7 +147,7 @@ void MediaFile::readMetadata()
         m_title = printTag(m_title, "%F", m_path);
         m_title = printTag(m_title, "%y", QString("%1").arg(m_tag->year ()));
     }
-    else
+    if (m_title.isEmpty())
         m_title = m_path.startsWith("http://") ? m_path: m_path.section('/',-1);
 }
 
@@ -168,32 +169,33 @@ MediaFile::FLAGS MediaFile::flag() const
 
 FileTag *MediaFile::tag()
 {
-    if(m_tag && m_tag->isEmpty())
+    if (m_tag && m_tag->isEmpty())
         return 0;
     return m_tag;
 }
 
 QString MediaFile::printTag(QString str, QString regExp, QString tagStr)
 {
-    if(!tagStr.isEmpty())
+    if (!tagStr.isEmpty())
         str.replace(regExp, tagStr);
     else
     {
-            //remove unused separators
-            int regExpPos = str.indexOf(regExp);
-            if(regExpPos < 0)
-                return str;
-            int nextPos = str.indexOf("%", regExpPos + 1);
-            if(nextPos < 0)
-            {
-                //last separator
-                regExpPos = m_format.lastIndexOf(regExp);
-                nextPos = m_format.lastIndexOf("%", regExpPos - 1);
-                QString lastSep = m_format.right (m_format.size() - nextPos - 2);
-                str.remove(lastSep);
-            }
-            else
-                str.remove ( regExpPos, nextPos - regExpPos);
+        //remove unused separators
+        int regExpPos = str.indexOf(regExp);
+        if (regExpPos < 0)
+            return str;
+        int nextPos = str.indexOf("%", regExpPos + 1);
+        if (nextPos < 0)
+        {
+            //last separator
+            regExpPos = m_format.lastIndexOf(regExp);
+            nextPos = m_format.lastIndexOf("%", regExpPos - 1);
+            QString lastSep = m_format.right (m_format.size() - nextPos - 2);
+            str.remove(lastSep);
+            str.remove(regExp);
+        }
+        else
+            str.remove ( regExpPos, nextPos - regExpPos);
     }
     return str;
 }
