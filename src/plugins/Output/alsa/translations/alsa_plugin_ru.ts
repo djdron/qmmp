@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>OutputALSAFactory</name>
     <message>
@@ -78,7 +79,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="236"/>
         <source>OK</source>
-        <translation>Применить</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>

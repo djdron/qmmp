@@ -236,7 +236,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="272"/>
         <source>OK</source>
-        <translation>Применить</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="279"/>
