@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Dialog</string>
+   <string>ModPlug Plugin Settings</string>
   </property>
   <layout class="QGridLayout" >
    <item row="0" column="0" colspan="4" >
@@ -695,6 +695,9 @@
           </item>
           <item row="1" column="1" >
            <widget class="QCheckBox" name="amigaCheckBox" >
+            <property name="enabled" >
+             <bool>false</bool>
+            </property>
             <property name="text" >
              <string>Play Amiga MOD</string>
             </property>
