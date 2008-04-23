@@ -168,6 +168,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::play()
 {
+    disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
     m_playListModel->doCurrentVisibleRequest();
 
     if (m_core->isPaused())
@@ -785,8 +786,12 @@ void MainWindow::savePlaylist()
 
 void MainWindow::setFileList(const QStringList & l)
 {
+    connect(m_playListModel, SIGNAL(firstAdded()), SLOT(play()));
     if (!m_playListModel->setFileList(l))
+    {
+        disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
         addFile();
+    }
 }
 
 void MainWindow::playPause()
