@@ -220,6 +220,7 @@ public:
 signals:
     void listChanged();
     void currentChanged();
+    void firstAdded();
 
 public slots:
     void load(MediaFile *);

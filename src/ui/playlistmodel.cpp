@@ -109,6 +109,9 @@ void PlayListModel::load ( MediaFile *file )
     m_total_length += file->length();
     m_files << file;
 
+    if (m_files.size() == 1)
+        emit firstAdded();
+
     //if (!m_block_update_signals)
     emit listChanged();
 }
