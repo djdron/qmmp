@@ -44,9 +44,9 @@ SET(libnotifier_MOC_HDRS
 
 #SET(libnotifier_RCCS translations/translations.qrc)
 
-#SET(libnotifier_RCCS images/images.qrc)
+SET(libnotifier_RCCS notifier_images.qrc)
 
-#QT4_ADD_RESOURCES(libnotifier_RCC_SRCS ${libnotifier_RCCS})
+QT4_ADD_RESOURCES(libnotifier_RCC_SRCS ${libnotifier_RCCS})
 
 QT4_WRAP_CPP(libnotifier_MOC_SRCS ${libnotifier_MOC_HDRS})
 

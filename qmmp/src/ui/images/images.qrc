@@ -1,7 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
-    <file>qmmp.xpm</file>
+    <file>32x32/qmmp.png</file>
     <file>interface.png</file>
     <file>playlist.png</file>
     <file>advanced.png</file>

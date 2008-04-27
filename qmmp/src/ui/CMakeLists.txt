@@ -164,5 +164,8 @@ ADD_EXECUTABLE(qmmp ${ui_SRCS} ${ui_MOC_SRCS} ${ui_UIS_H}
   ${ui_RCC_SRCS})
 target_link_libraries(qmmp ${QT_LIBRARIES} -lqmmp -lqmmpui)
 install(TARGETS qmmp DESTINATION bin)
-#install(FILES qmmp.desktop DESTINATION share/applications)
-#install(FILES images/qmmp.xpm DESTINATION share/pixmaps)
+install(FILES qmmp.desktop DESTINATION share/applications)
+install(FILES images/16x16/qmmp.png DESTINATION share/icons/hicolor/16x16/apps)
+install(FILES images/32x32/qmmp.png DESTINATION share/icons/hicolor/32x32/apps)
+install(FILES images/48x48/qmmp.png DESTINATION share/icons/hicolor/48x48/apps)
+

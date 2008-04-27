@@ -35,13 +35,20 @@ PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
     setWindowFlags(Qt::X11BypassWindowManagerHint |
                    Qt::WindowStaysOnTopHint);
     setFrameStyle(QFrame::Box | QFrame::Plain);
-    QVBoxLayout *layout = new QVBoxLayout(this);
     QString title = song.title();
     title.append(" ");
     if (!song.isStream())
         title.append(QString("(%1:%2)").arg(song.length()/60).arg(song.length()%60, 2, 10, QChar('0')));
+
+    QHBoxLayout *hlayout = new QHBoxLayout(this);
+    QLabel *pixlabel = new QLabel(this);
+    pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
+    pixlabel->setFixedSize(32,32);
+    hlayout->addWidget(pixlabel);
+
+    QVBoxLayout *vlayout = new QVBoxLayout(this);
     QLabel *label1 = new QLabel("<b>"+title+"</b>", this);
-    layout->addWidget(label1);
+    vlayout->addWidget(label1);
 
     QString info = song.artist();
     if (!info.isEmpty() && !song.album().isEmpty())
@@ -49,9 +56,11 @@ PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
     if (!info.isEmpty())
     {
         QLabel *label2 = new QLabel(info, this);
-        layout->addWidget(label2);
+        vlayout->addWidget(label2);
     }
-    setLayout(layout);
+
+    hlayout->addLayout (vlayout);
+    setLayout(hlayout);
     resize(sizeHint());
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("Notifier");
