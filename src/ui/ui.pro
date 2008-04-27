@@ -136,7 +136,19 @@ RESOURCES = images/images.qrc \
             stuff.qrc
 TEMPLATE = app
 target.path = /bin
-INSTALLS += target
+
+desktop.files = qmmp.desktop
+desktop.path = /share/applications
+
+icon16.files = images/16x16/qmmp.png
+icon32.files = images/32x32/qmmp.png
+icon48.files = images/48x48/qmmp.png
+
+icon16.path = /share/icons/hicolor/16x16/apps
+icon32.path = /share/icons/hicolor/32x32/apps
+icon48.path = /share/icons/hicolor/48x48/apps
+
+INSTALLS += target icon16 icon32 icon48
 
 
 RESOURCES += translations/qmmp_locales.qrc

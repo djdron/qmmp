@@ -60,7 +60,7 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
     m_elapsed = 0;
     m_option_manager = option_manager;
 
-    setWindowIcon( QIcon(":/qmmp.xpm") );
+    setWindowIcon(QIcon(":/32x32/qmmp.png"));
 
     m_skin = new Skin(this);
     Dock *dock = new Dock(this);

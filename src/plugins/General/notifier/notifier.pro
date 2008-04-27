@@ -14,6 +14,7 @@ QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmpui
 
 #TRANSLATIONS = translations/ffmpeg_plugin_ru.ts
+RESOURCES = notifier_images.qrc
 #RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
