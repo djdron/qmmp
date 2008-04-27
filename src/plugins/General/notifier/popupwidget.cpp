@@ -46,7 +46,7 @@ PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
     pixlabel->setFixedSize(32,32);
     hlayout->addWidget(pixlabel);
 
-    QVBoxLayout *vlayout = new QVBoxLayout(this);
+    QVBoxLayout *vlayout = new QVBoxLayout();
     QLabel *label1 = new QLabel("<b>"+title+"</b>", this);
     vlayout->addWidget(label1);
 
