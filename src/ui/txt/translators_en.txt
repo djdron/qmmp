@@ -15,7 +15,7 @@ German:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
 
 Russian:
-    Ilya Kotov <for_kotov@hotmail.ru>
+    Ilya Kotov <forkotov02@hotmail.ru>
 
 Turkish:
     Mustafa GUNAY <mustafagunay@pgmail.com>
