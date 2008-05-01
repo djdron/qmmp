@@ -8,7 +8,6 @@ SET(QT_USE_QTNETWORK TRUE)
 INCLUDE(UsePkgConfig)
 INCLUDE(FindQt4)
 
-find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 include(${QT_USE_FILE})
 
 ADD_DEFINITIONS( -Wall )
