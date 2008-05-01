@@ -4,10 +4,9 @@ cmake_minimum_required(VERSION 2.4.0)
 
 
 INCLUDE(UsePkgConfig)
-INCLUDE(FindQt4)
+#INCLUDE(FindQt4)
 
-find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )

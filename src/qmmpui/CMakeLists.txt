@@ -2,10 +2,6 @@ project(libqmmpui)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-include(FindQt4)
-find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
-include(${QT_USE_FILE})
-
 # qt lib
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
