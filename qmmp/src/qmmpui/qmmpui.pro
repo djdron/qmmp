@@ -7,7 +7,7 @@ qt \
 thread
 
 TEMPLATE = lib
-
+VERSION = $$QMMP_VERSION
 
 unix:isEmpty(LIB_DIR){
     LIB_DIR = /lib
@@ -15,6 +15,12 @@ unix:isEmpty(LIB_DIR){
 
 unix:DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
 
+DEFINES += QMMP_VERSION=$$QMMP_VERSION
+contains(CONFIG, SVN_VERSION) {
+DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
+} else {
+DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
+}
 
 target.path = $$LIB_DIR
 INSTALLS += target

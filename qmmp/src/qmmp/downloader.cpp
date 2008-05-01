@@ -24,6 +24,7 @@
 #include <QDir>
 #include <stdint.h>
 
+#include "constants.h"
 #include "downloader.h"
 
 //curl callbacks
@@ -240,7 +241,7 @@ void Downloader::run()
     curl_easy_setopt(m_handle, CURLOPT_FAILONERROR, 1);
     curl_easy_setopt(m_handle, CURLOPT_MAXREDIRS, 15);
     // user agent
-    curl_easy_setopt(m_handle, CURLOPT_USERAGENT, "qmmp/0.2");
+    curl_easy_setopt(m_handle, CURLOPT_USERAGENT, "qmmp/"QMMP_STR_VERSION);
     curl_easy_setopt(m_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
 
     struct curl_slist *http200_aliases = curl_slist_append(NULL, "ICY");

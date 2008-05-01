@@ -137,6 +137,13 @@ RESOURCES = images/images.qrc \
 TEMPLATE = app
 target.path = /bin
 
+DEFINES += QMMP_VERSION=$$QMMP_VERSION
+contains(CONFIG, SVN_VERSION) {
+DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
+} else {
+DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
+}
+
 desktop.files = qmmp.desktop
 desktop.path = /share/applications
 

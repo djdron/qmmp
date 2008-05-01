@@ -1,7 +1,13 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define VERSION "0.2.0"
+#ifndef QMMP_STR_VERSION
+#define QMMP_STR_VERSION "0.2.0"
+#endif
+
+#ifndef QMMP_VERSION
+#define QMMP_VERSION 0.2.0
+#endif
 
 #ifndef LIB_DIR
 #define LIB_DIR "/lib"
