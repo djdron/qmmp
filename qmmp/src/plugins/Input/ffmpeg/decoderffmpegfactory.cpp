@@ -1,8 +1,8 @@
 #include <QtGui>
 
 extern "C"{
-#include <ffmpeg/avformat.h>
-#include <ffmpeg/avcodec.h>
+#include <avformat.h>
+#include <avcodec.h>
 }
 
 #include "detailsdialog.h"

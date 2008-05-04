@@ -22,8 +22,8 @@
 #define __decoder_ffmeg_h
 
 extern "C"{
-#include <ffmpeg/avformat.h>
-#include <ffmpeg/avcodec.h>
+#include <avformat.h>
+#include <avcodec.h>
 }
 #include <qmmp/decoder.h>
 
