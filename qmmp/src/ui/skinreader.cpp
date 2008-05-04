@@ -167,7 +167,7 @@ void SkinReader::untar(const QString &from, const QString &to, bool preview)
             if (preview)
                 name = from.section('/',-1) + (".") + str.section('.', -1);
             else
-                name = str.right(str.size() - str.indexOf("/",Qt::CaseInsensitive) - 1).trimmed().toLower();
+                name = str.contains('/') ? str.section('/',-1).toLower() : str.toLower();
 
             QFile file(to+"/"+name);
             file.open(QIODevice::WriteOnly);
