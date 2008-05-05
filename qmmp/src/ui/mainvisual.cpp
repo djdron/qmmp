@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -173,7 +173,6 @@ void MainVisual::timeout()
     if (m_vis)
         m_vis->process ( node );
     delete node;
-
     if ( m_vis )
     {
         if (m_draw)
@@ -211,6 +210,7 @@ void MainVisual::mousePressEvent (QMouseEvent *e)
         m_menu->exec(e->globalPos());
     else
     {
+        m_pixmap = m_bg;
         if (!m_vis)
             setVisual(new mainvisual::Analyzer);
         else if (m_vis->name() == "Analyzer")
