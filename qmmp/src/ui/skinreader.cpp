@@ -37,6 +37,7 @@ SkinReader::SkinReader(QObject *parent)
     dir.mkdir("cache");
     dir.cd("cache");
     dir.mkdir("thumbs");
+    dir.mkdir("skin");
 }
 
 
