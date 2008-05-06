@@ -22,8 +22,21 @@
 #define __decoder_ffmeg_h
 
 extern "C"{
+#if defined HAVE_FFMPEG_AVFORMAT_H
+#include <ffmpeg/avformat.h>
+#elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
+#include <libavformat/avformat.h>
+#else
 #include <avformat.h>
+#endif
+
+#if defined HAVE_FFMPEG_AVCODEC_H
+#include <ffmpeg/avcodec.h>
+#elif defined HAVE_LIBAVCODEC_AVCODEC_H
+#include <libavcodec/avcodec.h>
+#else
 #include <avcodec.h>
+#endif
 }
 #include <qmmp/decoder.h>
 

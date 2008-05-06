@@ -22,7 +22,8 @@ plugin \
 link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp -L/usr/lib -I/usr/include
+LIBS += -lqmmp -L/usr/lib -I/usr/include -I/usr/include/ffmpeg \
+        -I/usr/include/libavcodec -I/usr/include/libavformat
 DEFINES += __STDC_CONSTANT_MACROS
 PKGCONFIG += libavcodec libavformat
 TRANSLATIONS = translations/ffmpeg_plugin_ru.ts \
