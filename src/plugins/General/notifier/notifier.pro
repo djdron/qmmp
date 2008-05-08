@@ -13,7 +13,7 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmpui
 
-#TRANSLATIONS = translations/ffmpeg_plugin_ru.ts
+TRANSLATIONS = translations/notifier_plugin_de.ts
 RESOURCES = notifier_images.qrc
 #RESOURCES = translations/translations.qrc
 

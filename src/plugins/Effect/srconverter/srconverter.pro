@@ -21,7 +21,7 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib -I/usr/include
 
-#TRANSLATIONS = translations/ffmpeg_plugin_ru.ts
+TRANSLATIONS = translations/srconverter_plugin_de.ts
 #RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

@@ -12,7 +12,7 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libdbuscontrol.so
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
-#TRANSLATIONS = translations/ffmpeg_plugin_ru.ts
+TRANSLATIONS = translations/dbuscontrol_plugin_de.ts
 #RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
@@ -27,11 +27,11 @@ INSTALLS += target
 
 HEADERS += dbuscontrolfactory.h \
            dbuscontrol.h  \
- dbusadaptor.h
+           dbusadaptor.h
 
 SOURCES += dbuscontrolfactory.cpp \
            dbuscontrol.cpp \
- dbusadaptor.cpp
+           dbusadaptor.cpp
     
 INCLUDEPATH += ../../../../src
 
