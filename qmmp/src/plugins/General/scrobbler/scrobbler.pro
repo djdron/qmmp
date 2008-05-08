@@ -11,7 +11,7 @@ TARGET=$$PLUGINS_PREFIX/General/scrobbler
 QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libscrobbler.so
 
 
-#TRANSLATIONS = translations/ffmpeg_plugin_ru.ts
+TRANSLATIONS = translations/scrobbler_plugin_de.ts
 #RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
