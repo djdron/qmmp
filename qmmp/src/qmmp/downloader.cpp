@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -295,6 +295,11 @@ void Downloader::checkBuffer()
         m_ready  = TRUE;
         qDebug("Downloader: ready");
         emit readyRead();
+    }
+    else if (!m_ready)
+    {
+        emit bufferingProgress(100*m_stream.buf_fill/BUFFER_SIZE);
+        qApp->processEvents();
     }
 
 }

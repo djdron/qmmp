@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,6 +29,7 @@ StreamReader::StreamReader(const QString &name, QObject *parent)
     m_downloader = new Downloader(this, name);
     connect(m_downloader, SIGNAL(titleChanged()),SLOT(updateTitle()));
     connect(m_downloader, SIGNAL(readyRead()), SIGNAL(readyRead()));
+    connect(m_downloader, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
 }
 
 StreamReader::~StreamReader()

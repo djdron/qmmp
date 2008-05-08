@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -65,6 +65,7 @@ public:
 signals:
     void titleChanged(const QString&);
     void readyRead();
+    void bufferingProgress(int);
 
 protected:
     qint64 readData(char*, qint64);
