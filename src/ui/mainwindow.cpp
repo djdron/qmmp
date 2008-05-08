@@ -132,6 +132,8 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
             SLOT(showDecoderState(const DecoderState&)));
     connect(m_core, SIGNAL(titleChanged(const QString&)),
             SLOT(changeTitle(const QString&)));
+    connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
+            SLOT(setProgress(int)));
 
     connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
     updateEQ();

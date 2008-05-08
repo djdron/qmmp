@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2208 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -186,6 +186,13 @@ signals:
     *  For another servers use decoderStateChanged()
     */
     void titleChanged(const QString& title);
+
+    /*!
+     * This signal is emited when the stream reader fills it's buffer.
+     * The argument \b progress indicates the current percentage of buffering completed
+     */
+
+    void bufferingProgress(int progress);
 
 private slots:
     bool decode();

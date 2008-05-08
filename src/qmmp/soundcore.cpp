@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -86,6 +86,7 @@ bool SoundCore::play(const QString &source)
     if (source.left(4) == "http")
     {
         m_input = new StreamReader(source, this);
+        connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
         connect(m_input, SIGNAL(titleChanged(const QString&)),
                 SIGNAL(titleChanged(const QString&)));
         connect(m_input, SIGNAL(readyRead()),SLOT(decode()));
@@ -128,7 +129,6 @@ bool SoundCore::play(const QString &source)
     else
         qobject_cast<StreamReader *>(m_input)->downloadFile();
     return TRUE;
-
 }
 
 uint SoundCore::error()
@@ -436,5 +436,3 @@ SoundCore* SoundCore::instance()
 {
     return m_instance;
 }
-
-

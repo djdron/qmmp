@@ -42,6 +42,10 @@ public:
     void setText(const QString&);
     void readSettings();
 
+
+public slots:
+    void setProgress(int);
+
 private slots:
     void addOffset();
     void updateSkin();

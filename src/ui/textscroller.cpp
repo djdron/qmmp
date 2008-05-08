@@ -73,6 +73,8 @@ void TextScroller::addOffset()
 
 void TextScroller::setText(const QString& text)
 {
+    if(isVisible())
+        m_timer->start();
     if (m_text != text)
     {
         m_text = text;
@@ -101,6 +103,18 @@ void TextScroller::readSettings()
         m_update = TRUE;
         m_metrics = new QFontMetrics(m_font);
     }
+}
+
+void TextScroller::setProgress(int progress)
+{
+    m_timer->stop();
+    x = 0;
+    m_pixmap.fill ( Qt::transparent );
+    QPainter paint ( &m_pixmap );
+    paint.setPen(m_color);
+    paint.setFont(m_font);
+    paint.drawText (4,12, tr("Buffering:") + QString(" %1\%").arg(progress));
+    setPixmap(m_pixmap);
 }
 
 void TextScroller::hideEvent ( QHideEvent *)
