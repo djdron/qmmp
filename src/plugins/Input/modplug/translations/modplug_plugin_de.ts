@@ -252,18 +252,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="457"/>
-        <source>Depth</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="608"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="509"/>
-        <source>Delay</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -274,16 +264,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="314"/>
         <source>Bass Boost</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="326"/>
-        <source>Amount</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="384"/>
-        <source>Range</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -312,73 +292,99 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="663"/>
+        <location filename="../settingsdialog.ui" line="661"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="669"/>
+        <location filename="../settingsdialog.ui" line="667"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="675"/>
+        <location filename="../settingsdialog.ui" line="673"/>
         <source>Use filename as song title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="682"/>
+        <location filename="../settingsdialog.ui" line="680"/>
         <source>Noise reduction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="692"/>
+        <location filename="../settingsdialog.ui" line="690"/>
         <source>Fast playlist info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="702"/>
+        <location filename="../settingsdialog.ui" line="700"/>
         <source>Play Amiga MOD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="712"/>
+        <location filename="../settingsdialog.ui" line="710"/>
         <source>Looping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="718"/>
+        <location filename="../settingsdialog.ui" line="716"/>
         <source>Don&apos;t loop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="725"/>
+        <location filename="../settingsdialog.ui" line="723"/>
         <source>Loop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="742"/>
+        <location filename="../settingsdialog.ui" line="740"/>
         <source>time(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="762"/>
+        <location filename="../settingsdialog.ui" line="760"/>
         <source>Loop forever</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="802"/>
+        <location filename="../settingsdialog.ui" line="800"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="809"/>
+        <location filename="../settingsdialog.ui" line="807"/>
         <source>Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="816"/>
+        <location filename="../settingsdialog.ui" line="814"/>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="457"/>
+        <source>Depth (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="509"/>
+        <source>Delay (ms)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="326"/>
+        <source>Amount (%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="384"/>
+        <source>Range (Hz)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="646"/>
+        <source>Note: Setting the preamp 
+ too  high may cause clipping!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

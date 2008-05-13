@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>465</width>
-    <height>378</height>
+    <height>388</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -189,7 +189,7 @@
           <item row="0" column="0" >
            <widget class="QLabel" name="label_3" >
             <property name="text" >
-             <string>Depth</string>
+             <string>Depth (%)</string>
             </property>
            </widget>
           </item>
@@ -247,7 +247,7 @@
           <item row="2" column="0" >
            <widget class="QLabel" name="label_4" >
             <property name="text" >
-             <string>Delay</string>
+             <string>Delay (ms)</string>
             </property>
            </widget>
           </item>
@@ -323,7 +323,7 @@
           <item row="0" column="0" >
            <widget class="QLabel" name="label_5" >
             <property name="text" >
-             <string>Amount</string>
+             <string>Amount (%)</string>
             </property>
            </widget>
           </item>
@@ -381,7 +381,7 @@
           <item row="2" column="0" >
            <widget class="QLabel" name="label_6" >
             <property name="text" >
-             <string>Range</string>
+             <string>Range (Hz)</string>
             </property>
            </widget>
           </item>
@@ -454,7 +454,7 @@
           <item row="0" column="0" >
            <widget class="QLabel" name="label" >
             <property name="text" >
-             <string>Depth</string>
+             <string>Depth (%)</string>
             </property>
            </widget>
           </item>
@@ -506,7 +506,7 @@
           <item row="2" column="0" >
            <widget class="QLabel" name="label_2" >
             <property name="text" >
-             <string>Delay</string>
+             <string>Delay (ms)</string>
             </property>
            </widget>
           </item>
@@ -640,18 +640,16 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1" >
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Vertical</enum>
+          <item row="2" column="0" colspan="3" >
+           <widget class="QLabel" name="label_15" >
+            <property name="text" >
+             <string>Note: Setting the preamp 
+ too  high may cause clipping!</string>
             </property>
-            <property name="sizeHint" >
-             <size>
-              <width>20</width>
-              <height>16</height>
-             </size>
+            <property name="alignment" >
+             <set>Qt::AlignCenter</set>
             </property>
-           </spacer>
+           </widget>
           </item>
          </layout>
         </widget>
