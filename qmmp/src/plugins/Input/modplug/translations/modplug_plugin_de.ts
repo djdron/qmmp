@@ -383,8 +383,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="646"/>
-        <source>Note: Setting the preamp 
- too  high may cause clipping!</source>
+        <source>Note: Setting the preamp
+too high may cause clipping!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
