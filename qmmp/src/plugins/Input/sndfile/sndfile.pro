@@ -18,8 +18,9 @@ QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib -I/usr/include
 
 PKGCONFIG += sndfile
-TRANSLATIONS = translations/sndfile_plugin_de.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/sndfile_plugin_cs.ts \
+               translations/sndfile_plugin_de.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){
 LIB_DIR = /lib

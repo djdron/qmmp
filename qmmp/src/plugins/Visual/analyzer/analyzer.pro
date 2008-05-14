@@ -23,8 +23,8 @@ plugin
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib -I/usr/include
-#TRANSLATIONS = translations/ffmpeg_plugin_ru.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/analyzer_plugin_cs.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib

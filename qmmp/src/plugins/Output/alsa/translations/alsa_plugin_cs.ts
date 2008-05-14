@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS><TS version="1.1" language="cs">
+<defaultcodec></defaultcodec>
 <context>
     <name>OutputALSAFactory</name>
     <message>
         <location filename="../outputalsafactory.cpp" line="31"/>
         <source>ALSA Plugin</source>
-        <translation>Plugin ALSA</translation>
+        <translation>Modul ALSA</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="50"/>
         <source>About ALSA Output Plugin</source>
-        <translation>O pluginu ALSA</translation>
+        <translation>O modulu ALSA</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="51"/>
         <source>Qmmp ALSA Output Plugin</source>
-        <translation>Výstupní plugin Qmmp ALSA</translation>
+        <translation>Výstupní modul Qmmp ALSA</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="52"/>
@@ -73,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="186"/>
         <source>Period time (ms):</source>
-        <translation type="unfinished">Délka periody (ms):</translation>
+        <translation>Délka periody (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="229"/>

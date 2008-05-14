@@ -45,9 +45,9 @@ SET(liboss_MOC_HDRS
   settingsdialog.h
 )
 
-SET(libjack_RCCS translations/translations.qrc)
+SET(liboss_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libjack_RCC_SRCS ${libjack_RCCS})
+QT4_ADD_RESOURCES(liboss_RCC_SRCS ${liboss_RCCS})
 
 QT4_WRAP_CPP(liboss_MOC_SRCS ${liboss_MOC_HDRS})
 
@@ -57,7 +57,8 @@ SET(liboss_UIS
 
 QT4_WRAP_UI(liboss_UIS_H ${liboss_UIS})
 
-ADD_LIBRARY(oss SHARED ${liboss_SRCS} ${liboss_MOC_SRCS} ${liboss_UIS_H})
+ADD_LIBRARY(oss SHARED ${liboss_SRCS} ${liboss_MOC_SRCS} ${liboss_UIS_H}
+  ${liboss_RCC_SRCS})
 target_link_libraries(oss ${QT_LIBRARIES} -lqmmp )
 install(TARGETS oss DESTINATION ${LIB_DIR}/qmmp/Output PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
 

@@ -54,9 +54,9 @@ SET(libmodplug_MOC_HDRS
   archivereader.h
 )
 
-#SET(libmodplug_RCCS translations/translations.qrc)
+SET(libmodplug_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libmodplug_RCC_SRCS ${libmodplug_RCCS})
+QT4_ADD_RESOURCES(libmodplug_RCC_SRCS ${libmodplug_RCCS})
 
 QT4_WRAP_CPP(libmodplug_MOC_SRCS ${libmodplug_MOC_HDRS})
 

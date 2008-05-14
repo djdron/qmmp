@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>dbuscontrol_plugin_cs.qm</file>
+    <file>dbuscontrol_plugin_de.qm</file>
+  </qresource>
+</RCC>

@@ -26,8 +26,9 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib -I/usr/include
 PKGCONFIG += libmodplug
-TRANSLATIONS = translations/modplug_plugin_de.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/modplug_plugin_cs.ts \
+               translations/modplug_plugin_de.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib

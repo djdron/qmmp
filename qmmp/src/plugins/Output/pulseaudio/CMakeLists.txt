@@ -41,7 +41,7 @@ SET(libpulseaudio_MOC_HDRS
   outputpulseaudiofactory.h
 )
 
-#SET(libpulseaudio_RCCS translations/translations.qrc)
+SET(libpulseaudio_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libpulseaudio_RCC_SRCS ${libpulseaudio_RCCS})
 

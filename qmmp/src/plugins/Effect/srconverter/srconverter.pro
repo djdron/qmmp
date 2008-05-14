@@ -21,8 +21,9 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib -I/usr/include
 
-TRANSLATIONS = translations/srconverter_plugin_de.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/srconverter_plugin_cs.ts \
+               translations/srconverter_plugin_de.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib

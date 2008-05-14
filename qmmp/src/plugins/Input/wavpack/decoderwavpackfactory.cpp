@@ -27,7 +27,7 @@ const DecoderProperties DecoderWavPackFactory::properties() const
     DecoderProperties properties;
     properties.name = tr("WavPack Plugin");
     properties.filter = "*.wv";
-    properties.description = tr("WavPackk Files");
+    properties.description = tr("WavPack Files");
     //properties.contentType = ;
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;

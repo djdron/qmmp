@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>sndfile_plugin_cs.qm</file>
+    <file>sndfile_plugin_de.qm</file>
+  </qresource>
+</RCC>

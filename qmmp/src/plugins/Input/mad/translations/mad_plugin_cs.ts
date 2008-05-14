@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS><TS version="1.1" language="cs">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="52"/>
+        <location filename="../decodermadfactory.cpp" line="67"/>
         <source>MPEG Plugin</source>
-        <translation>MPEG plugin</translation>
+        <translation>Modul MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="54"/>
+        <location filename="../decodermadfactory.cpp" line="69"/>
         <source>MPEG Files</source>
         <translation>Soubory MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="168"/>
+        <location filename="../decodermadfactory.cpp" line="183"/>
         <source>About MPEG Audio Plugin</source>
-        <translation>O pluginu MPEG</translation>
+        <translation>O modulu MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="169"/>
+        <location filename="../decodermadfactory.cpp" line="184"/>
         <source>Qmmp MPEG Audio Plugin</source>
-        <translation>Vstupní plugin Qmmp MPEG</translation>
+        <translation>Vstupní modul Qmmp MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="170"/>
+        <location filename="../decodermadfactory.cpp" line="185"/>
         <source>Compiled against libmad version:</source>
         <translation>Zkompilováno s libmad verze</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="174"/>
+        <location filename="../decodermadfactory.cpp" line="189"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="176"/>
+        <location filename="../decodermadfactory.cpp" line="191"/>
         <source>Source code based on mq3 progect</source>
         <translation>Zdrojový kód je založen na projektu mq3</translation>
     </message>
@@ -178,37 +179,37 @@
     <message>
         <location filename="../detailsdialog.cpp" line="155"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Tag APE</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="54"/>
         <source>Tag Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>Výběr tagu</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="60"/>
         <source>ID3v1</source>
-        <translation type="unfinished">ID3v1</translation>
+        <translation>ID3v1</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="67"/>
         <source>ID3v2</source>
-        <translation type="unfinished">ID3v2</translation>
+        <translation>ID3v2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="432"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Vytvořit</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="445"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstranit</translation>
     </message>
 </context>
 <context>
@@ -251,37 +252,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Tag Priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Priorita tagu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>First:</source>
-        <translation type="unfinished"></translation>
+        <translation>První:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="156"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakázáno</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="80"/>
         <source>Second:</source>
-        <translation type="unfinished"></translation>
+        <translation>Druhý:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Third:</source>
-        <translation type="unfinished"></translation>
+        <translation>Třetí:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>Encodings</source>
-        <translation type="unfinished"></translation>
+        <translation>Kódování</translation>
     </message>
 </context>
 </TS>

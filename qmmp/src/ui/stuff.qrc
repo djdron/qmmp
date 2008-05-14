@@ -14,8 +14,10 @@
     <file>txt/authors_zh_TW.txt</file>
     <file>txt/thanks_zh_TW.txt</file>
 
+    <file>txt/description_cs.txt</file>
     <file>txt/authors_cs.txt</file>
     <file>txt/thanks_cs.txt</file>
+    <file>txt/translators_cs.txt</file>
 
     <file>txt/authors_ru.txt</file>
     <file>txt/thanks_ru.txt</file>

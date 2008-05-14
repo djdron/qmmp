@@ -38,9 +38,9 @@ SET(libanalyzer_MOC_HDRS
     visualanalyzerfactory.h
 )
 
-#SET(libanalyzer_RCCS translations/translations.qrc)
+SET(libanalyzer_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libanalyzer_RCC_SRCS ${libanalyzer_RCCS})
+QT4_ADD_RESOURCES(libanalyzer_RCC_SRCS ${libanalyzer_RCCS})
 
 QT4_WRAP_CPP(libanalyzer_MOC_SRCS ${libanalyzer_MOC_HDRS})
 

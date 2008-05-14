@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS><TS version="1.1" language="cs">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMPCFactory</name>
     <message>
         <location filename="../decodermpcfactory.cpp" line="26"/>
         <source>Musepack Plugin</source>
-        <translation>Musepack plugin</translation>
+        <translation>Modul Musepack</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="28"/>
@@ -15,12 +16,12 @@
     <message>
         <location filename="../decodermpcfactory.cpp" line="82"/>
         <source>About Musepack Audio Plugin</source>
-        <translation>O pluginu Musepack</translation>
+        <translation>O modulu Musepack</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="83"/>
         <source>Qmmp Musepack Audio Plugin</source>
-        <translation>Vstupní plugin Qmmp Musepack</translation>
+        <translation>Vstupní modul Qmmp Musepack</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="84"/>
@@ -143,7 +144,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="199"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Tag APE</translation>
     </message>
 </context>
 </TS>
