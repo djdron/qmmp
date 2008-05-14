@@ -13,8 +13,9 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmpui
 
-TRANSLATIONS = translations/statusicon_plugin_de.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/statusicon_plugin_cs.ts \
+               translations/statusicon_plugin_de.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib

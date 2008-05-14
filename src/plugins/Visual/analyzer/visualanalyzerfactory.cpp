@@ -53,7 +53,10 @@ void VisualAnalyzerFactory::showAbout(QWidget *parent)
 
 QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent) 
 {
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/analyzer_plugin_") + locale);
+    return translator;
 };
 
 Q_EXPORT_PLUGIN(VisualAnalyzerFactory)

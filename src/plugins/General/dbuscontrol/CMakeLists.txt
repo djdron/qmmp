@@ -36,9 +36,9 @@ SET(libdbuscontrol_MOC_HDRS
     dbusadaptor.h
 )
 
-#SET(libdbuscontrol_RCCS translations/translations.qrc)
+SET(libdbuscontrol_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libdbuscontrol_RCC_SRCS ${libdbuscontrol_RCCS})
+QT4_ADD_RESOURCES(libdbuscontrol_RCC_SRCS ${libdbuscontrol_RCCS})
 
 QT4_WRAP_CPP(libdbuscontrol_MOC_SRCS ${libdbuscontrol_MOC_HDRS})
 

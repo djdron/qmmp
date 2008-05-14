@@ -35,7 +35,7 @@ SET(libnotifier_MOC_HDRS
     popupwidget.h
 )
 
-#SET(libnotifier_RCCS translations/translations.qrc)
+SET(libnotifier_RCCS translations/translations.qrc)
 
 SET(libnotifier_RCCS notifier_images.qrc)
 

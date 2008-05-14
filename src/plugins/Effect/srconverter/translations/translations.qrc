@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>srconverter_plugin_cs.qm</file>
+    <file>srconverter_plugin_de.qm</file>
+  </qresource>
+</RCC>

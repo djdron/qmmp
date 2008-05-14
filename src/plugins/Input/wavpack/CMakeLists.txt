@@ -50,9 +50,9 @@ SET(libwavpack_MOC_HDRS
   detailsdialog.h
 )
 
-#SET(libwavpack_RCCS translations/translations.qrc)
+SET(libwavpack_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libwavpack_RCC_SRCS ${libwavpack_RCCS})
+QT4_ADD_RESOURCES(libwavpack_RCC_SRCS ${libwavpack_RCCS})
 
 QT4_WRAP_CPP(libwavpack_MOC_SRCS ${libwavpack_MOC_HDRS})
 

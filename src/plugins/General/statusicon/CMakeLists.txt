@@ -33,7 +33,7 @@ SET(libstatusicon_MOC_HDRS
     statusicon.h
 )
 
-#SET(libstatusicon_RCCS translations/translations.qrc)
+SET(libstatusicon_RCCS translations/translations.qrc)
 
 SET(libstatusicon_RCCS images/tray_images.qrc)
 

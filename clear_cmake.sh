@@ -2,6 +2,8 @@
 
 make clean
 
+rm install_manifest.txt
+
 rm_dir='CMakeFiles'
 
 clear () { rm -f Makefile; rm -f cmake_install.cmake; rm -f CMakeCache.txt; }

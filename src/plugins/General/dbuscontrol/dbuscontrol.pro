@@ -12,8 +12,9 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libdbuscontrol.so
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
-TRANSLATIONS = translations/dbuscontrol_plugin_de.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/dbuscontrol_plugin_cs.ts \
+               translations/dbuscontrol_plugin_de.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib

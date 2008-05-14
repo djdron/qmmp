@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Status Icon Plugin Settings</string>
+   <string>Notifier Plugin Settings</string>
   </property>
   <layout class="QVBoxLayout" >
    <item>

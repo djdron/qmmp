@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS><TS version="1.1" language="cs">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFLACFactory</name>
     <message>
         <location filename="../decoderflacfactory.cpp" line="26"/>
         <source>FLAC Plugin</source>
-        <translation>FLAC plugin</translation>
+        <translation>Modul FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="28"/>
@@ -15,12 +16,12 @@
     <message>
         <location filename="../decoderflacfactory.cpp" line="82"/>
         <source>About FLAC Audio Plugin</source>
-        <translation>O pluginu FLAC</translation>
+        <translation>O modulu FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="83"/>
         <source>Qmmp FLAC Audio Plugin</source>
-        <translation>Vstupní plugin Qmmp FLAC</translation>
+        <translation>Vstupní modul Qmmp FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="84"/>

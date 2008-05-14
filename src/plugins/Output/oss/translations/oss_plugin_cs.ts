@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS><TS version="1.1" language="cs">
+<defaultcodec></defaultcodec>
 <context>
     <name>OutputOSSFactory</name>
     <message>
         <location filename="../outputossfactory.cpp" line="30"/>
         <source>OSS Plugin</source>
-        <translation>Plugin OSS</translation>
+        <translation>Modul OSS</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="56"/>
         <source>About OSS Output Plugin</source>
-        <translation>O pluginu OSS</translation>
+        <translation>O modulu OSS</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
-        <translation>Výstupní plugin Qmmp OSS</translation>
+        <translation>Výstupní modul Qmmp OSS</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
@@ -68,7 +69,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="220"/>
         <source>Period time (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka periody (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>

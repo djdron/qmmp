@@ -46,14 +46,17 @@ QDialog *StatusIconFactory::createConfigDialog(QWidget *parent)
 
 void StatusIconFactory::showAbout(QWidget *parent)
 {
-    QMessageBox::about (parent, tr("About Scrobbler Plugin"),
+    QMessageBox::about (parent, tr("About Status Icon Plugin"),
                         tr("Qmmp Status Icon Plugin")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *StatusIconFactory::createTranslator(QObject *parent)
 {
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/statusicon_plugin_") + locale);
+    return translator;
 }
 
 Q_EXPORT_PLUGIN(StatusIconFactory)

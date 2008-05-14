@@ -40,9 +40,9 @@ SET(libscrobbler_MOC_HDRS
     scrobbler.h
 )
 
-#SET(libscrobbler_RCCS translations/translations.qrc)
+SET(libscrobbler_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libscrobbler_RCC_SRCS ${libscrobbler_RCCS})
+QT4_ADD_RESOURCES(libscrobbler_RCC_SRCS ${libscrobbler_RCCS})
 
 QT4_WRAP_CPP(libscrobbler_MOC_SRCS ${libscrobbler_MOC_HDRS})
 

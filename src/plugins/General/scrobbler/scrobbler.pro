@@ -11,8 +11,9 @@ TARGET=$$PLUGINS_PREFIX/General/scrobbler
 QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libscrobbler.so
 
 
-TRANSLATIONS = translations/scrobbler_plugin_de.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/scrobbler_plugin_cs.ts \
+               translations/scrobbler_plugin_de.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib

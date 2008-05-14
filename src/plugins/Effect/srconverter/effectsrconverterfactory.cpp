@@ -53,7 +53,10 @@ void EffectSRConverterFactory::showAbout(QWidget *parent)
 
 QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent) 
 {
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/srconverter_plugin_") + locale);
+    return translator;
 };
 
 Q_EXPORT_PLUGIN(EffectSRConverterFactory)

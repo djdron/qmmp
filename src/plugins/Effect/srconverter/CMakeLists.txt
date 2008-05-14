@@ -47,9 +47,9 @@ SET(libsrconverter_MOC_HDRS
     effectsrconverterfactory.h
 )
 
-#SET(libsrconverter_RCCS translations/translations.qrc)
+SET(libsrconverter_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libsrconverter_RCC_SRCS ${libsrconverter_RCCS})
+QT4_ADD_RESOURCES(libsrconverter_RCC_SRCS ${libsrconverter_RCCS})
 
 QT4_WRAP_CPP(libsrconverter_MOC_SRCS ${libsrconverter_MOC_HDRS})
 

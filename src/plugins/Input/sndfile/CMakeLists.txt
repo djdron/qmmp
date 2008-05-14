@@ -52,9 +52,9 @@ SET(libsndfile_MOC_HDRS
   decoder_sndfile.h
 )
 
-#SET(libsndfile_RCCS translations/translations.qrc)
+SET(libsndfile_RCCS translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libsndfile_RCC_SRCS ${libsndfile_RCCS})
+QT4_ADD_RESOURCES(libsndfile_RCC_SRCS ${libsndfile_RCCS})
 
 QT4_WRAP_CPP(libsndfile_MOC_SRCS ${libsndfile_MOC_HDRS})
 
