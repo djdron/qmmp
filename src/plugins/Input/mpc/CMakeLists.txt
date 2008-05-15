@@ -24,20 +24,12 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-# libmpc and taglib
-PKGCONFIG(taglib TAGLIB_INCLUDE_DIR TAGLIB_LINK_DIR TAGLIB_LINK_FLAGS TAGLIB_CFLAGS)
+# libmpc
 
-IF(NOT TAGLIB_LINK_FLAGS)
-  SET(TAGLIB_LINK_FLAGS -ltag)
-  SET(TAGLIB_INCLUDE_DIR /usr/include/taglib)
-  SET(TAGLIB_CFLAGS -I/usr/include/taglib)
-ENDIF(NOT TAGLIB_LINK_FLAGS)
+SET(MPC_FOUND TRUE CACHE BOOL INTERNAL) #add test
 
-include_directories(${FLAC_INCLUDE_DIR} ${TAGLIB_INCLUDE_DIR})
-link_directories(${FLAC_LINK_DIR} ${TAGLIB_LINK_DIR})
-
-ADD_DEFINITIONS(${TAGLIB_CFLAGS})
-
+include_directories(${TAGLIB_INCLUDE_DIRS})
+link_directories(${TAGLIB_LIBRARY_DIRS})
 
 SET(libmpc_SRCS
   decoder_mpc.cpp
@@ -69,14 +61,9 @@ QT4_WRAP_UI(libmpc_UIS_H ${libmpc_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+IF(MPC_FOUND)
 ADD_LIBRARY(mpc SHARED ${libmpc_SRCS} ${libmpc_MOC_SRCS} ${libmpc_UIS_H}
   ${libmpc_RCC_SRCS})
-target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp -lmpcdec ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS mpc DESTINATION ${LIB_DIR}/qmmp/Input PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
-
-# clean remaining files
-
-SET_DIRECTORY_PROPERTIES(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES 
-			 "CMakeCache.txt;Makefile;cmake_install.cmake"
-)
-
+target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp -lmpcdec ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+install(TARGETS mpc DESTINATION ${LIB_DIR}/qmmp/Input)
+ENDIF(MPC_FOUND)

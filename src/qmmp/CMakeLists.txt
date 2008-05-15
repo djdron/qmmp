@@ -18,6 +18,12 @@ ENDIF(SVN_VERSION)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+#libcurl
+
+pkg_check_modules(CURL REQUIRED libcurl)
+include_directories(${CURL_INCLUDE_DIRS})
+link_directories(${CURL_LIBRARY_DIRS})
+
 SET(libqmmp_SRCS
     visual.cpp
     recycler.cpp
@@ -58,6 +64,6 @@ QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(qmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
-target_link_libraries(qmmp ${QT_LIBRARIES} curl)
+target_link_libraries(qmmp ${QT_LIBRARIES} ${CURL_LDFLAGS} ${CURL_CFLAGS})
 SET_TARGET_PROPERTIES(qmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})
 install(TARGETS qmmp LIBRARY DESTINATION ${LIB_DIR})

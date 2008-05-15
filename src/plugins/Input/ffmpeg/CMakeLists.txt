@@ -2,9 +2,6 @@ project(libffmpeg)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -27,43 +24,33 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libffmpeg
-PKGCONFIG(libavcodec LIBAVCODEC_INCLUDE_DIR LIBAVCODEC_LINK_DIR LIBAVCODEC_LINK_FLAGS LIBAVCODEC_CFLAGS)
-PKGCONFIG(libavformat LIBAVFORMAT_INCLUDE_DIR LIBAVFORMAT_LINK_DIR LIBAVFORMAT_LINK_FLAGS LIBAVFORMAT_CFLAGS)
+pkg_check_modules(FFMPEG libavcodec libavformat)
 
-IF(NOT LIBAVCODEC_LINK_FLAGS)
-  SET(LIBAVCODEC_LINK_FLAGS -lavcodec)
-  SET(LIBAVCODEC_INCLUDE_DIR /usr/include)
-ENDIF(NOT LIBAVCODEC_LINK_FLAGS)
-
-IF(NOT LIBAVFORMAT_LINK_FLAGS)
-  SET(LIBAVFORMAT_LINK_FLAGS -lavformat)
-  SET(LIBAVFORMAT_INCLUDE_DIR /usr/include)
-ENDIF(NOT LIBAVFORMAT_LINK_FLAGS)
 
 # old ffmpeg support
-IF(EXISTS ${LIBAVFORMAT_INCLUDE_DIR}/ffmpeg/avformat.h)
+IF(EXISTS /usr/include/ffmpeg/avformat.h)
   ADD_DEFINITIONS(-DHAVE_FFMPEG_AVFORMAT_H)
-ELSEIF(EXISTS ${LIBAVFORMAT_INCLUDE_DIR}/libavformat/avformat.h)
+ELSEIF(EXISTS /usr/include/libavformat/avformat.h)
   ADD_DEFINITIONS(-DHAVE_LIBAVFORMAT_AVFORMAT_H)
-ELSE(EXISTS ${LIBAVFORMAT_INCLUDE_DIR}/ffmpeg/avformat.h)
+ELSE(EXISTS /usr/include/libavformat/avformat.h)
   include_directories(/usr/local/include/ffmpeg
                       /usr/local/include/libavformat
 )
-ENDIF(EXISTS ${LIBAVFORMAT_INCLUDE_DIR}/ffmpeg/avformat.h)
+ENDIF(EXISTS /usr/include/ffmpeg/avformat.h)
 
-IF(EXISTS ${LIBAVCODEC_INCLUDE_DIR}/ffmpeg/avcodec.h)
+IF(EXISTS /usr/include/ffmpeg/avcodec.h)
   ADD_DEFINITIONS(-DHAVE_FFMPEG_AVCODEC_H)
-ELSEIF(EXISTS ${LIBAVCODEC_INCLUDE_DIR}/libavcodec/avcodec.h)
+ELSEIF(EXISTS /usr/include/libavcodec/avcodec.h)
   ADD_DEFINITIONS(-DHAVE_LIBAVCODEC_AVCODEC_H)
-ELSE(EXISTS ${LIBAVCODEC_INCLUDE_DIR}/ffmpeg/avcodec.h)
+ELSE(EXISTS /usr/include/ffmpeg/avcodec.h)
   include_directories(/usr/local/include/ffmpeg
                       /usr/local/include/libavcodec
 )
-ENDIF(EXISTS ${LIBAVCODEC_INCLUDE_DIR}/ffmpeg/avcodec.h)
+ENDIF(EXISTS /usr/include/ffmpeg/avcodec.h)
 
 
-include_directories(${LIBAVCODEC_INCLUDE_DIR} ${LIBAVFORMAT_INCLUDE_DIR})
-link_directories(${LIBAVCODEC_LINK_DIR} ${LIBAVFORMAT_LINK_DIR})
+include_directories(${FFMPEG_INCLUDE_DIRS})
+link_directories(${FFMPEG_LIBRARY_DIRS})
 
 ADD_DEFINITIONS(${LIBAVCODEC_CFLAGS})
 ADD_DEFINITIONS(${LIBAVFORMAT_CFLAGS})
@@ -98,7 +85,9 @@ QT4_WRAP_UI(libffmpeg_UIS_H ${libffmpeg_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+IF(FFMPEG_FOUND)
 ADD_LIBRARY(ffmpeg SHARED ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS})
-target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${LIBAVCODEC_LINK_FLAGS} ${LIBAVFORMAT_LINK_FLAGS})
-install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
+target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS} ${FFMPEG_CFLAGS})
+install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input)
+ENDIF(FFMPEG_FOUND)

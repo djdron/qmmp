@@ -2,9 +2,6 @@ project(libjack)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -24,25 +21,11 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-# libjack and taglib
-PKGCONFIG(jack JACK_INCLUDE_DIR JACK_LINK_DIR JACK_LINK_FLAGS JACK_CFLAGS)
-PKGCONFIG(samplerate SAMPLERATE_INCLUDE_DIR SAMPLERATE_LINK_DIR SAMPLERATE_LINK_FLAGS SAMPLERATE_CFLAGS)
+# libjack and samplerate
+pkg_check_modules(JACK jack samplerate)
 
-
-IF(NOT JACK_LINK_FLAGS)
-  SET(JACK_LINK_FLAGS -ljack -lrt)
-ENDIF(NOT JACK_LINK_FLAGS)
-
-IF(NOT SAMPLERATE_LINK_FLAGS)
-  SET(SAMPLERATE_LINK_FLAGS -lsamplerate)
-ENDIF(NOT SAMPLERATE_LINK_FLAGS)
-
-include_directories(${JACK_INCLUDE_DIR} ${JACK_INCLUDE_DIR})
-link_directories(${SAMPLERATE_LINK_DIR} ${SAMPLERATE_LINK_DIR})
-
-ADD_DEFINITIONS(${JACK_CFLAGS})
-ADD_DEFINITIONS(${SAMPLERATE_CFLAGS})
-
+include_directories(${JACK_INCLUDE_DIRS})
+link_directories(${JACK_LIBRARY_DIRS})
 
 SET(libjack_SRCS
   outputjackfactory.cpp
@@ -63,8 +46,9 @@ QT4_ADD_RESOURCES(libjack_RCC_SRCS ${libjack_RCCS})
 QT4_WRAP_CPP(libjack_MOC_SRCS ${libjack_MOC_HDRS})
 
 
-
+IF(JACK_FOUND)
 ADD_LIBRARY(jack SHARED ${libjack_SRCS} ${libjack_MOC_SRCS} ${libjack_RCC_SRCS})
-target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LINK_FLAGS} ${SAMPLERATE_LINK_FLAGS})
-install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
+target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LDFLAGS} ${JACK_CFLAGS})
+install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output)
+ENDIF(JACK_FOUND)
 

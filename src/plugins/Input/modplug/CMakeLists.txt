@@ -2,9 +2,6 @@ project(libmodplug)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -25,18 +22,10 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # modplug
-PKGCONFIG(libmodplug MODPLUG_INCLUDE_DIR MODPLUG_LINK_DIR MODPLUG_LINK_FLAGS MODPLUG_CFLAGS)
+pkg_search_module(MODPLUG libmodplug)
 
-IF(NOT MODPLUG_LINK_FLAGS)
-  SET(MODPLUG_LINK_FLAGS -lmodplug -lstdc++ -lm)
-  SET(MODPLUG_INCLUDE_DIR /usr/include)
-  SET(MODPLUG_CFLAGS -I/usr/include -I/usr/include/libmodplug)
-  SET(MODPLUG_LINK_DIR /usr/lib)
-ENDIF(NOT MODPLUG_LINK_FLAGS)
-
-ADD_DEFINITIONS(${MODPLUG_CFLAGS})
-include_directories(${CMODPLUG_INCLUDE_DIR})
-link_directories(${MODPLUG_LINK_DIR})
+include_directories(${MODPLUG_INCLUDE_DIRS})
+link_directories(${MODPLUG_LIBRARY_DIRS})
 
 SET(libmodplug_SRCS
   decoder_modplug.cpp
@@ -73,9 +62,11 @@ QT4_WRAP_UI(libmodplug_UIS_H ${libmodplug_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+IF(MODPLUG_FOUND)
 ADD_LIBRARY(modplug SHARED ${libmodplug_SRCS} ${libmodplug_MOC_SRCS} ${libmodplug_UIS_H}
   ${libmodplug_RCC_SRCS})
-target_link_libraries(modplug ${QT_LIBRARIES} -lqmmp ${MODPLUG_LINK_FLAGS} ${MODPLUG_CLAGS})
+target_link_libraries(modplug ${QT_LIBRARIES} -lqmmp ${MODPLUG_LDFLAGS} ${MODPLUG_CFLAGS})
 install(TARGETS modplug DESTINATION ${LIB_DIR}/qmmp/Input)
+ENDIF(MODPLUG_FOUND)
 
 

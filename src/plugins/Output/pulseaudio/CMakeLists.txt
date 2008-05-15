@@ -2,9 +2,6 @@ project(libpulseaudio)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -25,11 +22,10 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # pulseaudio
-PKGCONFIG(libpulse-simple PULSE_INCLUDE_DIR PULSE_LINK_DIR PULSE_LINK_FLAGS PULSE_CFLAGS)
+pkg_check_modules(PULSE libpulse-simple)
 
-IF(NOT PULSE_LINK_FLAGS)
-  SET(PULSE_LINK_FLAGS -lpulse -lpulse-simple)
-ENDIF(NOT PULSE_LINK_FLAGS)
+include_directories(${PULSE_INCLUDE_DIRS})
+link_directories(${PULSE_LIBRARY_DIRS})
 
 SET(libpulseaudio_SRCS
   outputpulseaudio.cpp
@@ -52,8 +48,10 @@ QT4_WRAP_CPP(libpulseaudio_MOC_SRCS ${libpulseaudio_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+IF(PULSE_FOUND)
 ADD_LIBRARY(pulseaudio SHARED ${libpulseaudio_SRCS} ${libpulseaudio_MOC_SRCS} ${libpulseaudio_UIS_H}
   ${libpulseaudio_RCC_SRCS})
-target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LINK_FLAGS})
+target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LDFLAGS} ${PULSE_CFLAGS})
 install(TARGETS pulseaudio DESTINATION ${LIB_DIR}/qmmp/Output)
+ENDIF(PULSE_FOUND)
 
