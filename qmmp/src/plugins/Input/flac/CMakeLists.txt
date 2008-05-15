@@ -2,9 +2,6 @@ project(libflac)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -24,26 +21,15 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-# libflac and taglib
-PKGCONFIG(flac FLAC_INCLUDE_DIR FLAC_LINK_DIR FLAC_LINK_FLAGS FLAC_CFLAGS)
-PKGCONFIG(taglib TAGLIB_INCLUDE_DIR TAGLIB_LINK_DIR TAGLIB_LINK_FLAGS TAGLIB_CFLAGS)
+# libflac
+pkg_search_module(FLAC flac)
 
 IF(NOT FLAC_LINK_FLAGS)
   SET(FLAC_LINK_FLAGS -lFLAC)
 ENDIF(NOT FLAC_LINK_FLAGS)
 
-IF(NOT TAGLIB_LINK_FLAGS)
-  SET(TAGLIB_LINK_FLAGS -ltag)
-  SET(TAGLIB_INCLUDE_DIR /usr/include/taglib)
-  SET(TAGLIB_CFLAGS -I/usr/include/taglib)
-ENDIF(NOT TAGLIB_LINK_FLAGS)
-
-include_directories(${FLAC_INCLUDE_DIR} ${TAGLIB_INCLUDE_DIR})
-link_directories(${FLAC_LINK_DIR} ${TAGLIB_LINK_DIR})
-
-ADD_DEFINITIONS(${FLAC_CFLAGS})
-ADD_DEFINITIONS(${TAGLIB_CFLAGS})
-
+include_directories(${FLAC_INCLUDE_DIRS} ${TAGLIB_INCLUDE_DIRS})
+link_directories(${FLAC_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
 
 SET(libflac_SRCS
   decoder_flac.cpp
@@ -75,8 +61,8 @@ QT4_WRAP_UI(libflac_UIS_H ${libflac_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(flac SHARED ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_UIS_H}
-  ${libflac_RCC_SRCS})
-target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LINK_FLAGS} ${FLAC_CFLAGS} ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
-
+IF(FLAC_FOUND)
+ADD_LIBRARY(flac SHARED ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_UIS_H} ${libflac_RCC_SRCS})
+target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LDLAGS} ${FLAC_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input)
+ENDIF(FLAC_FOUND)

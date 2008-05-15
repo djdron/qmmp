@@ -2,9 +2,6 @@ project(libwavpack)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -24,19 +21,11 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-# wavpack 
-PKGCONFIG(wavpack WAVPACK_INCLUDE_DIR WAVPACK_LINK_DIR WAVPACK_LINK_FLAGS WAVPACK_CFLAGS)
+# wavpack
+pkg_search_module(WAVPACK wavpack)
 
-IF(NOT WAVPACK_LINK_FLAGS)
-  SET(WAVPACK_LINK_FLAGS -lwavpack -lm)
-  SET(WAVPACK_INCLUDE_DIR /usr/include)
-  SET(WAVPACK_CFLAGS -I/usr/include)
-  SET(WAVPACK_LINK_DIR /usr/lib)
-ENDIF(NOT WAVPACK_LINK_FLAGS)
-
-ADD_DEFINITIONS(${WAVPACK_CFLAGS})
-include_directories(${CWAVPACK_INCLUDE_DIR})
-link_directories(${WAVPACK_LINK_DIR})
+include_directories(${CWAVPACK_INCLUDE_DIRS})
+link_directories(${WAVPACK_LIBRARY_DIRS})
 
 SET(libwavpack_SRCS
   decoder_wavpack.cpp
@@ -68,9 +57,10 @@ QT4_WRAP_UI(libwavpack_UIS_H ${libwavpack_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+IF(WAVPACK_FOUND)
 ADD_LIBRARY(wavpack SHARED ${libwavpack_SRCS} ${libwavpack_MOC_SRCS} ${libwavpack_UIS_H}
   ${libwavpack_RCC_SRCS})
-target_link_libraries(wavpack ${QT_LIBRARIES} -lqmmp ${WAVPACK_LINK_FLAGS} ${WAVPACK_CLAGS})
+target_link_libraries(wavpack ${QT_LIBRARIES} -lqmmp ${WAVPACK_LDFLAGS} ${WAVPACK_CLAGS})
 install(TARGETS wavpack DESTINATION ${LIB_DIR}/qmmp/Input)
-
+ENDIF(WAVPACK_FOUND)
 

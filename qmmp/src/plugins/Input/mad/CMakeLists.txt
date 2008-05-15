@@ -2,9 +2,6 @@ project(libmad)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -24,31 +21,11 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-# libmad and taglib
-PKGCONFIG(mad MAD_INCLUDE_DIR MAD_LINK_DIR MAD_LINK_FLAGS MAD_CFLAGS)
-PKGCONFIG(taglib TAGLIB_INCLUDE_DIR TAGLIB_LINK_DIR TAGLIB_LINK_FLAGS TAGLIB_CFLAGS)
+# libmad
+pkg_search_module(MAD libmad mad)
 
-IF(NOT MAD_LINK_FLAGS)
-PKGCONFIG(libmad MAD_INCLUDE_DIR MAD_LINK_DIR MAD_LINK_FLAGS MAD_CFLAGS)
-ENDIF(NOT MAD_LINK_FLAGS)
-
-IF(NOT MAD_LINK_FLAGS)
-  MESSAGE("Can not find mad.pc")
-  SET(MAD_LINK_FLAGS -lmad)
-ENDIF(NOT MAD_LINK_FLAGS)
-
-IF(NOT TAGLIB_LINK_FLAGS)
-  SET(TAGLIB_LINK_FLAGS -ltag)
-  SET(TAGLIB_INCLUDE_DIR /usr/include/taglib)
-  SET(TAGLIB_CFLAGS -I/usr/include/taglib)
-ENDIF(NOT TAGLIB_LINK_FLAGS)
-
-include_directories(${MAD_INCLUDE_DIR} ${TAGLIB_INCLUDE_DIR})
-link_directories(${MAD_LINK_DIR} ${TAGLIB_LINK_DIR})
-
-#ADD_DEFINITIONS(${MAD_CFLAGS})
-ADD_DEFINITIONS(${TAGLIB_CFLAGS})
-
+include_directories(${MAD_INCLUDE_DIRS} ${TAGLIB_INCLUDE_DIRS})
+link_directories(${MAD_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
 
 SET(libmad_SRCS
   decoder_mad.cpp
@@ -83,8 +60,8 @@ QT4_WRAP_UI(libmad_UIS_H ${libmad_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(mad SHARED ${libmad_SRCS} ${libmad_MOC_SRCS} ${libmad_UIS_H}
-  ${libmad_RCC_SRCS})
-
-target_link_libraries(mad ${QT_LIBRARIES} -lqmmp ${MAD_LINK_FLAGS} ${TAGLIB_LINK_FLAGS} ${TAGLIB_CFLAGS})
-install(TARGETS mad DESTINATION ${LIB_DIR}/qmmp/Input PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
+IF(MAD_FOUND)
+ADD_LIBRARY(mad SHARED ${libmad_SRCS} ${libmad_MOC_SRCS} ${libmad_UIS_H} ${libmad_RCC_SRCS})
+target_link_libraries(mad ${QT_LIBRARIES} -lqmmp ${MAD_LDFLAGS} ${MAD_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+install(TARGETS mad DESTINATION ${LIB_DIR}/qmmp/Input)
+ENDIF(MAD_FOUND)

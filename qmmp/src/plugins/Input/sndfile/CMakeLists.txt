@@ -2,12 +2,6 @@ project(libsndfile)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-#INCLUDE(FindQt4)
-
-#include(${QT_USE_FILE})
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -28,19 +22,10 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libsndfile
-PKGCONFIG(sndfile SNDFILE_INCLUDE_DIR SNDFILE_LINK_DIR SNDFILE_LINK_FLAGS SNDFILE_CFLAGS)
+pkg_search_module(SNDFILE sndfile)
 
-IF(NOT SNDFILE_LINK_FLAGS)
-  SET(SNDFILE_LINK_FLAGS -lsndfile)
-  SET(SNDFILE_INCLUDE_DIR /usr/include)
-  SET(SNDFILE_CFLAGS -I/usr/include)
-ENDIF(NOT SNDFILE_LINK_FLAGS)
-
-include_directories(${SNDFILE_INCLUDE_DIR})
-link_directories(${SNDFILE_LINK_DIR})
-
-ADD_DEFINITIONS(${SNDFILE_CFLAGS})
-
+include_directories(${SNDFILE_INCLUDE_DIRS})
+link_directories(${SNDFILE_LIBRARY_DIRS})
 
 SET(libsndfile_SRCS
   decoder_sndfile.cpp
@@ -63,11 +48,12 @@ QT4_WRAP_CPP(libsndfile_MOC_SRCS ${libsndfile_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+IF(SNDFILE_FOUND)
 ADD_LIBRARY(sndfile SHARED ${libsndfile_SRCS} ${libsndfile_MOC_SRCS} ${libsndfile_UIS_H}
   ${libsndfile_RCC_SRCS})
-  
-target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LINK_FLAGS})
+target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LDFLAGS} ${SNDFILE_CFLAGS})
 install(TARGETS sndfile DESTINATION ${LIB_DIR}/qmmp/Input)
+ENDIF(SNDFILE_FOUND)
 
 
 

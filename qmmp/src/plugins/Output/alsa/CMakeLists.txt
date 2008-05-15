@@ -2,9 +2,6 @@ project(libalsa)
 
 cmake_minimum_required(VERSION 2.4.0)
 
-
-INCLUDE(UsePkgConfig)
-
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -25,11 +22,9 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # alsa
-PKGCONFIG(alsa ALSA_INCLUDE_DIR ALSA_LINK_DIR ALSA_LINK_FLAGS ALSA_CFLAGS)
-
-IF(NOT ALSA_LINK_FLAGS)
-  SET(ALSA_LINK_FLAGS -lasound)
-ENDIF(NOT ALSA_LINK_FLAGS)
+pkg_search_module(ALSA alsa)
+include_directories(${ALSA_INCLUDE_DIRS})
+link_directories(${ALSA_LIBRARY_DIRS})
 
 SET(libalsa_SRCS
   outputalsa.cpp
@@ -61,8 +56,10 @@ QT4_WRAP_UI(libalsa_UIS_H ${libalsa_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+IF(ALSA_FOUND)
 ADD_LIBRARY(alsa SHARED ${libalsa_SRCS} ${libalsa_MOC_SRCS} ${libalsa_UIS_H}
   ${libalsa_RCC_SRCS})
-target_link_libraries(alsa ${QT_LIBRARIES} -lqmmp ${ALSA_LINK_FLAGS})
-install(TARGETS alsa DESTINATION ${LIB_DIR}/qmmp/Output PERMISSIONS OWNER_WRITE OWNER_READ OWNER_EXECUTE  GROUP_EXECUTE GROUP_READ WORLD_EXECUTE WORLD_READ)
+target_link_libraries(alsa ${QT_LIBRARIES} -lqmmp ${ALSA_LDFLAGS} ${ALSA_CFLAGS})
+install(TARGETS alsa DESTINATION ${LIB_DIR}/qmmp/Output)
+ENDIF(ALSA_FOUND)
 
