@@ -50,9 +50,12 @@ void DBUSControlFactory::showAbout(QWidget *parent)
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *DBUSControlFactory::createTranslator(QObject *)
+QTranslator *DBUSControlFactory::createTranslator(QObject *parent)
 {
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/dbuscontrol_plugin_") + locale);
+    return translator;
 }
 
 Q_EXPORT_PLUGIN(DBUSControlFactory)

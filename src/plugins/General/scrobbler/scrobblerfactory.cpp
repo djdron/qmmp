@@ -51,9 +51,12 @@ void ScrobblerFactory::showAbout(QWidget *parent)
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *ScrobblerFactory::createTranslator(QObject*)
+QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
 {
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/scrobbler_plugin_") + locale);
+    return translator;
 }
 
 Q_EXPORT_PLUGIN(ScrobblerFactory)

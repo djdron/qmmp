@@ -60,6 +60,7 @@ static void checkFactories()
             {
                 factories->append(factory);
                 files << pluginsDir.absoluteFilePath(fileName);
+                qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
     }

@@ -35,9 +35,9 @@ SET(libnotifier_MOC_HDRS
     popupwidget.h
 )
 
-SET(libnotifier_RCCS translations/translations.qrc)
-
-SET(libnotifier_RCCS notifier_images.qrc)
+SET(libnotifier_RCCS 
+    translations/translations.qrc
+    notifier_images.qrc)
 
 QT4_ADD_RESOURCES(libnotifier_RCC_SRCS ${libnotifier_RCCS})
 
