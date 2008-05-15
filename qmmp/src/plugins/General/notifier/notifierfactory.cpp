@@ -51,9 +51,12 @@ void NotifierFactory::showAbout(QWidget *parent)
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *NotifierFactory::createTranslator(QObject*)
+QTranslator *NotifierFactory::createTranslator(QObject *parent)
 {
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/notifier_plugin_") + locale);
+    return translator;
 }
 
 Q_EXPORT_PLUGIN(NotifierFactory)
