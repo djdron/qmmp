@@ -2,6 +2,12 @@ project(ui)
 
 cmake_minimum_required(VERSION 2.4.0)
 
+if(COMMAND cmake_policy)
+   cmake_policy(SET CMP0002 OLD)
+   cmake_policy(SET CMP0003 NEW)
+   cmake_policy(SET CMP0005 OLD)
+endif(COMMAND cmake_policy) 
+
 SET(QT_USE_QTXML TRUE)
 SET(QT_USE_QTNETWORK TRUE)
 
