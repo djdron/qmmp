@@ -106,7 +106,7 @@ void SettingsDialog::getCardDevices(int card)
     {
         qWarning("SettingsDialog (ALSA): snd_card_get_name() failed: %s",
                  snd_strerror(-err));
-        card_name = "Unknown soundcard";
+        card_name = strdup("Unknown soundcard");
     }
     ui.mixerCardComboBox->addItem(QString(card_name));
 
@@ -185,8 +185,11 @@ void SettingsDialog::writeSettings()
     settings.setValue("device", ui.deviceComboBox->currentText ());
     settings.setValue("buffer_time",ui.bufferSpinBox->value());
     settings.setValue("period_time",ui.periodSpinBox->value());
-    QString card = m_cards.at(ui.mixerCardComboBox->currentIndex());
-    settings.setValue("mixer_card", card);
+    if(ui.mixerCardComboBox->currentIndex() >= 0)
+    {
+        QString card = m_cards.at(ui.mixerCardComboBox->currentIndex());
+        settings.setValue("mixer_card", card);
+    }
     settings.setValue("mixer_device", ui.mixerDeviceComboBox->currentText ());
     settings.endGroup();
     accept();
