@@ -15,8 +15,8 @@ LIBS += -lqmmpui
 
 TRANSLATIONS = translations/notifier_plugin_cs.ts \
                translations/notifier_plugin_de.ts
-RESOURCES = notifier_images.qrc
-RESOURCES = translations/translations.qrc
+RESOURCES = notifier_images.qrc \
+            translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
