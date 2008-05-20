@@ -232,12 +232,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="192"/>
         <source>ID3v1 encoding:</source>
-        <translation>ID3v1 Kodierung:</translation>
+        <translation type="unfinished">ID3v1:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="224"/>
         <source>ID3v2 encoding:</source>
-        <translation>ID3v2 Kodierung:</translation>
+        <translation type="unfinished">ID3v2:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="272"/>
