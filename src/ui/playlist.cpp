@@ -448,7 +448,7 @@ QString PlayList::formatTime ( int sec )
 
 void PlayList::setInfo (const OutputState &st,int length_current, int length_total)
 {
-    if ( st.type() == OutputState::Info )
+    if (st.type() == OutputState::Info)
     {
         m_current_time->display ( formatTime ( st.elapsedSeconds() ) );
         m_current_time->update();
@@ -456,6 +456,10 @@ void PlayList::setInfo (const OutputState &st,int length_current, int length_tot
         QString str_length = formatTime ( length_current ) + "/" + formatTime ( length_total );
         m_length_totalLength->display ( str_length );
         m_length_totalLength->update();
+    }
+    else if (st.type() == OutputState::Playing)
+    {
+        m_listWidget->updateList();     //removes progress message from TextScroller
     }
 }
 
