@@ -2,5 +2,6 @@
 <RCC version="1.0">
   <qresource>
     <file>analyzer_plugin_cs.qm</file>
+    <file>analyser_plugin_de.qm</file>
   </qresource>
 </RCC>
