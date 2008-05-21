@@ -23,6 +23,7 @@
 #include <QSettings>
 #include <QDir>
 #include <stdint.h>
+#include <stdlib.h>
 
 #include "constants.h"
 #include "downloader.h"
