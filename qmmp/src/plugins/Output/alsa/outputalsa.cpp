@@ -392,6 +392,7 @@ int OutputALSA::setupMixer(QString card, QString device)
     long int a, b;
     long alsa_min_vol = 0, alsa_max_vol = 100;
     int err, index;
+    pcm_element = 0;
 
     qDebug("OutputALSA: setupMixer()");
 
