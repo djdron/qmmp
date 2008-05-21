@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QDir>
 #include <math.h>
+#include <stdlib.h>
 
 #include "srconverter.h"
 
