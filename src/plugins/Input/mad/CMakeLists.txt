@@ -37,6 +37,7 @@ SET(libmad_SRCS
   decodermadfactory.cpp
   detailsdialog.cpp
   settingsdialog.cpp
+  tagextractor.cpp
 )
 
 SET(libmad_MOC_HDRS
@@ -44,6 +45,7 @@ SET(libmad_MOC_HDRS
   decodermadfactory.h
   decoder_mad.h
   detailsdialog.h
+  tagextractor.h
 )
 
 SET(libmad_RCCS translations/translations.qrc)

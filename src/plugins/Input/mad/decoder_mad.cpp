@@ -1,6 +1,7 @@
 #include <QtGui>
 
 #include "decoder_mad.h"
+#include "tagextractor.h"
 #include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
@@ -8,7 +9,7 @@
 #include <math.h>
 #include <stdio.h>
 
-# define XING_MAGIC	(('X' << 24) | ('i' << 16) | ('n' << 8) | 'g')
+# define XING_MAGIC (('X' << 24) | ('i' << 16) | ('n' << 8) | 'g')
 
 
 DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
@@ -100,6 +101,14 @@ bool DecoderMAD::initialize()
         }
     }
 
+    if (input()->isSequential ()) //for streams only
+    {
+        TagExtractor extractor(input());
+        FileTag tag = extractor.id3v2tag();
+        if (!tag.isEmpty())
+            dispatch(extractor.id3v2tag());
+    }
+
     mad_stream_init(&stream);
     mad_frame_init(&frame);
     mad_synth_init(&synth);
@@ -118,7 +127,7 @@ bool DecoderMAD::initialize()
 
 void DecoderMAD::deinit()
 {
-    if(!inited)
+    if (!inited)
         return;
 
     mad_synth_finish(&synth);
@@ -232,10 +241,10 @@ bool DecoderMAD::findHeader()
             if (mad_frame_decode(&frame, &stream) != -1)
                 done = true;
             else if (!MAD_RECOVERABLE(stream.error))
-                {
-                   qWarning("DecoderMAD: Can't decode frame");
-                   break;
-                }
+            {
+                qWarning("DecoderMAD: Can't decode frame");
+                break;
+            }
 
             count++;
         }
@@ -344,7 +353,7 @@ void DecoderMAD::run()
         mutex()->unlock();
         return;
     }
-    
+
 
     DecoderState::Type stat = DecoderState::Decoding;
 
@@ -433,7 +442,7 @@ void DecoderMAD::run()
                 break;
             }
 
-            if(skip_frames)
+            if (skip_frames)
             {
                 skip_frames-- ;
                 mutex()->unlock();
