@@ -74,7 +74,7 @@ bool StreamReader::open ( OpenMode mode )
         return FALSE;
     //downloadFile();
     setOpenMode(QIODevice::ReadOnly);
-    if (m_downloader->isRunning() && m_downloader->isReady())
+    if (m_downloader->isReady())
         return TRUE;
     else
         return FALSE;

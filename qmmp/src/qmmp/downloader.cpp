@@ -89,6 +89,10 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
 
 int curl_progress(void *pointer, double dltotal, double dlnow, double ultotal, double ulnow)
 {
+    Q_UNUSED(dltotal);
+    Q_UNUSED(dlnow);
+    Q_UNUSED(ultotal);
+    Q_UNUSED(ulnow);
     Downloader *dl = (Downloader *)pointer;
     dl->mutex()->lock ();
     bool aborted = dl->stream()->aborted;
@@ -117,6 +121,12 @@ Downloader::~Downloader()
 {
     abort();
     curl_global_cleanup();
+    m_stream.aborted = TRUE;
+    m_stream.buf_fill = 0;
+    if (m_stream.buf)
+        delete m_stream.buf;
+
+    m_stream.buf = 0;
 }
 
 
@@ -208,14 +218,14 @@ void Downloader::run()
     if (settings.value ("Proxy/use_proxy", FALSE).toBool())
         curl_easy_setopt(m_handle, CURLOPT_PROXY,
                          strdup((settings.value("Proxy/host").toString()+":"+
-                          settings.value("Proxy/port").toString()).
-                         toLatin1 ().constData ()));
+                                 settings.value("Proxy/port").toString()).
+                                toLatin1 ().constData ()));
 
     if (settings.value ("Proxy/authentication", FALSE).toBool())
         curl_easy_setopt(m_handle, CURLOPT_PROXYUSERPWD,
                          strdup((settings.value("Proxy/user").toString()+":"+
-                          settings.value("Proxy/passw").toString()).
-                         toLatin1 ().constData ()));
+                                 settings.value("Proxy/passw").toString()).
+                                toLatin1 ().constData ()));
 
     // Set url to download
     curl_easy_setopt(m_handle, CURLOPT_URL, strdup(m_url.toAscii().constData()));
@@ -260,15 +270,7 @@ void Downloader::run()
     m_mutex.unlock();
     return_code = curl_easy_perform(m_handle);
     qDebug("curl_easy_perform %d", return_code);
-
-    m_mutex.lock();
-    m_stream.aborted = TRUE;
-    m_stream.buf_fill = 0;
-    if (m_stream.buf)
-        delete m_stream.buf;
-    m_stream.buf = 0;
-    m_mutex.unlock();
-    qDebug("Downloader: thread exited");
+    qDebug("Downloader: thread finished");
 }
 
 qint64 Downloader::readBuffer(char* data, qint64 maxlen)
@@ -291,7 +293,7 @@ const QString &Downloader::title() const
 
 void Downloader::checkBuffer()
 {
-    if(m_stream.buf_fill > BUFFER_SIZE && !m_ready)
+    if (m_stream.buf_fill > BUFFER_SIZE && !m_ready)
     {
         m_ready  = TRUE;
         qDebug("Downloader: ready");
@@ -344,7 +346,7 @@ void Downloader::parseICYMetaData(char *data)
         {
             line = line.right(line.size() - line.indexOf("=") - 1).trimmed();
             m_title = line.remove("'");
-            if(!m_title.isEmpty())
+            if (!m_title.isEmpty())
                 emit titleChanged ();
             break;
         }
