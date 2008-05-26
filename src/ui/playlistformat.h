@@ -23,7 +23,7 @@
 #include <QStringList>
 
 
-class MediaFile;
+class PlayListItem;
 /*!
  * Abstract interface for playlist formats.
  *
@@ -40,10 +40,10 @@ public:
     virtual QStringList decode(const QString& contents) = 0;
 	 
 	 /*!
-	  * Takes the list of MediaFile objects, should return string of
+	  * Takes the list of PlayListItem objects, should return string of
 	  * encoded playlist file
 	  */
-	 virtual QString encode(const QList<MediaFile*>& contents) = 0;
+	 virtual QString encode(const QList<PlayListItem*>& contents) = 0;
 	 
 	 /*!
 	  * Returns list of file extensions that current format supports
@@ -71,7 +71,7 @@ public:
 	virtual QStringList getExtensions()const;
 	virtual bool hasFormat(const QString&);
 	virtual QStringList decode(const QString& contents);
-	virtual QString encode(const QList<MediaFile*>& contents);
+	virtual QString encode(const QList<PlayListItem*>& contents);
 	virtual QString name()const;
 protected:
 	QStringList m_supported_formats;
@@ -90,7 +90,7 @@ class M3UPlaylistFormat : public PlaylistFormat
 		virtual QStringList getExtensions()const;
 		virtual bool hasFormat(const QString&);
 		virtual QStringList decode(const QString& contents);
-		virtual QString encode(const QList<MediaFile*>& contents);
+		virtual QString encode(const QList<PlayListItem*>& contents);
 		virtual QString name()const;
 protected:
 		QStringList m_supported_formats;
@@ -107,7 +107,7 @@ class XSPFPlaylistFormat : public PlaylistFormat
 		virtual QStringList getExtensions()const;
 		virtual bool hasFormat(const QString&);
 		virtual QStringList decode(const QString& contents);
-		virtual QString encode(const QList<MediaFile*>& contents);
+		virtual QString encode(const QList<PlayListItem*>& contents);
 		virtual QString name()const;
 	protected:
 		QStringList m_supported_formats;

@@ -35,7 +35,7 @@ class QAction;
 class PlayList;
 class PlayListModel;
 class Skin;
-class MediaFile;
+class PlayListItem;
 
 class ListWidget : public QWidget
 {

@@ -254,7 +254,7 @@ void PlayListTitleBar::showCurrent()
 {
     if (m_model)
     {
-        MediaFile* info = m_model->currentItem();
+        PlayListItem* info = m_model->currentItem();
         if (info)
         {
             m_text = QString("%1. ").arg(m_model->currentRow()+1);

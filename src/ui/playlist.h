@@ -32,7 +32,7 @@ class QMenu;
 
 class Skin;
 class ListWidget;
-class MediaFile;
+class PlayListItem;
 class Button;
 class PlayListModel;
 class PlayListTitleBar;
@@ -50,11 +50,11 @@ class PlayList : public QWidget
         PlayList ( QWidget *parent = 0 );
 
         ~PlayList();
-        void load ( MediaFile * );
+        void load ( PlayListItem * );
         void setModel ( PlayListModel * );
         void readSettings();
         void setInfo ( const OutputState &,int,int );
-        MediaFile *currentItem();
+        PlayListItem *currentItem();
         ListWidget* listWidget() const{return m_listWidget;}
 
     signals:

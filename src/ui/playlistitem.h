@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,56 +17,54 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef FILELOADER_H
-#define FILELOADER_H
+#ifndef PLAYLISTITEM_H
+#define PLAYLISTITEM_H
 
-#include <QObject>
-#include <QDir>
-#include <QThread>
+#include <qmmpui/songinfo.h>
 
-class PlayListItem;
-
-/*!
- * This class represents fileloader object that 
- * processes file list in separate thread and emits
- * \b newPlayListItem(PlayListItem*) signal for every newly
- * created media file.
+class FileTag;
+/**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class FileLoader : public QThread
+class PlayListItem : public SongInfo
 {
-Q_OBJECT
 public:
-    FileLoader(QObject *parent = 0);
+    /*!
+     * Current state of media file.
+     * FREE - instance is free and may be deleted
+     * EDITING - instance is currently busy in some kind of operation(tags editing etc.)
+     * and can't be deleted at the moment. Set flag SCHEDULED_FOR_DELETION for it 
+     * instead of delete operator call.
+     */
+    enum FLAGS{FREE = 0,EDITING,SCHEDULED_FOR_DELETION};
+    PlayListItem();
+    PlayListItem(const QString& path);
 
-    ~FileLoader();
-	 virtual void run();
-	 
-	 /*!
-	  * Call this method when you want to notify the thread about finishing
-	  */
-	 void finish();
-	 
-	 /*!
-	  * Sets filelist to load( directory to load will be cleaned )
-	  */
-	 void setFilesToLoad(const QStringList&);
-	 
-	 /*!
-	  * Sets directory to load( filelist to load will be cleaned )
-	  */
-	 void setDirectoryToLoad(const QString&);
-signals:
-		void newPlayListItem(PlayListItem*);
-protected:
-		void addFiles(const QStringList &files);
-		void addDirectory(const QString& s);
+    ~PlayListItem();
+
+    //playlist support
+    void setSelected(bool yes);
+    bool isSelected() const;
+    void setCurrent(bool yes);
+    bool isCurrent() const;
+    FLAGS flag()const;
+    void setFlag(FLAGS);
+    const QString text() const;
+    void setText(const QString &title);
+    //modify functions
+    void updateTags(const FileTag *tag);
+    void updateTags();
+
 private:
-    QFileInfoList list;
-    QStringList m_filters;
-	 QStringList m_files_to_load;
-	 QString m_directory;
-	 bool m_finished;
+    void readMetadata();
+    QString printTag(QString str, QString regExp, QString tagStr);
+    QString m_title;
+    FileTag *m_tag;
+    bool m_selected;
+    bool m_current;
+    bool m_use_meta;
+    QString m_format;
+    FLAGS m_flag;
 };
 
 #endif

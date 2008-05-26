@@ -115,6 +115,11 @@ const QString SongInfo::path () const
     return m_path;
 }
 
+const QString SongInfo::fileName () const
+{
+    return m_path.section('/',-1);
+}
+
 const uint SongInfo::year () const
 {
     return m_numValues[YEAR];

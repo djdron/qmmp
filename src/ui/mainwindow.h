@@ -27,7 +27,7 @@
 #include <qmmp/decoderfactory.h>
 
 #include "display.h"
-#include "mediafile.h"
+#include "playlistitem.h"
 #include "titlebar.h"
 
 /**

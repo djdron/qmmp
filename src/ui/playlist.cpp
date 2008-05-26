@@ -31,7 +31,7 @@
 #include "skin.h"
 #include "listwidget.h"
 #include "button.h"
-#include "mediafile.h"
+#include "playlistitem.h"
 #include "playlistmodel.h"
 #include "playlisttitlebar.h"
 #include "playlistslider.h"
@@ -463,7 +463,7 @@ void PlayList::setInfo (const OutputState &st,int length_current, int length_tot
     }
 }
 
-MediaFile *PlayList::currentItem()
+PlayListItem *PlayList::currentItem()
 {
     if ( m_playListModel )
         return m_playListModel->currentItem();

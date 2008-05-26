@@ -27,7 +27,7 @@
 #include <QUrl>
 #include <QApplication>
 
-#include "mediafile.h"
+#include "playlistitem.h"
 #include "textscroller.h"
 #include "listwidget.h"
 #include "skin.h"
@@ -305,8 +305,8 @@ void ListWidget::updateList()
     }
     if (m_model->currentItem())
     {
-        TextScroller::getPointer()->setText("***  "+m_model->currentItem()->title());
-        parentWidget()->parentWidget()->setWindowTitle(m_model->currentItem()->title());
+        TextScroller::getPointer()->setText("***  "+m_model->currentItem()->text());
+        parentWidget()->parentWidget()->setWindowTitle(m_model->currentItem()->text());
     }
     cut();
     update();
@@ -476,5 +476,3 @@ void ListWidget::recenterCurrent()
             m_first = qMax (m_model->currentRow() - m_rows/2 + 1, 0);
     }
 }
-
-

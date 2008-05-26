@@ -331,24 +331,9 @@ void MainWindow::showOutputState(const OutputState &st)
         m_generalHandler->setState(General::Playing);
         if (m_playListModel->currentItem())
         {
-            SongInfo info;
-            FileTag *tag = m_playListModel->currentItem()->tag();
-            if (tag && !tag->isEmpty())
-            {
-                info.setValue(SongInfo::TITLE, tag->title());
-                info.setValue(SongInfo::ARTIST, tag->artist());
-                info.setValue(SongInfo::ALBUM, tag->album());
-                info.setValue(SongInfo::COMMENT, tag->comment());
-                info.setValue(SongInfo::GENRE, tag->genre());
-                info.setValue(SongInfo::YEAR, tag->year());
-                info.setValue(SongInfo::TRACK, tag->track());
-            }
-            else
-                info.setValue(SongInfo::TITLE, m_playlist->currentItem()->title());
-            info.setValue(SongInfo::LENGTH, (uint) m_playlist->currentItem()->length());
-            info.setValue(SongInfo::STREAM,
-                          m_playlist->currentItem()->path().startsWith("http://"));
-            info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
+            SongInfo info = *m_playListModel->currentItem();
+            if(info.isEmpty())
+                info.setValue(SongInfo::TITLE, m_playlist->currentItem()->text());
             m_generalHandler->setSongInfo(info);
         }
         break;
@@ -429,7 +414,7 @@ void MainWindow::showDecoderState(const DecoderState &st)
 void MainWindow::changeTitle(const QString &title)
 {
     if (m_playlist->currentItem())
-        m_playlist->currentItem()->changeTitle(title);
+        m_playlist->currentItem()->setText(title);
     m_playlist->listWidget()->updateList();
     SongInfo info;
     info.setValue(SongInfo::TITLE, title);
@@ -485,7 +470,7 @@ void MainWindow::addFile()
         return;
 
     //  foreach(QString s, files)
-    //  m_playListModel->load(new MediaFile(s));
+    //  m_playListModel->load(new PlayListItem(s));
 
     m_playListModel->addFiles(files);
     m_lastDir = files.at(0);
@@ -503,7 +488,7 @@ void MainWindow::addFile()
             return;
         /*
           foreach(QString s, files)
-          m_playListModel->load(new MediaFile(s));
+          m_playListModel->load(new PlayListItem(s));
         */
         m_playListModel->addFiles(files);
         m_lastDir = files.at(0);
