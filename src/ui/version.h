@@ -10,6 +10,6 @@
 #endif
 
 #define LISTEN_PORT_BASE 33000
-#define UDS_PATH "/tmp/qmmp.sock"
+#define UDS_PATH strcat(strdup("/tmp/qmmp.sock."), cuserid(0))
 
 #endif
