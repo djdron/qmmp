@@ -75,7 +75,7 @@ QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent
         }
         else
         {
-            qDebug("Fatal socket error, exiting");
+            qWarning("QMMPStarter: fatal socket error, exiting");
             exit(1);
         }
     }
