@@ -20,7 +20,6 @@ HEADERS += mainwindow.h \
            positionbar.h \
            number.h \
            playlist.h \
-           mediafile.h \
            listwidget.h \
            playlistmodel.h \
            pixmapwidget.h \
@@ -63,7 +62,8 @@ HEADERS += mainwindow.h \
            visualmenu.h \
            titlebarcontrol.h \
            shadedvisual.h \
-           shadedbar.h
+           shadedbar.h \
+           playlistitem.h
 
 SOURCES += mainwindow.cpp \
            mp3player.cpp \
@@ -75,7 +75,6 @@ SOURCES += mainwindow.cpp \
            positionbar.cpp \
            number.cpp \
            playlist.cpp \
-           mediafile.cpp \
            listwidget.cpp \
            playlistmodel.cpp \
            pixmapwidget.cpp \
@@ -116,12 +115,13 @@ SOURCES += mainwindow.cpp \
            visualmenu.cpp \
            titlebarcontrol.cpp \
            shadedvisual.cpp \
-           shadedbar.cpp
+           shadedbar.cpp \
+           playlistitem.cpp
 
 #Some conf to redirect intermediate stuff in separate dirs
-UI_DIR=./.build/ui/
-MOC_DIR=./.build/moc/
-OBJECTS_DIR=./.build/obj
+UI_DIR =./.build/ui/
+MOC_DIR =./.build/moc/
+OBJECTS_DIR =./.build/obj
 
 
 QT += network xml
@@ -138,10 +138,10 @@ TEMPLATE = app
 target.path = /bin
 
 DEFINES += QMMP_VERSION=$$QMMP_VERSION
-contains(CONFIG, SVN_VERSION) {
-DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
-} else {
-DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
+contains(CONFIG, SVN_VERSION){
+    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
+}else {
+    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
 }
 
 desktop.files = qmmp.desktop

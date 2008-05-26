@@ -60,7 +60,7 @@ SET(ui_SRCS
     logscale.cpp
     mainvisual.cpp
     mainwindow.cpp
-    mediafile.cpp
+    playlistitem.cpp
     monostereo.cpp
     mp3player.cpp
     number.cpp
@@ -116,7 +116,7 @@ SET(ui_MOC_HDRS
     logscale.h
     mainvisual.h
     mainwindow.h
-    mediafile.h
+    playlistitem.h
     monostereo.h
     number.h
     pixmapwidget.h

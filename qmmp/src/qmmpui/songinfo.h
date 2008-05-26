@@ -61,6 +61,7 @@ public:
     const QString comment () const;
     const QString genre () const;
     const QString path () const;
+    const QString fileName () const;
     const uint year () const;
     const uint track () const;
     const uint length () const;

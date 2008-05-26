@@ -29,7 +29,7 @@
 
 #include "playlistformat.h"
 
-#include "mediafile.h"
+#include "playlistitem.h"
 
 bool PLSPlaylistFormat::hasFormat(const QString & f)
 {
@@ -89,12 +89,12 @@ QStringList PLSPlaylistFormat::decode(const QString & contents)
     return QStringList();
 }
 
-QString PLSPlaylistFormat::encode(const QList< MediaFile * > & contents)
+QString PLSPlaylistFormat::encode(const QList< PlayListItem * > & contents)
 {
     QStringList out;
     out << QString("[playlist]");
     int counter = 1;
-    foreach(MediaFile* f,contents)
+    foreach(PlayListItem* f,contents)
     {
         QString begin = "File" + QString::number(counter) + "=";
         out.append(begin + f->path());
@@ -156,11 +156,11 @@ QStringList M3UPlaylistFormat::decode(const QString & contents)
     return QStringList();
 }
 
-QString M3UPlaylistFormat::encode(const QList< MediaFile * > & contents)
+QString M3UPlaylistFormat::encode(const QList< PlayListItem * > & contents)
 {
     QStringList out;
     out << QString("#EXTM3U");
-    foreach(MediaFile* f,contents)
+    foreach(PlayListItem* f,contents)
     {
         QString info = "#EXTINF:" + QString::number(f->length()) + "," + f->title();
         out.append(info);
@@ -212,7 +212,7 @@ QStringList XSPFPlaylistFormat::decode(const QString & contents)
 
 // Needs more work - it's better use libSpiff there and put it as plugin.
 
-QString XSPFPlaylistFormat::encode(const QList< MediaFile * > & files)
+QString XSPFPlaylistFormat::encode(const QList< PlayListItem * > & files)
 {
     QDomDocument doc;
     QDomElement root = doc.createElement("playlist");
@@ -227,7 +227,7 @@ QString XSPFPlaylistFormat::encode(const QList< MediaFile * > & files)
     QDomElement tracklist = doc.createElement("trackList");
 
     int counter = 1;
-    foreach(MediaFile* f,files)
+    foreach(PlayListItem* f,files)
     {
         QDomElement track = doc.createElement("track");
 

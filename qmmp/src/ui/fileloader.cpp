@@ -20,7 +20,7 @@
 #include <qmmp/decoder.h>
 
 #include "fileloader.h"
-#include "mediafile.h"
+#include "playlistitem.h"
 
 FileLoader::FileLoader(QObject *parent)
         : QThread(parent),m_files_to_load(),m_directory()
@@ -44,7 +44,7 @@ void FileLoader::addFiles(const QStringList &files)
     foreach(QString s, files)
     {
         if (s.startsWith("http://") || Decoder::supports(s))
-            emit newMediaFile(new MediaFile(s));
+            emit newPlayListItem(new PlayListItem(s));
         if (m_finished) return;
     }
 }
@@ -63,7 +63,7 @@ void FileLoader::addDirectory(const QString& s)
         list << fileInfo;
 
         if (Decoder::supports(fileInfo.absoluteFilePath ()))
-            emit newMediaFile(new MediaFile(fileInfo.absoluteFilePath ()));
+            emit newPlayListItem(new PlayListItem(fileInfo.absoluteFilePath ()));
         if (m_finished) return;
     }
     dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,7 @@ class FileLoader;
    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class MediaFile;
+class PlayListItem;
 class PlayState;
 class PlaylistFormat;
 class PlayListModel;
@@ -71,9 +71,9 @@ class TagUpdater : public QObject
 {
     Q_OBJECT
     QObject* m_observable;
-    MediaFile* m_file;
+    PlayListItem* m_item;
 public:
-    TagUpdater(QObject* o,MediaFile* f);
+    TagUpdater(QObject* o, PlayListItem* item);
 protected slots:
     void updateTag();
 };
@@ -88,14 +88,14 @@ public:
     ~PlayListModel();
 
     int count();
-    MediaFile* currentItem();
-    int row(MediaFile* f)const
+    PlayListItem* currentItem();
+    int row(PlayListItem* item)const
     {
-        return m_files.indexOf(f);
+        return m_items.indexOf(item);
     }
-    MediaFile* item(int row)const
+    PlayListItem* item(int row)const
     {
-        return m_files.at(row);
+        return m_items.at(row);
     }
     int currentRow();
     bool setCurrent (int);
@@ -113,7 +113,7 @@ public:
     /*!
      * Returns \b true if \b f file is in play queue, else return \b false
      */
-    bool isQueued(MediaFile* f) const;
+    bool isQueued(PlayListItem* item) const;
 
     bool isRepeatableList()const
     {
@@ -133,9 +133,9 @@ public:
     /*!
      * Returns index of \b f file in queue.e
      */
-    int queuedIndex(MediaFile* f)const
+    int queuedIndex(PlayListItem* item)const
     {
-        return m_queued_songs.indexOf(f);
+        return m_queued_songs.indexOf(item);
     }
 
     /*!
@@ -149,13 +149,13 @@ public:
      */
     QList<int> getSelectedRows()const;
     /*!
-     * Returns vector of \b MediaFile pointers that are selected.
+     * Returns vector of \b PlayListItem pointers that are selected.
      */
-    QList<MediaFile*> getSelectedItems()const;
+    QList<PlayListItem*> getSelectedItems()const;
 
-    QList<MediaFile*> items()const
+    QList<PlayListItem*> items()const
     {
-        return m_files;
+        return m_items;
     }
 
     /*!
@@ -223,7 +223,7 @@ signals:
     void firstAdded();
 
 public slots:
-    void load(MediaFile *);
+    void load(PlayListItem *);
     void clear();
     void clearSelection();
     void removeSelected();
@@ -285,7 +285,7 @@ public slots:
     /*!
      * Sets \b f media file to queue.
      */
-    void setQueued(MediaFile* f);
+    void setQueued(PlayListItem* f);
 
     void preparePlayState();
 
@@ -294,7 +294,7 @@ private:
     /*!
      * This internal method performs sorting of \b list_to_sort list of items.
      */
-    void doSort(int mode,QList<MediaFile*>& list_to_sort);
+    void doSort(int mode,QList<PlayListItem*>& list_to_sort);
     /*!
      * Returns topmost row in current selection
      */
@@ -324,9 +324,9 @@ private:
 
 private:
 
-    QList <MediaFile*> m_files;
-    QList <MediaFile*> m_editing_files;
-    MediaFile* m_currentItem;
+    QList <PlayListItem*> m_items;
+    QList <PlayListItem*> m_editing_items;
+    PlayListItem* m_currentItem;
 
     int m_current;
     void readSettings();
@@ -347,7 +347,7 @@ private:
     /*!
      * Songs in play queue.
      */
-    QList<MediaFile*>m_queued_songs;
+    QList<PlayListItem*>m_queued_songs;
 
     QMap<QString,PlaylistFormat* > m_registered_pl_formats;
 
