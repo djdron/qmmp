@@ -22,6 +22,8 @@
 
 #include "unixdomainsocket.h"
 #include <unistd.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "mainwindow.h"
 #include "version.h"
@@ -31,42 +33,43 @@
 #define MAXCOMMANDSIZE 1024
 
 QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent),mw(NULL)
-{	
+{
     m_option_manager = new CommandLineOptionManager();
-	QStringList tmp;
-	for(int i = 1;i < argc;i++)
-		tmp << QString::fromLocal8Bit(argv[i]);
+    QStringList tmp;
+    for (int i = 1;i < argc;i++)
+        tmp << QString::fromLocal8Bit(argv[i]);
 
-	argString = tmp.join("\n");
-	
-	if(argString == "--help")
-	{
-		printUsage();
-		exit(0);
-	}
-	else if(argString == "--version")
-	{
-		printVersion();
-		exit(0);
-	}
-	
-	if(argString.startsWith("--") &&  // command?
-          !m_option_manager->hasOption(argString)
-	  )
-	{
-		qFatal("QMMP: Unknown command...");
-		exit(1);
-	}
+    argString = tmp.join("\n");
+
+    if (argString == "--help")
+    {
+        printUsage();
+        exit(0);
+    }
+    else if (argString == "--version")
+    {
+        printVersion();
+        exit(0);
+    }
+
+    if (argString.startsWith("--") && // command?
+            !m_option_manager->hasOption(argString)
+       )
+    {
+        qFatal("QMMP: Unknown command...");
+        exit(1);
+    }
 
     m_sock = new UnixDomainSocket(this);
-    if(m_sock->bind(UDS_PATH))
+    if (m_sock->bind(UDS_PATH))
     {
         startMainWindow();
     }
-    else if(!m_sock->alive(UDS_PATH)){ 
+    else if (!m_sock->alive(UDS_PATH))
+    {
         // Socket is present but not connectable - application was terminated previously???
         unlink(UDS_PATH);
-        if(m_sock->bind(UDS_PATH))
+        if (m_sock->bind(UDS_PATH))
         {
             startMainWindow();
         }
@@ -82,7 +85,7 @@ QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent
 
 QMMPStarter::~ QMMPStarter()
 {
-	if(mw) delete mw;
+    if (mw) delete mw;
 }
 
 void QMMPStarter::startMainWindow()
@@ -94,61 +97,58 @@ void QMMPStarter::startMainWindow()
 
 void QMMPStarter::writeCommand()
 {
-	if(!argString.isEmpty())
-	{
-		char buf[PATH_MAX + 1];
-		QString workingDir = QString(getcwd(buf,PATH_MAX)) + "\n";
-		
-		QByteArray barray;
-		barray.append(workingDir);
-		barray.append(argString);
+    if (!argString.isEmpty())
+    {
+        char buf[PATH_MAX + 1];
+        QString workingDir = QString(getcwd(buf,PATH_MAX)) + "\n";
+
+        QByteArray barray;
+        barray.append(workingDir);
+        barray.append(argString);
         m_sock->writeDatagram ( barray.data(),UDS_PATH);
-	}
-	else
-	{
-		printUsage();
-	}
-	
+    }
+    else
+    {
+        printUsage();
+    }
+
     exit(0);
 }
 
 void QMMPStarter::readCommand()
 {
-        QByteArray inputArray;
-        inputArray.resize(MAXCOMMANDSIZE);
-        bzero(inputArray.data(),inputArray.size());
-        m_sock->readDatagram(inputArray.data(), inputArray.size());
-        QStringList slist = QString(inputArray).split("\n",QString::SkipEmptyParts);
-        QString cwd = slist.takeAt(0);
-        if(mw)
-        {
-            mw->processCommandArgs(slist,cwd);
-        }
+    QByteArray inputArray;
+    inputArray.resize(MAXCOMMANDSIZE);
+    bzero(inputArray.data(),inputArray.size());
+    m_sock->readDatagram(inputArray.data(), inputArray.size());
+    QStringList slist = QString(inputArray).split("\n",QString::SkipEmptyParts);
+    QString cwd = slist.takeAt(0);
+    if (mw)
+    {
+        mw->processCommandArgs(slist,cwd);
+    }
 
 }
 
 void QMMPStarter::printUsage()
 {
-	qWarning(
-			"Usage: qmmp [options] [files] \n"
-			"Options:\n"
-			"--------\n"
-            );
-    for(int i = 0; i< m_option_manager->count();i++)
+    qWarning(
+        "Usage: qmmp [options] [files] \n"
+        "Options:\n"
+        "--------\n"
+    );
+    for (int i = 0; i< m_option_manager->count();i++)
     {
         qWarning(qPrintable((*m_option_manager)[i]->helpString()));
     }
     qWarning(
-            "--help               Display this text and exit.\n"
-			"--version            Print version number and exit.\n\n"
-			"Ideas, patches, bugreports send to forkotov02@hotmail.ru\n"
-			  );
+        "--help               Display this text and exit.\n"
+        "--version            Print version number and exit.\n\n"
+        "Ideas, patches, bugreports send to forkotov02@hotmail.ru\n"
+    );
 }
 
 void QMMPStarter::printVersion()
 {
-	qWarning("QMMP version:  %s",QMMP_STR_VERSION);
+    qWarning("QMMP version:  %s",QMMP_STR_VERSION);
 }
-
-
-
