@@ -40,14 +40,20 @@ PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
     m_use_meta = settings.value ("PlayList/load_metadata", TRUE).toBool();
     //format
     m_format = settings.value("PlayList/title_format", "%p - %t").toString();
+    //other properties
+    m_convertUnderscore = settings.value ("PlayList/convert_underscore", TRUE).toBool();
+    m_convertTwenty = settings.value ("PlayList/convert_twenty", TRUE).toBool();
+    m_fullStreamPath = settings.value ("PlayList/full_stream_path", FALSE).toBool();
+
     if (m_use_meta && !path.startsWith("http://"))
     {
         m_tag = Decoder::createTag(path);
         readMetadata();
     }
+    else if (path.startsWith("http://")  && m_fullStreamPath)
+        m_title = path;
     else
-        m_title = path.startsWith("http://") ? path: path.section('/',-1);
-
+        m_title = path.split('/',QString::SkipEmptyParts).takeLast ();
 }
 
 PlayListItem::~PlayListItem()
@@ -123,7 +129,7 @@ void PlayListItem::readMetadata()
 {
     //clear();
     m_title.clear();
-    if(m_tag) //read length first
+    if (m_tag) //read length first
         setValue(SongInfo::LENGTH, m_tag->length());
     if (m_use_meta && m_tag && !m_tag->isEmpty())
     {
@@ -147,10 +153,19 @@ void PlayListItem::readMetadata()
         m_title = printTag(m_title, "%y", QString("%1").arg(year ()));
     }
     if (m_title.isEmpty())
-        m_title = path().startsWith("http://") ? path(): path().section('/',-1);
-    if(m_tag)
+    {
+        if (path().startsWith("http://")  && m_fullStreamPath)
+            m_title = path();
+        else
+            m_title = path().split('/',QString::SkipEmptyParts).takeLast ();
+    }
+    if (m_tag)
         delete m_tag;
     m_tag = 0;
+    if (m_convertUnderscore)
+        m_title.replace("_", " ");
+    if (m_convertTwenty)
+        m_title.replace("%20", " ");
 }
 
 QString PlayListItem::printTag(QString str, QString regExp, QString tagStr)

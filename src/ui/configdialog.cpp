@@ -97,6 +97,11 @@ void ConfigDialog::readSettings()
         settings.value ("PlayList/title_format", "%p - %t").toString());
     ui.metadataCheckBox->setChecked(
         settings.value ("PlayList/load_metadata", TRUE).toBool());
+    ui.underscoresCheckBox->setChecked(settings.value ("PlayList/convert_underscore", TRUE).toBool());
+    ui.per20CheckBox->setChecked(settings.value ("PlayList/convert_twenty", TRUE).toBool());
+    ui.fullPathCheckBox->setChecked(settings.value ("PlayList/full_stream_path", FALSE).toBool());
+
+
     QString f_dialogName =
         settings.value("FileDialog",QtFileDialogFactory::QtFileDialogFactoryName).toString();
 
@@ -528,6 +533,9 @@ void ConfigDialog::saveSettings()
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue ("PlayList/title_format", ui.formatLineEdit->text());
     settings.setValue ("PlayList/load_metadata", ui.metadataCheckBox->isChecked());
+    settings.setValue ("PlayList/convert_underscore", ui.underscoresCheckBox->isChecked());
+    settings.setValue ("PlayList/convert_twenty", ui.per20CheckBox->isChecked());
+    settings.setValue ("PlayList/full_stream_path", ui.fullPathCheckBox->isChecked());
     settings.setValue ("FileDialog", ui.fileDialogComboBox->currentText());
     settings.setValue ("Proxy/use_proxy", ui.enableProxyCheckBox->isChecked());
     settings.setValue ("Proxy/authentication", ui.authProxyCheckBox->isChecked());
