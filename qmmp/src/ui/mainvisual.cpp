@@ -233,6 +233,11 @@ void MainVisual::mousePressEvent (QMouseEvent *e)
 void MainVisual::drawBackGround()
 {
     m_bg = QPixmap (75,20);
+    if(m_transparentAction->isChecked())
+    {
+        m_bg.fill (Qt::transparent);
+        return;
+    }
     QPainter painter(&m_bg);
     for (int x = 0; x < 75; x += 2)
     {
@@ -285,6 +290,8 @@ void MainVisual::updateSettings()
         settings.setValue("Visualization/analyzer_type", act->data().toInt());
     else
         settings.setValue("Visualization/analyzer_type", 1);
+
+    settings.setValue("Visualization/transparent_bg", m_transparentAction->isChecked());
 
     act = m_visModeGroup->checkedAction ();
     QString visName;
@@ -382,6 +389,9 @@ void MainVisual::createMenu()
         act->setCheckable(TRUE);
         peaksFalloff->addAction(act);
     }
+    QMenu *background = m_menu->addMenu(tr("Background"));
+    m_transparentAction = background->addAction(tr("Transparent"));
+    m_transparentAction->setCheckable(TRUE);
     update();
 }
 
@@ -428,6 +438,9 @@ void MainVisual::readSettings()
     foreach(QAction *act, m_analyzerFalloffGroup->actions ())
     if (speed == act->data().toInt())
         act->setChecked(TRUE);
+
+    m_transparentAction->setChecked(
+        settings.value("Visualization/transparent_bg", FALSE).toBool());
 
     updateSettings();
 }
