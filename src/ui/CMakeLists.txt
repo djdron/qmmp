@@ -3,7 +3,6 @@ project(ui)
 cmake_minimum_required(VERSION 2.4.0)
 
 if(COMMAND cmake_policy)
-   cmake_policy(SET CMP0002 OLD)
    cmake_policy(SET CMP0003 NEW)
    cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy) 
@@ -31,8 +30,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 # libqmmp & libqmmpui
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmpui)
 
 link_directories(${CMAKE_INSTALL_PREFIX}/lib)
 link_directories(${CMAKE_INSTALL_PREFIX}/lib64)
@@ -173,7 +170,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_EXECUTABLE(qmmp ${ui_SRCS} ${ui_MOC_SRCS} ${ui_UIS_H}
   ${ui_RCC_SRCS})
-target_link_libraries(qmmp ${QT_LIBRARIES} -lqmmp -lqmmpui)
+target_link_libraries(qmmp ${QT_LIBRARIES} libqmmp qmmpui)
 install(TARGETS qmmp DESTINATION bin)
 install(FILES qmmp.desktop DESTINATION share/applications)
 install(FILES images/16x16/qmmp.png DESTINATION share/icons/hicolor/16x16/apps)
