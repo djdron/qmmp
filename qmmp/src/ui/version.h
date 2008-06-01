@@ -10,6 +10,5 @@
 #endif
 
 #define LISTEN_PORT_BASE 33000
-#define UDS_PATH strcat(strdup("/tmp/qmmp.sock."), cuserid(0))
-
+#define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toAscii().constData()
 #endif

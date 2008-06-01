@@ -22,7 +22,7 @@
 
 #include "unixdomainsocket.h"
 #include <unistd.h>
-#include <stdio.h>
+#include <sys/types.h>
 #include <string.h>
 
 #include "mainwindow.h"
