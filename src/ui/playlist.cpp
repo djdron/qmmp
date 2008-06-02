@@ -24,6 +24,7 @@
 #include <QAction>
 #include <QSignalMapper>
 #include <QHBoxLayout>
+#include <QCloseEvent>
 
 #include "dock.h"
 #include "fileloader.h"
@@ -281,8 +282,10 @@ void PlayList::createActions()
     Dock::getPointer()->addActions ( m_actions );
 }
 
-void PlayList::closeEvent ( QCloseEvent* )
+void PlayList::closeEvent (QCloseEvent *e)
 {
+    if(e->spontaneous ())
+        emit closed();
     writeSettings();
 }
 

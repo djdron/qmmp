@@ -21,6 +21,7 @@
 #include <QEvent>
 #include <QMenu>
 #include <QInputDialog>
+#include <QCloseEvent>
 
 #include "filedialog.h"
 #include "skin.h"
@@ -114,8 +115,10 @@ void EqWidget::changeEvent ( QEvent * event )
     }
 }
 
-void EqWidget::closeEvent ( QCloseEvent* )
+void EqWidget::closeEvent ( QCloseEvent* e)
 {
+    if(e->spontaneous ())
+        emit closed();
     writeSettings();
 }
 
