@@ -28,6 +28,7 @@
 
 /*!
  * Class for XSPF playlist format parsing
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class XSPFPlaylistFormat : public QObject, public PlaylistFormat
 {

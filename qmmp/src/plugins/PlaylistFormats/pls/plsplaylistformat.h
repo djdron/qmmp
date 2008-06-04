@@ -28,6 +28,7 @@
 
 /*!
  * Class for PLS playlist format parsing
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class PLSPlaylistFormat : public QObject, public PlaylistFormat
 {
