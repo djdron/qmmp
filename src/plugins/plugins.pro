@@ -3,5 +3,6 @@ SUBDIRS += Input \
            Output \
 	   Visual \
 	   Effect \
-	   General 
+	   General \
+           PlaylistFormats 
 TEMPLATE = subdirs

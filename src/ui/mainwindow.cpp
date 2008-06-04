@@ -28,6 +28,8 @@
 #include <qmmp/soundcore.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/general.h>
+#include <qmmpui/playlistparser.h>
+#include <qmmpui/playlistformat.h>
 
 #include "textscroller.h"
 #include "mainwindow.h"
@@ -39,7 +41,6 @@
 #include "dock.h"
 #include "eqwidget.h"
 #include "mainvisual.h"
-#include  "playlistformat.h"
 #include "jumptotrackdialog.h"
 #include "aboutdialog.h"
 #include "addurldialog.h"
@@ -76,6 +77,7 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
 
     m_playlistName = tr("Default");
 
+    new PlaylistParser(this);
     m_playlist = new PlayList(this);
 
     connect (m_playlist,SIGNAL(next()),SLOT(next()));
@@ -692,7 +694,7 @@ void MainWindow::newPlaylist()
 void MainWindow::loadPlaylist()
 {
     QStringList l;
-    QList<PlaylistFormat*> p_list = m_playListModel->registeredPlaylistFormats();
+    QList<PlaylistFormat*> p_list = PlaylistParser::instance()->formats();
     if (!p_list.isEmpty())
     {
         foreach(PlaylistFormat* fmt,p_list)
@@ -734,7 +736,7 @@ void MainWindow::loadPlaylist()
 void MainWindow::savePlaylist()
 {
     QStringList l;
-    QList<PlaylistFormat*> p_list = m_playListModel->registeredPlaylistFormats();
+    QList<PlaylistFormat*> p_list = PlaylistParser::instance()->formats();
     if (!p_list.isEmpty())
     {
         foreach(PlaylistFormat* fmt,p_list)

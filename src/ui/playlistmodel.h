@@ -177,29 +177,6 @@ public:
     }
 
     /*!
-     *  Registers playlist format parser.
-     */
-    bool registerPlaylistFormat(PlaylistFormat* p);
-
-    /*!
-     * Checks and loads external playlist format plugins
-     */
-    void loadExternalPlaylistFormats();
-
-    /*!
-     * Returns vector of reistered format parsers.
-     */
-    const QList<PlaylistFormat*> registeredPlaylistFormats()const
-    {
-        return m_registered_pl_formats.values();
-    }
-
-    const QStringList registeredPlaylistFormatNames()const
-    {
-        return m_registered_pl_formats.keys();
-    }
-
-    /*!
      * Loads playlist with \b f_name name.
      */
     void loadPlaylist(const QString& f_name);
@@ -348,8 +325,6 @@ private:
      * Songs in play queue.
      */
     QList<PlayListItem*>m_queued_songs;
-
-    QMap<QString,PlaylistFormat* > m_registered_pl_formats;
 
     /*!
      * Is playlist repeatable?
