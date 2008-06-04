@@ -44,7 +44,6 @@ HEADERS += mainwindow.h \
            balancebar.h \
            playstate.h \
            symboldisplay.h \
-           playlistformat.h \
            playlistcontrol.h \
            version.h \
            qmmpstarter.h \
@@ -98,7 +97,6 @@ SOURCES += mainwindow.cpp \
            balancebar.cpp \
            playstate.cpp \
            symboldisplay.cpp \
-           playlistformat.cpp \
            playlistcontrol.cpp \
            qmmpstarter.cpp \
            eqpreset.cpp \
@@ -124,7 +122,7 @@ MOC_DIR =./.build/moc/
 OBJECTS_DIR =./.build/obj
 
 
-QT += network xml
+QT += network
 TARGET = ../../bin/qmmp
 CONFIG += thread release \
 warn_on

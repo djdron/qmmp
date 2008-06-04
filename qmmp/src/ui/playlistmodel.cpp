@@ -32,11 +32,12 @@
 
 #include <qmmp/decoder.h>
 #include <qmmp/decoderfactory.h>
+#include <qmmpui/playlistparser.h>
+#include <qmmpui/playlistformat.h>
 
 #include "fileloader.h"
 #include "playlistmodel.h"
 #include "playlistitem.h"
-#include "playlistformat.h"
 #include "playstate.h"
 
 #include <QMetaType>
@@ -52,7 +53,7 @@ TagUpdater::TagUpdater(QObject* o,PlayListItem* item):m_observable(o),m_item(ite
 
 void TagUpdater::updateTag()
 {
-    if(m_item->flag() == PlayListItem::SCHEDULED_FOR_DELETION)
+    if (m_item->flag() == PlayListItem::SCHEDULED_FOR_DELETION)
     {
         delete m_item;
         m_item = NULL;
@@ -75,13 +76,6 @@ PlayListModel::PlayListModel ( QObject *parent )
     is_repeatable_list = false;
     m_play_state = new NormalPlayState(this);
     //readSettings();
-
-    registerPlaylistFormat( new PLSPlaylistFormat);
-    registerPlaylistFormat( new M3UPlaylistFormat);
-#ifndef XSPF_PLUGIN
-    registerPlaylistFormat( new XSPFPlaylistFormat);
-#endif
-    loadExternalPlaylistFormats();
 }
 
 PlayListModel::~PlayListModel()
@@ -89,7 +83,7 @@ PlayListModel::~PlayListModel()
     writeSettings();
     clear();
     delete m_play_state;
-    qDeleteAll(m_registered_pl_formats);
+    //qDeleteAll(m_registered_pl_formats);
 
     foreach(GuardedFileLoader l,m_running_loaders)
     {
@@ -180,11 +174,11 @@ void PlayListModel::clear()
     {
         PlayListItem* mf = m_items.takeFirst();
 
-        if(mf->flag() == PlayListItem::FREE)
+        if (mf->flag() == PlayListItem::FREE)
         {
             delete mf;
         }
-        else if(mf->flag() == PlayListItem::EDITING)
+        else if (mf->flag() == PlayListItem::EDITING)
         {
             mf->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
         }
@@ -259,12 +253,12 @@ void PlayListModel::removeSelection(bool inverted)
             if (m_total_length < 0)
                 m_total_length = 0;
 
-            if(f->flag() == PlayListItem::FREE)
+            if (f->flag() == PlayListItem::FREE)
             {
                 delete f;
                 f = NULL;
             }
-            else if(f->flag() == PlayListItem::EDITING)
+            else if (f->flag() == PlayListItem::EDITING)
                 f->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
 
             select_after_delete = i;
@@ -313,7 +307,7 @@ void PlayListModel::showDetails()
             if ( fact )
             {
                 QObject* o = fact->showDetails ( 0, m_items.at ( i )->path() );
-                if(o)
+                if (o)
                 {
                     TagUpdater *updater = new TagUpdater(o,m_items.at(i));
                     m_editing_items.append(m_items.at(i));
@@ -347,7 +341,7 @@ void PlayListModel::readSettings()
 
     file.close ();
 
-    if(m_current > files.count() - 1)
+    if (m_current > files.count() - 1)
         m_current = 0;
 
     int preload = (files.count() < 100) ? files.count() : 100;
@@ -814,76 +808,40 @@ void PlayListModel::setUpdatesEnabled(bool yes)
 
 void PlayListModel::loadPlaylist(const QString & f_name)
 {
-
-    foreach(PlaylistFormat* prs,m_registered_pl_formats.values())
+    PlaylistFormat* prs = PlaylistParser::instance()->findByPath(f_name);
+    if (prs)
     {
-        if (prs->hasFormat(QFileInfo(f_name).suffix().toLower()))
+        QFile file(f_name);
+        if (file.open(QIODevice::ReadOnly))
         {
-            QFile file(f_name);
-            if (file.open(QIODevice::ReadOnly))
-            {
-                clear();
-                addFiles(prs->decode(QTextStream(&file).readAll()));
-                file.close();
-            }
-            else
-                qWarning("Error opening %s",f_name.toLocal8Bit().data());
+            clear();
+            addFiles(prs->decode(QTextStream(&file).readAll()));
+            file.close();
         }
+        else
+            qWarning("Error opening %s",f_name.toLocal8Bit().data());
     }
 }
 
 void PlayListModel::savePlaylist(const QString & f_name)
 {
-    foreach(PlaylistFormat* prs,m_registered_pl_formats.values())
+    PlaylistFormat* prs = PlaylistParser::instance()->findByPath(f_name);
+    if (prs)
     {
-        if (prs->hasFormat(QFileInfo(f_name).suffix().toLower()))
+        QFile file(f_name);
+        if (file.open(QIODevice::WriteOnly))
         {
-            QFile file(f_name);
-            if (file.open(QIODevice::WriteOnly))
-            {
-                QTextStream ts(&file);
-                ts << prs->encode(m_items);
-                file.close();
-            }
-            else
-                qWarning("Error opening %s",f_name.toLocal8Bit().data());
+            QTextStream ts(&file);
+            QList <SongInfo *> songs;
+            foreach(PlayListItem* item, m_items)
+                songs << item;
+            ts << prs->encode(songs);
+            file.close();
         }
+        else
+            qWarning("Error opening %s",f_name.toLocal8Bit().data());
     }
-}
 
-
-void PlayListModel::loadExternalPlaylistFormats()
-{
-    QDir pluginsDir (QDir::homePath()+"/.qmmp/plugins/PlaylistFormats");
-    //pluginsDir.cdUp();
-    //pluginsDir.cd("plugins/PlaylistFormats");
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files))
-    {
-        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
-        QObject *plugin = loader.instance();
-        if (loader.isLoaded())
-            qDebug("PlaylistFormat: plugin loaded - %s", qPrintable(fileName));
-
-        PlaylistFormat *fmt = 0;
-        if (plugin)
-            fmt = qobject_cast<PlaylistFormat *>(plugin);
-
-        if (fmt)
-            if (!registerPlaylistFormat(fmt))
-                qDebug("Warning: Plugin with name %s is already registered...",
-                       qPrintable(fmt->name()));
-    }
-}
-
-bool PlayListModel::registerPlaylistFormat(PlaylistFormat* p)
-{
-    QString name = p->name();
-    if (!m_registered_pl_formats.contains(name))
-    {
-        m_registered_pl_formats.insert(name,p);
-        return true;
-    }
-    return false;
 }
 
 bool PlayListModel::isFileLoaderRunning() const

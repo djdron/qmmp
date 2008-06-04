@@ -24,7 +24,8 @@
 #include <QUrl>
 #include <QMessageBox>
 #include "addurldialog.h"
-#include "playlistformat.h"
+#include <qmmpui/playlistparser.h>
+#include <qmmpui/playlistformat.h>
 #include "playlistmodel.h"
 
 #define HISTORY_SIZE 10
@@ -74,18 +75,15 @@ void AddUrlDialog::accept( )
             s.prepend("http://");
         m_history.removeAll(s);
         m_history.prepend(s);
-        //TODO this code should be removed
-        foreach(PlaylistFormat* prs, m_model->registeredPlaylistFormats())
+        PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
+        if (prs)
         {
-            if (prs->hasFormat(QFileInfo(s).suffix().toLower()))
-            {
-                //download playlist;
-                QUrl url(s);
-                m_http->setHost(url.host(), url.port(80));
-                m_http->get(url.path()); //TODO proxy support
-                addButton->setEnabled(FALSE);
-                return;
-            }
+            //download playlist;
+            QUrl url(s);
+            m_http->setHost(url.host(), url.port(80));
+            m_http->get(url.path()); //TODO proxy support
+            addButton->setEnabled(FALSE);
+            return;
         }
         m_model->addFile(s);
     }
@@ -104,13 +102,11 @@ void AddUrlDialog::processResponse(int, bool error)
 void AddUrlDialog::readResponse(const QHttpResponseHeader&)
 {
     QString s = urlComboBox->currentText();
-    foreach(PlaylistFormat* prs, m_model->registeredPlaylistFormats())
+    PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
+    if (prs)
     {
-        if (prs->hasFormat(QFileInfo(s).suffix().toLower()))
-        {
-            m_model->addFiles(prs->decode(m_http->readAll()));
-            break;
-        }
+        m_model->addFiles(prs->decode(m_http->readAll()));
+        return;
     }
     QDialog::accept();
 }
