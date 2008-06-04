@@ -28,6 +28,7 @@
 
 /*!
  * Class for M3U playlist format parsing
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class M3UPlaylistFormat : public QObject, public PlaylistFormat
 {

@@ -160,7 +160,7 @@ MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_
     char buf[PATH_MAX + 1];
     QString cwd = QString::fromLocal8Bit(getcwd(buf,PATH_MAX));
     processCommandArgs(args,cwd);
-    if(m_startHidden && m_generalHandler->visibilityControl())
+    if (m_startHidden && m_generalHandler->visibilityControl())
         toggleVisibility();
 }
 
@@ -334,7 +334,7 @@ void MainWindow::showOutputState(const OutputState &st)
         if (m_playListModel->currentItem())
         {
             SongInfo info = *m_playListModel->currentItem();
-            if(info.isEmpty())
+            if (info.isEmpty())
                 info.setValue(SongInfo::TITLE, m_playlist->currentItem()->text());
             m_generalHandler->setSongInfo(info);
         }
@@ -363,7 +363,7 @@ void MainWindow::showOutputState(const OutputState &st)
     }
     case OutputState::VisualRemoved:
     {
-         m_visMenu->updateActions();
+        m_visMenu->updateActions();
     }
     }
 }
@@ -709,8 +709,8 @@ void MainWindow::loadPlaylist()
             {
                 m_playListModel->loadPlaylist(f_name);
                 m_playlistName = QFileInfo(f_name).baseName();
+                m_lastDir = QFileInfo(f_name).absoluteDir().path();
             }
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
         else //FileDialog::popup(m_playListModel,m_lastDir,FileDialog::AddFiles,Decoder::nameFilters());
             // TODO: implement playlist loading with nonmodal dialogs
@@ -722,8 +722,8 @@ void MainWindow::loadPlaylist()
             {
                 m_playListModel->loadPlaylist(f_name);
                 m_playlistName = QFileInfo(f_name).baseName();
+                m_lastDir = QFileInfo(f_name).absoluteDir().path();
             }
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
     }
     else
@@ -752,8 +752,8 @@ void MainWindow::savePlaylist()
             {
                 m_playListModel->savePlaylist(f_name);
                 m_playlistName = QFileInfo(f_name).baseName();
+                m_lastDir = QFileInfo(f_name).absoluteDir().path();
             }
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
         else // TODO: implement saving playlists with nonmodal dialogs
             // For now we'll use default dialog
@@ -765,8 +765,8 @@ void MainWindow::savePlaylist()
             {
                 m_playListModel->savePlaylist(f_name);
                 m_playlistName = QFileInfo(f_name).baseName();
+                m_lastDir = QFileInfo(f_name).absoluteDir().path();
             }
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
     }
     else
