@@ -14,7 +14,7 @@ QMAKE_LIBDIR += ../../../../lib
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }
-target.path = $$LIB_DIR/qmmp/PlayListFormats
+target.path = $$LIB_DIR/qmmp/PlaylistFormats
 INSTALLS += target
 
 INCLUDEPATH += ../../../../src

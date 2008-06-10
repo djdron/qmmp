@@ -16,6 +16,9 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libffmpeg.so
 
 
 INCLUDEPATH += ../../../
+INCLUDEPATH += /usr/include/libavformat
+INCLUDEPATH += /usr/include/libavcodec
+
 CONFIG += release \
 warn_on \
 plugin \
