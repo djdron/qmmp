@@ -34,6 +34,8 @@ SET(libincdecvolumeoption_MOC_HDRS
     incdecvolumeoption.h
 )
 
+SET(libincdecvolumeoption_RCCS translations/translations.qrc)
+
 QT4_ADD_RESOURCES(libincdecvolumeoption_RCC_SRCS ${libincdecvolumeoption_RCCS})
 
 QT4_WRAP_CPP(libincdecvolumeoption_MOC_SRCS ${libincdecvolumeoption_MOC_HDRS})
@@ -43,6 +45,7 @@ QT4_WRAP_CPP(libincdecvolumeoption_MOC_SRCS ${libincdecvolumeoption_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(incdecvolumeoption SHARED ${libincdecvolumeoption_SRCS} ${libincdecvolumeoption_MOC_SRCS})
+ADD_LIBRARY(incdecvolumeoption SHARED ${libincdecvolumeoption_SRCS} ${libincdecvolumeoption_MOC_SRCS} 
+           ${libincdecvolumeoption_RCC_SRCS})
 target_link_libraries(incdecvolumeoption ${QT_LIBRARIES} -lqmmpui)
 install(TARGETS incdecvolumeoption DESTINATION ${LIB_DIR}/qmmp/CommandLineOptions)
