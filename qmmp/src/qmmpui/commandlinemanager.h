@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,57 +17,49 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef COMMANDLINEMANAGER_H
+#define COMMANDLINEMANAGER_H
 
-#ifndef _QMMPSTARTER_H
-#define _QMMPSTARTER_H
+#include "general.h"
+#include "commandlineoption.h"
 
-#include <QObject>
-#include <QAbstractSocket>
-#include <QStringList>
 
-class UnixDomainSocket;
-class MainWindow;
-class BuiltinCommandLineOption;
-
-/*!
- *  QMMPStarter represents wrapper object that is responsible
- * for proper QMMP initialization(only one instance of running
- * MainWindow) and passing command line args to application.
- * @author Vladimir Kuznetsov <vovanec@gmail.com>
- */
-class QMMPStarter : public QObject
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class CommandLineManager : public General
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    QMMPStarter(int argc,char ** argv,QObject* parent = 0);
-    ~QMMPStarter();
-protected slots:
+    CommandLineManager(QObject *parent = 0);
 
-    /*!
-     * Passes command args to the running application
-     */
-    void writeCommand();
+    ~CommandLineManager();
 
-    void readCommand();
+    //general
+    void setState(const uint &state);
+    void setSongInfo(const SongInfo &song);
+    void setVolume(int left, int right);
+    void setTime(int time);
+
+    //properties
+    uint state();
+    SongInfo *info();
+    int elapsed();
+    int leftVolume();
+    int rightVolume();
+
+    //command line
+    void executeCommand(const QString& opt_str, Control* ctrl);
+
+    //static methods
+    static bool hasOption(const QString &opt_str);
+    static void printUsage();
+
 private:
-    /*!
-     * Prints usage
-     */
-    void printUsage();
-
-    /*!
-     * Prints version of program
-     */
-    void printVersion();
-
-    void startMainWindow();
-private:
-    MainWindow* mw;
-    UnixDomainSocket* m_sock;
-    QString argString;
-    BuiltinCommandLineOption* m_option_manager;
+    uint m_state;
+    SongInfo m_song;
+    int m_left, m_right;
+    int m_time;
 };
 
 #endif
-
-

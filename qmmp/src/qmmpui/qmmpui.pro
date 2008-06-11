@@ -21,6 +21,8 @@ contains(CONFIG, SVN_VERSION){
     DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
 }
 
+VERSION = $$QMMP_VERSION
+
 target.path = $$LIB_DIR
 INSTALLS += target
 HEADERS += general.h \
@@ -29,12 +31,15 @@ HEADERS += general.h \
            songinfo.h \
            control.h \
            playlistformat.h \
- playlistparser.h
+           playlistparser.h \
+           commandlinemanager.h \
+           commandlineoption.h
 SOURCES += general.cpp \
            generalhandler.cpp \
            songinfo.cpp \
            control.cpp \
- playlistparser.cpp
+           playlistparser.cpp \
+           commandlinemanager.cpp
 
 DESTDIR = .
 

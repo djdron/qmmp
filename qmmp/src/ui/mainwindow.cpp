@@ -30,6 +30,7 @@
 #include <qmmpui/general.h>
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
+#include <qmmpui/commandlinemanager.h>
 
 #include "textscroller.h"
 #include "mainwindow.h"
@@ -47,11 +48,11 @@
 #include "filedialog.h"
 #include "listwidget.h"
 #include "visualmenu.h"
-#include "commandlineoption.h"
+#include "builtincommandlineoption.h"
 
 #define KEY_OFFSET 10
 
-MainWindow::MainWindow(const QStringList& args,CommandLineOptionManager* option_manager, QWidget *parent)
+MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option_manager, QWidget *parent)
         : QMainWindow(parent)
 {
     m_vis = 0;
@@ -798,12 +799,12 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
         QString str = slist[0];
         if (str.startsWith("--")) // is it a command?
         {
-            if (m_option_manager->hasOption(str))
-            {
+            if (CommandLineManager::hasOption(str))
+                m_generalHandler->executeCommand(str);
+            else if (m_option_manager->identify(str))
                 m_option_manager->executeCommand(str,this);
-            }
             else
-                return false;
+                return FALSE;
         }
         else// maybe it is a list of files or dirs
         {
@@ -819,7 +820,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
             setFileList(full_path_list);
         }
     }
-    return true;
+    return TRUE;
 }
 
 void MainWindow::jumpToFile()

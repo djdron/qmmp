@@ -22,6 +22,7 @@
 #include "general.h"
 #include "generalfactory.h"
 #include "control.h"
+#include "commandlinemanager.h"
 
 #include "generalhandler.h"
 
@@ -48,6 +49,8 @@ GeneralHandler::GeneralHandler(QObject *parent)
             m_generals.insert(factory, general);
         }
     }
+    m_commandLineManager = new CommandLineManager(this);
+    m_generals.insert(0, m_commandLineManager);
 }
 
 GeneralHandler::~GeneralHandler()
@@ -163,6 +166,12 @@ bool GeneralHandler::visibilityControl()
             return TRUE;
     }
     return FALSE;
+}
+
+void GeneralHandler::executeCommand(const QString &opt_str)
+{
+    if(CommandLineManager::hasOption(opt_str))
+        m_commandLineManager->executeCommand(opt_str, m_control);
 }
 
 GeneralHandler* GeneralHandler::instance()

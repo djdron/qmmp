@@ -20,21 +20,26 @@
 
 #include <QApplication>
 
-#include "unixdomainsocket.h"
+#include <cstdlib>
+#include <iostream>
 #include <unistd.h>
 #include <sys/types.h>
 #include <string.h>
+#include <qmmpui/commandlinemanager.h>
 
+#include "unixdomainsocket.h"
 #include "mainwindow.h"
 #include "version.h"
 #include "qmmpstarter.h"
-#include "commandlineoption.h"
+#include "builtincommandlineoption.h"
 
 #define MAXCOMMANDSIZE 1024
 
-QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent),mw(NULL)
+using namespace std;
+
+QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent), mw(NULL)
 {
-    m_option_manager = new CommandLineOptionManager();
+    m_option_manager = new BuiltinCommandLineOption(this);
     QStringList tmp;
     for (int i = 1;i < argc;i++)
         tmp << QString::fromLocal8Bit(argv[i]);
@@ -53,8 +58,8 @@ QMMPStarter::QMMPStarter(int argc,char ** argv,QObject* parent) : QObject(parent
     }
 
     if (argString.startsWith("--") && // command?
-            !m_option_manager->hasOption(argString)
-       )
+            !(m_option_manager->identify(argString) ||
+              CommandLineManager::hasOption(argString)))
     {
         qFatal("QMMP: Unknown command...");
         exit(1);
@@ -132,23 +137,17 @@ void QMMPStarter::readCommand()
 
 void QMMPStarter::printUsage()
 {
-    qWarning(
-        "Usage: qmmp [options] [files] \n"
-        "Options:\n"
-        "--------\n"
-    );
-    for (int i = 0; i< m_option_manager->count();i++)
-    {
-        qWarning(qPrintable((*m_option_manager)[i]->helpString()));
-    }
-    qWarning(
-        "--help               Display this text and exit.\n"
-        "--version            Print version number and exit.\n\n"
-        "Ideas, patches, bugreports send to forkotov02@hotmail.ru\n"
-    );
+    cout << qPrintable(tr("Usage: qmmp [options] [files]")) << endl;
+    cout << qPrintable(tr("Options:")) << endl;
+    cout << qPrintable(tr("--------")) << endl;
+    cout << qPrintable(m_option_manager->helpString()) << endl;
+    CommandLineManager::printUsage();
+    cout << "--help               " << qPrintable(tr("Display this text and exit.")) << endl;
+    cout << "--version            " << qPrintable(tr("Print version number and exit")) << endl;
+    cout << qPrintable(tr("Ideas, patches, bugreports send to forkotov02@hotmail.ru")) << endl;
 }
 
 void QMMPStarter::printVersion()
 {
-    qWarning("QMMP version:  %s",QMMP_STR_VERSION);
+    cout << qPrintable(tr("QMMP version:  ")) << QMMP_STR_VERSION << endl;
 }

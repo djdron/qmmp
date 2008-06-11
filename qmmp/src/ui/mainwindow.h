@@ -46,14 +46,14 @@ class GeneralHandler;
 
 class QMenu;
 class QKeyEvent;
-class CommandLineOptionManager;
+class BuiltinCommandLineOption;
 
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    MainWindow(const QStringList& args,CommandLineOptionManager*, QWidget *parent);
+    MainWindow(const QStringList& args, BuiltinCommandLineOption*, QWidget *parent);
 
     ~MainWindow();
 
@@ -135,7 +135,7 @@ private:
     bool m_hideOnClose, m_startHidden;
     int m_elapsed;
     VisualMenu *m_visMenu;
-    CommandLineOptionManager* m_option_manager;
+    BuiltinCommandLineOption* m_option_manager;
     GeneralHandler *m_generalHandler;
 };
 

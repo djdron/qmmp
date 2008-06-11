@@ -39,7 +39,7 @@ SET(ui_SRCS
     addurldialog.cpp
     balancebar.cpp
     button.cpp
-    commandlineoption.cpp
+    builtincommandlineoption.cpp
     configdialog.cpp
     display.cpp
     dock.cpp
@@ -92,7 +92,7 @@ SET(ui_MOC_HDRS
     addurldialog.h
     balancebar.h
     button.h
-    commandlineoption.h
+    builtincommandlineoption.h
     configdialog.h
     display.h
     dock.h
