@@ -11,6 +11,10 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/CommandLineOptions/libincdecvolumeoption.so
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 
+TRANSLATIONS = translations/incdecvolume_plugin_cs.ts \
+               translations/incdevvolume_plugin_de.ts
+               RESOURCES = translations/translations.qrc
+
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }

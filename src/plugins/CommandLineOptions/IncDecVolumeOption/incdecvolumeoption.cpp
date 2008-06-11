@@ -1,5 +1,6 @@
 #include <QtPlugin>
 #include <QTranslator>
+#include <QLocale>
 
 #include "incdecvolumeoption.h"
 
@@ -53,8 +54,10 @@ const QString IncDecVolumeCommandLineOption::name() const
 
 QTranslator *IncDecVolumeCommandLineOption::createTranslator(QObject *parent)
 {
-    Q_UNUSED(parent);
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/incdecvolume_plugin_") + locale);
+    return translator;
 }
 
 Q_EXPORT_PLUGIN(IncDecVolumeCommandLineOption)
