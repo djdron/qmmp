@@ -142,63 +142,50 @@ void MainVisual::timeout()
 {
     VisualNode *node = 0;
 
-    if ( /*playing &&*/ output())
+    if (output())
     {
-        //output()->mutex()->lock ();
-        //long olat = output()->latency();
-        //long owrt = output()->written();
-        //output()->mutex()->unlock();
-
-        //long synctime = owrt < olat ? 0 : owrt - olat;
-
         mutex()->lock ();
         VisualNode *prev = 0;
         while ((!m_nodes.isEmpty()))
         {
-            node = m_nodes.first();
-            /*if ( node->offset > synctime )
-               break;*/
-
-            if ( prev )
+            node = m_nodes.takeFirst();
+            if (prev)
                 delete prev;
-            m_nodes.removeFirst();
-
             prev = node;
-
         }
         mutex()->unlock();
         node = prev;
     }
-
-    if (m_vis)
-        m_vis->process ( node );
-    delete node;
-    if ( m_vis )
+    if (m_vis && node)
     {
-        if (m_draw)
-            drawBackGround();
-        m_draw = FALSE;
+        m_vis->process (node);
         m_pixmap = m_bg;
         QPainter p(&m_pixmap);
         m_vis->draw (&p);
+        delete node;
+        update();
+        m_draw = TRUE;
     }
-    else
-        m_pixmap.fill("Red");
-    update();
+    else if (m_draw)
+    {
+        m_draw = FALSE;
+        m_pixmap = m_bg;
+        update();
+    }
 }
 
-void MainVisual::paintEvent ( QPaintEvent * )
+void MainVisual::paintEvent (QPaintEvent *)
 {
-    QPainter painter ( this );
-    painter.drawPixmap ( 0,0,m_pixmap );
+    QPainter painter (this);
+    painter.drawPixmap (0,0, m_pixmap);
 }
 
-void MainVisual::hideEvent ( QHideEvent *)
+void MainVisual::hideEvent (QHideEvent *)
 {
     m_timer->stop();
 }
 
-void MainVisual::showEvent ( QShowEvent *)
+void MainVisual::showEvent (QShowEvent *)
 {
     if (m_vis)
         m_timer->start();
@@ -233,7 +220,7 @@ void MainVisual::mousePressEvent (QMouseEvent *e)
 void MainVisual::drawBackGround()
 {
     m_bg = QPixmap (75,20);
-    if(m_transparentAction->isChecked())
+    if (m_transparentAction->isChecked())
     {
         m_bg.fill (Qt::transparent);
         return;
@@ -488,19 +475,19 @@ bool Analyzer::process ( VisualNode *node )
     short dest[256];
 
     const int xscale_long[] =
-        {
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-            19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
-            35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
-            52, 53, 54, 55, 56, 57, 58, 61, 66, 71, 76, 81, 87, 93, 100, 107,
-            114, 122, 131, 140, 150, 161, 172, 184, 255
-        };
+    {
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+        19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
+        35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
+        52, 53, 54, 55, 56, 57, 58, 61, 66, 71, 76, 81, 87, 93, 100, 107,
+        114, 122, 131, 140, 150, 161, 172, 184, 255
+    };
 
     const int xscale_short[] =
-        {
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 15, 20, 27,
-            36, 47, 62, 82, 107, 141, 184, 255
-        };
+    {
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 15, 20, 27,
+        36, 47, 62, 82, 107, 141, 184, 255
+    };
 
     if ( node )
     {
