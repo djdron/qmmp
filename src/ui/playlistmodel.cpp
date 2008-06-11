@@ -27,6 +27,7 @@
 #include <QApplication>
 #include <QTimer>
 #include <QSettings>
+#include <QMessageBox>
 
 #include <time.h>
 
@@ -303,10 +304,28 @@ void PlayListModel::showDetails()
     {
         if ( m_items.at ( i )->isSelected() )
         {
+            if (m_items.at (i)->path().startsWith("http://"))
+            {
+                PlayListItem *item = m_items.at (i);
+                QString str;
+                str.append(tr("Url:") + " %1\n");
+                str.append(tr("Title:") + " %2\n");
+                str.append(tr("Artist:") + " %3\n");
+                str.append(tr("Album:") + " %4\n");
+                str.append(tr("Comment:") + " %5");
+                str = str.arg(item->path())
+                .arg(item->title().isEmpty() ? item->text() : item->title())
+                .arg(item->artist())
+                .arg(item->album())
+                .arg(item->comment());
+                QMessageBox::information(0, m_items.at (i)->path(), str);
+                return;
+            }
+
             DecoderFactory *fact = Decoder::findByPath ( m_items.at ( i )->path() );
             if ( fact )
             {
-                QObject* o = fact->showDetails ( 0, m_items.at ( i )->path() );
+                QObject* o = fact->showDetails ( 0, m_items.at (i)->path());
                 if (o)
                 {
                     TagUpdater *updater = new TagUpdater(o,m_items.at(i));
@@ -314,11 +333,9 @@ void PlayListModel::showDetails()
                     connect (updater, SIGNAL(destroyed (QObject * )),SIGNAL(listChanged()));
                 }
             }
-
             return;
         }
     }
-
 }
 
 void PlayListModel::readSettings()
@@ -834,7 +851,7 @@ void PlayListModel::savePlaylist(const QString & f_name)
             QTextStream ts(&file);
             QList <SongInfo *> songs;
             foreach(PlayListItem* item, m_items)
-                songs << item;
+            songs << item;
             ts << prs->encode(songs);
             file.close();
         }
