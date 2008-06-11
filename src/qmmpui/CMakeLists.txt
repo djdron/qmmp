@@ -28,6 +28,7 @@ SET(libqmmpui_SRCS
     songinfo.cpp
     control.cpp
     playlistparser.cpp
+    commandlinemanager.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -38,6 +39,8 @@ SET(libqmmpui_MOC_HDRS
     control.h
     playlistparser.h
     playlistformat.h
+    commandlinemanager.h
+    commandlineoption.h
 )
 
 QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})

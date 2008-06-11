@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,57 +17,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
-#ifndef _QMMPSTARTER_H
-#define _QMMPSTARTER_H
+#ifndef BUILTINCOMMANDLINEOPTION_H
+#define BUILTINCOMMANDLINEOPTION_H
 
 #include <QObject>
-#include <QAbstractSocket>
-#include <QStringList>
 
-class UnixDomainSocket;
 class MainWindow;
-class BuiltinCommandLineOption;
+
+/**
+    @author Vladimir Kuznetsov <vovanec@gmail.ru>
+*/
 
 /*!
- *  QMMPStarter represents wrapper object that is responsible
- * for proper QMMP initialization(only one instance of running
- * MainWindow) and passing command line args to application.
- * @author Vladimir Kuznetsov <vovanec@gmail.com>
+ * Represens command line option handling for standard operations.
  */
-class QMMPStarter : public QObject
+class BuiltinCommandLineOption : public QObject
 {
     Q_OBJECT
 public:
-    QMMPStarter(int argc,char ** argv,QObject* parent = 0);
-    ~QMMPStarter();
-protected slots:
+    BuiltinCommandLineOption(QObject *parent = 0);
 
-    /*!
-     * Passes command args to the running application
-     */
-    void writeCommand();
+    ~BuiltinCommandLineOption();
 
-    void readCommand();
-private:
-    /*!
-     * Prints usage
-     */
-    void printUsage();
+    bool identify(const QString& str)const;
+    const QString helpString()const;
+    void executeCommand(const QString& option,MainWindow* = NULL);
+    const QString name()const;
 
-    /*!
-     * Prints version of program
-     */
-    void printVersion();
-
-    void startMainWindow();
-private:
-    MainWindow* mw;
-    UnixDomainSocket* m_sock;
-    QString argString;
-    BuiltinCommandLineOption* m_option_manager;
 };
 
 #endif
-
-

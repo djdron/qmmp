@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,15 +17,15 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef COMMANDLINEOPTION_H
+#define COMMANDLINEOPTION_H
 
-#ifndef CommandLineOption_H
-#define CommandLineOption_H
 
-#include <QtPlugin>
-#include <QString>
-#include <QList>
-
-class MainWindow;
+class CommandLineManager;
+class Control;
+class QTranslator;
+class QString;
+class QObject;
 
 /**
     @author Vladimir Kuznetsov <vovanec@gmail.ru>
@@ -38,57 +38,29 @@ public:
      * otherise \b false
      */
     virtual bool identify(const QString& opt_str)const = 0;
-    
+
     /*!
      * Command line option name
      */
     virtual const QString name()const = 0;
-    
+
     /*!
      * Help string.
      */
     virtual const QString helpString()const = 0;
-    
+
     /*!
      * Parses \b opt_str args(if needed), executes command.
      */
-    virtual void executeCommand(const QString& opt_str,MainWindow* mw) = 0;
-    virtual ~CommandLineOption(){;}
+    virtual void executeCommand(const QString& opt_str, CommandLineManager* clm, Control* ctrl) = 0;
+    /*!
+     * Creates translator with parent object \b parent
+     */
+    virtual QTranslator *createTranslator(QObject *parent) = 0;
+
+    virtual ~CommandLineOption() {}
 };
 
 Q_DECLARE_INTERFACE(CommandLineOption,"CommandLineOptionInterface/1.0");
-
-
-
-typedef QList<CommandLineOption*> CommandLineOptionList;
-
-class CommandLineOptionManager
-{
-public:
-    CommandLineOptionManager();
-    bool hasOption(const QString& );
-    void executeCommand(const QString&,MainWindow* = NULL);
-    CommandLineOption* operator[](int);
-    int count()const;
-protected:
-    void registerBuiltingCommandLineOptions();
-    void registerExternalCommandLineOptions();
-private:
-    void _register(CommandLineOption*);
-private:
-    CommandLineOptionList m_options;
-};
-
-/*!
- * Represens command line option handling for standard operations.
- */
-class BuiltinCommandLineOption : public CommandLineOption
-{
-    virtual bool identify(const QString& str)const;
-    virtual const QString helpString()const;
-    virtual void executeCommand(const QString& option,MainWindow* = NULL);
-    virtual const QString name()const;
-    virtual ~BuiltinCommandLineOption(){;}
-};
 
 #endif

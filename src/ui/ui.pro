@@ -55,14 +55,14 @@ HEADERS += mainwindow.h \
            keyboardmanager.h \
            filedialog.h \
            unixdomainsocket.h \
-           commandlineoption.h \
            addurldialog.h \
            skinreader.h \
            visualmenu.h \
            titlebarcontrol.h \
            shadedvisual.h \
            shadedbar.h \
-           playlistitem.h
+           playlistitem.h \
+           builtincommandlineoption.h
 
 SOURCES += mainwindow.cpp \
            mp3player.cpp \
@@ -107,14 +107,14 @@ SOURCES += mainwindow.cpp \
            keyboardmanager.cpp \
            filedialog.cpp \
            unixdomainsocket.cpp \
-           commandlineoption.cpp \
            addurldialog.cpp \
            skinreader.cpp \
            visualmenu.cpp \
            titlebarcontrol.cpp \
            shadedvisual.cpp \
            shadedbar.cpp \
-           playlistitem.cpp
+           playlistitem.cpp \
+           builtincommandlineoption.cpp
 
 #Some conf to redirect intermediate stuff in separate dirs
 UI_DIR =./.build/ui/

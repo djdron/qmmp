@@ -27,6 +27,7 @@
 class General;
 class Control;
 class GeneralFactory;
+class CommandLineManager;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -46,6 +47,7 @@ public:
     void setEnabled(GeneralFactory* factory, bool enable);
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
     bool visibilityControl();
+    void executeCommand(const QString &opt_str);
     static GeneralHandler* instance();
 
 signals:
@@ -73,8 +75,8 @@ private:
     int m_time;
     uint m_state;
     int m_left, m_right;
+    CommandLineManager *m_commandLineManager;
     static GeneralHandler* m_instance;
-
 };
 
 #endif
