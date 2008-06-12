@@ -327,7 +327,7 @@
         <translation>Ausgabe</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="865"/>
+        <location filename="../forms/configdialog.ui" line="827"/>
         <source>Close</source>
         <translation>Schließen</translation>
     </message>
@@ -337,42 +337,42 @@
         <translation>Verbindung</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="591"/>
+        <location filename="../forms/configdialog.ui" line="637"/>
         <source>File Dialog</source>
         <translation>Datei-Dialog</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="724"/>
+        <location filename="../forms/configdialog.ui" line="686"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="736"/>
+        <location filename="../forms/configdialog.ui" line="698"/>
         <source>Enable proxy usage</source>
         <translation>Proxy aktivieren</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="743"/>
+        <location filename="../forms/configdialog.ui" line="705"/>
         <source>Proxy host name:</source>
         <translation>Name des Proxyservers:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="756"/>
+        <location filename="../forms/configdialog.ui" line="718"/>
         <source>Proxy port:</source>
         <translation>Proxy-Port:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="769"/>
+        <location filename="../forms/configdialog.ui" line="731"/>
         <source>Use authentication with proxy</source>
         <translation>Benutze Authentisierung mit Proxyserver</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="776"/>
+        <location filename="../forms/configdialog.ui" line="738"/>
         <source>Proxy user name:</source>
         <translation>Benutzername für Proxyserver:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="789"/>
+        <location filename="../forms/configdialog.ui" line="751"/>
         <source>Proxy password:</source>
         <translation>Passwort für Proxyserver:</translation>
     </message>
@@ -402,27 +402,27 @@
         <translation>Allgemein</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="668"/>
+        <location filename="../forms/configdialog.ui" line="598"/>
         <source>Audio</source>
         <translation>Audio</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="674"/>
+        <location filename="../forms/configdialog.ui" line="604"/>
         <source>Use software volume control</source>
         <translation>Softwaregesteuerte Lautstärkeregelung</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="684"/>
+        <location filename="../forms/configdialog.ui" line="614"/>
         <source>Visibility Control</source>
         <translation>Tray-Steuerung</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="690"/>
+        <location filename="../forms/configdialog.ui" line="620"/>
         <source>Hide on close</source>
         <translation>Beim Schließen minimieren</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="697"/>
+        <location filename="../forms/configdialog.ui" line="627"/>
         <source>Start hidden</source>
         <translation>Minimiert starten</translation>
     </message>
@@ -439,6 +439,11 @@
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
         <source>Show full path of a stream</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="646"/>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
