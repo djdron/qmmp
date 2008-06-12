@@ -627,7 +627,7 @@ void MainWindow::createActions()
     m_mainMenu->addAction(tr("&Stop"),this, SLOT(stop()), tr("V"));
     m_mainMenu->addAction(tr("&Previous"),this, SLOT(previous()), tr("Z"));
     m_mainMenu->addAction(tr("&Next"),this, SLOT(next()), tr("B"));
-    m_mainMenu->addAction(tr("P&lay/Pause"),this, SLOT(playPause()), tr("Space"));
+    m_mainMenu->addAction(tr("&Play/Pause"),this, SLOT(playPause()), tr("Space"));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Jump To File"),this, SLOT(jumpToFile()), tr("J"));
     m_mainMenu->addSeparator();
