@@ -664,7 +664,7 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="692"/>
+        <location filename="../mainwindow.cpp" line="691"/>
         <source>Default</source>
         <translation type="unfinished"></translation>
     </message>
@@ -729,62 +729,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="631"/>
-        <source>&amp;Queue</source>
-        <translation>&amp;В очередь</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="631"/>
-        <source>Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="632"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Перейти к файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="632"/>
         <source>J</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="639"/>
+        <location filename="../mainwindow.cpp" line="638"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="639"/>
+        <location filename="../mainwindow.cpp" line="638"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="645"/>
+        <location filename="../mainwindow.cpp" line="644"/>
         <source>&amp;Exit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="645"/>
+        <location filename="../mainwindow.cpp" line="644"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="721"/>
+        <location filename="../mainwindow.cpp" line="720"/>
         <source>Open Playlist</source>
         <translation>Открыть список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="762"/>
+        <location filename="../mainwindow.cpp" line="761"/>
         <source>Save Playlist</source>
         <translation>Сохранить список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="641"/>
+        <location filename="../mainwindow.cpp" line="640"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="746"/>
+        <location filename="../mainwindow.cpp" line="745"/>
         <source>Playlist Files</source>
         <translation>Файлы списков</translation>
     </message>
@@ -799,7 +789,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="642"/>
+        <location filename="../mainwindow.cpp" line="641"/>
         <source>&amp;About Qt</source>
         <translation type="unfinished"></translation>
     </message>
@@ -822,12 +812,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="259"/>
         <source>Ctrl+A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="272"/>
+        <location filename="../playlist.cpp" line="274"/>
         <source>O</source>
         <translation type="unfinished"></translation>
     </message>
@@ -902,42 +892,42 @@
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="242"/>
+        <location filename="../playlist.cpp" line="244"/>
         <source>Invert Selection</source>
         <translation>Инвертировать выделение</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="249"/>
+        <location filename="../playlist.cpp" line="251"/>
         <source>&amp;Select None</source>
         <translation>&amp;Снять выделение</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="256"/>
+        <location filename="../playlist.cpp" line="258"/>
         <source>&amp;Select All</source>
         <translation>&amp;Выделить всё</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="264"/>
+        <location filename="../playlist.cpp" line="266"/>
         <source>&amp;New List</source>
         <translation>&amp;Новый лист</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="267"/>
         <source>Shift+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="271"/>
+        <location filename="../playlist.cpp" line="273"/>
         <source>&amp;Load List</source>
         <translation>&amp;Загрузить лист</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="276"/>
+        <location filename="../playlist.cpp" line="278"/>
         <source>&amp;Save List</source>
         <translation>&amp;Сохранить лист</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="277"/>
+        <location filename="../playlist.cpp" line="279"/>
         <source>Shift+S</source>
         <translation type="unfinished"></translation>
     </message>
@@ -959,6 +949,44 @@
     <message>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Track Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="240"/>
+        <source>&amp;Queue</source>
+        <translation type="unfinished">&amp;В очередь</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="240"/>
+        <source>Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PlayListModel</name>
+    <message>
+        <location filename="../playlistmodel.cpp" line="311"/>
+        <source>Url:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistmodel.cpp" line="312"/>
+        <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistmodel.cpp" line="313"/>
+        <source>Artist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistmodel.cpp" line="314"/>
+        <source>Album:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistmodel.cpp" line="315"/>
+        <source>Comment:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
