@@ -874,17 +874,3 @@ void PlayListModel::preparePlayState()
 {
     m_play_state->prepare();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
