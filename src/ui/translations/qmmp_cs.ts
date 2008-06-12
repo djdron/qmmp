@@ -780,11 +780,6 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
-        <source>P&amp;lay/Pause</source>
-        <translation>Přehrá&amp;t/Pozastavit</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="630"/>
         <source>Space</source>
         <translation>Mezerník</translation>
     </message>
@@ -792,6 +787,11 @@
         <location filename="../mainwindow.cpp" line="641"/>
         <source>&amp;About Qt</source>
         <translation>O knihovně &amp;Qt</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="630"/>
+        <source>&amp;Play/Pause</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
