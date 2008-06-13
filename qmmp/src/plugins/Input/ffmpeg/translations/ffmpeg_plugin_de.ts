@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="31"/>
+        <location filename="../decoderffmpegfactory.cpp" line="44"/>
         <source>WMA Files</source>
         <translation>WMA Dateien</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="79"/>
+        <location filename="../decoderffmpegfactory.cpp" line="92"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Über FFmpeg Audio Plugin</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="80"/>
+        <location filename="../decoderffmpegfactory.cpp" line="93"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg Audio Plugin</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="81"/>
+        <location filename="../decoderffmpegfactory.cpp" line="94"/>
         <source>Suppored formats: WMA</source>
         <translation>Unterstützte Formate: WMA</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="82"/>
+        <location filename="../decoderffmpegfactory.cpp" line="95"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="29"/>
+        <location filename="../decoderffmpegfactory.cpp" line="42"/>
         <source>FFMPEG Plugin</source>
         <translation>FFMPEG Plugin</translation>
     </message>
@@ -37,17 +36,17 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../detailsdialog.cpp" line="94"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="78"/>
+        <location filename="../detailsdialog.cpp" line="91"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>

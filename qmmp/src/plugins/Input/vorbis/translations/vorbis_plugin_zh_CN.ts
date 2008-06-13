@@ -48,7 +48,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="283"/>
         <source>Track number:</source>
-        <translation>轨迹：</translation>
+        <translation>音轨：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="296"/>

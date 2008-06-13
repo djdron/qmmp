@@ -73,7 +73,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
         <source>Stream version:</source>
-        <translation>流版本：</translation>
+        <translation>版本：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
@@ -93,7 +93,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="270"/>
         <source>Track number:</source>
-        <translation>轨迹：</translation>
+        <translation>音轨：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="257"/>
@@ -143,7 +143,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="199"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>APE 标签</translation>
     </message>
 </context>
 </TS>

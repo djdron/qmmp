@@ -14,7 +14,8 @@ QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmpui
 
 TRANSLATIONS = translations/notifier_plugin_cs.ts \
-               translations/notifier_plugin_de.ts
+               translations/notifier_plugin_de.ts \
+               translations/notifier_plugin_zh_CN.ts
 RESOURCES = notifier_images.qrc \
             translations/translations.qrc
 

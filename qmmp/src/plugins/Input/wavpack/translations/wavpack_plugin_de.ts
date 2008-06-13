@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -11,7 +10,7 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="30"/>
         <source>WavPackk Files</source>
-        <translation>WavPack Dateien</translation>
+        <translation type="obsolete">WavPack Dateien</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="89"/>
@@ -32,6 +31,11 @@
         <location filename="../decoderwavpackfactory.cpp" line="93"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+    </message>
+    <message>
+        <location filename="../decoderwavpackfactory.cpp" line="30"/>
+        <source>WavPack Files</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

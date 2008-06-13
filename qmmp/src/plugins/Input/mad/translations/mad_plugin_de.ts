@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="52"/>
+        <location filename="../decodermadfactory.cpp" line="67"/>
         <source>MPEG Plugin</source>
         <translation>MPEG plugin</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="54"/>
+        <location filename="../decodermadfactory.cpp" line="69"/>
         <source>MPEG Files</source>
         <translation>MPEG Dateien</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="168"/>
+        <location filename="../decodermadfactory.cpp" line="183"/>
         <source>About MPEG Audio Plugin</source>
         <translation>Über MPEG Audio Plugin</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="169"/>
+        <location filename="../decodermadfactory.cpp" line="184"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>Qmmp MPEG Audio Plugin</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="170"/>
+        <location filename="../decodermadfactory.cpp" line="185"/>
         <source>Compiled against libmad version:</source>
         <translation>Kompiliert gegen libmad version:</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="174"/>
+        <location filename="../decodermadfactory.cpp" line="189"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="176"/>
+        <location filename="../decodermadfactory.cpp" line="191"/>
         <source>Source code based on mq3 progect</source>
         <translation>Quellcode basiert auf mq3 Projekt</translation>
     </message>

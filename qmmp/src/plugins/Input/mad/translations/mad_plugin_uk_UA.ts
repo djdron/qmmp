@@ -3,37 +3,37 @@
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="52"/>
+        <location filename="../decodermadfactory.cpp" line="67"/>
         <source>MPEG Plugin</source>
         <translation>Модуль MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="54"/>
+        <location filename="../decodermadfactory.cpp" line="69"/>
         <source>MPEG Files</source>
         <translation type="unfinished">Файли MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="168"/>
+        <location filename="../decodermadfactory.cpp" line="183"/>
         <source>About MPEG Audio Plugin</source>
         <translation type="unfinished">Про аудіо-модуль MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="169"/>
+        <location filename="../decodermadfactory.cpp" line="184"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation type="unfinished">Аудіо-модуль MPEG для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="170"/>
+        <location filename="../decodermadfactory.cpp" line="185"/>
         <source>Compiled against libmad version:</source>
         <translation type="unfinished">Зібрано з версією libmad:</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="174"/>
+        <location filename="../decodermadfactory.cpp" line="189"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="176"/>
+        <location filename="../decodermadfactory.cpp" line="191"/>
         <source>Source code based on mq3 progect</source>
         <translation type="unfinished">Вихідний код базується на проекті mq3</translation>
     </message>

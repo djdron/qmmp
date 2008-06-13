@@ -38,7 +38,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="67"/>
         <source>bits</source>
-        <translation>bits</translation>
+        <translation>位</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
@@ -103,7 +103,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="270"/>
         <source>Track number:</source>
-        <translation>轨迹：</translation>
+        <translation>音轨：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="257"/>
