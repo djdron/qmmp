@@ -4,5 +4,6 @@
     <file>statusicon_plugin_cs.qm</file>
     <file>statusicon_plugin_de.qm</file>
     <file>statusicon_plugin_zh_CN.qm</file>
+    <file>statusicon_plugin_zh_TW.qm</file>
   </qresource>
 </RCC>

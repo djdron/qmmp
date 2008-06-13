@@ -10,7 +10,7 @@
     <message>
         <location filename="../outputalsafactory.cpp" line="50"/>
         <source>About ALSA Output Plugin</source>
-        <translation>關于 ALSA 匯出插件</translation>
+        <translation>關於 ALSA 匯出插件</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="51"/>
@@ -78,7 +78,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="236"/>
         <source>OK</source>
-        <translation>確認</translation>
+        <translation>確定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>

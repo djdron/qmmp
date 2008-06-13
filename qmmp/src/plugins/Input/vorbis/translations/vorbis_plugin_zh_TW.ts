@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
@@ -15,7 +16,7 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="90"/>
         <source>About Ogg Vorbis Audio Plugin</source>
-        <translation>關于 Ogg Vorbis 聲訊插件</translation>
+        <translation>關於 Ogg Vorbis 聲訊插件</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="91"/>
@@ -30,7 +31,7 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="94"/>
         <source>Source code based on mq3 progect</source>
-        <translation>來源碼基于 mq3 項目</translation>
+        <translation>源碼基於 mq3 項目</translation>
     </message>
 </context>
 <context>
@@ -48,7 +49,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="283"/>
         <source>Track number:</source>
-        <translation>軌迹：</translation>
+        <translation>音軌：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="296"/>
@@ -63,7 +64,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="316"/>
         <source>Comment:</source>
-        <translation>備注：</translation>
+        <translation>備註：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="326"/>
@@ -73,7 +74,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="336"/>
         <source>Artist:</source>
-        <translation>兿術家：</translation>
+        <translation>藝術家：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="346"/>
@@ -98,7 +99,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="100"/>
         <source>Sample rate:</source>
-        <translation>取様率：</translation>
+        <translation>取樣率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
@@ -118,7 +119,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="120"/>
         <source>Channels:</source>
-        <translation>音響通道：</translation>
+        <translation>音頻通道：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="143"/>

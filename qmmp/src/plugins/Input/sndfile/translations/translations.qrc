@@ -4,5 +4,6 @@
     <file>sndfile_plugin_cs.qm</file>
     <file>sndfile_plugin_de.qm</file>
     <file>sndfile_plugin_zh_CN.qm</file>
+    <file>sndfile_plugin_zh_TW.qm</file>
   </qresource>
 </RCC>

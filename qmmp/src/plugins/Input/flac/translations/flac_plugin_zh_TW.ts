@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFLACFactory</name>
     <message>
@@ -15,7 +16,7 @@
     <message>
         <location filename="../decoderflacfactory.cpp" line="82"/>
         <source>About FLAC Audio Plugin</source>
-        <translation>關于 FLAC 聲訊插件</translation>
+        <translation>關於 FLAC 聲訊插件</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="83"/>
@@ -38,7 +39,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="67"/>
         <source>bits</source>
-        <translation>bits</translation>
+        <translation>位</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
@@ -58,12 +59,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="103"/>
         <source>Sample rate:</source>
-        <translation>取様率：</translation>
+        <translation>取樣率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="123"/>
         <source>Channels:</source>
-        <translation>音響通道：</translation>
+        <translation>音頻通道：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="136"/>
@@ -78,7 +79,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
         <source>Sample width:</source>
-        <translation>取様頻寬：</translation>
+        <translation>取樣頻寬：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
@@ -103,7 +104,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="270"/>
         <source>Track number:</source>
-        <translation>軌迹：</translation>
+        <translation>音軌：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="257"/>
@@ -118,7 +119,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="244"/>
         <source>Comment:</source>
-        <translation>備注：</translation>
+        <translation>備註：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="231"/>
@@ -128,7 +129,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="218"/>
         <source>Artist:</source>
-        <translation>兿術家：</translation>
+        <translation>藝術家：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="205"/>

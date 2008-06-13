@@ -4,5 +4,6 @@
     <file>dbuscontrol_plugin_cs.qm</file>
     <file>dbuscontrol_plugin_de.qm</file>
     <file>dbuscontrol_plugin_zh_CN.qm</file>
+    <file>dbuscontrol_plugin_zh_TW.qm</file>
   </qresource>
 </RCC>

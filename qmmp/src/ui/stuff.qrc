@@ -13,6 +13,8 @@
 
     <file>txt/authors_zh_TW.txt</file>
     <file>txt/thanks_zh_TW.txt</file>
+    <file>txt/translators_zh_TW.txt</file>
+    <file>txt/description_zh_TW.txt</file>
 
     <file>txt/description_cs.txt</file>
     <file>txt/authors_cs.txt</file>
@@ -24,7 +26,9 @@
 
     <file>txt/authors_zh_CN.txt</file>
     <file>txt/thanks_zh_CN.txt</file>
-    
+    <file>txt/translators_zh_CN.txt</file>
+    <file>txt/description_zh_CN.txt</file>
+
     <file>txt/authors_de.txt</file>
     <file>txt/thanks_de.txt</file>
     <file>txt/translators_de.txt</file>

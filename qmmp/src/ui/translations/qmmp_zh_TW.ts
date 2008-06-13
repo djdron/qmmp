@@ -5,12 +5,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="13"/>
         <source>About Qmmp</source>
-        <translation>關于 Qmmp</translation>
+        <translation>關於 Qmmp</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="51"/>
         <source>About</source>
-        <translation>關于</translation>
+        <translation>關於</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="158"/>
@@ -30,62 +30,62 @@
     <message>
         <location filename="../aboutdialog.cpp" line="60"/>
         <source>:/txt/authors_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/authors_zh_TW.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
         <source>:/txt/thanks_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/thanks_zh_TW.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="80"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>基於 Qt 的多媒體播放器 (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>版本：</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="82"/>
         <source>:txt/description_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:txt/description_zh_TW.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>Input plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>匯入插件：</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="92"/>
         <source>Output plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>匯出插件</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="101"/>
         <source>Visual plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>可視化插件</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="110"/>
         <source>Effect plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>特效插件：</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="119"/>
         <source>General plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>常規插件：</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="115"/>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>翻譯</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
         <source>:/txt/translators_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/translators_zh_TW.txt</translation>
     </message>
 </context>
 <context>
@@ -93,22 +93,22 @@
     <message>
         <location filename="../addurldialog.cpp" line="97"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>錯誤</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>匯入要添加的 URL</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>添加(&amp;A)</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>取消(&amp;C)</translation>
     </message>
 </context>
 <context>
@@ -174,7 +174,7 @@
     <message>
         <location filename="../configdialog.cpp" line="339"/>
         <source>Enabled</source>
-        <translation>啓用</translation>
+        <translation>啟用</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="339"/>
@@ -189,7 +189,7 @@
     <message>
         <location filename="../configdialog.cpp" line="508"/>
         <source>Artist</source>
-        <translation>兿術家</translation>
+        <translation>藝術家</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="509"/>
@@ -204,7 +204,7 @@
     <message>
         <location filename="../configdialog.cpp" line="511"/>
         <source>Tracknumber</source>
-        <translation>軌迹</translation>
+        <translation>音軌</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="512"/>
@@ -229,7 +229,7 @@
     <message>
         <location filename="../configdialog.cpp" line="517"/>
         <source>Comment</source>
-        <translation>備注</translation>
+        <translation>備註</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="13"/>
@@ -334,97 +334,97 @@
     <message>
         <location filename="../configdialog.cpp" line="175"/>
         <source>Archived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>封包皮膚</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="197"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>未封包皮膚</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="132"/>
         <source>Connectivity</source>
-        <translation type="unfinished"></translation>
+        <translation>連線</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="546"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>可視化</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="563"/>
         <source>Effects</source>
-        <translation type="unfinished"></translation>
+        <translation>特效</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="577"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>常規</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="637"/>
         <source>File Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>檔案對話</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="598"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>聲訊</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="604"/>
         <source>Use software volume control</source>
-        <translation type="unfinished"></translation>
+        <translation>使用軟裝置音量控制</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="614"/>
         <source>Visibility Control</source>
-        <translation type="unfinished"></translation>
+        <translation>可見性控制</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="620"/>
         <source>Hide on close</source>
-        <translation type="unfinished"></translation>
+        <translation>關閉時隱藏</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="627"/>
         <source>Start hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>啟動時隱藏</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="686"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>代理</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="698"/>
         <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
+        <translation>啟用代理</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="705"/>
         <source>Proxy host name:</source>
-        <translation type="unfinished"></translation>
+        <translation>主機名：</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>Proxy port:</source>
-        <translation type="unfinished"></translation>
+        <translation>通訊埠：</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="731"/>
         <source>Use authentication with proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>需要身份驗證</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="738"/>
         <source>Proxy user name:</source>
-        <translation type="unfinished"></translation>
+        <translation>用戶名：</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="751"/>
         <source>Proxy password:</source>
-        <translation type="unfinished"></translation>
+        <translation>密碼：</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="380"/>
@@ -482,7 +482,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="297"/>
         <source>Preset name:</source>
-        <translation>預設名字：</translation>
+        <translation>預設名稱：</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="298"/>
@@ -543,117 +543,117 @@
     <message>
         <location filename="../mainvisual.cpp" line="303"/>
         <source>Visualization Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>可視化型態</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="306"/>
         <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>解析器</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="307"/>
         <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <translation>示波器</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="308"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>關閉</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="315"/>
         <source>Analyzer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>解析型態</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="318"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>標準</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="319"/>
         <source>Fire</source>
-        <translation type="unfinished"></translation>
+        <translation>火花</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="320"/>
         <source>Vertical Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>垂直線</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="321"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>線形</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="322"/>
         <source>Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>條形</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="335"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>峰值</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="339"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>刷新率</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="342"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>50 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="343"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>25 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="344"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>10 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="345"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>5 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="352"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>解析器下降速度</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="369"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>最慢</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="370"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>慢</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="371"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>中</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="372"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>快</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="373"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>最快</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="366"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>峰值下降速度</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="379"/>
@@ -676,7 +676,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="453"/>
         <source>Choose a directory</source>
-        <translation>選取一個目録</translation>
+        <translation>選取一個目錄</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="487"/>
@@ -716,7 +716,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
         <source>&amp;Previous</source>
-        <translation>上一個(&amp;P)</translation>
+        <translation>上一曲(&amp;P)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
@@ -726,7 +726,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
         <source>&amp;Next</source>
-        <translation>下一個(&amp;N)</translation>
+        <translation>下一曲(&amp;N)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
@@ -776,7 +776,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="640"/>
         <source>&amp;About</source>
-        <translation>關于(&amp;A)</translation>
+        <translation>關於(&amp;A)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="745"/>
@@ -786,12 +786,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>空格</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="641"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>關於 Qt (&amp;A)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
@@ -889,7 +889,7 @@
     <message>
         <location filename="../playlist.cpp" line="234"/>
         <source>Randomize List</source>
-        <translation>隨機産生清單</translation>
+        <translation>隨機產生清單</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="235"/>
@@ -944,12 +944,12 @@
     <message>
         <location filename="../playlist.cpp" line="143"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished"></translation>
+        <translation>添加 URL (&amp;A)</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="144"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>U</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="224"/>
@@ -1074,7 +1074,7 @@
     <message>
         <location filename="../visualmenu.cpp" line="30"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>可視化</translation>
     </message>
 </context>
 </TS>

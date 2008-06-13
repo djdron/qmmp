@@ -23,7 +23,8 @@ LIBS += -lqmmp -L/usr/lib -I/usr/include
 PKGCONFIG += wavpack
 TRANSLATIONS = translations/wavpack_plugin_cs.ts \
                translations/wavpack_plugin_de.ts \
-               translations/wavpack_plugin_zh_CN.ts
+               translations/wavpack_plugin_zh_CN.ts \
+               translations/wavpack_plugin_zh_TW.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

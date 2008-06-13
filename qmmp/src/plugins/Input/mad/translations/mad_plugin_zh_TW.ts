@@ -1,41 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="67"/>
+        <location filename="../decodermadfactory.cpp" line="52"/>
         <source>MPEG Plugin</source>
         <translation>MPEG 插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="69"/>
+        <location filename="../decodermadfactory.cpp" line="54"/>
         <source>MPEG Files</source>
         <translation>MPEG 檔案</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="183"/>
+        <location filename="../decodermadfactory.cpp" line="168"/>
         <source>About MPEG Audio Plugin</source>
-        <translation>關于 MPEG 聲訊插件</translation>
+        <translation>關於 MPEG 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="184"/>
+        <location filename="../decodermadfactory.cpp" line="169"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>Qmmp MPEG 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="185"/>
+        <location filename="../decodermadfactory.cpp" line="170"/>
         <source>Compiled against libmad version:</source>
-        <translation>編譯基于 libmad 的版本：</translation>
+        <translation>編譯基於 libmad 的版本：</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="189"/>
+        <location filename="../decodermadfactory.cpp" line="174"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="191"/>
+        <location filename="../decodermadfactory.cpp" line="176"/>
         <source>Source code based on mq3 progect</source>
-        <translation>來源碼基于 mq3 項目</translation>
+        <translation>源碼基於 mq3 項目</translation>
     </message>
 </context>
 <context>
@@ -68,7 +69,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="377"/>
         <source>Track number:</source>
-        <translation>軌迹：</translation>
+        <translation>音軌：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="351"/>
@@ -83,7 +84,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="325"/>
         <source>Comment:</source>
-        <translation>備注：</translation>
+        <translation>備註：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="299"/>
@@ -93,7 +94,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="273"/>
         <source>Artist:</source>
-        <translation>兿術家：</translation>
+        <translation>藝術家：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="247"/>
@@ -143,7 +144,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="133"/>
         <source>Sample rate:</source>
-        <translation>取様率：</translation>
+        <translation>取樣率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="116"/>
@@ -153,7 +154,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="96"/>
         <source>MPEG level:</source>
-        <translation>MPEG 級彆：</translation>
+        <translation>MPEG 層次：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="27"/>
@@ -178,37 +179,37 @@
     <message>
         <location filename="../detailsdialog.cpp" line="155"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>APE 標簽</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="54"/>
         <source>Tag Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>標簽選取</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="60"/>
         <source>ID3v1</source>
-        <translation type="unfinished">ID3v1</translation>
+        <translation>ID3v1</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="67"/>
         <source>ID3v2</source>
-        <translation type="unfinished">ID3v2</translation>
+        <translation>ID3v2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="432"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>建立</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="445"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>移除</translation>
     </message>
 </context>
 <context>
@@ -251,37 +252,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Tag Priority</source>
-        <translation type="unfinished"></translation>
+        <translation>標簽優先</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>First:</source>
-        <translation type="unfinished"></translation>
+        <translation>第一：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="156"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>無效</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="80"/>
         <source>Second:</source>
-        <translation type="unfinished"></translation>
+        <translation>第二：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Third:</source>
-        <translation type="unfinished"></translation>
+        <translation>第三：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>Encodings</source>
-        <translation type="unfinished"></translation>
+        <translation>編碼</translation>
     </message>
 </context>
 </TS>

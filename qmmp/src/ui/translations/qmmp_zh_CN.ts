@@ -734,16 +734,6 @@
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="634"/>
-        <source>&amp;Queue</source>
-        <translation type="obsolete">队列(&amp;Q)</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="634"/>
-        <source>Q</source>
-        <translation type="obsolete">Q</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="632"/>
         <source>&amp;Jump To File</source>
         <translation>跳到文件(&amp;J)</translation>
@@ -792,11 +782,6 @@
         <location filename="../mainwindow.cpp" line="745"/>
         <source>Playlist Files</source>
         <translation>播放列表文件</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="633"/>
-        <source>P&amp;lay/Pause</source>
-        <translation type="obsolete">播放/暂停(&amp;L)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
