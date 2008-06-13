@@ -153,7 +153,7 @@ icon16.path = /share/icons/hicolor/16x16/apps
 icon32.path = /share/icons/hicolor/32x32/apps
 icon48.path = /share/icons/hicolor/48x48/apps
 
-INSTALLS += target icon16 icon32 icon48
+INSTALLS += desktop target icon16 icon32 icon48
 
 
 RESOURCES += translations/qmmp_locales.qrc
