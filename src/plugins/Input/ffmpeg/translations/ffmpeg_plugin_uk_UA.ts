@@ -3,32 +3,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="31"/>
+        <location filename="../decoderffmpegfactory.cpp" line="44"/>
         <source>WMA Files</source>
         <translation type="unfinished">Файли WMA</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="79"/>
+        <location filename="../decoderffmpegfactory.cpp" line="92"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation type="unfinished">Про аудіо-модуль FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="80"/>
+        <location filename="../decoderffmpegfactory.cpp" line="93"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation type="unfinished">Аудіо-модуль FFmpeg для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="81"/>
+        <location filename="../decoderffmpegfactory.cpp" line="94"/>
         <source>Suppored formats: WMA</source>
         <translation type="unfinished">Підтримувані формати: WMA</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="82"/>
+        <location filename="../decoderffmpegfactory.cpp" line="95"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="29"/>
+        <location filename="../decoderffmpegfactory.cpp" line="42"/>
         <source>FFMPEG Plugin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -36,12 +36,12 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="78"/>
+        <location filename="../detailsdialog.cpp" line="91"/>
         <source>KB</source>
         <translation>Кб</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
@@ -136,7 +136,7 @@
         <translation type="unfinished">Шлях до файлу:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../detailsdialog.cpp" line="94"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>

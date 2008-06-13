@@ -25,7 +25,8 @@ LIBS += -lqmmp
 PKGCONFIG += libpulse-simple
 
 TRANSLATIONS = translations/pulseaudio_plugin_cs.ts \
-               translations/pulseaudio_plugin_de.ts
+               translations/pulseaudio_plugin_de.ts \
+               translations/pulseaudio_plugin_zh_CN.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

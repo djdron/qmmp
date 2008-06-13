@@ -22,7 +22,8 @@ QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib -I/usr/include
 
 TRANSLATIONS = translations/srconverter_plugin_cs.ts \
-               translations/srconverter_plugin_de.ts
+               translations/srconverter_plugin_de.ts \
+               translations/srconverter_plugin_zh_CN.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

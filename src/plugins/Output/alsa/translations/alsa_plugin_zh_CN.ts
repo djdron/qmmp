@@ -78,7 +78,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="236"/>
         <source>OK</source>
-        <translation>确认</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>

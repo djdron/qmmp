@@ -1,0 +1,24 @@
+巴西 葡萄牙语：
+    Klaos Lacerda
+    Bruno Gonçalves
+
+简体中文：
+    李红昆 <lon83129@126.com>
+
+繁体中文：
+    李红昆 <lon83129@126.com>
+
+捷克语：
+    Karel Volný <kvolny@redhat.com>
+
+德语：
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+
+俄语：
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+土耳其语：
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+
+乌克兰语：
+    Gennadi Motsyo <drool@altlinux.ru>

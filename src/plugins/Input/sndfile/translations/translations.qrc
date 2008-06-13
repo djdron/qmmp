@@ -3,5 +3,6 @@
   <qresource>
     <file>sndfile_plugin_cs.qm</file>
     <file>sndfile_plugin_de.qm</file>
+    <file>sndfile_plugin_zh_CN.qm</file>
   </qresource>
 </RCC>

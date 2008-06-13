@@ -3,37 +3,37 @@
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="52"/>
+        <location filename="../decodermadfactory.cpp" line="67"/>
         <source>MPEG Plugin</source>
         <translation>MPEG 插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="54"/>
+        <location filename="../decodermadfactory.cpp" line="69"/>
         <source>MPEG Files</source>
         <translation>MPEG 文件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="168"/>
+        <location filename="../decodermadfactory.cpp" line="183"/>
         <source>About MPEG Audio Plugin</source>
         <translation>关于 MPEG 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="169"/>
+        <location filename="../decodermadfactory.cpp" line="184"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>Qmmp MPEG 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="170"/>
+        <location filename="../decodermadfactory.cpp" line="185"/>
         <source>Compiled against libmad version:</source>
         <translation>编译基于 libmad 的版本：</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="174"/>
+        <location filename="../decodermadfactory.cpp" line="189"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="176"/>
+        <location filename="../decodermadfactory.cpp" line="191"/>
         <source>Source code based on mq3 progect</source>
         <translation>源代码基于 mq3 项目</translation>
     </message>
@@ -68,7 +68,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="377"/>
         <source>Track number:</source>
-        <translation>轨迹：</translation>
+        <translation>音轨：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="351"/>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="96"/>
         <source>MPEG level:</source>
-        <translation>MPEG 级别：</translation>
+        <translation>MPEG 层次：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="27"/>
@@ -178,37 +178,37 @@
     <message>
         <location filename="../detailsdialog.cpp" line="155"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>APE 标签</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="54"/>
         <source>Tag Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>标签选择</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="60"/>
         <source>ID3v1</source>
-        <translation type="unfinished">ID3v1</translation>
+        <translation>ID3v1</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="67"/>
         <source>ID3v2</source>
-        <translation type="unfinished">ID3v2</translation>
+        <translation>ID3v2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="432"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>创建</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="445"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
 </context>
 <context>
@@ -251,37 +251,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Tag Priority</source>
-        <translation type="unfinished"></translation>
+        <translation>标签优先</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>First:</source>
-        <translation type="unfinished"></translation>
+        <translation>第一：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="156"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>无效</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="80"/>
         <source>Second:</source>
-        <translation type="unfinished"></translation>
+        <translation>第二：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Third:</source>
-        <translation type="unfinished"></translation>
+        <translation>第三：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>Encodings</source>
-        <translation type="unfinished"></translation>
+        <translation>编码</translation>
     </message>
 </context>
 </TS>

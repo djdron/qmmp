@@ -3,5 +3,6 @@
   <qresource>
     <file>srconverter_plugin_cs.qm</file>
     <file>srconverter_plugin_de.qm</file>
+    <file>srconverter_plugin_zh_CN.qm</file>
   </qresource>
 </RCC>
