@@ -45,7 +45,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="82"/>
@@ -55,32 +55,32 @@
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>Input plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Модули ввода:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="92"/>
         <source>Output plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Модули вывода:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="101"/>
         <source>Visual plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Модули визуализации:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="110"/>
         <source>Effect plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Модули эффектов:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="119"/>
         <source>General plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Общие модули:</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="115"/>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Переводчики</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
@@ -93,22 +93,22 @@
     <message>
         <location filename="../addurldialog.cpp" line="97"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Введите адрес для добавления</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Добавить</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Отмена</translation>
     </message>
 </context>
 <context>
@@ -334,117 +334,117 @@
     <message>
         <location filename="../configdialog.cpp" line="175"/>
         <source>Archived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Упакованная тема</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="197"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Распакованная тема</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="132"/>
         <source>Connectivity</source>
-        <translation type="unfinished"></translation>
+        <translation>Сеть</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="546"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Визуализация</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="563"/>
         <source>Effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Эффекты</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="577"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Общие</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="637"/>
         <source>File Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Файловый диалог</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="598"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудио</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="604"/>
         <source>Use software volume control</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать программную регулировку громкости</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="614"/>
         <source>Visibility Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Управление видимостью</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="620"/>
         <source>Hide on close</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрывать при закрытии</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="627"/>
         <source>Start hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Запускать скрытым</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="686"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Прокси</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="698"/>
         <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать прокси</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="705"/>
         <source>Proxy host name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Прокси сервер:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>Proxy port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Прокси порт:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="731"/>
         <source>Use authentication with proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать авторизацию на прокси</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="738"/>
         <source>Proxy user name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя прокси:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="751"/>
         <source>Proxy password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Пароль прокси:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="380"/>
         <source>Convert underscores to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>Преобразовывать подчёркивание в пробел</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="387"/>
         <source>Convert %20 to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>Преобразовывать %20 в пробел</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
         <source>Show full path of a stream</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать полный путь для потоков</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="646"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
@@ -543,62 +543,62 @@
     <message>
         <location filename="../mainvisual.cpp" line="303"/>
         <source>Visualization Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим визуализации</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="306"/>
         <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Анализатор</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="307"/>
         <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <translation>Осциллограф</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="308"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Выключено</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="315"/>
         <source>Analyzer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим анализатора</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="318"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Обычный</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="319"/>
         <source>Fire</source>
-        <translation type="unfinished"></translation>
+        <translation>Огонь</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="320"/>
         <source>Vertical Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Вертикальные линии</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="321"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Линии</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="322"/>
         <source>Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Полоски</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="335"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Пики</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="339"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота обновления</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="342"/>
@@ -623,47 +623,47 @@
     <message>
         <location filename="../mainvisual.cpp" line="352"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Падение анализатора</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="369"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>Самое медленное</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="370"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>Медленное</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="371"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Среднее</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="372"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>Быстрое</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="373"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>Самое быстрое</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="366"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Падение пиков</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="379"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Фон</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="380"/>
         <source>Transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>Прозрачность</translation>
     </message>
 </context>
 <context>
@@ -791,12 +791,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="641"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;О библиотеке Qt</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Воспр/приост</translation>
     </message>
 </context>
 <context>
@@ -944,7 +944,7 @@
     <message>
         <location filename="../playlist.cpp" line="143"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Добавить URL</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="144"/>
@@ -954,12 +954,12 @@
     <message>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>По номеру трека</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="240"/>
         <source>&amp;Queue</source>
-        <translation type="unfinished">&amp;В очередь</translation>
+        <translation>&amp;В очередь</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="240"/>
@@ -977,22 +977,22 @@
     <message>
         <location filename="../playlistmodel.cpp" line="312"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Название:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="313"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="314"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="315"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментарий:</translation>
     </message>
 </context>
 <context>
@@ -1028,12 +1028,12 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="140"/>
         <source>Usage: qmmp [options] [files]</source>
-        <translation type="unfinished"></translation>
+        <translation>Использование: qmmp [options] [files]</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="141"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Опции:</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="142"/>
@@ -1066,7 +1066,7 @@
     <message>
         <location filename="../textscroller.cpp" line="116"/>
         <source>Buffering:</source>
-        <translation type="unfinished"></translation>
+        <translation>Буферизация:</translation>
     </message>
 </context>
 <context>
@@ -1074,7 +1074,7 @@
     <message>
         <location filename="../visualmenu.cpp" line="30"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Визуализация</translation>
     </message>
 </context>
 </TS>
