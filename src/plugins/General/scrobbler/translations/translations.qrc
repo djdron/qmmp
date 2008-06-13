@@ -4,5 +4,6 @@
     <file>scrobbler_plugin_cs.qm</file>
     <file>scrobbler_plugin_de.qm</file>
     <file>scrobbler_plugin_zh_CN.qm</file>
+    <file>scrobbler_plugin_zh_TW.qm</file>
   </qresource>
 </RCC>

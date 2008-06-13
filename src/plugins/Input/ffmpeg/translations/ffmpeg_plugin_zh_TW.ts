@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="44"/>
+        <location filename="../decoderffmpegfactory.cpp" line="31"/>
         <source>WMA Files</source>
         <translation>WMA 檔案</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="92"/>
+        <location filename="../decoderffmpegfactory.cpp" line="79"/>
         <source>About FFmpeg Audio Plugin</source>
-        <translation>關于 FFmpeg 聲訊插件</translation>
+        <translation>關於 FFmpeg 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="93"/>
+        <location filename="../decoderffmpegfactory.cpp" line="80"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="94"/>
+        <location filename="../decoderffmpegfactory.cpp" line="81"/>
         <source>Suppored formats: WMA</source>
         <translation>支援格式：WMA</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="95"/>
+        <location filename="../decoderffmpegfactory.cpp" line="82"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="42"/>
+        <location filename="../decoderffmpegfactory.cpp" line="29"/>
         <source>FFMPEG Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>FFMPEG 插件</translation>
     </message>
 </context>
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="91"/>
+        <location filename="../detailsdialog.cpp" line="78"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="95"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
@@ -68,12 +69,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="106"/>
         <source>Channels:</source>
-        <translation>音響通道：</translation>
+        <translation>音頻通道：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="126"/>
         <source>Sample rate:</source>
-        <translation>取様率：</translation>
+        <translation>取樣率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="143"/>
@@ -93,7 +94,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="219"/>
         <source>Track number:</source>
-        <translation>軌迹：</translation>
+        <translation>音軌：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="232"/>
@@ -108,7 +109,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="252"/>
         <source>Comment:</source>
-        <translation>備注：</translation>
+        <translation>備註：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="262"/>
@@ -118,7 +119,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="272"/>
         <source>Artist:</source>
-        <translation>兿術家：</translation>
+        <translation>藝術家：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="282"/>
@@ -136,7 +137,7 @@
         <translation>檔案路徑：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="94"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>

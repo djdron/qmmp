@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
 <context>
     <name>OutputJACKFactory</name>
@@ -10,7 +10,7 @@
     <message>
         <location filename="../outputjackfactory.cpp" line="47"/>
         <source>About Jack Output Plugin</source>
-        <translation>關于 Jack 匯出插件</translation>
+        <translation>關於 Jack 匯出插件</translation>
     </message>
     <message>
         <location filename="../outputjackfactory.cpp" line="48"/>
@@ -24,3 +24,4 @@
     </message>
 </context>
 </TS>
+

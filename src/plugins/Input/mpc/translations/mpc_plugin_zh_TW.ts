@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMPCFactory</name>
     <message>
@@ -15,7 +16,7 @@
     <message>
         <location filename="../decodermpcfactory.cpp" line="82"/>
         <source>About Musepack Audio Plugin</source>
-        <translation>關于 Musepack 聲訊插件</translation>
+        <translation>關於 Musepack 聲訊插件</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="83"/>
@@ -53,12 +54,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="103"/>
         <source>Sample rate:</source>
-        <translation>取様率：</translation>
+        <translation>取樣率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="123"/>
         <source>Channels:</source>
-        <translation>音響通道：</translation>
+        <translation>音頻通道：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="136"/>
@@ -73,7 +74,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
         <source>Stream version:</source>
-        <translation>流版本：</translation>
+        <translation>版本：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
@@ -93,7 +94,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="270"/>
         <source>Track number:</source>
-        <translation>軌迹：</translation>
+        <translation>音軌：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="257"/>
@@ -108,7 +109,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="244"/>
         <source>Comment:</source>
-        <translation>備注：</translation>
+        <translation>備註：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="231"/>
@@ -118,7 +119,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="218"/>
         <source>Artist:</source>
-        <translation>兿術家：</translation>
+        <translation>藝術家：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="205"/>
@@ -143,7 +144,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="199"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>APE 標簽</translation>
     </message>
 </context>
 </TS>

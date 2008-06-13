@@ -4,5 +4,6 @@
     <file>analyzer_plugin_cs.qm</file>
     <file>analyzer_plugin_de.qm</file>
     <file>analyzer_plugin_zh_CN.qm</file>
+    <file>analyzer_plugin_zh_TW.qm</file>
   </qresource>
 </RCC>
