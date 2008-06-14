@@ -1036,16 +1036,6 @@
         <translation>Опции:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="142"/>
-        <source>--------</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="145"/>
-        <source>Display this text and exit.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qmmpstarter.cpp" line="146"/>
         <source>Print version number and exit</source>
         <translation type="unfinished"></translation>
@@ -1056,8 +1046,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="145"/>
+        <source>Display this text and exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qmmpstarter.cpp" line="152"/>
-        <source>QMMP version:  </source>
+        <source>QMMP version:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
