@@ -31,12 +31,12 @@
     <message>
         <location filename="../aboutdialog.cpp" line="60"/>
         <source>:/txt/authors_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/authors_ru.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
         <source>:/txt/thanks_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/thanks_ru.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="80"/>
