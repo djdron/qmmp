@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS><TS version="1.1" language="ru">
 <context>
     <name>OutputOSSFactory</name>
     <message>
         <location filename="../outputossfactory.cpp" line="30"/>
         <source>OSS Plugin</source>
-        <translation>Modul OSS</translation>
+        <translation>Модуль OSS</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="56"/>
         <source>About OSS Output Plugin</source>
-        <translation>O modulu OSS</translation>
+        <translation>О модуле вывода OSS</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
-        <translation>Výstupní modul Qmmp OSS</translation>
+        <translation>Модуль вывода OSS для Qmmp</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
         <source>Writen by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
-        <translation>Autor: Jurij Žuravljov &lt;slalkerg@gmail.com&gt;</translation>
+        <translation>Разработчик: Юрий Журавлёв &lt;slalkerg@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
-        <translation>Založeno na kódu Brada Hughese &lt;bhughes@trolltech.com&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -33,57 +33,57 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>OSS Plugin Settings</source>
-        <translation>Nastavení pluginu OSS</translation>
+        <translation>Настройки модуля OSS</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Device Settings</source>
-        <translation>Nastavení zařízení</translation>
+        <translation>Настройки устройства</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>Audio device</source>
-        <translation>Zvukové zařízení</translation>
+        <translation>Аудиоустройство</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Mixer device</source>
-        <translation>Ovládání hlasitosti</translation>
+        <translation>Устройство микшера</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="113"/>
         <source>Advanced Settings</source>
-        <translation>Pokročilá nastavení</translation>
+        <translation>Дополнительные настройки</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="134"/>
         <source>Soundcard</source>
-        <translation>Zvuková karta</translation>
+        <translation>Звуковая карта</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="210"/>
         <source>Buffer time (ms):</source>
-        <translation>Velikost bufferu (ms):</translation>
+        <translation>Время буфера (мс):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="220"/>
         <source>Period time (ms):</source>
-        <translation>Délka periody (ms):</translation>
+        <translation>Время периода (мс):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
         <source>PCM over Master</source>
-        <translation type="unfinished"></translation>
+        <translation>PCM вместо Maser</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="277"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="284"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

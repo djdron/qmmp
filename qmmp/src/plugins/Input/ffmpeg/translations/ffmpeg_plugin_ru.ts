@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -30,7 +31,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="42"/>
         <source>FFMPEG Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль FFMPEG</translation>
     </message>
 </context>
 <context>

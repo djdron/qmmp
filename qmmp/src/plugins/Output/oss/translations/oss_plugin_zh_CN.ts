@@ -24,7 +24,7 @@
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
-        <source>Based on code by:Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
+        <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
         <translation>源代码基于：Brad Hughes &lt;bhughes@trolltech.com&gt;</translation>
     </message>
 </context>

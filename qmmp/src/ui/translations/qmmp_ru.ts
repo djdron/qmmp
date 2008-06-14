@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -116,57 +117,57 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip forward in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Перейти к следующему фрагменту</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Skip backwards in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Перейти к предыдущему фрагменту</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Start playing current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Воспроизвести текущую песню</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Pause current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Приостановить текущую песню</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Pause if playing, play otherwise</source>
-        <translation type="unfinished"></translation>
+        <translation>Приостановить/воспроизвести</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Stop current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Остановить текущую песню</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation type="unfinished"></translation>
+        <translation>Установить громкость (пример: qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Jump to File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать диалог перехода к файлу</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Show/hide application</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать/скрытть приложение</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать диалог добавления файлов</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="75"/>
         <source>Display Add Directory dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать диалог добавления директорий</translation>
     </message>
 </context>
 <context>
@@ -1038,22 +1039,22 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="146"/>
         <source>Print version number and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать версии и выйти</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="147"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation type="unfinished"></translation>
+        <translation>Идеи, исправления, отчёты об ошибках:  forkotov02@hotmail.ru</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Display this text and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать этот текст и выйти</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="152"/>
         <source>QMMP version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия QMMP:</translation>
     </message>
 </context>
 <context>

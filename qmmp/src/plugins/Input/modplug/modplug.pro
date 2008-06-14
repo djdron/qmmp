@@ -29,7 +29,8 @@ PKGCONFIG += libmodplug
 TRANSLATIONS = translations/modplug_plugin_cs.ts \
                translations/modplug_plugin_de.ts \
                translations/modplug_plugin_zh_CN.ts \
-               translations/modplug_plugin_zh_TW.ts
+               translations/modplug_plugin_zh_TW.ts \
+               translations/modplug_plugin_ru.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
