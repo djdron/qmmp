@@ -139,15 +139,15 @@ void QMMPStarter::printUsage()
 {
     cout << qPrintable(tr("Usage: qmmp [options] [files]")) << endl;
     cout << qPrintable(tr("Options:")) << endl;
-    cout << qPrintable(tr("--------")) << endl;
+    cout << "--------" << endl;
     cout << qPrintable(m_option_manager->helpString()) << endl;
     CommandLineManager::printUsage();
-    cout << "--help               " << qPrintable(tr("Display this text and exit.")) << endl;
+    cout << "--help               " << qPrintable(tr("Display this text and exit")) << endl;
     cout << "--version            " << qPrintable(tr("Print version number and exit")) << endl;
     cout << qPrintable(tr("Ideas, patches, bugreports send to forkotov02@hotmail.ru")) << endl;
 }
 
 void QMMPStarter::printVersion()
 {
-    cout << qPrintable(tr("QMMP version:  ")) << QMMP_STR_VERSION << endl;
+    cout << qPrintable(tr("QMMP version:")) << "  " << QMMP_STR_VERSION << endl;
 }
