@@ -73,7 +73,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
         <source>PCM over Master</source>
-        <translation>PCM вместо Maser</translation>
+        <translation>PCM вместо Master</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="277"/>
