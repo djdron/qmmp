@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
     <message>
@@ -178,12 +179,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="155"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>APE-тег</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="54"/>
         <source>Tag Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбор тегов</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="60"/>
@@ -203,12 +204,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="432"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Создать</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="445"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить</translation>
     </message>
 </context>
 <context>
@@ -251,12 +252,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Tag Priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Приоритет тегов</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>First:</source>
-        <translation type="unfinished"></translation>
+        <translation>Первый:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="151"/>
@@ -266,22 +267,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="156"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Выключен</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="80"/>
         <source>Second:</source>
-        <translation type="unfinished"></translation>
+        <translation>Второй:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Third:</source>
-        <translation type="unfinished"></translation>
+        <translation>Третий:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>Encodings</source>
-        <translation type="unfinished"></translation>
+        <translation>Кодировки</translation>
     </message>
 </context>
 </TS>
