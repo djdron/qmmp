@@ -15,7 +15,8 @@ QMAKE_LIBDIR += ../../../../lib
 TRANSLATIONS = translations/dbuscontrol_plugin_cs.ts \
                translations/dbuscontrol_plugin_de.ts \
                translations/dbuscontrol_plugin_zh_CN.ts \
-               translations/dbuscontrol_plugin_zh_TW.ts
+               translations/dbuscontrol_plugin_zh_TW.ts \
+               translations/dbuscontrol_plugin_ru.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

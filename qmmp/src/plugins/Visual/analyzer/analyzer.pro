@@ -26,7 +26,8 @@ LIBS += -lqmmp -L/usr/lib -I/usr/include
 TRANSLATIONS = translations/analyzer_plugin_cs.ts \
                translations/analyzer_plugin_de.ts \
                translations/analyzer_plugin_zh_CN.ts \
-               translations/analyzer_plugin_zh_TW.ts
+               translations/analyzer_plugin_zh_TW.ts \
+               translations/analyzer_plugin_ru.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
