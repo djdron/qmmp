@@ -1,5 +1,13 @@
 cmake_minimum_required(VERSION 2.4.0)
 
+CONFIGURE_FILE(
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+  IMMEDIATE @ONLY)
+
+ADD_CUSTOM_TARGET(uninstall
+  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+
 SET(QMMP_VERSION 0.2.0)
 SET(QMMP_SOVERSION 0)
 SET(SVN_VERSION TRUE)
@@ -62,3 +70,4 @@ PRINT_SUMMARY ("Scrobbler ........................." USE_SCROBBLER 1)
 PRINT_SUMMARY ("Tray support ......................" USE_STATICON 1)
 PRINT_SUMMARY ("Notifier support .................." USE_NOTIFIER 1)
 MESSAGE("")
+
