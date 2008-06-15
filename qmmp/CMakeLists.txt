@@ -8,6 +8,13 @@ INCLUDE(FindQt4)
 INCLUDE(${QT_USE_FILE})
 INCLUDE(FindPkgConfig)
 
+IF(NOT QT_LRELEASE_EXECUTABLE)
+SET(QT_LRELEASE_EXECUTABLE ${QT_LIBRARY_DIR}/../bin/lrelease)
+ENDIF(NOT QT_LRELEASE_EXECUTABLE)
+
+MESSAGE("Generating translations:")
+execute_process(COMMAND find ${CMAKE_CURRENT_BINARY_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE})
+
 SET(LIB_DIR "lib" CACHE STRING "library path")
 add_subdirectory(src/qmmp)
 add_subdirectory(src/qmmpui)
