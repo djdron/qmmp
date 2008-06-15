@@ -21,7 +21,7 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="109"/>
         <source>Qmmp ModPlug Audio Plugin</source>
-        <translation>Аудио-модуль для Qmmp</translation>
+        <translation>Аудио-модуль ModPlug для Qmmp</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="110"/>
@@ -41,17 +41,17 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="113"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="114"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="115"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
 </context>
 <context>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="50"/>
         <source>Samples:</source>
-        <translation type="unfinished"></translation>
+        <translation>Сэмплов:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="51"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="57"/>
         <source>Samples</source>
-        <translation type="unfinished"></translation>
+        <translation>Сэмплы</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="106"/>
@@ -195,7 +195,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>Resampling</source>
-        <translation>Передескретизация</translation>
+        <translation>Передискретизация</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="99"/>
@@ -220,7 +220,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="136"/>
         <source>Sampling Rate</source>
-        <translation>Частота кадров</translation>
+        <translation>Дискретизация</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="142"/>
@@ -245,17 +245,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Effects</source>
-        <translation>Эфеекты</translation>
+        <translation>Эффекты</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="180"/>
         <source>Reverb</source>
-        <translation type="unfinished"></translation>
+        <translation>Затухание</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="457"/>
         <source>Depth (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Интенсивность (%)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="608"/>
@@ -280,7 +280,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="326"/>
         <source>Amount (%)</source>
-        <translation>Глубина (%)</translation>
+        <translation>Уровень (%)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="384"/>
@@ -295,7 +295,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="448"/>
         <source>Surround</source>
-        <translation type="unfinished"></translation>
+        <translation>Эффект Surround (объёмное звучание)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="541"/>
@@ -322,7 +322,7 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="661"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Дополнительно</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="667"/>
@@ -342,7 +342,7 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="690"/>
         <source>Fast playlist info</source>
-        <translation type="unfinished"></translation>
+        <translation>Быстрое чтение информации</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="700"/>
@@ -352,17 +352,17 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="710"/>
         <source>Looping</source>
-        <translation type="unfinished"></translation>
+        <translation>Повтор</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="716"/>
         <source>Don&apos;t loop</source>
-        <translation type="unfinished"></translation>
+        <translation>Не повторять</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="723"/>
         <source>Loop</source>
-        <translation type="unfinished"></translation>
+        <translation>Повторять</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="740"/>
@@ -372,12 +372,12 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="760"/>
         <source>Loop forever</source>
-        <translation type="unfinished"></translation>
+        <translation>Повторять всегда</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="800"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="807"/>
