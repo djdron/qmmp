@@ -5,5 +5,6 @@
     <file>srconverter_plugin_de.qm</file>
     <file>srconverter_plugin_zh_CN.qm</file>
     <file>srconverter_plugin_zh_TW.qm</file>
+    <file>srconverter_plugin_uk_UA.qm</file>
   </qresource>
 </RCC>

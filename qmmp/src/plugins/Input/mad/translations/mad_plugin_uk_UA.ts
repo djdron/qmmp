@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
     <message>
@@ -10,32 +11,32 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="69"/>
         <source>MPEG Files</source>
-        <translation type="unfinished">Файли MPEG</translation>
+        <translation>Файли MPEG</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="183"/>
         <source>About MPEG Audio Plugin</source>
-        <translation type="unfinished">Про аудіо-модуль MPEG</translation>
+        <translation>Про аудіо-модуль MPEG</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="184"/>
         <source>Qmmp MPEG Audio Plugin</source>
-        <translation type="unfinished">Аудіо-модуль MPEG для Qmmp</translation>
+        <translation>Аудіо-модуль MPEG для Qmmp</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="185"/>
         <source>Compiled against libmad version:</source>
-        <translation type="unfinished">Зібрано з версією libmad:</translation>
+        <translation>Зібрано з версією libmad:</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="189"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="191"/>
         <source>Source code based on mq3 progect</source>
-        <translation type="unfinished">Вихідний код базується на проекті mq3</translation>
+        <translation>Вихідний код базується на проекті mq3</translation>
     </message>
 </context>
 <context>
@@ -48,12 +49,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="130"/>
         <source>Yes</source>
-        <translation type="unfinished">Так</translation>
+        <translation>Так</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="132"/>
         <source>No</source>
-        <translation type="unfinished">Ні</translation>
+        <translation>Ні</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="223"/>
@@ -63,17 +64,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="461"/>
         <source>Save</source>
-        <translation type="unfinished">Зберегти</translation>
+        <translation>Зберегти</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="377"/>
         <source>Track number:</source>
-        <translation type="unfinished">Номер треку:</translation>
+        <translation>Номер треку:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="351"/>
         <source>Year:</source>
-        <translation type="unfinished">Рік:</translation>
+        <translation>Рік:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="403"/>
@@ -83,7 +84,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="325"/>
         <source>Comment:</source>
-        <translation type="unfinished">Коментар:</translation>
+        <translation>Коментар:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="299"/>
@@ -93,17 +94,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="273"/>
         <source>Artist:</source>
-        <translation type="unfinished">Виконавець:</translation>
+        <translation>Виконавець:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="247"/>
         <source>Title:</source>
-        <translation type="unfinished">Назва:</translation>
+        <translation>Назва:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="484"/>
         <source>Close</source>
-        <translation type="unfinished">Закрити</translation>
+        <translation>Закрити</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="151"/>
@@ -113,22 +114,22 @@
     <message>
         <location filename="../detailsdialog.ui" line="90"/>
         <source>MPEG Info</source>
-        <translation type="unfinished">Інформація MPEG</translation>
+        <translation>Інформація MPEG</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="211"/>
         <source>-</source>
-        <translation></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="201"/>
         <source>Original:</source>
-        <translation type="unfinished">Оригінальний:</translation>
+        <translation>Оригінальний:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="184"/>
         <source>Copyright:</source>
-        <translation type="unfinished">Авторскі права:</translation>
+        <translation>Авторскі права:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="167"/>
@@ -138,27 +139,27 @@
     <message>
         <location filename="../detailsdialog.ui" line="150"/>
         <source>File size:</source>
-        <translation type="unfinished">Розмір файлу:</translation>
+        <translation>Розмір файлу:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="133"/>
         <source>Sample rate:</source>
-        <translation type="unfinished">Дискретизація:</translation>
+        <translation>Дискретизація:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="116"/>
         <source>Bit rate:</source>
-        <translation type="unfinished">Бітова частота:</translation>
+        <translation>Бітова частота:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="96"/>
         <source>MPEG level:</source>
-        <translation type="unfinished">Рівень MPEG:</translation>
+        <translation>Рівень MPEG:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="27"/>
         <source>File path:</source>
-        <translation type="unfinished">Шлях до файлу:</translation>
+        <translation>Шлях до файлу:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="119"/>
@@ -168,7 +169,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
         <source>Details</source>
-        <translation type="unfinished">Інформація</translation>
+        <translation>Інформація</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="101"/>
@@ -178,37 +179,37 @@
     <message>
         <location filename="../detailsdialog.cpp" line="155"/>
         <source>APE Tag</source>
-        <translation type="unfinished"></translation>
+        <translation>APE-тег</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="54"/>
         <source>Tag Choice</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибір тєгу</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="60"/>
         <source>ID3v1</source>
-        <translation type="unfinished"></translation>
+        <translation>ID3v1</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="67"/>
         <source>ID3v2</source>
-        <translation type="unfinished"></translation>
+        <translation>ID3v2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="432"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Створити</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="445"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити</translation>
     </message>
 </context>
 <context>
@@ -226,62 +227,62 @@
     <message>
         <location filename="../settingsdialog.ui" line="192"/>
         <source>ID3v1 encoding:</source>
-        <translation type="unfinished">Кодування ID3v1:</translation>
+        <translation>Кодування ID3v1:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="224"/>
         <source>ID3v2 encoding:</source>
-        <translation type="unfinished">Кодування ID3v2:</translation>
+        <translation>Кодування ID3v2:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="272"/>
         <source>OK</source>
-        <translation type="unfinished">Застосувати</translation>
+        <translation>Застосувати</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="279"/>
         <source>Cancel</source>
-        <translation type="unfinished">Відміна</translation>
+        <translation>Відміна</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>MPEG Plugin Settings</source>
-        <translation type="unfinished">Налаштування модуля MPEG</translation>
+        <translation>Налаштування модуля MPEG</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Tag Priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Приорітет тєгу</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>First:</source>
-        <translation type="unfinished"></translation>
+        <translation>Перший:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="156"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнути</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="80"/>
         <source>Second:</source>
-        <translation type="unfinished"></translation>
+        <translation>Другий:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="127"/>
         <source>Third:</source>
-        <translation type="unfinished"></translation>
+        <translation>Третій:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="169"/>
         <source>Encodings</source>
-        <translation type="unfinished"></translation>
+        <translation>Кодування</translation>
     </message>
 </context>
 </TS>

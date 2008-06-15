@@ -1,0 +1,24 @@
+Бразильська португальська:
+    Klaos Lacerda
+    Bruno Gonçalves
+
+Китайська традиційна:
+    lon <lon83129@126.com>
+
+Китайська спрощена:
+    lon <lon83129@126.com>
+
+Чеська:
+    Karel Volný <kvolny@redhat.com>
+
+Німецька:
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+
+Російська:
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+Турецька:
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+
+Українська:
+    Gennadi Motsyo <drool@altlinux.ru>

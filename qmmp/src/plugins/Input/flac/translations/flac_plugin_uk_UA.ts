@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFLACFactory</name>
     <message>
@@ -10,22 +11,22 @@
     <message>
         <location filename="../decoderflacfactory.cpp" line="28"/>
         <source>FLAC Files</source>
-        <translation type="unfinished">Файли FLAC</translation>
+        <translation>Файли FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="82"/>
         <source>About FLAC Audio Plugin</source>
-        <translation type="unfinished">Про аудіо-модуль FLAC</translation>
+        <translation>Про аудіо-модуль FLAC</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="83"/>
         <source>Qmmp FLAC Audio Plugin</source>
-        <translation type="unfinished">Аудіо-модуль FLAC для Qmmp</translation>
+        <translation>Аудіо-модуль FLAC для Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="84"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -38,12 +39,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="67"/>
         <source>bits</source>
-        <translation type="unfinished">біт</translation>
+        <translation>біт</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>FLAC Info</source>
-        <translation type="unfinished">Інформація FLAC</translation>
+        <translation>Інформація FLAC</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="183"/>
@@ -53,42 +54,42 @@
     <message>
         <location filename="../detailsdialog.ui" line="86"/>
         <source>Length:</source>
-        <translation type="unfinished">Тривалість:</translation>
+        <translation>Тривалість:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="103"/>
         <source>Sample rate:</source>
-        <translation type="unfinished">Частота семплів:</translation>
+        <translation>Частота семплів:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="123"/>
         <source>Channels:</source>
-        <translation type="unfinished">Каналів:</translation>
+        <translation>Каналів:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="136"/>
         <source>File size:</source>
-        <translation type="unfinished">Розмір файлу:</translation>
+        <translation>Розмір файлу:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="146"/>
         <source>Bitrate:</source>
-        <translation type="unfinished">Бітовая частота:</translation>
+        <translation>Бітовая частота:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
         <source>Sample width:</source>
-        <translation type="unfinished">Ширина кадру:</translation>
+        <translation>Ширина кадру:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
-        <translation type="unfinished">Шлях до файлу:</translation>
+        <translation>Шлях до файлу:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="322"/>
         <source>Close</source>
-        <translation type="unfinished">Закрити</translation>
+        <translation>Закрити</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="199"/>
@@ -98,17 +99,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="299"/>
         <source>Save</source>
-        <translation type="unfinished">Зберегти</translation>
+        <translation>Зберегти</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="270"/>
         <source>Track number:</source>
-        <translation type="unfinished">Номер треку:</translation>
+        <translation>Номер треку:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="257"/>
         <source>Year:</source>
-        <translation type="unfinished">Рік:</translation>
+        <translation>Рік:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="283"/>
@@ -118,22 +119,22 @@
     <message>
         <location filename="../detailsdialog.ui" line="244"/>
         <source>Comment:</source>
-        <translation type="unfinished">Коментар:</translation>
+        <translation>Коментар:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="231"/>
         <source>Album:</source>
-        <translation type="unfinished">Альбом:</translation>
+        <translation>Альбом:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="218"/>
         <source>Artist:</source>
-        <translation type="unfinished">Виконавець:</translation>
+        <translation>Виконавець:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="205"/>
         <source>Title:</source>
-        <translation type="unfinished">Назва:</translation>
+        <translation>Назва:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="65"/>
@@ -148,7 +149,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="13"/>
         <source>Details</source>
-        <translation type="unfinished">Інформація</translation>
+        <translation>Інформація</translation>
     </message>
 </context>
 </TS>

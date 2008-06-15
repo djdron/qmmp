@@ -22,7 +22,8 @@ TRANSLATIONS = translations/sndfile_plugin_cs.ts \
                translations/sndfile_plugin_de.ts \
                translations/sndfile_plugin_zh_CN.ts \
                translations/sndfile_plugin_zh_TW.ts \
-               translations/sndfile_plugin_ru.ts
+               translations/sndfile_plugin_ru.ts \
+               translations/sndfile_plugin_uk_UA.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){
