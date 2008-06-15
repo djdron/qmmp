@@ -4,6 +4,8 @@ make clean
 
 rm install_manifest.txt
 
+find . -name *.qm | xargs rm
+
 rm_dir='CMakeFiles'
 
 clear () { rm -f Makefile; rm -f cmake_install.cmake; rm -f CMakeCache.txt; }
