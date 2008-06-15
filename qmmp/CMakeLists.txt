@@ -17,11 +17,21 @@ INCLUDE(${QT_USE_FILE})
 INCLUDE(FindPkgConfig)
 
 IF(NOT QT_LRELEASE_EXECUTABLE)
-SET(QT_LRELEASE_EXECUTABLE ${QT_LIBRARY_DIR}/../bin/lrelease)
+FIND_PROGRAM(QT_LRELEASE_EXECUTABLE 
+    NAMES lrelease
+    PATHS ${QT_BINARY_DIR}
+    NO_DEFAULT_PATH
+)
 ENDIF(NOT QT_LRELEASE_EXECUTABLE)
 
-MESSAGE("Generating translations:")
-execute_process(COMMAND find ${CMAKE_CURRENT_BINARY_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE})
+IF(QT_LRELEASE_EXECUTABLE)
+MESSAGE(STATUS "Found lrelease executable: " ${QT_LRELEASE_EXECUTABLE})
+ELSE(QT_LRELEASE_EXECUTABLE)
+MESSAGE(FATAL_ERROR "Could NOT find lrelease executable")
+ENDIF(QT_LRELEASE_EXECUTABLE)
+
+MESSAGE("Generating translations ...")
+execute_process(COMMAND find ${CMAKE_CURRENT_BINARY_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent)
 
 SET(LIB_DIR "lib" CACHE STRING "library path")
 add_subdirectory(src/qmmp)
