@@ -249,7 +249,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="247"/>
         <source>Player:</source>
-        <translation>Плеєр:</translation>
+        <translation>Програвач:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="263"/>
@@ -429,12 +429,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="380"/>
         <source>Convert underscores to blanks</source>
-        <translation>Конвернувати підкреслювання в пробіл</translation>
+        <translation>Конвертувати підкреслювання в пробіл</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="387"/>
         <source>Convert %20 to blanks</source>
-        <translation>Конвернувати %20 в пробіл</translation>
+        <translation>Конвертувати %20 в пробіл</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
