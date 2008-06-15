@@ -5,8 +5,12 @@
 
 Розробники модулів:
 
-    Юрій Журавльов <stalkerg@gmail.com> (модуль jack)
+    Юрій Журавльов <stalkerg@gmail.com> (модулі jack, oss)
 
 Український переклад: 
 
     Моцьо Геннадій <drool@altlinux.ru>
+
+Графіка:
+
+   Андрій Андрєєв <andreev00@gmail.com>

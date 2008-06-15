@@ -6,5 +6,6 @@
     <file>analyzer_plugin_zh_CN.qm</file>
     <file>analyzer_plugin_zh_TW.qm</file>
     <file>analyzer_plugin_ru.qm</file>
+    <file>analyzer_plugin_uk_UA.qm</file>
   </qresource>
 </RCC>
