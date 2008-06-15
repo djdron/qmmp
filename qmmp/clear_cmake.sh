@@ -3,6 +3,7 @@
 make clean
 
 rm install_manifest.txt
+rm cmake_uninstall.cmake
 
 find . -name *.qm | xargs rm
 
