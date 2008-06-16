@@ -30,7 +30,7 @@ ELSE(QT_LRELEASE_EXECUTABLE)
 MESSAGE(FATAL_ERROR "Could NOT find lrelease executable")
 ENDIF(QT_LRELEASE_EXECUTABLE)
 
-MESSAGE("Generating translations ...")
+MESSAGE(STATUS "Generating translations ...")
 execute_process(COMMAND find ${CMAKE_CURRENT_BINARY_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent)
 
 SET(LIB_DIR "lib" CACHE STRING "library path")
