@@ -139,12 +139,15 @@ Output::Output (QObject* parent) : QThread (parent), r (stackSize())
 Output::~Output()
 {
     qDebug("Output::~Output()");
-    Visual *visual = 0;
-    foreach(visual, m_vis_map.values ())
+    foreach(Visual *visual, m_vis_map.values ())
     {
+        visual->setOutput(0);
         visual->close();
     }
-    //m_vis_map.clear();
+    foreach (Visual *visual , visuals)  //external
+    {
+        visual->setOutput(0);
+    }
 }
 
 void Output::error ( const QString &e )
@@ -165,6 +168,7 @@ void Output::addVisual ( Visual *v )
 
 void Output::removeVisual (Visual *v)
 {
+    v->setOutput(0);
     visuals.removeAll (v);
     if (m_vis_map.key(v))
     {
