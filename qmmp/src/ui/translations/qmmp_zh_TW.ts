@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -116,57 +117,57 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip forward in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>跳到播放清單中的下一曲</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Skip backwards in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>跳到播放清單中的上一曲</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Start playing current song</source>
-        <translation type="unfinished"></translation>
+        <translation>開始播放目前曲目</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Pause current song</source>
-        <translation type="unfinished"></translation>
+        <translation>暫停目前曲目</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Pause if playing, play otherwise</source>
-        <translation type="unfinished"></translation>
+        <translation>正在播放則暫停，相反處於暫停則播放</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Stop current song</source>
-        <translation type="unfinished"></translation>
+        <translation>停止目前曲目</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation type="unfinished"></translation>
+        <translation>設定重播音量(例如：qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Jump to File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>察看跳到檔案對話</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Show/hide application</source>
-        <translation type="unfinished"></translation>
+        <translation>察看/隱藏程式</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>察看添加檔案對話</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="75"/>
         <source>Display Add Directory dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>察看添加目錄對話</translation>
     </message>
 </context>
 <context>
@@ -429,22 +430,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="380"/>
         <source>Convert underscores to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>轉換底線為空格</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="387"/>
         <source>Convert %20 to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>轉換 %20 為空格</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
         <source>Show full path of a stream</source>
-        <translation type="unfinished"></translation>
+        <translation>察看媒體流的完整路徑</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="646"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
 </context>
 <context>
@@ -658,12 +659,12 @@
     <message>
         <location filename="../mainvisual.cpp" line="379"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>背景</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="380"/>
         <source>Transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>透明</translation>
     </message>
 </context>
 <context>
@@ -796,7 +797,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="630"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>播放/暫停(&amp;P)</translation>
     </message>
 </context>
 <context>
@@ -954,17 +955,17 @@
     <message>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>按音軌</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="240"/>
         <source>&amp;Queue</source>
-        <translation type="unfinished">佇列(&amp;Q)</translation>
+        <translation>佇列(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="240"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
 </context>
 <context>
@@ -972,27 +973,27 @@
     <message>
         <location filename="../playlistmodel.cpp" line="311"/>
         <source>Url:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="312"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>標題：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="313"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>藝術家：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="314"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>專輯：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="315"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>備註：</translation>
     </message>
 </context>
 <context>
@@ -1028,32 +1029,32 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="140"/>
         <source>Usage: qmmp [options] [files]</source>
-        <translation type="unfinished"></translation>
+        <translation>使用：qmmp [設定] [檔案]</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="141"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>設定：</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="146"/>
         <source>Print version number and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>察看版本並結束</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="147"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation type="unfinished"></translation>
+        <translation>建議、補丁或提交 bug 請傳送到 forkotov02@hotmail.ru</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Display this text and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>察看這些字檔並結束</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="152"/>
         <source>QMMP version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp 版本：</translation>
     </message>
 </context>
 <context>
@@ -1061,7 +1062,7 @@
     <message>
         <location filename="../textscroller.cpp" line="116"/>
         <source>Buffering:</source>
-        <translation type="unfinished"></translation>
+        <translation>緩衝：</translation>
     </message>
 </context>
 <context>

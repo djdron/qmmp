@@ -14,7 +14,9 @@ QMAKE_LIBDIR += ../../../../lib
 TRANSLATIONS = translations/incdecvolume_plugin_cs.ts \
                translations/incdecvolume_plugin_de.ts \
                translations/incdecvolume_plugin_ru.ts \
-               translations/incdecvolume_plugin_uk_UA.ts
+               translations/incdecvolume_plugin_uk_UA.ts \
+               translations/incdecvolume_plugin_zh_TW.ts \
+               translations/incdecvolume_plugin_zh_CN.ts
 
 RESOURCES = translations/translations.qrc
 

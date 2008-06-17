@@ -5,5 +5,7 @@
   <file>incdecvolume_plugin_de.qm</file>
   <file>incdecvolume_plugin_cs.qm</file>
   <file>incdecvolume_plugin_uk_UA.qm</file>
+  <file>incdecvolume_plugin_zh_TW.qm</file>
+  <file>incdecvolume_plugin_zh_CN.qm</file>
   </qresource>
 </RCC>
