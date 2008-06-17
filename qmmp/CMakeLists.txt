@@ -47,6 +47,30 @@ MESSAGE("${str}disabled")
 ENDIF(${USE} AND ${FOUND})
 ENDMACRO(PRINT_SUMMARY)
 
+IF (UNIX)
+ADD_CUSTOM_TARGET (distclean @echo cleaning for source distribution)
+
+ADD_CUSTOM_COMMAND(
+    COMMENT "distribution clean"
+    COMMAND make
+    ARGS -C ${CMAKE_CURRENT_BINARY_DIR} clean
+    COMMAND find
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "CMakeCache.txt" | xargs rm -rf
+    COMMAND find
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "CMakeFiles" | xargs rm -rf
+    COMMAND find
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "Makefile" | xargs rm -rf
+    COMMAND find
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name \"*.cmake\" | xargs rm -rf
+    COMMAND find
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "*.qm" | xargs rm -rf
+    COMMAND rm
+    ARGS -rf ${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt
+    TARGET  distclean
+)
+ENDIF(UNIX)
+
+
 MESSAGE("")
 MESSAGE("Input Plugins:")
 PRINT_SUMMARY ("mp3 support ......................." USE_MAD  MAD_FOUND)
