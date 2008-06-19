@@ -33,13 +33,15 @@ HEADERS += general.h \
            playlistformat.h \
            playlistparser.h \
            commandlinemanager.h \
-           commandlineoption.h
+           commandlineoption.h \
+ filedialog.h
 SOURCES += general.cpp \
            generalhandler.cpp \
            songinfo.cpp \
            control.cpp \
            playlistparser.cpp \
-           commandlinemanager.cpp
+           commandlinemanager.cpp \
+ filedialog.cpp
 
 DESTDIR = .
 

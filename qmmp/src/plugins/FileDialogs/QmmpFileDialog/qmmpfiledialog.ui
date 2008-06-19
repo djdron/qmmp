@@ -12,20 +12,41 @@
   <property name="windowTitle" >
    <string>Add Files</string>
   </property>
+  <property name="sizeGripEnabled" >
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
    <property name="spacing" >
     <number>6</number>
    </property>
+   <property name="leftMargin" >
+    <number>9</number>
+   </property>
+   <property name="topMargin" >
+    <number>9</number>
+   </property>
+   <property name="rightMargin" >
+    <number>9</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>9</number>
+   </property>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label_2" >
@@ -37,9 +58,7 @@
      <item>
       <widget class="QComboBox" name="lookInComboBox" >
        <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
+        <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
          <horstretch>1</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -54,8 +73,8 @@
        <property name="text" >
         <string>Up</string>
        </property>
-       <property name="icon" >
-        <iconset resource="images/images.qrc" >:/cdup.png</iconset>
+       <property name="autoRaise" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -67,10 +86,10 @@
        <property name="text" >
         <string>lst</string>
        </property>
-       <property name="icon" >
-        <iconset resource="images/images.qrc" >:/list.png</iconset>
-       </property>
        <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="autoRaise" >
         <bool>true</bool>
        </property>
       </widget>
@@ -83,9 +102,6 @@
        <property name="text" >
         <string>icn</string>
        </property>
-       <property name="icon" >
-        <iconset resource="images/images.qrc" >:/detail.png</iconset>
-       </property>
        <property name="iconSize" >
         <size>
          <width>16</width>
@@ -93,6 +109,9 @@
         </size>
        </property>
        <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="autoRaise" >
         <bool>true</bool>
        </property>
       </widget>
@@ -108,7 +127,7 @@
       <bool>true</bool>
      </property>
      <property name="dragDropMode" >
-      <enum>QAbstractItemView::NoDragDrop</enum>
+      <enum>QAbstractItemView::DragDrop</enum>
      </property>
      <property name="alternatingRowColors" >
       <bool>false</bool>
@@ -120,13 +139,22 @@
       <enum>QAbstractItemView::SelectItems</enum>
      </property>
      <property name="movement" >
-      <enum>QListView::Static</enum>
+      <enum>QListView::Free</enum>
+     </property>
+     <property name="isWrapping" stdset="0" >
+      <bool>true</bool>
+     </property>
+     <property name="resizeMode" >
+      <enum>QListView::Adjust</enum>
      </property>
      <property name="layoutMode" >
       <enum>QListView::Batched</enum>
      </property>
      <property name="viewMode" >
       <enum>QListView::ListMode</enum>
+     </property>
+     <property name="uniformItemSizes" >
+      <bool>false</bool>
      </property>
      <property name="wordWrap" >
       <bool>true</bool>
@@ -135,11 +163,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -155,11 +192,20 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>

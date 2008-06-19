@@ -48,7 +48,6 @@ SET(ui_SRCS
     eqslider.cpp
     eqtitlebar.cpp
     eqwidget.cpp
-    filedialog.cpp
     fileloader.cpp
     jumptotrackdialog.cpp
     keyboardmanager.cpp
@@ -102,7 +101,6 @@ SET(ui_MOC_HDRS
     eqtitlebar.h
     eqwidget.h
     fft.h
-    filedialog.h
     fileloader.h
     inlines.h
     jumptotrackdialog.h

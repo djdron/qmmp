@@ -5,5 +5,6 @@ SUBDIRS += Input \
            Effect \
            General \
            PlaylistFormats \
-           CommandLineOptions
+           CommandLineOptions \
+           FileDialogs
 TEMPLATE = subdirs

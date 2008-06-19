@@ -53,7 +53,6 @@ HEADERS += mainwindow.h \
            aboutdialog.h \
            timeindicator.h \
            keyboardmanager.h \
-           filedialog.h \
            unixdomainsocket.h \
            addurldialog.h \
            skinreader.h \
@@ -105,7 +104,6 @@ SOURCES += mainwindow.cpp \
            aboutdialog.cpp \
            timeindicator.cpp \
            keyboardmanager.cpp \
-           filedialog.cpp \
            unixdomainsocket.cpp \
            addurldialog.cpp \
            skinreader.cpp \
