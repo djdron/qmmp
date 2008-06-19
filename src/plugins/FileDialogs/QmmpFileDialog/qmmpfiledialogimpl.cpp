@@ -1,7 +1,9 @@
 #include "qmmpfiledialogimpl.h"
 
 #include <QDirModel>
+#include <QApplication>
 #include <QFileInfo>
+#include <QStyle>
 
 QmmpFileDialogImpl::QmmpFileDialogImpl( QWidget * parent, Qt::WindowFlags f) : QDialog(parent,f)
 {
@@ -9,10 +11,13 @@ QmmpFileDialogImpl::QmmpFileDialogImpl( QWidget * parent, Qt::WindowFlags f) : Q
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     m_model = new QDirModel(this);
     m_model->setSorting(QDir::Type /*| QDir::Name*/);
-    fileListView->setModel(m_model); 
+    fileListView->setModel(m_model);
     //fileListView->setViewMode(QListView::IconMode);
     listToolButton->setChecked(true);
-} 
+    upToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowUp));
+    listToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_FileDialogListView));
+    iconToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_FileDialogDetailedView));
+}
 
 QmmpFileDialogImpl::~QmmpFileDialogImpl()
 {
@@ -20,7 +25,7 @@ QmmpFileDialogImpl::~QmmpFileDialogImpl()
 
 void QmmpFileDialogImpl::on_lookInComboBox_activated(const QString&)
 {
-	qWarning("TODO: %s	%d",__FILE__,__LINE__);
+    qWarning("TODO: %s  %d",__FILE__,__LINE__);
 }
 
 void QmmpFileDialogImpl::on_upToolButton_clicked()
@@ -31,10 +36,10 @@ void QmmpFileDialogImpl::on_upToolButton_clicked()
 
 void QmmpFileDialogImpl::on_fileListView_doubleClicked(const QModelIndex& ind)
 {
-    if(ind.isValid())
+    if (ind.isValid())
     {
         QFileInfo info = m_model->fileInfo(ind);
-        if(info.isDir())
+        if (info.isDir())
         {
             fileListView->setRootIndex(ind);
             lookInComboBox->setEditText(m_model->filePath(ind));
@@ -46,12 +51,12 @@ void QmmpFileDialogImpl::on_fileListView_doubleClicked(const QModelIndex& ind)
             emit filesAdded(l);
         }
     }
-    
+
 }
 
 void QmmpFileDialogImpl::on_fileNameLineEdit_returnPressed()
 {
-	on_addPushButton_clicked();
+    on_addPushButton_clicked();
 }
 
 void QmmpFileDialogImpl::on_addPushButton_clicked()
@@ -59,19 +64,19 @@ void QmmpFileDialogImpl::on_addPushButton_clicked()
     QModelIndexList ml = fileListView->selectionModel()->selectedIndexes();
     QStringList l;
     foreach(QModelIndex i,ml)
-        l << m_model->filePath(i);
+    l << m_model->filePath(i);
     qWarning("!!!!!!!!!");
     emit filesAdded(l);
 }
 
 void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, const QStringList & mask)
 {
-    if(m == FileDialog::AddFiles)
+    if (m == FileDialog::AddFiles)
     {
         setWindowTitle("Add Files");
         m_model->setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
     }
-    else if(m == FileDialog::AddDirs)
+    else if (m == FileDialog::AddDirs)
     {
         setWindowTitle("Add Dirs");
         m_model->setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -86,24 +91,26 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
     m_model->setSorting(QDir::Type);
     fileListView->setRootIndex(m_model->index(d));
     m_model->sort(0);
-    lookInComboBox->setEditText(d);
+    lookInComboBox->setEditText(QDir::cleanPath(d));
 }
 
 void QmmpFileDialogImpl::on_listToolButton_toggled(bool yes)
 {
-    if(yes)
+    if (yes)
     {
         iconToolButton->setChecked(false);
         fileListView->setViewMode(QListView::ListMode);
+        fileListView->setGridSize(QSize(-1, -1));
     }
 }
 
 void QmmpFileDialogImpl::on_iconToolButton_toggled(bool yes)
 {
-    if(yes)
+    if (yes)
     {
         listToolButton->setChecked(false);
         fileListView->setViewMode(QListView::IconMode);
+        fileListView->setGridSize(QSize(80, 80));
     }
 }
 

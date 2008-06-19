@@ -31,6 +31,7 @@
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/commandlinemanager.h>
+#include <qmmpui/filedialog.h>
 
 #include "textscroller.h"
 #include "mainwindow.h"
@@ -45,7 +46,6 @@
 #include "jumptotrackdialog.h"
 #include "aboutdialog.h"
 #include "addurldialog.h"
-#include "filedialog.h"
 #include "listwidget.h"
 #include "visualmenu.h"
 #include "builtincommandlineoption.h"
@@ -458,7 +458,8 @@ void MainWindow::addDir()
         m_lastDir = s+"../";
     }
     else
-        FileDialog::popup(m_playListModel,m_lastDir,FileDialog::AddDirs,Decoder::nameFilters());
+        FileDialog::popup(m_lastDir,FileDialog::AddDirs,Decoder::nameFilters(),
+                          m_playListModel, SLOT(addFileList(const QStringList&)));
 }
 
 void MainWindow::addFile()
@@ -497,7 +498,8 @@ void MainWindow::addFile()
         m_lastDir = files.at(0);
     }
     else
-        FileDialog::popup(m_playListModel,m_lastDir,FileDialog::AddFiles,Decoder::nameFilters());
+        FileDialog::popup(m_lastDir,FileDialog::AddFiles,Decoder::nameFilters(),
+                          m_playListModel, SLOT(addFileList(const QStringList&)));
 
 }
 

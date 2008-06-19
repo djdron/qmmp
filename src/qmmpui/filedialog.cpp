@@ -10,7 +10,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-#include "playlistmodel.h"
+//#include "playlistmodel.h"
 
 FileDialog* FileDialog::_instance = 0;
 
@@ -27,14 +27,13 @@ bool FileDialog::isModal()
 }
 
 
-void FileDialog::init(QObject* o)
+void FileDialog::init(QObject* receiver, const char* member)
 {
-    if(!m_initialized && !instance()->modal())
+    if (!m_initialized && !instance()->modal())
     {
-        PlayListModel* model = NULL;
-        if( ( model = qobject_cast<PlayListModel*>(o)) )
+        if (receiver &&  member)
         {
-            connect(this,SIGNAL(filesAdded(const QStringList&)),model,SLOT(addFileList(const QStringList&)));
+            connect(this,SIGNAL(filesAdded(const QStringList&)), receiver, member);
             m_initialized = true;
         }
     }
@@ -45,7 +44,7 @@ void FileDialog::init(QObject* o)
 QString FileDialog::getExistingDirectory( QWidget * parent, const QString & caption, const QString & dir,bool def)
 {
     QString s;
-    if(def)
+    if (def)
         s = defaultInstance()->existingDirectory(parent,caption,dir);
     else
         s = instance()->existingDirectory(parent,caption,dir);
@@ -55,13 +54,13 @@ QString FileDialog::getExistingDirectory( QWidget * parent, const QString & capt
 }
 
 QString FileDialog::getOpenFileName(QWidget * parent,
-                const QString & caption,
-                const QString & dir,
-                const QString & filter,
-                QString * selectedFilter,bool def)
+                                    const QString & caption,
+                                    const QString & dir,
+                                    const QString & filter,
+                                    QString * selectedFilter,bool def)
 {
     QString s;
-    if(def)
+    if (def)
         s = defaultInstance()->openFileName(parent,caption,dir,filter,selectedFilter);
     else
         s = instance()->openFileName(parent,caption,dir,filter,selectedFilter);
@@ -71,26 +70,26 @@ QString FileDialog::getOpenFileName(QWidget * parent,
 }
 
 QStringList FileDialog::getOpenFileNames(QWidget * parent, const QString & caption , const QString & dir ,
-                const QString & filter, QString * selectedFilter,bool def)
+        const QString & filter, QString * selectedFilter,bool def)
 {
     QStringList sl;
-    if(def)
+    if (def)
         sl = defaultInstance()->openFileNames(parent,caption ,dir ,filter, selectedFilter);
     else
-         sl =  instance()->openFileNames(parent,caption,dir,filter,selectedFilter);
+        sl =  instance()->openFileNames(parent,caption,dir,filter,selectedFilter);
     delete _instance;
     _instance = 0;
     return sl;
 }
 
 QString FileDialog::getSaveFileName ( QWidget * parent, const QString & caption,
-        const QString & dir, const QString & filter, QString * selectedFilter,bool def)
+                                      const QString & dir, const QString & filter, QString * selectedFilter,bool def)
 {
     QString s;
-    if(def)
+    if (def)
         s = defaultInstance()->saveFileName(parent,caption,dir,filter,selectedFilter);
     else
-         s =  instance()->saveFileName(parent,caption,dir,filter,selectedFilter);
+        s =  instance()->saveFileName(parent,caption,dir,filter,selectedFilter);
     delete _instance;
     _instance = 0;
     return s;
@@ -99,22 +98,22 @@ QString FileDialog::getSaveFileName ( QWidget * parent, const QString & caption,
 
 QString FileDialog::existingDirectory(QWidget *, const QString &, const QString &)
 {
-	return QString();
+    return QString();
 }
 
 QString FileDialog::openFileName(QWidget *, const QString &, const QString &, const QString &, QString *)
 {
-	return QString();
+    return QString();
 }
 
 QStringList FileDialog::openFileNames(QWidget *, const QString &, const QString &, const QString &, QString *)
 {
-	return QStringList();
+    return QStringList();
 }
 
 QString FileDialog::saveFileName(QWidget *, const QString &, const QString &, const QString &, QString *)
 {
-	return QString();
+    return QString();
 }
 
 
@@ -126,7 +125,9 @@ void FileDialog::registerBuiltinFactories()
 
 void FileDialog::registerExternalFactories()
 {
-    QDir pluginsDir (QDir::homePath()+"/.qmmp/plugins/FileDialogs");
+    QDir pluginsDir (qApp->applicationDirPath());
+    pluginsDir.cdUp();
+    pluginsDir.cd("./"LIB_DIR"/qmmp/FileDialogs");
 
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
@@ -163,13 +164,13 @@ QString FileDialog::m_current_factory = QString();
 
 FileDialog* FileDialog::instance()
 {
-    if(_instance && _instance->modal())
+    if (_instance && _instance->modal())
     {
         delete _instance;
         _instance = 0;
     }
 
-    if(factories.isEmpty())
+    if (factories.isEmpty())
     {
         registerBuiltinFactories();
         registerExternalFactories();
@@ -181,40 +182,40 @@ FileDialog* FileDialog::instance()
 
     QStringList names = factories.keys();
 
-    if(m_current_factory != f_dialogName || !_instance)
+    if (m_current_factory != f_dialogName || !_instance)
     {
-        if(_instance)
+        if (_instance)
             delete _instance;
 
         foreach(QString name,names)
         {
-                if(name == f_dialogName)
-                {
-                    _instance = factories[name]->create();
-                    m_current_factory = f_dialogName;
-                    break;
-                }
+            if (name == f_dialogName)
+            {
+                _instance = factories[name]->create();
+                m_current_factory = f_dialogName;
+                break;
+            }
         }
 
-        if(!_instance)
+        if (!_instance)
             _instance = factories[QtFileDialogFactory::QtFileDialogFactoryName]->create();
     }
     //else if(!_instance->modal())
-            //return _instance;
-      //      _instance->raise();
+    //return _instance;
+    //      _instance->raise();
     return _instance;
 
 }
 
 FileDialog* FileDialog::defaultInstance()
 {
-    if(_instance)
+    if (_instance)
     {
         delete _instance;
         _instance = 0;
     }
 
-    if(factories.isEmpty())
+    if (factories.isEmpty())
     {
         registerBuiltinFactories();
         registerExternalFactories();
@@ -227,7 +228,7 @@ FileDialog* FileDialog::defaultInstance()
 
 QStringList FileDialog::registeredFactories()
 {
-    if(factories.isEmpty())
+    if (factories.isEmpty())
     {
         registerBuiltinFactories();
         registerExternalFactories();
@@ -236,11 +237,11 @@ QStringList FileDialog::registeredFactories()
 }
 
 
-void FileDialog::popup(QObject* o,const QString& d,Mode m,const QStringList& f)
+void FileDialog::popup(const QString& d,Mode m,const QStringList& f, QObject* receiver, const char* member)
 {
-	FileDialog* inst = instance();
-    inst->init(o);
-	inst->raise(d,m,f);
+    FileDialog* inst = instance();
+    inst->init(receiver, member);
+    inst->raise(d,m,f);
 }
 
 
@@ -259,21 +260,21 @@ QString QtFileDialog::existingDirectory(QWidget * parent, const QString & captio
 }
 
 QString QtFileDialog::openFileName(QWidget * parent,const QString & caption,const QString & dir,const QString & filter,
-                QString * selectedFilter)
+                                   QString * selectedFilter)
 {
     return QFileDialog::getOpenFileName(parent,caption,dir,filter);
 }
 
 QStringList QtFileDialog::openFileNames(QWidget * parent, const QString & caption , const QString & dir ,
-                const QString & filter, QString * selectedFilter)
+                                        const QString & filter, QString * selectedFilter)
 {
     return QFileDialog::getOpenFileNames(parent,caption,dir,filter,selectedFilter);
 }
 
- QString QtFileDialog::saveFileName ( QWidget * parent, const QString & caption,
-        const QString & dir, const QString & filter, QString * selectedFilter)
+QString QtFileDialog::saveFileName ( QWidget * parent, const QString & caption,
+                                     const QString & dir, const QString & filter, QString * selectedFilter)
 {
-        return QFileDialog::getSaveFileName(parent,caption,dir,filter,selectedFilter);
+    return QFileDialog::getSaveFileName(parent,caption,dir,filter,selectedFilter);
 }
 
 
@@ -288,7 +289,7 @@ FileDialog* QtFileDialogFactory::create()
 
 QString QtFileDialogFactory::name()
 {
-        return QtFileDialogFactoryName;
+    return QtFileDialogFactoryName;
 }
 
 QString QtFileDialogFactory::QtFileDialogFactoryName = "Qt File Dialog";

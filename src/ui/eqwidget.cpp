@@ -22,8 +22,8 @@
 #include <QMenu>
 #include <QInputDialog>
 #include <QCloseEvent>
+#include <qmmpui/filedialog.h>
 
-#include "filedialog.h"
 #include "skin.h"
 #include "eqslider.h"
 #include "eqtitlebar.h"

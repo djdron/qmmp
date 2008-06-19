@@ -29,6 +29,7 @@ SET(libqmmpui_SRCS
     control.cpp
     playlistparser.cpp
     commandlinemanager.cpp
+    filedialog.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -41,6 +42,7 @@ SET(libqmmpui_MOC_HDRS
     playlistformat.h
     commandlinemanager.h
     commandlineoption.h
+    filedialog.h
 )
 
 QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})

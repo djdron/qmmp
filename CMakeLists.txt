@@ -103,5 +103,11 @@ PRINT_SUMMARY ("DBUS support ......................" USE_DBUS 1)
 PRINT_SUMMARY ("Scrobbler ........................." USE_SCROBBLER 1)
 PRINT_SUMMARY ("Tray support ......................" USE_STATICON 1)
 PRINT_SUMMARY ("Notifier support .................." USE_NOTIFIER 1)
+
 MESSAGE("")
+MESSAGE("File Dialogs:")
+PRINT_SUMMARY ("QMMP File Dialog .................." USE_QMMP_DIALOG 1)
+MESSAGE("")
+
+
 

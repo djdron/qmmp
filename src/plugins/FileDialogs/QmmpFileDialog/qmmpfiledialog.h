@@ -1,7 +1,7 @@
 #ifndef QMMPFILEDIALOG_H
 #define QMMPFILEDIALOG_H
 
-#include <filedialog.h>
+#include <qmmpui/filedialog.h>
 
 class QmmpFileDialogImpl;
 

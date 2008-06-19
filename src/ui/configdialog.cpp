@@ -36,10 +36,10 @@
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
+#include <qmmpui/filedialog.h>
 
 
 #include "skin.h"
-#include "filedialog.h"
 #include "pluginitem.h"
 #include "configdialog.h"
 #include "skinreader.h"
