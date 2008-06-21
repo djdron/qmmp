@@ -69,22 +69,23 @@ void QmmpFileDialogImpl::on_addPushButton_clicked()
     emit filesAdded(l);
 }
 
-void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, const QStringList & mask)
+void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, const QStringList& mask)
 {
     if (m == FileDialog::AddFiles)
     {
         setWindowTitle("Add Files");
-        m_model->setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
+        m_model->setFilter(QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot);
+        m_model->setNameFilters(mask);
     }
     else if (m == FileDialog::AddDirs)
     {
         setWindowTitle("Add Dirs");
-        m_model->setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
+        m_model->setFilter(QDir::AllDirs | QDir::NoDotAndDotDot);
     }
     else
     {
         setWindowTitle("Save File");
-        m_model->setFilter(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot);
+        m_model->setFilter(QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot);
         qWarning("To be implemented...");
     }
 
@@ -110,7 +111,7 @@ void QmmpFileDialogImpl::on_iconToolButton_toggled(bool yes)
     {
         listToolButton->setChecked(false);
         fileListView->setViewMode(QListView::IconMode);
-        fileListView->setGridSize(QSize(80, 80));
+        fileListView->setGridSize(QSize(82, 82));
     }
 }
 
