@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -716,7 +717,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
         <source>&amp;Previous</source>
-        <translation>&amp;Назад</translation>
+        <translation>&amp;Предыдущий фрагмент</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="628"/>
@@ -726,7 +727,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
         <source>&amp;Next</source>
-        <translation>&amp;Вперёд</translation>
+        <translation>&amp;Следующий фрагмент</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="629"/>
