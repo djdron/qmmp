@@ -54,12 +54,12 @@
     <message>
         <location filename="../statusicon.cpp" line="42"/>
         <source>Next</source>
-        <translation>Вперёд</translation>
+        <translation>Следующий фрагмент</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="43"/>
         <source>Previous</source>
-        <translation>Назад</translation>
+        <translation>Предыдущий фрагмент</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="45"/>
