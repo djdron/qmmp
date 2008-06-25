@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
 <context>
     <name>OutputALSAFactory</name>
     <message>
@@ -27,57 +26,57 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Device Settings</source>
         <translation>Параметри пристроїв</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="62"/>
         <source>Audio device</source>
         <translation>Аудіо пристрій</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="79"/>
         <source>Mixer</source>
         <translation>Мікшер</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="73"/>
+        <location filename="../settingsdialog.ui" line="106"/>
         <source>Mixer card:</source>
         <translation>Карта мікшера:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="83"/>
+        <location filename="../settingsdialog.ui" line="116"/>
         <source>Mixer device:</source>
         <translation>Пристрій мікшера:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="100"/>
+        <location filename="../settingsdialog.ui" line="133"/>
         <source>Advanced Settings</source>
         <translation>Додаткові налаштування</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="154"/>
         <source>Soundcard</source>
         <translation>Звукова карта</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="176"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>Час буферизації (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="186"/>
+        <location filename="../settingsdialog.ui" line="196"/>
         <source>Period time (ms):</source>
         <translation>Час періоду (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="229"/>
+        <location filename="../settingsdialog.ui" line="272"/>
         <source>Cancel</source>
         <translation>Відміна</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="236"/>
+        <location filename="../settingsdialog.ui" line="279"/>
         <source>OK</source>
         <translation>Застосувати</translation>
     </message>
@@ -85,6 +84,11 @@
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ALSA Plugin Settings</source>
         <translation>Налаштування модуля ALSA</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="232"/>
+        <source>Use mmap access</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

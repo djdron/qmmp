@@ -13,10 +13,22 @@
    <string>ALSA Plugin Settings</string>
   </property>
   <layout class="QGridLayout" >
-   <property name="margin" >
+   <property name="leftMargin" >
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin" >
+    <number>9</number>
+   </property>
+   <property name="rightMargin" >
+    <number>9</number>
+   </property>
+   <property name="bottomMargin" >
+    <number>9</number>
+   </property>
+   <property name="horizontalSpacing" >
+    <number>6</number>
+   </property>
+   <property name="verticalSpacing" >
     <number>6</number>
    </property>
    <item row="0" column="0" colspan="3" >
@@ -29,11 +41,20 @@
        <string>Device Settings</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
        <property name="spacing" >
         <number>6</number>
+       </property>
+       <property name="leftMargin" >
+        <number>9</number>
+       </property>
+       <property name="topMargin" >
+        <number>9</number>
+       </property>
+       <property name="rightMargin" >
+        <number>9</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>9</number>
        </property>
        <item>
         <widget class="QGroupBox" name="groupBox" >
@@ -58,10 +79,22 @@
           <string>Mixer</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="margin" >
+          <property name="leftMargin" >
            <number>9</number>
           </property>
-          <property name="spacing" >
+          <property name="topMargin" >
+           <number>9</number>
+          </property>
+          <property name="rightMargin" >
+           <number>9</number>
+          </property>
+          <property name="bottomMargin" >
+           <number>9</number>
+          </property>
+          <property name="horizontalSpacing" >
+           <number>6</number>
+          </property>
+          <property name="verticalSpacing" >
            <number>6</number>
           </property>
           <item row="0" column="1" >
@@ -100,11 +133,20 @@
        <string>Advanced Settings</string>
       </attribute>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
        <property name="spacing" >
         <number>6</number>
+       </property>
+       <property name="leftMargin" >
+        <number>9</number>
+       </property>
+       <property name="topMargin" >
+        <number>9</number>
+       </property>
+       <property name="rightMargin" >
+        <number>9</number>
+       </property>
+       <property name="bottomMargin" >
+        <number>9</number>
        </property>
        <item>
         <widget class="QGroupBox" name="groupBox_3" >
@@ -112,24 +154,28 @@
           <string>Soundcard</string>
          </property>
          <layout class="QGridLayout" >
-          <property name="margin" >
-           <number>9</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item row="2" column="1" >
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Vertical</enum>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="label" >
+            <property name="text" >
+             <string>Buffer time (ms):</string>
             </property>
-            <property name="sizeHint" >
-             <size>
-              <width>20</width>
-              <height>111</height>
-             </size>
+            <property name="alignment" >
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
             </property>
-           </spacer>
+           </widget>
+          </item>
+          <item row="0" column="1" >
+           <widget class="QSpinBox" name="bufferSpinBox" >
+            <property name="minimum" >
+             <number>200</number>
+            </property>
+            <property name="maximum" >
+             <number>10000</number>
+            </property>
+            <property name="value" >
+             <number>500</number>
+            </property>
+           </widget>
           </item>
           <item row="0" column="2" >
            <spacer>
@@ -144,42 +190,6 @@
             </property>
            </spacer>
           </item>
-          <item row="1" column="1" >
-           <widget class="QSpinBox" name="periodSpinBox" >
-            <property name="maximum" >
-             <number>5000</number>
-            </property>
-            <property name="minimum" >
-             <number>20</number>
-            </property>
-            <property name="value" >
-             <number>100</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" >
-           <widget class="QSpinBox" name="bufferSpinBox" >
-            <property name="maximum" >
-             <number>10000</number>
-            </property>
-            <property name="minimum" >
-             <number>200</number>
-            </property>
-            <property name="value" >
-             <number>500</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" >
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>Buffer time (ms):</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0" >
            <widget class="QLabel" name="label_2" >
             <property name="text" >
@@ -187,6 +197,19 @@
             </property>
             <property name="alignment" >
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" >
+           <widget class="QSpinBox" name="periodSpinBox" >
+            <property name="minimum" >
+             <number>20</number>
+            </property>
+            <property name="maximum" >
+             <number>5000</number>
+            </property>
+            <property name="value" >
+             <number>100</number>
             </property>
            </widget>
           </item>
@@ -199,6 +222,26 @@
              <size>
               <width>188</width>
               <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="0" colspan="3" >
+           <widget class="QCheckBox" name="mmapCheckBox" >
+            <property name="text" >
+             <string>Use mmap access</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1" >
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>60</width>
+              <height>81</height>
              </size>
             </property>
            </spacer>

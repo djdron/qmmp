@@ -31,59 +31,64 @@
         <translation>ALSA Plugin Einstellungen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Device Settings</source>
         <translation>Geräte-Einstellungen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="62"/>
         <source>Audio device</source>
         <translation>Audiogerät</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="79"/>
         <source>Mixer</source>
         <translation>Mixer</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="73"/>
+        <location filename="../settingsdialog.ui" line="106"/>
         <source>Mixer card:</source>
         <translation>Mixerkarte:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="83"/>
+        <location filename="../settingsdialog.ui" line="116"/>
         <source>Mixer device:</source>
         <translation>Mixergerät:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="100"/>
+        <location filename="../settingsdialog.ui" line="133"/>
         <source>Advanced Settings</source>
         <translation>Erweiterte Einstellungen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="154"/>
         <source>Soundcard</source>
         <translation>Soundkarte</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="176"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>Pufferzeit (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="186"/>
+        <location filename="../settingsdialog.ui" line="196"/>
         <source>Period time (ms):</source>
         <translation>Zeitraster (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="229"/>
+        <location filename="../settingsdialog.ui" line="272"/>
         <source>Cancel</source>
         <translation>Abbrechen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="236"/>
+        <location filename="../settingsdialog.ui" line="279"/>
         <source>OK</source>
         <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="232"/>
+        <source>Use mmap access</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
