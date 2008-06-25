@@ -54,6 +54,8 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
     if (d >= 0)
         ui.mixerDeviceComboBox->setCurrentIndex(d);
 
+    ui.mmapCheckBox->setChecked(settings.value("use_mmap", FALSE).toBool());
+
     settings.endGroup();
 }
 
@@ -191,6 +193,7 @@ void SettingsDialog::writeSettings()
         settings.setValue("mixer_card", card);
     }
     settings.setValue("mixer_device", ui.mixerDeviceComboBox->currentText ());
+    settings.setValue("use_mmap", ui.mmapCheckBox->isChecked());
     settings.endGroup();
     accept();
 }

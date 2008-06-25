@@ -26,57 +26,57 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Device Settings</source>
         <translation>设备设置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="62"/>
         <source>Audio device</source>
         <translation>音频设备</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="79"/>
         <source>Mixer</source>
         <translation>混频</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="73"/>
+        <location filename="../settingsdialog.ui" line="106"/>
         <source>Mixer card:</source>
         <translation>混频卡：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="83"/>
+        <location filename="../settingsdialog.ui" line="116"/>
         <source>Mixer device:</source>
         <translation>混频设备：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="100"/>
+        <location filename="../settingsdialog.ui" line="133"/>
         <source>Advanced Settings</source>
         <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="154"/>
         <source>Soundcard</source>
         <translation>声卡</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="176"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>缓冲时间(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="186"/>
+        <location filename="../settingsdialog.ui" line="196"/>
         <source>Period time (ms):</source>
         <translation>周期时间(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="229"/>
+        <location filename="../settingsdialog.ui" line="272"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="236"/>
+        <location filename="../settingsdialog.ui" line="279"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -84,6 +84,11 @@
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ALSA Plugin Settings</source>
         <translation>ALSA 插件设置</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="232"/>
+        <source>Use mmap access</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

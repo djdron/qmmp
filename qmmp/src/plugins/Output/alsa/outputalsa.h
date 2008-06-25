@@ -76,6 +76,7 @@ private:
     snd_mixer_elem_t* getMixerElem(snd_mixer_t *mixer, char *name, int index);
     snd_mixer_t *mixer;
     snd_mixer_elem_t *pcm_element;
+    bool m_use_mmap;
 };
 
 

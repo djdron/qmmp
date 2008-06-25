@@ -4,10 +4,7 @@
 # Removes svn tags from qmmp package #
 ######################################
 
-make distclean
-rm -rf lib
-find . -name *.qm | xargs rm
-rm_dir='.build'
+rm_dir='.svn'
 
 walk_dirs(){
 

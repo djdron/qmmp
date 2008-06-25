@@ -29,6 +29,10 @@
 #include <string.h>
 #include <iostream>
 
+#ifdef HAVE_ALLOCA_H
+#include <alloca.h>
+#endif
+
 #include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/visual.h>
@@ -41,6 +45,7 @@ OutputALSA::OutputALSA(QObject * parent, bool useVolume)
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     QString dev_name = settings.value("ALSA/device","default").toString();
+    m_use_mmap = settings.value("ALSA/use_mmap", FALSE).toBool();
     pcm_name = strdup(dev_name.toAscii().data());
     stream = SND_PCM_STREAM_PLAYBACK;
     snd_pcm_hw_params_alloca(&hwparams);
@@ -120,12 +125,23 @@ void OutputALSA::configure(long freq, int chan, int prec, int brate)
         uint period_time = settings.value("period_time",100).toUInt()*1000;
         settings.endGroup();
 
-        if (snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED) < 0)
+        if (m_use_mmap)
         {
-            qWarning("OutputALSA: Error setting access.");
-            return;
+            if (snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_MMAP_INTERLEAVED) < 0)
+            {
+                qWarning("OutputALSA: Error setting mmap access.");
+                m_use_mmap = FALSE;
+            }
         }
 
+        if (!m_use_mmap)
+        {
+            if (snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED) < 0)
+            {
+                qWarning("OutputALSA: Error setting access.");
+                return;
+            }
+        }
 
         if (snd_pcm_hw_params_set_format(pcm_handle, hwparams, SND_PCM_FORMAT_S16_LE) < 0)
         {
@@ -137,6 +153,7 @@ void OutputALSA::configure(long freq, int chan, int prec, int brate)
         exact_rate = rate;// = 11000;
         qDebug("OutputALSA: frequency=%d, channels=%d, bitrate=%d",
                rate, chan, brate);
+
         if (snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0) < 0)
         {
             qWarning("OutputALSA: Error setting rate.\n");
@@ -285,7 +302,10 @@ void OutputALSA::run()
             l = snd_pcm_bytes_to_frames(pcm_handle, b->nbytes - n);
             while (l>0)
             {
-                m = snd_pcm_writei (pcm_handle, b->data+n, l);
+                if (m_use_mmap)
+                    m = snd_pcm_mmap_writei (pcm_handle, b->data+n, l);
+                else
+                    m = snd_pcm_writei (pcm_handle, b->data+n, l);
 
                 if (m > 0)
                 {

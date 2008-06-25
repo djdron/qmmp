@@ -31,59 +31,64 @@
         <translation>Nastavení pluginu ALSA</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Device Settings</source>
         <translation>Nastavení zařízení</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="62"/>
         <source>Audio device</source>
         <translation>Zvukové zařízení</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="79"/>
         <source>Mixer</source>
         <translation>Mixér</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="73"/>
+        <location filename="../settingsdialog.ui" line="106"/>
         <source>Mixer card:</source>
         <translation>Zvuková karta:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="83"/>
+        <location filename="../settingsdialog.ui" line="116"/>
         <source>Mixer device:</source>
         <translation>Ovládání hlasitosti:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="100"/>
+        <location filename="../settingsdialog.ui" line="133"/>
         <source>Advanced Settings</source>
         <translation>Pokročilá nastavení</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="154"/>
         <source>Soundcard</source>
         <translation>Zvuková karta</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="176"/>
+        <location filename="../settingsdialog.ui" line="160"/>
         <source>Buffer time (ms):</source>
         <translation>Velikost bufferu (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="186"/>
+        <location filename="../settingsdialog.ui" line="196"/>
         <source>Period time (ms):</source>
         <translation>Délka periody (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="229"/>
+        <location filename="../settingsdialog.ui" line="272"/>
         <source>Cancel</source>
         <translation>Zrušit</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="236"/>
+        <location filename="../settingsdialog.ui" line="279"/>
         <source>OK</source>
         <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="232"/>
+        <source>Use mmap access</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
