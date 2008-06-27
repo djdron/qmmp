@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -35,7 +36,7 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="30"/>
         <source>WavPack Files</source>
-        <translation type="unfinished"></translation>
+        <translation>WavPack 檔案</translation>
     </message>
 </context>
 <context>
