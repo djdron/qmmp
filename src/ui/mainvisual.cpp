@@ -305,7 +305,7 @@ void MainVisual::createMenu()
     m_visModeGroup->setExclusive(TRUE);
     m_visModeGroup->addAction(tr("Analyzer"))->setData("Analyzer");
     m_visModeGroup->addAction(tr("Scope"))->setData("Scope");
-    m_visModeGroup->addAction(tr("Off"))->setData("Off");
+    m_visModeGroup->addAction(tr("Off"))->setData("None");
     foreach(QAction *act, m_visModeGroup->actions ())
     {
         act->setCheckable(TRUE);
