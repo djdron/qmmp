@@ -15,7 +15,7 @@ SOURCES += qmmpfiledialog.cpp \
 FORMS += qmmpfiledialog.ui
 
 
-QMAKE_CLEAN += ../libqmmpfiledialog.so
+QMAKE_CLEAN += $$PLUGINS_PREFIX/FileDialogs/libqmmpfiledialog.so
 
 
 CONFIG += release warn_on plugin
@@ -23,6 +23,7 @@ CONFIG += release warn_on plugin
 TEMPLATE = lib
 
 QMAKE_LIBDIR += ../../../../lib
+LIBS += -lqmmpui
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
