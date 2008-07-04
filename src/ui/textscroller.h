@@ -20,17 +20,18 @@
 #ifndef TEXTSCROLLER_H
 #define TEXTSCROLLER_H
 
-#include <pixmapwidget.h>
+#include <QWidget>
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
 class QTimer;
+class QMenu;
 
 class Skin;
 
-class TextScroller : public PixmapWidget
+class TextScroller : public QWidget
 {
 Q_OBJECT
 public:
@@ -49,10 +50,13 @@ public slots:
 private slots:
     void addOffset();
     void updateSkin();
+    void setAutoscroll(bool);
 
 protected:
-    void hideEvent ( QHideEvent *);
-    void showEvent ( QShowEvent *);
+    void hideEvent (QHideEvent *);
+    void showEvent (QShowEvent *);
+    void paintEvent (QPaintEvent *);
+    void mousePressEvent (QMouseEvent *);
 
 private:
     bool m_update;
@@ -62,9 +66,13 @@ private:
     QFont m_font;
     QFontMetrics *m_metrics;
     QString m_text;
+    QString m_scrollText;
     Skin *m_skin;
     QColor m_color;
     QTimer *m_timer;
+    int m_progress;
+    bool m_autoscroll;
+    QMenu *m_menu;
 };
 
 #endif

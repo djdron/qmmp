@@ -20,10 +20,16 @@
 #include <QPainter>
 #include <QTimer>
 #include <QSettings>
+#include <QAction>
+#include <QMenu>
+#include <QMouseEvent>
+#include <QSettings>
 
 #include "skin.h"
 #include "textscroller.h"
 #include "version.h"
+
+#define SCROLL_SEP "*** "
 
 TextScroller *TextScroller::pointer = 0;
 
@@ -34,57 +40,85 @@ TextScroller *TextScroller::getPointer()
 
 
 TextScroller::TextScroller ( QWidget *parent )
-        : PixmapWidget ( parent )
+        : QWidget ( parent )
 {
     pointer = this;
     m_skin = Skin::getPointer();
     m_pixmap = QPixmap ( 150,15 );
+    resize(150,15);
     x = 0;
+    m_progress = -1;
     m_text = "Qt-based Multimedia Player (Qmmp " + QString(QMMP_STR_VERSION) + ")";
     m_update = FALSE;
     readSettings();
     m_timer = new QTimer ( this );
-    connect ( m_timer, SIGNAL ( timeout() ),SLOT ( addOffset() ) );
+    connect (m_timer, SIGNAL (timeout()), SLOT (addOffset()));
     m_timer->setInterval(50);
     m_timer->start();
     updateSkin();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    m_autoscroll = TRUE;
+    m_menu = new QMenu(this);
+    QAction *autoscrollAction = new QAction(tr("Autoscroll Songname"), m_menu);
+    autoscrollAction->setCheckable (TRUE);
+    connect(autoscrollAction, SIGNAL(toggled(bool)), SLOT(setAutoscroll(bool)));
+    m_menu->addAction(autoscrollAction);
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    autoscrollAction->setChecked(settings.value("TextScroller/autoscroll", TRUE).toBool());
+    setAutoscroll(autoscrollAction->isChecked());
 }
 
 
 TextScroller::~TextScroller()
-{}
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.setValue("TextScroller/autoscroll", m_autoscroll);
+}
 
 void TextScroller::addOffset()
 {
-    m_pixmap.fill ( Qt::transparent );
-    QPainter paint ( &m_pixmap );
     x--;
-    paint.setPen(m_color);
-    paint.setFont(m_font);
-    paint.drawText ( 154+x,12, m_text );
-    paint.drawText ( 154+x+m_metrics->width ( m_text ) + 15,12, m_text );
-    if ( 154 + x < - m_metrics->width ( m_text ) - 15 +1)
+    if ( 154 + x < - m_metrics->width (m_scrollText) - 15 +1)
     {
         x=-154;
     }
-    setPixmap ( m_pixmap );
+    update();
 }
 
 void TextScroller::setText(const QString& text)
 {
-    if(isVisible())
+    m_progress = -1;
+    if (isVisible() && m_autoscroll)
         m_timer->start();
     if (m_text != text)
     {
         m_text = text;
-        x = -50;
+        m_scrollText = "*** " + text;
+        x = m_autoscroll ? -50 : -150;
     }
+    update();
 }
 
 void TextScroller::updateSkin()
 {
     m_color.setNamedColor(m_skin->getPLValue("mbfg"));
+}
+
+
+void TextScroller::setAutoscroll(bool enabled)
+{
+    m_autoscroll = enabled;
+    x = -150;
+    if (m_autoscroll)
+    {
+        if (isVisible())
+            m_timer->start();
+    }
+    else
+    {
+        m_timer->stop();
+        update();
+    }
 }
 
 void TextScroller::readSettings()
@@ -108,21 +142,45 @@ void TextScroller::readSettings()
 void TextScroller::setProgress(int progress)
 {
     m_timer->stop();
-    x = 0;
-    m_pixmap.fill ( Qt::transparent );
-    QPainter paint ( &m_pixmap );
-    paint.setPen(m_color);
-    paint.setFont(m_font);
-    paint.drawText (4,12, tr("Buffering:") + QString(" %1\%").arg(progress));
-    setPixmap(m_pixmap);
+    m_progress = progress;
+    update();
 }
 
-void TextScroller::hideEvent ( QHideEvent *)
+void TextScroller::hideEvent (QHideEvent *)
 {
     m_timer->stop();
 }
 
-void TextScroller::showEvent ( QShowEvent *)
+void TextScroller::showEvent (QShowEvent *)
 {
-    m_timer->start();
+    if (m_autoscroll)
+        m_timer->start();
 }
+
+void TextScroller::paintEvent (QPaintEvent *)
+{
+    QPainter paint (this);
+    paint.setPen(m_color);
+    paint.setFont(m_font);
+    if (m_progress < 0)
+    {
+        if (m_autoscroll)
+        {
+            paint.drawText (154 + x + m_metrics->width (m_scrollText) + 15,12, m_scrollText);
+            paint.drawText (154 + x,12, m_scrollText);
+        }
+        else
+            paint.drawText (154 + x,12, m_text);
+    }
+    else
+        paint.drawText (4,12, tr("Buffering:") + QString(" %1\%").arg(m_progress));
+}
+
+void TextScroller::mousePressEvent (QMouseEvent *e)
+{
+    if (e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
+    else
+        QWidget::mousePressEvent(e);
+}
+
