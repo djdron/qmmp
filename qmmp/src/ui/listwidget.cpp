@@ -305,7 +305,7 @@ void ListWidget::updateList()
     }
     if (m_model->currentItem())
     {
-        TextScroller::getPointer()->setText("***  "+m_model->currentItem()->text());
+        TextScroller::getPointer()->setText(m_model->currentItem()->text());
         parentWidget()->parentWidget()->setWindowTitle(m_model->currentItem()->text());
     }
     cut();
