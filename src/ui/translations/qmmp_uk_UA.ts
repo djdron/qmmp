@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -1066,7 +1067,7 @@
     <message>
         <location filename="../textscroller.cpp" line="62"/>
         <source>Autoscroll Songname</source>
-        <translation type="unfinished"></translation>
+        <translation>Автопрокрутка назви пісні</translation>
     </message>
 </context>
 <context>
