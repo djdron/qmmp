@@ -92,6 +92,8 @@ void StatusIcon::setSongInfo(const SongInfo &song)
         message = song.title();
     if (song.title().isEmpty())
         message = song.artist();
+    if (song.artist().isEmpty() && song.title().isEmpty())
+        message = song.path().section('/',-1);
     if (m_showMessage)
         m_tray->showMessage (tr("Now Playing"), message,
                              QSystemTrayIcon::Information, m_messageDelay);
