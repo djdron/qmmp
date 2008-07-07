@@ -59,7 +59,7 @@ static QStringList files;
 static void checkFactories()
 {
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-   
+
     if (! factories)
     {
         files.clear();
@@ -247,7 +247,7 @@ void Decoder::setEnabled(DecoderFactory* factory, bool enable)
 bool Decoder::isEnabled(DecoderFactory* factory)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if (!factories->contains(factory))
         return FALSE;
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
@@ -414,10 +414,18 @@ void Decoder::changeVolume(char *data, ulong sz, int channels)
 {
     int r = pow( 10, (m_volR - 100)/40.0 ) * 256;
     int l = pow( 10, (m_volL - 100)/40.0 ) * 256;
-    for (ulong i = 0; i < sz/2; i+=2)
+
+    if (channels > 1)
+        for (ulong i = 0; i < sz/2; i+=2)
+        {
+            ((short*)data)[i]*= r/256.0;
+            ((short*)data)[i+1]*= l/256.0;
+        }
+    else
     {
-        ((short*)data)[i]*= r/256.0;
-        ((short*)data)[i+1]*= l/256.0;
+        l = qMax(l,r);
+        for (ulong i = 0; i < sz/2; i++)
+            ((short*)data)[i]*= l/256.0;
     }
 }
 
