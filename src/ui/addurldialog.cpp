@@ -42,6 +42,20 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     connect(m_http, SIGNAL(requestFinished (int, bool)), SLOT(processResponse(int, bool)));
     connect(m_http, SIGNAL(readyRead (const QHttpResponseHeader&)),
             SLOT(readResponse(const QHttpResponseHeader&)));
+
+    //use global proxy settings
+    if (settings.value ("Proxy/use_proxy", FALSE).toBool())
+    {
+
+        if (settings.value ("Proxy/authentication", FALSE).toBool())
+            m_http->setProxy(settings.value("Proxy/host").toString(),
+                             settings.value("Proxy/port").toInt(),
+                             settings.value("Proxy/user").toString(),
+                             settings.value("Proxy/passw").toString());
+        else
+            m_http->setProxy(settings.value("Proxy/host").toString(),
+                             settings.value("Proxy/port").toInt());
+    }
 }
 
 AddUrlDialog::~AddUrlDialog()
@@ -81,7 +95,7 @@ void AddUrlDialog::accept( )
             //download playlist;
             QUrl url(s);
             m_http->setHost(url.host(), url.port(80));
-            m_http->get(url.path()); //TODO proxy support
+            m_http->get(url.path());
             addButton->setEnabled(FALSE);
             return;
         }
