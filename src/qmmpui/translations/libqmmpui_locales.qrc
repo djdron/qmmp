@@ -1,0 +1,13 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>libqmmpui_ru.qm</file>
+    <file>libqmmpui_tr.qm</file>
+    <file>libqmmpui_zh_CN.qm</file>
+    <file>libqmmpui_uk_UA.qm</file>
+    <file>libqmmpui_zh_TW.qm</file>
+    <file>libqmmpui_cs.qm</file>
+    <file>libqmmpui_pt_BR.qm</file>
+    <file>libqmmpui_de.qm</file>
+  </qresource>
+</RCC>

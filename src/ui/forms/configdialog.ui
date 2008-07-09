@@ -469,7 +469,7 @@
             <enum>QTabWidget::Rounded</enum>
            </property>
            <property name="currentIndex" >
-            <number>4</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="Input" >
             <attribute name="title" >
@@ -641,9 +641,9 @@
              <widget class="QComboBox" name="fileDialogComboBox" />
             </item>
             <item>
-             <widget class="QPushButton" name="fdSettingsButton" >
+             <widget class="QPushButton" name="fdInformationButton" >
               <property name="text" >
-               <string>Settings</string>
+               <string>Information</string>
               </property>
              </widget>
             </item>

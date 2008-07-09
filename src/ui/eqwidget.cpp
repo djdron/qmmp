@@ -117,7 +117,7 @@ void EqWidget::changeEvent ( QEvent * event )
 
 void EqWidget::closeEvent ( QCloseEvent* e)
 {
-    if(e->spontaneous ())
+    if (e->spontaneous ())
         emit closed();
     writeSettings();
 }
@@ -389,9 +389,9 @@ void EqWidget::importWinampEQF()
     char header[31];
     char name[257];
     char bands[11];
-        QString path = FileDialog::getOpenFileName(this, tr("Import Preset"),
-                                                     "/home",
-                                                     QString("Winamp EQF (*.q1)"),NULL,true);
+    QString path = FileDialog::getOpenFileName(this, tr("Import Preset"),
+                   "/home",
+                   QString("Winamp EQF (*.q1)"));
 
     QFile file(path);
     file.open(QIODevice::ReadOnly);
