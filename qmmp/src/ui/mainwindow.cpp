@@ -442,9 +442,12 @@ void MainWindow::addDir()
 
 void MainWindow::addFile()
 {
+    QStringList filters;
+    filters << tr("All Supported Bitstreams")+" (" + Decoder::nameFilters().join (" ") +")";
+    filters << Decoder::filters();
     FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
                       m_playListModel, SLOT(addFileList(const QStringList&)),
-                      tr("Select one or more files to open"), Decoder::filter());
+                      tr("Select one or more files to open"), filters.join(";;"));
 }
 
 void MainWindow::clear()

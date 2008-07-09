@@ -158,7 +158,7 @@ public:
     static DecoderFactory *findByMime(const QString&);
     static DecoderFactory *findByContent(QIODevice *);
     static FileTag *createTag(const QString&);
-    static QString filter();
+    static QStringList filters();
     static QStringList nameFilters();
     static QList<DecoderFactory*> *decoderFactories();
     static QStringList decoderFiles();
