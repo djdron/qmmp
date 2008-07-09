@@ -265,28 +265,13 @@ FileTag *Decoder::createTag(const QString& source)
     return 0;
 }
 
-QString Decoder::filter()
+QStringList Decoder::filters()
 {
-    QString allflt(tr("All Supported Bitstreams ("));
-    QString flt;
-
     checkFactories();
-    DecoderFactory *fact;
-    foreach(fact, *factories)
-    {
-        if (isEnabled(fact))
-        {
-            allflt +=fact->properties().filter.toLower() +" ";
-            flt += fact->properties().description + " (" + fact->properties().filter + ")";
-            flt += ";;";
-        }
-    }
-    if (!flt.isEmpty ())
-        flt = flt.left(flt.size ()-2);
-
-    allflt += ");;";
-
-    return allflt + flt;
+    QStringList filters;
+    foreach(DecoderFactory *fact, *factories)
+    filters << fact->properties().description + " (" + fact->properties().filter + ")";
+    return filters;
 }
 
 QStringList Decoder::nameFilters()
