@@ -142,8 +142,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     updateEQ();
     updateSkin();
 
-    FileDialog::registerBuiltinFactories();
-    FileDialog::registerExternalFactories();
+    //FileDialog::registerBuiltinFactories();
+    //FileDialog::registerExternalFactories();
 
     m_generalHandler = new GeneralHandler(this);
     connect(m_generalHandler, SIGNAL(playCalled()), SLOT(play()));
@@ -435,72 +435,16 @@ void MainWindow::closeEvent ( QCloseEvent *)
 
 void MainWindow::addDir()
 {
-    /*
-    QString s = QFileDialog::getExistingDirectory(
-                    this,
-                    tr("Choose a directory"),
-                    m_lastDir,
-                    QFileDialog::DontResolveSymlinks | QFileDialog::ShowDirsOnly);
-
-    if (s.isEmpty())
-        return;
-    m_playListModel->addDirectory(s);
-    m_lastDir = s+"../";
-    */
-    if (FileDialog::isModal())
-    {
-        qWarning("void MainWindow::addDir()");
-        QString s = FileDialog::getExistingDirectory(this,tr("Choose a directory"),m_lastDir);
-
-        if (s.isEmpty())
-            return;
-        m_playListModel->addDirectory(s);
-        m_lastDir = s+"../";
-    }
-    else
-        FileDialog::popup(m_lastDir,FileDialog::AddDirs,Decoder::nameFilters(),
-                          m_playListModel, SLOT(addFileList(const QStringList&)));
+    FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
+                      m_playListModel, SLOT(addFileList(const QStringList&)),
+                      tr("Choose a directory"));
 }
 
 void MainWindow::addFile()
 {
-    /*
-    QStringList files = QFileDialog::getOpenFileNames(
-                            this,
-                            tr("Select one or more files to open"),
-                            m_lastDir,
-                            Decoder::filter());
-    if (files.isEmpty ())
-        return;
-
-    //  foreach(QString s, files)
-    //  m_playListModel->load(new PlayListItem(s));
-
-    m_playListModel->addFiles(files);
-    m_lastDir = files.at(0);
-    */
-
-
-    if (FileDialog::isModal())
-    {
-        QStringList files = FileDialog::getOpenFileNames(
-                                this,
-                                tr("Select one or more files to open"),
-                                m_lastDir,
-                                Decoder::filter());
-        if (files.isEmpty ())
-            return;
-        /*
-          foreach(QString s, files)
-          m_playListModel->load(new PlayListItem(s));
-        */
-        m_playListModel->addFiles(files);
-        m_lastDir = files.at(0);
-    }
-    else
-        FileDialog::popup(m_lastDir,FileDialog::AddFiles,Decoder::nameFilters(),
-                          m_playListModel, SLOT(addFileList(const QStringList&)));
-
+    FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
+                      m_playListModel, SLOT(addFileList(const QStringList&)),
+                      tr("Select one or more files to open"), Decoder::filter());
 }
 
 void MainWindow::clear()
@@ -703,34 +647,17 @@ void MainWindow::loadPlaylist()
         l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        if (FileDialog::isModal())
+        //TODO use nonmodal dialog and multiplier playlists
+        QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
+        if (!f_name.isEmpty())
         {
-            //qWarning("Modal");
-            QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
-            if (!f_name.isEmpty())
-            {
-                m_playListModel->loadPlaylist(f_name);
-                m_playlistName = QFileInfo(f_name).baseName();
-                m_lastDir = QFileInfo(f_name).absoluteDir().path();
-            }
-        }
-        else //FileDialog::popup(m_playListModel,m_lastDir,FileDialog::AddFiles,Decoder::nameFilters());
-            // TODO: implement playlist loading with nonmodal dialogs
-            // For now we'll use default dialog
-        {
-            //qWarning("Modal");
-            QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask,0,true);
-            if (!f_name.isEmpty())
-            {
-                m_playListModel->loadPlaylist(f_name);
-                m_playlistName = QFileInfo(f_name).baseName();
-                m_lastDir = QFileInfo(f_name).absoluteDir().path();
-            }
+            m_playListModel->loadPlaylist(f_name);
+            m_playlistName = QFileInfo(f_name).baseName();
+            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
     }
     else
     {
-        //qWarning("Non Modal");
         qWarning("Error: There is no registered playlist parsers");
     }
 }
@@ -745,30 +672,14 @@ void MainWindow::savePlaylist()
         l << fmt->getExtensions();
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        if (FileDialog::isModal())
-        {
-            QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
-                             m_playlistName + "." + l[0],mask);
+        QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
+                         m_playlistName + "." + l[0],mask);
 
-            if (!f_name.isEmpty())
-            {
-                m_playListModel->savePlaylist(f_name);
-                m_playlistName = QFileInfo(f_name).baseName();
-                m_lastDir = QFileInfo(f_name).absoluteDir().path();
-            }
-        }
-        else // TODO: implement saving playlists with nonmodal dialogs
-            // For now we'll use default dialog
+        if (!f_name.isEmpty())
         {
-            QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
-                             m_playlistName + "." + l[0],mask,0,true);
-
-            if (!f_name.isEmpty())
-            {
-                m_playListModel->savePlaylist(f_name);
-                m_playlistName = QFileInfo(f_name).baseName();
-                m_lastDir = QFileInfo(f_name).absoluteDir().path();
-            }
+            m_playListModel->savePlaylist(f_name);
+            m_playlistName = QFileInfo(f_name).baseName();
+            m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
     }
     else

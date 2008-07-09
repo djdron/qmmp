@@ -34,15 +34,28 @@ HEADERS += general.h \
            playlistparser.h \
            commandlinemanager.h \
            commandlineoption.h \
- filedialog.h
+           filedialog.h \
+           filedialogfactory.h \
+           qtfiledialog.h
 SOURCES += general.cpp \
            generalhandler.cpp \
            songinfo.cpp \
            control.cpp \
            playlistparser.cpp \
            commandlinemanager.cpp \
- filedialog.cpp
+           filedialog.cpp \
+           qtfiledialog.cpp
 
 DESTDIR = .
 
+RESOURCES += translations/libqmmpui_locales.qrc
+
+TRANSLATIONS = translations/libqmmpui_ru.ts \
+               translations/libqmmpui_tr.ts \
+               translations/libqmmpui_zh_CN.ts \
+               translations/libqmmpui_cs.ts \
+               translations/libqmmpui_pt_BR.ts \
+               translations/libqmmpui_uk_UA.ts \
+               translations/libqmmpui_zh_TW.ts \
+               translations/libqmmpui_de.ts
 

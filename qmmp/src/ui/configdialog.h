@@ -57,6 +57,8 @@ private slots:
     void addTitleString(QAction *);
     void saveSettings();
     void updateButtons();
+    void updateDialogButton(int);
+    void showFileDialogInfo();
 
 private:
     void readSettings();

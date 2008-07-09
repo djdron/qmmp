@@ -66,9 +66,10 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
     connect (ui.generalPluginTable, SIGNAL(cellPressed(int, int)), SLOT(updateButtons()));
     connect (ui.effectPluginTable, SIGNAL(cellPressed(int, int)), SLOT(updateButtons()));
     connect (ui.pluginsTab, SIGNAL(currentChanged(int)), SLOT(updateButtons()));
+    connect (ui.fileDialogComboBox, SIGNAL (currentIndexChanged (int)), SLOT(updateDialogButton(int)));
+    connect (ui.fdInformationButton, SIGNAL (clicked()), SLOT(showFileDialogInfo()));
     ui.listWidget->setIconSize (QSize (69,29));
     m_skin = Skin::getPointer();
-    ui.fileDialogComboBox->insertItems(0,FileDialog::registeredFactories());
     readSettings();
     m_reader = new SkinReader(this);
     m_reader->generateThumbs();
@@ -100,16 +101,6 @@ void ConfigDialog::readSettings()
     ui.underscoresCheckBox->setChecked(settings.value ("PlayList/convert_underscore", TRUE).toBool());
     ui.per20CheckBox->setChecked(settings.value ("PlayList/convert_twenty", TRUE).toBool());
     ui.fullPathCheckBox->setChecked(settings.value ("PlayList/full_stream_path", FALSE).toBool());
-
-
-    QString f_dialogName =
-        settings.value("FileDialog",QtFileDialogFactory::QtFileDialogFactoryName).toString();
-
-    int ind = FileDialog::registeredFactories().indexOf(f_dialogName);
-    if (ind != -1)
-        ui.fileDialogComboBox->setCurrentIndex(ind);
-    else
-        ui.fileDialogComboBox->setCurrentIndex(0);
 
     //proxy settings
     ui.enableProxyCheckBox->setChecked(
@@ -177,7 +168,7 @@ void ConfigDialog::loadSkins()
         m_skinList << QFileInfo(path);
     }
     connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)),
-              this, SLOT (changeSkin()));
+             this, SLOT (changeSkin()));
 }
 
 void ConfigDialog::findSkins(const QString &path)
@@ -355,9 +346,20 @@ void ConfigDialog::loadPluginsInfo()
         ui.generalPluginTable->item(i,2)->setToolTip(files.at (i));
     }
 
-    ui.generalPluginTable->resizeColumnToContents ( 0 );
-    ui.generalPluginTable->resizeColumnToContents ( 1 );
+    ui.generalPluginTable->resizeColumnToContents (0);
+    ui.generalPluginTable->resizeColumnToContents (1);
     ui.generalPluginTable->resizeRowsToContents ();
+
+    /*
+        load file dialog information
+    */
+
+    foreach(FileDialogFactory *factory, FileDialog::registeredFactories())
+    {
+        ui.fileDialogComboBox->addItem(factory->properties().name);
+        if (FileDialog::isEnabled(factory))
+            ui.fileDialogComboBox->setCurrentIndex(ui.fileDialogComboBox->count()-1);
+    }
 }
 
 
@@ -463,7 +465,7 @@ void ConfigDialog::showPluginInfo()
         int row = ui.inputPluginTable->currentRow ();
         if (m_inputPluginItems.isEmpty() || row < 0)
             return;
-         m_inputPluginItems.at(row)->factory()->showAbout (this);
+        m_inputPluginItems.at(row)->factory()->showAbout (this);
         break;
     }
     case 1:
@@ -536,7 +538,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("PlayList/convert_underscore", ui.underscoresCheckBox->isChecked());
     settings.setValue ("PlayList/convert_twenty", ui.per20CheckBox->isChecked());
     settings.setValue ("PlayList/full_stream_path", ui.fullPathCheckBox->isChecked());
-    settings.setValue ("FileDialog", ui.fileDialogComboBox->currentText());
+    FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
     settings.setValue ("Proxy/use_proxy", ui.enableProxyCheckBox->isChecked());
     settings.setValue ("Proxy/authentication", ui.authProxyCheckBox->isChecked());
     settings.setValue ("Proxy/host",ui.hostLineEdit->text());
@@ -608,4 +610,15 @@ void ConfigDialog::updateButtons()
     }
     ui.preferencesButton->setEnabled(preferences);
     ui.informationButton->setEnabled(information);
+}
+
+void ConfigDialog::updateDialogButton(int index)
+{
+    ui.fdInformationButton->setEnabled(FileDialog::registeredFactories()[index]->properties().hasAbout);
+}
+
+void ConfigDialog::showFileDialogInfo()
+{
+    int index = ui.fileDialogComboBox->currentIndex ();
+    FileDialog::registeredFactories()[index]->showAbout(this);
 }
