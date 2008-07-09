@@ -36,11 +36,10 @@ SET(libqmmpfiledialog_MOC_HDRS
     qmmpfiledialog.h
 )
 
-#SET(libqmmpfiledialog_RCCS 
-#    translations/translations.qrc
-#    qmmpfiledialog_images.qrc)
+SET(libqmmpfiledialog_RCCS
+    translations/translations.qrc)
 
-#QT4_ADD_RESOURCES(libqmmpfiledialog_RCC_SRCS ${libqmmpfiledialog_RCCS})
+QT4_ADD_RESOURCES(libqmmpfiledialog_RCC_SRCS ${libqmmpfiledialog_RCCS})
 
 QT4_WRAP_CPP(libqmmpfiledialog_MOC_SRCS ${libqmmpfiledialog_MOC_HDRS})
 

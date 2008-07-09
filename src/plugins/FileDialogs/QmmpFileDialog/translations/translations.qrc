@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>qmmp_file_dialog_plugin_tr.qm</file>
+    <file>qmmp_file_dialog_plugin_de.qm</file>
+    <file>qmmp_file_dialog_plugin_zh_CN.qm</file>
+    <file>qmmp_file_dialog_plugin_zh_TW.qm</file>
+    <file>qmmp_file_dialog_plugin_ru.qm</file>
+    <file>qmmp_file_dialog_plugin_uk_UA.qm</file>
+  </qresource>
+</RCC>
