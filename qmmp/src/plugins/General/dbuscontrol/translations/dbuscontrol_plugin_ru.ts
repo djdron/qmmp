@@ -15,7 +15,7 @@
     <message>
         <location filename="../dbuscontrolfactory.cpp" line="49"/>
         <source>Qmmp D-Bus Plugin</source>
-        <translation>Модулб D-Bus для Qmmp</translation>
+        <translation>Модуль D-Bus для Qmmp</translation>
     </message>
     <message>
         <location filename="../dbuscontrolfactory.cpp" line="50"/>
