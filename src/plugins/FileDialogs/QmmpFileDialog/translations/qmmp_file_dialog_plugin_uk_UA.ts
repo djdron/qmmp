@@ -21,17 +21,17 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="50"/>
         <source>List view</source>
-        <translation>Дивитись перелік</translation>
+        <translation>Перегляд списком</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="69"/>
         <source>Detailed view</source>
-        <translation>Детальний перегляд</translation>
+        <translation>Деталізований перегляд</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="94"/>
         <source>Close dialog on add</source>
-        <translation>Закрити діалог додавання</translation>
+        <translation>Закрити після додавання</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="168"/>
