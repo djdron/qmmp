@@ -54,7 +54,7 @@ protected slots:
     void on_listToolButton_toggled(bool);
     void on_detailsToolButton_toggled(bool);
     void on_fileTypeComboBox_activated(int);
-    void on_fileListView_selectionChanged (const QItemSelection&, const QItemSelection&);
+    
 signals:
     void filesAdded(const QStringList&);
 

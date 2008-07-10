@@ -35,10 +35,11 @@ class QtFileDialogFactory : public QObject, public FileDialogFactory
     Q_OBJECT
     Q_INTERFACES(FileDialogFactory);
 public:
-    virtual FileDialog* create();
-    virtual const FileDialogProperties properties() const;
-    virtual void showAbout(QWidget*);
-    virtual QTranslator *createTranslator(QObject*);
+    QtFileDialogFactory(){};
+    FileDialog* create();
+    const FileDialogProperties properties() const;
+    void showAbout(QWidget*);
+    QTranslator *createTranslator(QObject*);
     virtual ~QtFileDialogFactory()
     {
         ;
