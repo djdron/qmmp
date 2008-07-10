@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -796,7 +797,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="446"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished"></translation>
+        <translation>支援的全部檔案</translation>
     </message>
 </context>
 <context>
@@ -1066,7 +1067,7 @@
     <message>
         <location filename="../textscroller.cpp" line="62"/>
         <source>Autoscroll Songname</source>
-        <translation type="unfinished"></translation>
+        <translation>自動捲動曲目名</translation>
     </message>
 </context>
 <context>
