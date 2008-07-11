@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -71,6 +71,8 @@ Visual::Visual(QWidget *parent) : QWidget(parent)
 {
     setAttribute(Qt::WA_DeleteOnClose, TRUE);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
+    m_decoder = 0;
+    m_output = 0;
 }
 
 Visual::~Visual()
