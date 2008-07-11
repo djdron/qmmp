@@ -117,7 +117,7 @@ void QmmpFileDialogImpl::on_lookInComboBox_activated(const QString &path)
 
 void QmmpFileDialogImpl::on_upToolButton_clicked()
 {
-    if(!m_model->parent(fileListView->rootIndex()).isValid())
+    if (!m_model->parent(fileListView->rootIndex()).isValid())
         return;
     fileListView->setRootIndex(m_model->parent(fileListView->rootIndex()));
     treeView->setRootIndex(fileListView->rootIndex());
@@ -196,13 +196,22 @@ void QmmpFileDialogImpl::on_fileNameLineEdit_textChanged (const QString &text)
 
 void QmmpFileDialogImpl::on_addPushButton_clicked()
 {
-    QModelIndexList ml = fileListView->selectionModel()->selectedIndexes();
     QStringList l;
-    foreach(QModelIndex i,ml)
-    l << m_model->filePath(i);
-    if (!l.isEmpty())
+    if (m_mode != FileDialog::SaveFile)
     {
-        addToHistory(l[0]);
+        QModelIndexList ml = fileListView->selectionModel()->selectedIndexes();
+        foreach(QModelIndex i,ml)
+        l << m_model->filePath(i);
+        if (!l.isEmpty())
+        {
+            addToHistory(l[0]);
+            addFiles(l);
+            return;
+        }
+    }
+    else
+    {
+        l << m_model->filePath(fileListView->rootIndex()) + "/" + fileNameLineEdit->text();
         addFiles(l);
     }
 }
@@ -377,8 +386,33 @@ void QmmpFileDialogImpl::addFiles(const QStringList &list)
     }
     else if (m_mode == FileDialog::SaveFile)
     {
-        //TODO check file extension
-        QFileInfo info(m_model->filePath(fileListView->rootIndex()) + "/" + fileNameLineEdit->text());
+        //check file extension
+        QString f_name = fileNameLineEdit->text();
+        bool contains = FALSE;
+        foreach(QString str, qt_clean_filter_list(fileTypeComboBox->currentText()))
+        {
+            QRegExp regExp(str);
+            regExp.setPatternSyntax(QRegExp::Wildcard);
+            if (f_name.contains(regExp))
+            {
+                contains = TRUE;
+                break;
+            }
+        }
+        //add extensio to file name
+        if (!contains)
+        {
+            QString ext = qt_clean_filter_list(fileTypeComboBox->currentText())[0];
+            ext.remove("*");
+            if (!ext.isEmpty() && ext != ".")
+            {
+                f_name.append(ext);
+                qDebug("QmmpFileDialogImpl: added file extension");
+                fileNameLineEdit->setText(f_name);
+                return;
+            }
+        }
+        QFileInfo info(list[0]);
 
         if (info.exists())
         {
