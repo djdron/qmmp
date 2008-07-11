@@ -166,7 +166,7 @@ void MainVisual::timeout()
         update();
         m_draw = TRUE;
     }
-    else if (m_draw && (!output() || !output()->isRunning()))
+    else if (m_draw && !(output() && output()->isRunning()))
     {
         m_draw = FALSE;
         m_pixmap = m_bg;

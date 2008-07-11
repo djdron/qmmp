@@ -37,7 +37,7 @@ static void checkFactories()
             QObject *plugin = loader.instance();
             if ( loader.isLoaded() )
                 qDebug ( "Output: plugin loaded - %s", qPrintable ( fileName ) );
-             else
+            else
                 qWarning("Output: %s", qPrintable(loader.errorString ()));
 
             OutputFactory *factory = 0;
@@ -71,7 +71,7 @@ Output *Output::create (QObject *parent)
     OutputFactory *fact = 0;
     foreach(fact, *factories)
     {
-        if(isEnabled(fact))
+        if (isEnabled(fact))
             break;
         else
             fact = factories->at(0);
@@ -121,7 +121,7 @@ void Output::setEnabled(OutputFactory* factory)
 bool Output::isEnabled(OutputFactory* factory)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if (!factories->contains(factory))
         return FALSE;
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
@@ -138,11 +138,11 @@ Output::Output (QObject* parent) : QThread (parent), r (stackSize())
 
 Output::~Output()
 {
-    qDebug("Output::~Output()");
     foreach(Visual *visual, m_vis_map.values ())
     {
         visual->setOutput(0);
-        visual->close();
+        visual->hide();
+        visual->deleteLater();
     }
     foreach (Visual *visual , visuals)  //external
     {
@@ -179,12 +179,13 @@ void Output::removeVisual (Visual *v)
 
 void Output::processCloseEvent(Visual *v, QCloseEvent *event)
 {
-    if(event->spontaneous () && m_vis_map.key(v))
+    if (event->spontaneous () && m_vis_map.key(v))
     {
         VisualFactory *factory = m_vis_map.key(v);
         m_vis_map.remove(factory);
         Visual::setEnabled(factory, FALSE);
         dispatch(OutputState::VisualRemoved);
+        return;
     }
     removeVisual (v);
 }
@@ -219,7 +220,7 @@ void Output::removeVisual(VisualFactory *factory)
 void Output::dispatchVisual ( Buffer *buffer, unsigned long written,
                               int chan, int prec )
 {
-    if ( ! buffer || !visuals.size())
+    if (!buffer)
         return;
     Visual* visual = 0;
     foreach (visual , visuals)  //external
