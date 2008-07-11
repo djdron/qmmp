@@ -36,6 +36,8 @@ PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
                    Qt::WindowStaysOnTopHint);
     setFrameStyle(QFrame::Box | QFrame::Plain);
     QString title = song.title();
+    if(title.isEmpty())
+        title = song.path().section('/',-1);
     title.append(" ");
     if (!song.isStream())
         title.append(QString("(%1:%2)").arg(song.length()/60).arg(song.length()%60, 2, 10, QChar('0')));
