@@ -141,8 +141,7 @@ Output::~Output()
     foreach(Visual *visual, m_vis_map.values ())
     {
         visual->setOutput(0);
-        visual->hide();
-        visual->deleteLater();
+        visual->close();
     }
     foreach (Visual *visual , visuals)  //external
     {
@@ -185,9 +184,7 @@ void Output::processCloseEvent(Visual *v, QCloseEvent *event)
         m_vis_map.remove(factory);
         Visual::setEnabled(factory, FALSE);
         dispatch(OutputState::VisualRemoved);
-        return;
     }
-    removeVisual (v);
 }
 
 void Output::addVisual(VisualFactory *factory, QWidget *parent)
