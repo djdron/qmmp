@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -73,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Notifier Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Notifier Plugin Einstellungen</translation>
     </message>
 </context>
 </TS>
