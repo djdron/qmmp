@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -116,57 +117,57 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip forward in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Überspringe Titel in Playlist (vorwärts)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Skip backwards in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Überspringe Titel in Playlist (rückwärts)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Start playing current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuellen Titel abspielen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Pause current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuellen Titel anhalten</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Pause if playing, play otherwise</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel anhalten, ansonsten abspielen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Stop current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuellen Titel stoppen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiedergabe-Lautstärke einstellen (Beispiel: qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Jump to File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Springe zu Titel&quot; Dialog anzeigen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Show/hide application</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendung anzeigen/ verstecken</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Datei hinzufügen&quot; Dialog anzeigen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="75"/>
         <source>Display Add Directory dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Verzeichnis hinzufügen&quot; Dialog anzeigen</translation>
     </message>
 </context>
 <context>
@@ -274,7 +275,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="263"/>
         <source>Playlist:</source>
-        <translation>Wiedergabeliste:</translation>
+        <translation>Playlist:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="299"/>
@@ -344,12 +345,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="686"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation>Proxyserver</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="698"/>
         <source>Enable proxy usage</source>
-        <translation>Proxy aktivieren</translation>
+        <translation>Proxyserver verwenden</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="705"/>
@@ -359,22 +360,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>Proxy port:</source>
-        <translation>Proxy-Port:</translation>
+        <translation>Port:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="731"/>
         <source>Use authentication with proxy</source>
-        <translation>Benutze Authentisierung mit Proxyserver</translation>
+        <translation>Authentisierung verwenden</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="738"/>
         <source>Proxy user name:</source>
-        <translation>Benutzername für Proxyserver:</translation>
+        <translation>Benutzername:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="751"/>
         <source>Proxy password:</source>
-        <translation>Passwort für Proxyserver:</translation>
+        <translation>Passwort:</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="166"/>
@@ -429,17 +430,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="380"/>
         <source>Convert underscores to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>Unterstriche in Leerzeichen umwandeln</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="387"/>
         <source>Convert %20 to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>%20 in Leerzeichen umwandeln</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
         <source>Show full path of a stream</source>
-        <translation type="unfinished"></translation>
+        <translation>Vollständigen Pfad anzeigen</translation>
     </message>
 </context>
 <context>
@@ -472,7 +473,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="267"/>
         <source>&amp;Clear</source>
-        <translation>&amp;Leeren</translation>
+        <translation>L&amp;eeren</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="296"/>
@@ -653,12 +654,12 @@
     <message>
         <location filename="../mainvisual.cpp" line="379"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Hintergrund</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="380"/>
         <source>Transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparent</translation>
     </message>
 </context>
 <context>
@@ -731,7 +732,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="581"/>
         <source>&amp;Jump To File</source>
-        <translation>&amp;Springe zu Titel</translation>
+        <translation>Springe zu &amp;Titel</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="581"/>
@@ -791,12 +792,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="579"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Wieder&amp;gabe/Pause</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="446"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle unterstützten Formate</translation>
     </message>
 </context>
 <context>
@@ -954,17 +955,17 @@
     <message>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Titelnummer</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="240"/>
         <source>&amp;Queue</source>
-        <translation type="unfinished">&amp;Warteschlange</translation>
+        <translation>&amp;Warteschlange</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="240"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
 </context>
 <context>
@@ -972,27 +973,27 @@
     <message>
         <location filename="../playlistmodel.cpp" line="311"/>
         <source>Url:</source>
-        <translation type="unfinished"></translation>
+        <translation>Url:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="312"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="313"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Künstler:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="314"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>Album:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="315"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar:</translation>
     </message>
 </context>
 <context>
@@ -1028,32 +1029,32 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="140"/>
         <source>Usage: qmmp [options] [files]</source>
-        <translation type="unfinished"></translation>
+        <translation>Aufruf: qmmp [Optionen] [Dateien]</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="141"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Optionen:</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="146"/>
         <source>Print version number and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Gibt Versionsinformationen aus und beendet</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="147"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation type="unfinished"></translation>
+        <translation>Ideen, Patches, Bugreports an &lt;forkotov02@hotmail.ru&gt; senden</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Display this text and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Diesen Text anzeigen und beenden</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="152"/>
         <source>QMMP version:</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP Version:</translation>
     </message>
 </context>
 <context>
@@ -1061,12 +1062,12 @@
     <message>
         <location filename="../textscroller.cpp" line="176"/>
         <source>Buffering:</source>
-        <translation type="unfinished"></translation>
+        <translation>Buffering:</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="62"/>
         <source>Autoscroll Songname</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatischer Bildlauf (Titel)</translation>
     </message>
 </context>
 <context>
