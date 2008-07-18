@@ -124,7 +124,7 @@ Downloader::~Downloader()
     m_stream.aborted = TRUE;
     m_stream.buf_fill = 0;
     if (m_stream.buf)
-        delete m_stream.buf;
+        free(m_stream.buf);
 
     m_stream.buf = 0;
 }
