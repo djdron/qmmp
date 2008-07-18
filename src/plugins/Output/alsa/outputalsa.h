@@ -58,16 +58,17 @@ private:
     // helper functions
     void reset();
     void status();
+    long alsa_write(unsigned char *data, long size);
 
     bool m_inited, m_pause, m_play, m_userStop;
     long m_totalWritten, m_currentSeconds, m_bps;
     int m_rate, m_frequency, m_channels, m_precision;
     //alsa
     snd_pcm_t *pcm_handle;
-    snd_pcm_stream_t stream;
-    snd_pcm_hw_params_t *hwparams;
     char *pcm_name;
     //alsa
+    snd_pcm_uframes_t m_chunk_size;
+    size_t m_bits_per_frame;
 
     //alsa mixer
     int setupMixer(QString card, QString device);
