@@ -79,7 +79,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="65"/>
         <source>Sample rate:</source>
-        <translation>Частота кадров:</translation>
+        <translation>Дискретизация:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="82"/>
