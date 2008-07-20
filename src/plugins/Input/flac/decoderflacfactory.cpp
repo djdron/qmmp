@@ -17,6 +17,7 @@ bool DecoderFLACFactory::supports(const QString &source) const
 
 bool DecoderFLACFactory::canDecode(QIODevice *input) const
 {
+    Q_UNUSED(input);
     return FALSE;
 }
 
