@@ -141,8 +141,26 @@ void OutputALSA::configure(long freq, int chan, int prec, int brate)
                 return;
             }
         }
-        //TODO set format according prec value
-        if ((err = snd_pcm_hw_params_set_format(pcm_handle, hwparams, SND_PCM_FORMAT_S16_LE)) < 0)
+        snd_pcm_format_t format = SND_PCM_FORMAT_UNKNOWN;
+        switch (prec)
+        {
+        case 8:
+            format = SND_PCM_FORMAT_S8;
+            break;
+        case 16:
+            format = SND_PCM_FORMAT_S16_LE;
+            break;
+        case 24:
+            format = SND_PCM_FORMAT_S24_LE;
+            break;
+        case 32:
+            format = SND_PCM_FORMAT_S32_LE;
+            break;
+        default:
+            qWarning("OutputALSA: unsupported format detected");
+            return;
+        }
+        if ((err = snd_pcm_hw_params_set_format(pcm_handle, hwparams, format)) < 0)
         {
             qDebug("OutputALSA: Error setting format: %s", snd_strerror(err));
             return;
@@ -198,7 +216,7 @@ void OutputALSA::configure(long freq, int chan, int prec, int brate)
         snd_pcm_sw_params_alloca(&swparams);
         snd_pcm_sw_params_current(pcm_handle, swparams);
         if ((err = snd_pcm_sw_params_set_start_threshold(pcm_handle, swparams,
-                buffer_size - period_size)) < 0)
+                   buffer_size - period_size)) < 0)
             qWarning("OutputALSA: Error setting threshold: %s", snd_strerror(err));
         if ((err = snd_pcm_sw_params(pcm_handle, swparams)) < 0)
         {
@@ -206,7 +224,7 @@ void OutputALSA::configure(long freq, int chan, int prec, int brate)
             return;
         }
         //setup needed values
-        m_bits_per_frame = snd_pcm_format_physical_width(SND_PCM_FORMAT_S16_LE) * chan;
+        m_bits_per_frame = snd_pcm_format_physical_width(format) * chan;
         m_chunk_size = period_size;
     }
 }
@@ -287,10 +305,10 @@ void OutputALSA::run()
     long m = 0;
     snd_pcm_uframes_t l;
 
-    long prebuffer_max_size = Buffer::size() + m_bits_per_frame * m_chunk_size / 8;
+    long prebuffer_size = Buffer::size() + m_bits_per_frame * m_chunk_size / 8;
 
-    unsigned char *prebuffer = (unsigned uchar *)malloc(prebuffer_max_size);
-    ulong prebuffer_size = 0;
+    unsigned char *prebuffer = (unsigned uchar *)malloc(prebuffer_size);
+    ulong prebuffer_fill = 0;
 
     dispatch(OutputState::Playing);
 
@@ -323,17 +341,17 @@ void OutputALSA::run()
 
         if (b)
         {
-            if ((ulong)prebuffer_max_size < prebuffer_size + b->nbytes)
+            if ((ulong)prebuffer_size < prebuffer_fill + b->nbytes)
             {
-                prebuffer_max_size = prebuffer_size + b->nbytes;
-                prebuffer = (unsigned char*) realloc(prebuffer, prebuffer_max_size);
+                prebuffer_size = prebuffer_fill + b->nbytes;
+                prebuffer = (unsigned char*) realloc(prebuffer, prebuffer_size);
             }
 
 
-            memcpy(prebuffer + prebuffer_size, b->data, b->nbytes);
-            prebuffer_size += b->nbytes;
+            memcpy(prebuffer + prebuffer_fill, b->data, b->nbytes);
+            prebuffer_fill += b->nbytes;
 
-            l = snd_pcm_bytes_to_frames(pcm_handle, prebuffer_size);
+            l = snd_pcm_bytes_to_frames(pcm_handle, prebuffer_fill);
 
             while (l >= m_chunk_size)
             {
@@ -342,8 +360,8 @@ void OutputALSA::run()
                 {
                     l -= m;
                     m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
-                    prebuffer_size -= m;
-                    memcpy(prebuffer, prebuffer + m, prebuffer_size); //move data to begin
+                    prebuffer_fill -= m;
+                    memcpy(prebuffer, prebuffer + m, prebuffer_fill); //move data to begin
                     m_totalWritten += m;
                     status();
                     dispatchVisual(b, m_totalWritten, m_channels, m_precision);
@@ -362,9 +380,9 @@ void OutputALSA::run()
 
     mutex()->lock ();
     //write remaining data
-    if (prebuffer_size > 0 && recycler()->empty())
+    if (prebuffer_fill > 0 && recycler()->empty())
     {
-        l = snd_pcm_bytes_to_frames(pcm_handle, prebuffer_size);
+        l = snd_pcm_bytes_to_frames(pcm_handle, prebuffer_fill);
 
         while (l > 0)
         {
@@ -372,8 +390,8 @@ void OutputALSA::run()
             {
                 l -= m;
                 m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
-                prebuffer_size -= m;
-                memcpy(prebuffer, prebuffer + m, prebuffer_size);
+                prebuffer_fill -= m;
+                memcpy(prebuffer, prebuffer + m, prebuffer_fill);
                 m_totalWritten += m;
                 status();
             }
