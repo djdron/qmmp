@@ -55,5 +55,24 @@ DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
 }
 
 target.path = $$LIB_DIR
-INSTALLS += target
+
+devel.files += recycler.h \
+               buffer.h \
+               constants.h \
+               decoder.h \
+               output.h \
+               filetag.h \
+               outputfactory.h \
+               decoderfactory.h \
+               soundcore.h \
+               streamreader.h \
+               downloader.h \
+               visual.h \
+               visualfactory.h \
+               effect.h \
+               effectfactory.h
+
+devel.path = /include/qmmp
+
+INSTALLS += target devel
 DESTDIR = .
