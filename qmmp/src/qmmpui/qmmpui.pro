@@ -24,7 +24,7 @@ contains(CONFIG, SVN_VERSION){
 VERSION = $$QMMP_VERSION
 
 target.path = $$LIB_DIR
-INSTALLS += target
+
 HEADERS += general.h \
            generalfactory.h \
            generalhandler.h \
@@ -59,3 +59,18 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
                translations/libqmmpui_zh_TW.ts \
                translations/libqmmpui_de.ts
 
+devel.files += general.h \
+               generalfactory.h \
+               generalhandler.h \
+               songinfo.h \
+               control.h \
+               playlistformat.h \
+               playlistparser.h \
+               commandlinemanager.h \
+               commandlineoption.h \
+               filedialog.h \
+               filedialogfactory.h
+
+devel.path = /include/qmmpui
+
+INSTALLS += target devel

@@ -45,24 +45,42 @@ SET(libqmmp_SRCS
 )
 
 SET(libqmmp_MOC_HDRS
-  visual.h
-  recycler.h
-  buffer.h
-  constants.h
-  decoder.h
-  output.h
-  filetag.h
-  outputfactory.h
-  equ/iir_cfs.h
-  equ/iir_fpu.h
-  equ/iir.h
-  decoderfactory.h
-  soundcore.h
-  streamreader.h
-  downloader.h
-  effectfactory.h
-  effect.h
+    visual.h
+    recycler.h
+    buffer.h
+    constants.h
+    decoder.h
+    output.h
+    filetag.h
+    outputfactory.h
+    equ/iir_cfs.h
+    equ/iir_fpu.h
+    equ/iir.h
+    decoderfactory.h
+    soundcore.h
+    streamreader.h
+    downloader.h
+    effectfactory.h
+    effect.h
 )
+
+SET(libqmmp_DEVEL_HDRS
+    visual.h
+    recycler.h
+    buffer.h
+    constants.h
+    decoder.h
+    output.h
+    filetag.h
+    outputfactory.h
+    decoderfactory.h
+    soundcore.h
+    streamreader.h
+    downloader.h
+    effectfactory.h
+    effect.h
+)
+
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
 
@@ -72,3 +90,4 @@ ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
 target_link_libraries(libqmmp ${QT_LIBRARIES} ${CURL_LDFLAGS} ${CURL_CFLAGS})
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
 install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR})
+install(FILES ${libqmmp_DEVEL_HDRS} DESTINATION include/qmmp)

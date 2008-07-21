@@ -48,6 +48,20 @@ SET(libqmmpui_MOC_HDRS
     qtfiledialog.h
 )
 
+SET(libqmmpui_DEVEL_HDRS
+    generalfactory.h
+    general.h
+    generalhandler.h
+    songinfo.h
+    control.h
+    playlistparser.h
+    playlistformat.h
+    commandlinemanager.h
+    commandlineoption.h
+    filedialog.h
+    filedialogfactory.h
+)
+
 
 QT4_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmpui_locales.qrc)
 
@@ -59,3 +73,4 @@ ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RC
 target_link_libraries(qmmpui ${QT_LIBRARIES})
 SET_TARGET_PROPERTIES(qmmpui PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})
 install(TARGETS qmmpui LIBRARY DESTINATION ${LIB_DIR})
+install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION include/qmmpui)
