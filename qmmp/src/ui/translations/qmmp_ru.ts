@@ -51,7 +51,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="82"/>
         <source>:txt/description_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:txt/description_ru.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
@@ -86,7 +86,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
         <source>:/txt/translators_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/translators_ru.txt</translation>
     </message>
 </context>
 <context>
