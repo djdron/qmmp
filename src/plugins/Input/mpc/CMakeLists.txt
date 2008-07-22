@@ -1,13 +1,12 @@
 project(libmpc)
 
+INCLUDE(CheckIncludeFileCXX)
 cmake_minimum_required(VERSION 2.4.0)
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
               
-
-INCLUDE(UsePkgConfig)
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -30,7 +29,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libmpc
 
-SET(MPC_FOUND TRUE CACHE BOOL INTERNAL) #add test
+CHECK_INCLUDE_FILE_CXX(mpcdec/mpcdec.h MPC_FOUND)
 
 include_directories(${TAGLIB_INCLUDE_DIRS})
 link_directories(${TAGLIB_LIBRARY_DIRS})
