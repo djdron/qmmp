@@ -3,28 +3,79 @@ Qmmp - Qt-based multimedia player
 This program is an audio-player, written with help of Qt library.
 
 Main opportunities:
-- unpacked winamp skins support 
+- Winamp and xmms skins support
 - plugins support
 - MPEG1 layer 1/2/3 support
 - Ogg Vorbis support
 - native FLAC support
 - Musepack support
+- WavePack support
+- ModPlug support
+- WMA support
+- PCM WAVE support (and other formats provided by libsndfile library)
 - AlSA sound output
 - JACK sound output
+- OSS sound output
+- PulseAudio output
+- Last.fm scrobbler
+- D-Bus support
+- Spectrum Analyzer
+- sample rate conversion
+- streaming support (MP3, Vorbis via IceCast/ShoutCast)
 
 Requirements:
 - OS GNU Linux
-- Qt >= 4.2
-- MAD
-- Ogg Vorbis 
-- ALSA >= 1.0.1
-- TagLib >= 1.4
-- Flac >= 1.1.3 (Optional)
+- Qt >= 4.3
+- tar, unzip, bzip2, gzip
+- libmad
+- libvorbis
+- libogg
+- libalsa >= 1.0.1
+- taglib >= 1.4
+- curl >= 7.16
+- flac >= 1.1.3 (Optional)
 - libmpcdec >= 1.2.6 (Optional)
-- Jack >= 0.102.5 (Optional)
+- jackit >= 0.102.5 (Optional)
+- libsamplerate >= 0.1.2 (Optional)
+- libmodplug >= 0.8.4 (Optional)
+- libsndfile >= 1.0.17 (Optional)
+- wavpack >= 4.41 (Optional)
+- pulseaudio >= 0.9.9 (Optional)
+- ffmpeg >= 0.4.9-pre1 (Optional)
+- cmake >= 2.4.8 (for build only)
+
+
+Attention! Qmmp build needs lrelease installed. The qt4-linguist package often contains this utility.
+
+Configure:
+cmake ./
 
 Build:
-qmake-qt4 && make
+make
+
+Installation:
+make install
+
+If someone module (for example, Jack plugin) doesn't build or doesn't needed you can disable it
+by running:
+cmake ./ -D USE_JACK:BOOL=FALSE
+
+Available options:
+USE_ALSA, USE_ANALYZER, USE_DBUS, USE_FFMPEG, USE_FLAC, USE_JACK, USE_MAD, USE_MODPLUG, USE_MPC,
+USE_NOTIFIER, USE_OSS, USE_PULSE, USE_QMMP_DIALOG, USE_SCROBBLER, USE_SNDFILE, USE_SRC, USE_STATICON,
+USE_VORBIS, USE_WAVPACK
+
+Also you can use ccmake for changing plugins configuration.
+By default program will be installed in /usr/local. You can change default path by running:
+cmake ./ -DCMAKE_INSTALL_PREFIX=custom_path
+
+In some cases, you can use qmake for building and installation.
+
+Configure:
+qmake-qt4 (or qmake)
+
+Build:
+make
 
 Installation:
 make install INSTALL_ROOT=/usr/local
@@ -36,28 +87,13 @@ If someone module doesn't build or doesn't needed you can disable it
 in qmmp.pri file - just comment corresponding line( symbol '#').
 Attention! By default all modules are enabled.
 
-Also you can use cmake for building and installation (for testing only).
+Changing shared library install path (needed by some 64-bit distributions).
+By default, all libraries and plugins will be installed in $(INSTALL PREFIX)/lib. You can change "lib" 
+to "lib64" by running qmake-qt4 or cmake with special parameter:
+qmake-qt4 LIB_DIR=/lib64
+or
+cmake ./ -D LIB_DIR=lib64
 
-Configure:
-cmake ./
-
-Build:
-make
-
-Installation:
-make install
-
-If someone module doesn't build or doesn't needed you can disable it by running:
-cmake ./ -D USE_JACK:BOOL=FALSE
-This command will disable JACK Plugin for example. Available options:
-USE_MAD, USE_MPC, USE_VORBIS, USE_FFMPEG, USE_FLAC, USE_ALSA, USE_JACK.
-Also you can use ccmake for changing plugins configuration.
-By default programm will be installed in /usr/local. You can change default path by running:
-cmake ./ -D CMAKE_INSTALL_PREFIX=custom_path
-
-Attention! By default all modules are enabled.
-
-
-All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru.
-
+All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
+http://code.google.com/p/qmmp/issues/list
 
