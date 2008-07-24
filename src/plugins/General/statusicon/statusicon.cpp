@@ -105,6 +105,8 @@ void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger)
         m_control->toggleVisibility();
+    else if (reason == QSystemTrayIcon::MiddleClick)
+        m_control->pause();
 }
 
 void StatusIcon::enable()
