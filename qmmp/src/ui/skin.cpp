@@ -648,7 +648,7 @@ void Skin::loadRegion()
 
     if ( path.isNull () )
     {
-        qDebug ( "Skin: cannot find region.txt. Transparenty disabled" );
+        qDebug ( "Skin: cannot find region.txt. Transparency disabled" );
         return;
     }
     m_mwRegion = createRegion(path, "Normal");
