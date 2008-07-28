@@ -1,3 +1,10 @@
+// Copyright (c) 2000-2001 Brad Hughes <bhughes@trolltech.com>
+//
+// Use, modification and distribution is allowed without limitation,
+// warranty, or liability of any kind.
+//
+
+
 #include <QtGui>
 
 #include "decoder_mad.h"

@@ -534,7 +534,7 @@ int OutputALSA::setupMixer(QString card, QString device)
 
     setVolume(a * 100 / alsa_max_vol, b * 100 / alsa_max_vol);
 
-    qDebug("OutputALSA: setupMixer() succes");
+    qDebug("OutputALSA: setupMixer() success");
 
     return 0;
 }
