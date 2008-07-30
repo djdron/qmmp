@@ -199,9 +199,16 @@ void QmmpFileDialogImpl::on_addPushButton_clicked()
     QStringList l;
     if (m_mode != FileDialog::SaveFile)
     {
-        QModelIndexList ml = fileListView->selectionModel()->selectedIndexes();
+        QModelIndexList ml;
+        if (stackedWidget->currentIndex() == 0)
+            ml = fileListView->selectionModel()->selectedIndexes();
+        else
+            ml = treeView->selectionModel()->selectedIndexes();
         foreach(QModelIndex i,ml)
-        l << m_model->filePath(i);
+        {
+            if (!l.contains(m_model->filePath(i)))
+                l << m_model->filePath(i);
+        }
         if (!l.isEmpty())
         {
             addToHistory(l[0]);

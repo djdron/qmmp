@@ -146,7 +146,6 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
                          Output *output)
 {
     Decoder *decoder = 0;
-    qDebug(qPrintable(source));
     DecoderFactory *fact = 0;
 
     if (!input->open(QIODevice::ReadOnly))
