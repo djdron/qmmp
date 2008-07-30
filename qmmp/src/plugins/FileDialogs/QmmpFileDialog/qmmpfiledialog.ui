@@ -109,7 +109,7 @@
    <item row="1" column="0" colspan="3" >
     <widget class="QStackedWidget" name="stackedWidget" >
      <property name="currentIndex" >
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page" >
       <layout class="QVBoxLayout" >
@@ -152,6 +152,9 @@
          </property>
          <property name="itemsExpandable" >
           <bool>false</bool>
+         </property>
+         <property name="sortingEnabled" >
+          <bool>true</bool>
          </property>
          <property name="allColumnsShowFocus" >
           <bool>true</bool>
