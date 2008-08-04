@@ -15,7 +15,7 @@
   <property name="sizeGripEnabled" >
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QGridLayout" name="gridLayout" >
    <item row="0" column="0" colspan="3" >
     <layout class="QHBoxLayout" >
      <item>
@@ -109,10 +109,13 @@
    <item row="1" column="0" colspan="3" >
     <widget class="QStackedWidget" name="stackedWidget" >
      <property name="currentIndex" >
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page" >
       <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
        <item>
         <widget class="QListView" name="fileListView" >
          <property name="selectionMode" >
@@ -142,6 +145,9 @@
      </widget>
      <widget class="QWidget" name="page_2" >
       <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
        <item>
         <widget class="QTreeView" name="treeView" >
          <property name="selectionMode" >

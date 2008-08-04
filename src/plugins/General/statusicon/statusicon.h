@@ -53,6 +53,7 @@ private:
     bool m_enabled;
     int m_messageDelay;
     Control *m_control;
+    uint m_state;
 
 };
 

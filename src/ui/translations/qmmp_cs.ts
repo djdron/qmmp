@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="cs">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -116,57 +117,57 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip forward in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Přejít vpřed v seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Skip backwards in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Přejít zpět v seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Start playing current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustit přehrávání aktuální skladby</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Pause current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozastavit aktuální skladbu</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Pause if playing, play otherwise</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozastavit, přehrává-li se, jinak přehrávat</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Stop current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit aktuální skladbu</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavit hlasitot přehrávání (příklady: qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Jump to File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit dialog Přeskočit na soubor</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Show/hide application</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit/skrýt aplikaci</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit dialog Přidat soubor</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="75"/>
         <source>Display Add Directory dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit dialog Přidat adresář</translation>
     </message>
 </context>
 <context>
@@ -429,17 +430,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="380"/>
         <source>Convert underscores to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>Převést podtržítka na mezery</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="387"/>
         <source>Convert %20 to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>Převést %20 na mezery</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="394"/>
         <source>Show full path of a stream</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit plnou cestu k streamu</translation>
     </message>
 </context>
 <context>
@@ -653,12 +654,12 @@
     <message>
         <location filename="../mainvisual.cpp" line="379"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozadí</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="380"/>
         <source>Transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>Průhledné</translation>
     </message>
 </context>
 <context>
@@ -791,12 +792,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="579"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Přehrát/Pauza</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="446"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished"></translation>
+        <translation>Všechny podporované formáty</translation>
     </message>
 </context>
 <context>
@@ -959,12 +960,12 @@
     <message>
         <location filename="../playlist.cpp" line="240"/>
         <source>&amp;Queue</source>
-        <translation type="unfinished">&amp;Fronta</translation>
+        <translation>&amp;Fronta</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="240"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
 </context>
 <context>
@@ -972,27 +973,27 @@
     <message>
         <location filename="../playlistmodel.cpp" line="311"/>
         <source>Url:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="312"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Název:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="313"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Umělec:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="314"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>Album:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="315"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Komentář:</translation>
     </message>
 </context>
 <context>
@@ -1028,32 +1029,32 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="140"/>
         <source>Usage: qmmp [options] [files]</source>
-        <translation type="unfinished"></translation>
+        <translation>Použití: qmmp [volby] [soubory]</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="141"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Volby:</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="146"/>
         <source>Print version number and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypsat číslo verze a skončit</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="147"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation type="unfinished"></translation>
+        <translation>Nápady, patche, hlášení chyb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Display this text and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit tento text a skončit</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="152"/>
         <source>QMMP version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze QMMP:</translation>
     </message>
 </context>
 <context>
@@ -1066,7 +1067,7 @@
     <message>
         <location filename="../textscroller.cpp" line="62"/>
         <source>Autoscroll Songname</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky rolovat název skladby</translation>
     </message>
 </context>
 <context>
