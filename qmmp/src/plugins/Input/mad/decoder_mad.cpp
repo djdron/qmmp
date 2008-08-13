@@ -122,9 +122,15 @@ bool DecoderMAD::initialize()
 
     if (! findHeader())
     {
-        qDebug("DecoderMAD: Cannot find a valid MPEG header.");
+        qDebug("DecoderMAD: Can't find a valid MPEG header.");
         return FALSE;
     }
+    mad_stream_buffer(&stream, (unsigned char *) input_buf, input_bytes);
+    stream.error = MAD_ERROR_NONE;
+    stream.error = MAD_ERROR_BUFLEN;
+    mad_frame_mute (&frame);
+    stream.next_frame = NULL;
+    stream.sync = 0;
     configure(freq, channels, 16, bitrate);
 
     inited = TRUE;
@@ -221,78 +227,116 @@ fail:
 
 bool DecoderMAD::findHeader()
 {
-    bool result = false;
+    bool result = FALSE;
     int count = 0;
+    bool has_xing = FALSE;
+    bool is_vbr = FALSE;
+    mad_timer_t duration = mad_timer_zero;
+    struct mad_header header;
+    mad_header_init (&header);
 
-    while (1)
+    while (TRUE)
     {
-        if (input_bytes < globalBufferSize)
+        input_bytes = 0;
+        if (stream.error == MAD_ERROR_BUFLEN || !stream.buffer)
         {
-            int bytes = input()->read(input_buf + input_bytes,
-                                      globalBufferSize - input_bytes);
-            if (bytes <= 0)
-            {
-                if (bytes == -1)
-                    result = false;
-                ;
-                break;
-            }
-            input_bytes += bytes;
-        }
+            size_t remaining = 0;
 
-        mad_stream_buffer(&stream, (unsigned char *) input_buf, input_bytes);
-
-        bool done = false;
-        while (! done)
-        {
-            if (mad_frame_decode(&frame, &stream) != -1)
-                done = true;
-            else if (!MAD_RECOVERABLE(stream.error))
+            if (!stream.next_frame)
             {
-                qWarning("DecoderMAD: Can't decode frame");
-                break;
+                remaining = stream.bufend - stream.next_frame;
+                memmove (input_buf, stream.next_frame, remaining);
             }
 
-            count++;
+            input_bytes = input()->read(input_buf + remaining, globalBufferSize - remaining);
+
+            if (input_bytes <= 0)
+                break;
+
+            mad_stream_buffer(&stream, (unsigned char *) input_buf + remaining, input_bytes);
+            stream.error = MAD_ERROR_NONE;
         }
 
-        findXingHeader(stream.anc_ptr, stream.anc_bitlen);
-        result = done;
-        if ((stream.error != MAD_ERROR_BUFLEN))
+        if (mad_header_decode(&header, &stream) == -1)
+        {
+            if (stream.error == MAD_ERROR_BUFLEN)
+                continue;
+            else if (MAD_RECOVERABLE(stream.error))
+                continue;
+            else
+            {
+                qDebug ("DecoderMAD: Can't decode header: %s", mad_stream_errorstr(&stream));
+                break;
+            }
+        }
+        result = TRUE;
+
+        if (input()->isSequential())
             break;
 
-        input_bytes = &input_buf[input_bytes] - (char *) stream.next_frame;
-        memmove(input_buf, stream.next_frame, input_bytes);
+        count ++;
+        //try to detect xing header
+        if (count == 1)
+        {
+            frame.header = header;
+            if (mad_frame_decode(&frame, &stream) != -1 &&
+                    findXingHeader(stream.anc_ptr, stream.anc_bitlen))
+            {
+                is_vbr = TRUE;
+
+                qDebug ("DecoderMAD: Xing header detected");
+
+                if (xing.flags & XING_FRAMES)
+                {
+                    has_xing = TRUE;
+                    count = xing.frames;
+                    break;
+                }
+            }
+        }
+        //try to detect VBR
+        if (!is_vbr && !(count > 15))
+        {
+            if (bitrate && header.bitrate != bitrate)
+            {
+                qDebug ("DecoderMAD: VBR detected");
+                is_vbr = TRUE;
+            }
+            else
+                bitrate = header.bitrate;
+        }
+        else if (!is_vbr)
+        {
+            qDebug ("DecoderMAD: Fixed rate detected");
+            break;
+        }
+        mad_timer_add (&duration, header.duration);
     }
 
-    if (result && count)
+    if (!result)
+        return FALSE;
+
+    if (!is_vbr)
     {
-        freq = frame.header.samplerate;
-        channels = MAD_NCHANNELS(&frame.header);
-        bitrate = frame.header.bitrate / 1000;
-        calcLength(&frame.header);
+        double time = (input()->size() * 8.0) / (header.bitrate);
+        double timefrac = (double)time - ((long)(time));
+        mad_timer_set(&duration, (long)time, (long)(timefrac*100), 100);
     }
-
-    return result;
-}
-
-void DecoderMAD::calcLength(struct mad_header *header)
-{
-    if (! input() || input()->isSequential())
-        return;
-
-    totalTime = 0.;
-    if (xing.flags & XING_FRAMES)
+    else if (has_xing)
     {
-        mad_timer_t timer;
-
-        timer = header->duration;
-        mad_timer_multiply(&timer, xing.frames);
-
-        totalTime = double(mad_timer_count(timer, MAD_UNITS_MILLISECONDS)) / 1000.;
+        mad_timer_multiply (&header.duration, count);
+        duration = header.duration;
     }
-    else if (header->bitrate > 0)
-        totalTime = input()->size() * 8 / header->bitrate;
+
+    totalTime = mad_timer_count(duration, MAD_UNITS_SECONDS);
+    qDebug ("DecoderMAD: Total time: %ld", long(totalTime));
+    freq = header.samplerate;
+    channels = MAD_NCHANNELS(&header);
+    bitrate = header.bitrate / 1000;
+    mad_header_finish(&header);
+    input()->seek(0);
+    input_bytes = 0;
+    return TRUE;
 }
 
 double DecoderMAD::lengthInSeconds()
@@ -352,7 +396,7 @@ void DecoderMAD::flush(bool final)
 
 void DecoderMAD::run()
 {
-    int skip_frames = 0;
+    int skip_frames = 1; //skip first frame
     mutex()->lock();
 
     if (! inited)
@@ -429,6 +473,9 @@ void DecoderMAD::run()
         {
             if (mad_frame_decode(&frame, &stream) == -1)
             {
+                if (stream.error == MAD_ERROR_LOSTSYNC)
+                    continue;
+
                 if (stream.error == MAD_ERROR_BUFLEN)
                     break;
 

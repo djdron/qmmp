@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,27 +38,27 @@
 
 
 
-EqWidget::EqWidget ( QWidget *parent )
-        : PixmapWidget ( parent )
+EqWidget::EqWidget (QWidget *parent)
+        : PixmapWidget (parent)
 {
     m_skin = Skin::getPointer();
-    setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint );
-    setPixmap ( m_skin->getEqPart ( Skin::EQ_MAIN ) );
+    setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
+    setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     //setPixmap(QPixmap(275,116));
-    m_titleBar = new EqTitleBar ( this );
-    m_titleBar -> move ( 0,0 );
+    m_titleBar = new EqTitleBar (this);
+    m_titleBar -> move (0,0);
     m_titleBar -> show();
-    connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
+    connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
 
-    m_preamp = new EqSlider ( this );
+    m_preamp = new EqSlider (this);
     m_preamp->show();
-    m_preamp->move ( 21,38 );
-    connect ( m_preamp,SIGNAL ( sliderMoved ( int ) ),SLOT ( setPreamp () ) );
+    m_preamp->move (21,38);
+    connect (m_preamp,SIGNAL (sliderMoved (int)),SLOT (setPreamp ()));
 
-    m_on = new ToggleButton ( this,Skin::EQ_BT_ON_N,Skin::EQ_BT_ON_P,
-                              Skin::EQ_BT_OFF_N,Skin::EQ_BT_OFF_P );
+    m_on = new ToggleButton (this,Skin::EQ_BT_ON_N,Skin::EQ_BT_ON_P,
+                             Skin::EQ_BT_OFF_N,Skin::EQ_BT_OFF_P);
     m_on->show();
-    m_on->move ( 14,18 );
+    m_on->move (14,18);
     connect (m_on, SIGNAL (clicked(bool)), SIGNAL(valueChanged()));
 
     m_autoButton = new ToggleButton(this, Skin::EQ_BT_AUTO_1_N, Skin::EQ_BT_AUTO_1_P,
@@ -68,22 +68,21 @@ EqWidget::EqWidget ( QWidget *parent )
 
     m_eqg = new EQGraph(this);
     m_eqg->move(87,17);
-    m_eqg->show();
 
     m_presetsMenu = new QMenu(this);
 
-    m_presetButton = new Button ( this, Skin::EQ_BT_PRESETS_N, Skin::EQ_BT_PRESETS_P);
+    m_presetButton = new Button (this, Skin::EQ_BT_PRESETS_N, Skin::EQ_BT_PRESETS_P);
     m_presetButton->move(217,18);
     m_presetButton->show();
 
     connect(m_presetButton, SIGNAL(clicked()), SLOT(showPresetsMenu()));
 
-    for ( int i = 0; i<10; ++i )
+    for (int i = 0; i<10; ++i)
     {
-        m_sliders << new EqSlider ( this );
-        m_sliders.at ( i )->move ( 78+i*18,38 );
-        m_sliders.at ( i )->show();
-        connect (m_sliders.at (i), SIGNAL ( sliderMoved (int) ),SLOT (setGain()));
+        m_sliders << new EqSlider (this);
+        m_sliders.at (i)->move (78+i*18,38);
+        m_sliders.at (i)->show();
+        connect (m_sliders.at (i), SIGNAL (sliderMoved (int)),SLOT (setGain()));
     }
     readSettings();
     createActions();
@@ -102,12 +101,12 @@ int EqWidget::preamp()
     return m_preamp->value();
 }
 
-int EqWidget::gain ( int g )
+int EqWidget::gain (int g)
 {
-    return m_sliders.at ( g )->value();
+    return m_sliders.at (g)->value();
 }
 
-void EqWidget::changeEvent ( QEvent * event )
+void EqWidget::changeEvent (QEvent * event)
 {
     if (event->type() == QEvent::ActivationChange)
     {
@@ -115,7 +114,7 @@ void EqWidget::changeEvent ( QEvent * event )
     }
 }
 
-void EqWidget::closeEvent ( QCloseEvent* e)
+void EqWidget::closeEvent (QCloseEvent* e)
 {
     if (e->spontaneous ())
         emit closed();
@@ -124,16 +123,16 @@ void EqWidget::closeEvent ( QCloseEvent* e)
 
 void EqWidget::updateSkin()
 {
-    m_titleBar->setActive ( FALSE );
-    setPixmap ( m_skin->getEqPart ( Skin::EQ_MAIN ) );
+    m_titleBar->setActive (FALSE);
+    setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
 }
 
 void EqWidget::readSettings()
 {
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    settings.beginGroup ( "Equalizer" );
+    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.beginGroup ("Equalizer");
     //geometry
-    move ( settings.value ( "pos", QPoint ( 100, 216 ) ).toPoint() );
+    move (settings.value ("pos", QPoint (100, 216)).toPoint());
     //equalizer
     for (int i = 0; i < m_sliders.size(); ++i)
         m_sliders.at(i)->setValue(settings.value("band_"+
@@ -143,7 +142,7 @@ void EqWidget::readSettings()
     settings.endGroup();
     setGain();
     //equalizer presets
-    QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat );
+    QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
     for (int i = 1; TRUE; ++i)
     {
         if (eq_preset.contains("Presets/Preset"+QString("%1").arg(i)))
@@ -166,7 +165,7 @@ void EqWidget::readSettings()
             break;
     }
     //equalizer auto-load presets
-    QSettings eq_auto (QDir::homePath() +"/.qmmp/eq.auto_preset", QSettings::IniFormat );
+    QSettings eq_auto (QDir::homePath() +"/.qmmp/eq.auto_preset", QSettings::IniFormat);
     for (int i = 1; TRUE; ++i)
     {
         if (eq_auto.contains("Presets/Preset"+QString("%1").arg(i)))
@@ -192,10 +191,10 @@ void EqWidget::readSettings()
 
 void EqWidget::writeSettings()
 {
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    settings.beginGroup ( "Equalizer" );
+    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.beginGroup ("Equalizer");
     //geometry
-    settings.setValue ( "pos", this->pos() );
+    settings.setValue ("pos", this->pos());
     //equalizer
     for (int i = 0; i < m_sliders.size(); ++i)
         settings.setValue("band_"+QString("%1").arg(i), m_sliders.at(i)->value());
@@ -203,7 +202,7 @@ void EqWidget::writeSettings()
     settings.setValue("enabled",m_on->isChecked());
     settings.endGroup();
     //equalizer presets
-    QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat );
+    QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
     eq_preset.clear ();
     for (int i = 0; i < m_presets.size(); ++i)
     {
@@ -219,7 +218,7 @@ void EqWidget::writeSettings()
     }
     //equalizer auto-load presets
     QSettings eq_auto (QDir::homePath() +"/.qmmp/eq.auto_preset",
-                       QSettings::IniFormat );
+                       QSettings::IniFormat);
     eq_auto.clear();
     for (int i = 0; i < m_autoPresets.size(); ++i)
     {
@@ -395,11 +394,11 @@ void EqWidget::importWinampEQF()
 
     QFile file(path);
     file.open(QIODevice::ReadOnly);
-    file.read ( header, 31);
+    file.read (header, 31);
     if (QString::fromAscii(header).contains("Winamp EQ library file v1.1"))
     {
 
-        while (file.read ( name, 257))
+        while (file.read (name, 257))
         {
             EQPreset* preset = new EQPreset;
             preset->setText(QString::fromAscii(name));

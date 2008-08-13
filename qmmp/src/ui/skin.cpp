@@ -338,7 +338,12 @@ void Skin::loadEqMain()
     m_eq_parts[ EQ_MAIN ] = pixmap->copy ( 0,0,275,116 );
     m_eq_parts[ EQ_TITLEBAR_A ] = pixmap->copy ( 0,134,275,14 );
     m_eq_parts[ EQ_TITLEBAR_I ] = pixmap->copy ( 0,149,275,14 );
-    m_eq_parts[ EQ_GRAPH ] = pixmap->copy ( 0,294,113,19 );
+
+    if(pixmap->height() > 295)
+        m_eq_parts[ EQ_GRAPH ] = pixmap->copy ( 0,294,113,19 );
+    else
+        m_eq_parts[ EQ_GRAPH ] = QPixmap();
+
     for ( int i = 0; i < 14; ++i )
     {
         m_eq_bar << pixmap->copy ( 13 + i*15,164,14,63 );

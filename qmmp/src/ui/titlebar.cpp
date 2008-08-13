@@ -179,11 +179,11 @@ void TitleBar::shade()
     {
         m_mw->setFixedSize(275,116);
         setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
-        delete m_shade2;
-        delete m_currentTime;
-        delete m_control;
+        m_shade2->deleteLater();
+        m_currentTime->deleteLater();
+        m_control->deleteLater();
         SoundCore::instance()->removeVisual(m_visual);
-        delete m_visual;
+        m_visual->deleteLater();
         m_shade2 = 0;
         m_currentTime = 0;
         m_shade->show();

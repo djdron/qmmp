@@ -163,9 +163,9 @@ void EqTitleBar::shade()
     {
         m_eq->setFixedSize(275,116);
         setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_A));
-        delete m_shade2;
-        delete m_volumeBar;
-        delete m_balanceBar;
+        m_shade2->deleteLater();
+        m_volumeBar->deleteLater();
+        m_balanceBar->deleteLater();
         m_volumeBar = 0;
         m_balanceBar = 0;
         m_shade2 = 0;

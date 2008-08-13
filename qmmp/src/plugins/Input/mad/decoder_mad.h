@@ -12,7 +12,8 @@ class DecoderMAD;
 #include <qmmp/decoder.h>
 #include "decodermadfactory.h"
 
-extern "C" {
+extern "C"
+{
 #include <mad.h>
 }
 
@@ -20,8 +21,8 @@ extern "C" {
 class DecoderMAD : public Decoder
 {
 public:
-    DecoderMAD(QObject *parent = 0, DecoderFactory *d = 0, 
-       QIODevice *i = 0, Output *o = 0);
+    DecoderMAD(QObject *parent = 0, DecoderFactory *d = 0,
+               QIODevice *i = 0, Output *o = 0);
     virtual ~DecoderMAD();
 
     // standard decoder API
@@ -29,17 +30,6 @@ public:
     double lengthInSeconds();
     void seek(double);
     void stop();
-
-    // Equalizer
-    //bool isEQSupported() const { return TRUE; }
-    //void setEQEnabled(bool);
-    //void setEQ(const EqPreset &);
-
-    static const int maxDecodeRetries;
-    static const int maxFrameSize;
-    static const int maxFrameCheck;
-    static const int initialFrameSize;
-
 
 private:
     // thread run function
@@ -53,12 +43,11 @@ private:
     void deinit();
     bool findHeader();
     bool findXingHeader(struct mad_bitptr, unsigned int);
-    void calcLength(struct mad_header *);
-
     bool inited, user_stop, done, finish, derror, eof, useeq;
     double totalTime, seekTime;
     int channels;
-    long bitrate, freq, len;
+    unsigned long bitrate;
+    long freq, len;
     unsigned int bks;
     mad_fixed_t eqbands[32];
 
@@ -71,19 +60,21 @@ private:
     unsigned long output_bytes, output_at, output_size;
 
     // MAD decoder
-    struct {
-	int flags;
-	unsigned long frames;
-	unsigned long bytes;
-	unsigned char toc[100];
-	long scale;
+    struct
+    {
+        int flags;
+        unsigned long frames;
+        unsigned long bytes;
+        unsigned char toc[100];
+        long scale;
     } xing;
 
-    enum {
-	XING_FRAMES = 0x0001,
-	XING_BYTES  = 0x0002,
-	XING_TOC    = 0x0004,
-	XING_SCALE  = 0x0008
+    enum
+    {
+        XING_FRAMES = 0x0001,
+        XING_BYTES  = 0x0002,
+        XING_TOC    = 0x0004,
+        XING_SCALE  = 0x0008
     };
 
     struct mad_stream stream;
@@ -92,4 +83,4 @@ private:
 };
 
 
-#endif // __decoder_mad_h
+#endif // DECODER_MAD_H

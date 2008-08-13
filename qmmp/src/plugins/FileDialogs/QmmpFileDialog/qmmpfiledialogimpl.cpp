@@ -58,8 +58,14 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
 {
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
+#if QT_VERSION >= 0x040400
+    m_model = new QFileSystemModel(this);
+    m_model->setNameFilterDisables (FALSE);
+#else
     m_model = new QDirModel(this);
-    m_model->setSorting(QDir::Type /*| QDir::Name*/);
+    m_model->setSorting(QDir::Type);
+#endif
+
     fileListView->setModel(m_model);
     treeView->setModel(m_model);
     listToolButton->setChecked(true);
@@ -250,6 +256,9 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
     {
         fileListView->setRootIndex(m_model->index(path));
         treeView->setRootIndex(m_model->index(path));
+#if QT_VERSION >= 0x040400
+        m_model->setRootPath(path);
+#endif
     }
 
     if (m == FileDialog::AddDirs || m == FileDialog::AddDir)

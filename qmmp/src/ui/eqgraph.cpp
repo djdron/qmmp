@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,142 +22,142 @@
 #include "skin.h"
 #include "eqgraph.h"
 
-EQGraph::EQGraph ( QWidget *parent )
-      : PixmapWidget ( parent )
+EQGraph::EQGraph (QWidget *parent)
+        : PixmapWidget (parent)
 {
-   m_skin = Skin::getPointer();
-   setPixmap ( m_skin->getEqPart ( Skin::EQ_GRAPH ) );
-   clear();
-   draw();
-   connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
+    m_skin = Skin::getPointer();
+    setPixmap (m_skin->getEqPart (Skin::EQ_GRAPH));
+    clear();
+    draw();
+    connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
+    setVisible(!m_skin->getEqPart (Skin::EQ_GRAPH).isNull());
 }
-
 
 EQGraph::~EQGraph()
 {}
 
-void EQGraph::addValue ( int value )
+void EQGraph::addValue (int value)
 {
-   if ( m_values.size() >= 10 )
-      return;
-   m_values.append ( value );
-   if ( m_values.size() == 10 )
-   {
-      draw();
-   }
+    if (m_values.size() >= 10)
+        return;
+    m_values.append (value);
+    if (m_values.size() == 10)
+    {
+        draw();
+    }
 }
 
 void EQGraph::clear ()
 {
-   m_values.clear();
-   update();
+    m_values.clear();
+    update();
 }
 
-void EQGraph::init_spline ( double * x, double * y, int n, double * y2 )
+void EQGraph::init_spline (double * x, double * y, int n, double * y2)
 {
-   int i, k;
-   double p, qn, sig, un, *u;
+    int i, k;
+    double p, qn, sig, un, *u;
 
-   //u = ( gfloat * ) g_malloc ( n * sizeof ( gfloat ) );
-   u = new double[n];
+    u = new double[n];
 
-   y2[0] = u[0] = 0.0;
+    y2[0] = u[0] = 0.0;
 
-   for ( i = 1; i < n - 1; i++ )
-   {
-      sig = ( ( double ) x[i] - x[i - 1] ) / ( ( double ) x[i + 1] - x[i - 1] );
-      p = sig * y2[i - 1] + 2.0;
-      y2[i] = ( sig - 1.0 ) / p;
-      u[i] =
-          ( ( ( double ) y[i + 1] - y[i] ) / ( x[i + 1] - x[i] ) ) -
-          ( ( ( double ) y[i] - y[i - 1] ) / ( x[i] - x[i - 1] ) );
-      u[i] = ( 6.0 * u[i] / ( x[i + 1] - x[i - 1] ) - sig * u[i - 1] ) / p;
-   }
-   qn = un = 0.0;
+    for (i = 1; i < n - 1; i++)
+    {
+        sig = ((double) x[i] - x[i - 1]) / ((double) x[i + 1] - x[i - 1]);
+        p = sig * y2[i - 1] + 2.0;
+        y2[i] = (sig - 1.0) / p;
+        u[i] =
+            (((double) y[i + 1] - y[i]) / (x[i + 1] - x[i])) -
+            (((double) y[i] - y[i - 1]) / (x[i] - x[i - 1]));
+        u[i] = (6.0 * u[i] / (x[i + 1] - x[i - 1]) - sig * u[i - 1]) / p;
+    }
+    qn = un = 0.0;
 
-   y2[n - 1] = ( un - qn * u[n - 2] ) / ( qn * y2[n - 2] + 1.0 );
-   for ( k = n - 2; k >= 0; k-- )
-      y2[k] = y2[k] * y2[k + 1] + u[k];
-   //g_free ( u );
-   delete[] u;
+    y2[n - 1] = (un - qn * u[n - 2]) / (qn * y2[n - 2] + 1.0);
+    for (k = n - 2; k >= 0; k--)
+        y2[k] = y2[k] * y2[k + 1] + u[k];
+    delete[] u;
 }
 
-double EQGraph::eval_spline ( double xa[], double ya[], double y2a[], int n, double x )
+double EQGraph::eval_spline (double xa[], double ya[], double y2a[], int n, double x)
 {
-   int klo, khi, k;
-   double h, b, a;
+    int klo, khi, k;
+    double h, b, a;
 
-   klo = 0;
-   khi = n - 1;
-   while ( khi - klo > 1 )
-   {
-      k = ( khi + klo ) >> 1;
-      if ( xa[k] > x )
-         khi = k;
-      else
-         klo = k;
-   }
-   h = xa[khi] - xa[klo];
-   a = ( xa[khi] - x ) / h;
-   b = ( x - xa[klo] ) / h;
-   return ( a * ya[klo] + b * ya[khi] +
-            ( ( a * a * a - a ) * y2a[klo] +
-              ( b * b * b - b ) * y2a[khi] ) * ( h * h ) / 6.0 );
+    klo = 0;
+    khi = n - 1;
+    while (khi - klo > 1)
+    {
+        k = (khi + klo) >> 1;
+        if (xa[k] > x)
+            khi = k;
+        else
+            klo = k;
+    }
+    h = xa[khi] - xa[klo];
+    a = (xa[khi] - x) / h;
+    b = (x - xa[klo]) / h;
+    return (a * ya[klo] + b * ya[khi] +
+            ((a * a * a - a) * y2a[klo] +
+             (b * b * b - b) * y2a[khi]) * (h * h) / 6.0);
 }
 
 void EQGraph::draw()
 {
-   if(m_values.size()!=10)
-   {
-       setPixmap ( m_skin->getEqPart ( Skin::EQ_GRAPH ) );
-       return;
-   }
+    QPixmap pixmap = m_skin->getEqPart (Skin::EQ_GRAPH);
+    if (pixmap.isNull())
+        pixmap = QPixmap(113,19);
 
-   int i, y, ymin, ymax, py = 0;
-   double x[] = { 0, 11, 23, 35, 47, 59, 71, 83, 97, 109 }, yf[10];
-   double *bands = new double[10];
+    if (m_values.size()!=10)
+    {
+        setPixmap (pixmap);
+        return;
+    }
 
-   for ( int i = 0; i<10; ++i )
-   {
-      bands[i] = m_values.at ( i );
-   }
-   QPixmap pixmap = m_skin->getEqPart ( Skin::EQ_GRAPH );
+    int i, y, ymin, ymax, py = 0;
+    double x[] = { 0, 11, 23, 35, 47, 59, 71, 83, 97, 109 }, yf[10];
+    double *bands = new double[10];
 
-   init_spline ( x, bands, 10, yf );
-   for ( i = 0; i < 109; i++ )
-   {
-      y = 9 -
-          ( int ) ( ( eval_spline ( x, bands, yf, 10, i ) *
-                      9.0 ) / 20.0 );
-      if ( y < 0 )
-         y = 0;
-      if ( y > 18 )
-         y = 18;
-      if ( !i )
-         py = y;
-      if ( y < py )
-      {
-         ymin = y;
-         ymax = py;
-      }
-      else
-      {
-         ymin = py;
-         ymax = y;
-      }
-      py = y;
+    for (int i = 0; i < 10; ++i)
+    {
+        bands[i] = m_values.at (i);
+    }
 
-      QPainter paint ( &pixmap );
-      paint.drawPixmap ( i, y, m_skin->getEqSpline ( y ) ) ;
+    init_spline (x, bands, 10, yf);
+    for (i = 0; i < 109; i++)
+    {
+        y = 9 - (int) ((eval_spline (x, bands, yf, 10, i) * 9.0) / 20.0);
+        if (y < 0)
+            y = 0;
+        if (y > 18)
+            y = 18;
+        if (!i)
+            py = y;
+        if (y < py)
+        {
+            ymin = y;
+            ymax = py;
+        }
+        else
+        {
+            ymin = py;
+            ymax = y;
+        }
+        py = y;
+
+        QPainter paint (&pixmap);
+        paint.drawPixmap (i, y, m_skin->getEqSpline (y)) ;
 
 
-   }
-   setPixmap ( pixmap );
-   delete [] bands;
+    }
+    setPixmap (pixmap);
+    delete [] bands;
 }
 
 void EQGraph::updateSkin()
 {
-   draw();
+    draw();
+    setVisible(!m_skin->getEqPart (Skin::EQ_GRAPH).isNull());
 }
 
