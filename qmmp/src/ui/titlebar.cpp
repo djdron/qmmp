@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -61,6 +61,8 @@ TitleBar::TitleBar(QWidget *parent)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     if (settings.value("Display/shaded", FALSE).toBool())
         shade();
+    else
+        updateMask();
     m_align = TRUE;
 }
 
@@ -137,6 +139,7 @@ void TitleBar::setActive(bool a)
 void TitleBar::updateSkin()
 {
     setActive(FALSE);
+    updateMask();
 }
 
 void TitleBar::showMainMenu()
@@ -188,8 +191,9 @@ void TitleBar::shade()
         m_currentTime = 0;
         m_shade->show();
     }
-    if(m_align)
+    if (m_align)
         Dock::getPointer()->align(m_mw, m_shaded? -102: 102);
+    updateMask();
 }
 
 QString TitleBar::formatTime ( int sec )
@@ -223,4 +227,13 @@ void TitleBar::setInfo(const OutputState &st)
         break;
     }
     }
+}
+
+void TitleBar::updateMask()
+{
+    m_mw->clearMask();
+    m_mw->setMask(QRegion(0,0,m_mw->width(),m_mw->height()));
+    QRegion region = m_skin->getRegion(m_shaded? Skin::WINDOW_SHADE : Skin::NORMAL);
+    if (!region.isEmpty())
+        m_mw->setMask(region);
 }

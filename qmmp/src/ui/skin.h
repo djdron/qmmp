@@ -116,13 +116,17 @@ public:
     {
         return m_vis_colors[n];
     };
-    const QRegion getMWRegion() const
+    /*const QRegion getMWRegion() const
     {
         return m_mwRegion;
     };
     const QRegion getPLRegion() const
     {
         return m_plRegion;
+    };*/
+    const QRegion getRegion(uint r) const
+    {
+        return m_regions[r];
     };
 
     enum Buttons
@@ -278,6 +282,14 @@ public:
         PAUSE,
         STOP,
     };
+    enum Regions
+    {
+        NORMAL = 0,
+        EQUALIZER,
+        WINDOW_SHADE,
+        EQUALIZER_WS,
+    };
+
 signals:
     void skinChanged();
 
@@ -303,6 +315,7 @@ private:
     QMap<uint, QPixmap> m_parts;
     QMap<QChar, QPixmap> m_letters;
     QMap<QByteArray, QByteArray> m_pledit_txt;
+    QMap<uint, QRegion> m_regions;
     QPixmap m_main;
     QPixmap posbar;
     QList<QPixmap> m_numbers;
@@ -311,8 +324,8 @@ private:
     QList<QPixmap> m_volume;
     QList<QPixmap> m_balance;
     QList<QColor> m_vis_colors;
-    QRegion m_mwRegion;
-    QRegion m_plRegion;
+    //QRegion m_mwRegion;
+    //QRegion m_plRegion;
 
     void loadMain();
     void loadButtons();

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,6 +47,7 @@ public:
 private slots:
     void shade();
     void updateVolume();
+    void updateMask();
 
 private:
     Skin* m_skin;

@@ -101,7 +101,6 @@ private slots:
     void endSeek();
     void showSettings();
     void updateEQ();
-    void updateSkin();
     void forward();
     void backward();
     //void trayActivated(QSystemTrayIcon::ActivationReason);
