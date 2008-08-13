@@ -25,12 +25,14 @@
 #include <QDialog>
 #include <QCompleter>
 #include <QAbstractItemView>
-#include <QDirModel>
 
 #include <qmmpui/filedialog.h>
 
-//class QDirModel;
-
+#if QT_VERSION >= 0x040400
+#include <QFileSystemModel>
+#else
+#include <QDirModel>
+#endif
 
 class QmmpFileDialogImpl : public QDialog , private Ui::QmmpFileDialog
 {
@@ -54,12 +56,18 @@ protected slots:
     void on_listToolButton_toggled(bool);
     void on_detailsToolButton_toggled(bool);
     void on_fileTypeComboBox_activated(int);
-    
+
 signals:
     void filesAdded(const QStringList&);
 
 protected:
+
+#if QT_VERSION >= 0x040400
+    QFileSystemModel* m_model;
+#else
     QDirModel* m_model;
+#endif
+
     virtual void hideEvent (QHideEvent *event);
 
 private slots:
@@ -85,7 +93,12 @@ public:
 
     QString pathFromIndex(const QModelIndex &index) const
     {
+#if QT_VERSION >= 0x040400
+        const QFileSystemModel *dirModel = static_cast<const QFileSystemModel *>(model());
+#else
         const QDirModel *dirModel = static_cast<const QDirModel *>(model());
+#endif
+
         QString currentLocation = dirModel->filePath(m_itemView->rootIndex());
         QString path = dirModel->filePath(index);
         if (path.startsWith(currentLocation))
@@ -103,7 +116,11 @@ public:
         QStringList parts;
         if (!path.startsWith(QDir::separator()))
         {
+#if QT_VERSION >= 0x040400
+            const QFileSystemModel *dirModel = static_cast<const QFileSystemModel *>(model());
+#else
             const QDirModel *dirModel = static_cast<const QDirModel *>(model());
+#endif
             QString currentLocation = QDir::toNativeSeparators(dirModel->filePath(m_itemView->rootIndex()));
             parts = QCompleter::splitPath(currentLocation);
         }

@@ -240,7 +240,7 @@ void PlayListTitleBar::shade()
         m_pl->setMinimumSize (275,116);
         m_pl->setMaximumSize (10000,10000);
         m_pl->resize(width(),m_height);
-        delete m_shade2;
+        m_shade2->deleteLater();
         m_shade2 = 0;
         m_shade->show();
     }
