@@ -647,8 +647,9 @@ void Skin::loadBalance()
 
 void Skin::loadRegion()
 {
-    m_mwRegion = QRegion();
-    m_plRegion = QRegion();
+    //m_mwRegion = QRegion();
+    //m_plRegion = QRegion();
+    m_regions.clear();
     QString path = findFile("region.txt", m_skin_dir);
 
     if ( path.isNull () )
@@ -656,8 +657,10 @@ void Skin::loadRegion()
         qDebug ( "Skin: cannot find region.txt. Transparency disabled" );
         return;
     }
-    m_mwRegion = createRegion(path, "Normal");
-    m_plRegion = createRegion(path, "Equalizer");
+    m_regions[NORMAL] = createRegion(path, "Normal");
+    m_regions[EQUALIZER] = createRegion(path, "Equalizer");
+    m_regions[WINDOW_SHADE] = createRegion(path, "WindowShade");
+    m_regions[EQUALIZER_WS] = createRegion(path, "EqualizerWS");
 }
 
 QRegion Skin::createRegion(const QString &path, const QString &key)

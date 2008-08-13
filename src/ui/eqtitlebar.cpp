@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -51,8 +51,11 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     if (settings.value("Equalizer/shaded", FALSE).toBool())
         shade();
+    else
+        updateMask();
     m_align = TRUE;
     setActive(FALSE);
+    connect(m_skin, SIGNAL(skinChanged()), SLOT(updateMask()));
 }
 
 
@@ -173,6 +176,7 @@ void EqTitleBar::shade()
     }
     if (m_align)
         Dock::getPointer()->align(m_eq, m_shaded? -102: 102);
+    updateMask();
 }
 
 void EqTitleBar::updateVolume()
@@ -180,3 +184,11 @@ void EqTitleBar::updateVolume()
     m_mw->setVolume(m_volumeBar->value(), m_balanceBar->value());
 }
 
+void EqTitleBar::updateMask()
+{
+    m_eq->clearMask();
+    m_eq->setMask(QRegion(0,0,m_eq->width(),m_eq->height()));
+    QRegion region = m_skin->getRegion(m_shaded? Skin::EQUALIZER_WS : Skin::EQUALIZER);
+    if (!region.isEmpty())
+        m_eq->setMask(region);
+}

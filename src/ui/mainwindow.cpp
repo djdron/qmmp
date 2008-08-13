@@ -138,12 +138,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
             SLOT(setProgress(int)));
 
-    connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
     updateEQ();
-    updateSkin();
-
-    //FileDialog::registerBuiltinFactories();
-    //FileDialog::registerExternalFactories();
 
     m_generalHandler = new GeneralHandler(this);
     connect(m_generalHandler, SIGNAL(playCalled()), SLOT(play()));
@@ -613,25 +608,6 @@ void MainWindow::about()
 QMenu* MainWindow::menu()
 {
     return m_mainMenu;
-}
-
-void MainWindow::updateSkin()
-{
-    clearMask();
-    m_equalizer->clearMask();
-    /*qt bug workarround */
-    setMask(QRegion(0,0,275,116));
-    m_equalizer->setMask(QRegion(0,0,275,116));
-    update();
-    m_equalizer->update();
-
-    QRegion region = m_skin->getMWRegion();
-    if (!region.isEmpty())
-        setMask(region);
-
-    region = m_skin->getPLRegion();
-    if (!region.isEmpty())
-        m_equalizer->setMask(region);
 }
 
 void MainWindow::newPlaylist()
