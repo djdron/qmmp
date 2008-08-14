@@ -69,6 +69,8 @@ private:
     int m_chan, m_sampleSize;
     unsigned long m_output_size;
     double m_totalTime, m_seekTime;
+    double m_preampFactor;
+    bool m_usePreamp;
     static DecoderModPlug* m_instance;
 };
 

@@ -18,6 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+/* Based on Modplug XMMS Plugin
+ * Authors: Kenton Varda <temporal@gauge3d.org>
+ */
+
 #include <QObject>
 #include <QIODevice>
 #include <QFile>
@@ -144,7 +148,7 @@ bool DecoderModPlug::initialize()
 
     QString filename = qobject_cast<QFile*>(input())->fileName ();
     ArchiveReader reader(this);
-    if(reader.isSupported(filename))
+    if (reader.isSupported(filename))
     {
         input()->close();
         m_input_buf = reader.unpack(filename);
@@ -217,6 +221,8 @@ void DecoderModPlug::run()
     mutex()->unlock();
     dispatch(DecoderState::Decoding);
 
+    char *prebuf = new char[m_bks];
+
     while (! m_done && ! m_finish)
     {
         mutex()->lock ();
@@ -239,7 +245,43 @@ void DecoderModPlug::run()
 
         // decode
         len = m_bks > (globalBufferSize - m_output_at) ? globalBufferSize - m_output_at : m_bks;
-        len = m_soundFile->Read (m_output_buf + m_output_at, len) * m_sampleSize;
+        len = m_soundFile->Read (prebuf, len) * m_sampleSize;
+
+        //preamp
+        if (m_usePreamp)
+        {
+            {
+                //apply preamp
+                if (m_bps == 16)
+                {
+                    uint n = len >> 1;
+                    for (uint i = 0; i < n; i++)
+                    {
+                        short old = ((short*)prebuf)[i];
+                        ((short*)prebuf)[i] *= m_preampFactor;
+                        // detect overflow and clip!
+                        if ((old & 0x8000) !=
+                                (((short*)prebuf)[i] & 0x8000))
+                            ((short*)prebuf)[i] = old | 0x7FFF;
+
+                    }
+                }
+                else
+                {
+                    for (uint i = 0; i < len; i++)
+                    {
+                        uchar old = ((uchar*)prebuf)[i];
+                        ((uchar*)prebuf)[i] *= m_preampFactor;
+                        // detect overflow and clip!
+                        if ((old & 0x80) !=
+                                (((uchar*)prebuf)[i] & 0x80))
+                            ((uchar*)prebuf)[i] = old | 0x7F;
+                    }
+                }
+            }
+        }
+
+        memmove(m_output_buf + m_output_at, prebuf, len);
 
         if (len > 0)
         {
@@ -292,7 +334,7 @@ void DecoderModPlug::run()
         dispatch(DecoderState::Stopped);
 
     mutex()->unlock();
-
+    delete prebuf;
     deinit();
 }
 
@@ -348,12 +390,11 @@ void DecoderModPlug::readSettings()
 
 
     //general
-   /*
-    ui.amigaCheckBox->setChecked(settings.value("GrabAmigaMOD", TRUE).toBool());*/
-    //resampling frequency
+    /*
+     settings.value("GrabAmigaMOD", TRUE).toBool());*/
     //preamp
-    //ui.preampGroupBox->setChecked(settings.value("PreAmp", FALSE).toBool());
-    //ui.preampSlider->setValue(int(settings.value("PreAmpLevel", 0.0f).toDouble()*10));
+    m_usePreamp = settings.value("PreAmp", FALSE).toBool();
+    m_preampFactor = exp(settings.value("PreAmpLevel", 0.0f).toDouble());
     settings.endGroup();
 }
 
