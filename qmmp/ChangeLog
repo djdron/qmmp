@@ -172,7 +172,7 @@ Version 0.2.0
 * redesigned command line interface using UDS (Vladimir Kuznetsov)
 * added command line plugins support (Vladimir Kuznetsov)
 * added volume control plugin (Vladimir Kuznetsov)
-* added APE tag support for the mpeg plugin
+* added APE tag support in the mpeg plugin
 * added general plugin support
 * added scrobbler plugin
 * added d-bus plugin
@@ -197,3 +197,16 @@ Version 0.2.0
 * updated Chinese Simplified translation (lon)
 * updated German translation (Stefan Koelling)
 * updated Czech translation (Karel Volný)
+
+Version 0.2.1
+* fixed desktop file (thanks to Eugene Lyubimkin)
+* fixed build (thanks to Eugene Lyubimkin)
+* fixed bugs in the file dialog
+* fixed margins
+* updated Chezh translation (Karel Volny)
+* middle mouse button click on the tray icon works as the play/pause command
+* fixed memory leak
+* fixed skin parsing
+* increased file dialog speed
+* improved accuracy of the mp3 duration calculation
+* added preamp support in the the modplug plugin
