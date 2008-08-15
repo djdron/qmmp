@@ -316,7 +316,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../settingsdialog.ui" line="646"/>
         <source>Note: Setting the preamp
 too high may cause clipping!</source>
-        <translation>Замечание: встановлення занадто високого
+        <translation>Примітка: встановлення занадто високого
 підсилення може викликати зрізання!</translation>
     </message>
     <message>

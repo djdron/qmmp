@@ -31,7 +31,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="60"/>
         <source>:/txt/authors_en.txt</source>
-        <translation>:/txt/authors_uk-UA.txt</translation>
+        <translation>:/txt/authors_uk_UA.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
