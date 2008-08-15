@@ -21,6 +21,7 @@
 #include "qmmpfiledialogimpl.h"
 
 #include <QDirModel>
+#include <QDir>
 #include <QApplication>
 #include <QFileInfo>
 #include <QStyle>
@@ -251,7 +252,8 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
         addPushButton->setEnabled(!fileName.isEmpty());
         addPushButton->setText(tr("Save"));
     }
-
+    if (!QFile::exists(path))
+        path = QDir::home ().path ();
     if (m_model->filePath(fileListView->rootIndex()) != path)
     {
         fileListView->setRootIndex(m_model->index(path));
