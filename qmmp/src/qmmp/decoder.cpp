@@ -41,6 +41,7 @@ Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
     m_useVolume = settings.value("Volume/software_volume", FALSE).toBool();
     m_volL = settings.value("Volume/left", 80).toInt();
     m_volR = settings.value("Volume/right", 80).toInt();
+    setVolume(m_volL, m_volR);
 }
 
 Decoder::~Decoder()
@@ -396,18 +397,15 @@ void Decoder::setEQ(int bands[10], int preamp)
 
 void Decoder::changeVolume(char *data, ulong sz, int channels)
 {
-    int r = pow( 10, (m_volR - 100)/40.0 ) * 256;
-    int l = pow( 10, (m_volL - 100)/40.0 ) * 256;
-
     if (channels > 1)
         for (ulong i = 0; i < sz/2; i+=2)
         {
-            ((short*)data)[i]*= r/256.0;
-            ((short*)data)[i+1]*= l/256.0;
+            ((short*)data)[i]*= m_volLF/256.0;
+            ((short*)data)[i+1]*= m_volRF/256.0;
         }
     else
     {
-        l = qMax(l,r);
+        int l = qMax(m_volLF,m_volRF);
         for (ulong i = 0; i < sz/2; i++)
             ((short*)data)[i]*= l/256.0;
     }
@@ -416,8 +414,10 @@ void Decoder::changeVolume(char *data, ulong sz, int channels)
 void Decoder::setVolume(int l, int r)
 {
     mtx.lock();
-    m_volR = l;
-    m_volL = r;
+    m_volL = l;
+    m_volR = r;
+    m_volLF = pow( 10, (l - 100)/40.0 ) * 256;
+    m_volRF = pow( 10, (r - 100)/40.0 ) * 256;
     mtx.unlock();
 }
 

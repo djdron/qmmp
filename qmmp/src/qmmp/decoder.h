@@ -190,8 +190,7 @@ private:
     bool m_eqInited;
     bool m_useEQ;
     bool m_useVolume;
-    int m_volL;
-    int m_volR;
+    int m_volL, m_volR, m_volLF, m_volRF;
 
 };
 
