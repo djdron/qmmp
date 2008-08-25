@@ -82,7 +82,7 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="49"/>
         <source>About Status Icon Plugin</source>
-        <translation>Об модуле Status Icon</translation>
+        <translation>О модуле Status Icon</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="50"/>

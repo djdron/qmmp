@@ -10,7 +10,7 @@
     <message>
         <location filename="../dbuscontrolfactory.cpp" line="48"/>
         <source>About D-Bus Plugin</source>
-        <translation>Об модуле D-bus</translation>
+        <translation>О модуле D-bus</translation>
     </message>
     <message>
         <location filename="../dbuscontrolfactory.cpp" line="49"/>

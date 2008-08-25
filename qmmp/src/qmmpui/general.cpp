@@ -89,7 +89,10 @@ QList<GeneralFactory*> *General::generalFactories()
 }
 
 void General::setVolume(int left, int right)
-{}
+{
+    Q_UNUSED(left);
+    Q_UNUSED(right);
+}
 
 QStringList General::generalFiles()
 {
