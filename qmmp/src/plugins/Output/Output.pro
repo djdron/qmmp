@@ -3,8 +3,6 @@ include(../../../qmmp.pri)
 CONFIG += release warn_on 
 TEMPLATE = subdirs
 
-SUBDIRS += alsa
-
 contains(CONFIG, JACK_PLUGIN){
     SUBDIRS += jack
     message(***********************)
@@ -24,4 +22,11 @@ contains(CONFIG, PULSE_AUDIO_PLUGIN){
     message(******************************)
     message(* PULSE AUDIO plugin enabled *)
     message(******************************)
+}
+
+contains(CONFIG, ALSA_PLUGIN){
+    SUBDIRS += alsa
+    message(***********************)
+    message(* ALSA plugin enabled *)
+    message(***********************)
 }
