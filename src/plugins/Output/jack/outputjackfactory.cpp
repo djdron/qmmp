@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Zhuravlev Uriy                                  *
+ *   Copyright (C) 2007-2008 by Zhuravlev Uriy                             *
  *   stalkerg@gmail.com                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,6 +35,7 @@ const OutputProperties OutputJACKFactory::properties() const
 
 Output* OutputJACKFactory::create(QObject* parent, bool volume)
 {
+    Q_UNUSED(volume);
     return new OutputJACK(parent);
 }
 
@@ -44,7 +45,7 @@ void OutputJACKFactory::showSettings(QWidget*)
 
 void OutputJACKFactory::showAbout(QWidget *parent)
 {
-QMessageBox::about (parent, tr("About Jack Output Plugin"),
+    QMessageBox::about (parent, tr("About Jack Output Plugin"),
                         tr("Qmmp Jack Output Plugin")+"\n"+
                         tr("Writen by: Yuriy Zhuravlev <slalkerg@gmail.com>"));
 }

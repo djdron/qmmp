@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Zhuravlev Uriy                                  *
+ *   Copyright (C) 2007-2008 by Zhuravlev Uriy                             *
  *   stalkerg@gmail.com                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -67,7 +67,7 @@ void OutputJACK::seek(long pos)
     m_currentSeconds = -1;
 }
 
-OutputJACK::OutputJACK(QObject * parent, bool useVolume)
+OutputJACK::OutputJACK(QObject *parent)
         : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
         m_userStop(FALSE), m_totalWritten(0), m_currentSeconds(-1),
         m_bps(-1), m_frequency(-1), m_channels(-1), m_precision(-1)
@@ -80,7 +80,7 @@ OutputJACK::~OutputJACK()
     uninitialize();
 }
 
-void OutputJACK::configure(long freq, int chan, int prec, int brate)
+void OutputJACK::configure(long freq, int chan, int prec, int)
 {
     qDebug("OutputJACK: configure");
     m_precision = prec;
@@ -117,7 +117,7 @@ bool OutputJACK::initialize()
         m_inited = TRUE;
     m_inited = TRUE;
     m_configure = FALSE;
-    jack_options_t options = JackNullOption;
+    jack_options_t options = JackNoStartServer;
     jack_status_t status;
     jack_client_t *client = jack_client_open ("test_qmmp", options, &status, NULL);
     if (client == NULL)

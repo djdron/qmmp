@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Zhuravlev Uriy                                  *
+ *   Copyright (C) 2007-2008 by Zhuravlev Uriy                             *
  *   stalkerg@gmail.com                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,7 +36,7 @@ class OutputJACK : public Output
 {
     Q_OBJECT
 public:
-    OutputJACK(QObject * parent = 0, bool useVolume = TRUE);
+    OutputJACK(QObject * parent = 0);
     ~OutputJACK();
     bool initialize();
     bool isInitialized() const
