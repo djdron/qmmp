@@ -105,11 +105,11 @@ void QMMPStarter::writeCommand()
     if (!argString.isEmpty())
     {
         char buf[PATH_MAX + 1];
-        QString workingDir = QString(getcwd(buf,PATH_MAX)) + "\n";
+        QString workingDir = QString::fromLocal8Bit(getcwd(buf,PATH_MAX)) + "\n";
 
         QByteArray barray;
-        barray.append(workingDir);
-        barray.append(argString);
+        barray.append(workingDir.toUtf8 ());
+        barray.append(argString.toUtf8 ());
         m_sock->writeDatagram ( barray.data(),UDS_PATH);
     }
     else
@@ -126,7 +126,7 @@ void QMMPStarter::readCommand()
     inputArray.resize(MAXCOMMANDSIZE);
     bzero(inputArray.data(),inputArray.size());
     m_sock->readDatagram(inputArray.data(), inputArray.size());
-    QStringList slist = QString(inputArray).split("\n",QString::SkipEmptyParts);
+    QStringList slist = QString::fromUtf8(inputArray.data()).split("\n",QString::SkipEmptyParts);
     QString cwd = slist.takeAt(0);
     if (mw)
     {
