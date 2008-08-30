@@ -210,3 +210,14 @@ Version 0.2.1
 * increased file dialog speed
 * improved accuracy of the mp3 duration calculation
 * added preamp support in the the modplug plugin
+
+Version 0.2.2
+* fixed Ukrainian translation (Gennadi Motsyo)
+* fixed Russian translation
+* added Polish translation (Grzegorz Gibas)
+* fixed build with qmake
+* fixed compile warnings
+* some jack fixes
+* fixed UDS datagram encoding
+* removed unused code
+* fixed skin parsing
