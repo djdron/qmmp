@@ -161,6 +161,7 @@ void SkinReader::untar(const QString &from, const QString &to, bool preview)
         {
             args << "xvfk" << from << "-O" << str;
             m_process->start("tar", args);
+            m_process->waitForStarted();
             m_process->waitForFinished();
             array = m_process->readAllStandardOutput ();
 
@@ -183,9 +184,8 @@ void SkinReader::unzip(const QString &from, const QString &to, bool preview)
     QStringList args;
     if (preview)
     {
-        args << "-C" << "-j" << "-o" << "-d" << to << from << "main.*" << "*/main.*";
-        m_process->start("unzip", args);
-        m_process->waitForFinished();
+        args << "-C" << "-j" << "-o" << "-qq" << "-d" << to << from << "main.*" << "*/main.*";
+        QProcess::execute("unzip", args);
         QDir dir(to);
         dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
         QFileInfoList fileList = dir.entryInfoList();
@@ -200,9 +200,7 @@ void SkinReader::unzip(const QString &from, const QString &to, bool preview)
     }
     else
     {
-        args << "-j" << "-o" << "-d" << to << from;
-        m_process->start("unzip", args);
-        m_process->waitForFinished();
+        args << "-j" << "-o" << "-qq" << "-d" << to << from;
+        QProcess::execute("unzip", args);
     }
 }
-
