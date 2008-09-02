@@ -19,11 +19,11 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_INCLUDES
   ${QT_INCLUDES}
-  ${CMAKE_CURRENT_BINARY_DIR}/../../../
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
 
 # libqmmpui
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
 
 SET(libplsplaylistformat_SRCS
@@ -44,5 +44,6 @@ QT4_WRAP_CPP(libplsplaylistformat_MOC_SRCS ${libplsplaylistformat_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(plsplaylistformat SHARED ${libplsplaylistformat_SRCS} ${libplsplaylistformat_MOC_SRCS})
+add_dependencies(plsplaylistformat qmmpui)
 target_link_libraries(plsplaylistformat ${QT_LIBRARIES} -lqmmpui)
 install(TARGETS plsplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlaylistFormats)

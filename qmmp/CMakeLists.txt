@@ -8,7 +8,7 @@ CONFIGURE_FILE(
 ADD_CUSTOM_TARGET(uninstall
   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
 
-SET(QMMP_VERSION 0.3.0)
+SET(QMMP_VERSION 0.2.3)
 SET(QMMP_SOVERSION 0)
 SET(SVN_VERSION TRUE)
 
@@ -36,9 +36,9 @@ MESSAGE(FATAL_ERROR "Could NOT find lrelease executable")
 ENDIF(QT_LRELEASE_EXECUTABLE)
 
 MESSAGE(STATUS "Generating translations ...")
-execute_process(COMMAND find ${CMAKE_CURRENT_BINARY_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent)
+execute_process(COMMAND find ${CMAKE_CURRENT_SOURCE_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent)
 
-SET(LIB_DIR "lib" CACHE STRING "library path")
+SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
 add_subdirectory(src/qmmp)
 add_subdirectory(src/qmmpui)
 add_subdirectory(src/ui)
@@ -68,7 +68,7 @@ ADD_CUSTOM_COMMAND(
     COMMAND find
     ARGS ${CMAKE_CURRENT_BINARY_DIR} -name \"*.cmake\" | xargs rm -rf
     COMMAND find
-    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "*.qm" | xargs rm -rf
+    ARGS ${CMAKE_CURRENT_SOURCE_DIR} -name "*.qm" | xargs rm -rf
     COMMAND rm
     ARGS -rf ${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt
     TARGET  distclean
