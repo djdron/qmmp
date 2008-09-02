@@ -18,11 +18,11 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_INCLUDES
   ${QT_INCLUDES}
-  ${CMAKE_CURRENT_BINARY_DIR}/../../../
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
 
 # libqmmp
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libsndfile
@@ -55,6 +55,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(SNDFILE_FOUND)
 ADD_LIBRARY(sndfile SHARED ${libsndfile_SRCS} ${libsndfile_MOC_SRCS} ${libsndfile_UIS_H}
   ${libsndfile_RCC_SRCS})
+add_dependencies(sndfile qmmp)
 target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LDFLAGS} ${SNDFILE_CFLAGS})
 install(TARGETS sndfile DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(SNDFILE_FOUND)

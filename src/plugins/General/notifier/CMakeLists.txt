@@ -19,11 +19,11 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_INCLUDES
   ${QT_INCLUDES}
-  ${CMAKE_CURRENT_BINARY_DIR}/../../../
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
 
 # libqmmpui
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
 
 SET(libnotifier_SRCS
@@ -61,5 +61,6 @@ QT4_WRAP_UI(libnotifier_UIS_H ${libnotifier_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(notifier SHARED ${libnotifier_SRCS} ${libnotifier_MOC_SRCS} ${libnotifier_UIS_H} ${libnotifier_RCC_SRCS})
+add_dependencies(notifier qmmpui)
 target_link_libraries(notifier ${QT_LIBRARIES} -lqmmpui)
 install(TARGETS notifier DESTINATION ${LIB_DIR}/qmmp/General)

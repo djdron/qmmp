@@ -19,11 +19,11 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_INCLUDES
   ${QT_INCLUDES}
-  ${CMAKE_CURRENT_BINARY_DIR}/../../../
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
 
 # libqmmpui
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
 
 SET(libstatusicon_SRCS
@@ -59,5 +59,6 @@ QT4_WRAP_UI(libstatusicon_UIS_H ${libstatusicon_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(statusicon SHARED ${libstatusicon_SRCS} ${libstatusicon_MOC_SRCS} ${libstatusicon_UIS_H} ${libstatusicon_RCC_SRCS})
+add_dependencies(statusicon qmmpui)
 target_link_libraries(statusicon ${QT_LIBRARIES} -lqmmpui)
 install(TARGETS statusicon DESTINATION ${LIB_DIR}/qmmp/General)

@@ -18,11 +18,11 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 SET(QT_INCLUDES
   ${QT_INCLUDES}
-  ${CMAKE_CURRENT_BINARY_DIR}/../../../
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
 
 # libqmmp
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libjack and samplerate
@@ -52,6 +52,7 @@ QT4_WRAP_CPP(libjack_MOC_SRCS ${libjack_MOC_HDRS})
 
 IF(JACK_FOUND)
 ADD_LIBRARY(jack SHARED ${libjack_SRCS} ${libjack_MOC_SRCS} ${libjack_RCC_SRCS})
+add_dependencies(jack qmmp)
 target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LDFLAGS} ${JACK_CFLAGS})
 install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(JACK_FOUND)
