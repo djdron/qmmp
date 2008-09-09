@@ -4,21 +4,21 @@ CONFIG += release warn_on
 TEMPLATE = subdirs
 
 contains(CONFIG, JACK_PLUGIN){
-    SUBDIRS += jack
+#    SUBDIRS += jack
     message(***********************)
     message(* JACK plugin enabled *)
     message(***********************)
 }
 
 contains(CONFIG, OSS_PLUGIN){
-    SUBDIRS += oss
+#    SUBDIRS += oss
     message(**********************)
     message(* OSS plugin enabled *)
     message(**********************)
 }
 
 contains(CONFIG, PULSE_AUDIO_PLUGIN){
-    SUBDIRS += pulseaudio
+#    SUBDIRS += pulseaudio
     message(******************************)
     message(* PULSE AUDIO plugin enabled *)
     message(******************************)

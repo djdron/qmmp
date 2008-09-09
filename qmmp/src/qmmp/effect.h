@@ -51,13 +51,13 @@ public:
     //virtual bool process(char *in_data, char *out_data, const ulong maxsize, ulong &rbytes, ulong &wbytes) = 0;
 
 
-    virtual void configure(ulong freq, int chan, int res);
+    virtual void configure(qint64 freq, int chan, int res);
 
     /*!
-     * Returns frequency.
+     * Returns samplerate.
      * This function should be reimplemented if subclass changes default samplerate.
      */
-    virtual const ulong frequency();
+    virtual const qint64 sampleRate();
 
     /*!
      * Returns channel number.
@@ -66,10 +66,10 @@ public:
     virtual const int channels();
 
     /*!
-     * Returns resolution.
+     * Returns bit depth.
      * This function should be reimplemented if subclass changes default resolution.
      */
-    virtual const int resolution();
+    virtual const int bitsPerSample();
 
 
     static QList<Effect*> create(QObject *parent);

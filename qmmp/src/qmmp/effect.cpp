@@ -33,15 +33,14 @@ Effect::Effect(QObject *parent)
 Effect::~Effect()
 {}
 
-void Effect::configure(ulong freq, int chan, int res)
+void Effect::configure(qint64 freq, int chan, int res)
 {
     m_freq = freq;
     m_chan = chan;
     m_res = res;
-
 }
 
-const ulong Effect::frequency()
+const qint64 Effect::sampleRate()
 {
     return m_freq;
 }
@@ -51,7 +50,7 @@ const int Effect::channels()
     return m_chan;
 }
 
-const int Effect::resolution()
+const int Effect::bitsPerSample()
 {
     return m_res;
 }

@@ -123,20 +123,30 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
     display->setEQ(m_equalizer);
     display->setPL(m_playlist);
+    display->setSoundCore(m_core);
 
     m_vis = MainVisual::getPointer();
 
-    m_core->addVisualization(m_vis);
-    m_core->showVisualization(this);
+    //m_core->addVisualization(m_vis);
+    //m_core->showVisualization(this);
 
-    connect(m_core, SIGNAL(outputStateChanged(const OutputState&)),
+    /*connect(m_core, SIGNAL(outputStateChanged(const OutputState&)),
             SLOT(showOutputState(const OutputState&)));
     connect(m_core, SIGNAL(decoderStateChanged(const DecoderState&)),
             SLOT(showDecoderState(const DecoderState&)));
     connect(m_core, SIGNAL(titleChanged(const QString&)),
             SLOT(changeTitle(const QString&)));
     connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
-            SLOT(setProgress(int)));
+            SLOT(setProgress(int)));*/
+
+
+
+    connect(m_core, SIGNAL(finished()), SLOT(next()));
+    connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
+    connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
+    connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
+
+
 
     updateEQ();
 
@@ -171,12 +181,12 @@ void MainWindow::play()
     disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
     m_playListModel->doCurrentVisibleRequest();
 
-    if (m_core->isPaused())
+    if (m_core->state() == Qmmp::Paused)
     {
         pause();
         return;
     }
-    stop();
+    //stop();
     if (m_playListModel->count() == 0)
         return;
 
@@ -188,21 +198,22 @@ void MainWindow::play()
         return;
     if (m_core->play(s))
     {
-        display->setTime(0);
+        //display->setTime(0);
+        qDebug("play");
         m_generalHandler->setTime(0);
-        display->setMaxTime(m_core->length());
+        //display->setDuration(m_core->totalTime());
     }
     else
     {
         //find out the reason why the playback failed
-        switch ((int) m_core->error())
+        switch ((int) m_core->state())
         {
-        case SoundCore::OutputError:
+        case Qmmp::FatalError:
         {
             stop();
             return; //unrecovable error in output, so abort playing
         }
-        case SoundCore::DecoderError:
+        case Qmmp::NormalError:
         {
             //error in decoder, so we should try to play next song
             qApp->processEvents();
@@ -239,12 +250,12 @@ void MainWindow::seek(int pos)
 
 void MainWindow::forward()
 {
-    seek(m_elapsed + KEY_OFFSET);
+    seek(m_core->elapsed() + KEY_OFFSET);
 }
 
 void MainWindow::backward()
 {
-    seek(qMax(0,m_elapsed - KEY_OFFSET));
+    seek(qMax(qint64(0), m_core->elapsed() - KEY_OFFSET));
 }
 
 void MainWindow::setVolume(int volume, int balance)
@@ -260,7 +271,7 @@ void MainWindow::pause(void)
 
 void MainWindow::stop()
 {
-    display->setTime(0);
+    //display->setTime(0);
     m_core->stop();
 }
 void MainWindow::next()
@@ -276,7 +287,7 @@ void MainWindow::next()
         return;
     }
     m_playlist->update();
-    if (m_core->isInitialized())
+    if (m_core->state() != Qmmp::Stopped)
     {
         stop();
         m_elapsed = 0;
@@ -294,7 +305,7 @@ void MainWindow::previous()
     }
 
     m_playlist->update();
-    if (m_core->isInitialized())
+    if (m_core->state() != Qmmp::Stopped)
     {
         stop();
         play();
@@ -312,17 +323,50 @@ void MainWindow::updateEQ()
     m_core->setEQEnabled(m_equalizer->isEQEnabled());
 }
 
-void MainWindow::showOutputState(const OutputState &st)
+void MainWindow::showState(Qmmp::State state)
+{
+    switch ((int) state)
+    {
+    case Qmmp::Playing:
+    {
+        m_generalHandler->setState(General::Playing);
+        if (m_playListModel->currentItem())
+        {
+            SongInfo info = *m_playListModel->currentItem();
+            if (info.isEmpty())
+                info.setValue(SongInfo::TITLE, m_playlist->currentItem()->text());
+            m_generalHandler->setSongInfo(info);
+        }
+        if (m_playlist->listWidget())
+            m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
+        break;
+    }
+    case Qmmp::Paused:
+    {
+        m_generalHandler->setState(General::Paused);
+        break;
+    }
+    case Qmmp::Stopped:
+    {
+        m_generalHandler->setState(General::Stopped);
+        m_playlist->setTime(-1);
+        m_titlebar->setTime(-1);
+        break;
+    }
+    }
+}
+
+/*void MainWindow::showOutputState(const OutputState &st)
 
 {
     if (seeking)
         return;
 
-    display->setInfo(st);
-    m_playlist->setInfo(st, m_core->length(), m_playListModel->totalLength());
-    m_titlebar->setInfo(st);
-    m_equalizer->setInfo(st);
-    switch ((int) st.type())
+    //display->setInfo(st);
+    //m_playlist->setInfo(st, m_core->length(), m_playListModel->totalLength());
+    //m_titlebar->setInfo(st);
+    // m_equalizer->setInfo(st);
+    /*switch ((int) st.type())
     {
     case OutputState::Playing:
     {
@@ -361,9 +405,9 @@ void MainWindow::showOutputState(const OutputState &st)
     {
         m_visMenu->updateActions();
     }
-    }
-}
-void MainWindow::showDecoderState(const DecoderState &st)
+    }*/
+//}
+/*void MainWindow::showDecoderState(const DecoderState &st)
 {
     switch ((int) st.type())
     {
@@ -407,7 +451,7 @@ void MainWindow::showDecoderState(const DecoderState &st)
         break;
     }
     }
-}
+}*/
 
 void MainWindow::changeTitle(const QString &title)
 {
@@ -677,7 +721,7 @@ void MainWindow::setFileList(const QStringList & l)
 
 void MainWindow::playPause()
 {
-    if (m_core->isInitialized())
+    if (m_core->state() == Qmmp::Playing)
         pause();
     else
         play();

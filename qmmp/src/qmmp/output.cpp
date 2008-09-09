@@ -15,6 +15,207 @@
 
 #include <stdio.h>
 
+Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
+{
+    //qRegisterMetaType<OutputState>("OutputState");
+    m_bl = -1;
+    m_br = -1;
+    m_handler = 0;
+}
+
+Recycler *Output::recycler()
+{
+    return &m_recycler;
+}
+
+QMutex *Output::mutex()
+{
+    return &m_mutex;
+}
+
+void Output::setStateHandler(StateHandler *handler)
+{
+    m_handler = handler;
+}
+
+Output::~Output()
+{
+    foreach(Visual *visual, m_vis_map.values ())
+    {
+        visual->setOutput(0);
+        visual->close();
+    }
+    foreach (Visual *visual , visuals)  //external
+    {
+        visual->setOutput(0);
+    }
+}
+
+void Output::addVisual ( Visual *v )
+{
+    if (visuals.indexOf (v) == -1)
+    {
+        visuals.append (v);
+        v->setOutput(this);
+        qDebug("Output: added external visualization");
+    }
+}
+
+
+void Output::removeVisual (Visual *v)
+{
+    v->setOutput(0);
+    visuals.removeAll (v);
+    if (m_vis_map.key(v))
+    {
+        VisualFactory *factory = m_vis_map.key(v);
+        m_vis_map.remove(factory);
+    }
+}
+
+void Output::processCloseEvent(Visual *v, QCloseEvent *event)
+{
+    if (event->spontaneous () && m_vis_map.key(v))
+    {
+        VisualFactory *factory = m_vis_map.key(v);
+        m_vis_map.remove(factory);
+        Visual::setEnabled(factory, FALSE);
+        //dispatch(OutputState::VisualRemoved);
+    }
+}
+
+void Output::addVisual(VisualFactory *factory, QWidget *parent)
+{
+    if (m_vis_map.value(factory))
+        return;
+    Visual::setEnabled(factory, TRUE);
+    Visual* visual = factory->create(parent);
+    visual->setWindowFlags(Qt::Window);
+    if (visual)
+    {
+        visual->setOutput(this);
+        qDebug("Output: added visual factory: %s",
+               qPrintable(factory->properties().name));
+        m_vis_map.insert (factory, visual);
+        visual->show();
+    }
+}
+
+void Output::removeVisual(VisualFactory *factory)
+{
+    if (m_vis_map.value(factory))
+    {
+        m_vis_map.value(factory)->close();
+        m_vis_map.remove (factory);
+    }
+    Visual::setEnabled(factory, FALSE);
+}
+
+void Output::dispatchVisual ( Buffer *buffer, unsigned long written,
+                              int chan, int prec )
+{
+    if (!buffer)
+        return;
+    Visual* visual = 0;
+    foreach (visual , visuals)  //external
+    {
+        visual->mutex()->lock ();
+        visual->add ( buffer, written, chan, prec );
+        visual->mutex()->unlock();
+    }
+    foreach (visual , m_vis_map.values ())  //internal
+    {
+        visual->mutex()->lock ();
+        visual->add ( buffer, written, chan, prec );
+        visual->mutex()->unlock();
+    }
+}
+
+
+void Output::clearVisuals()
+{
+    Visual *visual = 0;
+    foreach (visual, visuals )
+    {
+        visual->mutex()->lock ();
+        visual->clear();
+        visual->mutex()->unlock();
+    }
+    foreach(visual, m_vis_map.values ())
+    {
+        visual->mutex()->lock ();
+        visual->clear();
+        visual->mutex()->unlock();
+    }
+}
+
+/*void Output::dispatch(OutputState::Type st)
+{
+    if (st == OutputState::Stopped)
+        clearVisuals();
+    emit stateChanged ( OutputState(st) );
+}*/
+
+/*void Output::dispatch(long s, unsigned long w, int b, int f, int p, int c)
+{
+    emit stateChanged ( OutputState(s, w, b, f, p, c) );
+}*/
+
+/*void Output::dispatch ( const OutputState &st )
+{
+    if (st.type() == OutputState::Stopped)
+        clearVisuals();
+    emit stateChanged ( st );
+}
+
+void Output::dispatchVolume(int L, int R)
+{
+    emit stateChanged ( OutputState(L, R) );
+}*/
+
+void Output::checkVolume()
+{
+    int ll = 0, lr = 0;
+    volume(&ll,&lr);
+    ll = (ll > 100) ? 100 : ll;
+    lr = (lr > 100) ? 100 : lr;
+    ll = (ll < 0) ? 0 : ll;
+    lr = (lr < 0) ? 0 : lr;
+    if (m_bl!=ll || m_br!=lr)
+    {
+        m_bl = ll;
+        m_br = lr;
+        //dispatchVolume(ll,lr);
+    }
+}
+
+void Output::checkSoftwareVolume()
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    int L = settings.value("Volume/left", 80).toInt();
+    int R = settings.value("Volume/right", 80).toInt();
+    //dispatchVolume(L, R);
+}
+
+void Output::dispatch(qint64 elapsed,
+                      qint64 totalTime,
+                      int bitrate,
+                      int frequency,
+                      int precision,
+                      int channels)
+{
+    if (m_handler)
+        m_handler->dispatch(elapsed, totalTime, bitrate, frequency, precision, channels);
+}
+
+void Output::dispatch(const Qmmp::State &state)
+{
+    if (m_handler)
+        m_handler->dispatch(state);
+}
+
+
+
 // static methods
 
 static QList<OutputFactory*> *factories = 0;
@@ -126,177 +327,5 @@ bool Output::isEnabled(OutputFactory* factory)
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     return name == settings.value("Output/plugin_file", "libalsa.so").toString();
-}
-
-Output::Output (QObject* parent) : QThread (parent), r (stackSize())
-{
-    qRegisterMetaType<OutputState>("OutputState");
-    m_bl = -1;
-    m_br = -1;
-}
-
-
-Output::~Output()
-{
-    foreach(Visual *visual, m_vis_map.values ())
-    {
-        visual->setOutput(0);
-        visual->close();
-    }
-    foreach (Visual *visual , visuals)  //external
-    {
-        visual->setOutput(0);
-    }
-}
-
-void Output::error ( const QString &e )
-{
-    emit stateChanged ( OutputState ( e ) );
-}
-
-void Output::addVisual ( Visual *v )
-{
-    if (visuals.indexOf (v) == -1)
-    {
-        visuals.append (v);
-        v->setOutput(this);
-        qDebug("Output: added external visualization");
-    }
-}
-
-
-void Output::removeVisual (Visual *v)
-{
-    v->setOutput(0);
-    visuals.removeAll (v);
-    if (m_vis_map.key(v))
-    {
-        VisualFactory *factory = m_vis_map.key(v);
-        m_vis_map.remove(factory);
-    }
-}
-
-void Output::processCloseEvent(Visual *v, QCloseEvent *event)
-{
-    if (event->spontaneous () && m_vis_map.key(v))
-    {
-        VisualFactory *factory = m_vis_map.key(v);
-        m_vis_map.remove(factory);
-        Visual::setEnabled(factory, FALSE);
-        dispatch(OutputState::VisualRemoved);
-    }
-}
-
-void Output::addVisual(VisualFactory *factory, QWidget *parent)
-{
-    if (m_vis_map.value(factory))
-        return;
-    Visual::setEnabled(factory, TRUE);
-    Visual* visual = factory->create(parent);
-    visual->setWindowFlags(Qt::Window);
-    if (visual)
-    {
-        visual->setOutput(this);
-        qDebug("Output: added visual factory: %s",
-               qPrintable(factory->properties().name));
-        m_vis_map.insert (factory, visual);
-        visual->show();
-    }
-}
-
-void Output::removeVisual(VisualFactory *factory)
-{
-    if (m_vis_map.value(factory))
-    {
-        m_vis_map.value(factory)->close();
-        m_vis_map.remove (factory);
-    }
-    Visual::setEnabled(factory, FALSE);
-}
-
-void Output::dispatchVisual ( Buffer *buffer, unsigned long written,
-                              int chan, int prec )
-{
-    if (!buffer)
-        return;
-    Visual* visual = 0;
-    foreach (visual , visuals)  //external
-    {
-        visual->mutex()->lock ();
-        visual->add ( buffer, written, chan, prec );
-        visual->mutex()->unlock();
-    }
-    foreach (visual , m_vis_map.values ())  //internal
-    {
-        visual->mutex()->lock ();
-        visual->add ( buffer, written, chan, prec );
-        visual->mutex()->unlock();
-    }
-}
-
-
-void Output::clearVisuals()
-{
-    Visual *visual = 0;
-    foreach (visual, visuals )
-    {
-        visual->mutex()->lock ();
-        visual->clear();
-        visual->mutex()->unlock();
-    }
-    foreach(visual, m_vis_map.values ())
-    {
-        visual->mutex()->lock ();
-        visual->clear();
-        visual->mutex()->unlock();
-    }
-}
-
-void Output::dispatch(OutputState::Type st)
-{
-    if (st == OutputState::Stopped)
-        clearVisuals();
-    emit stateChanged ( OutputState(st) );
-}
-
-void Output::dispatch(long s, unsigned long w, int b, int f, int p, int c)
-{
-    emit stateChanged ( OutputState(s, w, b, f, p, c) );
-}
-
-void Output::dispatch ( const OutputState &st )
-{
-    if (st.type() == OutputState::Stopped)
-        clearVisuals();
-    emit stateChanged ( st );
-}
-
-void Output::dispatchVolume(int L, int R)
-{
-    emit stateChanged ( OutputState(L, R) );
-}
-
-void Output::checkVolume()
-{
-    int ll = 0, lr = 0;
-    volume(&ll,&lr);
-    ll = (ll > 100) ? 100 : ll;
-    lr = (lr > 100) ? 100 : lr;
-    ll = (ll < 0) ? 0 : ll;
-    lr = (lr < 0) ? 0 : lr;
-    if (m_bl!=ll || m_br!=lr)
-    {
-        m_bl = ll;
-        m_br = lr;
-        dispatchVolume(ll,lr);
-    }
-}
-
-void Output::checkSoftwareVolume()
-{
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    int L = settings.value("Volume/left", 80).toInt();
-    int R = settings.value("Volume/right", 80).toInt();
-    dispatchVolume(L, R);
 }
 

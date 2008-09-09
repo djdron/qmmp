@@ -34,6 +34,7 @@
 #include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/visual.h>
+#include <qmmp/statehandler.h>
 #include "outputalsa.h"
 
 OutputALSA::OutputALSA(QObject * parent, bool useVolume)
@@ -84,7 +85,7 @@ void OutputALSA::status()
     }
 }
 
-long OutputALSA::written()
+qint64 OutputALSA::written()
 {
     return m_totalWritten;
 }
@@ -95,7 +96,7 @@ void OutputALSA::seek(long pos)
     m_currentSeconds = -1;
 }
 
-void OutputALSA::configure(long freq, int chan, int prec, int brate)
+void OutputALSA::configure(qint64 freq, int chan, int prec)
 {
     // we need to configure
     if (freq != m_frequency || chan != m_channels || prec != m_precision)
@@ -166,8 +167,7 @@ void OutputALSA::configure(long freq, int chan, int prec, int brate)
             return;
         }
         exact_rate = rate;// = 11000;
-        qDebug("OutputALSA: frequency=%d, channels=%d, bitrate=%d",
-               rate, chan, brate);
+        qDebug("OutputALSA: frequency=%d, channels=%d", rate, chan);
 
         if ((err = snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0)) < 0)
         {
@@ -248,8 +248,8 @@ void OutputALSA::pause()
 {
     if (!m_play)
         return;
-    m_pause = (m_pause) ? FALSE : TRUE;
-    OutputState::Type state = m_pause ? OutputState::Paused: OutputState::Playing;
+    m_pause = !m_pause;
+    Qmmp::State state = m_pause ? Qmmp::Paused: Qmmp::Playing;
     dispatch(state);
 }
 
@@ -273,7 +273,7 @@ bool OutputALSA::initialize()
 }
 
 
-long OutputALSA::latency()
+qint64 OutputALSA::latency()
 {
     long used = 0;
 
@@ -310,7 +310,7 @@ void OutputALSA::run()
     unsigned char *prebuffer = (unsigned uchar *)malloc(prebuffer_size);
     ulong prebuffer_fill = 0;
 
-    dispatch(OutputState::Playing);
+    dispatch(Qmmp::Playing);
 
     while (!done)
     {
@@ -400,7 +400,7 @@ void OutputALSA::run()
         }
     }
     m_play = FALSE;
-    dispatch(OutputState::Stopped);
+    dispatch(Qmmp::Stopped);
     free(prebuffer);
     prebuffer = 0;
     mutex()->unlock();
@@ -483,7 +483,7 @@ void OutputALSA::uninitialize()
         snd_pcm_close(pcm_handle);
         pcm_handle = 0;
     }
-    dispatch(OutputState::Stopped);
+    dispatch(Qmmp::Stopped);
 }
 /* ****** MIXER ******* */
 

@@ -364,14 +364,14 @@ void EqWidget::loadPreset(const QString &name)
     }
 }
 
-void EqWidget::setInfo(const OutputState &st)
+/*void EqWidget::setInfo(const OutputState &st)
 {
     if (st.type() == OutputState::Volume)
     {
         m_titleBar->setVolume(st.leftVolume(),st.rightVolume());
 
     }
-}
+}*/
 
 EQPreset *EqWidget::findPreset(const QString &name)
 {

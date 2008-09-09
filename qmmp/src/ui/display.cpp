@@ -25,6 +25,7 @@
 #include <QMenu>
 
 #include <qmmp/output.h>
+#include <qmmp/soundcore.h>
 #include "skin.h"
 #include "mainvisual.h"
 #include "button.h"
@@ -82,23 +83,23 @@ MainDisplay::MainDisplay (QWidget *parent)
     vis->show();
 
     m_eqButton = new ToggleButton (this,Skin::BT_EQ_ON_N,Skin::BT_EQ_ON_P,
-                                    Skin::BT_EQ_OFF_N,Skin::BT_EQ_OFF_P);
+                                   Skin::BT_EQ_OFF_N,Skin::BT_EQ_OFF_P);
     m_eqButton->move (219,58);
     m_eqButton->show();
     m_plButton = new ToggleButton (this,Skin::BT_PL_ON_N,Skin::BT_PL_ON_P,
-                                    Skin::BT_PL_OFF_N,Skin::BT_PL_OFF_P);
+                                   Skin::BT_PL_OFF_N,Skin::BT_PL_OFF_P);
     m_plButton->move (241,58);
     m_plButton->show();
 
     m_repeatButton = new ToggleButton (this,Skin::REPEAT_ON_N,Skin::REPEAT_ON_P,
-                                        Skin::REPEAT_OFF_N,Skin::REPEAT_OFF_P);
+                                       Skin::REPEAT_OFF_N,Skin::REPEAT_OFF_P);
     connect(m_repeatButton,SIGNAL(clicked(bool)),this,SIGNAL(repeatableToggled(bool)));
 
     m_repeatButton->move (210,89);
     m_repeatButton->show();
 
     m_shuffleButton = new ToggleButton (this,Skin::SHUFFLE_ON_N,Skin::SHUFFLE_ON_P,
-                                         Skin::SHUFFLE_OFF_N,Skin::SHUFFLE_OFF_P);
+                                        Skin::SHUFFLE_OFF_N,Skin::SHUFFLE_OFF_P);
     connect(m_shuffleButton,SIGNAL(clicked(bool)),this,SIGNAL(shuffleToggled(bool)));
     m_shuffleButton->move (164,89);
     m_shuffleButton->show();
@@ -147,21 +148,58 @@ MainDisplay::~MainDisplay()
     settings.setValue ("Equalizer/visible",m_eqButton->isChecked());
 }
 
-void MainDisplay::setTime (int t)
+void MainDisplay::setTime (qint64 t)
 {
-    posbar->setValue (t);
+    posbar->setValue (t); //TODO use qint64
     m_timeIndicator->setTime(t);
 }
-void MainDisplay::setMaxTime (long mt) // TODO: should be removed
+void MainDisplay::setDuration(qint64 t)
 {
-    posbar->setMax (mt);
-    m_timeIndicator->setSongDuration(mt);
+    posbar->setMax (t);
+    m_timeIndicator->setSongDuration(t);
 }
 
+void MainDisplay::setState(Qmmp::State state)
+{
+    switch ((int) state)
+    {
+    case Qmmp::Playing:
+    {
+        m_playstatus->setStatus(PlayStatus::PLAY);
+        m_timeIndicator->setNeedToShowTime(TRUE);
+        setDuration(m_core->length());
+        break;
+    }
+    /*case OutputState::Buffering:
+    {
+        //ui.label->setText("Buffering");
+        break;
+    }*/
+    case Qmmp::Paused:
+    {
+        m_playstatus->setStatus(PlayStatus::PAUSE);
+        break;
+    }
+    case Qmmp::Stopped:
+    {
+        m_playstatus->setStatus(PlayStatus::STOP);
+        m_monoster->setChannels (0);
+        m_timeIndicator->setNeedToShowTime(FALSE);
+        posbar->setValue (0);
+        posbar->setMax (0);
+        break;
+    }
+    }
+}
 
 void MainDisplay::updateSkin()
 {
     setPixmap (m_skin->getMain());
+}
+
+void MainDisplay::setSampleRate(int rate)
+{
+    m_freq->display(rate/1000);
 }
 
 void MainDisplay::setEQ (QWidget* w)
@@ -180,7 +218,7 @@ void MainDisplay::setPL (QWidget* w)
     connect (m_playlist, SIGNAL (closed ()), m_plButton, SLOT (click()));
 }
 
-void MainDisplay::setInfo(const OutputState &st)
+/*void MainDisplay::setInfo(const OutputState &st)
 {
 
 
@@ -229,6 +267,17 @@ void MainDisplay::setInfo(const OutputState &st)
         break;
 
     }
+}*/
+
+void MainDisplay::setSoundCore(SoundCore *core)
+{
+    m_core = core;
+    connect(core, SIGNAL(elapsedChanged(qint64)), SLOT(setTime(qint64)));
+    //connect(core, SIGNAL(totalTimeChanged(qint64 time)
+    connect(core, SIGNAL(bitrateChanged(int)), m_kbps, SLOT(display(int)));
+    connect(core, SIGNAL(frequencyChanged(int)), SLOT(setSampleRate(int)));
+    connect(core, SIGNAL(channelsChanged(int)), m_monoster, SLOT(setChannels(int)));
+    connect(core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
 }
 
 bool MainDisplay::isPlaylistVisible() const

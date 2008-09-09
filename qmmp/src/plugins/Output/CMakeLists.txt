@@ -8,13 +8,13 @@ add_subdirectory(alsa)
 ENDIF(USE_ALSA)
 
 IF(USE_JACK)
-add_subdirectory(jack)
+#add_subdirectory(jack)
 ENDIF(USE_JACK)
 
 IF(USE_OSS)
-add_subdirectory(oss)
+#add_subdirectory(oss)
 ENDIF(USE_OSS)
 
 IF(USE_PULSE)
-add_subdirectory(pulseaudio)
+#add_subdirectory(pulseaudio)
 ENDIF(USE_PULSE)

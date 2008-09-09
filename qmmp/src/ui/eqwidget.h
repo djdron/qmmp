@@ -56,7 +56,7 @@ public:
     /*!
     * shows output volume and balance. Necessare for the shaded mode
     */
-    void setInfo(const OutputState &st);
+    //void setInfo(const OutputState &st);
 
 signals:
     void valueChanged();

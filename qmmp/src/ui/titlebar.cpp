@@ -24,7 +24,6 @@
 #include <QMenu>
 #include <QSettings>
 
-#include <qmmp/soundcore.h>
 #include "symboldisplay.h"
 #include "skin.h"
 #include "button.h"
@@ -174,7 +173,7 @@ void TitleBar::shade()
         connect (m_control, SIGNAL (stopClicked()), parent(), SLOT (stop()));
         connect (m_control, SIGNAL (ejectClicked()), parent(), SLOT (addFile()));
         m_visual = new ShadedVisual(this);
-        SoundCore::instance()->addVisualization(m_visual);
+        //SoundCore::instance()->addVisualization(m_visual);
         m_visual->show();
         m_visual->move(79,5);
     }
@@ -185,7 +184,7 @@ void TitleBar::shade()
         m_shade2->deleteLater();
         m_currentTime->deleteLater();
         m_control->deleteLater();
-        SoundCore::instance()->removeVisual(m_visual);
+        //SoundCore::instance()->removeVisual(m_visual);
         m_visual->deleteLater();
         m_shade2 = 0;
         m_currentTime = 0;
@@ -210,23 +209,33 @@ QString TitleBar::formatTime ( int sec )
     return str_minutes + ":" + str_seconds;
 }
 
-void TitleBar::setInfo(const OutputState &st)
+//void TitleBar::setInfo(const OutputState &st)
+//{
+/*if (!m_currentTime)
+    return;*/
+/*switch ( ( int ) st.type() )
+{
+case OutputState::Info:
+{
+    m_currentTime->display(formatTime(st.elapsedSeconds()));
+    break;
+}
+case OutputState::Stopped:
+{
+    m_currentTime->display("--:--");
+    break;
+}
+}*/
+//}
+
+void TitleBar::setTime(qint64 time)
 {
     if (!m_currentTime)
         return;
-    switch ( ( int ) st.type() )
-    {
-    case OutputState::Info:
-    {
-        m_currentTime->display(formatTime(st.elapsedSeconds()));
-        break;
-    }
-    case OutputState::Stopped:
-    {
+    if (time < 0)
         m_currentTime->display("--:--");
-        break;
-    }
-    }
+    else
+        m_currentTime->display(formatTime(time));
 }
 
 void TitleBar::updateMask()

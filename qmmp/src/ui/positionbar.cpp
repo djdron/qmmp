@@ -38,7 +38,7 @@ PositionBar::PositionBar(QWidget *parent)
     mw = qobject_cast<MainWindow*>(window());
     m_moving = FALSE;
     m_min = 0;
-    m_max = 50;
+    m_max = 0;
     m_old = m_value = 0;
     draw(FALSE);
 }
@@ -52,7 +52,7 @@ void PositionBar::mousePressEvent(QMouseEvent *e)
 
     m_moving = TRUE;
     press_pos = e->x();
-    if(m_pos<e->x() && e->x()<m_pos+29)
+    if (m_pos<e->x() && e->x()<m_pos+29)
     {
         press_pos = e->x()-m_pos;
     }
@@ -71,12 +71,12 @@ void PositionBar::mousePressEvent(QMouseEvent *e)
 
 void PositionBar::mouseMoveEvent (QMouseEvent *e)
 {
-    if(m_moving)
+    if (m_moving)
     {
         int po = e->x();
         po = po - press_pos;
 
-        if(0<=po && po<=width()-30)
+        if (0<=po && po<=width()-30)
         {
             m_value = convert(po);
             draw();
@@ -122,12 +122,15 @@ void PositionBar::draw(bool pressed)
 {
     int p=int(ceil(double(m_value-m_min)*(width()-30)/(m_max-m_min)));
     m_pixmap = m_skin->getPosBar();
-    QPainter paint(&m_pixmap);
-    if(pressed)
-        paint.drawPixmap(p,0,m_skin->getButton(Skin::BT_POSBAR_P));
-    else
-        paint.drawPixmap(p,0,m_skin->getButton(Skin::BT_POSBAR_N));
-    setPixmap(m_pixmap);
+    if (m_max > 0)
+    {
+        QPainter paint(&m_pixmap);
+        if (pressed)
+            paint.drawPixmap(p,0,m_skin->getButton(Skin::BT_POSBAR_P));
+        else
+            paint.drawPixmap(p,0,m_skin->getButton(Skin::BT_POSBAR_N));
+    }
+        setPixmap(m_pixmap);
     m_pos = p;
 }
 

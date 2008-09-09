@@ -93,8 +93,9 @@ protected:
     virtual void keyPressEvent ( QKeyEvent* );
 
 private slots:
-    void showOutputState(const OutputState&);
-    void showDecoderState(const DecoderState&);
+    //void showOutputState(const OutputState&);
+    //void showDecoderState(const DecoderState&);
+    void showState(Qmmp::State state);
     void changeTitle(const QString&);
     void clear();
     void startSeek();

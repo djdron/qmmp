@@ -26,72 +26,7 @@ class Recycler;
 class Output;
 class Visualization;
 class Effect;
-
-
-
-class DecoderState
-{
-public:
-    enum Type { Decoding, Stopped, Finished, Info, Error };
-
-    DecoderState(const DecoderState &st)
-            : m_error_msg(0), m_tag(0)
-    {
-        m_type = st.type();
-        if (m_type == Info)
-            m_tag = new FileTag(*st.tag());
-        else if (m_type == Error)
-            m_error_msg = new QString(*st.errorMessage());
-    }
-
-
-    DecoderState(Type t)
-            : m_type(t), m_error_msg(0), m_tag(0)
-{}
-
-    DecoderState(const QString &e)
-            : m_type(Error), m_tag(0)
-    {
-        m_error_msg = new QString(e);
-    }
-
-    DecoderState()
-            : m_type(Stopped), m_error_msg(0), m_tag(0)
-    {}
-
-    DecoderState(const FileTag &tag)
-            : m_type(Info), m_error_msg(0),  m_tag(0)
-    {
-        m_tag = new FileTag(tag);
-    }
-
-    ~DecoderState()
-    {
-        if (m_error_msg)
-            delete m_error_msg;
-        if (m_tag)
-            delete m_tag;
-    }
-
-    const QString *errorMessage() const
-    {
-        return m_error_msg;
-    }
-    const Type &type() const
-    {
-        return m_type;
-    }
-    const FileTag *tag() const
-    {
-        return m_tag;
-    }
-
-private:
-    Type m_type;
-    const QString *m_error_msg;
-    FileTag *m_tag;
-};
-
+class StateHandler;
 
 
 class Decoder : public QThread
@@ -104,50 +39,26 @@ public:
 
     // Standard Decoder API
     virtual bool initialize() = 0;
-    virtual double lengthInSeconds() = 0;
+    virtual qint64 lengthInSeconds() = 0;
     virtual void seek(double) = 0;
     virtual void stop() = 0;
+    //virtual void pause() = 0;
+    //virtual void stop() = 0;
 
-    DecoderFactory *factory() const
-    {
-        return fctry;
-    }
+    DecoderFactory *factory() const;
+    QIODevice *input();
+    Output *output();
+    QMutex *mutex();
+    QWaitCondition *cond();
+    StateHandler *stateHandler();
 
-    QIODevice *input()
-    {
-        return in;
-    }
-    Output *output()
-    {
-        return m_output;
-    }
+    void setBlockSize(unsigned int sz);
+    unsigned int blockSize() const;
 
-    QMutex *mutex()
-    {
-        return &mtx;
-    }
-    QWaitCondition *cond()
-    {
-        return &cnd;
-    }
-
-    void setBlockSize(unsigned int sz)
-    {
-        blksize = sz;
-    }
-
-    unsigned int blockSize() const
-    {
-        return blksize;
-    }
-    ulong produceSound(char *data, ulong output_bytes, ulong bitrate, int nch);
     void setEQ(int bands[10], int preamp);
-    void setEQEnabled(bool on)
-    {
-        m_useEQ = on;
-    };
-    void setVolume(int, int);
+    void setEQEnabled(bool on);
 
+    void setVolume(int, int);
     void volume(int*, int*);
 
     // static methods
@@ -166,31 +77,31 @@ public:
     static bool isEnabled(DecoderFactory* factory);
 
 signals:
-    void stateChanged(const DecoderState&);
+    void finished();
+    //void stateChanged(const DecoderState&);
 
 protected:
-    void configure(long freq, int channels, int prec, int bitrate);
-    void dispatch(DecoderState::Type);
-    void dispatch(const DecoderState&);
-    void dispatch(const FileTag&);
-    void error(const QString&);
+    void configure(qint64 srate, int chan, int bps);
+    qint64 produceSound(char *data, qint64 size, qint64 brate, int chan);
+    void finish();
 
 private:
-    DecoderFactory *fctry;
-    void changeVolume(char *data, ulong sz, int channels);
+    void changeVolume(char *data, qint64 size, int chan);
 
+    DecoderFactory *m_factory;
     QList <Effect*> m_effects;
-    QIODevice *in;
+    QIODevice *m_input;
     Output *m_output;
 
-    QMutex mtx;
-    QWaitCondition cnd;
+    QMutex m_mutex;
+    QWaitCondition m_waitCondition;
 
     uint blksize;
     bool m_eqInited;
     bool m_useEQ;
     bool m_useVolume;
     int m_volL, m_volR, m_volLF, m_volRF;
+    StateHandler *m_handler;
 
 };
 

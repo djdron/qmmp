@@ -28,28 +28,105 @@ extern "C"
 
 
 Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : QThread(parent), fctry(d), in(i), m_output(o),m_eqInited(FALSE),
+        : QThread(parent), m_factory(d), m_input(i), m_output(o),m_eqInited(FALSE),
         m_useEQ(FALSE)
 {
     m_output->recycler()->clear();
     int b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
-    qRegisterMetaType<DecoderState>("DecoderState");
+    //qRegisterMetaType<DecoderState>("DecoderState");
+    qRegisterMetaType<Qmmp::State>("Qmmp::State");
     blksize = Buffer::size();
-    m_effects = Effect::create(this);
+    //m_effects = Effect::create(this);
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     m_useVolume = settings.value("Volume/software_volume", FALSE).toBool();
     m_volL = settings.value("Volume/left", 80).toInt();
     m_volR = settings.value("Volume/right", 80).toInt();
-    setVolume(m_volL, m_volR);
+    //setVolume(m_volL, m_volR);
+    m_handler = new StateHandler(this);
 }
 
 Decoder::~Decoder()
 {
-    fctry = 0;
-    in = 0;
+    m_factory = 0;
+    m_input = 0;
     m_output = 0;
     blksize = 0;
+}
+
+DecoderFactory *Decoder::factory() const
+{
+    return m_factory;
+}
+
+QIODevice *Decoder::input()
+{
+    return m_input;
+}
+
+Output *Decoder::output()
+{
+    return m_output;
+}
+
+QMutex *Decoder::mutex()
+{
+    return &m_mutex;
+}
+
+QWaitCondition *Decoder::cond()
+{
+    return &m_waitCondition;
+}
+
+StateHandler *Decoder::stateHandler()
+{
+    return m_handler;
+}
+
+void Decoder::setBlockSize(unsigned int sz)
+{
+    blksize = sz;
+}
+
+unsigned int Decoder::blockSize() const
+{
+    return blksize;
+}
+
+void Decoder::setEQ(int bands[10], int preamp)
+{
+    set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+    set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+    for (int i=0; i<10; ++i)
+    {
+        int value = bands[i];
+        set_gain(i,0, 0.03*value+0.000999999*value*value);
+        set_gain(i,1, 0.03*value+0.000999999*value*value);
+    }
+}
+
+void Decoder::setEQEnabled(bool on)
+{
+    m_useEQ = on;
+}
+
+void Decoder::setVolume(int l, int r)
+{
+    m_mutex.lock();
+    m_volL = l;
+    m_volR = r;
+    m_volLF = pow( 10, (l - 100)/40.0 ) * 256;
+    m_volRF = pow( 10, (r - 100)/40.0 ) * 256;
+    m_mutex.lock();
+}
+
+void Decoder::volume(int *l, int *r)
+{
+    m_mutex.lock();
+    *l = m_volL;
+    *r = m_volR;
+    m_mutex.unlock();
 }
 
 // static methods
@@ -148,7 +225,6 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
 {
     Decoder *decoder = 0;
     DecoderFactory *fact = 0;
-
     if (!input->open(QIODevice::ReadOnly))
     {
         qDebug("Decoder: cannot open input");
@@ -163,14 +239,14 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
     }
     else
         fact = Decoder::findByPath(source);
-
     if (fact)
     {
         decoder = fact->create(parent, input, output);
     }
     if (!decoder)
         input->close();
-
+    else
+        output->setStateHandler(decoder->stateHandler());
     return decoder;
 }
 
@@ -292,29 +368,23 @@ QList<DecoderFactory*> *Decoder::decoderFactories()
     return factories;
 }
 
-void Decoder::dispatch(const DecoderState &st)
+void Decoder::configure(qint64 srate, int chan, int bps)
 {
-    emit stateChanged(st);
+    Effect* effect = 0;
+    foreach(effect, m_effects)
+    {
+        effect->configure(srate, chan, bps);
+        srate = effect->sampleRate();
+        chan = effect->channels();
+        bps = effect->bitsPerSample();
+    }
+    if (m_output)
+        m_output->configure(srate, chan, bps);
 }
 
-void Decoder::dispatch(DecoderState::Type st)
+qint64 Decoder::produceSound(char *data, qint64 size, qint64 brate, int chan)
 {
-    emit stateChanged(DecoderState(st));
-}
-
-void Decoder::dispatch(const FileTag &tag)
-{
-    emit stateChanged(DecoderState(tag));
-}
-
-void Decoder::error(const QString &e)
-{
-    emit stateChanged(DecoderState(e));
-}
-
-ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int nch)
-{
-    ulong sz = output_bytes < blksize ? output_bytes : blksize;
+    ulong sz = size < blksize ? size : blksize;
 
     if (m_useEQ)
     {
@@ -323,15 +393,15 @@ ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int n
             init_iir();
             m_eqInited = TRUE;
         }
-        iir((void*) data,sz,nch);
+        iir((void*) data,size,chan);
     }
     if (m_useVolume)
     {
-        changeVolume(data, sz, nch);
+        changeVolume(data, sz, chan);
     }
     char *out_data = data;
     char *prev_data = data;
-    ulong w = sz;
+    qint64 w = sz;
     Effect* effect = 0;
     foreach(effect, m_effects)
     {
@@ -360,45 +430,25 @@ ulong Decoder::produceSound(char *data, ulong output_bytes, ulong bitrate, int n
         memset(b->data + w, 0, blksize + b->exceeding - w);
 
     b->nbytes = w;// blksize;
-    b->rate = bitrate;
+    b->rate = brate;
 
     output()->recycler()->add();
 
-    output_bytes -= sz;
-    memmove(data, data + sz, output_bytes);
+    size -= sz;
+    memmove(data, data + sz, size);
     return sz;
 }
 
-void Decoder::configure(long freq, int channels, int prec, int bitrate)
+void Decoder::finish()
 {
-    Effect* effect = 0;
-    foreach(effect, m_effects)
-    {
-        effect->configure(freq, channels, prec);
-        freq = m_effects.at(0)->frequency();
-        channels = effect->channels();
-        prec = effect->resolution();
-    }
-    if (m_output)
-        m_output->configure(freq, channels, prec, bitrate);
+    //output()->wait();
+    emit finished();
 }
 
-void Decoder::setEQ(int bands[10], int preamp)
+void Decoder::changeVolume(char *data, qint64 size, int chan)
 {
-    set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    for (int i=0; i<10; ++i)
-    {
-        int value = bands[i];
-        set_gain(i,0, 0.03*value+0.000999999*value*value);
-        set_gain(i,1, 0.03*value+0.000999999*value*value);
-    }
-}
-
-void Decoder::changeVolume(char *data, ulong sz, int channels)
-{
-    if (channels > 1)
-        for (ulong i = 0; i < sz/2; i+=2)
+    if (chan > 1)
+        for (qint64 i = 0; i < size/2; i+=2)
         {
             ((short*)data)[i]*= m_volLF/256.0;
             ((short*)data)[i+1]*= m_volRF/256.0;
@@ -406,26 +456,7 @@ void Decoder::changeVolume(char *data, ulong sz, int channels)
     else
     {
         int l = qMax(m_volLF,m_volRF);
-        for (ulong i = 0; i < sz/2; i++)
+        for (qint64 i = 0; i < size/2; i++)
             ((short*)data)[i]*= l/256.0;
     }
 }
-
-void Decoder::setVolume(int l, int r)
-{
-    mtx.lock();
-    m_volL = l;
-    m_volR = r;
-    m_volLF = pow( 10, (l - 100)/40.0 ) * 256;
-    m_volRF = pow( 10, (r - 100)/40.0 ) * 256;
-    mtx.unlock();
-}
-
-void Decoder::volume(int *l, int *r)
-{
-    mtx.lock();
-    *l = m_volL;
-    *r = m_volR;
-    mtx.unlock();
-}
-

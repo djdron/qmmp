@@ -17,7 +17,9 @@ HEADERS += recycler.h \
            visual.h \
            visualfactory.h \
            effect.h \
-           effectfactory.h
+           effectfactory.h \
+ statehandler.h \
+ qmmp.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
@@ -29,7 +31,9 @@ SOURCES += recycler.cpp \
            downloader.cpp \
            filetag.cpp \
            visual.cpp \
-           effect.cpp
+           effect.cpp \
+ statehandler.cpp \
+ qmmp.cpp
 
 TARGET = ../../lib/qmmp
 CONFIG += release \
@@ -42,16 +46,16 @@ TEMPLATE = lib
 VERSION = $$QMMP_VERSION
 PKGCONFIG += libcurl
 
-unix:isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
+unix : isEmpty(LIB_DIR){
+        LIB_DIR = /lib
+    }
 
-unix:DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
+unix : DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
 DEFINES += QMMP_VERSION=$$QMMP_VERSION
-contains(CONFIG, SVN_VERSION) {
-DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
-} else {
-DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
+contains(CONFIG, SVN_VERSION){
+    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
+}else {
+    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
 }
 
 target.path = $$LIB_DIR

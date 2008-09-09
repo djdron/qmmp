@@ -25,7 +25,7 @@ DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
     inited = false;
     user_stop = false;
     done = false;
-    finish = false;
+    m_finish = false;
     derror = false;
     eof = false;
     useeq = false;
@@ -72,7 +72,7 @@ bool DecoderMAD::initialize()
     inited = false;
     user_stop = false;
     done = false;
-    finish = false;
+    m_finish = false;
     derror = false;
     eof = false;
     totalTime = 0.;
@@ -88,7 +88,7 @@ bool DecoderMAD::initialize()
 
     if (! input())
     {
-        error("DecoderMAD: cannot initialize.  No input.");
+        qWarning("DecoderMAD: cannot initialize.  No input.");
         return FALSE;
     }
 
@@ -102,8 +102,8 @@ bool DecoderMAD::initialize()
     {
         if (! input()->open(QIODevice::ReadOnly))
         {
-            error("DecoderMAD: Failed to open input.  Error " +
-                  QString::number(input()->isOpen()) + ".");
+            /*qWarning("DecoderMAD: Failed to open input.  Error " +
+                  QString::number(input()->isOpen()) + ".");*/
             return FALSE;
         }
     }
@@ -112,8 +112,8 @@ bool DecoderMAD::initialize()
     {
         TagExtractor extractor(input());
         FileTag tag = extractor.id3v2tag();
-        if (!tag.isEmpty())
-            dispatch(extractor.id3v2tag());
+        //      if (!tag.isEmpty())
+//            dispatch(extractor.id3v2tag());
     }
 
     mad_stream_init(&stream);
@@ -131,7 +131,7 @@ bool DecoderMAD::initialize()
     mad_frame_mute (&frame);
     stream.next_frame = NULL;
     stream.sync = 0;
-    configure(freq, channels, 16, bitrate);
+    configure(freq, channels, 16);
 
     inited = TRUE;
     return TRUE;
@@ -150,7 +150,7 @@ void DecoderMAD::deinit()
     inited = false;
     user_stop = false;
     done = false;
-    finish = false;
+    m_finish = false;
     derror = false;
     eof = false;
     useeq = false;
@@ -339,7 +339,7 @@ bool DecoderMAD::findHeader()
     return TRUE;
 }
 
-double DecoderMAD::lengthInSeconds()
+qint64 DecoderMAD::lengthInSeconds()
 {
     if (! inited)
         return 0.;
@@ -360,11 +360,11 @@ void DecoderMAD::flush(bool final)
 {
     ulong min = final ? 0 : bks;
 
-    while ((! done && ! finish) && output_bytes > min)
+    while ((! done && ! m_finish) && output_bytes > min)
     {
         output()->recycler()->mutex()->lock();
 
-        while ((! done && ! finish) && output()->recycler()->full())
+        while ((! done && ! m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();
             output()->recycler()->cond()->wait(output()->recycler()->mutex());
@@ -373,7 +373,7 @@ void DecoderMAD::flush(bool final)
             done = user_stop;
         }
 
-        if (user_stop || finish)
+        if (user_stop || m_finish)
         {
             inited = FALSE;
             done = TRUE;
@@ -406,13 +406,13 @@ void DecoderMAD::run()
     }
 
 
-    DecoderState::Type stat = DecoderState::Decoding;
+    //DecoderState::Type stat = DecoderState::Decoding;
 
     mutex()->unlock();
 
-    dispatch(stat);
+    //dispatch(stat);
 
-    while (! done && ! finish && ! derror)
+    while (! done && ! m_finish && ! derror)
     {
         mutex()->lock();
 
@@ -433,7 +433,7 @@ void DecoderMAD::run()
             eof = false;
         }
 
-        finish = eof;
+        m_finish = eof;
 
         if (! eof)
         {
@@ -469,7 +469,7 @@ void DecoderMAD::run()
         mutex()->unlock();
 
         // decode
-        while (! done && ! finish && ! derror)
+        while (! done && ! m_finish && ! derror)
         {
             if (mad_frame_decode(&frame, &stream) == -1)
             {
@@ -530,17 +530,18 @@ void DecoderMAD::run()
 
         done = TRUE;
         if (! user_stop)
-            finish = TRUE;
+            m_finish = TRUE;
     }
 
-    if (finish)
-        stat = DecoderState::Finished;
-    else if (user_stop)
-        stat = DecoderState::Stopped;
+    if (m_finish)
+        finish();
+//        stat = DecoderState::Finished;
+    //else if (user_stop)
+    //    stat = DecoderState::Stopped;
 
     mutex()->unlock();
 
-    dispatch(stat);
+    //dispatch(stat);
 
     if (input())
         input()->close();
@@ -617,7 +618,7 @@ enum mad_flow DecoderMAD::madOutput()
         }
     }
 
-    if (done || finish)
+    if (done || m_finish)
     {
         return MAD_FLOW_STOP;
     }

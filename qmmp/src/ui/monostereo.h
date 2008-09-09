@@ -35,6 +35,7 @@ public:
 
     ~MonoStereo();
 
+public slots:
     void setChannels(int);
 
 private slots:
