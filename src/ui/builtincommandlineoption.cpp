@@ -66,7 +66,6 @@ const QString BuiltinCommandLineOption::helpString() const
                 "--pause              "+tr("Pause current song")+ "\n"
                 "--play-pause         "+tr("Pause if playing, play otherwise")+ "\n"
                 "--stop               "+tr("Stop current song")+ "\n" +
-                "--next               "+tr("Skip forward in playlist")+ "\n" +
                 "--volume             "+tr("Set playback volume(example: qmmp --volume20, qmmp --volume100)")+ "\n"
                 "--jump-to-file       "+tr("Display Jump to File dialog")+ "\n" +
                 "--toggle-visibility  "+tr("Show/hide application")+ "\n" +
