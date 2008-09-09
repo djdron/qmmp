@@ -28,6 +28,7 @@
 #include "constants.h"
 #include "streamreader.h"
 #include "effect.h"
+#include "statehandler.h"
 
 #include "soundcore.h"
 
@@ -48,27 +49,9 @@ SoundCore::SoundCore(QObject *parent)
     m_preamp = 0;
     m_vis = 0;
     m_parentWidget = 0;
+    m_state = Qmmp::Stopped;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
-    m_error = NoError;
-    m_output = Output::create(this);
-    if (!m_output)
-    {
-        m_error = DecoderError;
-        qWarning("SoundCore: unable to create output");
-    }
-    connect(m_output, SIGNAL(stateChanged(const OutputState&)),
-            SIGNAL(outputStateChanged(const OutputState&)));
-
-    QList<OutputFactory*> *outputFactories = Output::outputFactories();
-    foreach(OutputFactory* of, *outputFactories)
-    qApp->installTranslator(of->createTranslator(this));
-
-    QList<DecoderFactory*> *decoderFactories = Decoder::decoderFactories();
-    foreach(DecoderFactory* df, *decoderFactories)
-    qApp->installTranslator(df->createTranslator(this));
-
-    Effect::effectFactories();
 }
 
 
@@ -78,74 +61,58 @@ SoundCore::~SoundCore()
 bool SoundCore::play(const QString &source)
 {
     stop();
-    if (source.isEmpty())
-    {
-        m_error = DecoderError;
-        return FALSE;
-    }
-    if (source.left(4) == "http")
-    {
-        m_input = new StreamReader(source, this);
-        connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
-        connect(m_input, SIGNAL(titleChanged(const QString&)),
-                SIGNAL(titleChanged(const QString&)));
-        connect(m_input, SIGNAL(readyRead()),SLOT(decode()));
-    }
-    else
-        m_input = new QFile(source);
-
-    m_error = OutputError;
+    if (m_state != Qmmp::Stopped) //clear error state
+        setState(Qmmp::Stopped);
+    m_input = new QFile(source);
+    m_output = Output::create(this);
     if (!m_output)
     {
-        m_output = Output::create(this);
-        if (!m_output)
-        {
-            qWarning("SoundCore: unable to create output");
-            return FALSE;
-        }
-        connect(m_output, SIGNAL(stateChanged(const OutputState&)),
-                SIGNAL(outputStateChanged(const OutputState&)));
-        connect(m_input, SIGNAL(readyRead()),SLOT(read()));
+        qWarning("SoundCore: unable to create output");
+        setState(Qmmp::FatalError);
+        return FALSE;
     }
-    if (! m_output->initialize())
+    if (!m_output->initialize())
         return FALSE;
 
-    m_error = DecoderError;
-
-    Visual *visual = 0;
-    foreach(visual, m_visuals)
-    m_output->addVisual(visual);
-
-    VisualFactory* factory;
-    foreach(factory, *Visual::visualFactories())
+    m_decoder = Decoder::create(this, source, m_input, m_output);
+    if (!m_decoder)
     {
-        if (Visual::isEnabled(factory))
-            m_output->addVisual(factory, m_parentWidget);
+        qWarning("SoundCore: unsupported fileformat");
+        m_block = FALSE;
+        stop();
+        setState(Qmmp::NormalError);
+        return FALSE;
     }
+    qDebug ("ok");
+    m_decoder->setBlockSize(globalBlockSize); //TODO remove
+    StateHandler *handler = m_decoder->stateHandler();
+    connect(handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
+    connect(handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
+    connect(handler, SIGNAL(frequencyChanged(int)), SIGNAL(frequencyChanged(int)));
+    connect(handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
+    connect(handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
+    connect(handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
+    connect(handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
+    connect(m_decoder, SIGNAL(finished()), SIGNAL(finished()));
 
-    m_source = source;
-    if (source.left(4) != "http")
-        return decode();
-    else
-        qobject_cast<StreamReader *>(m_input)->downloadFile();
-    return TRUE;
-}
-
-uint SoundCore::error()
-{
-    return m_error;
+    if (m_decoder->initialize())
+    {
+        m_output->start();
+        m_decoder->start();
+        return TRUE;
+    }
+    stop();
+    return FALSE;
 }
 
 void SoundCore::stop()
 {
-    if (m_block)
-        return;
-    m_paused = FALSE;
     if (m_decoder && m_decoder->isRunning())
     {
         m_decoder->mutex()->lock ();
         m_decoder->stop();
         m_decoder->mutex()->unlock();
+        m_decoder->stateHandler()->dispatch(Qmmp::Stopped);
     }
     if (m_output)
     {
@@ -171,41 +138,21 @@ void SoundCore::stop()
         m_decoder->wait();
     if (m_output)
         m_output->wait();
-    if (m_output && m_output->isInitialized())
-    {
-        m_output->uninitialize();
-    }
 
-    //display->setTime(0);
+    if (m_output)
+    {
+        m_output->deleteLater();
+        m_output = 0;
+    }
     if (m_decoder)
     {
-        delete m_decoder;
+        m_decoder->deleteLater();
         m_decoder = 0;
     }
     if (m_input)
     {
-        delete m_input;
+        m_input->deleteLater();
         m_input = 0;
-    }
-    // recreate output
-    if (m_update && m_output)
-    {
-        delete m_output;
-        m_output = 0;
-        m_update = FALSE;
-        m_output = Output::create(this);
-        if (!m_output)
-        {
-            qWarning("SoundCore: unable to create output");
-        }
-        VisualFactory* factory;
-        foreach(factory, *Visual::visualFactories())
-        {
-            if (Visual::isEnabled(factory))
-                m_output->addVisual(factory, m_parentWidget);
-        }
-        connect(m_output, SIGNAL(stateChanged(const OutputState&)),
-                SIGNAL(outputStateChanged(const OutputState&)));
     }
 }
 
@@ -235,13 +182,10 @@ void SoundCore::pause()
     }
 }
 
-void SoundCore::seek(int pos)
+void SoundCore::seek(qint64 pos)
 {
     if (m_output && m_output->isRunning())
     {
-        /*m_output->recycler()->mutex()->lock ();
-        m_output->recycler()->clear ();
-        m_output->recycler()->mutex()->unlock ();*/
         m_output->mutex()->lock ();
         m_output->seek(pos);
         m_output->mutex()->unlock();
@@ -254,23 +198,9 @@ void SoundCore::seek(int pos)
     }
 }
 
-int SoundCore::length()
+qint64 SoundCore::length() const
 {
-    if (m_decoder)
-        return int(m_decoder->lengthInSeconds());
-    return 0;
-}
-
-bool SoundCore::isInitialized()
-{
-    if (m_decoder)
-        return TRUE;
-    return FALSE;
-}
-
-bool SoundCore::isPaused()
-{
-    return m_paused;
+    return  (m_decoder) ? m_decoder->lengthInSeconds() : 0;
 }
 
 void SoundCore::setEQ(int bands[10], const int &preamp)
@@ -336,13 +266,50 @@ void SoundCore::volume(int *left, int *right)
 
 void SoundCore::updateConfig()
 {
-    m_update = TRUE;
-    if (isInitialized())
+    //m_update = TRUE;
+    /*if (isInitialized())
         return;
-    stop();
+    stop();*/
 }
 
-void SoundCore::addVisualization(Visual *visual)
+qint64 SoundCore::elapsed()
+{
+    return  (m_decoder) ? m_decoder->stateHandler()->elapsed() : 0;
+}
+
+int SoundCore::bitrate()
+{
+    return  (m_decoder) ? m_decoder->stateHandler()->bitrate() : 0;
+}
+
+int SoundCore::frequency()
+{
+    return  (m_decoder) ? m_decoder->stateHandler()->frequency() : 0;
+}
+
+int SoundCore::precision() //TODO rename
+{
+    return  (m_decoder) ? m_decoder->stateHandler()->precision() : 0;
+}
+
+int SoundCore::channels()
+{
+    return  (m_decoder) ? m_decoder->stateHandler()->channels() : 0;
+}
+
+Qmmp::State SoundCore::state() const
+{
+    return  (m_decoder) ? m_decoder->stateHandler()->state() : m_state;
+}
+
+void SoundCore::setState(Qmmp::State state)
+{
+    qDebug("new state = %d",state);
+    m_state = state;
+    emit stateChanged (state);
+}
+
+/*void SoundCore::addVisualization(Visual *visual)
 {
     if (m_visuals.indexOf (visual) == -1)
     {
@@ -350,9 +317,9 @@ void SoundCore::addVisualization(Visual *visual)
         if (m_output)
             m_output->addVisual(visual);
     }
-}
+}*/
 
-bool SoundCore::decode()
+/*bool SoundCore::decode()
 {
     if (! m_decoder)
     {
@@ -365,7 +332,7 @@ bool SoundCore::decode()
             qWarning("SoundCore: unsupported fileformat");
             m_block = FALSE;
             stop();
-            emit decoderStateChanged(DecoderState(DecoderState::Error));
+            //emit decoderStateChanged(DecoderState(DecoderState::Error));
             return FALSE;
         }
         qDebug ("ok");
@@ -381,16 +348,16 @@ bool SoundCore::decode()
     {
         m_output->start();
         m_decoder->start();
-        m_error = NoError;
+        //m_error = NoError;
         m_block = FALSE;
         return TRUE;
     }
     stop();
     m_block = FALSE;
     return FALSE;
-}
+}*/
 
-void SoundCore::showVisualization(QWidget *parent)
+/*void SoundCore::showVisualization(QWidget *parent)
 {
     if (!m_parentWidget)
     {
@@ -430,7 +397,7 @@ void SoundCore::removeVisual(Visual *visual)
         if (m_output)
             m_output->removeVisual(visual);
     }
-}
+}*/
 
 SoundCore* SoundCore::instance()
 {

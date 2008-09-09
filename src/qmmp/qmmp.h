@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,50 +17,16 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SYMBOLDISPLAY_H
-#define SYMBOLDISPLAY_H
-
-#include <QPixmap>
-
-#include "pixmapwidget.h"
+#ifndef QMMP_H
+#define QMMP_H
 
 /**
-   @author Vladimir Kuznetsov <vovanec@gmail.com>
- */
-
-class Skin;
-
-class SymbolDisplay : public PixmapWidget
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class Qmmp
 {
-    Q_OBJECT
 public:
-    SymbolDisplay(QWidget *parent = 0, int digits = 3);
-
-    ~SymbolDisplay();
-
-    void setAlignment(Qt::Alignment a)
-    {
-        m_alignment = a;
-    }
-    Qt::Alignment alignment()const
-    {
-        return m_alignment;
-    }
-
-public slots:
-    void display(const QString&);
-    void display(int);
-
-private slots:
-    void draw();
-
-private:
-    Skin* m_skin;
-    QPixmap m_pixmap;
-    int m_digits;
-    QString m_text;
-    Qt::Alignment m_alignment;
-    int m_max;
+    enum State {Playing = 0, Paused, Stopped, Buffering, NormalError, FatalError };
 
 };
 

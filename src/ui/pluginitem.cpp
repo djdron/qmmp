@@ -95,10 +95,10 @@ VisualPluginItem::~VisualPluginItem()
 
 void VisualPluginItem::select(bool on)
 {
-    if(on)
+    /*if(on)
         SoundCore::instance()->addVisual(m_factory, 0);
     else
-        SoundCore::instance()->removeVisual(m_factory);
+        SoundCore::instance()->removeVisual(m_factory);*/
 }
 
 bool VisualPluginItem::isSelected()

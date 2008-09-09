@@ -42,11 +42,11 @@ public:
     bool initialize();
     bool isInitialized() const { return m_inited; }
     void uninitialize();
-    void configure(long, int, int, int);
+    void configure(qint64, int, int);
     void stop();
     void pause();
-    long written();
-    long latency();
+    qint64 written();
+    qint64 latency();
     void seek(long);
     void setVolume(int l, int r);
     void volume(int *l, int *r);

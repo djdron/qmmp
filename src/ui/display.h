@@ -22,9 +22,7 @@
 
 #include <QPixmap>
 
-class TimeIndicator;
-
-
+#include <qmmp/statehandler.h>
 #include "pixmapwidget.h"
 
 /**
@@ -33,6 +31,7 @@ class TimeIndicator;
 class QPushButton;
 class QLabel;
 
+class TimeIndicator;
 class TitleBar;
 class PositionBar;
 class Number;
@@ -46,6 +45,7 @@ class PlayStatus;
 class VolumeBar;
 class BalanceBar;
 class MainWindow;
+class SoundCore;
 
 class MainDisplay : public PixmapWidget
 {
@@ -55,10 +55,10 @@ public:
 
     ~MainDisplay();
 
-    void setMaxTime(long);
     void setEQ(QWidget*);
     void setPL(QWidget*);
-    void setInfo(const OutputState &st);
+    //void setInfo(const OutputState &st);
+    void setSoundCore(SoundCore *core);
     bool isEqualizerVisible()const;
     bool isPlaylistVisible()const;
     bool isRepeatable()const;
@@ -67,11 +67,13 @@ public:
     void setIsShuffle(bool);
 
 public slots:
-    void setTime(int);
     void hideTimeDisplay();
+    void setDuration(qint64);
+
 signals:
     void repeatableToggled(bool);
     void shuffleToggled(bool);
+
 protected:
     void wheelEvent(QWheelEvent *);
     void mousePressEvent(QMouseEvent*);
@@ -79,6 +81,9 @@ protected:
 private slots:
     void updateSkin();
     void updateVolume();
+    void setSampleRate(int rate);
+    void setTime(qint64);
+    void setState(Qmmp::State state);
 
 private:
     QWidget* m_equlizer;
@@ -101,6 +106,7 @@ private:
     BalanceBar* m_balanceBar;
     MainWindow* m_mw;
     TimeIndicator* m_timeIndicator;
+    SoundCore *m_core;
 };
 
 #endif

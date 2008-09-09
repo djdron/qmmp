@@ -42,6 +42,8 @@ SET(libqmmp_SRCS
     streamreader.cpp
     downloader.cpp
     effect.cpp
+    qmmp.cpp
+    statehandler.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -62,6 +64,8 @@ SET(libqmmp_MOC_HDRS
     downloader.h
     effectfactory.h
     effect.h
+    qmmp.h
+    statehandler.h
 )
 
 SET(libqmmp_DEVEL_HDRS
@@ -79,6 +83,8 @@ SET(libqmmp_DEVEL_HDRS
     downloader.h
     effectfactory.h
     effect.h
+    qmmp.h
+    statehandler.h
 )
 
 

@@ -92,13 +92,13 @@ void BuiltinCommandLineOption::executeCommand(const QString & option_string, Mai
     else if (option_string == "--next")
     {
         mw->next();
-        if (!mw->soundCore()->isInitialized())
+        if (mw->soundCore()->state() == Qmmp::Stopped)
             mw->play();
     }
     else if (option_string == "--previous")
     {
         mw->previous();
-        if (!mw->soundCore()->isInitialized())
+        if (mw->soundCore()->state() == Qmmp::Stopped)
             mw->play();
     }
     else if (option_string == "--play-pause")

@@ -48,7 +48,10 @@ public:
     ~TitleBar();
 
     void setActive(bool);
-    void setInfo(const OutputState &st);
+    //void setInfo(const OutputState &st);
+
+public slots:
+    void setTime(qint64 time);
 
 private slots:
     void updateSkin();

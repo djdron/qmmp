@@ -53,7 +53,7 @@ class PlayList : public QWidget
         void load ( PlayListItem * );
         void setModel ( PlayListModel * );
         void readSettings();
-        void setInfo ( const OutputState &,int,int );
+        //void setInfo ( const OutputState &,int,int );
         PlayListItem *currentItem();
         ListWidget* listWidget() const{return m_listWidget;}
 
@@ -68,6 +68,9 @@ class PlayList : public QWidget
         void savePlaylist();
         void newPlaylist();
         void closed();
+
+    public slots:
+        void setTime(qint64 time);
 
     private slots:
         void showAddMenu();
