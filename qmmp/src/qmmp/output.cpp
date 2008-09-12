@@ -40,7 +40,7 @@ void Output::setStateHandler(StateHandler *handler)
 
 Output::~Output()
 {
-    foreach(Visual *visual, m_vis_map.values ())
+    /*foreach(Visual *visual, m_vis_map.values ())
     {
         visual->setOutput(0);
         visual->close();
@@ -48,7 +48,7 @@ Output::~Output()
     foreach (Visual *visual , visuals)  //external
     {
         visual->setOutput(0);
-    }
+    }*/
 }
 
 void Output::addVisual ( Visual *v )
@@ -56,7 +56,7 @@ void Output::addVisual ( Visual *v )
     if (visuals.indexOf (v) == -1)
     {
         visuals.append (v);
-        v->setOutput(this);
+//        v->setOutput(this);
         qDebug("Output: added external visualization");
     }
 }
@@ -64,7 +64,7 @@ void Output::addVisual ( Visual *v )
 
 void Output::removeVisual (Visual *v)
 {
-    v->setOutput(0);
+    //v->setOutput(0);
     visuals.removeAll (v);
     if (m_vis_map.key(v))
     {
@@ -93,7 +93,7 @@ void Output::addVisual(VisualFactory *factory, QWidget *parent)
     visual->setWindowFlags(Qt::Window);
     if (visual)
     {
-        visual->setOutput(this);
+        //visual->setOutput(this);
         qDebug("Output: added visual factory: %s",
                qPrintable(factory->properties().name));
         m_vis_map.insert (factory, visual);
@@ -218,16 +218,16 @@ void Output::dispatch(const Qmmp::State &state)
 
 // static methods
 
-static QList<OutputFactory*> *factories = 0;
-static QStringList files;
-static QTimer *timer = 0;
+QList<OutputFactory*> *Output::m_factories = 0;
+QStringList Output::m_files;
+QTimer *Output::m_timer = 0;
 
-static void checkFactories()
+void Output::checkFactories()
 {
-    if ( ! factories )
+    if ( ! m_factories )
     {
-        files.clear();
-        factories = new QList<OutputFactory *>;
+        m_files.clear();
+        m_factories = new QList<OutputFactory *>;
 
         QDir pluginsDir ( qApp->applicationDirPath() );
         pluginsDir.cdUp();
@@ -248,7 +248,7 @@ static void checkFactories()
             if ( factory )
             {
                 Output::registerFactory ( factory );
-                files << pluginsDir.absoluteFilePath(fileName);
+                m_files << pluginsDir.absoluteFilePath(fileName);
             }
         }
     }
@@ -256,7 +256,7 @@ static void checkFactories()
 
 void Output::registerFactory ( OutputFactory *fact )
 {
-    factories->append ( fact );
+    m_factories->append ( fact );
 }
 
 Output *Output::create (QObject *parent)
@@ -264,18 +264,18 @@ Output *Output::create (QObject *parent)
     Output *output = 0;
 
     checkFactories();
-    if (factories->isEmpty ())
+    if (m_factories->isEmpty ())
     {
         qDebug("Output: unable to find output plugins");
         return output;
     }
     OutputFactory *fact = 0;
-    foreach(fact, *factories)
+    foreach(fact, *m_factories)
     {
         if (isEnabled(fact))
             break;
         else
-            fact = factories->at(0);
+            fact = m_factories->at(0);
     }
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     bool useVolume = !settings.value("Volume/software_volume", FALSE).toBool();
@@ -284,9 +284,9 @@ Output *Output::create (QObject *parent)
         output = fact->create (parent, useVolume);
         if (useVolume)
         {
-            timer = new QTimer(output);
-            connect(timer, SIGNAL(timeout()), output, SLOT(checkVolume()));
-            timer->start(125);
+            m_timer = new QTimer(output);
+            connect(m_timer, SIGNAL(timeout()), output, SLOT(checkVolume()));
+            m_timer->start(125);
         }
         else
         {
@@ -299,22 +299,22 @@ Output *Output::create (QObject *parent)
 QList<OutputFactory*> *Output::outputFactories()
 {
     checkFactories();
-    return factories;
+    return m_factories;
 }
 
 QStringList Output::outputFiles()
 {
     checkFactories();
-    return files;
+    return m_files;
 }
 
 void Output::setEnabled(OutputFactory* factory)
 {
     checkFactories();
-    if (!factories->contains(factory))
+    if (!m_factories->contains(factory))
         return;
 
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue ("Output/plugin_file", name);
 }
@@ -322,9 +322,9 @@ void Output::setEnabled(OutputFactory* factory)
 bool Output::isEnabled(OutputFactory* factory)
 {
     checkFactories();
-    if (!factories->contains(factory))
+    if (!m_factories->contains(factory))
         return FALSE;
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
     return name == settings.value("Output/plugin_file", "libalsa.so").toString();
 }
