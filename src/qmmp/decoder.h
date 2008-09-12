@@ -84,6 +84,7 @@ protected:
 
 private:
     void changeVolume(char *data, qint64 size, int chan);
+    static void checkFactories();
 
     DecoderFactory *m_factory;
     QList <Effect*> m_effects;
@@ -99,6 +100,8 @@ private:
     bool m_useVolume;
     int m_volL, m_volR, m_volLF, m_volRF;
     StateHandler *m_handler;
+    static QList<DecoderFactory*> *m_factories;
+    static QStringList m_files;
 
 };
 

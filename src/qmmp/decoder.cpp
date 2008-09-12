@@ -119,18 +119,17 @@ void Decoder::volume(int *l, int *r)
 }
 
 // static methods
+QList<DecoderFactory*> *Decoder::m_factories = 0;
+QStringList Decoder::m_files;
 
-static QList<DecoderFactory*> *factories = 0;
-static QStringList files;
-
-static void checkFactories()
+void Decoder::checkFactories()
 {
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
 
-    if (! factories)
+    if (!m_factories)
     {
-        files.clear();
-        factories = new QList<DecoderFactory *>;
+        m_files.clear();
+        m_factories = new QList<DecoderFactory *>;
 
         QDir pluginsDir (qApp->applicationDirPath());
         pluginsDir.cdUp();
@@ -149,13 +148,13 @@ static void checkFactories()
 
             if (factory)
             {
-                factories->append(factory);
-                files << pluginsDir.absoluteFilePath(fileName);
+                m_factories->append(factory);
+                m_files << pluginsDir.absoluteFilePath(fileName);
             }
         }
         //remove physically deleted plugins from disabled list
         QStringList names;
-        foreach (QString filePath, files)
+        foreach (QString filePath, m_files)
         {
             names.append(filePath.section('/',-1));
         }
@@ -179,7 +178,7 @@ QStringList Decoder::all()
 
     QStringList l;
     DecoderFactory *fact;
-    foreach(fact, *factories)
+    foreach(fact, *m_factories)
     {
         l << fact->properties().description;
     }
@@ -189,7 +188,7 @@ QStringList Decoder::all()
 QStringList Decoder::decoderFiles()
 {
     checkFactories();
-    return files;
+    return m_files;
 }
 
 
@@ -198,7 +197,7 @@ bool Decoder::supports(const QString &source)
     checkFactories();
 
     DecoderFactory *fact;
-    foreach(fact, *factories)
+    foreach(fact, *m_factories)
     {
         if (fact->supports(source) && isEnabled(fact))
         {
@@ -243,7 +242,7 @@ DecoderFactory *Decoder::findByPath(const QString& source)
 {
     checkFactories();
     DecoderFactory *fact;
-    foreach(fact, *factories)
+    foreach(fact, *m_factories)
     {
         if (fact->supports(source) && isEnabled(fact))
         {
@@ -258,7 +257,7 @@ DecoderFactory *Decoder::findByMime(const QString& type)
 {
     checkFactories();
     DecoderFactory *fact;
-    foreach(fact, *factories)
+    foreach(fact, *m_factories)
     {
         if (isEnabled(fact))
         {
@@ -278,7 +277,7 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
 {
     checkFactories();
     DecoderFactory *fact;
-    foreach(fact, *factories)
+    foreach(fact, *m_factories)
     {
         if (fact->canDecode(input) && isEnabled(fact))
         {
@@ -292,10 +291,10 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
 void Decoder::setEnabled(DecoderFactory* factory, bool enable)
 {
     checkFactories();
-    if (!factories->contains(factory))
+    if (!m_factories->contains(factory))
         return;
 
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
 
@@ -312,9 +311,9 @@ void Decoder::setEnabled(DecoderFactory* factory, bool enable)
 bool Decoder::isEnabled(DecoderFactory* factory)
 {
     checkFactories();
-    if (!factories->contains(factory))
+    if (!m_factories->contains(factory))
         return FALSE;
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
     return !disabledList.contains(name);
@@ -334,7 +333,7 @@ QStringList Decoder::filters()
 {
     checkFactories();
     QStringList filters;
-    foreach(DecoderFactory *fact, *factories)
+    foreach(DecoderFactory *fact, *m_factories)
     filters << fact->properties().description + " (" + fact->properties().filter + ")";
     return filters;
 }
@@ -343,10 +342,10 @@ QStringList Decoder::nameFilters()
 {
     checkFactories();
     QStringList filters;
-    for (int i=0; i<factories->size(); ++i)
+    for (int i=0; i<m_factories->size(); ++i)
     {
-        if (isEnabled(factories->at(i)))
-            filters << factories->at(i)->properties().filter.split(" ", QString::SkipEmptyParts);
+        if (isEnabled(m_factories->at(i)))
+            filters << m_factories->at(i)->properties().filter.split(" ", QString::SkipEmptyParts);
     }
     return filters;
 }
@@ -354,7 +353,7 @@ QStringList Decoder::nameFilters()
 QList<DecoderFactory*> *Decoder::decoderFactories()
 {
     checkFactories();
-    return factories;
+    return m_factories;
 }
 
 void Decoder::configure(quint32 srate, int chan, int bps)

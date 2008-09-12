@@ -88,6 +88,11 @@ private:
     QMap<VisualFactory*, Visual*> m_vis_map; //internal visualization
     int m_bl, m_br;
     StateHandler *m_handler;
+
+    static void checkFactories();
+    static QList<OutputFactory*> *m_factories;
+    static QStringList m_files;
+    static QTimer *m_timer;
 };
 
 
