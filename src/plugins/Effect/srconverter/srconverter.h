@@ -40,20 +40,20 @@ public:
     virtual ~SRConverter();
 
     const ulong process(char *in_data, const ulong size, char **out_data);
-    void configure(ulong freq, int chan, int res);
-    const ulong frequency();
+    void configure(quint32 freq, int chan, int res);
+    const quint32 sampleRate();
 
 private:
     void freeSRC();
     SRC_STATE *m_src_state;
     SRC_DATA m_src_data;
-    int m_overSamplingFs;
+    quint32 m_overSamplingFs;
     int m_srcError;
     int m_converter_type;
     bool m_isSrcAlloc;
     float *m_srcIn, *m_srcOut;
     short *m_wOut;
-    ulong m_freq;
+    quint32 m_freq;
 };
 
 #endif

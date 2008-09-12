@@ -52,9 +52,6 @@ public:
     QWaitCondition *cond();
     StateHandler *stateHandler();
 
-    void setBlockSize(unsigned int sz);
-    unsigned int blockSize() const;
-
     void setEQ(int bands[10], int preamp);
     void setEQEnabled(bool on);
 
@@ -81,8 +78,8 @@ signals:
     //void stateChanged(const DecoderState&);
 
 protected:
-    void configure(qint64 srate, int chan, int bps);
-    qint64 produceSound(char *data, qint64 size, qint64 brate, int chan);
+    void configure(quint32 srate, int chan, int bps);
+    qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
     void finish();
 
 private:

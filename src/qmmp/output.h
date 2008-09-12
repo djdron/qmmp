@@ -37,7 +37,7 @@ public:
     virtual bool isInitialized() const = 0;
     virtual bool initialize() = 0;
     virtual void uninitialize() = 0;
-    virtual void configure(qint64, int, int) = 0;
+    virtual void configure(quint32, int, int) = 0;
     virtual void pause() = 0;
     virtual void stop() = 0;
     virtual qint64 written() = 0;

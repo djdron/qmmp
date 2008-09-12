@@ -42,7 +42,7 @@ public:
     bool initialize();
     bool isInitialized() const { return m_inited; }
     void uninitialize();
-    void configure(qint64, int, int);
+    void configure(quint32, int, int);
     void stop();
     void pause();
     qint64 written();
@@ -62,7 +62,8 @@ private:
 
     bool m_inited, m_pause, m_play, m_userStop;
     long m_totalWritten, m_currentSeconds, m_bps;
-    int m_rate, m_frequency, m_channels, m_precision;
+    int m_rate, m_channels, m_precision;
+    quint32 m_frequency;
     //alsa
     snd_pcm_t *pcm_handle;
     char *pcm_name;

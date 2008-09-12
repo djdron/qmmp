@@ -176,7 +176,7 @@ signals:
     void finished();
 
 private slots:
-    //bool decode();
+    bool decode();
     void setState(Qmmp::State);
 
 private:

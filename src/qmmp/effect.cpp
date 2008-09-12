@@ -33,14 +33,14 @@ Effect::Effect(QObject *parent)
 Effect::~Effect()
 {}
 
-void Effect::configure(qint64 freq, int chan, int res)
+void Effect::configure(quint32 freq, int chan, int res)
 {
     m_freq = freq;
     m_chan = chan;
     m_res = res;
 }
 
-const qint64 Effect::sampleRate()
+const quint32 Effect::sampleRate()
 {
     return m_freq;
 }
