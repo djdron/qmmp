@@ -72,37 +72,14 @@ bool SoundCore::play(const QString &source)
         return FALSE;
     }
     if (!m_output->initialize())
-        return FALSE;
-
-    m_decoder = Decoder::create(this, source, m_input, m_output);
-    if (!m_decoder)
     {
-        qWarning("SoundCore: unsupported fileformat");
-        m_block = FALSE;
-        stop();
-        setState(Qmmp::NormalError);
+        qWarning("SoundCore: unable to initialize output");
+        setState(Qmmp::FatalError);
         return FALSE;
     }
-    qDebug ("ok");
-    m_decoder->setBlockSize(globalBlockSize); //TODO remove
-    StateHandler *handler = m_decoder->stateHandler();
-    connect(handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
-    connect(handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
-    connect(handler, SIGNAL(frequencyChanged(int)), SIGNAL(frequencyChanged(int)));
-    connect(handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
-    connect(handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
-    connect(handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
-    connect(handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
-    connect(m_decoder, SIGNAL(finished()), SIGNAL(finished()));
+    m_source = source;
+    return decode();
 
-    if (m_decoder->initialize())
-    {
-        m_output->start();
-        m_decoder->start();
-        return TRUE;
-    }
-    stop();
-    return FALSE;
 }
 
 void SoundCore::stop()
@@ -319,43 +296,39 @@ void SoundCore::setState(Qmmp::State state)
     }
 }*/
 
-/*bool SoundCore::decode()
+bool SoundCore::decode()
 {
-    if (! m_decoder)
+    if (!m_input || !m_output)
+        return FALSE;
+    m_decoder = Decoder::create(this, m_source, m_input, m_output);
+    if (!m_decoder)
     {
-        m_block = TRUE;
-        qDebug ("SoundCore: creating decoder");
-        m_decoder = Decoder::create(this, m_source, m_input, m_output);
-
-        if (! m_decoder)
-        {
-            qWarning("SoundCore: unsupported fileformat");
-            m_block = FALSE;
-            stop();
-            //emit decoderStateChanged(DecoderState(DecoderState::Error));
-            return FALSE;
-        }
-        qDebug ("ok");
-        m_decoder->setBlockSize(globalBlockSize);
-        connect(m_decoder, SIGNAL(stateChanged(const DecoderState&)),
-                SIGNAL(decoderStateChanged(const DecoderState&)));
-        setEQ(m_bands, m_preamp);
-        setEQEnabled(m_useEQ);
+        qWarning("SoundCore: unsupported fileformat");
+        m_block = FALSE;
+        stop();
+        setState(Qmmp::NormalError);
+        return FALSE;
     }
-    qDebug("SoundCore: decoder was created successfully");
+    qDebug ("ok");
+    StateHandler *handler = m_decoder->stateHandler();
+    connect(handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
+    connect(handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
+    connect(handler, SIGNAL(frequencyChanged(int)), SIGNAL(frequencyChanged(int)));
+    connect(handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
+    connect(handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
+    connect(handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
+    connect(handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
+    connect(m_decoder, SIGNAL(finished()), SIGNAL(finished()));
 
     if (m_decoder->initialize())
     {
         m_output->start();
         m_decoder->start();
-        //m_error = NoError;
-        m_block = FALSE;
         return TRUE;
     }
     stop();
-    m_block = FALSE;
     return FALSE;
-}*/
+}
 
 /*void SoundCore::showVisualization(QWidget *parent)
 {

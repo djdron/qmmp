@@ -40,8 +40,9 @@
 OutputALSA::OutputALSA(QObject * parent, bool useVolume)
         : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
         m_userStop(FALSE), m_totalWritten(0), m_currentSeconds(-1),
-        m_bps(-1), m_frequency(-1), m_channels(-1), m_precision(-1)
+        m_bps(-1), m_channels(-1), m_precision(-1)
 {
+    m_frequency = 0;
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     QString dev_name = settings.value("ALSA/device","default").toString();
     m_use_mmap = settings.value("ALSA/use_mmap", FALSE).toBool();
@@ -96,7 +97,7 @@ void OutputALSA::seek(long pos)
     m_currentSeconds = -1;
 }
 
-void OutputALSA::configure(qint64 freq, int chan, int prec)
+void OutputALSA::configure(quint32 freq, int chan, int prec)
 {
     // we need to configure
     if (freq != m_frequency || chan != m_channels || prec != m_precision)

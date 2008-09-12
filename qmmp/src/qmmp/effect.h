@@ -51,13 +51,13 @@ public:
     //virtual bool process(char *in_data, char *out_data, const ulong maxsize, ulong &rbytes, ulong &wbytes) = 0;
 
 
-    virtual void configure(qint64 freq, int chan, int res);
+    virtual void configure(quint32 freq, int chan, int res);
 
     /*!
      * Returns samplerate.
      * This function should be reimplemented if subclass changes default samplerate.
      */
-    virtual const qint64 sampleRate();
+    virtual const quint32 sampleRate();
 
     /*!
      * Returns channel number.
@@ -79,7 +79,7 @@ public:
     static bool isEnabled(EffectFactory* factory);
 
 private:
-    ulong m_freq;
+    quint32 m_freq;
     int m_chan;
     int m_res;
 };

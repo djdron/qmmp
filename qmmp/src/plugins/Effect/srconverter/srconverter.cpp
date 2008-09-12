@@ -97,7 +97,7 @@ const ulong SRConverter::process(char *in_data, const ulong size, char **out_dat
     return wbytes;
 }
 
-void SRConverter::configure(ulong freq, int chan, int res)
+void SRConverter::configure(quint32 freq, int chan, int res)
 {
     Effect::configure(freq, chan, res);
     freeSRC();
@@ -114,7 +114,7 @@ void SRConverter::configure(ulong freq, int chan, int res)
     }
 }
 
-const ulong SRConverter::frequency()
+const quint32 SRConverter::sampleRate()
 {
     return m_overSamplingFs;
 }

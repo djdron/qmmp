@@ -34,10 +34,9 @@ Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
     m_output->recycler()->clear();
     int b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
-    //qRegisterMetaType<DecoderState>("DecoderState");
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
     blksize = Buffer::size();
-    //m_effects = Effect::create(this);
+    m_effects = Effect::create(this);
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     m_useVolume = settings.value("Volume/software_volume", FALSE).toBool();
     m_volL = settings.value("Volume/left", 80).toInt();
@@ -82,16 +81,6 @@ QWaitCondition *Decoder::cond()
 StateHandler *Decoder::stateHandler()
 {
     return m_handler;
-}
-
-void Decoder::setBlockSize(unsigned int sz)
-{
-    blksize = sz;
-}
-
-unsigned int Decoder::blockSize() const
-{
-    return blksize;
 }
 
 void Decoder::setEQ(int bands[10], int preamp)
@@ -368,7 +357,7 @@ QList<DecoderFactory*> *Decoder::decoderFactories()
     return factories;
 }
 
-void Decoder::configure(qint64 srate, int chan, int bps)
+void Decoder::configure(quint32 srate, int chan, int bps)
 {
     Effect* effect = 0;
     foreach(effect, m_effects)
@@ -382,7 +371,7 @@ void Decoder::configure(qint64 srate, int chan, int bps)
         m_output->configure(srate, chan, bps);
 }
 
-qint64 Decoder::produceSound(char *data, qint64 size, qint64 brate, int chan)
+qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
 {
     ulong sz = size < blksize ? size : blksize;
 

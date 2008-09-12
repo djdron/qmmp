@@ -67,7 +67,7 @@ DecoderMAD::~DecoderMAD()
 
 bool DecoderMAD::initialize()
 {
-    bks = blockSize();
+    bks = Buffer::size();
 
     inited = false;
     user_stop = false;
