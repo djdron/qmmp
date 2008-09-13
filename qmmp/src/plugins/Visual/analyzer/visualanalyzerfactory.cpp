@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,25 +33,24 @@ const VisualProperties VisualAnalyzerFactory::properties() const
     return properties;
 };
 
-Visual *VisualAnalyzerFactory::create(QWidget *parent) 
+Visual *VisualAnalyzerFactory::create(QWidget *parent)
 {
     return new Analyzer(parent);
 };
 
-void VisualAnalyzerFactory::showSettings(QWidget *parent) 
+QDialog *VisualAnalyzerFactory::createConfigDialog(QWidget *parent)
 {
-    SettingsDialog *s = new SettingsDialog(parent);
-    s -> show();
+    return new SettingsDialog(parent);
 };
 
-void VisualAnalyzerFactory::showAbout(QWidget *parent) 
+void VisualAnalyzerFactory::showAbout(QWidget *parent)
 {
-     QMessageBox::about (parent, tr("About Analyzer Visual Plugin"),
+    QMessageBox::about (parent, tr("About Analyzer Visual Plugin"),
                         tr("Qmmp Analyzer Visual Plugin")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 };
 
-QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent) 
+QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
     QString locale = QLocale::system().name();

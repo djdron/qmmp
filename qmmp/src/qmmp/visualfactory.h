@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 class QObject;
 class QWidget;
 class QTranslator;
+class QDialog;
 
 class Visual;
 
@@ -40,7 +41,7 @@ public:
     virtual ~VisualFactory() {}
     virtual const VisualProperties properties() const = 0;
     virtual Visual *create(QWidget *parent) = 0;
-    virtual void showSettings(QWidget *parent) = 0;
+    virtual QDialog *createConfigDialog(QWidget *parent) = 0;
     virtual void showAbout(QWidget *parent) = 0;
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };

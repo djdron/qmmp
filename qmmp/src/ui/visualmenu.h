@@ -23,17 +23,18 @@
 #include <QMenu>
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class VisualMenu : public QMenu
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     VisualMenu(QWidget *parent = 0);
 
     ~VisualMenu();
 
-void updateActions();
+public slots:
+    void updateActions();
 
 };
 

@@ -142,20 +142,18 @@ void MainVisual::timeout()
 {
     VisualNode *node = 0;
 
-    if (output())
+    mutex()->lock ();
+    VisualNode *prev = 0;
+    while ((!m_nodes.isEmpty()))
     {
-        mutex()->lock ();
-        VisualNode *prev = 0;
-        while ((!m_nodes.isEmpty()))
-        {
-            node = m_nodes.takeFirst();
-            if (prev)
-                delete prev;
-            prev = node;
-        }
-        mutex()->unlock();
-        node = prev;
+        node = m_nodes.takeFirst();
+        if (prev)
+            delete prev;
+        prev = node;
     }
+    mutex()->unlock();
+    node = prev;
+
     if (m_vis && node)
     {
         m_vis->process (node);
@@ -166,7 +164,7 @@ void MainVisual::timeout()
         update();
         m_draw = TRUE;
     }
-    else if (m_draw && !(output() && output()->isRunning()))
+    else if (m_draw)
     {
         m_draw = FALSE;
         m_pixmap = m_bg;

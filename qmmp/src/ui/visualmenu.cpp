@@ -30,7 +30,7 @@ VisualMenu::VisualMenu(QWidget *parent)
  : QMenu(tr("Visualization"), parent)
 {
     VisualFactory *factory = 0;
-    foreach(factory, *Visual::visualFactories())
+    foreach(factory, *Visual::factories())
     {
         QAction *act = this->addAction(factory->properties().name);
         act->setCheckable (TRUE);
@@ -46,8 +46,8 @@ VisualMenu::~VisualMenu()
 
 void VisualMenu::updateActions()
 {
-    for(int i = 0; i < Visual::visualFactories()->size(); ++i)
+    for(int i = 0; i < Visual::factories()->size(); ++i)
     {
-        actions()[i]->setChecked(Visual::isEnabled(Visual::visualFactories()->at(i)));
+        actions()[i]->setChecked(Visual::isEnabled(Visual::factories()->at(i)));
     }
 }

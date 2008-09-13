@@ -27,7 +27,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
  : QDialog(parent)
 {
     ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose, TRUE);
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     ui.analyzerComboBox->setCurrentIndex(settings.value("Analyzer/analyzer_falloff", 3).toInt()-1);
     ui.peaksCheckBox->setChecked(settings.value("Analyzer/show_peaks", TRUE).toBool());

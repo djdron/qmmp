@@ -68,31 +68,6 @@ public:
     void setEQEnabled(bool on);
 
     /*!
-     * adds visualization \p visual
-     */
-    //void addVisualization(Visual *visual);
-
-    /*!
-     * shows enabled visualization with the parent widget \p parent
-     */
-    //void showVisualization(QWidget *parent);
-
-    /*!
-     * adds visualization by factory \p factory
-     */
-    //void addVisual(VisualFactory *factory, QWidget *parent);
-
-    /*!
-     * removes visualization by factory \p factory
-     */
-    //void removeVisual(VisualFactory *factory);
-
-    /*!
-     * removes visualization \p visual
-     */
-    //void removeVisual(Visual *visual);
-
-    /*!
      * reads current volume.
      * \p left contains volume of the left channel.
      * \p right contains volume of the right channel.
