@@ -154,7 +154,7 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
             general->setSongInfo(m_songInfo);
         }
     }
-    delete dialog;
+    dialog->deleteLater();
 }
 
 bool GeneralHandler::visibilityControl()

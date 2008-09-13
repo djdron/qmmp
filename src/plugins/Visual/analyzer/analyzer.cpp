@@ -126,7 +126,7 @@ void Analyzer::timeout()
 {
     VisualNode *node = 0;
 
-    if ( /*playing &&*/ output())
+    //if ( /*playing &&*/ output())
     {
         //output()->mutex()->lock ();
         //long olat = output()->latency();

@@ -80,7 +80,7 @@ bool OutputPluginItem::isSelected()
 
 OutputFactory *OutputPluginItem::factory()
 {
-   return m_factory;
+    return m_factory;
 }
 
 /*Visual*/
@@ -95,10 +95,7 @@ VisualPluginItem::~VisualPluginItem()
 
 void VisualPluginItem::select(bool on)
 {
-    /*if(on)
-        SoundCore::instance()->addVisual(m_factory, 0);
-    else
-        SoundCore::instance()->removeVisual(m_factory);*/
+    Visual::setEnabled(m_factory, on);
 }
 
 bool VisualPluginItem::isSelected()
@@ -108,7 +105,7 @@ bool VisualPluginItem::isSelected()
 
 VisualFactory *VisualPluginItem::factory()
 {
-   return m_factory;
+    return m_factory;
 }
 
 /*Effect*/
@@ -133,7 +130,7 @@ bool EffectPluginItem::isSelected()
 
 EffectFactory *EffectPluginItem::factory()
 {
-   return m_factory;
+    return m_factory;
 }
 
 /*General*/
@@ -157,6 +154,5 @@ bool GeneralPluginItem::isSelected()
 
 GeneralFactory *GeneralPluginItem::factory()
 {
-   return m_factory;
+    return m_factory;
 }
-

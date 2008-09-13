@@ -45,7 +45,7 @@ Output::~Output()
         visual->setOutput(0);
         visual->close();
     }
-    foreach (Visual *visual , visuals)  //external
+    /*foreach (Visual *visual , visuals)  //external
     {
         visual->setOutput(0);
     }*/
@@ -117,13 +117,19 @@ void Output::dispatchVisual ( Buffer *buffer, unsigned long written,
     if (!buffer)
         return;
     Visual* visual = 0;
-    foreach (visual , visuals)  //external
+    /*foreach (visual , visuals)  //external
     {
         visual->mutex()->lock ();
         visual->add ( buffer, written, chan, prec );
         visual->mutex()->unlock();
     }
     foreach (visual , m_vis_map.values ())  //internal
+    {
+        visual->mutex()->lock ();
+        visual->add ( buffer, written, chan, prec );
+        visual->mutex()->unlock();
+    }*/
+    foreach (visual, *Visual::visuals())
     {
         visual->mutex()->lock ();
         visual->add ( buffer, written, chan, prec );

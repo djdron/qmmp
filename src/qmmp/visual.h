@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,18 +44,22 @@ public:
 
     virtual void add(Buffer *, unsigned long, int, int) = 0;
     virtual void clear() = 0;
-
-    Decoder *decoder() const;
-    void setDecoder(Decoder *decoder);
-    Output *output() const;
-    void setOutput(Output *output);
+    //virtual void stop() = 0;
     QMutex *mutex();
 
     //static methods
-    static QList<VisualFactory*> *visualFactories();
-    static QStringList visualFiles();
+    static QList<VisualFactory*> *factories();
+    static QStringList files();
     static void setEnabled(VisualFactory* factory, bool enable = TRUE);
     static bool isEnabled(VisualFactory* factory);
+    static void add(Visual*);
+    static void remove(Visual*);
+    static void initialize(QWidget *parent, QObject *receiver = 0, const char *member = 0);
+    static QList<Visual*>* visuals();
+    static void showSettings(VisualFactory *factory, QWidget *parent);
+
+signals:
+    void closedByUser();
 
 protected:
     virtual void closeEvent (QCloseEvent *);
@@ -64,6 +68,15 @@ private:
     Decoder *m_decoder;
     Output *m_output;
     QMutex m_mutex;
+
+    static QList<VisualFactory*> *m_factories;
+    static QStringList m_files;
+    static void checkFactories();
+    static QList<Visual*>  m_visuals;
+    static QMap<VisualFactory*, Visual*> m_vis_map; //internal visualization
+    static QWidget *m_parentWidget;
+    static QObject *m_receiver;
+    static const char *m_member;
 };
 
 #endif

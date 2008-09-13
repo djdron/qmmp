@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -99,30 +99,20 @@ void ShadedVisual::timeout()
     VisualNode *node = 0;
     m_pixmap.fill(m_skin->getVisColor(0));
 
-    if ( /*playing &&*/ output())
+    mutex()->lock ();
+    VisualNode *prev = 0;
+    while ((!m_nodes.isEmpty()))
     {
-        //output()->mutex()->lock ();
-        //long olat = output()->latency();
-        //long owrt = output()->written();
-        //output()->mutex()->unlock();
+        node = m_nodes.takeFirst();
+        /*if ( node->offset > synctime )
+           break;*/
 
-        //long synctime = owrt < olat ? 0 : owrt - olat;
-
-        mutex()->lock ();
-        VisualNode *prev = 0;
-        while ((!m_nodes.isEmpty()))
-        {
-            node = m_nodes.takeFirst();
-            /*if ( node->offset > synctime )
-               break;*/
-
-            if (prev)
-                delete prev;
-            prev = node;
-        }
-        mutex()->unlock();
-        node = prev;
+        if (prev)
+            delete prev;
+        prev = node;
     }
+    mutex()->unlock();
+    node = prev;
 
     if (!node)
         return;
@@ -202,4 +192,3 @@ void ShadedVisual::updateSkin()
 {
     clear();
 }
-

@@ -56,7 +56,9 @@ SoundCore::SoundCore(QObject *parent)
 
 
 SoundCore::~SoundCore()
-{}
+{
+    stop();
+}
 
 bool SoundCore::play(const QString &source)
 {
@@ -281,20 +283,12 @@ Qmmp::State SoundCore::state() const
 
 void SoundCore::setState(Qmmp::State state)
 {
-    qDebug("new state = %d",state);
+    QStringList states;
+    states << "Playing" << "Paused" << "Stopped" << "Buffering" << "NormalError" << "FatalError";
+    qDebug("SoundCore: Current state: %s", qPrintable(states.at(state)));
     m_state = state;
     emit stateChanged (state);
 }
-
-/*void SoundCore::addVisualization(Visual *visual)
-{
-    if (m_visuals.indexOf (visual) == -1)
-    {
-        m_visuals.append(visual);
-        if (m_output)
-            m_output->addVisual(visual);
-    }
-}*/
 
 bool SoundCore::decode()
 {
@@ -329,48 +323,6 @@ bool SoundCore::decode()
     stop();
     return FALSE;
 }
-
-/*void SoundCore::showVisualization(QWidget *parent)
-{
-    if (!m_parentWidget)
-    {
-        m_parentWidget = parent;
-        if (!m_output)
-            return;
-        VisualFactory* factory;
-        foreach(factory, *Visual::visualFactories())
-        {
-            if (Visual::isEnabled(factory))
-                m_output->addVisual(factory, m_parentWidget);
-        }
-    }
-}
-
-void SoundCore::addVisual(VisualFactory *factory, QWidget *parent)
-{
-    if (m_output)
-        m_output->addVisual(factory, parent);
-    else
-        Visual::setEnabled(factory, TRUE);
-}
-
-void SoundCore::removeVisual(VisualFactory *factory)
-{
-    if (m_output)
-        m_output->removeVisual(factory);
-    else
-        Visual::setEnabled(factory, FALSE);
-}
-
-void SoundCore::removeVisual(Visual *visual)
-{
-    if (m_visuals.indexOf (visual) != -1)
-    {
-        m_visuals.removeAll(visual);
-        if (m_output)
-            m_output->removeVisual(visual);
-    }
-}*/
 
 SoundCore* SoundCore::instance()
 {

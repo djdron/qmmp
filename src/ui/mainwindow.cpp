@@ -26,6 +26,7 @@
 #include <math.h>
 
 #include <qmmp/soundcore.h>
+#include <qmmp/visual.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/general.h>
 #include <qmmpui/playlistparser.h>
@@ -138,6 +139,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
             SLOT(changeTitle(const QString&)));
     connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
             SLOT(setProgress(int)));*/
+    Visual::initialize(this, m_visMenu, SLOT(updateActions()));
+    Visual::add(m_vis);
 
 
 

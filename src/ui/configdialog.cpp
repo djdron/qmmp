@@ -258,8 +258,8 @@ void ConfigDialog::loadPluginsInfo()
         load visual plugin information
     */
     QList <VisualFactory *> *visuals = 0;
-    visuals = Visual::visualFactories();
-    files = Visual::visualFiles();
+    visuals = Visual::factories();
+    files = Visual::files();
     ui.visualPluginTable->setColumnCount ( 3 );
     ui.visualPluginTable->verticalHeader()->hide();
     ui.visualPluginTable->setHorizontalHeaderLabels ( QStringList()
@@ -434,7 +434,7 @@ void ConfigDialog::showPluginSettings()
         int row = ui.visualPluginTable->currentRow ();
         if ( m_visualPluginItems.isEmpty() || row < 0 )
             return;
-        m_visualPluginItems.at(row)->factory()->showSettings ( this );
+        Visual::showSettings(m_visualPluginItems.at(row)->factory(), this);
         break;
     }
     case 3:
