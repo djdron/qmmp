@@ -48,16 +48,7 @@ public:
 
     Recycler *recycler();
     QMutex *mutex();
-
     void setStateHandler(StateHandler *handler);
-
-    //visualization
-    void addVisual(Visual*);
-    void removeVisual(Visual*);
-    void addVisual(VisualFactory *factory, QWidget *parent);
-    void removeVisual(VisualFactory *factory);
-    void processCloseEvent(Visual *v, QCloseEvent *event);
-
 
     static void registerFactory(OutputFactory *);
     static Output *create(QObject *);
@@ -84,8 +75,6 @@ protected:
 private:
     QMutex m_mutex;
     Recycler m_recycler;
-    QList<Visual*> visuals; //external visualization
-    QMap<VisualFactory*, Visual*> m_vis_map; //internal visualization
     int m_bl, m_br;
     StateHandler *m_handler;
 
