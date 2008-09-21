@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
- *   forkotov02\hotmail.ru                                                 *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -156,6 +156,8 @@ private slots:
 
 private:
     Decoder* m_decoder;
+    DecoderFactory* m_factory;
+    QUrl m_url;
     Output* m_output;
     QIODevice* m_input;
     uint m_error;

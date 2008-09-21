@@ -202,7 +202,7 @@ void MainWindow::play()
     if (m_core->play(s))
     {
         //display->setTime(0);
-        qDebug("play");
+        //qDebug("play");
         m_generalHandler->setTime(0);
         //display->setDuration(m_core->totalTime());
     }

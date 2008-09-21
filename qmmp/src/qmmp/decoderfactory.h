@@ -32,16 +32,26 @@ class Decoder;
 class Output;
 class FileTag;
 
-struct DecoderProperties
+class DecoderProperties
 {
+public:
+    DecoderProperties()
+    {
+        hasAbout = FALSE;
+        hasSettings = FALSE;
+        noInput = FALSE;
+        noOutput = FALSE;
+
+    }
     QString name;
     QString filter;
     QString description;
     QString contentType;
+    QString protocols;
     bool hasAbout;
     bool hasSettings;
-    //bool streamSupport;
-    //bool needInput;
+    bool noInput;
+    bool noOutput;
 };
 
 class DecoderFactory
@@ -51,7 +61,8 @@ public:
     virtual bool supports(const QString &source) const = 0;
     virtual bool canDecode(QIODevice *) const = 0;
     virtual const DecoderProperties properties() const = 0;
-    virtual Decoder *create(QObject *, QIODevice *, Output *) = 0; 
+    virtual Decoder *create(QObject *, QIODevice *input = 0,
+                            Output *output = 0, const QString &path = QString()) = 0;
     virtual FileTag *createTag(const QString &source) = 0;
     virtual QObject* showDetails(QWidget *parent, const QString &path) = 0;
     virtual void showSettings(QWidget *parent) = 0;

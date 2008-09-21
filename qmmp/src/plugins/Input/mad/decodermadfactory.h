@@ -42,7 +42,7 @@ public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *);
+    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
     FileTag *createTag(const QString &source);
     QObject* showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);

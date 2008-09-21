@@ -118,6 +118,99 @@ void Decoder::volume(int *l, int *r)
     m_mutex.unlock();
 }
 
+void Decoder::configure(quint32 srate, int chan, int bps)
+{
+    Effect* effect = 0;
+    foreach(effect, m_effects)
+    {
+        effect->configure(srate, chan, bps);
+        srate = effect->sampleRate();
+        chan = effect->channels();
+        bps = effect->bitsPerSample();
+    }
+    if (m_output)
+        m_output->configure(srate, chan, bps);
+}
+
+qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
+{
+    ulong sz = size < blksize ? size : blksize;
+
+    if (m_useEQ)
+    {
+        if (!m_eqInited)
+        {
+            init_iir();
+            m_eqInited = TRUE;
+        }
+        iir((void*) data, sz, chan);
+    }
+    if (m_useVolume)
+    {
+        changeVolume(data, sz, chan);
+    }
+    char *out_data = data;
+    char *prev_data = data;
+    qint64 w = sz;
+    Effect* effect = 0;
+    foreach(effect, m_effects)
+    {
+        w = effect->process(prev_data, sz, &out_data);
+
+        if (w <= 0)
+        {
+            // copy data if plugin can not process it
+            w = sz;
+            out_data = new char[w];
+            memcpy(out_data, prev_data, w);
+        }
+        if (data != prev_data)
+            delete prev_data;
+        prev_data = out_data;
+    }
+
+    Buffer *b = output()->recycler()->get(w);
+
+    memcpy(b->data, out_data, w);
+
+    if (data != out_data)
+        delete out_data;
+
+    if (w < blksize + b->exceeding)
+        memset(b->data + w, 0, blksize + b->exceeding - w);
+
+    b->nbytes = w;// blksize;
+    b->rate = brate;
+
+    output()->recycler()->add();
+
+    size -= sz;
+    memmove(data, data + sz, size);
+    return sz;
+}
+
+void Decoder::finish()
+{
+    //output()->wait();
+    emit finished();
+}
+
+void Decoder::changeVolume(char *data, qint64 size, int chan)
+{
+    if (chan > 1)
+        for (qint64 i = 0; i < size/2; i+=2)
+        {
+            ((short*)data)[i]*= m_volLF/256.0;
+            ((short*)data)[i+1]*= m_volRF/256.0;
+        }
+    else
+    {
+        int l = qMax(m_volLF,m_volRF);
+        for (qint64 i = 0; i < size/2; i++)
+            ((short*)data)[i]*= l/256.0;
+    }
+}
+
 // static methods
 QList<DecoderFactory*> *Decoder::m_factories = 0;
 QStringList Decoder::m_files;
@@ -185,7 +278,7 @@ QStringList Decoder::all()
     return l;
 }
 
-QStringList Decoder::decoderFiles()
+QStringList Decoder::files()
 {
     checkFactories();
     return m_files;
@@ -207,7 +300,7 @@ bool Decoder::supports(const QString &source)
     return FALSE;
 }
 
-Decoder *Decoder::create(QObject *parent, const QString &source,
+/*Decoder *Decoder::create(QObject *parent, const QString &source,
                          QIODevice *input,
                          Output *output)
 {
@@ -236,7 +329,7 @@ Decoder *Decoder::create(QObject *parent, const QString &source,
     else
         output->setStateHandler(decoder->stateHandler());
     return decoder;
-}
+}*/
 
 DecoderFactory *Decoder::findByPath(const QString& source)
 {
@@ -276,8 +369,7 @@ DecoderFactory *Decoder::findByMime(const QString& type)
 DecoderFactory *Decoder::findByContent(QIODevice *input)
 {
     checkFactories();
-    DecoderFactory *fact;
-    foreach(fact, *m_factories)
+    foreach(DecoderFactory *fact, *m_factories)
     {
         if (fact->canDecode(input) && isEnabled(fact))
         {
@@ -285,6 +377,21 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
         }
     }
     qDebug("Decoder: unable to find factory by content");
+    return 0;
+}
+
+DecoderFactory *Decoder::findByURL(const QUrl &url)
+{
+    checkFactories();
+    foreach(DecoderFactory *fact, *m_factories)
+    {
+        if (fact->supports(url.path()) && isEnabled(fact) &&
+                fact->properties().protocols.split(" ").contains(url.scheme()))
+        {
+            return fact;
+        }
+    }
+    qDebug("Decoder: unable to find factory by url");
     return 0;
 }
 
@@ -350,101 +457,9 @@ QStringList Decoder::nameFilters()
     return filters;
 }
 
-QList<DecoderFactory*> *Decoder::decoderFactories()
+QList<DecoderFactory*> *Decoder::factories()
 {
     checkFactories();
     return m_factories;
 }
 
-void Decoder::configure(quint32 srate, int chan, int bps)
-{
-    Effect* effect = 0;
-    foreach(effect, m_effects)
-    {
-        effect->configure(srate, chan, bps);
-        srate = effect->sampleRate();
-        chan = effect->channels();
-        bps = effect->bitsPerSample();
-    }
-    if (m_output)
-        m_output->configure(srate, chan, bps);
-}
-
-qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
-{
-    ulong sz = size < blksize ? size : blksize;
-
-    if (m_useEQ)
-    {
-        if (!m_eqInited)
-        {
-            init_iir();
-            m_eqInited = TRUE;
-        }
-        iir((void*) data,size,chan);
-    }
-    if (m_useVolume)
-    {
-        changeVolume(data, sz, chan);
-    }
-    char *out_data = data;
-    char *prev_data = data;
-    qint64 w = sz;
-    Effect* effect = 0;
-    foreach(effect, m_effects)
-    {
-        w = effect->process(prev_data, sz, &out_data);
-
-        if (w <= 0)
-        {
-            // copy data if plugin can not procees it
-            w = sz;
-            out_data = new char[w];
-            memcpy(out_data, prev_data, w);
-        }
-        if (data != prev_data)
-            delete prev_data;
-        prev_data = out_data;
-    }
-
-    Buffer *b = output()->recycler()->get(w);
-
-    memcpy(b->data, out_data, w);
-
-    if (data != out_data)
-        delete out_data;
-
-    if (w < blksize + b->exceeding)
-        memset(b->data + w, 0, blksize + b->exceeding - w);
-
-    b->nbytes = w;// blksize;
-    b->rate = brate;
-
-    output()->recycler()->add();
-
-    size -= sz;
-    memmove(data, data + sz, size);
-    return sz;
-}
-
-void Decoder::finish()
-{
-    //output()->wait();
-    emit finished();
-}
-
-void Decoder::changeVolume(char *data, qint64 size, int chan)
-{
-    if (chan > 1)
-        for (qint64 i = 0; i < size/2; i+=2)
-        {
-            ((short*)data)[i]*= m_volLF/256.0;
-            ((short*)data)[i+1]*= m_volRF/256.0;
-        }
-    else
-    {
-        int l = qMax(m_volLF,m_volRF);
-        for (qint64 i = 0; i < size/2; i++)
-            ((short*)data)[i]*= l/256.0;
-    }
-}

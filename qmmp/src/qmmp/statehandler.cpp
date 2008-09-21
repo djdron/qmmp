@@ -27,7 +27,6 @@ StateHandler::StateHandler(QObject *parent)
 {
     m_instance = this;
     m_elapsed = -1;
-    m_totalTime = 0;
     m_bitrate = 0;
     m_frequency = 0;
     m_precision = 0;
@@ -55,11 +54,6 @@ void StateHandler::dispatch(qint64 elapsed,
         m_elapsed = elapsed;
         emit (elapsedChanged(elapsed));
     }
-    /*if (m_totalTime != totalTime)
-    {
-        m_totalTime = totalTime;
-        emit (totalTimeChanged(totalTime));
-    }*/
     if (m_bitrate != bitrate)
     {
         m_bitrate = bitrate;
@@ -105,25 +99,9 @@ void StateHandler::dispatch(const Qmmp::State &state)
     m_mutex.unlock();
 }
 
-/*void StateHandler::dispatchTotalTime(qint64 totalTime)
-{
-    m_mutex.lock();
-    if (m_totalTime != totalTime)
-    {
-        m_totalTime = totalTime;
-        emit (totalTimeChanged(totalTime));
-    }
-    m_mutex.unlock();
-}*/
-
 qint64 StateHandler::elapsed()
 {
     return m_elapsed;
-}
-
-qint64 StateHandler::totalTime()
-{
-    return m_totalTime;
 }
 
 int StateHandler::bitrate()

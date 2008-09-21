@@ -156,3 +156,4 @@ GeneralFactory *GeneralPluginItem::factory()
 {
     return m_factory;
 }
+

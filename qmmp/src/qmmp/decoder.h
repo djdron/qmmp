@@ -13,6 +13,7 @@
 #include <QWaitCondition>
 #include <QObject>
 #include <QStringList>
+#include <QUrl>
 
 #include "filetag.h"
 
@@ -33,8 +34,8 @@ class Decoder : public QThread
 {
     Q_OBJECT
 public:
-    Decoder(QObject *parent, DecoderFactory *d,
-            QIODevice *i, Output *o);
+    Decoder(QObject *parent, DecoderFactory *d, QIODevice *input = 0, Output *output = 0);
+
     virtual ~Decoder();
 
     // Standard Decoder API
@@ -61,21 +62,21 @@ public:
     // static methods
     static QStringList all();
     static bool supports(const QString &);
-    static Decoder *create(QObject *, const QString &, QIODevice *, Output *);
+    //static Decoder *create(QObject *, const QString &, QIODevice *, Output *);
     static DecoderFactory *findByPath(const QString&);
     static DecoderFactory *findByMime(const QString&);
     static DecoderFactory *findByContent(QIODevice *);
+    static DecoderFactory *findByURL(const QUrl &url);
     static FileTag *createTag(const QString&);
     static QStringList filters();
     static QStringList nameFilters();
-    static QList<DecoderFactory*> *decoderFactories();
-    static QStringList decoderFiles();
+    static QList<DecoderFactory*> *factories();
+    static QStringList files();
     static void setEnabled(DecoderFactory* factory, bool enable = TRUE);
     static bool isEnabled(DecoderFactory* factory);
 
 signals:
     void finished();
-    //void stateChanged(const DecoderState&);
 
 protected:
     void configure(quint32 srate, int chan, int bps);
