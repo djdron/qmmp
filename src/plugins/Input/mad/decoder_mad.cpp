@@ -316,7 +316,7 @@ bool DecoderMAD::findHeader()
     if (!result)
         return FALSE;
 
-    if (!is_vbr)
+    if (!is_vbr && !input()->isSequential())
     {
         double time = (input()->size() * 8.0) / (header.bitrate);
         double timefrac = (double)time - ((long)(time));

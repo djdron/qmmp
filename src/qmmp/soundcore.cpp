@@ -49,6 +49,7 @@ SoundCore::SoundCore(QObject *parent)
     m_preamp = 0;
     m_vis = 0;
     m_parentWidget = 0;
+    m_factory = 0;
     m_state = Qmmp::Stopped;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
@@ -65,27 +66,57 @@ bool SoundCore::play(const QString &source)
     stop();
     if (m_state != Qmmp::Stopped) //clear error state
         setState(Qmmp::Stopped);
-    m_input = new QFile(source);
-    m_output = Output::create(this);
-    if (!m_output)
-    {
-        qWarning("SoundCore: unable to create output");
-        setState(Qmmp::FatalError);
-        return FALSE;
-    }
-    if (!m_output->initialize())
-    {
-        qWarning("SoundCore: unable to initialize output");
-        setState(Qmmp::FatalError);
-        return FALSE;
-    }
-    m_source = source;
-    return decode();
 
+    if (QFile::exists(source)) //local file
+        m_url = QUrl::fromLocalFile(source);
+    else
+        m_url = source;
+
+    m_factory = Decoder::findByURL(m_url);
+    if (m_factory)
+        return decode();
+
+    if (m_url.scheme() == "file")
+    {
+        if ((m_factory = Decoder::findByPath(m_url.path())))
+        {
+            m_input = new QFile(m_url.path());
+            if (!m_input->open(QIODevice::ReadOnly))
+            {
+                qDebug("SoundCore: cannot open input");
+                stop();
+                setState(Qmmp::NormalError);
+            }
+            return decode();
+        }
+        else
+        {
+            qWarning("SoundCore: unsupported fileformat");
+            stop();
+            setState(Qmmp::NormalError);
+            return FALSE;
+        }
+    }
+    if (m_url.scheme() == "http")
+    {
+        m_input = new StreamReader(source, this);
+        connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
+        connect(m_input, SIGNAL(titleChanged(const QString&)),
+                SIGNAL(titleChanged(const QString&)));
+        connect(m_input, SIGNAL(readyRead()),SLOT(decode()));
+        qobject_cast<StreamReader *>(m_input)->downloadFile();
+        return TRUE;
+    }
+    qWarning("SoundCore: unsupported fileformat");
+    stop();
+    setState(Qmmp::NormalError);
+    return FALSE;
 }
 
 void SoundCore::stop()
 {
+    m_factory = 0;
+    m_url.clear();
     if (m_decoder && m_decoder->isRunning())
     {
         m_decoder->mutex()->lock ();
@@ -292,9 +323,39 @@ void SoundCore::setState(Qmmp::State state)
 
 bool SoundCore::decode()
 {
-    if (!m_input || !m_output)
-        return FALSE;
-    m_decoder = Decoder::create(this, m_source, m_input, m_output);
+    if (!m_factory)
+    {
+        if (!m_input->open(QIODevice::ReadOnly))
+        {
+            qDebug("SoundCore:: cannot open input");
+            setState(Qmmp::NormalError);
+            return FALSE;
+        }
+        if (!(m_factory = Decoder::findByContent(m_input)))
+        {
+            setState(Qmmp::NormalError);
+            return FALSE;
+        }
+    }
+    if (!m_factory->properties().noOutput)
+    {
+        m_output = Output::create(this);
+        if (!m_output)
+        {
+            qWarning("SoundCore: unable to create output");
+            setState(Qmmp::FatalError);
+            return FALSE;
+        }
+        if (!m_output->initialize())
+        {
+            qWarning("SoundCore: unable to initialize output");
+            delete m_output;
+            m_output = 0;
+            setState(Qmmp::FatalError);
+            return FALSE;
+        }
+    }
+    m_decoder = m_factory->create(this, m_input, m_output, m_url.path());
     if (!m_decoder)
     {
         qWarning("SoundCore: unsupported fileformat");
@@ -313,6 +374,8 @@ bool SoundCore::decode()
     connect(handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
     connect(handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect(m_decoder, SIGNAL(finished()), SIGNAL(finished()));
+    if (m_output)
+        m_output->setStateHandler(handler);
 
     if (m_decoder->initialize())
     {

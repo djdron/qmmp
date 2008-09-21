@@ -198,8 +198,8 @@ void ConfigDialog::loadPluginsInfo()
         load input plugins information
     */
     QList <DecoderFactory *> *decoders = 0;
-    decoders = Decoder::decoderFactories();
-    QStringList files = Decoder::decoderFiles();
+    decoders = Decoder::factories();
+    QStringList files = Decoder::files();
     ui.inputPluginTable->setColumnCount ( 3 );
     ui.inputPluginTable->verticalHeader()->hide();
     ui.inputPluginTable->setHorizontalHeaderLabels ( QStringList()
@@ -413,7 +413,7 @@ void ConfigDialog::showPluginSettings()
     case 0:
     {
         QList <DecoderFactory *> *decoders = 0;
-        decoders = Decoder::decoderFactories();
+        decoders = Decoder::factories();
         int row = ui.inputPluginTable->currentRow ();
         if ( !decoders || row<0 )
             return;
