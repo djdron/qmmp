@@ -1074,7 +1074,7 @@ JACK_OpenDevice(jack_driver_t * drv)
       if(drv->jack_port_name_count == 0)
       {
         TRACE("jack_get_ports() passing in NULL/NULL\n");
-        ports = jack_get_ports(drv->client, NULL, NULL,
+        ports = jack_get_ports(drv->client, NULL, JACK_DEFAULT_AUDIO_TYPE,
                                drv->jack_output_port_flags);
       }
       else
