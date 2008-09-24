@@ -484,7 +484,6 @@ void OutputALSA::uninitialize()
         snd_pcm_close(pcm_handle);
         pcm_handle = 0;
     }
-    dispatch(Qmmp::Stopped);
 }
 /* ****** MIXER ******* */
 

@@ -152,7 +152,6 @@ signals:
 
 private slots:
     bool decode();
-    void setState(Qmmp::State);
 
 private:
     Decoder* m_decoder;
@@ -172,7 +171,7 @@ private:
     QString m_source;
     QWidget *m_parentWidget;
     static SoundCore* m_instance;
-    Qmmp::State m_state;
+    StateHandler *m_handler;
 };
 
 #endif

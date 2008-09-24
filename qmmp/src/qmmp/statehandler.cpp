@@ -17,6 +17,9 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#include <QStringList>
+
 #include "statehandler.h"
 
 
@@ -93,7 +96,21 @@ void StateHandler::dispatch(const Qmmp::State &state)
     m_mutex.lock();
     if (m_state != state)
     {
+        QStringList states;
+        states << "Playing" << "Paused" << "Stopped" << "Buffering" << "NormalError" << "FatalError";
+        qDebug("StateHandler: Current state: %s; previous state: %s",
+               qPrintable(states.at(state)), qPrintable(states.at(m_state)));
         m_state = state;
+
+        //clear
+        if (m_state != Qmmp::Playing || m_state != Qmmp::Paused || m_state != Qmmp::Buffering)
+        {
+            m_elapsed = -1;
+            m_bitrate = 0;
+            m_frequency = 0;
+            m_precision = 0;
+            m_channels = 0;
+        }
         emit stateChanged(state);
     }
     m_mutex.unlock();
