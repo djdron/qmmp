@@ -50,9 +50,17 @@ SoundCore::SoundCore(QObject *parent)
     m_vis = 0;
     m_parentWidget = 0;
     m_factory = 0;
-    m_state = Qmmp::Stopped;
+    //m_state = Qmmp::Stopped;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
+    m_handler = new StateHandler(this);
+    connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
+    connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
+    connect(m_handler, SIGNAL(frequencyChanged(int)), SIGNAL(frequencyChanged(int)));
+    connect(m_handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
+    connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
+    connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
+    connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
 }
 
 
@@ -64,8 +72,8 @@ SoundCore::~SoundCore()
 bool SoundCore::play(const QString &source)
 {
     stop();
-    if (m_state != Qmmp::Stopped) //clear error state
-        setState(Qmmp::Stopped);
+    if (m_handler->state() != Qmmp::Stopped) //clear error state
+        m_handler->dispatch(Qmmp::Stopped);
 
     if (QFile::exists(source)) //local file
         m_url = QUrl::fromLocalFile(source);
@@ -85,7 +93,7 @@ bool SoundCore::play(const QString &source)
             {
                 qDebug("SoundCore: cannot open input");
                 stop();
-                setState(Qmmp::NormalError);
+                m_handler->dispatch(Qmmp::NormalError);
             }
             return decode();
         }
@@ -93,7 +101,7 @@ bool SoundCore::play(const QString &source)
         {
             qWarning("SoundCore: unsupported fileformat");
             stop();
-            setState(Qmmp::NormalError);
+            m_handler->dispatch(Qmmp::NormalError);
             return FALSE;
         }
     }
@@ -109,7 +117,7 @@ bool SoundCore::play(const QString &source)
     }
     qWarning("SoundCore: unsupported fileformat");
     stop();
-    setState(Qmmp::NormalError);
+    m_handler->dispatch(Qmmp::NormalError);
     return FALSE;
 }
 
@@ -122,7 +130,7 @@ void SoundCore::stop()
         m_decoder->mutex()->lock ();
         m_decoder->stop();
         m_decoder->mutex()->unlock();
-        m_decoder->stateHandler()->dispatch(Qmmp::Stopped);
+        //m_decoder->stateHandler()->dispatch(Qmmp::Stopped);
     }
     if (m_output)
     {
@@ -151,7 +159,8 @@ void SoundCore::stop()
 
     if (m_output)
     {
-        m_output->deleteLater();
+        //m_output->deleteLater();
+        delete m_output;
         m_output = 0;
     }
     if (m_decoder)
@@ -164,6 +173,7 @@ void SoundCore::stop()
         m_input->deleteLater();
         m_input = 0;
     }
+    qApp->processEvents();
 }
 
 void SoundCore::pause()
@@ -284,41 +294,32 @@ void SoundCore::updateConfig()
 
 qint64 SoundCore::elapsed()
 {
-    return  (m_decoder) ? m_decoder->stateHandler()->elapsed() : 0;
+    return  m_handler->elapsed();
 }
 
 int SoundCore::bitrate()
 {
-    return  (m_decoder) ? m_decoder->stateHandler()->bitrate() : 0;
+    return  m_handler->bitrate();
 }
 
 int SoundCore::frequency()
 {
-    return  (m_decoder) ? m_decoder->stateHandler()->frequency() : 0;
+    return  m_handler->frequency();
 }
 
 int SoundCore::precision() //TODO rename
 {
-    return  (m_decoder) ? m_decoder->stateHandler()->precision() : 0;
+    return  m_handler->precision();
 }
 
 int SoundCore::channels()
 {
-    return  (m_decoder) ? m_decoder->stateHandler()->channels() : 0;
+    return  m_handler->channels();
 }
 
 Qmmp::State SoundCore::state() const
 {
-    return  (m_decoder) ? m_decoder->stateHandler()->state() : m_state;
-}
-
-void SoundCore::setState(Qmmp::State state)
-{
-    QStringList states;
-    states << "Playing" << "Paused" << "Stopped" << "Buffering" << "NormalError" << "FatalError";
-    qDebug("SoundCore: Current state: %s", qPrintable(states.at(state)));
-    m_state = state;
-    emit stateChanged (state);
+    return  m_handler->state();
 }
 
 bool SoundCore::decode()
@@ -328,12 +329,12 @@ bool SoundCore::decode()
         if (!m_input->open(QIODevice::ReadOnly))
         {
             qDebug("SoundCore:: cannot open input");
-            setState(Qmmp::NormalError);
+            m_handler->dispatch(Qmmp::NormalError);
             return FALSE;
         }
         if (!(m_factory = Decoder::findByContent(m_input)))
         {
-            setState(Qmmp::NormalError);
+            m_handler->dispatch(Qmmp::NormalError);
             return FALSE;
         }
     }
@@ -343,7 +344,7 @@ bool SoundCore::decode()
         if (!m_output)
         {
             qWarning("SoundCore: unable to create output");
-            setState(Qmmp::FatalError);
+            m_handler->dispatch(Qmmp::FatalError);
             return FALSE;
         }
         if (!m_output->initialize())
@@ -351,7 +352,7 @@ bool SoundCore::decode()
             qWarning("SoundCore: unable to initialize output");
             delete m_output;
             m_output = 0;
-            setState(Qmmp::FatalError);
+            m_handler->dispatch(Qmmp::FatalError);
             return FALSE;
         }
     }
@@ -361,21 +362,13 @@ bool SoundCore::decode()
         qWarning("SoundCore: unsupported fileformat");
         m_block = FALSE;
         stop();
-        setState(Qmmp::NormalError);
+        m_handler->dispatch(Qmmp::NormalError);
         return FALSE;
     }
     qDebug ("ok");
-    StateHandler *handler = m_decoder->stateHandler();
-    connect(handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
-    connect(handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
-    connect(handler, SIGNAL(frequencyChanged(int)), SIGNAL(frequencyChanged(int)));
-    connect(handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
-    connect(handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
-    connect(handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
-    connect(handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect(m_decoder, SIGNAL(finished()), SIGNAL(finished()));
     if (m_output)
-        m_output->setStateHandler(handler);
+        m_output->setStateHandler(m_decoder->stateHandler());
 
     if (m_decoder->initialize())
     {

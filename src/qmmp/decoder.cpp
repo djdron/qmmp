@@ -42,7 +42,7 @@ Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
     m_volL = settings.value("Volume/left", 80).toInt();
     m_volR = settings.value("Volume/right", 80).toInt();
     //setVolume(m_volL, m_volR);
-    m_handler = new StateHandler(this);
+    m_handler = StateHandler::instance();
 }
 
 Decoder::~Decoder()
