@@ -34,7 +34,7 @@ SET(libqmmp_SRCS
     recycler.cpp
     decoder.cpp
     output.cpp
-    filetag.cpp
+    fileinfo.cpp
     equ/iir.c
     equ/iir_cfs.c
     equ/iir_fpu.c
@@ -53,7 +53,7 @@ SET(libqmmp_MOC_HDRS
     constants.h
     decoder.h
     output.h
-    filetag.h
+    fileinfo.h
     outputfactory.h
     equ/iir_cfs.h
     equ/iir_fpu.h
@@ -75,7 +75,7 @@ SET(libqmmp_DEVEL_HDRS
     constants.h
     decoder.h
     output.h
-    filetag.h
+    fileinfo.h
     outputfactory.h
     decoderfactory.h
     soundcore.h

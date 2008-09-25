@@ -26,14 +26,14 @@
 
 PlayListItem::PlayListItem() : SongInfo(), m_flag(FREE)
 {
-    m_tag = 0;
+    m_info = 0;
 }
 
 PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
 {
     m_selected = FALSE;
     m_current = FALSE;
-    m_tag = 0;
+    m_info = 0;
     setValue(SongInfo::PATH, path);
     setValue(SongInfo::STREAM, path.startsWith("http://")); //TODO do this inside SongInfo
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
@@ -47,7 +47,7 @@ PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
 
     if (m_use_meta && !path.startsWith("http://"))
     {
-        m_tag = Decoder::createTag(path);
+        m_info = Decoder::getFileInfo(path);
         readMetadata();
     }
     else if (path.startsWith("http://")  && m_fullStreamPath)
@@ -90,28 +90,28 @@ PlayListItem::FLAGS PlayListItem::flag() const
     return m_flag;
 }
 
-void PlayListItem::updateTags(const FileTag *tag)
+/*void PlayListItem::updateTags(const FileTag *tag)
 {
-    if (m_tag)
+    if (m_info)
     {
-        delete m_tag;
-        m_tag = 0;
+        delete m_info;
+        m_info = 0;
     }
     if (!tag->isEmpty())
-        m_tag = new FileTag(*tag);
+        m_info = new FileTag(*tag);
     readMetadata();
-}
+}*/
 
 void PlayListItem::updateTags()
 {
     if (path().startsWith("http://"))
         return;
-    if (m_tag)
+    if (m_info)
     {
-        delete m_tag;
-        m_tag = 0;
+        delete m_info;
+        m_info = 0;
     }
-    m_tag = Decoder::createTag(path());
+    m_info = Decoder::getFileInfo(path());
     readMetadata();
 }
 
@@ -129,18 +129,18 @@ void PlayListItem::readMetadata()
 {
     //clear();
     m_title.clear();
-    if (m_tag) //read length first
-        setValue(SongInfo::LENGTH, m_tag->length());
-    if (m_use_meta && m_tag && !m_tag->isEmpty())
+    if (m_info) //read length first //TODO fix this
+        setValue(SongInfo::LENGTH, uint(m_info->length()));
+    if (m_use_meta && m_info && !m_info->isEmpty())
     {
-        //fill SongInfo
-        setValue(SongInfo::TITLE,  m_tag->title());
-        setValue(SongInfo::ARTIST, m_tag->artist());
-        setValue(SongInfo::ALBUM, m_tag->album());
-        setValue(SongInfo::COMMENT, m_tag->comment());
-        setValue(SongInfo::GENRE, m_tag->genre());
-        setValue(SongInfo::YEAR, m_tag->year());
-        setValue(SongInfo::TRACK, m_tag->track());
+        //fill SongInfo //TODO optimize
+        setValue(SongInfo::TITLE, m_info->metaData(Qmmp::TITLE));
+        setValue(SongInfo::ARTIST, m_info->metaData(Qmmp::ARTIST));
+        setValue(SongInfo::ALBUM, m_info->metaData(Qmmp::ALBUM));
+        setValue(SongInfo::COMMENT, m_info->metaData(Qmmp::COMMENT));
+        setValue(SongInfo::GENRE, m_info->metaData(Qmmp::GENRE));
+        setValue(SongInfo::YEAR, m_info->metaData(Qmmp::YEAR).toUInt());
+        setValue(SongInfo::TRACK, m_info->metaData(Qmmp::TRACK).toUInt());
         //generate playlist string
         m_title = m_format;
         m_title = printTag(m_title, "%p", artist());
@@ -159,9 +159,9 @@ void PlayListItem::readMetadata()
         else
             m_title = path().split('/',QString::SkipEmptyParts).takeLast ();
     }
-    if (m_tag)
-        delete m_tag;
-    m_tag = 0;
+    if (m_info)
+        delete m_info;
+    m_info = 0;
     if (m_convertUnderscore)
         m_title.replace("_", " ");
     if (m_convertTwenty)

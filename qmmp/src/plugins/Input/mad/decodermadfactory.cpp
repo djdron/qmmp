@@ -98,9 +98,9 @@ Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *ou
     return new DecoderMAD(parent, this, input, output);
 }
 
-FileTag *DecoderMADFactory::createTag(const QString &source)
+FileInfo *DecoderMADFactory::getFileInfo(const QString &source)
 {
-    FileTag *ftag = new FileTag();
+    FileInfo *info = new FileInfo();
     TagLib::Tag *tag = 0;
     TagLib::MPEG::File fileRef(source.toLocal8Bit ());
 
@@ -165,24 +165,24 @@ FileTag *DecoderMADFactory::createTag(const QString &source)
         TagLib::String genre = tag->genre();
         TagLib::String title = tag->title();
 
-        ftag->setValue(FileTag::ALBUM,
+        info->setMetaData(Qmmp::ALBUM,
                        codec->toUnicode(album.toCString(utf)).trimmed());
-        ftag->setValue(FileTag::ARTIST,
+        info->setMetaData(Qmmp::ARTIST,
                        codec->toUnicode(artist.toCString(utf)).trimmed());
-        ftag->setValue(FileTag::COMMENT,
+        info->setMetaData(Qmmp::COMMENT,
                        codec->toUnicode(comment.toCString(utf)).trimmed());
-        ftag->setValue(FileTag::GENRE,
+        info->setMetaData(Qmmp::GENRE,
                        codec->toUnicode(genre.toCString(utf)).trimmed());
-        ftag->setValue(FileTag::TITLE,
+        info->setMetaData(Qmmp::TITLE,
                        codec->toUnicode(title.toCString(utf)).trimmed());
-        ftag->setValue(FileTag::YEAR,
+        info->setMetaData(Qmmp::YEAR,
                        tag->year());
-        ftag->setValue(FileTag::TRACK,
+        info->setMetaData(Qmmp::TRACK,
                        tag->track());
     }
     if (fileRef.audioProperties())
-        ftag->setValue(FileTag::LENGTH,fileRef.audioProperties()->length());
-    return ftag;
+        info->setLength(fileRef.audioProperties()->length());
+    return info;
 }
 
 QObject* DecoderMADFactory::showDetails(QWidget *parent, const QString &path)
