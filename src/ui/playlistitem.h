@@ -22,7 +22,7 @@
 
 #include <qmmpui/songinfo.h>
 
-class FileTag;
+class FileInfo;
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -52,14 +52,14 @@ public:
     const QString text() const;
     void setText(const QString &title);
     //modify functions
-    void updateTags(const FileTag *tag);
+    //void updateTags(const FileTag *tag);
     void updateTags();
 
 private:
     void readMetadata();
     QString printTag(QString str, QString regExp, QString tagStr);
     QString m_title;
-    FileTag *m_tag;
+    FileInfo *m_info;
     bool m_selected;
     bool m_current;
     bool m_use_meta;

@@ -426,12 +426,12 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     return !disabledList.contains(name);
 }
 
-FileTag *Decoder::createTag(const QString& source)
+FileInfo *Decoder::getFileInfo(const QString &fileName)
 {
-    DecoderFactory *fact = Decoder::findByPath(source);
-    if (fact && QFile::exists(source))
+    DecoderFactory *fact = Decoder::findByPath(fileName);
+    if (fact && QFile::exists(fileName))
     {
-        return fact->createTag(source);
+        return fact->getFileInfo(fileName);
     }
     return 0;
 }

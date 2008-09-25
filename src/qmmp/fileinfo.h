@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,51 +17,36 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef FILETAG_H
-#define FILETAG_H
+#ifndef FILEINFO_H
+#define FILEINFO_H
 
 #include <QString>
 #include <QMap>
 
+#include "qmmp.h"
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class FileTag
+class FileInfo
 {
 public:
-    FileTag();
-    FileTag(const FileTag &other);
+    FileInfo();
+    //FileInfo(const FileInfo &other);
 
-    ~FileTag();
+    ~FileInfo();
 
-    enum Type
-    {
-        TITLE = 0,
-        ARTIST,
-        ALBUM,
-        COMMENT,
-        GENRE,
-        YEAR,
-        TRACK,
-        LENGTH
-    };
+    const qint64 length () const;
+    const QString metaData (Qmmp::MetaData key) const;
+    bool isEmpty();
 
-    void operator=(const FileTag &tag);
-    void setValue(uint name, const QString &value);
-    void setValue(uint name, const uint &value);
-    const QString title () const;
-    const QString artist () const;
-    const QString album () const;
-    const QString comment () const;
-    const QString genre () const;
-    const uint year () const;
-    const uint track () const;
-    const uint length () const;
-    const bool isEmpty () const;
+    void setLength(qint64 length);
+    void setMetaData(Qmmp::MetaData key, const QString &value);
+    void setMetaData(Qmmp::MetaData key, int value);
 
 private:
-    QMap <uint, QString> m_strValues;
-    QMap <uint, uint> m_numValues;
+    QMap <Qmmp::MetaData, QString> m_metaData;
+    qint64 m_length;
 };
 
 #endif

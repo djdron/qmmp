@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,20 +17,22 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "filetag.h"
+#include "fileinfo.h"
 
-FileTag::FileTag()
-{}
-
-FileTag::FileTag(const FileTag &other)
+FileInfo::FileInfo()
 {
-    *this = other;
+    m_length = 0;
 }
 
-FileTag::~FileTag()
+/*FileInfo::FileInfo(const FileInfo &other)
+{
+    *this = other;
+}*/
+
+FileInfo::~FileInfo()
 {}
 
-void FileTag::operator=(const FileTag &tag)
+/*void FileInfo::operator=(const FileInfo &tag)
 {
     setValue(TITLE,tag.title ());
     setValue(ARTIST,tag.artist ());
@@ -42,59 +44,50 @@ void FileTag::operator=(const FileTag &tag)
     setValue(LENGTH,tag.length ());
 }
 
-void FileTag::setValue(uint name, const QString &value)
+bool FileInfo::operator==(const FileInfo &tag)
 {
-    if (!value.isEmpty())
-        m_strValues.insert (name, value);
+    return title() == tag.title() &&
+           artist() == tag.artist() &&
+           album() == tag.album() &&
+           comment() == tag.comment() &&
+           genre() == tag.genre() &&
+           year() == tag.year() &&
+           track() == tag.track() &&
+           length() == tag.length() &&
+           isEmpty() == tag.isEmpty();
 }
 
-void FileTag::setValue(uint name, const uint &value)
+bool FileInfo::operator!=(const FileInfo &tag)
 {
-    if (value > 0)
-        m_numValues.insert (name, value);
+    return !operator==(tag);
+}*/
+
+const qint64 FileInfo::length () const
+{
+    return m_length;
 }
 
-const QString FileTag::title () const
+const QString FileInfo::metaData (Qmmp::MetaData key) const
 {
-    return m_strValues[TITLE];
+    return m_metaData[key];
 }
 
-const QString FileTag::artist () const
+bool FileInfo::isEmpty()
 {
-    return m_strValues[ARTIST];
+    return m_metaData.isEmpty(); //TODO add correct test
 }
 
-const QString FileTag::album () const
+void FileInfo::setLength(qint64 length)
 {
-    return m_strValues[ALBUM];
+    m_length = length;
 }
 
-const QString FileTag::comment () const
+void FileInfo::setMetaData(Qmmp::MetaData key, const QString &value)
 {
-    return m_strValues[COMMENT];
+    m_metaData.insert(key, value);
 }
 
-const QString FileTag::genre () const
+void FileInfo::setMetaData(Qmmp::MetaData key, int value)
 {
-    return m_strValues[GENRE];
-}
-
-const uint FileTag::year () const
-{
-    return m_numValues[YEAR];
-}
-
-const uint FileTag::track () const
-{
-    return m_numValues[TRACK];
-}
-
-const uint FileTag::length () const
-{
-    return m_numValues[LENGTH];
-}
-
-const bool FileTag::isEmpty () const
-{
-    return m_strValues.isEmpty();
+    m_metaData.insert(key, QString::number(value));
 }

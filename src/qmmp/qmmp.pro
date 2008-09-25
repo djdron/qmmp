@@ -5,7 +5,6 @@ HEADERS += recycler.h \
            constants.h \
            decoder.h \
            output.h \
-           filetag.h \
            outputfactory.h \
            equ\iir_cfs.h \
            equ\iir_fpu.h \
@@ -18,8 +17,9 @@ HEADERS += recycler.h \
            visualfactory.h \
            effect.h \
            effectfactory.h \
- statehandler.h \
- qmmp.h
+           statehandler.h \
+           qmmp.h \
+ fileinfo.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
@@ -29,11 +29,11 @@ SOURCES += recycler.cpp \
            soundcore.cpp \
            streamreader.cpp \
            downloader.cpp \
-           filetag.cpp \
            visual.cpp \
            effect.cpp \
- statehandler.cpp \
- qmmp.cpp
+           statehandler.cpp \
+           qmmp.cpp \
+ fileinfo.cpp
 
 TARGET = ../../lib/qmmp
 CONFIG += release \
