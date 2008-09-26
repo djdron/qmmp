@@ -20,8 +20,8 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    double lengthInSeconds();
-    void seek(double);
+    qint64 lengthInSeconds();
+    void seek(qint64);
     void stop();
 
     // Equalizer
@@ -52,11 +52,11 @@ private:
     OggVorbis_File oggfile;
 
     unsigned int bks;
-    bool done, finish;
+    bool done, m_finish;
     long len, freq, bitrate;
     int chan;
     unsigned long output_size;
-    double totalTime, seekTime;
+    qint64 totalTime, seekTime;
 };
 
 

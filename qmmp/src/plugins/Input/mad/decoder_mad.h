@@ -28,7 +28,7 @@ public:
     // standard decoder API
     bool initialize();
     qint64 lengthInSeconds();
-    void seek(double);
+    void seek(qint64);
     void stop();
 
 private:
@@ -44,7 +44,7 @@ private:
     bool findHeader();
     bool findXingHeader(struct mad_bitptr, unsigned int);
     bool inited, user_stop, done, m_finish, derror, eof, useeq;
-    double totalTime, seekTime;
+    qint64 totalTime, seekTime;
     int channels;
     unsigned long bitrate;
     long freq, len;

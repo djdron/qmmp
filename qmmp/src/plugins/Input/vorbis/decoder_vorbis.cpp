@@ -9,7 +9,7 @@
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
-#include <qmmp/filetag.h>
+#include <qmmp/fileinfo.h>
 
 #include <QObject>
 #include <QIODevice>
@@ -85,7 +85,7 @@ DecoderVorbis::DecoderVorbis(QObject *parent, DecoderFactory *d, QIODevice *i, O
     output_at = 0;
     bks = 0;
     done = FALSE;
-    finish = FALSE;
+    m_finish = FALSE;
     len = 0;
     freq = 0;
     bitrate = 0;
@@ -116,11 +116,11 @@ void DecoderVorbis::flush(bool final)
 {
     ulong min = final ? 0 : bks;
 
-    while ((! done && ! finish) && output_bytes > min)
+    while ((! done && ! m_finish) && output_bytes > min)
     {
         output()->recycler()->mutex()->lock ();
 
-        while ((! done && ! finish) && output()->recycler()->full())
+        while ((! done && ! m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();
 
@@ -130,26 +130,13 @@ void DecoderVorbis::flush(bool final)
             done = user_stop;
         }
 
-        if (user_stop || finish)
+        if (user_stop || m_finish)
         {
             inited = FALSE;
             done = TRUE;
         }
         else
         {
-            /*ulong sz = output_bytes < bks ? output_bytes : bks;
-            Buffer *b = output()->recycler()->get();
-
-            memcpy(b->data, output_buf, sz);
-            if (sz != bks) memset(b->data + sz, 0, bks - sz);
-
-            b->nbytes = bks;
-            b->rate = bitrate;
-            output_size += b->nbytes;
-            output()->recycler()->add();
-
-            output_bytes -= sz;
-            memmove(output_buf, output_buf + sz, output_bytes);*/
             output_bytes -= produceSound(output_buf, output_bytes, bitrate, chan);
             output_size += bks;
             output_at = output_bytes;
@@ -168,9 +155,9 @@ void DecoderVorbis::flush(bool final)
 bool DecoderVorbis::initialize()
 {
     qDebug("DecoderVorbis: initialize");
-    bks = blockSize();
+    bks = Buffer::size();
 
-    inited = user_stop = done = finish = FALSE;
+    inited = user_stop = done = m_finish = FALSE;
     len = freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
@@ -199,12 +186,12 @@ bool DecoderVorbis::initialize()
     }
 
     ov_callbacks oggcb =
-        {
-            oggread,
-            oggseek,
-            oggclose,
-            oggtell
-        };
+    {
+        oggread,
+        oggseek,
+        oggclose,
+        oggtell
+    };
     if (ov_open_callbacks(this, &oggfile, NULL, 0, oggcb) < 0)
     {
         qWarning("DecoderVorbis: cannot open stream");
@@ -226,14 +213,14 @@ bool DecoderVorbis::initialize()
         chan = ogginfo->channels;
     }
 
-    configure(freq, chan, 16, bitrate);
+    configure(freq, chan, 16);
 
     inited = TRUE;
     return TRUE;
 }
 
 
-double DecoderVorbis::lengthInSeconds()
+qint64 DecoderVorbis::lengthInSeconds()
 {
     if (! inited)
         return 0;
@@ -242,7 +229,7 @@ double DecoderVorbis::lengthInSeconds()
 }
 
 
-void DecoderVorbis::seek(double pos)
+void DecoderVorbis::seek(qint64 pos)
 {
     seekTime = pos;
 }
@@ -252,7 +239,7 @@ void DecoderVorbis::deinit()
 {
     if (inited)
         ov_clear(&oggfile);
-    inited = user_stop = done = finish = FALSE;
+    inited = user_stop = done = m_finish = FALSE;
     len = freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
@@ -263,50 +250,49 @@ void DecoderVorbis::updateTags()
     int i;
     vorbis_comment *comments;
 
-    FileTag tag;
+    QMap <Qmmp::MetaData, QString> metaData;
     comments = ov_comment (&oggfile, -1);
     for (i = 0; i < comments->comments; i++)
     {
         if (!strncasecmp(comments->user_comments[i], "title=",
                          strlen ("title=")))
-            tag.setValue(FileTag::TITLE, QString::fromUtf8(comments->user_comments[i]
-                         + strlen ("title=")));
+            metaData.insert(Qmmp::TITLE, QString::fromUtf8(comments->user_comments[i]
+                            + strlen ("title=")));
         else if (!strncasecmp(comments->user_comments[i],
                               "artist=", strlen ("artist=")))
-            tag.setValue(FileTag::ARTIST,
-                         QString::fromUtf8(comments->user_comments[i]
-                                           + strlen ("artist=")));
+            metaData.insert(Qmmp::ARTIST,
+                            QString::fromUtf8(comments->user_comments[i]
+                                              + strlen ("artist=")));
         else if (!strncasecmp(comments->user_comments[i],
                               "album=", strlen ("album=")))
-            tag.setValue(FileTag::ALBUM,
-                         QString::fromUtf8(comments->user_comments[i]
-                                           + strlen ("album=")));
+            metaData.insert(Qmmp::ALBUM,
+                            QString::fromUtf8(comments->user_comments[i]
+                                              + strlen ("album=")));
         else if (!strncasecmp(comments->user_comments[i],
                               "comment=", strlen ("comment=")))
-            tag.setValue(FileTag::COMMENT,
-                         QString::fromUtf8(comments->user_comments[i]
-                                           + strlen ("comment=")));
+            metaData.insert(Qmmp::COMMENT,
+                            QString::fromUtf8(comments->user_comments[i]
+                                              + strlen ("comment=")));
         else if (!strncasecmp(comments->user_comments[i],
                               "genre=", strlen ("genre=")))
-            tag.setValue(FileTag::GENRE, QString::fromUtf8 (comments->user_comments[i]
-                         + strlen ("genre=")));
+            metaData.insert(Qmmp::GENRE, QString::fromUtf8 (comments->user_comments[i]
+                            + strlen ("genre=")));
         else if (!strncasecmp(comments->user_comments[i],
                               "tracknumber=",
                               strlen ("tracknumber=")))
-            tag.setValue(FileTag::TRACK, atoi (comments->user_comments[i]
-                                               + strlen ("tracknumber=")));
+            metaData.insert(Qmmp::TRACK, QString::number(atoi(comments->user_comments[i]
+                            + strlen ("tracknumber="))));
         else if (!strncasecmp(comments->user_comments[i],
                               "track=", strlen ("track=")))
-            tag.setValue(FileTag::TRACK, atoi (comments->user_comments[i]
-                                               + strlen ("track=")));
+            metaData.insert(Qmmp::TRACK, QString::number(atoi(comments->user_comments[i]
+                            + strlen ("track="))));
         else if (!strncasecmp(comments->user_comments[i],
                               "date=", strlen ("date=")))
-            tag.setValue(FileTag::YEAR, atoi (comments->user_comments[i]
-                                               + strlen ("date=")));
+            metaData.insert(Qmmp::YEAR, QString::number(atoi(comments->user_comments[i]
+                            + strlen ("date="))));
 
     }
-    tag.setValue(FileTag::LENGTH, uint(totalTime));
-    dispatch(tag);
+    StateHandler::instance()->dispatch(metaData);
 }
 
 void DecoderVorbis::run()
@@ -321,14 +307,14 @@ void DecoderVorbis::run()
     }
 
     //stat = DecoderEvent::Decoding;
-    stat = DecoderState::Decoding;
+    //stat = DecoderState::Decoding;
     mutex()->unlock();
 
     {
         //DecoderEvent e((DecoderEvent::Type) stat);
         //dispatch(e);
         //DecoderStatus st ((DecoderStatus::Type) stat);
-        dispatch(DecoderState ((DecoderState::Type) stat));
+        //dispatch(DecoderState ((DecoderState::Type) stat));
 
         //emit statusChanged(stat);
     }
@@ -336,7 +322,7 @@ void DecoderVorbis::run()
     int section = 0;
     int last_section = -1;
 
-    while (! done && ! finish)
+    while (! done && ! m_finish)
     {
         mutex()->lock ();
         // decode
@@ -389,16 +375,16 @@ void DecoderVorbis::run()
             done = TRUE;
             if (! user_stop)
             {
-                finish = TRUE;
+                m_finish = TRUE;
             }
         }
         else
         {
             // error in read
-            error("DecoderVorbis: Error while decoding stream, File appears to be "
-                  "corrupted");
+            //error("DecoderVorbis: Error while decoding stream, File appears to be "
+            //    "corrupted");
 
-            finish = TRUE;
+            m_finish = TRUE;
         }
 
         mutex()->unlock();
@@ -406,10 +392,11 @@ void DecoderVorbis::run()
 
     mutex()->lock ();
 
-    if (finish)
-        stat = DecoderState::Finished;
+    if (m_finish)
+        finish();
+    /*   stat = DecoderState::Finished;
     else if (user_stop)
-        stat = DecoderState::Stopped;
+       stat = DecoderState::Stopped;*/
 
     mutex()->unlock();
 
@@ -418,7 +405,7 @@ void DecoderVorbis::run()
         dispatch(e);*/
         //DecoderStatus st ((DecoderStatus::Type) stat);
         //emit statusChanged(st);
-        dispatch(DecoderState ((DecoderState::Type) stat));
+        //dispatch(DecoderState ((DecoderState::Type) stat));
     }
 
     deinit();

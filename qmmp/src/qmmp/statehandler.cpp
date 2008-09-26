@@ -86,7 +86,7 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
     QMap<Qmmp::MetaData, QString> tmp = metaData;
     foreach(QString value, tmp.values()) //remove empty keys
     {
-        if (value.isEmpty())
+        if (value.isEmpty() || value == "0")
             tmp.remove(tmp.key(value));
     }
     if (m_metaData != tmp)
@@ -109,7 +109,9 @@ void StateHandler::dispatch(const Qmmp::State &state)
         m_state = state;
 
         //clear
-        if (m_state != Qmmp::Playing || m_state != Qmmp::Paused || m_state != Qmmp::Buffering)
+        QList <Qmmp::State> clearStates;
+        clearStates << Qmmp::Stopped << Qmmp::NormalError << Qmmp::FatalError;
+        if (clearStates.contains(m_state))
         {
             m_elapsed = -1;
             m_bitrate = 0;

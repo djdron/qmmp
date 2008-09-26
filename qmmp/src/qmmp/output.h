@@ -42,7 +42,7 @@ public:
     virtual void stop() = 0;
     virtual qint64 written() = 0;
     virtual qint64 latency() = 0;
-    virtual void seek(long) = 0;
+    virtual void seek(qint64) = 0;
     virtual void setVolume(int, int){};
     virtual void volume(int *, int *){};
 

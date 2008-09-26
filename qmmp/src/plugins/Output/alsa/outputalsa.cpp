@@ -91,7 +91,7 @@ qint64 OutputALSA::written()
     return m_totalWritten;
 }
 
-void OutputALSA::seek(long pos)
+void OutputALSA::seek(qint64 pos)
 {
     m_totalWritten = (pos * m_bps);
     m_currentSeconds = -1;
