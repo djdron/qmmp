@@ -137,8 +137,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
             SLOT(showDecoderState(const DecoderState&)));
     connect(m_core, SIGNAL(titleChanged(const QString&)),
             SLOT(changeTitle(const QString&)));
-    connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
-            SLOT(setProgress(int)));*/
+    */
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
     Visual::add(m_vis);
 
@@ -149,6 +148,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
+    connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
+            SLOT(setProgress(int)));
 
     updateEQ();
 
