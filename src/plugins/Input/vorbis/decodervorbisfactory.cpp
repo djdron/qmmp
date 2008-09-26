@@ -57,38 +57,38 @@ const DecoderProperties DecoderVorbisFactory::properties() const
 }
 
 Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
-                                      Output *output)
+                                      Output *output, const QString&)
 {
     return new DecoderVorbis(parent, this, input, output);
 }
 
-FileTag *DecoderVorbisFactory::createTag(const QString &source)
+FileInfo *DecoderVorbisFactory::getFileInfo(const QString &source)
 {
-    FileTag *ftag = new FileTag();
+    FileInfo *info = new FileInfo();
 
     TagLib::FileRef fileRef(source.toLocal8Bit ());
     TagLib::Tag *tag = fileRef.tag();
 
     if (tag && !tag->isEmpty())
     {
-        ftag->setValue(FileTag::ALBUM,
+        info->setMetaData(Qmmp::ALBUM,
                       QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::ARTIST,
+        info->setMetaData(Qmmp::ARTIST,
                       QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::COMMENT,
+        info->setMetaData(Qmmp::COMMENT,
                       QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::GENRE,
+        info->setMetaData(Qmmp::GENRE,
                       QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::TITLE,
+        info->setMetaData(Qmmp::TITLE,
                       QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::YEAR, tag->year());
-        ftag->setValue(FileTag::TRACK, tag->track());
+        info->setMetaData(Qmmp::YEAR, tag->year());
+        info->setMetaData(Qmmp::TRACK, tag->track());
     }
 
     if (fileRef.audioProperties())
-        ftag->setValue(FileTag::LENGTH, fileRef.audioProperties()->length());
+        info->setLength(fileRef.audioProperties()->length());
 
-    return ftag;
+    return info;
 }
 
 QObject* DecoderVorbisFactory::showDetails(QWidget *parent, const QString &path)

@@ -41,7 +41,7 @@ public:
     // Standard Decoder API
     virtual bool initialize() = 0;
     virtual qint64 lengthInSeconds() = 0;
-    virtual void seek(double) = 0;
+    virtual void seek(qint64) = 0;
     virtual void stop() = 0;
     //virtual void pause() = 0;
     //virtual void stop() = 0;

@@ -102,8 +102,7 @@ bool DecoderMAD::initialize()
     {
         if (! input()->open(QIODevice::ReadOnly))
         {
-            /*qWarning("DecoderMAD: Failed to open input.  Error " +
-                  QString::number(input()->isOpen()) + ".");*/
+            qWarning("DecoderMAD: %s", qPrintable(input()->errorString ()));
             return FALSE;
         }
     }
@@ -344,7 +343,7 @@ qint64 DecoderMAD::lengthInSeconds()
     return totalTime;
 }
 
-void DecoderMAD::seek(double pos)
+void DecoderMAD::seek(qint64 pos)
 {
     seekTime = pos;
 }
@@ -403,12 +402,7 @@ void DecoderMAD::run()
         return;
     }
 
-
-    //DecoderState::Type stat = DecoderState::Decoding;
-
     mutex()->unlock();
-
-    //dispatch(stat);
 
     while (! done && ! m_finish && ! derror)
     {
@@ -533,13 +527,8 @@ void DecoderMAD::run()
 
     if (m_finish)
         finish();
-//        stat = DecoderState::Finished;
-    //else if (user_stop)
-    //    stat = DecoderState::Stopped;
 
     mutex()->unlock();
-
-    //dispatch(stat);
 
     if (input())
         input()->close();
