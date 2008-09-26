@@ -8,7 +8,7 @@ add_subdirectory(dbuscontrol)
 ENDIF(USE_DBUS)
 
 IF(USE_SCROBBLER)
-add_subdirectory(scrobbler)
+#add_subdirectory(scrobbler)
 ENDIF(USE_SCROBBLER)
 
 IF(USE_STATICON)
