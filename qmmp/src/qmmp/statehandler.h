@@ -44,18 +44,18 @@ public:
                   int precision,
                   int channels);
 
-    void dispatch(QMap<QString, QString> metaData);
+    void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
 
     void dispatch(const Qmmp::State &state);
 
     qint64 elapsed();
-    qint64 totalTime();
     int bitrate();
     int frequency();
     int precision();
     int channels();
     Qmmp::State state();
-    QMap <QString, QString> metaData();
+    QMap <Qmmp::MetaData, QString> metaData();
+    QString metaData(Qmmp::MetaData key);
 
     /*!
      * Returns a pointer to the StateHandler instance.
@@ -64,7 +64,6 @@ public:
 
 signals:
     void elapsedChanged(qint64 time);
-    //void totalTimeChanged(qint64 time);
     void bitrateChanged(int bitrate);
     void frequencyChanged(int frequency);
     void precisionChanged(int precision);
@@ -74,10 +73,10 @@ signals:
     void finished();
 
 private:
-    qint64 m_elapsed, m_totalTime;
+    qint64 m_elapsed;
     int m_bitrate, m_frequency, m_precision, m_channels;
     static StateHandler* m_instance;
-    QMap <QString, QString> m_metaData;
+    QMap <Qmmp::MetaData, QString> m_metaData;
     Qmmp::State m_state;
     QMutex m_mutex;
 

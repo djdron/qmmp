@@ -58,6 +58,8 @@ PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
 
 PlayListItem::~PlayListItem()
 {
+    if (m_info)
+        delete m_info;
 }
 
 void PlayListItem::setSelected(bool yes)
@@ -90,17 +92,15 @@ PlayListItem::FLAGS PlayListItem::flag() const
     return m_flag;
 }
 
-/*void PlayListItem::updateTags(const FileTag *tag)
+void PlayListItem::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
 {
-    if (m_info)
-    {
-        delete m_info;
-        m_info = 0;
-    }
-    if (!tag->isEmpty())
-        m_info = new FileTag(*tag);
+    if (!m_info)
+        m_info = new FileInfo();
+
+    m_info->setMetaData(metaData);
+    m_use_meta = TRUE;
     readMetadata();
-}*/
+}
 
 void PlayListItem::updateTags()
 {

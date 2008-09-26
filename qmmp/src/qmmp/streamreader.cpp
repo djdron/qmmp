@@ -27,7 +27,6 @@ StreamReader::StreamReader(const QString &name, QObject *parent)
         : QIODevice(parent)
 {
     m_downloader = new Downloader(this, name);
-    connect(m_downloader, SIGNAL(titleChanged()),SLOT(updateTitle()));
     connect(m_downloader, SIGNAL(readyRead()), SIGNAL(readyRead()));
     connect(m_downloader, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
 }
@@ -122,11 +121,6 @@ qint64 StreamReader::writeData(const char*, qint64)
 void StreamReader::downloadFile()
 {
     m_downloader->start();
-}
-
-void StreamReader::updateTitle()
-{
-    emit titleChanged(m_downloader->title());
 }
 
 const QString &StreamReader::contentType()

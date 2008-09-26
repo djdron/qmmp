@@ -21,6 +21,7 @@
 #define PLAYLISTITEM_H
 
 #include <qmmpui/songinfo.h>
+#include <qmmp/qmmp.h>
 
 class FileInfo;
 /**
@@ -52,7 +53,7 @@ public:
     const QString text() const;
     void setText(const QString &title);
     //modify functions
-    //void updateTags(const FileTag *tag);
+    void updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData);
     void updateTags();
 
 private:

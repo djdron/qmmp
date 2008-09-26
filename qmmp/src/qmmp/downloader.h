@@ -63,7 +63,6 @@ public:
     bool isReady();
 
 signals:
-    void titleChanged();
     void readyRead();
     void bufferingProgress(int);
 

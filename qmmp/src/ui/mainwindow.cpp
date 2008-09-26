@@ -148,8 +148,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
-
-
+    connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
 
     updateEQ();
 
@@ -208,7 +207,7 @@ void MainWindow::play()
     }
     else
     {
-        //find out the reason why the playback failed
+        //find out the reason why playback failed
         switch ((int) m_core->state())
         {
         case Qmmp::FatalError:
@@ -333,13 +332,13 @@ void MainWindow::showState(Qmmp::State state)
     case Qmmp::Playing:
     {
         m_generalHandler->setState(General::Playing);
-        if (m_playListModel->currentItem())
+        /*if (m_playListModel->currentItem())
         {
             SongInfo info = *m_playListModel->currentItem();
             if (info.isEmpty())
                 info.setValue(SongInfo::TITLE, m_playlist->currentItem()->text());
             m_generalHandler->setSongInfo(info);
-        }
+        }*/
         if (m_playlist->listWidget())
             m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
         break;
@@ -455,6 +454,37 @@ void MainWindow::showState(Qmmp::State state)
     }
     }
 }*/
+
+void MainWindow::showMetaData()
+{
+    qDebug("===== metadata ======");
+    qDebug("ARTIST = %s", qPrintable(m_core->metaData(Qmmp::TITLE)));
+    qDebug("TITLE = %s", qPrintable(m_core->metaData(Qmmp::ARTIST)));
+    qDebug("ALBUM = %s", qPrintable(m_core->metaData(Qmmp::ALBUM)));
+    qDebug("COMMENT = %s", qPrintable(m_core->metaData(Qmmp::COMMENT)));
+    qDebug("GENRE = %s", qPrintable(m_core->metaData(Qmmp::GENRE)));
+    qDebug("YEAR = %s", qPrintable(m_core->metaData(Qmmp::YEAR)));
+    qDebug("TRACK = %s", qPrintable(m_core->metaData(Qmmp::TRACK)));
+    qDebug("== end of metadata ==");
+
+    if (m_playlist->currentItem())
+    {
+        SongInfo info;
+        info.setValue(SongInfo::TITLE, m_core->metaData(Qmmp::TITLE));
+        info.setValue(SongInfo::ARTIST, m_core->metaData(Qmmp::ARTIST));
+        info.setValue(SongInfo::ALBUM, m_core->metaData(Qmmp::ALBUM));
+        info.setValue(SongInfo::COMMENT, m_core->metaData(Qmmp::COMMENT));
+        info.setValue(SongInfo::GENRE, m_core->metaData(Qmmp::GENRE));
+        info.setValue(SongInfo::YEAR, m_core->metaData(Qmmp::YEAR).toUInt());
+        info.setValue(SongInfo::TRACK, m_core->metaData(Qmmp::TRACK).toUInt());
+        //info.setValue(SongInfo::LENGTH, st.tag()->length());
+        info.setValue(SongInfo::STREAM, !QFile::exists(m_playlist->currentItem()->path()));
+        info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
+        m_generalHandler->setSongInfo(info);
+        m_playlist->currentItem()->updateMetaData(m_core->metaData());
+        m_playlist->listWidget()->updateList();
+    }
+}
 
 void MainWindow::changeTitle(const QString &title)
 {

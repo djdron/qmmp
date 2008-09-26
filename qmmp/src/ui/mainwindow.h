@@ -96,6 +96,7 @@ private slots:
     //void showOutputState(const OutputState&);
     //void showDecoderState(const DecoderState&);
     void showState(Qmmp::State state);
+    void showMetaData();
     void changeTitle(const QString&);
     void clear();
     void startSeek();

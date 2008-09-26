@@ -20,13 +20,15 @@
 #ifndef TAGEXTRACTOR_H
 #define TAGEXTRACTOR_H
 
+#include <QMap>
+
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/id3v1tag.h>
 #include <taglib/id3v2tag.h>
 #include <taglib/id3v2header.h>
 
-#include <qmmp/filetag.h>
+#include <qmmp/qmmp.h>
 
 class QIODevice;
 class QBuffer;
@@ -42,10 +44,10 @@ public:
 
     ~TagExtractor();
 
-const FileTag &id3v2tag();
+    const QMap<Qmmp::MetaData, QString> id3v2tag();
 
 private:
-    FileTag m_tag;
+    QMap<Qmmp::MetaData, QString> m_tag;
     QIODevice *m_d;
 
 };
