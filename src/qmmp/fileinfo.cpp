@@ -72,6 +72,16 @@ const QString FileInfo::metaData (Qmmp::MetaData key) const
     return m_metaData[key];
 }
 
+const QMap<Qmmp::MetaData, QString>  FileInfo::metaData () const
+{
+    return m_metaData;
+}
+
+void FileInfo::setMetaData(const QMap<Qmmp::MetaData,  QString> &metaData)
+{
+    m_metaData = metaData;
+}
+
 bool FileInfo::isEmpty()
 {
     return m_metaData.isEmpty(); //TODO add correct test

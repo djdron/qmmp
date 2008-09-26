@@ -38,11 +38,13 @@ public:
 
     const qint64 length () const;
     const QString metaData (Qmmp::MetaData key) const;
+    const QMap<Qmmp::MetaData, QString>  metaData () const;
     bool isEmpty();
 
     void setLength(qint64 length);
     void setMetaData(Qmmp::MetaData key, const QString &value);
     void setMetaData(Qmmp::MetaData key, int value);
+    void setMetaData(const QMap <Qmmp::MetaData,  QString> &metaData);
 
 private:
     QMap <Qmmp::MetaData, QString> m_metaData;

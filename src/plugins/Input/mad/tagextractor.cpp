@@ -39,7 +39,7 @@ TagExtractor::~TagExtractor()
 {
 }
 
-const FileTag &TagExtractor::id3v2tag()
+const QMap<Qmmp::MetaData, QString> TagExtractor::id3v2tag()
 {
     QByteArray array = m_d->peek(2048);
     int offset = array.indexOf("ID3");
@@ -72,20 +72,20 @@ const FileTag &TagExtractor::id3v2tag()
     if (!codec)
         codec = QTextCodec::codecForName ("UTF-8");
 
-    m_tag.setValue(FileTag::ALBUM,
-                    codec->toUnicode(album.toCString(utf)).trimmed());
-    m_tag.setValue(FileTag::ARTIST,
-                    codec->toUnicode(artist.toCString(utf)).trimmed());
-    m_tag.setValue(FileTag::COMMENT,
-                    codec->toUnicode(comment.toCString(utf)).trimmed());
-    m_tag.setValue(FileTag::GENRE,
-                    codec->toUnicode(genre.toCString(utf)).trimmed());
-    m_tag.setValue(FileTag::TITLE,
-                    codec->toUnicode(title.toCString(utf)).trimmed());
-    m_tag.setValue(FileTag::YEAR,
-                    taglib_tag.year());
-    m_tag.setValue(FileTag::TRACK,
-                    taglib_tag.track());
+    m_tag.insert(Qmmp::ALBUM,
+                 codec->toUnicode(album.toCString(utf)).trimmed());
+    m_tag.insert(Qmmp::ARTIST,
+                 codec->toUnicode(artist.toCString(utf)).trimmed());
+    m_tag.insert(Qmmp::COMMENT,
+                 codec->toUnicode(comment.toCString(utf)).trimmed());
+    m_tag.insert(Qmmp::GENRE,
+                 codec->toUnicode(genre.toCString(utf)).trimmed());
+    m_tag.insert(Qmmp::TITLE,
+                 codec->toUnicode(title.toCString(utf)).trimmed());
+    m_tag.insert(Qmmp::YEAR,
+                 QString::number(taglib_tag.year()));
+    m_tag.insert(Qmmp::TRACK,
+                 QString::number(taglib_tag.track()));
 
     return m_tag;
 

@@ -111,9 +111,7 @@ bool DecoderMAD::initialize()
     if (input()->isSequential ()) //for streams only
     {
         TagExtractor extractor(input());
-        FileTag tag = extractor.id3v2tag();
-        //      if (!tag.isEmpty())
-//            dispatch(extractor.id3v2tag());
+        StateHandler::instance()->dispatch(extractor.id3v2tag());
     }
 
     mad_stream_init(&stream);

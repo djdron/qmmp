@@ -94,7 +94,11 @@ bool SoundCore::play(const QString &source)
                 qDebug("SoundCore: cannot open input");
                 stop();
                 m_handler->dispatch(Qmmp::NormalError);
+                return FALSE;
             }
+            FileInfo *finfo = m_factory->getFileInfo(m_url.toLocalFile ());
+            m_handler->dispatch(finfo->metaData());
+            delete finfo;
             return decode();
         }
         else
@@ -109,8 +113,6 @@ bool SoundCore::play(const QString &source)
     {
         m_input = new StreamReader(source, this);
         connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
-        connect(m_input, SIGNAL(titleChanged(const QString&)),
-                SIGNAL(titleChanged(const QString&)));
         connect(m_input, SIGNAL(readyRead()),SLOT(decode()));
         qobject_cast<StreamReader *>(m_input)->downloadFile();
         return TRUE;
@@ -320,6 +322,16 @@ int SoundCore::channels()
 Qmmp::State SoundCore::state() const
 {
     return  m_handler->state();
+}
+
+QMap <Qmmp::MetaData, QString> SoundCore::metaData()
+{
+    return m_handler->metaData();
+}
+
+QString SoundCore::metaData(Qmmp::MetaData key)
+{
+    return m_handler->metaData(key);
 }
 
 bool SoundCore::decode()

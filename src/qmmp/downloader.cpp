@@ -22,10 +22,13 @@
 #include <QStringList>
 #include <QSettings>
 #include <QDir>
+#include <QMap>
 #include <stdint.h>
 #include <stdlib.h>
 
 #include "constants.h"
+#include "qmmp.h"
+#include "statehandler.h"
 #include "downloader.h"
 
 //curl callbacks
@@ -301,7 +304,7 @@ void Downloader::checkBuffer()
     }
     else if (!m_ready)
     {
-        emit bufferingProgress(100*m_stream.buf_fill/BUFFER_SIZE);
+        emit bufferingProgress(100 * m_stream.buf_fill / BUFFER_SIZE);
         qApp->processEvents();
     }
 
@@ -347,7 +350,11 @@ void Downloader::parseICYMetaData(char *data)
             line = line.right(line.size() - line.indexOf("=") - 1).trimmed();
             m_title = line.remove("'");
             if (!m_title.isEmpty())
-                emit titleChanged ();
+            {
+                QMap<Qmmp::MetaData, QString> metaData;
+                metaData.insert(Qmmp::TITLE, m_title);
+                StateHandler::instance()->dispatch(metaData);
+            }
             break;
         }
     }

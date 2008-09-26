@@ -44,14 +44,6 @@ public:
     ~SoundCore();
 
     /*!
-     * Returns the current state.
-     *
-     * \return the state of the object.
-     */
-
-    Qmmp::State state() const;
-
-    /*!
      * Returns length in seconds
      */
     qint64 length() const;
@@ -85,6 +77,18 @@ public:
     int frequency();
     int precision();
     int channels();
+
+    /*!
+     * Returns the current state.
+     *
+     * \return the state of the object.
+     */
+    Qmmp::State state() const;
+
+    QMap <Qmmp::MetaData, QString> metaData();
+
+    QString metaData(Qmmp::MetaData key);
+
 
 
     /*!
@@ -126,14 +130,6 @@ public slots:
     void seek(qint64 pos);
 
 signals:
-
-    /*!
-    *  This signal is emited when the title of the stream changes.
-    *  The argument \b title is the new title of the stream.
-    *  Signal emits with the shoutcast server stream only.
-    *  For another servers use decoderStateChanged()
-    */
-    void titleChanged(const QString& title);
 
     /*!
      * This signal is emited when the stream reader fills it's buffer.

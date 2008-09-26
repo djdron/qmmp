@@ -26,7 +26,7 @@
 class Qmmp
 {
 public:
-    enum State {Playing = 0, Paused, Stopped, Buffering, NormalError, FatalError };
+    enum State {Playing = 0, Paused, Stopped, Buffering, NormalError, FatalError};
     enum MetaData {TITLE = 0, ARTIST, ALBUM, COMMENT, GENRE, YEAR, TRACK};
 
 };

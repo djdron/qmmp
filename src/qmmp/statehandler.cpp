@@ -80,12 +80,18 @@ void StateHandler::dispatch(qint64 elapsed,
     m_mutex.unlock();
 }
 
-void StateHandler::dispatch(QMap<QString, QString> metaData)
+void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
 {
     m_mutex.lock();
-    if (m_metaData != metaData)
+    QMap<Qmmp::MetaData, QString> tmp = metaData;
+    foreach(QString value, tmp.values()) //remove empty keys
     {
-        m_metaData = metaData;
+        if (value.isEmpty())
+            tmp.remove(tmp.key(value));
+    }
+    if (m_metaData != tmp)
+    {
+        m_metaData = tmp;
         emit metaDataChanged ();
     }
     m_mutex.unlock();
@@ -110,6 +116,7 @@ void StateHandler::dispatch(const Qmmp::State &state)
             m_frequency = 0;
             m_precision = 0;
             m_channels = 0;
+            m_metaData.clear();
         }
         emit stateChanged(state);
     }
@@ -146,9 +153,14 @@ Qmmp::State StateHandler::state()
     return m_state;
 }
 
-QMap<QString, QString> StateHandler::metaData()
+QMap<Qmmp::MetaData, QString> StateHandler::metaData()
 {
     return m_metaData;
+}
+
+QString StateHandler::metaData(Qmmp::MetaData key)
+{
+    return m_metaData.value(key);
 }
 
 StateHandler *StateHandler::instance()

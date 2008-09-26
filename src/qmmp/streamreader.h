@@ -63,17 +63,12 @@ public:
     void downloadFile();
 
 signals:
-    void titleChanged(const QString&);
     void readyRead();
     void bufferingProgress(int);
 
 protected:
     qint64 readData(char*, qint64);
     qint64 writeData(const char*, qint64);
-
-
-private slots:
-    void updateTitle();
 
 private:
     //void downloadFile();
