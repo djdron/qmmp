@@ -79,6 +79,7 @@ private:
     QMap <Qmmp::MetaData, QString> m_metaData;
     Qmmp::State m_state;
     QMutex m_mutex;
+    bool m_sendMeta;
 
 };
 
