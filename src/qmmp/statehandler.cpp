@@ -34,6 +34,7 @@ StateHandler::StateHandler(QObject *parent)
     m_frequency = 0;
     m_precision = 0;
     m_channels = 0;
+    m_sendMeta = FALSE;
     m_state = Qmmp::Stopped;
 }
 
@@ -92,7 +93,10 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
     if (m_metaData != tmp)
     {
         m_metaData = tmp;
-        emit metaDataChanged ();
+        if (m_state == Qmmp::Playing) //send metadata in play state only
+            emit metaDataChanged ();
+        else
+            m_sendMeta = TRUE;
     }
     m_mutex.unlock();
 }
@@ -108,6 +112,7 @@ void StateHandler::dispatch(const Qmmp::State &state)
                qPrintable(states.at(state)), qPrintable(states.at(m_state)));
         m_state = state;
 
+
         //clear
         QList <Qmmp::State> clearStates;
         clearStates << Qmmp::Stopped << Qmmp::NormalError << Qmmp::FatalError;
@@ -118,9 +123,15 @@ void StateHandler::dispatch(const Qmmp::State &state)
             m_frequency = 0;
             m_precision = 0;
             m_channels = 0;
+            m_sendMeta = FALSE;
             m_metaData.clear();
         }
         emit stateChanged(state);
+        if(m_state == Qmmp::Playing && m_sendMeta)
+        {
+            m_sendMeta = FALSE;
+            emit metaDataChanged ();
+        }
     }
     m_mutex.unlock();
 }
