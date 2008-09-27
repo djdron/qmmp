@@ -35,6 +35,8 @@
 
 class QIODevice;
 
+class VolumeControl;
+
 class SoundCore : public QObject
 {
     Q_OBJECT
@@ -168,6 +170,7 @@ private:
     QWidget *m_parentWidget;
     static SoundCore* m_instance;
     StateHandler *m_handler;
+    VolumeControl *m_volumeControl;
 };
 
 #endif

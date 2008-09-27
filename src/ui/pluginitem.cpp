@@ -70,12 +70,12 @@ OutputPluginItem::~OutputPluginItem()
 
 void OutputPluginItem::select()
 {
-    Output::setEnabled(m_factory);
+    Output::setCurrentFactory(m_factory);
 }
 
 bool OutputPluginItem::isSelected()
 {
-    return Output::isEnabled(m_factory);
+    return Output::currentFactory() == m_factory;
 }
 
 OutputFactory *OutputPluginItem::factory()

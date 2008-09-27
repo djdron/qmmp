@@ -29,6 +29,7 @@
 #include "streamreader.h"
 #include "effect.h"
 #include "statehandler.h"
+#include "volumecontrol.h"
 
 #include "soundcore.h"
 
@@ -50,7 +51,6 @@ SoundCore::SoundCore(QObject *parent)
     m_vis = 0;
     m_parentWidget = 0;
     m_factory = 0;
-    //m_state = Qmmp::Stopped;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
     m_handler = new StateHandler(this);
@@ -61,6 +61,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
     connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
+    m_volumeControl = VolumeControl::create(this);
 }
 
 
@@ -176,6 +177,9 @@ void SoundCore::stop()
         m_input = 0;
     }
     qApp->processEvents();
+    //update VolumeControl
+    delete m_volumeControl;
+    m_volumeControl = VolumeControl::create(this);
 }
 
 void SoundCore::pause()
@@ -253,7 +257,8 @@ void SoundCore::setEQEnabled(bool on)
 
 void SoundCore::setVolume(int L, int R)
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_volumeControl->setVolume(L, R);
+    /*QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     bool sofVolume = settings.value("Volume/software_volume", FALSE).toBool();
     if (sofVolume)
     {
@@ -268,8 +273,8 @@ void SoundCore::setVolume(int L, int R)
         if (m_output)
             m_output->checkSoftwareVolume();
     }
-    else if (m_output)
-        m_output->setVolume(L,R);
+/*    else if (m_output)
+        m_output->setVolume(L,R);*/
 }
 
 void SoundCore::volume(int *left, int *right)
@@ -281,8 +286,8 @@ void SoundCore::volume(int *left, int *right)
         *left = settings.value("Volume/left", 0).toInt();
         *right = settings.value("Volume/right", 0).toInt();
     }
-    else if (m_output)
-        m_output->volume(left,right);
+    /*else if (m_output)
+        m_output->volume(left,right);*/
     return;
 }
 

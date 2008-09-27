@@ -25,22 +25,27 @@ class OutputALSA;
 
 
 #include <QObject>
-extern "C" {
+extern "C"
+{
 #include <alsa/asoundlib.h>
 }
 
 #include <qmmp/output.h>
+#include <qmmp/volumecontrol.h>
 
 
 class OutputALSA : public Output
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     OutputALSA(QObject * parent = 0, bool useVolume = TRUE);
     ~OutputALSA();
 
     bool initialize();
-    bool isInitialized() const { return m_inited; }
+    bool isInitialized() const
+    {
+        return m_inited;
+    }
     void uninitialize();
     void configure(quint32, int, int);
     void stop();
@@ -71,6 +76,29 @@ private:
     snd_pcm_uframes_t m_chunk_size;
     size_t m_bits_per_frame;
 
+    //alsa mixer
+    /*int setupMixer(QString card, QString device);
+    void parseMixerName(char *str, char **name, int *index);
+    int getMixer(snd_mixer_t **mixer, QString card);
+    snd_mixer_elem_t* getMixerElem(snd_mixer_t *mixer, char *name, int index);
+    snd_mixer_t *mixer;
+    snd_mixer_elem_t *pcm_element;*/
+    bool m_use_mmap;
+};
+
+class VolumeControlALSA : public VolumeControl
+{
+    Q_OBJECT
+public:
+    VolumeControlALSA(QObject *parent = 0);
+    ~VolumeControlALSA();
+
+    void setVolume(int left, int right) ;
+
+protected:
+    void volume(int *left, int *right);
+
+private:
     //alsa mixer
     int setupMixer(QString card, QString device);
     void parseMixerName(char *str, char **name, int *index);
