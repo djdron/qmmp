@@ -43,8 +43,8 @@ public:
     virtual qint64 written() = 0;
     virtual qint64 latency() = 0;
     virtual void seek(qint64) = 0;
-    virtual void setVolume(int, int){};
-    virtual void volume(int *, int *){};
+    //virtual void setVolume(int, int){};
+    //virtual void volume(int *, int *){};
 
     Recycler *recycler();
     QMutex *mutex();
@@ -54,8 +54,8 @@ public:
     static Output *create(QObject *);
     static QList<OutputFactory*> *outputFactories();
     static QStringList outputFiles();
-    static void setEnabled(OutputFactory* factory);
-    static bool isEnabled(OutputFactory* factory);
+    static void setCurrentFactory(OutputFactory* factory);
+    static OutputFactory *currentFactory();
 
 public slots:
     void checkVolume();
@@ -79,6 +79,7 @@ private:
     StateHandler *m_handler;
 
     static void checkFactories();
+    //TODO use QMap instead
     static QList<OutputFactory*> *m_factories;
     static QStringList m_files;
     static QTimer *m_timer;

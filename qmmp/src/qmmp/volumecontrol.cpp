@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,38 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef OUTPUTFACTORY_H
-#define OUTPUTFACTORY_H
+#include "output.h"
 
-class QObject;
-class QString;
-class QIODevice;
-class QWidget;
-class QTranslator;
-class VolumeControl;
+#include "volumecontrol.h"
 
-class Decoder;
-class Output;
-
-struct OutputProperties
+VolumeControl::VolumeControl(QObject *parent)
+ : QObject(parent)
 {
-    QString name;
-    bool hasAbout;
-    bool hasSettings;
-};
+}
 
-class OutputFactory
+
+VolumeControl::~VolumeControl()
 {
-public:
-    virtual ~OutputFactory() {} 
-    virtual const OutputProperties properties() const = 0;
-    virtual Output *create(QObject *, bool) = 0;
-    virtual VolumeControl *createVolumeControl(QObject *) = 0;
-    virtual void showSettings(QWidget *parent) = 0;
-    virtual void showAbout(QWidget *parent) = 0;
-    virtual QTranslator *createTranslator(QObject *parent) = 0;
-};
+}
 
-Q_DECLARE_INTERFACE(OutputFactory, "OutputFactory/1.0")
-
-#endif
+VolumeControl *VolumeControl::create(QObject *parent)
+{
+    return Output::currentFactory()->createVolumeControl(parent);
+}

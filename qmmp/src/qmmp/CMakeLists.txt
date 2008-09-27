@@ -44,6 +44,7 @@ SET(libqmmp_SRCS
     effect.cpp
     qmmp.cpp
     statehandler.cpp
+    volumecontrol.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -66,6 +67,7 @@ SET(libqmmp_MOC_HDRS
     effect.h
     qmmp.h
     statehandler.h
+    volumecontrol.h
 )
 
 SET(libqmmp_DEVEL_HDRS
@@ -85,6 +87,7 @@ SET(libqmmp_DEVEL_HDRS
     effect.h
     qmmp.h
     statehandler.h
+    volumecontrol.h
 )
 
 

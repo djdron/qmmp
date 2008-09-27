@@ -19,7 +19,8 @@ HEADERS += recycler.h \
            effectfactory.h \
            statehandler.h \
            qmmp.h \
- fileinfo.h
+ fileinfo.h \
+ volumecontrol.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
@@ -33,7 +34,8 @@ SOURCES += recycler.cpp \
            effect.cpp \
            statehandler.cpp \
            qmmp.cpp \
- fileinfo.cpp
+ fileinfo.cpp \
+ volumecontrol.cpp
 
 TARGET = ../../lib/qmmp
 CONFIG += release \
@@ -74,7 +76,8 @@ devel.files += recycler.h \
                visual.h \
                visualfactory.h \
                effect.h \
-               effectfactory.h
+               effectfactory.h \
+               volumecontrol.h
 
 devel.path = /include/qmmp
 
