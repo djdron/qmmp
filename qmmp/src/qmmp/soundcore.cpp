@@ -62,6 +62,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
     m_volumeControl = VolumeControl::create(this);
+    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
 }
 
 
@@ -180,6 +181,7 @@ void SoundCore::stop()
     //update VolumeControl
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
+    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
 }
 
 void SoundCore::pause()
@@ -279,6 +281,8 @@ void SoundCore::setVolume(int L, int R)
 
 void SoundCore::volume(int *left, int *right)
 {
+    *left = 0;
+    *right = 0;
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     bool sofVolume = settings.value("Volume/software_volume", FALSE).toBool();
     if (sofVolume)

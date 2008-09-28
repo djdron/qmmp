@@ -42,6 +42,8 @@ public:
     ~EqTitleBar();
 
     void setActive(bool);
+
+public slots:
     void setVolume(int left, int right);
 
 private slots:

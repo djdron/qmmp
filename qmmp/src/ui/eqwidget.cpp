@@ -23,6 +23,7 @@
 #include <QInputDialog>
 #include <QCloseEvent>
 #include <qmmpui/filedialog.h>
+#include <qmmp/soundcore.h>
 
 #include "skin.h"
 #include "eqslider.h"
@@ -86,6 +87,7 @@ EqWidget::EqWidget (QWidget *parent)
     }
     readSettings();
     createActions();
+    connect(SoundCore::instance(), SIGNAL(volumeChanged(int, int)), m_titleBar, SLOT(setVolume(int, int)));
 }
 
 EqWidget::~EqWidget()
@@ -363,15 +365,6 @@ void EqWidget::loadPreset(const QString &name)
             reset();
     }
 }
-
-/*void EqWidget::setInfo(const OutputState &st)
-{
-    if (st.type() == OutputState::Volume)
-    {
-        m_titleBar->setVolume(st.leftVolume(),st.rightVolume());
-
-    }
-}*/
 
 EQPreset *EqWidget::findPreset(const QString &name)
 {
