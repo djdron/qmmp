@@ -33,6 +33,7 @@
 #include <qmmp/visualfactory.h>
 #include <qmmp/effectfactory.h>
 #include <qmmp/effect.h>
+#include <qmmp/soundcore.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
@@ -120,7 +121,9 @@ void ConfigDialog::readSettings()
 
     ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", FALSE).toBool());
     ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", FALSE).toBool());
-    ui.softVolumeCheckBox->setChecked(settings.value("Volume/software_volume", FALSE).toBool());
+    //volume
+    ui.softVolumeCheckBox->setChecked(SoundCore::instance()->softwareVolume());
+    connect(ui.softVolumeCheckBox, SIGNAL(clicked(bool)), SoundCore::instance(), SLOT(setSoftwareVolume(bool)));
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -545,7 +548,6 @@ void ConfigDialog::saveSettings()
     settings.setValue ("Proxy/port",ui.portLineEdit->text());
     settings.setValue ("Proxy/user",ui.proxyUserLineEdit->text());
     settings.setValue ("Proxy/passw",ui.proxyPasswLineEdit->text());
-    settings.setValue ("Volume/software_volume", ui.softVolumeCheckBox->isChecked());
     settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
     settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
 }

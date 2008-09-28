@@ -19,6 +19,9 @@
  ***************************************************************************/
 
 #include <QTimer>
+#include <QSettings>
+#include <QDir>
+
 #include "output.h"
 
 #include "volumecontrol.h"
@@ -30,18 +33,32 @@ VolumeControl::VolumeControl(QObject *parent)
     m_right = 0;
 }
 
-
 VolumeControl::~VolumeControl()
 {
 }
 
 VolumeControl *VolumeControl::create(QObject *parent)
 {
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    if (settings.value("Volume/software_volume", FALSE).toBool())
+        return new SoftwareVolume(parent);
     VolumeControl *control = Output::currentFactory()->createVolumeControl(parent);
+    if (!control)
+        return new SoftwareVolume(parent);
     QTimer *m_timer = new QTimer(control);
     connect(m_timer, SIGNAL(timeout()), control, SLOT(checkVolume()));
     m_timer->start(125);
     return control;
+}
+
+int VolumeControl::left()
+{
+    return m_left;
+}
+
+int VolumeControl::right()
+{
+    return m_right;
 }
 
 void VolumeControl::checkVolume()
@@ -58,4 +75,49 @@ void VolumeControl::checkVolume()
         m_right = r;
         emit volumeChanged(m_left, m_right);
     }
+}
+
+SoftwareVolume *SoftwareVolume::m_instance = 0;
+
+SoftwareVolume::SoftwareVolume(QObject *parent)
+        : VolumeControl(parent)
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_left = settings.value("Volume/left", 80).toInt();
+    m_right = settings.value("Volume/right", 80).toInt();
+    QTimer::singleShot(125, this, SLOT(checkVolume()));
+    m_instance = this;
+    //checkVolume();
+}
+
+SoftwareVolume::~SoftwareVolume()
+{
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.setValue("Volume/left", m_left);
+    settings.setValue("Volume/right", m_right);
+    m_instance = 0;
+}
+
+void SoftwareVolume::setVolume(int left, int right)
+{
+    m_left = left;
+    m_right = right;
+    checkVolume();
+}
+
+void SoftwareVolume::volume(int *left, int *right)
+{
+    *left = m_left;
+    *right = m_right;
+}
+//static
+SoftwareVolume *SoftwareVolume::instance()
+{
+    return m_instance;
+}
+
+void  SoftwareVolume::setEnabled(bool b)
+{
+     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+     settings.setValue("Volume/software_volume", b);
 }

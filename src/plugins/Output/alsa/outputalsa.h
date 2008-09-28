@@ -38,7 +38,7 @@ class OutputALSA : public Output
 {
     Q_OBJECT
 public:
-    OutputALSA(QObject * parent = 0, bool useVolume = TRUE);
+    OutputALSA(QObject * parent = 0);
     ~OutputALSA();
 
     bool initialize();

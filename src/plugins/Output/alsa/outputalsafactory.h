@@ -38,7 +38,7 @@ Q_INTERFACES(OutputFactory);
 
 public:
     const OutputProperties properties() const;
-    Output* create(QObject* parent, bool volume);
+    Output* create(QObject* parent);
     VolumeControl *createVolumeControl(QObject *parent);
     void showSettings(QWidget* parent);
     void showAbout(QWidget *parent);

@@ -43,8 +43,6 @@ public:
     virtual qint64 written() = 0;
     virtual qint64 latency() = 0;
     virtual void seek(qint64) = 0;
-    //virtual void setVolume(int, int){};
-    //virtual void volume(int *, int *){};
 
     Recycler *recycler();
     QMutex *mutex();
@@ -56,10 +54,6 @@ public:
     static QStringList outputFiles();
     static void setCurrentFactory(OutputFactory* factory);
     static OutputFactory *currentFactory();
-
-public slots:
-    void checkVolume();
-    void checkSoftwareVolume();
 
 protected:
     void dispatch(qint64 elapsed,
@@ -75,7 +69,6 @@ protected:
 private:
     QMutex m_mutex;
     Recycler m_recycler;
-    int m_bl, m_br;
     StateHandler *m_handler;
 
     static void checkFactories();

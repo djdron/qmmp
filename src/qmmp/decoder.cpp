@@ -20,6 +20,7 @@
 #include "visual.h"
 #include "decoderfactory.h"
 #include "streamreader.h"
+#include "volumecontrol.h"
 extern "C"
 {
 #include "equ/iir.h"
@@ -37,11 +38,6 @@ Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
     blksize = Buffer::size();
     m_effects = Effect::create(this);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    m_useVolume = settings.value("Volume/software_volume", FALSE).toBool();
-    m_volL = settings.value("Volume/left", 80).toInt();
-    m_volR = settings.value("Volume/right", 80).toInt();
-    //setVolume(m_volL, m_volR);
     m_handler = StateHandler::instance();
 }
 
@@ -100,24 +96,6 @@ void Decoder::setEQEnabled(bool on)
     m_useEQ = on;
 }
 
-void Decoder::setVolume(int l, int r)
-{
-    m_mutex.lock();
-    m_volL = l;
-    m_volR = r;
-    m_volLF = pow( 10, (l - 100)/40.0 ) * 256;
-    m_volRF = pow( 10, (r - 100)/40.0 ) * 256;
-    m_mutex.lock();
-}
-
-void Decoder::volume(int *l, int *r)
-{
-    m_mutex.lock();
-    *l = m_volL;
-    *r = m_volR;
-    m_mutex.unlock();
-}
-
 void Decoder::configure(quint32 srate, int chan, int bps)
 {
     Effect* effect = 0;
@@ -145,10 +123,7 @@ qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
         }
         iir((void*) data, sz, chan);
     }
-    if (m_useVolume)
-    {
-        changeVolume(data, sz, chan);
-    }
+    changeVolume(data, sz, chan);
     char *out_data = data;
     char *prev_data = data;
     qint64 w = sz;
@@ -197,15 +172,17 @@ void Decoder::finish()
 
 void Decoder::changeVolume(char *data, qint64 size, int chan)
 {
+    if (!SoftwareVolume::instance())
+        return;
     if (chan > 1)
         for (qint64 i = 0; i < size/2; i+=2)
         {
-            ((short*)data)[i]*= m_volLF/256.0;
-            ((short*)data)[i+1]*= m_volRF/256.0;
+            ((short*)data)[i]*= SoftwareVolume::instance()->left()/256.0;
+            ((short*)data)[i+1]*= SoftwareVolume::instance()->right()/256.0;
         }
     else
     {
-        int l = qMax(m_volLF,m_volRF);
+        int l = qMax(SoftwareVolume::instance()->left(), SoftwareVolume::instance()->right());
         for (qint64 i = 0; i < size/2; i++)
             ((short*)data)[i]*= l/256.0;
     }

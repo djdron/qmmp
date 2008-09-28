@@ -260,47 +260,33 @@ void SoundCore::setEQEnabled(bool on)
 void SoundCore::setVolume(int L, int R)
 {
     m_volumeControl->setVolume(L, R);
-    /*QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    bool sofVolume = settings.value("Volume/software_volume", FALSE).toBool();
-    if (sofVolume)
-    {
-        L = qMin(L,100);
-        R = qMin(R,100);
-        L = qMax(L,0);
-        R = qMax(R,0);
-        settings.setValue("Volume/left", L);
-        settings.setValue("Volume/right", R);
-        if (m_decoder)
-            m_decoder->setVolume(L,R);
-        if (m_output)
-            m_output->checkSoftwareVolume();
-    }
-/*    else if (m_output)
-        m_output->setVolume(L,R);*/
 }
 
-void SoundCore::volume(int *left, int *right)
+int SoundCore::leftVolume()
 {
-    *left = 0;
-    *right = 0;
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    bool sofVolume = settings.value("Volume/software_volume", FALSE).toBool();
-    if (sofVolume)
-    {
-        *left = settings.value("Volume/left", 0).toInt();
-        *right = settings.value("Volume/right", 0).toInt();
-    }
-    /*else if (m_output)
-        m_output->volume(left,right);*/
-    return;
+    return m_volumeControl->left();
 }
 
-void SoundCore::updateConfig()
+int SoundCore::rightVolume()
 {
-    //m_update = TRUE;
-    /*if (isInitialized())
-        return;
-    stop();*/
+    return m_volumeControl->right();
+}
+
+void SoundCore::setSoftwareVolume(bool b)
+{
+    SoftwareVolume::setEnabled(b);
+    if (m_decoder)
+        m_decoder->mutex()->lock();
+    delete m_volumeControl;
+    m_volumeControl = VolumeControl::create(this);
+    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    if (m_decoder)
+        m_decoder->mutex()->unlock();
+}
+
+bool SoundCore::softwareVolume()
+{
+    return SoftwareVolume::instance() != 0;
 }
 
 qint64 SoundCore::elapsed()

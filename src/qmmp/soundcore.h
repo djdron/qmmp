@@ -61,18 +61,9 @@ public:
      */
     void setEQEnabled(bool on);
 
-    /*!
-     * reads current volume.
-     * \p left contains volume of the left channel.
-     * \p right contains volume of the right channel.
-     */
-    void volume(int *left, int *right);
-
-    /*!
-    * updates configuration
-    */
-    void updateConfig();
-
+    int leftVolume();
+    int rightVolume();
+    bool softwareVolume();
 
     qint64 elapsed();
     int bitrate();
@@ -99,6 +90,8 @@ public:
     static SoundCore* instance();
 
 public slots:
+
+    void setSoftwareVolume(bool);
 
     /*!
      * Sets volume.
