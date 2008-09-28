@@ -56,9 +56,6 @@ public:
     void setEQ(int bands[10], int preamp);
     void setEQEnabled(bool on);
 
-    void setVolume(int, int);
-    void volume(int*, int*);
-
     // static methods
     static QStringList all();
     static bool supports(const QString &);
@@ -98,8 +95,6 @@ private:
     uint blksize;
     bool m_eqInited;
     bool m_useEQ;
-    bool m_useVolume;
-    int m_volL, m_volR, m_volLF, m_volRF;
     StateHandler *m_handler;
     static QList<DecoderFactory*> *m_factories;
     static QStringList m_files;

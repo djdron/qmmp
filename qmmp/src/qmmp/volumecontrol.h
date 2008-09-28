@@ -35,6 +35,9 @@ public:
 
     virtual void setVolume(int left, int right) = 0;
 
+    int left();
+    int right();
+
     static VolumeControl *create(QObject *parent = 0);
 
 signals:
@@ -48,6 +51,28 @@ protected:
 
 private:
     int m_left, m_right;
+
+};
+
+class SoftwareVolume : public VolumeControl
+{
+    Q_OBJECT
+public:
+    SoftwareVolume(QObject *parent = 0);
+
+    ~SoftwareVolume();
+
+    void setVolume(int left, int right);
+
+    static SoftwareVolume *instance();
+    static void setEnabled(bool b);
+
+protected:
+    void volume(int *left, int *right);
+
+private:
+    int m_left, m_right;
+    static SoftwareVolume *m_instance;
 
 };
 

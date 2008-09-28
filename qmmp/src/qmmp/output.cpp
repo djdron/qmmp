@@ -17,8 +17,6 @@
 
 Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
 {
-    m_bl = -1;
-    m_br = -1;
     m_handler = 0;
 }
 
@@ -62,30 +60,6 @@ void Output::clearVisuals()
         visual->clear ();
         visual->mutex()->unlock();
     }
-}
-
-void Output::checkVolume()
-{
-    int ll = 0, lr = 0;
-    //volume(&ll,&lr);
-    ll = (ll > 100) ? 100 : ll;
-    lr = (lr > 100) ? 100 : lr;
-    ll = (ll < 0) ? 0 : ll;
-    lr = (lr < 0) ? 0 : lr;
-    if (m_bl!=ll || m_br!=lr)
-    {
-        m_bl = ll;
-        m_br = lr;
-        //dispatchVolume(ll,lr);
-    }
-}
-
-void Output::checkSoftwareVolume()
-{
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    int L = settings.value("Volume/left", 80).toInt();
-    int R = settings.value("Volume/right", 80).toInt();
-    //dispatchVolume(L, R);
 }
 
 void Output::dispatch(qint64 elapsed,
@@ -163,29 +137,8 @@ Output *Output::create (QObject *parent)
     OutputFactory *fact = Output::currentFactory();
     if (!fact && !m_factories->isEmpty())
         fact = m_factories->at(0);
-    /*foreach(fact, *m_factories)
-    {
-        if (isEnabled(fact))
-            break;
-        else
-            fact = m_factories->at(0);
-    }*/
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    bool useVolume = !settings.value("Volume/software_volume", FALSE).toBool();
     if (fact)
-    {
-        output = fact->create (parent, useVolume);
-        if (useVolume)
-        {
-            m_timer = new QTimer(output);
-            connect(m_timer, SIGNAL(timeout()), output, SLOT(checkVolume()));
-            m_timer->start(125);
-        }
-        else
-        {
-            QTimer::singleShot(125, output, SLOT(checkSoftwareVolume()));
-        }
-    }
+        output = fact->create (parent);
     return output;
 }
 
