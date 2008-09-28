@@ -57,8 +57,6 @@ public:
 
     void setEQ(QWidget*);
     void setPL(QWidget*);
-    //void setInfo(const OutputState &st);
-    void setSoundCore(SoundCore *core);
     bool isEqualizerVisible()const;
     bool isPlaylistVisible()const;
     bool isRepeatable()const;
@@ -84,6 +82,7 @@ private slots:
     void setSampleRate(int rate);
     void setTime(qint64);
     void setState(Qmmp::State state);
+    void setVolume(int left, int right);
 
 private:
     QWidget* m_equlizer;

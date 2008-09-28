@@ -18,13 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QTimer>
 #include "output.h"
 
 #include "volumecontrol.h"
 
 VolumeControl::VolumeControl(QObject *parent)
- : QObject(parent)
+        : QObject(parent)
 {
+    m_left = 0;
+    m_right = 0;
 }
 
 
@@ -34,5 +37,25 @@ VolumeControl::~VolumeControl()
 
 VolumeControl *VolumeControl::create(QObject *parent)
 {
-    return Output::currentFactory()->createVolumeControl(parent);
+    VolumeControl *control = Output::currentFactory()->createVolumeControl(parent);
+    QTimer *m_timer = new QTimer(control);
+    connect(m_timer, SIGNAL(timeout()), control, SLOT(checkVolume()));
+    m_timer->start(125);
+    return control;
+}
+
+void VolumeControl::checkVolume()
+{
+    int l = 0, r = 0;
+    volume(&l, &r);
+    l = (l > 100) ? 100 : l;
+    r = (r > 100) ? 100 : r;
+    l = (l < 0) ? 0 : l;
+    r = (r < 0) ? 0 : r;
+    if (m_left != l || m_right != r)
+    {
+        m_left = l;
+        m_right = r;
+        emit volumeChanged(m_left, m_right);
+    }
 }

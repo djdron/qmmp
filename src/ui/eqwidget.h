@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,6 +36,7 @@ class EQGraph;
 class Button;
 class EQPreset;
 class PlayListItem;
+class SoundCore;
 
 class EqWidget : public PixmapWidget
 {
@@ -52,11 +53,6 @@ public:
     * necessary for auto-load presets
     */
     void loadPreset(const QString &name);
-
-    /*!
-    * shows output volume and balance. Necessare for the shaded mode
-    */
-    //void setInfo(const OutputState &st);
 
 signals:
     void valueChanged();

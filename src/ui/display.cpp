@@ -138,6 +138,14 @@ MainDisplay::MainDisplay (QWidget *parent)
     m_timeIndicator = new TimeIndicator(this);
     m_timeIndicator->move(34,26);
     m_timeIndicator->show();
+
+    m_core = SoundCore::instance();
+    connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(setTime(qint64)));
+    connect(m_core, SIGNAL(bitrateChanged(int)), m_kbps, SLOT(display(int)));
+    connect(m_core, SIGNAL(frequencyChanged(int)), SLOT(setSampleRate(int)));
+    connect(m_core, SIGNAL(channelsChanged(int)), m_monoster, SLOT(setChannels(int)));
+    connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
+    connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(setVolume(int, int)));
 }
 
 
@@ -170,11 +178,6 @@ void MainDisplay::setState(Qmmp::State state)
         setDuration(m_core->length());
         break;
     }
-    /*case OutputState::Buffering:
-    {
-        //ui.label->setText("Buffering");
-        break;
-    }*/
     case Qmmp::Paused:
     {
         m_playstatus->setStatus(PlayStatus::PAUSE);
@@ -190,6 +193,14 @@ void MainDisplay::setState(Qmmp::State state)
         break;
     }
     }
+}
+
+void MainDisplay::setVolume(int left, int right)
+{
+    int maxVol = qMax(left, right);
+    m_volumeBar->setValue(maxVol);
+    if (maxVol && !m_volumeBar->isPressed())
+        m_balanceBar->setValue((right - left) * 100/maxVol);
 }
 
 void MainDisplay::updateSkin()
@@ -216,68 +227,6 @@ void MainDisplay::setPL (QWidget* w)
     m_plButton->setON (m_playlist->isVisible());
     connect (m_plButton, SIGNAL (clicked (bool)), m_playlist, SLOT (setVisible (bool)));
     connect (m_playlist, SIGNAL (closed ()), m_plButton, SLOT (click()));
-}
-
-/*void MainDisplay::setInfo(const OutputState &st)
-{
-
-
-    switch ((int) st.type())
-    {
-    case OutputState::Info:
-    {
-        //if (seeking)
-        // break;
-        setTime (st.elapsedSeconds());
-        m_kbps->display (st.bitrate());
-        m_freq->display (st.frequency() /1000);
-        m_monoster->setChannels (st.channels());
-        update();
-        break;
-    }
-    case OutputState::Playing:
-    {
-        m_playstatus->setStatus(PlayStatus::PLAY);
-        m_timeIndicator->setNeedToShowTime(true);
-        break;
-    }
-    case OutputState::Buffering:
-    {
-        //ui.label->setText("Buffering");
-        break;
-    }
-    case OutputState::Paused:
-    {
-        m_playstatus->setStatus(PlayStatus::PAUSE);
-        break;
-    }
-    case OutputState::Stopped:
-    {
-        m_playstatus->setStatus(PlayStatus::STOP);
-        m_monoster->setChannels (0);
-        //m_timeIndicator->setNeedToShowTime(false);
-        break;
-    }
-    case OutputState::Volume:
-        //qDebug("volume %d, %d", st.rightVolume(), st.leftVolume());
-        int maxVol = qMax(st.leftVolume(),st.rightVolume());
-        m_volumeBar->setValue(maxVol);
-        if (maxVol && !m_volumeBar->isPressed())
-            m_balanceBar->setValue((st.rightVolume()-st.leftVolume())*100/maxVol);
-        break;
-
-    }
-}*/
-
-void MainDisplay::setSoundCore(SoundCore *core)
-{
-    m_core = core;
-    connect(core, SIGNAL(elapsedChanged(qint64)), SLOT(setTime(qint64)));
-    //connect(core, SIGNAL(totalTimeChanged(qint64 time)
-    connect(core, SIGNAL(bitrateChanged(int)), m_kbps, SLOT(display(int)));
-    connect(core, SIGNAL(frequencyChanged(int)), SLOT(setSampleRate(int)));
-    connect(core, SIGNAL(channelsChanged(int)), m_monoster, SLOT(setChannels(int)));
-    connect(core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
 }
 
 bool MainDisplay::isPlaylistVisible() const

@@ -37,8 +37,17 @@ public:
 
     static VolumeControl *create(QObject *parent = 0);
 
+signals:
+    void volumeChanged(int left, int right);
+
+public slots:
+    void checkVolume();
+
 protected:
     virtual void volume(int *left, int *right) = 0;
+
+private:
+    int m_left, m_right;
 
 };
 

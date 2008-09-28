@@ -147,6 +147,7 @@ signals:
     void metaDataChanged ();
     void stateChanged (Qmmp::State newState);
     void finished();
+    void volumeChanged(int left, int right);
 
 private slots:
     bool decode();

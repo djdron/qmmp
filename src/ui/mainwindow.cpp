@@ -62,6 +62,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_paused = FALSE;
     m_elapsed = 0;
     m_option_manager = option_manager;
+    m_core = new SoundCore(this);
 
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
 
@@ -113,7 +114,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
     createActions();
 
-    m_core = new SoundCore(this);
     m_titlebar = new TitleBar(this);
     m_titlebar->move(0,0);
     m_titlebar->show();
@@ -124,24 +124,11 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
     display->setEQ(m_equalizer);
     display->setPL(m_playlist);
-    display->setSoundCore(m_core);
 
     m_vis = MainVisual::getPointer();
 
-    //m_core->addVisualization(m_vis);
-    //m_core->showVisualization(this);
-
-    /*connect(m_core, SIGNAL(outputStateChanged(const OutputState&)),
-            SLOT(showOutputState(const OutputState&)));
-    connect(m_core, SIGNAL(decoderStateChanged(const DecoderState&)),
-            SLOT(showDecoderState(const DecoderState&)));
-    connect(m_core, SIGNAL(titleChanged(const QString&)),
-            SLOT(changeTitle(const QString&)));
-    */
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
     Visual::add(m_vis);
-
-
 
     connect(m_core, SIGNAL(finished()), SLOT(next()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
@@ -200,12 +187,7 @@ void MainWindow::play()
     if (s.isEmpty())
         return;
     if (m_core->play(s))
-    {
-        //display->setTime(0);
-        //qDebug("play");
         m_generalHandler->setTime(0);
-        //display->setDuration(m_core->totalTime());
-    }
     else
     {
         //find out the reason why playback failed
@@ -358,104 +340,6 @@ void MainWindow::showState(Qmmp::State state)
     }
     }
 }
-
-/*void MainWindow::showOutputState(const OutputState &st)
-
-{
-    if (seeking)
-        return;
-
-    //display->setInfo(st);
-    //m_playlist->setInfo(st, m_core->length(), m_playListModel->totalLength());
-    //m_titlebar->setInfo(st);
-    // m_equalizer->setInfo(st);
-    /*switch ((int) st.type())
-    {
-    case OutputState::Playing:
-    {
-        m_generalHandler->setState(General::Playing);
-        if (m_playListModel->currentItem())
-        {
-            SongInfo info = *m_playListModel->currentItem();
-            if (info.isEmpty())
-                info.setValue(SongInfo::TITLE, m_playlist->currentItem()->text());
-            m_generalHandler->setSongInfo(info);
-        }
-        break;
-    }
-    case OutputState::Paused:
-    {
-        m_generalHandler->setState(General::Paused);
-        break;
-    }
-    case OutputState::Stopped:
-    {
-        m_generalHandler->setState(General::Stopped);
-        break;
-    }
-    case OutputState::Info:
-    {
-        m_generalHandler->setTime(st.elapsedSeconds());
-        m_elapsed = st.elapsedSeconds();
-        break;
-    }
-    case OutputState::Volume:
-    {
-        m_generalHandler->setVolume(st.leftVolume(), st.rightVolume());
-        break;
-    }
-    case OutputState::VisualRemoved:
-    {
-        m_visMenu->updateActions();
-    }
-    }*/
-//}
-/*void MainWindow::showDecoderState(const DecoderState &st)
-{
-    switch ((int) st.type())
-    {
-    case DecoderState::Finished:
-    {
-        next();
-        break;
-    }
-    case DecoderState::Info:
-    {
-        qDebug("file info:");
-        qDebug("ARTIST = %s", qPrintable(st.tag()->artist()));
-        qDebug("TITLE = %s", qPrintable(st.tag()->title()));
-        qDebug("ALBUM = %s", qPrintable(st.tag()->album()));
-        qDebug("COMMENT = %s", qPrintable(st.tag()->comment()));
-        qDebug("GENRE = %s", qPrintable(st.tag()->genre()));
-        qDebug("YEAR = %d", st.tag()->year());
-        qDebug("TRACK = %d", st.tag()->track());
-        qDebug("LENGTH = %d", st.tag()->length());
-        if (m_playlist->currentItem())
-        {
-            if (!st.tag()->isEmpty())
-            {
-                SongInfo info;
-                info.setValue(SongInfo::TITLE, st.tag()->title());
-                info.setValue(SongInfo::ARTIST, st.tag()->artist());
-                info.setValue(SongInfo::ALBUM, st.tag()->album());
-                info.setValue(SongInfo::COMMENT, st.tag()->comment());
-                info.setValue(SongInfo::GENRE, st.tag()->genre());
-                info.setValue(SongInfo::YEAR, st.tag()->year());
-                info.setValue(SongInfo::TRACK, st.tag()->track());
-                info.setValue(SongInfo::LENGTH, st.tag()->length());
-                info.setValue(SongInfo::STREAM,
-                              m_playlist->currentItem()->path().startsWith("http://"));
-                info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
-                m_generalHandler->setSongInfo(info);
-            }
-            m_playlist->currentItem()->updateTags(st.tag());
-            m_playlist->listWidget()->updateList();
-        }
-        break;
-    }
-    }
-}*/
-
 void MainWindow::showMetaData()
 {
     qDebug("===== metadata ======");
