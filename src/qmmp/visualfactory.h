@@ -28,9 +28,16 @@ class QDialog;
 
 class Visual;
 
-struct VisualProperties
+class VisualProperties
 {
+public:
+    VisualProperties()
+    {
+        hasAbout = FALSE;
+        hasSettings = FALSE;
+    }
     QString name;
+    QString shortName;
     bool hasAbout;
     bool hasSettings;
 };

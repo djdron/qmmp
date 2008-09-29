@@ -97,9 +97,9 @@ void Visual::setEnabled(VisualFactory* factory, bool enable)
     if (!m_factories->contains(factory))
         return;
 
-    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
+    QString name = factory->properties().shortName;
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    QStringList visList = settings.value("Visualization/plugin_files").toStringList();
+    QStringList visList = settings.value("Visualization/enabled_plugins").toStringList();
 
     if (enable)
     {
@@ -126,7 +126,7 @@ void Visual::setEnabled(VisualFactory* factory, bool enable)
             m_vis_map.remove (factory);
         }
     }
-    settings.setValue("Visualization/plugin_files", visList);
+    settings.setValue("Visualization/enabled_plugins", visList);
 }
 
 bool Visual::isEnabled(VisualFactory* factory)
@@ -134,9 +134,9 @@ bool Visual::isEnabled(VisualFactory* factory)
     checkFactories();
     if (!m_factories->contains(factory))
         return FALSE;
-    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
+    QString name = factory->properties().shortName;
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    QStringList visList = settings.value("Visualization/plugin_files").toStringList();
+    QStringList visList = settings.value("Visualization/enabled_plugins").toStringList();
     return visList.contains(name);
 }
 

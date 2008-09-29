@@ -224,18 +224,15 @@ void Decoder::checkFactories()
         }
         //remove physically deleted plugins from disabled list
         QStringList names;
-        foreach (QString filePath, m_files)
+        foreach (DecoderFactory *factory, *m_factories)
         {
-            names.append(filePath.section('/',-1));
+            names.append(factory->properties().shortName);
         }
-        int i = 0;
         QStringList disabledList  = settings.value("Decoder/disabled_plugins").toStringList ();
-        while (i < disabledList.size())
+        foreach (QString name, disabledList)
         {
-            if (!names.contains(disabledList.at(i)))
-                disabledList.removeAt(i);
-            else
-                i++;
+            if (!names.contains(name))
+                disabledList.removeAll(name);
         }
         settings.setValue("Decoder/disabled_plugins",disabledList);
     }
@@ -378,7 +375,7 @@ void Decoder::setEnabled(DecoderFactory* factory, bool enable)
     if (!m_factories->contains(factory))
         return;
 
-    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
+    QString name = factory->properties().shortName;
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
 
@@ -397,7 +394,7 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     checkFactories();
     if (!m_factories->contains(factory))
         return FALSE;
-    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
+    QString name = factory->properties().shortName;
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
     return !disabledList.contains(name);
@@ -439,4 +436,3 @@ QList<DecoderFactory*> *Decoder::factories()
     checkFactories();
     return m_factories;
 }
-

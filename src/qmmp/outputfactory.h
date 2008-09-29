@@ -31,9 +31,16 @@ class VolumeControl;
 class Decoder;
 class Output;
 
-struct OutputProperties
+class OutputProperties
 {
+public:
+    OutputProperties()
+    {
+        hasAbout = FALSE;
+        hasSettings = FALSE;
+    }
     QString name;
+    QString shortName;
     bool hasAbout;
     bool hasSettings;
 };

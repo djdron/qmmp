@@ -122,9 +122,9 @@ void Effect::setEnabled(EffectFactory* factory, bool enable)
     if(!factories->contains(factory))
         return;
 
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QString name = factory->properties().shortName;
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    QStringList effList = settings.value("Effect/plugin_files").toStringList();
+    QStringList effList = settings.value("Effect/enabled_plugins").toStringList();
 
     if(enable)
     {
@@ -133,7 +133,7 @@ void Effect::setEnabled(EffectFactory* factory, bool enable)
     }
     else
         effList.removeAll(name);
-    settings.setValue("Effect/plugin_files", effList);
+    settings.setValue("Effect/enabled_plugins", effList);
 }
 
 bool Effect::isEnabled(EffectFactory* factory)
@@ -141,9 +141,9 @@ bool Effect::isEnabled(EffectFactory* factory)
     checkFactories();
     if(!factories->contains(factory))
         return FALSE;
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QString name = factory->properties().shortName;
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    QStringList effList = settings.value("Effect/plugin_files").toStringList();
+    QStringList effList = settings.value("Effect/enabled_plugins").toStringList();
     return effList.contains(name);
 }
 
