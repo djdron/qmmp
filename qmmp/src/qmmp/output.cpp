@@ -159,28 +159,21 @@ void Output::setCurrentFactory(OutputFactory* factory)
     checkFactories();
     if (!m_factories->contains(factory))
         return;
-
-    QString name = m_files.at(m_factories->indexOf(factory)).section('/',-1);
-    //TODO use plugin id instead
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    settings.setValue ("Output/plugin_file", name);
+    settings.setValue ("Output/current_plugin", factory->properties().shortName);
 }
 
 OutputFactory *Output::currentFactory()
 {
     checkFactories();
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    QString name = settings.value("Output/plugin_file", "libalsa.so").toString();
-    foreach(QString path, m_files)
+    QString name = settings.value("Output/current_plugin", "alsa").toString(); //TODO freebsd support
+    foreach(OutputFactory *factory, *m_factories)
     {
-        if (path.section('/',-1) == name)
-        {
-            int i = m_files.indexOf(path);
-            if (i < 0)
-                return 0;
-            else
-                return m_factories->at(i);
-        }
+        if (factory->properties().shortName == name)
+            return factory;
     }
+    if (!m_factories->isEmpty())
+        return m_factories->at(0);
     return 0;
 }

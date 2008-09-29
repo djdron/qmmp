@@ -31,9 +31,16 @@ class QTranslator;
 
 class Effect;
 
-struct EffectProperties
+class EffectProperties
 {
+public:
+    EffectProperties()
+    {
+        hasAbout = FALSE;
+        hasSettings = FALSE;
+    }
     QString name;
+    QString shortName;
     bool hasAbout;
     bool hasSettings;
 };

@@ -44,6 +44,7 @@ public:
 
     }
     QString name;
+    QString shortName;
     QString filter;
     QString description;
     QString contentType;

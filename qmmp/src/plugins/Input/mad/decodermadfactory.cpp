@@ -85,6 +85,7 @@ const DecoderProperties DecoderMADFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("MPEG Plugin");
+    properties.shortName = "mad";
     properties.filter = "*.mp1 *.mp2 *.mp3 *.wav";
     properties.description = tr("MPEG Files");
     properties.contentType = "audio/mp3;audio/mpeg";
