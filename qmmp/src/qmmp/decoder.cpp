@@ -400,12 +400,12 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     return !disabledList.contains(name);
 }
 
-FileInfo *Decoder::getFileInfo(const QString &fileName)
+FileInfo *Decoder::createFileInfo(const QString &fileName)
 {
     DecoderFactory *fact = Decoder::findByPath(fileName);
     if (fact && QFile::exists(fileName))
     {
-        return fact->getFileInfo(fileName);
+        return fact->createFileInfo(fileName);
     }
     return 0;
 }

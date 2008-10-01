@@ -64,7 +64,7 @@ public:
     static DecoderFactory *findByMime(const QString&);
     static DecoderFactory *findByContent(QIODevice *);
     static DecoderFactory *findByURL(const QUrl &url);
-    static FileInfo *getFileInfo(const QString &fileName);
+    static FileInfo *createFileInfo(const QString &fileName);
     static QStringList filters();
     static QStringList nameFilters();
     static QList<DecoderFactory*> *factories();

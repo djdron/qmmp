@@ -99,7 +99,7 @@ Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *ou
     return new DecoderMAD(parent, this, input, output);
 }
 
-FileInfo *DecoderMADFactory::getFileInfo(const QString &source)
+FileInfo *DecoderMADFactory::createFileInfo(const QString &source)
 {
     FileInfo *info = new FileInfo();
     TagLib::Tag *tag = 0;

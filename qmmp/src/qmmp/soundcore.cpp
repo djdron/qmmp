@@ -98,7 +98,7 @@ bool SoundCore::play(const QString &source)
                 m_handler->dispatch(Qmmp::NormalError);
                 return FALSE;
             }
-            FileInfo *finfo = m_factory->getFileInfo(m_url.toLocalFile ());
+            FileInfo *finfo = m_factory->createFileInfo(m_url.toLocalFile ());
             m_handler->dispatch(finfo->metaData());
             delete finfo;
             return decode();
