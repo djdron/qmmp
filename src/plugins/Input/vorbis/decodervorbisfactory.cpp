@@ -63,7 +63,7 @@ Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
     return new DecoderVorbis(parent, this, input, output);
 }
 
-FileInfo *DecoderVorbisFactory::getFileInfo(const QString &source)
+FileInfo *DecoderVorbisFactory::createFileInfo(const QString &source)
 {
     FileInfo *info = new FileInfo();
 

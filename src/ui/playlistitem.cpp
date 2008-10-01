@@ -47,7 +47,7 @@ PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
 
     if (m_use_meta && !path.startsWith("http://"))
     {
-        m_info = Decoder::getFileInfo(path);
+        m_info = Decoder::createFileInfo(path);
         readMetadata();
     }
     else if (path.startsWith("http://")  && m_fullStreamPath)
@@ -111,7 +111,7 @@ void PlayListItem::updateTags()
         delete m_info;
         m_info = 0;
     }
-    m_info = Decoder::getFileInfo(path());
+    m_info = Decoder::createFileInfo(path());
     readMetadata();
 }
 
