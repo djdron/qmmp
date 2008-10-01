@@ -373,7 +373,7 @@ bool SoundCore::decode()
         return FALSE;
     }
     qDebug ("ok");
-    connect(m_decoder, SIGNAL(finished()), SIGNAL(finished()));
+    connect(m_decoder, SIGNAL(playbackFinished()), SIGNAL(finished()));
     if (m_output)
         m_output->setStateHandler(m_decoder->stateHandler());
 

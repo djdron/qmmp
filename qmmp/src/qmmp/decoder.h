@@ -73,7 +73,7 @@ public:
     static bool isEnabled(DecoderFactory* factory);
 
 signals:
-    void finished();
+    void playbackFinished();
 
 protected:
     void configure(quint32 srate, int chan, int bps);
