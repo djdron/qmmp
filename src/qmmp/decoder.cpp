@@ -167,7 +167,7 @@ qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
 void Decoder::finish()
 {
     //output()->wait();
-    emit finished();
+    emit playbackFinished();
 }
 
 void Decoder::changeVolume(char *data, qint64 size, int chan)
