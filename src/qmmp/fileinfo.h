@@ -22,6 +22,7 @@
 
 #include <QString>
 #include <QMap>
+#include <QUrl>
 
 #include "qmmp.h"
 
@@ -32,23 +33,33 @@ class FileInfo
 {
 public:
     FileInfo();
-    //FileInfo(const FileInfo &other);
+    FileInfo(const FileInfo &other);
 
     ~FileInfo();
+
+    void operator=(const FileInfo &info);
+    bool operator==(const FileInfo &info);
+    bool operator!=(const FileInfo &info);
 
     const qint64 length () const;
     const QString metaData (Qmmp::MetaData key) const;
     const QMap<Qmmp::MetaData, QString>  metaData () const;
-    bool isEmpty();
+    bool isEmpty() const;
+    const QUrl url() const;
+    int count();
 
     void setLength(qint64 length);
     void setMetaData(Qmmp::MetaData key, const QString &value);
     void setMetaData(Qmmp::MetaData key, int value);
     void setMetaData(const QMap <Qmmp::MetaData,  QString> &metaData);
+    void setUrl(const QUrl &url);
 
 private:
     QMap <Qmmp::MetaData, QString> m_metaData;
     qint64 m_length;
+    QUrl m_url;
+    int m_count;
+    QList<QMap<int, int> > map;
 };
 
 #endif

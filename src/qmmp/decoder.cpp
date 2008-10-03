@@ -405,6 +405,9 @@ FileInfo *Decoder::createFileInfo(const QString &fileName)
     DecoderFactory *fact = Decoder::findByPath(fileName);
     if (fact && QFile::exists(fileName))
     {
+        FileInfo *info = fact->createFileInfo(fileName);
+        if (info && info->url().isEmpty())
+            info->setUrl(QUrl::fromLocalFile (fileName));
         return fact->createFileInfo(fileName);
     }
     return 0;
