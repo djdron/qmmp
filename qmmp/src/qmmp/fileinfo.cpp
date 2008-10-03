@@ -22,45 +22,35 @@
 FileInfo::FileInfo()
 {
     m_length = 0;
+    m_count = 1;
 }
 
-/*FileInfo::FileInfo(const FileInfo &other)
+FileInfo::FileInfo(const FileInfo &other)
 {
     *this = other;
-}*/
+}
 
 FileInfo::~FileInfo()
 {}
 
-/*void FileInfo::operator=(const FileInfo &tag)
+void FileInfo::operator=(const FileInfo &info)
 {
-    setValue(TITLE,tag.title ());
-    setValue(ARTIST,tag.artist ());
-    setValue(ALBUM,tag.album ());
-    setValue(COMMENT,tag.comment ());
-    setValue(GENRE,tag.genre ());
-    setValue(YEAR,tag.year ());
-    setValue(TRACK,tag.track ());
-    setValue(LENGTH,tag.length ());
+    setLength(info.length());
+    setMetaData(info.metaData());
+    setUrl(info.url());
 }
 
-bool FileInfo::operator==(const FileInfo &tag)
+bool FileInfo::operator==(const FileInfo &info)
 {
-    return title() == tag.title() &&
-           artist() == tag.artist() &&
-           album() == tag.album() &&
-           comment() == tag.comment() &&
-           genre() == tag.genre() &&
-           year() == tag.year() &&
-           track() == tag.track() &&
-           length() == tag.length() &&
-           isEmpty() == tag.isEmpty();
+    return metaData () == info.metaData () &&
+           length () == info.length ();
+    url() == info.url();
 }
 
-bool FileInfo::operator!=(const FileInfo &tag)
+bool FileInfo::operator!=(const FileInfo &info)
 {
-    return !operator==(tag);
-}*/
+    return !operator==(info);
+}
 
 const qint64 FileInfo::length () const
 {
@@ -82,9 +72,14 @@ void FileInfo::setMetaData(const QMap<Qmmp::MetaData,  QString> &metaData)
     m_metaData = metaData;
 }
 
-bool FileInfo::isEmpty()
+bool FileInfo::isEmpty() const
 {
     return m_metaData.isEmpty(); //TODO add correct test
+}
+
+const QUrl FileInfo::url() const
+{
+    return m_url;
 }
 
 void FileInfo::setLength(qint64 length)
@@ -100,4 +95,9 @@ void FileInfo::setMetaData(Qmmp::MetaData key, const QString &value)
 void FileInfo::setMetaData(Qmmp::MetaData key, int value)
 {
     m_metaData.insert(key, QString::number(value));
+}
+
+void FileInfo::setUrl(const QUrl &url)
+{
+    m_url = url;
 }
