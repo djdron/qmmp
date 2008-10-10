@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -139,9 +139,9 @@ static int flac_decode (void *void_data, char *buf, int buf_len)
 
 
 static FLAC__StreamDecoderReadStatus flac_callback_read (const FLAC__StreamDecoder*,
-                                                         FLAC__byte buffer[],
-                                                         size_t *bytes,
-                                                         void *client_data)
+        FLAC__byte buffer[],
+        size_t *bytes,
+        void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
     qint64 res;
@@ -164,9 +164,9 @@ static FLAC__StreamDecoderReadStatus flac_callback_read (const FLAC__StreamDecod
 }
 
 static FLAC__StreamDecoderWriteStatus flac_callback_write (const FLAC__StreamDecoder *,
-                                                           const FLAC__Frame *frame,
-                                                           const FLAC__int32* const buffer[],
-                                                           void *client_data)
+        const FLAC__Frame *frame,
+        const FLAC__int32* const buffer[],
+        void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
     const unsigned wide_samples = frame->header.blocksize;
@@ -185,8 +185,8 @@ static FLAC__StreamDecoderWriteStatus flac_callback_write (const FLAC__StreamDec
 }
 
 static FLAC__StreamDecoderTellStatus flac_callback_tell (const FLAC__StreamDecoder *,
-                                                         FLAC__uint64 *offset,
-                                                         void *client_data)
+        FLAC__uint64 *offset,
+        void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
     *offset = dflac->input()->pos ();
@@ -194,8 +194,8 @@ static FLAC__StreamDecoderTellStatus flac_callback_tell (const FLAC__StreamDecod
 }
 
 static FLAC__StreamDecoderSeekStatus flac_callback_seek (const FLAC__StreamDecoder *,
-                                                         FLAC__uint64 offset,
-                                                         void *client_data)
+        FLAC__uint64 offset,
+        void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
 
@@ -205,8 +205,8 @@ static FLAC__StreamDecoderSeekStatus flac_callback_seek (const FLAC__StreamDecod
 }
 
 static FLAC__StreamDecoderLengthStatus flac_callback_length (const FLAC__StreamDecoder *,
-                                                             FLAC__uint64 *stream_length, 
-                                                             void *client_data)
+        FLAC__uint64 *stream_length,
+        void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
     *stream_length = dflac->input()->size();
@@ -259,7 +259,7 @@ DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Outpu
     output_at = 0;
     bks = 0;
     done = FALSE;
-    finish = FALSE;
+    m_finish = FALSE;
     len = 0;
     freq = 0;
     bitrate = 0;
@@ -299,11 +299,11 @@ void DecoderFLAC::flush(bool final)
     //qDebug("DecoderFLAC: flush()");
     ulong min = final ? 0 : bks;
 
-    while ((! done && ! finish) && output_bytes > min)
+    while ((! done && ! m_finish) && output_bytes > min)
     {
         output()->recycler()->mutex()->lock();
 
-        while ((! done && ! finish) && output()->recycler()->full())
+        while ((! done && ! m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();
 
@@ -313,7 +313,7 @@ void DecoderFLAC::flush(bool final)
             done = user_stop;
         }
 
-        if (user_stop || finish)
+        if (user_stop || m_finish)
         {
             inited = FALSE;
             done = TRUE;
@@ -337,8 +337,8 @@ void DecoderFLAC::flush(bool final)
 
 bool DecoderFLAC::initialize()
 {
-    bks = blockSize();
-    inited = user_stop = done = finish = FALSE;
+    bks = Buffer::size();
+    inited = user_stop = done = m_finish = FALSE;
     len = freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
@@ -348,8 +348,7 @@ bool DecoderFLAC::initialize()
 
     if (! input())
     {
-        error("DecoderFLAC: cannot initialize.  No input.");
-
+        qWarning("DecoderFLAC: cannot initialize.  No input.");
         return FALSE;
     }
 
@@ -358,22 +357,14 @@ bool DecoderFLAC::initialize()
     output_at = 0;
     output_bytes = 0;
 
-    if (! input()->isOpen())
+    if (!input()->isOpen())
     {
-        if (! input()->open(QIODevice::ReadOnly))
+        if (!input()->open(QIODevice::ReadOnly))
         {
-
             return FALSE;
         }
     }
 
-
-    if (! input())
-    {
-        error("DecoderFLAC: cannot initialize.  No input.");
-
-        return FALSE;
-    }
 
     if (! output_buf)
         output_buf = new char[globalBufferSize];
@@ -427,9 +418,9 @@ bool DecoderFLAC::initialize()
     }
     chan = data()->channels;
     if (data()->bits_per_sample == 24)
-        configure(data()->sample_rate, data()->channels, 32, bitrate);
+        configure(data()->sample_rate, data()->channels, 32);
     else
-        configure(data()->sample_rate, data()->channels, data()->bits_per_sample, bitrate);
+        configure(data()->sample_rate, data()->channels, data()->bits_per_sample);
     totalTime = data()->length;
 
     inited = TRUE;
@@ -438,7 +429,7 @@ bool DecoderFLAC::initialize()
 }
 
 
-double DecoderFLAC::lengthInSeconds()
+qint64 DecoderFLAC::lengthInSeconds()
 {
     if (! inited)
         return 0;
@@ -447,7 +438,7 @@ double DecoderFLAC::lengthInSeconds()
 }
 
 
-void DecoderFLAC::seek(double pos)
+void DecoderFLAC::seek(qint64 pos)
 {
     seekTime = pos;
 }
@@ -457,7 +448,7 @@ void DecoderFLAC::deinit()
 {
     if (data())
         FLAC__stream_decoder_finish (data()->decoder);
-    inited = user_stop = done = finish = FALSE;
+    inited = user_stop = done = m_finish = FALSE;
     len = freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
@@ -467,19 +458,14 @@ void DecoderFLAC::run()
 {
     mutex()->lock ();
 
-    if (! inited)
+    if (!inited)
     {
         mutex()->unlock();
-
         return;
     }
-    stat = DecoderState::Decoding;
     mutex()->unlock();
-    {
-        dispatch(DecoderState ((DecoderState::Type) stat));
-    }
 
-    while (! done && ! finish)
+    while (! done && ! m_finish)
     {
         mutex()->lock ();
         // decode
@@ -528,16 +514,15 @@ void DecoderFLAC::run()
             done = TRUE;
             if (! user_stop)
             {
-                finish = TRUE;
+                m_finish = TRUE;
             }
         }
         else
         {
             // error in read
-            error("DecoderFLAC: Error while decoding stream, File appears to be "
-                  "corrupted");
-
-            finish = TRUE;
+            qWarning("DecoderFLAC: Error while decoding stream, File appears to be "
+                     "corrupted");
+            m_finish = TRUE;
         }
 
         mutex()->unlock();
@@ -545,16 +530,9 @@ void DecoderFLAC::run()
 
     mutex()->lock ();
 
-    if (finish)
-        stat = DecoderState::Finished;
-    else if (user_stop)
-        stat = DecoderState::Stopped;
+    if (m_finish)
+        finish();
 
     mutex()->unlock();
-
-    {
-        dispatch(DecoderState ((DecoderState::Type) stat));
-    }
-
     deinit();
 }

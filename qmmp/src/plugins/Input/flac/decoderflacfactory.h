@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,10 +28,6 @@
 #include <qmmp/decoder.h>
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
-#include <qmmp/filetag.h>
-
-
-
 
 class DecoderFLACFactory : public QObject,
                           DecoderFactory
@@ -43,8 +39,8 @@ public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *);
-    FileTag *createTag(const QString &source);
+    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
+    QList<FileInfo *> createPlayList(const QString &fileName);
     QObject* showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
