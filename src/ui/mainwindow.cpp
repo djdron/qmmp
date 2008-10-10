@@ -181,7 +181,7 @@ void MainWindow::play()
         return;
 
     m_equalizer->loadPreset(m_playListModel->currentItem()->fileName());
-    m_playListModel->currentItem()->updateTags();
+    //m_playListModel->currentItem()->updateTags();
     m_playlist->listWidget()->updateList();
     QString s = m_playListModel->currentItem()->path();
     if (s.isEmpty())

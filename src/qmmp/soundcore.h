@@ -82,12 +82,11 @@ public:
 
     QString metaData(Qmmp::MetaData key);
 
-
-
     /*!
      * Returns a pointer to the SoundCore instance.
      */
     static SoundCore* instance();
+
 
 public slots:
 
@@ -148,7 +147,8 @@ private slots:
 private:
     Decoder* m_decoder;
     DecoderFactory* m_factory;
-    QUrl m_url;
+    //QUrl m_url;
+    QString m_source;
     Output* m_output;
     QIODevice* m_input;
     uint m_error;
@@ -160,7 +160,6 @@ private:
     int m_bands[10];
     Visual *m_vis;
     QList <Visual*> m_visuals;
-    QString m_source;
     QWidget *m_parentWidget;
     static SoundCore* m_instance;
     StateHandler *m_handler;

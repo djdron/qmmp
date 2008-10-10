@@ -39,7 +39,8 @@ public:
      */
     enum FLAGS{FREE = 0,EDITING,SCHEDULED_FOR_DELETION};
     PlayListItem();
-    PlayListItem(const QString& path);
+    //PlayListItem(const QString& path);
+    PlayListItem(FileInfo *info);
 
     ~PlayListItem();
 

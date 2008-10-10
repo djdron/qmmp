@@ -99,11 +99,12 @@ Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *ou
     return new DecoderMAD(parent, this, input, output);
 }
 
-FileInfo *DecoderMADFactory::createFileInfo(const QString &source)
+//FileInfo *DecoderMADFactory::createFileInfo(const QString &source)
+QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName)
 {
-    FileInfo *info = new FileInfo();
+    FileInfo *info = new FileInfo(fileName);
     TagLib::Tag *tag = 0;
-    TagLib::MPEG::File fileRef(source.toLocal8Bit ());
+    TagLib::MPEG::File fileRef(fileName.toLocal8Bit ());
 
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("MAD");
@@ -183,7 +184,9 @@ FileInfo *DecoderMADFactory::createFileInfo(const QString &source)
     }
     if (fileRef.audioProperties())
         info->setLength(fileRef.audioProperties()->length());
-    return info;
+    QList <FileInfo*> list;
+    list << info;
+    return list;
 }
 
 QObject* DecoderMADFactory::showDetails(QWidget *parent, const QString &path)

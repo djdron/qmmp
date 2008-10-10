@@ -19,10 +19,10 @@
  ***************************************************************************/
 #include "fileinfo.h"
 
-FileInfo::FileInfo()
+FileInfo::FileInfo(const QString &path)
 {
+    m_path = path;
     m_length = 0;
-    m_count = 1;
 }
 
 FileInfo::FileInfo(const FileInfo &other)
@@ -37,14 +37,14 @@ void FileInfo::operator=(const FileInfo &info)
 {
     setLength(info.length());
     setMetaData(info.metaData());
-    setUrl(info.url());
+    setPath(info.path());
 }
 
 bool FileInfo::operator==(const FileInfo &info)
 {
     return metaData () == info.metaData () &&
            length () == info.length ();
-    url() == info.url();
+    path() == info.path();
 }
 
 bool FileInfo::operator!=(const FileInfo &info)
@@ -77,9 +77,9 @@ bool FileInfo::isEmpty() const
     return m_metaData.isEmpty(); //TODO add correct test
 }
 
-const QUrl FileInfo::url() const
+const QString FileInfo::path() const
 {
-    return m_url;
+    return m_path;
 }
 
 void FileInfo::setLength(qint64 length)
@@ -97,7 +97,7 @@ void FileInfo::setMetaData(Qmmp::MetaData key, int value)
     m_metaData.insert(key, QString::number(value));
 }
 
-void FileInfo::setUrl(const QUrl &url)
+void FileInfo::setPath(const QString &path)
 {
-    m_url = url;
+    m_path = path;
 }

@@ -1,6 +1,6 @@
 include(../../../qmmp.pri)
 
-SUBDIRS += mad vorbis # sndfile wavpack
+SUBDIRS += mad vorbis cue # sndfile wavpack
 TEMPLATE = subdirs
 
 contains(CONFIG, MODPLUG_PLUGIN){

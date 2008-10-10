@@ -14,6 +14,7 @@
 #include <QObject>
 #include <QStringList>
 #include <QUrl>
+#include <QList>
 
 #include "fileinfo.h"
 
@@ -53,6 +54,7 @@ public:
     QWaitCondition *cond();
     StateHandler *stateHandler();
 
+    void setStateHandler(StateHandler *handler);
     void setEQ(int bands[10], int preamp);
     void setEQEnabled(bool on);
 
@@ -64,7 +66,9 @@ public:
     static DecoderFactory *findByMime(const QString&);
     static DecoderFactory *findByContent(QIODevice *);
     static DecoderFactory *findByURL(const QUrl &url);
-    static FileInfo *createFileInfo(const QString &fileName);
+    //static FileInfo *createFileInfo(const QString &fileName);
+    static QList <FileInfo *> createPlayList(const QString &fileName);
+    //static QList <FileInfo *> createPlayList(const QStringList &fileList);
     static QStringList filters();
     static QStringList nameFilters();
     static QList<DecoderFactory*> *factories();
@@ -78,6 +82,7 @@ signals:
 protected:
     void configure(quint32 srate, int chan, int bps);
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
+protected slots:
     void finish();
 
 private:

@@ -292,7 +292,7 @@ void DecoderVorbis::updateTags()
                             + strlen ("date="))));
 
     }
-    StateHandler::instance()->dispatch(metaData);
+    stateHandler()->dispatch(metaData);
 }
 
 void DecoderVorbis::run()

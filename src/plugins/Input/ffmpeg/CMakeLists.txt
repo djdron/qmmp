@@ -100,6 +100,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(FFMPEG_FOUND)
 ADD_LIBRARY(ffmpeg SHARED ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS})
+add_dependencies(ffmpeg qmmp)
 target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS} ${FFMPEG_CFLAGS})
 install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FFMPEG_FOUND)

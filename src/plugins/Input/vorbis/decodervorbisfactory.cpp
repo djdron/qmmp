@@ -63,25 +63,26 @@ Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
     return new DecoderVorbis(parent, this, input, output);
 }
 
-FileInfo *DecoderVorbisFactory::createFileInfo(const QString &source)
+//FileInfo *DecoderVorbisFactory::createFileInfo(const QString &source)
+QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName)
 {
-    FileInfo *info = new FileInfo();
+    FileInfo *info = new FileInfo(fileName);
 
-    TagLib::FileRef fileRef(source.toLocal8Bit ());
+    TagLib::FileRef fileRef(fileName.toLocal8Bit ());
     TagLib::Tag *tag = fileRef.tag();
 
     if (tag && !tag->isEmpty())
     {
         info->setMetaData(Qmmp::ALBUM,
-                      QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
         info->setMetaData(Qmmp::ARTIST,
-                      QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
         info->setMetaData(Qmmp::COMMENT,
-                      QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
         info->setMetaData(Qmmp::GENRE,
-                      QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
         info->setMetaData(Qmmp::TITLE,
-                      QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
         info->setMetaData(Qmmp::YEAR, tag->year());
         info->setMetaData(Qmmp::TRACK, tag->track());
     }
@@ -89,7 +90,9 @@ FileInfo *DecoderVorbisFactory::createFileInfo(const QString &source)
     if (fileRef.audioProperties())
         info->setLength(fileRef.audioProperties()->length());
 
-    return info;
+    QList <FileInfo*> list;
+    list << info;
+    return list;
 }
 
 QObject* DecoderVorbisFactory::showDetails(QWidget *parent, const QString &path)

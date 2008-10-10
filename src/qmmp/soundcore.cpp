@@ -54,6 +54,8 @@ SoundCore::SoundCore(QObject *parent)
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
     m_handler = new StateHandler(this);
+    //StateHandler::instance() = 0;
+    //StateHandler::m_instance = m_handler;
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
     connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
     connect(m_handler, SIGNAL(frequencyChanged(int)), SIGNAL(frequencyChanged(int)));
@@ -74,23 +76,25 @@ SoundCore::~SoundCore()
 bool SoundCore::play(const QString &source)
 {
     stop();
+    m_source = source;
     if (m_handler->state() != Qmmp::Stopped) //clear error state
         m_handler->dispatch(Qmmp::Stopped);
 
+    QUrl url;
     if (QFile::exists(source)) //local file
-        m_url = QUrl::fromLocalFile(source);
+        url = QUrl::fromLocalFile(source);
     else
-        m_url = source;
+        url = source;
 
-    m_factory = Decoder::findByURL(m_url);
+    m_factory = Decoder::findByURL(url);
     if (m_factory)
         return decode();
 
-    if (m_url.scheme() == "file")
+    if (url.scheme() == "file")
     {
-        if ((m_factory = Decoder::findByPath(m_url.path())))
+        if ((m_factory = Decoder::findByPath(m_source)))
         {
-            m_input = new QFile(m_url.path());
+            m_input = new QFile(m_source);
             if (!m_input->open(QIODevice::ReadOnly))
             {
                 qDebug("SoundCore: cannot open input");
@@ -98,9 +102,13 @@ bool SoundCore::play(const QString &source)
                 m_handler->dispatch(Qmmp::NormalError);
                 return FALSE;
             }
-            FileInfo *finfo = m_factory->createFileInfo(m_url.toLocalFile ());
-            m_handler->dispatch(finfo->metaData());
-            delete finfo;
+            QList <FileInfo *> list = m_factory->createPlayList(url.toLocalFile ());
+            if (!list.isEmpty())
+            {
+                m_handler->dispatch(list[0]->metaData());
+                while (!list.isEmpty())
+                    delete list.takeFirst();
+            }
             return decode();
         }
         else
@@ -111,7 +119,7 @@ bool SoundCore::play(const QString &source)
             return FALSE;
         }
     }
-    if (m_url.scheme() == "http")
+    if (url.scheme() == "http")
     {
         m_input = new StreamReader(source, this);
         connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
@@ -128,8 +136,8 @@ bool SoundCore::play(const QString &source)
 void SoundCore::stop()
 {
     m_factory = 0;
-    m_url.clear();
-    if (m_decoder && m_decoder->isRunning())
+    m_source.clear();
+    if (m_decoder /*&& m_decoder->isRunning()*/)
     {
         m_decoder->mutex()->lock ();
         m_decoder->stop();
@@ -223,6 +231,12 @@ void SoundCore::seek(qint64 pos)
             m_decoder->seek(pos);
             m_decoder->mutex()->unlock();
         }
+    }
+    else if (m_decoder)
+    {
+        m_decoder->mutex()->lock ();
+        m_decoder->seek(pos);
+        m_decoder->mutex()->unlock();
     }
 }
 
@@ -363,7 +377,8 @@ bool SoundCore::decode()
             return FALSE;
         }
     }
-    m_decoder = m_factory->create(this, m_input, m_output, m_url.path());
+    m_decoder = m_factory->create(this, m_input, m_output, m_source);
+    m_decoder->setStateHandler(m_handler);
     if (!m_decoder)
     {
         qWarning("SoundCore: unsupported fileformat");
@@ -379,7 +394,8 @@ bool SoundCore::decode()
 
     if (m_decoder->initialize())
     {
-        m_output->start();
+        if (m_output)
+            m_output->start();
         m_decoder->start();
         return TRUE;
     }
