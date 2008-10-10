@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -63,27 +63,9 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    double lengthInSeconds();
-    void seek(double);
+    qint64 lengthInSeconds();
+    void seek(qint64);
     void stop();
-
-    // Equalizer
-    bool isEQSupported() const
-    {
-        return FALSE;
-    }
-    void setEQEnabled(bool)
-    {
-        ;
-    }
-    void setEQGain(int)
-    {
-        ;
-    }
-    void setEQBands(int[10])
-    {
-        ;
-    }
 
     struct flac_data *data()
     {
@@ -111,7 +93,7 @@ private:
     FLAC__StreamDecoder *m_flacDecoder;
 
     unsigned int bks;
-    bool done, finish;
+    bool done, m_finish;
     long len, freq, bitrate;
     int chan;
     unsigned long output_size;

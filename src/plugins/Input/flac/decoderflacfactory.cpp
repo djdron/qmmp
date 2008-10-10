@@ -54,38 +54,39 @@ const DecoderProperties DecoderFLACFactory::properties() const
 }
 
 Decoder *DecoderFLACFactory::create(QObject *parent, QIODevice *input,
-                                    Output *output)
+                                    Output *output, const QString &)
 {
     return new DecoderFLAC(parent, this, input, output);
 }
 
-FileTag *DecoderFLACFactory::createTag(const QString &source)
+QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName)
 {
-    FileTag *ftag = new FileTag();
+    FileInfo *info = new FileInfo(fileName);
 
-    TagLib::FileRef fileRef(source.toLocal8Bit ());
+    TagLib::FileRef fileRef(fileName.toLocal8Bit ());
     TagLib::Tag *tag = fileRef.tag();
 
     if (tag && !tag->isEmpty())
     {
-        ftag->setValue(FileTag::ALBUM,
-                       QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::ARTIST,
-                       QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::COMMENT,
-                       QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::GENRE,
-                       QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::TITLE,
-                       QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::YEAR, tag->year());
-        ftag->setValue(FileTag::TRACK, tag->track());
+        info->setMetaData(Qmmp::ALBUM,
+                          QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
+        info->setMetaData(Qmmp::ARTIST,
+                          QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
+        info->setMetaData(Qmmp::COMMENT,
+                          QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
+        info->setMetaData(Qmmp::GENRE,
+                          QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
+        info->setMetaData(Qmmp::TITLE,
+                          QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
+        info->setMetaData(Qmmp::YEAR, tag->year());
+        info->setMetaData(Qmmp::TRACK, tag->track());
     }
 
     if (fileRef.audioProperties())
-        ftag->setValue(FileTag::LENGTH, fileRef.audioProperties()->length());
-
-    return ftag;
+        info->setLength(fileRef.audioProperties()->length());
+    QList <FileInfo*> list;
+    list << info;
+    return list;
 }
 
 QObject* DecoderFLACFactory::showDetails(QWidget *parent, const QString &path)

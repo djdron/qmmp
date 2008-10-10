@@ -18,7 +18,7 @@ add_subdirectory(mad)
 ENDIF(USE_MAD AND TAGLIB_FOUND)
 
 IF(USE_FLAC AND TAGLIB_FOUND)
-#add_subdirectory(flac)
+add_subdirectory(flac)
 ENDIF(USE_FLAC AND TAGLIB_FOUND)
 
 IF(USE_VORBIS AND TAGLIB_FOUND)
