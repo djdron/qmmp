@@ -226,6 +226,7 @@ void Decoder::checkFactories()
             {
                 m_factories->append(factory);
                 m_files << pluginsDir.absoluteFilePath(fileName);
+                qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
         //remove physically deleted plugins from disabled list
