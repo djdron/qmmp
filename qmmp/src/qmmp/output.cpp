@@ -114,6 +114,7 @@ void Output::checkFactories()
             {
                 Output::registerFactory ( factory );
                 m_files << pluginsDir.absoluteFilePath(fileName);
+                qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
     }
