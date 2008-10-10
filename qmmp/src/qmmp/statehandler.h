@@ -37,16 +37,16 @@ public:
 
     ~StateHandler();
 
-    void dispatch(qint64 elapsed,
-                  qint64 totalTime,
-                  int bitrate,
-                  int frequency,
-                  int precision,
-                  int channels);
+    virtual void dispatch(qint64 elapsed,
+                          qint64 totalTime,
+                          int bitrate,
+                          int frequency,
+                          int precision,
+                          int channels);
 
-    void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
+    virtual void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
 
-    void dispatch(const Qmmp::State &state);
+    virtual void dispatch(const Qmmp::State &state);
 
     qint64 elapsed();
     int bitrate();
@@ -80,7 +80,6 @@ private:
     Qmmp::State m_state;
     QMutex m_mutex;
     bool m_sendMeta;
-
 };
 
 #endif

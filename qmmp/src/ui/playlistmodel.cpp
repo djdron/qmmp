@@ -314,10 +314,10 @@ void PlayListModel::showDetails()
                 str.append(tr("Album:") + " %4\n");
                 str.append(tr("Comment:") + " %5");
                 str = str.arg(item->path())
-                .arg(item->title().isEmpty() ? item->text() : item->title())
-                .arg(item->artist())
-                .arg(item->album())
-                .arg(item->comment());
+                      .arg(item->title().isEmpty() ? item->text() : item->title())
+                      .arg(item->artist())
+                      .arg(item->album())
+                      .arg(item->comment());
                 QMessageBox::information(0, m_items.at (i)->path(), str);
                 return;
             }
@@ -365,7 +365,8 @@ void PlayListModel::readSettings()
 
     for (int i = 0;i < preload;i++)
     {
-        load(new PlayListItem(files.takeAt(0)));
+        //TODO load tags from cache
+        load(new PlayListItem(Decoder::createPlayList(files.takeAt(0)).at(0)));
     }
 
     if (files.isEmpty())
@@ -398,10 +399,13 @@ void PlayListModel::addFile(const QString& path)
 {
     if (path.isEmpty ())
         return;
-    if (path.startsWith("http://"))
+    /*if (path.startsWith("http://"))
         load(new PlayListItem(path));
     else if (Decoder::supports(path))
-        load(new PlayListItem(path));
+        load(new PlayListItem(path));*/
+    QList <FileInfo *> playList = Decoder::createPlayList(path);
+    foreach(FileInfo *info, playList)
+    emit load(new PlayListItem(info));
 
     m_play_state->prepare();
 }

@@ -29,13 +29,14 @@ PlayListItem::PlayListItem() : SongInfo(), m_flag(FREE)
     m_info = 0;
 }
 
-PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
+//PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
+PlayListItem::PlayListItem(FileInfo *info) : SongInfo(), m_flag(FREE)
 {
     m_selected = FALSE;
     m_current = FALSE;
-    m_info = 0;
-    setValue(SongInfo::PATH, path);
-    setValue(SongInfo::STREAM, path.startsWith("http://")); //TODO do this inside SongInfo
+    m_info = info;
+    setValue(SongInfo::PATH, info->path()); //TODO path?
+    setValue(SongInfo::STREAM, path().startsWith("http://")); //TODO do this inside SongInfo
     QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
     m_use_meta = settings.value ("PlayList/load_metadata", TRUE).toBool();
     //format
@@ -45,15 +46,15 @@ PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
     m_convertTwenty = settings.value ("PlayList/convert_twenty", TRUE).toBool();
     m_fullStreamPath = settings.value ("PlayList/full_stream_path", FALSE).toBool();
 
-    if (m_use_meta && !path.startsWith("http://"))
+    if (m_use_meta && !path().startsWith("http://"))
     {
-        m_info = Decoder::createFileInfo(path);
+        //m_info = Decoder::createFileInfo(path);
         readMetadata();
     }
-    else if (path.startsWith("http://")  && m_fullStreamPath)
-        m_title = path;
+    else if (path().startsWith("http://")  && m_fullStreamPath)
+        m_title = path();
     else
-        m_title = path.split('/',QString::SkipEmptyParts).takeLast ();
+        m_title = path().split('/',QString::SkipEmptyParts).takeLast ();
 }
 
 PlayListItem::~PlayListItem()
@@ -111,7 +112,8 @@ void PlayListItem::updateTags()
         delete m_info;
         m_info = 0;
     }
-    m_info = Decoder::createFileInfo(path());
+    //m_info = Decoder::createFileInfo(path());
+    m_info = Decoder::createPlayList(path()).at(0);
     readMetadata();
 }
 

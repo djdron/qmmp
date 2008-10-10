@@ -10,7 +10,6 @@
 #include <QSettings>
 #include <math.h>
 
-
 #include "effect.h"
 #include "effectfactory.h"
 
@@ -21,6 +20,7 @@
 #include "decoderfactory.h"
 #include "streamreader.h"
 #include "volumecontrol.h"
+
 extern "C"
 {
 #include "equ/iir.h"
@@ -32,13 +32,14 @@ Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
         : QThread(parent), m_factory(d), m_input(i), m_output(o),m_eqInited(FALSE),
         m_useEQ(FALSE)
 {
-    m_output->recycler()->clear();
+    if (m_output)
+        m_output->recycler()->clear();
     int b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
     blksize = Buffer::size();
     m_effects = Effect::create(this);
-    m_handler = StateHandler::instance();
+    m_handler = 0;
 }
 
 Decoder::~Decoder()
@@ -77,6 +78,11 @@ QWaitCondition *Decoder::cond()
 StateHandler *Decoder::stateHandler()
 {
     return m_handler;
+}
+
+void Decoder::setStateHandler(StateHandler *handler)
+{
+    m_handler = handler;
 }
 
 void Decoder::setEQ(int bands[10], int preamp)
@@ -356,6 +362,8 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
 
 DecoderFactory *Decoder::findByURL(const QUrl &url)
 {
+    qDebug("url.scheme() %s", qPrintable(url.scheme()));
+    qDebug("url.path() = %s", qPrintable(url.path()));
     checkFactories();
     foreach(DecoderFactory *fact, *m_factories)
     {
@@ -400,7 +408,7 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     return !disabledList.contains(name);
 }
 
-FileInfo *Decoder::createFileInfo(const QString &fileName)
+/*FileInfo *Decoder::createFileInfo(const QString &fileName)
 {
     DecoderFactory *fact = Decoder::findByPath(fileName);
     if (fact && QFile::exists(fileName))
@@ -411,6 +419,27 @@ FileInfo *Decoder::createFileInfo(const QString &fileName)
         return fact->createFileInfo(fileName);
     }
     return 0;
+}*/
+
+QList <FileInfo *> Decoder::createPlayList(const QString &fileName)
+{
+    QList <FileInfo *> list;
+    if (QFile::exists(fileName)) //is it file?
+    {
+        DecoderFactory *fact = Decoder::findByPath(fileName);
+        if (fact)
+            list << fact->createPlayList(fileName);
+    }
+    else
+        //TODO do this according supported protocols
+        list << new FileInfo(fileName); //create empty FileInfo for stream
+    //append path if it is empty
+    foreach(FileInfo *info, list)
+    {
+        if (info->path().isEmpty())
+            info->setPath(fileName);
+    }
+    return list;
 }
 
 QStringList Decoder::filters()

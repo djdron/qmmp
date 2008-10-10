@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,39 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERVORBISFACTORY_H
-#define DECODERVORBISFACTORY_H
+#ifndef CUEPARSER_H
+#define CUEPARSER_H
 
-#include <QObject>
+#include <QList>
+#include <QMap>
 #include <QString>
-#include <QIODevice>
-#include <QWidget>
+#include <QStringList>
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
 #include <qmmp/fileinfo.h>
 
 
-
-
-class DecoderVorbisFactory : public QObject,
-                          DecoderFactory
-{
-Q_OBJECT
-Q_INTERFACES(DecoderFactory);
-
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class CUEParser{
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
-    //FileInfo *createFileInfo(const QString &source);
-    QList<FileInfo *> createPlayList(const QString &fileName);
-    QObject* showDetails(QWidget *parent, const QString &path);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    CUEParser(const QString &fileName);
+
+    ~CUEParser();
+
+    QList<FileInfo*> createPlayList();
+    const QString filePath();
+    qint64 offset(int track);
+    qint64 length(int track);
+    int count();
+    FileInfo *info(int track);
+
+private:
+    QList< QMap<int, int> > m_map;
+    QString m_filePath;
+    QList <FileInfo> m_infoList;
+    QList <int> m_offsets;
+    QStringList splitLine(const QString &line);
+    int getLength(const QString &str);
+
 };
 
 #endif

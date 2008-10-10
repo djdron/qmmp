@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERVORBISFACTORY_H
-#define DECODERVORBISFACTORY_H
+#ifndef DECODERCUEFACTORY_H
+#define DECODERCUEFACTORY_H
 
 #include <QObject>
 #include <QString>
@@ -30,11 +30,7 @@
 #include <qmmp/decoderfactory.h>
 #include <qmmp/fileinfo.h>
 
-
-
-
-class DecoderVorbisFactory : public QObject,
-                          DecoderFactory
+class DecoderCUEFactory : public QObject, DecoderFactory
 {
 Q_OBJECT
 Q_INTERFACES(DecoderFactory);

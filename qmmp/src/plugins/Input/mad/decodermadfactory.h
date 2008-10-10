@@ -43,7 +43,8 @@ public:
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
     Decoder *create(QObject *, QIODevice *, Output *, const QString &);
-    FileInfo *createFileInfo(const QString &source);
+    //FileInfo *createFileInfo(const QString &source);
+    QList<FileInfo *> createPlayList(const QString &fileName);
     QObject* showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);

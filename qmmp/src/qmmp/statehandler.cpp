@@ -28,7 +28,8 @@ StateHandler* StateHandler::m_instance = 0;
 StateHandler::StateHandler(QObject *parent)
         : QObject(parent)
 {
-    m_instance = this;
+    if (!m_instance)
+        m_instance = this;
     m_elapsed = -1;
     m_bitrate = 0;
     m_frequency = 0;
@@ -41,7 +42,8 @@ StateHandler::StateHandler(QObject *parent)
 
 StateHandler::~StateHandler()
 {
-    m_instance = 0;
+    if (m_instance == this)
+        m_instance = 0;
 }
 
 
@@ -127,7 +129,7 @@ void StateHandler::dispatch(const Qmmp::State &state)
             m_metaData.clear();
         }
         emit stateChanged(state);
-        if(m_state == Qmmp::Playing && m_sendMeta)
+        if (m_state == Qmmp::Playing && m_sendMeta)
         {
             m_sendMeta = FALSE;
             emit metaDataChanged ();

@@ -43,8 +43,13 @@ void FileLoader::addFiles(const QStringList &files)
 
     foreach(QString s, files)
     {
-        if (s.startsWith("http://") || Decoder::supports(s))
-            emit newPlayListItem(new PlayListItem(s));
+        /*if (s.startsWith("http://") || Decoder::supports(s))
+        {*/
+        //emit newPlayListItem(new PlayListItem(s));
+        QList <FileInfo *> playList = Decoder::createPlayList(s);
+        foreach(FileInfo *info, playList)
+        emit newPlayListItem(new PlayListItem(info));
+        //}
         if (m_finished) return;
     }
 }
@@ -52,6 +57,7 @@ void FileLoader::addFiles(const QStringList &files)
 
 void FileLoader::addDirectory(const QString& s)
 {
+    QList <FileInfo *> playList;
     QDir dir(s);
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     dir.setSorting(QDir::Name);
@@ -62,8 +68,13 @@ void FileLoader::addDirectory(const QString& s)
         QString suff = fileInfo.completeSuffix();
         list << fileInfo;
 
-        if (Decoder::supports(fileInfo.absoluteFilePath ()))
-            emit newPlayListItem(new PlayListItem(fileInfo.absoluteFilePath ()));
+        /*if (Decoder::supports(fileInfo.absoluteFilePath ()))
+        {*/
+        playList = Decoder::createPlayList(fileInfo.absoluteFilePath ());
+        foreach(FileInfo *info, playList)
+        emit newPlayListItem(new PlayListItem(info));
+        //emit newPlayListItem(new PlayListItem(fileInfo.absoluteFilePath ()));
+        //}
         if (m_finished) return;
     }
     dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -79,7 +90,6 @@ void FileLoader::addDirectory(const QString& s)
         }
 }
 
-
 void FileLoader::run()
 {
     if (!m_files_to_load.isEmpty())
@@ -87,8 +97,6 @@ void FileLoader::run()
     else if (!m_directory.isEmpty())
         addDirectory(m_directory);
 }
-
-
 
 void FileLoader::setFilesToLoad(const QStringList & l)
 {

@@ -27,46 +27,46 @@
 class PlayListItem;
 
 /*!
- * This class represents fileloader object that 
+ * This class represents fileloader object that
  * processes file list in separate thread and emits
  * \b newPlayListItem(PlayListItem*) signal for every newly
  * created media file.
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class FileLoader : public QThread
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     FileLoader(QObject *parent = 0);
 
     ~FileLoader();
-	 virtual void run();
-	 
-	 /*!
-	  * Call this method when you want to notify the thread about finishing
-	  */
-	 void finish();
-	 
-	 /*!
-	  * Sets filelist to load( directory to load will be cleaned )
-	  */
-	 void setFilesToLoad(const QStringList&);
-	 
-	 /*!
-	  * Sets directory to load( filelist to load will be cleaned )
-	  */
-	 void setDirectoryToLoad(const QString&);
+    virtual void run();
+
+    /*!
+     * Call this method when you want to notify the thread about finishing
+     */
+    void finish();
+
+    /*!
+     * Sets filelist to load( directory to load will be cleaned )
+     */
+    void setFilesToLoad(const QStringList&);
+
+    /*!
+     * Sets directory to load( filelist to load will be cleaned )
+     */
+    void setDirectoryToLoad(const QString&);
 signals:
-		void newPlayListItem(PlayListItem*);
+    void newPlayListItem(PlayListItem*);
 protected:
-		void addFiles(const QStringList &files);
-		void addDirectory(const QString& s);
+    void addFiles(const QStringList &files);
+    void addDirectory(const QString& s);
 private:
     QFileInfoList list;
     QStringList m_filters;
-	 QStringList m_files_to_load;
-	 QString m_directory;
-	 bool m_finished;
+    QStringList m_files_to_load;
+    QString m_directory;
+    bool m_finished;
 };
 
 #endif

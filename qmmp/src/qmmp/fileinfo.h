@@ -32,7 +32,7 @@
 class FileInfo
 {
 public:
-    FileInfo();
+    FileInfo(const QString &path = QString());
     FileInfo(const FileInfo &other);
 
     ~FileInfo();
@@ -45,20 +45,18 @@ public:
     const QString metaData (Qmmp::MetaData key) const;
     const QMap<Qmmp::MetaData, QString>  metaData () const;
     bool isEmpty() const;
-    const QUrl url() const;
-    int count();
+    const QString path() const;
 
     void setLength(qint64 length);
     void setMetaData(Qmmp::MetaData key, const QString &value);
     void setMetaData(Qmmp::MetaData key, int value);
     void setMetaData(const QMap <Qmmp::MetaData,  QString> &metaData);
-    void setUrl(const QUrl &url);
+    void setPath(const QString &path);
 
 private:
     QMap <Qmmp::MetaData, QString> m_metaData;
     qint64 m_length;
-    QUrl m_url;
-    int m_count;
+    QString m_path;
     QList<QMap<int, int> > map;
 };
 

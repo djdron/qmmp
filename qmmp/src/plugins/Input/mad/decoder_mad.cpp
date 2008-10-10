@@ -110,7 +110,7 @@ bool DecoderMAD::initialize()
     if (input()->isSequential ()) //for streams only
     {
         TagExtractor extractor(input());
-        StateHandler::instance()->dispatch(extractor.id3v2tag());
+        stateHandler()->dispatch(extractor.id3v2tag());
     }
 
     mad_stream_init(&stream);

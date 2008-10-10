@@ -86,6 +86,7 @@ PRINT_SUMMARY ("MOD support ......................." USE_MODPLUG MODPLUG_FOUND)
 PRINT_SUMMARY ("Wave support ......................" USE_SNDFILE SNDFILE_FOUND)
 PRINT_SUMMARY ("WavPack support ..................." USE_WAVPACK WAVPACK_FOUND)
 PRINT_SUMMARY ("WMA support ......................." USE_FFMPEG FFMPEG_FOUND)
+PRINT_SUMMARY ("CUE sheet support ................." USE_CUE 1)
 
 MESSAGE("")
 MESSAGE("Output Plugins:")
