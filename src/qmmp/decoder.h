@@ -44,8 +44,7 @@ public:
     virtual qint64 lengthInSeconds() = 0;
     virtual void seek(qint64) = 0;
     virtual void stop() = 0;
-    //virtual void pause() = 0;
-    //virtual void stop() = 0;
+    virtual void pause(){};
 
     DecoderFactory *factory() const;
     QIODevice *input();

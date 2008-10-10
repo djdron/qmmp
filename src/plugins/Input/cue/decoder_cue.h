@@ -40,6 +40,7 @@ public:
     qint64 lengthInSeconds();
     void seek(qint64);
     void stop();
+    void pause();
 
 private:
     // thread run function
