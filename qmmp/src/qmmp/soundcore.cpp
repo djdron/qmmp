@@ -200,11 +200,16 @@ void SoundCore::pause()
         m_output->pause();
         m_output->mutex()->unlock();
     }
+    else if (m_decoder)
+    {
+        m_decoder->mutex()->lock ();
+        m_decoder->pause();
+        m_decoder->mutex()->unlock();
+    }
 
     // wake up threads
     if (m_decoder)
     {
-        m_paused = !m_paused;
         m_decoder->mutex()->lock ();
         m_decoder->cond()->wakeAll();
         m_decoder->mutex()->unlock();

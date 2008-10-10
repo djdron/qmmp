@@ -167,6 +167,37 @@ void DecoderCUE::stop()
     }
 }
 
+void DecoderCUE::pause()
+{
+    if (m_output2)
+    {
+        m_output2->mutex()->lock ();
+        m_output2->pause();
+        m_output2->mutex()->unlock();
+    }
+    else if (m_decoder)
+    {
+        m_decoder->mutex()->lock ();
+        m_decoder->pause();
+        m_decoder->mutex()->unlock();
+    }
+
+    // wake up threads
+    if (m_decoder)
+    {
+        m_decoder->mutex()->lock ();
+        m_decoder->cond()->wakeAll();
+        m_decoder->mutex()->unlock();
+    }
+
+    if (m_output2)
+    {
+        m_output2->recycler()->mutex()->lock ();
+        m_output2->recycler()->cond()->wakeAll();
+        m_output2->recycler()->mutex()->unlock();
+    }
+}
+
 void DecoderCUE::run()
 {
     m_decoder->start();
@@ -200,6 +231,7 @@ void CUEStateHandler::dispatch(qint64 elapsed,
 void CUEStateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
 {
     //ignore media file metadata
+    Q_UNUSED(metaData)
 }
 
 void CUEStateHandler::dispatch(const Qmmp::State &state)
