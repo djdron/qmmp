@@ -1,11 +1,11 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright(C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
+ *  (at your option) any later version.                                   *
  *                                                                         *
  *   This program is distributed in the hope that it will be useful,       *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
@@ -28,6 +28,7 @@
 #include <QTimer>
 #include <QSettings>
 #include <QMessageBox>
+#include <QBuffer>
 
 #include <time.h>
 
@@ -48,8 +49,8 @@
 TagUpdater::TagUpdater(QObject* o,PlayListItem* item):m_observable(o),m_item(item)
 {
     m_item->setFlag(PlayListItem::EDITING);
-    connect (m_observable, SIGNAL(destroyed (QObject * )),SLOT(updateTag()));
-    connect (m_observable, SIGNAL(destroyed (QObject * )),SLOT(deleteLater()));
+    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(updateTag()));
+    connect(m_observable, SIGNAL(destroyed(QObject *)),SLOT(deleteLater()));
 }
 
 void TagUpdater::updateTag()
@@ -67,8 +68,8 @@ void TagUpdater::updateTag()
 }
 
 
-PlayListModel::PlayListModel ( QObject *parent )
-        : QObject ( parent ) , m_selection()
+PlayListModel::PlayListModel(QObject *parent)
+        : QObject(parent) , m_selection()
 {
     qsrand(time(0));
     m_total_length = 0;
@@ -96,7 +97,7 @@ PlayListModel::~PlayListModel()
     }
 }
 
-void PlayListModel::load ( PlayListItem *item )
+void PlayListModel::load(PlayListItem *item)
 {
     if (m_items.isEmpty())
         m_currentItem = item;
@@ -108,7 +109,7 @@ void PlayListModel::load ( PlayListItem *item )
         emit firstAdded();
 
     //if (!m_block_update_signals)
-    emit listChanged();
+        emit listChanged();
 }
 
 int PlayListModel::count()
@@ -118,10 +119,10 @@ int PlayListModel::count()
 
 PlayListItem* PlayListModel::currentItem()
 {
-    if ( m_items.isEmpty() )
+    if (m_items.isEmpty())
         return 0;
     else
-        return m_items.at ( qMin(m_items.size() - 1, m_current));
+        return m_items.at(qMin(m_items.size() - 1, m_current));
 }
 
 int PlayListModel::currentRow()
@@ -129,9 +130,9 @@ int PlayListModel::currentRow()
     return m_current;
 }
 
-bool PlayListModel::setCurrent ( int c )
+bool PlayListModel::setCurrent(int c)
 {
-    if ( c > count()-1 || c < 0)
+    if (c > count()-1 || c < 0)
         return FALSE;
     m_current = c;
     m_currentItem = m_items.at(c);
@@ -171,7 +172,7 @@ void PlayListModel::clear()
     m_running_loaders.clear();
 
     m_current = 0;
-    while ( !m_items.isEmpty() )
+    while (!m_items.isEmpty())
     {
         PlayListItem* mf = m_items.takeFirst();
 
@@ -192,41 +193,41 @@ void PlayListModel::clear()
 
 void PlayListModel::clearSelection()
 {
-    for ( int i = 0; i<m_items.size(); ++i )
-        m_items.at ( i )->setSelected ( FALSE );
+    for (int i = 0; i<m_items.size(); ++i)
+        m_items.at(i)->setSelected(FALSE);
     emit listChanged();
 }
 
-QList <QString> PlayListModel::getTitles ( int b,int l )
+QList <QString> PlayListModel::getTitles(int b,int l)
 {
     QList <QString> m_titles;
-    for ( int i = b; ( i < b + l ) && ( i < m_items.size() ); ++i )
-        m_titles << m_items.at ( i )->text();
+    for (int i = b;(i < b + l) &&(i < m_items.size()); ++i)
+        m_titles << m_items.at(i)->text();
     return m_titles;
 }
 
-QList <QString> PlayListModel::getTimes ( int b,int l )
+QList <QString> PlayListModel::getTimes(int b,int l)
 {
     QList <QString> m_times;
-    for ( int i = b; ( i < b + l ) && ( i < m_items.size() ); ++i )
-        m_times << QString ( "%1" ).arg ( m_items.at ( i )->length() /60 ) +":"
-        +QString ( "%1" ).arg ( m_items.at ( i )->length() %60/10 ) +
-        QString ( "%1" ).arg ( m_items.at ( i )->length() %60%10 );
+    for (int i = b;(i < b + l) &&(i < m_items.size()); ++i)
+        m_times << QString("%1").arg(m_items.at(i)->length() /60) +":"
+        +QString("%1").arg(m_items.at(i)->length() %60/10) +
+        QString("%1").arg(m_items.at(i)->length() %60%10);
     return m_times;
 }
 
-bool PlayListModel::isSelected ( int row )
+bool PlayListModel::isSelected(int row)
 {
     if (m_items.count() > row && row >= 0)
-        return m_items.at ( row )->isSelected();
+        return m_items.at(row)->isSelected();
 
     return false;
 }
 
-void PlayListModel::setSelected ( int row, bool yes )
+void PlayListModel::setSelected(int row, bool yes)
 {
     if (m_items.count() > row && row >= 0)
-        m_items.at ( row )->setSelected ( yes );
+        m_items.at(row)->setSelected(yes);
 }
 
 void PlayListModel::removeSelected()
@@ -245,11 +246,11 @@ void PlayListModel::removeSelection(bool inverted)
 
     int select_after_delete = -1;
 
-    while ( !m_items.isEmpty() && i<m_items.size() )
+    while (!m_items.isEmpty() && i<m_items.size())
     {
-        if ( m_items.at ( i )->isSelected() ^ inverted )
+        if (m_items.at(i)->isSelected() ^ inverted)
         {
-            PlayListItem* f = m_items.takeAt ( i );
+            PlayListItem* f = m_items.takeAt(i);
             m_total_length -= f->length();
             if (m_total_length < 0)
                 m_total_length = 0;
@@ -264,7 +265,7 @@ void PlayListModel::removeSelection(bool inverted)
 
             select_after_delete = i;
 
-            if ( m_current >= i && m_current!=0 )
+            if (m_current >= i && m_current!=0)
                 m_current--;
         }
         else
@@ -286,27 +287,27 @@ void PlayListModel::removeSelection(bool inverted)
 
 void PlayListModel::invertSelection()
 {
-    for ( int i = 0; i<m_items.size(); ++i )
-        m_items.at ( i )->setSelected ( !m_items.at ( i )->isSelected() );
+    for (int i = 0; i<m_items.size(); ++i)
+        m_items.at(i)->setSelected(!m_items.at(i)->isSelected());
     emit listChanged();
 }
 
 void PlayListModel::selectAll()
 {
-    for ( int i = 0; i<m_items.size(); ++i )
-        m_items.at ( i )->setSelected ( TRUE );
+    for (int i = 0; i<m_items.size(); ++i)
+        m_items.at(i)->setSelected(TRUE);
     emit listChanged();
 }
 
 void PlayListModel::showDetails()
 {
-    for ( int i = 0; i<m_items.size(); ++i )
+    for (int i = 0; i<m_items.size(); ++i)
     {
-        if ( m_items.at ( i )->isSelected() )
+        if (m_items.at(i)->isSelected())
         {
-            if (m_items.at (i)->path().startsWith("http://"))
+            if (m_items.at(i)->path().startsWith("http://"))
             {
-                PlayListItem *item = m_items.at (i);
+                PlayListItem *item = m_items.at(i);
                 QString str;
                 str.append(tr("Url:") + " %1\n");
                 str.append(tr("Title:") + " %2\n");
@@ -318,19 +319,19 @@ void PlayListModel::showDetails()
                       .arg(item->artist())
                       .arg(item->album())
                       .arg(item->comment());
-                QMessageBox::information(0, m_items.at (i)->path(), str);
+                QMessageBox::information(0, m_items.at(i)->path(), str);
                 return;
             }
 
-            DecoderFactory *fact = Decoder::findByPath ( m_items.at ( i )->path() );
-            if ( fact )
+            DecoderFactory *fact = Decoder::findByPath(m_items.at(i)->path());
+            if (fact)
             {
-                QObject* o = fact->showDetails ( 0, m_items.at (i)->path());
+                QObject* o = fact->showDetails(0, m_items.at(i)->path());
                 if (o)
                 {
                     TagUpdater *updater = new TagUpdater(o,m_items.at(i));
                     m_editing_items.append(m_items.at(i));
-                    connect (updater, SIGNAL(destroyed (QObject * )),SIGNAL(listChanged()));
+                    connect(updater, SIGNAL(destroyed(QObject *)),SIGNAL(listChanged()));
                 }
             }
             return;
@@ -343,65 +344,83 @@ void PlayListModel::readSettings()
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     m_current = settings.value("Playlist/current",0).toInt();
 
-    QFile file ( QDir::homePath() +"/.qmmp/playlist.txt" );
-    file.open ( QIODevice::ReadOnly );
-
-    QStringList files;
     QByteArray line;
-    m_items.clear();
+    QStringList p;
+    QList <FileInfo *> infoList;
 
-    while (!file.atEnd ())
+    QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
+    file.open(QIODevice::ReadOnly);
+    QByteArray array = file.readAll();
+    file.close();
+
+    QBuffer buffer(&array);
+    buffer.open(QIODevice::ReadOnly);
+    while (!buffer.atEnd())
     {
-        line = file.readLine();
-        files <<  QString::fromUtf8 ( line ).trimmed ();
+        line = buffer.readLine();
+        p = QString::fromUtf8(line).trimmed().split("=");
+        if (p.size() < 2)
+            continue;
+        if (p.at(0) == "file")
+            infoList << new FileInfo(p.at(1));
+        else if (infoList.isEmpty())
+            continue;
+        else if (p.at(0) == "title")
+            infoList.last()->setMetaData(Qmmp::TITLE, p.at(1));
+        else if (p.at(0) == "artist")
+            infoList.last()->setMetaData(Qmmp::ARTIST, p.at(1));
+        else if (p.at(0) == "album")
+            infoList.last()->setMetaData(Qmmp::ALBUM, p.at(1));
+        else if (p.at(0) == "comment")
+            infoList.last()->setMetaData(Qmmp::COMMENT, p.at(1));
+        else if (p.at(0) == "genre")
+            infoList.last()->setMetaData(Qmmp::GENRE, p.at(1));
+        else if (p.at(0) == "year")
+            infoList.last()->setMetaData(Qmmp::YEAR, p.at(1));
+        else if (p.at(0) == "track")
+            infoList.last()->setMetaData(Qmmp::TRACK, p.at(1));
+        else if (p.at(0) == "length")
+            infoList.last()->setLength(p.at(1).toInt());
     }
-
-    file.close ();
-
-    if (m_current > files.count() - 1)
+    buffer.close();
+    if (m_current > infoList.count() - 1)
         m_current = 0;
-
-    int preload = (files.count() < 100) ? files.count() : 100;
-
-    for (int i = 0;i < preload;i++)
-    {
-        //TODO load tags from cache
-        load(new PlayListItem(Decoder::createPlayList(files.takeAt(0)).at(0)));
-    }
-
-    if (files.isEmpty())
-    {
-        doCurrentVisibleRequest ();
-        return;
-    }
-
-    FileLoader* f_loader = createFileLoader();
-    connect(f_loader, SIGNAL(finished ()), SLOT(doCurrentVisibleRequest ()));
-
-    f_loader->setFilesToLoad(files);
-    //f_loader->start(QThread::IdlePriority);
-    QTimer::singleShot(1000,f_loader,SLOT(start()));
-    //m_play_state->prepare();
+    m_block_update_signals = TRUE;
+    foreach(FileInfo *info, infoList)
+    load(new PlayListItem(info, &settings)); //using one and the same settings object for all playlist items
+    m_block_update_signals = FALSE;
+    doCurrentVisibleRequest();
 }
 
 void PlayListModel::writeSettings()
 {
-    QFile file ( QDir::homePath() +"/.qmmp/playlist.txt" );
-    file.open ( QIODevice::WriteOnly );
-    foreach ( PlayListItem* m, m_items )
-    file.write ( m->path().toUtf8 () +"\n" );
-    file.close ();
+    QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
+    file.open(QIODevice::WriteOnly);
+    file.write(QString("count=%1").arg(m_items.count()).toUtf8() +"\n");
+    foreach(PlayListItem* m, m_items)
+    {
+        file.write(QString("file=%1").arg(m->path()).toUtf8() +"\n");
+        file.write(QString("title=%1").arg(m->title()).toUtf8() +"\n");
+        file.write(QString("artist=%1").arg(m->artist()).toUtf8() +"\n");
+        file.write(QString("album=%1").arg(m->album()).toUtf8() +"\n");
+        file.write(QString("comment=%1").arg(m->comment()).toUtf8() +"\n");
+        file.write(QString("genre=%1").arg(m->genre()).toUtf8() +"\n");
+        file.write(QString("year=%1").arg(m->year()).toUtf8() +"\n");
+        file.write(QString("track=%1").arg(m->track()).toUtf8() +"\n");
+        file.write(QString("length=%1").arg(m->length()).toUtf8() +"\n");
+    }
+    file.close();
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue("Playlist/current", m_current);
 }
 
 void PlayListModel::addFile(const QString& path)
 {
-    if (path.isEmpty ())
+    if (path.isEmpty())
         return;
-    /*if (path.startsWith("http://"))
+    /*if(path.startsWith("http://"))
         load(new PlayListItem(path));
-    else if (Decoder::supports(path))
+    else if(Decoder::supports(path))
         load(new PlayListItem(path));*/
     QList <FileInfo *> playList = Decoder::createPlayList(path);
     foreach(FileInfo *info, playList)
@@ -498,7 +517,7 @@ int PlayListModel::firstSelectedLower(int row)
     return -1;
 }
 
-void PlayListModel::moveItems( int from, int to )
+void PlayListModel::moveItems(int from, int to)
 {
     // Get rid of useless work
     if (from == to)
@@ -506,7 +525,7 @@ void PlayListModel::moveItems( int from, int to )
 
     QList<int> selected_rows = getSelectedRows();
 
-    if (! (bottommostInSelection(from) == INVALID_ROW ||
+    if (!(bottommostInSelection(from) == INVALID_ROW ||
             from == INVALID_ROW ||
             topmostInSelection(from) == INVALID_ROW)
        )
@@ -532,9 +551,9 @@ void PlayListModel::moveItems( int from, int to )
 
 
 
-int PlayListModel::topmostInSelection( int row)
+int PlayListModel::topmostInSelection(int row)
 {
-    if ( row == 0)
+    if (row == 0)
         return 0;
 
     for (int i = row - 1;i >= 0;i--)
@@ -547,7 +566,7 @@ int PlayListModel::topmostInSelection( int row)
     return 0;
 }
 
-int PlayListModel::bottommostInSelection( int row )
+int PlayListModel::bottommostInSelection(int row)
 {
     if (row >= m_items.count() - 1)
         return row;
@@ -562,11 +581,11 @@ int PlayListModel::bottommostInSelection( int row )
     return count() - 1;
 }
 
-const SimpleSelection& PlayListModel::getSelection(int row )
+const SimpleSelection& PlayListModel::getSelection(int row)
 {
-    m_selection.m_top = topmostInSelection( row );
+    m_selection.m_top = topmostInSelection(row);
     m_selection.m_anchor = row;
-    m_selection.m_bottom = bottommostInSelection( row );
+    m_selection.m_bottom = bottommostInSelection(row);
     m_selection.m_selected_rows = getSelectedRows();
     return m_selection;
 }
@@ -602,7 +621,7 @@ void PlayListModel::addToQueue()
     QList<PlayListItem*> selected_items = getSelectedItems();
     foreach(PlayListItem* file,selected_items)
     {/*
-                if (isQueued(file))
+                if(isQueued(file))
                     m_queued_songs.removeAt(m_queued_songs.indexOf(file));
                 else
                     m_queued_songs.append(file);
@@ -723,8 +742,8 @@ void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
     begin = list_to_sort.begin();
     end = list_to_sort.end();
 
-    bool (*compareLessFunc)(PlayListItem*,PlayListItem*) = 0;
-    bool (*compareGreaterFunc)(PlayListItem*,PlayListItem*) = 0;
+    bool(*compareLessFunc)(PlayListItem*,PlayListItem*) = 0;
+    bool(*compareGreaterFunc)(PlayListItem*,PlayListItem*) = 0;
 
     switch (sort_mode)
     {

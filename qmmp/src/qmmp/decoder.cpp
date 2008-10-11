@@ -323,7 +323,6 @@ DecoderFactory *Decoder::findByPath(const QString& source)
             return fact;
         }
     }
-    qDebug("Decoder: unable to find factory by path");
     return 0;
 }
 
