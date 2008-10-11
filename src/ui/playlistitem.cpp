@@ -30,21 +30,28 @@ PlayListItem::PlayListItem() : SongInfo(), m_flag(FREE)
 }
 
 //PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
-PlayListItem::PlayListItem(FileInfo *info) : SongInfo(), m_flag(FREE)
+PlayListItem::PlayListItem(FileInfo *info, QSettings *settings) : SongInfo(), m_flag(FREE)
 {
     m_selected = FALSE;
     m_current = FALSE;
     m_info = info;
     setValue(SongInfo::PATH, info->path()); //TODO path?
     setValue(SongInfo::STREAM, path().startsWith("http://")); //TODO do this inside SongInfo
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
-    m_use_meta = settings.value ("PlayList/load_metadata", TRUE).toBool();
+
+    //use external settings or create new
+    QSettings *s = settings;
+    if (!s)
+        s = new QSettings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+
+    m_use_meta = s->value ("PlayList/load_metadata", TRUE).toBool();  //TODO move to libqmmp
     //format
-    m_format = settings.value("PlayList/title_format", "%p - %t").toString();
+    m_format = s->value("PlayList/title_format", "%p - %t").toString();
     //other properties
-    m_convertUnderscore = settings.value ("PlayList/convert_underscore", TRUE).toBool();
-    m_convertTwenty = settings.value ("PlayList/convert_twenty", TRUE).toBool();
-    m_fullStreamPath = settings.value ("PlayList/full_stream_path", FALSE).toBool();
+    m_convertUnderscore = s->value ("PlayList/convert_underscore", TRUE).toBool();
+    m_convertTwenty = s->value ("PlayList/convert_twenty", TRUE).toBool();
+    m_fullStreamPath = s->value ("PlayList/full_stream_path", FALSE).toBool();
+    if (!settings) //delete created settings only
+        delete s;
 
     if (m_use_meta && !path().startsWith("http://"))
     {

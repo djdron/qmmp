@@ -24,6 +24,7 @@
 #include <qmmp/qmmp.h>
 
 class FileInfo;
+class QSettings;
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -40,7 +41,7 @@ public:
     enum FLAGS{FREE = 0,EDITING,SCHEDULED_FOR_DELETION};
     PlayListItem();
     //PlayListItem(const QString& path);
-    PlayListItem(FileInfo *info);
+    PlayListItem(FileInfo *info, QSettings *settings = 0);
 
     ~PlayListItem();
 
