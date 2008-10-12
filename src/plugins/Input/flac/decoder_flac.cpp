@@ -440,7 +440,8 @@ qint64 DecoderFLAC::lengthInSeconds()
 
 void DecoderFLAC::seek(qint64 pos)
 {
-    seekTime = pos;
+    if (totalTime > 0)
+        seekTime = pos;
 }
 
 
