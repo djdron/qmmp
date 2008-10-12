@@ -408,7 +408,7 @@ void DecoderMAD::run()
     {
         mutex()->lock();
 
-        if (seekTime >= 0.0)
+        if (seekTime >= 0.0 && totalTime > 0)
         {
             long seek_pos = long(seekTime * input()->size() / totalTime);
             input()->seek(seek_pos);
