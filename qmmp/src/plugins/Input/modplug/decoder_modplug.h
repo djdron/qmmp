@@ -28,13 +28,13 @@ class CSoundFile;
 class DecoderModPlug : public Decoder
 {
 public:
-    DecoderModPlug(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderModPlug(QObject *, DecoderFactory *, Output *, const QString &path);
     virtual ~DecoderModPlug();
 
     // Standard Decoder API
     bool initialize();
-    double lengthInSeconds();
-    void seek(double);
+    qint64 lengthInSeconds();
+    void seek(qint64);
     void stop();
 
     void readSettings();
@@ -68,9 +68,10 @@ private:
     long m_freq, m_bitrate;
     int m_chan, m_sampleSize;
     unsigned long m_output_size;
-    double m_totalTime, m_seekTime;
+    qint64 m_totalTime, m_seekTime;
     double m_preampFactor;
     bool m_usePreamp;
+    QString m_path;
     static DecoderModPlug* m_instance;
 };
 

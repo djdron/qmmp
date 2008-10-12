@@ -65,49 +65,53 @@ const DecoderProperties DecoderModPlugFactory::properties() const
     //properties.contentType = ;
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
+    properties.noInput = TRUE;
+    properties.protocols = "file";
     return properties;
 }
 
 Decoder *DecoderModPlugFactory::create(QObject *parent, QIODevice *input,
-                                       Output *output)
+                                       Output *output, const QString &path)
 {
-    return new DecoderModPlug(parent, this, input, output);
+    Q_UNUSED(input);
+    return new DecoderModPlug(parent, this, output, path);
 }
 
-FileTag *DecoderModPlugFactory::createTag(const QString &source)
+QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName)
 {
-    FileTag *ftag = new FileTag();
+    QList <FileInfo*> list;
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     if (settings.value("UseFileName", FALSE).toBool())
     {
-        ftag->setValue(FileTag::TITLE, source.section('/',-1));
-        return ftag;
+        list << new FileInfo(fileName);
+        list.at(0)->setMetaData(Qmmp::TITLE, fileName.section('/',-1));
+        return list;
     }
     ArchiveReader reader(0);
     QByteArray buffer;
-    if (reader.isSupported(source))
+    if (reader.isSupported(fileName))
     {
-        buffer = reader.unpack(source);
+        buffer = reader.unpack(fileName);
     }
     else
     {
-        QFile file(source);
+        QFile file(fileName);
         if (!file.open(QIODevice::ReadOnly))
         {
             qWarning("DecoderModPlugFactory: error: %s", qPrintable(file.errorString ()));
-            return ftag;
+            return list;
         }
         buffer = file.readAll();
         file.close();
     }
     CSoundFile* soundFile = new CSoundFile();
     soundFile->Create((uchar*) buffer.data(), buffer.size());
-
-    ftag->setValue(FileTag::LENGTH, (int) soundFile->GetSongTime());
-    ftag->setValue(FileTag::TITLE, QString::fromUtf8(soundFile->GetTitle()));
+    list << new FileInfo(fileName);
+    list.at(0)->setLength((int) soundFile->GetSongTime());
+    list.at(0)->setMetaData(Qmmp::TITLE, QString::fromUtf8(soundFile->GetTitle()));
     soundFile->Destroy();
     delete soundFile;
-    return ftag;
+    return list;
 }
 
 QObject* DecoderModPlugFactory::showDetails(QWidget *parent, const QString &path)

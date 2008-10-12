@@ -68,46 +68,50 @@ const DecoderProperties DecoderSndFileFactory::properties() const
     //properties.contentType = "";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
+    properties.noInput = TRUE;
+    properties.protocols = "file";
     return properties;
 }
 
 Decoder *DecoderSndFileFactory::create(QObject *parent, QIODevice *input,
-                                       Output *output)
+                                       Output *output, const QString &path)
 {
-    return new DecoderSndFile(parent, this, input, output);
+    Q_UNUSED(input);
+    return new DecoderSndFile(parent, this, output, path);
 }
 
-FileTag *DecoderSndFileFactory::createTag(const QString &source)
+QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName)
 {
-    FileTag *ftag = new FileTag();
+    QList <FileInfo *> list;
     SF_INFO snd_info;
     SNDFILE *sndfile = 0;
     memset (&snd_info, 0, sizeof(snd_info));
     snd_info.format = 0;
-    sndfile = sf_open(source.toLocal8Bit(), SFM_READ, &snd_info);
+    sndfile = sf_open(fileName.toLocal8Bit(), SFM_READ, &snd_info);
     if (!sndfile)
-        return ftag;
+        return list;
 
+    list << new FileInfo(fileName);
     if (sf_get_string(sndfile, SF_STR_TITLE))
     {
         char* title = strdup(sf_get_string(sndfile, SF_STR_TITLE));
-        ftag->setValue(FileTag::TITLE, QString::fromUtf8(title).trimmed());
+        list.at(0)->setMetaData(Qmmp::TITLE, QString::fromUtf8(title).trimmed());
     }
     if (sf_get_string(sndfile, SF_STR_ARTIST))
     {
         char* artist = strdup(sf_get_string(sndfile, SF_STR_ARTIST));
-        ftag->setValue(FileTag::ARTIST, QString::fromUtf8(artist).trimmed());
+        list.at(0)->setMetaData(Qmmp::ARTIST, QString::fromUtf8(artist).trimmed());
     }
     if (sf_get_string(sndfile, SF_STR_COMMENT))
     {
         char* comment = strdup(sf_get_string(sndfile, SF_STR_COMMENT));
-        ftag->setValue(FileTag::COMMENT, QString::fromUtf8(comment).trimmed());
+        list.at(0)->setMetaData(Qmmp::COMMENT, QString::fromUtf8(comment).trimmed());
     }
 
-    ftag->setValue(FileTag::LENGTH ,int(snd_info.frames / snd_info.samplerate));
+    list.at(0)->setLength(int(snd_info.frames / snd_info.samplerate));
 
     sf_close(sndfile);
-    return ftag;
+    return list;
 }
 
 QObject* DecoderSndFileFactory::showDetails(QWidget *parent, const QString &path)

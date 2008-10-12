@@ -28,7 +28,7 @@
 #include <qmmp/decoder.h>
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
-#include <qmmp/filetag.h>
+#include <qmmp/fileinfo.h>
 
 
 
@@ -43,8 +43,8 @@ public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *);
-    FileTag *createTag(const QString &source);
+    Decoder *create(QObject *, QIODevice *, Output *, const QString &path);
+    QList<FileInfo *> createPlayList(const QString &fileName);
     QObject* showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);

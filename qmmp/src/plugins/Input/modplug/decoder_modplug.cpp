@@ -47,9 +47,10 @@
 
 DecoderModPlug* DecoderModPlug::m_instance = 0;
 
-DecoderModPlug::DecoderModPlug(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderModPlug::DecoderModPlug(QObject *parent, DecoderFactory *d, Output *o, const QString &path)
+        : Decoder(parent, d, o)
 {
+    m_path = path;
     m_inited = FALSE;
     m_user_stop = FALSE;
     m_output_buf = 0;
@@ -125,7 +126,7 @@ void DecoderModPlug::flush(bool final)
 
 bool DecoderModPlug::initialize()
 {
-    m_bks = blockSize();
+    m_bks = Buffer::size();
     m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
@@ -133,29 +134,25 @@ bool DecoderModPlug::initialize()
     m_seekTime = -1.0;
     m_totalTime = 0.0;
 
-
-    if (! input())
-    {
-        error("DecoderModPlug: cannot initialize.  No input.");
-
-        return FALSE;
-    }
-
     if (! m_output_buf)
         m_output_buf = new char[globalBufferSize];
     m_output_at = 0;
     m_output_bytes = 0;
 
-    QString filename = qobject_cast<QFile*>(input())->fileName ();
     ArchiveReader reader(this);
-    if (reader.isSupported(filename))
-    {
-        input()->close();
-        m_input_buf = reader.unpack(filename);
-    }
+    if (reader.isSupported(m_path))
+        m_input_buf = reader.unpack(m_path);
     else
-        m_input_buf = input()->readAll();
-
+    {
+        QFile file(m_path);
+        if (!file.open(QIODevice::ReadOnly))
+        {
+            qWarning("DecoderModPlug: error: %s", qPrintable(file.errorString ()));
+            return FALSE;
+        }
+        m_input_buf = file.readAll();
+        file.close();
+    }
     if (m_input_buf.isEmpty())
     {
         qWarning("DecoderModPlug: error reading moplug file");
@@ -172,13 +169,13 @@ bool DecoderModPlug::initialize()
         return FALSE;
     }*/
 
-    m_totalTime = (int) m_soundFile->GetSongTime();
-    configure(m_freq, m_chan, m_bps, m_bitrate);
+    m_totalTime = (qint64) m_soundFile->GetSongTime();
+    configure(m_freq, m_chan, m_bps);
     m_inited = TRUE;
     return TRUE;
 }
 
-double DecoderModPlug::lengthInSeconds()
+qint64 DecoderModPlug::lengthInSeconds()
 {
     if (! m_inited)
         return 0;
@@ -187,7 +184,7 @@ double DecoderModPlug::lengthInSeconds()
 }
 
 
-void DecoderModPlug::seek(double pos)
+void DecoderModPlug::seek(qint64 pos)
 {
     m_seekTime = pos;
 }
@@ -212,24 +209,22 @@ void DecoderModPlug::run()
     mutex()->lock ();
 
     ulong len = 0;
-    if (! m_inited)
+    if (!m_inited)
     {
         mutex()->unlock();
-
         return;
     }
     mutex()->unlock();
-    dispatch(DecoderState::Decoding);
 
     char *prebuf = new char[m_bks];
 
-    while (! m_done && ! m_finish)
+    while (!m_done && !m_finish)
     {
         mutex()->lock ();
 
         //seeking
 
-        if (m_seekTime >= 0.0)
+        if (m_seekTime >= 0)
         {
             quint32  lMax;
             quint32  lMaxtime;
@@ -318,9 +313,8 @@ void DecoderModPlug::run()
         }
         else
         {
-            // error in read
-            error("DecoderModPlug: Error while decoding stream, File appears to be "
-                  "corrupted");
+            // error while read
+            qWarning("DecoderModPlug: Error while decoding stream, File appears to be corrupted");
             m_finish = TRUE;
         }
         mutex()->unlock();
@@ -329,9 +323,7 @@ void DecoderModPlug::run()
     mutex()->lock ();
 
     if (m_finish)
-        dispatch(DecoderState::Finished);
-    else if (m_user_stop)
-        dispatch(DecoderState::Stopped);
+        finish();
 
     mutex()->unlock();
     delete prebuf;

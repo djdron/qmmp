@@ -31,13 +31,13 @@ extern "C"{
 class DecoderWavPack : public Decoder
 {
 public:
-    DecoderWavPack(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderWavPack(QObject *, DecoderFactory *, Output *, const QString &);
     virtual ~DecoderWavPack();
 
     // Standard Decoder API
     bool initialize();
-    double lengthInSeconds();
-    void seek(double);
+    qint64 lengthInSeconds();
+    void seek(qint64);
     void stop();
 
 private:
@@ -53,14 +53,15 @@ private:
 
     // output buffer
     char *m_output_buf;
-    ulong m_output_bytes, m_output_at;
+    qint64 m_output_bytes, m_output_at;
 
     unsigned int m_bks; //block size
     bool m_done, m_finish;
     long m_freq, m_bitrate;
     int m_chan;
     unsigned long m_output_size;
-    double m_totalTime, m_seekTime;
+    qint64 m_totalTime, m_seekTime;
+    QString m_path;
 };
 
 

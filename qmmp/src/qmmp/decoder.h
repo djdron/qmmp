@@ -36,6 +36,7 @@ class Decoder : public QThread
     Q_OBJECT
 public:
     Decoder(QObject *parent, DecoderFactory *d, QIODevice *input = 0, Output *output = 0);
+    Decoder(QObject *parent, DecoderFactory *d, Output *output);
 
     virtual ~Decoder();
 
@@ -85,6 +86,7 @@ protected slots:
     void finish();
 
 private:
+    void init();
     void changeVolume(char *data, qint64 size, int chan);
     static void checkFactories();
 

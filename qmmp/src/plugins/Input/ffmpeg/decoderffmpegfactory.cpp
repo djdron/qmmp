@@ -21,7 +21,9 @@
 #include <QtGui>
 
 extern "C"{
-#if defined HAVE_FFMPEG_AVFORMAT_H
+#if defined HAVE_FFMPEG_LIBAVFORMAT_AVFORMAT_H
+#include <ffmpeg/libavformat/avformat.h>
+#elif defined HAVE_FFMPEG_AVFORMAT_H
 #include <ffmpeg/avformat.h>
 #elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
 #include <libavformat/avformat.h>
@@ -29,7 +31,9 @@ extern "C"{
 #include <avformat.h>
 #endif
 
-#if defined HAVE_FFMPEG_AVCODEC_H
+#if defined HAVE_FFMPEG_LIBAVCODEC_AVCODEC_H
+#include <ffmpeg/libavcodec/avcodec.h>
+#elif defined HAVE_FFMPEG_AVCODEC_H
 #include <ffmpeg/avcodec.h>
 #elif defined HAVE_LIBAVCODEC_AVCODEC_H
 #include <libavcodec/avcodec.h>
@@ -65,36 +69,41 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     //properties.contentType = "";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
+    properties.noInput = TRUE;
+    properties.protocols = "file";
     return properties;
 }
 
 Decoder *DecoderFFmpegFactory::create(QObject *parent, QIODevice *input,
-                                      Output *output)
+                                      Output *output, const QString &path)
 {
-    return new DecoderFFmpeg(parent, this, input, output);
+    Q_UNUSED(input);
+    return new DecoderFFmpeg(parent, this, output, path);
 }
 
-FileTag *DecoderFFmpegFactory::createTag(const QString &source)
+QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName)
 {
-    FileTag *ftag = new FileTag();
+    QList <FileInfo*> list;
     avcodec_init();
     avcodec_register_all();
     av_register_all();
     AVFormatContext *in;
 
-    if (av_open_input_file(&in, source.toLocal8Bit(), NULL,0, NULL) < 0)
-        return ftag;
+    if (av_open_input_file(&in, fileName.toLocal8Bit(), NULL,0, NULL) < 0)
+        return list;
+    FileInfo *info = new FileInfo(fileName);
     av_find_stream_info(in);
-    ftag->setValue(FileTag::ALBUM, QString::fromUtf8(in->album).trimmed());
-    ftag->setValue(FileTag::ARTIST, QString::fromUtf8(in->author).trimmed());
-    ftag->setValue(FileTag::COMMENT, QString::fromUtf8(in->comment).trimmed());
-    ftag->setValue(FileTag::GENRE, QString::fromUtf8(in->genre).trimmed());
-    ftag->setValue(FileTag::TITLE, QString::fromUtf8(in->title).trimmed());
-    ftag->setValue(FileTag::YEAR, in->year);
-    ftag->setValue(FileTag::TRACK, in->track);
-    ftag->setValue(FileTag::LENGTH ,int(in->duration/AV_TIME_BASE));
+    info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(in->album).trimmed());
+    info->setMetaData(Qmmp::ARTIST, QString::fromUtf8(in->author).trimmed());
+    info->setMetaData(Qmmp::COMMENT, QString::fromUtf8(in->comment).trimmed());
+    info->setMetaData(Qmmp::GENRE, QString::fromUtf8(in->genre).trimmed());
+    info->setMetaData(Qmmp::TITLE, QString::fromUtf8(in->title).trimmed());
+    info->setMetaData(Qmmp::YEAR, in->year);
+    info->setMetaData(Qmmp::TRACK, in->track);
+    info->setLength(in->duration/AV_TIME_BASE);
     av_close_input_file(in);
-    return ftag;
+    list << info;
+    return list;
 }
 
 QObject* DecoderFFmpegFactory::showDetails(QWidget *parent, const QString &path)

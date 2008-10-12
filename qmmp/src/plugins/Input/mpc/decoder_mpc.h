@@ -40,17 +40,14 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    double lengthInSeconds();
-    void seek(double);
+    qint64 lengthInSeconds();
+    void seek(qint64);
     void stop();
 
-    // Equalizer
-    bool isEQSupported() const { return FALSE; }
-    void setEQEnabled(bool) { ; }
-    void setEQGain(int) { ; }
-    void setEQBands(int[10]) { ; }
-
-    struct mpc_data *data() { return m_data; }
+    struct mpc_data *data()
+    {
+        return m_data;
+    }
 
 
 private:
@@ -62,18 +59,17 @@ private:
     void deinit();
 
     bool inited, user_stop;
-    int stat;
 
     // output buffer
     char *output_buf;
     ulong output_bytes, output_at;
 
     unsigned int bks;
-    bool done, finish;
+    bool done, m_finish;
     long len, freq, bitrate;
     int chan;
     unsigned long output_size;
-    double totalTime, seekTime;
+    qint64 totalTime, seekTime;
 };
 
 

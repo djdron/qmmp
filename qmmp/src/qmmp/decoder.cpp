@@ -32,14 +32,14 @@ Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
         : QThread(parent), m_factory(d), m_input(i), m_output(o),m_eqInited(FALSE),
         m_useEQ(FALSE)
 {
-    if (m_output)
-        m_output->recycler()->clear();
-    int b[] = {0,0,0,0,0,0,0,0,0,0};
-    setEQ(b, 0);
-    qRegisterMetaType<Qmmp::State>("Qmmp::State");
-    blksize = Buffer::size();
-    m_effects = Effect::create(this);
-    m_handler = 0;
+    init();
+}
+
+Decoder::Decoder(QObject *parent, DecoderFactory *d, Output *o)
+        : QThread(parent), m_factory(d), m_input(0), m_output(o),m_eqInited(FALSE),
+        m_useEQ(FALSE)
+{
+    init();
 }
 
 Decoder::~Decoder()
@@ -48,6 +48,18 @@ Decoder::~Decoder()
     m_input = 0;
     m_output = 0;
     blksize = 0;
+}
+
+void Decoder::init()
+{
+    if (m_output)
+        m_output->recycler()->clear();
+    int b[] = {0,0,0,0,0,0,0,0,0,0};
+    setEQ(b, 0);
+    qRegisterMetaType<Qmmp::State>("Qmmp::State");
+    blksize = Buffer::size();
+    m_effects = Effect::create(this);
+    m_handler = 0;
 }
 
 DecoderFactory *Decoder::factory() const
@@ -362,8 +374,6 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
 
 DecoderFactory *Decoder::findByURL(const QUrl &url)
 {
-    qDebug("url.scheme() %s", qPrintable(url.scheme()));
-    qDebug("url.path() = %s", qPrintable(url.path()));
     checkFactories();
     foreach(DecoderFactory *fact, *m_factories)
     {
