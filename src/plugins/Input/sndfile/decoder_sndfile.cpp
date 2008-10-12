@@ -31,9 +31,10 @@
 
 // Decoder class
 
-DecoderSndFile::DecoderSndFile(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderSndFile::DecoderSndFile(QObject *parent, DecoderFactory *d, Output *o,  const QString &path)
+        : Decoder(parent, d, o)
 {
+    m_path = path;
     m_inited = FALSE;
     m_user_stop = FALSE;
     m_output_buf = 0;
@@ -107,7 +108,7 @@ void DecoderSndFile::flush(bool final)
 
 bool DecoderSndFile::initialize()
 {
-    bks = blockSize();
+    bks = Buffer::size();
     m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_output_size = 0;
@@ -115,28 +116,17 @@ bool DecoderSndFile::initialize()
     m_totalTime = 0.0;
     SF_INFO snd_info;
 
-
-    if (! input())
-    {
-        error("DecoderSndFile: cannot initialize.  No input.");
-
-        return FALSE;
-    }
-
-    if (! m_output_buf)
+    if (!m_output_buf)
         m_output_buf = new char[globalBufferSize];
     m_output_at = 0;
     m_output_bytes = 0;
 
-    QString filename = qobject_cast<QFile*>(input())->fileName ();
-    input()->close();
-
     memset (&snd_info, 0, sizeof(snd_info));
     snd_info.format=0;
-    m_sndfile = sf_open(filename.toLocal8Bit(), SFM_READ, &snd_info);
+    m_sndfile = sf_open(m_path.toLocal8Bit(), SFM_READ, &snd_info);
     if (!m_sndfile)
     {
-        qWarning("DecoderSndFile: failed to open: %s", qPrintable(filename));
+        qWarning("DecoderSndFile: failed to open: %s", qPrintable(m_path));
         return FALSE;
     }
 
@@ -145,10 +135,10 @@ bool DecoderSndFile::initialize()
 
     m_totalTime = (double) snd_info.frames / m_freq;
 
-    m_bitrate =  QFileInfo(filename).size () * 8.0 / m_totalTime / 1000.0 + 0.5;
+    m_bitrate =  QFileInfo(m_path).size () * 8.0 / m_totalTime / 1000.0 + 0.5;
 
-    configure(m_freq, m_chan, 16, m_bitrate);
-    m_buf = new short[blockSize() / sizeof(short)];
+    configure(m_freq, m_chan, 16);
+    m_buf = new short[bks / sizeof(short)];
     m_inited = TRUE;
     qDebug("DecoderSndFile: detected format: %08X", snd_info.format);
     qDebug("DecoderSndFile: initialize succes");
@@ -156,7 +146,7 @@ bool DecoderSndFile::initialize()
 }
 
 
-double DecoderSndFile::lengthInSeconds()
+qint64 DecoderSndFile::lengthInSeconds()
 {
     if (! m_inited)
         return 0;
@@ -165,7 +155,7 @@ double DecoderSndFile::lengthInSeconds()
 }
 
 
-void DecoderSndFile::seek(double pos)
+void DecoderSndFile::seek(qint64 pos)
 {
     m_seekTime = pos;
 }
@@ -178,10 +168,10 @@ void DecoderSndFile::deinit()
     m_output_size = 0;
     if (m_inited)
     {
-       delete m_buf;
-       m_buf = 0;
-       sf_close(m_sndfile);
-       m_sndfile = 0;
+        delete m_buf;
+        m_buf = 0;
+        sf_close(m_sndfile);
+        m_sndfile = 0;
     }
 }
 
@@ -189,36 +179,28 @@ void DecoderSndFile::run()
 {
 
     long len = 0;
-    int stat = 0;
 
     mutex()->lock ();
 
-    if (! m_inited)
+    if (!m_inited)
     {
         mutex()->unlock();
-
         return;
     }
-
-    stat = DecoderState::Decoding;
     mutex()->unlock();
 
-    {
-        dispatch(DecoderState ((DecoderState::Type) stat));
-    }
-
-    while (! m_done && ! m_finish)
+    while (!m_done && !m_finish)
     {
         mutex()->lock ();
         // decode
 
-        if (m_seekTime >= 0.0)
+        if (m_seekTime >= 0)
         {
             m_output_size = sf_seek(m_sndfile, m_freq*m_seekTime, SEEK_SET);
             m_seekTime = -1.0;
         }
 
-        len = sizeof(short)* sf_read_short  (m_sndfile, m_buf, blockSize() / sizeof(short));
+        len = sizeof(short)* sf_read_short  (m_sndfile, m_buf, bks / sizeof(short));
 
         if (len > 0)
         {
@@ -256,25 +238,16 @@ void DecoderSndFile::run()
         else
         {
             // error in read
-            error("DecoderSndFile: Error while decoding stream, File appears to be "
-                  "corrupted");
-
+            qWarning("DecoderSndFile: Error while decoding stream, File appears to be corrupted");
             m_finish = TRUE;
         }
-
         mutex()->unlock();
     }
 
     mutex()->lock ();
-
     if (m_finish)
-        stat = DecoderState::Finished;
-    else if (m_user_stop)
-        stat = DecoderState::Stopped;
-
+        finish();
     mutex()->unlock();
 
-    dispatch(DecoderState ((DecoderState::Type) stat));
     deinit();
 }
-

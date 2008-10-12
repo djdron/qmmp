@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,18 +30,17 @@
 
 // Decoder class
 
-DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, Output *o, const QString &path)
+        : Decoder(parent, d, o)
 {
     inited = FALSE;
     user_stop = FALSE;
-    stat = 0;
     output_buf = 0;
     output_bytes = 0;
     output_at = 0;
     bks = 0;
     done = FALSE;
-    finish = FALSE;
+    m_finish = FALSE;
     freq = 0;
     bitrate = 0;
     seekTime = -1.0;
@@ -50,6 +49,7 @@ DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, QIODevice *i, O
     output_size = 0;
     ic = 0;
     wma_outbuf = 0;
+    m_path = path;
 }
 
 
@@ -80,11 +80,11 @@ void DecoderFFmpeg::flush(bool final)
 {
     ulong min = final ? 0 : bks;
 
-    while ((! done && ! finish) && output_bytes > min)
+    while ((! done && ! m_finish) && output_bytes > min)
     {
         output()->recycler()->mutex()->lock ();
 
-        while ((! done && ! finish) && output()->recycler()->full())
+        while ((! done && ! m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();
 
@@ -94,7 +94,7 @@ void DecoderFFmpeg::flush(bool final)
             done = user_stop;
         }
 
-        if (user_stop || finish)
+        if (user_stop || m_finish)
         {
             inited = FALSE;
             done = TRUE;
@@ -118,47 +118,25 @@ void DecoderFFmpeg::flush(bool final)
 
 bool DecoderFFmpeg::initialize()
 {
-    bks = blockSize();
-    inited = user_stop = done = finish = FALSE;
+    bks = Buffer::size();
+    inited = user_stop = done = m_finish = FALSE;
     freq = bitrate = 0;
-    stat = chan = 0;
+    chan = 0;
     output_size = 0;
     seekTime = -1.0;
     totalTime = 0.0;
 
-
-    if (! input())
-    {
-        error("DecoderFFmpeg: cannot initialize.  No input.");
-
-        return FALSE;
-    }
-
-    if (! output_buf)
+    if (!output_buf)
         output_buf = new char[globalBufferSize];
     output_at = 0;
     output_bytes = 0;
 
-    if (! input())
-    {
-        error("DecoderFFmpeg: cannot initialize.  No input.");
-
-        return FALSE;
-    }
-
-    if (! output_buf)
-        output_buf = new char[globalBufferSize];
-    output_at = 0;
-    output_bytes = 0;
-
-    QString filename = qobject_cast<QFile*>(input())->fileName ();
-    input()->close();
     avcodec_init();
     avcodec_register_all();
     av_register_all();
 
     AVCodec *codec;
-    if (av_open_input_file(&ic, filename.toLocal8Bit(), NULL,0, NULL) < 0)
+    if (av_open_input_file(&ic, m_path.toLocal8Bit(), NULL,0, NULL) < 0)
     {
         qDebug("DecoderFFmpeg: cannot open input file");
         return FALSE;
@@ -179,7 +157,7 @@ bool DecoderFFmpeg::initialize()
 
     totalTime = ic->duration/AV_TIME_BASE;
 
-    configure(c->sample_rate, c->channels, 16, c->bit_rate);
+    configure(c->sample_rate, c->channels, 16);
 
     bitrate = c->bit_rate;
     chan = c->channels;
@@ -190,7 +168,7 @@ bool DecoderFFmpeg::initialize()
 }
 
 
-double DecoderFFmpeg::lengthInSeconds()
+qint64 DecoderFFmpeg::lengthInSeconds()
 {
     if (! inited)
         return 0;
@@ -199,7 +177,7 @@ double DecoderFFmpeg::lengthInSeconds()
 }
 
 
-void DecoderFFmpeg::seek(double pos)
+void DecoderFFmpeg::seek(qint64 pos)
 {
     seekTime = pos;
 }
@@ -207,9 +185,9 @@ void DecoderFFmpeg::seek(double pos)
 
 void DecoderFFmpeg::deinit()
 {
-    inited = user_stop = done = finish = FALSE;
+    inited = user_stop = done = m_finish = FALSE;
     freq = bitrate = 0;
-    stat = chan = 0;
+    chan = 0;
     output_size = 0;
 }
 
@@ -229,13 +207,9 @@ void DecoderFFmpeg::run()
 
         return;
     }
-    stat = DecoderState::Decoding;
     mutex()->unlock();
-    {
-        dispatch(DecoderState ((DecoderState::Type) stat));
-    }
 
-    while (! done && ! finish)
+    while (!done && !m_finish)
     {
         mutex()->lock ();
         // decode
@@ -254,7 +228,7 @@ void DecoderFFmpeg::run()
         int l = 0;
         if (av_read_frame(ic, &pkt) < 0)
         {
-            finish = TRUE;
+            m_finish = TRUE;
             goto end;
         }
         size = pkt.size;
@@ -277,7 +251,7 @@ void DecoderFFmpeg::run()
         }
         bitrate = c->bit_rate/1024;
 end:
-        if (finish)
+        if (m_finish)
         {
             flush(TRUE);
 
@@ -298,7 +272,7 @@ end:
             done = TRUE;
             if (! user_stop)
             {
-                finish = TRUE;
+                m_finish = TRUE;
             }
         }
 
@@ -307,18 +281,9 @@ end:
     }
 
     mutex()->lock ();
-
-    if (finish)
-        stat = DecoderState::Finished;
-    else if (user_stop)
-        stat = DecoderState::Stopped;
-
+    if (m_finish)
+        finish();
     mutex()->unlock();
-
-    {
-        dispatch(DecoderState ((DecoderState::Type) stat));
-    }
-
     deinit();
 }
 

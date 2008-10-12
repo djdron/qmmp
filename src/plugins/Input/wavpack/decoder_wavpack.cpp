@@ -34,9 +34,10 @@
 
 // Decoder class
 
-DecoderWavPack::DecoderWavPack(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderWavPack::DecoderWavPack(QObject *parent, DecoderFactory *d, Output *o, const QString &path)
+        : Decoder(parent, d, o)
 {
+    m_path = path;
     m_inited = FALSE;
     m_user_stop = FALSE;
     m_output_buf = 0;
@@ -108,7 +109,7 @@ void DecoderWavPack::flush(bool final)
 
 bool DecoderWavPack::initialize()
 {
-    m_bks = blockSize();
+    m_bks = Buffer::size();
     m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
@@ -116,50 +117,39 @@ bool DecoderWavPack::initialize()
     m_seekTime = -1.0;
     m_totalTime = 0.0;
 
-
-    if (! input())
-    {
-        error("DecoderWavPack: cannot initialize.  No input.");
-
-        return FALSE;
-    }
-
     if (! m_output_buf)
         m_output_buf = new char[globalBufferSize];
     m_output_at = 0;
     m_output_bytes = 0;
 
-    QString filename = qobject_cast<QFile*>(input())->fileName ();
-    input()->close();
-
     char err [80];
-    m_context = WavpackOpenFileInput (filename.toLocal8Bit(), err,
+    m_context = WavpackOpenFileInput (m_path.toLocal8Bit(), err,
                                       OPEN_WVC | OPEN_TAGS, 0);
     if(!m_context)
     {
-        error(QString("DecoderWavPack: error: %1").arg(err));
+        qWarning("DecoderWavPack: error: %s", err);
         return FALSE;
     }
     m_chan = WavpackGetNumChannels(m_context);
     m_freq = WavpackGetSampleRate (m_context);
     m_bps =  WavpackGetBitsPerSample (m_context);
-    configure(m_freq, m_chan, m_bps, int(WavpackGetAverageBitrate(m_context, m_chan)/1000));
+    configure(m_freq, m_chan, m_bps);
     m_totalTime = (int) WavpackGetNumSamples(m_context)/m_freq;
     m_inited = TRUE;
     qDebug("DecoderWavPack: initialize succes");
     return TRUE;
 }
 
-double DecoderWavPack::lengthInSeconds()
+qint64 DecoderWavPack::lengthInSeconds()
 {
-    if (! m_inited)
+    if (!m_inited)
         return 0;
 
     return m_totalTime;
 }
 
 
-void DecoderWavPack::seek(double pos)
+void DecoderWavPack::seek(qint64 pos)
 {
     m_seekTime = pos;
 }
@@ -186,14 +176,12 @@ void DecoderWavPack::run()
     int16_t *out = new int16_t[globalBufferSize * m_chan / m_chan / 4];
     uint32_t samples = 0;
 
-    if (! m_inited)
+    if (!m_inited)
     {
         mutex()->unlock();
-
         return;
     }
     mutex()->unlock();
-    dispatch(DecoderState::Decoding);
 
     while (! m_done && ! m_finish)
     {
@@ -253,9 +241,8 @@ void DecoderWavPack::run()
         }
         else
         {
-            // error in read
-            error("DecoderWavPack: Error while decoding stream, File appears to be "
-                  "corrupted");
+            // error while reading
+            qWarning("DecoderWavPack: Error while decoding stream, file appears to be corrupted");
             m_finish = TRUE;
         }
         mutex()->unlock();
@@ -267,11 +254,8 @@ void DecoderWavPack::run()
     delete[] out;
 
     if (m_finish)
-        dispatch(DecoderState::Finished);
-    else if (m_user_stop)
-        dispatch(DecoderState::Stopped);
+        finish();
 
     mutex()->unlock();
-
     deinit();
 }

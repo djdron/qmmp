@@ -51,47 +51,49 @@ const DecoderProperties DecoderWavPackFactory::properties() const
     //properties.contentType = ;
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
+    properties.noInput = TRUE;
+    properties.protocols = "file";
     return properties;
 }
 
 Decoder *DecoderWavPackFactory::create(QObject *parent, QIODevice *input,
-                                   Output *output)
+                                   Output *output, const QString &path)
 {
-    return new DecoderWavPack(parent, this, input, output);
+    Q_UNUSED(input);
+    return new DecoderWavPack(parent, this, output, path);
 }
 
-FileTag *DecoderWavPackFactory::createTag(const QString &source)
+QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName)
 {
-    FileTag *ftag = new FileTag();
-
+    QList <FileInfo*> list;
     char err[80];
-    WavpackContext *ctx = WavpackOpenFileInput (source.toLocal8Bit(), err,
+    WavpackContext *ctx = WavpackOpenFileInput (fileName.toLocal8Bit(), err,
                                       OPEN_WVC | OPEN_TAGS, 0);
-
     if(!ctx)
     {
         qWarning("DecoderWavPackFactory: error: %s", err);
-        return ftag;
+        return list;
     }
-
+    FileInfo *info = new FileInfo(fileName);
     char value[200];
     WavpackGetTagItem (ctx, "Album", value, sizeof(value));
-    ftag->setValue(FileTag::ALBUM, QString::fromUtf8(value));
+    info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Artist", value, sizeof(value));
-    ftag->setValue(FileTag::ARTIST, QString::fromUtf8(value));
+    info->setMetaData(Qmmp::ARTIST, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Comment", value, sizeof(value));
-    ftag->setValue(FileTag::COMMENT, QString::fromUtf8(value));
+    info->setMetaData(Qmmp::COMMENT, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Genre", value, sizeof(value));
-    ftag->setValue(FileTag::GENRE, QString::fromUtf8(value));
+    info->setMetaData(Qmmp::GENRE, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Title", value, sizeof(value));
-    ftag->setValue(FileTag::TITLE, QString::fromUtf8(value));
+    info->setMetaData(Qmmp::TITLE, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Year", value, sizeof(value));
-    ftag->setValue(FileTag::YEAR, QString::fromUtf8(value).toInt());
+    info->setMetaData(Qmmp::YEAR, QString::fromUtf8(value).toInt());
     WavpackGetTagItem (ctx, "Track", value, sizeof(value));
-    ftag->setValue(FileTag::TRACK, QString::fromUtf8(value).toInt());
-    ftag->setValue(FileTag::LENGTH, (int) WavpackGetNumSamples(ctx)/WavpackGetSampleRate(ctx));
+    info->setMetaData(Qmmp::TRACK, QString::fromUtf8(value).toInt());
+    info->setLength((int) WavpackGetNumSamples(ctx)/WavpackGetSampleRate(ctx));
     WavpackCloseFile (ctx);
-    return ftag;
+    list << info;
+    return list;
 }
 
 QObject* DecoderWavPackFactory::showDetails(QWidget *parent, const QString &path)

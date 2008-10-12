@@ -30,13 +30,13 @@ extern "C"{
 class DecoderSndFile : public Decoder
 {
 public:
-    DecoderSndFile(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderSndFile(QObject *, DecoderFactory *, Output *, const QString &);
     virtual ~DecoderSndFile();
 
     // Standard Decoder API
     bool initialize();
-    double lengthInSeconds();
-    void seek(double);
+    qint64 lengthInSeconds();
+    void seek(qint64);
     void stop();
 
 
@@ -58,8 +58,9 @@ private:
     bool m_done, m_finish, m_inited, m_user_stop;
     long m_freq, m_bitrate;
     int m_chan;
-    unsigned long m_output_size;
-    double m_totalTime, m_seekTime;
+    qint64 m_output_size;
+    qint64 m_totalTime, m_seekTime;
+    QString m_path;
 };
 
 

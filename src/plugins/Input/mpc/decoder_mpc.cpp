@@ -102,13 +102,12 @@ DecoderMPC::DecoderMPC(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
 {
     inited = FALSE;
     user_stop = FALSE;
-    stat = 0;
     output_buf = 0;
     output_bytes = 0;
     output_at = 0;
     bks = 0;
     done = FALSE;
-    finish = FALSE;
+    m_finish = FALSE;
     len = 0;
     freq = 0;
     bitrate = 0;
@@ -127,7 +126,7 @@ DecoderMPC::DecoderMPC(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
 DecoderMPC::~DecoderMPC()
 {
     deinit();
-    if(data())
+    if (data())
     {
         delete data();
         m_data = 0;
@@ -148,11 +147,11 @@ void DecoderMPC::flush(bool final)
 {
     ulong min = final ? 0 : bks;
 
-    while ((! done && ! finish) && output_bytes > min)
+    while ((! done && ! m_finish) && output_bytes > min)
     {
         output()->recycler()->mutex()->lock ();
 
-        while ((! done && ! finish) && output()->recycler()->full())
+        while ((! done && ! m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();
 
@@ -162,7 +161,7 @@ void DecoderMPC::flush(bool final)
             done = user_stop;
         }
 
-        if (user_stop || finish)
+        if (user_stop || m_finish)
         {
             inited = FALSE;
             done = TRUE;
@@ -186,19 +185,18 @@ void DecoderMPC::flush(bool final)
 
 bool DecoderMPC::initialize()
 {
-    bks = blockSize();
-    inited = user_stop = done = finish = FALSE;
+    bks = Buffer::size();
+    inited = user_stop = done = m_finish = FALSE;
     len = freq = bitrate = 0;
-    stat = chan = 0;
+    chan = 0;
     output_size = 0;
     seekTime = -1.0;
     totalTime = 0.0;
 
 
-    if (! input())
+    if (!input())
     {
-        error("DecoderMPC: cannot initialize.  No input.");
-
+        qWarning("DecoderMPC: cannot initialize.  No input.");
         return FALSE;
     }
 
@@ -207,23 +205,11 @@ bool DecoderMPC::initialize()
     output_at = 0;
     output_bytes = 0;
 
-    if (! input())
+    if (!input()->isOpen())
     {
-        error("DecoderMPC: cannot initialize.  No input.");
-
-        return FALSE;
-    }
-
-    if (! output_buf)
-        output_buf = new char[globalBufferSize];
-    output_at = 0;
-    output_bytes = 0;
-
-    if (! input()->isOpen())
-    {
-        if (! input()->open(QIODevice::ReadOnly))
+        if (!input()->open(QIODevice::ReadOnly))
         {
-            error("DecoderMPC: cannot open input.");
+            qWarning("DecoderMPC: unable to open input.");
             return FALSE;
         }
     }
@@ -245,7 +231,7 @@ bool DecoderMPC::initialize()
     if (mpc_streaminfo_read (&m_data->info, &m_data->reader) != ERROR_CODE_OK)
         return FALSE;
     chan = data()->info.channels;
-    configure(data()->info.sample_freq, chan, 16, data()->info.bitrate);
+    configure(data()->info.sample_freq, chan, 16);
 
     mpc_decoder_setup (&data()->decoder, &data()->reader);
 
@@ -253,7 +239,7 @@ bool DecoderMPC::initialize()
 
     if (!mpc_decoder_initialize (&data()->decoder, &data()->info))
     {
-        error("DecoderMPC: cannot get info.");
+        qWarning("DecoderMPC: cannot get info.");
         return FALSE;
     }
     totalTime = mpc_streaminfo_get_length(&data()->info);
@@ -263,7 +249,7 @@ bool DecoderMPC::initialize()
 }
 
 
-double DecoderMPC::lengthInSeconds()
+qint64 DecoderMPC::lengthInSeconds()
 {
     if (! inited)
         return 0;
@@ -272,7 +258,7 @@ double DecoderMPC::lengthInSeconds()
 }
 
 
-void DecoderMPC::seek(double pos)
+void DecoderMPC::seek(qint64 pos)
 {
     seekTime = pos;
 }
@@ -280,10 +266,9 @@ void DecoderMPC::seek(double pos)
 
 void DecoderMPC::deinit()
 {
-    //FLAC__stream_decoder_finish (data()->decoder);
-    inited = user_stop = done = finish = FALSE;
+    inited = user_stop = done = m_finish = FALSE;
     len = freq = bitrate = 0;
-    stat = chan = 0;
+    chan = 0;
     output_size = 0;
 }
 
@@ -291,21 +276,16 @@ void DecoderMPC::run()
 {
     mpc_uint32_t vbrAcc = 0;
     mpc_uint32_t vbrUpd = 0;
-    mutex()->lock ();
 
-    if (! inited)
+    mutex()->lock ();
+    if (!inited)
     {
         mutex()->unlock();
-
         return;
     }
-    stat = DecoderState::Decoding;
     mutex()->unlock();
-    {
-        dispatch(DecoderState ((DecoderState::Type) stat));
-    }
 
-    while (! done && ! finish)
+    while (! done && ! m_finish)
     {
         mutex()->lock ();
         // decode
@@ -354,33 +334,23 @@ void DecoderMPC::run()
             done = TRUE;
             if (! user_stop)
             {
-                finish = TRUE;
+                m_finish = TRUE;
             }
         }
         else
         {
             // error in read
-            error("DecoderMPC: Error while decoding stream, File appears to be "
-                  "corrupted");
-
-            finish = TRUE;
+            qWarning("DecoderMPC: Error while decoding stream, file appears to be corrupted");
+            m_finish = TRUE;
         }
 
         mutex()->unlock();
     }
-
     mutex()->lock ();
 
-    if (finish)
-        stat = DecoderState::Finished;
-    else if (user_stop)
-        stat = DecoderState::Stopped;
+    if (m_finish)
+        finish();
 
     mutex()->unlock();
-
-    {
-        dispatch(DecoderState ((DecoderState::Type) stat));
-    }
-
     deinit();
 }

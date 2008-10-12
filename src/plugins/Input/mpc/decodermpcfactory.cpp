@@ -53,38 +53,38 @@ const DecoderProperties DecoderMPCFactory::properties() const
 }
 
 Decoder *DecoderMPCFactory::create(QObject *parent, QIODevice *input,
-                                   Output *output)
+                                   Output *output, const QString &)
 {
     return new DecoderMPC(parent, this, input, output);
 }
 
-FileTag *DecoderMPCFactory::createTag(const QString &source)
+QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName)
 {
-    FileTag *ftag = new FileTag();
+    FileInfo *info = new FileInfo(fileName);
 
-    TagLib::FileRef fileRef(source.toLocal8Bit ());
+    TagLib::FileRef fileRef(fileName.toLocal8Bit ());
     TagLib::Tag *tag = fileRef.tag();
-
     if (tag && !tag->isEmpty())
     {
-        ftag->setValue(FileTag::ALBUM,
+        info->setMetaData(Qmmp::ALBUM,
                        QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::ARTIST,
+        info->setMetaData(Qmmp::ARTIST,
                        QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::COMMENT,
+        info->setMetaData(Qmmp::COMMENT,
                        QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::GENRE,
+        info->setMetaData(Qmmp::GENRE,
                        QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::TITLE,
+        info->setMetaData(Qmmp::TITLE,
                        QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
-        ftag->setValue(FileTag::YEAR, tag->year());
-        ftag->setValue(FileTag::TRACK, tag->track());
+        info->setMetaData(Qmmp::YEAR, tag->year());
+        info->setMetaData(Qmmp::TRACK, tag->track());
     }
-
     if (fileRef.audioProperties())
-        ftag->setValue(FileTag::LENGTH, fileRef.audioProperties()->length());
+        info->setLength(fileRef.audioProperties()->length());
 
-    return ftag;
+    QList <FileInfo*> list;
+    list << info;
+    return list;
 }
 
 QObject* DecoderMPCFactory::showDetails(QWidget *parent, const QString &path)

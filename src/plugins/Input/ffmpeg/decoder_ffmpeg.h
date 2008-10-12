@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,7 +22,9 @@
 #define __decoder_ffmeg_h
 
 extern "C"{
-#if defined HAVE_FFMPEG_AVFORMAT_H
+#if defined HAVE_FFMPEG_LIBAVFORMAT_AVFORMAT_H
+#include <ffmpeg/libavformat/avformat.h>
+#elif defined HAVE_FFMPEG_AVFORMAT_H
 #include <ffmpeg/avformat.h>
 #elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
 #include <libavformat/avformat.h>
@@ -30,7 +32,9 @@ extern "C"{
 #include <avformat.h>
 #endif
 
-#if defined HAVE_FFMPEG_AVCODEC_H
+#if defined HAVE_FFMPEG_LIBAVCODEC_AVCODEC_H
+#include <ffmpeg/libavcodec/avcodec.h>
+#elif defined HAVE_FFMPEG_AVCODEC_H
 #include <ffmpeg/avcodec.h>
 #elif defined HAVE_LIBAVCODEC_AVCODEC_H
 #include <libavcodec/avcodec.h>
@@ -43,21 +47,14 @@ extern "C"{
 class DecoderFFmpeg : public Decoder
 {
 public:
-    DecoderFFmpeg(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderFFmpeg(QObject *, DecoderFactory *, Output *, const QString &);
     virtual ~DecoderFFmpeg();
 
     // Standard Decoder API
     bool initialize();
-    double lengthInSeconds();
-    void seek(double);
+    qint64 lengthInSeconds();
+    void seek(qint64);
     void stop();
-
-    // Equalizer
-    bool isEQSupported() const { return FALSE; }
-    void setEQEnabled(bool) { ; }
-    void setEQGain(int) { ; }
-    void setEQBands(int[10]) { ; }
-
 
 private:
     // thread run function
@@ -66,13 +63,11 @@ private:
     void flush(bool = FALSE);
     void deinit();
     void ffmpeg_out(int size);
-
     bool inited, user_stop;
-    int stat;
 
     // output buffer
     char *output_buf;
-    ulong output_bytes, output_at;
+    qint64 output_bytes, output_at;
 
     AVFormatContext *ic;
     AVCodecContext *c;
@@ -80,11 +75,12 @@ private:
     uint8_t *wma_outbuf;
 
     unsigned int bks;
-    bool done, finish;
+    bool done, m_finish;
     long freq, bitrate;
     int chan;
-    unsigned long output_size;
-    double totalTime, seekTime;
+    qint64 output_size;
+    qint64 totalTime, seekTime;
+    QString m_path;
 };
 
 
