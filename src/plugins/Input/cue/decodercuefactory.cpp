@@ -21,6 +21,7 @@
 
 #include "decoder_cue.h"
 #include "cueparser.h"
+#include "settingsdialog.h"
 #include "decodercuefactory.h"
 
 
@@ -31,7 +32,7 @@ bool DecoderCUEFactory::supports(const QString &source) const
     return source.right(4).toLower() == ".cue";
 }
 
-bool DecoderCUEFactory::canDecode(QIODevice *input) const
+bool DecoderCUEFactory::canDecode(QIODevice *) const
 {
     return FALSE;
 }
@@ -46,7 +47,7 @@ const DecoderProperties DecoderCUEFactory::properties() const
     //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
     properties.protocols = "cue";
     properties.hasAbout = TRUE;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = TRUE;
     properties.noInput = TRUE;
     properties.noOutput = TRUE;
     return properties;
@@ -55,23 +56,27 @@ const DecoderProperties DecoderCUEFactory::properties() const
 Decoder *DecoderCUEFactory::create(QObject *parent, QIODevice *input,
                                       Output *output, const QString &url)
 {
+    Q_UNUSED(input);
+    Q_UNUSED(output);
     return new DecoderCUE(parent, this, url);
 }
 
-//FileInfo *DecoderCUEFactory::createFileInfo(const QString &source)
 QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName)
 {
     CUEParser parser(fileName);
     return parser.createPlayList();
 }
 
-QObject* DecoderCUEFactory::showDetails(QWidget *parent, const QString &path)
+QObject* DecoderCUEFactory::showDetails(QWidget *, const QString &)
 {
     return 0;
 }
 
-void DecoderCUEFactory::showSettings(QWidget *)
-{}
+void DecoderCUEFactory::showSettings(QWidget *parent)
+{
+     SettingsDialog *s = new SettingsDialog(parent);
+     s->show();
+}
 
 void DecoderCUEFactory::showAbout(QWidget *parent)
 {

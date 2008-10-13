@@ -305,7 +305,7 @@ void PlayListModel::showDetails()
     {
         if (m_items.at(i)->isSelected())
         {
-            if (m_items.at(i)->path().startsWith("http://"))
+            if (!QFile::exists(m_items.at(i)->path()))
             {
                 PlayListItem *item = m_items.at(i);
                 QString str;
@@ -396,7 +396,6 @@ void PlayListModel::writeSettings()
 {
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     file.open(QIODevice::WriteOnly);
-    file.write(QString("count=%1").arg(m_items.count()).toUtf8() +"\n");
     foreach(PlayListItem* m, m_items)
     {
         file.write(QString("file=%1").arg(m->path()).toUtf8() +"\n");

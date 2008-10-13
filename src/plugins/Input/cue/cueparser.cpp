@@ -22,6 +22,9 @@
 #include <QFileInfo>
 #include <QRegExp>
 #include <QDir>
+#include <QSettings>
+#include <QTextStream>
+#include <QTextCodec>
 
 #include <qmmp/decoder.h>
 
@@ -29,24 +32,26 @@
 
 CUEParser::CUEParser(const QString &fileName)
 {
-    QString album;
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly))
+    if (!file.open(QIODevice::ReadOnly))
     {
-        qDebug("CUEParser: Error: %s", qPrintable(file.errorString()));
+        qDebug("CUEParser: error: %s", qPrintable(file.errorString()));
         return;
     }
-
-    while (!file.atEnd())
+    QString album, genre, date, comment;
+    QTextStream textStream (&file);
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QTextCodec *codec = QTextCodec::codecForName(settings.value("CUE/encoding","ISO-8859-1").toByteArray ());
+    textStream.setCodec(codec);
+    while (!textStream.atEnd())
     {
-        QString line = file.readLine().trimmed();
+        QString line = textStream.readLine().trimmed();
         QStringList words = splitLine(line);
         if (words.size() < 2)
             continue;
 
         if (words[0] == "FILE")
         {
-            //TODO check support
             m_filePath = QUrl(fileName).path ();
             m_filePath = QFileInfo(m_filePath).dir().filePath(words[1]);
         }
@@ -79,10 +84,21 @@ CUEParser::CUEParser(const QString &fileName)
             m_infoList.last ().setLength(getLength(words[2]));
             m_offsets.last() = getLength(words[2]);
         }
+        else if (words[0] == "REM")
+        {
+            if (words.size() < 3)
+                continue;
+            if (words[1] == "GENRE")
+                genre = words[2];
+            else if (words[1] == "DATE")
+                date = words[2];
+            else if (words[1] == "COMMENT")
+                comment = words[2];
+        }
     }
     //calculate length
     for (int i = 0; i < m_infoList.size() - 1; ++i)
-        m_infoList[i].setLength(m_infoList[i+1].length()-m_infoList[i].length());
+        m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
     //calculate last item length
     QList <FileInfo *> f_list;
     f_list = Decoder::createPlayList(m_filePath);
@@ -92,9 +108,12 @@ CUEParser::CUEParser(const QString &fileName)
     else
         m_infoList.last().setLength(0);
 
-    foreach(FileInfo info, m_infoList)
+    for(int i = 0; i < m_infoList.size(); ++i)
     {
-        info.setMetaData(Qmmp::ALBUM, album);
+        m_infoList[i].setMetaData(Qmmp::ALBUM, album);
+        m_infoList[i].setMetaData(Qmmp::GENRE, genre);
+        m_infoList[i].setMetaData(Qmmp::YEAR, date);
+        m_infoList[i].setMetaData(Qmmp::COMMENT, comment);
     }
     file.close();
 }

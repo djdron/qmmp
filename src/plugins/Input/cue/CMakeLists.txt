@@ -30,15 +30,15 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 SET(libcue_SRCS
   decoder_cue.cpp
   decodercuefactory.cpp
-#  detailsdialog.cpp
+  settingsdialog.cpp
   cueparser.cpp
 )
 
 SET(libcue_MOC_HDRS
   decodercuefactory.h
   decoder_cue.h
-#  detailsdialog.h
-   cueparser.h
+  settingsdialog.h
+  cueparser.h
 )
 
 #SET(libcue_RCCS translations/translations.qrc)
@@ -50,16 +50,16 @@ QT4_WRAP_CPP(libcue_MOC_SRCS ${libcue_MOC_HDRS})
 # user interface
 
 
-#SET(libcue_UIS
-#    detailsdialog.ui
-#)
+SET(libcue_UIS
+    settingsdialog.ui
+)
 
-#QT4_WRAP_UI(libcue_UIS_H ${libcue_UIS})
+QT4_WRAP_UI(libcue_UIS_H ${libcue_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(cue SHARED ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS})
+ADD_LIBRARY(cue SHARED ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS} ${libcue_UIS_H})
 add_dependencies(cue qmmp)
 target_link_libraries(cue ${QT_LIBRARIES} -lqmmp)
 install(TARGETS cue DESTINATION ${LIB_DIR}/qmmp/Input)

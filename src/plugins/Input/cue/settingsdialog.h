@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,34 +17,35 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERCUEFACTORY_H
-#define DECODERCUEFACTORY_H
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#include <QObject>
-#include <QString>
-#include <QIODevice>
-#include <QWidget>
+#include <QDialog>
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/fileinfo.h>
 
-class DecoderCUEFactory : public QObject, DecoderFactory
+#include "ui_settingsdialog.h"
+
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class SettingsDialog : public QDialog
 {
 Q_OBJECT
-Q_INTERFACES(DecoderFactory);
-
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
-    QList<FileInfo *> createPlayList(const QString &fileName);
-    QObject* showDetails(QWidget *parent, const QString &path);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    SettingsDialog(QWidget *parent = 0);
+
+    ~SettingsDialog();
+
+
+private slots:
+    void writeSettings();
+
+private:
+    void findCodecs();
+    
+    Ui::SettingsDialog ui;
+    QList<QTextCodec *> codecs;
+
 };
 
 #endif
