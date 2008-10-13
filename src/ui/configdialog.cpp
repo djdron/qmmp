@@ -536,7 +536,7 @@ void ConfigDialog::addTitleString( QAction * a)
 void ConfigDialog::saveSettings()
 {
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    settings.setValue ("PlayList/title_format", ui.formatLineEdit->text());
+    settings.setValue ("PlayList/title_format", ui.formatLineEdit->text().trimmed());
     settings.setValue ("PlayList/load_metadata", ui.metadataCheckBox->isChecked());
     settings.setValue ("PlayList/convert_underscore", ui.underscoresCheckBox->isChecked());
     settings.setValue ("PlayList/convert_twenty", ui.per20CheckBox->isChecked());
