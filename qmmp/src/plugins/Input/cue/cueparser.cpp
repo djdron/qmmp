@@ -31,7 +31,11 @@ CUEParser::CUEParser(const QString &fileName)
 {
     QString album;
     QFile file(fileName);
-    file.open(QIODevice::ReadOnly);
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qDebug("CUEParser: Error: %s", qPrintable(file.errorString()));
+        return;
+    }
 
     while (!file.atEnd())
     {
