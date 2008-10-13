@@ -46,11 +46,27 @@ DecoderCUE::~DecoderCUE()
 
 bool DecoderCUE::initialize()
 {
+    m_input2 = 0;
     CUEParser parser(QUrl(path).path());
+    if (parser.count() == 0)
+    {
+        qWarning("DecoderCUE: Invalid cue file");
+        return FALSE;
+    }
     int track = path.section("#", -1).toInt();
     path = parser.filePath();
+    if (!QFile::exists(path))
+    {
+        qWarning("DecoderCUE: File \"%s\" doesn't exist", qPrintable(path));
+        return FALSE;
+    }
     DecoderFactory *df = Decoder::findByPath(path);
-    if (df)
+    if (!df)
+    {
+        qWarning("DecoderCUE: unsupported file format");
+        return FALSE;
+    }
+    if (!df->properties().noInput)
     {
         m_input2 = new QFile(path);
         if (!m_input2->open(QIODevice::ReadOnly))
