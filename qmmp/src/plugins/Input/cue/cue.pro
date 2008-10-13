@@ -3,10 +3,12 @@ include(../../plugins.pri)
 #FORMS += detailsdialog.ui 
 HEADERS += decodercuefactory.h \
            cueparser.h \
- decoder_cue.h
+ decoder_cue.h \
+ settingsdialog.h
 SOURCES += decoder_cue.cpp \
            decodercuefactory.cpp \
- cueparser.cpp
+ cueparser.cpp \
+ settingsdialog.cpp
 
 TARGET =$$PLUGINS_PREFIX/Input/cue
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libcue.so
@@ -34,3 +36,5 @@ isEmpty(LIB_DIR){
 }
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
+FORMS += settingsdialog.ui
+

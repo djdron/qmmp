@@ -50,14 +50,14 @@ bool DecoderCUE::initialize()
     CUEParser parser(QUrl(path).path());
     if (parser.count() == 0)
     {
-        qWarning("DecoderCUE: Invalid cue file");
+        qWarning("DecoderCUE: invalid cue file");
         return FALSE;
     }
     int track = path.section("#", -1).toInt();
     path = parser.filePath();
     if (!QFile::exists(path))
     {
-        qWarning("DecoderCUE: File \"%s\" doesn't exist", qPrintable(path));
+        qWarning("DecoderCUE: file \"%s\" doesn't exist", qPrintable(path));
         return FALSE;
     }
     DecoderFactory *df = Decoder::findByPath(path);
