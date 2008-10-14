@@ -35,20 +35,18 @@ class OutputPulseAudio : public Output
 {
 Q_OBJECT
 public:
-    OutputPulseAudio(QObject * parent = 0, bool useVolume = TRUE);
+    OutputPulseAudio(QObject * parent = 0);
     ~OutputPulseAudio();
 
     bool initialize();
     bool isInitialized() const { return m_inited; }
     void uninitialize();
-    void configure(long, int, int, int);
+    void configure(quint32, int, int);
     void stop();
     void pause();
-    long written();
-    long latency();
-    void seek(long);
-    //void setVolume(int l, int r);
-    //void volume(int *l, int *r);
+    qint64 written();
+    qint64 latency();
+    void seek(qint64);
 
 private:
     // thread run function
@@ -58,8 +56,9 @@ private:
     void status();
 
     bool m_inited, m_pause, m_play, m_userStop;
-    long m_totalWritten, m_currentSeconds, m_bps;
-    int m_rate, m_frequency, m_channels, m_precision;
+    qint64 m_totalWritten, m_currentSeconds, m_bps;
+    quint32  m_frequency;
+    int m_rate, m_channels, m_precision;
     pa_simple *m_connection;
 
 };

@@ -18,7 +18,7 @@ contains(CONFIG, OSS_PLUGIN){
 }
 
 contains(CONFIG, PULSE_AUDIO_PLUGIN){
-#    SUBDIRS += pulseaudio
+    SUBDIRS += pulseaudio
     message(******************************)
     message(* PULSE AUDIO plugin enabled *)
     message(******************************)
