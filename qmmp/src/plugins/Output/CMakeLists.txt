@@ -16,5 +16,5 @@ IF(USE_OSS)
 ENDIF(USE_OSS)
 
 IF(USE_PULSE)
-#add_subdirectory(pulseaudio)
+add_subdirectory(pulseaudio)
 ENDIF(USE_PULSE)

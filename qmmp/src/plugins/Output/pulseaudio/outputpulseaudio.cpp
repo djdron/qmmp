@@ -35,12 +35,11 @@ extern "C" {
 #include <qmmp/visual.h>
 #include "outputpulseaudio.h"
 
-OutputPulseAudio::OutputPulseAudio(QObject * parent, bool useVolume)
+OutputPulseAudio::OutputPulseAudio(QObject * parent)
         : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
         m_userStop(FALSE), m_totalWritten(0), m_currentSeconds(-1),
         m_bps(-1), m_frequency(-1), m_channels(-1), m_precision(-1)
 {
-    Q_UNUSED(useVolume);
     m_connection = 0;
 }
 
@@ -69,18 +68,18 @@ void OutputPulseAudio::status()
     }
 }
 
-long OutputPulseAudio::written()
+qint64 OutputPulseAudio::written()
 {
     return m_totalWritten;
 }
 
-void OutputPulseAudio::seek(long pos)
+void OutputPulseAudio::seek(qint64 pos)
 {
     m_totalWritten = (pos * m_bps);
     m_currentSeconds = -1;
 }
 
-void OutputPulseAudio::configure(long freq, int chan, int prec, int brate)
+void OutputPulseAudio::configure(quint32 freq, int chan, int prec)
 {
     m_frequency = freq;
     m_channels = chan;
@@ -108,7 +107,7 @@ void OutputPulseAudio::configure(long freq, int chan, int prec, int brate)
         m_inited = FALSE;
         return;
     }
-    qDebug("OutputPulseAudio: frequency=%d, channels=%d, bitrate=%d",  uint(freq), chan, brate);
+    qDebug("OutputPulseAudio: frequency=%d, channels=%d",  uint(freq), chan);
 }
 
 void OutputPulseAudio::pause()
@@ -116,7 +115,7 @@ void OutputPulseAudio::pause()
     if (!m_play)
         return;
     m_pause = (m_pause) ? FALSE : TRUE;
-    OutputState::Type state = m_pause ? OutputState::Paused: OutputState::Playing;
+    Qmmp::State state = m_pause ? Qmmp::Paused: Qmmp::Playing;
     dispatch(state);
 }
 
@@ -129,7 +128,7 @@ bool OutputPulseAudio::initialize()
 }
 
 
-long OutputPulseAudio::latency()
+qint64 OutputPulseAudio::latency()
 {
     long used = 0;
 
@@ -154,7 +153,7 @@ void OutputPulseAudio::run()
     bool done = FALSE;
     int error;
 
-    dispatch(OutputState::Playing);
+    dispatch(Qmmp::Playing);
 
     while (! done)
     {
@@ -206,7 +205,7 @@ void OutputPulseAudio::run()
 
     mutex()->lock ();
     m_play = FALSE;
-    dispatch(OutputState::Stopped);
+    dispatch(Qmmp::Stopped);
     mutex()->unlock();
 
 }
@@ -231,5 +230,4 @@ void OutputPulseAudio::uninitialize()
         pa_simple_free(m_connection);
         m_connection = 0;
     }
-    dispatch(OutputState::Stopped);
 }
