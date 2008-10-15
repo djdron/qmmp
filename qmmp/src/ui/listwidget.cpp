@@ -398,6 +398,7 @@ void ListWidget::processFileInfo(const QFileInfo& info)
     else
     {
         m_model->addFile(info.absoluteFilePath());
+        m_model->loadPlaylist(info.absoluteFilePath());
     }
 }
 

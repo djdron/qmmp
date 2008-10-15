@@ -592,6 +592,7 @@ void MainWindow::loadPlaylist()
         QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
         if (!f_name.isEmpty())
         {
+            m_playListModel->clear();
             m_playListModel->loadPlaylist(f_name);
             m_playlistName = QFileInfo(f_name).baseName();
             m_lastDir = QFileInfo(f_name).absoluteDir().path();
