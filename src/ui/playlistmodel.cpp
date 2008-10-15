@@ -1,11 +1,11 @@
 /***************************************************************************
- *   Copyright(C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright(C) 2006-2008 by Ilya Kotov                                  *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *  (at your option) any later version.                                   *
+ *  (at your option) any later version.                                    *
  *                                                                         *
  *   This program is distributed in the hope that it will be useful,       *
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
@@ -487,7 +487,10 @@ bool PlayListModel::setFileList(const QStringList & l)
             if (f_info.isDir())
                 addDirectory(str);
             else
+            {
                 addFile(str);
+                loadPlaylist(str);
+            }
         }
         // Do processing the rest of events to avoid GUI freezing
         QApplication::processEvents(QEventLoop::AllEvents,10);
@@ -845,7 +848,7 @@ void PlayListModel::setUpdatesEnabled(bool yes)
     }
 }
 
-void PlayListModel::loadPlaylist(const QString & f_name)
+void PlayListModel::loadPlaylist(const QString &f_name)
 {
     PlaylistFormat* prs = PlaylistParser::instance()->findByPath(f_name);
     if (prs)
@@ -853,7 +856,7 @@ void PlayListModel::loadPlaylist(const QString & f_name)
         QFile file(f_name);
         if (file.open(QIODevice::ReadOnly))
         {
-            clear();
+            //clear();
             addFiles(prs->decode(QTextStream(&file).readAll()));
             file.close();
         }
