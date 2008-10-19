@@ -55,8 +55,8 @@ QStringList M3UPlaylistFormat::decode(const QString & contents)
                 ;//TODO: Let's skip it for now...
             else if (str.startsWith("http://"))
                 out << str;
-            else if (QFileInfo(str).exists())
-                out << QFileInfo(str).absoluteFilePath();
+            else if (!str.startsWith("#"))
+                out << str;
             else
                 qWarning("File %s does not exist", qPrintable(str));
         }

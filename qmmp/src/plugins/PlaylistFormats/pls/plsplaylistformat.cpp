@@ -66,10 +66,10 @@ QStringList PLSPlaylistFormat::decode(const QString & contents)
                     {
                         out << unverified;
                     }
-                    else if (QFileInfo(unverified).exists())
+                    else /*if (QFileInfo(unverified).exists())*/
                         out << QFileInfo(unverified).absoluteFilePath();
-                    else
-                        qWarning("File %s does not exist", qPrintable(unverified));
+                    /*else
+                        qWarning("File %s does not exist", qPrintable(unverified));*/
                 }
             }
             return out;
