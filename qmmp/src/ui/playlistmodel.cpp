@@ -108,8 +108,8 @@ void PlayListModel::load(PlayListItem *item)
     if (m_items.size() == 1)
         emit firstAdded();
 
-    //if (!m_block_update_signals)
-    emit listChanged();
+    if (!m_block_update_signals)
+        emit listChanged();
 }
 
 int PlayListModel::count()
@@ -344,43 +344,44 @@ void PlayListModel::readSettings()
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     m_current = settings.value("Playlist/current",0).toInt();
 
-    QByteArray line;
-    QStringList p;
+    QString line, param, value;
+    int s;
     QList <FileInfo *> infoList;
-
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     file.open(QIODevice::ReadOnly);
     QByteArray array = file.readAll();
     file.close();
-
     QBuffer buffer(&array);
     buffer.open(QIODevice::ReadOnly);
     while (!buffer.atEnd())
     {
-        line = buffer.readLine();
-        p = QString::fromUtf8(line).trimmed().split("=");
-        if (p.size() < 2)
+        line = QString::fromUtf8(buffer.readLine()).trimmed();
+        if ((s = line.indexOf("=")) < 0)
             continue;
-        if (p.at(0) == "file")
-            infoList << new FileInfo(p.at(1));
+
+        param = line.left(s);
+        value = line.right(line.size() - s - 1);
+
+        if (param == "file")
+            infoList << new FileInfo(value);
         else if (infoList.isEmpty())
             continue;
-        else if (p.at(0) == "title")
-            infoList.last()->setMetaData(Qmmp::TITLE, p.at(1));
-        else if (p.at(0) == "artist")
-            infoList.last()->setMetaData(Qmmp::ARTIST, p.at(1));
-        else if (p.at(0) == "album")
-            infoList.last()->setMetaData(Qmmp::ALBUM, p.at(1));
-        else if (p.at(0) == "comment")
-            infoList.last()->setMetaData(Qmmp::COMMENT, p.at(1));
-        else if (p.at(0) == "genre")
-            infoList.last()->setMetaData(Qmmp::GENRE, p.at(1));
-        else if (p.at(0) == "year")
-            infoList.last()->setMetaData(Qmmp::YEAR, p.at(1));
-        else if (p.at(0) == "track")
-            infoList.last()->setMetaData(Qmmp::TRACK, p.at(1));
-        else if (p.at(0) == "length")
-            infoList.last()->setLength(p.at(1).toInt());
+        else if (param == "title")
+            infoList.last()->setMetaData(Qmmp::TITLE, value);
+        else if (param == "artist")
+            infoList.last()->setMetaData(Qmmp::ARTIST, value);
+        else if (param == "album")
+            infoList.last()->setMetaData(Qmmp::ALBUM, value);
+        else if (param == "comment")
+            infoList.last()->setMetaData(Qmmp::COMMENT, value);
+        else if (param == "genre")
+            infoList.last()->setMetaData(Qmmp::GENRE, value);
+        else if (param == "year")
+            infoList.last()->setMetaData(Qmmp::YEAR, value);
+        else if (param == "track")
+            infoList.last()->setMetaData(Qmmp::TRACK, value);
+        else if (param == "length")
+            infoList.last()->setLength(value.toInt());
     }
     buffer.close();
     if (m_current > infoList.count() - 1)
@@ -889,7 +890,6 @@ void PlayListModel::savePlaylist(const QString & f_name)
         else
             qWarning("Error opening %s",f_name.toLocal8Bit().data());
     }
-
 }
 
 bool PlayListModel::isFileLoaderRunning() const
