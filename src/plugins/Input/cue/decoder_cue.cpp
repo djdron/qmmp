@@ -39,6 +39,10 @@ DecoderCUE::DecoderCUE(QObject *parent, DecoderFactory *d, const QString &url)
     m_decoder = 0;
     m_output2 = 0;
     m_input2 = 0;
+    for (int i = 1; i < 10; ++i)
+        m_bands2[i] = 0;
+    m_preamp2 = 0;
+    m_useEQ2 = FALSE;
 }
 
 DecoderCUE::~DecoderCUE()
@@ -98,6 +102,8 @@ bool DecoderCUE::initialize()
     m_length = parser.length(track);
     m_offset = parser.offset(track);
     m_decoder = df->create(this, m_input2, m_output2, path);
+    m_decoder->setEQ(m_bands2, m_preamp2);
+    m_decoder->setEQEnabled(m_useEQ2);
     CUEStateHandler *csh = new CUEStateHandler(this, m_offset, m_length);
     m_decoder->setStateHandler(csh);
     connect(csh, SIGNAL(finished()), SLOT(finish()));
@@ -211,6 +217,32 @@ void DecoderCUE::pause()
         m_output2->recycler()->mutex()->lock ();
         m_output2->recycler()->cond()->wakeAll();
         m_output2->recycler()->mutex()->unlock();
+    }
+}
+
+void DecoderCUE::setEQ(int bands[10], int preamp)
+{
+    for (int i = 0; i < 10; ++i)
+        m_bands2[i] = bands[i];
+    m_preamp2 = preamp;
+    if (m_decoder)
+    {
+        m_decoder->mutex()->lock ();
+        m_decoder->setEQ(m_bands2, m_preamp2);
+        m_decoder->setEQEnabled(m_useEQ2);
+        m_decoder->mutex()->unlock();
+    }
+}
+
+void DecoderCUE::setEQEnabled(bool on)
+{
+    m_useEQ2 = on;
+    if (m_decoder)
+    {
+        m_decoder->mutex()->lock ();
+        m_decoder->setEQ(m_bands2, m_preamp2);
+        m_decoder->setEQEnabled(on);
+        m_decoder->mutex()->unlock();
     }
 }
 

@@ -42,6 +42,10 @@ public:
     void stop();
     void pause();
 
+    // Equalizer
+    void setEQ(int bands[10], int preamp);
+    void setEQEnabled(bool on);
+
 private:
     // thread run function
     void run();
@@ -51,6 +55,9 @@ private:
     QIODevice *m_input2;
     qint64 m_length;
     qint64 m_offset;
+    int m_preamp2;
+    int m_bands2[10];
+    bool m_useEQ2;
 };
 
 class CUEStateHandler : public StateHandler
@@ -77,7 +84,6 @@ signals:
 private:
     qint64 m_length2;
     qint64 m_offset;
-
 };
 
 #endif // DECODER_CUE_H

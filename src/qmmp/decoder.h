@@ -55,8 +55,8 @@ public:
     StateHandler *stateHandler();
 
     void setStateHandler(StateHandler *handler);
-    void setEQ(int bands[10], int preamp);
-    void setEQEnabled(bool on);
+    virtual void setEQ(int bands[10], int preamp);
+    virtual void setEQEnabled(bool on);
 
     // static methods
     static QStringList all();
