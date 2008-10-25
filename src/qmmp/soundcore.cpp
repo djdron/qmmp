@@ -81,6 +81,8 @@ bool SoundCore::play(const QString &source)
     if (m_handler->state() != Qmmp::Stopped) //clear error state
         m_handler->dispatch(Qmmp::Stopped);
 
+    m_handler->dispatch(Qmmp::Buffering); //buffering state
+
     QUrl url;
     if (QFile::exists(source)) //local file
         url = QUrl::fromLocalFile(source);
