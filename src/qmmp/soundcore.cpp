@@ -382,7 +382,6 @@ bool SoundCore::decode()
         }
     }
     m_decoder = m_factory->create(this, m_input, m_output, m_source);
-    m_decoder->setStateHandler(m_handler);
     if (!m_decoder)
     {
         qWarning("SoundCore: unsupported fileformat");
@@ -391,6 +390,9 @@ bool SoundCore::decode()
         m_handler->dispatch(Qmmp::NormalError);
         return FALSE;
     }
+    m_decoder->setStateHandler(m_handler);
+    setEQ(m_bands, m_preamp);
+    setEQEnabled(m_useEQ);
     qDebug ("ok");
     connect(m_decoder, SIGNAL(playbackFinished()), SIGNAL(finished()));
     if (m_output)
