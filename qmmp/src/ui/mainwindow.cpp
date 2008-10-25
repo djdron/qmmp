@@ -218,6 +218,7 @@ void MainWindow::play()
         }
         }
     }
+    qApp->processEvents();
 }
 
 void MainWindow::replay()
@@ -259,6 +260,7 @@ void MainWindow::stop()
     //display->setTime(0);
     m_core->stop();
 }
+
 void MainWindow::next()
 {
     if (!m_playListModel->isEmptyQueue())
@@ -267,20 +269,19 @@ void MainWindow::next()
     }
     else if (!m_playListModel->next())
     {
-        stop();
         display->hideTimeDisplay();
         return;
     }
     m_playlist->update();
     if (m_core->state() != Qmmp::Stopped)
     {
-        stop();
         m_elapsed = 0;
         play();
     }
     else
         display->hideTimeDisplay();
 }
+
 void MainWindow::previous()
 {
     if (!m_playListModel->previous())
@@ -292,7 +293,7 @@ void MainWindow::previous()
     m_playlist->update();
     if (m_core->state() != Qmmp::Stopped)
     {
-        stop();
+        m_elapsed = 0;
         play();
     }
     else
