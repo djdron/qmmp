@@ -218,7 +218,6 @@ void MainWindow::play()
         }
         }
     }
-    qApp->processEvents();
 }
 
 void MainWindow::replay()
@@ -269,6 +268,7 @@ void MainWindow::next()
     }
     else if (!m_playListModel->next())
     {
+        stop();
         display->hideTimeDisplay();
         return;
     }
@@ -286,6 +286,7 @@ void MainWindow::previous()
 {
     if (!m_playListModel->previous())
     {
+        stop();
         display->hideTimeDisplay();
         return;
     }
