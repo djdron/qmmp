@@ -76,6 +76,7 @@ SoundCore::~SoundCore()
 bool SoundCore::play(const QString &source)
 {
     stop();
+    qDebug("SoundCore: url=%s", qPrintable(source));
     m_source = source;
     if (m_handler->state() != Qmmp::Stopped) //clear error state
         m_handler->dispatch(Qmmp::Stopped);
@@ -171,13 +172,12 @@ void SoundCore::stop()
 
     if (m_output)
     {
-        //m_output->deleteLater();
         delete m_output;
         m_output = 0;
     }
     if (m_decoder)
     {
-        m_decoder->deleteLater();
+        delete m_decoder;
         m_decoder = 0;
     }
     if (m_input)
@@ -185,7 +185,6 @@ void SoundCore::stop()
         m_input->deleteLater();
         m_input = 0;
     }
-    qApp->processEvents();
     //update VolumeControl
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
