@@ -78,10 +78,7 @@ void Output::dispatch(const Qmmp::State &state)
     if (m_handler)
         m_handler->dispatch(state);
     if (state == Qmmp::Stopped)
-    {
-        qDebug("clear");
         clearVisuals();
-    }
 }
 
 
