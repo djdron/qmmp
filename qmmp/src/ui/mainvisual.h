@@ -106,7 +106,6 @@ private:
     QList <VisualNode*> m_nodes;
     QTimer *m_timer;
     bool m_playing;
-    bool m_draw;
     Skin *m_skin;
     //menu and actions
     QMenu *m_menu;
