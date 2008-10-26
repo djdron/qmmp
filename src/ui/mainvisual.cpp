@@ -47,7 +47,6 @@ MainVisual *MainVisual::getPointer()
 MainVisual::MainVisual (QWidget *parent)
         : Visual (parent), m_vis (0), m_playing (FALSE)
 {
-    m_draw = TRUE;
     m_skin = Skin::getPointer();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSettings()));
     resize(75,20);
@@ -97,6 +96,7 @@ void MainVisual::clear()
         delete m_nodes.takeFirst();
     if (m_vis)
         m_vis->clear();
+    m_pixmap = m_bg;
     update();
 }
 
@@ -161,15 +161,8 @@ void MainVisual::timeout()
         QPainter p(&m_pixmap);
         m_vis->draw (&p);
         delete node;
-        update();
-        m_draw = TRUE;
     }
-    else if (m_draw)
-    {
-        m_draw = FALSE;
-        m_pixmap = m_bg;
-        update();
-    }
+    update();
 }
 
 void MainVisual::paintEvent (QPaintEvent *)
