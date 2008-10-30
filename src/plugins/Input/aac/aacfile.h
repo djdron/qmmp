@@ -34,13 +34,14 @@ public:
 
     qint64 length();
     quint32 bitrate();
+    bool isValid();
 
 private:
     void parseADTS();
     qint64 m_length;
     quint32 m_bitrate;
     QIODevice *m_input;
-
+    bool m_isValid;
 };
 
 #endif

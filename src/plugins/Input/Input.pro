@@ -31,3 +31,9 @@ contains(CONFIG, FFMPEG_PLUGIN){
    message(*************************)
 }
 
+contains(CONFIG, AAC_PLUGIN){
+  SUBDIRS += aac
+  message(**********************)
+  message(* AAC plugin enabled *)
+  message(**********************)
+}
