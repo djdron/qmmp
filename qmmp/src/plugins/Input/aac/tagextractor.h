@@ -17,41 +17,52 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef AACFILE_H
-#define AACFILE_H
-
+#ifndef TAGEXTRACTOR_H
+#define TAGEXTRACTOR_H
 
 #include <QMap>
-#include <QString>
+
+#include <taglib/tag.h>
+#include <taglib/fileref.h>
+#include <taglib/id3v1tag.h>
+#include <taglib/id3v2tag.h>
+#include <taglib/id3v2header.h>
 
 #include <qmmp/qmmp.h>
 
 class QIODevice;
-class TagExtractor;
+class QBuffer;
+class QByteArray;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class AACFile
+class TagExtractor
 {
 public:
-    AACFile(QIODevice *i);
+    TagExtractor(QIODevice *d);
 
-    ~AACFile();
+    ~TagExtractor();
 
-    qint64 length();
-    quint32 bitrate();
-    bool isValid();
-    const QMap<Qmmp::MetaData, QString> metaData();
+    const QMap<Qmmp::MetaData, QString> id3v2tag();
 
 private:
-    void parseADTS();
-    qint64 m_length;
-    quint32 m_bitrate;
-    QIODevice *m_input;
-    bool m_isValid;
-    QMap<Qmmp::MetaData, QString> m_metaData;
-    TagExtractor *m_ext;
+    QMap<Qmmp::MetaData, QString> m_tag;
+    QIODevice *m_d;
+
+};
+
+class ID3v2Tag : public TagLib::ID3v2::Tag
+{
+public:
+    ID3v2Tag(QByteArray *array, long offset);
+
+protected:
+    void read ();
+
+private:
+    QBuffer *m_buf;
+    long m_offset;
 };
 
 #endif

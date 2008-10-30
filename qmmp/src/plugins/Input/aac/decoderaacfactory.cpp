@@ -63,29 +63,11 @@ QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName)
 {
     FileInfo *info = new FileInfo(fileName);
 
-    /*TagLib::FileRef fileRef(fileName.toLocal8Bit ());
-    TagLib::Tag *tag = fileRef.tag();
-    if (tag && !tag->isEmpty())
-    {
-        info->setMetaData(Qmmp::ALBUM,
-                          QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
-        info->setMetaData(Qmmp::ARTIST,
-                          QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
-        info->setMetaData(Qmmp::COMMENT,
-                          QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
-        info->setMetaData(Qmmp::GENRE,
-                          QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
-        info->setMetaData(Qmmp::TITLE,
-                          QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
-        info->setMetaData(Qmmp::YEAR, tag->year());
-        info->setMetaData(Qmmp::TRACK, tag->track());
-    }
-    if (fileRef.audioProperties())
-        info->setLength(fileRef.audioProperties()->length());*/
     QFile file(fileName);
-    if(file.open(QIODevice::ReadOnly))
+    if (file.open(QIODevice::ReadOnly))
     {
         AACFile aac_file(&file);
+        info->setMetaData(aac_file.metaData());
         info->setLength(aac_file.length());
     }
     QList <FileInfo*> list;

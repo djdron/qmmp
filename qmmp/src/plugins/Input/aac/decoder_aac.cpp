@@ -240,6 +240,11 @@ qint64 DecoderAAC::aac_decode(void *out)
 
         if ((size = frame_info.samples * 2) > 0)
             memcpy((void *) (m_output_buf + m_output_at), out, size);
+        if (frame_info.error > 0)
+        {
+            m_input_at = 0;
+            qDebug("DecoderAAC: %s", NeAACDecGetErrorMessage(frame_info.error));
+        }
     }
     return size;
 }
@@ -285,7 +290,7 @@ void DecoderAAC::run()
         if (m_seekTime >= 0 && m_totalTime)
         {
             input()->seek(m_seekTime * input()->size() / m_totalTime);
-            NeAACDecPostSeekReset (data()->handle, -1);
+            NeAACDecPostSeekReset (data()->handle, 0);
             m_input_at = 0;
             m_seekTime = -1.0;
         }
