@@ -4,11 +4,13 @@ FORMS += detailsdialog.ui
 HEADERS += decoderaacfactory.h \
            decoder_aac.h \
            detailsdialog.h \
-           aacfile.h
+           aacfile.h \
+           tagextractor.h
 SOURCES += decoder_aac.cpp \
            decoderaacfactory.cpp \
            detailsdialog.cpp \
-           aacfile.cpp
+           aacfile.cpp \
+           tagextractor.cpp
 
 TARGET =$$PLUGINS_PREFIX/Input/aac
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libaac.so

@@ -22,6 +22,7 @@
 
 #include <neaacdec.h>
 
+#include "tagextractor.h"
 #include "aacfile.h"
 
 #define MAX_CHANNELS 6
@@ -34,6 +35,7 @@ AACFile::AACFile(QIODevice *i)
     m_isValid = FALSE;
     m_length = 0;
     m_bitrate = 0;
+    m_ext = 0;
     m_input = i;
     uchar buf[AAC_BUFFER_SIZE];
     qint64 buf_at = i->peek((char *) buf, AAC_BUFFER_SIZE);
@@ -52,6 +54,8 @@ AACFile::AACFile(QIODevice *i)
             return;
         }
         memmove (buf, buf + tag_size, buf_at - tag_size);
+
+        m_ext  = new TagExtractor(i);
     }
     //try to determenate header type;
     if (buf[0] == 0xff && ((buf[1] & 0xf6) == 0xf0))
@@ -164,4 +168,9 @@ void AACFile::parseADTS()
 bool AACFile::isValid()
 {
     return m_isValid;
+}
+
+const QMap<Qmmp::MetaData, QString> AACFile::metaData()
+{
+    return m_ext ? m_ext->id3v2tag() : QMap<Qmmp::MetaData, QString>();
 }

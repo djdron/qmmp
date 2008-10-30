@@ -50,6 +50,6 @@ IF(USE_AAC)
 add_subdirectory(aac)
 ENDIF(USE_AAC)
 
-IF(USE_CUE)
+IF(USE_CUE AND TAGLIB_FOUND)
 add_subdirectory(cue)
-ENDIF(USE_CUE)
+ENDIF(USE_CUE AND TAGLIB_FOUND)
