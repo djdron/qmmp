@@ -63,7 +63,7 @@ private:
     // output buffer
     char *m_output_buf, *m_input_buf;
     void *m_prebuf2;
-    qint64 m_output_bytes, m_output_at, m_input_at, m_prebuf_pos, m_prebuf_size;
+    qint64 m_output_bytes, m_output_at, m_input_at;
 
     unsigned int m_bks;
     bool m_done, m_finish;

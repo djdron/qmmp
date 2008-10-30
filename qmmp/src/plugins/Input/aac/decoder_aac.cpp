@@ -153,10 +153,18 @@ bool DecoderAAC::initialize()
     {
         if (!input()->open(QIODevice::ReadOnly))
         {
-            qWarning("DecoderAAC: unable to open input.");
+            qWarning("DecoderAAC: %s", qPrintable(input()->errorString ()));
             return FALSE;
         }
     }
+    AACFile aac_file(input());
+    if (!aac_file.isValid())
+    {
+        qWarning("DecoderAAC: unsupported AAC file");
+        return FALSE;
+    }
+    m_totalTime = aac_file.length();
+    m_bitrate = aac_file.bitrate();
 
     if (!m_data)
         m_data = new aac_data;
@@ -171,26 +179,39 @@ bool DecoderAAC::initialize()
     conf->defObjectType = LC;
     conf->outputFormat = FAAD_FMT_16BIT;
     NeAACDecSetConfiguration(data()->handle, conf);
+
     m_input_at = input()->read((char *)m_input_buf, AAC_BUFFER_SIZE);
-    for (int i = 0; i < m_input_at - 1; i++)
+
+    //skip id3 tag
+    int tag_size = 0;
+    if (!memcmp(m_input_buf, "ID3", 3))
     {
-        if ((uchar)m_input_buf[i] == 0xff && ((uchar)m_input_buf[i+1]&0xf6) == 0xf0)
-        {
-            memmove (m_input_buf, m_input_buf + i, AAC_BUFFER_SIZE - i);
-            m_input_at -= i;
-            break;
-        }
+        /* high bit is not used */
+        tag_size = (m_input_buf[6] << 21) | (m_input_buf[7] << 14) |
+                   (m_input_buf[8] <<  7) | (m_input_buf[9] <<  0);
+
+        tag_size += 10;
+        memmove (m_input_buf, m_input_buf + tag_size, m_input_at - tag_size);
+        m_input_at -= tag_size;
+        m_input_at += input()->read((char *)(m_input_buf + m_input_at), AAC_BUFFER_SIZE - m_input_at);
     }
-    AACFile aac_file(input());
-    m_totalTime = aac_file.length();
-    m_bitrate = aac_file.bitrate();
 
     int res = NeAACDecInit (data()->handle, (unsigned char*) m_input_buf, m_input_at, &m_freq, &m_chan);
+
+    if (res < 0)
+    {
+        qWarning("DecoderAAC: NeAACDecInit() failed");
+        return FALSE;
+    }
+    if (!m_freq || !m_chan)
+    {
+        qWarning("DecoderAAC: invalid sound parameters");
+        return FALSE;
+    }
+
     memmove(m_input_buf, m_input_buf + res, m_input_at - res);
     m_input_at -= res;
-
     configure(m_freq, m_chan, 16);
-
     m_inited = TRUE;
     qDebug("DecoderAAC: initialize succes");
     return TRUE;
@@ -248,8 +269,6 @@ void DecoderAAC::deinit()
 
 void DecoderAAC::run()
 {
-    m_prebuf_pos = 0;
-    m_prebuf_size = 0;
     mutex()->lock ();
     if (!m_inited)
     {
@@ -263,16 +282,15 @@ void DecoderAAC::run()
         mutex()->lock ();
         // decode
 
-        if (m_seekTime >= 0.0)
+        if (m_seekTime >= 0 && m_totalTime)
         {
-            //mpc_decoder_seek_seconds(&data()->decoder, seekTime);
             input()->seek(m_seekTime * input()->size() / m_totalTime);
+            NeAACDecPostSeekReset (data()->handle, -1);
             m_input_at = 0;
             m_seekTime = -1.0;
         }
 
-        m_prebuf_size = aac_decode(m_prebuf2);
-        m_len = m_prebuf_size;
+        m_len = aac_decode(m_prebuf2);
 
         if (m_len > 0)
         {

@@ -25,20 +25,62 @@
 #include "aacfile.h"
 
 #define MAX_CHANNELS 6
+#define AAC_BUFFER_SIZE 4096
 
 static int adts_sample_rates[] = {96000,88200,64000,48000,44100,32000,24000,22050,16000,12000,11025,8000,7350,0,0,0};
 
 AACFile::AACFile(QIODevice *i)
 {
+    m_isValid = FALSE;
     m_length = 0;
     m_bitrate = 0;
     m_input = i;
-    parseADTS();
+    uchar buf[AAC_BUFFER_SIZE];
+    qint64 buf_at = i->peek((char *) buf, AAC_BUFFER_SIZE);
+
+    int tag_size = 0;
+    if (!memcmp(buf, "ID3", 3)) //TODO parse id3 tag
+    {
+        /* high bit is not used */
+        tag_size = (buf[6] << 21) | (buf[7] << 14) |
+                   (buf[8] <<  7) | (buf[9] <<  0);
+
+        tag_size += 10;
+        if (buf_at - tag_size < 4)
+        {
+            qWarning("AACFile: invalid tag size");
+            return;
+        }
+        memmove (buf, buf + tag_size, buf_at - tag_size);
+    }
+    //try to determenate header type;
+    if (buf[0] == 0xff && ((buf[1] & 0xf6) == 0xf0))
+    {
+        qDebug("AACFile: ADTS header found");
+        if (!i->isSequential())
+            parseADTS();
+        m_isValid = TRUE;
+    }
+    else if (memcmp(buf, "ADIF", 4) == 0)
+    {
+        qDebug("AACFile: ADIF header found");
+        int skip_size = (buf[4] & 0x80) ? 9 : 0;
+        m_bitrate = ((buf[4 + skip_size] & 0x0F)<<19) |
+                    (buf[5 + skip_size]<<11) |
+                    (buf[6 + skip_size]<<3) |
+                    (buf[7 + skip_size] & 0xE0);
+
+        if (!i->isSequential ())
+            m_length = (qint64) (((float)i->size()*8.f)/((float)m_bitrate) + 0.5f);
+        else
+            m_length = 0;
+        m_bitrate = (int)((float)m_bitrate/1000.0f + 0.5f);
+        m_isValid = TRUE;
+    }
 }
 
 AACFile::~AACFile()
-{
-}
+{}
 
 qint64 AACFile::length()
 {
@@ -52,7 +94,7 @@ quint32 AACFile::bitrate()
 
 void AACFile::parseADTS()
 {
-    uchar *buf = new uchar[FAAD_MIN_STREAMSIZE*MAX_CHANNELS];
+    uchar buf[FAAD_MIN_STREAMSIZE*MAX_CHANNELS];
     qint64 buf_at = 0;
     int frames, frame_length;
     int t_framelength = 0;
@@ -117,4 +159,9 @@ void AACFile::parseADTS()
         m_length = frames/frames_per_sec;
     else
         m_length = 1;
+}
+
+bool AACFile::isValid()
+{
+    return m_isValid;
 }
