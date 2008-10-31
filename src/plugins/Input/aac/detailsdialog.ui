@@ -39,25 +39,13 @@
       </size>
      </property>
      <property name="title" >
-      <string>Musepack Info</string>
+      <string>AAC Info</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="leftMargin" >
+      <property name="margin" >
        <number>8</number>
       </property>
-      <property name="topMargin" >
-       <number>8</number>
-      </property>
-      <property name="rightMargin" >
-       <number>8</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>8</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>6</number>
       </property>
       <item row="6" column="0" >
@@ -65,7 +53,7 @@
         <property name="orientation" >
          <enum>Qt::Vertical</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>74</width>
           <height>151</height>
@@ -196,7 +184,7 @@
       </sizepolicy>
      </property>
      <property name="title" >
-      <string>APE Tag</string>
+      <string>ID3v2 Tag</string>
      </property>
      <layout class="QGridLayout" >
       <item row="0" column="0" >
@@ -308,7 +296,7 @@
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>111</width>
        <height>20</height>

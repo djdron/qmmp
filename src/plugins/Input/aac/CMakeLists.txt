@@ -39,7 +39,6 @@ SET(libaac_SRCS
   decoderaacfactory.cpp
   detailsdialog.cpp
   aacfile.cpp
-  tagextractor.cpp
 )
 
 SET(libaac_MOC_HDRS
@@ -47,7 +46,6 @@ SET(libaac_MOC_HDRS
   decoder_aac.h
   detailsdialog.h
   aacfile.h
-  tagextractor.h
 )
 
 #SET(libaac_RCCS translations/translations.qrc)
