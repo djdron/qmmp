@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,12 +35,8 @@ public:
 
     ~DetailsDialog();
 
-private slots:
-    void saveTag();
-
 private:
-    void loadMPCInfo();
-    void loadTag();
+    void loadAACInfo();
     Ui::DetailsDialog ui;
     QString m_path;
 

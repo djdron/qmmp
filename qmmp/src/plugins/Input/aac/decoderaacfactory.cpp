@@ -77,9 +77,9 @@ QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName)
 
 QObject* DecoderAACFactory::showDetails(QWidget *parent, const QString &path)
 {
-    /*DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();*/
-    return 0;
+    DetailsDialog *d = new DetailsDialog(parent, path);
+    d -> show();
+    return d;
 }
 
 void DecoderAACFactory::showSettings(QWidget *)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include <QFile>
 #include <QFileInfo>
 
+#include "aacfile.h"
 #include "detailsdialog.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
@@ -37,79 +38,44 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     setWindowTitle (path.section('/',-1));
     path.section('/',-1);
     ui.pathLineEdit->setText(m_path);
-    if(QFile::exists(m_path))
-    {
-        loadMPCInfo();
-        loadTag();
-    }
+    if (QFile::exists(m_path))
+        loadAACInfo();
 }
 
 
 DetailsDialog::~DetailsDialog()
 {}
 
-void DetailsDialog::loadMPCInfo()
+void DetailsDialog::loadAACInfo()
 {
-    TagLib::MPC::File f (m_path.toLocal8Bit());
+    QFile input(m_path);
+    if (!input.open(QIODevice::ReadOnly))
+        return;
+
+    AACFile f(&input);
+
     QString text;
-    text = QString("%1").arg(f.audioProperties()->length()/60);
-    text +=":"+QString("%1").arg(f.audioProperties()->length()%60,2,10,QChar('0'));
+    text = QString("%1").arg(f.length()/60);
+    text +=":"+QString("%1").arg(f.length()%60,2,10,QChar('0'));
     ui.lengthLabel->setText(text);
-    text = QString("%1").arg(f.audioProperties()->sampleRate());
-    ui.sampleRateLabel->setText(text+" "+tr("Hz"));
-    text = QString("%1").arg(f.audioProperties()->channels());
-    ui.channelsLabel->setText(text);
-    text = QString("%1").arg(f.audioProperties()->bitrate());
-    ui.bitrateLabel->setText(text+" "+tr("kbps")); 
-    text = QString("%1").arg(f.audioProperties()->mpcVersion());
-    ui.versionLabel->setText(text);
-    text = QString("%1 "+tr("KB")).arg(f.length()/1024);
+    /*text = QString("%1").arg(f.audioProperties()->sampleRate());
+    ui.sampleRateLabel->setText(text+" "+tr("Hz"));*/
+    /*text = QString("%1").arg(f.audioProperties()->channels());
+    ui.channelsLabel->setText(text);*/
+    text = QString("%1").arg(f.bitrate());
+    ui.bitrateLabel->setText(text+" "+tr("kbps"));
+    /*text = QString("%1").arg(f.audioProperties()->mpcVersion());
+    ui.versionLabel->setText(text);*/
+    text = QString("%1 "+tr("KB")).arg(input.size()/1024);
     ui.fileSizeLabel->setText(text);
-}
 
-void DetailsDialog::loadTag()
-{
-    TagLib::FileRef f (m_path.toLocal8Bit());
-
-    if (f.tag())
-    {   //TODO: load codec name from config
-
-        TagLib::String title = f.tag()->title();
-        TagLib::String artist = f.tag()->artist();
-        TagLib::String album = f.tag()->album();
-        TagLib::String comment = f.tag()->comment();
-        TagLib::String genre = f.tag()->genre();
-        QString string = QString::fromUtf8(title.toCString(TRUE)).trimmed();
-        ui.titleLineEdit->setText(string);
-        string = QString::fromUtf8(artist.toCString(TRUE)).trimmed();
-        ui.artistLineEdit->setText(string);
-        string = QString::fromUtf8(album.toCString(TRUE)).trimmed();
-        ui.albumLineEdit->setText(string);
-        string = QString::fromUtf8(comment.toCString(TRUE)).trimmed();
-        ui.commentLineEdit->setText(string);
-        string = QString("%1").arg(f.tag()->year());
-        ui.yearLineEdit->setText(string);
-        string = QString("%1").arg(f.tag()->track());
-        ui.trackLineEdit->setText(string);
-        string = QString::fromUtf8(genre.toCString(TRUE)).trimmed();
-        ui.genreLineEdit->setText(string);
-    }
-    QFileInfo info(m_path);
-    ui.saveButton->setEnabled(info.isWritable());
-    connect(ui.saveButton, SIGNAL(clicked()), SLOT(saveTag()));
-}
-
-void DetailsDialog::saveTag()
-{
-    TagLib::FileRef f (m_path.toLocal8Bit());
-
-    f.tag()->setTitle(QStringToTString_qt4(ui.titleLineEdit->text()));
-    f.tag()->setArtist(QStringToTString_qt4(ui.artistLineEdit->text()));
-    f.tag()->setAlbum(QStringToTString_qt4(ui.albumLineEdit->text()));
-    f.tag()->setComment(QStringToTString_qt4(ui.commentLineEdit->text()));
-    f.tag()->setGenre(QStringToTString_qt4(ui.genreLineEdit->text()));
-    f.tag()->setYear(ui.yearLineEdit->text().toUInt());
-    f.tag()->setTrack(ui.trackLineEdit->text().toUInt());
-
-    f.save();
+    //show metadata
+    ui.titleLineEdit->setText(f.metaData().value(Qmmp::TITLE));
+    ui.artistLineEdit->setText(f.metaData().value(Qmmp::ARTIST));
+    ui.albumLineEdit->setText(f.metaData().value(Qmmp::ALBUM));
+    ui.commentLineEdit->setText(f.metaData().value(Qmmp::COMMENT));
+    ui.yearLineEdit->setText(f.metaData().value(Qmmp::YEAR));
+    ui.trackLineEdit->setText(f.metaData().value(Qmmp::TRACK));
+    ui.genreLineEdit->setText(f.metaData().value(Qmmp::GENRE));
+    input.close();
 }

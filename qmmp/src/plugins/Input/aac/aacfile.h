@@ -24,10 +24,17 @@
 #include <QMap>
 #include <QString>
 
+#include <taglib/tag.h>
+#include <taglib/fileref.h>
+#include <taglib/id3v1tag.h>
+#include <taglib/id3v2tag.h>
+#include <taglib/id3v2header.h>
+
 #include <qmmp/qmmp.h>
 
 class QIODevice;
 class TagExtractor;
+class QBuffer;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,7 +42,7 @@ class TagExtractor;
 class AACFile
 {
 public:
-    AACFile(QIODevice *i);
+    AACFile(QIODevice *i, bool metaData = TRUE);
 
     ~AACFile();
 
@@ -46,12 +53,25 @@ public:
 
 private:
     void parseADTS();
+    void parseID3v2();
     qint64 m_length;
     quint32 m_bitrate;
     QIODevice *m_input;
     bool m_isValid;
     QMap<Qmmp::MetaData, QString> m_metaData;
-    TagExtractor *m_ext;
+};
+
+class ID3v2Tag : public TagLib::ID3v2::Tag
+{
+public:
+    ID3v2Tag(QByteArray *array, long offset);
+
+protected:
+    void read ();
+
+private:
+    QBuffer *m_buf;
+    long m_offset;
 };
 
 #endif

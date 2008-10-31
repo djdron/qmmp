@@ -19,10 +19,11 @@
  ***************************************************************************/
 
 #include <QIODevice>
+#include <QBuffer>
+#include <QTextCodec>
 
 #include <neaacdec.h>
 
-#include "tagextractor.h"
 #include "aacfile.h"
 
 #define MAX_CHANNELS 6
@@ -30,12 +31,11 @@
 
 static int adts_sample_rates[] = {96000,88200,64000,48000,44100,32000,24000,22050,16000,12000,11025,8000,7350,0,0,0};
 
-AACFile::AACFile(QIODevice *i)
+AACFile::AACFile(QIODevice *i, bool metaData)
 {
     m_isValid = FALSE;
     m_length = 0;
     m_bitrate = 0;
-    m_ext = 0;
     m_input = i;
     uchar buf[AAC_BUFFER_SIZE];
     qint64 buf_at = i->peek((char *) buf, AAC_BUFFER_SIZE);
@@ -55,9 +55,10 @@ AACFile::AACFile(QIODevice *i)
         }
         memmove (buf, buf + tag_size, buf_at - tag_size);
 
-        m_ext  = new TagExtractor(i);
+        if (metaData)
+            parseID3v2(); //parse id3v2 tags
     }
-    //try to determenate header type;
+    //try to determnate header type;
     if (buf[0] == 0xff && ((buf[1] & 0xf6) == 0xf0))
     {
         qDebug("AACFile: ADTS header found");
@@ -94,6 +95,16 @@ qint64 AACFile::length()
 quint32 AACFile::bitrate()
 {
     return m_bitrate;
+}
+
+bool AACFile::isValid()
+{
+    return m_isValid;
+}
+
+const QMap<Qmmp::MetaData, QString> AACFile::metaData()
+{
+    return m_metaData;
 }
 
 void AACFile::parseADTS()
@@ -165,12 +176,60 @@ void AACFile::parseADTS()
         m_length = 1;
 }
 
-bool AACFile::isValid()
+void AACFile::parseID3v2()
 {
-    return m_isValid;
+    QByteArray array = m_input->peek(2048);
+    int offset = array.indexOf("ID3");
+    if (offset < 0)
+        return;
+    ID3v2Tag taglib_tag(&array, offset);
+    if (taglib_tag.isEmpty())
+        return;
+
+    TagLib::String album = taglib_tag.album();
+    TagLib::String artist = taglib_tag.artist();
+    TagLib::String comment = taglib_tag.comment();
+    TagLib::String genre = taglib_tag.genre();
+    TagLib::String title = taglib_tag.title();
+
+    QTextCodec *codec = QTextCodec::codecForName ("UTF-8");
+    bool utf = TRUE;
+
+    m_metaData.insert(Qmmp::ALBUM,
+                      codec->toUnicode(album.toCString(utf)).trimmed());
+    m_metaData.insert(Qmmp::ARTIST,
+                      codec->toUnicode(artist.toCString(utf)).trimmed());
+    m_metaData.insert(Qmmp::COMMENT,
+                      codec->toUnicode(comment.toCString(utf)).trimmed());
+    m_metaData.insert(Qmmp::GENRE,
+                      codec->toUnicode(genre.toCString(utf)).trimmed());
+    m_metaData.insert(Qmmp::TITLE,
+                      codec->toUnicode(title.toCString(utf)).trimmed());
+    m_metaData.insert(Qmmp::YEAR,
+                      QString::number(taglib_tag.year()));
+    m_metaData.insert(Qmmp::TRACK,
+                      QString::number(taglib_tag.track()));
 }
 
-const QMap<Qmmp::MetaData, QString> AACFile::metaData()
+ID3v2Tag::ID3v2Tag(QByteArray *array, long offset) : TagLib::ID3v2::Tag()
 {
-    return m_ext ? m_ext->id3v2tag() : QMap<Qmmp::MetaData, QString>();
+    m_buf = new QBuffer(array);
+    m_buf->open(QIODevice::ReadOnly);
+    m_offset = offset;
+    read();
+}
+
+void ID3v2Tag::read ()
+{
+    m_buf->seek(m_offset);
+    uint to_read = TagLib::ID3v2::Header::size();
+    if (to_read > AAC_BUFFER_SIZE - uint(m_offset))
+        return;
+    header()->setData(TagLib::ByteVector(m_buf->read(to_read).data(), to_read));
+    to_read = header()->tagSize();
+    if (!to_read ||  AAC_BUFFER_SIZE < m_offset + TagLib::ID3v2::Header::size())
+        return;
+    QByteArray array = m_buf->read(to_read);
+    TagLib::ByteVector v(array.data(), array.size());
+    parse(v);
 }
