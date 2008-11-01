@@ -27,7 +27,7 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-# libaac
+# libfaad
 
 CHECK_INCLUDE_FILE_CXX(neaacdec.h FAAD_FOUND)
 
