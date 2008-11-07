@@ -62,11 +62,11 @@ public:
     const QString genre () const;
     const QString path () const;
     const QString fileName () const;
-    const uint year () const;
-    const uint track () const;
-    const uint length () const;
-    const bool isEmpty () const;
-    const bool isStream () const;
+    uint year () const;
+    uint track () const;
+    uint length () const;
+    bool isEmpty () const;
+    bool isStream () const;
     void clear();
 
 private:

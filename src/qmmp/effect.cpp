@@ -40,17 +40,17 @@ void Effect::configure(quint32 freq, int chan, int res)
     m_res = res;
 }
 
-const quint32 Effect::sampleRate()
+quint32 Effect::sampleRate()
 {
     return m_freq;
 }
 
-const int Effect::channels()
+int Effect::channels()
 {
     return m_chan;
 }
 
-const int Effect::bitsPerSample()
+int Effect::bitsPerSample()
 {
     return m_res;
 }
