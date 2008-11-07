@@ -417,7 +417,7 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
     if (INVALID_ROW != row)
     {
         SimpleSelection sel = m_model->getSelection(m_pressed_row);
-        if ((sel.m_top == 0 && m_scroll_direction == TOP) && sel.count() > 1 ||
+        if (((sel.m_top == 0 && m_scroll_direction == TOP) && sel.count() > 1) ||
                 (sel.m_bottom == m_model->count() - 1 && m_scroll_direction == DOWN && sel.count() > 1)
            )
             return;

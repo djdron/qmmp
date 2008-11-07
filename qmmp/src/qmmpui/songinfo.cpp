@@ -120,22 +120,22 @@ const QString SongInfo::fileName () const
     return m_path.section('/',-1);
 }
 
-const uint SongInfo::year () const
+uint SongInfo::year () const
 {
     return m_numValues[YEAR];
 }
 
-const uint SongInfo::track () const
+uint SongInfo::track () const
 {
     return m_numValues[TRACK];
 }
 
-const uint SongInfo::length () const
+uint SongInfo::length () const
 {
     return m_numValues[LENGTH];
 }
 
-const bool SongInfo::isEmpty () const
+bool SongInfo::isEmpty () const
 {
     return m_strValues.isEmpty();
 }
@@ -147,7 +147,7 @@ void SongInfo::clear ()
     m_stream = FALSE;
 }
 
-const bool SongInfo::isStream () const
+bool SongInfo::isStream () const
 {
     return m_stream;
 }

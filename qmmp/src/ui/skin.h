@@ -68,7 +68,7 @@ public:
      * We need this to check if we have "-" in pixmaps.
      * if no we should draw it manually.
      */
-    const uint getNumCount(void) const
+    uint getNumCount(void) const
     {
         return m_numbers.count();
     }

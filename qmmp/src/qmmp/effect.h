@@ -45,7 +45,7 @@ public:
      * Return value is the size of the output data. Output data size should not be more then \b size.
      * Subclass should implement this function.
      */
-    virtual const ulong process(char *in_data, const ulong size, char **out_data) = 0;
+    virtual ulong process(char *in_data, const ulong size, char **out_data) = 0;
 
     //virtual const ulong process(char *in_data, const ulong size, char *out_data) = 0;
     //virtual bool process(char *in_data, char *out_data, const ulong maxsize, ulong &rbytes, ulong &wbytes) = 0;
@@ -57,19 +57,19 @@ public:
      * Returns samplerate.
      * This function should be reimplemented if subclass changes default samplerate.
      */
-    virtual const quint32 sampleRate();
+    virtual quint32 sampleRate();
 
     /*!
      * Returns channel number.
      * This function should be reimplemented if subclass changes default channel number.
      */
-    virtual const int channels();
+    virtual int channels();
 
     /*!
      * Returns bit depth.
      * This function should be reimplemented if subclass changes default resolution.
      */
-    virtual const int bitsPerSample();
+    virtual int bitsPerSample();
 
 
     static QList<Effect*> create(QObject *parent);

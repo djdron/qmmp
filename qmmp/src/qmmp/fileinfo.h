@@ -41,7 +41,7 @@ public:
     bool operator==(const FileInfo &info);
     bool operator!=(const FileInfo &info);
 
-    const qint64 length () const;
+    qint64 length () const;
     const QString metaData (Qmmp::MetaData key) const;
     const QMap<Qmmp::MetaData, QString>  metaData () const;
     bool isEmpty() const;

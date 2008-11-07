@@ -52,7 +52,7 @@ bool FileInfo::operator!=(const FileInfo &info)
     return !operator==(info);
 }
 
-const qint64 FileInfo::length () const
+qint64 FileInfo::length () const
 {
     return m_length;
 }
