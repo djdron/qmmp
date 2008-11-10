@@ -258,7 +258,7 @@ void PlayListTitleBar::showCurrent()
         if (info)
         {
             m_text = QString("%1. ").arg(m_model->currentRow()+1);
-            m_text.append(info->title());
+            m_text.append(info->text());
             m_text.append(QString("  (%1:%2)").arg(info->length()/60)
                           .arg(info->length()%60, 2, 10, QChar('0')));
         }
