@@ -16,7 +16,7 @@ SOURCES += decoder_modplug.cpp \
 TARGET =$$PLUGINS_PREFIX/Input/modplug
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmodplug.so
 
-
+DEFINES += HAVE_STDINT_H HAVE_INTTYPES_H
 INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
