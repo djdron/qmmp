@@ -1,5 +1,6 @@
 project(libmodplug)
 
+INCLUDE(CheckIncludeFile)
 cmake_minimum_required(VERSION 2.4.7)
 
 if(COMMAND cmake_policy)
@@ -28,6 +29,18 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # modplug
 pkg_search_module(MODPLUG libmodplug)
+
+# add modplug defines
+CHECK_INCLUDE_FILE(stdint.h STDINT_FOUND)
+IF(STDINT_FOUND)
+ADD_DEFINITIONS(-DHAVE_STDINT_H)
+ENDIF(STDINT_FOUND)
+
+CHECK_INCLUDE_FILE(inttypes.h INTTYPES_FOUND)
+IF(INTTYPES_FOUND)
+ADD_DEFINITIONS(-DHAVE_INTTYPES_H)
+ENDIF(INTTYPES_FOUND)
+
 
 include_directories(${MODPLUG_INCLUDE_DIRS})
 link_directories(${MODPLUG_LIBRARY_DIRS})
