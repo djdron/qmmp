@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,30 +27,32 @@
 #include <QKeySequence>
 
 JumpToTrackDialog::JumpToTrackDialog(QWidget* parent, Qt::WFlags fl)
-: QDialog( parent, fl )
+        : QDialog( parent, fl )
 {
-	setupUi(this);
-	setAttribute(Qt::WA_QuitOnClose, FALSE);
-	m_playListModel = 0;
-	m_listModel = new QStringListModel(this);
-	
-	m_proxyModel = new QSortFilterProxyModel;
-	m_proxyModel->setDynamicSortFilter(true);
-	m_proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-	m_proxyModel->setSourceModel(m_listModel);
-	songsListView->setModel(m_proxyModel);
-	
-	connect(songsListView,SIGNAL(doubleClicked(const QModelIndex &)),
-			  this,SLOT(jumpTo(const QModelIndex&)));
-	
-	
-	connect(songsListView->selectionModel(),
-			  SIGNAL(currentRowChanged(const QModelIndex&,const QModelIndex&)),
-						this,SLOT(queueUnqueue(const QModelIndex&,const QModelIndex&)));
-	
-	new QShortcut(QKeySequence("Q"),this,SLOT(on_queuePushButton_clicked()));
-	new QShortcut(QKeySequence("J"),this,SLOT(on_jumpToPushButton_clicked()));
-	new QShortcut(QKeySequence("F5"),this,SLOT(on_refreshPushButton_clicked()));
+    setupUi(this);
+    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    m_playListModel = 0;
+    m_listModel = new QStringListModel(this);
+
+    m_proxyModel = new QSortFilterProxyModel;
+    m_proxyModel->setDynamicSortFilter(true);
+    m_proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    m_proxyModel->setSourceModel(m_listModel);
+    songsListView->setModel(m_proxyModel);
+
+    connect(songsListView,SIGNAL(doubleClicked(const QModelIndex &)),
+            this,SLOT(jumpTo(const QModelIndex&)));
+    connect(songsListView,SIGNAL(activated(const QModelIndex &)),
+            this,SLOT(jumpTo(const QModelIndex&)));
+    connect(songsListView,SIGNAL(activated(const QModelIndex &)),
+            this,SLOT(accept()));
+    connect(songsListView->selectionModel(),
+            SIGNAL(currentRowChanged(const QModelIndex&,const QModelIndex&)),
+            this,SLOT(queueUnqueue(const QModelIndex&,const QModelIndex&)));
+
+    new QShortcut(QKeySequence("Q"),this,SLOT(on_queuePushButton_clicked()));
+    new QShortcut(QKeySequence("J"),this,SLOT(on_jumpToPushButton_clicked()));
+    new QShortcut(QKeySequence("F5"),this,SLOT(on_refreshPushButton_clicked()));
 }
 
 JumpToTrackDialog::~JumpToTrackDialog()
@@ -60,69 +62,81 @@ JumpToTrackDialog::~JumpToTrackDialog()
 
 void JumpToTrackDialog::on_closePushButton_clicked()
 {
-	hide();
+    hide();
 }
 
 void JumpToTrackDialog::on_refreshPushButton_clicked()
 {
-	refresh();
+    refresh();
 }
 
 void JumpToTrackDialog::on_queuePushButton_clicked()
 {
-	QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
-	if(!mi_list.isEmpty())
-	{
-			int selected = (m_proxyModel->mapToSource(mi_list.at(0))).row();
-			m_playListModel->setQueued(m_playListModel->item(selected));
-			if(m_playListModel->isQueued(m_playListModel->item(selected)))
-				queuePushButton->setText(tr("Unqueue"));
-			else
-				queuePushButton->setText(tr("Queue"));
-	}
+    QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
+    if (!mi_list.isEmpty())
+    {
+        int selected = (m_proxyModel->mapToSource(mi_list.at(0))).row();
+        m_playListModel->setQueued(m_playListModel->item(selected));
+        if (m_playListModel->isQueued(m_playListModel->item(selected)))
+            queuePushButton->setText(tr("Unqueue"));
+        else
+            queuePushButton->setText(tr("Queue"));
+    }
 }
 
 void JumpToTrackDialog::on_jumpToPushButton_clicked()
 {
-	QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
-	if(!mi_list.isEmpty())
-	{
-		jumpTo(mi_list.at(0));
-	}
+    QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
+    if (!mi_list.isEmpty())
+    {
+        jumpTo(mi_list.at(0));
+    }
 }
 
 void JumpToTrackDialog::refresh()
 {
-	filterLineEdit->clear();
-	QStringList titles = m_playListModel->getTitles(0,m_playListModel->count());
-	m_listModel->setStringList(titles);
-	filterLineEdit->setFocus();
+    filterLineEdit->clear();
+    QStringList titles = m_playListModel->getTitles(0,m_playListModel->count());
+    m_listModel->setStringList(titles);
+    filterLineEdit->setFocus();
 }
 
 void JumpToTrackDialog::setModel(PlayListModel * model)
 {
-	m_playListModel = model;
+    m_playListModel = model;
 }
 
 void JumpToTrackDialog::on_filterLineEdit_textChanged(const QString &str)
 {
-	m_proxyModel->setFilterFixedString(str);
+    m_proxyModel->setFilterFixedString(str);
+    if (m_proxyModel->hasIndex(0,0))
+        songsListView->setCurrentIndex (m_proxyModel->index (0,0));
+}
+
+void JumpToTrackDialog::on_filterLineEdit_returnPressed ()
+{
+    QModelIndexList mi_list = songsListView->selectionModel()->selectedRows();
+    if (!mi_list.isEmpty())
+    {
+        jumpTo(mi_list.at(0));
+        accept();
+    }
 }
 
 void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 {
-	int selected = (m_proxyModel->mapToSource(index)).row();
-	m_playListModel->setCurrent(selected);
-	emit playRequest();
+    int selected = (m_proxyModel->mapToSource(index)).row();
+    m_playListModel->setCurrent(selected);
+    emit playRequest();
 }
 
 void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
 {
-	int row = m_proxyModel->mapToSource(curr).row();
-	if(m_playListModel->isQueued(m_playListModel->item(row)))
-		queuePushButton->setText(tr("Unqueue"));
-	else
-		queuePushButton->setText(tr("Queue"));
+    int row = m_proxyModel->mapToSource(curr).row();
+    if (m_playListModel->isQueued(m_playListModel->item(row)))
+        queuePushButton->setText(tr("Unqueue"));
+    else
+        queuePushButton->setText(tr("Queue"));
 }
 
 

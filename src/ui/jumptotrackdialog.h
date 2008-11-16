@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,27 +35,28 @@ class QSortFilterProxyModel;
 
 class JumpToTrackDialog : public QDialog, private Ui::JumpToTrackDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
 public:
-  JumpToTrackDialog(QWidget* parent = 0, Qt::WFlags fl = 0 );
-  ~JumpToTrackDialog();
-  void setModel(PlayListModel* model);
-  void refresh();
+    JumpToTrackDialog(QWidget* parent = 0, Qt::WFlags fl = 0 );
+    ~JumpToTrackDialog();
+    void setModel(PlayListModel* model);
+    void refresh();
 protected slots:
-	void on_closePushButton_clicked();
-	void on_refreshPushButton_clicked();
-	void on_queuePushButton_clicked();
-	void on_jumpToPushButton_clicked();
-	void on_filterLineEdit_textChanged(const QString&);
-	void jumpTo(const QModelIndex&);
-	void queueUnqueue(const QModelIndex&,const QModelIndex&);
+    void on_closePushButton_clicked();
+    void on_refreshPushButton_clicked();
+    void on_queuePushButton_clicked();
+    void on_jumpToPushButton_clicked();
+    void on_filterLineEdit_textChanged(const QString&);
+    void on_filterLineEdit_returnPressed ();
+    void jumpTo(const QModelIndex&);
+    void queueUnqueue(const QModelIndex&,const QModelIndex&);
 signals:
-	void playRequest();
+    void playRequest();
 private:
-	PlayListModel* m_playListModel;
-	QStringListModel* m_listModel;
-	QSortFilterProxyModel* m_proxyModel;
+    PlayListModel* m_playListModel;
+    QStringListModel* m_listModel;
+    QSortFilterProxyModel* m_proxyModel;
 };
 
 #endif
