@@ -53,8 +53,6 @@ public:
     qint64 written();
     qint64 latency();
     void seek(qint64);
-    void setVolume(int l, int r);
-    void volume(int *l, int *r);
 
 private:
     // thread run function
