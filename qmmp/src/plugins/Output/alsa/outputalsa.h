@@ -42,46 +42,30 @@ public:
     ~OutputALSA();
 
     bool initialize();
-    bool isInitialized() const
-    {
-        return m_inited;
-    }
-    void uninitialize();
     void configure(quint32, int, int);
-    void stop();
-    void pause();
-    qint64 written();
     qint64 latency();
-    void seek(qint64);
 
 private:
-    // thread run function
-    void run();
+    //output api
+    qint64 writeAudio(unsigned char *data, qint64 maxSize);
+    void flush();
 
     // helper functions
     void reset();
-    void status();
     long alsa_write(unsigned char *data, long size);
+    void uninitialize();
 
-    bool m_inited, m_pause, m_play, m_userStop;
-    qint64 m_totalWritten, m_currentSeconds, m_bps;
-    int m_rate, m_channels, m_precision;
-    quint32 m_frequency;
+    bool m_inited;
+    bool m_use_mmap;
     //alsa
     snd_pcm_t *pcm_handle;
     char *pcm_name;
-    //alsa
     snd_pcm_uframes_t m_chunk_size;
     size_t m_bits_per_frame;
-
-    //alsa mixer
-    /*int setupMixer(QString card, QString device);
-    void parseMixerName(char *str, char **name, int *index);
-    int getMixer(snd_mixer_t **mixer, QString card);
-    snd_mixer_elem_t* getMixerElem(snd_mixer_t *mixer, char *name, int index);
-    snd_mixer_t *mixer;
-    snd_mixer_elem_t *pcm_element;*/
-    bool m_use_mmap;
+    //prebuffer
+    uchar *m_prebuf;
+    qint64 m_prebuf_size;
+    qint64 m_prebuf_fill;
 };
 
 class VolumeControlALSA : public VolumeControl

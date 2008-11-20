@@ -22,7 +22,8 @@
 #include <QApplication>
 #include <QtGlobal>
 
-extern "C" {
+extern "C"
+{
 #include <pulse/error.h>
 }
 
@@ -36,9 +37,7 @@ extern "C" {
 #include "outputpulseaudio.h"
 
 OutputPulseAudio::OutputPulseAudio(QObject * parent)
-        : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
-        m_userStop(FALSE), m_totalWritten(0), m_currentSeconds(-1),
-        m_bps(-1), m_frequency(-1), m_channels(-1), m_precision(-1)
+        : Output(parent)
 {
     m_connection = 0;
 }
@@ -48,44 +47,8 @@ OutputPulseAudio::~OutputPulseAudio()
     uninitialize();
 }
 
-void OutputPulseAudio::stop()
-{
-    m_userStop = TRUE;
-}
-
-void OutputPulseAudio::status()
-{
-    long ct = (m_totalWritten - latency()) / m_bps;
-
-    if (ct < 0)
-        ct = 0;
-
-    if (ct > m_currentSeconds)
-    {
-        m_currentSeconds = ct;
-        dispatch(m_currentSeconds, m_totalWritten, m_rate,
-                 m_frequency, m_precision, m_channels);
-    }
-}
-
-qint64 OutputPulseAudio::written()
-{
-    return m_totalWritten;
-}
-
-void OutputPulseAudio::seek(qint64 pos)
-{
-    m_totalWritten = (pos * m_bps);
-    m_currentSeconds = -1;
-}
-
 void OutputPulseAudio::configure(quint32 freq, int chan, int prec)
 {
-    m_frequency = freq;
-    m_channels = chan;
-    m_precision = prec;
-    m_bps = freq * chan * (prec / 8);
-
     pa_sample_spec ss;
     ss.format = PA_SAMPLE_S16LE;
     ss.channels = chan;
@@ -104,127 +67,50 @@ void OutputPulseAudio::configure(quint32 freq, int chan, int prec)
     if (!m_connection)
     {
         qWarning("OutputPulseAudio: pa_simple_new() failed: %s", pa_strerror(error));
-        m_inited = FALSE;
         return;
     }
     qDebug("OutputPulseAudio: frequency=%d, channels=%d",  uint(freq), chan);
-}
-
-void OutputPulseAudio::pause()
-{
-    if (!m_play)
-        return;
-    m_pause = (m_pause) ? FALSE : TRUE;
-    Qmmp::State state = m_pause ? Qmmp::Paused: Qmmp::Playing;
-    dispatch(state);
+    Output::configure(freq, chan, prec);
 }
 
 bool OutputPulseAudio::initialize()
 {
-    m_inited = m_pause = m_play = m_userStop = FALSE;
-    m_currentSeconds = -1;
-    m_inited = TRUE;
     return TRUE;
 }
 
 
 qint64 OutputPulseAudio::latency()
 {
-    long used = 0;
-
-    return used;
+    if (!m_connection)
+        return 0;
+    int error;
+    return pa_simple_get_latency(m_connection, &error);
 }
 
-void OutputPulseAudio::run()
+qint64 OutputPulseAudio::writeAudio(unsigned char *data, qint64 maxSize)
 {
-
-    mutex()->lock ();
-    if (! m_inited)
+    int error;
+    if (!m_connection)
+        return -1;
+    if (pa_simple_write(m_connection, data, maxSize, &error) < 0)
     {
         mutex()->unlock();
-        return;
+        qWarning("OutputPulseAudio: pa_simple_write() failed: %s", pa_strerror(error));
+        return -1;
     }
+    return maxSize;
+}
 
-    m_play = TRUE;
-
-    mutex()->unlock();
-
-    Buffer *b = 0;
-    bool done = FALSE;
+void OutputPulseAudio::flush()
+{
     int error;
-
-    dispatch(Qmmp::Playing);
-
-    while (! done)
-    {
-        mutex()->lock ();
-        recycler()->mutex()->lock ();
-
-        done = m_userStop;
-
-        while (! done && (recycler()->empty() || m_pause))
-        {
-            mutex()->unlock();
-            recycler()->cond()->wakeOne();
-            recycler()->cond()->wait(recycler()->mutex());
-            mutex()->lock ();
-            done = m_userStop;
-            status();
-        }
-
-        if (! b)
-        {
-            b = recycler()->next();
-            if (b->rate)
-                m_rate = b->rate;
-        }
-
-        recycler()->cond()->wakeOne();
-        recycler()->mutex()->unlock();
-
-        if (b)
-        {
-            if(pa_simple_write(m_connection, b->data, b->nbytes, &error) < 0)
-            {
-                mutex()->unlock();
-                qWarning("OutputPulseAudio: pa_simple_write() failed: %s", pa_strerror(error));
-                break;
-            }
-
-            dispatchVisual(b, m_totalWritten, m_channels, m_precision);
-            status();
-            m_totalWritten += b->nbytes;
-            mutex()->unlock();
-        }
-        // force buffer change
-        recycler()->mutex()->lock ();
-        recycler()->done();
-        recycler()->mutex()->unlock();
-        b = 0;
-    }
-
-    mutex()->lock ();
-    m_play = FALSE;
-    dispatch(Qmmp::Stopped);
-    mutex()->unlock();
-
+    if (m_connection)
+        pa_simple_flush(m_connection, &error);
 }
 
 void OutputPulseAudio::uninitialize()
 {
-    if (!m_inited)
-        return;
-    m_inited = FALSE;
-    m_pause = FALSE;
-    m_play = FALSE;
-    m_userStop  = FALSE;
-    m_totalWritten = 0;
-    m_currentSeconds = -1;
-    m_bps = -1;
-    m_frequency = -1;
-    m_channels = -1;
-    m_precision = -1;
-    if (!m_connection)
+    if (m_connection)
     {
         qDebug("OutputPulseAudio: closing connection");
         pa_simple_free(m_connection);

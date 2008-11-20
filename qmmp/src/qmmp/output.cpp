@@ -11,6 +11,7 @@
 #include <QTimer>
 
 #include "constants.h"
+#include "buffer.h"
 #include "output.h"
 
 #include <stdio.h>
@@ -18,6 +19,43 @@
 Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
 {
     m_handler = 0;
+    m_frequency = 0;
+    m_channels = 0;
+    m_kbps = 0;
+    m_totalWritten = 0;
+    m_currentSeconds = -1;
+    m_bytesPerSecond = 0;
+}
+
+void Output::configure(quint32 freq, int chan, int prec)
+{
+    m_frequency = freq;
+    m_channels = chan;
+    m_precision = prec;
+    m_bytesPerSecond = freq * chan * (prec / 8);
+}
+
+void Output::pause()
+{
+    m_pause = !m_pause;
+    Qmmp::State state = m_pause ? Qmmp::Paused: Qmmp::Playing;
+    dispatch(state);
+}
+
+void Output::stop()
+{
+    m_userStop = TRUE;
+}
+
+qint64 Output::written()
+{
+    return m_totalWritten;
+}
+
+void Output::seek(qint64 pos)
+{
+    m_totalWritten = pos * m_bytesPerSecond;
+    m_currentSeconds = -1;
 }
 
 Recycler *Output::recycler()
@@ -81,6 +119,87 @@ void Output::dispatch(const Qmmp::State &state)
         clearVisuals();
 }
 
+void Output::run()
+{
+    if (!m_bytesPerSecond)
+    {
+        qWarning("Output: invalid audio parameters");
+        return;
+    }
+
+    m_userStop = FALSE;
+    m_pause = FALSE;
+    bool done = FALSE;
+    Buffer *b = 0;
+    qint64 l = 0;
+
+    dispatch(Qmmp::Playing);
+
+    while (!done)
+    {
+        mutex()->lock ();
+        recycler()->mutex()->lock ();
+
+        done = m_userStop;
+
+        while (!done && (recycler()->empty() || m_pause))
+        {
+            mutex()->unlock();
+            recycler()->cond()->wakeOne();
+            recycler()->cond()->wait(recycler()->mutex());
+            mutex()->lock ();
+            done = m_userStop;
+        }
+        status();
+
+        if (!b)
+        {
+            b = recycler()->next();
+            dispatchVisual(b, m_totalWritten, m_channels, m_precision);
+            if (b->rate)
+                m_kbps = b->rate;
+        }
+
+        recycler()->cond()->wakeOne();
+        recycler()->mutex()->unlock();
+        mutex()->unlock();
+        if (b)
+        {
+            if ((l = writeAudio(b->data, b->nbytes)) > 0)
+                m_totalWritten += b->nbytes;
+            else
+                break;
+        }
+        mutex()->lock();
+        //force buffer change
+        recycler()->mutex()->lock ();
+        recycler()->done();
+        recycler()->mutex()->unlock();
+        b = 0;
+        mutex()->unlock();
+    }
+
+    mutex()->lock ();
+    //write remaining data
+    flush();
+    dispatch(Qmmp::Stopped);
+    mutex()->unlock();
+}
+
+void Output::status()
+{
+    long ct = (m_totalWritten - latency()) / m_bytesPerSecond;
+
+    if (ct < 0)
+        ct = 0;
+
+    if (ct > m_currentSeconds)
+    {
+        m_currentSeconds = ct;
+        dispatch(m_currentSeconds, m_totalWritten, m_kbps,
+                 m_frequency, m_precision, m_channels);
+    }
+}
 
 
 // static methods
@@ -91,7 +210,7 @@ QTimer *Output::m_timer = 0;
 
 void Output::checkFactories()
 {
-    if ( ! m_factories )
+    if (!m_factories)
     {
         m_files.clear();
         m_factories = new QList<OutputFactory *>;
@@ -170,7 +289,11 @@ OutputFactory *Output::currentFactory()
 {
     checkFactories();
     QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
-    QString name = settings.value("Output/current_plugin", "alsa").toString(); //TODO freebsd support
+#ifdef Q_OS_LINUX
+    QString name = settings.value("Output/current_plugin", "alsa").toString();
+#else
+    QString name = settings.value("Output/current_plugin", "oss").toString();
+#endif
     foreach(OutputFactory *factory, *m_factories)
     {
         if (factory->properties().shortName == name)

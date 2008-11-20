@@ -34,16 +34,14 @@ public:
     ~Output();
 
       // abstract
-    virtual bool isInitialized() const = 0;
     virtual bool initialize() = 0;
-    virtual void uninitialize() = 0;
-    virtual void configure(quint32, int, int) = 0;
-    virtual void pause() = 0;
-    virtual void stop() = 0;
-    virtual qint64 written() = 0;
     virtual qint64 latency() = 0;
-    virtual void seek(qint64) = 0;
+    virtual void configure(quint32, int, int);
 
+    void pause();
+    void stop();
+    qint64 written();
+    void seek(qint64);
     Recycler *recycler();
     QMutex *mutex();
     void setStateHandler(StateHandler *handler);
@@ -66,10 +64,20 @@ protected:
     void dispatchVisual(Buffer *, unsigned long, int, int);
     void clearVisuals();
 
+    virtual qint64 writeAudio(unsigned char *data, qint64 maxSize) = 0;
+    virtual void flush() = 0;
+
 private:
+    void run(); //thread run function
+    void status();
     QMutex m_mutex;
     Recycler m_recycler;
     StateHandler *m_handler;
+    quint32 m_frequency;
+    int m_channels, m_precision, m_kbps;
+    qint64 m_bytesPerSecond;
+    bool m_userStop, m_pause;
+    qint64 m_totalWritten, m_currentSeconds;
 
     static void checkFactories();
     //TODO use QMap instead
