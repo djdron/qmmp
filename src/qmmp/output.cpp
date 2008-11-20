@@ -13,6 +13,7 @@
 #include "constants.h"
 #include "buffer.h"
 #include "output.h"
+#include "volumecontrol.h"
 
 #include <stdio.h>
 
@@ -155,8 +156,7 @@ void Output::run()
         if (!b)
         {
             b = recycler()->next();
-            dispatchVisual(b, m_totalWritten, m_channels, m_precision);
-            if (b->rate)
+            if (b && b->rate)
                 m_kbps = b->rate;
         }
 
@@ -165,6 +165,8 @@ void Output::run()
         mutex()->unlock();
         if (b)
         {
+            dispatchVisual(b, m_totalWritten, m_channels, m_precision);
+            changeVolume(b->data, b->nbytes, m_channels);
             if ((l = writeAudio(b->data, b->nbytes)) > 0)
                 m_totalWritten += b->nbytes;
             else
@@ -201,6 +203,23 @@ void Output::status()
     }
 }
 
+void Output::changeVolume(uchar *data, qint64 size, int chan)
+{
+    if (!SoftwareVolume::instance())
+        return;
+    if (chan > 1)
+        for (qint64 i = 0; i < size/2; i+=2)
+        {
+            ((short*)data)[i]*= SoftwareVolume::instance()->left()/100.0;
+            ((short*)data)[i+1]*= SoftwareVolume::instance()->right()/100.0;
+        }
+    else
+    {
+        int l = qMax(SoftwareVolume::instance()->left(), SoftwareVolume::instance()->right());
+        for (qint64 i = 0; i < size/2; i++)
+            ((short*)data)[i]*= l/100.0;
+    }
+}
 
 // static methods
 

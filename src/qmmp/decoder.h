@@ -87,7 +87,6 @@ protected slots:
 
 private:
     void init();
-    void changeVolume(char *data, qint64 size, int chan);
     static void checkFactories();
 
     DecoderFactory *m_factory;

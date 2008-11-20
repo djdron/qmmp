@@ -19,7 +19,6 @@
 #include "visual.h"
 #include "decoderfactory.h"
 #include "streamreader.h"
-#include "volumecontrol.h"
 
 extern "C"
 {
@@ -141,7 +140,6 @@ qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
         }
         iir((void*) data, sz, chan);
     }
-    changeVolume(data, sz, chan);
     char *out_data = data;
     char *prev_data = data;
     qint64 w = sz;
@@ -186,24 +184,6 @@ void Decoder::finish()
 {
     //output()->wait();
     emit playbackFinished();
-}
-
-void Decoder::changeVolume(char *data, qint64 size, int chan)
-{
-    if (!SoftwareVolume::instance())
-        return;
-    if (chan > 1)
-        for (qint64 i = 0; i < size/2; i+=2)
-        {
-            ((short*)data)[i]*= SoftwareVolume::instance()->left()/256.0;
-            ((short*)data)[i+1]*= SoftwareVolume::instance()->right()/256.0;
-        }
-    else
-    {
-        int l = qMax(SoftwareVolume::instance()->left(), SoftwareVolume::instance()->right());
-        for (qint64 i = 0; i < size/2; i++)
-            ((short*)data)[i]*= l/256.0;
-    }
 }
 
 // static methods
