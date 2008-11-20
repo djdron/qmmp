@@ -22,8 +22,9 @@
 #define OUTPUTPULSEAUDIO_H
 
 #include <QObject>
-extern "C" {
- #include <pulse/simple.h>
+extern "C"
+{
+#include <pulse/simple.h>
 }
 
 #include <qmmp/output.h>
@@ -33,34 +34,25 @@ extern "C" {
 */
 class OutputPulseAudio : public Output
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     OutputPulseAudio(QObject * parent = 0);
     ~OutputPulseAudio();
 
     bool initialize();
-    bool isInitialized() const { return m_inited; }
-    void uninitialize();
     void configure(quint32, int, int);
-    void stop();
-    void pause();
-    qint64 written();
     qint64 latency();
-    void seek(qint64);
 
 private:
-    // thread run function
-    void run();
+    //output api
+    qint64 writeAudio(unsigned char *data, qint64 maxSize);
+    void flush();
 
-    // helper function
+    // helper functions
     void status();
+    void uninitialize();
 
-    bool m_inited, m_pause, m_play, m_userStop;
-    qint64 m_totalWritten, m_currentSeconds, m_bps;
-    quint32  m_frequency;
-    int m_rate, m_channels, m_precision;
     pa_simple *m_connection;
-
 };
 
 

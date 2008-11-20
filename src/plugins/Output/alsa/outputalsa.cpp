@@ -38,16 +38,16 @@
 #include "outputalsa.h"
 
 OutputALSA::OutputALSA(QObject * parent)
-        : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
-        m_userStop(FALSE), m_totalWritten(0), m_currentSeconds(-1),
-        m_bps(-1), m_channels(-1), m_precision(-1)
+        : Output(parent), m_inited(FALSE)
 {
-    m_frequency = 0;
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     QString dev_name = settings.value("ALSA/device","default").toString();
     m_use_mmap = settings.value("ALSA/use_mmap", FALSE).toBool();
     pcm_name = strdup(dev_name.toAscii().data());
     pcm_handle = 0;
+    m_prebuf = 0;
+    m_prebuf_size = 0;
+    m_prebuf_fill = 0;
 }
 
 OutputALSA::~OutputALSA()
@@ -56,168 +56,136 @@ OutputALSA::~OutputALSA()
     free (pcm_name);
 }
 
-void OutputALSA::stop()
-{
-    m_userStop = TRUE;
-}
-
-void OutputALSA::status()
-{
-    long ct = (m_totalWritten - latency()) / m_bps;
-
-    if (ct < 0)
-        ct = 0;
-
-    if (ct > m_currentSeconds)
-    {
-        m_currentSeconds = ct;
-        dispatch(m_currentSeconds, m_totalWritten, m_rate,
-                 m_frequency, m_precision, m_channels);
-    }
-}
-
-qint64 OutputALSA::written()
-{
-    return m_totalWritten;
-}
-
-void OutputALSA::seek(qint64 pos)
-{
-    m_totalWritten = (pos * m_bps);
-    m_currentSeconds = -1;
-}
-
 void OutputALSA::configure(quint32 freq, int chan, int prec)
 {
     // we need to configure
-    if (freq != m_frequency || chan != m_channels || prec != m_precision)
+
+    uint rate = freq; /* Sample rate */
+    uint exact_rate = freq;   /* Sample rate returned by */
+
+    /* load settings from config */
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    settings.beginGroup("ALSA");
+    uint buffer_time = settings.value("buffer_time",500).toUInt()*1000;
+    uint period_time = settings.value("period_time",100).toUInt()*1000;
+    settings.endGroup();
+
+    snd_pcm_hw_params_t *hwparams = 0;
+    snd_pcm_sw_params_t *swparams = 0;
+    int err; //alsa error code
+
+    //hw params
+    snd_pcm_hw_params_alloca(&hwparams);
+    if ((err = snd_pcm_hw_params_any(pcm_handle, hwparams)) < 0)
     {
-        m_frequency = freq;
-        m_channels = chan;
-        m_precision = prec;
-        m_bps = freq * chan * (prec / 8);
-        uint rate = m_frequency; /* Sample rate */
-        uint exact_rate = m_frequency;   /* Sample rate returned by */
-
-        /* load settings from config */
-        QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-        settings.beginGroup("ALSA");
-        uint buffer_time = settings.value("buffer_time",500).toUInt()*1000;
-        uint period_time = settings.value("period_time",100).toUInt()*1000;
-        settings.endGroup();
-
-        snd_pcm_hw_params_t *hwparams = 0;
-        snd_pcm_sw_params_t *swparams = 0;
-        int err; //alsa error code
-
-        //hw params
-        snd_pcm_hw_params_alloca(&hwparams);
-        if ((err = snd_pcm_hw_params_any(pcm_handle, hwparams)) < 0)
-        {
-            qWarning("OutputALSA: Can not read configuration for PCM device: %s", snd_strerror(err));
-            return;
-        }
-        if (m_use_mmap)
-        {
-            if ((err = snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_MMAP_INTERLEAVED)) < 0)
-            {
-                qWarning("OutputALSA: Error setting mmap access: %s", snd_strerror(err));
-                m_use_mmap = FALSE;
-            }
-        }
-        if (!m_use_mmap)
-        {
-            if ((err = snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED)) < 0)
-            {
-                qWarning("OutputALSA: Error setting access: %s", snd_strerror(err));
-                return;
-            }
-        }
-        snd_pcm_format_t format = SND_PCM_FORMAT_UNKNOWN;
-        switch (prec)
-        {
-        case 8:
-            format = SND_PCM_FORMAT_S8;
-            break;
-        case 16:
-            format = SND_PCM_FORMAT_S16_LE;
-            break;
-        case 24:
-            format = SND_PCM_FORMAT_S24_LE;
-            break;
-        case 32:
-            format = SND_PCM_FORMAT_S32_LE;
-            break;
-        default:
-            qWarning("OutputALSA: unsupported format detected");
-            return;
-        }
-        if ((err = snd_pcm_hw_params_set_format(pcm_handle, hwparams, format)) < 0)
-        {
-            qDebug("OutputALSA: Error setting format: %s", snd_strerror(err));
-            return;
-        }
-        exact_rate = rate;// = 11000;
-        qDebug("OutputALSA: frequency=%d, channels=%d", rate, chan);
-
-        if ((err = snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0)) < 0)
-        {
-            qWarning("OutputALSA: Error setting rate: %s", snd_strerror(err));
-            return;
-        }
-        if (rate != exact_rate)
-        {
-            qWarning("OutputALSA: The rate %d Hz is not supported by your hardware.\n==> Using %d Hz instead.", rate, exact_rate);
-        }
-        uint c = m_channels;
-        if ((err = snd_pcm_hw_params_set_channels_near(pcm_handle, hwparams, &c)) < 0)
-        {
-            qWarning("OutputALSA: Error setting channels: %s", snd_strerror(err));
-            return;
-        }
-        if ((err = snd_pcm_hw_params_set_period_time_near(pcm_handle, hwparams, &period_time ,0)) < 0)
-        {
-            qWarning("OutputALSA: Error setting period time: %s", snd_strerror(err));
-            return;
-        }
-        if ((err = snd_pcm_hw_params_set_buffer_time_near(pcm_handle, hwparams, &buffer_time ,0)) < 0)
-        {
-            qWarning("OutputALSA: Error setting buffer time: %s", snd_strerror(err));
-            return;
-        }
-        if ((err = snd_pcm_hw_params(pcm_handle, hwparams)) < 0)
-        {
-            qWarning("OutputALSA: Error setting HW params: %s", snd_strerror(err));
-            return;
-        }
-        //read some alsa parameters
-        snd_pcm_uframes_t buffer_size = 0;
-        snd_pcm_uframes_t period_size = 0;
-        if ((err = snd_pcm_hw_params_get_buffer_size(hwparams, &buffer_size)) < 0)
-        {
-            qWarning("OutputALSA: Error reading buffer size: %s", snd_strerror(err));
-            return;
-        }
-        if ((err = snd_pcm_hw_params_get_period_size(hwparams, &period_size, 0)) < 0)
-        {
-            qWarning("OutputALSA: Error reading period size: %s", snd_strerror(err));
-            return;
-        }
-        //swparams
-        snd_pcm_sw_params_alloca(&swparams);
-        snd_pcm_sw_params_current(pcm_handle, swparams);
-        if ((err = snd_pcm_sw_params_set_start_threshold(pcm_handle, swparams,
-                   buffer_size - period_size)) < 0)
-            qWarning("OutputALSA: Error setting threshold: %s", snd_strerror(err));
-        if ((err = snd_pcm_sw_params(pcm_handle, swparams)) < 0)
-        {
-            qWarning("OutputALSA: Error setting SW params: %s", snd_strerror(err));
-            return;
-        }
-        //setup needed values
-        m_bits_per_frame = snd_pcm_format_physical_width(format) * chan;
-        m_chunk_size = period_size;
+        qWarning("OutputALSA: Can not read configuration for PCM device: %s", snd_strerror(err));
+        return;
     }
+    if (m_use_mmap)
+    {
+        if ((err = snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_MMAP_INTERLEAVED)) < 0)
+        {
+            qWarning("OutputALSA: Error setting mmap access: %s", snd_strerror(err));
+            m_use_mmap = FALSE;
+        }
+    }
+    if (!m_use_mmap)
+    {
+        if ((err = snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_RW_INTERLEAVED)) < 0)
+        {
+            qWarning("OutputALSA: Error setting access: %s", snd_strerror(err));
+            return;
+        }
+    }
+    snd_pcm_format_t format = SND_PCM_FORMAT_UNKNOWN;
+    switch (prec)
+    {
+    case 8:
+        format = SND_PCM_FORMAT_S8;
+        break;
+    case 16:
+        format = SND_PCM_FORMAT_S16_LE;
+        break;
+    case 24:
+        format = SND_PCM_FORMAT_S24_LE;
+        break;
+    case 32:
+        format = SND_PCM_FORMAT_S32_LE;
+        break;
+    default:
+        qWarning("OutputALSA: unsupported format detected");
+        return;
+    }
+    if ((err = snd_pcm_hw_params_set_format(pcm_handle, hwparams, format)) < 0)
+    {
+        qDebug("OutputALSA: Error setting format: %s", snd_strerror(err));
+        return;
+    }
+    exact_rate = rate;// = 11000;
+    qDebug("OutputALSA: frequency=%d, channels=%d", rate, chan);
+
+    if ((err = snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0)) < 0)
+    {
+        qWarning("OutputALSA: Error setting rate: %s", snd_strerror(err));
+        return;
+    }
+    if (rate != exact_rate)
+    {
+        qWarning("OutputALSA: The rate %d Hz is not supported by your hardware.\n==> Using %d Hz instead.", rate, exact_rate);
+    }
+    uint c = chan;
+    if ((err = snd_pcm_hw_params_set_channels_near(pcm_handle, hwparams, &c)) < 0)
+    {
+        qWarning("OutputALSA: Error setting channels: %s", snd_strerror(err));
+        return;
+    }
+    if ((err = snd_pcm_hw_params_set_period_time_near(pcm_handle, hwparams, &period_time ,0)) < 0)
+    {
+        qWarning("OutputALSA: Error setting period time: %s", snd_strerror(err));
+        return;
+    }
+    if ((err = snd_pcm_hw_params_set_buffer_time_near(pcm_handle, hwparams, &buffer_time ,0)) < 0)
+    {
+        qWarning("OutputALSA: Error setting buffer time: %s", snd_strerror(err));
+        return;
+    }
+    if ((err = snd_pcm_hw_params(pcm_handle, hwparams)) < 0)
+    {
+        qWarning("OutputALSA: Error setting HW params: %s", snd_strerror(err));
+        return;
+    }
+    //read some alsa parameters
+    snd_pcm_uframes_t buffer_size = 0;
+    snd_pcm_uframes_t period_size = 0;
+    if ((err = snd_pcm_hw_params_get_buffer_size(hwparams, &buffer_size)) < 0)
+    {
+        qWarning("OutputALSA: Error reading buffer size: %s", snd_strerror(err));
+        return;
+    }
+    if ((err = snd_pcm_hw_params_get_period_size(hwparams, &period_size, 0)) < 0)
+    {
+        qWarning("OutputALSA: Error reading period size: %s", snd_strerror(err));
+        return;
+    }
+    //swparams
+    snd_pcm_sw_params_alloca(&swparams);
+    snd_pcm_sw_params_current(pcm_handle, swparams);
+    if ((err = snd_pcm_sw_params_set_start_threshold(pcm_handle, swparams,
+               buffer_size - period_size)) < 0)
+        qWarning("OutputALSA: Error setting threshold: %s", snd_strerror(err));
+    if ((err = snd_pcm_sw_params(pcm_handle, swparams)) < 0)
+    {
+        qWarning("OutputALSA: Error setting SW params: %s", snd_strerror(err));
+        return;
+    }
+    //setup needed values
+    m_bits_per_frame = snd_pcm_format_physical_width(format) * chan;
+    m_chunk_size = period_size;
+    //}
+    Output::configure(freq, chan, prec); //apply configuration
+    //create alsa prebuffer;
+    m_prebuf_size = Buffer::size() + m_bits_per_frame * m_chunk_size / 8;
+    m_prebuf = (uchar *)malloc(m_prebuf_size);
 }
 
 void OutputALSA::reset()
@@ -234,25 +202,13 @@ void OutputALSA::reset()
     }
 }
 
-
-void OutputALSA::pause()
-{
-    if (!m_play)
-        return;
-    m_pause = !m_pause;
-    Qmmp::State state = m_pause ? Qmmp::Paused: Qmmp::Playing;
-    dispatch(state);
-}
-
 bool OutputALSA::initialize()
 {
-    m_inited = m_pause = m_play = m_userStop = FALSE;
+    m_inited = FALSE;
 
     if (pcm_handle)
         return FALSE;
 
-    m_currentSeconds = -1;
-    m_totalWritten = 0;
     if (snd_pcm_open(&pcm_handle, pcm_name, SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK) < 0)
     {
         qWarning ("OutputALSA: Error opening PCM device %s", pcm_name);
@@ -277,125 +233,52 @@ qint64 OutputALSA::latency()
     return used;
 }
 
-void OutputALSA::run()
+qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
 {
-
-    mutex()->lock ();
-    if (! m_inited)
+    //increase buffer size if needed
+    if (m_prebuf_size < m_prebuf_fill + maxSize)
     {
-        mutex()->unlock();
-        return;
+        m_prebuf_size = m_prebuf_fill + maxSize;
+        m_prebuf = (uchar*) realloc(m_prebuf, m_prebuf_size);
     }
+    memcpy(m_prebuf + m_prebuf_fill, data, maxSize);
+    m_prebuf_fill += maxSize;
 
-    m_play = TRUE;
+    snd_pcm_uframes_t l = snd_pcm_bytes_to_frames(pcm_handle, m_prebuf_fill);
 
-    mutex()->unlock();
-
-    Buffer *b = 0;
-    bool done = FALSE;
-    long m = 0;
-    snd_pcm_uframes_t l;
-
-    long prebuffer_size = Buffer::size() + m_bits_per_frame * m_chunk_size / 8;
-
-    unsigned char *prebuffer = (unsigned uchar *)malloc(prebuffer_size);
-    ulong prebuffer_fill = 0;
-
-    dispatch(Qmmp::Playing);
-
-    while (!done)
+    while (l >= m_chunk_size)
     {
-        mutex()->lock ();
-        recycler()->mutex()->lock ();
-
-        done = m_userStop;
-
-        while (!done && (recycler()->empty() || m_pause))
+        snd_pcm_wait(pcm_handle, 10);
+        long m;
+        if ((m = alsa_write(m_prebuf, m_chunk_size)) >= 0)
         {
-            mutex()->unlock();
-            recycler()->cond()->wakeOne();
-            recycler()->cond()->wait(recycler()->mutex());
-            mutex()->lock ();
-            done = m_userStop;
+            l -= m;
+            m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
+            m_prebuf_fill -= m;
+            memcpy(m_prebuf, m_prebuf + m, m_prebuf_fill); //move data to begin
         }
-        status();
-
-        if (! b)
-        {
-            b = recycler()->next();
-            if (b->rate)
-                m_rate = b->rate;
-        }
-
-        recycler()->cond()->wakeOne();
-        recycler()->mutex()->unlock();
-
-        if (b)
-        {
-            if ((ulong)prebuffer_size < prebuffer_fill + b->nbytes)
-            {
-                prebuffer_size = prebuffer_fill + b->nbytes;
-                prebuffer = (unsigned char*) realloc(prebuffer, prebuffer_size);
-            }
-
-
-            memcpy(prebuffer + prebuffer_fill, b->data, b->nbytes);
-            prebuffer_fill += b->nbytes;
-
-            l = snd_pcm_bytes_to_frames(pcm_handle, prebuffer_fill);
-
-            while (l >= m_chunk_size)
-            {
-                snd_pcm_wait(pcm_handle, 10);
-                if ((m = alsa_write(prebuffer, m_chunk_size)) >= 0)
-                {
-                    l -= m;
-                    m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
-                    prebuffer_fill -= m;
-                    memcpy(prebuffer, prebuffer + m, prebuffer_fill); //move data to begin
-                    m_totalWritten += m;
-                    status();
-                    dispatchVisual(b, m_totalWritten, m_channels, m_precision);
-                }
-                else
-                    break;
-            }
-        }
-        //force buffer change
-        recycler()->mutex()->lock ();
-        recycler()->done();
-        recycler()->mutex()->unlock();
-        b = 0;
-        mutex()->unlock();
+        else
+            return -1;
     }
+    return maxSize;
+}
 
-    mutex()->lock ();
-    //write remaining data
-    if (prebuffer_fill > 0 && recycler()->empty())
+void OutputALSA::flush()
+{
+    snd_pcm_uframes_t l = snd_pcm_bytes_to_frames(pcm_handle, m_prebuf_fill);
+    long m;
+    while (l > 0)
     {
-        l = snd_pcm_bytes_to_frames(pcm_handle, prebuffer_fill);
-
-        while (l > 0)
+        if ((m = alsa_write(m_prebuf, l)) >= 0)
         {
-            if ((m = alsa_write(prebuffer, l)) >= 0)
-            {
-                l -= m;
-                m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
-                prebuffer_fill -= m;
-                memcpy(prebuffer, prebuffer + m, prebuffer_fill);
-                m_totalWritten += m;
-                status();
-            }
-            else
-                break;
+            l -= m;
+            m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
+            m_prebuf_fill -= m;
+            memcpy(m_prebuf, m_prebuf + m, m_prebuf_fill);
         }
+        else
+            break;
     }
-    m_play = FALSE;
-    dispatch(Qmmp::Stopped);
-    free(prebuffer);
-    prebuffer = 0;
-    mutex()->unlock();
-
 }
 
 long OutputALSA::alsa_write(unsigned char *data, long size)
@@ -408,18 +291,18 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
 
     if (m == -EAGAIN)
     {
-        mutex()->unlock();
+        //mutex()->unlock();
         snd_pcm_wait(pcm_handle, 500);
-        mutex()->lock ();
+        //mutex()->lock ();
         return 0;
     }
     else if (m >= 0)
     {
         if (m < size)
         {
-            mutex()->unlock();
+            //mutex()->unlock();
             snd_pcm_wait(pcm_handle, 500);
-            mutex()->lock ();
+            //mutex()->lock ();
         }
         return m;
     }
@@ -433,6 +316,7 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
             /* TODO: reopen the device */
             return -1;
         }
+        return 0;
     }
     else if (m == -ESTRPIPE)
     {
@@ -450,6 +334,7 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
                 return -1;
             }
         }
+        return 0;
     }
     return -1;
 }
@@ -459,21 +344,15 @@ void OutputALSA::uninitialize()
     if (!m_inited)
         return;
     m_inited = FALSE;
-    m_pause = FALSE;
-    m_play = FALSE;
-    m_userStop  = FALSE;
-    m_totalWritten = 0;
-    m_currentSeconds = -1;
-    m_bps = -1;
-    m_frequency = -1;
-    m_channels = -1;
-    m_precision = -1;
     if (pcm_handle)
     {
         qDebug("OutputALSA: closing pcm_handle");
         snd_pcm_close(pcm_handle);
         pcm_handle = 0;
     }
+    if (m_prebuf)
+        free(m_prebuf);
+    m_prebuf = 0;
 }
 /* ****** MIXER ******* */
 

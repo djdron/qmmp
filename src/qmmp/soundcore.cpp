@@ -76,7 +76,6 @@ SoundCore::~SoundCore()
 bool SoundCore::play(const QString &source)
 {
     stop();
-    qDebug("SoundCore: url=%s", qPrintable(source));
     m_source = source;
     if (m_handler->state() != Qmmp::Stopped) //clear error state
         m_handler->dispatch(Qmmp::Stopped);
