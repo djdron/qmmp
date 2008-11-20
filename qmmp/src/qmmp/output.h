@@ -70,6 +70,7 @@ protected:
 private:
     void run(); //thread run function
     void status();
+    void changeVolume(uchar *data, qint64 size, int chan);
     QMutex m_mutex;
     Recycler m_recycler;
     StateHandler *m_handler;
