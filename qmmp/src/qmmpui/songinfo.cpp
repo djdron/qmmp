@@ -142,6 +142,7 @@ bool SongInfo::isEmpty () const
 
 void SongInfo::clear ()
 {
+    m_path.clear();
     m_strValues.clear();
     m_numValues.clear();
     m_stream = FALSE;
