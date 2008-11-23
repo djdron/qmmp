@@ -104,13 +104,6 @@ bool SoundCore::play(const QString &source)
                 m_handler->dispatch(Qmmp::NormalError);
                 return FALSE;
             }
-            QList <FileInfo *> list = m_factory->createPlayList(url.toLocalFile ());
-            if (!list.isEmpty())
-            {
-                m_handler->dispatch(list[0]->metaData());
-                while (!list.isEmpty())
-                    delete list.takeFirst();
-            }
             return decode();
         }
         else
@@ -243,6 +236,11 @@ void SoundCore::seek(qint64 pos)
         m_decoder->seek(pos);
         m_decoder->mutex()->unlock();
     }
+}
+
+const QString SoundCore::url()
+{
+    return m_source;
 }
 
 qint64 SoundCore::length() const
@@ -401,6 +399,17 @@ bool SoundCore::decode()
 
     if (m_decoder->initialize())
     {
+        if (QFile::exists(m_source)) //send metadata for local files
+        {
+            QList <FileInfo *> list = m_factory->createPlayList(m_source);
+            if (!list.isEmpty())
+            {
+                m_handler->dispatch(list[0]->metaData());
+                while (!list.isEmpty())
+                    delete list.takeFirst();
+            }
+        }
+
         if (m_output)
             m_output->start();
         m_decoder->start();
