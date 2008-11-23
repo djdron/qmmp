@@ -20,6 +20,7 @@
 
 #include <QStringList>
 
+#include "soundcore.h"
 #include "statehandler.h"
 
 
@@ -92,6 +93,8 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
         if (value.isEmpty() || value == "0")
             tmp.remove(tmp.key(value));
     }
+    qDebug(qPrintable(SoundCore::instance()->url()));
+    tmp.insert(Qmmp::URL, SoundCore::instance()->url());
     if (m_metaData != tmp)
     {
         m_metaData = tmp;

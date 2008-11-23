@@ -119,9 +119,14 @@ public slots:
     void pause();
 
     /*!
-    *This function sets the current play position to \p pos.
+    *  This function sets the current play position to \p pos.
     */
     void seek(qint64 pos);
+
+    /*!
+    *  This function returns file path or stream url.
+    */
+    const QString url();
 
 signals:
 
