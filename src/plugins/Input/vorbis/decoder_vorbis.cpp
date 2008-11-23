@@ -116,16 +116,13 @@ void DecoderVorbis::flush(bool final)
 {
     ulong min = final ? 0 : bks;
 
-    while ((! done && ! m_finish) && output_bytes > min)
+    while ((!done && !m_finish) && output_bytes > min)
     {
         output()->recycler()->mutex()->lock ();
-
         while ((! done && ! m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();
-
             output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
             mutex()->lock ();
             done = user_stop;
         }
@@ -299,25 +296,13 @@ void DecoderVorbis::run()
 {
     mutex()->lock ();
 
-    if (! inited)
+    if (!inited)
     {
         mutex()->unlock();
-
         return;
     }
 
-    //stat = DecoderEvent::Decoding;
-    //stat = DecoderState::Decoding;
     mutex()->unlock();
-
-    {
-        //DecoderEvent e((DecoderEvent::Type) stat);
-        //dispatch(e);
-        //DecoderStatus st ((DecoderStatus::Type) stat);
-        //dispatch(DecoderState ((DecoderState::Type) stat));
-
-        //emit statusChanged(stat);
-    }
 
     int section = 0;
     int last_section = -1;
@@ -350,7 +335,6 @@ void DecoderVorbis::run()
 
             output_at += len;
             output_bytes += len;
-
             if (output())
                 flush();
         }
@@ -386,7 +370,6 @@ void DecoderVorbis::run()
 
             m_finish = TRUE;
         }
-
         mutex()->unlock();
     }
 
@@ -394,19 +377,7 @@ void DecoderVorbis::run()
 
     if (m_finish)
         finish();
-    /*   stat = DecoderState::Finished;
-    else if (user_stop)
-       stat = DecoderState::Stopped;*/
 
     mutex()->unlock();
-
-    {
-        /*DecoderEvent e((DecoderEvent::Type) stat);
-        dispatch(e);*/
-        //DecoderStatus st ((DecoderStatus::Type) stat);
-        //emit statusChanged(st);
-        //dispatch(DecoderState ((DecoderState::Type) stat));
-    }
-
     deinit();
 }
