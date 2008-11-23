@@ -26,6 +26,8 @@ Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
     m_totalWritten = 0;
     m_currentSeconds = -1;
     m_bytesPerSecond = 0;
+    m_userStop = FALSE;
+    m_pause = FALSE;
 }
 
 void Output::configure(quint32 freq, int chan, int prec)
@@ -122,14 +124,15 @@ void Output::dispatch(const Qmmp::State &state)
 
 void Output::run()
 {
+    mutex()->lock ();
     if (!m_bytesPerSecond)
     {
         qWarning("Output: invalid audio parameters");
+        mutex()->unlock ();
         return;
     }
+    mutex()->unlock ();
 
-    m_userStop = FALSE;
-    m_pause = FALSE;
     bool done = FALSE;
     Buffer *b = 0;
     qint64 l = 0;
@@ -140,9 +143,8 @@ void Output::run()
     {
         mutex()->lock ();
         recycler()->mutex()->lock ();
-
         done = m_userStop;
-
+        
         while (!done && (recycler()->empty() || m_pause))
         {
             mutex()->unlock();
@@ -152,14 +154,12 @@ void Output::run()
             done = m_userStop;
         }
         status();
-
         if (!b)
         {
             b = recycler()->next();
             if (b && b->rate)
                 m_kbps = b->rate;
         }
-
         recycler()->cond()->wakeOne();
         recycler()->mutex()->unlock();
         mutex()->unlock();
