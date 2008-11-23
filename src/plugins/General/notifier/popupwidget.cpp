@@ -39,7 +39,7 @@ PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
     if(title.isEmpty())
         title = song.path().section('/',-1);
     title.append(" ");
-    if (!song.isStream())
+    if (song.length() > 0)
         title.append(QString("(%1:%2)").arg(song.length()/60).arg(song.length()%60, 2, 10, QChar('0')));
 
     QHBoxLayout *hlayout = new QHBoxLayout(this);
