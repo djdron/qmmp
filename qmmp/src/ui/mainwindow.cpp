@@ -364,9 +364,9 @@ void MainWindow::showMetaData()
         info.setValue(SongInfo::GENRE, m_core->metaData(Qmmp::GENRE));
         info.setValue(SongInfo::YEAR, m_core->metaData(Qmmp::YEAR).toUInt());
         info.setValue(SongInfo::TRACK, m_core->metaData(Qmmp::TRACK).toUInt());
-        //info.setValue(SongInfo::LENGTH, st.tag()->length());
         info.setValue(SongInfo::STREAM, !QFile::exists(m_playlist->currentItem()->path()));
         info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
+        info.setValue(SongInfo::LENGTH, m_playlist->currentItem()->length());
         m_generalHandler->setSongInfo(info);
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
         m_playlist->listWidget()->updateList();
