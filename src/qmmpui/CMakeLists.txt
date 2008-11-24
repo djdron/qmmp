@@ -25,20 +25,17 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 SET(libqmmpui_SRCS
     general.cpp
     generalhandler.cpp
-    songinfo.cpp
-    control.cpp
     playlistparser.cpp
     commandlinemanager.cpp
     filedialog.cpp
     qtfiledialog.cpp
+    songinfo.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
     generalfactory.h
     general.h
     generalhandler.h
-    songinfo.h
-    control.h
     playlistparser.h
     playlistformat.h
     commandlinemanager.h
@@ -46,14 +43,13 @@ SET(libqmmpui_MOC_HDRS
     filedialog.h
     filedialogfactory.h
     qtfiledialog.h
+    songinfo.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
     generalfactory.h
     general.h
     generalhandler.h
-    songinfo.h
-    control.h
     playlistparser.h
     playlistformat.h
     commandlinemanager.h
@@ -71,6 +67,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RCC_SRCS})
 target_link_libraries(qmmpui ${QT_LIBRARIES})
+add_dependencies(qmmpui libqmmp)
 SET_TARGET_PROPERTIES(qmmpui PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})
 install(TARGETS qmmpui LIBRARY DESTINATION ${LIB_DIR})
 install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION include/qmmpui)

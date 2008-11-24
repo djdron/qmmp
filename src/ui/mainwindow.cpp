@@ -142,15 +142,15 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
     m_generalHandler = new GeneralHandler(this);
     connect(m_generalHandler, SIGNAL(playCalled()), SLOT(play()));
-    connect(m_generalHandler, SIGNAL(nextCalled()), SLOT(next()));
+    /*connect(m_generalHandler, SIGNAL(nextCalled()), SLOT(next()));
     connect(m_generalHandler, SIGNAL(previousCalled()), SLOT(previous()));
     connect(m_generalHandler, SIGNAL(stopCalled()), SLOT(stop()));
     connect(m_generalHandler, SIGNAL(pauseCalled()), SLOT(pause()));
-    connect(m_generalHandler, SIGNAL(seekCalled(int)), SLOT(seek(int)));
+    connect(m_generalHandler, SIGNAL(seekCalled(int)), SLOT(seek(int)));*/
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
-    connect(m_generalHandler, SIGNAL(volumeChanged(int, int)),
-            m_core, SLOT(setVolume(int, int)));
+    /*connect(m_generalHandler, SIGNAL(volumeChanged(int, int)),
+            m_core, SLOT(setVolume(int, int)));*/
 
     m_playListModel->readSettings();
     char buf[PATH_MAX + 1];
@@ -187,7 +187,7 @@ void MainWindow::play()
     if (s.isEmpty())
         return;
     if (m_core->play(s))
-        m_generalHandler->setTime(0);
+        /*m_generalHandler->setTime(0)*/;
     else
     {
         //find out the reason why playback failed
@@ -316,7 +316,7 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
     {
-        m_generalHandler->setState(General::Playing);
+        //m_generalHandler->setState(General::Playing);
         /*if (m_playListModel->currentItem())
         {
             SongInfo info = *m_playListModel->currentItem();
@@ -330,12 +330,12 @@ void MainWindow::showState(Qmmp::State state)
     }
     case Qmmp::Paused:
     {
-        m_generalHandler->setState(General::Paused);
+        //m_generalHandler->setState(General::Paused);
         break;
     }
     case Qmmp::Stopped:
     {
-        m_generalHandler->setState(General::Stopped);
+        //m_generalHandler->setState(General::Stopped);
         m_playlist->setTime(-1);
         m_titlebar->setTime(-1);
         break;
@@ -367,7 +367,7 @@ void MainWindow::showMetaData()
         info.setValue(SongInfo::STREAM, !QFile::exists(m_playlist->currentItem()->path()));
         info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
         info.setValue(SongInfo::LENGTH, m_playlist->currentItem()->length());
-        m_generalHandler->setSongInfo(info);
+        //m_generalHandler->setSongInfo(info);
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
         m_playlist->listWidget()->updateList();
     }
@@ -381,7 +381,7 @@ void MainWindow::changeTitle(const QString &title)
     SongInfo info;
     info.setValue(SongInfo::TITLE, title);
     info.setValue(SongInfo::STREAM, TRUE);
-    m_generalHandler->setSongInfo(info);
+    //m_generalHandler->setSongInfo(info);
 }
 
 void MainWindow::closeEvent ( QCloseEvent *)

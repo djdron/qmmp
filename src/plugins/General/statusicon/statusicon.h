@@ -21,10 +21,12 @@
 #define STATUSICON_H
 
 #include <QSystemTrayIcon>
+#include <QMap>
 
 #include <qmmpui/general.h>
+#include <qmmp/qmmp.h>
 
-class Control;
+class SoundCore;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -34,14 +36,13 @@ class StatusIcon : public General
 {
 Q_OBJECT
 public:
-    StatusIcon(Control *control, QObject *parent = 0);
+    StatusIcon(QObject *parent = 0);
 
     ~StatusIcon();
 
-    void setState(const uint& state);
-    void setSongInfo(const SongInfo &song);
-
 private slots:
+    void showMetaData();
+    void setState(Qmmp::State state);
     void trayActivated(QSystemTrayIcon::ActivationReason);
     void enable();
 
@@ -52,9 +53,7 @@ private:
     bool m_hideToTray;
     bool m_enabled;
     int m_messageDelay;
-    Control *m_control;
-    uint m_state;
-
+    SoundCore *m_core;
 };
 
 #endif

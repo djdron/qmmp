@@ -24,7 +24,6 @@
 #include <QStringList>
 #include <QMap>
 
-#include "songinfo.h"
 #include "generalfactory.h"
 
 class Control;
@@ -40,7 +39,7 @@ public:
 
     ~General();
 
-    enum State
+    /*enum State
     {
         Playing = 0,
         Paused,
@@ -50,13 +49,23 @@ public:
     virtual void setState(const uint &state);
     virtual void setSongInfo(const SongInfo &song);
     virtual void setVolume(int left, int right);
-    virtual void setTime(int time);
+    virtual void setTime(int time);*/
 
     //static methods
     static QList<GeneralFactory*> *generalFactories();
     static QStringList generalFiles();
     static void setEnabled(GeneralFactory* factory, bool enable = TRUE);
     static bool isEnabled(GeneralFactory* factory);
+
+public slots:
+    void play();
+    void exit();
+    void toggleVisibility();
+
+signals:
+    void playCalled();
+    void exitCalled();
+    void toggleVisibilityCalled();
 
 private:
     QMap <uint, QString> m_strValues;

@@ -40,5 +40,5 @@ SOURCES += dbuscontrolfactory.cpp \
     
 INCLUDEPATH += ../../../../src
 
-LIBS += -lqmmpui
+LIBS += -lqmmpui -lqmmp
 

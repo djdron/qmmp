@@ -18,84 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <qmmpui/control.h>
-
 #include "dbusadaptor.h"
 #include "dbuscontrol.h"
 
-DBUSControl::DBUSControl(Control *control, QObject *parent)
+DBUSControl::DBUSControl(QObject *parent)
         : General(parent)
 {
-    new DBUSAdaptor(control, this);
+    new DBUSAdaptor(this);
     QDBusConnection connection = QDBusConnection::sessionBus();
     connection.registerObject("/Qmmp", this);
     connection.registerService("org.qmmp.dbus");
     m_left = 0;
     m_right = 0;
     m_time = 0;
-    m_state = General::Stopped;
+    //m_state = General::Stopped;
 }
 
 
 DBUSControl::~DBUSControl()
 {
-}
-
-void DBUSControl::setState(const uint &state)
-{
-    m_state = state;
-    emit stateChanged();
-    switch ((uint) state)
-    {
-    case General::Playing:
-    {
-        break;
-    }
-    case General::Paused:
-    {
-        break;
-    }
-    case General::Stopped:
-    {
-        m_song.clear();
-        m_time = 0;
-        break;
-    }
-    }
-}
-
-void DBUSControl::setSongInfo(const SongInfo &song)
-{
-    m_song = song;
-    emit songChanged();
-}
-
-void DBUSControl::setVolume(int left, int right)
-{
-    m_left = left;
-    m_right = right;
-    emit volumeChanged();
-}
-
-void DBUSControl::setTime(int time)
-{
-    m_time = time;
-    emit timeChanged();
-}
-
-SongInfo *DBUSControl::info()
-{
-    return &m_song;
-}
-
-uint DBUSControl::state()
-{
-    return m_state;
-}
-
-int DBUSControl::elapsedTime()
-{
-    return m_time;
 }
 
 int DBUSControl::leftVolume()

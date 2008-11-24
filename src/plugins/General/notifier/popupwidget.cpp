@@ -26,21 +26,25 @@
 #include <QPalette>
 #include <QSettings>
 #include <QDir>
+#include <qmmp/soundcore.h>
 
 #include "popupwidget.h"
 
-PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
+PopupWidget::PopupWidget(QWidget *parent)
         : QFrame(parent)
 {
     setWindowFlags(Qt::X11BypassWindowManagerHint |
-                   Qt::WindowStaysOnTopHint);
+                   Qt::WindowStaysOnTopHint | Qt::Window);
     setFrameStyle(QFrame::Box | QFrame::Plain);
-    QString title = song.title();
-    if(title.isEmpty())
-        title = song.path().section('/',-1);
-    title.append(" ");
-    if (song.length() > 0)
-        title.append(QString("(%1:%2)").arg(song.length()/60).arg(song.length()%60, 2, 10, QChar('0')));
+    SoundCore *core = SoundCore::instance();
+    QString title = core->metaData(Qmmp::TITLE);
+    if (title.isEmpty())
+        title = core->metaData(Qmmp::URL).section('/',-1);
+    if (core->length() > 0)
+    {
+        title.append(" ");
+        title.append(QString("(%1:%2)").arg(core->length()/60).arg(core->length()%60, 2, 10, QChar('0')));
+    }
 
     QHBoxLayout *hlayout = new QHBoxLayout(this);
     QLabel *pixlabel = new QLabel(this);
@@ -52,9 +56,9 @@ PopupWidget::PopupWidget(const SongInfo &song, QWidget *parent)
     QLabel *label1 = new QLabel("<b>"+title+"</b>", this);
     vlayout->addWidget(label1);
 
-    QString info = song.artist();
-    if (!info.isEmpty() && !song.album().isEmpty())
-        info.append(" - " + song.album());
+    QString info = core->metaData(Qmmp::ARTIST);
+    if (!info.isEmpty() && !core->metaData(Qmmp::ALBUM).isEmpty())
+        info.append(" - " + core->metaData(Qmmp::ALBUM));
     if (!info.isEmpty())
     {
         QLabel *label2 = new QLabel(info, this);

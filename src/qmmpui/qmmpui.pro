@@ -6,6 +6,11 @@ warn_on \
 qt \
 thread
 
+QMAKE_LIBDIR += ../../lib qmmpui
+LIBS += -Wl,-rpath,./
+LIBS += -L../../lib -lqmmp
+INCLUDEPATH += ../
+
 TEMPLATE = lib
 
 unix : isEmpty(LIB_DIR){
@@ -28,23 +33,21 @@ target.path = $$LIB_DIR
 HEADERS += general.h \
            generalfactory.h \
            generalhandler.h \
-           songinfo.h \
-           control.h \
            playlistformat.h \
            playlistparser.h \
            commandlinemanager.h \
            commandlineoption.h \
            filedialog.h \
            filedialogfactory.h \
-           qtfiledialog.h
+           qtfiledialog.h \
+           songinfo.h
 SOURCES += general.cpp \
            generalhandler.cpp \
-           songinfo.cpp \
-           control.cpp \
            playlistparser.cpp \
            commandlinemanager.cpp \
            filedialog.cpp \
-           qtfiledialog.cpp
+           qtfiledialog.cpp \
+           songinfo.cpp
 
 DESTDIR = .
 
@@ -62,8 +65,6 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
 devel.files += general.h \
                generalfactory.h \
                generalhandler.h \
-               songinfo.h \
-               control.h \
                playlistformat.h \
                playlistparser.h \
                commandlinemanager.h \

@@ -24,7 +24,6 @@
 #include <QApplication>
 
 #include "playlistformat.h"
-#include "songinfo.h"
 #include "playlistparser.h"
 
 PlaylistParser *PlaylistParser::m_instance = 0;

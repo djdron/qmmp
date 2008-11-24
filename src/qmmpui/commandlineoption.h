@@ -22,7 +22,6 @@
 
 
 class CommandLineManager;
-class Control;
 class QTranslator;
 class QString;
 class QObject;
@@ -52,7 +51,7 @@ public:
     /*!
      * Parses \b opt_str args(if needed), executes command.
      */
-    virtual void executeCommand(const QString& opt_str, CommandLineManager* clm, Control* ctrl) = 0;
+    virtual void executeCommand(const QString& opt_str, CommandLineManager* clm) = 0;
     /*!
      * Creates translator with parent object \b parent
      */

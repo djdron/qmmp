@@ -48,7 +48,7 @@ Q_PROPERTY(int elapsedTime READ elapsedTime)
 
 
 public:
-    DBUSAdaptor(Control *ctrl, QObject *parent = 0);
+    DBUSAdaptor(QObject *parent = 0);
 
     ~DBUSAdaptor();
 
