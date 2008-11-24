@@ -47,6 +47,7 @@ GeneralHandler::GeneralHandler(QObject *parent)
             General *general = factory->create(parent);
             connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
             connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
+            connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
             m_generals.insert(factory, general);
         }
     }
@@ -122,6 +123,7 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
         General *general = factory->create(parent());
         connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
         connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
+        connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals.insert(factory, general);
         //general->setVolume(m_left, m_right);
         /*if (m_state != General::Stopped)
@@ -151,6 +153,7 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
         General *general = factory->create(parent());
         connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
         connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
+        connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals[factory] = general;
         /*general->setVolume(m_left, m_right);
         if (m_state != General::Stopped)
