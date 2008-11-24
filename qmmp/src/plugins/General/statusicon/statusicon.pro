@@ -11,7 +11,7 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libstatusicon.so
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmpui
+LIBS += -lqmmpui -lqmmp
 
 TRANSLATIONS = translations/statusicon_plugin_cs.ts \
                translations/statusicon_plugin_de.ts \

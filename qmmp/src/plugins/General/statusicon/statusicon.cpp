@@ -23,26 +23,27 @@
 #include <QDir>
 #include <QTimer>
 #include <QCoreApplication>
-#include <qmmpui/control.h>
+
+#include <qmmp/soundcore.h>
 
 #include "statusicon.h"
 
-StatusIcon::StatusIcon(Control *control, QObject *parent)
+StatusIcon::StatusIcon(QObject *parent)
         : General(parent)
 {
-    m_control = control;
     m_tray = new QSystemTrayIcon(this);
     connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
     m_tray->setIcon ( QIcon(":/tray_stop.png"));
     m_tray->show();
+    m_core = SoundCore::instance();
     QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
-    menu->addAction(tr("Play"), control, SLOT(play()));
-    menu->addAction(tr("Pause"), control, SLOT(pause()));
-    menu->addAction(tr("Stop"), control, SLOT(stop()));
-    menu->addAction(tr("Next"), control, SLOT(next()));
-    menu->addAction(tr("Previous"), control, SLOT(previous()));
+    menu->addAction(tr("Play"), this, SLOT(play()));
+    menu->addAction(tr("Pause"), m_core, SLOT(pause()));
+    menu->addAction(tr("Stop"), m_core, SLOT(stop()));
+    /*menu->addAction(tr("Next"), control, SLOT(next()));
+    menu->addAction(tr("Previous"), control, SLOT(previous()));*/
     menu->addSeparator();
-    menu->addAction(tr("Exit"), control, SLOT(exit()));
+    menu->addAction(tr("Exit"), this, SLOT(exit()));
     m_tray->setContextMenu(menu);
 
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
@@ -53,30 +54,30 @@ StatusIcon::StatusIcon(Control *control, QObject *parent)
     m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
     settings.endGroup();
     m_enabled = FALSE;
+    connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
+    connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     QTimer::singleShot(200, this, SLOT(enable()));
-    m_state = General::Stopped;
 }
 
 
 StatusIcon::~StatusIcon()
 {}
 
-void StatusIcon::setState(const uint &state)
+void StatusIcon::setState(Qmmp::State state)
 {
-    m_state = state;
     switch ((uint) state)
     {
-    case General::Playing:
+    case Qmmp::Playing:
     {
         m_tray->setIcon(QIcon(":/tray_play.png"));
         break;
     }
-    case General::Paused:
+    case Qmmp::Paused:
     {
         m_tray->setIcon(QIcon(":/tray_pause.png"));
         break;
     }
-    case General::Stopped:
+    case Qmmp::Stopped:
     {
         m_tray->setIcon(QIcon(":/tray_stop.png"));
         break;
@@ -84,17 +85,16 @@ void StatusIcon::setState(const uint &state)
     }
 }
 
-void StatusIcon::setSongInfo(const SongInfo &song)
+void StatusIcon::showMetaData()
 {
-    if(!m_enabled)
+    if (!m_enabled)
         return;
-    QString message = song.artist() + " - " +song.title();
-    if (song.artist().isEmpty())
-        message = song.title();
-    if (song.title().isEmpty())
-        message = song.artist();
-    if (song.artist().isEmpty() && song.title().isEmpty())
-        message = song.path().section('/',-1);
+    QString message = m_core->metaData(Qmmp::ARTIST) + " - " + m_core->metaData(Qmmp::TITLE);
+    if (message.startsWith (" - ") || message.endsWith (" - "))
+        message.remove(" - ");
+    if (message.isEmpty())
+        message = m_core->metaData(Qmmp::URL).section('/',-1);
+
     if (m_showMessage)
         m_tray->showMessage (tr("Now Playing"), message,
                              QSystemTrayIcon::Information, m_messageDelay);
@@ -105,13 +105,13 @@ void StatusIcon::setSongInfo(const SongInfo &song)
 void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger)
-        m_control->toggleVisibility();
+        toggleVisibility();
     else if (reason == QSystemTrayIcon::MiddleClick)
     {
-        if(m_state == General::Stopped)
-            m_control->play();
+        if (SoundCore::instance()->state() == Qmmp::Stopped)
+            play();
         else
-            m_control->pause();
+            m_core->pause();
     }
 }
 

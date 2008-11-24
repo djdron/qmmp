@@ -72,15 +72,30 @@ General::General(QObject *parent)
 General::~General()
 {}
 
-void General::setState(const uint&)
+/*void General::setState(const uint&)
 {}
 
 void General::setSongInfo(const SongInfo &song)
 {}
 
 void General::setTime(int)
-{}
+{}*/
 
+void General::play()
+{
+    //TODO use AbstractPlayList and SoundCore
+    emit playCalled();
+}
+
+void General::exit()
+{
+    emit exitCalled();
+}
+
+void General::toggleVisibility()
+{
+    emit toggleVisibilityCalled();
+}
 
 QList<GeneralFactory*> *General::generalFactories()
 {
@@ -88,11 +103,11 @@ QList<GeneralFactory*> *General::generalFactories()
     return factories;
 }
 
-void General::setVolume(int left, int right)
+/*void General::setVolume(int left, int right)
 {
     Q_UNUSED(left);
     Q_UNUSED(right);
-}
+}*/
 
 QStringList General::generalFiles()
 {

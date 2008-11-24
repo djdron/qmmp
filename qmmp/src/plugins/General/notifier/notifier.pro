@@ -11,7 +11,7 @@ QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libnotifier.so
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmpui
+LIBS += -lqmmpui -lqmmp
 
 TRANSLATIONS = translations/notifier_plugin_cs.ts \
                translations/notifier_plugin_de.ts \

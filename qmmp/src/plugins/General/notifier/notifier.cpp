@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QDir>
 #include <QSettings>
+#include <qmmp/soundcore.h>
 
 #include "popupwidget.h"
 #include "notifier.h"
@@ -36,24 +37,27 @@ Notifier::Notifier(QObject *parent)
     m_desktop = settings.value("desktop_notification", TRUE).toBool();
     m_psi = settings.value("psi_notification", FALSE).toBool();
     settings.endGroup();
+    m_core = SoundCore::instance();
+    connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
+    connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
 }
 
 Notifier::~Notifier()
 {}
 
-void Notifier::setState(const uint &state)
+void Notifier::setState(Qmmp::State state)
 {
-    switch ((uint) state)
+   switch ((uint) state)
     {
-    case General::Playing:
-    {
-        break;
-    }
-    case General::Paused:
+    case Qmmp::Playing:
     {
         break;
     }
-    case General::Stopped:
+    case Qmmp::Paused:
+    {
+        break;
+    }
+    case Qmmp::Stopped:
     {
         QFile::remove(QDir::homePath()+"/.psi/tune");
         break;
@@ -61,20 +65,20 @@ void Notifier::setState(const uint &state)
     }
 }
 
-void Notifier::setSongInfo(const SongInfo &song)
+void Notifier::showMetaData()
 {
     if (m_popupWidget)
         delete m_popupWidget;
     if(m_desktop)
-        m_popupWidget = new PopupWidget(song);
+        m_popupWidget = new PopupWidget();
     if(!m_psi)
         return;
     QFile file(QDir::homePath()+"/.psi/tune");   //psi file
     file.open(QIODevice::WriteOnly | QIODevice::Text);
-    file.write(song.title().toUtf8()+"\n");
-    file.write(song.artist().toUtf8()+"\n");
-    file.write(song.album().toUtf8()+"\n");
-    file.write(QString("%1").arg(song.track()).toUtf8()+"\n");
-    file.write(QString("%1").arg(song.length()).toUtf8()+"\n");
+    file.write(m_core->metaData(Qmmp::TITLE).toUtf8()+"\n");
+    file.write(m_core->metaData(Qmmp::ARTIST).toUtf8()+"\n");
+    file.write(m_core->metaData(Qmmp::ALBUM).toUtf8()+"\n");
+    file.write(m_core->metaData(Qmmp::TRACK).toUtf8()+"\n");
+    file.write(QString("%1").arg(m_core->length()).toUtf8()+"\n");
     file.close();
 }

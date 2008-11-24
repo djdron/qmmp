@@ -23,8 +23,10 @@
 #include <QPointer>
 
 #include <qmmpui/general.h>
+#include <qmmp/qmmp.h>
 
 class PopupWidget;
+class SoundCore;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -38,13 +40,15 @@ public:
 
     ~Notifier();
 
-    void setState(const uint& state);
-    void setSongInfo(const SongInfo &song);
+private slots:
+    void showMetaData();
+    void setState(Qmmp::State state);
 
 private:
     QPointer<PopupWidget> m_popupWidget;
     bool m_desktop;
     bool m_psi;
+    SoundCore *m_core;
 
 };
 

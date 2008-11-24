@@ -34,7 +34,7 @@ const GeneralProperties NotifierFactory::properties() const
     return properties;
 }
 
-General *NotifierFactory::create(Control*, QObject *parent)
+General *NotifierFactory::create(QObject *parent)
 {
     return new Notifier(parent);
 }

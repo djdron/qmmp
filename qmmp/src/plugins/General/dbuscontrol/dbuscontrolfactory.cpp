@@ -33,9 +33,9 @@ const GeneralProperties DBUSControlFactory::properties() const
     return properties;
 }
 
-General *DBUSControlFactory::create(Control *control, QObject *parent)
+General *DBUSControlFactory::create(QObject *parent)
 {
-    return new DBUSControl(control, parent);
+    return new DBUSControl(parent);
 }
 
 QDialog *DBUSControlFactory::createConfigDialog(QWidget *)

@@ -23,8 +23,6 @@
 #include <QWidget>
 #include <QFrame>
 
-#include <qmmpui/songinfo.h>
-
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -32,7 +30,7 @@ class PopupWidget : public QFrame
 {
     Q_OBJECT
 public:
-    PopupWidget(const SongInfo &song, QWidget *parent = 0);
+    PopupWidget(QWidget *parent = 0);
 
     ~PopupWidget();
 

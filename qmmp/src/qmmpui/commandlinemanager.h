@@ -36,20 +36,11 @@ public:
     ~CommandLineManager();
 
     //general
-    void setState(const uint &state);
-    void setSongInfo(const SongInfo &song);
-    void setVolume(int left, int right);
-    void setTime(int time);
 
     //properties
-    uint state();
-    SongInfo *info();
-    int elapsed();
-    int leftVolume();
-    int rightVolume();
 
     //command line
-    void executeCommand(const QString& opt_str, Control* ctrl);
+    void executeCommand(const QString& opt_str);
 
     //static methods
     static bool hasOption(const QString &opt_str);
@@ -57,7 +48,6 @@ public:
 
 private:
     uint m_state;
-    SongInfo m_song;
     int m_left, m_right;
     int m_time;
 };

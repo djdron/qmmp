@@ -18,15 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <qmmpui/control.h>
-
 #include "dbuscontrol.h"
 #include "dbusadaptor.h"
 
-DBUSAdaptor::DBUSAdaptor(Control *ctrl, QObject *parent)
+DBUSAdaptor::DBUSAdaptor(QObject *parent)
         : QDBusAbstractAdaptor(parent)
 {
-    m_control = ctrl;
     setAutoRelaySignals(TRUE);
     connect(parent, SIGNAL(stateChanged()), SLOT (processState()));
     connect(parent, SIGNAL(volumeChanged()), SLOT (processVolume()));
@@ -52,7 +49,7 @@ void DBUSAdaptor::setVolume(int volume)
     int bal = balance();
     int left = volume-qMax(bal,0)*volume/100;
     int right = volume+qMin(bal,0)*volume/100;
-    QMetaObject::invokeMethod(m_control, "setVolume", Q_ARG(int, left), Q_ARG(int, right));
+    //QMetaObject::invokeMethod(m_control, "setVolume", Q_ARG(int, left), Q_ARG(int, right));
 }
 
 int DBUSAdaptor::balance()
@@ -72,120 +69,124 @@ void DBUSAdaptor::setBalance(int bal)
     bal = qMax(bal,-100);
     int left = volume()-qMax(bal,0)*volume()/100;
     int right = volume()+qMin(bal,0)*volume()/100;
-    QMetaObject::invokeMethod(m_control, "setVolume", Q_ARG(int, left), Q_ARG(int, right));
+    //QMetaObject::invokeMethod(m_control, "setVolume", Q_ARG(int, left), Q_ARG(int, right));
 }
 
 int DBUSAdaptor::length()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->length();
+    return 0;//qobject_cast<DBUSControl *>(parent())->info()->length();
 }
 
 int DBUSAdaptor::year()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->year();
+    return 0;//qobject_cast<DBUSControl *>(parent())->info()->year();
 }
 
 QString DBUSAdaptor::title()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->title();
+    return QString();//qobject_cast<DBUSControl *>(parent())->info()->title();
 }
 
 QString DBUSAdaptor::artist()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->artist();
+    return QString();//qobject_cast<DBUSControl *>(parent())->info()->artist();
 }
 
 QString DBUSAdaptor::album()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->album();
+    return QString();//qobject_cast<DBUSControl *>(parent())->info()->album();
 }
 
 QString DBUSAdaptor::comment()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->comment();
+    return QString();//qobject_cast<DBUSControl *>(parent())->info()->comment();
 }
 
 QString DBUSAdaptor::genre()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->genre();
+    return QString();//qobject_cast<DBUSControl *>(parent())->info()->genre();
 }
 
 QString DBUSAdaptor::path()
 {
-    return qobject_cast<DBUSControl *>(parent())->info()->path();
+    return QString();//qobject_cast<DBUSControl *>(parent())->info()->path();
 }
 
 bool DBUSAdaptor::isPlaying()
 {
-    return qobject_cast<DBUSControl *>(parent())->state() == General::Playing;
+    //return qobject_cast<DBUSControl *>(parent())->state() == General::Playing;
+    return FALSE;
 }
 
 bool DBUSAdaptor::isPaused()
 {
-     return qobject_cast<DBUSControl *>(parent())->state() == General::Paused;
+     //return qobject_cast<DBUSControl *>(parent())->state() == General::Paused;
+    return FALSE;
 }
 
 bool DBUSAdaptor::isStopped()
 {
-     return qobject_cast<DBUSControl *>(parent())->state() == General::Stopped;
+     //return qobject_cast<DBUSControl *>(parent())->state() == General::Stopped;
+    return FALSE;
 }
 
 int DBUSAdaptor::elapsedTime()
 {
-    return qobject_cast<DBUSControl *>(parent())->elapsedTime();
+    //return qobject_cast<DBUSControl *>(parent())->elapsedTime();
+    return 0;
 }
 
 void DBUSAdaptor::play()
 {
-    QMetaObject::invokeMethod(m_control, "play");
+    //QMetaObject::invokeMethod(m_control, "play");
 }
 
 void DBUSAdaptor::stop()
 {
-    QMetaObject::invokeMethod(m_control, "stop");
+    //QMetaObject::invokeMethod(m_control, "stop");
 }
 
 void DBUSAdaptor::next()
 {
-    QMetaObject::invokeMethod(m_control, "next");
+    //QMetaObject::invokeMethod(m_control, "next");
 }
 
 void DBUSAdaptor::previous()
 {
-    QMetaObject::invokeMethod(m_control, "previous");
+    //QMetaObject::invokeMethod(m_control, "previous");
 }
 
 void DBUSAdaptor::pause()
 {
-    QMetaObject::invokeMethod(m_control, "pause");
+    //QMetaObject::invokeMethod(m_control, "pause");
 }
 
 void DBUSAdaptor::toggleVisibility()
 {
-    QMetaObject::invokeMethod(m_control, "toggleVisibility");
+    //QMetaObject::invokeMethod(m_control, "toggleVisibility");
 }
 
 void DBUSAdaptor::exit()
 {
-    QMetaObject::invokeMethod(m_control, "exit");
+    //QMetaObject::invokeMethod(m_control, "exit");
 }
 
 void DBUSAdaptor::seek(int time)
 {
     if ((time < 0) || (time > length()))
         return;
-    QMetaObject::invokeMethod(m_control, "seek", Q_ARG(int, time));
+    //QMetaObject::invokeMethod(m_control, "seek", Q_ARG(int, time));
 }
 
 void DBUSAdaptor::processState()
 {
-    uint state = qobject_cast<DBUSControl *>(parent())->state();
+    /*uint state = qobject_cast<DBUSControl *>(parent())->state();
     if(state == General::Playing)
         emit started();
     else if(state == General::Stopped)
         emit stopped();
     else if(state == General::Paused)
-        emit paused();
+        emit paused();*/
 }
 
 void DBUSAdaptor::processVolume()

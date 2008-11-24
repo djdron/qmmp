@@ -46,9 +46,9 @@ const QString IncDecVolumeCommandLineOption::helpString() const
 }
 
 
-void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, CommandLineManager* clm, Control* ctrl)
+void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, CommandLineManager* clm)
 {
-    int volume = qMax(clm->leftVolume(), clm->rightVolume());
+    /*int volume = qMax(clm->leftVolume(), clm->rightVolume());
     int balance = 0;
     int left = clm->leftVolume();
     int right = clm->rightVolume();
@@ -62,9 +62,9 @@ void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, Comma
     else if (opt_str == "--volume-dec")
     {
         volume = qMax (0, volume - 5);
-    }
-    ctrl->setVolume(volume-qMax(balance,0)*volume/100,
-                    volume+qMin(balance,0)*volume/100);
+    }*/
+    /*ctrl->setVolume(volume-qMax(balance,0)*volume/100,
+                    volume+qMin(balance,0)*volume/100);*/
 }
 
 const QString IncDecVolumeCommandLineOption::name() const

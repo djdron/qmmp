@@ -26,8 +26,6 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "control.h"
-
 #include "commandlinemanager.h"
 
 using namespace std;
@@ -71,7 +69,7 @@ static void checkOptions()
 CommandLineManager::CommandLineManager(QObject *parent)
         : General(parent)
 {
-    m_state = General::Stopped;
+    //m_state = General::Stopped;
     m_left = 0;
     m_right = 0;
     m_time = 0;
@@ -82,62 +80,14 @@ CommandLineManager::~CommandLineManager()
 {
 }
 
-void CommandLineManager::setState(const uint& state)
-{
-    if (state == General::Stopped)
-        m_time = 0;
-    m_state = state;
-}
-
-void CommandLineManager::setSongInfo(const SongInfo &song)
-{
-    m_song = song;
-}
-
-void CommandLineManager::setTime(int time)
-{
-    m_time = time;
-}
-
-void CommandLineManager::setVolume(int left, int right)
-{
-    m_left = left;
-    m_right = right;
-}
-
-uint CommandLineManager::state()
-{
-    return m_state;
-}
-
-SongInfo *CommandLineManager::info()
-{
-    return &m_song;
-}
-
-int CommandLineManager::elapsed()
-{
-    return m_time;
-}
-
-int CommandLineManager::leftVolume()
-{
-    return m_left;
-}
-
-int CommandLineManager::rightVolume()
-{
-    return m_right;
-}
-
-void CommandLineManager::executeCommand(const QString& opt_str, Control* ctrl)
+void CommandLineManager::executeCommand(const QString& opt_str)
 {
     checkOptions();
     foreach(CommandLineOption *opt, *options)
     {
         if (opt->identify(opt_str))
         {
-            opt->executeCommand(opt_str, this, ctrl);
+            opt->executeCommand(opt_str, this);
             return;
         }
     }

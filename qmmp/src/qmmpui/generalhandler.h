@@ -21,8 +21,7 @@
 #define GENERALHANDLER_H
 
 #include <QObject>
-
-#include "songinfo.h"
+#include <QMap>
 
 class General;
 class Control;
@@ -40,9 +39,9 @@ public:
 
     ~GeneralHandler();
 
-    void setSongInfo(const SongInfo &info);
+    /*void setSongInfo(const SongInfo &info);
     void setVolume(int left, int right);
-    void setTime(int time);
+    void setTime(int time);*/
 
     void setEnabled(GeneralFactory* factory, bool enable);
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
@@ -52,29 +51,29 @@ public:
 
 signals:
     void playCalled();
-    void pauseCalled();
+    /*void pauseCalled();
     void stopCalled();
     void nextCalled();
     void previousCalled();
-    void seekCalled(int);
+    void seekCalled(int);*/
     void exitCalled();
     void toggleVisibilityCalled();
-    void volumeChanged(int left, int right);
+    //void volumeChanged(int left, int right);
 
-public slots:
-    void setState(uint state);
+/*public slots:
+    void setState(uint state);*/
 
-private slots:
-    void processCommand(uint command);
+/*private slots:
+    void processCommand(uint command);*/
 
 private:
     void connectSignals(General*);
     QMap <GeneralFactory*, General*> m_generals;
-    SongInfo m_songInfo;
-    Control* m_control;
-    int m_time;
-    uint m_state;
-    int m_left, m_right;
+    //SongInfo m_songInfo;
+    //Control* m_control;
+    //int m_time;
+    //uint m_state;
+    //int m_left, m_right;
     CommandLineManager *m_commandLineManager;
     static GeneralHandler* m_instance;
 };

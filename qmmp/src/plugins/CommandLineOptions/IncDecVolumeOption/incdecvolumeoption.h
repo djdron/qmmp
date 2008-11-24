@@ -25,7 +25,6 @@
 #include <QObject>
 
 #include <qmmpui/commandlineoption.h>
-#include <qmmpui/control.h>
 #include <qmmpui/commandlinemanager.h>
 
 
@@ -37,7 +36,7 @@ public:
     virtual bool identify(const QString& opt_str)const;
     virtual const QString name()const;
     virtual const QString helpString()const;
-    virtual void executeCommand(const QString& opt_str, CommandLineManager* clm, Control* ctrl);
+    virtual void executeCommand(const QString& opt_str, CommandLineManager* clm);
     virtual QTranslator *createTranslator(QObject *parent);
 };
 

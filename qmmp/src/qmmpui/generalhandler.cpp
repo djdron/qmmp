@@ -21,7 +21,6 @@
 #include <QDialog>
 #include "general.h"
 #include "generalfactory.h"
-#include "control.h"
 #include "commandlinemanager.h"
 
 #include "generalhandler.h"
@@ -32,20 +31,22 @@ GeneralHandler::GeneralHandler(QObject *parent)
         : QObject(parent)
 {
     m_instance = this;
-    m_left = 0;
+    /*m_left = 0;
     m_right = 0;
     m_time = 0;
-    m_state = General::Stopped;
+    m_state = General::Stopped;*/
     GeneralFactory* factory;
-    m_control = new Control(this);
-    connect(m_control, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
+    //m_control = new Control(this);
+    /*connect(m_control, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
     connect(m_control, SIGNAL(seekCalled(int)), SIGNAL(seekCalled(int)));
-    connect(m_control, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    connect(m_control, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));*/
     foreach(factory, *General::generalFactories())
     {
         if (General::isEnabled(factory))
         {
-            General *general = factory->create(m_control, parent);
+            General *general = factory->create(parent);
+            connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
+            connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
             m_generals.insert(factory, general);
         }
     }
@@ -56,7 +57,7 @@ GeneralHandler::GeneralHandler(QObject *parent)
 GeneralHandler::~GeneralHandler()
 {}
 
-void GeneralHandler::setState(uint state)
+/*void GeneralHandler::setState(uint state)
 {
     if (state == m_state)
         return;
@@ -72,9 +73,9 @@ void GeneralHandler::setState(uint state)
     {
         general->setState(state);
     }
-}
+}*/
 
-void GeneralHandler::setSongInfo(const SongInfo &info)
+/*void GeneralHandler::setSongInfo(const SongInfo &info)
 {
     if (m_state == General::Stopped)
         return;
@@ -110,7 +111,7 @@ void GeneralHandler::setTime(int time)
     {
         general->setTime(time);
     }
-}
+}*/
 
 void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
 {
@@ -118,15 +119,17 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
         return;
     if (enable)
     {
-        General *general = factory->create(m_control, parent());
+        General *general = factory->create(parent());
+        connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
+        connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
         m_generals.insert(factory, general);
-        general->setVolume(m_left, m_right);
-        if (m_state != General::Stopped)
+        //general->setVolume(m_left, m_right);
+        /*if (m_state != General::Stopped)
         {
             general->setState(m_state);
             general->setSongInfo(m_songInfo);
             general->setTime(m_time);
-        }
+        }*/
     }
     else
     {
@@ -145,14 +148,16 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
     if (dialog->exec() == QDialog::Accepted && m_generals.keys().contains(factory))
     {
         delete m_generals.value(factory);
-        General *general = factory->create(m_control, parent());
+        General *general = factory->create(parent());
+        connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
+        connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
         m_generals[factory] = general;
-        general->setVolume(m_left, m_right);
+        /*general->setVolume(m_left, m_right);
         if (m_state != General::Stopped)
         {
             general->setState(m_state);
             general->setSongInfo(m_songInfo);
-        }
+        }*/
     }
     dialog->deleteLater();
 }
@@ -171,7 +176,7 @@ bool GeneralHandler::visibilityControl()
 void GeneralHandler::executeCommand(const QString &opt_str)
 {
     if(CommandLineManager::hasOption(opt_str))
-        m_commandLineManager->executeCommand(opt_str, m_control);
+        m_commandLineManager->executeCommand(opt_str);
 }
 
 GeneralHandler* GeneralHandler::instance()
@@ -179,7 +184,7 @@ GeneralHandler* GeneralHandler::instance()
     return m_instance;
 }
 
-void GeneralHandler::processCommand(uint command)
+/*void GeneralHandler::processCommand(uint command)
 {
     switch ((uint) command)
     {
@@ -219,4 +224,4 @@ void GeneralHandler::processCommand(uint command)
         break;
     }
     }
-}
+}*/

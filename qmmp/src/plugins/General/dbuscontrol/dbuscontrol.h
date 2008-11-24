@@ -34,19 +34,9 @@ class DBUSControl : public General
 {
 Q_OBJECT
 public:
-    DBUSControl(Control *control, QObject *parent = 0);
+    DBUSControl(QObject *parent = 0);
 
     ~DBUSControl();
-
-    //general api
-    void setState(const uint& state);
-    void setSongInfo(const SongInfo &song);
-    void setVolume(int left, int right);
-    void setTime(int time);
-    //helper functions
-    SongInfo *info();
-    uint state();
-    int elapsedTime();
 
 signals:
     void stateChanged();
@@ -61,7 +51,6 @@ public slots:
 private:
     DBUSAdaptor *m_adaptor;
     int m_left, m_right;
-    SongInfo m_song;
     uint m_state;
     int m_time;
 };
