@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>mpris_plugin_cs.qm</file>
+    <file>mpris_plugin_de.qm</file>
+    <file>mpris_plugin_zh_CN.qm</file>
+    <file>mpris_plugin_zh_TW.qm</file>
+    <file>mpris_plugin_ru.qm</file>
+    <file>mpris_plugin_uk_UA.qm</file>
+  </qresource>
+</RCC>
