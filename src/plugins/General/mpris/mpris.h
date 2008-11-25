@@ -17,35 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef MPRIS_H
+#define MPRIS_H
 
-#include "dbusadaptor.h"
-#include "dbuscontrol.h"
 
-DBUSControl::DBUSControl(QObject *parent)
-        : General(parent)
+#include <qmmpui/general.h>
+
+class DBUSAdaptor;
+
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+
+class MPRIS : public General
 {
-    new DBUSAdaptor(this);
-    QDBusConnection connection = QDBusConnection::sessionBus();
-    connection.registerObject("/Qmmp", this);
-    connection.registerService("org.qmmp.dbus");
-    m_left = 0;
-    m_right = 0;
-    m_time = 0;
-    //m_state = General::Stopped;
-}
+Q_OBJECT
+public:
+    MPRIS(QObject *parent = 0);
 
+    ~MPRIS();
 
-DBUSControl::~DBUSControl()
-{
-}
+signals:
+    void stateChanged();
+    void timeChanged();
+    void volumeChanged();
+    void songChanged();
 
-int DBUSControl::leftVolume()
-{
-    return m_left;
-}
+public slots:
+    int leftVolume();
+    int rightVolume();
 
-int DBUSControl::rightVolume()
-{
-    return m_right;
-}
+private:
+    DBUSAdaptor *m_adaptor;
+    int m_left, m_right;
+    uint m_state;
+    int m_time;
+};
 
+#endif

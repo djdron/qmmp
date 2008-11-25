@@ -17,45 +17,36 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef ROOTOBJECT_H
+#define ROOTOBJECT_H
 
-#include <QtGui>
+#include <QDBusAbstractAdaptor>
+#include <QString>
 
-#include "dbuscontrol.h"
-#include "dbuscontrolfactory.h"
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 
-const GeneralProperties DBUSControlFactory::properties() const
+
+struct Version
 {
-    GeneralProperties properties;
-    properties.name = tr("D-Bus Plugin");
-    properties.hasAbout = TRUE;
-    properties.hasSettings = FALSE;
-    properties.visibilityControl = FALSE;
-    return properties;
-}
+    quint16 major;
+    quint16 minor;
+};
 
-General *DBUSControlFactory::create(QObject *parent)
+class RootObject : public QDBusAbstractAdaptor
 {
-    return new DBUSControl(parent);
-}
+Q_OBJECT
+Q_CLASSINFO("D-Bus Interface", "org.freedesktop.MediaPlayer")
+public:
+    RootObject(QObject *parent = 0);
 
-QDialog *DBUSControlFactory::createConfigDialog(QWidget *)
-{
-    return 0;
-}
+    ~RootObject();
 
-void DBUSControlFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About D-Bus Plugin"),
-                        tr("Qmmp D-Bus Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-}
+public slots:
+    QString Identity();
+    Version MprisVersion();
+    void Quit();
+};
 
-QTranslator *DBUSControlFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/dbuscontrol_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN(DBUSControlFactory)
+#endif

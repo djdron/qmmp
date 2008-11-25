@@ -17,42 +17,29 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef STATUSICON_H
-#define STATUSICON_H
-
-
-#include <qmmpui/general.h>
-
-class Control;
-class DBUSAdaptor;
+#ifndef MPRISFACTORY_H
+#define MPRISFACTORY_H
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
+#include <QObject>
+#include <QTranslator>
 
-class DBUSControl : public General
+#include <qmmpui/general.h>
+#include <qmmpui/generalfactory.h>
+
+class MPRISFactory : public QObject, public GeneralFactory
 {
 Q_OBJECT
+Q_INTERFACES(GeneralFactory);
 public:
-    DBUSControl(QObject *parent = 0);
+    const GeneralProperties properties() const;
+    General *create(QObject *parent);
+    QDialog *createConfigDialog(QWidget *parent);
+    void showAbout(QWidget *parent);
+    QTranslator *createTranslator(QObject *parent);
 
-    ~DBUSControl();
-
-signals:
-    void stateChanged();
-    void timeChanged();
-    void volumeChanged();
-    void songChanged();
-
-public slots:
-    int leftVolume();
-    int rightVolume();
-
-private:
-    DBUSAdaptor *m_adaptor;
-    int m_left, m_right;
-    uint m_state;
-    int m_time;
 };
 
 #endif

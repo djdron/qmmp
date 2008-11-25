@@ -17,83 +17,61 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DBUSADAPTOR_H
-#define DBUSADAPTOR_H
+#ifndef PLAYEROBJECT_H
+#define PLAYEROBJECT_H
 
 #include <QtDBus>
+#include <QString>
+#include <QVariant>
 
-class Control;
+class SoundCore;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class DBUSAdaptor : public QDBusAbstractAdaptor
+
+struct PlayerStatus
+{
+    int state;  // 0 = Playing, 1 = Paused, 2 = Stopped.
+    int random; // 0 = Playing linearly, 1 = Playing randomly.
+    int repeat; // 0 = Go to the next element once the current has finished playing, 1 = Repeat the current element
+    int repeatPlayList; // 0 = Stop playing once the last element has been played, 1 = Never give up playing
+};
+
+
+class PlayerObject : public QDBusAbstractAdaptor
 {
 Q_OBJECT
-Q_CLASSINFO("D-Bus Interface", "org.qmmp.dbus")
-Q_PROPERTY(int volume READ volume WRITE setVolume)
-Q_PROPERTY(int balance READ balance WRITE setBalance)
-Q_PROPERTY(int length READ length)
-Q_PROPERTY(int year READ year)
-Q_PROPERTY(QString title READ title)
-Q_PROPERTY(QString artist READ artist)
-Q_PROPERTY(QString album READ album)
-Q_PROPERTY(QString comment READ comment)
-Q_PROPERTY(QString genre READ genre)
-Q_PROPERTY(QString path READ path)
-Q_PROPERTY(bool isPlaying READ isPlaying)
-Q_PROPERTY(bool isPaused READ isPaused)
-Q_PROPERTY(bool isStopped READ isStopped)
-Q_PROPERTY(int elapsedTime READ elapsedTime)
-
+Q_CLASSINFO("D-Bus Interface", "org.freedesktop.MediaPlayer")
 
 public:
-    DBUSAdaptor(QObject *parent = 0);
+    PlayerObject(QObject *parent = 0);
 
-    ~DBUSAdaptor();
-
-    int volume();
-    void setVolume(int);
-    int balance();
-    void setBalance(int);
-    int length();
-    int year();
-    QString title();
-    QString artist();
-    QString album();
-    QString comment();
-    QString genre();
-    QString path();
-    bool isPlaying();
-    bool isPaused();
-    bool isStopped();
-    int elapsedTime();
-
-signals:
-    void started();
-    void paused();
-    void stopped();
-    void volumeChanged(int vol, int bal);
-    void timeChanged(int newTime);
-    void songChanged();
+    ~PlayerObject();
 
 public slots:
-    void play();
-    void stop();
-    void next();
-    void previous();
-    void pause();
-    void toggleVisibility();
-    void exit();
-    void seek(int time);
+    void Next();
+    void Prev();
+    void Pause();
+    void Stop();
+    void Play();
+    //void Repeat();
+    PlayerStatus GetStatus();
+    QVariantMap GetMetadata();
+    //GetCaps
+    void VolumeSet(int in0);
+    int VolumeGet();
+    void PositionSet(int in0);
+    qint64 PositionGet();
 
-private slots:
-    void processState();
-    void processVolume();
-    void processTime();
+signals:
+    //TrackChange 
+    //StatusChange 
+    //CapsChange 
 
 private:
-    Control *m_control;
+    SoundCore *m_core;
+
 };
 
 #endif
