@@ -20,8 +20,8 @@
 #ifndef ROOTOBJECT_H
 #define ROOTOBJECT_H
 
-#include <QDBusAbstractAdaptor>
-#include <QString>
+#include <QObject>
+#include <QVariantMap>
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -34,7 +34,9 @@ struct Version
     quint16 minor;
 };
 
-class RootObject : public QDBusAbstractAdaptor
+Q_DECLARE_METATYPE(Version);
+
+class RootObject : public QObject
 {
 Q_OBJECT
 Q_CLASSINFO("D-Bus Interface", "org.freedesktop.MediaPlayer")

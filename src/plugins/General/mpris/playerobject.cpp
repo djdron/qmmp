@@ -19,15 +19,45 @@
  ***************************************************************************/
 
 #include <QFile>
+#include <QDBusMetaType>
+#include <QDBusArgument>
 #include <qmmp/soundcore.h>
 
 #include "playerobject.h"
 
-PlayerObject::PlayerObject(QObject *parent)
-        : QDBusAbstractAdaptor(parent)
+
+//register << operator
+QDBusArgument &operator << (QDBusArgument &arg, const PlayerStatus &status)
 {
-    setAutoRelaySignals(TRUE);
+    arg.beginStructure();
+    arg << status.state;
+    arg << status.random;
+    arg << status.repeat;
+    arg << status.repeatPlayList;
+    arg.endStructure();
+    return arg;
+}
+
+//register >> operator
+const QDBusArgument &operator >> (const QDBusArgument &arg, PlayerStatus &status)
+{
+    arg.beginStructure();
+    arg >> status.state;
+    arg >> status.random;
+    arg >> status.repeat;
+    arg >> status.repeatPlayList;
+    arg.endStructure();
+    return arg;
+}
+
+PlayerObject::PlayerObject(QObject *parent)
+        : QObject(parent)
+{
+    qDBusRegisterMetaType<PlayerStatus>();
     m_core = SoundCore::instance();
+    connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateCaps()));
+    connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateTrack()));
+    connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateStatus()));
 }
 
 PlayerObject::~PlayerObject()
@@ -55,17 +85,26 @@ void PlayerObject::Stop()
 
 void PlayerObject::Play()
 {
-    //m_core->play();
+    QMetaObject::invokeMethod(parent(), "play");
 }
 
 PlayerStatus PlayerObject::GetStatus()
 {
     PlayerStatus st;
-    st.state = 2;
-    if (m_core->state() == Qmmp::Playing)
+    switch (m_core->state())
+    {
+    case Qmmp::Stopped:
+    case Qmmp::NormalError:
+    case Qmmp::FatalError:
+        st.state = 2;
+        break;
+    case Qmmp::Playing:
+    case Qmmp::Buffering:
         st.state = 0;
-    else if (m_core->state() == Qmmp::Paused)
+        break;
+    case Qmmp::Paused:
         st.state = 1;
+    };
     st.random = 0; //TODO playlist support
     st.repeat = 0;
     st.repeatPlayList = 0;
@@ -94,6 +133,19 @@ QVariantMap PlayerObject::GetMetadata()
     return map;
 }
 
+int PlayerObject::GetCaps()
+{
+    int caps = NONE;
+    if (GetStatus().state == 0)
+        caps |= CAN_PAUSE;
+    else
+        caps |= CAN_PLAY;
+    if (GetStatus().state < 2)
+        caps |= CAN_SEEK;
+    caps |= CAN_PROVIDE_METADATA;
+    return caps;
+}
+
 void PlayerObject::VolumeSet(int volume)
 {
     int balance = (m_core->rightVolume() - m_core->leftVolume()) * 100/VolumeGet();
@@ -111,7 +163,22 @@ void PlayerObject::PositionSet(int pos)
     m_core->seek(pos / 1000);
 }
 
-qint64 PlayerObject::PositionGet()
+int PlayerObject::PositionGet()
 {
     return m_core->elapsed() * 1000;
+}
+
+void PlayerObject::updateCaps()
+{
+    emit CapsChange(GetCaps());
+}
+
+void PlayerObject::updateTrack()
+{
+    emit TrackChange(GetMetadata());
+}
+
+void PlayerObject::updateStatus()
+{
+    emit StatusChange(GetStatus());
 }

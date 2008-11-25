@@ -17,11 +17,36 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#include <QDBusMetaType>
+#include <QDBusArgument>
+
 #include "rootobject.h"
 
-RootObject::RootObject(QObject *parent)
- : QDBusAbstractAdaptor(parent)
+//register << operator
+QDBusArgument &operator << (QDBusArgument &arg, const Version &v)
 {
+    arg.beginStructure();
+    arg << v.major;
+    arg << v.minor;
+    arg.endStructure();
+    return arg;
+}
+
+//register >> operator
+const QDBusArgument &operator >> (const QDBusArgument &arg, Version &v)
+{
+    arg.beginStructure();
+    arg >> v.major;
+    arg >> v.minor;
+    arg.endStructure();
+    return arg;
+}
+
+RootObject::RootObject(QObject *parent)
+ : QObject(parent)
+{
+    qDBusRegisterMetaType<Version>();
 }
 
 

@@ -20,14 +20,13 @@
 #ifndef PLAYEROBJECT_H
 #define PLAYEROBJECT_H
 
-#include <QtDBus>
-#include <QString>
-#include <QVariant>
+#include <QObject>
+#include <QVariantMap>
 
 class SoundCore;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
 struct PlayerStatus
@@ -38,16 +37,32 @@ struct PlayerStatus
     int repeatPlayList; // 0 = Stop playing once the last element has been played, 1 = Never give up playing
 };
 
+Q_DECLARE_METATYPE(PlayerStatus);
 
-class PlayerObject : public QDBusAbstractAdaptor
+class PlayerObject : public QObject
 {
-Q_OBJECT
-Q_CLASSINFO("D-Bus Interface", "org.freedesktop.MediaPlayer")
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.freedesktop.MediaPlayer")
 
 public:
     PlayerObject(QObject *parent = 0);
 
     ~PlayerObject();
+
+
+    enum PlayerCaps
+    {
+
+        NONE                  = 0,
+        CAN_GO_NEXT           = 1 << 0,
+        CAN_GO_PREV           = 1 << 1,
+        CAN_PAUSE             = 1 << 2,
+        CAN_PLAY              = 1 << 3,
+        CAN_SEEK              = 1 << 4,
+        CAN_PROVIDE_METADATA  = 1 << 5,
+        CAN_HAS_TRACKLIST     = 1 << 6
+    };
+
 
 public slots:
     void Next();
@@ -58,16 +73,21 @@ public slots:
     //void Repeat();
     PlayerStatus GetStatus();
     QVariantMap GetMetadata();
-    //GetCaps
+    int GetCaps();
     void VolumeSet(int in0);
     int VolumeGet();
     void PositionSet(int in0);
-    qint64 PositionGet();
+    int PositionGet();
 
 signals:
-    //TrackChange 
-    //StatusChange 
-    //CapsChange 
+    void CapsChange(int);
+    void TrackChange(QVariantMap);
+    void StatusChange(PlayerStatus);
+
+private slots:
+    void updateCaps();
+    void updateTrack();
+    void updateStatus();
 
 private:
     SoundCore *m_core;
