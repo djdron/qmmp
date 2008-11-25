@@ -63,5 +63,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(notifier SHARED ${libnotifier_SRCS} ${libnotifier_MOC_SRCS} ${libnotifier_UIS_H} ${libnotifier_RCC_SRCS})
 add_dependencies(notifier qmmpui  libqmmp)
-target_link_libraries(notifier ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(notifier ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS notifier DESTINATION ${LIB_DIR}/qmmp/General)
