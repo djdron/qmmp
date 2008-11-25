@@ -1,4 +1,4 @@
-project(libdbuscontrol)
+project(libmpris)
 
 cmake_minimum_required(VERSION 2.4.8 FATAL_ERROR)
 
@@ -29,33 +29,35 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-SET(libdbuscontrol_SRCS
-    dbuscontrol.cpp
-    dbuscontrolfactory.cpp
-    dbusadaptor.cpp
+SET(libmpris_SRCS
+    mpris.cpp
+    mprisfactory.cpp
+    rootobject.cpp
+    playerobject.cpp
 )
 
-SET(libdbuscontrol_MOC_HDRS
-    dbuscontrolfactory.h
-    dbuscontrol.h
-    dbusadaptor.h
+SET(libmpris_MOC_HDRS
+    mprisfactory.h
+    mpris.h
+    rootobject.h
+    playerobject.h
 )
 
-SET(libdbuscontrol_RCCS translations/translations.qrc)
+SET(libmpris_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libdbuscontrol_RCC_SRCS ${libdbuscontrol_RCCS})
+QT4_ADD_RESOURCES(libmpris_RCC_SRCS ${libmpris_RCCS})
 
-QT4_WRAP_CPP(libdbuscontrol_MOC_SRCS ${libdbuscontrol_MOC_HDRS})
+QT4_WRAP_CPP(libmpris_MOC_SRCS ${libmpris_MOC_HDRS})
 
 # user interface
 
 
-# QT4_WRAP_UI(libdbuscontrol_UIS_H ${libdbuscontrol_UIS})
+# QT4_WRAP_UI(libmpris_UIS_H ${libmpris_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(dbuscontrol SHARED ${libdbuscontrol_SRCS} ${libdbuscontrol_MOC_SRCS} ${libdbuscontrol_RCC_SRCS})
-add_dependencies(dbuscontrol qmmpui libqmmp)
-target_link_libraries(dbuscontrol ${QT_LIBRARIES} -lqmmpui -lqmmp)
-install(TARGETS dbuscontrol DESTINATION ${LIB_DIR}/qmmp/General)
+ADD_LIBRARY(mpris SHARED ${libmpris_SRCS} ${libmpris_MOC_SRCS} ${libmpris_RCC_SRCS})
+add_dependencies(mpris qmmpui libqmmp)
+target_link_libraries(mpris ${QT_LIBRARIES} -lqmmpui -lqmmp)
+install(TARGETS mpris DESTINATION ${LIB_DIR}/qmmp/General)

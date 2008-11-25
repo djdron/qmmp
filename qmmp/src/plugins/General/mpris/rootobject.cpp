@@ -17,29 +17,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef STATUSICONFACTORY_H
-#define STATUSICONFACTORY_H
+#include "rootobject.h"
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-#include <QObject>
-#include <QTranslator>
-
-#include <qmmpui/general.h>
-#include <qmmpui/generalfactory.h>
-
-class DBUSControlFactory : public QObject, public GeneralFactory
+RootObject::RootObject(QObject *parent)
+ : QDBusAbstractAdaptor(parent)
 {
-Q_OBJECT
-Q_INTERFACES(GeneralFactory);
-public:
-    const GeneralProperties properties() const;
-    General *create(QObject *parent);
-    QDialog *createConfigDialog(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+}
 
-};
 
-#endif
+RootObject::~RootObject()
+{
+}
+
+QString RootObject::Identity()
+{
+    QString name = "Qmmp 0.3.0-svn";
+    return name;
+}
+
+Version RootObject::MprisVersion()
+{
+    struct Version v;
+    v.major = 1;
+    v.minor = 0;
+    return v;
+}
+
+void RootObject::Quit()
+{
+    QMetaObject::invokeMethod(parent(), "exit");
+}

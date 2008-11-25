@@ -4,7 +4,7 @@ SET(USE_STATICON TRUE CACHE BOOL "enable/disable status icon plugin")
 SET(USE_NOTIFIER TRUE CACHE BOOL "enable/disable notifier plugin")
 
 IF(USE_DBUS)
-add_subdirectory(dbuscontrol)
+add_subdirectory(mpris)
 ENDIF(USE_DBUS)
 
 IF(USE_SCROBBLER)
