@@ -58,6 +58,6 @@ QT4_WRAP_CPP(libmpris_MOC_SRCS ${libmpris_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(mpris SHARED ${libmpris_SRCS} ${libmpris_MOC_SRCS} ${libmpris_RCC_SRCS})
-add_dependencies(mpris qmmpui libqmmp)
+add_dependencies(mpris qmmpui)
 target_link_libraries(mpris ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS mpris DESTINATION ${LIB_DIR}/qmmp/General)

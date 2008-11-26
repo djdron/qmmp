@@ -167,7 +167,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_EXECUTABLE(qmmp ${ui_SRCS} ${ui_MOC_SRCS} ${ui_UIS_H}
   ${ui_RCC_SRCS})
 target_link_libraries(qmmp ${QT_LIBRARIES} libqmmp qmmpui)
-add_dependencies(qmmp qmmpui  libqmmp)
+add_dependencies(qmmp qmmpui libqmmp)
 install(TARGETS qmmp DESTINATION bin)
 install(FILES qmmp.desktop DESTINATION share/applications)
 install(FILES images/16x16/qmmp.png DESTINATION share/icons/hicolor/16x16/apps)
