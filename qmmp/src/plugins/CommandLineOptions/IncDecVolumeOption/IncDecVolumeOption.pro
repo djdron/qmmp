@@ -28,7 +28,7 @@ INSTALLS += target
 
 INCLUDEPATH += ../../../../src
 
-LIBS += -lqmmpui
+LIBS += -lqmmpui -lqmmp
 
 HEADERS += incdecvolumeoption.h
 

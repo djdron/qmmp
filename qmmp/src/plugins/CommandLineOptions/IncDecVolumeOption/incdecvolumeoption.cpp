@@ -21,6 +21,7 @@
 #include <QtPlugin>
 #include <QTranslator>
 #include <QLocale>
+#include <qmmp/soundcore.h>
 
 #include "incdecvolumeoption.h"
 
@@ -48,10 +49,12 @@ const QString IncDecVolumeCommandLineOption::helpString() const
 
 void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, CommandLineManager* clm)
 {
-    /*int volume = qMax(clm->leftVolume(), clm->rightVolume());
+    Q_UNUSED(clm);
+    SoundCore *core = SoundCore::instance();
+    int volume = qMax(core->leftVolume(), core->rightVolume());
     int balance = 0;
-    int left = clm->leftVolume();
-    int right = clm->rightVolume();
+    int left = core->leftVolume();
+    int right = core->rightVolume();
     if (left || right)
         balance = (right - left)*100/volume;
 
@@ -62,9 +65,9 @@ void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, Comma
     else if (opt_str == "--volume-dec")
     {
         volume = qMax (0, volume - 5);
-    }*/
-    /*ctrl->setVolume(volume-qMax(balance,0)*volume/100,
-                    volume+qMin(balance,0)*volume/100);*/
+    }
+    core->setVolume(volume-qMax(balance,0)*volume/100,
+                    volume+qMin(balance,0)*volume/100);
 }
 
 const QString IncDecVolumeCommandLineOption::name() const

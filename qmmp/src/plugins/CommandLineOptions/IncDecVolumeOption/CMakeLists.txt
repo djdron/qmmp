@@ -25,6 +25,7 @@ SET(QT_INCLUDES
 # libqmmpui
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 SET(libincdecvolumeoption_SRCS
     incdecvolumeoption.cpp
@@ -48,5 +49,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(incdecvolumeoption SHARED ${libincdecvolumeoption_SRCS} ${libincdecvolumeoption_MOC_SRCS} 
            ${libincdecvolumeoption_RCC_SRCS})
 add_dependencies(incdecvolumeoption qmmpui)
-target_link_libraries(incdecvolumeoption ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(incdecvolumeoption ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS incdecvolumeoption DESTINATION ${LIB_DIR}/qmmp/CommandLineOptions)
