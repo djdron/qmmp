@@ -21,7 +21,11 @@
 #include <QtGui>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
+#include <taglib/flacfile.h>
+#include <taglib/xiphcomment.h>
+#include <taglib/tmap.h>
 
+#include "cueparser.h"
 #include "detailsdialog.h"
 #include "decoder_flac.h"
 #include "decoderflacfactory.h"
@@ -48,22 +52,23 @@ const DecoderProperties DecoderFLACFactory::properties() const
     properties.filter = "*.flac";
     properties.description = tr("FLAC Files");
     //properties.contentType = ;
+    properties.protocols = "flac";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
     return properties;
 }
 
 Decoder *DecoderFLACFactory::create(QObject *parent, QIODevice *input,
-                                    Output *output, const QString &)
+                                    Output *output, const QString &path)
 {
-    return new DecoderFLAC(parent, this, input, output);
+    return new DecoderFLAC(parent, this, input, output, path);
 }
 
 QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName)
 {
     FileInfo *info = new FileInfo(fileName);
 
-    TagLib::FileRef fileRef(fileName.toLocal8Bit ());
+    TagLib::FLAC::File fileRef(fileName.toLocal8Bit ());
     TagLib::Tag *tag = fileRef.tag();
 
     if (tag && !tag->isEmpty())
@@ -84,8 +89,19 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName)
 
     if (fileRef.audioProperties())
         info->setLength(fileRef.audioProperties()->length());
+
+    //looking for cuesheet comment
+    TagLib::Ogg::XiphComment *xiph_comment = fileRef.xiphComment();
     QList <FileInfo*> list;
-    list << info;
+    if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
+    {
+        qDebug(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE));
+        CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE), fileName);
+        list = parser.createPlayList();
+        delete info;
+    }
+    else
+        list << info;
     return list;
 }
 
