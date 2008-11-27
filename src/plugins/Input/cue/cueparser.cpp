@@ -19,8 +19,6 @@
  ***************************************************************************/
 
 #include <QFile>
-#include <QFileInfo>
-#include <QRegExp>
 #include <QDir>
 #include <QSettings>
 #include <QTextStream>
@@ -43,6 +41,7 @@ CUEParser::CUEParser(const QString &fileName)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     QTextCodec *codec = QTextCodec::codecForName(settings.value("CUE/encoding","ISO-8859-1").toByteArray ());
     textStream.setCodec(codec);
+    QString artist;
     while (!textStream.atEnd())
     {
         QString line = textStream.readLine().trimmed();
@@ -58,7 +57,10 @@ CUEParser::CUEParser(const QString &fileName)
         else if (words[0] == "PERFORMER")
         {
             if (m_infoList.isEmpty())
+            {
+                artist = words[1];
                 continue;
+            }
             else
                 m_infoList.last().setMetaData(Qmmp::ARTIST, words[1]);
 
@@ -108,12 +110,14 @@ CUEParser::CUEParser(const QString &fileName)
     else
         m_infoList.last().setLength(0);
 
-    for(int i = 0; i < m_infoList.size(); ++i)
+    for (int i = 0; i < m_infoList.size(); ++i)
     {
         m_infoList[i].setMetaData(Qmmp::ALBUM, album);
         m_infoList[i].setMetaData(Qmmp::GENRE, genre);
         m_infoList[i].setMetaData(Qmmp::YEAR, date);
         m_infoList[i].setMetaData(Qmmp::COMMENT, comment);
+        if (!m_infoList[i].metaData().count(Qmmp::ARTIST) && !artist.isEmpty())
+            m_infoList[i].setMetaData(Qmmp::ARTIST, artist);
     }
     file.close();
 }
