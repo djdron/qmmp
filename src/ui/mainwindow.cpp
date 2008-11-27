@@ -275,6 +275,8 @@ void MainWindow::next()
     m_playlist->update();
     if (m_core->state() != Qmmp::Stopped)
     {
+        if (m_core->state() == Qmmp::Paused)
+            stop();
         m_elapsed = 0;
         play();
     }
@@ -294,6 +296,8 @@ void MainWindow::previous()
     m_playlist->update();
     if (m_core->state() != Qmmp::Stopped)
     {
+        if (m_core->state() == Qmmp::Paused)
+            stop();
         m_elapsed = 0;
         play();
     }
