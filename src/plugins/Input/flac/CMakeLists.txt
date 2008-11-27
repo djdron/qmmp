@@ -40,12 +40,14 @@ SET(libflac_SRCS
   decoder_flac.cpp
   decoderflacfactory.cpp
   detailsdialog.cpp
+  cueparser.cpp
 )
 
 SET(libflac_MOC_HDRS
   decoderflacfactory.h
   decoder_flac.h
   detailsdialog.h
+  cueparser.h
 )
 
 SET(libflac_RCCS translations/translations.qrc)

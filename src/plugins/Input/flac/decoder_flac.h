@@ -53,12 +53,13 @@ struct flac_data
 
     int ok; /* was this stream successfully opened? */
     //struct decoder_error error;
+    QIODevice *input;
 };
 
 class DecoderFLAC : public Decoder
 {
 public:
-    DecoderFLAC(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderFLAC(QObject *, DecoderFactory *, QIODevice *, Output *, const QString &path);
     virtual ~DecoderFLAC();
 
     // Standard Decoder API
@@ -98,6 +99,10 @@ private:
     int chan;
     unsigned long output_size;
     double totalTime, seekTime;
+    QString m_path;
+    qint64 m_offset;
+    qint64 m_length;
+    bool m_cue;
 };
 
 

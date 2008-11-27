@@ -23,14 +23,23 @@
    and libxmms-flac written by Josh Coalson. */
 
 
+#include <taglib/tag.h>
+#include <taglib/fileref.h>
+#include <taglib/flacfile.h>
+#include <taglib/xiphcomment.h>
+#include <taglib/tmap.h>
+
 #include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
 
 #include <QObject>
+#include <QFile>
 #include <QIODevice>
 #include <FLAC/all.h>
+
+#include "cueparser.h"
 #include "decoder_flac.h"
 
 
@@ -146,7 +155,7 @@ static FLAC__StreamDecoderReadStatus flac_callback_read (const FLAC__StreamDecod
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
     qint64 res;
 
-    res = dflac->input()->read((char *)buffer, *bytes);
+    res = dflac->data()->input->read((char *)buffer, *bytes);
 
     if (res > 0)
     {
@@ -189,7 +198,7 @@ static FLAC__StreamDecoderTellStatus flac_callback_tell (const FLAC__StreamDecod
         void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
-    *offset = dflac->input()->pos ();
+    *offset = dflac->data()->input->pos ();
     return FLAC__STREAM_DECODER_TELL_STATUS_OK;
 }
 
@@ -199,7 +208,7 @@ static FLAC__StreamDecoderSeekStatus flac_callback_seek (const FLAC__StreamDecod
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
 
-    return dflac->input()->seek(offset)
+    return dflac->data()->input->seek(offset)
            ? FLAC__STREAM_DECODER_SEEK_STATUS_OK
            : FLAC__STREAM_DECODER_SEEK_STATUS_ERROR;
 }
@@ -209,7 +218,7 @@ static FLAC__StreamDecoderLengthStatus flac_callback_length (const FLAC__StreamD
         void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
-    *stream_length = dflac->input()->size();
+    *stream_length = dflac->data()->input->size();
     return FLAC__STREAM_DECODER_LENGTH_STATUS_OK;
 }
 
@@ -248,7 +257,7 @@ static void flac_callback_error (const FLAC__StreamDecoder *,
 
 // Decoder class
 
-DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
+DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o, const QString &path)
         : Decoder(parent, d, i, o)
 {
     inited = FALSE;
@@ -268,6 +277,14 @@ DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Outpu
     chan = 0;
     output_size = 0;
     m_data = 0;
+    m_path = path;
+
+    m_offset = 0;
+    m_length = 0;
+    m_cue = FALSE;
+    m_data = new flac_data;
+    m_data->decoder = NULL;
+    data()->input = i;
 }
 
 
@@ -346,10 +363,43 @@ bool DecoderFLAC::initialize()
     totalTime = 0.0;
 
 
-    if (! input())
+    if (!data()->input)
     {
-        qWarning("DecoderFLAC: cannot initialize.  No input.");
-        return FALSE;
+        QString p = m_path;
+        if (m_path.startsWith("flac://")) //embeded cue track
+        {
+            p = QUrl(m_path).path();
+            if (!p.endsWith(".flac"))
+            {
+                qWarning("DecoderFLAC: invalid url.");
+                return FALSE;
+            }
+            qDebug("DecoderFLAC: using embeded cue");
+            TagLib::FLAC::File fileRef(p.toLocal8Bit ());
+            //looking for cuesheet comment
+            TagLib::Ogg::XiphComment *xiph_comment = fileRef.xiphComment();
+            QList <FileInfo*> list;
+            if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
+            {
+                qDebug("DecoderFLAC: found cuesheet xiph comment");
+                CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE), m_path);
+                int track = m_path.section("#", -1).toInt();
+                m_offset = parser.offset(track);
+                m_length = parser.length(track);
+                data()->input = new QFile(p);
+                m_cue = TRUE;
+            }
+            else
+            {
+                qWarning("DecoderFLAC: unable to find cuesheet comment.");
+                return FALSE;
+            }
+        }
+        else
+        {
+            qWarning("DecoderFLAC: cannot initialize.  No input.");
+            return FALSE;
+        }
     }
 
     if (! output_buf)
@@ -357,9 +407,9 @@ bool DecoderFLAC::initialize()
     output_at = 0;
     output_bytes = 0;
 
-    if (!input()->isOpen())
+    if (!data()->input->isOpen())
     {
-        if (!input()->open(QIODevice::ReadOnly))
+        if (!data()->input->open(QIODevice::ReadOnly))
         {
             return FALSE;
         }
@@ -371,19 +421,13 @@ bool DecoderFLAC::initialize()
     output_at = 0;
     output_bytes = 0;
 
-    if (! input()->isOpen())
+    if (! data()->input->isOpen())
     {
-        if (! input()->open(QIODevice::ReadOnly))
+        if (! data()->input->open(QIODevice::ReadOnly))
         {
             return FALSE;
         }
     }
-    if (!m_data)
-    {
-        m_data = new flac_data;
-        m_data->decoder = NULL;
-    }
-
     m_data->bitrate = -1;
     m_data->abort = 0;
     m_data->sample_buffer_fill = 0;
@@ -424,6 +468,10 @@ bool DecoderFLAC::initialize()
     totalTime = data()->length;
 
     inited = TRUE;
+    if (m_offset)
+        seekTime = m_offset;
+    if (m_length)
+        totalTime = m_length;
     qDebug("DecoderFLAC: initialize succes");
     return TRUE;
 }
@@ -441,7 +489,7 @@ qint64 DecoderFLAC::lengthInSeconds()
 void DecoderFLAC::seek(qint64 pos)
 {
     if (totalTime > 0)
-        seekTime = pos;
+        seekTime = pos + m_offset;
 }
 
 
@@ -453,6 +501,11 @@ void DecoderFLAC::deinit()
     len = freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
+    if (!input() && data()->input)
+    {
+        data()->input->close();
+        data()->input = 0;
+    };
 }
 
 void DecoderFLAC::run()
@@ -525,6 +578,9 @@ void DecoderFLAC::run()
                      "corrupted");
             m_finish = TRUE;
         }
+
+        if (m_length && (StateHandler::instance()->elapsed() >= m_length))
+            m_finish = TRUE;
 
         mutex()->unlock();
     }

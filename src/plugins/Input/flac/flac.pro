@@ -3,12 +3,14 @@ include(../../plugins.pri)
 FORMS += detailsdialog.ui 
 HEADERS += decoderflacfactory.h \
            decoder_flac.h \
-           detailsdialog.h
+           detailsdialog.h \
+ cueparser.h
 SOURCES += decoder_flac.cpp \
            decoderflacfactory.cpp \
-           detailsdialog.cpp
+           detailsdialog.cpp \
+ cueparser.cpp
 
-TARGET=$$PLUGINS_PREFIX/Input/flac
+TARGET =$$PLUGINS_PREFIX/Input/flac
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libflac.so
 
 INCLUDEPATH += ../../../
@@ -28,8 +30,8 @@ TRANSLATIONS = translations/flac_plugin_ru.ts \
                translations/flac_plugin_de.ts
 RESOURCES = translations/translations.qrc
 
-isEmpty (LIB_DIR){
-LIB_DIR = /lib
+isEmpty(LIB_DIR){
+    LIB_DIR = /lib
 }
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
