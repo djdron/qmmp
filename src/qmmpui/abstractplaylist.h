@@ -17,43 +17,22 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef GENERALHANDLER_H
-#define GENERALHANDLER_H
+#ifndef ABSTRACTPLAYLIST_H
+#define ABSTRACTPLAYLIST_H
 
 #include <QObject>
-#include <QMap>
-
-class General;
-class Control;
-class GeneralFactory;
-class CommandLineManager;
 
 /**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
+	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class GeneralHandler : public QObject
+class AbstractPlaylist : public QObject
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    GeneralHandler(QObject *parent = 0);
+    AbstractPlaylist(QObject *parent = 0);
 
-    ~GeneralHandler();
+    ~AbstractPlaylist();
 
-    void setEnabled(GeneralFactory* factory, bool enable);
-    void showSettings(GeneralFactory* factory, QWidget* parentWidget);
-    bool visibilityControl();
-    void executeCommand(const QString &opt_str);
-    static GeneralHandler* instance();
-
-signals:
-    void playCalled();
-    void exitCalled();
-    void toggleVisibilityCalled();
-
-private:
-    QMap <GeneralFactory*, General*> m_generals;
-    CommandLineManager *m_commandLineManager;
-    static GeneralHandler* m_instance;
 };
 
 #endif

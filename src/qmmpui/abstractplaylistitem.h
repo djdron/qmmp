@@ -17,43 +17,43 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef GENERALHANDLER_H
-#define GENERALHANDLER_H
+#ifndef ABSTRACTPLAYLISTITEM_H
+#define ABSTRACTPLAYLISTITEM_H
 
-#include <QObject>
 #include <QMap>
-
-class General;
-class Control;
-class GeneralFactory;
-class CommandLineManager;
+#include <QString>
+#include <qmmp/qmmp.h>
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class GeneralHandler : public QObject
+class AbstractPlaylistItem
 {
-    Q_OBJECT
 public:
-    GeneralHandler(QObject *parent = 0);
+    AbstractPlaylistItem();
 
-    ~GeneralHandler();
+    ~AbstractPlaylistItem();
 
-    void setEnabled(GeneralFactory* factory, bool enable);
-    void showSettings(GeneralFactory* factory, QWidget* parentWidget);
-    bool visibilityControl();
-    void executeCommand(const QString &opt_str);
-    static GeneralHandler* instance();
+    const QString title () const;
+    const QString artist () const;
+    const QString album () const;
+    const QString comment () const;
+    const QString genre () const;
+    const QString track () const;
+    const QString year () const;
+    const QString url () const;
 
-signals:
-    void playCalled();
-    void exitCalled();
-    void toggleVisibilityCalled();
+    qint64 length ();
+    bool isEmpty();
+    void clear();
+
+    virtual void setMetaData(const QMap <Qmmp::MetaData, QString> &metaData);
+    virtual void setMetaData(Qmmp::MetaData key, const QString &value);
+    virtual void setLength(qint64 length);
 
 private:
-    QMap <GeneralFactory*, General*> m_generals;
-    CommandLineManager *m_commandLineManager;
-    static GeneralHandler* m_instance;
+    QMap <Qmmp::MetaData, QString> m_metaData;
+    qint64 m_length;
 };
 
 #endif

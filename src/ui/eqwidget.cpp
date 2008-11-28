@@ -316,12 +316,12 @@ void EqWidget::saveAutoPreset()
     if (!playlist->currentItem())
         return;
     //delete preset if it already exists
-    EQPreset* preset = findPreset(playlist->currentItem()->fileName());
+    EQPreset* preset = findPreset(playlist->currentItem()->url().section("/",-1));
     if (preset)
         deletePreset(preset);
     //create new preset
     preset = new EQPreset();
-    preset->setText(playlist->currentItem()->fileName());
+    preset->setText(playlist->currentItem()->url().section("/",-1));
     preset->setPreamp(m_preamp->value());
     for (int i = 0; i<10; ++i)
     {

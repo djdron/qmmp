@@ -24,19 +24,16 @@
 
 #include "playlistitem.h"
 
-PlayListItem::PlayListItem() : SongInfo(), m_flag(FREE)
+PlayListItem::PlayListItem() : AbstractPlaylistItem(), m_flag(FREE)
 {
     m_info = 0;
 }
 
-//PlayListItem::PlayListItem(const QString& path) : SongInfo(), m_flag(FREE)
-PlayListItem::PlayListItem(FileInfo *info, QSettings *settings) : SongInfo(), m_flag(FREE)
+PlayListItem::PlayListItem(FileInfo *info, QSettings *settings) : AbstractPlaylistItem(), m_flag(FREE)
 {
     m_selected = FALSE;
     m_current = FALSE;
     m_info = info;
-    setValue(SongInfo::PATH, info->path()); //TODO path?
-    setValue(SongInfo::STREAM, path().startsWith("http://")); //TODO do this inside SongInfo
 
     //use external settings or create new
     QSettings *s = settings;
@@ -53,15 +50,10 @@ PlayListItem::PlayListItem(FileInfo *info, QSettings *settings) : SongInfo(), m_
     if (!settings) //delete created settings only
         delete s;
 
-    if (m_use_meta && !path().startsWith("http://"))
-    {
-        //m_info = Decoder::createFileInfo(path);
-        readMetadata();
-    }
-    else if (path().startsWith("http://")  && m_fullStreamPath)
-        m_title = path();
-    else
-        m_title = path().split('/',QString::SkipEmptyParts).takeLast ();
+    setMetaData(info->metaData());
+    setMetaData(Qmmp::URL, m_info->path());
+    setLength(m_info->length());
+    readMetadata();
 }
 
 PlayListItem::~PlayListItem()
@@ -102,25 +94,22 @@ PlayListItem::FLAGS PlayListItem::flag() const
 
 void PlayListItem::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
 {
-    if (!m_info)
-        m_info = new FileInfo();
-
-    m_info->setMetaData(metaData);
-    m_use_meta = TRUE;
+    setMetaData(metaData);
     readMetadata();
 }
 
 void PlayListItem::updateTags()
 {
-    if (path().startsWith("http://"))
+    if (url().startsWith("http://"))
         return;
     if (m_info)
     {
         delete m_info;
         m_info = 0;
     }
-    //m_info = Decoder::createFileInfo(path());
-    m_info = Decoder::createPlayList(path()).at(0);
+    m_info = Decoder::createPlayList(url()).at(0);
+    setMetaData(m_info->metaData());
+    setMetaData(Qmmp::URL, m_info->path());
     readMetadata();
 }
 
@@ -136,37 +125,22 @@ void PlayListItem::setText(const QString &title)
 
 void PlayListItem::readMetadata()
 {
-    //clear();
-    m_title.clear();
-    if (m_info) //read length first //TODO fix this
-        setValue(SongInfo::LENGTH, uint(m_info->length()));
-    if (m_use_meta && m_info && !m_info->isEmpty())
-    {
-        //fill SongInfo //TODO optimize
-        setValue(SongInfo::TITLE, m_info->metaData(Qmmp::TITLE));
-        setValue(SongInfo::ARTIST, m_info->metaData(Qmmp::ARTIST));
-        setValue(SongInfo::ALBUM, m_info->metaData(Qmmp::ALBUM));
-        setValue(SongInfo::COMMENT, m_info->metaData(Qmmp::COMMENT));
-        setValue(SongInfo::GENRE, m_info->metaData(Qmmp::GENRE));
-        setValue(SongInfo::YEAR, m_info->metaData(Qmmp::YEAR).toUInt());
-        setValue(SongInfo::TRACK, m_info->metaData(Qmmp::TRACK).toUInt());
-        //generate playlist string
-        m_title = m_format;
-        m_title = printTag(m_title, "%p", artist());
-        m_title = printTag(m_title, "%a", album());
-        m_title = printTag(m_title, "%t", title());
-        m_title = printTag(m_title, "%n", QString("%1").arg(track()));
-        m_title = printTag(m_title, "%g", genre());
-        m_title = printTag(m_title, "%f", path().section('/',-1));
-        m_title = printTag(m_title, "%F", path());
-        m_title = printTag(m_title, "%y", QString("%1").arg(year ()));
-    }
+    m_title = m_format;
+    m_title = printTag(m_title, "%p", artist());
+    m_title = printTag(m_title, "%a", album());
+    m_title = printTag(m_title, "%t", title());
+    m_title = printTag(m_title, "%n", QString("%1").arg(track()));
+    m_title = printTag(m_title, "%g", genre());
+    m_title = printTag(m_title, "%f", url().section('/',-1));
+    m_title = printTag(m_title, "%F", url());
+    m_title = printTag(m_title, "%y", QString("%1").arg(year ()));
+
     if (m_title.isEmpty())
     {
-        if (path().startsWith("http://")  && m_fullStreamPath)
-            m_title = path();
+        if (url().startsWith("http://")  && m_fullStreamPath)
+            m_title = url();
         else
-            m_title = path().split('/',QString::SkipEmptyParts).takeLast ();
+            m_title = url().split('/',QString::SkipEmptyParts).takeLast ();
     }
     if (m_info)
         delete m_info;

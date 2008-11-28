@@ -40,14 +40,16 @@ HEADERS += general.h \
            filedialog.h \
            filedialogfactory.h \
            qtfiledialog.h \
-           songinfo.h
+           abstractplaylist.h \
+ abstractplaylistitem.h
 SOURCES += general.cpp \
            generalhandler.cpp \
            playlistparser.cpp \
            commandlinemanager.cpp \
            filedialog.cpp \
            qtfiledialog.cpp \
-           songinfo.cpp
+           abstractplaylist.cpp \
+ abstractplaylistitem.cpp
 
 DESTDIR = .
 

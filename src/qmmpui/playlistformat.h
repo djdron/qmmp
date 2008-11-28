@@ -23,7 +23,7 @@
 #include <QStringList>
 
 
-class SongInfo;
+class AbstractPlaylistItem;
 /*!
  * Abstract interface for playlist formats.
  *
@@ -43,10 +43,10 @@ public:
     virtual QStringList decode(const QString& contents) = 0;
 
     /*!
-     * Takes the list of SongInfo objects, should return string of
+     * Takes the list of AbstractPlaylistItem objects, should return string of
      * encoded playlist file
      */
-    virtual QString encode(const QList<SongInfo*>& contents) = 0;
+    virtual QString encode(const QList<AbstractPlaylistItem*>& contents) = 0;
 
     /*!
      * Returns list of file extensions that current format supports

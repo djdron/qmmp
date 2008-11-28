@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,64 +17,16 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SONGINFO_H
-#define SONGINFO_H
+#include "abstractplaylist.h"
 
-#include <QMap>
-#include <QString>
+AbstractPlaylist::AbstractPlaylist(QObject *parent)
+ : QObject(parent)
+{
+}
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 
-class SongInfo{
-public:
-   public:
-    SongInfo();
-    SongInfo(const SongInfo &other);
+AbstractPlaylist::~AbstractPlaylist()
+{
+}
 
-    ~SongInfo();
 
-    enum Type
-    {
-        TITLE = 0,
-        ARTIST,
-        ALBUM,
-        COMMENT,
-        GENRE,
-        YEAR,
-        TRACK,
-        LENGTH,
-        STREAM,
-        PATH
-    };
-
-    void operator=(const SongInfo &info);
-    bool operator==(const SongInfo &info);
-    bool operator!=(const SongInfo &info);
-    void setValue(uint key, const QString &value);
-    void setValue(uint key, const uint &value);
-    void setValue(uint key, const bool &value);
-    const QString title () const;
-    const QString artist () const;
-    const QString album () const;
-    const QString comment () const;
-    const QString genre () const;
-    const QString path () const;
-    const QString fileName () const;
-    uint year () const;
-    uint track () const;
-    uint length () const;
-    bool isEmpty () const;
-    bool isStream () const;
-    void clear();
-
-private:
-    QMap <uint, QString> m_strValues;
-    QMap <uint, uint> m_numValues;
-    bool m_stream;
-    QString m_path;
-
-};
-
-#endif

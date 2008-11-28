@@ -305,7 +305,7 @@ void PlayListModel::showDetails()
     {
         if (m_items.at(i)->isSelected())
         {
-            if (!QFile::exists(m_items.at(i)->path()))
+            if (!QFile::exists(m_items.at(i)->url()))
             {
                 PlayListItem *item = m_items.at(i);
                 QString str;
@@ -314,19 +314,19 @@ void PlayListModel::showDetails()
                 str.append(tr("Artist:") + " %3\n");
                 str.append(tr("Album:") + " %4\n");
                 str.append(tr("Comment:") + " %5");
-                str = str.arg(item->path())
+                str = str.arg(item->url())
                       .arg(item->title().isEmpty() ? item->text() : item->title())
                       .arg(item->artist())
                       .arg(item->album())
                       .arg(item->comment());
-                QMessageBox::information(0, m_items.at(i)->path(), str);
+                QMessageBox::information(0, m_items.at(i)->url(), str);
                 return;
             }
 
-            DecoderFactory *fact = Decoder::findByPath(m_items.at(i)->path());
+            DecoderFactory *fact = Decoder::findByPath(m_items.at(i)->url());
             if (fact)
             {
-                QObject* o = fact->showDetails(0, m_items.at(i)->path());
+                QObject* o = fact->showDetails(0, m_items.at(i)->url());
                 if (o)
                 {
                     TagUpdater *updater = new TagUpdater(o,m_items.at(i));
@@ -399,7 +399,7 @@ void PlayListModel::writeSettings()
     file.open(QIODevice::WriteOnly);
     foreach(PlayListItem* m, m_items)
     {
-        file.write(QString("file=%1").arg(m->path()).toUtf8() +"\n");
+        file.write(QString("file=%1").arg(m->url()).toUtf8() +"\n");
         file.write(QString("title=%1").arg(m->title()).toUtf8() +"\n");
         file.write(QString("artist=%1").arg(m->artist()).toUtf8() +"\n");
         file.write(QString("album=%1").arg(m->album()).toUtf8() +"\n");
@@ -694,25 +694,25 @@ static bool _titleGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 
 static bool _pathAndFilenameLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->path() < s2->path();
+    return s1->url() < s2->url();
 }
 
 static bool _pathAndFilenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->path() > s2->path();
+    return s1->url() > s2->url();
 }
 
 static bool _filenameLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    QFileInfo i_s1(s1->path());
-    QFileInfo i_s2(s2->path());
+    QFileInfo i_s1(s1->url());
+    QFileInfo i_s2(s2->url());
     return i_s1.baseName() < i_s2.baseName();
 }
 
 static bool _filenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    QFileInfo i_s1(s1->path());
-    QFileInfo i_s2(s2->path());
+    QFileInfo i_s1(s1->url());
+    QFileInfo i_s2(s2->url());
     return i_s1.baseName() > i_s2.baseName();
 }
 
@@ -881,7 +881,7 @@ void PlayListModel::savePlaylist(const QString & f_name)
         if (file.open(QIODevice::WriteOnly))
         {
             QTextStream ts(&file);
-            QList <SongInfo *> songs;
+            QList <AbstractPlaylistItem *> songs;
             foreach(PlayListItem* item, m_items)
             songs << item;
             ts << prs->encode(songs);

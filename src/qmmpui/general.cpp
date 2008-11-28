@@ -72,15 +72,6 @@ General::General(QObject *parent)
 General::~General()
 {}
 
-/*void General::setState(const uint&)
-{}
-
-void General::setSongInfo(const SongInfo &song)
-{}
-
-void General::setTime(int)
-{}*/
-
 void General::play()
 {
     //TODO use AbstractPlayList and SoundCore
@@ -102,12 +93,6 @@ QList<GeneralFactory*> *General::generalFactories()
     checkFactories();
     return factories;
 }
-
-/*void General::setVolume(int left, int right)
-{
-    Q_UNUSED(left);
-    Q_UNUSED(right);
-}*/
 
 QStringList General::generalFiles()
 {

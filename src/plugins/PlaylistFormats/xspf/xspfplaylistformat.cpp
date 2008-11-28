@@ -67,7 +67,7 @@ QStringList XSPFPlaylistFormat::decode(const QString & contents)
 
 // Needs more work - it's better use libSpiff there and put it as plugin.
 
-QString XSPFPlaylistFormat::encode(const QList< SongInfo * > & files)
+QString XSPFPlaylistFormat::encode(const QList<AbstractPlaylistItem*> & files)
 {
     QDomDocument doc;
     QDomElement root = doc.createElement("playlist");
@@ -82,12 +82,12 @@ QString XSPFPlaylistFormat::encode(const QList< SongInfo * > & files)
     QDomElement tracklist = doc.createElement("trackList");
 
     int counter = 1;
-    foreach(SongInfo* f,files)
+    foreach(AbstractPlaylistItem* f,files)
     {
         QDomElement track = doc.createElement("track");
 
         QDomElement ch = doc.createElement("location");
-        QDomText text = doc.createTextNode(/*QString("file://") + */QFileInfo(f->path()).absoluteFilePath());
+        QDomText text = doc.createTextNode(/*QString("file://") + */QFileInfo(f->url()).absoluteFilePath());
         ch.appendChild(text);
         track.appendChild(ch);
 
@@ -102,7 +102,7 @@ QString XSPFPlaylistFormat::encode(const QList< SongInfo * > & files)
         track.appendChild(ch);
 
         ch = doc.createElement("year");
-        text = doc.createTextNode(QString::number(f->year()));
+        text = doc.createTextNode(f->year());
         ch.appendChild(text);
         track.appendChild(ch);
 

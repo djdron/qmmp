@@ -20,15 +20,15 @@
 #ifndef PLAYLISTITEM_H
 #define PLAYLISTITEM_H
 
-#include <qmmpui/songinfo.h>
 #include <qmmp/qmmp.h>
+#include <qmmpui/abstractplaylistitem.h>
 
 class FileInfo;
 class QSettings;
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class PlayListItem : public SongInfo
+class PlayListItem : public AbstractPlaylistItem
 {
 public:
     /*!

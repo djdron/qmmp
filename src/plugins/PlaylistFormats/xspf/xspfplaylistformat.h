@@ -24,7 +24,7 @@
 #include <QString>
 #include <QStringList>
 #include <qmmpui/playlistformat.h>
-#include <qmmpui/songinfo.h>
+#include <qmmpui/abstractplaylistitem.h>
 
 /*!
  * Class for XSPF playlist format parsing
@@ -39,7 +39,7 @@ public:
     virtual QStringList getExtensions()const;
     virtual bool hasFormat(const QString&);
     virtual QStringList decode(const QString& contents);
-    virtual QString encode(const QList<SongInfo*>& contents);
+    virtual QString encode(const QList<AbstractPlaylistItem*>& contents);
     virtual QString name()const;
 protected:
     QStringList m_supported_formats;

@@ -39,18 +39,6 @@ public:
 
     ~General();
 
-    /*enum State
-    {
-        Playing = 0,
-        Paused,
-        Stopped
-    };
-
-    virtual void setState(const uint &state);
-    virtual void setSongInfo(const SongInfo &song);
-    virtual void setVolume(int left, int right);
-    virtual void setTime(int time);*/
-
     //static methods
     static QList<GeneralFactory*> *generalFactories();
     static QStringList generalFiles();

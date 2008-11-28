@@ -142,15 +142,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
     m_generalHandler = new GeneralHandler(this);
     connect(m_generalHandler, SIGNAL(playCalled()), SLOT(play()));
-    /*connect(m_generalHandler, SIGNAL(nextCalled()), SLOT(next()));
-    connect(m_generalHandler, SIGNAL(previousCalled()), SLOT(previous()));
-    connect(m_generalHandler, SIGNAL(stopCalled()), SLOT(stop()));
-    connect(m_generalHandler, SIGNAL(pauseCalled()), SLOT(pause()));
-    connect(m_generalHandler, SIGNAL(seekCalled(int)), SLOT(seek(int)));*/
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
-    /*connect(m_generalHandler, SIGNAL(volumeChanged(int, int)),
-            m_core, SLOT(setVolume(int, int)));*/
 
     m_playListModel->readSettings();
     char buf[PATH_MAX + 1];
@@ -180,10 +173,10 @@ void MainWindow::play()
     if (m_playListModel->count() == 0)
         return;
 
-    m_equalizer->loadPreset(m_playListModel->currentItem()->fileName());
+    m_equalizer->loadPreset(m_playListModel->currentItem()->url().section("/",-1));
     //m_playListModel->currentItem()->updateTags();
     m_playlist->listWidget()->updateList();
-    QString s = m_playListModel->currentItem()->path();
+    QString s = m_playListModel->currentItem()->url();
     if (s.isEmpty())
         return;
     if (m_core->play(s))
@@ -320,14 +313,6 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
     {
-        //m_generalHandler->setState(General::Playing);
-        /*if (m_playListModel->currentItem())
-        {
-            SongInfo info = *m_playListModel->currentItem();
-            if (info.isEmpty())
-                info.setValue(SongInfo::TITLE, m_playlist->currentItem()->text());
-            m_generalHandler->setSongInfo(info);
-        }*/
         if (m_playlist->listWidget())
             m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
         break;
@@ -360,32 +345,9 @@ void MainWindow::showMetaData()
 
     if (m_playlist->currentItem())
     {
-        SongInfo info;
-        info.setValue(SongInfo::TITLE, m_core->metaData(Qmmp::TITLE));
-        info.setValue(SongInfo::ARTIST, m_core->metaData(Qmmp::ARTIST));
-        info.setValue(SongInfo::ALBUM, m_core->metaData(Qmmp::ALBUM));
-        info.setValue(SongInfo::COMMENT, m_core->metaData(Qmmp::COMMENT));
-        info.setValue(SongInfo::GENRE, m_core->metaData(Qmmp::GENRE));
-        info.setValue(SongInfo::YEAR, m_core->metaData(Qmmp::YEAR).toUInt());
-        info.setValue(SongInfo::TRACK, m_core->metaData(Qmmp::TRACK).toUInt());
-        info.setValue(SongInfo::STREAM, !QFile::exists(m_playlist->currentItem()->path()));
-        info.setValue(SongInfo::PATH, m_playlist->currentItem()->path());
-        info.setValue(SongInfo::LENGTH, m_playlist->currentItem()->length());
-        //m_generalHandler->setSongInfo(info);
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
         m_playlist->listWidget()->updateList();
     }
-}
-
-void MainWindow::changeTitle(const QString &title)
-{
-    if (m_playlist->currentItem())
-        m_playlist->currentItem()->setText(title);
-    m_playlist->listWidget()->updateList();
-    SongInfo info;
-    info.setValue(SongInfo::TITLE, title);
-    info.setValue(SongInfo::STREAM, TRUE);
-    //m_generalHandler->setSongInfo(info);
 }
 
 void MainWindow::closeEvent ( QCloseEvent *)
