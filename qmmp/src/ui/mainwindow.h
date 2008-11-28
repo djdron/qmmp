@@ -95,7 +95,6 @@ protected:
 private slots:
     void showState(Qmmp::State state);
     void showMetaData();
-    void changeTitle(const QString&);
     void clear();
     void startSeek();
     void endSeek();

@@ -20,7 +20,13 @@ ELSE(SVN_VERSION)
 ADD_DEFINITIONS(-DQMMP_STR_VERSION=\\\"${QMMP_VERSION}\\\")
 ENDIF(SVN_VERSION)
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+# libqmmp
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../)
+
+link_directories(${CMAKE_INSTALL_PREFIX}/${LIB_DIR})
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
 
 SET(libqmmpui_SRCS
     general.cpp
@@ -29,7 +35,8 @@ SET(libqmmpui_SRCS
     commandlinemanager.cpp
     filedialog.cpp
     qtfiledialog.cpp
-    songinfo.cpp
+    abstractplaylist.cpp
+    abstractplaylistitem.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -43,7 +50,8 @@ SET(libqmmpui_MOC_HDRS
     filedialog.h
     filedialogfactory.h
     qtfiledialog.h
-    songinfo.h
+    abstractplaylist.h
+    abstractplaylistitem.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -56,6 +64,8 @@ SET(libqmmpui_DEVEL_HDRS
     commandlineoption.h
     filedialog.h
     filedialogfactory.h
+    abstractplaylist.h
+    abstractplaylistitem.h
 )
 
 

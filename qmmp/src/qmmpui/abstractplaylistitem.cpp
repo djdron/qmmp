@@ -17,36 +17,85 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLAYLISTPARSER_H
-#define PLAYLISTPARSER_H
+#include "abstractplaylistitem.h"
 
-#include <QObject>
-
-
-class PlaylistFormat;
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class PlaylistParser  : public QObject
+AbstractPlaylistItem::AbstractPlaylistItem()
 {
-Q_OBJECT
-public:
-    PlaylistParser(QObject *parent);
+    m_length = 0;
+}
 
-    ~PlaylistParser();
 
-    QStringList getExtensions();
-    bool supports(const QString &filePath);
-    QList<PlaylistFormat*> formats();
-    static PlaylistParser* instance();
-    PlaylistFormat *findByPath(const QString &filePath);
+AbstractPlaylistItem::~AbstractPlaylistItem()
+{
+}
 
-private:
-    void loadExternalPlaylistFormats();
-    QList<PlaylistFormat*> m_formats;
-    static PlaylistParser* m_instance;
+const QString AbstractPlaylistItem::title () const
+{
+    return m_metaData.value(Qmmp::TITLE);
+}
 
-};
+const QString AbstractPlaylistItem::artist () const
+{
+    return m_metaData.value(Qmmp::ARTIST);
+}
 
-#endif
+const QString AbstractPlaylistItem::album () const
+{
+    return m_metaData.value(Qmmp::ALBUM);
+}
+
+const QString AbstractPlaylistItem::comment () const
+{
+    return m_metaData.value(Qmmp::COMMENT);
+}
+
+const QString AbstractPlaylistItem::genre () const
+{
+    return m_metaData.value(Qmmp::GENRE);
+}
+
+const QString AbstractPlaylistItem::track () const
+{
+    return m_metaData.value(Qmmp::TRACK);
+}
+
+const QString AbstractPlaylistItem::year () const
+{
+    return m_metaData.value(Qmmp::YEAR);
+}
+
+const QString AbstractPlaylistItem::url () const
+{
+    return m_metaData.value(Qmmp::URL);
+}
+
+qint64 AbstractPlaylistItem::length ()
+{
+    return m_length;
+}
+
+bool AbstractPlaylistItem::isEmpty()
+{
+    return m_metaData.isEmpty();
+}
+
+void AbstractPlaylistItem::clear()
+{
+    m_metaData.clear();
+    m_length = 0;
+}
+
+void AbstractPlaylistItem::setMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
+{
+    m_metaData = metaData;
+}
+
+void AbstractPlaylistItem::setMetaData(Qmmp::MetaData key, const QString &value)
+{
+    m_metaData.insert(key, value);
+}
+
+void AbstractPlaylistItem::setLength(qint64 length)
+{
+    m_length = length;
+}
