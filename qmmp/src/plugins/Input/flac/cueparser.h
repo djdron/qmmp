@@ -47,7 +47,6 @@ public:
     FileInfo *info(int track);
 
 private:
-    QList< QMap<int, int> > m_map;
     QString m_filePath;
     QList <FileInfo> m_infoList;
     QList <int> m_offsets;
