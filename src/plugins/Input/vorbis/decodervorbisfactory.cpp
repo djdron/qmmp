@@ -64,12 +64,12 @@ Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
 }
 
 //FileInfo *DecoderVorbisFactory::createFileInfo(const QString &source)
-QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     FileInfo *info = new FileInfo(fileName);
 
     TagLib::FileRef fileRef(fileName.toLocal8Bit ());
-    TagLib::Tag *tag = fileRef.tag();
+    TagLib::Tag *tag = useMetaData ? fileRef.tag() : 0;
 
     if (tag && !tag->isEmpty())
     {

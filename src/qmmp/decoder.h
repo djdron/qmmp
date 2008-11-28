@@ -67,7 +67,7 @@ public:
     static DecoderFactory *findByContent(QIODevice *);
     static DecoderFactory *findByURL(const QUrl &url);
     //static FileInfo *createFileInfo(const QString &fileName);
-    static QList <FileInfo *> createPlayList(const QString &fileName);
+    static QList <FileInfo *> createPlayList(const QString &fileName, bool useMetaData = TRUE);
     //static QList <FileInfo *> createPlayList(const QStringList &fileList);
     static QStringList filters();
     static QStringList nameFilters();

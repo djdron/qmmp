@@ -65,7 +65,7 @@ public:
     virtual Decoder *create(QObject *, QIODevice *input = 0,
                             Output *output = 0, const QString &path = QString()) = 0;
     //virtual FileInfo *createFileInfo(const QString &source) = 0;
-    virtual QList<FileInfo *> createPlayList(const QString &fileName) = 0;
+    virtual QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData) = 0;
     virtual QObject* showDetails(QWidget *parent, const QString &path) = 0;
     virtual void showSettings(QWidget *parent) = 0;
     virtual void showAbout(QWidget *parent) = 0;

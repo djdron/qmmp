@@ -44,12 +44,7 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
         if (words.size() < 2)
             continue;
 
-        if (words[0] == "FILE")
-        {
-            //m_filePath = QUrl(fileName).path ();
-            //m_filePath = QFileInfo(m_filePath).dir().filePath(words[1]);
-        }
-        else if (words[0] == "PERFORMER")
+        if (words[0] == "PERFORMER")
         {
             if (m_infoList.isEmpty())
             {
@@ -97,8 +92,7 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
     for (int i = 0; i < m_infoList.size() - 1; ++i)
         m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
     //calculate last item length
-    QList <FileInfo *> f_list;
-    //f_list = Decoder::createPlayList(m_filePath);
+    QList <FileInfo *> f_list = Decoder::createPlayList(m_filePath, FALSE);
     qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length();
     if (l > m_infoList.last().length())
         m_infoList.last().setLength(l - m_infoList.last().length());

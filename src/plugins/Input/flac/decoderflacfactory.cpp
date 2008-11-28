@@ -64,12 +64,12 @@ Decoder *DecoderFLACFactory::create(QObject *parent, QIODevice *input,
     return new DecoderFLAC(parent, this, input, output, path);
 }
 
-QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     FileInfo *info = new FileInfo(fileName);
 
     TagLib::FLAC::File fileRef(fileName.toLocal8Bit ());
-    TagLib::Tag *tag = fileRef.tag();
+    TagLib::Tag *tag = useMetaData ? fileRef.tag() : 0;
 
     if (tag && !tag->isEmpty())
     {
@@ -91,11 +91,10 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName)
         info->setLength(fileRef.audioProperties()->length());
 
     //looking for cuesheet comment
-    TagLib::Ogg::XiphComment *xiph_comment = fileRef.xiphComment();
+    TagLib::Ogg::XiphComment *xiph_comment = useMetaData ? fileRef.xiphComment() : 0;
     QList <FileInfo*> list;
     if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
     {
-        qDebug(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE));
         CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE), fileName);
         list = parser.createPlayList();
         delete info;

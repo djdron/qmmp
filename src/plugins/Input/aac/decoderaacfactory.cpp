@@ -59,15 +59,16 @@ Decoder *DecoderAACFactory::create(QObject *parent, QIODevice *input,
     return new DecoderAAC(parent, this, input, output);
 }
 
-QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     FileInfo *info = new FileInfo(fileName);
 
     QFile file(fileName);
     if (file.open(QIODevice::ReadOnly))
     {
-        AACFile aac_file(&file);
-        info->setMetaData(aac_file.metaData());
+        AACFile aac_file(&file, useMetaData);
+        if (useMetaData)
+            info->setMetaData(aac_file.metaData());
         info->setLength(aac_file.length());
     }
     QList <FileInfo*> list;

@@ -401,7 +401,7 @@ bool SoundCore::decode()
     {
         if (QFile::exists(m_source)) //send metadata for local files
         {
-            QList <FileInfo *> list = m_factory->createPlayList(m_source);
+            QList <FileInfo *> list = m_factory->createPlayList(m_source, TRUE);
             if (!list.isEmpty())
             {
                 m_handler->dispatch(list[0]->metaData());
