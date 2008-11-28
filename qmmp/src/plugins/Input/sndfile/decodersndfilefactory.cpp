@@ -18,7 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include <QtGui>
-extern "C"{
+extern "C"
+{
 #include <sndfile.h>
 }
 
@@ -32,20 +33,20 @@ bool DecoderSndFileFactory::supports(const QString &source) const
 {
 
     if ((source.right(3).toLower() == ".au") ||
-        (source.right(4).toLower() == ".snd") ||
-        (source.right(4).toLower() == ".aif") ||
-        (source.right(5).toLower() == ".aiff") ||
-        (source.right(5).toLower() == ".8svx") ||
-        (source.right(4).toLower() == ".sph") ||
-        (source.right(3).toLower() == ".sf") ||
-        (source.right(4).toLower() == ".voc"))
+            (source.right(4).toLower() == ".snd") ||
+            (source.right(4).toLower() == ".aif") ||
+            (source.right(5).toLower() == ".aiff") ||
+            (source.right(5).toLower() == ".8svx") ||
+            (source.right(4).toLower() == ".sph") ||
+            (source.right(3).toLower() == ".sf") ||
+            (source.right(4).toLower() == ".voc"))
         return TRUE;
     else if (source.right(4).toLower() == ".wav")
     {
         //try top open the file
         SF_INFO snd_info;
         SNDFILE *sndfile = sf_open(source.toLocal8Bit(), SFM_READ, &snd_info);
-        if(!sndfile)
+        if (!sndfile)
             return FALSE;
         sf_close (sndfile);
         sndfile = 0;
@@ -80,7 +81,7 @@ Decoder *DecoderSndFileFactory::create(QObject *parent, QIODevice *input,
     return new DecoderSndFile(parent, this, output, path);
 }
 
-QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo *> list;
     SF_INFO snd_info;
@@ -92,20 +93,23 @@ QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName)
         return list;
 
     list << new FileInfo(fileName);
-    if (sf_get_string(sndfile, SF_STR_TITLE))
+    if (useMetaData)
     {
-        char* title = strdup(sf_get_string(sndfile, SF_STR_TITLE));
-        list.at(0)->setMetaData(Qmmp::TITLE, QString::fromUtf8(title).trimmed());
-    }
-    if (sf_get_string(sndfile, SF_STR_ARTIST))
-    {
-        char* artist = strdup(sf_get_string(sndfile, SF_STR_ARTIST));
-        list.at(0)->setMetaData(Qmmp::ARTIST, QString::fromUtf8(artist).trimmed());
-    }
-    if (sf_get_string(sndfile, SF_STR_COMMENT))
-    {
-        char* comment = strdup(sf_get_string(sndfile, SF_STR_COMMENT));
-        list.at(0)->setMetaData(Qmmp::COMMENT, QString::fromUtf8(comment).trimmed());
+        if (sf_get_string(sndfile, SF_STR_TITLE))
+        {
+            char* title = strdup(sf_get_string(sndfile, SF_STR_TITLE));
+            list.at(0)->setMetaData(Qmmp::TITLE, QString::fromUtf8(title).trimmed());
+        }
+        if (sf_get_string(sndfile, SF_STR_ARTIST))
+        {
+            char* artist = strdup(sf_get_string(sndfile, SF_STR_ARTIST));
+            list.at(0)->setMetaData(Qmmp::ARTIST, QString::fromUtf8(artist).trimmed());
+        }
+        if (sf_get_string(sndfile, SF_STR_COMMENT))
+        {
+            char* comment = strdup(sf_get_string(sndfile, SF_STR_COMMENT));
+            list.at(0)->setMetaData(Qmmp::COMMENT, QString::fromUtf8(comment).trimmed());
+        }
     }
 
     list.at(0)->setLength(int(snd_info.frames / snd_info.samplerate));

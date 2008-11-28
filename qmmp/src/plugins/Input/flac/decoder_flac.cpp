@@ -281,7 +281,6 @@ DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Outpu
 
     m_offset = 0;
     m_length = 0;
-    m_cue = FALSE;
     m_data = new flac_data;
     m_data->decoder = NULL;
     data()->input = i;
@@ -362,7 +361,6 @@ bool DecoderFLAC::initialize()
     seekTime = -1.0;
     totalTime = 0.0;
 
-
     if (!data()->input)
     {
         QString p = m_path;
@@ -374,20 +372,18 @@ bool DecoderFLAC::initialize()
                 qWarning("DecoderFLAC: invalid url.");
                 return FALSE;
             }
-            qDebug("DecoderFLAC: using embeded cue");
             TagLib::FLAC::File fileRef(p.toLocal8Bit ());
             //looking for cuesheet comment
             TagLib::Ogg::XiphComment *xiph_comment = fileRef.xiphComment();
             QList <FileInfo*> list;
             if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
             {
-                qDebug("DecoderFLAC: found cuesheet xiph comment");
-                CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE), m_path);
+                qDebug("DecoderFLAC: using cuesheet xiph comment.");
+                CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE), p);
                 int track = m_path.section("#", -1).toInt();
                 m_offset = parser.offset(track);
                 m_length = parser.length(track);
                 data()->input = new QFile(p);
-                m_cue = TRUE;
             }
             else
             {
@@ -501,9 +497,10 @@ void DecoderFLAC::deinit()
     len = freq = bitrate = 0;
     stat = chan = 0;
     output_size = 0;
-    if (!input() && data()->input)
+    if (!input() && data()->input) //delete internal input only
     {
         data()->input->close();
+        delete data()->input;
         data()->input = 0;
     };
 }
@@ -519,7 +516,7 @@ void DecoderFLAC::run()
     }
     mutex()->unlock();
 
-    while (! done && ! m_finish)
+    while (!done && !m_finish)
     {
         mutex()->lock ();
         // decode
@@ -566,22 +563,17 @@ void DecoderFLAC::run()
             }
 
             done = TRUE;
-            if (! user_stop)
-            {
-                m_finish = TRUE;
-            }
+            m_finish = !user_stop;
         }
         else
         {
-            // error in read
+            // error while read
             qWarning("DecoderFLAC: Error while decoding stream, File appears to be "
                      "corrupted");
             m_finish = TRUE;
         }
-
         if (m_length && (StateHandler::instance()->elapsed() >= m_length))
             m_finish = TRUE;
-
         mutex()->unlock();
     }
 

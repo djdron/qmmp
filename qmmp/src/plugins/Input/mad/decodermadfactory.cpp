@@ -100,87 +100,90 @@ Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *ou
 }
 
 //FileInfo *DecoderMADFactory::createFileInfo(const QString &source)
-QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     FileInfo *info = new FileInfo(fileName);
     TagLib::Tag *tag = 0;
     TagLib::MPEG::File fileRef(fileName.toLocal8Bit ());
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    settings.beginGroup("MAD");
-
-    QTextCodec *codec = 0;
-
-    uint tag_array[3];
-    tag_array[0] = settings.value("tag_1", SettingsDialog::ID3v2).toInt();
-    tag_array[1] = settings.value("tag_2", SettingsDialog::Disabled).toInt();
-    tag_array[2] = settings.value("tag_3", SettingsDialog::Disabled).toInt();
-
-
-    for (int i = 0; i < 3; ++i)
+    if (useMetaData)
     {
-        switch ((uint) tag_array[i])
+        QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+        settings.beginGroup("MAD");
+
+        QTextCodec *codec = 0;
+
+        uint tag_array[3];
+        tag_array[0] = settings.value("tag_1", SettingsDialog::ID3v2).toInt();
+        tag_array[1] = settings.value("tag_2", SettingsDialog::Disabled).toInt();
+        tag_array[2] = settings.value("tag_3", SettingsDialog::Disabled).toInt();
+
+
+        for (int i = 0; i < 3; ++i)
         {
-        case SettingsDialog::ID3v1:
-        {
-            codec = QTextCodec::codecForName(settings.value("ID3v1_encoding","ISO-8859-1")
-                                             .toByteArray ());
-            tag = fileRef.ID3v1Tag();
-            break;
-        }
-        case SettingsDialog::ID3v2:
-        {
-            QByteArray name;
-            name = settings.value("ID3v2_encoding","UTF-8").toByteArray ();
-            if (name.contains("UTF"))
+            switch ((uint) tag_array[i])
+            {
+            case SettingsDialog::ID3v1:
+            {
+                codec = QTextCodec::codecForName(settings.value("ID3v1_encoding","ISO-8859-1")
+                                                 .toByteArray ());
+                tag = fileRef.ID3v1Tag();
+                break;
+            }
+            case SettingsDialog::ID3v2:
+            {
+                QByteArray name;
+                name = settings.value("ID3v2_encoding","UTF-8").toByteArray ();
+                if (name.contains("UTF"))
+                    codec = QTextCodec::codecForName ("UTF-8");
+                else
+                    codec = QTextCodec::codecForName(name);
+                tag = fileRef.ID3v2Tag();
+                break;
+            }
+            case SettingsDialog::APE:
+            {
                 codec = QTextCodec::codecForName ("UTF-8");
-            else
-                codec = QTextCodec::codecForName(name);
-            tag = fileRef.ID3v2Tag();
-            break;
+                tag = fileRef.APETag();
+                break;
+            }
+            case SettingsDialog::Disabled:
+            {
+                break;
+            }
+            }
+            if (tag && !tag->isEmpty())
+                break;
         }
-        case SettingsDialog::APE:
-        {
+        settings.endGroup();
+
+        if (!codec)
             codec = QTextCodec::codecForName ("UTF-8");
-            tag = fileRef.APETag();
-            break;
-        }
-        case SettingsDialog::Disabled:
+
+        if (tag && codec)
         {
-            break;
+            bool utf = codec->name ().contains("UTF");
+            TagLib::String album = tag->album();
+            TagLib::String artist = tag->artist();
+            TagLib::String comment = tag->comment();
+            TagLib::String genre = tag->genre();
+            TagLib::String title = tag->title();
+
+            info->setMetaData(Qmmp::ALBUM,
+                              codec->toUnicode(album.toCString(utf)).trimmed());
+            info->setMetaData(Qmmp::ARTIST,
+                              codec->toUnicode(artist.toCString(utf)).trimmed());
+            info->setMetaData(Qmmp::COMMENT,
+                              codec->toUnicode(comment.toCString(utf)).trimmed());
+            info->setMetaData(Qmmp::GENRE,
+                              codec->toUnicode(genre.toCString(utf)).trimmed());
+            info->setMetaData(Qmmp::TITLE,
+                              codec->toUnicode(title.toCString(utf)).trimmed());
+            info->setMetaData(Qmmp::YEAR,
+                              tag->year());
+            info->setMetaData(Qmmp::TRACK,
+                              tag->track());
         }
-        }
-        if (tag && !tag->isEmpty())
-            break;
-    }
-    settings.endGroup();
-
-    if (!codec)
-        codec = QTextCodec::codecForName ("UTF-8");
-
-    if (tag && codec)
-    {
-        bool utf = codec->name ().contains("UTF");
-        TagLib::String album = tag->album();
-        TagLib::String artist = tag->artist();
-        TagLib::String comment = tag->comment();
-        TagLib::String genre = tag->genre();
-        TagLib::String title = tag->title();
-
-        info->setMetaData(Qmmp::ALBUM,
-                       codec->toUnicode(album.toCString(utf)).trimmed());
-        info->setMetaData(Qmmp::ARTIST,
-                       codec->toUnicode(artist.toCString(utf)).trimmed());
-        info->setMetaData(Qmmp::COMMENT,
-                       codec->toUnicode(comment.toCString(utf)).trimmed());
-        info->setMetaData(Qmmp::GENRE,
-                       codec->toUnicode(genre.toCString(utf)).trimmed());
-        info->setMetaData(Qmmp::TITLE,
-                       codec->toUnicode(title.toCString(utf)).trimmed());
-        info->setMetaData(Qmmp::YEAR,
-                       tag->year());
-        info->setMetaData(Qmmp::TRACK,
-                       tag->track());
     }
     if (fileRef.audioProperties())
         info->setLength(fileRef.audioProperties()->length());

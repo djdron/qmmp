@@ -58,12 +58,12 @@ Decoder *DecoderMPCFactory::create(QObject *parent, QIODevice *input,
     return new DecoderMPC(parent, this, input, output);
 }
 
-QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     FileInfo *info = new FileInfo(fileName);
 
     TagLib::FileRef fileRef(fileName.toLocal8Bit ());
-    TagLib::Tag *tag = fileRef.tag();
+    TagLib::Tag *tag = useMetaData ? fileRef.tag() : 0;
     if (tag && !tag->isEmpty())
     {
         info->setMetaData(Qmmp::ALBUM,

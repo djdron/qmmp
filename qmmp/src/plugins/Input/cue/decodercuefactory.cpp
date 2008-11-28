@@ -61,8 +61,9 @@ Decoder *DecoderCUEFactory::create(QObject *parent, QIODevice *input,
     return new DecoderCUE(parent, this, url);
 }
 
-QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
+    Q_UNUSED(useMetaData);
     CUEParser parser(fileName);
     return parser.createPlayList();
 }

@@ -20,7 +20,8 @@
 
 #include <QtGui>
 
-extern "C"{
+extern "C"
+{
 #if defined HAVE_FFMPEG_LIBAVFORMAT_AVFORMAT_H
 #include <ffmpeg/libavformat/avformat.h>
 #elif defined HAVE_FFMPEG_AVFORMAT_H
@@ -81,7 +82,7 @@ Decoder *DecoderFFmpegFactory::create(QObject *parent, QIODevice *input,
     return new DecoderFFmpeg(parent, this, output, path);
 }
 
-QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName)
+QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo*> list;
     avcodec_init();
@@ -93,13 +94,16 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName)
         return list;
     FileInfo *info = new FileInfo(fileName);
     av_find_stream_info(in);
-    info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(in->album).trimmed());
-    info->setMetaData(Qmmp::ARTIST, QString::fromUtf8(in->author).trimmed());
-    info->setMetaData(Qmmp::COMMENT, QString::fromUtf8(in->comment).trimmed());
-    info->setMetaData(Qmmp::GENRE, QString::fromUtf8(in->genre).trimmed());
-    info->setMetaData(Qmmp::TITLE, QString::fromUtf8(in->title).trimmed());
-    info->setMetaData(Qmmp::YEAR, in->year);
-    info->setMetaData(Qmmp::TRACK, in->track);
+    if (useMetaData)
+    {
+        info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(in->album).trimmed());
+        info->setMetaData(Qmmp::ARTIST, QString::fromUtf8(in->author).trimmed());
+        info->setMetaData(Qmmp::COMMENT, QString::fromUtf8(in->comment).trimmed());
+        info->setMetaData(Qmmp::GENRE, QString::fromUtf8(in->genre).trimmed());
+        info->setMetaData(Qmmp::TITLE, QString::fromUtf8(in->title).trimmed());
+        info->setMetaData(Qmmp::YEAR, in->year);
+        info->setMetaData(Qmmp::TRACK, in->track);
+    }
     info->setLength(in->duration/AV_TIME_BASE);
     av_close_input_file(in);
     list << info;

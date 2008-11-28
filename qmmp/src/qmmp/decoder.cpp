@@ -411,14 +411,14 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     return 0;
 }*/
 
-QList <FileInfo *> Decoder::createPlayList(const QString &fileName)
+QList <FileInfo *> Decoder::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo *> list;
     if (QFile::exists(fileName)) //is it file?
     {
         DecoderFactory *fact = Decoder::findByPath(fileName);
         if (fact)
-            list << fact->createPlayList(fileName);
+            list << fact->createPlayList(fileName, useMetaData);
     }
     else
         //TODO do this according supported protocols

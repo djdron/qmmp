@@ -102,7 +102,6 @@ private:
     QString m_path;
     qint64 m_offset;
     qint64 m_length;
-    bool m_cue;
 };
 
 

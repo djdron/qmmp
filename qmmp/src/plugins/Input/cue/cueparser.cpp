@@ -103,7 +103,7 @@ CUEParser::CUEParser(const QString &fileName)
         m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
     //calculate last item length
     QList <FileInfo *> f_list;
-    f_list = Decoder::createPlayList(m_filePath);
+    f_list = Decoder::createPlayList(m_filePath, FALSE);
     qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length();
     if (l > m_infoList.last().length())
         m_infoList.last().setLength(l - m_infoList.last().length());
