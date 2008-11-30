@@ -346,7 +346,7 @@ void MainWindow::showMetaData()
     if (m_playlist->currentItem())
     {
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
-        m_playlist->listWidget()->updateList();
+        m_playlist->updateList();
     }
 }
 

@@ -71,6 +71,7 @@ class PlayList : public QWidget
 
     public slots:
         void setTime(qint64 time);
+        void updateList();
 
     private slots:
         void showAddMenu();
