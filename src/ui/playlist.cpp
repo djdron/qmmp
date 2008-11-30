@@ -469,29 +469,17 @@ void PlayList::setTime(qint64 time)
 
     }
 }
-//void PlayList::setInfo (const OutputState &st,int length_current, int length_total)
-//{
-/*if (st.type() == OutputState::Info)
-{
-    m_current_time->display (formatTime (st.elapsedSeconds()));
-    m_current_time->update();
 
-    QString str_length = formatTime (length_current) + "/" + formatTime (length_total);
-    m_length_totalLength->display (str_length);
-    m_length_totalLength->update();
-}
-else if (st.type() == OutputState::Playing)
+void PlayList::updateList()
 {
-    m_listWidget->updateList();     //removes progress message from TextScroller
-}*/
-//}
+    m_listWidget->updateList();
+    m_titleBar->showCurrent();
+}
+
 
 PlayListItem *PlayList::currentItem()
 {
-    if (m_playListModel)
-        return m_playListModel->currentItem();
-    else
-        return 0;
+    return m_playListModel ? m_playListModel->currentItem() : 0;
 }
 
 void PlayList::showPlaylistMenu()

@@ -44,10 +44,12 @@ public:
     void setModel(PlayListModel *model);
     void readSettings();
 
+public slots:
+    void showCurrent();
+
 private slots:
     void updateSkin();
     void shade();
-    void showCurrent();
 
 private:
     void drawPixmap(int);
