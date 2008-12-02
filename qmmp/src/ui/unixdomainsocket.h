@@ -25,8 +25,9 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <sys/types.h>
+#ifdef Q_OS_LINUX
 #include <linux/un.h>
-
+#endif
 
 /*!
  *  UnixDomainSocket class is a wrapper around the unix domain sockets implementation.
