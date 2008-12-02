@@ -299,7 +299,7 @@ void ConfigDialog::loadPluginsInfo()
     ui.effectPluginTable->verticalHeader()->hide();
     ui.effectPluginTable->setHorizontalHeaderLabels ( QStringList()
             << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
-    ui.effectPluginTable->setRowCount ( effect->count () );
+    ui.effectPluginTable->setRowCount ( effects->count () );
 
     for ( int i = 0; i < effects->count (); ++i )
     {
