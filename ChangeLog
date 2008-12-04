@@ -163,7 +163,7 @@ Version 0.2.0
 * added stream support
 * added filedialog interface (Vladimir Kuznetsov)
 * added OSS output plugin (Yuriy Zhuravlev)
-* improved plalist (Vladimir Kuznetsov)
+* improved playlist (Vladimir Kuznetsov)
 * added visual plugin support
 * added analyzer plugin
 * added shaded mode support
@@ -221,3 +221,24 @@ Version 0.2.2
 * fixed UDS datagram encoding
 * removed unused code
 * fixed skin parsing
+
+Version 0.2.3
+* fixed out-of-source build (thanks to Funda Wang)
+* added parallel build support (Funda Wang)
+* added recent ffmpeg support
+* fixed Russian translation
+* added French translation (Stanislas Zeller)
+* fixed audio port in the jack plugin (Adrian Knoth)
+* fixed memory leak
+* fixed playlist loading when using drag and drop and command line
+* fixed crash on exit with enabled visualization
+* fixed playlist file parsing
+* fixed main visualization flickering
+* fixed gcc-4.3 warnings
+* fixed modplug build
+* added enter hotkey support in the jump dialog
+* fixed segmentation fault in the PulseAudio plugin
+* added OSS4 support (Yuriy Zhuravlev)
+* fixed notification bug
+* fixed critical bug in the settings dialog
+* removed duplicate --next command line option (Adrian Knoth)
