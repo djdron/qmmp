@@ -87,14 +87,13 @@ void PositionBar::mouseMoveEvent (QMouseEvent *e)
 
 void PositionBar::mouseReleaseEvent(QMouseEvent*)
 {
-    m_moving = FALSE;
     draw(FALSE);
     if (m_value!=m_old && m_max > 0)
     {
         m_old = m_value;
         mw->seek(m_value);
     }
-
+    m_moving = FALSE;
 }
 
 void PositionBar::setValue(int v)
