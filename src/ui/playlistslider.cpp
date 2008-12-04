@@ -66,6 +66,7 @@ void PlayListSlider::mousePressEvent(QMouseEvent *e)
 {
 
     m_moving = TRUE;
+    m_pressed = TRUE;
     press_pos = e->y();
     if (m_pos<e->y() && e->y()<m_pos+18)
     {
@@ -82,7 +83,6 @@ void PlayListSlider::mousePressEvent(QMouseEvent *e)
             //qDebug ("%d",m_value);
         }
     }
-    m_pressed = TRUE;
     update();
 }
 
