@@ -5,22 +5,22 @@
     <message>
         <location filename="../mprisfactory.cpp" line="29"/>
         <source>MPRIS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul MPRIS</translation>
     </message>
     <message>
         <location filename="../mprisfactory.cpp" line="48"/>
         <source>About MPRIS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu MPRIS</translation>
     </message>
     <message>
         <location filename="../mprisfactory.cpp" line="50"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../mprisfactory.cpp" line="49"/>
         <source>Qmmp MPRIS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul Qmmp MPRIS</translation>
     </message>
 </context>
 </TS>
