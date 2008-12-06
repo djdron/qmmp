@@ -35,7 +35,7 @@ pkg_check_modules(FFMPEG libavcodec libavformat)
 # old ffmpeg support
 
 IF(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
-  ADD_DEFINITIONS(-DHAVE_FFMPEG_AVFORMAT_H)
+  ADD_DEFINITIONS(-DHAVE_LIBAVFORMAT_AVFORMAT_H)
   include_directories(/usr/include/ffmpeg)
 ELSEIF(EXISTS /usr/include/ffmpeg/avformat.h)
   ADD_DEFINITIONS(-DHAVE_FFMPEG_AVFORMAT_H)
@@ -48,13 +48,13 @@ ELSE(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
 ENDIF(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
 
 IF(EXISTS /usr/include/ffmpeg/libavcodec/avcodec.h)
-  ADD_DEFINITIONS(-DHAVE_FFMPEG_AVCODEC_H)
+  ADD_DEFINITIONS(-DHAVE_LIBAVCODEC_AVCODEC_H)
   include_directories(/usr/include/ffmpeg)
 ELSEIF(EXISTS /usr/include/ffmpeg/avcodec.h)
   ADD_DEFINITIONS(-DHAVE_FFMPEG_AVCODEC_H)
 ELSEIF(EXISTS /usr/include/libavcodec/avcodec.h)
   ADD_DEFINITIONS(-DHAVE_LIBAVCODEC_AVCODEC_H)
-ELSE(EXISTS /usr/include/ffmpeg/avcodec.h)
+ELSE(EXISTS /usr/include/ffmpeg/libavcodec/avcodec.h)
   include_directories(/usr/local/include/ffmpeg
                       /usr/local/include/libavcodec
 )

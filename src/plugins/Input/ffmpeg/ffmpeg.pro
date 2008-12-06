@@ -20,6 +20,7 @@ INCLUDEPATH += /usr/include/libavformat
 INCLUDEPATH += /usr/include/libavcodec
 INCLUDEPATH += /usr/include/ffmpeg/libavcodec
 INCLUDEPATH += /usr/include/ffmpeg/libavformat
+INCLUDEPATH += /usr/include/ffmpeg
 
 CONFIG += release \
 warn_on \
