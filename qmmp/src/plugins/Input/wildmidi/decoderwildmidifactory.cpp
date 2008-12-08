@@ -63,6 +63,17 @@ QList<FileInfo *> DecoderWildMidiFactory::createPlayList(const QString &fileName
 {
     QList <FileInfo*> list;
     FileInfo *info = new FileInfo(fileName);
+
+    void *midi_ptr = WildMidi_Open (fileName.toLocal8Bit());
+    if(midi_ptr)
+    {
+        //wm_info = new _WM_Info;
+        _WM_Info *wm_info = WildMidi_GetInfo(midi_ptr);
+        info->setLength(wm_info->approx_total_samples / 44100);
+        qDebug("===== %d", wm_info->approx_total_samples / 44100);
+        WildMidi_Close(midi_ptr);
+    }
+
     list << info;
     return list;
 }
@@ -78,13 +89,7 @@ void DecoderWildMidiFactory::showSettings(QWidget *)
 {}
 
 void DecoderWildMidiFactory::showAbout(QWidget *parent)
-{
-    /*QMessageBox::about (parent, tr("About WildMidi Audio Plugin"),
-                        tr("Qmmp WildMidi Audio Plugin")+"\n"+
-                        tr("WildMidi library version:") +
-                        QString(" %1").arg(WavpackGetLibraryVersionString ())+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
-}
+{}
 
 QTranslator *DecoderWildMidiFactory::createTranslator(QObject *parent)
 {
