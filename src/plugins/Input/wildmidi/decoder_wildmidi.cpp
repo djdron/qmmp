@@ -88,10 +88,7 @@ void DecoderWildMidi::flush(bool final)
         }
 
         if (m_user_stop || m_finish)
-        {
-            m_inited = FALSE;
             m_done = TRUE;
-        }
         else
         {
             m_output_bytes -= produceSound(m_output_buf, m_output_bytes, m_bitrate, m_chan);
@@ -117,14 +114,14 @@ bool DecoderWildMidi::initialize()
     m_output_size = 0;
     m_seekTime = -1.0;
     m_totalTime = 0.0;
-    _WM_Info *wm_info = 0; //TODO fix memory leak
+    _WM_Info *wm_info = 0;
 
     if (! m_output_buf)
         m_output_buf = new char[globalBufferSize];
     m_output_at = 0;
     m_output_bytes = 0;
 
-    wm_info = new _WM_Info;
+    //wm_info = new _WM_Info;
 
     unsigned long int mixer_options = 0;
 
@@ -160,11 +157,12 @@ void DecoderWildMidi::seek(qint64 pos)
 
 void DecoderWildMidi::deinit()
 {
+    if (m_inited)
+        WildMidi_Shutdown();
     m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
     m_output_size = 0;
-    WildMidi_Shutdown();
 }
 
 void DecoderWildMidi::run()
@@ -190,7 +188,6 @@ void DecoderWildMidi::run()
 
         if (m_seekTime >= 0.0)
         {
-            // WavpackSeekSample (m_context, m_seekTime * m_freq);
             qint64 i = m_seekTime *44100;
             long unsigned int *sample_pos = (long unsigned int *) &i;
             WildMidi_FastSeek(midi_ptr, sample_pos);
