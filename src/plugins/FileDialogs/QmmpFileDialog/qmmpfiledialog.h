@@ -45,6 +45,12 @@ public:
                          const QString &filter  = QString(),
                          QString *selectedFilter = 0);
 
+    QStringList openFileNames(QWidget *parent = 0,
+                              const QString &caption  = QString(),
+                              const QString &dir  = QString(),
+                              const QString &filter  = QString(),
+                              QString *selectedFilter = 0);
+
     QString saveFileName (QWidget *parent = 0,
                           const QString &caption  = QString(),
                           const QString &dir  = QString(),

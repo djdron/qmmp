@@ -59,10 +59,11 @@ private slots:
     void updateButtons();
     void updateDialogButton(int);
     void showFileDialogInfo();
+    void installSkin();
+    void loadSkins();
 
 private:
     void readSettings();
-    void loadSkins();
     void findSkins(const QString &path);
     void loadPluginsInfo();
     void loadFonts();
