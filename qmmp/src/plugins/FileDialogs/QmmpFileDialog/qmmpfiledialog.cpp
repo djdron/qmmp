@@ -66,10 +66,20 @@ QString QmmpFileDialog::openFileName(QWidget *parent, const QString &caption,
     if (dialog->exec() == QDialog::Accepted)
         l = dialog->selectedFiles();
     dialog->deleteLater();
-    if (l.isEmpty())
-        return QString();
-    else
-        return l.at(0);
+    return l.isEmpty() ? QString() : l.at(0);
+}
+
+QStringList QmmpFileDialog::openFileNames(QWidget *parent, const QString &caption,
+        const QString &dir, const QString &filter, QString *)
+{
+    QmmpFileDialogImpl *dialog = new QmmpFileDialogImpl(parent);
+    dialog->setWindowTitle(caption);
+    dialog->setModeAndMask(dir, FileDialog::AddFiles, filter.split(";;"));
+    QStringList l;
+    if (dialog->exec() == QDialog::Accepted)
+        l = dialog->selectedFiles();
+    dialog->deleteLater();
+    return l;
 }
 
 QString QmmpFileDialog::saveFileName (QWidget *parent, const QString &caption,

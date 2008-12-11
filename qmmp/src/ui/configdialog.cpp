@@ -69,11 +69,13 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
     connect (ui.pluginsTab, SIGNAL(currentChanged(int)), SLOT(updateButtons()));
     connect (ui.fileDialogComboBox, SIGNAL (currentIndexChanged (int)), SLOT(updateDialogButton(int)));
     connect (ui.fdInformationButton, SIGNAL (clicked()), SLOT(showFileDialogInfo()));
+    connect (ui.skinInstallButton, SIGNAL (clicked()), SLOT(installSkin()));
+    connect (ui.skinReloadButton, SIGNAL (clicked()), SLOT(loadSkins()));
+    connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)), this, SLOT (changeSkin()));
     ui.listWidget->setIconSize (QSize (69,29));
     m_skin = Skin::getPointer();
     readSettings();
     m_reader = new SkinReader(this);
-    m_reader->generateThumbs();
     loadSkins();
     loadPluginsInfo();
     loadFonts();
@@ -152,7 +154,9 @@ void ConfigDialog::changeSkin()
 
 void ConfigDialog::loadSkins()
 {
+    m_reader->generateThumbs();
     m_skinList.clear();
+    ui.listWidget->clear();
     QFileInfo fileInfo (":/default");
     QPixmap preview = Skin::getPixmap ("main", QDir (fileInfo.filePath()));
     QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
@@ -170,8 +174,6 @@ void ConfigDialog::loadSkins()
         ui.listWidget->addItem (item);
         m_skinList << QFileInfo(path);
     }
-    connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)),
-             this, SLOT (changeSkin()));
 }
 
 void ConfigDialog::findSkins(const QString &path)
@@ -623,4 +625,16 @@ void ConfigDialog::showFileDialogInfo()
 {
     int index = ui.fileDialogComboBox->currentIndex ();
     FileDialog::registeredFactories()[index]->showAbout(this);
+}
+
+void ConfigDialog::installSkin()
+{
+    QStringList files = FileDialog::getOpenFileNames(this,tr("Select Skin Files"), QDir::homePath(),
+                        tr("Skin files") + " (*.tar.gz *.tgz *.tar.bz2 *.zip *.wsz)");
+    foreach(QString path, files)
+    {
+        QFile file(path);
+        file.copy(QDir::homePath() +"/.qmmp/skins/" + QFileInfo(path).fileName());
+    }
+    loadSkins();
 }
