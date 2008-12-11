@@ -619,12 +619,27 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
     if (slist.count() > 0)
     {
         QString str = slist[0];
-        if (str.startsWith("--")) // is it a command?
+
+        if (str.startsWith("--enqueue")) //check for "--enqueue" modifier
+        {
+            if (slist.count() < 2)
+                return FALSE;
+            QStringList full_path_list;
+            for (int i = 1; i < slist.count(); ++i)
+            {
+                if ((slist.at(i).startsWith("/")) || (slist.at(i).contains("://")))   //is it absolute path or url?
+                    full_path_list << slist.at(i);
+                else
+                    full_path_list << cwd + "/" + slist.at(i);
+            }
+            m_playListModel->addFileList(full_path_list); //TODO url support
+        }
+        else if (str.startsWith("--")) // is it a command?
         {
             if (CommandLineManager::hasOption(str))
                 m_generalHandler->executeCommand(str);
             else if (m_option_manager->identify(str))
-                m_option_manager->executeCommand(str,this);
+                m_option_manager->executeCommand(str, this);
             else
                 return FALSE;
         }
@@ -633,13 +648,12 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
             QStringList full_path_list;
             foreach(QString s,slist)
             {
-                qWarning(qPrintable(cwd + "/" + s));
-                if (s.left(1) == "/")   //is it absolute path?
+                if ((s.startsWith("/")) || (s.contains("://")))   //is it absolute path or url?
                     full_path_list << s;
                 else
                     full_path_list << cwd + "/" + s;
             }
-            setFileList(full_path_list);
+            setFileList(full_path_list); //TODO url support
         }
     }
     return TRUE;

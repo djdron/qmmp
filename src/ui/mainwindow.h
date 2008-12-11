@@ -57,7 +57,7 @@ public:
 
     ~MainWindow();
 
-    PlayList *getPLPointer(){return m_playlist;}
+    PlayList *playlist(){return m_playlist;}
 
     QMenu* menu();
     void setVolume(int volume, int balance);
