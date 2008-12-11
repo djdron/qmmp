@@ -465,7 +465,10 @@ void PlayListModel::addFileList(const QStringList &l)
             if (f_info.isDir())
                 addDirectory(str);
             else
+            {
                 addFile(str);
+                loadPlaylist(str);
+            }
         }
         // Do processing the rest of events to avoid GUI freezing
         QApplication::processEvents(QEventLoop::AllEvents,10);
