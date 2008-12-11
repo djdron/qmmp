@@ -312,7 +312,7 @@ void EqWidget::savePreset()
 
 void EqWidget::saveAutoPreset()
 {
-    PlayList* playlist = qobject_cast<MainWindow*>(parent())->getPLPointer();
+    PlayList* playlist = qobject_cast<MainWindow*>(parent())->playlist();
     if (!playlist->currentItem())
         return;
     //delete preset if it already exists

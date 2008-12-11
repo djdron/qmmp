@@ -59,7 +59,8 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
 
     if (argString.startsWith("--") && // command?
             !(m_option_manager->identify(argString) ||
-              CommandLineManager::hasOption(argString)))
+              CommandLineManager::hasOption(argString) ||
+              argString.startsWith("--enqueue")))
     {
         qFatal("QMMP: Unknown command...");
         exit(1);
@@ -141,6 +142,7 @@ void QMMPStarter::printUsage()
     cout << qPrintable(tr("Options:")) << endl;
     cout << "--------" << endl;
     cout << qPrintable(m_option_manager->helpString()) << endl;
+    cout << "--enqueue            " << qPrintable(tr("Don't clear the playlist")) << endl;
     CommandLineManager::printUsage();
     cout << "--help               " << qPrintable(tr("Display this text and exit")) << endl;
     cout << "--version            " << qPrintable(tr("Print version number and exit")) << endl;
@@ -149,5 +151,6 @@ void QMMPStarter::printUsage()
 
 void QMMPStarter::printVersion()
 {
-    cout << qPrintable(tr("QMMP version:")) << "  " << QMMP_STR_VERSION << endl;
+    cout << qPrintable(tr("QMMP version:")) << " " << QMMP_STR_VERSION << endl;
+    cout << qPrintable(tr("Qt version:")) << " " << QT_VERSION_STR << endl;
 }
