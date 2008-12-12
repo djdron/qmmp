@@ -23,15 +23,18 @@
 #include <QDir>
 #include <QTimer>
 #include <QCoreApplication>
+#include <QWheelEvent>
+#include <QEvent>
 
 #include <qmmp/soundcore.h>
 
+#include "qmmptrayicon.h"
 #include "statusicon.h"
 
 StatusIcon::StatusIcon(QObject *parent)
         : General(parent)
 {
-    m_tray = new QSystemTrayIcon(this);
+    m_tray = new QmmpTrayIcon(this);
     connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
     m_tray->setIcon ( QIcon(":/tray_stop.png"));
     m_tray->show();

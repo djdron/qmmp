@@ -17,44 +17,43 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef STATUSICON_H
-#define STATUSICON_H
 
-#include <QSystemTrayIcon>
-#include <QMap>
+#include <QEvent>
+#include <QWheelEvent>
 
-#include <qmmpui/general.h>
-#include <qmmp/qmmp.h>
+#include <qmmp/soundcore.h>
 
-class SoundCore;
-class QEvent;
+#include "qmmptrayicon.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
-class StatusIcon : public General
+QmmpTrayIcon::QmmpTrayIcon(QObject *parent)
+        : QSystemTrayIcon(parent)
 {
-Q_OBJECT
-public:
-    StatusIcon(QObject *parent = 0);
+}
 
-    ~StatusIcon();
 
-private slots:
-    void showMetaData();
-    void setState(Qmmp::State state);
-    void trayActivated(QSystemTrayIcon::ActivationReason);
-    void enable();
+QmmpTrayIcon::~QmmpTrayIcon()
+{
+}
 
-private:
-    QSystemTrayIcon *m_tray;
-    bool m_showMessage;
-    bool m_showTooltip;
-    bool m_hideToTray;
-    bool m_enabled;
-    int m_messageDelay;
-    SoundCore *m_core;
-};
+bool QmmpTrayIcon::event(QEvent *e)
+{
+    if (e->type() == QEvent::Wheel )
+    {
+        wheelEvent((QWheelEvent *) e);
+        e->accept();
+        return TRUE;
+    }
+    return QSystemTrayIcon::event(e);
+}
 
-#endif
+void QmmpTrayIcon::wheelEvent(QWheelEvent *e)
+{
+    SoundCore *core = SoundCore::instance();
+    int volume = qMax(core->leftVolume(), core->rightVolume());
+    int balance = (core->rightVolume() - core->leftVolume()) * 100 / volume;
+    volume += e->delta()/20;
+    volume = qMax(volume,0);
+    volume = qMin(volume,100);
+    core->setVolume(volume - qMax(balance,0)*volume/100,
+                    volume + qMin(balance,0)*volume/100);
+}
