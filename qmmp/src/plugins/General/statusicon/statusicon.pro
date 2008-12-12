@@ -5,7 +5,7 @@ CONFIG += release \
 warn_on \
 plugin 
 
-TARGET=$$PLUGINS_PREFIX/General/statusicon
+TARGET =$$PLUGINS_PREFIX/General/statusicon
 QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libstatusicon.so
 
 
@@ -31,10 +31,12 @@ RESOURCES += images/tray_images.qrc
 
 
 HEADERS += statusiconfactory.h \
-statusicon.h \
- settingsdialog.h
+           statusicon.h \
+           settingsdialog.h \
+           qmmptrayicon.h
 SOURCES += statusiconfactory.cpp \
-statusicon.cpp \
- settingsdialog.cpp
+           statusicon.cpp \
+           settingsdialog.cpp \
+           qmmptrayicon.cpp
 FORMS += settingsdialog.ui
 

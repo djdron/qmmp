@@ -17,44 +17,31 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef STATUSICON_H
-#define STATUSICON_H
+#ifndef QMMPTRAYICON_H
+#define QMMPTRAYICON_H
 
 #include <QSystemTrayIcon>
-#include <QMap>
 
-#include <qmmpui/general.h>
-#include <qmmp/qmmp.h>
-
-class SoundCore;
 class QEvent;
+class QWheelEvent;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
-class StatusIcon : public General
+class QmmpTrayIcon : public QSystemTrayIcon
 {
 Q_OBJECT
 public:
-    StatusIcon(QObject *parent = 0);
+    QmmpTrayIcon(QObject *parent = 0);
 
-    ~StatusIcon();
+    ~QmmpTrayIcon();
 
-private slots:
-    void showMetaData();
-    void setState(Qmmp::State state);
-    void trayActivated(QSystemTrayIcon::ActivationReason);
-    void enable();
+protected:
+    bool event(QEvent *e);
 
 private:
-    QSystemTrayIcon *m_tray;
-    bool m_showMessage;
-    bool m_showTooltip;
-    bool m_hideToTray;
-    bool m_enabled;
-    int m_messageDelay;
-    SoundCore *m_core;
+    void wheelEvent(QWheelEvent *e);
+
 };
 
 #endif
