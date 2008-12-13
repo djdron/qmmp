@@ -25,9 +25,9 @@
 #include <qmmp/output.h>
 #include <qmmp/decoder.h>
 #include <qmmp/decoderfactory.h>
+#include <qmmpui/playlistitem.h>
 
 #include "display.h"
-#include "playlistitem.h"
 #include "titlebar.h"
 
 /**

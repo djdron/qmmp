@@ -27,11 +27,12 @@
 #include <QUrl>
 #include <QApplication>
 
-#include "playlistitem.h"
+#include <qmmpui/playlistitem.h>
+#include <qmmpui/playlistmodel.h>
+
 #include "textscroller.h"
 #include "listwidget.h"
 #include "skin.h"
-#include "playlistmodel.h"
 #include "playlist.h"
 
 #define INVALID_ROW -1

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include "jumptotrackdialog.h"
-#include "playlistmodel.h"
+#include <qmmpui/playlistmodel.h>
 
 #include <QStringListModel>
 #include <QSortFilterProxyModel>

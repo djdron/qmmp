@@ -21,8 +21,9 @@
 
 #include <QKeyEvent>
 
+#include <qmmpui/playlistmodel.h>
+
 #include "playlist.h"
-#include "playlistmodel.h"
 #include "listwidget.h"
 #include "keyboardmanager.h"
 #include "mainwindow.h"

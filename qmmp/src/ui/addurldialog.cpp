@@ -26,7 +26,7 @@
 #include "addurldialog.h"
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
-#include "playlistmodel.h"
+#include <qmmpui/playlistmodel.h>
 
 #define HISTORY_SIZE 10
 

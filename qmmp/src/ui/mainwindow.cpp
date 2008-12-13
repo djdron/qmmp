@@ -33,13 +33,13 @@
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/commandlinemanager.h>
 #include <qmmpui/filedialog.h>
+#include <qmmpui/fileloader.h>
+#include <qmmpui/playlistmodel.h>
 
 #include "textscroller.h"
 #include "mainwindow.h"
-#include "fileloader.h"
 #include "skin.h"
 #include "playlist.h"
-#include "playlistmodel.h"
 #include "configdialog.h"
 #include "dock.h"
 #include "eqwidget.h"
@@ -350,7 +350,7 @@ void MainWindow::showMetaData()
     }
 }
 
-void MainWindow::closeEvent ( QCloseEvent *)
+void MainWindow::closeEvent (QCloseEvent *)
 {
     writeSettings();
     m_playlist->close();
