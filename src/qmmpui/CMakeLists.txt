@@ -35,8 +35,11 @@ SET(libqmmpui_SRCS
     commandlinemanager.cpp
     filedialog.cpp
     qtfiledialog.cpp
-    abstractplaylist.cpp
     abstractplaylistitem.cpp
+    fileloader.cpp
+    playstate.cpp
+    playlistmodel.cpp
+    playlistitem.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -50,8 +53,11 @@ SET(libqmmpui_MOC_HDRS
     filedialog.h
     filedialogfactory.h
     qtfiledialog.h
-    abstractplaylist.h
     abstractplaylistitem.h
+    fileloader.h
+    playstate.h
+    playlistmodel.h
+    playlistitem.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -64,8 +70,10 @@ SET(libqmmpui_DEVEL_HDRS
     commandlineoption.h
     filedialog.h
     filedialogfactory.h
-    abstractplaylist.h
+    qtfiledialog.h
     abstractplaylistitem.h
+    playlistmodel.h
+    playlistitem.h
 )
 
 

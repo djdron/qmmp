@@ -22,9 +22,10 @@
 #include <QMenu>
 #include <QSettings>
 
+#include <qmmpui/playlistmodel.h>
+
 #include "dock.h"
 #include "button.h"
-#include "playlistmodel.h"
 #include "playlisttitlebar.h"
 #include "skin.h"
 

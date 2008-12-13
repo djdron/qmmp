@@ -12,7 +12,6 @@ FORMS += ./forms/configdialog.ui \
          ./forms/addurldialog.ui
 
 HEADERS += mainwindow.h \
-           fileloader.h \
            button.h \
            display.h \
            skin.h \
@@ -21,7 +20,6 @@ HEADERS += mainwindow.h \
            number.h \
            playlist.h \
            listwidget.h \
-           playlistmodel.h \
            pixmapwidget.h \
            playlisttitlebar.h \
            configdialog.h \
@@ -60,12 +58,10 @@ HEADERS += mainwindow.h \
            titlebarcontrol.h \
            shadedvisual.h \
            shadedbar.h \
-           playlistitem.h \
            builtincommandlineoption.h
 
 SOURCES += mainwindow.cpp \
            mp3player.cpp \
-           fileloader.cpp \
            button.cpp \
            display.cpp \
            skin.cpp \
@@ -74,7 +70,6 @@ SOURCES += mainwindow.cpp \
            number.cpp \
            playlist.cpp \
            listwidget.cpp \
-           playlistmodel.cpp \
            pixmapwidget.cpp \
            playlisttitlebar.cpp \
            configdialog.cpp \
@@ -94,7 +89,6 @@ SOURCES += mainwindow.cpp \
            pluginitem.cpp \
            volumebar.cpp \
            balancebar.cpp \
-           playstate.cpp \
            symboldisplay.cpp \
            playlistcontrol.cpp \
            qmmpstarter.cpp \
@@ -111,7 +105,6 @@ SOURCES += mainwindow.cpp \
            titlebarcontrol.cpp \
            shadedvisual.cpp \
            shadedbar.cpp \
-           playlistitem.cpp \
            builtincommandlineoption.cpp
 
 #Some conf to redirect intermediate stuff in separate dirs

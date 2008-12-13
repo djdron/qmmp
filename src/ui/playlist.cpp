@@ -27,13 +27,11 @@
 #include <QCloseEvent>
 
 #include "dock.h"
-#include "fileloader.h"
 #include "playlist.h"
 #include "skin.h"
 #include "listwidget.h"
 #include "button.h"
-#include "playlistitem.h"
-#include "playlistmodel.h"
+
 #include "playlisttitlebar.h"
 #include "playlistslider.h"
 #include "pixmapwidget.h"
@@ -41,6 +39,9 @@
 #include "playlistcontrol.h"
 #include "keyboardmanager.h"
 
+#include <qmmpui/playlistitem.h>
+#include <qmmpui/playlistmodel.h>
+#include <qmmpui/fileloader.h>
 #include <qmmp/soundcore.h>
 
 PlayList::PlayList (QWidget *parent)

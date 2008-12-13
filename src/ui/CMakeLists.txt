@@ -49,24 +49,20 @@ SET(ui_SRCS
     eqslider.cpp
     eqtitlebar.cpp
     eqwidget.cpp
-    fileloader.cpp
     jumptotrackdialog.cpp
     keyboardmanager.cpp
     listwidget.cpp
     logscale.cpp
     mainvisual.cpp
     mainwindow.cpp
-    playlistitem.cpp
     monostereo.cpp
     mp3player.cpp
     number.cpp
     pixmapwidget.cpp
     playlistcontrol.cpp
     playlist.cpp
-    playlistmodel.cpp
     playlistslider.cpp
     playlisttitlebar.cpp
-    playstate.cpp
     playstatus.cpp
     pluginitem.cpp
     positionbar.cpp
@@ -102,7 +98,6 @@ SET(ui_MOC_HDRS
     eqtitlebar.h
     eqwidget.h
     fft.h
-    fileloader.h
     inlines.h
     jumptotrackdialog.h
     keyboardmanager.h
@@ -110,16 +105,13 @@ SET(ui_MOC_HDRS
     logscale.h
     mainvisual.h
     mainwindow.h
-    playlistitem.h
     monostereo.h
     number.h
     pixmapwidget.h
     playlistcontrol.h
     playlist.h
-    playlistmodel.h
     playlistslider.h
     playlisttitlebar.h
-    playstate.h
     playstatus.h
     pluginitem.h
     positionbar.h
