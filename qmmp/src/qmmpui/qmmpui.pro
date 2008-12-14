@@ -41,10 +41,10 @@ HEADERS += general.h \
            filedialogfactory.h \
            qtfiledialog.h \
            abstractplaylistitem.h \
- playlistitem.h \
- playlistmodel.h \
- playstate.h \
- fileloader.h
+           playlistitem.h \
+           playlistmodel.h \
+           playstate.h \
+           fileloader.h
 SOURCES += general.cpp \
            generalhandler.cpp \
            playlistparser.cpp \
