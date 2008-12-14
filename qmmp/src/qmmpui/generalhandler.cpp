@@ -46,7 +46,6 @@ GeneralHandler::GeneralHandler(QObject *parent)
         {
             General *general = factory->create(parent);
             connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
-            connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
             connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
             m_generals.insert(factory, general);
         }
@@ -58,62 +57,6 @@ GeneralHandler::GeneralHandler(QObject *parent)
 GeneralHandler::~GeneralHandler()
 {}
 
-/*void GeneralHandler::setState(uint state)
-{
-    if (state == m_state)
-        return;
-    m_state = state;
-    General *general;
-    if (state == General::Stopped)
-    {
-        m_songInfo.clear();
-        m_time = 0;
-    }
-
-    foreach(general, m_generals.values())
-    {
-        general->setState(state);
-    }
-}*/
-
-/*void GeneralHandler::setSongInfo(const SongInfo &info)
-{
-    if (m_state == General::Stopped)
-        return;
-    if (m_songInfo != info)
-    {
-        m_songInfo = info;
-        General *general;
-        foreach(general, m_generals.values())
-        {
-            general->setSongInfo(m_songInfo);
-        }
-    }
-}
-
-void GeneralHandler::setVolume(int left, int right)
-{
-    m_left = left;
-    m_right = right;
-    General *general;
-    foreach(general, m_generals.values())
-    {
-        general->setVolume(left, right);
-    }
-}
-
-void GeneralHandler::setTime(int time)
-{
-    if(m_time == time)
-        return;
-    m_time = time;
-    General *general;
-    foreach(general, m_generals.values())
-    {
-        general->setTime(time);
-    }
-}*/
-
 void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
 {
     if (enable == m_generals.keys().contains(factory))
@@ -122,7 +65,6 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
     {
         General *general = factory->create(parent());
         connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
-        connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
         connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals.insert(factory, general);
         //general->setVolume(m_left, m_right);
@@ -152,7 +94,6 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
         delete m_generals.value(factory);
         General *general = factory->create(parent());
         connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
-        connect (general, SIGNAL(playCalled()), SIGNAL(playCalled()));
         connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals[factory] = general;
         /*general->setVolume(m_left, m_right);
@@ -187,44 +128,3 @@ GeneralHandler* GeneralHandler::instance()
     return m_instance;
 }
 
-/*void GeneralHandler::processCommand(uint command)
-{
-    switch ((uint) command)
-    {
-    case Control::Play:
-    {
-        emit playCalled();
-        break;
-    }
-    case Control::Stop:
-    {
-        emit stopCalled();
-        break;
-    }
-    case Control::Pause:
-    {
-        emit pauseCalled();
-        break;
-    }
-    case Control::Previous:
-    {
-        emit previousCalled();
-        break;
-    }
-    case Control::Next:
-    {
-        emit nextCalled();
-        break;
-    }
-    case Control::Exit:
-    {
-        emit exitCalled();
-        break;
-    }
-    case Control::ToggleVisibility:
-    {
-        emit toggleVisibilityCalled();
-        break;
-    }
-    }
-}*/

@@ -46,12 +46,10 @@ public:
     static bool isEnabled(GeneralFactory* factory);
 
 public slots:
-    void play();
     void exit();
     void toggleVisibility();
 
 signals:
-    void playCalled();
     void exitCalled();
     void toggleVisibilityCalled();
 

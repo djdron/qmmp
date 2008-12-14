@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
 <context>
     <name>SettingsDialog</name>
     <message>
@@ -37,37 +36,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="39"/>
+        <location filename="../statusicon.cpp" line="45"/>
         <source>Play</source>
         <translation>Грати</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="40"/>
+        <location filename="../statusicon.cpp" line="46"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="41"/>
+        <location filename="../statusicon.cpp" line="47"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="42"/>
+        <location filename="../statusicon.cpp" line="48"/>
         <source>Next</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="43"/>
+        <location filename="../statusicon.cpp" line="49"/>
         <source>Previous</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="45"/>
+        <location filename="../statusicon.cpp" line="51"/>
         <source>Exit</source>
         <translation>Вихід</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="96"/>
+        <location filename="../statusicon.cpp" line="104"/>
         <source>Now Playing</source>
         <translation>Зараз грає</translation>
     </message>

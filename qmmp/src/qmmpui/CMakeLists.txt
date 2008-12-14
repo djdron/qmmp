@@ -40,6 +40,7 @@ SET(libqmmpui_SRCS
     playstate.cpp
     playlistmodel.cpp
     playlistitem.cpp
+    mediaplayer.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -58,6 +59,7 @@ SET(libqmmpui_MOC_HDRS
     playstate.h
     playlistmodel.h
     playlistitem.h
+    mediaplayer.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -74,6 +76,7 @@ SET(libqmmpui_DEVEL_HDRS
     abstractplaylistitem.h
     playlistmodel.h
     playlistitem.h
+    mediaplayer.h
 )
 
 

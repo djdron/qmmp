@@ -46,7 +46,6 @@ public:
     static GeneralHandler* instance();
 
 signals:
-    void playCalled();
     void exitCalled();
     void toggleVisibilityCalled();
 

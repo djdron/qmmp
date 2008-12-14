@@ -36,37 +36,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="39"/>
+        <location filename="../statusicon.cpp" line="45"/>
         <source>Play</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="40"/>
+        <location filename="../statusicon.cpp" line="46"/>
         <source>Pause</source>
         <translation>暫停</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="41"/>
+        <location filename="../statusicon.cpp" line="47"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="42"/>
+        <location filename="../statusicon.cpp" line="48"/>
         <source>Next</source>
         <translation>下一曲</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="43"/>
+        <location filename="../statusicon.cpp" line="49"/>
         <source>Previous</source>
         <translation>上一曲</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="45"/>
+        <location filename="../statusicon.cpp" line="51"/>
         <source>Exit</source>
         <translation>結束</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="96"/>
+        <location filename="../statusicon.cpp" line="104"/>
         <source>Now Playing</source>
         <translation>正在播放</translation>
     </message>

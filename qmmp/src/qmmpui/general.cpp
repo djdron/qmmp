@@ -72,12 +72,6 @@ General::General(QObject *parent)
 General::~General()
 {}
 
-void General::play()
-{
-    //TODO use AbstractPlayList and SoundCore
-    emit playCalled();
-}
-
 void General::exit()
 {
     emit exitCalled();

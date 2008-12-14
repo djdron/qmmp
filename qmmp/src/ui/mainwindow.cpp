@@ -35,6 +35,7 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/fileloader.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmpui/mediaplayer.h>
 
 #include "textscroller.h"
 #include "mainwindow.h"
@@ -60,77 +61,70 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     seeking = FALSE;
     m_update = FALSE;
     m_paused = FALSE;
-    m_elapsed = 0;
+    m_playlistName = tr("Default");
     m_option_manager = option_manager;
-    m_core = new SoundCore(this);
-
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
-
-    m_skin = new Skin(this);
-    Dock *dock = new Dock(this);
-    dock->setMainWidget(this);
-
     setWindowFlags(Qt::FramelessWindowHint);
     setFixedSize (275,116);
 
+    //prepare libqmmp and libqmmpui libraries for playing
+    m_player = new MediaPlayer(this);
+    m_core = new SoundCore(this);
+    m_playListModel = new PlayListModel(this);
+    m_player->initialize(m_core, m_playListModel);
+    //additional featuries
+    new PlaylistParser(this);
+    Visual::initialize(this, m_visMenu, SLOT(updateActions()));
+    m_generalHandler = new GeneralHandler(this);
+
+    //user interface
+    m_skin = new Skin(this);
+    Dock *dock = new Dock(this);
+    dock->setMainWidget(this);
     display = new MainDisplay(this);
     setCentralWidget(display);
     display->show();
     display->setFocus ();
 
-    m_playlistName = tr("Default");
-
-    new PlaylistParser(this);
     m_playlist = new PlayList(this);
-
-    connect (m_playlist,SIGNAL(next()),SLOT(next()));
-    connect (m_playlist,SIGNAL(prev()),SLOT(previous()));
-    connect (m_playlist,SIGNAL(play()),SLOT(play()));
-    connect (m_playlist,SIGNAL(pause()),SLOT(pause()));
-    connect (m_playlist,SIGNAL(stop()),SLOT(stop()));
-    connect (m_playlist,SIGNAL(eject()),SLOT(addFile()));
-
-    connect (m_playlist,SIGNAL(newPlaylist()),SLOT(newPlaylist()));
-    connect (m_playlist,SIGNAL(loadPlaylist()),SLOT(loadPlaylist()));
-    connect (m_playlist,SIGNAL(savePlaylist()),SLOT(savePlaylist()));
-
-    m_playListModel = new PlayListModel(this);
-
-    connect(display,SIGNAL(shuffleToggled(bool)),m_playListModel,SLOT(prepareForShufflePlaying(bool)));
-    connect(display,SIGNAL(repeatableToggled(bool)),m_playListModel,SLOT(prepareForRepeatablePlaying(bool)));
-
+    m_playlist->setModel(m_playListModel);
     dock->addWidget(m_playlist);
 
     m_equalizer = new EqWidget(this);
     dock->addWidget(m_equalizer);
-    connect(m_equalizer, SIGNAL(valueChanged()), SLOT(updateEQ()));
-
-    m_playlist->setModel(m_playListModel);
 
     m_jumpDialog = new JumpToTrackDialog(this);
     m_jumpDialog->setModel(m_playListModel);
-    connect(m_jumpDialog,SIGNAL(playRequest()),this,SLOT(play()));
     m_jumpDialog->hide();
-
-    createActions();
 
     m_titlebar = new TitleBar(this);
     m_titlebar->move(0,0);
     m_titlebar->show();
     m_titlebar->setActive(TRUE);
 
-    readSettings();
-    dock->updateDock();
-
-    display->setEQ(m_equalizer);
-    display->setPL(m_playlist);
-
     m_vis = MainVisual::getPointer();
-
-    Visual::initialize(this, m_visMenu, SLOT(updateActions()));
     Visual::add(m_vis);
 
-    connect(m_core, SIGNAL(finished()), SLOT(next()));
+    createActions();
+    //connections
+    connect (m_playlist,SIGNAL(next()),SLOT(next()));
+    connect (m_playlist,SIGNAL(prev()),SLOT(previous()));
+    connect (m_playlist,SIGNAL(play()),SLOT(play()));
+    connect (m_playlist,SIGNAL(pause()), m_core ,SLOT(pause()));
+    connect (m_playlist,SIGNAL(stop()),SLOT(stop()));
+    connect (m_playlist,SIGNAL(eject()),SLOT(addFile()));
+    connect (m_playlist,SIGNAL(newPlaylist()),SLOT(newPlaylist()));
+    connect (m_playlist,SIGNAL(loadPlaylist()),SLOT(loadPlaylist()));
+    connect (m_playlist,SIGNAL(savePlaylist()),SLOT(savePlaylist()));
+
+    connect(display,SIGNAL(shuffleToggled(bool)),m_playListModel,SLOT(prepareForShufflePlaying(bool)));
+    connect(display,SIGNAL(repeatableToggled(bool)),m_playListModel,SLOT(prepareForRepeatablePlaying(bool)));
+
+    connect(m_equalizer, SIGNAL(valueChanged()), SLOT(updateEQ()));
+
+    connect(m_jumpDialog,SIGNAL(playRequest()),this,SLOT(play()));
+
+    //connect(m_core, SIGNAL(finished()), SLOT(next()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
@@ -138,14 +132,15 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
             SLOT(setProgress(int)));
 
-    updateEQ();
-
-    m_generalHandler = new GeneralHandler(this);
-    connect(m_generalHandler, SIGNAL(playCalled()), SLOT(play()));
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
 
+    readSettings();
+    display->setEQ(m_equalizer);
+    display->setPL(m_playlist);
+    dock->updateDock();
     m_playListModel->readSettings();
+    updateEQ();
     char buf[PATH_MAX + 1];
     QString cwd = QString::fromLocal8Bit(getcwd(buf,PATH_MAX));
     processCommandArgs(args,cwd);
@@ -161,56 +156,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::play()
 {
-    disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
-    m_playListModel->doCurrentVisibleRequest();
-
-    if (m_core->state() == Qmmp::Paused)
-    {
-        pause();
-        return;
-    }
-    //stop();
-    if (m_playListModel->count() == 0)
-        return;
-
-    m_equalizer->loadPreset(m_playListModel->currentItem()->url().section("/",-1));
-    //m_playListModel->currentItem()->updateTags();
-    m_playlist->listWidget()->updateList();
-    QString s = m_playListModel->currentItem()->url();
-    if (s.isEmpty())
-        return;
-    if (m_core->play(s))
-        /*m_generalHandler->setTime(0)*/;
-    else
-    {
-        //find out the reason why playback failed
-        switch ((int) m_core->state())
-        {
-        case Qmmp::FatalError:
-        {
-            stop();
-            return; //unrecovable error in output, so abort playing
-        }
-        case Qmmp::NormalError:
-        {
-            //error in decoder, so we should try to play next song
-            qApp->processEvents();
-            if (!m_playListModel->isEmptyQueue())
-            {
-                m_playListModel->setCurrentToQueued();
-            }
-            else if (!m_playListModel->next())
-            {
-                stop();
-                display->hideTimeDisplay();
-                return;
-            }
-            m_playlist->update();
-            play();
-            break;
-        }
-        }
-    }
+    m_player->play();
 }
 
 void MainWindow::replay()
@@ -255,47 +201,12 @@ void MainWindow::stop()
 
 void MainWindow::next()
 {
-    if (!m_playListModel->isEmptyQueue())
-    {
-        m_playListModel->setCurrentToQueued();
-    }
-    else if (!m_playListModel->next())
-    {
-        stop();
-        display->hideTimeDisplay();
-        return;
-    }
-    m_playlist->update();
-    if (m_core->state() != Qmmp::Stopped)
-    {
-        if (m_core->state() == Qmmp::Paused)
-            stop();
-        m_elapsed = 0;
-        play();
-    }
-    else
-        display->hideTimeDisplay();
+     m_player->next();
 }
 
 void MainWindow::previous()
 {
-    if (!m_playListModel->previous())
-    {
-        stop();
-        display->hideTimeDisplay();
-        return;
-    }
-
-    m_playlist->update();
-    if (m_core->state() != Qmmp::Stopped)
-    {
-        if (m_core->state() == Qmmp::Paused)
-            stop();
-        m_elapsed = 0;
-        play();
-    }
-    else
-        display->hideTimeDisplay();
+    m_player->previous();
 }
 
 void MainWindow::updateEQ()
@@ -309,10 +220,12 @@ void MainWindow::updateEQ()
 
 void MainWindow::showState(Qmmp::State state)
 {
+    disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
     switch ((int) state)
     {
     case Qmmp::Playing:
     {
+        m_equalizer->loadPreset(m_playListModel->currentItem()->url().section("/",-1));
         if (m_playlist->listWidget())
             m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
         break;
@@ -497,7 +410,7 @@ void MainWindow::createActions()
 {
     m_mainMenu = new QMenu(this);
     m_mainMenu->addAction(tr("&Play"),this, SLOT(play()), tr("X"));
-    m_mainMenu->addAction(tr("&Pause"),this, SLOT(pause()), tr("C"));
+    m_mainMenu->addAction(tr("&Pause"),m_core, SLOT(pause()), tr("C"));
     m_mainMenu->addAction(tr("&Stop"),this, SLOT(stop()), tr("V"));
     m_mainMenu->addAction(tr("&Previous"),this, SLOT(previous()), tr("Z"));
     m_mainMenu->addAction(tr("&Next"),this, SLOT(next()), tr("B"));
@@ -609,7 +522,7 @@ void MainWindow::setFileList(const QStringList & l)
 void MainWindow::playPause()
 {
     if (m_core->state() == Qmmp::Playing)
-        pause();
+        m_core->pause();
     else
         play();
 }

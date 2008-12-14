@@ -17,46 +17,40 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef STATUSICON_H
-#define STATUSICON_H
+#ifndef MEDIAPLAYER_H
+#define MEDIAPLAYER_H
 
-#include <QSystemTrayIcon>
-#include <QMap>
+#include <QObject>
 
-#include <qmmpui/general.h>
-#include <qmmp/qmmp.h>
-
+class PlayListModel;
 class SoundCore;
-class MediaPlayer;
-class QEvent;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
-class StatusIcon : public General
+class MediaPlayer : public QObject
 {
 Q_OBJECT
 public:
-    StatusIcon(QObject *parent = 0);
+    MediaPlayer(QObject *parent = 0);
 
-    ~StatusIcon();
+    ~MediaPlayer();
 
-private slots:
-    void showMetaData();
-    void setState(Qmmp::State state);
-    void trayActivated(QSystemTrayIcon::ActivationReason);
-    void enable();
+    static MediaPlayer* instance();
+
+    void initialize(SoundCore *core, PlayListModel *model);
+
+public slots:
+    void play();
+    void stop();
+    void next();
+    void previous();
 
 private:
-    QSystemTrayIcon *m_tray;
-    bool m_showMessage;
-    bool m_showTooltip;
-    bool m_hideToTray;
-    bool m_enabled;
-    int m_messageDelay;
+    PlayListModel *m_model;
     SoundCore *m_core;
-    MediaPlayer *m_player;
+    static MediaPlayer* m_instance;
+
 };
 
 #endif
