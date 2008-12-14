@@ -56,6 +56,11 @@ void MediaPlayer::initialize(SoundCore *core, PlayListModel *model)
     connect(m_core, SIGNAL(finished()), SLOT(next()));
 }
 
+PlayListModel *MediaPlayer::playListModel()
+{
+    return m_model;
+}
+
 void MediaPlayer::play()
 {
     m_model->doCurrentVisibleRequest();

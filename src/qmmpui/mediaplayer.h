@@ -39,6 +39,7 @@ public:
     static MediaPlayer* instance();
 
     void initialize(SoundCore *core, PlayListModel *model);
+    PlayListModel *playListModel();
 
 public slots:
     void play();

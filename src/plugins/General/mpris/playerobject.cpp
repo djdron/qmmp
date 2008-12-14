@@ -22,6 +22,8 @@
 #include <QDBusMetaType>
 #include <QDBusArgument>
 #include <qmmp/soundcore.h>
+#include <qmmpui/mediaplayer.h>
+#include <qmmpui/playlistmodel.h>
 
 #include "playerobject.h"
 
@@ -55,6 +57,7 @@ PlayerObject::PlayerObject(QObject *parent)
 {
     qDBusRegisterMetaType<PlayerStatus>();
     m_core = SoundCore::instance();
+    m_player = MediaPlayer::instance();
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateCaps()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateTrack()));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateStatus()));
@@ -65,12 +68,12 @@ PlayerObject::~PlayerObject()
 
 void PlayerObject::Next()
 {
-
+    m_player->next();
 }
 
 void PlayerObject::Prev()
 {
-
+    m_player->previous();
 }
 
 void PlayerObject::Pause()
@@ -80,12 +83,12 @@ void PlayerObject::Pause()
 
 void PlayerObject::Stop()
 {
-    m_core->stop();
+    m_player->stop();
 }
 
 void PlayerObject::Play()
 {
-    QMetaObject::invokeMethod(parent(), "play");
+    m_player->play();
 }
 
 PlayerStatus PlayerObject::GetStatus()
@@ -140,9 +143,10 @@ int PlayerObject::GetCaps()
         caps |= CAN_PAUSE;
     else
         caps |= CAN_PLAY;
-    if (GetStatus().state < 2)
+    if ((GetStatus().state < 2) && (m_core->length() > 0))
         caps |= CAN_SEEK;
-    caps |= CAN_PROVIDE_METADATA;
+    caps |= CAN_GO_NEXT;
+    caps |= CAN_GO_PREV;
     return caps;
 }
 

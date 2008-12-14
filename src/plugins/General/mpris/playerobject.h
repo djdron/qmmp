@@ -24,6 +24,7 @@
 #include <QVariantMap>
 
 class SoundCore;
+class MediaPlayer;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -91,6 +92,7 @@ private slots:
 
 private:
     SoundCore *m_core;
+    MediaPlayer *m_player;
 
 };
 
