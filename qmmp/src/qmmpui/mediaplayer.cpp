@@ -71,7 +71,6 @@ void MediaPlayer::play()
     QString s = m_model->currentItem()->url();
     if (s.isEmpty())
         return;
-    qDebug(qPrintable(s));
     if (!m_core->play(s))
     {
         //find out the reason why playback failed
