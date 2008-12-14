@@ -84,7 +84,7 @@ QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RCC_SRCS})
-target_link_libraries(qmmpui ${QT_LIBRARIES})
+target_link_libraries(qmmpui ${QT_LIBRARIES} -lqmmp)
 add_dependencies(qmmpui libqmmp)
 SET_TARGET_PROPERTIES(qmmpui PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})
 install(TARGETS qmmpui LIBRARY DESTINATION ${LIB_DIR})
