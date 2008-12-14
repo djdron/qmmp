@@ -44,7 +44,8 @@ HEADERS += general.h \
            playlistitem.h \
            playlistmodel.h \
            playstate.h \
-           fileloader.h
+           fileloader.h \
+           mediaplayer.h
 SOURCES += general.cpp \
            generalhandler.cpp \
            playlistparser.cpp \
@@ -52,10 +53,11 @@ SOURCES += general.cpp \
            filedialog.cpp \
            qtfiledialog.cpp \
            abstractplaylistitem.cpp \
- playlistmodel.cpp \
- playstate.cpp \
- playlistitem.cpp \
- fileloader.cpp
+           playlistmodel.cpp \
+           playstate.cpp \
+           playlistitem.cpp \
+           fileloader.cpp \
+           mediaplayer.cpp
 
 DESTDIR = .
 

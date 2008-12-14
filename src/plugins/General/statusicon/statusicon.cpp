@@ -27,6 +27,7 @@
 #include <QEvent>
 
 #include <qmmp/soundcore.h>
+#include <qmmpui/mediaplayer.h>
 
 #include "qmmptrayicon.h"
 #include "statusicon.h"
@@ -39,12 +40,13 @@ StatusIcon::StatusIcon(QObject *parent)
     m_tray->setIcon ( QIcon(":/tray_stop.png"));
     m_tray->show();
     m_core = SoundCore::instance();
+    m_player = MediaPlayer::instance();
     QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
-    menu->addAction(tr("Play"), this, SLOT(play()));
+    menu->addAction(tr("Play"), m_player, SLOT(play()));
     menu->addAction(tr("Pause"), m_core, SLOT(pause()));
     menu->addAction(tr("Stop"), m_core, SLOT(stop()));
-    /*menu->addAction(tr("Next"), control, SLOT(next()));
-    menu->addAction(tr("Previous"), control, SLOT(previous()));*/
+    menu->addAction(tr("Next"), m_player, SLOT(next()));
+    menu->addAction(tr("Previous"), m_player, SLOT(previous()));
     menu->addSeparator();
     menu->addAction(tr("Exit"), this, SLOT(exit()));
     m_tray->setContextMenu(menu);
@@ -112,7 +114,7 @@ void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
     else if (reason == QSystemTrayIcon::MiddleClick)
     {
         if (SoundCore::instance()->state() == Qmmp::Stopped)
-            play();
+            m_player->play();
         else
             m_core->pause();
     }

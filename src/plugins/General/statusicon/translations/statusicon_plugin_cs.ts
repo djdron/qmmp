@@ -36,37 +36,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="39"/>
+        <location filename="../statusicon.cpp" line="45"/>
         <source>Play</source>
         <translation>Přehrát</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="40"/>
+        <location filename="../statusicon.cpp" line="46"/>
         <source>Pause</source>
         <translation>Pauza</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="41"/>
+        <location filename="../statusicon.cpp" line="47"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="42"/>
+        <location filename="../statusicon.cpp" line="48"/>
         <source>Next</source>
         <translation>Další</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="43"/>
+        <location filename="../statusicon.cpp" line="49"/>
         <source>Previous</source>
         <translation>Předchozí</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="45"/>
+        <location filename="../statusicon.cpp" line="51"/>
         <source>Exit</source>
         <translation>Ukončit</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="96"/>
+        <location filename="../statusicon.cpp" line="104"/>
         <source>Now Playing</source>
         <translation>Nyní hraje</translation>
     </message>

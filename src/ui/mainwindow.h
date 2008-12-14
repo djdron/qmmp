@@ -43,6 +43,7 @@ class SoundCore;
 class JumpToTrackDialog;
 class VisualMenu;
 class GeneralHandler;
+class MediaPlayer;
 
 class QMenu;
 class QKeyEvent;
@@ -130,10 +131,10 @@ private:
     QString m_playlistName;
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;
-    int m_elapsed;
     VisualMenu *m_visMenu;
     BuiltinCommandLineOption* m_option_manager;
     GeneralHandler *m_generalHandler;
+    MediaPlayer *m_player;
 };
 
 #endif
