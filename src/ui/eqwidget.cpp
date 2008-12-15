@@ -303,8 +303,14 @@ void EqWidget::savePreset()
         preset->setText(text);
         preset->setPreamp(m_preamp->value());
         for (int i = 0; i<10; ++i)
-        {
             preset->setGain(i, m_sliders.at (i)->value());
+        foreach(EQPreset *p, m_presets) //remove preset with same name
+        {
+            if (p->text() == text)
+            {
+                m_presets.removeAll(p);
+                delete p;
+            }
         }
         m_presets.append(preset);
     }
