@@ -74,7 +74,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_player->initialize(m_core, m_playListModel);
     //additional featuries
     new PlaylistParser(this);
-    Visual::initialize(this, m_visMenu, SLOT(updateActions()));
     m_generalHandler = new GeneralHandler(this);
 
     //user interface
@@ -102,10 +101,11 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_titlebar->show();
     m_titlebar->setActive(TRUE);
 
+    createActions();
+    //prepare visulization
+    Visual::initialize(this, m_visMenu, SLOT(updateActions()));
     m_vis = MainVisual::getPointer();
     Visual::add(m_vis);
-
-    createActions();
     //connections
     connect (m_playlist,SIGNAL(next()),SLOT(next()));
     connect (m_playlist,SIGNAL(prev()),SLOT(previous()));
