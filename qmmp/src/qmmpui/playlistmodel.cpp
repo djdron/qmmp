@@ -34,9 +34,9 @@
 
 #include <qmmp/decoder.h>
 #include <qmmp/decoderfactory.h>
-#include <qmmpui/playlistparser.h>
-#include <qmmpui/playlistformat.h>
 
+#include "playlistparser.h"
+#include "playlistformat.h"
 #include "fileloader.h"
 #include "playlistmodel.h"
 #include "playlistitem.h"
@@ -77,7 +77,7 @@ PlayListModel::PlayListModel(QObject *parent)
     m_block_update_signals = false;
     is_repeatable_list = false;
     m_play_state = new NormalPlayState(this);
-    //readSettings();
+    readSettings();
 }
 
 PlayListModel::~PlayListModel()

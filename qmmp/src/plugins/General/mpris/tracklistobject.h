@@ -17,43 +17,48 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef TRACKLISTOBJECT_H
+#define TRACKLISTOBJECT_H
 
-#include <QtDBus>
+#include <QObject>
+#include <QString>
+#include <QVariantMap>
 
-#include "playerobject.h"
-#include "rootobject.h"
-#include "tracklistobject.h"
-#include "mpris.h"
+class PlayListModel;
+class MediaPlayer;
 
-MPRIS::MPRIS(QObject *parent)
-        : General(parent)
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class TrackListObject : public QObject
 {
-    PlayerObject *player = new PlayerObject(this);
-    RootObject *root = new RootObject(this);
-    TrackListObject *trackList = new TrackListObject(this);
-    QDBusConnection connection = QDBusConnection::sessionBus();
-    connection.registerObject("/TrackList", trackList, QDBusConnection::ExportAllContents);
-    connection.registerObject("/Player", player, QDBusConnection::ExportAllContents);
-    connection.registerObject("/", root, QDBusConnection::ExportAllContents);
-    connection.registerService("org.mpris.qmmp");
-    m_left = 0;
-    m_right = 0;
-    m_time = 0;
-    //m_state = General::Stopped;
-}
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.freedesktop.MediaPlayer")
 
+public:
+    TrackListObject(QObject *parent = 0);
 
-MPRIS::~MPRIS()
-{
-}
+    ~TrackListObject();
 
-int MPRIS::leftVolume()
-{
-    return m_left;
-}
+public slots:
+    //int AddTrack(const QString &in0, bool in1);
+    /*void DelTrack(int in0);*/
+    int GetCurrentTrack();
+    int GetLength();
+    QVariantMap GetMetadata(int in0);
+    /*void SetLoop(bool in0);
+    void SetRandom(bool in0);*/
 
-int MPRIS::rightVolume()
-{
-    return m_right;
-}
+signals:
+    void TrackListChange(int in0);
 
+private slots:
+    void updateTrackList();
+
+private:
+    PlayListModel *m_model;
+    MediaPlayer *m_player;
+
+};
+
+#endif

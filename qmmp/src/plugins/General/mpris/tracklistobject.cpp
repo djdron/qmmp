@@ -18,42 +18,71 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtDBus>
+#include <QFile>
 
-#include "playerobject.h"
-#include "rootobject.h"
+#include <qmmpui/playlistmodel.h>
+#include <qmmpui/mediaplayer.h>
+#include <qmmpui/playlistitem.h>
+
 #include "tracklistobject.h"
-#include "mpris.h"
 
-MPRIS::MPRIS(QObject *parent)
-        : General(parent)
+TrackListObject::TrackListObject(QObject *parent)
+        : QObject(parent)
 {
-    PlayerObject *player = new PlayerObject(this);
-    RootObject *root = new RootObject(this);
-    TrackListObject *trackList = new TrackListObject(this);
-    QDBusConnection connection = QDBusConnection::sessionBus();
-    connection.registerObject("/TrackList", trackList, QDBusConnection::ExportAllContents);
-    connection.registerObject("/Player", player, QDBusConnection::ExportAllContents);
-    connection.registerObject("/", root, QDBusConnection::ExportAllContents);
-    connection.registerService("org.mpris.qmmp");
-    m_left = 0;
-    m_right = 0;
-    m_time = 0;
-    //m_state = General::Stopped;
+    m_player = MediaPlayer::instance();
+    m_model = m_player->playListModel();
+    connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
 }
 
 
-MPRIS::~MPRIS()
+TrackListObject::~TrackListObject()
 {
 }
 
-int MPRIS::leftVolume()
+/*int TrackListObject::AddTrack(const QString &in0, bool in1)
 {
-    return m_left;
+    m_model->addFile(in0);
+    if(in1)
+    {
+        m_model->set
+    }
+    return 1;
+}*/
+
+int TrackListObject::GetCurrentTrack()
+{
+    return m_model->currentRow();
 }
 
-int MPRIS::rightVolume()
+int TrackListObject::GetLength()
 {
-    return m_right;
+    return m_model->count();
 }
 
+QVariantMap TrackListObject::GetMetadata(int in0)
+{
+    QVariantMap map;
+    PlayListItem *item = m_model->item(in0);
+    if (item)
+    {
+        if (QFile::exists(item->url()))
+            map.insert("location", "file://" + item->url());
+        else
+            map.insert("location", item->url());
+        map.insert("title", item->title());
+        map.insert("artist", item->artist());
+        map.insert("album", item->album());
+        map.insert("tracknumber", item->track());
+        map.insert("time", item->length());
+        map.insert("mtime", item->length() * 1000);
+        map.insert("genre", item->genre());
+        map.insert("comment", item->comment());
+        map.insert("year", item->year());
+    }
+    return map;
+}
+
+void  TrackListObject::updateTrackList()
+{
+    emit TrackListChange(m_model->count());
+}

@@ -27,7 +27,6 @@
 #include <QPointer>
 #include <QVector>
 
-//#include "fileloader.h"
 class FileLoader;
 
 /**
@@ -72,8 +71,10 @@ class TagUpdater : public QObject
     Q_OBJECT
     QObject* m_observable;
     PlayListItem* m_item;
+
 public:
     TagUpdater(QObject* o, PlayListItem* item);
+
 protected slots:
     void updateTag();
 };
@@ -324,7 +325,7 @@ private:
     /*!
      * Songs in play queue.
      */
-    QList<PlayListItem*>m_queued_songs;
+    QList<PlayListItem*> m_queued_songs;
 
     /*!
      * Is playlist repeatable?
@@ -345,8 +346,6 @@ private:
      * when finished.
      */
     QVector<GuardedFileLoader> m_running_loaders;
-
-    friend class MainWindow;
 };
 
 
