@@ -94,12 +94,12 @@ void EqSlider::mouseMoveEvent(QMouseEvent* e)
     }
 }
 
-int EqSlider::value()
+double EqSlider::value()
 {
-    return -m_value;
+    return - m_value;
 }
 
-void EqSlider::setValue(int p)
+void EqSlider::setValue(double p)
 {
     if (m_moving)
         return;
@@ -107,7 +107,7 @@ void EqSlider::setValue(int p)
     draw(FALSE);
 }
 
-void EqSlider::setMax(int m)
+void EqSlider::setMax(double m)
 {
     m_max = m;
     draw(FALSE);
@@ -131,9 +131,9 @@ void EqSlider::draw(bool pressed)
     m_pos = p;
 }
 
-int EqSlider::convert(int p)
+double EqSlider::convert(int p)
 {
-    return int(ceil(double(m_max-m_min)*(p)/(height()-12)+m_min));
+    return (m_max - m_min)*(p)/(height() - 12) + m_min;
 }
 
 void EqSlider::wheelEvent(QWheelEvent *e)

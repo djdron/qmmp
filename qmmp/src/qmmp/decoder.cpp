@@ -53,7 +53,7 @@ void Decoder::init()
 {
     if (m_output)
         m_output->recycler()->clear();
-    int b[] = {0,0,0,0,0,0,0,0,0,0};
+    double b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
     blksize = Buffer::size();
@@ -96,13 +96,13 @@ void Decoder::setStateHandler(StateHandler *handler)
     m_handler = handler;
 }
 
-void Decoder::setEQ(int bands[10], int preamp)
+void Decoder::setEQ(double bands[10], double preamp)
 {
     set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
     set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
     for (int i=0; i<10; ++i)
     {
-        int value = bands[i];
+        double value = bands[i];
         set_gain(i,0, 0.03*value+0.000999999*value*value);
         set_gain(i,1, 0.03*value+0.000999999*value*value);
     }

@@ -32,15 +32,15 @@ public:
 
     ~EQPreset();
 
-    void setGain(int n, int value);
-    void setPreamp(int);
+    void setGain(int n, double value);
+    void setPreamp(double);
 
-    int gain(int n);
-    int preamp();
+    double gain(int n);
+    double preamp();
 
 private:
-    int m_bands[10];
-    int m_preamp;
+    double m_bands[10];
+    double m_preamp;
 
 };
 

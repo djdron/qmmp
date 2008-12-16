@@ -55,7 +55,7 @@ public:
     StateHandler *stateHandler();
 
     void setStateHandler(StateHandler *handler);
-    virtual void setEQ(int bands[10], int preamp);
+    virtual void setEQ(double bands[10], double preamp);
     virtual void setEQEnabled(bool on);
 
     // static methods

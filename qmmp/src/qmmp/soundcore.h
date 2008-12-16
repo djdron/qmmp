@@ -52,9 +52,9 @@ public:
 
     /*!
      * Sets equalizer settings. Each item of \p bands[] and \p reamp should be
-     *  \b -100..100
+     *  \b -20.0..20.0
      */
-    void setEQ(int bands[10], const int &preamp);
+    void setEQ(double bands[10], double preamp);
 
     /*!
      * Enables equalizer if \p on is \b TRUE or disables it if \p on is \b FALSE
@@ -161,8 +161,8 @@ private:
     bool m_useEQ;
     bool m_update;
     bool m_block;
-    int m_preamp;
-    int m_bands[10];
+    double m_preamp;
+    double m_bands[10];
     Visual *m_vis;
     QList <Visual*> m_visuals;
     QWidget *m_parentWidget;

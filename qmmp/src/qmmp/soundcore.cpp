@@ -248,7 +248,7 @@ qint64 SoundCore::length() const
     return  (m_decoder) ? m_decoder->lengthInSeconds() : 0;
 }
 
-void SoundCore::setEQ(int bands[10], const int &preamp)
+void SoundCore::setEQ(double bands[10], double preamp)
 {
     for (int i = 0; i < 10; ++i)
         m_bands[i] = bands[i];
