@@ -139,7 +139,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     display->setEQ(m_equalizer);
     display->setPL(m_playlist);
     dock->updateDock();
-    m_playListModel->readSettings();
+    //m_playListModel->readSettings();
+    m_playListModel->doCurrentVisibleRequest();
     updateEQ();
     char buf[PATH_MAX + 1];
     QString cwd = QString::fromLocal8Bit(getcwd(buf,PATH_MAX));

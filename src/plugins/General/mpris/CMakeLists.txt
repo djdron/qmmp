@@ -34,6 +34,7 @@ SET(libmpris_SRCS
     mprisfactory.cpp
     rootobject.cpp
     playerobject.cpp
+    tracklistobject.cpp
 )
 
 SET(libmpris_MOC_HDRS
@@ -41,6 +42,7 @@ SET(libmpris_MOC_HDRS
     mpris.h
     rootobject.h
     playerobject.h
+    tracklistobject.h
 )
 
 SET(libmpris_RCCS translations/translations.qrc)

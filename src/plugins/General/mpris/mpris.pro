@@ -33,12 +33,14 @@ INSTALLS += target
 HEADERS += mprisfactory.h \
            mpris.h  \
            playerobject.h \
- rootobject.h
+ rootobject.h \
+ tracklistobject.h
 
 SOURCES += mprisfactory.cpp \
            mpris.cpp \
            playerobject.cpp \
- rootobject.cpp
+ rootobject.cpp \
+ tracklistobject.cpp
 
 INCLUDEPATH += ../../../../src
 
