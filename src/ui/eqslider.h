@@ -38,14 +38,14 @@ public:
 
     ~EqSlider();
 
-    int value();
+    double value();
 
 public slots:
-    void setValue(int);
-    void setMax(int);
+    void setValue(double);
+    void setMax(double);
 
 signals:
-    void sliderMoved (int);
+    void sliderMoved (double);
 
 private slots:
     void updateSkin();
@@ -54,9 +54,9 @@ private:
     Skin *m_skin;
     bool m_moving;
     int press_pos;
-    int m_max, m_min, m_pos, m_value, m_old;
+    double m_max, m_min, m_pos, m_value, m_old;
     QPixmap m_pixmap;
-    int convert(int);   // value = convert(position);
+    double convert(int);   // value = convert(position);
     void draw(bool pressed = TRUE);
 
 protected:

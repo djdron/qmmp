@@ -54,7 +54,7 @@ EqWidget::EqWidget (QWidget *parent)
     m_preamp = new EqSlider (this);
     m_preamp->show();
     m_preamp->move (21,38);
-    connect (m_preamp,SIGNAL (sliderMoved (int)),SLOT (setPreamp ()));
+    connect (m_preamp,SIGNAL (sliderMoved (double)),SLOT (setPreamp ()));
 
     m_on = new ToggleButton (this,Skin::EQ_BT_ON_N,Skin::EQ_BT_ON_P,
                              Skin::EQ_BT_OFF_N,Skin::EQ_BT_OFF_P);
@@ -83,7 +83,7 @@ EqWidget::EqWidget (QWidget *parent)
         m_sliders << new EqSlider (this);
         m_sliders.at (i)->move (78+i*18,38);
         m_sliders.at (i)->show();
-        connect (m_sliders.at (i), SIGNAL (sliderMoved (int)),SLOT (setGain()));
+        connect (m_sliders.at (i), SIGNAL (sliderMoved (double)),SLOT (setGain()));
     }
     readSettings();
     createActions();
@@ -98,12 +98,12 @@ EqWidget::~EqWidget()
         delete m_autoPresets.takeFirst();
 }
 
-int EqWidget::preamp()
+double EqWidget::preamp()
 {
     return m_preamp->value();
 }
 
-int EqWidget::gain (int g)
+double EqWidget::gain (int g)
 {
     return m_sliders.at (g)->value();
 }
@@ -138,8 +138,8 @@ void EqWidget::readSettings()
     //equalizer
     for (int i = 0; i < m_sliders.size(); ++i)
         m_sliders.at(i)->setValue(settings.value("band_"+
-                                  QString("%1").arg(i), 0).toInt());
-    m_preamp->setValue(settings.value("preamp", 0).toInt());
+                                  QString("%1").arg(i), 0).toDouble());
+    m_preamp->setValue(settings.value("preamp", 0).toDouble());
     m_on->setON(settings.value("enabled", FALSE).toBool());
     settings.endGroup();
     setGain();
@@ -157,9 +157,9 @@ void EqWidget::readSettings()
             for (int j = 0; j < 10; ++j)
             {
                 preset->setGain(j,eq_preset.value("Band"+QString("%1").arg(j),
-                                                  0).toInt());
+                                                  0).toDouble());
             }
-            preset->setPreamp(eq_preset.value("Preamp",0).toInt());
+            preset->setPreamp(eq_preset.value("Preamp",0).toDouble());
             m_presets.append(preset);
             eq_preset.endGroup();
         }
@@ -180,9 +180,9 @@ void EqWidget::readSettings()
             for (int j = 0; j < 10; ++j)
             {
                 preset->setGain(j,eq_auto.value("Band"+QString("%1").arg(j),
-                                                0).toInt());
+                                                0).toDouble());
             }
-            preset->setPreamp(eq_auto.value("Preamp",0).toInt());
+            preset->setPreamp(eq_auto.value("Preamp",0).toDouble());
             m_autoPresets.append(preset);
             eq_auto.endGroup();
         }

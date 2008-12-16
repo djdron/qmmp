@@ -212,7 +212,7 @@ void MainWindow::previous()
 
 void MainWindow::updateEQ()
 {
-    int b[10];
+    double b[10];
     for (int i=0; i<10; ++i)
         b[i] = m_equalizer->gain(i);
     m_core->setEQ(b, m_equalizer->preamp());

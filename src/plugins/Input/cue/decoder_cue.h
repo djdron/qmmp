@@ -43,7 +43,7 @@ public:
     void pause();
 
     // Equalizer
-    void setEQ(int bands[10], int preamp);
+    void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
 
 private:
@@ -55,8 +55,8 @@ private:
     QIODevice *m_input2;
     qint64 m_length;
     qint64 m_offset;
-    int m_preamp2;
-    int m_bands2[10];
+    double m_preamp2;
+    double m_bands2[10];
     bool m_useEQ2;
 };
 

@@ -31,26 +31,26 @@ EQPreset::EQPreset()
 EQPreset::~EQPreset()
 {}
 
-void EQPreset::setGain(int n, int value)
+void EQPreset::setGain(int n, double value)
 {
     if(n > 9 || n < 0)
         return;
     m_bands[n] = value;
 }
 
-void EQPreset::setPreamp(int preamp)
+void EQPreset::setPreamp(double preamp)
 {
     m_preamp = preamp;
 }
 
-int EQPreset::gain(int n)
+double EQPreset::gain(int n)
 {
     if(n > 9 || n < 0)
         return 0;
     return m_bands[n];
 }
 
-int EQPreset::preamp()
+double EQPreset::preamp()
 {
     return m_preamp;
 }

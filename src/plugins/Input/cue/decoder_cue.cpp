@@ -220,7 +220,7 @@ void DecoderCUE::pause()
     }
 }
 
-void DecoderCUE::setEQ(int bands[10], int preamp)
+void DecoderCUE::setEQ(double bands[10], double preamp)
 {
     for (int i = 0; i < 10; ++i)
         m_bands2[i] = bands[i];

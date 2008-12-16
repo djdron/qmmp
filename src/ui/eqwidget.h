@@ -46,8 +46,8 @@ public:
 
     ~EqWidget();
 
-    int preamp();
-    int gain(int);
+    double preamp();
+    double gain(int);
     bool isEQEnabled();
     /*!
     * necessary for auto-load presets
