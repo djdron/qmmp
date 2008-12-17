@@ -36,12 +36,10 @@ public:
 
     ~SettingsDialog();
 
-public slots:
-    virtual void accept();
-
 private slots:
     void writeSettings();
     void setPreamp(int);
+    void exec(QAbstractButton *);
 
 private: 
      Ui::SettingsDialog ui;

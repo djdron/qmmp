@@ -38,20 +38,19 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     int pos = ui.cueEncComboBox->findText(settings.value("encoding","ISO-8859-1").toString());
     ui.cueEncComboBox->setCurrentIndex(pos);
     settings.endGroup();
-    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
 }
 
 
 SettingsDialog::~SettingsDialog()
 {}
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("CUE");
     settings.setValue("encoding", ui.cueEncComboBox->currentText());
     settings.endGroup();
-    accept();
+    QDialog::accept();
 }
 
 void SettingsDialog::findCodecs()

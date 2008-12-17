@@ -47,14 +47,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.psiCheckBox->setChecked(settings.value("psi_notification", FALSE).toBool());
     ui.desktopCheckBox->setChecked(settings.value("desktop_notification", TRUE).toBool());
     settings.endGroup();
-    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
 }
 
 
 SettingsDialog::~SettingsDialog()
 {}
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("Notifier");
@@ -69,5 +68,5 @@ void SettingsDialog::writeSettings()
     settings.setValue("psi_notification", ui.psiCheckBox->isChecked());
     settings.setValue("desktop_notification", ui.desktopCheckBox->isChecked());
     settings.endGroup();
-    accept();
+    QDialog::accept();
 }

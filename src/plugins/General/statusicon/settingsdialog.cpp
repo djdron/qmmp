@@ -33,14 +33,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     ui.toolTipCheckBox->setChecked(settings.value("show_tooltip",FALSE).toBool());
     settings.endGroup();
-    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
 }
 
 
 SettingsDialog::~SettingsDialog()
 {}
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("Tray");
@@ -48,5 +47,5 @@ void SettingsDialog::writeSettings()
     settings.setValue ("message_delay", ui.messageDelaySpinBox->value());
     settings.setValue ("show_tooltip", ui.toolTipCheckBox->isChecked());
     settings.endGroup();
-    accept();
+    QDialog::accept();
 }

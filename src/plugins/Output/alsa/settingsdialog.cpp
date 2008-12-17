@@ -35,7 +35,6 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
     ui.deviceComboBox->setEditable ( TRUE );
     getCards();
     connect (ui.deviceComboBox, SIGNAL(activated(int)),SLOT(setText(int)));
-    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
     connect(ui.mixerCardComboBox, SIGNAL(activated(int)), SLOT(showMixerDevices(int)));
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("ALSA");
@@ -179,7 +178,7 @@ void SettingsDialog::setText(int n)
     ui.deviceComboBox->setEditText(m_devices.at(n));
 }
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
     qDebug("SettingsDialog (ALSA):: writeSettings()");
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
@@ -195,7 +194,7 @@ void SettingsDialog::writeSettings()
     settings.setValue("mixer_device", ui.mixerDeviceComboBox->currentText ());
     settings.setValue("use_mmap", ui.mmapCheckBox->isChecked());
     settings.endGroup();
-    accept();
+    QDialog::accept();
 }
 
 int SettingsDialog::getMixer(snd_mixer_t **mixer, QString card)

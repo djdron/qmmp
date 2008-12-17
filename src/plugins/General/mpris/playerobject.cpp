@@ -147,12 +147,13 @@ int PlayerObject::GetCaps()
         caps |= CAN_SEEK;
     caps |= CAN_GO_NEXT;
     caps |= CAN_GO_PREV;
+    caps |= CAN_PROVIDE_METADATA;
     return caps;
 }
 
 void PlayerObject::VolumeSet(int volume)
 {
-    int balance = (m_core->rightVolume() - m_core->leftVolume()) * 100/VolumeGet();
+    int balance = (VolumeGet() > 0) ? (m_core->rightVolume() - m_core->leftVolume()) * 100/VolumeGet() : 0;
     m_core->setVolume(volume - qMax(balance,0)*volume/100,
                       volume + qMin(balance,0)*volume/100);
 }
