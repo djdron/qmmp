@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>465</width>
-    <height>380</height>
+    <width>468</width>
+    <height>382</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -786,6 +786,9 @@ too high may cause clipping!</string>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Preferred</enum>
+     </property>
      <property name="sizeHint" stdset="0" >
       <size>
        <width>211</width>
@@ -796,6 +799,12 @@ too high may cause clipping!</string>
    </item>
    <item row="1" column="1" >
     <widget class="QDialogButtonBox" name="buttonBox" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="standardButtons" >
       <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
