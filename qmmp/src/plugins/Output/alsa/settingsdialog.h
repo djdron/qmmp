@@ -39,9 +39,11 @@ public:
 
     ~SettingsDialog();
 
+public slots:
+    virtual void accept();
+
 private slots:
     void setText(int);
-    void writeSettings();
     void showMixerDevices(int);
 
 private:

@@ -37,8 +37,8 @@ public:
     ~SettingsDialog();
 
 
-private slots:
-    void writeSettings();
+public slots:
+    virtual void accept();
 
 private:
     void findCodecs();

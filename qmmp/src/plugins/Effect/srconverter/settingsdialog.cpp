@@ -31,7 +31,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     ui.srSpinBox->setValue(settings.value("SRC/sample_rate",48000).toInt());
     ui.engineComboBox->setCurrentIndex(settings.value("SRC/engine", 0).toInt());
-    connect (ui.okButton, SIGNAL(clicked()),SLOT(writeSettings()));
 }
 
 
@@ -39,10 +38,10 @@ SettingsDialog::~SettingsDialog()
 {
 }
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue("SRC/sample_rate",ui.srSpinBox->value());
     settings.setValue("SRC/engine", ui.engineComboBox->currentIndex());
-    accept();
+    QDialog::accept();
 }

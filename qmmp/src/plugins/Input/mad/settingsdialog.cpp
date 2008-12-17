@@ -48,7 +48,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.thirdTagComboBox->setCurrentIndex(settings.value("tag_3", Disabled).toInt());
 
     settings.endGroup();
-    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
+    connect(ui.buttonBox, SIGNAL(accepted()), SLOT(writeSettings()));
 }
 
 

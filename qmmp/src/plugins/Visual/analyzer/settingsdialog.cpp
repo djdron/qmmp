@@ -37,7 +37,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.colorWidget3->setColor(settings.value("Analyzer/color3", "Red").toString());
     ui.bgColorWidget->setColor(settings.value("Analyzer/bg_color", "Black").toString());
     ui.peakColorWidget->setColor(settings.value("Analyzer/peak_color", "Cyan").toString());
-    connect (ui.okButton, SIGNAL(clicked()),SLOT(writeSettings()));
 }
 
 
@@ -45,7 +44,7 @@ SettingsDialog::~SettingsDialog()
 {
 }
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     settings.setValue("Analyzer/analyzer_falloff", ui.analyzerComboBox->currentIndex() + 1);
@@ -57,5 +56,5 @@ void SettingsDialog::writeSettings()
     settings.setValue("Analyzer/color3", ui.colorWidget3->colorName());
     settings.setValue("Analyzer/bg_color", ui.bgColorWidget->colorName());
     settings.setValue("Analyzer/peak_color", ui.peakColorWidget->colorName());
-    accept();
+    QDialog::accept();
 }

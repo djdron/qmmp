@@ -101,7 +101,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui.loopSpinBox->setValue(l);
     }
     settings.endGroup();
-    connect(ui.applyButton, SIGNAL(clicked()), SLOT(writeSettings()));
+    connect(ui.buttonBox, SIGNAL(clicked (QAbstractButton *)), SLOT(exec(QAbstractButton *)));
 }
 
 
@@ -124,11 +124,11 @@ void SettingsDialog::writeSettings()
     //bits number
     settings.setValue("Bits", ui.bit8RadioButton->isChecked() ? 8 : 16 );
     //resampling frequency
-    if(ui.khz48RadioButton->isChecked())
+    if (ui.khz48RadioButton->isChecked())
         settings.setValue("Frequency", 48000);
-    else if(ui.khz44RadioButton->isChecked())
+    else if (ui.khz44RadioButton->isChecked())
         settings.setValue("Frequency", 44100);
-    else if(ui.khz22RadioButton->isChecked())
+    else if (ui.khz22RadioButton->isChecked())
         settings.setValue("Frequency", 22050);
     else
         settings.setValue("Frequency", 11025);
@@ -160,13 +160,13 @@ void SettingsDialog::writeSettings()
     //looping
     if (ui.dontLoopRadioButton->isChecked())
         settings.setValue("LoopCount", 0);
-    else if(ui.loopForeverRadioButton->isChecked())
+    else if (ui.loopForeverRadioButton->isChecked())
         settings.setValue("LoopCount", -1);
     else
         settings.setValue("LoopCount", ui.loopSpinBox->value());
     settings.endGroup();
     //apply settings for the created decoder
-    if(DecoderModPlug::instance())
+    if (DecoderModPlug::instance())
     {
         DecoderModPlug::instance()->mutex()->lock();
         DecoderModPlug::instance()->readSettings();
@@ -179,8 +179,16 @@ void SettingsDialog::setPreamp(int preamp)
     ui.preampLabel->setText(QString("%1").arg((double) preamp/10));
 }
 
-void SettingsDialog::accept()
+void SettingsDialog::exec(QAbstractButton *button)
 {
-    writeSettings();
-    QDialog::accept();
+    switch ((int) ui.buttonBox->buttonRole(button))
+    {
+    case QDialogButtonBox::AcceptRole:
+        writeSettings();
+        accept();
+        break;
+    case QDialogButtonBox::ApplyRole:
+        writeSettings();
+        break;
+    }
 }
