@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>545</width>
-    <height>374</height>
+    <height>343</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -39,25 +39,13 @@
       </size>
      </property>
      <property name="title" >
-      <string>ASF Info</string>
+      <string>Audio Info</string>
      </property>
      <layout class="QGridLayout" >
-      <property name="leftMargin" >
+      <property name="margin" >
        <number>9</number>
       </property>
-      <property name="topMargin" >
-       <number>9</number>
-      </property>
-      <property name="rightMargin" >
-       <number>9</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>9</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
+      <property name="spacing" >
        <number>6</number>
       </property>
       <item row="4" column="1" >
@@ -159,7 +147,7 @@
         <property name="orientation" >
          <enum>Qt::Vertical</enum>
         </property>
-        <property name="sizeHint" >
+        <property name="sizeHint" stdset="0" >
          <size>
           <width>74</width>
           <height>151</height>
@@ -179,103 +167,9 @@
       </sizepolicy>
      </property>
      <property name="title" >
-      <string>WMA Tag</string>
+      <string>Metadata</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="leftMargin" >
-       <number>8</number>
-      </property>
-      <property name="topMargin" >
-       <number>8</number>
-      </property>
-      <property name="rightMargin" >
-       <number>8</number>
-      </property>
-      <property name="bottomMargin" >
-       <number>8</number>
-      </property>
-      <property name="horizontalSpacing" >
-       <number>6</number>
-      </property>
-      <property name="verticalSpacing" >
-       <number>6</number>
-      </property>
-      <item row="6" column="1" >
-       <widget class="QPushButton" name="pushButton" >
-        <property name="enabled" >
-         <bool>false</bool>
-        </property>
-        <property name="text" >
-         <string>Save</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="3" >
-       <widget class="QLineEdit" name="trackLineEdit" />
-      </item>
-      <item row="4" column="2" >
-       <widget class="QLabel" name="label_26" >
-        <property name="text" >
-         <string>Track number:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1" >
-       <widget class="QLineEdit" name="yearLineEdit" />
-      </item>
-      <item row="4" column="0" >
-       <widget class="QLabel" name="label_25" >
-        <property name="text" >
-         <string>Year:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0" >
-       <widget class="QLabel" name="label_27" >
-        <property name="text" >
-         <string>Genre:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="label_24" >
-        <property name="text" >
-         <string>Comment:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="label_23" >
-        <property name="text" >
-         <string>Album:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="label_22" >
-        <property name="text" >
-         <string>Artist:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
+     <layout class="QGridLayout" name="gridLayout" >
       <item row="0" column="0" >
        <widget class="QLabel" name="label_21" >
         <property name="text" >
@@ -289,14 +183,80 @@
       <item row="0" column="1" colspan="3" >
        <widget class="QLineEdit" name="titleLineEdit" />
       </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_22" >
+        <property name="text" >
+         <string>Artist:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="1" colspan="3" >
        <widget class="QLineEdit" name="artistLineEdit" />
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_23" >
+        <property name="text" >
+         <string>Album:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
       <item row="2" column="1" colspan="3" >
        <widget class="QLineEdit" name="albumLineEdit" />
       </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label_24" >
+        <property name="text" >
+         <string>Comment:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
       <item row="3" column="1" colspan="3" >
        <widget class="QLineEdit" name="commentLineEdit" />
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="label_25" >
+        <property name="text" >
+         <string>Year:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="QLineEdit" name="yearLineEdit" />
+      </item>
+      <item row="4" column="2" >
+       <widget class="QLabel" name="label_26" >
+        <property name="text" >
+         <string>Track number:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3" >
+       <widget class="QLineEdit" name="trackLineEdit" />
+      </item>
+      <item row="5" column="0" >
+       <widget class="QLabel" name="label_27" >
+        <property name="text" >
+         <string>Genre:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
       <item row="5" column="1" colspan="2" >
        <widget class="QLineEdit" name="genreLineEdit" />
@@ -309,7 +269,7 @@
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>111</width>
        <height>20</height>

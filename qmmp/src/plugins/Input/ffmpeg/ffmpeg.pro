@@ -1,17 +1,20 @@
 include(../../plugins.pri)
 
-FORMS += detailsdialog.ui 
+FORMS += detailsdialog.ui \
+ settingsdialog.ui
 HEADERS += decoderffmpegfactory.h \
            detailsdialog.h \
-           decoder_ffmpeg.h
+           decoder_ffmpeg.h \
+ settingsdialog.h
 SOURCES += detailsdialog.cpp \
            decoder_ffmpeg.cpp \
-           decoderffmpegfactory.cpp
+           decoderffmpegfactory.cpp \
+ settingsdialog.cpp
 
 
 QMAKE_CLEAN = ../libffmpeg.so
 
-TARGET=$$PLUGINS_PREFIX/Input/ffmpeg
+TARGET =$$PLUGINS_PREFIX/Input/ffmpeg
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libffmpeg.so
 
 
@@ -41,8 +44,8 @@ TRANSLATIONS = translations/ffmpeg_plugin_ru.ts \
 
 RESOURCES = translations/translations.qrc
 
-isEmpty (LIB_DIR){
-LIB_DIR = /lib
+isEmpty(LIB_DIR){
+    LIB_DIR = /lib
 }
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
