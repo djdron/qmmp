@@ -52,7 +52,9 @@ extern "C"
 bool DecoderFFmpegFactory::supports(const QString &source) const
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    QStringList filters = settings.value("FFMPEG/filters","*.wma").toStringList();
+    QStringList filters;
+    filters << "*.wma" << "*.ape";
+    filters = settings.value("FFMPEG/filters", filters).toStringList();
     foreach(QString filter, filters)
     {
         QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
@@ -70,11 +72,13 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *) const
 const DecoderProperties DecoderFFmpegFactory::properties() const
 {
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-    QStringList filters = settings.value("FFMPEG/filters","*.wma").toStringList();
+    QStringList filters;
+    filters << "*.wma" << "*.ape";
+    filters = settings.value("FFMPEG/filters", filters).toStringList();
     DecoderProperties properties;
-    properties.name = tr("FFMPEG Plugin");
+    properties.name = tr("FFmpeg Plugin");
     properties.filter = filters.join(" ");
-    properties.description = tr("FFMPEG Formats");
+    properties.description = tr("FFmpeg Formats");
     //properties.contentType = "";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
