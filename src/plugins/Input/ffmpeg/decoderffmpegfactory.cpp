@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QSettings>
 
 extern "C"
 {
@@ -41,6 +42,7 @@ extern "C"
 }
 
 #include "detailsdialog.h"
+#include "settingsdialog.h"
 #include "decoder_ffmpeg.h"
 #include "decoderffmpegfactory.h"
 
@@ -49,8 +51,15 @@ extern "C"
 
 bool DecoderFFmpegFactory::supports(const QString &source) const
 {
-
-    return (source.right(4).toLower() == ".wma");
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QStringList filters = settings.value("FFMPEG/filters","*.wma").toStringList();
+    foreach(QString filter, filters)
+    {
+        QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+        if (regexp.exactMatch(source))
+            return TRUE;
+    }
+    return FALSE;
 }
 
 bool DecoderFFmpegFactory::canDecode(QIODevice *) const
@@ -60,13 +69,15 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *) const
 
 const DecoderProperties DecoderFFmpegFactory::properties() const
 {
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QStringList filters = settings.value("FFMPEG/filters","*.wma").toStringList();
     DecoderProperties properties;
     properties.name = tr("FFMPEG Plugin");
-    properties.filter = "*.wma";
-    properties.description = tr("WMA Files");
+    properties.filter = filters.join(" ");
+    properties.description = tr("FFMPEG Formats");
     //properties.contentType = "";
     properties.hasAbout = TRUE;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = TRUE;
     properties.noInput = TRUE;
     properties.protocols = "file";
     return properties;
@@ -114,14 +125,23 @@ QObject* DecoderFFmpegFactory::showDetails(QWidget *parent, const QString &path)
     return d;
 }
 
-void DecoderFFmpegFactory::showSettings(QWidget *)
-{}
+void DecoderFFmpegFactory::showSettings(QWidget *parent)
+{
+    SettingsDialog *s = new SettingsDialog(parent);
+    s->show();
+}
 
 void DecoderFFmpegFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About FFmpeg Audio Plugin"),
                         tr("Qmmp FFmpeg Audio Plugin")+"\n"+
-                        tr("Suppored formats: WMA")+"\n"+
+                        QString(tr("Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6"))
+                        .arg(LIBAVFORMAT_VERSION_MAJOR)
+                        .arg(LIBAVFORMAT_VERSION_MINOR)
+                        .arg(LIBAVFORMAT_VERSION_MICRO)
+                        .arg(LIBAVCODEC_VERSION_MAJOR)
+                        .arg(LIBAVCODEC_VERSION_MINOR)
+                        .arg(LIBAVCODEC_VERSION_MICRO)+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 

@@ -25,24 +25,21 @@
 #include "ui_settingsdialog.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class SettingsDialog : public QDialog
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     SettingsDialog(QWidget *parent = 0);
 
     ~SettingsDialog();
 
-
 public slots:
     virtual void accept();
 
 private:
-    void findCodecs();
     Ui::SettingsDialog ui;
-    QList<QTextCodec *> codecs;
 
 };
 

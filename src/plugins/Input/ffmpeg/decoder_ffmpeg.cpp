@@ -87,9 +87,7 @@ void DecoderFFmpeg::flush(bool final)
         while ((! done && ! m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();
-
             output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
             mutex()->lock ();
             done = user_stop;
         }
@@ -193,18 +191,15 @@ void DecoderFFmpeg::deinit()
 
 void DecoderFFmpeg::run()
 {
-//     mpc_uint32_t vbrAcc = 0;
-//     mpc_uint32_t vbrUpd = 0;
     uint8_t *inbuf_ptr;
     int out_size, size;
     AVPacket pkt;
 
     mutex()->lock ();
 
-    if (! inited)
+    if (!inited)
     {
         mutex()->unlock();
-
         return;
     }
     mutex()->unlock();

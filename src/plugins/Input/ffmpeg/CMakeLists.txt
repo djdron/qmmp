@@ -5,7 +5,6 @@ cmake_minimum_required(VERSION 2.4.7)
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
-              
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -71,12 +70,14 @@ SET(libffmpeg_SRCS
   decoder_ffmpeg.cpp
   decoderffmpegfactory.cpp
   detailsdialog.cpp
+  settingsdialog.cpp
 )
 
 SET(libffmpeg_MOC_HDRS
   decoderffmpegfactory.h
   decoder_ffmpeg.h
   detailsdialog.h
+  settingsdialog.h
 )
 
 SET(libffmpeg_RCCS translations/translations.qrc)
@@ -89,7 +90,8 @@ QT4_WRAP_CPP(libffmpeg_MOC_SRCS ${libffmpeg_MOC_HDRS})
 
 
 SET(libffmpeg_UIS
-    detailsdialog.ui
+  detailsdialog.ui
+  settingsdialog.ui
 )
 
 QT4_WRAP_UI(libffmpeg_UIS_H ${libffmpeg_UIS})
