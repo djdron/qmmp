@@ -159,7 +159,7 @@ bool DecoderFFmpeg::initialize()
 
     bitrate = c->bit_rate;
     chan = c->channels;
-    wma_outbuf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t)];
+    wma_outbuf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + globalBufferSize];
     inited = TRUE;
     qDebug("DecoderFFmpeg: initialize succes");
     return TRUE;
@@ -236,12 +236,12 @@ void DecoderFFmpeg::run()
             out_size = AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t);
             l = avcodec_decode_audio2(c, (int16_t *)(wma_outbuf), &out_size, inbuf_ptr, size);
 
-            if(l < 0)
+            if (l < 0)
                 goto end;
             ffmpeg_out(out_size);
             size -= l;
             inbuf_ptr += l;
-            if (pkt.data) 
+            if (pkt.data)
                 av_free_packet(&pkt);
         }
         bitrate = c->bit_rate/1024;
@@ -288,7 +288,7 @@ void DecoderFFmpeg::ffmpeg_out(int size)
         return;
     int at = 0;
     int to_copy = 0;
-    while (size > 0 && !user_stop)
+    while ((size > 0) && !user_stop && (seekTime < 0)) //ape fast seeking hack
     {
         to_copy = qMin(int(globalBufferSize - output_at), int(size) );
         memmove ( (char *) (output_buf + output_at), wma_outbuf + at, to_copy);
