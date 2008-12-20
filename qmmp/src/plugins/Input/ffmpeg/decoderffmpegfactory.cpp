@@ -140,8 +140,7 @@ void DecoderFFmpegFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About FFmpeg Audio Plugin"),
 
                         tr("Qmmp FFmpeg Audio Plugin")+"\n"+
-#if LIBAVFORMAT_VERSION_INT >= ((52<<16)+(17<<8)+0)
-#if LIBAVCODEC_VERSION_INT >= ((51<<16)+(60<<8)+0)
+#if (LIBAVFORMAT_VERSION_INT >= ((52<<16)+(17<<8)+0)) && (LIBAVCODEC_VERSION_INT >= ((51<<16)+(60<<8)+0))
                         QString(tr("Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6"))
                         .arg(LIBAVFORMAT_VERSION_MAJOR)
                         .arg(LIBAVFORMAT_VERSION_MINOR)
@@ -149,7 +148,6 @@ void DecoderFFmpegFactory::showAbout(QWidget *parent)
                         .arg(LIBAVCODEC_VERSION_MAJOR)
                         .arg(LIBAVCODEC_VERSION_MINOR)
                         .arg(LIBAVCODEC_VERSION_MICRO)+"\n"+
-#endif
 #endif
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
