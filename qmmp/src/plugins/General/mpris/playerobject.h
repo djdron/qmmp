@@ -25,6 +25,7 @@
 
 class SoundCore;
 class MediaPlayer;
+class PlayListModel;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -93,6 +94,7 @@ private slots:
 private:
     SoundCore *m_core;
     MediaPlayer *m_player;
+    PlayListModel *m_model;
 
 };
 

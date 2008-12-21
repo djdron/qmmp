@@ -116,11 +116,6 @@ public:
      */
     bool isQueued(PlayListItem* item) const;
 
-    bool isRepeatableList()const
-    {
-        return is_repeatable_list;
-    }
-
     /*!
      * Sets current song to the file that is nex in queue, if queue is empty - does nothing
      */
@@ -187,6 +182,9 @@ public:
      */
     void savePlaylist(const QString& f_name);
 
+    bool isRepeatableList() const;
+    bool isShuffle() const;
+
     /*!
      * Enum of available sort modes
      */
@@ -199,6 +197,8 @@ signals:
     void listChanged();
     void currentChanged();
     void firstAdded();
+    void repeatableListChanged(bool);
+    void shuffleChanged(bool);
 
 public slots:
     void load(PlayListItem *);

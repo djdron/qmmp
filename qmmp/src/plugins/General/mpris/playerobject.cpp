@@ -58,9 +58,12 @@ PlayerObject::PlayerObject(QObject *parent)
     qDBusRegisterMetaType<PlayerStatus>();
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
+    m_model =  m_player->playListModel();
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateCaps()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateTrack()));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateStatus()));
+    connect(m_model, SIGNAL(repeatableListChanged(bool)), SLOT(updateStatus()));
+    connect(m_model, SIGNAL(shuffleChanged(bool)), SLOT(updateStatus()));
 }
 
 PlayerObject::~PlayerObject()
@@ -108,9 +111,9 @@ PlayerStatus PlayerObject::GetStatus()
     case Qmmp::Paused:
         st.state = 1;
     };
-    st.random = 0; //TODO playlist support
-    st.repeat = 0;
-    st.repeatPlayList = 0;
+    st.random = int(m_model->isShuffle());
+    st.repeat = 0; //TODO add suppot for this
+    st.repeatPlayList = int(m_model->isRepeatableList());
     return st;
 }
 

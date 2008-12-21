@@ -26,6 +26,8 @@
 
 #include <qmmp/output.h>
 #include <qmmp/soundcore.h>
+#include <qmmpui/mediaplayer.h>
+#include <qmmpui/playlistmodel.h>
 #include "skin.h"
 #include "mainvisual.h"
 #include "button.h"
@@ -146,6 +148,9 @@ MainDisplay::MainDisplay (QWidget *parent)
     connect(m_core, SIGNAL(channelsChanged(int)), m_monoster, SLOT(setChannels(int)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(setVolume(int, int)));
+    PlayListModel *model = MediaPlayer::instance()->playListModel();
+    connect(model, SIGNAL(repeatableListChanged(bool)), m_repeatButton, SLOT(setON(bool)));
+    connect(model, SIGNAL(shuffleChanged(bool)), m_shuffleButton, SLOT(setON(bool)));
 }
 
 
