@@ -82,6 +82,16 @@ QVariantMap TrackListObject::GetMetadata(int in0)
     return map;
 }
 
+void TrackListObject::SetLoop(bool in0)
+{
+    m_model->prepareForRepeatablePlaying(in0);
+}
+
+void TrackListObject::SetRandom(bool in0)
+{
+    m_model->prepareForShufflePlaying(in0);
+}
+
 void  TrackListObject::updateTrackList()
 {
     emit TrackListChange(m_model->count());

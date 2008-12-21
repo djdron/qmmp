@@ -36,12 +36,12 @@ public:
     ~ToggleButton();
 
     bool isChecked();
-    void setON(bool);
 
 signals:
     void clicked(bool);
 
 public slots:
+    void setON(bool);
     void click();
 
 private slots:

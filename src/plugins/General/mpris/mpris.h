@@ -36,22 +36,6 @@ public:
     MPRIS(QObject *parent = 0);
 
     ~MPRIS();
-
-signals:
-    void stateChanged();
-    void timeChanged();
-    void volumeChanged();
-    void songChanged();
-
-public slots:
-    int leftVolume();
-    int rightVolume();
-
-private:
-    DBUSAdaptor *m_adaptor;
-    int m_left, m_right;
-    uint m_state;
-    int m_time;
 };
 
 #endif

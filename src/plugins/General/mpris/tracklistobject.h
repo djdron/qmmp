@@ -46,8 +46,8 @@ public slots:
     int GetCurrentTrack();
     int GetLength();
     QVariantMap GetMetadata(int in0);
-    /*void SetLoop(bool in0);
-    void SetRandom(bool in0);*/
+    void SetLoop(bool in0);
+    void SetRandom(bool in0);
 
 signals:
     void TrackListChange(int in0);

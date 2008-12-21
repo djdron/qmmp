@@ -36,10 +36,6 @@ MPRIS::MPRIS(QObject *parent)
     connection.registerObject("/Player", player, QDBusConnection::ExportAllContents);
     connection.registerObject("/", root, QDBusConnection::ExportAllContents);
     connection.registerService("org.mpris.qmmp");
-    m_left = 0;
-    m_right = 0;
-    m_time = 0;
-    //m_state = General::Stopped;
 }
 
 
@@ -47,13 +43,4 @@ MPRIS::~MPRIS()
 {
 }
 
-int MPRIS::leftVolume()
-{
-    return m_left;
-}
-
-int MPRIS::rightVolume()
-{
-    return m_right;
-}
 

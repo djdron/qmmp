@@ -826,11 +826,13 @@ void PlayListModel::prepareForShufflePlaying(bool val)
     else
         m_play_state = new NormalPlayState(this);
 
+     emit shuffleChanged(val);
 }
 
 void PlayListModel::prepareForRepeatablePlaying(bool val)
 {
     is_repeatable_list = val;
+    emit repeatableListChanged(val);
 }
 
 void PlayListModel::doCurrentVisibleRequest()
@@ -893,6 +895,16 @@ void PlayListModel::savePlaylist(const QString & f_name)
         else
             qWarning("Error opening %s",f_name.toLocal8Bit().data());
     }
+}
+
+bool PlayListModel::isRepeatableList() const
+{
+    return is_repeatable_list;
+}
+
+bool PlayListModel::isShuffle() const
+{
+    return FALSE; //TODO fix this
 }
 
 bool PlayListModel::isFileLoaderRunning() const
