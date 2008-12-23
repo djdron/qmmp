@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_CN">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -115,7 +114,7 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip forward in playlist</source>
         <translation>跳到播放列表中的下一曲</translation>
     </message>
@@ -145,27 +144,27 @@
         <translation>停止当前曲目</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
         <translation>设置回放音量(例如：qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Display Jump to File dialog</source>
         <translation>显示跳到文件对话</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Show/hide application</source>
         <translation>显示/隐藏程序</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="73"/>
+        <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Display Add File dialog</source>
         <translation>显示添加文件对话</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="75"/>
+        <location filename="../builtincommandlineoption.cpp" line="74"/>
         <source>Display Add Directory dialog</source>
         <translation>显示添加目录对话</translation>
     </message>
@@ -173,62 +172,62 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="330"/>
+        <location filename="../configdialog.cpp" line="336"/>
         <source>Enabled</source>
         <translation>启用</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="330"/>
+        <location filename="../configdialog.cpp" line="336"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="515"/>
+        <location filename="../configdialog.cpp" line="521"/>
         <source>Filename</source>
         <translation>文件名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="510"/>
+        <location filename="../configdialog.cpp" line="516"/>
         <source>Artist</source>
         <translation>艺术家</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="511"/>
+        <location filename="../configdialog.cpp" line="517"/>
         <source>Album</source>
         <translation>专辑</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="512"/>
+        <location filename="../configdialog.cpp" line="518"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="513"/>
+        <location filename="../configdialog.cpp" line="519"/>
         <source>Tracknumber</source>
         <translation>音轨</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="514"/>
+        <location filename="../configdialog.cpp" line="520"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="516"/>
+        <location filename="../configdialog.cpp" line="522"/>
         <source>Filepath</source>
         <translation>文件路径</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="517"/>
+        <location filename="../configdialog.cpp" line="523"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="518"/>
+        <location filename="../configdialog.cpp" line="524"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="519"/>
+        <location filename="../configdialog.cpp" line="525"/>
         <source>Comment</source>
         <translation>备注</translation>
     </message>
@@ -238,260 +237,285 @@
         <translation>Qmmp 设置</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="174"/>
+        <location filename="../forms/configdialog.ui" line="161"/>
         <source>Skins</source>
         <translation>皮肤</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="217"/>
+        <location filename="../forms/configdialog.ui" line="221"/>
         <source>Fonts</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="247"/>
+        <location filename="../forms/configdialog.ui" line="233"/>
         <source>Player:</source>
         <translation>播放器：</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="263"/>
+        <location filename="../forms/configdialog.ui" line="269"/>
         <source>Playlist:</source>
         <translation>播放列表：</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="299"/>
+        <location filename="../forms/configdialog.ui" line="285"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="373"/>
+        <location filename="../forms/configdialog.ui" line="347"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="320"/>
+        <location filename="../forms/configdialog.ui" line="306"/>
         <source>Metadata</source>
         <translation>元数据</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="344"/>
+        <location filename="../forms/configdialog.ui" line="318"/>
         <source>Load metadata from files</source>
         <translation>从文件载入元数据</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="354"/>
+        <location filename="../forms/configdialog.ui" line="328"/>
         <source>Song Display</source>
         <translation>显示歌曲</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="360"/>
+        <location filename="../forms/configdialog.ui" line="334"/>
         <source>Title format:</source>
         <translation>标题格式：</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="476"/>
+        <location filename="../forms/configdialog.ui" line="466"/>
         <source>Input</source>
         <translation>输入</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="514"/>
+        <location filename="../forms/configdialog.ui" line="495"/>
         <source>Output</source>
         <translation>输出</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="439"/>
+        <location filename="../forms/configdialog.ui" line="423"/>
         <source>Preferences</source>
         <translation>参数设置</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="646"/>
+        <location filename="../forms/configdialog.ui" line="630"/>
         <source>Information</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="100"/>
+        <location filename="../forms/configdialog.ui" line="82"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="108"/>
+        <location filename="../forms/configdialog.ui" line="91"/>
         <source>Playlist</source>
         <translation>播放列表</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="116"/>
+        <location filename="../forms/configdialog.ui" line="100"/>
         <source>Plugins</source>
         <translation>插件</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="124"/>
+        <location filename="../forms/configdialog.ui" line="109"/>
         <source>Advanced</source>
         <translation>高级</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="827"/>
+        <location filename="../forms/configdialog.ui" line="814"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="166"/>
+        <location filename="../configdialog.cpp" line="174"/>
         <source>Archived skin</source>
         <translation>压缩皮肤</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="188"/>
+        <location filename="../configdialog.cpp" line="194"/>
         <source>Unarchived skin</source>
         <translation>未压缩皮肤</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="132"/>
+        <location filename="../forms/configdialog.ui" line="118"/>
         <source>Connectivity</source>
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="546"/>
+        <location filename="../forms/configdialog.ui" line="518"/>
         <source>Visualization</source>
         <translation>可视化</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="563"/>
+        <location filename="../forms/configdialog.ui" line="535"/>
         <source>Effects</source>
         <translation>特效</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="577"/>
+        <location filename="../forms/configdialog.ui" line="549"/>
         <source>General</source>
         <translation>常规</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="637"/>
+        <location filename="../forms/configdialog.ui" line="621"/>
         <source>File Dialog</source>
         <translation>文件对话</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="598"/>
+        <location filename="../forms/configdialog.ui" line="582"/>
         <source>Audio</source>
         <translation>音频</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="604"/>
+        <location filename="../forms/configdialog.ui" line="588"/>
         <source>Use software volume control</source>
         <translation>使用软设备音量控制</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="614"/>
+        <location filename="../forms/configdialog.ui" line="598"/>
         <source>Visibility Control</source>
         <translation>可见性控制</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="620"/>
+        <location filename="../forms/configdialog.ui" line="604"/>
         <source>Hide on close</source>
         <translation>关闭时隐藏</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="627"/>
+        <location filename="../forms/configdialog.ui" line="611"/>
         <source>Start hidden</source>
         <translation>启动时隐藏</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="686"/>
+        <location filename="../forms/configdialog.ui" line="682"/>
         <source>Proxy</source>
         <translation>代理</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="698"/>
+        <location filename="../forms/configdialog.ui" line="694"/>
         <source>Enable proxy usage</source>
         <translation>启用代理</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="705"/>
+        <location filename="../forms/configdialog.ui" line="701"/>
         <source>Proxy host name:</source>
         <translation>主机名：</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="718"/>
+        <location filename="../forms/configdialog.ui" line="714"/>
         <source>Proxy port:</source>
         <translation>端口：</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="731"/>
+        <location filename="../forms/configdialog.ui" line="727"/>
         <source>Use authentication with proxy</source>
         <translation>需要身份验证</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="738"/>
+        <location filename="../forms/configdialog.ui" line="734"/>
         <source>Proxy user name:</source>
         <translation>用户名：</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="751"/>
+        <location filename="../forms/configdialog.ui" line="747"/>
         <source>Proxy password:</source>
         <translation>密码：</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="380"/>
+        <location filename="../forms/configdialog.ui" line="354"/>
         <source>Convert underscores to blanks</source>
         <translation>转换下划线为空格</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="387"/>
+        <location filename="../forms/configdialog.ui" line="361"/>
         <source>Convert %20 to blanks</source>
         <translation>转换 %20 为空格</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="394"/>
+        <location filename="../forms/configdialog.ui" line="368"/>
         <source>Show full path of a stream</source>
         <translation>显示媒体流的完整路径</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="634"/>
+        <source>Select Skin Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="635"/>
+        <source>Skin files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="192"/>
+        <source>Add...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="205"/>
+        <source>Refresh</source>
+        <translation type="unfinished">刷新</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="375"/>
+        <source>Show protocol</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="175"/>
+        <location filename="../eqwidget.cpp" line="176"/>
         <source>preset</source>
         <translation>预设</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="261"/>
+        <location filename="../eqwidget.cpp" line="262"/>
         <source>&amp;Load/Delete</source>
         <translation>载入/删除(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="263"/>
+        <location filename="../eqwidget.cpp" line="264"/>
         <source>&amp;Save Preset</source>
         <translation>保存预设(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="264"/>
+        <location filename="../eqwidget.cpp" line="265"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>保存自动载入预设(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="267"/>
+        <location filename="../eqwidget.cpp" line="268"/>
         <source>&amp;Clear</source>
         <translation>清除(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="296"/>
+        <location filename="../eqwidget.cpp" line="297"/>
         <source>Saving Preset</source>
         <translation>保存预设</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="297"/>
+        <location filename="../eqwidget.cpp" line="298"/>
         <source>Preset name:</source>
         <translation>预设名称：</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="298"/>
+        <location filename="../eqwidget.cpp" line="299"/>
         <source>preset #</source>
         <translation>预设 #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="265"/>
+        <location filename="../eqwidget.cpp" line="266"/>
         <source>&amp;Import</source>
         <translation>导入(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="392"/>
+        <location filename="../eqwidget.cpp" line="390"/>
         <source>Import Preset</source>
         <translation>导入预设</translation>
     </message>
@@ -499,12 +523,12 @@
 <context>
     <name>JumpToTrackDialog</name>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="123"/>
+        <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Unqueue</source>
         <translation>移出队列</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="125"/>
+        <location filename="../jumptotrackdialog.cpp" line="139"/>
         <source>Queue</source>
         <translation>加入队列</translation>
     </message>
@@ -537,127 +561,127 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="303"/>
+        <location filename="../mainvisual.cpp" line="294"/>
         <source>Visualization Mode</source>
         <translation>可视化模式</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="306"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Analyzer</source>
         <translation>分析器</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="307"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Scope</source>
         <translation>示波器</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="308"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Off</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="315"/>
+        <location filename="../mainvisual.cpp" line="306"/>
         <source>Analyzer Mode</source>
         <translation>分析模式</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="318"/>
+        <location filename="../mainvisual.cpp" line="309"/>
         <source>Normal</source>
         <translation>标准</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="319"/>
+        <location filename="../mainvisual.cpp" line="310"/>
         <source>Fire</source>
         <translation>火花</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="320"/>
+        <location filename="../mainvisual.cpp" line="311"/>
         <source>Vertical Lines</source>
         <translation>垂直线</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="321"/>
+        <location filename="../mainvisual.cpp" line="312"/>
         <source>Lines</source>
         <translation>线形</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="322"/>
+        <location filename="../mainvisual.cpp" line="313"/>
         <source>Bars</source>
         <translation>条形</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="326"/>
         <source>Peaks</source>
         <translation>峰值</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="339"/>
+        <location filename="../mainvisual.cpp" line="330"/>
         <source>Refresh Rate</source>
         <translation>刷新率</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="342"/>
+        <location filename="../mainvisual.cpp" line="333"/>
         <source>50 fps</source>
         <translation>50 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="343"/>
+        <location filename="../mainvisual.cpp" line="334"/>
         <source>25 fps</source>
         <translation>25 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="344"/>
+        <location filename="../mainvisual.cpp" line="335"/>
         <source>10 fps</source>
         <translation>10 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="345"/>
+        <location filename="../mainvisual.cpp" line="336"/>
         <source>5 fps</source>
         <translation>5 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="352"/>
+        <location filename="../mainvisual.cpp" line="343"/>
         <source>Analyzer Falloff</source>
         <translation>分析器下降速度</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="369"/>
+        <location filename="../mainvisual.cpp" line="360"/>
         <source>Slowest</source>
         <translation>最慢</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="370"/>
+        <location filename="../mainvisual.cpp" line="361"/>
         <source>Slow</source>
         <translation>慢</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="371"/>
+        <location filename="../mainvisual.cpp" line="362"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="372"/>
+        <location filename="../mainvisual.cpp" line="363"/>
         <source>Fast</source>
         <translation>快</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="373"/>
+        <location filename="../mainvisual.cpp" line="364"/>
         <source>Fastest</source>
         <translation>最快</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="366"/>
+        <location filename="../mainvisual.cpp" line="357"/>
         <source>Peaks Falloff</source>
         <translation>峰值下降速度</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="379"/>
+        <location filename="../mainvisual.cpp" line="370"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="380"/>
+        <location filename="../mainvisual.cpp" line="371"/>
         <source>Transparent</source>
         <translation>透明</translation>
     </message>
@@ -665,335 +689,337 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="640"/>
+        <location filename="../mainwindow.cpp" line="475"/>
         <source>Default</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="279"/>
         <source>Choose a directory</source>
         <translation>选择一个目录</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="450"/>
+        <location filename="../mainwindow.cpp" line="289"/>
         <source>Select one or more files to open</source>
         <translation>选择打开一个或更多文件</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="574"/>
+        <location filename="../mainwindow.cpp" line="413"/>
         <source>&amp;Play</source>
         <translation>播放(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="574"/>
+        <location filename="../mainwindow.cpp" line="413"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="575"/>
+        <location filename="../mainwindow.cpp" line="414"/>
         <source>&amp;Pause</source>
         <translation>暂停(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="575"/>
+        <location filename="../mainwindow.cpp" line="414"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="576"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>&amp;Stop</source>
         <translation>停止(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="576"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>V</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="577"/>
+        <location filename="../mainwindow.cpp" line="416"/>
         <source>&amp;Previous</source>
         <translation>上一曲(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="577"/>
+        <location filename="../mainwindow.cpp" line="416"/>
         <source>Z</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="578"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>&amp;Next</source>
         <translation>下一曲(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="578"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="581"/>
+        <location filename="../mainwindow.cpp" line="436"/>
         <source>&amp;Jump To File</source>
         <translation>跳到文件(&amp;J)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="581"/>
+        <location filename="../mainwindow.cpp" line="436"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="587"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>&amp;Settings</source>
         <translation>设置(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="587"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="593"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>&amp;Exit</source>
         <translation>退出(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="593"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="654"/>
+        <location filename="../mainwindow.cpp" line="489"/>
         <source>Open Playlist</source>
         <translation>打开播放列表</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="678"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>Save Playlist</source>
         <translation>保存播放列表</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="589"/>
+        <location filename="../mainwindow.cpp" line="443"/>
         <source>&amp;About</source>
         <translation>关于(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="677"/>
+        <location filename="../mainwindow.cpp" line="513"/>
         <source>Playlist Files</source>
         <translation>播放列表文件</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="579"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>Space</source>
         <translation>空格</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="590"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>&amp;About Qt</source>
         <translation>关于 Qt (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="579"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>&amp;Play/Pause</source>
         <translation>播放/暂停(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="285"/>
         <source>All Supported Bitstreams</source>
         <translation>支持的全部文件</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="420"/>
+        <source>&amp;Repeat All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="421"/>
+        <source>&amp;Repeat Track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="422"/>
+        <source>&amp;Shuffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="426"/>
+        <source>R</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="427"/>
+        <source>Ctrl+R</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="428"/>
+        <source>S</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="132"/>
+        <location filename="../playlist.cpp" line="135"/>
         <source>F</source>
         <translation>F</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="138"/>
+        <location filename="../playlist.cpp" line="141"/>
         <source>D</source>
         <translation>D</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="170"/>
+        <location filename="../playlist.cpp" line="173"/>
         <source>Alt+I</source>
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="259"/>
+        <location filename="../playlist.cpp" line="262"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="277"/>
         <source>O</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="131"/>
+        <location filename="../playlist.cpp" line="134"/>
         <source>&amp;Add File</source>
         <translation>添加文件(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="137"/>
+        <location filename="../playlist.cpp" line="140"/>
         <source>&amp;Add Directory</source>
         <translation>添加文件夹(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="150"/>
+        <location filename="../playlist.cpp" line="153"/>
         <source>&amp;Remove Selected</source>
         <translation>删除所选(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="157"/>
+        <location filename="../playlist.cpp" line="160"/>
         <source>&amp;Remove All</source>
         <translation>删除全部(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="163"/>
+        <location filename="../playlist.cpp" line="166"/>
         <source>&amp;Remove Unselected</source>
         <translation>删除未选(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="169"/>
+        <location filename="../playlist.cpp" line="172"/>
         <source>&amp;View Track Details</source>
         <translation>查看音轨详细信息(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="178"/>
+        <location filename="../playlist.cpp" line="181"/>
         <source>Sort List</source>
         <translation>列表排序</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="208"/>
+        <location filename="../playlist.cpp" line="211"/>
         <source>By Title</source>
         <translation>按标题</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="215"/>
         <source>By Filename</source>
         <translation>按文件名</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="219"/>
         <source>By Path + Filename</source>
         <translation>按路径+文件名</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="223"/>
         <source>By Date</source>
         <translation>按日期</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="206"/>
+        <location filename="../playlist.cpp" line="209"/>
         <source>Sort Selection</source>
         <translation>选择排序</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="234"/>
+        <location filename="../playlist.cpp" line="237"/>
         <source>Randomize List</source>
         <translation>随机产生列表</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="235"/>
+        <location filename="../playlist.cpp" line="238"/>
         <source>Reverse List</source>
         <translation>逆序列表</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="247"/>
         <source>Invert Selection</source>
         <translation>反选</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="251"/>
+        <location filename="../playlist.cpp" line="254"/>
         <source>&amp;Select None</source>
         <translation>无选择(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="258"/>
+        <location filename="../playlist.cpp" line="261"/>
         <source>&amp;Select All</source>
         <translation>选择全部(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="266"/>
+        <location filename="../playlist.cpp" line="269"/>
         <source>&amp;New List</source>
         <translation>新建列表(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="267"/>
+        <location filename="../playlist.cpp" line="270"/>
         <source>Shift+N</source>
         <translation>Shift+N</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="276"/>
         <source>&amp;Load List</source>
         <translation>载入列表(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="278"/>
+        <location filename="../playlist.cpp" line="281"/>
         <source>&amp;Save List</source>
         <translation>保存列表(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="279"/>
+        <location filename="../playlist.cpp" line="282"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="151"/>
+        <location filename="../playlist.cpp" line="154"/>
         <source>Del</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="143"/>
+        <location filename="../playlist.cpp" line="146"/>
         <source>&amp;Add Url</source>
         <translation>添加 URL (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="144"/>
+        <location filename="../playlist.cpp" line="147"/>
         <source>U</source>
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="227"/>
         <source>By Track Number</source>
         <translation>按音轨</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="240"/>
+        <location filename="../playlist.cpp" line="243"/>
         <source>&amp;Queue</source>
         <translation>队列(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="240"/>
+        <location filename="../playlist.cpp" line="243"/>
         <source>Q</source>
         <translation>Q</translation>
-    </message>
-</context>
-<context>
-    <name>PlayListModel</name>
-    <message>
-        <location filename="../playlistmodel.cpp" line="311"/>
-        <source>Url:</source>
-        <translation>URL：</translation>
-    </message>
-    <message>
-        <location filename="../playlistmodel.cpp" line="312"/>
-        <source>Title:</source>
-        <translation>标题：</translation>
-    </message>
-    <message>
-        <location filename="../playlistmodel.cpp" line="313"/>
-        <source>Artist:</source>
-        <translation>艺术家：</translation>
-    </message>
-    <message>
-        <location filename="../playlistmodel.cpp" line="314"/>
-        <source>Album:</source>
-        <translation>专辑：</translation>
-    </message>
-    <message>
-        <location filename="../playlistmodel.cpp" line="315"/>
-        <source>Comment:</source>
-        <translation>备注：</translation>
     </message>
 </context>
 <context>
@@ -1027,34 +1053,44 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="140"/>
+        <location filename="../qmmpstarter.cpp" line="141"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>使用：qmmp [设置] [文件]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="141"/>
+        <location filename="../qmmpstarter.cpp" line="142"/>
         <source>Options:</source>
         <translation>设置：</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="146"/>
+        <location filename="../qmmpstarter.cpp" line="148"/>
         <source>Print version number and exit</source>
         <translation>显示版本并退出</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="147"/>
+        <location filename="../qmmpstarter.cpp" line="149"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>建议、补丁或提交 bug 请发送到 forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="145"/>
+        <location filename="../qmmpstarter.cpp" line="147"/>
         <source>Display this text and exit</source>
         <translation>显示这些文本并退出</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="152"/>
+        <location filename="../qmmpstarter.cpp" line="154"/>
         <source>QMMP version:</source>
         <translation>Qmmp 版本：</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="145"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="155"/>
+        <source>Qt version:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
