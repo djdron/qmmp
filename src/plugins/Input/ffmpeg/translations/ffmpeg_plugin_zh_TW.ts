@@ -1,133 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="31"/>
-        <source>WMA Files</source>
-        <translation>WMA 檔案</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="79"/>
+        <location filename="../decoderffmpegfactory.cpp" line="140"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>關於 FFmpeg 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="80"/>
+        <location filename="../decoderffmpegfactory.cpp" line="142"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="81"/>
-        <source>Suppored formats: WMA</source>
-        <translation>支援格式：WMA</translation>
-    </message>
-    <message>
-        <location filename="../decoderffmpegfactory.cpp" line="82"/>
+        <location filename="../decoderffmpegfactory.cpp" line="152"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="29"/>
-        <source>FFMPEG Plugin</source>
-        <translation>FFMPEG 插件</translation>
+        <location filename="../decoderffmpegfactory.cpp" line="79"/>
+        <source>FFmpeg Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="81"/>
+        <source>FFmpeg Formats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffmpegfactory.cpp" line="144"/>
+        <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="78"/>
+        <location filename="../detailsdialog.cpp" line="91"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="42"/>
-        <source>ASF Info</source>
-        <translation>ASF 資訊</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="153"/>
+        <location filename="../detailsdialog.ui" line="141"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="83"/>
+        <location filename="../detailsdialog.ui" line="71"/>
         <source>Bitrate:</source>
         <translation>位速率：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="93"/>
+        <location filename="../detailsdialog.ui" line="81"/>
         <source>File size:</source>
         <translation>檔案大小：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="106"/>
+        <location filename="../detailsdialog.ui" line="94"/>
         <source>Channels:</source>
         <translation>音頻通道：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="126"/>
+        <location filename="../detailsdialog.ui" line="114"/>
         <source>Sample rate:</source>
         <translation>取樣率：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="143"/>
+        <location filename="../detailsdialog.ui" line="131"/>
         <source>Length:</source>
         <translation>長度：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="182"/>
-        <source>WMA Tag</source>
-        <translation>WMA 標簽</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="209"/>
-        <source>Save</source>
-        <translation>儲存</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="219"/>
+        <location filename="../detailsdialog.ui" line="241"/>
         <source>Track number:</source>
         <translation>音軌：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="232"/>
+        <location filename="../detailsdialog.ui" line="228"/>
         <source>Year:</source>
         <translation>年代：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="242"/>
+        <location filename="../detailsdialog.ui" line="254"/>
         <source>Genre:</source>
         <translation>流派：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="252"/>
+        <location filename="../detailsdialog.ui" line="215"/>
         <source>Comment:</source>
         <translation>備註：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="262"/>
+        <location filename="../detailsdialog.ui" line="202"/>
         <source>Album:</source>
         <translation>專輯：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="272"/>
+        <location filename="../detailsdialog.ui" line="189"/>
         <source>Artist:</source>
         <translation>藝術家：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="282"/>
+        <location filename="../detailsdialog.ui" line="176"/>
         <source>Title:</source>
         <translation>標題：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="323"/>
+        <location filename="../detailsdialog.ui" line="283"/>
         <source>Close</source>
         <translation>關閉</translation>
     </message>
@@ -137,7 +121,7 @@
         <translation>檔案路徑：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../detailsdialog.cpp" line="94"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
@@ -145,6 +129,64 @@
         <location filename="../detailsdialog.ui" line="13"/>
         <source>Details</source>
         <translation>詳細資料</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="42"/>
+        <source>Audio Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="170"/>
+        <source>Metadata</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.ui" line="13"/>
+        <source>FFMPEG Plugin Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="45"/>
+        <source>Formats</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="51"/>
+        <source>Windows Media Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="58"/>
+        <source>Monkey&apos;s Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="65"/>
+        <source>True Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="72"/>
+        <source>ALAC (Apple Lossless Audio Codec)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>ADTS AAC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="86"/>
+        <source>MPEG-4 AAC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="93"/>
+        <source>RealAudio 1.0/2.0</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
