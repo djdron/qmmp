@@ -41,8 +41,8 @@ public:
     ~TrackListObject();
 
 public slots:
-    //int AddTrack(const QString &in0, bool in1);
-    /*void DelTrack(int in0);*/
+    int AddTrack(const QString &in0, bool in1);
+    void DelTrack(int in0);
     int GetCurrentTrack();
     int GetLength();
     QVariantMap GetMetadata(int in0);

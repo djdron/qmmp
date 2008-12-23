@@ -104,6 +104,7 @@ void ConfigDialog::readSettings()
     ui.underscoresCheckBox->setChecked(settings.value ("PlayList/convert_underscore", TRUE).toBool());
     ui.per20CheckBox->setChecked(settings.value ("PlayList/convert_twenty", TRUE).toBool());
     ui.fullPathCheckBox->setChecked(settings.value ("PlayList/full_stream_path", FALSE).toBool());
+    ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
 
     //proxy settings
     ui.enableProxyCheckBox->setChecked(
@@ -543,6 +544,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("PlayList/convert_underscore", ui.underscoresCheckBox->isChecked());
     settings.setValue ("PlayList/convert_twenty", ui.per20CheckBox->isChecked());
     settings.setValue ("PlayList/full_stream_path", ui.fullPathCheckBox->isChecked());
+    settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
     settings.setValue ("Proxy/use_proxy", ui.enableProxyCheckBox->isChecked());
     settings.setValue ("Proxy/authentication", ui.authProxyCheckBox->isChecked());

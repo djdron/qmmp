@@ -35,6 +35,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_instance = this;
     m_model = 0;
     m_core = 0;
+    m_repeat = FALSE;
 }
 
 
@@ -53,12 +54,18 @@ void MediaPlayer::initialize(SoundCore *core, PlayListModel *model)
     Q_CHECK_PTR(model);
     m_core = core;
     m_model = model;
+    m_repeat = FALSE;
     connect(m_core, SIGNAL(finished()), SLOT(next()));
 }
 
 PlayListModel *MediaPlayer::playListModel()
 {
     return m_model;
+}
+
+bool MediaPlayer::isRepeatable() const
+{
+    return m_repeat;
 }
 
 void MediaPlayer::play()
@@ -155,3 +162,18 @@ void MediaPlayer::previous()
         display->hideTimeDisplay();*/
 }
 
+void MediaPlayer::setRepeatable(bool r)
+{
+    if (r != m_repeat && !r)
+    {
+        disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
+        connect(m_core, SIGNAL(finished()), SLOT(next()));
+    }
+    else if (r != m_repeat && r)
+    {
+        disconnect(m_core, SIGNAL(finished()), this, SLOT(next()));
+        connect(m_core, SIGNAL(finished()), SLOT(play()));
+    }
+    m_repeat = r;
+    emit repeatableChanged(r);
+}

@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QFile>
+#include <QUrl>
 
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
@@ -39,15 +40,29 @@ TrackListObject::~TrackListObject()
 {
 }
 
-/*int TrackListObject::AddTrack(const QString &in0, bool in1)
+int TrackListObject::AddTrack(const QString &in0, bool in1)
 {
-    m_model->addFile(in0);
+    int old_count = m_model->count();
+    if(in0.startsWith("file://"))
+        m_model->addFile(QUrl(in0).toLocalFile ()); //converts url to local file path
+    else
+        m_model->addFile(in0);
+    int new_count = m_model->count();
+    if(new_count == old_count)
+        return 0;
     if(in1)
     {
-        m_model->set
+        m_model->setCurrent(new_count-1);
+        m_player->stop();
+        m_player->play();
     }
     return 1;
-}*/
+}
+
+void TrackListObject::DelTrack(int in0)
+{
+    m_model->removeAt(in0);
+}
 
 int TrackListObject::GetCurrentTrack()
 {

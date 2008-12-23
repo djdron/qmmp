@@ -202,7 +202,7 @@ void MainWindow::stop()
 
 void MainWindow::next()
 {
-     m_player->next();
+    m_player->next();
 }
 
 void MainWindow::previous()
@@ -417,11 +417,26 @@ void MainWindow::createActions()
     m_mainMenu->addAction(tr("&Next"),this, SLOT(next()), tr("B"));
     m_mainMenu->addAction(tr("&Play/Pause"),this, SLOT(playPause()), tr("Space"));
     m_mainMenu->addSeparator();
+    QAction *repeateAllAction = m_mainMenu->addAction(tr("&Repeat All"));
+    QAction *repeateTrackAction = m_mainMenu->addAction(tr("&Repeat Track"));
+    QAction *shuffleAction = m_mainMenu->addAction(tr("&Shuffle"));
+    repeateAllAction->setCheckable (TRUE);
+    repeateTrackAction->setCheckable (TRUE);
+    shuffleAction->setCheckable (TRUE);
+    repeateAllAction->setShortcut(tr("R")) ;
+    repeateTrackAction->setShortcut(tr("Ctrl+R")) ;
+    shuffleAction->setShortcut(tr("S")) ;
+    connect(repeateAllAction, SIGNAL(triggered (bool)), m_playListModel, SLOT(prepareForRepeatablePlaying(bool)));
+    connect(repeateTrackAction, SIGNAL(triggered (bool)), m_player, SLOT(setRepeatable(bool)));
+    connect(shuffleAction, SIGNAL(triggered (bool)), m_playListModel, SLOT(prepareForShufflePlaying(bool)));
+    connect(m_playListModel, SIGNAL(repeatableListChanged(bool)), repeateAllAction, SLOT(setChecked(bool)));
+    connect(m_player, SIGNAL (repeatableChanged(bool)), repeateTrackAction, SLOT(setChecked(bool)));
+    connect(m_playListModel, SIGNAL(shuffleChanged(bool)), shuffleAction, SLOT(setChecked(bool)));
+    m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Jump To File"),this, SLOT(jumpToFile()), tr("J"));
     m_mainMenu->addSeparator();
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
-
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Settings"), this, SLOT(showSettings()), tr("Ctrl+P"));
     m_mainMenu->addSeparator();

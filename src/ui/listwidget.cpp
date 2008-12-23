@@ -29,6 +29,7 @@
 
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmpui/mediaplayer.h>
 
 #include "textscroller.h"
 #include "listwidget.h"
@@ -48,7 +49,8 @@ ListWidget::ListWidget(QWidget *parent)
     m_scroll_direction = NONE;
     m_prev_y = 0;
     m_anchor_row = INVALID_ROW;
-
+    m_player = MediaPlayer::instance();
+    connect (m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateList()));
     m_first = 0;
     m_rows = 0;
     m_scroll = FALSE;
@@ -67,6 +69,7 @@ void ListWidget::readSettings()
     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
     QString fontname = settings.value("PlayList/Font","").toString();
     m_font.fromString(fontname);
+    m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
 
     if (m_update)
     {
@@ -118,31 +121,24 @@ void ListWidget::paintEvent(QPaintEvent *)
 
         m_painter.drawText(10,14+i*m_metrics->ascent(),m_titles.at(i));
 
-        if (m_model->isQueued(m_model->item(i + m_first)))
+        if (m_model->isQueued(m_model->item(i + m_first)) ||
+                (m_player->isRepeatable() && (m_model->currentRow() == m_first + i)) || m_show_protocol)
         {
-            QString queue_string = "|" +
-                                   QString::number(1 + m_model->queuedIndex(m_model->item(m_first + i))) + "|";
+            QString extra_string = getExtraString(m_first + i);
 
             int old_size = m_font.pointSize();
             m_font.setPointSize(old_size - 1 );
             m_painter.setFont(m_font);
 
-            m_painter.drawText(width() - 10 - m_metrics->width(queue_string) - m_metrics->width(m_times.at(i)), 12+i*m_metrics->ascent (), queue_string);
-
+            m_painter.drawText(width() - 10 - m_metrics->width(extra_string) - m_metrics->width(m_times.at(i)),
+                               12+i*m_metrics->ascent (), extra_string);
             m_font.setPointSize(old_size);
             m_painter.setFont(m_font);
-
-
-            m_painter.setBrush(QBrush(Qt::transparent));
-            //m_painter.drawRect(width() - 10 - m_metrics->width(queue_string) - m_metrics->width(m_times.at(i)),
-            //              /*14+*/i*m_metrics->ascent () + 3,10,12);
             m_painter.setBrush(QBrush(m_normal_bg));
         }
 
-
         m_painter.drawText(width() - 7 - m_metrics->width(m_times.at(i)),
                            14+i*m_metrics->ascent (), m_times.at(i));
-
     }
 
 }
@@ -338,24 +334,16 @@ void ListWidget::cut()
         QString name;
         cut = FALSE;
 
-        int queue_number_space = 0;
-        if (m_model->isQueued(m_model->item(i + m_first)))
-        {
-            int index = m_model->queuedIndex(m_model->item(m_first + i));
-            QString queue_string = "|"+QString::number(index)+"|";
-            queue_number_space = m_metrics->width(queue_string);
-        }
-        while ( m_metrics->width(m_titles.at(i)) > (this->width() - 54 - queue_number_space))
+        QString extra_string = getExtraString(m_first + i);
+        int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
+        while (m_metrics->width(m_titles.at(i)) > (this->width() - 54 - extra_string_space))
         {
             cut = TRUE;
             name = m_titles.at(i);
             m_titles.replace(i, name.left(name.length()-1) );
         }
         if (cut)
-        {
             m_titles.replace(i, name.left(name.length()-3).trimmed()+"...");
-
-        }
     }
 }
 
@@ -401,6 +389,25 @@ void ListWidget::processFileInfo(const QFileInfo& info)
         m_model->addFile(info.absoluteFilePath());
         m_model->loadPlaylist(info.absoluteFilePath());
     }
+}
+
+const QString ListWidget::getExtraString(int i)
+{
+    QString extra_string;
+
+    if (m_show_protocol && m_model->item(i)->url().contains("://"))
+        extra_string = "[" + m_model->item(i)->url().split("://").at(0) + "]";
+
+    if (m_player->isRepeatable() && (m_model->currentRow() == i))
+        extra_string += " |R|";
+
+    if (m_model->isQueued(m_model->item(i)))
+    {
+        int index = m_model->queuedIndex(m_model->item(i));
+        extra_string += " |"+QString::number(index + 1)+"|";
+    }
+    extra_string = extra_string.trimmed(); //remove white space
+    return extra_string;
 }
 
 void ListWidget::mouseMoveEvent(QMouseEvent *e)

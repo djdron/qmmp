@@ -64,6 +64,7 @@ PlayerObject::PlayerObject(QObject *parent)
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateStatus()));
     connect(m_model, SIGNAL(repeatableListChanged(bool)), SLOT(updateStatus()));
     connect(m_model, SIGNAL(shuffleChanged(bool)), SLOT(updateStatus()));
+    connect(m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateStatus()));
 }
 
 PlayerObject::~PlayerObject()
@@ -94,6 +95,11 @@ void PlayerObject::Play()
     m_player->play();
 }
 
+void PlayerObject::Repeat(bool in0)
+{
+    m_player->setRepeatable(in0);
+}
+
 PlayerStatus PlayerObject::GetStatus()
 {
     PlayerStatus st;
@@ -112,7 +118,7 @@ PlayerStatus PlayerObject::GetStatus()
         st.state = 1;
     };
     st.random = int(m_model->isShuffle());
-    st.repeat = 0; //TODO add suppot for this
+    st.repeat = int(m_player->isRepeatable());
     st.repeatPlayList = int(m_model->isRepeatableList());
     return st;
 }

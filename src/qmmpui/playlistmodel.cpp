@@ -72,6 +72,7 @@ PlayListModel::PlayListModel(QObject *parent)
         : QObject(parent) , m_selection()
 {
     qsrand(time(0));
+    m_shuffle = 0;
     m_total_length = 0;
     m_current = 0;
     m_block_update_signals = false;
@@ -238,6 +239,34 @@ void PlayListModel::removeSelected()
 void PlayListModel::removeUnselected()
 {
     removeSelection(true);
+}
+
+void PlayListModel::removeAt (int i)
+{
+    if ((i < count()) && (i >= 0))
+    {
+        PlayListItem* f = m_items.takeAt(i);
+        m_total_length -= f->length();
+        if (m_total_length < 0)
+            m_total_length = qMin(0, m_total_length);
+
+        if (f->flag() == PlayListItem::FREE)
+        {
+            delete f;
+            f = NULL;
+        }
+        else if (f->flag() == PlayListItem::EDITING)
+            f->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
+
+        if (m_current >= i && m_current != 0)
+            m_current--;
+
+        if (!m_items.isEmpty())
+            m_currentItem = m_items.at(m_current);
+
+        m_play_state->prepare();
+        emit listChanged();
+    }
 }
 
 void PlayListModel::removeSelection(bool inverted)
@@ -826,7 +855,9 @@ void PlayListModel::prepareForShufflePlaying(bool val)
     else
         m_play_state = new NormalPlayState(this);
 
-     emit shuffleChanged(val);
+    m_shuffle = val;
+
+    emit shuffleChanged(val);
 }
 
 void PlayListModel::prepareForRepeatablePlaying(bool val)
@@ -904,7 +935,7 @@ bool PlayListModel::isRepeatableList() const
 
 bool PlayListModel::isShuffle() const
 {
-    return FALSE; //TODO fix this
+    return m_shuffle;
 }
 
 bool PlayListModel::isFileLoaderRunning() const
