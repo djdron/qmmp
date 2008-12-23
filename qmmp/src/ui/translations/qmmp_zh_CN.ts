@@ -824,11 +824,6 @@
         <translation>支持的全部文件</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
-        <source>&amp;Repeat All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Repeat Track</source>
         <translation type="unfinished"></translation>
@@ -851,6 +846,11 @@
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
         <source>S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="420"/>
+        <source>&amp;Repeat Playlist</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

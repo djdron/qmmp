@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -444,27 +445,27 @@
     <message>
         <location filename="../configdialog.cpp" line="634"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Выберите файлы обложек</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="635"/>
         <source>Skin files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файлы обложек</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="192"/>
         <source>Add...</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавить...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Refresh</source>
-        <translation type="unfinished">Обновить</translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="375"/>
         <source>Show protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать протокол</translation>
     </message>
 </context>
 <context>
@@ -824,19 +825,14 @@
         <translation>Все форматы</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
-        <source>&amp;Repeat All</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Повторять трек</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;В случайном порядке</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="426"/>
@@ -852,6 +848,11 @@
         <location filename="../mainwindow.cpp" line="428"/>
         <source>S</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="420"/>
+        <source>&amp;Repeat Playlist</source>
+        <translation>&amp;Повторять лист</translation>
     </message>
 </context>
 <context>
@@ -1085,12 +1086,12 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Не очищать лист</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="155"/>
         <source>Qt version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия Qt:</translation>
     </message>
 </context>
 <context>

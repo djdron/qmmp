@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="ru">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -20,17 +21,17 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="79"/>
         <source>FFmpeg Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль FFmpeg</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="81"/>
         <source>FFmpeg Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматы FFmepg</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="144"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation type="unfinished"></translation>
+        <translation>Собрано с libavformat-%1.%2.%3 и libavcodec-%4.%5.%6</translation>
     </message>
 </context>
 <context>
@@ -48,7 +49,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="141"/>
         <source>-</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="71"/>
@@ -133,25 +134,20 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Audio Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудио-информация</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="170"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Метаданные</translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
-        <source>FFMPEG Plugin Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Форматы</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
@@ -187,6 +183,11 @@
         <location filename="../settingsdialog.ui" line="93"/>
         <source>RealAudio 1.0/2.0</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="13"/>
+        <source>FFmpeg Plugin Settings</source>
+        <translation>Настройки модуля FFmpeg</translation>
     </message>
 </context>
 </TS>
