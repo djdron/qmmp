@@ -129,7 +129,7 @@ public:
     /*!
      * Returns index of \b f file in queue.e
      */
-    int queuedIndex(PlayListItem* item)const
+    int queuedIndex(PlayListItem* item) const
     {
         return m_queued_songs.indexOf(item);
     }
@@ -206,6 +206,7 @@ public slots:
     void clearSelection();
     void removeSelected();
     void removeUnselected();
+    void removeAt (int i);
     void invertSelection();
     void selectAll();
     void showDetails();
@@ -346,6 +347,7 @@ private:
      * when finished.
      */
     QVector<GuardedFileLoader> m_running_loaders;
+    bool m_shuffle;
 };
 
 

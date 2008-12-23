@@ -40,17 +40,23 @@ public:
 
     void initialize(SoundCore *core, PlayListModel *model);
     PlayListModel *playListModel();
+    bool isRepeatable() const;
 
 public slots:
     void play();
     void stop();
     void next();
     void previous();
+    void setRepeatable(bool);
+
+signals:
+    void repeatableChanged(bool);
 
 private:
     PlayListModel *m_model;
     SoundCore *m_core;
     static MediaPlayer* m_instance;
+    bool m_repeat;
 
 };
 

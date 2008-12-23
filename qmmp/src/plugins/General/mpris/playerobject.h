@@ -72,7 +72,7 @@ public slots:
     void Pause();
     void Stop();
     void Play();
-    //void Repeat();
+    void Repeat(bool in0);
     PlayerStatus GetStatus();
     QVariantMap GetMetadata();
     int GetCaps();

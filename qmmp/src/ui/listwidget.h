@@ -36,6 +36,7 @@ class PlayList;
 class PlayListModel;
 class Skin;
 class PlayListItem;
+class MediaPlayer;
 
 class ListWidget : public QWidget
 {
@@ -47,19 +48,31 @@ public:
 
     void setModel(PlayListModel *);
     void readSettings();
-	 /*!
-	  * Returns count of currently visible rows.
-	  */
-	 int visibleRows()const{return m_rows;}
-	 
-	 /*!
-	  * Returns number of first visible row.
-	  */
-	 int firstVisibleRow()const{return m_first;}
-	 
-	 int getAnchorRow()const{return m_anchor_row;}
-	 
-	 void setAnchorRow(int r){m_anchor_row = r;}
+    /*!
+     * Returns count of currently visible rows.
+     */
+    int visibleRows()const
+    {
+        return m_rows;
+    }
+
+    /*!
+     * Returns number of first visible row.
+     */
+    int firstVisibleRow()const
+    {
+        return m_first;
+    }
+
+    int getAnchorRow()const
+    {
+        return m_anchor_row;
+    }
+
+    void setAnchorRow(int r)
+    {
+        m_anchor_row = r;
+    }
 
 public slots:
     void updateList();
@@ -100,6 +113,10 @@ private:
     int m_pressed_row;
     QMenu *m_menu;
     PlayListModel *m_model;
+    /*!
+     * Returns string with queue number or(and) repeate flag for the item number \b i.
+     */
+    const QString getExtraString(int i);
     int m_rows, m_first;
     QList <QString> m_titles;
     QList <QString> m_times;
@@ -108,7 +125,7 @@ private:
     QFontMetrics *m_metrics;
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
-	 int m_anchor_row;
+    int m_anchor_row;
 
     enum ScrollDirection
     {
@@ -120,7 +137,9 @@ private:
      */
     ScrollDirection m_scroll_direction;
     int m_prev_y;
-	 bool m_select_on_release;
+    bool m_select_on_release;
+    bool m_show_protocol;
+    MediaPlayer *m_player;
 };
 
 #endif
