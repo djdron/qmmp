@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>FFMPEG Plugin Settings</string>
+   <string>FFmpeg Plugin Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" >
    <item row="1" column="0" >

@@ -417,7 +417,7 @@ void MainWindow::createActions()
     m_mainMenu->addAction(tr("&Next"),this, SLOT(next()), tr("B"));
     m_mainMenu->addAction(tr("&Play/Pause"),this, SLOT(playPause()), tr("Space"));
     m_mainMenu->addSeparator();
-    QAction *repeateAllAction = m_mainMenu->addAction(tr("&Repeat All"));
+    QAction *repeateAllAction = m_mainMenu->addAction(tr("&Repeat Playlist"));
     QAction *repeateTrackAction = m_mainMenu->addAction(tr("&Repeat Track"));
     QAction *shuffleAction = m_mainMenu->addAction(tr("&Shuffle"));
     repeateAllAction->setCheckable (TRUE);

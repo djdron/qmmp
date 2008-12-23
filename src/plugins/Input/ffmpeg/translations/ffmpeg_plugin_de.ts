@@ -144,11 +144,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
-        <source>FFMPEG Plugin Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Formats</source>
         <translation type="unfinished"></translation>
@@ -186,6 +181,11 @@
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>RealAudio 1.0/2.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="13"/>
+        <source>FFmpeg Plugin Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
