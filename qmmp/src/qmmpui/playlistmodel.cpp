@@ -750,22 +750,22 @@ static bool _filenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 
 static bool _dateLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->year() < s2->year();
+    return s1->year().toInt() < s2->year().toInt();
 }
 
 static bool _dateGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->year() > s2->year();
+    return s1->year().toInt() > s2->year().toInt();
 }
 
 static bool _trackLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->track() < s2->track();
+    return s1->track().toInt() < s2->track().toInt();
 }
 
 static bool _trackGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->track() > s2->track();
+    return s1->track().toInt() > s2->track().toInt();
 }
 
 // This is main sort method
@@ -874,15 +874,9 @@ void PlayListModel::doCurrentVisibleRequest()
 
 void PlayListModel::setUpdatesEnabled(bool yes)
 {
+    m_block_update_signals = !yes;
     if (yes)
-    {
-        m_block_update_signals = false;
         emit listChanged();
-    }
-    else
-    {
-        m_block_update_signals = true;
-    }
 }
 
 void PlayListModel::loadPlaylist(const QString &f_name)
