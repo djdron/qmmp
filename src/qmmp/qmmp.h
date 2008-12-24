@@ -20,6 +20,15 @@
 #ifndef QMMP_H
 #define QMMP_H
 
+#define QMMP_MAJOR_VERSION 0
+#define QMMP_MINOR_VERSION 3
+#define QMMP_PATCH_VERSION 0
+
+#define QMMP_VERSION_INT 0x000300
+#define QMMP_VERSION_STR "0.3.0"
+#define QMMP_VERSION 0.3.0
+
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -28,6 +37,7 @@ class Qmmp
 public:
     enum State {Playing = 0, Paused, Stopped, Buffering, NormalError, FatalError};
     enum MetaData {TITLE = 0, ARTIST, ALBUM, COMMENT, GENRE, YEAR, TRACK, URL};
+    static QString configFile();
 
 };
 

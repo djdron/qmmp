@@ -21,12 +21,13 @@
 #include "qmmpfiledialogimpl.h"
 
 #include <QDirModel>
-#include <QDir>
 #include <QApplication>
 #include <QFileInfo>
 #include <QStyle>
 #include <QSettings>
 #include <QMessageBox>
+
+#include <qmmp/qmmp.h>
 
 #define HISTORY_SIZE 8
 
@@ -82,7 +83,7 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
             SLOT(updateSelection ()));
     PathCompleter* completer = new PathCompleter (m_model, fileListView, this);
     fileNameLineEdit->setCompleter (completer);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     closeOnAddToolButton->setChecked(settings.value("QMMPFileDialog/close_on_add", FALSE).toBool());
     restoreGeometry(settings.value("QMMPFileDialog/geometry").toByteArray());
     m_history = settings.value("QMMPFileDialog/history").toStringList();
@@ -315,7 +316,7 @@ void QmmpFileDialogImpl::on_fileTypeComboBox_activated(int index)
 
 void QmmpFileDialogImpl::hideEvent (QHideEvent *event)
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("QMMPFileDialog/close_on_add", closeOnAddToolButton->isChecked());
     settings.setValue("QMMPFileDialog/geometry", saveGeometry());
     settings.setValue("QMMPFileDialog/history", m_history);

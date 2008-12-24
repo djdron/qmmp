@@ -156,7 +156,7 @@ MainDisplay::MainDisplay (QWidget *parent)
 
 MainDisplay::~MainDisplay()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("Playlist/visible",m_plButton->isChecked());
     settings.setValue ("Equalizer/visible",m_eqButton->isChecked());
 }

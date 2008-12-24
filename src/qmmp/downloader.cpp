@@ -217,7 +217,7 @@ void Downloader::run()
     qDebug("Downloader: starting download thread");
     m_handle = curl_easy_init();
     //proxy
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     if (settings.value ("Proxy/use_proxy", FALSE).toBool())
         curl_easy_setopt(m_handle, CURLOPT_PROXY,
                          strdup((settings.value("Proxy/host").toString()+":"+

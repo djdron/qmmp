@@ -29,6 +29,7 @@
 #include <QImage>
 #include <QBuffer>
 
+#include <qmmp/qmmp.h>
 #include "skin.h"
 
 Skin *Skin::pointer = 0;
@@ -60,7 +61,7 @@ Skin::Skin (QObject *parent)
         : QObject (parent)
 {
     pointer = this;
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString path = settings.value("skin_path","").toString();
     if (path.isEmpty() || !QDir(path).exists ())
         path = ":/default";
@@ -76,7 +77,7 @@ Skin::~Skin()
 
 void Skin::setSkin (const QString& path)
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("skin_path",path);
 
     qDebug ("Skin: set skin %s",qPrintable(path));    //TODO don't clear lists

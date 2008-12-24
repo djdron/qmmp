@@ -19,7 +19,8 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <QDir>
+
+#include <qmmp/qmmp.h>
 
 #include "settingsdialog.h"
 
@@ -27,7 +28,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
     ui.setupUi(this);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Tray");
     ui.messageCheckBox->setChecked(settings.value("show_message",TRUE).toBool());
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
@@ -41,7 +42,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::accept()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Tray");
     settings.setValue ("show_message", ui.messageCheckBox->isChecked());
     settings.setValue ("message_delay", ui.messageDelaySpinBox->value());

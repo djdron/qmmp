@@ -51,7 +51,7 @@ extern "C"
 
 bool DecoderFFmpegFactory::supports(const QString &source) const
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
     filters << "*.wma" << "*.ape";
     filters = settings.value("FFMPEG/filters", filters).toStringList();
@@ -71,7 +71,7 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *) const
 
 const DecoderProperties DecoderFFmpegFactory::properties() const
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
     filters << "*.wma" << "*.ape";
     filters = settings.value("FFMPEG/filters", filters).toStringList();

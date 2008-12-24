@@ -24,6 +24,7 @@
 #include <QMenu>
 #include <QMouseEvent>
 #include <QSettings>
+#include <qmmp/qmmp.h>
 
 #include "skin.h"
 #include "textscroller.h"
@@ -63,7 +64,7 @@ TextScroller::TextScroller ( QWidget *parent )
     autoscrollAction->setCheckable (TRUE);
     connect(autoscrollAction, SIGNAL(toggled(bool)), SLOT(setAutoscroll(bool)));
     m_menu->addAction(autoscrollAction);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     autoscrollAction->setChecked(settings.value("TextScroller/autoscroll", TRUE).toBool());
     setAutoscroll(autoscrollAction->isChecked());
 }
@@ -71,7 +72,7 @@ TextScroller::TextScroller ( QWidget *parent )
 
 TextScroller::~TextScroller()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("TextScroller/autoscroll", m_autoscroll);
 }
 
@@ -123,7 +124,7 @@ void TextScroller::setAutoscroll(bool enabled)
 
 void TextScroller::readSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value("MainWindow/Font","").toString();
     m_font.fromString(fontname);
 

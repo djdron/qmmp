@@ -68,7 +68,7 @@ PopupWidget::PopupWidget(QWidget *parent)
     hlayout->addLayout (vlayout);
     setLayout(hlayout);
     resize(sizeHint());
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
     int delay = settings.value("message_delay", 2000).toInt();
     uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();

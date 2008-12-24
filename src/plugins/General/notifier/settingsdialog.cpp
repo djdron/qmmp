@@ -19,7 +19,8 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <QDir>
+
+#include <qmmp/qmmp.h>
 
 #include "popupwidget.h"
 #include "settingsdialog.h"
@@ -39,7 +40,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     m_buttons.insert(PopupWidget::LEFT, ui.leftButton);
     m_buttons.insert(PopupWidget::CENTER, ui.centerButton);
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
@@ -55,7 +56,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::accept()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
     settings.setValue ("message_delay", ui.messageDelaySpinBox->value());
     uint pos = PopupWidget::BOTTOMLEFT;

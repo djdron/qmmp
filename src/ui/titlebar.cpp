@@ -57,7 +57,7 @@ TitleBar::TitleBar(QWidget *parent)
     setActive(FALSE);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Display/shaded", FALSE).toBool())
         shade();
     else
@@ -68,7 +68,7 @@ TitleBar::TitleBar(QWidget *parent)
 
 TitleBar::~TitleBar()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Display/shaded", m_shaded);
 }
 

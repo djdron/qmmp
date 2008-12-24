@@ -131,7 +131,7 @@ void EqWidget::updateSkin()
 
 void EqWidget::readSettings()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup ("Equalizer");
     //geometry
     move (settings.value ("pos", QPoint (100, 216)).toPoint());
@@ -193,7 +193,7 @@ void EqWidget::readSettings()
 
 void EqWidget::writeSettings()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup ("Equalizer");
     //geometry
     settings.setValue ("pos", this->pos());

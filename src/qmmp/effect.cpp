@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QApplication>
 
+#include "qmmp.h"
 #include "effectfactory.h"
 #include "constants.h"
 #include "effect.h"
@@ -123,7 +124,7 @@ void Effect::setEnabled(EffectFactory* factory, bool enable)
         return;
 
     QString name = factory->properties().shortName;
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QStringList effList = settings.value("Effect/enabled_plugins").toStringList();
 
     if(enable)
@@ -142,7 +143,7 @@ bool Effect::isEnabled(EffectFactory* factory)
     if(!factories->contains(factory))
         return FALSE;
     QString name = factory->properties().shortName;
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList effList = settings.value("Effect/enabled_plugins").toStringList();
     return effList.contains(name);
 }

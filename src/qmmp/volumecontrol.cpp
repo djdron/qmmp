@@ -39,7 +39,7 @@ VolumeControl::~VolumeControl()
 
 VolumeControl *VolumeControl::create(QObject *parent)
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Volume/software_volume", FALSE).toBool())
         return new SoftwareVolume(parent);
     VolumeControl *control = Output::currentFactory()->createVolumeControl(parent);
@@ -82,7 +82,7 @@ SoftwareVolume *SoftwareVolume::m_instance = 0;
 SoftwareVolume::SoftwareVolume(QObject *parent)
         : VolumeControl(parent)
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_left = settings.value("Volume/left", 80).toInt();
     m_right = settings.value("Volume/right", 80).toInt();
     QTimer::singleShot(125, this, SLOT(checkVolume()));
@@ -92,7 +92,7 @@ SoftwareVolume::SoftwareVolume(QObject *parent)
 
 SoftwareVolume::~SoftwareVolume()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Volume/left", m_left);
     settings.setValue("Volume/right", m_right);
     m_instance = 0;
@@ -118,6 +118,6 @@ SoftwareVolume *SoftwareVolume::instance()
 
 void  SoftwareVolume::setEnabled(bool b)
 {
-     QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
      settings.setValue("Volume/software_volume", b);
 }

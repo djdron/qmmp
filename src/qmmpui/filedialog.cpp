@@ -25,6 +25,7 @@
 #include <QApplication>
 #include <QPluginLoader>
 #include <QMetaObject>
+#include <qmmp/qmmp.h>
 
 #include "qtfiledialog.h"
 
@@ -50,7 +51,7 @@ void FileDialog::setEnabled(FileDialogFactory *factory)
         registerBuiltinFactories();
         registerExternalFactories();
     }
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FileDialog", factories.key(factory));
 }
 
@@ -61,7 +62,7 @@ bool FileDialog::isEnabled(FileDialogFactory *factory)
         registerBuiltinFactories();
         registerExternalFactories();
     }
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString f_dialogName = settings.value("FileDialog", "qt_dialog").toString();
     return factories.value(f_dialogName) == factory;
 }
@@ -202,7 +203,7 @@ FileDialog* FileDialog::instance()
         registerExternalFactories();
     }
 
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString f_dialogName = settings.value("FileDialog", "qt_dialog").toString();
 
     QStringList names = factories.keys();

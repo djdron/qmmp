@@ -37,7 +37,7 @@
 Analyzer::Analyzer (QWidget *parent)
         : Visual (parent), m_fps ( 20 )
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     restoreGeometry(settings.value("Analyzer/geometry").toByteArray());
     setFixedSize(2*300-30,105);
     m_pixmap = QPixmap (75,20);
@@ -178,7 +178,7 @@ void Analyzer::showEvent (QShowEvent *)
 void Analyzer::closeEvent (QCloseEvent *event)
 {
     //save geometry
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Analyzer/geometry", saveGeometry());
     Visual::closeEvent(event); //removes visualization before class deleting
 }

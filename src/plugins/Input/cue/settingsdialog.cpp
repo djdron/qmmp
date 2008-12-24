@@ -19,7 +19,8 @@
  ***************************************************************************/
 #include <QTextCodec>
 #include <QSettings>
-#include <QDir>
+
+#include <qmmp/qmmp.h>
 
 #include "settingsdialog.h"
 
@@ -33,7 +34,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     {
         ui.cueEncComboBox->addItem(codec->name());
     }
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("CUE");
     int pos = ui.cueEncComboBox->findText(settings.value("encoding","ISO-8859-1").toString());
     ui.cueEncComboBox->setCurrentIndex(pos);
@@ -46,7 +47,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::accept()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("CUE");
     settings.setValue("encoding", ui.cueEncComboBox->currentText());
     settings.endGroup();

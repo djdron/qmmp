@@ -51,7 +51,7 @@ StatusIcon::StatusIcon(QObject *parent)
     menu->addAction(tr("Exit"), this, SLOT(exit()));
     m_tray->setContextMenu(menu);
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Tray");
     m_showMessage = settings.value("show_message",TRUE).toBool();
     m_messageDelay = settings.value("message_delay", 2000).toInt();

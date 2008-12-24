@@ -108,7 +108,7 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
 
     if (useMetaData)
     {
-        QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+        QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
         settings.beginGroup("MAD");
 
         QTextCodec *codec = 0;

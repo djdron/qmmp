@@ -40,7 +40,7 @@
 OutputALSA::OutputALSA(QObject * parent)
         : Output(parent), m_inited(FALSE)
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString dev_name = settings.value("ALSA/device","default").toString();
     m_use_mmap = settings.value("ALSA/use_mmap", FALSE).toBool();
     pcm_name = strdup(dev_name.toAscii().data());
@@ -64,7 +64,7 @@ void OutputALSA::configure(quint32 freq, int chan, int prec)
     uint exact_rate = freq;   /* Sample rate returned by */
 
     /* load settings from config */
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("ALSA");
     uint buffer_time = settings.value("buffer_time",500).toUInt()*1000;
     uint period_time = settings.value("period_time",100).toUInt()*1000;
@@ -360,7 +360,7 @@ VolumeControlALSA::VolumeControlALSA(QObject *parent) : VolumeControl(parent)
 {
     //alsa mixer
     mixer = 0;
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString card = settings.value("ALSA/mixer_card","hw:0").toString();
     QString dev = settings.value("ALSA/mixer_device", "PCM").toString();
     setupMixer(card, dev);

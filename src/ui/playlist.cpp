@@ -399,7 +399,7 @@ void PlayList::readSettings()
     }
     else
     {
-        QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         settings.beginGroup ("PlayList");
         //position
         move (settings.value ("pos", QPoint (100, 332)).toPoint());
@@ -411,7 +411,7 @@ void PlayList::readSettings()
 
 void PlayList::writeSettings()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup ("PlayList");
     //position
     settings.setValue ("pos", this->pos());

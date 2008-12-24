@@ -55,7 +55,7 @@ const QMap<Qmmp::MetaData, QString> TagExtractor::id3v2tag()
     TagLib::String genre = taglib_tag.genre();
     TagLib::String title = taglib_tag.title();
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     QByteArray name = settings.value("ID3v2_encoding","UTF-8").toByteArray ();
     bool utf = FALSE;

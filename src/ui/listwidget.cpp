@@ -66,7 +66,7 @@ ListWidget::~ListWidget()
 
 void ListWidget::readSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value("PlayList/Font","").toString();
     m_font.fromString(fontname);
     m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();

@@ -32,7 +32,7 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
 {
     QString album, genre, date, comment;
     QTextStream textStream (array);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QTextCodec *codec = QTextCodec::codecForName(settings.value("CUE/encoding","ISO-8859-1").toByteArray ());
     textStream.setCodec(codec);
     m_filePath = fileName;

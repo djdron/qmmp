@@ -27,6 +27,7 @@
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmp/qmmp.h>
 
 #define HISTORY_SIZE 10
 
@@ -35,7 +36,7 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
     m_http = new QHttp(this);
@@ -62,7 +63,7 @@ AddUrlDialog::~AddUrlDialog()
 {
     if ( m_history.size() > HISTORY_SIZE)
         m_history.removeLast();
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("URLDialog/history", m_history);
     m_http->close();
 }

@@ -300,14 +300,14 @@ void Output::setCurrentFactory(OutputFactory* factory)
     checkFactories();
     if (!m_factories->contains(factory))
         return;
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("Output/current_plugin", factory->properties().shortName);
 }
 
 OutputFactory *Output::currentFactory()
 {
     checkFactories();
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
 #ifdef Q_OS_LINUX
     QString name = settings.value("Output/current_plugin", "alsa").toString();
 #else

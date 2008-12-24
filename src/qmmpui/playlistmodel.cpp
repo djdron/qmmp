@@ -370,7 +370,7 @@ void PlayListModel::showDetails()
 
 void PlayListModel::readSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_current = settings.value("Playlist/current",0).toInt();
 
     QString line, param, value;
@@ -439,7 +439,7 @@ void PlayListModel::writeSettings()
         file.write(QString("length=%1").arg(m->length()).toUtf8() +"\n");
     }
     file.close();
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Playlist/current", m_current);
 }
 

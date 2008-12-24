@@ -92,10 +92,6 @@ void ShufflePlayState::resetState()
     m_shuffled_current = 0;
 }
 
-
-
-
-
 NormalPlayState::NormalPlayState(PlayListModel * model) : PlayState(model)
 {}
 

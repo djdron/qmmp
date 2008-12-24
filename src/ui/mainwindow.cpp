@@ -314,7 +314,7 @@ void MainWindow::changeEvent (QEvent * event)
 
 void MainWindow::readSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (!m_update)
     {
         settings.beginGroup("MainWindow");
@@ -348,7 +348,7 @@ void MainWindow::readSettings()
 
 void MainWindow::writeSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MainWindow");
     //geometry
     settings.setValue("pos", this->pos());
