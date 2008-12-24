@@ -21,6 +21,7 @@
 #include <QDBusMetaType>
 #include <QDBusArgument>
 
+#include <qmmp/qmmp.h>
 #include "rootobject.h"
 
 //register << operator
@@ -56,7 +57,7 @@ RootObject::~RootObject()
 
 QString RootObject::Identity()
 {
-    QString name = "Qmmp 0.3.0-svn";
+    QString name = "Qmmp " + Qmmp::strVersion();
     return name;
 }
 
