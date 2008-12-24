@@ -20,6 +20,10 @@
 
 #include <QDir>
 
+#ifndef QMMP_VERSION_STR
+#define QMMP_VERSION_STR "0.3.0"
+#endif
+
 #include "qmmp.h"
 
 QString Qmmp::configFile()
@@ -27,3 +31,11 @@ QString Qmmp::configFile()
     return QDir::homePath() +"/.qmmp/qmmprc";
 }
 
+QString Qmmp::strVersion()
+{
+#ifdef SVN_REVISION
+    return QString("%1-%2").arg(QMMP_VERSION_STR).arg(SVN_REVISION);
+#else
+    return QMMP_VERSION_STR;
+#endif
+}

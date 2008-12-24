@@ -17,12 +17,6 @@ include(${QT_USE_FILE})
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_THREAD)
-ADD_DEFINITIONS(-DQMMP_VERSION=${QMMP_VERSION})
-IF(SVN_VERSION)
-ADD_DEFINITIONS(-DQMMP_STR_VERSION=\\\"${QMMP_VERSION}-svn\\\")
-ELSE(SVN_VERSION)
-ADD_DEFINITIONS(-DQMMP_STR_VERSION=\\\"${QMMP_VERSION}\\\")
-ENDIF(SVN_VERSION)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -128,7 +122,6 @@ SET(ui_MOC_HDRS
     titlebar.h
     togglebutton.h
     unixdomainsocket.h
-    version.h
     visualmenu.h
     volumebar.h
 )
