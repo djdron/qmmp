@@ -19,7 +19,8 @@
  ***************************************************************************/
 #include <QTextCodec>
 #include <QSettings>
-#include <QDir>
+
+#include <qmmp/qmmp.h>
 
 #include "settingsdialog.h"
 
@@ -34,7 +35,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui.id3v1EncComboBox->addItem(codec->name());
         ui.id3v2EncComboBox->addItem(codec->name());
     }
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     int pos = ui.id3v1EncComboBox->findText
         (settings.value("ID3v1_encoding","ISO-8859-1").toString());
@@ -57,7 +58,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::writeSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     settings.setValue("ID3v1_encoding", ui.id3v1EncComboBox->currentText());
     settings.setValue("ID3v2_encoding", ui.id3v2EncComboBox->currentText());

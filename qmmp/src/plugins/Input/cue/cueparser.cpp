@@ -38,7 +38,7 @@ CUEParser::CUEParser(const QString &fileName)
     }
     QString album, genre, date, comment;
     QTextStream textStream (&file);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QTextCodec *codec = QTextCodec::codecForName(settings.value("CUE/encoding","ISO-8859-1").toByteArray ());
     textStream.setCodec(codec);
     QString artist;

@@ -34,7 +34,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("ModPlug");
     //general
     ui.noiseCheckBox->setChecked(settings.value("NoiseReduction", FALSE).toBool());
@@ -110,7 +110,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::writeSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("ModPlug");
     //general
     settings.setValue("NoiseReduction", ui.noiseCheckBox->isChecked());

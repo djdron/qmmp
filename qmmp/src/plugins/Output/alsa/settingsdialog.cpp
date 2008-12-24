@@ -18,7 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include <QSettings>
-#include <QDir>
+
+#include <qmmp/qmmp.h>
 
 extern "C"
 {
@@ -36,7 +37,7 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
     getCards();
     connect (ui.deviceComboBox, SIGNAL(activated(int)),SLOT(setText(int)));
     connect(ui.mixerCardComboBox, SIGNAL(activated(int)), SLOT(showMixerDevices(int)));
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("ALSA");
     ui.deviceComboBox->setEditText(settings.value("device","default").toString());
     ui.bufferSpinBox->setValue(settings.value("buffer_time",500).toInt());
@@ -181,7 +182,7 @@ void SettingsDialog::setText(int n)
 void SettingsDialog::accept()
 {
     qDebug("SettingsDialog (ALSA):: writeSettings()");
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("ALSA");
     settings.setValue("device", ui.deviceComboBox->currentText ());
     settings.setValue("buffer_time",ui.bufferSpinBox->value());

@@ -22,6 +22,7 @@
 #include <QObject>
 #include <QList>
 #include <QApplication>
+#include <qmmp/qmmp.h>
 
 #include "general.h"
 
@@ -101,7 +102,7 @@ void General::setEnabled(GeneralFactory* factory, bool enable)
         return;
 
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList genList = settings.value("General/plugin_files").toStringList();
 
     if (enable)
@@ -120,7 +121,7 @@ bool General::isEnabled(GeneralFactory* factory)
     if (!factories->contains(factory))
         return FALSE;
     QString name = files.at(factories->indexOf(factory)).section('/',-1);
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList genList = settings.value("General/plugin_files").toStringList();
     return genList.contains(name);
 }

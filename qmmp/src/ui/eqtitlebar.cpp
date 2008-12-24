@@ -48,7 +48,7 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     m_shade = new Button(this, Skin::EQ_BT_SHADE1_N, Skin::EQ_BT_SHADE1_P);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
     m_shade->move(254,3);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Equalizer/shaded", FALSE).toBool())
         shade();
     else
@@ -61,7 +61,7 @@ EqTitleBar::EqTitleBar(QWidget *parent)
 
 EqTitleBar::~EqTitleBar()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Equalizer/shaded", m_shaded);
 }
 

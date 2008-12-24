@@ -98,7 +98,7 @@ void Visual::setEnabled(VisualFactory* factory, bool enable)
         return;
 
     QString name = factory->properties().shortName;
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList visList = settings.value("Visualization/enabled_plugins").toStringList();
 
     if (enable)
@@ -135,7 +135,7 @@ bool Visual::isEnabled(VisualFactory* factory)
     if (!m_factories->contains(factory))
         return FALSE;
     QString name = factory->properties().shortName;
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList visList = settings.value("Visualization/enabled_plugins").toStringList();
     return visList.contains(name);
 }

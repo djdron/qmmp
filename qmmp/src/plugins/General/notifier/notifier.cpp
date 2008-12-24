@@ -32,7 +32,7 @@ Notifier::Notifier(QObject *parent)
 {
     m_popupWidget = 0;
     QFile::remove(QDir::homePath()+"/.psi/tune");
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
     m_desktop = settings.value("desktop_notification", TRUE).toBool();
     m_psi = settings.value("psi_notification", FALSE).toBool();

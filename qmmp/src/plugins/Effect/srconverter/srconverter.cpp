@@ -19,9 +19,9 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <QDir>
 #include <math.h>
 #include <stdlib.h>
+#include <qmmp/qmmp.h>
 
 #include "srconverter.h"
 
@@ -34,7 +34,7 @@ SRConverter::SRConverter(QObject* parent) : Effect(parent)
     m_srcOut = 0;
     m_src_state = 0;
     m_srcError = 0;
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_overSamplingFs = settings.value("SRC/sample_rate",48000).toInt();
     m_converter_type = converter_type_array[settings.value("SRC/engine", 0).toInt()];
 }

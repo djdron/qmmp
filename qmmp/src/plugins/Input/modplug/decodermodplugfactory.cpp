@@ -80,7 +80,7 @@ Decoder *DecoderModPlugFactory::create(QObject *parent, QIODevice *input,
 QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo*> list;
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (!useMetaData || settings.value("UseFileName", FALSE).toBool())
     {
         list << new FileInfo(fileName);

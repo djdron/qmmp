@@ -53,7 +53,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
     resize(275,20);
     setMinimumWidth(275);
     readSettings();
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     m_pl->resize (settings.value ("PlayList/size", QSize (275, 116)).toSize());
     if (settings.value ("PlayList/shaded", FALSE).toBool())
         shade();
@@ -64,7 +64,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
 
 PlayListTitleBar::~PlayListTitleBar()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("PlayList/size", QSize (m_pl->width(), m_shaded ? m_height:m_pl->height()));
     settings.setValue ("PlayList/shaded", m_shaded);
 }
@@ -209,7 +209,7 @@ void PlayListTitleBar::setModel(PlayListModel *model)
 
 void PlayListTitleBar::readSettings()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value("PlayList/Font","").toString();
     if (fontname.isEmpty ())
         fontname = QFont("Helvetica [Cronyx]", 8).toString();

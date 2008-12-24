@@ -20,6 +20,7 @@
 #include <QPainter>
 #include <QSettings>
 #include <QMouseEvent>
+#include <qmmp/qmmp.h>
 
 #include "skin.h"
 #include "timeindicator.h"
@@ -97,7 +98,7 @@ void TimeIndicator::updateSkin()
 
 void TimeIndicator::readSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Display");
     m_elapsed  = settings.value("Elapsed",true).toBool();
     settings.endGroup();
@@ -106,7 +107,7 @@ void TimeIndicator::readSettings()
 
 void TimeIndicator::writeSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Display");
     settings.setValue("Elapsed",m_elapsed);
     settings.endGroup();

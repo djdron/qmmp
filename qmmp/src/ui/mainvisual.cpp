@@ -61,7 +61,7 @@ MainVisual::MainVisual (QWidget *parent)
 
 MainVisual::~MainVisual()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (m_vis)
     {
         settings.setValue("Visualization/type",m_vis->name());
@@ -242,7 +242,7 @@ void MainVisual::updateSettings()
     else
         m_timer->setInterval (40);
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     act = m_peaksFalloffGroup->checkedAction ();
     if (act)
         settings.setValue("Visualization/peaks_falloff", act->data().toInt());
@@ -376,7 +376,7 @@ void MainVisual::createMenu()
 
 void MainVisual::readSettings()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
 
     QString name = settings.value("Visualization/type","Analyzer").toString();
     m_visModeGroup->actions ()[0]->setChecked(TRUE);
@@ -435,7 +435,7 @@ Analyzer::Analyzer()
     double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
     double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_peaks_falloff =
         peaks_speed[settings.value("Visualization/peaks_falloff", 3).toInt()-1];
     m_analyzer_falloff =

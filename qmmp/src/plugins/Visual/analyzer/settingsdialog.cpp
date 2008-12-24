@@ -19,7 +19,8 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <QDir>
+
+#include <qmmp/qmmp.h>
 
 #include "settingsdialog.h"
 
@@ -27,7 +28,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
  : QDialog(parent)
 {
     ui.setupUi(this);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     ui.analyzerComboBox->setCurrentIndex(settings.value("Analyzer/analyzer_falloff", 3).toInt()-1);
     ui.peaksCheckBox->setChecked(settings.value("Analyzer/show_peaks", TRUE).toBool());
     ui.peaksComboBox->setCurrentIndex(settings.value("Analyzer/peaks_falloff", 3).toInt()-1);
@@ -46,7 +47,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::accept()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Analyzer/analyzer_falloff", ui.analyzerComboBox->currentIndex() + 1);
     settings.setValue("Analyzer/peaks_falloff", ui.peaksComboBox->currentIndex() + 1);
     settings.setValue("Analyzer/refresh_rate", ui.fpsComboBox->currentIndex() + 1);

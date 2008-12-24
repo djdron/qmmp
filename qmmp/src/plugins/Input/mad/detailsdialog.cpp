@@ -33,6 +33,8 @@
 #include <taglib/mpegheader.h>
 #include <taglib/mpegproperties.h>
 
+#include <qmmp/qmmp.h>
+
 #include "detailsdialog.h"
 
 DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
@@ -47,7 +49,7 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     if (!QFile::exists(m_path))
         return;
 
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     m_codec_v1 =
         QTextCodec::codecForName(settings.value("ID3v1_encoding", "ISO-8859-1" )
@@ -294,7 +296,7 @@ uint DetailsDialog::selectedTag()
 
 void DetailsDialog::closeEvent (QCloseEvent *)
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     if (ui.id3v1RadioButton->isChecked())
         settings.setValue("current_tag","ID3v1");

@@ -38,7 +38,7 @@ PlayListItem::PlayListItem(FileInfo *info, QSettings *settings) : AbstractPlayli
     //use external settings or create new
     QSettings *s = settings;
     if (!s)
-        s = new QSettings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+        s = new QSettings (Qmmp::configFile(), QSettings::IniFormat);
 
     m_use_meta = s->value ("PlayList/load_metadata", TRUE).toBool();  //TODO move to libqmmp
     //format

@@ -19,8 +19,9 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <QDir>
 #include <QStringList>
+
+#include <qmmp/qmmp.h>
 
 extern "C"
 {
@@ -49,7 +50,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 {
     ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
     filters << "*.wma" << "*.ape";
     filters = settings.value("FFMPEG/filters", filters).toStringList();
@@ -89,7 +90,7 @@ void SettingsDialog::accept()
         filters << "*.tta";
     if (ui.alacCheckBox->isChecked())
         filters << "*.alac";
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FFMPEG/filters", filters);
     QDialog::accept();
 }

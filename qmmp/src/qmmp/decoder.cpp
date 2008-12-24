@@ -192,7 +192,7 @@ QStringList Decoder::m_files;
 
 void Decoder::checkFactories()
 {
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
 
     if (!m_factories)
     {
@@ -374,7 +374,7 @@ void Decoder::setEnabled(DecoderFactory* factory, bool enable)
         return;
 
     QString name = factory->properties().shortName;
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
 
     if (enable)
@@ -393,7 +393,7 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     if (!m_factories->contains(factory))
         return FALSE;
     QString name = factory->properties().shortName;
-    QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
     return !disabledList.contains(name);
 }

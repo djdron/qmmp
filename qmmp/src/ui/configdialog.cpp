@@ -96,7 +96,7 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::readSettings()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     ui.formatLineEdit->setText(
         settings.value ("PlayList/title_format", "%p - %t").toString());
     ui.metadataCheckBox->setChecked(
@@ -371,7 +371,7 @@ void ConfigDialog::loadPluginsInfo()
 
 void ConfigDialog::loadFonts()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value ( "PlayList/Font","" ).toString();
     QFont font;
     font.fromString(fontname);
@@ -393,7 +393,7 @@ void ConfigDialog::setPlFont()
     {
         ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         ui.plFontLabel->setFont(font);
-        QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+        QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
         settings.setValue ( "PlayList/Font", font.toString() );
     }
 }
@@ -407,7 +407,7 @@ void ConfigDialog::setMainFont()
     {
         ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         ui.mainFontLabel->setFont(font);
-        QSettings settings ( QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat );
+        QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
         settings.setValue ( "MainWindow/Font", font.toString() );
     }
 }
@@ -538,7 +538,7 @@ void ConfigDialog::addTitleString( QAction * a)
 
 void ConfigDialog::saveSettings()
 {
-    QSettings settings (QDir::homePath() +"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("PlayList/title_format", ui.formatLineEdit->text().trimmed());
     settings.setValue ("PlayList/load_metadata", ui.metadataCheckBox->isChecked());
     settings.setValue ("PlayList/convert_underscore", ui.underscoresCheckBox->isChecked());
