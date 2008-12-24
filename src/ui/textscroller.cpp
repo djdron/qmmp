@@ -28,7 +28,6 @@
 
 #include "skin.h"
 #include "textscroller.h"
-#include "version.h"
 
 #define SCROLL_SEP "*** "
 
@@ -49,7 +48,7 @@ TextScroller::TextScroller ( QWidget *parent )
     resize(150,15);
     x = 0;
     m_progress = -1;
-    m_text = "Qt-based Multimedia Player (Qmmp " + QString(QMMP_STR_VERSION) + ")";
+    m_text = "Qt-based Multimedia Player (Qmmp " + Qmmp::strVersion() + ")";
     m_update = FALSE;
     readSettings();
     m_timer = new QTimer ( this );

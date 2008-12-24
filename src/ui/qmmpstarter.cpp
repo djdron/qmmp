@@ -29,11 +29,11 @@
 
 #include "unixdomainsocket.h"
 #include "mainwindow.h"
-#include "version.h"
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
 
 #define MAXCOMMANDSIZE 1024
+#define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toAscii().constData()
 
 using namespace std;
 
@@ -151,6 +151,6 @@ void QMMPStarter::printUsage()
 
 void QMMPStarter::printVersion()
 {
-    cout << qPrintable(tr("QMMP version:")) << " " << QMMP_STR_VERSION << endl;
+    cout << qPrintable(tr("QMMP version:")) << " " << qPrintable(Qmmp::strVersion()) << endl;
     cout << qPrintable(tr("Qt version:")) << " " << QT_VERSION_STR << endl;
 }

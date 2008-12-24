@@ -30,9 +30,10 @@
 #include <qmmp/visualfactory.h>
 #include <qmmp/effect.h>
 #include <qmmp/effectfactory.h>
+#include <qmmp/qmmp.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalfactory.h>
-#include "version.h"
+
 
 #include "aboutdialog.h"
 
@@ -78,7 +79,7 @@ QString AboutDialog::loadAbout()
     text.append("<META content=\"text/html; charset=UTF-8\">");
     text.append("</head>");
     text.append("<h3>"+tr("Qt-based Multimedia Player (Qmmp)")+"</h3>");
-    text.append("<h4>"+tr("Version:")+" "+ QMMP_STR_VERSION "</h4>");
+    text.append("<h4>"+tr("Version:")+" "+ Qmmp::strVersion() + "</h4>");
     text.append("<p>"+getstringFromResource(tr(":txt/description_en.txt"))+"</p>");
     text.append("<h5>"+tr("Input plugins:")+"</h5>");
     text.append("<ul type=\"square\">");

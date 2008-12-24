@@ -19,8 +19,8 @@ HEADERS += recycler.h \
            effectfactory.h \
            statehandler.h \
            qmmp.h \
- fileinfo.h \
- volumecontrol.h
+           fileinfo.h \
+           volumecontrol.h
 SOURCES += recycler.cpp \
            decoder.cpp \
            output.cpp \
@@ -34,8 +34,8 @@ SOURCES += recycler.cpp \
            effect.cpp \
            statehandler.cpp \
            qmmp.cpp \
- fileinfo.cpp \
- volumecontrol.cpp
+           fileinfo.cpp \
+           volumecontrol.cpp
 
 TARGET = ../../lib/qmmp
 CONFIG += release \
@@ -54,10 +54,10 @@ unix : isEmpty(LIB_DIR){
 
 unix : DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
 DEFINES += QMMP_VERSION=$$QMMP_VERSION
+DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
+
 contains(CONFIG, SVN_VERSION){
-    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
-}else {
-    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
+    DEFINES += SVN_REVISION=\\\"$$system(./svn_revision.sh)\\\"
 }
 
 target.path = $$LIB_DIR

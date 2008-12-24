@@ -40,10 +40,8 @@ HEADERS += mainwindow.h \
            pluginitem.h \
            volumebar.h \
            balancebar.h \
-           playstate.h \
            symboldisplay.h \
            playlistcontrol.h \
-           version.h \
            qmmpstarter.h \
            eqpreset.h \
            preseteditor.h \
@@ -125,13 +123,6 @@ RESOURCES = images/images.qrc \
             stuff.qrc
 TEMPLATE = app
 target.path = /bin
-
-DEFINES += QMMP_VERSION=$$QMMP_VERSION
-contains(CONFIG, SVN_VERSION){
-    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
-}else {
-    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
-}
 
 desktop.files = qmmp.desktop
 desktop.path = /share/applications

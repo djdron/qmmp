@@ -25,6 +25,7 @@
 
 #include "unixdomainsocket.h"
 
+#define LISTEN_PORT_BASE 33000
 
 UnixDomainSocket::UnixDomainSocket(QObject * parent ) : QUdpSocket(parent){
     _bound = false;
