@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>ScrobblerFactory</name>
     <message>
         <location filename="../scrobblerfactory.cpp" line="30"/>
         <source>Scrobbler Plugin</source>
-        <translation>Scrobbler Plugin</translation>
+        <translation>Scrobbler-Plugin</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="49"/>
         <source>About Scrobbler Plugin</source>
-        <translation>Über Scrobbler Plugin</translation>
+        <translation>Über Scrobbler-Plugin</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="50"/>
         <source>Qmmp AudioScrobbler Plugin</source>
-        <translation>Qmmp AudioScrobbler Plugin</translation>
+        <translation>Qmmp AudioScrobbler-Plugin</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="51"/>
@@ -28,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Scrobbler Plugin Settings</source>
-        <translation>Scrobbler Plugin Einstellungen</translation>
+        <translation>Einstellungen des Scrobbler-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
@@ -38,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Password:</source>
-        <translation>Kennwort:</translation>
+        <translation>Passwort:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>

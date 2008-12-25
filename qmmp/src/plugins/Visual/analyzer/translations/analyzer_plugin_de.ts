@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>Analyzer</name>
     <message>
@@ -13,7 +14,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Analyzer Plugin Settings</source>
-        <translation>Analyzer Plugin Einstellungen</translation>
+        <translation>Einstellungen des Analyzer-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>
@@ -131,17 +132,17 @@
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="30"/>
         <source>Analyzer Plugin</source>
-        <translation>Analyzer Plugin</translation>
+        <translation>Analyzer-Plugin</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="49"/>
         <source>About Analyzer Visual Plugin</source>
-        <translation>Über Analyzer Visual Plugin</translation>
+        <translation>Über Analyzer-Visualisierungs-Plugin</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="50"/>
         <source>Qmmp Analyzer Visual Plugin</source>
-        <translation>Qmmp Analyzer Visual Plugin</translation>
+        <translation>Qmmp Analyzer-Visualisierungs-Plugin</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="51"/>

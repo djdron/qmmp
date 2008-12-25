@@ -1,1 +1,1 @@
-Diese Programm ist ein Audio-Player, der die Qt-Bibliotheken verwendet.
+Dieses Programm ist ein Audio-Player, der mithilfe der Qt-Bibliotheken geschrieben wurde.

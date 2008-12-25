@@ -13,6 +13,7 @@ Tschechisch:
 
 Deutsch:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.de>
 
 Russisch:
     Ilya Kotov <for_kotov@hotmail.ru>

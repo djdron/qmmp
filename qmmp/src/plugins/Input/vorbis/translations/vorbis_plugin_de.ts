@@ -6,22 +6,22 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="31"/>
         <source>Ogg Vorbis Plugin</source>
-        <translation>Ogg Vorbis Plugin</translation>
+        <translation>Ogg-Vorbis-Plugin</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="33"/>
         <source>Ogg Vorbis Files</source>
-        <translation>Ogg Vorbis Dateien</translation>
+        <translation>Ogg-Vorbis-Dateien</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="90"/>
         <source>About Ogg Vorbis Audio Plugin</source>
-        <translation>Über Ogg Vorbis Audio Plugin</translation>
+        <translation>Über Ogg-Vorbis-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="91"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
-        <translation>Qmmp Ogg Vorbis Audio Plugin</translation>
+        <translation>Qmmp Ogg-Vorbis-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="92"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="94"/>
         <source>Source code based on mq3 progect</source>
-        <translation>Quellcode basiert auf mq3-Projekt</translation>
+        <translation>Quellcode basiert auf dem mq3-Projekt</translation>
     </message>
 </context>
 <context>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Ogg Vorbis Info</source>
-        <translation>Ogg Vorbis Info</translation>
+        <translation>Ogg-Vorbis-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="83"/>
@@ -154,12 +154,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="214"/>
         <source>Nominal:</source>
-        <translation>Soll:</translation>
+        <translation>Nominell:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="246"/>
         <source>Ogg Vorbis Tag</source>
-        <translation>Ogg-Vorbis tag</translation>
+        <translation>Ogg-Vorbis-Tag</translation>
     </message>
 </context>
 </TS>

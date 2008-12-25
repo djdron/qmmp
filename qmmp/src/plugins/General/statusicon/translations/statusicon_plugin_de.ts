@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Status Icon Plugin Settings</source>
-        <translation>Status Icon Plugin Einstellungen</translation>
+        <translation>Einstellungen des Statussymbol-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
@@ -15,7 +16,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="26"/>
         <source>Show tooltip</source>
-        <translation>QuickInfo anzeigen</translation>
+        <translation>Kurzinfo anzeigen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
@@ -38,12 +39,12 @@
     <message>
         <location filename="../statusicon.cpp" line="45"/>
         <source>Play</source>
-        <translation>Wiedergeben</translation>
+        <translation>Wiedergabe</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="46"/>
         <source>Pause</source>
-        <translation>Anhalten</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="47"/>
@@ -76,12 +77,12 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="30"/>
         <source>Status Icon Plugin</source>
-        <translation>Status Icon Plugin</translation>
+        <translation>Statussymbol-Plugin</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="50"/>
         <source>Qmmp Status Icon Plugin</source>
-        <translation>Qmmp Status Icon Plugin</translation>
+        <translation>Qmmp Statussymbol-Plugin</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
@@ -91,7 +92,7 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="49"/>
         <source>About Status Icon Plugin</source>
-        <translation>Über Status Icon Plugin</translation>
+        <translation>Über Statussymbol-Plugin</translation>
     </message>
 </context>
 </TS>

@@ -6,17 +6,17 @@
     <message>
         <location filename="../notifierfactory.cpp" line="30"/>
         <source>Notifier Plugin</source>
-        <translation>Notifier Plugin</translation>
+        <translation type="unfinished">Benachrichtigungs-Plugin</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="49"/>
         <source>About Notifier Plugin</source>
-        <translation>Über Notifier Plugin</translation>
+        <translation type="unfinished">Über Benachrichtigungs-Plugin</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="50"/>
         <source>Qmmp Notifier Plugin</source>
-        <translation>Qmmp Notifier Plugin</translation>
+        <translation type="unfinished">Qmmp Benachrichtigungs-Plugin</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="51"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Psi Notification</source>
-        <translation>Psi Benachrichtung</translation>
+        <translation>Psi-Benachrichtigungen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Desktop Notification</source>
-        <translation>Desktop Benachrichtigung</translation>
+        <translation>Desktop-Benachrichtigungen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Notifier Plugin Settings</source>
-        <translation>Notifier Plugin Einstellungen</translation>
+        <translation>Einstellungen des Benachrichtigungs-Plugins</translation>
     </message>
 </context>
 </TS>

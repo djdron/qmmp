@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="40"/>
         <source>ModPlug Plugin</source>
-        <translation>ModPlug Plugin</translation>
+        <translation>ModPlug-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="44"/>
         <source>ModPlug Files</source>
-        <translation>ModPlug Dateien</translation>
+        <translation>ModPlug-Dateien</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="108"/>
         <source>About ModPlug Audio Plugin</source>
-        <translation>Über ModPlug Audio Plugin</translation>
+        <translation>Über ModPlug-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="109"/>
         <source>Qmmp ModPlug Audio Plugin</source>
-        <translation>Qmmp ModPlug Audio Plugin</translation>
+        <translation>Qmmp ModPlug-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="110"/>
@@ -30,12 +31,12 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="111"/>
         <source>Based on the Modplug Plugin for Xmms</source>
-        <translation>Basiert auf dem Modplug Plugin für Xmms</translation>
+        <translation>Basiert auf dem Modplug-Plugin für Xmms</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="112"/>
         <source>Modplug Plugin developers:</source>
-        <translation>Modplug Plugin Entwickler:</translation>
+        <translation>Modplug-Plugin-Entwickler:</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="113"/>
@@ -108,7 +109,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="13"/>
         <source>MOD Info</source>
-        <translation>MOD Info</translation>
+        <translation>MOD-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="30"/>
@@ -154,7 +155,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ModPlug Plugin Settings</source>
-        <translation>ModPlug Plugin Einstellungen</translation>
+        <translation>Einstellungen des ModPlug-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="23"/>
@@ -219,7 +220,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="136"/>
         <source>Sampling Rate</source>
-        <translation>Sampling Rate</translation>
+        <translation>Abtastrate</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="142"/>

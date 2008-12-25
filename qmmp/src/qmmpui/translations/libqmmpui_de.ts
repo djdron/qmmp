@@ -6,7 +6,7 @@
     <message>
         <location filename="../qtfiledialog.cpp" line="36"/>
         <source>Qt File Dialog</source>
-        <translation>Qt Datei Dialog</translation>
+        <translation>Qt Datei-Dialog</translation>
     </message>
 </context>
 </TS>

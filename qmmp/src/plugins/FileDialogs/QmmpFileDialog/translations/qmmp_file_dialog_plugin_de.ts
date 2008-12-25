@@ -26,7 +26,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="69"/>
         <source>Detailed view</source>
-        <translation>Details</translation>
+        <translation>Detailansicht</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="94"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../qmmpfiledialog.cpp" line="107"/>
         <source>Qmmp File Dialog</source>
-        <translation>Qmmp Datei Dialog</translation>
+        <translation>Qmmp Datei-Dialog</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="106"/>
@@ -78,7 +78,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="111"/>
         <source>Some code is copied from the Qt library</source>
-        <translation>Einige Kodezeilen wurden von der Qt-Bibliothek übernommen</translation>
+        <translation>Einige Codezeilen wurden von der Qt-Bibliothek übernommen</translation>
     </message>
 </context>
 <context>
@@ -96,7 +96,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="240"/>
         <source>Directories</source>
-        <translation>Verzeichnis</translation>
+        <translation>Verzeichnisse</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="384"/>
@@ -106,7 +106,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="385"/>
         <source>Do you want to replace it?</source>
-        <translation>Möchten Sie das Verzeichnis ersetzen?</translation>
+        <translation>Möchten Sie es ersetzen?</translation>
     </message>
 </context>
 </TS>
