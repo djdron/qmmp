@@ -40,15 +40,5 @@
         <source>Password:</source>
         <translation>密码：</translation>
     </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>OK</source>
-        <translation>确定</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="65"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
 </context>
 </TS>

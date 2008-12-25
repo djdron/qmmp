@@ -26,21 +26,23 @@
 #include <QTime>
 #include <QSettings>
 #include <QDir>
+#include <qmmp/soundcore.h>
 
 #include "scrobbler.h"
 
 #define SCROBBLER_HS_URL "post.audioscrobbler.com"
 #define PROTOCOL_VER "1.2"
 #define CLIENT_ID "qmm"
-#define CLIENT_VER "0.1"
+#define CLIENT_VER "0.2"
+
 
 Scrobbler::Scrobbler(QObject *parent)
         : General(parent)
 {
     m_http = new QHttp(this);
     m_http->setHost(SCROBBLER_HS_URL, 80);
-    m_state = General::Stopped;
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_state = Qmmp::Stopped;
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     m_login = settings.value("login").toString();
     m_passw = settings.value("password").toString();
@@ -64,10 +66,16 @@ Scrobbler::Scrobbler(QObject *parent)
     connect(m_http, SIGNAL(requestFinished (int, bool)), SLOT(processResponse(int, bool)));
     connect(m_http, SIGNAL(readyRead (const QHttpResponseHeader&)),
             SLOT(readResponse(const QHttpResponseHeader&)));
+
+    m_core = SoundCore::instance();
+    connect (m_core, SIGNAL(metaDataChanged()), SLOT(updateMetaData()));
+    connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
+
     m_time = new QTime();
     m_submitedSongs = 0;
     m_handshakeid = 0;
     m_submitid = 0;
+    m_notificationid = 0;
     if (!m_disabled)
         handshake();
 }
@@ -78,14 +86,14 @@ Scrobbler::~Scrobbler()
     delete m_time;
 }
 
-void Scrobbler::setState(const uint &state)
+void Scrobbler::setState(Qmmp::State state)
 {
     m_state = state;
     if (m_disabled)
         return;
     switch ((uint) state)
     {
-    case General::Playing:
+    case Qmmp::Playing:
     {
         m_start_ts = time(NULL);
         m_time->restart();
@@ -93,13 +101,13 @@ void Scrobbler::setState(const uint &state)
             handshake();
         break;
     }
-    case General::Paused:
+    case Qmmp::Paused:
     {
         break;
     }
-    case General::Stopped:
+    case Qmmp::Stopped:
     {
-        if (!m_song.isEmpty()
+        if (!m_song.metaData().isEmpty()
                 && ((m_time->elapsed ()/1000 > 240)
                     || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
                 && (m_time->elapsed ()/1000 > 60))
@@ -124,20 +132,24 @@ void Scrobbler::setState(const uint &state)
     }
 }
 
-void Scrobbler::setSongInfo(const SongInfo &song)
+void Scrobbler::updateMetaData()
 {
-    if (m_state == General::Playing
-            && !song.title().isEmpty()     //skip empty tags
-            && !song.artist().isEmpty()
-            && !song.isStream()             //skip stream
-            && !song.artist().contains("&") //skip tags with special symbols
-            && !song.title().contains("&")
-            && !song.album().contains("&")
-            && !song.artist().contains("=")
-            && !song.title().contains("=")
-            && !song.album().contains("="))
+    QMap <Qmmp::MetaData, QString> metadata = m_core->metaData();
+    if (m_state == Qmmp::Playing
+            && !metadata.value(Qmmp::TITLE).isEmpty()      //skip empty tags
+            && !metadata.value(Qmmp::ARTIST).isEmpty()
+            && m_core->length()                            //skip stream
+            && !metadata.value(Qmmp::ARTIST).contains("&") //skip tags with special symbols
+            && !metadata.value(Qmmp::TITLE).contains("&")
+            && !metadata.value(Qmmp::ALBUM).contains("&")
+            && !metadata.value(Qmmp::ARTIST).contains("=")
+            && !metadata.value(Qmmp::TITLE).contains("=")
+            && !metadata.value(Qmmp::ALBUM).contains("="))
     {
-        m_song = song;
+        m_song = SongInfo(metadata, m_core->length());
+
+        if (isReady() && m_notificationid == 0)
+            sendNotification(m_song);
     }
 }
 
@@ -173,7 +185,9 @@ void Scrobbler::processResponse(int id, bool error)
             qDebug("Scrobbler: Now-Playing URL: %s",qPrintable(strlist[2]));
             qDebug("Scrobbler: Submission URL: %s",qPrintable(strlist[3]));
             m_submitUrl = strlist[3];
+            m_nowPlayingUrl = strlist[2];
             m_session = strlist[1];
+            updateMetaData(); //send now-playing notification for already playing song
             return;
         }
     }
@@ -193,6 +207,17 @@ void Scrobbler::processResponse(int id, bool error)
             m_timeStamps.removeFirst ();
             m_songCache.removeFirst ();
         }
+    }
+    else if (id == m_notificationid)
+    {
+        m_notificationid = 0;
+        if (!strlist[0].contains("OK"))
+        {
+            qWarning("Scrobbler: notification error: %s", qPrintable(strlist[0]));
+            //TODO badsession handling
+            return;
+        }
+        qDebug("Scrobbler: Now-Playing notification done");
     }
     m_array.clear();
 }
@@ -242,31 +267,122 @@ void Scrobbler::submit()
     {
         SongInfo info = m_songCache[i];
         body += QString("&a[%9]=%1&t[%9]=%2&i[%9]=%3&o[%9]=%4&r[%9]=%5&l[%9]=%6&b[%9]=%7&n[%9]=%8&m[%9]=")
-                .arg(info.artist())
-                .arg(info.title())
+                .arg(info.metaData(Qmmp::ARTIST))
+                .arg(info.metaData(Qmmp::TITLE))
                 .arg( m_timeStamps[i])
                 .arg("P")
                 .arg("")
                 .arg(info.length())
-                .arg(info.album())
-                .arg(info.track())
+                .arg(info.metaData(Qmmp::ALBUM))
+                .arg(info.metaData(Qmmp::TRACK))
                 .arg(i);
     }
     QUrl url(m_submitUrl);
     m_http->setHost(url.host(), url.port());
     QHttpRequestHeader header("POST", url.path());
     header.setContentType("application/x-www-form-urlencoded");
-    header.setValue("User-Agent","iScrobbler/1.5.1qmmp-plugins/0.2");
+    header.setValue("User-Agent","iScrobbler/1.5.1qmmp-plugins/" + Qmmp::strVersion());
     header.setValue("Host",url.host());
     header.setValue("Accept", "*/*");
     header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=").size());
     qDebug("Scrobbler: submit request header");
-    qDebug(qPrintable(header.toString()));
+    qDebug(qPrintable(header.toString().trimmed()));
     qDebug("*****************************");
     m_submitid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&="));
+}
+
+void Scrobbler::sendNotification(const SongInfo &info)
+{
+    qDebug("Scrobbler::sendNotification()");
+    QString body = QString("s=%1").arg(m_session);
+    body += QString("&a=%1&t=%2&b=%3&l=%4&n=%5&m=")
+            .arg(info.metaData(Qmmp::ARTIST))
+            .arg(info.metaData(Qmmp::TITLE))
+            .arg(info.metaData(Qmmp::ALBUM))
+            .arg(info.length())
+            .arg(info.metaData(Qmmp::TRACK));
+    QUrl url(m_nowPlayingUrl);
+    m_http->setHost(url.host(), url.port());
+    QHttpRequestHeader header("POST", url.path());
+    header.setContentType("application/x-www-form-urlencoded");
+    header.setValue("User-Agent","iScrobbler/1.5.1qmmp-plugins/" + Qmmp::strVersion());
+    header.setValue("Host",url.host());
+    header.setValue("Accept", "*/*");
+    header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=").size());
+    qDebug("Scrobbler: Now-Playing notification request header");
+    qDebug(qPrintable(header.toString().trimmed()));
+    qDebug("*****************************");
+    m_notificationid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&="));
 }
 
 bool Scrobbler::isReady()
 {
     return !m_submitUrl.isEmpty() && !m_session.isEmpty();
+}
+
+SongInfo::SongInfo()
+{
+    m_length = 0;
+}
+
+SongInfo::SongInfo(const QMap <Qmmp::MetaData, QString> metadata, qint64 length)
+{
+    m_metadata = metadata;
+    m_length = length;
+}
+
+SongInfo::SongInfo(const SongInfo &other)
+{
+    m_metadata = other.metaData();
+    m_length  = other.length();
+}
+
+SongInfo::~SongInfo()
+{}
+
+void SongInfo::operator=(const SongInfo &info)
+{
+    m_metadata = info.metaData();
+    m_length = info.length();
+}
+
+bool SongInfo::operator==(const SongInfo &info)
+{
+    return (m_metadata == info.metaData()) && (m_length == info.length());
+}
+
+bool SongInfo::operator!=(const SongInfo &info)
+{
+    return !operator==(info);
+}
+
+void SongInfo::setMetaData(const QMap <Qmmp::MetaData, QString> metadata)
+{
+    m_metadata = metadata;
+}
+
+void SongInfo::setLength(qint64 l)
+{
+    m_length = l;
+}
+
+const QMap <Qmmp::MetaData, QString> SongInfo::metaData() const
+{
+    return m_metadata;
+}
+
+const QString SongInfo::metaData(Qmmp::MetaData key) const
+{
+    return m_metadata.value(key);
+}
+
+qint64 SongInfo::length () const
+{
+    return m_length;
+}
+
+void SongInfo::clear()
+{
+    m_metadata.clear();
+    m_length = 0;
 }

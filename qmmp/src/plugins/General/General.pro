@@ -1,5 +1,5 @@
 SUBDIRS += statusicon \
-           #scrobbler \
+           scrobbler \
            mpris \
            notifier
 TEMPLATE = subdirs

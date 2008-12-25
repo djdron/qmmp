@@ -26,16 +26,6 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>OK</source>
-        <translation>OK</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="65"/>
-        <source>Cancel</source>
-        <translation>Zrušit</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Scrobbler Plugin Settings</source>
         <translation>Nastavení modulu Scrobbler</translation>

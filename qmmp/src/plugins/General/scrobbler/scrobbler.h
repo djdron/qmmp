@@ -21,44 +21,73 @@
 #define SCROBBLER_H
 
 #include <QHttpResponseHeader>
+#include <QMap>
 #include <qmmpui/general.h>
+#include <qmmp/qmmp.h>
 #include <time.h>
 
 class QHttp;
 class QTime;
-
-
+class SoundCore;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
+
+class SongInfo
+{
+public:
+    SongInfo();
+    SongInfo(const QMap <Qmmp::MetaData, QString> metadata, qint64 length);
+    SongInfo(const SongInfo &other);
+
+    ~SongInfo();
+
+    void operator=(const SongInfo &info);
+    bool operator==(const SongInfo &info);
+    bool operator!=(const SongInfo &info);
+
+    void setMetaData(const QMap <Qmmp::MetaData, QString> metadata);
+    void setLength(qint64 l);
+    const QMap <Qmmp::MetaData, QString> metaData() const;
+    const QString metaData(Qmmp::MetaData) const;
+    qint64 length () const;
+    void clear();
+
+private:
+    QMap <Qmmp::MetaData, QString> m_metadata;
+    qint64 m_length;
+
+};
 
 class Scrobbler : public General
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     Scrobbler(QObject *parent = 0);
 
     ~Scrobbler();
 
-    void setState(const uint& state);
-    void setSongInfo(const SongInfo &song);
-
 private slots:
+    void setState(Qmmp::State state);
+    void updateMetaData();
     void processResponse(int, bool);
     void readResponse(const QHttpResponseHeader&);
 
 private:
     void handshake();
     void submit();
+    void sendNotification(const SongInfo &info);
     bool isReady();
     time_t m_start_ts;
     SongInfo m_song;
     QHttp *m_http;
-    uint m_state;
+    Qmmp::State m_state;
+    SoundCore *m_core;
     QString m_login;
     QString m_passw;
     QString m_submitUrl;
+    QString m_nowPlayingUrl;
     QString m_session;
     QList <time_t> m_timeStamps;
     QList <SongInfo> m_songCache;
@@ -66,6 +95,7 @@ private:
     int m_submitedSongs;
     int m_handshakeid;
     int m_submitid;
+    int m_notificationid;
     QByteArray m_array;
     bool m_disabled;
 

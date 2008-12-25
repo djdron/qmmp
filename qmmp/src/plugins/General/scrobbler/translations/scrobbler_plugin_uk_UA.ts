@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
 <context>
     <name>ScrobblerFactory</name>
     <message>
@@ -40,16 +39,6 @@
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Password:</source>
         <translation>Пароль:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="58"/>
-        <source>OK</source>
-        <translation>Застосувати</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="65"/>
-        <source>Cancel</source>
-        <translation>Відміна</translation>
     </message>
 </context>
 </TS>
