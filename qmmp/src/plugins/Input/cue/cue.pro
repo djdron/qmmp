@@ -23,13 +23,13 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib
 
-#TRANSLATIONS = translations/cue_plugin_ru.ts 
-#               translations/cue_plugin_uk_UA.ts 
-#               translations/cue_plugin_zh_CN.ts 
-#               translations/cue_plugin_zh_TW.ts 
-#               translations/cue_plugin_cs.ts 
-#               translations/cue_plugin_de.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/cue_plugin_ru.ts \
+               translations/cue_plugin_uk_UA.ts \
+               translations/cue_plugin_zh_CN.ts \
+               translations/cue_plugin_zh_TW.ts \
+               translations/cue_plugin_cs.ts \
+               translations/cue_plugin_de.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
