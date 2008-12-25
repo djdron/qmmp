@@ -24,7 +24,7 @@ plugin \
 link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp
+LIBS += -lqmmp -lmad
 PKGCONFIG += taglib mad
 TRANSLATIONS = translations/mad_plugin_ru.ts \
                translations/mad_plugin_uk_UA.ts \
