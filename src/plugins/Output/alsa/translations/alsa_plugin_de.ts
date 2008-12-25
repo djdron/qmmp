@@ -6,17 +6,17 @@
     <message>
         <location filename="../outputalsafactory.cpp" line="31"/>
         <source>ALSA Plugin</source>
-        <translation>ALSA Plugin</translation>
+        <translation>ALSA-Plugin</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="50"/>
         <source>About ALSA Output Plugin</source>
-        <translation>Über ALSA Output Plugin</translation>
+        <translation>Über ALSA-Ausgabe-Plugin</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="51"/>
         <source>Qmmp ALSA Output Plugin</source>
-        <translation>Qmmp ALSA Output Plugin</translation>
+        <translation>Qmmp ALSA-Ausgabe-Plugin</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="52"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ALSA Plugin Settings</source>
-        <translation>ALSA Plugin Einstellungen</translation>
+        <translation>Einstellungen des ALSA-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="232"/>
         <source>Use mmap access</source>
-        <translation>Mmap Unterstützung aktivieren</translation>
+        <translation>Mmap-Unterstützung aktivieren</translation>
     </message>
 </context>
 </TS>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="140"/>
         <source>About FFmpeg Audio Plugin</source>
-        <translation>Über FFmpeg Audio Plugin</translation>
+        <translation>Über FFmpeg-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="142"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
-        <translation>Qmmp FFmpeg Audio Plugin</translation>
+        <translation>Qmmp FFmpeg-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="152"/>
@@ -20,12 +21,12 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="79"/>
         <source>FFmpeg Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="81"/>
         <source>FFmpeg Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg-Formate</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="144"/>
@@ -133,12 +134,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Audio Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="170"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadaten</translation>
     </message>
 </context>
 <context>
@@ -146,47 +147,47 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Formate</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Windows Media Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows Media Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Monkey&apos;s Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Monkey&apos;s Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="65"/>
         <source>True Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>True Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
         <source>ALAC (Apple Lossless Audio Codec)</source>
-        <translation type="unfinished"></translation>
+        <translation>ALAC (Apple Lossless Audio Codec)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>ADTS AAC</source>
-        <translation type="unfinished"></translation>
+        <translation>ADTS AAC</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>MPEG-4 AAC</source>
-        <translation type="unfinished"></translation>
+        <translation>MPEG-4 AAC</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>RealAudio 1.0/2.0</source>
-        <translation type="unfinished"></translation>
+        <translation>RealAudio 1.0/2.0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen des FFmpeg-Plugins</translation>
     </message>
 </context>
 </TS>

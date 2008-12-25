@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>OutputOSSFactory</name>
     <message>
         <location filename="../outputossfactory.cpp" line="30"/>
         <source>OSS Plugin</source>
-        <translation>OSS Plugin</translation>
+        <translation>OSS-Plugin</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="56"/>
         <source>About OSS Output Plugin</source>
-        <translation>Über OSS Output Plugin</translation>
+        <translation>Über OSS-Ausgabe-Plugin</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
-        <translation>Qmmp OSS Output Plugin</translation>
+        <translation>Qmmp OSS-Ausgabe-Plugin</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
         <source>Writen by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
-        <translation>Autor: Jurij Žuravljov &lt;slalkerg@gmail.com&gt;</translation>
+        <translation>Autor: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
@@ -33,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>OSS Plugin Settings</source>
-        <translation>OSS Plugin Einstellungen</translation>
+        <translation>Einstellungen des OSS-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

@@ -10,14 +10,15 @@ Chinese Simplified:
 
 Czech:
     Karel Volný <kvolny@redhat.com>
-    
-French: 
+
+French:
     Stanislas Zeller <uncensored.assault@gmail.com>
 
 German:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
-    
-Polish: 
+    Panagiotis Papadopoulos <Pano_90@gmx.de>
+
+Polish:
     Grzegorz Gibas <amigib@gmail.com>
 
 Russian:

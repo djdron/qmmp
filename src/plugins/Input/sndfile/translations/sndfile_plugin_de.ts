@@ -6,22 +6,22 @@
     <message>
         <location filename="../decodersndfilefactory.cpp" line="65"/>
         <source>Sndfile Plugin</source>
-        <translation>Sndfile Plugin</translation>
+        <translation>Sndfile-Plugin</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="67"/>
         <source>PCM Files</source>
-        <translation>PCM Dateien</translation>
+        <translation>PCM-Dateien</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="127"/>
         <source>About Sndfile Audio Plugin</source>
-        <translation>Über Sndfile Audio Plugin</translation>
+        <translation>Über Sndfile-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="128"/>
         <source>Qmmp Sndfile Audio Plugin</source>
-        <translation>Qmmp Sndfile Audio Plugin</translation>
+        <translation>Qmmp Sndfile-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="129"/>

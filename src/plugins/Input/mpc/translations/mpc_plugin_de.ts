@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMPCFactory</name>
     <message>
         <location filename="../decodermpcfactory.cpp" line="26"/>
         <source>Musepack Plugin</source>
-        <translation>Musepack plugin</translation>
+        <translation>Musepack-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="28"/>
         <source>Musepack Files</source>
-        <translation>Musepack Dateien</translation>
+        <translation>Musepack-Dateien</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="82"/>
         <source>About Musepack Audio Plugin</source>
-        <translation>Über Musepack Audio Plugin</translation>
+        <translation>Über Musepack-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="83"/>
         <source>Qmmp Musepack Audio Plugin</source>
-        <translation>Qmmp Musepack Audio Plugin</translation>
+        <translation>Qmmp Musepack-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="84"/>
@@ -128,7 +129,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Musepack Info</source>
-        <translation>Musepack Info</translation>
+        <translation>Musepack-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="146"/>
@@ -138,12 +139,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
         <source>Stream version:</source>
-        <translation>Stream version:</translation>
+        <translation>Stream-Version:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="199"/>
         <source>APE Tag</source>
-        <translation>APE Tag</translation>
+        <translation>APE-Tag</translation>
     </message>
 </context>
 </TS>

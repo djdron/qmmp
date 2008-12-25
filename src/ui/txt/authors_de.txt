@@ -1,11 +1,11 @@
 Entwickler:
 
     Ilya Kotov <forkotov02@hotmail.ru> (Idee und Programmierung)
-    Vladimir Kuznetsov <vovanec@gmail.com> (Look&Feel und viele Verbesserungen)
+    Vladimir Kuznetsov <vovanec@gmail.com> (Look & Feel und viele Verbesserungen)
 
-Plugin Entwickler:
+Plugin-Entwickler:
 
-    Yuriy Zhuravlev <stalkerg@gmail.com> (jack & oss plugin)
+    Yuriy Zhuravlev <stalkerg@gmail.com> (JACK- und OSS-Plugin)
 
 Artwork:
 

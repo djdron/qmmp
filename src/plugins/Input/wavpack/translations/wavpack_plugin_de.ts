@@ -6,7 +6,7 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="28"/>
         <source>WavPack Plugin</source>
-        <translation>WavPack Plugin</translation>
+        <translation>WavPack-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="30"/>
@@ -16,17 +16,17 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="89"/>
         <source>About WavPack Audio Plugin</source>
-        <translation>Über WavPack Audio Plugin</translation>
+        <translation>Über WavPack-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="90"/>
         <source>Qmmp WavPack Audio Plugin</source>
-        <translation>Qmmp WavPack Audio Plugin</translation>
+        <translation>Qmmp WavPack-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="92"/>
         <source>WavPack library version:</source>
-        <translation>WavPack Version:</translation>
+        <translation>WavPack-Bibliotheksversion:</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="93"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="30"/>
         <source>WavPack Files</source>
-        <translation>WavPack Dateien</translation>
+        <translation>WavPack-Dateien</translation>
     </message>
 </context>
 <context>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="73"/>
         <source>kbps</source>
-        <translation>KBps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="75"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>WavPack Info</source>
-        <translation>WavPack Info</translation>
+        <translation>WavPack-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="48"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="198"/>
         <source>APE Tag</source>
-        <translation>APE Tag</translation>
+        <translation>APE-Tag</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="225"/>

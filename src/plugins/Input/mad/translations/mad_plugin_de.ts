@@ -6,27 +6,27 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="67"/>
         <source>MPEG Plugin</source>
-        <translation>MPEG plugin</translation>
+        <translation>MPEG-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="69"/>
         <source>MPEG Files</source>
-        <translation>MPEG Dateien</translation>
+        <translation>MPEG-Dateien</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="183"/>
         <source>About MPEG Audio Plugin</source>
-        <translation>Über MPEG Audio Plugin</translation>
+        <translation>Über MPEG-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="184"/>
         <source>Qmmp MPEG Audio Plugin</source>
-        <translation>Qmmp MPEG Audio Plugin</translation>
+        <translation>Qmmp MPEG-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="185"/>
         <source>Compiled against libmad version:</source>
-        <translation>Kompiliert gegen libmad version:</translation>
+        <translation>Kompiliert gegen libmad-Version:</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="189"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="191"/>
         <source>Source code based on mq3 progect</source>
-        <translation>Quellcode basiert auf mq3 Projekt</translation>
+        <translation>Quellcode basiert auf dem mq3-Projekt</translation>
     </message>
 </context>
 <context>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="90"/>
         <source>MPEG Info</source>
-        <translation>MPEG Info</translation>
+        <translation>MPEG-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="150"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="96"/>
         <source>MPEG level:</source>
-        <translation>MPEG level:</translation>
+        <translation>MPEG-Level:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="167"/>
@@ -119,7 +119,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="223"/>
         <source>ID3v1 Tag</source>
-        <translation>ID3v1 tag</translation>
+        <translation>ID3v1-Tag</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="461"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="151"/>
         <source>ID3v2 Tag</source>
-        <translation>ID3v2 tag</translation>
+        <translation>ID3v2-Tag</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="27"/>
@@ -179,7 +179,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="155"/>
         <source>APE Tag</source>
-        <translation>APE Tag</translation>
+        <translation>APE-Tag</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="54"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>MPEG Plugin Settings</source>
-        <translation>MPEG Plugin Settings</translation>
+        <translation>Einstellungen des MPEG-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="141"/>

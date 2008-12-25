@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -40,7 +41,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="80"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation>Qt-basierender Multimedia Player (Qmmp)</translation>
+        <translation>Qt-basierter Multimedia-Player (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
@@ -55,27 +56,27 @@
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>Input plugins:</source>
-        <translation>Dekoder:</translation>
+        <translation>Dekoder-Plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="92"/>
         <source>Output plugins:</source>
-        <translation>Ausgabe:</translation>
+        <translation>Ausgabe-Plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="101"/>
         <source>Visual plugins:</source>
-        <translation>Visualisierung:</translation>
+        <translation>Visualisierungs-Plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="110"/>
         <source>Effect plugins:</source>
-        <translation>Effekte:</translation>
+        <translation>Effekt-Plugins:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="119"/>
         <source>General plugins:</source>
-        <translation>Allgemein:</translation>
+        <translation>Sonstige Plugins:</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="115"/>
@@ -93,7 +94,7 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation>URL eingeben und hinzufügen</translation>
+        <translation>Hinzuzufügende URL eingeben</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="111"/>
@@ -116,12 +117,12 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip forward in playlist</source>
-        <translation>Überspringe Titel in Playlist (vorwärts)</translation>
+        <translation>Nächsten Titel in Wiedergabeliste abspielen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Skip backwards in playlist</source>
-        <translation>Überspringe Titel in Playlist (rückwärts)</translation>
+        <translation>Vorherigen Titel in Wiedergabeliste abspielen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
@@ -136,7 +137,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Pause if playing, play otherwise</source>
-        <translation>Titel anhalten, ansonsten abspielen</translation>
+        <translation>Wiedergabe anhalten oder fortsetzen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
@@ -146,27 +147,27 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation>Wiedergabe-Lautstärke einstellen (Beispiel: qmmp --volume20, qmmp --volume100)</translation>
+        <translation>Lautstärke einstellen (Beispiel: qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Display Jump to File dialog</source>
-        <translation>&quot;Springe zu Titel&quot; Dialog anzeigen</translation>
+        <translation>„Springe zu Titel“-Dialog anzeigen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Show/hide application</source>
-        <translation>Anwendung anzeigen/ verstecken</translation>
+        <translation>Anwendung ein-/ausblenden</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Display Add File dialog</source>
-        <translation>&quot;Datei hinzufügen&quot; Dialog anzeigen</translation>
+        <translation>„Datei hinzufügen“-Dialog anzeigen</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="74"/>
         <source>Display Add Directory dialog</source>
-        <translation>&quot;Verzeichnis hinzufügen&quot; Dialog anzeigen</translation>
+        <translation>„Verzeichnis hinzufügen“-Dialog anzeigen</translation>
     </message>
 </context>
 <context>
@@ -234,7 +235,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="13"/>
         <source>Qmmp Settings</source>
-        <translation>Qmmp Einstellungen</translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="82"/>
@@ -259,12 +260,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="161"/>
         <source>Skins</source>
-        <translation>Symbolthema</translation>
+        <translation>Designs</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="221"/>
         <source>Fonts</source>
-        <translation>Schriftart</translation>
+        <translation>Schriftarten</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="233"/>
@@ -274,7 +275,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="269"/>
         <source>Playlist:</source>
-        <translation>Playlist:</translation>
+        <translation>Wiedergabeliste:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="285"/>
@@ -379,12 +380,12 @@
     <message>
         <location filename="../configdialog.cpp" line="174"/>
         <source>Archived skin</source>
-        <translation>Archivierter Skin</translation>
+        <translation>Archiviertes Design</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="194"/>
         <source>Unarchived skin</source>
-        <translation>Nicht archivierter Skin</translation>
+        <translation>Nicht archiviertes Design</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="518"/>
@@ -399,7 +400,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="549"/>
         <source>General</source>
-        <translation>Allgemein</translation>
+        <translation>Sonstige</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="582"/>
@@ -419,7 +420,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="604"/>
         <source>Hide on close</source>
-        <translation>Beim Schließen minimieren</translation>
+        <translation type="unfinished">Beim Schließen ausblenden</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="611"/>
@@ -444,27 +445,27 @@
     <message>
         <location filename="../configdialog.cpp" line="634"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Design-Dateien auswählen</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="635"/>
         <source>Skin files</source>
-        <translation type="unfinished"></translation>
+        <translation>Design-Dateien</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="192"/>
         <source>Add...</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinzufügen...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="205"/>
         <source>Refresh</source>
-        <translation type="unfinished">Aktualisieren</translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="375"/>
         <source>Show protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokoll anzeigen</translation>
     </message>
 </context>
 <context>
@@ -497,7 +498,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="268"/>
         <source>&amp;Clear</source>
-        <translation>L&amp;eeren</translation>
+        <translation>&amp;Zurücksetzen</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="297"/>
@@ -701,7 +702,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="289"/>
         <source>Select one or more files to open</source>
-        <translation>Eine oder mehrere Dateien zu Öffnen auswählen</translation>
+        <translation>Dateien hinzufügen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="413"/>
@@ -771,7 +772,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="441"/>
         <source>Ctrl+P</source>
-        <translation>Ctrl+P</translation>
+        <translation>Strg+P</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="443"/>
@@ -786,7 +787,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="447"/>
         <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
+        <translation>Strg+Q</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="513"/>
@@ -826,32 +827,32 @@
     <message>
         <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Tite&amp;l wiederholen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zufallswiedergabe</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="426"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation>R</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="427"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+R</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="428"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation>S</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="420"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>W&amp;iedergabeliste wiederholen</translation>
     </message>
 </context>
 <context>
@@ -939,7 +940,7 @@
     <message>
         <location filename="../playlist.cpp" line="237"/>
         <source>Randomize List</source>
-        <translation>Zufällige Wiedergabe</translation>
+        <translation>Wiedergabeliste mischen</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="238"/>
@@ -954,7 +955,7 @@
     <message>
         <location filename="../playlist.cpp" line="254"/>
         <source>&amp;Select None</source>
-        <translation>&amp;Keine auswählen</translation>
+        <translation>&amp;Auswahl aufheben</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="261"/>
@@ -964,7 +965,7 @@
     <message>
         <location filename="../playlist.cpp" line="262"/>
         <source>Ctrl+A</source>
-        <translation>Ctrl+A</translation>
+        <translation>Strg+A</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="269"/>
@@ -974,7 +975,7 @@
     <message>
         <location filename="../playlist.cpp" line="270"/>
         <source>Shift+N</source>
-        <translation>Shift+N</translation>
+        <translation>Umschalt+N</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="276"/>
@@ -994,7 +995,7 @@
     <message>
         <location filename="../playlist.cpp" line="282"/>
         <source>Shift+S</source>
-        <translation>Shift+S</translation>
+        <translation>Umschalt+S</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="146"/>
@@ -1027,7 +1028,7 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="13"/>
         <source>Preset Editor</source>
-        <translation>Voreinstellungen editieren</translation>
+        <translation>Bearbeiten der Voreinstellungen</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="28"/>
@@ -1065,32 +1066,32 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="148"/>
         <source>Print version number and exit</source>
-        <translation>Gibt Versionsinformationen aus und beendet</translation>
+        <translation>Gibt die Versionsnummer aus</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="149"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation>Ideen, Patches, Bugreports an &lt;forkotov02@hotmail.ru&gt; senden</translation>
+        <translation>Ideen, Patches und Bugreports an &lt;forkotov02@hotmail.ru&gt; senden</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="147"/>
         <source>Display this text and exit</source>
-        <translation>Diesen Text anzeigen und beenden</translation>
+        <translation>Zeigt diesen Hilfetext an</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="154"/>
         <source>QMMP version:</source>
-        <translation>QMMP Version:</translation>
+        <translation>Qmmp-Version:</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel an Wiedergabeliste anhängen</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="155"/>
         <source>Qt version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt-Version:</translation>
     </message>
 </context>
 <context>
@@ -1098,12 +1099,12 @@
     <message>
         <location filename="../textscroller.cpp" line="176"/>
         <source>Buffering:</source>
-        <translation>Buffering:</translation>
+        <translation>Pufferung:</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="62"/>
         <source>Autoscroll Songname</source>
-        <translation>Automatischer Bildlauf (Titel)</translation>
+        <translation>Automatischer Bildlauf</translation>
     </message>
 </context>
 <context>

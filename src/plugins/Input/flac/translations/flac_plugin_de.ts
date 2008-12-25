@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFLACFactory</name>
     <message>
         <location filename="../decoderflacfactory.cpp" line="26"/>
         <source>FLAC Plugin</source>
-        <translation>FLAC plugin</translation>
+        <translation>FLAC-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="28"/>
         <source>FLAC Files</source>
-        <translation>FLAC Dateien</translation>
+        <translation>FLAC-Dateien</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="82"/>
         <source>About FLAC Audio Plugin</source>
-        <translation>Über FLAC Audio Plugin</translation>
+        <translation>Über FLAC-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="83"/>
         <source>Qmmp FLAC Audio Plugin</source>
-        <translation>Qmmp FLAC Audio Plugin</translation>
+        <translation>Qmmp FLAC-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderflacfactory.cpp" line="84"/>
@@ -138,7 +139,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>FLAC Info</source>
-        <translation>FLAC Info</translation>
+        <translation>FLAC-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
@@ -148,7 +149,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="199"/>
         <source>FLAC Tag</source>
-        <translation>FLAC tag</translation>
+        <translation>FLAC-Tag</translation>
     </message>
 </context>
 </TS>
