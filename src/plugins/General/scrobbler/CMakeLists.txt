@@ -20,17 +20,13 @@ ADD_DEFINITIONS(-DQT_NO_DEBUG)
 ADD_DEFINITIONS(-DQT_SHARED)
 ADD_DEFINITIONS(-DQT_THREAD)
 
-
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-
-SET(QT_INCLUDES
-  ${QT_INCLUDES}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
-)
 
 # libqmmpui
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
+#libqmmp
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 SET(libscrobbler_SRCS
     settingsdialog.cpp
@@ -65,5 +61,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(scrobbler SHARED ${libscrobbler_SRCS} ${libscrobbler_MOC_SRCS} ${libscrobbler_UIS_H}
   ${libscrobbler_RCC_SRCS})
 add_dependencies(scrobbler qmmpui)
-target_link_libraries(scrobbler ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(scrobbler ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS scrobbler DESTINATION ${LIB_DIR}/qmmp/General)

@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <QDir>
+#include <qmmp/qmmp.h>
 
 #include "settingsdialog.h"
 
@@ -27,24 +27,23 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
     ui.setupUi(this);
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile() + "/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     ui.userLineEdit->setText(settings.value("login").toString());
     ui.passwordLineEdit->setText(settings.value("password").toString());
     settings.endGroup();
-    connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
 }
 
 
 SettingsDialog::~SettingsDialog()
 {}
 
-void SettingsDialog::writeSettings()
+void SettingsDialog::accept()
 {
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile() + "/.qmmp/qmmprc", QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     settings.setValue("login",ui.userLineEdit->text());
     settings.setValue("password",ui.passwordLineEdit->text());
     settings.endGroup();
-    accept();
+    QDialog::accept();
 }

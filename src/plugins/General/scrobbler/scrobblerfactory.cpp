@@ -34,7 +34,7 @@ const GeneralProperties ScrobblerFactory::properties() const
     return properties;
 }
 
-General *ScrobblerFactory::create(Control*, QObject *parent)
+General *ScrobblerFactory::create(QObject *parent)
 {
     return new Scrobbler(parent);
 }

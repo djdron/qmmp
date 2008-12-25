@@ -40,7 +40,7 @@ QT += network
 
 INCLUDEPATH += ../../../
 
-LIBS += -lqmmpui
+LIBS += -lqmmpui -lqmmp
 
 FORMS += settingsdialog.ui
 
