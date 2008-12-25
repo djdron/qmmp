@@ -6,13 +6,13 @@
     <x>0</x>
     <y>0</y>
     <width>545</width>
-    <height>343</height>
+    <height>333</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Details</string>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QGridLayout" name="gridLayout_2" >
    <item row="0" column="0" >
     <widget class="QLabel" name="label_28" >
      <property name="text" >
@@ -41,17 +41,71 @@
      <property name="title" >
       <string>Audio Info</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
-       <number>9</number>
-      </property>
-      <property name="spacing" >
-       <number>6</number>
-      </property>
-      <item row="4" column="1" >
-       <widget class="QLabel" name="bitrateLabel" >
+     <layout class="QGridLayout" name="gridLayout" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Length:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="lengthLabel" >
         <property name="text" >
          <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_3" >
+        <property name="text" >
+         <string>Sample rate:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="sampleRateLabel" >
+        <property name="text" >
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_5" >
+        <property name="text" >
+         <string>File size:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLabel" name="fileSizeLabel" >
+        <property name="text" >
+         <string>-</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label_10" >
+        <property name="layoutDirection" >
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text" >
+         <string>Channels:</string>
+        </property>
+        <property name="textFormat" >
+         <enum>Qt::PlainText</enum>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -75,82 +129,22 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QLabel" name="label_5" >
-        <property name="text" >
-         <string>File size:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="label_10" >
-        <property name="layoutDirection" >
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="text" >
-         <string>Channels:</string>
-        </property>
-        <property name="textFormat" >
-         <enum>Qt::PlainText</enum>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1" >
-       <widget class="QLabel" name="sampleRateLabel" >
-        <property name="text" >
-         <string>-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QLabel" name="label_3" >
-        <property name="text" >
-         <string>Sample rate:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QLabel" name="lengthLabel" >
-        <property name="text" >
-         <string>-</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label" >
-        <property name="text" >
-         <string>Length:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" >
-       <widget class="QLabel" name="fileSizeLabel" >
+      <item row="4" column="1" >
+       <widget class="QLabel" name="bitrateLabel" >
         <property name="text" >
          <string>-</string>
         </property>
        </widget>
       </item>
       <item row="5" column="0" >
-       <spacer>
+       <spacer name="verticalSpacer" >
         <property name="orientation" >
          <enum>Qt::Vertical</enum>
         </property>
         <property name="sizeHint" stdset="0" >
          <size>
-          <width>74</width>
-          <height>151</height>
+          <width>20</width>
+          <height>133</height>
          </size>
         </property>
        </spacer>
@@ -169,7 +163,7 @@
      <property name="title" >
       <string>Metadata</string>
      </property>
-     <layout class="QGridLayout" name="gridLayout" >
+     <layout class="QGridLayout" name="gridLayout_3" >
       <item row="0" column="0" >
        <widget class="QLabel" name="label_21" >
         <property name="text" >
@@ -265,13 +259,13 @@
     </widget>
    </item>
    <item row="2" column="2" >
-    <spacer>
+    <spacer name="horizontalSpacer" >
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0" >
       <size>
-       <width>111</width>
+       <width>365</width>
        <height>20</height>
       </size>
      </property>

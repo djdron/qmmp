@@ -41,7 +41,7 @@ SET(libcue_MOC_HDRS
   cueparser.h
 )
 
-#SET(libcue_RCCS translations/translations.qrc)
+SET(libcue_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libcue_RCC_SRCS ${libcue_RCCS})
 
