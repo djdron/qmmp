@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ru">
+<!DOCTYPE TS><TS version="1.1" language="ru_RU">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -469,12 +470,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="641"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>Прозрачность</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="647"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Главное окно</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="718"/>
@@ -484,7 +485,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="677"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Эквалайзер</translation>
     </message>
 </context>
 <context>
