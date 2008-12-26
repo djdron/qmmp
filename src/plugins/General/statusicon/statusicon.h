@@ -46,14 +46,12 @@ private slots:
     void showMetaData();
     void setState(Qmmp::State state);
     void trayActivated(QSystemTrayIcon::ActivationReason);
-    void enable();
 
 private:
     QSystemTrayIcon *m_tray;
     bool m_showMessage;
     bool m_showTooltip;
     bool m_hideToTray;
-    bool m_enabled;
     int m_messageDelay;
     SoundCore *m_core;
     MediaPlayer *m_player;
