@@ -152,7 +152,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
 MainWindow::~MainWindow()
 {
-    stop();
+    //stop();
 }
 
 void MainWindow::play()
@@ -343,6 +343,9 @@ void MainWindow::readSettings()
 
         m_update = TRUE;
     }
+    setWindowOpacity(settings.value("MainWindow/opacity", 1.0).toDouble());
+    m_equalizer->setWindowOpacity(settings.value("Equalizer/opacity", 1.0).toDouble());
+    m_playlist->setWindowOpacity(settings.value("PlayList/opacity", 1.0).toDouble());
     m_hideOnClose = settings.value("MainWindow/hide_on_close", FALSE).toBool();
 }
 
