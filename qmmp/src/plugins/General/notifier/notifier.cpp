@@ -44,6 +44,8 @@ Notifier::Notifier(QObject *parent)
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect (m_core, SIGNAL(volumeChanged(int, int)), SLOT(showVolume(int, int)));
+    if (m_core->state() == Qmmp::Playing) //test message
+        showMetaData();
 }
 
 Notifier::~Notifier()
@@ -54,9 +56,6 @@ void Notifier::setState(Qmmp::State state)
     switch ((uint) state)
     {
     case Qmmp::Playing:
-    {
-        break;
-    }
     case Qmmp::Paused:
     {
         break;

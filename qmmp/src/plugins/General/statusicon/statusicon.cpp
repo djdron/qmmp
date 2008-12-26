@@ -58,10 +58,11 @@ StatusIcon::StatusIcon(QObject *parent)
     m_showTooltip = settings.value("show_tooltip",FALSE).toBool();
     m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
     settings.endGroup();
-    m_enabled = FALSE;
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
-    QTimer::singleShot(200, this, SLOT(enable()));
+    setState(m_core->state()); //update state
+    if (m_core->state() == Qmmp::Playing) //show test message
+        QTimer::singleShot(1500, this, SLOT(showMetaData()));
 }
 
 
@@ -92,8 +93,6 @@ void StatusIcon::setState(Qmmp::State state)
 
 void StatusIcon::showMetaData()
 {
-    if (!m_enabled)
-        return;
     QString message = m_core->metaData(Qmmp::ARTIST) + " - " + m_core->metaData(Qmmp::TITLE);
     if (message.startsWith (" - ") || message.endsWith (" - "))
         message.remove(" - ");
@@ -118,9 +117,4 @@ void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
         else
             m_core->pause();
     }
-}
-
-void StatusIcon::enable()
-{
-    m_enabled = TRUE;
 }
