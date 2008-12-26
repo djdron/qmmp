@@ -24,6 +24,14 @@
     </message>
 </context>
 <context>
+    <name>PopupWidget</name>
+    <message>
+        <location filename="../popupwidget.cpp" line="115"/>
+        <source>Volume:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
@@ -46,29 +54,34 @@
         <translation>Notifikace na pracovní ploše</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>Enable desktop notification</source>
-        <translation>Povolit notifikaci na pracovní ploše</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Message delay, ms:</source>
-        <translation>Prodleva zprávy, ms:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="74"/>
+        <location filename="../settingsdialog.ui" line="248"/>
         <source>Position</source>
         <translation>Umístění</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="248"/>
-        <source>OK</source>
-        <translation>OK</translation>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>Song change notification</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="255"/>
-        <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Volume change notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Delay, ms:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="81"/>
+        <source>Transparency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="104"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

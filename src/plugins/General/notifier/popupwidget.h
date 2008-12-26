@@ -23,6 +23,9 @@
 #include <QWidget>
 #include <QFrame>
 
+class QTimer;
+class QLabel;
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -47,7 +50,18 @@ public:
         CENTER
     };
 
-virtual void mousePressEvent (QMouseEvent *);
+    void showMetaData();
+    void showVolume(int);
+
+protected:
+    virtual void mousePressEvent (QMouseEvent *);
+
+private:
+    void updatePosition();
+    QTimer *m_timer;
+    QLabel *m_label1;
+    QLabel *m_label2;
+    uint m_pos;
 
 };
 

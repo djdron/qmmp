@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_CN">
-<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -25,12 +24,15 @@
     </message>
 </context>
 <context>
-    <name>SettingsDialog</name>
+    <name>PopupWidget</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
-        <source>Status Icon Plugin Settings</source>
-        <translation type="obsolete">状态图标插件设置</translation>
+        <location filename="../popupwidget.cpp" line="115"/>
+        <source>Volume:</source>
+        <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Psi Notification</source>
@@ -47,34 +49,39 @@
         <translation>桌面通知</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
-        <source>Enable desktop notification</source>
-        <translation>启用桌面通知</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="48"/>
-        <source>Message delay, ms:</source>
-        <translation>消息延时(ms)：</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="74"/>
+        <location filename="../settingsdialog.ui" line="248"/>
         <source>Position</source>
         <translation>位置</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="248"/>
-        <source>OK</source>
-        <translation>确定</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="255"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Notifier Plugin Settings</source>
         <translation>通知插件设置</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <source>Song change notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Volume change notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Delay, ms:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="81"/>
+        <source>Transparency</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="104"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
