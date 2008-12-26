@@ -42,12 +42,14 @@ public:
 
 private slots:
     void showMetaData();
+    void showVolume(int, int);
     void setState(Qmmp::State state);
 
 private:
     QPointer<PopupWidget> m_popupWidget;
-    bool m_desktop;
+    bool m_desktop, m_showVolume;
     bool m_psi;
+    int m_l, m_r;
     SoundCore *m_core;
 
 };

@@ -26,6 +26,7 @@
 #include <QPalette>
 #include <QSettings>
 #include <QDir>
+#include <QApplication>
 #include <qmmp/soundcore.h>
 
 #include "popupwidget.h"
@@ -36,58 +37,35 @@ PopupWidget::PopupWidget(QWidget *parent)
     setWindowFlags(Qt::X11BypassWindowManagerHint |
                    Qt::WindowStaysOnTopHint | Qt::Window);
     setFrameStyle(QFrame::Box | QFrame::Plain);
-    SoundCore *core = SoundCore::instance();
-    QString title = core->metaData(Qmmp::TITLE);
-    if (title.isEmpty())
-        title = core->metaData(Qmmp::URL).section('/',-1);
-    if (core->length() > 0)
-    {
-        title.append(" ");
-        title.append(QString("(%1:%2)").arg(core->length()/60).arg(core->length()%60, 2, 10, QChar('0')));
-    }
 
     QHBoxLayout *hlayout = new QHBoxLayout(this);
     QLabel *pixlabel = new QLabel(this);
     pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
     pixlabel->setFixedSize(32,32);
     hlayout->addWidget(pixlabel);
-
+    //layout
     QVBoxLayout *vlayout = new QVBoxLayout();
-    QLabel *label1 = new QLabel("<b>"+title+"</b>", this);
-    vlayout->addWidget(label1);
-
-    QString info = core->metaData(Qmmp::ARTIST);
-    if (!info.isEmpty() && !core->metaData(Qmmp::ALBUM).isEmpty())
-        info.append(" - " + core->metaData(Qmmp::ALBUM));
-    if (!info.isEmpty())
-    {
-        QLabel *label2 = new QLabel(info, this);
-        vlayout->addWidget(label2);
-    }
-
     hlayout->addLayout (vlayout);
     setLayout(hlayout);
-    resize(sizeHint());
+    //first line
+    m_label1 = new QLabel(this);
+    vlayout->addWidget(m_label1);
+    //second line
+    m_label2 = new QLabel(this);
+    vlayout->addWidget(m_label2);
+    //resize(sizeHint()); //update size hint
+    //settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
     int delay = settings.value("message_delay", 2000).toInt();
-    uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
+    m_pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
+    setWindowOpacity(settings.value("opacity", 1.0).toDouble());
     settings.endGroup();
-    //calculate widget position
-    int x = 5, y = 5;
-    QSize desktopSize = QApplication::desktop()->size();
-    if (pos == LEFT || pos == RIGHT || pos == CENTER)
-        y = desktopSize.height()/2 - height()/2;
-    else if (pos == BOTTOMLEFT || pos == BOTTOM || pos == BOTTOMRIGHT)
-        y = desktopSize.height() - height() - 5;
-    if (pos == TOP || pos == BOTTOM || pos == CENTER)
-        x = desktopSize.width()/2 - width()/2;
-    else if (pos == TOPRIGHT || pos == RIGHT || pos == BOTTOMRIGHT)
-        x = desktopSize.width() - width() - 5;
-
-    move (x,y);
-    QTimer::singleShot(delay, this, SLOT(deleteLater()));
-    show();
+    //timer
+    m_timer = new QTimer(this);
+    m_timer->setInterval(delay);
+    m_timer->setSingleShot (TRUE);
+    connect(m_timer, SIGNAL(timeout ()), SLOT(deleteLater()));
 }
 
 PopupWidget::~PopupWidget()
@@ -98,3 +76,66 @@ void PopupWidget::mousePressEvent (QMouseEvent *)
     deleteLater();
 }
 
+void PopupWidget::showMetaData()
+{
+    m_timer->stop();
+    SoundCore *core = SoundCore::instance();
+    QString title = core->metaData(Qmmp::TITLE);
+    if (title.isEmpty())
+        title = core->metaData(Qmmp::URL).section('/',-1);
+    if (core->length() > 0)
+    {
+        title.append(" ");
+        title.append(QString("(%1:%2)").arg(core->length()/60).arg(core->length()%60, 2, 10, QChar('0')));
+    }
+    m_label1->setText("<b>" + title + "</b>");
+
+    QString info = core->metaData(Qmmp::ARTIST);
+    if (!info.isEmpty() && !core->metaData(Qmmp::ALBUM).isEmpty())
+        info.append(" - " + core->metaData(Qmmp::ALBUM));
+    if (!info.isEmpty())
+    {
+        m_label2->setText(info);
+        m_label2->show();
+    }
+    else
+        m_label2->hide();
+    qApp->processEvents();
+    resize(sizeHint());
+    qApp->processEvents();
+    updatePosition();
+    qApp->processEvents();
+    show();
+    m_timer->start();
+}
+
+void PopupWidget::showVolume(int v)
+{
+    m_timer->stop();
+    m_label1->setText("<b>" + tr("Volume:") + QString (" %1\%").arg(v)+ + "</b>");
+
+    m_label2->hide();
+    qApp->processEvents();
+    resize(sizeHint());
+    qApp->processEvents();
+    updatePosition();
+    qApp->processEvents();
+    show();
+    m_timer->start();
+}
+
+void PopupWidget::updatePosition()
+{
+    //calculate widget position
+    int x = 5, y = 5;
+    QSize desktopSize = QApplication::desktop()->size();
+    if (m_pos == LEFT || m_pos == RIGHT || m_pos == CENTER)
+        y = desktopSize.height()/2 - height()/2;
+    else if (m_pos == BOTTOMLEFT || m_pos == BOTTOM || m_pos == BOTTOMRIGHT)
+        y = desktopSize.height() - height() - 5;
+    if (m_pos == TOP || m_pos == BOTTOM || m_pos == CENTER)
+        x = desktopSize.width()/2 - width()/2;
+    else if (m_pos == TOPRIGHT || m_pos == RIGHT || m_pos == BOTTOMRIGHT)
+        x = desktopSize.width() - width() - 5;
+    move (x,y);
+}

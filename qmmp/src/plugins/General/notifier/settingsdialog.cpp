@@ -46,7 +46,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
     m_buttons.value(pos)->setChecked(TRUE);
     ui.psiCheckBox->setChecked(settings.value("psi_notification", FALSE).toBool());
-    ui.desktopCheckBox->setChecked(settings.value("desktop_notification", TRUE).toBool());
+    ui.songCheckBox->setChecked(settings.value("song_notification", TRUE).toBool());
+    ui.volumeCheckBox->setChecked(settings.value("volume_notification", TRUE).toBool());
+    ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
     settings.endGroup();
 }
 
@@ -67,7 +69,9 @@ void SettingsDialog::accept()
     }
     settings.setValue("message_pos", pos);
     settings.setValue("psi_notification", ui.psiCheckBox->isChecked());
-    settings.setValue("desktop_notification", ui.desktopCheckBox->isChecked());
+    settings.setValue("song_notification", ui.songCheckBox->isChecked());
+    settings.setValue("volume_notification", ui.volumeCheckBox->isChecked());
+    settings.setValue ("opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
     settings.endGroup();
     QDialog::accept();
 }
