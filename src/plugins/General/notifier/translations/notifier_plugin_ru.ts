@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="248"/>
         <source>Position</source>
-        <translation>Позциция</translation>
+        <translation>Положение</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
