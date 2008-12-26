@@ -127,6 +127,10 @@ void ConfigDialog::readSettings()
     //volume
     ui.softVolumeCheckBox->setChecked(SoundCore::instance()->softwareVolume());
     connect(ui.softVolumeCheckBox, SIGNAL(clicked(bool)), SoundCore::instance(), SLOT(setSoftwareVolume(bool)));
+    //transparency
+    ui.mwTransparencySlider->setValue(100 - settings.value("MainWindow/opacity", 1.0).toDouble()*100);
+    ui.eqTransparencySlider->setValue(100 - settings.value("Equalizer/opacity", 1.0).toDouble()*100);
+    ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -554,6 +558,9 @@ void ConfigDialog::saveSettings()
     settings.setValue ("Proxy/passw",ui.proxyPasswLineEdit->text());
     settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
     settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
+    settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
+    settings.setValue ("Equalizer/opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
+    settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
 }
 
 void ConfigDialog::updateButtons()

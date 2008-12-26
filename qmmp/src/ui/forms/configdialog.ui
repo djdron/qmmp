@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>601</width>
-    <height>426</height>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -563,19 +563,7 @@
         </layout>
        </widget>
        <widget class="QWidget" name="page_2" >
-        <layout class="QVBoxLayout" >
-         <property name="leftMargin" >
-          <number>9</number>
-         </property>
-         <property name="topMargin" >
-          <number>5</number>
-         </property>
-         <property name="rightMargin" >
-          <number>0</number>
-         </property>
-         <property name="bottomMargin" >
-          <number>0</number>
-         </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2" >
          <item>
           <widget class="QGroupBox" name="groupBox_6" >
            <property name="title" >
@@ -648,17 +636,91 @@
           </widget>
          </item>
          <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Vertical</enum>
+          <widget class="QGroupBox" name="groupBox_7" >
+           <property name="title" >
+            <string>Transparency</string>
            </property>
-           <property name="sizeHint" stdset="0" >
-            <size>
-             <width>387</width>
-             <height>91</height>
-            </size>
-           </property>
-          </spacer>
+           <layout class="QGridLayout" name="gridLayout_4" >
+            <item row="0" column="0" >
+             <widget class="QLabel" name="label_3" >
+              <property name="text" >
+               <string>Main window</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" >
+             <widget class="QSlider" name="mwTransparencySlider" >
+              <property name="maximum" >
+               <number>90</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2" >
+             <widget class="QLabel" name="mwTransparencyLabel" >
+              <property name="minimumSize" >
+               <size>
+                <width>25</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" >
+             <widget class="QLabel" name="label_9" >
+              <property name="text" >
+               <string>Equalizer</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" >
+             <widget class="QSlider" name="eqTransparencySlider" >
+              <property name="maximum" >
+               <number>90</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2" >
+             <widget class="QLabel" name="eqTransparencyLabel" >
+              <property name="text" >
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" >
+             <widget class="QLabel" name="label_10" >
+              <property name="text" >
+               <string>Playlist</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" >
+             <widget class="QSlider" name="plTransparencySlider" >
+              <property name="maximum" >
+               <number>90</number>
+              </property>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2" >
+             <widget class="QLabel" name="plTransparencyLabel" >
+              <property name="text" >
+               <string>0</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -831,7 +893,7 @@
    <hints>
     <hint type="sourcelabel" >
      <x>590</x>
-     <y>364</y>
+     <y>402</y>
     </hint>
     <hint type="destinationlabel" >
      <x>316</x>
@@ -898,8 +960,56 @@
      <y>138</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>334</x>
-     <y>204</y>
+     <x>580</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mwTransparencySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>mwTransparencyLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>489</x>
+     <y>285</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>553</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>eqTransparencySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>eqTransparencyLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>519</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>549</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plTransparencySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>plTransparencyLabel</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>511</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>549</x>
+     <y>330</y>
     </hint>
    </hints>
   </connection>
