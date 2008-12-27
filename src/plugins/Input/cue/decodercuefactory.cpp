@@ -25,7 +25,7 @@
 #include "decodercuefactory.h"
 
 
-// DecoderOggFactory
+// DecoderCUEFactory
 
 bool DecoderCUEFactory::supports(const QString &source) const
 {
