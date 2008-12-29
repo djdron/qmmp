@@ -40,8 +40,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
 
 
 MediaPlayer::~MediaPlayer()
-{
-}
+{}
 
 MediaPlayer* MediaPlayer::instance()
 {
