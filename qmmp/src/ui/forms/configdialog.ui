@@ -537,6 +537,9 @@
             <layout class="QVBoxLayout" >
              <item>
               <widget class="QTableWidget" name="effectPluginTable" >
+               <property name="selectionMode" >
+                <enum>QAbstractItemView::SingleSelection</enum>
+               </property>
                <property name="selectionBehavior" >
                 <enum>QAbstractItemView::SelectRows</enum>
                </property>
@@ -551,6 +554,9 @@
             <layout class="QVBoxLayout" >
              <item>
               <widget class="QTableWidget" name="generalPluginTable" >
+               <property name="selectionMode" >
+                <enum>QAbstractItemView::SingleSelection</enum>
+               </property>
                <property name="selectionBehavior" >
                 <enum>QAbstractItemView::SelectRows</enum>
                </property>
