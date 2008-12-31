@@ -37,3 +37,10 @@ contains(CONFIG, AAC_PLUGIN){
   message(* AAC plugin enabled *)
   message(**********************)
 }
+
+contains(CONFIG, MPLAYER_PLUGIN){
+  SUBDIRS += mplayer
+  message(**************************)
+  message(* Mplayer plugin enabled *)
+  message(**************************)
+}
