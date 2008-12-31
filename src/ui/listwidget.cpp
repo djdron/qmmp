@@ -336,7 +336,8 @@ void ListWidget::cut()
 
         QString extra_string = getExtraString(m_first + i);
         int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
-        while (m_metrics->width(m_titles.at(i)) > (this->width() - 54 - extra_string_space))
+        while (m_metrics->width(m_titles.at(i)) > (this->width() -  m_metrics->width(m_times.at(i)) -
+                22 - extra_string_space))
         {
             cut = TRUE;
             name = m_titles.at(i);
