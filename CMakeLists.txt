@@ -88,6 +88,7 @@ PRINT_SUMMARY ("WavPack support ..................." USE_WAVPACK WAVPACK_FOUND)
 PRINT_SUMMARY ("WMA support ......................." USE_FFMPEG FFMPEG_FOUND)
 PRINT_SUMMARY ("AAC support ......................." USE_AAC FAAD_FOUND)
 PRINT_SUMMARY ("CUE sheet support ................." USE_CUE 1)
+PRINT_SUMMARY ("Mplayer support...................." USE_MPLAYER 1)
 
 MESSAGE("")
 MESSAGE("Output Plugins:")
