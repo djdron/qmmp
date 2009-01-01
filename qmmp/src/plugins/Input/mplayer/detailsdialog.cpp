@@ -31,6 +31,7 @@ DetailsDialog::DetailsDialog(const QString &path, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     ui.pathLineEdit->setText(path);
     ui.sizeLabel->setText(QString("%1 ").arg(QFileInfo(path).size ()/1024)+tr("KB"));
+    setWindowTitle(QFileInfo(path).fileName());
     //regular expressions
     QRegExp rx_id_length("^ID_LENGTH=([0-9,.]+)*");
     QRegExp rx_id_demuxer("^ID_DEMUXER=(.*)");
