@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -469,22 +470,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="641"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparenz</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="647"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Hauptfenster</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="677"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Equalizer</translation>
     </message>
 </context>
 <context>
