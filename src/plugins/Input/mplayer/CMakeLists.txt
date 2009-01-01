@@ -30,16 +30,18 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 SET(libmplayer_SRCS
   decoder_mplayer.cpp
   decodermplayerfactory.cpp
+  detailsdialog.cpp
 #  settingsdialog.cpp
 )
 
 SET(libmplayer_MOC_HDRS
   decodermplayerfactory.h
   decoder_mplayer.h
+  detailsdialog.h
 #  settingsdialog.h
 )
 
-#SET(libmplayer_RCCS translations/translations.qrc)
+SET(libmplayer_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libmplayer_RCC_SRCS ${libmplayer_RCCS})
 
@@ -48,9 +50,10 @@ QT4_WRAP_CPP(libmplayer_MOC_SRCS ${libmplayer_MOC_HDRS})
 # user interface
 
 
-#SET(libmplayer_UIS
+SET(libmplayer_UIS
 #    settingsdialog.ui
-#)
+     detailsdialog.ui
+)
 
 QT4_WRAP_UI(libmplayer_UIS_H ${libmplayer_UIS})
 # Don't forget to include output directory, otherwise
