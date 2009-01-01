@@ -19,6 +19,7 @@
  ***************************************************************************/
 #include <QtGui>
 
+#include "detailsdialog.h"
 #include "decoder_mplayer.h"
 #include "decodermplayerfactory.h"
 
@@ -59,7 +60,7 @@ const DecoderProperties DecoderMplayerFactory::properties() const
 }
 
 Decoder *DecoderMplayerFactory::create(QObject *parent, QIODevice *input,
-                                      Output *output, const QString &url)
+                                       Output *output, const QString &url)
 {
     Q_UNUSED(input);
     Q_UNUSED(output);
@@ -74,21 +75,24 @@ QList<FileInfo *> DecoderMplayerFactory::createPlayList(const QString &fileName,
     return info;
 }
 
-QObject* DecoderMplayerFactory::showDetails(QWidget *, const QString &)
+QObject* DecoderMplayerFactory::showDetails(QWidget *parent, const QString &path)
 {
-    return 0;
+    DetailsDialog *d = new DetailsDialog(path, parent);
+    d->show();
+    return d;
 }
 
 void DecoderMplayerFactory::showSettings(QWidget *)
 {
-     /*SettingsDialog *s = new SettingsDialog(parent);
-     s->show();*/
+    /*SettingsDialog *s = new SettingsDialog(parent);
+    s->show();*/
 }
 
 void DecoderMplayerFactory::showAbout(QWidget *parent)
 {
-    QMessageBox::about (parent, tr("About Mplayer Audio Plugin"),
-                        tr("Qmmp Mplayer Audio Plugin")+"\n"+
+    QMessageBox::about (parent, tr("About MPlayer Plugin"),
+                        tr("Qmmp MPlayer Plugin")+"\n"+
+                        tr("This plugin uses MPlayer as backend")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
@@ -96,7 +100,7 @@ QTranslator *DecoderMplayerFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
     QString locale = QLocale::system().name();
-    translator->load(QString(":/phonon_plugin_") + locale);
+    translator->load(QString(":/mplayer_plugin_") + locale);
     return translator;
 }
 
