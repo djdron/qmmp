@@ -99,7 +99,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="180"/>
         <source>FPS:</source>
-        <translation>Кадрівв секунду:</translation>
+        <translation>Кадрів в секунду:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="249"/>
