@@ -67,6 +67,7 @@ const DecoderProperties DecoderSndFileFactory::properties() const
     properties.filter = "*.wav *.au *.snd *.aif *.aiff *.8svx *.sph *.sf *.voc";
     properties.description = tr("PCM Files");
     //properties.contentType = "";
+    properties.shortName = "sndfile";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
     properties.noInput = TRUE;

@@ -50,6 +50,7 @@ const DecoderProperties DecoderWavPackFactory::properties() const
     properties.filter = "*.wv";
     properties.description = tr("WavPack Files");
     //properties.contentType = ;
+    properties.shortName = "wavpack";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
     properties.noInput = TRUE;

@@ -47,6 +47,7 @@ const DecoderProperties DecoderMPCFactory::properties() const
     properties.filter = "*.mpc";
     properties.description = tr("Musepack Files");
     //properties.contentType = ;
+    properties.shortName = "mpc";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
     return properties;
