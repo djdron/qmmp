@@ -27,7 +27,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
     ui.setupUi(this);
-    QSettings settings(Qmmp::configFile() + "/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     ui.userLineEdit->setText(settings.value("login").toString());
     ui.passwordLineEdit->setText(settings.value("password").toString());
@@ -40,7 +40,7 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::accept()
 {
-    QSettings settings(Qmmp::configFile() + "/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     settings.setValue("login",ui.userLineEdit->text());
     settings.setValue("password",ui.passwordLineEdit->text());
