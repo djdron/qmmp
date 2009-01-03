@@ -437,7 +437,8 @@ QStringList Decoder::filters()
     checkFactories();
     QStringList filters;
     foreach(DecoderFactory *fact, *m_factories)
-    filters << fact->properties().description + " (" + fact->properties().filter + ")";
+    if (isEnabled(fact) && !fact->properties().filter.isEmpty())
+        filters << fact->properties().description + " (" + fact->properties().filter + ")";
     return filters;
 }
 
