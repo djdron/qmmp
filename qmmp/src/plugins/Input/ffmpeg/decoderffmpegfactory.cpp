@@ -80,6 +80,7 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     properties.filter = filters.join(" ");
     properties.description = tr("FFmpeg Formats");
     //properties.contentType = "";
+    properties.shortName = "ffmpeg";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
     properties.noInput = TRUE;

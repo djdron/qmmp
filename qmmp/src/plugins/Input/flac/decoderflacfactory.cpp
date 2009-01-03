@@ -52,6 +52,7 @@ const DecoderProperties DecoderFLACFactory::properties() const
     properties.filter = "*.flac";
     properties.description = tr("FLAC Files");
     //properties.contentType = ;
+    properties.shortName = "flac";
     properties.protocols = "flac";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;

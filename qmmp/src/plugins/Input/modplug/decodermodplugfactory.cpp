@@ -63,6 +63,7 @@ const DecoderProperties DecoderModPlugFactory::properties() const
                         "*.xmr *.xmgz *.itz *.itr *.itgz *.dmf *.umx *.it *.669 *.xm *.mtm *.psm *.ft2";
     properties.description = tr("ModPlug Files");
     //properties.contentType = ;
+    properties.shortName = "modplug";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
     properties.noInput = TRUE;
