@@ -44,3 +44,10 @@ contains(CONFIG, MPLAYER_PLUGIN){
   message(* Mplayer plugin enabled *)
   message(**************************)
 }
+
+contains(CONFIG, CDAUDIO_PLUGIN){
+  SUBDIRS += cdaudio
+  message(***************************)
+  message(* CD Audio plugin enabled *)
+  message(***************************)
+}

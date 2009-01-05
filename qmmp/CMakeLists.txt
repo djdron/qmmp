@@ -89,6 +89,7 @@ PRINT_SUMMARY ("WMA support ......................." USE_FFMPEG FFMPEG_FOUND)
 PRINT_SUMMARY ("AAC support ......................." USE_AAC FAAD_FOUND)
 PRINT_SUMMARY ("CUE sheet support ................." USE_CUE 1)
 PRINT_SUMMARY ("Mplayer support...................." USE_MPLAYER 1)
+PRINT_SUMMARY ("CD Audio support..................." USE_CDA CDIO_FOUND)
 
 MESSAGE("")
 MESSAGE("Output Plugins:")

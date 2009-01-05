@@ -414,15 +414,17 @@ bool Decoder::isEnabled(DecoderFactory* factory)
 QList <FileInfo *> Decoder::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo *> list;
+    DecoderFactory *fact = 0;
+
     if (QFile::exists(fileName)) //is it file?
-    {
-        DecoderFactory *fact = Decoder::findByPath(fileName);
-        if (fact)
-            list << fact->createPlayList(fileName, useMetaData);
-    }
-    else
-        //TODO do this according supported protocols
-        list << new FileInfo(fileName); //create empty FileInfo for stream
+        fact = Decoder::findByPath(fileName);
+    else if (fileName.contains("://")) //looks like url
+        fact = Decoder::findByURL(QUrl(fileName));
+
+    if (fact)
+        list << fact->createPlayList(fileName, useMetaData);
+    else if (QUrl(fileName).scheme() == "http")
+        list << new FileInfo(fileName); //create empty FileInfo for stream TODO transports support
     //append path if it is empty
     foreach(FileInfo *info, list)
     {
