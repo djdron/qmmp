@@ -12,6 +12,7 @@ SET(USE_MODPLUG TRUE CACHE BOOL "enable/disable modplug plugin")
 SET(USE_AAC     TRUE CACHE BOOL "enable/disable aac plugin")
 SET(USE_CUE     TRUE CACHE BOOL "enable/disable cue plugin")
 SET(USE_MPLAYER TRUE CACHE BOOL "enable/disable mplayer support")
+SET(USE_CDA     TRUE CACHE BOOL "enable/disable cd audio support")
 
 pkg_check_modules(TAGLIB taglib)
 
@@ -58,3 +59,7 @@ ENDIF(USE_CUE AND TAGLIB_FOUND)
 IF(USE_MPLAYER)
 add_subdirectory(mplayer)
 ENDIF(USE_MPLAYER)
+
+IF(USE_CDA)
+add_subdirectory(cdaudio)
+ENDIF(USE_CDA)

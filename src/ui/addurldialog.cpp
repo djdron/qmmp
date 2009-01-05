@@ -86,21 +86,25 @@ void AddUrlDialog::accept( )
     if (!urlComboBox->currentText().isEmpty())
     {
         QString s = urlComboBox->currentText();
-        if (!s.startsWith("http://"))
+        if (!s.startsWith("http://") && !s.contains("://"))
             s.prepend("http://");
         m_history.removeAll(s);
         m_history.prepend(s);
-        PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
-        if (prs)
-        {
-            //download playlist;
-            QUrl url(s);
-            m_http->setHost(url.host(), url.port(80));
-            m_http->get(url.path());
-            addButton->setEnabled(FALSE);
-            return;
+
+        if (s.startsWith("http://"))
+        {   //try to download playlist
+            PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
+            if (prs)
+            {
+                //download playlist;
+                QUrl url(s);
+                m_http->setHost(url.host(), url.port(80));
+                m_http->get(url.path());
+                addButton->setEnabled(FALSE);
+                return;
+            }
         }
-        m_model->addFile(s);
+        m_model->addFile(s); //TODO fix interface freezes
     }
     QDialog::accept();
 }
