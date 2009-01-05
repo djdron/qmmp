@@ -552,7 +552,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
     {
         QString str = slist[0];
 
-        if (str.startsWith("--enqueue")) //check for "--enqueue" modifier
+        if (str.startsWith("--enqueue") || str.startsWith("-e")) //check for "--enqueue" modifier
         {
             if (slist.count() < 2)
                 return FALSE;
@@ -566,7 +566,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
             }
             m_playListModel->addFileList(full_path_list); //TODO url support
         }
-        else if (str.startsWith("--")) // is it a command?
+        else if (str.startsWith("-")) // is it a command?
         {
             if (CommandLineManager::hasOption(str))
                 m_generalHandler->executeCommand(str);

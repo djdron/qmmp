@@ -24,7 +24,7 @@
 #include "builtincommandlineoption.h"
 
 BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent)
- : QObject(parent)
+        : QObject(parent)
 {
 }
 
@@ -37,15 +37,14 @@ BuiltinCommandLineOption::~BuiltinCommandLineOption()
 bool BuiltinCommandLineOption::identify(const QString & str) const
 {
     if (
-        str == QString("--help") ||
         str == QString("--next") ||
         str == QString("--previous") ||
-        str == QString("--play") ||
-        str == QString("--pause") ||
-        str == QString("--play-pause") ||
-        str == QString("--stop") ||
+        str == QString("--play") || str == QString("-p") ||
+        str == QString("--pause") || str == QString("-u") ||
+        str == QString("--play-pause") || str == QString("-t") ||
+        str == QString("--stop") || str == QString("-s") ||
         str.startsWith("--volume") ||
-        str.startsWith("--jump-to-file") ||
+        str.startsWith("--jump-to-file") || str.startsWith("-j") ||
         str.startsWith("--toggle-visibility") ||
         str.startsWith("--add-file") ||
         str.startsWith("--add-dir")
@@ -59,33 +58,33 @@ bool BuiltinCommandLineOption::identify(const QString & str) const
 
 const QString BuiltinCommandLineOption::helpString() const
 {
-    return  QString(
-                "--next               "+tr("Skip forward in playlist")+ "\n" +
-                "--previous           "+tr("Skip backwards in playlist")+"\n" +
-                "--play               "+tr("Start playing current song")+"\n" +
-                "--pause              "+tr("Pause current song")+ "\n"
-                "--play-pause         "+tr("Pause if playing, play otherwise")+ "\n"
-                "--stop               "+tr("Stop current song")+ "\n" +
-                "--volume             "+tr("Set playback volume(example: qmmp --volume20, qmmp --volume100)")+ "\n"
-                "--jump-to-file       "+tr("Display Jump to File dialog")+ "\n" +
-                "--toggle-visibility  "+tr("Show/hide application")+ "\n" +
-                "--add-file           "+tr("Display Add File dialog")+ "\n" +
-                "--add-dir            "+tr("Display Add Directory dialog")
-            );
+    return QString(
+               "-p, --play           "+tr("Start playing current song")+"\n" +
+               "-u, --pause          "+tr("Pause current song")+ "\n"
+               "-t, --play-pause     "+tr("Pause if playing, play otherwise")+ "\n"
+               "-s, --stop           "+tr("Stop current song")+ "\n" +
+               "-j, --jump-to-file   "+tr("Display Jump to File dialog")+ "\n" +
+               "--volume             "+tr("Set playback volume(example: qmmp --volume20, qmmp --volume100)")+ "\n"
+               "--next               "+tr("Skip forward in playlist")+ "\n" +
+               "--previous           "+tr("Skip backwards in playlist")+"\n" +
+               "--toggle-visibility  "+tr("Show/hide application")+ "\n" +
+               "--add-file           "+tr("Display Add File dialog")+ "\n" +
+               "--add-dir            "+tr("Display Add Directory dialog")
+           );
 }
 
-void BuiltinCommandLineOption::executeCommand(const QString & option_string, MainWindow *mw)
+void BuiltinCommandLineOption::executeCommand(const QString &option_string, MainWindow *mw)
 {
-    if (option_string == "--play")
+    if (option_string == "--play" || option_string == "-p")
     {
         mw->play();
     }
-    else if (option_string == "--stop")
+    else if (option_string == "--stop" || option_string == "-s")
     {
         mw->stop();
         mw->mainDisplay()->hideTimeDisplay();
     }
-    else if (option_string == "--pause")
+    else if (option_string == "--pause" || option_string == "-u")
     {
         mw->pause();
     }
@@ -101,11 +100,11 @@ void BuiltinCommandLineOption::executeCommand(const QString & option_string, Mai
         if (mw->soundCore()->state() == Qmmp::Stopped)
             mw->play();
     }
-    else if (option_string == "--play-pause")
+    else if (option_string == "--play-pause"  || option_string == "-t")
     {
         mw->playPause();
     }
-    else if (option_string == "--jump-to-file")
+    else if (option_string == "--jump-to-file" || option_string == "-j")
     {
         mw->jumpToFile();
     }

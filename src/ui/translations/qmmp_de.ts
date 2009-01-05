@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -97,7 +96,7 @@
         <translation>Hinzuzufügende URL eingeben</translation>
     </message>
     <message>
-        <location filename="../addurldialog.cpp" line="112"/>
+        <location filename="../addurldialog.cpp" line="116"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -115,57 +114,57 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Skip forward in playlist</source>
         <translation>Nächsten Titel in Wiedergabeliste abspielen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip backwards in playlist</source>
         <translation>Vorherigen Titel in Wiedergabeliste abspielen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Start playing current song</source>
         <translation>Aktuellen Titel abspielen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Pause current song</source>
         <translation>Aktuellen Titel anhalten</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Pause if playing, play otherwise</source>
         <translation>Wiedergabe anhalten oder fortsetzen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Stop current song</source>
         <translation>Aktuellen Titel stoppen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
         <translation>Lautstärke einstellen (Beispiel: qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Jump to File dialog</source>
         <translation>„Springe zu Titel“-Dialog anzeigen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Show/hide application</source>
         <translation>Anwendung ein-/ausblenden</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Add File dialog</source>
         <translation>„Datei hinzufügen“-Dialog anzeigen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="74"/>
+        <location filename="../builtincommandlineoption.cpp" line="73"/>
         <source>Display Add Directory dialog</source>
         <translation>„Verzeichnis hinzufügen“-Dialog anzeigen</translation>
     </message>
@@ -243,7 +242,7 @@
         <translation>Erscheinungsbild</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="701"/>
+        <location filename="../forms/configdialog.ui" line="707"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
     </message>
@@ -313,7 +312,7 @@
         <translation>Konfiguration</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="618"/>
+        <location filename="../forms/configdialog.ui" line="624"/>
         <source>Information</source>
         <translation>Information</translation>
     </message>
@@ -328,7 +327,7 @@
         <translation>Ausgabe</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="876"/>
+        <location filename="../forms/configdialog.ui" line="882"/>
         <source>Close</source>
         <translation>Schließen</translation>
     </message>
@@ -338,42 +337,42 @@
         <translation>Verbindung</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="609"/>
+        <location filename="../forms/configdialog.ui" line="615"/>
         <source>File Dialog</source>
         <translation>Datei-Dialog</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="744"/>
+        <location filename="../forms/configdialog.ui" line="750"/>
         <source>Proxy</source>
         <translation>Proxyserver</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="756"/>
+        <location filename="../forms/configdialog.ui" line="762"/>
         <source>Enable proxy usage</source>
         <translation>Proxyserver verwenden</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="763"/>
+        <location filename="../forms/configdialog.ui" line="769"/>
         <source>Proxy host name:</source>
         <translation>Name des Proxyservers:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="776"/>
+        <location filename="../forms/configdialog.ui" line="782"/>
         <source>Proxy port:</source>
         <translation>Port:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="789"/>
+        <location filename="../forms/configdialog.ui" line="795"/>
         <source>Use authentication with proxy</source>
         <translation>Authentisierung verwenden</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="796"/>
+        <location filename="../forms/configdialog.ui" line="802"/>
         <source>Proxy user name:</source>
         <translation>Benutzername:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="809"/>
+        <location filename="../forms/configdialog.ui" line="815"/>
         <source>Proxy password:</source>
         <translation>Passwort:</translation>
     </message>
@@ -398,32 +397,32 @@
         <translation>Effekte</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="549"/>
+        <location filename="../forms/configdialog.ui" line="552"/>
         <source>General</source>
         <translation>Sonstige</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="570"/>
+        <location filename="../forms/configdialog.ui" line="576"/>
         <source>Audio</source>
         <translation>Audio</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="576"/>
+        <location filename="../forms/configdialog.ui" line="582"/>
         <source>Use software volume control</source>
         <translation>Softwaregesteuerte Lautstärkeregelung</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="586"/>
+        <location filename="../forms/configdialog.ui" line="592"/>
         <source>Visibility Control</source>
         <translation>Tray-Steuerung</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="592"/>
+        <location filename="../forms/configdialog.ui" line="598"/>
         <source>Hide on close</source>
         <translation type="unfinished">Beim Schließen ausblenden</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="599"/>
+        <location filename="../forms/configdialog.ui" line="605"/>
         <source>Start hidden</source>
         <translation>Minimiert starten</translation>
     </message>
@@ -468,22 +467,22 @@
         <translation>Protokoll anzeigen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="641"/>
+        <location filename="../forms/configdialog.ui" line="647"/>
         <source>Transparency</source>
         <translation>Transparenz</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="647"/>
+        <location filename="../forms/configdialog.ui" line="653"/>
         <source>Main window</source>
         <translation>Hauptfenster</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="718"/>
+        <location filename="../forms/configdialog.ui" line="724"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="677"/>
+        <location filename="../forms/configdialog.ui" line="683"/>
         <source>Equalizer</source>
         <translation>Equalizer</translation>
     </message>
@@ -1074,32 +1073,32 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="141"/>
+        <location filename="../qmmpstarter.cpp" line="142"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Aufruf: qmmp [Optionen] [Dateien]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="142"/>
+        <location filename="../qmmpstarter.cpp" line="143"/>
         <source>Options:</source>
         <translation>Optionen:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="148"/>
+        <location filename="../qmmpstarter.cpp" line="149"/>
         <source>Print version number and exit</source>
         <translation>Gibt die Versionsnummer aus</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="149"/>
+        <location filename="../qmmpstarter.cpp" line="150"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Ideen, Patches und Bugreports an &lt;forkotov02@hotmail.ru&gt; senden</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="147"/>
+        <location filename="../qmmpstarter.cpp" line="148"/>
         <source>Display this text and exit</source>
         <translation>Zeigt diesen Hilfetext an</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="154"/>
+        <location filename="../qmmpstarter.cpp" line="155"/>
         <source>QMMP version:</source>
         <translation>Qmmp-Version:</translation>
     </message>
@@ -1109,7 +1108,7 @@
         <translation>Titel an Wiedergabeliste anhängen</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="155"/>
+        <location filename="../qmmpstarter.cpp" line="156"/>
         <source>Qt version:</source>
         <translation>Qt-Version:</translation>
     </message>
