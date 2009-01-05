@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="86"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Розробник: Ілля Котов</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
