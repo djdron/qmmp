@@ -3,33 +3,33 @@
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="45"/>
+        <location filename="../decodercdaudiofactory.cpp" line="44"/>
         <source>CD Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="87"/>
+        <location filename="../decodercdaudiofactory.cpp" line="86"/>
         <source>About CD Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="88"/>
+        <location filename="../decodercdaudiofactory.cpp" line="87"/>
         <source>Qmmp CD Audio Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
-        <source>Compiled against libcdio-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="91"/>
+        <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decodercdaudiofactory.cpp" line="88"/>
+        <source>Compiled against libcdio version:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
