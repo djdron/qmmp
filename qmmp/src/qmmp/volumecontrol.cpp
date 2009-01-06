@@ -42,7 +42,9 @@ VolumeControl *VolumeControl::create(QObject *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Volume/software_volume", FALSE).toBool())
         return new SoftwareVolume(parent);
-    VolumeControl *control = Output::currentFactory()->createVolumeControl(parent);
+    VolumeControl *control = 0;
+    if (Output::currentFactory())
+        control = Output::currentFactory()->createVolumeControl(parent);
     if (!control)
         return new SoftwareVolume(parent);
     QTimer *m_timer = new QTimer(control);
@@ -118,6 +120,6 @@ SoftwareVolume *SoftwareVolume::instance()
 
 void  SoftwareVolume::setEnabled(bool b)
 {
-     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-     settings.setValue("Volume/software_volume", b);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Volume/software_volume", b);
 }
