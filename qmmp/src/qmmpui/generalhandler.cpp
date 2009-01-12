@@ -19,6 +19,10 @@
  ***************************************************************************/
 
 #include <QDialog>
+#include <QMenu>
+#include <QWidget>
+#include <QAction>
+
 #include "general.h"
 #include "generalfactory.h"
 #include "commandlinemanager.h"
@@ -31,15 +35,9 @@ GeneralHandler::GeneralHandler(QObject *parent)
         : QObject(parent)
 {
     m_instance = this;
-    /*m_left = 0;
-    m_right = 0;
-    m_time = 0;
-    m_state = General::Stopped;*/
+    m_toolsMenu = 0;
+    m_playlistMenu = 0;
     GeneralFactory* factory;
-    //m_control = new Control(this);
-    /*connect(m_control, SIGNAL(commandCalled(uint)), SLOT(processCommand(uint)));
-    connect(m_control, SIGNAL(seekCalled(int)), SIGNAL(seekCalled(int)));
-    connect(m_control, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));*/
     foreach(factory, *General::generalFactories())
     {
         if (General::isEnabled(factory))
@@ -67,13 +65,6 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
         connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
         connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals.insert(factory, general);
-        //general->setVolume(m_left, m_right);
-        /*if (m_state != General::Stopped)
-        {
-            general->setState(m_state);
-            general->setSongInfo(m_songInfo);
-            general->setTime(m_time);
-        }*/
     }
     else
     {
@@ -96,12 +87,6 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
         connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
         connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals[factory] = general;
-        /*general->setVolume(m_left, m_right);
-        if (m_state != General::Stopped)
-        {
-            general->setState(m_state);
-            general->setSongInfo(m_songInfo);
-        }*/
     }
     dialog->deleteLater();
 }
@@ -119,8 +104,70 @@ bool GeneralHandler::visibilityControl()
 
 void GeneralHandler::executeCommand(const QString &opt_str)
 {
-    if(CommandLineManager::hasOption(opt_str))
+    if (CommandLineManager::hasOption(opt_str))
         m_commandLineManager->executeCommand(opt_str);
+}
+
+void GeneralHandler::addAction(QAction *action, MenuType type)
+{
+    switch ((int) type)
+    {
+    case TOOLS_MENU:
+        if (!m_toolsActions.contains(action))
+            m_toolsActions.append(action);
+        if (m_toolsMenu && !m_toolsMenu->actions ().contains(action))
+            m_toolsMenu->addAction(action);
+        break;
+    case PLAYLIST_MENU:
+        if (!m_playlistActions.contains(action))
+            m_playlistActions.append(action);
+        if (m_playlistMenu && !m_playlistMenu->actions ().contains(action))
+            m_playlistMenu->addAction(action);
+    }
+}
+
+void GeneralHandler::removeAction(QAction *action)
+{
+    m_toolsActions.removeAll(action);
+    if (m_toolsMenu)
+        m_toolsMenu->removeAction(action);
+    m_playlistActions.removeAll(action);
+    if (m_playlistMenu)
+        m_playlistMenu->removeAction(action);
+}
+
+QList<QAction *> GeneralHandler::actions(MenuType type)
+{
+    if (type == TOOLS_MENU)
+        return m_toolsActions;
+    else
+        return m_playlistActions;
+}
+
+QMenu *GeneralHandler::createMenu(MenuType type, const QString &title, QWidget *parent)
+{
+    switch ((int) type)
+    {
+    case TOOLS_MENU:
+        if (!m_toolsMenu)
+        {
+            m_toolsMenu = new QMenu(title, parent);
+            m_toolsMenu->addActions(m_toolsActions);
+        }
+        else
+            m_toolsMenu->setTitle(title);
+        return m_toolsMenu.data();
+    case PLAYLIST_MENU:
+        if (!m_playlistMenu)
+        {
+            m_playlistMenu = new QMenu(title, parent);
+            m_playlistMenu->addActions(m_toolsActions);
+        }
+        else
+            m_playlistMenu->setTitle(title);
+        return m_playlistMenu.data();
+    }
+    return 0;
 }
 
 GeneralHandler* GeneralHandler::instance()

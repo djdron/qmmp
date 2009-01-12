@@ -42,6 +42,7 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/fileloader.h>
+#include <qmmpui/generalhandler.h>
 #include <qmmp/soundcore.h>
 
 PlayList::PlayList (QWidget *parent)
@@ -239,6 +240,9 @@ void PlayList::createActions()
 
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addActions (m_subMenu->actions());
+    m_listWidget->menu()->addMenu(GeneralHandler::instance()->createMenu(GeneralHandler::PLAYLIST_MENU,
+                                  tr("Actions"), this));
+
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addAction(tr("&Queue"),m_playListModel, SLOT(addToQueue()), tr("Q"));
     m_actions << m_listWidget->menu()->actions();

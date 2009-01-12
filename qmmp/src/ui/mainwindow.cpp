@@ -440,6 +440,7 @@ void MainWindow::createActions()
     m_mainMenu->addSeparator();
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
+    m_mainMenu->addMenu(m_generalHandler->createMenu(GeneralHandler::TOOLS_MENU, tr("Tools"), this));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Settings"), this, SLOT(showSettings()), tr("Ctrl+P"));
     m_mainMenu->addSeparator();

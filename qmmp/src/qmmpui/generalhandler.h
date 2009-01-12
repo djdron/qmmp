@@ -22,6 +22,12 @@
 
 #include <QObject>
 #include <QMap>
+#include <QList>
+#include <QPointer>
+
+class QAction;
+class QMenu;
+class QWidget;
 
 class General;
 class Control;
@@ -31,6 +37,8 @@ class CommandLineManager;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
+
+//TODO add documentation
 class GeneralHandler : public QObject
 {
     Q_OBJECT
@@ -39,10 +47,22 @@ public:
 
     ~GeneralHandler();
 
+    enum MenuType
+    {
+        TOOLS_MENU = 0,
+        PLAYLIST_MENU
+    };
+
     void setEnabled(GeneralFactory* factory, bool enable);
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
     bool visibilityControl();
     void executeCommand(const QString &opt_str);
+    //actions 
+    void addAction(QAction *action, MenuType type = TOOLS_MENU);
+    void removeAction(QAction *action);
+    QList<QAction *> actions(MenuType type = TOOLS_MENU);
+    QMenu *createMenu(MenuType type, const QString &title = QString(), QWidget *parent = 0);
+
     static GeneralHandler* instance();
 
 signals:
@@ -52,6 +72,10 @@ signals:
 private:
     QMap <GeneralFactory*, General*> m_generals;
     CommandLineManager *m_commandLineManager;
+    QList <QAction*> m_toolsActions;
+    QList <QAction*> m_playlistActions;
+    QPointer<QMenu> m_toolsMenu;
+    QPointer<QMenu> m_playlistMenu;
     static GeneralHandler* m_instance;
 };
 
