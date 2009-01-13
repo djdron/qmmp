@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -876,7 +877,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="443"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Утиліти</translation>
     </message>
 </context>
 <context>
@@ -1049,7 +1050,7 @@
     <message>
         <location filename="../playlist.cpp" line="244"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Дії</translation>
     </message>
 </context>
 <context>
