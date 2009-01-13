@@ -161,7 +161,7 @@ QMenu *GeneralHandler::createMenu(MenuType type, const QString &title, QWidget *
         if (!m_playlistMenu)
         {
             m_playlistMenu = new QMenu(title, parent);
-            m_playlistMenu->addActions(m_toolsActions);
+            m_playlistMenu->addActions(m_playlistActions);
         }
         else
             m_playlistMenu->setTitle(title);
