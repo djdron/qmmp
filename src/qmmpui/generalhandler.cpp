@@ -110,6 +110,7 @@ void GeneralHandler::executeCommand(const QString &opt_str)
 
 void GeneralHandler::addAction(QAction *action, MenuType type)
 {
+    connect(action, SIGNAL(destroyed (QObject *)), SLOT(removeAction(QObject*)));
     switch ((int) type)
     {
     case TOOLS_MENU:
@@ -175,3 +176,7 @@ GeneralHandler* GeneralHandler::instance()
     return m_instance;
 }
 
+void GeneralHandler::removeAction(QObject *action)
+{
+    removeAction((QAction *) action);
+}

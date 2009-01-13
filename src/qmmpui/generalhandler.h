@@ -69,6 +69,9 @@ signals:
     void exitCalled();
     void toggleVisibilityCalled();
 
+private slots:
+    void removeAction(QObject *action);
+
 private:
     QMap <GeneralFactory*, General*> m_generals;
     CommandLineManager *m_commandLineManager;
