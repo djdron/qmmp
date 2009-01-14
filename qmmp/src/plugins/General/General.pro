@@ -1,5 +1,6 @@
 SUBDIRS += statusicon \
            scrobbler \
            mpris \
-           notifier
+           notifier \
+           lyrics
 TEMPLATE = subdirs
