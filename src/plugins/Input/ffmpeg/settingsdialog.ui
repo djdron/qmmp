@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>302</width>
-    <height>286</height>
+    <height>298</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -77,6 +77,13 @@
        <widget class="QCheckBox" name="aacCheckBox" >
         <property name="text" >
          <string>ADTS AAC</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mp3CheckBox" >
+        <property name="text" >
+         <string>MP3 (MPEG audio layer 3)</string>
         </property>
        </widget>
       </item>

@@ -67,6 +67,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.alacCheckBox->setChecked(filters.contains("*.alac") && avcodec_find_decoder(CODEC_ID_ALAC));
     ui.aacCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_AAC));
     ui.aacCheckBox->setChecked(filters.contains("*.aac") && avcodec_find_decoder(CODEC_ID_AAC));
+    ui.mp3CheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_MP3));
+    ui.mp3CheckBox->setChecked(filters.contains("*.mp3") && avcodec_find_decoder(CODEC_ID_MP3));
     ui.mp4CheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_AAC));
     ui.mp4CheckBox->setChecked(filters.contains("*.m4a") && avcodec_find_decoder(CODEC_ID_AAC));
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
@@ -82,6 +84,8 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::accept()
 {
     QStringList filters;
+    if (ui.mp3CheckBox->isChecked())
+        filters << "*.mp3";
     if (ui.wmaCheckBox->isChecked())
         filters << "*.wma";
     if (ui.apeCheckBox->isChecked())
