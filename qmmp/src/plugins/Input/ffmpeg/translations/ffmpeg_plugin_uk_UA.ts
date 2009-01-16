@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="140"/>
+        <location filename="../decoderffmpegfactory.cpp" line="141"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Про аудіо-модуль FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="142"/>
+        <location filename="../decoderffmpegfactory.cpp" line="143"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Аудіо-модуль FFmpeg для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="152"/>
+        <location filename="../decoderffmpegfactory.cpp" line="153"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -29,7 +28,7 @@
         <translation>Формати FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="144"/>
+        <location filename="../decoderffmpegfactory.cpp" line="145"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Зібрано з libavformat-%1.%2.%3 та libavcodec-%4.%5.%6</translation>
     </message>
@@ -47,72 +46,72 @@
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="141"/>
+        <location filename="../detailsdialog.ui" line="135"/>
         <source>-</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="71"/>
+        <location filename="../detailsdialog.ui" line="125"/>
         <source>Bitrate:</source>
         <translation>Бітова частота:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="81"/>
+        <location filename="../detailsdialog.ui" line="82"/>
         <source>File size:</source>
         <translation>Розмір файлу:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="94"/>
+        <location filename="../detailsdialog.ui" line="102"/>
         <source>Channels:</source>
         <translation>Каналів:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="114"/>
+        <location filename="../detailsdialog.ui" line="65"/>
         <source>Sample rate:</source>
         <translation>Дискретизація:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="131"/>
+        <location filename="../detailsdialog.ui" line="48"/>
         <source>Length:</source>
         <translation>Тривалість:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="241"/>
+        <location filename="../detailsdialog.ui" line="235"/>
         <source>Track number:</source>
         <translation>Номер треку:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="228"/>
+        <location filename="../detailsdialog.ui" line="222"/>
         <source>Year:</source>
         <translation>Рік:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="254"/>
+        <location filename="../detailsdialog.ui" line="248"/>
         <source>Genre:</source>
         <translation>Жанр:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="215"/>
+        <location filename="../detailsdialog.ui" line="209"/>
         <source>Comment:</source>
         <translation>Коментар:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="202"/>
+        <location filename="../detailsdialog.ui" line="196"/>
         <source>Album:</source>
         <translation>Альбом:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="189"/>
+        <location filename="../detailsdialog.ui" line="183"/>
         <source>Artist:</source>
         <translation>Виконавець:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="176"/>
+        <location filename="../detailsdialog.ui" line="170"/>
         <source>Title:</source>
         <translation>Назва:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="283"/>
+        <location filename="../detailsdialog.ui" line="277"/>
         <source>Close</source>
         <translation>Закрити</translation>
     </message>
@@ -137,7 +136,7 @@
         <translation>Інфо аудіо</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="170"/>
+        <location filename="../detailsdialog.ui" line="164"/>
         <source>Metadata</source>
         <translation>Метадані</translation>
     </message>
@@ -175,12 +174,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="86"/>
+        <location filename="../settingsdialog.ui" line="93"/>
         <source>MPEG-4 AAC</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="100"/>
         <source>RealAudio 1.0/2.0</source>
         <translation></translation>
     </message>
@@ -188,6 +187,11 @@
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
         <translation>Налаштування модуля FFmpeg</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="86"/>
+        <source>MPEG-2 MP3</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

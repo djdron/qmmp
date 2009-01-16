@@ -3,17 +3,17 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="140"/>
+        <location filename="../decoderffmpegfactory.cpp" line="141"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>O modulu FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="142"/>
+        <location filename="../decoderffmpegfactory.cpp" line="143"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Vstupní modul Qmmp FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="152"/>
+        <location filename="../decoderffmpegfactory.cpp" line="153"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -28,7 +28,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="144"/>
+        <location filename="../decoderffmpegfactory.cpp" line="145"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation type="unfinished"></translation>
     </message>
@@ -56,57 +56,57 @@
         <translation>Podrobnosti</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="81"/>
+        <location filename="../detailsdialog.ui" line="82"/>
         <source>File size:</source>
         <translation>Velikost souboru:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="141"/>
+        <location filename="../detailsdialog.ui" line="135"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="114"/>
+        <location filename="../detailsdialog.ui" line="65"/>
         <source>Sample rate:</source>
         <translation>Vzorkovací frakvence:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="241"/>
+        <location filename="../detailsdialog.ui" line="235"/>
         <source>Track number:</source>
         <translation>Číslo stopy:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="228"/>
+        <location filename="../detailsdialog.ui" line="222"/>
         <source>Year:</source>
         <translation>Rok:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="254"/>
+        <location filename="../detailsdialog.ui" line="248"/>
         <source>Genre:</source>
         <translation>Žánr:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="215"/>
+        <location filename="../detailsdialog.ui" line="209"/>
         <source>Comment:</source>
         <translation>Komentář:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="202"/>
+        <location filename="../detailsdialog.ui" line="196"/>
         <source>Album:</source>
         <translation>Album:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="189"/>
+        <location filename="../detailsdialog.ui" line="183"/>
         <source>Artist:</source>
         <translation>Umělec:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="176"/>
+        <location filename="../detailsdialog.ui" line="170"/>
         <source>Title:</source>
         <translation>Název:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="283"/>
+        <location filename="../detailsdialog.ui" line="277"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
@@ -116,17 +116,17 @@
         <translation>Cesta k souboru:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="131"/>
+        <location filename="../detailsdialog.ui" line="48"/>
         <source>Length:</source>
         <translation>Délka:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="94"/>
+        <location filename="../detailsdialog.ui" line="102"/>
         <source>Channels:</source>
         <translation>Počet kanálů:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="71"/>
+        <location filename="../detailsdialog.ui" line="125"/>
         <source>Bitrate:</source>
         <translation>Datový tok:</translation>
     </message>
@@ -136,7 +136,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="170"/>
+        <location filename="../detailsdialog.ui" line="164"/>
         <source>Metadata</source>
         <translation type="unfinished"></translation>
     </message>
@@ -174,18 +174,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="86"/>
+        <location filename="../settingsdialog.ui" line="93"/>
         <source>MPEG-4 AAC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="100"/>
         <source>RealAudio 1.0/2.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="86"/>
+        <source>MPEG-2 MP3</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
