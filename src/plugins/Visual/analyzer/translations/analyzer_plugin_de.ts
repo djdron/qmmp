@@ -99,7 +99,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="203"/>
         <source>Analyzer #1:</source>
-        <translation>Analyzer #1:</translation>
+        <translation>Analyzer Nr. 1:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="229"/>
@@ -109,12 +109,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="255"/>
         <source>Analyzer #2:</source>
-        <translation>Analyzer #2:</translation>
+        <translation>Analyzer Nr. 2:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="294"/>
         <source>Analyzer #3:</source>
-        <translation>Analyzer #2:</translation>
+        <translation>Analyzer Nr. 3:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="351"/>

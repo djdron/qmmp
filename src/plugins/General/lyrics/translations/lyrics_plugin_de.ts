@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>Lyrics</name>
     <message>
@@ -46,7 +47,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="38"/>
         <source>No connection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Keine Verbindung</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="62"/>
@@ -56,7 +57,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="65"/>
         <source>Connecting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbinde...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="68"/>
@@ -71,7 +72,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="74"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbunden</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="77"/>
@@ -86,7 +87,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="58"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Schließen</translation>
     </message>
 </context>
 </TS>

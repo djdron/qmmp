@@ -11,12 +11,18 @@ Chinesisch (Kurzzeichen):
 Tschechisch:
     Karel Volný <kvolny@redhat.com>
 
+Französisch:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
 Deutsch:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
-    Panagiotis Papadopoulos <pano_90@gmx.de>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Polnisch:
+    Grzegorz Gibas <amigib@gmail.com>
 
 Russisch:
-    Ilya Kotov <for_kotov@hotmail.ru>
+    Ilya Kotov <forkotov02@hotmail.ru>
 
 Türkisch:
     Mustafa GUNAY <mustafagunay@pgmail.com>

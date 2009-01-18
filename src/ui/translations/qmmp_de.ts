@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -419,7 +420,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="598"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Beim Schließen ausblenden</translation>
+        <translation type="unfinished">Beim Schließen in den Tray schicken</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="605"/>
@@ -876,7 +877,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="443"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeuge</translation>
     </message>
 </context>
 <context>
@@ -1049,7 +1050,7 @@
     <message>
         <location filename="../playlist.cpp" line="244"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktionen</translation>
     </message>
 </context>
 <context>

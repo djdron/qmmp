@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -30,7 +31,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="145"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompiliert gegen libavformat-%1.%2.%3 und libavcodec-%4.%5.%6</translation>
     </message>
 </context>
 <context>
@@ -191,7 +192,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>MPEG-2 MP3</source>
-        <translation type="unfinished"></translation>
+        <translation>MPEG-2 MP3</translation>
     </message>
 </context>
 </TS>
