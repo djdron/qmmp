@@ -16,7 +16,7 @@ French:
 
 German:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
-    Panagiotis Papadopoulos <Pano_90@gmx.de>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
 
 Polish:
     Grzegorz Gibas <amigib@gmail.com>

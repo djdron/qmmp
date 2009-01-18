@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -28,7 +29,7 @@
     <message>
         <location filename="../popupwidget.cpp" line="115"/>
         <source>Volume:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lautstärke:</translation>
     </message>
 </context>
 <context>
@@ -71,17 +72,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzögerung, ms:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="81"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparenz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="104"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
 </context>
 </TS>
