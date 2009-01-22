@@ -157,7 +157,7 @@ QMenu *GeneralHandler::createMenu(MenuType type, const QString &title, QWidget *
         }
         else
             m_toolsMenu->setTitle(title);
-        return m_toolsMenu.data();
+        return m_toolsMenu;
     case PLAYLIST_MENU:
         if (!m_playlistMenu)
         {
@@ -166,7 +166,7 @@ QMenu *GeneralHandler::createMenu(MenuType type, const QString &title, QWidget *
         }
         else
             m_playlistMenu->setTitle(title);
-        return m_playlistMenu.data();
+        return m_playlistMenu;
     }
     return 0;
 }
