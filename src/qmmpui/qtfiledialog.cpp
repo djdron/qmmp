@@ -18,9 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QTranslator>
-#include <QLocale>
-
 #include "qtfiledialog.h"
 
 
@@ -42,10 +39,8 @@ void QtFileDialogFactory::showAbout(QWidget*){};
 
 QTranslator *QtFileDialogFactory::createTranslator(QObject *parent)
 {
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/libqmmpui_") + locale);
-    return translator;
+    Q_UNUSED(parent)
+    return 0;
 }
 
 QtFileDialog::~QtFileDialog()
