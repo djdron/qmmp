@@ -342,11 +342,13 @@ void PlayListModel::showDetails()
                 str.append(tr("Title:") + " %2\n");
                 str.append(tr("Artist:") + " %3\n");
                 str.append(tr("Album:") + " %4\n");
-                str.append(tr("Comment:") + " %5");
+                str.append(tr("Genre:") + " %5\n");
+                str.append(tr("Comment:") + " %6");
                 str = str.arg(item->url())
                       .arg(item->title().isEmpty() ? item->text() : item->title())
                       .arg(item->artist())
                       .arg(item->album())
+                      .arg(item->genre())
                       .arg(item->comment());
                 QMessageBox::information(0, m_items.at(i)->url(), str);
                 return;
