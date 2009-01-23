@@ -20,8 +20,10 @@
 
 #include <QApplication>
 #include <QString>
-#include <qmmp/soundcore.h>
+#include <QTranslator>
+#include <QLocale>
 
+#include <qmmp/soundcore.h>
 #include "playlistmodel.h"
 #include "playlistitem.h"
 
@@ -36,6 +38,10 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_model = 0;
     m_core = 0;
     m_repeat = FALSE;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = QLocale::system().name();
+    translator->load(QString(":/libqmmpui_") + locale);
+    qApp->installTranslator(translator);
 }
 
 
