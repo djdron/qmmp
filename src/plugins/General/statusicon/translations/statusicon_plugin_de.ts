@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>SettingsDialog</name>
     <message>
@@ -26,12 +25,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="obsolete">OK</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Cancel</source>
-        <translation>Abbrechen</translation>
+        <translation type="obsolete">Abbrechen</translation>
     </message>
 </context>
 <context>
@@ -67,7 +66,7 @@
         <translation>Beenden</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="104"/>
+        <location filename="../statusicon.cpp" line="103"/>
         <source>Now Playing</source>
         <translation>Aktueller Titel</translation>
     </message>
@@ -80,17 +79,17 @@
         <translation>Statussymbol-Plugin</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
+        <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Qmmp Statussymbol-Plugin</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="51"/>
+        <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="49"/>
+        <location filename="../statusiconfactory.cpp" line="50"/>
         <source>About Status Icon Plugin</source>
         <translation>Über Statussymbol-Plugin</translation>
     </message>

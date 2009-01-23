@@ -28,6 +28,7 @@ const GeneralProperties StatusIconFactory::properties() const
 {
     GeneralProperties properties;
     properties.name = tr("Status Icon Plugin");
+    properties.shortName = "status_icon";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
     properties.visibilityControl = TRUE;

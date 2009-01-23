@@ -8,17 +8,17 @@
         <translation>通知插件</translation>
     </message>
     <message>
-        <location filename="../notifierfactory.cpp" line="49"/>
+        <location filename="../notifierfactory.cpp" line="50"/>
         <source>About Notifier Plugin</source>
         <translation>关于通知插件</translation>
     </message>
     <message>
-        <location filename="../notifierfactory.cpp" line="50"/>
+        <location filename="../notifierfactory.cpp" line="51"/>
         <source>Qmmp Notifier Plugin</source>
         <translation>Qmmp 通知插件</translation>
     </message>
     <message>
-        <location filename="../notifierfactory.cpp" line="51"/>
+        <location filename="../notifierfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

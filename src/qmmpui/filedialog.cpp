@@ -151,7 +151,7 @@ void FileDialog::registerBuiltinFactories()
 {
     FileDialogFactory *fct = new QtFileDialogFactory();
     qApp->installTranslator(fct->createTranslator(qApp));
-    registerFactory(fct, "qt_dialog");
+    registerFactory(fct);
 }
 
 void FileDialog::registerExternalFactories()
@@ -175,7 +175,7 @@ void FileDialog::registerExternalFactories()
 
         if (fct)
         {
-            if (!registerFactory(fct, fileName))
+            if (!registerFactory(fct))
                 qDebug("Warning: Plugin with name %s is already registered...",
                        qPrintable(fileName));
             qApp->installTranslator(fct->createTranslator(qApp));
@@ -183,11 +183,11 @@ void FileDialog::registerExternalFactories()
     }
 }
 
-bool FileDialog::registerFactory(FileDialogFactory *factory, const QString &name)
+bool FileDialog::registerFactory(FileDialogFactory *factory)
 {
-    if (!factories.contains(name))
+    if (!factories.contains(factory->properties().shortName))
     {
-        factories.insert(name, factory);
+        factories.insert(factory->properties().shortName, factory);
         return true;
     }
     return false;

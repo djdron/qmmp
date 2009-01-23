@@ -127,7 +127,7 @@ protected:
 
     static FileDialog* instance();
     static FileDialog* defaultInstance();
-    static bool registerFactory(FileDialogFactory *factory, const QString &name);
+    static bool registerFactory(FileDialogFactory *factory);
     static void registerBuiltinFactories();
     static void registerExternalFactories();
 

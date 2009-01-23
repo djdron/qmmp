@@ -25,12 +25,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>OK</source>
-        <translation>确定</translation>
+        <translation type="obsolete">确定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Cancel</source>
-        <translation>取消</translation>
+        <translation type="obsolete">取消</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="104"/>
+        <location filename="../statusicon.cpp" line="103"/>
         <source>Now Playing</source>
         <translation>正在播放</translation>
     </message>
@@ -79,17 +79,17 @@
         <translation>状态图标插件</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
+        <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Qmmp 状态图标插件</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="51"/>
+        <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="49"/>
+        <location filename="../statusiconfactory.cpp" line="50"/>
         <source>About Status Icon Plugin</source>
         <translation>关于状态图标插件</translation>
     </message>

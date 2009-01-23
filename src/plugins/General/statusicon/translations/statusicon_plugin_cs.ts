@@ -25,12 +25,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="obsolete">OK</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation type="obsolete">Zrušit</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
         <translation>Ukončit</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="104"/>
+        <location filename="../statusicon.cpp" line="103"/>
         <source>Now Playing</source>
         <translation>Nyní hraje</translation>
     </message>
@@ -79,17 +79,17 @@
         <translation>Modul stavové ikony</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
+        <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Modul stavové ikony Qmmp</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="51"/>
+        <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="49"/>
+        <location filename="../statusiconfactory.cpp" line="50"/>
         <source>About Status Icon Plugin</source>
         <translation>O modulu stavové ikony</translation>
     </message>

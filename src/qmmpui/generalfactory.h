@@ -30,9 +30,17 @@ class Control;
 
 class General;
 
-struct GeneralProperties
+class GeneralProperties
 {
+public:
+    GeneralProperties()
+    {
+        hasAbout = FALSE;
+        hasSettings = FALSE;
+        visibilityControl = FALSE;
+    }
     QString name;
+    QString shortName;
     bool hasAbout;
     bool hasSettings;
     bool visibilityControl;

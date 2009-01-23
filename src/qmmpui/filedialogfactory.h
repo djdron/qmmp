@@ -24,10 +24,16 @@ class QObject;
 class QTranslator;
 class FileDialog;
 
-struct FileDialogProperties
+class FileDialogProperties
 {
-    QString name;
+public:
+    FileDialogProperties()
+    {
+        hasAbout = FALSE;
+    }
     bool hasAbout;
+    QString name;
+    QString shortName;
 };
 
 

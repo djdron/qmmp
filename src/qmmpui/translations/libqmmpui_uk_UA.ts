@@ -36,7 +36,7 @@
 <context>
     <name>QtFileDialogFactory</name>
     <message>
-        <location filename="../qtfiledialog.cpp" line="36"/>
+        <location filename="../qtfiledialog.cpp" line="33"/>
         <source>Qt File Dialog</source>
         <translation>Файловий діалог Qt</translation>
     </message>

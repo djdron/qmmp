@@ -28,6 +28,7 @@ const GeneralProperties NotifierFactory::properties() const
 {
     GeneralProperties properties;
     properties.name = tr("Notifier Plugin");
+    properties.shortName = "notifier";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
     properties.visibilityControl = FALSE;
