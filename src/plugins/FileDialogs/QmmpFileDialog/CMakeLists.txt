@@ -25,6 +25,7 @@ SET(QT_INCLUDES
 # libqmmpui
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 SET(libqmmpfiledialog_SRCS
     qmmpfiledialogimpl.cpp
@@ -57,5 +58,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(qmmpfiledialog SHARED ${libqmmpfiledialog_SRCS} ${libqmmpfiledialog_MOC_SRCS} ${libqmmpfiledialog_UIS_H} ${libqmmpfiledialog_RCC_SRCS})
 add_dependencies(qmmpfiledialog qmmpui)
-target_link_libraries(qmmpfiledialog ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(qmmpfiledialog ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS qmmpfiledialog DESTINATION ${LIB_DIR}/qmmp/FileDialogs)

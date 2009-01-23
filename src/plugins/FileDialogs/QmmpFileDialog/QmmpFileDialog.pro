@@ -23,7 +23,7 @@ CONFIG += release warn_on plugin
 TEMPLATE = lib
 
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmpui
+LIBS += -lqmmpui -lqmmp
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
