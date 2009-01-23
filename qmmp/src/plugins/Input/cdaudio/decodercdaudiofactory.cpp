@@ -30,7 +30,7 @@
 
 bool DecoderCDAudioFactory::supports(const QString &source) const
 {
-    return source == "/" || source.endsWith(".cda");
+    return source == "/" || source.startsWith("/dev");
 }
 
 bool DecoderCDAudioFactory::canDecode(QIODevice *) const
@@ -59,10 +59,9 @@ Decoder *DecoderCDAudioFactory::create(QObject *parent, QIODevice *input,
 
 QList<FileInfo *> DecoderCDAudioFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
-    Q_UNUSED(fileName);
     Q_UNUSED(useMetaData);
     QList <FileInfo*> list;
-    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList();
+    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(QUrl(fileName).path());
     foreach(CDATrack t, tracks)
     list << new FileInfo(t.info);
     return list;

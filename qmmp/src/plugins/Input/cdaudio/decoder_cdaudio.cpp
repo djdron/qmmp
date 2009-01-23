@@ -87,7 +87,7 @@ DecoderCDAudio::~DecoderCDAudio()
     m_output_buf = 0;
 }
 
-QList <CDATrack> DecoderCDAudio::generateTrackList()
+QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
 {
     //read settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -95,26 +95,45 @@ QList <CDATrack> DecoderCDAudio::generateTrackList()
     bool use_cd_text = settings.value("cdaudio/cdtext", TRUE).toBool();
     QList <CDATrack> tracks;
     cdio_log_set_handler(log_handler); //setup cdio log handler
-    char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, TRUE); //get drive list with CDA disks
     CdIo_t *cdio = 0;
-    // open first audio capable cd drive
-    if (cd_drives && *cd_drives)
+    QString device_path = device;
+    if (device_path.isEmpty() || device_path == "/")
+        device_path = settings.value("device").toString();
+    if (device_path.isEmpty() || device_path == "/")
     {
-        cdio = cdio_open_cd(*cd_drives);
+        char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, TRUE); //get drive list with CDA disks
+        // open first audio capable cd drive
+        if (cd_drives && *cd_drives)
+        {
+            cdio = cdio_open_cd(*cd_drives);
+            if (!cdio)
+            {
+                qWarning("DecoderCDAudio: failed to open CD.");
+                cdio_free_device_list(cd_drives);
+                return tracks;
+            }
+            qDebug("DecoderCDAudio: found cd audio capable drive \"%s\"", *cd_drives);
+        }
+        else
+        {
+            qWarning("DecoderCDAudio: unable to find cd audio drive.");
+            cdio_free_device_list(cd_drives);
+            return tracks;
+        }
+        device_path = QString(*cd_drives);
+        if (cd_drives && *cd_drives) //free device list
+            cdio_free_device_list(cd_drives);
+    }
+    else
+    {
+        cdio = cdio_open_cd(device_path.toAscii().constData());
         if (!cdio)
         {
             qWarning("DecoderCDAudio: failed to open CD.");
             return tracks;
         }
-        qDebug("DecoderCDAudio: found cd audio capable drive \"%s\"", *cd_drives);
+        qDebug("DecoderCDAudio: using cd audio capable drive \"%s\"", qPrintable(device_path));
     }
-    else
-    {
-        qWarning("DecoderCDAudio: unable to find cd audio drive.");
-        return tracks;
-    }
-    if (cd_drives && *cd_drives) //free device list
-        cdio_free_device_list(cd_drives);
 
     if (cd_speed)
     {
@@ -143,7 +162,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList()
         t.last_sector = cdio_get_track_last_lsn(pcdrom_drive->p_cdio, i);
         t.info.setLength((t.last_sector - t.first_sector +1) / 75);
         t.info.setMetaData(Qmmp::TRACK, i);
-        t.info.setPath(QString("cdda:///track%1.cda").arg(i, 2, 10, QChar('0')));
+        t.info.setPath(QString("cdda://%1#%2").arg(device_path).arg(i));
         if ((t.first_sector == CDIO_INVALID_LSN) || (t.last_sector== CDIO_INVALID_LSN))
         {
             qWarning("DecoderCDAudio: invalid stard(end) lsn for the track %d.", i);
@@ -223,19 +242,12 @@ bool DecoderCDAudio::initialize()
     m_bitrate = 0;
     m_seekTime = -1.0;
     m_totalTime = 0.0;
-    int track_number = -1;
     //extract track from url
-    QRegExp rx_cdda("^cdda\\:///track([0-9]+)\\.cda");
-    if (rx_cdda.indexIn(m_url) > -1)
-        track_number = rx_cdda.cap(1).toInt();
-    else
-    {
-        qWarning("DecoderCDAudio: invalid url: %s", qPrintable(m_url));
-        return FALSE;
-    }
+    int track_number = m_url.section("#", -1).toInt();
+    track_number = qMax(track_number, 1);
     if (!m_output_buf) //output buffer
         m_output_buf = new char[globalBufferSize];
-    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(); //generate track list
+    QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(QUrl(m_url).path()); //generate track list
     if (tracks.isEmpty())
     {
         qWarning("DecoderCDAudio: initialize failed");
@@ -254,26 +266,46 @@ bool DecoderCDAudio::initialize()
         qWarning("DecoderCDAudio: invalid track number");
         return FALSE;
     }
-    char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, TRUE); //get drive list with CDA disks
-    // open first audio capable cd drive
-    if (cd_drives && *cd_drives)
+
+    if (QUrl(m_url).path().isEmpty() || QUrl(m_url).path() == "/") //try default path from config
     {
-        m_cdio = cdio_open_cd(*cd_drives);
+        QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+        m_url = QString("cdda://%1#%2").arg(settings.value("device").toString()).arg(track_number);
+    }
+
+    if (QUrl(m_url).path() == "/")
+    {
+        char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, TRUE); //get drive list with CDA disks
+        // open first audio capable cd drive
+        if (cd_drives && *cd_drives)
+        {
+            m_cdio = cdio_open_cd(*cd_drives);
+            if (!m_cdio)
+            {
+                qWarning("DecoderCDAudio: failed to open CD.");
+                cdio_free_device_list(cd_drives);
+                return FALSE;
+            }
+            qDebug("DecoderCDAudio: found cd audio capable drive \"%s\"", *cd_drives);
+        }
+        else
+        {
+            qWarning("DecoderCDAudio: unable to find cd audio drive.");
+            return FALSE;
+        }
+        if (cd_drives && *cd_drives) //free device list
+            cdio_free_device_list(cd_drives);
+    }
+    else
+    {
+        m_cdio = cdio_open_cd(QUrl(m_url).path().toAscii().constData());
         if (!m_cdio)
         {
             qWarning("DecoderCDAudio: failed to open CD.");
             return FALSE;
         }
-        qDebug("DecoderCDAudio: found cd audio capable drive \"%s\"", *cd_drives);
+        qDebug("DecoderCDAudio: using cd audio capable drive \"%s\"", QUrl(m_url).path().toAscii().constData());
     }
-    else
-    {
-        qWarning("DecoderCDAudio: unable to find cd audio drive.");
-        return FALSE;
-    }
-    if (cd_drives && *cd_drives) //free device list
-        cdio_free_device_list(cd_drives);
-
     configure(44100, 2, 16);
     m_bitrate = 1411;
     m_totalTime = tracks[track_at].info.length();
