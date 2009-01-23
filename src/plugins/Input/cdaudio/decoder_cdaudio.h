@@ -46,7 +46,7 @@ public:
     DecoderCDAudio(QObject *, DecoderFactory *, const QString &url, Output *);
     virtual ~DecoderCDAudio();
 
-    static QList <CDATrack> generateTrackList();
+    static QList <CDATrack> generateTrackList(const QString &device = QString());
     static qint64 calculateTrackLength(lsn_t startlsn, lsn_t endlsn);
 
     // Standard Decoder API
