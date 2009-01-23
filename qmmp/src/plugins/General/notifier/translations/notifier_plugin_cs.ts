@@ -8,17 +8,17 @@
         <translation>Notifikační modul</translation>
     </message>
     <message>
-        <location filename="../notifierfactory.cpp" line="49"/>
+        <location filename="../notifierfactory.cpp" line="50"/>
         <source>About Notifier Plugin</source>
         <translation>O notifikačním modulu</translation>
     </message>
     <message>
-        <location filename="../notifierfactory.cpp" line="50"/>
+        <location filename="../notifierfactory.cpp" line="51"/>
         <source>Qmmp Notifier Plugin</source>
         <translation>Notifikační modul Qmmp</translation>
     </message>
     <message>
-        <location filename="../notifierfactory.cpp" line="51"/>
+        <location filename="../notifierfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

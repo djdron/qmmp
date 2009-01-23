@@ -101,9 +101,9 @@ void General::setEnabled(GeneralFactory* factory, bool enable)
     if (!factories->contains(factory))
         return;
 
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
+    QString name = factory->properties().shortName;
     QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    QStringList genList = settings.value("General/plugin_files").toStringList();
+    QStringList genList = settings.value("General/enabled_plugins").toStringList();
 
     if (enable)
     {
@@ -112,7 +112,7 @@ void General::setEnabled(GeneralFactory* factory, bool enable)
     }
     else
         genList.removeAll(name);
-    settings.setValue("General/plugin_files", genList);
+    settings.setValue("General/enabled_plugins", genList);
 }
 
 bool General::isEnabled(GeneralFactory* factory)
@@ -120,9 +120,7 @@ bool General::isEnabled(GeneralFactory* factory)
     checkFactories();
     if (!factories->contains(factory))
         return FALSE;
-    QString name = files.at(factories->indexOf(factory)).section('/',-1);
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    QStringList genList = settings.value("General/plugin_files").toStringList();
-    return genList.contains(name);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat );
+    QStringList genList = settings.value("General/enabled_plugins").toStringList();
+    return genList.contains(factory->properties().shortName);
 }
-

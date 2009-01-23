@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_TW">
-<defaultcodec></defaultcodec>
 <context>
     <name>QmmpFileDialog</name>
     <message>
@@ -34,22 +33,22 @@
         <translation>關閉對話並打開已添加</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.ui" line="168"/>
+        <location filename="../qmmpfiledialog.ui" line="177"/>
         <source>File name:</source>
         <translation>檔案名：</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.ui" line="184"/>
+        <location filename="../qmmpfiledialog.ui" line="193"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.ui" line="191"/>
+        <location filename="../qmmpfiledialog.ui" line="200"/>
         <source>Files of type:</source>
         <translation>檔案類型：</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.ui" line="217"/>
+        <location filename="../qmmpfiledialog.ui" line="226"/>
         <source>Close</source>
         <translation>關閉</translation>
     </message>
@@ -57,17 +56,17 @@
 <context>
     <name>QmmpFileDialogFactory</name>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="107"/>
+        <location filename="../qmmpfiledialog.cpp" line="118"/>
         <source>Qmmp File Dialog</source>
         <translation>Qmmp 檔案會話</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="106"/>
+        <location filename="../qmmpfiledialog.cpp" line="117"/>
         <source>About Qmmp File Dialog</source>
         <translation>關於 Qmmp 檔案會話</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="110"/>
+        <location filename="../qmmpfiledialog.cpp" line="121"/>
         <source>Writen by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
@@ -76,7 +75,7 @@ Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="111"/>
+        <location filename="../qmmpfiledialog.cpp" line="122"/>
         <source>Some code is copied from the Qt library</source>
         <translation>一些源碼基於 Qt 程式庫</translation>
     </message>
@@ -84,27 +83,27 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
 <context>
     <name>QmmpFileDialogImpl</name>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="215"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="241"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="228"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="254"/>
         <source>Save</source>
         <translation>儲存</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="240"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="270"/>
         <source>Directories</source>
         <translation>目錄</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="384"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="439"/>
         <source>already exists.</source>
         <translation>早已存在。</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="385"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="440"/>
         <source>Do you want to replace it?</source>
         <translation>您想替換它嗎？</translation>
     </message>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -57,7 +57,7 @@ public:
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
     bool visibilityControl();
     void executeCommand(const QString &opt_str);
-    //actions 
+    //actions
     void addAction(QAction *action, MenuType type = TOOLS_MENU);
     void removeAction(QAction *action);
     QList<QAction *> actions(MenuType type = TOOLS_MENU);

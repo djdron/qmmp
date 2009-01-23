@@ -25,12 +25,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="89"/>
         <source>OK</source>
-        <translation>Застосувати</translation>
+        <translation type="obsolete">Застосувати</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>Cancel</source>
-        <translation>Відмінити</translation>
+        <translation type="obsolete">Відмінити</translation>
     </message>
 </context>
 <context>
@@ -66,7 +66,7 @@
         <translation>Вихід</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="104"/>
+        <location filename="../statusicon.cpp" line="103"/>
         <source>Now Playing</source>
         <translation>Зараз грає</translation>
     </message>
@@ -79,17 +79,17 @@
         <translation>Модуль Status Icon</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="49"/>
+        <location filename="../statusiconfactory.cpp" line="50"/>
         <source>About Status Icon Plugin</source>
         <translation>Про модуль Status Icon</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="50"/>
+        <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
         <translation>Модуль Status Icon для Qmmp</translation>
     </message>
     <message>
-        <location filename="../statusiconfactory.cpp" line="51"/>
+        <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

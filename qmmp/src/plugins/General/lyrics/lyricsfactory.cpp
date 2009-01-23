@@ -27,6 +27,7 @@ const GeneralProperties LyricsFactory::properties() const
 {
     GeneralProperties properties;
     properties.name = tr("Lyrics Plugin");
+    properties.shortName = "lyrics";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
     properties.visibilityControl = FALSE;

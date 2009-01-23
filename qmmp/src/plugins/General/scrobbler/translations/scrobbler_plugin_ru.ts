@@ -8,17 +8,17 @@
         <translation>Модуль scrobbler</translation>
     </message>
     <message>
-        <location filename="../scrobblerfactory.cpp" line="49"/>
+        <location filename="../scrobblerfactory.cpp" line="50"/>
         <source>About Scrobbler Plugin</source>
         <translation>О модуле Scrobbler </translation>
     </message>
     <message>
-        <location filename="../scrobblerfactory.cpp" line="50"/>
+        <location filename="../scrobblerfactory.cpp" line="51"/>
         <source>Qmmp AudioScrobbler Plugin</source>
         <translation>Модуль AudioScrobbler для Qmmp</translation>
     </message>
     <message>
-        <location filename="../scrobblerfactory.cpp" line="51"/>
+        <location filename="../scrobblerfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов  &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
 <context>
     <name>Lyrics</name>
     <message>
@@ -17,22 +16,22 @@
         <translation>Модуль текстів</translation>
     </message>
     <message>
-        <location filename="../lyricsfactory.cpp" line="48"/>
+        <location filename="../lyricsfactory.cpp" line="50"/>
         <source>About Lyrics Plugin</source>
         <translation>Про модуль текстів</translation>
     </message>
     <message>
-        <location filename="../lyricsfactory.cpp" line="49"/>
+        <location filename="../lyricsfactory.cpp" line="51"/>
         <source>Qmmp Lyrics Plugin</source>
         <translation>Модуль текстів для Qmmp</translation>
     </message>
     <message>
-        <location filename="../lyricsfactory.cpp" line="51"/>
+        <location filename="../lyricsfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../lyricsfactory.cpp" line="50"/>
+        <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki.org</source>
         <translation>Цей модуль отримує тексти з LyricWiki.org</translation>
     </message>
