@@ -129,7 +129,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="184"/>
         <source>Copyright:</source>
-        <translation>Авторскі права:</translation>
+        <translation>Авторські права:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="167"/>
