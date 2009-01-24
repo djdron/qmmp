@@ -129,7 +129,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="258"/>
         <source>Genre:</source>
-        <translation>Жінр:</translation>
+        <translation>Жанр:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="268"/>
