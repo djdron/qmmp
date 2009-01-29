@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -191,8 +190,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
-        <source>MPEG-2 MP3</source>
-        <translation></translation>
+        <source>MP3 (MPEG audio layer 3)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

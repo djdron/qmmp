@@ -190,7 +190,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
-        <source>MPEG-2 MP3</source>
+        <source>MP3 (MPEG audio layer 3)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
