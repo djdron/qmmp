@@ -2,6 +2,8 @@
  *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
+ *   Copyright (C) 2006 by Kevin Ottens <ervin@kde.org>                    *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -18,8 +20,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-//TODO based on solid
-
 #include <QDBusInterface>
 #include <QDBusConnection>
 
@@ -29,6 +29,10 @@
 Q_DECLARE_METATYPE(ChangeDescription);
 Q_DECLARE_METATYPE(QList<ChangeDescription>);
 
+/**
+ *   This function has been copied from Solid (KDE hardware library)
+ */
+
 const QDBusArgument &operator<<(QDBusArgument &arg, const ChangeDescription &change)
 {
     arg.beginStructure();
@@ -36,6 +40,10 @@ const QDBusArgument &operator<<(QDBusArgument &arg, const ChangeDescription &cha
     arg.endStructure();
     return arg;
 }
+
+/**
+ *   This function has been copied from Solid (KDE hardware library)
+ */
 
 const QDBusArgument &operator>>(const QDBusArgument &arg, ChangeDescription &change)
 {

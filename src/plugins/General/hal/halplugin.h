@@ -49,9 +49,17 @@ private slots:
 private:
     QAction *findAction(const QString &dev_path);
     HalDevice *findDevice(QAction *action);
+    void addPath(const QString &path);
+    void removePath(const QString &path);
     HalManager *m_manager;
     QList <HalDevice *> m_devices;
     QActionGroup *m_actions;
+    bool m_detectCDA;
+    bool m_addTracks;
+    bool m_removeTracks;
+    bool m_detectRemovable;
+    bool m_addFiles;
+    bool m_removeFiles;
 };
 
 #endif

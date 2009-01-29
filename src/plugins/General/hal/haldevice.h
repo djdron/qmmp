@@ -2,6 +2,8 @@
  *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
+ *   Copyright (C) 2006 by Kevin Ottens <ervin@kde.org>                    *
+ *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
@@ -27,6 +29,9 @@
 
 class QDBusInterface;
 
+/**
+ *   This structure has been copied from Solid (KDE hardware library)
+ */
 struct ChangeDescription
 {
     QString key;

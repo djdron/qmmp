@@ -17,49 +17,42 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#include <QTextCodec>
+#include <QSettings>
 
-#include <QtGui>
+#include <qmmp/qmmp.h>
 
 #include "settingsdialog.h"
-#include "halplugin.h"
-#include "halfactory.h"
 
-const GeneralProperties HalFactory::properties() const
+SettingsDialog::SettingsDialog(QWidget *parent)
+        : QDialog(parent)
 {
-    GeneralProperties properties;
-    properties.name = tr("HAL Plugin");
-    properties.shortName = "hal";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
+    ui.setupUi(this);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("HAL");
+    ui.cdGroupBox->setChecked(settings.value("cda", TRUE).toBool());
+    ui.addTracksCheckBox->setChecked(settings.value("add_tracks", FALSE).toBool());
+    ui.removeTracksCheckBox->setChecked(settings.value("remove_tracks", FALSE).toBool());
+    ui.removableGroupBox->setChecked(settings.value("removable", TRUE).toBool());
+    ui.addFilesCheckBox->setChecked(settings.value("add_files", FALSE).toBool());
+    ui.removeFilesCheckBox->setChecked(settings.value("remove_files", FALSE).toBool());
+    settings.endGroup();
 }
 
-General *HalFactory::create(QObject *parent)
-{
-    return new HalPlugin(parent);
-}
 
-QDialog *HalFactory::createConfigDialog(QWidget *parent)
-{
-    return new SettingsDialog(parent);
-}
+SettingsDialog::~SettingsDialog()
+{}
 
-void HalFactory::showAbout(QWidget *parent)
+void SettingsDialog::accept()
 {
-    QMessageBox::about (parent, tr("About HAL Plugin"),
-                        tr("Qmmp HAL Plugin") + "\n" +
-                        tr("This plugin provides removable devices detection using HAL") + "\n" +
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
-                        tr("Based on Solid (KDE hardware library)"));
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("HAL");
+    settings.setValue("cda", ui.cdGroupBox->isChecked());
+    settings.setValue("add_tracks", ui.addTracksCheckBox->isChecked());
+    settings.setValue("remove_tracks", ui.removeTracksCheckBox->isChecked());
+    settings.setValue("removable", ui.removableGroupBox->isChecked());
+    settings.setValue("add_files", ui.addFilesCheckBox->isChecked());
+    settings.setValue("remove_files", ui.removeFilesCheckBox->isChecked());
+    settings.endGroup();
+    QDialog::accept();
 }
-
-QTranslator *HalFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/hal_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN(HalFactory)

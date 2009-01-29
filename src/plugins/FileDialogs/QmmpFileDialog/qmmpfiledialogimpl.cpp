@@ -33,14 +33,14 @@
 
 
 /**
- *   This variable had been copied from Qt library
+ *   This variable has been copied from Qt library
  */
 
 const char *qt_file_dialog_filter_reg_exp =
     "([a-zA-Z0-9 -]*)\\(([a-zA-Z0-9_.*? +;#\\-\\[\\]@\\{\\}/!<>\\$%&=^~:\\|]*)\\)$";
 
 /**
- *   This function had been copied from Qt library
+ *   This function has been copied from Qt library
  */
 
 // Makes a list of filters from a normal filter string "Image Files (*.png *.jpg)"
