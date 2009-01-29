@@ -11,17 +11,23 @@ Qmmp - Qt-based multimedia player
 - поддержка Musepack
 - поддержка WavePack
 - поддержка ModPlug
-- поддержка WMA
+- поддержка WMA, APE (и др. форматов библиотеки FFmpeg)
 - поддержка PCM WAVE (и др. форматов библиотеки libsndfile)
-- вывод звука через AlSA
+- поддержка AAC
+- поддержка CD Audio
+- поддержка CUE (включая flac embeded cue)
+- вывод звука через ALSA
 - вывод звука через JACK
 - вывод звука через OSS
 - вывод звука через PulseAudio
 - скробблер Last.fm
-- поддержка D-Bus
 - анализатор спектра
 - передискретизация
-- поддрежка потокового вещания (MP3, Vorbis через IceCast/ShoutCast)
+- поддержка потокового вещания (MP3, Vorbis через IceCast/ShoutCast)
+- определение устройств
+- поддержка MPRIS
+- поддержка видео с помощью Mplayer
+- получение текстов песен с LyricWiki.org
 
 Требования:
 - OS GNU Linux
@@ -42,6 +48,8 @@ Qmmp - Qt-based multimedia player
 - wavpack >= 4.41 (Опционально)
 - pulseaudio >= 0.9.9 (Опционально)
 - ffmpeg >= 0.4.9-pre1 (Опционально)
+- cdio >= 0.80 (Опционально)
+- faad2 >= 2.6.1 (Опционально)
 - cmake >= 2.4.8 (только для сборки)
 
 Внимание! Для сборки Qmmp нужна утилита lrelease. Очень часто она находится в пакете qt4-linguist.
@@ -59,9 +67,9 @@ make install
 cmake ./ -D USE_JACK:BOOL=FALSE
 
 Доступные опции:
-USE_ALSA, USE_ANALYZER, USE_DBUS, USE_FFMPEG, USE_FLAC, USE_JACK, USE_MAD, USE_MODPLUG, USE_MPC,
-USE_NOTIFIER, USE_OSS, USE_PULSE, USE_QMMP_DIALOG, USE_SCROBBLER, USE_SNDFILE, USE_SRC, USE_STATICON,
-USE_VORBIS, USE_WAVPACK
+USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
+USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_ANALYZER, USE_MPRIS,
+USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_QMMP_DIALOG
 
 Также вы можете использовать ccmake для изменения конфигурации модулей.
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:
@@ -91,7 +99,7 @@ qmake-qt4 LIB_DIR=/lib64
 cmake ./ -D LIB_DIR=lib64
 
 
-Патчи, багрепорты, идеи и т.п.: forkotov02@hotmail.ru.
+Патчи, багрепорты, идеи и т.п.: forkotov02@hotmail.ru или http://code.google.com/p/qmmp/issues/list
 
 Автор выражает благодарность Вадиму Калинникову (www.ylsoftware.com) за предоставленный
 хостинг и тестирование программы.
