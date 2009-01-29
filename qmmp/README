@@ -11,17 +11,23 @@ Main opportunities:
 - Musepack support
 - WavePack support
 - ModPlug support
-- WMA support
+- WMA support (and other formats provided by FFmpeg library)
 - PCM WAVE support (and other formats provided by libsndfile library)
-- AlSA sound output
+- AAC support
+- CD Audio support
+- CUE support (including flac embeded cue)
+- ALSA sound output
 - JACK sound output
 - OSS sound output
 - PulseAudio output
 - Last.fm scrobbler
-- D-Bus support
 - Spectrum Analyzer
 - sample rate conversion
 - streaming support (MP3, Vorbis via IceCast/ShoutCast)
+- device detection
+- MPRIS support
+- video playback using Mplayer
+- lyrics support (from LyricWiki.org)
 
 Requirements:
 - OS GNU Linux
@@ -42,6 +48,8 @@ Requirements:
 - wavpack >= 4.41 (Optional)
 - pulseaudio >= 0.9.9 (Optional)
 - ffmpeg >= 0.4.9-pre1 (Optional)
+- cdio >= 0.80 (Optional)
+- faad2 >= 2.6.1 (Optional)
 - cmake >= 2.4.8 (for build only)
 
 
@@ -61,9 +69,9 @@ by running:
 cmake ./ -D USE_JACK:BOOL=FALSE
 
 Available options:
-USE_ALSA, USE_ANALYZER, USE_DBUS, USE_FFMPEG, USE_FLAC, USE_JACK, USE_MAD, USE_MODPLUG, USE_MPC,
-USE_NOTIFIER, USE_OSS, USE_PULSE, USE_QMMP_DIALOG, USE_SCROBBLER, USE_SNDFILE, USE_SRC, USE_STATICON,
-USE_VORBIS, USE_WAVPACK
+USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
+USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_ANALYZER, USE_MPRIS,
+USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_QMMP_DIALOG
 
 Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
