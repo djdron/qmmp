@@ -44,9 +44,11 @@ private slots:
     void removeDevice(const QString &udi);
     void addDevice(const QString &udi);
     void processAction(QAction *action);
+    void updateActions();
 
 private:
-    void updateActions();
+    QAction *findAction(const QString &dev_path);
+    HalDevice *findDevice(QAction *action);
     HalManager *m_manager;
     QList <HalDevice *> m_devices;
     QActionGroup *m_actions;
