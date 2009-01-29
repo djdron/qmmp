@@ -25,7 +25,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="81"/>
         <source>FFmpeg Formats</source>
-        <translation>Форматы FFmepg</translation>
+        <translation>Форматы FFmpeg</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="145"/>
@@ -190,7 +190,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
-        <source>MPEG-2 MP3</source>
+        <source>MP3 (MPEG audio layer 3)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
