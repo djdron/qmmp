@@ -39,10 +39,7 @@ HalPlugin::HalPlugin(QObject *parent)
     //find existing devices
     QStringList udis = m_manager->findDeviceByCapability("volume");
     foreach(QString udi, udis)
-    {
-        qDebug(qPrintable(udi));
-        addDevice(udi);
-    }
+    addDevice(udi);
 }
 
 
@@ -73,12 +70,44 @@ void HalPlugin::addDevice(const QString &udi)
             return;
     }
     HalDevice *device = new HalDevice(udi, this);
-    if (device->property("info.category").toString() == "volume"
-            && device->property("volume.disc.has_audio").toBool()) //add audio cd only TODO usb devices support
+    QStringList caps = device->property("info.capabilities").toStringList();
+    if (!caps.contains("block") || !caps.contains("volume") ||
+            device->property("info.category").toString() != "volume" ||
+            device->property("info.volume.ignore").toBool()) //filter unsupported devices
+    {
+        delete device;
+        return;
+    }
+    //audio cd
+    if (caps.contains("volume.disc") && device->property("volume.disc.has_audio").toBool())
     {
         qDebug("HalPlugin: device \"%s\" added (cd audio)", qPrintable(udi));
         m_devices << device;
         updateActions();
+        return;
+    }
+
+    HalDevice parentDevice(device->property("info.parent").toString());
+
+    caps = parentDevice.property("info.capabilities").toStringList();
+    // filter removable devices
+    if (!(caps.contains("storage") && parentDevice.property("storage.removable").toBool()))
+    {
+        delete device;
+        return;
+    }
+
+    if (device->property("volume.size").toLongLong() < 5000000000LL &&
+            (device->property("volume.fstype").toString() == "vfat" ||
+             device->property("volume.fstype").toString() == "iso" ||
+             device->property("volume.fstype").toString() == "udf" ||
+             device->property("volume.fstype").toString() == "ext2"))
+    {
+        qDebug("HalPlugin: device \"%s\" added (removable)", qPrintable(udi));
+        m_devices << device;
+        updateActions();
+        connect(device, SIGNAL(propertyModified(int, const QList<ChangeDescription> &)),
+                SLOT(updateActions()));
         return;
     }
     delete device;
@@ -86,42 +115,41 @@ void HalPlugin::addDevice(const QString &udi)
 
 void HalPlugin::updateActions()
 {
-    // add device
+    // add action for cd audio or mounted volume
     foreach(HalDevice *device, m_devices)
     {
-        QString dev_path = "cdda://" + device->property("block.device").toString();
-        bool exists = FALSE;
-        foreach(QAction *action, m_actions->actions ())
+        QStringList caps = device->property("info.capabilities").toStringList();
+        QString dev_path;
+        if (caps.contains("volume.disc") && device->property("volume.disc.has_audio").toBool()) //cd audio
+            dev_path = "cdda://" + device->property("block.device").toString();
+        else if (device->property("volume.is_mounted").toBool()) //mounted volume
+            dev_path = device->property("volume.mount_point").toString();
+        else
+            continue;
+
+        if (!findAction(dev_path))
         {
-            if (action->data().toString() == dev_path)
+            QAction *action = new QAction(this);
+            QString actionText;
+            if (caps.contains("volume.disc") && device->property("volume.disc.has_audio").toBool())
+                actionText = QString(tr("Add CD \"%1\"")).arg(device->property("block.device").toString());
+            else
             {
-                exists = TRUE;
-                break;
+                QString name = device->property("volume.label").toString();
+                if (name.isEmpty())
+                    name = dev_path;
+                actionText = QString(tr("Add Volume \"%1\"")).arg(name);
             }
-        }
-        if (!exists)
-        {
-            QAction *action = new QAction(QString(tr("Add CD (%1)"))
-                                          .arg(device->property("block.device").toString()), this);
+            action->setText(actionText);
             action->setData(dev_path);
             m_actions->addAction(action);
             GeneralHandler::instance()->addAction(action, GeneralHandler::TOOLS_MENU);
         }
     }
-    // remove device
+    // remove action if device is unmounted/removed
     foreach(QAction *action, m_actions->actions ())
     {
-        bool exists = FALSE;
-        foreach(HalDevice *device, m_devices)
-        {
-            QString dev_path = "cdda://" + device->property("block.device").toString();
-            if (dev_path == action->data().toString())
-            {
-                exists = TRUE;
-                break;
-            }
-        }
-        if (!exists)
+        if (!findDevice(action))
         {
             m_actions->removeAction(action);
             GeneralHandler::instance()->removeAction(action);
@@ -133,5 +161,41 @@ void HalPlugin::updateActions()
 void HalPlugin::processAction(QAction *action)
 {
     qDebug("HalPlugin: action triggered: %s", qPrintable(action->data().toString()));
-    MediaPlayer::instance()->playListModel()->addFile(action->data().toString());
+    QString path = action->data().toString();
+    if (path.startsWith("cdda://"))
+        MediaPlayer::instance()->playListModel()->addFile(path);
+    else
+        MediaPlayer::instance()->playListModel()->addDirectory(path);
+}
+
+QAction *HalPlugin::findAction(const QString &dev_path)
+{
+    foreach(QAction *action, m_actions->actions ())
+    {
+        if (action->data().toString() == dev_path)
+            return action;
+    }
+    return 0;
+}
+
+HalDevice *HalPlugin::findDevice(QAction *action)
+{
+    foreach(HalDevice *device, m_devices)
+    {
+        QStringList caps = device->property("info.capabilities").toStringList();
+        QString dev_path;
+        if (caps.contains("volume.disc") && device->property("volume.disc.has_audio").toBool())
+        {
+            dev_path = "cdda://" + device->property("block.device").toString();
+            if (dev_path == action->data().toString())
+                return device;
+        }
+        if (device->property("volume.is_mounted").toBool())
+        {
+            dev_path = device->property("volume.mount_point").toString();
+            if (dev_path == action->data().toString())
+                return device;
+        }
+    }
+    return 0;
 }
