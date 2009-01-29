@@ -77,7 +77,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="122"/>
         <source>Some code is copied from the Qt library</source>
-        <translation>Часть когда использована из библиотеки Qt</translation>
+        <translation>Часть кода использована из библиотеки Qt</translation>
     </message>
 </context>
 <context>
