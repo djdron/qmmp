@@ -24,6 +24,8 @@
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistitem.h>
+#include <qmmp/qmmp.h>
 #include "haldevice.h"
 #include "halmanager.h"
 #include "halplugin.h"
@@ -36,10 +38,23 @@ HalPlugin::HalPlugin(QObject *parent)
     connect(m_manager,SIGNAL(deviceAdded(const QString &)), SLOT(addDevice(const QString &)));
     connect(m_manager,SIGNAL(deviceRemoved(const QString &)), SLOT(removeDevice(const QString &)));
     connect(m_actions,SIGNAL(triggered (QAction *)), SLOT(processAction(QAction *)));
+    //load settings
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("HAL");
+    m_detectCDA = settings.value("cda", TRUE).toBool();
+    m_detectRemovable = settings.value("removable", TRUE).toBool();
+    m_addTracks = FALSE; //do not load tracks on startup
+    m_addFiles = FALSE;
     //find existing devices
     QStringList udis = m_manager->findDeviceByCapability("volume");
     foreach(QString udi, udis)
     addDevice(udi);
+    //load remaining settings
+    m_addTracks = settings.value("add_tracks", FALSE).toBool();
+    m_removeTracks = settings.value("remove_tracks", FALSE).toBool();
+    m_addFiles = settings.value("add_files", FALSE).toBool();
+    m_removeFiles = settings.value("remove_files", FALSE).toBool();
+    settings.endGroup();
 }
 
 
@@ -81,9 +96,14 @@ void HalPlugin::addDevice(const QString &udi)
     //audio cd
     if (caps.contains("volume.disc") && device->property("volume.disc.has_audio").toBool())
     {
-        qDebug("HalPlugin: device \"%s\" added (cd audio)", qPrintable(udi));
-        m_devices << device;
-        updateActions();
+        if (m_detectCDA)
+        {
+            qDebug("HalPlugin: device \"%s\" added (cd audio)", qPrintable(udi));
+            m_devices << device;
+            updateActions();
+        }
+        else
+            delete device;
         return;
     }
 
@@ -103,11 +123,16 @@ void HalPlugin::addDevice(const QString &udi)
              device->property("volume.fstype").toString() == "udf" ||
              device->property("volume.fstype").toString() == "ext2"))
     {
-        qDebug("HalPlugin: device \"%s\" added (removable)", qPrintable(udi));
-        m_devices << device;
-        updateActions();
-        connect(device, SIGNAL(propertyModified(int, const QList<ChangeDescription> &)),
-                SLOT(updateActions()));
+        if (m_detectRemovable)
+        {
+            qDebug("HalPlugin: device \"%s\" added (removable)", qPrintable(udi));
+            m_devices << device;
+            updateActions();
+            connect(device, SIGNAL(propertyModified(int, const QList<ChangeDescription> &)),
+                    SLOT(updateActions()));
+        }
+        else
+            delete device;
         return;
     }
     delete device;
@@ -144,6 +169,7 @@ void HalPlugin::updateActions()
             action->setData(dev_path);
             m_actions->addAction(action);
             GeneralHandler::instance()->addAction(action, GeneralHandler::TOOLS_MENU);
+            addPath(dev_path);
         }
     }
     // remove action if device is unmounted/removed
@@ -153,6 +179,7 @@ void HalPlugin::updateActions()
         {
             m_actions->removeAction(action);
             GeneralHandler::instance()->removeAction(action);
+            removePath(action->data().toString());
             action->deleteLater();
         }
     }
@@ -198,4 +225,39 @@ HalDevice *HalPlugin::findDevice(QAction *action)
         }
     }
     return 0;
+}
+
+void HalPlugin::addPath(const QString &path)
+{
+    foreach(PlayListItem *item, MediaPlayer::instance()->playListModel()->items()) // Is it already exist?
+    {
+        if (item->url().startsWith(path))
+            return;
+    }
+
+    if (path.startsWith("cdda://") && m_addTracks)
+    {
+        MediaPlayer::instance()->playListModel()->addFile(path);
+        return;
+    }
+    else if (!path.startsWith("cdda://") && m_addFiles)
+        MediaPlayer::instance()->playListModel()->addDirectory(path);
+}
+
+void HalPlugin::removePath(const QString &path)
+{
+    if ((path.startsWith("cdda://") && !m_removeTracks) ||
+            (!path.startsWith("cdda://") && !m_removeFiles)) //process settings
+        return;
+
+    PlayListModel *model = MediaPlayer::instance()->playListModel();
+
+    int i = 0;
+    while (model->count() > 0 && i < model->count())
+    {
+        if (model->item(i)->url ().startsWith(path))
+            model->removeAt (i);
+        else
+            ++i;
+    }
 }

@@ -32,6 +32,7 @@ SET(libhal_SRCS
     halmanager.cpp
     halplugin.cpp
     haldevice.cpp
+    settingsdialog.cpp
 )
 
 SET(libhal_MOC_HDRS
@@ -39,9 +40,10 @@ SET(libhal_MOC_HDRS
     halmanager.h
     halplugin.h
     haldevice.h
+    settingsdialog.h
 )
 
-#SET(libhal_RCCS translations/translations.qrc)
+SET(libhal_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libhal_RCC_SRCS ${libhal_RCCS})
 
@@ -49,13 +51,16 @@ QT4_WRAP_CPP(libhal_MOC_SRCS ${libhal_MOC_HDRS})
 
 # user interface
 
+SET(libhal_UIS
+    settingsdialog.ui
+)
 
-# QT4_WRAP_UI(libhal_UIS_H ${libhal_UIS})
+QT4_WRAP_UI(libhal_UIS_H ${libhal_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(hal SHARED ${libhal_SRCS} ${libhal_MOC_SRCS} ${libhal_RCC_SRCS})
+ADD_LIBRARY(hal SHARED ${libhal_SRCS} ${libhal_MOC_SRCS} ${libhal_UIS_H} ${libhal_RCC_SRCS})
 add_dependencies(hal qmmpui)
 target_link_libraries(hal ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS hal DESTINATION ${LIB_DIR}/qmmp/General)

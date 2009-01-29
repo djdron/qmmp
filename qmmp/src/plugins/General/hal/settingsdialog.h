@@ -17,49 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#include <QtGui>
+#include <QDialog>
 
-#include "settingsdialog.h"
-#include "halplugin.h"
-#include "halfactory.h"
+#include "ui_settingsdialog.h"
 
-const GeneralProperties HalFactory::properties() const
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class SettingsDialog : public QDialog
 {
-    GeneralProperties properties;
-    properties.name = tr("HAL Plugin");
-    properties.shortName = "hal";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
-}
+Q_OBJECT
+public:
+    SettingsDialog(QWidget *parent = 0);
 
-General *HalFactory::create(QObject *parent)
-{
-    return new HalPlugin(parent);
-}
+    ~SettingsDialog();
 
-QDialog *HalFactory::createConfigDialog(QWidget *parent)
-{
-    return new SettingsDialog(parent);
-}
 
-void HalFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About HAL Plugin"),
-                        tr("Qmmp HAL Plugin") + "\n" +
-                        tr("This plugin provides removable devices detection using HAL") + "\n" +
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
-                        tr("Based on Solid (KDE hardware library)"));
-}
+public slots:
+    virtual void accept();
 
-QTranslator *HalFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/hal_plugin_") + locale);
-    return translator;
-}
+private:
+    Ui::SettingsDialog ui;
+};
 
-Q_EXPORT_PLUGIN(HalFactory)
+#endif
