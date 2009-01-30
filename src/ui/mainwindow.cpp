@@ -66,6 +66,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
     setWindowFlags(Qt::FramelessWindowHint);
     setFixedSize (275,116);
+    setWindowTitle("Qmmp");
 
     //prepare libqmmp and libqmmpui libraries for playing
     m_player = new MediaPlayer(this);
