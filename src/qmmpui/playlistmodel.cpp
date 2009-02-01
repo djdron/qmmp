@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright(C) 2006-2008 by Ilya Kotov                                  *
+ *   Copyright(C) 2006-2009 by Ilya Kotov                                  *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -124,6 +124,11 @@ PlayListItem* PlayListModel::currentItem()
         return 0;
     else
         return m_items.at(qMin(m_items.size() - 1, m_current));
+}
+
+PlayListItem* PlayListModel::item(int row) const
+{
+    return (row <  m_items.size() && row >= 0) ? m_items.at(row) : 0;
 }
 
 int PlayListModel::currentRow()
