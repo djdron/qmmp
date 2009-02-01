@@ -43,6 +43,7 @@ private:
     void deinit();
     bool findHeader();
     bool findXingHeader(struct mad_bitptr, unsigned int);
+    uint findID3v2(uchar *data, uint size);
     bool inited, user_stop, done, m_finish, derror, eof, useeq;
     qint64 totalTime, seekTime;
     int channels;

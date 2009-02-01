@@ -6,6 +6,8 @@
 
 
 #include <QtGui>
+#include <taglib/id3v2header.h>
+#include <taglib/tbytevector.h>
 
 #include "decoder_mad.h"
 #include "tagextractor.h"
@@ -393,7 +395,7 @@ void DecoderMAD::flush(bool final)
 
 void DecoderMAD::run()
 {
-    int skip_frames = 1; //skip first frame
+    int skip_frames = 0; //skip first frame
     mutex()->lock();
 
     if (! inited)
@@ -461,18 +463,28 @@ void DecoderMAD::run()
         mutex()->unlock();
 
         // decode
-        while (! done && ! m_finish && ! derror)
+        while (!done && !m_finish && !derror)
         {
             if (mad_frame_decode(&frame, &stream) == -1)
             {
                 if (stream.error == MAD_ERROR_LOSTSYNC)
+                {
+                    //skip ID3v2 tag
+                    uint tagSize = findID3v2((uchar *)stream.this_frame,
+                                             (uint) stream.bufend - (uint) stream.this_frame);
+                    if (tagSize > 0)
+                    {
+                        mad_stream_skip(&stream, tagSize);
+                        qDebug("DecoderMAD: %d bytes skipped", tagSize);
+                    }
                     continue;
+                }
 
                 if (stream.error == MAD_ERROR_BUFLEN)
                     break;
 
                 // error in decoding
-                if (! MAD_RECOVERABLE(stream.error))
+                if (!MAD_RECOVERABLE(stream.error))
                 {
                     derror = true;
                     break;
@@ -534,6 +546,23 @@ void DecoderMAD::run()
         input()->close();
     deinit();
 
+}
+
+uint DecoderMAD::findID3v2(uchar *data, uint size) //retuns ID3v2 tag size
+{
+    if (size < 10)
+        return 0;
+
+    if (((data[0] == 'I' && data[1] == 'D' && data[2] == '3') || //ID3v2 tag
+            (data[0] == '3' && data[1] == 'D' && data[2] == 'I')) && //ID3v2 footer
+            data[3] < 0xff && data[4] < 0xff && data[6] < 0x80 &&
+            data[7] < 0x80 && data[8] < 0x80 && data[9] < 0x80)
+    {
+        TagLib::ByteVector byteVector((char *)data, size);
+        TagLib::ID3v2::Header header(byteVector);
+        return header.tagSize();
+    }
+    return 0;
 }
 
 static inline signed int scale(mad_fixed_t sample)
