@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -90,14 +90,11 @@ public:
 
     int count();
     PlayListItem* currentItem();
-    int row(PlayListItem* item)const
+    int row(PlayListItem* item) const
     {
         return m_items.indexOf(item);
     }
-    PlayListItem* item(int row)const
-    {
-        return m_items.at(row);
-    }
+    PlayListItem* item(int row) const;
     int currentRow();
     bool setCurrent (int);
     bool isSelected(int);
