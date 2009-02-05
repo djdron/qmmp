@@ -471,7 +471,7 @@ void DecoderMAD::run()
                 {
                     //skip ID3v2 tag
                     uint tagSize = findID3v2((uchar *)stream.this_frame,
-                                             (uint) stream.bufend - (uint) stream.this_frame);
+                                             (ulong) (stream.bufend - stream.this_frame));
                     if (tagSize > 0)
                     {
                         mad_stream_skip(&stream, tagSize);
@@ -548,7 +548,7 @@ void DecoderMAD::run()
 
 }
 
-uint DecoderMAD::findID3v2(uchar *data, uint size) //retuns ID3v2 tag size
+uint DecoderMAD::findID3v2(uchar *data, ulong size) //retuns ID3v2 tag size
 {
     if (size < 10)
         return 0;
