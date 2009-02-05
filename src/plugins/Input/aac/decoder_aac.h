@@ -63,11 +63,11 @@ private:
     // output buffer
     char *m_output_buf, *m_input_buf;
     void *m_prebuf2;
-    qint64 m_output_bytes, m_output_at, m_input_at;
+    unsigned long m_output_bytes;
 
     unsigned int m_bks;
     bool m_done, m_finish;
-    long unsigned int m_len, m_freq, m_bitrate;
+    unsigned long m_len, m_freq, m_bitrate, m_input_at, m_output_at;
     unsigned char m_chan;
     unsigned long m_output_size;
     double m_frameSize; //frame size in bytes
