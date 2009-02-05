@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,9 +40,7 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
     m_http = new QHttp(this);
-    connect(m_http, SIGNAL(requestFinished (int, bool)), SLOT(processResponse(int, bool)));
-    connect(m_http, SIGNAL(readyRead (const QHttpResponseHeader&)),
-            SLOT(readResponse(const QHttpResponseHeader&)));
+    connect(m_http, SIGNAL(done (bool)), SLOT(readResponse(bool)));
 
     //use global proxy settings
     if (settings.value ("Proxy/use_proxy", FALSE).toBool())
@@ -92,7 +90,8 @@ void AddUrlDialog::accept( )
         m_history.prepend(s);
 
         if (s.startsWith("http://"))
-        {   //try to download playlist
+        {
+            //try to download playlist
             PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
             if (prs)
             {
@@ -109,23 +108,16 @@ void AddUrlDialog::accept( )
     QDialog::accept();
 }
 
-void AddUrlDialog::processResponse(int, bool error)
+void AddUrlDialog::readResponse(bool error)
 {
     if (error)
-    {
         QMessageBox::critical (this, tr("Error"), m_http->errorString ());
-        QDialog::accept();
-    }
-}
-
-void AddUrlDialog::readResponse(const QHttpResponseHeader&)
-{
-    QString s = urlComboBox->currentText();
-    PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
-    if (prs)
+    else
     {
-        m_model->addFiles(prs->decode(m_http->readAll()));
-        return;
+        QString s = urlComboBox->currentText();
+        PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
+        if (prs)
+            m_model->addFiles(prs->decode(m_http->readAll()));
     }
     QDialog::accept();
 }

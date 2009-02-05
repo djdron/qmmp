@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -48,8 +48,7 @@ protected slots:
     virtual void accept();
 
 private slots:
-    void processResponse(int, bool);
-    void readResponse(const QHttpResponseHeader&);
+    void readResponse(bool);
 
 private:
     void setModel(PlayListModel*);
