@@ -35,12 +35,14 @@ SET(libwavpack_SRCS
   decoder_wavpack.cpp
   decoderwavpackfactory.cpp
   detailsdialog.cpp
+  cueparser.cpp
 )
 
 SET(libwavpack_MOC_HDRS
   decoderwavpackfactory.h
   decoder_wavpack.h
   detailsdialog.h
+  cueparser.h
 )
 
 SET(libwavpack_RCCS translations/translations.qrc)

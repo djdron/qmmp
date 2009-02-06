@@ -3,10 +3,12 @@ include(../../plugins.pri)
 FORMS += detailsdialog.ui 
 HEADERS += decoderwavpackfactory.h \
            decoder_wavpack.h \
-           detailsdialog.h
+           detailsdialog.h \
+           cueparser.h
 SOURCES += decoder_wavpack.cpp \
            decoderwavpackfactory.cpp \
-           detailsdialog.cpp
+           detailsdialog.cpp \
+           cueparser.cpp
 
 TARGET=$$PLUGINS_PREFIX/Input/wavpack
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libwavpack.so

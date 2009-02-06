@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -62,7 +62,8 @@ private:
     unsigned long m_output_size;
     qint64 m_totalTime, m_seekTime;
     QString m_path;
+    qint64 m_offset;
+    qint64 m_length;
 };
-
 
 #endif // DECODER_WAVPACK_H

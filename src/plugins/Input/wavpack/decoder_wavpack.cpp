@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,8 +29,10 @@
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
+#include "QtDebug"
 
 #include "decoder_wavpack.h"
+#include "cueparser.h"
 
 // Decoder class
 
@@ -53,6 +55,8 @@ DecoderWavPack::DecoderWavPack(QObject *parent, DecoderFactory *d, Output *o, co
     m_chan = 0;
     m_output_size = 0;
     m_context = 0;
+    m_length = 0;
+    m_offset = 0;
 }
 
 DecoderWavPack::~DecoderWavPack()
@@ -123,19 +127,46 @@ bool DecoderWavPack::initialize()
     m_output_bytes = 0;
 
     char err [80];
-    m_context = WavpackOpenFileInput (m_path.toLocal8Bit(), err,
-                                      OPEN_WVC | OPEN_TAGS, 0);
-    if(!m_context)
+    if (m_path.startsWith("wvpack://")) //embeded cue track
+    {
+        QString p = QUrl(m_path).path();
+        m_context = WavpackOpenFileInput (p.toLocal8Bit(), err, OPEN_WVC | OPEN_TAGS, 0);
+        int cue_len = WavpackGetTagItem (m_context, "cuesheet", NULL, 0);
+        char *value;
+        if (cue_len)
+        {
+            value = (char*)malloc (cue_len * 2 + 1);
+            WavpackGetTagItem (m_context, "cuesheet", value, cue_len + 1);
+            CUEParser parser(value, p);
+            int track = m_path.section("#", -1).toInt();
+            m_offset = parser.offset(track);
+            m_length = parser.length(track);
+            m_path = p;
+        }
+    }
+    else
+    {
+        m_context = WavpackOpenFileInput (m_path.toLocal8Bit(), err, OPEN_WVC | OPEN_TAGS, 0);
+    }
+
+    if (!m_context)
     {
         qWarning("DecoderWavPack: error: %s", err);
         return FALSE;
     }
+
     m_chan = WavpackGetNumChannels(m_context);
     m_freq = WavpackGetSampleRate (m_context);
-    m_bps =  WavpackGetBitsPerSample (m_context);
+    m_bps = WavpackGetBitsPerSample (m_context);
     configure(m_freq, m_chan, m_bps);
-    m_totalTime = (int) WavpackGetNumSamples(m_context)/m_freq;
     m_inited = TRUE;
+
+    if (m_offset)
+        m_seekTime = m_offset;
+    if (m_length)
+        m_totalTime = m_length;
+    else
+        m_totalTime = (qint64) WavpackGetNumSamples(m_context) / m_freq;
     qDebug("DecoderWavPack: initialize succes");
     return TRUE;
 }
@@ -151,7 +182,7 @@ qint64 DecoderWavPack::lengthInSeconds()
 
 void DecoderWavPack::seek(qint64 pos)
 {
-    m_seekTime = pos;
+    m_seekTime = pos + m_offset;
 }
 
 void DecoderWavPack::deinit()
@@ -160,7 +191,9 @@ void DecoderWavPack::deinit()
     m_freq = m_bitrate = 0;
     m_chan = 0;
     m_output_size = 0;
-    if(m_context)
+    m_length = 0;
+    m_offset = 0;
+    if (m_context)
     {
         WavpackCloseFile (m_context);
         m_context = 0;
@@ -188,23 +221,25 @@ void DecoderWavPack::run()
         mutex()->lock ();
 
         //seeking
-
         if (m_seekTime >= 0.0)
         {
             WavpackSeekSample (m_context, m_seekTime * m_freq);
             m_seekTime = -1.0;
         }
+        //stop if track ended
+        if (WavpackGetSampleIndex(m_context)/m_freq-m_offset >= m_totalTime)
+        {
+            m_finish = TRUE;
+        }
 
-        // decode
         samples = (globalBufferSize-m_output_at)/m_chan/4;
 
         len = WavpackUnpackSamples (m_context, in, samples);
-        for(ulong i = 0; i < len * m_chan; ++i)
+        for (ulong i = 0; i < len * m_chan; ++i)
             out[i] = in[i];
 
         len *= (m_chan * 2); //convert to number of bytes
         memcpy(m_output_buf + m_output_at, (char *) out, len);
-
         if (len > 0)
         {
             m_bitrate =int( WavpackGetInstantBitrate(m_context)/1000);
