@@ -1,12 +1,12 @@
 project(libaac)
 
+INCLUDE(CheckCXXSourceCompiles)
 INCLUDE(CheckIncludeFileCXX)
 cmake_minimum_required(VERSION 2.4.7)
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
-              
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -30,6 +30,33 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 # libfaad
 
 CHECK_INCLUDE_FILE_CXX(neaacdec.h FAAD_FOUND)
+
+IF(FAAD_FOUND)
+SET(CMAKE_REQUIRED_LIBRARIES faad)
+CHECK_CXX_SOURCE_COMPILES("
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <neaacdec.h>
+
+int main(int argc, char **argv)
+{
+#ifdef OLD_FAAD_PROTO
+unsigned long int srate;
+#else
+uint32_t srate;
+#endif
+uint32_t l;
+uint8_t *d;
+unsigned char chan;
+void    *_instance;
+        NeAACDecInit2(_instance, d,l, &srate,&chan);
+        return 0;
+}" FAAD_MODIFIED)
+IF(FAAD_MODIFIED)
+ADD_DEFINITIONS(-DFAAD_MODIFIED)
+ENDIF(FAAD_MODIFIED)
+ENDIF(FAAD_FOUND)
 
 include_directories(${TAGLIB_INCLUDE_DIRS})
 link_directories(${TAGLIB_LIBRARY_DIRS})
