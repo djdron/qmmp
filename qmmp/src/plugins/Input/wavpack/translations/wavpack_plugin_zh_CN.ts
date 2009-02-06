@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="zh_CN">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="28"/>
+        <location filename="../decoderwavpackfactory.cpp" line="44"/>
         <source>WavPack Plugin</source>
         <translation>WavPack 插件</translation>
     </message>
@@ -14,27 +13,27 @@
         <translation type="obsolete">WavPackk 文件</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="89"/>
+        <location filename="../decoderwavpackfactory.cpp" line="129"/>
         <source>About WavPack Audio Plugin</source>
         <translation>关于 WavPack 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="90"/>
+        <location filename="../decoderwavpackfactory.cpp" line="130"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Qmmp WavPack 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="92"/>
+        <location filename="../decoderwavpackfactory.cpp" line="132"/>
         <source>WavPack library version:</source>
         <translation>WavPack 库版本：</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="93"/>
+        <location filename="../decoderwavpackfactory.cpp" line="133"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="30"/>
+        <location filename="../decoderwavpackfactory.cpp" line="46"/>
         <source>WavPack Files</source>
         <translation>WavPack 文件</translation>
     </message>
