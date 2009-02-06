@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -195,7 +195,6 @@ bool DecoderAAC::initialize()
         m_input_at -= tag_size;
         m_input_at += input()->read((char *)(m_input_buf + m_input_at), AAC_BUFFER_SIZE - m_input_at);
     }
-
     int res = NeAACDecInit (data()->handle, (unsigned char*) m_input_buf, m_input_at, &m_freq, &m_chan);
 
     if (res < 0)

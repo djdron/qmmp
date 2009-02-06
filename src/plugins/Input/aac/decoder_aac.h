@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,7 @@
 #include <neaacdec.h>
 
 #include <qmmp/decoder.h>
+
 
 struct aac_data
 {
@@ -65,10 +66,17 @@ private:
     void *m_prebuf2;
     unsigned long m_output_bytes;
 
+#ifdef FAAD_MODIFIED
+    uint32_t m_freq;
+    uint8_t m_chan;
+#else
+    unsigned long m_freq;
+    unsigned char m_chan;
+#endif
+
     unsigned int m_bks;
     bool m_done, m_finish;
-    unsigned long m_len, m_freq, m_bitrate, m_input_at, m_output_at;
-    unsigned char m_chan;
+    unsigned long m_len, m_bitrate, m_input_at, m_output_at;
     unsigned long m_output_size;
     double m_frameSize; //frame size in bytes
     qint64 m_totalTime, m_seekTime;
