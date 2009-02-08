@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -186,12 +187,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
-        <translation>Einstellungen des FFmpeg-Plugins</translation>
+        <translation>Einstellungen FFmpeg-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>MP3 (MPEG audio layer 3)</source>
-        <translation type="unfinished"></translation>
+        <translation>MP3 (MPEG Audio Layer 3)</translation>
     </message>
 </context>
 </TS>

@@ -155,7 +155,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ModPlug Plugin Settings</source>
-        <translation>Einstellungen des ModPlug-Plugins</translation>
+        <translation>Einstellungen ModPlug-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="23"/>
@@ -315,7 +315,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="690"/>
         <source>Fast playlist info</source>
-        <translation>Fast playlist info</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="700"/>

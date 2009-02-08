@@ -217,7 +217,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>MPEG Plugin Settings</source>
-        <translation>Einstellungen des MPEG-Plugins</translation>
+        <translation>Einstellungen MPEG-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="141"/>
@@ -232,12 +232,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="192"/>
         <source>ID3v1 encoding:</source>
-        <translation>ID3v1 Encoding:</translation>
+        <translation>ID3v1-Kodierung:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="224"/>
         <source>ID3v2 encoding:</source>
-        <translation>ID3v2 Encoding:</translation>
+        <translation>ID3v2-Kodierung:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="272"/>

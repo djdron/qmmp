@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>PlayListModel</name>
     <message>
         <location filename="../playlistmodel.cpp" line="341"/>
         <source>Url:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="342"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="343"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Künstler:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="344"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>Album:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="345"/>
         <source>Genre:</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="346"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar:</translation>
     </message>
 </context>
 <context>

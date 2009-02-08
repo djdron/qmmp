@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>CUE Plugin Settings</source>
-        <translation>Einstellungen des CUE-Plugins</translation>
+        <translation>Einstellungen CUE-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>

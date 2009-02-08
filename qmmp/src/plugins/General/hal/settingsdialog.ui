@@ -51,7 +51,7 @@
    <item>
     <widget class="QGroupBox" name="removableGroupBox" >
      <property name="title" >
-      <string>Removable Devcie Detection</string>
+      <string>Removable Device Detection</string>
      </property>
      <property name="checkable" >
       <bool>true</bool>

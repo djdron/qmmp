@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Status Icon Plugin Settings</source>
-        <translation>Einstellungen des Statussymbol-Plugins</translation>
+        <translation>Einstellungen Statussymbol-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>

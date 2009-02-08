@@ -129,7 +129,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="31"/>
         <source>General information</source>
-        <translation type="unfinished">Allgemeine Informationen</translation>
+        <translation>Allgemeine Informationen</translation>
     </message>
 </context>
 </TS>

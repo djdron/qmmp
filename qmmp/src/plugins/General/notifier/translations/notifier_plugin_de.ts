@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
         <location filename="../notifierfactory.cpp" line="30"/>
         <source>Notifier Plugin</source>
-        <translation type="unfinished">Benachrichtigungs-Plugin</translation>
+        <translation>Benachrichtigungs-Plugin</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="50"/>
         <source>About Notifier Plugin</source>
-        <translation type="unfinished">Über Benachrichtigungs-Plugin</translation>
+        <translation>Über Benachrichtigungs-Plugin</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="51"/>
         <source>Qmmp Notifier Plugin</source>
-        <translation type="unfinished">Qmmp Benachrichtigungs-Plugin</translation>
+        <translation>Qmmp Benachrichtigungs-Plugin</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="52"/>
@@ -56,17 +57,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Notifier Plugin Settings</source>
-        <translation>Einstellungen des Benachrichtigungs-Plugins</translation>
+        <translation>Einstellungen Benachrichtigungs-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Song change notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Benachrichtigung bei Titelwechsel</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Benachrichtigung bei Lautstärkeänderung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>

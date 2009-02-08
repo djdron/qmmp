@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>OSS Plugin Settings</source>
-        <translation>Einstellungen des OSS-Plugins</translation>
+        <translation>Einstellungen OSS-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
