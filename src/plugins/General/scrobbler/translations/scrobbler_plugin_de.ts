@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>ScrobblerFactory</name>
     <message>
@@ -28,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Scrobbler Plugin Settings</source>
-        <translation>Einstellungen des Scrobbler-Plugins</translation>
+        <translation>Einstellungen Scrobbler-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>

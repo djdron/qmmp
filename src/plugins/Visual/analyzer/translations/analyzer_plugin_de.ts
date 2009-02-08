@@ -14,7 +14,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Analyzer Plugin Settings</source>
-        <translation>Einstellungen des Analyzer-Plugins</translation>
+        <translation>Einstellungen Analyzer-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>

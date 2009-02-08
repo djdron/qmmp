@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ALSA Plugin Settings</source>
-        <translation>Einstellungen des ALSA-Plugins</translation>
+        <translation>Einstellungen ALSA-Plugin</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

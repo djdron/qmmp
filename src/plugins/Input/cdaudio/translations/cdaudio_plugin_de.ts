@@ -26,12 +26,12 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Benutzung: Geben Sie cdda:// in den „URL hinzufügen“-Dialog, oder in der Befehlszeile ein</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>Compiled against libcdio version:</source>
-        <translation type="unfinished">Kompiliert gegen folgende „libcdio“-Version:</translation>
+        <translation>Kompiliert gegen „libcdio“-Version:</translation>
     </message>
 </context>
 <context>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>Limid cd speed:</source>
-        <translation type="unfinished">CD-Geschwindigkeit begrenzen:</translation>
+        <translation>CD-Geschwindigkeit begrenzen:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
