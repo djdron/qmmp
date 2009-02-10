@@ -1,8 +1,17 @@
 #!/bin/sh
 MYDIR=$(dirname $0)
-LD_LIBRARY_PATH=$MYDIR/../lib:$MYDIR/../src/qmmpui:${LD_LIBRARY_PATH}
-printf '\nSetting LD_LIBRARY_PATH to '$LD_LIBRARY_PATH
+QT_LIB_DIR=$(dirname $(which qmake))/../lib
+QMMP_LIB_DIRS=$MYDIR/../lib:$MYDIR/../src/qmmpui
+
+if [ -z ${LD_LIBRARY_PATH} ]; then
+    LD_LIBRARY_PATH=${QMMP_LIB_DIRS}:${QT_LIB_DIR}
+else
+    LD_LIBRARY_PATH=${QMMP_LIB_DIRS}:${QT_LIB_DIR}:${LD_LIBRARY_PATH}
+fi
+
+echo 'Setting LD_LIBRARY_PATH to'
+echo "$LD_LIBRARY_PATH" | awk -F: '{ for(i = 1; i <= NF; i++) printf "%d) %s\n", i, $i; }'
 export LD_LIBRARY_PATH
-printf '\n'$LD_LIBRARY_PATH
-printf '\n'
+echo
+
 exec $MYDIR/qmmp "$@"
