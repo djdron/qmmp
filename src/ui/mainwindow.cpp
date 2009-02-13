@@ -258,7 +258,7 @@ void MainWindow::showMetaData()
     qDebug("TRACK = %s", qPrintable(m_core->metaData(Qmmp::TRACK)));
     qDebug("== end of metadata ==");
 
-    if (m_playlist->currentItem())
+    if (m_playlist->currentItem() && !m_core->metaData().isEmpty())
     {
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
         m_playlist->updateList();
