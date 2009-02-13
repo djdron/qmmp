@@ -134,12 +134,12 @@ void PlayListItem::readMetadata()
     m_title = printTag(m_title, "%f", url().section('/',-1));
     m_title = printTag(m_title, "%F", url());
     m_title = printTag(m_title, "%y", QString("%1").arg(year ()));
-
+    //TODO rewrite this
     if (m_title.isEmpty())
     {
         if (url().startsWith("http://")  && m_fullStreamPath)
             m_title = url();
-        else
+        else if (url().contains('/'))
             m_title = url().split('/',QString::SkipEmptyParts).takeLast ();
     }
     if (m_info)
