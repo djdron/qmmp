@@ -3,5 +3,6 @@ SUBDIRS += statusicon \
            mpris \
            notifier \
            hal \
-           lyrics
+           lyrics \
+           hotkey
 TEMPLATE = subdirs
