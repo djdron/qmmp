@@ -79,7 +79,8 @@ FileInfo *MplayerInfo::createFileInfo(const QString &path)
 QStringList MplayerInfo::filters()
 {
     QStringList filters;
-    filters << "*.avi" << "*.mpg" << "*.mpeg" << "*.divx" << "*.qt" << "*.mov" << "*.wmv" << "*.asf";
+    filters << "*.avi" << "*.mpg" << "*.mpeg" << "*.divx" << "*.qt" << "*.mov" << "*.wmv" << "*.asf"
+    << "*.flv" << "*.3gp";
     return filters;
 }
 
