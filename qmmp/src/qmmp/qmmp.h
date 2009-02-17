@@ -31,6 +31,7 @@ public:
     enum State {Playing = 0, Paused, Stopped, Buffering, NormalError, FatalError};
     enum MetaData {TITLE = 0, ARTIST, ALBUM, COMMENT, GENRE, YEAR, TRACK, URL};
     static QString configFile();
+    static void setConfigFile(const QString &path);
     static QString strVersion();
     //global proxy
     static bool useProxy();
@@ -39,6 +40,9 @@ public:
     static void setProxyEnabled(bool yes);
     static void setProxyAuthEnabled(bool yes);
     static void setProxy (const QUrl &proxy);
+
+private:
+    static QString m_configFile;
 
 };
 
