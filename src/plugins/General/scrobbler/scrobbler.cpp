@@ -27,6 +27,7 @@
 #include <QSettings>
 #include <QDir>
 #include <qmmp/soundcore.h>
+#include <qmmp/qmmp.h>
 
 #include "scrobbler.h"
 
@@ -47,19 +48,12 @@ Scrobbler::Scrobbler(QObject *parent)
     m_login = settings.value("login").toString();
     m_passw = settings.value("password").toString();
     settings.endGroup();
-    //use global proxy settings
-    if (settings.value ("Proxy/use_proxy", FALSE).toBool())
-    {
-
-        if (settings.value ("Proxy/authentication", FALSE).toBool())
-            m_http->setProxy(settings.value("Proxy/host").toString(),
-                             settings.value("Proxy/port").toInt(),
-                             settings.value("Proxy/user").toString(),
-                             settings.value("Proxy/passw").toString());
-        else
-            m_http->setProxy(settings.value("Proxy/host").toString(),
-                             settings.value("Proxy/port").toInt());
-    }
+    //load global proxy settings
+    if (Qmmp::useProxy())
+        m_http->setProxy(Qmmp::proxy().host(),
+                         Qmmp::proxy().port(),
+                         Qmmp::useProxyAuth() ? Qmmp::proxy().userName() : QString(),
+                         Qmmp::useProxyAuth() ? Qmmp::proxy().password() : QString());
 
     m_disabled = m_login.isEmpty() || m_passw.isEmpty();
     m_passw = QString(QCryptographicHash::hash(m_passw.toAscii(), QCryptographicHash::Md5).toHex());

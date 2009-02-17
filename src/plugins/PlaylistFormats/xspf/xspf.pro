@@ -19,7 +19,7 @@ INSTALLS += target
 
 INCLUDEPATH += ../../../../src
 
-LIBS += -lqmmpui
+LIBS += -lqmmpui -lqmmp
 
 QT += xml
 SOURCES += xspfplaylistformat.cpp

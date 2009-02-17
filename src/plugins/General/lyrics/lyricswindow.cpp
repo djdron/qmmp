@@ -20,6 +20,7 @@
 
 #include <QHttp>
 #include <QUrl>
+#include <qmmp/qmmp.h>
 
 #include "lyricswindow.h"
 
@@ -30,8 +31,13 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
     setWindowFlags(Qt::Dialog);
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(artist).arg(title));
-    //TODO proxy support
     m_http = new QHttp(this);
+    //load global proxy settings
+    if (Qmmp::useProxy())
+        m_http->setProxy(Qmmp::proxy().host(),
+                         Qmmp::proxy().port(),
+                         Qmmp::useProxyAuth() ? Qmmp::proxy().userName() : QString(),
+                         Qmmp::useProxyAuth() ? Qmmp::proxy().password() : QString());
     connect(m_http, SIGNAL(done(bool)), SLOT(showText(bool)));
     connect(m_http, SIGNAL(stateChanged(int)), SLOT(showState (int)));
     m_http->setHost("lyricwiki.org");

@@ -42,19 +42,12 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     m_http = new QHttp(this);
     connect(m_http, SIGNAL(done (bool)), SLOT(readResponse(bool)));
 
-    //use global proxy settings
-    if (settings.value ("Proxy/use_proxy", FALSE).toBool())
-    {
-
-        if (settings.value ("Proxy/authentication", FALSE).toBool())
-            m_http->setProxy(settings.value("Proxy/host").toString(),
-                             settings.value("Proxy/port").toInt(),
-                             settings.value("Proxy/user").toString(),
-                             settings.value("Proxy/passw").toString());
-        else
-            m_http->setProxy(settings.value("Proxy/host").toString(),
-                             settings.value("Proxy/port").toInt());
-    }
+    //load global proxy settings
+    if (Qmmp::useProxy())
+        m_http->setProxy(Qmmp::proxy().host(),
+                         Qmmp::proxy().port(),
+                         Qmmp::useProxyAuth() ? Qmmp::proxy().userName() : QString(),
+                         Qmmp::useProxyAuth() ? Qmmp::proxy().password() : QString());
 }
 
 AddUrlDialog::~AddUrlDialog()

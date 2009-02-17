@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -107,15 +107,13 @@ void ConfigDialog::readSettings()
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
 
     //proxy settings
-    ui.enableProxyCheckBox->setChecked(
-        settings.value ("Proxy/use_proxy", FALSE).toBool());
-    ui.authProxyCheckBox->setChecked(
-        settings.value ("Proxy/authentication", FALSE).toBool());
-
-    ui.hostLineEdit->setText(settings.value("Proxy/host").toString());
-    ui.portLineEdit->setText(settings.value("Proxy/port").toString());
-    ui.proxyUserLineEdit->setText(settings.value("Proxy/user").toString());
-    ui.proxyPasswLineEdit->setText(settings.value("Proxy/passw").toString());
+    ui.enableProxyCheckBox->setChecked(Qmmp::useProxy());
+    ui.authProxyCheckBox->setChecked(Qmmp::useProxyAuth());
+    ui.hostLineEdit->setText(Qmmp::proxy().host());
+    if (Qmmp::proxy().port(0))
+        ui.portLineEdit->setText(QString::number(Qmmp::proxy().port(0)));
+    ui.proxyUserLineEdit->setText(Qmmp::proxy().userName());
+    ui.proxyPasswLineEdit->setText(Qmmp::proxy().password());
 
     ui.hostLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
     ui.portLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
@@ -550,12 +548,15 @@ void ConfigDialog::saveSettings()
     settings.setValue ("PlayList/full_stream_path", ui.fullPathCheckBox->isChecked());
     settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
-    settings.setValue ("Proxy/use_proxy", ui.enableProxyCheckBox->isChecked());
-    settings.setValue ("Proxy/authentication", ui.authProxyCheckBox->isChecked());
-    settings.setValue ("Proxy/host",ui.hostLineEdit->text());
-    settings.setValue ("Proxy/port",ui.portLineEdit->text());
-    settings.setValue ("Proxy/user",ui.proxyUserLineEdit->text());
-    settings.setValue ("Proxy/passw",ui.proxyPasswLineEdit->text());
+
+    Qmmp::setProxyEnabled(ui.enableProxyCheckBox->isChecked());
+    Qmmp::setProxyAuthEnabled(ui.authProxyCheckBox->isChecked());
+    QUrl proxyUrl;
+    proxyUrl.setHost(ui.hostLineEdit->text());
+    proxyUrl.setPort(ui.portLineEdit->text().toUInt());
+    proxyUrl.setUserName(ui.proxyUserLineEdit->text());
+    proxyUrl.setPassword(ui.proxyPasswLineEdit->text());
+    Qmmp::setProxy(proxyUrl);
     settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
     settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
     settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);

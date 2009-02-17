@@ -218,16 +218,16 @@ void Downloader::run()
     m_handle = curl_easy_init();
     //proxy
     QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    if (settings.value ("Proxy/use_proxy", FALSE).toBool())
+    if (Qmmp::useProxy())
         curl_easy_setopt(m_handle, CURLOPT_PROXY,
-                         strdup((settings.value("Proxy/host").toString()+":"+
-                                 settings.value("Proxy/port").toString()).
+                         strdup((Qmmp::proxy().host() + ":" +
+                                 QString("%1").arg(Qmmp::proxy().port())).
                                 toLatin1 ().constData ()));
 
-    if (settings.value ("Proxy/authentication", FALSE).toBool())
+    if (Qmmp::useProxyAuth())
         curl_easy_setopt(m_handle, CURLOPT_PROXYUSERPWD,
-                         strdup((settings.value("Proxy/user").toString()+":"+
-                                 settings.value("Proxy/passw").toString()).
+                         strdup((Qmmp::proxy().userName() + ":" +
+                                 Qmmp::proxy().password()).
                                 toLatin1 ().constData ()));
 
     // Set url to download
