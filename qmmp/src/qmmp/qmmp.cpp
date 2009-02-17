@@ -27,11 +27,11 @@
 
 #include "qmmp.h"
 
-QString Qmmp::m_configFile = QDir::homePath() +"/.qmmp/qmmprc";
+QString Qmmp::m_configFile;
 
 QString Qmmp::configFile()
 {
-    return m_configFile;
+    return m_configFile.isEmpty() ? QDir::homePath() +"/.qmmp/qmmprc" : m_configFile;
 }
 
 void Qmmp::setConfigFile(const QString &path)
