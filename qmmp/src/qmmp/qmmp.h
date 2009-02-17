@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,8 @@
 #ifndef QMMP_H
 #define QMMP_H
 
+#include <QUrl>
+
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -30,6 +32,13 @@ public:
     enum MetaData {TITLE = 0, ARTIST, ALBUM, COMMENT, GENRE, YEAR, TRACK, URL};
     static QString configFile();
     static QString strVersion();
+    //global proxy
+    static bool useProxy();
+    static bool useProxyAuth();
+    static QUrl proxy();
+    static void setProxyEnabled(bool yes);
+    static void setProxyAuthEnabled(bool yes);
+    static void setProxy (const QUrl &proxy);
 
 };
 

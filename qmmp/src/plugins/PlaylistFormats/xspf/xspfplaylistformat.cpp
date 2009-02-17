@@ -24,9 +24,7 @@
 #include <QUrl>
 #include <QtPlugin>
 
-#ifndef QMMP_STR_VERSION
-#define QMMP_STR_VERSION "0.2.0"
-#endif
+#include <qmmp/qmmp.h>
 
 #include "xspfplaylistformat.h"
 
@@ -78,7 +76,7 @@ QString XSPFPlaylistFormat::encode(const QList<AbstractPlaylistItem*> & files)
     root.setAttribute("xmlns",QString("http://xspf.org/ns/0/"));
 
     QDomElement creator = doc.createElement("creator");
-    QDomText text = doc.createTextNode("qmmp-" + QString(QMMP_STR_VERSION));
+    QDomText text = doc.createTextNode("qmmp-" + Qmmp::strVersion());
     creator.appendChild(text);
     root.appendChild(creator);
 

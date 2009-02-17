@@ -29,6 +29,7 @@ SET(QT_INCLUDES
 # libqmmpui
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 SET(libxspfplaylistformat_SRCS
     xspfplaylistformat.cpp
@@ -49,5 +50,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(xspfplaylistformat SHARED ${libxspfplaylistformat_SRCS} ${libxspfplaylistformat_MOC_SRCS})
 add_dependencies(xspfplaylistformat qmmpui)
-target_link_libraries(xspfplaylistformat ${QT_LIBRARIES} -lqmmpui)
+target_link_libraries(xspfplaylistformat ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS xspfplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlaylistFormats)
