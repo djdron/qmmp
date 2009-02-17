@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2088-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,9 +27,16 @@
 
 #include "qmmp.h"
 
+QString Qmmp::m_configFile = QDir::homePath() +"/.qmmp/qmmprc";
+
 QString Qmmp::configFile()
 {
-    return QDir::homePath() +"/.qmmp/qmmprc";
+    return m_configFile;
+}
+
+void Qmmp::setConfigFile(const QString &path)
+{
+    m_configFile = path;
 }
 
 QString Qmmp::strVersion()
