@@ -46,7 +46,6 @@ PlayListItem::PlayListItem(FileInfo *info, QSettings *settings) : AbstractPlayli
     //other properties
     m_convertUnderscore = s->value ("PlayList/convert_underscore", TRUE).toBool();
     m_convertTwenty = s->value ("PlayList/convert_twenty", TRUE).toBool();
-    m_fullStreamPath = s->value ("PlayList/full_stream_path", FALSE).toBool();
     if (!settings) //delete created settings only
         delete s;
 
@@ -137,9 +136,7 @@ void PlayListItem::readMetadata()
     //TODO rewrite this
     if (m_title.isEmpty())
     {
-        if (url().startsWith("http://")  && m_fullStreamPath)
-            m_title = url();
-        else if (url().contains('/'))
+        if (url().contains('/'))
             m_title = url().split('/',QString::SkipEmptyParts).takeLast ();
     }
     if (m_info)
