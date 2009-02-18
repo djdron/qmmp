@@ -18,9 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-#include <QDir>
-#include <QSettings>
 #include <QTextStream>
 #include <QTextCodec>
 
@@ -32,9 +29,7 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
 {
     QString album, genre, date, comment;
     QTextStream textStream (array);
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QTextCodec *codec = QTextCodec::codecForName(settings.value("CUE/encoding","ISO-8859-1").toByteArray ());
-    textStream.setCodec(codec);
+    textStream.setCodec("UTF-8");
     m_filePath = fileName;
     QString artist;
     while (!textStream.atEnd())
