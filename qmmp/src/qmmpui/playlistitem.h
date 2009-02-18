@@ -66,7 +66,7 @@ private:
     bool m_selected;
     bool m_current;
     bool m_use_meta;
-    bool m_convertUnderscore, m_convertTwenty, m_fullStreamPath;
+    bool m_convertUnderscore, m_convertTwenty;
     QString m_format;
     FLAGS m_flag;
 };
