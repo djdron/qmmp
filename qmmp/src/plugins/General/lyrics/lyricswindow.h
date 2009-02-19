@@ -40,6 +40,7 @@ public:
 private slots:
     void showText(bool error);
     void showState(int state);
+    void on_searchPushButton_clicked();
 
 private:
     Ui::LyricsWindow ui;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS>
+<TS version="2.0" language="ru_RU">
 <context>
     <name>Lyrics</name>
     <message>
@@ -39,52 +40,68 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="32"/>
+        <location filename="../lyricswindow.cpp" line="90"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Текст песни: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.ui" line="38"/>
+        <location filename="../lyricswindow.cpp" line="66"/>
+        <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Нет соединения</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="62"/>
+        <location filename="../lyricswindow.cpp" line="69"/>
         <source>Looking up host...</source>
         <translation>Поиск сервера...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="65"/>
+        <location filename="../lyricswindow.cpp" line="72"/>
         <source>Connecting...</source>
         <translation>Соединение...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="68"/>
+        <location filename="../lyricswindow.cpp" line="75"/>
         <source>Sending request...</source>
         <translation>Отправка запроса...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="71"/>
+        <location filename="../lyricswindow.cpp" line="78"/>
         <source>Receiving</source>
         <translation>Получение</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="74"/>
+        <location filename="../lyricswindow.cpp" line="81"/>
         <source>Connected</source>
         <translation>Соединено</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="77"/>
+        <location filename="../lyricswindow.cpp" line="84"/>
         <source>Closing connection...</source>
         <translation>Завершение соединения...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.ui" line="13"/>
+        <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
         <translation>Модуль показа текстов</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.ui" line="58"/>
+        <location filename="../lyricswindow.ui" line="31"/>
+        <source>Artist:</source>
+        <translation>Исполнитель:</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="41"/>
+        <source>Title:</source>
+        <translation>Название:</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="51"/>
+        <source>Search</source>
+        <translation>Поиск</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.ui" line="87"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>

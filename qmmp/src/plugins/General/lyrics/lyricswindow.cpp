@@ -30,7 +30,8 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
     ui.setupUi(this);
     setWindowFlags(Qt::Dialog);
     setAttribute(Qt::WA_DeleteOnClose);
-    setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(artist).arg(title));
+    ui.artistLineEdit->setText(artist);
+    ui.titleLineEdit->setText(title);
     m_http = new QHttp(this);
     //load global proxy settings
     if (Qmmp::useProxy())
@@ -41,7 +42,7 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
     connect(m_http, SIGNAL(done(bool)), SLOT(showText(bool)));
     connect(m_http, SIGNAL(stateChanged(int)), SLOT(showState (int)));
     m_http->setHost("lyricwiki.org");
-    m_http->get("/api.php?func=getSong&artist=" + QUrl::toPercentEncoding(artist) +"&song=" + QUrl::toPercentEncoding(title) +"&fmt=html");
+    on_searchPushButton_clicked();
 }
 
 
@@ -82,4 +83,11 @@ void LyricsWindow::showState(int state)
     case QHttp::Closing:
         ui.stateLabel->setText(tr("Closing connection..."));
     }
+}
+
+void LyricsWindow::on_searchPushButton_clicked()
+{
+    setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(ui.artistLineEdit->text()).arg(ui.titleLineEdit->text()));
+    m_http->get("/api.php?func=getSong&artist=" + QUrl::toPercentEncoding(ui.artistLineEdit->text())
+                +"&song=" + QUrl::toPercentEncoding(ui.titleLineEdit->text()) +"&fmt=html");
 }
