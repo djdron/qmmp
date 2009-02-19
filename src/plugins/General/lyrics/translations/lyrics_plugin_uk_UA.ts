@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>Lyrics</name>
     <message>
@@ -45,7 +45,6 @@
         <translation>Тексти: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="66"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Немає з&apos;єднання</translation>
@@ -88,17 +87,17 @@
     <message>
         <location filename="../lyricswindow.ui" line="31"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виконавець:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="41"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Заголовок:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="51"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Пошук</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="87"/>
