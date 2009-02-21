@@ -27,6 +27,8 @@
 #include <sys/types.h>
 #ifdef Q_OS_LINUX
 #include <linux/un.h>
+#else
+#include <sys/un.h>
 #endif
 
 /*!
