@@ -11,7 +11,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation>Нажмите клавиши, сочетания которых вы хотите использовать</translation>
+        <translation>Нажмите клавиши, сочетание которых вы хотите использовать</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
