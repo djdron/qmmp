@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <defaultcodec></defaultcodec>
 <context>
     <name>HalFactory</name>
@@ -71,8 +72,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
-        <source>Removable Devcie Detection</source>
-        <translation>Автовизначення з&apos;ємних пристроїв</translation>
+        <source>Removable Device Detection</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS>
+<TS version="2.0">
 <context>
     <name>HalFactory</name>
     <message>
@@ -70,7 +71,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
-        <source>Removable Devcie Detection</source>
+        <source>Removable Device Detection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
