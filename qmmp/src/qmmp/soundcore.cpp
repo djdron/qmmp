@@ -83,10 +83,16 @@ bool SoundCore::play(const QString &source)
     m_handler->dispatch(Qmmp::Buffering); //buffering state
 
     QUrl url;
-    if (QFile::exists(source)) //local file
+    if (source.contains("://")) //url
+        url = source;
+    else if (QFile::exists(source))
         url = QUrl::fromLocalFile(source);
     else
-        url = source;
+    {
+        qDebug("SoundCore: file doesn't exist");
+        m_handler->dispatch(Qmmp::NormalError);
+        return FALSE;
+    }
 
     m_factory = Decoder::findByURL(url);
     if (m_factory)
