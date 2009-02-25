@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
- *   forkotov02@hotmail.ru                                                 *
+ *   Copyright (C) 2009 by Ilya Kotov <forkotov02@hotmail.ru>              *
+ *   Copyright (C) 2009 by Sebastian Pipping <sebastian@pipping.org>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -34,17 +34,30 @@ Bs2bPlugin::~Bs2bPlugin()
     bs2b_clear();
 }
 
+#define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \
+    case bitsPerSample: \
+        { \
+            dataType * data = reinterpret_cast<dataType *>(*out_data); \
+            while (samples--) { \
+                functionToCall(data); \
+                data += 2; \
+            } \
+        } \
+        break;
+
 ulong Bs2bPlugin::process(char *in_data, const ulong size, char **out_data)
 {
     memcpy(*out_data, in_data, size);
     if(channels() != 2)
         return size;
-    short *bs2b_data = (short *) *out_data;
-    uint samples = size / sizeof(short) / 2;
-    while (samples--)
-    {
-        bs2b_cross_feed_16(bs2b_data);
-        bs2b_data +=2;
+
+    uint samples = size / (bitsPerSample() / 8) / 2;
+    switch (bitsPerSample()) {
+    CASE_BS2B(8,  char,  bs2b_cross_feed_s8, samples, out_data)
+    CASE_BS2B(16, short, bs2b_cross_feed_16, samples, out_data)
+    CASE_BS2B(32, long,  bs2b_cross_feed_32, samples, out_data)
+    default:
+        ; // noop
     }
     return size;
 }
