@@ -20,6 +20,14 @@
  ***************************************************************************/
 
 #include <QApplication>
+extern "C"
+{
+#ifdef HAVE_SYS_SOUNDCARD_H
+#include <sys/soundcard.h>
+#else
+#include <soundcard.h>
+#endif
+}
 
 #include "outputoss.h"
 #include <qmmp/constants.h>
@@ -88,70 +96,72 @@ void OutputOSS::seek(long pos)
 
 
 OutputOSS::OutputOSS(QObject * parent)
-    : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
-      m_userStop(FALSE),
-      m_totalWritten(0), m_currentSeconds(-1),
-      m_bps(1), m_frequency(-1), m_channels(-1), m_precision(-1),
-      do_select(TRUE),
-      m_audio_fd(-1), m_mixer_fd(-1)
+        : Output(parent), m_inited(FALSE), m_pause(FALSE), m_play(FALSE),
+        m_userStop(FALSE),
+        m_totalWritten(0), m_currentSeconds(-1),
+        m_bps(1), m_frequency(-1), m_channels(-1), m_precision(-1),
+        do_select(TRUE),
+        m_audio_fd(-1), m_mixer_fd(-1)
 {
-QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
-m_master = true;
-m_audio_device = settings.value("OSS/device","/dev/dsp").toString();
-m_mixer_device = settings.value("OSS/mixer_device","/dev/mixer").toString();
-openMixer();
+    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    m_master = true;
+    m_audio_device = settings.value("OSS/device","/dev/dsp").toString();
+    m_mixer_device = settings.value("OSS/mixer_device","/dev/mixer").toString();
+    openMixer();
 }
 
 OutputOSS::~OutputOSS()
 {
     if (m_audio_fd > 0)
     {
-	close(m_audio_fd);
-	m_audio_fd = -1;
+        close(m_audio_fd);
+        m_audio_fd = -1;
     }
     if (m_mixer_fd > 0)
     {
-	close(m_mixer_fd);
-	m_mixer_fd = -1;
+        close(m_mixer_fd);
+        m_mixer_fd = -1;
     }
 }
 
 void OutputOSS::configure(long freq, int chan, int prec, int rate)
 {
     // we need to configure
-    if (freq != m_frequency || chan != m_channels || prec != m_precision) {
-	// we have already configured, but are changing settings...
-	// reset the device
-	resetDSP();
+    if (freq != m_frequency || chan != m_channels || prec != m_precision)
+    {
+        // we have already configured, but are changing settings...
+        // reset the device
+        resetDSP();
 
-	m_frequency = freq;
-	m_channels = chan;
-	m_precision = prec;
+        m_frequency = freq;
+        m_channels = chan;
+        m_precision = prec;
 
-	m_bps = freq * chan * (prec / 8);
+        m_bps = freq * chan * (prec / 8);
 
-	int p;
-	switch(prec) {
-	default:
-	case 16:
+        int p;
+        switch (prec)
+        {
+        default:
+        case 16:
 #if defined(AFMT_S16_NE)
-	    p = AFMT_S16_NE;
+            p = AFMT_S16_NE;
 #else
-	    p = AFMT_S16_LE;
+            p = AFMT_S16_LE;
 #endif
-	    break;
+            break;
 
-	case 8:
-	    p = AFMT_S8;
-	    break;
+        case 8:
+            p = AFMT_S8;
+            break;
 
-	}
+        }
 
-	ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p);
-	ioctl(m_audio_fd, SNDCTL_DSP_SAMPLESIZE, &prec);
-	int stereo = (chan > 1) ? 1 : 0;
-	ioctl(m_audio_fd, SNDCTL_DSP_STEREO, &stereo);
-	ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq);
+        ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p);
+        ioctl(m_audio_fd, SNDCTL_DSP_SAMPLESIZE, &prec);
+        int stereo = (chan > 1) ? 1 : 0;
+        ioctl(m_audio_fd, SNDCTL_DSP_STEREO, &stereo);
+        ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq);
     }
 
     m_rate = rate;
@@ -162,24 +172,24 @@ void OutputOSS::reset()
 {
     if (m_audio_fd > 0)
     {
-	close(m_audio_fd);
-	m_audio_fd = -1;
+        close(m_audio_fd);
+        m_audio_fd = -1;
     }
 
     m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY, 0);
 
     if (m_audio_fd < 0)
     {
-	error(QString("OSSOutput: failed to open output device '%1'").
-	      arg(m_audio_device));
-	return;
+        error(QString("OSSOutput: failed to open output device '%1'").
+              arg(m_audio_device));
+        return;
     }
 
     int flags;
     if ((flags = fcntl(m_audio_fd, F_GETFL, 0)) > 0)
     {
-	flags &= O_NDELAY;
-	fcntl(m_audio_fd, F_SETFL, flags);
+        flags &= O_NDELAY;
+        fcntl(m_audio_fd, F_SETFL, flags);
     }
 
     fd_set afd;
@@ -192,14 +202,15 @@ void OutputOSS::reset()
 
     if (m_audio_fd > 0)
     {
-	close(m_mixer_fd);
-	m_mixer_fd = -1;
+        close(m_mixer_fd);
+        m_mixer_fd = -1;
     }
     openMixer();
 }
 
 void OutputOSS::openMixer()
 {
+#if SOUND_VERSION < 0x040000
     if (m_mixer_fd != -1)
         return;
 
@@ -209,21 +220,24 @@ void OutputOSS::openMixer()
     }
     if (m_audio_fd < 0)
     {
-	error(QString("OSSOutput: failed to open mixer device '%1'").
-	      arg(m_mixer_device));
-	return;
+        error(QString("OSSOutput: failed to open mixer device '%1'").
+              arg(m_mixer_device));
+        return;
     }
+#endif
 }
 
 void OutputOSS::pause()
 {
-    m_pause = (m_pause) ? FALSE : TRUE;
+    m_pause = !m_pause;
+    OutputState::Type state = m_pause ? OutputState::Paused: OutputState::Playing;
+    dispatch(state);
 }
 
 void OutputOSS::post()
 {
     if (m_audio_fd < 1)
-	return;
+        return;
 
     int unused;
     ioctl(m_audio_fd, SNDCTL_DSP_POST, &unused);
@@ -232,7 +246,7 @@ void OutputOSS::post()
 void OutputOSS::sync()
 {
     if (m_audio_fd < 1)
-	return;
+        return;
 
     int unused;
     ioctl(m_audio_fd, SNDCTL_DSP_SYNC, &unused);
@@ -242,7 +256,7 @@ void OutputOSS::sync()
 void OutputOSS::resetDSP()
 {
     if (m_audio_fd < 1)
-	return;
+        return;
 
     int unused;
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, &unused);
@@ -256,11 +270,11 @@ bool OutputOSS::initialize()
 
     reset();
     if (m_audio_fd < 0)
-	return FALSE;
+        return FALSE;
     if (m_mixer_fd < 0)
-	return FALSE;
+        return FALSE;
 
-    
+
     m_currentSeconds = -1;
     m_totalWritten = 0;
     stat = OutputState::Stopped;
@@ -286,13 +300,13 @@ void OutputOSS::uninitialize()
     resetDSP();
     if (m_audio_fd > 0)
     {
-	close(m_audio_fd);
-	m_audio_fd = -1;
+        close(m_audio_fd);
+        m_audio_fd = -1;
     }
     if (m_audio_fd > 0)
     {
-	close(m_mixer_fd);
-	m_mixer_fd = -1;
+        close(m_mixer_fd);
+        m_mixer_fd = -1;
     }
 
     qDebug("OutputOSS: uninitialize");
@@ -305,8 +319,8 @@ long OutputOSS::latency()
 
     if (! m_pause)
     {
-	if (ioctl(m_audio_fd, SNDCTL_DSP_GETODELAY, &used) == -1)
-	    used = 0;
+        if (ioctl(m_audio_fd, SNDCTL_DSP_GETODELAY, &used) == -1)
+            used = 0;
     }
 
     return used;
@@ -318,9 +332,9 @@ void OutputOSS::run()
 
     if (! m_inited)
     {
-	mutex()->unlock();
+        mutex()->unlock();
 
-	return;
+        return;
     }
 
     m_play = TRUE;
@@ -337,82 +351,86 @@ void OutputOSS::run()
 
     FD_ZERO(&afd);
 
-    while (! done) {
-	mutex()->lock();
+    while (! done)
+    {
+        mutex()->lock();
 
-	recycler()->mutex()->lock();
+        recycler()->mutex()->lock();
 
-	done = m_userStop;
+        done = m_userStop;
 
-	while (! done && (recycler()->empty() || m_pause)) {
-	    post();
+        while (! done && (recycler()->empty() || m_pause))
+        {
+            post();
 
-	    mutex()->unlock();
+            mutex()->unlock();
 
-	    {
-		stat = m_pause ? OutputState::Paused : OutputState::Buffering;
-		OutputState e((OutputState::Type) stat);
-		dispatch(e);
-	    }
+            recycler()->cond()->wakeOne();
+            recycler()->cond()->wait(recycler()->mutex());
 
-	    recycler()->cond()->wakeOne();
-	    recycler()->cond()->wait(recycler()->mutex());
+            mutex()->lock();
+            done = m_userStop;
+            status();
+        }
 
-	    mutex()->lock();
-	    done = m_userStop;
-	    status();
-	}
+        if (! b)
+        {
+            b = recycler()->next();
+            if (b->rate)
+                m_rate = b->rate;
+        }
 
-       	if (! b) {
-	    b = recycler()->next();
-	    if (b->rate)
-	        m_rate = b->rate;
-	}
+        recycler()->cond()->wakeOne();
+        recycler()->mutex()->unlock();
 
-	recycler()->cond()->wakeOne();
-	recycler()->mutex()->unlock();
+        FD_ZERO(&afd);
+        FD_SET(m_audio_fd, &afd);
+        // nice long poll timeout
+        tv.tv_sec = 5l;
+        tv.tv_usec = 0l;
 
-	FD_ZERO(&afd);
-	FD_SET(m_audio_fd, &afd);
-	// nice long poll timeout
-	tv.tv_sec = 5l;
-	tv.tv_usec = 0l;
+        if (b &&
+                (! do_select || (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0 &&
+                                 FD_ISSET(m_audio_fd, &afd))))
+        {
+            l = qMin(int(2048), int(b->nbytes - n));
+            if (l > 0)
+            {
+                mutex()->unlock();
+                m = write(m_audio_fd, b->data + n, l);
+                mutex()->lock();
+                n += m;
 
-	if (b &&
-	    (! do_select || (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0 &&
-			     FD_ISSET(m_audio_fd, &afd)))) {
-	    l = qMin(int(2048), int(b->nbytes - n));
-	    if (l > 0) {
-		m = write(m_audio_fd, b->data + n, l);
-		n += m;
+                status();
+                dispatchVisual(b, m_totalWritten, m_channels, m_precision);
+            }
+            else
+            {
+                // force buffer change
+                n = b->nbytes;
+                m = 0;
+            }
+        }
 
-		status();
-		dispatchVisual(b, m_totalWritten, m_channels, m_precision);
-	    } else {
-		// force buffer change
-		n = b->nbytes;
-		m = 0;
-	    }
-	}
+        m_totalWritten += m;
 
-	m_totalWritten += m;
+        if (n == b->nbytes)
+        {
+            recycler()->mutex()->lock();
+            recycler()->done();
+            recycler()->mutex()->unlock();
 
-	if (n == b->nbytes) {
-	    recycler()->mutex()->lock();
-	    recycler()->done();
-	    recycler()->mutex()->unlock();
+            b = 0;
+            n = 0;
+        }
 
-	    b = 0;
-	    n = 0;
-	}
-
-	mutex()->unlock();
+        mutex()->unlock();
     }
 
     mutex()->lock();
 
     if (! m_userStop)
-	sync();
+        sync();
     resetDSP();
 
     m_play = FALSE;
@@ -427,30 +445,37 @@ void OutputOSS::setVolume(int l, int r)
     int v, devs;
     long cmd;
 
-        ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
-        if ((devs & SOUND_MASK_PCM) && (m_master == false))
-            cmd = SOUND_MIXER_WRITE_PCM;
-        else if ((devs & SOUND_MASK_VOLUME) && (m_master == true))
-            cmd = SOUND_MIXER_WRITE_VOLUME;
-        else
-        {
-            //close(mifd);
-            return;
-        }
-        v = (r << 8) | l;
-        ioctl(m_mixer_fd, cmd, &v);
+#if SOUND_VERSION < 0x040000
+    ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
+    if ((devs & SOUND_MASK_PCM) && (m_master == false))
+        cmd = SOUND_MIXER_WRITE_PCM;
+    else if ((devs & SOUND_MASK_VOLUME) && (m_master == true))
+        cmd = SOUND_MIXER_WRITE_VOLUME;
+    else
+    {
+        //close(mifd);
+        return;
+    }
+    v = (r << 8) | l;
+    ioctl(m_mixer_fd, cmd, &v);
+#else
+    cmd = SNDCTL_DSP_SETPLAYVOL;
+    v = (r << 8) | l;
+    ioctl(m_audio_fd, cmd, &v);
+#endif
 }
 
 void OutputOSS::volume(int *ll,int *rr)
 {
-    *ll = 0; 
+    *ll = 0;
     *rr = 0;
     int  cmd;
     int v, devs;
-
+#if SOUND_VERSION < 0x040000
     ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
     if ((devs & SOUND_MASK_PCM) && (m_master == 0))
         cmd = SOUND_MIXER_READ_PCM;
+
     else if ((devs & SOUND_MASK_VOLUME) && (m_master == 1))
         cmd = SOUND_MIXER_READ_VOLUME;
     else
@@ -464,4 +489,11 @@ void OutputOSS::volume(int *ll,int *rr)
     *rr = (*rr > 100) ? 100 : *rr;
     *ll = (*ll < 0) ? 0 : *ll;
     *rr = (*rr < 0) ? 0 : *rr;
+#else
+    cmd = SNDCTL_DSP_GETPLAYVOL;
+    if (ioctl(m_audio_fd, cmd, &v) == -1)
+        v = 0;
+    *rr = (v & 0xFF00) >> 8;
+    *ll = (v & 0x00FF);
+#endif
 }
