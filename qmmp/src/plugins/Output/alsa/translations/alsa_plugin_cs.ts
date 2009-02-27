@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="cs">
-<defaultcodec></defaultcodec>
 <context>
     <name>OutputALSAFactory</name>
     <message>
@@ -9,17 +8,17 @@
         <translation>Modul ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="50"/>
+        <location filename="../outputalsafactory.cpp" line="56"/>
         <source>About ALSA Output Plugin</source>
         <translation>O modulu ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="51"/>
+        <location filename="../outputalsafactory.cpp" line="57"/>
         <source>Qmmp ALSA Output Plugin</source>
         <translation>Výstupní modul Qmmp ALSA</translation>
     </message>
     <message>
-        <location filename="../outputalsafactory.cpp" line="52"/>
+        <location filename="../outputalsafactory.cpp" line="58"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

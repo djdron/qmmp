@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS><TS version="1.1" language="pl">
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="44"/>
         <source>CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul pro zvuková CD</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="86"/>
         <source>About CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu pro zvuková CD</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="87"/>
         <source>Qmmp CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul Qmmp pro zvuková CD</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation type="unfinished"></translation>
+        <translation>Použití: otevřete cdda:/// v dialogu Přidat URL nebo z příkazové řádky</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>Compiled against libcdio version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Přeloženo s libcdio verze:</translation>
     </message>
 </context>
 <context>
@@ -38,22 +38,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>CD Audio Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení modulu pro zvuková CD</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="31"/>
         <source>Override device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zařízení:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>Limid cd speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Omezit rychlost CD:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>Use cd-text</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít CD-TEXT</translation>
     </message>
 </context>
 </TS>

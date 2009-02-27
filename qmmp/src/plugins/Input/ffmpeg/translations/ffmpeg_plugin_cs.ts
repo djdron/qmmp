@@ -20,17 +20,17 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="79"/>
         <source>FFmpeg Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul FFmpeg</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="81"/>
         <source>FFmpeg Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Formáty FFmpeg</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="145"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation type="unfinished"></translation>
+        <translation>Přeloženo s libavformat-%1.%2.%3 a libavcodec-%4.%5.%6</translation>
     </message>
 </context>
 <context>
@@ -133,12 +133,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Audio Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace o zvuku</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="164"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadata</translation>
     </message>
 </context>
 <context>
@@ -146,52 +146,52 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>Formáty</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Windows Media Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows Media Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Monkey&apos;s Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Monkey&apos;s Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="65"/>
         <source>True Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>True Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
         <source>ALAC (Apple Lossless Audio Codec)</source>
-        <translation type="unfinished"></translation>
+        <translation>ALAC (Apple Lossless Audio Codec)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>ADTS AAC</source>
-        <translation type="unfinished"></translation>
+        <translation>ADTS AAC</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>MPEG-4 AAC</source>
-        <translation type="unfinished"></translation>
+        <translation>MPEG-4 AAC</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>RealAudio 1.0/2.0</source>
-        <translation type="unfinished"></translation>
+        <translation>RealAudio 1.0/2.0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení modulu FFmpeg</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>MP3 (MPEG audio layer 3)</source>
-        <translation type="unfinished"></translation>
+        <translation>MP3 (MPEG audio layer 3)</translation>
     </message>
 </context>
 </TS>

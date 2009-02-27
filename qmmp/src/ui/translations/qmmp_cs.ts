@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="cs">
+<!DOCTYPE TS><TS version="1.1" language="cs">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -173,29 +172,16 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="213"/>
-        <location filename="../configdialog.cpp" line="242"/>
-        <location filename="../configdialog.cpp" line="273"/>
-        <location filename="../configdialog.cpp" line="305"/>
         <location filename="../configdialog.cpp" line="337"/>
         <source>Enabled</source>
         <translation>Povoleno</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="213"/>
-        <location filename="../configdialog.cpp" line="242"/>
-        <location filename="../configdialog.cpp" line="273"/>
-        <location filename="../configdialog.cpp" line="305"/>
         <location filename="../configdialog.cpp" line="337"/>
         <source>Description</source>
         <translation>Popis</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="213"/>
-        <location filename="../configdialog.cpp" line="242"/>
-        <location filename="../configdialog.cpp" line="273"/>
-        <location filename="../configdialog.cpp" line="305"/>
-        <location filename="../configdialog.cpp" line="337"/>
         <location filename="../configdialog.cpp" line="522"/>
         <source>Filename</source>
         <translation>Soubor</translation>
@@ -256,7 +242,6 @@
         <translation>Vzhled</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="92"/>
         <location filename="../forms/configdialog.ui" line="701"/>
         <source>Playlist</source>
         <translation>Seznam skladeb</translation>
@@ -292,14 +277,11 @@
         <translation>Seznam skladeb:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="250"/>
         <location filename="../forms/configdialog.ui" line="286"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="257"/>
-        <location filename="../forms/configdialog.ui" line="293"/>
         <location filename="../forms/configdialog.ui" line="348"/>
         <source>...</source>
         <translation>...</translation>
@@ -330,7 +312,6 @@
         <translation>Nastavení</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="430"/>
         <location filename="../forms/configdialog.ui" line="618"/>
         <source>Information</source>
         <translation>Informace</translation>
@@ -456,61 +437,59 @@
         <translation>Převést %20 na mezery</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="362"/>
         <source>Show full path of a stream</source>
         <translation type="obsolete">Zobrazit plnou cestu k streamu</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="640"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat soubory s tématy</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="641"/>
         <source>Skin files</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubory s tématy</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="193"/>
         <source>Add...</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="206"/>
         <source>Refresh</source>
-        <translation type="unfinished">Načíst znovu</translation>
+        <translation>Obnovit</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="369"/>
         <source>Show protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit protokol</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="641"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>Průhlednost</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="647"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Hlavní okno</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="670"/>
-        <location filename="../forms/configdialog.ui" line="694"/>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="677"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekvalizér</translation>
     </message>
 </context>
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="153"/>
         <location filename="../eqwidget.cpp" line="176"/>
         <source>preset</source>
         <translation>předvolba</translation>
@@ -564,14 +543,11 @@
 <context>
     <name>JumpToTrackDialog</name>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="81"/>
         <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Unqueue</source>
         <translation>Vyřadit</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="79"/>
-        <location filename="../jumptotrackdialog.cpp" line="83"/>
         <location filename="../jumptotrackdialog.cpp" line="139"/>
         <source>Queue</source>
         <translation>Zařadit</translation>
@@ -690,31 +666,26 @@
         <translation>Pokles analyzátoru</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
         <location filename="../mainvisual.cpp" line="360"/>
         <source>Slowest</source>
         <translation>Nejpomalejší</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
         <location filename="../mainvisual.cpp" line="361"/>
         <source>Slow</source>
         <translation>Pomalý</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
         <location filename="../mainvisual.cpp" line="362"/>
         <source>Medium</source>
         <translation>Střední</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="349"/>
         <location filename="../mainvisual.cpp" line="363"/>
         <source>Fast</source>
         <translation>Rychlý</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="350"/>
         <location filename="../mainvisual.cpp" line="364"/>
         <source>Fastest</source>
         <translation>Nejrychlejší</translation>
@@ -738,7 +709,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="64"/>
         <location filename="../mainwindow.cpp" line="480"/>
         <source>Default</source>
         <translation>Seznam</translation>
@@ -839,7 +809,6 @@
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
         <location filename="../mainwindow.cpp" line="518"/>
         <source>Playlist Files</source>
         <translation>Seznamy skladeb</translation>
@@ -877,37 +846,37 @@
     <message>
         <location filename="../mainwindow.cpp" line="425"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Opakovat stopu</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Za&amp;míchat</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="430"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation>O</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation>M</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="424"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Opakovat seznam skladeb</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Nástroje</translation>
     </message>
 </context>
 <context>
@@ -968,25 +937,21 @@
         <translation>Seřadit seznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="185"/>
         <location filename="../playlist.cpp" line="212"/>
         <source>By Title</source>
         <translation>Podle názvu skladby</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="189"/>
         <location filename="../playlist.cpp" line="216"/>
         <source>By Filename</source>
         <translation>Podle názvu souboru</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="193"/>
         <location filename="../playlist.cpp" line="220"/>
         <source>By Path + Filename</source>
         <translation>Podle cesty a názvu souboru</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="197"/>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Date</source>
         <translation>Podle data</translation>
@@ -1067,7 +1032,6 @@
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="201"/>
         <location filename="../playlist.cpp" line="228"/>
         <source>By Track Number</source>
         <translation>Podle čísla skladby</translation>
@@ -1085,7 +1049,7 @@
     <message>
         <location filename="../playlist.cpp" line="244"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Činnosti</translation>
     </message>
 </context>
 <context>
@@ -1151,12 +1115,12 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Nevyprazdňovat seznam skladeb</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="156"/>
         <source>Qt version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Verze Qt:</translation>
     </message>
 </context>
 <context>
