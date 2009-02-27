@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0">
+<!DOCTYPE TS><TS version="1.1" language="pl">
 <context>
     <name>HalFactory</name>
     <message>
         <location filename="../halfactory.cpp" line="30"/>
         <source>HAL Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="50"/>
         <source>About HAL Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="51"/>
         <source>Qmmp HAL Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul Qmmp HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using HAL</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento modul umožňuje detekci odpojitelných zařízení prostřednictvím HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="54"/>
         <source>Based on Solid (KDE hardware library)</source>
-        <translation type="unfinished"></translation>
+        <translation>Založeno na Solid (knihovna KDE pro hardware)</translation>
     </message>
 </context>
 <context>
@@ -39,12 +38,12 @@
     <message>
         <location filename="../halplugin.cpp" line="160"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat CD „%1“</translation>
     </message>
     <message>
         <location filename="../halplugin.cpp" line="166"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat svazek „%1“</translation>
     </message>
 </context>
 <context>
@@ -52,37 +51,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>HAL Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení modulu HAL</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="28"/>
         <source>CD Audio Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Detekce zvukových CD</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="37"/>
         <source>Add tracks to playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky přidat stopy do seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>Remove tracks from playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky odebrat stopy ze seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>Removable Device Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Detekce odpojitelných zařízení</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>
         <source>Add files to playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky přidat soubory do seznamu skladeb</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="70"/>
         <source>Remove files from playlist automatically</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaticky odebrat stopy ze seznamu skladeb</translation>
     </message>
 </context>
 </TS>

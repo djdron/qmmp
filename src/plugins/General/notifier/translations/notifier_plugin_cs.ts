@@ -28,7 +28,7 @@
     <message>
         <location filename="../popupwidget.cpp" line="115"/>
         <source>Volume:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hlasitost:</translation>
     </message>
 </context>
 <context>
@@ -61,27 +61,27 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Song change notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Upozornění na změnu skladby</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
-        <translation type="unfinished"></translation>
+        <translation>Upozornění na změnu hlasitosti</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prodleva v ms:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="81"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>Průhlednost</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="104"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
 </context>
 </TS>

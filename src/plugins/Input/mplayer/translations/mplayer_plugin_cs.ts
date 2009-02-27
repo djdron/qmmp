@@ -5,32 +5,32 @@
     <message>
         <location filename="../decodermplayerfactory.cpp" line="49"/>
         <source>Mplayer Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul MPlayer</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="52"/>
         <source>Video Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Videosoubory</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="96"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="93"/>
         <source>About MPlayer Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu MPlayer</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="94"/>
         <source>Qmmp MPlayer Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul Qmmp MPlayer</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="95"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation type="unfinished"></translation>
+        <translation>Tento modul používá jako backend MPlayer</translation>
     </message>
 </context>
 <context>
@@ -63,72 +63,72 @@
     <message>
         <location filename="../detailsdialog.ui" line="51"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="65"/>
         <source>Demuxer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Demultiplexor:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="79"/>
         <source>Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="102"/>
         <source>Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Obraz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="114"/>
         <source>Resolution:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozlišení:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="295"/>
         <source>Bitrate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="160"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="180"/>
         <source>FPS:</source>
-        <translation type="unfinished"></translation>
+        <translation>FPS:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="249"/>
         <source>Codec:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodek:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="220"/>
         <source>Aspect ratio:</source>
-        <translation type="unfinished"></translation>
+        <translation>Poměr stran:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="237"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvuk</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="315"/>
         <source>Channels:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanály:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="13"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Podrobnosti</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="31"/>
         <source>General information</source>
-        <translation type="unfinished"></translation>
+        <translation>Obecné informace</translation>
     </message>
 </context>
 </TS>
