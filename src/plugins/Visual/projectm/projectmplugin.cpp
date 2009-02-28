@@ -17,52 +17,46 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PROJECTMWIDGET_H
-#define PROJECTMWIDGET_H
+#include <QTimer>
+#include <QSettings>
+#include <QPainter>
+#include <QMenu>
+#include <QActionGroup>
+#include <QHBoxLayout>
+#include <math.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <libprojectM/projectM.hpp>
 
-#include <QGLWidget>
+#include <qmmp/buffer.h>
+#include <qmmp/constants.h>
+#include <qmmp/output.h>
+#include "projectmwidget.h"
+#include "projectmplugin.h"
 
-
-class QMenu;
-class projectM;
-
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class ProjectMWidget : public QGLWidget
+ProjectMPlugin::ProjectMPlugin (QWidget *parent)
+        : Visual (parent)
 {
-    Q_OBJECT
-public:
-    ProjectMWidget(QWidget *parent = 0);
+    setlocale(LC_NUMERIC, "C"); //fixes none-english locales problem
+    setWindowTitle(tr("projectM"));
+    m_projectMWidget = new ProjectMWidget(this);
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(m_projectMWidget);
+    layout->setContentsMargins(0,0,0,0);
+    setLayout(layout);
+    resize(300,300); //TODO save/load geometry
+}
 
-    ~ProjectMWidget();
+ProjectMPlugin::~ProjectMPlugin()
+{}
 
-    projectM *projectMInstance();
+void ProjectMPlugin::clear()
+{
+    update();
+}
 
-protected:
-    virtual void initializeGL();
-    virtual void resizeGL(int width, int height);
-    virtual void paintGL();
-    virtual void mousePressEvent (QMouseEvent *event);
-
-private slots:
-    void showHelp();
-    void showPresetName();
-    void showTitle();
-    void nextPreset();
-    void previousPreset();
-    void randomPreset();
-    void lockPreset();
-    void fullScreen();
-    void updateTitle();
-
-private:
-    projectM *m_projectM;
-    QMenu *m_menu;
-    void createActions();
-
-
-};
-
-#endif
+void ProjectMPlugin::add ( Buffer *b, unsigned long, int, int)
+{ //TODO 8 bit support
+    if (m_projectMWidget->projectMInstance())
+        m_projectMWidget->projectMInstance()->pcm()->addPCM16Data((short *)b->data, b->nbytes/4);
+}

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,15 +19,13 @@
  ***************************************************************************/
 
 #include <QtGui>
-
-//#include "settingsdialog.h"
 #include "visualprojectmfactory.h"
-#include "analyzer.h"
+#include "projectmplugin.h"
 
 const VisualProperties VisualProjectMFactory::properties() const
 {
     VisualProperties properties;
-    properties.name = tr("ProjectM Plugin");
+    properties.name = tr("ProjectM");
     properties.shortName = "projectm";
     properties.hasSettings = FALSE;
     properties.hasAbout = TRUE;
@@ -36,26 +34,29 @@ const VisualProperties VisualProjectMFactory::properties() const
 
 Visual *VisualProjectMFactory::create(QWidget *parent)
 {
-    return new Analyzer(parent);
+    return new ProjectMPlugin(parent);
 };
 
 QDialog *VisualProjectMFactory::createConfigDialog(QWidget *parent)
 {
+    Q_UNUSED(parent);
     return 0;
 };
 
 void VisualProjectMFactory::showAbout(QWidget *parent)
 {
-    QMessageBox::about (parent, tr("About Analyzer Visual Plugin"),
-                        tr("Qmmp Analyzer Visual Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+    QMessageBox::about (parent, tr("About ProjectM Visual Plugin"),
+                        tr("Qmmp ProjectM Visual Plugin")+"\n"+
+                        tr("This plugins adds projectM visualization")+"\n"+
+                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Based on llibrojectM-qt library"));
 };
 
 QTranslator *VisualProjectMFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
     QString locale = QLocale::system().name();
-    translator->load(QString(":/analyzer_plugin_") + locale);
+    translator->load(QString(":/projectm_plugin_") + locale);
     return translator;
 };
 

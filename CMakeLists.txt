@@ -106,6 +106,7 @@ PRINT_SUMMARY ("BS2B Plugin........................" USE_BS2B BS2B_FOUND)
 MESSAGE("")
 MESSAGE("Visual Plugins:")
 PRINT_SUMMARY ("Analyzer .........................." USE_ANALYZER 1)
+PRINT_SUMMARY ("ProjectM .........................." USE_PROJECTM PROJECTM_FOUND)
 
 MESSAGE("")
 MESSAGE("General Plugins:")
