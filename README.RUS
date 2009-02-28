@@ -23,9 +23,11 @@ Qmmp - Qt-based multimedia player
 - скробблер Last.fm
 - анализатор спектра
 - передискретизация
+- эффект bs2b
 - поддержка потокового вещания (MP3, Vorbis через IceCast/ShoutCast)
 - определение устройств
 - поддержка MPRIS
+- поддержка глобальных клавиш
 - поддержка видео с помощью Mplayer
 - получение текстов песен с LyricWiki.org
 
@@ -50,6 +52,7 @@ Qmmp - Qt-based multimedia player
 - ffmpeg >= 0.4.9-pre1 (Опционально)
 - cdio >= 0.80 (Опционально)
 - faad2 >= 2.6.1 (Опционально)
+- libbs2b >= 2.2.1 (Опционально)
 - cmake >= 2.4.8 (только для сборки)
 
 Внимание! Для сборки Qmmp нужна утилита lrelease. Очень часто она находится в пакете qt4-linguist.
@@ -68,8 +71,8 @@ cmake ./ -D USE_JACK:BOOL=FALSE
 
 Доступные опции:
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
-USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_ANALYZER, USE_MPRIS,
-USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_QMMP_DIALOG
+USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_BS2B, USE_ANALYZER, USE_MPRIS,
+USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG
 
 Также вы можете использовать ccmake для изменения конфигурации модулей.
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:

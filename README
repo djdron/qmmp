@@ -23,9 +23,11 @@ Main opportunities:
 - Last.fm scrobbler
 - Spectrum Analyzer
 - sample rate conversion
+- bs2b dsp effect
 - streaming support (MP3, Vorbis via IceCast/ShoutCast)
 - device detection
 - MPRIS support
+- global hotkey support
 - video playback using Mplayer
 - lyrics support (from LyricWiki.org)
 
@@ -50,6 +52,7 @@ Requirements:
 - ffmpeg >= 0.4.9-pre1 (Optional)
 - cdio >= 0.80 (Optional)
 - faad2 >= 2.6.1 (Optional)
+- libbs2b >= 2.2.1 (Optional)
 - cmake >= 2.4.8 (for build only)
 
 
@@ -70,8 +73,8 @@ cmake ./ -D USE_JACK:BOOL=FALSE
 
 Available options:
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
-USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_ANALYZER, USE_MPRIS,
-USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_QMMP_DIALOG
+USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_BS2B, USE_ANALYZER, USE_MPRIS,
+USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG
 
 Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
