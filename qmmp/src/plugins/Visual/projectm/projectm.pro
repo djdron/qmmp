@@ -3,34 +3,31 @@ include(../../plugins.pri)
 TARGET =$$PLUGINS_PREFIX/Visual/projectm
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Visual/libprojectm.so
 
-
-#FORMS += settingsdialog.ui
-HEADERS += analyzer.h \
+HEADERS += projectmwidget.h \
            visualprojectmfactory.h \
- projectmwidget.h \
- qprojectm.h
-SOURCES += analyzer.cpp \
+           projectmplugin.h
+SOURCES += projectmplugin.cpp \
            visualprojectmfactory.cpp \
- projectmwidget.cpp
+           projectmwidget.cpp
 INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin \
 link_pkgconfig
 
-PKGCONFIG += libprojectM-qt libprojectM
-INCLUDEPATH += /usr/include/libprojectM
+PKGCONFIG += libprojectM
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
+QT += opengl
 LIBS += -lqmmp -L/usr/lib -I/usr/include
-#TRANSLATIONS = translations/projectm_plugin_cs.ts
-#               translations/projectm_plugin_de.ts
-#               translations/projectm_plugin_zh_CN.ts
-#               translations/projectm_plugin_zh_TW.ts
-#               translations/projectm_plugin_ru.ts
-#               translations/projectm_plugin_uk_UA.ts
-#RESOURCES = translations/translations.qrc
+TRANSLATIONS = translations/projectm_plugin_cs.ts \
+               translations/projectm_plugin_de.ts \
+               translations/projectm_plugin_zh_CN.ts \
+               translations/projectm_plugin_zh_TW.ts \
+               translations/projectm_plugin_ru.ts \
+               translations/projectm_plugin_uk_UA.ts
+RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){
     LIB_DIR = /lib

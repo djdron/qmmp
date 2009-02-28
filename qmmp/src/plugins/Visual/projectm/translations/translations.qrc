@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>projectm_plugin_cs.qm</file>
+    <file>projectm_plugin_de.qm</file>
+    <file>projectm_plugin_zh_CN.qm</file>
+    <file>projectm_plugin_zh_TW.qm</file>
+    <file>projectm_plugin_uk_UA.qm</file>
+    <file>projectm_plugin_ru.qm</file>
+  </qresource>
+</RCC>
