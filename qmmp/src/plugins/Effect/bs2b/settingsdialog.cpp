@@ -17,27 +17,37 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef BS2BPLUGIN_H
-#define BS2BPLUGIN_H
 
-#include <qmmp/effect.h>
+#include <QSettings>
+#include <bs2b/bs2b.h>
+#include <qmmp/qmmp.h>
 
+#include "settingsdialog.h"
 
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
-class Bs2bPlugin : public Effect
+SettingsDialog::SettingsDialog(QWidget *parent)
+        : QDialog(parent)
 {
-    Q_OBJECT
-public:
-    Bs2bPlugin(QObject *parent = 0);
+    ui.setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    ui.levelComboBox->addItem (tr("low"), BS2B_LOW_CLEVEL);
+    ui.levelComboBox->addItem (tr("middle"), BS2B_MIDDLE_CLEVEL);
+    ui.levelComboBox->addItem (tr("high"), BS2B_HIGH_CLEVEL);
+    ui.levelComboBox->addItem (tr("low (easy version)"), BS2B_LOW_ECLEVEL);
+    ui.levelComboBox->addItem (tr("middle (easy version)"), BS2B_MIDDLE_ECLEVEL);
+    ui.levelComboBox->addItem (tr("hight (easy version)"), BS2B_HIGH_ECLEVEL);
+    int index = ui.levelComboBox->findData(settings.value("bs2b/level", BS2B_DEFAULT_CLEVEL).toInt());
+    if (index >= 0)
+        ui.levelComboBox->setCurrentIndex(index);
+}
 
-    virtual ~Bs2bPlugin();
+SettingsDialog::~SettingsDialog()
+{
+}
 
-    ulong process(char *in_data, const ulong size, char **out_data);
-    void configure(quint32 freq, int chan, int res);
-};
-
-#endif
+void SettingsDialog::accept()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("bs2b/level", ui.levelComboBox->itemData(ui.levelComboBox->currentIndex()).toInt());
+    QDialog::accept();
+}

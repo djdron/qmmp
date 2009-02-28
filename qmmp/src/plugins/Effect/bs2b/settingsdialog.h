@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2008 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,39 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#include <QtGui>
+#include <QDialog>
 
-#include "effectbs2bfactory.h"
-#include "bs2bplugin.h"
+#include "ui_settingsdialog.h"
 
-const EffectProperties EffectBs2bFactory::properties() const
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class SettingsDialog : public QDialog
 {
-    EffectProperties properties;
-    properties.name = tr("BS2B Plugin");
-    properties.shortName = "bs2b";
-    properties.hasSettings = FALSE;
-    properties.hasAbout = FALSE;
-    return properties;
+Q_OBJECT
+public:
+    SettingsDialog(QWidget *parent = 0);
+
+    ~SettingsDialog();
+
+public slots:
+    virtual void accept();
+
+private:
+    Ui::SettingsDialog ui;
+
 };
 
-Effect *EffectBs2bFactory::create(QObject *parent) 
-{
-    return new Bs2bPlugin(parent);
-};
-
-void EffectBs2bFactory::showSettings(QWidget *parent) 
-{};
-
-void EffectBs2bFactory::showAbout(QWidget *parent) 
-{};
-
-QTranslator *EffectBs2bFactory::createTranslator(QObject *parent) 
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/bs2b_plugin_") + locale);
-    return translator;
-};
-
-Q_EXPORT_PLUGIN(EffectBs2bFactory)
+#endif

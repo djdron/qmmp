@@ -101,6 +101,7 @@ PRINT_SUMMARY ("PulseAudio support ................" USE_PULSE PULSE_FOUND)
 MESSAGE("")
 MESSAGE("Effect Plugins:")
 PRINT_SUMMARY ("Sample Rate Conversion ............" USE_SRC SAMPLERATE_FOUND)
+PRINT_SUMMARY ("BS2B Plugin........................" USE_BS2B BS2B_FOUND)
 
 MESSAGE("")
 MESSAGE("Visual Plugins:")
