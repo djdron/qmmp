@@ -69,5 +69,4 @@ void Bs2bPlugin::configure(quint32 freq, int chan, int res)
 {
     Effect::configure(freq, chan, res);
     bs2b_set_srate(m_bs2b_handler,freq);
-    bs2b_set_level(m_bs2b_handler, BS2B_DEFAULT_CLEVEL);
 }
