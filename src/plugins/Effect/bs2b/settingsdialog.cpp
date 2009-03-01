@@ -35,7 +35,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.levelComboBox->addItem (tr("high"), BS2B_HIGH_CLEVEL);
     ui.levelComboBox->addItem (tr("low (easy version)"), BS2B_LOW_ECLEVEL);
     ui.levelComboBox->addItem (tr("middle (easy version)"), BS2B_MIDDLE_ECLEVEL);
-    ui.levelComboBox->addItem (tr("hight (easy version)"), BS2B_HIGH_ECLEVEL);
+    ui.levelComboBox->addItem (tr("high (easy version) [default]"), BS2B_HIGH_ECLEVEL);
     int index = ui.levelComboBox->findData(settings.value("bs2b/level", BS2B_DEFAULT_CLEVEL).toInt());
     if (index >= 0)
         ui.levelComboBox->setCurrentIndex(index);

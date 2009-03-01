@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <defaultcodec></defaultcodec>
 <context>
     <name>EffectBs2bFactory</name>
@@ -73,8 +74,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="38"/>
-        <source>hight (easy version)</source>
-        <translation>високий (спрощена версія)</translation>
+        <source>high (easy version) [default]</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
