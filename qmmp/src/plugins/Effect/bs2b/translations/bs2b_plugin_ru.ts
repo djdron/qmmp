@@ -73,8 +73,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="38"/>
-        <source>hight (easy version)</source>
-        <translation>высокий (упрощённая версия)</translation>
+        <source>high (easy version) [default]</source>
+        <translation>выскоий (упр. версия) [по-умолчанию]</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>

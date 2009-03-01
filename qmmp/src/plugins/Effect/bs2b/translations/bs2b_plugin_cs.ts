@@ -73,7 +73,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="38"/>
-        <source>hight (easy version)</source>
+        <source>high (easy version) [default]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
