@@ -41,6 +41,29 @@ extern "C"
 #else
 #include <avcodec.h>
 #endif
+
+// FIXME: Check for available codecs...
+#if ! defined CODEC_ID_WMAV1
+#define CODEC_ID_WMAV1 CODEC_ID_NONE
+#endif
+#if ! defined CODEC_ID_APE
+#define CODEC_ID_APE CODEC_ID_NONE
+#endif
+#if ! defined CODEC_ID_TTA
+#define CODEC_ID_TTA CODEC_ID_NONE
+#endif
+#if ! defined CODEC_ID_ALAC
+#define CODEC_ID_ALAC CODEC_ID_NONE
+#endif
+#if ! defined CODEC_ID_AAC
+#define CODEC_ID_AAC CODEC_ID_NONE
+#endif
+#if ! defined CODEC_ID_MP3
+#define CODEC_ID_MP3 CODEC_ID_NONE
+#endif
+#if ! defined CODEC_ID_RA_288
+#define CODEC_ID_RA_288 CODEC_ID_NONE
+#endif
 }
 
 #include "settingsdialog.h"
