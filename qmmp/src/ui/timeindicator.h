@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,7 @@
 #include <pixmapwidget.h>
 
 class QMouseEvent;
+class QTimer;
 
 class Skin;
 
@@ -42,15 +43,18 @@ public:
     void setTime ( int t );
     void setSongDuration(int);
     void setNeedToShowTime(bool);
+
 protected:
     virtual void mousePressEvent(QMouseEvent*);
     virtual void mouseMoveEvent(QMouseEvent*);
     virtual void mouseReleaseEvent(QMouseEvent*);
     void writeSettings();
     void readSettings();
-    void reset();
+
 private slots:
     void updateSkin();
+    void reset();
+
 private:
     QPixmap m_pixmap;
     Skin *m_skin;
@@ -58,6 +62,7 @@ private:
     int m_songDuration;
     bool m_elapsed;
     bool m_needToShowTime;
+    QTimer *m_timer;
 };
 
 #endif
