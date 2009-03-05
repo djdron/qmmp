@@ -82,7 +82,6 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string, Main
     else if (option_string == "--stop" || option_string == "-s")
     {
         mw->stop();
-        mw->mainDisplay()->hideTimeDisplay();
     }
     else if (option_string == "--pause" || option_string == "-u")
     {

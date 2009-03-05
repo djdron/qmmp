@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 #include <QPainter>
 #include <QSettings>
 #include <QMouseEvent>
+#include <QTimer>
 #include <qmmp/qmmp.h>
 
 #include "skin.h"
@@ -37,6 +38,10 @@ TimeIndicator::TimeIndicator ( QWidget *parent )
     updateSkin();
     reset();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    m_timer = new QTimer(this);
+    m_timer->setInterval(125);
+    m_timer->setSingleShot (TRUE);
+    connect(m_timer, SIGNAL(timeout()),SLOT(reset()));
 }
 
 void TimeIndicator::setTime ( int t )
@@ -50,7 +55,7 @@ void TimeIndicator::setTime ( int t )
         t = m_songDuration - t;
         paint.drawPixmap(QPoint(2,0),m_skin->getNumber( 10 ));
     }
-    if(t < 0)
+    if (t < 0)
         t = 0;
 
     paint.drawPixmap(QPoint(13,0),m_skin->getNumber( t/600%10 ));
@@ -117,7 +122,11 @@ void TimeIndicator::writeSettings()
 void TimeIndicator::setNeedToShowTime(bool need)
 {
     m_needToShowTime = need;
-    if (!need) reset();
+    //if (!need) reset();
+    if (!need)
+        m_timer->start();
+    else
+        m_timer->stop();
 }
 
 void TimeIndicator::mouseMoveEvent(QMouseEvent *)

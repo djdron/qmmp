@@ -68,7 +68,6 @@ MainDisplay::MainDisplay (QWidget *parent)
     Button *stop = new Button (this, Skin::BT_STOP_N,Skin::BT_STOP_P);
     stop->move (85, 88);
     connect (stop,SIGNAL (clicked()),parent,SLOT (stop()));
-    connect (stop,SIGNAL (clicked()),this,SLOT (hideTimeDisplay()));
     Button *next = new Button (this, Skin::BT_NEXT_N,Skin::BT_NEXT_P);
     next->move (108, 88);
     connect (next,SIGNAL (clicked()),parent,SLOT (next()));
@@ -273,13 +272,6 @@ void MainDisplay::setIsShuffle(bool yes)
 {
     m_shuffleButton->setON(yes);
 }
-
-
-void MainDisplay::hideTimeDisplay()
-{
-    m_timeIndicator->setNeedToShowTime(false);
-}
-
 
 void MainDisplay::mousePressEvent(QMouseEvent *e)
 {

@@ -65,7 +65,6 @@ public:
     void setIsShuffle(bool);
 
 public slots:
-    void hideTimeDisplay();
     void setDuration(qint64);
 
 signals:
