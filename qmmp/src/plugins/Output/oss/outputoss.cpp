@@ -129,6 +129,7 @@ void OutputOSS::configure(long freq, int chan, int prec, int rate)
     // we need to configure
     if (freq != m_frequency || chan != m_channels || prec != m_precision)
     {
+        qDebug("OutputOSS: frequency=%d, channels=%d, bits=%d", freq, chan, prec);
         // we have already configured, but are changing settings...
         // reset the device
         resetDSP();
@@ -157,11 +158,18 @@ void OutputOSS::configure(long freq, int chan, int prec, int rate)
 
         }
 
-        ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p);
-        ioctl(m_audio_fd, SNDCTL_DSP_SAMPLESIZE, &prec);
-        int stereo = (chan > 1) ? 1 : 0;
-        ioctl(m_audio_fd, SNDCTL_DSP_STEREO, &stereo);
-        ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq);
+        if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) == -1)
+            qWarning("OutputOSS: can't set audio format");
+        /*if(ioctl(m_audio_fd, SNDCTL_DSP_SAMPLESIZE, &prec) == -1)
+            qDebug("OutputOSS: can't set audio format");*/
+        /*int stereo = (chan > 1) ? 1 : 0;
+         ioctl(m_audio_fd, SNDCTL_DSP_STEREO, &stereo);*/
+        if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &m_channels) == -1)
+            qWarning("OutputOSS: can't set number of channels");
+        if (chan != m_channels)
+            qWarning("OutputOSS: can't set number of channels, using %d instead", m_channels);
+        if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq) == -1)
+            qWarning("OutputOSS: can't set audio format");
     }
 
     m_rate = rate;

@@ -57,6 +57,7 @@ private:
     SoundCore *m_core;
     static MediaPlayer* m_instance;
     bool m_repeat;
+    int m_skips;
 
 };
 

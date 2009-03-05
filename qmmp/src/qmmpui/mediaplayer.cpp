@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,6 +29,8 @@
 
 #include "mediaplayer.h"
 
+#define MAX_SKIPS 5
+
 MediaPlayer *MediaPlayer::m_instance = 0;
 
 MediaPlayer::MediaPlayer(QObject *parent)
@@ -37,6 +39,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_instance = this;
     m_model = 0;
     m_core = 0;
+    m_skips = 0;
     m_repeat = FALSE;
     QTranslator *translator = new QTranslator(parent);
     QString locale = QLocale::system().name();
@@ -101,6 +104,13 @@ void MediaPlayer::play()
         case Qmmp::NormalError:
         {
             //error in decoder, so we should try to play next song
+            m_skips++;
+            if (m_skips > MAX_SKIPS)
+            {
+                stop();
+                qWarning("MediaPlayer: skip limit exceeded");
+                break;
+            }
             qApp->processEvents();
             if (!m_model->isEmptyQueue())
             {
@@ -117,6 +127,8 @@ void MediaPlayer::play()
         }
         }
     }
+    else
+        m_skips = 0;
 }
 
 void MediaPlayer::stop()
