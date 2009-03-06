@@ -41,6 +41,7 @@
 #include "playlistmodel.h"
 #include "playlistitem.h"
 #include "playstate.h"
+#include "playlistsettings.h"
 
 #include <QMetaType>
 
@@ -96,6 +97,7 @@ PlayListModel::~PlayListModel()
             l->wait();
         }
     }
+    delete PlaylistSettings::instance();
 }
 
 void PlayListModel::load(PlayListItem *item)
@@ -424,7 +426,7 @@ void PlayListModel::readSettings()
         m_current = 0;
     m_block_update_signals = TRUE;
     foreach(FileInfo *info, infoList)
-    load(new PlayListItem(info, &settings)); //using one and the same settings object for all playlist items
+    load(new PlayListItem(info));
     m_block_update_signals = FALSE;
     doCurrentVisibleRequest();
 }
@@ -454,11 +456,7 @@ void PlayListModel::addFile(const QString& path)
 {
     if (path.isEmpty())
         return;
-    /*if(path.startsWith("http://"))
-        load(new PlayListItem(path));
-    else if(Decoder::supports(path))
-        load(new PlayListItem(path));*/
-    QList <FileInfo *> playList = Decoder::createPlayList(path);
+    QList <FileInfo *> playList = Decoder::createPlayList(path, PlaylistSettings::instance()->useMetadata());
     foreach(FileInfo *info, playList)
     emit load(new PlayListItem(info));
 
@@ -951,4 +949,48 @@ bool PlayListModel::isFileLoaderRunning() const
 void PlayListModel::preparePlayState()
 {
     m_play_state->prepare();
+}
+
+bool PlayListModel::convertUnderscore()
+{
+    return PlaylistSettings::instance()->convertUnderscore();
+}
+
+bool PlayListModel::convertTwenty()
+{
+    return PlaylistSettings::instance()->convertTwenty();
+}
+
+bool PlayListModel::useMetadata()
+{
+    return PlaylistSettings::instance()->useMetadata();
+}
+
+const QString PlayListModel::format() const
+{
+    return PlaylistSettings::instance()->format();
+}
+
+void PlayListModel::setConvertUnderscore(bool yes)
+{
+    PlaylistSettings::instance()->setConvertUnderscore(yes);
+    emit settingsChanged();
+}
+
+void PlayListModel::setConvertTwenty(bool yes)
+{
+    PlaylistSettings::instance()->setConvertTwenty(yes);
+    emit settingsChanged();
+}
+
+void PlayListModel::setUseMetadata(bool yes)
+{
+    PlaylistSettings::instance()->setUseMetadata(yes);
+    emit settingsChanged();
+}
+
+void PlayListModel::setFormat(const QString &format)
+{
+    PlaylistSettings::instance()->setFormat(format);
+    emit settingsChanged();
 }

@@ -38,6 +38,8 @@
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/filedialog.h>
+#include <qmmpui/mediaplayer.h>
+#include <qmmpui/playlistmodel.h>
 
 
 #include "skin.h"
@@ -97,14 +99,14 @@ ConfigDialog::~ConfigDialog()
 void ConfigDialog::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    ui.formatLineEdit->setText(
-        settings.value ("PlayList/title_format", "%p - %t").toString());
-    ui.metadataCheckBox->setChecked(
-        settings.value ("PlayList/load_metadata", TRUE).toBool());
-    ui.underscoresCheckBox->setChecked(settings.value ("PlayList/convert_underscore", TRUE).toBool());
-    ui.per20CheckBox->setChecked(settings.value ("PlayList/convert_twenty", TRUE).toBool());
+    if (MediaPlayer *player = MediaPlayer::instance())
+    {
+        ui.formatLineEdit->setText(player->playListModel()->format());
+        ui.metadataCheckBox->setChecked(player->playListModel()->useMetadata());
+        ui.underscoresCheckBox->setChecked(player->playListModel()->convertUnderscore());
+        ui.per20CheckBox->setChecked(player->playListModel()->convertTwenty());
+    }
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
-
     //proxy settings
     ui.enableProxyCheckBox->setChecked(Qmmp::useProxy());
     ui.authProxyCheckBox->setChecked(Qmmp::useProxyAuth());
@@ -540,10 +542,13 @@ void ConfigDialog::addTitleString( QAction * a)
 void ConfigDialog::saveSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue ("PlayList/title_format", ui.formatLineEdit->text().trimmed());
-    settings.setValue ("PlayList/load_metadata", ui.metadataCheckBox->isChecked());
-    settings.setValue ("PlayList/convert_underscore", ui.underscoresCheckBox->isChecked());
-    settings.setValue ("PlayList/convert_twenty", ui.per20CheckBox->isChecked());
+    if (MediaPlayer *player = MediaPlayer::instance())
+    {
+        player->playListModel()->setFormat(ui.formatLineEdit->text().trimmed());
+        player->playListModel()->setUseMetadata(ui.metadataCheckBox->isChecked());
+        player->playListModel()->setConvertUnderscore(ui.underscoresCheckBox->isChecked());
+        player->playListModel()->setConvertTwenty(ui.per20CheckBox->isChecked());
+    }
     settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
 

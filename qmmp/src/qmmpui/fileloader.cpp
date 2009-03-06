@@ -20,6 +20,7 @@
 #include <qmmp/decoder.h>
 
 #include "fileloader.h"
+#include "playlistsettings.h"
 #include "playlistitem.h"
 
 FileLoader::FileLoader(QObject *parent)
@@ -43,13 +44,9 @@ void FileLoader::addFiles(const QStringList &files)
 
     foreach(QString s, files)
     {
-        /*if (s.startsWith("http://") || Decoder::supports(s))
-        {*/
-        //emit newPlayListItem(new PlayListItem(s));
-        QList <FileInfo *> playList = Decoder::createPlayList(s);
+        QList <FileInfo *> playList = Decoder::createPlayList(s, PlaylistSettings::instance()->useMetadata());
         foreach(FileInfo *info, playList)
         emit newPlayListItem(new PlayListItem(info));
-        //}
         if (m_finished) return;
     }
 }
@@ -67,14 +64,10 @@ void FileLoader::addDirectory(const QString& s)
         QFileInfo fileInfo = l.at(i);
         QString suff = fileInfo.completeSuffix();
         list << fileInfo;
-
-        /*if (Decoder::supports(fileInfo.absoluteFilePath ()))
-        {*/
-        playList = Decoder::createPlayList(fileInfo.absoluteFilePath ());
+        playList = Decoder::createPlayList(fileInfo.absoluteFilePath (),
+                                           PlaylistSettings::instance()->useMetadata());
         foreach(FileInfo *info, playList)
         emit newPlayListItem(new PlayListItem(info));
-        //emit newPlayListItem(new PlayListItem(fileInfo.absoluteFilePath ()));
-        //}
         if (m_finished) return;
     }
     dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);

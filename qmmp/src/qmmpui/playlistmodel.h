@@ -196,6 +196,7 @@ signals:
     void firstAdded();
     void repeatableListChanged(bool);
     void shuffleChanged(bool);
+    void settingsChanged();
 
 public slots:
     void load(PlayListItem *);
@@ -264,6 +265,19 @@ public slots:
     void setQueued(PlayListItem* f);
 
     void preparePlayState();
+
+
+    /*!
+     * settings
+     */
+    bool convertUnderscore();
+    bool convertTwenty();
+    bool useMetadata();
+    const QString format() const;
+    void setConvertUnderscore(bool);
+    void setConvertTwenty(bool);
+    void setUseMetadata(bool);
+    void setFormat(const QString &format);
 
 private:
 
