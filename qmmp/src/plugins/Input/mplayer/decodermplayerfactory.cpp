@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 #include <QtGui>
 
 #include "detailsdialog.h"
+#include "settingsdialog.h"
 #include "decoder_mplayer.h"
 #include "decodermplayerfactory.h"
 
@@ -53,7 +54,7 @@ const DecoderProperties DecoderMplayerFactory::properties() const
     //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
     properties.protocols = "file";
     properties.hasAbout = TRUE;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = TRUE;
     properties.noInput = TRUE;
     properties.noOutput = TRUE;
     return properties;
@@ -82,10 +83,10 @@ QObject* DecoderMplayerFactory::showDetails(QWidget *parent, const QString &path
     return d;
 }
 
-void DecoderMplayerFactory::showSettings(QWidget *)
+void DecoderMplayerFactory::showSettings(QWidget *parent)
 {
-    /*SettingsDialog *s = new SettingsDialog(parent);
-    s->show();*/
+    SettingsDialog *s = new SettingsDialog(parent);
+    s->show();
 }
 
 void DecoderMplayerFactory::showAbout(QWidget *parent)

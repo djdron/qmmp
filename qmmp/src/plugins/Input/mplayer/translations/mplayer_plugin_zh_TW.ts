@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_TW">
 <context>
     <name>DecoderMplayerFactory</name>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="49"/>
+        <location filename="../decodermplayerfactory.cpp" line="50"/>
         <source>Mplayer Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="52"/>
+        <location filename="../decodermplayerfactory.cpp" line="53"/>
         <source>Video Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="96"/>
+        <location filename="../decodermplayerfactory.cpp" line="97"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="93"/>
+        <location filename="../decodermplayerfactory.cpp" line="94"/>
         <source>About MPlayer Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="94"/>
+        <location filename="../decodermplayerfactory.cpp" line="95"/>
         <source>Qmmp MPlayer Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="95"/>
+        <location filename="../decodermplayerfactory.cpp" line="96"/>
         <source>This plugin uses MPlayer as backend</source>
         <translation type="unfinished"></translation>
     </message>
@@ -41,6 +42,18 @@
         <translation>關閉</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="58"/>
+        <location filename="../detailsdialog.ui" line="72"/>
+        <location filename="../detailsdialog.ui" line="86"/>
+        <location filename="../detailsdialog.ui" line="127"/>
+        <location filename="../detailsdialog.ui" line="147"/>
+        <location filename="../detailsdialog.ui" line="167"/>
+        <location filename="../detailsdialog.ui" line="187"/>
+        <location filename="../detailsdialog.ui" line="207"/>
+        <location filename="../detailsdialog.ui" line="227"/>
+        <location filename="../detailsdialog.ui" line="262"/>
+        <location filename="../detailsdialog.ui" line="282"/>
+        <location filename="../detailsdialog.ui" line="302"/>
         <location filename="../detailsdialog.ui" line="322"/>
         <source>-</source>
         <translation>-</translation>
@@ -86,6 +99,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="140"/>
         <location filename="../detailsdialog.ui" line="295"/>
         <source>Bitrate:</source>
         <translation type="unfinished"></translation>
@@ -101,6 +115,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="200"/>
         <location filename="../detailsdialog.ui" line="249"/>
         <source>Codec:</source>
         <translation type="unfinished"></translation>
@@ -128,6 +143,34 @@
     <message>
         <location filename="../detailsdialog.ui" line="31"/>
         <source>General information</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../settingsdialog.cpp" line="31"/>
+        <location filename="../settingsdialog.cpp" line="39"/>
+        <location filename="../settingsdialog.cpp" line="48"/>
+        <location filename="../settingsdialog.cpp" line="49"/>
+        <location filename="../settingsdialog.cpp" line="61"/>
+        <location filename="../settingsdialog.cpp" line="62"/>
+        <source>default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>MPlayer Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Video:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="43"/>
+        <source>Audio:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
