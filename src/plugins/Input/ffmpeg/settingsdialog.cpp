@@ -33,7 +33,6 @@ extern "C"
 #include <avformat.h>
 #endif
 
-
 #if defined HAVE_FFMPEG_AVCODEC_H
 #include <ffmpeg/avcodec.h>
 #elif defined HAVE_LIBAVCODEC_AVCODEC_H
@@ -42,28 +41,6 @@ extern "C"
 #include <avcodec.h>
 #endif
 
-// FIXME: Check for available codecs...
-#if ! defined CODEC_ID_WMAV1
-#define CODEC_ID_WMAV1 CODEC_ID_NONE
-#endif
-#if ! defined CODEC_ID_APE
-#define CODEC_ID_APE CODEC_ID_NONE
-#endif
-#if ! defined CODEC_ID_TTA
-#define CODEC_ID_TTA CODEC_ID_NONE
-#endif
-#if ! defined CODEC_ID_ALAC
-#define CODEC_ID_ALAC CODEC_ID_NONE
-#endif
-#if ! defined CODEC_ID_AAC
-#define CODEC_ID_AAC CODEC_ID_NONE
-#endif
-#if ! defined CODEC_ID_MP3
-#define CODEC_ID_MP3 CODEC_ID_NONE
-#endif
-#if ! defined CODEC_ID_RA_288
-#define CODEC_ID_RA_288 CODEC_ID_NONE
-#endif
 }
 
 #include "settingsdialog.h"
@@ -75,15 +52,22 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
-    filters << "*.wma" << "*.ape";
+    filters << "*.wma";
+#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
+    filters << "*.ape";
+#endif
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     avcodec_init();
     avcodec_register_all();
     av_register_all();
     ui.wmaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_WMAV1));
     ui.wmaCheckBox->setChecked(filters.contains("*.wma") && avcodec_find_decoder(CODEC_ID_WMAV1));
+#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
     ui.apeCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_APE));
     ui.apeCheckBox->setChecked(filters.contains("*.ape") && avcodec_find_decoder(CODEC_ID_APE));
+#else
+    ui.apeCheckBox->setChecked(FALSE);
+#endif
     ui.ttaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TTA));
     ui.ttaCheckBox->setChecked(filters.contains("*.tta") && avcodec_find_decoder(CODEC_ID_TTA));
     ui.alacCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_ALAC));
@@ -96,7 +80,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.mp4CheckBox->setChecked(filters.contains("*.m4a") && avcodec_find_decoder(CODEC_ID_AAC));
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
     ui.raCheckBox->setChecked(filters.contains("*.ra") && avcodec_find_decoder(CODEC_ID_RA_288));
-
 }
 
 
