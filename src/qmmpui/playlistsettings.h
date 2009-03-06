@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,54 +17,37 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef PLAYLISTITEM_H
-#define PLAYLISTITEM_H
+#ifndef PLAYLISTSETTINGS_H
+#define PLAYLISTSETTINGS_H
 
-#include <qmmp/qmmp.h>
-#include <qmmpui/abstractplaylistitem.h>
+#include <QString>
 
-class FileInfo;
-class QSettings;
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class PlayListItem : public AbstractPlaylistItem
+class PlaylistSettings
 {
 public:
-    /*!
-     * Current state of media file.
-     * FREE - instance is free and may be deleted
-     * EDITING - instance is currently busy in some kind of operation(tags editing etc.)
-     * and can't be deleted at the moment. Set flag SCHEDULED_FOR_DELETION for it 
-     * instead of delete operator call.
-     */
-    enum FLAGS{FREE = 0,EDITING,SCHEDULED_FOR_DELETION};
-    PlayListItem();
-    PlayListItem(FileInfo *info);
+    PlaylistSettings();
 
-    ~PlayListItem();
+    ~PlaylistSettings();
 
-    //playlist support
-    void setSelected(bool yes);
-    bool isSelected() const;
-    void setCurrent(bool yes);
-    bool isCurrent() const;
-    FLAGS flag()const;
-    void setFlag(FLAGS);
-    const QString text() const;
-    void setText(const QString &title);
-    //modify functions
-    void updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData);
-    void updateTags();
+    static PlaylistSettings* instance();
+    bool convertUnderscore();
+    bool convertTwenty();
+    bool useMetadata();
+    const QString format() const;
+    void setConvertUnderscore(bool);
+    void setConvertTwenty(bool);
+    void setFormat(const QString &format);
+    void setUseMetadata(bool);
 
 private:
-    void readMetadata();
-    QString printTag(QString str, QString regExp, QString tagStr);
-    QString m_title;
-    FileInfo *m_info;
-    bool m_selected;
-    bool m_current;
-    FLAGS m_flag;
+    static PlaylistSettings* m_instance;
+    bool m_convertUnderscore, m_convertTwenty;
+    bool m_useMetadata;
+    QString m_format;
+
 };
 
 #endif

@@ -61,14 +61,11 @@ public:
     // static methods
     static QStringList all();
     static bool supports(const QString &);
-    //static Decoder *create(QObject *, const QString &, QIODevice *, Output *);
     static DecoderFactory *findByPath(const QString&);
     static DecoderFactory *findByMime(const QString&);
     static DecoderFactory *findByContent(QIODevice *);
     static DecoderFactory *findByURL(const QUrl &url);
-    //static FileInfo *createFileInfo(const QString &fileName);
     static QList <FileInfo *> createPlayList(const QString &fileName, bool useMetaData = TRUE);
-    //static QList <FileInfo *> createPlayList(const QStringList &fileList);
     static QStringList filters();
     static QStringList nameFilters();
     static QList<DecoderFactory*> *factories();
@@ -102,6 +99,7 @@ private:
     bool m_useEQ;
     StateHandler *m_handler;
     static QList<DecoderFactory*> *m_factories;
+    static DecoderFactory *m_lastFactory;
     static QStringList m_files;
 
 };

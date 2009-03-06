@@ -119,7 +119,6 @@ void MediaPlayer::play()
             else if (!m_model->next())
             {
                 stop();
-                //display->hideTimeDisplay();
                 return;
             }
             play();
@@ -145,7 +144,6 @@ void MediaPlayer::next()
     else if (!m_model->next())
     {
         stop();
-        //display->hideTimeDisplay();
         return;
     }
     //m_playlist->update();
@@ -155,8 +153,6 @@ void MediaPlayer::next()
             stop();
         play();
     }
-    /*else
-        display->hideTimeDisplay();*/
 }
 
 void MediaPlayer::previous()

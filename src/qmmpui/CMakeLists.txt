@@ -41,6 +41,7 @@ SET(libqmmpui_SRCS
     playlistmodel.cpp
     playlistitem.cpp
     mediaplayer.cpp
+    playlistsettings.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -60,6 +61,7 @@ SET(libqmmpui_MOC_HDRS
     playlistmodel.h
     playlistitem.h
     mediaplayer.h
+    playlistsettings.h
 )
 
 SET(libqmmpui_DEVEL_HDRS

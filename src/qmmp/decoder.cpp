@@ -188,11 +188,12 @@ void Decoder::finish()
 
 // static methods
 QList<DecoderFactory*> *Decoder::m_factories = 0;
+DecoderFactory *Decoder::m_lastFactory = 0;
 QStringList Decoder::m_files;
 
 void Decoder::checkFactories()
 {
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
 
     if (!m_factories)
     {
@@ -237,7 +238,6 @@ void Decoder::checkFactories()
     }
 }
 
-
 QStringList Decoder::all()
 {
     checkFactories();
@@ -273,45 +273,17 @@ bool Decoder::supports(const QString &source)
     return FALSE;
 }
 
-/*Decoder *Decoder::create(QObject *parent, const QString &source,
-                         QIODevice *input,
-                         Output *output)
-{
-    Decoder *decoder = 0;
-    DecoderFactory *fact = 0;
-    if (!input->open(QIODevice::ReadOnly))
-    {
-        qDebug("Decoder: cannot open input");
-        return decoder;
-    }
-    StreamReader* sreader = qobject_cast<StreamReader *>(input);
-    if (sreader)
-    {
-        fact = Decoder::findByMime(sreader->contentType());
-        if (!fact)
-            fact = Decoder::findByContent(sreader);
-    }
-    else
-        fact = Decoder::findByPath(source);
-    if (fact)
-    {
-        decoder = fact->create(parent, input, output);
-    }
-    if (!decoder)
-        input->close();
-    else
-        output->setStateHandler(decoder->stateHandler());
-    return decoder;
-}*/
-
 DecoderFactory *Decoder::findByPath(const QString& source)
 {
     checkFactories();
-    DecoderFactory *fact;
+    DecoderFactory *fact = m_lastFactory;
+    if (fact && fact->supports(source) && isEnabled(fact)) //try last factory
+        return fact;
     foreach(fact, *m_factories)
     {
         if (fact->supports(source) && isEnabled(fact))
         {
+            m_lastFactory = fact;
             return fact;
         }
     }
@@ -397,19 +369,6 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
     return !disabledList.contains(name);
 }
-
-/*FileInfo *Decoder::createFileInfo(const QString &fileName)
-{
-    DecoderFactory *fact = Decoder::findByPath(fileName);
-    if (fact && QFile::exists(fileName))
-    {
-        FileInfo *info = fact->createFileInfo(fileName);
-        if (info && info->url().isEmpty())
-            info->setUrl(QUrl::fromLocalFile (fileName));
-        return fact->createFileInfo(fileName);
-    }
-    return 0;
-}*/
 
 QList <FileInfo *> Decoder::createPlayList(const QString &fileName, bool useMetaData)
 {

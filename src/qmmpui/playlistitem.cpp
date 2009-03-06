@@ -21,7 +21,7 @@
 #include <QDir>
 
 #include <qmmp/decoder.h>
-
+#include "playlistsettings.h"
 #include "playlistitem.h"
 
 PlayListItem::PlayListItem() : AbstractPlaylistItem(), m_flag(FREE)
@@ -29,25 +29,11 @@ PlayListItem::PlayListItem() : AbstractPlaylistItem(), m_flag(FREE)
     m_info = 0;
 }
 
-PlayListItem::PlayListItem(FileInfo *info, QSettings *settings) : AbstractPlaylistItem(), m_flag(FREE)
+PlayListItem::PlayListItem(FileInfo *info) : AbstractPlaylistItem(), m_flag(FREE)
 {
     m_selected = FALSE;
     m_current = FALSE;
     m_info = info;
-
-    //use external settings or create new
-    QSettings *s = settings;
-    if (!s)
-        s = new QSettings (Qmmp::configFile(), QSettings::IniFormat);
-
-    m_use_meta = s->value ("PlayList/load_metadata", TRUE).toBool();  //TODO move to libqmmp
-    //format
-    m_format = s->value("PlayList/title_format", "%p - %t").toString();
-    //other properties
-    m_convertUnderscore = s->value ("PlayList/convert_underscore", TRUE).toBool();
-    m_convertTwenty = s->value ("PlayList/convert_twenty", TRUE).toBool();
-    if (!settings) //delete created settings only
-        delete s;
 
     setMetaData(info->metaData());
     setMetaData(Qmmp::URL, m_info->path());
@@ -124,7 +110,7 @@ void PlayListItem::setText(const QString &title)
 
 void PlayListItem::readMetadata()
 {
-    m_title = m_format;
+    m_title = PlaylistSettings::instance()->format();
     m_title = printTag(m_title, "%p", artist());
     m_title = printTag(m_title, "%a", album());
     m_title = printTag(m_title, "%t", title());
@@ -142,14 +128,15 @@ void PlayListItem::readMetadata()
     if (m_info)
         delete m_info;
     m_info = 0;
-    if (m_convertUnderscore)
+    if (PlaylistSettings::instance()->convertUnderscore())
         m_title.replace("_", " ");
-    if (m_convertTwenty)
+    if (PlaylistSettings::instance()->convertTwenty())
         m_title.replace("%20", " ");
 }
 
 QString PlayListItem::printTag(QString str, QString regExp, QString tagStr)
 {
+    QString format = PlaylistSettings::instance()->format();
     if (!tagStr.isEmpty())
         str.replace(regExp, tagStr);
     else
@@ -162,9 +149,9 @@ QString PlayListItem::printTag(QString str, QString regExp, QString tagStr)
         if (nextPos < 0)
         {
             //last separator
-            regExpPos = m_format.lastIndexOf(regExp);
-            nextPos = m_format.lastIndexOf("%", regExpPos - 1);
-            QString lastSep = m_format.right (m_format.size() - nextPos - 2);
+            regExpPos = format.lastIndexOf(regExp);
+            nextPos = format.lastIndexOf("%", regExpPos - 1);
+            QString lastSep = format.right (format.size() - nextPos - 2);
             str.remove(lastSep);
             str.remove(regExp);
         }
@@ -173,4 +160,3 @@ QString PlayListItem::printTag(QString str, QString regExp, QString tagStr)
     }
     return str;
 }
-
