@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,6 +34,7 @@
 #include <QKeyEvent>
 #include <QMenu>
 #include <QRegExp>
+#include <QSettings>
 
 #include "decoder_mplayer.h"
 
@@ -110,6 +111,13 @@ bool DecoderMplayer::initialize()
     delete info;
     m_args.clear();
     m_args << "-slave";
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    QString ao_str = settings.value("mplayer/ao","default").toString();
+    QString vo_str = settings.value("mplayer/vo","default").toString();
+    if (ao_str != "default")
+        m_args << "ao=" + ao_str;
+    if (vo_str != "default")
+        m_args << "vo=" + vo_str;
     m_args << m_url;
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
     return TRUE;
@@ -131,7 +139,7 @@ void DecoderMplayer::stop()
     if (m_process->state() == QProcess::Running)
     {
         m_process->write("quit\n");
-        m_process->waitForFinished(200);
+        m_process->waitForFinished(1500);
     }
     StateHandler::instance()->dispatch(Qmmp::Stopped);
 }
@@ -179,13 +187,13 @@ void DecoderMplayer::readStdOut()
         else if (rx_end.indexIn(line) > -1)
         {
             if (m_process->state() == QProcess::Running)
-                m_process->waitForFinished(500);
+                m_process->waitForFinished(1500);
             finish();
         }
         else if (rx_quit.indexIn(line) > -1)
         {
             if (m_process->state() == QProcess::Running)
-                m_process->waitForFinished(500);
+                m_process->waitForFinished(1500);
             StateHandler::instance()->dispatch(Qmmp::Stopped);
         }
         else if (rx_audio.indexIn(line) > -1)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,65 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#ifndef DECODER_MPLAYER_H
-#define DECODER_MPLAYER_H
+#include <QDialog>
 
-#include <qmmp/decoder.h>
-#include <qmmp/statehandler.h>
+#include "ui_settingsdialog.h"
 
-class Output;
-class QIDevice;
-class DecoderPhonon;
-class QMenu;
-class QProcess;
-
-
-class MplayerInfo
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class SettingsDialog : public QDialog
 {
+Q_OBJECT
 public:
-    static FileInfo *createFileInfo(const QString &path);
-    static QStringList filters();
-};
+    SettingsDialog(QWidget *parent = 0);
+
+    ~SettingsDialog();
 
 
-
-class DecoderMplayer : public Decoder
-{
-    Q_OBJECT
-public:
-    DecoderMplayer(QObject *, DecoderFactory *, const QString &url);
-    virtual ~DecoderMplayer();
-
-    // Standard Decoder API
-    bool initialize();
-    qint64 lengthInSeconds();
-    void seek(qint64);
-    void stop();
-    void pause();
-
-    // Equalizer
-    void setEQ(double bands[10], double preamp);
-    void setEQEnabled(bool on);
-
-private slots:
-    void readStdOut();
-    void startMplayerProcess();
+public slots:
+    virtual void accept();
 
 private:
-    // thread run function
-    void run();
-    int mplayer_pipe[2];
-    QString m_url;
-    QStringList m_args;
-    QProcess *m_process;
-    int m_bitrate;
-    int m_samplerate;
-    int m_channels;
-    int m_bitsPerSample;
-    qint64 m_currentTime;
-    qint64 m_length;
+    Ui::SettingsDialog ui;
 };
 
-
-#endif // DECODER_MPLAYER_H
+#endif

@@ -2,11 +2,13 @@ include(../../plugins.pri)
 
 HEADERS += decodermplayerfactory.h \
            decoder_mplayer.h \
-           detailsdialog.h
+           detailsdialog.h \
+ settingsdialog.h
 
 SOURCES += decoder_mplayer.cpp \
            decodermplayerfactory.cpp \
-           detailsdialog.cpp
+           detailsdialog.cpp \
+ settingsdialog.cpp
 
 TARGET =$$PLUGINS_PREFIX/Input/mplayer
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmplayer.so
@@ -35,4 +37,5 @@ isEmpty(LIB_DIR){
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
 
-FORMS += detailsdialog.ui
+FORMS += detailsdialog.ui \
+ settingsdialog.ui
