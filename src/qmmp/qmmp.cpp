@@ -21,8 +21,8 @@
 #include <QDir>
 #include <QSettings>
 
-#ifndef QMMP_VERSION_STR
-#define QMMP_VERSION_STR "0.3.0"
+#ifndef QMMP_STR_VERSION
+#define QMMP_STR_VERSION "0.3.0"
 #endif
 
 #include "qmmp.h"
@@ -42,7 +42,7 @@ void Qmmp::setConfigFile(const QString &path)
 QString Qmmp::strVersion()
 {
 #ifdef SVN_REVISION
-    return QString("%1-%2").arg(QMMP_VERSION_STR).arg(SVN_REVISION);
+    return QString("%1-%2").arg(QMMP_STR_VERSION).arg(SVN_REVISION);
 #else
     return QMMP_VERSION_STR;
 #endif
