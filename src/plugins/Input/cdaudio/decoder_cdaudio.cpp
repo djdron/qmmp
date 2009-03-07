@@ -308,7 +308,7 @@ bool DecoderCDAudio::initialize()
     }
     configure(44100, 2, 16);
     m_bitrate = 1411;
-    m_totalTime = tracks[track_at].info.length();
+    m_totalTime = tracks[track_at].info.length() * 1000;
     m_first_sector = tracks[track_at].first_sector;
     m_current_sector = tracks[track_at].first_sector;
     m_last_sector = tracks[track_at].last_sector;
@@ -362,7 +362,7 @@ void DecoderCDAudio::run()
 
         if (m_seekTime >= 0.0)
         {
-            m_current_sector = m_first_sector + m_seekTime * 75;
+            m_current_sector = m_first_sector + m_seekTime * 75 / 1000;
             m_seekTime = -1.0;
         }
 
