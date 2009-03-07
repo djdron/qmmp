@@ -167,7 +167,7 @@ void MainWindow::replay()
     play();
 }
 
-void MainWindow::seek(int pos)
+void MainWindow::seek(qint64 pos)
 {
     if (!seeking)
         m_core->seek(pos);

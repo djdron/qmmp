@@ -121,7 +121,7 @@ bool DecoderCUE::initialize()
     return TRUE;
 }
 
-qint64 DecoderCUE::lengthInSeconds()
+qint64 DecoderCUE::totalTime()
 {
     return m_decoder ? m_length : 0;
 }

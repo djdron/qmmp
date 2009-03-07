@@ -216,7 +216,7 @@ void TitleBar::setTime(qint64 time)
     if (time < 0)
         m_currentTime->display("--:--");
     else
-        m_currentTime->display(formatTime(time));
+        m_currentTime->display(formatTime(time/1000));
 }
 
 void TitleBar::updateMask()

@@ -169,13 +169,13 @@ bool DecoderModPlug::initialize()
         return FALSE;
     }*/
 
-    m_totalTime = (qint64) m_soundFile->GetSongTime();
+    m_totalTime = (qint64) m_soundFile->GetSongTime() * 1000;
     configure(m_freq, m_chan, m_bps);
     m_inited = TRUE;
     return TRUE;
 }
 
-qint64 DecoderModPlug::lengthInSeconds()
+qint64 DecoderModPlug::totalTime()
 {
     if (! m_inited)
         return 0;
@@ -230,11 +230,11 @@ void DecoderModPlug::run()
             quint32  lMaxtime;
             double lPostime;
 
-            if (m_seekTime > (lMaxtime = m_soundFile->GetSongTime()))
-                m_seekTime = lMaxtime;
+            if (m_seekTime > (lMaxtime = m_soundFile->GetSongTime()) * 1000)
+                m_seekTime = lMaxtime * 1000;
             lMax = m_soundFile->GetMaxPosition();
             lPostime = float(lMax) / lMaxtime;
-            m_soundFile->SetCurrentPos(int(m_seekTime * lPostime));
+            m_soundFile->SetCurrentPos(int(m_seekTime * lPostime / 1000));
             m_seekTime = -1.0;
         }
 

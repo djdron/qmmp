@@ -166,12 +166,12 @@ bool DecoderWavPack::initialize()
     if (m_length)
         m_totalTime = m_length;
     else
-        m_totalTime = (qint64) WavpackGetNumSamples(m_context) / m_freq;
+        m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
     qDebug("DecoderWavPack: initialize succes");
     return TRUE;
 }
 
-qint64 DecoderWavPack::lengthInSeconds()
+qint64 DecoderWavPack::totalTime()
 {
     if (!m_inited)
         return 0;
@@ -223,7 +223,7 @@ void DecoderWavPack::run()
         //seeking
         if (m_seekTime >= 0.0)
         {
-            WavpackSeekSample (m_context, m_seekTime * m_freq);
+            WavpackSeekSample (m_context, m_seekTime * m_freq / 1000);
             m_seekTime = -1.0;
         }
         //stop if track ended

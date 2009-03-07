@@ -249,9 +249,9 @@ const QString SoundCore::url()
     return m_source;
 }
 
-qint64 SoundCore::length() const
+qint64 SoundCore::totalTime() const
 {
-    return  (m_decoder) ? m_decoder->lengthInSeconds() : 0;
+    return  (m_decoder) ? m_decoder->totalTime() : 0;
 }
 
 void SoundCore::setEQ(double bands[10], double preamp)

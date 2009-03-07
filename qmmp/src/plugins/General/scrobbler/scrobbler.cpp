@@ -132,7 +132,7 @@ void Scrobbler::updateMetaData()
     if (m_state == Qmmp::Playing
             && !metadata.value(Qmmp::TITLE).isEmpty()      //skip empty tags
             && !metadata.value(Qmmp::ARTIST).isEmpty()
-            && m_core->length()                            //skip stream
+            && m_core->totalTime()                         //skip stream
             && !metadata.value(Qmmp::ARTIST).contains("&") //skip tags with special symbols
             && !metadata.value(Qmmp::TITLE).contains("&")
             && !metadata.value(Qmmp::ALBUM).contains("&")
@@ -140,7 +140,7 @@ void Scrobbler::updateMetaData()
             && !metadata.value(Qmmp::TITLE).contains("=")
             && !metadata.value(Qmmp::ALBUM).contains("="))
     {
-        m_song = SongInfo(metadata, m_core->length());
+        m_song = SongInfo(metadata, m_core->totalTime()/1000);
 
         if (isReady() && m_notificationid == 0)
             sendNotification(m_song);

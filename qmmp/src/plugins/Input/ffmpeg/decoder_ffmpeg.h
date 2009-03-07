@@ -50,7 +50,7 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    qint64 lengthInSeconds();
+    qint64 totalTime();
     void seek(qint64);
     void stop();
 
@@ -77,7 +77,7 @@ private:
     long freq, bitrate;
     int chan;
     qint64 output_size;
-    qint64 totalTime, seekTime;
+    qint64 m_totalTime, seekTime;
     QString m_path;
 };
 

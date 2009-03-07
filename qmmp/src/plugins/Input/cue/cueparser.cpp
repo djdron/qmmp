@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -102,9 +102,8 @@ CUEParser::CUEParser(const QString &fileName)
     for (int i = 0; i < m_infoList.size() - 1; ++i)
         m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
     //calculate last item length
-    QList <FileInfo *> f_list;
-    f_list = Decoder::createPlayList(m_filePath, FALSE);
-    qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length();
+    QList <FileInfo *> f_list = Decoder::createPlayList(m_filePath, FALSE);
+    qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
     if (l > m_infoList.last().length())
         m_infoList.last().setLength(l - m_infoList.last().length());
     else
@@ -133,6 +132,7 @@ QList<FileInfo*> CUEParser::createPlayList()
     foreach(FileInfo info, m_infoList)
     {
         list << new FileInfo(info);
+        list.last()->setLength(list.last()->length()/1000);
     }
     return list;
 }
@@ -191,10 +191,12 @@ QStringList CUEParser::splitLine(const QString &line)
     return list;
 }
 
-int CUEParser::getLength(const QString &str)
+qint64 CUEParser::getLength(const QString &str)
 {
     QStringList list = str.split(":");
-    if (list.size() < 2)
-        return 0;
-    return list.at(0).toInt()*60 + list.at(1).toInt();
+    if (list.size() == 2)
+        return (qint64)list.at(0).toInt()*60000 + list.at(1).toInt()*1000;
+    else if (list.size() == 3)
+        return (qint64)list.at(0).toInt()*60000 + list.at(1).toInt()*1000 + list.at(1).toInt()*1000/75;
+    return 0;
 }

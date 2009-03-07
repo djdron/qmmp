@@ -319,7 +319,7 @@ bool DecoderCDAudio::initialize()
 }
 
 
-qint64 DecoderCDAudio::lengthInSeconds()
+qint64 DecoderCDAudio::totalTime()
 {
     if (! m_inited)
         return 0;
