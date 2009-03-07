@@ -58,7 +58,7 @@ void StateHandler::dispatch(qint64 elapsed,
                             int channels)
 {
     m_mutex.lock();
-    if (llabs(m_elapsed - elapsed) > TICK_INTERVAL)
+    if (qAbs(m_elapsed - elapsed) > TICK_INTERVAL)
     {
         m_elapsed = elapsed;
         emit (elapsedChanged(elapsed));
