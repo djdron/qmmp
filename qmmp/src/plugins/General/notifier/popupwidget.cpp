@@ -86,7 +86,7 @@ void PopupWidget::showMetaData()
     if (core->totalTime() > 0)
     {
         title.append(" ");
-        title.append(QString("(%1:%2)").arg(core->totalTime()/60000).arg(core->totalTime()%60000, 2, 10, QChar('0')));
+        title.append(QString("(%1:%2)").arg(core->totalTime()/60000).arg(core->totalTime()%60000/1000, 2, 10, QChar('0')));
     }
     m_label1->setText("<b>" + title + "</b>");
 
