@@ -112,14 +112,10 @@ DecoderMPC::DecoderMPC(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
     freq = 0;
     bitrate = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
     chan = 0;
     output_size = 0;
     m_data = 0;
-
-
-
-
 }
 
 
@@ -191,7 +187,7 @@ bool DecoderMPC::initialize()
     chan = 0;
     output_size = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
 
 
     if (!input())
@@ -242,19 +238,19 @@ bool DecoderMPC::initialize()
         qWarning("DecoderMPC: cannot get info.");
         return FALSE;
     }
-    totalTime = mpc_streaminfo_get_length(&data()->info);
+    m_totalTime = mpc_streaminfo_get_length(&data()->info) * 1000;
     inited = TRUE;
     qDebug("DecoderMPC: initialize succes");
     return TRUE;
 }
 
 
-qint64 DecoderMPC::lengthInSeconds()
+qint64 DecoderMPC::totalTime()
 {
     if (! inited)
         return 0;
 
-    return totalTime;
+    return m_totalTime;
 }
 
 
@@ -292,7 +288,7 @@ void DecoderMPC::run()
 
         if (seekTime >= 0.0)
         {
-            mpc_decoder_seek_seconds(&data()->decoder, seekTime);
+            mpc_decoder_seek_seconds(&data()->decoder, seekTime/1000);
             seekTime = -1.0;
         }
         MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];

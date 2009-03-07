@@ -239,7 +239,7 @@ static void flac_callback_metadata (const FLAC__StreamDecoder *,
             metadata->data.stream_info.bits_per_sample;
         dflac->data()->channels = metadata->data.stream_info.channels;
         dflac->data()->sample_rate = metadata->data.stream_info.sample_rate;
-        dflac->data()->length = dflac->data()->total_samples / dflac->data()->sample_rate;
+        dflac->data()->length = dflac->data()->total_samples * 1000 / dflac->data()->sample_rate;
     }
 }
 
@@ -273,7 +273,7 @@ DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Outpu
     freq = 0;
     bitrate = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
     chan = 0;
     output_size = 0;
     m_data = 0;
@@ -359,7 +359,7 @@ bool DecoderFLAC::initialize()
     stat = chan = 0;
     output_size = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
 
     if (!data()->input)
     {
@@ -461,30 +461,30 @@ bool DecoderFLAC::initialize()
         configure(data()->sample_rate, data()->channels, 32);
     else
         configure(data()->sample_rate, data()->channels, data()->bits_per_sample);
-    totalTime = data()->length;
+    m_totalTime = data()->length;
 
     inited = TRUE;
     if (m_offset)
         seekTime = m_offset;
     if (m_length)
-        totalTime = m_length;
+        m_totalTime = m_length;
     qDebug("DecoderFLAC: initialize succes");
     return TRUE;
 }
 
 
-qint64 DecoderFLAC::lengthInSeconds()
+qint64 DecoderFLAC::totalTime()
 {
     if (! inited)
         return 0;
 
-    return totalTime;
+    return m_totalTime;
 }
 
 
 void DecoderFLAC::seek(qint64 pos)
 {
-    if (totalTime > 0)
+    if (m_totalTime > 0)
         seekTime = pos + m_offset;
 }
 

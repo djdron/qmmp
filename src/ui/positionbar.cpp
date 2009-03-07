@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -73,7 +73,7 @@ void PositionBar::mouseMoveEvent (QMouseEvent *e)
 {
     if (m_moving)
     {
-        int po = e->x();
+        qint64 po = e->x();
         po = po - press_pos;
 
         if (0<=po && po<=width()-30)
@@ -96,7 +96,7 @@ void PositionBar::mouseReleaseEvent(QMouseEvent*)
     m_moving = FALSE;
 }
 
-void PositionBar::setValue(int v)
+void PositionBar::setValue(qint64 v)
 {
     if (m_moving || m_max == 0)
         return;
@@ -104,7 +104,7 @@ void PositionBar::setValue(int v)
     draw(FALSE);
 }
 
-void PositionBar::setMax(int max)
+void PositionBar::setMax(qint64 max)
 {
     m_max = max;
     draw(FALSE);
@@ -119,7 +119,7 @@ void PositionBar::updateSkin()
 
 void PositionBar::draw(bool pressed)
 {
-    int p=int(ceil(double(m_value-m_min)*(width()-30)/(m_max-m_min)));
+    qint64 p=qint64(ceil(double(m_value-m_min)*(width()-30)/(m_max-m_min)));
     m_pixmap = m_skin->getPosBar();
     if (m_max > 0)
     {
@@ -133,7 +133,7 @@ void PositionBar::draw(bool pressed)
     m_pos = p;
 }
 
-int PositionBar::convert(int p)
+qint64 PositionBar::convert(qint64 p)
 {
-    return int(ceil(double(m_max-m_min)*(p)/(width()-30)+m_min));
+    return qint64(ceil(double(m_max-m_min)*(p)/(width()-30)+m_min));
 }

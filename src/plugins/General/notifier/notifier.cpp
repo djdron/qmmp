@@ -85,7 +85,7 @@ void Notifier::showMetaData()
     file.write(m_core->metaData(Qmmp::ARTIST).toUtf8()+"\n");
     file.write(m_core->metaData(Qmmp::ALBUM).toUtf8()+"\n");
     file.write(m_core->metaData(Qmmp::TRACK).toUtf8()+"\n");
-    file.write(QString("%1").arg(m_core->length()).toUtf8()+"\n");
+    file.write(QString("%1").arg(m_core->totalTime()/1000).toUtf8()+"\n");
     file.close();
 }
 

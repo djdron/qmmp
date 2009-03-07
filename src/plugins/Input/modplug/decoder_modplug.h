@@ -33,7 +33,7 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    qint64 lengthInSeconds();
+    qint64 totalTime();
     void seek(qint64);
     void stop();
 
@@ -67,7 +67,7 @@ private:
     bool m_done, m_finish;
     long m_freq, m_bitrate;
     int m_chan, m_sampleSize;
-    unsigned long m_output_size;
+    qint64 m_output_size;
     qint64 m_totalTime, m_seekTime;
     double m_preampFactor;
     bool m_usePreamp;

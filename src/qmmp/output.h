@@ -76,9 +76,9 @@ private:
     StateHandler *m_handler;
     quint32 m_frequency;
     int m_channels, m_precision, m_kbps;
-    qint64 m_bytesPerSecond;
+    qint64 m_bytesPerMillisecond;
     bool m_userStop, m_pause;
-    qint64 m_totalWritten, m_currentSeconds;
+    qint64 m_totalWritten, m_currentMilliseconds;
 
     static void checkFactories();
     //TODO use QMap instead

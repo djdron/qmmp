@@ -162,13 +162,13 @@ MainDisplay::~MainDisplay()
 
 void MainDisplay::setTime (qint64 t)
 {
-    posbar->setValue (t); //TODO use qint64
-    m_timeIndicator->setTime(t);
+    posbar->setValue (t);
+    m_timeIndicator->setTime(t/1000);
 }
 void MainDisplay::setDuration(qint64 t)
 {
     posbar->setMax (t);
-    m_timeIndicator->setSongDuration(t);
+    m_timeIndicator->setSongDuration(t/1000);
 }
 
 void MainDisplay::setState(Qmmp::State state)
@@ -179,7 +179,7 @@ void MainDisplay::setState(Qmmp::State state)
     {
         m_playstatus->setStatus(PlayStatus::PLAY);
         m_timeIndicator->setNeedToShowTime(TRUE);
-        setDuration(m_core->length());
+        setDuration(m_core->totalTime());
         break;
     }
     case Qmmp::Paused:

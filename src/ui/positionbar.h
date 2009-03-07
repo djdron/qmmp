@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -41,12 +41,12 @@ public:
     ~PositionBar();
 
 public slots:
-    void setValue(int);
-    int value()const{return m_value;}
-    void setMax(int);
+    void setValue(qint64);
+    qint64 value()const{return m_value;}
+    void setMax(qint64);
 
 signals:
-    void sliderMoved (int);
+    void sliderMoved (qint64);
 
 private slots:
     void updateSkin();
@@ -54,11 +54,11 @@ private slots:
 private:
     Skin *m_skin;
     bool m_moving;
-    int press_pos;
-    int m_max, m_min, m_pos, m_value, m_old;
+    qint64 press_pos;
+    qint64 m_max, m_min, m_pos, m_value, m_old;
     QPixmap m_pixmap;
     MainWindow *mw;
-    int convert(int);   // value = convert(position);
+    qint64 convert(qint64);   // value = convert(position);
     void draw(bool pressed = TRUE);
 
 protected:

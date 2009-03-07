@@ -133,9 +133,9 @@ bool DecoderSndFile::initialize()
     m_freq = snd_info.samplerate;
     m_chan = snd_info.channels;
 
-    m_totalTime = (double) snd_info.frames / m_freq;
+    m_totalTime = snd_info.frames * 1000 / m_freq;
 
-    m_bitrate =  QFileInfo(m_path).size () * 8.0 / m_totalTime / 1000.0 + 0.5;
+    m_bitrate =  QFileInfo(m_path).size () * 8.0 / m_totalTime + 0.5;
 
     configure(m_freq, m_chan, 16);
     m_buf = new short[bks / sizeof(short)];
@@ -146,7 +146,7 @@ bool DecoderSndFile::initialize()
 }
 
 
-qint64 DecoderSndFile::lengthInSeconds()
+qint64 DecoderSndFile::totalTime()
 {
     if (! m_inited)
         return 0;
@@ -196,7 +196,7 @@ void DecoderSndFile::run()
 
         if (m_seekTime >= 0)
         {
-            m_output_size = sf_seek(m_sndfile, m_freq*m_seekTime, SEEK_SET);
+            m_output_size = sf_seek(m_sndfile, m_freq*m_seekTime/1000, SEEK_SET);
             m_seekTime = -1.0;
         }
 

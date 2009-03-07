@@ -90,7 +90,7 @@ DecoderVorbis::DecoderVorbis(QObject *parent, DecoderFactory *d, QIODevice *i, O
     freq = 0;
     bitrate = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
     chan = 0;
     output_size = 0;
 }
@@ -159,7 +159,7 @@ bool DecoderVorbis::initialize()
     stat = chan = 0;
     output_size = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
     if (! input())
     {
         qDebug("DecoderVorbis: cannot initialize.  No input");
@@ -200,8 +200,8 @@ bool DecoderVorbis::initialize()
     bitrate = ov_bitrate(&oggfile, -1) / 1000;
     chan = 0;
 
-    totalTime = long(ov_time_total(&oggfile, 0));
-    totalTime = totalTime < 0 ? 0 : totalTime;
+    m_totalTime = ov_time_total(&oggfile, -1) * 1000;
+    m_totalTime = qMax(qint64(0), m_totalTime);
 
     vorbis_info *ogginfo = ov_info(&oggfile, -1);
     if (ogginfo)
@@ -217,12 +217,12 @@ bool DecoderVorbis::initialize()
 }
 
 
-qint64 DecoderVorbis::lengthInSeconds()
+qint64 DecoderVorbis::totalTime()
 {
     if (! inited)
         return 0;
 
-    return totalTime;
+    return m_totalTime;
 }
 
 
@@ -314,10 +314,10 @@ void DecoderVorbis::run()
 
         if (seekTime >= 0.0)
         {
-            ov_time_seek(&oggfile, double(seekTime));
+            ov_time_seek(&oggfile, (double) seekTime/1000);
             seekTime = -1.0;
 
-            output_size = long(ov_time_tell(&oggfile)) * long(freq * chan * 2);
+            output_size = ov_time_tell(&oggfile) * freq * chan * 2;
         }
         len = -1;
         while (len < 0)

@@ -23,6 +23,8 @@
 #include "soundcore.h"
 #include "statehandler.h"
 
+#define TICK_INTERVAL 250
+
 
 StateHandler* StateHandler::m_instance = 0;
 
@@ -56,15 +58,15 @@ void StateHandler::dispatch(qint64 elapsed,
                             int channels)
 {
     m_mutex.lock();
-    if (m_elapsed != elapsed)
+    if (llabs(m_elapsed - elapsed) > TICK_INTERVAL)
     {
         m_elapsed = elapsed;
         emit (elapsedChanged(elapsed));
-    }
-    if (m_bitrate != bitrate)
-    {
-        m_bitrate = bitrate;
-        emit (bitrateChanged(bitrate));
+        if (m_bitrate != bitrate)
+        {
+            m_bitrate = bitrate;
+            emit (bitrateChanged(bitrate));
+        }
     }
     if (m_frequency != frequency)
     {

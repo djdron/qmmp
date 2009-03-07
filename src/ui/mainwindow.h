@@ -67,7 +67,7 @@ public:
     bool processCommandArgs(const QStringList &list,const QString& cwd);
 
 public slots:
-    void seek(int);
+    void seek(qint64);
     void previous();
     void play();
     void pause();

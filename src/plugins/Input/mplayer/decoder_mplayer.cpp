@@ -123,15 +123,15 @@ bool DecoderMplayer::initialize()
     return TRUE;
 }
 
-qint64 DecoderMplayer::lengthInSeconds()
+qint64 DecoderMplayer::totalTime()
 {
-    return m_length;
+    return m_length * 1000;
 }
 
 void DecoderMplayer::seek(qint64 pos)
 {
     if (m_process->state() == QProcess::Running)
-        m_process->write(QString("seek %1 \n").arg(pos - m_currentTime).toLocal8Bit ());
+        m_process->write(QString("seek %1 \n").arg(pos/1000 - m_currentTime).toLocal8Bit ());
 }
 
 void DecoderMplayer::stop()
@@ -173,8 +173,8 @@ void DecoderMplayer::readStdOut()
         {
             StateHandler::instance()->dispatch(Qmmp::Playing);
             m_currentTime = (qint64) rx_av.cap(1).toDouble();
-            StateHandler::instance()->dispatch(m_currentTime,
-                                               m_length,
+            StateHandler::instance()->dispatch(m_currentTime * 1000,
+                                               m_length * 1000,
                                                m_bitrate,
                                                m_samplerate,
                                                m_bitsPerSample,

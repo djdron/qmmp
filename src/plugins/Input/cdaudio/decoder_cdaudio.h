@@ -51,7 +51,7 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    qint64 lengthInSeconds();
+    qint64 totalTime();
     void seek(qint64);
     void stop();
 

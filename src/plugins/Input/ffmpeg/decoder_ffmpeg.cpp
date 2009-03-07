@@ -44,7 +44,7 @@ DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, Output *o, cons
     freq = 0;
     bitrate = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
     chan = 0;
     output_size = 0;
     ic = 0;
@@ -122,7 +122,7 @@ bool DecoderFFmpeg::initialize()
     chan = 0;
     output_size = 0;
     seekTime = -1.0;
-    totalTime = 0.0;
+    m_totalTime = 0.0;
 
     if (!output_buf)
         output_buf = new char[globalBufferSize];
@@ -153,7 +153,7 @@ bool DecoderFFmpeg::initialize()
     if (avcodec_open(c, codec) < 0)
         return FALSE;
 
-    totalTime = ic->duration/AV_TIME_BASE;
+    m_totalTime = ic->duration * 1000 / AV_TIME_BASE;
 
     configure(c->sample_rate, c->channels, 16);
 
@@ -166,12 +166,12 @@ bool DecoderFFmpeg::initialize()
 }
 
 
-qint64 DecoderFFmpeg::lengthInSeconds()
+qint64 DecoderFFmpeg::totalTime()
 {
     if (! inited)
         return 0;
 
-    return totalTime;
+    return m_totalTime;
 }
 
 
@@ -212,7 +212,7 @@ void DecoderFFmpeg::run()
         if (seekTime >= 0.0)
         {
             int64_t timestamp;
-            timestamp = int64_t(seekTime)*AV_TIME_BASE;
+            timestamp = int64_t(seekTime)*AV_TIME_BASE/1000;
             if (ic->start_time != AV_NOPTS_VALUE)
                 timestamp += ic->start_time;
             av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);

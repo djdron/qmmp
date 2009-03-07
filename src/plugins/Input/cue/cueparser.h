@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,9 +47,9 @@ public:
 private:
     QString m_filePath;
     QList <FileInfo> m_infoList;
-    QList <int> m_offsets;
+    QList <qint64> m_offsets;
     QStringList splitLine(const QString &line);
-    int getLength(const QString &str);
+    qint64 getLength(const QString &str);
 
 };
 

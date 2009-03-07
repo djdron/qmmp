@@ -48,7 +48,7 @@ public:
     /*!
      * Returns length in seconds
      */
-    qint64 length() const;
+    qint64 totalTime() const;
 
     /*!
      * Sets equalizer settings. Each item of \p bands[] and \p reamp should be

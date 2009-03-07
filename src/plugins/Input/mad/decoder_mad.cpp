@@ -31,7 +31,7 @@ DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
     derror = false;
     eof = false;
     useeq = false;
-    totalTime = 0.;
+    m_totalTime = 0.;
     seekTime = -1.;
     channels = 0;
     bks = 0;
@@ -77,7 +77,7 @@ bool DecoderMAD::initialize()
     m_finish = false;
     derror = false;
     eof = false;
-    totalTime = 0.;
+    m_totalTime = 0.;
     seekTime = -1.;
     channels = 0;
     bitrate = 0;
@@ -153,7 +153,7 @@ void DecoderMAD::deinit()
     derror = false;
     eof = false;
     useeq = false;
-    totalTime = 0.;
+    m_totalTime = 0.;
     seekTime = -1.;
     channels = 0;
     bks = 0;
@@ -327,8 +327,8 @@ bool DecoderMAD::findHeader()
         duration = header.duration;
     }
 
-    totalTime = mad_timer_count(duration, MAD_UNITS_SECONDS);
-    qDebug ("DecoderMAD: Total time: %ld", long(totalTime));
+    m_totalTime = mad_timer_count(duration, MAD_UNITS_MILLISECONDS);
+    qDebug ("DecoderMAD: Total time: %ld", long(m_totalTime));
     freq = header.samplerate;
     channels = MAD_NCHANNELS(&header);
     bitrate = header.bitrate / 1000;
@@ -338,11 +338,11 @@ bool DecoderMAD::findHeader()
     return TRUE;
 }
 
-qint64 DecoderMAD::lengthInSeconds()
+qint64 DecoderMAD::totalTime()
 {
     if (! inited)
         return 0.;
-    return totalTime;
+    return m_totalTime;
 }
 
 void DecoderMAD::seek(qint64 pos)
@@ -410,9 +410,9 @@ void DecoderMAD::run()
     {
         mutex()->lock();
 
-        if (seekTime >= 0.0 && totalTime > 0)
+        if (seekTime >= 0.0 && m_totalTime > 0)
         {
-            long seek_pos = long(seekTime * input()->size() / totalTime);
+            long seek_pos = long(seekTime * input()->size() / m_totalTime);
             input()->seek(seek_pos);
             output_size = long(seekTime) * long(freq * channels * 16 / 2);
             mad_frame_mute(&frame);

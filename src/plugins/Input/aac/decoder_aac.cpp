@@ -163,7 +163,7 @@ bool DecoderAAC::initialize()
         qWarning("DecoderAAC: unsupported AAC file");
         return FALSE;
     }
-    m_totalTime = aac_file.length();
+    m_totalTime = aac_file.length() * 1000;
     m_bitrate = aac_file.bitrate();
 
     if (!m_data)
@@ -248,7 +248,7 @@ qint64 DecoderAAC::aac_decode(void *out)
     return size;
 }
 
-qint64 DecoderAAC::lengthInSeconds()
+qint64 DecoderAAC::totalTime()
 {
     if (!m_inited)
         return 0;

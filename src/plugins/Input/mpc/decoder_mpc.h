@@ -40,7 +40,7 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    qint64 lengthInSeconds();
+    qint64 totalTime();
     void seek(qint64);
     void stop();
 
@@ -68,8 +68,8 @@ private:
     bool done, m_finish;
     long len, freq, bitrate;
     int chan;
-    unsigned long output_size;
-    qint64 totalTime, seekTime;
+    qint64 output_size;
+    qint64 m_totalTime, seekTime;
 };
 
 

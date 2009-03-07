@@ -24,8 +24,8 @@ Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
     m_channels = 0;
     m_kbps = 0;
     m_totalWritten = 0;
-    m_currentSeconds = -1;
-    m_bytesPerSecond = 0;
+    m_currentMilliseconds = -1;
+    m_bytesPerMillisecond = 0;
     m_userStop = FALSE;
     m_pause = FALSE;
 }
@@ -35,7 +35,7 @@ void Output::configure(quint32 freq, int chan, int prec)
     m_frequency = freq;
     m_channels = chan;
     m_precision = prec;
-    m_bytesPerSecond = freq * chan * (prec / 8);
+    m_bytesPerMillisecond = freq * chan * (prec / 8) / 1000;
 }
 
 void Output::pause()
@@ -57,8 +57,8 @@ qint64 Output::written()
 
 void Output::seek(qint64 pos)
 {
-    m_totalWritten = pos * m_bytesPerSecond;
-    m_currentSeconds = -1;
+    m_totalWritten = pos * m_bytesPerMillisecond;
+    m_currentMilliseconds = -1;
 }
 
 Recycler *Output::recycler()
@@ -125,7 +125,7 @@ void Output::dispatch(const Qmmp::State &state)
 void Output::run()
 {
     mutex()->lock ();
-    if (!m_bytesPerSecond)
+    if (!m_bytesPerMillisecond)
     {
         qWarning("Output: invalid audio parameters");
         mutex()->unlock ();
@@ -190,15 +190,15 @@ void Output::run()
 
 void Output::status()
 {
-    long ct = (m_totalWritten - latency()) / m_bytesPerSecond;
+    qint64 ct = (m_totalWritten - latency()) / m_bytesPerMillisecond;
 
     if (ct < 0)
         ct = 0;
 
-    if (ct > m_currentSeconds)
+    if (ct > m_currentMilliseconds)
     {
-        m_currentSeconds = ct;
-        dispatch(m_currentSeconds, m_totalWritten, m_kbps,
+        m_currentMilliseconds = ct;
+        dispatch(m_currentMilliseconds, m_totalWritten, m_kbps,
                  m_frequency, m_precision, m_channels);
     }
 }

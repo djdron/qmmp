@@ -38,8 +38,8 @@ struct flac_data
     int bitrate;
     int abort; /* abort playing (due to an error) */
 
-    unsigned length;
-    unsigned total_samples;
+    qint64 length;
+    qint64 total_samples;
 
     FLAC__byte sample_buffer[SAMPLE_BUFFER_SIZE];
     unsigned sample_buffer_fill;
@@ -64,7 +64,7 @@ public:
 
     // Standard Decoder API
     bool initialize();
-    qint64 lengthInSeconds();
+    qint64 totalTime();
     void seek(qint64);
     void stop();
 
@@ -98,7 +98,7 @@ private:
     long len, freq, bitrate;
     int chan;
     unsigned long output_size;
-    double totalTime, seekTime;
+    double m_totalTime, seekTime;
     QString m_path;
     qint64 m_offset;
     qint64 m_length;

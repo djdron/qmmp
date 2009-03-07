@@ -461,14 +461,14 @@ void PlayList::setTime(qint64 time)
     if (time < 0)
         m_current_time->display ("--:--");
     else
-        m_current_time->display (formatTime (time));
+        m_current_time->display (formatTime (time/1000));
     m_current_time->update();
 
     if (m_playListModel && SoundCore::instance())
     {
         m_playListModel->totalLength();
         QString str_length = formatTime (m_playListModel->totalLength()) +
-                             "/" + formatTime (SoundCore::instance()->length());
+                             "/" + formatTime (SoundCore::instance()->totalTime()/1000);
         m_length_totalLength->display (str_length);
         m_length_totalLength->update();
 
