@@ -52,7 +52,7 @@
 #include "visualmenu.h"
 #include "builtincommandlineoption.h"
 
-#define KEY_OFFSET 10
+#define KEY_OFFSET 10000
 
 MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option_manager, QWidget *parent)
         : QMainWindow(parent)
