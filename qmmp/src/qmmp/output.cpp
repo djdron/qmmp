@@ -76,6 +76,21 @@ void Output::setStateHandler(StateHandler *handler)
     m_handler = handler;
 }
 
+quint32 Output::sampleRate()
+{
+    return m_frequency;
+}
+
+int Output::numChannels()
+{
+    return m_channels;
+}
+
+int Output::sampleSize()
+{
+    return m_precision;
+}
+
 Output::~Output()
 {}
 
@@ -190,7 +205,7 @@ void Output::run()
 
 void Output::status()
 {
-    qint64 ct = (m_totalWritten - latency()) / m_bytesPerMillisecond;
+    qint64 ct = m_totalWritten / m_bytesPerMillisecond - latency();
 
     if (ct < 0)
         ct = 0;

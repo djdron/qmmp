@@ -45,6 +45,9 @@ public:
     Recycler *recycler();
     QMutex *mutex();
     void setStateHandler(StateHandler *handler);
+    quint32 sampleRate();
+    int numChannels();
+    int sampleSize();
 
     static void registerFactory(OutputFactory *);
     static Output *create(QObject *);
