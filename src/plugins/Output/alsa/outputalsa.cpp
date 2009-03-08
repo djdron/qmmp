@@ -222,15 +222,7 @@ bool OutputALSA::initialize()
 
 qint64 OutputALSA::latency()
 {
-    long used = 0;
-
-    /*if (! m_pause)
-    {
-        if (ioctl(audio_fd, SNDCTL_DSP_GETODELAY, &used) == -1)
-            used = 0;
-    }*/
-
-    return used;
+    return m_prebuf_fill * 8000 / sampleRate() / numChannels() / sampleSize();
 }
 
 qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
