@@ -62,8 +62,6 @@ void FileLoader::addDirectory(const QString& s)
     for (int i = 0; i < l.size(); ++i)
     {
         QFileInfo fileInfo = l.at(i);
-        QString suff = fileInfo.completeSuffix();
-        list << fileInfo;
         playList = Decoder::createPlayList(fileInfo.absoluteFilePath (),
                                            PlaylistSettings::instance()->useMetadata());
         foreach(FileInfo *info, playList)

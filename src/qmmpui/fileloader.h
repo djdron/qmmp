@@ -62,7 +62,6 @@ protected:
     void addFiles(const QStringList &files);
     void addDirectory(const QString& s);
 private:
-    QFileInfoList list;
     QStringList m_filters;
     QStringList m_files_to_load;
     QString m_directory;
