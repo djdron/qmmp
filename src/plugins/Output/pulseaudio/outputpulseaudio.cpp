@@ -83,8 +83,14 @@ qint64 OutputPulseAudio::latency()
 {
     if (!m_connection)
         return 0;
-    int error;
-    return pa_simple_get_latency(m_connection, &error);
+    int error = 0;
+    qint64 delay =  pa_simple_get_latency(m_connection, &error)/1000;
+    if (error)
+    {
+        qWarning("OutputPulseAudio: %s", pa_strerror (error));
+        delay = 0;
+    }
+    return delay;
 }
 
 qint64 OutputPulseAudio::writeAudio(unsigned char *data, qint64 maxSize)
