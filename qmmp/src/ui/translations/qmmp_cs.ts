@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS>
+<TS version="2.0" language="cs">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -172,62 +173,75 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="337"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
         <source>Enabled</source>
         <translation>Povoleno</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="337"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
         <source>Description</source>
         <translation>Popis</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="522"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="524"/>
         <source>Filename</source>
         <translation>Soubor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="517"/>
+        <location filename="../configdialog.cpp" line="519"/>
         <source>Artist</source>
         <translation>Umělec</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="518"/>
+        <location filename="../configdialog.cpp" line="520"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="519"/>
+        <location filename="../configdialog.cpp" line="521"/>
         <source>Title</source>
         <translation>Název</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="520"/>
+        <location filename="../configdialog.cpp" line="522"/>
         <source>Tracknumber</source>
         <translation>Číslo stopy</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="521"/>
+        <location filename="../configdialog.cpp" line="523"/>
         <source>Genre</source>
         <translation>Žánr</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="523"/>
+        <location filename="../configdialog.cpp" line="525"/>
         <source>Filepath</source>
         <translation>Soubor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="524"/>
+        <location filename="../configdialog.cpp" line="526"/>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="525"/>
+        <location filename="../configdialog.cpp" line="527"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="526"/>
+        <location filename="../configdialog.cpp" line="528"/>
         <source>Comment</source>
         <translation>Komentář</translation>
     </message>
@@ -242,6 +256,7 @@
         <translation>Vzhled</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="92"/>
         <location filename="../forms/configdialog.ui" line="701"/>
         <source>Playlist</source>
         <translation>Seznam skladeb</translation>
@@ -277,11 +292,14 @@
         <translation>Seznam skladeb:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="250"/>
         <location filename="../forms/configdialog.ui" line="286"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="257"/>
+        <location filename="../forms/configdialog.ui" line="293"/>
         <location filename="../forms/configdialog.ui" line="348"/>
         <source>...</source>
         <translation>...</translation>
@@ -312,6 +330,7 @@
         <translation>Nastavení</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="430"/>
         <location filename="../forms/configdialog.ui" line="618"/>
         <source>Information</source>
         <translation>Informace</translation>
@@ -377,12 +396,12 @@
         <translation>Heslo:</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="175"/>
+        <location filename="../configdialog.cpp" line="177"/>
         <source>Archived skin</source>
         <translation>Sbalené téma</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="195"/>
+        <location filename="../configdialog.cpp" line="197"/>
         <source>Unarchived skin</source>
         <translation>Rozbalené téma</translation>
     </message>
@@ -437,17 +456,16 @@
         <translation>Převést %20 na mezery</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="362"/>
         <source>Show full path of a stream</source>
         <translation type="obsolete">Zobrazit plnou cestu k streamu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="640"/>
+        <location filename="../configdialog.cpp" line="645"/>
         <source>Select Skin Files</source>
         <translation>Vybrat soubory s tématy</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="641"/>
+        <location filename="../configdialog.cpp" line="646"/>
         <source>Skin files</source>
         <translation>Soubory s tématy</translation>
     </message>
@@ -477,6 +495,8 @@
         <translation>Hlavní okno</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="670"/>
+        <location filename="../forms/configdialog.ui" line="694"/>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>0</source>
         <translation>0</translation>
@@ -490,6 +510,7 @@
 <context>
     <name>EqWidget</name>
     <message>
+        <location filename="../eqwidget.cpp" line="153"/>
         <location filename="../eqwidget.cpp" line="176"/>
         <source>preset</source>
         <translation>předvolba</translation>
@@ -543,11 +564,14 @@
 <context>
     <name>JumpToTrackDialog</name>
     <message>
+        <location filename="../jumptotrackdialog.cpp" line="81"/>
         <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Unqueue</source>
         <translation>Vyřadit</translation>
     </message>
     <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="79"/>
+        <location filename="../jumptotrackdialog.cpp" line="83"/>
         <location filename="../jumptotrackdialog.cpp" line="139"/>
         <source>Queue</source>
         <translation>Zařadit</translation>
@@ -576,6 +600,69 @@
         <location filename="../forms/jumptotrackdialog.ui" line="100"/>
         <source>Close</source>
         <translation>Zavřít</translation>
+    </message>
+</context>
+<context>
+    <name>MainDisplay</name>
+    <message>
+        <location filename="../display.cpp" line="61"/>
+        <source>Previous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="65"/>
+        <source>Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="69"/>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="73"/>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="77"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="81"/>
+        <source>Add file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="96"/>
+        <source>Equalizer</source>
+        <translation type="unfinished">Ekvalizér</translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="101"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Seznam skladeb</translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="109"/>
+        <source>Repeat playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="113"/>
+        <source>Shuffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="144"/>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="150"/>
+        <source>Balance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -666,26 +753,31 @@
         <translation>Pokles analyzátoru</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="346"/>
         <location filename="../mainvisual.cpp" line="360"/>
         <source>Slowest</source>
         <translation>Nejpomalejší</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="347"/>
         <location filename="../mainvisual.cpp" line="361"/>
         <source>Slow</source>
         <translation>Pomalý</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="348"/>
         <location filename="../mainvisual.cpp" line="362"/>
         <source>Medium</source>
         <translation>Střední</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="349"/>
         <location filename="../mainvisual.cpp" line="363"/>
         <source>Fast</source>
         <translation>Rychlý</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="350"/>
         <location filename="../mainvisual.cpp" line="364"/>
         <source>Fastest</source>
         <translation>Nejrychlejší</translation>
@@ -709,6 +801,7 @@
 <context>
     <name>MainWindow</name>
     <message>
+        <location filename="../mainwindow.cpp" line="64"/>
         <location filename="../mainwindow.cpp" line="480"/>
         <source>Default</source>
         <translation>Seznam</translation>
@@ -809,6 +902,7 @@
         <translation>Ctrl+Q</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="492"/>
         <location filename="../mainwindow.cpp" line="518"/>
         <source>Playlist Files</source>
         <translation>Seznamy skladeb</translation>
@@ -937,21 +1031,25 @@
         <translation>Seřadit seznam</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="185"/>
         <location filename="../playlist.cpp" line="212"/>
         <source>By Title</source>
         <translation>Podle názvu skladby</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="189"/>
         <location filename="../playlist.cpp" line="216"/>
         <source>By Filename</source>
         <translation>Podle názvu souboru</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="193"/>
         <location filename="../playlist.cpp" line="220"/>
         <source>By Path + Filename</source>
         <translation>Podle cesty a názvu souboru</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="197"/>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Date</source>
         <translation>Podle data</translation>
@@ -1032,6 +1130,7 @@
         <translation>U</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="201"/>
         <location filename="../playlist.cpp" line="228"/>
         <source>By Track Number</source>
         <translation>Podle čísla skladby</translation>

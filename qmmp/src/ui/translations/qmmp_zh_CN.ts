@@ -173,75 +173,75 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="213"/>
-        <location filename="../configdialog.cpp" line="242"/>
-        <location filename="../configdialog.cpp" line="273"/>
-        <location filename="../configdialog.cpp" line="305"/>
-        <location filename="../configdialog.cpp" line="337"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
         <source>Enabled</source>
         <translation>启用</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="213"/>
-        <location filename="../configdialog.cpp" line="242"/>
-        <location filename="../configdialog.cpp" line="273"/>
-        <location filename="../configdialog.cpp" line="305"/>
-        <location filename="../configdialog.cpp" line="337"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="213"/>
-        <location filename="../configdialog.cpp" line="242"/>
-        <location filename="../configdialog.cpp" line="273"/>
-        <location filename="../configdialog.cpp" line="305"/>
-        <location filename="../configdialog.cpp" line="337"/>
-        <location filename="../configdialog.cpp" line="522"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="524"/>
         <source>Filename</source>
         <translation>文件名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="517"/>
+        <location filename="../configdialog.cpp" line="519"/>
         <source>Artist</source>
         <translation>艺术家</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="518"/>
+        <location filename="../configdialog.cpp" line="520"/>
         <source>Album</source>
         <translation>专辑</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="519"/>
+        <location filename="../configdialog.cpp" line="521"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="520"/>
+        <location filename="../configdialog.cpp" line="522"/>
         <source>Tracknumber</source>
         <translation>音轨</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="521"/>
+        <location filename="../configdialog.cpp" line="523"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="523"/>
+        <location filename="../configdialog.cpp" line="525"/>
         <source>Filepath</source>
         <translation>文件路径</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="524"/>
+        <location filename="../configdialog.cpp" line="526"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="525"/>
+        <location filename="../configdialog.cpp" line="527"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="526"/>
+        <location filename="../configdialog.cpp" line="528"/>
         <source>Comment</source>
         <translation>备注</translation>
     </message>
@@ -351,12 +351,12 @@
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="175"/>
+        <location filename="../configdialog.cpp" line="177"/>
         <source>Archived skin</source>
         <translation>压缩皮肤</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="195"/>
+        <location filename="../configdialog.cpp" line="197"/>
         <source>Unarchived skin</source>
         <translation>未压缩皮肤</translation>
     </message>
@@ -460,12 +460,12 @@
         <translation type="obsolete">显示媒体流的完整路径</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="640"/>
+        <location filename="../configdialog.cpp" line="645"/>
         <source>Select Skin Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="641"/>
+        <location filename="../configdialog.cpp" line="646"/>
         <source>Skin files</source>
         <translation type="unfinished"></translation>
     </message>
@@ -600,6 +600,69 @@
         <location filename="../forms/jumptotrackdialog.ui" line="100"/>
         <source>Close</source>
         <translation>关闭</translation>
+    </message>
+</context>
+<context>
+    <name>MainDisplay</name>
+    <message>
+        <location filename="../display.cpp" line="61"/>
+        <source>Previous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="65"/>
+        <source>Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="69"/>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="73"/>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="77"/>
+        <source>Next</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="81"/>
+        <source>Add file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="96"/>
+        <source>Equalizer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="101"/>
+        <source>Playlist</source>
+        <translation type="unfinished">播放列表</translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="109"/>
+        <source>Repeat playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="113"/>
+        <source>Shuffle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="144"/>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="150"/>
+        <source>Balance</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
