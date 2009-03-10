@@ -58,21 +58,27 @@ MainDisplay::MainDisplay (QWidget *parent)
 
     Button *previous = new Button (this, Skin::BT_PREVIOUS_N, Skin::BT_PREVIOUS_P);
     previous->move (16, 88);
+    previous->setToolTip(tr("Previous"));
     connect (previous,SIGNAL (clicked()), parent, SLOT (previous()));
     Button *play = new Button (this, Skin::BT_PLAY_N, Skin::BT_PLAY_P);
     play->move (39, 88);
+    play->setToolTip(tr("Play"));
     connect (play,SIGNAL (clicked()),parent,SLOT (play()));
     Button *pause = new Button (this, Skin::BT_PAUSE_N,Skin::BT_PAUSE_P);
     pause->move (62, 88);
+    pause->setToolTip(tr("Pause"));
     connect (pause,SIGNAL (clicked()),parent,SLOT (pause()));
     Button *stop = new Button (this, Skin::BT_STOP_N,Skin::BT_STOP_P);
     stop->move (85, 88);
+    stop->setToolTip(tr("Stop"));
     connect (stop,SIGNAL (clicked()),parent,SLOT (stop()));
     Button *next = new Button (this, Skin::BT_NEXT_N,Skin::BT_NEXT_P);
     next->move (108, 88);
+    next->setToolTip(tr("Next"));
     connect (next,SIGNAL (clicked()),parent,SLOT (next()));
     Button *eject = new Button (this, Skin::BT_EJECT_N,Skin::BT_EJECT_P);
     eject->move (136, 89);
+    eject->setToolTip(tr("Add file"));
     connect (eject,SIGNAL (clicked()),parent,SLOT (addFile()));
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
     posbar = new PositionBar (this);
@@ -87,10 +93,12 @@ MainDisplay::MainDisplay (QWidget *parent)
                                    Skin::BT_EQ_OFF_N,Skin::BT_EQ_OFF_P);
     m_eqButton->move (219,58);
     m_eqButton->show();
+    m_eqButton->setToolTip(tr("Equalizer"));
     m_plButton = new ToggleButton (this,Skin::BT_PL_ON_N,Skin::BT_PL_ON_P,
                                    Skin::BT_PL_OFF_N,Skin::BT_PL_OFF_P);
     m_plButton->move (241,58);
     m_plButton->show();
+    m_plButton->setToolTip(tr("Playlist"));
 
     m_repeatButton = new ToggleButton (this,Skin::REPEAT_ON_N,Skin::REPEAT_ON_P,
                                        Skin::REPEAT_OFF_N,Skin::REPEAT_OFF_P);
@@ -98,9 +106,11 @@ MainDisplay::MainDisplay (QWidget *parent)
 
     m_repeatButton->move (210,89);
     m_repeatButton->show();
+    m_repeatButton->setToolTip(tr("Repeat playlist"));
 
     m_shuffleButton = new ToggleButton (this,Skin::SHUFFLE_ON_N,Skin::SHUFFLE_ON_P,
                                         Skin::SHUFFLE_OFF_N,Skin::SHUFFLE_OFF_P);
+    m_shuffleButton->setToolTip(tr("Shuffle"));
     connect(m_shuffleButton,SIGNAL(clicked(bool)),this,SIGNAL(shuffleToggled(bool)));
     m_shuffleButton->move (164,89);
     m_shuffleButton->show();
@@ -131,11 +141,13 @@ MainDisplay::MainDisplay (QWidget *parent)
     connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
     m_volumeBar->move(107,57);
     m_volumeBar->show();
+    m_volumeBar->setToolTip(tr("Volume"));
 
     m_balanceBar = new BalanceBar(this);
     connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
     m_balanceBar->move(177,57);
     m_balanceBar->show();
+    m_balanceBar->setToolTip(tr("Balance"));
     m_timeIndicator = new TimeIndicator(this);
     m_timeIndicator->move(34,26);
     m_timeIndicator->show();
