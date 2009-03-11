@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,8 +26,8 @@ class QTranslator;
 class QString;
 class QObject;
 
-/**
-    @author Vladimir Kuznetsov <vovanec@gmail.ru>
+/*! @brief Abstract base class of the command line plugins.
+ * @author Vladimir Kuznetsov <vovanec@gmail.ru>
  */
 class CommandLineOption
 {
@@ -37,17 +37,14 @@ public:
      * otherise \b false
      */
     virtual bool identify(const QString& opt_str)const = 0;
-
     /*!
      * Command line option name
      */
     virtual const QString name()const = 0;
-
     /*!
      * Help string.
      */
     virtual const QString helpString()const = 0;
-
     /*!
      * Parses \b opt_str args(if needed), executes command.
      */
@@ -56,7 +53,9 @@ public:
      * Creates translator with parent object \b parent
      */
     virtual QTranslator *createTranslator(QObject *parent) = 0;
-
+    /*!
+     * Object destructor
+     */
     virtual ~CommandLineOption() {}
 };
 
