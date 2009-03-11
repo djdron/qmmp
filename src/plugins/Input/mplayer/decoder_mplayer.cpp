@@ -118,6 +118,10 @@ bool DecoderMplayer::initialize()
         m_args << "ao=" + ao_str;
     if (vo_str != "default")
         m_args << "vo=" + vo_str;
+
+    if (settings.value("autosync", FALSE).toBool())
+        m_args << QString("-autosync %1").arg(settings.value("autosync_factor", 100).toInt());
+
     m_args << m_url;
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
     return TRUE;

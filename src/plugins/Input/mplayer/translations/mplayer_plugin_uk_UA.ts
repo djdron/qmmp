@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <defaultcodec></defaultcodec>
 <context>
     <name>DecoderMplayerFactory</name>
@@ -42,6 +43,18 @@
         <translation>Закрити</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="58"/>
+        <location filename="../detailsdialog.ui" line="72"/>
+        <location filename="../detailsdialog.ui" line="86"/>
+        <location filename="../detailsdialog.ui" line="127"/>
+        <location filename="../detailsdialog.ui" line="147"/>
+        <location filename="../detailsdialog.ui" line="167"/>
+        <location filename="../detailsdialog.ui" line="187"/>
+        <location filename="../detailsdialog.ui" line="207"/>
+        <location filename="../detailsdialog.ui" line="227"/>
+        <location filename="../detailsdialog.ui" line="262"/>
+        <location filename="../detailsdialog.ui" line="282"/>
+        <location filename="../detailsdialog.ui" line="302"/>
         <location filename="../detailsdialog.ui" line="322"/>
         <source>-</source>
         <translation>-</translation>
@@ -87,6 +100,7 @@
         <translation>Роздільність:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="140"/>
         <location filename="../detailsdialog.ui" line="295"/>
         <source>Bitrate:</source>
         <translation>Бітрейт:</translation>
@@ -102,6 +116,7 @@
         <translation>Кадрів в секунду:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="200"/>
         <location filename="../detailsdialog.ui" line="249"/>
         <source>Codec:</source>
         <translation>Кодек:</translation>
@@ -135,7 +150,12 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="62"/>
+        <location filename="../settingsdialog.cpp" line="31"/>
+        <location filename="../settingsdialog.cpp" line="39"/>
+        <location filename="../settingsdialog.cpp" line="48"/>
+        <location filename="../settingsdialog.cpp" line="49"/>
+        <location filename="../settingsdialog.cpp" line="63"/>
+        <location filename="../settingsdialog.cpp" line="64"/>
         <source>default</source>
         <translation>за умовчанням</translation>
     </message>
@@ -153,6 +173,16 @@
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
         <translation>Аудіо:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="57"/>
+        <source>Audio/video auto synchronization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="67"/>
+        <source>Synchronization factor:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

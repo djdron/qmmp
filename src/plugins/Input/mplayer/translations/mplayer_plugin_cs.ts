@@ -153,8 +153,8 @@
         <location filename="../settingsdialog.cpp" line="39"/>
         <location filename="../settingsdialog.cpp" line="48"/>
         <location filename="../settingsdialog.cpp" line="49"/>
-        <location filename="../settingsdialog.cpp" line="61"/>
-        <location filename="../settingsdialog.cpp" line="62"/>
+        <location filename="../settingsdialog.cpp" line="63"/>
+        <location filename="../settingsdialog.cpp" line="64"/>
         <source>default</source>
         <translation type="unfinished"></translation>
     </message>
@@ -171,6 +171,16 @@
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="57"/>
+        <source>Audio/video auto synchronization</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="67"/>
+        <source>Synchronization factor:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
