@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,26 +24,34 @@
 #include "commandlineoption.h"
 
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @brief Helper class used for handle command line plugins
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class CommandLineManager : public General
 {
-Q_OBJECT
+    Q_OBJECT
 public:
+    /*!
+     * Constructs a command line manager.
+     * @param parent QObject parent
+     */
     CommandLineManager(QObject *parent = 0);
-
+    /*!
+     * Object destructor.
+     */
     ~CommandLineManager();
-
-    //general
-
-    //properties
-
-    //command line
+    /*!
+     * Executes command \b opt_str
+     * @param opt_str Command line option string
+     */
     void executeCommand(const QString& opt_str);
-
-    //static methods
+    /*!
+     * Return \b true if command \b opt_str is supported, otherwise \b false
+     */
     static bool hasOption(const QString &opt_str);
+    /*!
+     * Prints usage to stdout
+     */
     static void printUsage();
 
 private:
