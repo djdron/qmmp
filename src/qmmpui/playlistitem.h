@@ -25,36 +25,82 @@
 
 class FileInfo;
 class QSettings;
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+
+/** @brief The QTableWidgetItem class provides an item for use with the PlayListModel class.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class PlayListItem : public AbstractPlaylistItem
 {
 public:
     /*!
-     * Current state of media file.
+     * Current state of playlist item.
      * FREE - instance is free and may be deleted
      * EDITING - instance is currently busy in some kind of operation(tags editing etc.)
-     * and can't be deleted at the moment. Set flag SCHEDULED_FOR_DELETION for it 
+     * and can't be deleted at the moment. Set flag SCHEDULED_FOR_DELETION for it
      * instead of delete operator call.
      */
-    enum FLAGS{FREE = 0,EDITING,SCHEDULED_FOR_DELETION};
+    enum FLAGS
+    {
+        FREE = 0,              /*!< instance is free and may be deleted */
+        EDITING,               /*!< instance is currently busy */
+        SCHEDULED_FOR_DELETION /*!< instance is sheduled for deletion */
+    };
+    /*!
+     * Constructs an empty plalist item.
+     */
     PlayListItem();
+    /*!
+     * Constructs plalist item with given metadata.
+     * @param info Media file information.
+     */
     PlayListItem(FileInfo *info);
-
+    /*!
+     * Object destructor.
+     */
     ~PlayListItem();
-
-    //playlist support
-    void setSelected(bool yes);
+    /*!
+     * Sets item selection flag to \b select
+     * @param select State of selection (\b true select, \b false unselect)
+     */
+    void setSelected(bool select);
+    /*!
+     * Return \b true if item is selected, otherwise \b false.
+     *  @param yes State of current (\b true - set flag, \b false - unset flag)
+     */
     bool isSelected() const;
+    /*!
+     * It is used by PlayListModel class.
+     */
     void setCurrent(bool yes);
+    /*!
+     * Returns \b true if the item is the current item; otherwise returns \b false.
+     */
     bool isCurrent() const;
-    FLAGS flag()const;
+    /*!
+     * Returns current state of the playlist item.
+     */
+    FLAGS flag() const;
+    /*!
+     * Sets state of the playlist item.
+     */
     void setFlag(FLAGS);
+    /*!
+     * Returns item short title.
+     */
     const QString text() const;
+    /*!
+     * Direct access to the item short title.
+     * @param title New short title.
+     */
     void setText(const QString &title);
-    //modify functions
+    /*!
+     * Updates current metadata.
+     * @param metaData Map with metadata values.
+     */
     void updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData);
+    /*!
+     * Gets new metadata from file (works for local files only).
+     */
     void updateTags();
 
 private:
