@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,44 +20,68 @@
 #ifndef GENERALFACTORY_H
 #define GENERALFACTORY_H
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 class QObject;
 class QTranslator;
 class QDialog;
 class Control;
-
 class General;
 
+/*! @brief Helper class to store general plugin properies.
+ */
 class GeneralProperties
 {
 public:
+    /*!
+     * Constructor
+     */
     GeneralProperties()
     {
         hasAbout = FALSE;
         hasSettings = FALSE;
         visibilityControl = FALSE;
     }
-    QString name;
-    QString shortName;
-    bool hasAbout;
-    bool hasSettings;
-    bool visibilityControl;
+    QString name;           /*!< File dialog plugin full name */
+    QString shortName;      /*!< File dialog short name for internal usage */
+    bool hasAbout;          /*!< Should be \b true if plugin has about dialog, otherwise \b false */
+    bool hasSettings;       /*!< Should be \b true if plugin has settingd dialog, otherwise \b false */
+    bool visibilityControl; /*!< Should be \b true if plugin can show/hide main window of the player,
+                             * otherwise \b false */
 };
-
+/*! @brief General plugin interface.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class GeneralFactory
 {
 public:
+    /*!
+     * Object destructor.
+     */
     virtual ~GeneralFactory() {}
+    /*!
+     * Returns general plugin properties.
+     */
     virtual const GeneralProperties properties() const = 0;
+    /*!
+     * Creates object of the General class.
+     */
     virtual General *create(QObject *parent) = 0;
+    /*!
+     * Creates configuration dialog.
+     * @param parent Parent widget.
+     * @return Configuration dialog pointer.
+     */
     virtual QDialog *createConfigDialog(QWidget *parent) = 0;
+    /*!
+     * Shows about dialog.
+     * @param parent Parent widget.
+     */
     virtual void showAbout(QWidget *parent) = 0;
+    /*!
+     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
+     * @param parent Parent object.
+     */
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
 Q_DECLARE_INTERFACE(GeneralFactory, "GeneralFactory/1.0");
-
-
 #endif
