@@ -22,24 +22,44 @@
 
 #include <QObject>
 
-
 class PlaylistFormat;
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @brief The PlaylistParser class provides a simple api to access playlist format plugins.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class PlaylistParser  : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
+    /*!
+    * Object constructor,
+    * @param parent Parent object
+    */
     PlaylistParser(QObject *parent);
-
+    /*!
+     * Destructor
+     */
     ~PlaylistParser();
-
+    /*!
+     * Returns a list of supported file extensions.
+     */
     QStringList getExtensions();
+    /*!
+     * Returns \b true if file \b filePath is supported, otherwise \b false
+     */
     bool supports(const QString &filePath);
+    /*!
+     * Returns a list of the installed playlist formats.
+     */
     QList<PlaylistFormat*> formats();
+    /*!
+     * Returns a pointer to the object's instance.
+     */
     static PlaylistParser* instance();
+    /*!
+     * Finds playlist format by file path \b filePath
+     * Returns \b 0 if file \b filePath is unsupported.
+     */
     PlaylistFormat *findByPath(const QString &filePath);
 
 private:
