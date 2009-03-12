@@ -6,6 +6,5 @@
 
 make distclean
 rm -rf lib
-find . -name *.qm | xargs rm
-find . -name ".build" | xargs rm -rf
-
+find . -type f -name *.qm -delete
+find . -type d -name ".build" | xargs rm -rf

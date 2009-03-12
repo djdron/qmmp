@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,41 +26,51 @@
 
 class PlayListItem;
 
-/*!
+/*! @brief File loader class.
+ *
  * This class represents fileloader object that
  * processes file list in separate thread and emits
  * \b newPlayListItem(PlayListItem*) signal for every newly
  * created media file.
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class FileLoader : public QThread
 {
     Q_OBJECT
 public:
+    /*!
+     * Constructs FileLoader object.
+     * @param parent QObject parent
+     */
     FileLoader(QObject *parent = 0);
-
+    /*!
+     * Object destructor.
+     */
     ~FileLoader();
-    virtual void run();
-
     /*!
      * Call this method when you want to notify the thread about finishing
      */
     void finish();
-
     /*!
      * Sets filelist to load( directory to load will be cleaned )
      */
     void setFilesToLoad(const QStringList&);
-
     /*!
      * Sets directory to load( filelist to load will be cleaned )
      */
     void setDirectoryToLoad(const QString&);
 signals:
-    void newPlayListItem(PlayListItem*);
+    /*!
+     * Emited when new playlist item is available.
+     * @param item Pointer of the new PlayListItem object.
+     */
+    void newPlayListItem(PlayListItem *item);
+
 protected:
+    virtual void run();
     void addFiles(const QStringList &files);
     void addDirectory(const QString& s);
+
 private:
     QStringList m_filters;
     QStringList m_files_to_load;

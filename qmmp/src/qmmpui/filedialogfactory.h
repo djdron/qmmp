@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,30 +24,49 @@ class QObject;
 class QTranslator;
 class FileDialog;
 
+/*! @brief Helper class to store file dialog plugin properies.
+ */
 class FileDialogProperties
 {
 public:
+    /*!
+     * Constructor
+     */
     FileDialogProperties()
     {
         hasAbout = FALSE;
     }
-    bool hasAbout;
-    QString name;
-    QString shortName;
+    bool hasAbout;      /*!< Should be \b true if the file dialog plugin has about dialog, otherwise \b false */
+    QString name;       /*!< File dialog plugin full name */
+    QString shortName;  /*!< File dialog short name for internal usage */
 };
-
-
-/**
-   @author Vladimir Kuznetsov <vovanec@gmail.com>
+/*! @brief File dialog plugin interface.
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-
 class FileDialogFactory
 {
 public:
+    /*!
+     * Object destructor.
+     */
     virtual ~FileDialogFactory() {};
+    /*!
+     * Creates file dialog object.
+     */
     virtual FileDialog* create() = 0;
+    /*!
+     * Returns file dialog plugin properties.
+     */
     virtual const FileDialogProperties properties() const = 0;
+    /*!
+     * Shows about dialog.
+     * @param parent Parent widget.
+     */
     virtual void showAbout(QWidget *parent) = 0;
+    /*!
+     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
+     * @param parent Parent object.
+     */
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
