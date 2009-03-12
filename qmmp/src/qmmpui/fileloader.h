@@ -26,7 +26,8 @@
 
 class PlayListItem;
 
-/*! @brief File loader class.
+/*! @internal
+ * @brief File loader class.
  *
  * This class represents fileloader object that
  * processes file list in separate thread and emits

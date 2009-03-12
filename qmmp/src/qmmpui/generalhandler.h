@@ -33,7 +33,7 @@ class Control;
 class GeneralFactory;
 class CommandLineManager;
 
-/*! @brief The GeneralHandler class provied simple api to access general and command line plugins.
+/*! @brief The GeneralHandler class provides simple api to access general and command line plugins.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class GeneralHandler : public QObject

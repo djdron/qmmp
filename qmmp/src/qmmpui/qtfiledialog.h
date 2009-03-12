@@ -26,8 +26,8 @@
 
 class QTranslator;
 
-/**
-   @author Vladimir Kuznetsov <vovanec@gmail.com>
+/*! @internal
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 
 class QtFileDialogFactory : public QObject, public FileDialogFactory

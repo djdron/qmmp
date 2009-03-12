@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,14 +21,11 @@
 #ifndef _PLAYSTATE_H
 #define _PLAYSTATE_H
 
-/**
-   @author Vladimir Kuznetsov <vovanec@gmail.com>
- */
-
 #include <playlistmodel.h>
 
-/*!
- * Abstract class that represents data model playing states
+/*! @internal
+ * @brief Abstract class that represents data model playing states.
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class PlayState
 {
@@ -50,7 +47,6 @@ public:
     {
         ;
     };
-
     /*!
      * Service method, can be used for state initializing.
      */
@@ -72,9 +68,9 @@ protected:
     PlayListModel* m_model;
 };
 
-/*!
- *  Represents normal playing state.
- *  @author Vladimir Kuznetsov <vovanec@gmail.com>
+/*! @internal
+ * @brief Represents normal playing state.
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class NormalPlayState : public PlayState
 {
@@ -84,9 +80,9 @@ public:
     NormalPlayState(PlayListModel* model);
 };
 
-/*!
- *  Represents shuffle playing state.
- *  @author Vladimir Kuznetsov <vovanec@gmail.com>
+/*! @internal
+ * @brief Represents shuffle playing state.
+ * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class ShufflePlayState : public PlayState
 {

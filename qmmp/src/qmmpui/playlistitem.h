@@ -26,7 +26,7 @@
 class FileInfo;
 class QSettings;
 
-/** @brief The QTableWidgetItem class provides an item for use with the PlayListModel class.
+/** @brief The PlayListItem class provides an item for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class PlayListItem : public AbstractPlaylistItem

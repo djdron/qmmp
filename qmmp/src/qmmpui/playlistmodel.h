@@ -72,7 +72,8 @@ struct SimpleSelection
     int m_anchor;
     QList<int>m_selected_rows;
 };
-/*! @brief Helper class used for tags update after details dialog closing.
+/*! @internal
+ * @brief Helper class used for tags update after details dialog closing.
  *
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
@@ -88,7 +89,7 @@ public:
 protected slots:
     void updateTag();
 };
-/*! @brief This class provides a data model for the playlist.
+/*! @brief The PlayListModel class provides a data model for the playlist.
  *
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -410,8 +411,8 @@ public slots:
     void setUseMetadata(bool enabled);
     /*!
      * Sets short title format
-     * @param format title format. (Expressions: %p - artist, %a - album, %t - title, %n - track,
-     * %g - genre, %f - file name, %F - full path, %y - year)
+     * @param format title format. (Expressions: "%p" - artist, "%a" - album, "%t" - title, "%n" - track,
+     * "%g" - genre, "%f" - file name, "%F" - full path, "%y" - year)
      */
     void setFormat(const QString &format);
 

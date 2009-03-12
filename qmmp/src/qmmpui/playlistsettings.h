@@ -22,9 +22,9 @@
 
 #include <QString>
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @internal
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class PlaylistSettings
 {
 public:

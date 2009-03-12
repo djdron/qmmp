@@ -96,7 +96,6 @@ private:
     static MediaPlayer* m_instance;
     bool m_repeat;
     int m_skips;
-
 };
 
 #endif
