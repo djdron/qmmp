@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,32 +25,70 @@
 class PlayListModel;
 class SoundCore;
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @brief The MediaPlayer class provides a simple way to use SoundCore and PlayListModel together.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class MediaPlayer : public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
+    /*!
+     * Object constructor,
+     * @param parent Parent object
+     */
     MediaPlayer(QObject *parent = 0);
-
+    /*!
+     * Destructor
+     */
     ~MediaPlayer();
-
+    /*!
+     * Returns a pointer to the object's instance.
+     */
     static MediaPlayer* instance();
-
+    /*!
+     * Prepares object for usage.
+     * @param core Pointer to the SoundCore object.
+     * @param model Playlist model
+     */
     void initialize(SoundCore *core, PlayListModel *model);
+    /*!
+     * Returns playlist model pointer
+     */
     PlayListModel *playListModel();
+    /*!
+     * Returns \b true if "Repeate Track" option is enabled, otherwise \b false
+     */
     bool isRepeatable() const;
 
 public slots:
+    /*!
+     * Starts playback.
+     */
     void play();
+    /*!
+     * Stops playback.
+     */
     void stop();
+    /*!
+     * Sets next playlist item for playing.
+     */
     void next();
+    /*!
+     * Sets previous playlist item for playing.
+     */
     void previous();
-    void setRepeatable(bool);
+    /*!
+     * Toggles the current track repeat.
+     * @param enable Repeate state of the current track (\b true - to repeat, \b false - to stop repeating)
+     */
+    void setRepeatable(bool enable);
 
 signals:
-    void repeatableChanged(bool);
+    /*!
+     * Tracks current track repeat state;
+     * @param enabled New repeate state of the current track (\b true - enabled, \b false - disabled)
+     */
+    void repeatableChanged(bool enabled);
 
 private:
     PlayListModel *m_model;

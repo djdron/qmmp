@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,40 +23,67 @@
 #include <QObject>
 #include <QStringList>
 #include <QMap>
-
 #include "generalfactory.h"
 
-class Control;
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @brief The General class provides the basic functionality for the general plugin objects
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class General : public QObject
 {
     Q_OBJECT
 public:
+    /*!
+     * Object constructor,
+     * @param parent Parent object
+     */
     General(QObject *parent = 0);
-
+    /*!
+     * Destructor
+     */
     ~General();
-
-    //static methods
+    /*!
+     * Returns a list of the loaded general plugin factories.
+     */
     static QList<GeneralFactory*> *generalFactories();
+    /*!
+     * Returns a list of the loaded general plugin files.
+     */
     static QStringList generalFiles();
+    /*!
+     * Sets whether the general plugin is enabled.
+     * @param factory General plugin factory.
+     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     */
     static void setEnabled(GeneralFactory* factory, bool enable = TRUE);
+    /*!
+     * Return \b true if general plugin is enabled, otherwise \b false
+     * @param factory General plugin factory.
+     */
     static bool isEnabled(GeneralFactory* factory);
 
-public slots:
-    void exit();
-    void toggleVisibility();
-
 signals:
+    /*!
+     * Emited when exit() slot is called.
+     */
     void exitCalled();
+    /*!
+     * Emited when toggleVisibility() slot is called.
+     */
     void toggleVisibilityCalled();
+
+public slots:
+    /*!
+     * Tells the player to exit.
+     */
+    void exit();
+    /*!
+     * Toggles player window visibility.
+     */
+    void toggleVisibility();
 
 private:
     QMap <uint, QString> m_strValues;
     QMap <uint, uint> m_numValues;
-
 };
 
 #endif

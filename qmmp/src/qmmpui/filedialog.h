@@ -30,7 +30,7 @@
 #include "filedialogfactory.h"
 
 
-/*! @brief The FileDialog class is the base interface class of file dialogs.
+/*! @brief The FileDialog class is the base interface class of the file dialogs.
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
 class FileDialog : public QObject
