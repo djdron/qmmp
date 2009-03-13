@@ -31,12 +31,12 @@ class PlayState
 {
 public:
     /*! Makes single step forward through songs list.
-     *  If the step has done returns \b true, otherwise \b false
+     *  If the step has done returns \b true, otherwise returns \b false
      */
     virtual bool next() = 0;
 
     /*! Makes single step back through songs list.
-     *  If the step has done returns \b true, otherwise \b false
+     *  If the step has done returns \b true, otherwise returns \b false
      */
     virtual bool previous() = 0;
 

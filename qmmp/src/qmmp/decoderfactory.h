@@ -54,10 +54,10 @@ public:
     QString description; /*!< File filter description */
     QString contentType; /*!< Supported content types */
     QString protocols;   /*!< Supported protocols. Should be empty if plugin uses stream input. */
-    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise \b false */
-    bool hasSettings;    /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
-    bool noInput;        /*!< Should be \b true if plugin has own input, otherwise \b false */
-    bool noOutput;       /*!< Should be \b true if plugin has own output, otherwise \b false */
+    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
+    bool hasSettings;    /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
+    bool noInput;        /*!< Should be \b true if plugin has own input, otherwise returns \b false */
+    bool noOutput;       /*!< Should be \b true if plugin has own output, otherwise returns \b false */
 };
 /*! @brief Input plugin interface (decoder factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -70,11 +70,11 @@ public:
     */
     virtual ~DecoderFactory() {}
     /*!
-     * Returns \b true if plugin supports \b source, otherwise \b false
+     * Returns \b true if plugin supports \b source, otherwise returns \b false
      */
     virtual bool supports(const QString &source) const = 0;
     /*!
-     * Returns \b true if plugin can decode data provided by \b d, otherwise \b false
+     * Returns \b true if plugin can decode data provided by \b d, otherwise returns \b false
      */
     virtual bool canDecode(QIODevice *d) const = 0;
     /*!

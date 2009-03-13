@@ -22,60 +22,113 @@
 
 #include <QObject>
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @brief The VolumeControl class provides the base interface class for volume control.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class VolumeControl : public QObject
 {
     Q_OBJECT
 public:
+    /*!
+     * Object constructor.
+     * @param parent Parent object.
+     */
     VolumeControl(QObject *parent = 0);
-
+    /*!
+     * Destructor.
+     */
     ~VolumeControl();
-
+    /*!
+     * Setups volume level.
+     * Subclass should reimplement this fucntion.
+     * @param left Left channel volume level. It should be \b 0..100
+     * @param right Right channel volume level. It should be \b 0..100
+     */
     virtual void setVolume(int left, int right) = 0;
-
+    /*!
+     * Returns left channel volume.
+     */
     int left();
+    /*!
+     * Returns right channel volume.
+     */
     int right();
-
+    /*!
+     * Creates output volume control object if implemented, \b otherwise it creates SoftwareVolume object.
+     * @param parent Parent object.
+     */
     static VolumeControl *create(QObject *parent = 0);
 
 signals:
+    /*!
+     * Emitted when volume is changed.
+     * @param left Left channel volume level. It should be \b 0..100
+     * @param right Right channel volume level. It should be \b 0..100
+     */
     void volumeChanged(int left, int right);
 
 public slots:
+    /*!
+     * Forces the volumeChanged signal to emit.
+     */
     void checkVolume();
 
 protected:
+    /*!
+     * Gets current volume.
+     * @param left Pointer to the left volume level.
+     * @param right Pointer to the right volume level
+     */
     virtual void volume(int *left, int *right) = 0;
 
 private:
     int m_left, m_right;
 
 };
-/*! @internal
- *  @author Ilya Kotov <forkotov02@hotmail.ru>
+/*! @brief The SoftwareVolume provides access to the software volume control.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class SoftwareVolume : public VolumeControl
 {
     Q_OBJECT
 public:
+    /*!
+     * Object constructor.
+     * @param parent Parent object.
+     */
     SoftwareVolume(QObject *parent = 0);
-
+    /*!
+     * Destructor.
+     */
     ~SoftwareVolume();
-
+    /*!
+     * Setups volume level.
+     * Subclass should reimplement this fucntion.
+     * @param left Left channel volume level. It should be \b 0..100
+     * @param right Right channel volume level. It should be \b 0..100
+     */
     void setVolume(int left, int right);
-
+    /*!
+     * Returns software volume object instance.
+     */
     static SoftwareVolume *instance();
+    /*!
+     * This funtion allows to force software volume for all output plugins.
+     * @param b Software volume enable state (\b true - enable, \b false - disable)
+     */
     static void setEnabled(bool b);
 
 protected:
+    /*! @internal
+     * Gets current volume.
+     * @param left Pointer to the left volume level.
+     * @param right Pointer to the right volume level
+     */
     void volume(int *left, int *right);
 
 private:
     int m_left, m_right;
     static SoftwareVolume *m_instance;
-
 };
 
 #endif

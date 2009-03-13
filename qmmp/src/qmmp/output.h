@@ -84,7 +84,7 @@ public:
     QMutex *mutex();
     /*!
      * Sets StateHandler pointer. May be used to override default state handler.
-     * @param hanlder StateHandler pointer;
+     * @param handler StateHandler pointer;
      */
     void setStateHandler(StateHandler *handler);
     /*!

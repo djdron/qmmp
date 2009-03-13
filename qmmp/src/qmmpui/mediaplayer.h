@@ -56,7 +56,7 @@ public:
      */
     PlayListModel *playListModel();
     /*!
-     * Returns \b true if "Repeate Track" option is enabled, otherwise \b false
+     * Returns \b true if "Repeate Track" option is enabled, otherwise returns \b false
      */
     bool isRepeatable() const;
 

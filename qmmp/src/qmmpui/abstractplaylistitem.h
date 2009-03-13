@@ -90,7 +90,7 @@ public:
     /*!
      * Loads one metadata value.
      * @param key Metadata key.
-     * @param key Metadata vlaue.
+     * @param value Metadata value.
      */
     virtual void setMetaData(Qmmp::MetaData key, const QString &value);
     /*!

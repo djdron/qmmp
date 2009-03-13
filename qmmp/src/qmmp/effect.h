@@ -85,11 +85,11 @@ public:
     /*!
      * Sets whether the effect plugin is enabled.
      * @param factory Effect plugin factory.
-     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
     static void setEnabled(EffectFactory* factory, bool enable = TRUE);
     /*!
-     * Returns \b true if input plugin is enabled, otherwise \b false
+     * Returns \b true if input plugin is enabled, otherwise returns \b false
      * @param factory Effect plugin factory.
      */
     static bool isEnabled(EffectFactory* factory);

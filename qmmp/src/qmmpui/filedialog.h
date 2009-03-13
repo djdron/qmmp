@@ -115,7 +115,6 @@ public:
      * @param caption Dialog title.
      * @param filters Filer used by file dialog
      * (example: "Audio (*.mp3 *.ogg);;Text files (*.txt);;XML files (*.xml)").
-     * @param selectedFilter Default selected filter.
      *
      * Usage: FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
      *                 m_playListModel, SLOT(addFileList(const QStringList&)),
@@ -133,7 +132,7 @@ public:
      */
     static QList <FileDialogFactory*> registeredFactories();
     /*!
-     * Returns \b true if selected file dialog doesn't support nonmodal mode, otherwise \b false
+     * Returns \b true if selected file dialog doesn't support nonmodal mode, otherwise returns \b false
      */
     static bool isModal();
     /*!
@@ -141,7 +140,7 @@ public:
      */
     static void setEnabled(FileDialogFactory *factory);
     /*!
-     * Returns \b true if file dialog \b factory is used by default, otherwise \b false
+     * Returns \b true if file dialog \b factory is used by default, otherwise returns \b false
      */
     static bool isEnabled(FileDialogFactory *factory);
 
@@ -215,7 +214,7 @@ protected:
                                    const QString &filter ,
                                    QString *selectedFilter);
     /*!
-     * Returns \b true if file dialog doesn't support nonmodal mode, otherwise \b false
+     * Returns \b true if file dialog doesn't support nonmodal mode, otherwise returns \b false
      * Subclass should reimplement this function.
      */
     virtual bool modal()const
@@ -258,7 +257,7 @@ protected:
     static FileDialog* defaultInstance();
     /*!
      * Registers file dialog \b factory
-     * Returns \b false if \b factory is already registered, otherwise \b true
+     * Returns \b false if \b factory is already registered, otherwise returns \b true
      */
     static bool registerFactory(FileDialogFactory *factory);
 

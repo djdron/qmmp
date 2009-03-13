@@ -46,10 +46,10 @@ public:
     }
     QString name;      /*!< Effect plugin full name */
     QString shortName; /*!< Effect plugin short name for internal usage */
-    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise \b false */
-    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
+    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
+    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
 };
-/*! @brief Output plugin interface (output factory).
+/*! @brief %Output plugin interface (output factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class OutputFactory
@@ -73,7 +73,7 @@ public:
      * Returns \b 0 if volume control is not supported by plugin.
      * @param parent Parent object.
      */
-    virtual VolumeControl *createVolumeControl(QObject *) = 0;
+    virtual VolumeControl *createVolumeControl(QObject *parent) = 0;
     /*!
      * Shows settings dialog.
      * @param parent Parent widget.

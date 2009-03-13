@@ -43,10 +43,10 @@ public:
     }
     QString name;      /*!< Effect plugin full name */
     QString shortName; /*!< Effect plugin short name for internal usage */
-    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise \b false */
-    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
+    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
+    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
 };
-/*! Visual plugin interface (visual factory).
+/*! @brief %Visual plugin interface (visual factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class VisualFactory

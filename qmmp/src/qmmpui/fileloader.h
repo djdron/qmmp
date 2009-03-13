@@ -62,7 +62,7 @@ public:
     void setDirectoryToLoad(const QString&);
 signals:
     /*!
-     * Emited when new playlist item is available.
+     * Emitted when new playlist item is available.
      * @param item Pointer of the new PlayListItem object.
      */
     void newPlayListItem(PlayListItem *item);

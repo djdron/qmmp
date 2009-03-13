@@ -9,13 +9,15 @@
 
 #include "constants.h"
 
-/*!
+/*! @brief Audio buffer class.
  * @author Brad Hughes <bhughes@trolltech.com>
  */
-
 class Buffer
 {
 public:
+    /*!
+     * Constructs an empty buffer object.
+     */
     Buffer()
     {
         data = new unsigned char[Buffer::size()];
@@ -23,6 +25,9 @@ public:
         rate = 0;
         exceeding = 0;
     }
+    /*!
+     * Destructor.
+     */
     ~Buffer()
     {
         delete data;
@@ -32,11 +37,13 @@ public:
         exceeding = 0;
     }
 
-    unsigned char *data;
-    unsigned long nbytes;
-    unsigned long rate;
-    unsigned long exceeding;
-
+    unsigned char *data;      /*!< Audio data */
+    unsigned long nbytes;     /*!< Audio data size */
+    unsigned long rate;       /*!< Buffer bitrate */
+    unsigned long exceeding;  /*!< The number of bytes on which the size of buffer exceeds the size of the block */
+    /*!
+     * Returns block size.
+     */
     static unsigned long size()
     {
         return globalBlockSize;

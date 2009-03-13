@@ -46,7 +46,7 @@ public:
      */
     void executeCommand(const QString& opt_str);
     /*!
-     * Return \b true if command \b opt_str is supported, otherwise \b false
+     * Return \b true if command \b opt_str is supported, otherwise returns \b false
      */
     static bool hasOption(const QString &opt_str);
     /*!
