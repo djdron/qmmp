@@ -1,6 +1,5 @@
-
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,9 +31,15 @@ class Decoder;
 class Output;
 class FileInfo;
 
+/*! @brief Helper class to store input plugin properies.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class DecoderProperties
 {
 public:
+    /*!
+     * Constructor
+     */
     DecoderProperties()
     {
         hasAbout = FALSE;
@@ -43,32 +48,76 @@ public:
         noOutput = FALSE;
 
     }
-    QString name;
-    QString shortName;
-    QString filter;
-    QString description;
-    QString contentType;
-    QString protocols;
-    bool hasAbout;
-    bool hasSettings;
-    bool noInput;
-    bool noOutput;
+    QString name;        /*!< Input plugin full name */
+    QString shortName;   /*!< Input plugin short name for internal usage */
+    QString filter;      /*!< File filter (example: "*.mp3 *.ogg") */
+    QString description; /*!< File filter description */
+    QString contentType; /*!< Supported content types */
+    QString protocols;   /*!< Supported protocols. Should be empty if plugin uses stream input. */
+    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise \b false */
+    bool hasSettings;    /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
+    bool noInput;        /*!< Should be \b true if plugin has own input, otherwise \b false */
+    bool noOutput;       /*!< Should be \b true if plugin has own output, otherwise \b false */
 };
-
+/*! @brief Input plugin interface.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class DecoderFactory
 {
 public:
+    /*!
+    * Object destructor.
+    */
     virtual ~DecoderFactory() {}
+    /*!
+     * Returns \b true if plugin supports \b source, otherwise \b false
+     */
     virtual bool supports(const QString &source) const = 0;
-    virtual bool canDecode(QIODevice *) const = 0;
+    /*!
+     * Returns \b true if plugin can decode data provided by \b d, otherwise \b false
+     */
+    virtual bool canDecode(QIODevice *d) const = 0;
+    /*!
+     * Returns general plugin properties.
+     */
     virtual const DecoderProperties properties() const = 0;
-    virtual Decoder *create(QObject *, QIODevice *input = 0,
+    /*!
+     * Creates decoder object.
+     * @param parent Parent object.
+     * @param input Input data (if required)
+     * @param output Output object (if required)
+     * @param path File path
+     */
+    virtual Decoder *create(QObject *parent, QIODevice *input = 0,
                             Output *output = 0, const QString &path = QString()) = 0;
-    //virtual FileInfo *createFileInfo(const QString &source) = 0;
+    /*!
+     * Extracts metadata and audio information from file \b path and returns a list of FileInfo items.
+     * One file may contain several playlist items (for example: cda disk or flac with embedded cue)
+     * @param fileName File path.
+     * @param useMetaData Metadata usage (\b true - use, \b - do not use)
+     */
     virtual QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData) = 0;
+    /*!
+     * Shows details dialog.
+     * @param parent Parent widget.
+     * @param path File path.
+     * @return Dialog pointer.
+     */
     virtual QObject* showDetails(QWidget *parent, const QString &path) = 0;
+    /*!
+     * Shows settings dialog.
+     * @param parent Parent widget.
+     */
     virtual void showSettings(QWidget *parent) = 0;
+    /*!
+     * Shows about dialog.
+     * @param parent Parent widget.
+     */
     virtual void showAbout(QWidget *parent) = 0;
+    /*!
+     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
+     * @param parent Parent object.
+     */
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 

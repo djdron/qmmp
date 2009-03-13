@@ -29,14 +29,12 @@
 #include "visual.h"
 #include "qmmp.h"
 
-/**
-   \author Ilya Kotov <forkotov02\hotmail.ru>
-*/
-
 class QIODevice;
-
 class VolumeControl;
 
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class SoundCore : public QObject
 {
     Q_OBJECT

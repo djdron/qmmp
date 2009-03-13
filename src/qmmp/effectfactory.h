@@ -30,7 +30,9 @@ class QWidget;
 class QTranslator;
 
 class Effect;
-
+/*!
+ *   @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class EffectProperties
 {
 public:
@@ -44,7 +46,9 @@ public:
     bool hasAbout;
     bool hasSettings;
 };
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class EffectFactory
 {
 public:

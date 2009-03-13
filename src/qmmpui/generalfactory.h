@@ -43,7 +43,7 @@ public:
     QString name;           /*!< File dialog plugin full name */
     QString shortName;      /*!< File dialog short name for internal usage */
     bool hasAbout;          /*!< Should be \b true if plugin has about dialog, otherwise \b false */
-    bool hasSettings;       /*!< Should be \b true if plugin has settingd dialog, otherwise \b false */
+    bool hasSettings;       /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
     bool visibilityControl; /*!< Should be \b true if plugin can show/hide main window of the player,
                              * otherwise \b false */
 };

@@ -24,7 +24,9 @@ class Output;
 
 class QTimer;
 
-
+/*!
+ *  @author Brad Hughes <bhughes@trolltech.com>
+ */
 class Output : public QThread
 {
     Q_OBJECT
