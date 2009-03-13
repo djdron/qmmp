@@ -85,7 +85,7 @@ private:
     int m_left, m_right;
 
 };
-/*! @brief The SoftwareVolume provides access to the software volume control.
+/*! @brief The SoftwareVolume class provides access to the software volume control.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class SoftwareVolume : public VolumeControl
