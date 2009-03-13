@@ -28,9 +28,9 @@ class QFileInfo;
 
 class Downloader;
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @internal
+ *   @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class StreamReader : public QIODevice
 {
     Q_OBJECT

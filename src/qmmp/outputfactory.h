@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,37 +27,67 @@ class QIODevice;
 class QWidget;
 class QTranslator;
 class VolumeControl;
-
 class Decoder;
 class Output;
-/*!
- *  @author Ilya Kotov <forkotov02@hotmail.ru>
+
+/*! @brief Helper class to store output plugin properies.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class OutputProperties
 {
 public:
+    /*!
+     * Constructor
+     */
     OutputProperties()
     {
         hasAbout = FALSE;
         hasSettings = FALSE;
     }
-    QString name;
-    QString shortName;
-    bool hasAbout;
-    bool hasSettings;
+    QString name;      /*!< Effect plugin full name */
+    QString shortName; /*!< Effect plugin short name for internal usage */
+    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise \b false */
+    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
 };
-/*!
- *  @author Ilya Kotov <forkotov02@hotmail.ru>
+/*! @brief Output plugin interface (output factory).
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class OutputFactory
 {
 public:
-    virtual ~OutputFactory() {} 
+    /*!
+     * Destructor.
+     */
+    virtual ~OutputFactory() {}
+    /*!
+     * Returns output plugin properties.
+     */
     virtual const OutputProperties properties() const = 0;
-    virtual Output *create(QObject *) = 0;
+    /*!
+     * Creates output provided by plugin.
+     * @param parent Parent object.
+     */
+    virtual Output *create(QObject *parent) = 0;
+    /*!
+     * Creates volume control object provided by plugin.
+     * Returns \b 0 if volume control is not supported by plugin.
+     * @param parent Parent object.
+     */
     virtual VolumeControl *createVolumeControl(QObject *) = 0;
+    /*!
+     * Shows settings dialog.
+     * @param parent Parent widget.
+     */
     virtual void showSettings(QWidget *parent) = 0;
+    /*!
+     * Shows about dialog.
+     * @param parent Parent widget.
+     */
     virtual void showAbout(QWidget *parent) = 0;
+    /*!
+     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
+     * @param parent Parent object.
+     */
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 

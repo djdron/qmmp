@@ -57,18 +57,18 @@ public:
      */
     virtual const EffectProperties properties() const = 0;
     /*!
-     * Creates Effect object.
+     * Creates effect provided by plugin.
      * @param parent Parent object.
      */
     virtual Effect *create(QObject *parent) = 0;
     /*!
-     * Shows about dialog.
+     * Shows settings dialog.
      * @param parent Parent widget.
      */
     virtual void showSettings(QWidget *parent) = 0;
     /*!
-     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
-     * @param parent Parent object.
+     * Shows about dialog.
+     * @param parent Parent widget.
      */
     virtual void showAbout(QWidget *parent) = 0;
     /*!
