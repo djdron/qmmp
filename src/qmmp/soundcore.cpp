@@ -58,7 +58,7 @@ SoundCore::SoundCore(QObject *parent)
     //StateHandler::m_instance = m_handler;
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
     connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
-    connect(m_handler, SIGNAL(frequencyChanged(int)), SIGNAL(frequencyChanged(int)));
+    connect(m_handler, SIGNAL(frequencyChanged(quint32)), SIGNAL(frequencyChanged(quint32)));
     connect(m_handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
     connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
     connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
@@ -322,7 +322,7 @@ int SoundCore::bitrate()
     return  m_handler->bitrate();
 }
 
-int SoundCore::frequency()
+quint32 SoundCore::frequency()
 {
     return  m_handler->frequency();
 }
