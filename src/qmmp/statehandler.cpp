@@ -167,7 +167,7 @@ int StateHandler::channels()
     return m_channels;
 }
 
-Qmmp::State StateHandler::state()
+Qmmp::State StateHandler::state() const
 {
     return m_state;
 }
