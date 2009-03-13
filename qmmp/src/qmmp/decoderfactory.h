@@ -59,7 +59,7 @@ public:
     bool noInput;        /*!< Should be \b true if plugin has own input, otherwise \b false */
     bool noOutput;       /*!< Should be \b true if plugin has own output, otherwise \b false */
 };
-/*! @brief Input plugin interface.
+/*! @brief Input plugin interface (decoder factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class DecoderFactory

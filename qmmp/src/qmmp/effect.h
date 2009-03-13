@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,58 +24,74 @@
 #include <QList>
 #include <QStringList>
 
-
-
-
 class EffectFactory;
-/*!
- *  @author Ilya Kotov <forkotov02@hotmail.ru>
+
+/*! @brief The Effect class provides the base interface class of audio effects.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class Effect : public QObject
 {
     Q_OBJECT
 public:
+    /*!
+     * Object contsructor.
+     * @param parent Parent object.
+     */
     Effect(QObject *parent = 0);
-
+    /*!
+     * Destructor.
+     */
     virtual ~Effect();
-
-    /*/*!
+    /*!
      * Adds effect to the input data pointer \b in_data with the size \b size.
      * Result is stored in the output data \b out_data.
-     * Return value is the size of the output data. Output data size should not be more then \b size.
+     * Return value is the size of the output data.
      * Subclass should implement this function.
      */
     virtual ulong process(char *in_data, const ulong size, char **out_data) = 0;
-
-    //virtual const ulong process(char *in_data, const ulong size, char *out_data) = 0;
-    //virtual bool process(char *in_data, char *out_data, const ulong maxsize, ulong &rbytes, ulong &wbytes) = 0;
-
-
+    /*!
+     * Prepares Effect object for usage.
+     * Subclasses that reimplement this function must call the base implementation.
+     * @param freq Sample rate.
+     * @param chan Number of channels.
+     * @param res Bits per sample.
+     */
     virtual void configure(quint32 freq, int chan, int res);
-
     /*!
      * Returns samplerate.
-     * This function should be reimplemented if subclass changes default samplerate.
      */
-    virtual quint32 sampleRate();
-
+    quint32 sampleRate();
     /*!
      * Returns channel number.
-     * This function should be reimplemented if subclass changes default channel number.
      */
-    virtual int channels();
-
+    int channels();
     /*!
      * Returns bit depth.
-     * This function should be reimplemented if subclass changes default resolution.
      */
-    virtual int bitsPerSample();
-
-
+    int bitsPerSample();
+    /*!
+     * Creates list of enabled effects.
+     * @param parent Parent object of all created Effect objects.
+     */
     static QList<Effect*> create(QObject *parent);
+    /*!
+     * Returns a list of effect factories.
+     */
     static QList<EffectFactory*> *effectFactories();
+    /*!
+     * Returns a list of effect plugin file names.
+     */
     static QStringList effectFiles();
+    /*!
+     * Sets whether the effect plugin is enabled.
+     * @param factory Effect plugin factory.
+     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     */
     static void setEnabled(EffectFactory* factory, bool enable = TRUE);
+    /*!
+     * Returns \b true if input plugin is enabled, otherwise \b false
+     * @param factory Effect plugin factory.
+     */
     static bool isEnabled(EffectFactory* factory);
 
 private:

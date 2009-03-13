@@ -170,7 +170,7 @@ public:
      */
     static void setEnabled(DecoderFactory* factory, bool enable = TRUE);
     /*!
-     * Return \b true if input plugin is enabled, otherwise \b false
+     * Returns \b true if input plugin is enabled, otherwise \b false
      * @param factory Decoder plugin factory.
      */
     static bool isEnabled(DecoderFactory* factory);
