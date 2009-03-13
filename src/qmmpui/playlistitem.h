@@ -64,8 +64,7 @@ public:
      */
     void setSelected(bool select);
     /*!
-     * Return \b true if item is selected, otherwise \b false.
-     *  @param yes State of current (\b true - set flag, \b false - unset flag)
+     * Return \b true if item is selected, otherwise returns \b false.
      */
     bool isSelected() const;
     /*!
@@ -73,7 +72,7 @@ public:
      */
     void setCurrent(bool yes);
     /*!
-     * Returns \b true if the item is the current item; otherwise returns \b false.
+     * Returns \b true if the item is the current item; otherwise returns returns \b false.
      */
     bool isCurrent() const;
     /*!

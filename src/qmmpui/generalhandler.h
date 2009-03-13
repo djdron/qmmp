@@ -60,7 +60,7 @@ public:
     /*!
      * Sets whether the general plugin is enabled.
      * @param factory General plugin factory.
-     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
     void setEnabled(GeneralFactory* factory, bool enable);
     /*!
@@ -70,7 +70,7 @@ public:
      */
     void showSettings(GeneralFactory* factory, QWidget* parentWidget);
     /*!
-     * Returns \b true if one of the general plugin can change visibility, otherwise \b false
+     * Returns \b true if one of the general plugin can change visibility, otherwise returns \b false
      */
     bool visibilityControl();
     /*!
@@ -97,7 +97,7 @@ public:
      * Creates menu with type \b type
      * @param type Menu type.
      * @param title Menu title.
-     * @param paren Parent widget
+     * @param parent Parent widget
      */
     QMenu *createMenu(MenuType type, const QString &title = QString(), QWidget *parent = 0);
     /*!
@@ -107,12 +107,12 @@ public:
 
 signals:
     /*!
-     * Emited when some general plugin requires to exit.
+     * Emitted when some general plugin requires to exit.
      * Use it to quit application.
      */
     void exitCalled();
     /*!
-     * Emited when some general plugin requires to toggle visibility.
+     * Emitted when some general plugin requires to toggle visibility.
      * Use it to show/hide player's window.
      */
     void toggleVisibilityCalled();

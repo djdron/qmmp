@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,10 +20,8 @@
 #ifndef SOUNDCORE_H
 #define SOUNDCORE_H
 
-
 #include <QObject>
 #include <QString>
-
 #include "decoder.h"
 #include "output.h"
 #include "visual.h"
@@ -32,54 +30,79 @@
 class QIODevice;
 class VolumeControl;
 
-/*!
- *  @author Ilya Kotov <forkotov02@hotmail.ru>
+/*! \brief The SoundCore class provides a simple interface for audio playback.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class SoundCore : public QObject
 {
     Q_OBJECT
 public:
-    SoundCore(QObject *parent = 0);
-
-    ~SoundCore();
-
     /*!
-     * Returns length in seconds
+     * Object constructor.
+     * @param parent Parent object.
+     */
+    SoundCore(QObject *parent = 0);
+    /*!
+     * Destructor.
+     */
+    ~SoundCore();
+    /*!
+     * Returns length in milliseconds
      */
     qint64 totalTime() const;
-
     /*!
      * Sets equalizer settings. Each item of \p bands[] and \p reamp should be
      *  \b -20.0..20.0
      */
     void setEQ(double bands[10], double preamp);
-
     /*!
-     * Enables equalizer if \p on is \b TRUE or disables it if \p on is \b FALSE
+     * Enables equalizer if \p on is \b true or disables it if \p on is \b false
      */
     void setEQEnabled(bool on);
-
+    /*!
+     * Returns left volume level.
+     */
     int leftVolume();
+    /*!
+     * Returns left volume level.
+     */
     int rightVolume();
+    /*!
+     * Returns \b true if software volume is used, otherwise returns \b false
+     */
     bool softwareVolume();
-
+    /*!
+     * Returns the current time (in milliseconds).
+     */
     qint64 elapsed();
+    /*!
+     * Returns current bitrate (in kbps)
+     */
     int bitrate();
+    /*!
+     * Returns current sample rate (in Hz).
+     */
     int frequency();
+    /*!
+     * Returns sample size (in bits).
+     */
     int precision();
+    /*!
+     * Returns channels number.
+     */
     int channels();
-
     /*!
      * Returns the current state.
-     *
-     * \return the state of the object.
      */
     Qmmp::State state() const;
-
+    /*!
+     * Returns all meta data in map.
+     */
     QMap <Qmmp::MetaData, QString> metaData();
-
+    /*!
+     * Returns the metdata string associated with the given \b key.
+     */
     QString metaData(Qmmp::MetaData key);
-
     /*!
      * Returns a pointer to the SoundCore instance.
      */
@@ -87,61 +110,88 @@ public:
 
 
 public slots:
-
-    void setSoftwareVolume(bool);
-
+    /*!
+     * This funtion allows to force software volume for all output plugins.
+     * @param yes Software volume enable state (\b true - enable, \b false - disable)
+     */
+    void setSoftwareVolume(bool yes);
     /*!
      * Sets volume.
-     * \p left - volume of the left channel.
-     * \p right - volume of the right channel.
-     * \b left and \b right should be \b 0..100.
+     * @param left - volume of the left channel \b [0..100].
+     * @param right - volume of the right channel \b [0..100].
      */
     void setVolume(int left, int right);
-
     /*!
-     *  This function plays file with the given path \p source.
-     *
-     *  \return \b TRUE if playback started successful or source is not a local file.
-     *  \return \b FALSE otherwise.
+     * This function plays file or stream with the given path \p source.
+     * Returns \b true if playback started successful or source is not a local file,
+     * otherwise returns \b false. Useful for invalid files skipping.
      */
     bool play(const QString &source);
-
     /*!
      *  Stops playback
      */
     void stop();
-
     /*!
      *  Pauses/resumes playback
      */
     void pause();
-
     /*!
-    *  This function sets the current play position to \p pos.
-    */
+     *  This function sets the current play position to \p pos in milliseconds.
+     */
     void seek(qint64 pos);
-
     /*!
-    *  This function returns file path or stream url.
-    */
+     *  This function returns file path or stream url.
+     */
     const QString url();
 
 signals:
-
     /*!
-     * This signal is emited when the stream reader fills it's buffer.
-     * The argument \b progress indicates the current percentage of buffering completed
+     * This signal is emitted when the stream reader fills it's buffer.
+     * The argument \b progress indicates the current percentage of buffering completed.
      */
-
     void bufferingProgress(int progress);
+    /*!
+     * Tracks elapesed time.
+     * @param time New track position in milliseconds.
+     */
     void elapsedChanged(qint64 time);
+    /*!
+     * Emitted when bitrate has changed.
+     * @param bitrate New bitrate (in kbps)
+     */
     void bitrateChanged(int bitrate);
+    /*!
+     * Emitted when samplerate has changed.
+     * @param frequency New sample rate (in Hz)
+     */
     void frequencyChanged(int frequency);
+    /*!
+     * Emitted when sample size has changed.
+     * @param precision New sample size (in bits)
+     */
     void precisionChanged(int precision);
+    /*!
+     * Emitted when channels number has changed.
+     * @param channels New channels number.
+     */
     void channelsChanged(int channels);
+    /*!
+     * Emitted when new metadata is available.
+     */
     void metaDataChanged ();
+    /*!
+     * This signal is emitted when the state of the SoundCore has changed.
+     */
     void stateChanged (Qmmp::State newState);
+    /*!
+     * Emitted when playback has finished.
+     */
     void finished();
+    /*!
+     * Emitted when volume has changed.
+     * @param left Left channel volume level. It should be \b [0..100]
+     * @param right Right channel volume level. It should be \b [0..100]
+     */
     void volumeChanged(int left, int right);
 
 private slots:

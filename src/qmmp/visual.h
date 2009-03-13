@@ -75,11 +75,11 @@ public:
     /*!
      * Sets whether the visual plugin is enabled.
      * @param factory Visual plugin factory.
-     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
     static void setEnabled(VisualFactory* factory, bool enable = TRUE);
     /*!
-     * Returns \b true if visual plugin is enabled, otherwise \b false
+     * Returns \b true if visual plugin is enabled, otherwise returns \b false
      * @param factory Effect plugin factory.
      */
     static bool isEnabled(VisualFactory* factory);
@@ -111,7 +111,7 @@ public:
 
 signals:
     /*!
-     * Emited when visual widget is closed by user.
+     * Emitted when visual widget is closed by user.
      */
     void closedByUser();
 

@@ -47,7 +47,7 @@ struct SimpleSelection
         ;
     }
     /*!
-     * Returns \p true if this selection is valid; otherwise returns \p false.
+     * Returns \p true if this selection is valid; otherwise returns returns \p false.
      */
     inline bool isValid()const
     {
@@ -67,10 +67,10 @@ struct SimpleSelection
     {
         return m_bottom - m_top + 1;
     }
-    int m_bottom;
-    int m_top;
-    int m_anchor;
-    QList<int>m_selected_rows;
+    int m_bottom;               /*!<    */
+    int m_top;                  /*!<    */
+    int m_anchor;               /*!<    */
+    QList<int>m_selected_rows;  /*!< Selected rows numbers */
 };
 /*! @internal
  * @brief Helper class used for tags update after details dialog closing.
@@ -132,12 +132,12 @@ public:
     int currentRow();
     /*!
      * Sets current row number.
-     * Returns \b false if item with this number doesn't exist, otherwise \b true
+     * Returns \b false if item with this number doesn't exist, otherwise returns \b true
      * @param row Number of item.
      */
     bool setCurrent (int row);
     /*!
-     * Returns \b true if \b row is selected, otherwise \b false
+     * Returns \b true if \b row is selected, otherwise returns \b false
      */
     bool isSelected(int row);
     /*!
@@ -148,12 +148,12 @@ public:
     void setSelected(int row, bool select);
     /*!
      * Advances to the next item. Returns \b false if next iten doesn't exist,
-     * otherwise \b true
+     * otherwise returns \b true
      */
     bool next();
     /*!
      * Goes back to the previous item. Returns \b false if previous iten doesn't exist,
-     * otherwise \b true
+     * otherwise returns \b true
      */
     bool previous();
     /*!
@@ -181,7 +181,7 @@ public:
      */
     void setCurrentToQueued();
     /*!
-     * Returns \b true if play queue is empty,otherwise - \b false.
+     * Returns \b true if play queue is empty,otherwise returns - \b false.
      */
     bool isEmptyQueue()const;
     /*!
@@ -339,7 +339,7 @@ public slots:
     /*!
      * Removes previous items and loads list of files (regular files or directories),
      * returns \b TRUE if at least one file has been successfully loaded,
-     * otherwise \b FALSE
+     * otherwise returns \b FALSE
      */
     bool setFileList(const QStringList &l);
     /*!

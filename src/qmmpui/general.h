@@ -52,22 +52,22 @@ public:
     /*!
      * Sets whether the general plugin is enabled.
      * @param factory General plugin factory.
-     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
     static void setEnabled(GeneralFactory* factory, bool enable = TRUE);
     /*!
-     * Return \b true if general plugin is enabled, otherwise \b false
+     * Returns \b true if general plugin is enabled, otherwise returns \b false
      * @param factory General plugin factory.
      */
     static bool isEnabled(GeneralFactory* factory);
 
 signals:
     /*!
-     * Emited when exit() slot is called.
+     * Emitted when exit() slot is called.
      */
     void exitCalled();
     /*!
-     * Emited when toggleVisibility() slot is called.
+     * Emitted when toggleVisibility() slot is called.
      */
     void toggleVisibilityCalled();
 

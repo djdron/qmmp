@@ -36,7 +36,8 @@ public:
     {
         hasAbout = FALSE;
     }
-    bool hasAbout;      /*!< Should be \b true if the file dialog plugin has about dialog, otherwise \b false */
+    bool hasAbout;      /*!< Should be \b true if the file dialog plugin has about dialog, otherwise should be
+                         * \b false */
     QString name;       /*!< File dialog plugin full name */
     QString shortName;  /*!< File dialog short name for internal usage */
 };

@@ -106,7 +106,7 @@ public:
     StateHandler *stateHandler();
     /*!
      * Sets StateHandler pointer. May be used to override default state handler.
-     * @param hanlder StateHandler pointer;
+     * @param handler StateHandler pointer;
      */
     void setStateHandler(StateHandler *handler);
     /*!
@@ -120,7 +120,7 @@ public:
      */
     virtual void setEQEnabled(bool on);
     /*!
-     * Returns \b true if \b file is supported by input plugins, otherwise \b false
+     * Returns \b true if \b file is supported by input plugins, otherwise returns \b false
      */
     static bool supports(const QString &file);
     /*!
@@ -166,11 +166,11 @@ public:
     /*!
      * Sets whether the input plugin is enabled.
      * @param factory Decoder plugin factory.
-     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
     static void setEnabled(DecoderFactory* factory, bool enable = TRUE);
     /*!
-     * Returns \b true if input plugin is enabled, otherwise \b false
+     * Returns \b true if input plugin is enabled, otherwise returns \b false
      * @param factory Decoder plugin factory.
      */
     static bool isEnabled(DecoderFactory* factory);
@@ -193,6 +193,7 @@ protected:
      * Sends audio data to the output plugin.
      * @param data Pointer to audio data.
      * @param size Audio data size.
+     * @param brate Current bitrate (in kbps)
      * @param chan Number of channels.
      */
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);

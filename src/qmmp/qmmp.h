@@ -22,23 +22,75 @@
 
 #include <QUrl>
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @brief The Qmmp class stores global settings and enums.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class Qmmp
 {
 public:
-    enum State {Playing = 0, Paused, Stopped, Buffering, NormalError, FatalError};
-    enum MetaData {TITLE = 0, ARTIST, ALBUM, COMMENT, GENRE, YEAR, TRACK, URL};
+    /*!
+     * Playback state enum
+     */
+    enum State
+    {
+        Playing = 0, /*!< The player is playing source */
+        Paused,      /*!< The player has currently paused its playback */
+        Stopped,     /*!< The player is ready to play source */
+        Buffering,   /*!< The Player is waiting for data to be able to start playing.   */
+        NormalError, /*!< Input source is invalid or unsupported. Player should skip this file */
+        FatalError   /*!< This means unrecorvable error die audio output problems. Player should abort playback. */
+    };
+    /*!
+     * Metadata keys
+     */
+    enum MetaData
+    {
+        TITLE = 0, /*!< Title */
+        ARTIST,    /*!< Artist  */
+        ALBUM,     /*!< Album */
+        COMMENT,   /*!< Comment */
+        GENRE,     /*!< Genre */
+        YEAR,      /*!< Year */
+        TRACK,     /*!< Track number */
+        URL        /*!< Stream url or local file path */
+    };
+    /*!
+     * Returns configuration file path.
+     */
     static QString configFile();
+    /*!
+     * Overrides default configuration file path.
+     */
     static void setConfigFile(const QString &path);
+    /*!
+     * Returns %Qmmp library version.
+     */
     static QString strVersion();
-    //global proxy
+    /*!
+     * Returns \b true if global proxy is enabled, otherwise returns \b false
+     */
     static bool useProxy();
+    /*!
+     * Returns \b true if global proxy authentication is enabled, otherwise returns \b false
+     */
     static bool useProxyAuth();
+    /*!
+     * Returns global proxy url.
+     */
     static QUrl proxy();
+    /*!
+     * Enables or disables global proxy.
+     * @param yes Proxy enable state (\b true - enabled, \b false - disabled)
+     */
     static void setProxyEnabled(bool yes);
+    /*!
+     * Enables or disables global proxy authentication.
+     * @param yes Proxy authentication enable state (\b true - enabled, \b false - disabled)
+     */
     static void setProxyAuthEnabled(bool yes);
+    /*!
+     * Sets global proxy url to \b proxy
+     */
     static void setProxy (const QUrl &proxy);
 
 private:

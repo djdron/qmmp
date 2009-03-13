@@ -45,7 +45,7 @@ public:
      */
     QStringList getExtensions();
     /*!
-     * Returns \b true if file \b filePath is supported, otherwise \b false
+     * Returns \b true if file \b filePath is supported, otherwise returns \b false
      */
     bool supports(const QString &filePath);
     /*!
