@@ -78,7 +78,7 @@ protected:
 private slots:
     void updateSkin();
     void updateVolume();
-    void setSampleRate(int rate);
+    void setSampleRate(quint32 rate);
     void setTime(qint64);
     void setState(Qmmp::State state);
     void setVolume(int left, int right);

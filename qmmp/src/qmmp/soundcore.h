@@ -82,7 +82,7 @@ public:
     /*!
      * Returns current sample rate (in Hz).
      */
-    int frequency();
+    quint32 frequency();
     /*!
      * Returns sample size (in bits).
      */
@@ -164,7 +164,7 @@ signals:
      * Emitted when samplerate has changed.
      * @param frequency New sample rate (in Hz)
      */
-    void frequencyChanged(int frequency);
+    void frequencyChanged(quint32 frequency);
     /*!
      * Emitted when sample size has changed.
      * @param precision New sample size (in bits)

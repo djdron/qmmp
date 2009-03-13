@@ -54,7 +54,7 @@ public:
     virtual void dispatch(qint64 elapsed,
                           qint64 totalTime,
                           int bitrate,
-                          int frequency,
+                          quint32 frequency,
                           int precision,
                           int channels);
     /*!
@@ -117,7 +117,7 @@ signals:
      * Emitted when samplerate has changed.
      * @param frequency New sample rate (in Hz)
      */
-    void frequencyChanged(int frequency);
+    void frequencyChanged(quint32 frequency);
     /*!
      * Emitted when sample size has changed.
      * @param precision New sample size (in bits)
@@ -143,7 +143,8 @@ signals:
 
 private:
     qint64 m_elapsed;
-    int m_bitrate, m_frequency, m_precision, m_channels;
+    quint32 m_frequency;
+    int m_bitrate, m_precision, m_channels;
     static StateHandler* m_instance;
     QMap <Qmmp::MetaData, QString> m_metaData;
     Qmmp::State m_state;

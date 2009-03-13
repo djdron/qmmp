@@ -155,7 +155,7 @@ MainDisplay::MainDisplay (QWidget *parent)
     m_core = SoundCore::instance();
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(bitrateChanged(int)), m_kbps, SLOT(display(int)));
-    connect(m_core, SIGNAL(frequencyChanged(int)), SLOT(setSampleRate(int)));
+    connect(m_core, SIGNAL(frequencyChanged(quint32)), SLOT(setSampleRate(quint32)));
     connect(m_core, SIGNAL(channelsChanged(int)), m_monoster, SLOT(setChannels(int)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(setVolume(int, int)));
@@ -224,9 +224,9 @@ void MainDisplay::updateSkin()
     setPixmap (m_skin->getMain());
 }
 
-void MainDisplay::setSampleRate(int rate)
+void MainDisplay::setSampleRate(quint32 rate)
 {
-    m_freq->display(rate/1000);
+    m_freq->display((int) rate/1000);
 }
 
 void MainDisplay::setEQ (QWidget* w)
@@ -293,5 +293,3 @@ void MainDisplay::mousePressEvent(QMouseEvent *e)
     }
     PixmapWidget::mousePressEvent(e);
 }
-
-
