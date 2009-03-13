@@ -50,7 +50,7 @@ public:
      */
     virtual ulong process(char *in_data, const ulong size, char **out_data) = 0;
     /*!
-     * Prepares Effect object for usage.
+     * Prepares object for usage.
      * Subclasses that reimplement this function must call the base implementation.
      * @param freq Sample rate.
      * @param chan Number of channels.
@@ -62,15 +62,15 @@ public:
      */
     quint32 sampleRate();
     /*!
-     * Returns channel number.
+     * Returns channels number.
      */
     int channels();
     /*!
-     * Returns bit depth.
+     * Returns bits per sample.
      */
     int bitsPerSample();
     /*!
-     * Creates list of enabled effects.
+     * Creates a list of enabled effects.
      * @param parent Parent object of all created Effect objects.
      */
     static QList<Effect*> create(QObject *parent);

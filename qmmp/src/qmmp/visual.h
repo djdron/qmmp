@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,38 +30,97 @@ class Decoder;
 class Output;
 class VisualFactory;
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @brief The Visual class provides the base interface class of visualizations.
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class Visual : public QWidget
 {
     Q_OBJECT
 public:
+    /*!
+    * Object contsructor.
+    * @param parent Parent object.
+    */
     Visual(QWidget *parent);
-
+    /*!
+     * Destructor.
+     */
     virtual ~Visual();
-
-    virtual void add(Buffer *, unsigned long, int, int) = 0;
+    /*!
+     * Adds data for visualization.
+     * Subclass should reimplement this function.
+     * @param b Buffer object pointer.
+     * @param freq Samplerate.
+     * @param chan Number of channels
+     * @param bits Bits per sample.
+     */
+    virtual void add(Buffer *b, unsigned long freq, int chan, int bits) = 0;
+    /*!
+     * Resets visual plugin buffers and widgets.
+     * Subclass should reimplement this function.
+     */
     virtual void clear() = 0;
-    //virtual void stop() = 0;
+    /*!
+     * Returns mutex pointer.
+     */
     QMutex *mutex();
-
-    //static methods
+    /*!
+    * Returns a list of visual factories.
+    */
     static QList<VisualFactory*> *factories();
+    /*!
+     * Returns a list of visual plugin file names.
+     */
     static QStringList files();
+    /*!
+     * Sets whether the visual plugin is enabled.
+     * @param factory Visual plugin factory.
+     * @param enabled Plugin enable state (\b true - enable, \b false - disable)
+     */
     static void setEnabled(VisualFactory* factory, bool enable = TRUE);
+    /*!
+     * Returns \b true if visual plugin is enabled, otherwise \b false
+     * @param factory Effect plugin factory.
+     */
     static bool isEnabled(VisualFactory* factory);
-    static void add(Visual*);
+    /*!
+     * Adds external visualization \b visual.
+     */
+    static void add(Visual*visual);
+    /*!
+     * Removes external visualization \b visual.
+     */
     static void remove(Visual*);
+    /*!
+     * Prepares visual plugins for usage.
+     * @param parent Parent widget.
+     * @param receiver Receiver object.
+     * @param member A slot to receive changes of active visualizations list.
+     */
     static void initialize(QWidget *parent, QObject *receiver = 0, const char *member = 0);
-    static QList<Visual*>* visuals();
+    /*!
+     * Returns a pointer to a list of created visual objects.
+     */
+    static QList<Visual *> *visuals();
+    /*!
+     * Shows configuration dialog and updates settings automatically.
+     * @param factory Visual plugin factory.
+     * @param parent Parent widget.
+     */
     static void showSettings(VisualFactory *factory, QWidget *parent);
 
 signals:
+    /*!
+     * Emited when visual widget is closed by user.
+     */
     void closedByUser();
 
 protected:
-    virtual void closeEvent (QCloseEvent *);
+    /*!
+     * QWidget's close event. Reimplementation should call base function.
+     * @param event QCloseEvent insatance.
+     */
+    virtual void closeEvent (QCloseEvent *event);
 
 private:
     Decoder *m_decoder;

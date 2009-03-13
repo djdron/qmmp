@@ -29,9 +29,9 @@
 
 #define BUFFER_SIZE 128000 
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+/*! @internal
+ *   @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 struct Stream
 {
     char *buf;
@@ -42,7 +42,7 @@ struct Stream
     bool icy_meta_data;
     int icy_metaint;
 };
-/*!
+/*! @internal
  *  @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class Downloader : public QThread

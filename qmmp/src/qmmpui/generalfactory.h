@@ -77,7 +77,7 @@ public:
      */
     virtual void showAbout(QWidget *parent) = 0;
     /*!
-     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
+     * Creates QTranslator object of the system locale. Should return \b 0 if translation doesn't exist.
      * @param parent Parent object.
      */
     virtual QTranslator *createTranslator(QObject *parent) = 0;

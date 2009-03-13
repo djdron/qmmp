@@ -53,7 +53,7 @@ private:
     int m_left, m_right;
 
 };
-/*!
+/*! @internal
  *  @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class SoftwareVolume : public VolumeControl

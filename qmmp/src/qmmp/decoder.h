@@ -77,7 +77,7 @@ public:
     virtual void stop() = 0;
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
-     * Subclass should reimplement this function.
+     * Subclass with own output should reimplement this function.
      */
     virtual void pause(){};
     /*!
@@ -93,7 +93,7 @@ public:
      */
     Output *output();
     /*!
-     * Returns Mutex pointer.
+     * Returns mutex pointer.
      */
     QMutex *mutex();
     /*!
