@@ -238,19 +238,6 @@ void Decoder::checkFactories()
     }
 }
 
-QStringList Decoder::all()
-{
-    checkFactories();
-
-    QStringList l;
-    DecoderFactory *fact;
-    foreach(fact, *m_factories)
-    {
-        l << fact->properties().description;
-    }
-    return l;
-}
-
 QStringList Decoder::files()
 {
     checkFactories();

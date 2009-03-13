@@ -27,7 +27,9 @@ class QTranslator;
 class QDialog;
 
 class Visual;
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class VisualProperties
 {
 public:
@@ -41,7 +43,9 @@ public:
     bool hasAbout;
     bool hasSettings;
 };
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class VisualFactory
 {
 public:

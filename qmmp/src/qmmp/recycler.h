@@ -12,7 +12,9 @@
 
 class Buffer;
 
-
+/*!
+ *  @author Brad Hughes <bhughes@trolltech.com>
+ */
 class Recycler
 {
 public:

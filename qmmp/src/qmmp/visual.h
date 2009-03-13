@@ -20,10 +20,6 @@
 #ifndef VISUAL_H
 #define VISUAL_H
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
 #include <QMutex>
 #include <QStringList>
 #include <QWidget>
@@ -34,6 +30,9 @@ class Decoder;
 class Output;
 class VisualFactory;
 
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class Visual : public QWidget
 {
     Q_OBJECT

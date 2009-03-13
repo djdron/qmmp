@@ -9,6 +9,10 @@
 
 #include "constants.h"
 
+/*!
+ * @author Brad Hughes <bhughes@trolltech.com>
+ */
+
 class Buffer
 {
 public:

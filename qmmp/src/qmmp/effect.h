@@ -25,12 +25,12 @@
 #include <QStringList>
 
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+
 
 class EffectFactory;
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class Effect : public QObject
 {
     Q_OBJECT

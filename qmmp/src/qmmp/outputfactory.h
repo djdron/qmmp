@@ -30,7 +30,9 @@ class VolumeControl;
 
 class Decoder;
 class Output;
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class OutputProperties
 {
 public:
@@ -44,7 +46,9 @@ public:
     bool hasAbout;
     bool hasSettings;
 };
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class OutputFactory
 {
 public:

@@ -53,7 +53,9 @@ private:
     int m_left, m_right;
 
 };
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class SoftwareVolume : public VolumeControl
 {
     Q_OBJECT

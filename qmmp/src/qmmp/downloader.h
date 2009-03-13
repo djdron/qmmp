@@ -32,7 +32,6 @@
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
 struct Stream
 {
     char *buf;
@@ -43,7 +42,9 @@ struct Stream
     bool icy_meta_data;
     int icy_metaint;
 };
-
+/*!
+ *  @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class Downloader : public QThread
 {
     Q_OBJECT
