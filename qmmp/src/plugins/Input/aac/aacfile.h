@@ -48,6 +48,7 @@ public:
 
     qint64 length();
     quint32 bitrate();
+    quint32 samplerate();
     bool isValid();
     const QMap<Qmmp::MetaData, QString> metaData();
 
@@ -58,6 +59,7 @@ private:
     quint32 m_bitrate;
     QIODevice *m_input;
     bool m_isValid;
+    quint32 m_samplerate;
     QMap<Qmmp::MetaData, QString> m_metaData;
 };
 

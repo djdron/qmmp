@@ -36,6 +36,7 @@ AACFile::AACFile(QIODevice *i, bool metaData)
     m_isValid = FALSE;
     m_length = 0;
     m_bitrate = 0;
+    m_samplerate = 0;
     m_input = i;
     uchar buf[AAC_BUFFER_SIZE];
     qint64 buf_at = i->peek((char *) buf, AAC_BUFFER_SIZE);
@@ -97,6 +98,11 @@ quint32 AACFile::bitrate()
     return m_bitrate;
 }
 
+quint32 AACFile::samplerate()
+{
+    return m_samplerate;
+}
+
 bool AACFile::isValid()
 {
     return m_isValid;
@@ -113,7 +119,6 @@ void AACFile::parseADTS()
     qint64 buf_at = 0;
     int frames, frame_length;
     int t_framelength = 0;
-    int samplerate = 0;
     float frames_per_sec, bytes_per_frame;
     qint64 pos = m_input->pos();
 
@@ -144,7 +149,7 @@ void AACFile::parseADTS()
                 break;
 
             if (frames == 0)
-                samplerate = adts_sample_rates[(buf[2]&0x3c)>>2];
+                m_samplerate = adts_sample_rates[(buf[2]&0x3c)>>2];
 
             frame_length = ((((unsigned int)buf[3] & 0x3)) << 11)
                            | (((unsigned int)buf[4]) << 3) | (buf[5] >> 5);
@@ -163,7 +168,7 @@ void AACFile::parseADTS()
         }
     }
     m_input->seek(pos);
-    frames_per_sec = (float)samplerate/1024.0f;
+    frames_per_sec = (float) m_samplerate/1024.0f;
     if (frames != 0)
         bytes_per_frame = (float)t_framelength/(float)(frames*1000);
     else
