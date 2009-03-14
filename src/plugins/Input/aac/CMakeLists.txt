@@ -75,7 +75,7 @@ SET(libaac_MOC_HDRS
   aacfile.h
 )
 
-#SET(libaac_RCCS translations/translations.qrc)
+SET(libaac_RCCS translations/translations.qrc)
 
 QT4_ADD_RESOURCES(libaac_RCC_SRCS ${libaac_RCCS})
 
@@ -94,8 +94,7 @@ QT4_WRAP_UI(libaac_UIS_H ${libaac_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FAAD_FOUND)
-ADD_LIBRARY(aac SHARED ${libaac_SRCS} ${libaac_MOC_SRCS} ${libaac_UIS_H}
-  ${libaac_RCC_SRCS})
+ADD_LIBRARY(aac SHARED ${libaac_SRCS} ${libaac_MOC_SRCS} ${libaac_UIS_H} ${libaac_RCC_SRCS})
 add_dependencies(aac qmmp)
 target_link_libraries(aac ${QT_LIBRARIES} -lqmmp -lfaad ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS aac DESTINATION ${LIB_DIR}/qmmp/Input)

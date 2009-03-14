@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>aac_plugin_ru.qm</file>
+    <file>aac_plugin_uk_UA.qm</file>
+    <file>aac_plugin_zh_CN.qm</file>
+    <file>aac_plugin_zh_TW.qm</file>
+    <file>aac_plugin_cs.qm</file>
+    <file>aac_plugin_de.qm</file>
+  </qresource>
+</RCC>

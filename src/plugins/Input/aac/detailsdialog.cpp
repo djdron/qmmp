@@ -58,8 +58,8 @@ void DetailsDialog::loadAACInfo()
     text = QString("%1").arg(f.length()/60);
     text +=":"+QString("%1").arg(f.length()%60,2,10,QChar('0'));
     ui.lengthLabel->setText(text);
-    /*text = QString("%1").arg(f.audioProperties()->sampleRate());
-    ui.sampleRateLabel->setText(text+" "+tr("Hz"));*/
+    text = QString("%1").arg(f.samplerate());
+    ui.sampleRateLabel->setText(text+" "+tr("Hz"));
     /*text = QString("%1").arg(f.audioProperties()->channels());
     ui.channelsLabel->setText(text);*/
     text = QString("%1").arg(f.bitrate());
