@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
 <defaultcodec></defaultcodec>
 <context>
     <name>DecoderAACFactory</name>
     <message>
         <location filename="../decoderaacfactory.cpp" line="47"/>
         <source>AAC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль AAC</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="49"/>
         <source>AAC Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли AAC</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="92"/>
         <source>About AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про аудіо-модуль AAC</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="93"/>
         <source>Qmmp AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль AAC для Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="94"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -45,27 +44,27 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>AAC Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Інформація AAC</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
         <source>Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тривалість:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="111"/>
         <source>Channels:</source>
-        <translation type="unfinished"></translation>
+        <translation>Каналів:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="134"/>
         <source>Bitrate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Бітрейт:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="161"/>
         <source>Stream version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Версія потоку:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="245"/>
@@ -108,11 +107,6 @@
         <translation>ID3v2-тег</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="67"/>
-        <location filename="../detailsdialog.ui" line="84"/>
-        <location filename="../detailsdialog.ui" line="101"/>
-        <location filename="../detailsdialog.ui" line="147"/>
-        <location filename="../detailsdialog.ui" line="154"/>
         <location filename="../detailsdialog.ui" line="171"/>
         <source>-</source>
         <translation>-</translation>
@@ -135,7 +129,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Гц</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
