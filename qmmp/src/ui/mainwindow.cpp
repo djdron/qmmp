@@ -532,7 +532,9 @@ void MainWindow::savePlaylist()
 
 void MainWindow::setFileList(const QStringList & l)
 {
-    connect(m_playListModel, SIGNAL(firstAdded()), SLOT(play()));
+    if (m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
+        stop();
+    connect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
     if (!m_playListModel->setFileList(l))
     {
         disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
