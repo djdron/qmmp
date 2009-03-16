@@ -77,22 +77,21 @@ SET(libqmmp_MOC_HDRS
 )
 
 SET(libqmmp_DEVEL_HDRS
-    visual.h
-    recycler.h
     buffer.h
     constants.h
-    decoder.h
-    output.h
-    fileinfo.h
-    outputfactory.h
     decoderfactory.h
-    soundcore.h
-    streamreader.h
-    downloader.h
+    decoder.h
     effectfactory.h
     effect.h
+    fileinfo.h
+    outputfactory.h
+    output.h
     qmmp.h
+    recycler.h
+    soundcore.h
     statehandler.h
+    visualfactory.h
+    visual.h
     volumecontrol.h
 )
 
