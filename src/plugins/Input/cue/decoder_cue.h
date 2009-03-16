@@ -70,7 +70,7 @@ public:
     void dispatch(qint64 elapsed,
                   qint64 totalTime,
                   int bitrate,
-                  int frequency,
+                  quint32 frequency,
                   int precision,
                   int channels);
 
