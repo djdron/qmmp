@@ -62,21 +62,21 @@ contains(CONFIG, SVN_VERSION){
 
 target.path = $$LIB_DIR
 
-devel.files += recycler.h \
-               buffer.h \
+devel.files += buffer.h \
                constants.h \
-               decoder.h \
-               output.h \
-               filetag.h \
-               outputfactory.h \
                decoderfactory.h \
-               soundcore.h \
-               streamreader.h \
-               downloader.h \
-               visual.h \
-               visualfactory.h \
-               effect.h \
+               decoder.h \
                effectfactory.h \
+               effect.h \
+               fileinfo.h \
+               outputfactory.h \
+               output.h \
+               qmmp.h \
+               recycler.h \
+               soundcore.h \
+               statehandler.h \
+               visualfactory.h \
+               visual.h \
                volumecontrol.h
 
 devel.path = /include/qmmp

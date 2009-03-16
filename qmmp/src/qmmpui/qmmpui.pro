@@ -74,15 +74,19 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
                translations/libqmmpui_zh_TW.ts \
                translations/libqmmpui_de.ts
 
-devel.files += general.h \
-               generalfactory.h \
-               generalhandler.h \
-               playlistformat.h \
-               playlistparser.h \
+devel.files += abstractplaylistitem.h \
                commandlinemanager.h \
                commandlineoption.h \
+               filedialogfactory.h \
                filedialog.h \
-               filedialogfactory.h
+               generalfactory.h \
+               general.h \
+               generalhandler.h \
+               mediaplayer.h \
+               playlistformat.h \
+               playlistitem.h \
+               playlistmodel.h \
+               playlistparser.h
 
 devel.path = /include/qmmpui
 
