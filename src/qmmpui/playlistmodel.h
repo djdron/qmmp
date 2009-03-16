@@ -442,6 +442,9 @@ private:
      * selected items will be removed, else - unselected.
      */
     void removeSelection(bool inverted = false);
+
+
+private slots:
     void preparePlayState();
 
 private:
