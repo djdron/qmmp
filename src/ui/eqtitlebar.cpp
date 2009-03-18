@@ -128,8 +128,11 @@ void EqTitleBar::mousePressEvent(QMouseEvent* event)
 
 void EqTitleBar::mouseMoveEvent(QMouseEvent* event)
 {
-    QPoint npos = (event->globalPos()-m_pos);
-    Dock::getPointer()->move(m_eq, npos);
+    if (m_pos.x() < width() - 30)
+    {
+        QPoint npos = (event->globalPos()-m_pos);
+        Dock::getPointer()->move(m_eq, npos);
+    }
 }
 
 void EqTitleBar::mouseReleaseEvent(QMouseEvent*)

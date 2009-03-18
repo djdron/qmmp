@@ -24,14 +24,14 @@
 #include "button.h"
 #include "skin.h"
 
-Button::Button ( QWidget *parent, uint normal, uint pressed )
-      : PixmapWidget ( parent )
+Button::Button (QWidget *parent, uint normal, uint pressed)
+        : PixmapWidget (parent)
 {
-   name_normal = normal;
-   name_pressed = pressed;
-   skin = Skin::getPointer();
-   setON ( FALSE );
-   connect ( skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
+    name_normal = normal;
+    name_pressed = pressed;
+    skin = Skin::getPointer();
+    setON (FALSE);
+    connect (skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
 }
 
 
@@ -40,23 +40,24 @@ Button::~Button()
 
 void Button::updateSkin()
 {
-   setPixmap ( skin->getButton ( name_normal ) );
+    setPixmap (skin->getButton (name_normal));
 }
 
-void Button::setON ( bool on )
+void Button::setON (bool on)
 {
-   if ( on )
-      setPixmap ( skin->getButton ( name_pressed ) );
-   else
-      setPixmap ( skin->getButton ( name_normal ) );
+    if (on)
+        setPixmap (skin->getButton (name_pressed));
+    else
+        setPixmap (skin->getButton (name_normal));
 }
-void Button::mousePressEvent ( QMouseEvent* )
+void Button::mousePressEvent (QMouseEvent *e)
 {
-   setON ( TRUE );
+    setON (TRUE);
+    QWidget::mousePressEvent(e);
 }
 
-void Button::mouseReleaseEvent ( QMouseEvent* )
+void Button::mouseReleaseEvent (QMouseEvent*)
 {
-   setON ( FALSE );
-   emit clicked();
+    setON (FALSE);
+    emit clicked();
 }

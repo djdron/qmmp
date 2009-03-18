@@ -190,7 +190,7 @@ void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)
         m_pl->resize((event->x() + 25), m_pl->height());
         resize((event->x() + 25), height());
     }
-    else
+    else if (pos.x() < width() - 30)
         Dock::getPointer()->move(m_pl, npos);
 }
 
