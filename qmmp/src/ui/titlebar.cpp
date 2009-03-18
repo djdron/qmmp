@@ -95,8 +95,11 @@ void TitleBar::mouseReleaseEvent(QMouseEvent*)
 }
 void TitleBar::mouseMoveEvent(QMouseEvent* event)
 {
-    QPoint npos = (event->globalPos()-m_pos);
-    Dock::getPointer()->move(m_mw, npos);
+    if (m_pos.x() < width() - 37)
+    {
+        QPoint npos = (event->globalPos()-m_pos);
+        Dock::getPointer()->move(m_mw, npos);
+    }
 }
 
 void TitleBar::setActive(bool a)
