@@ -362,11 +362,12 @@ bool SoundCore::decode()
             m_handler->dispatch(Qmmp::NormalError);
             return FALSE;
         }
-        if (!(m_factory = Decoder::findByContent(m_input)))
-        {
-            m_handler->dispatch(Qmmp::NormalError);
-            return FALSE;
-        }
+        if (!(m_factory = Decoder::findByMime(qobject_cast<StreamReader *>(m_input)->contentType())))
+            if (!(m_factory = Decoder::findByContent(m_input)))
+            {
+                m_handler->dispatch(Qmmp::NormalError);
+                return FALSE;
+            }
     }
     if (!m_factory->properties().noOutput)
     {
