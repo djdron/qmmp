@@ -204,9 +204,8 @@ void Visual::checkFactories()
         m_files.clear();
         m_factories = new QList<VisualFactory *>;
 
-        QDir pluginsDir (qApp->applicationDirPath());
-        pluginsDir.cdUp();
-        pluginsDir.cd("./"LIB_DIR"/qmmp/Visual");
+        QDir pluginsDir (Qmmp::pluginsPath());
+        pluginsDir.cd("Visual");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

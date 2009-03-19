@@ -17,15 +17,6 @@ unix : isEmpty(LIB_DIR){
         LIB_DIR = /lib
     }
 
-unix : DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
-
-DEFINES += QMMP_VERSION=$$QMMP_VERSION
-contains(CONFIG, SVN_VERSION){
-    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION-svn\\\"
-}else {
-    DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
-}
-
 VERSION = $$QMMP_VERSION
 
 target.path = $$LIB_DIR

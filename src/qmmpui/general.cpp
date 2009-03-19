@@ -36,10 +36,8 @@ static void checkFactories()
     {
         files.clear();
         factories = new QList<GeneralFactory *>;
-
-        QDir pluginsDir (qApp->applicationDirPath());
-        pluginsDir.cdUp();
-        pluginsDir.cd("./"LIB_DIR"/qmmp/General");
+        QDir pluginsDir (Qmmp::pluginsPath());
+        pluginsDir.cd("General");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

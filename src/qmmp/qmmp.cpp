@@ -19,17 +19,22 @@
  ***************************************************************************/
 
 #include <QDir>
+#include <QApplication>
 #include <QSettings>
 
 #ifndef QMMP_STR_VERSION
 #define QMMP_STR_VERSION "0.3.0"
 #endif
 
+#ifndef LIB_DIR
+#define "/lib"
+#endif
+
 #include "qmmp.h"
 
 QString Qmmp::m_configFile;
 
-QString Qmmp::configFile()
+const QString Qmmp::configFile()
 {
     return m_configFile.isEmpty() ? QDir::homePath() +"/.qmmp/qmmprc" : m_configFile;
 }
@@ -39,12 +44,12 @@ void Qmmp::setConfigFile(const QString &path)
     m_configFile = path;
 }
 
-QString Qmmp::strVersion()
+const QString Qmmp::strVersion()
 {
 #ifdef SVN_REVISION
     return QString("%1-%2").arg(QMMP_STR_VERSION).arg(SVN_REVISION);
 #else
-    return QMMP_VERSION_STR;
+    return QMMP_STR_VERSION;
 #endif
 }
 
@@ -60,7 +65,7 @@ bool Qmmp::useProxyAuth()
     return settings.value("Proxy/authentication", FALSE).toBool();
 }
 
-QUrl Qmmp::proxy()
+const QUrl Qmmp::proxy()
 {
     QSettings settings(configFile(), QSettings::IniFormat);
     return settings.value("Proxy/url").toUrl();
@@ -82,4 +87,15 @@ void Qmmp::setProxy (const QUrl &proxy)
 {
     QSettings settings(configFile(), QSettings::IniFormat);
     settings.setValue("Proxy/url", proxy);
+}
+
+const QString Qmmp::pluginsPath()
+{
+#ifdef QMMP_INSTALL_PREFIX
+    QDir dir(QMMP_INSTALL_PREFIX"/"LIB_DIR"/qmmp");
+    qDebug(QMMP_INSTALL_PREFIX"/"LIB_DIR"/qmmp");
+#else
+    QDir dir(qApp->applicationDirPath() + "/../"LIB_DIR"/qmmp");
+#endif
+    return dir.canonicalPath();
 }

@@ -14,6 +14,7 @@
 #include "buffer.h"
 #include "output.h"
 #include "volumecontrol.h"
+#include "qmmp.h"
 
 #include <stdio.h>
 
@@ -159,7 +160,7 @@ void Output::run()
         mutex()->lock ();
         recycler()->mutex()->lock ();
         done = m_userStop;
-        
+
         while (!done && (recycler()->empty() || m_pause))
         {
             mutex()->unlock();
@@ -249,9 +250,8 @@ void Output::checkFactories()
         m_files.clear();
         m_factories = new QList<OutputFactory *>;
 
-        QDir pluginsDir ( qApp->applicationDirPath() );
-        pluginsDir.cdUp();
-        pluginsDir.cd ( "./"LIB_DIR"/qmmp/Output" );
+        QDir pluginsDir (Qmmp::pluginsPath());
+        pluginsDir.cd("Output");
         foreach ( QString fileName, pluginsDir.entryList ( QDir::Files ) )
         {
             QPluginLoader loader ( pluginsDir.absoluteFilePath ( fileName ) );

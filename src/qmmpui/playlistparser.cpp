@@ -22,7 +22,7 @@
 #include <QObject>
 #include <QList>
 #include <QApplication>
-
+#include <qmmp/qmmp.h>
 #include "playlistformat.h"
 #include "playlistparser.h"
 
@@ -78,9 +78,8 @@ void PlaylistParser::loadExternalPlaylistFormats()
 {
     if (!m_formats.isEmpty())
         return;
-    QDir pluginsDir (qApp->applicationDirPath());
-    pluginsDir.cdUp();
-    pluginsDir.cd("./"LIB_DIR"/qmmp/PlaylistFormats");
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("PlaylistFormats");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

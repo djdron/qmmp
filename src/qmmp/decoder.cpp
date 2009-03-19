@@ -19,6 +19,7 @@
 #include "visual.h"
 #include "decoderfactory.h"
 #include "streamreader.h"
+#include "qmmp.h"
 
 extern "C"
 {
@@ -200,9 +201,8 @@ void Decoder::checkFactories()
         m_files.clear();
         m_factories = new QList<DecoderFactory *>;
 
-        QDir pluginsDir (qApp->applicationDirPath());
-        pluginsDir.cdUp();
-        pluginsDir.cd("./"LIB_DIR"/qmmp/Input");
+        QDir pluginsDir (Qmmp::pluginsPath());
+        pluginsDir.cd("Input");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

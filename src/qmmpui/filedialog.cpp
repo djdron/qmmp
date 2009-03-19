@@ -156,10 +156,8 @@ void FileDialog::registerBuiltinFactories()
 
 void FileDialog::registerExternalFactories()
 {
-    QDir pluginsDir (qApp->applicationDirPath());
-    pluginsDir.cdUp();
-    pluginsDir.cd("./"LIB_DIR"/qmmp/FileDialogs");
-
+    QDir pluginsDir (Qmmp::pluginsPath());
+    pluginsDir.cd("FileDialogs");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files))
     {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
@@ -208,7 +206,7 @@ FileDialog* FileDialog::instance()
 
     QStringList names = factories.keys();
 
-    if(!names.contains(f_dialogName))
+    if (!names.contains(f_dialogName))
         f_dialogName = "qt_dialog";
 
     if (m_current_factory != f_dialogName || !_instance)
@@ -275,7 +273,10 @@ void FileDialog::popup(QWidget *parent,
     {
         QStringList files;
         if (m == AddFiles || m == AddFile || m == AddDirsFiles)
-            files = getOpenFileNames(parent, caption, *dir, filters);
+        {
+            QString selectedFilter;
+            files = getOpenFileNames(parent, caption, *dir, filters, &selectedFilter);
+        }
         else if (m == AddDirs || m == AddDir)
         {
             QString path = getExistingDirectory(parent, caption, *dir);
