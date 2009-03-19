@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="fi">
+<!DOCTYPE TS>
+<TS version="2.0" language="fi">
 <context>
     <name>QmmpFileDialog</name>
     <message>
@@ -10,7 +11,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="37"/>
         <source>Up</source>
-        <translation>Übergeordnetes Verzeichnis</translation>
+        <translation>Nach oben</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="97"/>
@@ -45,7 +46,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="200"/>
         <source>Files of type:</source>
-        <translation>Dateien des Typs:</translation>
+        <translation>Filter:</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="226"/>

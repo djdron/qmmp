@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
@@ -16,7 +17,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="153"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="79"/>
@@ -99,7 +100,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="183"/>
         <source>Artist:</source>
-        <translation>Künstler:</translation>
+        <translation>Interpret:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="170"/>
@@ -187,7 +188,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
-        <translation>Einstellungen FFmpeg-Plugin</translation>
+        <translation>Einstellungen des FFmpeg-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>

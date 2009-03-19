@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
@@ -31,7 +32,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="189"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="191"/>
@@ -154,7 +155,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="273"/>
         <source>Artist:</source>
-        <translation>Künstler:</translation>
+        <translation>Interpret:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="247"/>

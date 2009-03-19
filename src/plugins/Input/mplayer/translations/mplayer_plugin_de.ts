@@ -17,7 +17,7 @@
     <message>
         <location filename="../decodermplayerfactory.cpp" line="97"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="94"/>
@@ -162,17 +162,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">MPlayer-Einstellungen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Video:</source>
-        <translation type="unfinished"></translation>
+        <translation>Video:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
