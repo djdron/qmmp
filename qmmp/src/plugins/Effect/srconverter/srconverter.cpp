@@ -99,7 +99,6 @@ ulong SRConverter::process(char *in_data, const ulong size, char **out_data)
 
 void SRConverter::configure(quint32 freq, int chan, int res)
 {
-    Effect::configure(freq, chan, res);
     freeSRC();
     uint rate = freq;
     {
@@ -112,11 +111,7 @@ void SRConverter::configure(quint32 freq, int chan, int res)
         else
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
     }
-}
-
-quint32 SRConverter::sampleRate()
-{
-    return m_overSamplingFs;
+    Effect::configure(m_overSamplingFs, chan, res);
 }
 
 void SRConverter::freeSRC()
