@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>EffectBs2bFactory</name>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="30"/>
         <source>BS2B Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>BS2B-Plugin</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="50"/>
         <source>About BS2B Effect Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Über BS2B-Effekt-Plugin</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="51"/>
@@ -21,27 +22,27 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="53"/>
         <source>Visit %1 for more details</source>
-        <translation type="unfinished"></translation>
+        <translation>Besuchen Sie %1 für mehr Informationen</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="55"/>
         <source>Compiled against libbs2b-%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompiliert gegen libbs2b-%1</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="56"/>
         <source>Developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Entwickler:</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="57"/>
         <source>Ilya Kotov</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilya Kotov</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="58"/>
         <source>Sebastian Pipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Sebastian Pipping</translation>
     </message>
 </context>
 <context>
@@ -49,17 +50,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="33"/>
         <source>low</source>
-        <translation type="unfinished"></translation>
+        <translation>Niedrig</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="34"/>
         <source>middle</source>
-        <translation type="unfinished"></translation>
+        <translation>Mittel</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="35"/>
         <source>high</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoch</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="36"/>
@@ -79,7 +80,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>BS2B Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen des BS2B-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>

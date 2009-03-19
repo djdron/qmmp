@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <defaultcodec></defaultcodec>
 <context>
     <name>DecoderCUEFactory</name>
@@ -34,7 +35,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>CUE Plugin Settings</source>
-        <translation>Einstellungen CUE-Plugin</translation>
+        <translation>Einstellungen des CUE-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>

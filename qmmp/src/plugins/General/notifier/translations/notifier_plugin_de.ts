@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
@@ -57,17 +58,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Notifier Plugin Settings</source>
-        <translation>Einstellungen Benachrichtigungs-Plugin</translation>
+        <translation>Einstellungen des Benachrichtigungs-Plugins</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Song change notification</source>
-        <translation type="unfinished">Benachrichtigung bei Titelwechsel</translation>
+        <translation>Benachrichtigung bei Titelwechsel</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
-        <translation type="unfinished">Benachrichtigung bei Lautstärkeänderung</translation>
+        <translation>Benachrichtigung bei Lautstärkeänderung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>

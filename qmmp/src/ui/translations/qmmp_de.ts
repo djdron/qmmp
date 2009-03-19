@@ -174,29 +174,16 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
         <location filename="../configdialog.cpp" line="339"/>
         <source>Enabled</source>
         <translation>Aktiviert</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
         <location filename="../configdialog.cpp" line="339"/>
         <source>Description</source>
         <translation>Beschreibung</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
         <location filename="../configdialog.cpp" line="524"/>
         <source>Filename</source>
         <translation>Dateiname</translation>
@@ -204,7 +191,7 @@
     <message>
         <location filename="../configdialog.cpp" line="519"/>
         <source>Artist</source>
-        <translation>Künstler</translation>
+        <translation>Interpret</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="520"/>
@@ -257,7 +244,6 @@
         <translation>Erscheinungsbild</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="92"/>
         <location filename="../forms/configdialog.ui" line="701"/>
         <source>Playlist</source>
         <translation>Wiedergabeliste</translation>
@@ -293,14 +279,11 @@
         <translation>Wiedergabeliste:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="250"/>
         <location filename="../forms/configdialog.ui" line="286"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="257"/>
-        <location filename="../forms/configdialog.ui" line="293"/>
         <location filename="../forms/configdialog.ui" line="348"/>
         <source>...</source>
         <translation>...</translation>
@@ -331,7 +314,6 @@
         <translation>Konfiguration</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="430"/>
         <location filename="../forms/configdialog.ui" line="618"/>
         <source>Information</source>
         <translation>Information</translation>
@@ -496,8 +478,6 @@
         <translation>Hauptfenster</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="670"/>
-        <location filename="../forms/configdialog.ui" line="694"/>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>0</source>
         <translation>0</translation>
@@ -511,7 +491,6 @@
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="153"/>
         <location filename="../eqwidget.cpp" line="176"/>
         <source>preset</source>
         <translation>Voreinstellung</translation>
@@ -565,14 +544,11 @@
 <context>
     <name>JumpToTrackDialog</name>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="81"/>
         <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Unqueue</source>
         <translation>Aus Warteschlange entfernen</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="79"/>
-        <location filename="../jumptotrackdialog.cpp" line="83"/>
         <location filename="../jumptotrackdialog.cpp" line="139"/>
         <source>Queue</source>
         <translation>In Warteschlange</translation>
@@ -608,62 +584,62 @@
     <message>
         <location filename="../display.cpp" line="61"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorheriger Titel</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="65"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiedergabe</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="69"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="73"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="77"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Nächster Titel</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="81"/>
         <source>Add file</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei hinzufügen</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="96"/>
         <source>Equalizer</source>
-        <translation type="unfinished">Equalizer</translation>
+        <translation>Equalizer</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="101"/>
         <source>Playlist</source>
-        <translation type="unfinished">Wiedergabeliste</translation>
+        <translation>Wiedergabeliste</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="109"/>
         <source>Repeat playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiedergabeliste wiederholen</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="113"/>
         <source>Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Zufallswiedergabe</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="144"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Lautstärke</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="150"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance</translation>
     </message>
 </context>
 <context>
@@ -676,7 +652,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="297"/>
         <source>Analyzer</source>
-        <translation>Analyzer</translation>
+        <translation type="unfinished">Analyzer</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="298"/>
@@ -751,34 +727,29 @@
     <message>
         <location filename="../mainvisual.cpp" line="343"/>
         <source>Analyzer Falloff</source>
-        <translation>Analyzer Fall-off</translation>
+        <translation type="unfinished">Analyzer Fall-off</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
         <location filename="../mainvisual.cpp" line="360"/>
         <source>Slowest</source>
         <translation>Sehr langsam</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
         <location filename="../mainvisual.cpp" line="361"/>
         <source>Slow</source>
         <translation>Langsam</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
         <location filename="../mainvisual.cpp" line="362"/>
         <source>Medium</source>
         <translation>Mittel</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="349"/>
         <location filename="../mainvisual.cpp" line="363"/>
         <source>Fast</source>
         <translation>Schnell</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="350"/>
         <location filename="../mainvisual.cpp" line="364"/>
         <source>Fastest</source>
         <translation>Sehr schnell</translation>
@@ -786,7 +757,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="357"/>
         <source>Peaks Falloff</source>
-        <translation>Peaks Fall-off</translation>
+        <translation type="unfinished">Peaks Fall-off</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="370"/>
@@ -802,7 +773,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="64"/>
         <location filename="../mainwindow.cpp" line="480"/>
         <source>Default</source>
         <translation>Standard</translation>
@@ -840,7 +810,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="419"/>
         <source>&amp;Stop</source>
-        <translation>&amp;Stop</translation>
+        <translation>&amp;Stopp</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="419"/>
@@ -903,7 +873,6 @@
         <translation>Strg+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
         <location filename="../mainwindow.cpp" line="518"/>
         <source>Playlist Files</source>
         <translation>Wiedergabelisten</translation>
@@ -1032,25 +1001,21 @@
         <translation>Wiedergabeliste sortieren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="185"/>
         <location filename="../playlist.cpp" line="212"/>
         <source>By Title</source>
         <translation>Nach Titel</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="189"/>
         <location filename="../playlist.cpp" line="216"/>
         <source>By Filename</source>
         <translation>Nach Dateinamen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="193"/>
         <location filename="../playlist.cpp" line="220"/>
         <source>By Path + Filename</source>
         <translation>Nach Pfad + Dateinamen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="197"/>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Date</source>
         <translation>Nach Datum</translation>
@@ -1131,7 +1096,6 @@
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="201"/>
         <location filename="../playlist.cpp" line="228"/>
         <source>By Track Number</source>
         <translation>Nach Titelnummer</translation>

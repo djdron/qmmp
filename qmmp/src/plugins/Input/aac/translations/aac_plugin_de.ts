@@ -7,27 +7,27 @@
     <message>
         <location filename="../decoderaacfactory.cpp" line="47"/>
         <source>AAC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="49"/>
         <source>AAC Files</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC-Dateien</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="92"/>
         <source>About AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Über AAC-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="93"/>
         <source>Qmmp AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp AAC-Audio-Plugin</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="94"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -35,7 +35,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="66"/>
@@ -85,22 +85,22 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>AAC Info</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">AAC-Info</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
         <source>Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Länge:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="111"/>
         <source>Channels:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanäle:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="134"/>
         <source>Bitrate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitrate:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="161"/>
@@ -130,7 +130,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="206"/>
         <source>Artist:</source>
-        <translation>Künstler:</translation>
+        <translation>Interpret:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="193"/>
