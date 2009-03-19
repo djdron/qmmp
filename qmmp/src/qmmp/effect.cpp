@@ -66,9 +66,8 @@ static void checkFactories()
         files.clear();
         factories = new QList<EffectFactory *>;
 
-        QDir pluginsDir (qApp->applicationDirPath());
-        pluginsDir.cdUp();
-        pluginsDir.cd("./"LIB_DIR"/qmmp/Effect");
+         QDir pluginsDir (Qmmp::pluginsPath());
+        pluginsDir.cd("Effect");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

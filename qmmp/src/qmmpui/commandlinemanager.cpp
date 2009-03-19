@@ -25,7 +25,7 @@
 
 #include <cstdlib>
 #include <iostream>
-
+#include <qmmp/qmmp.h>
 #include "commandlinemanager.h"
 
 using namespace std;
@@ -40,9 +40,8 @@ static void checkOptions()
         files.clear();
         options = new QList<CommandLineOption *>;
 
-        QDir pluginsDir (qApp->applicationDirPath());
-        pluginsDir.cdUp();
-        pluginsDir.cd("./"LIB_DIR"/qmmp/CommandLineOptions");
+        QDir pluginsDir (Qmmp::pluginsPath());
+        pluginsDir.cd("CommadLineOptions");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));

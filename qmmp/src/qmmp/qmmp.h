@@ -57,7 +57,7 @@ public:
     /*!
      * Returns configuration file path.
      */
-    static QString configFile();
+    static const QString configFile();
     /*!
      * Overrides default configuration file path.
      */
@@ -65,7 +65,7 @@ public:
     /*!
      * Returns %Qmmp library version.
      */
-    static QString strVersion();
+    static const QString strVersion();
     /*!
      * Returns \b true if global proxy is enabled, otherwise returns \b false
      */
@@ -77,7 +77,7 @@ public:
     /*!
      * Returns global proxy url.
      */
-    static QUrl proxy();
+    static const QUrl proxy();
     /*!
      * Enables or disables global proxy.
      * @param yes Proxy enable state (\b true - enabled, \b false - disabled)
@@ -92,6 +92,10 @@ public:
      * Sets global proxy url to \b proxy
      */
     static void setProxy (const QUrl &proxy);
+    /*!
+     * Returns the location of the installed Qmmp plugins.
+     */
+    static const QString pluginsPath();
 
 private:
     static QString m_configFile;
