@@ -41,7 +41,6 @@ public:
 
     ulong process(char *in_data, const ulong size, char **out_data);
     void configure(quint32 freq, int chan, int res);
-    quint32 sampleRate();
 
 private:
     void freeSRC();
