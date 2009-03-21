@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,13 +21,21 @@
 #ifndef DECODER_MPC_H
 #define DECODER_MPC_H
 
+#ifdef MPC_OLD_API
 #include <mpcdec/mpcdec.h>
+#else
+#include <mpc/mpcdec.h>
+#endif
 
 #include <qmmp/decoder.h>
 
 struct mpc_data
 {
+#ifdef MPC_OLD_API
     mpc_decoder decoder;
+#else
+    mpc_demux *demuxer;
+#endif
     mpc_reader reader;
     mpc_streaminfo info;
 };
