@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -60,38 +60,65 @@ inline static void copyBuffer(MPC_SAMPLE_FORMAT* pInBuf, char* pOutBuf, unsigned
 
 // mpc callbacks
 
+
+
+#ifdef MPC_OLD_API
 static mpc_int32_t mpc_callback_read (void *data, void *buffer, mpc_int32_t size)
 {
     DecoderMPC *dmpc = (DecoderMPC *) data;
+#else
+static mpc_int32_t mpc_callback_read (mpc_reader *reader, void *buffer, mpc_int32_t size)
+{
+    DecoderMPC *dmpc = (DecoderMPC *) reader->data;
+#endif
     qint64 res;
 
     res = dmpc->input()->read((char *)buffer, size);
 
     return res;
 }
-
+#ifdef MPC_OLD_API
 static mpc_bool_t mpc_callback_seek (void *data, mpc_int32_t offset)
 {
     DecoderMPC *dmpc = (DecoderMPC *) data;
-
-    return dmpc->input()->seek(offset); // ? TRUE : FALSE;
+#else
+static mpc_bool_t mpc_callback_seek (mpc_reader *reader, mpc_int32_t offset)
+{
+    DecoderMPC *dmpc = (DecoderMPC *) reader->data;
+#endif
+    return dmpc->input()->seek(offset);
 }
-
+#ifdef MPC_OLD_API
 static mpc_int32_t mpc_callback_tell (void *data)
 {
     DecoderMPC *dmpc = (DecoderMPC *) data;
+#else
+static mpc_int32_t mpc_callback_tell (mpc_reader *reader)
+{
+    DecoderMPC *dmpc = (DecoderMPC *) reader->data;
+#endif
     return dmpc->input()->pos ();
 }
-
+#ifdef MPC_OLD_API
 static mpc_bool_t  mpc_callback_canseek (void *data)
 {
     DecoderMPC *dmpc = (DecoderMPC *) data;
+#else
+static mpc_bool_t  mpc_callback_canseek (mpc_reader *reader)
+{
+    DecoderMPC *dmpc = (DecoderMPC *) reader->data;
+#endif
     return !dmpc->input()->isSequential () ;
 }
-
+#ifdef MPC_OLD_API
 static mpc_int32_t mpc_callback_get_size (void *data)
 {
     DecoderMPC *dmpc = (DecoderMPC *) data;
+#else
+static mpc_int32_t mpc_callback_get_size (mpc_reader *reader)
+{
+    DecoderMPC *dmpc = (DecoderMPC *) reader->data;
+#endif
     return dmpc->input()->size();
 }
 
@@ -124,6 +151,11 @@ DecoderMPC::~DecoderMPC()
     deinit();
     if (data())
     {
+#ifndef MPC_OLD_API
+        if (data()->demuxer)
+            mpc_demux_exit (data()->demuxer);
+        data()->demuxer = 0;
+#endif
         delete data();
         m_data = 0;
     }
@@ -173,7 +205,6 @@ void DecoderMPC::flush(bool final)
         {
             output()->recycler()->cond()->wakeOne();
         }
-
         output()->recycler()->mutex()->unlock();
     }
 }
@@ -222,22 +253,31 @@ bool DecoderMPC::initialize()
     m_data->reader.get_size = mpc_callback_get_size;
     m_data->reader.data = this;
 
+#ifdef MPC_OLD_API
     mpc_streaminfo_init (&m_data->info);
-
     if (mpc_streaminfo_read (&m_data->info, &m_data->reader) != ERROR_CODE_OK)
         return FALSE;
+#else
+    m_data->demuxer = mpc_demux_init (&m_data->reader);
+
+    if (!m_data->demuxer)
+        return FALSE;
+    mpc_demux_get_info (m_data->demuxer, &m_data->info);
+#endif
+
     chan = data()->info.channels;
     configure(data()->info.sample_freq, chan, 16);
 
+#ifdef MPC_OLD_API
     mpc_decoder_setup (&data()->decoder, &data()->reader);
 
     //mpc_decoder_scale_output (&data()->decoder, 3.0);
-
     if (!mpc_decoder_initialize (&data()->decoder, &data()->info))
     {
         qWarning("DecoderMPC: cannot get info.");
         return FALSE;
     }
+#endif
     m_totalTime = mpc_streaminfo_get_length(&data()->info) * 1000;
     inited = TRUE;
     qDebug("DecoderMPC: initialize succes");
@@ -270,9 +310,13 @@ void DecoderMPC::deinit()
 
 void DecoderMPC::run()
 {
+#ifdef MPC_OLD_API
     mpc_uint32_t vbrAcc = 0;
     mpc_uint32_t vbrUpd = 0;
-
+#else
+    mpc_frame_info frame;
+    mpc_status err;
+#endif
     mutex()->lock ();
     if (!inited)
     {
@@ -288,20 +332,46 @@ void DecoderMPC::run()
 
         if (seekTime >= 0.0)
         {
+#ifdef MPC_OLD_API
             mpc_decoder_seek_seconds(&data()->decoder, seekTime/1000);
+#else
+            mpc_demux_seek_second(data()->demuxer, (double)seekTime/1000);
+#endif
             seekTime = -1.0;
         }
+#ifdef MPC_OLD_API
         MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];
-
         len = mpc_decoder_decode (&data()->decoder, buffer, &vbrAcc, &vbrUpd);
-
         copyBuffer(buffer, (char *) (output_buf + output_at), len);
-
         len = len * 4;
-
+#else
+        MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];
+        frame.buffer = (MPC_SAMPLE_FORMAT *) &buffer;
+        len = 0;
+        while (!len)
+        {
+            err = mpc_demux_decode (m_data->demuxer, &frame);
+            if (err != MPC_STATUS_OK || frame.bits == -1)
+            {
+                len = 0;
+                qDebug("finished");
+                break;
+            }
+            else
+            {
+                len = frame.samples;
+                copyBuffer(frame.buffer, (char *) (output_buf + output_at), len);
+                len = len * 4;
+            }
+        }
+#endif
         if (len > 0)
         {
-            bitrate = vbrUpd * data()->info.sample_freq / 1152;
+#ifdef MPC_OLD_API
+            bitrate = vbrUpd * data()->info.sample_freq / 1152000;
+#else
+            bitrate = frame.bits * data()->info.sample_freq / 1152000;
+#endif
             output_at += len;
             output_bytes += len;
 

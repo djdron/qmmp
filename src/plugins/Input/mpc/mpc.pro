@@ -33,5 +33,9 @@ isEmpty (LIB_DIR){
 LIB_DIR = /lib
 }
 
+exists(/usr/include/mpcdec/mpcdec.h){ 
+DEFINES += MPC_OLD_API
+}
+
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
