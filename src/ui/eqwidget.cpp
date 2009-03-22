@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -396,7 +396,6 @@ void EqWidget::importWinampEQF()
     file.read (header, 31);
     if (QString::fromAscii(header).contains("Winamp EQ library file v1.1"))
     {
-
         while (file.read (name, 257))
         {
             EQPreset* preset = new EQPreset;
@@ -411,8 +410,14 @@ void EqWidget::importWinampEQF()
             preset->setPreamp(20 - bands[10]*40/64);
             m_presets.append(preset);
         }
-
     }
     file.close();
 
+}
+
+void EqWidget::keyPressEvent (QKeyEvent *ke)
+{
+    QKeyEvent event = QKeyEvent(ke->type(), ke->key(),
+                                ke->modifiers(), ke->text(),ke->isAutoRepeat(), ke->count());
+    QApplication::sendEvent(qobject_cast<MainWindow*>(parent())->playlist(), &event);
 }
