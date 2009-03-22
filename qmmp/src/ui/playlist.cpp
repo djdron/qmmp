@@ -264,10 +264,11 @@ void PlayList::createActions()
 
     QAction *selAllAct = new QAction (tr ("&Select All"),this);
     selAllAct->setShortcut (tr ("Ctrl+A"));
+    m_actions << selAllAct;
     m_selectMenu->addAction (selAllAct);
     connect (selAllAct, SIGNAL (triggered()),
              m_playListModel, SLOT (selectAll ()));
-    this->addAction (selAllAct);
+    //this->addAction (selAllAct);
 
 //  Playlist Menu
     QAction *newListAct = new QAction (tr ("&New List"),this);
@@ -279,14 +280,16 @@ void PlayList::createActions()
 
     QAction *loadListAct = new QAction (tr ("&Load List"),this);
     loadListAct->setShortcut (tr ("O"));
+    m_actions << loadListAct;
     m_playlistMenu->addAction (loadListAct);
     connect (loadListAct, SIGNAL (triggered()), this, SIGNAL (loadPlaylist()));
 
     QAction *saveListAct = new QAction (tr ("&Save List"),this);
     saveListAct->setShortcut (tr ("Shift+S"));
+    m_actions << saveListAct;
     m_playlistMenu->addAction (saveListAct);
     connect (saveListAct, SIGNAL (triggered()), this, SIGNAL (savePlaylist()));
-    this->addActions (m_playlistMenu->actions());
+    //this->addActions (m_playlistMenu->actions());
 
     Dock::getPointer()->addActions (m_actions);
 }

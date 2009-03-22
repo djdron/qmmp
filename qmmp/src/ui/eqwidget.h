@@ -76,6 +76,7 @@ private:
     void writeSettings();
     void createActions();
     EQPreset *findPreset(const QString &name);
+    virtual void keyPressEvent (QKeyEvent *);
     Skin *m_skin;
     EqTitleBar *m_titleBar;
     EqSlider *m_preamp;
