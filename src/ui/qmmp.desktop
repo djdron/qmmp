@@ -22,4 +22,4 @@ Icon=qmmp
 Terminal=false
 Type=Application
 Categories=AudioVideo;Player;Audio;Qt;
-MimeType=application/x-ogg;audio/mp3;audio/mpeg;audio/x-flac;audio/x-mp3;audio/x-mpeg;audio/x-ms-wma;audio/x-musepack;application/ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/x-mpegurl;audio/x-it;audio/x-mod;audio/x-ape
+MimeType=application/x-ogg;audio/mp3;audio/mpeg;audio/x-flac;audio/x-mp3;audio/x-mpeg;audio/x-ms-wma;audio/x-musepack;application/ogg;audio/x-vorbis+ogg;audio/x-scpls;audio/x-mpegurl;audio/x-it;audio/x-mod;audio/x-ape;application/x-cue
