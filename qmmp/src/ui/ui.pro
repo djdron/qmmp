@@ -124,7 +124,8 @@ RESOURCES = images/images.qrc \
 TEMPLATE = app
 target.path = /bin
 
-desktop.files = qmmp.desktop
+desktop.files = qmmp.desktop \
+                qmmp_enqueue.desktop
 desktop.path = /share/applications
 
 icon16.files = images/16x16/qmmp.png
