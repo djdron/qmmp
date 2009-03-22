@@ -155,7 +155,7 @@ target_link_libraries(qmmp ${QT_LIBRARIES} libqmmp qmmpui)
 add_dependencies(qmmp qmmpui libqmmp)
 install(TARGETS qmmp DESTINATION bin)
 install(FILES qmmp.desktop DESTINATION share/applications)
+install(FILES qmmp_enqueue.desktop DESTINATION share/applications)
 install(FILES images/16x16/qmmp.png DESTINATION share/icons/hicolor/16x16/apps)
 install(FILES images/32x32/qmmp.png DESTINATION share/icons/hicolor/32x32/apps)
 install(FILES images/48x48/qmmp.png DESTINATION share/icons/hicolor/48x48/apps)
-
