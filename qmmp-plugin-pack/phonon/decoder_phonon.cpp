@@ -139,14 +139,14 @@ bool DecoderPhonon::initialize()
     return TRUE;
 }
 
-qint64 DecoderPhonon::lengthInSeconds()
+qint64 DecoderPhonon::totalTime()
 {
-    return m_mediaObject->totalTime () / 1000;
+    return m_mediaObject->totalTime ();
 }
 
 void DecoderPhonon::seek(qint64 pos)
 {
-    m_mediaObject->seek(pos * 1000);
+    m_mediaObject->seek(pos);
 }
 
 void DecoderPhonon::stop()
@@ -214,6 +214,6 @@ void DecoderPhonon::updateState(Phonon::State newstate, Phonon::State)
 
 void DecoderPhonon::updateTime(qint64 time)
 {
-    StateHandler::instance()->dispatch(time / 1000, m_mediaObject->totalTime () / 1000, 0, 0, 0, 0);
+    StateHandler::instance()->dispatch(time, m_mediaObject->totalTime (), 0, 0, 0, 0);
 }
 

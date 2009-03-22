@@ -30,7 +30,7 @@
 #include <phonon/effectparameter.h>
 
 #include "decoder_phonon.h"
-#include "settingsdialog.h"
+//#include "settingsdialog.h"
 #include "decoderphononfactory.h"
 
 
