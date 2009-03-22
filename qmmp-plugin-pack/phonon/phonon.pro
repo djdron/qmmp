@@ -1,4 +1,4 @@
-include(../../plugins.pri)
+#include(../../plugins.pri)
 
 HEADERS += decoderphononfactory.h \
            decoder_phonon.h
@@ -6,8 +6,8 @@ HEADERS += decoderphononfactory.h \
 SOURCES += decoder_phonon.cpp \
            decoderphononfactory.cpp
 
-TARGET =$$PLUGINS_PREFIX/Input/phonon
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libphonon.so
+#TARGET =$$PLUGINS_PREFIX/Input/phonon
+#QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libphonon.so
 
 INCLUDEPATH += ../../../
 CONFIG += release \
