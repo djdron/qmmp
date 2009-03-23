@@ -35,6 +35,10 @@ isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }
 target.path = $$LIB_DIR/qmmp/Input
-INSTALLS += target
+
 FORMS += settingsdialog.ui
 
+desktop.files = qmmp_cue.desktop
+desktop.path = /share/applications
+
+INSTALLS += target desktop

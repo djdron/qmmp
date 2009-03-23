@@ -1,0 +1,14 @@
+[Desktop Entry]
+X-Desktop-File-Install-Version=0.11
+Name=Open cue album
+Name[ru]=Открыть альбом cue
+Comment=Open cue file(s) in the directory
+Comment[ru]=Открыть cue-файл(ы) в директории
+Exec=qmmp %F/*.cue
+Icon=qmmp
+Categories=AudioVideo;Player;Audio;Qt;
+MimeType=inode/directory;
+Type=Application
+X-KDE-StartupNotify=false
+NoDisplay=true
+Terminal=false

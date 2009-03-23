@@ -63,4 +63,4 @@ ADD_LIBRARY(cue SHARED ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS} ${li
 add_dependencies(cue qmmp)
 target_link_libraries(cue ${QT_LIBRARIES} -lqmmp)
 install(TARGETS cue DESTINATION ${LIB_DIR}/qmmp/Input)
-
+install(FILES qmmp_cue.desktop DESTINATION share/applications)
