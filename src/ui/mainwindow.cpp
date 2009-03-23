@@ -33,7 +33,6 @@
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/commandlinemanager.h>
 #include <qmmpui/filedialog.h>
-#include <qmmpui/fileloader.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
 
@@ -534,6 +533,7 @@ void MainWindow::setFileList(const QStringList & l)
 {
     if (m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
         stop();
+    qApp->processEvents(); //receive stop signal
     connect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
     if (!m_playListModel->setFileList(l))
     {
