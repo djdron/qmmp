@@ -44,7 +44,6 @@ ListWidget::ListWidget(QWidget *parent)
     m_update = FALSE;
     m_skin = Skin::getPointer();
     loadColors();
-    setWindowFlags(Qt::FramelessWindowHint);
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
     m_prev_y = 0;
