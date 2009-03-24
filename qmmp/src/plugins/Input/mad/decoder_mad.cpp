@@ -359,7 +359,7 @@ void DecoderMAD::flush(bool final)
 {
     ulong min = final ? 0 : bks;
 
-    while ((! done && ! m_finish) && output_bytes > min)
+    while ((! done && ! m_finish) && output_bytes > min && seekTime == -1.)
     {
         output()->recycler()->mutex()->lock();
 
@@ -425,19 +425,20 @@ void DecoderMAD::run()
             stream.next_frame = 0;
             skip_frames = 2;
             eof = false;
+            seekTime = -1;
         }
 
         m_finish = eof;
 
         if (! eof)
         {
-            if (stream.next_frame && seekTime == -1.)
+            if (stream.next_frame)
             {
                 input_bytes = &input_buf[input_bytes] - (char *) stream.next_frame;
                 memmove(input_buf, stream.next_frame, input_bytes);
             }
 
-            if (input_bytes < globalBufferSize && seekTime == -1.)
+            if (input_bytes < globalBufferSize)
             {
                 int len = input()->read((char *) input_buf + input_bytes,
                                         globalBufferSize - input_bytes);
@@ -458,12 +459,10 @@ void DecoderMAD::run()
             mad_stream_buffer(&stream, (unsigned char *) input_buf, input_bytes);
         }
 
-        seekTime = -1.;
-
         mutex()->unlock();
 
         // decode
-        while (!done && !m_finish && !derror)
+        while (!done && !m_finish && !derror && seekTime == -1.)
         {
             if (mad_frame_decode(&frame, &stream) == -1)
             {
