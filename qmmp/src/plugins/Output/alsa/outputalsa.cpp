@@ -48,6 +48,7 @@ OutputALSA::OutputALSA(QObject * parent)
     m_prebuf = 0;
     m_prebuf_size = 0;
     m_prebuf_fill = 0;
+    m_pause = FALSE;
 }
 
 OutputALSA::~OutputALSA()
@@ -223,6 +224,17 @@ bool OutputALSA::initialize()
 qint64 OutputALSA::latency()
 {
     return m_prebuf_fill * 8000 / sampleRate() / numChannels() / sampleSize();
+}
+
+void OutputALSA::pause()
+{
+    m_pause = !m_pause;
+    if (m_pause && pcm_handle)
+    {
+        snd_pcm_drop(pcm_handle);
+        snd_pcm_prepare(pcm_handle);
+    }
+    Output::pause();
 }
 
 qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
