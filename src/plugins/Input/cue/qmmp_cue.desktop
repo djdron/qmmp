@@ -1,12 +1,12 @@
 [Desktop Entry]
-X-Desktop-File-Install-Version=0.11
+X-Desktop-File-Install-Version=0.15
 Name=Open cue album
 Name[ru]=Открыть альбом cue
 Name[uk]=Відкрити альбом cue
 Comment=Open cue file(s) in the directory
 Comment[ru]=Открыть cue-файл(ы) в директории
 Comment[uk]=Відкрити cue-файл(и) в теці
-Exec=qmmp %F/*.cue
+Exec=sh -c "qmmp '%F'/*.cue"
 Icon=qmmp
 Categories=AudioVideo;Player;Audio;Qt;
 MimeType=inode/directory;
