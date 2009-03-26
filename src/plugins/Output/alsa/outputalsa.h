@@ -44,6 +44,7 @@ public:
     bool initialize();
     void configure(quint32, int, int);
     qint64 latency();
+    void pause();
 
 private:
     //output api
@@ -66,6 +67,7 @@ private:
     uchar *m_prebuf;
     qint64 m_prebuf_size;
     qint64 m_prebuf_fill;
+    bool m_pause;
 };
 
 class VolumeControlALSA : public VolumeControl

@@ -60,8 +60,9 @@ public:
     virtual void configure(quint32 freq, int chan, int bits);
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
+     * Subclasses that reimplement this function must call the base implementation.
      */
-    void pause();
+    virtual void pause();
     /*!
      * Requests playback to stop.
      */
