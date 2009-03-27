@@ -30,24 +30,24 @@
 
 using namespace std;
 
-static QList<CommandLineOption *> *options = 0;
-static QStringList files;
+QList<CommandLineOption *> *CommandLineManager::m_options = 0;
+QStringList CommandLineManager::m_files;
 
-static void checkOptions()
+void CommandLineManager::checkOptions()
 {
-    if (! options)
+    if (!m_options)
     {
-        files.clear();
-        options = new QList<CommandLineOption *>;
+        m_files.clear();
+        m_options = new QList<CommandLineOption *>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
-        pluginsDir.cd("CommadLineOptions");
+        pluginsDir.cd("CommandLineOptions");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
             QObject *plugin = loader.instance();
             if (loader.isLoaded())
-                ;//qDebug("CommandLineManager: plugin loaded - %s", qPrintable(fileName));
+                /*qDebug("CommandLineManager: plugin loaded - %s", qPrintable(fileName))*/;
             else
                 qWarning("CommandLineManager: %s", qPrintable(loader.errorString ()));
 
@@ -57,8 +57,8 @@ static void checkOptions()
 
             if (option)
             {
-                options->append(option);
-                files << pluginsDir.absoluteFilePath(fileName);
+                m_options->append(option);
+                m_files << pluginsDir.absoluteFilePath(fileName);
                 qApp->installTranslator(option->createTranslator(qApp));
             }
         }
@@ -82,7 +82,7 @@ CommandLineManager::~CommandLineManager()
 void CommandLineManager::executeCommand(const QString& opt_str)
 {
     checkOptions();
-    foreach(CommandLineOption *opt, *options)
+    foreach(CommandLineOption *opt, *m_options)
     {
         if (opt->identify(opt_str))
         {
@@ -95,7 +95,7 @@ void CommandLineManager::executeCommand(const QString& opt_str)
 bool CommandLineManager::hasOption(const QString &opt_str)
 {
     checkOptions();
-    foreach(CommandLineOption *opt, *options)
+    foreach(CommandLineOption *opt, *m_options)
     {
         if (opt->identify(opt_str))
             return TRUE;
@@ -106,6 +106,6 @@ bool CommandLineManager::hasOption(const QString &opt_str)
 void CommandLineManager::printUsage()
 {
     checkOptions();
-    foreach(CommandLineOption *opt, *options)
+    foreach(CommandLineOption *opt, *m_options)
     cout << qPrintable(opt->helpString());
 }

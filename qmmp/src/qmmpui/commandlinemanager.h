@@ -55,9 +55,12 @@ public:
     static void printUsage();
 
 private:
+    static void checkOptions();
     uint m_state;
     int m_left, m_right;
     int m_time;
+    static QList<CommandLineOption *> *m_options;
+    static QStringList m_files;
 };
 
 #endif
