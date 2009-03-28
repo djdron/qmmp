@@ -131,7 +131,7 @@ void ListWidget::paintEvent(QPaintEvent *)
             m_painter.setFont(m_font);
 
             m_painter.drawText(width() - 10 - m_metrics->width(extra_string) - m_metrics->width(m_times.at(i)),
-                               12+i*m_metrics->ascent (), extra_string);
+                               14+i*m_metrics->ascent (), extra_string);
             m_font.setPointSize(old_size);
             m_painter.setFont(m_font);
             m_painter.setBrush(QBrush(m_normal_bg));
@@ -460,10 +460,13 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 
 int ListWidget::rowAt( int y) const
 {
+    if (y <= 14 && y >= 2)
+        return m_first;
+
     for (int i = 0; i < qMin(m_rows, m_model->count() - m_first); ++i )
     {
-        if ((y >= 2 + i * m_metrics->ascent()) && (y < 2 + (i+1) * m_metrics->ascent()))
-            return m_first + i;
+        if ((y >= 14 + i * m_metrics->ascent ()) && (y <= 14 + (i+1) * m_metrics->ascent()))
+            return m_first + i + 1;
     }
     return INVALID_ROW;
 }
