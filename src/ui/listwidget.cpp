@@ -66,8 +66,9 @@ ListWidget::~ListWidget()
 void ListWidget::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value("PlayList/Font","").toString();
-    m_font.fromString(fontname);
+    QString fontname = settings.value("PlayList/Font").toString();
+    if (!fontname.isEmpty())
+        m_font.fromString(fontname);
     m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
 
     if (m_update)
@@ -461,7 +462,7 @@ int ListWidget::rowAt( int y) const
 {
     for (int i = 0; i < qMin(m_rows, m_model->count() - m_first); ++i )
     {
-        if ((y >= 2+i*m_metrics->ascent())&&(y < 2+(i+1)*m_metrics->ascent()))
+        if ((y >= 2 + i * m_metrics->ascent()) && (y < 2 + (i+1) * m_metrics->ascent()))
             return m_first + i;
     }
     return INVALID_ROW;
