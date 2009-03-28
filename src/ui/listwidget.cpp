@@ -460,7 +460,7 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 
 int ListWidget::rowAt( int y) const
 {
-    if (y <= 14 && y >= 2)
+    if (y <= 14 && y >= 2 && m_model->count())
         return m_first;
 
     for (int i = 0; i < qMin(m_rows, m_model->count() - m_first); ++i )
