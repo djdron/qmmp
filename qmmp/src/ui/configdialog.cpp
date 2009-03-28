@@ -375,13 +375,16 @@ void ConfigDialog::loadPluginsInfo()
 void ConfigDialog::loadFonts()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value ( "PlayList/Font","" ).toString();
+    QString fontname = settings.value ( "PlayList/Font").toString();
     QFont font;
-    font.fromString(fontname);
+    if(!fontname.isEmpty())
+        font.fromString(fontname);
     ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.plFontLabel->setFont(font);
 
-    fontname = settings.value ("MainWindow/Font","").toString();
+    fontname = settings.value ("MainWindow/Font").toString();
+    if(!fontname.isEmpty())
+        font.fromString(fontname);
     font.fromString(fontname);
     ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.mainFontLabel->setFont(font);
