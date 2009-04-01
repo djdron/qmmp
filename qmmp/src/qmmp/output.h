@@ -68,6 +68,10 @@ public:
      */
     void stop();
     /*!
+     * Requests playback to finish.
+     */
+    void finish();
+    /*!
      * Returns the number of bytes that were written.
      */
     qint64 written();
@@ -156,6 +160,7 @@ private:
     int m_channels, m_precision, m_kbps;
     qint64 m_bytesPerMillisecond;
     bool m_userStop, m_pause;
+    bool m_finish;
     qint64 m_totalWritten, m_currentMilliseconds;
 
     static void checkFactories();

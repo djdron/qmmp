@@ -18,7 +18,8 @@
 #include <math.h>
 #include <stdio.h>
 
-# define XING_MAGIC (('X' << 24) | ('i' << 16) | ('n' << 8) | 'g')
+#define XING_MAGIC (('X' << 24) | ('i' << 16) | ('n' << 8) | 'g')
+#define INPUT_BUFFER_SIZE (32*1024)
 
 
 DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
@@ -95,7 +96,7 @@ bool DecoderMAD::initialize()
     }
 
     if (! input_buf)
-        input_buf = new char[globalBufferSize];
+        input_buf = new char[INPUT_BUFFER_SIZE];
 
     if (! output_buf)
         output_buf = new char[globalBufferSize];
@@ -247,7 +248,7 @@ bool DecoderMAD::findHeader()
                 memmove (input_buf, stream.next_frame, remaining);
             }
 
-            input_bytes = input()->read(input_buf + remaining, globalBufferSize - remaining);
+            input_bytes = input()->read(input_buf + remaining, INPUT_BUFFER_SIZE - remaining);
 
             if (input_bytes <= 0)
                 break;
@@ -358,12 +359,11 @@ void DecoderMAD::stop()
 void DecoderMAD::flush(bool final)
 {
     ulong min = final ? 0 : bks;
-
-    while ((! done && ! m_finish) && output_bytes > min && seekTime == -1.)
+    while (!done && (output_bytes > min) && seekTime == -1.)
     {
         output()->recycler()->mutex()->lock();
 
-        while ((! done && ! m_finish) && output()->recycler()->full())
+        while (!done && output()->recycler()->full())
         {
             mutex()->unlock();
             output()->recycler()->cond()->wait(output()->recycler()->mutex());
@@ -372,7 +372,7 @@ void DecoderMAD::flush(bool final)
             done = user_stop;
         }
 
-        if (user_stop || m_finish)
+        if (user_stop)
         {
             inited = FALSE;
             done = TRUE;
@@ -395,7 +395,7 @@ void DecoderMAD::flush(bool final)
 
 void DecoderMAD::run()
 {
-    int skip_frames = 0; //skip first frame
+    int skip_frames = 0;
     mutex()->lock();
 
     if (! inited)
@@ -427,7 +427,6 @@ void DecoderMAD::run()
             eof = false;
             seekTime = -1;
         }
-
         m_finish = eof;
 
         if (! eof)
@@ -438,10 +437,10 @@ void DecoderMAD::run()
                 memmove(input_buf, stream.next_frame, input_bytes);
             }
 
-            if (input_bytes < globalBufferSize)
+            if (stream.error == MAD_ERROR_BUFLEN)
             {
                 int len = input()->read((char *) input_buf + input_bytes,
-                                        globalBufferSize - input_bytes);
+                                        INPUT_BUFFER_SIZE - input_bytes);
 
                 if (len == 0)
                 {
@@ -482,6 +481,9 @@ void DecoderMAD::run()
                 if (stream.error == MAD_ERROR_BUFLEN)
                     break;
 
+                if (stream.error == MAD_ERROR_BUFLEN)
+                    continue;
+
                 // error in decoding
                 if (!MAD_RECOVERABLE(stream.error))
                 {
@@ -513,7 +515,7 @@ void DecoderMAD::run()
 
     mutex()->lock();
 
-    if (! user_stop && eof)
+    if (!user_stop && eof)
     {
         flush(TRUE);
 
@@ -532,7 +534,7 @@ void DecoderMAD::run()
         }
 
         done = TRUE;
-        if (! user_stop)
+        if (!user_stop)
             m_finish = TRUE;
     }
 
