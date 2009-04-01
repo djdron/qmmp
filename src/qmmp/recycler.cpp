@@ -13,9 +13,9 @@ Recycler::Recycler ( unsigned int sz )
         : add_index ( 0 ), done_index ( 0 ), current_count ( 0 )
 {
     buffer_count = ( sz / Buffer::size() );
-    if ( buffer_count < 1 )
+    if (buffer_count < 4)
     {
-        buffer_count = 1;
+        buffer_count = 4;
     }
 
     buffers = new Buffer*[buffer_count];
@@ -66,7 +66,7 @@ Buffer *Recycler::get(unsigned long size)
 {
     if (full())
         return 0;
-    if(size > Buffer::size() + buffers[add_index]->exceeding)
+    if (size > Buffer::size() + buffers[add_index]->exceeding)
     {
         delete buffers[add_index]->data;
         buffers[add_index]->data = new unsigned char[size];
@@ -94,7 +94,8 @@ Buffer *Recycler::next()
 void Recycler::done()
 {
     done_index = ++done_index % buffer_count;
-    current_count--;
+    if (current_count)
+        current_count--;
 }
 
 

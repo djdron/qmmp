@@ -183,7 +183,16 @@ qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
 
 void Decoder::finish()
 {
-    //output()->wait();
+    if (output())
+    {
+        output()->mutex()->lock ();
+        output()->finish();
+        output()->mutex()->unlock();
+        /*output()->recycler()->mutex()->lock ();
+        output()->recycler()->cond()->wakeAll();
+        output()->recycler()->mutex()->unlock();
+        output()->wait();*/
+    }
     emit playbackFinished();
 }
 

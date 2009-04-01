@@ -271,6 +271,7 @@ void OutputALSA::flush()
 {
     snd_pcm_uframes_t l = snd_pcm_bytes_to_frames(pcm_handle, m_prebuf_fill);
     long m;
+    l = snd_pcm_bytes_to_frames(pcm_handle, l);
     while (l > 0)
     {
         if ((m = alsa_write(m_prebuf, l)) >= 0)
@@ -283,6 +284,9 @@ void OutputALSA::flush()
         else
             break;
     }
+    snd_pcm_nonblock(pcm_handle, 0);
+    snd_pcm_drain(pcm_handle);
+    snd_pcm_nonblock(pcm_handle, 1);
 }
 
 long OutputALSA::alsa_write(unsigned char *data, long size)
@@ -340,6 +344,7 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
         }
         return 0;
     }
+    qDebug ("OutputALSA: error: %s", snd_strerror(m));
     return -1;
 }
 

@@ -29,6 +29,7 @@ Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
     m_bytesPerMillisecond = 0;
     m_userStop = FALSE;
     m_pause = FALSE;
+    m_finish = FALSE;
 }
 
 void Output::configure(quint32 freq, int chan, int prec)
@@ -49,6 +50,11 @@ void Output::pause()
 void Output::stop()
 {
     m_userStop = TRUE;
+}
+
+void Output::finish()
+{
+    m_finish = TRUE;
 }
 
 qint64 Output::written()
@@ -196,10 +202,10 @@ void Output::run()
         b = 0;
         mutex()->unlock();
     }
-
     mutex()->lock ();
     //write remaining data
-    flush();
+    if(m_finish)
+        flush();
     dispatch(Qmmp::Stopped);
     mutex()->unlock();
 }
