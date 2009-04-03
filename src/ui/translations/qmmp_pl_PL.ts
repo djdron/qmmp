@@ -31,17 +31,17 @@
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
         <source>:/txt/authors_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
         <source>:/txt/thanks_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzacz Multimedialny oparty na QT (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="82"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>:txt/description_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="84"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="102"/>
         <source>Visual plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczki wizualizacji:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="111"/>
@@ -86,7 +86,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="63"/>
         <source>:/txt/translators_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -147,12 +147,12 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustaw głośność odtwarzania (przykład: qmmp --volume20, qmmp --volume100)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Jump to File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl okno dialgowe Skocz do</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
@@ -462,49 +462,49 @@
     <message>
         <location filename="../configdialog.cpp" line="645"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz skórę</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="646"/>
         <source>Skin files</source>
-        <translation type="unfinished"></translation>
+        <translation>Pliki skór</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="193"/>
         <source>Add...</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="206"/>
         <source>Refresh</source>
-        <translation type="unfinished">Odśwież</translation>
+        <translation>Odśwież</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="369"/>
         <source>Show protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż protokół</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="641"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>Przezroczystość</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="647"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Okno główne</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="670"/>
         <location filename="../forms/configdialog.ui" line="694"/>
         <location filename="../forms/configdialog.ui" line="718"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="677"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Equalizer</translation>
     </message>
 </context>
 <context>
@@ -607,62 +607,62 @@
     <message>
         <location filename="../display.cpp" line="61"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Poprzedni</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="65"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzaj</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="69"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="73"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatrzymaj</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="77"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Następny</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="81"/>
         <source>Add file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj plik</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="96"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Equalizer</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="101"/>
         <source>Playlist</source>
-        <translation type="unfinished">Lista odtwarzania</translation>
+        <translation>Lista odtwarzania</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="109"/>
         <source>Repeat playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Powtórz listę odtwarzania</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="113"/>
         <source>Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Losowo</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="144"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="150"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Balans</translation>
     </message>
 </context>
 <context>
@@ -670,132 +670,132 @@
     <message>
         <location filename="../mainvisual.cpp" line="294"/>
         <source>Visualization Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryb wizualizacji</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="297"/>
         <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Analizator</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="298"/>
         <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="299"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłączone</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="306"/>
         <source>Analyzer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryb Analizatora</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="309"/>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalny</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="310"/>
         <source>Fire</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogień</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="311"/>
         <source>Vertical Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Pionowe Linie</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="312"/>
         <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Linie</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="313"/>
         <source>Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Słupki</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="326"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Piki</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="330"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Odświeżanie</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="333"/>
         <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="334"/>
         <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="335"/>
         <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="336"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="343"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Prędkość Analizatora</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="346"/>
         <location filename="../mainvisual.cpp" line="360"/>
         <source>Slowest</source>
-        <translation type="unfinished"></translation>
+        <translation>Najwolniej</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="347"/>
         <location filename="../mainvisual.cpp" line="361"/>
         <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <translation>Wolno</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="348"/>
         <location filename="../mainvisual.cpp" line="362"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>Średnio</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="349"/>
         <location filename="../mainvisual.cpp" line="363"/>
         <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <translation>Szybko</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="350"/>
         <location filename="../mainvisual.cpp" line="364"/>
         <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <translation>Najszybciej</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="357"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Opadanie Pików</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="370"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Tło</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="371"/>
         <source>Transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>Przezroczystość</translation>
     </message>
 </context>
 <context>
@@ -940,37 +940,37 @@
     <message>
         <location filename="../mainwindow.cpp" line="425"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Powtórz utwór</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Losowo</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="430"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="424"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Powtó&amp;rz listę odtwarzania</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Narzędzia</translation>
     </message>
 </context>
 <context>
@@ -1148,7 +1148,7 @@
     <message>
         <location filename="../playlist.cpp" line="244"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Akcje</translation>
     </message>
 </context>
 <context>
@@ -1156,27 +1156,27 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="13"/>
         <source>Preset Editor</source>
-        <translation type="unfinished">Preset Editor</translation>
+        <translation>Preset Editor</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="28"/>
         <source>Load</source>
-        <translation type="unfinished">Ładuj</translation>
+        <translation>Ładuj</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="35"/>
         <source>Delete</source>
-        <translation type="unfinished">Usuń</translation>
+        <translation>Usuń</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="46"/>
         <source>Preset</source>
-        <translation type="unfinished">Preset</translation>
+        <translation>Preset</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="62"/>
         <source>Auto-preset</source>
-        <translation type="unfinished">Auto-preset</translation>
+        <translation>Auto-preset</translation>
     </message>
 </context>
 <context>
@@ -1204,7 +1204,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="148"/>
         <source>Display this text and exit</source>
-        <translation>Wyświetal ten tekst i wychodzi</translation>
+        <translation>Wyświetla ten tekst i wychodzi</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="155"/>
@@ -1214,12 +1214,12 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="145"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie czyść listy</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="156"/>
         <source>Qt version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja QT:</translation>
     </message>
 </context>
 <context>

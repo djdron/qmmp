@@ -6,6 +6,7 @@
     <file>lyrics_plugin_zh_CN.qm</file>
     <file>lyrics_plugin_zh_TW.qm</file>
     <file>lyrics_plugin_cs.qm</file>
+    <file>lyrics_plugin_pl.qm</file>
     <file>lyrics_plugin_de.qm</file>
   </qresource>
 </RCC>

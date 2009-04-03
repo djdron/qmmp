@@ -17,6 +17,7 @@ TRANSLATIONS = translations/hal_plugin_cs.ts \
                translations/hal_plugin_zh_CN.ts \
                translations/hal_plugin_zh_TW.ts \
                translations/hal_plugin_ru.ts \
+               translations/hal_plugin_pl.ts \
                translations/hal_plugin_uk_UA.ts
 RESOURCES = translations/translations.qrc
 

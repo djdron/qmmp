@@ -5,6 +5,7 @@
     <file>wavpack_plugin_de.qm</file>
     <file>wavpack_plugin_zh_CN.qm</file>
     <file>wavpack_plugin_zh_TW.qm</file>
+    <file>wavpack_plugin_pl.qm</file>
     <file>wavpack_plugin_ru.qm</file>
     <file>wavpack_plugin_uk_UA.qm</file>
   </qresource>

@@ -25,6 +25,7 @@ TRANSLATIONS = translations/projectm_plugin_cs.ts \
                translations/projectm_plugin_de.ts \
                translations/projectm_plugin_zh_CN.ts \
                translations/projectm_plugin_zh_TW.ts \
+               translations/projectm_plugin_pl.ts \
                translations/projectm_plugin_ru.ts \
                translations/projectm_plugin_uk_UA.ts
 RESOURCES = translations/translations.qrc
