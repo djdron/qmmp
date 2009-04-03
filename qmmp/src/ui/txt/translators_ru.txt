@@ -8,11 +8,15 @@
 Китайский упрощённый:
     lon <lon83129@126.com>
 
+Польский
+   Grzegorz Gibas <amigib@gmail.com>
+
 Чежский:
     Karel Volný <kvolny@redhat.com>
 
 Немецкий:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
 
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
