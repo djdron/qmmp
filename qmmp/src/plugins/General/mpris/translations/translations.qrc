@@ -5,6 +5,7 @@
     <file>mpris_plugin_de.qm</file>
     <file>mpris_plugin_zh_CN.qm</file>
     <file>mpris_plugin_zh_TW.qm</file>
+    <file>mpris_plugin_pl.qm</file>
     <file>mpris_plugin_ru.qm</file>
     <file>mpris_plugin_uk_UA.qm</file>
   </qresource>

@@ -35,6 +35,7 @@ TRANSLATIONS = translations/qmmp_file_dialog_plugin_ru.ts \
                translations/qmmp_file_dialog_plugin_tr.ts \
                translations/qmmp_file_dialog_plugin_zh_CN.ts \
                translations/qmmp_file_dialog_plugin_cs.ts \
+               translations/qmmp_file_dialog_plugin_pl.ts \
                translations/qmmp_file_dialog_plugin_pt_BR.ts \
                translations/qmmp_file_dialog_plugin_uk_UA.ts \
                translations/qmmp_file_dialog_plugin_zh_TW.ts \

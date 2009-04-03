@@ -6,6 +6,7 @@
     <file>jack_plugin_zh_CN.qm</file>
     <file>jack_plugin_zh_TW.qm</file>
     <file>jack_plugin_cs.qm</file>
+    <file>jack_plugin_pl.qm</file>
     <file>jack_plugin_de.qm</file>
   </qresource>
 </RCC>

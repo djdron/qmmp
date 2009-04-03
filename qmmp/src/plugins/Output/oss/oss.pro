@@ -29,6 +29,7 @@ TRANSLATIONS = translations/oss_plugin_cs.ts \
                translations/oss_plugin_zh_CN.ts \
                translations/oss_plugin_zh_TW.ts \
                translations/oss_plugin_ru.ts \
+               translations/oss_plugin_pl.ts \
                translations/oss_plugin_uk_UA.ts
 
 RESOURCES = translations/translations.qrc

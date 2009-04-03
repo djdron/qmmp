@@ -25,6 +25,7 @@ TRANSLATIONS = translations/vorbis_plugin_ru.ts \
                translations/vorbis_plugin_zh_CN.ts \
                translations/vorbis_plugin_zh_TW.ts \
                translations/vorbis_plugin_cs.ts \
+               translations/vorbis_plugin_pl.ts \
                translations/vorbis_plugin_de.ts
 RESOURCES = translations/translations.qrc
 

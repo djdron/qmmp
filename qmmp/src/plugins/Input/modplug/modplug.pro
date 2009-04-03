@@ -31,6 +31,7 @@ TRANSLATIONS = translations/modplug_plugin_cs.ts \
                translations/modplug_plugin_zh_CN.ts \
                translations/modplug_plugin_zh_TW.ts \
                translations/modplug_plugin_ru.ts \
+               translations/modplug_plugin_pl.ts \
                translations/modplug_plugin_uk_UA.ts
 RESOURCES = translations/translations.qrc
 

@@ -7,5 +7,6 @@
     <file>hal_plugin_zh_TW.qm</file>
     <file>hal_plugin_cs.qm</file>
     <file>hal_plugin_de.qm</file>
+    <file>hal_plugin_pl.qm</file>
   </qresource>
 </RCC>
