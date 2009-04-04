@@ -49,6 +49,7 @@ OutputALSA::OutputALSA(QObject * parent)
     m_prebuf_size = 0;
     m_prebuf_fill = 0;
     m_pause = FALSE;
+    m_can_pause = FALSE;
 }
 
 OutputALSA::~OutputALSA()
@@ -182,7 +183,8 @@ void OutputALSA::configure(quint32 freq, int chan, int prec)
     //setup needed values
     m_bits_per_frame = snd_pcm_format_physical_width(format) * chan;
     m_chunk_size = period_size;
-    //}
+    m_can_pause = snd_pcm_hw_params_can_pause(hwparams);
+    qDebug("OutputALSA: can pause: %d", m_can_pause);
     Output::configure(freq, chan, prec); //apply configuration
     //create alsa prebuffer;
     m_prebuf_size = Buffer::size() + m_bits_per_frame * m_chunk_size / 8;
@@ -229,7 +231,9 @@ qint64 OutputALSA::latency()
 void OutputALSA::pause()
 {
     m_pause = !m_pause;
-    if (m_pause && pcm_handle)
+    if (m_can_pause)
+        snd_pcm_pause(pcm_handle, m_pause);
+    else if (m_pause && pcm_handle)
     {
         snd_pcm_drop(pcm_handle);
         snd_pcm_prepare(pcm_handle);
@@ -345,7 +349,7 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
         return 0;
     }
     qDebug ("OutputALSA: error: %s", snd_strerror(m));
-    return -1;
+    return snd_pcm_prepare (pcm_handle);
 }
 
 void OutputALSA::uninitialize()
