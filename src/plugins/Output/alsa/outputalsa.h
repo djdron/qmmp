@@ -68,6 +68,7 @@ private:
     qint64 m_prebuf_size;
     qint64 m_prebuf_fill;
     bool m_pause;
+    bool m_can_pause;
 };
 
 class VolumeControlALSA : public VolumeControl
