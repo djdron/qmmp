@@ -36,6 +36,15 @@ Bs2bPlugin::~Bs2bPlugin()
     bs2b_clear(m_bs2b_handler);
 }
 
+#if (BS2B_VERSION_INT) >= 0x030000
+#define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \
+    case bitsPerSample: \
+        { \
+            dataType * data = reinterpret_cast<dataType *>(*out_data); \
+            functionToCall(m_bs2b_handler, data, samples); \
+        } \
+        break;
+#else
 #define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \
     case bitsPerSample: \
         { \
@@ -47,6 +56,8 @@ Bs2bPlugin::~Bs2bPlugin()
         } \
         break;
 
+#endif
+
 ulong Bs2bPlugin::process(char *in_data, const ulong size, char **out_data)
 {
     memcpy(*out_data, in_data, size);
@@ -54,14 +65,23 @@ ulong Bs2bPlugin::process(char *in_data, const ulong size, char **out_data)
         return size;
 
     uint samples = size / (bitsPerSample() / 8) / 2;
+
     switch (bitsPerSample())
     {
+#if (BS2B_VERSION_INT) >= 0x030000
+        CASE_BS2B(8,  int8_t,  bs2b_cross_feed_s8, samples, out_data)
+        CASE_BS2B(16, int16_t, bs2b_cross_feed_s16le, samples, out_data)
+        CASE_BS2B(24, bs2b_int24_t, bs2b_cross_feed_s24, samples, out_data)
+        CASE_BS2B(32, int32_t,  bs2b_cross_feed_s32le, samples, out_data)
+#else
         CASE_BS2B(8,  char,  bs2b_cross_feed_s8, samples, out_data)
         CASE_BS2B(16, short, bs2b_cross_feed_16, samples, out_data)
         CASE_BS2B(32, long,  bs2b_cross_feed_32, samples, out_data)
+#endif
     default:
         ; // noop
     }
+
     return size;
 }
 
