@@ -141,7 +141,6 @@ void Scrobbler::updateMetaData()
             && !metadata.value(Qmmp::ALBUM).contains("="))
     {
         m_song = SongInfo(metadata, m_core->totalTime()/1000);
-
         if (isReady() && m_notificationid == 0)
             sendNotification(m_song);
     }
@@ -158,6 +157,8 @@ void Scrobbler::processResponse(int id, bool error)
             m_submitid = 0;
         else if (id == m_handshakeid)
             m_handshakeid = 0;
+        else if (id == m_notificationid)
+            m_notificationid = 0;
         return;
     }
     QString str(m_array);
