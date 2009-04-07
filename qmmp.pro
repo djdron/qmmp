@@ -1,13 +1,20 @@
 TEMPLATE = subdirs
 SUBDIRS = src/qmmp src/qmmpui src/ui src/plugins
 
-exists($$[QT_INSTALL_BINS]/lrelease){
+ 
+unix:exists($$[QT_INSTALL_BINS]/lrelease){
 LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease
 }
 
-exists($$[QT_INSTALL_BINS]/lrelease-qt4){
+unix:exists($$[QT_INSTALL_BINS]/lrelease-qt4){
 LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease-qt4
 }
+
+
+win32:exists($$[QT_INSTALL_BINS]/lrelease.exe){
+LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease.exe
+}
+
 
 isEmpty(LRELEASE_EXECUTABLE){
 error(Could not find lrelease executable)
@@ -18,4 +25,5 @@ message(Found lrelease executable: $$LRELEASE_EXECUTABLE)
 
 
 message(generating translations)
-system(find . -name *.ts | xargs $$LRELEASE_EXECUTABLE)
+unix:system(find . -name *.ts | xargs $$LRELEASE_EXECUTABLE)
+win32:system(for /r %B in (*.ts) do $$LRELEASE_EXECUTABLE %B)
