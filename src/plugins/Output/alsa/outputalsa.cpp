@@ -359,6 +359,7 @@ void OutputALSA::uninitialize()
     m_inited = FALSE;
     if (pcm_handle)
     {
+        snd_pcm_drop(pcm_handle);
         qDebug("OutputALSA: closing pcm_handle");
         snd_pcm_close(pcm_handle);
         pcm_handle = 0;
