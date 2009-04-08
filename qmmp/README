@@ -53,7 +53,7 @@ Requirements:
 - ffmpeg >= 0.4.9-pre1 (Optional)
 - cdio >= 0.80 (Optional)
 - faad2 >= 2.6.1 (Optional)
-- libbs2b >= 2.2.1 (Optional)
+- libbs2b >= 3.0.0 (Optional)
 - libprojectM >= 1.2.0 (Optional)
 - cmake >= 2.4.8 (for build only)
 

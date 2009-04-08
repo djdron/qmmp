@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <defaultcodec></defaultcodec>
 <context>
     <name>EffectBs2bFactory</name>
@@ -47,44 +48,45 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="33"/>
-        <source>low</source>
-        <translation>низький</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="34"/>
-        <source>middle</source>
-        <translation>середній</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="35"/>
-        <source>high</source>
-        <translation>високий</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="36"/>
-        <source>low (easy version)</source>
-        <translation>низький (спрощена версія)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="37"/>
-        <source>middle (easy version)</source>
-        <translation>середній (спрощена версія)</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="38"/>
-        <source>high (easy version) [default]</source>
-        <translation>високий (спрощена версія) [за умовчанням]</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>BS2B Plugin Settings</source>
         <translation>Налаштування модуля BS2B</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Crossfeed level:</source>
-        <translation>Рівень взаємозмішування:</translation>
+        <location filename="../settingsdialog.ui" line="32"/>
+        <source>Crossfeed level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="45"/>
+        <location filename="../settingsdialog.ui" line="59"/>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="71"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="78"/>
+        <source>C.Moy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="85"/>
+        <source>J. Meier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="60"/>
+        <source>%1 Hz, %2 us</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="67"/>
+        <source>%1 dB</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -20,6 +20,7 @@
 #ifndef BS2BPLUGIN_H
 #define BS2BPLUGIN_H
 
+#include <QMutex>
 #include <bs2b/bs2b.h>
 #include <qmmp/effect.h>
 
@@ -37,9 +38,13 @@ public:
 
     ulong process(char *in_data, const ulong size, char **out_data);
     void configure(quint32 freq, int chan, int res);
+    void setCrossfeedLevel(uint32_t level);
+    static Bs2bPlugin* instance();
 
 private:
     t_bs2bdp m_bs2b_handler;
+    QMutex m_mutex;
+    static Bs2bPlugin *m_instance;
 };
 
 #endif
