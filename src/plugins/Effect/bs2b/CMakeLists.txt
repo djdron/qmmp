@@ -50,6 +50,11 @@ QT4_WRAP_CPP(libbs2b_MOC_SRCS ${libbs2b_MOC_HDRS})
 
 pkg_search_module(BS2B libbs2b)
 
+IF(BS2B_VERSION VERSION_LESS 3.0.0)
+UNSET(BS2B_FOUND CACHE)
+ENDIF(BS2B_VERSION VERSION_LESS 3.0.0)
+
+
 # user interface
 
 

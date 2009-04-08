@@ -24,19 +24,22 @@
 #include <qmmp/qmmp.h>
 #include "bs2bplugin.h"
 
+Bs2bPlugin *Bs2bPlugin::m_instance = 0;
+
 Bs2bPlugin::Bs2bPlugin(QObject* parent) : Effect(parent)
 {
+    m_instance = this;
     m_bs2b_handler = bs2b_open();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    bs2b_set_level(m_bs2b_handler, settings.value("bs2b/level", BS2B_DEFAULT_CLEVEL).toInt());
+    bs2b_set_level(m_bs2b_handler, settings.value("bs2b/level", BS2B_DEFAULT_CLEVEL).toUInt());
 }
 
 Bs2bPlugin::~Bs2bPlugin()
 {
+    m_instance = 0;
     bs2b_clear(m_bs2b_handler);
 }
 
-#if (BS2B_VERSION_INT) >= 0x030000
 #define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \
     case bitsPerSample: \
         { \
@@ -44,19 +47,6 @@ Bs2bPlugin::~Bs2bPlugin()
             functionToCall(m_bs2b_handler, data, samples); \
         } \
         break;
-#else
-#define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \
-    case bitsPerSample: \
-        { \
-            dataType * data = reinterpret_cast<dataType *>(*out_data); \
-            while (samples--) { \
-                functionToCall(m_bs2b_handler, data); \
-                data += 2; \
-            } \
-        } \
-        break;
-
-#endif
 
 ulong Bs2bPlugin::process(char *in_data, const ulong size, char **out_data)
 {
@@ -65,23 +55,17 @@ ulong Bs2bPlugin::process(char *in_data, const ulong size, char **out_data)
         return size;
 
     uint samples = size / (bitsPerSample() / 8) / 2;
-
+    m_mutex.lock();
     switch (bitsPerSample())
     {
-#if (BS2B_VERSION_INT) >= 0x030000
         CASE_BS2B(8,  int8_t,  bs2b_cross_feed_s8, samples, out_data)
         CASE_BS2B(16, int16_t, bs2b_cross_feed_s16le, samples, out_data)
         CASE_BS2B(24, bs2b_int24_t, bs2b_cross_feed_s24, samples, out_data)
         CASE_BS2B(32, int32_t,  bs2b_cross_feed_s32le, samples, out_data)
-#else
-        CASE_BS2B(8,  char,  bs2b_cross_feed_s8, samples, out_data)
-        CASE_BS2B(16, short, bs2b_cross_feed_16, samples, out_data)
-        CASE_BS2B(32, long,  bs2b_cross_feed_32, samples, out_data)
-#endif
     default:
         ; // noop
     }
-
+    m_mutex.unlock();
     return size;
 }
 
@@ -89,4 +73,16 @@ void Bs2bPlugin::configure(quint32 freq, int chan, int res)
 {
     Effect::configure(freq, chan, res);
     bs2b_set_srate(m_bs2b_handler,freq);
+}
+
+void Bs2bPlugin::setCrossfeedLevel(uint32_t level)
+{
+    m_mutex.lock();
+    bs2b_set_level(m_bs2b_handler, level);
+    m_mutex.unlock();
+}
+
+Bs2bPlugin* Bs2bPlugin::instance()
+{
+    return m_instance;
 }

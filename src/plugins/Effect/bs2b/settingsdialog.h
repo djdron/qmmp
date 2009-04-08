@@ -37,9 +37,18 @@ public:
 
 public slots:
     virtual void accept();
+    virtual void reject();
+
+private slots:
+    void on_freqSlider_valueChanged (int value);
+    void on_feedSlider_valueChanged (int value);
+    void on_defaultButton_pressed();
+    void on_cmButton_pressed ();
+    void on_jmButton_pressed ();
 
 private:
     Ui::SettingsDialog ui;
+    uint32_t m_level;
 
 };
 
