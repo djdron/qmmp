@@ -1,4 +1,5 @@
-include(../../qmmp.pri)
+unix:include(../../qmmp.pri)
+win32:include(../../qmmp.pri)
 
 HEADERS += recycler.h \
            buffer.h \
@@ -37,8 +38,10 @@ SOURCES += recycler.cpp \
            fileinfo.cpp \
            volumecontrol.cpp
 
-TARGET = ../../lib/qmmp
+unix:TARGET = ../../lib/qmmp
+win32:TARGET = ../../../bin/qmmp 
 CONFIG += release \
+shared \
 warn_on \
 qt \
 thread \
@@ -46,7 +49,8 @@ link_pkgconfig
 
 TEMPLATE = lib
 VERSION = $$QMMP_VERSION
-PKGCONFIG += libcurl
+unix:PKGCONFIG += libcurl
+win32:LIBS += -lcurldll 
 
 unix : isEmpty(LIB_DIR){
         LIB_DIR = /lib
@@ -57,9 +61,11 @@ DEFINES += QMMP_VERSION=$$QMMP_VERSION
 DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
 
 contains(CONFIG, SVN_VERSION){
-    DEFINES += SVN_REVISION=\\\"$$system(./svn_revision.sh)\\\"
+    unix:DEFINES += SVN_REVISION=\\\"$$system(./svn_revision.sh)\\\"
+    win32:DEFINES += SVN_REVISION=\\\"svn\\\"
 }
 
+unix {
 target.path = $$LIB_DIR
 
 devel.files += buffer.h \
@@ -83,3 +89,4 @@ devel.path = /include/qmmp
 
 INSTALLS += target devel
 DESTDIR = .
+}
