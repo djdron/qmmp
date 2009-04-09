@@ -20,7 +20,7 @@
 #ifndef EQWIDGET_H
 #define EQWIDGET_H
 
-#include <pixmapwidget.h>
+#include "pixmapwidget.h"
 #include <qmmp/output.h>
 
 /**

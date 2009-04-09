@@ -20,7 +20,7 @@
 #ifndef EQTITLEBAR_H
 #define EQTITLEBAR_H
 
-#include <pixmapwidget.h>
+#include "pixmapwidget.h"
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
