@@ -27,7 +27,7 @@
 #endif
 
 #ifndef LIB_DIR
-#define "/lib"
+#define LIB_DIR "/lib"
 #endif
 
 #include "qmmp.h"
