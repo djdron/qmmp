@@ -27,7 +27,9 @@
 #include <string.h>
 #include <qmmpui/commandlinemanager.h>
 
+#ifndef Q_OS_WIN32
 #include "unixdomainsocket.h"
+#endif
 #include "mainwindow.h"
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
@@ -66,7 +68,7 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
         qFatal("QMMP: Unknown command...");
         exit(1);
     }
-
+#ifndef Q_OS_WIN32
     m_sock = new UnixDomainSocket(this);
     if (m_sock->bind(UDS_PATH))
     {
@@ -88,6 +90,9 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     }
     else // socket is alive, qmmp application is already running. passing command to it!
         writeCommand();
+#else
+    startMainWindow();
+#endif
 }
 
 QMMPStarter::~ QMMPStarter()
@@ -97,13 +102,16 @@ QMMPStarter::~ QMMPStarter()
 
 void QMMPStarter::startMainWindow()
 {
+#ifndef Q_OS_WIN32
     connect(m_sock, SIGNAL(readyRead()),this, SLOT(readCommand()));
+#endif
     QStringList arg_l = argString.split("\n", QString::SkipEmptyParts);
     mw = new MainWindow(arg_l,m_option_manager,0);
 }
 
 void QMMPStarter::writeCommand()
 {
+#ifndef Q_OS_WIN32
     if (!argString.isEmpty())
     {
         char buf[PATH_MAX + 1];
@@ -120,10 +128,12 @@ void QMMPStarter::writeCommand()
     }
 
     exit(0);
+#endif
 }
 
 void QMMPStarter::readCommand()
 {
+#ifndef Q_OS_WIN32
     QByteArray inputArray;
     inputArray.resize(MAXCOMMANDSIZE);
     bzero(inputArray.data(),inputArray.size());
@@ -134,7 +144,7 @@ void QMMPStarter::readCommand()
     {
         mw->processCommandArgs(slist,cwd);
     }
-
+#endif
 }
 
 void QMMPStarter::printUsage()

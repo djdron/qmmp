@@ -32,7 +32,7 @@ SymbolDisplay::SymbolDisplay ( QWidget *parent, int digits )
     connect ( m_skin, SIGNAL ( skinChanged() ), this, SLOT (draw()));
     draw();
     for (int i=0; i<m_digits; ++i)
-#ifdef Q_OS_FREEBSD
+#if defined(Q_OS_FREEBSD) || defined(Q_OS_WIN32)
         m_max += 9 * (int) pow(10,i);
 #else
         m_max += 9 * (int) exp10(i);

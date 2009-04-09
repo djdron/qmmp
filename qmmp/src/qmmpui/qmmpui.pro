@@ -1,14 +1,17 @@
 include(../../qmmp.pri)
 
-TARGET = ../../lib/qmmpui
+unix:TARGET = ../../lib/qmmpui
+win32:TARGET = ../../../bin/qmmpui
 CONFIG += release \
 warn_on \
+shared \
 qt \
 thread
 
 QMAKE_LIBDIR += ../../lib qmmpui
 LIBS += -Wl,-rpath,./
-LIBS += -L../../lib -lqmmp
+unix:LIBS += -L../../lib -lqmmp
+win32:LIBS += -L../../bin -lqmmp0
 INCLUDEPATH += ../
 
 TEMPLATE = lib
@@ -19,7 +22,7 @@ unix : isEmpty(LIB_DIR){
 
 VERSION = $$QMMP_VERSION
 
-target.path = $$LIB_DIR
+unix:target.path = $$LIB_DIR
 
 HEADERS += general.h \
            generalfactory.h \
@@ -37,7 +40,7 @@ HEADERS += general.h \
            playstate.h \
            fileloader.h \
            mediaplayer.h \
- playlistsettings.h
+           playlistsettings.h
 SOURCES += general.cpp \
            generalhandler.cpp \
            playlistparser.cpp \
@@ -50,9 +53,9 @@ SOURCES += general.cpp \
            playlistitem.cpp \
            fileloader.cpp \
            mediaplayer.cpp \
- playlistsettings.cpp
+           playlistsettings.cpp
 
-DESTDIR = .
+unix:DESTDIR = .
 
 RESOURCES += translations/libqmmpui_locales.qrc
 
@@ -64,7 +67,7 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
                translations/libqmmpui_uk_UA.ts \
                translations/libqmmpui_zh_TW.ts \
                translations/libqmmpui_de.ts
-
+unix {
 devel.files += abstractplaylistitem.h \
                commandlinemanager.h \
                commandlineoption.h \
@@ -82,3 +85,4 @@ devel.files += abstractplaylistitem.h \
 devel.path = /include/qmmpui
 
 INSTALLS += target devel
+}

@@ -20,7 +20,7 @@
 #ifndef BALANCEBAR_H
 #define BALANCEBAR_H
 
-#include <pixmapwidget.h>
+#include "pixmapwidget.h"
 
 class Skin;
 

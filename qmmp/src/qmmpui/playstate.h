@@ -21,7 +21,7 @@
 #ifndef _PLAYSTATE_H
 #define _PLAYSTATE_H
 
-#include <playlistmodel.h>
+#include "playlistmodel.h"
 
 /*! @internal
  * @brief Abstract class that represents data model playing states.

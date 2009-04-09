@@ -20,7 +20,7 @@
 #ifndef TOGGLEBUTTON_H
 #define TOGGLEBUTTON_H
 
-#include <pixmapwidget.h>
+#include "pixmapwidget.h"
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>

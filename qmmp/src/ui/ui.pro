@@ -49,7 +49,6 @@ HEADERS += mainwindow.h \
            aboutdialog.h \
            timeindicator.h \
            keyboardmanager.h \
-           unixdomainsocket.h \
            addurldialog.h \
            skinreader.h \
            visualmenu.h \
@@ -96,7 +95,6 @@ SOURCES += mainwindow.cpp \
            aboutdialog.cpp \
            timeindicator.cpp \
            keyboardmanager.cpp \
-           unixdomainsocket.cpp \
            addurldialog.cpp \
            skinreader.cpp \
            visualmenu.cpp \
@@ -105,6 +103,13 @@ SOURCES += mainwindow.cpp \
            shadedbar.cpp \
            builtincommandlineoption.cpp
 
+win32:HEADERS += ../qmmp/visual.h
+
+unix{
+HEADERS +=  unixdomainsocket.h
+SOURCES +=  unixdomainsocket.cpp
+}
+
 #Some conf to redirect intermediate stuff in separate dirs
 UI_DIR =./.build/ui/
 MOC_DIR =./.build/moc/
@@ -112,16 +117,22 @@ OBJECTS_DIR =./.build/obj
 
 
 QT += network
-TARGET = ../../bin/qmmp
+unix:TARGET = ../../bin/qmmp
+win32:TARGET = ../../../bin/qmmp
 CONFIG += thread release \
 warn_on
 QMAKE_LIBDIR += ../../lib qmmpui
 LIBS += -Wl,-rpath,../lib
-LIBS += -L../../lib -lqmmp -lqmmpui
+unix:LIBS += -L../../lib -lqmmp -lqmmpui
+win32:LIBS += -L../../bin -lqmmp0 -lqmmpui0
+
+
 INCLUDEPATH += ../
 RESOURCES = images/images.qrc \
             stuff.qrc
 TEMPLATE = app
+
+unix{
 target.path = /bin
 
 desktop.files = qmmp.desktop \
@@ -137,7 +148,7 @@ icon32.path = /share/icons/hicolor/32x32/apps
 icon48.path = /share/icons/hicolor/48x48/apps
 
 INSTALLS += desktop target icon16 icon32 icon48
-
+}
 
 RESOURCES += translations/qmmp_locales.qrc
 
@@ -150,7 +161,3 @@ TRANSLATIONS = translations/qmmp_ru.ts \
                translations/qmmp_zh_TW.ts \
                translations/qmmp_de.ts \
                translations/qmmp_pl_PL.ts
-
-
-
-

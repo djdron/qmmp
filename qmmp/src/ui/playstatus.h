@@ -20,7 +20,7 @@
 #ifndef PLAYSTATUS_H
 #define PLAYSTATUS_H
 
-#include <pixmapwidget.h>
+#include "pixmapwidget.h"
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>

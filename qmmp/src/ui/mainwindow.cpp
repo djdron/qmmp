@@ -142,9 +142,11 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     //m_playListModel->readSettings();
     m_playListModel->doCurrentVisibleRequest();
     updateEQ();
+#ifndef Q_OS_WIN32
     char buf[PATH_MAX + 1];
     QString cwd = QString::fromLocal8Bit(getcwd(buf,PATH_MAX));
     processCommandArgs(args,cwd);
+#endif
     if (m_startHidden && m_generalHandler->visibilityControl())
         toggleVisibility();
 }

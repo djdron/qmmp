@@ -20,7 +20,7 @@
 #ifndef VOLUMEBAR_H
 #define VOLUMEBAR_H
 
-#include <pixmapwidget.h>
+#include "pixmapwidget.h"
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>

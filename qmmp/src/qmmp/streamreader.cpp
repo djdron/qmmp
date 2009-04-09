@@ -98,13 +98,13 @@ qint64 StreamReader::size () const
 
 bool StreamReader::waitForBytesWritten ( int msecs )
 {
-    usleep(msecs*1000);
+    //usleep(msecs*1000);
     return TRUE;
 }
 
 bool StreamReader::waitForReadyRead ( int msecs )
 {
-    usleep(msecs*1000);
+    //usleep(msecs*1000);
     return TRUE;
 }
 

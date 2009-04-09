@@ -20,7 +20,7 @@
 #ifndef TIMEINDICATOR_H
 #define TIMEINDICATOR_H
 
-#include <pixmapwidget.h>
+#include "pixmapwidget.h"
 
 class QMouseEvent;
 class QTimer;
