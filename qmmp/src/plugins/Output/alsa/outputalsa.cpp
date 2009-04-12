@@ -124,7 +124,7 @@ void OutputALSA::configure(quint32 freq, int chan, int prec)
         return;
     }
     exact_rate = rate;// = 11000;
-    qDebug("OutputALSA: frequency=%d, channels=%d", rate, chan);
+    qDebug("OutputALSA: frequency=%d, channels=%d, bits=%d", rate, chan,prec);
 
     if ((err = snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0)) < 0)
     {
