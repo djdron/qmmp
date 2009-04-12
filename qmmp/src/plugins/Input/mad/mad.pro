@@ -15,17 +15,23 @@ SOURCES += decoder_mad.cpp \
            tagextractor.cpp
 
 TARGET =$$PLUGINS_PREFIX/Input/mad
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmad.so
+unix:QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmad.so
 
-INCLUDEPATH += ../../../
+
+INCLUDEPATH += ../../../ 
+win32:INCLUDEPATH += D:\MINGW\include\taglib
 CONFIG += release \
 warn_on \
 plugin \
 link_pkgconfig
 TEMPLATE = lib
-QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp -lmad
-PKGCONFIG += taglib mad
+unix:QMAKE_LIBDIR += ../../../../lib
+win32:QMAKE_LIBDIR += ../../../../bin
+unix:LIBS += -lqmmp -lmad
+unix:PKGCONFIG += taglib mad
+
+win32:LIBS += -lqmmp0 -lmad -ltag.dll -ltag_c.dll
+
 TRANSLATIONS = translations/mad_plugin_ru.ts \
                translations/mad_plugin_uk_UA.ts \
                translations/mad_plugin_zh_CN.ts \
@@ -35,8 +41,10 @@ TRANSLATIONS = translations/mad_plugin_ru.ts \
                translations/mad_plugin_de.ts
 RESOURCES = translations/translations.qrc
 
+unix{
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
+}

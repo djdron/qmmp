@@ -104,7 +104,7 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
 {
     FileInfo *info = new FileInfo(fileName);
     TagLib::Tag *tag = 0;
-    TagLib::MPEG::File fileRef(fileName.toLocal8Bit ());
+    TagLib::MPEG::File fileRef(fileName.toLocal8Bit ().constData());
 
     if (useMetaData)
     {

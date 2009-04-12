@@ -1,9 +1,10 @@
 SUBDIRS += Input \
            Output \
-           Visual \
-           Effect \
            General \
-           PlaylistFormats \
-           CommandLineOptions \
-           FileDialogs
+           Visual
+
+unix:SUBDIRS += Effect \
+                PlaylistFormats \
+                CommandLineOptions \
+                FileDialogs
 TEMPLATE = subdirs

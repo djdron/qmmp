@@ -5,10 +5,11 @@ CONFIG += release \
           plugin  
 
 TEMPLATE = lib
-QMAKE_LIBDIR += ../../../../lib
+unix:QMAKE_LIBDIR += ../../../../lib
+win32:QMAKE_LIBDIR += ../../../../bin
 
 TARGET=$$PLUGINS_PREFIX/General/scrobbler
-QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libscrobbler.so
+unix:QMAKE_CLEAN =$$PLUGINS_PREFIX/General/libscrobbler.so
 
 
 TRANSLATIONS = translations/scrobbler_plugin_cs.ts \
@@ -20,28 +21,28 @@ TRANSLATIONS = translations/scrobbler_plugin_cs.ts \
                translations/scrobbler_plugin_uk_UA.ts
 RESOURCES = translations/translations.qrc
 
+unix{
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }
 target.path = $$LIB_DIR/qmmp/General
 INSTALLS += target
-#FORMS += settingsdialog.ui
-
-#RESOURCES += images/images.qrc
-
+}
 
 HEADERS += scrobblerfactory.h \
            scrobbler.h \
- settingsdialog.h
+           settingsdialog.h
+win32:HEADERS += ../../../../src/qmmpui/general.h
 SOURCES += scrobblerfactory.cpp \
            scrobbler.cpp \
- settingsdialog.cpp
+           settingsdialog.cpp
 QT += network
 
 
 INCLUDEPATH += ../../../
 
-LIBS += -lqmmpui -lqmmp
+unix:LIBS += -lqmmpui -lqmmp
+win32:LIBS += -lqmmpui0 -lqmmp0
 
 FORMS += settingsdialog.ui
 

@@ -2,7 +2,8 @@ include(../../../qmmp.pri)
 
 CONFIG += release warn_on 
 TEMPLATE = subdirs
-
+win32:SUBDIRS += waveout
+unix{
 contains(CONFIG, JACK_PLUGIN){
 #    SUBDIRS += jack
     message(***********************)
@@ -29,4 +30,5 @@ contains(CONFIG, ALSA_PLUGIN){
     message(***********************)
     message(* ALSA plugin enabled *)
     message(***********************)
+}
 }

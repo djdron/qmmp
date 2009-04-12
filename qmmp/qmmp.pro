@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 SUBDIRS = src/qmmp src/qmmpui src/ui src/plugins
 
+ 
 unix:exists($$[QT_INSTALL_BINS]/lrelease){
 LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease
 }

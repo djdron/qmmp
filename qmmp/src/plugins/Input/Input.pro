@@ -1,8 +1,10 @@
 include(../../../qmmp.pri)
 
-SUBDIRS += mad vorbis cue sndfile wavpack
+SUBDIRS += mad cue 
 TEMPLATE = subdirs
 
+unix{
+SUBDIRS += vorbis sndfile wavpack
 contains(CONFIG, MODPLUG_PLUGIN){
     SUBDIRS += modplug
     message(***************************)
@@ -50,4 +52,5 @@ contains(CONFIG, CDAUDIO_PLUGIN){
   message(***************************)
   message(* CD Audio plugin enabled *)
   message(***************************)
+}
 }

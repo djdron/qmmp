@@ -93,7 +93,7 @@ DetailsDialog::~DetailsDialog()
 
 void DetailsDialog::loadMPEGInfo()
 {
-    TagLib::MPEG::File f (m_path.toLocal8Bit());
+    TagLib::MPEG::File f (m_path.toLocal8Bit().constData());
     //l.label
     //ui. f.audioProperties()->level();
     QString text;
@@ -136,7 +136,7 @@ void DetailsDialog::loadMPEGInfo()
 
 void DetailsDialog::loadTag()
 {
-    TagLib::MPEG::File f (m_path.toLocal8Bit());
+    TagLib::MPEG::File f (m_path.toLocal8Bit().constData());
     QTextCodec *codec = QTextCodec::codecForName ("UTF-8");
     TagLib::Tag *tag = 0;
 
@@ -199,7 +199,7 @@ void DetailsDialog::loadTag()
 
 void DetailsDialog::save()
 {
-    TagLib::MPEG::File* f = new  TagLib::MPEG::File(m_path.toLocal8Bit());
+    TagLib::MPEG::File* f = new  TagLib::MPEG::File(m_path.toLocal8Bit().constData());
     TagLib::String::Type type = TagLib::String::Latin1;
 
     QTextCodec *codec = 0;
@@ -259,7 +259,7 @@ void DetailsDialog::save()
 
 void DetailsDialog::create()
 {
-    TagLib::MPEG::File *f = new TagLib::MPEG::File (m_path.toLocal8Bit());
+    TagLib::MPEG::File *f = new TagLib::MPEG::File (m_path.toLocal8Bit().constData());
     TagLib::Tag *tag = 0;
     if (selectedTag() == TagLib::MPEG::File::ID3v1)
         tag = f->ID3v1Tag(TRUE);
@@ -277,7 +277,7 @@ void DetailsDialog::create()
 
 void DetailsDialog::deleteTag()
 {
-    TagLib::MPEG::File *f = new TagLib::MPEG::File (m_path.toLocal8Bit());
+    TagLib::MPEG::File *f = new TagLib::MPEG::File (m_path.toLocal8Bit().constData());
     f->strip(selectedTag());
     delete f;
     loadTag();
