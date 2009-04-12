@@ -169,7 +169,11 @@ void ConfigDialog::loadSkins()
     m_skinList << fileInfo;
 
     findSkins(QDir::homePath() +"/.qmmp/skins");
+#ifdef Q_OS_WIN32
+    findSkins(qApp->applicationDirPath()+"skins");
+#else
     findSkins(qApp->applicationDirPath()+"/../share/qmmp/skins");
+#endif
     foreach(QString path, m_reader->skins())
     {
         QListWidgetItem *item = new QListWidgetItem (path.section('/', -1));

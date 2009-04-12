@@ -1,6 +1,6 @@
 include(../../plugins.pri)
 
-#FORMS += detailsdialog.ui 
+FORMS += settingsdialog.ui 
 HEADERS += decodercuefactory.h \
            cueparser.h \
            decoder_cue.h \
@@ -10,8 +10,11 @@ SOURCES += decoder_cue.cpp \
            cueparser.cpp \
            settingsdialog.cpp
 
+win32:HEADERS += ../../../../src/qmmp/decoder.h \
+                 ../../../../src/qmmp/statehandler.h
+
 TARGET =$$PLUGINS_PREFIX/Input/cue
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libcue.so
+unix:QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libcue.so
 
 INCLUDEPATH += ../../../
 CONFIG += release \
@@ -20,8 +23,10 @@ plugin
 
 TEMPLATE = lib
 
-QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp -L/usr/lib
+unix:QMAKE_LIBDIR += ../../../../lib
+win32:QMAKE_LIBDIR += ../../../../bin
+unix:LIBS += -lqmmp -L/usr/lib
+win32:LIBS += -lqmmp0
 
 TRANSLATIONS = translations/cue_plugin_ru.ts \
                translations/cue_plugin_uk_UA.ts \
@@ -32,14 +37,14 @@ TRANSLATIONS = translations/cue_plugin_ru.ts \
                translations/cue_plugin_de.ts
 RESOURCES = translations/translations.qrc
 
+unix{
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }
 target.path = $$LIB_DIR/qmmp/Input
 
-FORMS += settingsdialog.ui
-
 desktop.files = qmmp_cue.desktop
 desktop.path = /share/applications
 
 INSTALLS += target desktop
+}

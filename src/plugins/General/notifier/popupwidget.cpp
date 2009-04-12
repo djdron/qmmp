@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ PopupWidget::PopupWidget(QWidget *parent)
         : QFrame(parent)
 {
     setWindowFlags(Qt::X11BypassWindowManagerHint |
-                   Qt::WindowStaysOnTopHint | Qt::Window);
+                   Qt::WindowStaysOnTopHint | Qt::Dialog | Qt::FramelessWindowHint);
     setFrameStyle(QFrame::Box | QFrame::Plain);
 
     QHBoxLayout *hlayout = new QHBoxLayout(this);

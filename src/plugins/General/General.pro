@@ -1,8 +1,8 @@
 SUBDIRS += statusicon \
-           scrobbler \
-           mpris \
            notifier \
-           hal \
            lyrics \
-           hotkey
+           scrobbler
+unix:SUBDIRS += mpris \                
+                hal \
+                hotkey
 TEMPLATE = subdirs

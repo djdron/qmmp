@@ -368,8 +368,21 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
 {
     if (m_resize)
     {
+#ifdef Q_OS_WIN32
+        int sx = (width()-275) /25;
+        int sy = (height()-116) /29;
+	if(width() < e->x() - 14)
+           sx++;
+	else if(width() > e->x() + 14)
+           sx--;
+        if(height() < e->y() - 14)
+           sy++;	
+        else if(height() > e->y() + 14)
+           sy--;
+        resize (275+25*sx,116+29*sy);
+#else
         resize (e->x() +25, e->y() +25);
-        //usleep(32000);
+#endif
     }
 }
 void PlayList::mouseReleaseEvent (QMouseEvent *)
