@@ -63,7 +63,11 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_playlistName = tr("Default");
     m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
+#if QT_VERSION >= 0x040500
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
+#else
+    etWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
+#endif
     setFixedSize (275,116);
     setWindowTitle("Qmmp");
 
