@@ -29,7 +29,7 @@ TRANSLATIONS = translations/waveout_plugin_cs.ts \
                translations/waveout_plugin_ru.ts \
                translations/waveout_plugin_pl.ts \
                translations/waveout_plugin_uk_UA.ts
-#RESOURCES = translations/translations.qrc
+RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){
 LIB_DIR = /lib
