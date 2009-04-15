@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,41 +44,41 @@ static WAVEHDR*          PlayedWaveHeaders [MAX_WAVEBLOCKS];
 
 static void CALLBACK wave_callback (HWAVE hWave, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2 )
 {
-        if ( uMsg == WOM_DONE )
-        {
-                EnterCriticalSection (&cs);
-                PlayedWaveHeaders [PlayedWaveHeadersCount++] = (WAVEHDR*) dwParam1;
-                LeaveCriticalSection (&cs);
-        }
+    if ( uMsg == WOM_DONE )
+    {
+        EnterCriticalSection (&cs);
+        PlayedWaveHeaders [PlayedWaveHeadersCount++] = (WAVEHDR*) dwParam1;
+        LeaveCriticalSection (&cs);
+    }
 }
 
 static void
 free_memory ( void )
 {
-        WAVEHDR*  wh;
-        HGLOBAL   hg;
+    WAVEHDR*  wh;
+    HGLOBAL   hg;
 
-        EnterCriticalSection ( &cs );
-        wh = PlayedWaveHeaders [--PlayedWaveHeadersCount];
-        ScheduledBlocks--;                        // decrease the number of USED blocks
-        LeaveCriticalSection ( &cs );
+    EnterCriticalSection ( &cs );
+    wh = PlayedWaveHeaders [--PlayedWaveHeadersCount];
+    ScheduledBlocks--;                        // decrease the number of USED blocks
+    LeaveCriticalSection ( &cs );
 
-        waveOutUnprepareHeader ( dev, wh, sizeof (WAVEHDR) );
+    waveOutUnprepareHeader ( dev, wh, sizeof (WAVEHDR) );
 
-        hg = GlobalHandle ( wh -> lpData );       // Deallocate the buffer memory
-        GlobalUnlock (hg);
-        GlobalFree   (hg);
+    hg = GlobalHandle ( wh -> lpData );       // Deallocate the buffer memory
+    GlobalUnlock (hg);
+    GlobalFree   (hg);
 
-        hg = GlobalHandle ( wh );                 // Deallocate the header memory
-        GlobalUnlock (hg);
-        GlobalFree   (hg);
+    hg = GlobalHandle ( wh );                 // Deallocate the header memory
+    GlobalUnlock (hg);
+    GlobalFree   (hg);
 }
 
 static int
 Box ( const char* msg )
 {
-        //MessageBox ( NULL, ms"Error Message . . .", MB_OK | MB_ICONEXCLAMATION );
-        return -1;
+    //MessageBox ( NULL, ms"Error Message . . .", MB_OK | MB_ICONEXCLAMATION );
+    return -1;
 }
 
 
@@ -109,30 +109,37 @@ void OutputWaveOut::configure(quint32 freq, int chan, int prec)
 
     switch (waveOutOpen (&dev, deviceID, &fmt, (DWORD)wave_callback, 0, CALLBACK_FUNCTION))
     {
-                case MMSYSERR_ALLOCATED:   return qWarning("OutputWaveOut: Device is already open.");
-                case MMSYSERR_BADDEVICEID: return qWarning("OutputWaveOut: The specified device is out of range.");
-                case MMSYSERR_NODRIVER:    return qWarning("OutputWaveOut: There is no audio driver in this system.");
-                case MMSYSERR_NOMEM:       return qWarning("OutputWaveOut: Unable to allocate sound memory.");
-                case WAVERR_BADFORMAT:     return qWarning("OutputWaveOut: This audio format is not supported.");
-                case WAVERR_SYNC:          return qWarning("OutputWaveOut: The device is synchronous.");
-                default:                   return qWarning("OutputWaveOut: Unknown media error.");
-                case MMSYSERR_NOERROR:     break;
-     }
+    case MMSYSERR_ALLOCATED:
+        return qWarning("OutputWaveOut: Device is already open.");
+    case MMSYSERR_BADDEVICEID:
+        return qWarning("OutputWaveOut: The specified device is out of range.");
+    case MMSYSERR_NODRIVER:
+        return qWarning("OutputWaveOut: There is no audio driver in this system.");
+    case MMSYSERR_NOMEM:
+        return qWarning("OutputWaveOut: Unable to allocate sound memory.");
+    case WAVERR_BADFORMAT:
+        return qWarning("OutputWaveOut: This audio format is not supported.");
+    case WAVERR_SYNC:
+        return qWarning("OutputWaveOut: The device is synchronous.");
+    default:
+        return qWarning("OutputWaveOut: Unknown media error.");
+    case MMSYSERR_NOERROR:
+        break;
+    }
 
-     waveOutReset (dev);
-     InitializeCriticalSection ( &cs );
-     //SetPriorityClass ( GetCurrentProcess (), HIGH_PRIORITY_CLASS );
-     Output::configure(freq, chan, prec);
-     return;
+    waveOutReset (dev);
+    InitializeCriticalSection ( &cs );
+    Output::configure(freq, chan, prec);
+    return;
 }
 
 bool OutputWaveOut::initialize()
 {
     if (!waveOutGetNumDevs ())
-	{
-           qWarning("OutputWaveOut: no audio device found");
-           return FALSE;
-        }
+    {
+        qWarning("OutputWaveOut: no audio device found");
+        return FALSE;
+    }
 
     return TRUE;
 }
@@ -140,105 +147,84 @@ bool OutputWaveOut::initialize()
 
 qint64 OutputWaveOut::latency()
 {
-    /*if (!m_connection)
-        return 0;
-    int error = 0;
-    qint64 delay =  pa_simple_get_latency(m_connection, &error)/1000;
-    if (error)
-    {
-        qWarning("OutputWaveOut: %s", pa_strerror (error));
-        delay = 0;
-    }*/
     return 0;
 }
 
 qint64 OutputWaveOut::writeAudio(unsigned char *data, qint64 len)
 {
-    /*int error;
-    if (!m_connection)
-        return -1;
-    if (pa_simple_write(m_connection, data, maxSize, &error) < 0)
-    {
-        mutex()->unlock();
-        qWarning("OutputWaveOut: pa_simple_write() failed: %s", pa_strerror(error));
-        return -1;
-    }*/
-    //return maxSize;
     HGLOBAL    hg;
     HGLOBAL    hg2;
     LPWAVEHDR  wh;
     void*      allocptr;
 
     do
-     {
-                while ( PlayedWaveHeadersCount > 0 )                        // free used blocks ...
-                        free_memory ();
+    {
+        while ( PlayedWaveHeadersCount > 0 )                        // free used blocks ...
+            free_memory ();
 
-                if ( ScheduledBlocks < sizeof(PlayedWaveHeaders)/sizeof(*PlayedWaveHeaders) ) // wait for a free block ...
-                        break;
-                usleep (500);
+        if ( ScheduledBlocks < sizeof(PlayedWaveHeaders)/sizeof(*PlayedWaveHeaders) ) // wait for a free block ...
+            break;
+        usleep (500);
 
-        } while (1);
+    }
+    while (1);
 
-        if ( (hg2 = GlobalAlloc ( GMEM_MOVEABLE, len )) == NULL )   // allocate some memory for a copy of the buffer
-                return Box ( "GlobalAlloc failed." );
+    if ( (hg2 = GlobalAlloc ( GMEM_MOVEABLE, len )) == NULL )   // allocate some memory for a copy of the buffer
+        return Box ( "GlobalAlloc failed." );
 
-        allocptr = GlobalLock (hg2);
-        CopyMemory ( allocptr, data, len );                         // Here we can call any modification output functions we want....
+    allocptr = GlobalLock (hg2);
+    CopyMemory ( allocptr, data, len );                         // Here we can call any modification output functions we want....
 
-        if ( (hg = GlobalAlloc (GMEM_MOVEABLE | GMEM_ZEROINIT, sizeof (WAVEHDR))) == NULL ) // now make a header and WRITE IT!
-                return -1;
+    if ( (hg = GlobalAlloc (GMEM_MOVEABLE | GMEM_ZEROINIT, sizeof (WAVEHDR))) == NULL ) // now make a header and WRITE IT!
+        return -1;
 
-        wh                   = (wavehdr_tag*)GlobalLock (hg);
-        wh->dwBufferLength   = len;
-        wh->lpData           = (CHAR *)allocptr;
+    wh                   = (wavehdr_tag*)GlobalLock (hg);
+    wh->dwBufferLength   = len;
+    wh->lpData           = (CHAR *)allocptr;
 
-        if ( waveOutPrepareHeader ( dev, wh, sizeof (WAVEHDR)) != MMSYSERR_NOERROR )
-        {
-                GlobalUnlock (hg);
-                GlobalFree   (hg);
-                return -1;
-        }
+    if ( waveOutPrepareHeader ( dev, wh, sizeof (WAVEHDR)) != MMSYSERR_NOERROR )
+    {
+        GlobalUnlock (hg);
+        GlobalFree   (hg);
+        return -1;
+    }
 
-        if ( waveOutWrite ( dev, wh, sizeof (WAVEHDR)) != MMSYSERR_NOERROR )
-        {
-                GlobalUnlock (hg);
-                GlobalFree   (hg);
-                return -1;
-        }
+    if ( waveOutWrite ( dev, wh, sizeof (WAVEHDR)) != MMSYSERR_NOERROR )
+    {
+        GlobalUnlock (hg);
+        GlobalFree   (hg);
+        return -1;
+    }
 
-        EnterCriticalSection ( &cs );
-        ScheduledBlocks++;
-        LeaveCriticalSection ( &cs );
+    EnterCriticalSection ( &cs );
+    ScheduledBlocks++;
+    LeaveCriticalSection ( &cs );
 
-        return len;
+    return len;
 }
 
 void OutputWaveOut::flush()
 {
-    /*int error;
-    if (m_connection)
-        pa_simple_flush(m_connection, &error); */
 }
 
 void OutputWaveOut::uninitialize()
 {
-	if (dev)
+    if (dev)
+    {
+        while ( ScheduledBlocks > 0 )
         {
-                while ( ScheduledBlocks > 0 )
-                {
-                        Sleep (ScheduledBlocks);
-                        while ( PlayedWaveHeadersCount > 0 )                        // free used blocks ...
-                        free_memory ();
-                }
-
-                waveOutReset (dev);      // reset the device
-                waveOutClose (dev);      // close the device
-                dev = 0;
+            Sleep (ScheduledBlocks);
+            while ( PlayedWaveHeadersCount > 0 )                        // free used blocks ...
+                free_memory ();
         }
 
-        DeleteCriticalSection ( &cs );
-        ScheduledBlocks = 0;
-        return;
+        waveOutReset (dev);      // reset the device
+        waveOutClose (dev);      // close the device
+        dev = 0;
+    }
+
+    DeleteCriticalSection ( &cs );
+    ScheduledBlocks = 0;
+    return;
 }
 
