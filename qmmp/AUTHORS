@@ -55,11 +55,11 @@ MOC - console audio player for Linux/UNIX (C) 2005
 
     Damian Pietras <daper@daper.net>
 
-libxmms-flac - XMMS FLAC input plugin (c) 2004-2007
+libxmms-flac - XMMS FLAC input plugin (C) 2004-2007
 
     Josh Coalson
 
-Solid - KDE hardware library (c) 2006
+Solid - KDE hardware library (C) 2006
 
     Kevin Ottens <ervin@kde.org>
     Davide Bettio <davide.bettio@kdemail.net>
@@ -75,3 +75,8 @@ Psi - instant messaging application (C) 2003-2007
     Michail Pishchagin <mblsha@psi-im.org>
     Maciej Niedzielski <machekku@psi-im.org>
     Martin Hostettler <martin@psi-im.org>
+
+aacDECdrop - windows decoder/player with drag'n'drop functionality (C) 2002
+
+    John Edwards
+
