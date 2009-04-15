@@ -66,7 +66,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 #if QT_VERSION >= 0x040500
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
 #else
-    etWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
 #endif
     setFixedSize (275,116);
     setWindowTitle("Qmmp");
