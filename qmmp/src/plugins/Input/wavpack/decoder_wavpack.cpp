@@ -142,6 +142,9 @@ bool DecoderWavPack::initialize()
             m_offset = parser.offset(track);
             m_length = parser.length(track);
             m_path = p;
+            //send metadata
+            QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
+            StateHandler::instance()->dispatch(metaData);
         }
     }
     else

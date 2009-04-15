@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -384,6 +384,9 @@ bool DecoderFLAC::initialize()
                 m_offset = parser.offset(track);
                 m_length = parser.length(track);
                 data()->input = new QFile(p);
+                //send metadata
+                QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
+                StateHandler::instance()->dispatch(metaData);
             }
             else
             {
