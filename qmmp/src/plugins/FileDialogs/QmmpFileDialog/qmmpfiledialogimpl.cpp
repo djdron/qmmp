@@ -1,5 +1,5 @@
 /**************************************************************************
-*   Copyright (C) 2008 by Ilya Kotov                                      *
+*   Copyright (C) 2008-2009 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -125,7 +125,9 @@ void QmmpFileDialogImpl::on_lookInComboBox_activated(const QString &path)
     {
         fileListView->setRootIndex(m_model->index(path));
         treeView->setRootIndex(m_model->index(path));
+#if QT_VERSION >= 0x040400
         m_model->setRootPath(path);
+#endif
     }
 }
 
@@ -137,7 +139,9 @@ void QmmpFileDialogImpl::on_upToolButton_clicked()
     treeView->setRootIndex(fileListView->rootIndex());
     lookInComboBox->setEditText(m_model->filePath(fileListView->rootIndex()));
     fileListView->selectionModel()->clear ();
+#if QT_VERSION >= 0x040400
     m_model->setRootPath(m_model->filePath(treeView->rootIndex()));
+#endif
 }
 
 void QmmpFileDialogImpl::on_treeView_doubleClicked(const QModelIndex& ind)
@@ -152,7 +156,9 @@ void QmmpFileDialogImpl::on_treeView_doubleClicked(const QModelIndex& ind)
             treeView->selectionModel()->clear ();
             fileListView->setRootIndex(ind);
             fileListView->selectionModel()->clear ();
+#if QT_VERSION >= 0x040400
             m_model->setRootPath(m_model->filePath(ind));
+#endif
         }
         else
         {
@@ -176,7 +182,9 @@ void QmmpFileDialogImpl::on_fileListView_doubleClicked(const QModelIndex& ind)
             fileListView->selectionModel()->clear ();
             treeView->setRootIndex(ind);
             treeView->selectionModel()->clear ();
+#if QT_VERSION >= 0x040400
             m_model->setRootPath(m_model->filePath(ind));
+#endif
         }
         else
         {
