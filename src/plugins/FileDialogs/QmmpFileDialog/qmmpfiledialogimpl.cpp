@@ -63,6 +63,7 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
 #if QT_VERSION >= 0x040400
     m_model = new QFileSystemModel(this);
     m_model->setNameFilterDisables (FALSE);
+    m_model->setReadOnly(FALSE);
 #else
     m_model = new QDirModel(this);
     m_model->setSorting(QDir::Type);
@@ -70,6 +71,10 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
 
     fileListView->setModel(m_model);
     treeView->setModel(m_model);
+    treeView->setSortingEnabled(TRUE);
+    treeView->setItemsExpandable(FALSE);
+    treeView->header()->setSortIndicator(0, Qt::AscendingOrder);
+    treeView->header()->setStretchLastSection (FALSE);
     listToolButton->setChecked(true);
     upToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowUp));
     listToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_FileDialogListView));
@@ -120,6 +125,7 @@ void QmmpFileDialogImpl::on_lookInComboBox_activated(const QString &path)
     {
         fileListView->setRootIndex(m_model->index(path));
         treeView->setRootIndex(m_model->index(path));
+        m_model->setRootPath(path);
     }
 }
 
@@ -131,6 +137,7 @@ void QmmpFileDialogImpl::on_upToolButton_clicked()
     treeView->setRootIndex(fileListView->rootIndex());
     lookInComboBox->setEditText(m_model->filePath(fileListView->rootIndex()));
     fileListView->selectionModel()->clear ();
+    m_model->setRootPath(m_model->filePath(treeView->rootIndex()));
 }
 
 void QmmpFileDialogImpl::on_treeView_doubleClicked(const QModelIndex& ind)
@@ -145,6 +152,7 @@ void QmmpFileDialogImpl::on_treeView_doubleClicked(const QModelIndex& ind)
             treeView->selectionModel()->clear ();
             fileListView->setRootIndex(ind);
             fileListView->selectionModel()->clear ();
+            m_model->setRootPath(m_model->filePath(ind));
         }
         else
         {
@@ -168,6 +176,7 @@ void QmmpFileDialogImpl::on_fileListView_doubleClicked(const QModelIndex& ind)
             fileListView->selectionModel()->clear ();
             treeView->setRootIndex(ind);
             treeView->selectionModel()->clear ();
+            m_model->setRootPath(m_model->filePath(ind));
         }
         else
         {
