@@ -421,7 +421,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="592"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Beim Schließen in den Tray schicken</translation>
+        <translation type="unfinished">Beim Schließen in den Systemabschnitt der Kontrollleiste minimieren</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="599"/>

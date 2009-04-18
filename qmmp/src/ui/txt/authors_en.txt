@@ -11,6 +11,3 @@ Artwork:
 
     Andrey Adreev <andreev00@gmail.com>
 
-Turkish translation: 
-
-    Mustafa GUNAY <mustafagunay@gmail.com>
