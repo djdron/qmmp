@@ -26,6 +26,7 @@
 #include <QStyle>
 #include <QSettings>
 #include <QMessageBox>
+#include <QHeaderView>
 
 #include <qmmp/qmmp.h>
 
