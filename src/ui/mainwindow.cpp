@@ -68,7 +68,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 #else
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
 #endif
-    setFixedSize (275,116);
+    //setFixedSize (275,116);
+    resize(275,116);
     setWindowTitle("Qmmp");
 
     //prepare libqmmp and libqmmpui libraries for playing
