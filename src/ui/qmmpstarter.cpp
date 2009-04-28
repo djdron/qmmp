@@ -34,7 +34,7 @@
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
 
-#define MAXCOMMANDSIZE 1024
+#define MAXCOMMANDSIZE 102400
 #define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toAscii().constData()
 
 using namespace std;
