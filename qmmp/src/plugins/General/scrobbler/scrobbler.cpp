@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -70,6 +70,48 @@ Scrobbler::Scrobbler(QObject *parent)
     m_handshakeid = 0;
     m_submitid = 0;
     m_notificationid = 0;
+
+    QFile file(QDir::homePath() +"/.qmmp/scrobbler.cache");
+
+    if (!m_disabled && file.open(QIODevice::ReadOnly))
+    {
+        int s;
+        QString line, param, value;
+        while (!file.atEnd())
+        {
+            line = QString::fromUtf8(file.readLine()).trimmed();
+            if ((s = line.indexOf("=")) < 0)
+                continue;
+
+            param = line.left(s);
+            value = line.right(line.size() - s - 1);
+
+            if (param == "title")
+            {
+                m_songCache << SongInfo();
+                m_songCache.last().setMetaData(Qmmp::TITLE, value);
+            }
+            else if (m_songCache.isEmpty())
+                continue;
+            else if (param == "artist")
+                m_songCache.last().setMetaData(Qmmp::ARTIST, value);
+            else if (param == "album")
+                m_songCache.last().setMetaData(Qmmp::ALBUM, value);
+            else if (param == "comment")
+                m_songCache.last().setMetaData(Qmmp::COMMENT, value);
+            else if (param == "genre")
+                m_songCache.last().setMetaData(Qmmp::GENRE, value);
+            else if (param == "year")
+                m_songCache.last().setMetaData(Qmmp::YEAR, value);
+            else if (param == "track")
+                m_songCache.last().setMetaData(Qmmp::TRACK, value);
+            else if (param == "length")
+                m_songCache.last().setLength(value.toInt());
+            else if (param == "time")
+                m_songCache.last().setTimeStamp(value.toUInt());
+        }
+        file.close();
+    }
     if (!m_disabled)
         handshake();
 }
@@ -78,6 +120,26 @@ Scrobbler::Scrobbler(QObject *parent)
 Scrobbler::~Scrobbler()
 {
     delete m_time;
+    QFile file(QDir::homePath() +"/.qmmp/scrobbler.cache");
+    if (m_songCache.isEmpty())
+    {
+        file.remove();
+        return;
+    }
+    file.open(QIODevice::WriteOnly);
+    foreach(SongInfo m, m_songCache)
+    {
+        file.write(QString("title=%1").arg(m.metaData(Qmmp::TITLE)).toUtf8() +"\n");
+        file.write(QString("artist=%1").arg(m.metaData(Qmmp::ARTIST)).toUtf8() +"\n");
+        file.write(QString("album=%1").arg(m.metaData(Qmmp::ALBUM)).toUtf8() +"\n");
+        file.write(QString("comment=%1").arg(m.metaData(Qmmp::COMMENT)).toUtf8() +"\n");
+        file.write(QString("genre=%1").arg(m.metaData(Qmmp::GENRE)).toUtf8() +"\n");
+        file.write(QString("year=%1").arg(m.metaData(Qmmp::YEAR)).toUtf8() +"\n");
+        file.write(QString("track=%1").arg(m.metaData(Qmmp::TRACK)).toUtf8() +"\n");
+        file.write(QString("length=%1").arg(m.length()).toUtf8() +"\n");
+        file.write(QString("time=%1").arg(m.timeStamp()).toUtf8() +"\n");
+    }
+    file.close();
 }
 
 void Scrobbler::setState(Qmmp::State state)
@@ -101,13 +163,13 @@ void Scrobbler::setState(Qmmp::State state)
     }
     case Qmmp::Stopped:
     {
-        if (!m_song.metaData().isEmpty()
+        if ((!m_song.metaData().isEmpty())
                 && ((m_time->elapsed ()/1000 > 240)
                     || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
                 && (m_time->elapsed ()/1000 > 60))
         {
+            m_song.setTimeStamp(m_start_ts);
             m_songCache << m_song;
-            m_timeStamps << m_start_ts;
         }
 
         m_song.clear();
@@ -183,6 +245,7 @@ void Scrobbler::processResponse(int id, bool error)
             m_nowPlayingUrl = strlist[2];
             m_session = strlist[1];
             updateMetaData(); //send now-playing notification for already playing song
+            submit();
             return;
         }
     }
@@ -199,9 +262,9 @@ void Scrobbler::processResponse(int id, bool error)
         while (m_submitedSongs)
         {
             m_submitedSongs--;
-            m_timeStamps.removeFirst ();
             m_songCache.removeFirst ();
         }
+        submit();
     }
     else if (id == m_notificationid)
     {
@@ -264,7 +327,7 @@ void Scrobbler::submit()
         body += QString("&a[%9]=%1&t[%9]=%2&i[%9]=%3&o[%9]=%4&r[%9]=%5&l[%9]=%6&b[%9]=%7&n[%9]=%8&m[%9]=")
                 .arg(info.metaData(Qmmp::ARTIST))
                 .arg(info.metaData(Qmmp::TITLE))
-                .arg( m_timeStamps[i])
+                .arg(info.timeStamp())
                 .arg("P")
                 .arg("")
                 .arg(info.length())
@@ -339,6 +402,7 @@ void SongInfo::operator=(const SongInfo &info)
 {
     m_metadata = info.metaData();
     m_length = info.length();
+    m_start_ts = info.timeStamp();
 }
 
 bool SongInfo::operator==(const SongInfo &info)
@@ -354,6 +418,11 @@ bool SongInfo::operator!=(const SongInfo &info)
 void SongInfo::setMetaData(const QMap <Qmmp::MetaData, QString> metadata)
 {
     m_metadata = metadata;
+}
+
+void SongInfo::setMetaData(Qmmp::MetaData key, const QString &value)
+{
+    m_metadata.insert(key, value);
 }
 
 void SongInfo::setLength(qint64 l)
@@ -380,4 +449,14 @@ void SongInfo::clear()
 {
     m_metadata.clear();
     m_length = 0;
+}
+
+void SongInfo::setTimeStamp(time_t ts)
+{
+    m_start_ts = ts;
+}
+
+time_t SongInfo::timeStamp() const
+{
+    return m_start_ts;
 }
