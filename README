@@ -71,7 +71,7 @@ make install
 
 If someone module (for example, Jack plugin) doesn't build or doesn't needed you can disable it
 by running:
-cmake ./ -D USE_JACK:BOOL=FALSE
+cmake ./ -DUSE_JACK:BOOL=FALSE
 
 Available options:
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
@@ -105,7 +105,7 @@ By default, all libraries and plugins will be installed to $(INSTALL PREFIX)/lib
 to "lib64" by running qmake-qt4 or cmake with special parameter:
 qmake-qt4 LIB_DIR=/lib64
 or
-cmake ./ -D LIB_DIR=lib64
+cmake ./ -DLIB_DIR=lib64
 
 All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
 http://code.google.com/p/qmmp/issues/list

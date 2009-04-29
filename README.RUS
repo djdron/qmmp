@@ -101,7 +101,7 @@ make install INSTALL_ROOT=/usr/local
 на "lib64" с помощью запуска qmake-qt4 или cmake со специальным параметром:
 qmake-qt4 LIB_DIR=/lib64
 или
-cmake ./ -D LIB_DIR=lib64
+cmake ./ -DLIB_DIR=lib64
 
 
 Патчи, багрепорты, идеи и т.п.: forkotov02@hotmail.ru или http://code.google.com/p/qmmp/issues/list
