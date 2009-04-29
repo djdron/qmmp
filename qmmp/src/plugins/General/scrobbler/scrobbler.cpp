@@ -24,6 +24,7 @@
 #include <QCryptographicHash>
 #include <QUrl>
 #include <QTime>
+#include <QDateTime>
 #include <QSettings>
 #include <QDir>
 #include <qmmp/soundcore.h>
@@ -151,7 +152,7 @@ void Scrobbler::setState(Qmmp::State state)
     {
     case Qmmp::Playing:
     {
-        m_start_ts = time(NULL);
+        m_start_ts = QDateTime::currentDateTime().toTime_t();
         m_time->restart();
         if (!isReady() && m_handshakeid == 0)
             handshake();
@@ -163,7 +164,7 @@ void Scrobbler::setState(Qmmp::State state)
     }
     case Qmmp::Stopped:
     {
-        if ((!m_song.metaData().isEmpty())
+        if (!m_song.metaData().isEmpty()
                 && ((m_time->elapsed ()/1000 > 240)
                     || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
                 && (m_time->elapsed ()/1000 > 60))
@@ -180,9 +181,7 @@ void Scrobbler::setState(Qmmp::State state)
             m_http->clearPendingRequests ();
 
         if (isReady() && m_submitid == 0)
-        {
             submit();
-        }
         break;
     }
     }
@@ -245,7 +244,8 @@ void Scrobbler::processResponse(int id, bool error)
             m_nowPlayingUrl = strlist[2];
             m_session = strlist[1];
             updateMetaData(); //send now-playing notification for already playing song
-            submit();
+            if (!m_songCache.isEmpty()) //submit recent songs
+                submit();
             return;
         }
     }
@@ -264,7 +264,8 @@ void Scrobbler::processResponse(int id, bool error)
             m_submitedSongs--;
             m_songCache.removeFirst ();
         }
-        submit();
+        if (!m_songCache.isEmpty()) //submit remaining songs
+            submit();
     }
     else if (id == m_notificationid)
     {
@@ -294,8 +295,8 @@ void Scrobbler::readResponse(const QHttpResponseHeader &header)
 void Scrobbler::handshake()
 {
     qDebug("Scrobbler::handshake()");
-    time_t ts = time(NULL);
-    qDebug("Scrobbler: current time stamp %ld",ts);
+    uint ts = QDateTime::currentDateTime().toTime_t();
+    qDebug("Scrobbler: current time stamp %d",ts);
     QString auth_tmp = QString("%1%2").arg(m_passw).arg(ts);
     QByteArray auth = QCryptographicHash::hash(auth_tmp.toAscii (), QCryptographicHash::Md5);
     auth = auth.toHex();
@@ -335,6 +336,7 @@ void Scrobbler::submit()
                 .arg(info.metaData(Qmmp::TRACK))
                 .arg(i);
     }
+    qDebug(qPrintable(body));
     QUrl url(m_submitUrl);
     m_http->setHost(url.host(), url.port());
     QHttpRequestHeader header("POST", url.path());
@@ -393,6 +395,7 @@ SongInfo::SongInfo(const SongInfo &other)
 {
     m_metadata = other.metaData();
     m_length  = other.length();
+    m_start_ts = other.timeStamp();
 }
 
 SongInfo::~SongInfo()
@@ -407,7 +410,7 @@ void SongInfo::operator=(const SongInfo &info)
 
 bool SongInfo::operator==(const SongInfo &info)
 {
-    return (m_metadata == info.metaData()) && (m_length == info.length());
+    return (m_metadata == info.metaData()) && (m_length == info.length()) && (m_start_ts == info.timeStamp());
 }
 
 bool SongInfo::operator!=(const SongInfo &info)
@@ -451,12 +454,12 @@ void SongInfo::clear()
     m_length = 0;
 }
 
-void SongInfo::setTimeStamp(time_t ts)
+void SongInfo::setTimeStamp(uint ts)
 {
     m_start_ts = ts;
 }
 
-time_t SongInfo::timeStamp() const
+uint SongInfo::timeStamp() const
 {
     return m_start_ts;
 }

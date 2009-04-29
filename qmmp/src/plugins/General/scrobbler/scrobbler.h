@@ -24,7 +24,6 @@
 #include <QMap>
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
-#include <time.h>
 
 class QHttp;
 class QTime;
@@ -54,13 +53,13 @@ public:
     const QString metaData(Qmmp::MetaData) const;
     qint64 length () const;
     void clear();
-    void setTimeStamp(time_t ts);
-    time_t timeStamp() const;
+    void setTimeStamp(uint ts);
+    uint timeStamp() const;
 
 private:
     QMap <Qmmp::MetaData, QString> m_metadata;
     qint64 m_length;
-    time_t m_start_ts;
+    uint m_start_ts;
 
 };
 
@@ -83,7 +82,7 @@ private:
     void submit();
     void sendNotification(const SongInfo &info);
     bool isReady();
-    time_t m_start_ts;
+    uint m_start_ts;
     SongInfo m_song;
     QHttp *m_http;
     Qmmp::State m_state;
@@ -93,7 +92,6 @@ private:
     QString m_submitUrl;
     QString m_nowPlayingUrl;
     QString m_session;
-    //QList <time_t> m_timeStamps;
     QList <SongInfo> m_songCache;
     QTime* m_time;
     int m_submitedSongs;

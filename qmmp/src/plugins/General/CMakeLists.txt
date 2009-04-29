@@ -1,5 +1,5 @@
 SET(USE_MPRIS TRUE CACHE BOOL "enable/disable mpris plugin")
-#SET(USE_SCROBBLER TRUE CACHE BOOL "enable/disable scrobbler plugin")
+SET(USE_SCROBBLER TRUE CACHE BOOL "enable/disable scrobbler plugin")
 SET(USE_STATICON TRUE CACHE BOOL "enable/disable status icon plugin")
 SET(USE_NOTIFIER TRUE CACHE BOOL "enable/disable notifier plugin")
 SET(USE_LYRICS TRUE CACHE BOOL "enable/disable lyrics version")
@@ -11,7 +11,7 @@ add_subdirectory(mpris)
 ENDIF(USE_MPRIS)
 
 IF(USE_SCROBBLER)
-#add_subdirectory(scrobbler)
+add_subdirectory(scrobbler)
 ENDIF(USE_SCROBBLER)
 
 IF(USE_STATICON)
