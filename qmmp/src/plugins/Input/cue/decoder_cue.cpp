@@ -51,7 +51,11 @@ DecoderCUE::~DecoderCUE()
 bool DecoderCUE::initialize()
 {
     m_input2 = 0;
-    CUEParser parser(QUrl(path).path());
+
+    QString p = QUrl(path).path();
+    p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+    p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+    CUEParser parser(p);
     if (parser.count() == 0)
     {
         qWarning("DecoderCUE: invalid cue file");

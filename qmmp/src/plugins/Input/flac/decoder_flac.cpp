@@ -372,6 +372,8 @@ bool DecoderFLAC::initialize()
                 qWarning("DecoderFLAC: invalid url.");
                 return FALSE;
             }
+            p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+            p.replace(QString(QUrl::toPercentEncoding("%")), "%");
             TagLib::FLAC::File fileRef(p.toLocal8Bit ());
             //looking for cuesheet comment
             TagLib::Ogg::XiphComment *xiph_comment = fileRef.xiphComment();

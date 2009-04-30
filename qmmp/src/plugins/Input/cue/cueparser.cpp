@@ -51,8 +51,7 @@ CUEParser::CUEParser(const QString &fileName)
 
         if (words[0] == "FILE")
         {
-            m_filePath = QUrl(fileName).path ();
-            m_filePath = QFileInfo(m_filePath).dir().filePath(words[1]);
+            m_filePath = QFileInfo(fileName).dir().filePath(words[1]);
         }
         else if (words[0] == "PERFORMER")
         {
@@ -74,7 +73,10 @@ CUEParser::CUEParser(const QString &fileName)
         }
         else if (words[0] == "TRACK")
         {
-            FileInfo info("cue://" + fileName + QString("#%1").arg(words[1].toInt()));
+            QString path = fileName;
+            path.replace("%", QString(QUrl::toPercentEncoding("%")));
+            path.replace("#", QString(QUrl::toPercentEncoding("#")));
+            FileInfo info("cue://" + path + QString("#%1").arg(words[1].toInt()));
             info.setMetaData(Qmmp::TRACK, words[1].toInt());
             m_infoList << info;
             m_offsets << 0;
