@@ -6,7 +6,7 @@
     <message>
         <location filename="../lyrics.cpp" line="35"/>
         <source>View Lyrics</source>
-        <translation>Текст песни</translation>
+        <translation>Показать текст</translation>
     </message>
 </context>
 <context>
