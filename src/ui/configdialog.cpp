@@ -170,7 +170,7 @@ void ConfigDialog::loadSkins()
 
     findSkins(QDir::homePath() +"/.qmmp/skins");
 #ifdef Q_OS_WIN32
-    findSkins(qApp->applicationDirPath()+"/skins");
+    findSkins(qApp->applicationDirPath()+"skins");
 #else
     findSkins(qApp->applicationDirPath()+"/../share/qmmp/skins");
 #endif
@@ -223,6 +223,7 @@ void ConfigDialog::loadPluginsInfo()
         InputPluginItem *item = new InputPluginItem(this, decoders->at(i));
         m_inputPluginItems.append(item);
         QCheckBox* checkBox = new QCheckBox ( ui.inputPluginTable );
+        checkBox->setFocusPolicy (Qt::NoFocus);
         ui.inputPluginTable->setCellWidget ( i, 0, checkBox );
         checkBox->setChecked(item->isSelected());
         connect(checkBox, SIGNAL(toggled(bool)), item, SLOT(setSelected(bool)));
@@ -253,6 +254,7 @@ void ConfigDialog::loadPluginsInfo()
         OutputPluginItem *item = new OutputPluginItem(this,outputs->at(i));
         m_outputPluginItems.append(item);
         QRadioButton* button = new QRadioButton ( ui.outputPluginTable );
+        button->setFocusPolicy (Qt::NoFocus);
         ui.outputPluginTable->setCellWidget ( i, 0, button );
         button->setChecked ( item->isSelected() );
         connect(button, SIGNAL(pressed ()), item, SLOT(select()));
@@ -284,6 +286,7 @@ void ConfigDialog::loadPluginsInfo()
         VisualPluginItem *item = new VisualPluginItem(this,visuals->at(i));
         m_visualPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.visualPluginTable);
+        button->setFocusPolicy (Qt::NoFocus);
         ui.visualPluginTable->setCellWidget ( i, 0, button );
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
@@ -316,6 +319,7 @@ void ConfigDialog::loadPluginsInfo()
         EffectPluginItem *item = new EffectPluginItem(this,effects->at(i));
         m_effectPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.effectPluginTable);
+        button->setFocusPolicy (Qt::NoFocus);
         ui.effectPluginTable->setCellWidget ( i, 0, button );
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
@@ -348,6 +352,7 @@ void ConfigDialog::loadPluginsInfo()
         GeneralPluginItem *item = new GeneralPluginItem(this,generals->at(i));
         m_generalPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.generalPluginTable);
+        button->setFocusPolicy (Qt::NoFocus);
         ui.generalPluginTable->setCellWidget ( i, 0, button );
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
