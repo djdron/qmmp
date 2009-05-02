@@ -50,7 +50,20 @@ OutputPulseAudio::~OutputPulseAudio()
 void OutputPulseAudio::configure(quint32 freq, int chan, int prec)
 {
     pa_sample_spec ss;
-    ss.format = PA_SAMPLE_S16LE;
+
+    switch (prec)
+    {
+    case 8:
+        ss.format = PA_SAMPLE_U8;
+        break;
+    case 32:
+        ss.format = PA_SAMPLE_S32LE;
+        break;
+    case 16:
+    default:
+        ss.format = PA_SAMPLE_S16LE;
+    }
+
     ss.channels = chan;
     ss.rate = freq;
     int error;
@@ -69,7 +82,7 @@ void OutputPulseAudio::configure(quint32 freq, int chan, int prec)
         qWarning("OutputPulseAudio: pa_simple_new() failed: %s", pa_strerror(error));
         return;
     }
-    qDebug("OutputPulseAudio: frequency=%d, channels=%d",  uint(freq), chan);
+    qDebug("OutputPulseAudio: frequency=%d, channels=%d, bits=%d",  uint(freq), chan, prec);
     Output::configure(freq, chan, prec);
 }
 
