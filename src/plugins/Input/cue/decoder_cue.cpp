@@ -63,7 +63,7 @@ bool DecoderCUE::initialize()
     }
     int track = path.section("#", -1).toInt();
     path = parser.filePath(track);
-    qDebug(qPrintable(path));
+
     if (!QFile::exists(path))
     {
         qWarning("DecoderCUE: file \"%s\" doesn't exist", qPrintable(path));
