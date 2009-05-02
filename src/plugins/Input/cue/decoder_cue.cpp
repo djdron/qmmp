@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -62,7 +62,8 @@ bool DecoderCUE::initialize()
         return FALSE;
     }
     int track = path.section("#", -1).toInt();
-    path = parser.filePath();
+    path = parser.filePath(track);
+    qDebug(qPrintable(path));
     if (!QFile::exists(path))
     {
         qWarning("DecoderCUE: file \"%s\" doesn't exist", qPrintable(path));

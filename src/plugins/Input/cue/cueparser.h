@@ -39,7 +39,7 @@ public:
     ~CUEParser();
 
     QList<FileInfo*> createPlayList();
-    const QString filePath();
+    const QString filePath(int track);
     qint64 offset(int track);
     qint64 length(int track);
     int count();
@@ -49,6 +49,7 @@ private:
     QString m_filePath;
     QList <FileInfo> m_infoList;
     QList <qint64> m_offsets;
+    QStringList m_files;
     QStringList splitLine(const QString &line);
     qint64 getLength(const QString &str);
 

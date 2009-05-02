@@ -74,12 +74,13 @@ CUEParser::CUEParser(const QString &fileName)
         else if (words[0] == "TRACK")
         {
             QString path = fileName;
-            path.replace("%", QString(QUrl::toPercentEncoding("%")));
+            path.replace("%", QString(QUrl::toPercentEncoding("%"))); //replace special symbols
             path.replace("#", QString(QUrl::toPercentEncoding("#")));
             FileInfo info("cue://" + path + QString("#%1").arg(words[1].toInt()));
             info.setMetaData(Qmmp::TRACK, words[1].toInt());
             m_infoList << info;
             m_offsets << 0;
+            m_files << m_filePath;
         }
         else if (words[0] == "INDEX")
         {
@@ -102,7 +103,20 @@ CUEParser::CUEParser(const QString &fileName)
     }
     //calculate length
     for (int i = 0; i < m_infoList.size() - 1; ++i)
-        m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
+    {
+        if (m_files[i+1] == m_files[i])
+            m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
+        else
+        {
+            QList <FileInfo *> f_list = Decoder::createPlayList(m_filePath, FALSE);
+            qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
+            if (l > m_infoList[i].length())
+                m_infoList[i].setLength(l - m_infoList[i].length());
+            else
+                m_infoList[i].setLength(0);
+        }
+    }
+
     //calculate last item length
     QList <FileInfo *> f_list = Decoder::createPlayList(m_filePath, FALSE);
     qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
@@ -139,9 +153,9 @@ QList<FileInfo*> CUEParser::createPlayList()
     return list;
 }
 
-const QString CUEParser::filePath()
+const QString CUEParser::filePath(int track)
 {
-    return m_filePath;
+    return (track <= m_files.size()) ? m_files[track] : QString();
 }
 
 qint64 CUEParser::offset(int track)
