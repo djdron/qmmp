@@ -67,6 +67,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.apeCheckBox->setChecked(filters.contains("*.ape") && avcodec_find_decoder(CODEC_ID_APE));
 #else
     ui.apeCheckBox->setChecked(FALSE);
+    ui.apeCheckBox->setEnabled(FALSE);
 #endif
     ui.ttaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TTA));
     ui.ttaCheckBox->setChecked(filters.contains("*.tta") && avcodec_find_decoder(CODEC_ID_TTA));
@@ -100,6 +101,12 @@ void SettingsDialog::accept()
         filters << "*.tta";
     if (ui.alacCheckBox->isChecked())
         filters << "*.alac";
+    if (ui.aacCheckBox->isChecked())
+        filters << "*.aac";
+    if (ui.mp4CheckBox->isChecked())
+        filters << "*.m4a";
+    if (ui.raCheckBox->isChecked())
+        filters << "*.ra";
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FFMPEG/filters", filters);
     QDialog::accept();
