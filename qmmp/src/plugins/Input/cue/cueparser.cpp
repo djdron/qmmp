@@ -108,7 +108,7 @@ CUEParser::CUEParser(const QString &fileName)
             m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
         else
         {
-            QList <FileInfo *> f_list = Decoder::createPlayList(m_filePath, FALSE);
+            QList <FileInfo *> f_list = Decoder::createPlayList(m_files[i], FALSE);
             qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
             if (l > m_infoList[i].length())
                 m_infoList[i].setLength(l - m_infoList[i].length());
@@ -155,7 +155,7 @@ QList<FileInfo*> CUEParser::createPlayList()
 
 const QString CUEParser::filePath(int track)
 {
-    return (track <= m_files.size()) ? m_files[track] : QString();
+    return (track <= m_files.size()) ? m_files[track - 1] : QString();
 }
 
 qint64 CUEParser::offset(int track)
