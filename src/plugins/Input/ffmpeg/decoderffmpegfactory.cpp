@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -111,6 +111,7 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
         return list;
     FileInfo *info = new FileInfo(fileName);
     av_find_stream_info(in);
+    av_read_play(in);
     if (useMetaData)
     {
         info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(in->album).trimmed());
