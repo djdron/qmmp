@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -139,13 +139,23 @@ bool DecoderFFmpeg::initialize()
         qDebug("DecoderFFmpeg: cannot open input file");
         return FALSE;
     }
+
+    av_find_stream_info(ic);
+    av_read_play(ic);
+
     for (wma_idx = 0; wma_idx < ic->nb_streams; wma_idx++)
     {
         c = ic->streams[wma_idx]->codec;
         if (c->codec_type == CODEC_TYPE_AUDIO) break;
     }
 
-    av_find_stream_info(ic);
+    if (c->channels > 0)
+        c->channels = qMin(2, c->channels);
+    else
+        c->channels = 2;
+
+    dump_format(ic,0,0,0);
+    //dump_stream_info(ic);
 
     codec = avcodec_find_decoder(c->codec_id);
 
@@ -231,7 +241,7 @@ void DecoderFFmpeg::run()
 
         out_size = 0;
 
-        while (size > 0)
+        while (size > 0 && (pkt.stream_index == wma_idx))
         {
             out_size = AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t);
             l = avcodec_decode_audio2(c, (int16_t *)(wma_outbuf), &out_size, inbuf_ptr, size);

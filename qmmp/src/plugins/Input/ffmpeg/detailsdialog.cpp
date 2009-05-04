@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -67,6 +67,7 @@ void DetailsDialog::loadInfo()
     if (av_open_input_file(&in, m_path.toLocal8Bit(), NULL,0, NULL) < 0)
         return;
     av_find_stream_info(in);
+    av_read_play(in);
     QString string = QString::fromUtf8(in->title).trimmed();
     ui.titleLineEdit->setText(string);
     string = QString::fromUtf8(in->author).trimmed();
