@@ -31,9 +31,7 @@
 
 bool DecoderAACFactory::supports(const QString &source) const
 {
-
-    return (source.right(4).toLower() == ".aac")
-           || (source.right(4).toLower() == ".m4a");
+    return (source.right(4).toLower() == ".aac");
 }
 
 bool DecoderAACFactory::canDecode(QIODevice *) const

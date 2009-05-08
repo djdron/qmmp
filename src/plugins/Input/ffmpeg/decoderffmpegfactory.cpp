@@ -108,10 +108,13 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
     AVFormatContext *in;
 
     if (av_open_input_file(&in, fileName.toLocal8Bit(), NULL,0, NULL) < 0)
+    {
+        qDebug("DecoderFFmpegFactory: unable to open file");
         return list;
+    }
     FileInfo *info = new FileInfo(fileName);
     av_find_stream_info(in);
-    av_read_play(in);
+
     if (useMetaData)
     {
         info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(in->album).trimmed());
