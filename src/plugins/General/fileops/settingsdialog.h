@@ -44,8 +44,14 @@ public slots:
 private slots:
     void createAction();
     void deleteAction();
+    void updateLineEdits();
+    void changeDestination(const QString &dest);
+    void changePattern(const QString &pattern);
+    void addTitleString(QAction *action);
+    void selectDirectory();
 
 private:
+    void createMenus();
     Ui::SettingsDialog ui;
 };
 

@@ -39,6 +39,10 @@ public:
                const QString &caption = QString(),
                const QStringList &mask = QStringList());
 
+    QString existingDirectory(QWidget *parent = 0,
+                              const QString &caption = QString(),
+                              const QString &dir = QString());
+
     QString openFileName(QWidget *parent = 0,
                          const QString &caption  = QString(),
                          const QString &dir  = QString(),
