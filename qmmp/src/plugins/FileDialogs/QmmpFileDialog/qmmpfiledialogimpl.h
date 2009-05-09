@@ -42,7 +42,7 @@ public:
 
     ~QmmpFileDialogImpl();
 
-    void setModeAndMask(const QString&,FileDialog::Mode m, const QStringList& mask);
+    void setModeAndMask(const QString&,FileDialog::Mode m, const QStringList& mask = QStringList());
     QStringList selectedFiles ();
 
 protected slots:

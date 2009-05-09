@@ -56,6 +56,18 @@ void QmmpFileDialog::raise(const QString &dir, Mode mode, const QString &caption
     m_dialog->raise();
 }
 
+QString QmmpFileDialog::existingDirectory(QWidget *parent, const QString &caption, const QString &dir)
+{
+    QmmpFileDialogImpl *dialog = new QmmpFileDialogImpl(parent);
+    dialog->setWindowTitle(caption);
+    dialog->setModeAndMask(dir, FileDialog::AddDir);
+    QStringList l;
+    if (dialog->exec() == QDialog::Accepted)
+        l = dialog->selectedFiles();
+    dialog->deleteLater();
+    return l.isEmpty() ? QString() : l.at(0);
+}
+
 QString QmmpFileDialog::openFileName(QWidget *parent, const QString &caption,
                                      const QString &dir, const QString &filter, QString*)
 {

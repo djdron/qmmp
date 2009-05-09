@@ -21,8 +21,10 @@
 #include <QSettings>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QMenu>
 
 #include <qmmp/qmmp.h>
+#include <qmmpui/filedialog.h>
 #include "fileops.h"
 #include "settingsdialog.h"
 
@@ -64,6 +66,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui.tableWidget->setItem (i, 2, item);
     }
     settings.endGroup();
+    connect (ui.tableWidget, SIGNAL(currentItemChanged (QTableWidgetItem *, QTableWidgetItem *)),
+             SLOT(updateLineEdits()));
+    updateLineEdits();
+    connect (ui.destinationEdit, SIGNAL(textChanged (const QString&)), SLOT(changeDestination(const QString&)));
+    connect (ui.patternEdit, SIGNAL(textChanged (const QString&)), SLOT(changePattern(const QString&)));
+    connect (ui.destButton, SIGNAL(clicked()), SLOT(selectDirectory()));
+    createMenus();
 }
 
 
@@ -73,8 +82,32 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    //settings.beginGroup("CUE");
-    //settings.setValue("encoding", ui.cueEncComboBox->currentText());
+    settings.beginGroup("FileOps");
+    //remove unused keys
+    int count = settings.value("count", 0).toInt();
+    for (int i = ui.tableWidget->rowCount() - 1; i < count; ++i)
+    {
+        settings.remove (QString("enabled_%1").arg(i));
+        settings.remove (QString("action_%1").arg(i));
+        settings.remove (QString("name_%1").arg(i));
+        settings.remove (QString("pattern_%1").arg(i));
+        settings.remove (QString("destination_%1").arg(i));
+    }
+    //save actions
+    settings.setValue("count", ui.tableWidget->rowCount());
+    for (int i = 0; i < ui.tableWidget->rowCount(); ++i)
+    {
+        QCheckBox *checkBox = qobject_cast<QCheckBox *>(ui.tableWidget->cellWidget (i, 0));
+        settings.setValue (QString("enabled_%1").arg(i), checkBox->isChecked());
+
+        QComboBox *comboBox = qobject_cast<QComboBox *>(ui.tableWidget->cellWidget (i, 1));
+        settings.setValue (QString("action_%1").arg(i), comboBox->itemData (comboBox->currentIndex()));
+
+        ActionItem *item = (ActionItem *) ui.tableWidget->item(i,2);
+        settings.setValue (QString("name_%1").arg(i), item->text());
+        settings.setValue (QString("pattern_%1").arg(i), item->pattern());
+        settings.setValue (QString("destination_%1").arg(i), item->destination());
+    }
     settings.endGroup();
     QDialog::accept();
 }
@@ -107,4 +140,71 @@ void SettingsDialog::deleteAction()
 {
     if (ui.tableWidget->currentRow () >= 0)
         ui.tableWidget->removeRow (ui.tableWidget->currentRow ());
+}
+
+void SettingsDialog::updateLineEdits()
+{
+    if (ui.tableWidget->currentRow () >= 0)
+    {
+        ActionItem *item = (ActionItem *) ui.tableWidget->item(ui.tableWidget->currentRow (), 2);
+        ui.destinationEdit->setText(item->destination());
+        ui.patternEdit->setText(item->pattern());
+    }
+    else
+    {
+        ui.destinationEdit->clear();
+        ui.patternEdit->clear();
+    }
+}
+
+void SettingsDialog::changeDestination(const QString &dest)
+{
+    if (ui.tableWidget->currentRow () >= 0)
+    {
+        ActionItem *item = (ActionItem *) ui.tableWidget->item(ui.tableWidget->currentRow (), 2);
+        item->setDestination(dest);
+    }
+}
+
+void SettingsDialog::changePattern(const QString &pattern)
+{
+    if (ui.tableWidget->currentRow () >= 0)
+    {
+        ActionItem *item = (ActionItem *) ui.tableWidget->item(ui.tableWidget->currentRow (), 2);
+        item->setPattern(pattern);
+    }
+}
+
+void SettingsDialog::createMenus()
+{
+    QMenu *menu = new QMenu(this);
+    menu->addAction(tr("Artist"))->setData("%p");
+    menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Title"))->setData("%t");
+    menu->addAction(tr("Tracknumber"))->setData("%n");
+    menu->addAction(tr("Genre"))->setData("%g");
+    menu->addAction(tr("Filename"))->setData("%f");
+    menu->addAction(tr("Filepath"))->setData("%F");
+    menu->addAction(tr("Date"))->setData("%d");
+    menu->addAction(tr("Year"))->setData("%y");
+    menu->addAction(tr("Comment"))->setData("%c");
+    ui.patternButton->setMenu(menu);
+    ui.patternButton->setPopupMode(QToolButton::InstantPopup);
+    connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTitleString( QAction *)));
+}
+
+void SettingsDialog::addTitleString(QAction *a)
+{
+    if (ui.patternEdit->cursorPosition () < 1)
+        ui.patternEdit->insert(a->data().toString());
+    else
+        ui.patternEdit->insert("_"+a->data().toString());
+}
+
+void SettingsDialog::selectDirectory()
+{
+    QString dir = FileDialog::getExistingDirectory(this, tr("Choose a directory"),
+                                        ui.destinationEdit->text());
+    if(!dir.isEmpty())
+        ui.destinationEdit->setText(dir);
 }

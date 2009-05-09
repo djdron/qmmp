@@ -46,12 +46,13 @@ public:
         REMOVE
     };
 
+private slots:
+    void execAction(int n);
 
 private:
-    QAction *m_copyAction;
-    QAction *m_moveAction;
-    QAction *m_removeAction;
-    QString m_copyDestination;
+    QList <int> m_types;
+    QStringList m_patterns;
+    QStringList m_destinations;
 };
 
 #endif
