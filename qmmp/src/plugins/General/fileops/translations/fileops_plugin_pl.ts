@@ -132,26 +132,21 @@
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="197"/>
-        <source>Filepath</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="198"/>
         <source>Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
+        <location filename="../settingsdialog.cpp" line="198"/>
         <source>Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="200"/>
+        <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="216"/>
+        <location filename="../settingsdialog.cpp" line="215"/>
         <source>Choose a directory</source>
         <translation type="unfinished"></translation>
     </message>
