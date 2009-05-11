@@ -232,7 +232,7 @@ void DecoderWavPack::run()
             m_seekTime = -1.0;
         }
         //stop if track ended
-        if (WavpackGetSampleIndex(m_context)/m_freq-m_offset >= m_totalTime)
+        if (WavpackGetSampleIndex(m_context)/m_freq * 1000 - m_offset >= m_totalTime)
         {
             m_finish = TRUE;
         }
