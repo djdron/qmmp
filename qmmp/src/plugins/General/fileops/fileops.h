@@ -25,14 +25,15 @@
 
 class QAction;
 class SoundCore;
+class PlayListItem;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
 class FileOps : public General
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     FileOps(QObject *parent = 0);
 
@@ -42,7 +43,6 @@ public:
     {
         COPY = 0,
         RENAME,
-        MOVE,
         REMOVE
     };
 
@@ -50,6 +50,8 @@ private slots:
     void execAction(int n);
 
 private:
+    QString generateFileName(PlayListItem *item, QString pattern);
+    QString printTag(QString str, QString regExp, QString tagStr, QString fmt);
     QList <int> m_types;
     QStringList m_patterns;
     QStringList m_destinations;

@@ -25,6 +25,7 @@
 #include <QProgressDialog>
 #include <QMessageBox>
 #include <QFile>
+#include <QDir>
 
 #include <qmmp/soundcore.h>
 #include <qmmpui/generalhandler.h>
@@ -63,6 +64,7 @@ FileOps::FileOps(QObject *parent)
             m_patterns << settings.value(QString("pattern_%1").arg(i)).toString();
             m_destinations << settings.value(QString("destination_%1").arg(i)).toString();
             QAction *action = new QAction(name, this);
+            action->setShortcut(settings.value(QString("hotkey_%1").arg(i)).toString());
             connect (action, SIGNAL (triggered (bool)), mapper, SLOT (map()));
             mapper->setMapping(action, i);
             GeneralHandler::instance()->addAction(action, GeneralHandler::PLAYLIST_MENU);
@@ -89,6 +91,13 @@ void FileOps::execAction(int n)
     {
     case COPY:
     {
+        qDebug("FileOps: copy");
+        if (!QDir(destination).exists ())
+        {
+            QMessageBox::critical (qApp->activeWindow (), tr("Error"),
+                                   tr("Destination directory doesn't exist"));
+            break;
+        }
         QProgressDialog progress(qApp->activeWindow ());
         progress.setWindowModality(Qt::WindowModal);
         progress.setWindowTitle(tr("Copying"));
@@ -100,11 +109,25 @@ void FileOps::execAction(int n)
         {
             if (!QFile::exists(item->url()))
                 continue;
-
+            //generate file name
+            QString fname = generateFileName(item, pattern);
+            //append extension
+            QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
+            if (!fname.endsWith(ext))
+                fname += ext;
+            //copy file
             QFile in(item->url());
-            QFile out(destination + "/" + pattern);
-            in.open(QIODevice::ReadOnly);
-            out.open(QIODevice::WriteOnly);
+            QFile out(destination + "/" + fname);
+            if (!in.open(QIODevice::ReadOnly))
+            {
+                qDebug("FileOps: %s", qPrintable(in.errorString ()));
+                continue;
+            }
+            if (!out.open(QIODevice::WriteOnly))
+            {
+                qDebug("FileOps: %s", qPrintable(out.errorString ()));
+                continue;
+            }
 
             progress.setMaximum(int(in.size()/COPY_BLOCK_SIZE));
             progress.setValue(0);
@@ -123,10 +146,32 @@ void FileOps::execAction(int n)
         break;
     }
     case RENAME:
+        qDebug("FileOps: rename");
+        foreach(PlayListItem *item, items)
+        {
+            if (!QFile::exists(item->url()))
+                continue;
+            //generate file name
+            QString fname = generateFileName(item, pattern);
+            //append extension
+            QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
+            if (!fname.endsWith(ext))
+                fname += ext;
+            //rename file
+            QFile file(item->url());
+            if (file.rename(destination + "/" + fname))
+            {
+                item->setMetaData(Qmmp::URL, destination + "/" + fname);
+                model->doCurrentVisibleRequest();
+            }
+            else
+                continue;
+        }
         break;
-    case MOVE:
-        break;
+        /*case MOVE:
+            break;*/
     case REMOVE:
+        qDebug("FileOps: remove");
         if (QMessageBox::question (qApp->activeWindow (), tr("Remove files"),
                                    QString(tr("Are you sure you want to remove %1 file(s) from disk"))
                                    .arg(items.size()),
@@ -139,4 +184,53 @@ void FileOps::execAction(int n)
                 model->removeAt (model->row(item));
         }
     }
+}
+//generate file name from tags using given pattern
+QString FileOps::generateFileName(PlayListItem *item, QString pattern)
+{
+    QString fname = pattern;
+    fname = printTag(fname, "%p", item->artist(), pattern);
+    fname = printTag(fname, "%a", item->album(), pattern);
+    fname = printTag(fname, "%t", item->title(), pattern);
+    fname = printTag(fname, "%n", QString("%1").arg(item->track()), pattern);
+    fname = printTag(fname, "%g", item->genre(), pattern);
+    fname = printTag(fname, "%f", item->url().section('/',-1), pattern);
+    fname = printTag(fname, "%F", item->url(), pattern);
+    fname = printTag(fname, "%y", QString("%1").arg(item->year ()), pattern);
+    fname.replace(" ", "_");
+    if (fname.isEmpty())
+    {
+        if (item->url().contains('/'))
+            fname = item->url().split('/',QString::SkipEmptyParts).takeLast ();
+    }
+    return fname;
+
+}
+
+
+QString FileOps::printTag(QString str, QString regExp, QString tagStr, QString fmt)
+{
+    QString format = fmt;
+    if (!tagStr.isEmpty())
+        str.replace(regExp, tagStr);
+    else
+    {
+        //remove unused separators
+        int regExpPos = str.indexOf(regExp);
+        if (regExpPos < 0)
+            return str;
+        int nextPos = str.indexOf("%", regExpPos + 1);
+        if (nextPos < 0)
+        {
+            //last separator
+            regExpPos = format.lastIndexOf(regExp);
+            nextPos = format.lastIndexOf("%", regExpPos - 1);
+            QString lastSep = format.right (format.size() - nextPos - 2);
+            str.remove(lastSep);
+            str.remove(regExp);
+        }
+        else
+            str.remove ( regExpPos, nextPos - regExpPos);
+    }
+    return str;
 }

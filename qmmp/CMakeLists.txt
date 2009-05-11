@@ -117,6 +117,7 @@ PRINT_SUMMARY ("Notifier support .................." USE_NOTIFIER 1)
 PRINT_SUMMARY ("Lyrics support ...................." USE_LYRICS 1)
 PRINT_SUMMARY ("HAL support ......................." USE_HAL 1)
 PRINT_SUMMARY ("Global hotkey support ............." USE_HOTKEY X11_FOUND)
+PRINT_SUMMARY ("File operations plugin ............" USE_FILEOPS 1)
 
 MESSAGE("")
 MESSAGE("File Dialogs:")
