@@ -170,7 +170,7 @@ void ConfigDialog::loadSkins()
 
     findSkins(QDir::homePath() +"/.qmmp/skins");
 #ifdef Q_OS_WIN32
-    findSkins(qApp->applicationDirPath()+"skins");
+    findSkins(qApp->applicationDirPath()+"/skins");
 #else
     findSkins(qApp->applicationDirPath()+"/../share/qmmp/skins");
 #endif
