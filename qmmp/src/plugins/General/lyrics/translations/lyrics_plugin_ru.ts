@@ -8,6 +8,11 @@
         <source>View Lyrics</source>
         <translation>Показать текст</translation>
     </message>
+    <message>
+        <location filename="../lyrics.cpp" line="36"/>
+        <source>Ctrl+L</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LyricsFactory</name>

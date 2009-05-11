@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>Lyrics</name>
     <message>
         <location filename="../lyrics.cpp" line="35"/>
         <source>View Lyrics</source>
         <translation>Liedtext anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../lyrics.cpp" line="36"/>
+        <source>Ctrl+L</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -45,6 +50,7 @@
         <translation>Liedtext: %1 - %2</translation>
     </message>
     <message>
+        <location filename="../lyricswindow.cpp" line="66"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Keine Verbindung</translation>
