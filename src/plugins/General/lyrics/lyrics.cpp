@@ -33,6 +33,7 @@ Lyrics::Lyrics(QObject *parent)
         : General(parent)
 {
     m_action = new QAction(tr("View Lyrics"), this);
+    m_action->setShortcut(tr("Ctrl+L"));
     GeneralHandler::instance()->addAction(m_action, GeneralHandler::PLAYLIST_MENU);
     connect (m_action, SIGNAL(triggered ()), SLOT(showLyrics()));
 }
@@ -42,15 +43,12 @@ Lyrics::~Lyrics()
 
 void Lyrics::showLyrics()
 {
-    foreach (PlayListItem *item, MediaPlayer::instance()->playListModel()->items())
+    QList <PlayListItem *> items = MediaPlayer::instance()->playListModel()->getSelectedItems();
+    if (!items.isEmpty())
     {
-        if (item->isSelected())
-        {
-            if (item->artist().isEmpty() || item->title().isEmpty())
-                break;
-            LyricsWindow *w = new LyricsWindow(item->artist(), item->title(), qApp->activeWindow ());
+        if (items.at(0)->artist().isEmpty() || items.at(0)->title().isEmpty())
+                return;
+            LyricsWindow *w = new LyricsWindow(items.at(0)->artist(), items.at(0)->title(), qApp->activeWindow ());
             w->show();
-            break;
-        }
     }
 }
