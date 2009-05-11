@@ -101,6 +101,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="137"/>
+        <source>New action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.cpp" line="191"/>
         <source>Artist</source>
         <translation type="unfinished"></translation>
