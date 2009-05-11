@@ -195,7 +195,6 @@ QString FileOps::generateFileName(PlayListItem *item, QString pattern)
     fname = printTag(fname, "%n", QString("%1").arg(item->track()), pattern);
     fname = printTag(fname, "%g", item->genre(), pattern);
     fname = printTag(fname, "%f", item->url().section('/',-1), pattern);
-    fname = printTag(fname, "%F", item->url(), pattern);
     fname = printTag(fname, "%y", QString("%1").arg(item->year ()), pattern);
     fname.replace(" ", "_");
     if (fname.isEmpty())

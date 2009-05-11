@@ -194,7 +194,6 @@ void SettingsDialog::createMenus()
     menu->addAction(tr("Tracknumber"))->setData("%n");
     menu->addAction(tr("Genre"))->setData("%g");
     menu->addAction(tr("Filename"))->setData("%f");
-    menu->addAction(tr("Filepath"))->setData("%F");
     menu->addAction(tr("Date"))->setData("%d");
     menu->addAction(tr("Year"))->setData("%y");
     menu->addAction(tr("Comment"))->setData("%c");
