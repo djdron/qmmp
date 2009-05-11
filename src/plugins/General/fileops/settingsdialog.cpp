@@ -26,6 +26,7 @@
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
 #include "fileops.h"
+#include "hotkeydialog.h"
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
@@ -34,6 +35,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::ResizeToContents);
     ui.tableWidget->verticalHeader()->hide();
+    ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::ResizeToContents);
     connect (ui.newButton,SIGNAL(pressed()), SLOT(createAction()));
     connect (ui.deleteButton,SIGNAL(pressed()), SLOT(deleteAction()));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -48,7 +50,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         QComboBox *comboBox = new QComboBox;
         comboBox->addItem (tr("Copy"), FileOps::COPY);
         comboBox->addItem (tr("Rename"), FileOps::RENAME);
-        comboBox->addItem (tr("Move"), FileOps::MOVE);
+        //comboBox->addItem (tr("Move"), FileOps::MOVE);
         comboBox->addItem (tr("Remove"), FileOps::REMOVE);
         comboBox->setFocusPolicy (Qt::NoFocus);
 
@@ -64,6 +66,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui.tableWidget->setCellWidget (i, 0, checkBox);
         ui.tableWidget->setCellWidget (i, 1, comboBox);
         ui.tableWidget->setItem (i, 2, item);
+        QTableWidgetItem *item2 = new QTableWidgetItem();
+        item2->setText(settings.value(QString("hotkey_%1").arg(i)).toString());
+        ui.tableWidget->setItem (i, 3, item2);
+        ui.tableWidget->item (i, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
     }
     settings.endGroup();
     connect (ui.tableWidget, SIGNAL(currentItemChanged (QTableWidgetItem *, QTableWidgetItem *)),
@@ -107,6 +113,7 @@ void SettingsDialog::accept()
         settings.setValue (QString("name_%1").arg(i), item->text());
         settings.setValue (QString("pattern_%1").arg(i), item->pattern());
         settings.setValue (QString("destination_%1").arg(i), item->destination());
+        settings.setValue (QString("hotkey_%1").arg(i), ui.tableWidget->item(i,3)->text());
     }
     settings.endGroup();
     QDialog::accept();
@@ -123,7 +130,7 @@ void SettingsDialog::createAction()
     QComboBox *comboBox = new QComboBox;
     comboBox->addItem (tr("Copy"), FileOps::COPY);
     comboBox->addItem (tr("Rename"), FileOps::RENAME);
-    comboBox->addItem (tr("Move"), FileOps::MOVE);
+    //comboBox->addItem (tr("Move"), FileOps::MOVE);
     comboBox->addItem (tr("Remove"), FileOps::REMOVE);
     comboBox->setFocusPolicy (Qt::NoFocus);
 
@@ -134,6 +141,9 @@ void SettingsDialog::createAction()
     ui.tableWidget->setCellWidget (row, 0, checkBox);
     ui.tableWidget->setCellWidget (row, 1, comboBox);
     ui.tableWidget->setItem (row, 2, item);
+    QTableWidgetItem *item2 = new QTableWidgetItem();
+    ui.tableWidget->setItem (row, 3, item2);
+    ui.tableWidget->item (row, 3)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 }
 
 void SettingsDialog::deleteAction()
@@ -198,7 +208,7 @@ void SettingsDialog::addTitleString(QAction *a)
     if (ui.patternEdit->cursorPosition () < 1)
         ui.patternEdit->insert(a->data().toString());
     else
-        ui.patternEdit->insert("_"+a->data().toString());
+        ui.patternEdit->insert(" - "+a->data().toString());
 }
 
 void SettingsDialog::selectDirectory()
@@ -207,4 +217,12 @@ void SettingsDialog::selectDirectory()
                                         ui.destinationEdit->text());
     if(!dir.isEmpty())
         ui.destinationEdit->setText(dir);
+}
+
+void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
+{
+    HotkeyDialog *dialog = new HotkeyDialog(item->text(), this);
+    if (ui.tableWidget->column (item) == 3 && dialog->exec() == QDialog::Accepted)
+        item->setText(dialog->key());
+    delete dialog;
 }

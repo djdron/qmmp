@@ -18,46 +18,46 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtGui>
+#include <QKeyEvent>
+#include "hotkeydialog.h"
 
-#include "fileops.h"
-#include "settingsdialog.h"
-#include "fileopsfactory.h"
-
-const GeneralProperties FileOpsFactory::properties() const
+HotkeyDialog::HotkeyDialog(const QString &key, QWidget *parent)
+        : QDialog(parent)
 {
-    GeneralProperties properties;
-    properties.name = tr("File Operations Plugin");
-    properties.shortName = "fileops";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
+    ui.setupUi(this);
+    ui.keyLineEdit->setText(key);
 }
 
-General *FileOpsFactory::create(QObject *parent)
+HotkeyDialog::~HotkeyDialog()
 {
-    return new FileOps(parent);
 }
 
-QDialog *FileOpsFactory::createConfigDialog(QWidget *parent)
+void HotkeyDialog::keyPressEvent (QKeyEvent *event)
 {
-    return new SettingsDialog(parent);
+    int key = event->key();
+    switch (key)
+    {
+    case Qt::Key_Shift:
+    case Qt::Key_Control:
+    case Qt::Key_Meta:
+    case Qt::Key_Alt:
+    case Qt::Key_AltGr:
+    case Qt::Key_Super_L:
+    case Qt::Key_Super_R:
+    case Qt::Key_Menu:
+    case 0:
+    case Qt::Key_unknown:
+        key = 0;
+        ui.keyLineEdit->clear();
+        QWidget::keyPressEvent(event);
+        return;
+    }
+    QKeySequence seq(event->modifiers() + event->key());
+    ui.keyLineEdit->setText(seq.toString());
+    QWidget::keyPressEvent(event);
 }
 
-void FileOpsFactory::showAbout(QWidget *parent)
+const QString HotkeyDialog::key()
 {
-    QMessageBox::about (parent, tr("About File Operations Plugin"),
-                        tr("Qmmp File Operations Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+    return ui.keyLineEdit->text();
 }
-
-QTranslator *FileOpsFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/fileops_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN(FileOpsFactory)

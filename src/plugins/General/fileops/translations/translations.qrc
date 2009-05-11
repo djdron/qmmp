@@ -1,0 +1,12 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>fileops_plugin_ru.qm</file>
+    <file>fileops_plugin_uk_UA.qm</file>
+    <file>fileops_plugin_zh_CN.qm</file>
+    <file>fileops_plugin_zh_TW.qm</file>
+    <file>fileops_plugin_cs.qm</file>
+    <file>fileops_plugin_de.qm</file>
+    <file>fileops_plugin_pl.qm</file>
+  </qresource>
+</RCC>

@@ -17,47 +17,34 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef HOTKEYDIALOG_H
+#define HOTKEYDIALOG_H
 
-#include <QtGui>
+#include <QDialog>
 
-#include "fileops.h"
-#include "settingsdialog.h"
-#include "fileopsfactory.h"
+#include "ui_hotkeydialog.h"
 
-const GeneralProperties FileOpsFactory::properties() const
+class QKeyEvent;
+
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class HotkeyDialog : public QDialog
 {
-    GeneralProperties properties;
-    properties.name = tr("File Operations Plugin");
-    properties.shortName = "fileops";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
-}
+    Q_OBJECT
+public:
+    HotkeyDialog(const QString &key, QWidget *parent = 0);
 
-General *FileOpsFactory::create(QObject *parent)
-{
-    return new FileOps(parent);
-}
+    ~HotkeyDialog();
 
-QDialog *FileOpsFactory::createConfigDialog(QWidget *parent)
-{
-    return new SettingsDialog(parent);
-}
+    const QString key();
 
-void FileOpsFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About File Operations Plugin"),
-                        tr("Qmmp File Operations Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-}
+protected:
+    virtual void keyPressEvent (QKeyEvent *event);
 
-QTranslator *FileOpsFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/fileops_plugin_") + locale);
-    return translator;
-}
+private:
+    Ui::HotkeyDialog ui;
 
-Q_EXPORT_PLUGIN(FileOpsFactory)
+};
+
+#endif

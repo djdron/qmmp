@@ -1,7 +1,8 @@
 SUBDIRS += statusicon \
            notifier \
            lyrics \
-           scrobbler
+           scrobbler \
+           fileops
 unix:SUBDIRS += mpris \                
                 hal \
                 hotkey

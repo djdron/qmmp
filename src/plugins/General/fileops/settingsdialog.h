@@ -49,6 +49,7 @@ private slots:
     void changePattern(const QString &pattern);
     void addTitleString(QAction *action);
     void selectDirectory();
+    void on_tableWidget_itemDoubleClicked (QTableWidgetItem *item);
 
 private:
     void createMenus();
