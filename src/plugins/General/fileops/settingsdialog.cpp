@@ -134,7 +134,7 @@ void SettingsDialog::createAction()
     comboBox->addItem (tr("Remove"), FileOps::REMOVE);
     comboBox->setFocusPolicy (Qt::NoFocus);
 
-    ActionItem *item = new ActionItem("New action");
+    ActionItem *item = new ActionItem(tr("New action"));
     //item->setPattern(settings.value(QString("pattern_%1").arg(i)).toString());
     //item->setDestination(settings.value(QString("destination_%1").arg(i)).toString());
 
