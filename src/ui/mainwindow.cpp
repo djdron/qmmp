@@ -233,7 +233,8 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
     {
-        m_equalizer->loadPreset(m_playListModel->currentItem()->url().section("/",-1));
+        if (m_playListModel->currentItem())
+            m_equalizer->loadPreset(m_playListModel->currentItem()->url().section("/",-1));
         if (m_playlist->listWidget())
             m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
         break;
