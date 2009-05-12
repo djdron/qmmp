@@ -41,7 +41,8 @@ TRANSLATIONS = translations/ffmpeg_plugin_ru.ts \
                translations/ffmpeg_plugin_zh_TW.ts \
                translations/ffmpeg_plugin_cs.ts \
                translations/ffmpeg_plugin_pl.ts \
-               translations/ffmpeg_plugin_de.ts
+               translations/ffmpeg_plugin_de.ts \
+               translations/ffmpeg_plugin_it.ts
 
 RESOURCES = translations/translations.qrc
 

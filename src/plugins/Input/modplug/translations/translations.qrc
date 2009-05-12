@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>modplug_plugin_it.qm</file>
     <file>modplug_plugin_cs.qm</file>
     <file>modplug_plugin_de.qm</file>
     <file>modplug_plugin_zh_CN.qm</file>

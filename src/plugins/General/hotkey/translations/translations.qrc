@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>hotkey_plugin_it.qm</file>
     <file>hotkey_plugin_cs.qm</file>
     <file>hotkey_plugin_de.qm</file>
     <file>hotkey_plugin_zh_CN.qm</file>

@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>mpc_plugin_it.qm</file>
     <file>mpc_plugin_ru.qm</file>
     <file>mpc_plugin_uk_UA.qm</file>
     <file>mpc_plugin_zh_CN.qm</file>

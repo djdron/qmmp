@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>fileops_plugin_it.qm</file>
     <file>fileops_plugin_ru.qm</file>
     <file>fileops_plugin_uk_UA.qm</file>
     <file>fileops_plugin_zh_CN.qm</file>

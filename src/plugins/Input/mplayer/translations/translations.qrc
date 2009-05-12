@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>mplayer_plugin_it.qm</file>
     <file>mplayer_plugin_ru.qm</file>
     <file>mplayer_plugin_uk_UA.qm</file>
     <file>mplayer_plugin_zh_CN.qm</file>

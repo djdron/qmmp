@@ -39,6 +39,7 @@ TRANSLATIONS = translations/qmmp_file_dialog_plugin_ru.ts \
                translations/qmmp_file_dialog_plugin_pt_BR.ts \
                translations/qmmp_file_dialog_plugin_uk_UA.ts \
                translations/qmmp_file_dialog_plugin_zh_TW.ts \
-               translations/qmmp_file_dialog_plugin_de.ts
+               translations/qmmp_file_dialog_plugin_de.ts \
+               translations/qmmp_file_dialog_plugin_de.it
 
 RESOURCES += translations/translations.qrc

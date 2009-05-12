@@ -34,7 +34,8 @@ TRANSLATIONS = translations/analyzer_plugin_cs.ts \
                translations/analyzer_plugin_zh_TW.ts \
                translations/analyzer_plugin_ru.ts \
                translations/analyzer_plugin_pl.ts \
-               translations/analyzer_plugin_uk_UA.ts
+               translations/analyzer_plugin_uk_UA.ts \
+               translations/analyzer_plugin_it.ts
 RESOURCES = translations/translations.qrc
 unix{
 isEmpty(LIB_DIR){

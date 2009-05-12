@@ -38,6 +38,11 @@
     <file>txt/translators_de.txt</file>
     <file>txt/description_de.txt</file>
 
+    <file>txt/authors_it.txt</file>
+    <file>txt/thanks_it.txt</file>
+    <file>txt/translators_it.txt</file>
+    <file>txt/description_it.txt</file>
+
     <file>default/balance.png</file>
     <file>default/eqmain.png</file>
     <file>default/numbers.png</file>

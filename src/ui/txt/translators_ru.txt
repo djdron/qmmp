@@ -2,6 +2,9 @@
     Klaos Lacerda
     Bruno Gonçalves
 
+Итальянский:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
 Китайский традиционный:
     lon <lon83129@126.com>
 

@@ -21,7 +21,8 @@ TRANSLATIONS = translations/notifier_plugin_cs.ts \
                translations/notifier_plugin_zh_TW.ts \
                translations/notifier_plugin_ru.ts \
                translations/notifier_plugin_pl.ts \
-               translations/notifier_plugin_uk_UA.ts
+               translations/notifier_plugin_uk_UA.ts \
+               translations/notifier_plugin_it.ts
 RESOURCES = notifier_images.qrc \
             translations/translations.qrc
 

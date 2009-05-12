@@ -28,7 +28,8 @@ TRANSLATIONS = translations/jack_plugin_ru.ts \
                translations/jack_plugin_zh_TW.ts \
                translations/jack_plugin_cs.ts \
                translations/jack_plugin_pl.ts \
-               translations/jack_plugin_de.ts
+               translations/jack_plugin_de.ts \
+               translations/jack_plugin_it.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){
