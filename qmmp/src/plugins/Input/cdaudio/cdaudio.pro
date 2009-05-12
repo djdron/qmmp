@@ -26,7 +26,8 @@ TRANSLATIONS = translations/cdaudio_plugin_ru.ts \
                translations/cdaudio_plugin_zh_TW.ts \
                translations/cdaudio_plugin_cs.ts \
                translations/cdaudio_plugin_pl.ts \
-               translations/cdaudio_plugin_de.ts
+               translations/cdaudio_plugin_de.ts \
+               translations/cdaudio_plugin_it.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

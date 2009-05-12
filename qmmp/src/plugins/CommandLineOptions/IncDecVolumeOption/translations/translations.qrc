@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+  <file>incdecvolume_plugin_it.qm</file>
   <file>incdecvolume_plugin_pl.qm</file>
   <file>incdecvolume_plugin_ru.qm</file>
   <file>incdecvolume_plugin_de.qm</file>

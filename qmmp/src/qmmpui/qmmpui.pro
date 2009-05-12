@@ -66,7 +66,8 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
                translations/libqmmpui_pt_BR.ts \
                translations/libqmmpui_uk_UA.ts \
                translations/libqmmpui_zh_TW.ts \
-               translations/libqmmpui_de.ts
+               translations/libqmmpui_de.ts \
+               translations/libqmmpui_it.ts
 unix {
 devel.files += abstractplaylistitem.h \
                commandlinemanager.h \

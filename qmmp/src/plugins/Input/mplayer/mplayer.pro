@@ -29,7 +29,8 @@ TRANSLATIONS = translations/mplayer_plugin_ru.ts \
                translations/mplayer_plugin_zh_TW.ts \
                translations/mplayer_plugin_cs.ts \
                translations/mplayer_plugin_pl.ts \
-               translations/mplayer_plugin_de.ts
+               translations/mplayer_plugin_de.ts \
+               translations/mplayer_plugin_it.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

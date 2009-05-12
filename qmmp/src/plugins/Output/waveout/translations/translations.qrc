@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>waveout_plugin_it.qm</file>
     <file>waveout_plugin_cs.qm</file>
     <file>waveout_plugin_de.qm</file>
     <file>waveout_plugin_zh_CN.qm</file>

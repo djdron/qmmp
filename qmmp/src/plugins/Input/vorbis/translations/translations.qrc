@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>vorbis_plugin_it.qm</file>
     <file>vorbis_plugin_ru.qm</file>
     <file>vorbis_plugin_uk_UA.qm</file>
     <file>vorbis_plugin_zh_CN.qm</file>

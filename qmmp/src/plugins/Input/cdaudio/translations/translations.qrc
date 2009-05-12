@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>cdaudio_plugin_it.qm</file>
     <file>cdaudio_plugin_ru.qm</file>
     <file>cdaudio_plugin_uk_UA.qm</file>
     <file>cdaudio_plugin_zh_CN.qm</file>

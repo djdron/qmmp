@@ -11,5 +11,6 @@
     <file>qmmp_de.qm</file>
     <file>qmmp_pl_PL.qm</file>
     <file>qmmp_fr.qm</file>
+    <file>qmmp_it.qm</file>
   </qresource>
 </RCC>

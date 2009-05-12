@@ -1,6 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
+    <file>hal_plugin_it.qm</file>
     <file>hal_plugin_ru.qm</file>
     <file>hal_plugin_uk_UA.qm</file>
     <file>hal_plugin_zh_CN.qm</file>
