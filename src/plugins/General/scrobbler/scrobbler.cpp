@@ -336,7 +336,7 @@ void Scrobbler::submit()
                 .arg(info.metaData(Qmmp::TRACK))
                 .arg(i);
     }
-    qDebug(qPrintable(body));
+    qDebug("%s",qPrintable(body));
     QUrl url(m_submitUrl);
     m_http->setHost(url.host(), url.port());
     QHttpRequestHeader header("POST", url.path());
@@ -346,7 +346,7 @@ void Scrobbler::submit()
     header.setValue("Accept", "*/*");
     header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=").size());
     qDebug("Scrobbler: submit request header");
-    qDebug(qPrintable(header.toString().trimmed()));
+    qDebug("%s",qPrintable(header.toString().trimmed()));
     qDebug("*****************************");
     m_submitid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&="));
 }
@@ -370,7 +370,7 @@ void Scrobbler::sendNotification(const SongInfo &info)
     header.setValue("Accept", "*/*");
     header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=").size());
     qDebug("Scrobbler: Now-Playing notification request header");
-    qDebug(qPrintable(header.toString().trimmed()));
+    qDebug("%s",qPrintable(header.toString().trimmed()));
     qDebug("*****************************");
     m_notificationid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&="));
 }
