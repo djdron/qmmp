@@ -72,7 +72,7 @@ FileInfo *MplayerInfo::createFileInfo(const QString &path)
             info->setLength((qint64) rx_id_length.cap(1).toDouble());
     }
 #ifdef MPLAYER_DEBUG
-    qDebug(qPrintable(str));
+    qDebug("%s",qPrintable(str));
 #endif
     return info;
 }
@@ -100,7 +100,7 @@ DecoderMplayer::DecoderMplayer(QObject *parent, DecoderFactory *d, const QString
 
 DecoderMplayer::~DecoderMplayer()
 {
-    qDebug(__FUNCTION__);
+    qDebug("%s",__FUNCTION__);
     m_process->close();
 }
 
@@ -209,7 +209,7 @@ void DecoderMplayer::readStdOut()
         }
 #ifdef MPLAYER_DEBUG
         else
-            qDebug(qPrintable(line));
+            qDebug("%s",qPrintable(line));
 #endif
     }
 }

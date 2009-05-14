@@ -109,7 +109,7 @@ QStringList QmmpFileDialogImpl::selectedFiles ()
     if (m_mode == FileDialog::SaveFile)
     {
         l << m_model->filePath(fileListView->rootIndex()) + "/" + fileNameLineEdit->text();
-        qDebug(qPrintable(l[0]));
+        qDebug("%s",qPrintable(l[0]));
     }
     else
     {

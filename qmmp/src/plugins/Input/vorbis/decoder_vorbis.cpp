@@ -176,7 +176,7 @@ bool DecoderVorbis::initialize()
     {
         if (! input()->open(QIODevice::ReadOnly))
         {
-            qWarning(qPrintable("DecoderVorbis: failed to open input. " +
+            qWarning("%s",qPrintable("DecoderVorbis: failed to open input. " +
                                 input()->errorString () + "."));
             return FALSE;
         }

@@ -145,7 +145,7 @@ void SettingsDialog::getCardDevices(int card)
         QString str;
         str =  QString(card_name) + ": "+
                snd_pcm_info_get_name(pcm_info)+" ("+device+")";
-        qDebug(str.toAscii());
+        qDebug("%s",qPrintable(str));
         ui.deviceComboBox->addItem(str);
     }
 
