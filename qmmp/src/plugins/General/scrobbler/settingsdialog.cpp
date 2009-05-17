@@ -31,7 +31,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     settings.beginGroup("Scrobbler");
     ui.userLineEdit->setText(settings.value("login").toString());
     ui.passwordLineEdit->setText(settings.value("password").toString());
+    ui.serviceComboBox->addItem ("last.fm", "post.audioscrobbler.com");
+    ui.serviceComboBox->addItem ("libre.fm", "turtle.libre.fm");
+    int i = ui.serviceComboBox->findData(settings.value("server", "post.audioscrobbler.com").toString());
+    if(i >= 0)
+        ui.serviceComboBox->setCurrentIndex (i);
     settings.endGroup();
+
 }
 
 
@@ -44,6 +50,7 @@ void SettingsDialog::accept()
     settings.beginGroup("Scrobbler");
     settings.setValue("login",ui.userLineEdit->text());
     settings.setValue("password",ui.passwordLineEdit->text());
+    settings.setValue("server", ui.serviceComboBox->itemData(ui.serviceComboBox->currentIndex()));
     settings.endGroup();
     QDialog::accept();
 }

@@ -27,17 +27,22 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Scrobbler Plugin Settings</source>
         <translation>Ustawienia wtyczki Scrobbler</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="19"/>
+        <location filename="../settingsdialog.ui" line="35"/>
+        <source>Service:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>User name:</source>
         <translation>Nazwa użytkownika:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="55"/>
         <source>Password:</source>
         <translation>Hasło:</translation>
     </message>

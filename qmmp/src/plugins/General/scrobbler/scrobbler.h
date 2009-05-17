@@ -100,6 +100,7 @@ private:
     int m_notificationid;
     QByteArray m_array;
     bool m_disabled;
+    QString m_server;
 
 };
 

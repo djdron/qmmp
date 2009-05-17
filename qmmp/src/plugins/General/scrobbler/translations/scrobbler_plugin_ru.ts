@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ru">
+<!DOCTYPE TS>
+<TS version="2.0" language="ru">
 <context>
     <name>ScrobblerFactory</name>
     <message>
@@ -26,17 +27,22 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Scrobbler Plugin Settings</source>
         <translation>Настройки модуля scrobbler</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="19"/>
+        <location filename="../settingsdialog.ui" line="35"/>
+        <source>Service:</source>
+        <translation>Сервис:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>User name:</source>
         <translation>Имя пользователя:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="55"/>
         <source>Password:</source>
         <translation>Пароль:</translation>
     </message>

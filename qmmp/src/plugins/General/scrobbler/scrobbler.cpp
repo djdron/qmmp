@@ -32,7 +32,7 @@
 
 #include "scrobbler.h"
 
-#define SCROBBLER_HS_URL "post.audioscrobbler.com"
+//#define SCROBBLER_HS_URL "post.audioscrobbler.com"
 #define PROTOCOL_VER "1.2"
 #define CLIENT_ID "qmm"
 #define CLIENT_VER "0.2"
@@ -42,12 +42,13 @@ Scrobbler::Scrobbler(QObject *parent)
         : General(parent)
 {
     m_http = new QHttp(this);
-    m_http->setHost(SCROBBLER_HS_URL, 80);
+    m_http->setHost(m_server, 80);
     m_state = Qmmp::Stopped;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     m_login = settings.value("login").toString();
     m_passw = settings.value("password").toString();
+    m_server = settings.value("server", "post.audioscrobbler.com").toString();
     settings.endGroup();
     //load global proxy settings
     if (Qmmp::useProxy())
@@ -311,7 +312,7 @@ void Scrobbler::handshake()
                   .arg(QString(auth));
 
     qDebug("Scrobbler: request url: %s",qPrintable(url));
-    m_http->setHost(SCROBBLER_HS_URL, 80);
+    m_http->setHost(m_server, 80);
     m_handshakeid = m_http->get(url);
 }
 
