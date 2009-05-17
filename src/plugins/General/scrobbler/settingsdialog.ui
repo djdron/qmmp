@@ -1,50 +1,76 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>SettingsDialog</class>
- <widget class="QDialog" name="SettingsDialog" >
-  <property name="geometry" >
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>250</width>
-    <height>101</height>
+    <width>265</width>
+    <height>121</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Scrobbler Plugin Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="text" >
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>6</number>
+   </property>
+   <property name="horizontalSpacing">
+    <number>6</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Service:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="serviceComboBox"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
       <string>User name:</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" >
-    <widget class="QLineEdit" name="userLineEdit" />
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="userLineEdit"/>
    </item>
-   <item row="1" column="0" >
-    <widget class="QLabel" name="label_2" >
-     <property name="text" >
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
       <string>Password:</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QLineEdit" name="passwordLineEdit" >
-     <property name="echoMode" >
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="passwordLineEdit">
+     <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2" >
-    <layout class="QHBoxLayout" name="horizontalLayout" >
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>136</width>
          <height>18</height>
@@ -53,8 +79,8 @@
       </spacer>
      </item>
      <item>
-      <widget class="QDialogButtonBox" name="buttonBox" >
-       <property name="standardButtons" >
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
@@ -71,11 +97,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>156</x>
      <y>77</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>16</x>
      <y>69</y>
     </hint>
@@ -87,11 +113,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>216</x>
      <y>81</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>75</x>
      <y>81</y>
     </hint>
