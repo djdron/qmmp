@@ -32,19 +32,26 @@
         <translation>Scrobbler 插件设置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
-        <source>Service:</source>
+        <location filename="../settingsdialog.ui" line="32"/>
+        <source>last.fm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="45"/>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="77"/>
         <source>User name:</source>
         <translation>用户名：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="51"/>
+        <location filename="../settingsdialog.ui" line="87"/>
         <source>Password:</source>
         <translation>密码：</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <source>libre.fm</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

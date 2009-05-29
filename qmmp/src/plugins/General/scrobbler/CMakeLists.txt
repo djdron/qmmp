@@ -31,12 +31,14 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 SET(libscrobbler_SRCS
     settingsdialog.cpp
     scrobbler.cpp
+    scrobblerhandler.cpp
     scrobblerfactory.cpp
 )
 
 SET(libscrobbler_MOC_HDRS
     settingsdialog.h
     scrobblerfactory.h
+    scrobblerhandler.h
     scrobbler.h
 )
 

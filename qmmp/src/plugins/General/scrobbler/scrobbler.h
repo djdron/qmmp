@@ -22,7 +22,6 @@
 
 #include <QHttpResponseHeader>
 #include <QMap>
-#include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
 
 class QHttp;
@@ -63,11 +62,15 @@ private:
 
 };
 
-class Scrobbler : public General
+class Scrobbler : public QObject
 {
     Q_OBJECT
 public:
-    Scrobbler(QObject *parent = 0);
+    Scrobbler(const QString &url,
+              const QString &login,
+              const QString &passw,
+              const QString &name,
+              QObject *parent = 0);
 
     ~Scrobbler();
 
@@ -100,7 +103,7 @@ private:
     int m_notificationid;
     QByteArray m_array;
     bool m_disabled;
-    QString m_server;
+    QString m_server, m_name;
 
 };
 
