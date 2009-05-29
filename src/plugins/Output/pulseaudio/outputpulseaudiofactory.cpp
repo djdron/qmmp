@@ -58,7 +58,7 @@ void OutputPulseAudioFactory::showAbout(QWidget *parent)
 QTranslator *OutputPulseAudioFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/pulseaudio_plugin_") + locale);
     return translator;
 }

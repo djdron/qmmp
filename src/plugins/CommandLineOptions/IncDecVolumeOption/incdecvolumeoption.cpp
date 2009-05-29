@@ -78,7 +78,7 @@ const QString IncDecVolumeCommandLineOption::name() const
 QTranslator *IncDecVolumeCommandLineOption::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/incdecvolume_plugin_") + locale);
     return translator;
 }

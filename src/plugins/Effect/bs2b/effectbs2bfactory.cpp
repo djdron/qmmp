@@ -20,6 +20,7 @@
 
 #include <QtGui>
 #include <bs2b/bs2bversion.h>
+#include <qmmp/qmmp.h>
 #include "effectbs2bfactory.h"
 #include "settingsdialog.h"
 #include "bs2bplugin.h"
@@ -61,7 +62,7 @@ void EffectBs2bFactory::showAbout(QWidget *parent)
 QTranslator *EffectBs2bFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/bs2b_plugin_") + locale);
     return translator;
 };

@@ -136,7 +136,7 @@ void DecoderWavPackFactory::showAbout(QWidget *parent)
 QTranslator *DecoderWavPackFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/wavpack_plugin_") + locale);
     return translator;
 }

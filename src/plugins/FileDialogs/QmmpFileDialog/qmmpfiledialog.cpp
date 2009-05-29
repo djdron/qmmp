@@ -21,7 +21,7 @@
 #include <QtPlugin>
 #include <QTranslator>
 #include <QMessageBox>
-
+#include <qmmp/qmmp.h>
 #include "qmmpfiledialogimpl.h"
 #include "qmmpfiledialog.h"
 
@@ -138,7 +138,7 @@ void QmmpFileDialogFactory::showAbout(QWidget *parent)
 QTranslator *QmmpFileDialogFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/qmmp_file_dialog_plugin_") + locale);
     return translator;
 }

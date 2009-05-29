@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "hotkeymanager.h"
 #include "hotkeyfactory.h"
@@ -56,7 +56,7 @@ void HotkeyFactory::showAbout(QWidget *parent)
 QTranslator *HotkeyFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/hotkey_plugin_") + locale);
     return translator;
 }

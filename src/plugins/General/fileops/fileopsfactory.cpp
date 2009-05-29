@@ -55,7 +55,7 @@ void FileOpsFactory::showAbout(QWidget *parent)
 QTranslator *FileOpsFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/fileops_plugin_") + locale);
     return translator;
 }

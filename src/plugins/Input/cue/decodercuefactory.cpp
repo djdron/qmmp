@@ -89,7 +89,7 @@ void DecoderCUEFactory::showAbout(QWidget *parent)
 QTranslator *DecoderCUEFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/cue_plugin_") + locale);
     return translator;
 }

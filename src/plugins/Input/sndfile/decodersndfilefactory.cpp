@@ -142,7 +142,7 @@ void DecoderSndFileFactory::showAbout(QWidget *parent)
 QTranslator *DecoderSndFileFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/sndfile_plugin_") + locale);
     return translator;
 }

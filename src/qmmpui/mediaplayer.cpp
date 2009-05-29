@@ -42,7 +42,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_skips = 0;
     m_repeat = FALSE;
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/libqmmpui_") + locale);
     qApp->installTranslator(translator);
 }

@@ -53,7 +53,7 @@ void OutputJACKFactory::showAbout(QWidget *parent)
 QTranslator *OutputJACKFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/jack_plugin_") + locale);
     return translator;
 }

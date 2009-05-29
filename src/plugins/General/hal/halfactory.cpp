@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "halplugin.h"
 #include "halfactory.h"
@@ -57,7 +57,7 @@ void HalFactory::showAbout(QWidget *parent)
 QTranslator *HalFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/hal_plugin_") + locale);
     return translator;
 }

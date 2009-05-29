@@ -143,7 +143,7 @@ void DecoderModPlugFactory::showAbout(QWidget *parent)
 QTranslator *DecoderModPlugFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/modplug_plugin_") + locale);
     return translator;
 }

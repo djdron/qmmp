@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     QApplication a (argc, argv );
     a.setApplicationName("qmmp");
     QTranslator translator;
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator.load(QString(":/qmmp_") + locale);
     a.installTranslator(&translator);
 

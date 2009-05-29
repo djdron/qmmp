@@ -59,7 +59,7 @@ void OutputWaveOutFactory::showAbout(QWidget *parent)
 QTranslator *OutputWaveOutFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/waveout_plugin_") + locale);
     return translator;
 }

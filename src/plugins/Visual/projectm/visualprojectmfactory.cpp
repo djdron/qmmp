@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <qmmp/qmmp.h>
 #include "visualprojectmfactory.h"
 #include "projectmplugin.h"
 
@@ -55,7 +56,7 @@ void VisualProjectMFactory::showAbout(QWidget *parent)
 QTranslator *VisualProjectMFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/projectm_plugin_") + locale);
     return translator;
 };
