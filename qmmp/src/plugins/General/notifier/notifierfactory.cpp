@@ -55,7 +55,7 @@ void NotifierFactory::showAbout(QWidget *parent)
 QTranslator *NotifierFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/notifier_plugin_") + locale);
     return translator;
 }

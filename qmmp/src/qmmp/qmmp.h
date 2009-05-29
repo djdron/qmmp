@@ -96,6 +96,11 @@ public:
      * Returns the location of the installed Qmmp plugins.
      */
     static const QString pluginsPath();
+    /*!
+     * Returns system language
+     */
+    static QString systemLanguageID();
+
 
 private:
     static QString m_configFile;

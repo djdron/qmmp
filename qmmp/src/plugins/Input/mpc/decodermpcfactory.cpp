@@ -108,7 +108,7 @@ void DecoderMPCFactory::showAbout(QWidget *parent)
 QTranslator *DecoderMPCFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/mpc_plugin_") + locale);
     return translator;
 }

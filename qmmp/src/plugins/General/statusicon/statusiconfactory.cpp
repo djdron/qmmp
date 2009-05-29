@@ -55,7 +55,7 @@ void StatusIconFactory::showAbout(QWidget *parent)
 QTranslator *StatusIconFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/statusicon_plugin_") + locale);
     return translator;
 }

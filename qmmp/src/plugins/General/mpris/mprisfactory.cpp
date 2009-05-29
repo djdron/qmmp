@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "mpris.h"
 #include "mprisfactory.h"
 
@@ -54,7 +54,7 @@ void MPRISFactory::showAbout(QWidget *parent)
 QTranslator *MPRISFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/mpris_plugin_") + locale);
     return translator;
 }

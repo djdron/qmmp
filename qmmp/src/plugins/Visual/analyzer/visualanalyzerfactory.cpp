@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "visualanalyzerfactory.h"
 #include "analyzer.h"
@@ -54,7 +54,7 @@ void VisualAnalyzerFactory::showAbout(QWidget *parent)
 QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/analyzer_plugin_") + locale);
     return translator;
 };

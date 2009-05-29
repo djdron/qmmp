@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "effectsrconverterfactory.h"
 #include "srconverter.h"
@@ -55,7 +55,7 @@ void EffectSRConverterFactory::showAbout(QWidget *parent)
 QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent) 
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/srconverter_plugin_") + locale);
     return translator;
 };

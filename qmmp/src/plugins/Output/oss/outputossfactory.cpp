@@ -62,7 +62,7 @@ QMessageBox::about (parent, tr("About OSS Output Plugin"),
 QTranslator *OutputOSSFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/oss_plugin_") + locale);
     return translator;
 }

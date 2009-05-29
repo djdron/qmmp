@@ -21,6 +21,8 @@
 #include <QDir>
 #include <QApplication>
 #include <QSettings>
+#include <QLocale>
+#include <QByteArray>
 
 #ifndef QMMP_STR_VERSION
 #define QMMP_STR_VERSION "0.3.0"
@@ -102,4 +104,18 @@ const QString Qmmp::pluginsPath()
 #endif
 #endif
     return dir.canonicalPath();
+}
+
+QString Qmmp::systemLanguageID()
+{
+#ifdef Q_OS_UNIX
+    QByteArray v = qgetenv ("LC_MESSAGES");
+    if (v.isEmpty())
+        v = qgetenv ("LC_ALL");
+    if (v.isEmpty())
+        v = qgetenv ("LANG");
+    if (!v.isEmpty())
+        return QLocale (v).name();
+#endif
+    return  QLocale::system().name();
 }
