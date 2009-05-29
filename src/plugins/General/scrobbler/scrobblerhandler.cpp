@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,46 +18,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtGui>
+#define SCROBBLER_LASTFM_URL "post.audioscrobbler.com"
+#define SCROBBLER_LIBREFM_URL "turtle.libre.fm"
 
+#include <QSettings>
+#include "scrobbler.h"
 #include "scrobblerhandler.h"
-#include "settingsdialog.h"
-#include "scrobblerfactory.h"
 
-const GeneralProperties ScrobblerFactory::properties() const
+ScrobblerHandler::ScrobblerHandler(QObject *parent) : General(parent)
 {
-    GeneralProperties properties;
-    properties.name = tr("Scrobbler Plugin");
-    properties.shortName = "scrobbler";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Scrobbler");
+    if(settings.value("use_lastfm", FALSE).toBool())
+    {
+        new Scrobbler(SCROBBLER_LASTFM_URL, settings.value("lastfm_login").toString(),
+                   settings.value("lastfm_password").toString(), "lastfm", this);
+
+    }
+    if(settings.value("use_librefm", FALSE).toBool())
+    {
+        new Scrobbler(SCROBBLER_LIBREFM_URL, settings.value("librefm_login").toString(),
+                   settings.value("librefm_password").toString(), "librefm", this);
+
+    }
+    settings.endGroup();
 }
 
-General *ScrobblerFactory::create(QObject *parent)
-{
-    return new ScrobblerHandler(parent);
-}
-
-QDialog *ScrobblerFactory::createConfigDialog(QWidget *parent)
-{
-    return new SettingsDialog(parent);
-}
-
-void ScrobblerFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About Scrobbler Plugin"),
-                        tr("Qmmp AudioScrobbler Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-}
-
-QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/scrobbler_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN(ScrobblerFactory)
+ScrobblerHandler::~ScrobblerHandler()
+{}

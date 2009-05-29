@@ -29,15 +29,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
-    ui.userLineEdit->setText(settings.value("login").toString());
-    ui.passwordLineEdit->setText(settings.value("password").toString());
-    ui.serviceComboBox->addItem ("last.fm", "post.audioscrobbler.com");
-    ui.serviceComboBox->addItem ("libre.fm", "turtle.libre.fm");
-    int i = ui.serviceComboBox->findData(settings.value("server", "post.audioscrobbler.com").toString());
-    if(i >= 0)
-        ui.serviceComboBox->setCurrentIndex (i);
+    ui.lastfmGroupBox->setChecked(settings.value("use_lastfm", FALSE).toBool());
+    ui.userLineEdit->setText(settings.value("lastfm_login").toString());
+    ui.passwordLineEdit->setText(settings.value("lastfm_password").toString());
+    ui.librefmGroupBox->setChecked(settings.value("use_librefm", FALSE).toBool());
+    ui.userLineEdit_libre->setText(settings.value("librefm_login").toString());
+    ui.passwordLineEdit_libre->setText(settings.value("librefm_password").toString());
     settings.endGroup();
-
 }
 
 
@@ -48,9 +46,12 @@ void SettingsDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
-    settings.setValue("login",ui.userLineEdit->text());
-    settings.setValue("password",ui.passwordLineEdit->text());
-    settings.setValue("server", ui.serviceComboBox->itemData(ui.serviceComboBox->currentIndex()));
+    settings.setValue("use_lastfm", ui.lastfmGroupBox->isChecked());
+    settings.setValue("lastfm_login",ui.userLineEdit->text());
+    settings.setValue("lastfm_password", ui.passwordLineEdit->text());
+    settings.setValue("use_librefm", ui.librefmGroupBox->isChecked());
+    settings.setValue("librefm_login",ui.userLineEdit_libre->text());
+    settings.setValue("librefm_password", ui.passwordLineEdit_libre->text());
     settings.endGroup();
     QDialog::accept();
 }

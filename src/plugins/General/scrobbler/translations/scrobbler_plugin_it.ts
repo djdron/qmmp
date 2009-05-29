@@ -32,19 +32,26 @@
         <translation>Impostazioni del modulo Scrobbler</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
-        <source>Service:</source>
+        <location filename="../settingsdialog.ui" line="32"/>
+        <source>last.fm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="45"/>
+        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="77"/>
         <source>User name:</source>
         <translation>Utente:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="51"/>
+        <location filename="../settingsdialog.ui" line="87"/>
         <source>Password:</source>
         <translation>Passowrd:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="68"/>
+        <source>libre.fm</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

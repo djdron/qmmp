@@ -18,46 +18,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtGui>
+#ifndef SCROBBLERHANDLER_H
+#define SCROBBLERHANDLER_H
 
-#include "scrobblerhandler.h"
-#include "settingsdialog.h"
-#include "scrobblerfactory.h"
+#include <QObject>
+#include <qmmpui/general.h>
 
-const GeneralProperties ScrobblerFactory::properties() const
+/**
+  @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+
+class ScrobblerHandler : public General
 {
-    GeneralProperties properties;
-    properties.name = tr("Scrobbler Plugin");
-    properties.shortName = "scrobbler";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = FALSE;
-    return properties;
-}
+Q_OBJECT
 
-General *ScrobblerFactory::create(QObject *parent)
-{
-    return new ScrobblerHandler(parent);
-}
+public:
+    ScrobblerHandler(QObject *parent = 0);
+    ~ScrobblerHandler();
+};
 
-QDialog *ScrobblerFactory::createConfigDialog(QWidget *parent)
-{
-    return new SettingsDialog(parent);
-}
-
-void ScrobblerFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About Scrobbler Plugin"),
-                        tr("Qmmp AudioScrobbler Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-}
-
-QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
-    translator->load(QString(":/scrobbler_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN(ScrobblerFactory)
+#endif // SCROBBLERHANDLER_H
