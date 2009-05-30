@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="de_DE">
 <context>
     <name>FileOps</name>
     <message>
         <location filename="../fileops.cpp" line="97"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="98"/>
         <source>Destination directory doesn&apos;t exist</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Zielverzeichnis existiert nicht</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="103"/>
         <source>Copying</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiere</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="104"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="134"/>
         <source>Copying file %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiere Datei %1/%2</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="175"/>
         <source>Remove files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateien entfernen</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="176"/>
         <source>Are you sure you want to remove %1 file(s) from disk</source>
-        <translation type="unfinished"></translation>
+        <translation>Wollen Sie wirklich %1 Datei(en) von der Festplatte entfernen?</translation>
     </message>
 </context>
 <context>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../fileopsfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kurzbefehl bearbeiten</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurücksetzen</translation>
     </message>
 </context>
 <context>
@@ -86,74 +86,74 @@
         <location filename="../settingsdialog.cpp" line="51"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopieren</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="52"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Umbenennen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="54"/>
         <location filename="../settingsdialog.cpp" line="134"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Entfernen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>New action</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Aktion</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="191"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Interpret</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="192"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="193"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="194"/>
         <source>Tracknumber</source>
-        <translation type="unfinished"></translation>
+        <translation>Titelnummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="197"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Jahr</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="215"/>
         <source>Choose a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Ein Verzeichnis wählen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
@@ -163,32 +163,32 @@
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiviert</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Operation</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktion</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Menu text</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menütext</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbefehl</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation>+</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
@@ -196,17 +196,17 @@
         <location filename="../settingsdialog.ui" line="158"/>
         <location filename="../settingsdialog.ui" line="175"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="148"/>
         <source>Destination:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zielort:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>File name pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dateinamensmuster:</translation>
     </message>
 </context>
 </TS>

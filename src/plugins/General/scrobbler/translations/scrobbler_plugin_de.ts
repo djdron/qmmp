@@ -6,17 +6,17 @@
     <message>
         <location filename="../scrobblerfactory.cpp" line="30"/>
         <source>Scrobbler Plugin</source>
-        <translation>Scrobbler-Plugin</translation>
+        <translation>Scrobbler-Modul</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="50"/>
         <source>About Scrobbler Plugin</source>
-        <translation>Über Scrobbler-Plugin</translation>
+        <translation>Über Scrobbler-Modul</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="51"/>
         <source>Qmmp AudioScrobbler Plugin</source>
-        <translation>Qmmp AudioScrobbler-Plugin</translation>
+        <translation>Qmmp AudioScrobbler-Modul</translation>
     </message>
     <message>
         <location filename="../scrobblerfactory.cpp" line="52"/>
@@ -29,11 +29,11 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Scrobbler Plugin Settings</source>
-        <translation>Einstellungen des Scrobbler-Plugins</translation>
+        <translation>Einstellungen Scrobbler-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
-        <source>last.fm</source>
+        <source>Last.fm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -50,7 +50,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
-        <source>libre.fm</source>
+        <source>Libre.fm</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderCUEFactory</name>
     <message>
         <location filename="../decodercuefactory.cpp" line="43"/>
         <source>CUE Plugin</source>
-        <translation>CUE-Plugin</translation>
+        <translation>CUE-Modul</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="46"/>
@@ -17,12 +16,12 @@
     <message>
         <location filename="../decodercuefactory.cpp" line="84"/>
         <source>About CUE Audio Plugin</source>
-        <translation>Über CUE-Audio-Plugin</translation>
+        <translation>Über CUE-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="85"/>
         <source>Qmmp CUE Audio Plugin</source>
-        <translation>Qmmp CUE-Audio-Plugin</translation>
+        <translation>Qmmp CUE-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodercuefactory.cpp" line="86"/>
@@ -35,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>CUE Plugin Settings</source>
-        <translation>Einstellungen des CUE-Plugins</translation>
+        <translation>Einstellungen CUE-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>

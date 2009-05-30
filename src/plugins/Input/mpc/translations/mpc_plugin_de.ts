@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMPCFactory</name>
     <message>
         <location filename="../decodermpcfactory.cpp" line="26"/>
         <source>Musepack Plugin</source>
-        <translation>Musepack-Plugin</translation>
+        <translation>Musepack-Modul</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="28"/>
@@ -17,12 +16,12 @@
     <message>
         <location filename="../decodermpcfactory.cpp" line="82"/>
         <source>About Musepack Audio Plugin</source>
-        <translation>Über Musepack-Audio-Plugin</translation>
+        <translation>Über Musepack-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="83"/>
         <source>Qmmp Musepack Audio Plugin</source>
-        <translation>Qmmp Musepack-Audio-Plugin</translation>
+        <translation>Qmmp Musepack-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="84"/>

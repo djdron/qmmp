@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -57,27 +56,27 @@
     <message>
         <location filename="../aboutdialog.cpp" line="84"/>
         <source>Input plugins:</source>
-        <translation>Dekoder-Plugins:</translation>
+        <translation>Eingabe-Module:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="93"/>
         <source>Output plugins:</source>
-        <translation>Ausgabe-Plugins:</translation>
+        <translation>Ausgabe-Module:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="102"/>
         <source>Visual plugins:</source>
-        <translation>Visualisierungs-Plugins:</translation>
+        <translation>Visualisierungsmodule:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="111"/>
         <source>Effect plugins:</source>
-        <translation>Effekt-Plugins:</translation>
+        <translation>Effekt-Module:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="120"/>
         <source>General plugins:</source>
-        <translation>Sonstige Plugins:</translation>
+        <translation>Sonstige Module:</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="115"/>
@@ -251,7 +250,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="101"/>
         <source>Plugins</source>
-        <translation>Plugins</translation>
+        <translation>Module</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="110"/>
@@ -865,7 +864,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="452"/>
         <source>&amp;Exit</source>
-        <translation>&amp;Beenden</translation>
+        <translation>Be&amp;enden</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="452"/>

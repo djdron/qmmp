@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="31"/>
         <source>Ogg Vorbis Plugin</source>
-        <translation>Ogg-Vorbis-Plugin</translation>
+        <translation>Ogg-Vorbis-Modul</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="33"/>
@@ -17,12 +16,12 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="90"/>
         <source>About Ogg Vorbis Audio Plugin</source>
-        <translation>Über Ogg-Vorbis-Audio-Plugin</translation>
+        <translation>Über Ogg-Vorbis-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="91"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
-        <translation>Qmmp Ogg-Vorbis-Audio-Plugin</translation>
+        <translation>Qmmp Ogg-Vorbis-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="92"/>

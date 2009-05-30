@@ -18,6 +18,9 @@ Deutsch:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
+Italienisch:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
 Polnisch:
     Grzegorz Gibas <amigib@gmail.com>
 

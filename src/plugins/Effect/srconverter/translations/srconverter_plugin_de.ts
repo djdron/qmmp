@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="30"/>
         <source>SRC Plugin</source>
-        <translation>SRC-Plugin</translation>
+        <translation>SRC-Modul</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="49"/>
         <source>About Sample Rate Converter Plugin</source>
-        <translation>Über „Sample Rate Converter“-Plugin</translation>
+        <translation>Über „Sample Rate Converter“-Modul</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="50"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
-        <translation>Qmmp „Sample Rate Converter“-Plugin</translation>
+        <translation>Qmmp „Sample Rate Converter“-Modul</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="51"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Sample Rate Converter Plugin Settings</source>
-        <translation>Einstellungen des „Sample Rate Converter“-Plugins</translation>
+        <translation>Einstellungen „Sample Rate Converter“-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>

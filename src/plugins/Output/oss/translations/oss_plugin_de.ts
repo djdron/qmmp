@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>OutputOSSFactory</name>
     <message>
         <location filename="../outputossfactory.cpp" line="30"/>
         <source>OSS Plugin</source>
-        <translation>OSS-Plugin</translation>
+        <translation>OSS-Modul</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="56"/>
         <source>About OSS Output Plugin</source>
-        <translation>Über OSS-Ausgabe-Plugin</translation>
+        <translation>Über OSS-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="57"/>
         <source>Qmmp OSS Output Plugin</source>
-        <translation>Qmmp OSS-Ausgabe-Plugin</translation>
+        <translation>Qmmp OSS-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>OSS Plugin Settings</source>
-        <translation>Einstellungen OSS-Plugin</translation>
+        <translation>Einstellungen OSS-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

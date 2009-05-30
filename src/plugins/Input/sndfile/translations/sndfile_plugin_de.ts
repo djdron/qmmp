@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>DecoderSndFileFactory</name>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="65"/>
         <source>Sndfile Plugin</source>
-        <translation>Sndfile-Plugin</translation>
+        <translation>Sndfile-Modul</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="67"/>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../decodersndfilefactory.cpp" line="127"/>
         <source>About Sndfile Audio Plugin</source>
-        <translation>Über Sndfile-Audio-Plugin</translation>
+        <translation>Über Sndfile-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="128"/>
         <source>Qmmp Sndfile Audio Plugin</source>
-        <translation>Qmmp Sndfile-Audio-Plugin</translation>
+        <translation>Qmmp Sndfile-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="129"/>

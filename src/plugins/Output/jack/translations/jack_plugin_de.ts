@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>OutputJACKFactory</name>
     <message>
         <location filename="../outputjackfactory.cpp" line="30"/>
         <source>JACK Plugin</source>
-        <translation>JACK-Plugin</translation>
+        <translation>JACK-Modul</translation>
     </message>
     <message>
         <location filename="../outputjackfactory.cpp" line="47"/>
         <source>About Jack Output Plugin</source>
-        <translation>Über JACK-Ausgabe-Plugin</translation>
+        <translation>Über JACK-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputjackfactory.cpp" line="48"/>
         <source>Qmmp Jack Output Plugin</source>
-        <translation>Qmmp JACK-Ausgabe-Plugin</translation>
+        <translation>Qmmp JACK-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputjackfactory.cpp" line="49"/>

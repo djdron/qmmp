@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>HalFactory</name>
     <message>
         <location filename="../halfactory.cpp" line="30"/>
         <source>HAL Plugin</source>
-        <translation>HAL-Plugin</translation>
+        <translation>HAL-Modul</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="50"/>
         <source>About HAL Plugin</source>
-        <translation>Über HAL-Plugin</translation>
+        <translation>Über HAL-Modul</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="51"/>
         <source>Qmmp HAL Plugin</source>
-        <translation>Qmmp HAL-Plugin</translation>
+        <translation>Qmmp HAL-Modul</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using HAL</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Modul bietet die Erkennung von Wechseldatenträgern mithilfe von HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="53"/>
@@ -53,12 +52,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>HAL Plugin Settings</source>
-        <translation>Einstellungen HAL-Plugin</translation>
+        <translation>Einstellungen HAL-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="28"/>
         <source>CD Audio Detection</source>
-        <translation>Audio-CD-Erkennung</translation>
+        <translation type="unfinished">Audio-CD-Erkennung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="37"/>
@@ -73,7 +72,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>Removable Device Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Wechseldatenträger-Erkennung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>

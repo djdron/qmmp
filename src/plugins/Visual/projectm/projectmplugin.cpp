@@ -38,7 +38,7 @@ ProjectMPlugin::ProjectMPlugin (QWidget *parent)
         : Visual (parent)
 {
     setlocale(LC_NUMERIC, "C"); //fixes none-english locales problem
-    setWindowTitle(tr("projectM"));
+    setWindowTitle(tr("ProjectM"));
     m_projectMWidget = new ProjectMWidget(this);
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(m_projectMWidget);
