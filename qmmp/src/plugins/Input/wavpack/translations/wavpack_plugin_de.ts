@@ -6,7 +6,7 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="44"/>
         <source>WavPack Plugin</source>
-        <translation>WavPack-Plugin</translation>
+        <translation>WavPack-Modul</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="30"/>
@@ -16,12 +16,12 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="129"/>
         <source>About WavPack Audio Plugin</source>
-        <translation>Über WavPack-Audio-Plugin</translation>
+        <translation>Über WavPack-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="130"/>
         <source>Qmmp WavPack Audio Plugin</source>
-        <translation>Qmmp WavPack-Audio-Plugin</translation>
+        <translation>Qmmp WavPack-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="132"/>

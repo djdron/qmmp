@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>EffectBs2bFactory</name>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="30"/>
         <source>BS2B Plugin</source>
-        <translation>BS2B-Plugin</translation>
+        <translation>BS2B-Modul</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="50"/>
         <source>About BS2B Effect Plugin</source>
-        <translation>Über BS2B-Effekt-Plugin</translation>
+        <translation>Über BS2B-Effekt-Modul</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="51"/>
@@ -50,7 +49,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>BS2B Plugin Settings</source>
-        <translation>Einstellungen des BS2B-Plugins</translation>
+        <translation>Einstellungen BS2B-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
@@ -61,7 +60,7 @@
         <location filename="../settingsdialog.ui" line="45"/>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>

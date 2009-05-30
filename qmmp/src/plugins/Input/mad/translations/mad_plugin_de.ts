@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
     <message>
         <location filename="../decodermadfactory.cpp" line="67"/>
         <source>MPEG Plugin</source>
-        <translation>MPEG-Plugin</translation>
+        <translation>MPEG-Modul</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="69"/>
@@ -17,12 +16,12 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="183"/>
         <source>About MPEG Audio Plugin</source>
-        <translation>Über MPEG-Audio-Plugin</translation>
+        <translation>Über MPEG-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="184"/>
         <source>Qmmp MPEG Audio Plugin</source>
-        <translation>Qmmp MPEG-Audio-Plugin</translation>
+        <translation>Qmmp MPEG-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="185"/>
@@ -218,7 +217,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>MPEG Plugin Settings</source>
-        <translation>Einstellungen MPEG-Plugin</translation>
+        <translation>Einstellungen MPEG-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="141"/>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="40"/>
         <source>ModPlug Plugin</source>
-        <translation>ModPlug-Plugin</translation>
+        <translation>ModPlug-Modul</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="44"/>
@@ -17,12 +16,12 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="108"/>
         <source>About ModPlug Audio Plugin</source>
-        <translation>Über ModPlug-Audio-Plugin</translation>
+        <translation>Über ModPlug-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="109"/>
         <source>Qmmp ModPlug Audio Plugin</source>
-        <translation>Qmmp ModPlug-Audio-Plugin</translation>
+        <translation>Qmmp ModPlug-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="110"/>
@@ -32,12 +31,12 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="111"/>
         <source>Based on the Modplug Plugin for Xmms</source>
-        <translation>Basiert auf dem Modplug-Plugin für Xmms</translation>
+        <translation>Basiert auf dem Modplug-Modul für Xmms</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="112"/>
         <source>Modplug Plugin developers:</source>
-        <translation>Modplug-Plugin-Entwickler:</translation>
+        <translation>Modplug-Modul-Entwickler:</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="113"/>
@@ -156,7 +155,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ModPlug Plugin Settings</source>
-        <translation>Einstellungen ModPlug-Plugin</translation>
+        <translation>Einstellungen ModPlug-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="23"/>

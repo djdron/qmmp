@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="de">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="44"/>
         <source>CD Audio Plugin</source>
-        <translation>CD-Audio-Plugin</translation>
+        <translation>CD-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="86"/>
         <source>About CD Audio Plugin</source>
-        <translation>Über CD-Audio-Plugin</translation>
+        <translation>Über CD-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="87"/>
         <source>Qmmp CD Audio Plugin</source>
-        <translation>Qmmp CD-Audio-Plugin</translation>
+        <translation>Qmmp CD-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation type="unfinished">Benutzung: Geben Sie cdda:// in den „URL hinzufügen“-Dialog, oder in der Befehlszeile ein</translation>
+        <translation>Verwendung: Geben Sie cdda:// in den „URL hinzufügen“-Dialo,oder in die Befehlszeile ein</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="88"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>CD Audio Plugin Settings</source>
-        <translation>Einstellungen des CD-Audio-Plugins</translation>
+        <translation>Einstellungen CD-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="31"/>

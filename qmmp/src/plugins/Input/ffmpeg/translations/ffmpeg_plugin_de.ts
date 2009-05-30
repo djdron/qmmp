@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="141"/>
         <source>About FFmpeg Audio Plugin</source>
-        <translation>Über FFmpeg-Audio-Plugin</translation>
+        <translation>Über FFmpeg-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="143"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
-        <translation>Qmmp FFmpeg-Audio-Plugin</translation>
+        <translation>Qmmp FFmpeg-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="153"/>
@@ -22,7 +21,7 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="79"/>
         <source>FFmpeg Plugin</source>
-        <translation>FFmpeg-Plugin</translation>
+        <translation>FFmpeg-Modul</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="81"/>
@@ -188,7 +187,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
-        <translation>Einstellungen des FFmpeg-Plugins</translation>
+        <translation>Einstellungen FFmpeg-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>

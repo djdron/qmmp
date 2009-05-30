@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>ScrobblerFactory</name>
     <message>
@@ -33,23 +33,25 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
-        <source>last.fm</source>
-        <translation></translation>
+        <source>Last.fm</source>
+        <translation>Last.fm</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="41"/>
         <location filename="../settingsdialog.ui" line="77"/>
         <source>User name:</source>
         <translation>Ім&apos;я користувача:</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="51"/>
         <location filename="../settingsdialog.ui" line="87"/>
         <source>Password:</source>
         <translation>Пароль:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
-        <source>libre.fm</source>
-        <translation></translation>
+        <source>Libre.fm</source>
+        <translation>Libre.fm</translation>
     </message>
 </context>
 </TS>

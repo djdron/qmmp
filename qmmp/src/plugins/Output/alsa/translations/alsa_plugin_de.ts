@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>OutputALSAFactory</name>
     <message>
         <location filename="../outputalsafactory.cpp" line="31"/>
         <source>ALSA Plugin</source>
-        <translation>ALSA-Plugin</translation>
+        <translation>ALSA-Modul</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="50"/>
         <source>About ALSA Output Plugin</source>
-        <translation>Über ALSA-Ausgabe-Plugin</translation>
+        <translation>Über ALSA-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="51"/>
         <source>Qmmp ALSA Output Plugin</source>
-        <translation>Qmmp ALSA-Ausgabe-Plugin</translation>
+        <translation>Qmmp ALSA-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="52"/>
@@ -30,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ALSA Plugin Settings</source>
-        <translation>Einstellungen des ALSA-Plugins</translation>
+        <translation>Einstellungen ALSA-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

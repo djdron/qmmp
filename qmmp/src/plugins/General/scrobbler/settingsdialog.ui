@@ -29,7 +29,7 @@
    <item>
     <widget class="QGroupBox" name="lastfmGroupBox">
      <property name="title">
-      <string>last.fm</string>
+      <string>Last.fm</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -65,7 +65,7 @@
    <item>
     <widget class="QGroupBox" name="librefmGroupBox">
      <property name="title">
-      <string>libre.fm</string>
+      <string>Libre.fm</string>
      </property>
      <property name="checkable">
       <bool>true</bool>

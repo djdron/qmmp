@@ -11,7 +11,7 @@
     <message>
         <location filename="../lyrics.cpp" line="36"/>
         <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+L</translation>
     </message>
 </context>
 <context>
@@ -19,17 +19,17 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="29"/>
         <source>Lyrics Plugin</source>
-        <translation>Liedtext-Plugin</translation>
+        <translation>Liedtext-Modul</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="50"/>
         <source>About Lyrics Plugin</source>
-        <translation>Über Liedtext-Plugin</translation>
+        <translation>Über Liedtext-Modul</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="51"/>
         <source>Qmmp Lyrics Plugin</source>
-        <translation>Qmmp Liedtext-Plugin</translation>
+        <translation>Qmmp Liedtext-Modul</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki.org</source>
-        <translation>Dieses Plugin empfängt Liedtexte von LyricWiki.org</translation>
+        <translation>Dieses Modul empfängt Liedtexte von LyricWiki.org</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
-        <translation>Liedtext-Plugin</translation>
+        <translation>Liedtext-Modul</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="31"/>

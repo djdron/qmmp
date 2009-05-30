@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
         <location filename="../notifierfactory.cpp" line="30"/>
         <source>Notifier Plugin</source>
-        <translation>Benachrichtigungs-Plugin</translation>
+        <translation>Benachrichtigungsmodul</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="50"/>
         <source>About Notifier Plugin</source>
-        <translation>Über Benachrichtigungs-Plugin</translation>
+        <translation>Über Benachrichtigungsmodul</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="51"/>
         <source>Qmmp Notifier Plugin</source>
-        <translation>Qmmp Benachrichtigungs-Plugin</translation>
+        <translation>Qmmp Benachrichtigungsmodul</translation>
     </message>
     <message>
         <location filename="../notifierfactory.cpp" line="52"/>
@@ -43,7 +42,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="25"/>
         <source>Enable Psi notification</source>
-        <translation>Einschalten</translation>
+        <translation>Psi-Benachrichtigungen aktivieren</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
@@ -58,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Notifier Plugin Settings</source>
-        <translation>Einstellungen des Benachrichtigungs-Plugins</translation>
+        <translation>Einstellungen Benachrichtigungsmodul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

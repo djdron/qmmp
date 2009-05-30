@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMplayerFactory</name>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="50"/>
         <source>Mplayer Plugin</source>
-        <translation>MPlayer-Plugin</translation>
+        <translation>MPlayer-Modul</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="53"/>
@@ -22,17 +21,17 @@
     <message>
         <location filename="../decodermplayerfactory.cpp" line="94"/>
         <source>About MPlayer Plugin</source>
-        <translation>Über MPlayer-Plugin</translation>
+        <translation>Über MPlayer-Modul</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="95"/>
         <source>Qmmp MPlayer Plugin</source>
-        <translation>Qmmp MPlayer-Plugin</translation>
+        <translation>Qmmp MPlayer-Modul</translation>
     </message>
     <message>
         <location filename="../decodermplayerfactory.cpp" line="96"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation>Dieses Plugin nutzt MPlayer als Backend</translation>
+        <translation>Dieses Modul nutzt MPlayer als Backend</translation>
     </message>
 </context>
 <context>

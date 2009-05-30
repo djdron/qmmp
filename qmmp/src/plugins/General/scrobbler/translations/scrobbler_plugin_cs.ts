@@ -33,7 +33,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
-        <source>last.fm</source>
+        <source>Last.fm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -50,7 +50,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
-        <source>libre.fm</source>
+        <source>Libre.fm</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

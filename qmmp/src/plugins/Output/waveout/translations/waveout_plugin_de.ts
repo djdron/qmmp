@@ -6,17 +6,17 @@
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="30"/>
         <source>WaveOut Plugin</source>
-        <translation>WaveOut-Plugin</translation>
+        <translation>WaveOut-Modul</translation>
     </message>
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="53"/>
         <source>About WaveOut Output Plugin</source>
-        <translation>Über WaveOut-Ausgabe-Plugin</translation>
+        <translation>Über WaveOut-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="54"/>
         <source>Qmmp WaveOut Output Plugin</source>
-        <translation>Qmmp WaveOut-Ausgabe-Plugin</translation>
+        <translation>Qmmp WaveOut-Ausgabe-Modul</translation>
     </message>
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="55"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="56"/>
         <source>Based on aacDECdrop player</source>
-        <translation type="unfinished"></translation>
+        <translation>Basiert auf dem aacDECdrop-Player</translation>
     </message>
 </context>
 </TS>
