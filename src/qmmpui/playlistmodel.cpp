@@ -494,7 +494,7 @@ void PlayListModel::addFileList(const QStringList &l)
     foreach(QString str,l)
     {
         QFileInfo f_info(str);
-        if (f_info.exists())
+        if (f_info.exists() || str.contains("://"))
         {
             if (f_info.isDir())
                 addDirectory(str);
@@ -515,7 +515,7 @@ bool PlayListModel::setFileList(const QStringList & l)
     foreach(QString str,l)
     {
         QFileInfo f_info(str);
-        if (f_info.exists())
+        if (f_info.exists() || str.contains("://"))
         {
             if (!model_cleared)
             {
