@@ -127,15 +127,15 @@ void PopupWidget::showVolume(int v)
 void PopupWidget::updatePosition()
 {
     //calculate widget position
-    int x = 5, y = 5;
-    QSize desktopSize = QApplication::desktop()->size();
+    QRect desktopRect = QApplication::desktop()->availableGeometry();
+    int x = desktopRect.x() + 5, y = desktopRect.y() + 5;
     if (m_pos == LEFT || m_pos == RIGHT || m_pos == CENTER)
-        y = desktopSize.height()/2 - height()/2;
+        y =  desktopRect.y() + desktopRect.height()/2 - height()/2 + 5;
     else if (m_pos == BOTTOMLEFT || m_pos == BOTTOM || m_pos == BOTTOMRIGHT)
-        y = desktopSize.height() - height() - 5;
+        y = desktopRect.y() + desktopRect.height() - height() - 5;
     if (m_pos == TOP || m_pos == BOTTOM || m_pos == CENTER)
-        x = desktopSize.width()/2 - width()/2;
+        x = desktopRect.x() + desktopRect.width()/2 - width()/2;
     else if (m_pos == TOPRIGHT || m_pos == RIGHT || m_pos == BOTTOMRIGHT)
-        x = desktopSize.width() - width() - 5;
+        x = desktopRect.x() + desktopRect.width() - width() - 5;
     move (x,y);
 }
