@@ -34,7 +34,7 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="51"/>
         <source>Qmmp Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Skróŧy Klawiszowe dla Qmmp</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>

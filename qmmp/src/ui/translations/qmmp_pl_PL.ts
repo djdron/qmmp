@@ -6,12 +6,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="13"/>
         <source>About Qmmp</source>
-        <translation>O Qmmp</translation>
+        <translation>O programie Qmmp</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="51"/>
         <source>About</source>
-        <translation>O</translation>
+        <translation>O programie</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="158"/>
@@ -127,22 +127,22 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Start playing current song</source>
-        <translation>Zacznij grać biężącą piosenkę</translation>
+        <translation>Zacznij odtwarzać bieżący utwór</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Pause current song</source>
-        <translation>Wstrzymaj bieżącą piosenkę</translation>
+        <translation>Wstrzymaj bieżący utwór</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Pause if playing, play otherwise</source>
-        <translation></translation>
+        <translation>Wstrzymaj jeśli odtwarza, odtwarzaj w przeciwnym wypadku</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Stop current song</source>
-        <translation>Zatrzymaj bieżącą piosenkę</translation>
+        <translation>Zatrzymaj bieżący utwór</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
@@ -152,7 +152,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Jump to File dialog</source>
-        <translation>Wyświetl okno dialgowe Skocz do</translation>
+        <translation>Wyświetl okno dialogowe Skocz do</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
@@ -162,86 +162,86 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Add File dialog</source>
-        <translation>Wyświetl okno dialgowe dodawania plików</translation>
+        <translation>Wyświetl okno dialogowe dodawania plików</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Display Add Directory dialog</source>
-        <translation>Wyświetl okno dialgowe dodawania katalogów</translation>
+        <translation>Wyświetl okno dialogowe dodawania katalogów</translation>
     </message>
 </context>
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="219"/>
+        <location filename="../configdialog.cpp" line="248"/>
+        <location filename="../configdialog.cpp" line="279"/>
+        <location filename="../configdialog.cpp" line="311"/>
+        <location filename="../configdialog.cpp" line="343"/>
         <source>Enabled</source>
         <translation>Włączone</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="219"/>
+        <location filename="../configdialog.cpp" line="248"/>
+        <location filename="../configdialog.cpp" line="279"/>
+        <location filename="../configdialog.cpp" line="311"/>
+        <location filename="../configdialog.cpp" line="343"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
-        <location filename="../configdialog.cpp" line="524"/>
+        <location filename="../configdialog.cpp" line="219"/>
+        <location filename="../configdialog.cpp" line="248"/>
+        <location filename="../configdialog.cpp" line="279"/>
+        <location filename="../configdialog.cpp" line="311"/>
+        <location filename="../configdialog.cpp" line="343"/>
+        <location filename="../configdialog.cpp" line="531"/>
         <source>Filename</source>
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="519"/>
+        <location filename="../configdialog.cpp" line="526"/>
         <source>Artist</source>
         <translation>Artysta</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="520"/>
+        <location filename="../configdialog.cpp" line="527"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="521"/>
+        <location filename="../configdialog.cpp" line="528"/>
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="522"/>
+        <location filename="../configdialog.cpp" line="529"/>
         <source>Tracknumber</source>
         <translation>Numer utworu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="523"/>
+        <location filename="../configdialog.cpp" line="530"/>
         <source>Genre</source>
         <translation>Gatunek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="525"/>
+        <location filename="../configdialog.cpp" line="532"/>
         <source>Filepath</source>
         <translation>Ścieżka pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="526"/>
+        <location filename="../configdialog.cpp" line="533"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="527"/>
+        <location filename="../configdialog.cpp" line="534"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="528"/>
+        <location filename="../configdialog.cpp" line="535"/>
         <source>Comment</source>
         <translation>Komentarz</translation>
     </message>
@@ -351,12 +351,12 @@
         <translation>Zamknij</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="177"/>
+        <location filename="../configdialog.cpp" line="181"/>
         <source>Archived skin</source>
-        <translation>Kompresowana skórka</translation>
+        <translation>Skompresowana skórka</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="197"/>
+        <location filename="../configdialog.cpp" line="201"/>
         <source>Unarchived skin</source>
         <translation>Niekompresowana skórka</translation>
     </message>
@@ -388,7 +388,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="570"/>
         <source>Audio</source>
-        <translation></translation>
+        <translation>Dźwięk</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="576"/>
@@ -460,12 +460,12 @@
         <translation type="obsolete">Pokaż pełną ścieżkę strumienia</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="645"/>
+        <location filename="../configdialog.cpp" line="652"/>
         <source>Select Skin Files</source>
         <translation>Wybierz skórę</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="646"/>
+        <location filename="../configdialog.cpp" line="653"/>
         <source>Skin files</source>
         <translation>Pliki skór</translation>
     </message>
@@ -523,12 +523,12 @@
     <message>
         <location filename="../eqwidget.cpp" line="264"/>
         <source>&amp;Save Preset</source>
-        <translation>&amp;Save Preset</translation>
+        <translation>Zapi&amp;sz Preset</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="265"/>
         <source>&amp;Save Auto-load Preset</source>
-        <translation>&amp;Save Auto-load Preset</translation>
+        <translation>Zapi&amp;sz Auto-ładowanie Preset&apos;u</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="268"/>
@@ -538,12 +538,12 @@
     <message>
         <location filename="../eqwidget.cpp" line="297"/>
         <source>Saving Preset</source>
-        <translation>Saving Preset</translation>
+        <translation>Zapisywanie Preset&apos;u</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="298"/>
         <source>Preset name:</source>
-        <translation>Preset name:</translation>
+        <translation>Nazwa Preset&apos;u:</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="299"/>
@@ -558,7 +558,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="390"/>
         <source>Import Preset</source>
-        <translation>Import Preset</translation>
+        <translation>Importuj Preset</translation>
     </message>
 </context>
 <context>
@@ -801,174 +801,174 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="64"/>
-        <location filename="../mainwindow.cpp" line="480"/>
+        <location filename="../mainwindow.cpp" line="63"/>
+        <location filename="../mainwindow.cpp" line="485"/>
         <source>Default</source>
         <translation>Domyślne</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="285"/>
         <source>Choose a directory</source>
         <translation>Wybierz katalog</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="290"/>
+        <location filename="../mainwindow.cpp" line="295"/>
         <source>Select one or more files to open</source>
         <translation>Wybierz jeden lub więcej plików do otwarcia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Play</source>
         <translation>&amp;Odtwarzaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>&amp;Pause</source>
         <translation>&amp;Wstrzymaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>&amp;Stop</source>
         <translation>&amp;Zatrzymaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>V</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>&amp;Previous</source>
         <translation>&amp;Poprzedni</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>Z</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Next</source>
         <translation>&amp;Następny</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="426"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Skocz do pliku</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>&amp;Settings</source>
         <translation>&amp;Ustawienia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="452"/>
+        <location filename="../mainwindow.cpp" line="457"/>
         <source>&amp;Exit</source>
         <translation>&amp;Wyjście</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="452"/>
+        <location filename="../mainwindow.cpp" line="457"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="494"/>
+        <location filename="../mainwindow.cpp" line="499"/>
         <source>Open Playlist</source>
         <translation>Otwórz listę odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
+        <location filename="../mainwindow.cpp" line="524"/>
         <source>Save Playlist</source>
         <translation>Zapisz listę odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>&amp;About</source>
         <translation>&amp;O</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="497"/>
+        <location filename="../mainwindow.cpp" line="523"/>
         <source>Playlist Files</source>
         <translation>Pliki listy odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="449"/>
+        <location filename="../mainwindow.cpp" line="454"/>
         <source>&amp;About Qt</source>
         <translation>&amp;O Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>&amp;Play/Pause</source>
         <translation>&amp;Odtwarzaj/Wstrzymaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="286"/>
+        <location filename="../mainwindow.cpp" line="291"/>
         <source>All Supported Bitstreams</source>
         <translation>Wszystkie wspierane formaty</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Repeat Track</source>
         <translation>&amp;Powtórz utwór</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="426"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Shuffle</source>
         <translation>&amp;Losowo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="436"/>
         <source>Ctrl+R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="437"/>
         <source>S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="429"/>
         <source>&amp;Repeat Playlist</source>
         <translation>Powtó&amp;rz listę odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>Tools</source>
         <translation>Narzędzia</translation>
     </message>
@@ -996,7 +996,7 @@
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="282"/>
         <source>O</source>
         <translation>O</translation>
     </message>
@@ -1090,27 +1090,27 @@
         <translation>&amp;Zaznacz wszystkie</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="274"/>
         <source>&amp;New List</source>
         <translation>&amp;Nowa lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>Shift+N</source>
         <translation>Shift+N</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="280"/>
+        <location filename="../playlist.cpp" line="281"/>
         <source>&amp;Load List</source>
         <translation>&amp;Ładuj listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="287"/>
         <source>&amp;Save List</source>
         <translation>&amp;Zapisz listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="286"/>
+        <location filename="../playlist.cpp" line="288"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>
@@ -1156,7 +1156,7 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="13"/>
         <source>Preset Editor</source>
-        <translation>Preset Editor</translation>
+        <translation>Edytor Presetów</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="28"/>
@@ -1182,42 +1182,42 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="142"/>
+        <location filename="../qmmpstarter.cpp" line="152"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Użycie: qmmp [opcje] [pliki]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="143"/>
+        <location filename="../qmmpstarter.cpp" line="153"/>
         <source>Options:</source>
         <translation>Opcje:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="149"/>
+        <location filename="../qmmpstarter.cpp" line="159"/>
         <source>Print version number and exit</source>
         <translation>Wyświetla wersję programu i wychodzi</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="150"/>
+        <location filename="../qmmpstarter.cpp" line="160"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Pomysły, poprawki, raporty o błędach proszę wysyłać na forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="148"/>
+        <location filename="../qmmpstarter.cpp" line="158"/>
         <source>Display this text and exit</source>
         <translation>Wyświetla ten tekst i wychodzi</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="155"/>
+        <location filename="../qmmpstarter.cpp" line="165"/>
         <source>QMMP version:</source>
         <translation>Wersja QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="145"/>
+        <location filename="../qmmpstarter.cpp" line="155"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Nie czyść listy</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="156"/>
+        <location filename="../qmmpstarter.cpp" line="166"/>
         <source>Qt version:</source>
         <translation>Wersja QT:</translation>
     </message>

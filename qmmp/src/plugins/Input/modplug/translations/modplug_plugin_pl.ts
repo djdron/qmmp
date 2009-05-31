@@ -326,7 +326,7 @@ p, li { white-space: pre-wrap; }
 too high may cause clipping!</source>
         <translation>Uwaga: Ustawienie preamp
 na zbyt wysokim poziomie może
-powodować zacinaine się utworu!</translation>
+powodować zacinanie się utworu!</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="661"/>
