@@ -300,11 +300,6 @@ void ListWidget::updateList()
         m_titles.replace(i, title.prepend(QString("%1").arg(m_first+i+1)+". "));
 
     }
-    if (m_model->currentItem())
-    {
-        TextScroller::getPointer()->setText(m_model->currentItem()->text());
-        parentWidget()->parentWidget()->setWindowTitle(m_model->currentItem()->text());
-    }
     cut();
     update();
 }

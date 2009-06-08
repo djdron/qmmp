@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -249,6 +249,10 @@ void MainWindow::showState(Qmmp::State state)
         //m_generalHandler->setState(General::Stopped);
         m_playlist->setTime(-1);
         m_titlebar->setTime(-1);
+        if (m_playlist->currentItem())
+            setWindowTitle(m_playlist->currentItem()->text());
+        else
+            setWindowTitle("Qmmp");
         break;
     }
     }
@@ -269,6 +273,8 @@ void MainWindow::showMetaData()
     {
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
         m_playlist->updateList();
+        TextScroller::getPointer()->setText(m_playlist->currentItem()->text());
+        setWindowTitle(m_playlist->currentItem()->text());
     }
 }
 
