@@ -193,6 +193,7 @@ void PlayListModel::clear()
             mf->setFlag(PlayListItem::SCHEDULED_FOR_DELETION);
         }
     }
+    m_queued_songs.clear();
 
     m_total_length = 0;
     m_play_state->resetState();
