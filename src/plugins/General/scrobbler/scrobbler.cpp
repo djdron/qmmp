@@ -195,13 +195,16 @@ void Scrobbler::updateMetaData()
             && !metadata.value(Qmmp::TITLE).isEmpty()      //skip empty tags
             && !metadata.value(Qmmp::ARTIST).isEmpty()
             && m_core->totalTime()                         //skip stream
-            && !metadata.value(Qmmp::ARTIST).contains("&") //skip tags with special symbols
-            && !metadata.value(Qmmp::TITLE).contains("&")
-            && !metadata.value(Qmmp::ALBUM).contains("&")
-            && !metadata.value(Qmmp::ARTIST).contains("=")
+            && !metadata.value(Qmmp::ARTIST).contains("=") //skip tags with special symbols
             && !metadata.value(Qmmp::TITLE).contains("=")
             && !metadata.value(Qmmp::ALBUM).contains("="))
     {
+        metadata[Qmmp::ARTIST].replace("%", QUrl::toPercentEncoding("%")); //replace special symbols
+        metadata[Qmmp::ALBUM].replace("%", QUrl::toPercentEncoding("%"));
+        metadata[Qmmp::TITLE].replace("%", QUrl::toPercentEncoding("%"));
+        metadata[Qmmp::ARTIST].replace("&", QUrl::toPercentEncoding("&"));
+        metadata[Qmmp::ALBUM].replace("&", QUrl::toPercentEncoding("&"));
+        metadata[Qmmp::TITLE].replace("&", QUrl::toPercentEncoding("&"));
         m_song = SongInfo(metadata, m_core->totalTime()/1000);
         if (isReady() && m_notificationid == 0)
             sendNotification(m_song);
@@ -349,11 +352,11 @@ void Scrobbler::submit()
     header.setValue("User-Agent","iScrobbler/1.5.1qmmp-plugins/" + Qmmp::strVersion());
     header.setValue("Host",url.host());
     header.setValue("Accept", "*/*");
-    header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=").size());
+    header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=%").size());
     qDebug("Scrobbler[%s]: submit request header", qPrintable(m_name));
     qDebug("%s",qPrintable(header.toString().trimmed()));
     qDebug("*****************************");
-    m_submitid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&="));
+    m_submitid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&=%"));
 }
 
 void Scrobbler::sendNotification(const SongInfo &info)
@@ -373,11 +376,11 @@ void Scrobbler::sendNotification(const SongInfo &info)
     header.setValue("User-Agent","iScrobbler/1.5.1qmmp-plugins/" + Qmmp::strVersion());
     header.setValue("Host",url.host());
     header.setValue("Accept", "*/*");
-    header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=").size());
+    header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=%").size());
     qDebug("Scrobbler[%s]: Now-Playing notification request header", qPrintable(m_name));
     qDebug("%s",qPrintable(header.toString().trimmed()));
     qDebug("*****************************");
-    m_notificationid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&="));
+    m_notificationid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&=%"));
 }
 
 bool Scrobbler::isReady()
