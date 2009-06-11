@@ -15,18 +15,20 @@ Qmmp - Qt-based multimedia player
 - поддержка PCM WAVE (и др. форматов библиотеки libsndfile)
 - поддержка AAC
 - поддержка CD Audio
-- поддержка CUE (включая flac embeded cue)
+- поддержка CUE (экспериментальная)
+- поддержка CUE встроенного в FLAC (экспериментальная)
+- поддержка CUE встроенного в WavPack (экспериментальная)
 - вывод звука через ALSA
 - вывод звука через JACK
 - вывод звука через OSS
 - вывод звука через PulseAudio
-- скробблер Last.fm
+- скробблер Last.fm/Libre.fm
 - анализатор спектра
 - визуализация с помощью projectM
 - передискретизация
 - эффект bs2b
 - поддержка потокового вещания (MP3, Vorbis через IceCast/ShoutCast)
-- определение устройств
+- определение съёмных устройств устройств (через HAL)
 - поддержка MPRIS
 - поддержка глобальных клавиш
 - поддержка видео с помощью Mplayer
@@ -74,7 +76,8 @@ cmake ./ -D USE_JACK:BOOL=FALSE
 Доступные опции:
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
 USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_BS2B, USE_ANALYZER, USE_MPRIS,
-USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG, USE_PROJECTM
+USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG, USE_PROJECTM,
+USE_FILEOPS
 
 Также вы можете использовать ccmake для изменения конфигурации модулей.
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:

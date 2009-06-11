@@ -15,22 +15,24 @@ Main opportunities:
 - PCM WAVE support (and other formats provided by libsndfile library)
 - AAC support
 - CD Audio support
-- CUE support (including flac embeded cue)
+- CUE sheet support (experimental)
+- WavPack embedded CUE support (experimental)
+- FLAC embdeded CUE support (experimental)
 - ALSA sound output
 - JACK sound output
 - OSS sound output
 - PulseAudio output
-- Last.fm scrobbler
+- Last.fm/Libre.fm scrobbler
 - Spectrum Analyzer
 - projectm visualization
 - sample rate conversion
 - bs2b dsp effect
 - streaming support (MP3, Vorbis via IceCast/ShoutCast)
-- device detection
+- removable device detection (via HAL)
 - MPRIS support
 - global hotkey support
-- video playback using Mplayer
-- lyrics support (from LyricWiki.org)
+- video playback via Mplayer
+- lyrics support (using LyricWiki.org)
 
 Requirements:
 - OS GNU Linux
@@ -76,7 +78,8 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 Available options:
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
 USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_BS2B, USE_ANALYZER, USE_MPRIS,
-USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG, USE_PROJECTM
+USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG, USE_PROJECTM,
+USE_FILEOPS
 
 Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
