@@ -260,8 +260,8 @@ void MainWindow::showState(Qmmp::State state)
 void MainWindow::showMetaData()
 {
     qDebug("===== metadata ======");
-    qDebug("ARTIST = %s", qPrintable(m_core->metaData(Qmmp::TITLE)));
-    qDebug("TITLE = %s", qPrintable(m_core->metaData(Qmmp::ARTIST)));
+    qDebug("ARTIST = %s", qPrintable(m_core->metaData(Qmmp::ARTIST)));
+    qDebug("TITLE = %s", qPrintable(m_core->metaData(Qmmp::TITLE)));
     qDebug("ALBUM = %s", qPrintable(m_core->metaData(Qmmp::ALBUM)));
     qDebug("COMMENT = %s", qPrintable(m_core->metaData(Qmmp::COMMENT)));
     qDebug("GENRE = %s", qPrintable(m_core->metaData(Qmmp::GENRE)));

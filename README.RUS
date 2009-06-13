@@ -57,6 +57,7 @@ Qmmp - Qt-based multimedia player
 - faad2 >= 2.6.1 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
 - libprojectM >= 1.2.0 (Опционально)
+- mplayer (Опционально)
 - cmake >= 2.4.8 (только для сборки)
 
 Внимание! Для сборки Qmmp нужна утилита lrelease. Очень часто она находится в пакете qt4-linguist.
