@@ -444,10 +444,12 @@ void DecoderMAD::run()
 
                 if (len == 0)
                 {
+                    qDebug("DecoderMAD: end of file");
                     eof = true;
                 }
                 else if (len < 0)
                 {
+                    qWarning("DecoderMAD: %s", qPrintable(input()->errorString ()));
                     derror = true;
                     break;
                 }

@@ -205,7 +205,10 @@ void Output::run()
     mutex()->lock ();
     //write remaining data
     if(m_finish)
+    {
         flush();
+        qDebug("Output: total written %lld", m_totalWritten);
+    }
     dispatch(Qmmp::Stopped);
     mutex()->unlock();
 }
