@@ -224,6 +224,7 @@ void SoundCore::pause()
 
 void SoundCore::seek(qint64 pos)
 {
+    qDebug("SoundCore: seek = %lld", pos);
     if (m_output && m_output->isRunning())
     {
         m_output->mutex()->lock ();
