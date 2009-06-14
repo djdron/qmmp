@@ -190,7 +190,7 @@ void Output::run()
             dispatchVisual(b, m_totalWritten, m_channels, m_precision);
             changeVolume(b->data, b->nbytes, m_channels);
             if ((l = writeAudio(b->data, b->nbytes)) > 0)
-                m_totalWritten += b->nbytes;
+                m_totalWritten += l;
             else
                 break;
         }

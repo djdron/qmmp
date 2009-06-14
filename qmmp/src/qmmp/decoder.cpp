@@ -171,7 +171,7 @@ qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
     if (w < blksize + b->exceeding)
         memset(b->data + w, 0, blksize + b->exceeding - w);
 
-    b->nbytes = w;// blksize;
+    b->nbytes = w;
     b->rate = brate;
 
     output()->recycler()->add();
