@@ -210,18 +210,25 @@ void Skin::loadNumbers()
         pixmap = getDummyPixmap("numbers");
 
     for (uint i = 0; i < 10; i++)
-        m_numbers << pixmap->copy (i*9, 0, 9, 13);
+        m_numbers << pixmap->copy (i*9, 0, 9, pixmap->height());
 
     if (pixmap->width() > 107)
-        m_numbers << pixmap->copy(99, 0, 9,13);
+        m_numbers << pixmap->copy(99, 0, 9, pixmap->height());
     else
     {
         // We didn't find "-" symbol. So we have to extract it from "2".
         // Winamp uses this method too.
-        QPixmap pix = pixmap->copy(90,0,9,13);
-        QPixmap minus = pixmap->copy(18,6,9,1);
+        QPixmap pix;
+        if(pixmap->width() > 98)
+            pix = pixmap->copy(90,0,9,pixmap->height());
+        else
+        {
+            pix = QPixmap(9, pixmap->height());
+            pix.fill(Qt::transparent);
+        }
+        QPixmap minus = pixmap->copy(18,pixmap->height()/2,9,1);
         QPainter paint(&pix);
-        paint.drawPixmap(0,6, minus);
+        paint.drawPixmap(0,pixmap->height()/2, minus);
         m_numbers << pix;
     }
     delete pixmap;
