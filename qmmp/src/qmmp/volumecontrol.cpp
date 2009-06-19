@@ -31,6 +31,7 @@ VolumeControl::VolumeControl(QObject *parent)
 {
     m_left = 0;
     m_right = 0;
+    m_prev_block = FALSE;
 }
 
 VolumeControl::~VolumeControl()
@@ -71,12 +72,15 @@ void VolumeControl::checkVolume()
     r = (r > 100) ? 100 : r;
     l = (l < 0) ? 0 : l;
     r = (r < 0) ? 0 : r;
-    if (m_left != l || m_right != r)
+    if (m_left != l || m_right != r) //volume has been changed
     {
         m_left = l;
         m_right = r;
         emit volumeChanged(m_left, m_right);
     }
+    else if(m_prev_block && !signalsBlocked ()) //signals have been unblocked
+        emit volumeChanged(m_left, m_right);
+    m_prev_block = signalsBlocked ();
 }
 
 SoftwareVolume *SoftwareVolume::m_instance = 0;
@@ -87,9 +91,11 @@ SoftwareVolume::SoftwareVolume(QObject *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_left = settings.value("Volume/left", 80).toInt();
     m_right = settings.value("Volume/right", 80).toInt();
+    blockSignals(TRUE);
+    checkVolume();
+    blockSignals(FALSE);
     QTimer::singleShot(125, this, SLOT(checkVolume()));
     m_instance = this;
-    //checkVolume();
 }
 
 SoftwareVolume::~SoftwareVolume()
