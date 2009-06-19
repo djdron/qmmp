@@ -83,6 +83,7 @@ protected:
 
 private:
     int m_left, m_right;
+    bool m_prev_block;
 
 };
 /*! @brief The SoftwareVolume class provides access to the software volume control.
