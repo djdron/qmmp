@@ -14,7 +14,7 @@
 Польский
    Grzegorz Gibas <amigib@gmail.com>
 
-Чежский:
+Чешский:
     Karel Volný <kvolny@redhat.com>
 
 Немецкий:
