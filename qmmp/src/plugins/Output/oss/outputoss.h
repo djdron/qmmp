@@ -26,7 +26,7 @@
 class OutputOSS;
 
 #include <qmmp/output.h>
-#include <QObject>
+#include <qmmp/volumecontrol.h>
 
 class OutputOSS : public Output
 {
@@ -35,40 +35,63 @@ public:
     OutputOSS(QObject * parent = 0);
     virtual ~OutputOSS();
 
-    bool isInitialized() const { return m_inited; }
     bool initialize();
-    void uninitialize();
-    void configure(long, int, int, int);
-    void stop();
-    void pause();
-    long written();
-    long latency();
-    void seek(long);
-    void setVolume(int l, int r);
-    void volume(int* l,int* r);
+    void configure(quint32, int, int);
+    qint64 latency();
+    int audio_fd();
+    static OutputOSS* instance();
+
+private:
+    //output api
+    qint64 writeAudio(unsigned char *data, qint64 maxSize);
+    void flush(){};
 
 private:
     // thread run function
-    void run();
+    //void run();
 
     // helper functions
     void reset();
     void resetDSP();
-    void status();
     void post();
     void sync();
-    void openMixer();
+    //void openMixer();
+    void uninitialize();
 
     QString m_audio_device, m_mixer_device;
 
-    bool m_inited, m_pause, m_play, m_userStop, m_master;
-    long m_totalWritten, m_currentSeconds, m_bps;
-    int stat;
-    int m_rate, m_frequency, m_channels, m_precision;
+    bool m_inited;
+    quint32 m_frequency;
+    int m_channels, m_precision;
 
     bool do_select;
-    int m_audio_fd, m_mixer_fd;
+    int m_audio_fd;
     long bl, br;
+    static OutputOSS *m_instance;
+};
+
+class VolumeControlOSS : public VolumeControl
+{
+    Q_OBJECT
+public:
+    VolumeControlOSS(QObject *parent = 0);
+    ~VolumeControlOSS();
+
+    void setVolume(int left, int right);
+    static VolumeControlOSS* instance();
+
+protected:
+    void volume(int *left, int *right);
+
+private:
+    //oss mixer
+    QString m_audio_device;
+    void openMixer();
+    int m_mixer_fd;
+    QString m_mixer_device;
+    bool m_master;
+    //int m_left, m_right;
+    static VolumeControlOSS *m_instance;
 };
 
 

@@ -21,6 +21,8 @@ warn_on \
 thread \
 plugin
 
+DEFINES += HAVE_SYS_SOUNDCARD_H
+
 TEMPLATE = lib
 LIBS += -lqmmp
 

@@ -12,7 +12,7 @@ contains(CONFIG, JACK_PLUGIN){
 }
 
 contains(CONFIG, OSS_PLUGIN){
-#    SUBDIRS += oss
+    SUBDIRS += oss
     message(**********************)
     message(* OSS plugin enabled *)
     message(**********************)
