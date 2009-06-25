@@ -6,6 +6,8 @@ if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
 endif(COMMAND cmake_policy)
 
+INCLUDE(CheckIncludeFile)
+
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -20,6 +22,11 @@ SET(QT_INCLUDES
   ${QT_INCLUDES}
   ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
+#OSS
+CHECK_INCLUDE_FILE(sys/soundcard.h SYS_SOUNDCARD_H_FOUND)
+IF(SYS_SOUNDCARD_H_FOUND)
+ADD_DEFINITIONS(-DHAVE_SYS_SOUNDCARD_H)
+ENDIF(SYS_SOUNDCARD_H_FOUND)
 
 # libqmmp
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)

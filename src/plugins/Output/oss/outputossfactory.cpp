@@ -25,13 +25,7 @@
 #include "outputossfactory.h"
 
 
-const QString& OutputOSSFactory::name() const
-{
-    static QString name(tr("OSS Plugin"));
-    return name;
-}
-
-Output* OutputOSSFactory::create(QObject* parent,bool)
+Output* OutputOSSFactory::create(QObject* parent)
 {
     return new OutputOSS(parent);
 }
@@ -39,10 +33,16 @@ Output* OutputOSSFactory::create(QObject* parent,bool)
 const OutputProperties OutputOSSFactory::properties() const
 {
     OutputProperties properties;
-    properties.name = name();
+    properties.name = tr("OSS Plugin");
+    properties.shortName = "oss";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
     return properties;
+}
+
+VolumeControl *OutputOSSFactory::createVolumeControl(QObject *parent)
+{
+    return new VolumeControlOSS(parent);
 }
 
 void OutputOSSFactory::showSettings(QWidget* parent)
@@ -62,7 +62,7 @@ QMessageBox::about (parent, tr("About OSS Output Plugin"),
 QTranslator *OutputOSSFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
+    QString locale = QLocale::system().name();
     translator->load(QString(":/oss_plugin_") + locale);
     return translator;
 }

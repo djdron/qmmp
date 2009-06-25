@@ -12,7 +12,7 @@ IF(USE_JACK)
 ENDIF(USE_JACK)
 
 IF(USE_OSS)
-#add_subdirectory(oss)
+add_subdirectory(oss)
 ENDIF(USE_OSS)
 
 IF(USE_PULSE)

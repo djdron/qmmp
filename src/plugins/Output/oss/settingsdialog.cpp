@@ -19,7 +19,7 @@
  ***************************************************************************/
 #include <QSettings>
 #include <QDir>
-
+#include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog ( QWidget *parent )
@@ -28,7 +28,7 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
     ui.setupUi ( this );
     setAttribute ( Qt::WA_DeleteOnClose );
     connect(ui.okButton, SIGNAL(clicked()), SLOT(writeSettings()));
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("OSS");
     ui.lineEdit->insert(settings.value("device","/dev/dsp").toString());
     ui.lineEdit_2->insert(settings.value("mixer_device","/dev/mixer").toString());
@@ -47,7 +47,7 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::writeSettings()
 {
     qDebug("SettingsDialog (OSS):: writeSettings()");
-    QSettings settings(QDir::homePath()+"/.qmmp/qmmprc", QSettings::IniFormat);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("OSS");
     settings.setValue("device", ui.lineEdit->text());
     settings.setValue("buffer_time",ui.bufferSpinBox->value());
