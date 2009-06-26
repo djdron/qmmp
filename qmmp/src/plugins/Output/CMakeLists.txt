@@ -8,7 +8,7 @@ add_subdirectory(alsa)
 ENDIF(USE_ALSA)
 
 IF(USE_JACK)
-#add_subdirectory(jack)
+add_subdirectory(jack)
 ENDIF(USE_JACK)
 
 IF(USE_OSS)

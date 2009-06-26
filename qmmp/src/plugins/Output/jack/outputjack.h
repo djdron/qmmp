@@ -38,32 +38,21 @@ class OutputJACK : public Output
 public:
     OutputJACK(QObject * parent = 0);
     ~OutputJACK();
+
     bool initialize();
-    bool isInitialized() const
-    {
-        return m_inited;
-    }
-    void uninitialize();
-    void configure(long, int, int, int);
-    void stop();
-    void pause();
-    long written();
-    long latency();
-    void seek(long);
+    void configure(quint32, int, int);
+    qint64 latency();
 
 private:
-    // thread run function
-    void run();
+     //output api
+    qint64 writeAudio(unsigned char *data, qint64 maxSize);
+    void flush(){};
+
     // helper functions
-    void status();
-    QString audio_device;
-    bool m_inited, m_configure, m_pause, m_play, m_userStop;
-    long m_totalWritten, m_currentSeconds, m_bps;
-    int m_rate, m_frequency, m_channels, m_precision, jack_device;
-    bool do_select;
-    int audio_fd;
+    void uninitialize();
+    qint64 m;
+    bool m_inited, m_configure;
+    int jack_device;
 };
 
-
 #endif
-

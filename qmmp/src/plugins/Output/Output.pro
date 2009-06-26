@@ -5,7 +5,7 @@ TEMPLATE = subdirs
 win32:SUBDIRS += waveout
 unix{
 contains(CONFIG, JACK_PLUGIN){
-#    SUBDIRS += jack
+    SUBDIRS += jack
     message(***********************)
     message(* JACK plugin enabled *)
     message(***********************)

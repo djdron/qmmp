@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "scrobblerhandler.h"
 #include "settingsdialog.h"
 #include "scrobblerfactory.h"
@@ -55,7 +55,7 @@ void ScrobblerFactory::showAbout(QWidget *parent)
 QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = QLocale::system().name();
+    QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/scrobbler_plugin_") + locale);
     return translator;
 }
