@@ -157,7 +157,7 @@ void Output::run()
 
     bool done = FALSE;
     Buffer *b = 0;
-    qint64 l = 0;
+    qint64 l, m = 0;
 
     dispatch(Qmmp::Playing);
 
@@ -189,9 +189,20 @@ void Output::run()
         {
             dispatchVisual(b, m_totalWritten, m_channels, m_precision);
             changeVolume(b->data, b->nbytes, m_channels);
-            if ((l = writeAudio(b->data, b->nbytes)) > 0)
-                m_totalWritten += l;
-            else
+            l = 0;
+            m = 0;
+            while (l < b->nbytes)
+            {
+                m = writeAudio(b->data + l, b->nbytes - l);
+                if(m >= 0)
+                {
+                    m_totalWritten += m;
+                    l+= m;
+                }
+                else
+                    break;
+            }
+            if(m < 0)
                 break;
         }
         mutex()->lock();
