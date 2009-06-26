@@ -90,7 +90,7 @@ private:
     int m_mixer_fd;
     QString m_mixer_device;
     bool m_master;
-    //int m_left, m_right;
+    int m_left2, m_right2;
     static VolumeControlOSS *m_instance;
 };
 

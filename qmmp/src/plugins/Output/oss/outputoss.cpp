@@ -301,12 +301,12 @@ VolumeControlOSS::VolumeControlOSS(QObject *parent) : VolumeControl(parent)
         long cmd = SNDCTL_DSP_GETPLAYVOL;
         if (ioctl(mixer_fd, cmd, &v) == -1)
             v = 0;
-        m_left = (v & 0xFF00) >> 8;
-        m_right = (v & 0x00FF);
+        m_left2 = (v & 0xFF00) >> 8;
+        m_right2 = (v & 0x00FF);
     }
     if(to_close)
     {
-        close((mixer_fd);
+        close(mixer_fd);
             mixer_fd = -1;
     }
 #endif
@@ -332,10 +332,11 @@ VolumeControlOSS::~VolumeControlOSS()
 
 void VolumeControlOSS::setVolume(int l, int r)
 {
-    int v, devs;
+    int v;
     long cmd;
 
 #if SOUND_VERSION < 0x040000
+    int devs = 0;
     ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
     if ((devs & SOUND_MASK_PCM) && !m_master)
         cmd = SOUND_MIXER_WRITE_PCM;
@@ -353,8 +354,8 @@ void VolumeControlOSS::setVolume(int l, int r)
     v = (r << 8) | l;
     if (OutputOSS::instance() && OutputOSS::instance()->audio_fd() > 0)
         ioctl(OutputOSS::instance()->audio_fd(), cmd, &v);
-    m_left = l;
-    m_right = r;
+    m_left2 = l;
+    m_right2 = r;
 #endif
 }
 
@@ -362,9 +363,9 @@ void VolumeControlOSS::volume(int *ll,int *rr)
 {
     *ll = 0;
     *rr = 0;
+#if SOUND_VERSION < 0x040000
     int  cmd;
     int v, devs = 0;
-#if SOUND_VERSION < 0x040000
     ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
     if ((devs & SOUND_MASK_PCM) && !m_master)
         cmd = SOUND_MIXER_READ_PCM;
@@ -388,8 +389,8 @@ void VolumeControlOSS::volume(int *ll,int *rr)
         v = 0;
     *rr = (v & 0xFF00) >> 8;
     *ll = (v & 0x00FF);*/
-    *rr = m_left;
-    *ll = m_right;
+    *rr = m_left2;
+    *ll = m_right2;
 #endif
 }
 
