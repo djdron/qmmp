@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "outputjack.h"
 #include "outputjackfactory.h"
 
@@ -30,13 +30,18 @@ const OutputProperties OutputJACKFactory::properties() const
     properties.name = tr("JACK Plugin");
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
+    properties.shortName = "jack";
     return properties;
 }
 
-Output* OutputJACKFactory::create(QObject* parent, bool volume)
+Output* OutputJACKFactory::create(QObject* parent)
 {
-    Q_UNUSED(volume);
     return new OutputJACK(parent);
+}
+
+VolumeControl *OutputJACKFactory::createVolumeControl(QObject *)
+{
+    return 0;
 }
 
 void OutputJACKFactory::showSettings(QWidget*)

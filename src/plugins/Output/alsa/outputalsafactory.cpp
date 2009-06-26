@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
-
+#include <qmmp/qmmp.h>
 #include "settingsdialog.h"
 #include "outputalsa.h"
 #include "outputalsafactory.h"
