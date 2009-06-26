@@ -17,7 +17,7 @@ Main opportunities:
 - CD Audio support
 - CUE sheet support (experimental)
 - WavPack embedded CUE support (experimental)
-- FLAC embdeded CUE support (experimental)
+- FLAC embedded CUE support (experimental)
 - ALSA sound output
 - JACK sound output
 - OSS sound output
