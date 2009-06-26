@@ -30,6 +30,7 @@ const OutputProperties OutputPulseAudioFactory::properties() const
     properties.name = tr("PulseAudio Plugin");
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
+    properties.shortName = "pulse";
     return properties;
 }
 
@@ -58,7 +59,7 @@ void OutputPulseAudioFactory::showAbout(QWidget *parent)
 QTranslator *OutputPulseAudioFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
+    QString locale = QLocale::system().name();
     translator->load(QString(":/pulseaudio_plugin_") + locale);
     return translator;
 }
