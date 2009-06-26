@@ -111,7 +111,8 @@ qint64 OutputPulseAudio::writeAudio(unsigned char *data, qint64 maxSize)
     int error;
     if (!m_connection)
         return -1;
-    if (pa_simple_write(m_connection, data, maxSize, &error) < 0)
+    int i = 0;
+    if ((i = pa_simple_write(m_connection, data, maxSize, &error)) < 0)
     {
         mutex()->unlock();
         qWarning("OutputPulseAudio: pa_simple_write() failed: %s", pa_strerror(error));
@@ -124,7 +125,7 @@ void OutputPulseAudio::flush()
 {
     int error;
     if (m_connection)
-        pa_simple_flush(m_connection, &error);
+        pa_simple_drain(m_connection, &error);
 }
 
 void OutputPulseAudio::uninitialize()

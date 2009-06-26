@@ -49,7 +49,6 @@ private:
     void flush();
 
     // helper functions
-    void status();
     void uninitialize();
 
     pa_simple *m_connection;
