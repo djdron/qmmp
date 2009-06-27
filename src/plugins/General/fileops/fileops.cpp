@@ -159,6 +159,7 @@ void FileOps::execAction(int n)
                 fname += ext;
             //rename file
             QFile file(item->url());
+            destination = QFileInfo(item->url()).absolutePath ();
             if (file.rename(destination + "/" + fname))
             {
                 item->setMetaData(Qmmp::URL, destination + "/" + fname);
