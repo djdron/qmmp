@@ -208,7 +208,7 @@ void SettingsDialog::addTitleString(QAction *a)
     if (ui.patternEdit->cursorPosition () < 1)
         ui.patternEdit->insert(a->data().toString());
     else
-        ui.patternEdit->insert("-"+a->data().toString());
+        ui.patternEdit->insert(" - "+a->data().toString());
 }
 
 void SettingsDialog::selectDirectory()

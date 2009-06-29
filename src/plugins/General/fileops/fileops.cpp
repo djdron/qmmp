@@ -193,20 +193,20 @@ QString FileOps::generateFileName(PlayListItem *item, QString pattern)
     fname = printTag(fname, "%p", item->artist(), pattern);
     fname = printTag(fname, "%a", item->album(), pattern);
     fname = printTag(fname, "%t", item->title(), pattern);
-    fname = printTag(fname, "%n", QString("%1").arg(item->track()), pattern);
+    if(item->track().size() > 1)
+        fname = printTag(fname, "%n", item->track(), pattern);
+    else
+        fname = printTag(fname, "%n", QString("0") + item->track(), pattern);
     fname = printTag(fname, "%g", item->genre(), pattern);
     fname = printTag(fname, "%f", item->url().section('/',-1), pattern);
     fname = printTag(fname, "%y", QString("%1").arg(item->year ()), pattern);
-    //fname.replace(" ", "_");
     if (fname.isEmpty())
     {
         if (item->url().contains('/'))
             fname = item->url().split('/',QString::SkipEmptyParts).takeLast ();
     }
     return fname;
-
 }
-
 
 QString FileOps::printTag(QString str, QString regExp, QString tagStr, QString fmt)
 {
