@@ -105,7 +105,6 @@ private slots:
     void updateSkin();
 
 private:
-    void cut();
     void loadColors();
     void processFileInfo(const QFileInfo&);
     bool m_update;

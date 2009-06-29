@@ -102,8 +102,6 @@ void ListWidget::paintEvent(QPaintEvent *)
     m_painter.setBrush(QBrush(m_normal_bg));
     m_painter.drawRect(-1,-1,width()+1,height()+1);
 
-
-
     for (int i=0; i<m_titles.size(); ++i )
     {
         if (m_model->isSelected(i + m_first))
@@ -300,7 +298,15 @@ void ListWidget::updateList()
         m_titles.replace(i, title.prepend(QString("%1").arg(m_first+i+1)+". "));
 
     }
-    cut();
+    //elide title
+    QString extra_string;
+    for (int i=0; i<m_titles.size(); ++i )
+    {
+        extra_string = getExtraString(m_first + i);
+        int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
+        m_titles.replace(i, m_metrics->elidedText (m_titles.at(i), Qt::ElideRight,
+                            width() -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
+    }
     update();
 }
 
@@ -319,28 +325,6 @@ void ListWidget::scroll(int sc)
     m_first = sc; //*(m_model->count() - m_rows)/99;
     m_scroll = TRUE;
     updateList();
-}
-
-void ListWidget::cut()
-{
-    bool cut;
-    for (int i=0; i<m_titles.size(); ++i )
-    {
-        QString name;
-        cut = FALSE;
-
-        QString extra_string = getExtraString(m_first + i);
-        int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
-        while (m_metrics->width(m_titles.at(i)) > (this->width() -  m_metrics->width(m_times.at(i)) -
-                22 - extra_string_space))
-        {
-            cut = TRUE;
-            name = m_titles.at(i);
-            m_titles.replace(i, name.left(name.length()-1) );
-        }
-        if (cut)
-            m_titles.replace(i, name.left(name.length()-3).trimmed()+"...");
-    }
 }
 
 void ListWidget::updateSkin()
