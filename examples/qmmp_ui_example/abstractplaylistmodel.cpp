@@ -17,46 +17,58 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <qmmp/qmmp.h>
-#include <ui_mainwindow.h>
+#include <QFont>
+#include <QChar>
+#include <qmmpui/playlistitem.h>
+#include "abstractplaylistmodel.h"
 
-class QSlider;
-class QLabel;
-
-class PlayListModel;
-class MediaPlayer;
-class SoundCore;
-
-
-class MainWindow : public QMainWindow
+AbstractPlaylistModel::AbstractPlaylistModel(PlayListModel *pl, QObject *parent) : QAbstractTableModel(parent)
 {
-Q_OBJECT
-public:
-    MainWindow(QWidget *parent = 0);
+    m_pl = pl;
+}
 
-    ~MainWindow();
+AbstractPlaylistModel::~AbstractPlaylistModel(){}
 
-private slots:
-    void addFiles();
-    void playSelected(const QModelIndex &i);
-    void updatePosition(qint64 pos);
-    void seek();
-    void showState(Qmmp::State);
-    void showBitrate(int);
+int AbstractPlaylistModel::columnCount (const QModelIndex &) const
+{
+    return 2;
+}
 
-private:
+QVariant AbstractPlaylistModel::data (const QModelIndex &index, int role) const
+{
+    if(role == Qt::DisplayRole && index.row () < m_pl->count())
+    {
+        PlayListItem *item = m_pl->item(index.row ());
+        return QString("%1. %2 |%3").arg(index.row () + 1).arg(item->text()).arg(formatTime(item->length()));
+    }
+    else if(role == Qt::FontRole)
+    {
+        QFont font;
+        if(index.row () == m_pl->currentRow())
+            font.setBold(TRUE);
+        return font;
+    }
+    else
+        return QVariant();
+}
 
-    PlayListModel *m_model;
-    Ui::MainWindow ui;
-    MediaPlayer *m_player;
-    QSlider *m_slider;
-    QLabel *m_label;
-    SoundCore *m_core;
+/*QModelIndex AbstractPlaylistModel::index(int row, int column, const QModelIndex &parent) const
+{
+    return QModelIndex();
+}*/
 
-};
+/*QModelIndex AbstractPlaylistModel::parent(const QModelIndex &child) const
+{
+    return QModelIndex();
+}*/
 
-#endif
+int AbstractPlaylistModel::rowCount(const QModelIndex &parent) const
+{
+    return m_pl->count();
+}
+
+QString AbstractPlaylistModel::formatTime(qint64 time) const
+{
+    return QString("%1:%2").arg(time/60).arg(time%60,2,10,QChar('0'));
+}

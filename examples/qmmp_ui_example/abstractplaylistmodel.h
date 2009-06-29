@@ -17,46 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <qmmp/qmmp.h>
-#include <ui_mainwindow.h>
+#ifndef ABSTRACTPLAYLISTMODEL_H
+#define ABSTRACTPLAYLISTMODEL_H
 
-class QSlider;
-class QLabel;
+#include <QObject>
+#include <QAbstractTableModel>
+#include <qmmpui/playlistmodel.h>
 
-class PlayListModel;
-class MediaPlayer;
-class SoundCore;
-
-
-class MainWindow : public QMainWindow
+class AbstractPlaylistModel : public QAbstractTableModel
 {
 Q_OBJECT
 public:
-    MainWindow(QWidget *parent = 0);
+    AbstractPlaylistModel(PlayListModel *pl, QObject *parent);
+    ~AbstractPlaylistModel();
 
-    ~MainWindow();
-
-private slots:
-    void addFiles();
-    void playSelected(const QModelIndex &i);
-    void updatePosition(qint64 pos);
-    void seek();
-    void showState(Qmmp::State);
-    void showBitrate(int);
+    virtual int columnCount (const QModelIndex &parent = QModelIndex()) const;
+    virtual QVariant data (const QModelIndex &index, int role = Qt::DisplayRole) const;
+    //virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+    //virtual QModelIndex parent(const QModelIndex &child) const;
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
 
 private:
-
-    PlayListModel *m_model;
-    Ui::MainWindow ui;
-    MediaPlayer *m_player;
-    QSlider *m_slider;
-    QLabel *m_label;
-    SoundCore *m_core;
-
+    QString formatTime(qint64 time) const;
+    PlayListModel *m_pl;
 };
 
-#endif
+#endif // ABSTRACTPLAYLISTMODEL_H

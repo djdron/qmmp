@@ -19,6 +19,8 @@
  ***************************************************************************/
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QSlider>
+#include <QLabel>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
 #include <qmmpui/general.h>
@@ -27,43 +29,46 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
+#include "abstractplaylistmodel.h"
+#include "playlistitemdelegate.h"
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-        : QWidget(parent)
+        : QMainWindow(parent)
 {
-    //control buttons
-    QPushButton *play = new QPushButton("Play", this);
-    QPushButton *pause = new QPushButton("Pause", this);
-    QPushButton *next = new QPushButton("Next", this);
-    QPushButton *previous = new QPushButton("Previous", this);
-    QPushButton *stop = new QPushButton("Stop", this);
-    QPushButton *open = new QPushButton("Open", this);
-    QPushButton *clear = new QPushButton("Clear playlist",this);
-    QHBoxLayout *layout = new QHBoxLayout(this);
-    layout->addWidget(play);
-    layout->addWidget(pause);
-    layout->addWidget(next);
-    layout->addWidget(previous);
-    layout->addWidget(stop);
-    layout->addWidget(open);
-    layout->addWidget(clear);
+    ui.setupUi(this);
     //qmmp objects
-    MediaPlayer *player = new MediaPlayer(this);
-    SoundCore *core = new SoundCore(this);
+    m_player = new MediaPlayer(this);
+    m_core = new SoundCore(this);
     m_model = new PlayListModel(this);
-    player->initialize(core, m_model);
+    m_player->initialize(m_core, m_model);
     new PlaylistParser(this);
     //connections
-    connect(play, SIGNAL(pressed()), player, SLOT(play()));
-    connect(pause, SIGNAL(pressed()), core, SLOT(pause()));
-    connect(next, SIGNAL(pressed()), player, SLOT(next()));
-    connect(previous, SIGNAL(pressed()), player, SLOT(previous()));
-    connect(stop, SIGNAL(pressed()), player, SLOT(stop()));
-    connect(open,SIGNAL(pressed()),SLOT(addFiles()));
-    connect(clear, SIGNAL(pressed()),m_model,SLOT(clear()));
-}
+    connect(ui.actionPlay, SIGNAL(triggered()), m_player, SLOT(play()));
+    connect(ui.actionPause, SIGNAL(triggered()), m_core, SLOT(pause()));
+    connect(ui.actionNext, SIGNAL(triggered()), m_player, SLOT(next()));
+    connect(ui.actionPrevious, SIGNAL(triggered()), m_player, SLOT(previous()));
+    connect(ui.actionStop, SIGNAL(triggered()), m_player, SLOT(stop()));
+    connect(ui.actionOpen, SIGNAL(triggered()),SLOT(addFiles()));
+    connect(ui.actionClear, SIGNAL(triggered()),m_model,SLOT(clear()));
+    connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(updatePosition(qint64)));
+    connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
+    connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(showBitrate(int)));
+    AbstractPlaylistModel *m = new AbstractPlaylistModel(m_model, this);
+    ui.listView->setItemDelegate(new PlaylistDelegate(this));
+    ui.listView->setModel(m);
+    connect(m_model, SIGNAL(listChanged()), ui.listView, SLOT(reset()));
+    connect(ui.listView, SIGNAL(doubleClicked (const QModelIndex &)),
+                                SLOT (playSelected(const QModelIndex &)));
 
+    m_slider = new QSlider (Qt::Horizontal, this);
+    m_label = new QLabel(this);
+    m_label->setText("--:--/--:--");
+    ui.toolBar->addWidget(m_slider);
+    ui.toolBar->addWidget(m_label);
+
+    connect(m_slider, SIGNAL(sliderReleased()), SLOT(seek()));
+}
 
 MainWindow::~MainWindow()
 {
@@ -78,4 +83,55 @@ void MainWindow::addFiles()
     FileDialog::popup(this, FileDialog::AddDirsFiles, &lastDir,
                             m_model, SLOT(addFileList(const QStringList&)),
                             tr("Select one or more files to open"), filters.join(";;"));
+}
+
+void MainWindow::playSelected(const QModelIndex &i)
+{
+    m_player->stop();
+    m_model->setCurrent(i.row());
+    m_player->play();
+}
+
+void MainWindow::updatePosition(qint64 pos)
+{
+    m_slider->setMaximum(m_core->totalTime()/1000);
+    if(!m_slider->isSliderDown())
+        m_slider->setValue(pos/1000);
+    m_label->setText(QString("%1:%2/%3:%4").arg(pos/1000/60, 2, 10, QChar('0'))
+                                   .arg(pos/1000%60, 2, 10, QChar('0'))
+                                   .arg(m_core->totalTime()/1000/60, 2, 10, QChar('0'))
+                                   .arg(m_core->totalTime()/1000%60, 2, 10, QChar('0')));
+}
+
+void MainWindow::seek()
+{
+    m_core->seek(m_slider->value()*1000);
+}
+
+void MainWindow::showState(Qmmp::State state)
+{
+    switch((int) state)
+    {
+    case Qmmp::Playing:
+        ui.statusbar->showMessage(tr("Playing"));
+        if(m_label->text() != "--:--/--:--")
+            showBitrate(m_core->bitrate());
+        break;
+    case Qmmp::Paused:
+        ui.statusbar->showMessage(tr("Paused"));
+        break;
+    case Qmmp::Stopped:
+         ui.statusbar->showMessage(tr("Stopped"));
+        m_label->setText("--:--/--:--");
+        m_slider->setValue(0);
+        break;
+    }
+
+}
+
+void MainWindow::showBitrate(int)
+{
+    ui.statusbar->showMessage(QString(tr("Playing [%1 kbps/%2 bit/%3]")).arg(m_core->bitrate())
+                                    .arg(m_core->precision())
+                                    .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
 }
