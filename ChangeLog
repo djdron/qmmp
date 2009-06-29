@@ -13,7 +13,7 @@ Version 0.0.2
 Version 0.0.3
 * added tray support (based on Pavel's Kirpichev's patch)
 * added menu and hot keys support
-* added directory $HOME/.qmmp/skins in skin search pathes
+* added directory $HOME/.qmmp/skins in skin search paths
 * fixed UTF bug in FLAC plugin (previous correction doesn't fix bug)
 * fixed UTF bug in Ogg Vorbis plugin (previous correction doesn't fix bug)
 * fixed bug in playlist which can cause program crash
@@ -37,7 +37,7 @@ Version 0.0.5
 * added support for m3u, pls, xspf playlists (Vladimir Kuznetsov)
 * added region.txt file support
 * added scroll control for equalizer bars
-* added autosave equalizer settings
+* added autosave of equalizer settings
 * added Jack support plugin (Yuriy Zhuravlev)
 * added Musepack support plugin
 * fixed program crush with some skins
@@ -51,7 +51,7 @@ Version 0.0.6
 * added playlist loading by thread (Vladimir Kuznetsov)
 * added equalizer preset support
 * added ffmpeg support plugin for playing WMA files
-* fixed bug in mad plugin, which cause program crash with invalid file pathes
+* fixed bug in mad plugin, which cause program crash with invalid file paths
 * fixed bug in Jack plugin, which cause program crash when Jack server is 
   not running (Yuriy Zhuravlev)
 * added pkgconfig support for building
@@ -59,7 +59,7 @@ Version 0.0.6
 Version 0.1
 * added jump to file dialog (Vladimir Kuznetsov)
 * added about dialog (Vladimir Kuznetsov)
-* added russian translation
+* added Russian translation
 * added installation support
 * added cmake support(experimental)
 * added default skin
@@ -86,7 +86,7 @@ Version 0.1.2
 * fixed "segmentation failed" when resume playback with empty playlist
 * fixed settings saving in tray mode
 * added hotkeys in playlist (Up, Down, Alt- and Shift- modifiers) (Vladimir Kuznetsov)
-* added broken files skiping (Vladimir Kuznetsov)
+* added broken files skipping (Vladimir Kuznetsov)
 * added Turkish translation (Mustafa GUNAY)
 * added custom close action (Vladimir Kuznetsov)
 * fixed and improved cmake scripts
@@ -98,10 +98,10 @@ Version 0.1.3
 * added codings fix for command line (Vladimir Kuznetsov)
 * fixed next song selection after deletion selected (Vladimir Kuznetsov)
 * fixed zero duration bug in mpc, flac, vorbis plugins
-* fixed some non-critcical bugs in Ogg Vorbis plugin
+* fixed some non-critical bugs in Ogg Vorbis plugin
 * added Shift+N hotkey for all windows
 * set using UTF-8 by default in mad plugin
-* fixed russian translation in the flac plugin
+* fixed Russian translation in the flac plugin
 * added current song position navigation with Left/Right cursor buttons (Vladimir Kuznetsov)
 * added main menu popup on main display (Vladimir Kuznetsov)
 * added menu for left title button (Vladimir Kuznetsov)
@@ -125,7 +125,7 @@ Version 0.1.4
 * updated icons
 * fixed cmake scripts (Yuriy Zhuravlev)
 * reduced wakeups number
-* fixed interface freezing when skiping broken entries
+* fixed interface freezing when sniping broken entries
 * fixed skin parsing
 * fixed segmentation fault when trying to show details dialog with invalid file path
 * fixed codepage saving in the mpeg plugin
@@ -146,7 +146,7 @@ Version 0.1.5
 
 Version 0.1.6
 * fixed desktop file
-* fixed russian translation
+* fixed Russian translation
 * added "$PREFIX/share/qmmp/skins" to skin search paths
 * fixed skin parsing
 * fixed possible GPL violation
@@ -155,7 +155,7 @@ Version 0.1.6
 * fixed load playlists with double extensions
 * added German translation (Stefan Koelling)
 * improved settings dialog
-* added localization for standart Qt dialogs
+* added localization for standard Qt dialogs
 * show more debug information
 
 Version 0.2.0
@@ -242,3 +242,53 @@ Version 0.2.3
 * fixed notification bug
 * fixed critical bug in the settings dialog
 * removed duplicate --next command line option (Adrian Knoth)
+
+Version 0.2.4
+* fixed xspf parsing (thanks to Sebastian Pipping)
+* fixed playlist downloading
+* fixed url dialog bug
+* some oss fxes
+* musepack sv8 support
+* fixed noise at beginning of some mp3 files
+* overwriting equalizer presets with the same names
+
+Version 0.3.0
+* new libqmmp and libqmmpui api
+* added cue sheet support (experimental)
+* added flac embedded cue support
+* added wavpack embedded cue support (thanks to Dmitry Kostin)
+* added aac plugin
+* added cd audio plugin
+* added mplayer plugin
+* added more formats provided by ffmpeg library (including monkey's audio)
+* added global hotkey support
+* added mpris support
+* added lyrics plugin (uses lyricswiki.org)
+* added removable device support (with help of hal)
+* added file operations plugin
+* added projectm visual plugin
+* added bs2b plugin (thanks to Sebastian Pipping)
+* added partial mingw support
+* added wave output plugin
+* added api documentation
+* added transparency settings
+* added Italian translation (Gian Paolo Renello)
+* removed dbus plugin
+* improved status icon plugin: added volume control using mouse wheel
+* improved scrobbler plugin: now-playing notification, libre.fm support, offline mode
+* improved visualization support
+* improved desktop integration
+* improved notifier plugin: transparency settings and volume tracking
+* improved playlist: added show protocol option
+* optimized startup process
+* fixed pulse audio plugin bug (24-bit support)
+* fixed alsa buffer underrun
+* fixed default font
+* fixed gnome support
+* fixed system language detection
+* fixed a lot of noncritical bugs
+* updated Ukrainian translation (Gennadi Motsyo)
+* updated Russian translation
+* updated German translation (Panagiotis Papadopoulos)
+* updated Polish translation (Grzegorz Gibas)
+
