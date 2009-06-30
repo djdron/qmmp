@@ -235,7 +235,7 @@ void Scrobbler::processResponse(int id, bool error)
         if (!strlist[0].contains("OK") || strlist.size() < 4)
         {
             qWarning("Scrobbler[%s]: handshake phase error: %s",qPrintable(m_name), qPrintable(strlist[0]));
-            //TODO badtime handling
+            //TODO: badtime handling
             return;
         }
         if (strlist.size() > 3) //process handshake response
@@ -247,10 +247,6 @@ void Scrobbler::processResponse(int id, bool error)
             m_submitUrl = strlist[3];
             m_nowPlayingUrl = strlist[2];
             m_session = strlist[1];
-            /*if(m_submitUrl.endsWith("/"))
-                m_submitUrl.removeLast();
-            if(m_nowPlayingUrl.trnkate("/"))
-                m_nowPlayingUrl.takeLast();*/
             updateMetaData(); //send now-playing notification for already playing song
             if (!m_songCache.isEmpty()) //submit recent songs
                 submit();
@@ -353,9 +349,6 @@ void Scrobbler::submit()
     header.setValue("Host",url.host());
     header.setValue("Accept", "*/*");
     header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=%").size());
-    qDebug("Scrobbler[%s]: submit request header", qPrintable(m_name));
-    qDebug("%s",qPrintable(header.toString().trimmed()));
-    qDebug("*****************************");
     m_submitid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&=%"));
 }
 
@@ -377,9 +370,6 @@ void Scrobbler::sendNotification(const SongInfo &info)
     header.setValue("Host",url.host());
     header.setValue("Accept", "*/*");
     header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=%").size());
-    qDebug("Scrobbler[%s]: Now-Playing notification request header", qPrintable(m_name));
-    qDebug("%s",qPrintable(header.toString().trimmed()));
-    qDebug("*****************************");
     m_notificationid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&=%"));
 }
 
