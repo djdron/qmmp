@@ -90,7 +90,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="50"/>
         <source>Samples:</source>
-        <translation>Samples:</translation>
+        <translation>Campioni:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="51"/>
@@ -169,7 +169,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Resolution</source>
-        <translation>RIsoluzione</translation>
+        <translation>Risoluzione</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
@@ -289,7 +289,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="567"/>
         <source>Preamp</source>
-        <translation>Preamplificazio9ne</translation>
+        <translation>Preamplificazione</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="576"/>
@@ -319,37 +319,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="690"/>
         <source>Fast playlist info</source>
-        <translation type="unfinished"></translation>
+        <translation>informazione rapida sulla lista dei brani</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="700"/>
         <source>Play Amiga MOD</source>
-        <translation>Amiga MOD abspielen</translation>
+        <translation>Esegui Amiga MOD</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="710"/>
         <source>Looping</source>
-        <translation>Wiederholung</translation>
+        <translation>RIpetizione</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="716"/>
         <source>Don&apos;t loop</source>
-        <translation>Keine</translation>
+        <translation>Nessuna</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="723"/>
         <source>Loop</source>
-        <translation>Schleife(n)</translation>
+        <translation>Ripetere</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="740"/>
         <source>time(s)</source>
-        <translation>mal</translation>
+        <translation>volta/e</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="760"/>
         <source>Loop forever</source>
-        <translation>Endlosschleife</translation>
+        <translation>Sempre</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="800"/>
@@ -369,12 +369,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="457"/>
         <source>Depth (%)</source>
-        <translation>Intensität (%)</translation>
+        <translation>Intensità (%)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="509"/>
         <source>Delay (ms)</source>
-        <translation>RItardo (ms)</translation>
+        <translation>Ritardo (ms)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="326"/>
