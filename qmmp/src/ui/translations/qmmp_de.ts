@@ -726,7 +726,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="343"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished">Analyzer Fall-off</translation>
+        <translation>Analyzer-Abfall</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="360"/>
@@ -756,7 +756,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="357"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished">Peaks Fall-off</translation>
+        <translation type="unfinished">Peaks-Abfall</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="370"/>
