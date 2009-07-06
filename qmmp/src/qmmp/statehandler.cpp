@@ -95,6 +95,8 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
         if (value.isEmpty() || value == "0")
             tmp.remove(tmp.key(value));
     }
+    if(tmp.isEmpty() && SoundCore::instance()->url() == m_metaData.value(Qmmp::URL)) //skip empty tags
+        return;
     tmp.insert(Qmmp::URL, SoundCore::instance()->url());
     if (m_metaData != tmp)
     {
