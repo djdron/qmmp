@@ -4,60 +4,65 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Status Icon Plugin Settings</source>
         <translation>Ustawienia wtyczki Ikona Statusu</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="19"/>
+        <location filename="../settingsdialog.ui" line="20"/>
         <source>Show message</source>
         <translation>Pokaż wiadomość</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="26"/>
+        <location filename="../settingsdialog.ui" line="27"/>
         <source>Show tooltip</source>
         <translation>Pokaż chmurki</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="33"/>
+        <location filename="../settingsdialog.ui" line="34"/>
         <source>Message delay, ms:</source>
         <translation>Długość wyświetlania, ms:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="86"/>
+        <source>Use standard icons</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="45"/>
+        <location filename="../statusicon.cpp" line="46"/>
         <source>Play</source>
         <translation>Odtwarzaj</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="46"/>
+        <location filename="../statusicon.cpp" line="47"/>
         <source>Pause</source>
         <translation>Pauza</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="47"/>
+        <location filename="../statusicon.cpp" line="48"/>
         <source>Stop</source>
         <translation>Zatrzymaj</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="48"/>
+        <location filename="../statusicon.cpp" line="49"/>
         <source>Next</source>
         <translation>Następny</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="49"/>
+        <location filename="../statusicon.cpp" line="50"/>
         <source>Previous</source>
         <translation>Poprzedni</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="51"/>
+        <location filename="../statusicon.cpp" line="52"/>
         <source>Exit</source>
         <translation>Wyjdź</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="103"/>
+        <location filename="../statusicon.cpp" line="127"/>
         <source>Now Playing</source>
         <translation>Teraz odtwarza</translation>
     </message>

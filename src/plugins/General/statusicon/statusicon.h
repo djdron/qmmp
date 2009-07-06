@@ -52,6 +52,7 @@ private:
     bool m_showMessage;
     bool m_showTooltip;
     bool m_hideToTray;
+    bool m_useStandardIcons;
     int m_messageDelay;
     SoundCore *m_core;
     MediaPlayer *m_player;

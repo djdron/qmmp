@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Status Icon Plugin Settings</source>
         <translation>Налаштування модуля Status Icon</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="19"/>
+        <location filename="../settingsdialog.ui" line="20"/>
         <source>Show message</source>
         <translation>Показувати повідомлення</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="26"/>
+        <location filename="../settingsdialog.ui" line="27"/>
         <source>Show tooltip</source>
         <translation>Показувати спливаючу підказку</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="33"/>
+        <location filename="../settingsdialog.ui" line="34"/>
         <source>Message delay, ms:</source>
         <translation>Затримка повідомлення, мс:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="89"/>
+        <location filename="../settingsdialog.ui" line="86"/>
+        <source>Use standard icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>OK</source>
         <translation type="obsolete">Застосувати</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="96"/>
         <source>Cancel</source>
         <translation type="obsolete">Відмінити</translation>
     </message>
@@ -36,37 +40,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="45"/>
+        <location filename="../statusicon.cpp" line="46"/>
         <source>Play</source>
         <translation>Грати</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="46"/>
+        <location filename="../statusicon.cpp" line="47"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="47"/>
+        <location filename="../statusicon.cpp" line="48"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="48"/>
+        <location filename="../statusicon.cpp" line="49"/>
         <source>Next</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="49"/>
+        <location filename="../statusicon.cpp" line="50"/>
         <source>Previous</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="51"/>
+        <location filename="../statusicon.cpp" line="52"/>
         <source>Exit</source>
         <translation>Вихід</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="103"/>
+        <location filename="../statusicon.cpp" line="127"/>
         <source>Now Playing</source>
         <translation>Зараз грає</translation>
     </message>

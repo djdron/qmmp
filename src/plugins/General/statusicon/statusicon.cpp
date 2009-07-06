@@ -25,6 +25,8 @@
 #include <QCoreApplication>
 #include <QWheelEvent>
 #include <QEvent>
+#include <QStyle>
+#include <QApplication>
 
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
@@ -37,8 +39,7 @@ StatusIcon::StatusIcon(QObject *parent)
 {
     m_tray = new QmmpTrayIcon(this);
     connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
-    m_tray->setIcon ( QIcon(":/tray_stop.png"));
-    m_tray->show();
+    //m_tray->show();
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
     QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
@@ -57,6 +58,14 @@ StatusIcon::StatusIcon(QObject *parent)
     m_messageDelay = settings.value("message_delay", 2000).toInt();
     m_showTooltip = settings.value("show_tooltip",FALSE).toBool();
     m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
+    m_useStandardIcons = settings.value("use_standard_icons",FALSE).toBool();
+#if QT_VERSION >= 0x040400
+    if(m_useStandardIcons)
+        m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
+    else
+#endif
+        m_tray->setIcon ( QIcon(":/tray_stop.png"));
+    m_tray->show();
     settings.endGroup();
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
@@ -75,17 +84,32 @@ void StatusIcon::setState(Qmmp::State state)
     {
     case Qmmp::Playing:
     {
-        m_tray->setIcon(QIcon(":/tray_play.png"));
+#if QT_VERSION >= 0x040400
+         if(m_useStandardIcons)
+            m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaPlay));
+        else
+#endif
+            m_tray->setIcon ( QIcon(":/tray_play.png"));
         break;
     }
     case Qmmp::Paused:
     {
-        m_tray->setIcon(QIcon(":/tray_pause.png"));
+#if QT_VERSION >= 0x040400
+         if(m_useStandardIcons)
+            m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaPause));
+        else
+#endif
+            m_tray->setIcon ( QIcon(":/tray_pause.png"));
         break;
     }
     case Qmmp::Stopped:
     {
-        m_tray->setIcon(QIcon(":/tray_stop.png"));
+#if QT_VERSION >= 0x040400
+        if(m_useStandardIcons)
+            m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
+        else
+#endif
+            m_tray->setIcon ( QIcon(":/tray_stop.png"));
         break;
     }
     }
