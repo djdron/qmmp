@@ -33,6 +33,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.messageCheckBox->setChecked(settings.value("show_message",TRUE).toBool());
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     ui.toolTipCheckBox->setChecked(settings.value("show_tooltip",FALSE).toBool());
+#if QT_VERSION >= 0x040400
+    ui.standardIconsCheckBox->setChecked(settings.value("use_standard_icons",FALSE).toBool());
+#else
+    ui.standardIconsCheckBox->setEnabled(FALSE);
+#endif
     settings.endGroup();
 }
 
@@ -47,6 +52,9 @@ void SettingsDialog::accept()
     settings.setValue ("show_message", ui.messageCheckBox->isChecked());
     settings.setValue ("message_delay", ui.messageDelaySpinBox->value());
     settings.setValue ("show_tooltip", ui.toolTipCheckBox->isChecked());
+#if QT_VERSION >= 0x040400
+    settings.setValue ("use_standard_icons",ui.standardIconsCheckBox->isChecked());
+#endif
     settings.endGroup();
     QDialog::accept();
 }

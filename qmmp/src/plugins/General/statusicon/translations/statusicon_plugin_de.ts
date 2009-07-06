@@ -4,32 +4,35 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Status Icon Plugin Settings</source>
         <translation>Einstellungen Statussymbol-Modul</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="19"/>
+        <location filename="../settingsdialog.ui" line="20"/>
         <source>Show message</source>
         <translation>Mitteilung anzeigen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="26"/>
+        <location filename="../settingsdialog.ui" line="27"/>
         <source>Show tooltip</source>
         <translation>Kurzinfo anzeigen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="33"/>
+        <location filename="../settingsdialog.ui" line="34"/>
         <source>Message delay, ms:</source>
         <translation>Verzögerung in ms:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="89"/>
+        <location filename="../settingsdialog.ui" line="86"/>
+        <source>Use standard icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>OK</source>
         <translation type="obsolete">OK</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="96"/>
         <source>Cancel</source>
         <translation type="obsolete">Abbrechen</translation>
     </message>
@@ -37,37 +40,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="45"/>
+        <location filename="../statusicon.cpp" line="46"/>
         <source>Play</source>
         <translation>Wiedergabe</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="46"/>
+        <location filename="../statusicon.cpp" line="47"/>
         <source>Pause</source>
         <translation>Pause</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="47"/>
+        <location filename="../statusicon.cpp" line="48"/>
         <source>Stop</source>
         <translation>Stopp</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="48"/>
+        <location filename="../statusicon.cpp" line="49"/>
         <source>Next</source>
         <translation>Nächster</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="49"/>
+        <location filename="../statusicon.cpp" line="50"/>
         <source>Previous</source>
         <translation>Vorheriger</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="51"/>
+        <location filename="../statusicon.cpp" line="52"/>
         <source>Exit</source>
         <translation>Beenden</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="103"/>
+        <location filename="../statusicon.cpp" line="127"/>
         <source>Now Playing</source>
         <translation>Aktueller Titel</translation>
     </message>

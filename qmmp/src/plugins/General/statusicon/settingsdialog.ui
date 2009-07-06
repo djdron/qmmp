@@ -1,64 +1,65 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>SettingsDialog</class>
- <widget class="QDialog" name="SettingsDialog" >
-  <property name="geometry" >
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>278</width>
-    <height>126</height>
+    <height>146</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Status Icon Plugin Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QCheckBox" name="messageCheckBox" >
-     <property name="text" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QCheckBox" name="messageCheckBox">
+     <property name="text">
       <string>Show message</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QCheckBox" name="toolTipCheckBox" >
-     <property name="text" >
+   <item row="1" column="0" rowspan="2" colspan="2">
+    <widget class="QCheckBox" name="toolTipCheckBox">
+     <property name="text">
       <string>Show tooltip</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="label_3" >
-     <property name="text" >
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
       <string>Message delay, ms:</string>
      </property>
-     <property name="alignment" >
+     <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2" >
-    <widget class="QSpinBox" name="messageDelaySpinBox" >
-     <property name="minimum" >
+   <item row="4" column="2" colspan="2">
+    <widget class="QSpinBox" name="messageDelaySpinBox">
+     <property name="minimum">
       <number>100</number>
      </property>
-     <property name="maximum" >
+     <property name="maximum">
       <number>10000</number>
      </property>
-     <property name="singleStep" >
+     <property name="singleStep">
       <number>100</number>
      </property>
-     <property name="value" >
+     <property name="value">
       <number>1000</number>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
+   <item row="5" column="0" colspan="3">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>150</width>
        <height>18</height>
@@ -66,16 +67,23 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="2" >
-    <widget class="QDialogButtonBox" name="buttonBox" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Maximum" >
+   <item row="5" column="3">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="standardButtons" >
+     <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="standardIconsCheckBox">
+     <property name="text">
+      <string>Use standard icons</string>
      </property>
     </widget>
    </item>
@@ -89,11 +97,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>180</x>
      <y>102</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>112</x>
      <y>103</y>
     </hint>
@@ -105,11 +113,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>242</x>
      <y>107</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>27</x>
      <y>106</y>
     </hint>
