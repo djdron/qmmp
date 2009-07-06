@@ -324,9 +324,9 @@ void Scrobbler::submit()
     qDebug("Scrobbler[%s]: submit request", qPrintable(m_name));
     if (m_songCache.isEmpty())
         return;
-    m_submitedSongs = m_songCache.size();
+    m_submitedSongs = qMin(m_songCache.size(),25);
     QString body = QString("s=%1").arg(m_session);
-    for (int i = 0; i < qMin(m_songCache.size(), 25); ++i)
+    for (int i = 0; i < m_submitedSongs; ++i)
     {
         SongInfo info = m_songCache[i];
         body += QString("&a[%9]=%1&t[%9]=%2&i[%9]=%3&o[%9]=%4&r[%9]=%5&l[%9]=%6&b[%9]=%7&n[%9]=%8&m[%9]=")
