@@ -31,7 +31,6 @@ extern "C"
 }
 
 #include "outputoss.h"
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/visual.h>
 

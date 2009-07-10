@@ -11,7 +11,6 @@
 
 #include "decoder_mad.h"
 #include "tagextractor.h"
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 
@@ -25,85 +24,55 @@
 DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
         : Decoder(parent, d, i, o)
 {
-    inited = false;
-    user_stop = false;
-    done = false;
-    m_finish = false;
-    derror = false;
-    eof = false;
-    useeq = false;
+    m_inited = false;
     m_totalTime = 0.;
-    seekTime = -1.;
-    channels = 0;
-    bks = 0;
-    bitrate = 0;
-    freq = 0;
-    len = 0;
-    input_buf = 0;
-    input_bytes = 0;
-    output_buf = 0;
-    output_bytes = 0;
-    output_at = 0;
-    output_size = 0;
+    m_channels = 0;
+    m_bitrate = 0;
+    m_freq = 0;
+    m_len = 0;
+    m_input_buf = 0;
+    m_input_bytes = 0;
+    m_output_bytes = 0;
+    m_output_at = 0;
+    m_skip_frames = 0;
 }
 
 DecoderMAD::~DecoderMAD()
 {
     wait();
     deinit();
-    mutex()->lock();
-    if (input_buf)
+    if (m_input_buf)
     {
         qDebug("DecoderMAD: deleting input_buf");
-        delete [] input_buf;
-    }
-    input_buf = 0;
-
-    if (output_buf)
-    {
-        qDebug("DecoderMAD: deleting output_buf");
-        delete [] output_buf;
-    }
-    output_buf = 0;
-    mutex()->unlock();
+        delete [] m_input_buf;
+        m_input_buf = 0;
+    }    
 }
 
 bool DecoderMAD::initialize()
 {
-    bks = Buffer::size();
-
-    inited = false;
-    user_stop = false;
-    done = false;
-    m_finish = false;
-    derror = false;
-    eof = false;
+    m_inited = false;
     m_totalTime = 0.;
-    seekTime = -1.;
-    channels = 0;
-    bitrate = 0;
-    freq = 0;
-    len = 0;
-    input_bytes = 0;
-    output_bytes = 0;
-    output_at = 0;
-    output_size = 0;
+    m_channels = 0;
+    m_bitrate = 0;
+    m_freq = 0;
+    m_len = 0;
+    m_input_bytes = 0;
+    m_output_bytes = 0;
+    m_output_at = 0;
 
-    if (! input())
+    if (!input())
     {
         qWarning("DecoderMAD: cannot initialize.  No input.");
         return FALSE;
     }
 
-    if (! input_buf)
-        input_buf = new char[INPUT_BUFFER_SIZE];
+    if (!m_input_buf)
+        m_input_buf = new char[INPUT_BUFFER_SIZE];
 
-    if (! output_buf)
-        output_buf = new char[globalBufferSize];
-
-    if (! input()->isOpen())
+    if (!input()->isOpen())
     {
-        if (! input()->open(QIODevice::ReadOnly))
+        if (!input()->open(QIODevice::ReadOnly))
         {
             qWarning("DecoderMAD: %s", qPrintable(input()->errorString ()));
             return FALSE;
@@ -121,51 +90,43 @@ bool DecoderMAD::initialize()
     mad_frame_init(&frame);
     mad_synth_init(&synth);
 
-    if (! findHeader())
+    if (!findHeader())
     {
         qDebug("DecoderMAD: Can't find a valid MPEG header.");
         return FALSE;
     }
-    mad_stream_buffer(&stream, (unsigned char *) input_buf, input_bytes);
+    mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
     stream.error = MAD_ERROR_NONE;
     stream.error = MAD_ERROR_BUFLEN;
     mad_frame_mute (&frame);
     stream.next_frame = NULL;
     stream.sync = 0;
-    configure(freq, channels, 16);
+    configure(m_freq, m_channels, 16);
 
-    inited = TRUE;
+    m_inited = TRUE;
     return TRUE;
 }
 
 
 void DecoderMAD::deinit()
 {
-    if (!inited)
+    if (!m_inited)
         return;
 
     mad_synth_finish(&synth);
     mad_frame_finish(&frame);
     mad_stream_finish(&stream);
 
-    inited = false;
-    user_stop = false;
-    done = false;
-    m_finish = false;
-    derror = false;
-    eof = false;
-    useeq = false;
+    m_inited = FALSE;
     m_totalTime = 0.;
-    seekTime = -1.;
-    channels = 0;
-    bks = 0;
-    bitrate = 0;
-    freq = 0;
-    len = 0;
-    input_bytes = 0;
-    output_bytes = 0;
-    output_at = 0;
-    output_size = 0;
+    m_channels = 0;
+    m_bitrate = 0;
+    m_freq = 0;
+    m_len = 0;
+    m_input_bytes = 0;
+    m_output_bytes = 0;
+    m_output_at = 0;
+    m_skip_frames = 0;
 }
 
 bool DecoderMAD::findXingHeader(struct mad_bitptr ptr, unsigned int bitlen)
@@ -236,9 +197,9 @@ bool DecoderMAD::findHeader()
     struct mad_header header;
     mad_header_init (&header);
 
-    while (TRUE)
+    forever
     {
-        input_bytes = 0;
+        m_input_bytes = 0;
         if (stream.error == MAD_ERROR_BUFLEN || !stream.buffer)
         {
             size_t remaining = 0;
@@ -246,15 +207,15 @@ bool DecoderMAD::findHeader()
             if (!stream.next_frame)
             {
                 remaining = stream.bufend - stream.next_frame;
-                memmove (input_buf, stream.next_frame, remaining);
+                memmove (m_input_buf, stream.next_frame, remaining);
             }
 
-            input_bytes = input()->read(input_buf + remaining, INPUT_BUFFER_SIZE - remaining);
+            m_input_bytes = input()->read(m_input_buf + remaining, INPUT_BUFFER_SIZE - remaining);
 
-            if (input_bytes <= 0)
+            if (m_input_bytes <= 0)
                 break;
 
-            mad_stream_buffer(&stream, (unsigned char *) input_buf + remaining, input_bytes);
+            mad_stream_buffer(&stream, (unsigned char *) m_input_buf + remaining, m_input_bytes);
             stream.error = MAD_ERROR_NONE;
         }
 
@@ -298,13 +259,13 @@ bool DecoderMAD::findHeader()
         //try to detect VBR
         if (!is_vbr && !(count > 15))
         {
-            if (bitrate && header.bitrate != bitrate)
+            if (m_bitrate && header.bitrate != m_bitrate)
             {
                 qDebug ("DecoderMAD: VBR detected");
                 is_vbr = TRUE;
             }
             else
-                bitrate = header.bitrate;
+                m_bitrate = header.bitrate;
         }
         else if (!is_vbr)
         {
@@ -331,144 +292,41 @@ bool DecoderMAD::findHeader()
 
     m_totalTime = mad_timer_count(duration, MAD_UNITS_MILLISECONDS);
     qDebug ("DecoderMAD: Total time: %ld", long(m_totalTime));
-    freq = header.samplerate;
-    channels = MAD_NCHANNELS(&header);
-    bitrate = header.bitrate / 1000;
+    m_freq = header.samplerate;
+    m_channels = MAD_NCHANNELS(&header);
+    m_bitrate = header.bitrate / 1000;
     mad_header_finish(&header);
     input()->seek(0);
-    input_bytes = 0;
+    m_input_bytes = 0;
     return TRUE;
 }
 
 qint64 DecoderMAD::totalTime()
 {
-    if (! inited)
-        return 0.;
+    if (!m_inited)
+        return 0;
     return m_totalTime;
 }
 
-void DecoderMAD::seek(qint64 pos)
+int DecoderMAD::bitrate()
 {
-    seekTime = pos;
+    return int(m_bitrate);
 }
 
-void DecoderMAD::stop()
+qint64 DecoderMAD::readAudio(char *data, qint64 size)
 {
-    user_stop = TRUE;
-}
-
-void DecoderMAD::flush(bool final)
-{
-    ulong min = final ? 0 : bks;
-    while (!done && (output_bytes > min) && seekTime == -1.)
+    forever
     {
-        output()->recycler()->mutex()->lock();
-
-        while (!done && output()->recycler()->full())
+        if(stream.error == MAD_ERROR_BUFLEN || !stream.buffer)
         {
-            mutex()->unlock();
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
-            mutex()->lock();
-            done = user_stop;
+            if(!fillBuffer())
+                return 0;
         }
-
-        if (user_stop)
+        if(mad_frame_decode(&frame, &stream) < 0)
         {
-            inited = FALSE;
-            done = TRUE;
-        }
-        else
-        {
-            output_bytes -= produceSound(output_buf, output_bytes, bitrate, channels);
-            output_size += bks;
-            output_at = output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-
-        output()->recycler()->mutex()->unlock();
-    }
-}
-
-void DecoderMAD::run()
-{
-    int skip_frames = 0;
-    mutex()->lock();
-
-    if (! inited)
-    {
-        mutex()->unlock();
-        return;
-    }
-
-    mutex()->unlock();
-
-    while (! done && ! m_finish && ! derror)
-    {
-        mutex()->lock();
-
-        if (seekTime >= 0.0 && m_totalTime > 0)
-        {
-            long seek_pos = long(seekTime * input()->size() / m_totalTime);
-            input()->seek(seek_pos);
-            output_size = long(seekTime) * long(freq * channels * 16 / 2);
-            mad_frame_mute(&frame);
-            mad_synth_mute(&synth);
-            stream.error = MAD_ERROR_BUFLEN;
-            stream.sync = 0;
-            input_bytes = 0;
-            output_at = 0;
-            output_bytes = 0;
-            stream.next_frame = 0;
-            skip_frames = 2;
-            eof = false;
-            seekTime = -1;
-        }
-        m_finish = eof;
-
-        if (! eof)
-        {
-            if (stream.next_frame)
+            switch((int) stream.error)
             {
-                input_bytes = &input_buf[input_bytes] - (char *) stream.next_frame;
-                memmove(input_buf, stream.next_frame, input_bytes);
-            }
-
-            if (stream.error == MAD_ERROR_BUFLEN)
-            {
-                int len = input()->read((char *) input_buf + input_bytes,
-                                        INPUT_BUFFER_SIZE - input_bytes);
-
-                if (len == 0)
-                {
-                    qDebug("DecoderMAD: end of file");
-                    eof = true;
-                }
-                else if (len < 0)
-                {
-                    qWarning("DecoderMAD: %s", qPrintable(input()->errorString ()));
-                    derror = true;
-                    break;
-                }
-
-                input_bytes += len;
-            }
-
-            mad_stream_buffer(&stream, (unsigned char *) input_buf, input_bytes);
-        }
-
-        mutex()->unlock();
-
-        // decode
-        while (!done && !m_finish && !derror && seekTime == -1.)
-        {
-            if (mad_frame_decode(&frame, &stream) == -1)
-            {
-                if (stream.error == MAD_ERROR_LOSTSYNC)
+                case MAD_ERROR_LOSTSYNC:
                 {
                     //skip ID3v2 tag
                     uint tagSize = findID3v2((uchar *)stream.this_frame,
@@ -480,76 +338,61 @@ void DecoderMAD::run()
                     }
                     continue;
                 }
-
-                if (stream.error == MAD_ERROR_BUFLEN)
-                    break;
-
-                if (stream.error == MAD_ERROR_BUFLEN)
+                case MAD_ERROR_BUFLEN:
                     continue;
-
-                // error in decoding
-                if (!MAD_RECOVERABLE(stream.error))
-                {
-                    derror = true;
-                    break;
-                }
-                continue;
+                default:
+                    if (!MAD_RECOVERABLE(stream.error))
+                        return 0;
+                    else
+                        continue;
             }
-
-            mutex()->lock();
-
-            if (seekTime >= 0.)
-            {
-                mutex()->unlock();
-                break;
-            }
-
-            if (skip_frames)
-            {
-                skip_frames-- ;
-                mutex()->unlock();
-                continue;
-            }
-            mad_synth_frame(&synth, &frame);
-            madOutput();
-            mutex()->unlock();
         }
-    }
-
-    mutex()->lock();
-
-    if (!user_stop && eof)
-    {
-        flush(TRUE);
-
-        if (output())
+        if(m_skip_frames)
         {
-            output()->recycler()->mutex()->lock();
-            // end of stream
-            while (! output()->recycler()->empty() && ! user_stop)
-            {
-                output()->recycler()->cond()->wakeOne();
-                mutex()->unlock();
-                output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                mutex()->lock();
-            }
-            output()->recycler()->mutex()->unlock();
+            m_skip_frames--;
+            continue;
         }
-
-        done = TRUE;
-        if (!user_stop)
-            m_finish = TRUE;
+        mad_synth_frame(&synth, &frame);
+        return madOutput(data, size);
     }
+}
+void DecoderMAD::seekAudio(qint64 pos)
+{
+    if(m_totalTime > 0)
+    {
+        qint64 seek_pos = qint64(pos * input()->size() / m_totalTime);
+        input()->seek(seek_pos);
+        mad_frame_mute(&frame);
+        mad_synth_mute(&synth);
+        stream.error = MAD_ERROR_BUFLEN;
+        stream.sync = 0;
+        m_input_bytes = 0;
+        stream.next_frame = 0;
+        m_skip_frames = 2;
+    }
+}
 
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-
-    if (input())
-        input()->close();
-    deinit();
-
+bool DecoderMAD::fillBuffer()
+{
+    if (stream.next_frame)
+    {
+        m_input_bytes = &m_input_buf[m_input_bytes] - (char *) stream.next_frame;
+        memmove(m_input_buf, stream.next_frame, m_input_bytes);
+    }
+    int len = input()->read((char *) m_input_buf + m_input_bytes, INPUT_BUFFER_SIZE - m_input_bytes);
+    if (!len)
+    {
+        qDebug("DecoderMAD: end of file");
+        return FALSE;
+    }
+    else if(len < 0)
+    {
+        qWarning("error");
+        return FALSE;
+    }
+    m_input_bytes += len;
+    mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
+    return TRUE;
 }
 
 uint DecoderMAD::findID3v2(uchar *data, ulong size) //retuns ID3v2 tag size
@@ -603,7 +446,7 @@ static inline signed long fix_sample(unsigned int bits, mad_fixed_t sample)
     return quantized >> (MAD_F_FRACBITS + 1 - bits);
 }
 
-enum mad_flow DecoderMAD::madOutput()
+qint64 DecoderMAD::madOutput(char *data, qint64 size)
 {
     unsigned int samples, channels;
     mad_fixed_t const *left, *right;
@@ -612,45 +455,32 @@ enum mad_flow DecoderMAD::madOutput()
     channels = synth.pcm.channels;
     left = synth.pcm.samples[0];
     right = synth.pcm.samples[1];
+    m_bitrate = frame.header.bitrate / 1000;
+    m_output_at = 0;
+    m_output_bytes = 0;
 
+    if(samples * channels * 2 > size)
+    {
+        qWarning("DecoderMad: input buffer is too small");
+        samples = size / channels / 2;
+    }
 
-    bitrate = frame.header.bitrate / 1000;
-    done = user_stop;
-
-    while (samples-- && !user_stop)
+    while (samples--)
     {
         signed int sample;
 
-        if (output_bytes + 4096 > globalBufferSize)
-            flush();
-
         sample = fix_sample(16, *left++);
-        *(output_buf + output_at++) = ((sample >> 0) & 0xff);
-        *(output_buf + output_at++) = ((sample >> 8) & 0xff);
-        output_bytes += 2;
+        *(data + m_output_at++) = ((sample >> 0) & 0xff);
+        *(data + m_output_at++) = ((sample >> 8) & 0xff);
+        m_output_bytes += 2;
 
         if (channels == 2)
         {
             sample = fix_sample(16, *right++);
-            *(output_buf + output_at++) = ((sample >> 0) & 0xff);
-            *(output_buf + output_at++) = ((sample >> 8) & 0xff);
-            output_bytes += 2;
+            *(data + m_output_at++) = ((sample >> 0) & 0xff);
+            *(data + m_output_at++) = ((sample >> 8) & 0xff);
+            m_output_bytes += 2;
         }
     }
-
-    if (done || m_finish)
-    {
-        return MAD_FLOW_STOP;
-    }
-
-    return MAD_FLOW_CONTINUE;
-}
-
-enum mad_flow DecoderMAD::madError(struct mad_stream *stream,
-                                   struct mad_frame *)
-{
-    if (MAD_RECOVERABLE(stream->error))
-        return MAD_FLOW_CONTINUE;
-    qFatal("MADERROR!\n");
-    return MAD_FLOW_STOP;
+    return m_output_bytes;
 }

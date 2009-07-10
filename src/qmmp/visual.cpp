@@ -25,7 +25,6 @@
 #include <QApplication>
 
 #include "visualfactory.h"
-#include "constants.h"
 #include "output.h"
 
 #include "visual.h"

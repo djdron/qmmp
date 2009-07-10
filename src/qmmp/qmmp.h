@@ -100,6 +100,10 @@ public:
      * Returns system language
      */
     static QString systemLanguageID();
+    /*!
+     * Returns global buffer size in bytes
+     */
+    static unsigned int globalBufferSize();
 
 
 private:

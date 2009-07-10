@@ -13,7 +13,6 @@
 #include "effect.h"
 #include "effectfactory.h"
 
-#include "constants.h"
 #include "buffer.h"
 #include "output.h"
 #include "visual.h"
@@ -29,52 +28,78 @@ extern "C"
 
 
 Decoder::Decoder(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : QThread(parent), m_factory(d), m_input(i), m_output(o),m_eqInited(FALSE),
-        m_useEQ(FALSE)
+        : QThread(parent), _m_factory(d), _m_input(i), _m_output(o), _m_eqInited(FALSE),
+        _m_useEQ(FALSE)
 {
     init();
 }
 
 Decoder::Decoder(QObject *parent, DecoderFactory *d, Output *o)
-        : QThread(parent), m_factory(d), m_input(0), m_output(o),m_eqInited(FALSE),
-        m_useEQ(FALSE)
+        : QThread(parent), _m_factory(d), _m_input(0), _m_output(o), _m_eqInited(FALSE),
+        _m_useEQ(FALSE)
 {
     init();
 }
 
 Decoder::~Decoder()
 {
-    m_factory = 0;
-    m_input = 0;
-    m_output = 0;
-    blksize = 0;
+    _m_factory = 0;
+    _m_input = 0;
+    _m_output = 0;
+    _blksize = 0;
+    _m_handler = 0;
+    _m_done = FALSE;
+    _m_finish = FALSE;
+    _m_totalTime = 0;
+    _m_seekTime = -1;
+    _m_output_bytes = 0;
+    _m_output_at = 0;
+    _m_user_stop = FALSE;
+    _m_bks = Buffer::size();
+    _m_output_buf = 0;
+    _m_bitrate = 0;
+    _m_chan = 0;
+    if(_m_output_buf)
+        delete [] _m_output_buf;
+    _m_output_buf = 0;
 }
 
 void Decoder::init()
 {
-    if (m_output)
-        m_output->recycler()->clear();
+    if (_m_output)
+        _m_output->recycler()->clear();
     double b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
-    blksize = Buffer::size();
-    m_effects = Effect::create(this);
-    m_handler = 0;
+    _blksize = Buffer::size();
+    _m_effects = Effect::create(this);
+    _m_handler = 0;
+    _m_done = FALSE;
+    _m_finish = FALSE;
+    _m_totalTime = 0;
+    _m_seekTime = -1;
+    _m_output_bytes = 0;
+    _m_output_at = 0;
+    _m_user_stop = FALSE;
+    _m_bks = Buffer::size();
+    _m_output_buf = 0;
+    _m_bitrate = 0;
+    _m_chan = 0;
 }
 
 DecoderFactory *Decoder::factory() const
 {
-    return m_factory;
+    return _m_factory;
 }
 
 QIODevice *Decoder::input()
 {
-    return m_input;
+    return _m_input;
 }
 
 Output *Decoder::output()
 {
-    return m_output;
+    return _m_output;
 }
 
 QMutex *Decoder::mutex()
@@ -89,12 +114,12 @@ QWaitCondition *Decoder::cond()
 
 StateHandler *Decoder::stateHandler()
 {
-    return m_handler;
+    return _m_handler;
 }
 
 void Decoder::setStateHandler(StateHandler *handler)
 {
-    m_handler = handler;
+    _m_handler = handler;
 }
 
 void Decoder::setEQ(double bands[10], double preamp)
@@ -111,33 +136,48 @@ void Decoder::setEQ(double bands[10], double preamp)
 
 void Decoder::setEQEnabled(bool on)
 {
-    m_useEQ = on;
+    _m_useEQ = on;
 }
 
 void Decoder::configure(quint32 srate, int chan, int bps)
 {
     Effect* effect = 0;
-    foreach(effect, m_effects)
+    foreach(effect, _m_effects)
     {
         effect->configure(srate, chan, bps);
         srate = effect->sampleRate();
         chan = effect->channels();
         bps = effect->bitsPerSample();
     }
-    if (m_output)
-        m_output->configure(srate, chan, bps);
+    _m_chan = chan;
+    if (_m_output)
+    {
+        _m_output->configure(srate, chan, bps);
+        if (!_m_output_buf)
+            _m_output_buf = new unsigned char[Qmmp::globalBufferSize()];
+    }
+}
+
+void Decoder::seek(qint64 time)
+{
+    _m_seekTime = time;
+}
+
+void Decoder::stop()
+{
+    _m_user_stop = TRUE;
 }
 
 qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
 {
-    ulong sz = size < blksize ? size : blksize;
+    ulong sz = size < _blksize ? size : _blksize;
 
-    if (m_useEQ)
+    if (_m_useEQ)
     {
-        if (!m_eqInited)
+        if (!_m_eqInited)
         {
             init_iir();
-            m_eqInited = TRUE;
+            _m_eqInited = TRUE;
         }
         iir((void*) data, sz, chan);
     }
@@ -145,7 +185,7 @@ qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
     char *prev_data = data;
     qint64 w = sz;
     Effect* effect = 0;
-    foreach(effect, m_effects)
+    foreach(effect, _m_effects)
     {
         w = effect->process(prev_data, sz, &out_data);
 
@@ -168,8 +208,8 @@ qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
     if (data != out_data)
         delete out_data;
 
-    if (w < blksize + b->exceeding)
-        memset(b->data + w, 0, blksize + b->exceeding - w);
+    if (w < _blksize + b->exceeding)
+        memset(b->data + w, 0, _blksize + b->exceeding - w);
 
     b->nbytes = w;
     b->rate = brate;
@@ -188,12 +228,108 @@ void Decoder::finish()
         output()->mutex()->lock ();
         output()->finish();
         output()->mutex()->unlock();
-        /*output()->recycler()->mutex()->lock ();
-        output()->recycler()->cond()->wakeAll();
-        output()->recycler()->mutex()->unlock();
-        output()->wait();*/
     }
     emit playbackFinished();
+}
+
+void Decoder::run()
+{
+    Q_ASSERT(_m_chan == 0);
+    mutex()->lock ();
+
+    qint64 len = 0;
+
+    /*if (!inited)
+    {
+        mutex()->unlock();
+        return;
+    }*/
+
+    mutex()->unlock();
+
+    while (! _m_done && ! _m_finish)
+    {
+        mutex()->lock ();
+        // decode
+
+        if (_m_seekTime >= 0)
+        {
+            seekAudio(_m_seekTime);
+            _m_seekTime = -1;
+        }     
+        len = readAudio((char *)(_m_output_buf + _m_output_at), Qmmp::globalBufferSize() - _m_output_at);
+        if (len > 0)
+        {
+            _m_bitrate = bitrate();
+            _m_output_at += len;
+            _m_output_bytes += len;
+            if (output())
+                flush();
+        }
+        else if (len == 0)
+        {
+            flush(TRUE);
+
+            if (output())
+            {
+                output()->recycler()->mutex()->lock ();
+                // end of stream
+                while (!output()->recycler()->empty() && !_m_user_stop)
+                {
+                    output()->recycler()->cond()->wakeOne();
+                    mutex()->unlock();
+                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
+                    mutex()->lock ();
+                }
+                output()->recycler()->mutex()->unlock();
+            }
+
+            _m_done = TRUE;
+            _m_finish = !_m_user_stop;
+        }
+        else
+            _m_finish = TRUE;
+        mutex()->unlock();
+    }
+
+    mutex()->lock ();
+
+    if (_m_finish)
+        finish();
+
+    mutex()->unlock();
+}
+
+void Decoder::flush(bool final)
+{
+    ulong min = final ? 0 : _m_bks;
+
+    while ((!_m_done && !_m_finish) && _m_output_bytes > min)
+    {
+        output()->recycler()->mutex()->lock ();
+        while ((!_m_done && !_m_finish) && output()->recycler()->full())
+        {
+            mutex()->unlock();
+            output()->recycler()->cond()->wait(output()->recycler()->mutex());
+            mutex()->lock ();
+            _m_done = _m_user_stop;
+        }
+
+        if (_m_user_stop || _m_finish)
+            _m_done = TRUE;
+        else
+        {
+            _m_output_bytes -= produceSound((char*)_m_output_buf, _m_output_bytes, _m_bitrate, _m_chan);
+            _m_output_at = _m_output_bytes;
+        }
+
+        if (output()->recycler()->full())
+        {
+            output()->recycler()->cond()->wakeOne();
+        }
+
+        output()->recycler()->mutex()->unlock();
+    }
 }
 
 // static methods

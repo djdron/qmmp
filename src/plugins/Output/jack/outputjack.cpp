@@ -25,7 +25,6 @@
 #include <QSettings>
 
 #include "outputjack.h"
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/visual.h>
 

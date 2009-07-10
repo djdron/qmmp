@@ -58,7 +58,6 @@ SET(libqmmp_MOC_HDRS
     visual.h
     recycler.h
     buffer.h
-    constants.h
     decoder.h
     output.h
     fileinfo.h

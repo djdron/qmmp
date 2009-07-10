@@ -7,7 +7,7 @@
 #ifndef   __buffer_h
 #define   __buffer_h
 
-#include "constants.h"
+#define QMMP_BLOCK_SIZE 2048
 
 /*! @brief Audio buffer class.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -20,7 +20,7 @@ public:
      */
     Buffer()
     {
-        data = new unsigned char[Buffer::size()];
+        data = new unsigned char[QMMP_BLOCK_SIZE];
         nbytes = 0;
         rate = 0;
         exceeding = 0;
@@ -44,9 +44,9 @@ public:
     /*!
      * Returns block size.
      */
-    static unsigned long size()
+    static unsigned int size()
     {
-        return globalBlockSize;
+        return QMMP_BLOCK_SIZE;
     }
 };
 

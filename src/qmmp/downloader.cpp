@@ -26,7 +26,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "constants.h"
 #include "qmmp.h"
 #include "statehandler.h"
 #include "downloader.h"

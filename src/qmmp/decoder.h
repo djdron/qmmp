@@ -69,17 +69,18 @@ public:
      * Requests a seek to the time \b time indicated, specified in milliseconds.
      * Subclass should reimplement this function.
      */
-    virtual void seek(qint64 time) = 0;
+    virtual void seek(qint64 time);
     /*!
      * Requests playback to stop
      * Subclass should reimplement this function.
      */
-    virtual void stop() = 0;
+    virtual void stop();
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
      * Subclass with own output should reimplement this function.
      */
-    virtual void pause(){};
+    virtual int bitrate() = 0;
+    virtual void pause(){}
     /*!
      * Returns decoder's factory object.
      */
@@ -182,6 +183,8 @@ signals:
     void playbackFinished();
 
 protected:
+
+    virtual void run();
     /*!
      * Use this function inside initialize() reimplementation to tell other plugins about audio parameters.
      * @param srate Sample rate.
@@ -198,6 +201,10 @@ protected:
      */
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
 
+    virtual qint64 readAudio(char *data, qint64 maxSize) = 0;
+
+    virtual void seekAudio(qint64 time) = 0;
+
 protected slots:
     /*!
      * Subclass should call this slot when decoding is finished.
@@ -206,24 +213,32 @@ protected slots:
 
 private:
     void init();
+    void flush(bool = FALSE);
     static void checkFactories();
 
-    DecoderFactory *m_factory;
-    QList <Effect*> m_effects;
-    QIODevice *m_input;
-    Output *m_output;
+    DecoderFactory *_m_factory;
+    QList <Effect*> _m_effects;
+    QIODevice *_m_input;
+    Output *_m_output;
 
     QMutex m_mutex;
     QWaitCondition m_waitCondition;
 
-    uint blksize;
-    bool m_eqInited;
-    bool m_useEQ;
-    StateHandler *m_handler;
+    uint _blksize;
+    bool _m_eqInited;
+    bool _m_useEQ;
+    bool _m_done, _m_finish, _m_user_stop;
+
+    ulong _m_bks;
+    qint64 _m_totalTime, _m_seekTime;
+    ulong _m_output_bytes, _m_output_at;
+    int _m_bitrate, _m_chan;
+    StateHandler *_m_handler;
+    unsigned char *_m_output_buf;
+
     static QList<DecoderFactory*> *m_factories;
     static DecoderFactory *m_lastFactory;
     static QStringList m_files;
-
 };
 
 #endif // DECODER_H

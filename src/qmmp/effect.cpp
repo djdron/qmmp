@@ -24,7 +24,6 @@
 
 #include "qmmp.h"
 #include "effectfactory.h"
-#include "constants.h"
 #include "effect.h"
 
 Effect::Effect(QObject *parent)

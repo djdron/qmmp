@@ -25,7 +25,6 @@
 #include <QDir>
 
 #include "decoderfactory.h"
-#include "constants.h"
 #include "streamreader.h"
 #include "effect.h"
 #include "statehandler.h"
