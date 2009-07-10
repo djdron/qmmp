@@ -78,7 +78,6 @@ SET(libqmmp_MOC_HDRS
 
 SET(libqmmp_DEVEL_HDRS
     buffer.h
-    constants.h
     decoderfactory.h
     decoder.h
     effectfactory.h
