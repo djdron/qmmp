@@ -58,7 +58,6 @@ contains(CONFIG, SVN_VERSION) {
 unix { 
     target.path = $$LIB_DIR
     devel.files += buffer.h \
-        constants.h \
         decoderfactory.h \
         decoder.h \
         effectfactory.h \
