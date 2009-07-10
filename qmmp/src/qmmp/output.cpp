@@ -10,7 +10,6 @@
 #include <QApplication>
 #include <QTimer>
 
-#include "constants.h"
 #include "buffer.h"
 #include "output.h"
 #include "volumecontrol.h"

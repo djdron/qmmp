@@ -24,7 +24,6 @@
 #include <QActionGroup>
 
 #include <qmmp/buffer.h>
-#include <qmmp/constants.h>
 #include <qmmp/output.h>
 #include <math.h>
 #include <stdlib.h>

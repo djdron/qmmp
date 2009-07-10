@@ -22,7 +22,6 @@
 
 #include <QWidget>
 #include <qmmp/visual.h>
-#include <qmmp/constants.h>
 
 class QTimer;
 class Buffer;

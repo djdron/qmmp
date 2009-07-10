@@ -21,7 +21,7 @@ add_subdirectory(mad)
 ENDIF(USE_MAD AND TAGLIB_FOUND)
 
 IF(USE_FLAC AND TAGLIB_FOUND)
-add_subdirectory(flac)
+#add_subdirectory(flac)
 ENDIF(USE_FLAC AND TAGLIB_FOUND)
 
 IF(USE_VORBIS AND TAGLIB_FOUND)
@@ -29,37 +29,37 @@ add_subdirectory(vorbis)
 ENDIF(USE_VORBIS AND TAGLIB_FOUND)
 
 IF(USE_FFMPEG)
-add_subdirectory(ffmpeg)
+#add_subdirectory(ffmpeg)
 ENDIF(USE_FFMPEG)
 
 IF(USE_MPC AND TAGLIB_FOUND)
-add_subdirectory(mpc)
+#add_subdirectory(mpc)
 ENDIF(USE_MPC AND TAGLIB_FOUND)
 
 IF(USE_SNDFILE)
-add_subdirectory(sndfile)
+#add_subdirectory(sndfile)
 ENDIF(USE_SNDFILE)
 
 IF(USE_WAVPACK)
-add_subdirectory(wavpack)
+#add_subdirectory(wavpack)
 ENDIF(USE_WAVPACK)
 
 IF(USE_MODPLUG)
-add_subdirectory(modplug)
+#add_subdirectory(modplug)
 ENDIF(USE_MODPLUG)
 
 IF(USE_AAC)
-add_subdirectory(aac)
+#add_subdirectory(aac)
 ENDIF(USE_AAC)
 
 IF(USE_CUE)
-add_subdirectory(cue)
+#add_subdirectory(cue)
 ENDIF(USE_CUE)
 
 IF(USE_MPLAYER)
-add_subdirectory(mplayer)
+#add_subdirectory(mplayer)
 ENDIF(USE_MPLAYER)
 
 IF(USE_CDA)
-add_subdirectory(cdaudio)
+#add_subdirectory(cdaudio)
 ENDIF(USE_CDA)

@@ -31,7 +31,6 @@ extern "C"
 #include <string.h>
 #include <iostream>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/visual.h>
 #include "outputpulseaudio.h"

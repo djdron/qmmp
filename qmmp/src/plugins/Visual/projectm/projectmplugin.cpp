@@ -29,7 +29,6 @@
 #include <libprojectM/projectM.hpp>
 
 #include <qmmp/buffer.h>
-#include <qmmp/constants.h>
 #include <qmmp/output.h>
 #include "projectmwidget.h"
 #include "projectmplugin.h"

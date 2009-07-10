@@ -28,37 +28,29 @@ public:
     // standard decoder API
     bool initialize();
     qint64 totalTime();
-    void seek(qint64);
-    void stop();
+    int bitrate();
 
 private:
-    // thread run function
-    void run();
-
-    enum mad_flow madOutput();
-    enum mad_flow madError(struct mad_stream *, struct mad_frame *);
+    qint64 readAudio(char *data, qint64 size);
+    void seekAudio(qint64);
 
     // helper functions
-    void flush(bool = FALSE);
+    qint64 madOutput(char *data, qint64 size);    
+    bool fillBuffer();
     void deinit();
     bool findHeader();
     bool findXingHeader(struct mad_bitptr, unsigned int);
     uint findID3v2(uchar *data, ulong size);
-    bool inited, user_stop, done, m_finish, derror, eof, useeq;
-    qint64 m_totalTime, seekTime;
-    int channels;
-    unsigned long bitrate;
-    long freq, len;
-    unsigned int bks;
-    mad_fixed_t eqbands[32];
+    bool m_inited;
+    qint64 m_totalTime;
+    int m_channels, m_skip_frames;
+    uint m_bitrate;
+    long m_freq, m_len;
+    qint64 m_output_bytes, m_output_at;
 
     // file input buffer
-    char *input_buf;
-    unsigned long input_bytes;
-
-    // output buffer
-    char *output_buf;
-    unsigned long output_bytes, output_at, output_size;
+    char *m_input_buf;
+    qint64 m_input_bytes;
 
     // MAD decoder
     struct

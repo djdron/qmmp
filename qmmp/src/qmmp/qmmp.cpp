@@ -32,6 +32,7 @@
 #define LIB_DIR "/lib"
 #endif
 
+#include "buffer.h"
 #include "qmmp.h"
 
 QString Qmmp::m_configFile;
@@ -119,3 +120,9 @@ QString Qmmp::systemLanguageID()
 #endif
     return  QLocale::system().name();
 }
+
+unsigned int Qmmp::globalBufferSize()
+{
+    return Buffer::size() * 128;
+}
+

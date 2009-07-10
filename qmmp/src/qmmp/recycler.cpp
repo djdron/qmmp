@@ -5,9 +5,7 @@
 //
 
 #include "recycler.h"
-#include "constants.h"
 #include "buffer.h"
-
 
 Recycler::Recycler ( unsigned int sz )
         : add_index ( 0 ), done_index ( 0 ), current_count ( 0 )

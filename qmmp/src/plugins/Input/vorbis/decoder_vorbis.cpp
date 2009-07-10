@@ -5,7 +5,6 @@
 //
 
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -78,103 +77,32 @@ DecoderVorbis::DecoderVorbis(QObject *parent, DecoderFactory *d, QIODevice *i, O
         : Decoder(parent, d, i, o)
 {
     inited = FALSE;
-    user_stop = FALSE;
-    stat = 0;
-    output_buf = 0;
-    output_bytes = 0;
-    output_at = 0;
-    bks = 0;
-    done = FALSE;
-    m_finish = FALSE;
-    len = 0;
-    freq = 0;
-    bitrate = 0;
-    seekTime = -1.0;
-    m_totalTime = 0.0;
-    chan = 0;
-    output_size = 0;
+    m_totalTime = 0;
+    m_section = 0;
+    m_last_section = -1;
+    m_bitrate = 0;
 }
 
 
 DecoderVorbis::~DecoderVorbis()
 {
     deinit();
-
-    if (output_buf)
-        delete [] output_buf;
-    output_buf = 0;
 }
-
-
-void DecoderVorbis::stop()
-{
-    user_stop = TRUE;
-}
-
-
-void DecoderVorbis::flush(bool final)
-{
-    ulong min = final ? 0 : bks;
-
-    while ((!done && !m_finish) && output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock ();
-        while ((! done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-            mutex()->lock ();
-            done = user_stop;
-        }
-
-        if (user_stop || m_finish)
-        {
-            inited = FALSE;
-            done = TRUE;
-        }
-        else
-        {
-            output_bytes -= produceSound(output_buf, output_bytes, bitrate, chan);
-            output_size += bks;
-            output_at = output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-
-        output()->recycler()->mutex()->unlock();
-    }
-}
-
 
 bool DecoderVorbis::initialize()
 {
     qDebug("DecoderVorbis: initialize");
-    bks = Buffer::size();
-
-    inited = user_stop = done = m_finish = FALSE;
-    len = freq = bitrate = 0;
-    stat = chan = 0;
-    output_size = 0;
-    seekTime = -1.0;
-    m_totalTime = 0.0;
-    if (! input())
+    inited = FALSE;
+    m_totalTime = 0;
+    if (!input())
     {
         qDebug("DecoderVorbis: cannot initialize.  No input");
-
         return FALSE;
     }
 
-    if (! output_buf)
-        output_buf = new char[globalBufferSize];
-    output_at = 0;
-    output_bytes = 0;
-
-    if (! input()->isOpen())
+    if (!input()->isOpen())
     {
-        if (! input()->open(QIODevice::ReadOnly))
+        if (!input()->open(QIODevice::ReadOnly))
         {
             qWarning("%s",qPrintable("DecoderVorbis: failed to open input. " +
                                 input()->errorString () + "."));
@@ -196,9 +124,9 @@ bool DecoderVorbis::initialize()
         return FALSE;
     }
 
-    freq = 0;
-    bitrate = ov_bitrate(&oggfile, -1) / 1000;
-    chan = 0;
+    quint32 freq = 0;
+    m_bitrate = ov_bitrate(&oggfile, -1) / 1000;
+    int chan = 0;
 
     m_totalTime = ov_time_total(&oggfile, -1) * 1000;
     m_totalTime = qMax(qint64(0), m_totalTime);
@@ -219,16 +147,14 @@ bool DecoderVorbis::initialize()
 
 qint64 DecoderVorbis::totalTime()
 {
-    if (! inited)
+    if (!inited)
         return 0;
-
     return m_totalTime;
 }
 
-
-void DecoderVorbis::seek(qint64 pos)
+int DecoderVorbis::bitrate()
 {
-    seekTime = pos;
+    return m_bitrate;
 }
 
 
@@ -236,10 +162,7 @@ void DecoderVorbis::deinit()
 {
     if (inited)
         ov_clear(&oggfile);
-    inited = user_stop = done = m_finish = FALSE;
-    len = freq = bitrate = 0;
-    stat = chan = 0;
-    output_size = 0;
+    len = 0;
 }
 
 void DecoderVorbis::updateTags()
@@ -292,92 +215,22 @@ void DecoderVorbis::updateTags()
     stateHandler()->dispatch(metaData);
 }
 
-void DecoderVorbis::run()
+void DecoderVorbis::seekAudio(qint64 time)
 {
-    mutex()->lock ();
+    ov_time_seek(&oggfile, (double) time/1000);
+}
 
-    if (!inited)
+qint64 DecoderVorbis::readAudio(char *data, qint64 maxSize)
+{
+    len = -1;
+    while (len < 0)
     {
-        mutex()->unlock();
-        return;
+       len = ov_read(&oggfile, data, maxSize, 0, 2, 1, &m_section);
     }
-
-    mutex()->unlock();
-
-    int section = 0;
-    int last_section = -1;
-
-    while (! done && ! m_finish)
-    {
-        mutex()->lock ();
-        // decode
-
-        if (seekTime >= 0.0)
-        {
-            ov_time_seek(&oggfile, (double) seekTime/1000);
-            seekTime = -1.0;
-
-            output_size = ov_time_tell(&oggfile) * freq * chan * 2;
-        }
-        len = -1;
-        while (len < 0)
-        {
-            len = ov_read(&oggfile, (char *) (output_buf + output_at), bks, 0, 2, 1,
-                          &section);
-        }
-        if (section != last_section)
-            updateTags();
-        last_section = section;
-
-        if (len > 0)
-        {
-            bitrate = ov_bitrate_instant(&oggfile) / 1000;
-
-            output_at += len;
-            output_bytes += len;
-            if (output())
-                flush();
-        }
-        else if (len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (! output()->recycler()->empty() && ! user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-
-            done = TRUE;
-            if (! user_stop)
-            {
-                m_finish = TRUE;
-            }
-        }
-        else
-        {
-            // error in read
-            //error("DecoderVorbis: Error while decoding stream, File appears to be "
-            //    "corrupted");
-
-            m_finish = TRUE;
-        }
-        mutex()->unlock();
-    }
-
-    mutex()->lock ();
-
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    deinit();
+    if (m_section != m_last_section)
+        updateTags();
+    m_last_section = m_section;
+    if(len > 0)
+        m_bitrate = ov_bitrate_instant(&oggfile) / 1000;
+    return len;
 }
