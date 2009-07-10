@@ -33,7 +33,7 @@ IF(USE_FFMPEG)
 ENDIF(USE_FFMPEG)
 
 IF(USE_MPC AND TAGLIB_FOUND)
-#add_subdirectory(mpc)
+add_subdirectory(mpc)
 ENDIF(USE_MPC AND TAGLIB_FOUND)
 
 IF(USE_SNDFILE)

@@ -46,38 +46,24 @@ public:
     DecoderMPC(QObject *, DecoderFactory *, QIODevice *, Output *);
     virtual ~DecoderMPC();
 
-    // Standard Decoder API
-    bool initialize();
-    qint64 totalTime();
-    void seek(qint64);
-    void stop();
-
     struct mpc_data *data()
     {
         return m_data;
     }
 
+     // Standard Decoder API
+    bool initialize();
+    qint64 totalTime();
+    int bitrate();
 
 private:
-    // thread run function
-    void run();
+    virtual qint64 readAudio(char *audio, qint64 maxSize);
+    void seekAudio(qint64 time);
+
     struct mpc_data *m_data;
-    // helper functions
-    void flush(bool = FALSE);
-    void deinit();
-
-    bool inited, user_stop;
-
-    // output buffer
-    char *output_buf;
-    ulong output_bytes, output_at;
-
-    unsigned int bks;
-    bool done, m_finish;
-    long len, freq, bitrate;
-    int chan;
-    qint64 output_size;
-    qint64 m_totalTime, seekTime;
+    long m_len;
+    int m_bitrate;
+    qint64 m_totalTime;
 };
 
 

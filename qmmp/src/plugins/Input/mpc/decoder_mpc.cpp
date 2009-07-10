@@ -22,7 +22,6 @@
 #include <QObject>
 #include <QIODevice>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -59,8 +58,6 @@ inline static void copyBuffer(MPC_SAMPLE_FORMAT* pInBuf, char* pOutBuf, unsigned
 }
 
 // mpc callbacks
-
-
 
 #ifdef MPC_OLD_API
 static mpc_int32_t mpc_callback_read (void *data, void *buffer, mpc_int32_t size)
@@ -127,28 +124,16 @@ static mpc_int32_t mpc_callback_get_size (mpc_reader *reader)
 DecoderMPC::DecoderMPC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
         : Decoder(parent, d, i, o)
 {
-    inited = FALSE;
-    user_stop = FALSE;
-    output_buf = 0;
-    output_bytes = 0;
-    output_at = 0;
-    bks = 0;
-    done = FALSE;
-    m_finish = FALSE;
-    len = 0;
-    freq = 0;
-    bitrate = 0;
-    seekTime = -1.0;
+    m_len = 0;
+    m_bitrate = 0;
     m_totalTime = 0.0;
-    chan = 0;
-    output_size = 0;
     m_data = 0;
 }
 
 
 DecoderMPC::~DecoderMPC()
 {
-    deinit();
+    m_len = 0;
     if (data())
     {
 #ifndef MPC_OLD_API
@@ -159,78 +144,18 @@ DecoderMPC::~DecoderMPC()
         delete data();
         m_data = 0;
     }
-    if (output_buf)
-        delete [] output_buf;
-    output_buf = 0;
 }
-
-
-void DecoderMPC::stop()
-{
-    user_stop = TRUE;
-}
-
-
-void DecoderMPC::flush(bool final)
-{
-    ulong min = final ? 0 : bks;
-
-    while ((! done && ! m_finish) && output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock ();
-
-        while ((! done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
-            mutex()->lock ();
-            done = user_stop;
-        }
-
-        if (user_stop || m_finish)
-        {
-            inited = FALSE;
-            done = TRUE;
-        }
-        else
-        {
-            output_bytes -= produceSound(output_buf, output_bytes, bitrate, chan);
-            output_size += bks;
-            output_at = output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-        output()->recycler()->mutex()->unlock();
-    }
-}
-
 
 bool DecoderMPC::initialize()
 {
-    bks = Buffer::size();
-    inited = user_stop = done = m_finish = FALSE;
-    len = freq = bitrate = 0;
-    chan = 0;
-    output_size = 0;
-    seekTime = -1.0;
-    m_totalTime = 0.0;
-
+    m_bitrate = 0;
+    m_totalTime = 0;
 
     if (!input())
     {
         qWarning("DecoderMPC: cannot initialize.  No input.");
         return FALSE;
     }
-
-    if (! output_buf)
-        output_buf = new char[globalBufferSize];
-    output_at = 0;
-    output_bytes = 0;
 
     if (!input()->isOpen())
     {
@@ -265,7 +190,7 @@ bool DecoderMPC::initialize()
     mpc_demux_get_info (m_data->demuxer, &m_data->info);
 #endif
 
-    chan = data()->info.channels;
+    int chan = data()->info.channels;
     configure(data()->info.sample_freq, chan, 16);
 
 #ifdef MPC_OLD_API
@@ -279,7 +204,6 @@ bool DecoderMPC::initialize()
     }
 #endif
     m_totalTime = mpc_streaminfo_get_length(&data()->info) * 1000;
-    inited = TRUE;
     qDebug("DecoderMPC: initialize succes");
     return TRUE;
 }
@@ -287,136 +211,57 @@ bool DecoderMPC::initialize()
 
 qint64 DecoderMPC::totalTime()
 {
-    if (! inited)
-        return 0;
-
     return m_totalTime;
 }
 
-
-void DecoderMPC::seek(qint64 pos)
+int DecoderMPC::bitrate()
 {
-    seekTime = pos;
+    return m_bitrate;
 }
 
-
-void DecoderMPC::deinit()
-{
-    inited = user_stop = done = m_finish = FALSE;
-    len = freq = bitrate = 0;
-    chan = 0;
-    output_size = 0;
-}
-
-void DecoderMPC::run()
+qint64 DecoderMPC::readAudio(char *audio, qint64 maxSize)
 {
 #ifdef MPC_OLD_API
     mpc_uint32_t vbrAcc = 0;
     mpc_uint32_t vbrUpd = 0;
+    MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];
+    m_len = mpc_decoder_decode (&data()->decoder, buffer, &vbrAcc, &vbrUpd);
+    copyBuffer(buffer, audio, qMin(m_len,long(maxSize/4)));
+    m_len = m_len * 4;
+    m_bitrate = vbrUpd * data()->info.sample_freq / 1152000;
 #else
     mpc_frame_info frame;
     mpc_status err;
-#endif
-    mutex()->lock ();
-    if (!inited)
+    MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];
+    frame.buffer = (MPC_SAMPLE_FORMAT *) &buffer;
+    m_len = 0;
+    while (!m_len)
     {
-        mutex()->unlock();
-        return;
-    }
-    mutex()->unlock();
-
-    while (! done && ! m_finish)
-    {
-        mutex()->lock ();
-        // decode
-
-        if (seekTime >= 0.0)
+        err = mpc_demux_decode (m_data->demuxer, &frame);
+        if (err != MPC_STATUS_OK || frame.bits == -1)
         {
-#ifdef MPC_OLD_API
-            mpc_decoder_seek_seconds(&data()->decoder, seekTime/1000);
-#else
-            mpc_demux_seek_second(data()->demuxer, (double)seekTime/1000);
-#endif
-            seekTime = -1.0;
-        }
-#ifdef MPC_OLD_API
-        MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];
-        len = mpc_decoder_decode (&data()->decoder, buffer, &vbrAcc, &vbrUpd);
-        copyBuffer(buffer, (char *) (output_buf + output_at), len);
-        len = len * 4;
-#else
-        MPC_SAMPLE_FORMAT buffer[MPC_DECODER_BUFFER_LENGTH];
-        frame.buffer = (MPC_SAMPLE_FORMAT *) &buffer;
-        len = 0;
-        while (!len)
-        {
-            err = mpc_demux_decode (m_data->demuxer, &frame);
-            if (err != MPC_STATUS_OK || frame.bits == -1)
-            {
-                len = 0;
-                qDebug("finished");
-                break;
-            }
-            else
-            {
-                len = frame.samples;
-                copyBuffer(frame.buffer, (char *) (output_buf + output_at), len);
-                len = len * 4;
-            }
-        }
-#endif
-        if (len > 0)
-        {
-#ifdef MPC_OLD_API
-            bitrate = vbrUpd * data()->info.sample_freq / 1152000;
-#else
-            bitrate = frame.bits * data()->info.sample_freq / 1152000;
-#endif
-            output_at += len;
-            output_bytes += len;
-
-            if (output())
-                flush();
-
-        }
-        else if (len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (! output()->recycler()->empty() && ! user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-
-            done = TRUE;
-            if (! user_stop)
-            {
-                m_finish = TRUE;
-            }
+            m_len = 0;
+            qDebug("finished");
+            return 0;
         }
         else
         {
-            // error in read
-            qWarning("DecoderMPC: Error while decoding stream, file appears to be corrupted");
-            m_finish = TRUE;
+            m_len = frame.samples;
+            copyBuffer(buffer, audio, qMin(m_len,long(maxSize/4)));
+            m_len = m_len * 4;
         }
-
-        mutex()->unlock();
     }
-    mutex()->lock ();
-
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    deinit();
+    m_bitrate = frame.bits * data()->info.sample_freq / 1152000;
+#endif
+    return m_len;
 }
+
+void DecoderMPC::seekAudio(qint64 pos)
+{
+#ifdef MPC_OLD_API
+    mpc_decoder_seek_seconds(&data()->decoder, pos/1000);
+#else
+    mpc_demux_seek_second(data()->demuxer, (double)pos/1000);
+#endif
+}
+
