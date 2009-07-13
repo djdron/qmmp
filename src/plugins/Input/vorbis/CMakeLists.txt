@@ -62,7 +62,7 @@ QT4_WRAP_UI(libvorbis_UIS_H ${libvorbis_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(VORBIS_FOUND)
-ADD_LIBRARY(vorbis SHARED ${libvorbis_SRCS} ${libvorbis_MOC_SRCS} ${libvorbis_UIS_H}
+ADD_LIBRARY(vorbis MODULE ${libvorbis_SRCS} ${libvorbis_MOC_SRCS} ${libvorbis_UIS_H}
   ${libvorbis_RCC_SRCS})
 add_dependencies(vorbis qmmp)
 target_link_libraries(vorbis ${QT_LIBRARIES} -lqmmp ${VORBIS_LDFLAGS} ${VORBIS_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})

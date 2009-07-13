@@ -68,7 +68,7 @@ QT4_WRAP_UI(libmad_UIS_H ${libmad_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MAD_FOUND)
-ADD_LIBRARY(mad SHARED ${libmad_SRCS} ${libmad_MOC_SRCS} ${libmad_UIS_H} ${libmad_RCC_SRCS})
+ADD_LIBRARY(mad MODULE ${libmad_SRCS} ${libmad_MOC_SRCS} ${libmad_UIS_H} ${libmad_RCC_SRCS})
 add_dependencies(mad qmmp)
 target_link_libraries(mad ${QT_LIBRARIES} -lqmmp ${MAD_LDFLAGS} ${MAD_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS mad DESTINATION ${LIB_DIR}/qmmp/Input)

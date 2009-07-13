@@ -102,5 +102,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
 target_link_libraries(libqmmp ${QT_LIBRARIES} ${CURL_LDFLAGS} ${CURL_CFLAGS})
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
-install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR})
+install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}
+                        RUNTIME DESTINATION bin
+                        ARCHIVE DESTINATION ${LIB_DIR})
 install(FILES ${libqmmp_DEVEL_HDRS} DESTINATION include/qmmp)

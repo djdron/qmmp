@@ -55,7 +55,7 @@ QT4_WRAP_CPP(libprojectm_MOC_SRCS ${libprojectm_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(PROJECTM_FOUND)
-ADD_LIBRARY(projectm SHARED ${libprojectm_SRCS} ${libprojectm_MOC_SRCS} ${libprojectm_RCC_SRCS})
+ADD_LIBRARY(projectm MODULE ${libprojectm_SRCS} ${libprojectm_MOC_SRCS} ${libprojectm_RCC_SRCS})
 add_dependencies(projectm qmmp)
 target_link_libraries(projectm ${QT_LIBRARIES} -lqmmp ${PROJECTM_LDFLAGS} ${PROJECTM_CFLAGS})
 install(TARGETS projectm DESTINATION ${LIB_DIR}/qmmp/Visual)

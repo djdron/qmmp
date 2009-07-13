@@ -70,7 +70,7 @@ QT4_WRAP_UI(libbs2b_UIS_H ${libbs2b_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(BS2B_FOUND)
-ADD_LIBRARY(bs2b SHARED ${libbs2b_SRCS} ${libbs2b_MOC_SRCS} ${libbs2b_UIS_H}
+ADD_LIBRARY(bs2b MODULE ${libbs2b_SRCS} ${libbs2b_MOC_SRCS} ${libbs2b_UIS_H}
   ${libbs2b_RCC_SRCS})
 add_dependencies(bs2b qmmp)
 target_link_libraries(bs2b ${QT_LIBRARIES} -lqmmp ${BS2B_LDFLAGS} ${BS2B_CFLAGS})

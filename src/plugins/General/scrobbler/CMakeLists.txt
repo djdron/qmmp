@@ -60,7 +60,7 @@ QT4_WRAP_UI(libscrobbler_UIS_H ${libscrobbler_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(scrobbler SHARED ${libscrobbler_SRCS} ${libscrobbler_MOC_SRCS} ${libscrobbler_UIS_H}
+ADD_LIBRARY(scrobbler MODULE ${libscrobbler_SRCS} ${libscrobbler_MOC_SRCS} ${libscrobbler_UIS_H}
   ${libscrobbler_RCC_SRCS})
 add_dependencies(scrobbler qmmpui)
 target_link_libraries(scrobbler ${QT_LIBRARIES} -lqmmpui -lqmmp)

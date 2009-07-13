@@ -43,7 +43,7 @@ QT4_WRAP_CPP(libm3uplaylistformat_MOC_SRCS ${libm3uplaylistformat_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(m3uplaylistformat SHARED ${libm3uplaylistformat_SRCS} ${libm3uplaylistformat_MOC_SRCS})
+ADD_LIBRARY(m3uplaylistformat MODULE ${libm3uplaylistformat_SRCS} ${libm3uplaylistformat_MOC_SRCS})
 add_dependencies(m3uplaylistformat qmmpui)
 target_link_libraries(m3uplaylistformat ${QT_LIBRARIES} -lqmmpui)
 install(TARGETS m3uplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlaylistFormats)

@@ -61,7 +61,7 @@ QT4_WRAP_UI(libsrconverter_UIS_H ${libsrconverter_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(SAMPLERATE_FOUND)
-ADD_LIBRARY(srconverter SHARED ${libsrconverter_SRCS} ${libsrconverter_MOC_SRCS} ${libsrconverter_UIS_H}
+ADD_LIBRARY(srconverter MODULE ${libsrconverter_SRCS} ${libsrconverter_MOC_SRCS} ${libsrconverter_UIS_H}
   ${libsrconverter_RCC_SRCS})
 add_dependencies(srconverter qmmp)
 target_link_libraries(srconverter ${QT_LIBRARIES} -lqmmp ${SAMPLERATE_LDFLAGS} ${SAMPLERATE_CFLAGS})

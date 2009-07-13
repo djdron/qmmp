@@ -69,7 +69,7 @@ QT4_WRAP_UI(libflac_UIS_H ${libflac_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FLAC_FOUND)
-ADD_LIBRARY(flac SHARED ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_UIS_H} ${libflac_RCC_SRCS})
+ADD_LIBRARY(flac MODULE ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_UIS_H} ${libflac_RCC_SRCS})
 add_dependencies(flac qmmp)
 target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LDFLAGS} ${FLAC_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input)

@@ -60,7 +60,7 @@ QT4_WRAP_UI(libanalyzer_UIS_H ${libanalyzer_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(analyzer SHARED ${libanalyzer_SRCS} ${libanalyzer_MOC_SRCS} ${libanalyzer_UIS_H}
+ADD_LIBRARY(analyzer MODULE ${libanalyzer_SRCS} ${libanalyzer_MOC_SRCS} ${libanalyzer_UIS_H}
   ${libanalyzer_RCC_SRCS})
 add_dependencies(analyzer qmmp)
 target_link_libraries(analyzer ${QT_LIBRARIES} -lqmmp)

@@ -43,7 +43,7 @@ QT4_WRAP_CPP(libplsplaylistformat_MOC_SRCS ${libplsplaylistformat_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(plsplaylistformat SHARED ${libplsplaylistformat_SRCS} ${libplsplaylistformat_MOC_SRCS})
+ADD_LIBRARY(plsplaylistformat MODULE ${libplsplaylistformat_SRCS} ${libplsplaylistformat_MOC_SRCS})
 add_dependencies(plsplaylistformat qmmpui)
 target_link_libraries(plsplaylistformat ${QT_LIBRARIES} -lqmmpui)
 install(TARGETS plsplaylistformat DESTINATION ${LIB_DIR}/qmmp/PlaylistFormats)
