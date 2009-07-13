@@ -75,12 +75,18 @@ public:
      * Subclass should reimplement this function.
      */
     virtual void stop();
+
+    virtual int bitrate();
+
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
      * Subclass with own output should reimplement this function.
      */
-    virtual int bitrate() = 0;
-    virtual void pause(){}
+    virtual void pause();
+
+
+    void setFragment(qint64 offset, qint64 length);
+
     /*!
      * Returns decoder's factory object.
      */
@@ -183,6 +189,9 @@ signals:
     void playbackFinished();
 
 protected:
+    virtual qint64 readAudio(char *data, qint64 maxSize);
+
+    virtual void seekAudio(qint64 time);
 
     virtual void run();
     /*!
@@ -201,9 +210,7 @@ protected:
      */
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
 
-    virtual qint64 readAudio(char *data, qint64 maxSize) = 0;
 
-    virtual void seekAudio(qint64 time) = 0;
 
 protected slots:
     /*!
@@ -230,9 +237,10 @@ private:
     bool _m_done, _m_finish, _m_user_stop;
 
     ulong _m_bks;
-    qint64 _m_totalTime, _m_seekTime;
-    ulong _m_output_bytes, _m_output_at;
-    int _m_bitrate, _m_chan;
+    qint64 _m_totalTime, _m_seekTime, _m_totalBytes;
+    qint64 _m_offset_in_bytes, _m_length_in_bytes, _m_freq, _m_offset;
+    qint64 _m_output_at;
+    int _m_bitrate, _m_chan, _m_bps;
     StateHandler *_m_handler;
     unsigned char *_m_output_buf;
 

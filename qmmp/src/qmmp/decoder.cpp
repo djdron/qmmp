@@ -52,13 +52,18 @@ Decoder::~Decoder()
     _m_finish = FALSE;
     _m_totalTime = 0;
     _m_seekTime = -1;
-    _m_output_bytes = 0;
     _m_output_at = 0;
     _m_user_stop = FALSE;
     _m_bks = Buffer::size();
     _m_output_buf = 0;
     _m_bitrate = 0;
     _m_chan = 0;
+    _m_freq = 0;
+    _m_bps = 0;
+    _m_offset_in_bytes = 0;
+    _m_length_in_bytes = 0;
+    _m_totalBytes = 0;
+    _m_offset = 0;
     if(_m_output_buf)
         delete [] _m_output_buf;
     _m_output_buf = 0;
@@ -78,13 +83,18 @@ void Decoder::init()
     _m_finish = FALSE;
     _m_totalTime = 0;
     _m_seekTime = -1;
-    _m_output_bytes = 0;
     _m_output_at = 0;
     _m_user_stop = FALSE;
     _m_bks = Buffer::size();
     _m_output_buf = 0;
     _m_bitrate = 0;
     _m_chan = 0;
+    _m_freq = 0;
+    _m_bps = 0;
+    _m_offset_in_bytes = 0;
+    _m_length_in_bytes = 0;
+    _m_offset = 0;
+    _m_totalBytes = 0;
 }
 
 DecoderFactory *Decoder::factory() const
@@ -142,6 +152,9 @@ void Decoder::setEQEnabled(bool on)
 void Decoder::configure(quint32 srate, int chan, int bps)
 {
     Effect* effect = 0;
+    _m_freq = srate;
+    _m_chan = chan;
+    _m_bps = bps;
     foreach(effect, _m_effects)
     {
         effect->configure(srate, chan, bps);
@@ -161,6 +174,20 @@ void Decoder::configure(quint32 srate, int chan, int bps)
 void Decoder::seek(qint64 time)
 {
     _m_seekTime = time;
+}
+
+int Decoder::bitrate()
+{
+    return 0;
+}
+
+void Decoder::pause(){}
+
+void Decoder::setFragment(qint64 offset, qint64 length)
+{
+    _m_offset_in_bytes = offset * _m_freq * _m_bps * _m_chan / 8000;
+    _m_length_in_bytes = length * _m_freq * _m_bps * _m_chan / 8000;
+    _m_offset = offset;
 }
 
 void Decoder::stop()
@@ -232,18 +259,22 @@ void Decoder::finish()
     emit playbackFinished();
 }
 
+qint64 Decoder::readAudio(char*, qint64)
+{
+    return 0;
+}
+
+void Decoder::seekAudio(qint64){}
+
 void Decoder::run()
 {
     Q_ASSERT(_m_chan == 0);
+    Q_ASSERT(!_m_output_buf);
     mutex()->lock ();
 
     qint64 len = 0;
-
-    /*if (!inited)
-    {
-        mutex()->unlock();
-        return;
-    }*/
+    if(_m_offset > 0)
+        seekAudio(_m_offset);
 
     mutex()->unlock();
 
@@ -254,15 +285,24 @@ void Decoder::run()
 
         if (_m_seekTime >= 0)
         {
-            seekAudio(_m_seekTime);
+            seekAudio(_m_seekTime + _m_offset);
+            _m_totalBytes = _m_seekTime * _m_freq * _m_bps * _m_chan / 8000;
             _m_seekTime = -1;
-        }     
+        }
+
         len = readAudio((char *)(_m_output_buf + _m_output_at), Qmmp::globalBufferSize() - _m_output_at);
+
+        if(_m_length_in_bytes && len > 0)
+        {
+            len = qMin(_m_length_in_bytes - _m_totalBytes, len);
+            len = qMax((qint64)0, len);
+        }
+
         if (len > 0)
         {
             _m_bitrate = bitrate();
             _m_output_at += len;
-            _m_output_bytes += len;
+            _m_totalBytes += len;
             if (output())
                 flush();
         }
@@ -293,10 +333,8 @@ void Decoder::run()
     }
 
     mutex()->lock ();
-
     if (_m_finish)
         finish();
-
     mutex()->unlock();
 }
 
@@ -304,7 +342,7 @@ void Decoder::flush(bool final)
 {
     ulong min = final ? 0 : _m_bks;
 
-    while ((!_m_done && !_m_finish) && _m_output_bytes > min)
+    while ((!_m_done && !_m_finish) && _m_output_at > min)
     {
         output()->recycler()->mutex()->lock ();
         while ((!_m_done && !_m_finish) && output()->recycler()->full())
@@ -319,8 +357,7 @@ void Decoder::flush(bool final)
             _m_done = TRUE;
         else
         {
-            _m_output_bytes -= produceSound((char*)_m_output_buf, _m_output_bytes, _m_bitrate, _m_chan);
-            _m_output_at = _m_output_bytes;
+            _m_output_at -= produceSound((char*)_m_output_buf, _m_output_at, _m_bitrate, _m_chan);
         }
 
         if (output()->recycler()->full())

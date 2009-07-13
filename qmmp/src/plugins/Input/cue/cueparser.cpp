@@ -84,7 +84,7 @@ CUEParser::CUEParser(const QString &fileName)
         }
         else if (words[0] == "INDEX")
         {
-            if (m_infoList.isEmpty())
+            if (m_infoList.isEmpty() || words[1] != "01")
                 continue;
             m_infoList.last ().setLength(getLength(words[2]));
             m_offsets.last() = getLength(words[2]);
