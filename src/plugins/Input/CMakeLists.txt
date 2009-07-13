@@ -53,7 +53,7 @@ IF(USE_AAC)
 ENDIF(USE_AAC)
 
 IF(USE_CUE)
-#add_subdirectory(cue)
+add_subdirectory(cue)
 ENDIF(USE_CUE)
 
 IF(USE_MPLAYER)

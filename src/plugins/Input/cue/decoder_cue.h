@@ -64,7 +64,7 @@ class CUEStateHandler : public StateHandler
 {
     Q_OBJECT
 public:
-    CUEStateHandler(QObject *parent, qint64 offset, qint64 length);
+    CUEStateHandler(QObject *parent);
     virtual ~CUEStateHandler();
 
     void dispatch(qint64 elapsed,
@@ -77,13 +77,6 @@ public:
     void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
 
     void dispatch(const Qmmp::State &state);
-
-signals:
-    void finished();
-
-private:
-    qint64 m_length2;
-    qint64 m_offset;
 };
 
 #endif // DECODER_CUE_H

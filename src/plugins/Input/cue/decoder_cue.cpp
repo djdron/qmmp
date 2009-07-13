@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -82,47 +81,43 @@ bool DecoderCUE::initialize()
         {
             qDebug("DecoderCUE: cannot open input");
             stop();
-            //m_handler->dispatch(Qmmp::NormalError);
             return FALSE;
         }
     }
-    if (!df->properties().noOutput)
+    if (df->properties().noOutput)
     {
-        m_output2 = Output::create(this);
-        if (!m_output2)
-        {
-            qWarning("DecoderCUE: unable to create output");
-            //m_handler->dispatch(Qmmp::FatalError);
-            return FALSE;
-        }
-        if (!m_output2->initialize())
-        {
-            qWarning("SoundCore: unable to initialize output");
-            delete m_output2;
-            m_output2 = 0;
-            //m_handler->dispatch(Qmmp::FatalError);
-            return FALSE;
-        }
+        qWarning("DecoderCUE: unsupported file format");
+        return FALSE;
     }
+    m_output2 = Output::create(this);
+    if (!m_output2)
+    {
+        qWarning("DecoderCUE: unable to create output");
+        return FALSE;
+    }
+    if (!m_output2->initialize())
+    {
+        qWarning("SoundCore: unable to initialize output");
+        delete m_output2;
+        m_output2 = 0;
+        return FALSE;
+    }
+
     m_length = parser.length(track);
     m_offset = parser.offset(track);
     m_decoder = df->create(this, m_input2, m_output2, path);
     m_decoder->setEQ(m_bands2, m_preamp2);
     m_decoder->setEQEnabled(m_useEQ2);
-    CUEStateHandler *csh = new CUEStateHandler(this, m_offset, m_length);
-    m_decoder->setStateHandler(csh);
-    connect(csh, SIGNAL(finished()), SLOT(finish()));
     connect(m_decoder, SIGNAL(playbackFinished()), SLOT(finish()));
-    if (m_output2)
-        m_output2->setStateHandler(m_decoder->stateHandler());
+    //replace default state handler to ignore metadata
+    m_decoder->setStateHandler(new CUEStateHandler(m_decoder));
+    m_output2->setStateHandler(m_decoder->stateHandler());
+    //prepare decoder and ouput objects
     m_decoder->initialize();
-    m_decoder->seek(parser.offset(track));
-    if (m_output2)
-        m_output2->seek(parser.offset(track));
-
+    m_decoder->setFragment(m_offset, m_length);
     //send metadata
     QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
-    StateHandler::instance()->dispatch(metaData);
+    stateHandler()->dispatch(metaData);
     return TRUE;
 }
 
@@ -136,20 +131,14 @@ void DecoderCUE::seek(qint64 pos)
     if (m_output2 && m_output2->isRunning())
     {
         m_output2->mutex()->lock ();
-        m_output2->seek(m_offset + pos);
+        m_output2->seek(pos);
         m_output2->mutex()->unlock();
         if (m_decoder && m_decoder->isRunning())
         {
             m_decoder->mutex()->lock ();
-            m_decoder->seek(m_offset + pos);
+            m_decoder->seek(pos);
             m_decoder->mutex()->unlock();
         }
-    }
-    else if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->seek(m_offset + pos);
-        m_decoder->mutex()->unlock();
     }
 }
 
@@ -259,13 +248,9 @@ void DecoderCUE::run()
 }
 
 
-CUEStateHandler::CUEStateHandler(QObject *parent, qint64 offset, qint64 length): StateHandler(parent)
-{
-    m_offset = offset;
-    m_length2 = length;
-}
+CUEStateHandler::CUEStateHandler(QObject *parent): StateHandler(parent){}
 
-CUEStateHandler::~CUEStateHandler(){};
+CUEStateHandler::~CUEStateHandler(){}
 
 void CUEStateHandler::dispatch(qint64 elapsed,
                                qint64 totalTime,
@@ -274,11 +259,9 @@ void CUEStateHandler::dispatch(qint64 elapsed,
                                int precision,
                                int channels)
 {
-    Q_UNUSED(totalTime);
-    StateHandler::instance()->dispatch(elapsed - m_offset, m_length2, bitrate,
+    StateHandler::instance()->dispatch(elapsed, totalTime, bitrate,
                                        frequency, precision, channels);
-    if (elapsed - m_offset > m_length2)
-        emit finished();
+
 }
 
 void CUEStateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
