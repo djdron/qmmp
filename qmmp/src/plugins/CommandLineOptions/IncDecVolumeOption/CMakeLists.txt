@@ -46,7 +46,7 @@ QT4_WRAP_CPP(libincdecvolumeoption_MOC_SRCS ${libincdecvolumeoption_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(incdecvolumeoption SHARED ${libincdecvolumeoption_SRCS} ${libincdecvolumeoption_MOC_SRCS} 
+ADD_LIBRARY(incdecvolumeoption MODULE ${libincdecvolumeoption_SRCS} ${libincdecvolumeoption_MOC_SRCS} 
            ${libincdecvolumeoption_RCC_SRCS})
 add_dependencies(incdecvolumeoption qmmpui)
 target_link_libraries(incdecvolumeoption ${QT_LIBRARIES} -lqmmpui -lqmmp)

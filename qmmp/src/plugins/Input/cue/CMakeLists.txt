@@ -59,7 +59,7 @@ QT4_WRAP_UI(libcue_UIS_H ${libcue_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(cue SHARED ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS} ${libcue_UIS_H})
+ADD_LIBRARY(cue MODULE ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS} ${libcue_UIS_H})
 add_dependencies(cue qmmp)
 target_link_libraries(cue ${QT_LIBRARIES} -lqmmp)
 install(TARGETS cue DESTINATION ${LIB_DIR}/qmmp/Input)

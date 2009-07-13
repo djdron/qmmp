@@ -61,7 +61,7 @@ QT4_WRAP_UI(libstatusicon_UIS_H ${libstatusicon_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(statusicon SHARED ${libstatusicon_SRCS} ${libstatusicon_MOC_SRCS} ${libstatusicon_UIS_H} ${libstatusicon_RCC_SRCS})
+ADD_LIBRARY(statusicon MODULE ${libstatusicon_SRCS} ${libstatusicon_MOC_SRCS} ${libstatusicon_UIS_H} ${libstatusicon_RCC_SRCS})
 add_dependencies(statusicon qmmpui libqmmp)
 target_link_libraries(statusicon ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS statusicon DESTINATION ${LIB_DIR}/qmmp/General)

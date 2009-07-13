@@ -60,7 +60,7 @@ QT4_WRAP_UI(libmplayer_UIS_H ${libmplayer_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(mplayer SHARED ${libmplayer_SRCS} ${libmplayer_MOC_SRCS} ${libmplayer_RCC_SRCS} ${libmplayer_UIS_H})
+ADD_LIBRARY(mplayer MODULE ${libmplayer_SRCS} ${libmplayer_MOC_SRCS} ${libmplayer_RCC_SRCS} ${libmplayer_UIS_H})
 add_dependencies(mplayer qmmp)
 target_link_libraries(mplayer ${QT_LIBRARIES} -lqmmp)
 install(TARGETS mplayer DESTINATION ${LIB_DIR}/qmmp/Input)

@@ -85,5 +85,7 @@ ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RC
 target_link_libraries(qmmpui ${QT_LIBRARIES} -lqmmp)
 add_dependencies(qmmpui libqmmp)
 SET_TARGET_PROPERTIES(qmmpui PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})
-install(TARGETS qmmpui LIBRARY DESTINATION ${LIB_DIR})
+install(TARGETS qmmpui LIBRARY DESTINATION ${LIB_DIR}
+                       RUNTIME DESTINATION bin
+                       ARCHIVE DESTINATION ${LIB_DIR})
 install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION include/qmmpui)

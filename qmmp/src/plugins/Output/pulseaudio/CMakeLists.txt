@@ -53,7 +53,7 @@ QT4_WRAP_CPP(libpulseaudio_MOC_SRCS ${libpulseaudio_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(PULSE_FOUND)
-ADD_LIBRARY(pulseaudio SHARED ${libpulseaudio_SRCS} ${libpulseaudio_MOC_SRCS} ${libpulseaudio_UIS_H}
+ADD_LIBRARY(pulseaudio MODULE ${libpulseaudio_SRCS} ${libpulseaudio_MOC_SRCS} ${libpulseaudio_UIS_H}
   ${libpulseaudio_RCC_SRCS})
 add_dependencies(pulseaudio qmmp)
 target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LDFLAGS} ${PULSE_CFLAGS})
