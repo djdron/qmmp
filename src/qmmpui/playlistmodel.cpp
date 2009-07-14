@@ -130,7 +130,6 @@ PlayListItem* PlayListModel::currentItem()
 
 PlayListItem* PlayListModel::nextItem()
 {
-    qDebug("==== %d =====", m_current +1);
     if(isShuffle() || m_items.isEmpty())
         return 0;
     if(m_current < m_items.size() - 1)
@@ -732,36 +731,36 @@ void PlayListModel::reverseList()
 // to sort items in different ways
 static bool _titleLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->title() < s2->title();
+    return QString::localeAwareCompare (s1->title(), s2->title()) < 0;
 }
 
 static bool _titleGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->title() > s2->title();
+    return QString::localeAwareCompare (s1->title(), s2->title()) > 0;
 }
 
 static bool _pathAndFilenameLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->url() < s2->url();
+    return QString::localeAwareCompare (s1->url(), s2->url()) < 0;
 }
 
 static bool _pathAndFilenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->url() > s2->url();
+    return QString::localeAwareCompare (s1->url(), s2->url()) > 0;
 }
 
 static bool _filenameLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
     QFileInfo i_s1(s1->url());
     QFileInfo i_s2(s2->url());
-    return i_s1.baseName() < i_s2.baseName();
+    return QString::localeAwareCompare (i_s1.baseName(), i_s2.baseName()) < 0;
 }
 
 static bool _filenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
     QFileInfo i_s1(s1->url());
     QFileInfo i_s2(s2->url());
-    return i_s1.baseName() > i_s2.baseName();
+    return QString::localeAwareCompare (i_s1.baseName(), i_s2.baseName()) > 0;
 }
 
 static bool _dateLessComparator(PlayListItem* s1,PlayListItem* s2)
