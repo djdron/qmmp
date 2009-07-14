@@ -125,14 +125,13 @@ void Output::clearVisuals()
 }
 
 void Output::dispatch(qint64 elapsed,
-                      qint64 totalTime,
                       int bitrate,
                       int frequency,
                       int precision,
                       int channels)
 {
     if (m_handler)
-        m_handler->dispatch(elapsed, totalTime, bitrate, frequency, precision, channels);
+        m_handler->dispatch(elapsed, bitrate, frequency, precision, channels);
 }
 
 void Output::dispatch(const Qmmp::State &state)
@@ -233,7 +232,7 @@ void Output::status()
     if (ct > m_currentMilliseconds)
     {
         m_currentMilliseconds = ct;
-        dispatch(m_currentMilliseconds, m_totalWritten, m_kbps,
+        dispatch(m_currentMilliseconds, m_kbps,
                  m_frequency, m_precision, m_channels);
     }
 }

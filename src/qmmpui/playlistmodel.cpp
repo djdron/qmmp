@@ -128,6 +128,16 @@ PlayListItem* PlayListModel::currentItem()
         return m_items.at(qMin(m_items.size() - 1, m_current));
 }
 
+PlayListItem* PlayListModel::nextItem()
+{
+    qDebug("==== %d =====", m_current +1);
+    if(isShuffle() || m_items.isEmpty())
+        return 0;
+    if(m_current < m_items.size() - 1)
+        return m_items.at(m_current + 1);
+    return 0;
+}
+
 PlayListItem* PlayListModel::item(int row) const
 {
     return (row <  m_items.size() && row >= 0) ? m_items.at(row) : 0;

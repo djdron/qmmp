@@ -182,6 +182,8 @@ public:
      */
     static bool isEnabled(DecoderFactory* factory);
 
+    bool isFinished(){return _m_user_stop;}
+
 signals:
     /*!
      * Emitted when the decoder has finished playback.

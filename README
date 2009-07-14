@@ -61,7 +61,7 @@ Requirements:
 - cmake >= 2.4.8 (for build only)
 
 
-Attention! Qmmp build needs lrelease installed. The qt4-linguist package often contains this utility.
+Attention! Qmmp build needs lrelease installed. The libqt4-devel package often contains this utility.
 
 Configure:
 cmake ./

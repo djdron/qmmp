@@ -53,8 +53,6 @@ SoundCore::SoundCore(QObject *parent)
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
     m_handler = new StateHandler(this);
-    //StateHandler::instance() = 0;
-    //StateHandler::m_instance = m_handler;
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
     connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
     connect(m_handler, SIGNAL(frequencyChanged(quint32)), SIGNAL(frequencyChanged(quint32)));
@@ -62,6 +60,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
     connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
+    connect(m_handler, SIGNAL(aboutToFinish()), SIGNAL(aboutToFinish()));
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
 }
@@ -74,7 +73,20 @@ SoundCore::~SoundCore()
 
 bool SoundCore::play(const QString &source)
 {
+    qDebug("==%s", qPrintable(source));
+    qDebug("==%s",qPrintable(m_next));
+    if((m_next == source) && m_decoder && !m_decoder->isFinished()
+        && m_decoder->factory()->properties().noOutput)
+    {
+        m_handler->dispatch(Qmmp::Stopped);
+        m_handler->dispatch(Qmmp::Playing);
+        m_handler->dispatch(Qmmp::Buffering);
+        m_handler->dispatch(Qmmp::Playing);
+        m_source = source;
+        return TRUE;
+    }
     stop();
+
     m_source = source;
     if (m_handler->state() != Qmmp::Stopped) //clear error state
         m_handler->dispatch(Qmmp::Stopped);
@@ -133,9 +145,15 @@ bool SoundCore::play(const QString &source)
     return FALSE;
 }
 
+void SoundCore::setNext(const QString &source)
+{
+    m_next = source;
+}
+
 void SoundCore::stop()
 {
     m_factory = 0;
+    //m_next.clear();
     m_source.clear();
     if (m_decoder /*&& m_decoder->isRunning()*/)
     {

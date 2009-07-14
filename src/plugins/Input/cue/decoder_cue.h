@@ -46,10 +46,13 @@ public:
     void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
 
+private slots:
+    void proccessFinish();
+
 private:
     // thread run function
     void run();
-    QString path;
+    QString path, m_nextUrl;
     Decoder *m_decoder;
     Output *m_output2;
     QIODevice *m_input2;
@@ -68,7 +71,6 @@ public:
     virtual ~CUEStateHandler();
 
     void dispatch(qint64 elapsed,
-                  qint64 totalTime,
                   int bitrate,
                   quint32 frequency,
                   int precision,

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include "statehandler.h"
 
 #define TICK_INTERVAL 250
+#define PREFINISH_TIME 5000
 
 
 StateHandler* StateHandler::m_instance = 0;
@@ -39,6 +40,7 @@ StateHandler::StateHandler(QObject *parent)
     m_precision = 0;
     m_channels = 0;
     m_sendMeta = FALSE;
+    m_sendAboutToFinish = TRUE;
     m_state = Qmmp::Stopped;
 }
 
@@ -51,13 +53,11 @@ StateHandler::~StateHandler()
 
 
 void StateHandler::dispatch(qint64 elapsed,
-                            qint64 totalTime,
                             int bitrate,
                             quint32 frequency,
                             int precision,
                             int channels)
 {
-    Q_UNUSED(totalTime);
     m_mutex.lock();
     if (qAbs(m_elapsed - elapsed) > TICK_INTERVAL)
     {
@@ -67,6 +67,13 @@ void StateHandler::dispatch(qint64 elapsed,
         {
             m_bitrate = bitrate;
             emit (bitrateChanged(bitrate));
+        }
+        if((SoundCore::instance()->totalTime() > PREFINISH_TIME)
+                 && (SoundCore::instance()->totalTime() - m_elapsed < PREFINISH_TIME)
+                 && m_sendAboutToFinish)
+        {
+            m_sendAboutToFinish = FALSE;
+            emit aboutToFinish();
         }
     }
     if (m_frequency != frequency)
@@ -128,6 +135,7 @@ void StateHandler::dispatch(const Qmmp::State &state)
         m_precision = 0;
         m_channels = 0;
         m_sendMeta = FALSE;
+        m_sendAboutToFinish = TRUE;
         m_metaData.clear();
     }
     if (m_state != state)
