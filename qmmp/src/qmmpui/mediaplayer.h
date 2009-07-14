@@ -90,6 +90,9 @@ signals:
      */
     void repeatableChanged(bool enabled);
 
+private slots:
+    void sendNext();
+
 private:
     PlayListModel *m_model;
     SoundCore *m_core;

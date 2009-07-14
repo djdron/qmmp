@@ -64,6 +64,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListModel *model)
     m_model = model;
     m_repeat = FALSE;
     connect(m_core, SIGNAL(finished()), SLOT(next()));
+    connect(m_core, SIGNAL(aboutToFinish()), SLOT(sendNext()));
 }
 
 PlayListModel *MediaPlayer::playListModel()
@@ -78,7 +79,9 @@ bool MediaPlayer::isRepeatable() const
 
 void MediaPlayer::play()
 {
+    qDebug("+1");
     m_model->doCurrentVisibleRequest();
+     qDebug("+2");
     if (m_core->state() == Qmmp::Paused)
     {
         m_core->pause();
@@ -87,12 +90,15 @@ void MediaPlayer::play()
 
     if (m_model->count() == 0)
         return;
-
+     qDebug("+3");
     QString s = m_model->currentItem()->url();
     if (s.isEmpty())
         return;
+     qDebug("+4");
+    //m_core->setNext (m_model->nextItem()->url());
     if (!m_core->play(s))
     {
+        qDebug("+5");
         //find out the reason why playback failed
         switch ((int) m_core->state())
         {
@@ -127,7 +133,19 @@ void MediaPlayer::play()
         }
     }
     else
+    {
+        qDebug("1");
         m_skips = 0;
+         qDebug("2");
+        if(m_model->nextItem())
+        {
+             qDebug("3");
+            m_core->setNext (m_model->nextItem()->url());
+            qDebug("MediaPlayer: current item: %s",qPrintable(m_core->url()));
+            qDebug("MediaPlayer: next item: %s",qPrintable(m_core->nextUrl()));
+             qDebug("4");
+        }
+    }
 }
 
 void MediaPlayer::stop()
@@ -190,3 +208,10 @@ void MediaPlayer::setRepeatable(bool r)
     m_repeat = r;
     emit repeatableChanged(r);
 }
+
+void MediaPlayer::sendNext()
+{
+    /*if(m_model->nextItem())
+        qDebug("MediaPlayer: next item: %s",qPrintable(m_model->nextItem()->url()));*/
+}
+

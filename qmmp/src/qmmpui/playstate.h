@@ -46,7 +46,7 @@ public:
     virtual void resetState()
     {
         ;
-    };
+    }
     /*!
      * Service method, can be used for state initializing.
      */

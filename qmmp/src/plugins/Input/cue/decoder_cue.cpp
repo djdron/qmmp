@@ -23,6 +23,7 @@
 #include <qmmp/recycler.h>
 #include <qmmp/fileinfo.h>
 #include <qmmp/decoderfactory.h>
+#include <qmmp/soundcore.h>
 
 #include <QObject>
 #include <QFile>
@@ -62,6 +63,12 @@ bool DecoderCUE::initialize()
     }
     int track = path.section("#", -1).toInt();
     path = parser.filePath(track);
+    // find next track
+    if(track <= parser.count() - 1)
+        m_nextUrl = parser.info(track + 1)->path();
+    //is it track of another file?
+    if(QUrl(m_nextUrl).path() != p)
+        m_nextUrl.clear();
 
     if (!QFile::exists(path))
     {
@@ -112,6 +119,7 @@ bool DecoderCUE::initialize()
     //replace default state handler to ignore metadata
     m_decoder->setStateHandler(new CUEStateHandler(m_decoder));
     m_output2->setStateHandler(m_decoder->stateHandler());
+    connect(stateHandler(), SIGNAL(aboutToFinish()), SLOT(proccessFinish()));
     //prepare decoder and ouput objects
     m_decoder->initialize();
     m_decoder->setFragment(m_offset, m_length);
@@ -247,19 +255,61 @@ void DecoderCUE::run()
         m_output2->start();
 }
 
+void DecoderCUE::proccessFinish()
+{
+    qDebug("==>%s", qPrintable(SoundCore::instance()->nextUrl()));
+    qDebug("==>%s", qPrintable(m_nextUrl));
+    if(!SoundCore::instance()->nextUrl().isEmpty()
+                            && !m_nextUrl.isEmpty()
+                            && SoundCore::instance()->nextUrl() == m_nextUrl)
+    {
+        qDebug("prefinish");
+        qDebug("next url: %s", qPrintable(m_nextUrl));
+        int track = m_nextUrl.section("#", -1).toInt();
+        QString p = QUrl(m_nextUrl).path();
+        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+
+        CUEParser parser(p);
+        m_length = parser.length(track);
+        m_offset = parser.offset(track);
+        m_decoder->mutex()->lock();
+        m_decoder->setFragment(m_offset, m_length);
+        m_output2->seek(0);
+        m_decoder->mutex()->unlock();
+
+        //stateHandler()->dispatch(Qmmp::Stopped);
+        //stateHandler()->dispatch(Qmmp::Buffering);
+        //stateHandler()->dispatch(Qmmp::Playing);
+        //m_decoder->mutex()->lock();
+        //m_output2->seek(0);
+        //m_decoder->mutex()->unlock();
+
+         // find next track
+        if(track <= parser.count() - 1)
+            m_nextUrl = parser.info(track + 1)->path();
+        else
+            m_nextUrl.clear();
+        //is it track of another file?
+        if(QUrl(m_nextUrl).path() != p)
+            m_nextUrl.clear();
+        emit playbackFinished();
+    }
+    else
+        Decoder::stop();
+}
 
 CUEStateHandler::CUEStateHandler(QObject *parent): StateHandler(parent){}
 
 CUEStateHandler::~CUEStateHandler(){}
 
 void CUEStateHandler::dispatch(qint64 elapsed,
-                               qint64 totalTime,
                                int bitrate,
                                quint32 frequency,
                                int precision,
                                int channels)
 {
-    StateHandler::instance()->dispatch(elapsed, totalTime, bitrate,
+    StateHandler::instance()->dispatch(elapsed, bitrate,
                                        frequency, precision, channels);
 
 }

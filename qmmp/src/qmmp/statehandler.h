@@ -45,14 +45,12 @@ public:
     /*!
      * Sends information about playback progress.
      * @param elapsed Current time (in milliseconds).
-     * @param totalTime Total track length (in milliseconds).
      * @param bitrate Current bitrate (in kbps).
      * @param frequency Current samplerate (in Hz).
      * @param precision Sample size (in bits).
      * @param channels Number of channels.
      */
     virtual void dispatch(qint64 elapsed,
-                          qint64 totalTime,
                           int bitrate,
                           quint32 frequency,
                           int precision,
@@ -131,19 +129,25 @@ signals:
     /*!
      * Emitted when new metadata is available.
      */
-    void metaDataChanged ();
+    void metaDataChanged();
     /*!
      * This signal is emitted when the playback state has changed.
      */
-    void stateChanged (Qmmp::State newState);
+    void stateChanged(Qmmp::State newState);
     /*!
     * Emitted when playback has finished.
     */
     void finished();
+    /*!
+     * Emitted before the playback ends. Use this signal to tell decoder about next track.
+     * This may be useful for multitrack formats like CDA or cue sheets.
+     */
+    void aboutToFinish();
 
 private:
     qint64 m_elapsed;
     quint32 m_frequency;
+    bool m_sendAboutToFinish;
     int m_bitrate, m_precision, m_channels;
     static StateHandler* m_instance;
     QMap <Qmmp::MetaData, QString> m_metaData;

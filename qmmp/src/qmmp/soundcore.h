@@ -127,6 +127,8 @@ public slots:
      * otherwise returns \b false. Useful for invalid files skipping.
      */
     bool play(const QString &source);
+
+    void setNext(const QString &source);
     /*!
      *  Stops playback
      */
@@ -143,6 +145,8 @@ public slots:
      *  This function returns file path or stream url.
      */
     const QString url();
+
+    const QString nextUrl(){return m_next;}
 
 signals:
     /*!
@@ -193,6 +197,11 @@ signals:
      * @param right Right channel volume level. It should be \b [0..100]
      */
     void volumeChanged(int left, int right);
+    /*!
+     * Emitted before the playback ends. Use this signal to tell decoder about next track.
+     * This may be useful for multitrack formats like CDA or cue sheets.
+     */
+    void aboutToFinish();
 
 private slots:
     bool decode();
@@ -201,6 +210,7 @@ private:
     Decoder* m_decoder;
     DecoderFactory* m_factory;
     //QUrl m_url;
+    QString m_next;
     QString m_source;
     Output* m_output;
     QIODevice* m_input;

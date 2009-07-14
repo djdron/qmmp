@@ -188,6 +188,7 @@ void Decoder::setFragment(qint64 offset, qint64 length)
     _m_offset_in_bytes = offset * _m_freq * _m_bps * _m_chan / 8000;
     _m_length_in_bytes = length * _m_freq * _m_bps * _m_chan / 8000;
     _m_offset = offset;
+    _m_totalBytes = 0;
 }
 
 void Decoder::stop()

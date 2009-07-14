@@ -115,6 +115,8 @@ public:
      * Returns the current item.
      */
     PlayListItem* currentItem();
+
+    PlayListItem* nextItem();
     /*!
      * Returns the row of the \b item
      */

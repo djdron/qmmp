@@ -145,7 +145,6 @@ private:
     void status();
     void changeVolume(uchar *data, qint64 size, int chan);
     void dispatch(qint64 elapsed,
-                  qint64 totalTime,
                   int bitrate,
                   int frequency,
                   int precision,
