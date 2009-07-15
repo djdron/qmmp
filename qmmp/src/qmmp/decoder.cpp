@@ -95,6 +95,7 @@ void Decoder::init()
     _m_length_in_bytes = 0;
     _m_offset = 0;
     _m_totalBytes = 0;
+    _m_useNextUrl = FALSE;
 }
 
 DecoderFactory *Decoder::factory() const
@@ -193,7 +194,24 @@ void Decoder::setFragment(qint64 offset, qint64 length)
 
 void Decoder::stop()
 {
+    _m_nextUrl.clear();
     _m_user_stop = TRUE;
+}
+
+void Decoder::setNextUrl(const QString &url)
+{
+    _m_nextUrl = url;
+}
+
+void Decoder::clearNextUrl()
+{
+    _m_nextUrl.clear();
+    _m_useNextUrl = FALSE;
+}
+
+bool Decoder::nextUrlAccepted()
+{
+    return _m_useNextUrl;
 }
 
 qint64 Decoder::produceSound(char *data, qint64 size, quint32 brate, int chan)
@@ -310,7 +328,6 @@ void Decoder::run()
         else if (len == 0)
         {
             flush(TRUE);
-
             if (output())
             {
                 output()->recycler()->mutex()->lock ();
@@ -368,6 +385,12 @@ void Decoder::flush(bool final)
 
         output()->recycler()->mutex()->unlock();
     }
+}
+
+bool Decoder::nextUrlRequest(const QString &url)
+{
+    _m_useNextUrl = !_m_nextUrl.isEmpty() && (_m_nextUrl == url);
+    return _m_useNextUrl;
 }
 
 // static methods

@@ -91,7 +91,7 @@ signals:
     void repeatableChanged(bool enabled);
 
 private slots:
-    void sendNext();
+    void updateNextUrl();
 
 private:
     PlayListModel *m_model;

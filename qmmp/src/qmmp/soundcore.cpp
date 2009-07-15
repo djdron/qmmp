@@ -73,18 +73,18 @@ SoundCore::~SoundCore()
 
 bool SoundCore::play(const QString &source)
 {
-    qDebug("==%s", qPrintable(source));
-    qDebug("==%s",qPrintable(m_next));
-    if((m_next == source) && m_decoder && !m_decoder->isFinished()
-        && m_decoder->factory()->properties().noOutput)
+    if(m_decoder && m_decoder->nextUrlAccepted()) //decoder can play next url
     {
+        //fake stop/start cycle
         m_handler->dispatch(Qmmp::Stopped);
         m_handler->dispatch(Qmmp::Playing);
         m_handler->dispatch(Qmmp::Buffering);
         m_handler->dispatch(Qmmp::Playing);
         m_source = source;
+        m_decoder->clearNextUrl();
         return TRUE;
     }
+    qDebug("stop!");
     stop();
 
     m_source = source;
@@ -145,15 +145,21 @@ bool SoundCore::play(const QString &source)
     return FALSE;
 }
 
-void SoundCore::setNext(const QString &source)
+void SoundCore::setNextUrl(const QString &source)
 {
-    m_next = source;
+   if(m_decoder)
+       m_decoder->setNextUrl(source);
+}
+
+void SoundCore::clearNextUrl()
+{
+    if(m_decoder)
+       m_decoder->clearNextUrl();
 }
 
 void SoundCore::stop()
 {
     m_factory = 0;
-    //m_next.clear();
     m_source.clear();
     if (m_decoder /*&& m_decoder->isRunning()*/)
     {
