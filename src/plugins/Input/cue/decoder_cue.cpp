@@ -122,6 +122,7 @@ bool DecoderCUE::initialize()
     connect(stateHandler(), SIGNAL(aboutToFinish()), SLOT(proccessFinish()));
     //prepare decoder and ouput objects
     m_decoder->initialize();
+    qDebug("%lld == %lld", m_offset, m_length);
     m_decoder->setFragment(m_offset, m_length);
     //send metadata
     QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
@@ -257,34 +258,23 @@ void DecoderCUE::run()
 
 void DecoderCUE::proccessFinish()
 {
-    qDebug("==>%s", qPrintable(SoundCore::instance()->nextUrl()));
-    qDebug("==>%s", qPrintable(m_nextUrl));
-    if(!SoundCore::instance()->nextUrl().isEmpty()
-                            && !m_nextUrl.isEmpty()
-                            && SoundCore::instance()->nextUrl() == m_nextUrl)
+    if(nextUrlRequest(m_nextUrl))
     {
-        qDebug("prefinish");
-        qDebug("next url: %s", qPrintable(m_nextUrl));
+        qDebug("DecoderCUE: using next url");
         int track = m_nextUrl.section("#", -1).toInt();
+        qDebug("==%d", track);
         QString p = QUrl(m_nextUrl).path();
         p.replace(QString(QUrl::toPercentEncoding("#")), "#");
         p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-
+        //update decoder's fragment
         CUEParser parser(p);
         m_length = parser.length(track);
         m_offset = parser.offset(track);
         m_decoder->mutex()->lock();
+        qDebug("%lld == %lld", m_offset, m_length);
         m_decoder->setFragment(m_offset, m_length);
         m_output2->seek(0);
         m_decoder->mutex()->unlock();
-
-        //stateHandler()->dispatch(Qmmp::Stopped);
-        //stateHandler()->dispatch(Qmmp::Buffering);
-        //stateHandler()->dispatch(Qmmp::Playing);
-        //m_decoder->mutex()->lock();
-        //m_output2->seek(0);
-        //m_decoder->mutex()->unlock();
-
          // find next track
         if(track <= parser.count() - 1)
             m_nextUrl = parser.info(track + 1)->path();
@@ -293,10 +283,11 @@ void DecoderCUE::proccessFinish()
         //is it track of another file?
         if(QUrl(m_nextUrl).path() != p)
             m_nextUrl.clear();
+        //change track
         emit playbackFinished();
+        QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
+        stateHandler()->dispatch(metaData);
     }
-    else
-        Decoder::stop();
 }
 
 CUEStateHandler::CUEStateHandler(QObject *parent): StateHandler(parent){}

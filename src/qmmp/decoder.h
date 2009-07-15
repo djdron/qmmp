@@ -67,26 +67,42 @@ public:
     virtual qint64 totalTime() = 0;
     /*!
      * Requests a seek to the time \b time indicated, specified in milliseconds.
-     * Subclass should reimplement this function.
      */
     virtual void seek(qint64 time);
     /*!
      * Requests playback to stop
-     * Subclass should reimplement this function.
      */
     virtual void stop();
-
+    /*!
+     * Returns current bitrate (in kbps).
+     * Subclass should reimplement this function.
+     */
     virtual int bitrate();
-
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
      * Subclass with own output should reimplement this function.
      */
     virtual void pause();
-
-
+    /*!
+     * Tells decoder about next track. It may be useful for gapless playback.
+     * @param url Url of the next item in the playlist
+     */
+    void setNextUrl(const QString &url);
+    /*!
+     * Removes information about next url
+     */
+    void clearNextUrl();
+    /*!
+     * Return \b true if the decoder can play next url without reinitialization;
+     * otherwise returns \b false
+     */
+    bool nextUrlAccepted();
+    /*!
+     * Setups fragment for playback.
+     * @param offset Fragment offset in milliseconds
+     * @param length Fragment duration in milliseconds
+     */
     void setFragment(qint64 offset, qint64 length);
-
     /*!
      * Returns decoder's factory object.
      */
@@ -182,8 +198,6 @@ public:
      */
     static bool isEnabled(DecoderFactory* factory);
 
-    bool isFinished(){return _m_user_stop;}
-
 signals:
     /*!
      * Emitted when the decoder has finished playback.
@@ -191,10 +205,21 @@ signals:
     void playbackFinished();
 
 protected:
+    /*!
+     * Reads up to \b maxSize bytes of decoded audio to \b data
+     * Returns the number of bytes read, or -1 if an error occurred.
+     * In most cases subclass should reimplement this function.
+     */
     virtual qint64 readAudio(char *data, qint64 maxSize);
-
+    /*!
+     * Sets current playback position.
+     * In most cases subclass should reimplement this function.
+     * @param time New position for playback in milliseconds
+     */
     virtual void seekAudio(qint64 time);
-
+    /*!
+     * The starting point for the decoding thread.
+     */
     virtual void run();
     /*!
      * Use this function inside initialize() reimplementation to tell other plugins about audio parameters.
@@ -211,8 +236,11 @@ protected:
      * @param chan Number of channels.
      */
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
-
-
+    /*!
+     * Use this function to check next url.
+     * Returns \b true if url of the next playlist item same as \b url; otherwise returns \b false
+     */
+    bool nextUrlRequest(const QString &url);
 
 protected slots:
     /*!
@@ -237,6 +265,9 @@ private:
     bool _m_eqInited;
     bool _m_useEQ;
     bool _m_done, _m_finish, _m_user_stop;
+    bool _m_useNextUrl;
+
+    QString _m_nextUrl;
 
     ulong _m_bks;
     qint64 _m_totalTime, _m_seekTime, _m_totalBytes;

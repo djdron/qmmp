@@ -139,7 +139,7 @@ signals:
     */
     void finished();
     /*!
-     * Emitted before the playback ends. Use this signal to tell decoder about next track.
+     * Emitted before the playback ends. Use this signal inside decoder to check next url.
      * This may be useful for multitrack formats like CDA or cue sheets.
      */
     void aboutToFinish();
