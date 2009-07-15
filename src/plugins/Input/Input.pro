@@ -20,7 +20,7 @@ contains(CONFIG, MUSEPACK_PLUGIN){
 }
 
 contains(CONFIG, FLAC_PLUGIN){
-    #SUBDIRS += flac
+    SUBDIRS += flac
     message(***********************)
     message(* FLAC plugin enabled *)
     message(***********************)

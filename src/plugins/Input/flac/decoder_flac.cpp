@@ -29,7 +29,6 @@
 #include <taglib/xiphcomment.h>
 #include <taglib/tmap.h>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -261,21 +260,6 @@ DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Outpu
         : Decoder(parent, d, i, o)
 {
     inited = FALSE;
-    user_stop = FALSE;
-    stat = 0;
-    output_buf = 0;
-    output_bytes = 0;
-    output_at = 0;
-    bks = 0;
-    done = FALSE;
-    m_finish = FALSE;
-    len = 0;
-    freq = 0;
-    bitrate = 0;
-    seekTime = -1.0;
-    m_totalTime = 0.0;
-    chan = 0;
-    output_size = 0;
     m_data = 0;
     m_path = path;
 
@@ -297,69 +281,11 @@ DecoderFLAC::~DecoderFLAC()
         delete data();
         m_data = 0;
     }
-
-    if (output_buf)
-        delete [] output_buf;
-    output_buf = 0;
 }
-
-
-void DecoderFLAC::stop()
-{
-    user_stop = TRUE;
-}
-
-
-void DecoderFLAC::flush(bool final)
-{
-    //qDebug("DecoderFLAC: flush()");
-    ulong min = final ? 0 : bks;
-
-    while ((! done && ! m_finish) && output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock();
-
-        while ((! done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
-            mutex()->lock();
-            done = user_stop;
-        }
-
-        if (user_stop || m_finish)
-        {
-            inited = FALSE;
-            done = TRUE;
-        }
-        else
-        {
-            output_bytes -= produceSound(output_buf, output_bytes, bitrate, chan);
-            output_size += bks;
-            output_at = output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-
-        output()->recycler()->mutex()->unlock();
-    }
-}
-
 
 bool DecoderFLAC::initialize()
 {
-    bks = Buffer::size();
-    inited = user_stop = done = m_finish = FALSE;
-    len = freq = bitrate = 0;
-    stat = chan = 0;
-    output_size = 0;
-    seekTime = -1.0;
-    m_totalTime = 0.0;
+    inited = FALSE;
 
     if (!data()->input)
     {
@@ -403,11 +329,6 @@ bool DecoderFLAC::initialize()
         }
     }
 
-    if (! output_buf)
-        output_buf = new char[globalBufferSize];
-    output_at = 0;
-    output_bytes = 0;
-
     if (!data()->input->isOpen())
     {
         if (!data()->input->open(QIODevice::ReadOnly))
@@ -415,12 +336,6 @@ bool DecoderFLAC::initialize()
             return FALSE;
         }
     }
-
-
-    if (! output_buf)
-        output_buf = new char[globalBufferSize];
-    output_at = 0;
-    output_bytes = 0;
 
     if (! data()->input->isOpen())
     {
@@ -461,7 +376,6 @@ bool DecoderFLAC::initialize()
         data()->ok = 0;
         return FALSE;
     }
-    chan = data()->channels;
     if (data()->bits_per_sample == 24)
         configure(data()->sample_rate, data()->channels, 32);
     else
@@ -469,14 +383,16 @@ bool DecoderFLAC::initialize()
     m_totalTime = data()->length;
 
     inited = TRUE;
-    if (m_offset)
-        seekTime = m_offset;
+    /*if (m_offset)
+        seekTime = m_offset;*/
     if (m_length)
+    {
         m_totalTime = m_length;
+        setFragment(m_offset, m_length);
+    }
     qDebug("DecoderFLAC: initialize succes");
     return TRUE;
 }
-
 
 qint64 DecoderFLAC::totalTime()
 {
@@ -486,107 +402,33 @@ qint64 DecoderFLAC::totalTime()
     return m_totalTime;
 }
 
-
-void DecoderFLAC::seek(qint64 pos)
+int DecoderFLAC::bitrate()
 {
-    if (m_totalTime > 0)
-        seekTime = pos + m_offset;
+    return data()->bitrate;
 }
 
+void DecoderFLAC::seekAudio(qint64 time)
+{
+    FLAC__uint64 target_sample;
+    target_sample = (FLAC__uint64)((time/(double)data()->length) * (double)data()->total_samples);
+    FLAC__stream_decoder_seek_absolute(data()->decoder, target_sample);
+}
+
+qint64 DecoderFLAC::readAudio(char *data, qint64 maxSize)
+{
+    return flac_decode (this, (char *) (data), maxSize);
+}
 
 void DecoderFLAC::deinit()
 {
     if (data())
         FLAC__stream_decoder_finish (data()->decoder);
-    inited = user_stop = done = m_finish = FALSE;
-    len = freq = bitrate = 0;
-    stat = chan = 0;
-    output_size = 0;
+    inited = FALSE;
+
     if (!input() && data()->input) //delete internal input only
     {
         data()->input->close();
         delete data()->input;
         data()->input = 0;
     };
-}
-
-void DecoderFLAC::run()
-{
-    mutex()->lock ();
-
-    if (!inited)
-    {
-        mutex()->unlock();
-        return;
-    }
-    mutex()->unlock();
-
-    while (!done && !m_finish)
-    {
-        mutex()->lock ();
-        // decode
-
-        if (seekTime >= 0.0)
-        {
-            FLAC__uint64 target_sample;
-
-            target_sample = (FLAC__uint64)((seekTime/(double)data()->length) *
-                                           (double)data()->total_samples);
-
-            FLAC__stream_decoder_seek_absolute(data()->decoder,
-                                               target_sample);
-            seekTime = -1.0;
-        }
-        len = flac_decode (this, (char *) (output_buf + output_at), bks);
-
-        if (len > 0)
-        {
-            bitrate = data()->bitrate;
-            output_at += len;
-            output_bytes += len;
-
-            if (output())
-                flush();
-
-        }
-        else if (len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (! output()->recycler()->empty() && ! user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-
-            done = TRUE;
-            m_finish = !user_stop;
-        }
-        else
-        {
-            // error while read
-            qWarning("DecoderFLAC: Error while decoding stream, File appears to be "
-                     "corrupted");
-            m_finish = TRUE;
-        }
-        if (m_length && (StateHandler::instance()->elapsed() >= m_length))
-            m_finish = TRUE;
-        mutex()->unlock();
-    }
-
-    mutex()->lock ();
-
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    deinit();
 }
