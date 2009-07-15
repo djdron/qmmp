@@ -260,20 +260,18 @@ void DecoderCUE::proccessFinish()
 {
     if(nextUrlRequest(m_nextUrl))
     {
-        qDebug("DecoderCUE: using next url");
+        qDebug("DecoderCUE: going to next track");
         int track = m_nextUrl.section("#", -1).toInt();
-        qDebug("==%d", track);
         QString p = QUrl(m_nextUrl).path();
         p.replace(QString(QUrl::toPercentEncoding("#")), "#");
         p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        //update decoder's fragment
+        //update current fragment
         CUEParser parser(p);
         m_length = parser.length(track);
         m_offset = parser.offset(track);
         m_decoder->mutex()->lock();
-        qDebug("%lld == %lld", m_offset, m_length);
         m_decoder->setFragment(m_offset, m_length);
-        m_output2->seek(0);
+        m_output2->seek(0); //reset time counter
         m_decoder->mutex()->unlock();
          // find next track
         if(track <= parser.count() - 1)
@@ -284,7 +282,8 @@ void DecoderCUE::proccessFinish()
         if(QUrl(m_nextUrl).path() != p)
             m_nextUrl.clear();
         //change track
-        emit playbackFinished();
+        finish();
+        //send metadata
         QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
         stateHandler()->dispatch(metaData);
     }

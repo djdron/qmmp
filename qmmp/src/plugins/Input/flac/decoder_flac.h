@@ -65,8 +65,7 @@ public:
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
-    void seek(qint64);
-    void stop();
+    int bitrate();
 
     struct flac_data *data()
     {
@@ -75,33 +74,22 @@ public:
 
 
 private:
-    // thread run function
-    void run();
+    // Standard Decoder API
+    qint64 readAudio(char *data, qint64 maxSize);
+    void seekAudio(qint64 time);
+
     struct flac_data *m_data;
     // helper functions
-    void flush(bool = FALSE);
     void deinit();
 
-    bool inited, user_stop;
-    int stat;
-
-    // output buffer
-    char *output_buf;
-    ulong output_bytes, output_at;
-
     // FLAC Decoder
-    //FLAC__SeekableStreamDecoder *m_flacDecoder;
     FLAC__StreamDecoder *m_flacDecoder;
 
-    unsigned int bks;
-    bool done, m_finish;
-    long len, freq, bitrate;
-    int chan;
-    unsigned long output_size;
-    double m_totalTime, seekTime;
+    qint64 m_totalTime;
     QString m_path;
     qint64 m_offset;
     qint64 m_length;
+    bool inited;
 };
 
 
