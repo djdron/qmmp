@@ -41,7 +41,7 @@ contains(CONFIG, AAC_PLUGIN){
 }
 
 contains(CONFIG, MPLAYER_PLUGIN){
-  #SUBDIRS += mplayer
+  SUBDIRS += mplayer
   message(**************************)
   message(* Mplayer plugin enabled *)
   message(**************************)
