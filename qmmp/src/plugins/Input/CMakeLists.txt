@@ -57,7 +57,7 @@ add_subdirectory(cue)
 ENDIF(USE_CUE)
 
 IF(USE_MPLAYER)
-#add_subdirectory(mplayer)
+add_subdirectory(mplayer)
 ENDIF(USE_MPLAYER)
 
 IF(USE_CDA)

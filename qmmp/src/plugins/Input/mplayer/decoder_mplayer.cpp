@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -81,7 +80,7 @@ QStringList MplayerInfo::filters()
 {
     QStringList filters;
     filters << "*.avi" << "*.mpg" << "*.mpeg" << "*.divx" << "*.qt" << "*.mov" << "*.wmv" << "*.asf"
-    << "*.flv" << "*.3gp";
+    << "*.flv" << "*.3gp" << "*.mkv";
     return filters;
 }
 
@@ -155,10 +154,13 @@ void DecoderMplayer::pause()
 
 void DecoderMplayer::setEQ(double bands[10], double preamp)
 {
+    Q_UNUSED(bands[10]);
+    Q_UNUSED(preamp);
 }
 
 void DecoderMplayer::setEQEnabled(bool on)
 {
+    Q_UNUSED(on);
 }
 
 void DecoderMplayer::run()
@@ -178,7 +180,6 @@ void DecoderMplayer::readStdOut()
             StateHandler::instance()->dispatch(Qmmp::Playing);
             m_currentTime = (qint64) rx_av.cap(1).toDouble();
             StateHandler::instance()->dispatch(m_currentTime * 1000,
-                                               m_length * 1000,
                                                m_bitrate,
                                                m_samplerate,
                                                m_bitsPerSample,
