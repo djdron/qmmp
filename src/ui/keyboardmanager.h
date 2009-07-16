@@ -38,30 +38,32 @@ class KeyboardManager
       /*!
        * Constructor. Takes \b PlayList object as an argument.
        */
-        KeyboardManager ( PlayList* );
+        KeyboardManager (PlayList*);
 
         /*!
          * Handles key press events from \b PlayList object. Returns \b TRUE 
          * if the key was handled, otherwise \b FALSE.
          */
-        bool handleKeyPress ( QKeyEvent* );
+        bool handleKeyPress (QKeyEvent*);
 
         /*!
          * Handles key release events from \b PlayList object. Returns \b TRUE 
          * if the key was handled, otherwise \b FALSE.
          */
-        bool handleKeyRelease ( QKeyEvent* );
+        bool handleKeyRelease (QKeyEvent*);
 
         /*!
          * Inits the \b KeyboardManager object with data model.
          */
-        void setModel ( PlayListModel* );
+        void setModel (PlayListModel*);
     protected:
-        void keyUp ( QKeyEvent* ke );
-        void keyDown ( QKeyEvent* ke );
-        void keyPgUp ( QKeyEvent* ke );
-        void keyPgDown ( QKeyEvent* ke );
-        void keyEnter ( QKeyEvent* ke );
+        void keyUp (QKeyEvent* ke);
+        void keyDown (QKeyEvent* ke);
+        void keyPgUp (QKeyEvent* ke);
+        void keyPgDown (QKeyEvent* ke);
+        void keyEnter (QKeyEvent* ke);
+        void keyHome(QKeyEvent* ke);
+        void keyEnd(QKeyEvent* ke);
     private:
         PlayList* m_playlist;
         PlayListModel* m_playListModel;
