@@ -70,6 +70,8 @@ void ListWidget::readSettings()
     if (!fontname.isEmpty())
         m_font.fromString(fontname);
     m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
+    m_show_number = settings.value ("PlayList/show_numbers", TRUE).toBool();
+
 
     if (m_update)
     {
@@ -292,7 +294,7 @@ void ListWidget::updateList()
     m_times  = m_model->getTimes(m_first, m_rows );
     m_scroll = FALSE;
     //add numbers
-    for (int i = 0; i < m_titles.size(); ++i)
+    for (int i = 0; i < m_titles.size() && m_show_number; ++i)
     {
         QString title = m_titles.at(i);
         m_titles.replace(i, title.prepend(QString("%1").arg(m_first+i+1)+". "));

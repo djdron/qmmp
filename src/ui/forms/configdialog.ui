@@ -379,6 +379,13 @@
               </property>
              </widget>
             </item>
+            <item row="4" column="0">
+             <widget class="QCheckBox" name="numbersCheckBox">
+              <property name="text">
+               <string>Show song numbers</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>
