@@ -138,6 +138,7 @@ private:
     int m_prev_y;
     bool m_select_on_release;
     bool m_show_protocol;
+    bool m_show_number;
     MediaPlayer *m_player;
 };
 

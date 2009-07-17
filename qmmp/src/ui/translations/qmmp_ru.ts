@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="ru_RU">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="13"/>
+        <location filename="../forms/aboutdialog.ui" line="14"/>
         <source>About Qmmp</source>
         <translation>О Qmmp</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="51"/>
+        <location filename="../forms/aboutdialog.ui" line="40"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="158"/>
+        <location filename="../forms/aboutdialog.ui" line="96"/>
         <source>License Agreement</source>
         <translation>Лицензия</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="83"/>
+        <location filename="../forms/aboutdialog.ui" line="54"/>
         <source>Authors</source>
         <translation>Авторы</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="129"/>
+        <location filename="../forms/aboutdialog.ui" line="82"/>
         <source>Thanks To</source>
         <translation>Благодарности</translation>
     </message>
@@ -80,7 +79,7 @@
         <translation>Общие модули:</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="115"/>
+        <location filename="../forms/aboutdialog.ui" line="68"/>
         <source>Translators</source>
         <translation>Переводчики</translation>
     </message>
@@ -174,75 +173,75 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="220"/>
+        <location filename="../configdialog.cpp" line="250"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="315"/>
+        <location filename="../configdialog.cpp" line="348"/>
         <source>Enabled</source>
         <translation>Включён</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="220"/>
+        <location filename="../configdialog.cpp" line="250"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="315"/>
+        <location filename="../configdialog.cpp" line="348"/>
         <source>Description</source>
         <translation>Описание</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
-        <location filename="../configdialog.cpp" line="244"/>
-        <location filename="../configdialog.cpp" line="275"/>
-        <location filename="../configdialog.cpp" line="307"/>
-        <location filename="../configdialog.cpp" line="339"/>
-        <location filename="../configdialog.cpp" line="524"/>
+        <location filename="../configdialog.cpp" line="220"/>
+        <location filename="../configdialog.cpp" line="250"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="315"/>
+        <location filename="../configdialog.cpp" line="348"/>
+        <location filename="../configdialog.cpp" line="537"/>
         <source>Filename</source>
         <translation>Имя файла</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="519"/>
+        <location filename="../configdialog.cpp" line="532"/>
         <source>Artist</source>
         <translation>Исполнитель</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="520"/>
+        <location filename="../configdialog.cpp" line="533"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="521"/>
+        <location filename="../configdialog.cpp" line="534"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="522"/>
+        <location filename="../configdialog.cpp" line="535"/>
         <source>Tracknumber</source>
         <translation>Номер трека</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="523"/>
+        <location filename="../configdialog.cpp" line="536"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="525"/>
+        <location filename="../configdialog.cpp" line="538"/>
         <source>Filepath</source>
         <translation>Путь к файлу</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="526"/>
+        <location filename="../configdialog.cpp" line="539"/>
         <source>Date</source>
         <translation>Дата</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="527"/>
+        <location filename="../configdialog.cpp" line="540"/>
         <source>Year</source>
         <translation>Год</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="528"/>
+        <location filename="../configdialog.cpp" line="541"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
     </message>
@@ -252,207 +251,212 @@
         <translation>Настройки Qmmp</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="162"/>
+        <location filename="../forms/configdialog.ui" line="171"/>
         <source>Skins</source>
         <translation>Обложки</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="222"/>
+        <location filename="../forms/configdialog.ui" line="231"/>
         <source>Fonts</source>
         <translation>Шрифты</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="234"/>
+        <location filename="../forms/configdialog.ui" line="243"/>
         <source>Player:</source>
         <translation>Плеер:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="270"/>
+        <location filename="../forms/configdialog.ui" line="279"/>
         <source>Playlist:</source>
         <translation>Список:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="250"/>
-        <location filename="../forms/configdialog.ui" line="286"/>
+        <location filename="../forms/configdialog.ui" line="259"/>
+        <location filename="../forms/configdialog.ui" line="295"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="257"/>
-        <location filename="../forms/configdialog.ui" line="293"/>
-        <location filename="../forms/configdialog.ui" line="348"/>
+        <location filename="../forms/configdialog.ui" line="266"/>
+        <location filename="../forms/configdialog.ui" line="302"/>
+        <location filename="../forms/configdialog.ui" line="357"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="307"/>
+        <location filename="../forms/configdialog.ui" line="316"/>
         <source>Metadata</source>
         <translation>Метаданные</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="319"/>
+        <location filename="../forms/configdialog.ui" line="328"/>
         <source>Load metadata from files</source>
         <translation>Считывать метаданные из файлов</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="329"/>
+        <location filename="../forms/configdialog.ui" line="338"/>
         <source>Song Display</source>
         <translation>Список песен</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="335"/>
+        <location filename="../forms/configdialog.ui" line="344"/>
         <source>Title format:</source>
         <translation>Формат названия:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="460"/>
+        <location filename="../forms/configdialog.ui" line="476"/>
         <source>Input</source>
         <translation>Ввод</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="489"/>
+        <location filename="../forms/configdialog.ui" line="499"/>
         <source>Output</source>
         <translation>Вывод</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="417"/>
+        <location filename="../forms/configdialog.ui" line="433"/>
         <source>Preferences</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="430"/>
-        <location filename="../forms/configdialog.ui" line="618"/>
+        <location filename="../forms/configdialog.ui" line="446"/>
+        <location filename="../forms/configdialog.ui" line="622"/>
         <source>Information</source>
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="83"/>
+        <location filename="../forms/configdialog.ui" line="92"/>
         <source>Appearance</source>
         <translation>Внешний вид</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="92"/>
-        <location filename="../forms/configdialog.ui" line="701"/>
+        <location filename="../forms/configdialog.ui" line="101"/>
+        <location filename="../forms/configdialog.ui" line="705"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="101"/>
+        <location filename="../forms/configdialog.ui" line="110"/>
         <source>Plugins</source>
         <translation>Модули</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="110"/>
+        <location filename="../forms/configdialog.ui" line="119"/>
         <source>Advanced</source>
         <translation>Дополнительно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="876"/>
+        <location filename="../forms/configdialog.ui" line="880"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="177"/>
+        <location filename="../configdialog.cpp" line="182"/>
         <source>Archived skin</source>
         <translation>Упакованная тема</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="197"/>
+        <location filename="../configdialog.cpp" line="202"/>
         <source>Unarchived skin</source>
         <translation>Распакованная тема</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="119"/>
+        <location filename="../forms/configdialog.ui" line="128"/>
         <source>Connectivity</source>
         <translation>Сеть</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="512"/>
+        <location filename="../forms/configdialog.ui" line="516"/>
         <source>Visualization</source>
         <translation>Визуализация</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="529"/>
+        <location filename="../forms/configdialog.ui" line="533"/>
         <source>Effects</source>
         <translation>Эффекты</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="546"/>
+        <location filename="../forms/configdialog.ui" line="550"/>
         <source>General</source>
         <translation>Общие</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="609"/>
+        <location filename="../forms/configdialog.ui" line="613"/>
         <source>File Dialog</source>
         <translation>Файловый диалог</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="570"/>
+        <location filename="../forms/configdialog.ui" line="574"/>
         <source>Audio</source>
         <translation>Аудио</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="576"/>
+        <location filename="../forms/configdialog.ui" line="385"/>
+        <source>Show song numbers</source>
+        <translation>Показывать номера песен</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="580"/>
         <source>Use software volume control</source>
         <translation>Использовать программную регулировку громкости</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="586"/>
+        <location filename="../forms/configdialog.ui" line="590"/>
         <source>Visibility Control</source>
         <translation>Управление видимостью</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="592"/>
+        <location filename="../forms/configdialog.ui" line="596"/>
         <source>Hide on close</source>
         <translation>Скрывать при закрытии</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="599"/>
+        <location filename="../forms/configdialog.ui" line="603"/>
         <source>Start hidden</source>
         <translation>Запускать скрытым</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="744"/>
+        <location filename="../forms/configdialog.ui" line="748"/>
         <source>Proxy</source>
         <translation>Прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="756"/>
+        <location filename="../forms/configdialog.ui" line="760"/>
         <source>Enable proxy usage</source>
         <translation>Использовать прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="763"/>
+        <location filename="../forms/configdialog.ui" line="767"/>
         <source>Proxy host name:</source>
         <translation>Прокси сервер:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="776"/>
+        <location filename="../forms/configdialog.ui" line="780"/>
         <source>Proxy port:</source>
         <translation>Прокси порт:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="789"/>
+        <location filename="../forms/configdialog.ui" line="793"/>
         <source>Use authentication with proxy</source>
         <translation>Использовать авторизацию на прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="796"/>
+        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Proxy user name:</source>
         <translation>Имя пользователя прокси:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="809"/>
+        <location filename="../forms/configdialog.ui" line="813"/>
         <source>Proxy password:</source>
         <translation>Пароль прокси:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="355"/>
+        <location filename="../forms/configdialog.ui" line="364"/>
         <source>Convert underscores to blanks</source>
         <translation>Преобразовывать подчёркивание в пробел</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="362"/>
+        <location filename="../forms/configdialog.ui" line="371"/>
         <source>Convert %20 to blanks</source>
         <translation>Преобразовывать %20 в пробел</translation>
     </message>
@@ -461,49 +465,49 @@
         <translation type="obsolete">Показывать полный путь для потоков</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="645"/>
+        <location filename="../configdialog.cpp" line="659"/>
         <source>Select Skin Files</source>
         <translation>Выберите файлы обложек</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="646"/>
+        <location filename="../configdialog.cpp" line="660"/>
         <source>Skin files</source>
         <translation>Файлы обложек</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="193"/>
+        <location filename="../forms/configdialog.ui" line="202"/>
         <source>Add...</source>
         <translation>Добавить...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="206"/>
+        <location filename="../forms/configdialog.ui" line="215"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="369"/>
+        <location filename="../forms/configdialog.ui" line="378"/>
         <source>Show protocol</source>
         <translation>Показывать протокол</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="641"/>
+        <location filename="../forms/configdialog.ui" line="645"/>
         <source>Transparency</source>
         <translation>Прозрачность</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="647"/>
+        <location filename="../forms/configdialog.ui" line="651"/>
         <source>Main window</source>
         <translation>Главное окно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="670"/>
-        <location filename="../forms/configdialog.ui" line="694"/>
-        <location filename="../forms/configdialog.ui" line="718"/>
+        <location filename="../forms/configdialog.ui" line="674"/>
+        <location filename="../forms/configdialog.ui" line="698"/>
+        <location filename="../forms/configdialog.ui" line="722"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="677"/>
+        <location filename="../forms/configdialog.ui" line="681"/>
         <source>Equalizer</source>
         <translation>Эквалайзер</translation>
     </message>
@@ -669,132 +673,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="294"/>
+        <location filename="../mainvisual.cpp" line="293"/>
         <source>Visualization Mode</source>
         <translation>Режим визуализации</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="296"/>
         <source>Analyzer</source>
         <translation>Анализатор</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Scope</source>
         <translation>Осциллограф</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="299"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Off</source>
         <translation>Выключено</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="306"/>
+        <location filename="../mainvisual.cpp" line="305"/>
         <source>Analyzer Mode</source>
         <translation>Режим анализатора</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="309"/>
+        <location filename="../mainvisual.cpp" line="308"/>
         <source>Normal</source>
         <translation>Обычный</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="310"/>
+        <location filename="../mainvisual.cpp" line="309"/>
         <source>Fire</source>
         <translation>Огонь</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="311"/>
+        <location filename="../mainvisual.cpp" line="310"/>
         <source>Vertical Lines</source>
         <translation>Вертикальные линии</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="312"/>
+        <location filename="../mainvisual.cpp" line="311"/>
         <source>Lines</source>
         <translation>Линии</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="313"/>
+        <location filename="../mainvisual.cpp" line="312"/>
         <source>Bars</source>
         <translation>Полоски</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="326"/>
+        <location filename="../mainvisual.cpp" line="325"/>
         <source>Peaks</source>
         <translation>Пики</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="330"/>
+        <location filename="../mainvisual.cpp" line="329"/>
         <source>Refresh Rate</source>
         <translation>Частота обновления</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
+        <location filename="../mainvisual.cpp" line="332"/>
         <source>50 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="333"/>
         <source>25 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="334"/>
         <source>10 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="335"/>
         <source>5 fps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="343"/>
+        <location filename="../mainvisual.cpp" line="342"/>
         <source>Analyzer Falloff</source>
         <translation>Падение анализатора</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
-        <location filename="../mainvisual.cpp" line="360"/>
+        <location filename="../mainvisual.cpp" line="345"/>
+        <location filename="../mainvisual.cpp" line="359"/>
         <source>Slowest</source>
         <translation>Самое медленное</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
-        <location filename="../mainvisual.cpp" line="361"/>
+        <location filename="../mainvisual.cpp" line="346"/>
+        <location filename="../mainvisual.cpp" line="360"/>
         <source>Slow</source>
         <translation>Медленное</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
-        <location filename="../mainvisual.cpp" line="362"/>
+        <location filename="../mainvisual.cpp" line="347"/>
+        <location filename="../mainvisual.cpp" line="361"/>
         <source>Medium</source>
         <translation>Среднее</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="349"/>
-        <location filename="../mainvisual.cpp" line="363"/>
+        <location filename="../mainvisual.cpp" line="348"/>
+        <location filename="../mainvisual.cpp" line="362"/>
         <source>Fast</source>
         <translation>Быстрое</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="350"/>
-        <location filename="../mainvisual.cpp" line="364"/>
+        <location filename="../mainvisual.cpp" line="349"/>
+        <location filename="../mainvisual.cpp" line="363"/>
         <source>Fastest</source>
         <translation>Самое быстрое</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="357"/>
+        <location filename="../mainvisual.cpp" line="356"/>
         <source>Peaks Falloff</source>
         <translation>Падение пиков</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="370"/>
+        <location filename="../mainvisual.cpp" line="369"/>
         <source>Background</source>
         <translation>Фон</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="371"/>
+        <location filename="../mainvisual.cpp" line="370"/>
         <source>Transparent</source>
         <translation>Прозрачность</translation>
     </message>
@@ -802,174 +806,174 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="64"/>
-        <location filename="../mainwindow.cpp" line="480"/>
+        <location filename="../mainwindow.cpp" line="63"/>
+        <location filename="../mainwindow.cpp" line="493"/>
         <source>Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="280"/>
+        <location filename="../mainwindow.cpp" line="293"/>
         <source>Choose a directory</source>
         <translation>Выберите директорию</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="290"/>
+        <location filename="../mainwindow.cpp" line="303"/>
         <source>Select one or more files to open</source>
         <translation>Выберите один или несколько файлов</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Play</source>
         <translation>&amp;Воспроизвести</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Pause</source>
         <translation>&amp;Приостановить</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>&amp;Stop</source>
         <translation>&amp;Стоп</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>&amp;Previous</source>
         <translation>&amp;Предыдущий фрагмент</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="434"/>
         <source>&amp;Next</source>
         <translation>&amp;Следующий фрагмент</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="434"/>
         <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Перейти к файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>J</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="459"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="459"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="452"/>
+        <location filename="../mainwindow.cpp" line="465"/>
         <source>&amp;Exit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="452"/>
+        <location filename="../mainwindow.cpp" line="465"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="494"/>
+        <location filename="../mainwindow.cpp" line="507"/>
         <source>Open Playlist</source>
         <translation>Открыть список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
+        <location filename="../mainwindow.cpp" line="532"/>
         <source>Save Playlist</source>
         <translation>Сохранить список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="461"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="505"/>
+        <location filename="../mainwindow.cpp" line="531"/>
         <source>Playlist Files</source>
         <translation>Файлы списков</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="449"/>
+        <location filename="../mainwindow.cpp" line="462"/>
         <source>&amp;About Qt</source>
         <translation>&amp;О библиотеке Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>&amp;Play/Pause</source>
         <translation>&amp;Воспр/приост</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="286"/>
+        <location filename="../mainwindow.cpp" line="299"/>
         <source>All Supported Bitstreams</source>
         <translation>Все форматы</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="438"/>
         <source>&amp;Repeat Track</source>
         <translation>&amp;Повторять трек</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="426"/>
+        <location filename="../mainwindow.cpp" line="439"/>
         <source>&amp;Shuffle</source>
         <translation>&amp;В случайном порядке</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="443"/>
         <source>R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>Ctrl+R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="437"/>
         <source>&amp;Repeat Playlist</source>
         <translation>&amp;Повторять список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="457"/>
         <source>Tools</source>
         <translation>Сервис</translation>
     </message>
@@ -997,7 +1001,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="282"/>
         <source>O</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1091,27 +1095,27 @@
         <translation>&amp;Выделить всё</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="274"/>
         <source>&amp;New List</source>
         <translation>&amp;Новый лист</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="275"/>
         <source>Shift+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="280"/>
+        <location filename="../playlist.cpp" line="281"/>
         <source>&amp;Load List</source>
         <translation>&amp;Загрузить лист</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="285"/>
+        <location filename="../playlist.cpp" line="287"/>
         <source>&amp;Save List</source>
         <translation>&amp;Сохранить лист</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="286"/>
+        <location filename="../playlist.cpp" line="288"/>
         <source>Shift+S</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1183,42 +1187,42 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="142"/>
+        <location filename="../qmmpstarter.cpp" line="152"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Использование: qmmp [options] [files]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="143"/>
+        <location filename="../qmmpstarter.cpp" line="153"/>
         <source>Options:</source>
         <translation>Опции:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="149"/>
+        <location filename="../qmmpstarter.cpp" line="159"/>
         <source>Print version number and exit</source>
         <translation>Показать версии и выйти</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="150"/>
+        <location filename="../qmmpstarter.cpp" line="160"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Идеи, исправления, отчёты об ошибках:  forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="148"/>
+        <location filename="../qmmpstarter.cpp" line="158"/>
         <source>Display this text and exit</source>
         <translation>Показать этот текст и выйти</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="155"/>
+        <location filename="../qmmpstarter.cpp" line="165"/>
         <source>QMMP version:</source>
         <translation>Версия QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="145"/>
+        <location filename="../qmmpstarter.cpp" line="155"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Не очищать лист</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="156"/>
+        <location filename="../qmmpstarter.cpp" line="166"/>
         <source>Qt version:</source>
         <translation>Версия Qt:</translation>
     </message>

@@ -107,6 +107,7 @@ void ConfigDialog::readSettings()
         ui.per20CheckBox->setChecked(player->playListModel()->convertTwenty());
     }
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
+    ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", TRUE).toBool());
     //proxy settings
     ui.enableProxyCheckBox->setChecked(Qmmp::useProxy());
     ui.authProxyCheckBox->setChecked(Qmmp::useProxyAuth());
@@ -562,6 +563,7 @@ void ConfigDialog::saveSettings()
         player->playListModel()->setConvertTwenty(ui.per20CheckBox->isChecked());
     }
     settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
+    settings.setValue ("PlayList/show_numbers", ui.numbersCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
 
     Qmmp::setProxyEnabled(ui.enableProxyCheckBox->isChecked());
