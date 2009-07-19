@@ -35,6 +35,7 @@ DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
     m_output_bytes = 0;
     m_output_at = 0;
     m_skip_frames = 0;
+    m_eof = false;
 }
 
 DecoderMAD::~DecoderMAD()
@@ -96,10 +97,9 @@ bool DecoderMAD::initialize()
         return FALSE;
     }
     mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
-    stream.error = MAD_ERROR_NONE;
     stream.error = MAD_ERROR_BUFLEN;
     mad_frame_mute (&frame);
-    stream.next_frame = NULL;
+    stream.next_frame = 0;
     stream.sync = 0;
     configure(m_freq, m_channels, 16);
 
@@ -127,6 +127,7 @@ void DecoderMAD::deinit()
     m_output_bytes = 0;
     m_output_at = 0;
     m_skip_frames = 0;
+    m_eof = false;
 }
 
 bool DecoderMAD::findXingHeader(struct mad_bitptr ptr, unsigned int bitlen)
@@ -317,10 +318,9 @@ qint64 DecoderMAD::readAudio(char *data, qint64 size)
 {
     forever
     {
-        if(stream.error == MAD_ERROR_BUFLEN || !stream.buffer)
+        if((stream.error == MAD_ERROR_BUFLEN) || !stream.buffer)
         {
-            if(!fillBuffer())
-                return 0;
+            m_eof = !fillBuffer();
         }
         if(mad_frame_decode(&frame, &stream) < 0)
         {
@@ -339,6 +339,8 @@ qint64 DecoderMAD::readAudio(char *data, qint64 size)
                     continue;
                 }
                 case MAD_ERROR_BUFLEN:
+                    if(m_eof)
+                        return 0;
                     continue;
                 default:
                     if (!MAD_RECOVERABLE(stream.error))
@@ -353,6 +355,7 @@ qint64 DecoderMAD::readAudio(char *data, qint64 size)
             continue;
         }
         mad_synth_frame(&synth, &frame);
+        //stream.error = MAD_ERROR_NONE;
         return madOutput(data, size);
     }
 }
@@ -387,7 +390,7 @@ bool DecoderMAD::fillBuffer()
     }
     else if(len < 0)
     {
-        qWarning("error");
+        qWarning("DecoderMAD: error");
         return FALSE;
     }
     m_input_bytes += len;

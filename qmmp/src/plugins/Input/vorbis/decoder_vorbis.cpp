@@ -224,9 +224,8 @@ qint64 DecoderVorbis::readAudio(char *data, qint64 maxSize)
 {
     len = -1;
     while (len < 0)
-    {
-       len = ov_read(&oggfile, data, maxSize, 0, 2, 1, &m_section);
-    }
+        len = ov_read(&oggfile, data, maxSize, 0, 2, 1, &m_section);
+
     if (m_section != m_last_section)
         updateTags();
     m_last_section = m_section;

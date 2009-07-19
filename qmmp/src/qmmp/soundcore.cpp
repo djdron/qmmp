@@ -84,7 +84,6 @@ bool SoundCore::play(const QString &source)
         m_decoder->clearNextUrl();
         return TRUE;
     }
-    qDebug("stop!");
     stop();
 
     m_source = source;
