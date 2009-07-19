@@ -6,27 +6,27 @@
     <message>
         <location filename="../decoderaacfactory.cpp" line="47"/>
         <source>AAC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC 插件</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="49"/>
         <source>AAC Files</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC 文件</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="92"/>
         <source>About AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于 AAC 音频插件</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="93"/>
         <source>Qmmp AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp AAC 音频插件</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="94"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>AAC Info</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC 信息</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="74"/>
         <source>Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>长度：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="111"/>
         <source>Channels:</source>
-        <translation type="unfinished"></translation>
+        <translation>声音通道：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="134"/>
         <source>Bitrate:</source>
-        <translation type="unfinished"></translation>
+        <translation>位速率：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="161"/>
         <source>Stream version:</source>
-        <translation type="unfinished"></translation>
+        <translation>流版本：</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="245"/>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>

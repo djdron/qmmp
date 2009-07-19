@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="zh_CN">
 <context>
     <name>FileOps</name>
     <message>
         <location filename="../fileops.cpp" line="97"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="98"/>
         <source>Destination directory doesn&apos;t exist</source>
-        <translation type="unfinished"></translation>
+        <translation>目标目录不存在</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="103"/>
         <source>Copying</source>
-        <translation type="unfinished"></translation>
+        <translation>正在复制</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="104"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>停止</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="134"/>
         <source>Copying file %1/%2</source>
-        <translation type="unfinished"></translation>
+        <translation>正在复制文件 %1/%2</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="175"/>
         <source>Remove files</source>
-        <translation type="unfinished"></translation>
+        <translation>删除文件</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="176"/>
         <source>Are you sure you want to remove %1 file(s) from disk</source>
-        <translation type="unfinished"></translation>
+        <translation>您确定要从磁盘中删除 %1 文件</translation>
     </message>
 </context>
 <context>
@@ -44,22 +44,22 @@
     <message>
         <location filename="../fileopsfactory.cpp" line="30"/>
         <source>File Operations Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>文件操作插件</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="50"/>
         <source>About File Operations Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于文件操作插件</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="51"/>
         <source>Qmmp File Operations Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp 文件操作插件</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -67,17 +67,17 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>修改快捷键</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>请按您想指派的组合键</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清除</translation>
     </message>
 </context>
 <context>
@@ -86,109 +86,109 @@
         <location filename="../settingsdialog.cpp" line="51"/>
         <location filename="../settingsdialog.cpp" line="131"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>复制</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="52"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>重命名</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="54"/>
         <location filename="../settingsdialog.cpp" line="134"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="137"/>
         <source>New action</source>
-        <translation type="unfinished"></translation>
+        <translation>新建动作</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="191"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>艺术家</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="192"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>专辑</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="193"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="194"/>
         <source>Tracknumber</source>
-        <translation type="unfinished"></translation>
+        <translation>音轨</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>流派</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>文件名</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="197"/>
         <source>Date</source>
-        <translation type="unfinished"></translation>
+        <translation>日期</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="198"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>年代</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>备注</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="215"/>
         <source>Choose a directory</source>
-        <translation type="unfinished"></translation>
+        <translation>选择一个目录</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>File Operations Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>文件操作设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>启用</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Operation</source>
-        <translation type="unfinished"></translation>
+        <translation>操作</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Menu text</source>
-        <translation type="unfinished"></translation>
+        <translation>菜单文本</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>快捷键</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation>+</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
@@ -196,17 +196,17 @@
         <location filename="../settingsdialog.ui" line="158"/>
         <location filename="../settingsdialog.ui" line="175"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="148"/>
         <source>Destination:</source>
-        <translation type="unfinished"></translation>
+        <translation>目标目录：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>File name pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>文件名方案：</translation>
     </message>
 </context>
 </TS>

@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_CN">
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="44"/>
         <source>CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>CD 音频插件</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="86"/>
         <source>About CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于 CD 音频插件</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="87"/>
         <source>Qmmp CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp CD 音频插件</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation type="unfinished"></translation>
+        <translation>用法：open cdda:/// 使用添加 URL 对话或命令行</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>Compiled against libcdio version:</source>
-        <translation type="unfinished"></translation>
+        <translation>编译依赖 libcdio 版本：</translation>
     </message>
 </context>
 <context>
@@ -38,22 +39,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>CD Audio Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>CD 音频插件设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="31"/>
         <source>Override device:</source>
-        <translation type="unfinished"></translation>
+        <translation>跳过设备：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
         <source>Limid cd speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>限制 CD 速度：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>Use cd-text</source>
-        <translation type="unfinished"></translation>
+        <translation>使用 cd-text</translation>
     </message>
 </context>
 </TS>

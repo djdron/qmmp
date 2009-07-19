@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_CN">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_CN">
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -20,17 +21,17 @@
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="79"/>
         <source>FFmpeg Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg 插件</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="81"/>
         <source>FFmpeg Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg 格式</translation>
     </message>
     <message>
         <location filename="../decoderffmpegfactory.cpp" line="145"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
-        <translation type="unfinished"></translation>
+        <translation>编译依赖 libavformat-%1.%2.%3 和 libavcodec-%4.%5.%6</translation>
     </message>
 </context>
 <context>
@@ -133,12 +134,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Audio Info</source>
-        <translation type="unfinished"></translation>
+        <translation>音频信息</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="164"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>元数据</translation>
     </message>
 </context>
 <context>
@@ -146,7 +147,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Formats</source>
-        <translation type="unfinished"></translation>
+        <translation>格式</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
@@ -186,7 +187,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>FFmpeg Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg 插件设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>

@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_TW">
 <context>
     <name>PlayListModel</name>
     <message>
         <location filename="../playlistmodel.cpp" line="341"/>
         <source>Url:</source>
-        <translation type="unfinished"></translation>
+        <translation>Url:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="342"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>標題：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="343"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>藝術家：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="344"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>專輯：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="345"/>
         <source>Genre:</source>
-        <translation type="unfinished"></translation>
+        <translation>流派：</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="346"/>
         <source>Comment:</source>
-        <translation type="unfinished"></translation>
+        <translation>備註：</translation>
     </message>
 </context>
 <context>

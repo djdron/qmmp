@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_TW">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -28,7 +29,7 @@
     <message>
         <location filename="../popupwidget.cpp" line="115"/>
         <source>Volume:</source>
-        <translation type="unfinished"></translation>
+        <translation>音量：</translation>
     </message>
 </context>
 <context>
@@ -61,27 +62,27 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Song change notification</source>
-        <translation type="unfinished"></translation>
+        <translation>曲目改變通知</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
-        <translation type="unfinished"></translation>
+        <translation>音量改變通知</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>延遲(ms)：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="81"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>透明度</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="104"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
 </context>
 </TS>
