@@ -41,7 +41,7 @@ private:
     bool findHeader();
     bool findXingHeader(struct mad_bitptr, unsigned int);
     uint findID3v2(uchar *data, ulong size);
-    bool m_inited;
+    bool m_inited, m_eof;
     qint64 m_totalTime;
     int m_channels, m_skip_frames;
     uint m_bitrate;
