@@ -4,7 +4,7 @@ SUBDIRS += mad cue
 TEMPLATE = subdirs
 
 unix{
-SUBDIRS += vorbis sndfile #wavpack
+SUBDIRS += vorbis sndfile wavpack
 contains(CONFIG, MODPLUG_PLUGIN){
     #SUBDIRS += modplug
     message(***************************)

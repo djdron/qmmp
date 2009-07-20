@@ -25,7 +25,6 @@
 #include <math.h>
 #include <stdint.h>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -40,23 +39,12 @@ DecoderWavPack::DecoderWavPack(QObject *parent, DecoderFactory *d, Output *o, co
         : Decoder(parent, d, o)
 {
     m_path = path;
-    m_inited = FALSE;
-    m_user_stop = FALSE;
-    m_output_buf = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
-    m_bks = 0;
-    m_done = FALSE;
-    m_finish = FALSE;
-    m_freq = 0;
-    m_bitrate = 0;
-    m_seekTime = -1.0;
     m_totalTime = 0.0;
     m_chan = 0;
-    m_output_size = 0;
     m_context = 0;
-    m_length = 0;
-    m_offset = 0;
+    m_freq = 0;
+    m_cue_parser = 0;
+    m_output_buf = 0;
 }
 
 DecoderWavPack::~DecoderWavPack()
@@ -67,64 +55,10 @@ DecoderWavPack::~DecoderWavPack()
     m_output_buf = 0;
 }
 
-void DecoderWavPack::stop()
-{
-    m_user_stop = TRUE;
-}
-
-void DecoderWavPack::flush(bool final)
-{
-    ulong min = final ? 0 : m_bks;
-
-    while ((! m_done && ! m_finish) && m_output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock ();
-
-        while ((! m_done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
-            mutex()->lock ();
-            m_done = m_user_stop;
-        }
-
-        if (m_user_stop || m_finish)
-        {
-            m_inited = FALSE;
-            m_done = TRUE;
-        }
-        else
-        {
-            m_output_bytes -= produceSound(m_output_buf, m_output_bytes, m_bitrate, m_chan);
-            m_output_size += m_bks;
-            m_output_at = m_output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-
-        output()->recycler()->mutex()->unlock();
-    }
-}
-
 bool DecoderWavPack::initialize()
 {
-    m_bks = Buffer::size();
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
-    m_freq = m_bitrate = 0;
     m_chan = 0;
-    m_output_size = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
-
-    if (! m_output_buf)
-        m_output_buf = new char[globalBufferSize];
-    m_output_at = 0;
-    m_output_bytes = 0;
+    m_totalTime = 0;
 
     char err [80];
     if (m_path.startsWith("wvpack://")) //embeded cue track
@@ -139,20 +73,28 @@ bool DecoderWavPack::initialize()
         {
             value = (char*)malloc (cue_len * 2 + 1);
             WavpackGetTagItem (m_context, "cuesheet", value, cue_len + 1);
-            CUEParser parser(value, p);
+            m_cue_parser = new CUEParser(value, p);
             int track = m_path.section("#", -1).toInt();
-            m_offset = parser.offset(track);
-            m_length = parser.length(track);
+            if(track > m_cue_parser->count())
+            {
+                qWarning("DecoderWavPack: invalid cuesheet comment");
+                return FALSE;
+            }
             m_path = p;
             //send metadata
-            QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
+            QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
             StateHandler::instance()->dispatch(metaData);
+            connect(stateHandler(),SIGNAL(aboutToFinish()),SLOT(processFinish()));
+            //next url
+            m_nextUrl.clear();
+            if(track <= m_cue_parser->count() - 1)
+                m_nextUrl = m_cue_parser->info(track + 1)->path();
+            m_totalTime = m_cue_parser->length(track);
+            setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
         }
     }
     else
-    {
         m_context = WavpackOpenFileInput (m_path.toLocal8Bit(), err, OPEN_WVC | OPEN_TAGS, 0);
-    }
 
     if (!m_context)
     {
@@ -162,140 +104,81 @@ bool DecoderWavPack::initialize()
 
     m_chan = WavpackGetNumChannels(m_context);
     m_freq = WavpackGetSampleRate (m_context);
-    m_bps = WavpackGetBitsPerSample (m_context);
-    configure(m_freq, m_chan, m_bps);
-    m_inited = TRUE;
-
-    if (m_offset)
-        m_seekTime = m_offset;
-    if (m_length)
-        m_totalTime = m_length;
-    else
+    int bps = WavpackGetBitsPerSample (m_context);
+    if (!m_output_buf)
+        m_output_buf = new int32_t[Qmmp::globalBufferSize()/4];
+    configure(m_freq, m_chan, bps);
+    if(!m_cue_parser)
         m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
     qDebug("DecoderWavPack: initialize succes");
     return TRUE;
 }
 
-qint64 DecoderWavPack::totalTime()
+int DecoderWavPack::bitrate()
 {
-    if (!m_inited)
-        return 0;
-
-    return m_totalTime;
+    if(m_context)
+        return int(WavpackGetInstantBitrate(m_context)/1000);
+    return 0;
 }
 
-
-void DecoderWavPack::seek(qint64 pos)
+qint64 DecoderWavPack::totalTime()
 {
-    m_seekTime = pos + m_offset;
+    return m_totalTime;
 }
 
 void DecoderWavPack::deinit()
 {
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
-    m_freq = m_bitrate = 0;
     m_chan = 0;
-    m_output_size = 0;
-    m_length = 0;
-    m_offset = 0;
+    m_freq = 0;
     if (m_context)
-    {
         WavpackCloseFile (m_context);
-        m_context = 0;
-    }
+    m_context = 0;
+    if(m_cue_parser)
+        delete m_cue_parser;
+    m_cue_parser = 0;
 }
 
-void DecoderWavPack::run()
+void DecoderWavPack::seekAudio(qint64 time)
 {
-    mutex()->lock ();
+     WavpackSeekSample (m_context, time * m_freq / 1000);
+}
 
-    ulong len = 0;
-    int32_t *in = new int32_t[globalBufferSize * m_chan / m_chan / 4];
-    int16_t *out = new int16_t[globalBufferSize * m_chan / m_chan / 4];
-    uint32_t samples = 0;
-
-    if (!m_inited)
+qint64 DecoderWavPack::readAudio(char *data, qint64 maxSize)
+{
+    ulong len = WavpackUnpackSamples (m_context, m_output_buf, maxSize / m_chan / 4);
+    uint m = 0;
+    //convert 32 to 16
+    for (uint i = 0;  i < len * m_chan; ++i)
     {
-        mutex()->unlock();
-        return;
+        data[m++] = (m_output_buf[i] >> 0) & 0xff;
+        data[m++] = (m_output_buf[i] >> 8) & 0xff;
     }
-    mutex()->unlock();
+    return len * m_chan * 2;
+}
 
-    while (! m_done && ! m_finish)
+void DecoderWavPack::processFinish()
+{
+    if(m_cue_parser && nextUrlRequest(m_nextUrl))
     {
-        mutex()->lock ();
-
-        //seeking
-        if (m_seekTime >= 0.0)
-        {
-            WavpackSeekSample (m_context, m_seekTime * m_freq / 1000);
-            m_seekTime = -1.0;
-        }
-        //stop if track ended
-        if ((qint64) WavpackGetSampleIndex(m_context) * 1000 /m_freq - m_offset >= m_totalTime)
-        {
-            m_finish = TRUE;
-        }
-
-        samples = (globalBufferSize-m_output_at)/m_chan/4;
-
-        len = WavpackUnpackSamples (m_context, in, samples);
-        for (ulong i = 0; i < len * m_chan; ++i)
-            out[i] = in[i];
-
-        len *= (m_chan * 2); //convert to number of bytes
-        memcpy(m_output_buf + m_output_at, (char *) out, len);
-        if (len > 0)
-        {
-            m_bitrate =int( WavpackGetInstantBitrate(m_context)/1000);
-            m_output_at += len;
-            m_output_bytes += len;
-
-            if (output())
-                flush();
-
-        }
-        else if (len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (! output()->recycler()->empty() && ! m_user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-
-            m_done = TRUE;
-            if (! m_user_stop)
-            {
-                m_finish = TRUE;
-            }
-        }
-        else
-        {
-            // error while reading
-            qWarning("DecoderWavPack: Error while decoding stream, file appears to be corrupted");
-            m_finish = TRUE;
-        }
+        qDebug("DecoderFLAC: going to next track");
+        int track = m_nextUrl.section("#", -1).toInt();
+        QString p = QUrl(m_nextUrl).path();
+        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        //update current fragment
+        mutex()->lock();
+        setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
+        m_totalTime = m_cue_parser->length(track);
+        output()->seek(0); //reset time counter
         mutex()->unlock();
+         // find next track
+        m_nextUrl.clear();
+        if(track <= m_cue_parser->count() - 1)
+            m_nextUrl = m_cue_parser->info(track + 1)->path();
+        //change track
+        emit playbackFinished();
+        //send metadata
+        QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
+        stateHandler()->dispatch(metaData);
     }
-
-    mutex()->lock ();
-
-    delete[] in;
-    delete[] out;
-
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    deinit();
 }

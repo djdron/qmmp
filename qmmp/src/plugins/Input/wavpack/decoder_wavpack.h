@@ -24,12 +24,13 @@
 extern "C"{
 #include <wavpack/wavpack.h>
 }
-
 #include <qmmp/decoder.h>
 
+class CUEParser;
 
 class DecoderWavPack : public Decoder
 {
+Q_OBJECT
 public:
     DecoderWavPack(QObject *, DecoderFactory *, Output *, const QString &);
     virtual ~DecoderWavPack();
@@ -37,33 +38,25 @@ public:
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
-    void seek(qint64);
-    void stop();
+    int bitrate();
+
+private slots:
+    void processFinish();
 
 private:
-    // thread run function
-    void run();
-    WavpackContext *m_context;
+    // Standard Decoder API
+    qint64 readAudio(char *data, qint64 maxSize);
+    void seekAudio(qint64 time);
     // helper functions
-    void flush(bool = FALSE);
     void deinit();
-
-    bool m_inited, m_user_stop;
-    int m_bps; //bits per sample
-
+    WavpackContext *m_context;
     // output buffer
-    char *m_output_buf;
-    qint64 m_output_bytes, m_output_at;
-
-    unsigned int m_bks; //block size
-    bool m_done, m_finish;
-    long m_freq, m_bitrate;
+    int32_t *m_output_buf;
     int m_chan;
-    qint64 m_output_size;
-    qint64 m_totalTime, m_seekTime;
-    QString m_path;
-    qint64 m_offset;
-    qint64 m_length;
+    quint32 m_freq;
+    qint64 m_totalTime;
+    QString m_path, m_nextUrl;
+    CUEParser *m_cue_parser;
 };
 
 #endif // DECODER_WAVPACK_H
