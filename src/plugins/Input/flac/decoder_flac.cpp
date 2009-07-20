@@ -324,6 +324,8 @@ bool DecoderFLAC::initialize()
                 m_nextUrl.clear();
                 if(track <= m_cue_parser->count() - 1)
                     m_nextUrl = m_cue_parser->info(track + 1)->path();
+                m_totalTime = m_cue_parser->length(track);
+                setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
             }
             else
             {
@@ -389,15 +391,11 @@ bool DecoderFLAC::initialize()
         configure(data()->sample_rate, data()->channels, 32);
     else
         configure(data()->sample_rate, data()->channels, data()->bits_per_sample);
-    m_totalTime = data()->length;
+    if(!m_cue_parser)
+        m_totalTime = data()->length;
 
     inited = TRUE;
 
-    if (m_length)
-    {
-        m_totalTime = m_length;
-        setFragment(m_offset, m_length);
-    }
     qDebug("DecoderFLAC: initialize succes");
     return TRUE;
 }
@@ -456,6 +454,7 @@ void DecoderFLAC::processFinish()
         //update current fragment
         mutex()->lock();
         setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
+        m_totalTime = m_cue_parser->length(track);
         output()->seek(0); //reset time counter
         mutex()->unlock();
          // find next track
