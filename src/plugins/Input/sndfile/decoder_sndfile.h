@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,30 +36,19 @@ public:
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
-    void seek(qint64);
-    void stop();
-
+    int bitrate();
 
 private:
-    // thread run function
-    void run();
+    qint64 readAudio(char *audio, qint64 maxSize);
+    void seekAudio(qint64 time);
+
     // helper functions
-    void flush(bool = FALSE);
     void deinit();
 
-    // output buffer
-    char *m_output_buf;
-
     SNDFILE *m_sndfile;
-    ulong m_output_bytes, m_output_at;
-    //struct sndfile_data *m_data;
-    short *m_buf;
-    unsigned int bks;
-    bool m_done, m_finish, m_inited, m_user_stop;
-    long m_freq, m_bitrate;
-    int m_chan;
-    qint64 m_output_size;
-    qint64 m_totalTime, m_seekTime;
+    int m_bitrate;
+    quint32 m_freq;
+    qint64 m_totalTime;
     QString m_path;
 };
 
