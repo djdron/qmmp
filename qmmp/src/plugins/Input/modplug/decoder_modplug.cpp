@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,7 +33,6 @@
 #include <libmodplug/it_defs.h>
 #include <libmodplug/sndfile.h>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -51,21 +50,10 @@ DecoderModPlug::DecoderModPlug(QObject *parent, DecoderFactory *d, Output *o, co
         : Decoder(parent, d, o)
 {
     m_path = path;
-    m_inited = FALSE;
-    m_user_stop = FALSE;
-    m_output_buf = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
-    m_bks = 0;
-    m_done = FALSE;
-    m_finish = FALSE;
     m_freq = 0;
     m_bitrate = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
+    m_totalTime = 0;
     m_chan = 0;
-    m_output_size = 0;
-    //m_modFile = 0;
     m_soundFile = 0;
     m_sampleSize = 0;
     m_instance = this;
@@ -74,70 +62,14 @@ DecoderModPlug::DecoderModPlug(QObject *parent, DecoderFactory *d, Output *o, co
 DecoderModPlug::~DecoderModPlug()
 {
     deinit();
-    if (m_output_buf)
-        delete [] m_output_buf;
-    m_output_buf = 0;
     m_instance = 0;
-}
-
-void DecoderModPlug::stop()
-{
-    m_user_stop = TRUE;
-}
-
-void DecoderModPlug::flush(bool final)
-{
-    ulong min = final ? 0 : m_bks;
-
-    while ((! m_done && ! m_finish) && m_output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock ();
-
-        while ((! m_done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
-            mutex()->lock ();
-            m_done = m_user_stop;
-        }
-
-        if (m_user_stop || m_finish)
-        {
-            m_inited = FALSE;
-            m_done = TRUE;
-        }
-        else
-        {
-            m_output_bytes -= produceSound(m_output_buf, m_output_bytes, m_bitrate, m_chan);
-            m_output_size += m_bks;
-            m_output_at = m_output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-
-        output()->recycler()->mutex()->unlock();
-    }
 }
 
 bool DecoderModPlug::initialize()
 {
-    m_bks = Buffer::size();
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
-    m_output_size = 0;
-    m_seekTime = -1.0;
     m_totalTime = 0.0;
-
-    if (! m_output_buf)
-        m_output_buf = new char[globalBufferSize];
-    m_output_at = 0;
-    m_output_bytes = 0;
 
     ArchiveReader reader(this);
     if (reader.isSupported(m_path))
@@ -163,38 +95,75 @@ bool DecoderModPlug::initialize()
     m_sampleSize = m_bps / 8 * m_chan;
     m_soundFile->Create((uchar*) m_input_buf.data(), m_input_buf.size());
     m_bitrate = m_soundFile->GetNumChannels();
-    /*if(!m_modFile)
-    {
-        qWarning("DecoderModPlug: error reading moplug file");
-        return FALSE;
-    }*/
-
     m_totalTime = (qint64) m_soundFile->GetSongTime() * 1000;
     configure(m_freq, m_chan, m_bps);
-    m_inited = TRUE;
     return TRUE;
 }
 
 qint64 DecoderModPlug::totalTime()
 {
-    if (! m_inited)
-        return 0;
-
     return m_totalTime;
 }
 
-
-void DecoderModPlug::seek(qint64 pos)
+int DecoderModPlug::bitrate()
 {
-    m_seekTime = pos;
+    return m_bitrate;
+}
+
+qint64 DecoderModPlug::readAudio(char *audio, qint64 maxSize)
+{
+    long len = m_soundFile->Read (audio, qMin((qint64)Buffer::size(), maxSize)) * m_sampleSize;
+    if (m_usePreamp)
+    {
+        {
+            //apply preamp
+            if (m_bps == 16)
+            {
+                long n = len >> 1;
+                for (long i = 0; i < n; i++)
+                {
+                    short old = ((short*)audio)[i];
+                    ((short*)audio)[i] *= m_preampFactor;
+                    // detect overflow and clip!
+                    if ((old & 0x8000) !=
+                            (((short*)audio)[i] & 0x8000))
+                        ((short*)audio)[i] = old | 0x7FFF;
+                }
+            }
+            else
+            {
+                for (long i = 0; i < len; i++)
+                {
+                    uchar old = ((uchar*)audio)[i];
+                    ((uchar*)audio)[i] *= m_preampFactor;
+                    // detect overflow and clip!
+                    if ((old & 0x80) !=
+                            (((uchar*)audio)[i] & 0x80))
+                        ((uchar*)audio)[i] = old | 0x7F;
+                }
+            }
+        }
+    }
+    return len;
+}
+
+void DecoderModPlug::seekAudio(qint64 pos)
+{
+    quint32 lMax;
+    quint32 lMaxtime;
+    double lPostime;
+
+    if (pos > (lMaxtime = m_soundFile->GetSongTime()) * 1000)
+        pos = lMaxtime * 1000;
+    lMax = m_soundFile->GetMaxPosition();
+    lPostime = float(lMax) / lMaxtime;
+    m_soundFile->SetCurrentPos(int(pos * lPostime / 1000));
 }
 
 void DecoderModPlug::deinit()
 {
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
-    m_output_size = 0;
     if (m_soundFile)
     {
         m_soundFile->Destroy();
@@ -202,132 +171,6 @@ void DecoderModPlug::deinit()
         m_soundFile = 0;
     }
     m_input_buf.clear();
-}
-
-void DecoderModPlug::run()
-{
-    mutex()->lock ();
-
-    ulong len = 0;
-    if (!m_inited)
-    {
-        mutex()->unlock();
-        return;
-    }
-    mutex()->unlock();
-
-    char *prebuf = new char[m_bks];
-
-    while (!m_done && !m_finish)
-    {
-        mutex()->lock ();
-
-        //seeking
-
-        if (m_seekTime >= 0)
-        {
-            quint32  lMax;
-            quint32  lMaxtime;
-            double lPostime;
-
-            if (m_seekTime > (lMaxtime = m_soundFile->GetSongTime()) * 1000)
-                m_seekTime = lMaxtime * 1000;
-            lMax = m_soundFile->GetMaxPosition();
-            lPostime = float(lMax) / lMaxtime;
-            m_soundFile->SetCurrentPos(int(m_seekTime * lPostime / 1000));
-            m_seekTime = -1.0;
-        }
-
-        // decode
-        len = m_bks > (globalBufferSize - m_output_at) ? globalBufferSize - m_output_at : m_bks;
-        len = m_soundFile->Read (prebuf, len) * m_sampleSize;
-
-        //preamp
-        if (m_usePreamp)
-        {
-            {
-                //apply preamp
-                if (m_bps == 16)
-                {
-                    uint n = len >> 1;
-                    for (uint i = 0; i < n; i++)
-                    {
-                        short old = ((short*)prebuf)[i];
-                        ((short*)prebuf)[i] *= m_preampFactor;
-                        // detect overflow and clip!
-                        if ((old & 0x8000) !=
-                                (((short*)prebuf)[i] & 0x8000))
-                            ((short*)prebuf)[i] = old | 0x7FFF;
-
-                    }
-                }
-                else
-                {
-                    for (uint i = 0; i < len; i++)
-                    {
-                        uchar old = ((uchar*)prebuf)[i];
-                        ((uchar*)prebuf)[i] *= m_preampFactor;
-                        // detect overflow and clip!
-                        if ((old & 0x80) !=
-                                (((uchar*)prebuf)[i] & 0x80))
-                            ((uchar*)prebuf)[i] = old | 0x7F;
-                    }
-                }
-            }
-        }
-
-        memmove(m_output_buf + m_output_at, prebuf, len);
-
-        if (len > 0)
-        {
-            m_output_at += len;
-            m_output_bytes += len;
-
-            if (output())
-                flush();
-
-        }
-        else if (len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (! output()->recycler()->empty() && ! m_user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-
-            m_done = TRUE;
-            if (! m_user_stop)
-            {
-                m_finish = TRUE;
-            }
-        }
-        else
-        {
-            // error while read
-            qWarning("DecoderModPlug: Error while decoding stream, File appears to be corrupted");
-            m_finish = TRUE;
-        }
-        mutex()->unlock();
-    }
-
-    mutex()->lock ();
-
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    delete prebuf;
-    deinit();
 }
 
 void DecoderModPlug::readSettings()
