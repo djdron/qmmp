@@ -30,6 +30,8 @@
 #define SAMPLES_PER_WRITE     512
 #define SAMPLE_BUFFER_SIZE ((FLAC__MAX_BLOCK_SIZE + SAMPLES_PER_WRITE) * MAX_SUPPORTED_CHANNELS * (32/8))
 
+class CUEParser;
+
 struct flac_data
 {
     //FLAC__SeekableStreamDecoder *decoder;
@@ -58,6 +60,7 @@ struct flac_data
 
 class DecoderFLAC : public Decoder
 {
+Q_OBJECT
 public:
     DecoderFLAC(QObject *, DecoderFactory *, QIODevice *, Output *, const QString &path);
     virtual ~DecoderFLAC();
@@ -72,6 +75,8 @@ public:
         return m_data;
     }
 
+private slots:
+    void processFinish();
 
 private:
     // Standard Decoder API
@@ -90,6 +95,8 @@ private:
     qint64 m_offset;
     qint64 m_length;
     bool inited;
+    CUEParser *m_cue_parser;
+    QString m_nextUrl;
 };
 
 
