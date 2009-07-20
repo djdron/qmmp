@@ -393,7 +393,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示曲目編號</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="580"/>
