@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_TW">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_TW">
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -8,7 +9,6 @@
         <translation>WavPack 插件</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="30"/>
         <source>WavPackk Files</source>
         <translation type="obsolete">WavPackk 檔案</translation>
     </message>
@@ -23,7 +23,7 @@
         <translation>Qmmp WavPack 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="132"/>
+        <location filename="../decoderwavpackfactory.cpp" line="131"/>
         <source>WavPack library version:</source>
         <translation>WavPack 程式庫版本：</translation>
     </message>
@@ -76,6 +76,12 @@
         <translation>長度：</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="58"/>
+        <location filename="../detailsdialog.ui" line="75"/>
+        <location filename="../detailsdialog.ui" line="92"/>
+        <location filename="../detailsdialog.ui" line="118"/>
+        <location filename="../detailsdialog.ui" line="135"/>
+        <location filename="../detailsdialog.ui" line="152"/>
         <location filename="../detailsdialog.ui" line="169"/>
         <source>-</source>
         <translation>-</translation>

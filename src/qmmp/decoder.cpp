@@ -363,6 +363,13 @@ void Decoder::flush(bool final)
     while ((!_m_done && !_m_finish) && _m_output_at > min)
     {
         output()->recycler()->mutex()->lock ();
+        if(_m_seekTime >= 0)
+        {
+            output()->recycler()->clear();
+            output()->recycler()->mutex()->unlock ();
+            _m_output_at = 0;
+            break;
+        }
         while ((!_m_done && !_m_finish) && output()->recycler()->full())
         {
             mutex()->unlock();

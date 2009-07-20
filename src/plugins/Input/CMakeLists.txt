@@ -21,7 +21,7 @@ add_subdirectory(mad)
 ENDIF(USE_MAD AND TAGLIB_FOUND)
 
 IF(USE_FLAC AND TAGLIB_FOUND)
-#add_subdirectory(flac)
+add_subdirectory(flac)
 ENDIF(USE_FLAC AND TAGLIB_FOUND)
 
 IF(USE_VORBIS AND TAGLIB_FOUND)
@@ -41,7 +41,7 @@ add_subdirectory(sndfile)
 ENDIF(USE_SNDFILE)
 
 IF(USE_WAVPACK)
-#add_subdirectory(wavpack)
+add_subdirectory(wavpack)
 ENDIF(USE_WAVPACK)
 
 IF(USE_MODPLUG)

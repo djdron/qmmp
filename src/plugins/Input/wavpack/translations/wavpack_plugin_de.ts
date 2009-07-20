@@ -9,7 +9,6 @@
         <translation>WavPack-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="30"/>
         <source>WavPackk Files</source>
         <translation type="obsolete">WavPack Dateien</translation>
     </message>
@@ -24,7 +23,7 @@
         <translation>Qmmp WavPack-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="132"/>
+        <location filename="../decoderwavpackfactory.cpp" line="131"/>
         <source>WavPack library version:</source>
         <translation>WavPack-Bibliotheksversion:</translation>
     </message>
@@ -77,6 +76,12 @@
         <translation>Länge:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="58"/>
+        <location filename="../detailsdialog.ui" line="75"/>
+        <location filename="../detailsdialog.ui" line="92"/>
+        <location filename="../detailsdialog.ui" line="118"/>
+        <location filename="../detailsdialog.ui" line="135"/>
+        <location filename="../detailsdialog.ui" line="152"/>
         <location filename="../detailsdialog.ui" line="169"/>
         <source>-</source>
         <translation>-</translation>
