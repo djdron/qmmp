@@ -355,7 +355,6 @@ qint64 DecoderMAD::readAudio(char *data, qint64 size)
             continue;
         }
         mad_synth_frame(&synth, &frame);
-        //stream.error = MAD_ERROR_NONE;
         return madOutput(data, size);
     }
 }

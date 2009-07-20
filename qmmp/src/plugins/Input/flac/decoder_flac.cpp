@@ -32,6 +32,7 @@
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
+#include <qmmp/statehandler.h>
 
 #include <QObject>
 #include <QFile>
@@ -268,6 +269,7 @@ DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Outpu
     m_data = new flac_data;
     m_data->decoder = NULL;
     data()->input = i;
+    m_cue_parser = 0;
 }
 
 
@@ -307,14 +309,21 @@ bool DecoderFLAC::initialize()
             if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
             {
                 qDebug("DecoderFLAC: using cuesheet xiph comment.");
-                CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE), p);
+                m_cue_parser = new CUEParser(xiph_comment->fieldListMap()["CUESHEET"].toString()
+                                            .toCString(TRUE), p);
                 int track = m_path.section("#", -1).toInt();
-                m_offset = parser.offset(track);
-                m_length = parser.length(track);
+                m_offset = m_cue_parser->offset(track);
+                m_length = m_cue_parser->length(track);
                 data()->input = new QFile(p);
                 //send metadata
-                QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
+                QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
                 StateHandler::instance()->dispatch(metaData);
+
+                connect(stateHandler(),SIGNAL(aboutToFinish()),SLOT(processFinish()));
+                //next url
+                m_nextUrl.clear();
+                if(track <= m_cue_parser->count() - 1)
+                    m_nextUrl = m_cue_parser->info(track + 1)->path();
             }
             else
             {
@@ -383,8 +392,7 @@ bool DecoderFLAC::initialize()
     m_totalTime = data()->length;
 
     inited = TRUE;
-    /*if (m_offset)
-        seekTime = m_offset;*/
+
     if (m_length)
     {
         m_totalTime = m_length;
@@ -431,4 +439,34 @@ void DecoderFLAC::deinit()
         delete data()->input;
         data()->input = 0;
     };
+    if(m_cue_parser)
+        delete m_cue_parser;
+    m_cue_parser = 0;
 }
+
+void DecoderFLAC::processFinish()
+{
+    if(m_cue_parser && nextUrlRequest(m_nextUrl))
+    {
+        qDebug("DecoderFLAC: going to next track");
+        int track = m_nextUrl.section("#", -1).toInt();
+        QString p = QUrl(m_nextUrl).path();
+        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        //update current fragment
+        mutex()->lock();
+        setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
+        output()->seek(0); //reset time counter
+        mutex()->unlock();
+         // find next track
+        m_nextUrl.clear();
+        if(track <= m_cue_parser->count() - 1)
+            m_nextUrl = m_cue_parser->info(track + 1)->path();
+        //change track
+        emit playbackFinished();
+        //send metadata
+        QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
+        stateHandler()->dispatch(metaData);
+    }
+}
+
