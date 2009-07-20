@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS>
+<TS version="2.0" language="cs">
 <context>
     <name>DecoderSndFileFactory</name>
     <message>
@@ -13,22 +14,22 @@
         <translation>Soubory PCM</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="135"/>
+        <location filename="../decodersndfilefactory.cpp" line="136"/>
         <source>About Sndfile Audio Plugin</source>
         <translation>O modulu Sndfile</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="136"/>
+        <location filename="../decodersndfilefactory.cpp" line="137"/>
         <source>Qmmp Sndfile Audio Plugin</source>
         <translation>Vstupní modul Qmmp Sndfile</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="137"/>
+        <location filename="../decodersndfilefactory.cpp" line="138"/>
         <source>Compiled against</source>
         <translation>Zkompilováno s</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="138"/>
+        <location filename="../decodersndfilefactory.cpp" line="139"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
