@@ -45,7 +45,7 @@ add_subdirectory(wavpack)
 ENDIF(USE_WAVPACK)
 
 IF(USE_MODPLUG)
-#add_subdirectory(modplug)
+add_subdirectory(modplug)
 ENDIF(USE_MODPLUG)
 
 IF(USE_AAC)

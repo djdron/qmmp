@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="40"/>
+        <location filename="../decodermodplugfactory.cpp" line="60"/>
         <source>ModPlug Plugin</source>
         <translation>Модуль ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="44"/>
+        <location filename="../decodermodplugfactory.cpp" line="64"/>
         <source>ModPlug Files</source>
         <translation>Файли ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="108"/>
+        <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>About ModPlug Audio Plugin</source>
         <translation>Про аудіо-модуль ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="109"/>
+        <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Qmmp ModPlug Audio Plugin</source>
         <translation>Аудіо-модуль для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="110"/>
+        <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="111"/>
+        <location filename="../decodermodplugfactory.cpp" line="136"/>
         <source>Based on the Modplug Plugin for Xmms</source>
         <translation>На базі модуля Modplug для Xmms</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="112"/>
+        <location filename="../decodermodplugfactory.cpp" line="137"/>
         <source>Modplug Plugin developers:</source>
         <translation>Розробники модуля Modplug:</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="113"/>
+        <location filename="../decodermodplugfactory.cpp" line="138"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="114"/>
+        <location filename="../decodermodplugfactory.cpp" line="139"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="115"/>
+        <location filename="../decodermodplugfactory.cpp" line="140"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
         <translation></translation>
     </message>
@@ -57,47 +57,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="44"/>
+        <location filename="../detailsdialog.cpp" line="43"/>
         <source>File name:</source>
         <translation>Ім&apos;я файлу:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="45"/>
+        <location filename="../detailsdialog.cpp" line="44"/>
         <source>Title:</source>
         <translation>Назва:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="46"/>
+        <location filename="../detailsdialog.cpp" line="45"/>
         <source>Type:</source>
         <translation>Тип:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="47"/>
+        <location filename="../detailsdialog.cpp" line="46"/>
         <source>Length:</source>
         <translation>Тривалість:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="48"/>
+        <location filename="../detailsdialog.cpp" line="47"/>
         <source>Speed:</source>
         <translation>Швидкість:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="49"/>
+        <location filename="../detailsdialog.cpp" line="48"/>
         <source>Tempo:</source>
         <translation>Темп:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="50"/>
+        <location filename="../detailsdialog.cpp" line="49"/>
         <source>Samples:</source>
         <translation>Семпли:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="51"/>
+        <location filename="../detailsdialog.cpp" line="50"/>
         <source>Instruments:</source>
         <translation>Інструменти:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
+        <location filename="../detailsdialog.cpp" line="51"/>
         <source>Patterns:</source>
         <translation>Зразків:</translation>
     </message>
@@ -117,6 +117,7 @@
         <translation>Загальні</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="36"/>
         <location filename="../detailsdialog.ui" line="46"/>
         <source>-</source>
         <translation></translation>
@@ -127,6 +128,8 @@
         <translation>Семпли</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="66"/>
+        <location filename="../detailsdialog.ui" line="86"/>
         <location filename="../detailsdialog.ui" line="106"/>
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -253,16 +256,21 @@ p, li { white-space: pre-wrap; }
         <translation>Реверберація</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="192"/>
         <location filename="../settingsdialog.ui" line="457"/>
         <source>Depth (%)</source>
         <translation>Глибина (%)</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="224"/>
+        <location filename="../settingsdialog.ui" line="358"/>
+        <location filename="../settingsdialog.ui" line="489"/>
         <location filename="../settingsdialog.ui" line="608"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="250"/>
         <location filename="../settingsdialog.ui" line="509"/>
         <source>Delay (ms)</source>
         <translation>Затримка (мс)</translation>
@@ -375,19 +383,12 @@ too high may cause clipping!</source>
         <translation>Цикл назавжди</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="800"/>
-        <source>OK</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="807"/>
         <source>Apply</source>
-        <translation>Застосувати</translation>
+        <translation type="obsolete">Застосувати</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="814"/>
         <source>Cancel</source>
-        <translation>Відміна</translation>
+        <translation type="obsolete">Відміна</translation>
     </message>
 </context>
 </TS>

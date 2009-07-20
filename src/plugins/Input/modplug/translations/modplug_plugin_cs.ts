@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS>
+<TS version="2.0" language="cs">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
@@ -13,42 +14,42 @@
         <translation>Soubory ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="132"/>
+        <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>About ModPlug Audio Plugin</source>
         <translation>O modulu ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="133"/>
+        <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Qmmp ModPlug Audio Plugin</source>
         <translation>Vstupní modul Qmmp ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="134"/>
+        <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="135"/>
+        <location filename="../decodermodplugfactory.cpp" line="136"/>
         <source>Based on the Modplug Plugin for Xmms</source>
         <translation>Založeno na modulu Modplug pro XMMS</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="136"/>
+        <location filename="../decodermodplugfactory.cpp" line="137"/>
         <source>Modplug Plugin developers:</source>
         <translation>Vývojáři modulu Modplug:</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="137"/>
+        <location filename="../decodermodplugfactory.cpp" line="138"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
         <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="138"/>
+        <location filename="../decodermodplugfactory.cpp" line="139"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
         <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="139"/>
+        <location filename="../decodermodplugfactory.cpp" line="140"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
         <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
@@ -56,12 +57,13 @@
 <context>
     <name>DetailsDialog</name>
     <message>
+        <location filename="../detailsdialog.ui" line="36"/>
         <location filename="../detailsdialog.ui" line="46"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="45"/>
+        <location filename="../detailsdialog.cpp" line="44"/>
         <source>Title:</source>
         <translation>Název:</translation>
     </message>
@@ -71,7 +73,7 @@
         <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="47"/>
+        <location filename="../detailsdialog.cpp" line="46"/>
         <source>Length:</source>
         <translation>Délka:</translation>
     </message>
@@ -81,37 +83,37 @@
         <translation>Počet kanálů:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="44"/>
+        <location filename="../detailsdialog.cpp" line="43"/>
         <source>File name:</source>
         <translation>Název souboru:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="46"/>
+        <location filename="../detailsdialog.cpp" line="45"/>
         <source>Type:</source>
         <translation>Typ:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="48"/>
+        <location filename="../detailsdialog.cpp" line="47"/>
         <source>Speed:</source>
         <translation>Rychlost:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="49"/>
+        <location filename="../detailsdialog.cpp" line="48"/>
         <source>Tempo:</source>
         <translation>Tempo:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="50"/>
+        <location filename="../detailsdialog.cpp" line="49"/>
         <source>Samples:</source>
         <translation>Vzorky:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="51"/>
+        <location filename="../detailsdialog.cpp" line="50"/>
         <source>Instruments:</source>
         <translation>Nástroje:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
+        <location filename="../detailsdialog.cpp" line="51"/>
         <source>Patterns:</source>
         <translation>Patterny:</translation>
     </message>
@@ -131,6 +133,8 @@
         <translation>Vzorky</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="66"/>
+        <location filename="../detailsdialog.ui" line="86"/>
         <location filename="../detailsdialog.ui" line="106"/>
         <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -155,14 +159,12 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="800"/>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation type="obsolete">OK</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="814"/>
         <source>Cancel</source>
-        <translation>Zrušit</translation>
+        <translation type="obsolete">Zrušit</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
@@ -265,16 +267,21 @@ p, li { white-space: pre-wrap; }
         <translation>Dozvuk</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="192"/>
         <location filename="../settingsdialog.ui" line="457"/>
         <source>Depth (%)</source>
         <translation>Hloubka (%)</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="224"/>
+        <location filename="../settingsdialog.ui" line="358"/>
+        <location filename="../settingsdialog.ui" line="489"/>
         <location filename="../settingsdialog.ui" line="608"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="250"/>
         <location filename="../settingsdialog.ui" line="509"/>
         <source>Delay (ms)</source>
         <translation>Zpoždění (ms)</translation>
@@ -387,9 +394,8 @@ předzesílení může způsobit přebuzení!</translation>
         <translation>Donekonečna</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="807"/>
         <source>Apply</source>
-        <translation>Aplikovat</translation>
+        <translation type="obsolete">Aplikovat</translation>
     </message>
 </context>
 </TS>

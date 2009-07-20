@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,49 +31,30 @@ public:
     DecoderModPlug(QObject *, DecoderFactory *, Output *, const QString &path);
     virtual ~DecoderModPlug();
 
+    void readSettings();
+    static DecoderModPlug* instance();
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
-    void seek(qint64);
-    void stop();
-
-    void readSettings();
-    static DecoderModPlug* instance();
+    int bitrate();
 
 private:
-    // thread run function
-    void run();
-
-    // helper functions
-    void flush(bool = FALSE);
+    qint64 readAudio(char *audio, qint64 maxSize);
+    void seekAudio(qint64 time);
+    //helper function
     void deinit();
 
-    //ModPlug_Settings m_modSettings;
-    //CSoundFile *m_modFile;
     CSoundFile *m_soundFile;
 
-    bool m_inited, m_user_stop;
     int m_bps; //bits per sample
-
-
-    //input buffer
-    QByteArray m_input_buf;
-
-    // output buffer
-    char *m_output_buf;
-    ulong m_output_bytes, m_output_at;
-
-    unsigned int m_bks; //block size
-    bool m_done, m_finish;
-    long m_freq, m_bitrate;
-    int m_chan, m_sampleSize;
-    qint64 m_output_size;
-    qint64 m_totalTime, m_seekTime;
+    QByteArray m_input_buf; //input buffer
+    quint32 m_freq;
+    int m_chan, m_sampleSize, m_bitrate;
+    qint64 m_totalTime;
     double m_preampFactor;
     bool m_usePreamp;
     QString m_path;
     static DecoderModPlug* m_instance;
 };
-
 
 #endif // DECODER_MODPLUG_H
