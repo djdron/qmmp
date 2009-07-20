@@ -263,9 +263,6 @@ DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Outpu
     inited = FALSE;
     m_data = 0;
     m_path = path;
-
-    m_offset = 0;
-    m_length = 0;
     m_data = new flac_data;
     m_data->decoder = NULL;
     data()->input = i;
@@ -312,8 +309,11 @@ bool DecoderFLAC::initialize()
                 m_cue_parser = new CUEParser(xiph_comment->fieldListMap()["CUESHEET"].toString()
                                             .toCString(TRUE), p);
                 int track = m_path.section("#", -1).toInt();
-                m_offset = m_cue_parser->offset(track);
-                m_length = m_cue_parser->length(track);
+                if(track > m_cue_parser->count())
+                {
+                    qWarning("DecoderFLAC: invalid cuesheet xiph comment");
+                    return FALSE;
+                }
                 data()->input = new QFile(p);
                 //send metadata
                 QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();

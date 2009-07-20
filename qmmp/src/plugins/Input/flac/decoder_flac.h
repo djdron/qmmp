@@ -92,8 +92,6 @@ private:
 
     qint64 m_totalTime;
     QString m_path;
-    qint64 m_offset;
-    qint64 m_length;
     bool inited;
     CUEParser *m_cue_parser;
     QString m_nextUrl;
