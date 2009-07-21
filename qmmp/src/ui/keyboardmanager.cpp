@@ -265,16 +265,23 @@ void KeyboardManager::keyEnter (QKeyEvent *)
     }
 }
 
-void KeyboardManager::keyHome(QKeyEvent *)
+void KeyboardManager::keyHome(QKeyEvent *ke)
 {
+    ListWidget* list_widget = m_playlist->listWidget();
     m_playlist->listWidget()->scroll (0);
+    if(ke->modifiers() & Qt::ShiftModifier)
+       for(int i = 0; i <= list_widget->getAnchorRow(); ++i)
+           m_playListModel->setSelected (i,true);
 }
 
-void KeyboardManager::keyEnd(QKeyEvent *)
+void KeyboardManager::keyEnd(QKeyEvent *ke)
 {
    ListWidget* list_widget = m_playlist->listWidget();
    int page_size = list_widget->visibleRows();
    int scroll_to = m_playListModel->count() - page_size;
    if(scroll_to >= 0)
        list_widget->scroll(scroll_to);
+   if(ke->modifiers() & Qt::ShiftModifier)
+       for(int i = list_widget->getAnchorRow(); i < m_playListModel->count(); ++i)
+           m_playListModel->setSelected (i,true);
 }
