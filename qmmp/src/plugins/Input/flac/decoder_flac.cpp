@@ -260,7 +260,6 @@ static void flac_callback_error (const FLAC__StreamDecoder *,
 DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o, const QString &path)
         : Decoder(parent, d, i, o)
 {
-    inited = FALSE;
     m_data = 0;
     m_path = path;
     m_data = new flac_data;
@@ -284,8 +283,6 @@ DecoderFLAC::~DecoderFLAC()
 
 bool DecoderFLAC::initialize()
 {
-    inited = FALSE;
-
     if (!data()->input)
     {
         QString p = m_path;
@@ -394,17 +391,12 @@ bool DecoderFLAC::initialize()
     if(!m_cue_parser)
         m_totalTime = data()->length;
 
-    inited = TRUE;
-
     qDebug("DecoderFLAC: initialize succes");
     return TRUE;
 }
 
 qint64 DecoderFLAC::totalTime()
 {
-    if (! inited)
-        return 0;
-
     return m_totalTime;
 }
 
@@ -429,7 +421,6 @@ void DecoderFLAC::deinit()
 {
     if (data())
         FLAC__stream_decoder_finish (data()->decoder);
-    inited = FALSE;
 
     if (!input() && data()->input) //delete internal input only
     {
