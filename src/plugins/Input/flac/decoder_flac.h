@@ -92,7 +92,6 @@ private:
 
     qint64 m_totalTime;
     QString m_path;
-    bool inited;
     CUEParser *m_cue_parser;
     QString m_nextUrl;
 };
