@@ -65,8 +65,8 @@ private:
     uint wma_st_buff, wma_idx2;
     int m_bitrate, wma_idx;
     QString m_path;
-
-    qint64 m_totalTime, seekTime;
+    bool m_skip;
+    qint64 m_totalTime;
 
     AVPacket m_pkt;
     uint8_t *m_inbuf_ptr;

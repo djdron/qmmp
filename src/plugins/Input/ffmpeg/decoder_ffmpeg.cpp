@@ -33,7 +33,7 @@ DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, Output *o, cons
         : Decoder(parent, d, o)
 {
     m_bitrate = 0;
-    seekTime = -1;
+    m_skip = FALSE;
     m_totalTime = 0;
     ic = 0;
     m_path = path;
@@ -53,7 +53,7 @@ DecoderFFmpeg::~DecoderFFmpeg()
 bool DecoderFFmpeg::initialize()
 {
     m_bitrate = 0;
-    seekTime = -1;
+    m_skip = FALSE;
     m_totalTime = 0.0;
 
     avcodec_init();
@@ -112,7 +112,7 @@ int DecoderFFmpeg::bitrate()
 
 qint64 DecoderFFmpeg::readAudio(char *audio, qint64 maxSize)
 {
-    if(seekTime == 1)
+    if (m_skip)
     {
         if(!m_size)
             fillBuffer();
@@ -120,7 +120,7 @@ qint64 DecoderFFmpeg::readAudio(char *audio, qint64 maxSize)
             return 0;
         while(m_size > 0)
             ffmpeg_decode(audio, maxSize);
-        seekTime = -1;
+        m_skip = FALSE;
     }
 
     if(!m_size)
@@ -155,7 +155,7 @@ void DecoderFFmpeg::seekAudio(qint64 pos)
         timestamp += ic->start_time;
     av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
     avcodec_flush_buffers(c);
-    seekTime = 1;
+    m_skip = TRUE;
 }
 
 void DecoderFFmpeg::fillBuffer()
