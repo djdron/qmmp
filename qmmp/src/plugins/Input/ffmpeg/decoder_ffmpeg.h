@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -51,34 +51,26 @@ public:
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
-    void seek(qint64);
-    void stop();
+    int bitrate();
 
 private:
-    // thread run function
-    void run();
-    // helper functions
-    void flush(bool = FALSE);
-    void deinit();
-    void ffmpeg_out(int size);
-    bool inited, user_stop;
-
-    // output buffer
-    char *output_buf;
-    qint64 output_bytes, output_at;
+    qint64 readAudio(char *audio, qint64 maxSize);
+    void seekAudio(qint64 time);
+    //helper functions
+    void fillBuffer();
+    qint64 ffmpeg_decode(char *audio, qint64 maxSize);
 
     AVFormatContext *ic;
     AVCodecContext *c;
-    uint wma_st_buff, wma_idx, wma_idx2;
-    uint8_t *wma_outbuf;
-
-    unsigned int bks;
-    bool done, m_finish;
-    long freq, bitrate;
-    int chan;
-    qint64 output_size;
-    qint64 m_totalTime, seekTime;
+    uint wma_st_buff, wma_idx2;
+    int m_bitrate, wma_idx;
     QString m_path;
+
+    qint64 m_totalTime, seekTime;
+
+    AVPacket m_pkt;
+    uint8_t *m_inbuf_ptr;
+    int m_size;
 };
 
 
