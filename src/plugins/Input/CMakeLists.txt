@@ -49,7 +49,7 @@ add_subdirectory(modplug)
 ENDIF(USE_MODPLUG)
 
 IF(USE_AAC)
-#add_subdirectory(aac)
+add_subdirectory(aac)
 ENDIF(USE_AAC)
 
 IF(USE_CUE)
@@ -57,7 +57,7 @@ IF(USE_CUE)
 ENDIF(USE_CUE)
 
 IF(USE_MPLAYER)
-#add_subdirectory(mplayer)
+add_subdirectory(mplayer)
 ENDIF(USE_MPLAYER)
 
 IF(USE_CDA)
