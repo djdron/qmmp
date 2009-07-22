@@ -23,7 +23,6 @@
 #include <QIODevice>
 #include <QtGlobal>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -38,21 +37,8 @@
 DecoderAAC::DecoderAAC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
         : Decoder(parent, d, i, o)
 {
-    m_inited = FALSE;
-    m_user_stop = FALSE;
-    m_output_buf = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
-    m_bks = 0;
-    m_done = FALSE;
-    m_finish = FALSE;
-    m_len = 0;
-    m_freq = 0;
     m_bitrate = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
-    m_chan = 0;
-    m_output_size = 0;
+    m_totalTime = 0;
     m_data = 0;
     m_input_buf = 0;
     m_input_at = 0;
@@ -61,7 +47,6 @@ DecoderAAC::DecoderAAC(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
 
 DecoderAAC::~DecoderAAC()
 {
-    deinit();
     if (data())
     {
         if (data()->handle)
@@ -69,71 +54,16 @@ DecoderAAC::~DecoderAAC()
         delete data();
         m_data = 0;
     }
-    if (m_output_buf)
-        delete [] m_output_buf;
     if (m_input_buf)
         delete [] m_input_buf;
-    m_output_buf = 0;
     m_input_buf = 0;
+    m_bitrate = 0;
 }
-
-
-void DecoderAAC::stop()
-{
-    m_user_stop = TRUE;
-}
-
-
-void DecoderAAC::flush(bool final)
-{
-    ulong min = final ? 0 : m_bks;
-
-    while ((! m_done && ! m_finish) && m_output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock ();
-
-        while ((! m_done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
-            mutex()->lock ();
-            m_done = m_user_stop;
-        }
-
-        if (m_user_stop || m_finish)
-        {
-            m_inited = FALSE;
-            m_done = TRUE;
-        }
-        else
-        {
-            m_output_bytes -= produceSound(m_output_buf, m_output_bytes, m_bitrate, m_chan);
-            m_output_size += m_bks;
-            m_output_at = m_output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-
-        output()->recycler()->mutex()->unlock();
-    }
-}
-
 
 bool DecoderAAC::initialize()
 {
-    m_bks = Buffer::size();
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
-    m_len = m_freq = m_bitrate = 0;
-    //chan = 0;
-    m_output_size = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
-
+    m_bitrate = 0;
+    m_totalTime = 0;
 
     if (!input())
     {
@@ -142,11 +72,6 @@ bool DecoderAAC::initialize()
     }
     if (!m_input_buf)
         m_input_buf = new char[AAC_BUFFER_SIZE];
-
-    if (!m_output_buf)
-        m_output_buf = new char[globalBufferSize];
-    m_output_at = 0;
-    m_output_bytes = 0;
     m_input_at = 0;
 
     if (!input()->isOpen())
@@ -195,14 +120,21 @@ bool DecoderAAC::initialize()
         m_input_at -= tag_size;
         m_input_at += input()->read((char *)(m_input_buf + m_input_at), AAC_BUFFER_SIZE - m_input_at);
     }
-    int res = NeAACDecInit (data()->handle, (unsigned char*) m_input_buf, m_input_at, &m_freq, &m_chan);
+    #ifdef FAAD_MODIFIED
+    uint32_t freq = 0;
+    uint8_t m_chan = 0;
+    #else
+    unsigned long freq = 0;
+    unsigned char chan = 0;
+    #endif
+    int res = NeAACDecInit (data()->handle, (unsigned char*) m_input_buf, m_input_at, &freq, &chan);
 
     if (res < 0)
     {
         qWarning("DecoderAAC: NeAACDecInit() failed");
         return FALSE;
     }
-    if (!m_freq || !m_chan)
+    if (!freq || !chan)
     {
         qWarning("DecoderAAC: invalid sound parameters");
         return FALSE;
@@ -210,17 +142,16 @@ bool DecoderAAC::initialize()
 
     memmove(m_input_buf, m_input_buf + res, m_input_at - res);
     m_input_at -= res;
-    configure(m_freq, m_chan, 16);
-    m_inited = TRUE;
+    configure(freq, chan, 16);
     qDebug("DecoderAAC: initialize succes");
     return TRUE;
 }
 
-qint64 DecoderAAC::aac_decode(void *out)
+qint64 DecoderAAC::readAudio(char *audio, qint64 maxSize)
 {
     NeAACDecFrameInfo frame_info;
     qint64 size = 0, to_read, read;
-    out = 0;
+    void *out = 0;
     bool eof = FALSE;
 
     while (size <= 0 && !eof)
@@ -237,8 +168,8 @@ qint64 DecoderAAC::aac_decode(void *out)
         memmove(m_input_buf, m_input_buf + frame_info.bytesconsumed, m_input_at - frame_info.bytesconsumed);
         m_input_at -= frame_info.bytesconsumed;
 
-        if ((size = frame_info.samples * 2) > 0)
-            memcpy((void *) (m_output_buf + m_output_at), out, size);
+        if ((size = frame_info.samples * 2) > 0 && size <= maxSize)
+            memcpy((void *) (audio), out, size);
         if (frame_info.error > 0)
         {
             m_input_at = 0;
@@ -250,101 +181,17 @@ qint64 DecoderAAC::aac_decode(void *out)
 
 qint64 DecoderAAC::totalTime()
 {
-    if (!m_inited)
-        return 0;
-
     return m_totalTime;
 }
 
-
-void DecoderAAC::seek(qint64 pos)
+int DecoderAAC::bitrate()
 {
-    m_seekTime = pos;
+    return m_bitrate;
 }
 
-
-void DecoderAAC::deinit()
+void DecoderAAC::seekAudio(qint64 pos)
 {
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
-    m_len = m_freq = m_bitrate = 0;
-    m_chan = 0;
-    m_output_size = 0;
-}
-
-void DecoderAAC::run()
-{
-    mutex()->lock ();
-    if (!m_inited)
-    {
-        mutex()->unlock();
-        return;
-    }
-    mutex()->unlock();
-
-    while (!m_done && !m_finish)
-    {
-        mutex()->lock ();
-        // decode
-
-        if (m_seekTime >= 0 && m_totalTime)
-        {
-            input()->seek(m_seekTime * input()->size() / m_totalTime);
-            NeAACDecPostSeekReset (data()->handle, 0);
-            m_input_at = 0;
-            m_seekTime = -1.0;
-        }
-
-        m_len = aac_decode(m_prebuf2);
-
-        if (m_len > 0)
-        {
-            //qDebug("flush");
-            //bitrate = vbrUpd * data()->info.sample_freq / 1152;
-            m_output_at += m_len;
-            m_output_bytes += m_len;
-
-            if (output())
-                flush();
-
-        }
-        else if (m_len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (!output()->recycler()->empty() && !m_user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-
-            m_done = TRUE;
-            if (!m_user_stop)
-            {
-                m_finish = TRUE;
-            }
-        }
-        else
-        {
-            // error in read
-            qWarning("DecoderAAC: Error while decoding stream, file appears to be corrupted");
-            m_finish = TRUE;
-        }
-
-        mutex()->unlock();
-    }
-    mutex()->lock ();
-
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    deinit();
+    input()->seek(pos * input()->size() / m_totalTime);
+    NeAACDecPostSeekReset (data()->handle, 0);
+    m_input_at = 0;
 }

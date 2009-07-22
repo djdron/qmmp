@@ -38,48 +38,26 @@ public:
     DecoderAAC(QObject *, DecoderFactory *, QIODevice *, Output *);
     virtual ~DecoderAAC();
 
-    // Standard Decoder API
-    bool initialize();
-    qint64 totalTime();
-    void seek(qint64);
-    void stop();
 
     struct aac_data *data()
     {
         return m_data;
     }
-
+      // Standard Decoder API
+    bool initialize();
+    qint64 totalTime();
+    int bitrate();
 
 private:
-    // thread run function
-    void run();
+    qint64 readAudio(char *audio, qint64 maxSize);
+    void seekAudio(qint64 time);
     struct aac_data *m_data;
-    // helper functions
-    void flush(bool = FALSE);
-    void deinit();
-    qint64 aac_decode(void *out);
 
-    bool m_inited, m_user_stop;
-
-    // output buffer
-    char *m_output_buf, *m_input_buf;
-    void *m_prebuf2;
-    unsigned long m_output_bytes;
-
-#ifdef FAAD_MODIFIED
-    uint32_t m_freq;
-    uint8_t m_chan;
-#else
-    unsigned long m_freq;
-    unsigned char m_chan;
-#endif
-
-    unsigned int m_bks;
-    bool m_done, m_finish;
-    unsigned long m_len, m_bitrate, m_input_at, m_output_at;
-    unsigned long m_output_size;
-    double m_frameSize; //frame size in bytes
-    qint64 m_totalTime, m_seekTime;
+    char *m_input_buf;
+    int m_bitrate;
+    ulong  m_input_at, m_output_at;
+    double m_frameSize;
+    qint64 m_totalTime;
 };
 
 
