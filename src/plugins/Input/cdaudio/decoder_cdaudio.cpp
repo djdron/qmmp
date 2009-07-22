@@ -31,7 +31,6 @@
 #include <cdio/cd_types.h>
 #include <cdio/logging.h>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -60,17 +59,8 @@ static void log_handler (cdio_log_level_t level, const char message[])
 DecoderCDAudio::DecoderCDAudio(QObject *parent, DecoderFactory *d, const QString &url, Output *o)
         : Decoder(parent, d, o)
 {
-    m_inited = FALSE;
-    m_user_stop = FALSE;
-    m_output_buf = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
-    m_bks = 0;
-    m_done = FALSE;
-    m_finish = FALSE;
     m_bitrate = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
+    m_totalTime = 0;
     m_first_sector = -1;
     m_last_sector  = -1;
     m_current_sector  = -1;
@@ -81,10 +71,12 @@ DecoderCDAudio::DecoderCDAudio(QObject *parent, DecoderFactory *d, const QString
 
 DecoderCDAudio::~DecoderCDAudio()
 {
-    deinit();
-    if (m_output_buf)
-        delete [] m_output_buf;
-    m_output_buf = 0;
+    m_bitrate = 0;
+    if (m_cdio)
+    {
+        cdio_destroy(m_cdio);
+        m_cdio = 0;
+    }
 }
 
 QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
@@ -194,59 +186,13 @@ qint64 DecoderCDAudio::calculateTrackLength(lsn_t startlsn, lsn_t endlsn)
     return ((endlsn - startlsn + 1) * 1000) / 75;
 }
 
-void DecoderCDAudio::stop()
-{
-    m_user_stop = TRUE;
-}
-
-
-void DecoderCDAudio::flush(bool final)
-{
-    ulong min = final ? 0 : m_bks;
-
-    while ((! m_done && ! m_finish) && m_output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock ();
-
-        while ((! m_done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-            mutex()->lock ();
-            m_done = m_user_stop;
-        }
-
-        if (m_user_stop || m_finish)
-        {
-            m_inited = FALSE;
-            m_done = TRUE;
-        }
-        else
-        {
-            m_output_bytes -= produceSound(m_output_buf, m_output_bytes, m_bitrate, 2);
-            m_output_at = m_output_bytes;
-        }
-
-        if (output()->recycler()->full())
-            output()->recycler()->cond()->wakeOne();
-
-        output()->recycler()->mutex()->unlock();
-    }
-}
-
-
 bool DecoderCDAudio::initialize()
 {
-    m_bks = Buffer::size();
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_bitrate = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
+    m_totalTime = 0;
     //extract track from url
     int track_number = m_url.section("#", -1).toInt();
     track_number = qMax(track_number, 1);
-    if (!m_output_buf) //output buffer
-        m_output_buf = new char[globalBufferSize];
     QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(QUrl(m_url).path()); //generate track list
     if (tracks.isEmpty())
     {
@@ -313,7 +259,7 @@ bool DecoderCDAudio::initialize()
     m_current_sector = tracks[track_at].first_sector;
     m_last_sector = tracks[track_at].last_sector;
     stateHandler()->dispatch(tracks[track_at].info.metaData()); //send metadata
-    m_inited = TRUE;
+    //m_inited = TRUE;
     qDebug("DecoderCDAudio: initialize succes");
     return TRUE;
 }
@@ -321,105 +267,40 @@ bool DecoderCDAudio::initialize()
 
 qint64 DecoderCDAudio::totalTime()
 {
-    if (! m_inited)
-        return 0;
-
     return m_totalTime;
 }
 
-
-void DecoderCDAudio::seek(qint64 pos)
+int DecoderCDAudio::bitrate()
 {
-    m_seekTime = pos;
+    return m_bitrate;
 }
 
-
-void DecoderCDAudio::deinit()
-{
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
-    m_bitrate = 0;
-    if (m_cdio)
-    {
-        cdio_destroy(m_cdio);
-        m_cdio = 0;
-    }
-}
-
-void DecoderCDAudio::run()
+qint64 DecoderCDAudio::readAudio(char *audio, qint64 maxSize)
 {
     long len = 0;
-    mutex()->lock ();
-    if (!m_inited)
+    lsn_t secorts_to_read = qMin(CDDA_SECTORS, (m_last_sector - m_current_sector + 1));
+    if(secorts_to_read * CDIO_CD_FRAMESIZE_RAW > maxSize)
     {
-        mutex()->unlock();
-        return;
+        qWarning("DecoderCDAudio: buffer is too small");
+        return 0;
     }
-    mutex()->unlock();
-
-    while (!m_done && !m_finish)
+    if (secorts_to_read <= 0)
+        len = 0;
+    else
     {
-        mutex()->lock ();
-
-        if (m_seekTime >= 0.0)
-        {
-            m_current_sector = m_first_sector + m_seekTime * 75 / 1000;
-            m_seekTime = -1.0;
-        }
-
-        lsn_t secorts_to_read = qMin(CDDA_SECTORS, (m_last_sector - m_current_sector + 1));
-        if (secorts_to_read <= 0)
-            len = 0;
+        if (cdio_read_audio_sectors(m_cdio, audio,
+                                    m_current_sector, secorts_to_read) != DRIVER_OP_SUCCESS)
+            len = -1;
         else
         {
-            if (cdio_read_audio_sectors(m_cdio, m_output_buf + m_output_at,
-                                        m_current_sector, secorts_to_read) != DRIVER_OP_SUCCESS)
-                len = -1;
-            else
-            {
-                len = secorts_to_read * CDIO_CD_FRAMESIZE_RAW;
-                m_current_sector += secorts_to_read;
-            }
+            len = secorts_to_read * CDIO_CD_FRAMESIZE_RAW;
+            m_current_sector += secorts_to_read;
         }
-        if (len > 0)
-        {
-            m_output_at += len;
-            m_output_bytes += len;
-
-            if (output())
-                flush();
-        }
-        else if (len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (! output()->recycler()->empty() && ! m_user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-            m_done = TRUE;
-            m_finish = !m_user_stop;
-        }
-        else
-        {
-            qWarning("DecoderCDAudio: Error while decoding stream, disk to be corrupted");
-            m_finish = TRUE;
-        }
-        mutex()->unlock();
     }
-    mutex()->lock ();
+    return len;
+}
 
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    deinit();
+void DecoderCDAudio::seekAudio(qint64 pos)
+{
+    m_current_sector = m_first_sector + pos * 75 / 1000;
 }

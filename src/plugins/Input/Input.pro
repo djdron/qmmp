@@ -48,7 +48,7 @@ contains(CONFIG, MPLAYER_PLUGIN){
 }
 
 contains(CONFIG, CDAUDIO_PLUGIN){
-  #SUBDIRS += cdaudio
+  SUBDIRS += cdaudio
   message(***************************)
   message(* CD Audio plugin enabled *)
   message(***************************)

@@ -49,32 +49,23 @@ public:
     static QList <CDATrack> generateTrackList(const QString &device = QString());
     static qint64 calculateTrackLength(lsn_t startlsn, lsn_t endlsn);
 
-    // Standard Decoder API
+     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
-    void seek(qint64);
-    void stop();
+    int bitrate();
 
 private:
-    // thread run function
-    void run();
-    // helper functions
-    void flush(bool = FALSE);
-    void deinit();
+    qint64 readAudio(char *audio, qint64 maxSize);
+    void seekAudio(qint64 time);
     // libcdio variables
     lsn_t m_first_sector;
     lsn_t m_last_sector;
     lsn_t m_current_sector;
     CdIo_t *m_cdio;
-    // output buffer
-    char *m_output_buf;
-    ulong m_output_bytes, m_output_at;
     //other variables
-    bool m_inited, m_user_stop, m_done, m_finish;
     QString m_url;
-    unsigned int m_bks;
-    quint64 m_bitrate;
-    qint64 m_totalTime, m_seekTime;
+    int m_bitrate;
+    qint64 m_totalTime;
 };
 
 #endif // DECODER_CDAUIDO_H
