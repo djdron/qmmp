@@ -69,8 +69,8 @@ private:
     qint64 m_totalTime;
 
     AVPacket m_pkt;
+    AVPacket m_temp_pkt;
     uint8_t *m_inbuf_ptr;
-    int m_size;
 };
 
 

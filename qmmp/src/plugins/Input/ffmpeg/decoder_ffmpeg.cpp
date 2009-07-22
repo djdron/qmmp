@@ -37,13 +37,14 @@ DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, Output *o, cons
     m_totalTime = 0;
     ic = 0;
     m_path = path;
-    m_size = 0;
+    m_temp_pkt.size = 0;
 }
 
 
 DecoderFFmpeg::~DecoderFFmpeg()
 {
     m_bitrate = 0;
+    m_temp_pkt.size = 0;
     if (ic)
         av_close_input_file(ic);
     if(m_pkt.data)
@@ -54,7 +55,7 @@ bool DecoderFFmpeg::initialize()
 {
     m_bitrate = 0;
     m_skip = FALSE;
-    m_totalTime = 0.0;
+    m_totalTime = 0;
 
     avcodec_init();
     avcodec_register_all();
@@ -114,18 +115,18 @@ qint64 DecoderFFmpeg::readAudio(char *audio, qint64 maxSize)
 {
     if (m_skip)
     {
-        if(!m_size)
+        if(!m_temp_pkt.size)
             fillBuffer();
-        if(!m_size)
+        if(!m_temp_pkt.size)
             return 0;
-        while(m_size > 0)
+        while(m_temp_pkt.size > 0)
             ffmpeg_decode(audio, maxSize);
         m_skip = FALSE;
     }
 
-    if(!m_size)
+    if(!m_temp_pkt.size)
         fillBuffer();
-    if(!m_size)
+    if(!m_temp_pkt.size)
         return 0;
     return ffmpeg_decode(audio, maxSize);
 }
@@ -135,14 +136,18 @@ qint64 DecoderFFmpeg::ffmpeg_decode(char *audio, qint64 maxSize)
     int out_size = maxSize;
     if((m_pkt.stream_index == wma_idx))
     {
-        int l = avcodec_decode_audio2(c, (int16_t *)(audio), &out_size, m_inbuf_ptr, m_size);
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(23<<8)+0))
+        int l = avcodec_decode_audio3(c, (int16_t *)(audio), &out_size, &m_temp_pkt);
+#else
+        int l = avcodec_decode_audio2(c, (int16_t *)(audio), &out_size, m_temp_pkt.data, m_temp_pkt.size);
+#endif
+        m_bitrate = c->bit_rate/1024;
         if(l < 0)
             return 0;
-        m_inbuf_ptr += l;
-        m_size -= l;
-
+        m_temp_pkt.data += l;
+        m_temp_pkt.size -= l;
     }
-    if (!m_size && m_pkt.data)
+    if (!m_temp_pkt.size && m_pkt.data)
         av_free_packet(&m_pkt);
 
     return out_size;
@@ -151,7 +156,7 @@ qint64 DecoderFFmpeg::ffmpeg_decode(char *audio, qint64 maxSize)
 void DecoderFFmpeg::seekAudio(qint64 pos)
 {
     int64_t timestamp = int64_t(pos)*AV_TIME_BASE/1000;
-    if (ic->start_time != AV_NOPTS_VALUE)
+    if (ic->start_time != (qint64)AV_NOPTS_VALUE)
         timestamp += ic->start_time;
     av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
     avcodec_flush_buffers(c);
@@ -162,9 +167,14 @@ void DecoderFFmpeg::fillBuffer()
 {
     if (av_read_frame(ic, &m_pkt) < 0)
     {
-        m_size = 0;
+        m_temp_pkt.size = 0;
         m_inbuf_ptr = 0;
     }
-    m_size = m_pkt.size;
-    m_inbuf_ptr = m_pkt.data;
+    m_temp_pkt.size = m_pkt.size;
+    m_temp_pkt.data = m_pkt.data;
+    if(m_pkt.stream_index != wma_idx)
+    {
+        if(m_pkt.data)
+            av_free_packet(&m_pkt);
+    }
 }
