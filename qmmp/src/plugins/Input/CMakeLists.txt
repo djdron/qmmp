@@ -53,7 +53,7 @@ add_subdirectory(aac)
 ENDIF(USE_AAC)
 
 IF(USE_CUE)
-#add_subdirectory(cue)
+add_subdirectory(cue)
 ENDIF(USE_CUE)
 
 IF(USE_MPLAYER)
@@ -61,5 +61,5 @@ add_subdirectory(mplayer)
 ENDIF(USE_MPLAYER)
 
 IF(USE_CDA)
-#add_subdirectory(cdaudio)
+add_subdirectory(cdaudio)
 ENDIF(USE_CDA)

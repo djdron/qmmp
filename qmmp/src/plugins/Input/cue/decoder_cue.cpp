@@ -122,7 +122,6 @@ bool DecoderCUE::initialize()
     connect(stateHandler(), SIGNAL(aboutToFinish()), SLOT(proccessFinish()));
     //prepare decoder and ouput objects
     m_decoder->initialize();
-    qDebug("%lld == %lld", m_offset, m_length);
     m_decoder->setFragment(m_offset, m_length);
     //send metadata
     QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
