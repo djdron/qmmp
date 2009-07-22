@@ -27,7 +27,7 @@ contains(CONFIG, FLAC_PLUGIN){
 }
 
 contains(CONFIG, FFMPEG_PLUGIN){
-   #SUBDIRS += ffmpeg
+   SUBDIRS += ffmpeg
    message(*************************)
    message(* FFMPEG plugin enabled *)
    message(*************************)

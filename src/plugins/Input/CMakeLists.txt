@@ -29,7 +29,7 @@ add_subdirectory(vorbis)
 ENDIF(USE_VORBIS AND TAGLIB_FOUND)
 
 IF(USE_FFMPEG)
-#add_subdirectory(ffmpeg)
+add_subdirectory(ffmpeg)
 ENDIF(USE_FFMPEG)
 
 IF(USE_MPC AND TAGLIB_FOUND)
