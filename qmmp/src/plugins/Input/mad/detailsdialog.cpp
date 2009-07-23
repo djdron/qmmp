@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -94,11 +94,21 @@ DetailsDialog::~DetailsDialog()
 void DetailsDialog::loadMPEGInfo()
 {
     TagLib::MPEG::File f (m_path.toLocal8Bit().constData());
-    //l.label
-    //ui. f.audioProperties()->level();
     QString text;
-    text = QString("%1").arg(f.audioProperties()->layer());
-    ui.levelLabel->setText("MPEG layer "+text); //TODO: add MPEG version
+    QString v;
+    switch((int)f.audioProperties()->version())
+    {
+        case TagLib::MPEG::Header::Version1:
+        v = "1";
+        break;
+        case TagLib::MPEG::Header::Version2:
+        v = "2";
+        break;
+        case TagLib::MPEG::Header::Version2_5:
+        v = "2.5";
+    }
+    text = QString("MPEG-%1 layer %2").arg(v).arg(f.audioProperties()->layer());
+    ui.levelLabel->setText(text);
     text = QString("%1").arg(f.audioProperties()->bitrate());
     ui.bitRateLabel->setText(text+" "+tr("kbps"));
     text = QString("%1").arg(f.audioProperties()->sampleRate());

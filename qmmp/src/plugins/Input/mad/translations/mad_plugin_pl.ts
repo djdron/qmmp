@@ -42,181 +42,181 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="103"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>kbps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="105"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Hz</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="121"/>
+        <location filename="../detailsdialog.cpp" line="131"/>
         <source>KB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="128"/>
-        <location filename="../detailsdialog.cpp" line="132"/>
+        <location filename="../detailsdialog.cpp" line="138"/>
+        <location filename="../detailsdialog.cpp" line="142"/>
         <source>Yes</source>
         <translation>Tak</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="130"/>
-        <location filename="../detailsdialog.cpp" line="134"/>
+        <location filename="../detailsdialog.cpp" line="140"/>
+        <location filename="../detailsdialog.cpp" line="144"/>
         <source>No</source>
         <translation>Nie</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="147"/>
-        <location filename="../detailsdialog.ui" line="223"/>
+        <location filename="../detailsdialog.cpp" line="157"/>
+        <location filename="../detailsdialog.ui" line="224"/>
         <source>ID3v1 Tag</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="153"/>
+        <location filename="../detailsdialog.cpp" line="163"/>
         <source>ID3v2 Tag</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="157"/>
+        <location filename="../detailsdialog.cpp" line="167"/>
         <source>APE Tag</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="19"/>
+        <location filename="../detailsdialog.ui" line="20"/>
         <source>Details</source>
         <translation>Szczegóły pliku</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="27"/>
+        <location filename="../detailsdialog.ui" line="28"/>
         <source>File path:</source>
         <translation>Ścieżka do pliku:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="54"/>
+        <location filename="../detailsdialog.ui" line="55"/>
         <source>Tag Choice</source>
         <translation>Wybór Tag&apos;a</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="60"/>
+        <location filename="../detailsdialog.ui" line="61"/>
         <source>ID3v1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="67"/>
+        <location filename="../detailsdialog.ui" line="68"/>
         <source>ID3v2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="74"/>
+        <location filename="../detailsdialog.ui" line="75"/>
         <source>APE</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="90"/>
+        <location filename="../detailsdialog.ui" line="91"/>
         <source>MPEG Info</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="96"/>
-        <source>MPEG level:</source>
-        <translation>Poziom MPEG:</translation>
+        <location filename="../detailsdialog.ui" line="97"/>
+        <source>Format:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="109"/>
-        <location filename="../detailsdialog.ui" line="126"/>
-        <location filename="../detailsdialog.ui" line="143"/>
-        <location filename="../detailsdialog.ui" line="160"/>
-        <location filename="../detailsdialog.ui" line="177"/>
-        <location filename="../detailsdialog.ui" line="194"/>
-        <location filename="../detailsdialog.ui" line="211"/>
+        <location filename="../detailsdialog.ui" line="110"/>
+        <location filename="../detailsdialog.ui" line="127"/>
+        <location filename="../detailsdialog.ui" line="144"/>
+        <location filename="../detailsdialog.ui" line="161"/>
+        <location filename="../detailsdialog.ui" line="178"/>
+        <location filename="../detailsdialog.ui" line="195"/>
+        <location filename="../detailsdialog.ui" line="212"/>
         <source>-</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="116"/>
+        <location filename="../detailsdialog.ui" line="117"/>
         <source>Bit rate:</source>
         <translation>Szybkość transmisji:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="133"/>
+        <location filename="../detailsdialog.ui" line="134"/>
         <source>Sample rate:</source>
         <translation>Próbkowanie:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="150"/>
+        <location filename="../detailsdialog.ui" line="151"/>
         <source>File size:</source>
         <translation>Wielkość pliku:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="167"/>
+        <location filename="../detailsdialog.ui" line="168"/>
         <source>Mode:</source>
         <translation>Tryb:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="184"/>
+        <location filename="../detailsdialog.ui" line="185"/>
         <source>Copyright:</source>
         <translation>Prawa zastrzeżone:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="201"/>
+        <location filename="../detailsdialog.ui" line="202"/>
         <source>Original:</source>
         <translation>Oryginał:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="247"/>
+        <location filename="../detailsdialog.ui" line="248"/>
         <source>Title:</source>
         <translation>Tytuł:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="273"/>
+        <location filename="../detailsdialog.ui" line="274"/>
         <source>Artist:</source>
         <translation>Artysta:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="299"/>
+        <location filename="../detailsdialog.ui" line="300"/>
         <source>Album:</source>
         <translation>Album:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="325"/>
+        <location filename="../detailsdialog.ui" line="326"/>
         <source>Comment:</source>
         <translation>Komentarz:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="351"/>
+        <location filename="../detailsdialog.ui" line="352"/>
         <source>Year:</source>
         <translation>Rok:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="377"/>
+        <location filename="../detailsdialog.ui" line="378"/>
         <source>Track number:</source>
         <translation>Numer utworu:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="403"/>
+        <location filename="../detailsdialog.ui" line="404"/>
         <source>Genre:</source>
         <translation>Gatunek:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="432"/>
+        <location filename="../detailsdialog.ui" line="433"/>
         <source>Create</source>
         <translation>Utwórz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="445"/>
+        <location filename="../detailsdialog.ui" line="446"/>
         <source>Delete</source>
         <translation>Usuń</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="461"/>
+        <location filename="../detailsdialog.ui" line="462"/>
         <source>Save</source>
         <translation>Zapisz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="484"/>
+        <location filename="../detailsdialog.ui" line="485"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
