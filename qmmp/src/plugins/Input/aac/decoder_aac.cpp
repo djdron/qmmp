@@ -122,7 +122,7 @@ bool DecoderAAC::initialize()
     }
     #ifdef FAAD_MODIFIED
     uint32_t freq = 0;
-    uint8_t m_chan = 0;
+    uint8_t chan = 0;
     #else
     unsigned long freq = 0;
     unsigned char chan = 0;
