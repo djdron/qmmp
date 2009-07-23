@@ -2,17 +2,24 @@
     Klaos Lacerda
     Bruno Gonçalves
 
+Італійська:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
 Китайська традиційна:
     lon <lon83129@126.com>
 
 Китайська спрощена:
     lon <lon83129@126.com>
 
+Польська:
+   Grzegorz Gibas <amigib@gmail.com>
+
 Чеська:
     Karel Volný <kvolny@redhat.com>
 
 Німецька:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
 
 Російська:
     Ilya Kotov <forkotov02@hotmail.ru>
