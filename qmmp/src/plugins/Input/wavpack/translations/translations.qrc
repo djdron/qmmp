@@ -9,5 +9,6 @@
     <file>wavpack_plugin_pl.qm</file>
     <file>wavpack_plugin_ru.qm</file>
     <file>wavpack_plugin_uk_UA.qm</file>
+    <file>wavpack_plugin_tr.qm</file>
   </qresource>
 </RCC>

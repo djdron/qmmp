@@ -9,5 +9,6 @@
     <file>mpc_plugin_cs.qm</file>
     <file>mpc_plugin_pl.qm</file>
     <file>mpc_plugin_de.qm</file>
+    <file>mpc_plugin_tr.qm</file>
   </qresource>
 </RCC>

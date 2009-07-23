@@ -4,89 +4,89 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="14"/>
+        <location filename="../forms/aboutdialog.ui" line="13"/>
         <source>About Qmmp</source>
         <translation>Qmmp Hakkında</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="40"/>
+        <location filename="../forms/aboutdialog.ui" line="51"/>
         <source>About</source>
         <translation>Hakkında</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="96"/>
+        <location filename="../forms/aboutdialog.ui" line="158"/>
         <source>License Agreement</source>
         <translation>Lisans Anlaşması</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="54"/>
+        <location filename="../forms/aboutdialog.ui" line="83"/>
         <source>Authors</source>
         <translation>Yazarlar</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="82"/>
+        <location filename="../forms/aboutdialog.ui" line="129"/>
         <source>Thanks To</source>
         <translation>Teşekkürler</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
         <source>:/txt/authors_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/authors_tr.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
         <source>:/txt/thanks_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/thanks_tr.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt tabanlı Çokluortam Oynatıcısı (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="82"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sürüm:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>:txt/description_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:txt/description_tr.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="84"/>
         <source>Input plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Girdi eklentileri:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="93"/>
         <source>Output plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıktı eklentileri:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="102"/>
         <source>Visual plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Görsel eklentiler:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="111"/>
         <source>Effect plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Efekt eklentileri:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="120"/>
         <source>General plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel eklentiler:</translation>
     </message>
     <message>
-        <location filename="../forms/aboutdialog.ui" line="68"/>
+        <location filename="../forms/aboutdialog.ui" line="115"/>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Çevirmenler</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="63"/>
         <source>:/txt/translators_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation>:/txt/translators_tr.txt</translation>
     </message>
 </context>
 <context>
@@ -94,22 +94,22 @@
     <message>
         <location filename="../addurldialog.cpp" line="107"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>Eklenecek URL girin</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ekle</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;İptal</translation>
     </message>
 </context>
 <context>
@@ -117,131 +117,131 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Skip forward in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>İleri atla</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip backwards in playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Geri atla</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Start playing current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Mevcut şarkıyı çalmaya başla</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Pause current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Mevcut şarkıyı duraklat</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Pause if playing, play otherwise</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalıyorsa duraklat, değilse oynat</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Stop current song</source>
-        <translation type="unfinished"></translation>
+        <translation>Mevcut şarkıyı durdur</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sesi ayarla(örnek: qmmp --volume, qmmp --volume100)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Jump to File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosyaya atlama diyaloğunu göster</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Show/hide application</source>
-        <translation type="unfinished"></translation>
+        <translation>Uygulamayı göster/gizle</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Add File dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya ekleme diyaloğunu göster</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Display Add Directory dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dizin ekleme diyaloğunu göster</translation>
     </message>
 </context>
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="220"/>
-        <location filename="../configdialog.cpp" line="250"/>
-        <location filename="../configdialog.cpp" line="282"/>
-        <location filename="../configdialog.cpp" line="315"/>
-        <location filename="../configdialog.cpp" line="348"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
         <source>Enabled</source>
         <translation>Etkinleştirildi</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="220"/>
-        <location filename="../configdialog.cpp" line="250"/>
-        <location filename="../configdialog.cpp" line="282"/>
-        <location filename="../configdialog.cpp" line="315"/>
-        <location filename="../configdialog.cpp" line="348"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
         <source>Description</source>
         <translation>Açıklama</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="220"/>
-        <location filename="../configdialog.cpp" line="250"/>
-        <location filename="../configdialog.cpp" line="282"/>
-        <location filename="../configdialog.cpp" line="315"/>
-        <location filename="../configdialog.cpp" line="348"/>
-        <location filename="../configdialog.cpp" line="537"/>
+        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="307"/>
+        <location filename="../configdialog.cpp" line="339"/>
+        <location filename="../configdialog.cpp" line="524"/>
         <source>Filename</source>
         <translation>Dosya adı</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="532"/>
+        <location filename="../configdialog.cpp" line="519"/>
         <source>Artist</source>
         <translation>Sanatçı</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="533"/>
+        <location filename="../configdialog.cpp" line="520"/>
         <source>Album</source>
         <translation>Albüm</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="534"/>
+        <location filename="../configdialog.cpp" line="521"/>
         <source>Title</source>
         <translation>Başlık</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="535"/>
+        <location filename="../configdialog.cpp" line="522"/>
         <source>Tracknumber</source>
         <translation>Parça Numarası</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="536"/>
+        <location filename="../configdialog.cpp" line="523"/>
         <source>Genre</source>
         <translation>Tarz</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="538"/>
+        <location filename="../configdialog.cpp" line="525"/>
         <source>Filepath</source>
         <translation>Dosya yolu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="539"/>
+        <location filename="../configdialog.cpp" line="526"/>
         <source>Date</source>
         <translation>Tarih</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="540"/>
+        <location filename="../configdialog.cpp" line="527"/>
         <source>Year</source>
         <translation>Yıl</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="541"/>
+        <location filename="../configdialog.cpp" line="528"/>
         <source>Comment</source>
         <translation>Yorum</translation>
     </message>
@@ -251,261 +251,256 @@
         <translation>Qmmp Ayarları</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="171"/>
+        <location filename="../forms/configdialog.ui" line="162"/>
         <source>Skins</source>
         <translation>Kabuklar</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="231"/>
+        <location filename="../forms/configdialog.ui" line="222"/>
         <source>Fonts</source>
         <translation>Fontlar</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="243"/>
+        <location filename="../forms/configdialog.ui" line="234"/>
         <source>Player:</source>
         <translation>Oynatıcı:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="279"/>
+        <location filename="../forms/configdialog.ui" line="270"/>
         <source>Playlist:</source>
         <translation>Çalma Listesi:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="259"/>
-        <location filename="../forms/configdialog.ui" line="295"/>
+        <location filename="../forms/configdialog.ui" line="250"/>
+        <location filename="../forms/configdialog.ui" line="286"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="266"/>
-        <location filename="../forms/configdialog.ui" line="302"/>
-        <location filename="../forms/configdialog.ui" line="357"/>
+        <location filename="../forms/configdialog.ui" line="257"/>
+        <location filename="../forms/configdialog.ui" line="293"/>
+        <location filename="../forms/configdialog.ui" line="348"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="316"/>
+        <location filename="../forms/configdialog.ui" line="307"/>
         <source>Metadata</source>
         <translation>Veri bilgisi</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="328"/>
+        <location filename="../forms/configdialog.ui" line="319"/>
         <source>Load metadata from files</source>
         <translation>Veri bilgisini dosyadan yükle</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
+        <location filename="../forms/configdialog.ui" line="329"/>
         <source>Song Display</source>
         <translation>Şarkı Göstergesi</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="344"/>
+        <location filename="../forms/configdialog.ui" line="335"/>
         <source>Title format:</source>
         <translation>Başlık formatı:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="476"/>
+        <location filename="../forms/configdialog.ui" line="460"/>
         <source>Input</source>
         <translation>Giriş</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="499"/>
+        <location filename="../forms/configdialog.ui" line="489"/>
         <source>Output</source>
         <translation>Çıkış</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="433"/>
+        <location filename="../forms/configdialog.ui" line="417"/>
         <source>Preferences</source>
         <translation>Tercihler</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="446"/>
-        <location filename="../forms/configdialog.ui" line="622"/>
+        <location filename="../forms/configdialog.ui" line="430"/>
+        <location filename="../forms/configdialog.ui" line="618"/>
         <source>Information</source>
         <translation>Bilgi</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="92"/>
+        <location filename="../forms/configdialog.ui" line="83"/>
         <source>Appearance</source>
         <translation>Görünüm</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="101"/>
-        <location filename="../forms/configdialog.ui" line="705"/>
+        <location filename="../forms/configdialog.ui" line="92"/>
+        <location filename="../forms/configdialog.ui" line="701"/>
         <source>Playlist</source>
         <translation>Çalma Listesi</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="110"/>
+        <location filename="../forms/configdialog.ui" line="101"/>
         <source>Plugins</source>
         <translation>Eklentiler</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="119"/>
+        <location filename="../forms/configdialog.ui" line="110"/>
         <source>Advanced</source>
         <translation>Gelişmiş</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="880"/>
+        <location filename="../forms/configdialog.ui" line="876"/>
         <source>Close</source>
         <translation>Kapat</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="182"/>
+        <location filename="../configdialog.cpp" line="177"/>
         <source>Archived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Arşivlenmiş kabuk</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="202"/>
+        <location filename="../configdialog.cpp" line="197"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished"></translation>
+        <translation>Arşivlenmemiş kabuk</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="128"/>
+        <location filename="../forms/configdialog.ui" line="119"/>
         <source>Connectivity</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlanırlık</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="516"/>
+        <location filename="../forms/configdialog.ui" line="512"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Görsellik</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="533"/>
+        <location filename="../forms/configdialog.ui" line="529"/>
         <source>Effects</source>
-        <translation type="unfinished"></translation>
+        <translation>Efektler</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="550"/>
+        <location filename="../forms/configdialog.ui" line="546"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="613"/>
+        <location filename="../forms/configdialog.ui" line="609"/>
         <source>File Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Diyaloğu</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="574"/>
+        <location filename="../forms/configdialog.ui" line="570"/>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="385"/>
-        <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="580"/>
+        <location filename="../forms/configdialog.ui" line="576"/>
         <source>Use software volume control</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazılımsal ses kontrolünü kullan</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="590"/>
+        <location filename="../forms/configdialog.ui" line="586"/>
         <source>Visibility Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Görünürlük Kontrolü</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="596"/>
+        <location filename="../forms/configdialog.ui" line="592"/>
         <source>Hide on close</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapatınca saklan</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="603"/>
+        <location filename="../forms/configdialog.ui" line="599"/>
         <source>Start hidden</source>
-        <translation type="unfinished"></translation>
+        <translation>Gizli başlat</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="748"/>
+        <location filename="../forms/configdialog.ui" line="744"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Vekil sunucu</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="760"/>
+        <location filename="../forms/configdialog.ui" line="756"/>
         <source>Enable proxy usage</source>
-        <translation type="unfinished"></translation>
+        <translation>Vekil sunucu kullanımını etkinleştir</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="767"/>
+        <location filename="../forms/configdialog.ui" line="763"/>
         <source>Proxy host name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vekil sunucu adı:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="780"/>
+        <location filename="../forms/configdialog.ui" line="776"/>
         <source>Proxy port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vekil sunucu portu:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="793"/>
+        <location filename="../forms/configdialog.ui" line="789"/>
         <source>Use authentication with proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Vekil sunucu yetkilendirmesi kullan</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="800"/>
+        <location filename="../forms/configdialog.ui" line="796"/>
         <source>Proxy user name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vekil sunucu kullanıcı adı:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="813"/>
+        <location filename="../forms/configdialog.ui" line="809"/>
         <source>Proxy password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vekil sunucu parolası:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="364"/>
+        <location filename="../forms/configdialog.ui" line="355"/>
         <source>Convert underscores to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt çizgileri boşluğa çevir</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="371"/>
+        <location filename="../forms/configdialog.ui" line="362"/>
         <source>Convert %20 to blanks</source>
-        <translation type="unfinished"></translation>
+        <translation>%20 yi boşluğa çevir</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="659"/>
+        <location filename="../configdialog.cpp" line="645"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabuk Dosyası Seç</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="660"/>
+        <location filename="../configdialog.cpp" line="646"/>
         <source>Skin files</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabuk dosyaları</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="202"/>
+        <location filename="../forms/configdialog.ui" line="193"/>
         <source>Add...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekle...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="215"/>
+        <location filename="../forms/configdialog.ui" line="206"/>
         <source>Refresh</source>
-        <translation type="unfinished">Yenile</translation>
+        <translation>Yenile</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="378"/>
+        <location filename="../forms/configdialog.ui" line="369"/>
         <source>Show protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokolü göster</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="645"/>
+        <location filename="../forms/configdialog.ui" line="641"/>
         <source>Transparency</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparanlık</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="651"/>
+        <location filename="../forms/configdialog.ui" line="647"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana pencere</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="674"/>
-        <location filename="../forms/configdialog.ui" line="698"/>
-        <location filename="../forms/configdialog.ui" line="722"/>
+        <location filename="../forms/configdialog.ui" line="670"/>
+        <location filename="../forms/configdialog.ui" line="694"/>
+        <location filename="../forms/configdialog.ui" line="718"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="681"/>
+        <location filename="../forms/configdialog.ui" line="677"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekolayzır</translation>
     </message>
 </context>
 <context>
@@ -608,370 +603,370 @@
     <message>
         <location filename="../display.cpp" line="61"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Önceki</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="65"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="69"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="73"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="77"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="81"/>
         <source>Add file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya ekle</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="96"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekolayzır</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="101"/>
         <source>Playlist</source>
-        <translation type="unfinished">Çalma Listesi</translation>
+        <translation>Çalma Listesi</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="109"/>
         <source>Repeat playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalma Listesini Yinele</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="113"/>
         <source>Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Rastgele</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="144"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="150"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Denge</translation>
     </message>
 </context>
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="293"/>
+        <location filename="../mainvisual.cpp" line="294"/>
         <source>Visualization Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="296"/>
-        <source>Analyzer</source>
-        <translation type="unfinished"></translation>
+        <translation>Görselleştirme Modu</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="297"/>
-        <source>Scope</source>
-        <translation type="unfinished"></translation>
+        <source>Analyzer</source>
+        <translation>Çözümleyici</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="298"/>
+        <source>Scope</source>
+        <translation>Kapsam</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapat</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="305"/>
+        <location filename="../mainvisual.cpp" line="306"/>
         <source>Analyzer Mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="308"/>
-        <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Çözümleyici Modu</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="309"/>
-        <source>Fire</source>
-        <translation type="unfinished"></translation>
+        <source>Normal</source>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="310"/>
-        <source>Vertical Lines</source>
-        <translation type="unfinished"></translation>
+        <source>Fire</source>
+        <translation>Ateş</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="311"/>
-        <source>Lines</source>
-        <translation type="unfinished"></translation>
+        <source>Vertical Lines</source>
+        <translation>Dikey Satırlar</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="312"/>
+        <source>Lines</source>
+        <translation>Satırlar</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="313"/>
         <source>Bars</source>
-        <translation type="unfinished"></translation>
+        <translation>Çubuklar</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="325"/>
+        <location filename="../mainvisual.cpp" line="326"/>
         <source>Peaks</source>
-        <translation type="unfinished"></translation>
+        <translation>Uçlar</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="329"/>
+        <location filename="../mainvisual.cpp" line="330"/>
         <source>Refresh Rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="332"/>
-        <source>50 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>Tazeleme Oranı</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="333"/>
-        <source>25 fps</source>
-        <translation type="unfinished"></translation>
+        <source>50 fps</source>
+        <translation>50 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="334"/>
-        <source>10 fps</source>
-        <translation type="unfinished"></translation>
+        <source>25 fps</source>
+        <translation>25 fps</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="335"/>
+        <source>10 fps</source>
+        <translation>10 fps</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="336"/>
         <source>5 fps</source>
-        <translation type="unfinished"></translation>
+        <translation>5 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="342"/>
+        <location filename="../mainvisual.cpp" line="343"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="345"/>
-        <location filename="../mainvisual.cpp" line="359"/>
-        <source>Slowest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="346"/>
         <location filename="../mainvisual.cpp" line="360"/>
-        <source>Slow</source>
-        <translation type="unfinished"></translation>
+        <source>Slowest</source>
+        <translation>En yavaş</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="347"/>
         <location filename="../mainvisual.cpp" line="361"/>
-        <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <source>Slow</source>
+        <translation>Yavaş</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="348"/>
         <location filename="../mainvisual.cpp" line="362"/>
-        <source>Fast</source>
-        <translation type="unfinished"></translation>
+        <source>Medium</source>
+        <translation>Orta</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="349"/>
         <location filename="../mainvisual.cpp" line="363"/>
-        <source>Fastest</source>
-        <translation type="unfinished"></translation>
+        <source>Fast</source>
+        <translation>Hızlı</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="356"/>
+        <location filename="../mainvisual.cpp" line="350"/>
+        <location filename="../mainvisual.cpp" line="364"/>
+        <source>Fastest</source>
+        <translation>En hızlı</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="357"/>
         <source>Peaks Falloff</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="369"/>
+        <location filename="../mainvisual.cpp" line="370"/>
         <source>Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Arkaplan</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="370"/>
+        <location filename="../mainvisual.cpp" line="371"/>
         <source>Transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparan</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="63"/>
-        <location filename="../mainwindow.cpp" line="493"/>
+        <location filename="../mainwindow.cpp" line="64"/>
+        <location filename="../mainwindow.cpp" line="480"/>
         <source>Default</source>
         <translation>Öntanımlı</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="293"/>
+        <location filename="../mainwindow.cpp" line="280"/>
         <source>Choose a directory</source>
         <translation>Bir dizin seçin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="303"/>
+        <location filename="../mainwindow.cpp" line="290"/>
         <source>Select one or more files to open</source>
         <translation>Açmak için bir yada daha çok dosya seçin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>&amp;Play</source>
         <translation>&amp;Çal</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>&amp;Pause</source>
         <translation>&amp;Duraklat</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="419"/>
         <source>&amp;Stop</source>
         <translation>&amp;Durdur</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="419"/>
         <source>V</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>&amp;Previous</source>
         <translation>&amp;Önceki</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>Z</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="434"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Next</source>
         <translation>&amp;Sonraki</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="434"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Parçaya Git</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>&amp;Settings</source>
         <translation>&amp;Ayarlar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="465"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>&amp;Exit</source>
         <translation>&amp;Çıkış</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="465"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="507"/>
+        <location filename="../mainwindow.cpp" line="494"/>
         <source>Open Playlist</source>
         <translation>Çalma Listesini Aç</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="532"/>
+        <location filename="../mainwindow.cpp" line="519"/>
         <source>Save Playlist</source>
         <translation>Çalma Listesini Kaydet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>&amp;About</source>
         <translation>&amp;Hakkında</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="505"/>
-        <location filename="../mainwindow.cpp" line="531"/>
+        <location filename="../mainwindow.cpp" line="492"/>
+        <location filename="../mainwindow.cpp" line="518"/>
         <source>Playlist Files</source>
         <translation>Çalma Listesi Dosyaları</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Boşluk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="462"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Qt Hakkında</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Oynat/Duraklat</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="299"/>
+        <location filename="../mainwindow.cpp" line="286"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Desteklenen Bitstreamler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="438"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Parçayı Yinele</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="439"/>
+        <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rastgele</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation>R</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="431"/>
+        <source>Ctrl+R</source>
+        <translation>Ctrl+R</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="432"/>
+        <source>S</source>
+        <translation>S</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="424"/>
+        <source>&amp;Repeat Playlist</source>
+        <translation>&amp;Çalma Listesini Yinele</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="444"/>
-        <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="445"/>
-        <source>S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="437"/>
-        <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="457"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Araçlar</translation>
     </message>
 </context>
 <context>
@@ -997,7 +992,7 @@
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="282"/>
+        <location filename="../playlist.cpp" line="281"/>
         <source>O</source>
         <translation>O</translation>
     </message>
@@ -1091,27 +1086,27 @@
         <translation>&amp;Tümünü Seç</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="273"/>
         <source>&amp;New List</source>
         <translation>&amp;Yeni Liste</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="275"/>
+        <location filename="../playlist.cpp" line="274"/>
         <source>Shift+N</source>
         <translation>Shift+N</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="280"/>
         <source>&amp;Load List</source>
         <translation>&amp;Liste Yükle</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="287"/>
+        <location filename="../playlist.cpp" line="285"/>
         <source>&amp;Save List</source>
         <translation>&amp;Listeyi Kaydet</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="288"/>
+        <location filename="../playlist.cpp" line="286"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>
@@ -1123,33 +1118,33 @@
     <message>
         <location filename="../playlist.cpp" line="147"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Url Ekle</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="148"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation>U</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="201"/>
         <location filename="../playlist.cpp" line="228"/>
         <source>By Track Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Parça Numarasına Göre</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="247"/>
         <source>&amp;Queue</source>
-        <translation type="unfinished">&amp;Kuyruğa ekle</translation>
+        <translation>&amp;Kuyruğa ekle</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="247"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="244"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Eylemler</translation>
     </message>
 </context>
 <context>
@@ -1183,44 +1178,44 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="152"/>
+        <location filename="../qmmpstarter.cpp" line="142"/>
         <source>Usage: qmmp [options] [files]</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanım:qmmp [seçenek] [dosyalar]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="153"/>
+        <location filename="../qmmpstarter.cpp" line="143"/>
         <source>Options:</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçenekler:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="159"/>
+        <location filename="../qmmpstarter.cpp" line="149"/>
         <source>Print version number and exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Sürüm numarasını yazdır ve çık</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="160"/>
+        <location filename="../qmmpstarter.cpp" line="150"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation type="unfinished"></translation>
+        <translation>Fikirleinizi, yamalarınızı, hata raporlarınızı forkotov02@hotmail.ru adresine gönderin</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="158"/>
+        <location filename="../qmmpstarter.cpp" line="148"/>
         <source>Display this text and exit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="165"/>
-        <source>QMMP version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu metni göster ve çık</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="155"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <source>QMMP version:</source>
+        <translation>QMMP sürümü:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="166"/>
+        <location filename="../qmmpstarter.cpp" line="145"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation>Çalma listesini temizleme</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="156"/>
         <source>Qt version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt sürümü:</translation>
     </message>
 </context>
 <context>
@@ -1228,12 +1223,12 @@
     <message>
         <location filename="../textscroller.cpp" line="176"/>
         <source>Buffering:</source>
-        <translation type="unfinished"></translation>
+        <translation>Arabelleğe alınıyor:</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="62"/>
         <source>Autoscroll Songname</source>
-        <translation type="unfinished"></translation>
+        <translation>Şarkı Adını Otomatik Kaydır</translation>
     </message>
 </context>
 <context>
@@ -1241,7 +1236,7 @@
     <message>
         <location filename="../visualmenu.cpp" line="30"/>
         <source>Visualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Görüntüleme</translation>
     </message>
 </context>
 </TS>

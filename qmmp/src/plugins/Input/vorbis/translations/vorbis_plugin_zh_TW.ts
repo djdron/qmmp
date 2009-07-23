@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_TW">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_TW">
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="31"/>
+        <location filename="../decodervorbisfactory.cpp" line="50"/>
         <source>Ogg Vorbis Plugin</source>
         <translation>Ogg Vorbis 插件</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="33"/>
+        <location filename="../decodervorbisfactory.cpp" line="53"/>
         <source>Ogg Vorbis Files</source>
         <translation>Ogg Vorbis 檔案</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="90"/>
+        <location filename="../decodervorbisfactory.cpp" line="113"/>
         <source>About Ogg Vorbis Audio Plugin</source>
         <translation>關於 Ogg Vorbis 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="91"/>
+        <location filename="../decodervorbisfactory.cpp" line="114"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
         <translation>Qmmp Ogg Vorbis 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="92"/>
+        <location filename="../decodervorbisfactory.cpp" line="115"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="94"/>
+        <location filename="../decodervorbisfactory.cpp" line="116"/>
         <source>Source code based on mq3 progect</source>
         <translation>源碼基於 mq3 項目</translation>
     </message>
@@ -87,6 +87,12 @@
         <translation>關閉</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="66"/>
+        <location filename="../detailsdialog.ui" line="76"/>
+        <location filename="../detailsdialog.ui" line="93"/>
+        <location filename="../detailsdialog.ui" line="110"/>
+        <location filename="../detailsdialog.ui" line="170"/>
+        <location filename="../detailsdialog.ui" line="177"/>
         <location filename="../detailsdialog.ui" line="197"/>
         <source>-</source>
         <translation>-</translation>
@@ -147,6 +153,8 @@
         <translation>Ogg Vorbis 標簽</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="65"/>
+        <location filename="../detailsdialog.cpp" line="67"/>
         <location filename="../detailsdialog.cpp" line="69"/>
         <source>kbps</source>
         <translation>kbps</translation>

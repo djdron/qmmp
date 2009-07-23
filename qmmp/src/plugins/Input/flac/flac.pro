@@ -4,11 +4,11 @@ FORMS += detailsdialog.ui
 HEADERS += decoderflacfactory.h \
            decoder_flac.h \
            detailsdialog.h \
- cueparser.h
+           cueparser.h
 SOURCES += decoder_flac.cpp \
            decoderflacfactory.cpp \
            detailsdialog.cpp \
- cueparser.cpp
+           cueparser.cpp
 
 TARGET =$$PLUGINS_PREFIX/Input/flac
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libflac.so
@@ -29,7 +29,8 @@ TRANSLATIONS = translations/flac_plugin_ru.ts \
                translations/flac_plugin_cs.ts \
                translations/flac_plugin_pl.ts \
                translations/flac_plugin_de.ts \
-               translations/flac_plugin_it.ts
+               translations/flac_plugin_it.ts \
+               translations/flac_plugin_tr.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

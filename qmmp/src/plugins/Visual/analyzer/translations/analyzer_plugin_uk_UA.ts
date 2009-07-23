@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>Analyzer</name>
     <message>
-        <location filename="../analyzer.cpp" line="49"/>
+        <location filename="../analyzer.cpp" line="48"/>
         <source>Qmmp Analyzer</source>
         <translation>Аналізатор Qmmp</translation>
     </message>
@@ -32,26 +32,31 @@
         <translation>Падіння аналізатора:</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="55"/>
         <location filename="../settingsdialog.ui" line="97"/>
         <source>Slowest</source>
         <translation>Найповільніше</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="60"/>
         <location filename="../settingsdialog.ui" line="102"/>
         <source>Slow</source>
         <translation>Повільне</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="65"/>
         <location filename="../settingsdialog.ui" line="107"/>
         <source>Medium</source>
         <translation>Середнє</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="70"/>
         <location filename="../settingsdialog.ui" line="112"/>
         <source>Fast</source>
         <translation>Швидке</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="75"/>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Fastest</source>
         <translation>Найшвидше</translation>
@@ -115,16 +120,6 @@
         <location filename="../settingsdialog.ui" line="294"/>
         <source>Analyzer #3:</source>
         <translation>Аналізатор #3:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="351"/>
-        <source>&amp;OK</source>
-        <translation>&amp;Застосувати</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="370"/>
-        <source>&amp;Cancel</source>
-        <translation>&amp;Відміна</translation>
     </message>
 </context>
 <context>

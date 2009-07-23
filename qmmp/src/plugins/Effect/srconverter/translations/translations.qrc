@@ -9,5 +9,6 @@
     <file>srconverter_plugin_uk_UA.qm</file>
     <file>srconverter_plugin_ru.qm</file>
     <file>srconverter_plugin_pl.qm</file>
+    <file>srconverter_plugin_tr.qm</file>
   </qresource>
 </RCC>

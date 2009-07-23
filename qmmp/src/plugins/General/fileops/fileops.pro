@@ -23,7 +23,8 @@ TRANSLATIONS = translations/fileops_plugin_cs.ts \
                translations/fileops_plugin_ru.ts \
                translations/fileops_plugin_pl.ts \
                translations/fileops_plugin_uk_UA.ts \
-               translations/fileops_plugin_it.ts
+               translations/fileops_plugin_it.ts \
+               translations/fileops_plugin_tr.ts
 RESOURCES = translations/translations.qrc
 wnix {
     isEmpty(LIB_DIR){

@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="141"/>
+        <location filename="../decoderffmpegfactory.cpp" line="149"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Про аудіо-модуль FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="143"/>
+        <location filename="../decoderffmpegfactory.cpp" line="151"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Аудіо-модуль FFmpeg для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="153"/>
+        <location filename="../decoderffmpegfactory.cpp" line="161"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="79"/>
+        <location filename="../decoderffmpegfactory.cpp" line="83"/>
         <source>FFmpeg Plugin</source>
         <translation>Модуль FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="81"/>
+        <location filename="../decoderffmpegfactory.cpp" line="85"/>
         <source>FFmpeg Formats</source>
         <translation>Формати FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="145"/>
+        <location filename="../decoderffmpegfactory.cpp" line="153"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Зібрано з libavformat-%1.%2.%3 та libavcodec-%4.%5.%6</translation>
     </message>
@@ -37,16 +37,20 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="91"/>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>KB</source>
         <translation>Кб</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="109"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="58"/>
+        <location filename="../detailsdialog.ui" line="75"/>
+        <location filename="../detailsdialog.ui" line="92"/>
+        <location filename="../detailsdialog.ui" line="118"/>
         <location filename="../detailsdialog.ui" line="135"/>
         <source>-</source>
         <translation></translation>
@@ -122,7 +126,7 @@
         <translation>Шлях до файлу:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="94"/>
+        <location filename="../detailsdialog.cpp" line="95"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>

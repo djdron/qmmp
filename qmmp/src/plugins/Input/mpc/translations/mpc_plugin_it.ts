@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMPCFactory</name>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="26"/>
+        <location filename="../decodermpcfactory.cpp" line="46"/>
         <source>Musepack Plugin</source>
         <translation>Modulo Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="28"/>
+        <location filename="../decodermpcfactory.cpp" line="48"/>
         <source>Musepack Files</source>
         <translation>MBrani usepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="82"/>
+        <location filename="../decodermpcfactory.cpp" line="103"/>
         <source>About Musepack Audio Plugin</source>
         <translation>Info sul modulo audio Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="83"/>
+        <location filename="../decodermpcfactory.cpp" line="104"/>
         <source>Qmmp Musepack Audio Plugin</source>
         <translation>Modulo audio Musepack per Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="84"/>
+        <location filename="../decodermpcfactory.cpp" line="105"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -58,6 +57,11 @@
         <translation>Dimensione brano:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="79"/>
+        <location filename="../detailsdialog.ui" line="96"/>
+        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="159"/>
+        <location filename="../detailsdialog.ui" line="166"/>
         <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation>-</translation>

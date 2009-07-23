@@ -9,5 +9,6 @@
     <file>mplayer_plugin_pl.qm</file>
     <file>mplayer_plugin_cs.qm</file>
     <file>mplayer_plugin_de.qm</file>
+    <file>mplayer_plugin_tr.qm</file>
   </qresource>
 </RCC>

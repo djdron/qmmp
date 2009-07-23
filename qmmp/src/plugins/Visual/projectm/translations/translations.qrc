@@ -8,5 +8,6 @@
     <file>projectm_plugin_zh_TW.qm</file>
     <file>projectm_plugin_uk_UA.qm</file>
     <file>projectm_plugin_ru.qm</file>
+    <file>projectm_plugin_tr.qm</file>
   </qresource>
 </RCC>

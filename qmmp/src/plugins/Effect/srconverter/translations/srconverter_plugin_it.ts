@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="it">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="it">
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
@@ -9,17 +9,17 @@
         <translation>Modulo SRC</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="49"/>
+        <location filename="../effectsrconverterfactory.cpp" line="50"/>
         <source>About Sample Rate Converter Plugin</source>
         <translation>Info sul modulo di conversione campionamento</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="50"/>
+        <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
         <translation>Modulo di conversione campionamento Qmmp</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="51"/>
+        <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -67,14 +67,12 @@
         <translation>Lineare</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="90"/>
         <source>&amp;OK</source>
-        <translation>&amp;OK</translation>
+        <translation type="obsolete">&amp;OK</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="97"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Annulla</translation>
+        <translation type="obsolete">&amp;Annulla</translation>
     </message>
 </context>
 </TS>

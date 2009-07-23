@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.0" language="it">
-<defaultcodec></defaultcodec>
 <context>
     <name>DecoderFLACFactory</name>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="26"/>
+        <location filename="../decoderflacfactory.cpp" line="51"/>
         <source>FLAC Plugin</source>
         <translation>Modulo FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="28"/>
+        <location filename="../decoderflacfactory.cpp" line="53"/>
         <source>FLAC Files</source>
         <translation>Brani FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="82"/>
+        <location filename="../decoderflacfactory.cpp" line="120"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Info sul modulo audio FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="83"/>
+        <location filename="../decoderflacfactory.cpp" line="121"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Modulo Audio FLAC per Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="84"/>
+        <location filename="../decoderflacfactory.cpp" line="122"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -58,6 +57,11 @@
         <translation>Dimensione branmo:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="79"/>
+        <location filename="../detailsdialog.ui" line="96"/>
+        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="159"/>
+        <location filename="../detailsdialog.ui" line="166"/>
         <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation>-</translation>

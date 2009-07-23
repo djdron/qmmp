@@ -9,17 +9,17 @@
         <translation>SRC-Modul</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="49"/>
+        <location filename="../effectsrconverterfactory.cpp" line="50"/>
         <source>About Sample Rate Converter Plugin</source>
         <translation>Über „Sample Rate Converter“-Modul</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="50"/>
+        <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
         <translation>Qmmp „Sample Rate Converter“-Modul</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="51"/>
+        <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -67,14 +67,12 @@
         <translation>Linear</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="90"/>
         <source>&amp;OK</source>
-        <translation>&amp;OK</translation>
+        <translation type="obsolete">&amp;OK</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="97"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Abbrechen</translation>
+        <translation type="obsolete">&amp;Abbrechen</translation>
     </message>
 </context>
 </TS>

@@ -31,7 +31,8 @@ TRANSLATIONS = translations/pulseaudio_plugin_cs.ts \
                translations/pulseaudio_plugin_ru.ts \
                translations/pulseaudio_plugin_pl.ts \
                translations/pulseaudio_plugin_uk_UA.ts \
-               translations/pulseaudio_it.ts
+               translations/pulseaudio_plugin_it.ts \
+               translations/pulseaudio_plugin_tr.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){
