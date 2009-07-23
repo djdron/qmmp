@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_CN">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_CN">
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
@@ -8,17 +9,17 @@
         <translation>SRC 插件</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="49"/>
+        <location filename="../effectsrconverterfactory.cpp" line="50"/>
         <source>About Sample Rate Converter Plugin</source>
         <translation>关于取样率转换插件</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="50"/>
+        <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
         <translation>Qmmp 取样率转换插件</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="51"/>
+        <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -66,14 +67,12 @@
         <translation>线性插入</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="90"/>
         <source>&amp;OK</source>
-        <translation>确定(&amp;O)</translation>
+        <translation type="obsolete">确定(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="97"/>
         <source>&amp;Cancel</source>
-        <translation>取消(&amp;A)</translation>
+        <translation type="obsolete">取消(&amp;A)</translation>
     </message>
 </context>
 </TS>

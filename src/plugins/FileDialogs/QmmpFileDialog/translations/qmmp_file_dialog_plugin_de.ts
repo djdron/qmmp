@@ -14,6 +14,9 @@
         <translation>Nach oben</translation>
     </message>
     <message>
+        <location filename="../qmmpfiledialog.ui" line="40"/>
+        <location filename="../qmmpfiledialog.ui" line="53"/>
+        <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
         <translation>...</translation>
@@ -57,17 +60,18 @@
 <context>
     <name>QmmpFileDialogFactory</name>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="118"/>
+        <location filename="../qmmpfiledialog.cpp" line="121"/>
+        <location filename="../qmmpfiledialog.cpp" line="130"/>
         <source>Qmmp File Dialog</source>
         <translation>Qmmp Datei-Dialog</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="117"/>
+        <location filename="../qmmpfiledialog.cpp" line="129"/>
         <source>About Qmmp File Dialog</source>
         <translation>Über Qmmp Datei-Dialog</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="121"/>
+        <location filename="../qmmpfiledialog.cpp" line="131"/>
         <source>Writen by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
@@ -76,7 +80,7 @@ Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="122"/>
+        <location filename="../qmmpfiledialog.cpp" line="134"/>
         <source>Some code is copied from the Qt library</source>
         <translation>Einige Codezeilen wurden von der Qt-Bibliothek übernommen</translation>
     </message>
@@ -84,27 +88,27 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
 <context>
     <name>QmmpFileDialogImpl</name>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="241"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="259"/>
         <source>Add</source>
         <translation>Hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="254"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="272"/>
         <source>Save</source>
         <translation>Speichern</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="270"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="288"/>
         <source>Directories</source>
         <translation>Verzeichnisse</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="439"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="457"/>
         <source>already exists.</source>
         <translation>existiert bereits.</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="440"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="458"/>
         <source>Do you want to replace it?</source>
         <translation>Möchten Sie es ersetzen?</translation>
     </message>

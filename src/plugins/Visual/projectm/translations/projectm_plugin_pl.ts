@@ -4,9 +4,9 @@
 <context>
     <name>ProjectMPlugin</name>
     <message>
-        <location filename="../projectmplugin.cpp" line="41"/>
-        <source>projectM</source>
-        <translation>projectM</translation>
+        <location filename="../projectmplugin.cpp" line="40"/>
+        <source>ProjectM</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -95,32 +95,32 @@
 <context>
     <name>VisualProjectMFactory</name>
     <message>
-        <location filename="../visualprojectmfactory.cpp" line="28"/>
+        <location filename="../visualprojectmfactory.cpp" line="29"/>
         <source>ProjectM</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../visualprojectmfactory.cpp" line="48"/>
+        <location filename="../visualprojectmfactory.cpp" line="49"/>
         <source>About ProjectM Visual Plugin</source>
         <translation>O Wtyczce ProjectM</translation>
     </message>
     <message>
-        <location filename="../visualprojectmfactory.cpp" line="49"/>
+        <location filename="../visualprojectmfactory.cpp" line="50"/>
         <source>Qmmp ProjectM Visual Plugin</source>
         <translation>Wtyczka ProjectM dla Qmmp</translation>
     </message>
     <message>
-        <location filename="../visualprojectmfactory.cpp" line="50"/>
+        <location filename="../visualprojectmfactory.cpp" line="51"/>
         <source>This plugins adds projectM visualization</source>
         <translation>Ta wtyczka dodaje obsługę wizualizacji projectM</translation>
     </message>
     <message>
-        <location filename="../visualprojectmfactory.cpp" line="51"/>
+        <location filename="../visualprojectmfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../visualprojectmfactory.cpp" line="52"/>
+        <location filename="../visualprojectmfactory.cpp" line="53"/>
         <source>Based on llibrojectM-qt library</source>
         <translation>Oparta na bibliotece llibrojectM-qt</translation>
     </message>

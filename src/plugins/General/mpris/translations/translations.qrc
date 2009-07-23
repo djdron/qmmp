@@ -9,5 +9,6 @@
     <file>mpris_plugin_pl.qm</file>
     <file>mpris_plugin_ru.qm</file>
     <file>mpris_plugin_uk_UA.qm</file>
+    <file>mpris_plugin_tr.qm</file>
   </qresource>
 </RCC>

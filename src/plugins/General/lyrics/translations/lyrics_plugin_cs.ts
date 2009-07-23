@@ -45,43 +45,43 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="90"/>
+        <location filename="../lyricswindow.cpp" line="91"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Text: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="66"/>
+        <location filename="../lyricswindow.cpp" line="67"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Nespojeno</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="69"/>
+        <location filename="../lyricswindow.cpp" line="70"/>
         <source>Looking up host...</source>
         <translation>Vyhledávám hostitele...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="72"/>
+        <location filename="../lyricswindow.cpp" line="73"/>
         <source>Connecting...</source>
         <translation>Připojuji se...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="75"/>
+        <location filename="../lyricswindow.cpp" line="76"/>
         <source>Sending request...</source>
         <translation>Zasílám požadavek...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="78"/>
+        <location filename="../lyricswindow.cpp" line="79"/>
         <source>Receiving</source>
         <translation>Příjímám</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="81"/>
+        <location filename="../lyricswindow.cpp" line="82"/>
         <source>Connected</source>
         <translation>Připojeno</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="84"/>
+        <location filename="../lyricswindow.cpp" line="85"/>
         <source>Closing connection...</source>
         <translation>Zavírám spojení...</translation>
     </message>

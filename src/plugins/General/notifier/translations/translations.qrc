@@ -9,5 +9,6 @@
     <file>notifier_plugin_pl.qm</file>
     <file>notifier_plugin_ru.qm</file>
     <file>notifier_plugin_uk_UA.qm</file>
+    <file>notifier_plugin_tr.qm</file>
   </qresource>
 </RCC>

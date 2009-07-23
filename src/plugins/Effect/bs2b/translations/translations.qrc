@@ -1,7 +1,7 @@
 <!DOCTYPE RCC>
 <RCC version="1.0">
   <qresource>
-	<file>bs2b_plugin_it.qm</file>
+    <file>bs2b_plugin_it.qm</file>
     <file>bs2b_plugin_cs.qm</file>
     <file>bs2b_plugin_de.qm</file>
     <file>bs2b_plugin_zh_CN.qm</file>
@@ -9,5 +9,6 @@
     <file>bs2b_plugin_uk_UA.qm</file>
     <file>bs2b_plugin_pl.qm</file>
     <file>bs2b_plugin_ru.qm</file>
+    <file>bs2b_plugin_tr.qm</file>
   </qresource>
 </RCC>

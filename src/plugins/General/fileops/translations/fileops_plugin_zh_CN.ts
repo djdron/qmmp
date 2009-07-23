@@ -29,12 +29,12 @@
         <translation>正在复制文件 %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="175"/>
+        <location filename="../fileops.cpp" line="176"/>
         <source>Remove files</source>
         <translation>删除文件</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="176"/>
+        <location filename="../fileops.cpp" line="177"/>
         <source>Are you sure you want to remove %1 file(s) from disk</source>
         <translation>您确定要从磁盘中删除 %1 文件</translation>
     </message>
@@ -83,75 +83,75 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="51"/>
-        <location filename="../settingsdialog.cpp" line="131"/>
+        <location filename="../settingsdialog.cpp" line="52"/>
+        <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="52"/>
-        <location filename="../settingsdialog.cpp" line="132"/>
+        <location filename="../settingsdialog.cpp" line="53"/>
+        <location filename="../settingsdialog.cpp" line="133"/>
         <source>Rename</source>
         <translation>重命名</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="54"/>
-        <location filename="../settingsdialog.cpp" line="134"/>
+        <location filename="../settingsdialog.cpp" line="55"/>
+        <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="137"/>
+        <location filename="../settingsdialog.cpp" line="138"/>
         <source>New action</source>
         <translation>新建动作</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="191"/>
+        <location filename="../settingsdialog.cpp" line="192"/>
         <source>Artist</source>
         <translation>艺术家</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="192"/>
+        <location filename="../settingsdialog.cpp" line="193"/>
         <source>Album</source>
         <translation>专辑</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="193"/>
+        <location filename="../settingsdialog.cpp" line="194"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="194"/>
+        <location filename="../settingsdialog.cpp" line="195"/>
         <source>Tracknumber</source>
         <translation>音轨</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="195"/>
+        <location filename="../settingsdialog.cpp" line="196"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="196"/>
+        <location filename="../settingsdialog.cpp" line="197"/>
         <source>Filename</source>
         <translation>文件名</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="197"/>
+        <location filename="../settingsdialog.cpp" line="198"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="198"/>
+        <location filename="../settingsdialog.cpp" line="199"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
+        <location filename="../settingsdialog.cpp" line="200"/>
         <source>Comment</source>
         <translation>备注</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="215"/>
+        <location filename="../settingsdialog.cpp" line="216"/>
         <source>Choose a directory</source>
         <translation>选择一个目录</translation>
     </message>

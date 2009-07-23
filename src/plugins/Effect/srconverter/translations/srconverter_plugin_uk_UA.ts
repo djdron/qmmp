@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
@@ -8,17 +9,17 @@
         <translation>Модуль SRC</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="49"/>
+        <location filename="../effectsrconverterfactory.cpp" line="50"/>
         <source>About Sample Rate Converter Plugin</source>
         <translation>Про модуль Sample Rate Converter</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="50"/>
+        <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
         <translation>Модуль Sample Rate Converter для Qmmp</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="51"/>
+        <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -66,14 +67,12 @@
         <translation>Лінійна інтерполяція</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="90"/>
         <source>&amp;OK</source>
-        <translation>&amp;Застосувати</translation>
+        <translation type="obsolete">&amp;Застосувати</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="97"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Відмінити</translation>
+        <translation type="obsolete">&amp;Відмінити</translation>
     </message>
 </context>
 </TS>

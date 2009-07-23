@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="141"/>
+        <location filename="../decoderffmpegfactory.cpp" line="149"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Über FFmpeg-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="143"/>
+        <location filename="../decoderffmpegfactory.cpp" line="151"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="153"/>
+        <location filename="../decoderffmpegfactory.cpp" line="161"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="79"/>
+        <location filename="../decoderffmpegfactory.cpp" line="83"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="81"/>
+        <location filename="../decoderffmpegfactory.cpp" line="85"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg-Formate</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="145"/>
+        <location filename="../decoderffmpegfactory.cpp" line="153"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Kompiliert gegen libavformat-%1.%2.%3 und libavcodec-%4.%5.%6</translation>
     </message>
@@ -37,17 +37,17 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="94"/>
+        <location filename="../detailsdialog.cpp" line="95"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="109"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="91"/>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
@@ -62,6 +62,10 @@
         <translation>Dateigröße:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="58"/>
+        <location filename="../detailsdialog.ui" line="75"/>
+        <location filename="../detailsdialog.ui" line="92"/>
+        <location filename="../detailsdialog.ui" line="118"/>
         <location filename="../detailsdialog.ui" line="135"/>
         <source>-</source>
         <translation>-</translation>

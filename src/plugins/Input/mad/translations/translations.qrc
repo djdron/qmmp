@@ -9,5 +9,6 @@
     <file>mad_plugin_cs.qm</file>
     <file>mad_plugin_de.qm</file>
     <file>mad_plugin_pl.qm</file>
+    <file>mad_plugin_tr.qm</file>
   </qresource>
 </RCC>

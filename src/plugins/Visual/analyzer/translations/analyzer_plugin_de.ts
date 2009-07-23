@@ -4,7 +4,7 @@
 <context>
     <name>Analyzer</name>
     <message>
-        <location filename="../analyzer.cpp" line="49"/>
+        <location filename="../analyzer.cpp" line="48"/>
         <source>Qmmp Analyzer</source>
         <translation>Qmmp Analyzer</translation>
     </message>
@@ -32,26 +32,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="55"/>
         <location filename="../settingsdialog.ui" line="97"/>
         <source>Slowest</source>
         <translation>Sehr langsam</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="60"/>
         <location filename="../settingsdialog.ui" line="102"/>
         <source>Slow</source>
         <translation>Langsam</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="65"/>
         <location filename="../settingsdialog.ui" line="107"/>
         <source>Medium</source>
         <translation>Mittel</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="70"/>
         <location filename="../settingsdialog.ui" line="112"/>
         <source>Fast</source>
         <translation>Schnell</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="75"/>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Fastest</source>
         <translation>Sehr schnell</translation>
@@ -115,16 +120,6 @@
         <location filename="../settingsdialog.ui" line="294"/>
         <source>Analyzer #3:</source>
         <translation>Analyzer Nr. 3:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="351"/>
-        <source>&amp;OK</source>
-        <translation>&amp;OK</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="370"/>
-        <source>&amp;Cancel</source>
-        <translation>&amp;Abbrechen</translation>
     </message>
 </context>
 <context>

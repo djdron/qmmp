@@ -9,5 +9,6 @@
     <file>ffmpeg_plugin_cs.qm</file>
     <file>ffmpeg_plugin_de.qm</file>
     <file>ffmpeg_plugin_pl.qm</file>
+    <file>ffmpeg_plugin_tr.qm</file>
   </qresource>
 </RCC>

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderFLACFactory</name>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="26"/>
+        <location filename="../decoderflacfactory.cpp" line="51"/>
         <source>FLAC Plugin</source>
         <translation>Модуль FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="28"/>
+        <location filename="../decoderflacfactory.cpp" line="53"/>
         <source>FLAC Files</source>
         <translation>Файли FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="82"/>
+        <location filename="../decoderflacfactory.cpp" line="120"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Про аудіо-модуль FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="83"/>
+        <location filename="../decoderflacfactory.cpp" line="121"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Аудіо-модуль FLAC для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="84"/>
+        <location filename="../decoderflacfactory.cpp" line="122"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -47,6 +47,11 @@
         <translation>Інформація FLAC</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="79"/>
+        <location filename="../detailsdialog.ui" line="96"/>
+        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="159"/>
+        <location filename="../detailsdialog.ui" line="166"/>
         <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation></translation>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS>
+<TS version="2.0" language="cs">
 <context>
     <name>DecoderMPCFactory</name>
     <message>
@@ -13,17 +14,17 @@
         <translation>Soubory Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="102"/>
+        <location filename="../decodermpcfactory.cpp" line="103"/>
         <source>About Musepack Audio Plugin</source>
         <translation>O modulu Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="103"/>
+        <location filename="../decodermpcfactory.cpp" line="104"/>
         <source>Qmmp Musepack Audio Plugin</source>
         <translation>Vstupní modul Qmmp Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="104"/>
+        <location filename="../decodermpcfactory.cpp" line="105"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -56,6 +57,11 @@
         <translation>Velikost souboru:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="79"/>
+        <location filename="../detailsdialog.ui" line="96"/>
+        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="159"/>
+        <location filename="../detailsdialog.ui" line="166"/>
         <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation>-</translation>

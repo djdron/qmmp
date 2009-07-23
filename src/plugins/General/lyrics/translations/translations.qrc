@@ -9,5 +9,6 @@
     <file>lyrics_plugin_cs.qm</file>
     <file>lyrics_plugin_pl.qm</file>
     <file>lyrics_plugin_de.qm</file>
+    <file>lyrics_plugin_tr.qm</file>
   </qresource>
 </RCC>

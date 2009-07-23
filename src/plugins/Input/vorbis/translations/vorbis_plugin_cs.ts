@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS>
+<TS version="2.0" language="cs">
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
@@ -28,7 +29,7 @@
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="117"/>
+        <location filename="../decodervorbisfactory.cpp" line="116"/>
         <source>Source code based on mq3 progect</source>
         <translation>Zdrojový kód je založen na projektu mq3</translation>
     </message>
@@ -36,6 +37,8 @@
 <context>
     <name>DetailsDialog</name>
     <message>
+        <location filename="../detailsdialog.cpp" line="65"/>
+        <location filename="../detailsdialog.cpp" line="67"/>
         <location filename="../detailsdialog.cpp" line="69"/>
         <source>kbps</source>
         <translation>kbps</translation>
@@ -61,6 +64,12 @@
         <translation>Velikost souboru:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="66"/>
+        <location filename="../detailsdialog.ui" line="76"/>
+        <location filename="../detailsdialog.ui" line="93"/>
+        <location filename="../detailsdialog.ui" line="110"/>
+        <location filename="../detailsdialog.ui" line="170"/>
+        <location filename="../detailsdialog.ui" line="177"/>
         <location filename="../detailsdialog.ui" line="197"/>
         <source>-</source>
         <translation>-</translation>

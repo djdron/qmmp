@@ -4,42 +4,42 @@
 <context>
     <name>EffectBs2bFactory</name>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="30"/>
+        <location filename="../effectbs2bfactory.cpp" line="31"/>
         <source>BS2B Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="50"/>
+        <location filename="../effectbs2bfactory.cpp" line="51"/>
         <source>About BS2B Effect Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="51"/>
+        <location filename="../effectbs2bfactory.cpp" line="52"/>
         <source>This is the Qmmp plugin version of Boris Mikhaylov&apos;s headphone DSP effect &quot;Bauer stereophonic-to-binaural&quot;, abbreviated bs2b.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="53"/>
+        <location filename="../effectbs2bfactory.cpp" line="54"/>
         <source>Visit %1 for more details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="55"/>
+        <location filename="../effectbs2bfactory.cpp" line="56"/>
         <source>Compiled against libbs2b-%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="56"/>
+        <location filename="../effectbs2bfactory.cpp" line="57"/>
         <source>Developers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="57"/>
+        <location filename="../effectbs2bfactory.cpp" line="58"/>
         <source>Ilya Kotov</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../effectbs2bfactory.cpp" line="58"/>
+        <location filename="../effectbs2bfactory.cpp" line="59"/>
         <source>Sebastian Pipping</source>
         <translation type="unfinished"></translation>
     </message>

@@ -28,7 +28,8 @@ TRANSLATIONS = translations/srconverter_plugin_cs.ts \
                translations/srconverter_plugin_uk_UA.ts \
                translations/srconverter_plugin_pl.ts \
                translations/srconverter_plugin_ru.ts \
-               translations/srconverter_plugin_it.ts
+               translations/srconverter_plugin_it.ts \
+               translations/srconverter_plugin_tr.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

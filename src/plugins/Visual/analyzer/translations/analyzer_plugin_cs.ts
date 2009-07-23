@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS>
+<TS version="2.0" language="cs">
 <context>
     <name>Analyzer</name>
     <message>
-        <location filename="../analyzer.cpp" line="49"/>
+        <location filename="../analyzer.cpp" line="48"/>
         <source>Qmmp Analyzer</source>
         <translation>Qmmp frekvenční analyzátor</translation>
     </message>
@@ -31,26 +32,31 @@
         <translation>Pokles analyzátoru:</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="55"/>
         <location filename="../settingsdialog.ui" line="97"/>
         <source>Slowest</source>
         <translation>Nejpomalejší</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="60"/>
         <location filename="../settingsdialog.ui" line="102"/>
         <source>Slow</source>
         <translation>Pomalý</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="65"/>
         <location filename="../settingsdialog.ui" line="107"/>
         <source>Medium</source>
         <translation>Střední</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="70"/>
         <location filename="../settingsdialog.ui" line="112"/>
         <source>Fast</source>
         <translation>Rychlý</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="75"/>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Fastest</source>
         <translation>Nejrychlejší</translation>
@@ -114,16 +120,6 @@
         <location filename="../settingsdialog.ui" line="294"/>
         <source>Analyzer #3:</source>
         <translation>Analyzátor #3:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="351"/>
-        <source>&amp;OK</source>
-        <translation>&amp;OK</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="370"/>
-        <source>&amp;Cancel</source>
-        <translation>Z&amp;rušit</translation>
     </message>
 </context>
 <context>

@@ -19,7 +19,8 @@ TRANSLATIONS = translations/hal_plugin_cs.ts \
                translations/hal_plugin_ru.ts \
                translations/hal_plugin_pl.ts \
                translations/hal_plugin_uk_UA.ts \
-               translations/hal_plugin_it.ts
+               translations/hal_plugin_it.ts \
+               translations/hal_plugin_tr.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

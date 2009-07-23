@@ -9,5 +9,6 @@
     <file>statusicon_plugin_pl.qm</file>
     <file>statusicon_plugin_ru.qm</file>
     <file>statusicon_plugin_uk_UA.qm</file>
+    <file>statusicon_plugin_tr.qm</file>
   </qresource>
 </RCC>

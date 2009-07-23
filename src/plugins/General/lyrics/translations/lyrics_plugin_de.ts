@@ -45,43 +45,43 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="90"/>
+        <location filename="../lyricswindow.cpp" line="91"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Liedtext: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="66"/>
+        <location filename="../lyricswindow.cpp" line="67"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Keine Verbindung</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="69"/>
+        <location filename="../lyricswindow.cpp" line="70"/>
         <source>Looking up host...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="72"/>
+        <location filename="../lyricswindow.cpp" line="73"/>
         <source>Connecting...</source>
         <translation>Verbinde...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="75"/>
+        <location filename="../lyricswindow.cpp" line="76"/>
         <source>Sending request...</source>
         <translation>Sende Anfrage...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="78"/>
+        <location filename="../lyricswindow.cpp" line="79"/>
         <source>Receiving</source>
         <translation>Empfange</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="81"/>
+        <location filename="../lyricswindow.cpp" line="82"/>
         <source>Connected</source>
         <translation>Verbunden</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="84"/>
+        <location filename="../lyricswindow.cpp" line="85"/>
         <source>Closing connection...</source>
         <translation>Beende Verbindung...</translation>
     </message>

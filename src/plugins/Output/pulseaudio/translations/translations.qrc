@@ -8,5 +8,6 @@
     <file>pulseaudio_plugin_zh_TW.qm</file>
     <file>pulseaudio_plugin_ru.qm</file>
     <file>pulseaudio_plugin_uk_UA.qm</file>
+    <file>pulseaudio_plugin_tr.qm</file>
   </qresource>
 </RCC>

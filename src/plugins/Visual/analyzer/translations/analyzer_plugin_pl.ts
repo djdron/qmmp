@@ -4,7 +4,7 @@
 <context>
     <name>Analyzer</name>
     <message>
-        <location filename="../analyzer.cpp" line="49"/>
+        <location filename="../analyzer.cpp" line="48"/>
         <source>Qmmp Analyzer</source>
         <translation>Qmmp Analizator</translation>
     </message>

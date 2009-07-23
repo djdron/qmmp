@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="zh_CN">
+<!DOCTYPE TS>
+<TS version="2.0" language="zh_CN">
 <context>
     <name>DecoderMPCFactory</name>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="26"/>
+        <location filename="../decodermpcfactory.cpp" line="46"/>
         <source>Musepack Plugin</source>
         <translation>Musepack 插件</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="28"/>
+        <location filename="../decodermpcfactory.cpp" line="48"/>
         <source>Musepack Files</source>
         <translation>Musepack 文件</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="82"/>
+        <location filename="../decodermpcfactory.cpp" line="103"/>
         <source>About Musepack Audio Plugin</source>
         <translation>关于 Musepack 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="83"/>
+        <location filename="../decodermpcfactory.cpp" line="104"/>
         <source>Qmmp Musepack Audio Plugin</source>
         <translation>Qmmp Musepack 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="84"/>
+        <location filename="../decodermpcfactory.cpp" line="105"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -41,6 +42,11 @@
         <translation>Musepack 信息</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="79"/>
+        <location filename="../detailsdialog.ui" line="96"/>
+        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="159"/>
+        <location filename="../detailsdialog.ui" line="166"/>
         <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation>-</translation>

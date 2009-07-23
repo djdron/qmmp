@@ -4,27 +4,27 @@
 <context>
     <name>DecoderFLACFactory</name>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="26"/>
+        <location filename="../decoderflacfactory.cpp" line="51"/>
         <source>FLAC Plugin</source>
         <translation>FLAC-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="28"/>
+        <location filename="../decoderflacfactory.cpp" line="53"/>
         <source>FLAC Files</source>
         <translation>FLAC-Dateien</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="82"/>
+        <location filename="../decoderflacfactory.cpp" line="120"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Über FLAC-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="83"/>
+        <location filename="../decoderflacfactory.cpp" line="121"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Qmmp FLAC-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="84"/>
+        <location filename="../decoderflacfactory.cpp" line="122"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -57,6 +57,11 @@
         <translation>Dateigröße:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="79"/>
+        <location filename="../detailsdialog.ui" line="96"/>
+        <location filename="../detailsdialog.ui" line="113"/>
+        <location filename="../detailsdialog.ui" line="159"/>
+        <location filename="../detailsdialog.ui" line="166"/>
         <location filename="../detailsdialog.ui" line="183"/>
         <source>-</source>
         <translation>-</translation>
