@@ -94,8 +94,8 @@ void Qmmp::setProxy (const QUrl &proxy)
 
 const QString Qmmp::pluginsPath()
 {
-    const char *path = qgetenv("QMMP_PLUGINS");
-    if (path)
+    QByteArray path = qgetenv("QMMP_PLUGINS");
+    if (!path.isEmpty())
        return path;
 #ifdef QMMP_INSTALL_PREFIX
     QDir dir(QMMP_INSTALL_PREFIX"/"LIB_DIR"/qmmp");
