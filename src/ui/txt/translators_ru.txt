@@ -5,11 +5,17 @@
 Итальянский:
     Gian Paolo Renello <emmerkar@gmail.com>
 
+Казахский:
+    Бауржан Муфтахидинов <baurthefirst@gmail.com>
+
 Китайский традиционный:
     lon <lon83129@126.com>
 
 Китайский упрощённый:
     lon <lon83129@126.com>
+
+Литовский:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
 
 Польский
    Grzegorz Gibas <amigib@gmail.com>
