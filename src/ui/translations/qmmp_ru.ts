@@ -1033,7 +1033,7 @@
     <message>
         <location filename="../playlist.cpp" line="173"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished"></translation>
+        <translation>Удалить недоступные файлы</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="176"/>
