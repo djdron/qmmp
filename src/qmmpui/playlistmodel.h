@@ -311,6 +311,10 @@ public slots:
      */
     void removeAt (int i);
     /*!
+     * Removes item \b item from playlist
+     */
+    void removeItem (PlayListItem *item);
+    /*!
      * Inverts selection (selects unselected items and unselects selected items)
      */
     void invertSelection();
@@ -417,6 +421,10 @@ public slots:
      * "%g" - genre, "%f" - file name, "%F" - full path, "%y" - year)
      */
     void setFormat(const QString &format);
+    /*!
+     * Removes invalid items from playlist
+     */
+    void clearInvalidItems();
 
 private:
     /*!
