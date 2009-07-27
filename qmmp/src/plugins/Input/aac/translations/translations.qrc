@@ -10,5 +10,6 @@
     <file>aac_plugin_de.qm</file>
     <file>aac_plugin_pl.qm</file>
     <file>aac_plugin_tr.qm</file>
+    <file>aac_plugin_lt.qm</file>
   </qresource>
 </RCC>

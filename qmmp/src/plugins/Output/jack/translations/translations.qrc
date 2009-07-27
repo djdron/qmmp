@@ -10,5 +10,6 @@
     <file>jack_plugin_pl.qm</file>
     <file>jack_plugin_de.qm</file>
     <file>jack_plugin_tr.qm</file>
+    <file>jack_plugin_lt.qm</file>
   </qresource>
 </RCC>

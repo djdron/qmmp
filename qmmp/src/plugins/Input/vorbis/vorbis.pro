@@ -28,7 +28,8 @@ TRANSLATIONS = translations/vorbis_plugin_ru.ts \
                translations/vorbis_plugin_pl.ts \
                translations/vorbis_plugin_de.ts \
                translations/vorbis_plugin_it.ts \
-               translations/vorbis_plugin_tr.ts
+               translations/vorbis_plugin_tr.ts \
+               translations/vorbis_plugin_lt.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

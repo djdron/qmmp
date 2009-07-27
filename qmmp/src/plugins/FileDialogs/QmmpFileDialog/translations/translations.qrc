@@ -9,5 +9,6 @@
     <file>qmmp_file_dialog_plugin_pl.qm</file>
     <file>qmmp_file_dialog_plugin_ru.qm</file>
     <file>qmmp_file_dialog_plugin_uk_UA.qm</file>
+    <file>qmmp_file_dialog_plugin_lt.qm</file>
   </qresource>
 </RCC>

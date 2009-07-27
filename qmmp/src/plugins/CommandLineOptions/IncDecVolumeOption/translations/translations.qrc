@@ -10,5 +10,6 @@
   <file>incdecvolume_plugin_zh_TW.qm</file>
   <file>incdecvolume_plugin_zh_CN.qm</file>
   <file>incdecvolume_plugin_tr.qm</file>
+  <file>incdecvolume_plugin_lt.qm</file>
   </qresource>
 </RCC>

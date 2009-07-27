@@ -32,7 +32,8 @@ TRANSLATIONS = translations/alsa_plugin_ru.ts \
                translations/alsa_plugin_pl.ts \
                translations/alsa_plugin_de.ts \
                translations/alsa_plugin_it.ts \
-               translations/alsa_plugin_tr.ts
+               translations/alsa_plugin_tr.ts \
+               translations/alsa_plugin_lt.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty (LIB_DIR){

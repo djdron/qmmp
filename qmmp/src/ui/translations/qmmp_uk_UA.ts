@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -173,16 +173,29 @@
 <context>
     <name>ConfigDialog</name>
     <message>
+        <location filename="../configdialog.cpp" line="220"/>
+        <location filename="../configdialog.cpp" line="250"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="315"/>
         <location filename="../configdialog.cpp" line="348"/>
         <source>Enabled</source>
         <translation>Увімкнено</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="220"/>
+        <location filename="../configdialog.cpp" line="250"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="315"/>
         <location filename="../configdialog.cpp" line="348"/>
         <source>Description</source>
         <translation>Пояснення</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="220"/>
+        <location filename="../configdialog.cpp" line="250"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="315"/>
+        <location filename="../configdialog.cpp" line="348"/>
         <location filename="../configdialog.cpp" line="537"/>
         <source>Filename</source>
         <translation>Им&apos;я файлу</translation>
@@ -258,11 +271,14 @@
         <translation>Список:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="259"/>
         <location filename="../forms/configdialog.ui" line="295"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="266"/>
+        <location filename="../forms/configdialog.ui" line="302"/>
         <location filename="../forms/configdialog.ui" line="357"/>
         <source>...</source>
         <translation>...</translation>
@@ -303,6 +319,7 @@
         <translation>Налаштування</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="446"/>
         <location filename="../forms/configdialog.ui" line="622"/>
         <source>Information</source>
         <translation>Інформація</translation>
@@ -313,6 +330,7 @@
         <translation>Зовнішній вигляд</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="101"/>
         <location filename="../forms/configdialog.ui" line="705"/>
         <source>Playlist</source>
         <translation>Список</translation>
@@ -482,6 +500,8 @@
         <translation>Головне вікно</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="674"/>
+        <location filename="../forms/configdialog.ui" line="698"/>
         <location filename="../forms/configdialog.ui" line="722"/>
         <source>0</source>
         <translation></translation>
@@ -495,6 +515,7 @@
 <context>
     <name>EqWidget</name>
     <message>
+        <location filename="../eqwidget.cpp" line="153"/>
         <location filename="../eqwidget.cpp" line="176"/>
         <source>preset</source>
         <translation>предвстановлення</translation>
@@ -548,11 +569,14 @@
 <context>
     <name>JumpToTrackDialog</name>
     <message>
+        <location filename="../jumptotrackdialog.cpp" line="81"/>
         <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Unqueue</source>
         <translation>Зняти з черги</translation>
     </message>
     <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="79"/>
+        <location filename="../jumptotrackdialog.cpp" line="83"/>
         <location filename="../jumptotrackdialog.cpp" line="139"/>
         <source>Queue</source>
         <translation>В чергу</translation>
@@ -734,26 +758,31 @@
         <translation>Падіння аналізатора</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="345"/>
         <location filename="../mainvisual.cpp" line="359"/>
         <source>Slowest</source>
         <translation>Найповільніше</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="346"/>
         <location filename="../mainvisual.cpp" line="360"/>
         <source>Slow</source>
         <translation>Повільне</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="347"/>
         <location filename="../mainvisual.cpp" line="361"/>
         <source>Medium</source>
         <translation>Середнє</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="348"/>
         <location filename="../mainvisual.cpp" line="362"/>
         <source>Fast</source>
         <translation>Швидке</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="349"/>
         <location filename="../mainvisual.cpp" line="363"/>
         <source>Fastest</source>
         <translation>Найшвидше</translation>
@@ -777,6 +806,7 @@
 <context>
     <name>MainWindow</name>
     <message>
+        <location filename="../mainwindow.cpp" line="63"/>
         <location filename="../mainwindow.cpp" line="493"/>
         <source>Default</source>
         <translation>За умовчанням</translation>
@@ -887,6 +917,7 @@
         <translation>&amp;Про програму</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="505"/>
         <location filename="../mainwindow.cpp" line="531"/>
         <source>Playlist Files</source>
         <translation>Файли списків</translation>
@@ -1010,21 +1041,25 @@
         <translation>Сортувати</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="185"/>
         <location filename="../playlist.cpp" line="212"/>
         <source>By Title</source>
         <translation>За назвою</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="189"/>
         <location filename="../playlist.cpp" line="216"/>
         <source>By Filename</source>
         <translation>За ім&apos;ям файлу</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="193"/>
         <location filename="../playlist.cpp" line="220"/>
         <source>By Path + Filename</source>
         <translation>За шляхом та файлом</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="197"/>
         <location filename="../playlist.cpp" line="224"/>
         <source>By Date</source>
         <translation>За датою</translation>
@@ -1100,6 +1135,7 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="201"/>
         <location filename="../playlist.cpp" line="228"/>
         <source>By Track Number</source>
         <translation></translation>

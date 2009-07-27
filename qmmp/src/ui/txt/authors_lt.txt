@@ -1,0 +1,12 @@
+Programos autoriai:
+
+    Ilya Kotov <forkotov02@hotmail.ru> (Idėja ir pagrindinis kodas)
+    Vladimir Kuznetsov <vovanec@gmail.com> (Išvaizda ir daugybė patobulinimų)
+
+Įskiepiai:
+
+    Yuriy Zhuravlev <stalkerg@gmail.com> (Įskiepiai jack, oss)
+
+Grafika:
+
+   Andrey Adreev <andreev00@gmail.com>

@@ -10,5 +10,6 @@
     <file>cue_plugin_de.qm</file>
     <file>cue_plugin_pl.qm</file>
     <file>cue_plugin_tr.qm</file>
+    <file>cue_plugin_lt.qm</file>
   </qresource>
 </RCC>
