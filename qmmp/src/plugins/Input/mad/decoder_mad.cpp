@@ -318,7 +318,7 @@ qint64 DecoderMAD::readAudio(char *data, qint64 size)
 {
     forever
     {
-        if((stream.error == MAD_ERROR_BUFLEN) || !stream.buffer)
+        if(((stream.error == MAD_ERROR_BUFLEN) || !stream.buffer) && !m_eof)
         {
             m_eof = !fillBuffer();
         }
