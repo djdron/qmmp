@@ -991,17 +991,17 @@
         <translation>D</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="174"/>
+        <location filename="../playlist.cpp" line="177"/>
         <source>Alt+I</source>
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="266"/>
+        <location filename="../playlist.cpp" line="269"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="282"/>
+        <location filename="../playlist.cpp" line="285"/>
         <source>O</source>
         <translation>O</translation>
     </message>
@@ -1032,90 +1032,95 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="173"/>
+        <source>Remove unavailable files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="176"/>
         <source>&amp;View Track Details</source>
         <translation>檢視音軌詳細資訊(&amp;V)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="182"/>
+        <location filename="../playlist.cpp" line="185"/>
         <source>Sort List</source>
         <translation>清單排序</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="185"/>
-        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="188"/>
+        <location filename="../playlist.cpp" line="215"/>
         <source>By Title</source>
         <translation>按標題</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="189"/>
-        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="192"/>
+        <location filename="../playlist.cpp" line="219"/>
         <source>By Filename</source>
         <translation>按檔名</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="193"/>
-        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="196"/>
+        <location filename="../playlist.cpp" line="223"/>
         <source>By Path + Filename</source>
         <translation>按路徑+檔名</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="197"/>
-        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="200"/>
+        <location filename="../playlist.cpp" line="227"/>
         <source>By Date</source>
         <translation>按日期</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="210"/>
+        <location filename="../playlist.cpp" line="213"/>
         <source>Sort Selection</source>
         <translation>選取排序</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="238"/>
+        <location filename="../playlist.cpp" line="241"/>
         <source>Randomize List</source>
         <translation>隨機產生清單</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="239"/>
+        <location filename="../playlist.cpp" line="242"/>
         <source>Reverse List</source>
         <translation>逆串列表</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="251"/>
+        <location filename="../playlist.cpp" line="254"/>
         <source>Invert Selection</source>
         <translation>反選</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="258"/>
+        <location filename="../playlist.cpp" line="261"/>
         <source>&amp;Select None</source>
         <translation>無選取(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="268"/>
         <source>&amp;Select All</source>
         <translation>選取全部(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="277"/>
         <source>&amp;New List</source>
         <translation>新建清單(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="275"/>
+        <location filename="../playlist.cpp" line="278"/>
         <source>Shift+N</source>
         <translation>Shift+N</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="284"/>
         <source>&amp;Load List</source>
         <translation>載入清單(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="287"/>
+        <location filename="../playlist.cpp" line="290"/>
         <source>&amp;Save List</source>
         <translation>儲存清單(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="288"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>
@@ -1135,23 +1140,23 @@
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="201"/>
-        <location filename="../playlist.cpp" line="228"/>
+        <location filename="../playlist.cpp" line="204"/>
+        <location filename="../playlist.cpp" line="231"/>
         <source>By Track Number</source>
         <translation>按音軌</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="247"/>
+        <location filename="../playlist.cpp" line="250"/>
         <source>&amp;Queue</source>
         <translation>佇列(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="247"/>
+        <location filename="../playlist.cpp" line="250"/>
         <source>Q</source>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="247"/>
         <source>Actions</source>
         <translation>動作</translation>
     </message>

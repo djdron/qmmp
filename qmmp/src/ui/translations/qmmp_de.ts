@@ -1022,105 +1022,110 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="173"/>
+        <source>Remove unavailable files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="176"/>
         <source>&amp;View Track Details</source>
         <translation>&amp;Titeldetails anzeigen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="174"/>
+        <location filename="../playlist.cpp" line="177"/>
         <source>Alt+I</source>
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="182"/>
+        <location filename="../playlist.cpp" line="185"/>
         <source>Sort List</source>
         <translation>Wiedergabeliste sortieren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="185"/>
-        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="188"/>
+        <location filename="../playlist.cpp" line="215"/>
         <source>By Title</source>
         <translation>Nach Titel</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="189"/>
-        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="192"/>
+        <location filename="../playlist.cpp" line="219"/>
         <source>By Filename</source>
         <translation>Nach Dateinamen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="193"/>
-        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="196"/>
+        <location filename="../playlist.cpp" line="223"/>
         <source>By Path + Filename</source>
         <translation>Nach Pfad + Dateinamen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="197"/>
-        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="200"/>
+        <location filename="../playlist.cpp" line="227"/>
         <source>By Date</source>
         <translation>Nach Datum</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="210"/>
+        <location filename="../playlist.cpp" line="213"/>
         <source>Sort Selection</source>
         <translation>Auswahl sortieren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="238"/>
+        <location filename="../playlist.cpp" line="241"/>
         <source>Randomize List</source>
         <translation>Wiedergabeliste mischen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="239"/>
+        <location filename="../playlist.cpp" line="242"/>
         <source>Reverse List</source>
         <translation>Wiedergabeliste umkehren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="251"/>
+        <location filename="../playlist.cpp" line="254"/>
         <source>Invert Selection</source>
         <translation>Auswahl umkehren</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="258"/>
+        <location filename="../playlist.cpp" line="261"/>
         <source>&amp;Select None</source>
         <translation>&amp;Auswahl aufheben</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="268"/>
         <source>&amp;Select All</source>
         <translation>Alle aus&amp;wählen</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="266"/>
+        <location filename="../playlist.cpp" line="269"/>
         <source>Ctrl+A</source>
         <translation>Strg+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="277"/>
         <source>&amp;New List</source>
         <translation>&amp;Neue Wiedergabeliste</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="275"/>
+        <location filename="../playlist.cpp" line="278"/>
         <source>Shift+N</source>
         <translation>Umschalt+N</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="284"/>
         <source>&amp;Load List</source>
         <translation>Wiedergabeliste &amp;laden</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="282"/>
+        <location filename="../playlist.cpp" line="285"/>
         <source>O</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="287"/>
+        <location filename="../playlist.cpp" line="290"/>
         <source>&amp;Save List</source>
         <translation>Wiedergabeliste &amp;speichern</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="288"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>Shift+S</source>
         <translation>Umschalt+S</translation>
     </message>
@@ -1135,23 +1140,23 @@
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="201"/>
-        <location filename="../playlist.cpp" line="228"/>
+        <location filename="../playlist.cpp" line="204"/>
+        <location filename="../playlist.cpp" line="231"/>
         <source>By Track Number</source>
         <translation>Nach Titelnummer</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="247"/>
+        <location filename="../playlist.cpp" line="250"/>
         <source>&amp;Queue</source>
         <translation>&amp;Warteschlange</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="247"/>
+        <location filename="../playlist.cpp" line="250"/>
         <source>Q</source>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="244"/>
+        <location filename="../playlist.cpp" line="247"/>
         <source>Actions</source>
         <translation>Aktionen</translation>
     </message>

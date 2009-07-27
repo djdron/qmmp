@@ -169,6 +169,9 @@ void PlayList::createActions()
     connect (remUnselAct, SIGNAL (triggered()),
              m_playListModel, SLOT (removeUnselected ()));
 
+    m_subMenu->addSeparator();
+    m_subMenu->addAction (tr("Remove unavailable files"), m_playListModel, SLOT(clearInvalidItems()));
+
     //listwidget menu
     QAction *detailsAct = new QAction (tr ("&View Track Details"),this);
     detailsAct->setShortcut (tr ("Alt+I"));

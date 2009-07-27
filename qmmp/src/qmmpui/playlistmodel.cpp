@@ -286,6 +286,12 @@ void PlayListModel::removeAt (int i)
     }
 }
 
+void PlayListModel::removeItem (PlayListItem *item)
+{
+    if(m_items.contains(item))
+        removeAt (m_items.indexOf(item));
+}
+
 void PlayListModel::removeSelection(bool inverted)
 {
     int i = 0;
@@ -1003,4 +1009,14 @@ void PlayListModel::setFormat(const QString &format)
 {
     PlaylistSettings::instance()->setFormat(format);
     emit settingsChanged();
+}
+
+void PlayListModel::clearInvalidItems()
+{
+    foreach(PlayListItem *item, m_items)
+    {
+        if(!item->url().contains("://") &&
+           !(QFile::exists(item->url()) && Decoder::supports(item->url())))
+            removeItem(item);
+    }
 }
