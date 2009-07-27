@@ -242,7 +242,7 @@ void PlayList::createActions()
     m_sortMenu->addAction (tr ("Reverse List"),m_playListModel,SLOT (reverseList()));
 
     m_listWidget->menu()->addSeparator();
-    m_listWidget->menu()->addActions (m_subMenu->actions());
+    m_listWidget->menu()->addActions (m_subMenu->actions().mid(0,3)); //use 3 first actions
     m_listWidget->menu()->addMenu(GeneralHandler::instance()->createMenu(GeneralHandler::PLAYLIST_MENU,
                                   tr("Actions"), this));
 
