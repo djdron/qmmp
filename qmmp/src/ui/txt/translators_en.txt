@@ -21,6 +21,12 @@ German:
 Italian:
     Gian Paolo Renello <emmerkar@gmail.com>
 
+Kazakh:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+Lithuanian:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
 Polish:
     Grzegorz Gibas <amigib@gmail.com>
 
