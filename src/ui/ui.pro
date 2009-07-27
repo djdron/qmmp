@@ -161,5 +161,6 @@ TRANSLATIONS = translations/qmmp_ru.ts \
                translations/qmmp_zh_TW.ts \
                translations/qmmp_de.ts \
                translations/qmmp_pl_PL.ts \
-               translations/qmmp_it.ts
+               translations/qmmp_it.ts \
+               translations/qmmp_lt.ts
 

@@ -47,6 +47,11 @@
     <file>txt/thanks_tr.txt</file>
     <file>txt/translators_tr.txt</file>
     <file>txt/description_tr.txt</file>
+    
+    <file>txt/authors_lt.txt</file>
+    <file>txt/thanks_lt.txt</file>
+    <file>txt/translators_lt.txt</file>
+    <file>txt/description_lt.txt</file>
 
     <file>default/balance.png</file>
     <file>default/eqmain.png</file>

@@ -10,5 +10,6 @@
     <file>modplug_plugin_ru.qm</file>
     <file>modplug_plugin_uk_UA.qm</file>
     <file>modplug_plugin_tr.qm</file>
+    <file>modplug_plugin_lt.qm</file>
   </qresource>
 </RCC>

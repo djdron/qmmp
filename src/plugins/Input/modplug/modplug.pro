@@ -34,7 +34,8 @@ TRANSLATIONS = translations/modplug_plugin_cs.ts \
                translations/modplug_plugin_pl.ts \
                translations/modplug_plugin_uk_UA.ts \
                translations/modplug_plugin_it.ts \
-               translations/modplug_plugin_tr.ts
+               translations/modplug_plugin_tr.ts \
+               translations/modplug_plugin_lt.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

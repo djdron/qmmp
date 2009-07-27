@@ -20,7 +20,8 @@ TRANSLATIONS = translations/mpris_plugin_cs.ts \
                translations/mpris_plugin_pl.ts \
                translations/mpris_plugin_uk_UA.ts \
                translations/mpris_plugin_it.ts \
-               translations/mpris_plugin_tr.ts
+               translations/mpris_plugin_tr.ts \
+               translations/mpris_plugin_lt.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

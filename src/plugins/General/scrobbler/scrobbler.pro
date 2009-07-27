@@ -15,7 +15,9 @@ TRANSLATIONS = translations/scrobbler_plugin_cs.ts \
     translations/scrobbler_plugin_pl.ts \
     translations/scrobbler_plugin_uk_UA.ts \
     translations/scrobbler_plugin_it.ts \
-    translations/scrobbler_plugin_tr.ts
+    translations/scrobbler_plugin_tr.ts \
+    translations/scrobbler_plugin_lt.ts
+    
 RESOURCES = translations/translations.qrc
 unix { 
     isEmpty(LIB_DIR):LIB_DIR = /lib
