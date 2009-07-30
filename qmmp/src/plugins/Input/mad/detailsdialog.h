@@ -21,6 +21,8 @@
 #define DETAILSDIALOG_H
 
 #include <QDialog>
+#include <QList>
+#include <QMap>
 
 #include "ui_detailsdialog.h"
 
@@ -50,6 +52,8 @@ private slots:
 private:
     void loadMPEGInfo();
     uint selectedTag();
+    void showAudioProperties(QMap <QString, QString> p);
+    QList <QLineEdit *> m_inputs;
     Ui::DetailsDialog ui;
     QString m_path;
     QTextCodec *m_codec_v1;
