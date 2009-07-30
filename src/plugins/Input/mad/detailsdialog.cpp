@@ -85,6 +85,13 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     connect(ui.id3v1RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.id3v2RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.apeRadioButton, SIGNAL(clicked()), SLOT(loadTag()));
+    m_inputs << ui.titleLineEdit;
+    m_inputs << ui.artistLineEdit;
+    m_inputs << ui.albumLineEdit;
+    //m_inputs << ui.commentBrowser;
+    m_inputs << ui.yearLineEdit;
+    m_inputs << ui.trackLineEdit;
+    m_inputs << ui.genreLineEdit;
 }
 
 
@@ -107,41 +114,43 @@ void DetailsDialog::loadMPEGInfo()
         case TagLib::MPEG::Header::Version2_5:
         v = "2.5";
     }
+    QMap <QString, QString> ap;
     text = QString("MPEG-%1 layer %2").arg(v).arg(f.audioProperties()->layer());
-    ui.levelLabel->setText(text);
+    ap.insert(tr("Format"), text);
     text = QString("%1").arg(f.audioProperties()->bitrate());
-    ui.bitRateLabel->setText(text+" "+tr("kbps"));
+    ap.insert(tr("Bitrate"), text+" "+tr("kbps"));
     text = QString("%1").arg(f.audioProperties()->sampleRate());
-    ui.sampleRateLabel->setText(text+" "+tr("Hz"));
+    ap.insert(tr("Samplerate"), text+" "+tr("Hz"));
     switch (f.audioProperties()->channelMode())
     {
     case TagLib::MPEG::Header::Stereo:
-        ui.modeLabel->setText("Stereo");
+        ap.insert(tr("Mode"), "Stereo");
         break;
     case TagLib::MPEG::Header::JointStereo:
-        ui.modeLabel->setText("Joint stereo");
+        ap.insert(tr("Mode"), "Joint stereo");
         break;
     case TagLib::MPEG::Header::DualChannel:
-        ui.modeLabel->setText("Dual channel");
+        ap.insert(tr("Mode"), "Dual channel");
         break;
     case TagLib::MPEG::Header::SingleChannel:
-        ui.modeLabel->setText("Single channel");
+        ap.insert(tr("Mode"), "Single channel");
         break;
     }
     text = QString("%1 "+tr("KB")).arg(f.length()/1024);
-    ui.fileSizeLabel->setText(text);
-    /*if (f.audioProperties()->protectionEnabled())
-        ui.errProtectionLabel->setText(tr("Yes"));
+    ap.insert(tr("File size"), text);
+    if (f.audioProperties()->protectionEnabled())
+        ap.insert(tr("Protection"), tr("Yes"));
     else
-        ui.errProtectionLabel->setText(tr("No"));*/
+        ap.insert(tr("Protection"), tr("No"));
     if (f.audioProperties()->isCopyrighted())
-        ui.copyrightLabel->setText(tr("Yes"));
+        ap.insert(tr("Copyright"), tr("Yes"));
     else
-        ui.copyrightLabel->setText(tr("No"));
+        ap.insert(tr("Copyright"), tr("No"));
     if (f.audioProperties()->isOriginal())
-        ui.originalLabel->setText(tr("Yes"));
+        ap.insert(tr("Original"), tr("Yes"));
     else
-        ui.originalLabel->setText(tr("No"));
+        ap.insert(tr("Original"), tr("No"));
+    showAudioProperties(ap);
 }
 
 void DetailsDialog::loadTag()
@@ -170,15 +179,13 @@ void DetailsDialog::loadTag()
     ui.saveButton->setEnabled(tag && m_rw);
     ui.createButton->setEnabled(!tag && m_rw);
     ui.deleteButton->setEnabled(tag && m_rw);
-    ui.tagsWidget->setEnabled(tag);
-    //clear old values
-    ui.titleLineEdit->clear();
-    ui.artistLineEdit->clear();
-    ui.albumLineEdit->clear();
-    ui.commentLineEdit->clear();
-    ui.yearLineEdit->clear();
-    ui.trackLineEdit->clear();
-    ui.genreLineEdit->clear();
+    foreach(QLineEdit *le, m_inputs)
+    {
+        le->setEnabled(tag);
+        le->clear(); //clear old values
+    }
+    ui.commentBrowser->setEnabled(tag);
+    ui.commentBrowser->clear();
 
     if (tag)
     {
@@ -197,7 +204,7 @@ void DetailsDialog::loadTag()
         string = codec->toUnicode(album.toCString(utf)).trimmed();
         ui.albumLineEdit->setText(string);
         string = codec->toUnicode(comment.toCString(utf)).trimmed();
-        ui.commentLineEdit->setText(string);
+        ui.commentBrowser->setText(string);
         string = QString("%1").arg(tag->year());
         ui.yearLineEdit->setText(string);
         string = QString("%1").arg(tag->track());
@@ -257,7 +264,8 @@ void DetailsDialog::save()
     tag->setTitle(TagLib::String(codec->fromUnicode(ui.titleLineEdit->text()).constData(), type));
     tag->setArtist(TagLib::String(codec->fromUnicode(ui.artistLineEdit->text()).constData(), type));
     tag->setAlbum(TagLib::String(codec->fromUnicode(ui.albumLineEdit->text()).constData(), type));
-    tag->setComment(TagLib::String(codec->fromUnicode(ui.commentLineEdit->text()).constData(), type));
+    tag->setComment(TagLib::String(codec->fromUnicode(ui.commentBrowser->toPlainText ())
+                                                                     .constData(), type));
     tag->setGenre(TagLib::String(codec->fromUnicode(ui.genreLineEdit->text()).constData(), type));
     tag->setYear(ui.yearLineEdit->text().toUInt());
     tag->setTrack(ui.trackLineEdit->text().toUInt());
@@ -281,7 +289,9 @@ void DetailsDialog::create()
     f->save(selectedTag(), FALSE);
     delete f;
     loadTag();
-    ui.tagsWidget->setEnabled(TRUE);
+    foreach(QLineEdit *le, m_inputs)
+        le->setEnabled(TRUE);
+    ui.commentBrowser->setEnabled(TRUE);
     ui.saveButton->setEnabled(m_rw);
 }
 
@@ -315,4 +325,19 @@ void DetailsDialog::closeEvent (QCloseEvent *)
     else if (ui.apeRadioButton->isChecked())
         settings.setValue("current_tag","APE");
     settings.endGroup();
+}
+
+void DetailsDialog::showAudioProperties(QMap <QString, QString> p)
+{
+    QString formattedText;
+    formattedText.append("<TABLE>");
+    foreach(QString key, p.keys())
+    {
+        formattedText.append("<tr>");
+        formattedText.append("<td>" + key + ":</td> <td style=\"padding-left: 5px; \"><b>"
+                             + p.value(key) + "</b></td>");
+        formattedText.append("</tr>");
+    }
+    formattedText.append("</TABLE>");
+    ui.propertiesLabel->setText(formattedText);
 }
