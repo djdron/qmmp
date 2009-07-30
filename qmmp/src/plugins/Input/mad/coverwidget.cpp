@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,50 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
+#include <QPixmap>
+#include <QPainter>
+#include <QPaintEvent>
 
-#include <QDialog>
-#include <QList>
-#include <QMap>
+#include "coverwidget.h"
 
-#include "ui_detailsdialog.h"
+CoverWidget::CoverWidget(QWidget *parent)
+        : QWidget(parent)
+{}
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 
-class QTextCodec;
+CoverWidget::~CoverWidget()
+{}
 
-class DetailsDialog : public QDialog
+void CoverWidget::setPixmap(const QPixmap &pixmap)
 {
-    Q_OBJECT
-public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    m_pixmap = pixmap;
+    update();
+}
 
-    ~DetailsDialog();
+void CoverWidget::paintEvent (QPaintEvent *p)
+{
+    QPainter paint(this);
+    if(!m_pixmap.isNull())
+        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
+}
 
-protected:
-    virtual void closeEvent (QCloseEvent *);
-
-private slots:
-    void save();
-    void create();
-    void deleteTag();
-    void loadTag();
-
-private:
-    QPixmap findCover(const QString &path);
-    void loadMPEGInfo();
-    uint selectedTag();
-    void showAudioProperties(QMap <QString, QString> p);
-    QList <QLineEdit *> m_inputs;
-    Ui::DetailsDialog ui;
-    QString m_path;
-    QTextCodec *m_codec_v1;
-    QTextCodec *m_codec_v2;
-    bool m_rw;
-
-};
-
-#endif

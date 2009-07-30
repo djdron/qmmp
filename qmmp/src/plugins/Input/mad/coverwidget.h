@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,49 +17,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
+#ifndef PIXMAPWIDGET_H
+#define PIXMAPWIDGET_H
 
-#include <QDialog>
-#include <QList>
-#include <QMap>
-
-#include "ui_detailsdialog.h"
+#include <QWidget>
+#include <QPixmap>
 
 /**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
+	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class QTextCodec;
-
-class DetailsDialog : public QDialog
+class CoverWidget : public QWidget
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    CoverWidget(QWidget *parent = 0);
 
-    ~DetailsDialog();
+    ~CoverWidget();
+
+    virtual void setPixmap(const QPixmap&);
 
 protected:
-    virtual void closeEvent (QCloseEvent *);
+    void paintEvent (QPaintEvent *event);
 
-private slots:
-    void save();
-    void create();
-    void deleteTag();
-    void loadTag();
+private: 
+      QPixmap m_pixmap;
 
-private:
-    QPixmap findCover(const QString &path);
-    void loadMPEGInfo();
-    uint selectedTag();
-    void showAudioProperties(QMap <QString, QString> p);
-    QList <QLineEdit *> m_inputs;
-    Ui::DetailsDialog ui;
-    QString m_path;
-    QTextCodec *m_codec_v1;
-    QTextCodec *m_codec_v2;
-    bool m_rw;
+
 
 };
 
