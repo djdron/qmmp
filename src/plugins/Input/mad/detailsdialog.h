@@ -54,7 +54,6 @@ private:
     void loadMPEGInfo();
     uint selectedTag();
     void showAudioProperties(QMap <QString, QString> p);
-    QList <QLineEdit *> m_inputs;
     Ui::DetailsDialog ui;
     QString m_path;
     QTextCodec *m_codec_v1;
