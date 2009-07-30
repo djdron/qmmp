@@ -381,7 +381,7 @@ p, li { white-space: pre-wrap; }
    <sender>closeButton</sender>
    <signal>clicked()</signal>
    <receiver>DetailsDialog</receiver>
-   <slot>reject()</slot>
+   <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>546</x>
