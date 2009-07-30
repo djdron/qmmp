@@ -339,7 +339,7 @@ void MainWindow::readSettings()
         m_startHidden = settings.value("start_hidden", FALSE).toBool();
         settings.endGroup();
         show();
-
+        qApp->processEvents();
         //visibility
         m_playlist->setVisible(settings.value("Playlist/visible",TRUE).toBool());
         m_equalizer->setVisible(settings.value("Equalizer/visible",TRUE).toBool());
@@ -402,8 +402,12 @@ void MainWindow::toggleVisibility()
     if (isHidden())
     {
         show();
+        raise();
+        activateWindow();
         m_playlist->setVisible(display->isPlaylistVisible());
         m_equalizer->setVisible(display->isEqualizerVisible());
+        qApp->processEvents();
+        setFocus ();
         if (isMinimized())
         {
             if (isMaximized())
@@ -411,17 +415,16 @@ void MainWindow::toggleVisibility()
             else
                 showNormal();
         }
-        raise();
-        activateWindow();
     }
     else
     {
-        hide();
         if (m_playlist->isVisible())
             m_playlist->hide();
         if (m_equalizer->isVisible())
             m_equalizer->hide();
+        hide();
     }
+    qApp->processEvents();
 }
 
 void MainWindow::createActions()

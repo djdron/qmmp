@@ -48,7 +48,7 @@
 PlayList::PlayList (QWidget *parent)
         : QWidget (parent)
 {
-    setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
+    setWindowFlags (/*Qt::Dialog*/Qt::Tool | Qt::FramelessWindowHint);
 
     m_update = FALSE;
     m_resize = FALSE;

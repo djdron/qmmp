@@ -43,7 +43,7 @@ EqWidget::EqWidget (QWidget *parent)
         : PixmapWidget (parent)
 {
     m_skin = Skin::getPointer();
-    setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
+    setWindowFlags (/*Qt::Dialog*/Qt::Tool | Qt::FramelessWindowHint);
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     //setPixmap(QPixmap(275,116));
     m_titleBar = new EqTitleBar (this);
