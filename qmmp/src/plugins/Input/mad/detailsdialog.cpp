@@ -85,13 +85,6 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     connect(ui.id3v1RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.id3v2RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.apeRadioButton, SIGNAL(clicked()), SLOT(loadTag()));
-    m_inputs << ui.titleLineEdit;
-    m_inputs << ui.artistLineEdit;
-    m_inputs << ui.albumLineEdit;
-    //m_inputs << ui.commentBrowser;
-    m_inputs << ui.yearLineEdit;
-    m_inputs << ui.trackLineEdit;
-    m_inputs << ui.genreLineEdit;
     ui.coverWidget->setPixmap(findCover(path));
 }
 
@@ -180,13 +173,15 @@ void DetailsDialog::loadTag()
     ui.saveButton->setEnabled(tag && m_rw);
     ui.createButton->setEnabled(!tag && m_rw);
     ui.deleteButton->setEnabled(tag && m_rw);
-    foreach(QLineEdit *le, m_inputs)
-    {
-        le->setEnabled(tag);
-        le->clear(); //clear old values
-    }
-    ui.commentBrowser->setEnabled(tag);
+    ui.tagGroupBox->setEnabled(tag);
+    //clear old values
+    ui.titleLineEdit->clear();
+    ui.artistLineEdit->clear();
+    ui.albumLineEdit->clear();
     ui.commentBrowser->clear();
+    ui.yearSpinBox->clear();
+    ui.trackSpinBox->clear();
+    ui.genreLineEdit->clear();
 
     if (tag)
     {
@@ -206,10 +201,8 @@ void DetailsDialog::loadTag()
         ui.albumLineEdit->setText(string);
         string = codec->toUnicode(comment.toCString(utf)).trimmed();
         ui.commentBrowser->setText(string);
-        string = QString("%1").arg(tag->year());
-        ui.yearLineEdit->setText(string);
-        string = QString("%1").arg(tag->track());
-        ui.trackLineEdit->setText(string);
+        ui.yearSpinBox->setValue(tag->year());
+        ui.trackSpinBox->setValue(tag->track());
         string = codec->toUnicode(genre.toCString(utf)).trimmed();
         ui.genreLineEdit->setText(string);
     }
@@ -268,8 +261,8 @@ void DetailsDialog::save()
     tag->setComment(TagLib::String(codec->fromUnicode(ui.commentBrowser->toPlainText ())
                                                                      .constData(), type));
     tag->setGenre(TagLib::String(codec->fromUnicode(ui.genreLineEdit->text()).constData(), type));
-    tag->setYear(ui.yearLineEdit->text().toUInt());
-    tag->setTrack(ui.trackLineEdit->text().toUInt());
+    tag->setYear(ui.yearSpinBox->value());
+    tag->setTrack(ui.trackSpinBox->value());
 
     f->save(selectedTag(), FALSE);
     delete f;
@@ -290,9 +283,7 @@ void DetailsDialog::create()
     f->save(selectedTag(), FALSE);
     delete f;
     loadTag();
-    foreach(QLineEdit *le, m_inputs)
-        le->setEnabled(TRUE);
-    ui.commentBrowser->setEnabled(TRUE);
+    ui.tagGroupBox->setEnabled(TRUE);
     ui.saveButton->setEnabled(m_rw);
 }
 
