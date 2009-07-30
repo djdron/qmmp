@@ -92,6 +92,7 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     m_inputs << ui.yearLineEdit;
     m_inputs << ui.trackLineEdit;
     m_inputs << ui.genreLineEdit;
+    ui.coverWidget->setPixmap(findCover(path));
 }
 
 
@@ -340,4 +341,18 @@ void DetailsDialog::showAudioProperties(QMap <QString, QString> p)
     }
     formattedText.append("</TABLE>");
     ui.propertiesLabel->setText(formattedText);
+}
+
+QPixmap DetailsDialog::findCover(const QString &path)
+{
+    QString p = QFileInfo(path).absolutePath();
+    QDir dir(p);
+    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    dir.setSorting(QDir::Name);
+    QStringList filters;
+    filters << "*.jpg" << "*.png";
+    QFileInfoList file_list = dir.entryInfoList(filters);
+    if(!file_list.isEmpty())
+        return QPixmap (file_list.at(0).absoluteFilePath());
+    return QPixmap();
 }

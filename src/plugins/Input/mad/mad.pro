@@ -2,17 +2,19 @@ include(../../plugins.pri)
 
 
 FORMS += detailsdialog.ui \
-         settingsdialog.ui 
+         settingsdialog.ui
 HEADERS += decodermadfactory.h \
            decoder_mad.h \
            detailsdialog.h \
            settingsdialog.h \
-           tagextractor.h
+           tagextractor.h \
+           coverwidget.h
 SOURCES += decoder_mad.cpp \
            decodermadfactory.cpp \
            detailsdialog.cpp \
            settingsdialog.cpp \
-           tagextractor.cpp
+           tagextractor.cpp \
+           coverwidget.cpp
 
 TARGET =$$PLUGINS_PREFIX/Input/mad
 unix:QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmad.so
