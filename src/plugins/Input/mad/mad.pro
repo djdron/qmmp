@@ -20,7 +20,7 @@ TARGET =$$PLUGINS_PREFIX/Input/mad
 unix:QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libmad.so
 
 
-INCLUDEPATH += ../../../ 
+INCLUDEPATH += ../../../  ./
 win32:INCLUDEPATH += D:\MINGW\include\taglib
 CONFIG += release \
 warn_on \
