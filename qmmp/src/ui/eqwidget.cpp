@@ -43,7 +43,6 @@ EqWidget::EqWidget (QWidget *parent)
         : PixmapWidget (parent)
 {
     m_skin = Skin::getPointer();
-    setWindowFlags (/*Qt::Dialog*/Qt::Tool | Qt::FramelessWindowHint);
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     //setPixmap(QPixmap(275,116));
     m_titleBar = new EqTitleBar (this);
@@ -132,6 +131,11 @@ void EqWidget::updateSkin()
 void EqWidget::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    if (settings.value("General/openbox_compat", FALSE).toBool())
+        setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
+    else
+        setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
+
     settings.beginGroup ("Equalizer");
     //geometry
     move (settings.value ("pos", QPoint (100, 216)).toPoint());
