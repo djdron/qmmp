@@ -48,8 +48,6 @@
 PlayList::PlayList (QWidget *parent)
         : QWidget (parent)
 {
-    setWindowFlags (/*Qt::Dialog*/Qt::Tool | Qt::FramelessWindowHint);
-
     m_update = FALSE;
     m_resize = FALSE;
     m_anchor_row = -1;
@@ -423,6 +421,10 @@ void PlayList::readSettings()
     else
     {
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+        if (settings.value("General/openbox_compat", FALSE).toBool())
+            setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
+        else
+            setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
         settings.beginGroup ("PlayList");
         //position
         move (settings.value ("pos", QPoint (100, 332)).toPoint());

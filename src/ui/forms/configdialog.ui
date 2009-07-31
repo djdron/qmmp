@@ -567,8 +567,8 @@
         </layout>
        </widget>
        <widget class="QWidget" name="page_2">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_6">
            <property name="title">
             <string>Audio</string>
@@ -584,12 +584,12 @@
            </layout>
           </widget>
          </item>
-         <item>
+         <item row="1" column="0">
           <widget class="QGroupBox" name="visibilityGroupBox">
            <property name="title">
             <string>Visibility Control</string>
            </property>
-           <layout class="QVBoxLayout">
+           <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
              <widget class="QCheckBox" name="hideOnCloseCheckBox">
               <property name="text">
@@ -607,7 +607,23 @@
            </layout>
           </widget>
          </item>
-         <item>
+         <item row="1" column="1">
+          <widget class="QGroupBox" name="groupBox_8">
+           <property name="title">
+            <string>Compatibility</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QCheckBox" name="openboxCheckBox">
+              <property name="text">
+               <string>Openbox compatibility</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_4">
            <property name="title">
             <string>File Dialog</string>
@@ -639,7 +655,7 @@
            </layout>
           </widget>
          </item>
-         <item>
+         <item row="3" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_7">
            <property name="title">
             <string>Transparency</string>
