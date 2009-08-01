@@ -156,12 +156,12 @@
         <location filename="../settingsdialog.cpp" line="63"/>
         <location filename="../settingsdialog.cpp" line="64"/>
         <source>default</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
-        <translation type="unfinished">MPlayer-Einstellungen</translation>
+        <translation>Einstellungen MPlayer-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
@@ -176,12 +176,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Audio/video auto synchronization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Autom. Audio/Video-Synchronisierung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Synchronization factor:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Synchronisierungsfaktor:</translation>
     </message>
 </context>
 </TS>

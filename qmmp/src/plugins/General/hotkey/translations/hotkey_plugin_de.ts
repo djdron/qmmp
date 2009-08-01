@@ -11,7 +11,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Drücken Sie die Tastenkombination, die verwendet werden soll</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
@@ -87,7 +87,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einstellungen Global-Hotkey-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
@@ -102,7 +102,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Reset</source>
-        <translation type="unfinished">Zurücksetzen</translation>
+        <translation>Zurücksetzen</translation>
     </message>
 </context>
 </TS>

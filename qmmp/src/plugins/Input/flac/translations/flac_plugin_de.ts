@@ -149,7 +149,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
         <source>Sample width:</source>
-        <translation>Abtastrate:</translation>
+        <translation>Abtastauflösung:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="199"/>

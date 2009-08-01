@@ -42,181 +42,202 @@
 <context>
     <name>DetailsDialog</name>
     <message>
+        <location filename="../detailsdialog.cpp" line="113"/>
+        <source>Format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../detailsdialog.cpp" line="115"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="138"/>
-        <location filename="../detailsdialog.cpp" line="142"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
+        <source>Samplerate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="121"/>
+        <location filename="../detailsdialog.cpp" line="124"/>
+        <location filename="../detailsdialog.cpp" line="127"/>
+        <location filename="../detailsdialog.cpp" line="130"/>
+        <source>Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="134"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="136"/>
+        <location filename="../detailsdialog.cpp" line="140"/>
+        <location filename="../detailsdialog.cpp" line="144"/>
         <source>Yes</source>
         <translation>Есть</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="140"/>
-        <location filename="../detailsdialog.cpp" line="144"/>
+        <location filename="../detailsdialog.cpp" line="136"/>
+        <location filename="../detailsdialog.cpp" line="138"/>
+        <source>Protection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="138"/>
+        <location filename="../detailsdialog.cpp" line="142"/>
+        <location filename="../detailsdialog.cpp" line="146"/>
         <source>No</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="157"/>
-        <location filename="../detailsdialog.ui" line="224"/>
+        <location filename="../detailsdialog.cpp" line="140"/>
+        <location filename="../detailsdialog.cpp" line="142"/>
+        <source>Copyright</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="144"/>
+        <location filename="../detailsdialog.cpp" line="146"/>
+        <source>Original</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="160"/>
+        <location filename="../detailsdialog.ui" line="75"/>
         <source>ID3v1 Tag</source>
         <translation>ID3v1-тег</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="462"/>
+        <location filename="../detailsdialog.ui" line="384"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="378"/>
-        <source>Track number:</source>
-        <translation>Номер трека:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="352"/>
+        <location filename="../detailsdialog.ui" line="262"/>
         <source>Year:</source>
         <translation>Год:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="404"/>
+        <location filename="../detailsdialog.ui" line="205"/>
         <source>Genre:</source>
         <translation>Жанр:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="326"/>
+        <location filename="../detailsdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="45"/>
+        <source>Tags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="173"/>
+        <source>Disc number:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="189"/>
+        <source>Composer:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="231"/>
+        <source>Track:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="299"/>
         <source>Comment:</source>
         <translation>Комментарий:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="300"/>
+        <location filename="../detailsdialog.ui" line="139"/>
         <source>Album:</source>
         <translation>Альбом:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="274"/>
+        <location filename="../detailsdialog.ui" line="113"/>
         <source>Artist:</source>
         <translation>Исполнитель:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="248"/>
+        <location filename="../detailsdialog.ui" line="87"/>
         <source>Title:</source>
         <translation>Название:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="485"/>
+        <location filename="../detailsdialog.ui" line="312"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="338"/>
+        <source>Audio Properties</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="391"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="163"/>
+        <location filename="../detailsdialog.cpp" line="166"/>
         <source>ID3v2 Tag</source>
         <translation>ID3v2-тег</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="91"/>
-        <source>MPEG Info</source>
-        <translation>Информация MPEG</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="110"/>
-        <location filename="../detailsdialog.ui" line="127"/>
-        <location filename="../detailsdialog.ui" line="144"/>
-        <location filename="../detailsdialog.ui" line="161"/>
-        <location filename="../detailsdialog.ui" line="178"/>
-        <location filename="../detailsdialog.ui" line="195"/>
-        <location filename="../detailsdialog.ui" line="212"/>
+        <location filename="../detailsdialog.ui" line="344"/>
         <source>-</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="202"/>
-        <source>Original:</source>
-        <translation>Оригинальный:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="185"/>
-        <source>Copyright:</source>
-        <translation>Авторские права:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="168"/>
-        <source>Mode:</source>
-        <translation>Режим:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="151"/>
-        <source>File size:</source>
-        <translation>Размер файла:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="134"/>
-        <source>Sample rate:</source>
-        <translation>Дискретизация:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="117"/>
-        <source>Bit rate:</source>
-        <translation>Битовая частота:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="28"/>
-        <source>File path:</source>
-        <translation>Путь к файлу:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="131"/>
+        <location filename="../detailsdialog.cpp" line="133"/>
         <source>KB</source>
         <translation>Кб</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="20"/>
-        <source>Details</source>
-        <translation>Информация</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="113"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="167"/>
+        <location filename="../detailsdialog.cpp" line="170"/>
         <source>APE Tag</source>
         <translation>APE-тег</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="55"/>
-        <source>Tag Choice</source>
-        <translation>Выбор тегов</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="61"/>
+        <location filename="../detailsdialog.ui" line="51"/>
         <source>ID3v1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="68"/>
+        <location filename="../detailsdialog.ui" line="58"/>
         <source>ID3v2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="75"/>
+        <location filename="../detailsdialog.ui" line="65"/>
         <source>APE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="97"/>
-        <source>Format:</source>
-        <translation>Формат:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="433"/>
+        <location filename="../detailsdialog.ui" line="370"/>
         <source>Create</source>
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="446"/>
+        <location filename="../detailsdialog.ui" line="377"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
