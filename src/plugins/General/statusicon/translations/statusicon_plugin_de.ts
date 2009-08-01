@@ -26,7 +26,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>Use standard icons</source>
-        <translation type="unfinished"></translation>
+        <translation>System-Symbole benutzen</translation>
     </message>
     <message>
         <source>OK</source>

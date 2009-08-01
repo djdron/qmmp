@@ -31,7 +31,7 @@
     <message>
         <location filename="../halfactory.cpp" line="54"/>
         <source>Based on Solid (KDE hardware library)</source>
-        <translation>Basiert auf Solid (KDE-Hardware-Bibliothek)</translation>
+        <translation>Basiert auf Solid (KDE Hardware-Bibliothek)</translation>
     </message>
 </context>
 <context>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../halplugin.cpp" line="160"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished">CD „%1“ hinzufügen</translation>
+        <translation>CD „%1“ hinzufügen</translation>
     </message>
     <message>
         <location filename="../halplugin.cpp" line="166"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="28"/>
         <source>CD Audio Detection</source>
-        <translation type="unfinished">Audio-CD-Erkennung</translation>
+        <translation>Erkennung von Audio-CDs</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="37"/>
@@ -72,7 +72,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="54"/>
         <source>Removable Device Detection</source>
-        <translation>Wechseldatenträger-Erkennung</translation>
+        <translation>Erkennung von Wechseldatenträgern</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>

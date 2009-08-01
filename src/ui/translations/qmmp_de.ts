@@ -327,7 +327,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titelnummern anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="433"/>
@@ -353,12 +353,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="613"/>
         <source>Compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kompatibilität</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="619"/>
         <source>Openbox compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Openbox-Kompatibilität</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="896"/>
@@ -1033,7 +1033,7 @@
     <message>
         <location filename="../playlist.cpp" line="171"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nichtverfügbare Dateien entfernen</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="174"/>

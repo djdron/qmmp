@@ -36,7 +36,7 @@
     <message>
         <location filename="../fileops.cpp" line="177"/>
         <source>Are you sure you want to remove %1 file(s) from disk</source>
-        <translation>Wollen Sie wirklich %1 Datei(en) von der Festplatte entfernen?</translation>
+        <translation>Möchten Sie wirklich %1 Datei(en) von der Festplatte entfernen?</translation>
     </message>
 </context>
 <context>
@@ -44,17 +44,17 @@
     <message>
         <location filename="../fileopsfactory.cpp" line="30"/>
         <source>File Operations Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei-Aktionen-Modul</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="50"/>
         <source>About File Operations Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Datei-Aktionen-Modul</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="51"/>
         <source>Qmmp File Operations Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Datei-Aktionen-Modul</translation>
     </message>
     <message>
         <location filename="../fileopsfactory.cpp" line="52"/>
@@ -67,12 +67,12 @@
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation type="unfinished">Kurzbefehl bearbeiten</translation>
+        <translation>Kurzbefehl bearbeiten</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Drücken Sie die Tastenkombination, die verwendet werden soll</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>File Operations Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>EInstellungen Datei-Aktionen-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
@@ -173,7 +173,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Menu text</source>
-        <translation type="unfinished">Menütext</translation>
+        <translation>Menütext</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="63"/>
@@ -201,12 +201,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="148"/>
         <source>Destination:</source>
-        <translation type="unfinished">Zielort:</translation>
+        <translation>Zielort:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>File name pattern:</source>
-        <translation type="unfinished">Dateinamensmuster:</translation>
+        <translation>Dateinamensmuster:</translation>
     </message>
 </context>
 </TS>

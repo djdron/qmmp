@@ -63,12 +63,12 @@
     <message>
         <location filename="../lyricswindow.cpp" line="73"/>
         <source>Connecting...</source>
-        <translation>Verbinde...</translation>
+        <translation>Verbinde ...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="76"/>
         <source>Sending request...</source>
-        <translation>Sende Anfrage...</translation>
+        <translation>Sende Anfrage ...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="79"/>
@@ -83,7 +83,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="85"/>
         <source>Closing connection...</source>
-        <translation>Beende Verbindung...</translation>
+        <translation>Beende Verbindung ...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="14"/>

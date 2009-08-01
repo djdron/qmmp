@@ -6,7 +6,7 @@
     <message>
         <location filename="../incdecvolumeoption.cpp" line="44"/>
         <source>Increase volume with step 5</source>
-        <translation>Lautstärke erhöhen (in Fünfer-Schritten)</translation>
+        <translation>Lautstärke anheben (in Fünfer-Schritten)</translation>
     </message>
     <message>
         <location filename="../incdecvolumeoption.cpp" line="45"/>

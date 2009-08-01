@@ -65,7 +65,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <source>Default</source>
-        <translation>Voreinstellungen</translation>
+        <translation>Voreinstellung</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
