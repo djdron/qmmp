@@ -35,6 +35,7 @@ Russian:
 
 Turkish:
     Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
 Ukrainian:
     Gennadi Motsyo <drool@altlinux.ru>

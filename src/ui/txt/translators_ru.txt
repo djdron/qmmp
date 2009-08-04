@@ -32,6 +32,7 @@
 
 Турецкий:
     Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
 Украинский:
     Геннадий Моцьо <drool@altlinux.ru>

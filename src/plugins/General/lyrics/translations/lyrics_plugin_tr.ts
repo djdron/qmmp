@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>Lyrics</name>
     <message>
         <location filename="../lyrics.cpp" line="35"/>
         <source>View Lyrics</source>
-        <translation type="unfinished"></translation>
+        <translation>Şarkı Sözlerini Göster</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="36"/>
         <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+L</translation>
     </message>
 </context>
 <context>
@@ -19,27 +19,27 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="29"/>
         <source>Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Şarkı Sözü Eklentisi</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="50"/>
         <source>About Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Şarkı Sözü Eklentisi Hakkında</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="51"/>
         <source>Qmmp Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Şarkı Sözü Eklentisi</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki.org</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu eklenti şarkı sözlerini LyricWiki.org adresinden alır</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -48,67 +48,67 @@
         <location filename="../lyricswindow.cpp" line="67"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı yok</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="70"/>
         <source>Looking up host...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sunucu aranıyor...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="73"/>
         <source>Connecting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlanıyor...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="76"/>
         <source>Sending request...</source>
-        <translation type="unfinished"></translation>
+        <translation>İstek gönderiliyor...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="79"/>
         <source>Receiving</source>
-        <translation type="unfinished"></translation>
+        <translation>Alınıyor</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="82"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlandı</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="85"/>
         <source>Closing connection...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı kapatılıyor...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="91"/>
         <source>Lyrics: %1 - %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Şarkı Sözü: %1 - %2</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Şarkı Sözü Eklentisi</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="31"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Artist:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="41"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlık:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="51"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Ara</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="87"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapat</translation>
     </message>
 </context>
 </TS>

@@ -393,7 +393,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Şarkı numaralarını göster</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="580"/>
@@ -418,12 +418,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="613"/>
         <source>Compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyumluluk</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="619"/>
         <source>Openbox compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Openbox uyumluluğu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="764"/>
@@ -731,7 +731,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="325"/>
         <source>Peaks</source>
-        <translation>Uçlar</translation>
+        <translation>Tepeler</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="329"/>
@@ -761,7 +761,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="342"/>
         <source>Analyzer Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Çözümleyici Düşüşü</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="345"/>
@@ -796,7 +796,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="356"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished"></translation>
+        <translation>Tepe Düşüşü</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="369"/>

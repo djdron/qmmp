@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>DecoderSndFileFactory</name>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="66"/>
         <source>Sndfile Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Sndfile Eklentisi</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="68"/>
         <source>PCM Files</source>
-        <translation type="unfinished"></translation>
+        <translation>PCM Dosyaları</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="136"/>
         <source>About Sndfile Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Sndfile Ses Eklentisi Hakkında</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="137"/>
         <source>Qmmp Sndfile Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Sndfile Ses Eklentisi</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="138"/>
         <source>Compiled against</source>
-        <translation type="unfinished"></translation>
+        <translation>Derlendi</translation>
     </message>
     <message>
         <location filename="../decodersndfilefactory.cpp" line="139"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>
