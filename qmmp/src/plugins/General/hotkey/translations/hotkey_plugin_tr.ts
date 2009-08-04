@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>HotkeyDialog</name>
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kısayolu Düzenle</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Atamak istediğiniz tuş kombinasyonuna basın</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Temizle</translation>
     </message>
 </context>
 <context>
@@ -24,27 +24,27 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="30"/>
         <source>Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel Kısayol Eklentisi</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="50"/>
         <source>About Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel Kısayol Eklentisi Hakkında</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="51"/>
         <source>Qmmp Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Genel Kısayol Eklentisi</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu eklenti çokluortam tuşları veya genel tuş kombinasyonu desteği ekler</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -52,57 +52,57 @@
     <message>
         <location filename="../settingsdialog.cpp" line="42"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Dur</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="45"/>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Oynat/Duraklat</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="46"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="47"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Önceki</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>
         <source>Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Göster/Gizle</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel Kısayol Eklentisi Ayarları</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Eylem</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Kısayol</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Sıfırla</translation>
     </message>
 </context>
 </TS>

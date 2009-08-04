@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="tr_TR">
 <context>
     <name>EffectSRConverterFactory</name>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="30"/>
         <source>SRC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>SRC Eklentisi</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="50"/>
         <source>About Sample Rate Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Örnekleme Oranı Dönüştürücü Eklentisi Hakkında</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Örnekleme Oranı Dönüştürücü Eklentisi</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,42 +29,42 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Sample Rate Converter Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Örnekleme Oranı Dönüştürücü Eklentisi Ayarları</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Sample Rate (Hz):</source>
-        <translation type="unfinished"></translation>
+        <translation>Örnekleme Oranı (Hz):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Interpolation Engine:</source>
-        <translation type="unfinished"></translation>
+        <translation>İnterpolasyon Motoru:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Best Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Best Sinc İnterpolasyonu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>Medium Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Medium Sinc İnterpolasyonu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Fastest Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Fastest Sinc İnterpolasyonu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>ZOH Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>ZOH İnterpolasyonu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Linear Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Doğrusal İnterpolasyon</translation>
     </message>
 </context>
 </TS>
