@@ -128,8 +128,8 @@ bool DecoderVorbis::initialize()
     m_bitrate = ov_bitrate(&oggfile, -1) / 1000;
     int chan = 0;
 
-    m_totalTime = ov_time_total(&oggfile, -1) * 1000;
-    m_totalTime = qMax(qint64(0), m_totalTime);
+    if((m_totalTime = ov_time_total(&oggfile, -1) * 1000) < 0)
+        m_totalTime = 0;
 
     vorbis_info *ogginfo = ov_info(&oggfile, -1);
     if (ogginfo)
