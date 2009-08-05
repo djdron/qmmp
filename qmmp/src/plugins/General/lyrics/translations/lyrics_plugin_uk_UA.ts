@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>Lyrics</name>
     <message>
@@ -50,7 +50,6 @@
         <translation>Тексти: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="109"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Немає з&apos;єднання</translation>
@@ -58,14 +57,12 @@
     <message>
         <location filename="../lyricswindow.cpp" line="73"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Не знайдено</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="78"/>
-        <location filename="../lyricswindow.cpp" line="96"/>
         <location filename="../lyricswindow.cpp" line="99"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Помилка</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="112"/>
