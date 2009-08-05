@@ -45,43 +45,55 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="90"/>
+        <location filename="../lyricswindow.cpp" line="133"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Dainos tekstas: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="66"/>
+        <location filename="../lyricswindow.cpp" line="109"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Nėra ryšio</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="69"/>
+        <location filename="../lyricswindow.cpp" line="73"/>
+        <source>Not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="78"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
+        <location filename="../lyricswindow.cpp" line="99"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="112"/>
         <source>Looking up host...</source>
         <translation>Ieškau serverio...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="72"/>
+        <location filename="../lyricswindow.cpp" line="115"/>
         <source>Connecting...</source>
         <translation>Susijungiu...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="75"/>
+        <location filename="../lyricswindow.cpp" line="118"/>
         <source>Sending request...</source>
         <translation>Siunčiu užklausą...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="78"/>
+        <location filename="../lyricswindow.cpp" line="121"/>
         <source>Receiving</source>
         <translation>Gaunu</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="81"/>
+        <location filename="../lyricswindow.cpp" line="124"/>
         <source>Connected</source>
         <translation>Susijungiau</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="84"/>
+        <location filename="../lyricswindow.cpp" line="127"/>
         <source>Closing connection...</source>
         <translation>Atsijungiu...</translation>
     </message>
