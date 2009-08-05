@@ -44,6 +44,7 @@ private slots:
 
 private:
     Ui::LyricsWindow ui;
+    bool m_parse_url;
     QHttp *m_http;
 
 };
