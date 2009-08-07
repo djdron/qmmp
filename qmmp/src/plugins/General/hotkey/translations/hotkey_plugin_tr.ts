@@ -85,6 +85,16 @@
         <translation>Göster/Gizle</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.cpp" line="49"/>
+        <source>Volume +</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="50"/>
+        <source>Volume -</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
         <translation>Genel Kısayol Eklentisi Ayarları</translation>

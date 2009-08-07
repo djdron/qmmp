@@ -63,6 +63,8 @@ quint32 Hotkey::defaultKey(int act)
     keyMap[NEXT] = XF86XK_AudioNext;
     keyMap[PREVIOUS] = XF86XK_AudioPrev;
     keyMap[SHOW_HIDE] = 0;
+    keyMap[VOLUME_UP] = XF86XK_AudioRaiseVolume;
+    keyMap[VOLUME_DOWN] = XF86XK_AudioLowerVolume;
     return keyMap[act];
 }
 
@@ -72,7 +74,7 @@ HotkeyManager::HotkeyManager(QObject *parent) : General(parent)
     WId rootWindow = QX11Info::appRootWindow();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat); //load settings
     settings.beginGroup("Hotkey");
-    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::SHOW_HIDE; ++i, ++j)
+    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::VOLUME_DOWN; ++i, ++j)
     {
         quint32 key = settings.value(QString("key_%1").arg(i), Hotkey::defaultKey(i)).toUInt();
         quint32 mod = settings.value(QString("modifiers_%1").arg(i), 0).toUInt();
@@ -158,6 +160,23 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
                 break;
             case Hotkey::SHOW_HIDE:
                 toggleVisibility();
+                break;
+            case Hotkey::VOLUME_UP:
+            case Hotkey::VOLUME_DOWN:
+                 SoundCore *core = SoundCore::instance();
+                 int volume = qMax(core->leftVolume(), core->rightVolume());
+                 int balance = 0;
+                 int left = core->leftVolume();
+                 int right = core->rightVolume();
+                 if (left || right)
+                     balance = (right - left)*100/volume;
+                 if(hotkey->action == Hotkey::VOLUME_UP)
+                     volume = qMin (100, volume + 5);
+                 else
+                     volume = qMax (0, volume - 5);
+                 core->setVolume(volume-qMax(balance,0)*volume/100,
+                                 volume+qMin(balance,0)*volume/100);
+                 break;
             }
             qApp->processEvents();
         }
