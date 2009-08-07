@@ -135,17 +135,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="51"/>
         <source>ID3v1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ID3v1</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="58"/>
         <source>ID3v2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ID3v2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="65"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">APE</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="344"/>
@@ -155,6 +155,11 @@
     <message>
         <location filename="../detailsdialog.ui" line="87"/>
         <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="14"/>
+        <source>Details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -175,11 +180,6 @@
     <message>
         <location filename="../detailsdialog.ui" line="262"/>
         <source>Year:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

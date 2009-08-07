@@ -158,6 +158,11 @@
         <translation>Tytuł:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="14"/>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../detailsdialog.ui" line="113"/>
         <source>Artist:</source>
         <translation>Artysta:</translation>
@@ -176,11 +181,6 @@
         <location filename="../detailsdialog.ui" line="262"/>
         <source>Year:</source>
         <translation>Rok:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="45"/>

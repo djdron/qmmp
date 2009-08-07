@@ -1,0 +1,15 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>libqmmp_it.qm</file>
+    <file>libqmmp_ru.qm</file>
+    <file>libqmmp_uk_UA.qm</file>
+    <file>libqmmp_zh_CN.qm</file>
+    <file>libqmmp_zh_TW.qm</file>
+    <file>libqmmp_cs.qm</file>
+    <file>libqmmp_pl.qm</file>
+    <file>libqmmp_de.qm</file>
+    <file>libqmmp_tr.qm</file>
+    <file>libqmmp_lt.qm</file>
+  </qresource>
+</RCC>
