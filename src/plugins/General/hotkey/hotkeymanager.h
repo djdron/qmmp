@@ -42,7 +42,9 @@ public:
         PLAY_PAUSE,
         NEXT,
         PREVIOUS,
-        SHOW_HIDE
+        SHOW_HIDE,
+        VOLUME_UP,
+        VOLUME_DOWN
     };
 
     Hotkey()

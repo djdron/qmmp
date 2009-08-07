@@ -38,7 +38,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.tableWidget->verticalHeader()->setResizeMode(QHeaderView::Fixed);
     ui.tableWidget->verticalHeader()->hide();
     ui.tableWidget->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
-    ui.tableWidget->setRowCount (7);
+    ui.tableWidget->setRowCount (9);
     ui.tableWidget->setItem(0,0, new QTableWidgetItem(tr("Play")));
     ui.tableWidget->setItem(1,0, new QTableWidgetItem(tr("Stop")));
     ui.tableWidget->setItem(2,0, new QTableWidgetItem(tr("Pause")));
@@ -46,10 +46,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.tableWidget->setItem(4,0, new QTableWidgetItem(tr("Next")));
     ui.tableWidget->setItem(5,0, new QTableWidgetItem(tr("Previous")));
     ui.tableWidget->setItem(6,0, new QTableWidgetItem(tr("Show/Hide")));
+    ui.tableWidget->setItem(7,0, new QTableWidgetItem(tr("Volume +")));
+    ui.tableWidget->setItem(8,0, new QTableWidgetItem(tr("Volume -")));
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Hotkey");
-    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::SHOW_HIDE; ++i, ++j)
+    for (int i = Hotkey::PLAY, j = 0; i <= Hotkey::VOLUME_DOWN; ++i, ++j)
     {
         Hotkey *hotkey = new Hotkey;
         hotkey->action = i;
