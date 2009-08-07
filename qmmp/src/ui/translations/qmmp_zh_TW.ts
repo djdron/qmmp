@@ -196,7 +196,6 @@
         <location filename="../configdialog.cpp" line="284"/>
         <location filename="../configdialog.cpp" line="317"/>
         <location filename="../configdialog.cpp" line="350"/>
-        <location filename="../configdialog.cpp" line="541"/>
         <source>Filename</source>
         <translation>檔名</translation>
     </message>
@@ -236,22 +235,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="541"/>
+        <source>File name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../configdialog.cpp" line="542"/>
-        <source>Filepath</source>
-        <translation>檔案路徑</translation>
+        <source>File path</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="543"/>
-        <source>Date</source>
-        <translation>日期</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="544"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="545"/>
+        <location filename="../configdialog.cpp" line="544"/>
         <source>Comment</source>
         <translation>備註</translation>
     </message>
@@ -481,12 +480,12 @@
         <translation>轉換 %20 為空格</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="665"/>
+        <location filename="../configdialog.cpp" line="664"/>
         <source>Select Skin Files</source>
         <translation>選取皮膚檔案</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="666"/>
+        <location filename="../configdialog.cpp" line="665"/>
         <source>Skin files</source>
         <translation>皮膚檔案</translation>
     </message>

@@ -196,7 +196,6 @@
         <location filename="../configdialog.cpp" line="284"/>
         <location filename="../configdialog.cpp" line="317"/>
         <location filename="../configdialog.cpp" line="350"/>
-        <location filename="../configdialog.cpp" line="541"/>
         <source>Filename</source>
         <translation>Nazwa pliku</translation>
     </message>
@@ -236,22 +235,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="541"/>
+        <source>File name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../configdialog.cpp" line="542"/>
-        <source>Filepath</source>
-        <translation>Ścieżka pliku</translation>
+        <source>File path</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="543"/>
-        <source>Date</source>
-        <translation>Data</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="544"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="545"/>
+        <location filename="../configdialog.cpp" line="544"/>
         <source>Comment</source>
         <translation>Komentarz</translation>
     </message>
@@ -481,12 +480,12 @@
         <translation>Konwertuj sekwencje %20 na spacje</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="665"/>
+        <location filename="../configdialog.cpp" line="664"/>
         <source>Select Skin Files</source>
         <translation>Wybierz skórę</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="666"/>
+        <location filename="../configdialog.cpp" line="665"/>
         <source>Skin files</source>
         <translation>Pliki skór</translation>
     </message>
