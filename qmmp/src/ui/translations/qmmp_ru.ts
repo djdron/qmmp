@@ -217,12 +217,12 @@
     <message>
         <location filename="../configdialog.cpp" line="537"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="538"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="539"/>
@@ -232,17 +232,17 @@
     <message>
         <location filename="../configdialog.cpp" line="540"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="541"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="542"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="543"/>
