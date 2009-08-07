@@ -23,6 +23,7 @@
 #include <QApplication>
 #include <QSettings>
 #include <QDir>
+#include <QTranslator>
 
 #include "decoderfactory.h"
 #include "streamreader.h"
@@ -63,6 +64,10 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(aboutToFinish()), SIGNAL(aboutToFinish()));
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    //install translation
+    QTranslator *translator = new QTranslator(parent);
+    translator->load(QString(":/libqmmp_") + Qmmp::systemLanguageID());
+    qApp->installTranslator(translator);
 }
 
 

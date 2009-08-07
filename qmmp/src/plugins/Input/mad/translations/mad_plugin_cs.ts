@@ -143,11 +143,6 @@
         <translation>Žánr:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../detailsdialog.ui" line="45"/>
         <source>Tags</source>
         <translation type="unfinished"></translation>
@@ -186,6 +181,11 @@
         <location filename="../detailsdialog.ui" line="87"/>
         <source>Title:</source>
         <translation>Název:</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="14"/>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="312"/>

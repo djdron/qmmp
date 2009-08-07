@@ -110,7 +110,9 @@ QT4_WRAP_UI(qmmp_UIS_H ${qmmp_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS} ${qmmp_UIS_H})
+QT4_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmp_locales.qrc)
+
+ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS} ${qmmp_UIS_H} ${libqmmpui_RCC_SRCS})
 target_link_libraries(libqmmp ${QT_LIBRARIES} ${CURL_LDFLAGS} ${CURL_CFLAGS})
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
 install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}

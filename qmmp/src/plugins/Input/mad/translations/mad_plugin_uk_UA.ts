@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderMADFactory</name>
     <message>
@@ -62,6 +62,9 @@
         <translation>Частота</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="121"/>
+        <location filename="../detailsdialog.cpp" line="124"/>
+        <location filename="../detailsdialog.cpp" line="127"/>
         <location filename="../detailsdialog.cpp" line="130"/>
         <source>Mode</source>
         <translation>Режим</translation>
@@ -72,31 +75,39 @@
         <translation>Розмір файла</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="136"/>
+        <location filename="../detailsdialog.cpp" line="140"/>
         <location filename="../detailsdialog.cpp" line="144"/>
         <source>Yes</source>
         <translation>Так</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="136"/>
         <location filename="../detailsdialog.cpp" line="138"/>
         <source>Protection</source>
         <translation>Захищено</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="138"/>
+        <location filename="../detailsdialog.cpp" line="142"/>
         <location filename="../detailsdialog.cpp" line="146"/>
         <source>No</source>
         <translation>Ні</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="140"/>
         <location filename="../detailsdialog.cpp" line="142"/>
         <source>Copyright</source>
         <translation>Авторське право</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="144"/>
         <location filename="../detailsdialog.cpp" line="146"/>
         <source>Original</source>
         <translation>Оригінал</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.cpp" line="160"/>
         <location filename="../detailsdialog.ui" line="75"/>
         <source>ID3v1 Tag</source>
         <translation>ID3v1-тег</translation>
@@ -115,11 +126,6 @@
         <location filename="../detailsdialog.ui" line="205"/>
         <source>Genre:</source>
         <translation>Жанр:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation>Діалог</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="45"/>
@@ -160,6 +166,11 @@
         <location filename="../detailsdialog.ui" line="87"/>
         <source>Title:</source>
         <translation>Назва:</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="14"/>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="312"/>
@@ -234,11 +245,15 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingsDialog</name>
     <message>
+        <location filename="../settingsdialog.ui" line="47"/>
+        <location filename="../settingsdialog.ui" line="94"/>
         <location filename="../settingsdialog.ui" line="141"/>
         <source>ID3v1</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="52"/>
+        <location filename="../settingsdialog.ui" line="99"/>
         <location filename="../settingsdialog.ui" line="146"/>
         <source>ID3v2</source>
         <translation></translation>
@@ -269,11 +284,15 @@ p, li { white-space: pre-wrap; }
         <translation>Перший:</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="104"/>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>APE</source>
         <translation>APE</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="62"/>
+        <location filename="../settingsdialog.ui" line="109"/>
         <location filename="../settingsdialog.ui" line="156"/>
         <source>Disabled</source>
         <translation>Вимкнути</translation>

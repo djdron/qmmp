@@ -44,12 +44,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="113"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="115"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Битовая частота</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="117"/>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="117"/>
         <source>Samplerate</source>
-        <translation type="unfinished"></translation>
+        <translation>Дискретизация</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="121"/>
@@ -67,12 +67,12 @@
         <location filename="../detailsdialog.cpp" line="127"/>
         <location filename="../detailsdialog.cpp" line="130"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="134"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер файла</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="136"/>
@@ -85,7 +85,7 @@
         <location filename="../detailsdialog.cpp" line="136"/>
         <location filename="../detailsdialog.cpp" line="138"/>
         <source>Protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Защита</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="138"/>
@@ -98,13 +98,13 @@
         <location filename="../detailsdialog.cpp" line="140"/>
         <location filename="../detailsdialog.cpp" line="142"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторские права</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="144"/>
         <location filename="../detailsdialog.cpp" line="146"/>
         <source>Original</source>
-        <translation type="unfinished"></translation>
+        <translation>Оригинальный</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="160"/>
@@ -128,29 +128,24 @@
         <translation>Жанр:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../detailsdialog.ui" line="45"/>
         <source>Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Теги</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="173"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="189"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Композитр:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="231"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>Трек:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="299"/>
@@ -173,6 +168,11 @@
         <translation>Название:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="14"/>
+        <source>Details</source>
+        <translation>Иформация</translation>
+    </message>
+    <message>
         <location filename="../detailsdialog.ui" line="312"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -184,7 +184,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../detailsdialog.ui" line="338"/>
         <source>Audio Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Свойства аудио</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="391"/>
@@ -219,17 +219,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../detailsdialog.ui" line="51"/>
         <source>ID3v1</source>
-        <translation type="unfinished"></translation>
+        <translation>ID3v1</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="58"/>
         <source>ID3v2</source>
-        <translation type="unfinished"></translation>
+        <translation>ID3v2</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="65"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="370"/>
@@ -288,7 +288,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../settingsdialog.ui" line="104"/>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>APE</source>
-        <translation type="unfinished"></translation>
+        <translation>APE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>

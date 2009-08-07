@@ -123,14 +123,14 @@
         <translation>Metai:</translation>
     </message>
     <message>
+        <location filename="../detailsdialog.ui" line="14"/>
+        <source>Details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../detailsdialog.ui" line="205"/>
         <source>Genre:</source>
         <translation>Žanras:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="45"/>
