@@ -534,13 +534,16 @@ void ConfigDialog::createMenus()
     menu->addAction(tr("Artist"))->setData("%p");
     menu->addAction(tr("Album"))->setData("%a");
     menu->addAction(tr("Title"))->setData("%t");
-    menu->addAction(tr("Tracknumber"))->setData("%n");
+    menu->addAction(tr("Track number"))->setData("%n");
+    menu->addAction(tr("Disc number"))->setData("%D");
     menu->addAction(tr("Genre"))->setData("%g");
+    menu->addAction(tr("Composer"))->setData("%C");
     menu->addAction(tr("Filename"))->setData("%f");
     menu->addAction(tr("Filepath"))->setData("%F");
-    menu->addAction(tr("Date"))->setData("%d");
+    menu->addAction(tr("Date"))->setData("%d"); //TODO fix this
     menu->addAction(tr("Year"))->setData("%y");
     menu->addAction(tr("Comment"))->setData("%c");
+
     ui.titleButton->setMenu(menu);
     ui.titleButton->setPopupMode(QToolButton::InstantPopup);
     connect( menu, SIGNAL(triggered ( QAction * )), SLOT(addTitleString( QAction * )));

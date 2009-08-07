@@ -66,11 +66,17 @@ void AbstractDetailsDialog::setMetaData(Qmmp::MetaData key, const QString &value
     case Qmmp::GENRE:
         ui->genreLineEdit->setText(value);
         break;
+    case Qmmp::COMPOSER:
+        return ui->composerLineEdit->setText(value);
+        break;
     case Qmmp::YEAR:
         ui->yearSpinBox->setValue(value.toInt());
         break;
     case Qmmp::TRACK:
         ui->trackSpinBox->setValue(value.toInt());
+        break;
+    case Qmmp::DISCNUMBER:
+        ui->discSpinBox->setValue(value.toInt());
         break;
     case Qmmp::URL:
         ui->pathLineEdit->setText(value);
@@ -127,13 +133,17 @@ const QString AbstractDetailsDialog::strMetaData(Qmmp::MetaData key)
     case Qmmp::ALBUM:
         return ui->albumLineEdit->text();
     case Qmmp::COMMENT:
-        return ui->commentBrowser->toPlainText();
+        return ui->commentBrowser->toPlainText();    
     case Qmmp::GENRE:
         return ui->genreLineEdit->text();
+    case Qmmp::COMPOSER:
+        return ui->composerLineEdit->text();
     case Qmmp::YEAR:
         return QString("%1").arg(ui->yearSpinBox->value());
     case Qmmp::TRACK:
         return QString("%1").arg(ui->trackSpinBox->value());
+    case Qmmp::DISCNUMBER:
+        return QString("%1").arg(ui->discSpinBox->value());
     case Qmmp::URL:
         return ui->pathLineEdit->text();
     }

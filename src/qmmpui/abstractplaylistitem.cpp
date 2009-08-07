@@ -54,6 +54,11 @@ const QString AbstractPlaylistItem::genre () const
     return m_metaData.value(Qmmp::GENRE);
 }
 
+const QString AbstractPlaylistItem::composer() const
+{
+    return m_metaData.value(Qmmp::COMPOSER);
+}
+
 const QString AbstractPlaylistItem::track () const
 {
     return m_metaData.value(Qmmp::TRACK);
@@ -62,6 +67,11 @@ const QString AbstractPlaylistItem::track () const
 const QString AbstractPlaylistItem::year () const
 {
     return m_metaData.value(Qmmp::YEAR);
+}
+
+const QString AbstractPlaylistItem::discNumber () const
+{
+    return m_metaData.value(Qmmp::DISCNUMBER);
 }
 
 const QString AbstractPlaylistItem::url () const

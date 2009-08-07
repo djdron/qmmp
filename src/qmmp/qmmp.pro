@@ -5,9 +5,9 @@ HEADERS += recycler.h \
     decoder.h \
     output.h \
     outputfactory.h \
-    equ\iir_cfs.h \
-    equ\iir_fpu.h \
-    equ\iir.h \
+    equ/iir_cfs.h \
+    equ/iir_fpu.h \
+    equ/iir.h \
     decoderfactory.h \
     soundcore.h \
     streamreader.h \
@@ -25,9 +25,9 @@ HEADERS += recycler.h \
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
-    equ\iir.c \
-    equ\iir_cfs.c \
-    equ\iir_fpu.c \
+    equ/iir.c \
+    equ/iir_cfs.c \
+    equ/iir_fpu.c \
     soundcore.cpp \
     streamreader.cpp \
     downloader.cpp \

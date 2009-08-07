@@ -196,7 +196,7 @@
         <location filename="../configdialog.cpp" line="284"/>
         <location filename="../configdialog.cpp" line="317"/>
         <location filename="../configdialog.cpp" line="350"/>
-        <location filename="../configdialog.cpp" line="539"/>
+        <location filename="../configdialog.cpp" line="541"/>
         <source>Filename</source>
         <translation>File</translation>
     </message>
@@ -217,31 +217,41 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="537"/>
-        <source>Tracknumber</source>
-        <translation>Numero della traccia</translation>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="538"/>
+        <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="539"/>
         <source>Genre</source>
         <translation>Genere</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="540"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="542"/>
         <source>Filepath</source>
         <translation>Percorso</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="541"/>
+        <location filename="../configdialog.cpp" line="543"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="542"/>
+        <location filename="../configdialog.cpp" line="544"/>
         <source>Year</source>
         <translation>Anno</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="543"/>
+        <location filename="../configdialog.cpp" line="545"/>
         <source>Comment</source>
         <translation>Commento</translation>
     </message>
@@ -471,16 +481,12 @@
         <translation>Converti il carattere « %20 » in spazi</translation>
     </message>
     <message>
-        <source>Show full path of a stream</source>
-        <translation type="obsolete">Mostra il percorso completo di un flusso</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="662"/>
+        <location filename="../configdialog.cpp" line="665"/>
         <source>Select Skin Files</source>
         <translation>Seleziona aspetto</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="663"/>
+        <location filename="../configdialog.cpp" line="666"/>
         <source>Skin files</source>
         <translation>Aspetto</translation>
     </message>
@@ -1169,29 +1175,6 @@
         <location filename="../playlist.cpp" line="245"/>
         <source>Actions</source>
         <translation>Azioni</translation>
-    </message>
-</context>
-<context>
-    <name>PlayListModel</name>
-    <message>
-        <source>Url:</source>
-        <translation type="obsolete">URL: </translation>
-    </message>
-    <message>
-        <source>Title:</source>
-        <translation type="obsolete">Titolo: </translation>
-    </message>
-    <message>
-        <source>Artist:</source>
-        <translation type="obsolete">Interprete: </translation>
-    </message>
-    <message>
-        <source>Album:</source>
-        <translation type="obsolete">Album: </translation>
-    </message>
-    <message>
-        <source>Comment:</source>
-        <translation type="obsolete">Commento: </translation>
     </message>
 </context>
 <context>

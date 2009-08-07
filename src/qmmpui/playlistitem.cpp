@@ -114,8 +114,11 @@ void PlayListItem::readMetadata()
     m_title = printTag(m_title, "%p", artist());
     m_title = printTag(m_title, "%a", album());
     m_title = printTag(m_title, "%t", title());
-    m_title = printTag(m_title, "%n", QString("%1").arg(track()));
+    m_title = printTag(m_title, "%n", track());
+    m_title = printTag(m_title, "%c", comment());
+    m_title = printTag(m_title, "%C", composer());
     m_title = printTag(m_title, "%g", genre());
+    m_title = printTag(m_title, "%D", discNumber());
     m_title = printTag(m_title, "%f", url().section('/',-1));
     m_title = printTag(m_title, "%F", url());
     m_title = printTag(m_title, "%y", QString("%1").arg(year ()));

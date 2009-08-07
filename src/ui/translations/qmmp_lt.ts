@@ -196,7 +196,7 @@
         <location filename="../configdialog.cpp" line="284"/>
         <location filename="../configdialog.cpp" line="317"/>
         <location filename="../configdialog.cpp" line="350"/>
-        <location filename="../configdialog.cpp" line="539"/>
+        <location filename="../configdialog.cpp" line="541"/>
         <source>Filename</source>
         <translation>Bylos pavadinimas</translation>
     </message>
@@ -217,31 +217,41 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="537"/>
-        <source>Tracknumber</source>
-        <translation>Takelio numeris</translation>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="538"/>
+        <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="539"/>
         <source>Genre</source>
         <translation>Žanras</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="540"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="542"/>
         <source>Filepath</source>
         <translation>Bylos kelias</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="541"/>
+        <location filename="../configdialog.cpp" line="543"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="542"/>
+        <location filename="../configdialog.cpp" line="544"/>
         <source>Year</source>
         <translation>Metai</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="543"/>
+        <location filename="../configdialog.cpp" line="545"/>
         <source>Comment</source>
         <translation>Komentaras</translation>
     </message>
@@ -471,16 +481,12 @@
         <translation>Convert %20 to blanks</translation>
     </message>
     <message>
-        <source>Show full path of a stream</source>
-        <translation type="obsolete">Rodyti pilną srauto kelią</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="662"/>
+        <location filename="../configdialog.cpp" line="665"/>
         <source>Select Skin Files</source>
         <translation>Pasirinkti temų bylas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="663"/>
+        <location filename="../configdialog.cpp" line="666"/>
         <source>Skin files</source>
         <translation>Temų bylos</translation>
     </message>
@@ -784,10 +790,6 @@
         <location filename="../mainvisual.cpp" line="361"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vidutinis</source>
-        <translation type="obsolete">Среднее</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="348"/>
@@ -1219,10 +1221,6 @@
         <location filename="../qmmpstarter.cpp" line="159"/>
         <source>Print version number and exit</source>
         <translation>Parodyti versiją ir išeiti</translation>
-    </message>
-    <message>
-        <source>Ideas, patches, bugreports send to butkus.algirdas@gmail.com</source>
-        <translation type="obsolete">Idėjos, pataisymai, klaidos:  butkus.algirdas@gmail.com</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="158"/>
