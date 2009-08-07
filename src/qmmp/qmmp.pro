@@ -19,7 +19,9 @@ HEADERS += recycler.h \
     statehandler.h \
     qmmp.h \
     fileinfo.h \
-    volumecontrol.h
+    volumecontrol.h \
+    coverwidget.h \
+    abstractdetailsdialog.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -34,7 +36,10 @@ SOURCES += recycler.cpp \
     statehandler.cpp \
     qmmp.cpp \
     fileinfo.cpp \
-    volumecontrol.cpp
+    volumecontrol.cpp \
+    coverwidget.cpp \
+    abstractdetailsdialog.cpp
+FORMS += forms/abstractdetailsdialog.ui
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
 CONFIG += release \
