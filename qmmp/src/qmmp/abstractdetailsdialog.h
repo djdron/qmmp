@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,27 +17,49 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
+#ifndef ABSTRACTDETAILSDIALOG_H
+#define ABSTRACTDETAILSDIALOG_H
 
-#include <qmmp/abstractdetailsdialog.h>
+#include <QDialog>
+#include <QMap>
+
+#include "qmmp.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class DetailsDialog : public AbstractDetailsDialog
+
+namespace Ui
 {
-Q_OBJECT
+    class AbstractDetailsDialog;
+}
+class QAbstractButton;
+
+class AbstractDetailsDialog : public QDialog
+{
+    Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    AbstractDetailsDialog(QWidget *parent = 0);
 
-    ~DetailsDialog();
+    ~AbstractDetailsDialog();
 
-private:    
-    void loadFLACInfo();
-    void loadTags();
-    void writeTags();
-    QString m_path;
+    void hideSaveButton(bool hide = TRUE);
+    void blockSaveButton(bool block = TRUE);
+
+protected:
+    virtual void writeTags();
+
+    void setMetaData(Qmmp::MetaData key, const QString &value);
+    void setMetaData(Qmmp::MetaData key, int value);
+    void setAudioProperties(QMap <QString, QString> p);
+    const QString strMetaData(Qmmp::MetaData key);
+    int intMetaData(Qmmp::MetaData key);
+
+private slots:
+    void processButton(QAbstractButton *);
+
+private:
+    Ui::AbstractDetailsDialog *ui;
 
 };
 

@@ -56,20 +56,12 @@ QT4_ADD_RESOURCES(libflac_RCC_SRCS ${libflac_RCCS})
 
 QT4_WRAP_CPP(libflac_MOC_SRCS ${libflac_MOC_HDRS})
 
-# user interface
-
-
-SET(libflac_UIS
-    detailsdialog.ui
-)
-
-QT4_WRAP_UI(libflac_UIS_H ${libflac_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FLAC_FOUND)
-ADD_LIBRARY(flac MODULE ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_UIS_H} ${libflac_RCC_SRCS})
+ADD_LIBRARY(flac MODULE ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_RCC_SRCS})
 add_dependencies(flac qmmp)
 target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LDFLAGS} ${FLAC_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input)
