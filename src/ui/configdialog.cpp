@@ -538,9 +538,8 @@ void ConfigDialog::createMenus()
     menu->addAction(tr("Disc number"))->setData("%D");
     menu->addAction(tr("Genre"))->setData("%g");
     menu->addAction(tr("Composer"))->setData("%C");
-    menu->addAction(tr("Filename"))->setData("%f");
-    menu->addAction(tr("Filepath"))->setData("%F");
-    menu->addAction(tr("Date"))->setData("%d"); //TODO fix this
+    menu->addAction(tr("File name"))->setData("%f");
+    menu->addAction(tr("File path"))->setData("%F");
     menu->addAction(tr("Year"))->setData("%y");
     menu->addAction(tr("Comment"))->setData("%c");
 
