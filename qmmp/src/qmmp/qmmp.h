@@ -50,8 +50,10 @@ public:
         ALBUM,     /*!< Album */
         COMMENT,   /*!< Comment */
         GENRE,     /*!< Genre */
+        COMPOSER,  /*!< Composer */
         YEAR,      /*!< Year */
         TRACK,     /*!< Track number */
+        DISCNUMBER,/*!< Disc number */
         URL        /*!< Stream url or local file path */
     };
     /*!

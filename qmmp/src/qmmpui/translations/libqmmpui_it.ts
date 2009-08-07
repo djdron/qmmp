@@ -33,6 +33,16 @@
         <source>Comment:</source>
         <translation>Commento:</translation>
     </message>
+    <message>
+        <location filename="../playlistmodel.cpp" line="370"/>
+        <source>Composer:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistmodel.cpp" line="371"/>
+        <source>Disc number:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QtFileDialogFactory</name>

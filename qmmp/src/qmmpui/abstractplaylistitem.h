@@ -55,9 +55,13 @@ public:
      */
     const QString comment () const;
     /*!
-     * Returns gnere.
+     * Returns genre.
      */
     const QString genre () const;
+    /*!
+     * Returns composer.
+     */
+    const QString composer() const;
     /*!
      * Returns track number.
      */
@@ -66,6 +70,10 @@ public:
      * Returns year.
      */
     const QString year () const;
+    /*!
+     * Returns disc number.
+     */
+    const QString discNumber () const;
     /*!
      * Returns stream url or local file path.
      */

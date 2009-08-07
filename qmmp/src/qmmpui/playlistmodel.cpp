@@ -366,13 +366,17 @@ void PlayListModel::showDetails()
                 str.append(tr("Artist:") + " %3\n");
                 str.append(tr("Album:") + " %4\n");
                 str.append(tr("Genre:") + " %5\n");
-                str.append(tr("Comment:") + " %6");
+                str.append(tr("Comment:") + " %6\n");
+                str.append(tr("Composer:") + " %7\n");
+                str.append(tr("Disc number:") + " %8");
                 str = str.arg(item->url())
                       .arg(item->title().isEmpty() ? item->text() : item->title())
                       .arg(item->artist())
                       .arg(item->album())
                       .arg(item->genre())
-                      .arg(item->comment());
+                      .arg(item->comment())
+                      .arg(item->composer())
+                      .arg(item->discNumber());
                 QMessageBox::information(0, m_items.at(i)->url(), str);
                 return;
             }
@@ -430,10 +434,14 @@ void PlayListModel::readSettings()
             infoList.last()->setMetaData(Qmmp::COMMENT, value);
         else if (param == "genre")
             infoList.last()->setMetaData(Qmmp::GENRE, value);
+        else if (param == "composer")
+            infoList.last()->setMetaData(Qmmp::COMPOSER, value);
         else if (param == "year")
             infoList.last()->setMetaData(Qmmp::YEAR, value);
         else if (param == "track")
             infoList.last()->setMetaData(Qmmp::TRACK, value);
+        else if (param == "disc")
+            infoList.last()->setMetaData(Qmmp::DISCNUMBER, value);
         else if (param == "length")
             infoList.last()->setLength(value.toInt());
     }
@@ -459,9 +467,11 @@ void PlayListModel::writeSettings()
         file.write(QString("album=%1").arg(m->album()).toUtf8() +"\n");
         file.write(QString("comment=%1").arg(m->comment()).toUtf8() +"\n");
         file.write(QString("genre=%1").arg(m->genre()).toUtf8() +"\n");
+        file.write(QString("composer=%1").arg(m->composer()).toUtf8() +"\n");
         file.write(QString("year=%1").arg(m->year()).toUtf8() +"\n");
         file.write(QString("track=%1").arg(m->track()).toUtf8() +"\n");
-        file.write(QString("length=%1").arg(m->length()).toUtf8() +"\n");
+        file.write(QString("disc=%1").arg(m->discNumber()).toUtf8() +"\n");
+        file.write(QString("length=%1").arg(m->length()).toUtf8() +"\n");        
     }
     file.close();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);

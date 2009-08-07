@@ -196,7 +196,7 @@
         <location filename="../configdialog.cpp" line="284"/>
         <location filename="../configdialog.cpp" line="317"/>
         <location filename="../configdialog.cpp" line="350"/>
-        <location filename="../configdialog.cpp" line="539"/>
+        <location filename="../configdialog.cpp" line="541"/>
         <source>Filename</source>
         <translation type="unfinished">Nome do Arquivo</translation>
     </message>
@@ -217,31 +217,41 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="537"/>
-        <source>Tracknumber</source>
-        <translation type="unfinished">Número da faixa</translation>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="538"/>
+        <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="539"/>
         <source>Genre</source>
         <translation type="unfinished">Gênero</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="540"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="542"/>
         <source>Filepath</source>
         <translation type="unfinished">Pasta do arquivo</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="541"/>
+        <location filename="../configdialog.cpp" line="543"/>
         <source>Date</source>
         <translation>Data</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="542"/>
+        <location filename="../configdialog.cpp" line="544"/>
         <source>Year</source>
         <translation type="unfinished">Ano</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="543"/>
+        <location filename="../configdialog.cpp" line="545"/>
         <source>Comment</source>
         <translation type="unfinished">Comentário</translation>
     </message>
@@ -471,12 +481,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="662"/>
+        <location filename="../configdialog.cpp" line="665"/>
         <source>Select Skin Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="663"/>
+        <location filename="../configdialog.cpp" line="666"/>
         <source>Skin files</source>
         <translation type="unfinished"></translation>
     </message>

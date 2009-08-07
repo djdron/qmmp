@@ -418,7 +418,8 @@ public slots:
     /*!
      * Sets short title format
      * @param format title format. (Expressions: "%p" - artist, "%a" - album, "%t" - title, "%n" - track,
-     * "%g" - genre, "%f" - file name, "%F" - full path, "%y" - year)
+     * "%g" - genre, "%c" - comment, "%C" - composer, "%D" - disc number "%f" - file name, "
+     * %F" - full path, "%y" - year)
      */
     void setFormat(const QString &format);
     /*!

@@ -36,7 +36,7 @@
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="159"/>
         <source>Composer:</source>
-        <translation>Композитр:</translation>
+        <translation>Композитор:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="175"/>
