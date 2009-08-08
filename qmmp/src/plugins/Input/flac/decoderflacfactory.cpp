@@ -94,14 +94,29 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
     //looking for cuesheet comment
     TagLib::Ogg::XiphComment *xiph_comment = useMetaData ? fileRef.xiphComment() : 0;
     QList <FileInfo*> list;
-    if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
+    if(xiph_comment)
     {
-        CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"].toString().toCString(TRUE), fileName);
-        list = parser.createPlayList();
-        delete info;
+        if (xiph_comment->fieldListMap().contains("CUESHEET"))
+        {
+            CUEParser parser(xiph_comment->fieldListMap()["CUESHEET"]
+                             .toString().toCString(TRUE), fileName);
+            list = parser.createPlayList();
+            delete info;
+            return list;
+        }
+        else
+        {
+            //additional metadata
+            TagLib::StringList fld;
+            if(!xiph_comment->fieldListMap()["COMPOSER"].isEmpty())
+                info->setMetaData(Qmmp::COMPOSER,
+                                  QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+            if(!xiph_comment->fieldListMap()["DISCNUMBER"].isEmpty())
+                info->setMetaData(Qmmp::DISCNUMBER,
+                                  QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+        }
     }
-    else
-        list << info;
+    list << info;
     return list;
 }
 

@@ -20,6 +20,8 @@
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/flacfile.h>
+#include <taglib/xiphcomment.h>
+#include <taglib/tmap.h>
 
 #include <QFile>
 #include <QFileInfo>
@@ -72,6 +74,12 @@ void DetailsDialog::loadTags()
     setMetaData(Qmmp::YEAR, f.tag()->year());
     setMetaData(Qmmp::TRACK, f.tag()->track());
     setMetaData(Qmmp::URL, m_path);
+    TagLib::FLAC::File *file = dynamic_cast< TagLib::FLAC::File *>(f.file());
+    TagLib::StringList fld;
+    if(file->xiphComment() && !(fld = file->xiphComment()->fieldListMap()["COMPOSER"]).isEmpty())
+        setMetaData(Qmmp::COMPOSER, TStringToQString_qt4(fld.toString()));
+    if(file->xiphComment() && !(fld = file->xiphComment()->fieldListMap()["DISCNUMBER"]).isEmpty())
+        setMetaData(Qmmp::DISCNUMBER, TStringToQString_qt4(fld.toString()));
 }
 
 void DetailsDialog::writeTags()
@@ -84,5 +92,13 @@ void DetailsDialog::writeTags()
     f.tag()->setGenre(QStringToTString_qt4(strMetaData(Qmmp::GENRE)));
     f.tag()->setYear(intMetaData(Qmmp::YEAR));
     f.tag()->setTrack(intMetaData(Qmmp::TRACK));
+    TagLib::FLAC::File *file = dynamic_cast< TagLib::FLAC::File *>(f.file());
+    strMetaData(Qmmp::COMPOSER).isEmpty() ?
+    file->xiphComment()->removeField("COMPOSER"):
+    file->xiphComment()->addField("COMPOSER", QStringToTString_qt4(strMetaData(Qmmp::COMPOSER)), TRUE);
+    intMetaData(Qmmp::DISCNUMBER) == 0 ?
+    file->xiphComment()->removeField("DISCNUMBER"):
+    file->xiphComment()->addField("DISCNUMBER",
+                                  QStringToTString_qt4(strMetaData(Qmmp::DISCNUMBER)), TRUE);
     f.save();
 }
