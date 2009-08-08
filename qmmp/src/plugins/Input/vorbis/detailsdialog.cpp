@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,9 +17,12 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/vorbisfile.h>
+#include <taglib/xiphcomment.h>
+#include <taglib/tmap.h>
 
 #include <QFile>
 #include <QFileInfo>
@@ -27,23 +30,21 @@
 #include "detailsdialog.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
+#define TStringToQString_qt4(s) QString::fromUtf8(s.toCString(TRUE)).trimmed()
 
 DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
-        : QDialog(parent)
+        : AbstractDetailsDialog(parent)
 {
-    ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);
     m_path = path;
-    setWindowTitle (path.section('/',-1));
-    path.section('/',-1);
-    ui.pathLineEdit->setText(m_path);
-    if(QFile::exists(m_path))
+    if (QFile::exists(m_path))
     {
         loadVorbisInfo();
-        loadTag();
+        loadTags();
+        blockSaveButton(!QFileInfo(m_path).isWritable());
     }
+    else
+        blockSaveButton();
 }
-
 
 DetailsDialog::~DetailsDialog()
 {}
@@ -51,70 +52,53 @@ DetailsDialog::~DetailsDialog()
 void DetailsDialog::loadVorbisInfo()
 {
     TagLib::Ogg::Vorbis::File f (m_path.toLocal8Bit());
-    //l.label
-    //ui. f.audioProperties()->level();
-    QString text;
-    text = QString("%1").arg(f.audioProperties()->length()/60);
+    QMap <QString, QString> ap;
+    QString text = QString("%1").arg(f.audioProperties()->length()/60);
     text +=":"+QString("%1").arg(f.audioProperties()->length()%60,2,10,QChar('0'));
-    ui.lengthLabel->setText(text);
-    text = QString("%1").arg(f.audioProperties()->sampleRate());
-    ui.sampleRateLabel->setText(text+" "+tr("Hz"));
-    text = QString("%1").arg(f.audioProperties()->channels());
-    ui.channelsLabel->setText(text);
-    text = QString("%1").arg(f.audioProperties()->bitrateNominal());
-    ui.nominalLabel->setText(text+" "+tr("kbps"));
-    text = QString("%1").arg(f.audioProperties()->bitrateMaximum());
-    ui.maximumLabel->setText(text+" "+tr("kbps"));
-    text = QString("%1").arg(f.audioProperties()->bitrateMinimum());
-    ui.minimumLabel->setText(text+" "+tr("kbps"));
-    text = QString("%1 "+tr("KB")).arg(f.length()/1024);
-    ui.fileSizeLabel->setText(text);
-
+    ap.insert(tr("Length"), text);
+    ap.insert(tr("Sample rate"), QString("%1 " + tr("Hz")).arg(f.audioProperties()->sampleRate()));
+    ap.insert(tr("Channels"), QString("%1").arg(f.audioProperties()->channels()));
+    ap.insert(tr("Bitrate"), QString("%1 " + tr("kbps")).arg(f.audioProperties()->bitrate()));
+    ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(f.length()/1024));
+    setAudioProperties(ap);
 }
 
-void DetailsDialog::loadTag()
+void DetailsDialog::loadTags()
 {
     TagLib::FileRef f (m_path.toLocal8Bit());
-
-    if (f.tag())
-    {   //TODO: load codec name from config
-
-        TagLib::String title = f.tag()->title();
-        TagLib::String artist = f.tag()->artist();
-        TagLib::String album = f.tag()->album();
-        TagLib::String comment = f.tag()->comment();
-        TagLib::String genre = f.tag()->genre();
-        QString string = QString::fromUtf8(title.toCString(TRUE)).trimmed();
-        ui.titleLineEdit->setText(string);
-        string = QString::fromUtf8(artist.toCString(TRUE)).trimmed();
-        ui.artistLineEdit->setText(string);
-        string = QString::fromUtf8(album.toCString(TRUE)).trimmed();
-        ui.albumLineEdit->setText(string);
-        string = QString::fromUtf8(comment.toCString(TRUE)).trimmed();
-        ui.commentLineEdit->setText(string);
-        string = QString("%1").arg(f.tag()->year());
-        ui.yearLineEdit->setText(string);
-        string = QString("%1").arg(f.tag()->track());
-        ui.trackLineEdit->setText(string);
-        string = QString::fromUtf8(genre.toCString(TRUE)).trimmed();
-        ui.genreLineEdit->setText(string);
-    }
-    QFileInfo info(m_path);
-    ui.saveButton->setEnabled(info.isWritable());
-    connect(ui.saveButton, SIGNAL(clicked()), SLOT(saveTag()));
+    setMetaData(Qmmp::TITLE, TStringToQString_qt4(f.tag()->title()));
+    setMetaData(Qmmp::ARTIST, TStringToQString_qt4(f.tag()->artist()));
+    setMetaData(Qmmp::ALBUM, TStringToQString_qt4(f.tag()->album()));
+    setMetaData(Qmmp::COMMENT, TStringToQString_qt4(f.tag()->comment()));
+    setMetaData(Qmmp::GENRE, TStringToQString_qt4(f.tag()->genre()));
+    setMetaData(Qmmp::YEAR, f.tag()->year());
+    setMetaData(Qmmp::TRACK, f.tag()->track());
+    setMetaData(Qmmp::URL, m_path);
+    TagLib::Ogg::Vorbis::File *file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(f.file());
+    TagLib::StringList fld;
+    if(file->tag() && !(fld = file->tag()->fieldListMap()["COMPOSER"]).isEmpty())
+        setMetaData(Qmmp::COMPOSER, TStringToQString_qt4(fld.toString()));
+    if(file->tag() && !(fld = file->tag()->fieldListMap()["DISCNUMBER"]).isEmpty())
+        setMetaData(Qmmp::DISCNUMBER, TStringToQString_qt4(fld.toString()));
 }
 
-void DetailsDialog::saveTag()
+void DetailsDialog::writeTags()
 {
     TagLib::FileRef f (m_path.toLocal8Bit());
-
-    f.tag()->setTitle(QStringToTString_qt4(ui.titleLineEdit->text()));
-    f.tag()->setArtist(QStringToTString_qt4(ui.artistLineEdit->text()));
-    f.tag()->setAlbum(QStringToTString_qt4(ui.albumLineEdit->text()));
-    f.tag()->setComment(QStringToTString_qt4(ui.commentLineEdit->text()));
-    f.tag()->setGenre(QStringToTString_qt4(ui.genreLineEdit->text()));
-    f.tag()->setYear(ui.yearLineEdit->text().toUInt());
-    f.tag()->setTrack(ui.trackLineEdit->text().toUInt());
-
+    f.tag()->setTitle(QStringToTString_qt4(strMetaData(Qmmp::TITLE)));
+    f.tag()->setArtist(QStringToTString_qt4(strMetaData(Qmmp::ARTIST)));
+    f.tag()->setAlbum(QStringToTString_qt4(strMetaData(Qmmp::ALBUM)));
+    f.tag()->setComment(QStringToTString_qt4(strMetaData(Qmmp::COMMENT)));
+    f.tag()->setGenre(QStringToTString_qt4(strMetaData(Qmmp::GENRE)));
+    f.tag()->setYear(intMetaData(Qmmp::YEAR));
+    f.tag()->setTrack(intMetaData(Qmmp::TRACK));
+    TagLib::Ogg::Vorbis::File *file = dynamic_cast<TagLib::Ogg::Vorbis::File *>(f.file());
+    strMetaData(Qmmp::COMPOSER).isEmpty() ?
+            file->tag()->removeField("COMPOSER"):
+            file->tag()->addField("COMPOSER", QStringToTString_qt4(strMetaData(Qmmp::COMPOSER)), TRUE);
+    intMetaData(Qmmp::DISCNUMBER) == 0 ?
+            file->tag()->removeField("DISCNUMBER"):
+            file->tag()->addField("DISCNUMBER",
+                                  QStringToTString_qt4(strMetaData(Qmmp::DISCNUMBER)), TRUE);
     f.save();
 }

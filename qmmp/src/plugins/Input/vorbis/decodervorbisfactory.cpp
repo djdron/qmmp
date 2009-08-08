@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,7 @@
 #include <QtGui>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
-#include <tag.h>
+#include <taglib/vorbisfile.h>
 
 #include "detailsdialog.h"
 #include "decoder_vorbis.h"
@@ -63,13 +63,12 @@ Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
     return new DecoderVorbis(parent, this, input, output);
 }
 
-//FileInfo *DecoderVorbisFactory::createFileInfo(const QString &source)
 QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     FileInfo *info = new FileInfo(fileName);
 
-    TagLib::FileRef fileRef(fileName.toLocal8Bit ());
-    TagLib::Tag *tag = useMetaData ? fileRef.tag() : 0;
+    TagLib::Ogg::Vorbis::File fileRef(fileName.toLocal8Bit ());
+    TagLib::Ogg::XiphComment *tag = useMetaData ? fileRef.tag() : 0;
 
     if (tag && !tag->isEmpty())
     {
@@ -89,6 +88,17 @@ QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, 
 
     if (fileRef.audioProperties())
         info->setLength(fileRef.audioProperties()->length());
+    //additional metadata
+    if(tag)
+    {
+        TagLib::StringList fld;
+        if(!(fld = tag->fieldListMap()["COMPOSER"]).isEmpty())
+            info->setMetaData(Qmmp::COMPOSER,
+                              QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+        if(!(fld = tag->fieldListMap()["DISCNUMBER"]).isEmpty())
+            info->setMetaData(Qmmp::DISCNUMBER,
+                              QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+    }
 
     QList <FileInfo*> list;
     list << info;
@@ -103,10 +113,7 @@ QObject* DecoderVorbisFactory::showDetails(QWidget *parent, const QString &path)
 }
 
 void DecoderVorbisFactory::showSettings(QWidget *)
-{
-    /*SettingsDialog *s = new SettingsDialog(parent);
-    s -> show();*/
-}
+{}
 
 void DecoderVorbisFactory::showAbout(QWidget *parent)
 {

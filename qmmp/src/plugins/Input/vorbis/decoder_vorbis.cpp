@@ -210,6 +210,14 @@ void DecoderVorbis::updateTags()
                               "date=", strlen ("date=")))
             metaData.insert(Qmmp::YEAR, QString::number(atoi(comments->user_comments[i]
                             + strlen ("date="))));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "composer=", strlen ("composer=")))
+            metaData.insert(Qmmp::COMPOSER, QString::fromUtf8 (comments->user_comments[i]
+                            + strlen ("composer=")));
+        else if (!strncasecmp(comments->user_comments[i],
+                              "discnumber=", strlen ("discnumber=")))
+            metaData.insert(Qmmp::DISCNUMBER, QString::number(atoi(comments->user_comments[i]
+                            + strlen ("discnumber="))));
 
     }
     stateHandler()->dispatch(metaData);
