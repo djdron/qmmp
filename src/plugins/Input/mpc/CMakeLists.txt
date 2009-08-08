@@ -60,21 +60,10 @@ QT4_ADD_RESOURCES(libmpc_RCC_SRCS ${libmpc_RCCS})
 
 QT4_WRAP_CPP(libmpc_MOC_SRCS ${libmpc_MOC_HDRS})
 
-# user interface
-
-
-SET(libmpc_UIS
-    detailsdialog.ui
-)
-
-QT4_WRAP_UI(libmpc_UIS_H ${libmpc_UIS})
-# Don't forget to include output directory, otherwise
-# the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MPC_FOUND)
-ADD_LIBRARY(mpc MODULE ${libmpc_SRCS} ${libmpc_MOC_SRCS} ${libmpc_UIS_H}
-  ${libmpc_RCC_SRCS})
+ADD_LIBRARY(mpc MODULE ${libmpc_SRCS} ${libmpc_MOC_SRCS} ${libmpc_RCC_SRCS})
 add_dependencies(mpc qmmp)
 target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp -lmpcdec ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS mpc DESTINATION ${LIB_DIR}/qmmp/Input)

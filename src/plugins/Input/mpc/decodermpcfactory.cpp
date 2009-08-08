@@ -21,6 +21,8 @@
 #include <QtGui>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
+#include <taglib/mpcfile.h>
+#include <taglib/apetag.h>
 
 #include "detailsdialog.h"
 #include "decoder_mpc.h"
@@ -63,8 +65,8 @@ QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, boo
 {
     FileInfo *info = new FileInfo(fileName);
 
-    TagLib::FileRef fileRef(fileName.toLocal8Bit ());
-    TagLib::Tag *tag = useMetaData ? fileRef.tag() : 0;
+    TagLib::MPC::File fileRef(fileName.toLocal8Bit ());
+    TagLib::APE::Tag *tag = useMetaData ? fileRef.APETag() : 0;
     if (tag && !tag->isEmpty())
     {
         info->setMetaData(Qmmp::ALBUM,
@@ -82,6 +84,14 @@ QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, boo
     }
     if (fileRef.audioProperties())
         info->setLength(fileRef.audioProperties()->length());
+    //additional metadata
+    if(tag)
+    {
+        TagLib::APE::Item fld;
+        if(!(fld = tag->itemListMap()["COMPOSER"]).isEmpty())
+            info->setMetaData(Qmmp::COMPOSER,
+                              QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+    }
 
     QList <FileInfo*> list;
     list << info;

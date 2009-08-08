@@ -20,14 +20,12 @@
 #ifndef DETAILSDIALOG_H
 #define DETAILSDIALOG_H
 
-#include <QDialog>
-
-#include "ui_detailsdialog.h"
+#include <qmmp/abstractdetailsdialog.h>
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class DetailsDialog : public QDialog
+class DetailsDialog : public AbstractDetailsDialog
 {
 Q_OBJECT
 public:
@@ -35,13 +33,10 @@ public:
 
     ~DetailsDialog();
 
-private slots:
-    void saveTag();
-
 private:
     void loadMPCInfo();
-    void loadTag();
-    Ui::DetailsDialog ui;
+    void loadTags();
+    void writeTags();
     QString m_path;
 
 };
