@@ -15,7 +15,11 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="7">
-    <widget class="QLineEdit" name="pathLineEdit"/>
+    <widget class="QLineEdit" name="pathLineEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0">
     <widget class="CoverWidget" name="coverWidget" native="true">
