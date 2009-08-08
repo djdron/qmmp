@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,14 +20,12 @@
 #ifndef DETAILSDIALOG_H
 #define DETAILSDIALOG_H
 
-#include <QDialog>
-
-#include "ui_detailsdialog.h"
+#include <qmmp/abstractdetailsdialog.h>
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class DetailsDialog : public QDialog
+class DetailsDialog : public AbstractDetailsDialog
 {
 Q_OBJECT
 public:
@@ -35,13 +33,10 @@ public:
 
     ~DetailsDialog();
 
-private slots:
-    void saveTag();
-
-private:
+private:    
     void loadWavPackInfo();
-    void loadTag();
-    Ui::DetailsDialog ui;
+    void loadTags();
+    void writeTags();
     QString m_path;
 
 };

@@ -9,22 +9,22 @@
         <translation>Modul WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="129"/>
+        <location filename="../decoderwavpackfactory.cpp" line="133"/>
         <source>About WavPack Audio Plugin</source>
         <translation>O modulu WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="130"/>
+        <location filename="../decoderwavpackfactory.cpp" line="134"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Vstupní modul Qmmp WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="131"/>
+        <location filename="../decoderwavpackfactory.cpp" line="135"/>
         <source>WavPack library version:</source>
         <translation>Verze knihovny WavPack:</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="133"/>
+        <location filename="../decoderwavpackfactory.cpp" line="137"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -37,130 +37,138 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="73"/>
+        <location filename="../detailsdialog.cpp" line="66"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="68"/>
+        <location filename="../detailsdialog.cpp" line="64"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="75"/>
+        <location filename="../detailsdialog.cpp" line="63"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="64"/>
+        <source>Sample rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="65"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="66"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="69"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="198"/>
+        <location filename="../detailsdialog.cpp" line="69"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="70"/>
+        <source>Ratio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="71"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>APE Tag</source>
-        <translation>Tag APE</translation>
+        <translation type="obsolete">Tag APE</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="13"/>
         <source>Details</source>
-        <translation>Podrobnosti</translation>
+        <translation type="obsolete">Podrobnosti</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
-        <translation>Cesta k souboru:</translation>
+        <translation type="obsolete">Cesta k souboru:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <location filename="../detailsdialog.ui" line="152"/>
-        <location filename="../detailsdialog.ui" line="169"/>
         <source>-</source>
-        <translation>-</translation>
+        <translation type="obsolete">-</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="65"/>
         <source>Sample rate:</source>
-        <translation>Vzorkovací frekvence:</translation>
+        <translation type="obsolete">Vzorkovací frekvence:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="82"/>
         <source>File size:</source>
-        <translation>Velikost souboru:</translation>
+        <translation type="obsolete">Velikost souboru:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="298"/>
         <source>Title:</source>
-        <translation>Název:</translation>
+        <translation type="obsolete">Název:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="288"/>
         <source>Artist:</source>
-        <translation>Umělec:</translation>
+        <translation type="obsolete">Umělec:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="278"/>
         <source>Album:</source>
-        <translation>Album:</translation>
+        <translation type="obsolete">Album:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="268"/>
         <source>Comment:</source>
-        <translation>Komentář:</translation>
+        <translation type="obsolete">Komentář:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="248"/>
         <source>Year:</source>
-        <translation>Rok:</translation>
+        <translation type="obsolete">Rok:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="235"/>
         <source>Track number:</source>
-        <translation>Číslo stopy:</translation>
+        <translation type="obsolete">Číslo stopy:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="258"/>
         <source>Genre:</source>
-        <translation>Žánr:</translation>
+        <translation type="obsolete">Žánr:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="225"/>
         <source>Save</source>
-        <translation>Uložit</translation>
+        <translation type="obsolete">Uložit</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="339"/>
         <source>Close</source>
-        <translation>Zavřít</translation>
+        <translation type="obsolete">Zavřít</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="48"/>
         <source>Length:</source>
-        <translation>Délka:</translation>
+        <translation type="obsolete">Délka:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="102"/>
         <source>Channels:</source>
-        <translation>Počet kanálů:</translation>
+        <translation type="obsolete">Počet kanálů:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="42"/>
         <source>WavPack Info</source>
-        <translation>Informace WavPack</translation>
+        <translation type="obsolete">Informace WavPack</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="125"/>
         <source>Bitrate:</source>
-        <translation>Datový tok:</translation>
+        <translation type="obsolete">Datový tok:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="142"/>
         <source>Ratio:</source>
-        <translation>Poměr:</translation>
+        <translation type="obsolete">Poměr:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="159"/>
         <source>Version:</source>
-        <translation>Verze:</translation>
+        <translation type="obsolete">Verze:</translation>
     </message>
 </context>
 </TS>
