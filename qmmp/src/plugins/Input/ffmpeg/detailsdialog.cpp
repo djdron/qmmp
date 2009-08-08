@@ -17,7 +17,6 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
 extern "C"{
 #if defined HAVE_FFMPEG_AVFORMAT_H
 #include <ffmpeg/avformat.h>
@@ -37,23 +36,18 @@ extern "C"{
 }
 
 #include <QFile>
+#include <QFileInfo>
 
 #include "detailsdialog.h"
 
 DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
-        : QDialog(parent)
+        : AbstractDetailsDialog(parent)
 {
-    ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);
     m_path = path;
-    setWindowTitle (path.section('/',-1));
-    path.section('/',-1);
-
-    ui.pathLineEdit->setText(m_path);
-    if(QFile::exists(m_path))
+    if (QFile::exists(m_path))
         loadInfo();
+    hideSaveButton();
 }
-
 
 DetailsDialog::~DetailsDialog()
 {}
@@ -68,50 +62,37 @@ void DetailsDialog::loadInfo()
         return;
     av_find_stream_info(in);
     av_read_play(in);
-    QString string = QString::fromUtf8(in->title).trimmed();
-    ui.titleLineEdit->setText(string);
-    string = QString::fromUtf8(in->author).trimmed();
-    ui.artistLineEdit->setText(string);
-    string = QString::fromUtf8(in->album).trimmed();
-    ui.albumLineEdit->setText(string);
-    string = QString::fromUtf8(in->comment).trimmed();
-    ui.commentLineEdit->setText(string);
-    string = QString("%1").arg(in->year);
-    ui.yearLineEdit->setText(string);
-    string = QString("%1").arg(in->track);
-    ui.trackLineEdit->setText(string);
-    string = QString::fromUtf8(in->genre).trimmed();
-    ui.genreLineEdit->setText(string);
 
-    QString text;
-    text = QString("%1").arg(int(in->duration/AV_TIME_BASE)/60);
+    //tags
+    setMetaData(Qmmp::TITLE, QString::fromUtf8(in->title).trimmed());
+    setMetaData(Qmmp::ARTIST, QString::fromUtf8(in->author).trimmed());
+    setMetaData(Qmmp::ALBUM, QString::fromUtf8(in->album).trimmed());
+    setMetaData(Qmmp::COMMENT, QString::fromUtf8(in->comment).trimmed());
+    setMetaData(Qmmp::GENRE, QString::fromUtf8(in->genre).trimmed());
+    setMetaData(Qmmp::URL, m_path);
+    setMetaData(Qmmp::YEAR, in->year);
+    setMetaData(Qmmp::TRACK, in->track);
+
+    //audio properties
+    QMap <QString, QString> ap;
+    QString text = QString("%1").arg(int(in->duration/AV_TIME_BASE)/60);
     text +=":"+QString("%1").arg(int(in->duration/AV_TIME_BASE)%60,2,10,QChar('0'));
-    ui.lengthLabel->setText(text);
-
-
-    text = QString("%1").arg(in->file_size/1024)+" "+tr("KB");
-    ui.fileSizeLabel->setText(text);
-    text = QString("%1").arg(in->bit_rate/1000);
-    ui.bitrateLabel->setText(text+" "+tr("kbps"));
+    ap.insert(tr("Length"), text);
+    ap.insert(tr("File size"),  QString("%1 ").arg(in->file_size/1024)+" "+tr("KB"));
+    ap.insert(tr("Bitrate"), QString("%1 "+tr("kbps")).arg(in->bit_rate/1000));
 
     AVCodecContext *c = 0;
     uint wma_idx;
-
     for (wma_idx = 0; wma_idx < in->nb_streams; wma_idx++)
     {
         c = in->streams[wma_idx]->codec;
         if (c->codec_type == CODEC_TYPE_AUDIO) break;
     }
-
     if (c)
     {
-        text = QString("%1").arg(c->sample_rate);
-        ui.sampleRateLabel->setText(text+" "+tr("Hz"));
-        text = QString("%1").arg(c->channels);
-        ui.channelsLabel->setText(text);
+        ap.insert(tr("Samplerate"), QString("%1 " + tr("Hz")).arg(c->sample_rate));
+        ap.insert(tr("Channels"), QString("%1").arg(c->channels));
     }
-
     av_close_input_file(in);
+    setAudioProperties(ap);
 }
-
-

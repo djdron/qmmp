@@ -37,113 +37,44 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
+        <location filename="../detailsdialog.cpp" line="79"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="80"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="80"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>Details</source>
-        <translation>Detaylar</translation>
+        <location filename="../detailsdialog.cpp" line="92"/>
+        <source>Samplerate</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="19"/>
-        <source>File path:</source>
-        <translation>Dosya konumu:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="42"/>
-        <source>Audio Info</source>
-        <translation>Ses Bilgisi</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="48"/>
-        <source>Length:</source>
-        <translation>Uzunluk:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <source>-</source>
-        <translation>-</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="65"/>
-        <source>Sample rate:</source>
-        <translation>Örnekleme oranı:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="82"/>
-        <source>File size:</source>
-        <translation>Dosya boyutu:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="102"/>
-        <source>Channels:</source>
-        <translation>Kanallar:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="125"/>
-        <source>Bitrate:</source>
-        <translation>Bit oranı:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="164"/>
-        <source>Metadata</source>
-        <translation>Metadata</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="170"/>
-        <source>Title:</source>
-        <translation>Başlık:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="183"/>
-        <source>Artist:</source>
-        <translation>Artist:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="196"/>
-        <source>Album:</source>
-        <translation>Albüm:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="209"/>
-        <source>Comment:</source>
-        <translation>Yorum:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="222"/>
-        <source>Year:</source>
-        <translation>Yıl:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="235"/>
-        <source>Track number:</source>
-        <translation>Parça numarası:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="248"/>
-        <source>Genre:</source>
-        <translation>Tür:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="277"/>
-        <source>Close</source>
-        <translation>Kapat</translation>
+        <location filename="../detailsdialog.cpp" line="93"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

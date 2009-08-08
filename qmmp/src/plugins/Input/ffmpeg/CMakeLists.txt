@@ -90,7 +90,6 @@ QT4_WRAP_CPP(libffmpeg_MOC_SRCS ${libffmpeg_MOC_HDRS})
 
 
 SET(libffmpeg_UIS
-  detailsdialog.ui
   settingsdialog.ui
 )
 
