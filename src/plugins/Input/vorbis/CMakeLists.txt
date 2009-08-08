@@ -51,19 +51,13 @@ QT4_WRAP_CPP(libvorbis_MOC_SRCS ${libvorbis_MOC_HDRS})
 
 # user interface
 
-
-SET(libvorbis_UIS
-    detailsdialog.ui
-)
-
 QT4_WRAP_UI(libvorbis_UIS_H ${libvorbis_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(VORBIS_FOUND)
-ADD_LIBRARY(vorbis MODULE ${libvorbis_SRCS} ${libvorbis_MOC_SRCS} ${libvorbis_UIS_H}
-  ${libvorbis_RCC_SRCS})
+ADD_LIBRARY(vorbis MODULE ${libvorbis_SRCS} ${libvorbis_MOC_SRCS} ${libvorbis_RCC_SRCS})
 add_dependencies(vorbis qmmp)
 target_link_libraries(vorbis ${QT_LIBRARIES} -lqmmp ${VORBIS_LDFLAGS} ${VORBIS_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS vorbis DESTINATION ${LIB_DIR}/qmmp/Input)
