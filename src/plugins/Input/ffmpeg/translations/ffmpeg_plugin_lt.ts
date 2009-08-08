@@ -37,113 +37,44 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
+        <location filename="../detailsdialog.cpp" line="79"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="80"/>
         <source>KB</source>
         <translation>КB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="80"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="81"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <source>-</source>
+        <location filename="../detailsdialog.cpp" line="92"/>
+        <source>Samplerate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="125"/>
-        <source>Bitrate:</source>
-        <translation>Bitrate:</translation>
+        <location filename="../detailsdialog.cpp" line="93"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="82"/>
-        <source>File size:</source>
-        <translation>BYlos dydis:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="102"/>
-        <source>Channels:</source>
-        <translation>Kanalai:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="65"/>
-        <source>Sample rate:</source>
-        <translation>Sample rate:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="48"/>
-        <source>Length:</source>
-        <translation>Ilgis:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="235"/>
-        <source>Track number:</source>
-        <translation>Takelio numeris:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="222"/>
-        <source>Year:</source>
-        <translation>Metai:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="248"/>
-        <source>Genre:</source>
-        <translation>Žanras:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="209"/>
-        <source>Comment:</source>
-        <translation>Komentaras:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="196"/>
-        <source>Album:</source>
-        <translation>Albumas:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="183"/>
-        <source>Artist:</source>
-        <translation>Atlikėjas:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="170"/>
-        <source>Title:</source>
-        <translation>Pavadinimas:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="277"/>
-        <source>Close</source>
-        <translation>Užverti</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="19"/>
-        <source>File path:</source>
-        <translation>Bylos kelias:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>kbps</source>
         <translation>kbps</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>Details</source>
-        <translation>Informacija</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="42"/>
-        <source>Audio Info</source>
-        <translation>Audio informacija</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="164"/>
-        <source>Metadata</source>
-        <translation>Metaduomenys</translation>
     </message>
 </context>
 <context>

@@ -37,113 +37,44 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="79"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="80"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="92"/>
+        <source>Samplerate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="93"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="80"/>
         <source>KB</source>
         <translation>KB</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>Details</source>
-        <translation>Dettagli</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="82"/>
-        <source>File size:</source>
-        <translation>Dimensione brano:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <source>-</source>
-        <translation>-</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="65"/>
-        <source>Sample rate:</source>
-        <translation>Campionatura:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="235"/>
-        <source>Track number:</source>
-        <translation>Traccia numero:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="222"/>
-        <source>Year:</source>
-        <translation>Anno:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="248"/>
-        <source>Genre:</source>
-        <translation>Genere:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="209"/>
-        <source>Comment:</source>
-        <translation>Commento:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="196"/>
-        <source>Album:</source>
-        <translation>Album:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="183"/>
-        <source>Artist:</source>
-        <translation>Interpret:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="170"/>
-        <source>Title:</source>
-        <translation>Titolo:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="277"/>
-        <source>Close</source>
-        <translation>Chiudi</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="19"/>
-        <source>File path:</source>
-        <translation>Percorso:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="48"/>
-        <source>Length:</source>
-        <translation>Durata:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="102"/>
-        <source>Channels:</source>
-        <translation>Canali:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="125"/>
-        <source>Bitrate:</source>
-        <translation>Bitrate:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="42"/>
-        <source>Audio Info</source>
-        <translation>Info Audio</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="164"/>
-        <source>Metadata</source>
-        <translation>Metadati</translation>
     </message>
 </context>
 <context>

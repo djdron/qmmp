@@ -37,113 +37,44 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="79"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="80"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="92"/>
+        <source>Samplerate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="93"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="80"/>
         <source>KB</source>
         <translation>KB</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>Details</source>
-        <translation>Podrobnosti</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="82"/>
-        <source>File size:</source>
-        <translation>Velikost souboru:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <source>-</source>
-        <translation>-</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="65"/>
-        <source>Sample rate:</source>
-        <translation>Vzorkovací frakvence:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="235"/>
-        <source>Track number:</source>
-        <translation>Číslo stopy:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="222"/>
-        <source>Year:</source>
-        <translation>Rok:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="248"/>
-        <source>Genre:</source>
-        <translation>Žánr:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="209"/>
-        <source>Comment:</source>
-        <translation>Komentář:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="196"/>
-        <source>Album:</source>
-        <translation>Album:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="183"/>
-        <source>Artist:</source>
-        <translation>Umělec:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="170"/>
-        <source>Title:</source>
-        <translation>Název:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="277"/>
-        <source>Close</source>
-        <translation>Zavřít</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="19"/>
-        <source>File path:</source>
-        <translation>Cesta k souboru:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="48"/>
-        <source>Length:</source>
-        <translation>Délka:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="102"/>
-        <source>Channels:</source>
-        <translation>Počet kanálů:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="125"/>
-        <source>Bitrate:</source>
-        <translation>Datový tok:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="42"/>
-        <source>Audio Info</source>
-        <translation>Informace o zvuku</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="164"/>
-        <source>Metadata</source>
-        <translation>Metadata</translation>
     </message>
 </context>
 <context>

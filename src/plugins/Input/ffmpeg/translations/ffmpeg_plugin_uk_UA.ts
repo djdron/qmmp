@@ -37,113 +37,44 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
+        <location filename="../detailsdialog.cpp" line="79"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="80"/>
         <source>KB</source>
         <translation>Кб</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="80"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="81"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <source>-</source>
-        <translation></translation>
+        <location filename="../detailsdialog.cpp" line="92"/>
+        <source>Samplerate</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="125"/>
-        <source>Bitrate:</source>
-        <translation>Бітова частота:</translation>
+        <location filename="../detailsdialog.cpp" line="93"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="82"/>
-        <source>File size:</source>
-        <translation>Розмір файлу:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="102"/>
-        <source>Channels:</source>
-        <translation>Каналів:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="65"/>
-        <source>Sample rate:</source>
-        <translation>Дискретизація:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="48"/>
-        <source>Length:</source>
-        <translation>Тривалість:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="235"/>
-        <source>Track number:</source>
-        <translation>Номер треку:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="222"/>
-        <source>Year:</source>
-        <translation>Рік:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="248"/>
-        <source>Genre:</source>
-        <translation>Жанр:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="209"/>
-        <source>Comment:</source>
-        <translation>Коментар:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="196"/>
-        <source>Album:</source>
-        <translation>Альбом:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="183"/>
-        <source>Artist:</source>
-        <translation>Виконавець:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="170"/>
-        <source>Title:</source>
-        <translation>Назва:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="277"/>
-        <source>Close</source>
-        <translation>Закрити</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="19"/>
-        <source>File path:</source>
-        <translation>Шлях до файлу:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="95"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>Details</source>
-        <translation>Інформація</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="42"/>
-        <source>Audio Info</source>
-        <translation>Інфо аудіо</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="164"/>
-        <source>Metadata</source>
-        <translation>Метадані</translation>
     </message>
 </context>
 <context>
