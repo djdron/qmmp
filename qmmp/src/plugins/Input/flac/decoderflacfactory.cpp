@@ -108,10 +108,10 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
         {
             //additional metadata
             TagLib::StringList fld;
-            if(!xiph_comment->fieldListMap()["COMPOSER"].isEmpty())
+            if(!(fld = xiph_comment->fieldListMap()["COMPOSER"]).isEmpty())
                 info->setMetaData(Qmmp::COMPOSER,
                                   QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
-            if(!xiph_comment->fieldListMap()["DISCNUMBER"].isEmpty())
+            if(!(fld = xiph_comment->fieldListMap()["DISCNUMBER"]).isEmpty())
                 info->setMetaData(Qmmp::DISCNUMBER,
                                   QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
         }
