@@ -14,22 +14,22 @@
         <translation>WavPack Dosyaları</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="129"/>
+        <location filename="../decoderwavpackfactory.cpp" line="133"/>
         <source>About WavPack Audio Plugin</source>
         <translation>WavPack Ses Eklentisi Hakkında</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="130"/>
+        <location filename="../decoderwavpackfactory.cpp" line="134"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Qmmp WavPack Ses Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="131"/>
+        <location filename="../decoderwavpackfactory.cpp" line="135"/>
         <source>WavPack library version:</source>
         <translation>WavPack kitaplık sürümü:</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="133"/>
+        <location filename="../decoderwavpackfactory.cpp" line="137"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -37,130 +37,138 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="68"/>
+        <location filename="../detailsdialog.cpp" line="63"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="64"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="73"/>
+        <location filename="../detailsdialog.cpp" line="64"/>
+        <source>Sample rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="65"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="66"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="75"/>
+        <location filename="../detailsdialog.cpp" line="66"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="69"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="13"/>
+        <location filename="../detailsdialog.cpp" line="69"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="70"/>
+        <source>Ratio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="71"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Details</source>
-        <translation>Detaylar</translation>
+        <translation type="obsolete">Detaylar</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
-        <translation>Dosya konumu:</translation>
+        <translation type="obsolete">Dosya konumu:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="42"/>
         <source>WavPack Info</source>
-        <translation>WavPack Bilgisi</translation>
+        <translation type="obsolete">WavPack Bilgisi</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="48"/>
         <source>Length:</source>
-        <translation>Uzunluk:</translation>
+        <translation type="obsolete">Uzunluk:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <location filename="../detailsdialog.ui" line="152"/>
-        <location filename="../detailsdialog.ui" line="169"/>
         <source>-</source>
-        <translation>-</translation>
+        <translation type="obsolete">-</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="65"/>
         <source>Sample rate:</source>
-        <translation>Örnekleme oranı:</translation>
+        <translation type="obsolete">Örnekleme oranı:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="82"/>
         <source>File size:</source>
-        <translation>Dosya boyutu:</translation>
+        <translation type="obsolete">Dosya boyutu:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="102"/>
         <source>Channels:</source>
-        <translation>Kanallar:</translation>
+        <translation type="obsolete">Kanallar:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="125"/>
         <source>Bitrate:</source>
-        <translation>Bit oranı:</translation>
+        <translation type="obsolete">Bit oranı:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="142"/>
         <source>Ratio:</source>
-        <translation>Oran:</translation>
+        <translation type="obsolete">Oran:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="159"/>
         <source>Version:</source>
-        <translation>Sürüm:</translation>
+        <translation type="obsolete">Sürüm:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="198"/>
         <source>APE Tag</source>
-        <translation>APE Etiketi</translation>
+        <translation type="obsolete">APE Etiketi</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="225"/>
         <source>Save</source>
-        <translation>Kaydet</translation>
+        <translation type="obsolete">Kaydet</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="235"/>
         <source>Track number:</source>
-        <translation>Parça numarası:</translation>
+        <translation type="obsolete">Parça numarası:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="248"/>
         <source>Year:</source>
-        <translation>Yıl:</translation>
+        <translation type="obsolete">Yıl:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="258"/>
         <source>Genre:</source>
-        <translation>Tür:</translation>
+        <translation type="obsolete">Tür:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="268"/>
         <source>Comment:</source>
-        <translation>Yorum:</translation>
+        <translation type="obsolete">Yorum:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="278"/>
         <source>Album:</source>
-        <translation>Albüm:</translation>
+        <translation type="obsolete">Albüm:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="288"/>
         <source>Artist:</source>
-        <translation>Artist:</translation>
+        <translation type="obsolete">Artist:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="298"/>
         <source>Title:</source>
-        <translation>Başlık:</translation>
+        <translation type="obsolete">Başlık:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="339"/>
         <source>Close</source>
-        <translation>Kapat</translation>
+        <translation type="obsolete">Kapat</translation>
     </message>
 </context>
 </TS>

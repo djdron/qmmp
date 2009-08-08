@@ -51,21 +51,10 @@ QT4_ADD_RESOURCES(libwavpack_RCC_SRCS ${libwavpack_RCCS})
 
 QT4_WRAP_CPP(libwavpack_MOC_SRCS ${libwavpack_MOC_HDRS})
 
-# user interface
-
-
-SET(libwavpack_UIS
-    detailsdialog.ui
-)
-
-QT4_WRAP_UI(libwavpack_UIS_H ${libwavpack_UIS})
-# Don't forget to include output directory, otherwise
-# the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(WAVPACK_FOUND)
-ADD_LIBRARY(wavpack MODULE ${libwavpack_SRCS} ${libwavpack_MOC_SRCS} ${libwavpack_UIS_H}
-  ${libwavpack_RCC_SRCS})
+ADD_LIBRARY(wavpack MODULE ${libwavpack_SRCS} ${libwavpack_MOC_SRCS} ${libwavpack_RCC_SRCS})
 add_dependencies(wavpack qmmp)
 target_link_libraries(wavpack ${QT_LIBRARIES} -lqmmp ${WAVPACK_LDFLAGS} ${WAVPACK_CLAGS})
 install(TARGETS wavpack DESTINATION ${LIB_DIR}/qmmp/Input)

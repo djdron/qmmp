@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,33 +17,31 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+extern "C"{
+#include <wavpack/wavpack.h>
+}
 
 #include <QFile>
 #include <QFileInfo>
 
-extern "C"
-{
-#include <wavpack/wavpack.h>
-}
-
 #include "detailsdialog.h"
 
+#define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
+#define TStringToQString_qt4(s) QString::fromUtf8(s.toCString(TRUE)).trimmed()
+
 DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
-        : QDialog(parent)
+        : AbstractDetailsDialog(parent)
 {
-    ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);
     m_path = path;
-    setWindowTitle (path.section('/',-1));
-    path.section('/',-1);
-    ui.pathLineEdit->setText(m_path);
     if (QFile::exists(m_path))
     {
         loadWavPackInfo();
-        loadTag();
+        loadTags();
+        blockSaveButton(!QFileInfo(m_path).isWritable());
     }
+    else
+        blockSaveButton();
 }
-
 
 DetailsDialog::~DetailsDialog()
 {}
@@ -58,28 +56,24 @@ void DetailsDialog::loadWavPackInfo()
         qWarning("DetailsDialog: error: %s", err);
         return;
     }
-
-    QString text;
+    QMap <QString, QString> ap;
     int length = (int) WavpackGetNumSamples(ctx)/WavpackGetSampleRate(ctx);
-    text = QString("%1").arg(length/60);
+    QString text = QString("%1").arg(length/60);
     text +=":"+QString("%1").arg(length % 60, 2, 10, QChar('0'));
-    ui.lengthLabel->setText(text);
-    text = QString("%1").arg((int) WavpackGetSampleRate(ctx));
-    ui.sampleRateLabel->setText(text+" "+tr("Hz"));
-    text = QString("%1").arg((int) WavpackGetNumChannels(ctx));
-    ui.channelsLabel->setText(text);
-    text = QString("%1")
-           .arg((int) WavpackGetAverageBitrate(ctx, WavpackGetNumChannels(ctx))/1000);
-    ui.bitrateLabel->setText(text+" "+tr("kbps"));
+    ap.insert(tr("Length"), text);
+    ap.insert(tr("Sample rate"), QString("%1 " + tr("Hz")).arg((int) WavpackGetSampleRate(ctx)));
+    ap.insert(tr("Channels"), QString("%1").arg((int) WavpackGetNumChannels(ctx)));
+    ap.insert(tr("Bitrate"), QString("%1 " + tr("kbps"))
+           .arg((int) WavpackGetAverageBitrate(ctx, WavpackGetNumChannels(ctx))/1000));
     QFileInfo info(m_path);
-    text = QString("%1 "+tr("KB")).arg((int) info.size()/1024);
-    ui.fileSizeLabel->setText(text);
-    ui.ratioLabel->setText(QString("%1").arg(WavpackGetRatio(ctx)));
-    ui.versionLabel->setText(QString("%1").arg(WavpackGetVersion(ctx)));
+    ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(info.size()/1024));
+    ap.insert(tr("Ratio"), QString("%1").arg(WavpackGetRatio(ctx)));
+    ap.insert(tr("Version"), QString("%1").arg(WavpackGetVersion(ctx)));
     WavpackCloseFile (ctx);
+    setAudioProperties(ap);
 }
 
-void DetailsDialog::loadTag()
+void DetailsDialog::loadTags()
 {
     char err[80];
     WavpackContext *ctx = WavpackOpenFileInput (m_path.toLocal8Bit(), err,
@@ -92,27 +86,27 @@ void DetailsDialog::loadTag()
 
     char value[200];
     WavpackGetTagItem (ctx, "Title", value, sizeof(value));
-    ui.titleLineEdit->setText(QString::fromUtf8(value));
+    setMetaData(Qmmp::TITLE, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Artist", value, sizeof(value));
-    ui.artistLineEdit->setText(QString::fromUtf8(value));
+    setMetaData(Qmmp::ARTIST, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Album", value, sizeof(value));
-    ui.albumLineEdit->setText(QString::fromUtf8(value));
+    setMetaData(Qmmp::ALBUM, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Comment", value, sizeof(value));
-    ui.commentLineEdit->setText(QString::fromUtf8(value));
+    setMetaData(Qmmp::COMMENT, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Year", value, sizeof(value));
-    ui.yearLineEdit->setText(QString::fromUtf8(value));
+    setMetaData(Qmmp::YEAR, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Track", value, sizeof(value));
-    ui.trackLineEdit->setText(QString::fromUtf8(value));
+    setMetaData(Qmmp::TRACK, QString::fromUtf8(value));
+    WavpackGetTagItem (ctx, "Disc", value, sizeof(value));
+    setMetaData(Qmmp::DISCNUMBER, QString::fromUtf8(value));
     WavpackGetTagItem (ctx, "Genre", value, sizeof(value));
-    ui.genreLineEdit->setText(QString::fromUtf8(value));
-
-    QFileInfo info(m_path);
-    ui.saveButton->setEnabled(info.isWritable());
-    connect(ui.saveButton, SIGNAL(clicked()), SLOT(saveTag()));
+    setMetaData(Qmmp::GENRE, QString::fromUtf8(value));
+    WavpackGetTagItem (ctx, "Composer", value, sizeof(value));
+    setMetaData(Qmmp::COMPOSER, QString::fromUtf8(value));
     WavpackCloseFile (ctx);
 }
 
-void DetailsDialog::saveTag()
+void DetailsDialog::writeTags()
 {
     char err[80];
     WavpackContext *ctx = WavpackOpenFileInput (m_path.toLocal8Bit(), err,
@@ -122,21 +116,24 @@ void DetailsDialog::saveTag()
         qWarning("DetailsDialog: error: %s", err);
         return;
     }
-    QByteArray value = ui.titleLineEdit->text().toUtf8();
+    QByteArray value = strMetaData(Qmmp::TITLE).toUtf8();
     WavpackAppendTagItem(ctx, "Title", value, value.size());
-    value = ui.artistLineEdit->text().toUtf8();
+    value = strMetaData(Qmmp::ARTIST).toUtf8();
     WavpackAppendTagItem(ctx, "Artist", value, value.size());
-    value = ui.albumLineEdit->text().toUtf8();
+    value = strMetaData(Qmmp::ALBUM).toUtf8();
     WavpackAppendTagItem(ctx, "Album", value, value.size());
-    value = ui.commentLineEdit->text().toUtf8();
+    value = strMetaData(Qmmp::COMMENT).toUtf8();
     WavpackAppendTagItem(ctx, "Comment", value, value.size());
-    value = ui.genreLineEdit->text().toUtf8();
+    value = strMetaData(Qmmp::GENRE).toUtf8();
     WavpackAppendTagItem(ctx, "Genre", value, value.size());
-    value = ui.yearLineEdit->text().toUtf8();
+    value = strMetaData(Qmmp::YEAR).toUtf8();
     WavpackAppendTagItem(ctx, "Year", value, value.size());
-    value = ui.trackLineEdit->text().toUtf8();
-    WavpackAppendTagItem(ctx, "Track", value, value.size()); 
-
+    value = strMetaData(Qmmp::TRACK).toUtf8();
+    WavpackAppendTagItem(ctx, "Track", value, value.size());
+    value = strMetaData(Qmmp::COMPOSER).toUtf8();
+    WavpackAppendTagItem(ctx, "Composer", value, value.size());
+    value = strMetaData(Qmmp::DISCNUMBER).toUtf8();
+    WavpackAppendTagItem(ctx, "Disc", value, value.size());
     WavpackWriteTag (ctx);
     WavpackCloseFile (ctx);
 }

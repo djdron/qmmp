@@ -98,10 +98,14 @@ QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName,
             info->setMetaData(Qmmp::GENRE, QString::fromUtf8(value));
             WavpackGetTagItem (ctx, "Title", value, sizeof(value));
             info->setMetaData(Qmmp::TITLE, QString::fromUtf8(value));
+            WavpackGetTagItem (ctx, "Composer", value, sizeof(value));
+            info->setMetaData(Qmmp::COMPOSER, QString::fromUtf8(value));
             WavpackGetTagItem (ctx, "Year", value, sizeof(value));
             info->setMetaData(Qmmp::YEAR, QString::fromUtf8(value).toInt());
             WavpackGetTagItem (ctx, "Track", value, sizeof(value));
             info->setMetaData(Qmmp::TRACK, QString::fromUtf8(value).toInt());
+            WavpackGetTagItem (ctx, "Disc", value, sizeof(value));
+            info->setMetaData(Qmmp::DISCNUMBER, QString::fromUtf8(value).toInt());
         }
     }
 

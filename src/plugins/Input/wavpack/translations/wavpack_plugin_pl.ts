@@ -14,22 +14,22 @@
         <translation>Pliki WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="129"/>
+        <location filename="../decoderwavpackfactory.cpp" line="133"/>
         <source>About WavPack Audio Plugin</source>
         <translation>O wtyczce WavPack Audio</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="130"/>
+        <location filename="../decoderwavpackfactory.cpp" line="134"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Wtyczka WavPack dla Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="131"/>
+        <location filename="../decoderwavpackfactory.cpp" line="135"/>
         <source>WavPack library version:</source>
         <translation>Wersja biblioteki WavPack:</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="133"/>
+        <location filename="../decoderwavpackfactory.cpp" line="137"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -37,130 +37,126 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="68"/>
+        <location filename="../detailsdialog.cpp" line="63"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="64"/>
         <source>Hz</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="73"/>
+        <location filename="../detailsdialog.cpp" line="64"/>
+        <source>Sample rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="65"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="66"/>
         <source>kbps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="75"/>
+        <location filename="../detailsdialog.cpp" line="66"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="69"/>
         <source>KB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="13"/>
+        <location filename="../detailsdialog.cpp" line="69"/>
+        <source>File size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="70"/>
+        <source>Ratio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="71"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Details</source>
-        <translation>Szczegóły</translation>
+        <translation type="obsolete">Szczegóły</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="19"/>
         <source>File path:</source>
-        <translation>Ścieżka pliku:</translation>
+        <translation type="obsolete">Ścieżka pliku:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="42"/>
-        <source>WavPack Info</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="48"/>
         <source>Length:</source>
-        <translation>Długość:</translation>
+        <translation type="obsolete">Długość:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="75"/>
-        <location filename="../detailsdialog.ui" line="92"/>
-        <location filename="../detailsdialog.ui" line="118"/>
-        <location filename="../detailsdialog.ui" line="135"/>
-        <location filename="../detailsdialog.ui" line="152"/>
-        <location filename="../detailsdialog.ui" line="169"/>
-        <source>-</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="65"/>
         <source>Sample rate:</source>
-        <translation>Próbkowanie:</translation>
+        <translation type="obsolete">Próbkowanie:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="82"/>
         <source>File size:</source>
-        <translation>Wielkość pliku:</translation>
+        <translation type="obsolete">Wielkość pliku:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="102"/>
         <source>Channels:</source>
-        <translation>Kanały:</translation>
+        <translation type="obsolete">Kanały:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="125"/>
         <source>Bitrate:</source>
-        <translation>Częstotliwość próbkowania:</translation>
+        <translation type="obsolete">Częstotliwość próbkowania:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="142"/>
         <source>Ratio:</source>
-        <translation>Współczynnik:</translation>
+        <translation type="obsolete">Współczynnik:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="159"/>
         <source>Version:</source>
-        <translation>Wersja:</translation>
+        <translation type="obsolete">Wersja:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="198"/>
-        <source>APE Tag</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="225"/>
         <source>Save</source>
-        <translation>Zapisz</translation>
+        <translation type="obsolete">Zapisz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="235"/>
         <source>Track number:</source>
-        <translation>Numer utworu:</translation>
+        <translation type="obsolete">Numer utworu:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="248"/>
         <source>Year:</source>
-        <translation>Rok:</translation>
+        <translation type="obsolete">Rok:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="258"/>
         <source>Genre:</source>
-        <translation>Gatunek:</translation>
+        <translation type="obsolete">Gatunek:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="268"/>
         <source>Comment:</source>
-        <translation>Komentarz:</translation>
+        <translation type="obsolete">Komentarz:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="278"/>
         <source>Album:</source>
-        <translation>Album:</translation>
+        <translation type="obsolete">Album:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="288"/>
         <source>Artist:</source>
-        <translation>Artysta:</translation>
+        <translation type="obsolete">Artysta:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="298"/>
         <source>Title:</source>
-        <translation>Tytuł:</translation>
+        <translation type="obsolete">Tytuł:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="339"/>
         <source>Close</source>
-        <translation>Zamknij</translation>
+        <translation type="obsolete">Zamknij</translation>
     </message>
 </context>
 </TS>

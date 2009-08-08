@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS>
+<TS version="2.0" language="pl">
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -13,22 +14,22 @@
         <translation>WavPack bylos</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="129"/>
+        <location filename="../decoderwavpackfactory.cpp" line="133"/>
         <source>About WavPack Audio Plugin</source>
         <translation>Apie WavPack audio įskiepį</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="130"/>
+        <location filename="../decoderwavpackfactory.cpp" line="134"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Qmmp WavPack audio įskiepis</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="132"/>
+        <location filename="../decoderwavpackfactory.cpp" line="135"/>
         <source>WavPack library version:</source>
         <translation>WavPack bibliotekos versija:</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="133"/>
+        <location filename="../decoderwavpackfactory.cpp" line="137"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Sukurta: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -36,124 +37,130 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="68"/>
+        <location filename="../detailsdialog.cpp" line="63"/>
+        <source>Length</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="64"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="73"/>
+        <location filename="../detailsdialog.cpp" line="64"/>
+        <source>Sample rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="65"/>
+        <source>Channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="66"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="75"/>
+        <location filename="../detailsdialog.cpp" line="66"/>
+        <source>Bitrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="69"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>Details</source>
+        <location filename="../detailsdialog.cpp" line="69"/>
+        <source>File size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="19"/>
+        <location filename="../detailsdialog.cpp" line="70"/>
+        <source>Ratio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="71"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>File path:</source>
-        <translation>Bylos kelias:</translation>
+        <translation type="obsolete">Bylos kelias:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="42"/>
         <source>WavPack Info</source>
-        <translation>WavPack informacija</translation>
+        <translation type="obsolete">WavPack informacija</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="48"/>
         <source>Length:</source>
-        <translation>Ilgis:</translation>
+        <translation type="obsolete">Ilgis:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="169"/>
-        <source>-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="65"/>
         <source>Sample rate:</source>
-        <translation>Sample rate:</translation>
+        <translation type="obsolete">Sample rate:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="82"/>
         <source>File size:</source>
-        <translation>Bylos dydis:</translation>
+        <translation type="obsolete">Bylos dydis:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="102"/>
         <source>Channels:</source>
-        <translation>Kanalai:</translation>
+        <translation type="obsolete">Kanalai:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="125"/>
         <source>Bitrate:</source>
-        <translation>Bitrate:</translation>
+        <translation type="obsolete">Bitrate:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="142"/>
         <source>Ratio:</source>
-        <translation>Suspaudimas:</translation>
+        <translation type="obsolete">Suspaudimas:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="159"/>
         <source>Version:</source>
-        <translation>Versija:</translation>
+        <translation type="obsolete">Versija:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="198"/>
         <source>APE Tag</source>
-        <translation>APE Tag</translation>
+        <translation type="obsolete">APE Tag</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="225"/>
         <source>Save</source>
-        <translation>Išsaugoti</translation>
+        <translation type="obsolete">Išsaugoti</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="235"/>
         <source>Track number:</source>
-        <translation>Takelio numeris:</translation>
+        <translation type="obsolete">Takelio numeris:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="248"/>
         <source>Year:</source>
-        <translation>Metai:</translation>
+        <translation type="obsolete">Metai:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="258"/>
         <source>Genre:</source>
-        <translation>Žanras:</translation>
+        <translation type="obsolete">Žanras:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="268"/>
         <source>Comment:</source>
-        <translation>Komentaras:</translation>
+        <translation type="obsolete">Komentaras:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="278"/>
         <source>Album:</source>
-        <translation>Albumas:</translation>
+        <translation type="obsolete">Albumas:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="288"/>
         <source>Artist:</source>
-        <translation>Atlikėjas:</translation>
+        <translation type="obsolete">Atlikėjas:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="298"/>
         <source>Title:</source>
-        <translation>Pavadinimas:</translation>
+        <translation type="obsolete">Pavadinimas:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="339"/>
         <source>Close</source>
-        <translation>Užverti</translation>
+        <translation type="obsolete">Užverti</translation>
     </message>
 </context>
 </TS>
