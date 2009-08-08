@@ -87,8 +87,17 @@ const QMap<Qmmp::MetaData, QString> TagExtractor::id3v2tag()
     m_tag.insert(Qmmp::TRACK,
                  QString::number(taglib_tag.track()));
 
+    if(!taglib_tag.frameListMap()["TCOM"].isEmpty())
+    {
+        TagLib::String composer = taglib_tag.frameListMap()["TCOM"].front()->toString();
+        m_tag.insert(Qmmp::COMPOSER, codec->toUnicode(composer.toCString(utf)).trimmed());
+    }
+    if(!taglib_tag.frameListMap()["TPOS"].isEmpty())
+    {
+        TagLib::String disc = taglib_tag.frameListMap()["TPOS"].front()->toString();
+        m_tag.insert(Qmmp::DISCNUMBER, QString(disc.toCString()).trimmed());
+    }
     return m_tag;
-
 }
 
 ID3v2Tag::ID3v2Tag(QByteArray *array, long offset) : TagLib::ID3v2::Tag()

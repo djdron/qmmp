@@ -99,7 +99,6 @@ Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *ou
     return new DecoderMAD(parent, this, input, output);
 }
 
-//FileInfo *DecoderMADFactory::createFileInfo(const QString &source)
 QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     FileInfo *info = new FileInfo(fileName);
@@ -183,6 +182,22 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
                               tag->year());
             info->setMetaData(Qmmp::TRACK,
                               tag->track());
+
+            if(tag == fileRef.ID3v2Tag())
+            {
+                if(!fileRef.ID3v2Tag()->frameListMap()["TCOM"].isEmpty())
+                {
+                    TagLib::String composer;
+                    composer = fileRef.ID3v2Tag()->frameListMap()["TCOM"].front()->toString();
+                    info->setMetaData(Qmmp::COMPOSER,
+                                      codec->toUnicode(composer.toCString(utf)).trimmed());
+                }
+                if(!fileRef.ID3v2Tag()->frameListMap()["TPOS"].isEmpty())
+                {
+                    TagLib::String disc = fileRef.ID3v2Tag()->frameListMap()["TPOS"].front()->toString();
+                    info->setMetaData(Qmmp::DISCNUMBER, QString(disc.toCString()).trimmed());
+                }
+            }
         }
     }
     if (fileRef.audioProperties())

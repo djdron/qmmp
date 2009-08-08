@@ -32,6 +32,7 @@
 #include <taglib/mpegfile.h>
 #include <taglib/mpegheader.h>
 #include <taglib/mpegproperties.h>
+#include <taglib/textidentificationframe.h>
 
 #include <qmmp/qmmp.h>
 
@@ -52,10 +53,10 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     m_codec_v1 =
-        QTextCodec::codecForName(settings.value("ID3v1_encoding", "ISO-8859-1" )
+        QTextCodec::codecForName(settings.value("ID3v1_encoding", "ISO-8859-1")
                                  .toByteArray ());
     m_codec_v2 =
-        QTextCodec::codecForName(settings.value("ID3v2_encoding","UTF-8" )
+        QTextCodec::codecForName(settings.value("ID3v2_encoding","UTF-8")
                                  .toByteArray ());
     if (!m_codec_v1)
         m_codec_v1 = QTextCodec::codecForName ("ISO-8859-1");
@@ -152,6 +153,7 @@ void DetailsDialog::loadTag()
     TagLib::MPEG::File f (m_path.toLocal8Bit().constData());
     QTextCodec *codec = QTextCodec::codecForName ("UTF-8");
     TagLib::Tag *tag = 0;
+    TagLib::ID3v2::FrameListMap flm;
 
     if (selectedTag() == TagLib::MPEG::File::ID3v1)
     {
@@ -164,6 +166,8 @@ void DetailsDialog::loadTag()
         tag = f.ID3v2Tag();
         codec = m_codec_v2;
         ui.tagGroupBox->setTitle(tr("ID3v2 Tag"));
+        if(tag)
+            flm = f.ID3v2Tag()->frameListMap();
     }
     else if (selectedTag() == TagLib::MPEG::File::APE)
     {
@@ -180,8 +184,10 @@ void DetailsDialog::loadTag()
     ui.albumLineEdit->clear();
     ui.commentBrowser->clear();
     ui.yearSpinBox->clear();
-    ui.trackSpinBox->clear();
+    ui.trackSpinBox->setValue(0);
     ui.genreLineEdit->clear();
+    ui.composerLineEdit->clear();
+    ui.discSpinBox->setValue(0);
 
     if (tag)
     {
@@ -205,6 +211,19 @@ void DetailsDialog::loadTag()
         ui.trackSpinBox->setValue(tag->track());
         string = codec->toUnicode(genre.toCString(utf)).trimmed();
         ui.genreLineEdit->setText(string);
+        if(selectedTag() == TagLib::MPEG::File::ID3v2)
+        {
+            if(!flm["TCOM"].isEmpty())
+            {
+                string = codec->toUnicode(flm["TCOM"].front()->toString().toCString(utf)).trimmed();
+                ui.composerLineEdit->setText(string);
+            }
+            if(!flm["TPOS"].isEmpty())
+            {
+                string = QString(flm["TPOS"].front()->toString().toCString(utf)).trimmed();
+                ui.discSpinBox->setValue(string.toInt());
+            }
+        }
     }
 }
 
@@ -246,6 +265,35 @@ void DetailsDialog::save()
             factory->setDefaultTextEncoding(type);
             f->setID3v2FrameFactory(factory);
             type = TagLib::String::UTF8;
+        }
+        //set composer tag
+        TagLib::String composer =
+                TagLib::String(codec->fromUnicode(ui.composerLineEdit->text()).constData(), type);
+        TagLib::ID3v2::Tag *id3v2_tag = dynamic_cast<TagLib::ID3v2::Tag *>(tag);
+        if(ui.composerLineEdit->text().isEmpty())
+            id3v2_tag->removeFrames("TCOM");
+        else if(!id3v2_tag->frameListMap()["TCOM"].isEmpty())
+            id3v2_tag->frameListMap()["TCOM"].front()->setText(composer);
+        else
+        {
+            TagLib::ID3v2::TextIdentificationFrame *frame;
+            frame = new TagLib::ID3v2::TextIdentificationFrame("TCOM", TagLib::String::Latin1);
+            frame->setText(composer);
+            id3v2_tag->addFrame(frame);
+        }
+        //set disc number
+        TagLib::String discnumber =
+                TagLib::String(QString("%1").arg(ui.discSpinBox->value()).toAscii().constData());
+        if(ui.discSpinBox->value() == 0)
+            id3v2_tag->removeFrames("TPOS");
+        else if(!id3v2_tag->frameListMap()["TPOS"].isEmpty())
+            id3v2_tag->frameListMap()["TPOS"].front()->setText(discnumber);
+        else
+        {
+            TagLib::ID3v2::TextIdentificationFrame *frame;
+            frame = new TagLib::ID3v2::TextIdentificationFrame("TPOS", TagLib::String::Latin1);
+            frame->setText(discnumber);
+            id3v2_tag->addFrame(frame);
         }
     }
     if (selectedTag() == TagLib::MPEG::File::APE)
