@@ -391,7 +391,10 @@ QPixmap DetailsDialog::findCover(const QString &path)
     QStringList filters;
     filters << "*.jpg" << "*.png";
     QFileInfoList file_list = dir.entryInfoList(filters);
-    if(!file_list.isEmpty())
-        return QPixmap (file_list.at(0).absoluteFilePath());
+    foreach(QFileInfo i, file_list)
+    {
+        if(!i.absoluteFilePath().contains("back", Qt::CaseInsensitive))
+            return QPixmap (i.absoluteFilePath());
+    }
     return QPixmap();
 }
