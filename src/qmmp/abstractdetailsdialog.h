@@ -22,6 +22,7 @@
 
 #include <QDialog>
 #include <QMap>
+#include <QPixmap>
 
 #include "qmmp.h"
 
@@ -60,6 +61,7 @@ private slots:
 
 private:
     Ui::AbstractDetailsDialog *ui;
+    QPixmap findCover(const QString &path);
 
 };
 
