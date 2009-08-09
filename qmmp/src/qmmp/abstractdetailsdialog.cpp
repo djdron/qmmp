@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include <QPushButton>
+#include <QFileInfo>
+#include <QDir>
 
 #include "ui_abstractdetailsdialog.h"
 #include "abstractdetailsdialog.h"
@@ -81,6 +83,7 @@ void AbstractDetailsDialog::setMetaData(Qmmp::MetaData key, const QString &value
     case Qmmp::URL:
         ui->pathLineEdit->setText(value);
         setWindowTitle (value.section('/',-1));
+        ui->coverWidget->setPixmap(findCover(value));
     }
 }
 
@@ -152,4 +155,18 @@ const QString AbstractDetailsDialog::strMetaData(Qmmp::MetaData key)
 int AbstractDetailsDialog::intMetaData(Qmmp::MetaData key)
 {
     return strMetaData(key).toInt();
+}
+
+QPixmap AbstractDetailsDialog::findCover(const QString &path)
+{
+    QString p = QFileInfo(path).absolutePath();
+    QDir dir(p);
+    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    dir.setSorting(QDir::Name);
+    QStringList filters;
+    filters << "*.jpg" << "*.png";
+    QFileInfoList file_list = dir.entryInfoList(filters);
+    if(!file_list.isEmpty())
+        return QPixmap (file_list.at(0).absoluteFilePath());
+    return QPixmap();
 }
