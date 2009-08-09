@@ -99,3 +99,5 @@ unix {
         devel
     DESTDIR = .
 }
+
+INCLUDEPATH += ./
