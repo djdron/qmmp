@@ -127,7 +127,7 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
     if (e->type() == QEvent::KeyPress && (o == qApp->desktop () || o == qApp->activeWindow ()))
     {
         QKeyEvent* k = static_cast<QKeyEvent*>(e);
-        quint32 key = k->nativeVirtualKey ();
+        quint32 key = XKeycodeToKeysym(QX11Info::display(), k->nativeScanCode (), 0);
         quint32 mod = k->nativeModifiers ();
         foreach(Hotkey *hotkey, m_grabbedKeys)
         {
@@ -282,4 +282,9 @@ QList<long> HotkeyManager::ignModifiersList()
         ret << 0 << LockMask;
     }
     return ret;
+}
+
+quint32 HotkeyManager::keycodeToKeysym(quint32 keycode)
+{
+    return XKeycodeToKeysym(QX11Info::display(), keycode, 0);
 }
