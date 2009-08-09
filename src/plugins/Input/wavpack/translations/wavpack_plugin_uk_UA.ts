@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="63"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="64"/>
@@ -49,12 +49,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="64"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="65"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Канали</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="66"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="66"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Бітрейт</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
@@ -74,17 +74,17 @@
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір файлу</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="70"/>
         <source>Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>Стиснення</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="71"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Версія</translation>
     </message>
     <message>
         <source>Details</source>

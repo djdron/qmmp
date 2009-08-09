@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>PlayListModel</name>
     <message>
@@ -36,12 +36,12 @@
     <message>
         <location filename="../playlistmodel.cpp" line="370"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Композитор:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="371"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диску:</translation>
     </message>
 </context>
 <context>

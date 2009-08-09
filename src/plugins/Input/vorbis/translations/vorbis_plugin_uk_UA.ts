@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderVorbisFactory</name>
     <message>
@@ -44,17 +44,17 @@
     <message>
         <location filename="../detailsdialog.cpp" line="58"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="59"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="60"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Канали</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="61"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="61"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Бітрейт</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір файлу</translation>
     </message>
 </context>
 </TS>
