@@ -73,6 +73,7 @@ public:
 
     static const QString getKeyString(quint32 key, quint32 modifiers);
     static QList<long> ignModifiersList();
+    static quint32 keycodeToKeysym(quint32 keycode);
 
 protected:
     virtual bool eventFilter(QObject* o, QEvent* e);

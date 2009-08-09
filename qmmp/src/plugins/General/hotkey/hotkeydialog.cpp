@@ -37,10 +37,11 @@ HotkeyDialog::~HotkeyDialog()
 
 void HotkeyDialog::keyPressEvent (QKeyEvent *event)
 {
-    m_key = event->nativeVirtualKey ();
+    m_key = HotkeyManager::keycodeToKeysym(event->nativeScanCode ());
     m_modifiers = event->nativeModifiers ();
     foreach(long mask_mod, HotkeyManager::ignModifiersList())
     m_modifiers &= ~mask_mod; //remove ignoried modifiers (num lock, caps lock, etc)
+
     ui.keyLineEdit->setText(HotkeyManager::getKeyString(m_key, m_modifiers));
     QWidget::keyPressEvent(event);
 }
@@ -50,7 +51,7 @@ quint32 HotkeyDialog::nativeModifiers () const
     return m_modifiers;
 }
 
-quint32 HotkeyDialog::nativeVirtualKey () const
+quint32 HotkeyDialog::keySym () const
 {
     return m_key;
 }

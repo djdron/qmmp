@@ -100,8 +100,8 @@ void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
     if (item->type() >= QTableWidgetItem::UserType &&
             dialog->exec() == QDialog::Accepted)
     {
-        item->setText(HotkeyManager::getKeyString(dialog->nativeVirtualKey (), dialog->nativeModifiers ()));
-        k->key = dialog->nativeVirtualKey ();
+        item->setText(HotkeyManager::getKeyString(dialog->keySym (), dialog->nativeModifiers ()));
+        k->key = dialog->keySym ();
         k->mod = dialog->nativeModifiers ();
     }
     delete dialog;

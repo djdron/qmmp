@@ -38,7 +38,7 @@ public:
     ~HotkeyDialog();
 
     quint32 nativeModifiers () const;
-    quint32 nativeVirtualKey () const;
+    quint32 keySym () const;
 
 public slots:
     virtual void accept();
