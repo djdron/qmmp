@@ -34,6 +34,7 @@
 #include <taglib/mpegproperties.h>
 #include <taglib/textidentificationframe.h>
 
+#include <qmmp/decoder.h>
 #include <qmmp/qmmp.h>
 
 #include "detailsdialog.h"
@@ -86,7 +87,7 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     connect(ui.id3v1RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.id3v2RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.apeRadioButton, SIGNAL(clicked()), SLOT(loadTag()));
-    ui.coverWidget->setPixmap(findCover(path));
+    ui.coverWidget->setPixmap(Decoder::findCover(path));
 }
 
 
@@ -159,19 +160,19 @@ void DetailsDialog::loadTag()
     {
         tag = f.ID3v1Tag();
         codec = m_codec_v1;
-        ui.tagGroupBox->setTitle(tr("ID3v1 Tag"));
+        ui.tagGroupBox->setTitle(tr("ID3v1"));
     }
     else if (selectedTag() == TagLib::MPEG::File::ID3v2)
     {
         tag = f.ID3v2Tag();
         codec = m_codec_v2;
-        ui.tagGroupBox->setTitle(tr("ID3v2 Tag"));
+        ui.tagGroupBox->setTitle(tr("ID3v2"));
         if(tag)
             flm = f.ID3v2Tag()->frameListMap();
     }
     else if (selectedTag() == TagLib::MPEG::File::APE)
     {
-        ui.tagGroupBox->setTitle(tr("APE Tag"));
+        ui.tagGroupBox->setTitle(tr("APE"));
         tag = f.APETag();
     }
     ui.saveButton->setEnabled(tag && m_rw);
@@ -380,21 +381,4 @@ void DetailsDialog::showAudioProperties(QMap <QString, QString> p)
     }
     formattedText.append("</TABLE>");
     ui.propertiesLabel->setText(formattedText);
-}
-
-QPixmap DetailsDialog::findCover(const QString &path)
-{
-    QString p = QFileInfo(path).absolutePath();
-    QDir dir(p);
-    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    dir.setSorting(QDir::Name);
-    QStringList filters;
-    filters << "*.jpg" << "*.png";
-    QFileInfoList file_list = dir.entryInfoList(filters);
-    foreach(QFileInfo i, file_list)
-    {
-        if(!i.absoluteFilePath().contains("back", Qt::CaseInsensitive))
-            return QPixmap (i.absoluteFilePath());
-    }
-    return QPixmap();
 }

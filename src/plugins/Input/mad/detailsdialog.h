@@ -50,7 +50,6 @@ private slots:
     void loadTag();
 
 private:
-    QPixmap findCover(const QString &path);
     void loadMPEGInfo();
     uint selectedTag();
     void showAudioProperties(QMap <QString, QString> p);
