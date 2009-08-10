@@ -76,7 +76,7 @@
    <item row="1" column="2" rowspan="2" colspan="5">
     <widget class="QGroupBox" name="tagGroupBox">
      <property name="title">
-      <string>ID3v1 Tag</string>
+      <string>ID3v1</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
