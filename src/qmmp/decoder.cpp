@@ -307,6 +307,10 @@ void Decoder::run()
             seekAudio(_m_seekTime + _m_offset);
             _m_totalBytes = _m_seekTime * _m_freq * _m_bps * _m_chan / 8000;
             _m_seekTime = -1;
+            output()->recycler()->mutex()->lock ();
+            while(output()->recycler()->used() > 1)
+               output()->recycler()->done();
+            output()->recycler()->mutex()->unlock ();
         }
 
         len = readAudio((char *)(_m_output_buf + _m_output_at), Qmmp::globalBufferSize() - _m_output_at);
@@ -365,7 +369,8 @@ void Decoder::flush(bool final)
         output()->recycler()->mutex()->lock ();
         if(_m_seekTime >= 0)
         {
-            output()->recycler()->clear();
+            while(output()->recycler()->used() > 1)
+                output()->recycler()->done();
             output()->recycler()->mutex()->unlock ();
             _m_output_at = 0;
             break;
