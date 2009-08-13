@@ -87,7 +87,14 @@ DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
     connect(ui.id3v1RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.id3v2RadioButton, SIGNAL(clicked()), SLOT(loadTag()));
     connect(ui.apeRadioButton, SIGNAL(clicked()), SLOT(loadTag()));
-    ui.coverWidget->setPixmap(Decoder::findCover(path));
+    QPixmap pix = Decoder::findCover(m_path);
+    if(pix.isNull())
+    {
+        ui.coverWidget->hide();
+        qobject_cast <QBoxLayout *> (ui.groupBox->layout ())->setDirection(QBoxLayout::LeftToRight);
+    }
+    else
+        ui.coverWidget->setPixmap(pix);
 }
 
 

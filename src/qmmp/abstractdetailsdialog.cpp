@@ -83,7 +83,11 @@ void AbstractDetailsDialog::setMetaData(Qmmp::MetaData key, const QString &value
     case Qmmp::URL:
         ui->pathLineEdit->setText(value);
         setWindowTitle (value.section('/',-1));
-        ui->coverWidget->setPixmap(Decoder::findCover(value));
+        QPixmap pix = Decoder::findCover(value);
+        if(pix.isNull())
+            ui->coverWidget->hide();
+        else
+            ui->coverWidget->setPixmap(pix);
     }
 }
 

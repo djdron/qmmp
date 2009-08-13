@@ -20,6 +20,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QPixmap>
 
 #include "coverwidget.h"
 
