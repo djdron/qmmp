@@ -61,6 +61,7 @@ private:
     QTimer *m_timer;
     QLabel *m_label1;
     QLabel *m_label2;
+    QLabel *m_pixlabel;
     uint m_pos;
 
 };

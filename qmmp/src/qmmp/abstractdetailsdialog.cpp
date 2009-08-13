@@ -154,6 +154,7 @@ const QString AbstractDetailsDialog::strMetaData(Qmmp::MetaData key)
     case Qmmp::URL:
         return ui->pathLineEdit->text();
     }
+    return QString();
 }
 
 int AbstractDetailsDialog::intMetaData(Qmmp::MetaData key)
