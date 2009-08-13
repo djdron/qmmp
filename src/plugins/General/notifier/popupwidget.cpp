@@ -28,6 +28,7 @@
 #include <QDir>
 #include <QApplication>
 #include <qmmp/soundcore.h>
+#include <qmmp/decoder.h>
 
 #include "popupwidget.h"
 
@@ -39,10 +40,10 @@ PopupWidget::PopupWidget(QWidget *parent)
     setFrameStyle(QFrame::Box | QFrame::Plain);
 
     QHBoxLayout *hlayout = new QHBoxLayout(this);
-    QLabel *pixlabel = new QLabel(this);
-    pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
-    pixlabel->setFixedSize(32,32);
-    hlayout->addWidget(pixlabel);
+    m_pixlabel = new QLabel(this);
+    m_pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
+    m_pixlabel->setFixedSize(32,32);
+    hlayout->addWidget(m_pixlabel);
     //layout
     QVBoxLayout *vlayout = new QVBoxLayout();
     hlayout->addLayout (vlayout);
@@ -100,6 +101,10 @@ void PopupWidget::showMetaData()
     }
     else
         m_label2->hide();
+
+    QPixmap pix = Decoder::findCover(core->metaData(Qmmp::URL));
+    if(!pix.isNull())
+        m_pixlabel->setPixmap(pix.scaled(32,32));
     qApp->processEvents();
     resize(sizeHint());
     qApp->processEvents();
