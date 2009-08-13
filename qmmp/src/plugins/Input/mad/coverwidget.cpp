@@ -27,7 +27,6 @@ CoverWidget::CoverWidget(QWidget *parent)
         : QWidget(parent)
 {}
 
-
 CoverWidget::~CoverWidget()
 {}
 
