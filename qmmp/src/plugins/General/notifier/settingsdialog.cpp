@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QSettings>
+#include <QFontDialog>
 
 #include <qmmp/qmmp.h>
 
@@ -49,7 +50,15 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.songCheckBox->setChecked(settings.value("song_notification", TRUE).toBool());
     ui.volumeCheckBox->setChecked(settings.value("volume_notification", TRUE).toBool());
     ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
+    QString fontname = settings.value ("font").toString();
+    ui.sizeSpinBox->setValue(settings.value ("cover_size", 48).toInt());
     settings.endGroup();
+    QFont font;
+    if(!fontname.isEmpty())
+        font.fromString(fontname);
+    ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+    ui.fontLabel->setFont(font);
+    connect (ui.fontButton, SIGNAL (clicked()), SLOT (setFont()));
 }
 
 
@@ -72,6 +81,20 @@ void SettingsDialog::accept()
     settings.setValue("song_notification", ui.songCheckBox->isChecked());
     settings.setValue("volume_notification", ui.volumeCheckBox->isChecked());
     settings.setValue ("opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
+    settings.setValue ("font", ui.fontLabel->font().toString());
+    settings.setValue ("cover_size", ui.sizeSpinBox->value());
     settings.endGroup();
     QDialog::accept();
+}
+
+void SettingsDialog::setFont()
+{
+    bool ok;
+    QFont font = ui.fontLabel->font();
+    font = QFontDialog::getFont (&ok, font, this);
+    if (ok)
+    {
+        ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
+        ui.fontLabel->setFont(font);
+    }
 }

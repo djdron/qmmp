@@ -63,6 +63,7 @@ private:
     QLabel *m_label2;
     QLabel *m_pixlabel;
     uint m_pos;
+    int m_coverSize;
 
 };
 

@@ -40,6 +40,9 @@ public:
 public slots:
     virtual void accept();
 
+private slots:
+    void setFont();
+
 private:
     Ui::SettingsDialog ui;
     QMap<uint, QPushButton*> m_buttons;
