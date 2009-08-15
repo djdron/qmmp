@@ -124,8 +124,9 @@ void TextScroller::setAutoscroll(bool enabled)
 void TextScroller::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value("MainWindow/Font","").toString();
-    m_font.fromString(fontname);
+    QString fontname = settings.value("MainWindow/Font").toString();
+    if(!fontname.isEmpty())
+        m_font.fromString(fontname);
 
     if (m_update)
     {

@@ -394,10 +394,10 @@ void ConfigDialog::loadFonts()
     ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.plFontLabel->setFont(font);
 
+    font = QApplication::font ();
     fontname = settings.value ("MainWindow/Font").toString();
     if(!fontname.isEmpty())
         font.fromString(fontname);
-    font.fromString(fontname);
     ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.mainFontLabel->setFont(font);
 }
