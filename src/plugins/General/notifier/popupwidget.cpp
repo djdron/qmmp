@@ -27,6 +27,7 @@
 #include <QSettings>
 #include <QDir>
 #include <QApplication>
+#include <QFont>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
 
@@ -61,7 +62,14 @@ PopupWidget::PopupWidget(QWidget *parent)
     int delay = settings.value("message_delay", 2000).toInt();
     m_pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
     setWindowOpacity(settings.value("opacity", 1.0).toDouble());
+    QString fontname = settings.value("font").toString();
+    m_coverSize = settings.value("cover_size", 48).toInt();
     settings.endGroup();
+    //font
+    QFont font;
+    if(!fontname.isEmpty())
+        font.fromString(fontname);
+    setFont(font);
     //timer
     m_timer = new QTimer(this);
     m_timer->setInterval(delay);
@@ -104,7 +112,15 @@ void PopupWidget::showMetaData()
 
     QPixmap pix = Decoder::findCover(core->metaData(Qmmp::URL));
     if(!pix.isNull())
-        m_pixlabel->setPixmap(pix.scaled(32,32));
+    {
+        m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
+        m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
+    }
+    else
+    {
+        m_pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
+        m_pixlabel->setFixedSize(32,32);
+    }
     qApp->processEvents();
     resize(sizeHint());
     qApp->processEvents();

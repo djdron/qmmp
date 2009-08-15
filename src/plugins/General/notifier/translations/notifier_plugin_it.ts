@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="it">
+<!DOCTYPE TS><TS version="1.1" language="it">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -27,7 +26,7 @@
 <context>
     <name>PopupWidget</name>
     <message>
-        <location filename="../popupwidget.cpp" line="115"/>
+        <location filename="../popupwidget.cpp" line="136"/>
         <source>Volume:</source>
         <translation>Volume:</translation>
     </message>
@@ -35,22 +34,22 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="19"/>
+        <location filename="../settingsdialog.ui" line="28"/>
         <source>Psi Notification</source>
         <translation>Notifica Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="25"/>
+        <location filename="../settingsdialog.ui" line="34"/>
         <source>Enable Psi notification</source>
         <translation>Abilita notifica Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
+        <location filename="../settingsdialog.ui" line="44"/>
         <source>Desktop Notification</source>
         <translation>Notifica sul desktop</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="248"/>
+        <location filename="../settingsdialog.ui" line="284"/>
         <source>Position</source>
         <translation>Posizione</translation>
     </message>
@@ -60,29 +59,44 @@
         <translation>Impostazioni modulo notifica</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="41"/>
+        <location filename="../settingsdialog.ui" line="50"/>
         <source>Song change notification</source>
         <translation>Notifica cambio brano</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="48"/>
+        <location filename="../settingsdialog.ui" line="57"/>
         <source>Volume change notification</source>
         <translation>Notifica modifica volume</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="91"/>
         <source>Delay, ms:</source>
         <translation>Ritardo, ms:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="81"/>
+        <location filename="../settingsdialog.ui" line="117"/>
         <source>Transparency</source>
         <translation>Trasparenza</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="104"/>
+        <location filename="../settingsdialog.ui" line="140"/>
         <source>0</source>
         <translation>0</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="64"/>
+        <source>Font:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="84"/>
+        <source>Cover size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="304"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
