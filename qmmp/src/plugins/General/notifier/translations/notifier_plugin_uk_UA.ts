@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -86,17 +87,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>Шрифт:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір обкладинки:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="304"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
 </context>
 </TS>
