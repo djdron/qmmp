@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="pl">
+<!DOCTYPE TS>
+<TS version="2.0" language="pl">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -86,17 +87,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>Czcionka:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielkość okładki:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="304"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

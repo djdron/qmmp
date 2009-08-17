@@ -39,7 +39,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="63"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Długość</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="64"/>
@@ -49,12 +49,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="64"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Próbkowanie</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="65"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanały</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="66"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="66"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Szybkość transmisji</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
@@ -74,17 +74,17 @@
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielkość pliku</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="70"/>
         <source>Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>Współczynnik</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="71"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja</translation>
     </message>
     <message>
         <source>Details</source>
