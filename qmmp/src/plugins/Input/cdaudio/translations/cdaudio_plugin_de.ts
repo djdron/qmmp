@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="de">
+<!DOCTYPE TS><TS version="1.1" language="de">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation>Verwendung: Geben Sie cdda:// in den „URL hinzufügen“-Dialo,oder in die Befehlszeile ein</translation>
+        <translation>Verwendung: Geben Sie cdda:/// in den „URL hinzufügen“-Dialog oder in die Befehlszeile ein</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="87"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="31"/>
         <source>Override device:</source>
-        <translation type="unfinished"></translation>
+        <translation>Einhängepunkt des CD-Laufwerks:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="44"/>
