@@ -26,7 +26,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>Use standard icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj standardowych ikon</translation>
     </message>
 </context>
 <context>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
-        <translation>Wtyczka Ikona Statusu dla Qmmp</translation>
+        <translation type="unfinished">Wtyczka Ikona Statusu dla Qmmp</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>

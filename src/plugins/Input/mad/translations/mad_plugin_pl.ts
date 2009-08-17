@@ -44,7 +44,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="115"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Format</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="117"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="117"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Szybkość transmisji</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="119"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="119"/>
         <source>Samplerate</source>
-        <translation type="unfinished"></translation>
+        <translation>Próbkowanie</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="123"/>
@@ -72,7 +72,7 @@
         <location filename="../detailsdialog.cpp" line="129"/>
         <location filename="../detailsdialog.cpp" line="132"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryb</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="135"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="136"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielkość pliku</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="138"/>
@@ -95,7 +95,7 @@
         <location filename="../detailsdialog.cpp" line="138"/>
         <location filename="../detailsdialog.cpp" line="140"/>
         <source>Protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Zabezpieczenie</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="140"/>
@@ -108,13 +108,13 @@
         <location filename="../detailsdialog.cpp" line="142"/>
         <location filename="../detailsdialog.cpp" line="144"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>Prawa autorskie</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="146"/>
         <location filename="../detailsdialog.cpp" line="148"/>
         <source>Original</source>
-        <translation type="unfinished"></translation>
+        <translation>Oryginał</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="163"/>
@@ -148,7 +148,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="14"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacje o pliku</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="117"/>
@@ -173,17 +173,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="49"/>
         <source>Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Tagi</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="210"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer albumu:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="166"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompozytor:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="182"/>
@@ -193,7 +193,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="232"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer utworu:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="313"/>
@@ -202,12 +202,12 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="339"/>
         <source>Audio Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Właściwości Audio</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="371"/>

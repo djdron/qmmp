@@ -217,12 +217,12 @@
     <message>
         <location filename="../configdialog.cpp" line="537"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer utworu</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="538"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer albumu</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="539"/>
@@ -232,17 +232,17 @@
     <message>
         <location filename="../configdialog.cpp" line="540"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompozytor</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="541"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="542"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="543"/>
@@ -402,7 +402,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl numery utworów na liście odtwarzania</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="580"/>
@@ -427,12 +427,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="613"/>
         <source>Compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompatybilność</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="619"/>
         <source>Openbox compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Zgodność z Openbox</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="764"/>
@@ -929,7 +929,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="464"/>
         <source>&amp;About</source>
-        <translation>&amp;O</translation>
+        <translation>&amp;O programie</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="508"/>
@@ -1048,7 +1048,7 @@
     <message>
         <location filename="../playlist.cpp" line="171"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń niedostępne pliki</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="174"/>
@@ -1250,7 +1250,7 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="176"/>
+        <location filename="../textscroller.cpp" line="177"/>
         <source>Buffering:</source>
         <translation>Buforowanie:</translation>
     </message>
