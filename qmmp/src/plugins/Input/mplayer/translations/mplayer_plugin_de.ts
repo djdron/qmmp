@@ -176,12 +176,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Audio/video auto synchronization</source>
-        <translation type="unfinished">Autom. Audio/Video-Synchronisierung</translation>
+        <translation>Autom. Audio/Video-Synchronisation</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Synchronization factor:</source>
-        <translation type="unfinished">Synchronisierungsfaktor:</translation>
+        <translation>Synchronisationsfaktor:</translation>
     </message>
 </context>
 </TS>

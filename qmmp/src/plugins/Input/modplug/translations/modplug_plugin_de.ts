@@ -173,12 +173,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>16 bit</source>
-        <translation>16 bit</translation>
+        <translation>16 Bit</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="48"/>
         <source>8 bit</source>
-        <translation>8 bit</translation>
+        <translation>8 Bit</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
@@ -193,7 +193,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="77"/>
         <source>Mono (downmix)</source>
-        <translation>Mono (downmix)</translation>
+        <translation>Mono (Downmix)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
@@ -341,7 +341,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="723"/>
         <source>Loop</source>
-        <translation>Schleife(n)</translation>
+        <translation>Schleifen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="740"/>
@@ -393,7 +393,7 @@ p, li { white-space: pre-wrap; }
 too high may cause clipping!</source>
         <translation>Hinweis: Ein zu hoch gewählter
 Vorverstärkungspegel kann
-Signalübersteuerungen verursachen!</translation>
+Signalübersteuerungen verursachen.</translation>
     </message>
 </context>
 </TS>

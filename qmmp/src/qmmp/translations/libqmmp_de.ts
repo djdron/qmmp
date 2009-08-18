@@ -6,57 +6,57 @@
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="14"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Details</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="45"/>
         <source>Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Metadaten</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="57"/>
         <source>Title:</source>
-        <translation type="unfinished">Titel:</translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="83"/>
         <source>Artist:</source>
-        <translation type="unfinished">Interpret:</translation>
+        <translation>Interpret:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="109"/>
         <source>Album:</source>
-        <translation type="unfinished">Album:</translation>
+        <translation>Album:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="143"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-Nummer:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="159"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponist:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="175"/>
         <source>Genre:</source>
-        <translation type="unfinished">Genre:</translation>
+        <translation>Genre:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="201"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stück:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="232"/>
         <source>Year:</source>
-        <translation type="unfinished">Jahr:</translation>
+        <translation>Jahr:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="269"/>
         <source>Comment:</source>
-        <translation type="unfinished">Kommentar:</translation>
+        <translation>Kommentar:</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="282"/>
@@ -65,17 +65,17 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="308"/>
         <source>Audio Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio-Eigenschaften</translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="314"/>
         <source>-</source>
-        <translation type="unfinished">-</translation>
+        <translation>-</translation>
     </message>
 </context>
 </TS>

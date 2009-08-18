@@ -36,12 +36,12 @@
     <message>
         <location filename="../playlistmodel.cpp" line="370"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponist:</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="371"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-Nummer:</translation>
     </message>
 </context>
 <context>

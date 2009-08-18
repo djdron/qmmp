@@ -58,14 +58,14 @@
     <message>
         <location filename="../lyricswindow.cpp" line="73"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Es kann kein Liedtext für dieses Stück gefunden werden.</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="78"/>
         <location filename="../lyricswindow.cpp" line="96"/>
         <location filename="../lyricswindow.cpp" line="99"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="112"/>
@@ -75,17 +75,17 @@
     <message>
         <location filename="../lyricswindow.cpp" line="115"/>
         <source>Connecting...</source>
-        <translation>Verbinde ...</translation>
+        <translation>Verbindung wird hergestellt ...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="118"/>
         <source>Sending request...</source>
-        <translation>Sende Anfrage ...</translation>
+        <translation>Anfrage wird gesendet ...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="121"/>
         <source>Receiving</source>
-        <translation>Empfange</translation>
+        <translation>Daten werden empfangen</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="124"/>
@@ -95,7 +95,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="127"/>
         <source>Closing connection...</source>
-        <translation>Beende Verbindung ...</translation>
+        <translation>Verbindung wird beendet ...</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
