@@ -217,12 +217,12 @@
     <message>
         <location filename="../configdialog.cpp" line="537"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Stücknummer</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="538"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-Nummer</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="539"/>
@@ -232,17 +232,17 @@
     <message>
         <location filename="../configdialog.cpp" line="540"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponist</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="541"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="542"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="543"/>
@@ -362,12 +362,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="613"/>
         <source>Compatibility</source>
-        <translation type="unfinished">Kompatibilität</translation>
+        <translation>Kompatibilität</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="619"/>
         <source>Openbox compatibility</source>
-        <translation type="unfinished">Openbox-Kompatibilität</translation>
+        <translation>Openbox-Kompatibilität</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="896"/>
@@ -1038,7 +1038,7 @@
     <message>
         <location filename="../playlist.cpp" line="171"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished">Nichtverfügbare Dateien entfernen</translation>
+        <translation>Nichtverfügbare Dateien entfernen</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="174"/>

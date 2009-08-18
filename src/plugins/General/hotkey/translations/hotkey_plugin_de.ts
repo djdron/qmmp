@@ -24,22 +24,22 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="30"/>
         <source>Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzbefehle-Modul</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="50"/>
         <source>About Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Kurzbefehle-Modul</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="51"/>
         <source>Qmmp Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp Kurzbefehle-Modul</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dieses Modul fügt die Unterstützung für Multimedia-Tasten oder allgemeine Tastaturkombinationen hinzu</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="53"/>
@@ -87,17 +87,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="49"/>
         <source>Volume +</source>
-        <translation type="unfinished"></translation>
+        <translation>Lautstärke +</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="50"/>
         <source>Volume -</source>
-        <translation type="unfinished"></translation>
+        <translation>Lautstärke -</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Global Hotkey Plugin Settings</source>
-        <translation type="unfinished">Einstellungen Global-Hotkey-Modul</translation>
+        <translation>Einstellungen Kurzbefehle-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>

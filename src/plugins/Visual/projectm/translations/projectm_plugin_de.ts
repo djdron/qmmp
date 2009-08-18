@@ -112,7 +112,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
         <source>This plugins adds projectM visualization</source>
-        <translation type="unfinished">Dieses Modul fügt Unterstützung für ProjectM-Visualisierungen hinzu</translation>
+        <translation>Dieses Modul fügt Unterstützung für ProjectM-Visualisierungen hinzu</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="52"/>
@@ -122,7 +122,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="53"/>
         <source>Based on llibrojectM-qt library</source>
-        <translation type="unfinished">Basiert auf der libprojectM-Qt-Bibliothek</translation>
+        <translation>Basiert auf der libprojectM-Qt-Bibliothek</translation>
     </message>
 </context>
 </TS>
