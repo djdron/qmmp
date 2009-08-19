@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fi">
+<!DOCTYPE TS><TS version="1.1" language="fi">
 <context>
     <name>QmmpFileDialog</name>
     <message>
@@ -14,9 +13,6 @@
         <translation>Nach oben</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.ui" line="40"/>
-        <location filename="../qmmpfiledialog.ui" line="53"/>
-        <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
         <translation>...</translation>
@@ -60,7 +56,6 @@
 <context>
     <name>QmmpFileDialogFactory</name>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="121"/>
         <location filename="../qmmpfiledialog.cpp" line="130"/>
         <source>Qmmp File Dialog</source>
         <translation>Qmmp Datei-Dialog</translation>
@@ -71,7 +66,7 @@
         <translation>Über Qmmp Datei-Dialog</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="131"/>
+        <location filename="../qmmpfiledialog.cpp" line="133"/>
         <source>Writen by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
@@ -103,14 +98,10 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
         <translation>Verzeichnisse</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="457"/>
-        <source>already exists.</source>
-        <translation>existiert bereits.</translation>
-    </message>
-    <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="458"/>
-        <source>Do you want to replace it?</source>
-        <translation>Möchten Sie es ersetzen?</translation>
+        <source>%1 already exists.
+Do you want to replace it?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

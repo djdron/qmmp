@@ -174,7 +174,7 @@ void FileOps::execAction(int n)
     case REMOVE:
         qDebug("FileOps: remove");
         if (QMessageBox::question (qApp->activeWindow (), tr("Remove files"),
-                                   QString(tr("Are you sure you want to remove %1 file(s) from disk"))
+                                   QString(tr("Are you sure you want to remove %1 file(s) from disk?"))
                                    .arg(items.size()),
                                    QMessageBox::Yes | QMessageBox::No) !=  QMessageBox::Yes)
             break;
