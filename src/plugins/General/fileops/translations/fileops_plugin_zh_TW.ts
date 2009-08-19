@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="zh_TW">
+<!DOCTYPE TS><TS version="1.1" language="zh_TW">
 <context>
     <name>FileOps</name>
     <message>
@@ -35,8 +34,8 @@
     </message>
     <message>
         <location filename="../fileops.cpp" line="177"/>
-        <source>Are you sure you want to remove %1 file(s) from disk</source>
-        <translation>您要確定要從磁盤中刪除 %1 檔案</translation>
+        <source>Are you sure you want to remove %1 file(s) from disk?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -83,19 +82,16 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="52"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
         <translation>復制</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Rename</source>
         <translation>重命名</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="55"/>
         <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
         <translation>刪除</translation>
@@ -191,9 +187,6 @@
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="105"/>
-        <location filename="../settingsdialog.ui" line="121"/>
-        <location filename="../settingsdialog.ui" line="158"/>
         <location filename="../settingsdialog.ui" line="175"/>
         <source>...</source>
         <translation>...</translation>

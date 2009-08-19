@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<!DOCTYPE TS><TS version="1.1" language="tr_TR">
 <context>
     <name>QmmpFileDialog</name>
     <message>
@@ -14,9 +13,6 @@
         <translation>Yukarı</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.ui" line="40"/>
-        <location filename="../qmmpfiledialog.ui" line="53"/>
-        <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
         <translation>...</translation>
@@ -60,7 +56,6 @@
 <context>
     <name>QmmpFileDialogFactory</name>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="121"/>
         <location filename="../qmmpfiledialog.cpp" line="130"/>
         <source>Qmmp File Dialog</source>
         <translation>Qmmp Dosya Diyaloğu</translation>
@@ -71,7 +66,7 @@
         <translation>Qmmp Dosya Diyaloğu Hakkında</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="131"/>
+        <location filename="../qmmpfiledialog.cpp" line="133"/>
         <source>Writen by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
@@ -103,14 +98,10 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
         <translation>Dizinler</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="457"/>
-        <source>already exists.</source>
-        <translation>zaten mevcut.</translation>
-    </message>
-    <message>
         <location filename="../qmmpfiledialogimpl.cpp" line="458"/>
-        <source>Do you want to replace it?</source>
-        <translation>Yerini değiştirmek istiyor musunuz?</translation>
+        <source>%1 already exists.
+Do you want to replace it?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

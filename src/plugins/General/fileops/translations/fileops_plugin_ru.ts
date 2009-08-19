@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ru_RU" sourcelanguage="ru_RU">
+<!DOCTYPE TS><TS version="1.1" language="ru_RU">
+<defaultcodec></defaultcodec>
 <context>
     <name>FileOps</name>
     <message>
@@ -35,8 +35,8 @@
     </message>
     <message>
         <location filename="../fileops.cpp" line="177"/>
-        <source>Are you sure you want to remove %1 file(s) from disk</source>
-        <translation>Вы уверены, что хотите удалить %1 файл(ов) с диска</translation>
+        <source>Are you sure you want to remove %1 file(s) from disk?</source>
+        <translation>Вы уверены, что хотите удалить %1 файлов с диска?</translation>
     </message>
 </context>
 <context>
@@ -83,19 +83,16 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="52"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Rename</source>
         <translation>Переименовать</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="55"/>
         <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
         <translation>Удалить</translation>
@@ -191,9 +188,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="105"/>
-        <location filename="../settingsdialog.ui" line="121"/>
-        <location filename="../settingsdialog.ui" line="158"/>
         <location filename="../settingsdialog.ui" line="175"/>
         <source>...</source>
         <translation type="unfinished"></translation>

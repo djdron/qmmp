@@ -453,9 +453,9 @@ void QmmpFileDialogImpl::addFiles(const QStringList &list)
 
         if (info.exists())
         {
-            if (QMessageBox::question (this, windowTitle (), fileNameLineEdit->text() + " " +
-                                       tr("already exists.") + "\n" +
-                                       tr("Do you want to replace it?"),
+            if (QMessageBox::question (this, windowTitle (),
+                                       tr("%1 already exists.\nDo you want to replace it?")
+                                       .arg(fileNameLineEdit->text()),
                                        QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
                 accept();
             else

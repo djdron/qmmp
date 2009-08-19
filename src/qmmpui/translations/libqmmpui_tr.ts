@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<!DOCTYPE TS><TS version="1.1" language="tr_TR">
 <context>
     <name>PlayListModel</name>
-    <message>
-        <location filename="../playlistmodel.cpp" line="364"/>
-        <source>Url:</source>
-        <translation>Url:</translation>
-    </message>
     <message>
         <location filename="../playlistmodel.cpp" line="365"/>
         <source>Title:</source>
@@ -41,6 +35,11 @@
     <message>
         <location filename="../playlistmodel.cpp" line="371"/>
         <source>Disc number:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlistmodel.cpp" line="364"/>
+        <source>URL:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

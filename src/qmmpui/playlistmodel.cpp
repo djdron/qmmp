@@ -361,7 +361,7 @@ void PlayListModel::showDetails()
             {
                 PlayListItem *item = m_items.at(i);
                 QString str;
-                str.append(tr("Url:") + " %1\n");
+                str.append(tr("URL:") + " %1\n");
                 str.append(tr("Title:") + " %2\n");
                 str.append(tr("Artist:") + " %3\n");
                 str.append(tr("Album:") + " %4\n");
