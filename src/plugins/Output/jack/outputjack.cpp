@@ -87,7 +87,7 @@ qint64 OutputJACK::latency()
 qint64 OutputJACK::writeAudio(unsigned char *data, qint64 maxSize)
 {
     if(!m_configure)
-         return 0;
+         return -1;
     m = JACK_Write(jack_device, (unsigned char*)data, maxSize);
     if (!m)
         usleep(2000);

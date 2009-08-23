@@ -42,6 +42,7 @@ CUEParser::CUEParser(const QString &fileName)
     QTextCodec *codec = QTextCodec::codecForName(settings.value("CUE/encoding","ISO-8859-1").toByteArray ());
     textStream.setCodec(codec);
     QString artist;
+    bool skip_index = FALSE;
     while (!textStream.atEnd())
     {
         QString line = textStream.readLine().trimmed();
@@ -81,13 +82,15 @@ CUEParser::CUEParser(const QString &fileName)
             m_infoList << info;
             m_offsets << 0;
             m_files << m_filePath;
+            skip_index = FALSE;
         }
         else if (words[0] == "INDEX")
         {
-            if (m_infoList.isEmpty() || words[1] != "01")
+            if (m_infoList.isEmpty() || skip_index)
                 continue;
             m_infoList.last ().setLength(getLength(words[2]));
             m_offsets.last() = getLength(words[2]);
+            skip_index = (words[1] == "01"); //use 01 index only
         }
         else if (words[0] == "REM")
         {
