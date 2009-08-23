@@ -48,10 +48,12 @@ void OutputJACK::configure(quint32 freq, int chan, int prec)
     if(JACK_Open(&jack_device, prec, (unsigned long *)&freq, chan))
     {
         m_configure = FALSE;
+        m_inited = FALSE;
         return;
     }
     else
         m_configure = TRUE;
+    m_inited = TRUE;
     Output::configure(freq, chan, prec);
     qDebug("OutputJACK: configure end");
 }
@@ -73,6 +75,7 @@ bool OutputJACK::initialize()
     return FALSE;
     }
     jack_client_close (client);
+    m_inited = TRUE;
     return TRUE;
 }
 
@@ -83,6 +86,8 @@ qint64 OutputJACK::latency()
 
 qint64 OutputJACK::writeAudio(unsigned char *data, qint64 maxSize)
 {
+    if(!m_configure)
+         return 0;
     m = JACK_Write(jack_device, (unsigned char*)data, maxSize);
     if (!m)
         usleep(2000);
