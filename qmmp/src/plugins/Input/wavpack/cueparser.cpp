@@ -32,6 +32,7 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
     textStream.setCodec("UTF-8");
     m_filePath = fileName;
     QString artist;
+    bool skip_index = FALSE;
     while (!textStream.atEnd())
     {
         QString line = textStream.readLine().trimmed();
@@ -66,13 +67,15 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
             info.setMetaData(Qmmp::TRACK, words[1].toInt());
             m_infoList << info;
             m_offsets << 0;
+            skip_index = FALSE;
         }
         else if (words[0] == "INDEX")
         {
-             if (m_infoList.isEmpty() || words[1] != "01")
-                continue;
-             m_infoList.last ().setLength(getLength(words[2]));
-             m_offsets.last() = getLength(words[2]);
+            if (m_infoList.isEmpty() || skip_index)
+               continue;
+            m_infoList.last ().setLength(getLength(words[2]));
+            m_offsets.last() = getLength(words[2]);
+            skip_index = (words[1] == "01"); //use 01 index only
         }
         else if (words[0] == "REM")
         {
