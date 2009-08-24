@@ -53,6 +53,7 @@ CUEParser::CUEParser(const QString &fileName)
         if (words[0] == "FILE")
         {
             m_filePath = QFileInfo(fileName).dir().filePath(words[1]);
+            skip_index = TRUE;
         }
         else if (words[0] == "PERFORMER")
         {
