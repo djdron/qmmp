@@ -44,22 +44,22 @@
     <message>
         <location filename="../detailsdialog.cpp" line="56"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="57"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="58"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Počet kanálů</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="59"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="60"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="60"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost souboru</translation>
     </message>
 </context>
 </TS>

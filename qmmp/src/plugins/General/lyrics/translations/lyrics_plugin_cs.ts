@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="pl">
+<TS version="2.0" language="cs">
 <context>
     <name>Lyrics</name>
     <message>
@@ -11,7 +11,7 @@
     <message>
         <location filename="../lyrics.cpp" line="36"/>
         <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+L</translation>
     </message>
 </context>
 <context>
@@ -58,14 +58,14 @@
     <message>
         <location filename="../lyricswindow.cpp" line="73"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenalezeno</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="78"/>
         <location filename="../lyricswindow.cpp" line="96"/>
         <location filename="../lyricswindow.cpp" line="99"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="112"/>

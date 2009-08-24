@@ -6,27 +6,27 @@
     <message>
         <location filename="../decoderaacfactory.cpp" line="45"/>
         <source>AAC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul AAC</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="47"/>
         <source>AAC Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubory AAC</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="90"/>
         <source>About AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu AAC</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="91"/>
         <source>Qmmp AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Vstupní modul Qmmp AAC</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="92"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="66"/>
@@ -82,17 +82,17 @@
     <message>
         <location filename="../detailsdialog.ui" line="43"/>
         <source>AAC Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Informace AAC</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="75"/>
         <source>Length:</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="119"/>
         <source>Bitrate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok:</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="203"/>

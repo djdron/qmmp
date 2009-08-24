@@ -159,14 +159,6 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>SettingsDialog</name>
     <message>
-        <source>OK</source>
-        <translation type="obsolete">OK</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Zrušit</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>ModPlug Plugin Settings</source>
         <translation>Nastavení modulu ModPlug</translation>
@@ -392,10 +384,6 @@ předzesílení může způsobit přebuzení!</translation>
         <location filename="../settingsdialog.ui" line="760"/>
         <source>Loop forever</source>
         <translation>Donekonečna</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="obsolete">Aplikovat</translation>
     </message>
 </context>
 </TS>

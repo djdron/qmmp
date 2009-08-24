@@ -217,32 +217,32 @@
     <message>
         <location filename="../configdialog.cpp" line="537"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo stopy</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="538"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo disku</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="540"/>
+        <source>Composer</source>
+        <translation>Skladatel</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="541"/>
+        <source>File name</source>
+        <translation>Název souboru</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="542"/>
+        <source>File path</source>
+        <translation>Cesta k souboru</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="539"/>
         <source>Genre</source>
         <translation>Žánr</translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="540"/>
-        <source>Composer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="541"/>
-        <source>File name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="542"/>
-        <source>File path</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="543"/>
@@ -336,7 +336,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit čísla skladeb</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="433"/>
@@ -362,12 +362,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="613"/>
         <source>Compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompatibilita</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="619"/>
         <source>Openbox compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompatibilita s Openbox</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="896"/>
@@ -627,62 +627,62 @@
     <message>
         <location filename="../display.cpp" line="61"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Předchozí</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="65"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Přehrát</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="69"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozastavit</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="73"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Zastavit</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="77"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Další</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="81"/>
         <source>Add file</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat soubor</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="96"/>
         <source>Equalizer</source>
-        <translation type="unfinished">Ekvalizér</translation>
+        <translation>Ekvalizér</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="101"/>
         <source>Playlist</source>
-        <translation type="unfinished">Seznam skladeb</translation>
+        <translation>Seznam skladeb</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="109"/>
         <source>Repeat playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Opakovat seznam skladeb</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="113"/>
         <source>Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamíchat</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="144"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Hlasitost</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="150"/>
         <source>Balance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvážení</translation>
     </message>
 </context>
 <context>
@@ -1038,7 +1038,7 @@
     <message>
         <location filename="../playlist.cpp" line="171"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstranit nedostupné soubory</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="174"/>
@@ -1250,7 +1250,7 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="176"/>
+        <location filename="../textscroller.cpp" line="177"/>
         <source>Buffering:</source>
         <translation>Načítá se:</translation>
     </message>
