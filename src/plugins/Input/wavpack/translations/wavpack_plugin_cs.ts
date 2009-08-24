@@ -49,22 +49,22 @@
     <message>
         <location filename="../detailsdialog.cpp" line="63"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="64"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="65"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Počet kanálů</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="66"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
@@ -74,101 +74,17 @@
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost souboru</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="70"/>
         <source>Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>Poměr</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="71"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>APE Tag</source>
-        <translation type="obsolete">Tag APE</translation>
-    </message>
-    <message>
-        <source>Details</source>
-        <translation type="obsolete">Podrobnosti</translation>
-    </message>
-    <message>
-        <source>File path:</source>
-        <translation type="obsolete">Cesta k souboru:</translation>
-    </message>
-    <message>
-        <source>-</source>
-        <translation type="obsolete">-</translation>
-    </message>
-    <message>
-        <source>Sample rate:</source>
-        <translation type="obsolete">Vzorkovací frekvence:</translation>
-    </message>
-    <message>
-        <source>File size:</source>
-        <translation type="obsolete">Velikost souboru:</translation>
-    </message>
-    <message>
-        <source>Title:</source>
-        <translation type="obsolete">Název:</translation>
-    </message>
-    <message>
-        <source>Artist:</source>
-        <translation type="obsolete">Umělec:</translation>
-    </message>
-    <message>
-        <source>Album:</source>
-        <translation type="obsolete">Album:</translation>
-    </message>
-    <message>
-        <source>Comment:</source>
-        <translation type="obsolete">Komentář:</translation>
-    </message>
-    <message>
-        <source>Year:</source>
-        <translation type="obsolete">Rok:</translation>
-    </message>
-    <message>
-        <source>Track number:</source>
-        <translation type="obsolete">Číslo stopy:</translation>
-    </message>
-    <message>
-        <source>Genre:</source>
-        <translation type="obsolete">Žánr:</translation>
-    </message>
-    <message>
-        <source>Save</source>
-        <translation type="obsolete">Uložit</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation type="obsolete">Zavřít</translation>
-    </message>
-    <message>
-        <source>Length:</source>
-        <translation type="obsolete">Délka:</translation>
-    </message>
-    <message>
-        <source>Channels:</source>
-        <translation type="obsolete">Počet kanálů:</translation>
-    </message>
-    <message>
-        <source>WavPack Info</source>
-        <translation type="obsolete">Informace WavPack</translation>
-    </message>
-    <message>
-        <source>Bitrate:</source>
-        <translation type="obsolete">Datový tok:</translation>
-    </message>
-    <message>
-        <source>Ratio:</source>
-        <translation type="obsolete">Poměr:</translation>
-    </message>
-    <message>
-        <source>Version:</source>
-        <translation type="obsolete">Verze:</translation>
+        <translation>Verze</translation>
     </message>
 </context>
 </TS>

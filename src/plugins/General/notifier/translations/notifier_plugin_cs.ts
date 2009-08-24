@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="cs">
+<!DOCTYPE TS>
+<TS version="2.0" language="cs">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -54,9 +55,29 @@
         <translation>Notifikace na pracovní ploše</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="64"/>
+        <source>Font:</source>
+        <translation>Písmo:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="84"/>
+        <source>Cover size:</source>
+        <translation>Velikost obalu:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
+        <source>Delay (ms):</source>
+        <translation>Prodleva (ms):</translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="284"/>
         <source>Position</source>
         <translation>Umístění</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="304"/>
+        <source>...</source>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="50"/>
@@ -69,11 +90,6 @@
         <translation>Upozornění na změnu hlasitosti</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="91"/>
-        <source>Delay, ms:</source>
-        <translation>Prodleva v ms:</translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Transparency</source>
         <translation>Průhlednost</translation>
@@ -82,21 +98,6 @@
         <location filename="../settingsdialog.ui" line="140"/>
         <source>0</source>
         <translation>0</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="64"/>
-        <source>Font:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="84"/>
-        <source>Cover size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="304"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

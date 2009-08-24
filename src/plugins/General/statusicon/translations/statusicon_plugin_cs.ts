@@ -20,21 +20,13 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
-        <source>Message delay, ms:</source>
-        <translation>Prodleva zprávy, ms:</translation>
+        <source>Message delay (ms):</source>
+        <translation>Prodleva zprávy (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>Use standard icons</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">OK</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Zrušit</translation>
+        <translation>Použít standardní ikony</translation>
     </message>
 </context>
 <context>

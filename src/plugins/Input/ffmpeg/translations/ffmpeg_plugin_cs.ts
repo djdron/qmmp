@@ -37,42 +37,42 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="79"/>
-        <source>Length</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../detailsdialog.cpp" line="80"/>
-        <source>File size</source>
-        <translation type="unfinished"></translation>
+        <source>Length</source>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="81"/>
+        <source>File size</source>
+        <translation>Velikost souboru</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="82"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../detailsdialog.cpp" line="82"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
+        <location filename="../detailsdialog.cpp" line="93"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
-        <source>Samplerate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../detailsdialog.cpp" line="93"/>
-        <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <source>Samplerate</source>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="80"/>
+        <location filename="../detailsdialog.cpp" line="94"/>
+        <source>Channels</source>
+        <translation>Počet kanálů</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>

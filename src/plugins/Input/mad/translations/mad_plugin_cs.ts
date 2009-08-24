@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="227"/>
         <source>Compiled against libmad version:</source>
-        <translation>Zkompilováno s libmad verze</translation>
+        <translation>Zkompilováno s libmad verze:</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="231"/>
@@ -42,190 +42,201 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="122"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="124"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../detailsdialog.cpp" line="124"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
+        <location filename="../detailsdialog.cpp" line="126"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
-        <source>Samplerate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="123"/>
         <location filename="../detailsdialog.cpp" line="126"/>
-        <location filename="../detailsdialog.cpp" line="129"/>
-        <location filename="../detailsdialog.cpp" line="132"/>
-        <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <source>Samplerate</source>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="135"/>
+        <location filename="../detailsdialog.cpp" line="130"/>
+        <location filename="../detailsdialog.cpp" line="133"/>
+        <location filename="../detailsdialog.cpp" line="136"/>
+        <location filename="../detailsdialog.cpp" line="139"/>
+        <source>Mode</source>
+        <translation>Režim</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="142"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="136"/>
+        <location filename="../detailsdialog.cpp" line="143"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost souboru</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="138"/>
-        <location filename="../detailsdialog.cpp" line="142"/>
-        <location filename="../detailsdialog.cpp" line="146"/>
+        <location filename="../detailsdialog.cpp" line="145"/>
+        <location filename="../detailsdialog.cpp" line="149"/>
+        <location filename="../detailsdialog.cpp" line="153"/>
         <source>Yes</source>
         <translation>Ano</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="138"/>
-        <location filename="../detailsdialog.cpp" line="140"/>
+        <location filename="../detailsdialog.cpp" line="145"/>
+        <location filename="../detailsdialog.cpp" line="147"/>
         <source>Protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Ochrana</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="140"/>
-        <location filename="../detailsdialog.cpp" line="144"/>
-        <location filename="../detailsdialog.cpp" line="148"/>
+        <location filename="../detailsdialog.cpp" line="147"/>
+        <location filename="../detailsdialog.cpp" line="151"/>
+        <location filename="../detailsdialog.cpp" line="155"/>
         <source>No</source>
         <translation>Ne</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="142"/>
-        <location filename="../detailsdialog.cpp" line="144"/>
+        <location filename="../detailsdialog.cpp" line="149"/>
+        <location filename="../detailsdialog.cpp" line="151"/>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="146"/>
-        <location filename="../detailsdialog.cpp" line="148"/>
+        <location filename="../detailsdialog.cpp" line="153"/>
+        <location filename="../detailsdialog.cpp" line="155"/>
         <source>Original</source>
-        <translation type="unfinished"></translation>
+        <translation>Originál</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="345"/>
+        <location filename="../detailsdialog.ui" line="13"/>
+        <source>Details</source>
+        <translation>Podrobnosti</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="120"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="385"/>
+        <location filename="../detailsdialog.ui" line="410"/>
         <source>Save</source>
         <translation>Uložit</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="263"/>
+        <location filename="../detailsdialog.ui" line="319"/>
         <source>Year:</source>
         <translation>Rok:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="182"/>
+        <location filename="../detailsdialog.ui" line="238"/>
         <source>Genre:</source>
         <translation>Žánr:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="49"/>
+        <location filename="../detailsdialog.ui" line="70"/>
         <source>Tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Tagy</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="210"/>
-        <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <location filename="../detailsdialog.ui" line="114"/>
+        <source>Audio Properties</source>
+        <translation>Vlastnosti</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="166"/>
+        <location filename="../detailsdialog.ui" line="222"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Skladatel:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="232"/>
+        <location filename="../detailsdialog.ui" line="266"/>
+        <source>Disc number:</source>
+        <translation>Číslo disku:</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="273"/>
+        <location filename="../detailsdialog.ui" line="306"/>
+        <location filename="../detailsdialog.ui" line="335"/>
+        <source>?</source>
+        <translation>?</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="288"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stopa:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="300"/>
+        <location filename="../detailsdialog.ui" line="356"/>
         <source>Comment:</source>
         <translation>Komentář:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="143"/>
+        <location filename="../detailsdialog.ui" line="199"/>
         <source>Album:</source>
         <translation>Album:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="117"/>
+        <location filename="../detailsdialog.ui" line="173"/>
         <source>Artist:</source>
         <translation>Umělec:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="91"/>
+        <location filename="../detailsdialog.ui" line="147"/>
         <source>Title:</source>
         <translation>Název:</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="313"/>
+        <location filename="../detailsdialog.ui" line="369"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="339"/>
-        <source>Audio Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="392"/>
+        <location filename="../detailsdialog.ui" line="417"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="163"/>
-        <location filename="../detailsdialog.ui" line="55"/>
-        <location filename="../detailsdialog.ui" line="79"/>
+        <location filename="../detailsdialog.cpp" line="170"/>
+        <location filename="../detailsdialog.ui" line="76"/>
+        <location filename="../detailsdialog.ui" line="135"/>
         <source>ID3v1</source>
         <translation>ID3v1</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="169"/>
-        <location filename="../detailsdialog.ui" line="62"/>
+        <location filename="../detailsdialog.cpp" line="176"/>
+        <location filename="../detailsdialog.ui" line="83"/>
         <source>ID3v2</source>
         <translation>ID3v2</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="175"/>
-        <location filename="../detailsdialog.ui" line="69"/>
+        <location filename="../detailsdialog.cpp" line="182"/>
+        <location filename="../detailsdialog.ui" line="90"/>
         <source>APE</source>
         <translation>APE</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="371"/>
+        <location filename="../detailsdialog.ui" line="396"/>
         <source>Create</source>
         <translation>Vytvořit</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="378"/>
+        <location filename="../detailsdialog.ui" line="403"/>
         <source>Delete</source>
         <translation>Odstranit</translation>
     </message>

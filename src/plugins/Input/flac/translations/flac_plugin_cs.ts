@@ -14,17 +14,17 @@
         <translation>Soubory FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="120"/>
+        <location filename="../decoderflacfactory.cpp" line="135"/>
         <source>About FLAC Audio Plugin</source>
         <translation>O modulu FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="121"/>
+        <location filename="../decoderflacfactory.cpp" line="136"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Vstupní modul Qmmp FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="122"/>
+        <location filename="../decoderflacfactory.cpp" line="137"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -32,52 +32,52 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../detailsdialog.cpp" line="60"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
+        <location filename="../detailsdialog.cpp" line="58"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="55"/>
-        <source>Length</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
-        <source>Sample rate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../detailsdialog.cpp" line="57"/>
-        <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <source>Length</source>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="58"/>
-        <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <source>Sample rate</source>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="59"/>
-        <source>Sample width</source>
-        <translation type="unfinished"></translation>
+        <source>Channels</source>
+        <translation>Počet kanálů</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="60"/>
+        <source>Bitrate</source>
+        <translation>Datový tok</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="61"/>
+        <source>Sample width</source>
+        <translation>Šířka vzorku</translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.cpp" line="62"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
+        <location filename="../detailsdialog.cpp" line="62"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost souboru</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
+        <location filename="../detailsdialog.cpp" line="61"/>
         <source>bits</source>
         <translation>bitů</translation>
     </message>

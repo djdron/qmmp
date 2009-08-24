@@ -156,32 +156,32 @@
         <location filename="../settingsdialog.cpp" line="63"/>
         <location filename="../settingsdialog.cpp" line="64"/>
         <source>default</source>
-        <translation type="unfinished"></translation>
+        <translation>výchozí</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MPlayer Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení MPlayer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Video:</source>
-        <translation type="unfinished"></translation>
+        <translation>Video:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Audio/video auto synchronization</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatická A/V synchronizace</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Synchronization factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronizační faktor:</translation>
     </message>
 </context>
 </TS>
