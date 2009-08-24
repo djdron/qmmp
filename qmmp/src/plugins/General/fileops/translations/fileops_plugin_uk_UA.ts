@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>FileOps</name>
     <message>
@@ -36,8 +36,8 @@
     <message numerus="yes">
         <location filename="../fileops.cpp" line="177"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ви дійсно бажаєте видалити %n файл(ів) з диску?</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -87,19 +87,16 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="52"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
         <translation>Копіювати</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="53"/>
         <location filename="../settingsdialog.cpp" line="133"/>
         <source>Rename</source>
         <translation>Переіменувати</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="55"/>
         <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
         <translation>Видалити</translation>
@@ -195,9 +192,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="105"/>
-        <location filename="../settingsdialog.ui" line="121"/>
-        <location filename="../settingsdialog.ui" line="158"/>
         <location filename="../settingsdialog.ui" line="175"/>
         <source>...</source>
         <translation></translation>
