@@ -11,7 +11,7 @@
     <message>
         <location filename="../decodermpcfactory.cpp" line="50"/>
         <source>Musepack Files</source>
-        <translation>MBrani usepack</translation>
+        <translation>Brani Musepack</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="113"/>

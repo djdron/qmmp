@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="227"/>
         <source>Compiled against libmad version:</source>
-        <translation>COmpilato con libmad-Version:</translation>
+        <translation>Compilato con libmad-Version:</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="231"/>

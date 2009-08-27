@@ -36,7 +36,7 @@
     <message numerus="yes">
         <location filename="../fileops.cpp" line="177"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
-        <translation type="unfinished">
+        <translation> Vuoi davvero rimuovere %n file(s) dal disco?
             <numerusform></numerusform>
         </translation>
     </message>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Premi la combinazione di tasti che vuoi assegnare</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
@@ -88,7 +88,7 @@
         <location filename="../settingsdialog.cpp" line="52"/>
         <location filename="../settingsdialog.cpp" line="132"/>
         <source>Copy</source>
-        <translation>COpia</translation>
+        <translation>Copia</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="53"/>
