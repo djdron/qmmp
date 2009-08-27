@@ -70,7 +70,9 @@
         <source>Writen by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autore:
+Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
+Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="134"/>
@@ -99,7 +101,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <location filename="../qmmpfiledialogimpl.cpp" line="458"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 esiste già. Vuoi sostituirlo?</translation>
     </message>
 </context>
 </TS>

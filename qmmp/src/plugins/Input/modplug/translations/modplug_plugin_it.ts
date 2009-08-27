@@ -334,7 +334,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="710"/>
         <source>Looping</source>
-        <translation>RIpetizione</translation>
+        <translation>Ripetizione</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="716"/>

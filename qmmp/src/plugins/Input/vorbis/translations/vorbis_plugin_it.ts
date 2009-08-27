@@ -59,12 +59,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="60"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canali</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="61"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Campionamento bit</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="62"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione file</translation>
     </message>
 </context>
 </TS>

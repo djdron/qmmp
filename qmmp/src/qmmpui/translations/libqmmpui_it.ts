@@ -30,17 +30,17 @@
     <message>
         <location filename="../playlistmodel.cpp" line="370"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Compositore</translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="371"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Disco numero: </translation>
     </message>
     <message>
         <location filename="../playlistmodel.cpp" line="364"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
 </context>
 <context>

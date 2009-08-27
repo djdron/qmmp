@@ -104,7 +104,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="203"/>
         <source>Analyzer #1:</source>
-        <translation>Analyzer Nr. 1:</translation>
+        <translation>Analizzatore Nr. 1:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="229"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="255"/>
         <source>Analyzer #2:</source>
-        <translation>AAnaloizzatore N° 2:</translation>
+        <translation>Analizzatore N° 2:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="294"/>

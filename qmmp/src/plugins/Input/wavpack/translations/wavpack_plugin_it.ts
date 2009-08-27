@@ -43,7 +43,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="63"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Lunghezza</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="64"/>
@@ -53,7 +53,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="64"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Campionatura</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="65"/>
@@ -78,12 +78,12 @@
     <message>
         <location filename="../detailsdialog.cpp" line="69"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione filoe</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="70"/>
         <source>Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ratio</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="71"/>

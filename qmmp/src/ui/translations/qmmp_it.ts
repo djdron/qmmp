@@ -427,12 +427,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="613"/>
         <source>Compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Compatibilità</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="619"/>
         <source>Openbox compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Compatibilità openbox</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="764"/>
@@ -667,7 +667,7 @@
     <message>
         <location filename="../display.cpp" line="109"/>
         <source>Repeat playlist</source>
-        <translation>RIpeti la lista brani</translation>
+        <translation>Ripeti la lista brani</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="113"/>
@@ -677,7 +677,7 @@
     <message>
         <location filename="../display.cpp" line="144"/>
         <source>Volume</source>
-        <translation>VOlume</translation>
+        <translation>Volume</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="150"/>
@@ -1048,7 +1048,7 @@
     <message>
         <location filename="../playlist.cpp" line="171"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi files non disponibili</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="174"/>
@@ -1058,7 +1058,7 @@
     <message>
         <location filename="../playlist.cpp" line="183"/>
         <source>Sort List</source>
-        <translation>Rirdina la lista</translation>
+        <translation>Riordina la lista</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="186"/>
