@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>AbstractDetailsDialog</name>
     <message>
@@ -40,7 +40,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="182"/>
@@ -53,11 +53,9 @@ p, li { white-space: pre-wrap; }
         <translation>Жанр:</translation>
     </message>
     <message>
-        <location filename="../forms/abstractdetailsdialog.ui" line="233"/>
-        <location filename="../forms/abstractdetailsdialog.ui" line="266"/>
         <location filename="../forms/abstractdetailsdialog.ui" line="295"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/abstractdetailsdialog.ui" line="248"/>
