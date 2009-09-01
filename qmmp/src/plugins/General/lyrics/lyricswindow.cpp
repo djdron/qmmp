@@ -72,7 +72,10 @@ void LyricsWindow::showText(bool error)
             if(url.endsWith("action=edit"))
                 ui.textEdit->setHtml("<b>"+tr("Not found")+"</b>");
             else
+            {
+                url.replace("lyricwiki.org", "lyrics.wikia.com/lyrics");
                 m_http->get(url);
+            }
         }
         else
             ui.textEdit->setHtml("<b>"+tr("Error")+"</b>");
