@@ -44,7 +44,6 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
                          Qmmp::useProxyAuth() ? Qmmp::proxy().password() : QString());
     connect(m_http, SIGNAL(done(bool)), SLOT(showText(bool)));
     connect(m_http, SIGNAL(stateChanged(int)), SLOT(showState (int)));
-    m_http->setHost("lyricwiki.org");
     on_searchPushButton_clicked();
 }
 
@@ -68,12 +67,14 @@ void LyricsWindow::showText(bool error)
         if(url_regexp.indexIn(content) > 1)
         {
             QString url = qPrintable(url_regexp.cap(1));
-            qDebug("LyricsWindow: url=%s", qPrintable(url));
+            qDebug("LyricsWindow: url1=%s", qPrintable(url));
             if(url.endsWith("action=edit"))
                 ui.textEdit->setHtml("<b>"+tr("Not found")+"</b>");
             else
             {
                 url.replace("lyricwiki.org", "lyrics.wikia.com/lyrics");
+                m_http->setHost("lyrics.wikia.com");
+                qDebug("LyricsWindow: url2=%s", qPrintable(url));
                 m_http->get(url);
             }
         }
@@ -133,6 +134,7 @@ void LyricsWindow::showState(int state)
 
 void LyricsWindow::on_searchPushButton_clicked()
 {
+    m_http->setHost("lyricwiki.org");
     setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(ui.artistLineEdit->text()).arg(ui.titleLineEdit->text()));
     m_http->get("/api.php?func=getSong&artist=" + QUrl::toPercentEncoding(ui.artistLineEdit->text())
                 +"&song=" + QUrl::toPercentEncoding(ui.titleLineEdit->text()) +"&fmt=html");
