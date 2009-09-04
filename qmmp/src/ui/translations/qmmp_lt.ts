@@ -225,11 +225,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="539"/>
-        <source>Genre</source>
-        <translation>Žanras</translation>
-    </message>
-    <message>
         <location filename="../configdialog.cpp" line="540"/>
         <source>Composer</source>
         <translation type="unfinished"></translation>
@@ -243,6 +238,19 @@
         <location filename="../configdialog.cpp" line="542"/>
         <source>File path</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tracknumber</source>
+        <translation type="obsolete">Takelio numeris</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="539"/>
+        <source>Genre</source>
+        <translation>Žanras</translation>
+    </message>
+    <message>
+        <source>Filepath</source>
+        <translation type="obsolete">Bylos kelias</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="543"/>
@@ -300,7 +308,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="328"/>
         <source>Load metadata from files</source>
-        <translation>Load metadata from files</translation>
+        <translation type="unfinished">Įkelti meta duomenis iš bylų</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="338"/>
@@ -402,7 +410,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="385"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rodyti takelių numerius</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="580"/>
@@ -427,12 +435,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="613"/>
         <source>Compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Suderinamumas</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="619"/>
         <source>Openbox compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Openbox suderinamumas</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="764"/>
@@ -452,7 +460,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="796"/>
         <source>Proxy port:</source>
-        <translation>Proxy port:</translation>
+        <translation type="unfinished">Proxy portas:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="809"/>
@@ -477,7 +485,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="371"/>
         <source>Convert %20 to blanks</source>
-        <translation>Convert %20 to blanks</translation>
+        <translation type="unfinished">Konvertuoti %20 į tarpus</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="664"/>
@@ -1102,7 +1110,7 @@
     <message>
         <location filename="../playlist.cpp" line="252"/>
         <source>Invert Selection</source>
-        <translation>Invert Selection</translation>
+        <translation type="unfinished">Atšaukti pasirinkimą</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="259"/>
@@ -1127,7 +1135,7 @@
     <message>
         <location filename="../playlist.cpp" line="282"/>
         <source>&amp;Load List</source>
-        <translation>&amp;Įkwlti sąrašą</translation>
+        <translation type="unfinished">&amp;Įkelti sąrašą</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="288"/>
@@ -1207,42 +1215,42 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="152"/>
+        <location filename="../qmmpstarter.cpp" line="155"/>
         <source>Usage: qmmp [options] [files]</source>
-        <translation>Naudojimas: qmmp [options] [files]</translation>
+        <translation type="unfinished">Naudojimas: qmmp [nuostatos] [bylos]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="153"/>
+        <location filename="../qmmpstarter.cpp" line="156"/>
         <source>Options:</source>
         <translation>Nustatymai:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="159"/>
+        <location filename="../qmmpstarter.cpp" line="162"/>
         <source>Print version number and exit</source>
         <translation>Parodyti versiją ir išeiti</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="158"/>
+        <location filename="../qmmpstarter.cpp" line="161"/>
         <source>Display this text and exit</source>
         <translation>Parodyti šį tekstą ir išeiti</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="160"/>
+        <location filename="../qmmpstarter.cpp" line="163"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Idėjas, pataisymus, klaidas siųsti forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="165"/>
+        <location filename="../qmmpstarter.cpp" line="168"/>
         <source>QMMP version:</source>
         <translation>QMMP versija:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="155"/>
+        <location filename="../qmmpstarter.cpp" line="158"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Neišvalyti sąrašo</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="166"/>
+        <location filename="../qmmpstarter.cpp" line="169"/>
         <source>Qt version:</source>
         <translation>Qt versija:</translation>
     </message>
@@ -1250,9 +1258,9 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="176"/>
+        <location filename="../textscroller.cpp" line="177"/>
         <source>Buffering:</source>
-        <translation>Buffering:</translation>
+        <translation type="unfinished">Kuriamas buferis:</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="62"/>
