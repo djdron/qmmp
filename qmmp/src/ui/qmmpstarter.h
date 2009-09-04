@@ -61,6 +61,7 @@ private:
     void printVersion();
 
     void startMainWindow();
+
 private:
     MainWindow* mw;
     UnixDomainSocket* m_sock;

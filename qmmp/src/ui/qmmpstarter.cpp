@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include <QApplication>
+#include <QLocalServer>
+#include <QLocalSocket>
 
 #include <cstdlib>
 #include <iostream>
@@ -34,7 +36,6 @@
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
 
-#define MAXCOMMANDSIZE 102400
 #define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toAscii().constData()
 
 using namespace std;
@@ -135,7 +136,7 @@ void QMMPStarter::readCommand()
 {
 #ifndef Q_OS_WIN32
     QByteArray inputArray;
-    inputArray.resize(MAXCOMMANDSIZE);
+    inputArray.resize(m_sock->pendingDatagramSize ());
     bzero(inputArray.data(),inputArray.size());
     m_sock->readDatagram(inputArray.data(), inputArray.size());
     QStringList slist = QString::fromUtf8(inputArray.data()).split("\n",QString::SkipEmptyParts);
@@ -144,6 +145,8 @@ void QMMPStarter::readCommand()
     {
         mw->processCommandArgs(slist,cwd);
     }
+    if(m_sock->pendingDatagramSize () > 0)
+        readCommand();
 #endif
 }
 
