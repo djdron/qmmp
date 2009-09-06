@@ -38,62 +38,55 @@
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
-        <source>This plugin retrieves lyrics from LyricWiki.org</source>
-        <translation>Tento modul získává texty písní z LyricWiki.org</translation>
+        <source>This plugin retrieves lyrics from lyricsplugin.com</source>
+        <translation>Tento modul získává texty písní z lyricsplugin.com</translation>
     </message>
 </context>
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="133"/>
+        <location filename="../lyricswindow.cpp" line="113"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Text: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="109"/>
+        <location filename="../lyricswindow.cpp" line="88"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Nespojeno</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="73"/>
+        <location filename="../lyricswindow.cpp" line="75"/>
         <source>Not found</source>
         <translation>Nenalezeno</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="78"/>
-        <location filename="../lyricswindow.cpp" line="96"/>
-        <location filename="../lyricswindow.cpp" line="99"/>
-        <source>Error</source>
-        <translation>Chyba</translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.cpp" line="112"/>
+        <location filename="../lyricswindow.cpp" line="91"/>
         <source>Looking up host...</source>
         <translation>Vyhledávám hostitele...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="115"/>
+        <location filename="../lyricswindow.cpp" line="94"/>
         <source>Connecting...</source>
         <translation>Připojuji se...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="118"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
         <source>Sending request...</source>
         <translation>Zasílám požadavek...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="121"/>
+        <location filename="../lyricswindow.cpp" line="100"/>
         <source>Receiving</source>
         <translation>Příjímám</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="124"/>
+        <location filename="../lyricswindow.cpp" line="103"/>
         <source>Connected</source>
         <translation>Připojeno</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="127"/>
+        <location filename="../lyricswindow.cpp" line="106"/>
         <source>Closing connection...</source>
         <translation>Zavírám spojení...</translation>
     </message>

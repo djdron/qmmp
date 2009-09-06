@@ -28,7 +28,6 @@
 LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget *parent)
         : QWidget(parent)
 {
-    m_parse_url = FALSE;
     ui.setupUi(this);
     setWindowFlags(Qt::Dialog);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -57,52 +56,28 @@ void LyricsWindow::showText(bool error)
     if (error)
     {
         ui.textEdit->setText(m_http->errorString());
-        m_parse_url = FALSE;
         return;
     }
     QString content = QString::fromUtf8(m_http->readAll().constData());
-    if(m_parse_url)
-    {
-        QRegExp url_regexp("<a href=\\'([^\\']*)\\' title=\\'url\\'>");
-        if(url_regexp.indexIn(content) > 1)
-        {
-            QString url = qPrintable(url_regexp.cap(1));
-            qDebug("LyricsWindow: url1=%s", qPrintable(url));
-            if(url.endsWith("action=edit"))
-                ui.textEdit->setHtml("<b>"+tr("Not found")+"</b>");
-            else
-            {
-                url.replace("lyricwiki.org", "lyrics.wikia.com/lyrics");
-                m_http->setHost("lyrics.wikia.com");
-                qDebug("LyricsWindow: url2=%s", qPrintable(url));
-                m_http->get(url);
-            }
-        }
-        else
-            ui.textEdit->setHtml("<b>"+tr("Error")+"</b>");
-    }
+
+    QRegExp artist_regexp("<div id=\\\"artist\\\">([^<]*)</div>");
+    QRegExp title_regexp("<div id=\\\"title\\\">([^<]*)</div>");
+    QRegExp lyrics_regexp("<div id=\\\"lyrics\\\">([^<]*)</div>");
+    artist_regexp.indexIn(content);
+    title_regexp.indexIn(content);
+    content.replace("<br />", "[br /]");
+    lyrics_regexp.indexIn(content);
+
+    QString text = "<h2>" +artist_regexp.cap(1) + " - " + title_regexp.cap(1) + "</h2>";
+    QString lyrics = lyrics_regexp.cap(1);
+    lyrics.replace("[br /]", "<br />");
+    if(lyrics.trimmed().isEmpty())
+        ui.textEdit->setHtml("<b>" + tr("Not found") + "</b>");
     else
     {
-        QRegExp caption_regexp("<h1 class=\\\"firstHeading\\\">([^<]*)</h1>");
-        caption_regexp.indexIn(content);
-        QString text = "<h2>" + caption_regexp.cap(1) + "</h2>";
-        text.replace(":", " - ");
-        int lyric_begin = content.indexOf("<div class='lyricbox' >");
-        if(lyric_begin > 0)
-        {
-            int lyric_end = content.indexOf("</div>", lyric_begin);
-            if(lyric_end > 0)
-            {
-                text.append(content.mid(lyric_begin, lyric_end - lyric_begin-6));
-                ui.textEdit->setHtml(text);
-            }
-            else
-                ui.textEdit->setHtml("<b>"+tr("Error")+"</b>");
-        }
-        else
-            ui.textEdit->setHtml("<b>"+tr("Error")+"</b>");
+        text += lyrics;
+        ui.textEdit->setHtml(text);
     }
-    m_parse_url = FALSE;
 }
 
 void LyricsWindow::showState(int state)
@@ -134,9 +109,8 @@ void LyricsWindow::showState(int state)
 
 void LyricsWindow::on_searchPushButton_clicked()
 {
-    m_http->setHost("lyricwiki.org");
+    m_http->setHost("www.lyricsplugin.com");
     setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(ui.artistLineEdit->text()).arg(ui.titleLineEdit->text()));
-    m_http->get("/api.php?func=getSong&artist=" + QUrl::toPercentEncoding(ui.artistLineEdit->text())
-                +"&song=" + QUrl::toPercentEncoding(ui.titleLineEdit->text()) +"&fmt=html");
-    m_parse_url = TRUE;
+    m_http->get("/winamp03/plugin/?artist=" + QUrl::toPercentEncoding(ui.artistLineEdit->text())
+                +"&title=" + QUrl::toPercentEncoding(ui.titleLineEdit->text()));
 }

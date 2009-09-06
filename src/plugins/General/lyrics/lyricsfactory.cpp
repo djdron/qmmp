@@ -49,7 +49,7 @@ void LyricsFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Lyrics Plugin"),
                         tr("Qmmp Lyrics Plugin")+"\n"+
-                        tr("This plugin retrieves lyrics from LyricWiki.org")+"\n"+
+                        tr("This plugin retrieves lyrics from lyricsplugin.com")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 

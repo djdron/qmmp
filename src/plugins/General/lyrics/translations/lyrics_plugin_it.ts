@@ -38,62 +38,55 @@
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
-        <source>This plugin retrieves lyrics from LyricWiki.org</source>
-        <translation>Modulo che permette di trovare testi di canzoni da LyricWiki.org</translation>
+        <source>This plugin retrieves lyrics from lyricsplugin.com</source>
+        <translation>Modulo che permette di trovare testi di canzoni da lyricsplugin.com</translation>
     </message>
 </context>
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="133"/>
+        <location filename="../lyricswindow.cpp" line="113"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Testo: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="109"/>
+        <location filename="../lyricswindow.cpp" line="88"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Nessuna connessione</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="73"/>
+        <location filename="../lyricswindow.cpp" line="75"/>
         <source>Not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="78"/>
-        <location filename="../lyricswindow.cpp" line="96"/>
-        <location filename="../lyricswindow.cpp" line="99"/>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.cpp" line="112"/>
+        <location filename="../lyricswindow.cpp" line="91"/>
         <source>Looking up host...</source>
         <translation>Ricerca host</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="115"/>
+        <location filename="../lyricswindow.cpp" line="94"/>
         <source>Connecting...</source>
         <translation>Connessione...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="118"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
         <source>Sending request...</source>
         <translation>Invio richiesta...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="121"/>
+        <location filename="../lyricswindow.cpp" line="100"/>
         <source>Receiving</source>
         <translation>Ricezione</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="124"/>
+        <location filename="../lyricswindow.cpp" line="103"/>
         <source>Connected</source>
         <translation>Connesso</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="127"/>
+        <location filename="../lyricswindow.cpp" line="106"/>
         <source>Closing connection...</source>
         <translation>Chiusura connessione...</translation>
     </message>
