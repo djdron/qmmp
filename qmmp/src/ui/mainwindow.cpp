@@ -107,7 +107,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_titlebar->setActive(TRUE);
 
     createActions();
-    //prepare visulization
+    //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
     m_vis = MainVisual::getPointer();
     Visual::add(m_vis);
