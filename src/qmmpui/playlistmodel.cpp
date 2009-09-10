@@ -41,6 +41,7 @@
 #include "playlistmodel.h"
 #include "playlistitem.h"
 #include "playstate.h"
+#include "detailsdialog.h"
 #include "playlistsettings.h"
 
 #include <QMetaType>
@@ -380,18 +381,11 @@ void PlayListModel::showDetails()
                 QMessageBox::information(0, m_items.at(i)->url(), str);
                 return;
             }
-
-            DecoderFactory *fact = Decoder::findByPath(m_items.at(i)->url());
-            if (fact)
-            {
-                QObject* o = fact->showDetails(0, m_items.at(i)->url());
-                if (o)
-                {
-                    TagUpdater *updater = new TagUpdater(o,m_items.at(i));
-                    m_editing_items.append(m_items.at(i));
-                    connect(updater, SIGNAL(destroyed(QObject *)),SIGNAL(listChanged()));
-                }
-            }
+            QDialog *d = new DetailsDialog(m_items.at(i)); //TODO set parent widget
+            TagUpdater *updater = new TagUpdater(d, m_items.at(i));
+            m_editing_items.append(m_items.at(i));
+            connect(updater, SIGNAL(destroyed(QObject *)),SIGNAL(listChanged()));
+            d->show();
             return;
         }
     }

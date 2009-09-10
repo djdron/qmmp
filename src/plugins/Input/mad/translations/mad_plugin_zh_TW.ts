@@ -14,220 +14,107 @@
         <translation>MPEG 檔案</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="225"/>
+        <location filename="../decodermadfactory.cpp" line="223"/>
         <source>About MPEG Audio Plugin</source>
         <translation>關於 MPEG 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="226"/>
+        <location filename="../decodermadfactory.cpp" line="224"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>Qmmp MPEG 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="227"/>
+        <location filename="../decodermadfactory.cpp" line="225"/>
         <source>Compiled against libmad version:</source>
         <translation>編譯基於 libmad 的版本：</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="231"/>
+        <location filename="../decodermadfactory.cpp" line="229"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="232"/>
+        <location filename="../decodermadfactory.cpp" line="230"/>
         <source>Source code based on mq3 progect</source>
         <translation>源碼基於 mq3 項目</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>MPEGMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../mpegmetadatamodel.cpp" line="69"/>
         <source>Format</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
+        <location filename="../mpegmetadatamodel.cpp" line="71"/>
         <source>Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
-        <source>Hz</source>
-        <translation>Hz</translation>
+        <location filename="../mpegmetadatamodel.cpp" line="71"/>
+        <source>kbps</source>
+        <translation type="unfinished">kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="119"/>
+        <location filename="../mpegmetadatamodel.cpp" line="73"/>
         <source>Samplerate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="123"/>
-        <location filename="../detailsdialog.cpp" line="126"/>
-        <location filename="../detailsdialog.cpp" line="129"/>
-        <location filename="../detailsdialog.cpp" line="132"/>
+        <location filename="../mpegmetadatamodel.cpp" line="73"/>
+        <source>Hz</source>
+        <translation type="unfinished">Hz</translation>
+    </message>
+    <message>
+        <location filename="../mpegmetadatamodel.cpp" line="77"/>
+        <location filename="../mpegmetadatamodel.cpp" line="80"/>
+        <location filename="../mpegmetadatamodel.cpp" line="83"/>
+        <location filename="../mpegmetadatamodel.cpp" line="86"/>
         <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="136"/>
+        <location filename="../mpegmetadatamodel.cpp" line="89"/>
+        <source>KB</source>
+        <translation type="unfinished">KB</translation>
+    </message>
+    <message>
+        <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>File size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="138"/>
-        <location filename="../detailsdialog.cpp" line="142"/>
-        <location filename="../detailsdialog.cpp" line="146"/>
-        <source>Yes</source>
-        <translation>是</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="138"/>
-        <location filename="../detailsdialog.cpp" line="140"/>
+        <location filename="../mpegmetadatamodel.cpp" line="92"/>
+        <location filename="../mpegmetadatamodel.cpp" line="94"/>
         <source>Protection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="140"/>
-        <location filename="../detailsdialog.cpp" line="144"/>
-        <location filename="../detailsdialog.cpp" line="148"/>
-        <source>No</source>
-        <translation>否</translation>
+        <location filename="../mpegmetadatamodel.cpp" line="92"/>
+        <location filename="../mpegmetadatamodel.cpp" line="96"/>
+        <location filename="../mpegmetadatamodel.cpp" line="100"/>
+        <source>Yes</source>
+        <translation type="unfinished">是</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="142"/>
-        <location filename="../detailsdialog.cpp" line="144"/>
+        <location filename="../mpegmetadatamodel.cpp" line="94"/>
+        <location filename="../mpegmetadatamodel.cpp" line="98"/>
+        <location filename="../mpegmetadatamodel.cpp" line="102"/>
+        <source>No</source>
+        <translation type="unfinished">否</translation>
+    </message>
+    <message>
+        <location filename="../mpegmetadatamodel.cpp" line="96"/>
+        <location filename="../mpegmetadatamodel.cpp" line="98"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="146"/>
-        <location filename="../detailsdialog.cpp" line="148"/>
+        <location filename="../mpegmetadatamodel.cpp" line="100"/>
+        <location filename="../mpegmetadatamodel.cpp" line="102"/>
         <source>Original</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="385"/>
-        <source>Save</source>
-        <translation>儲存</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="263"/>
-        <source>Year:</source>
-        <translation>年代：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="182"/>
-        <source>Genre:</source>
-        <translation>流派：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="49"/>
-        <source>Tags</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="210"/>
-        <source>Disc number:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="166"/>
-        <source>Composer:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="232"/>
-        <source>Track:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="300"/>
-        <source>Comment:</source>
-        <translation>備註：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="143"/>
-        <source>Album:</source>
-        <translation>專輯：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="117"/>
-        <source>Artist:</source>
-        <translation>藝術家：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="91"/>
-        <source>Title:</source>
-        <translation>標題：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="14"/>
-        <source>Details</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="313"/>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="339"/>
-        <source>Audio Properties</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="392"/>
-        <source>Close</source>
-        <translation>關閉</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="345"/>
-        <source>-</source>
-        <translation>-</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="135"/>
-        <source>KB</source>
-        <translation>KB</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="117"/>
-        <source>kbps</source>
-        <translation>kbps</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="163"/>
-        <location filename="../detailsdialog.ui" line="55"/>
-        <location filename="../detailsdialog.ui" line="79"/>
-        <source>ID3v1</source>
-        <translation>ID3v1</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="169"/>
-        <location filename="../detailsdialog.ui" line="62"/>
-        <source>ID3v2</source>
-        <translation>ID3v2</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="175"/>
-        <location filename="../detailsdialog.ui" line="69"/>
-        <source>APE</source>
-        <translation>APE</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="371"/>
-        <source>Create</source>
-        <translation>建立</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="378"/>
-        <source>Delete</source>
-        <translation>移除</translation>
     </message>
 </context>
 <context>

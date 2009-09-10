@@ -31,7 +31,7 @@
 #include <taglib/tfile.h>
 #include <taglib/mpegfile.h>
 
-#include "detailsdialog.h"
+#include "mpegmetadatamodel.h"
 #include "settingsdialog.h"
 #include "decoder_mad.h"
 #include "decodermadfactory.h"
@@ -207,11 +207,9 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
     return list;
 }
 
-QObject* DecoderMADFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderMADFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
+   return new MPEGMetaDataModel(path, parent);
 }
 
 void DecoderMADFactory::showSettings(QWidget *parent)

@@ -52,8 +52,8 @@ SET(libqmmp_SRCS
     qmmp.cpp
     statehandler.cpp
     volumecontrol.cpp
-    abstractdetailsdialog.cpp
-    coverwidget.cpp
+    metadatamodel.cpp
+    tagmodel.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -76,8 +76,8 @@ SET(libqmmp_MOC_HDRS
     qmmp.h
     statehandler.h
     volumecontrol.h
-    abstractdetailsdialog.h
-    coverwidget.h
+    metadatamodel.h
+    tagmodel.h
 )
 
 SET(libqmmp_DEVEL_HDRS
@@ -96,23 +96,17 @@ SET(libqmmp_DEVEL_HDRS
     visualfactory.h
     visual.h
     volumecontrol.h
-    abstractdetailsdialog.h
-)
-
-SET(qmmp_UIS
-    forms/abstractdetailsdialog.ui
+    metadatamodel.h
+    tagmodel.h
 )
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
 
-QT4_WRAP_UI(qmmp_UIS_H ${qmmp_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-QT4_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmp_locales.qrc)
-
-ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS} ${qmmp_UIS_H} ${libqmmpui_RCC_SRCS})
+ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
 target_link_libraries(libqmmp ${QT_LIBRARIES} ${CURL_LDFLAGS} ${CURL_CFLAGS})
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
 install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}

@@ -21,7 +21,8 @@ HEADERS += recycler.h \
     fileinfo.h \
     volumecontrol.h \
     coverwidget.h \
-    abstractdetailsdialog.h
+    metadatamodel.h \
+    tagmodel.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -38,8 +39,9 @@ SOURCES += recycler.cpp \
     fileinfo.cpp \
     volumecontrol.cpp \
     coverwidget.cpp \
-    abstractdetailsdialog.cpp
-FORMS += forms/abstractdetailsdialog.ui
+    metadatamodel.cpp \
+    tagmodel.cpp
+FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
 CONFIG += release \
@@ -56,27 +58,12 @@ unix:isEmpty(LIB_DIR):LIB_DIR = /lib
 unix:DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
 DEFINES += QMMP_VERSION=$$QMMP_VERSION
 DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
-contains(CONFIG, SVN_VERSION) {
+contains(CONFIG, SVN_VERSION) { 
     unix:DEFINES += SVN_REVISION=\\\"$$system(./svn_revision.sh)\\\"
     win32:DEFINES += SVN_REVISION=\\\"svn\\\"
 }
 
-TRANSLATIONS = translations/libqmmp_ru.ts \
-               translations/libqmmp_tr.ts \
-               translations/libqmmp_zh_CN.ts \
-               translations/libqmmp_cs.ts \
-               translations/libqmmp_pt_BR.ts \
-               translations/libqmmp_uk_UA.ts \
-               translations/libqmmp_zh_TW.ts \
-               translations/libqmmp_de.ts \
-               translations/libqmmp_pl_PL.ts \
-               translations/libqmmp_it.ts \
-               translations/libqmmp_lt.ts \
-               translations/libqmmp_pl.ts
-
-RESOURCES += translations/libqmmp_locales.qrc
-
-unix {
+unix { 
     target.path = $$LIB_DIR
     devel.files += buffer.h \
         decoderfactory.h \
@@ -99,5 +86,4 @@ unix {
         devel
     DESTDIR = .
 }
-
 INCLUDEPATH += ./

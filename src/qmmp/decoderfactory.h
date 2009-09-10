@@ -30,6 +30,7 @@ class QTranslator;
 class Decoder;
 class Output;
 class FileInfo;
+class MetaDataModel;
 
 /*! @brief Helper class to store input plugin properies.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -98,12 +99,12 @@ public:
      */
     virtual QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData) = 0;
     /*!
-     * Shows details dialog.
-     * @param parent Parent widget.
+     * Creats metadata object, which provides full access to file tags.
      * @param path File path.
-     * @return Dialog pointer.
+     * @param parent Parent object.
+     * @return MetaDataModel pointer.
      */
-    virtual QObject* showDetails(QWidget *parent, const QString &path) = 0;
+    virtual MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0) = 0;
     /*!
      * Shows settings dialog.
      * @param parent Parent widget.
