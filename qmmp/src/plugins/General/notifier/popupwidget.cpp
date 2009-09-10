@@ -132,6 +132,8 @@ void PopupWidget::showMetaData()
 
 void PopupWidget::showVolume(int v)
 {
+    m_pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
+    m_pixlabel->setFixedSize(32,32);
     m_timer->stop();
     m_label1->setText("<b>" + tr("Volume:") + QString (" %1\%").arg(v)+ + "</b>");
 
