@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderMADFactory</name>
     <message>
@@ -44,91 +44,77 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="69"/>
         <source>Format</source>
-        <translation type="unfinished">Формат</translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="71"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Бітрейт</translation>
+        <translation>Бітрейт</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="71"/>
         <source>kbps</source>
-        <translation type="unfinished">Кб/с</translation>
+        <translation>Кб/с</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="73"/>
         <source>Samplerate</source>
-        <translation type="unfinished">Частота</translation>
+        <translation>Частота</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="73"/>
         <source>Hz</source>
-        <translation type="unfinished">Гц</translation>
+        <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="77"/>
-        <location filename="../mpegmetadatamodel.cpp" line="80"/>
-        <location filename="../mpegmetadatamodel.cpp" line="83"/>
         <location filename="../mpegmetadatamodel.cpp" line="86"/>
         <source>Mode</source>
-        <translation type="unfinished">Режим</translation>
+        <translation>Режим</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="89"/>
         <source>KB</source>
-        <translation type="unfinished">Кб</translation>
+        <translation>Кб</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>File size</source>
-        <translation type="unfinished">Розмір файла</translation>
+        <translation>Розмір файла</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="92"/>
         <location filename="../mpegmetadatamodel.cpp" line="94"/>
         <source>Protection</source>
-        <translation type="unfinished">Захищено</translation>
+        <translation>Захищено</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="92"/>
-        <location filename="../mpegmetadatamodel.cpp" line="96"/>
         <location filename="../mpegmetadatamodel.cpp" line="100"/>
         <source>Yes</source>
-        <translation type="unfinished">Так</translation>
+        <translation>Так</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="94"/>
-        <location filename="../mpegmetadatamodel.cpp" line="98"/>
         <location filename="../mpegmetadatamodel.cpp" line="102"/>
         <source>No</source>
-        <translation type="unfinished">Ні</translation>
+        <translation>Ні</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="96"/>
         <location filename="../mpegmetadatamodel.cpp" line="98"/>
         <source>Copyright</source>
-        <translation type="unfinished">Авторське право</translation>
+        <translation>Авторське право</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="100"/>
         <location filename="../mpegmetadatamodel.cpp" line="102"/>
         <source>Original</source>
-        <translation type="unfinished">Оригінал</translation>
+        <translation>Оригінал</translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="47"/>
-        <location filename="../settingsdialog.ui" line="94"/>
         <location filename="../settingsdialog.ui" line="141"/>
         <source>ID3v1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="52"/>
-        <location filename="../settingsdialog.ui" line="99"/>
         <location filename="../settingsdialog.ui" line="146"/>
         <source>ID3v2</source>
         <translation></translation>
@@ -159,15 +145,11 @@
         <translation>Перший:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
-        <location filename="../settingsdialog.ui" line="104"/>
         <location filename="../settingsdialog.ui" line="151"/>
         <source>APE</source>
         <translation>APE</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="62"/>
-        <location filename="../settingsdialog.ui" line="109"/>
         <location filename="../settingsdialog.ui" line="156"/>
         <source>Disabled</source>
         <translation>Вимкнути</translation>
