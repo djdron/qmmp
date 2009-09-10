@@ -20,7 +20,6 @@ HEADERS += recycler.h \
     qmmp.h \
     fileinfo.h \
     volumecontrol.h \
-    coverwidget.h \
     metadatamodel.h \
     tagmodel.h
 SOURCES += recycler.cpp \
@@ -38,10 +37,9 @@ SOURCES += recycler.cpp \
     qmmp.cpp \
     fileinfo.cpp \
     volumecontrol.cpp \
-    coverwidget.cpp \
     metadatamodel.cpp \
     tagmodel.cpp
-FORMS += 
+
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
 CONFIG += release \
