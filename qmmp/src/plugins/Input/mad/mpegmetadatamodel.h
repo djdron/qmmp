@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,48 +17,47 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <QDialog>
-#include <QList>
-#include <QMap>
+#ifndef MPEGMETADATAMODEL_H
+#define MPEGMETADATAMODEL_H
 
-#include "ui_detailsdialog.h"
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+#include <qmmp/metadatamodel.h>
+#include <taglib/mpegfile.h>
 
 class QTextCodec;
 
-class DetailsDialog : public QDialog
+class MPEGMetaDataModel : public MetaDataModel
 {
-    Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
-
-    ~DetailsDialog();
-
-protected:
-    virtual void closeEvent (QCloseEvent *);
-
-private slots:
-    void save();
-    void create();
-    void deleteTag();
-    void loadTag();
+    MPEGMetaDataModel(const QString &path, QObject *parent);
+    ~MPEGMetaDataModel();
+    QHash<QString, QString> audioProperties();
+    QList<TagModel* > tags();
 
 private:
-    void loadMPEGInfo();
-    uint selectedTag();
-    void showAudioProperties(QMap <QString, QString> p);
-    Ui::DetailsDialog ui;
     QString m_path;
-    QTextCodec *m_codec_v1;
-    QTextCodec *m_codec_v2;
-    bool m_rw;
-
+    QList<TagModel* > m_tags;
 };
 
-#endif
+class MpegFileTagModel : public TagModel
+{
+public:
+    MpegFileTagModel(const QString &path, TagLib::MPEG::File::TagTypes tagType);
+    ~MpegFileTagModel();
+    const QString name();
+    QList<Qmmp::MetaData> keys();
+    const QString value(Qmmp::MetaData key);
+    void setValue(Qmmp::MetaData key, const QString &value);
+    bool exists();
+    void create();
+    void remove();
+    void save();
+
+private:
+    QTextCodec *m_codec;
+    TagLib::MPEG::File *m_file;
+    TagLib::Tag *m_tag;
+    TagLib::MPEG::File::TagTypes m_tagType;
+};
+
+#endif // MPEGMETADATAMODEL_H

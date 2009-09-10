@@ -113,7 +113,7 @@ int DecoderModPlug::bitrate()
 qint64 DecoderModPlug::readAudio(char *audio, qint64 maxSize)
 {
     long len = m_soundFile->Read (audio, qMin((qint64)Buffer::size(), maxSize)) * m_sampleSize;
-    if (m_usePreamp)
+    /*if (m_usePreamp)
     {
         {
             //apply preamp
@@ -143,7 +143,7 @@ qint64 DecoderModPlug::readAudio(char *audio, qint64 maxSize)
                 }
             }
         }
-    }
+    }*/
     return len;
 }
 

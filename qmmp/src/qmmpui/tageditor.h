@@ -17,49 +17,32 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef ABSTRACTDETAILSDIALOG_H
-#define ABSTRACTDETAILSDIALOG_H
 
-#include <QDialog>
-#include <QMap>
+#ifndef TAGEDITOR_H
+#define TAGEDITOR_H
 
-#include "qmmp.h"
+#include <QWidget>
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
-namespace Ui
-{
-    class AbstractDetailsDialog;
+namespace Ui {
+    class TagEditor;
 }
-class QAbstractButton;
 
-class AbstractDetailsDialog : public QDialog
+class TagModel;
+
+class TagEditor : public QWidget
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    AbstractDetailsDialog(QWidget *parent = 0);
+    TagEditor(TagModel *tagModel, QWidget *parent = 0);
+    ~TagEditor();
 
-    ~AbstractDetailsDialog();
-
-    void hideSaveButton(bool hide = TRUE);
-    void blockSaveButton(bool block = TRUE);
-
-protected:
-    virtual void writeTags();
-
-    void setMetaData(Qmmp::MetaData key, const QString &value);
-    void setMetaData(Qmmp::MetaData key, int value);
-    void setAudioProperties(QMap <QString, QString> p);
-    const QString strMetaData(Qmmp::MetaData key);
-    int intMetaData(Qmmp::MetaData key);
-
-private slots:
-    void processButton(QAbstractButton *);
+    void save();
 
 private:
-    Ui::AbstractDetailsDialog *ui;
+    void readTag();
+    Ui::TagEditor *m_ui;
+    TagModel *m_tagModel;
+
 };
 
-#endif
+#endif // TAGEDITOR_H

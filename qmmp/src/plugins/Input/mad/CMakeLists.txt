@@ -35,19 +35,17 @@ link_directories(${MAD_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
 SET(libmad_SRCS
   decoder_mad.cpp
   decodermadfactory.cpp
-  detailsdialog.cpp
   settingsdialog.cpp
   tagextractor.cpp
-  coverwidget.cpp
+  mpegmetadatamodel.cpp
 )
 
 SET(libmad_MOC_HDRS
   settingsdialog.h
   decodermadfactory.h
   decoder_mad.h
-  detailsdialog.h
   tagextractor.h
-  coverwidget.h
+  mpegmetadatamodel.h
 )
 
 SET(libmad_RCCS translations/translations.qrc)
@@ -60,7 +58,6 @@ QT4_WRAP_CPP(libmad_MOC_SRCS ${libmad_MOC_HDRS})
 
 
 SET(libmad_UIS
-    detailsdialog.ui
     settingsdialog.ui
 )
 

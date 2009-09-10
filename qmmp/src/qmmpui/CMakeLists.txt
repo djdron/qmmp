@@ -36,6 +36,8 @@ SET(libqmmpui_SRCS
     playlistitem.cpp
     mediaplayer.cpp
     playlistsettings.cpp
+    detailsdialog.cpp
+    tageditor.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -56,6 +58,8 @@ SET(libqmmpui_MOC_HDRS
     playlistitem.h
     mediaplayer.h
     playlistsettings.h
+    detailsdialog.h
+    tageditor.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -72,8 +76,17 @@ SET(libqmmpui_DEVEL_HDRS
     playlistitem.h
     playlistmodel.h
     playlistparser.h
+    detailsdialog.h
+    tageditor.h
 )
 
+
+SET(libqmmpui_UIS
+    detailsdialog.ui
+    tageditor.ui
+)
+
+QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
 
 QT4_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmpui_locales.qrc)
 
@@ -81,7 +94,7 @@ QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RCC_SRCS})
+ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RCC_SRCS} ${libqmmpui_UIS_H})
 target_link_libraries(qmmpui ${QT_LIBRARIES} -lqmmp)
 add_dependencies(qmmpui libqmmp)
 SET_TARGET_PROPERTIES(qmmpui PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})
