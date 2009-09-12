@@ -29,6 +29,7 @@
 
 class QIODevice;
 class VolumeControl;
+class QmmpAudioEngine;
 
 /*! \brief The SoundCore class provides a simple interface for audio playback.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -103,6 +104,9 @@ public:
      * Returns the metdata string associated with the given \b key.
      */
     QString metaData(Qmmp::MetaData key);
+
+    //bool enqueue(const QString &url);
+
     /*!
      * Returns a pointer to the SoundCore instance.
      */
@@ -126,7 +130,7 @@ public slots:
      * Returns \b true if playback started successful or source is not a local file,
      * otherwise returns \b false. Useful for invalid files skipping.
      */
-    bool play(const QString &source);
+    bool play(const QString &source, bool queue = FALSE);
     /*!
      * Tells decoder about next track. It may be useful for gapless playback.
      * @param source Url of the next item in the playlist
@@ -229,6 +233,7 @@ private:
     static SoundCore* m_instance;
     StateHandler *m_handler;
     VolumeControl *m_volumeControl;
+    QmmpAudioEngine *m_engine;
 };
 
 #endif

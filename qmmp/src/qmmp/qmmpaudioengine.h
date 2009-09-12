@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,38 +17,73 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERMADFACTORY_H
-#define DECODERMADFACTORY_H
 
-#include <QObject>
-#include <QString>
-#include <QIODevice>
-#include <QWidget>
+#ifndef QMMPAUDIOENGINE_H
+#define QMMPAUDIOENGINE_H
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/metadatamodel.h>
+#include "abstractengine.h"
 
-
+class QIODevice;
+class Output;
+class Effect;
+class DecoderFactory;
+class StateHandler;
+class Decoder;
 
 
-class DecoderMADFactory : public QObject,
-                          DecoderFactory
+class QmmpAudioEngine : public AbstractEngine
 {
 Q_OBJECT
-Q_INTERFACES(DecoderFactory);
-
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(QIODevice *, const QString &);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    QmmpAudioEngine(QObject *parent);
+    ~QmmpAudioEngine();
+
+    bool initialize(QIODevice *input, const QString &source);
+    qint64 totalTime();
+    void seek(qint64 time);
+    void stop();
+    int bitrate();
+    void pause();
+    QIODevice *input();
+    Output *output();
+    void setEQ(double bands[10], double preamp);
+    void setEQEnabled(bool on);
+
+signals:
+    void playbackFinished();
+
+protected:
+    void run();
+
+
+protected slots:
+    void finish();
+
+private:
+    void reset();
+    void flush(bool = FALSE);
+    qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
+
+    DecoderFactory *m_factory;
+    QList <Effect*> m_effects;
+    QIODevice *m_input;
+    Output *m_output;
+
+    QMutex m_mutex;
+    QWaitCondition m_waitCondition;
+
+    uint _blksize;
+    bool m_eqInited;
+    bool m_useEQ;
+    bool m_done, m_finish, m_user_stop;
+    ulong m_bks;
+    qint64 m_totalTime, m_seekTime;
+    qint64 m_output_at;
+    int m_bitrate, m_chan, m_bps;
+    unsigned char *m_output_buf;
+    Decoder *m_decoder;
+    QString m_source;
+    Decoder *m_decoder2;
 };
 
-#endif
+#endif // QMMPAUDIOENGINE_H

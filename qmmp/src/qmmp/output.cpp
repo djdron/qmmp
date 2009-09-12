@@ -19,7 +19,7 @@
 
 Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
 {
-    m_handler = 0;
+    m_handler = StateHandler::instance();
     m_frequency = 0;
     m_channels = 0;
     m_kbps = 0;
@@ -33,6 +33,7 @@ Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
 
 void Output::configure(quint32 freq, int chan, int prec)
 {
+    qDebug("%u -- %d -- %d", freq, chan, prec);
     m_frequency = freq;
     m_channels = chan;
     m_precision = prec;

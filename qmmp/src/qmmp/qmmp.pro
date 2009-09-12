@@ -21,7 +21,10 @@ HEADERS += recycler.h \
     fileinfo.h \
     volumecontrol.h \
     metadatamodel.h \
-    tagmodel.h
+    tagmodel.h \
+    abstractengine.h \
+    qmmpaudioengine.h \
+    audioparameters.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -38,8 +41,11 @@ SOURCES += recycler.cpp \
     fileinfo.cpp \
     volumecontrol.cpp \
     metadatamodel.cpp \
-    tagmodel.cpp
-
+    tagmodel.cpp \
+    abstractengine.cpp \
+    qmmpaudioengine.cpp \
+    audioparameters.cpp
+FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
 CONFIG += release \
@@ -60,7 +66,6 @@ contains(CONFIG, SVN_VERSION) {
     unix:DEFINES += SVN_REVISION=\\\"$$system(./svn_revision.sh)\\\"
     win32:DEFINES += SVN_REVISION=\\\"svn\\\"
 }
-
 unix { 
     target.path = $$LIB_DIR
     devel.files += buffer.h \

@@ -84,13 +84,10 @@ public:
     virtual const DecoderProperties properties() const = 0;
     /*!
      * Creates decoder object.
-     * @param parent Parent object.
      * @param input Input data (if required)
-     * @param output Output object (if required)
      * @param path File path
      */
-    virtual Decoder *create(QObject *parent, QIODevice *input = 0,
-                            Output *output = 0, const QString &path = QString()) = 0;
+    virtual Decoder *create(QIODevice *input = 0, const QString &path = QString()) = 0;
     /*!
      * Extracts metadata and audio information from file \b path and returns a list of FileInfo items.
      * One file may contain several playlist items (for example: cda disk or flac with embedded cue)

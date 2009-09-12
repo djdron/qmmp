@@ -63,6 +63,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListModel *model)
     m_core = core;
     m_model = model;
     m_repeat = FALSE;
+    connect(m_core, SIGNAL(aboutToFinish()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(next()));
     //connect(m_model, SIGNAL(listChanged()), SLOT(updateNextUrl()));
 }
@@ -79,7 +80,7 @@ bool MediaPlayer::isRepeatable() const
 
 void MediaPlayer::play()
 {
-    disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
+    //disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
     m_model->doCurrentVisibleRequest();
     if (m_core->state() == Qmmp::Paused)
     {
@@ -92,7 +93,15 @@ void MediaPlayer::play()
 
     QString s = m_model->currentItem()->url();
     if (s.isEmpty())
+    {
+        m_nextUrl.clear();
         return;
+    }
+    if(m_nextUrl == s)
+    {
+        m_nextUrl.clear();
+        return;
+    }
 
     if (!m_core->play(s))
     {
@@ -132,19 +141,20 @@ void MediaPlayer::play()
     else
     {
         m_skips = 0;
-        updateNextUrl();
-        connect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
+        /*updateNextUrl();
+        connect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));*/
     }
 }
 
 void MediaPlayer::stop()
 {
     m_core->stop();
+    m_nextUrl.clear();
 }
 
 void MediaPlayer::next()
 {
-    disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
+    //disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
     if (!m_model->isEmptyQueue())
     {
         m_model->setCurrentToQueued();
@@ -165,7 +175,7 @@ void MediaPlayer::next()
 
 void MediaPlayer::previous()
 {
-    disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
+    //disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
     if (!m_model->previous())
     {
         stop();
@@ -194,13 +204,16 @@ void MediaPlayer::setRepeatable(bool r)
     }
     m_repeat = r;
     emit repeatableChanged(r);
-    updateNextUrl();
+    //updateNextUrl();
 }
 
 void MediaPlayer::updateNextUrl()
 {
     if(m_model->nextItem() && !isRepeatable())
-        m_core->setNextUrl(m_model->nextItem()->url());
+    {
+        m_core->play(m_model->nextItem()->url(), TRUE);
+        m_nextUrl = m_model->nextItem()->url();
+    }
     else
-        m_core->clearNextUrl();
+        m_nextUrl.clear();
 }
