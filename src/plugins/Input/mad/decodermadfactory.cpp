@@ -94,9 +94,9 @@ const DecoderProperties DecoderMADFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderMADFactory::create(QObject *parent, QIODevice *input, Output *output, const QString &)
+Decoder *DecoderMADFactory::create(QIODevice *input, const QString &)
 {
-    return new DecoderMAD(parent, this, input, output);
+    return new DecoderMAD(input);
 }
 
 QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, bool useMetaData)

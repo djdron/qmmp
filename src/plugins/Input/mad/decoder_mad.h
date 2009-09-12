@@ -7,6 +7,7 @@
 #ifndef   DECODER_MAD_H
 #define   DECODER_MAD_H
 
+class QIODevice;
 class DecoderMAD;
 
 #include <qmmp/decoder.h>
@@ -21,8 +22,7 @@ extern "C"
 class DecoderMAD : public Decoder
 {
 public:
-    DecoderMAD(QObject *parent = 0, DecoderFactory *d = 0,
-               QIODevice *i = 0, Output *o = 0);
+    DecoderMAD(QIODevice *i);
     virtual ~DecoderMAD();
 
     // standard decoder API
@@ -31,8 +31,8 @@ public:
     int bitrate();
 
 private:
-    qint64 readAudio(char *data, qint64 size);
-    void seekAudio(qint64);
+    qint64 read(char *data, qint64 size);
+    void seek(qint64);
 
     // helper functions
     qint64 madOutput(char *data, qint64 size);    
@@ -47,6 +47,7 @@ private:
     uint m_bitrate;
     long m_freq, m_len;
     qint64 m_output_bytes, m_output_at;
+    QIODevice *m_input;
 
     // file input buffer
     char *m_input_buf;

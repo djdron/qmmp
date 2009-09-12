@@ -54,6 +54,9 @@ SET(libqmmp_SRCS
     volumecontrol.cpp
     metadatamodel.cpp
     tagmodel.cpp
+    qmmpaudioengine.cpp
+    abstractengine.cpp
+    audioparameters.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -78,6 +81,9 @@ SET(libqmmp_MOC_HDRS
     volumecontrol.h
     metadatamodel.h
     tagmodel.h
+    qmmpaudioengine.h
+    abstractengine.h
+    audioparameters.h
 )
 
 SET(libqmmp_DEVEL_HDRS

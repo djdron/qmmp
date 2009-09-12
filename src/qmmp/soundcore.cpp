@@ -24,6 +24,7 @@
 #include <QSettings>
 #include <QDir>
 
+#include "qmmpaudioengine.h"
 #include "decoderfactory.h"
 #include "streamreader.h"
 #include "effect.h"
@@ -50,6 +51,7 @@ SoundCore::SoundCore(QObject *parent)
     m_vis = 0;
     m_parentWidget = 0;
     m_factory = 0;
+    m_engine = 0;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
     m_handler = new StateHandler(this);
@@ -71,26 +73,15 @@ SoundCore::~SoundCore()
     stop();
 }
 
-bool SoundCore::play(const QString &source)
+bool SoundCore::play(const QString &source,  bool queue)
 {
-    if(m_decoder && m_decoder->nextUrlAccepted()) //decoder can play next url
-    {
-        //fake stop/start cycle
-        m_handler->dispatch(Qmmp::Stopped);
-        m_handler->dispatch(Qmmp::Playing);
-        m_handler->dispatch(Qmmp::Buffering);
-        m_handler->dispatch(Qmmp::Playing);
-        m_source = source;
-        m_decoder->clearNextUrl();
-        return TRUE;
-    }
-    stop();
-
+    if(!queue)
+        stop();
     m_source = source;
-    if (m_handler->state() != Qmmp::Stopped) //clear error state
+    /*if (m_handler->state() != Qmmp::Stopped) //clear error state
         m_handler->dispatch(Qmmp::Stopped);
 
-    m_handler->dispatch(Qmmp::Buffering); //buffering state
+    m_handler->dispatch(Qmmp::Buffering); //buffering state*/
 
     QUrl url;
     if (source.contains("://")) //url
@@ -144,64 +135,26 @@ bool SoundCore::play(const QString &source)
     return FALSE;
 }
 
+//bool enqueue(const QString &url);
+
 void SoundCore::setNextUrl(const QString &source)
 {
-   if(m_decoder)
-       m_decoder->setNextUrl(source);
+   /*if(m_decoder)
+       m_decoder->setNextUrl(source);*/
 }
 
 void SoundCore::clearNextUrl()
 {
-    if(m_decoder)
-       m_decoder->clearNextUrl();
+    /*if(m_decoder)
+       m_decoder->clearNextUrl();*/
 }
 
 void SoundCore::stop()
 {
     m_factory = 0;
     m_source.clear();
-    if (m_decoder /*&& m_decoder->isRunning()*/)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->stop();
-        m_decoder->mutex()->unlock();
-        //m_decoder->stateHandler()->dispatch(Qmmp::Stopped);
-    }
-    if (m_output)
-    {
-        m_output->mutex()->lock ();
-        m_output->stop();
-        m_output->mutex()->unlock();
-    }
-
-    // wake up threads
-    if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->cond()->wakeAll();
-        m_decoder->mutex()->unlock();
-    }
-    if (m_output)
-    {
-        m_output->recycler()->mutex()->lock ();
-        m_output->recycler()->cond()->wakeAll();
-        m_output->recycler()->mutex()->unlock();
-    }
-    if (m_decoder)
-        m_decoder->wait();
-    if (m_output)
-        m_output->wait();
-
-    if (m_output)
-    {
-        delete m_output;
-        m_output = 0;
-    }
-    if (m_decoder)
-    {
-        delete m_decoder;
-        m_decoder = 0;
-    }
+    if(m_engine)
+        m_engine->stop();
     if (m_input)
     {
         m_input->deleteLater();
@@ -215,55 +168,14 @@ void SoundCore::stop()
 
 void SoundCore::pause()
 {
-    if (m_output)
-    {
-        m_output->mutex()->lock ();
-        m_output->pause();
-        m_output->mutex()->unlock();
-    }
-    else if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->pause();
-        m_decoder->mutex()->unlock();
-    }
-
-    // wake up threads
-    if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->cond()->wakeAll();
-        m_decoder->mutex()->unlock();
-    }
-
-    if (m_output)
-    {
-        m_output->recycler()->mutex()->lock ();
-        m_output->recycler()->cond()->wakeAll();
-        m_output->recycler()->mutex()->unlock();
-    }
+    if(m_engine)
+        m_engine->pause();
 }
 
 void SoundCore::seek(qint64 pos)
 {
-    if (m_output && m_output->isRunning())
-    {
-        m_output->mutex()->lock ();
-        m_output->seek(pos);
-        m_output->mutex()->unlock();
-        if (m_decoder && m_decoder->isRunning())
-        {
-            m_decoder->mutex()->lock ();
-            m_decoder->seek(pos);
-            m_decoder->mutex()->unlock();
-        }
-    }
-    else if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->seek(pos);
-        m_decoder->mutex()->unlock();
-    }
+    if(m_engine)
+        m_engine->seek(pos);
 }
 
 const QString SoundCore::url()
@@ -273,7 +185,7 @@ const QString SoundCore::url()
 
 qint64 SoundCore::totalTime() const
 {
-    return  (m_decoder) ? m_decoder->totalTime() : 0;
+    return  (m_engine) ? m_engine->totalTime() : 0;
 }
 
 void SoundCore::setEQ(double bands[10], double preamp)
@@ -283,23 +195,23 @@ void SoundCore::setEQ(double bands[10], double preamp)
     m_preamp = preamp;
     if (m_decoder)
     {
-        m_decoder->mutex()->lock ();
-        m_decoder->setEQ(m_bands, m_preamp);
-        m_decoder->setEQEnabled(m_useEQ);
-        m_decoder->mutex()->unlock();
+        m_engine->mutex()->lock ();
+        m_engine->setEQ(m_bands, m_preamp);
+        m_engine->setEQEnabled(m_useEQ);
+        m_engine->mutex()->unlock();
     }
 }
 
 void SoundCore::setEQEnabled(bool on)
 {
-    m_useEQ = on;
+    /*m_useEQ = on;
     if (m_decoder)
     {
         m_decoder->mutex()->lock ();
         m_decoder->setEQ(m_bands, m_preamp);
         m_decoder->setEQEnabled(on);
         m_decoder->mutex()->unlock();
-    }
+    }*/
 }
 
 void SoundCore::setVolume(int L, int R)
@@ -319,14 +231,14 @@ int SoundCore::rightVolume()
 
 void SoundCore::setSoftwareVolume(bool b)
 {
-    SoftwareVolume::setEnabled(b);
+    /*SoftwareVolume::setEnabled(b);
     if (m_decoder)
         m_decoder->mutex()->lock();
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
     if (m_decoder)
-        m_decoder->mutex()->unlock();
+        m_decoder->mutex()->unlock();*/
 }
 
 bool SoundCore::softwareVolume()
@@ -391,61 +303,23 @@ bool SoundCore::decode()
                 return FALSE;
             }
     }
-    if (!m_factory->properties().noOutput)
+
+    if(!m_engine)
     {
-        m_output = Output::create(this);
-        if (!m_output)
-        {
-            qWarning("SoundCore: unable to create output");
-            m_handler->dispatch(Qmmp::FatalError);
-            return FALSE;
-        }
-        if (!m_output->initialize())
-        {
-            qWarning("SoundCore: unable to initialize output");
-            delete m_output;
-            m_output = 0;
-            m_handler->dispatch(Qmmp::FatalError);
-            return FALSE;
-        }
+        m_engine = new QmmpAudioEngine(this);
+        connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
     }
-    m_decoder = m_factory->create(this, m_input, m_output, m_source);
-    if (!m_decoder)
-    {
-        qWarning("SoundCore: unsupported fileformat");
-        m_block = FALSE;
-        stop();
-        m_handler->dispatch(Qmmp::NormalError);
+
+    if(m_engine->initialize(m_input, m_source))
+        m_engine->start();
+    else
         return FALSE;
-    }
-    m_decoder->setStateHandler(m_handler);
+
     setEQ(m_bands, m_preamp);
     setEQEnabled(m_useEQ);
     qDebug ("ok");
-    connect(m_decoder, SIGNAL(playbackFinished()), SIGNAL(finished()));
-    if (m_output)
-        m_output->setStateHandler(m_decoder->stateHandler());
 
-    if (m_decoder->initialize())
-    {
-        if (QFile::exists(m_source)) //send metadata for local files
-        {
-            QList <FileInfo *> list = m_factory->createPlayList(m_source, TRUE);
-            if (!list.isEmpty())
-            {
-                m_handler->dispatch(list[0]->metaData());
-                while (!list.isEmpty())
-                    delete list.takeFirst();
-            }
-        }
-
-        if (m_output)
-            m_output->start();
-        m_decoder->start();
-        return TRUE;
-    }
-    stop();
-    return FALSE;
+    return TRUE;
 }
 
 SoundCore* SoundCore::instance()

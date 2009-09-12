@@ -99,6 +99,7 @@ private:
     static MediaPlayer* m_instance;
     bool m_repeat;
     int m_skips;
+    QString m_nextUrl;
 };
 
 #endif

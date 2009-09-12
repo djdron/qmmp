@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,38 +17,19 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERMADFACTORY_H
-#define DECODERMADFACTORY_H
 
-#include <QObject>
-#include <QString>
-#include <QIODevice>
-#include <QWidget>
+#include "abstractengine.h"
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/metadatamodel.h>
-
-
-
-
-class DecoderMADFactory : public QObject,
-                          DecoderFactory
+AbstractEngine::AbstractEngine(QObject *parent) : QThread(parent)
 {
-Q_OBJECT
-Q_INTERFACES(DecoderFactory);
+}
 
-public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(QIODevice *, const QString &);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
-};
+QMutex *AbstractEngine::mutex()
+{
+    return &m_mutex;
+}
 
-#endif
+QWaitCondition *AbstractEngine::cond()
+{
+    return &m_waitCondition;
+}

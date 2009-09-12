@@ -21,8 +21,8 @@
 #define INPUT_BUFFER_SIZE (32*1024)
 
 
-DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderMAD::DecoderMAD(QIODevice *i)
+        : Decoder()
 {
     m_inited = false;
     m_totalTime = 0.;
@@ -36,6 +36,7 @@ DecoderMAD::DecoderMAD(QObject *parent, DecoderFactory *d, QIODevice *i, Output 
     m_output_at = 0;
     m_skip_frames = 0;
     m_eof = false;
+    m_input = i;
 }
 
 DecoderMAD::~DecoderMAD()
@@ -62,7 +63,7 @@ bool DecoderMAD::initialize()
     m_output_bytes = 0;
     m_output_at = 0;
 
-    if (!input())
+    if (!m_input)
     {
         qWarning("DecoderMAD: cannot initialize.  No input.");
         return FALSE;
@@ -71,20 +72,20 @@ bool DecoderMAD::initialize()
     if (!m_input_buf)
         m_input_buf = new char[INPUT_BUFFER_SIZE];
 
-    if (!input()->isOpen())
+    if (!m_input->isOpen())
     {
-        if (!input()->open(QIODevice::ReadOnly))
+        if (!m_input->open(QIODevice::ReadOnly))
         {
-            qWarning("DecoderMAD: %s", qPrintable(input()->errorString ()));
+            qWarning("DecoderMAD: %s", qPrintable(m_input->errorString ()));
             return FALSE;
         }
     }
 
-    if (input()->isSequential ()) //for streams only
+    if (m_input->isSequential ()) //for streams only
     {
-        TagExtractor extractor(input());
+        TagExtractor extractor(m_input);
         if(!extractor.id3v2tag().isEmpty())
-            stateHandler()->dispatch(extractor.id3v2tag());
+            StateHandler::instance()->dispatch(extractor.id3v2tag());
     }
 
     mad_stream_init(&stream);
@@ -211,7 +212,7 @@ bool DecoderMAD::findHeader()
                 memmove (m_input_buf, stream.next_frame, remaining);
             }
 
-            m_input_bytes = input()->read(m_input_buf + remaining, INPUT_BUFFER_SIZE - remaining);
+            m_input_bytes = m_input->read(m_input_buf + remaining, INPUT_BUFFER_SIZE - remaining);
 
             if (m_input_bytes <= 0)
                 break;
@@ -234,7 +235,7 @@ bool DecoderMAD::findHeader()
         }
         result = TRUE;
 
-        if (input()->isSequential())
+        if (m_input->isSequential())
             break;
 
         count ++;
@@ -279,9 +280,9 @@ bool DecoderMAD::findHeader()
     if (!result)
         return FALSE;
 
-    if (!is_vbr && !input()->isSequential())
+    if (!is_vbr && !m_input->isSequential())
     {
-        double time = (input()->size() * 8.0) / (header.bitrate);
+        double time = (m_input->size() * 8.0) / (header.bitrate);
         double timefrac = (double)time - ((long)(time));
         mad_timer_set(&duration, (long)time, (long)(timefrac*100), 100);
     }
@@ -297,7 +298,7 @@ bool DecoderMAD::findHeader()
     m_channels = MAD_NCHANNELS(&header);
     m_bitrate = header.bitrate / 1000;
     mad_header_finish(&header);
-    input()->seek(0);
+    m_input->seek(0);
     m_input_bytes = 0;
     return TRUE;
 }
@@ -314,7 +315,7 @@ int DecoderMAD::bitrate()
     return int(m_bitrate);
 }
 
-qint64 DecoderMAD::readAudio(char *data, qint64 size)
+qint64 DecoderMAD::read(char *data, qint64 size)
 {
     forever
     {
@@ -358,12 +359,12 @@ qint64 DecoderMAD::readAudio(char *data, qint64 size)
         return madOutput(data, size);
     }
 }
-void DecoderMAD::seekAudio(qint64 pos)
+void DecoderMAD::seek(qint64 pos)
 {
     if(m_totalTime > 0)
     {
-        qint64 seek_pos = qint64(pos * input()->size() / m_totalTime);
-        input()->seek(seek_pos);
+        qint64 seek_pos = qint64(pos * m_input->size() / m_totalTime);
+        m_input->seek(seek_pos);
         mad_frame_mute(&frame);
         mad_synth_mute(&synth);
         stream.error = MAD_ERROR_BUFLEN;
@@ -381,7 +382,7 @@ bool DecoderMAD::fillBuffer()
         m_input_bytes = &m_input_buf[m_input_bytes] - (char *) stream.next_frame;
         memmove(m_input_buf, stream.next_frame, m_input_bytes);
     }
-    int len = input()->read((char *) m_input_buf + m_input_bytes, INPUT_BUFFER_SIZE - m_input_bytes);
+    int len = m_input->read((char *) m_input_buf + m_input_bytes, INPUT_BUFFER_SIZE - m_input_bytes);
     if (!len)
     {
         qDebug("DecoderMAD: end of file");
