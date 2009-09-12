@@ -47,7 +47,6 @@ private:
     uint m_bitrate;
     long m_freq, m_len;
     qint64 m_output_bytes, m_output_at;
-    QIODevice *m_input;
 
     // file input buffer
     char *m_input_buf;

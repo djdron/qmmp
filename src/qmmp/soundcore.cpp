@@ -135,31 +135,13 @@ bool SoundCore::play(const QString &source,  bool queue)
     return FALSE;
 }
 
-//bool enqueue(const QString &url);
-
-void SoundCore::setNextUrl(const QString &source)
-{
-   /*if(m_decoder)
-       m_decoder->setNextUrl(source);*/
-}
-
-void SoundCore::clearNextUrl()
-{
-    /*if(m_decoder)
-       m_decoder->clearNextUrl();*/
-}
-
 void SoundCore::stop()
 {
     m_factory = 0;
     m_source.clear();
     if(m_engine)
         m_engine->stop();
-    if (m_input)
-    {
-        m_input->deleteLater();
-        m_input = 0;
-    }
+    m_input = 0;
     //update VolumeControl
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
@@ -310,7 +292,7 @@ bool SoundCore::decode()
         connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
     }
 
-    if(m_engine->initialize(m_input, m_source))
+    if(m_engine->initialize(m_source, m_input))
         m_engine->start();
     else
         return FALSE;

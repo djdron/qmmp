@@ -8,6 +8,7 @@
 #include <QStringList>
 #include <QApplication>
 #include <QSettings>
+#include <QIODevice>
 #include <math.h>
 
 #include "effect.h"
@@ -26,8 +27,15 @@ extern "C"
 }
 #include "decoder.h"
 
-Decoder::~Decoder()
+Decoder::Decoder(QIODevice *input) : m_input(input)
 {}
+
+Decoder::~Decoder()
+{
+    if(m_input)
+        m_input->deleteLater();
+    m_input = 0;
+}
 
 void Decoder::configure(quint32 srate, int chan, int bps)
 {
@@ -37,6 +45,11 @@ void Decoder::configure(quint32 srate, int chan, int bps)
 const AudioParameters Decoder::audioParameters()
 {
     return m_parameters;
+}
+
+QIODevice *Decoder::input()
+{
+    return m_input;
 }
 
 // static methods

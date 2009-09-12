@@ -18,6 +18,7 @@
 
 class Decoder;
 class DecoderFactory;
+class QIODevice;
 
 /*! @brief The Decoder class provides the base interface class of audio decoders.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -26,6 +27,10 @@ class DecoderFactory;
 class Decoder
 {
 public:
+    /*!
+     *
+     */
+    Decoder(QIODevice *input = 0);
     /*!
      * Destructor.
      */
@@ -57,6 +62,7 @@ public:
     virtual int bitrate() = 0;
 
     const AudioParameters audioParameters();
+    QIODevice *input();
 
     /*!
      * Returns \b true if \b file is supported by input plugins, otherwise returns \b false
@@ -133,6 +139,7 @@ private:
     static DecoderFactory *m_lastFactory;
     static QStringList m_files;
     AudioParameters m_parameters;
+    QIODevice *m_input;
 };
 
 #endif // DECODER_H
