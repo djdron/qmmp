@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,8 +19,7 @@
  ***************************************************************************/
 
 #include <QApplication>
-#include <QLocalServer>
-#include <QLocalSocket>
+#include <QDir>
 
 #include <cstdlib>
 #include <iostream>
@@ -115,8 +114,7 @@ void QMMPStarter::writeCommand()
 #ifndef Q_OS_WIN32
     if (!argString.isEmpty())
     {
-        char buf[PATH_MAX + 1];
-        QString workingDir = QString::fromLocal8Bit(getcwd(buf,PATH_MAX)) + "\n";
+        QString workingDir = QDir::currentPath() + "\n";
 
         QByteArray barray;
         barray.append(workingDir.toUtf8 ());
