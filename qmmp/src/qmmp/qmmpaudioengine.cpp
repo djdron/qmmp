@@ -35,7 +35,7 @@ extern "C"
 }
 
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
-        : AbstractEngine(parent), m_factory(0), m_input(0), m_output(0), m_eqInited(FALSE),
+        : AbstractEngine(parent), m_factory(0), m_output(0), m_eqInited(FALSE),
         m_useEQ(FALSE)
 {
     m_output_buf = new unsigned char[Qmmp::globalBufferSize()];
@@ -47,7 +47,6 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_bks = Buffer::size();
     m_decoder = 0;
     m_output = 0;
-    m_input = 0;
     m_decoder2 = 0;
     reset();
 }
@@ -75,7 +74,7 @@ void QmmpAudioEngine::reset()
 }
 
 
-bool QmmpAudioEngine::initialize(QIODevice *input, const QString &source)
+bool QmmpAudioEngine::initialize(const QString &source, QIODevice *input)
 {
     if(m_decoder && isRunning() && m_output && m_output->isRunning())
     {
@@ -93,7 +92,7 @@ bool QmmpAudioEngine::initialize(QIODevice *input, const QString &source)
         m_decoder2 = 0;
     }
     else
-         m_decoder2 = 0;
+        m_decoder2 = 0;
     stop();
     m_source = source;
     m_output = Output::create(this);
@@ -137,11 +136,6 @@ qint64 QmmpAudioEngine::totalTime()
         return m_decoder->totalTime();
     else
         return 0;
-}
-
-QIODevice *QmmpAudioEngine::input()
-{
-    return m_input;
 }
 
 Output *QmmpAudioEngine::output()
@@ -353,16 +347,7 @@ void QmmpAudioEngine::run()
     qint64 len = 0;
     mutex()->unlock();
 
-    if (QFile::exists(m_source)) //send metadata for local files
-    {
-        QList <FileInfo *> list = m_factory->createPlayList(m_source, TRUE);
-        if (!list.isEmpty())
-        {
-            StateHandler::instance()->dispatch(list[0]->metaData());
-            while (!list.isEmpty())
-                delete list.takeFirst();
-        }
-    }
+    sendMetaData();
 
     while (! m_done && ! m_finish)
     {
@@ -398,21 +383,12 @@ void QmmpAudioEngine::run()
                 delete m_decoder;
                 m_decoder = m_decoder2;
                 emit playbackFinished();
-                StateHandler::instance()->dispatch(Qmmp::Stopped);
+                StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
                 StateHandler::instance()->dispatch(Qmmp::Buffering);
                 StateHandler::instance()->dispatch(Qmmp::Playing);
-                m_output->seek(0);
+                m_output->seek(0); //reset counter
                 mutex()->unlock();
-                if (QFile::exists(m_source)) //send metadata for local files
-                {
-                    QList <FileInfo *> list = m_factory->createPlayList(m_source, TRUE);
-                    if (!list.isEmpty())
-                    {
-                        StateHandler::instance()->dispatch(list[0]->metaData());
-                        while (!list.isEmpty())
-                            delete list.takeFirst();
-                    }
-                }
+                sendMetaData();
                 continue;
             }
 
@@ -480,5 +456,19 @@ void QmmpAudioEngine::flush(bool final)
         }
 
         output()->recycler()->mutex()->unlock();
+    }
+}
+
+void QmmpAudioEngine::sendMetaData()
+{
+    if (QFile::exists(m_source)) //send metadata for local files
+    {
+        QList <FileInfo *> list = m_factory->createPlayList(m_source, TRUE);
+        if (!list.isEmpty())
+        {
+            StateHandler::instance()->dispatch(list[0]->metaData());
+            while (!list.isEmpty())
+                delete list.takeFirst();
+        }
     }
 }

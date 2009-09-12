@@ -38,13 +38,12 @@ public:
     QmmpAudioEngine(QObject *parent);
     ~QmmpAudioEngine();
 
-    bool initialize(QIODevice *input, const QString &source);
+    bool initialize(const QString &source, QIODevice *input = 0);
     qint64 totalTime();
     void seek(qint64 time);
     void stop();
     int bitrate();
     void pause();
-    QIODevice *input();
     Output *output();
     void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
@@ -52,25 +51,19 @@ public:
 signals:
     void playbackFinished();
 
-protected:
-    void run();
-
-
-protected slots:
+private slots:
     void finish();
 
 private:
+    void run();
     void reset();
     void flush(bool = FALSE);
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
+    void sendMetaData();
 
     DecoderFactory *m_factory;
     QList <Effect*> m_effects;
-    QIODevice *m_input;
     Output *m_output;
-
-    QMutex m_mutex;
-    QWaitCondition m_waitCondition;
 
     uint _blksize;
     bool m_eqInited;

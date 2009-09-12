@@ -132,15 +132,6 @@ public slots:
      */
     bool play(const QString &source, bool queue = FALSE);
     /*!
-     * Tells decoder about next track. It may be useful for gapless playback.
-     * @param source Url of the next item in the playlist
-     */
-    void setNextUrl(const QString &source);
-    /*!
-     * Removes information about next url
-     */
-    void clearNextUrl();
-    /*!
      *  Stops playback
      */
     void stop();

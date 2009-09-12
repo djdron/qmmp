@@ -42,7 +42,7 @@ public:
      * Prepares decoder for usage.
      * Subclass should reimplement this function.
      */
-    virtual bool initialize(QIODevice *input, const QString &source) = 0;
+    virtual bool initialize(const QString &source, QIODevice *input = 0) = 0;
     /*!
      * Returns the total time in milliseconds.
      * Subclass should reimplement this function.
