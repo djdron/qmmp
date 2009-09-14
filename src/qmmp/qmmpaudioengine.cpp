@@ -79,9 +79,12 @@ bool QmmpAudioEngine::initialize(const QString &source, QIODevice *input)
     if(m_decoder && isRunning() && m_output && m_output->isRunning())
     {
         m_factory = Decoder::findByPath(source);
+        if(!m_factory)
+            m_factory = Decoder::findByURL(QUrl(source));
         m_decoder2 = m_factory->create(input, source);
         if(!m_decoder2->initialize())
             return FALSE;
+
         if(m_decoder2->audioParameters() == m_decoder->audioParameters())
         {
             qDebug("accepted!!");
@@ -113,6 +116,8 @@ bool QmmpAudioEngine::initialize(const QString &source, QIODevice *input)
     }
 
     m_factory = Decoder::findByPath(source);
+    if(!m_factory)
+        m_factory = Decoder::findByURL(QUrl(source));
     m_decoder = m_factory->create(input, source);
     if (!m_decoder)
     {
@@ -267,6 +272,7 @@ void QmmpAudioEngine::stop()
 
     if(m_decoder)
     {
+        qDebug("delete m_decoder");
         delete m_decoder;
         m_decoder = 0;
     }
@@ -376,7 +382,6 @@ void QmmpAudioEngine::run()
         }
         else if (len == 0)
         {
-            qDebug("0");
             if(m_decoder2)
             {
                 qDebug("next decoder");

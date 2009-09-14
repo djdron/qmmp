@@ -25,7 +25,7 @@ DecoderMAD::DecoderMAD(QIODevice *i)
         : Decoder(i)
 {
     m_inited = false;
-    m_totalTime = 0.;
+    m_totalTime = 0;
     m_channels = 0;
     m_bitrate = 0;
     m_freq = 0;
@@ -40,7 +40,6 @@ DecoderMAD::DecoderMAD(QIODevice *i)
 
 DecoderMAD::~DecoderMAD()
 {
-    wait();
     deinit();
     if (m_input_buf)
     {
@@ -53,7 +52,7 @@ DecoderMAD::~DecoderMAD()
 bool DecoderMAD::initialize()
 {
     m_inited = false;
-    m_totalTime = 0.;
+    m_totalTime = 0;
     m_channels = 0;
     m_bitrate = 0;
     m_freq = 0;
@@ -118,7 +117,7 @@ void DecoderMAD::deinit()
     mad_stream_finish(&stream);
 
     m_inited = FALSE;
-    m_totalTime = 0.;
+    m_totalTime = 0;
     m_channels = 0;
     m_bitrate = 0;
     m_freq = 0;

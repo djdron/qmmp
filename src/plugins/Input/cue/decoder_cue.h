@@ -26,59 +26,27 @@
 
 class Output;
 class QIDevice;
-//class CUEStateHandler;
 
 class DecoderCUE : public Decoder
 {
-    Q_OBJECT
 public:
-    DecoderCUE(QObject *, DecoderFactory *, const QString &url);
+    DecoderCUE(const QString &url, QIODevice *input);
     virtual ~DecoderCUE();
 
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
     void seek(qint64);
-    void stop();
-    void pause();
+    qint64 read(char *data, qint64 size);
+    int bitrate();
 
-    // Equalizer
-    void setEQ(double bands[10], double preamp);
-    void setEQEnabled(bool on);
-
-private slots:
-    void proccessFinish();
-
-private:
-    // thread run function
-    void run();
-    QString path, m_nextUrl;
+private: 
     Decoder *m_decoder;
-    Output *m_output2;
-    QIODevice *m_input2;
     qint64 m_length;
     qint64 m_offset;
-    double m_preamp2;
-    double m_bands2[10];
-    bool m_useEQ2;
-};
-
-class CUEStateHandler : public StateHandler
-{
-    Q_OBJECT
-public:
-    CUEStateHandler(QObject *parent);
-    virtual ~CUEStateHandler();
-
-    void dispatch(qint64 elapsed,
-                  int bitrate,
-                  quint32 frequency,
-                  int precision,
-                  int channels);
-
-    void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
-
-    void dispatch(const Qmmp::State &state);
+    qint64 offset_in_bytes;
+    qint64 m_totalBytes;
+    QString m_path;
 };
 
 #endif // DECODER_CUE_H

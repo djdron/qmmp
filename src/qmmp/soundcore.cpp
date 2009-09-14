@@ -96,6 +96,7 @@ bool SoundCore::play(const QString &source,  bool queue)
     }
 
     m_factory = Decoder::findByURL(url);
+    m_input = 0;
     if (m_factory)
         return decode();
 
