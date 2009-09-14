@@ -32,27 +32,23 @@
 #include "decoder_cue.h"
 
 
-DecoderCUE::DecoderCUE(QObject *parent, DecoderFactory *d, const QString &url)
-        : Decoder(parent, d)
+DecoderCUE::DecoderCUE(const QString &url, QIODevice *input)
+        : Decoder(input)
 {
-    path = url;
+    m_path = url;
     m_decoder = 0;
-    m_output2 = 0;
-    m_input2 = 0;
-    for (int i = 1; i < 10; ++i)
-        m_bands2[i] = 0;
-    m_preamp2 = 0;
-    m_useEQ2 = FALSE;
 }
 
 DecoderCUE::~DecoderCUE()
-{}
+{
+    if(m_decoder)
+        delete m_decoder;
+    m_decoder = 0;
+}
 
 bool DecoderCUE::initialize()
 {
-    m_input2 = 0;
-
-    QString p = QUrl(path).path();
+    QString p = QUrl(m_path).path();
     p.replace(QString(QUrl::toPercentEncoding("#")), "#");
     p.replace(QString(QUrl::toPercentEncoding("%")), "%");
     CUEParser parser(p);
@@ -61,71 +57,37 @@ bool DecoderCUE::initialize()
         qWarning("DecoderCUE: invalid cue file");
         return FALSE;
     }
-    int track = path.section("#", -1).toInt();
-    path = parser.filePath(track);
-    // find next track
-    if(track <= parser.count() - 1)
-        m_nextUrl = parser.info(track + 1)->path();
-    //is it track of another file?
-    if(QUrl(m_nextUrl).path() != p)
-        m_nextUrl.clear();
-
-    if (!QFile::exists(path))
+    int track = m_path.section("#", -1).toInt();
+    m_path = parser.filePath(track);
+    if (!QFile::exists(m_path))
     {
-        qWarning("DecoderCUE: file \"%s\" doesn't exist", qPrintable(path));
+        qWarning("DecoderCUE: file \"%s\" doesn't exist", qPrintable(m_path));
         return FALSE;
     }
-    DecoderFactory *df = Decoder::findByPath(path);
+    DecoderFactory *df = Decoder::findByPath(m_path);
     if (!df)
     {
         qWarning("DecoderCUE: unsupported file format");
         return FALSE;
     }
-    if (!df->properties().noInput)
-    {
-        m_input2 = new QFile(path);
-        if (!m_input2->open(QIODevice::ReadOnly))
-        {
-            qDebug("DecoderCUE: cannot open input");
-            stop();
-            return FALSE;
-        }
-    }
-    if (df->properties().noOutput)
-    {
-        qWarning("DecoderCUE: unsupported file format");
-        return FALSE;
-    }
-    m_output2 = Output::create(this);
-    if (!m_output2)
-    {
-        qWarning("DecoderCUE: unable to create output");
-        return FALSE;
-    }
-    if (!m_output2->initialize())
-    {
-        qWarning("SoundCore: unable to initialize output");
-        delete m_output2;
-        m_output2 = 0;
-        return FALSE;
-    }
-
     m_length = parser.length(track);
     m_offset = parser.offset(track);
-    m_decoder = df->create(this, m_input2, m_output2, path);
-    m_decoder->setEQ(m_bands2, m_preamp2);
-    m_decoder->setEQEnabled(m_useEQ2);
-    connect(m_decoder, SIGNAL(playbackFinished()), SLOT(finish()));
-    //replace default state handler to ignore metadata
-    m_decoder->setStateHandler(new CUEStateHandler(m_decoder));
-    m_output2->setStateHandler(m_decoder->stateHandler());
-    connect(stateHandler(), SIGNAL(aboutToFinish()), SLOT(proccessFinish()));
-    //prepare decoder and ouput objects
-    m_decoder->initialize();
-    m_decoder->setFragment(m_offset, m_length);
-    //send metadata
-    QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
-    stateHandler()->dispatch(metaData);
+
+    m_decoder = df->create(new QFile(m_path), m_path);
+    if(!m_decoder->initialize())
+    {
+        qWarning("DecoderCUE: invalid audio file");
+        return FALSE;
+    }
+    m_decoder->seek(m_offset);
+
+    configure(m_decoder->audioParameters().sampleRate(),
+              m_decoder->audioParameters().channels(),
+              m_decoder->audioParameters().bits());
+    offset_in_bytes = audioParameters().sampleRate() *
+                      audioParameters().channels() *
+                      audioParameters().bits() * m_length/8000;
+    m_totalBytes = 0;
     return TRUE;
 }
 
@@ -136,180 +98,28 @@ qint64 DecoderCUE::totalTime()
 
 void DecoderCUE::seek(qint64 pos)
 {
-    if (m_output2 && m_output2->isRunning())
-    {
-        m_output2->mutex()->lock ();
-        m_output2->seek(pos);
-        m_output2->mutex()->unlock();
-        if (m_decoder && m_decoder->isRunning())
-        {
-            m_decoder->mutex()->lock ();
-            m_decoder->seek(pos);
-            m_decoder->mutex()->unlock();
-        }
-    }
+     m_decoder->seek(m_offset + pos);
+     m_totalBytes = audioParameters().sampleRate() *
+                    audioParameters().channels() *
+                    audioParameters().bits() * pos/8000;
 }
 
-void DecoderCUE::stop()
+qint64 DecoderCUE::read(char *data, qint64 size)
 {
-    if (m_decoder /*&& m_decoder->isRunning()*/)
+    qint64 len = m_decoder->read(data, size);
+    m_totalBytes += len;
+    if(len > offset_in_bytes - m_totalBytes)
     {
-        m_decoder->mutex()->lock ();
-        m_decoder->stop();
-        m_decoder->mutex()->unlock();
-        //m_decoder->stateHandler()->dispatch(Qmmp::Stopped);
+        len = offset_in_bytes - m_totalBytes;
+        int sample_size = audioParameters().bits() * audioParameters().channels()/8;
+        len = (len / sample_size) * sample_size;
     }
-    if (m_output2)
-    {
-        m_output2->mutex()->lock ();
-        m_output2->stop();
-        m_output2->mutex()->unlock();
-    }
-
-    // wake up threads
-    if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->cond()->wakeAll();
-        m_decoder->mutex()->unlock();
-    }
-    if (m_output2)
-    {
-        m_output2->recycler()->mutex()->lock ();
-        m_output2->recycler()->cond()->wakeAll();
-        m_output2->recycler()->mutex()->unlock();
-    }
-    if (m_decoder)
-        m_decoder->wait();
-    if (m_output2)
-        m_output2->wait();
-
-    if (m_input2)
-    {
-        m_input2->deleteLater();
-        m_input2 = 0;
-    }
+    if(len < 0)
+        len = 0;
+    return len;
 }
 
-void DecoderCUE::pause()
+int DecoderCUE::bitrate()
 {
-    if (m_output2)
-    {
-        m_output2->mutex()->lock ();
-        m_output2->pause();
-        m_output2->mutex()->unlock();
-    }
-    else if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->pause();
-        m_decoder->mutex()->unlock();
-    }
-
-    // wake up threads
-    if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->cond()->wakeAll();
-        m_decoder->mutex()->unlock();
-    }
-
-    if (m_output2)
-    {
-        m_output2->recycler()->mutex()->lock ();
-        m_output2->recycler()->cond()->wakeAll();
-        m_output2->recycler()->mutex()->unlock();
-    }
-}
-
-void DecoderCUE::setEQ(double bands[10], double preamp)
-{
-    for (int i = 0; i < 10; ++i)
-        m_bands2[i] = bands[i];
-    m_preamp2 = preamp;
-    if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->setEQ(m_bands2, m_preamp2);
-        m_decoder->setEQEnabled(m_useEQ2);
-        m_decoder->mutex()->unlock();
-    }
-}
-
-void DecoderCUE::setEQEnabled(bool on)
-{
-    m_useEQ2 = on;
-    if (m_decoder)
-    {
-        m_decoder->mutex()->lock ();
-        m_decoder->setEQ(m_bands2, m_preamp2);
-        m_decoder->setEQEnabled(on);
-        m_decoder->mutex()->unlock();
-    }
-}
-
-void DecoderCUE::run()
-{
-    m_decoder->start();
-    if (m_output2)
-        m_output2->start();
-}
-
-void DecoderCUE::proccessFinish()
-{
-    if(nextUrlRequest(m_nextUrl))
-    {
-        qDebug("DecoderCUE: going to next track");
-        int track = m_nextUrl.section("#", -1).toInt();
-        QString p = QUrl(m_nextUrl).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        //update current fragment
-        CUEParser parser(p);
-        m_length = parser.length(track);
-        m_offset = parser.offset(track);
-        m_decoder->mutex()->lock();
-        m_decoder->setFragment(m_offset, m_length);
-        m_output2->seek(0); //reset time counter
-        m_decoder->mutex()->unlock();
-         // find next track
-        if(track <= parser.count() - 1)
-            m_nextUrl = parser.info(track + 1)->path();
-        else
-            m_nextUrl.clear();
-        //is it track of another file?
-        if(QUrl(m_nextUrl).path() != p)
-            m_nextUrl.clear();
-        //change track
-        finish();
-        //send metadata
-        QMap<Qmmp::MetaData, QString> metaData = parser.info(track)->metaData();
-        stateHandler()->dispatch(metaData);
-    }
-}
-
-CUEStateHandler::CUEStateHandler(QObject *parent): StateHandler(parent){}
-
-CUEStateHandler::~CUEStateHandler(){}
-
-void CUEStateHandler::dispatch(qint64 elapsed,
-                               int bitrate,
-                               quint32 frequency,
-                               int precision,
-                               int channels)
-{
-    StateHandler::instance()->dispatch(elapsed, bitrate,
-                                       frequency, precision, channels);
-
-}
-
-void CUEStateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
-{
-    //ignore media file metadata
-    Q_UNUSED(metaData)
-}
-
-void CUEStateHandler::dispatch(const Qmmp::State &state)
-{
-    StateHandler::instance()->dispatch(state);
+    return m_decoder->bitrate();
 }

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -53,12 +53,11 @@ const DecoderProperties DecoderCUEFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderCUEFactory::create(QObject *parent, QIODevice *input,
-                                      Output *output, const QString &url)
+Decoder *DecoderCUEFactory::create(QIODevice *input, const QString &path)
 {
-    Q_UNUSED(input);
-    Q_UNUSED(output);
-    return new DecoderCUE(parent, this, url);
+    //Q_UNUSED(input);
+    //Q_UNUSED(output);
+    return new DecoderCUE(path, input);
 }
 
 QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -68,8 +67,10 @@ QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName, boo
     return parser.createPlayList();
 }
 
-QObject* DecoderCUEFactory::showDetails(QWidget *, const QString &)
+MetaDataModel* DecoderCUEFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
+    Q_UNUSED(path);
+    Q_UNUSED(parent);
     return 0;
 }
 

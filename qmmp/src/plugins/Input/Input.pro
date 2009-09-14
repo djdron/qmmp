@@ -1,6 +1,6 @@
 include(../../../qmmp.pri)
 
-SUBDIRS += mad #cue
+SUBDIRS += mad cue
 TEMPLATE = subdirs
 
 unix{
