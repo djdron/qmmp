@@ -109,7 +109,7 @@ public:
      * @param parent Parent object.
      * @return Output subclass object.
      */
-    static Output *create(QObject *parent);
+    static Output *create(QObject *parent = 0);
     /*!
      * Returns a list of output factories.
      */
