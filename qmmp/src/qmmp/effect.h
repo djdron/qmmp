@@ -73,7 +73,7 @@ public:
      * Creates a list of enabled effects.
      * @param parent Parent object of all created Effect objects.
      */
-    static QList<Effect*> create(QObject *parent);
+    static QList<Effect*> create(QObject *parent = 0);
     /*!
      * Returns a list of effect factories.
      */

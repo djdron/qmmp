@@ -102,8 +102,7 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     }
     if(!m_output)
     {
-        m_output = createOutput(decoder);
-        if(!m_output)
+        if(!(m_output = createOutput(decoder)))
             return FALSE;
     }
     m_decoders.enqueue(decoder);
@@ -121,6 +120,7 @@ qint64 QmmpAudioEngine::totalTime()
 
 void QmmpAudioEngine::setEQ(double bands[10], double preamp)
 {
+    mutex()->lock();
     set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
     set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
     for (int i=0; i<10; ++i)
@@ -129,34 +129,15 @@ void QmmpAudioEngine::setEQ(double bands[10], double preamp)
         set_gain(i,0, 0.03*value+0.000999999*value*value);
         set_gain(i,1, 0.03*value+0.000999999*value*value);
     }
+    mutex()->unlock();
 }
 
 void QmmpAudioEngine::setEQEnabled(bool on)
 {
+    mutex()->lock();
     m_useEQ = on;
+    mutex()->unlock();
 }
-
-/*void QmmpAudioEngine::configure(quint32 srate, int chan, int bps)
-{
-    Effect* effect = 0;
-    m_freq = srate;
-    m_chan = chan;
-    m_bps = bps;
-    foreach(effect, m_effects)
-    {
-        effect->configure(srate, chan, bps);
-        srate = effect->sampleRate();
-        chan = effect->channels();
-        bps = effect->bitsPerSample();
-    }
-    m_chan = chan;
-    if (m_output)
-    {
-        m_output->configure(srate, chan, bps);
-        if (!m_output_buf)
-            m_output_buf = new unsigned char[Qmmp::globalBufferSize()];
-    }
-}*/
 
 void QmmpAudioEngine::seek(qint64 time)
 {
@@ -244,6 +225,8 @@ void QmmpAudioEngine::stop()
     }
     reset();
     m_decoder = 0;
+    while(!m_effects.isEmpty()) //delete effects
+        delete m_effects.takeFirst();
 }
 
 qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int chan)
@@ -323,9 +306,8 @@ void QmmpAudioEngine::run()
     }
 
     m_decoder = m_decoders.dequeue();
-    m_output->start();
     mutex()->unlock();
-
+    m_output->start();
     sendMetaData();
 
     while (! m_done && ! m_finish)
@@ -487,6 +469,9 @@ void QmmpAudioEngine::sendMetaData()
 
 Output *QmmpAudioEngine::createOutput(Decoder *d)
 {
+    while(!m_effects.isEmpty()) //delete effects
+        delete m_effects.takeFirst();
+
     m_ap = d->audioParameters();
     Output *output = Output::create(0);
     if(!output)
@@ -497,13 +482,25 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
     }
     if (!output->initialize())
     {
-        qWarning("SoundCore: unable to initialize output");
+        qWarning("QmmpAudioEngine: unable to initialize output");
         delete output;
         output = 0;
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return FALSE;
     }
-    output->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.bits());
+    m_effects = Effect::create();
+    quint32 srate = m_ap.sampleRate();
+    int chan = m_ap.channels();
+    int bps = m_ap.bits();
+
+    foreach(Effect *effect, m_effects)
+    {
+        effect->configure(srate, chan, bps);
+        srate = effect->sampleRate();
+        chan = effect->channels();
+        bps = effect->bitsPerSample();
+    }
+    m_chan = chan;
+    output->configure(srate, chan, bps);
     return output;
 }
-

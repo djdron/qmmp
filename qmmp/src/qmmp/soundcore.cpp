@@ -93,7 +93,7 @@ bool SoundCore::play(const QString &source, bool queue)
     else
         m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
     return decode();
-    return TRUE;
+    //return TRUE;
 }
 
 void SoundCore::stop()
@@ -136,25 +136,21 @@ void SoundCore::setEQ(double bands[10], double preamp)
     for (int i = 0; i < 10; ++i)
         m_bands[i] = bands[i];
     m_preamp = preamp;
-    if (m_decoder)
+    if (m_engine)
     {
-        m_engine->mutex()->lock ();
         m_engine->setEQ(m_bands, m_preamp);
         m_engine->setEQEnabled(m_useEQ);
-        m_engine->mutex()->unlock();
     }
 }
 
 void SoundCore::setEQEnabled(bool on)
 {
-    /*m_useEQ = on;
-    if (m_decoder)
+    m_useEQ = on;
+    if (m_engine)
     {
-        m_decoder->mutex()->lock ();
-        m_decoder->setEQ(m_bands, m_preamp);
-        m_decoder->setEQEnabled(on);
-        m_decoder->mutex()->unlock();
-    }*/
+        m_engine->setEQ(m_bands, m_preamp);
+        m_engine->setEQEnabled(on);
+    }
 }
 
 void SoundCore::setVolume(int L, int R)
@@ -174,14 +170,14 @@ int SoundCore::rightVolume()
 
 void SoundCore::setSoftwareVolume(bool b)
 {
-    /*SoftwareVolume::setEnabled(b);
-    if (m_decoder)
-        m_decoder->mutex()->lock();
+    SoftwareVolume::setEnabled(b); //TODO move to engine settings
+    if (m_engine)
+        m_engine->mutex()->lock();
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
-    if (m_decoder)
-        m_decoder->mutex()->unlock();*/
+    if (m_engine)
+        m_engine->mutex()->unlock();
 }
 
 bool SoundCore::softwareVolume()
@@ -240,6 +236,9 @@ bool SoundCore::decode()
         connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
     }
 
+    setEQ(m_bands, m_preamp);
+    setEQEnabled(m_useEQ);
+
     if(m_engine->enqueue(m_inputSource))
     {
         m_inputSource->setParent(m_engine);
@@ -251,8 +250,7 @@ bool SoundCore::decode()
         return FALSE;
     }
 
-    setEQ(m_bands, m_preamp);
-    setEQEnabled(m_useEQ);
+
     qDebug ("ok");
 
     return TRUE;
