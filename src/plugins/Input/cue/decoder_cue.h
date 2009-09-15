@@ -30,7 +30,7 @@ class QIDevice;
 class DecoderCUE : public Decoder
 {
 public:
-    DecoderCUE(const QString &url, QIODevice *input);
+    DecoderCUE(const QString &url);
     virtual ~DecoderCUE();
 
     // Standard Decoder API

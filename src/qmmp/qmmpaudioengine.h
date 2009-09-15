@@ -21,7 +21,10 @@
 #ifndef QMMPAUDIOENGINE_H
 #define QMMPAUDIOENGINE_H
 
+#include <QQueue>
+#include <QHash>
 #include "abstractengine.h"
+#include "audioparameters.h"
 
 class QIODevice;
 class Output;
@@ -29,6 +32,7 @@ class Effect;
 class DecoderFactory;
 class StateHandler;
 class Decoder;
+class InputSource;
 
 
 class QmmpAudioEngine : public AbstractEngine
@@ -38,13 +42,11 @@ public:
     QmmpAudioEngine(QObject *parent);
     ~QmmpAudioEngine();
 
-    bool initialize(const QString &source, QIODevice *input = 0);
+    bool enqueue(InputSource *source);
     qint64 totalTime();
     void seek(qint64 time);
     void stop();
-    int bitrate();
     void pause();
-    Output *output();
     void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
 
@@ -60,6 +62,7 @@ private:
     void flush(bool = FALSE);
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
     void sendMetaData();
+    Output *createOutput(Decoder *d);
 
     DecoderFactory *m_factory;
     QList <Effect*> m_effects;
@@ -75,8 +78,10 @@ private:
     int m_bitrate, m_chan, m_bps;
     unsigned char *m_output_buf;
     Decoder *m_decoder;
-    QString m_source;
-    Decoder *m_decoder2;
+    QQueue <Decoder*> m_decoders;
+    QHash <Decoder*, InputSource*> m_inputs;
+    AudioParameters m_ap;
+
 };
 
 #endif // QMMPAUDIOENGINE_H

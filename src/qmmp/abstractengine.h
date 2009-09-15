@@ -27,6 +27,7 @@
 #include <QThread>
 
 class QIODevice;
+class InputSource;
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -42,7 +43,8 @@ public:
      * Prepares decoder for usage.
      * Subclass should reimplement this function.
      */
-    virtual bool initialize(const QString &source, QIODevice *input = 0) = 0;
+    //virtual bool initialize(const QString &source, QIODevice *input = 0) = 0;
+    virtual bool enqueue(InputSource *source) = 0;
     /*!
      * Returns the total time in milliseconds.
      * Subclass should reimplement this function.

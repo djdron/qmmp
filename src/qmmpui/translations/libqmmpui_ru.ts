@@ -6,47 +6,47 @@
     <message>
         <location filename="../detailsdialog.cpp" line="74"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Название</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="75"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="76"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="77"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментарий</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="78"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="79"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Композитр</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="81"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Год</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="83"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Дорожка</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="85"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="14"/>
@@ -129,54 +129,54 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="38"/>
         <source>Title:</source>
-        <translation type="unfinished">Название:</translation>
+        <translation>Название:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="64"/>
         <source>Artist:</source>
-        <translation type="unfinished">Исполнитель:</translation>
+        <translation>Исполнитель:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="90"/>
         <source>Album:</source>
-        <translation type="unfinished">Альбом:</translation>
+        <translation>Альбом:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="113"/>
         <source>Composer:</source>
-        <translation type="unfinished">Композитор:</translation>
+        <translation>Композитор:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="133"/>
         <source>Genre:</source>
-        <translation type="unfinished">Жанр:</translation>
+        <translation>Жанр:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="159"/>
         <source>Disc number:</source>
-        <translation type="unfinished">Номер диска:</translation>
+        <translation>Номер диска:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="169"/>
         <location filename="../tageditor.ui" line="201"/>
         <location filename="../tageditor.ui" line="239"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="182"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="220"/>
         <source>Year:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="252"/>
         <source>Comment:</source>
-        <translation type="unfinished">Комментарий:</translation>
+        <translation>Комментарий:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="274"/>

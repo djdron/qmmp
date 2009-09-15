@@ -57,6 +57,7 @@ SET(libqmmp_SRCS
     qmmpaudioengine.cpp
     abstractengine.cpp
     audioparameters.cpp
+    inputsource.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -84,6 +85,7 @@ SET(libqmmp_MOC_HDRS
     qmmpaudioengine.h
     abstractengine.h
     audioparameters.h
+    inputsource.h
 )
 
 SET(libqmmp_DEVEL_HDRS

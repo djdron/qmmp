@@ -65,7 +65,6 @@ void MediaPlayer::initialize(SoundCore *core, PlayListModel *model)
     m_repeat = FALSE;
     connect(m_core, SIGNAL(aboutToFinish()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(next()));
-    //connect(m_model, SIGNAL(listChanged()), SLOT(updateNextUrl()));
 }
 
 PlayListModel *MediaPlayer::playListModel()
@@ -80,7 +79,6 @@ bool MediaPlayer::isRepeatable() const
 
 void MediaPlayer::play()
 {
-    //disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
     m_model->doCurrentVisibleRequest();
     if (m_core->state() == Qmmp::Paused)
     {
@@ -139,11 +137,7 @@ void MediaPlayer::play()
         }
     }
     else
-    {
         m_skips = 0;
-        /*updateNextUrl();
-        connect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));*/
-    }
 }
 
 void MediaPlayer::stop()
@@ -154,7 +148,6 @@ void MediaPlayer::stop()
 
 void MediaPlayer::next()
 {
-    //disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
     if (!m_model->isEmptyQueue())
     {
         m_model->setCurrentToQueued();
@@ -175,7 +168,6 @@ void MediaPlayer::next()
 
 void MediaPlayer::previous()
 {
-    //disconnect(m_model, SIGNAL(listChanged()), this, SLOT(updateNextUrl()));
     if (!m_model->previous())
     {
         stop();
@@ -204,7 +196,6 @@ void MediaPlayer::setRepeatable(bool r)
     }
     m_repeat = r;
     emit repeatableChanged(r);
-    //updateNextUrl();
 }
 
 void MediaPlayer::updateNextUrl()

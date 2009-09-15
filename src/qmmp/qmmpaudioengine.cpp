@@ -27,7 +27,9 @@
 #include "decoder.h"
 #include "output.h"
 #include "decoderfactory.h"
+#include "inputsource.h"
 #include "qmmpaudioengine.h"
+
 
 extern "C"
 {
@@ -47,12 +49,12 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_bks = Buffer::size();
     m_decoder = 0;
     m_output = 0;
-    m_decoder2 = 0;
     reset();
 }
 
 QmmpAudioEngine::~QmmpAudioEngine()
 {
+    stop();
     reset();
     if(m_output_buf)
         delete [] m_output_buf;
@@ -70,68 +72,42 @@ void QmmpAudioEngine::reset()
     m_bitrate = 0;
     m_chan = 0;
     m_bps = 0;
-    m_source.clear();
 }
 
-
-bool QmmpAudioEngine::initialize(const QString &source, QIODevice *input)
+bool QmmpAudioEngine::enqueue(InputSource *source)
 {
-    if(m_decoder && isRunning() && m_output && m_output->isRunning())
-    {
-        m_factory = Decoder::findByPath(source);
-        if(!m_factory)
-            m_factory = Decoder::findByURL(QUrl(source));
-        m_decoder2 = m_factory->create(input, source);
-        if(!m_decoder2->initialize())
-            return FALSE;
+    DecoderFactory *factory = Decoder::findByURL(source->url());
 
-        if(m_decoder2->audioParameters() == m_decoder->audioParameters())
-        {
-            qDebug("accepted!!");
-            m_source = source;
-            return TRUE;
-        }
-        delete m_decoder2;
-        m_decoder2 = 0;
+    if(!factory && source->url().scheme() == "file")
+        factory = Decoder::findByPath(source->url().toLocalFile());
+    if(!factory && source->ioDevice())
+        factory = Decoder::findByContent(source->ioDevice());
+    if(!factory)
+    {
+        qWarning("QmmpAudioEngine: unsupported file format");
+        return FALSE;
     }
+    if(factory->properties().noInput && source->ioDevice())
+        source->ioDevice()->close();
+    Decoder *decoder = 0;
+    if(source->url().scheme() == "file")
+        decoder = factory->create(source->url().toLocalFile(), source->ioDevice());
     else
-        m_decoder2 = 0;
-    stop();
-    m_source = source;
-    m_output = Output::create(this);
-    m_output->recycler()->clear();
-    if (!m_output)
+        decoder = factory->create(source->url().toString(), source->ioDevice());
+    if(!decoder->initialize())
     {
-        qWarning("SoundCore: unable to create output");
-        StateHandler::instance()->dispatch(Qmmp::FatalError);
+        qWarning("QmmpAudioEngine: invalid file format");
+        delete decoder;
         return FALSE;
     }
-    if (!m_output->initialize())
+    if(!m_output)
     {
-        qWarning("SoundCore: unable to initialize output");
-        delete m_output;
-        m_output = 0;
-        StateHandler::instance()->dispatch(Qmmp::FatalError);
-        return FALSE;
+        m_output = createOutput(decoder);
+        if(!m_output)
+            return FALSE;
     }
-
-    m_factory = Decoder::findByPath(source);
-    if(!m_factory)
-        m_factory = Decoder::findByURL(QUrl(source));
-    m_decoder = m_factory->create(input, source);
-    if (!m_decoder)
-    {
-        qWarning("SoundCore: unsupported fileformat");
-        stop();
-        StateHandler::instance()->dispatch(Qmmp::NormalError);
-        return FALSE;
-    }
-    if(!m_decoder->initialize())
-        return FALSE;
-
-    m_output->configure(m_decoder->audioParameters().sampleRate(),
-                        m_decoder->audioParameters().channels(),
-                        m_decoder->audioParameters().bits());
+    m_decoders.enqueue(decoder);
+    m_inputs.insert(decoder, source);
     return TRUE;
 }
 
@@ -141,11 +117,6 @@ qint64 QmmpAudioEngine::totalTime()
         return m_decoder->totalTime();
     else
         return 0;
-}
-
-Output *QmmpAudioEngine::output()
-{
-    return m_output;
 }
 
 void QmmpAudioEngine::setEQ(double bands[10], double preamp)
@@ -201,11 +172,6 @@ void QmmpAudioEngine::seek(qint64 time)
             mutex()->unlock();
         }
     }
-}
-
-int QmmpAudioEngine::bitrate()
-{
-    return 0;
 }
 
 void QmmpAudioEngine::pause()
@@ -270,13 +236,14 @@ void QmmpAudioEngine::stop()
         m_output = 0;
     }
 
-    if(m_decoder)
+    while(!m_decoders.isEmpty())
     {
-        qDebug("delete m_decoder");
-        delete m_decoder;
-        m_decoder = 0;
+        Decoder *d = m_decoders.dequeue();
+        delete m_inputs.take(d);
+        delete d;
     }
     reset();
+    m_decoder = 0;
 }
 
 qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int chan)
@@ -312,7 +279,7 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
         prev_data = out_data;
     }
 
-    Buffer *b = output()->recycler()->get(w);
+    Buffer *b = m_output->recycler()->get(w);
 
     memcpy(b->data, out_data, w);
 
@@ -325,7 +292,7 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
     b->nbytes = w;
     b->rate = brate;
 
-    output()->recycler()->add();
+    m_output->recycler()->add();
 
     size -= sz;
     memmove(data, data + sz, size);
@@ -334,11 +301,11 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
 
 void QmmpAudioEngine::finish()
 {
-    if (output())
+    if (m_output)
     {
-        output()->mutex()->lock ();
-        output()->finish();
-        output()->mutex()->unlock();
+        m_output->mutex()->lock ();
+        m_output->finish();
+        m_output->mutex()->unlock();
     }
     emit playbackFinished();
 }
@@ -348,9 +315,15 @@ void QmmpAudioEngine::run()
     Q_ASSERT(m_chan == 0);
     Q_ASSERT(!m_output_buf);
     mutex()->lock ();
-    if (m_output)
-        m_output->start();    
     qint64 len = 0;
+    if(m_decoders.isEmpty())
+    {
+         mutex()->unlock ();
+         return;
+    }
+
+    m_decoder = m_decoders.dequeue();
+    m_output->start();
     mutex()->unlock();
 
     sendMetaData();
@@ -364,10 +337,10 @@ void QmmpAudioEngine::run()
         {
             m_decoder->seek(m_seekTime);
             m_seekTime = -1;
-            output()->recycler()->mutex()->lock ();
-            while(output()->recycler()->used() > 1)
-               output()->recycler()->done();
-            output()->recycler()->mutex()->unlock ();
+            m_output->recycler()->mutex()->lock ();
+            while(m_output->recycler()->used() > 1)
+                m_output->recycler()->done();
+            m_output->recycler()->mutex()->unlock ();
         }
 
         len = m_decoder->read((char *)(m_output_buf + m_output_at),
@@ -377,39 +350,64 @@ void QmmpAudioEngine::run()
         {
             m_bitrate = m_decoder->bitrate();
             m_output_at += len;
-            if (output())
+            if (m_output)
                 flush();
         }
         else if (len == 0)
         {
-            if(m_decoder2)
+            if(!m_decoders.isEmpty())
             {
-                qDebug("next decoder");
+                delete m_inputs.take(m_decoder);
                 delete m_decoder;
-                m_decoder = m_decoder2;
-                emit playbackFinished();
-                StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
-                StateHandler::instance()->dispatch(Qmmp::Buffering);
-                StateHandler::instance()->dispatch(Qmmp::Playing);
-                m_output->seek(0); //reset counter
-                mutex()->unlock();
-                sendMetaData();
-                continue;
+                m_decoder = m_decoders.dequeue();
+                //use current output if possible
+                if(m_decoder->audioParameters() == m_ap)
+                {
+                    emit playbackFinished();
+                    StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
+                    StateHandler::instance()->dispatch(Qmmp::Buffering);
+                    StateHandler::instance()->dispatch(Qmmp::Playing);
+                    m_output->seek(0); //reset counter
+                    mutex()->unlock();
+                    sendMetaData();
+                    continue;
+                }
+                else
+                {
+                    flush(TRUE);
+                    finish();
+                    //wake up waiting threads
+                    cond()->wakeAll();
+                    mutex()->unlock();
+                    m_output->recycler()->mutex()->lock ();
+                    m_output->recycler()->cond()->wakeAll();
+                    m_output->recycler()->mutex()->unlock();
+
+                    m_output->wait();
+                    delete m_output;
+                    m_output = createOutput(m_decoder);
+                    if(m_output)
+                    {
+                        m_output->start();
+                        sendMetaData();
+                        continue;
+                    }
+                }
             }
 
             flush(TRUE);
-            if (output())
+            if (m_output)
             {
-                output()->recycler()->mutex()->lock ();
+                m_output->recycler()->mutex()->lock ();
                 // end of stream
-                while (!output()->recycler()->empty() && !m_user_stop)
+                while (!m_output->recycler()->empty() && !m_user_stop)
                 {
-                    output()->recycler()->cond()->wakeOne();
+                    m_output->recycler()->cond()->wakeOne();
                     mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
+                    m_output->recycler()->cond()->wait(m_output->recycler()->mutex());
                     mutex()->lock ();
                 }
-                output()->recycler()->mutex()->unlock();
+                m_output->recycler()->mutex()->unlock();
             }
             m_done = TRUE;
             m_finish = !m_user_stop;
@@ -417,6 +415,12 @@ void QmmpAudioEngine::run()
         else
             m_finish = TRUE;
         mutex()->unlock();
+    }
+    if(m_decoder)
+    {
+        delete m_inputs.take(m_decoder);
+        delete m_decoder;
+        m_decoder = 0;
     }
 
     mutex()->lock ();
@@ -431,19 +435,19 @@ void QmmpAudioEngine::flush(bool final)
 
     while ((!m_done && !m_finish) && m_output_at > min)
     {
-        output()->recycler()->mutex()->lock ();
+        m_output->recycler()->mutex()->lock ();
         if(m_seekTime >= 0)
         {
-            while(output()->recycler()->used() > 1)
-                output()->recycler()->done();
-            output()->recycler()->mutex()->unlock ();
+            while(m_output->recycler()->used() > 1)
+                m_output->recycler()->done();
+            m_output->recycler()->mutex()->unlock ();
             m_output_at = 0;
             break;
         }
-        while ((!m_done && !m_finish) && output()->recycler()->full())
+        while ((!m_done && !m_finish) && m_output->recycler()->full())
         {
             mutex()->unlock();
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
+            m_output->recycler()->cond()->wait(m_output->recycler()->mutex());
             mutex()->lock ();
             m_done = m_user_stop;
         }
@@ -455,20 +459,23 @@ void QmmpAudioEngine::flush(bool final)
             m_output_at -= produceSound((char*)m_output_buf, m_output_at, m_bitrate, m_chan);
         }
 
-        if (output()->recycler()->full())
+        if (m_output->recycler()->full())
         {
-            output()->recycler()->cond()->wakeOne();
+            m_output->recycler()->cond()->wakeOne();
         }
 
-        output()->recycler()->mutex()->unlock();
+        m_output->recycler()->mutex()->unlock();
     }
 }
 
 void QmmpAudioEngine::sendMetaData()
 {
-    if (QFile::exists(m_source)) //send metadata for local files
+    if(!m_decoder || m_inputs.isEmpty())
+        return;
+    QUrl url = m_inputs.value(m_decoder)->url();
+    if (url.scheme() == "file") //send metadata for local files only
     {
-        QList <FileInfo *> list = m_factory->createPlayList(m_source, TRUE);
+        QList <FileInfo *> list = Decoder::createPlayList(url.toLocalFile(), TRUE);
         if (!list.isEmpty())
         {
             StateHandler::instance()->dispatch(list[0]->metaData());
@@ -477,3 +484,26 @@ void QmmpAudioEngine::sendMetaData()
         }
     }
 }
+
+Output *QmmpAudioEngine::createOutput(Decoder *d)
+{
+    m_ap = d->audioParameters();
+    Output *output = Output::create(0);
+    if(!output)
+    {
+        qWarning("QmmpAudioEngine: unable to create output");
+        StateHandler::instance()->dispatch(Qmmp::FatalError);
+        return 0;
+    }
+    if (!output->initialize())
+    {
+        qWarning("SoundCore: unable to initialize output");
+        delete output;
+        output = 0;
+        StateHandler::instance()->dispatch(Qmmp::FatalError);
+        return FALSE;
+    }
+    output->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.bits());
+    return output;
+}
+

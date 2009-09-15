@@ -30,6 +30,7 @@
 class QIODevice;
 class VolumeControl;
 class QmmpAudioEngine;
+class InputSource;
 
 /*! \brief The SoundCore class provides a simple interface for audio playback.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -225,6 +226,7 @@ private:
     StateHandler *m_handler;
     VolumeControl *m_volumeControl;
     QmmpAudioEngine *m_engine;
+    InputSource *m_inputSource;
 };
 
 #endif

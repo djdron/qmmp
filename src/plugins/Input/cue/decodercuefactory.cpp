@@ -53,11 +53,10 @@ const DecoderProperties DecoderCUEFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderCUEFactory::create(QIODevice *input, const QString &path)
+Decoder *DecoderCUEFactory::create(const QString &path, QIODevice *input)
 {
-    //Q_UNUSED(input);
-    //Q_UNUSED(output);
-    return new DecoderCUE(path, input);
+    Q_UNUSED(input);
+    return new DecoderCUE(path);
 }
 
 QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName, bool useMetaData)

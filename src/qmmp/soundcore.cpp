@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,6 +29,7 @@
 #include "streamreader.h"
 #include "effect.h"
 #include "statehandler.h"
+#include "inputsource.h"
 #include "volumecontrol.h"
 
 #include "soundcore.h"
@@ -73,67 +74,26 @@ SoundCore::~SoundCore()
     stop();
 }
 
-bool SoundCore::play(const QString &source,  bool queue)
+bool SoundCore::play(const QString &source, bool queue)
 {
     if(!queue)
         stop();
+
     m_source = source;
-    /*if (m_handler->state() != Qmmp::Stopped) //clear error state
-        m_handler->dispatch(Qmmp::Stopped);
 
-    m_handler->dispatch(Qmmp::Buffering); //buffering state*/
+    m_inputSource = new InputSource(source, this);
 
-    QUrl url;
-    if (source.contains("://")) //url
-        url = source;
-    else if (QFile::exists(source))
-        url = QUrl::fromLocalFile(source);
+    if(m_inputSource->ioDevice())
+        connect(m_inputSource->ioDevice(), SIGNAL(readyRead()), SLOT(decode()));
     else
-    {
-        qDebug("SoundCore: file doesn't exist");
-        m_handler->dispatch(Qmmp::NormalError);
-        return FALSE;
-    }
-
-    m_factory = Decoder::findByURL(url);
-    m_input = 0;
-    if (m_factory)
         return decode();
 
-    if (url.scheme() == "file")
-    {
-        if ((m_factory = Decoder::findByPath(m_source)))
-        {
-            m_input = new QFile(m_source);
-            if (!m_input->open(QIODevice::ReadOnly))
-            {
-                qDebug("SoundCore: cannot open input");
-                stop();
-                m_handler->dispatch(Qmmp::NormalError);
-                return FALSE;
-            }
-            return decode();
-        }
-        else
-        {
-            qWarning("SoundCore: unsupported fileformat");
-            stop();
-            m_handler->dispatch(Qmmp::NormalError);
-            return FALSE;
-        }
-    }
-    if (url.scheme() == "http")
-    {
-        m_input = new StreamReader(source, this);
-        connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
-        connect(m_input, SIGNAL(readyRead()),SLOT(decode()));
-        qobject_cast<StreamReader *>(m_input)->downloadFile();
-        return TRUE;
-    }
-    qWarning("SoundCore: unsupported fileformat");
-    stop();
-    m_handler->dispatch(Qmmp::NormalError);
-    return FALSE;
+    if(qobject_cast<StreamReader *>(m_inputSource->ioDevice()))
+        qobject_cast<StreamReader *>(m_inputSource->ioDevice())->downloadFile();
+    else
+        m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
+    return decode();
+    return TRUE;
 }
 
 void SoundCore::stop()
@@ -271,21 +231,8 @@ QString SoundCore::metaData(Qmmp::MetaData key)
 
 bool SoundCore::decode()
 {
-    if (!m_factory)
-    {
-        if (!m_input->open(QIODevice::ReadOnly))
-        {
-            qDebug("SoundCore:: cannot open input");
-            m_handler->dispatch(Qmmp::NormalError);
-            return FALSE;
-        }
-        if (!(m_factory = Decoder::findByMime(qobject_cast<StreamReader *>(m_input)->contentType())))
-            if (!(m_factory = Decoder::findByContent(m_input)))
-            {
-                m_handler->dispatch(Qmmp::NormalError);
-                return FALSE;
-            }
-    }
+    qDebug("ready");
+    disconnect(m_inputSource->ioDevice(), SIGNAL(readyRead()), this, SLOT(decode()));
 
     if(!m_engine)
     {
@@ -293,10 +240,16 @@ bool SoundCore::decode()
         connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
     }
 
-    if(m_engine->initialize(m_source, m_input))
+    if(m_engine->enqueue(m_inputSource))
+    {
+        m_inputSource->setParent(m_engine);
         m_engine->start();
+    }
     else
+    {
+        delete m_inputSource;
         return FALSE;
+    }
 
     setEQ(m_bands, m_preamp);
     setEQEnabled(m_useEQ);

@@ -32,8 +32,8 @@
 #include "decoder_cue.h"
 
 
-DecoderCUE::DecoderCUE(const QString &url, QIODevice *input)
-        : Decoder(input)
+DecoderCUE::DecoderCUE(const QString &url)
+        : Decoder()
 {
     m_path = url;
     m_decoder = 0;
@@ -73,7 +73,7 @@ bool DecoderCUE::initialize()
     m_length = parser.length(track);
     m_offset = parser.offset(track);
 
-    m_decoder = df->create(new QFile(m_path), m_path);
+    m_decoder = df->create(m_path, new QFile(m_path));
     if(!m_decoder->initialize())
     {
         qWarning("DecoderCUE: invalid audio file");
