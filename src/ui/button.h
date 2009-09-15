@@ -43,12 +43,14 @@ private slots:
 
 private:
     Skin *skin;
+    bool m_cursorin;
     void setON(bool);
     uint name_normal, name_pressed;
 
 protected:
     void mousePressEvent(QMouseEvent*);
     void mouseReleaseEvent(QMouseEvent*);
+    void mouseMoveEvent(QMouseEvent*);
 };
 
 #endif

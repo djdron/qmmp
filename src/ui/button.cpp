@@ -23,6 +23,7 @@
 
 #include "button.h"
 #include "skin.h"
+#include <QMouseEvent>
 
 Button::Button (QWidget *parent, uint normal, uint pressed)
         : PixmapWidget (parent)
@@ -53,11 +54,24 @@ void Button::setON (bool on)
 void Button::mousePressEvent (QMouseEvent *e)
 {
     setON (TRUE);
+    m_cursorin = TRUE;
     QWidget::mousePressEvent(e);
 }
 
 void Button::mouseReleaseEvent (QMouseEvent*)
 {
     setON (FALSE);
-    emit clicked();
+    if (m_cursorin)
+        emit clicked();
+}
+
+void Button::mouseMoveEvent (QMouseEvent *e)
+{
+    if ( !m_cursorin && rect().contains(e->pos()) ) {
+        m_cursorin = TRUE;
+        setON (TRUE);
+    } else if ( m_cursorin && !rect().contains(e->pos()) ) {
+        m_cursorin = FALSE;
+        setON (FALSE);
+    }
 }
