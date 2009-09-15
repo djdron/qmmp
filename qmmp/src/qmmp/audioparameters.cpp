@@ -35,7 +35,7 @@ bool AudioParameters::operator==(const AudioParameters &p) const
 
 bool AudioParameters::operator!=(const AudioParameters &p) const
 {
-    return !operator!=(p);
+    return !operator==(p);
 }
 
 quint32 AudioParameters::sampleRate() const

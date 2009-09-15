@@ -24,7 +24,8 @@ HEADERS += recycler.h \
     tagmodel.h \
     abstractengine.h \
     qmmpaudioengine.h \
-    audioparameters.h
+    audioparameters.h \
+    inputsource.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -44,7 +45,8 @@ SOURCES += recycler.cpp \
     tagmodel.cpp \
     abstractengine.cpp \
     qmmpaudioengine.cpp \
-    audioparameters.cpp
+    audioparameters.cpp \
+    inputsource.cpp
 FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp

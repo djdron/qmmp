@@ -94,7 +94,7 @@ const DecoderProperties DecoderMADFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderMADFactory::create(QIODevice *input, const QString &)
+Decoder *DecoderMADFactory::create(const QString&, QIODevice *input)
 {
     return new DecoderMAD(input);
 }

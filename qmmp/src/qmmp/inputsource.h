@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,35 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERCUEFACTORY_H
-#define DECODERCUEFACTORY_H
+
+#ifndef INPUTSOURCE_H
+#define INPUTSOURCE_H
 
 #include <QObject>
 #include <QString>
+#include <QUrl>
 #include <QIODevice>
-#include <QWidget>
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/fileinfo.h>
-#include <qmmp/metadatamodel.h>
-
-class DecoderCUEFactory : public QObject, DecoderFactory
+class InputSource : public QObject
 {
 Q_OBJECT
-Q_INTERFACES(DecoderFactory);
-
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(const QString &, QIODevice *);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    InputSource(const QString &source, QObject *parent = 0);
+    QIODevice *ioDevice();
+    const QUrl url();
+
+signals:
+    void readyRead();
+
+private:
+    QUrl m_url;
+    QIODevice *m_device;
+    bool m_isValid;
 };
 
-#endif
+#endif // INPUTSOURCE_H

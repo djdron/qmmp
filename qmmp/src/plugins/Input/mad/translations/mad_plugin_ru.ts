@@ -44,27 +44,27 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="69"/>
         <source>Format</source>
-        <translation type="unfinished">Формат</translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="71"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Битовая частота</translation>
+        <translation>Битовая частота</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="71"/>
         <source>kbps</source>
-        <translation type="unfinished">Кб/с</translation>
+        <translation>Кб/с</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="73"/>
         <source>Samplerate</source>
-        <translation type="unfinished">Дискретизация</translation>
+        <translation>Дискретизация</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="73"/>
         <source>Hz</source>
-        <translation type="unfinished">Гц</translation>
+        <translation>Гц</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="77"/>
@@ -72,49 +72,49 @@
         <location filename="../mpegmetadatamodel.cpp" line="83"/>
         <location filename="../mpegmetadatamodel.cpp" line="86"/>
         <source>Mode</source>
-        <translation type="unfinished">Режим</translation>
+        <translation>Режим</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="89"/>
         <source>KB</source>
-        <translation type="unfinished">Кб</translation>
+        <translation>Кб</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>File size</source>
-        <translation type="unfinished">Размер файла</translation>
+        <translation>Размер файла</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="92"/>
         <location filename="../mpegmetadatamodel.cpp" line="94"/>
         <source>Protection</source>
-        <translation type="unfinished">Защита</translation>
+        <translation>Защита</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="92"/>
         <location filename="../mpegmetadatamodel.cpp" line="96"/>
         <location filename="../mpegmetadatamodel.cpp" line="100"/>
         <source>Yes</source>
-        <translation type="unfinished">Есть</translation>
+        <translation>Да</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="94"/>
         <location filename="../mpegmetadatamodel.cpp" line="98"/>
         <location filename="../mpegmetadatamodel.cpp" line="102"/>
         <source>No</source>
-        <translation type="unfinished">Нет</translation>
+        <translation>Нет</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="96"/>
         <location filename="../mpegmetadatamodel.cpp" line="98"/>
         <source>Copyright</source>
-        <translation type="unfinished">Авторские права</translation>
+        <translation>Авторские права</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="100"/>
         <location filename="../mpegmetadatamodel.cpp" line="102"/>
         <source>Original</source>
-        <translation type="unfinished">Оригинальный</translation>
+        <translation>Оригинальный</translation>
     </message>
 </context>
 <context>

@@ -33,7 +33,6 @@ Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
 
 void Output::configure(quint32 freq, int chan, int prec)
 {
-    qDebug("%u -- %d -- %d", freq, chan, prec);
     m_frequency = freq;
     m_channels = chan;
     m_precision = prec;
@@ -164,7 +163,7 @@ void Output::run()
     {
         mutex()->lock ();
         recycler()->mutex()->lock ();
-        done = m_userStop;
+        done = m_userStop || (m_finish && recycler()->empty());
 
         while (!done && (recycler()->empty() || m_pause))
         {
@@ -172,7 +171,7 @@ void Output::run()
             recycler()->cond()->wakeOne();
             recycler()->cond()->wait(recycler()->mutex());
             mutex()->lock ();
-            done = m_userStop;
+            done = m_userStop || m_finish;
         }
         status();
         if (!b)
@@ -181,6 +180,7 @@ void Output::run()
             if (b && b->rate)
                 m_kbps = b->rate;
         }
+
         recycler()->cond()->wakeOne();
         recycler()->mutex()->unlock();
         mutex()->unlock();

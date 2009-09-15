@@ -29,11 +29,10 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
-
-private:
     qint64 read(char *data, qint64 size);
     void seek(qint64);
 
+private:
     // helper functions
     qint64 madOutput(char *data, qint64 size);    
     bool fillBuffer();

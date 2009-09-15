@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,35 +17,56 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERCUEFACTORY_H
-#define DECODERCUEFACTORY_H
 
-#include <QObject>
-#include <QString>
-#include <QIODevice>
-#include <QWidget>
+#include <QFile>
+#include "streamreader.h"
+#include "inputsource.h"
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/fileinfo.h>
-#include <qmmp/metadatamodel.h>
-
-class DecoderCUEFactory : public QObject, DecoderFactory
+InputSource::InputSource(const QString &source, QObject *parent) : QObject(parent)
 {
-Q_OBJECT
-Q_INTERFACES(DecoderFactory);
+    m_device = 0;
+    m_isValid = FALSE;
+    m_url = source;
+    QUrl url;
+    if (source.contains("://")) //url
+        url = source;
+    else if (QFile::exists(source))
+    {
+        url = QUrl::fromLocalFile(source);
+    }
+    else
+    {
+        qDebug("InputSource: file doesn't exist");
+        return;
+    }
+    m_url = url;
+    if (url.scheme() == "file")
+    {
+        m_device = new QFile(source, this);
+        /*if (!m_device->open(QIODevice::ReadOnly))
+        {
+            qDebug("InputSource: cannot open input");
+            return FALSE;
+        }*/
+    }
+    if (url.scheme() == "http")
+    {
+        m_device = new StreamReader(source, this);
+        //connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
+        connect(m_device, SIGNAL(readyRead()),SIGNAL(readyRead()));
+        qobject_cast<StreamReader *>(m_device)->downloadFile();
+        return;
+    }
+    m_isValid = FALSE;
+}
 
-public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(const QString &, QIODevice *);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
-};
+const QUrl InputSource::url()
+{
+    return m_url;
+}
 
-#endif
+QIODevice *InputSource::ioDevice()
+{
+    return m_device;
+}
+
