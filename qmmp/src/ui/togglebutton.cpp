@@ -23,7 +23,7 @@
 
 #include "skin.h"
 #include "togglebutton.h"
-
+#include <QMouseEvent>
 
 ToggleButton::ToggleButton ( QWidget *parent,uint on_n,uint on_p,uint off_n,uint off_p )
       : PixmapWidget ( parent )
@@ -70,6 +70,8 @@ void ToggleButton::setON ( bool on )
 }
 void ToggleButton::mousePressEvent ( QMouseEvent* )
 {
+   m_cursorin = TRUE;
+   m_old_on = m_on;
    if ( m_on )
       setPixmap ( skin->getButton ( m_off_p ) );
    else
@@ -78,7 +80,29 @@ void ToggleButton::mousePressEvent ( QMouseEvent* )
 
 void ToggleButton::mouseReleaseEvent ( QMouseEvent* )
 {
-   m_on = !m_on;
-   setON ( m_on );
-   emit clicked( m_on );
+   if ( m_cursorin ) {
+       m_on = !m_old_on;
+       setON ( m_on );
+       emit clicked( m_on );
+   } else {
+       m_on = m_old_on;
+       setON ( m_on );
+   }
+}
+
+void ToggleButton::mouseMoveEvent (QMouseEvent *e)
+{
+    if ( !m_cursorin && rect().contains(e->pos()) ) {
+        m_cursorin = TRUE;
+        if ( m_old_on )
+            setPixmap ( skin->getButton ( m_off_p ) );
+        else
+            setPixmap ( skin->getButton ( m_on_p ) );            
+    } else if ( m_cursorin && !rect().contains(e->pos()) ) {
+        m_cursorin = FALSE;
+        if ( m_old_on )
+            setPixmap ( skin->getButton ( m_on_n ) );
+        else
+            setPixmap ( skin->getButton ( m_off_n ) );
+    }
 }
