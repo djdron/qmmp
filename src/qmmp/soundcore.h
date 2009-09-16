@@ -208,10 +208,7 @@ private slots:
 
 private:
     Decoder* m_decoder;
-    DecoderFactory* m_factory;
     QString m_source;
-    Output* m_output;
-    QIODevice* m_input;
     uint m_error;
     bool m_paused;
     bool m_useEQ;

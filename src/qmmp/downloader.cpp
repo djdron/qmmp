@@ -339,7 +339,7 @@ void Downloader::readICYMetaData()
 }
 
 void Downloader::parseICYMetaData(char *data)
-{
+{    
     QString str(data);
     QStringList list(str.split(";", QString::SkipEmptyParts));
     foreach(QString line, list)

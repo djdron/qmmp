@@ -37,24 +37,27 @@ DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     setAttribute(Qt::WA_DeleteOnClose, FALSE);
     m_metaDataModel = 0;
+    m_item = item;
     ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     m_path = item->url();
     setWindowTitle (m_path.section('/',-1));
     ui.pathEdit->setText(m_path);
 
-    DecoderFactory *fact = Decoder::findByPath(item->url());
-    if(fact)
-        m_metaDataModel = fact->createMetaDataModel(item->url(), this);
-    else
-        return;
-
-    printInfo();
-
-    foreach(TagModel *tagModel, m_metaDataModel->tags())
+    if(QFile::exists(item->url()))
     {
-        ui.tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
+        DecoderFactory *fact = Decoder::findByPath(item->url());
+        if(fact)
+            m_metaDataModel = fact->createMetaDataModel(item->url(), this);
+        else
+            return;
+
+        foreach(TagModel *tagModel, m_metaDataModel->tags())
+        {
+            ui.tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
+        }
     }
+    printInfo();
 }
 
 DetailsDialog::~DetailsDialog()
@@ -64,10 +67,10 @@ void DetailsDialog::printInfo()
 {
     QList <FileInfo *> flist = Decoder::createPlayList(m_path, TRUE);
     QMap <Qmmp::MetaData, QString> metaData;
-    if(!flist.isEmpty())
+    if(!flist.isEmpty() && QFile::exists(m_item->url()))
         metaData = flist.at(0)->metaData();
-    /*else
-        TODO use metadata from playlist item*/
+    else
+        metaData = m_item->metaData();
     QString formattedText;
     formattedText.append("<TABLE>");
     //tags

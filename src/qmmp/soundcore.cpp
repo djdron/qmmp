@@ -42,8 +42,6 @@ SoundCore::SoundCore(QObject *parent)
 {
     m_instance = this;
     m_decoder = 0;
-    m_output = 0;
-    m_input = 0;
     m_paused = FALSE;
     m_useEQ = FALSE;
     m_update = FALSE;
@@ -51,7 +49,6 @@ SoundCore::SoundCore(QObject *parent)
     m_preamp = 0;
     m_vis = 0;
     m_parentWidget = 0;
-    m_factory = 0;
     m_engine = 0;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
@@ -88,21 +85,24 @@ bool SoundCore::play(const QString &source, bool queue)
     else
         return decode();
 
-    if(qobject_cast<StreamReader *>(m_inputSource->ioDevice()))
-        qobject_cast<StreamReader *>(m_inputSource->ioDevice())->downloadFile();
+    StreamReader *reader = qobject_cast<StreamReader *>(m_inputSource->ioDevice());
+    if(reader)
+    {
+        connect(reader, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
+        reader->downloadFile();
+        m_handler->dispatch(Qmmp::Buffering);
+        return TRUE;
+    }
     else
         m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
     return decode();
-    //return TRUE;
 }
 
 void SoundCore::stop()
 {
-    m_factory = 0;
     m_source.clear();
     if(m_engine)
         m_engine->stop();
-    m_input = 0;
     //update VolumeControl
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
@@ -228,6 +228,8 @@ QString SoundCore::metaData(Qmmp::MetaData key)
 bool SoundCore::decode()
 {
     qDebug("ready");
+    if(!m_inputSource->ioDevice()->isOpen())
+        m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
     disconnect(m_inputSource->ioDevice(), SIGNAL(readyRead()), this, SLOT(decode()));
 
     if(!m_engine)
@@ -249,7 +251,6 @@ bool SoundCore::decode()
         delete m_inputSource;
         return FALSE;
     }
-
 
     qDebug ("ok");
 

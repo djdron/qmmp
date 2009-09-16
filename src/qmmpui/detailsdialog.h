@@ -52,6 +52,7 @@ private:
     QString m_path;
     QString formatRow(const QString key, const QString value);
     MetaDataModel *m_metaDataModel;
+    AbstractPlaylistItem *m_item;
 
 };
 
