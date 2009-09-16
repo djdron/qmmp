@@ -358,29 +358,6 @@ void PlayListModel::showDetails()
     {
         if (m_items.at(i)->isSelected())
         {
-            if (!QFile::exists(m_items.at(i)->url()))
-            {
-                PlayListItem *item = m_items.at(i);
-                QString str;
-                str.append(tr("URL:") + " %1\n");
-                str.append(tr("Title:") + " %2\n");
-                str.append(tr("Artist:") + " %3\n");
-                str.append(tr("Album:") + " %4\n");
-                str.append(tr("Genre:") + " %5\n");
-                str.append(tr("Comment:") + " %6\n");
-                str.append(tr("Composer:") + " %7\n");
-                str.append(tr("Disc number:") + " %8");
-                str = str.arg(item->url())
-                      .arg(item->title().isEmpty() ? item->text() : item->title())
-                      .arg(item->artist())
-                      .arg(item->album())
-                      .arg(item->genre())
-                      .arg(item->comment())
-                      .arg(item->composer())
-                      .arg(item->discNumber());
-                QMessageBox::information(0, m_items.at(i)->url(), str);
-                return;
-            }
             QDialog *d = new DetailsDialog(m_items.at(i)); //TODO set parent widget
             TagUpdater *updater = new TagUpdater(d, m_items.at(i));
             m_editing_items.append(m_items.at(i));

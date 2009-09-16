@@ -109,3 +109,8 @@ void AbstractPlaylistItem::setLength(qint64 length)
 {
     m_length = length;
 }
+
+const QMap <Qmmp::MetaData, QString> AbstractPlaylistItem::metaData()
+{
+    return m_metaData;
+}

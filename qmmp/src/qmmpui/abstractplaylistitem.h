@@ -105,6 +105,10 @@ public:
      * Sets length in seconds.
      */
     virtual void setLength(qint64 length);
+    /*!
+     *
+     */
+    const QMap <Qmmp::MetaData, QString> metaData();
 
 private:
     QMap <Qmmp::MetaData, QString> m_metaData;
