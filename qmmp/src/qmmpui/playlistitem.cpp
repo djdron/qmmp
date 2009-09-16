@@ -85,17 +85,21 @@ void PlayListItem::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData
 
 void PlayListItem::updateTags()
 {
-    if (url().startsWith("http://"))
-        return;
     if (m_info)
     {
         delete m_info;
         m_info = 0;
     }
-    m_info = Decoder::createPlayList(url()).at(0);
-    setMetaData(m_info->metaData());
-    setMetaData(Qmmp::URL, m_info->path());
-    readMetadata();
+    QList <FileInfo *> list =  Decoder::createPlayList(url());
+    if(!list.isEmpty())
+    {
+        m_info = list.at(0);
+        setMetaData(m_info->metaData());
+        setMetaData(Qmmp::URL, m_info->path());
+        readMetadata();
+    }
+    while(list.size() > 1)
+        delete list.takeLast();
 }
 
 const QString PlayListItem::text() const
