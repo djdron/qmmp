@@ -228,9 +228,12 @@ QString SoundCore::metaData(Qmmp::MetaData key)
 bool SoundCore::decode()
 {
     qDebug("ready");
-    if(!m_inputSource->ioDevice()->isOpen())
-        m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
-    disconnect(m_inputSource->ioDevice(), SIGNAL(readyRead()), this, SLOT(decode()));
+    if(m_inputSource->ioDevice())
+    {
+        if(!m_inputSource->ioDevice()->isOpen())
+            m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
+        disconnect(m_inputSource->ioDevice(), SIGNAL(readyRead()), this, SLOT(decode()));
+    }
 
     if(!m_engine)
     {
