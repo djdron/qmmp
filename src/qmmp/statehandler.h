@@ -139,8 +139,7 @@ signals:
     */
     void finished();
     /*!
-     * Emitted before the playback ends. Use this signal inside decoder to check next url.
-     * This may be useful for multitrack formats like CDA or cue sheets.
+     *
      */
     void aboutToFinish();
 
@@ -151,9 +150,9 @@ private:
     int m_bitrate, m_precision, m_channels;
     static StateHandler* m_instance;
     QMap <Qmmp::MetaData, QString> m_metaData;
+    QMap <Qmmp::MetaData, QString> m_cachedMetaData;
     Qmmp::State m_state;
     QMutex m_mutex;
-    bool m_sendMeta;
 };
 
 #endif

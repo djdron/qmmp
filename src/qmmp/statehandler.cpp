@@ -39,7 +39,6 @@ StateHandler::StateHandler(QObject *parent)
     m_frequency = 0;
     m_precision = 0;
     m_channels = 0;
-    m_sendMeta = FALSE;
     m_sendAboutToFinish = TRUE;
     m_state = Qmmp::Stopped;
 }
@@ -50,7 +49,6 @@ StateHandler::~StateHandler()
     if (m_instance == this)
         m_instance = 0;
 }
-
 
 void StateHandler::dispatch(qint64 elapsed,
                             int bitrate,
@@ -103,21 +101,22 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
         if (value.isEmpty() || value == "0")
             tmp.remove(tmp.key(value));
     }
-    if(tmp.isEmpty() && SoundCore::instance()->url() == m_metaData.value(Qmmp::URL)) //skip empty tags
+    if(tmp.isEmpty() || tmp.value(Qmmp::URL).isEmpty()) //skip empty tags
     {
+        qWarning("StateHandler: empty metadata");
         m_mutex.unlock();
         return;
     }
-    tmp.insert(Qmmp::URL, SoundCore::instance()->url());
-    if (m_metaData != tmp)
+    if (m_state == Qmmp::Playing && SoundCore::instance()->url() == metaData.value(Qmmp::URL))
     {
-        m_metaData = tmp;
-        if (m_state == Qmmp::Playing) //send metadata in play state only
+        if (m_metaData != tmp)
+        {
+            m_metaData = tmp;
             emit metaDataChanged ();
-        else
-            m_sendMeta = TRUE;
-
+        }
     }
+    else
+        m_cachedMetaData = tmp;
     m_mutex.unlock();
 }
 
@@ -134,7 +133,6 @@ void StateHandler::dispatch(const Qmmp::State &state)
         m_frequency = 0;
         m_precision = 0;
         m_channels = 0;
-        m_sendMeta = FALSE;
         m_sendAboutToFinish = TRUE;
         m_metaData.clear();
     }
@@ -145,12 +143,12 @@ void StateHandler::dispatch(const Qmmp::State &state)
         qDebug("StateHandler: Current state: %s; previous state: %s",
                qPrintable(states.at(state)), qPrintable(states.at(m_state)));
         m_state = state;
-
         emit stateChanged(state);
-        if (m_state == Qmmp::Playing && m_sendMeta)
+        if(m_state == Qmmp::Playing && !m_cachedMetaData.isEmpty())
         {
-            m_sendMeta = FALSE;
-            emit metaDataChanged ();
+            m_mutex.unlock();
+            dispatch(m_cachedMetaData);
+            m_mutex.lock();
         }
     }
     m_mutex.unlock();

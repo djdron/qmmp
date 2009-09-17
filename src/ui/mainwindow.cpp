@@ -268,7 +268,8 @@ void MainWindow::showMetaData()
     qDebug("TRACK = %s", qPrintable(m_core->metaData(Qmmp::TRACK)));
     qDebug("== end of metadata ==");
 
-    if (m_playlist->currentItem() && !m_core->metaData().isEmpty())
+    if (m_playlist->currentItem() &&
+        m_playlist->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
     {
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
         m_playlist->updateList();

@@ -23,7 +23,6 @@
 
 #include <QObject>
 #include <QString>
-#include <QUrl>
 #include <QIODevice>
 
 class InputSource : public QObject
@@ -32,13 +31,13 @@ Q_OBJECT
 public:
     InputSource(const QString &source, QObject *parent = 0);
     QIODevice *ioDevice();
-    const QUrl url();
+    const QString url();
 
 signals:
     void readyRead();
 
 private:
-    QUrl m_url;
+    QString m_url;
     QIODevice *m_device;
     bool m_isValid;
 };

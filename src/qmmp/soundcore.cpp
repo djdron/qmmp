@@ -76,8 +76,6 @@ bool SoundCore::play(const QString &source, bool queue)
     if(!queue)
         stop();
 
-    m_source = source;
-
     m_inputSource = new InputSource(source, this);
 
     if(m_inputSource->ioDevice())
@@ -246,6 +244,7 @@ bool SoundCore::decode()
 
     if(m_engine->enqueue(m_inputSource))
     {
+        m_source = m_inputSource->url();
         m_inputSource->setParent(m_engine);
         m_engine->start();
     }

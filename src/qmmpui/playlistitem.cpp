@@ -91,7 +91,7 @@ void PlayListItem::updateTags()
         m_info = 0;
     }
     QList <FileInfo *> list =  Decoder::createPlayList(url());
-    if(!list.isEmpty())
+    if(!list.isEmpty() && !list.at(0)->path().contains("://"))
     {
         m_info = list.at(0);
         setMetaData(m_info->metaData());
