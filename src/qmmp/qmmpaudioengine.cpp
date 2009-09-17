@@ -450,10 +450,10 @@ void QmmpAudioEngine::sendMetaData()
 {
     if(!m_decoder || m_inputs.isEmpty())
         return;
-    QUrl url = m_inputs.value(m_decoder)->url();
-    if (url.scheme() == "file") //send metadata for local files only
+    QString url = m_inputs.value(m_decoder)->url();
+    if (QFile::exists(url)) //send metadata for local files only
     {
-        QList <FileInfo *> list = Decoder::createPlayList(url.toLocalFile(), TRUE);
+        QList <FileInfo *> list = Decoder::createPlayList(url, TRUE);
         if (!list.isEmpty())
         {
             StateHandler::instance()->dispatch(list[0]->metaData());
