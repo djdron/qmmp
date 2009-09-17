@@ -63,7 +63,6 @@ public:
 
     const AudioParameters audioParameters();
     QIODevice *input();
-
     /*!
      * Returns \b true if \b file is supported by input plugins, otherwise returns \b false
      */

@@ -352,6 +352,7 @@ void Downloader::parseICYMetaData(char *data)
             {
                 QMap<Qmmp::MetaData, QString> metaData;
                 metaData.insert(Qmmp::TITLE, m_title);
+                metaData.insert(Qmmp::URL, m_url);
                 StateHandler::instance()->dispatch(metaData);
             }
             break;

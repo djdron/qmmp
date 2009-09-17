@@ -23,6 +23,7 @@ FileInfo::FileInfo(const QString &path)
 {
     m_path = path;
     m_length = 0;
+    m_metaData.insert(Qmmp::URL, path);
 }
 
 FileInfo::FileInfo(const FileInfo &other)
@@ -100,4 +101,5 @@ void FileInfo::setMetaData(Qmmp::MetaData key, int value)
 void FileInfo::setPath(const QString &path)
 {
     m_path = path;
+    m_metaData.insert(Qmmp::URL, path);
 }

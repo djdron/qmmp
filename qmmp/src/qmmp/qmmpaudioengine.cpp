@@ -78,8 +78,8 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
 {
     DecoderFactory *factory = Decoder::findByURL(source->url());
 
-    if(!factory && source->url().scheme() == "file")
-        factory = Decoder::findByPath(source->url().toLocalFile());
+    if(!factory && !source->url().contains("://"))
+        factory = Decoder::findByPath(source->url());
     if(!factory && source->ioDevice())
         factory = Decoder::findByContent(source->ioDevice());
     if(!factory)
@@ -89,11 +89,7 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     }
     if(factory->properties().noInput && source->ioDevice())
         source->ioDevice()->close();
-    Decoder *decoder = 0;
-    if(source->url().scheme() == "file")
-        decoder = factory->create(source->url().toLocalFile(), source->ioDevice());
-    else
-        decoder = factory->create(source->url().toString(), source->ioDevice());
+    Decoder *decoder = factory->create(source->url(), source->ioDevice());
     if(!decoder->initialize())
     {
         qWarning("QmmpAudioEngine: invalid file format");

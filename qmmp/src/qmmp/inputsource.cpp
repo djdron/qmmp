@@ -27,29 +27,21 @@ InputSource::InputSource(const QString &source, QObject *parent) : QObject(paren
     m_device = 0;
     m_isValid = FALSE;
     m_url = source;
-    QUrl url;
     if (source.contains("://")) //url
-        url = source;
-    else if (QFile::exists(source))
     {
-        url = QUrl::fromLocalFile(source);
+        ;
     }
-    else
+    else if (!QFile::exists(source))
     {
         qDebug("InputSource: file doesn't exist");
         return;
     }
-    m_url = url;
-    if (url.scheme() == "file")
+    else
     {
         m_device = new QFile(source, this);
-        /*if (!m_device->open(QIODevice::ReadOnly))
-        {
-            qDebug("InputSource: cannot open input");
-            return FALSE;
-        }*/
+        return;
     }
-    if (url.scheme() == "http")
+    if (m_url.section("://",0,0) == "http")
     {
         m_device = new StreamReader(source, this);
         //connect(m_input, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
@@ -60,7 +52,7 @@ InputSource::InputSource(const QString &source, QObject *parent) : QObject(paren
     m_isValid = FALSE;
 }
 
-const QUrl InputSource::url()
+const QString InputSource::url()
 {
     return m_url;
 }
