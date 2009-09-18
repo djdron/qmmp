@@ -57,8 +57,12 @@ protected:
     void showEvent (QShowEvent *);
     void paintEvent (QPaintEvent *);
     void mousePressEvent (QMouseEvent *);
+    void mouseReleaseEvent (QMouseEvent *);
+    void mouseMoveEvent (QMouseEvent *);
 
 private:
+    bool m_pressing;
+    int press_pos;
     bool m_update;
     static TextScroller *pointer;
     QPixmap m_pixmap;
