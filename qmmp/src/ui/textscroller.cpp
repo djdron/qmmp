@@ -181,7 +181,34 @@ void TextScroller::mousePressEvent (QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
-    else
+    else if (e->button() == Qt::LeftButton && m_autoscroll) {
+        m_timer->stop();
+        press_pos = e->x() - (x + 154);
+        m_pressing = TRUE;
+    } else
         QWidget::mousePressEvent(e);
 }
 
+void TextScroller::mouseReleaseEvent (QMouseEvent *e)
+{
+    if (e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
+    else if (e->button() == Qt::LeftButton && m_autoscroll) {
+        m_timer->start();
+        m_pressing = FALSE;
+    } else
+        QWidget::mouseReleaseEvent(e);
+}
+
+void TextScroller::mouseMoveEvent (QMouseEvent *e)
+{
+    if (m_pressing) {
+        int bound = m_metrics->width (m_scrollText) + 15 - 1;
+        x = (e->x() - press_pos) % bound;
+        if (x < 0)
+        	x += bound;
+        x = x - bound - 154;
+        update();
+    } else
+        QWidget::mouseMoveEvent(e);
+}
