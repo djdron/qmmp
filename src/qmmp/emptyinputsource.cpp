@@ -18,42 +18,27 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef INPUTSOURCE_H
-#define INPUTSOURCE_H
+#include "emptyinputsource.h"
 
-#include <QObject>
-#include <QString>
-#include <QStringList>
-#include <QIODevice>
-#include "inputsourcefactory.h"
-
-/*!
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class InputSource : public QObject
+EmptyInputSource::EmptyInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
-Q_OBJECT
-public:
-    InputSource(const QString &url, QObject *parent = 0);
-    virtual QIODevice *ioDevice() = 0;
-    virtual bool initialize() = 0;
-    virtual bool isReady() = 0;
-    const QString url();
+    m_ok = FALSE;
+}
 
-    static InputSource *create(const QString &url, QObject *parent = 0);
-    /*!
-     * Returns a list of transport factories.
-     */
-    static QList<InputSourceFactory *> *factories();
+QIODevice *EmptyInputSource::ioDevice()
+{
+    return 0;
+}
 
-signals:
-    void ready(InputSource *);
+bool EmptyInputSource::initialize()
+{
+    m_ok = TRUE; //check decoders
+    if(m_ok)
+        emit ready(this);
+    return m_ok;
+}
 
-private:
-    QString m_url;
-    static void checkFactories();
-    static QList<InputSourceFactory*> *m_factories;
-    static QStringList m_files;
-};
-
-#endif // INPUTSOURCE_H
+bool EmptyInputSource::isReady()
+{
+    return m_ok;
+}

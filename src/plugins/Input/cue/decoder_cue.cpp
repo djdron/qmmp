@@ -88,6 +88,8 @@ bool DecoderCUE::initialize()
                       audioParameters().channels() *
                       audioParameters().bits() * m_length/8000;
     m_totalBytes = 0;
+
+    StateHandler::instance()->dispatch(parser.info(track)->metaData());
     return TRUE;
 }
 

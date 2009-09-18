@@ -18,42 +18,28 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef INPUTSOURCE_H
-#define INPUTSOURCE_H
+#ifndef FILEINPUTSOURCE_H
+#define FILEINPUTSOURCE_H
 
-#include <QObject>
-#include <QString>
-#include <QStringList>
-#include <QIODevice>
-#include "inputsourcefactory.h"
+#include "inputsource.h"
 
-/*!
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class InputSource : public QObject
+class QFile;
+
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class FileInputSource : public InputSource
 {
 Q_OBJECT
 public:
-    InputSource(const QString &url, QObject *parent = 0);
-    virtual QIODevice *ioDevice() = 0;
-    virtual bool initialize() = 0;
-    virtual bool isReady() = 0;
-    const QString url();
+    FileInputSource(const QString &url, QObject *parent = 0);
 
-    static InputSource *create(const QString &url, QObject *parent = 0);
-    /*!
-     * Returns a list of transport factories.
-     */
-    static QList<InputSourceFactory *> *factories();
-
-signals:
-    void ready(InputSource *);
+    QIODevice *ioDevice();
+    bool initialize();
+    bool isReady();
 
 private:
-    QString m_url;
-    static void checkFactories();
-    static QList<InputSourceFactory*> *m_factories;
-    static QStringList m_files;
+    QFile *m_file;
 };
 
-#endif // INPUTSOURCE_H
+#endif // FILEINPUTSOURCE_H

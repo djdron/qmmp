@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,9 +25,8 @@
 #include <QMap>
 #include <stdint.h>
 #include <stdlib.h>
-
-#include "qmmp.h"
-#include "statehandler.h"
+#include <qmmp/qmmp.h>
+#include <qmmp/statehandler.h>
 #include "downloader.h"
 
 //curl callbacks
@@ -254,7 +253,8 @@ void Downloader::run()
     curl_easy_setopt(m_handle, CURLOPT_FAILONERROR, 1);
     curl_easy_setopt(m_handle, CURLOPT_MAXREDIRS, 15);
     // user agent
-    curl_easy_setopt(m_handle, CURLOPT_USERAGENT, "qmmp/"QMMP_STR_VERSION);
+    QString user_agent = QString("qmmp/%1").arg(Qmmp::strVersion());
+    curl_easy_setopt(m_handle, CURLOPT_USERAGENT, qPrintable(user_agent));
     curl_easy_setopt(m_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
 
     struct curl_slist *http200_aliases = curl_slist_append(NULL, "ICY");

@@ -26,7 +26,6 @@
 
 #include "qmmpaudioengine.h"
 #include "decoderfactory.h"
-#include "streamreader.h"
 #include "effect.h"
 #include "statehandler.h"
 #include "inputsource.h"
@@ -76,24 +75,17 @@ bool SoundCore::play(const QString &source, bool queue)
     if(!queue)
         stop();
 
-    m_inputSource = new InputSource(source, this);
-
-    if(m_inputSource->ioDevice())
-        connect(m_inputSource->ioDevice(), SIGNAL(readyRead()), SLOT(decode()));
-    else
-        return decode();
-
-    StreamReader *reader = qobject_cast<StreamReader *>(m_inputSource->ioDevice());
-    if(reader)
+    InputSource *s = InputSource::create(source, this);
+    m_pendingSources.append(s);
+    connect(s, SIGNAL(ready(InputSource *)), SLOT(enqueue(InputSource *)));
+    bool ok = s->initialize();
+    if(!ok)
     {
-        connect(reader, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
-        reader->downloadFile();
-        m_handler->dispatch(Qmmp::Buffering);
-        return TRUE;
+        m_pendingSources.removeAll(s);
+        s->deleteLater();
+        m_handler->dispatch(Qmmp::NormalError);
     }
-    else
-        m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
-    return decode();
+    return ok;
 }
 
 void SoundCore::stop()
@@ -176,6 +168,8 @@ void SoundCore::setSoftwareVolume(bool b)
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
     if (m_engine)
         m_engine->mutex()->unlock();
+    qDeleteAll(m_pendingSources);
+    m_pendingSources.clear();
 }
 
 bool SoundCore::softwareVolume()
@@ -223,16 +217,9 @@ QString SoundCore::metaData(Qmmp::MetaData key)
     return m_handler->metaData(key);
 }
 
-bool SoundCore::decode()
+bool SoundCore::enqueue(InputSource *s)
 {
-    qDebug("ready");
-    if(m_inputSource->ioDevice())
-    {
-        if(!m_inputSource->ioDevice()->isOpen())
-            m_inputSource->ioDevice()->open(QIODevice::ReadOnly);
-        disconnect(m_inputSource->ioDevice(), SIGNAL(readyRead()), this, SLOT(decode()));
-    }
-
+    m_pendingSources.removeAll(s);
     if(!m_engine)
     {
         m_engine = new QmmpAudioEngine(this);
@@ -242,19 +229,17 @@ bool SoundCore::decode()
     setEQ(m_bands, m_preamp);
     setEQEnabled(m_useEQ);
 
-    if(m_engine->enqueue(m_inputSource))
+    if(m_engine->enqueue(s))
     {
-        m_source = m_inputSource->url();
-        m_inputSource->setParent(m_engine);
+        m_source = s->url();
+        s->setParent(m_engine);
         m_engine->start();
     }
     else
     {
-        delete m_inputSource;
+        s->deleteLater();
         return FALSE;
     }
-
-    qDebug ("ok");
 
     return TRUE;
 }

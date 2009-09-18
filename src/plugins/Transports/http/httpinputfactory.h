@@ -18,42 +18,22 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef INPUTSOURCE_H
-#define INPUTSOURCE_H
+#ifndef HTTPINPUTFACTORY_H
+#define HTTPINPUTFACTORY_H
 
 #include <QObject>
-#include <QString>
-#include <QStringList>
-#include <QIODevice>
-#include "inputsourcefactory.h"
+#include <qmmp/inputsourcefactory.h>
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class InputSource : public QObject
+class HTTPInputFactory : public QObject, InputSourceFactory
 {
 Q_OBJECT
+Q_INTERFACES(InputSourceFactory);
 public:
-    InputSource(const QString &url, QObject *parent = 0);
-    virtual QIODevice *ioDevice() = 0;
-    virtual bool initialize() = 0;
-    virtual bool isReady() = 0;
-    const QString url();
-
-    static InputSource *create(const QString &url, QObject *parent = 0);
-    /*!
-     * Returns a list of transport factories.
-     */
-    static QList<InputSourceFactory *> *factories();
-
-signals:
-    void ready(InputSource *);
-
-private:
-    QString m_url;
-    static void checkFactories();
-    static QList<InputSourceFactory*> *m_factories;
-    static QStringList m_files;
+    const InputSourceProperties properties() const;
+    InputSource *create(const QString &url, QObject *parent = 0);
 };
 
-#endif // INPUTSOURCE_H
+#endif // HTTPINPUTFACTORY_H

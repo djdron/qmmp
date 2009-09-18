@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,67 +17,44 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef EFFECTFACTORY_H
-#define EFFECTFACTORY_H
+
+#ifndef INPUTSOURCEFACTORY_H
+#define INPUTSOURCEFACTORY_H
 
 #include <QObject>
 
-class QObject;
-class QWidget;
-class QTranslator;
-class Effect;
+class InputSource;
 
-/*! @brief Helper class to store effect plugin properies.
+/*! @brief Helper class to store transport plugin properies.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class EffectProperties
+class InputSourceProperties
+{
+public:
+    QString protocols; /*!< Supported protocols. */
+    QString shortName; /*!< Transport plugin name for internal usage */
+};
+
+
+/*! @brief Transport plugin interface.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class InputSourceFactory
 {
 public:
     /*!
-     * Constructor
+     * Returns transport plugin properties.
      */
-    EffectProperties()
-    {
-        hasAbout = FALSE;
-        hasSettings = FALSE;
-    }
-    QString name;      /*!< Effect plugin full name */
-    QString shortName; /*!< Effect plugin short name for internal usage */
-    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
-    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
-};
-/*! @brief Effect plugin interface (effect factory).
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class EffectFactory
-{
-public:
+    virtual const InputSourceProperties properties() const = 0;
     /*!
-     * Returns effect plugin properties.
-     */
-    virtual const EffectProperties properties() const = 0;
-    /*!
-     * Creates effect provided by plugin.
+     * Creates transport provided by plugin.
+     * @param url URL of the stream.
      * @param parent Parent object.
      */
-    virtual Effect *create(QObject *parent) = 0;
-    /*!
-     * Shows settings dialog.
-     * @param parent Parent widget.
-     */
-    virtual void showSettings(QWidget *parent) = 0;
-    /*!
-     * Shows about dialog.
-     * @param parent Parent widget.
-     */
-    virtual void showAbout(QWidget *parent) = 0;
-    /*!
-     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
-     * @param parent Parent object.
-     */
-    virtual QTranslator *createTranslator(QObject *parent) = 0;
+    virtual InputSource *create(const QString &url, QObject *parent = 0) = 0;
 };
 
-Q_DECLARE_INTERFACE(EffectFactory, "EffectFactory/1.0");
+Q_DECLARE_INTERFACE(InputSourceFactory, "InputSourceFactory/1.0");
 
-#endif
+#endif // INPUTSOURCEFACTORY_H
+

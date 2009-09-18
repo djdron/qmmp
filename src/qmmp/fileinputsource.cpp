@@ -18,42 +18,30 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef INPUTSOURCE_H
-#define INPUTSOURCE_H
+#include <QFile>
+#include "fileinputsource.h"
 
-#include <QObject>
-#include <QString>
-#include <QStringList>
-#include <QIODevice>
-#include "inputsourcefactory.h"
-
-/*!
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class InputSource : public QObject
+FileInputSource::FileInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
-Q_OBJECT
-public:
-    InputSource(const QString &url, QObject *parent = 0);
-    virtual QIODevice *ioDevice() = 0;
-    virtual bool initialize() = 0;
-    virtual bool isReady() = 0;
-    const QString url();
+    m_file = new QFile(url, this);
+}
 
-    static InputSource *create(const QString &url, QObject *parent = 0);
-    /*!
-     * Returns a list of transport factories.
-     */
-    static QList<InputSourceFactory *> *factories();
+QIODevice *FileInputSource::ioDevice()
+{
+    return m_file;
+}
 
-signals:
-    void ready(InputSource *);
+bool FileInputSource::initialize()
+{
+    bool ok = m_file->open(QIODevice::ReadOnly);
+    if(ok)
+        emit ready(this);
+    else
+        qWarning("FileInputSource: error: %s", qPrintable(m_file->errorString()));
+    return ok;
+}
 
-private:
-    QString m_url;
-    static void checkFactories();
-    static QList<InputSourceFactory*> *m_factories;
-    static QStringList m_files;
-};
-
-#endif // INPUTSOURCE_H
+bool FileInputSource::isReady()
+{
+    return m_file->isOpen();
+}
