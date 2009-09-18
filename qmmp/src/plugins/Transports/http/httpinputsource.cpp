@@ -18,42 +18,34 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef INPUTSOURCE_H
-#define INPUTSOURCE_H
+#include "streamreader.h"
+#include "httpinputsource.h"
 
-#include <QObject>
-#include <QString>
-#include <QStringList>
-#include <QIODevice>
-#include "inputsourcefactory.h"
-
-/*!
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class InputSource : public QObject
+HTTPInputSource::HTTPInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
-Q_OBJECT
-public:
-    InputSource(const QString &url, QObject *parent = 0);
-    virtual QIODevice *ioDevice() = 0;
-    virtual bool initialize() = 0;
-    virtual bool isReady() = 0;
-    const QString url();
+    m_reader = new StreamReader(url, this);
+    connect(m_reader, SIGNAL(readyRead()),SLOT(open()));
+}
 
-    static InputSource *create(const QString &url, QObject *parent = 0);
-    /*!
-     * Returns a list of transport factories.
-     */
-    static QList<InputSourceFactory *> *factories();
+QIODevice *HTTPInputSource::ioDevice()
+{
+    return m_reader;
+}
 
-signals:
-    void ready(InputSource *);
+bool HTTPInputSource::initialize()
+{
+    m_reader->downloadFile();
+    return TRUE;
+}
 
-private:
-    QString m_url;
-    static void checkFactories();
-    static QList<InputSourceFactory*> *m_factories;
-    static QStringList m_files;
-};
+bool HTTPInputSource::isReady()
+{
+    return m_reader->isOpen();
+}
 
-#endif // INPUTSOURCE_H
+void HTTPInputSource::open()
+{
+    qDebug("open");
+    m_reader->open(QIODevice::ReadOnly);
+    emit(ready(this));
+}

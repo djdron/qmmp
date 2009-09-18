@@ -204,7 +204,7 @@ signals:
     void aboutToFinish();
 
 private slots:
-    bool decode();
+    bool enqueue(InputSource *);
 
 private:
     Decoder* m_decoder;
@@ -223,7 +223,7 @@ private:
     StateHandler *m_handler;
     VolumeControl *m_volumeControl;
     QmmpAudioEngine *m_engine;
-    InputSource *m_inputSource;
+    QList<InputSource *> m_pendingSources;
 };
 
 #endif

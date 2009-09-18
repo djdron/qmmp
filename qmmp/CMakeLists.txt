@@ -83,6 +83,10 @@ ENDIF(UNIX)
 
 
 MESSAGE("")
+MESSAGE("Transports:")
+PRINT_SUMMARY ("HTTP support ......................" USE_CURL CURL_FOUND)
+
+MESSAGE("")
 MESSAGE("Input Plugins:")
 PRINT_SUMMARY ("mp3 support ......................." USE_MAD  MAD_FOUND)
 PRINT_SUMMARY ("FLAC support ......................" USE_FLAC FLAC_FOUND)

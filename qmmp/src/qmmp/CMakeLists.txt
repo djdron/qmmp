@@ -30,12 +30,6 @@ ENDIF(SVN_VERSION)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-#libcurl
-
-pkg_check_modules(CURL REQUIRED libcurl)
-include_directories(${CURL_INCLUDE_DIRS})
-link_directories(${CURL_LIBRARY_DIRS})
-
 SET(libqmmp_SRCS
     visual.cpp
     recycler.cpp
@@ -46,8 +40,6 @@ SET(libqmmp_SRCS
     equ/iir_cfs.c
     equ/iir_fpu.c
     soundcore.cpp
-    streamreader.cpp
-    downloader.cpp
     effect.cpp
     qmmp.cpp
     statehandler.cpp
@@ -58,6 +50,8 @@ SET(libqmmp_SRCS
     abstractengine.cpp
     audioparameters.cpp
     inputsource.cpp
+    fileinputsource.cpp
+    emptyinputsource.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -73,8 +67,6 @@ SET(libqmmp_MOC_HDRS
     equ/iir.h
     decoderfactory.h
     soundcore.h
-    streamreader.h
-    downloader.h
     effectfactory.h
     effect.h
     qmmp.h
@@ -86,6 +78,8 @@ SET(libqmmp_MOC_HDRS
     abstractengine.h
     audioparameters.h
     inputsource.h
+    fileinputsource.h
+    emptyinputsource.h
 )
 
 SET(libqmmp_DEVEL_HDRS
@@ -115,7 +109,7 @@ QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
-target_link_libraries(libqmmp ${QT_LIBRARIES} ${CURL_LDFLAGS} ${CURL_CFLAGS})
+target_link_libraries(libqmmp ${QT_LIBRARIES})
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
 install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}
                         RUNTIME DESTINATION bin

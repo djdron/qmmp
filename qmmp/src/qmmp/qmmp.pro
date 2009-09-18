@@ -10,8 +10,6 @@ HEADERS += recycler.h \
     equ/iir.h \
     decoderfactory.h \
     soundcore.h \
-    streamreader.h \
-    downloader.h \
     visual.h \
     visualfactory.h \
     effect.h \
@@ -25,7 +23,10 @@ HEADERS += recycler.h \
     abstractengine.h \
     qmmpaudioengine.h \
     audioparameters.h \
-    inputsource.h
+    inputsource.h \
+    fileinputsource.h \
+    emptyinputsource.h \
+    inputsourcefactory.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -33,8 +34,6 @@ SOURCES += recycler.cpp \
     equ/iir_cfs.c \
     equ/iir_fpu.c \
     soundcore.cpp \
-    streamreader.cpp \
-    downloader.cpp \
     visual.cpp \
     effect.cpp \
     statehandler.cpp \
@@ -46,7 +45,9 @@ SOURCES += recycler.cpp \
     abstractengine.cpp \
     qmmpaudioengine.cpp \
     audioparameters.cpp \
-    inputsource.cpp
+    inputsource.cpp \
+    fileinputsource.cpp \
+    emptyinputsource.cpp
 FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
@@ -54,12 +55,10 @@ CONFIG += release \
     shared \
     warn_on \
     qt \
-    thread \
-    link_pkgconfig
+    thread
+
 TEMPLATE = lib
 VERSION = $$QMMP_VERSION
-unix:PKGCONFIG += libcurl
-win32:LIBS += -lcurldll
 unix:isEmpty(LIB_DIR):LIB_DIR = /lib
 unix:DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
 DEFINES += QMMP_VERSION=$$QMMP_VERSION
