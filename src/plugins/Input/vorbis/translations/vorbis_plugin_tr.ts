@@ -14,67 +14,67 @@
         <translation>Ogg Vorbis Dosyaları</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="120"/>
+        <location filename="../decodervorbisfactory.cpp" line="119"/>
         <source>About Ogg Vorbis Audio Plugin</source>
         <translation>Ogg Vorbis Ses Eklentisi Hakkında</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="121"/>
+        <location filename="../decodervorbisfactory.cpp" line="120"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
         <translation>Qmmp Ogg Vorbis Ses Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="122"/>
+        <location filename="../decodervorbisfactory.cpp" line="121"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodervorbisfactory.cpp" line="123"/>
+        <location filename="../decodervorbisfactory.cpp" line="122"/>
         <source>Source code based on mq3 progect</source>
         <translation>Kaynak kodu mq3 projesi temellidir</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>VorbisMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../vorbismetadatamodel.cpp" line="49"/>
         <source>Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
-        <source>Hz</source>
-        <translation>Hz</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
+        <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Sample rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
+        <location filename="../vorbismetadatamodel.cpp" line="50"/>
+        <source>Hz</source>
+        <translation type="unfinished">Hz</translation>
+    </message>
+    <message>
+        <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="61"/>
-        <source>kbps</source>
-        <translation>kbps</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="61"/>
+        <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="62"/>
-        <source>KB</source>
-        <translation>KB</translation>
+        <location filename="../vorbismetadatamodel.cpp" line="52"/>
+        <source>kbps</source>
+        <translation type="unfinished">kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="62"/>
+        <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>File size</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../vorbismetadatamodel.cpp" line="53"/>
+        <source>KB</source>
+        <translation type="unfinished">KB</translation>
     </message>
 </context>
 </TS>

@@ -15,7 +15,7 @@
 class DecoderVorbis : public Decoder
 {
 public:
-    DecoderVorbis(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderVorbis(QIODevice *);
     virtual ~DecoderVorbis();
 
     // Standard Decoder API
@@ -24,8 +24,8 @@ public:
     int bitrate();
 
 private:
-    virtual qint64 readAudio(char *data, qint64 maxSize);
-    void seekAudio(qint64 time);
+    virtual qint64 read(char *data, qint64 maxSize);
+    virtual void seek(qint64 time);
 
     // helper functions
     void deinit();

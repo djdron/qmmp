@@ -115,28 +115,28 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../tageditor.ui" line="169"/>
-        <location filename="../tageditor.ui" line="201"/>
-        <location filename="../tageditor.ui" line="239"/>
+        <location filename="../tageditor.ui" line="224"/>
+        <location filename="../tageditor.ui" line="240"/>
         <source>?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="182"/>
+        <location filename="../tageditor.ui" line="275"/>
         <source>Track:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="220"/>
+        <location filename="../tageditor.ui" line="259"/>
         <source>Year:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="252"/>
+        <location filename="../tageditor.ui" line="182"/>
         <source>Comment:</source>
         <translation type="unfinished">备注：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="274"/>
+        <location filename="../tageditor.ui" line="204"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }

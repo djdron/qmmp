@@ -71,6 +71,7 @@ void TagEditor::readTag()
 {
     m_ui->tagWidget->setEnabled(m_tagModel->exists());
     m_ui->useCheckBox->setChecked(m_tagModel->exists());
+    m_ui->useCheckBox->setVisible(m_tagModel->caps() & TagModel::CreateRemove);
     m_ui->titleLineEdit->setText(m_tagModel->value(Qmmp::TITLE));
     m_ui->artistLineEdit->setText(m_tagModel->value(Qmmp::ARTIST));
     m_ui->albumLineEdit->setText(m_tagModel->value(Qmmp::ALBUM));

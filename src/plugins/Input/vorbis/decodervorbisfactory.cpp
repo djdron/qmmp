@@ -22,8 +22,8 @@
 #include <taglib/fileref.h>
 #include <taglib/vorbisfile.h>
 
-#include "detailsdialog.h"
 #include "decoder_vorbis.h"
+#include "vorbismetadatamodel.h"
 #include "decodervorbisfactory.h"
 
 
@@ -54,13 +54,19 @@ const DecoderProperties DecoderVorbisFactory::properties() const
     properties.contentType = "application/ogg;audio/x-vorbis+ogg";
     properties.hasAbout = TRUE;
     properties.hasSettings = FALSE;
+    properties.noInput = FALSE;
     return properties;
 }
 
-Decoder *DecoderVorbisFactory::create(QObject *parent, QIODevice *input,
-                                      Output *output, const QString&)
+Decoder *DecoderVorbisFactory::create(const QString &path, QIODevice *input)
 {
-    return new DecoderVorbis(parent, this, input, output);
+    Q_UNUSED(path);
+    return new DecoderVorbis(input);
+}
+
+MetaDataModel* DecoderVorbisFactory::createMetaDataModel(const QString &path, QObject *parent)
+{
+    return new VorbisMetaDataModel(path, parent);
 }
 
 QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -103,13 +109,6 @@ QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, 
     QList <FileInfo*> list;
     list << info;
     return list;
-}
-
-QObject* DecoderVorbisFactory::showDetails(QWidget *parent, const QString &path)
-{
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
 }
 
 void DecoderVorbisFactory::showSettings(QWidget *)

@@ -34,13 +34,13 @@ link_directories(${VORBIS_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
 SET(libvorbis_SRCS
   decoder_vorbis.cpp
   decodervorbisfactory.cpp
-  detailsdialog.cpp
+  vorbismetadatamodel.cpp
 )
 
 SET(libvorbis_MOC_HDRS
   decodervorbisfactory.h
   decoder_vorbis.h
-  detailsdialog.h
+  vorbismetadatamodel.h
 )
 
 SET(libvorbis_RCCS translations/translations.qrc)

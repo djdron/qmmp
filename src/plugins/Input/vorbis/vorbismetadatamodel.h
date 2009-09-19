@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,28 +17,45 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <qmmp/abstractdetailsdialog.h>
+#ifndef MPEGMETADATAMODEL_H
+#define MPEGMETADATAMODEL_H
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public AbstractDetailsDialog
+#include <taglib/vorbisfile.h>
+#include <taglib/xiphcomment.h>
+#include <qmmp/metadatamodel.h>
+
+class VorbisMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    VorbisMetaDataModel(const QString &path, QObject *parent);
+    ~VorbisMetaDataModel();
+    QHash<QString, QString> audioProperties();
+    QList<TagModel* > tags();
 
-    ~DetailsDialog();
-
-private:    
-    void loadVorbisInfo();
-    void loadTags();
-    void writeTags();
+private:
     QString m_path;
-
+    QList<TagModel* > m_tags;
 };
 
-#endif
+class VorbisCommentModel : public TagModel
+{
+public:
+    VorbisCommentModel(const QString &path);
+    ~VorbisCommentModel();
+    const QString name();
+    //QList<Qmmp::MetaData> keys();
+    const QString value(Qmmp::MetaData key);
+    void setValue(Qmmp::MetaData key, const QString &value);
+    bool exists();
+    void create();
+    void remove();
+    void save();
+
+private:
+    TagLib::Ogg::Vorbis::File *m_file;
+    TagLib::Ogg::XiphComment *m_tag;
+};
+
+#endif // MPEGMETADATAMODEL_H

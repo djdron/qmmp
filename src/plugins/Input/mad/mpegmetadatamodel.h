@@ -28,6 +28,7 @@ class QTextCodec;
 
 class MPEGMetaDataModel : public MetaDataModel
 {
+Q_OBJECT
 public:
     MPEGMetaDataModel(const QString &path, QObject *parent);
     ~MPEGMetaDataModel();
