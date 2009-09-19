@@ -86,4 +86,4 @@ QString M3UPlaylistFormat::name() const
     return "M3UPlaylistFormat";
 }
 
-Q_EXPORT_PLUGIN(M3UPlaylistFormat)
+Q_EXPORT_PLUGIN2(m3uplaylistformat,M3UPlaylistFormat)

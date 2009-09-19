@@ -163,4 +163,4 @@ QString XSPFPlaylistFormat::name() const
     return "XSPFPlaylistFormat";
 }
 
-Q_EXPORT_PLUGIN(XSPFPlaylistFormat)
+Q_EXPORT_PLUGIN2(xspfplaylistformat,XSPFPlaylistFormat)

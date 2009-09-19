@@ -94,4 +94,4 @@ QTranslator *DecoderCUEFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderCUEFactory)
+Q_EXPORT_PLUGIN2(cue,DecoderCUEFactory)

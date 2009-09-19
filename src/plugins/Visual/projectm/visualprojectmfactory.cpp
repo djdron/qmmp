@@ -31,18 +31,18 @@ const VisualProperties VisualProjectMFactory::properties() const
     properties.hasSettings = FALSE;
     properties.hasAbout = TRUE;
     return properties;
-};
+}
 
 Visual *VisualProjectMFactory::create(QWidget *parent)
 {
     return new ProjectMPlugin(parent);
-};
+}
 
 QDialog *VisualProjectMFactory::createConfigDialog(QWidget *parent)
 {
     Q_UNUSED(parent);
     return 0;
-};
+}
 
 void VisualProjectMFactory::showAbout(QWidget *parent)
 {
@@ -51,7 +51,7 @@ void VisualProjectMFactory::showAbout(QWidget *parent)
                         tr("This plugins adds projectM visualization")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Based on llibrojectM-qt library"));
-};
+}
 
 QTranslator *VisualProjectMFactory::createTranslator(QObject *parent)
 {
@@ -59,6 +59,6 @@ QTranslator *VisualProjectMFactory::createTranslator(QObject *parent)
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/projectm_plugin_") + locale);
     return translator;
-};
+}
 
-Q_EXPORT_PLUGIN(VisualProjectMFactory)
+Q_EXPORT_PLUGIN2(projectm,VisualProjectMFactory)

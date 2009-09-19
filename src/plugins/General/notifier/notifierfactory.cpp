@@ -60,4 +60,4 @@ QTranslator *NotifierFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(NotifierFactory)
+Q_EXPORT_PLUGIN2(notifier,NotifierFactory)

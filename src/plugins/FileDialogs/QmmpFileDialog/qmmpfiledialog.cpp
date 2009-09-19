@@ -143,4 +143,4 @@ QTranslator *QmmpFileDialogFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(QmmpFileDialogFactory)
+Q_EXPORT_PLUGIN2(qmmpfiledialog, QmmpFileDialogFactory)

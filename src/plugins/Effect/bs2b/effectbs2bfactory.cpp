@@ -67,4 +67,4 @@ QTranslator *EffectBs2bFactory::createTranslator(QObject *parent)
     return translator;
 };
 
-Q_EXPORT_PLUGIN(EffectBs2bFactory)
+Q_EXPORT_PLUGIN2(bs2b,EffectBs2bFactory)

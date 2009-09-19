@@ -61,4 +61,4 @@ QTranslator *HotkeyFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(HotkeyFactory)
+Q_EXPORT_PLUGIN2(hotkey, HotkeyFactory)

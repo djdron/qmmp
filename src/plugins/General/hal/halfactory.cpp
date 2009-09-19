@@ -62,4 +62,4 @@ QTranslator *HalFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(HalFactory)
+Q_EXPORT_PLUGIN2(hal, HalFactory)

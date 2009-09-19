@@ -51,12 +51,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="14"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="46"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Общая информация</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="55"/>
@@ -78,11 +78,6 @@ p, li { white-space: pre-wrap; }
 </context>
 <context>
     <name>TagEditor</name>
-    <message>
-        <location filename="../tageditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <location filename="../tageditor.ui" line="38"/>
         <source>Title:</source>
@@ -131,6 +126,11 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
+        <location filename="../tageditor.ui" line="14"/>
+        <source>Tag Editor</source>
+        <translation>Редактор тегов</translation>
+    </message>
+    <message>
         <location filename="../tageditor.ui" line="182"/>
         <source>Comment:</source>
         <translation>Комментарий:</translation>
@@ -147,7 +147,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="288"/>
         <source>Include selected tag in file</source>
-        <translation type="unfinished"></translation>
+        <translation>Включить выбранный тег в файл</translation>
     </message>
 </context>
 </TS>
