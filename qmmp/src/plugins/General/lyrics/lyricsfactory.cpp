@@ -61,4 +61,4 @@ QTranslator *LyricsFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(LyricsFactory)
+Q_EXPORT_PLUGIN2(lyrcis, LyricsFactory)

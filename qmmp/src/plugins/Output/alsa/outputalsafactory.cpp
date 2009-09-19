@@ -66,4 +66,4 @@ QTranslator *OutputALSAFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(OutputALSAFactory)
+Q_EXPORT_PLUGIN2(alsa,OutputALSAFactory)

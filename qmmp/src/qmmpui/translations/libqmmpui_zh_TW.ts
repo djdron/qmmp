@@ -79,11 +79,6 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TagEditor</name>
     <message>
-        <location filename="../tageditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../tageditor.ui" line="38"/>
         <source>Title:</source>
         <translation type="unfinished">標題：</translation>
@@ -128,6 +123,11 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="259"/>
         <source>Year:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tageditor.ui" line="14"/>
+        <source>Tag Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

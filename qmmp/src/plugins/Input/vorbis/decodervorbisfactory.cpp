@@ -131,4 +131,4 @@ QTranslator *DecoderVorbisFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderVorbisFactory)
+Q_EXPORT_PLUGIN2(vorbis,DecoderVorbisFactory)

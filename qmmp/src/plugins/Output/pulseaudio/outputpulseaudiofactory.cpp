@@ -64,4 +64,4 @@ QTranslator *OutputPulseAudioFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(OutputPulseAudioFactory)
+Q_EXPORT_PLUGIN2(pulseaudio, OutputPulseAudioFactory)

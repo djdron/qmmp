@@ -67,4 +67,4 @@ QTranslator *OutputOSSFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(OutputOSSFactory)
+Q_EXPORT_PLUGIN2(oss,OutputOSSFactory)

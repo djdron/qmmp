@@ -60,4 +60,4 @@ QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent)
     return translator;
 };
 
-Q_EXPORT_PLUGIN(EffectSRConverterFactory)
+Q_EXPORT_PLUGIN2(srconverter, EffectSRConverterFactory)

@@ -59,4 +59,4 @@ QTranslator *MPRISFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(MPRISFactory)
+Q_EXPORT_PLUGIN2(mpris, MPRISFactory)

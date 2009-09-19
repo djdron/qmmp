@@ -63,4 +63,4 @@ QTranslator *OutputJACKFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(OutputJACKFactory)
+Q_EXPORT_PLUGIN2(jack,OutputJACKFactory)

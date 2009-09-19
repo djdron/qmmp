@@ -60,4 +60,4 @@ QTranslator *ScrobblerFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(ScrobblerFactory)
+Q_EXPORT_PLUGIN2(scrobbler, ScrobblerFactory)

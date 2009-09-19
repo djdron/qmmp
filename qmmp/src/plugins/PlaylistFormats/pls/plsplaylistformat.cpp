@@ -100,4 +100,4 @@ QString PLSPlaylistFormat::encode(const QList<AbstractPlaylistItem *> & contents
     return out.join("\n");
 }
 
-Q_EXPORT_PLUGIN(PLSPlaylistFormat)
+Q_EXPORT_PLUGIN2(plsplaylistformat, PLSPlaylistFormat)

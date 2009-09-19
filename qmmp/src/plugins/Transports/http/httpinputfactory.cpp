@@ -34,5 +34,4 @@ InputSource *HTTPInputFactory::create(const QString &url, QObject *parent)
 {
     return new HTTPInputSource(url, parent);
 }
-//Q_EXPORT_PLUGIN2(http, HTTPInputFactory);
-Q_EXPORT_PLUGIN(HTTPInputFactory);
+Q_EXPORT_PLUGIN2(http, HTTPInputFactory);

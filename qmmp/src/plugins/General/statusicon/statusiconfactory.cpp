@@ -60,4 +60,4 @@ QTranslator *StatusIconFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(StatusIconFactory)
+Q_EXPORT_PLUGIN2(statusicon,StatusIconFactory)

@@ -32,24 +32,24 @@ const VisualProperties VisualAnalyzerFactory::properties() const
     properties.hasSettings = TRUE;
     properties.hasAbout = TRUE;
     return properties;
-};
+}
 
 Visual *VisualAnalyzerFactory::create(QWidget *parent)
 {
     return new Analyzer(parent);
-};
+}
 
 QDialog *VisualAnalyzerFactory::createConfigDialog(QWidget *parent)
 {
     return new SettingsDialog(parent);
-};
+}
 
 void VisualAnalyzerFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Analyzer Visual Plugin"),
                         tr("Qmmp Analyzer Visual Plugin")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-};
+}
 
 QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent)
 {
@@ -57,6 +57,6 @@ QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent)
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/analyzer_plugin_") + locale);
     return translator;
-};
+}
 
-Q_EXPORT_PLUGIN(VisualAnalyzerFactory)
+Q_EXPORT_PLUGIN2(analyzer,VisualAnalyzerFactory)

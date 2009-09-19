@@ -60,4 +60,4 @@ QTranslator *FileOpsFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(FileOpsFactory)
+Q_EXPORT_PLUGIN2(fileops, FileOpsFactory)
