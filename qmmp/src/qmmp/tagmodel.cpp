@@ -20,8 +20,9 @@
 
 #include "tagmodel.h"
 
-TagModel::TagModel()
+TagModel::TagModel(int f)
 {
+    m_f = f;
 }
 
 void TagModel::setValue(Qmmp::MetaData key, int value)
@@ -42,4 +43,9 @@ QList<Qmmp::MetaData> TagModel::keys()
     list << Qmmp::TRACK;
     list << Qmmp::DISCNUMBER;
     return list;
+}
+
+int TagModel::caps()
+{
+    return m_f;
 }

@@ -29,10 +29,11 @@
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/fileinfo.h>
+#include <qmmp/metadatamodel.h>
 
-
-
-
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class DecoderVorbisFactory : public QObject,
                           DecoderFactory
 {
@@ -43,8 +44,8 @@ public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
-    //FileInfo *createFileInfo(const QString &source);
+    Decoder *create(const QString &path, QIODevice *input);
+    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
     QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
     QObject* showDetails(QWidget *parent, const QString &path);
     void showSettings(QWidget *parent);

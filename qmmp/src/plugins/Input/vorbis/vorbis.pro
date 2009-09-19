@@ -2,10 +2,10 @@ include(../../plugins.pri)
 FORMS += 
 HEADERS += decodervorbisfactory.h \
     decoder_vorbis.h \
-    detailsdialog.h
+    vorbismetadatamodel.h
 SOURCES += decoder_vorbis.cpp \
     decodervorbisfactory.cpp \
-    detailsdialog.cpp
+    vorbismetadatamodel.cpp
 TARGET = $$PLUGINS_PREFIX/Input/vorbis
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libvorbis.so
 INCLUDEPATH += ../../../

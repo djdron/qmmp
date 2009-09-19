@@ -3,7 +3,7 @@ INCLUDE(FindPkgConfig)
 
 SET(USE_MAD     TRUE CACHE BOOL "enable/disable mad plugin")
 #SET(USE_FLAC    TRUE CACHE BOOL "enable/disable flac plugin")
-#SET(USE_VORBIS  TRUE CACHE BOOL "enable/disable ogg vorbis plugin")
+SET(USE_VORBIS  TRUE CACHE BOOL "enable/disable ogg vorbis plugin")
 #SET(USE_FFMPEG  TRUE CACHE BOOL "enable/disable ffmpeg plugin")
 #SET(USE_MPC     TRUE CACHE BOOL "enable/disable mpc plugin")
 #SET(USE_SNDFILE TRUE CACHE BOOL "enable/disable sndfile plugin")

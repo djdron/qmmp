@@ -28,7 +28,13 @@
 class TagModel
 {
 public:
-    TagModel();
+    enum Caps
+    {
+        NoOptions = 0x0,
+        CreateRemove = 0x1,
+        Save = 0x2,
+    };
+    TagModel(int f = TagModel::CreateRemove | TagModel::Save);
 
     virtual const QString name() = 0;
     virtual QList<Qmmp::MetaData> keys();
@@ -39,6 +45,10 @@ public:
     virtual void create() = 0;
     virtual void remove() = 0;
     virtual void save() = 0;
+    int caps();
+
+private:
+    int m_f;
 };
 
 #endif // TAGMODEL_H

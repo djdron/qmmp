@@ -58,7 +58,7 @@ static int oggseek(void *src, int64_t offset, int whence)
 static int oggclose(void *src)
 {
     DecoderVorbis *dogg = (DecoderVorbis *) src;
-    dogg->input()->close();
+    //dogg->input()->close();
     return 0;
 }
 
@@ -73,8 +73,8 @@ static long oggtell(void *src)
 
 // Decoder class
 
-DecoderVorbis::DecoderVorbis(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderVorbis::DecoderVorbis(QIODevice *i)
+        : Decoder(i)
 {
     inited = FALSE;
     m_totalTime = 0;
@@ -220,15 +220,15 @@ void DecoderVorbis::updateTags()
                             + strlen ("discnumber="))));
 
     }
-    stateHandler()->dispatch(metaData);
+    StateHandler::instance()->dispatch(metaData);
 }
 
-void DecoderVorbis::seekAudio(qint64 time)
+void DecoderVorbis::seek(qint64 time)
 {
     ov_time_seek(&oggfile, (double) time/1000);
 }
 
-qint64 DecoderVorbis::readAudio(char *data, qint64 maxSize)
+qint64 DecoderVorbis::read(char *data, qint64 maxSize)
 {
     len = -1;
     while (len < 0)
