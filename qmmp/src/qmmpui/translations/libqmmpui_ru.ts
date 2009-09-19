@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>DetailsDialog</name>
     <message>
@@ -113,17 +113,17 @@ p, li { white-space: pre-wrap; }
         <location filename="../tageditor.ui" line="224"/>
         <location filename="../tageditor.ui" line="240"/>
         <source>?</source>
-        <translation></translation>
+        <translation>?</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="275"/>
         <source>Track:</source>
-        <translation></translation>
+        <translation>Дорожка:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="259"/>
         <source>Year:</source>
-        <translation></translation>
+        <translation>Год:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="14"/>
