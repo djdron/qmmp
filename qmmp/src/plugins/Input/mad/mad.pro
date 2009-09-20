@@ -47,3 +47,6 @@ unix {
     target.path = $$LIB_DIR/qmmp/Input
     INSTALLS += target
 }
+
+win32:HEADERS += ../../../../src/qmmp/metadatamodel.h \
+    		../../../../src/qmmp/decoderfactory.h
