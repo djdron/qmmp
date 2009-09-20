@@ -23,11 +23,10 @@ unix {
         -L/usr/lib
     PKGCONFIG += libcurl
     isEmpty(LIB_DIR):LIB_DIR = /lib
-    win32 { 
-        QMAKE_LIBDIR += ../../../../bin
-        LIBS += -lqmmp0 \
-            -lcurldll
-    }
     target.path = $$LIB_DIR/qmmp/Transports
     INSTALLS += target
+}
+win32 { 
+        QMAKE_LIBDIR += ../../../../bin
+        LIBS += -lqmmp0 -lcurldll
 }
