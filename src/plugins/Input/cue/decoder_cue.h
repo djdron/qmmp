@@ -26,6 +26,7 @@
 
 class Output;
 class QIDevice;
+class CUEParser;
 
 class DecoderCUE : public Decoder
 {
@@ -39,14 +40,22 @@ public:
     void seek(qint64);
     qint64 read(char *data, qint64 size);
     int bitrate();
+    const QString nextURL();
+    void next();
 
 private: 
     Decoder *m_decoder;
     qint64 m_length;
     qint64 m_offset;
-    qint64 offset_in_bytes;
+    qint64 length_in_bytes;
     qint64 m_totalBytes;
     QString m_path;
+    QString m_nextURL;
+    CUEParser *m_parser;
+    int m_track;
+    char *m_buf; //buffer for remainig data
+    qint64 m_buf_size;
+    qint64 m_sz; //sample size
 };
 
 #endif // DECODER_CUE_H

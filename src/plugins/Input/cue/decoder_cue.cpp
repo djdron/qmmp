@@ -37,6 +37,9 @@ DecoderCUE::DecoderCUE(const QString &url)
 {
     m_path = url;
     m_decoder = 0;
+    m_parser = 0;
+    m_track = 0;
+    m_buf = 0;
 }
 
 DecoderCUE::~DecoderCUE()
@@ -44,6 +47,12 @@ DecoderCUE::~DecoderCUE()
     if(m_decoder)
         delete m_decoder;
     m_decoder = 0;
+    if(m_parser)
+        delete m_parser;
+    m_parser = 0;
+    if(m_buf)
+        delete [] m_buf;
+    m_buf = 0;
 }
 
 bool DecoderCUE::initialize()
@@ -51,14 +60,14 @@ bool DecoderCUE::initialize()
     QString p = QUrl(m_path).path();
     p.replace(QString(QUrl::toPercentEncoding("#")), "#");
     p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-    CUEParser parser(p);
-    if (parser.count() == 0)
+    m_parser = new CUEParser(p);
+    if (m_parser->count() == 0)
     {
         qWarning("DecoderCUE: invalid cue file");
         return FALSE;
     }
-    int track = m_path.section("#", -1).toInt();
-    m_path = parser.filePath(track);
+    m_track = m_path.section("#", -1).toInt();
+    m_path = m_parser->filePath(m_track);
     if (!QFile::exists(m_path))
     {
         qWarning("DecoderCUE: file \"%s\" doesn't exist", qPrintable(m_path));
@@ -70,8 +79,8 @@ bool DecoderCUE::initialize()
         qWarning("DecoderCUE: unsupported file format");
         return FALSE;
     }
-    m_length = parser.length(track);
-    m_offset = parser.offset(track);
+    m_length = m_parser->length(m_track);
+    m_offset = m_parser->offset(m_track);
 
     m_decoder = df->create(m_path, new QFile(m_path));
     if(!m_decoder->initialize())
@@ -84,12 +93,14 @@ bool DecoderCUE::initialize()
     configure(m_decoder->audioParameters().sampleRate(),
               m_decoder->audioParameters().channels(),
               m_decoder->audioParameters().bits());
-    offset_in_bytes = audioParameters().sampleRate() *
+    length_in_bytes = audioParameters().sampleRate() *
                       audioParameters().channels() *
                       audioParameters().bits() * m_length/8000;
     m_totalBytes = 0;
 
-    StateHandler::instance()->dispatch(parser.info(track)->metaData());
+    m_sz = audioParameters().bits() * audioParameters().channels()/8;
+
+    StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
     return TRUE;
 }
 
@@ -108,20 +119,72 @@ void DecoderCUE::seek(qint64 pos)
 
 qint64 DecoderCUE::read(char *data, qint64 size)
 {
-    qint64 len = m_decoder->read(data, size);
-    m_totalBytes += len;
-    if(len > offset_in_bytes - m_totalBytes)
+    if(length_in_bytes - m_totalBytes < m_sz) //end of cue track
+        return 0;
+
+    qint64 len = 0;
+
+    if(m_buf) //read remaining data first
     {
-        len = offset_in_bytes - m_totalBytes;
-        int sample_size = audioParameters().bits() * audioParameters().channels()/8;
-        len = (len / sample_size) * sample_size;
+        len = qMin(m_buf_size, size);
+        memmove(data, m_buf, len);
+        if(size >= m_buf_size)
+        {
+            delete[] m_buf;
+            m_buf = 0;
+            m_buf_size = 0;
+        }
+        else
+            memmove(m_buf, m_buf + len, size - len);
     }
-    if(len < 0)
-        len = 0;
-    return len;
+    else
+        len = m_decoder->read(data, size);
+
+    if(len <= 0) //end of file
+        return 0;
+
+    if(len + m_totalBytes <= length_in_bytes)
+    {
+        m_totalBytes += len;
+        return len;
+    }
+
+    qint64 len2 = qMax(qint64(0), length_in_bytes - m_totalBytes);
+    len2 = (len2 / m_sz) * m_sz; //returned size must contain integer number of samples
+    m_totalBytes += len2;
+    //save data of the next track
+    if(m_buf)
+        delete[] m_buf;
+    m_buf_size = len - len2;
+    m_buf = new char[m_buf_size];
+    memmove(m_buf, data + len2, m_buf_size);
+    return len2;
 }
 
 int DecoderCUE::bitrate()
 {
     return m_decoder->bitrate();
+}
+
+const QString DecoderCUE::nextURL()
+{
+    if(m_track +1 <= m_parser->count())
+        return m_parser->trackURL(m_track + 1);
+    else
+        return QString();
+}
+
+void DecoderCUE::next()
+{
+    if(m_track +1 <= m_parser->count())
+    {
+        m_track++;
+        m_length = m_parser->length(m_track);
+        m_offset = m_parser->offset(m_track);
+        length_in_bytes = audioParameters().sampleRate() *
+                          audioParameters().channels() *
+                          audioParameters().bits() * m_length/8000;
+        StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
+        m_totalBytes = 0;
+    }
 }

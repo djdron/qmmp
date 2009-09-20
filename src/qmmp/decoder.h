@@ -60,9 +60,12 @@ public:
      * Subclass should reimplement this function.
      */
     virtual int bitrate() = 0;
+    virtual void next();
+    virtual const QString nextURL();
 
     const AudioParameters audioParameters();
     QIODevice *input();
+
     /*!
      * Returns \b true if \b file is supported by input plugins, otherwise returns \b false
      */

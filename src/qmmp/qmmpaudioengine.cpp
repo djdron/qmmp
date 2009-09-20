@@ -72,10 +72,21 @@ void QmmpAudioEngine::reset()
     m_bitrate = 0;
     m_chan = 0;
     m_bps = 0;
+    m_next = FALSE;
 }
 
 bool QmmpAudioEngine::enqueue(InputSource *source)
 {
+    mutex()->lock();
+    if(m_decoder && m_decoder->nextURL() == source->url())
+    {
+        delete source;
+        m_next = TRUE;
+        mutex()->unlock();
+        return TRUE;
+    }
+    mutex()->unlock();
+
     DecoderFactory *factory = Decoder::findByURL(source->url());
 
     if(!factory && !source->url().contains("://"))
@@ -103,6 +114,7 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     }
     m_decoders.enqueue(decoder);
     m_inputs.insert(decoder, source);
+    source->setParent(this);
     return TRUE;
 }
 
@@ -294,6 +306,7 @@ void QmmpAudioEngine::run()
     Q_ASSERT(m_chan == 0);
     Q_ASSERT(!m_output_buf);
     mutex()->lock ();
+    m_next = FALSE;
     qint64 len = 0;
     if(m_decoders.isEmpty())
     {
@@ -333,7 +346,20 @@ void QmmpAudioEngine::run()
         }
         else if (len == 0)
         {
-            if(!m_decoders.isEmpty())
+            if(m_next) //decoder can play next track without initialization
+            {
+                m_next = FALSE;
+                qDebug("QmmpAudioEngine: switching to the next track");
+                emit playbackFinished();
+                StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
+                StateHandler::instance()->dispatch(Qmmp::Buffering);
+                StateHandler::instance()->dispatch(Qmmp::Playing);
+                m_decoder->next();
+                m_output->seek(0); //reset counter
+                mutex()->unlock();
+                continue;
+            }
+            else if(!m_decoders.isEmpty())
             {
                 delete m_inputs.take(m_decoder);
                 delete m_decoder;
@@ -402,6 +428,7 @@ void QmmpAudioEngine::run()
     }
 
     mutex()->lock ();
+    m_next = FALSE;
     if (m_finish)
         finish();
     mutex()->unlock();

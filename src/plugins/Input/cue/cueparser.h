@@ -32,7 +32,8 @@
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class CUEParser{
+class CUEParser
+{
 public:
     CUEParser(const QString &fileName);
 
@@ -44,6 +45,7 @@ public:
     qint64 length(int track);
     int count();
     FileInfo *info(int track);
+    const QString trackURL(int track);
 
 private:
     QString m_filePath;
