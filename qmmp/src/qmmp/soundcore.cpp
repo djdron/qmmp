@@ -33,7 +33,6 @@
 
 #include "soundcore.h"
 
-
 SoundCore *SoundCore::m_instance = 0;
 
 SoundCore::SoundCore(QObject *parent)
@@ -228,11 +227,9 @@ bool SoundCore::enqueue(InputSource *s)
 
     setEQ(m_bands, m_preamp);
     setEQEnabled(m_useEQ);
-
     if(m_engine->enqueue(s))
     {
         m_source = s->url();
-        s->setParent(m_engine);
         m_engine->start();
     }
     else

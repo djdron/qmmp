@@ -37,6 +37,14 @@ void Decoder::configure(quint32 srate, int chan, int bps)
     m_parameters = AudioParameters(srate, chan, bps);
 }
 
+void Decoder::next()
+{}
+
+const QString Decoder::nextURL()
+{
+    return QString();
+}
+
 const AudioParameters Decoder::audioParameters()
 {
     return m_parameters;

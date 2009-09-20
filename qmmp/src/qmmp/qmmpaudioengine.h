@@ -81,6 +81,7 @@ private:
     QQueue <Decoder*> m_decoders;
     QHash <Decoder*, InputSource*> m_inputs;
     AudioParameters m_ap;
+    bool m_next;
 
 };
 
