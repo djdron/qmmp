@@ -232,8 +232,6 @@ QList <FileInfo *> Decoder::createPlayList(const QString &fileName, bool useMeta
 
     if (QFile::exists(fileName)) //is it file?
         fact = Decoder::findByPath(fileName);
-    else if (fileName.contains("://")) //looks like url
-        fact = Decoder::findByURL(QUrl(fileName));
 
     if (fact)
         list << fact->createPlayList(fileName, useMetaData);
