@@ -2,12 +2,12 @@ include(../../plugins.pri)
 FORMS += 
 HEADERS += decoderwavpackfactory.h \
     decoder_wavpack.h \
-    detailsdialog.h \
-    cueparser.h
+    cueparser.h \
+    wavpackmetadatamodel.h
 SOURCES += decoder_wavpack.cpp \
     decoderwavpackfactory.cpp \
-    detailsdialog.cpp \
-    cueparser.cpp
+    cueparser.cpp \
+    wavpackmetadatamodel.cpp
 TARGET = $$PLUGINS_PREFIX/Input/wavpack
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libwavpack.so
 INCLUDEPATH += ../../../

@@ -30,33 +30,39 @@ class CUEParser;
 
 class DecoderWavPack : public Decoder
 {
-Q_OBJECT
 public:
-    DecoderWavPack(QObject *, DecoderFactory *, Output *, const QString &);
+    DecoderWavPack(const QString &);
     virtual ~DecoderWavPack();
 
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
     int bitrate();
-
-private slots:
-    void processFinish();
+    qint64 read(char *data, qint64 maxSize);
+    void seek(qint64 time);
+    const QString nextURL();
+    void next();
 
 private:
-    // Standard Decoder API
-    qint64 readAudio(char *data, qint64 maxSize);
-    void seekAudio(qint64 time);
     // helper functions
     void deinit();
-    WavpackContext *m_context;
-    // output buffer
-    int32_t *m_output_buf;
+    qint64 wavpack_decode(char *data, qint64 size);
+    WavpackContext *m_context;    
+    int32_t *m_output_buf; // output buffer
     int m_chan;
     quint32 m_freq;
     qint64 m_totalTime;
-    QString m_path, m_nextUrl;
-    CUEParser *m_cue_parser;
+    qint64 length_in_bytes;
+    qint64 m_totalBytes;
+    qint64 m_offset;
+    qint64 m_length;
+    QString m_path;
+    CUEParser *m_parser;
+    int m_track;
+    char *m_buf; //buffer for remainig data
+    qint64 m_buf_size;
+    qint64 m_sz; //sample size
+
 };
 
 #endif // DECODER_WAVPACK_H

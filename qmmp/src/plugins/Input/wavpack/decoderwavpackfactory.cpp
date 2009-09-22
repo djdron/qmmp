@@ -20,7 +20,7 @@
 
 #include <QtGui>
 
-#include "detailsdialog.h"
+#include "wavpackmetadatamodel.h"
 #include "decoder_wavpack.h"
 #include "decoderwavpackfactory.h"
 #include "cueparser.h"
@@ -53,11 +53,9 @@ const DecoderProperties DecoderWavPackFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderWavPackFactory::create(QObject *parent, QIODevice *input,
-                                       Output *output, const QString &path)
+Decoder *DecoderWavPackFactory::create(const QString &p, QIODevice *)
 {
-    Q_UNUSED(input);
-    return new DecoderWavPack(parent, this, output, path);
+    return new DecoderWavPack(p);
 }
 
 QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -118,11 +116,9 @@ QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName,
     return list;
 }
 
-QObject* DecoderWavPackFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderWavPackFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
+    return new WavPackMetaDataModel(path, parent);
 }
 
 void DecoderWavPackFactory::showSettings(QWidget *)
