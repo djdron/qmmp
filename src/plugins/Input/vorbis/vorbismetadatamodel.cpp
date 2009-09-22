@@ -138,11 +138,14 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
         m_tag->removeField("COMPOSER"):
         m_tag->addField("COMPOSER", str, TRUE);
         return;
+    case Qmmp::TRACK:
+        m_tag->setTrack(value.toInt());
+        return;
     case Qmmp::YEAR:
         m_tag->setYear(value.toInt());
         return;
     case Qmmp::DISCNUMBER:
-        value.isEmpty() ?
+        value == "0" ?
         m_tag->removeField("DISCNUMBER"):
         m_tag->addField("DISCNUMBER", str, TRUE);
     }
