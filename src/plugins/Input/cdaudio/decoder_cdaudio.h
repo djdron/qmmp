@@ -43,7 +43,7 @@ public:
 class DecoderCDAudio : public Decoder
 {
 public:
-    DecoderCDAudio(QObject *, DecoderFactory *, const QString &url, Output *);
+    DecoderCDAudio(const QString &url);
     virtual ~DecoderCDAudio();
 
     static QList <CDATrack> generateTrackList(const QString &device = QString());
@@ -53,10 +53,10 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
+    qint64 read(char *audio, qint64 maxSize);
+    void seek(qint64 time);
 
 private:
-    qint64 readAudio(char *audio, qint64 maxSize);
-    void seekAudio(qint64 time);
     // libcdio variables
     lsn_t m_first_sector;
     lsn_t m_last_sector;

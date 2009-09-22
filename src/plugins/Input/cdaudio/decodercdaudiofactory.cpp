@@ -50,11 +50,10 @@ const DecoderProperties DecoderCDAudioFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderCDAudioFactory::create(QObject *parent, QIODevice *input,
-                                       Output *output, const QString &url)
+Decoder *DecoderCDAudioFactory::create(const QString &url, QIODevice *input)
 {
     Q_UNUSED(input);
-    return new DecoderCDAudio(parent, this, url, output);
+    return new DecoderCDAudio(url);
 }
 
 QList<FileInfo *> DecoderCDAudioFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -67,7 +66,7 @@ QList<FileInfo *> DecoderCDAudioFactory::createPlayList(const QString &fileName,
     return list;
 }
 
-QObject* DecoderCDAudioFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderCDAudioFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
     Q_UNUSED(parent);
     Q_UNUSED(path);
@@ -97,4 +96,4 @@ QTranslator *DecoderCDAudioFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderCDAudioFactory)
+Q_EXPORT_PLUGIN2(cdaudio, DecoderCDAudioFactory)
