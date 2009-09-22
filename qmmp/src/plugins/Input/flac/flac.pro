@@ -2,12 +2,12 @@ include(../../plugins.pri)
 FORMS += 
 HEADERS += decoderflacfactory.h \
     decoder_flac.h \
-    detailsdialog.h \
-    cueparser.h
+    cueparser.h \
+    flacmetadatamodel.h
 SOURCES += decoder_flac.cpp \
     decoderflacfactory.cpp \
-    detailsdialog.cpp \
-    cueparser.cpp
+    cueparser.cpp \
+    flacmetadatamodel.cpp
 TARGET = $$PLUGINS_PREFIX/Input/flac
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libflac.so
 INCLUDEPATH += ../../../

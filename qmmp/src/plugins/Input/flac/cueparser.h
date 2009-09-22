@@ -45,6 +45,7 @@ public:
     qint64 length(int track);
     int count();
     FileInfo *info(int track);
+    const QString trackURL(int track);
 
 private:
     QString m_filePath;
