@@ -35,16 +35,22 @@
 
 // Decoder class
 
-DecoderWavPack::DecoderWavPack(QObject *parent, DecoderFactory *d, Output *o, const QString &path)
-        : Decoder(parent, d, o)
+DecoderWavPack::DecoderWavPack(const QString &path)
+        : Decoder()
 {
     m_path = path;
     m_totalTime = 0.0;
     m_chan = 0;
     m_context = 0;
     m_freq = 0;
-    m_cue_parser = 0;
+    m_parser = 0;
     m_output_buf = 0;
+    m_parser = 0;
+    length_in_bytes = 0;
+    m_totalBytes = 0;
+    m_sz = 0;
+    m_buf = 0;
+    m_offset = 0;
 }
 
 DecoderWavPack::~DecoderWavPack()
@@ -73,24 +79,17 @@ bool DecoderWavPack::initialize()
         {
             value = (char*)malloc (cue_len * 2 + 1);
             WavpackGetTagItem (m_context, "cuesheet", value, cue_len + 1);
-            m_cue_parser = new CUEParser(value, p);
-            int track = m_path.section("#", -1).toInt();
-            if(track > m_cue_parser->count())
+            m_parser = new CUEParser(value, p);
+            m_track = m_path.section("#", -1).toInt();
+            if(m_track > m_parser->count())
             {
                 qWarning("DecoderWavPack: invalid cuesheet comment");
                 return FALSE;
             }
             m_path = p;
             //send metadata
-            QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
+            QMap<Qmmp::MetaData, QString> metaData = m_parser->info(m_track)->metaData();
             StateHandler::instance()->dispatch(metaData);
-            connect(stateHandler(),SIGNAL(aboutToFinish()),SLOT(processFinish()));
-            //next url
-            m_nextUrl.clear();
-            if(track <= m_cue_parser->count() - 1)
-                m_nextUrl = m_cue_parser->info(track + 1)->path();
-            m_totalTime = m_cue_parser->length(track);
-            setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
         }
     }
     else
@@ -108,8 +107,19 @@ bool DecoderWavPack::initialize()
     if (!m_output_buf)
         m_output_buf = new int32_t[Qmmp::globalBufferSize()/4];
     configure(m_freq, m_chan, bps);
-    if(!m_cue_parser)
+    if(!m_parser)
         m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
+    else
+    {
+        m_length = m_parser->length(m_track);
+        m_offset = m_parser->offset(m_track);
+        length_in_bytes = audioParameters().sampleRate() *
+                          audioParameters().channels() *
+                          audioParameters().bits() * m_length/8000;
+        seek(0);
+    }
+    m_totalBytes = 0;
+    m_sz = audioParameters().bits() * audioParameters().channels()/8;
     qDebug("DecoderWavPack: initialize succes");
     return TRUE;
 }
@@ -123,6 +133,8 @@ int DecoderWavPack::bitrate()
 
 qint64 DecoderWavPack::totalTime()
 {
+    if(m_parser)
+        return m_length;
     return m_totalTime;
 }
 
@@ -133,19 +145,98 @@ void DecoderWavPack::deinit()
     if (m_context)
         WavpackCloseFile (m_context);
     m_context = 0;
-    if(m_cue_parser)
-        delete m_cue_parser;
-    m_cue_parser = 0;
+    if(m_parser)
+        delete m_parser;
+    m_parser = 0;
+    if(m_buf)
+        delete m_buf;
+    m_buf = 0;
 }
 
-void DecoderWavPack::seekAudio(qint64 time)
+void DecoderWavPack::seek(qint64 time)
 {
-     WavpackSeekSample (m_context, time * m_freq / 1000);
+    m_totalBytes = audioParameters().sampleRate() *
+                   audioParameters().channels() *
+                   audioParameters().bits() * time/8000;
+    if(m_parser)
+        time += m_offset;
+    WavpackSeekSample (m_context, time * m_freq / 1000);
 }
 
-qint64 DecoderWavPack::readAudio(char *data, qint64 maxSize)
+qint64 DecoderWavPack::read(char *data, qint64 size)
 {
-    ulong len = WavpackUnpackSamples (m_context, m_output_buf, maxSize / m_chan / 4);
+    if(m_parser)
+    {
+        if(length_in_bytes - m_totalBytes < m_sz) //end of cue track
+            return 0;
+
+        qint64 len = 0;
+
+        if(m_buf) //read remaining data first
+        {
+            len = qMin(m_buf_size, size);
+            memmove(data, m_buf, len);
+            if(size >= m_buf_size)
+            {
+                delete[] m_buf;
+                m_buf = 0;
+                m_buf_size = 0;
+            }
+            else
+                memmove(m_buf, m_buf + len, size - len);
+        }
+        else
+            len = wavpack_decode (data, size);
+
+        if(len <= 0) //end of file
+            return 0;
+
+        if(len + m_totalBytes <= length_in_bytes)
+        {
+            m_totalBytes += len;
+            return len;
+        }
+
+        qint64 len2 = qMax(qint64(0), length_in_bytes - m_totalBytes);
+        len2 = (len2 / m_sz) * m_sz; //returned size must contain integer number of samples
+        m_totalBytes += len2;
+        //save data of the next track
+        if(m_buf)
+            delete[] m_buf;
+        m_buf_size = len - len2;
+        m_buf = new char[m_buf_size];
+        memmove(m_buf, data + len2, m_buf_size);
+        return len2;
+    }
+    return wavpack_decode(data, size);
+}
+
+const QString DecoderWavPack::nextURL()
+{
+    if(m_parser && m_track +1 <= m_parser->count())
+        return m_parser->trackURL(m_track + 1);
+    else
+        return QString();
+}
+
+void DecoderWavPack::next()
+{
+    if(m_parser && m_track +1 <= m_parser->count())
+    {
+        m_track++;
+        m_offset = m_parser->length(m_track);
+        m_length = m_parser->length(m_track);
+        length_in_bytes = audioParameters().sampleRate() *
+                          audioParameters().channels() *
+                          audioParameters().bits() * m_length/8000;
+        StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
+        m_totalBytes = 0;
+    }
+}
+
+qint64 DecoderWavPack::wavpack_decode(char *data, qint64 size)
+{
+    ulong len = WavpackUnpackSamples (m_context, m_output_buf, size / m_chan / 4);
     uint m = 0;
     //convert 32 to 16
     for (uint i = 0;  i < len * m_chan; ++i)
@@ -154,31 +245,4 @@ qint64 DecoderWavPack::readAudio(char *data, qint64 maxSize)
         data[m++] = (m_output_buf[i] >> 8) & 0xff;
     }
     return len * m_chan * 2;
-}
-
-void DecoderWavPack::processFinish()
-{
-    if(m_cue_parser && nextUrlRequest(m_nextUrl))
-    {
-        qDebug("DecoderFLAC: going to next track");
-        int track = m_nextUrl.section("#", -1).toInt();
-        QString p = QUrl(m_nextUrl).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        //update current fragment
-        mutex()->lock();
-        setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
-        m_totalTime = m_cue_parser->length(track);
-        output()->seek(0); //reset time counter
-        mutex()->unlock();
-         // find next track
-        m_nextUrl.clear();
-        if(track <= m_cue_parser->count() - 1)
-            m_nextUrl = m_cue_parser->info(track + 1)->path();
-        //change track
-        emit playbackFinished();
-        //send metadata
-        QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
-        stateHandler()->dispatch(metaData);
-    }
 }

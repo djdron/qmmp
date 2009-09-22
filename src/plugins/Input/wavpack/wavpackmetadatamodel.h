@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,28 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <qmmp/abstractdetailsdialog.h>
+#ifndef WAVPACKMETADATAMODEL_H
+#define WAVPACKMETADATAMODEL_H
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public AbstractDetailsDialog
+extern "C"{
+#include <wavpack/wavpack.h>
+}
+#include <qmmp/metadatamodel.h>
+
+class WavPackMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    WavPackMetaDataModel(const QString &path, QObject *parent);
+    ~WavPackMetaDataModel();
+    QHash<QString, QString> audioProperties();
+    QList<TagModel* > tags();
 
-    ~DetailsDialog();
-
-private:    
-    void loadWavPackInfo();
-    void loadTags();
-    void writeTags();
-    QString m_path;
-
+private:
+    WavpackContext *m_ctx;
+    QList <TagModel *> m_tags;
 };
 
-#endif
+class WavPackFileTagModel : public TagModel
+{
+public:
+    WavPackFileTagModel(WavpackContext *ctx);
+    ~WavPackFileTagModel();
+    const QString name();
+    const QString value(Qmmp::MetaData key);
+    void setValue(Qmmp::MetaData key, const QString &value);
+    void save();
+
+private:
+     WavpackContext *m_ctx;
+};
+
+#endif // WAVPACKMETADATAMODEL_H

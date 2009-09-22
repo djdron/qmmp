@@ -45,6 +45,7 @@ public:
     qint64 length(int track);
     int count();
     FileInfo *info(int track);
+    const QString trackURL(int track);
 
 private:
     QString m_filePath;
@@ -52,7 +53,6 @@ private:
     QList <qint64> m_offsets;
     QStringList splitLine(const QString &line);
     qint64 getLength(const QString &str);
-
 };
 
 #endif

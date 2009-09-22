@@ -34,14 +34,14 @@ link_directories(${WAVPACK_LIBRARY_DIRS})
 SET(libwavpack_SRCS
   decoder_wavpack.cpp
   decoderwavpackfactory.cpp
-  detailsdialog.cpp
+  wavpackmetadatamodel.cpp
   cueparser.cpp
 )
 
 SET(libwavpack_MOC_HDRS
   decoderwavpackfactory.h
   decoder_wavpack.h
-  detailsdialog.h
+  wavpackmetadatamodel.h
   cueparser.h
 )
 
