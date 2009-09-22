@@ -36,25 +36,25 @@
 
 MPEGMetaDataModel::MPEGMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
-    m_path = path;
-    m_tags << new MpegFileTagModel(path, TagLib::MPEG::File::ID3v1);
-    m_tags << new MpegFileTagModel(path, TagLib::MPEG::File::ID3v2);
-    m_tags << new MpegFileTagModel(path, TagLib::MPEG::File::APE);
+    m_file = new TagLib::MPEG::File(path.toLocal8Bit().constData());
+    m_tags << new MpegFileTagModel(m_file, TagLib::MPEG::File::ID3v1);
+    m_tags << new MpegFileTagModel(m_file, TagLib::MPEG::File::ID3v2);
+    m_tags << new MpegFileTagModel(m_file, TagLib::MPEG::File::APE);
 }
 
 MPEGMetaDataModel::~MPEGMetaDataModel()
 {
     while(!m_tags.isEmpty())
         delete m_tags.takeFirst();
+    delete m_file;
 }
 
 QHash<QString, QString> MPEGMetaDataModel::audioProperties()
 {
     QHash<QString, QString> ap;
-    TagLib::MPEG::File f (m_path.toLocal8Bit().constData());
     QString text;
     QString v;
-    switch((int)f.audioProperties()->version())
+    switch((int)m_file->audioProperties()->version())
     {
         case TagLib::MPEG::Header::Version1:
         v = "1";
@@ -65,13 +65,13 @@ QHash<QString, QString> MPEGMetaDataModel::audioProperties()
         case TagLib::MPEG::Header::Version2_5:
         v = "2.5";
     }
-    text = QString("MPEG-%1 layer %2").arg(v).arg(f.audioProperties()->layer());
+    text = QString("MPEG-%1 layer %2").arg(v).arg(m_file->audioProperties()->layer());
     ap.insert(tr("Format"), text);
-    text = QString("%1").arg(f.audioProperties()->bitrate());
+    text = QString("%1").arg(m_file->audioProperties()->bitrate());
     ap.insert(tr("Bitrate"), text+" "+tr("kbps"));
-    text = QString("%1").arg(f.audioProperties()->sampleRate());
+    text = QString("%1").arg(m_file->audioProperties()->sampleRate());
     ap.insert(tr("Samplerate"), text+" "+tr("Hz"));
-    switch (f.audioProperties()->channelMode())
+    switch (m_file->audioProperties()->channelMode())
     {
     case TagLib::MPEG::Header::Stereo:
         ap.insert(tr("Mode"), "Stereo");
@@ -86,17 +86,17 @@ QHash<QString, QString> MPEGMetaDataModel::audioProperties()
         ap.insert(tr("Mode"), "Single channel");
         break;
     }
-    text = QString("%1 "+tr("KB")).arg(f.length()/1024);
+    text = QString("%1 "+tr("KB")).arg(m_file->length()/1024);
     ap.insert(tr("File size"), text);
-    if (f.audioProperties()->protectionEnabled())
+    if (m_file->audioProperties()->protectionEnabled())
         ap.insert(tr("Protection"), tr("Yes"));
     else
         ap.insert(tr("Protection"), tr("No"));
-    if (f.audioProperties()->isCopyrighted())
+    if (m_file->audioProperties()->isCopyrighted())
         ap.insert(tr("Copyright"), tr("Yes"));
     else
         ap.insert(tr("Copyright"), tr("No"));
-    if (f.audioProperties()->isOriginal())
+    if (m_file->audioProperties()->isOriginal())
         ap.insert(tr("Original"), tr("Yes"));
     else
         ap.insert(tr("Original"), tr("No"));
@@ -108,10 +108,11 @@ QList<TagModel* > MPEGMetaDataModel::tags()
     return m_tags;
 }
 
-MpegFileTagModel::MpegFileTagModel(const QString &path, TagLib::MPEG::File::TagTypes tagType) : TagModel()
+MpegFileTagModel::MpegFileTagModel(TagLib::MPEG::File *file, TagLib::MPEG::File::TagTypes tagType)
+        : TagModel()
 {
     m_tagType = tagType;
-    m_file = new  TagLib::MPEG::File (path.toLocal8Bit().constData());
+    m_file = file;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     if (m_tagType == TagLib::MPEG::File::ID3v1)
@@ -137,9 +138,7 @@ MpegFileTagModel::MpegFileTagModel(const QString &path, TagLib::MPEG::File::TagT
 }
 
 MpegFileTagModel::~MpegFileTagModel()
-{
-    delete m_file;
-}
+{}
 
 const QString MpegFileTagModel::name()
 {
@@ -316,10 +315,7 @@ void MpegFileTagModel::remove()
 void MpegFileTagModel::save()
 {
     if(m_tag)
-    {
-        m_file->save(m_tagType, FALSE); //??
         m_file->save(m_tagType, FALSE);
-    }
     else
         m_file->strip(m_tagType);
 }

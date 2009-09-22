@@ -36,14 +36,14 @@ public:
     QList<TagModel* > tags();
 
 private:
-    QString m_path;
     QList<TagModel* > m_tags;
+    TagLib::MPEG::File *m_file;
 };
 
 class MpegFileTagModel : public TagModel
 {
 public:
-    MpegFileTagModel(const QString &path, TagLib::MPEG::File::TagTypes tagType);
+    MpegFileTagModel(TagLib::MPEG::File *file, TagLib::MPEG::File::TagTypes tagType);
     ~MpegFileTagModel();
     const QString name();
     QList<Qmmp::MetaData> keys();

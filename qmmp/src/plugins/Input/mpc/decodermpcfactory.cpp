@@ -23,8 +23,7 @@
 #include <taglib/fileref.h>
 #include <taglib/mpcfile.h>
 #include <taglib/apetag.h>
-
-#include "detailsdialog.h"
+#include "mpcmetadatamodel.h"
 #include "decoder_mpc.h"
 #include "decodermpcfactory.h"
 
@@ -55,10 +54,9 @@ const DecoderProperties DecoderMPCFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderMPCFactory::create(QObject *parent, QIODevice *input,
-                                   Output *output, const QString &)
+Decoder *DecoderMPCFactory::create(const QString &, QIODevice *i)
 {
-    return new DecoderMPC(parent, this, input, output);
+    return new DecoderMPC(i);
 }
 
 QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -98,11 +96,9 @@ QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, boo
     return list;
 }
 
-QObject* DecoderMPCFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderMPCFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
+    return new MPCMetaDataModel(path, parent);
 }
 
 void DecoderMPCFactory::showSettings(QWidget *)
@@ -123,4 +119,4 @@ QTranslator *DecoderMPCFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderMPCFactory)
+Q_EXPORT_PLUGIN2(mpc,DecoderMPCFactory)

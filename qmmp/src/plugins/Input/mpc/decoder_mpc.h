@@ -43,7 +43,7 @@ struct mpc_data
 class DecoderMPC : public Decoder
 {
 public:
-    DecoderMPC(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderMPC(QIODevice *i);
     virtual ~DecoderMPC();
 
     struct mpc_data *data()
@@ -55,10 +55,10 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
+    qint64 read(char *audio, qint64 maxSize);
+    void seek(qint64 time);
 
 private:
-    virtual qint64 readAudio(char *audio, qint64 maxSize);
-    void seekAudio(qint64 time);
 
     struct mpc_data *m_data;
     long m_len;

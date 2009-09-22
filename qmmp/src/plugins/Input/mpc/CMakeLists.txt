@@ -45,13 +45,13 @@ link_directories(${TAGLIB_LIBRARY_DIRS})
 SET(libmpc_SRCS
   decoder_mpc.cpp
   decodermpcfactory.cpp
-  detailsdialog.cpp
+  mpcmetadatamodel.cpp
 )
 
 SET(libmpc_MOC_HDRS
   decodermpcfactory.h
   decoder_mpc.h
-  detailsdialog.h
+  mpcmetadatamodel.h
 )
 
 SET(libmpc_RCCS translations/translations.qrc)

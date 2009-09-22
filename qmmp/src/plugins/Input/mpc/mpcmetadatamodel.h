@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,28 +17,49 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <qmmp/abstractdetailsdialog.h>
+#ifndef MPCMETADATAMODEL_H
+#define MPCMETADATAMODEL_H
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public AbstractDetailsDialog
+#include <qmmp/metadatamodel.h>
+#include <taglib/tag.h>
+#include <taglib/mpcfile.h>
+
+class QTextCodec;
+
+class MPCMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
-
-    ~DetailsDialog();
+    MPCMetaDataModel(const QString &path, QObject *parent);
+    ~MPCMetaDataModel();
+    QHash<QString, QString> audioProperties();
+    QList<TagModel* > tags();
 
 private:
-    void loadMPCInfo();
-    void loadTags();
-    void writeTags();
-    QString m_path;
-
+    QList<TagModel* > m_tags;
+    TagLib::MPC::File *m_file;
 };
 
-#endif
+class MPCFileTagModel : public TagModel
+{
+public:
+    MPCFileTagModel(TagLib::MPC::File *file, TagLib::MPC::File::TagTypes tagType);
+    ~MPCFileTagModel();
+    const QString name();
+    QList<Qmmp::MetaData> keys();
+    const QString value(Qmmp::MetaData key);
+    void setValue(Qmmp::MetaData key, const QString &value);
+    bool exists();
+    void create();
+    void remove();
+    void save();
+
+private:
+    QTextCodec *m_codec;
+    TagLib::MPC::File *m_file;
+    TagLib::Tag *m_tag;
+    TagLib::MPC::File::TagTypes m_tagType;
+};
+
+#endif // MPCMETADATAMODEL_H

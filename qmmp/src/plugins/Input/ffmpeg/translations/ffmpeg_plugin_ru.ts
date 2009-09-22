@@ -44,7 +44,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="80"/>
         <source>KB</source>
-        <translation>Кб</translation>
+        <translation>КБ</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="80"/>
