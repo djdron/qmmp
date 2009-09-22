@@ -41,10 +41,10 @@ public:
     virtual const QString value(Qmmp::MetaData key) = 0;
     virtual void setValue(Qmmp::MetaData key, const QString &value) = 0;
     virtual void setValue(Qmmp::MetaData key, int value);
-    virtual bool exists() = 0;
-    virtual void create() = 0;
-    virtual void remove() = 0;
-    virtual void save() = 0;
+    virtual bool exists();
+    virtual void create();
+    virtual void remove();
+    virtual void save();
     int caps();
 
 private:

@@ -49,3 +49,17 @@ int TagModel::caps()
 {
     return m_f;
 }
+
+bool TagModel::exists()
+{
+    return TRUE;
+}
+
+void TagModel::create()
+{}
+
+void TagModel::remove()
+{}
+
+void TagModel::save()
+{}

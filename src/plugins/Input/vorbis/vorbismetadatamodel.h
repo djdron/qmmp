@@ -47,9 +47,6 @@ public:
     const QString name();
     const QString value(Qmmp::MetaData key);
     void setValue(Qmmp::MetaData key, const QString &value);
-    bool exists();
-    void create();
-    void remove();
     void save();
 
 private:

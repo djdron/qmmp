@@ -151,19 +151,6 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
     }
 }
 
-bool VorbisCommentModel::exists()
-{
-    return TRUE;
-}
-
-void VorbisCommentModel::create()
-{
-     m_tag = m_file->tag();
-}
-
-void VorbisCommentModel::remove()
-{}
-
 void VorbisCommentModel::save()
 {
     m_file->save();
