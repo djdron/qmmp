@@ -56,8 +56,7 @@ static void log_handler (cdio_log_level_t level, const char message[])
 
 // Decoder class
 
-DecoderCDAudio::DecoderCDAudio(QObject *parent, DecoderFactory *d, const QString &url, Output *o)
-        : Decoder(parent, d, o)
+DecoderCDAudio::DecoderCDAudio(const QString &url) : Decoder()
 {
     m_bitrate = 0;
     m_totalTime = 0;
@@ -258,8 +257,7 @@ bool DecoderCDAudio::initialize()
     m_first_sector = tracks[track_at].first_sector;
     m_current_sector = tracks[track_at].first_sector;
     m_last_sector = tracks[track_at].last_sector;
-    stateHandler()->dispatch(tracks[track_at].info.metaData()); //send metadata
-    //m_inited = TRUE;
+    StateHandler::instance()->dispatch(tracks[track_at].info.metaData()); //send metadata
     qDebug("DecoderCDAudio: initialize succes");
     return TRUE;
 }
@@ -275,7 +273,7 @@ int DecoderCDAudio::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderCDAudio::readAudio(char *audio, qint64 maxSize)
+qint64 DecoderCDAudio::read(char *audio, qint64 maxSize)
 {
     long len = 0;
     lsn_t secorts_to_read = qMin(CDDA_SECTORS, (m_last_sector - m_current_sector + 1));
@@ -300,7 +298,7 @@ qint64 DecoderCDAudio::readAudio(char *audio, qint64 maxSize)
     return len;
 }
 
-void DecoderCDAudio::seekAudio(qint64 pos)
+void DecoderCDAudio::seek(qint64 pos)
 {
     m_current_sector = m_first_sector + pos * 75 / 1000;
 }

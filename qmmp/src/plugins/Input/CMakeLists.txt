@@ -12,7 +12,7 @@ SET(USE_SNDFILE TRUE CACHE BOOL "enable/disable sndfile plugin")
 #SET(USE_AAC     TRUE CACHE BOOL "enable/disable aac plugin")
 SET(USE_CUE     TRUE CACHE BOOL "enable/disable cue plugin")
 #SET(USE_MPLAYER TRUE CACHE BOOL "enable/disable mplayer support")
-#SET(USE_CDA     TRUE CACHE BOOL "enable/disable cd audio support")
+SET(USE_CDA     TRUE CACHE BOOL "enable/disable cd audio support")
 
 pkg_check_modules(TAGLIB taglib)
 
