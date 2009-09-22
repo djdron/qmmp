@@ -45,7 +45,6 @@ public:
     VorbisCommentModel(const QString &path);
     ~VorbisCommentModel();
     const QString name();
-    //QList<Qmmp::MetaData> keys();
     const QString value(Qmmp::MetaData key);
     void setValue(Qmmp::MetaData key, const QString &value);
     bool exists();
