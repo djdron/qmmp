@@ -74,7 +74,7 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>KB</source>
-        <translation>Кб</translation>
+        <translation>КБ</translation>
     </message>
 </context>
 </TS>

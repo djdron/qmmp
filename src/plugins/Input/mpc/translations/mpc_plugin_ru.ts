@@ -4,72 +4,72 @@
 <context>
     <name>DecoderMPCFactory</name>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="48"/>
+        <location filename="../decodermpcfactory.cpp" line="47"/>
         <source>Musepack Plugin</source>
         <translation>Модуль Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="50"/>
+        <location filename="../decodermpcfactory.cpp" line="49"/>
         <source>Musepack Files</source>
         <translation>Файлы Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="113"/>
+        <location filename="../decodermpcfactory.cpp" line="109"/>
         <source>About Musepack Audio Plugin</source>
         <translation>Об аудио-модуле Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="114"/>
+        <location filename="../decodermpcfactory.cpp" line="110"/>
         <source>Qmmp Musepack Audio Plugin</source>
         <translation>Аудио-модуль Musepack для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="115"/>
+        <location filename="../decodermpcfactory.cpp" line="111"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>MPCMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="57"/>
-        <source>Hz</source>
-        <translation>Гц</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
+        <location filename="../mpcmetadatamodel.cpp" line="46"/>
         <source>Length</source>
         <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="57"/>
+        <location filename="../mpcmetadatamodel.cpp" line="47"/>
         <source>Sample rate</source>
         <translation>Дискретизация</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../mpcmetadatamodel.cpp" line="47"/>
+        <source>Hz</source>
+        <translation>Гц</translation>
+    </message>
+    <message>
+        <location filename="../mpcmetadatamodel.cpp" line="48"/>
         <source>Channels</source>
         <translation>Каналов</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
-        <source>kbps</source>
-        <translation>Кб/с</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
+        <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>Bitrate</source>
         <translation>Битовая частота</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
-        <source>KB</source>
-        <translation>Кб</translation>
+        <location filename="../mpcmetadatamodel.cpp" line="49"/>
+        <source>kbps</source>
+        <translation>Кб/с</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
+        <location filename="../mpcmetadatamodel.cpp" line="50"/>
         <source>File size</source>
         <translation>Размер файла</translation>
+    </message>
+    <message>
+        <location filename="../mpcmetadatamodel.cpp" line="50"/>
+        <source>KB</source>
+        <translation>КБ</translation>
     </message>
 </context>
 </TS>

@@ -2,10 +2,10 @@ include(../../plugins.pri)
 FORMS += 
 HEADERS += decodermpcfactory.h \
     decoder_mpc.h \
-    detailsdialog.h
+    mpcmetadatamodel.h
 SOURCES += decoder_mpc.cpp \
     decodermpcfactory.cpp \
-    detailsdialog.cpp
+    mpcmetadatamodel.cpp
 TARGET = $$PLUGINS_PREFIX/Input/mpc
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmpc.so
 INCLUDEPATH += ../../../

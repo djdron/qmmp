@@ -77,7 +77,7 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="89"/>
         <source>KB</source>
-        <translation>Кб</translation>
+        <translation>КБ</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>

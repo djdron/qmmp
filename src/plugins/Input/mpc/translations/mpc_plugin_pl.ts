@@ -4,72 +4,72 @@
 <context>
     <name>DecoderMPCFactory</name>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="48"/>
+        <location filename="../decodermpcfactory.cpp" line="47"/>
         <source>Musepack Plugin</source>
         <translation>Wtyczka Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="50"/>
+        <location filename="../decodermpcfactory.cpp" line="49"/>
         <source>Musepack Files</source>
         <translation>Pliki Musepack</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="113"/>
+        <location filename="../decodermpcfactory.cpp" line="109"/>
         <source>About Musepack Audio Plugin</source>
         <translation>O wtyczce Musepack Audio</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="114"/>
+        <location filename="../decodermpcfactory.cpp" line="110"/>
         <source>Qmmp Musepack Audio Plugin</source>
         <translation>Wtyczka Musepack Audio dla Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermpcfactory.cpp" line="115"/>
+        <location filename="../decodermpcfactory.cpp" line="111"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>MPCMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
+        <location filename="../mpcmetadatamodel.cpp" line="46"/>
         <source>Length</source>
-        <translation>Długość</translation>
+        <translation type="unfinished">Długość</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="57"/>
-        <source>Hz</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="57"/>
+        <location filename="../mpcmetadatamodel.cpp" line="47"/>
         <source>Sample rate</source>
-        <translation>Próbkowanie</translation>
+        <translation type="unfinished">Próbkowanie</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../mpcmetadatamodel.cpp" line="47"/>
+        <source>Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mpcmetadatamodel.cpp" line="48"/>
         <source>Channels</source>
-        <translation>Kanały</translation>
+        <translation type="unfinished">Kanały</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
-        <source>kbps</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
+        <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>Bitrate</source>
-        <translation>Szybkość transmisji</translation>
+        <translation type="unfinished">Szybkość transmisji</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
-        <source>KB</source>
-        <translation></translation>
+        <location filename="../mpcmetadatamodel.cpp" line="49"/>
+        <source>kbps</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
+        <location filename="../mpcmetadatamodel.cpp" line="50"/>
         <source>File size</source>
-        <translation>Wielkość pliku</translation>
+        <translation type="unfinished">Wielkość pliku</translation>
+    </message>
+    <message>
+        <location filename="../mpcmetadatamodel.cpp" line="50"/>
+        <source>KB</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

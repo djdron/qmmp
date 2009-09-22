@@ -13,7 +13,7 @@ contains(CONFIG, MODPLUG_PLUGIN){
 }
 
 contains(CONFIG, MUSEPACK_PLUGIN){
-#    SUBDIRS += mpc
+    SUBDIRS += mpc
     message(***************************)
     message(* Musepack plugin enabled *)
     message(***************************)

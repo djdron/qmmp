@@ -121,8 +121,8 @@ static mpc_int32_t mpc_callback_get_size (mpc_reader *reader)
 
 // Decoder class
 
-DecoderMPC::DecoderMPC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderMPC::DecoderMPC(QIODevice *i)
+        : Decoder(i)
 {
     m_len = 0;
     m_bitrate = 0;
@@ -208,7 +208,6 @@ bool DecoderMPC::initialize()
     return TRUE;
 }
 
-
 qint64 DecoderMPC::totalTime()
 {
     return m_totalTime;
@@ -219,7 +218,7 @@ int DecoderMPC::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderMPC::readAudio(char *audio, qint64 maxSize)
+qint64 DecoderMPC::read(char *audio, qint64 maxSize)
 {
 #ifdef MPC_OLD_API
     mpc_uint32_t vbrAcc = 0;
@@ -256,7 +255,7 @@ qint64 DecoderMPC::readAudio(char *audio, qint64 maxSize)
     return m_len;
 }
 
-void DecoderMPC::seekAudio(qint64 pos)
+void DecoderMPC::seek(qint64 pos)
 {
 #ifdef MPC_OLD_API
     mpc_decoder_seek_seconds(&data()->decoder, pos/1000);
@@ -264,4 +263,3 @@ void DecoderMPC::seekAudio(qint64 pos)
     mpc_demux_seek_second(data()->demuxer, (double)pos/1000);
 #endif
 }
-
