@@ -52,6 +52,9 @@ DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
         else
             return;
 
+        if(!m_metaDataModel)
+            return;
+
         foreach(TagModel *tagModel, m_metaDataModel->tags())
         {
             ui.tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());

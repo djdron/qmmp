@@ -30,17 +30,17 @@ extern "C"{
 class DecoderSndFile : public Decoder
 {
 public:
-    DecoderSndFile(QObject *, DecoderFactory *, Output *, const QString &);
+    DecoderSndFile(const QString &path);
     virtual ~DecoderSndFile();
 
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
     int bitrate();
+    qint64 read(char *audio, qint64 maxSize);
+    void seek(qint64 time);
 
 private:
-    qint64 readAudio(char *audio, qint64 maxSize);
-    void seekAudio(qint64 time);
 
     // helper functions
     void deinit();
