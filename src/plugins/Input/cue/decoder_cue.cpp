@@ -40,6 +40,7 @@ DecoderCUE::DecoderCUE(const QString &url)
     m_parser = 0;
     m_track = 0;
     m_buf = 0;
+    m_input = 0;
 }
 
 DecoderCUE::~DecoderCUE()
@@ -53,6 +54,9 @@ DecoderCUE::~DecoderCUE()
     if(m_buf)
         delete [] m_buf;
     m_buf = 0;
+    if(m_input)
+        m_input->deleteLater();
+    m_input = 0;
 }
 
 bool DecoderCUE::initialize()
@@ -81,8 +85,16 @@ bool DecoderCUE::initialize()
     }
     m_length = m_parser->length(m_track);
     m_offset = m_parser->offset(m_track);
-
-    m_decoder = df->create(m_path, new QFile(m_path));
+    if(!df->properties().noInput)
+    {
+        m_input = new QFile(m_path);
+        if(!m_input->open(QIODevice::ReadOnly))
+        {
+            qWarning("DecoderCUE: error: %s", qPrintable(m_input->errorString()));
+            return FALSE;
+        }
+    }
+    m_decoder = df->create(m_path, m_input);
     if(!m_decoder->initialize())
     {
         qWarning("DecoderCUE: invalid audio file");
