@@ -471,7 +471,7 @@ qint64 DecoderFLAC::read(char *data, qint64 size)
 
 void DecoderFLAC::deinit()
 {
-    if (data())
+    if (data()->decoder)
         FLAC__stream_decoder_finish (data()->decoder);
 
     if (!input() && data()->input) //delete internal input only

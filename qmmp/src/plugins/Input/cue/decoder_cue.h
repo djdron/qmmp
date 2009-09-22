@@ -55,6 +55,7 @@ private:
     char *m_buf; //buffer for remainig data
     qint64 m_buf_size;
     qint64 m_sz; //sample size
+    QIODevice *m_input;
 };
 
 #endif // DECODER_CUE_H
