@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MPEGMETADATAMODEL_H
-#define MPEGMETADATAMODEL_H
+#ifndef VORBISMETADATAMODEL_H
+#define VORBISMETADATAMODEL_H
 
 #include <taglib/vorbisfile.h>
 #include <taglib/xiphcomment.h>
@@ -58,4 +58,4 @@ private:
     TagLib::Ogg::XiphComment *m_tag;
 };
 
-#endif // MPEGMETADATAMODEL_H
+#endif // VORBISMETADATAMODEL_H
