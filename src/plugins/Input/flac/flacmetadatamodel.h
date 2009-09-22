@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,28 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <qmmp/abstractdetailsdialog.h>
+#ifndef FLACMETADATAMODEL_H
+#define FLACMETADATAMODEL_H
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public AbstractDetailsDialog
+#include <taglib/flacfile.h>
+#include <taglib/xiphcomment.h>
+#include <qmmp/metadatamodel.h>
+
+class FLACMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    FLACMetaDataModel(const QString &path, QObject *parent);
+    ~FLACMetaDataModel();
+    QHash<QString, QString> audioProperties();
+    QList<TagModel* > tags();
 
-    ~DetailsDialog();
-
-private:    
-    void loadFLACInfo();
-    void loadTags();
-    void writeTags();
+private:
     QString m_path;
-
+    QList<TagModel* > m_tags;
 };
 
-#endif
+class VorbisCommentModel : public TagModel
+{
+public:
+    VorbisCommentModel(const QString &path);
+    ~VorbisCommentModel();
+    const QString name();
+    const QString value(Qmmp::MetaData key);
+    void setValue(Qmmp::MetaData key, const QString &value);
+    void save();
+
+private:
+    TagLib::FLAC::File *m_file;
+    TagLib::Ogg::XiphComment *m_tag;
+};
+
+#endif // FLACMETADATAMODEL_H

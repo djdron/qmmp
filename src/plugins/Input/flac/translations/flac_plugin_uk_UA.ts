@@ -1,85 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderFLACFactory</name>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="51"/>
+        <location filename="../decoderflacfactory.cpp" line="50"/>
         <source>FLAC Plugin</source>
         <translation>Модуль FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="53"/>
+        <location filename="../decoderflacfactory.cpp" line="52"/>
         <source>FLAC Files</source>
         <translation>Файли FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="120"/>
+        <location filename="../decoderflacfactory.cpp" line="131"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Про аудіо-модуль FLAC</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="121"/>
+        <location filename="../decoderflacfactory.cpp" line="132"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Аудіо-модуль FLAC для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="122"/>
+        <location filename="../decoderflacfactory.cpp" line="133"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>FLACMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="55"/>
+        <location filename="../flacmetadatamodel.cpp" line="47"/>
         <source>Length</source>
-        <translation>Тривалість</translation>
+        <translation type="unfinished">Тривалість</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
-        <source>Hz</source>
-        <translation>Гц</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
+        <location filename="../flacmetadatamodel.cpp" line="48"/>
         <source>Sample rate</source>
-        <translation>Частота</translation>
+        <translation type="unfinished">Частота</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="57"/>
+        <location filename="../flacmetadatamodel.cpp" line="48"/>
+        <source>Hz</source>
+        <translation type="unfinished">Гц</translation>
+    </message>
+    <message>
+        <location filename="../flacmetadatamodel.cpp" line="49"/>
         <source>Channels</source>
-        <translation>Канали</translation>
+        <translation type="unfinished">Канали</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../flacmetadatamodel.cpp" line="50"/>
         <source>Bitrate</source>
-        <translation>Бітрейт</translation>
+        <translation type="unfinished">Бітрейт</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
-        <source>bits</source>
-        <translation>біт</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
-        <source>File size</source>
-        <translation>Розмір файлу</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../flacmetadatamodel.cpp" line="50"/>
         <source>kbps</source>
-        <translation>Кб/с</translation>
+        <translation type="unfinished">Кб/с</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
-        <source>Sample width</source>
-        <translation>Ширина кадру</translation>
+        <location filename="../flacmetadatamodel.cpp" line="51"/>
+        <source>File size</source>
+        <translation type="unfinished">Розмір файлу</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
+        <location filename="../flacmetadatamodel.cpp" line="51"/>
         <source>KB</source>
-        <translation>Кб</translation>
+        <translation type="unfinished">Кб</translation>
     </message>
 </context>
 </TS>

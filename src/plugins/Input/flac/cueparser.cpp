@@ -152,6 +152,11 @@ FileInfo *CUEParser::info(int track)
     return &m_infoList[track - 1];
 }
 
+const QString CUEParser::trackURL(int track)
+{
+    return m_infoList[track - 1].path();
+}
+
 QStringList CUEParser::splitLine(const QString &line)
 {
     //qDebug("row string = %s",qPrintable(line));

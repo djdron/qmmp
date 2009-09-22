@@ -50,7 +50,6 @@ private:
     qint64 length_in_bytes;
     qint64 m_totalBytes;
     QString m_path;
-    QString m_nextURL;
     CUEParser *m_parser;
     int m_track;
     char *m_buf; //buffer for remainig data

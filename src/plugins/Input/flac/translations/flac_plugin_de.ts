@@ -4,82 +4,72 @@
 <context>
     <name>DecoderFLACFactory</name>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="51"/>
+        <location filename="../decoderflacfactory.cpp" line="50"/>
         <source>FLAC Plugin</source>
         <translation>FLAC-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="53"/>
+        <location filename="../decoderflacfactory.cpp" line="52"/>
         <source>FLAC Files</source>
         <translation>FLAC-Dateien</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="120"/>
+        <location filename="../decoderflacfactory.cpp" line="131"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Über FLAC-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="121"/>
+        <location filename="../decoderflacfactory.cpp" line="132"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>Qmmp FLAC-Audio-Modul</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="122"/>
+        <location filename="../decoderflacfactory.cpp" line="133"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>FLACMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
-        <source>kbps</source>
-        <translation>kbps</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
-        <source>Hz</source>
-        <translation>Hz</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="55"/>
+        <location filename="../flacmetadatamodel.cpp" line="47"/>
         <source>Length</source>
-        <translation>Länge</translation>
+        <translation type="unfinished">Länge</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="56"/>
+        <location filename="../flacmetadatamodel.cpp" line="48"/>
         <source>Sample rate</source>
-        <translation>Abtastrate</translation>
+        <translation type="unfinished">Abtastrate</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="57"/>
+        <location filename="../flacmetadatamodel.cpp" line="48"/>
+        <source>Hz</source>
+        <translation type="unfinished">Hz</translation>
+    </message>
+    <message>
+        <location filename="../flacmetadatamodel.cpp" line="49"/>
         <source>Channels</source>
-        <translation>Kanäle</translation>
+        <translation type="unfinished">Kanäle</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="58"/>
+        <location filename="../flacmetadatamodel.cpp" line="50"/>
         <source>Bitrate</source>
-        <translation>Bitrate</translation>
+        <translation type="unfinished">Bitrate</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
-        <source>Sample width</source>
-        <translation>Abtastauflösung</translation>
+        <location filename="../flacmetadatamodel.cpp" line="50"/>
+        <source>kbps</source>
+        <translation type="unfinished">kbps</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
-        <source>KB</source>
-        <translation>KB</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="60"/>
+        <location filename="../flacmetadatamodel.cpp" line="51"/>
         <source>File size</source>
-        <translation>Dateigröße</translation>
+        <translation type="unfinished">Dateigröße</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="59"/>
-        <source>bits</source>
-        <translation>Bits</translation>
+        <location filename="../flacmetadatamodel.cpp" line="51"/>
+        <source>KB</source>
+        <translation type="unfinished">KB</translation>
     </message>
 </context>
 </TS>

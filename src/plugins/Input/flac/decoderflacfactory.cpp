@@ -26,8 +26,8 @@
 #include <taglib/tmap.h>
 
 #include "cueparser.h"
-#include "detailsdialog.h"
 #include "decoder_flac.h"
+#include "flacmetadatamodel.h"
 #include "decoderflacfactory.h"
 
 
@@ -35,7 +35,6 @@
 
 bool DecoderFLACFactory::supports(const QString &source) const
 {
-
     return (source.right(5).toLower() == ".flac");
 }
 
@@ -59,10 +58,9 @@ const DecoderProperties DecoderFLACFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderFLACFactory::create(QObject *parent, QIODevice *input,
-                                    Output *output, const QString &path)
+Decoder *DecoderFLACFactory::create(const QString &path, QIODevice *i)
 {
-    return new DecoderFLAC(parent, this, input, output, path);
+    return new DecoderFLAC(path, i);
 }
 
 QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -120,11 +118,9 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
     return list;
 }
 
-QObject* DecoderFLACFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel*DecoderFLACFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
+    return new FLACMetaDataModel(path, parent);
 }
 
 void DecoderFLACFactory::showSettings(QWidget *)
@@ -145,4 +141,4 @@ QTranslator *DecoderFLACFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderFLACFactory)
+Q_EXPORT_PLUGIN2(flac,DecoderFLACFactory)

@@ -39,14 +39,14 @@ link_directories(${FLAC_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
 SET(libflac_SRCS
   decoder_flac.cpp
   decoderflacfactory.cpp
-  detailsdialog.cpp
+  flacmetadatamodel.cpp
   cueparser.cpp
 )
 
 SET(libflac_MOC_HDRS
   decoderflacfactory.h
   decoder_flac.h
-  detailsdialog.h
+  flacmetadatamodel.h
   cueparser.h
 )
 

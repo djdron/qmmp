@@ -257,15 +257,20 @@ static void flac_callback_error (const FLAC__StreamDecoder *,
 
 // Decoder class
 
-DecoderFLAC::DecoderFLAC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o, const QString &path)
-        : Decoder(parent, d, i, o)
+DecoderFLAC::DecoderFLAC(const QString &path, QIODevice *i)
+        : Decoder(i)
 {
     m_data = 0;
     m_path = path;
     m_data = new flac_data;
     m_data->decoder = NULL;
     data()->input = i;
-    m_cue_parser = 0;
+    m_parser = 0;
+    length_in_bytes = 0;
+    m_totalBytes = 0;
+    m_sz = 0;
+    m_buf = 0;
+    m_offset = 0;
 }
 
 
@@ -279,6 +284,9 @@ DecoderFLAC::~DecoderFLAC()
         delete data();
         m_data = 0;
     }
+    if(m_buf)
+        delete[] m_buf;
+    m_buf = 0;
 }
 
 bool DecoderFLAC::initialize()
@@ -303,26 +311,18 @@ bool DecoderFLAC::initialize()
             if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
             {
                 qDebug("DecoderFLAC: using cuesheet xiph comment.");
-                m_cue_parser = new CUEParser(xiph_comment->fieldListMap()["CUESHEET"].toString()
+                m_parser = new CUEParser(xiph_comment->fieldListMap()["CUESHEET"].toString()
                                             .toCString(TRUE), p);
-                int track = m_path.section("#", -1).toInt();
-                if(track > m_cue_parser->count())
+                m_track = m_path.section("#", -1).toInt();
+                if(m_track > m_parser->count())
                 {
                     qWarning("DecoderFLAC: invalid cuesheet xiph comment");
                     return FALSE;
                 }
                 data()->input = new QFile(p);
-                //send metadata
-                QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
-                StateHandler::instance()->dispatch(metaData);
-
-                connect(stateHandler(),SIGNAL(aboutToFinish()),SLOT(processFinish()));
-                //next url
-                m_nextUrl.clear();
-                if(track <= m_cue_parser->count() - 1)
-                    m_nextUrl = m_cue_parser->info(track + 1)->path();
-                m_totalTime = m_cue_parser->length(track);
-                setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
+                data()->input->open(QIODevice::ReadOnly);
+                QMap<Qmmp::MetaData, QString> metaData = m_parser->info(m_track)->metaData();
+                StateHandler::instance()->dispatch(metaData); //send metadata
             }
             else
             {
@@ -339,19 +339,10 @@ bool DecoderFLAC::initialize()
 
     if (!data()->input->isOpen())
     {
-        if (!data()->input->open(QIODevice::ReadOnly))
-        {
-            return FALSE;
-        }
+        qWarning("DecoderFLAC: unable to open input file");
+        return FALSE;
     }
 
-    if (! data()->input->isOpen())
-    {
-        if (! data()->input->open(QIODevice::ReadOnly))
-        {
-            return FALSE;
-        }
-    }
     m_data->bitrate = -1;
     m_data->abort = 0;
     m_data->sample_buffer_fill = 0;
@@ -388,8 +379,18 @@ bool DecoderFLAC::initialize()
         configure(data()->sample_rate, data()->channels, 32);
     else
         configure(data()->sample_rate, data()->channels, data()->bits_per_sample);
-    if(!m_cue_parser)
-        m_totalTime = data()->length;
+
+    if(m_parser)
+    {
+        m_length = m_parser->length(m_track);
+        m_offset = m_parser->offset(m_track);
+        length_in_bytes = audioParameters().sampleRate() *
+                          audioParameters().channels() *
+                          audioParameters().bits() * m_length/8000;
+        seek(0);
+    }
+    m_totalBytes = 0;
+    m_sz = audioParameters().bits() * audioParameters().channels()/8;
 
     qDebug("DecoderFLAC: initialize succes");
     return TRUE;
@@ -397,7 +398,9 @@ bool DecoderFLAC::initialize()
 
 qint64 DecoderFLAC::totalTime()
 {
-    return m_totalTime;
+    if(m_parser)
+        return m_length;
+    return data()->length;
 }
 
 int DecoderFLAC::bitrate()
@@ -405,16 +408,65 @@ int DecoderFLAC::bitrate()
     return data()->bitrate;
 }
 
-void DecoderFLAC::seekAudio(qint64 time)
+void DecoderFLAC::seek(qint64 time)
 {
+    m_totalBytes = audioParameters().sampleRate() *
+                   audioParameters().channels() *
+                   audioParameters().bits() * time/8000;
+    if(m_parser)
+        time += m_offset;
     FLAC__uint64 target_sample;
-    target_sample = (FLAC__uint64)((time/(double)data()->length) * (double)data()->total_samples);
+    target_sample = (FLAC__uint64)(((time) * data()->total_samples /data()->length));
     FLAC__stream_decoder_seek_absolute(data()->decoder, target_sample);
+
 }
 
-qint64 DecoderFLAC::readAudio(char *data, qint64 maxSize)
+qint64 DecoderFLAC::read(char *data, qint64 size)
 {
-    return flac_decode (this, (char *) (data), maxSize);
+    if(m_parser)
+    {
+        if(length_in_bytes - m_totalBytes < m_sz) //end of cue track
+            return 0;
+
+        qint64 len = 0;
+
+        if(m_buf) //read remaining data first
+        {
+            len = qMin(m_buf_size, size);
+            memmove(data, m_buf, len);
+            if(size >= m_buf_size)
+            {
+                delete[] m_buf;
+                m_buf = 0;
+                m_buf_size = 0;
+            }
+            else
+                memmove(m_buf, m_buf + len, size - len);
+        }
+        else
+            len = flac_decode (this, data, size);
+
+        if(len <= 0) //end of file
+            return 0;
+
+        if(len + m_totalBytes <= length_in_bytes)
+        {
+            m_totalBytes += len;
+            return len;
+        }
+
+        qint64 len2 = qMax(qint64(0), length_in_bytes - m_totalBytes);
+        len2 = (len2 / m_sz) * m_sz; //returned size must contain integer number of samples
+        m_totalBytes += len2;
+        //save data of the next track
+        if(m_buf)
+            delete[] m_buf;
+        m_buf_size = len - len2;
+        m_buf = new char[m_buf_size];
+        memmove(m_buf, data + len2, m_buf_size);
+        return len2;
+    }
+    return flac_decode (this, data, size);
 }
 
 void DecoderFLAC::deinit()
@@ -428,35 +480,30 @@ void DecoderFLAC::deinit()
         delete data()->input;
         data()->input = 0;
     };
-    if(m_cue_parser)
-        delete m_cue_parser;
-    m_cue_parser = 0;
+    if(m_parser)
+        delete m_parser;
+    m_parser = 0;
 }
 
-void DecoderFLAC::processFinish()
+const QString DecoderFLAC::nextURL()
 {
-    if(m_cue_parser && nextUrlRequest(m_nextUrl))
+    if(m_parser && m_track +1 <= m_parser->count())
+        return m_parser->trackURL(m_track + 1);
+    else
+        return QString();
+}
+
+void DecoderFLAC::next()
+{
+    if(m_parser && m_track +1 <= m_parser->count())
     {
-        qDebug("DecoderFLAC: going to next track");
-        int track = m_nextUrl.section("#", -1).toInt();
-        QString p = QUrl(m_nextUrl).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        //update current fragment
-        mutex()->lock();
-        setFragment(m_cue_parser->offset(track), m_cue_parser->length(track));
-        m_totalTime = m_cue_parser->length(track);
-        output()->seek(0); //reset time counter
-        mutex()->unlock();
-         // find next track
-        m_nextUrl.clear();
-        if(track <= m_cue_parser->count() - 1)
-            m_nextUrl = m_cue_parser->info(track + 1)->path();
-        //change track
-        emit playbackFinished();
-        //send metadata
-        QMap<Qmmp::MetaData, QString> metaData = m_cue_parser->info(track)->metaData();
-        stateHandler()->dispatch(metaData);
+        m_track++;
+        m_offset = m_parser->length(m_track);
+        m_length = m_parser->length(m_track);
+        length_in_bytes = audioParameters().sampleRate() *
+                          audioParameters().channels() *
+                          audioParameters().bits() * m_length/8000;
+        StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
+        m_totalBytes = 0;
     }
 }
-
