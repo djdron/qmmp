@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="lt">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="lt">
 <context>
     <name>DecoderSndFileFactory</name>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="65"/>
+        <location filename="../decodersndfilefactory.cpp" line="66"/>
         <source>Sndfile Plugin</source>
         <translation>Sndfile įskiepis</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="67"/>
+        <location filename="../decodersndfilefactory.cpp" line="68"/>
         <source>PCM Files</source>
         <translation>PCM bylos</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="127"/>
+        <location filename="../decodersndfilefactory.cpp" line="132"/>
         <source>About Sndfile Audio Plugin</source>
         <translation>Apie Sndfile Audio įskiepį</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="128"/>
+        <location filename="../decodersndfilefactory.cpp" line="133"/>
         <source>Qmmp Sndfile Audio Plugin</source>
         <translation>Qmmp Sndfile Audio įskiepis</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="129"/>
+        <location filename="../decodersndfilefactory.cpp" line="134"/>
         <source>Compiled against</source>
         <translation>Compiled against</translation>
     </message>
     <message>
-        <location filename="../decodersndfilefactory.cpp" line="130"/>
+        <location filename="../decodersndfilefactory.cpp" line="135"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

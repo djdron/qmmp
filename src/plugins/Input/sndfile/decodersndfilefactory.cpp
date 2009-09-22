@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -75,11 +75,9 @@ const DecoderProperties DecoderSndFileFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderSndFileFactory::create(QObject *parent, QIODevice *input,
-                                       Output *output, const QString &path)
+Decoder *DecoderSndFileFactory::create(const QString &path, QIODevice *)
 {
-    Q_UNUSED(input);
-    return new DecoderSndFile(parent, this, output, path);
+    return new DecoderSndFile(path);
 }
 
 QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -119,10 +117,8 @@ QList<FileInfo *> DecoderSndFileFactory::createPlayList(const QString &fileName,
     return list;
 }
 
-QObject* DecoderSndFileFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderSndFileFactory::createMetaDataModel(const QString&, QObject *)
 {
-    Q_UNUSED(parent);
-    Q_UNUSED(path);
     return 0;
 }
 
@@ -147,4 +143,4 @@ QTranslator *DecoderSndFileFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderSndFileFactory)
+Q_EXPORT_PLUGIN2(sndfile, DecoderSndFileFactory)

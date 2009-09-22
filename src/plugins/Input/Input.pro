@@ -4,7 +4,7 @@ SUBDIRS += mad cue
 TEMPLATE = subdirs
 
 unix{
-SUBDIRS += vorbis# sndfile wavpack
+SUBDIRS += vorbis sndfile# wavpack
 contains(CONFIG, MODPLUG_PLUGIN){
 #    SUBDIRS += modplug
     message(***************************)
@@ -20,7 +20,7 @@ contains(CONFIG, MUSEPACK_PLUGIN){
 }
 
 contains(CONFIG, FLAC_PLUGIN){
-#    SUBDIRS += flac
+    SUBDIRS += flac
     message(***********************)
     message(* FLAC plugin enabled *)
     message(***********************)

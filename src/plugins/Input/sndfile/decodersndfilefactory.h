@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,9 +30,6 @@
 #include <qmmp/decoderfactory.h>
 #include <qmmp/fileinfo.h>
 
-
-
-
 class DecoderSndFileFactory : public QObject,
                           DecoderFactory
 {
@@ -43,9 +40,9 @@ public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *, const QString &path);
+    Decoder *create(const QString &path, QIODevice *);
     QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    QObject* showDetails(QWidget *parent, const QString &path);
+    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

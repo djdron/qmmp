@@ -30,8 +30,8 @@
 
 // Decoder class
 
-DecoderSndFile::DecoderSndFile(QObject *parent, DecoderFactory *d, Output *o,  const QString &path)
-        : Decoder(parent, d, o)
+DecoderSndFile::DecoderSndFile(const QString &path)
+        : Decoder()
 {
     m_path = path;
     m_bitrate = 0;
@@ -91,12 +91,12 @@ int DecoderSndFile::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderSndFile::readAudio(char *audio, qint64 maxSize)
+qint64 DecoderSndFile::read(char *audio, qint64 maxSize)
 {
     return sizeof(short)* sf_read_short  (m_sndfile, (short *)audio, maxSize / sizeof(short));
 }
 
-void DecoderSndFile::seekAudio(qint64 pos)
+void DecoderSndFile::seek(qint64 pos)
 {
     sf_seek(m_sndfile, m_freq * pos/1000, SEEK_SET);
 }
