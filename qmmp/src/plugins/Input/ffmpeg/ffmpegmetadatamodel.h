@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,26 +17,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <qmmp/abstractdetailsdialog.h>
+#ifndef FFMPEGMETADATAMODEL_H
+#define FFMPEGMETADATAMODEL_H
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public AbstractDetailsDialog
+extern "C"
+{
+#if defined HAVE_FFMPEG_AVFORMAT_H
+#include <ffmpeg/avformat.h>
+#elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
+#include <libavformat/avformat.h>
+#else
+#include <avformat.h>
+#endif
+}
+
+#include <qmmp/metadatamodel.h>
+
+class FFmpegMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    FFmpegMetaDataModel(const QString &path, QObject *parent);
+    ~FFmpegMetaDataModel();
+    QHash<QString, QString> audioProperties();
 
-    ~DetailsDialog();
-
-private:    
-    void loadInfo();
-    QString m_path;
-
+private:
+    AVFormatContext *m_in;
 };
 
-#endif
+#endif // FFMPEGMETADATAMODEL_H

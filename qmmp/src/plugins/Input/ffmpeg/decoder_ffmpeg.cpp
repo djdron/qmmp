@@ -29,8 +29,8 @@
 
 // Decoder class
 
-DecoderFFmpeg::DecoderFFmpeg(QObject *parent, DecoderFactory *d, Output *o, const QString &path)
-        : Decoder(parent, d, o)
+DecoderFFmpeg::DecoderFFmpeg(const QString &path)
+        : Decoder()
 {
     m_bitrate = 0;
     m_skip = FALSE;
@@ -111,7 +111,7 @@ int DecoderFFmpeg::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderFFmpeg::readAudio(char *audio, qint64 maxSize)
+qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
 {
     if (m_skip)
     {
@@ -153,7 +153,7 @@ qint64 DecoderFFmpeg::ffmpeg_decode(char *audio, qint64 maxSize)
     return out_size;
 }
 
-void DecoderFFmpeg::seekAudio(qint64 pos)
+void DecoderFFmpeg::seek(qint64 pos)
 {
     int64_t timestamp = int64_t(pos)*AV_TIME_BASE/1000;
     if (ic->start_time != (qint64)AV_NOPTS_VALUE)

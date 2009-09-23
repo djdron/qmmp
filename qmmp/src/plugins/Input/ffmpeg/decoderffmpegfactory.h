@@ -30,9 +30,6 @@
 #include <qmmp/decoderfactory.h>
 #include <qmmp/fileinfo.h>
 
-
-
-
 class DecoderFFmpegFactory : public QObject,
                           DecoderFactory
 {
@@ -43,9 +40,9 @@ public:
     bool supports(const QString &source) const;
     bool canDecode(QIODevice *input) const;
     const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
+    Decoder *create(const QString &, QIODevice *);
     QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    QObject* showDetails(QWidget *parent, const QString &path);
+    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

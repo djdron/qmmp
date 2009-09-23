@@ -41,7 +41,7 @@ extern "C"
 #endif
 }
 
-#include "detailsdialog.h"
+#include "ffmpegmetadatamodel.h"
 #include "settingsdialog.h"
 #include "decoder_ffmpeg.h"
 #include "decoderffmpegfactory.h"
@@ -92,11 +92,10 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderFFmpegFactory::create(QObject *parent, QIODevice *input,
-                                      Output *output, const QString &path)
+Decoder *DecoderFFmpegFactory::create(const QString &path, QIODevice *input)
 {
     Q_UNUSED(input);
-    return new DecoderFFmpeg(parent, this, output, path);
+    return new DecoderFFmpeg(path);
 }
 
 QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -131,11 +130,9 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
     return list;
 }
 
-QObject* DecoderFFmpegFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderFFmpegFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
+    return new FFmpegMetaDataModel(path,parent);
 }
 
 void DecoderFFmpegFactory::showSettings(QWidget *parent)

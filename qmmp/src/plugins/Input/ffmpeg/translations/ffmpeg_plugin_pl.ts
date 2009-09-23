@@ -14,67 +14,67 @@
         <translation>Formaty FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="149"/>
+        <location filename="../decoderffmpegfactory.cpp" line="146"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>O wtyczce FFmpeg Audio</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="151"/>
+        <location filename="../decoderffmpegfactory.cpp" line="148"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Wtyczka FFmpeg Audio dla Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="153"/>
+        <location filename="../decoderffmpegfactory.cpp" line="150"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Skompilowane przy użyciu libavformat-%1.%2.%3 i libavcodec-%4.%5.%6</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="161"/>
+        <location filename="../decoderffmpegfactory.cpp" line="158"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>FFmpegMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="79"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
         <source>Length</source>
-        <translation>Długość</translation>
+        <translation type="unfinished">Długość</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="80"/>
-        <source>KB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="80"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>File size</source>
-        <translation>Wielkość pliku</translation>
+        <translation type="unfinished">Wielkość pliku</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
-        <source>kbps</source>
-        <translation></translation>
+        <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
+        <source>KB</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>Bitrate</source>
-        <translation>Szybkość transmisji</translation>
+        <translation type="unfinished">Szybkość transmisji</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
-        <source>Hz</source>
-        <translation></translation>
+        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
+        <source>kbps</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
         <source>Samplerate</source>
-        <translation>Próbkowanie</translation>
+        <translation type="unfinished">Próbkowanie</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="93"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
+        <source>Hz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ffmpegmetadatamodel.cpp" line="73"/>
         <source>Channels</source>
-        <translation>Kanały</translation>
+        <translation type="unfinished">Kanały</translation>
     </message>
 </context>
 <context>

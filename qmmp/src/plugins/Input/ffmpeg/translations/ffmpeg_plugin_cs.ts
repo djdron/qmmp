@@ -4,17 +4,17 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="149"/>
+        <location filename="../decoderffmpegfactory.cpp" line="146"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>O modulu FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="151"/>
+        <location filename="../decoderffmpegfactory.cpp" line="148"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Vstupní modul Qmmp FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="161"/>
+        <location filename="../decoderffmpegfactory.cpp" line="158"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -29,52 +29,52 @@
         <translation>Formáty FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="153"/>
+        <location filename="../decoderffmpegfactory.cpp" line="150"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Přeloženo s libavformat-%1.%2.%3 a libavcodec-%4.%5.%6</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>FFmpegMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="80"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
         <source>Length</source>
-        <translation>Délka</translation>
+        <translation type="unfinished">Délka</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>File size</source>
-        <translation>Velikost souboru</translation>
+        <translation type="unfinished">Velikost souboru</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="82"/>
-        <source>kbps</source>
-        <translation>kbps</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="82"/>
-        <source>Bitrate</source>
-        <translation>Datový tok</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="93"/>
-        <source>Hz</source>
-        <translation>Hz</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="93"/>
-        <source>Samplerate</source>
-        <translation>Vzorkovací frekvence</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="94"/>
-        <source>Channels</source>
-        <translation>Počet kanálů</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation type="unfinished">KB</translation>
+    </message>
+    <message>
+        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
+        <source>Bitrate</source>
+        <translation type="unfinished">Datový tok</translation>
+    </message>
+    <message>
+        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
+        <source>kbps</source>
+        <translation type="unfinished">kbps</translation>
+    </message>
+    <message>
+        <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
+        <source>Samplerate</source>
+        <translation type="unfinished">Vzorkovací frekvence</translation>
+    </message>
+    <message>
+        <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
+        <source>Hz</source>
+        <translation type="unfinished">Hz</translation>
+    </message>
+    <message>
+        <location filename="../ffmpegmetadatamodel.cpp" line="73"/>
+        <source>Channels</source>
+        <translation type="unfinished">Počet kanálů</translation>
     </message>
 </context>
 <context>
