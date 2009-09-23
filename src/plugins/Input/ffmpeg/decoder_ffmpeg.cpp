@@ -38,6 +38,7 @@ DecoderFFmpeg::DecoderFFmpeg(const QString &path)
     ic = 0;
     m_path = path;
     m_temp_pkt.size = 0;
+    m_pkt.size = 0;
 }
 
 
@@ -160,7 +161,8 @@ void DecoderFFmpeg::seek(qint64 pos)
         timestamp += ic->start_time;
     av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
     avcodec_flush_buffers(c);
-    m_skip = TRUE;
+    if(m_pkt.size)
+        m_skip = TRUE;
 }
 
 void DecoderFFmpeg::fillBuffer()
