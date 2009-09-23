@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QMap>
-#include <QFileInfo>
 #include "wavpackmetadatamodel.h"
 
 WavPackMetaDataModel::WavPackMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
@@ -56,8 +55,7 @@ QHash<QString, QString> WavPackMetaDataModel::audioProperties()
     ap.insert(tr("Channels"), QString("%1").arg((int) WavpackGetNumChannels(m_ctx)));
     ap.insert(tr("Bitrate"), QString("%1 " + tr("kbps"))
            .arg((int) WavpackGetAverageBitrate(m_ctx, WavpackGetNumChannels(m_ctx))/1000));
-    /*QFileInfo info(m_path);
-    ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(info.size()/1024));*/
+    ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(WavpackGetFileSize(m_ctx)/1024));
     ap.insert(tr("Ratio"), QString("%1").arg(WavpackGetRatio(m_ctx)));
     ap.insert(tr("Version"), QString("%1").arg(WavpackGetVersion(m_ctx)));
     return ap;
