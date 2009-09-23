@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,15 +17,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-extern "C"{
-#if defined HAVE_FFMPEG_AVFORMAT_H
-#include <ffmpeg/avformat.h>
-#elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
-#include <libavformat/avformat.h>
-#else
-#include <avformat.h>
-#endif
 
+
+extern "C"
+{
 #if defined HAVE_FFMPEG_AVCODEC_H
 #include <ffmpeg/avcodec.h>
 #elif defined HAVE_LIBAVCODEC_AVCODEC_H
@@ -34,58 +29,42 @@ extern "C"{
 #include <avcodec.h>
 #endif
 }
+#include "ffmpegmetadatamodel.h"
 
-#include <QFile>
-#include <QFileInfo>
-
-#include "detailsdialog.h"
-
-DetailsDialog::DetailsDialog(QWidget *parent, const QString &path)
-        : AbstractDetailsDialog(parent)
+FFmpegMetaDataModel::FFmpegMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
-    m_path = path;
-    if (QFile::exists(m_path))
-        loadInfo();
-    hideSaveButton();
-}
-
-DetailsDialog::~DetailsDialog()
-{}
-
-void DetailsDialog::loadInfo()
-{
-    AVFormatContext *in;
+    m_in = 0;
     avcodec_init();
     avcodec_register_all();
     av_register_all();
-    if (av_open_input_file(&in, m_path.toLocal8Bit(), NULL,0, NULL) < 0)
+    if (av_open_input_file(&m_in, path.toLocal8Bit(), NULL,0, NULL) < 0)
         return;
-    av_find_stream_info(in);
-    av_read_play(in);
+    av_find_stream_info(m_in);
+    av_read_play(m_in);
+}
 
-    //tags
-    setMetaData(Qmmp::TITLE, QString::fromUtf8(in->title).trimmed());
-    setMetaData(Qmmp::ARTIST, QString::fromUtf8(in->author).trimmed());
-    setMetaData(Qmmp::ALBUM, QString::fromUtf8(in->album).trimmed());
-    setMetaData(Qmmp::COMMENT, QString::fromUtf8(in->comment).trimmed());
-    setMetaData(Qmmp::GENRE, QString::fromUtf8(in->genre).trimmed());
-    setMetaData(Qmmp::URL, m_path);
-    setMetaData(Qmmp::YEAR, in->year);
-    setMetaData(Qmmp::TRACK, in->track);
+FFmpegMetaDataModel::~FFmpegMetaDataModel()
+{
+    if(m_in)
+        av_close_input_file(m_in);
+}
 
-    //audio properties
-    QMap <QString, QString> ap;
-    QString text = QString("%1").arg(int(in->duration/AV_TIME_BASE)/60);
-    text +=":"+QString("%1").arg(int(in->duration/AV_TIME_BASE)%60,2,10,QChar('0'));
+QHash<QString, QString> FFmpegMetaDataModel::audioProperties()
+{
+    QHash<QString, QString> ap;
+    if(!m_in)
+        return ap;
+    QString text = QString("%1").arg(int(m_in->duration/AV_TIME_BASE)/60);
+    text +=":"+QString("%1").arg(int(m_in->duration/AV_TIME_BASE)%60,2,10,QChar('0'));
     ap.insert(tr("Length"), text);
-    ap.insert(tr("File size"),  QString("%1 ").arg(in->file_size/1024)+" "+tr("KB"));
-    ap.insert(tr("Bitrate"), QString("%1 "+tr("kbps")).arg(in->bit_rate/1000));
+    ap.insert(tr("File size"),  QString("%1 ").arg(m_in->file_size/1024)+" "+tr("KB"));
+    ap.insert(tr("Bitrate"), QString("%1 "+tr("kbps")).arg(m_in->bit_rate/1000));
 
     AVCodecContext *c = 0;
     uint wma_idx;
-    for (wma_idx = 0; wma_idx < in->nb_streams; wma_idx++)
+    for (wma_idx = 0; wma_idx < m_in->nb_streams; wma_idx++)
     {
-        c = in->streams[wma_idx]->codec;
+        c = m_in->streams[wma_idx]->codec;
         if (c->codec_type == CODEC_TYPE_AUDIO) break;
     }
     if (c)
@@ -93,6 +72,5 @@ void DetailsDialog::loadInfo()
         ap.insert(tr("Samplerate"), QString("%1 " + tr("Hz")).arg(c->sample_rate));
         ap.insert(tr("Channels"), QString("%1").arg(c->channels));
     }
-    av_close_input_file(in);
-    setAudioProperties(ap);
+    return ap;
 }

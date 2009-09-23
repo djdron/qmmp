@@ -45,17 +45,17 @@ extern "C"{
 class DecoderFFmpeg : public Decoder
 {
 public:
-    DecoderFFmpeg(QObject *, DecoderFactory *, Output *, const QString &);
+    DecoderFFmpeg(const QString &);
     virtual ~DecoderFFmpeg();
 
     // Standard Decoder API
     bool initialize();
     qint64 totalTime();
     int bitrate();
+    qint64 read(char *audio, qint64 maxSize);
+    void seek(qint64 time);
 
-private:
-    qint64 readAudio(char *audio, qint64 maxSize);
-    void seekAudio(qint64 time);
+private:    
     //helper functions
     void fillBuffer();
     qint64 ffmpeg_decode(char *audio, qint64 maxSize);

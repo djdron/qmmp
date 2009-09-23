@@ -1,13 +1,13 @@
 include(../../plugins.pri)
 FORMS += settingsdialog.ui
 HEADERS += decoderffmpegfactory.h \
-    detailsdialog.h \
     decoder_ffmpeg.h \
-    settingsdialog.h
-SOURCES += detailsdialog.cpp \
-    decoder_ffmpeg.cpp \
+    settingsdialog.h \
+    ffmpegmetadatamodel.h
+SOURCES += decoder_ffmpeg.cpp \
     decoderffmpegfactory.cpp \
-    settingsdialog.cpp
+    settingsdialog.cpp \
+    ffmpegmetadatamodel.cpp
 QMAKE_CLEAN = ../libffmpeg.so
 TARGET = $$PLUGINS_PREFIX/Input/ffmpeg
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libffmpeg.so

@@ -69,14 +69,14 @@ ADD_DEFINITIONS(${LIBAVFORMAT_CFLAGS})
 SET(libffmpeg_SRCS
   decoder_ffmpeg.cpp
   decoderffmpegfactory.cpp
-  detailsdialog.cpp
+  ffmpegmetadatamodel.cpp
   settingsdialog.cpp
 )
 
 SET(libffmpeg_MOC_HDRS
   decoderffmpegfactory.h
   decoder_ffmpeg.h
-  detailsdialog.h
+  ffmpegmetadatamodel.h
   settingsdialog.h
 )
 
