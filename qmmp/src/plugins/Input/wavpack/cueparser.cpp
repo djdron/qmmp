@@ -192,6 +192,6 @@ qint64 CUEParser::getLength(const QString &str)
     if (list.size() == 2)
         return (qint64)list.at(0).toInt()*60000 + list.at(1).toInt()*1000;
     else if (list.size() == 3)
-        return (qint64)list.at(0).toInt()*60000 + list.at(1).toInt()*1000 + list.at(1).toInt()*1000/75;
+        return (qint64)list.at(0).toInt()*60000 + list.at(1).toInt()*1000 + list.at(2).toInt()*1000/75;
     return 0;
 }
