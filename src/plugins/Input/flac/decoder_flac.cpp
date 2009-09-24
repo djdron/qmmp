@@ -415,8 +415,7 @@ void DecoderFLAC::seek(qint64 time)
                    audioParameters().bits() * time/8000;
     if(m_parser)
         time += m_offset;
-    FLAC__uint64 target_sample;
-    target_sample = FLAC__uint64(time * data()->total_samples /data()->length);
+    FLAC__uint64 target_sample = FLAC__uint64(time * data()->total_samples /data()->length);
     FLAC__stream_decoder_seek_absolute(data()->decoder, target_sample);
 
 }
