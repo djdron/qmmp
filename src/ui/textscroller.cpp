@@ -96,7 +96,6 @@ void TextScroller::setText(const QString& text)
         m_scrollText = "*** " + text;
         x = m_autoscroll ? -50 : -150;
         m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
-        qDebug("==== %s", m_text.toLatin1().constData());
     }
     update();
 }
