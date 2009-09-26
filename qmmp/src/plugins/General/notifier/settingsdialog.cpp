@@ -51,7 +51,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.volumeCheckBox->setChecked(settings.value("volume_notification", TRUE).toBool());
     ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
     QString fontname = settings.value ("font").toString();
-    ui.sizeSpinBox->setValue(settings.value ("cover_size", 48).toInt());
+    ui.sizeSpinBox->setValue(settings.value ("cover_size", 64).toInt());
     settings.endGroup();
     QFont font;
     if(!fontname.isEmpty())
