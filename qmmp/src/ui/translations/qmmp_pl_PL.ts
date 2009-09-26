@@ -200,57 +200,57 @@
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="534"/>
+        <location filename="../configdialog.cpp" line="535"/>
         <source>Artist</source>
         <translation>Artysta</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="535"/>
+        <location filename="../configdialog.cpp" line="536"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="536"/>
+        <location filename="../configdialog.cpp" line="537"/>
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="537"/>
+        <location filename="../configdialog.cpp" line="538"/>
         <source>Track number</source>
         <translation>Numer utworu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="538"/>
+        <location filename="../configdialog.cpp" line="539"/>
         <source>Disc number</source>
         <translation>Numer albumu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="539"/>
+        <location filename="../configdialog.cpp" line="540"/>
         <source>Genre</source>
         <translation>Gatunek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="540"/>
+        <location filename="../configdialog.cpp" line="541"/>
         <source>Composer</source>
         <translation>Kompozytor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="541"/>
+        <location filename="../configdialog.cpp" line="542"/>
         <source>File name</source>
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="542"/>
+        <location filename="../configdialog.cpp" line="543"/>
         <source>File path</source>
         <translation>Lokalizacja</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="543"/>
+        <location filename="../configdialog.cpp" line="544"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="544"/>
+        <location filename="../configdialog.cpp" line="545"/>
         <source>Comment</source>
         <translation>Komentarz</translation>
     </message>
@@ -260,76 +260,76 @@
         <translation>Ustawienia Qmmp</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="171"/>
+        <location filename="../forms/configdialog.ui" line="160"/>
         <source>Skins</source>
         <translation>Skóry</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="231"/>
+        <location filename="../forms/configdialog.ui" line="237"/>
         <source>Fonts</source>
         <translation>Czcionki</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="243"/>
+        <location filename="../forms/configdialog.ui" line="255"/>
         <source>Player:</source>
         <translation>Odtwarzacz:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="279"/>
+        <location filename="../forms/configdialog.ui" line="303"/>
         <source>Playlist:</source>
         <translation>Lista odtwarzania:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="259"/>
-        <location filename="../forms/configdialog.ui" line="295"/>
+        <location filename="../forms/configdialog.ui" line="277"/>
+        <location filename="../forms/configdialog.ui" line="325"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="266"/>
-        <location filename="../forms/configdialog.ui" line="302"/>
-        <location filename="../forms/configdialog.ui" line="357"/>
+        <location filename="../forms/configdialog.ui" line="284"/>
+        <location filename="../forms/configdialog.ui" line="332"/>
+        <location filename="../forms/configdialog.ui" line="411"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="316"/>
+        <location filename="../forms/configdialog.ui" line="370"/>
         <source>Metadata</source>
         <translation>Metadane</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="328"/>
+        <location filename="../forms/configdialog.ui" line="382"/>
         <source>Load metadata from files</source>
         <translation>Załaduj metadane z pliku</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
+        <location filename="../forms/configdialog.ui" line="392"/>
         <source>Song Display</source>
         <translation>Wyświetlanie utworu</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="344"/>
+        <location filename="../forms/configdialog.ui" line="398"/>
         <source>Title format:</source>
         <translation>Format tytułu:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="476"/>
+        <location filename="../forms/configdialog.ui" line="530"/>
         <source>Input</source>
         <translation>Wejście</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="499"/>
+        <location filename="../forms/configdialog.ui" line="553"/>
         <source>Output</source>
         <translation>Wyjście</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="433"/>
+        <location filename="../forms/configdialog.ui" line="487"/>
         <source>Preferences</source>
         <translation>Ustawienia</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="446"/>
-        <location filename="../forms/configdialog.ui" line="638"/>
+        <location filename="../forms/configdialog.ui" line="500"/>
+        <location filename="../forms/configdialog.ui" line="692"/>
         <source>Information</source>
         <translation>Informacje</translation>
     </message>
@@ -340,7 +340,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="101"/>
-        <location filename="../forms/configdialog.ui" line="721"/>
+        <location filename="../forms/configdialog.ui" line="775"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>
@@ -355,7 +355,7 @@
         <translation>Zaawansowane</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="896"/>
+        <location filename="../forms/configdialog.ui" line="950"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
@@ -375,154 +375,164 @@
         <translation>Sieć</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="516"/>
+        <location filename="../forms/configdialog.ui" line="570"/>
         <source>Visualization</source>
         <translation>Wizualizacje</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="533"/>
+        <location filename="../forms/configdialog.ui" line="587"/>
         <source>Effects</source>
         <translation>Efekty</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="550"/>
+        <location filename="../forms/configdialog.ui" line="604"/>
         <source>General</source>
         <translation>Ogólne</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="629"/>
+        <location filename="../forms/configdialog.ui" line="683"/>
         <source>File Dialog</source>
         <translation>Okno dialogowe</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="574"/>
+        <location filename="../forms/configdialog.ui" line="628"/>
         <source>Audio</source>
         <translation>Dźwięk</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="385"/>
+        <location filename="../forms/configdialog.ui" line="225"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="339"/>
+        <source>Use bitmap font if available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="439"/>
         <source>Show song numbers</source>
         <translation>Wyświetl numery utworów na liście odtwarzania</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="580"/>
+        <location filename="../forms/configdialog.ui" line="634"/>
         <source>Use software volume control</source>
         <translation>Użyj programowej regulacji głośności</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="590"/>
+        <location filename="../forms/configdialog.ui" line="644"/>
         <source>Visibility Control</source>
         <translation>Sterowanie</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="596"/>
+        <location filename="../forms/configdialog.ui" line="650"/>
         <source>Hide on close</source>
         <translation>Zminimalizuj przy zamykaniu</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="603"/>
+        <location filename="../forms/configdialog.ui" line="657"/>
         <source>Start hidden</source>
         <translation>Uruchom zminimalizowany</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="613"/>
+        <location filename="../forms/configdialog.ui" line="667"/>
         <source>Compatibility</source>
         <translation>Kompatybilność</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="619"/>
+        <location filename="../forms/configdialog.ui" line="673"/>
         <source>Openbox compatibility</source>
         <translation>Zgodność z Openbox</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="764"/>
+        <location filename="../forms/configdialog.ui" line="818"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="776"/>
+        <location filename="../forms/configdialog.ui" line="830"/>
         <source>Enable proxy usage</source>
         <translation>Włącz proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="783"/>
+        <location filename="../forms/configdialog.ui" line="837"/>
         <source>Proxy host name:</source>
         <translation>Nazwa hosta proxy:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="796"/>
+        <location filename="../forms/configdialog.ui" line="850"/>
         <source>Proxy port:</source>
         <translation>Port proxy:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="809"/>
+        <location filename="../forms/configdialog.ui" line="863"/>
         <source>Use authentication with proxy</source>
         <translation>Użyj autoryzacji z proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="816"/>
+        <location filename="../forms/configdialog.ui" line="870"/>
         <source>Proxy user name:</source>
         <translation>Nazwa użytkownika:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="829"/>
+        <location filename="../forms/configdialog.ui" line="883"/>
         <source>Proxy password:</source>
         <translation>Hasło:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="364"/>
+        <location filename="../forms/configdialog.ui" line="418"/>
         <source>Convert underscores to blanks</source>
         <translation>Konwertuj podkreślenia na spacje</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="371"/>
+        <location filename="../forms/configdialog.ui" line="425"/>
         <source>Convert %20 to blanks</source>
         <translation>Konwertuj sekwencje %20 na spacje</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="664"/>
+        <location filename="../configdialog.cpp" line="666"/>
         <source>Select Skin Files</source>
         <translation>Wybierz skórę</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="665"/>
+        <location filename="../configdialog.cpp" line="667"/>
         <source>Skin files</source>
         <translation>Pliki skór</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="202"/>
+        <location filename="../forms/configdialog.ui" line="191"/>
         <source>Add...</source>
         <translation>Dodaj...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="215"/>
+        <location filename="../forms/configdialog.ui" line="204"/>
         <source>Refresh</source>
         <translation>Odśwież</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="378"/>
+        <location filename="../forms/configdialog.ui" line="432"/>
         <source>Show protocol</source>
         <translation>Pokaż protokół</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="661"/>
+        <location filename="../forms/configdialog.ui" line="715"/>
         <source>Transparency</source>
         <translation>Przezroczystość</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="667"/>
+        <location filename="../forms/configdialog.ui" line="721"/>
         <source>Main window</source>
         <translation>Okno główne</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="690"/>
-        <location filename="../forms/configdialog.ui" line="714"/>
-        <location filename="../forms/configdialog.ui" line="738"/>
+        <location filename="../forms/configdialog.ui" line="744"/>
+        <location filename="../forms/configdialog.ui" line="768"/>
+        <location filename="../forms/configdialog.ui" line="792"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="697"/>
+        <location filename="../forms/configdialog.ui" line="751"/>
         <source>Equalizer</source>
         <translation>Equalizer</translation>
     </message>
@@ -1207,42 +1217,42 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="155"/>
+        <location filename="../qmmpstarter.cpp" line="153"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Użycie: qmmp [opcje] [pliki]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="156"/>
+        <location filename="../qmmpstarter.cpp" line="154"/>
         <source>Options:</source>
         <translation>Opcje:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="162"/>
+        <location filename="../qmmpstarter.cpp" line="160"/>
         <source>Print version number and exit</source>
         <translation>Wyświetla wersję programu i wychodzi</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="163"/>
+        <location filename="../qmmpstarter.cpp" line="161"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Pomysły, poprawki, raporty o błędach proszę wysyłać na forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="161"/>
+        <location filename="../qmmpstarter.cpp" line="159"/>
         <source>Display this text and exit</source>
         <translation>Wyświetla ten tekst i wychodzi</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="168"/>
+        <location filename="../qmmpstarter.cpp" line="166"/>
         <source>QMMP version:</source>
         <translation>Wersja QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="158"/>
+        <location filename="../qmmpstarter.cpp" line="156"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Nie czyść listy</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="169"/>
+        <location filename="../qmmpstarter.cpp" line="167"/>
         <source>Qt version:</source>
         <translation>Wersja QT:</translation>
     </message>
@@ -1250,7 +1260,7 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="177"/>
+        <location filename="../textscroller.cpp" line="211"/>
         <source>Buffering:</source>
         <translation>Buforowanie:</translation>
     </message>
