@@ -74,7 +74,7 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
     connect (ui.skinInstallButton, SIGNAL (clicked()), SLOT(installSkin()));
     connect (ui.skinReloadButton, SIGNAL (clicked()), SLOT(loadSkins()));
     connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)), this, SLOT (changeSkin()));
-    ui.listWidget->setIconSize (QSize (69,29));
+    ui.listWidget->setIconSize (QSize (105,34));
     m_skin = Skin::getPointer();
     readSettings();
     m_reader = new SkinReader(this);
@@ -400,6 +400,7 @@ void ConfigDialog::loadFonts()
         font.fromString(fontname);
     ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.mainFontLabel->setFont(font);
+    ui.useBitmapCheckBox->setChecked(settings.value("MainWindow/bitmap_font", FALSE).toBool());
 }
 
 void ConfigDialog::setPlFont()
@@ -583,7 +584,8 @@ void ConfigDialog::saveSettings()
     settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
     settings.setValue ("Equalizer/opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
     settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
-    settings.setValue("General/openbox_compat", ui.openboxCheckBox->isChecked());
+    settings.setValue ("General/openbox_compat", ui.openboxCheckBox->isChecked());
+    settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
 }
 
 void ConfigDialog::updateButtons()

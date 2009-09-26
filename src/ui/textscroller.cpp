@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -95,6 +95,8 @@ void TextScroller::setText(const QString& text)
         m_text = text;
         m_scrollText = "*** " + text;
         x = m_autoscroll ? -50 : -150;
+        m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
+        qDebug("==== %s", m_text.toLatin1().constData());
     }
     update();
 }
@@ -124,18 +126,20 @@ void TextScroller::setAutoscroll(bool enabled)
 void TextScroller::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value("MainWindow/Font").toString();
-    if(!fontname.isEmpty())
-        m_font.fromString(fontname);
+    QString fontname = settings.value("MainWindow/Font","").toString();
+    m_bitmapConf = settings.value("MainWindow/bitmap_font", FALSE).toBool();
+    m_font.fromString(fontname);
 
     if (m_update)
     {
         delete m_metrics;
         m_metrics = new QFontMetrics(m_font);
+        m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
     }
     else
     {
         m_update = TRUE;
+        m_bitmap = FALSE;
         m_metrics = new QFontMetrics(m_font);
     }
 }
@@ -158,6 +162,23 @@ void TextScroller::showEvent (QShowEvent *)
         m_timer->start();
 }
 
+inline void drawBitmapText(int x, int y, const QString &text, QPainter *paint, const Skin *skin)
+{
+    QString lowertext = text.toLower();
+    int chwidth, ypix;
+    {
+        QPixmap samplechar = skin->getLetter('a');
+        chwidth = samplechar.width();
+        ypix = y - samplechar.height();
+    }
+    for (int i = 0; i < lowertext.size(); i++)
+    {
+        QPixmap pixchar = skin->getLetter(lowertext[i]);
+        paint->drawPixmap(x, ypix, pixchar);
+        x += chwidth;
+    }
+}
+
 void TextScroller::paintEvent (QPaintEvent *)
 {
     QPainter paint (this);
@@ -165,13 +186,26 @@ void TextScroller::paintEvent (QPaintEvent *)
     paint.setFont(m_font);
     if (m_progress < 0)
     {
-        if (m_autoscroll)
+        if(m_bitmap)
         {
-            paint.drawText (154 + x + m_metrics->width (m_scrollText) + 15,12, m_scrollText);
-            paint.drawText (154 + x,12, m_scrollText);
+            if (m_autoscroll)
+            {
+                drawBitmapText (154 + x + m_scrollText.size() * 5 + 15, 12, m_scrollText, &paint, m_skin);
+                drawBitmapText (154 + x, 12, m_scrollText, &paint, m_skin);
+            }
+            else
+                drawBitmapText (154 + x,12, m_text, &paint, m_skin);
         }
         else
-            paint.drawText (154 + x,12, m_text);
+        {
+            if (m_autoscroll)
+            {
+                paint.drawText (154 + x + m_metrics->width (m_scrollText) + 15,12, m_scrollText);
+                paint.drawText (154 + x, 12, m_scrollText);
+            }
+            else
+                paint.drawText (154 + x,12, m_text);
+        }
     }
     else
         paint.drawText (4,12, tr("Buffering:") + QString(" %1\%").arg(m_progress));
@@ -181,11 +215,13 @@ void TextScroller::mousePressEvent (QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
-    else if (e->button() == Qt::LeftButton && m_autoscroll) {
+    else if (e->button() == Qt::LeftButton && m_autoscroll)
+    {
         m_timer->stop();
         press_pos = e->x() - (x + 154);
         m_pressing = TRUE;
-    } else
+    }
+    else
         QWidget::mousePressEvent(e);
 }
 
@@ -193,22 +229,26 @@ void TextScroller::mouseReleaseEvent (QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
-    else if (e->button() == Qt::LeftButton && m_autoscroll) {
+    else if (e->button() == Qt::LeftButton && m_autoscroll)
+    {
         m_timer->start();
         m_pressing = FALSE;
-    } else
+    }
+    else
         QWidget::mouseReleaseEvent(e);
 }
 
 void TextScroller::mouseMoveEvent (QMouseEvent *e)
 {
-    if (m_pressing) {
+    if (m_pressing)
+    {
         int bound = m_metrics->width (m_scrollText) + 15 - 1;
         x = (e->x() - press_pos) % bound;
         if (x < 0)
         	x += bound;
         x = x - bound - 154;
         update();
-    } else
+    }
+    else
         QWidget::mouseMoveEvent(e);
 }
