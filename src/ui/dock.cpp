@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include <QAction>
+#include <QDesktopWidget>
+#include <QApplication>
 
 #include "dock.h"
 
@@ -27,13 +29,13 @@ Dock *Dock::pointer = 0;
 
 Dock *Dock::getPointer()
 {
-    if ( !pointer )
+    if (!pointer)
         pointer = new Dock();
     return pointer;
 }
 
-Dock::Dock ( QObject *parent )
-        : QObject ( parent )
+Dock::Dock (QObject *parent)
+        : QObject (parent)
 {
     pointer = this;
     m_mainWidget = 0;
@@ -42,121 +44,124 @@ Dock::Dock ( QObject *parent )
 Dock::~Dock()
 {}
 
-void Dock::setMainWidget ( QWidget *widget )
+void Dock::setMainWidget (QWidget *widget)
 {
     m_mainWidget = widget;
-    m_widgetList.prepend ( widget );
-    m_dockedList.prepend ( FALSE );
+    m_widgetList.prepend (widget);
+    m_dockedList.prepend (FALSE);
 }
 
 
-QPoint Dock::snap ( QPoint npos, QWidget* mv, QWidget* st )
+QPoint Dock::snap (QPoint npos, QWidget* mv, QWidget* st)
 {
     int nx = npos.x() - st->x();
-    int ny = abs ( npos.y() - st->y() + mv->height() );
+    int ny = abs (npos.y() - st->y() + mv->height());
 
-    if ( abs ( nx ) < 13 && ny < 13 ) //above
+    if (abs (nx) < 13 && ny < 13) //above
         npos.rx() = st->x();
-    if ( ny < 13 && nx > -mv->width() && nx < st->width() )
+    if (ny < 13 && nx > -mv->width() && nx < st->width())
         npos.ry() = st->y() - mv->height();
-    nx = abs ( npos.x() + mv->width() - st->x() - st->width() );
-    if ( nx < 13 && ny < 13 )
+    nx = abs (npos.x() + mv->width() - st->x() - st->width());
+    if (nx < 13 && ny < 13)
         npos.rx() = st->x() + st->width() - mv->width();
 
     /***********/
     nx = npos.x() - st->x();
-    ny = abs ( npos.y() - st->y() - st->height() );
+    ny = abs (npos.y() - st->y() - st->height());
 
-    if ( abs ( nx ) < 13 && ny < 13 ) //near
+    if (abs (nx) < 13 && ny < 13) //near
         npos.rx() = st->x();
-    if ( ny < 13 && nx > -mv->width() && nx < st->width() )
+    if (ny < 13 && nx > -mv->width() && nx < st->width())
         npos.ry() = st->y() + st->height();
-    nx = abs ( npos.x() + mv->width() - st->x() - st->width() );
-    if ( nx < 13 && ny < 13 )
+    nx = abs (npos.x() + mv->width() - st->x() - st->width());
+    if (nx < 13 && ny < 13)
         npos.rx() = st->x() + st->width() - mv->width();
     /**************/
-    nx = abs ( npos.x() - st->x() + mv->width() );
+    nx = abs (npos.x() - st->x() + mv->width());
     ny = npos.y() - st->y();
 
-    if ( nx < 13 && abs ( ny ) < 13 ) //left
+    if (nx < 13 && abs (ny) < 13) //left
         npos.ry() = st->y();
-    if ( nx < 13 && ny > -mv->height() && ny < st->height() )
+    if (nx < 13 && ny > -mv->height() && ny < st->height())
         npos.rx() = st->x() - mv->width();
 
-    ny = abs ( npos.y() + mv->height() - st->y() - st->height() );
-    if ( nx < 13 && ny < 13 )
+    ny = abs (npos.y() + mv->height() - st->y() - st->height());
+    if (nx < 13 && ny < 13)
         npos.ry() = st->y() + st->height() - mv->height();
     /*****************/
-    nx = abs ( npos.x() - st->x() - st->width() );
+    nx = abs (npos.x() - st->x() - st->width());
     ny = npos.y() - st->y();
 
-    if ( nx < 13 && abs ( ny ) < 13 ) //right
+    if (nx < 13 && abs (ny) < 13) //right
         npos.ry() = st->y();
-    if ( nx < 13 && ny > -mv->height() && ny < st->height() )
+    if (nx < 13 && ny > -mv->height() && ny < st->height())
         npos.rx() = st->x() + st->width();
 
-    ny = abs ( npos.y() + mv->height() - st->y() - st->height() );
-    if ( nx < 13 && ny < 13 )
+    ny = abs (npos.y() + mv->height() - st->y() - st->height());
+    if (nx < 13 && ny < 13)
         npos.ry() = st->y() + st->height() - mv->height();
 
-    return ( npos );
+    return (npos);
 }
 
-void Dock::addWidget ( QWidget *widget )
+void Dock::addWidget (QWidget *widget)
 {
-    m_widgetList.append ( widget );
-    m_dockedList.append ( FALSE );
+    m_widgetList.append (widget);
+    m_dockedList.append (FALSE);
     widget->addActions(m_actions);
 
 }
 
-void Dock::move ( QWidget* mv, QPoint npos )
+void Dock::move (QWidget* mv, QPoint npos)
 {
-    if ( mv == m_mainWidget )
+    QRect DesktopRect = QApplication::desktop()->availableGeometry(m_mainWidget);
+    if(npos.y() < DesktopRect.y())
+        npos.setY(DesktopRect.y());
+    if (mv == m_mainWidget)
     {
 
-        for ( int i = 1; i<m_widgetList.size(); ++i )
+        for (int i = 1; i<m_widgetList.size(); ++i)
         {
-            if ( !m_dockedList.at ( i ) )
+            if (!m_dockedList.at (i))
             {
-                if ( m_widgetList.at ( i )->isVisible() )
-                    npos = snap ( npos, mv, m_widgetList.at ( i ) );
+                if (m_widgetList.at (i)->isVisible())
+                    npos = snap (npos, mv, m_widgetList.at (i));
 
             }
             else
             {
-                QPoint pos = QPoint ( npos.x() + x_list.at ( i ),
-                                      npos.y() + y_list.at ( i ) );
-                for ( int j = 1; j<m_widgetList.size(); ++j )
+                QPoint pos = QPoint (npos.x() + x_list.at (i),
+                                      npos.y() + y_list.at (i));
+                for (int j = 1; j<m_widgetList.size(); ++j)
                 {
-                    if ( !m_dockedList.at ( j ) && m_widgetList.at ( j )->isVisible() )
+                    if (!m_dockedList.at (j) && m_widgetList.at (j)->isVisible())
                     {
-                        pos = snap ( pos, m_widgetList.at ( i ), m_widgetList.at ( j ) );
-                        npos = QPoint ( pos.x() - x_list.at ( i ),
-                                        pos.y() - y_list.at ( i ) );
+                        pos = snap (pos, m_widgetList.at (i), m_widgetList.at (j));
+                        npos = QPoint (pos.x() - x_list.at (i),
+                                        pos.y() - y_list.at (i));
                     }
                 }
             }
         }
-        mv->move ( npos );
-        for ( int i = 1; i<m_widgetList.size(); ++i )
+        mv->move (npos);
+        for (int i = 1; i<m_widgetList.size(); ++i)
         {
-            if ( m_dockedList.at ( i ) )
-                m_widgetList.at ( i )->move ( npos.x() + x_list.at ( i ),
-                                              npos.y() + y_list.at ( i ) );
+            if (m_dockedList.at (i))
+                m_widgetList.at (i)->move(npos.x() + x_list.at (i),
+                                          npos.y() + y_list.at (i));
         }
     }
     else
     {
-        for ( int i = 0; i<m_widgetList.size(); ++i )
+        for (int i = 0; i<m_widgetList.size(); ++i)
         {
             m_dockedList[i] = FALSE;
-            if ( mv!=m_widgetList.at ( i ) && !m_dockedList.at ( i ) && m_widgetList.at ( i )->isVisible() )
+            if (mv != m_widgetList.at (i) && !m_dockedList.at (i) && m_widgetList.at (i)->isVisible())
             {
-                npos = snap ( npos, mv, m_widgetList.at ( i ) );
+                npos = snap (npos, mv, m_widgetList.at (i));
             }
         }
-        mv->move ( npos );
+        mv->move (npos);
     }
 }
 
@@ -164,77 +169,77 @@ void Dock::calculateDistances()
 {
     x_list.clear();
     y_list.clear();
-    foreach ( QWidget *w, m_widgetList )
+    foreach (QWidget *w, m_widgetList)
     {
-        if ( w!=m_mainWidget )
+        if (w!=m_mainWidget)
         {
-            x_list.append ( - m_mainWidget->x() + w->x() );
-            y_list.append ( - m_mainWidget->y() + w->y() );
+            x_list.append (- m_mainWidget->x() + w->x());
+            y_list.append (- m_mainWidget->y() + w->y());
         }
         else
         {
-            x_list.prepend ( 0 );
-            y_list.prepend ( 0 );
+            x_list.prepend (0);
+            y_list.prepend (0);
         }
     }
 }
 
 void Dock::updateDock()
 {
-    QWidget *mv = m_widgetList.at ( 0 );
-    for ( int j = 1; j<m_widgetList.size(); ++j )
+    QWidget *mv = m_widgetList.at (0);
+    for (int j = 1; j<m_widgetList.size(); ++j)
     {
-        QWidget *st = m_widgetList.at ( j );
-        m_dockedList[j] = isDocked ( mv, st );
+        QWidget *st = m_widgetList.at (j);
+        m_dockedList[j] = isDocked (mv, st);
     }
-    for ( int j = 1; j<m_widgetList.size(); ++j )
+    for (int j = 1; j<m_widgetList.size(); ++j)
     {
-        if ( m_dockedList[j] )
-            for ( int i = 1; i<m_widgetList.size(); ++i )
+        if (m_dockedList[j])
+            for (int i = 1; i<m_widgetList.size(); ++i)
             {
-                if ( !m_dockedList[i] )
+                if (!m_dockedList[i])
                 {
-                    mv = m_widgetList.at ( j );
-                    QWidget *st = m_widgetList.at ( i );
-                    m_dockedList[i] = isDocked ( mv, st );
+                    mv = m_widgetList.at (j);
+                    QWidget *st = m_widgetList.at (i);
+                    m_dockedList[i] = isDocked (mv, st);
                 }
             }
     }
 
 }
 
-bool Dock::isDocked ( QWidget* mv, QWidget* st )
+bool Dock::isDocked (QWidget* mv, QWidget* st)
 {
     int nx = mv->x() - st->x();
-    int ny = abs ( mv->y() - st->y() + mv->height() );
-    if ( ny < 2 && nx > -mv->width() && nx < st->width() ) //above
+    int ny = abs (mv->y() - st->y() + mv->height());
+    if (ny < 2 && nx > -mv->width() && nx < st->width()) //above
         return TRUE;
 
     /***********/
     nx = mv->x() - st->x();
-    ny = abs ( mv->y() - st->y() - st->height() );
-    if ( ny < 2 && nx > -mv->width() && nx < st->width() ) //near
+    ny = abs (mv->y() - st->y() - st->height());
+    if (ny < 2 && nx > -mv->width() && nx < st->width()) //near
         return TRUE;
 
     /**************/
-    nx = abs ( mv->x() - st->x() + mv->width() );
+    nx = abs (mv->x() - st->x() + mv->width());
     ny = mv->y() - st->y();
-    if ( nx < 2 && ny > -mv->height() && ny < st->height() )   //left
+    if (nx < 2 && ny > -mv->height() && ny < st->height())   //left
         return TRUE;
 
     /*****************/
-    nx = abs ( mv->x() - st->x() - st->width() );
+    nx = abs (mv->x() - st->x() - st->width());
     ny = mv->y() - st->y();
-    if ( nx < 2 && ny > -mv->height() && ny < st->height() )   //right
+    if (nx < 2 && ny > -mv->height() && ny < st->height())   //right
         return TRUE;
     return FALSE;
 }
 
-void Dock::addActions ( QList<QAction *> actions )
+void Dock::addActions (QList<QAction *> actions)
 {
     m_actions << actions;
-    for ( int i = 0; i<m_widgetList.size(); ++i )
-        m_widgetList.at ( i )->addActions ( actions );
+    for (int i = 0; i<m_widgetList.size(); ++i)
+        m_widgetList.at (i)->addActions (actions);
 }
 
 bool Dock::isUnder(QWidget* upper, QWidget* nether, int dy)
