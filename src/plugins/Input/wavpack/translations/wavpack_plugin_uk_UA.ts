@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
@@ -39,52 +39,52 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="53"/>
         <source>Length</source>
-        <translation type="unfinished">Тривалість</translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="54"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Частота</translation>
+        <translation>Частота</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="54"/>
         <source>Hz</source>
-        <translation type="unfinished">Гц</translation>
+        <translation>Гц</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="55"/>
         <source>Channels</source>
-        <translation type="unfinished">Канали</translation>
+        <translation>Канали</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="56"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Бітрейт</translation>
+        <translation>Бітрейт</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="56"/>
         <source>kbps</source>
-        <translation type="unfinished">кБ/с</translation>
+        <translation>кБ/с</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="58"/>
         <source>File size</source>
-        <translation type="unfinished">Розмір файлу</translation>
+        <translation>Розмір файлу</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="58"/>
         <source>KB</source>
-        <translation type="unfinished">кБ</translation>
+        <translation>кБ</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="59"/>
         <source>Ratio</source>
-        <translation type="unfinished">Стиснення</translation>
+        <translation>Стиснення</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="60"/>
         <source>Version</source>
-        <translation type="unfinished">Версія</translation>
+        <translation>Версія</translation>
     </message>
 </context>
 </TS>
