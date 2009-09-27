@@ -161,7 +161,7 @@ void TextScroller::showEvent (QShowEvent *)
         m_timer->start();
 }
 
-inline void drawBitmapText(int x, int y, const QString &text, QPainter *paint, const Skin *skin)
+inline void drawBitmapText(int x, int y, const QString &text, QPainter *paint, Skin *skin)
 {
     QString lowertext = text.toLower();
     int chwidth, ypix;
