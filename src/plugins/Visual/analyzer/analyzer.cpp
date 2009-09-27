@@ -34,7 +34,7 @@
 
 
 Analyzer::Analyzer (QWidget *parent)
-        : Visual (parent), m_fps ( 20 )
+        : Visual (parent), m_fps (20)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     restoreGeometry(settings.value("Analyzer/geometry").toByteArray());
@@ -74,7 +74,7 @@ void Analyzer::clear()
 {
     while (!m_nodes.isEmpty())
         m_nodes.removeFirst();
-    for ( int i = 0; i< 75; ++i )
+    for (int i = 0; i< 75; ++i)
     {
         m_intern_vis_data[i] = 0;
         m_peaks[i] = 0;
@@ -82,7 +82,7 @@ void Analyzer::clear()
     update();
 }
 
-void Analyzer::add ( Buffer *b, unsigned long w, int c, int p )
+void Analyzer::add (Buffer *b, unsigned long w, int c, int p)
 {
     if (!m_timer->isActive ())
         return;
@@ -90,29 +90,29 @@ void Analyzer::add ( Buffer *b, unsigned long w, int c, int p )
     short *l = 0, *r = 0;
 
     len /= c;
-    len /= ( p / 8 );
-    if ( len > 512 )
+    len /= (p / 8);
+    if (len > 512)
         len = 512;
     cnt = len;
 
-    if ( c == 2 )
+    if (c == 2)
     {
         l = new short[len];
         r = new short[len];
 
-        if ( p == 8 )
-            stereo16_from_stereopcm8 ( l, r, b->data, cnt );
-        else if ( p == 16 )
-            stereo16_from_stereopcm16 ( l, r, ( short * ) b->data, cnt );
+        if (p == 8)
+            stereo16_from_stereopcm8 (l, r, b->data, cnt);
+        else if (p == 16)
+            stereo16_from_stereopcm16 (l, r, (short *) b->data, cnt);
     }
-    else if ( c == 1 )
+    else if (c == 1)
     {
         l = new short[len];
 
-        if ( p == 8 )
-            mono16_from_monopcm8 ( l, b->data, cnt );
-        else if ( p == 16 )
-            mono16_from_monopcm16 ( l, ( short * ) b->data, cnt );
+        if (p == 8)
+            mono16_from_monopcm8 (l, b->data, cnt);
+        else if (p == 16)
+            mono16_from_monopcm16 (l, (short *) b->data, cnt);
     }
     else
         len = 0;
@@ -124,36 +124,24 @@ void Analyzer::add ( Buffer *b, unsigned long w, int c, int p )
 void Analyzer::timeout()
 {
     VisualNode *node = 0;
+    mutex()->lock ();
 
-    //if ( /*playing &&*/ output())
+    while(m_nodes.size() > 5)
     {
-        //output()->mutex()->lock ();
-        //long olat = output()->latency();
-        //long owrt = output()->written();
-        //output()->mutex()->unlock();
-
-        //long synctime = owrt < olat ? 0 : owrt - olat;
-
-        mutex()->lock ();
-        VisualNode *prev = 0;
-        while ((!m_nodes.isEmpty()))
-        {
-            node = m_nodes.takeFirst();
-            /*if ( node->offset > synctime )
-               break;*/
-
-            if (prev)
-                delete prev;
-            prev = node;
-        }
-        mutex()->unlock();
-        node = prev;
+        delete m_nodes.takeFirst();
     }
 
-    if (!node)
-        return;
-    process (node);
-    delete node;
+    if(!m_nodes.isEmpty())
+        node = m_nodes.takeFirst();
+
+    mutex()->unlock();
+
+    if (node)
+    {
+        process (node);
+        delete node;
+        update();
+    }
     update();
 }
 
@@ -185,7 +173,7 @@ void Analyzer::closeEvent (QCloseEvent *event)
 bool Analyzer::process (VisualNode *node)
 {
     static fft_state *state = 0;
-    if ( !state )
+    if (!state)
         state = fft_init();
 
     short dest_l[256];
@@ -197,12 +185,12 @@ bool Analyzer::process (VisualNode *node)
             36, 47, 62, 82, 107, 141, 184, 255
         };
 
-    if ( node )
+    if (node)
     {
         //i = node->length;
-        calc_freq ( dest_l, node->left );
+        calc_freq (dest_l, node->left);
         if (node->right)
-            calc_freq ( dest_r, node->right );
+            calc_freq (dest_r, node->right);
     }
     else
         return FALSE;
@@ -213,11 +201,11 @@ bool Analyzer::process (VisualNode *node)
     {
         yl = yr = 0;
 
-        for ( j = xscale_short[i];  j < xscale_short[i + 1]; j++ )
+        for (j = xscale_short[i];  j < xscale_short[i + 1]; j++)
         {
-            if ( dest_l[j] > yl )
+            if (dest_l[j] > yl)
                 yl = dest_l[j];
-            if ( dest_r[j] > yr && node->right)
+            if (dest_r[j] > yr && node->right)
                 yr = dest_r[j];
         }
         yl >>= 7;
@@ -230,17 +218,17 @@ bool Analyzer::process (VisualNode *node)
         if (yl)
         {
             magnitude_l = int(log (yl) * y_scale);
-            if ( magnitude_l > 15 )
+            if (magnitude_l > 15)
                 magnitude_l = 15;
-            if ( magnitude_l < 0 )
+            if (magnitude_l < 0)
                 magnitude_l = 0;
         }
         if (yr && node->right)
         {
             magnitude_r = int(log (yr) * y_scale);
-            if ( magnitude_r > 15 )
+            if (magnitude_r > 15)
                 magnitude_r = 15;
-            if ( magnitude_r < 0 )
+            if (magnitude_r < 0)
                 magnitude_r = 0;
         }
 
