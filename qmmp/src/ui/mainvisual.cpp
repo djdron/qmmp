@@ -38,8 +38,8 @@ MainVisual *MainVisual::pointer = 0;
 
 MainVisual *MainVisual::getPointer()
 {
-    if ( !pointer )
-        qFatal ( "MainVisual: this object not created!" );
+    if (!pointer)
+        qFatal ("MainVisual: this object not created!");
     return pointer;
 }
 
@@ -99,7 +99,7 @@ void MainVisual::clear()
     update();
 }
 
-void MainVisual::add ( Buffer *b, unsigned long w, int c, int p )
+void MainVisual::add (Buffer *b, unsigned long w, int c, int p)
 {
     if (!m_timer->isActive () || !m_vis)
         return;
@@ -107,51 +107,50 @@ void MainVisual::add ( Buffer *b, unsigned long w, int c, int p )
     short *l = 0, *r = 0;
 
     len /= c;
-    len /= ( p / 8 );
-    if ( len > 512 )
+    len /= (p / 8);
+    if (len > 512)
         len = 512;
     cnt = len;
 
-    if ( c == 2 )
+    if (c == 2)
     {
         l = new short[len];
         r = new short[len];
 
-        if ( p == 8 )
-            stereo16_from_stereopcm8 ( l, r, b->data, cnt );
-        else if ( p == 16 )
-            stereo16_from_stereopcm16 ( l, r, ( short * ) b->data, cnt );
+        if (p == 8)
+            stereo16_from_stereopcm8 (l, r, b->data, cnt);
+        else if (p == 16)
+            stereo16_from_stereopcm16 (l, r, (short *) b->data, cnt);
     }
-    else if ( c == 1 )
+    else if (c == 1)
     {
         l = new short[len];
 
-        if ( p == 8 )
-            mono16_from_monopcm8 ( l, b->data, cnt );
-        else if ( p == 16 )
-            mono16_from_monopcm16 ( l, ( short * ) b->data, cnt );
+        if (p == 8)
+            mono16_from_monopcm8 (l, b->data, cnt);
+        else if (p == 16)
+            mono16_from_monopcm16 (l, (short *) b->data, cnt);
     }
     else
         len = 0;
 
-    m_nodes.append ( new VisualNode ( l, r, len, w ) );
+    m_nodes.append (new VisualNode (l, r, len, w));
 }
 
 void MainVisual::timeout()
 {
     VisualNode *node = 0;
-
     mutex()->lock ();
-    VisualNode *prev = 0;
-    while ((!m_nodes.isEmpty()))
+
+    while(m_nodes.size() > 5)
     {
-        node = m_nodes.takeFirst();
-        if (prev)
-            delete prev;
-        prev = node;
+        delete m_nodes.takeFirst();
     }
+
+    if(!m_nodes.isEmpty())
+        node = m_nodes.takeFirst();
+
     mutex()->unlock();
-    node = prev;
 
     if (m_vis && node)
     {
@@ -425,7 +424,7 @@ void MainVisual::readSettings()
 using namespace mainvisual;
 
 Analyzer::Analyzer()
-        : m_analyzerBarWidth ( 4 ), m_fps ( 20 )
+        : m_analyzerBarWidth (4), m_fps (20)
 {
     m_size = QSize(75,20);
     clear();
@@ -450,17 +449,17 @@ Analyzer::~Analyzer()
 
 void Analyzer::clear()
 {
-    for ( int i = 0; i< 75; ++i )
+    for (int i = 0; i< 75; ++i)
     {
         m_intern_vis_data[i] = 0;
         m_peaks[i] = 0;
     }
 }
 
-bool Analyzer::process ( VisualNode *node )
+bool Analyzer::process (VisualNode *node)
 {
     static fft_state *state = 0;
-    if ( !state )
+    if (!state)
         state = fft_init();
     short dest[256];
 
@@ -479,38 +478,38 @@ bool Analyzer::process ( VisualNode *node )
         36, 47, 62, 82, 107, 141, 184, 255
     };
 
-    if ( node )
+    if (node)
     {
         //i = node->length;
-        calc_freq ( dest, node->left );
+        calc_freq (dest, node->left);
     }
     else
         return FALSE;
     const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
     int max = m_lines ? 75 : 19, y, j;
 
-    for ( int i = 0; i < max; i++ )
+    for (int i = 0; i < max; i++)
     {
         if (m_lines)
-            for ( j = xscale_long[i], y = 0; j < xscale_long[i + 1]; j++ )
+            for (j = xscale_long[i], y = 0; j < xscale_long[i + 1]; j++)
             {
-                if ( dest[j] > y )
+                if (dest[j] > y)
                     y = dest[j];
             }
         else
-            for ( j = xscale_short[i], y = 0; j < xscale_short[i + 1]; j++ )
+            for (j = xscale_short[i], y = 0; j < xscale_short[i + 1]; j++)
             {
-                if ( dest[j] > y )
+                if (dest[j] > y)
                     y = dest[j];
             }
         y >>= 7;
         int magnitude = 0;
-        if ( y != 0 )
+        if (y != 0)
         {
             magnitude = int(log (y) * y_scale);
-            if ( magnitude > 15 )
+            if (magnitude > 15)
                 magnitude = 15;
-            if ( magnitude < 0 )
+            if (magnitude < 0)
                 magnitude = 0;
         }
 
@@ -527,12 +526,12 @@ bool Analyzer::process ( VisualNode *node )
     return TRUE;
 }
 
-void Analyzer::draw ( QPainter *p)
+void Analyzer::draw (QPainter *p)
 {
     if (m_lines)
-        for ( int j = 0; j < 75; ++j )
+        for (int j = 0; j < 75; ++j)
         {
-            for ( int i = 0; i <= m_intern_vis_data[j]; ++i )
+            for (int i = 0; i <= m_intern_vis_data[j]; ++i)
             {
                 if (m_mode == 0)
                     p->setPen (m_skin->getVisColor (18-i));
@@ -604,15 +603,15 @@ bool Scope::process(VisualNode *node)
 
 void Scope::draw(QPainter *p)
 {
-    for ( int i = 0; i<73; ++i )
+    for (int i = 0; i<73; ++i)
     {
         int h1 = 10 - m_intern_vis_data[i];
         int h2 = 10 - m_intern_vis_data[i+1];
         if (h1 > h2)
             qSwap(h1, h2);
-        p->setPen (m_skin->getVisColor(19 + (10 - h2)/2 ));
+        p->setPen (m_skin->getVisColor(19 + (10 - h2)/2));
         p->drawLine(i, h1, i, h2);
     }
-    for ( int i = 0; i< 75; ++i )
+    for (int i = 0; i< 75; ++i)
         m_intern_vis_data[i] = 0;
 }
