@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
@@ -63,7 +63,7 @@
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
-        <source>Samplerate</source>
+        <source>Sample rate</source>
         <translation>Частота</translation>
     </message>
     <message>

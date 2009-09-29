@@ -63,7 +63,7 @@
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
-        <source>Samplerate</source>
+        <source>Sample rate</source>
         <translation>Дискретизация</translation>
     </message>
     <message>

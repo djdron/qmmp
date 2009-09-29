@@ -58,7 +58,7 @@
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="73"/>
-        <source>Samplerate</source>
+        <source>Sample rate</source>
         <translation>Частота</translation>
     </message>
     <message>
