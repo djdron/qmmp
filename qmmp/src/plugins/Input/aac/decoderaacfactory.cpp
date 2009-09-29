@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,7 +22,7 @@
 #include <QFile>
 
 #include "aacfile.h"
-#include "detailsdialog.h"
+#include "aacmetadatamodel.h"
 #include "decoder_aac.h"
 #include "decoderaacfactory.h"
 
@@ -52,10 +52,9 @@ const DecoderProperties DecoderAACFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderAACFactory::create(QObject *parent, QIODevice *input,
-                                   Output *output, const QString &)
+Decoder *DecoderAACFactory::create(const QString &, QIODevice *input)
 {
-    return new DecoderAAC(parent, this, input, output);
+    return new DecoderAAC(input);
 }
 
 QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -75,11 +74,9 @@ QList<FileInfo *> DecoderAACFactory::createPlayList(const QString &fileName, boo
     return list;
 }
 
-QObject* DecoderAACFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderAACFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
+    return new AACMetaDataModel(path, parent);
 }
 
 void DecoderAACFactory::showSettings(QWidget *)

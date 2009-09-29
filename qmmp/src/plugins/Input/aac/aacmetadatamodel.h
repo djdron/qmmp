@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,35 +17,22 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERAACFACTORY_H
-#define DECODERAACFACTORY_H
 
-#include <QObject>
-#include <QString>
-#include <QIODevice>
-#include <QWidget>
+#ifndef AACMETADATAMODEL_H
+#define AACMETADATAMODEL_H
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/fileinfo.h>
+#include <qmmp/metadatamodel.h>
 
-class DecoderAACFactory : public QObject,
-                          DecoderFactory
+class AACMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
-Q_INTERFACES(DecoderFactory);
-
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(const QString&, QIODevice *);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    AACMetaDataModel(const QString &path, QObject *parent);
+    ~AACMetaDataModel();
+    QHash<QString, QString> audioProperties();
+
+private:
+    QString m_path;
 };
 
-#endif
+#endif // AACMETADATAMODEL_H

@@ -35,7 +35,7 @@ struct aac_data
 class DecoderAAC : public Decoder
 {
 public:
-    DecoderAAC(QObject *, DecoderFactory *, QIODevice *, Output *);
+    DecoderAAC(QIODevice *);
     virtual ~DecoderAAC();
 
 
@@ -47,12 +47,11 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
+    qint64 read(char *audio, qint64 maxSize);
+    void seek(qint64 time);
 
-private:
-    qint64 readAudio(char *audio, qint64 maxSize);
-    void seekAudio(qint64 time);
+private:    
     struct aac_data *m_data;
-
     char *m_input_buf;
     int m_bitrate;
     ulong  m_input_at, m_output_at;

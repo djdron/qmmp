@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,29 +17,35 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <QDialog>
+#include <QFile>
+#include "aacfile.h"
+#include "aacmetadatamodel.h"
 
-#include "ui_detailsdialog.h"
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public QDialog
+AACMetaDataModel::AACMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
-Q_OBJECT
-public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
+    m_path = path;
+}
 
-    ~DetailsDialog();
+AACMetaDataModel::~AACMetaDataModel()
+{}
 
-private:
-    void loadAACInfo();
-    Ui::DetailsDialog ui;
-    QString m_path;
-
-};
-
-#endif
+QHash<QString, QString> AACMetaDataModel::audioProperties()
+{
+    QHash<QString, QString> ap;
+    QFile input(m_path);
+    if (!input.open(QIODevice::ReadOnly))
+        return ap;
+    AACFile f(&input);
+    QString text;
+    text = QString("%1").arg(f.length()/60);
+    text +=":"+QString("%1").arg(f.length()%60,2,10,QChar('0'));
+    ap.insert(tr("Length"), text);
+    text = QString("%1").arg(f.samplerate());
+    ap.insert(tr("Sample rate"), text+" "+tr("Hz"));
+    text = QString("%1").arg(f.bitrate());
+    ap.insert(tr("Bitrate"), text+" "+tr("kbps"));
+    text = QString("%1 "+tr("KB")).arg(input.size()/1024);
+    ap.insert(tr("File size"), text);
+    return ap;
+}

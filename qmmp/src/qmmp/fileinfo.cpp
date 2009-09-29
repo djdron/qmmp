@@ -71,6 +71,8 @@ const QMap<Qmmp::MetaData, QString>  FileInfo::metaData () const
 void FileInfo::setMetaData(const QMap<Qmmp::MetaData,  QString> &metaData)
 {
     m_metaData = metaData;
+    if(m_metaData.value(Qmmp::URL).isEmpty())
+         m_metaData.insert(Qmmp::URL, m_path);
 }
 
 bool FileInfo::isEmpty() const
