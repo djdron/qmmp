@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="77"/>
+        <location filename="../detailsdialog.cpp" line="87"/>
         <source>Title</source>
         <translation>Заголовок</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="78"/>
+        <location filename="../detailsdialog.cpp" line="88"/>
         <source>Artist</source>
         <translation>Виконавець</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="79"/>
+        <location filename="../detailsdialog.cpp" line="89"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="80"/>
+        <location filename="../detailsdialog.cpp" line="90"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../detailsdialog.cpp" line="91"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="82"/>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="84"/>
+        <location filename="../detailsdialog.cpp" line="94"/>
         <source>Year</source>
         <translation>Рік</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="86"/>
+        <location filename="../detailsdialog.cpp" line="96"/>
         <source>Track</source>
         <translation>Доріжка</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="88"/>
+        <location filename="../detailsdialog.cpp" line="98"/>
         <source>Disc number</source>
         <translation>Номер диску</translation>
     </message>
@@ -109,6 +109,8 @@ p, li { white-space: pre-wrap; }
         <translation>Номер диску:</translation>
     </message>
     <message>
+        <location filename="../tageditor.ui" line="169"/>
+        <location filename="../tageditor.ui" line="224"/>
         <location filename="../tageditor.ui" line="240"/>
         <source>?</source>
         <translation></translation>

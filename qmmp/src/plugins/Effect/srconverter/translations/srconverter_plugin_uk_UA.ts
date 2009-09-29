@@ -66,13 +66,5 @@
         <source>Linear Interpolation</source>
         <translation>Лінійна інтерполяція</translation>
     </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="obsolete">&amp;Застосувати</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="obsolete">&amp;Відмінити</translation>
-    </message>
 </context>
 </TS>

@@ -101,7 +101,7 @@
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="153"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">声道</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="185"/>

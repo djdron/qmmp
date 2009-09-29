@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="ru">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="ru">
 <context>
     <name>QmmpFileDialog</name>
     <message>
@@ -14,6 +14,9 @@
         <translation>Вверх</translation>
     </message>
     <message>
+        <location filename="../qmmpfiledialog.ui" line="40"/>
+        <location filename="../qmmpfiledialog.ui" line="53"/>
+        <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
         <translation>...</translation>
@@ -57,6 +60,7 @@
 <context>
     <name>QmmpFileDialogFactory</name>
     <message>
+        <location filename="../qmmpfiledialog.cpp" line="121"/>
         <location filename="../qmmpfiledialog.cpp" line="130"/>
         <source>Qmmp File Dialog</source>
         <translation>Файловый диалог Qmmp</translation>
@@ -67,7 +71,7 @@
         <translation>О файловом диалоге Qmmp</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialog.cpp" line="133"/>
+        <location filename="../qmmpfiledialog.cpp" line="131"/>
         <source>Writen by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
@@ -99,7 +103,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Директории</translation>
     </message>
     <message>
-        <location filename="../qmmpfiledialogimpl.cpp" line="458"/>
+        <location filename="../qmmpfiledialogimpl.cpp" line="457"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
         <translation>%1 уже существует.

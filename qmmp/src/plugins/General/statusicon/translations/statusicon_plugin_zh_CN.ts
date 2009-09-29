@@ -20,21 +20,13 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
-        <source>Message delay, ms:</source>
-        <translation>消息延时(ms)：</translation>
+        <source>Message delay (ms):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>Use standard icons</source>
         <translation>使用标准图标</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
     </message>
 </context>
 <context>
