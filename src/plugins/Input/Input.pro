@@ -34,7 +34,7 @@ contains(CONFIG, FFMPEG_PLUGIN){
 }
 
 contains(CONFIG, AAC_PLUGIN){
-#  SUBDIRS += aac
+  SUBDIRS += aac
   message(**********************)
   message(* AAC plugin enabled *)
   message(**********************)

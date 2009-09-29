@@ -34,8 +34,8 @@
 
 // Decoder class
 
-DecoderAAC::DecoderAAC(QObject *parent, DecoderFactory *d, QIODevice *i, Output *o)
-        : Decoder(parent, d, i, o)
+DecoderAAC::DecoderAAC(QIODevice *i)
+        : Decoder(i)
 {
     m_bitrate = 0;
     m_totalTime = 0;
@@ -147,7 +147,7 @@ bool DecoderAAC::initialize()
     return TRUE;
 }
 
-qint64 DecoderAAC::readAudio(char *audio, qint64 maxSize)
+qint64 DecoderAAC::read(char *audio, qint64 maxSize)
 {
     NeAACDecFrameInfo frame_info;
     qint64 size = 0, to_read, read;
@@ -189,7 +189,7 @@ int DecoderAAC::bitrate()
     return m_bitrate;
 }
 
-void DecoderAAC::seekAudio(qint64 pos)
+void DecoderAAC::seek(qint64 pos)
 {
     input()->seek(pos * input()->size() / m_totalTime);
     NeAACDecPostSeekReset (data()->handle, 0);

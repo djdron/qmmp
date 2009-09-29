@@ -64,14 +64,14 @@ link_directories(${TAGLIB_LIBRARY_DIRS})
 SET(libaac_SRCS
   decoder_aac.cpp
   decoderaacfactory.cpp
-  detailsdialog.cpp
+  aacmetadatamodel.cpp
   aacfile.cpp
 )
 
 SET(libaac_MOC_HDRS
   decoderaacfactory.h
   decoder_aac.h
-  detailsdialog.h
+  aacmetadatamodel.h
   aacfile.h
 )
 
@@ -81,20 +81,12 @@ QT4_ADD_RESOURCES(libaac_RCC_SRCS ${libaac_RCCS})
 
 QT4_WRAP_CPP(libaac_MOC_SRCS ${libaac_MOC_HDRS})
 
-# user interface
-
-
-SET(libaac_UIS
-    detailsdialog.ui
-)
-
-QT4_WRAP_UI(libaac_UIS_H ${libaac_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FAAD_FOUND)
-ADD_LIBRARY(aac MODULE ${libaac_SRCS} ${libaac_MOC_SRCS} ${libaac_UIS_H} ${libaac_RCC_SRCS})
+ADD_LIBRARY(aac MODULE ${libaac_SRCS} ${libaac_MOC_SRCS} ${libaac_RCC_SRCS})
 add_dependencies(aac qmmp)
 target_link_libraries(aac ${QT_LIBRARIES} -lqmmp -lfaad ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS aac DESTINATION ${LIB_DIR}/qmmp/Input)
