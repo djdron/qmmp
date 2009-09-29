@@ -20,17 +20,13 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
-        <source>Message delay, ms:</source>
-        <translation>Задержка сообщения, мс:</translation>
+        <source>Message delay (ms):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>Use standard icons</source>
         <translation>Использовать стандартные иконки</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Отмена</translation>
     </message>
 </context>
 <context>

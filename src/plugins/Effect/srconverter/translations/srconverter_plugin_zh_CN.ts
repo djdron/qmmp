@@ -66,13 +66,5 @@
         <source>Linear Interpolation</source>
         <translation>线性插入</translation>
     </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="obsolete">确定(&amp;O)</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="obsolete">取消(&amp;A)</translation>
-    </message>
 </context>
 </TS>

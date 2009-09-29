@@ -66,13 +66,5 @@
         <source>Linear Interpolation</source>
         <translation>Lineární interpolace</translation>
     </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="obsolete">&amp;OK</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="obsolete">Z&amp;rušit</translation>
-    </message>
 </context>
 </TS>

@@ -20,8 +20,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
-        <source>Message delay, ms:</source>
-        <translation>Mesajı gecikmesi, ms:</translation>
+        <source>Message delay (ms):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>

@@ -27,57 +27,57 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>ALSA Plugin Settings</source>
         <translation>ALSA Eklentisi Ayarları</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="23"/>
+        <location filename="../settingsdialog.ui" line="24"/>
         <source>Device Settings</source>
         <translation>Aygıt Ayarları</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
+        <location filename="../settingsdialog.ui" line="36"/>
         <source>Audio device</source>
         <translation>Ses aygıtı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="52"/>
+        <location filename="../settingsdialog.ui" line="48"/>
         <source>Mixer</source>
         <translation>Karıştırıcı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="67"/>
+        <location filename="../settingsdialog.ui" line="63"/>
         <source>Mixer card:</source>
         <translation>Karıştırıcı kartı:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="77"/>
+        <location filename="../settingsdialog.ui" line="73"/>
         <source>Mixer device:</source>
         <translation>Karıştırıcı aygıtı:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="94"/>
+        <location filename="../settingsdialog.ui" line="90"/>
         <source>Advanced Settings</source>
         <translation>Gelişmiş Ayarlar</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="106"/>
+        <location filename="../settingsdialog.ui" line="102"/>
         <source>Soundcard</source>
         <translation>Ses kartı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Buffer time (ms):</source>
         <translation>Arabellek süresi (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="148"/>
+        <location filename="../settingsdialog.ui" line="144"/>
         <source>Period time (ms):</source>
         <translation>Periyot süresi (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="184"/>
+        <location filename="../settingsdialog.ui" line="180"/>
         <source>Use mmap access</source>
         <translation>mmap erişimi kullan</translation>
     </message>

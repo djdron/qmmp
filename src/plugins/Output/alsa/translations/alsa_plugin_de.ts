@@ -27,57 +27,57 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>ALSA Plugin Settings</source>
         <translation>Einstellungen ALSA-Modul</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="23"/>
+        <location filename="../settingsdialog.ui" line="24"/>
         <source>Device Settings</source>
         <translation>Geräte-Einstellungen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
+        <location filename="../settingsdialog.ui" line="36"/>
         <source>Audio device</source>
         <translation>Audiogerät</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="52"/>
+        <location filename="../settingsdialog.ui" line="48"/>
         <source>Mixer</source>
         <translation>Mixer</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="67"/>
+        <location filename="../settingsdialog.ui" line="63"/>
         <source>Mixer card:</source>
         <translation>Mixerkarte:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="77"/>
+        <location filename="../settingsdialog.ui" line="73"/>
         <source>Mixer device:</source>
         <translation>Mixergerät:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="94"/>
+        <location filename="../settingsdialog.ui" line="90"/>
         <source>Advanced Settings</source>
         <translation>Erweiterte Einstellungen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="106"/>
+        <location filename="../settingsdialog.ui" line="102"/>
         <source>Soundcard</source>
         <translation>Soundkarte</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Buffer time (ms):</source>
         <translation>Pufferzeit (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="148"/>
+        <location filename="../settingsdialog.ui" line="144"/>
         <source>Period time (ms):</source>
         <translation>Zeitraster (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="184"/>
+        <location filename="../settingsdialog.ui" line="180"/>
         <source>Use mmap access</source>
         <translation>Mmap-Unterstützung aktivieren</translation>
     </message>

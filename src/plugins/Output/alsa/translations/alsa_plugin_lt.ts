@@ -27,65 +27,57 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="23"/>
+        <location filename="../settingsdialog.ui" line="24"/>
         <source>Device Settings</source>
         <translation>Įrangos nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
+        <location filename="../settingsdialog.ui" line="36"/>
         <source>Audio device</source>
         <translation>Garso įranga</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="52"/>
+        <location filename="../settingsdialog.ui" line="48"/>
         <source>Mixer</source>
         <translation>Glotintuvas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="67"/>
+        <location filename="../settingsdialog.ui" line="63"/>
         <source>Mixer card:</source>
         <translation>Glotintuvo plokštė :</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="77"/>
+        <location filename="../settingsdialog.ui" line="73"/>
         <source>Mixer device:</source>
         <translation>Glotintuvo įranga:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="94"/>
+        <location filename="../settingsdialog.ui" line="90"/>
         <source>Advanced Settings</source>
         <translation>Papildomi nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="106"/>
+        <location filename="../settingsdialog.ui" line="102"/>
         <source>Soundcard</source>
         <translation>Garso plokštė</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Buffer time (ms):</source>
         <translation>Buferio laikas (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="148"/>
+        <location filename="../settingsdialog.ui" line="144"/>
         <source>Period time (ms):</source>
         <translation>Periodo laikas (ms):</translation>
     </message>
     <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Atšaukti</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">Gerai</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>ALSA Plugin Settings</source>
         <translation>ALSA įskiepio nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="184"/>
+        <location filename="../settingsdialog.ui" line="180"/>
         <source>Use mmap access</source>
         <translation>Naudoti mmap prieigą</translation>
     </message>

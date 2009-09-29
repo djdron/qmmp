@@ -20,21 +20,13 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
-        <source>Message delay, ms:</source>
-        <translation type="unfinished">Verzögerung (ms):</translation>
+        <source>Message delay (ms):</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>Use standard icons</source>
         <translation>System-Symbole benutzen</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">OK</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Abbrechen</translation>
     </message>
 </context>
 <context>

@@ -27,57 +27,57 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="23"/>
+        <location filename="../settingsdialog.ui" line="24"/>
         <source>Device Settings</source>
         <translation>Параметры устройства</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
+        <location filename="../settingsdialog.ui" line="36"/>
         <source>Audio device</source>
         <translation>Аудио устройство</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="52"/>
+        <location filename="../settingsdialog.ui" line="48"/>
         <source>Mixer</source>
         <translation>Микшер</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="67"/>
+        <location filename="../settingsdialog.ui" line="63"/>
         <source>Mixer card:</source>
         <translation>Карта микшера:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="77"/>
+        <location filename="../settingsdialog.ui" line="73"/>
         <source>Mixer device:</source>
         <translation>Устройство микшера:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="94"/>
+        <location filename="../settingsdialog.ui" line="90"/>
         <source>Advanced Settings</source>
         <translation>Дополнительные настройки</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="106"/>
+        <location filename="../settingsdialog.ui" line="102"/>
         <source>Soundcard</source>
         <translation>Звуковая карта</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="112"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Buffer time (ms):</source>
         <translation>Время буферизации (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="148"/>
+        <location filename="../settingsdialog.ui" line="144"/>
         <source>Period time (ms):</source>
         <translation>Время периода (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>ALSA Plugin Settings</source>
         <translation>Настройки модуля ALSA</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="184"/>
+        <location filename="../settingsdialog.ui" line="180"/>
         <source>Use mmap access</source>
         <translation>Использовать доступ mmap</translation>
     </message>

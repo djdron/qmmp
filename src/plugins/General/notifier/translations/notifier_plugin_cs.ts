@@ -27,7 +27,7 @@
 <context>
     <name>PopupWidget</name>
     <message>
-        <location filename="../popupwidget.cpp" line="136"/>
+        <location filename="../popupwidget.cpp" line="138"/>
         <source>Volume:</source>
         <translation>Hlasitost:</translation>
     </message>
@@ -35,67 +35,67 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>Notifier Plugin Settings</source>
         <translation>Nastavení notifikačního modulu</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="28"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Psi Notification</source>
         <translation>Notifikace v Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="34"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>Enable Psi notification</source>
         <translation>Povolit notifikaci v Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="44"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Desktop Notification</source>
         <translation>Notifikace na pracovní ploše</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="64"/>
+        <location filename="../settingsdialog.ui" line="65"/>
         <source>Font:</source>
         <translation>Písmo:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="84"/>
+        <location filename="../settingsdialog.ui" line="85"/>
         <source>Cover size:</source>
         <translation>Velikost obalu:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="91"/>
+        <location filename="../settingsdialog.ui" line="92"/>
         <source>Delay (ms):</source>
         <translation>Prodleva (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="284"/>
+        <location filename="../settingsdialog.ui" line="285"/>
         <source>Position</source>
         <translation>Umístění</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="304"/>
+        <location filename="../settingsdialog.ui" line="305"/>
         <source>...</source>
         <translation>…</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="50"/>
+        <location filename="../settingsdialog.ui" line="51"/>
         <source>Song change notification</source>
         <translation>Upozornění na změnu skladby</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="58"/>
         <source>Volume change notification</source>
         <translation>Upozornění na změnu hlasitosti</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="118"/>
         <source>Transparency</source>
         <translation>Průhlednost</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="140"/>
+        <location filename="../settingsdialog.ui" line="141"/>
         <source>0</source>
         <translation>0</translation>
     </message>

@@ -66,13 +66,5 @@
         <source>Linear Interpolation</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="obsolete">&amp;OK</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="obsolete">&amp;Отмена</translation>
-    </message>
 </context>
 </TS>

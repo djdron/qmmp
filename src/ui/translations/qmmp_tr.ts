@@ -698,132 +698,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="293"/>
+        <location filename="../mainvisual.cpp" line="292"/>
         <source>Visualization Mode</source>
         <translation>Görselleştirme Modu</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="296"/>
+        <location filename="../mainvisual.cpp" line="295"/>
         <source>Analyzer</source>
         <translation>Çözümleyici</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="296"/>
         <source>Scope</source>
         <translation>Kapsam</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Off</source>
         <translation>Kapat</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="305"/>
+        <location filename="../mainvisual.cpp" line="304"/>
         <source>Analyzer Mode</source>
         <translation>Çözümleyici Modu</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="308"/>
+        <location filename="../mainvisual.cpp" line="307"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="309"/>
+        <location filename="../mainvisual.cpp" line="308"/>
         <source>Fire</source>
         <translation>Ateş</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="310"/>
+        <location filename="../mainvisual.cpp" line="309"/>
         <source>Vertical Lines</source>
         <translation>Dikey Satırlar</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="311"/>
+        <location filename="../mainvisual.cpp" line="310"/>
         <source>Lines</source>
         <translation>Satırlar</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="312"/>
+        <location filename="../mainvisual.cpp" line="311"/>
         <source>Bars</source>
         <translation>Çubuklar</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="325"/>
+        <location filename="../mainvisual.cpp" line="324"/>
         <source>Peaks</source>
         <translation>Tepeler</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="329"/>
+        <location filename="../mainvisual.cpp" line="328"/>
         <source>Refresh Rate</source>
         <translation>Tazeleme Oranı</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="332"/>
+        <location filename="../mainvisual.cpp" line="331"/>
         <source>50 fps</source>
         <translation>50 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
+        <location filename="../mainvisual.cpp" line="332"/>
         <source>25 fps</source>
         <translation>25 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="333"/>
         <source>10 fps</source>
         <translation>10 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="334"/>
         <source>5 fps</source>
         <translation>5 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="342"/>
+        <location filename="../mainvisual.cpp" line="341"/>
         <source>Analyzer Falloff</source>
         <translation>Çözümleyici Düşüşü</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="345"/>
-        <location filename="../mainvisual.cpp" line="359"/>
+        <location filename="../mainvisual.cpp" line="344"/>
+        <location filename="../mainvisual.cpp" line="358"/>
         <source>Slowest</source>
         <translation>En yavaş</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
-        <location filename="../mainvisual.cpp" line="360"/>
+        <location filename="../mainvisual.cpp" line="345"/>
+        <location filename="../mainvisual.cpp" line="359"/>
         <source>Slow</source>
         <translation>Yavaş</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
-        <location filename="../mainvisual.cpp" line="361"/>
+        <location filename="../mainvisual.cpp" line="346"/>
+        <location filename="../mainvisual.cpp" line="360"/>
         <source>Medium</source>
         <translation>Orta</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
-        <location filename="../mainvisual.cpp" line="362"/>
+        <location filename="../mainvisual.cpp" line="347"/>
+        <location filename="../mainvisual.cpp" line="361"/>
         <source>Fast</source>
         <translation>Hızlı</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="349"/>
-        <location filename="../mainvisual.cpp" line="363"/>
+        <location filename="../mainvisual.cpp" line="348"/>
+        <location filename="../mainvisual.cpp" line="362"/>
         <source>Fastest</source>
         <translation>En hızlı</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="356"/>
+        <location filename="../mainvisual.cpp" line="355"/>
         <source>Peaks Falloff</source>
         <translation>Tepe Düşüşü</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="369"/>
+        <location filename="../mainvisual.cpp" line="368"/>
         <source>Background</source>
         <translation>Arkaplan</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="370"/>
+        <location filename="../mainvisual.cpp" line="369"/>
         <source>Transparent</source>
         <translation>Transparan</translation>
     </message>
@@ -1260,7 +1260,7 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="211"/>
+        <location filename="../textscroller.cpp" line="210"/>
         <source>Buffering:</source>
         <translation>Arabelleğe alınıyor:</translation>
     </message>
