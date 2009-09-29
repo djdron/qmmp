@@ -46,8 +46,7 @@
 
 DecoderModPlug* DecoderModPlug::m_instance = 0;
 
-DecoderModPlug::DecoderModPlug(QObject *parent, DecoderFactory *d, Output *o, const QString &path)
-        : Decoder(parent, d, o)
+DecoderModPlug::DecoderModPlug(const QString &path) : Decoder(0)
 {
     m_path = path;
     m_freq = 0;
@@ -69,9 +68,9 @@ bool DecoderModPlug::initialize()
 {
     m_freq = m_bitrate = 0;
     m_chan = 0;
-    m_totalTime = 0.0;
+    m_totalTime = 0;
 
-    ArchiveReader reader(this);
+    ArchiveReader reader;
     if (reader.isSupported(m_path))
         m_input_buf = reader.unpack(m_path);
     else
@@ -110,10 +109,10 @@ int DecoderModPlug::bitrate()
     return m_bitrate;
 }
 
-qint64 DecoderModPlug::readAudio(char *audio, qint64 maxSize)
+qint64 DecoderModPlug::read(char *audio, qint64 maxSize)
 {
     long len = m_soundFile->Read (audio, qMin((qint64)Buffer::size(), maxSize)) * m_sampleSize;
-    /*if (m_usePreamp)
+    if (m_usePreamp)
     {
         {
             //apply preamp
@@ -143,11 +142,11 @@ qint64 DecoderModPlug::readAudio(char *audio, qint64 maxSize)
                 }
             }
         }
-    }*/
+    }
     return len;
 }
 
-void DecoderModPlug::seekAudio(qint64 pos)
+void DecoderModPlug::seek(qint64 pos)
 {
     quint32 lMax;
     quint32 lMaxtime;
@@ -190,13 +189,13 @@ void DecoderModPlug::readSettings()
     (
         settings.value("Surround", TRUE).toBool(),
         TRUE,
-        settings.value("Reverb", TRUE).toBool(),
+        settings.value("Reverb", FALSE).toBool(),
         TRUE,
         settings.value("Megabass", FALSE).toBool(),
         settings.value("NoiseReduction", FALSE).toBool(),
         FALSE
     );
-    if (settings.value("Reverb", TRUE).toBool())
+    if (settings.value("Reverb", FALSE).toBool())
     {
         CSoundFile::SetReverbParameters
         (

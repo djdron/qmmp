@@ -14,143 +14,99 @@
         <translation>Файлы ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="133"/>
+        <location filename="../decodermodplugfactory.cpp" line="130"/>
         <source>About ModPlug Audio Plugin</source>
         <translation>Об аудио-модуле ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="134"/>
+        <location filename="../decodermodplugfactory.cpp" line="131"/>
         <source>Qmmp ModPlug Audio Plugin</source>
         <translation>Аудио-модуль ModPlug для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="135"/>
+        <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="136"/>
+        <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Based on the Modplug Plugin for Xmms</source>
         <translation>Основан на базе модуля Modplug для Xmms</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="137"/>
+        <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Modplug Plugin developers:</source>
         <translation>Разработчики модуля Modplug:</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="138"/>
+        <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
         <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="139"/>
+        <location filename="../decodermodplugfactory.cpp" line="136"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
         <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="140"/>
+        <location filename="../decodermodplugfactory.cpp" line="137"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
         <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>ModPlugMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="43"/>
-        <source>File name:</source>
-        <translation>Имя файла:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="71"/>
+        <source>File name</source>
+        <translation>Имя файла</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="44"/>
-        <source>Title:</source>
-        <translation>Название:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="142"/>
+        <source>Type</source>
+        <translation>Тип</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="45"/>
-        <source>Type:</source>
-        <translation>Тип:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="147"/>
+        <source>Length</source>
+        <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="46"/>
-        <source>Length:</source>
-        <translation>Длительность:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="148"/>
+        <source>Speed</source>
+        <translation>Скорость</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="47"/>
-        <source>Speed:</source>
-        <translation>Скорость:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="149"/>
+        <source>Tempo</source>
+        <translation>Темп</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="48"/>
-        <source>Tempo:</source>
-        <translation>Темп:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="49"/>
-        <source>Samples:</source>
-        <translation>Сэмплов:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="50"/>
-        <source>Instruments:</source>
-        <translation>Инструментов:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="51"/>
-        <source>Patterns:</source>
-        <translation>Образцов:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
-        <source>Channels:</source>
-        <translation>Каналов:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>MOD Info</source>
-        <translation>Иформация MOD</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="30"/>
-        <source>General</source>
-        <translation>Общие</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="36"/>
-        <location filename="../detailsdialog.ui" line="46"/>
-        <source>-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="57"/>
+        <location filename="../modplugmetadatamodel.cpp" line="150"/>
+        <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
         <translation>Сэмплы</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="66"/>
-        <location filename="../detailsdialog.ui" line="86"/>
-        <location filename="../detailsdialog.ui" line="106"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="77"/>
+        <location filename="../modplugmetadatamodel.cpp" line="151"/>
+        <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
         <translation>Инструменты</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="97"/>
-        <source>Message</source>
-        <translation>Сообщение</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="152"/>
+        <source>Patterns</source>
+        <translation>Образцов</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="133"/>
-        <source>Close</source>
-        <translation>Закрыть</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="153"/>
+        <source>Channels</source>
+        <translation>Каналы</translation>
+    </message>
+    <message>
+        <location filename="../modplugmetadatamodel.cpp" line="185"/>
+        <source>Comment</source>
+        <translation>Комментарий</translation>
     </message>
 </context>
 <context>
@@ -267,7 +223,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../settingsdialog.ui" line="489"/>
         <location filename="../settingsdialog.ui" line="608"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -278,7 +234,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="282"/>
         <source>40</source>
-        <translation type="unfinished"></translation>
+        <translation>40</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="314"/>
@@ -298,7 +254,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="416"/>
         <source>10</source>
-        <translation type="unfinished"></translation>
+        <translation>10</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="448"/>
@@ -308,7 +264,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../settingsdialog.ui" line="541"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="567"/>
@@ -324,7 +280,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../settingsdialog.ui" line="646"/>
         <source>Note: Setting the preamp
 too high may cause clipping!</source>
-        <translation type="unfinished">Замечание: установка слишком высокого
+        <translation>Замечание: установка слишком высокого
 усиления может вызвать срезание!</translation>
     </message>
     <message>
@@ -381,18 +337,6 @@ too high may cause clipping!</source>
         <location filename="../settingsdialog.ui" line="760"/>
         <source>Loop forever</source>
         <translation>Повторять всегда</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">OK</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="obsolete">Применить</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">Отмена</translation>
     </message>
 </context>
 </TS>

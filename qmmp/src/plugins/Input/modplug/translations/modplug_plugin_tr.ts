@@ -14,146 +14,99 @@
         <translation>ModPlug Dosyaları</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="133"/>
+        <location filename="../decodermodplugfactory.cpp" line="130"/>
         <source>About ModPlug Audio Plugin</source>
         <translation>ModPlug Ses Eklentisi Hakkında</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="134"/>
+        <location filename="../decodermodplugfactory.cpp" line="131"/>
         <source>Qmmp ModPlug Audio Plugin</source>
         <translation>Qmmp ModPlug Ses Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="135"/>
+        <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="136"/>
+        <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Based on the Modplug Plugin for Xmms</source>
         <translation>Xmms için yazılan Modplug eklentisi temellidir</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="137"/>
+        <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Modplug Plugin developers:</source>
-        <translation>Modplug Eklentisi geliştiricileri:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="138"/>
+        <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
         <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="139"/>
+        <location filename="../decodermodplugfactory.cpp" line="136"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
         <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="140"/>
+        <location filename="../decodermodplugfactory.cpp" line="137"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
         <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>ModPlugMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="43"/>
-        <source>File name:</source>
-        <translation>Dosya adı:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="71"/>
+        <source>File name</source>
+        <translation type="unfinished">Dosya adı</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="44"/>
-        <source>Title:</source>
-        <translation>Başlık:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="142"/>
+        <source>Type</source>
+        <translation type="unfinished">Tip</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="45"/>
-        <source>Type:</source>
-        <translation>Tip:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="147"/>
+        <source>Length</source>
+        <translation type="unfinished">Uzunluk</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="46"/>
-        <source>Length:</source>
-        <translation>Uzunluk:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="148"/>
+        <source>Speed</source>
+        <translation type="unfinished">Hız</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="47"/>
-        <source>Speed:</source>
-        <translation>Hız:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="149"/>
+        <source>Tempo</source>
+        <translation type="unfinished">Tempo</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="48"/>
-        <source>Tempo:</source>
-        <translation>Tempo:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="49"/>
-        <source>Samples:</source>
-        <translation>Örnekler:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="50"/>
-        <source>Instruments:</source>
-        <translation>Enstrümanlar:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="51"/>
-        <source>Patterns:</source>
-        <translation>Desenler:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
-        <source>Channels:</source>
-        <translation>Kanallar:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>MOD Info</source>
-        <translation>MOD Bilgisi</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="30"/>
-        <source>General</source>
-        <translation>Genel</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="36"/>
-        <location filename="../detailsdialog.ui" line="46"/>
-        <source>-</source>
-        <translation>-</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="57"/>
+        <location filename="../modplugmetadatamodel.cpp" line="150"/>
+        <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation>Örnekler</translation>
+        <translation type="unfinished">Örnekler</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="66"/>
-        <location filename="../detailsdialog.ui" line="86"/>
-        <location filename="../detailsdialog.ui" line="106"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="77"/>
+        <location filename="../modplugmetadatamodel.cpp" line="151"/>
+        <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translation>Enstrümanlar</translation>
+        <translation type="unfinished">Enstrümanlar</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="97"/>
-        <source>Message</source>
-        <translation>Mesaj</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="152"/>
+        <source>Patterns</source>
+        <translation type="unfinished">Desenler</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="133"/>
-        <source>Close</source>
-        <translation>Kapat</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="153"/>
+        <source>Channels</source>
+        <translation type="unfinished">Kanallar</translation>
+    </message>
+    <message>
+        <location filename="../modplugmetadatamodel.cpp" line="185"/>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

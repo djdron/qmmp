@@ -59,6 +59,13 @@ DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
         {
             ui.tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
         }
+        foreach(QString title, m_metaDataModel->descriptions().keys())
+        {
+            QTextEdit *textEdit = new QTextEdit(this);
+            textEdit->setReadOnly(TRUE);
+            textEdit->setPlainText(m_metaDataModel->descriptions().value(title));
+            ui.tabWidget->addTab(textEdit, title);
+        }
     }
     printInfo();
 }

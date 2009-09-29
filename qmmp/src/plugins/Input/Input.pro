@@ -6,7 +6,7 @@ TEMPLATE = subdirs
 unix{
 SUBDIRS += vorbis sndfile wavpack
 contains(CONFIG, MODPLUG_PLUGIN){
-#    SUBDIRS += modplug
+    SUBDIRS += modplug
     message(***************************)
     message(* Modplug plugin enabled  *)
     message(***************************)

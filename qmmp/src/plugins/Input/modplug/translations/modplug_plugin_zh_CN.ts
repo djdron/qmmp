@@ -14,143 +14,99 @@
         <translation>ModPlug 文件</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="133"/>
+        <location filename="../decodermodplugfactory.cpp" line="130"/>
         <source>About ModPlug Audio Plugin</source>
         <translation>关于 ModPlug 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="134"/>
+        <location filename="../decodermodplugfactory.cpp" line="131"/>
         <source>Qmmp ModPlug Audio Plugin</source>
         <translation>Qmmp ModPlug 音频插件</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="135"/>
+        <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="136"/>
+        <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Based on the Modplug Plugin for Xmms</source>
         <translation>基于 Modplug 的 Xmms 插件</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="137"/>
+        <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Modplug Plugin developers:</source>
-        <translation>ModPlug 插件开发者：</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="138"/>
+        <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
         <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="139"/>
+        <location filename="../decodermodplugfactory.cpp" line="136"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
         <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="140"/>
+        <location filename="../decodermodplugfactory.cpp" line="137"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
         <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>ModPlugMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="43"/>
-        <source>File name:</source>
-        <translation>文件名：</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="71"/>
+        <source>File name</source>
+        <translation type="unfinished">文件名：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="44"/>
-        <source>Title:</source>
-        <translation>标题：</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="142"/>
+        <source>Type</source>
+        <translation type="unfinished">类型：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="45"/>
-        <source>Type:</source>
-        <translation>类型：</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="147"/>
+        <source>Length</source>
+        <translation type="unfinished">长度：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="46"/>
-        <source>Length:</source>
-        <translation>长度：</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="148"/>
+        <source>Speed</source>
+        <translation type="unfinished">速度：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="47"/>
-        <source>Speed:</source>
-        <translation>速度：</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="149"/>
+        <source>Tempo</source>
+        <translation type="unfinished">节拍：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="48"/>
-        <source>Tempo:</source>
-        <translation>节拍：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="49"/>
-        <source>Samples:</source>
-        <translation>取样率：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="50"/>
-        <source>Instruments:</source>
-        <translation>乐器：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="51"/>
-        <source>Patterns:</source>
-        <translation>结构：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
-        <source>Channels:</source>
-        <translation>声音通道：</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>MOD Info</source>
-        <translation>MOD 信息</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="30"/>
-        <source>General</source>
-        <translation>常规</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="36"/>
-        <location filename="../detailsdialog.ui" line="46"/>
-        <source>-</source>
-        <translation>-</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="57"/>
+        <location filename="../modplugmetadatamodel.cpp" line="150"/>
+        <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation>取样率</translation>
+        <translation type="unfinished">取样率：</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="66"/>
-        <location filename="../detailsdialog.ui" line="86"/>
-        <location filename="../detailsdialog.ui" line="106"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../modplugmetadatamodel.cpp" line="151"/>
+        <location filename="../modplugmetadatamodel.cpp" line="180"/>
+        <source>Instruments</source>
+        <translation type="unfinished">乐器：</translation>
+    </message>
+    <message>
+        <location filename="../modplugmetadatamodel.cpp" line="152"/>
+        <source>Patterns</source>
+        <translation type="unfinished">结构：</translation>
+    </message>
+    <message>
+        <location filename="../modplugmetadatamodel.cpp" line="153"/>
+        <source>Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="77"/>
-        <source>Instruments</source>
-        <translation>乐器</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="97"/>
-        <source>Message</source>
-        <translation>信息</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="133"/>
-        <source>Close</source>
-        <translation>关闭</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="185"/>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -352,18 +308,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../settingsdialog.ui" line="760"/>
         <source>Loop forever</source>
         <translation>永远循环</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation type="obsolete">确定</translation>
-    </message>
-    <message>
-        <source>Apply</source>
-        <translation type="obsolete">应用</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation type="obsolete">取消</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="192"/>

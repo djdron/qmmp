@@ -74,7 +74,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     else
         ui.resampPolyphaseRadioButton->setChecked(TRUE);
     //reverberation
-    ui.reverbGroupBox->setChecked(settings.value("Reverb", TRUE).toBool());
+    ui.reverbGroupBox->setChecked(settings.value("Reverb", FALSE).toBool());
     ui.reverbDepthSlider->setValue(settings.value("ReverbDepth", 30).toInt());
     ui.reverbDelaySlider->setValue(settings.value("ReverbDelay", 100).toInt());
     //surround
@@ -168,9 +168,9 @@ void SettingsDialog::writeSettings()
     //apply settings for the created decoder
     if (DecoderModPlug::instance())
     {
-        DecoderModPlug::instance()->mutex()->lock();
+        //DecoderModPlug::instance()->mutex()->lock();
         DecoderModPlug::instance()->readSettings();
-        DecoderModPlug::instance()->mutex()->unlock();
+        //DecoderModPlug::instance()->mutex()->unlock();
     }
 }
 

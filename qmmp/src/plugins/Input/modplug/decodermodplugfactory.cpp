@@ -26,7 +26,7 @@
 #include <libmodplug/sndfile.h>
 
 #include "settingsdialog.h"
-#include "detailsdialog.h"
+#include "modplugmetadatamodel.h"
 #include "decoder_modplug.h"
 #include "archivereader.h"
 #include "decodermodplugfactory.h"
@@ -71,11 +71,10 @@ const DecoderProperties DecoderModPlugFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderModPlugFactory::create(QObject *parent, QIODevice *input,
-                                       Output *output, const QString &path)
+Decoder *DecoderModPlugFactory::create(const QString &path, QIODevice *input)
 {
     Q_UNUSED(input);
-    return new DecoderModPlug(parent, this, output, path);
+    return new DecoderModPlug(path);
 }
 
 QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -106,7 +105,7 @@ QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName,
         file.close();
     }
     CSoundFile* soundFile = new CSoundFile();
-    soundFile->Create((uchar*) buffer.data(), buffer.size());
+    soundFile->Create((uchar*) buffer.data(), buffer.size()+1);
     list << new FileInfo(fileName);
     list.at(0)->setLength((int) soundFile->GetSongTime());
     list.at(0)->setMetaData(Qmmp::TITLE, QString::fromUtf8(soundFile->GetTitle()));
@@ -115,11 +114,9 @@ QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName,
     return list;
 }
 
-QObject* DecoderModPlugFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderModPlugFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(parent, path);
-    d -> show();
-    return d;
+    return new ModPlugMetaDataModel(path, parent);
 }
 
 void DecoderModPlugFactory::showSettings(QWidget *parent)

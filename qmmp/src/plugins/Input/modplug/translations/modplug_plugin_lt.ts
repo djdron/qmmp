@@ -1,153 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="lt">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="lt">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="40"/>
+        <location filename="../decodermodplugfactory.cpp" line="60"/>
         <source>ModPlug Plugin</source>
         <translation>ModPlug Įskiepis</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="44"/>
+        <location filename="../decodermodplugfactory.cpp" line="64"/>
         <source>ModPlug Files</source>
         <translation>ModPlug bylos</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="108"/>
+        <location filename="../decodermodplugfactory.cpp" line="130"/>
         <source>About ModPlug Audio Plugin</source>
         <translation>Apie ModPlug audio įskiepį</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="109"/>
+        <location filename="../decodermodplugfactory.cpp" line="131"/>
         <source>Qmmp ModPlug Audio Plugin</source>
         <translation>Qmmp ModPlug audio įskiepis</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="110"/>
+        <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>sukūrė:Ilya Kotov  &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="111"/>
+        <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Based on the Modplug Plugin for Xmms</source>
         <translation>Sukurta Xmms Modplug įskiepio pagrindu</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="112"/>
+        <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Modplug Plugin developers:</source>
-        <translation>Modplug kūrėjai:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="113"/>
+        <location filename="../decodermodplugfactory.cpp" line="135"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
         <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="114"/>
+        <location filename="../decodermodplugfactory.cpp" line="136"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
         <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="115"/>
+        <location filename="../decodermodplugfactory.cpp" line="137"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
         <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>ModPlugMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="44"/>
-        <source>File name:</source>
-        <translation>Bylos pavadinimas:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="71"/>
+        <source>File name</source>
+        <translation type="unfinished">Bylos pavadinimas</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="45"/>
-        <source>Title:</source>
-        <translation>Pavadinimas:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="142"/>
+        <source>Type</source>
+        <translation type="unfinished">Tipas</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="46"/>
-        <source>Type:</source>
-        <translation>Tipas:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="147"/>
+        <source>Length</source>
+        <translation type="unfinished">Ilgis</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="47"/>
-        <source>Length:</source>
-        <translation>Ilgis:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="148"/>
+        <source>Speed</source>
+        <translation type="unfinished">Greitis</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="48"/>
-        <source>Speed:</source>
-        <translation>Greitis:</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="149"/>
+        <source>Tempo</source>
+        <translation type="unfinished">Tempas</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="49"/>
-        <source>Tempo:</source>
-        <translation>Tempas:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="50"/>
-        <source>Samples:</source>
-        <translation>Samples:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="51"/>
-        <source>Instruments:</source>
-        <translation>Instrumentai:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
-        <source>Patterns:</source>
-        <translation>Pavyzdžiai:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.cpp" line="52"/>
-        <source>Channels:</source>
-        <translation>Kanalai:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>MOD Info</source>
-        <translation>MOD informacija</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="30"/>
-        <source>General</source>
-        <translation>Bendri</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="46"/>
-        <source>-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="57"/>
+        <location filename="../modplugmetadatamodel.cpp" line="150"/>
+        <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation>Pavyzdžiai</translation>
+        <translation type="unfinished">Samples</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="106"/>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="77"/>
+        <location filename="../modplugmetadatamodel.cpp" line="151"/>
+        <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translation>Instrumentai</translation>
+        <translation type="unfinished">Instrumentai</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="97"/>
-        <source>Message</source>
-        <translation>Žinutė</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="152"/>
+        <source>Patterns</source>
+        <translation type="unfinished">Pavyzdžiai</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="133"/>
-        <source>Close</source>
-        <translation>Užverti</translation>
+        <location filename="../modplugmetadatamodel.cpp" line="153"/>
+        <source>Channels</source>
+        <translation type="unfinished">Kanalai</translation>
+    </message>
+    <message>
+        <location filename="../modplugmetadatamodel.cpp" line="185"/>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -253,16 +212,21 @@ p, li { white-space: pre-wrap; }
         <translation>Reverb</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="192"/>
         <location filename="../settingsdialog.ui" line="457"/>
         <source>Depth (%)</source>
         <translation>Gilumas (%)</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="224"/>
+        <location filename="../settingsdialog.ui" line="358"/>
+        <location filename="../settingsdialog.ui" line="489"/>
         <location filename="../settingsdialog.ui" line="608"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="250"/>
         <location filename="../settingsdialog.ui" line="509"/>
         <source>Delay (ms)</source>
         <translation>Užlaikymas (ms)</translation>
@@ -373,21 +337,6 @@ too high may cause clipping!</translation>
         <location filename="../settingsdialog.ui" line="760"/>
         <source>Loop forever</source>
         <translation>Amžinai</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="800"/>
-        <source>OK</source>
-        <translation>Gerai</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="807"/>
-        <source>Apply</source>
-        <translation>Patvirtinti</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="814"/>
-        <source>Cancel</source>
-        <translation>Atšaukti</translation>
     </message>
 </context>
 </TS>

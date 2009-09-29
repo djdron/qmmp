@@ -28,7 +28,7 @@ class CSoundFile;
 class DecoderModPlug : public Decoder
 {
 public:
-    DecoderModPlug(QObject *, DecoderFactory *, Output *, const QString &path);
+    DecoderModPlug(const QString &path);
     virtual ~DecoderModPlug();
 
     void readSettings();
@@ -37,10 +37,11 @@ public:
     bool initialize();
     qint64 totalTime();
     int bitrate();
+    qint64 read(char *audio, qint64 maxSize);
+    void seek(qint64 time);
 
 private:
-    qint64 readAudio(char *audio, qint64 maxSize);
-    void seekAudio(qint64 time);
+
     //helper function
     void deinit();
 
