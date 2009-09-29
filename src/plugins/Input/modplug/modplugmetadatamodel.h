@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,29 +17,28 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <QDialog>
+#ifndef MODPLUGMETADATAMODEL_H
+#define MODPLUGMETADATAMODEL_H
 
-#include "ui_detailsdialog.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public QDialog
+#include <qmmp/metadatamodel.h>
+
+class CSoundFile;
+
+class ModPlugMetaDataModel : public MetaDataModel
 {
 Q_OBJECT
 public:
-    DetailsDialog(QWidget *parent = 0, const QString &path = 0);
-
-    ~DetailsDialog();
+    ModPlugMetaDataModel(const QString &path, QObject *parent);
+    ~ModPlugMetaDataModel();
+    QHash<QString, QString> audioProperties();
+    QHash<QString, QString> descriptions();
 
 private:
-    Ui::DetailsDialog ui;
+    CSoundFile* m_soundFile;
+    QByteArray m_buffer;
     QString m_path;
-    void loadInfo();
-
 };
 
-#endif
+#endif // MODPLUGMETADATAMODEL_H

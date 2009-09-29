@@ -34,6 +34,7 @@ public:
     MetaDataModel(QObject *parent = 0);
     virtual ~MetaDataModel();
     virtual QHash<QString, QString> audioProperties();
+    virtual QHash<QString, QString> descriptions();
     virtual QList<TagModel* > tags();
 };
 

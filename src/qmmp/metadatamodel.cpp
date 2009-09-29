@@ -34,6 +34,11 @@ QHash<QString, QString> MetaDataModel::audioProperties()
     return QHash<QString, QString> ();
 }
 
+QHash<QString, QString> MetaDataModel::descriptions()
+{
+    return QHash<QString, QString> ();
+}
+
 QList<TagModel* > MetaDataModel::tags()
 {
     return QList<TagModel* > ();

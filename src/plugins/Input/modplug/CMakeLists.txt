@@ -48,7 +48,7 @@ link_directories(${MODPLUG_LIBRARY_DIRS})
 SET(libmodplug_SRCS
   decoder_modplug.cpp
   decodermodplugfactory.cpp
-  detailsdialog.cpp
+  modplugmetadatamodel.cpp
   settingsdialog.cpp
   archivereader.cpp
 )
@@ -56,7 +56,7 @@ SET(libmodplug_SRCS
 SET(libmodplug_MOC_HDRS
   decodermodplugfactory.h
   decoder_modplug.h
-  detailsdialog.h
+  modplugmetadatamodel.h
   settingsdialog.h
   archivereader.h
 )
@@ -69,9 +69,7 @@ QT4_WRAP_CPP(libmodplug_MOC_SRCS ${libmodplug_MOC_HDRS})
 
 # user interface
 
-
 SET(libmodplug_UIS
-    detailsdialog.ui
     settingsdialog.ui
 )
 
