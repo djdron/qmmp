@@ -69,7 +69,7 @@ QHash<QString, QString> FFmpegMetaDataModel::audioProperties()
     }
     if (c)
     {
-        ap.insert(tr("Samplerate"), QString("%1 " + tr("Hz")).arg(c->sample_rate));
+        ap.insert(tr("Sample rate"), QString("%1 " + tr("Hz")).arg(c->sample_rate));
         ap.insert(tr("Channels"), QString("%1").arg(c->channels));
     }
     return ap;
