@@ -55,7 +55,7 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
         ui.mixerDeviceComboBox->setCurrentIndex(d);
 
     ui.mmapCheckBox->setChecked(settings.value("use_mmap", FALSE).toBool());
-
+    ui.pauseCheckBox->setChecked(settings.value("use_snd_pcm_pause", FALSE).toBool());
     settings.endGroup();
 }
 
@@ -194,6 +194,7 @@ void SettingsDialog::accept()
     }
     settings.setValue("mixer_device", ui.mixerDeviceComboBox->currentText ());
     settings.setValue("use_mmap", ui.mmapCheckBox->isChecked());
+    settings.setValue("use_snd_pcm_pause", ui.pauseCheckBox->isChecked());
     settings.endGroup();
     QDialog::accept();
 }
