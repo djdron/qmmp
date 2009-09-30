@@ -39,6 +39,8 @@ DecoderFFmpeg::DecoderFFmpeg(const QString &path)
     m_path = path;
     m_temp_pkt.size = 0;
     m_pkt.size = 0;
+    m_output_buf = 0;
+    m_output_at = 0;
 }
 
 
@@ -50,6 +52,8 @@ DecoderFFmpeg::~DecoderFFmpeg()
         av_close_input_file(ic);
     if(m_pkt.data)
         av_free_packet(&m_pkt);
+    if(m_output_buf)
+        delete [] m_output_buf;
 }
 
 bool DecoderFFmpeg::initialize()
@@ -93,7 +97,7 @@ bool DecoderFFmpeg::initialize()
         return FALSE;
 
     m_totalTime = ic->duration * 1000 / AV_TIME_BASE;
-
+    m_output_buf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + Qmmp::globalBufferSize()];
     configure(c->sample_rate, c->channels, 16);
     m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");
@@ -116,25 +120,25 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
 {
     if (m_skip)
     {
-        if(!m_temp_pkt.size)
-            fillBuffer();
-        if(!m_temp_pkt.size)
-            return 0;
-        while(m_temp_pkt.size > 0)
-            ffmpeg_decode(audio, maxSize);
+        while(m_temp_pkt.size)
+            ffmpeg_decode(m_output_buf);
+        m_output_at = 0;
         m_skip = FALSE;
     }
-
-    if(!m_temp_pkt.size)
+    if(!m_output_at)
         fillBuffer();
-    if(!m_temp_pkt.size)
+    if(!m_output_at)
         return 0;
-    return ffmpeg_decode(audio, maxSize);
+    qint64 len = qMin(m_output_at, maxSize);
+    memcpy(audio, m_output_buf, len);
+    m_output_at -= len;
+    memmove(m_output_buf, m_output_buf + len, m_output_at);
+    return len;
 }
 
-qint64 DecoderFFmpeg::ffmpeg_decode(char *audio, qint64 maxSize)
+qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
 {
-    int out_size = maxSize;
+    int out_size = AVCODEC_MAX_AUDIO_FRAME_SIZE * sizeof(int16_t);
     if((m_pkt.stream_index == wma_idx))
     {
 #if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(23<<8)+0))
@@ -144,13 +148,15 @@ qint64 DecoderFFmpeg::ffmpeg_decode(char *audio, qint64 maxSize)
 #endif
         m_bitrate = c->bit_rate/1024;
         if(l < 0)
-            return 0;
+            return l;
         m_temp_pkt.data += l;
         m_temp_pkt.size -= l;
     }
     if (!m_temp_pkt.size && m_pkt.data)
         av_free_packet(&m_pkt);
 
+    if(!out_size)
+        out_size = 4;
     return out_size;
 }
 
@@ -167,16 +173,36 @@ void DecoderFFmpeg::seek(qint64 pos)
 
 void DecoderFFmpeg::fillBuffer()
 {
-    if (av_read_frame(ic, &m_pkt) < 0)
+    while(!m_output_at)
     {
-        m_temp_pkt.size = 0;
-        m_inbuf_ptr = 0;
-    }
-    m_temp_pkt.size = m_pkt.size;
-    m_temp_pkt.data = m_pkt.data;
-    if(m_pkt.stream_index != wma_idx)
-    {
-        if(m_pkt.data)
-            av_free_packet(&m_pkt);
+        if(!m_temp_pkt.size)
+        {
+            if (av_read_frame(ic, &m_pkt) < 0)
+            {
+                m_temp_pkt.size = 0;
+                break;
+            }
+            m_temp_pkt.size = m_pkt.size;
+            m_temp_pkt.data = m_pkt.data;
+            if(m_pkt.stream_index != wma_idx)
+            {
+                if(m_pkt.data)
+                    av_free_packet(&m_pkt);
+                m_temp_pkt.size = 0;
+                continue;
+            }
+        }
+        m_output_at = ffmpeg_decode(m_output_buf);
+        if(m_output_at < 0)
+        {
+            m_output_at = 0;
+            break;
+        }
+        else if(m_output_at == 0)
+        {
+            if(m_pkt.data)
+                av_free_packet(&m_pkt);
+            m_temp_pkt.size = 0;
+        }
     }
 }

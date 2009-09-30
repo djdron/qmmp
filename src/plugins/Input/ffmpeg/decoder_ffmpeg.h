@@ -58,7 +58,7 @@ public:
 private:    
     //helper functions
     void fillBuffer();
-    qint64 ffmpeg_decode(char *audio, qint64 maxSize);
+    qint64 ffmpeg_decode(uint8_t *audio);
 
     AVFormatContext *ic;
     AVCodecContext *c;
@@ -70,7 +70,8 @@ private:
 
     AVPacket m_pkt;
     AVPacket m_temp_pkt;
-    uint8_t *m_inbuf_ptr;
+    uint8_t *m_output_buf;
+    qint64 m_output_at;
 };
 
 
