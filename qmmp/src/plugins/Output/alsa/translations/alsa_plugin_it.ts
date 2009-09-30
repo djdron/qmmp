@@ -81,5 +81,10 @@
         <source>Use mmap access</source>
         <translation>Usa accesso Mmap</translation>
     </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="200"/>
+        <source>Use snd_pcm_pause function</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

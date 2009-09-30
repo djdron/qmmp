@@ -72,6 +72,11 @@
         <translation>Час періоду (мс):</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="200"/>
+        <source>Use snd_pcm_pause function</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>ALSA Plugin Settings</source>
         <translation>Налаштування модуля ALSA</translation>
