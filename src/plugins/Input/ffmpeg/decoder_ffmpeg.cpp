@@ -155,8 +155,6 @@ qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
     if (!m_temp_pkt.size && m_pkt.data)
         av_free_packet(&m_pkt);
 
-    if(!out_size)
-        out_size = 4;
     return out_size;
 }
 
