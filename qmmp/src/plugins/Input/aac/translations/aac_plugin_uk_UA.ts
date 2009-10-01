@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>AACMetaDataModel</name>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="43"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Hz</source>
-        <translation type="unfinished">Гц</translation>
+        <translation>Гц</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Бітрейт</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation type="unfinished">Кб/с</translation>
+        <translation>Кб/с</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="48"/>
         <source>KB</source>
-        <translation type="unfinished">Кб</translation>
+        <translation>Кб</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="49"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір файлу</translation>
     </message>
 </context>
 <context>
