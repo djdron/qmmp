@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Modplug Plugin developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розробники модуля ModPlug:</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="135"/>
@@ -59,54 +59,52 @@
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="71"/>
         <source>File name</source>
-        <translation type="unfinished">Ім&apos;я файлу</translation>
+        <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="142"/>
         <source>Type</source>
-        <translation type="unfinished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="147"/>
         <source>Length</source>
-        <translation type="unfinished">Тривалість</translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="148"/>
         <source>Speed</source>
-        <translation type="unfinished">Швидкість</translation>
+        <translation>Швидкість</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="149"/>
         <source>Tempo</source>
-        <translation type="unfinished">Темп</translation>
+        <translation>Темп</translation>
     </message>
     <message>
-        <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation type="unfinished">Семпли</translation>
+        <translation>Семпли</translation>
     </message>
     <message>
-        <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translation type="unfinished">Інструменти</translation>
+        <translation>Інструменти</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="152"/>
         <source>Patterns</source>
-        <translation type="unfinished">Зразків</translation>
+        <translation>Зразків</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="153"/>
         <source>Channels</source>
-        <translation type="unfinished">Канали</translation>
+        <translation>Канали</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="185"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Коментар</translation>
     </message>
 </context>
 <context>
@@ -212,21 +210,16 @@
         <translation>Реверберація</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="192"/>
         <location filename="../settingsdialog.ui" line="457"/>
         <source>Depth (%)</source>
         <translation>Глибина (%)</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="224"/>
-        <location filename="../settingsdialog.ui" line="358"/>
-        <location filename="../settingsdialog.ui" line="489"/>
         <location filename="../settingsdialog.ui" line="608"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="250"/>
         <location filename="../settingsdialog.ui" line="509"/>
         <source>Delay (ms)</source>
         <translation>Затримка (мс)</translation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
         <source>Delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Затримка (мс):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="285"/>
