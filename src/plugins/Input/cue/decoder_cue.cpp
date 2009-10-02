@@ -63,7 +63,8 @@ bool DecoderCUE::initialize()
 {
     QString p = QUrl(m_path).path();
     p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-    p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+    p.replace(QString(QUrl::toPercentEncoding("?")), "?");
+    p.replace(QString(QUrl::toPercentEncoding("%")), "%");    
     m_parser = new CUEParser(p);
     if (m_parser->count() == 0)
     {

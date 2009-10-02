@@ -71,6 +71,7 @@ bool DecoderWavPack::initialize()
     {
         QString p = QUrl(m_path).path();
         p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
         p.replace(QString(QUrl::toPercentEncoding("%")), "%");
         m_context = WavpackOpenFileInput (p.toLocal8Bit(), err, OPEN_WVC | OPEN_TAGS, 0);
         int cue_len = WavpackGetTagItem (m_context, "cuesheet", NULL, 0);
