@@ -449,6 +449,7 @@ void QmmpAudioEngine::flush(bool final)
             m_output_at = 0;
             break;
         }
+
         while ((!m_done && !m_finish) && m_output->recycler()->full())
         {
             mutex()->unlock();

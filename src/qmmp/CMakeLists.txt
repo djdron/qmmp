@@ -80,6 +80,7 @@ SET(libqmmp_MOC_HDRS
     inputsource.h
     fileinputsource.h
     emptyinputsource.h
+    enginefactory.h
 )
 
 SET(libqmmp_DEVEL_HDRS

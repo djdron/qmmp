@@ -21,18 +21,18 @@
 #ifndef ABSTRACTENGINE_H
 #define ABSTRACTENGINE_H
 
-
 #include <QMutex>
 #include <QWaitCondition>
 #include <QThread>
+#include <QStringList>
 
 class QIODevice;
 class InputSource;
+class EngineFactory;
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-
 class AbstractEngine : public QThread
 {
  Q_OBJECT
@@ -43,7 +43,6 @@ public:
      * Prepares decoder for usage.
      * Subclass should reimplement this function.
      */
-    //virtual bool initialize(const QString &source, QIODevice *input = 0) = 0;
     virtual bool enqueue(InputSource *source) = 0;
     /*!
      * Returns the total time in milliseconds.
@@ -59,23 +58,9 @@ public:
      */
     virtual void stop() = 0;
     /*!
-     * Returns current bitrate (in kbps).
-     * Subclass should reimplement this function.
+     *  Pauses/resumes playback
      */
-    //virtual int bitrate();
-    /*!
-     * Requests playback to pause. If it was paused already, playback should resume.
-     * Subclass with own output should reimplement this function.
-     */
-    //virtual void pause();
-    /*!
-     * Returns decoder input or 0 if input is not specified.
-     */
-    //QIODevice *input();
-    /*!
-     * Returns decoder output or 0 if output is not specified.
-     */
-    //Output *output();
+    virtual void pause() = 0;
     /*!
      * Returns mutex pointer.
      */
@@ -88,16 +73,16 @@ public:
      * Sets equalizer settings. Each item of \p bands[] and \p reamp should be \b -20.0..20.0
      * Subclass with own equalizer should reimplement this function.
      */
-    //virtual void setEQ(double bands[10], double preamp);
+    virtual void setEQ(double bands[10], double preamp) = 0;
     /*!
      * Enables equalizer if \p on is \b true or disables it if \p on is \b false
      * Subclass with own equalizer should reimplement this function.
      */
-    //virtual void setEQEnabled(bool on);
+    virtual void setEQEnabled(bool on) = 0;
     /*!
-     * Returns \b true if \b file is supported by input plugins, otherwise returns \b false
+     * Returns a list of decoder factories.
      */
-    //bool supports(const QString &file);
+    static QList<EngineFactory*> *factories();
 
 signals:
     /*!
@@ -111,15 +96,13 @@ protected:
      */
     virtual void run() = 0;
 
-protected slots:
-    /*!
-     * Subclass should call this slot when decoding is finished.
-     */
-    //void finish();
-
 private:
     QMutex m_mutex;
     QWaitCondition m_waitCondition;
+
+    static void checkFactories();
+    static QList<EngineFactory*> *m_factories;
+    static QStringList m_files;
 };
 
 
