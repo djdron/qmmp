@@ -113,9 +113,9 @@ const QString Qmmp::pluginsPath()
 QString Qmmp::systemLanguageID()
 {
 #ifdef Q_OS_UNIX
-    QByteArray v = qgetenv ("LC_MESSAGES");
+    QByteArray v = qgetenv ("LC_ALL");
     if (v.isEmpty())
-        v = qgetenv ("LC_ALL");
+        v = qgetenv ("LC_MESSAGES");
     if (v.isEmpty())
         v = qgetenv ("LANG");
     if (!v.isEmpty())
