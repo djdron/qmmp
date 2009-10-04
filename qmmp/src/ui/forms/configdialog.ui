@@ -412,28 +412,28 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0" colspan="2">
+            <item row="1" column="0" colspan="3">
              <widget class="QCheckBox" name="underscoresCheckBox">
               <property name="text">
                <string>Convert underscores to blanks</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="0" colspan="2">
+            <item row="2" column="0" colspan="3">
              <widget class="QCheckBox" name="per20CheckBox">
               <property name="text">
                <string>Convert %20 to blanks</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="0" colspan="2">
+            <item row="3" column="0" colspan="3">
              <widget class="QCheckBox" name="protocolCheckBox">
               <property name="text">
                <string>Show protocol</string>
               </property>
              </widget>
             </item>
-            <item row="4" column="0">
+            <item row="4" column="0" colspan="3">
              <widget class="QCheckBox" name="numbersCheckBox">
               <property name="text">
                <string>Show song numbers</string>
