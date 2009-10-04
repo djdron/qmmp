@@ -111,7 +111,7 @@
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
-        <source>This plugins adds projectM visualization</source>
+        <source>This plugin adds projectM visualization</source>
         <translation>此插件添加 ProjectM 可視化</translation>
     </message>
     <message>
