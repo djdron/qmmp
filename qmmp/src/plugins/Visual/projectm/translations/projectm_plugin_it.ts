@@ -111,7 +111,7 @@
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
-        <source>This plugins adds projectM visualization</source>
+        <source>This plugin adds projectM visualization</source>
         <translation>Questo modulo aggiunge visualizzazione musicale dei brani grazie a projectM</translation>
     </message>
     <message>
