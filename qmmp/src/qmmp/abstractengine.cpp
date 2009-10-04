@@ -18,6 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QSettings>
+#include <QDir>
+#include <QPluginLoader>
+#include <QApplication>
+#include "enginefactory.h"
+#include "qmmp.h"
 #include "abstractengine.h"
 
 AbstractEngine::AbstractEngine(QObject *parent) : QThread(parent)
@@ -32,4 +38,60 @@ QMutex *AbstractEngine::mutex()
 QWaitCondition *AbstractEngine::cond()
 {
     return &m_waitCondition;
+}
+
+// static methods
+QList<EngineFactory*> *AbstractEngine::m_factories = 0;
+QStringList AbstractEngine::m_files;
+
+void AbstractEngine::checkFactories()
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+
+    if (!m_factories)
+    {
+        m_files.clear();
+        m_factories = new QList<EngineFactory *>;
+
+        QDir pluginsDir (Qmmp::pluginsPath());
+        pluginsDir.cd("Engines");
+        foreach (QString fileName, pluginsDir.entryList(QDir::Files))
+        {
+            QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+            QObject *plugin = loader.instance();
+            if (loader.isLoaded())
+                qDebug("AbstractEngine: plugin loaded - %s", qPrintable(fileName));
+            else
+                qWarning("AbstractEngine: %s", qPrintable(loader.errorString ()));
+            EngineFactory *factory = 0;
+            if (plugin)
+                factory = qobject_cast<EngineFactory *>(plugin);
+
+            if (factory)
+            {
+                m_factories->append(factory);
+                m_files << pluginsDir.absoluteFilePath(fileName);
+                qApp->installTranslator(factory->createTranslator(qApp));
+            }
+        }
+        //remove physically deleted plugins from disabled list
+        QStringList names;
+        foreach (EngineFactory *factory, *m_factories)
+        {
+            names.append(factory->properties().shortName);
+        }
+        QStringList disabledList  = settings.value("Engine/disabled_plugins").toStringList ();
+        foreach (QString name, disabledList)
+        {
+            if (!names.contains(name))
+                disabledList.removeAll(name);
+        }
+        settings.setValue("Engine/disabled_plugins",disabledList);
+    }
+}
+
+QList<EngineFactory*> *AbstractEngine::factories()
+{
+    checkFactories();
+    return m_factories;
 }

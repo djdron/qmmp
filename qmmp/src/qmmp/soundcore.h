@@ -29,7 +29,7 @@
 
 class QIODevice;
 class VolumeControl;
-class QmmpAudioEngine;
+class AbstractEngine;
 class InputSource;
 
 /*! \brief The SoundCore class provides a simple interface for audio playback.
@@ -105,9 +105,6 @@ public:
      * Returns the metdata string associated with the given \b key.
      */
     QString metaData(Qmmp::MetaData key);
-
-    //bool enqueue(const QString &url);
-
     /*!
      * Returns a pointer to the SoundCore instance.
      */
@@ -222,7 +219,7 @@ private:
     static SoundCore* m_instance;
     StateHandler *m_handler;
     VolumeControl *m_volumeControl;
-    QmmpAudioEngine *m_engine;
+    AbstractEngine *m_engine;
     QList<InputSource *> m_pendingSources;
 };
 

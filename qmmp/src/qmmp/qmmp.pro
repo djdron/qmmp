@@ -26,7 +26,8 @@ HEADERS += recycler.h \
     inputsource.h \
     fileinputsource.h \
     emptyinputsource.h \
-    inputsourcefactory.h
+    inputsourcefactory.h \
+    enginefactory.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -56,7 +57,6 @@ CONFIG += release \
     warn_on \
     qt \
     thread
-
 TEMPLATE = lib
 VERSION = $$QMMP_VERSION
 unix:isEmpty(LIB_DIR):LIB_DIR = /lib
