@@ -92,7 +92,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
         <source>Delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="305"/>

@@ -36,8 +36,8 @@
     <message numerus="yes">
         <location filename="../fileops.cpp" line="177"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Czy napewno chcesz usunąć %n plik(ów) z dysku?</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
