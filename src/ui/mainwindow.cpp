@@ -203,7 +203,7 @@ void MainWindow::pause(void)
 void MainWindow::stop()
 {
     //display->setTime(0);
-    m_core->stop();
+    m_player->stop();
 }
 
 void MainWindow::next()
