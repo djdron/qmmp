@@ -39,42 +39,42 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
         <source>Length</source>
-        <translation type="unfinished">Długość</translation>
+        <translation>Długość</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>File size</source>
-        <translation type="unfinished">Wielkość pliku</translation>
+        <translation>Wielkość pliku</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Szybkość transmisji</translation>
+        <translation>Szybkość transmisji</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Próbkowanie</translation>
+        <translation>Próbkowanie</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="73"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanały</translation>
+        <translation>Kanały</translation>
     </message>
 </context>
 <context>

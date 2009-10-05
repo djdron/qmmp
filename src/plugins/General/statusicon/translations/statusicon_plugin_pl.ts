@@ -21,7 +21,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
         <source>Message delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Czas wyśw. wiadomości (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
-        <translation type="unfinished">Wtyczka Ikona Statusu dla Qmmp</translation>
+        <translation>Wtyczka Ikona Statusu dla Qmmp</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>

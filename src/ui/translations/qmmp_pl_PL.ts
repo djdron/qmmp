@@ -402,12 +402,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="225"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaawansowane</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="339"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj czcionki bitmapowej jeśli jest dostępna</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="439"/>
