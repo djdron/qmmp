@@ -228,7 +228,7 @@ void QmmpAudioEngine::stop()
     while(!m_decoders.isEmpty())
     {
         Decoder *d = m_decoders.dequeue();
-        delete m_inputs.take(d);
+        m_inputs.take(d)->deleteLater ();
         delete d;
     }
     reset();
@@ -361,7 +361,7 @@ void QmmpAudioEngine::run()
             }
             else if(!m_decoders.isEmpty())
             {
-                delete m_inputs.take(m_decoder);
+                m_inputs.take(m_decoder)->deleteLater ();
                 delete m_decoder;
                 m_decoder = m_decoders.dequeue();
                 //use current output if possible
@@ -422,7 +422,7 @@ void QmmpAudioEngine::run()
     }
     if(m_decoder)
     {
-        delete m_inputs.take(m_decoder);
+        m_inputs.take(m_decoder)->deleteLater ();
         delete m_decoder;
         m_decoder = 0;
     }
