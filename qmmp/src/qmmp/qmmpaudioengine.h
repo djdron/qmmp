@@ -50,9 +50,6 @@ public:
     void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
 
-signals:
-    void playbackFinished();
-
 private slots:
     void finish();
 
