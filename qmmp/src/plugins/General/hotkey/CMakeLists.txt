@@ -24,6 +24,9 @@ SET(QT_INCLUDES
 
 pkg_check_modules(X11 xf86miscproto x11)
 
+include_directories(${X11_INCLUDE_DIRS})
+link_directories(${X11_LIBRARY_DIRS})
+
 # libqmmpui & libqmmp
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
@@ -67,6 +70,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(X11_FOUND)
 ADD_LIBRARY(hotkey MODULE ${libhotkey_SRCS} ${libhotkey_MOC_SRCS} ${libhotkey_UIS_H} ${libhotkey_RCC_SRCS})
 add_dependencies(hotkey qmmpui)
-target_link_libraries(hotkey ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(hotkey ${QT_LIBRARIES} -lqmmpui -lqmmp ${X11_LDFLAGS})
 install(TARGETS hotkey DESTINATION ${LIB_DIR}/qmmp/General)
 ENDIF(X11_FOUND)
