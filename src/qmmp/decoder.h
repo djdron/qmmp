@@ -88,21 +88,6 @@ public:
      */
     static DecoderFactory *findByURL(const QUrl &url);
     /*!
-     * Extracts metadata and audio information from file \b path and returns a list of FileInfo items.
-     * One file may contain several playlist items (for example: cda disk or flac with embedded cue)
-     * @param path Source file path.
-     * @param useMetaData Metadata usage (\b true - use, \b - do not use)
-     */
-    static QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = TRUE);
-    /*!
-     * Returns a list of file name filters with description, i.e. "MPEG Files (*.mp3 *.mpg)"
-     */
-    static QStringList filters();
-    /*!
-     * Returns a list of file name filters, i.e. "*.mp3 *.mpg"
-     */
-    static QStringList nameFilters();
-    /*!
      * Returns a list of decoder factories.
      */
     static QList<DecoderFactory*> *factories();

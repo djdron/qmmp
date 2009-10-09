@@ -2,7 +2,8 @@ SUBDIRS += Input \
            Output \
            General \
            Visual \
-           Transports
+           Transports \
+           Engines
 
 unix:SUBDIRS += Effect \
                 PlaylistFormats \

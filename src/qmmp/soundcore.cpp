@@ -30,7 +30,8 @@
 #include "statehandler.h"
 #include "inputsource.h"
 #include "volumecontrol.h"
-
+#include "enginefactory.h"
+#include "metadatamanager.h"
 #include "soundcore.h"
 
 SoundCore *SoundCore::m_instance = 0;
@@ -48,6 +49,7 @@ SoundCore::SoundCore(QObject *parent)
     m_vis = 0;
     m_parentWidget = 0;
     m_engine = 0;
+    m_pendingEngine = 0;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
     m_handler = new StateHandler(this);
@@ -58,6 +60,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
     connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
+    connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(startPendingEngine()));
     connect(m_handler, SIGNAL(aboutToFinish()), SIGNAL(aboutToFinish()));
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
@@ -67,12 +70,16 @@ SoundCore::SoundCore(QObject *parent)
 SoundCore::~SoundCore()
 {
     stop();
+    MetaDataManager::destroy();
 }
 
 bool SoundCore::play(const QString &source, bool queue)
 {
     if(!queue)
+    {
         stop();
+        qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
+    }
 
     InputSource *s = InputSource::create(source, this);
     m_pendingSources.append(s);
@@ -92,10 +99,15 @@ void SoundCore::stop()
     m_source.clear();
     if(m_engine)
         m_engine->stop();
+    qDeleteAll(m_pendingSources);
+    m_pendingSources.clear();
+    if(m_pendingEngine)
+        delete m_pendingEngine;
+    m_pendingEngine = 0;
     //update VolumeControl
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
-    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));    
 }
 
 void SoundCore::pause()
@@ -167,8 +179,6 @@ void SoundCore::setSoftwareVolume(bool b)
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
     if (m_engine)
         m_engine->mutex()->unlock();
-    qDeleteAll(m_pendingSources);
-    m_pendingSources.clear();
 }
 
 bool SoundCore::softwareVolume()
@@ -230,15 +240,68 @@ bool SoundCore::enqueue(InputSource *s)
     if(m_engine->enqueue(s))
     {
         m_source = s->url();
-        m_engine->start();
+        if(state() == Qmmp::Stopped)
+            m_engine->play();
     }
     else
     {
-        s->deleteLater();
+        //current engine doesn't support this stream, trying to find another
+        AbstractEngine *engine = new QmmpAudioEngine(this); //internal engine
+        if(!engine->enqueue(s))
+        {
+            engine->deleteLater();
+            engine = 0;
+        }
+
+        if(!engine)
+        {
+            QList <EngineFactory*> factories = *AbstractEngine::factories();
+            foreach(EngineFactory *f, *AbstractEngine::factories())
+            {
+                engine = f->create(this); //engine plugin
+                if(!engine->enqueue(s))
+                {
+                    engine->deleteLater();
+                    engine = 0;
+                }
+            }
+        }
+
+        if(!engine) //unsupported file format
+        {
+            s->deleteLater();
+            return FALSE;
+        }
+        connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
+        if (m_handler->state() == Qmmp::Playing || m_handler->state() == Qmmp::Paused)
+        {
+            if(m_pendingEngine)
+                m_pendingEngine->deleteLater();
+            m_pendingEngine = engine;
+        }
+        else
+        {
+            m_engine->deleteLater();
+            m_engine = engine;
+            m_engine->play();
+            m_pendingEngine = 0;
+        }
         return FALSE;
     }
 
     return TRUE;
+}
+
+void SoundCore::startPendingEngine()
+{
+    if(state() == Qmmp::Stopped && m_pendingEngine)
+    {
+        if(m_engine)
+            delete m_engine;
+        m_engine = m_pendingEngine;
+        m_pendingEngine = 0;
+        m_engine->play();
+    }
 }
 
 SoundCore* SoundCore::instance()

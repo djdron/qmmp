@@ -20,7 +20,7 @@
 #include <QSettings>
 #include <QDir>
 
-#include <qmmp/decoder.h>
+#include <qmmp/metadatamanager.h>
 #include "playlistsettings.h"
 #include "playlistitem.h"
 
@@ -90,7 +90,7 @@ void PlayListItem::updateTags()
         delete m_info;
         m_info = 0;
     }
-    QList <FileInfo *> list =  Decoder::createPlayList(url());
+    QList <FileInfo *> list =  MetaDataManager::instance()->createPlayList(url());
     if(!list.isEmpty() && !list.at(0)->path().contains("://"))
     {
         m_info = list.at(0);

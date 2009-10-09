@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,65 +17,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef MPLAYERENGINEFACTORY_H
+#define MPLAYERENGINEFACTORY_H
 
-#ifndef DECODER_MPLAYER_H
-#define DECODER_MPLAYER_H
+#include <QObject>
+#include <QString>
+#include <QIODevice>
+#include <QWidget>
 
-#include <qmmp/decoder.h>
-#include <qmmp/statehandler.h>
+#include <qmmp/abstractengine.h>
+#include <qmmp/enginefactory.h>
+#include <qmmp/fileinfo.h>
+#include <qmmp/metadatamodel.h>
 
-class Output;
-class QIDevice;
-class DecoderPhonon;
-class QMenu;
-class QProcess;
-
-
-class MplayerInfo
+class MplayerEngineFactory : public QObject, EngineFactory
 {
+Q_OBJECT
+Q_INTERFACES(EngineFactory);
+
 public:
-    static FileInfo *createFileInfo(const QString &path);
-    static QStringList filters();
+    const EngineProperties properties() const;
+    bool supports(const QString &source) const;
+    AbstractEngine *create(QObject *parent = 0);
+    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
+    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
+    void showSettings(QWidget *parent);
+    void showAbout(QWidget *parent);
+    QTranslator *createTranslator(QObject *parent);
 };
 
-
-
-class DecoderMplayer : public Decoder
-{
-    Q_OBJECT
-public:
-    DecoderMplayer(QObject *, DecoderFactory *, const QString &url);
-    virtual ~DecoderMplayer();
-
-    // Standard Decoder API
-    bool initialize();
-    qint64 totalTime();
-    void seek(qint64);
-    void stop();
-    void pause();
-
-    // Equalizer
-    void setEQ(double bands[10], double preamp);
-    void setEQEnabled(bool on);
-
-private slots:
-    void readStdOut();
-    void startMplayerProcess();
-
-private:
-    // thread run function
-    void run();
-    int mplayer_pipe[2];
-    QString m_url;
-    QStringList m_args;
-    QProcess *m_process;
-    int m_bitrate;
-    int m_samplerate;
-    int m_channels;
-    int m_bitsPerSample;
-    qint64 m_currentTime;
-    qint64 m_length;
-};
-
-
-#endif // DECODER_MPLAYER_H
+#endif

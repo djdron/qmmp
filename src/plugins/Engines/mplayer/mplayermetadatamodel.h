@@ -17,27 +17,22 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DETAILSDIALOG_H
-#define DETAILSDIALOG_H
 
-#include <QDialog>
+#ifndef MPLAYERMETADATAMODEL_H
+#define MPLAYERMETADATAMODEL_H
 
-#include "ui_detailsdialog.h"
+#include <qmmp/metadatamodel.h>
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class DetailsDialog : public QDialog
+class MplayerMetaDataModel : public MetaDataModel
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    DetailsDialog(const QString &path, QWidget *parent = 0);
-
-    ~DetailsDialog();
+    MplayerMetaDataModel(const QString &path, QObject *parent);
+    ~MplayerMetaDataModel();
+    QHash<QString, QString> audioProperties();
 
 private:
-    Ui::DetailsDialog ui;
-
+    QString m_path;
 };
 
-#endif
+#endif // MPLAYERMETADATAMODEL_H

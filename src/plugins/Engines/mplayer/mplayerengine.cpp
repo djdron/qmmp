@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <qmmp/buffer.h>
-#include <qmmp/output.h>
-#include <qmmp/recycler.h>
-#include <qmmp/fileinfo.h>
-#include <qmmp/decoderfactory.h>
-
 #include <QObject>
 #include <QProcess>
 #include <QFile>
@@ -34,8 +28,13 @@
 #include <QMenu>
 #include <QRegExp>
 #include <QSettings>
-
-#include "decoder_mplayer.h"
+#include <qmmp/buffer.h>
+#include <qmmp/output.h>
+#include <qmmp/recycler.h>
+#include <qmmp/fileinfo.h>
+#include <qmmp/decoderfactory.h>
+#include <qmmp/inputsource.h>
+#include "mplayerengine.h"
 
 #define MPLAYER_DEBUG
 
@@ -84,10 +83,10 @@ QStringList MplayerInfo::filters()
     return filters;
 }
 
-DecoderMplayer::DecoderMplayer(QObject *parent, DecoderFactory *d, const QString &url)
-        : Decoder(parent, d)
+MplayerEngine::MplayerEngine(QObject *parent)
+        : AbstractEngine(parent)
 {
-    m_url = url;
+    //m_url = url;
     m_bitrate = 0;
     m_samplerate = 0;
     m_channels = 0;
@@ -95,15 +94,46 @@ DecoderMplayer::DecoderMplayer(QObject *parent, DecoderFactory *d, const QString
     m_length = 0;
     m_currentTime = 0;
     m_process = new QProcess(this);
+    connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
 }
 
-DecoderMplayer::~DecoderMplayer()
+MplayerEngine::~MplayerEngine()
 {
     qDebug("%s",__FUNCTION__);
     m_process->close();
 }
 
-bool DecoderMplayer::initialize()
+bool MplayerEngine::play()
+{
+    if(m_process->state() != QProcess::NotRunning)
+        return FALSE;
+    startMplayerProcess();
+    return TRUE;
+}
+
+bool MplayerEngine::enqueue(InputSource *source)
+{
+    QString url = source->url();
+    QStringList filters = MplayerInfo::filters();
+    bool supports = FALSE;
+    foreach(QString filter, filters)
+    {
+        QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+        supports = regexp.exactMatch(source->url());
+        if(supports)
+            break;
+    }
+    if(!supports)
+        return FALSE;
+    source->deleteLater();
+    if(m_process->state() == QProcess::NotRunning)
+        m_url = url;
+    else
+        m_files.enqueue(url);
+    return TRUE;
+}
+
+bool MplayerEngine::initialize()
 {
     FileInfo *info = MplayerInfo::createFileInfo(m_url);
     m_length = info->length();
@@ -122,22 +152,21 @@ bool DecoderMplayer::initialize()
         m_args << QString("-autosync %1").arg(settings.value("autosync_factor", 100).toInt());
 
     m_args << m_url;
-    connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
     return TRUE;
 }
 
-qint64 DecoderMplayer::totalTime()
+qint64 MplayerEngine::totalTime()
 {
     return m_length * 1000;
 }
 
-void DecoderMplayer::seek(qint64 pos)
+void MplayerEngine::seek(qint64 pos)
 {
     if (m_process->state() == QProcess::Running)
         m_process->write(QString("seek %1 \n").arg(pos/1000 - m_currentTime).toLocal8Bit ());
 }
 
-void DecoderMplayer::stop()
+void MplayerEngine::stop()
 {
     if (m_process->state() == QProcess::Running)
     {
@@ -145,31 +174,27 @@ void DecoderMplayer::stop()
         m_process->waitForFinished(1500);
     }
     StateHandler::instance()->dispatch(Qmmp::Stopped);
+    m_files.clear();
+    m_url.clear();
 }
 
-void DecoderMplayer::pause()
+void MplayerEngine::pause()
 {
     m_process->write("pause\n");
 }
 
-void DecoderMplayer::setEQ(double bands[10], double preamp)
+void MplayerEngine::setEQ(double bands[10], double preamp)
 {
     Q_UNUSED(bands[10]);
     Q_UNUSED(preamp);
 }
 
-void DecoderMplayer::setEQEnabled(bool on)
+void MplayerEngine::setEQEnabled(bool on)
 {
     Q_UNUSED(on);
 }
 
-void DecoderMplayer::run()
-{
-    QMetaObject::invokeMethod(this, "startMplayerProcess");
-    StateHandler::instance()->dispatch(Qmmp::Playing);
-}
-
-void DecoderMplayer::readStdOut()
+void MplayerEngine::readStdOut()
 {
     QString line = QString::fromLocal8Bit(m_process->readAll ()).trimmed();
     QStringList lines = line.split("\n");
@@ -192,8 +217,19 @@ void DecoderMplayer::readStdOut()
         else if (rx_end.indexIn(line) > -1)
         {
             if (m_process->state() == QProcess::Running)
-                m_process->waitForFinished(1500);
-            finish();
+                m_process->waitForFinished(3500);
+            emit playbackFinished();
+            if(!m_files.isEmpty())
+            {
+                StateHandler::instance()->dispatch(Qmmp::Stopped);
+                m_url = m_files.dequeue();
+                startMplayerProcess();
+            }
+            else
+            {
+                StateHandler::instance()->dispatch(Qmmp::Stopped);
+                return;
+            }
         }
         else if (rx_quit.indexIn(line) > -1)
         {
@@ -215,7 +251,12 @@ void DecoderMplayer::readStdOut()
     }
 }
 
-void DecoderMplayer::startMplayerProcess()
+void MplayerEngine::startMplayerProcess()
 {
+    initialize();
     m_process->start ("mplayer", m_args);
+    StateHandler::instance()->dispatch(Qmmp::Playing);
+    FileInfo *info = MplayerInfo::createFileInfo(m_url);
+    StateHandler::instance()->dispatch(info->metaData());
+    delete info;
 }

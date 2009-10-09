@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <qmmp/decoder.h>
 
+#include <qmmp/metadatamanager.h>
 #include "fileloader.h"
 #include "playlistsettings.h"
 #include "playlistitem.h"
@@ -26,7 +26,7 @@
 FileLoader::FileLoader(QObject *parent)
         : QThread(parent),m_files_to_load(),m_directory()
 {
-    m_filters = Decoder::nameFilters();
+    m_filters = MetaDataManager::instance()->nameFilters();
     m_finished = false;
 }
 
@@ -41,10 +41,10 @@ void FileLoader::addFiles(const QStringList &files)
 {
     if (files.isEmpty ())
         return;
-
+    bool use_meta = PlaylistSettings::instance()->useMetadata();
     foreach(QString s, files)
     {
-        QList <FileInfo *> playList = Decoder::createPlayList(s, PlaylistSettings::instance()->useMetadata());
+        QList <FileInfo *> playList = MetaDataManager::instance()->createPlayList(s, use_meta);
         foreach(FileInfo *info, playList)
         emit newPlayListItem(new PlayListItem(info));
         if (m_finished) return;
@@ -59,11 +59,11 @@ void FileLoader::addDirectory(const QString& s)
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     dir.setSorting(QDir::Name);
     QFileInfoList l = dir.entryInfoList(m_filters);
+    bool use_meta = PlaylistSettings::instance()->useMetadata();
     for (int i = 0; i < l.size(); ++i)
     {
         QFileInfo fileInfo = l.at(i);
-        playList = Decoder::createPlayList(fileInfo.absoluteFilePath (),
-                                           PlaylistSettings::instance()->useMetadata());
+        playList = MetaDataManager::instance()->createPlayList(fileInfo.absoluteFilePath (), use_meta);
         foreach(FileInfo *info, playList)
         emit newPlayListItem(new PlayListItem(info));
         if (m_finished) return;

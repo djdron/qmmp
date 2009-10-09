@@ -95,3 +95,45 @@ QList<EngineFactory*> *AbstractEngine::factories()
     checkFactories();
     return m_factories;
 }
+
+EngineFactory *AbstractEngine::findByPath(const QString& source)
+{
+    checkFactories();
+    foreach(EngineFactory *fact, *m_factories)
+    {
+        if (fact->supports(source) && isEnabled(fact))
+            return fact;
+    }
+    return 0;
+}
+
+void AbstractEngine::setEnabled(EngineFactory* factory, bool enable)
+{
+    checkFactories();
+    if (!m_factories->contains(factory))
+        return;
+
+    QString name = factory->properties().shortName;
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat );
+    QStringList disabledList = settings.value("Engine/disabled_plugins").toStringList();
+
+    if (enable)
+        disabledList.removeAll(name);
+    else
+    {
+        if (!disabledList.contains(name))
+            disabledList << name;
+    }
+    settings.setValue("Engine/disabled_plugins", disabledList);
+}
+
+bool AbstractEngine::isEnabled(EngineFactory* factory)
+{
+    checkFactories();
+    if (!m_factories->contains(factory))
+        return FALSE;
+    QString name = factory->properties().shortName;
+    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
+    QStringList disabledList = settings.value("Engine/disabled_plugins").toStringList();
+    return !disabledList.contains(name);
+}

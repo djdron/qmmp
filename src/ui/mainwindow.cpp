@@ -27,6 +27,7 @@
 
 #include <qmmp/soundcore.h>
 #include <qmmp/visual.h>
+#include <qmmp/metadatamanager.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/general.h>
 #include <qmmpui/playlistparser.h>
@@ -296,8 +297,9 @@ void MainWindow::addDir()
 void MainWindow::addFile()
 {
     QStringList filters;
-    filters << tr("All Supported Bitstreams")+" (" + Decoder::nameFilters().join (" ") +")";
-    filters << Decoder::filters();
+    filters << tr("All Supported Bitstreams")+" (" +
+            MetaDataManager::instance()->nameFilters().join (" ") +")";
+    filters << MetaDataManager::instance()->filters();
     FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
                       m_playListModel, SLOT(addFileList(const QStringList&)),
                       tr("Select one or more files to open"), filters.join(";;"));

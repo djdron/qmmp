@@ -225,49 +225,6 @@ bool Decoder::isEnabled(DecoderFactory* factory)
     return !disabledList.contains(name);
 }
 
-QList <FileInfo *> Decoder::createPlayList(const QString &fileName, bool useMetaData)
-{
-    QList <FileInfo *> list;
-    DecoderFactory *fact = 0;
-
-    if (QFile::exists(fileName)) //is it file?
-        fact = Decoder::findByPath(fileName);
-
-    if (fact)
-        list << fact->createPlayList(fileName, useMetaData);
-    else if (QUrl(fileName).scheme() == "http")
-        list << new FileInfo(fileName); //create empty FileInfo for stream TODO transports support
-    //append path if it is empty
-    foreach(FileInfo *info, list)
-    {
-        if (info->path().isEmpty())
-            info->setPath(fileName);
-    }
-    return list;
-}
-
-QStringList Decoder::filters()
-{
-    checkFactories();
-    QStringList filters;
-    foreach(DecoderFactory *fact, *m_factories)
-    if (isEnabled(fact) && !fact->properties().filter.isEmpty())
-        filters << fact->properties().description + " (" + fact->properties().filter + ")";
-    return filters;
-}
-
-QStringList Decoder::nameFilters()
-{
-    checkFactories();
-    QStringList filters;
-    for (int i=0; i<m_factories->size(); ++i)
-    {
-        if (isEnabled(m_factories->at(i)))
-            filters << m_factories->at(i)->properties().filter.split(" ", QString::SkipEmptyParts);
-    }
-    return filters;
-}
-
 QList<DecoderFactory*> *Decoder::factories()
 {
     checkFactories();

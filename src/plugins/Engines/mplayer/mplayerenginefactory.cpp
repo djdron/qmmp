@@ -19,15 +19,29 @@
  ***************************************************************************/
 #include <QtGui>
 
-#include "detailsdialog.h"
+#include "mplayermetadatamodel.h"
 #include "settingsdialog.h"
-#include "decoder_mplayer.h"
-#include "decodermplayerfactory.h"
+#include "mplayerengine.h"
+#include "mplayerenginefactory.h"
 
 
-// DecoderMplayerFactory
+// MplayerEngineFactory
 
-bool DecoderMplayerFactory::supports(const QString &source) const
+const EngineProperties MplayerEngineFactory::properties() const
+{
+    EngineProperties properties;
+    properties.name = tr("Mplayer Plugin");
+    properties.shortName = "mplayer";
+    properties.filter = MplayerInfo::filters().join(" ");
+    properties.description = tr("Video Files");
+    //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
+    properties.protocols = "file";
+    properties.hasAbout = TRUE;
+    properties.hasSettings = TRUE;
+    return properties;
+}
+
+bool MplayerEngineFactory::supports(const QString &source) const
 {
     QStringList filters = MplayerInfo::filters();
     foreach(QString filter, filters)
@@ -39,36 +53,12 @@ bool DecoderMplayerFactory::supports(const QString &source) const
     return FALSE;
 }
 
-bool DecoderMplayerFactory::canDecode(QIODevice *) const
+AbstractEngine *MplayerEngineFactory::create(QObject *parent)
 {
-    return FALSE;
+    return new MplayerEngine(parent);
 }
 
-const DecoderProperties DecoderMplayerFactory::properties() const
-{
-    DecoderProperties properties;
-    properties.name = tr("Mplayer Plugin");
-    properties.shortName = "mplayer";
-    properties.filter = MplayerInfo::filters().join(" ");
-    properties.description = tr("Video Files");
-    //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
-    properties.protocols = "file";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.noInput = TRUE;
-    properties.noOutput = TRUE;
-    return properties;
-}
-
-Decoder *DecoderMplayerFactory::create(QObject *parent, QIODevice *input,
-                                       Output *output, const QString &url)
-{
-    Q_UNUSED(input);
-    Q_UNUSED(output);
-    return new DecoderMplayer(parent, this, url);
-}
-
-QList<FileInfo *> DecoderMplayerFactory::createPlayList(const QString &fileName, bool useMetaData)
+QList<FileInfo *> MplayerEngineFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     Q_UNUSED(useMetaData);
     QList<FileInfo *> info;
@@ -76,20 +66,18 @@ QList<FileInfo *> DecoderMplayerFactory::createPlayList(const QString &fileName,
     return info;
 }
 
-QObject* DecoderMplayerFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* MplayerEngineFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    DetailsDialog *d = new DetailsDialog(path, parent);
-    d->show();
-    return d;
+    return new MplayerMetaDataModel(path, parent);
 }
 
-void DecoderMplayerFactory::showSettings(QWidget *parent)
+void MplayerEngineFactory::showSettings(QWidget *parent)
 {
     SettingsDialog *s = new SettingsDialog(parent);
     s->show();
 }
 
-void DecoderMplayerFactory::showAbout(QWidget *parent)
+void MplayerEngineFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About MPlayer Plugin"),
                         tr("Qmmp MPlayer Plugin")+"\n"+
@@ -97,7 +85,7 @@ void DecoderMplayerFactory::showAbout(QWidget *parent)
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
-QTranslator *DecoderMplayerFactory::createTranslator(QObject *parent)
+QTranslator *MplayerEngineFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
     QString locale = Qmmp::systemLanguageID();
@@ -105,4 +93,4 @@ QTranslator *DecoderMplayerFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderMplayerFactory)
+Q_EXPORT_PLUGIN(MplayerEngineFactory)

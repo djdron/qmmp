@@ -204,6 +204,7 @@ void MediaPlayer::updateNextUrl()
     {
         m_core->play(m_model->nextItem()->url(), TRUE);
         m_nextUrl = m_model->nextItem()->url();
+        qDebug("next url");
     }
     else
         m_nextUrl.clear();

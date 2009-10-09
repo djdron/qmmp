@@ -25,6 +25,7 @@
 #include <QTextCodec>
 
 #include <qmmp/decoder.h>
+#include <qmmp/metadatamanager.h>
 
 #include "cueparser.h"
 
@@ -113,7 +114,7 @@ CUEParser::CUEParser(const QString &fileName)
             m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
         else
         {
-            QList <FileInfo *> f_list = Decoder::createPlayList(m_files[i], FALSE);
+            QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(m_files[i], FALSE);
             qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
             if (l > m_infoList[i].length())
                 m_infoList[i].setLength(l - m_infoList[i].length());
@@ -123,7 +124,7 @@ CUEParser::CUEParser(const QString &fileName)
     }
 
     //calculate last item length
-    QList <FileInfo *> f_list = Decoder::createPlayList(m_filePath, FALSE);
+    QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(m_filePath, FALSE);
     qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
     if (l > m_infoList.last().length())
         m_infoList.last().setLength(l - m_infoList.last().length());

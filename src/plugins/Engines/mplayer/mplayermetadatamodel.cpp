@@ -18,20 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QProcess>
 #include <QRegExp>
 #include <QFileInfo>
+#include <QStringList>
+#include <QProcess>
+#include "mplayermetadatamodel.h"
 
-#include "detailsdialog.h"
-
-DetailsDialog::DetailsDialog(const QString &path, QWidget *parent)
-        : QDialog(parent)
+MplayerMetaDataModel::MplayerMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
-    ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose);
-    ui.pathLineEdit->setText(path);
-    ui.sizeLabel->setText(QString("%1 ").arg(QFileInfo(path).size ()/1024)+tr("KB"));
-    setWindowTitle(QFileInfo(path).fileName());
+    m_path = path;
+}
+
+MplayerMetaDataModel::~MplayerMetaDataModel()
+{}
+
+QHash<QString, QString> MplayerMetaDataModel::audioProperties()
+{
+    QHash<QString, QString> vp;
+    QHash<QString, QString> ap;
+    ap.insert(tr("Size"), QString("%1 ").arg(QFileInfo(m_path).size ()/1024)+tr("KB"));
     //regular expressions
     QRegExp rx_id_length("^ID_LENGTH=([0-9,.]+)*");
     QRegExp rx_id_demuxer("^ID_DEMUXER=(.*)");
@@ -56,7 +61,7 @@ DetailsDialog::DetailsDialog(const QString &path, QWidget *parent)
     args << "null";
     args << "-ao";
     args << "null";
-    args << path;
+    args << m_path;
     QProcess mplayer_process;
     mplayer_process.start("mplayer", args);
     mplayer_process.waitForFinished();
@@ -68,40 +73,34 @@ DetailsDialog::DetailsDialog(const QString &path, QWidget *parent)
     {
         //general info
         if (rx_id_length.indexIn(line) > -1)
-            ui.lengthLabel->setText(rx_id_length.cap(1)); //TODO use hh:mm:ss format
+            ap.insert(tr("Length"),rx_id_length.cap(1)); //TODO use hh:mm:ss format
         else if (rx_id_demuxer.indexIn(line) > -1)
-            ui.demuxerLabel->setText(rx_id_demuxer.cap(1));
+            ap.insert(tr("Demuxer"), rx_id_demuxer.cap(1));
         //video info
         else if (rx_id_video_format.indexIn(line) > -1)
-            ui.videoFormatLabel->setText(rx_id_video_format.cap(1));
+            ap.insert(tr("Video format"), rx_id_video_format.cap(1));
         else if (rx_id_video_fps.indexIn(line) > -1)
-            ui.fpsLabel->setText(rx_id_video_fps.cap(1));
+            ap.insert(tr("FPS"), rx_id_video_fps.cap(1));
         else if (rx_id_video_codec.indexIn(line) > -1)
-            ui.videoCodecLabel->setText(rx_id_video_codec.cap(1));
+            ap.insert(tr("Video codec"), rx_id_video_codec.cap(1));
         else if (rx_id_video_aspect.indexIn(line) > -1)
-            ui. ratioLabel->setText(rx_id_video_aspect.cap(1));
+            ap.insert(tr("Aspect ratio"),rx_id_video_aspect.cap(1));
         else if (rx_id_video_bitrate.indexIn(line) > -1)
-            ui.videoBitrateLabel->setText(rx_id_video_bitrate.cap(1));
+            ap.insert(tr("Video bitrate"), rx_id_video_bitrate.cap(1));
         else if (rx_id_width.indexIn(line) > -1)
             width = rx_id_width.cap(1).toInt();
         else if (rx_id_height.indexIn(line) > -1)
             height = rx_id_height.cap(1).toInt();
         //audio info
         else if (rx_id_audio_codec.indexIn(line) > -1)
-            ui.audioCodecLabel->setText(rx_id_audio_codec.cap(1));
+            ap.insert(tr("Audio codec"),rx_id_audio_codec.cap(1));
         else if (rx_id_audio_rate.indexIn(line) > -1)
-            ui.sampleRateLabel->setText(rx_id_audio_rate.cap(1));
+            ap.insert(tr("Sample rate"), rx_id_audio_rate.cap(1));
         else if (rx_id_audio_bitrate.indexIn(line) > -1)
-            ui.audioBitrateLabel->setText(rx_id_audio_bitrate.cap(1));
+            ap.insert(tr("Audio bitrate"), rx_id_audio_bitrate.cap(1));
         else if (rx_id_audio_nch.indexIn(line) > -1)
-            ui.channelsLabel->setText(rx_id_audio_nch.cap(1));
+            ap.insert(tr("Channels"), rx_id_audio_nch.cap(1));
     }
-    ui.resolutionLabel->setText(QString("%1x%2").arg(width).arg(height));
+    vp.insert(tr("Resolution"), QString("%1x%2").arg(width).arg(height));
+    return ap;
 }
-
-
-DetailsDialog::~DetailsDialog()
-{
-}
-
-

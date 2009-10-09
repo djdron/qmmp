@@ -27,7 +27,8 @@ HEADERS += recycler.h \
     fileinputsource.h \
     emptyinputsource.h \
     inputsourcefactory.h \
-    enginefactory.h
+    enginefactory.h \
+    metadatamanager.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -48,7 +49,8 @@ SOURCES += recycler.cpp \
     audioparameters.cpp \
     inputsource.cpp \
     fileinputsource.cpp \
-    emptyinputsource.cpp
+    emptyinputsource.cpp \
+    metadatamanager.cpp
 FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
