@@ -32,7 +32,7 @@
 
 #include <time.h>
 
-#include <qmmp/decoder.h>
+#include <qmmp/metadatamanager.h>
 #include <qmmp/decoderfactory.h>
 
 #include "playlistparser.h"
@@ -453,7 +453,8 @@ void PlayListModel::addFile(const QString& path)
 {
     if (path.isEmpty())
         return;
-    QList <FileInfo *> playList = Decoder::createPlayList(path, PlaylistSettings::instance()->useMetadata());
+    QList <FileInfo *> playList =
+            MetaDataManager::instance()->createPlayList(path, PlaylistSettings::instance()->useMetadata());
     foreach(FileInfo *info, playList)
     emit load(new PlayListItem(info));
 
@@ -997,7 +998,7 @@ void PlayListModel::clearInvalidItems()
     foreach(PlayListItem *item, m_items)
     {
         if(!item->url().contains("://") &&
-           !(QFile::exists(item->url()) && Decoder::supports(item->url())))
+           !(QFile::exists(item->url())))// && Decoder::supports(item->url())))
             removeItem(item);
     }
 }

@@ -28,16 +28,16 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 
 SET(libmplayer_SRCS
-    decoder_mplayer.cpp
-    decodermplayerfactory.cpp
-    detailsdialog.cpp
+    mplayerenginefactory.cpp
+    mplayerengine.cpp
+    mplayermetadatamodel.cpp
     settingsdialog.cpp
 )
 
 SET(libmplayer_MOC_HDRS
-    decodermplayerfactory.h
-    decoder_mplayer.h
-    detailsdialog.h
+    mplayerenginefactory.h
+    mplayerengine.h
+    mplayermetadatamodel.h
     settingsdialog.h
 )
 
@@ -52,7 +52,6 @@ QT4_WRAP_CPP(libmplayer_MOC_SRCS ${libmplayer_MOC_HDRS})
 
 SET(libmplayer_UIS
     settingsdialog.ui
-    detailsdialog.ui
 )
 
 QT4_WRAP_UI(libmplayer_UIS_H ${libmplayer_UIS})
@@ -63,5 +62,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(mplayer MODULE ${libmplayer_SRCS} ${libmplayer_MOC_SRCS} ${libmplayer_RCC_SRCS} ${libmplayer_UIS_H})
 add_dependencies(mplayer qmmp)
 target_link_libraries(mplayer ${QT_LIBRARIES} -lqmmp)
-install(TARGETS mplayer DESTINATION ${LIB_DIR}/qmmp/Input)
+install(TARGETS mplayer DESTINATION ${LIB_DIR}/qmmp/Engines)
 

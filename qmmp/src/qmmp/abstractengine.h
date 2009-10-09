@@ -25,10 +25,11 @@
 #include <QWaitCondition>
 #include <QThread>
 #include <QStringList>
+#include "enginefactory.h"
 
 class QIODevice;
 class InputSource;
-class EngineFactory;
+
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -49,6 +50,11 @@ public:
      * Subclass should reimplement this function.
      */
     virtual qint64 totalTime() = 0;
+    /*!
+     * Starts playback. Returns \b true if playback has been started successful,
+     * otherwise returns \b false.
+     */
+    virtual bool play() = 0;
     /*!
      * Requests a seek to the time \b time indicated, specified in milliseconds.
      */
@@ -83,18 +89,27 @@ public:
      * Returns a list of decoder factories.
      */
     static QList<EngineFactory*> *factories();
+    /*!
+     * Returns EngineFactory pointer which supports file \b path or 0 if file \b path is unsupported
+     */
+    static EngineFactory *findByPath(const QString &path);
+    /*!
+     * Sets whether the engine is enabled.
+     * @param factory Engine plugin factory.
+     * @param enable Plugin enable state (\b true - enable, \b false - disable)
+     */
+    static void setEnabled(EngineFactory* factory, bool enable = TRUE);
+    /*!
+     * Returns \b true if engine is enabled, otherwise returns \b false
+     * @param factory Engine plugin factory.
+     */
+    static bool isEnabled(EngineFactory* factory);
 
 signals:
     /*!
      * Emitted when the decoder has finished playback.
      */
     void playbackFinished();
-
-protected:
-    /*!
-     * The starting point for the decoding thread.
-     */
-    virtual void run() = 0;
 
 private:
     QMutex m_mutex;

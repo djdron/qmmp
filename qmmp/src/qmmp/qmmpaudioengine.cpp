@@ -29,6 +29,7 @@
 #include "decoderfactory.h"
 #include "inputsource.h"
 #include "qmmpaudioengine.h"
+#include "metadatamanager.h"
 
 
 extern "C"
@@ -75,6 +76,18 @@ void QmmpAudioEngine::reset()
     m_next = FALSE;
 }
 
+bool QmmpAudioEngine::play()
+{
+    if(isRunning() || m_decoders.isEmpty() || (m_output && m_output->isRunning()))
+        return FALSE;
+    if(m_output)
+        delete m_output;
+    if(!(m_output = createOutput(m_decoders.head())))
+        return FALSE;
+    start();
+    return TRUE;
+}
+
 bool QmmpAudioEngine::enqueue(InputSource *source)
 {
     mutex()->lock();
@@ -106,11 +119,6 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
         qWarning("QmmpAudioEngine: invalid file format");
         delete decoder;
         return FALSE;
-    }
-    if(!m_output)
-    {
-        if(!(m_output = createOutput(decoder)))
-            return FALSE;
     }
     m_decoders.enqueue(decoder);
     m_inputs.insert(decoder, source);
@@ -431,6 +439,7 @@ void QmmpAudioEngine::run()
     m_next = FALSE;
     if (m_finish)
         finish();
+    m_output->recycler()->cond()->wakeAll();
     mutex()->unlock();
 }
 
@@ -481,7 +490,7 @@ void QmmpAudioEngine::sendMetaData()
     QString url = m_inputs.value(m_decoder)->url();
     if (QFile::exists(url)) //send metadata for local files only
     {
-        QList <FileInfo *> list = Decoder::createPlayList(url, TRUE);
+        QList <FileInfo *> list = MetaDataManager::instance()->createPlayList(url, TRUE);
         if (!list.isEmpty())
         {
             StateHandler::instance()->dispatch(list[0]->metaData());

@@ -18,69 +18,50 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QMMPAUDIOENGINE_H
-#define QMMPAUDIOENGINE_H
+#ifndef METADATAMANAGER_H
+#define METADATAMANAGER_H
 
-#include <QQueue>
-#include <QHash>
-#include "abstractengine.h"
-#include "audioparameters.h"
+#include <QList>
+#include <QStringList>
+#include "fileinfo.h"
 
-class QIODevice;
-class Output;
-class Effect;
 class DecoderFactory;
-class StateHandler;
-class Decoder;
-class InputSource;
-
-
-class QmmpAudioEngine : public AbstractEngine
+class EngineFactory;
+class InputSourceFactory;
+/*!
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class MetaDataManager
 {
-Q_OBJECT
 public:
-    QmmpAudioEngine(QObject *parent);
-    ~QmmpAudioEngine();
-
-    bool play();
-    bool enqueue(InputSource *source);
-    qint64 totalTime();
-    void seek(qint64 time);
-    void stop();
-    void pause();
-    void setEQ(double bands[10], double preamp);
-    void setEQEnabled(bool on);
-
-private slots:
-    void finish();
+    MetaDataManager();
+    ~MetaDataManager();
+    /*!
+     * Extracts metadata and audio information from file \b path and returns a list of FileInfo items.
+     * One file may contain several playlist items (for example: cda disk or flac with embedded cue)
+     * @param path Source file path.
+     * @param useMetaData Metadata usage (\b true - use, \b - do not use)
+     */
+    QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = TRUE);
+    /*!
+     * Returns a list of file name filters with description, i.e. "MPEG Files (*.mp3 *.mpg)"
+     */
+    QStringList filters();
+    /*!
+     * Returns a list of file name filters, i.e. "*.mp3 *.mpg"
+     */
+    QStringList nameFilters();
+    /*!
+     * Returns a pointer to the MetaDataManager instance.
+     */
+    static MetaDataManager* instance();
+    static void destroy();
 
 private:
-    void run();
-    void reset();
-    void flush(bool = FALSE);
-    qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
-    void sendMetaData();
-    Output *createOutput(Decoder *d);
-
-    DecoderFactory *m_factory;
-    QList <Effect*> m_effects;
-    Output *m_output;
-
-    uint _blksize;
-    bool m_eqInited;
-    bool m_useEQ;
-    bool m_done, m_finish, m_user_stop;
-    ulong m_bks;
-    qint64 m_totalTime, m_seekTime;
-    qint64 m_output_at;
-    int m_bitrate, m_chan, m_bps;
-    unsigned char *m_output_buf;
-    Decoder *m_decoder;
-    QQueue <Decoder*> m_decoders;
-    QHash <Decoder*, InputSource*> m_inputs;
-    AudioParameters m_ap;
-    bool m_next;
-
+    QList <DecoderFactory *> *m_decoderFactories;
+    QList <EngineFactory *> *m_engineFactories;
+    QList <InputSourceFactory *> *m_inputSourceFactories;
+    static MetaDataManager* m_instance;
 };
 
-#endif // QMMPAUDIOENGINE_H
+#endif // METADATAMANAGER_H

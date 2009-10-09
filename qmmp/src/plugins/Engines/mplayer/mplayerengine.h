@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,34 +17,67 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERMPLAYERFACTORY_H
-#define DECODERMPLAYERFACTORY_H
 
-#include <QObject>
+#ifndef MPLAYERENGINE_H
+#define MPLAYERENGINE_H
+
+#include <QQueue>
 #include <QString>
-#include <QIODevice>
-#include <QWidget>
+#include <qmmp/statehandler.h>
+#include <qmmp/abstractengine.h>
 
-#include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/fileinfo.h>
+class Output;
+class QIDevice;
+class DecoderPhonon;
+class QMenu;
+class QProcess;
+class FileInfo;
+class InputSource;
 
-class DecoderMplayerFactory : public QObject, DecoderFactory
+class MplayerInfo
 {
-Q_OBJECT
-Q_INTERFACES(DecoderFactory);
-
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(QObject *, QIODevice *, Output *, const QString &);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    QObject* showDetails(QWidget *parent, const QString &path);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    static FileInfo *createFileInfo(const QString &path);
+    static QStringList filters();
 };
 
-#endif
+class MplayerEngine : public AbstractEngine
+{
+    Q_OBJECT
+public:
+    MplayerEngine(QObject *parent);
+    virtual ~MplayerEngine();
+
+    // Engine API
+    bool play();
+    bool enqueue(InputSource *source);
+    bool initialize();
+    qint64 totalTime();
+    void seek(qint64);
+    void stop();
+    void pause();
+
+    // Equalizer
+    void setEQ(double bands[10], double preamp);
+    void setEQEnabled(bool on);
+
+private slots:
+    void readStdOut();
+    void startMplayerProcess();
+
+private:
+    int mplayer_pipe[2];
+    QString m_url;
+    QStringList m_args;
+    QProcess *m_process;
+    int m_bitrate;
+    int m_samplerate;
+    int m_channels;
+    int m_bitsPerSample;
+    qint64 m_currentTime;
+    qint64 m_length;
+    QQueue <QString> m_files;
+};
+
+
+#endif // MPLAYERENGINE_H

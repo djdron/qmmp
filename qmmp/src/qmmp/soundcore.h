@@ -125,7 +125,7 @@ public slots:
     void setVolume(int left, int right);
     /*!
      * This function plays file or stream with the given path \p source.
-     * Returns \b true if playback started successful or source is not a local file,
+     * Returns \b true if playback has been started successful or source is not a local file,
      * otherwise returns \b false. Useful for invalid files skipping.
      */
     bool play(const QString &source, bool queue = FALSE);
@@ -202,6 +202,7 @@ signals:
 
 private slots:
     bool enqueue(InputSource *);
+    void startPendingEngine();
 
 private:
     Decoder* m_decoder;
@@ -220,6 +221,7 @@ private:
     StateHandler *m_handler;
     VolumeControl *m_volumeControl;
     AbstractEngine *m_engine;
+    AbstractEngine *m_pendingEngine;
     QList<InputSource *> m_pendingSources;
 };
 

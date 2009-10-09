@@ -64,6 +64,10 @@ public:
     */
     virtual ~EngineFactory() {}
     /*!
+     * Returns \b true if plugin supports \b source, otherwise returns \b false
+     */
+    virtual bool supports(const QString &source) const = 0;
+    /*!
      * Returns general plugin properties.
      */
     virtual const EngineProperties properties() const = 0;

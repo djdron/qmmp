@@ -52,6 +52,7 @@ SET(libqmmp_SRCS
     inputsource.cpp
     fileinputsource.cpp
     emptyinputsource.cpp
+    metadatamanager.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -81,6 +82,7 @@ SET(libqmmp_MOC_HDRS
     fileinputsource.h
     emptyinputsource.h
     enginefactory.h
+    metadatamanager.h
 )
 
 SET(libqmmp_DEVEL_HDRS
