@@ -2,148 +2,109 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="de">
 <context>
-    <name>DecoderMplayerFactory</name>
+    <name>MplayerEngineFactory</name>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="50"/>
+        <location filename="../mplayerenginefactory.cpp" line="33"/>
         <source>Mplayer Plugin</source>
-        <translation>Modulo MPlayer</translation>
+        <translation type="unfinished">Modulo MPlayer</translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="53"/>
+        <location filename="../mplayerenginefactory.cpp" line="36"/>
         <source>Video Files</source>
-        <translation>Documenti video</translation>
+        <translation type="unfinished">Documenti video</translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="97"/>
-        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
-        <location filename="../decodermplayerfactory.cpp" line="94"/>
+        <location filename="../mplayerenginefactory.cpp" line="82"/>
         <source>About MPlayer Plugin</source>
-        <translation>Info sul modulo MPlayer</translation>
+        <translation type="unfinished">Info sul modulo MPlayer</translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="95"/>
+        <location filename="../mplayerenginefactory.cpp" line="83"/>
         <source>Qmmp MPlayer Plugin</source>
-        <translation>Modulo MPlayer per Qmmp</translation>
+        <translation type="unfinished">Modulo MPlayer per Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodermplayerfactory.cpp" line="96"/>
+        <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation>Modulo che usa MPlayer come Backend</translation>
+        <translation type="unfinished">Modulo che usa MPlayer come Backend</translation>
+    </message>
+    <message>
+        <location filename="../mplayerenginefactory.cpp" line="85"/>
+        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>DetailsDialog</name>
+    <name>MplayerMetaDataModel</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="33"/>
+        <location filename="../mplayermetadatamodel.cpp" line="39"/>
+        <source>Size</source>
+        <translation type="unfinished">Dimensione</translation>
+    </message>
+    <message>
+        <location filename="../mplayermetadatamodel.cpp" line="39"/>
         <source>KB</source>
-        <translation>KB</translation>
+        <translation type="unfinished">KB</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="58"/>
-        <location filename="../detailsdialog.ui" line="72"/>
-        <location filename="../detailsdialog.ui" line="86"/>
-        <location filename="../detailsdialog.ui" line="127"/>
-        <location filename="../detailsdialog.ui" line="147"/>
-        <location filename="../detailsdialog.ui" line="167"/>
-        <location filename="../detailsdialog.ui" line="187"/>
-        <location filename="../detailsdialog.ui" line="207"/>
-        <location filename="../detailsdialog.ui" line="227"/>
-        <location filename="../detailsdialog.ui" line="262"/>
-        <location filename="../detailsdialog.ui" line="282"/>
-        <location filename="../detailsdialog.ui" line="302"/>
-        <location filename="../detailsdialog.ui" line="322"/>
-        <source>-</source>
-        <translation>-</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="76"/>
+        <source>Length</source>
+        <translation type="unfinished">Durata</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="275"/>
-        <source>Sample rate:</source>
-        <translation>Campionamento:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="78"/>
+        <source>Demuxer</source>
+        <translation type="unfinished">Demuxer</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="363"/>
-        <source>Close</source>
-        <translation>Chiudi</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="81"/>
+        <source>Video format</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="37"/>
-        <source>File path:</source>
-        <translation>File:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="83"/>
+        <source>FPS</source>
+        <translation type="unfinished">FPS</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="51"/>
-        <source>Size:</source>
-        <translation>Dimensione:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="85"/>
+        <source>Video codec</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="65"/>
-        <source>Demuxer:</source>
-        <translation>Demuxer:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="87"/>
+        <source>Aspect ratio</source>
+        <translation type="unfinished">Ratio visualizzazione</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="79"/>
-        <source>Length:</source>
-        <translation>Durata:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="89"/>
+        <source>Video bitrate</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="102"/>
-        <source>Video</source>
-        <translation>Video</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="96"/>
+        <source>Audio codec</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="114"/>
-        <source>Resolution:</source>
-        <translation>Risoluzione:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="98"/>
+        <source>Sample rate</source>
+        <translation type="unfinished">Campionamento</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="140"/>
-        <location filename="../detailsdialog.ui" line="295"/>
-        <source>Bitrate:</source>
-        <translation>Bitrate:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="100"/>
+        <source>Audio bitrate</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="160"/>
-        <source>Format:</source>
-        <translation>Formato:</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="102"/>
+        <source>Channels</source>
+        <translation type="unfinished">Canali</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="180"/>
-        <source>FPS:</source>
-        <translation>FPS:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="200"/>
-        <location filename="../detailsdialog.ui" line="249"/>
-        <source>Codec:</source>
-        <translation>Codec:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="220"/>
-        <source>Aspect ratio:</source>
-        <translation>Ratio visualizzazione:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="237"/>
-        <source>Audio</source>
-        <translation>Audio</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="315"/>
-        <source>Channels:</source>
-        <translation>Canali:</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="13"/>
-        <source>Details</source>
-        <translation>Dettagli</translation>
-    </message>
-    <message>
-        <location filename="../detailsdialog.ui" line="31"/>
-        <source>General information</source>
-        <translation>Informazioni generali</translation>
+        <location filename="../mplayermetadatamodel.cpp" line="104"/>
+        <source>Resolution</source>
+        <translation type="unfinished">Risoluzione</translation>
     </message>
 </context>
 <context>
@@ -166,22 +127,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Video:</source>
-        <translation>Video:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
-        <translation>Audio:</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="67"/>
+        <source>Synchronization factor:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Audio/video auto synchronization</source>
         <translation>sincronizzazione audio/video</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="67"/>
-        <source>Synchronization factor:</source>
-        <translation>Fattore di sincronizzazione</translation>
     </message>
 </context>
 </TS>
