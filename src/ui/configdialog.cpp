@@ -34,6 +34,8 @@
 #include <qmmp/effectfactory.h>
 #include <qmmp/effect.h>
 #include <qmmp/soundcore.h>
+#include <qmmp/enginefactory.h>
+#include <qmmp/abstractengine.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
@@ -47,17 +49,17 @@
 #include "configdialog.h"
 #include "skinreader.h"
 
-ConfigDialog::ConfigDialog ( QWidget *parent )
-        : QDialog ( parent )
+ConfigDialog::ConfigDialog (QWidget *parent)
+        : QDialog (parent)
 {
-    ui.setupUi ( this );
+    ui.setupUi (this);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     setAttribute(Qt::WA_DeleteOnClose, FALSE);
     ui.preferencesButton->setEnabled(FALSE);
     ui.informationButton->setEnabled(FALSE);
     connect (ui. contentsWidget,
-             SIGNAL (currentItemChanged (QListWidgetItem *, QListWidgetItem * )),
-             this, SLOT (changePage (QListWidgetItem *, QListWidgetItem* )));
+             SIGNAL (currentItemChanged (QListWidgetItem *, QListWidgetItem *)),
+             this, SLOT (changePage (QListWidgetItem *, QListWidgetItem*)));
     connect (ui.mainFontButton, SIGNAL (clicked()), SLOT (setMainFont()));
     connect (ui.plFontButton, SIGNAL (clicked()), SLOT (setPlFont()));
     connect (ui.preferencesButton, SIGNAL(clicked()), SLOT (showPluginSettings()));
@@ -86,6 +88,8 @@ ConfigDialog::ConfigDialog ( QWidget *parent )
 
 ConfigDialog::~ConfigDialog()
 {
+    while (!m_enginePluginItems.isEmpty())
+        delete m_enginePluginItems.takeFirst();
     while (!m_outputPluginItems.isEmpty())
         delete m_outputPluginItems.takeFirst();
     while (!m_inputPluginItems.isEmpty())
@@ -190,9 +194,9 @@ void ConfigDialog::loadSkins()
 void ConfigDialog::findSkins(const QString &path)
 {
     QDir dir(path);
-    dir.setFilter ( QDir::Dirs | QDir::NoDotAndDotDot);
+    dir.setFilter (QDir::Dirs | QDir::NoDotAndDotDot);
     QList <QFileInfo> fileList = dir.entryInfoList();
-    if ( fileList.count() == 0 )
+    if (fileList.count() == 0)
         return;
     foreach (QFileInfo fileInfo, fileList)
     {
@@ -216,29 +220,52 @@ void ConfigDialog::loadPluginsInfo()
     QList <DecoderFactory *> *decoders = 0;
     decoders = Decoder::factories();
     QStringList files = Decoder::files();
-    ui.inputPluginTable->setColumnCount ( 3 );
+    ui.inputPluginTable->setColumnCount (3);
     ui.inputPluginTable->verticalHeader()->hide();
-    ui.inputPluginTable->setHorizontalHeaderLabels ( QStringList()
-            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
-    ui.inputPluginTable->setRowCount ( decoders->count () );
-    for ( int i = 0; i < decoders->count (); ++i )
+    ui.inputPluginTable->setHorizontalHeaderLabels (QStringList()
+            << tr ("Enabled") << tr ("Description") << tr ("Filename"));
+    ui.inputPluginTable->setRowCount (decoders->count ());
+    for (int i = 0; i < decoders->count (); ++i)
     {
         InputPluginItem *item = new InputPluginItem(this, decoders->at(i));
         m_inputPluginItems.append(item);
-        QCheckBox* checkBox = new QCheckBox ( ui.inputPluginTable );
+        QCheckBox* checkBox = new QCheckBox (ui.inputPluginTable);
         checkBox->setFocusPolicy (Qt::NoFocus);
-        ui.inputPluginTable->setCellWidget ( i, 0, checkBox );
+        ui.inputPluginTable->setCellWidget (i, 0, checkBox);
         checkBox->setChecked(item->isSelected());
         connect(checkBox, SIGNAL(toggled(bool)), item, SLOT(setSelected(bool)));
-        ui.inputPluginTable->setItem ( i,1,
+        ui.inputPluginTable->setItem (i,1,
                                        new QTableWidgetItem (item->factory()->properties().name));
-        ui.inputPluginTable->setItem ( i,2, new QTableWidgetItem (files.at (i).section('/',-1)));
+        ui.inputPluginTable->setItem (i,2, new QTableWidgetItem (files.at (i).section('/',-1)));
         ui.inputPluginTable->item(i,1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
         ui.inputPluginTable->item(i,2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
         ui.inputPluginTable->item(i,2)->setToolTip(files.at (i));
     }
-    ui.inputPluginTable->resizeColumnToContents ( 0 );
-    ui.inputPluginTable->resizeColumnToContents ( 1 );
+    /*
+        load audio engines information
+    */
+    QList <EngineFactory *> *engines = AbstractEngine::factories();
+    files = AbstractEngine::files();
+    ui.inputPluginTable->setRowCount (decoders->count () + engines->count());
+    for (int i = decoders->count (); i < decoders->count () + engines->count (); ++i)
+    {
+        QString filePath = files.at (i - decoders->count ());
+        EnginePluginItem *item = new EnginePluginItem(this, engines->at(i - decoders->count ()));
+        m_enginePluginItems.append(item);
+        QCheckBox* checkBox = new QCheckBox (ui.inputPluginTable);
+        checkBox->setFocusPolicy (Qt::NoFocus);
+        ui.inputPluginTable->setCellWidget (i, 0, checkBox);
+        checkBox->setChecked(item->isSelected());
+        connect(checkBox, SIGNAL(toggled(bool)), item, SLOT(setSelected(bool)));
+        ui.inputPluginTable->setItem (i,1,
+                                       new QTableWidgetItem (item->factory()->properties().name));
+        ui.inputPluginTable->setItem (i,2, new QTableWidgetItem (filePath.section('/',-1)));
+        ui.inputPluginTable->item(i,1)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui.inputPluginTable->item(i,2)->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui.inputPluginTable->item(i,2)->setToolTip(filePath);
+    }
+    ui.inputPluginTable->resizeColumnToContents (0);
+    ui.inputPluginTable->resizeColumnToContents (1);
     ui.inputPluginTable->resizeRowsToContents ();
     /*
         load output plugins information
@@ -246,20 +273,20 @@ void ConfigDialog::loadPluginsInfo()
     QList <OutputFactory *> *outputs = 0;
     outputs = Output::outputFactories();
     files = Output::outputFiles();
-    ui.outputPluginTable->setColumnCount ( 3 );
+    ui.outputPluginTable->setColumnCount (3);
     ui.outputPluginTable->verticalHeader()->hide();
-    ui.outputPluginTable->setHorizontalHeaderLabels ( QStringList()
-            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
-    ui.outputPluginTable->setRowCount ( outputs->count () );
+    ui.outputPluginTable->setHorizontalHeaderLabels (QStringList()
+            << tr ("Enabled") << tr ("Description") << tr ("Filename"));
+    ui.outputPluginTable->setRowCount (outputs->count ());
 
-    for ( int i = 0; i < outputs->count (); ++i )
+    for (int i = 0; i < outputs->count (); ++i)
     {
         OutputPluginItem *item = new OutputPluginItem(this,outputs->at(i));
         m_outputPluginItems.append(item);
-        QRadioButton* button = new QRadioButton ( ui.outputPluginTable );
+        QRadioButton* button = new QRadioButton (ui.outputPluginTable);
         button->setFocusPolicy (Qt::NoFocus);
-        ui.outputPluginTable->setCellWidget ( i, 0, button );
-        button->setChecked ( item->isSelected() );
+        ui.outputPluginTable->setCellWidget (i, 0, button);
+        button->setChecked (item->isSelected());
         connect(button, SIGNAL(pressed ()), item, SLOT(select()));
         ui.outputPluginTable->setItem (i,1,
                                        new QTableWidgetItem (item->factory()->properties().name));
@@ -269,8 +296,8 @@ void ConfigDialog::loadPluginsInfo()
         ui.outputPluginTable->item(i,2)->setToolTip(files.at (i));
     }
 
-    ui.outputPluginTable->resizeColumnToContents ( 0 );
-    ui.outputPluginTable->resizeColumnToContents ( 1 );
+    ui.outputPluginTable->resizeColumnToContents (0);
+    ui.outputPluginTable->resizeColumnToContents (1);
     ui.outputPluginTable->resizeRowsToContents ();
     /*
         load visual plugin information
@@ -278,19 +305,19 @@ void ConfigDialog::loadPluginsInfo()
     QList <VisualFactory *> *visuals = 0;
     visuals = Visual::factories();
     files = Visual::files();
-    ui.visualPluginTable->setColumnCount ( 3 );
+    ui.visualPluginTable->setColumnCount (3);
     ui.visualPluginTable->verticalHeader()->hide();
-    ui.visualPluginTable->setHorizontalHeaderLabels ( QStringList()
-            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
-    ui.visualPluginTable->setRowCount ( visuals->count () );
+    ui.visualPluginTable->setHorizontalHeaderLabels (QStringList()
+            << tr ("Enabled") << tr ("Description") << tr ("Filename"));
+    ui.visualPluginTable->setRowCount (visuals->count ());
 
-    for ( int i = 0; i < visuals->count (); ++i )
+    for (int i = 0; i < visuals->count (); ++i)
     {
         VisualPluginItem *item = new VisualPluginItem(this,visuals->at(i));
         m_visualPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.visualPluginTable);
         button->setFocusPolicy (Qt::NoFocus);
-        ui.visualPluginTable->setCellWidget ( i, 0, button );
+        ui.visualPluginTable->setCellWidget (i, 0, button);
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
         ui.visualPluginTable->setItem (i,1,
@@ -301,8 +328,8 @@ void ConfigDialog::loadPluginsInfo()
         ui.visualPluginTable->item(i,2)->setToolTip(files.at (i));
     }
 
-    ui.visualPluginTable->resizeColumnToContents ( 0 );
-    ui.visualPluginTable->resizeColumnToContents ( 1 );
+    ui.visualPluginTable->resizeColumnToContents (0);
+    ui.visualPluginTable->resizeColumnToContents (1);
     ui.visualPluginTable->resizeRowsToContents ();
 
     /*
@@ -311,19 +338,19 @@ void ConfigDialog::loadPluginsInfo()
     QList <EffectFactory *> *effects = 0;
     effects = Effect::effectFactories();
     files = Effect::effectFiles();
-    ui.effectPluginTable->setColumnCount ( 3 );
+    ui.effectPluginTable->setColumnCount (3);
     ui.effectPluginTable->verticalHeader()->hide();
-    ui.effectPluginTable->setHorizontalHeaderLabels ( QStringList()
-            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
-    ui.effectPluginTable->setRowCount ( effects->count () );
+    ui.effectPluginTable->setHorizontalHeaderLabels (QStringList()
+            << tr ("Enabled") << tr ("Description") << tr ("Filename"));
+    ui.effectPluginTable->setRowCount (effects->count ());
 
-    for ( int i = 0; i < effects->count (); ++i )
+    for (int i = 0; i < effects->count (); ++i)
     {
         EffectPluginItem *item = new EffectPluginItem(this,effects->at(i));
         m_effectPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.effectPluginTable);
         button->setFocusPolicy (Qt::NoFocus);
-        ui.effectPluginTable->setCellWidget ( i, 0, button );
+        ui.effectPluginTable->setCellWidget (i, 0, button);
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
         ui.effectPluginTable->setItem (i,1,
@@ -334,8 +361,8 @@ void ConfigDialog::loadPluginsInfo()
         ui.effectPluginTable->item(i,2)->setToolTip(files.at (i));
     }
 
-    ui.effectPluginTable->resizeColumnToContents ( 0 );
-    ui.effectPluginTable->resizeColumnToContents ( 1 );
+    ui.effectPluginTable->resizeColumnToContents (0);
+    ui.effectPluginTable->resizeColumnToContents (1);
     ui.effectPluginTable->resizeRowsToContents ();
 
     /*
@@ -344,19 +371,19 @@ void ConfigDialog::loadPluginsInfo()
     QList <GeneralFactory *> *generals = 0;
     generals = General::generalFactories();
     files = General::generalFiles();
-    ui.generalPluginTable->setColumnCount ( 3 );
+    ui.generalPluginTable->setColumnCount (3);
     ui.generalPluginTable->verticalHeader()->hide();
-    ui.generalPluginTable->setHorizontalHeaderLabels ( QStringList()
-            << tr ( "Enabled" ) << tr ( "Description" ) << tr ( "Filename" ) );
-    ui.generalPluginTable->setRowCount ( generals->count () );
+    ui.generalPluginTable->setHorizontalHeaderLabels (QStringList()
+            << tr ("Enabled") << tr ("Description") << tr ("Filename"));
+    ui.generalPluginTable->setRowCount (generals->count ());
 
-    for ( int i = 0; i < generals->count (); ++i )
+    for (int i = 0; i < generals->count (); ++i)
     {
         GeneralPluginItem *item = new GeneralPluginItem(this,generals->at(i));
         m_generalPluginItems.append(item);
         QCheckBox* button = new QCheckBox (ui.generalPluginTable);
         button->setFocusPolicy (Qt::NoFocus);
-        ui.generalPluginTable->setCellWidget ( i, 0, button );
+        ui.generalPluginTable->setCellWidget (i, 0, button);
         button->setChecked (item->isSelected());
         connect(button, SIGNAL(clicked (bool)), item, SLOT(select(bool)));
         ui.generalPluginTable->setItem (i,1,
@@ -383,11 +410,10 @@ void ConfigDialog::loadPluginsInfo()
     }
 }
 
-
 void ConfigDialog::loadFonts()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value ( "PlayList/Font").toString();
+    QString fontname = settings.value ("PlayList/Font").toString();
     QFont font;
     if(!fontname.isEmpty())
         font.fromString(fontname);
@@ -407,13 +433,13 @@ void ConfigDialog::setPlFont()
 {
     bool ok;
     QFont font = ui.plFontLabel->font();
-    font = QFontDialog::getFont ( &ok, font, this );
+    font = QFontDialog::getFont (&ok, font, this);
     if (ok)
     {
         ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         ui.plFontLabel->setFont(font);
-        QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-        settings.setValue ( "PlayList/Font", font.toString() );
+        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+        settings.setValue ("PlayList/Font", font.toString());
     }
 }
 
@@ -422,12 +448,12 @@ void ConfigDialog::setMainFont()
     bool ok;
     QFont font = ui.mainFontLabel->font();
     font = QFontDialog::getFont (&ok, font, this);
-    if ( ok )
+    if (ok)
     {
         ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         ui.mainFontLabel->setFont(font);
-        QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-        settings.setValue ( "MainWindow/Font", font.toString() );
+        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+        settings.setValue ("MainWindow/Font", font.toString());
     }
 }
 
@@ -437,27 +463,33 @@ void ConfigDialog::showPluginSettings()
     {
     case 0:
     {
-        QList <DecoderFactory *> *decoders = 0;
-        decoders = Decoder::factories();
         int row = ui.inputPluginTable->currentRow ();
-        if ( !decoders || row<0 )
+        if(row < 0)
             return;
-
-        decoders->at ( row )->showSettings ( this );
+        if(row < m_inputPluginItems.count() && !m_inputPluginItems.isEmpty())
+        {
+            m_inputPluginItems.at(row)->factory()->showSettings (this);
+        }
+        else if(row - m_inputPluginItems.count() < m_enginePluginItems.count() &&
+                !m_enginePluginItems.isEmpty())
+        {
+            row -= m_inputPluginItems.count();
+            m_enginePluginItems.at(row)->factory()->showSettings (this);
+        }
         break;
     }
     case 1:
     {
         int row = ui.outputPluginTable->currentRow ();
-        if ( m_outputPluginItems.isEmpty() || row < 0 )
+        if (m_outputPluginItems.isEmpty() || row < 0)
             return;
-        m_outputPluginItems.at(row)->factory()->showSettings ( this );
+        m_outputPluginItems.at(row)->factory()->showSettings (this);
         break;
     }
     case 2:
     {
         int row = ui.visualPluginTable->currentRow ();
-        if ( m_visualPluginItems.isEmpty() || row < 0 )
+        if (m_visualPluginItems.isEmpty() || row < 0)
             return;
         Visual::showSettings(m_visualPluginItems.at(row)->factory(), this);
         break;
@@ -465,15 +497,15 @@ void ConfigDialog::showPluginSettings()
     case 3:
     {
         int row = ui.effectPluginTable->currentRow ();
-        if ( m_effectPluginItems.isEmpty() || row < 0 )
+        if (m_effectPluginItems.isEmpty() || row < 0)
             return;
-        m_effectPluginItems.at(row)->factory()->showSettings ( this );
+        m_effectPluginItems.at(row)->factory()->showSettings (this);
         break;
     }
     case 4:
     {
         int row = ui.generalPluginTable->currentRow ();
-        if ( m_generalPluginItems.isEmpty() || row < 0 )
+        if (m_generalPluginItems.isEmpty() || row < 0)
             return;
         GeneralHandler::instance()->showSettings(m_generalPluginItems.at(row)->factory(), this);
         break;
@@ -483,14 +515,23 @@ void ConfigDialog::showPluginSettings()
 
 void ConfigDialog::showPluginInfo()
 {
-    switch ( ( int ) ui.pluginsTab -> currentIndex () )
+    switch ((int) ui.pluginsTab -> currentIndex ())
     {
     case 0:
     {
         int row = ui.inputPluginTable->currentRow ();
-        if (m_inputPluginItems.isEmpty() || row < 0)
+        if(row < 0)
             return;
-        m_inputPluginItems.at(row)->factory()->showAbout (this);
+        if(row < m_inputPluginItems.count() && !m_inputPluginItems.isEmpty())
+        {
+            m_inputPluginItems.at(row)->factory()->showAbout (this);
+        }
+        else if(row - m_inputPluginItems.count() < m_enginePluginItems.count() &&
+                !m_enginePluginItems.isEmpty())
+        {
+            row -= m_inputPluginItems.count();
+            m_enginePluginItems.at(row)->factory()->showAbout (this);
+        }
         break;
     }
     case 1:
@@ -504,7 +545,7 @@ void ConfigDialog::showPluginInfo()
     case 2:
     {
         int row = ui.visualPluginTable->currentRow ();
-        if ( m_visualPluginItems.isEmpty() || row < 0 )
+        if (m_visualPluginItems.isEmpty() || row < 0)
             return;
         m_visualPluginItems.at(row)->factory()->showAbout (this);
         break;
@@ -512,7 +553,7 @@ void ConfigDialog::showPluginInfo()
     case 3:
     {
         int row = ui.effectPluginTable->currentRow ();
-        if ( m_effectPluginItems.isEmpty() || row < 0 )
+        if (m_effectPluginItems.isEmpty() || row < 0)
             return;
         m_effectPluginItems.at(row)->factory()->showAbout (this);
         break;
@@ -520,7 +561,7 @@ void ConfigDialog::showPluginInfo()
     case 4:
     {
         int row = ui.generalPluginTable->currentRow ();
-        if ( m_generalPluginItems.isEmpty() || row < 0 )
+        if (m_generalPluginItems.isEmpty() || row < 0)
             return;
         m_generalPluginItems.at(row)->factory()->showAbout (this);
         break;
@@ -546,10 +587,10 @@ void ConfigDialog::createMenus()
 
     ui.titleButton->setMenu(menu);
     ui.titleButton->setPopupMode(QToolButton::InstantPopup);
-    connect( menu, SIGNAL(triggered ( QAction * )), SLOT(addTitleString( QAction * )));
+    connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTitleString(QAction *)));
 }
 
-void ConfigDialog::addTitleString( QAction * a)
+void ConfigDialog::addTitleString(QAction * a)
 {
     if (ui.formatLineEdit->cursorPosition () < 1)
         ui.formatLineEdit->insert(a->data().toString());
@@ -590,25 +631,35 @@ void ConfigDialog::saveSettings()
 
 void ConfigDialog::updateButtons()
 {
-
     bool preferences = FALSE;
     bool information = FALSE;
-    switch ( ( int ) ui.pluginsTab -> currentIndex () )
+    switch ((int) ui.pluginsTab -> currentIndex ())
     {
     case 0:
     {
         int row = ui.inputPluginTable->currentRow ();
-        if (m_inputPluginItems.isEmpty() || row < 0)
+        if (row < 0)
             break;
-        DecoderFactory *factory = m_inputPluginItems.at(row)->factory();
-        information = factory->properties().hasAbout;
-        preferences = factory->properties().hasSettings;
+        if(row < m_inputPluginItems.count() && !m_inputPluginItems.isEmpty())
+        {
+            DecoderFactory *factory = m_inputPluginItems.at(row)->factory();
+            information = factory->properties().hasAbout;
+            preferences = factory->properties().hasSettings;
+        }
+        else if(row - m_inputPluginItems.count() < m_enginePluginItems.count() &&
+                !m_enginePluginItems.isEmpty())
+        {
+            row -= m_inputPluginItems.count();
+            EngineFactory *factory = m_enginePluginItems.at(row)->factory();
+            information = factory->properties().hasAbout;
+            preferences = factory->properties().hasSettings;
+        }
         break;
     }
     case 1:
     {
         int row = ui.outputPluginTable->currentRow ();
-        if (m_outputPluginItems.isEmpty() || row < 0 )
+        if (m_outputPluginItems.isEmpty() || row < 0)
             break;
         OutputFactory *factory = m_outputPluginItems.at(row)->factory();
         information = factory->properties().hasAbout;
@@ -618,7 +669,7 @@ void ConfigDialog::updateButtons()
     case 2:
     {
         int row = ui.visualPluginTable->currentRow ();
-        if (m_visualPluginItems.isEmpty() || row < 0 )
+        if (m_visualPluginItems.isEmpty() || row < 0)
             break;
         VisualFactory *factory = m_visualPluginItems.at(row)->factory();
         information = factory->properties().hasAbout;
@@ -628,7 +679,7 @@ void ConfigDialog::updateButtons()
     case 3:
     {
         int row = ui.effectPluginTable->currentRow ();
-        if ( m_effectPluginItems.isEmpty() || row < 0 )
+        if (m_effectPluginItems.isEmpty() || row < 0)
             break;
         EffectFactory *factory = m_effectPluginItems.at(row)->factory();
         information = factory->properties().hasAbout;
@@ -638,7 +689,7 @@ void ConfigDialog::updateButtons()
     case 4:
     {
         int row = ui.generalPluginTable->currentRow ();
-        if ( m_generalPluginItems.isEmpty() || row < 0 )
+        if (m_generalPluginItems.isEmpty() || row < 0)
             break;
         GeneralFactory *factory = m_generalPluginItems.at(row)->factory();
         information = factory->properties().hasAbout;

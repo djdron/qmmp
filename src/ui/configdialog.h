@@ -32,6 +32,7 @@
 class QFileInfo;
 
 class Skin;
+class EnginePluginItem;
 class InputPluginItem;
 class OutputPluginItem;
 class VisualPluginItem;
@@ -77,6 +78,7 @@ private:
     SkinReader *m_reader;
 
     QList <InputPluginItem*> m_inputPluginItems;
+    QList <EnginePluginItem*> m_enginePluginItems;
     QList <OutputPluginItem*> m_outputPluginItems;
     QList <VisualPluginItem*> m_visualPluginItems;
     QList <EffectPluginItem*> m_effectPluginItems;

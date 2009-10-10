@@ -27,6 +27,7 @@
 */
 
 class DecoderFactory;
+class EngineFactory;
 class OutputFactory;
 class VisualFactory;
 class EffectFactory;
@@ -48,6 +49,25 @@ public slots:
 
 private:
     DecoderFactory *m_factory;
+
+};
+
+class EnginePluginItem : public QObject
+{
+    Q_OBJECT
+public:
+    EnginePluginItem(QObject *parent, EngineFactory *fact);
+
+    ~EnginePluginItem();
+
+    bool isSelected();
+    EngineFactory *factory();
+
+public slots:
+    void setSelected(bool);
+
+private:
+    EngineFactory *m_factory;
 
 };
 
