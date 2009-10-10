@@ -27,14 +27,10 @@
 #include <QApplication>
 #include <QTimer>
 #include <QSettings>
-#include <QMessageBox>
 #include <QBuffer>
-
+#include <QMetaType>
 #include <time.h>
-
 #include <qmmp/metadatamanager.h>
-#include <qmmp/decoderfactory.h>
-
 #include "playlistparser.h"
 #include "playlistformat.h"
 #include "fileloader.h"
@@ -43,8 +39,6 @@
 #include "playstate.h"
 #include "detailsdialog.h"
 #include "playlistsettings.h"
-
-#include <QMetaType>
 
 #define INVALID_ROW -1
 
@@ -997,8 +991,12 @@ void PlayListModel::clearInvalidItems()
 {
     foreach(PlayListItem *item, m_items)
     {
-        if(!item->url().contains("://") &&
-           !(QFile::exists(item->url())))// && Decoder::supports(item->url())))
+        bool ok = FALSE;
+        if(!item->url().contains("://"))
+            ok = MetaDataManager::instance()->supports(item->url());
+        else
+            ok = MetaDataManager::instance()->protocols().contains(item->url().section("://",0,0));
+        if(!ok)
             removeItem(item);
     }
 }

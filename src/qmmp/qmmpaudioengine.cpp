@@ -100,17 +100,21 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     }
     mutex()->unlock();
 
-    DecoderFactory *factory = Decoder::findByURL(source->url());
+    DecoderFactory *factory = 0;
 
-    if(!factory && !source->url().contains("://"))
+    if(!source->url().contains("://"))
         factory = Decoder::findByPath(source->url());
     if(!factory && source->ioDevice())
         factory = Decoder::findByContent(source->ioDevice());
+    //TODO mimetype
+    if(!factory && source->url().contains("://"))
+        factory = Decoder::findByProtocol(source->url().section("://",0,0));
     if(!factory)
     {
         qWarning("QmmpAudioEngine: unsupported file format");
         return FALSE;
     }
+    qDebug("QmmpAudioEngine: selected decoder: %s",qPrintable(factory->properties().shortName));
     if(factory->properties().noInput && source->ioDevice())
         source->ioDevice()->close();
     Decoder *decoder = factory->create(source->url(), source->ioDevice());

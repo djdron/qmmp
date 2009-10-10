@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QFile>
 #include "decoder.h"
 #include "decoderfactory.h"
 #include "abstractengine.h"
@@ -41,7 +42,7 @@ MetaDataManager::~MetaDataManager()
     m_instance = 0;
 }
 
-QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool useMetaData)
+QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool useMetaData) const
 {
     QList <FileInfo *> list;
     DecoderFactory *fact = 0;
@@ -55,22 +56,28 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
             return efact->createPlayList(fileName, useMetaData);
         return list;
     }
-    else
-    {
-        QString p = fileName.section("://",0,0);
-        QStringList protocols;
-        foreach(InputSourceFactory *f, *m_inputSourceFactories)
-        {
-            protocols << f->properties().protocols.split(" ", QString::SkipEmptyParts);
-        }
-        if(protocols.contains(p))
-            list << new FileInfo(fileName);
-    }
-
+    else if(protocols().contains(fileName.section("://",0,0)))
+        list << new FileInfo(fileName);
     return list;
 }
 
-QStringList MetaDataManager::filters()
+MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject *parent) const
+{
+    DecoderFactory *fact = 0;
+    EngineFactory *efact = 0;
+    if (!path.contains("://")) //local file
+    {
+        if((fact = Decoder::findByPath(path)))
+            return fact->createMetaDataModel(path, parent);
+        else if((efact = AbstractEngine::findByPath(path)))
+            return efact->createMetaDataModel(path, parent);
+        return 0;
+    }
+    return 0;
+}
+
+
+const QStringList MetaDataManager::filters() const
 {
     QStringList filters;
     foreach(DecoderFactory *fact, *m_decoderFactories)
@@ -86,7 +93,7 @@ QStringList MetaDataManager::filters()
     return filters;
 }
 
-QStringList MetaDataManager::nameFilters()
+const QStringList MetaDataManager::nameFilters() const
 {
     QStringList filters;
     foreach(DecoderFactory *fact, *m_decoderFactories)
@@ -100,6 +107,38 @@ QStringList MetaDataManager::nameFilters()
             filters << fact->properties().filter.split(" ", QString::SkipEmptyParts);
     }
     return filters;
+}
+
+const QStringList MetaDataManager::protocols() const
+{
+    QStringList p;
+    foreach(InputSourceFactory *f, *m_inputSourceFactories)
+    {
+        p << f->properties().protocols.split(" ", QString::SkipEmptyParts);
+    }
+    foreach(DecoderFactory *f, *m_decoderFactories)
+    {
+        if (Decoder::isEnabled(f))
+            p << f->properties().protocols.split(" ", QString::SkipEmptyParts);
+    }
+    return p;
+}
+
+bool MetaDataManager::supports(const QString &fileName) const
+{
+    DecoderFactory *fact = 0;
+    EngineFactory *efact = 0;
+    if (!fileName.contains("://")) //local file
+    {
+        if (!QFile::exists(fileName))
+            return FALSE;
+        if((fact = Decoder::findByPath(fileName)))
+            return TRUE;
+        else if((efact = AbstractEngine::findByPath(fileName)))
+            return TRUE;
+        return FALSE;
+    }
+    return FALSE;
 }
 
 MetaDataManager *MetaDataManager::instance()

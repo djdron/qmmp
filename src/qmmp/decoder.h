@@ -65,11 +65,6 @@ public:
 
     const AudioParameters audioParameters();
     QIODevice *input();
-
-    /*!
-     * Returns \b true if \b file is supported by input plugins, otherwise returns \b false
-     */
-    static bool supports(const QString &file);
     /*!
      * Returns DecoderFactory pointer which supports file \b path or 0 if file \b path is unsupported
      */
@@ -84,9 +79,9 @@ public:
      */
     static DecoderFactory *findByContent(QIODevice *input);
     /*!
-     * Returns DecoderFactory pointer which supports \b url or \b 0 if \b url is not supported.
+     * Returns DecoderFactory pointer which supports protocol \b p or \b 0 if \b url is not supported.
      */
-    static DecoderFactory *findByURL(const QUrl &url);
+    static DecoderFactory *findByProtocol(const QString &p);
     /*!
      * Returns a list of decoder factories.
      */
