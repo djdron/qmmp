@@ -47,7 +47,9 @@ TextScroller::TextScroller ( QWidget *parent )
     m_pixmap = QPixmap ( 150,15 );
     resize(150,15);
     x = 0;
+    m_offset = 0;
     m_progress = -1;
+    m_metrics = 0;
     m_text = "Qt-based Multimedia Player (Qmmp " + Qmmp::strVersion() + ")";
     m_update = FALSE;
     readSettings();
@@ -73,14 +75,22 @@ TextScroller::~TextScroller()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("TextScroller/autoscroll", m_autoscroll);
+    if(m_metrics)
+        delete m_metrics;
 }
 
 void TextScroller::addOffset()
 {
     x--;
-    if ( 154 + x < - m_metrics->width (m_scrollText) - 15 +1)
+    if(m_bitmap)
     {
-        x=-154;
+        if (154 + x < - m_scrollText.size() * 5 - 15 + 1)
+            x = -154;
+    }
+    else
+    {
+        if (154 + x < - m_metrics->width (m_scrollText) - 15 + 1)
+            x = -154;
     }
     update();
 }
@@ -93,10 +103,14 @@ void TextScroller::setText(const QString& text)
     if (m_text != text)
     {
         m_text = text;
-        m_scrollText = "*** " + text;
+        m_scrollText = ".:: " + text + " ::.";
         x = m_autoscroll ? -50 : -150;
         m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
     }
+    if(m_bitmap)
+        m_offset = m_scrollText.size() * 5 + 15;
+    else
+         m_offset = m_metrics->width (m_scrollText) + 15;
     update();
 }
 
@@ -132,15 +146,16 @@ void TextScroller::readSettings()
     if (m_update)
     {
         delete m_metrics;
-        m_metrics = new QFontMetrics(m_font);
         m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
     }
     else
     {
         m_update = TRUE;
         m_bitmap = FALSE;
-        m_metrics = new QFontMetrics(m_font);
+
     }
+    m_metrics = new QFontMetrics(m_font);
+    setText(m_text);
 }
 
 void TextScroller::setProgress(int progress)
@@ -189,7 +204,8 @@ void TextScroller::paintEvent (QPaintEvent *)
         {
             if (m_autoscroll)
             {
-                drawBitmapText (154 + x + m_scrollText.size() * 5 + 15, 12, m_scrollText, &paint, m_skin);
+                drawBitmapText (154 + x + m_offset * 2, 12, m_scrollText, &paint, m_skin);
+                drawBitmapText (154 + x + m_offset, 12, m_scrollText, &paint, m_skin);
                 drawBitmapText (154 + x, 12, m_scrollText, &paint, m_skin);
             }
             else
@@ -199,7 +215,8 @@ void TextScroller::paintEvent (QPaintEvent *)
         {
             if (m_autoscroll)
             {
-                paint.drawText (154 + x + m_metrics->width (m_scrollText) + 15,12, m_scrollText);
+                paint.drawText (154 + x + m_offset * 2, 12, m_scrollText);
+                paint.drawText (154 + x + m_offset, 12, m_scrollText);
                 paint.drawText (154 + x, 12, m_scrollText);
             }
             else
