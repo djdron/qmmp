@@ -24,11 +24,8 @@
 #include <QFileInfo>
 
 #include <qmmp/metadatamanager.h>
-#include <qmmp/decoder.h>
-#include <qmmp/decoderfactory.h>
 #include <qmmp/metadatamodel.h>
 #include <qmmp/tagmodel.h>
-#include <qmmp/abstractengine.h>
 #include "abstractplaylistitem.h"
 #include "tageditor.h"
 #include "detailsdialog.h"
@@ -48,15 +45,7 @@ DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
 
     if(QFile::exists(item->url()))
     {
-        //TODO implement this inside MetaDataManager
-        DecoderFactory *fact = Decoder::findByPath(item->url());
-        EngineFactory *fact2 = AbstractEngine::findByPath(item->url());
-        if(fact)
-            m_metaDataModel = fact->createMetaDataModel(item->url(), this);
-        else if (fact2)
-            m_metaDataModel = fact2->createMetaDataModel(item->url(), this);
-        else
-            return;
+        m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(item->url(), this);
 
         if(!m_metaDataModel)
             return;

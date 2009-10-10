@@ -111,22 +111,6 @@ QStringList Decoder::files()
     return m_files;
 }
 
-
-bool Decoder::supports(const QString &source)
-{
-    checkFactories();
-
-    DecoderFactory *fact;
-    foreach(fact, *m_factories)
-    {
-        if (fact->supports(source) && isEnabled(fact))
-        {
-            return TRUE;
-        }
-    }
-    return FALSE;
-}
-
 DecoderFactory *Decoder::findByPath(const QString& source)
 {
     checkFactories();
@@ -160,7 +144,6 @@ DecoderFactory *Decoder::findByMime(const QString& type)
             }
         }
     }
-    qDebug("Decoder: unable to find factory by mime");
     return 0;
 }
 
@@ -174,22 +157,17 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
             return fact;
         }
     }
-    qDebug("Decoder: unable to find factory by content");
     return 0;
 }
 
-DecoderFactory *Decoder::findByURL(const QUrl &url)
+DecoderFactory *Decoder::findByProtocol(const QString &p)
 {
     checkFactories();
     foreach(DecoderFactory *fact, *m_factories)
     {
-        if (fact->supports(url.path()) && isEnabled(fact) &&
-                fact->properties().protocols.split(" ").contains(url.scheme()))
-        {
+        if (isEnabled(fact) && fact->properties().protocols.split(" ").contains(p))
             return fact;
-        }
     }
-    qDebug("Decoder: unable to find factory by url");
     return 0;
 }
 

@@ -24,6 +24,7 @@
 #include <QList>
 #include <QStringList>
 #include "fileinfo.h"
+#include "metadatamodel.h"
 
 class DecoderFactory;
 class EngineFactory;
@@ -42,15 +43,30 @@ public:
      * @param path Source file path.
      * @param useMetaData Metadata usage (\b true - use, \b - do not use)
      */
-    QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = TRUE);
+    QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = TRUE) const;
+    /*!
+     * Creats metadata object, which provides full access to file tags.
+     * @param path File path.
+     * @param parent Parent object.
+     * @return MetaDataModel pointer or null pointer.
+     */
+    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0) const;
     /*!
      * Returns a list of file name filters with description, i.e. "MPEG Files (*.mp3 *.mpg)"
      */
-    QStringList filters();
+    const QStringList filters() const;
     /*!
      * Returns a list of file name filters, i.e. "*.mp3 *.mpg"
      */
-    QStringList nameFilters();
+    const QStringList nameFilters() const;
+    /*!
+     * Returns a list of the suported protocols
+     */
+    const QStringList protocols() const;
+    /*!
+     * Returns \b true if \b file is supported and exists, otherwise returns \b false
+     */
+    bool supports(const QString &file) const;
     /*!
      * Returns a pointer to the MetaDataManager instance.
      */
