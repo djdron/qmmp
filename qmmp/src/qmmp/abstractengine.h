@@ -104,6 +104,10 @@ public:
      * @param factory Engine plugin factory.
      */
     static bool isEnabled(EngineFactory* factory);
+    /*!
+     * Returns a list of engine plugin files.
+     */
+    static QStringList files();
 
 signals:
     /*!

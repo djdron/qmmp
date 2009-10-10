@@ -27,6 +27,8 @@
 #include <qmmp/effectfactory.h>
 #include <qmmp/effect.h>
 #include <qmmp/soundcore.h>
+#include <qmmp/enginefactory.h>
+#include <qmmp/abstractengine.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
@@ -56,6 +58,31 @@ DecoderFactory* InputPluginItem::factory()
 void InputPluginItem::setSelected(bool select)
 {
     Decoder::setEnabled(m_factory, select);
+}
+
+/*Engines*/
+EnginePluginItem::EnginePluginItem(QObject *parent, EngineFactory *fact)
+        : QObject(parent)
+{
+    m_factory = fact;
+}
+
+EnginePluginItem::~EnginePluginItem()
+{}
+
+bool EnginePluginItem::isSelected()
+{
+    return AbstractEngine::isEnabled(m_factory);
+}
+
+EngineFactory* EnginePluginItem::factory()
+{
+    return m_factory;
+}
+
+void EnginePluginItem::setSelected(bool select)
+{
+    AbstractEngine::setEnabled(m_factory, select);
 }
 
 /*Output*/

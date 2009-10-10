@@ -136,3 +136,10 @@ bool AbstractEngine::isEnabled(EngineFactory* factory)
     QStringList disabledList = settings.value("Engine/disabled_plugins").toStringList();
     return !disabledList.contains(name);
 }
+
+QStringList AbstractEngine::files()
+{
+    checkFactories();
+    return m_files;
+}
+
