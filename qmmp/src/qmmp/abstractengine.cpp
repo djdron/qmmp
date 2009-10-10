@@ -46,10 +46,9 @@ QStringList AbstractEngine::m_files;
 
 void AbstractEngine::checkFactories()
 {
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-
     if (!m_factories)
     {
+        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         m_files.clear();
         m_factories = new QList<EngineFactory *>;
 

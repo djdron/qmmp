@@ -34,7 +34,6 @@ MplayerMetaDataModel::~MplayerMetaDataModel()
 
 QHash<QString, QString> MplayerMetaDataModel::audioProperties()
 {
-    QHash<QString, QString> vp;
     QHash<QString, QString> ap;
     ap.insert(tr("Size"), QString("%1 ").arg(QFileInfo(m_path).size ()/1024)+tr("KB"));
     //regular expressions
@@ -101,6 +100,6 @@ QHash<QString, QString> MplayerMetaDataModel::audioProperties()
         else if (rx_id_audio_nch.indexIn(line) > -1)
             ap.insert(tr("Channels"), rx_id_audio_nch.cap(1));
     }
-    vp.insert(tr("Resolution"), QString("%1x%2").arg(width).arg(height));
+    ap.insert(tr("Resolution"), QString("%1x%2").arg(width).arg(height));
     return ap;
 }

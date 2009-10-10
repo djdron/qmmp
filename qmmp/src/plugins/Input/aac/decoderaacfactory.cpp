@@ -97,4 +97,4 @@ QTranslator *DecoderAACFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderAACFactory)
+Q_EXPORT_PLUGIN2(aac,DecoderAACFactory)

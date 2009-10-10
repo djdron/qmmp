@@ -281,10 +281,10 @@ void Output::checkFactories()
                 qWarning("Output: %s", qPrintable(loader.errorString ()));
 
             OutputFactory *factory = 0;
-            if ( plugin )
+            if (plugin)
                 factory = qobject_cast<OutputFactory *> ( plugin );
 
-            if ( factory )
+            if (factory)
             {
                 Output::registerFactory ( factory );
                 m_files << pluginsDir.absoluteFilePath(fileName);

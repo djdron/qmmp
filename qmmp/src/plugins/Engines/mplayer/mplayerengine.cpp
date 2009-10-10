@@ -23,16 +23,11 @@
 #include <QFile>
 #include <QApplication>
 #include <QAction>
-#include <QMetaObject>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QRegExp>
 #include <QSettings>
-#include <qmmp/buffer.h>
-#include <qmmp/output.h>
-#include <qmmp/recycler.h>
 #include <qmmp/fileinfo.h>
-#include <qmmp/decoderfactory.h>
 #include <qmmp/inputsource.h>
 #include "mplayerengine.h"
 
