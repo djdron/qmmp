@@ -402,12 +402,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="225"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Разное</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="339"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать растровые шрифты, если возможно</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="439"/>
