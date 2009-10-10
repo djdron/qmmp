@@ -141,4 +141,4 @@ QTranslator *DecoderWavPackFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(DecoderWavPackFactory)
+Q_EXPORT_PLUGIN2(wavpack,DecoderWavPackFactory)

@@ -62,10 +62,9 @@ QStringList Decoder::m_files;
 
 void Decoder::checkFactories()
 {
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-
     if (!m_factories)
     {
+        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         m_files.clear();
         m_factories = new QList<DecoderFactory *>;
 

@@ -93,4 +93,4 @@ QTranslator *MplayerEngineFactory::createTranslator(QObject *parent)
     return translator;
 }
 
-Q_EXPORT_PLUGIN(MplayerEngineFactory)
+Q_EXPORT_PLUGIN2(mplayer,MplayerEngineFactory)
