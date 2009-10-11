@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
@@ -82,11 +82,13 @@
         <translation>Темп</translation>
     </message>
     <message>
+        <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
         <translation>Семпли</translation>
     </message>
     <message>
+        <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
         <translation>Інструменти</translation>
@@ -210,16 +212,21 @@
         <translation>Реверберація</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="192"/>
         <location filename="../settingsdialog.ui" line="457"/>
         <source>Depth (%)</source>
         <translation>Глибина (%)</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="224"/>
+        <location filename="../settingsdialog.ui" line="358"/>
+        <location filename="../settingsdialog.ui" line="489"/>
         <location filename="../settingsdialog.ui" line="608"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="250"/>
         <location filename="../settingsdialog.ui" line="509"/>
         <source>Delay (ms)</source>
         <translation>Затримка (мс)</translation>

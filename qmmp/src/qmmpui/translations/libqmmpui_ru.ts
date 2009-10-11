@@ -4,47 +4,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="87"/>
+        <location filename="../detailsdialog.cpp" line="82"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="88"/>
+        <location filename="../detailsdialog.cpp" line="83"/>
         <source>Artist</source>
         <translation>Исполнитель</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="89"/>
+        <location filename="../detailsdialog.cpp" line="84"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="90"/>
+        <location filename="../detailsdialog.cpp" line="85"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="91"/>
+        <location filename="../detailsdialog.cpp" line="86"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
+        <location filename="../detailsdialog.cpp" line="87"/>
         <source>Composer</source>
         <translation>Композитр</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="94"/>
+        <location filename="../detailsdialog.cpp" line="89"/>
         <source>Year</source>
         <translation>Год</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="96"/>
+        <location filename="../detailsdialog.cpp" line="91"/>
         <source>Track</source>
         <translation>Дорожка</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="98"/>
+        <location filename="../detailsdialog.cpp" line="93"/>
         <source>Disc number</source>
         <translation>Номер диска</translation>
     </message>
