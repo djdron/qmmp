@@ -80,6 +80,7 @@ bool SoundCore::play(const QString &source, bool queue)
         stop();
         qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
     }
+    MetaDataManager::instance(); //create metadata manager
 
     InputSource *s = InputSource::create(source, this);
     m_pendingSources.append(s);
