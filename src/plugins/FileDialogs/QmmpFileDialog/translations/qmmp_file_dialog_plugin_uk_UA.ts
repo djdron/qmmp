@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>QmmpFileDialog</name>
     <message>
@@ -14,6 +14,9 @@
         <translation>Вгору</translation>
     </message>
     <message>
+        <location filename="../qmmpfiledialog.ui" line="40"/>
+        <location filename="../qmmpfiledialog.ui" line="53"/>
+        <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
         <translation>...</translation>
@@ -57,6 +60,7 @@
 <context>
     <name>QmmpFileDialogFactory</name>
     <message>
+        <location filename="../qmmpfiledialog.cpp" line="121"/>
         <location filename="../qmmpfiledialog.cpp" line="130"/>
         <source>Qmmp File Dialog</source>
         <translation>Діалог файлів Qmmp</translation>

@@ -103,7 +103,7 @@ void TextScroller::setText(const QString& text)
     if (m_text != text)
     {
         m_text = text;
-        m_scrollText = ".:: " + text + " ::.";
+        m_scrollText = "*** " + text;
         x = m_autoscroll ? -50 : -150;
         m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
     }
