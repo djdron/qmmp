@@ -79,6 +79,7 @@ private:
     bool m_bitmapConf;
     bool m_bitmap;
     QMenu *m_menu;
+    int m_offset;
 };
 
 #endif
