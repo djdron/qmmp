@@ -87,6 +87,8 @@ HotkeyManager::HotkeyManager(QObject *parent) : General(parent)
                 hotkey->action = i;
                 hotkey->key = key;
                 hotkey->code = XKeysymToKeycode(QX11Info::display(), hotkey->key);
+                if(!hotkey->code)
+                    continue;
                 XGrabKey(QX11Info::display(),  hotkey->code, mod | mask_mod, rootWindow, False,
                          GrabModeAsync, GrabModeAsync);
                 hotkey->mod = mod | mask_mod;
@@ -102,7 +104,10 @@ HotkeyManager::HotkeyManager(QObject *parent) : General(parent)
 HotkeyManager::~HotkeyManager()
 {
     foreach(Hotkey *key, m_grabbedKeys)
-    XUngrabKey(QX11Info::display(), key->code, key->mod, QX11Info::appRootWindow());
+    {
+        if(key->code)
+            XUngrabKey(QX11Info::display(), key->code, key->mod, QX11Info::appRootWindow());
+    }
     while (!m_grabbedKeys.isEmpty())
         delete m_grabbedKeys.takeFirst ();
 }
