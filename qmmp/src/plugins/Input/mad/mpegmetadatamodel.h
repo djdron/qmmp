@@ -34,6 +34,7 @@ public:
     ~MPEGMetaDataModel();
     QHash<QString, QString> audioProperties();
     QList<TagModel* > tags();
+    QPixmap cover();
 
 private:
     QList<TagModel* > m_tags;

@@ -25,6 +25,7 @@
 #include <QList>
 #include <QString>
 #include <QObject>
+#include <QPixmap>
 #include "tagmodel.h"
 
 class MetaDataModel : public QObject
@@ -36,6 +37,7 @@ public:
     virtual QHash<QString, QString> audioProperties();
     virtual QHash<QString, QString> descriptions();
     virtual QList<TagModel* > tags();
+    virtual QPixmap cover();
 };
 
 #endif // METADATAMODEL_H

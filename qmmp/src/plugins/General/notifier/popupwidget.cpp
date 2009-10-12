@@ -29,7 +29,7 @@
 #include <QApplication>
 #include <QFont>
 #include <qmmp/soundcore.h>
-#include <qmmp/decoder.h>
+#include <qmmp/metadatamanager.h>
 
 #include "popupwidget.h"
 
@@ -107,7 +107,7 @@ void PopupWidget::showMetaData()
     }
     m_label1->setText(title);
 
-    QPixmap pix = Decoder::findCover(core->metaData(Qmmp::URL));
+    QPixmap pix = MetaDataManager::instance()->getCover(core->metaData(Qmmp::URL));
     if(!pix.isNull())
     {
         m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
