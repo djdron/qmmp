@@ -55,12 +55,12 @@
         <translation>Pranešimas darbalaukyje</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.ui" line="85"/>
         <source>Delay (ms):</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="285"/>
+        <location filename="../settingsdialog.ui" line="291"/>
         <source>Position</source>
         <translation>Padėtis</translation>
     </message>
@@ -75,12 +75,13 @@
         <translation>Pranešti pasikeitus garsumui</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="118"/>
+        <location filename="../settingsdialog.ui" line="111"/>
         <source>Transparency</source>
         <translation>Permatomumas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="141"/>
+        <location filename="../settingsdialog.ui" line="134"/>
+        <location filename="../settingsdialog.ui" line="341"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
@@ -90,12 +91,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="85"/>
+        <location filename="../settingsdialog.ui" line="318"/>
         <source>Cover size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="305"/>
+        <location filename="../settingsdialog.ui" line="311"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
