@@ -32,7 +32,7 @@ Main opportunities:
 - MPRIS support
 - global hotkey support
 - video playback via Mplayer
-- lyrics support (using lyricsplugin.com)
+- lyrics support (using LyricWiki.org)
 
 Requirements:
 - OS GNU Linux
@@ -42,7 +42,7 @@ Requirements:
 - libvorbis
 - libogg
 - libalsa >= 1.0.1
-- taglib >= 1.4
+- taglib >= 1.6
 - curl >= 7.16
 - flac >= 1.1.3 (Optional)
 - libmpcdec >= 1.2.6 (Optional)
