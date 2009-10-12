@@ -32,7 +32,7 @@ Qmmp - Qt-based multimedia player
 - поддержка MPRIS
 - поддержка глобальных клавиш
 - поддержка видео с помощью Mplayer
-- получение текстов песен с lyricsplugin.com
+- получение текстов песен с LyricWiki.org
 
 Требования:
 - OS GNU Linux
@@ -42,7 +42,7 @@ Qmmp - Qt-based multimedia player
 - libvorbis
 - libogg
 - libalsa >= 1.0.1
-- taglib >= 1.4
+- taglib >= 1.6
 - curl >= 7.16
 - flac >= 1.1.3 (Опционально)
 - libmpcdec >= 1.2.6 (Опционально)
