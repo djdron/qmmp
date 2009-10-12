@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include <QFile>
+#include <QDir>
+#include <QFileInfo>
 #include "decoder.h"
 #include "decoderfactory.h"
 #include "abstractengine.h"
@@ -77,7 +79,7 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
 }
 
 
-const QStringList MetaDataManager::filters() const
+QStringList MetaDataManager::filters() const
 {
     QStringList filters;
     foreach(DecoderFactory *fact, *m_decoderFactories)
@@ -93,7 +95,7 @@ const QStringList MetaDataManager::filters() const
     return filters;
 }
 
-const QStringList MetaDataManager::nameFilters() const
+QStringList MetaDataManager::nameFilters() const
 {
     QStringList filters;
     foreach(DecoderFactory *fact, *m_decoderFactories)
@@ -109,7 +111,7 @@ const QStringList MetaDataManager::nameFilters() const
     return filters;
 }
 
-const QStringList MetaDataManager::protocols() const
+QStringList MetaDataManager::protocols() const
 {
     QStringList p;
     foreach(InputSourceFactory *f, *m_inputSourceFactories)
@@ -141,6 +143,38 @@ bool MetaDataManager::supports(const QString &fileName) const
     return FALSE;
 }
 
+QPixmap MetaDataManager::getCover(const QString &fileName) const
+{
+    QString p = getCoverPath(fileName);
+    if(!p.isEmpty())
+        return QPixmap(p);
+    MetaDataModel *model = createMetaDataModel(fileName);
+    if(model)
+    {
+        QPixmap pix = model->cover();
+        model->deleteLater();
+        return pix;
+    }
+    return QPixmap();
+}
+
+QString MetaDataManager::getCoverPath(const QString &fileName) const
+{
+    QString p = QFileInfo(fileName).absolutePath();
+    QDir dir(p);
+    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    dir.setSorting(QDir::Name);
+    QStringList filters;
+    filters << "*.jpg" << "*.png";
+    QFileInfoList file_list = dir.entryInfoList(filters);
+    foreach(QFileInfo i, file_list)
+    {
+        if(!i.absoluteFilePath().contains("back", Qt::CaseInsensitive))
+            return i.absoluteFilePath();
+    }
+    return QString();
+}
+
 MetaDataManager *MetaDataManager::instance()
 {
     if(!m_instance)
@@ -153,3 +187,4 @@ void MetaDataManager::destroy()
     if(m_instance)
         delete m_instance;
 }
+

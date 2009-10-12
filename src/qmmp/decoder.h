@@ -101,10 +101,6 @@ public:
      * @param factory Decoder plugin factory.
      */
     static bool isEnabled(DecoderFactory* factory);
-    /*!
-     * Returns cover pixmap for file path \b path if cover exists, otherwise returns empty pixmap.
-     */
-    static QPixmap findCover(const QString &path);
 
 protected:
     /*!

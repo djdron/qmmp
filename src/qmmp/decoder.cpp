@@ -207,20 +207,3 @@ QList<DecoderFactory*> *Decoder::factories()
     checkFactories();
     return m_factories;
 }
-
-QPixmap Decoder::findCover(const QString &path)
-{
-    QString p = QFileInfo(path).absolutePath();
-    QDir dir(p);
-    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    dir.setSorting(QDir::Name);
-    QStringList filters;
-    filters << "*.jpg" << "*.png";
-    QFileInfoList file_list = dir.entryInfoList(filters);
-    foreach(QFileInfo i, file_list)
-    {
-        if(!i.absoluteFilePath().contains("back", Qt::CaseInsensitive))
-            return QPixmap (i.absoluteFilePath());
-    }
-    return QPixmap();
-}

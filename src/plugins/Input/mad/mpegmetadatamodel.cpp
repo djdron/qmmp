@@ -31,6 +31,7 @@
 #include <taglib/mpegheader.h>
 #include <taglib/mpegproperties.h>
 #include <taglib/textidentificationframe.h>
+#include <taglib/attachedpictureframe.h>
 
 #include "mpegmetadatamodel.h"
 
@@ -106,6 +107,28 @@ QHash<QString, QString> MPEGMetaDataModel::audioProperties()
 QList<TagModel* > MPEGMetaDataModel::tags()
 {
     return m_tags;
+}
+
+QPixmap MPEGMetaDataModel::cover()
+{
+    if(!m_file->ID3v2Tag())
+        return QPixmap();
+    TagLib::ID3v2::FrameList frames = m_file->ID3v2Tag()->frameListMap()["APIC"];
+    if(frames.isEmpty())
+        return QPixmap();
+
+    for(TagLib::ID3v2::FrameList::Iterator it = frames.begin(); it != frames.end(); ++it)
+    {
+        TagLib::ID3v2::AttachedPictureFrame *frame = static_cast<TagLib::ID3v2::AttachedPictureFrame *>(*it);
+        if(frame && frame->type() == TagLib::ID3v2::AttachedPictureFrame::FrontCover)
+        {
+            QPixmap cover;
+            cover.loadFromData((const uchar *)frame->picture().data(),
+                                     frame->picture().size());
+            return cover;
+        }
+    }
+    return QPixmap();
 }
 
 MpegFileTagModel::MpegFileTagModel(TagLib::MPEG::File *file, TagLib::MPEG::File::TagTypes tagType)

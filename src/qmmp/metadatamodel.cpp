@@ -43,3 +43,8 @@ QList<TagModel* > MetaDataModel::tags()
 {
     return QList<TagModel* > ();
 }
+
+QPixmap MetaDataModel::cover()
+{
+    return QPixmap();
+}

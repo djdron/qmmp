@@ -23,6 +23,7 @@
 
 #include <QList>
 #include <QStringList>
+#include <QPixmap>
 #include "fileinfo.h"
 #include "metadatamodel.h"
 
@@ -54,19 +55,30 @@ public:
     /*!
      * Returns a list of file name filters with description, i.e. "MPEG Files (*.mp3 *.mpg)"
      */
-    const QStringList filters() const;
+    QStringList filters() const;
     /*!
      * Returns a list of file name filters, i.e. "*.mp3 *.mpg"
      */
-    const QStringList nameFilters() const;
+    QStringList nameFilters() const;
     /*!
      * Returns a list of the suported protocols
      */
-    const QStringList protocols() const;
+    QStringList protocols() const;
     /*!
      * Returns \b true if \b file is supported and exists, otherwise returns \b false
      */
     bool supports(const QString &file) const;
+    /*!
+     * Returns cover pixmap for the given file \b fileName,
+     * or returns an empty pixmap if cover is not available.
+     */
+    QPixmap getCover(const QString &fileName) const;
+    /*!
+     * Returns cover file path for the given file \b fileName, or returns
+     * an empty string if cover file is not available. This function does not work
+     * with embedded covers.
+     */
+    QString getCoverPath(const QString &fileName) const;
     /*!
      * Returns a pointer to the MetaDataManager instance.
      */
