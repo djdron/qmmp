@@ -55,12 +55,12 @@
         <translation>Повідомлення на робочому столі</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="92"/>
+        <location filename="../settingsdialog.ui" line="85"/>
         <source>Delay (ms):</source>
         <translation>Затримка (мс):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="285"/>
+        <location filename="../settingsdialog.ui" line="291"/>
         <source>Position</source>
         <translation>Позиція</translation>
     </message>
@@ -75,12 +75,13 @@
         <translation>Повідомлення зміни гучності</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="118"/>
+        <location filename="../settingsdialog.ui" line="111"/>
         <source>Transparency</source>
         <translation>Прозорість</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="141"/>
+        <location filename="../settingsdialog.ui" line="134"/>
+        <location filename="../settingsdialog.ui" line="341"/>
         <source>0</source>
         <translation></translation>
     </message>
@@ -90,12 +91,12 @@
         <translation>Шрифт:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="85"/>
+        <location filename="../settingsdialog.ui" line="318"/>
         <source>Cover size:</source>
         <translation>Розмір обкладинки:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="305"/>
+        <location filename="../settingsdialog.ui" line="311"/>
         <source>...</source>
         <translation>...</translation>
     </message>

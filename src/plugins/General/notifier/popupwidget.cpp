@@ -90,7 +90,7 @@ void PopupWidget::showMetaData()
     if (core->totalTime() > 0)
     {
         title.append(" ");
-        title.append(QString("(%1:%2)").arg(core->totalTime()/60000).arg(core->totalTime()%60000/1000, 2, 10, QChar('0')));
+        title.append(QString(" || %1:%2").arg(core->totalTime()/60000).arg(core->totalTime()%60000/1000, 2, 10, QChar('0')));
     }
     title.append("</b>");
 
@@ -112,13 +112,11 @@ void PopupWidget::showMetaData()
     {
         m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
         m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
-        m_label1->setAlignment(Qt::AlignTop);
     }
     else
     {
         m_pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
         m_pixlabel->setFixedSize(32,32);
-        m_label1->setAlignment(Qt::AlignVCenter);
     }
     qApp->processEvents();
     resize(sizeHint());
