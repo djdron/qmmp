@@ -22,6 +22,7 @@
 #include <QDBusMetaType>
 #include <QDBusArgument>
 #include <qmmp/soundcore.h>
+#include <qmmp/metadatamanager.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
 
@@ -128,7 +129,10 @@ QVariantMap PlayerObject::GetMetadata()
     QVariantMap map;
 
     if (QFile::exists(m_core->metaData(Qmmp::URL)))
-        map.insert("location", "file://" +m_core->metaData(Qmmp::URL));
+    {
+        map.insert("location", "file://" + m_core->metaData(Qmmp::URL));
+        map.insert("arturl", MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL)));
+    }
     else
         map.insert("location", m_core->metaData(Qmmp::URL));
     map.insert("title", m_core->metaData(Qmmp::TITLE));
