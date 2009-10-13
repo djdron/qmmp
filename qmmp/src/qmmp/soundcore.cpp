@@ -108,7 +108,9 @@ void SoundCore::stop()
     //update VolumeControl
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
-    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));    
+    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    if(state() == Qmmp::NormalError || state() == Qmmp::FatalError) //clear error state
+        StateHandler::instance()->dispatch(Qmmp::Stopped);
 }
 
 void SoundCore::pause()
