@@ -17,28 +17,32 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QPixmap>
-#include <QPainter>
-#include <QPaintEvent>
 
-#include "coverwidget.h"
+#include <QAction>
+#include <qmmpui/generalhandler.h>
+#include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistitem.h>
+#include <qmmpui/mediaplayer.h>
+#include <qmmpui/generalhandler.h>
+#include "coverwindow.h"
+#include "covermanager.h"
 
-CoverWidget::CoverWidget(QWidget *parent)
-        : QWidget(parent)
-{}
-
-CoverWidget::~CoverWidget()
-{}
-
-void CoverWidget::setPixmap(const QPixmap &pixmap)
+CoverManager::CoverManager(QObject *parent) : General(parent)
 {
-    m_pixmap = pixmap;
-    update();
+    m_action = new QAction(tr("Show Cover"), this);
+    m_action->setShortcut(tr("Ctrl+M"));
+    GeneralHandler::instance()->addAction(m_action, GeneralHandler::PLAYLIST_MENU);
+    connect (m_action, SIGNAL(triggered ()), SLOT(showWindow()));
 }
 
-void CoverWidget::paintEvent (QPaintEvent *p)
+void CoverManager::showWindow()
 {
-    QPainter paint(this);
-    if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
+    QList <PlayListItem *> items = MediaPlayer::instance()->playListModel()->getSelectedItems();
+    if (!items.isEmpty())
+    {
+        if (items.at(0)->url().contains("://"))
+            return;
+        CoverWindow *w = new CoverWindow(items.at(0), qApp->activeWindow ());
+        w->show();
+    }
 }

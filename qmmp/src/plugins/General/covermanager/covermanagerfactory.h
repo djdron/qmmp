@@ -17,28 +17,29 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QPixmap>
-#include <QPainter>
-#include <QPaintEvent>
+#ifndef COVERMANAGERFACTORY_H
+#define COVERMANAGERFACTORY_H
 
-#include "coverwidget.h"
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+#include <QObject>
+#include <QTranslator>
 
-CoverWidget::CoverWidget(QWidget *parent)
-        : QWidget(parent)
-{}
+#include <qmmpui/general.h>
+#include <qmmpui/generalfactory.h>
 
-CoverWidget::~CoverWidget()
-{}
-
-void CoverWidget::setPixmap(const QPixmap &pixmap)
+class CoverManagerFactory : public QObject, public GeneralFactory
 {
-    m_pixmap = pixmap;
-    update();
-}
+Q_OBJECT
+Q_INTERFACES(GeneralFactory);
+public:
+    const GeneralProperties properties() const;
+    General *create(QObject *parent);
+    QDialog *createConfigDialog(QWidget *parent);
+    void showAbout(QWidget *parent);
+    QTranslator *createTranslator(QObject *parent);
 
-void CoverWidget::paintEvent (QPaintEvent *p)
-{
-    QPainter paint(this);
-    if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
-}
+};
+
+#endif
