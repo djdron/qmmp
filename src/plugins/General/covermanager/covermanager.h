@@ -17,28 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QPixmap>
-#include <QPainter>
-#include <QPaintEvent>
 
-#include "coverwidget.h"
+#ifndef COVERMANAGER_H
+#define COVERMANAGER_H
 
-CoverWidget::CoverWidget(QWidget *parent)
-        : QWidget(parent)
-{}
+#include <qmmpui/general.h>
+#include <qmmp/qmmp.h>
 
-CoverWidget::~CoverWidget()
-{}
+class QAction;
 
-void CoverWidget::setPixmap(const QPixmap &pixmap)
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class CoverManager : public General
 {
-    m_pixmap = pixmap;
-    update();
-}
+Q_OBJECT
+public:
+    CoverManager(QObject *parent = 0);
 
-void CoverWidget::paintEvent (QPaintEvent *p)
-{
-    QPainter paint(this);
-    if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
-}
+private slots:
+    void showWindow();
+
+private:
+    QAction *m_action;
+
+};
+
+#endif // COVERMANAGER_H

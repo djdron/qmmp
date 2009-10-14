@@ -17,28 +17,23 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QPixmap>
-#include <QPainter>
-#include <QPaintEvent>
 
-#include "coverwidget.h"
+#ifndef COVERWINDOW_H
+#define COVERWINDOW_H
 
-CoverWidget::CoverWidget(QWidget *parent)
-        : QWidget(parent)
-{}
+#include <QDialog>
+#include "ui_coverwindow.h"
 
-CoverWidget::~CoverWidget()
-{}
+class PlayListItem;
 
-void CoverWidget::setPixmap(const QPixmap &pixmap)
+class CoverWindow : public QDialog
 {
-    m_pixmap = pixmap;
-    update();
-}
+Q_OBJECT
+public:
+    CoverWindow(PlayListItem *item, QWidget *parent);
 
-void CoverWidget::paintEvent (QPaintEvent *p)
-{
-    QPainter paint(this);
-    if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
-}
+private:
+    Ui::CoverWindow ui;
+};
+
+#endif // COVERWINDOW_H

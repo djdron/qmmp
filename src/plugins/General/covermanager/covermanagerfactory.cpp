@@ -17,28 +17,46 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QPixmap>
-#include <QPainter>
-#include <QPaintEvent>
 
-#include "coverwidget.h"
+#include <QtGui>
+#include <qmmp/qmmp.h>
+#include "covermanager.h"
+#include "covermanagerfactory.h"
 
-CoverWidget::CoverWidget(QWidget *parent)
-        : QWidget(parent)
-{}
-
-CoverWidget::~CoverWidget()
-{}
-
-void CoverWidget::setPixmap(const QPixmap &pixmap)
+const GeneralProperties CoverManagerFactory::properties() const
 {
-    m_pixmap = pixmap;
-    update();
+    GeneralProperties properties;
+    properties.name = tr("Cover Manager Plugin");
+    properties.shortName = "cover_manager";
+    properties.hasAbout = TRUE;
+    properties.hasSettings = FALSE;
+    properties.visibilityControl = FALSE;
+    return properties;
 }
 
-void CoverWidget::paintEvent (QPaintEvent *p)
+General *CoverManagerFactory::create(QObject *parent)
 {
-    QPainter paint(this);
-    if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
+    return new CoverManager(parent);
 }
+
+QDialog *CoverManagerFactory::createConfigDialog(QWidget *)
+{
+    return 0;
+}
+
+void CoverManagerFactory::showAbout(QWidget *parent)
+{
+    QMessageBox::about (parent, tr("About Cover Manager Plugin"),
+                        tr("Qmmp Cover Manager Plugin")+"\n"+
+                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+}
+
+QTranslator *CoverManagerFactory::createTranslator(QObject *parent)
+{
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = Qmmp::systemLanguageID();
+    translator->load(QString(":/covermanager_plugin_") + locale);
+    return translator;
+}
+
+Q_EXPORT_PLUGIN2(covermanager, CoverManagerFactory)

@@ -17,28 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QPixmap>
-#include <QPainter>
-#include <QPaintEvent>
 
-#include "coverwidget.h"
+#include <qmmp/metadatamanager.h>
+#include <qmmpui/playlistitem.h>
+#include "coverwindow.h"
 
-CoverWidget::CoverWidget(QWidget *parent)
-        : QWidget(parent)
-{}
-
-CoverWidget::~CoverWidget()
-{}
-
-void CoverWidget::setPixmap(const QPixmap &pixmap)
+CoverWindow::CoverWindow(PlayListItem *item, QWidget *parent) : QDialog(parent)
 {
-    m_pixmap = pixmap;
-    update();
-}
-
-void CoverWidget::paintEvent (QPaintEvent *p)
-{
-    QPainter paint(this);
-    if(!m_pixmap.isNull())
-        paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
+    ui.setupUi(this);
+    setWindowFlags(Qt::Dialog);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    ui.coverWidget->setPixmap(MetaDataManager::instance()->getCover(item->url()));
+    ui.albumEdit->setText(item->album());
+    ui.artistEdit->setText(item->artist());
 }
