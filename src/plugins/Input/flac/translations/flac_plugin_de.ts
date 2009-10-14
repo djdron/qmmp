@@ -34,42 +34,42 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="47"/>
         <source>Length</source>
-        <translation type="unfinished">Länge</translation>
+        <translation>Länge</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="48"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Abtastrate</translation>
+        <translation>Abtastrate</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="48"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="49"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanäle</translation>
+        <translation>Kanäle</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="50"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Bitrate</translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="50"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="51"/>
         <source>File size</source>
-        <translation type="unfinished">Dateigröße</translation>
+        <translation>Dateigröße</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="51"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
 </context>
 </TS>

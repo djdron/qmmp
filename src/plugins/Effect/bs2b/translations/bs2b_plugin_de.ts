@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Crossfeed-Stärke</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>

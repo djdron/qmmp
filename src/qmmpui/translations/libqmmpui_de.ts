@@ -6,57 +6,57 @@
     <message>
         <location filename="../detailsdialog.cpp" line="82"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="83"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Interpret</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="84"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="85"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="86"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="87"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponent</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="89"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Jahr</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="91"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Stück</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="93"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-Nummer</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="14"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Details</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="46"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zusammenfassung</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="55"/>
@@ -65,7 +65,11 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -81,59 +85,59 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="38"/>
         <source>Title:</source>
-        <translation type="unfinished">Titel:</translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="64"/>
         <source>Artist:</source>
-        <translation type="unfinished">Interpret:</translation>
+        <translation>Interpret:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="90"/>
         <source>Album:</source>
-        <translation type="unfinished">Album:</translation>
+        <translation>Album:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="113"/>
         <source>Composer:</source>
-        <translation type="unfinished">Komponist:</translation>
+        <translation>Komponist:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="133"/>
         <source>Genre:</source>
-        <translation type="unfinished">Genre:</translation>
+        <translation>Genre:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="159"/>
         <source>Disc number:</source>
-        <translation type="unfinished">CD-Nummer:</translation>
+        <translation>CD-Nummer:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="169"/>
         <location filename="../tageditor.ui" line="224"/>
         <location filename="../tageditor.ui" line="240"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation>?</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="275"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stück:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="259"/>
         <source>Year:</source>
-        <translation type="unfinished"></translation>
+        <translation>Jahr:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="14"/>
         <source>Tag Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Tag-Editor</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="182"/>
         <source>Comment:</source>
-        <translation type="unfinished">Kommentar:</translation>
+        <translation>Kommentar:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="204"/>
@@ -142,12 +146,16 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="288"/>
         <source>Include selected tag in file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ausgewählten Tag in Datei einbeziehen</translation>
     </message>
 </context>
 </TS>

@@ -39,52 +39,52 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="53"/>
         <source>Length</source>
-        <translation type="unfinished">Länge</translation>
+        <translation>Länge</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="54"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Abtastrate</translation>
+        <translation>Abtastrate</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="54"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="55"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanäle</translation>
+        <translation>Kanäle</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="56"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Bitrate</translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="56"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="58"/>
         <source>File size</source>
-        <translation type="unfinished">Dategröße</translation>
+        <translation>Dategröße</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="58"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="59"/>
         <source>Ratio</source>
-        <translation type="unfinished">Ratio</translation>
+        <translation>Ratio</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="60"/>
         <source>Version</source>
-        <translation type="unfinished">Version</translation>
+        <translation>Version</translation>
     </message>
 </context>
 </TS>

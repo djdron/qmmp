@@ -24,7 +24,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="126"/>
         <source>&amp;Show Song Title</source>
-        <translation type="unfinished">Na&amp;me des Titels anzeigen</translation>
+        <translation>Na&amp;me des Titels anzeigen</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="126"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="127"/>
         <source>&amp;Show Preset Name</source>
-        <translation type="unfinished">N&amp;ame der Voreinstellung anzeigen</translation>
+        <translation>N&amp;ame der Voreinstellung anzeigen</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="127"/>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../projectmwidget.cpp" line="129"/>
         <source>&amp;Next Preset</source>
-        <translation type="unfinished">&amp;Nächste Voreinstellung</translation>
+        <translation>&amp;Nächste Voreinstellung</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="129"/>
         <source>N</source>
-        <translation>N</translation>
+        <translation type="unfinished">N</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="130"/>
         <source>&amp;Previous Preset</source>
-        <translation type="unfinished">&amp;Vorherige Voreinstellung</translation>
+        <translation>Vor&amp;herige Voreinstellung</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="130"/>
         <source>P</source>
-        <translation type="unfinished">P</translation>
+        <translation type="unfinished">H</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="131"/>
         <source>&amp;Random Preset</source>
-        <translation type="unfinished">&amp;Zufällige Voreinstellung</translation>
+        <translation>&amp;Zufällige Voreinstellung</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="131"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="132"/>
         <source>&amp;Lock Preset</source>
-        <translation type="unfinished">V&amp;oreinstellung sperren</translation>
+        <translation>V&amp;oreinstellung sperren</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="132"/>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="134"/>
         <source>&amp;Fullscreen</source>
-        <translation type="unfinished">&amp;Vollbild</translation>
+        <translation>&amp;Vollbild</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="134"/>

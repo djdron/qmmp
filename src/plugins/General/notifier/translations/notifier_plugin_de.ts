@@ -52,7 +52,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzeigedauer (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="291"/>

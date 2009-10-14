@@ -31,7 +31,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="86"/>
         <source>Compiled against libcdio version:</source>
-        <translation>Kompiliert gegen „libcdio“-Version:</translation>
+        <translation>Kompiliert gegen libcdio-Version:</translation>
     </message>
 </context>
 <context>

@@ -39,7 +39,7 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
-        <translation type="unfinished">Dieses Modul fügt die Unterstützung für Multimedia-Tasten oder allgemeine Tastaturkombinationen hinzu</translation>
+        <translation>Dieses Modul fügt Unterstützung für Multimedia-Tasten oder allgemeine Tastaturkombinationen hinzu</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="53"/>

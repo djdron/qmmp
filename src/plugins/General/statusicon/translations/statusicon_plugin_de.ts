@@ -21,7 +21,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="34"/>
         <source>Message delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzeigedauer der Nachricht (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="86"/>

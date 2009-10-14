@@ -44,27 +44,27 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="69"/>
         <source>Format</source>
-        <translation type="unfinished">Format</translation>
+        <translation>Format</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="71"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Bitrate</translation>
+        <translation>Bitrate</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="71"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="73"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Abtastrate</translation>
+        <translation>Abtastrate</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="73"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="77"/>
@@ -72,49 +72,49 @@
         <location filename="../mpegmetadatamodel.cpp" line="83"/>
         <location filename="../mpegmetadatamodel.cpp" line="86"/>
         <source>Mode</source>
-        <translation type="unfinished">Modus</translation>
+        <translation>Modus</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="89"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>File size</source>
-        <translation type="unfinished">Dateigröße</translation>
+        <translation>Dateigröße</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="92"/>
         <location filename="../mpegmetadatamodel.cpp" line="94"/>
         <source>Protection</source>
-        <translation type="unfinished">Geschützt</translation>
+        <translation>Geschützt</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="92"/>
         <location filename="../mpegmetadatamodel.cpp" line="96"/>
         <location filename="../mpegmetadatamodel.cpp" line="100"/>
         <source>Yes</source>
-        <translation type="unfinished">Ja</translation>
+        <translation>Ja</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="94"/>
         <location filename="../mpegmetadatamodel.cpp" line="98"/>
         <location filename="../mpegmetadatamodel.cpp" line="102"/>
         <source>No</source>
-        <translation type="unfinished">Nein</translation>
+        <translation>Nein</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="96"/>
         <location filename="../mpegmetadatamodel.cpp" line="98"/>
         <source>Copyright</source>
-        <translation type="unfinished">Copyright</translation>
+        <translation>Copyright</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="100"/>
         <location filename="../mpegmetadatamodel.cpp" line="102"/>
         <source>Original</source>
-        <translation type="unfinished"></translation>
+        <translation>Original</translation>
     </message>
 </context>
 <context>
