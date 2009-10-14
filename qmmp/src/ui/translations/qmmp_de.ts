@@ -309,7 +309,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="225"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Verschiedenes</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="284"/>
@@ -321,7 +321,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="339"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitmap-Schriftart verwenden, falls verfügbar</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="370"/>
@@ -346,7 +346,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="439"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Titelnummern anzeigen</translation>
+        <translation>Titelnummern anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="487"/>
