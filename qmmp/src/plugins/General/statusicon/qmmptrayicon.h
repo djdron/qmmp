@@ -21,9 +21,13 @@
 #define QMMPTRAYICON_H
 
 #include <QSystemTrayIcon>
+#include <QPointer>
+
+//#include "statusiconpopupwidget.h"
 
 class QEvent;
 class QWheelEvent;
+class StatusIconPopupWidget;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -33,14 +37,25 @@ class QmmpTrayIcon : public QSystemTrayIcon
 Q_OBJECT
 public:
     QmmpTrayIcon(QObject *parent = 0);
-
     ~QmmpTrayIcon();
+
+    void showNiceToolTip(bool value);
+    void setNiceToolTipDelay(int value);
+    void setNiceToolTipOpacity(qreal value);
+    void setSplitFileName(bool value);
 
 protected:
     bool event(QEvent *e);
 
 private:
     void wheelEvent(QWheelEvent *e);
+    void showToolTip();
+
+    bool m_showNiceToolTip;
+    bool m_splitFileName;
+    qint32 m_niceToolTipDelay;
+    qreal m_niceToolTipOpacity;
+    QPointer<StatusIconPopupWidget> m_PopupWidget;
 
 };
 

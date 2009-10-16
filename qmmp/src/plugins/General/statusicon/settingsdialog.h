@@ -39,6 +39,7 @@ public:
 
 public slots:
     virtual void accept();
+    void on_niceTooltipOpacitySlider_valueChanged (int value);
 
 private:
     Ui::SettingsDialog ui;

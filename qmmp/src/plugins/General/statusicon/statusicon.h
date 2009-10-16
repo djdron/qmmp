@@ -20,15 +20,17 @@
 #ifndef STATUSICON_H
 #define STATUSICON_H
 
-#include <QSystemTrayIcon>
+//#include <QSystemTrayIcon>
 #include <QMap>
 
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
+#include <qmmptrayicon.h>
 
 class SoundCore;
 class MediaPlayer;
 class QEvent;
+
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -48,7 +50,7 @@ private slots:
     void trayActivated(QSystemTrayIcon::ActivationReason);
 
 private:
-    QSystemTrayIcon *m_tray;
+    QmmpTrayIcon *m_tray;
     bool m_showMessage;
     bool m_showTooltip;
     bool m_hideToTray;
