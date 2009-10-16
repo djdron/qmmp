@@ -43,9 +43,10 @@ StatusIcon::StatusIcon(QObject *parent)
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
     QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
-    menu->addAction(tr("Play"), m_player, SLOT(play()));
-    menu->addAction(tr("Pause"), m_core, SLOT(pause()));
-    menu->addAction(tr("Stop"), m_core, SLOT(stop()));
+    menu->addAction(QIcon(":/tray_play.png"),tr("Play"), m_player, SLOT(play()));
+    menu->addAction(QIcon(":/tray_pause.png"),tr("Pause"), m_core, SLOT(pause()));
+    menu->addAction(QIcon(":/tray_stop.png"),tr("Stop"), m_core, SLOT(stop()));
+    menu->addSeparator();
     menu->addAction(tr("Next"), m_player, SLOT(next()));
     menu->addAction(tr("Previous"), m_player, SLOT(previous()));
     menu->addSeparator();
@@ -59,6 +60,10 @@ StatusIcon::StatusIcon(QObject *parent)
     m_showTooltip = settings.value("show_tooltip",FALSE).toBool();
     m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
     m_useStandardIcons = settings.value("use_standard_icons",FALSE).toBool();
+    m_tray->showNiceToolTip(settings.value("show_nicetooltip",TRUE).toBool());
+    m_tray->setNiceToolTipDelay(settings.value("nicetooltip_delay",2000).toInt());
+    m_tray->setNiceToolTipOpacity(1 - (settings.value("nicetooltip_opacity",0).toDouble()/100));
+    m_tray->setSplitFileName(settings.value("split_file_name",TRUE).toBool());
 #if QT_VERSION >= 0x040400
     if(m_useStandardIcons)
         m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));

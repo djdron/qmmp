@@ -20,10 +20,13 @@
 
 #include <QEvent>
 #include <QWheelEvent>
+#include <QMouseEvent>
 
 #include <qmmp/soundcore.h>
 
 #include "qmmptrayicon.h"
+#include <statusiconpopupwidget.h>
+
 
 QmmpTrayIcon::QmmpTrayIcon(QObject *parent)
         : QSystemTrayIcon(parent)
@@ -35,11 +38,37 @@ QmmpTrayIcon::~QmmpTrayIcon()
 {
 }
 
+void QmmpTrayIcon::showNiceToolTip(bool value)
+{
+    m_showNiceToolTip = value;
+}
+
+void QmmpTrayIcon::setNiceToolTipDelay(int value)
+{
+    m_niceToolTipDelay = value;
+}
+
+void QmmpTrayIcon::setNiceToolTipOpacity(qreal value)
+{
+    m_niceToolTipOpacity = value;
+}
+
+void QmmpTrayIcon::setSplitFileName(bool value)
+{
+    m_splitFileName = value;
+}
+
 bool QmmpTrayIcon::event(QEvent *e)
 {
     if (e->type() == QEvent::Wheel )
     {
         wheelEvent((QWheelEvent *) e);
+        e->accept();
+        return TRUE;
+    }
+    if (e->type() == QEvent::ToolTip)
+    {
+        showToolTip();
         e->accept();
         return TRUE;
     }
@@ -56,4 +85,18 @@ void QmmpTrayIcon::wheelEvent(QWheelEvent *e)
     volume = qMin(volume,100);
     core->setVolume(volume - qMax(balance,0)*volume/100,
                     volume + qMin(balance,0)*volume/100);
+
+}
+
+void QmmpTrayIcon::showToolTip()
+{
+    if(m_showNiceToolTip)
+    {
+        if(m_PopupWidget.isNull())
+        {
+            m_PopupWidget = new StatusIconPopupWidget();
+        }
+        m_PopupWidget->setWindowOpacity(m_niceToolTipOpacity);
+        m_PopupWidget->showInfo(geometry().x(),geometry().y(),m_niceToolTipDelay,m_splitFileName);
+    }
 }

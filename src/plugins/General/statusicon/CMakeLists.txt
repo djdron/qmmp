@@ -32,6 +32,7 @@ SET(libstatusicon_SRCS
     statusicon.cpp
     statusiconfactory.cpp
     qmmptrayicon.cpp
+    statusiconpopupwidget.cpp
 )
 
 SET(libstatusicon_MOC_HDRS
@@ -39,6 +40,7 @@ SET(libstatusicon_MOC_HDRS
     statusiconfactory.h
     statusicon.h
     qmmptrayicon.h
+    statusiconpopupwidget.h
 )
 
 SET(libstatusicon_RCCS 

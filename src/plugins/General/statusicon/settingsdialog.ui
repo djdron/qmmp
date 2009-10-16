@@ -6,55 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>278</width>
-    <height>146</height>
+    <width>340</width>
+    <height>348</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Status Icon Plugin Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QCheckBox" name="messageCheckBox">
-     <property name="text">
-      <string>Show message</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" rowspan="2" colspan="2">
-    <widget class="QCheckBox" name="toolTipCheckBox">
-     <property name="text">
-      <string>Show tooltip</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Message delay (ms):</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2" colspan="2">
-    <widget class="QSpinBox" name="messageDelaySpinBox">
-     <property name="minimum">
-      <number>100</number>
-     </property>
-     <property name="maximum">
-      <number>10000</number>
-     </property>
-     <property name="singleStep">
-      <number>100</number>
-     </property>
-     <property name="value">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" colspan="3">
+   <item row="14" column="0" colspan="3">
     <spacer>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -67,7 +27,7 @@
      </property>
     </spacer>
    </item>
-   <item row="5" column="3">
+   <item row="14" column="3">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -80,7 +40,124 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="9" column="0" colspan="4">
+    <widget class="QGroupBox" name="niceTooltipGroupBox">
+     <property name="title">
+      <string>Show nice tooltip</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QLabel" name="niceTooltipDelayLabel">
+        <property name="text">
+         <string>Tooltip delay, ms</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2">
+       <widget class="QSpinBox" name="niceTooltipDelaySpinBox">
+        <property name="maximum">
+         <number>10000</number>
+        </property>
+        <property name="singleStep">
+         <number>500</number>
+        </property>
+        <property name="value">
+         <number>2000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="niceTooltipOpacityLabel">
+        <property name="text">
+         <string>Tooltip opacity</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSlider" name="niceTooltipOpacitySlider">
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::NoTicks</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="niceTooltipOpacityValueLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>3</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QCheckBox" name="niceTooltipSplitCheckBox">
+        <property name="text">
+         <string>Try to split file name when no tag</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="4">
+    <widget class="QGroupBox" name="messageGroupBox">
+     <property name="title">
+      <string>Show message</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Message delay, ms:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="messageDelaySpinBox">
+        <property name="minimum">
+         <number>100</number>
+        </property>
+        <property name="maximum">
+         <number>10000</number>
+        </property>
+        <property name="singleStep">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QCheckBox" name="toolTipCheckBox">
+     <property name="text">
+      <string>Show tooltip</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0">
     <widget class="QCheckBox" name="standardIconsCheckBox">
      <property name="text">
       <string>Use standard icons</string>
