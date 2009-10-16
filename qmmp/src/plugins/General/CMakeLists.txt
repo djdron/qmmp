@@ -17,7 +17,7 @@ add_subdirectory(scrobbler)
 ENDIF(USE_SCROBBLER)
 
 IF(USE_STATICON)
-add_subdirectory(statusicon)
+#add_subdirectory(statusicon)
 ENDIF(USE_STATICON)
 
 IF(USE_NOTIFIER)
