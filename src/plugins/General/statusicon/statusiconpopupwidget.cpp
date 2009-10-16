@@ -1,6 +1,28 @@
-#include "statusiconpopupwidget.h"
-#include "qmmp/soundcore.h"
+/***************************************************************************
+ *   Copyright (C) 2009 by Artur Guzik                                     *
+ *   a.guzik88@gmail.com
+ *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QLabel>
 #include <QTimer>
 #include <QPixmap>
@@ -8,40 +30,43 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QSpacerItem>
+#include <QProgressBar>
+#include <qmmp/soundcore.h>
+#include <qmmp/metadatamanager.h>
+#include "coverwidget.h"
+#include "statusiconpopupwidget.h"
 
 StatusIconPopupWidget::StatusIconPopupWidget(QWidget * parent)
         : QFrame(parent)
 {
     setWindowFlags(Qt::X11BypassWindowManagerHint |
                    Qt::WindowStaysOnTopHint | Qt::Dialog | Qt::FramelessWindowHint);
-    setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
-    setLineWidth(0);
+    setFrameStyle(QFrame::NoFrame | QFrame::Plain);
+    setAttribute(Qt::WA_QuitOnClose, FALSE);
 
-    setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
-    gLayout = new QGridLayout(this);
-    m_lblTitle = new QLabel();
-    m_lblArtist = new QLabel();
-    m_lblAlbum = new QLabel();
-    m_lblTime = new QLabel();
+    m_hLayout = new QHBoxLayout();
+    m_vLayout = new QVBoxLayout();
+
+    m_cover = new CoverWidget(this);
+    m_cover->setFixedSize(100,100);
+    m_hLayout->addWidget(m_cover);
+
+    m_textLabel = new QLabel(this);
+    m_vLayout->addWidget(m_textLabel);
+
     m_spacer = new QSpacerItem(20,0,QSizePolicy::Expanding,QSizePolicy::Expanding);
-    m_cover = new CoverWidget();
+    m_vLayout->addItem(m_spacer);
 
-    m_cover->setMinimumSize(100,100);
-    m_cover->setMaximumSize(100,100);
+    m_bar = new TimeBar(this);
+    m_vLayout->addWidget(m_bar);
 
-    gLayout->addWidget(m_cover,0,0,5,1);
-    gLayout->addWidget(m_lblTitle,0,1);
-    gLayout->addWidget(m_lblArtist,1,1);
-    gLayout->addWidget(m_lblAlbum,2,1);
-    gLayout->addWidget(m_lblTime,3,1);
-    setLayout(gLayout);
+    m_hLayout->addLayout(m_vLayout);
+    setLayout(m_hLayout);
 
     m_timer = new QTimer(this);
     m_timer->setSingleShot(TRUE);
-    m_timer->stop();
 
-    gLayout->addItem(m_spacer,4,1,1,1);
-    gLayout->setHorizontalSpacing(15);
+    m_bar->setMinimumWidth(110);
 
     connect(m_timer,SIGNAL(timeout()),SLOT(deleteLater()));
     connect(SoundCore::instance(),SIGNAL(metaDataChanged()),this,SLOT(updateMetaData()));
@@ -62,13 +87,15 @@ void StatusIconPopupWidget::mousePressEvent(QMouseEvent *)
 
 void StatusIconPopupWidget::updateMetaData()
 {
+    m_timer->stop();
     SoundCore *core = SoundCore::instance();
-    if(core->state() == Qmmp::Playing)
+    if(core->state() == Qmmp::Playing || core->state() == Qmmp::Paused)
     {
+        QString text;
         QString title = core->metaData(Qmmp::TITLE);
         QString artist = core->metaData(Qmmp::ARTIST);
         QString album = core->metaData(Qmmp::ALBUM);
-
+        int year = core->metaData(Qmmp::YEAR).toInt();
         if(title.isEmpty())
         {
             title = QFileInfo(core->metaData(Qmmp::URL)).completeBaseName();
@@ -78,92 +105,62 @@ void StatusIconPopupWidget::updateMetaData()
                 title = title.section('-',1,1).trimmed();
             }
         }
+        text.append("<b>" + title + "</b>");
+        if(core->totalTime() > 0)
+        {
+            text.append(" ");
+            QString time;
+            int l = core->totalTime()/1000;
+            if(l > 3600)
+                time += QString("(%1:%2:%3)").arg(l/3600,2,10,QChar('0')).arg(l%3600/60,2,10,QChar('0'))
+                .arg(l%60,2,10,QChar('0'));
 
-        m_lblTitle->setText("<b>" + title + "</b>");
-
+            else
+                time = QString("(%1:%2)").arg(l/60,2,10,QChar('0')).arg(l%60,2,10,QChar('0'));
+            text.append(time);
+        }
         if(!artist.isEmpty())
         {
-            m_lblArtist->setText(artist);
-            m_lblArtist->setVisible(TRUE);
+            text.append("<br>");
+            text.append(artist);
         }
-        else
-        {
-            m_lblArtist->setVisible(FALSE);
-        }
-
         if(!album.isEmpty())
         {
-            m_lblAlbum->setText(album);
-            m_lblAlbum->setVisible(TRUE);
+            text.append("<br>");
+            text.append(album);
         }
-        else
-        {
-            m_lblAlbum->setVisible(FALSE);
-        }
+        if(year > 0)
+            text.append(QString("<br>%1").arg(year));
 
-        QPixmap cover = Decoder::findCover(core->metaData(Qmmp::URL));
+        m_textLabel->setText(text);
+        QPixmap cover = MetaDataManager::instance()->getCover(core->metaData(Qmmp::URL));
+        m_cover->show();
+        m_bar->show();
         if(cover.isNull())
-        {
             m_cover->setPixmap(QPixmap(":/empty_cover.png"));
-            m_cover->setVisible(TRUE);
-        }
         else
-        {
             m_cover->setPixmap(cover);
-            m_cover->setVisible(TRUE);
-        }
-        m_lblTime->setVisible(TRUE);
-        m_totalTime = totalTimeString();
-        setVisible(TRUE);
+        updateTime(core->elapsed());
     }
     else
     {
-        m_cover->setVisible(FALSE);
-        m_lblAlbum->setVisible(FALSE);
-        m_lblArtist->setVisible(FALSE);
-        m_lblTime->setVisible(FALSE);
-        m_lblTitle->setText("<b>Nothing is playing</b>");
-        setVisible(FALSE); //
+        m_cover->hide();
+        m_bar->hide();
+        m_textLabel->setText(tr("Stopped"));
     }
     qApp->processEvents();
     resize(sizeHint());
     qApp->processEvents();
     if(isVisible())
         updatePosition(m_lastTrayX,m_lastTrayY);
+    m_timer->start();
 }
 
 void StatusIconPopupWidget::updateTime(qint64 elapsed)
 {
-    int second = elapsed / 1000;
-    int minute = second / 60;
-    int hour = minute / 60;
-
-    SoundCore * core = SoundCore::instance();
-
-    if(core->totalTime() > 3600000)
-    {
-        m_lblTime->setText(QString("%1:%2:%3").arg(hour,2,10,QChar('0')).arg(minute%60,2,10,QChar('0'))
-                           .arg(second%60,2,10,QChar('0')) + "/" + m_totalTime);
-        return;
-    }
-    m_lblTime->setText(QString("%1:%2").arg(minute%60,2,10,QChar('0')).arg(second%60,2,10,QChar('0')) +
-                       "/" + m_totalTime);
-}
-
-QString StatusIconPopupWidget::totalTimeString()
-{
-    SoundCore * core = SoundCore::instance();
-
-    int second = core->totalTime() / 1000;
-    int minute = second / 60;
-    int hour = minute / 60;
-
-    if(core->totalTime() > 3600000)
-    {
-        return QString("%1:%2:%3").arg(hour,2,10,QChar('0')).arg(minute%60,2,10,QChar('0'))
-                                  .arg(second%60,2,10,QChar('0'));
-    }
-    return QString("%1:%2").arg(minute%60,2,10,QChar('0')).arg(second%60,2,10,QChar('0'));
+    m_bar->setMaximum(SoundCore::instance()->totalTime()/1000);
+    m_bar->setValue(elapsed/1000);
+    m_bar->update();
 }
 
 void StatusIconPopupWidget::updatePosition(int trayx, int trayy)
@@ -204,4 +201,10 @@ void StatusIconPopupWidget::showInfo(int x, int y, int delay, bool splitFileName
     m_timer->start();
 }
 
+TimeBar::TimeBar(QWidget *parent) : QProgressBar(parent)
+{}
 
+QString TimeBar::text() const
+{
+    return QString("%1:%2").arg(value()/60,2,10,QChar('0')).arg(value()%60,2,10,QChar('0'));
+}

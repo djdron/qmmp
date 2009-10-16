@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,31 +38,19 @@ StatusIcon::StatusIcon(QObject *parent)
         : General(parent)
 {
     m_tray = new QmmpTrayIcon(this);
-    connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
+    connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));
     //m_tray->show();
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
-    QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
-    menu->addAction(QIcon(":/tray_play.png"),tr("Play"), m_player, SLOT(play()));
-    menu->addAction(QIcon(":/tray_pause.png"),tr("Pause"), m_core, SLOT(pause()));
-    menu->addAction(QIcon(":/tray_stop.png"),tr("Stop"), m_core, SLOT(stop()));
-    menu->addSeparator();
-    menu->addAction(tr("Next"), m_player, SLOT(next()));
-    menu->addAction(tr("Previous"), m_player, SLOT(previous()));
-    menu->addSeparator();
-    menu->addAction(tr("Exit"), this, SLOT(exit()));
-    m_tray->setContextMenu(menu);
-
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Tray");
     m_showMessage = settings.value("show_message",TRUE).toBool();
     m_messageDelay = settings.value("message_delay", 2000).toInt();
-    m_showTooltip = settings.value("show_tooltip",FALSE).toBool();
     m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
     m_useStandardIcons = settings.value("use_standard_icons",FALSE).toBool();
     m_tray->showNiceToolTip(settings.value("show_nicetooltip",TRUE).toBool());
     m_tray->setNiceToolTipDelay(settings.value("nicetooltip_delay",2000).toInt());
-    m_tray->setNiceToolTipOpacity(1 - (settings.value("nicetooltip_opacity",0).toDouble()/100));
+    m_tray->setNiceToolTipOpacity(1 - (settings.value("nicetooltip_transparency",0).toDouble()/100));
     m_tray->setSplitFileName(settings.value("split_file_name",TRUE).toBool());
 #if QT_VERSION >= 0x040400
     if(m_useStandardIcons)
@@ -72,6 +60,42 @@ StatusIcon::StatusIcon(QObject *parent)
         m_tray->setIcon ( QIcon(":/tray_stop.png"));
     m_tray->show();
     settings.endGroup();
+    //actions
+    QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
+    QIcon playIcon;
+    QIcon pauseIcon;
+    QIcon stopIcon;
+    QIcon nextIcon;
+    QIcon previousIcon;
+#if QT_VERSION >= 0x040400
+    if(m_useStandardIcons)
+    {
+        playIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPlay);
+        pauseIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPause);
+        stopIcon = QApplication::style()->standardIcon(QStyle::SP_MediaStop);
+        nextIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipForward);
+        previousIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipBackward);
+    }
+    else
+    {
+#endif
+        playIcon = QIcon(":/tray_play.png");
+        pauseIcon = QIcon(":/tray_pause.png");
+        stopIcon = QIcon(":/tray_stop.png");
+        //TODO add more icons
+#if QT_VERSION >= 0x040400
+    }
+#endif
+    menu->addAction(playIcon,tr("Play"), m_player, SLOT(play()));
+    menu->addAction(pauseIcon,tr("Pause"), m_core, SLOT(pause()));
+    menu->addAction(stopIcon,tr("Stop"), m_core, SLOT(stop()));
+    menu->addSeparator();
+    menu->addAction(nextIcon, tr("Next"), m_player, SLOT(next()));
+    menu->addAction(previousIcon, tr("Previous"), m_player, SLOT(previous()));
+    menu->addSeparator();
+    menu->addAction(tr("Exit"), this, SLOT(exit()));
+    m_tray->setContextMenu(menu);
+
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     setState(m_core->state()); //update state
@@ -131,8 +155,6 @@ void StatusIcon::showMetaData()
     if (m_showMessage)
         m_tray->showMessage (tr("Now Playing"), message,
                              QSystemTrayIcon::Information, m_messageDelay);
-    if (m_showTooltip)
-        m_tray->setToolTip(message);
 }
 
 void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
