@@ -87,13 +87,13 @@ void PopupWidget::showMetaData()
         title.append(core->metaData(Qmmp::URL).section('/',-1));
     else
         title.append(core->metaData(Qmmp::TITLE));
+    title.append("</b>");
     if (core->totalTime() > 0)
     {
         title.append(" ");
-        title.append(QString(" || %1:%2").arg(core->totalTime()/60000).arg(core->totalTime()%60000/1000, 2, 10, QChar('0')));
+        int l = core->totalTime()/1000;
+        title.append(QString("(%1:%2)").arg(l/60).arg(l%60, 2, 10, QChar('0')));
     }
-    title.append("</b>");
-
     if(!core->metaData(Qmmp::ARTIST).isEmpty())
     {
         title.append("<br>");
