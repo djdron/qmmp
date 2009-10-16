@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,9 +20,7 @@
 #ifndef STATUSICON_H
 #define STATUSICON_H
 
-//#include <QSystemTrayIcon>
 #include <QMap>
-
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
 #include <qmmptrayicon.h>
@@ -52,7 +50,6 @@ private slots:
 private:
     QmmpTrayIcon *m_tray;
     bool m_showMessage;
-    bool m_showTooltip;
     bool m_hideToTray;
     bool m_useStandardIcons;
     int m_messageDelay;

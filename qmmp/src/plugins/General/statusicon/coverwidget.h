@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,49 +17,34 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef PIXMAPWIDGET_H
+#define PIXMAPWIDGET_H
 
-#include <QtGui>
+#include <QWidget>
+#include <QPixmap>
 
-#include "statusicon.h"
-#include "settingsdialog.h"
-#include "statusiconfactory.h"
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 
-const GeneralProperties StatusIconFactory::properties() const
+class CoverWidget : public QWidget
 {
-    GeneralProperties properties;
-    properties.name = tr("Status Icon Plugin");
-    properties.shortName = "status_icon";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.visibilityControl = TRUE;
-    return properties;
-}
+Q_OBJECT
+public:
+    CoverWidget(QWidget *parent = 0);
 
-General *StatusIconFactory::create(QObject *parent)
-{
-    return new StatusIcon(parent);
-}
+    ~CoverWidget();
 
-QDialog *StatusIconFactory::createConfigDialog(QWidget *parent)
-{
-    return new SettingsDialog(parent);
-}
+    virtual void setPixmap(const QPixmap&);
 
-void StatusIconFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About Status Icon Plugin"),
-                        tr("Qmmp Status Icon Plugin")+"\n"+
-                        tr("Writen by:") + "\n"+
-                        tr("Ilya Kotov <forkotov02@hotmail.ru>") +
-                        tr("Artur Guzik <a.guzik88@gmail.com>"));
-}
+protected:
+    void paintEvent (QPaintEvent *event);
 
-QTranslator *StatusIconFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/statusicon_plugin_") + locale);
-    return translator;
-}
+private: 
+      QPixmap m_pixmap;
 
-Q_EXPORT_PLUGIN(StatusIconFactory)
+
+
+};
+
+#endif

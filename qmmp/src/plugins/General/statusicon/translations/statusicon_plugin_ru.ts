@@ -9,22 +9,38 @@
         <translation>Настройки модуля Status Icon</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="20"/>
-        <source>Show message</source>
-        <translation>Показывать сообщение</translation>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Tooltip</source>
+        <translation>Всплывающая подсказка</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="27"/>
-        <source>Show tooltip</source>
-        <translation>Показывать всплывающую подсказку</translation>
+        <location filename="../settingsdialog.ui" line="67"/>
+        <location filename="../settingsdialog.ui" line="149"/>
+        <source>Delay, ms:</source>
+        <translation>Задержка, мс:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="34"/>
-        <source>Message delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="87"/>
+        <source>Transparency:</source>
+        <translation>Прозрачность:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="86"/>
+        <location filename="../settingsdialog.ui" line="121"/>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="130"/>
+        <source>Try to split file name when no tag</source>
+        <translation>Разделить имя файла, если нет тегов</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="140"/>
+        <source>Balloone message</source>
+        <translation>Сообщение</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="184"/>
         <source>Use standard icons</source>
         <translation>Использовать стандартные иконки</translation>
     </message>
@@ -32,37 +48,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="46"/>
+        <location filename="../statusicon.cpp" line="89"/>
         <source>Play</source>
         <translation>Воспроизвести</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="47"/>
+        <location filename="../statusicon.cpp" line="90"/>
         <source>Pause</source>
         <translation>Пауза</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="48"/>
+        <location filename="../statusicon.cpp" line="91"/>
         <source>Stop</source>
         <translation>Стоп</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="49"/>
+        <location filename="../statusicon.cpp" line="93"/>
         <source>Next</source>
         <translation>Следующий фрагмент</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="50"/>
+        <location filename="../statusicon.cpp" line="94"/>
         <source>Previous</source>
         <translation>Предыдущий фрагмент</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="52"/>
+        <location filename="../statusicon.cpp" line="96"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="127"/>
+        <location filename="../statusicon.cpp" line="156"/>
         <source>Now Playing</source>
         <translation>Сейчас играет</translation>
     </message>
@@ -86,8 +102,26 @@
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
-        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <source>Writen by:</source>
+        <translation>Разработчики:</translation>
+    </message>
+    <message>
+        <location filename="../statusiconfactory.cpp" line="53"/>
+        <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation>Илья Котов &lt;orkotov02@hotmail.ru&gt;</translation>
+    </message>
+    <message>
+        <location filename="../statusiconfactory.cpp" line="54"/>
+        <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
+        <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>StatusIconPopupWidget</name>
+    <message>
+        <location filename="../statusiconpopupwidget.cpp" line="149"/>
+        <source>Stopped</source>
+        <translation>Остановлено</translation>
     </message>
 </context>
 </TS>

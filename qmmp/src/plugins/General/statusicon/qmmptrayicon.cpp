@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 #include <qmmp/soundcore.h>
 
 #include "qmmptrayicon.h"
-#include <statusiconpopupwidget.h>
+#include "statusiconpopupwidget.h"
 
 
 QmmpTrayIcon::QmmpTrayIcon(QObject *parent)

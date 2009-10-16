@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,10 +36,8 @@ public:
 
     ~SettingsDialog();
 
-
 public slots:
     virtual void accept();
-    void on_niceTooltipOpacitySlider_valueChanged (int value);
 
 private:
     Ui::SettingsDialog ui;
