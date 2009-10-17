@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>CoverManager</name>
     <message>
         <location filename="../covermanager.cpp" line="32"/>
         <source>Show Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати обкладинку</translation>
     </message>
     <message>
         <location filename="../covermanager.cpp" line="33"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -19,22 +19,22 @@
     <message>
         <location filename="../covermanagerfactory.cpp" line="29"/>
         <source>Cover Manager Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль керування обкладинками</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="49"/>
         <source>About Cover Manager Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про модуль керування обкладинками</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="50"/>
         <source>Qmmp Cover Manager Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль керування обкладинками для Qmmp</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="51"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -42,42 +42,42 @@
     <message>
         <location filename="../coverwindow.ui" line="20"/>
         <source>Cover Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Керування обкладинками</translation>
     </message>
     <message>
         <location filename="../coverwindow.ui" line="46"/>
         <source>Album:</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом:</translation>
     </message>
     <message>
         <location filename="../coverwindow.ui" line="56"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виконавець:</translation>
     </message>
     <message>
         <location filename="../coverwindow.ui" line="76"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Перегляд</translation>
     </message>
     <message>
         <location filename="../coverwindow.ui" line="116"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Відкрити</translation>
     </message>
     <message>
         <location filename="../coverwindow.ui" line="126"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Завантажити</translation>
     </message>
     <message>
         <location filename="../coverwindow.ui" line="136"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../coverwindow.ui" line="172"/>
         <source>Save as...</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберегти як...</translation>
     </message>
 </context>
 </TS>
