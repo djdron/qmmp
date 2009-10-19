@@ -32,6 +32,7 @@ SET(libcue_SRCS
   decodercuefactory.cpp
   settingsdialog.cpp
   cueparser.cpp
+  cuemetadatamodel.cpp
 )
 
 SET(libcue_MOC_HDRS
@@ -39,6 +40,7 @@ SET(libcue_MOC_HDRS
   decoder_cue.h
   settingsdialog.h
   cueparser.h
+  cuemetadatamodel.h
 )
 
 SET(libcue_RCCS translations/translations.qrc)

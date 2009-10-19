@@ -20,6 +20,7 @@
 #include <QtGui>
 
 #include "decoder_cue.h"
+#include "cuemetadatamodel.h"
 #include "cueparser.h"
 #include "settingsdialog.h"
 #include "decodercuefactory.h"
@@ -68,9 +69,7 @@ QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName, boo
 
 MetaDataModel* DecoderCUEFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    Q_UNUSED(path);
-    Q_UNUSED(parent);
-    return 0;
+    return path.startsWith("cue://") ? new CUEMetaDataModel(path, parent) : 0;
 }
 
 void DecoderCUEFactory::showSettings(QWidget *parent)

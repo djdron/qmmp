@@ -38,6 +38,7 @@ public:
     virtual QHash<QString, QString> descriptions();
     virtual QList<TagModel* > tags();
     virtual QPixmap cover();
+    virtual QString coverPath();
 };
 
 #endif // METADATAMODEL_H
