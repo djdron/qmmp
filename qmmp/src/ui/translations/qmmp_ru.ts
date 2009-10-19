@@ -1079,12 +1079,12 @@
     <message>
         <location filename="../playlist.cpp" line="190"/>
         <source>By Album</source>
-        <translation type="unfinished"></translation>
+        <translation>По альбому</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="194"/>
         <source>By Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>По исполнителю</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="198"/>
