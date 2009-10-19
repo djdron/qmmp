@@ -711,6 +711,8 @@ void PlayListModel::reverseList()
 
 // First we'll implement bundle of static compare procedures
 // to sort items in different ways
+
+//by title
 static bool _titleLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return QString::localeAwareCompare (s1->title(), s2->title()) < 0;
@@ -720,7 +722,27 @@ static bool _titleGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return QString::localeAwareCompare (s1->title(), s2->title()) > 0;
 }
+//by album
+static bool _albumLessComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QString::localeAwareCompare (s1->album(), s2->album()) < 0;
+}
 
+static bool _albumGreaterComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QString::localeAwareCompare (s1->album(), s2->album()) > 0;
+}
+//by artist
+static bool _artistLessComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QString::localeAwareCompare (s1->artist(), s2->artist()) < 0;
+}
+
+static bool _artistGreaterComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QString::localeAwareCompare (s1->artist(), s2->artist()) > 0;
+}
+//by path
 static bool _pathAndFilenameLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return QString::localeAwareCompare (s1->url(), s2->url()) < 0;
@@ -730,7 +752,7 @@ static bool _pathAndFilenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return QString::localeAwareCompare (s1->url(), s2->url()) > 0;
 }
-
+//by file name
 static bool _filenameLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
     QFileInfo i_s1(s1->url());
@@ -744,7 +766,7 @@ static bool _filenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
     QFileInfo i_s2(s2->url());
     return QString::localeAwareCompare (i_s1.baseName(), i_s2.baseName()) > 0;
 }
-
+//by date
 static bool _dateLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return s1->year().toInt() < s2->year().toInt();
@@ -754,7 +776,7 @@ static bool _dateGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return s1->year().toInt() > s2->year().toInt();
 }
-
+//by track
 static bool _trackLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return s1->track().toInt() < s2->track().toInt();
@@ -782,6 +804,14 @@ void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
     case TITLE:
         compareLessFunc = _titleLessComparator;
         compareGreaterFunc = _titleGreaterComparator;
+        break;
+    case ALBUM:
+        compareLessFunc = _albumLessComparator;
+        compareGreaterFunc = _albumGreaterComparator;
+        break;
+    case ARTIST:
+        compareLessFunc = _artistLessComparator;
+        compareGreaterFunc = _artistGreaterComparator;
         break;
     case FILENAME:
         compareLessFunc = _filenameLessComparator;
