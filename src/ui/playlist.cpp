@@ -222,6 +222,14 @@ void PlayList::createActions()
     connect (titleAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (titleAct, PlayListModel::TITLE);
 
+    albumAct = sort_mode_menu->addAction (tr ("By Album"));
+    connect (albumAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (albumAct, PlayListModel::ALBUM);
+
+    artistAct = sort_mode_menu->addAction (tr ("By Artist"));
+    connect (artistAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (artistAct, PlayListModel::ARTIST);
+
     nameAct = sort_mode_menu->addAction (tr ("By Filename"));
     connect (nameAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (nameAct, PlayListModel::FILENAME);
