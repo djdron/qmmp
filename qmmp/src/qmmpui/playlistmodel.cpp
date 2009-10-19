@@ -417,6 +417,8 @@ void PlayListModel::readSettings()
     foreach(FileInfo *info, infoList)
     load(new PlayListItem(info));
     m_block_update_signals = FALSE;
+    if(!m_items.isEmpty())
+        m_currentItem = m_items.at(m_current);
     doCurrentVisibleRequest();
 }
 
