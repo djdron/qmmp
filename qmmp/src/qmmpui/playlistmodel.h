@@ -251,6 +251,8 @@ public:
     enum SortMode
     {
         TITLE,             /*!< by title */
+        ALBUM,             /*!< by album */
+        ARTIST,            /*!< by artist */
         FILENAME,          /*!< by file name */
         PATH_AND_FILENAME, /*!< by path and file name */
         DATE,              /*!< by date */
