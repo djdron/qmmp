@@ -128,13 +128,11 @@ QVariantMap PlayerObject::GetMetadata()
 {
     QVariantMap map;
 
-    if (QFile::exists(m_core->metaData(Qmmp::URL)))
-    {
-        map.insert("location", "file://" + m_core->metaData(Qmmp::URL));
-        map.insert("arturl", MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL)));
-    }
-    else
+    if (m_core->metaData(Qmmp::URL).contains("://"))
         map.insert("location", m_core->metaData(Qmmp::URL));
+    else
+        map.insert("location", "file://" + m_core->metaData(Qmmp::URL));
+    map.insert("arturl", MetaDataManager::instance()->getCoverPath(m_core->metaData(Qmmp::URL)));
     map.insert("title", m_core->metaData(Qmmp::TITLE));
     map.insert("artist", m_core->metaData(Qmmp::ARTIST));
     map.insert("album", m_core->metaData(Qmmp::ALBUM));

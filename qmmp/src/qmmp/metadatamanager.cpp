@@ -75,9 +75,27 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
             return efact->createMetaDataModel(path, parent);
         return 0;
     }
+    else
+    {
+        QString scheme = path.section("://",0,0);
+        MetaDataModel *model = 0;
+        foreach(fact, *Decoder::factories())
+        {
+            if(fact->properties().protocols.split(" ").contains(scheme))
+                model = fact->createMetaDataModel(path, parent);
+            if(model)
+                return model;
+        }
+        foreach(efact, *AbstractEngine::factories())
+        {
+            if(efact->properties().protocols.split(" ").contains(scheme))
+                model = efact->createMetaDataModel(path, parent);
+            if(model)
+                return model;
+        }
+    }
     return 0;
 }
-
 
 QStringList MetaDataManager::filters() const
 {
@@ -143,12 +161,15 @@ bool MetaDataManager::supports(const QString &fileName) const
     return FALSE;
 }
 
-QPixmap MetaDataManager::getCover(const QString &fileName) const
+QPixmap MetaDataManager::getCover(const QString &url) const
 {
-    QString p = getCoverPath(fileName);
-    if(!p.isEmpty())
-        return QPixmap(p);
-    MetaDataModel *model = createMetaDataModel(fileName);
+    if(!url.contains("://"))
+    {
+        QString p = getCoverPath(url);
+        if(!p.isEmpty())
+            return QPixmap(p);
+    }
+    MetaDataModel *model = createMetaDataModel(url);
     if(model)
     {
         QPixmap pix = model->cover();
@@ -158,19 +179,32 @@ QPixmap MetaDataManager::getCover(const QString &fileName) const
     return QPixmap();
 }
 
-QString MetaDataManager::getCoverPath(const QString &fileName) const
+QString MetaDataManager::getCoverPath(const QString &url) const
 {
-    QString p = QFileInfo(fileName).absolutePath();
-    QDir dir(p);
-    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    dir.setSorting(QDir::Name);
-    QStringList filters;
-    filters << "*.jpg" << "*.png";
-    QFileInfoList file_list = dir.entryInfoList(filters);
-    foreach(QFileInfo i, file_list)
+    if(url.contains("://")) //url
     {
-        if(!i.absoluteFilePath().contains("back", Qt::CaseInsensitive))
-            return i.absoluteFilePath();
+        MetaDataModel *model = createMetaDataModel(url);
+        if(model)
+        {
+            QString coverPath = model->coverPath();
+            model->deleteLater();
+            return coverPath;
+        }
+    }
+    else //local file
+    {
+        QString p = QFileInfo(url).absolutePath();
+        QDir dir(p);
+        dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+        dir.setSorting(QDir::Name);
+        QStringList filters;
+        filters << "*.jpg" << "*.png";
+        QFileInfoList file_list = dir.entryInfoList(filters);
+        foreach(QFileInfo i, file_list)
+        {
+            if(!i.absoluteFilePath().contains("back", Qt::CaseInsensitive))
+                return i.absoluteFilePath();
+        }
     }
     return QString();
 }

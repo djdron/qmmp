@@ -18,38 +18,37 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "metadatamodel.h"
+#include <qmmp/metadatamanager.h>
+#include "cueparser.h"
+#include "cuemetadatamodel.h"
 
-MetaDataModel::MetaDataModel(QObject *parent) : QObject(parent)
+CUEMetaDataModel::CUEMetaDataModel(const QString &url, QObject *parent) : MetaDataModel(parent)
 {
+    QString p = QUrl(url).path();
+    p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+    p.replace(QString(QUrl::toPercentEncoding("?")), "?");
+    p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+    m_parser = new CUEParser(p);
+    if (m_parser->count() == 0)
+    {
+        qWarning("CUEMetaDataModel: invalid cue file");
+        return;
+    }
+    int track = url.section("#", -1).toInt();
+    m_path = m_parser->filePath(track);
 }
 
-MetaDataModel::~MetaDataModel()
+CUEMetaDataModel::~CUEMetaDataModel()
 {
-
+    delete m_parser;
 }
 
-QHash<QString, QString> MetaDataModel::audioProperties()
+QPixmap CUEMetaDataModel::cover()
 {
-    return QHash<QString, QString> ();
+    return MetaDataManager::instance()->getCover(m_path);
 }
 
-QHash<QString, QString> MetaDataModel::descriptions()
+QString CUEMetaDataModel::coverPath()
 {
-    return QHash<QString, QString> ();
-}
-
-QList<TagModel* > MetaDataModel::tags()
-{
-    return QList<TagModel* > ();
-}
-
-QPixmap MetaDataModel::cover()
-{
-    return QPixmap();
-}
-
-QString MetaDataModel::coverPath()
-{
-    return QString();
+    return MetaDataManager::instance()->getCoverPath(m_path);
 }

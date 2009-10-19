@@ -18,38 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "metadatamodel.h"
+#ifndef CUEMETADATAMODEL_H
+#define CUEMETADATAMODEL_H
 
-MetaDataModel::MetaDataModel(QObject *parent) : QObject(parent)
+#include <qmmp/metadatamodel.h>
+
+class CUEParser;
+
+class CUEMetaDataModel : public MetaDataModel
 {
-}
+Q_OBJECT
+public:
+    CUEMetaDataModel(const QString &url, QObject *parent);
+    ~CUEMetaDataModel();
+    QPixmap cover();
+    QString coverPath();
 
-MetaDataModel::~MetaDataModel()
-{
+private:
+    CUEParser *m_parser;
+    QString m_path;
+};
 
-}
-
-QHash<QString, QString> MetaDataModel::audioProperties()
-{
-    return QHash<QString, QString> ();
-}
-
-QHash<QString, QString> MetaDataModel::descriptions()
-{
-    return QHash<QString, QString> ();
-}
-
-QList<TagModel* > MetaDataModel::tags()
-{
-    return QList<TagModel* > ();
-}
-
-QPixmap MetaDataModel::cover()
-{
-    return QPixmap();
-}
-
-QString MetaDataModel::coverPath()
-{
-    return QString();
-}
+#endif // CUEMETADATAMODEL_H

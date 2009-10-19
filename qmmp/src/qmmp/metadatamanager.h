@@ -47,11 +47,11 @@ public:
     QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = TRUE) const;
     /*!
      * Creats metadata object, which provides full access to file tags.
-     * @param path File path.
+     * @param url File path or URL.
      * @param parent Parent object.
      * @return MetaDataModel pointer or null pointer.
      */
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0) const;
+    MetaDataModel* createMetaDataModel(const QString &url, QObject *parent = 0) const;
     /*!
      * Returns a list of file name filters with description, i.e. "MPEG Files (*.mp3 *.mpg)"
      */
