@@ -2,9 +2,9 @@ SUBDIRS += statusicon \
            notifier \
            lyrics \
            scrobbler \
-           fileops \
-           covermanager
+           fileops
 unix:SUBDIRS += mpris \                
                 hal \
-                hotkey
+                hotkey \
+                covermanager
 TEMPLATE = subdirs

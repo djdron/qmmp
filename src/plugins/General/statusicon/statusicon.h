@@ -23,7 +23,7 @@
 #include <QMap>
 #include <qmmpui/general.h>
 #include <qmmp/qmmp.h>
-#include <qmmptrayicon.h>
+#include "qmmptrayicon.h"
 
 class SoundCore;
 class MediaPlayer;
