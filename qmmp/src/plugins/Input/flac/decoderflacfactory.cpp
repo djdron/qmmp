@@ -120,7 +120,10 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
 
 MetaDataModel*DecoderFLACFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    return new FLACMetaDataModel(path, parent);
+    if (!path.contains("://") || path.startsWith("flac://"))
+        return new FLACMetaDataModel(path, parent);
+    else
+        return 0;
 }
 
 void DecoderFLACFactory::showSettings(QWidget *)

@@ -19,19 +19,32 @@
  ***************************************************************************/
 
 #include <QMap>
+#include <qmmp/metadatamanager.h>
 #include "wavpackmetadatamodel.h"
 
 WavPackMetaDataModel::WavPackMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
+    if(path.contains("://"))
+    {
+        QString p = QUrl(path).path();
+        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
+        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        m_path = p;
+    }
+    else
+        m_path = path;
+
     char err[80];
-    m_ctx = WavpackOpenFileInput (path.toLocal8Bit(), err,
+    m_ctx = WavpackOpenFileInput (m_path.toLocal8Bit(), err,
                                   OPEN_WVC | OPEN_EDIT_TAGS, 0);
     if (!m_ctx)
     {
         qWarning("WavPackMetaDataModel: error: %s", err);
         return;
     }
-    m_tags << new WavPackFileTagModel(m_ctx);
+    if(!path.contains("://"))
+        m_tags << new WavPackFileTagModel(m_ctx);
 }
 
 WavPackMetaDataModel::~WavPackMetaDataModel()
@@ -64,6 +77,17 @@ QHash<QString, QString> WavPackMetaDataModel::audioProperties()
 QList<TagModel* > WavPackMetaDataModel::tags()
 {
     return m_tags;
+}
+
+QPixmap WavPackMetaDataModel::cover()
+{
+    QString cPath = coverPath();
+    return cPath.isEmpty() ? QPixmap() : QPixmap(cPath);
+}
+
+QString WavPackMetaDataModel::coverPath()
+{
+    return MetaDataManager::instance()->getCoverPath(m_path);
 }
 
 WavPackFileTagModel::WavPackFileTagModel(WavpackContext *ctx) : TagModel(TagModel::Save)

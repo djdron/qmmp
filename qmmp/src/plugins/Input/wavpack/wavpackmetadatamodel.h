@@ -34,10 +34,13 @@ public:
     ~WavPackMetaDataModel();
     QHash<QString, QString> audioProperties();
     QList<TagModel* > tags();
+    QPixmap cover();
+    QString coverPath();
 
 private:
     WavpackContext *m_ctx;
     QList <TagModel *> m_tags;
+    QString m_path;
 };
 
 class WavPackFileTagModel : public TagModel
@@ -52,6 +55,7 @@ public:
 
 private:
      WavpackContext *m_ctx;
+     QString m_path;
 };
 
 #endif // WAVPACKMETADATAMODEL_H

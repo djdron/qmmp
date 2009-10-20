@@ -42,77 +42,77 @@
 <context>
     <name>MPEGMetaDataModel</name>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="69"/>
+        <location filename="../mpegmetadatamodel.cpp" line="70"/>
         <source>Format</source>
         <translation type="unfinished">Formát</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="71"/>
+        <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>Bitrate</source>
         <translation type="unfinished">Datový tok</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="71"/>
+        <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>kbps</source>
         <translation type="unfinished">kbps</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="73"/>
+        <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Sample rate</source>
         <translation type="unfinished">Vzorkovací frekvence</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="73"/>
+        <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Hz</source>
         <translation type="unfinished">Hz</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="77"/>
-        <location filename="../mpegmetadatamodel.cpp" line="80"/>
-        <location filename="../mpegmetadatamodel.cpp" line="83"/>
-        <location filename="../mpegmetadatamodel.cpp" line="86"/>
+        <location filename="../mpegmetadatamodel.cpp" line="78"/>
+        <location filename="../mpegmetadatamodel.cpp" line="81"/>
+        <location filename="../mpegmetadatamodel.cpp" line="84"/>
+        <location filename="../mpegmetadatamodel.cpp" line="87"/>
         <source>Mode</source>
         <translation type="unfinished">Režim</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="89"/>
+        <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>KB</source>
         <translation type="unfinished">KB</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="90"/>
+        <location filename="../mpegmetadatamodel.cpp" line="91"/>
         <source>File size</source>
         <translation type="unfinished">Velikost souboru</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="92"/>
-        <location filename="../mpegmetadatamodel.cpp" line="94"/>
+        <location filename="../mpegmetadatamodel.cpp" line="93"/>
+        <location filename="../mpegmetadatamodel.cpp" line="95"/>
         <source>Protection</source>
         <translation type="unfinished">Ochrana</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="92"/>
-        <location filename="../mpegmetadatamodel.cpp" line="96"/>
-        <location filename="../mpegmetadatamodel.cpp" line="100"/>
+        <location filename="../mpegmetadatamodel.cpp" line="93"/>
+        <location filename="../mpegmetadatamodel.cpp" line="97"/>
+        <location filename="../mpegmetadatamodel.cpp" line="101"/>
         <source>Yes</source>
         <translation type="unfinished">Ano</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="94"/>
-        <location filename="../mpegmetadatamodel.cpp" line="98"/>
-        <location filename="../mpegmetadatamodel.cpp" line="102"/>
+        <location filename="../mpegmetadatamodel.cpp" line="95"/>
+        <location filename="../mpegmetadatamodel.cpp" line="99"/>
+        <location filename="../mpegmetadatamodel.cpp" line="103"/>
         <source>No</source>
         <translation type="unfinished">Ne</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="96"/>
-        <location filename="../mpegmetadatamodel.cpp" line="98"/>
+        <location filename="../mpegmetadatamodel.cpp" line="97"/>
+        <location filename="../mpegmetadatamodel.cpp" line="99"/>
         <source>Copyright</source>
         <translation type="unfinished">Copyright</translation>
     </message>
     <message>
-        <location filename="../mpegmetadatamodel.cpp" line="100"/>
-        <location filename="../mpegmetadatamodel.cpp" line="102"/>
+        <location filename="../mpegmetadatamodel.cpp" line="101"/>
+        <location filename="../mpegmetadatamodel.cpp" line="103"/>
         <source>Original</source>
         <translation type="unfinished">Originál</translation>
     </message>
