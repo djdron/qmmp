@@ -43,17 +43,13 @@ DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
     setWindowTitle (m_path.section('/',-1));
     ui.pathEdit->setText(m_path);
 
-    if(QFile::exists(item->url()))
+    m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(item->url(), this);
+
+    if(m_metaDataModel)
     {
-        m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(item->url(), this);
-
-        if(!m_metaDataModel)
-            return;
-
         foreach(TagModel *tagModel, m_metaDataModel->tags())
-        {
             ui.tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
-        }
+
         foreach(QString title, m_metaDataModel->descriptions().keys())
         {
             QTextEdit *textEdit = new QTextEdit(this);
