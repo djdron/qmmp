@@ -31,6 +31,7 @@ Q_OBJECT
 public:
     CUEMetaDataModel(const QString &url, QObject *parent);
     ~CUEMetaDataModel();
+    QHash<QString, QString> audioProperties();
     QPixmap cover();
     QString coverPath();
 

@@ -43,6 +43,18 @@ CUEMetaDataModel::~CUEMetaDataModel()
     delete m_parser;
 }
 
+QHash<QString, QString> CUEMetaDataModel::audioProperties()
+{
+    QHash <QString, QString> ap;
+    MetaDataModel *model = MetaDataManager::instance()->createMetaDataModel(m_path);
+    if(model)
+    {
+        ap = model->audioProperties();
+        model->deleteLater();
+    }
+    return ap;
+}
+
 QPixmap CUEMetaDataModel::cover()
 {
     return MetaDataManager::instance()->getCover(m_path);
