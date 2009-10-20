@@ -18,9 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QPixmap>
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/tmap.h>
+#include <qmmp/metadatamanager.h>
 #include "flacmetadatamodel.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
@@ -28,8 +30,19 @@
 
 FLACMetaDataModel::FLACMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
-    m_path = path;
-    m_tags << new VorbisCommentModel(path);
+    if(path.startsWith("flac://"))
+    {
+        QString p = QUrl(path).path();
+        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
+        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        m_path = p;
+    }
+    else
+    {
+        m_path = path;
+        m_tags << new VorbisCommentModel(path);
+    }
 }
 
 FLACMetaDataModel::~FLACMetaDataModel()
@@ -42,6 +55,8 @@ QHash<QString, QString> FLACMetaDataModel::audioProperties()
 {
     QHash<QString, QString> ap;
     TagLib::FLAC::File f (m_path.toLocal8Bit());
+    if(!f.audioProperties())
+        return ap;
     QString text = QString("%1").arg(f.audioProperties()->length()/60);
     text +=":"+QString("%1").arg(f.audioProperties()->length()%60,2,10,QChar('0'));
     ap.insert(tr("Length"), text);
@@ -55,6 +70,17 @@ QHash<QString, QString> FLACMetaDataModel::audioProperties()
 QList<TagModel* > FLACMetaDataModel::tags()
 {
     return m_tags;
+}
+
+QPixmap FLACMetaDataModel::cover()
+{
+    QString cPath = coverPath();
+    return cPath.isEmpty() ? QPixmap() : QPixmap(cPath);
+}
+
+QString FLACMetaDataModel::coverPath()
+{
+    return MetaDataManager::instance()->getCoverPath(m_path);
 }
 
 VorbisCommentModel::VorbisCommentModel(const QString &path) : TagModel(TagModel::Save)

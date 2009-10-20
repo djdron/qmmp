@@ -118,7 +118,10 @@ QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName,
 
 MetaDataModel* DecoderWavPackFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
-    return new WavPackMetaDataModel(path, parent);
+    if (!path.contains("://") || path.startsWith("wvpack://"))
+        return new WavPackMetaDataModel(path, parent);
+    else
+        return 0;
 }
 
 void DecoderWavPackFactory::showSettings(QWidget *)

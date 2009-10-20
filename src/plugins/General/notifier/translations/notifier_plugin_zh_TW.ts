@@ -27,7 +27,7 @@
 <context>
     <name>PopupWidget</name>
     <message>
-        <location filename="../popupwidget.cpp" line="138"/>
+        <location filename="../popupwidget.cpp" line="136"/>
         <source>Volume:</source>
         <translation>音量：</translation>
     </message>
@@ -81,7 +81,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="134"/>
-        <location filename="../settingsdialog.ui" line="341"/>
+        <location filename="../settingsdialog.ui" line="344"/>
         <source>0</source>
         <translation>0</translation>
     </message>

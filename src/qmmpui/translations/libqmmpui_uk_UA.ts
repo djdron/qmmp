@@ -4,47 +4,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="82"/>
+        <location filename="../detailsdialog.cpp" line="78"/>
         <source>Title</source>
         <translation>Заголовок</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="83"/>
+        <location filename="../detailsdialog.cpp" line="79"/>
         <source>Artist</source>
         <translation>Виконавець</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="84"/>
+        <location filename="../detailsdialog.cpp" line="80"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="85"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="86"/>
+        <location filename="../detailsdialog.cpp" line="82"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="87"/>
+        <location filename="../detailsdialog.cpp" line="83"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="89"/>
+        <location filename="../detailsdialog.cpp" line="85"/>
         <source>Year</source>
         <translation>Рік</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="91"/>
+        <location filename="../detailsdialog.cpp" line="87"/>
         <source>Track</source>
         <translation>Доріжка</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="93"/>
+        <location filename="../detailsdialog.cpp" line="89"/>
         <source>Disc number</source>
         <translation>Номер диску</translation>
     </message>
