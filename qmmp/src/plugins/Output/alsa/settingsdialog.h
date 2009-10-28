@@ -49,6 +49,7 @@ private slots:
 private:
     Ui::SettingsDialog ui;
     void getCards();
+    void getSoftDevices();
     void getCardDevices(int card);
     void getMixerDevices(QString card);
     int getMixer(snd_mixer_t **mixer, QString card);
