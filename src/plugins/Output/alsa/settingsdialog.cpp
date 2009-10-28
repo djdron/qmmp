@@ -35,6 +35,7 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
     setAttribute ( Qt::WA_DeleteOnClose );
     ui.deviceComboBox->setEditable ( TRUE );
     getCards();
+    getSoftDevices();
     connect (ui.deviceComboBox, SIGNAL(activated(int)),SLOT(setText(int)));
     connect(ui.mixerCardComboBox, SIGNAL(activated(int)), SLOT(showMixerDevices(int)));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -86,6 +87,38 @@ void SettingsDialog::getCards()
             break;
         }
     }
+}
+
+void SettingsDialog::getSoftDevices()
+{
+    void **hints = 0;
+    int i = 0;
+
+    if(snd_device_name_hint(-1, "pcm", &hints) < 0)
+        return;
+
+    while(hints[i])
+    {
+        char *type = snd_device_name_get_hint (hints[i], "IOID");
+        if (!type || !strcmp (type, "Output"))
+        {
+            char *device_name = snd_device_name_get_hint (hints[i], "NAME");
+            char *device_desc = snd_device_name_get_hint (hints[i], "DESC");
+
+            m_devices << QString(device_name);
+            QString str = QString("%1 (%2)").arg(device_desc).arg(device_name);
+            qDebug("%s", qPrintable(str));
+            ui.deviceComboBox->addItem(str);
+            free (device_name);
+            free (device_desc);
+        }
+        if(type)
+            free (type);
+        ++i;
+    }
+
+    if (hints)
+        snd_device_name_free_hint (hints);
 }
 
 void SettingsDialog::getCardDevices(int card)
