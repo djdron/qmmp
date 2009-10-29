@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>kdenotify_plugin_pl.qm</file>
+    </qresource>
+</RCC>
