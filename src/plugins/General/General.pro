@@ -6,5 +6,6 @@ SUBDIRS += statusicon \
 unix:SUBDIRS += mpris \                
                 hal \
                 hotkey \
-                covermanager
+                covermanager \
+                kdenotify
 TEMPLATE = subdirs
