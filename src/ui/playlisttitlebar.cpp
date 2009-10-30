@@ -29,6 +29,7 @@
 #include "playlisttitlebar.h"
 #include "skin.h"
 
+// TODO {shademode, updateskin} -> do we have the shaded cursor
 PlayListTitleBar::PlayListTitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
@@ -44,10 +45,10 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
     m_pl = qobject_cast<PlayList*>(parent);
     m_mw = qobject_cast<MainWindow*>(m_pl->parent());
 
-    m_close = new Button(this,Skin::PL_BT_CLOSE_N, Skin::PL_BT_CLOSE_P);
+    m_close = new Button(this,Skin::PL_BT_CLOSE_N, Skin::PL_BT_CLOSE_P, Skin::CUR_PCLOSE);
     connect (m_close, SIGNAL(clicked()), m_pl, SIGNAL(closed()));
     m_close->move(264,3);
-    m_shade = new Button(this, Skin::PL_BT_SHADE1_N, Skin::PL_BT_SHADE1_P);
+    m_shade = new Button(this, Skin::PL_BT_SHADE1_N, Skin::PL_BT_SHADE1_P, Skin::CUR_PWINBUT);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
     m_shade->move(255,3);
     resize(275,20);
@@ -59,6 +60,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
         shade();
     resize(m_pl->width(),height());
     m_align = TRUE;
+    setCursor(m_skin->getCursor(Skin::CUR_PTBAR));
 }
 
 
@@ -220,6 +222,7 @@ void PlayListTitleBar::readSettings()
 void PlayListTitleBar::updateSkin()
 {
     drawPixmap((width()-275)/25);
+    setCursor(m_skin->getCursor(Skin::CUR_PTBAR));
 }
 
 void PlayListTitleBar::shade()
@@ -231,7 +234,7 @@ void PlayListTitleBar::shade()
         m_height = m_pl->height();
         m_pl->setFixedHeight(14);
         m_shade->hide();
-        m_shade2 = new Button(this, Skin::PL_BT_SHADE2_N, Skin::PL_BT_SHADE2_P);
+        m_shade2 = new Button(this, Skin::PL_BT_SHADE2_N, Skin::PL_BT_SHADE2_P, Skin::CUR_PWSNORM);
         m_shade2->move(254,3);
         connect(m_shade2, SIGNAL(clicked()), SLOT(shade()));
         m_shade2->show();

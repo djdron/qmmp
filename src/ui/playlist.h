@@ -79,6 +79,7 @@ class PlayList : public QWidget
         void showSelectMenu();
         void showSortMenu();
         void showPlaylistMenu();
+        void updateSkin();
 
 
     private:

@@ -47,6 +47,8 @@ signals:
 	void ejectClicked();
 protected:
 	Skin* m_skin;
+private slots:
+	void updateSkin();
 };
 
 #endif 

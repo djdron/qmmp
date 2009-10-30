@@ -41,6 +41,7 @@ PositionBar::PositionBar(QWidget *parent)
     m_max = 0;
     m_old = m_value = 0;
     draw(FALSE);
+    setCursor(m_skin->getCursor(Skin::CUR_POSBAR));
 }
 
 
@@ -113,6 +114,7 @@ void PositionBar::setMax(qint64 max)
 void PositionBar::updateSkin()
 {
     draw(FALSE);
+    setCursor(m_skin->getCursor(Skin::CUR_POSBAR));
     //setPixmap(m_skin->getPosBar());
     //setButtonPixmap(Skin::BT_POSBAR_N);
 }

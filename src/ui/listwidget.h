@@ -99,7 +99,8 @@ protected:
     int rowAt(int)const;
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
-    void contextMenuEvent ( QContextMenuEvent * event );
+    void contextMenuEvent (QContextMenuEvent * event);
+    bool event (QEvent *e);
 
 private slots:
     void updateSkin();

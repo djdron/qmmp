@@ -117,6 +117,7 @@ void TextScroller::setText(const QString& text)
 void TextScroller::updateSkin()
 {
     m_color.setNamedColor(m_skin->getPLValue("mbfg"));
+    setCursor(m_skin->getCursor(Skin::CUR_SONGNAME));
 }
 
 

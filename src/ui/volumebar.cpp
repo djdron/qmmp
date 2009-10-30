@@ -109,6 +109,7 @@ void VolumeBar::setMax(int max)
 void VolumeBar::updateSkin()
 {
     draw(FALSE);
+    setCursor(m_skin->getCursor(Skin::CUR_VOLBAL));
 }
 
 void VolumeBar::draw(bool pressed)

@@ -32,6 +32,7 @@
 #include "shadedvisual.h"
 #include "titlebar.h"
 
+// TODO skin cursor with shade mode
 TitleBar::TitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
@@ -42,16 +43,16 @@ TitleBar::TitleBar(QWidget *parent)
     m_shaded = FALSE;
     m_currentTime = 0;
     //buttons
-    m_menu = new Button(this,Skin::BT_MENU_N,Skin::BT_MENU_P);
+    m_menu = new Button(this,Skin::BT_MENU_N,Skin::BT_MENU_P, Skin::CUR_MAINMENU);
     connect(m_menu,SIGNAL(clicked()),this,SLOT(showMainMenu()));
     m_menu->move(6,3);
-    m_minimize = new Button(this,Skin::BT_MINIMIZE_N,Skin::BT_MINIMIZE_P);
+    m_minimize = new Button(this,Skin::BT_MINIMIZE_N,Skin::BT_MINIMIZE_P, Skin::CUR_MIN);
     m_minimize->move(244,3);
     connect(m_minimize, SIGNAL(clicked()), m_mw, SLOT(showMinimized()));
-    m_shade = new Button(this,Skin::BT_SHADE1_N,Skin::BT_SHADE1_P);
+    m_shade = new Button(this,Skin::BT_SHADE1_N,Skin::BT_SHADE1_P, Skin::CUR_WINBUT);
     m_shade->move(254,3);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
-    m_close = new Button(this,Skin::BT_CLOSE_N,Skin::BT_CLOSE_P);
+    m_close = new Button(this,Skin::BT_CLOSE_N,Skin::BT_CLOSE_P, Skin::CUR_CLOSE);
     m_close->move(264,3);
     connect(m_close, SIGNAL(clicked()), m_mw, SLOT(handleCloseRequest()));
     setActive(FALSE);
@@ -63,6 +64,7 @@ TitleBar::TitleBar(QWidget *parent)
     else
         updateMask();
     m_align = TRUE;
+    setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
 }
 
 
@@ -142,6 +144,7 @@ void TitleBar::updateSkin()
 {
     setActive(FALSE);
     updateMask();
+    setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
 }
 
 void TitleBar::showMainMenu()
@@ -158,7 +161,7 @@ void TitleBar::shade()
         m_mw->setFixedSize(275,14);
         setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_SHADED_A));
         m_shade->hide();
-        m_shade2 = new Button(this,Skin::BT_SHADE2_N, Skin::BT_SHADE2_P);
+        m_shade2 = new Button(this,Skin::BT_SHADE2_N, Skin::BT_SHADE2_P, Skin::CUR_WSNORMAL);
         m_shade2->move(254,3);
         connect(m_shade2, SIGNAL(clicked()), SLOT(shade()));
         m_shade2->show();

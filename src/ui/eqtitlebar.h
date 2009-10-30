@@ -50,6 +50,7 @@ private slots:
     void shade();
     void updateVolume();
     void updateMask();
+    void updateSkin();
 
 private:
     Skin* m_skin;

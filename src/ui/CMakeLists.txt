@@ -75,6 +75,7 @@ SET(ui_SRCS
     unixdomainsocket.cpp
     visualmenu.cpp
     volumebar.cpp
+    cursorimage.cpp
 )
 
 SET(ui_MOC_HDRS
@@ -124,6 +125,7 @@ SET(ui_MOC_HDRS
     unixdomainsocket.h
     visualmenu.h
     volumebar.h
+    cursorimage.h
 )
 
 SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)

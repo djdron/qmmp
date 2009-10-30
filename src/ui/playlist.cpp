@@ -68,15 +68,15 @@ PlayList::PlayList (QWidget *parent)
     setSizeIncrement (25,29);
     m_skin = Skin::getPointer();
 
-    m_buttonAdd = new Button (this,Skin::PL_BT_ADD,Skin::PL_BT_ADD);
+    m_buttonAdd = new Button (this,Skin::PL_BT_ADD,Skin::PL_BT_ADD, Skin::CUR_PNORMAL);
     m_buttonAdd->move (11,86);
-    m_buttonSub = new Button (this,Skin::PL_BT_SUB,Skin::PL_BT_SUB);
+    m_buttonSub = new Button (this,Skin::PL_BT_SUB,Skin::PL_BT_SUB, Skin::CUR_PNORMAL);
     m_buttonSub->move (40,86);
-    m_selectButton  = new Button (this,Skin::PL_BT_SEL,Skin::PL_BT_SEL);
+    m_selectButton  = new Button (this,Skin::PL_BT_SEL,Skin::PL_BT_SEL, Skin::CUR_PNORMAL);
     m_selectButton->move (70,86);
-    m_sortButton= new Button (this,Skin::PL_BT_SORT,Skin::PL_BT_SORT);
+    m_sortButton= new Button (this,Skin::PL_BT_SORT,Skin::PL_BT_SORT, Skin::CUR_PNORMAL);
     m_sortButton->move (99,86);
-    m_playlistButton = new Button (this,Skin::PL_BT_LST,Skin::PL_BT_LST);
+    m_playlistButton = new Button (this,Skin::PL_BT_LST,Skin::PL_BT_LST, Skin::CUR_PNORMAL);
 
     m_pl_control = new PlaylistControl (this);
     m_pl_control->move (0,0);
@@ -96,7 +96,7 @@ PlayList::PlayList (QWidget *parent)
     connect (m_plslider, SIGNAL (sliderMoved (int)), m_listWidget, SLOT (scroll (int)));
     connect (m_listWidget, SIGNAL (positionChanged (int, int)), m_plslider,
              SLOT (setPos (int, int)));
-    connect (m_skin, SIGNAL (skinChanged()), this, SLOT (update()));
+    connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
     connect (m_buttonAdd, SIGNAL (clicked()), SLOT (showAddMenu()));
     connect (m_buttonSub, SIGNAL (clicked()), SLOT (showSubMenu()));
     connect (m_selectButton, SIGNAL (clicked()), SLOT (showSelectMenu()));
@@ -112,6 +112,7 @@ PlayList::PlayList (QWidget *parent)
     m_titleBar = new PlayListTitleBar (this);
     m_titleBar->move (0,0);
     readSettings();
+    setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
 }
 
 
@@ -376,7 +377,8 @@ void PlayList::mousePressEvent (QMouseEvent *e)
     if ((m_pos.x() > width()-25) && (m_pos.y() > height()-25))
     {
         m_resize = TRUE;
-        setCursor (Qt::SizeFDiagCursor);
+	    // TODO if no skinned cursor, the cursor is the default arrow
+        setCursor (m_skin->getCursor (Skin::CUR_PSIZE));
     }
     else
         m_resize = FALSE;
@@ -404,7 +406,7 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
 }
 void PlayList::mouseReleaseEvent (QMouseEvent *)
 {
-    setCursor (Qt::ArrowCursor);
+    setCursor (m_skin->getCursor (Skin::CUR_PNORMAL));
     /*if (m_resize)
         m_listWidget->updateList();*/
     m_resize = FALSE;
@@ -532,4 +534,10 @@ void PlayList::keyPressEvent (QKeyEvent *ke)
 {
     if (m_keyboardManager->handleKeyPress (ke))
         update();
+}
+
+void PlayList::updateSkin()
+{
+    setCursor(m_skin->getCursor(Skin::CUR_PNORMAL)); // TODO shaded
+    update();
 }
