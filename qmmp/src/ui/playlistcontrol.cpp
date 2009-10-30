@@ -28,7 +28,7 @@
 PlaylistControl::PlaylistControl(QWidget* parent) : PixmapWidget(parent)
 {
 	m_skin = Skin::getPointer();
-	connect(m_skin, SIGNAL(skinChanged()), this, SLOT(update()));
+	connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 }
 
 void PlaylistControl::paintEvent(QPaintEvent *)
@@ -52,4 +52,10 @@ void PlaylistControl::mouseReleaseEvent(QMouseEvent *me)
 		emit nextClicked();
 	else if(QRect(49,1,7,7).contains(pt))
 		emit ejectClicked();
+}
+
+void PlaylistControl::updateSkin()
+{
+	setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
+	update();
 }

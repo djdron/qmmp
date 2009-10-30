@@ -31,7 +31,7 @@ class Button : public PixmapWidget
 {
 Q_OBJECT
 public:
-    Button(QWidget *parent, uint normal, uint pressed);
+    Button(QWidget *parent, uint normal, uint pressed, uint cursor);
 
     ~Button();
 
@@ -46,6 +46,7 @@ private:
     bool m_cursorin;
     void setON(bool);
     uint name_normal, name_pressed;
+    uint name_cursor;
 
 protected:
     void mousePressEvent(QMouseEvent*);

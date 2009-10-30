@@ -31,6 +31,7 @@
 
 #include <qmmp/qmmp.h>
 #include "skin.h"
+#include "cursorimage.h"
 
 Skin *Skin::pointer = 0;
 
@@ -108,6 +109,7 @@ void Skin::setSkin (const QString& path)
     loadVolume();
     loadBalance();
     loadRegion();
+    loadCursors();
     emit skinChanged();
 }
 
@@ -121,6 +123,42 @@ void Skin::loadMain()
     delete pixmap;
 }
 
+void Skin::loadCursors()
+{
+    cursors[CUR_NORMAL] = createCursor(getPath("normal"));
+    cursors[CUR_CLOSE] = createCursor(getPath("close"));
+    cursors[CUR_MAINMENU] = createCursor(getPath("mainmenu"));
+    cursors[CUR_MIN] = createCursor(getPath("min"));
+    cursors[CUR_POSBAR] = createCursor(getPath("posbar.cur"));
+    cursors[CUR_SONGNAME] = createCursor(getPath("songname"));
+    cursors[CUR_TITLEBAR] = createCursor(getPath("titlebar.cur"));
+    cursors[CUR_VOLBAL] = createCursor(getPath("volbal"));
+    cursors[CUR_WINBUT] = createCursor(getPath("winbut"));
+
+    cursors[CUR_WSNORMAL] = createCursor(getPath("wsnormal"));
+    cursors[CUR_WSPOSBAR] = createCursor(getPath("wsposbar"));
+
+    cursors[CUR_EQCLOSE] = createCursor(getPath("eqclose"));
+    cursors[CUR_EQNORMAL] = createCursor(getPath("eqnormal"));
+    cursors[CUR_EQSLID] = createCursor(getPath("eqslid"));
+    cursors[CUR_EQTITLE] = createCursor(getPath("eqtitle"));
+
+    cursors[CUR_PCLOSE] = createCursor(getPath("pclose"));
+    cursors[CUR_PNORMAL] = createCursor(getPath("pnormal"));
+    cursors[CUR_PSIZE] = createCursor(getPath("psize"));
+    cursors[CUR_PTBAR] = createCursor(getPath("ptbar"));
+    cursors[CUR_PVSCROLL] = createCursor(getPath("pvscroll"));
+    cursors[CUR_PWINBUT] = createCursor(getPath("pwinbut"));
+
+    cursors[CUR_PWSNORM] = createCursor(getPath("pwsnorm"));
+    cursors[CUR_PWSSIZE] = createCursor(getPath("pwssize"));
+
+    cursors[CUR_VOLBAR] = createCursor(getPath("volbar"));
+    cursors[CUR_WSCLOSE] = createCursor(getPath("wsclose"));
+    cursors[CUR_WSMIN] = createCursor(getPath("wsmin"));
+    cursors[CUR_WSWINBUT] = createCursor(getPath("wswinbut"));
+}
+	
 void Skin::loadButtons()
 {
 
@@ -303,6 +341,27 @@ QPixmap *Skin::getPixmap (const QString& name)
     }
     return 0;
 }
+
+QString Skin::getPath (const QString& name)
+{
+    m_skin_dir.setFilter (QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    QFileInfoList f = m_skin_dir.entryInfoList();
+    bool nameHasExt = name.contains('.');
+    for (int j = 0; j < f.size(); ++j)
+    {
+        QFileInfo fileInfo = f.at (j);
+        QString fn = fileInfo.fileName().toLower();
+        if (!nameHasExt && fn.section (".",0,0) == name)
+        {
+            return fileInfo.filePath();
+        } else if (nameHasExt && fn == name)
+        {
+            return fileInfo.filePath();
+        }
+    }
+    return "";
+}
+
 
 void Skin::loadPLEdit()
 {

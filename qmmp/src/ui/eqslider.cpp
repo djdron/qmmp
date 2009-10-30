@@ -38,6 +38,7 @@ EqSlider::EqSlider(QWidget *parent)
     m_max = 20;
     m_old = m_value = 0;
     draw(FALSE);
+    setCursor(m_skin->getCursor(Skin::CUR_EQSLID));
 }
 
 
@@ -116,6 +117,7 @@ void EqSlider::setMax(double m)
 void EqSlider::updateSkin()
 {
     draw(FALSE);
+    setCursor(m_skin->getCursor(Skin::CUR_EQSLID));
 }
 
 void EqSlider::draw(bool pressed)

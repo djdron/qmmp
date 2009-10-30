@@ -37,6 +37,7 @@ PlayListSlider::PlayListSlider(QWidget *parent)
     m_value = 0;
     pos = 0;
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    setCursor(m_skin->getCursor(Skin::CUR_PVSCROLL));
 }
 
 
@@ -126,6 +127,7 @@ void PlayListSlider::setPos(int p, int max)
 void PlayListSlider::updateSkin()
 {
     update();
+    setCursor(m_skin->getCursor(Skin::CUR_PVSCROLL));
 }
 
 int PlayListSlider::convert(int p)

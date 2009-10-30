@@ -26,6 +26,7 @@
 #include <QMenu>
 #include <QUrl>
 #include <QApplication>
+#include <QHelpEvent>
 
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
@@ -267,6 +268,19 @@ void ListWidget::wheelEvent (QWheelEvent *e)
     updateList();
 }
 
+bool ListWidget::event (QEvent *e)
+{
+    if(e->type() == QEvent::ToolTip)
+    {
+        e->accept();
+        QHelpEvent *helpEvent = (QHelpEvent *) e;
+        int row = rowAt(helpEvent->y());
+        qDebug("==== %d", row);
+        return TRUE;
+    }
+    return QWidget::event(e);
+}
+
 void ListWidget::updateList()
 {
     if (m_model->count() < (m_rows+m_first+1) && m_rows< m_model->count())
@@ -439,7 +453,7 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
     QWidget::mouseReleaseEvent(e);
 }
 
-int ListWidget::rowAt( int y) const
+int ListWidget::rowAt(int y) const
 {
     if (y <= 14 && y >= 2 && m_model->count())
         return m_first;

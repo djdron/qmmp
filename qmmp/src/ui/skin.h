@@ -29,6 +29,7 @@
 #include <QPixmap>
 #include <QDir>
 #include <QRegion>
+#include <QCursor>
 
 
 
@@ -50,6 +51,10 @@ public:
     const QPixmap getButton(uint bt) const
     {
         return buttons[bt];
+    };
+    const QCursor getCursor(uint cu) const
+    {
+        return cursors[cu];
     };
     const QPixmap getTitleBar(uint tb) const
     {
@@ -92,7 +97,7 @@ public:
     {
         return m_ms_parts[n];
     };
-    const QPixmap getLetter(const QChar& ch)
+    const QPixmap getLetter(const QChar& ch) const
     {
         return m_letters[ch];
     };
@@ -289,12 +294,48 @@ public:
         WINDOW_SHADE,
         EQUALIZER_WS,
     };
+    enum Cursors
+    {
+        CUR_NORMAL = 0,
+        CUR_CLOSE,
+        CUR_MAINMENU,
+        CUR_MIN,
+        CUR_POSBAR,
+        CUR_SONGNAME,
+        CUR_TITLEBAR,
+        CUR_VOLBAL,
+        CUR_WINBUT,
+        
+        CUR_WSNORMAL,
+        CUR_WSPOSBAR,
+        
+        CUR_EQCLOSE,
+        CUR_EQNORMAL,
+        CUR_EQSLID,
+        CUR_EQTITLE,
+        
+        CUR_PCLOSE,
+        CUR_PNORMAL,
+        CUR_PSIZE,
+        CUR_PTBAR,
+        CUR_PVSCROLL,
+        CUR_PWINBUT,
+        
+        CUR_PWSNORM,
+        CUR_PWSSIZE,
+        
+        CUR_VOLBAR,
+        CUR_WSCLOSE,
+        CUR_WSMIN,
+        CUR_WSWINBUT,
+    };
 
 signals:
     void skinChanged();
 
 private:
     QPixmap *getPixmap(const QString&);
+    QString getPath(const QString&);
     const QString findFile(const QString&, QDir);
     const QString findFile(const QString&, const QString&);
 
@@ -308,6 +349,7 @@ private:
     static Skin *pointer;
     QDir m_skin_dir;
     QMap<uint, QPixmap> buttons;
+    QMap<uint, QCursor> cursors;
     QMap<uint, QPixmap> titlebar;
     QMap<uint, QPixmap> m_pl_parts;
     QMap<uint, QPixmap> m_eq_parts;
@@ -329,6 +371,7 @@ private:
 
     void loadMain();
     void loadButtons();
+    void loadCursors();
     void loadTitleBar();
     void loadPosBar();
     void loadNumbers();

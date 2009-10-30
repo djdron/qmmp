@@ -44,6 +44,7 @@ EqWidget::EqWidget (QWidget *parent)
 {
     m_skin = Skin::getPointer();
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
+    setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
     //setPixmap(QPixmap(275,116));
     m_titleBar = new EqTitleBar (this);
     m_titleBar -> move (0,0);
@@ -71,7 +72,7 @@ EqWidget::EqWidget (QWidget *parent)
 
     m_presetsMenu = new QMenu(this);
 
-    m_presetButton = new Button (this, Skin::EQ_BT_PRESETS_N, Skin::EQ_BT_PRESETS_P);
+    m_presetButton = new Button (this, Skin::EQ_BT_PRESETS_N, Skin::EQ_BT_PRESETS_P, Skin::CUR_EQNORMAL);
     m_presetButton->move(217,18);
     m_presetButton->show();
 
@@ -126,6 +127,7 @@ void EqWidget::updateSkin()
 {
     m_titleBar->setActive (FALSE);
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
+    setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
 }
 
 void EqWidget::readSettings()

@@ -51,32 +51,33 @@ MainDisplay::MainDisplay (QWidget *parent)
 {
     m_skin = Skin::getPointer();
     setPixmap (m_skin->getMain());
+    setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
     setMaximumSize (QSize (275,116));
     setMinimumSize (QSize (275,116));
 
     m_mw = qobject_cast<MainWindow*>(parent);
 
-    Button *previous = new Button (this, Skin::BT_PREVIOUS_N, Skin::BT_PREVIOUS_P);
+    Button *previous = new Button (this, Skin::BT_PREVIOUS_N, Skin::BT_PREVIOUS_P, Skin::CUR_NORMAL);
     previous->move (16, 88);
     previous->setToolTip(tr("Previous"));
     connect (previous,SIGNAL (clicked()), parent, SLOT (previous()));
-    Button *play = new Button (this, Skin::BT_PLAY_N, Skin::BT_PLAY_P);
+    Button *play = new Button (this, Skin::BT_PLAY_N, Skin::BT_PLAY_P, Skin::CUR_NORMAL);
     play->move (39, 88);
     play->setToolTip(tr("Play"));
     connect (play,SIGNAL (clicked()),parent,SLOT (play()));
-    Button *pause = new Button (this, Skin::BT_PAUSE_N,Skin::BT_PAUSE_P);
+    Button *pause = new Button (this, Skin::BT_PAUSE_N,Skin::BT_PAUSE_P, Skin::CUR_NORMAL);
     pause->move (62, 88);
     pause->setToolTip(tr("Pause"));
     connect (pause,SIGNAL (clicked()),parent,SLOT (pause()));
-    Button *stop = new Button (this, Skin::BT_STOP_N,Skin::BT_STOP_P);
+    Button *stop = new Button (this, Skin::BT_STOP_N,Skin::BT_STOP_P, Skin::CUR_NORMAL);
     stop->move (85, 88);
     stop->setToolTip(tr("Stop"));
     connect (stop,SIGNAL (clicked()),parent,SLOT (stop()));
-    Button *next = new Button (this, Skin::BT_NEXT_N,Skin::BT_NEXT_P);
+    Button *next = new Button (this, Skin::BT_NEXT_N,Skin::BT_NEXT_P, Skin::CUR_NORMAL);
     next->move (108, 88);
     next->setToolTip(tr("Next"));
     connect (next,SIGNAL (clicked()),parent,SLOT (next()));
-    Button *eject = new Button (this, Skin::BT_EJECT_N,Skin::BT_EJECT_P);
+    Button *eject = new Button (this, Skin::BT_EJECT_N,Skin::BT_EJECT_P, Skin::CUR_NORMAL);
     eject->move (136, 89);
     eject->setToolTip(tr("Add file"));
     connect (eject,SIGNAL (clicked()),parent,SLOT (addFile()));
@@ -222,6 +223,7 @@ void MainDisplay::setVolume(int left, int right)
 void MainDisplay::updateSkin()
 {
     setPixmap (m_skin->getMain());
+    setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
 }
 
 void MainDisplay::setSampleRate(quint32 rate)

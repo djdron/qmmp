@@ -25,13 +25,15 @@
 #include "skin.h"
 #include <QMouseEvent>
 
-Button::Button (QWidget *parent, uint normal, uint pressed)
+Button::Button (QWidget *parent, uint normal, uint pressed, uint cursor)
         : PixmapWidget (parent)
 {
     name_normal = normal;
     name_pressed = pressed;
+    name_cursor = cursor;
     skin = Skin::getPointer();
     setON (FALSE);
+    setCursor (skin->getCursor (name_cursor));
     connect (skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
 }
 
@@ -42,6 +44,7 @@ Button::~Button()
 void Button::updateSkin()
 {
     setPixmap (skin->getButton (name_normal));
+    setCursor (skin->getCursor (name_cursor));
 }
 
 void Button::setON (bool on)

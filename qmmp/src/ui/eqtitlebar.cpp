@@ -42,10 +42,10 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     m_skin = Skin::getPointer();
     m_eq = parentWidget();
     m_mw = qobject_cast<MainWindow*>(m_eq->parent());
-    m_close = new Button(this, Skin::EQ_BT_CLOSE_N, Skin::EQ_BT_CLOSE_P);
+    m_close = new Button(this, Skin::EQ_BT_CLOSE_N, Skin::EQ_BT_CLOSE_P, Skin::CUR_EQCLOSE);
     connect(m_close, SIGNAL(clicked()),m_eq, SIGNAL(closed()));
     m_close->move(264,3);
-    m_shade = new Button(this, Skin::EQ_BT_SHADE1_N, Skin::EQ_BT_SHADE1_P);
+    m_shade = new Button(this, Skin::EQ_BT_SHADE1_N, Skin::EQ_BT_SHADE1_P, Skin::CUR_EQNORMAL);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
     m_shade->move(254,3);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -55,7 +55,8 @@ EqTitleBar::EqTitleBar(QWidget *parent)
         updateMask();
     m_align = TRUE;
     setActive(FALSE);
-    connect(m_skin, SIGNAL(skinChanged()), SLOT(updateMask()));
+    setCursor(m_skin->getCursor(Skin::CUR_EQTITLE));
+    connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
 }
 
 
@@ -149,7 +150,7 @@ void EqTitleBar::shade()
         m_eq->setFixedSize(275,14);
         setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_SHADED_A));
         m_shade->hide();
-        m_shade2 = new Button(this, Skin::EQ_BT_SHADE2_N, Skin::EQ_BT_SHADE2_P);
+        m_shade2 = new Button(this, Skin::EQ_BT_SHADE2_N, Skin::EQ_BT_SHADE2_P, Skin::CUR_EQNORMAL);
         m_shade2->move(254,3);
         connect(m_shade2, SIGNAL(clicked()), SLOT(shade()));
         m_shade2->show();
@@ -194,4 +195,10 @@ void EqTitleBar::updateMask()
     QRegion region = m_skin->getRegion(m_shaded? Skin::EQUALIZER_WS : Skin::EQUALIZER);
     if (!region.isEmpty())
         m_eq->setMask(region);
+}
+
+void EqTitleBar::updateSkin()
+{
+    updateMask();
+    setCursor(m_skin->getCursor(Skin::CUR_EQTITLE));
 }
