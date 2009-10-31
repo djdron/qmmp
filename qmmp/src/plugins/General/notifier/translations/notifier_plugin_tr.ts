@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="tr_TR">
+<!DOCTYPE TS><TS version="1.1" language="tr_TR">
+<defaultcodec></defaultcodec>
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -70,7 +70,6 @@
         <translation>Şeffaflık</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="134"/>
         <location filename="../settingsdialog.ui" line="344"/>
         <source>0</source>
         <translation>0</translation>
@@ -83,22 +82,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="65"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>Шрифт:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="318"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер обложки:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>Задержка (мс):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="311"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>
