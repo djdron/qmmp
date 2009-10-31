@@ -1,5 +1,15 @@
-<RCC>
-    <qresource prefix="/">
-        <file>kdenotify_plugin_pl.qm</file>
-    </qresource>
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>kdenotify_plugin_it.qm</file>
+    <file>kdenotify_plugin_cs.qm</file>
+    <file>kdenotify_plugin_de.qm</file>
+    <file>kdenotify_plugin_zh_CN.qm</file>
+    <file>kdenotify_plugin_zh_TW.qm</file>
+    <file>kdenotify_plugin_pl.qm</file>
+    <file>kdenotify_plugin_ru.qm</file>
+    <file>kdenotify_plugin_uk_UA.qm</file>
+    <file>kdenotify_plugin_tr.qm</file>
+    <file>kdenotify_plugin_lt.qm</file>
+  </qresource>
 </RCC>
