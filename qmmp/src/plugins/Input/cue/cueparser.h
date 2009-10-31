@@ -48,7 +48,6 @@ public:
     const QString trackURL(int track);
 
 private:
-    QString m_filePath;
     QList <FileInfo> m_infoList;
     QList <qint64> m_offsets;
     QStringList m_files;
