@@ -39,7 +39,8 @@
         <location filename="../kdenotifyfactory.cpp" line="31"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
-        <translation>Модуль повідомлень KDE4 для Qmmp</translation>
+        <translation>Модуль повідомлень KDE4 для Qmmp
+</translation>
     </message>
 </context>
 <context>
