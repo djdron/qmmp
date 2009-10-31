@@ -72,6 +72,9 @@ private:
     AVPacket m_temp_pkt;
     uint8_t *m_output_buf;
     qint64 m_output_at;
+
+    int64_t m_seekTime;
+    qint64  m_skipBytes;
 };
 
 

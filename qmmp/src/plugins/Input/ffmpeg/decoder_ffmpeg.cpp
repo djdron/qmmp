@@ -41,6 +41,7 @@ DecoderFFmpeg::DecoderFFmpeg(const QString &path)
     m_pkt.size = 0;
     m_output_buf = 0;
     m_output_at = 0;
+    m_skipBytes = 0;
 }
 
 
@@ -61,6 +62,7 @@ bool DecoderFFmpeg::initialize()
     m_bitrate = 0;
     m_skip = FALSE;
     m_totalTime = 0;
+    m_seekTime = -1;
 
     avcodec_init();
     avcodec_register_all();
@@ -118,6 +120,7 @@ int DecoderFFmpeg::bitrate()
 
 qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
 {
+    m_skipBytes = 0;
     if (m_skip)
     {
         while(m_temp_pkt.size)
@@ -132,7 +135,8 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
     qint64 len = qMin(m_output_at, maxSize);
     memcpy(audio, m_output_buf, len);
     m_output_at -= len;
-    memmove(m_output_buf, m_output_buf + len, m_output_at);
+    memmove(m_output_buf, m_output_buf + len, m_output_at-m_skipBytes);
+
     return len;
 }
 
@@ -159,10 +163,11 @@ qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
 }
 
 void DecoderFFmpeg::seek(qint64 pos)
-{
+{    
     int64_t timestamp = int64_t(pos)*AV_TIME_BASE/1000;
     if (ic->start_time != (qint64)AV_NOPTS_VALUE)
         timestamp += ic->start_time;
+    m_seekTime = timestamp;
     av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
     avcodec_flush_buffers(c);
     if(m_pkt.size)
@@ -182,6 +187,7 @@ void DecoderFFmpeg::fillBuffer()
             }
             m_temp_pkt.size = m_pkt.size;
             m_temp_pkt.data = m_pkt.data;
+
             if(m_pkt.stream_index != wma_idx)
             {
                 if(m_pkt.data)
@@ -189,8 +195,45 @@ void DecoderFFmpeg::fillBuffer()
                 m_temp_pkt.size = 0;
                 continue;
             }
+#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
+            if(m_seekTime && c->codec_id == CODEC_ID_APE)
+            {
+                int64_t rescaledPts = av_rescale(m_pkt.pts,
+                                                 AV_TIME_BASE * (int64_t)
+                                                 ic->streams[m_pkt.stream_index]->time_base.num,
+                                                 ic->streams[m_pkt.stream_index]->time_base.den);
+                m_skipBytes =  (m_seekTime - rescaledPts) * c->sample_rate * 4 / AV_TIME_BASE;
+            }
+            else
+                m_skipBytes = 0;
+
+#endif
+            m_seekTime = 0;
         }
+#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
+        if(m_skipBytes > 0 && c->codec_id == CODEC_ID_APE)
+        {
+            while (m_skipBytes > 0)
+            {
+                m_output_at = ffmpeg_decode(m_output_buf);
+                m_skipBytes -= m_output_at;
+            }
+
+            if(m_skipBytes < 0)
+            {
+                m_output_at = - m_skipBytes;
+                m_output_at = m_output_at/4*4;
+                memmove(m_output_buf, m_output_buf + m_output_at, m_output_at);
+                m_skipBytes = 0;
+            }
+        }
+        else
+            m_output_at = ffmpeg_decode(m_output_buf);
+#else
         m_output_at = ffmpeg_decode(m_output_buf);
+#endif
+
+
         if(m_output_at < 0)
         {
             m_output_at = 0;
