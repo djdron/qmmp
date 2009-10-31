@@ -4,10 +4,6 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <source>Now playing:</source>
-        <translation type="obsolete">Teraz odtwarzane:</translation>
-    </message>
-    <message>
         <location filename="../kdenotify.cpp" line="63"/>
         <source>Qmmp now playing:</source>
         <translation type="unfinished"></translation>
@@ -15,12 +11,12 @@
     <message>
         <location filename="../kdenotify.cpp" line="73"/>
         <source>by </source>
-        <translation>przez </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../kdenotify.cpp" line="78"/>
         <source>on </source>
-        <translation>na </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -28,7 +24,7 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="10"/>
         <source>KDE 4 notification plugin</source>
-        <translation>Wtyczka powiadamiania KDE 4</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="30"/>
@@ -47,12 +43,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>KDE 4 Notification Plugin Settings</source>
-        <translation>Ustawienia wtyczki Powiadamianie KDE 4</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="20"/>
         <source>Notification delay [ms]:</source>
-        <translation>Czas zanikania [ms]:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
