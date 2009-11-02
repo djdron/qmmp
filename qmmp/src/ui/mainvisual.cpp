@@ -46,7 +46,7 @@ MainVisual *MainVisual::getPointer()
 MainVisual::MainVisual (QWidget *parent)
         : Visual (parent), m_vis (0), m_playing (FALSE)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSettings()));
     resize(75,20);
     m_pixmap = QPixmap (75,20);
@@ -428,7 +428,7 @@ Analyzer::Analyzer()
 {
     m_size = QSize(75,20);
     clear();
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
 
     double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
     double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
@@ -568,7 +568,7 @@ void Analyzer::draw (QPainter *p)
 Scope::Scope()
 {
     clear();
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
 }
 
 void Scope::clear()

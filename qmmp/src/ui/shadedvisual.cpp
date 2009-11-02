@@ -32,7 +32,7 @@ ShadedVisual::ShadedVisual(QWidget *parent)
 {
     setFixedSize(38,5);
     m_pixmap = QPixmap (38,5);
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));

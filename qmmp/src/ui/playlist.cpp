@@ -51,10 +51,7 @@ PlayList::PlayList (QWidget *parent)
     m_update = FALSE;
     m_resize = FALSE;
     m_anchor_row = -1;
-
     createMenus();
-
-
     resize (275,116);
     setMinimumSize (275,116);
     setBaseSize (275,116);
@@ -66,7 +63,7 @@ PlayList::PlayList (QWidget *parent)
     m_plslider->show();
 
     setSizeIncrement (25,29);
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
 
     m_buttonAdd = new Button (this,Skin::PL_BT_ADD,Skin::PL_BT_ADD, Skin::CUR_PNORMAL);
     m_buttonAdd->move (11,86);
@@ -377,7 +374,6 @@ void PlayList::mousePressEvent (QMouseEvent *e)
     if ((m_pos.x() > width()-25) && (m_pos.y() > height()-25))
     {
         m_resize = TRUE;
-	    // TODO if no skinned cursor, the cursor is the default arrow
         setCursor (m_skin->getCursor (Skin::CUR_PSIZE));
     }
     else

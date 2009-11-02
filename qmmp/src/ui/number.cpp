@@ -23,7 +23,7 @@
 Number::Number(QWidget *parent)
  : PixmapWidget(parent)
 {
-   m_skin = Skin::getPointer();
+   m_skin = Skin::instance();
    //TODO default value??
    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 }

@@ -28,7 +28,7 @@
 PlayListSlider::PlayListSlider(QWidget *parent)
         : QWidget(parent)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
 
     m_moving = FALSE;
     m_pressed = FALSE;

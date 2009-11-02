@@ -395,6 +395,7 @@ void MainWindow::showSettings()
         TextScroller::getPointer()->readSettings();
         //m_core->updateConfig();
         m_visMenu->updateActions();
+        m_skin->reloadSkin();
     }
     delete m_confDialog;
 }

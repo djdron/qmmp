@@ -23,7 +23,7 @@
 PlayStatus::PlayStatus ( QWidget *parent )
       : PixmapWidget ( parent )
 {
-   m_skin = Skin::getPointer();
+   m_skin = Skin::instance();
    setStatus ( STOP );
    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 }

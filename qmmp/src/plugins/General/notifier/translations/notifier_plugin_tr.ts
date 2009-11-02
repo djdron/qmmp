@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="tr_TR">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="tr_TR">
 <context>
     <name>NotifierFactory</name>
     <message>
@@ -70,6 +70,7 @@
         <translation>Şeffaflık</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="134"/>
         <location filename="../settingsdialog.ui" line="344"/>
         <source>0</source>
         <translation>0</translation>

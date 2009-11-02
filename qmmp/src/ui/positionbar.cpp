@@ -32,7 +32,7 @@
 PositionBar::PositionBar(QWidget *parent)
         : PixmapWidget(parent)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getPosBar());
     mw = qobject_cast<MainWindow*>(window());

@@ -39,7 +39,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
     m_model = 0;
     m_shaded = FALSE;
     m_align = FALSE;
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     setSizeIncrement(25,1);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     m_pl = qobject_cast<PlayList*>(parent);
@@ -93,10 +93,7 @@ void PlayListTitleBar::drawPixmap(int sx)
     if (m_active)
     {
         if (m_shaded)
-        {
-            m_shade2->show();
             paint.drawPixmap(225+sx*25,0,m_skin->getPlPart(Skin::PL_TITLEBAR_SHADED1_A));
-        }
         else
         {
             paint.drawPixmap(0,0,m_skin->getPlPart(Skin::PL_CORNER_UL_A));
@@ -106,17 +103,12 @@ void PlayListTitleBar::drawPixmap(int sx)
             }
             paint.drawPixmap(100-12+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_A));
             paint.drawPixmap(250+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_A));
-            m_close->show();
-            m_shade->show();
         }
     }
     else
     {
         if (m_shaded)
-        {
-            m_shade2->hide();
             paint.drawPixmap(275-50+sx*25,0,m_skin->getPlPart(Skin::PL_TITLEBAR_SHADED1_I));
-        }
         else
         {
             paint.drawPixmap(0,0,m_skin->getPlPart(Skin::PL_CORNER_UL_I));
@@ -126,8 +118,6 @@ void PlayListTitleBar::drawPixmap(int sx)
             }
             paint.drawPixmap(100-12+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_I));
             paint.drawPixmap(250+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_I));
-            m_close->hide();
-            m_shade->hide();
         }
     }
     if (m_shaded)

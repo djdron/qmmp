@@ -43,7 +43,7 @@ TextScroller::TextScroller ( QWidget *parent )
         : QWidget ( parent )
 {
     pointer = this;
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     m_pixmap = QPixmap ( 150,15 );
     resize(150,15);
     x = 0;

@@ -49,7 +49,7 @@
 MainDisplay::MainDisplay (QWidget *parent)
         : PixmapWidget (parent)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     setPixmap (m_skin->getMain());
     setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
     setMaximumSize (QSize (275,116));

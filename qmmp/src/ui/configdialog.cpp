@@ -77,7 +77,7 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     connect (ui.skinReloadButton, SIGNAL (clicked()), SLOT(loadSkins()));
     connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)), this, SLOT (changeSkin()));
     ui.listWidget->setIconSize (QSize (105,34));
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     readSettings();
     m_reader = new SkinReader(this);
     loadSkins();
@@ -137,6 +137,8 @@ void ConfigDialog::readSettings()
     ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
     //compatibility
     ui.openboxCheckBox->setChecked(settings.value("General/openbox_compat", FALSE).toBool());
+    //skin options
+    ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", FALSE).toBool());
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -627,6 +629,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
     settings.setValue ("General/openbox_compat", ui.openboxCheckBox->isChecked());
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
+    settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
 }
 
 void ConfigDialog::updateButtons()

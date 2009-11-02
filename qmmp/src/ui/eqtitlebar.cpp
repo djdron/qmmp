@@ -39,7 +39,7 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     m_right = 0;
     m_shaded = FALSE;
     m_align = FALSE;
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     m_eq = parentWidget();
     m_mw = qobject_cast<MainWindow*>(m_eq->parent());
     m_close = new Button(this, Skin::EQ_BT_CLOSE_N, Skin::EQ_BT_CLOSE_P, Skin::CUR_EQCLOSE);
@@ -71,30 +71,16 @@ void EqTitleBar::setActive(bool active)
     if (active)
     {
         if (m_shaded)
-        {
             setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_SHADED_A));
-            m_shade2->show();
-        }
         else
-        {
             setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_A));
-            m_shade->show();
-        }
-        m_close->show();
     }
     else
     {
         if (m_shaded)
-        {
             setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_SHADED_I));
-            m_shade2->hide();
-        }
         else
-        {
             setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_I));
-            m_shade->hide();
-        }
-        m_close->hide();
     }
 }
 
@@ -116,14 +102,10 @@ void EqTitleBar::mousePressEvent(QMouseEvent* event)
     switch ((int) event->button ())
     {
     case Qt::LeftButton:
-    {
         m_pos = event->pos();
         break;
-    }
     case Qt::RightButton:
-    {
         m_mw->menu()->exec(event->globalPos());
-    }
     }
 }
 

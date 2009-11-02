@@ -32,7 +32,7 @@
 VolumeBar::VolumeBar(QWidget *parent)
         : PixmapWidget(parent)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getVolumeBar(0));
     mw = qobject_cast<MainWindow*>(window());

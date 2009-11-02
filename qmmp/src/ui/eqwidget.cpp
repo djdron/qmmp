@@ -42,7 +42,7 @@
 EqWidget::EqWidget (QWidget *parent)
         : PixmapWidget (parent)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
     //setPixmap(QPixmap(275,116));
