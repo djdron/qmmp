@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,14 +22,7 @@
 
 #include <QWidget>
 
-class KeyboardManager;
-
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
 class QMenu;
-
 class Skin;
 class ListWidget;
 class PlayListItem;
@@ -42,20 +35,27 @@ class SymbolDisplay;
 class OutputState;
 class PixmapWidget;
 class PlaylistControl;
+class KeyboardManager;
 
+
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class PlayList : public QWidget
 {
         Q_OBJECT
     public:
-        PlayList ( QWidget *parent = 0 );
+        PlayList (QWidget *parent = 0);
 
         ~PlayList();
-        void load ( PlayListItem * );
-        void setModel ( PlayListModel * );
+        void load (PlayListItem *);
+        void setModel (PlayListModel *);
         void readSettings();
-        //void setInfo ( const OutputState &,int,int );
         PlayListItem *currentItem();
-        ListWidget* listWidget() const{return m_listWidget;}
+        ListWidget* listWidget() const
+        {
+            return m_listWidget;
+        }
 
     signals:
         void play();
@@ -83,8 +83,8 @@ class PlayList : public QWidget
 
 
     private:
-        QString formatTime ( int sec );
-        void drawPixmap ( int, int );
+        QString formatTime (int sec);
+        void drawPixmap (int, int);
         void writeSettings();
         void createMenus();
         void createActions();
@@ -93,6 +93,7 @@ class PlayList : public QWidget
         QMenu *m_selectMenu;
         QMenu *m_sortMenu;
         QMenu *m_playlistMenu;
+        QWidget *m_resizeWidget;
         Button *m_buttonAdd;
         Button *m_buttonSub;
         Button *m_selectButton;
@@ -116,14 +117,14 @@ class PlayList : public QWidget
         KeyboardManager* m_keyboardManager;
 
     protected:
-        virtual void paintEvent ( QPaintEvent * );
-        virtual void resizeEvent ( QResizeEvent * );
-        virtual void mouseMoveEvent ( QMouseEvent * );
-        virtual void mousePressEvent ( QMouseEvent * );
-        virtual void mouseReleaseEvent ( QMouseEvent * );
-        virtual void changeEvent ( QEvent* );
-        virtual void closeEvent ( QCloseEvent* );
-        virtual void keyPressEvent ( QKeyEvent* );
+        virtual void paintEvent (QPaintEvent *);
+        virtual void resizeEvent (QResizeEvent *);
+        virtual void mouseMoveEvent (QMouseEvent *);
+        virtual void mousePressEvent (QMouseEvent *);
+        virtual void mouseReleaseEvent (QMouseEvent *);
+        virtual void changeEvent (QEvent*);
+        virtual void closeEvent (QCloseEvent*);
+        virtual void keyPressEvent (QKeyEvent*);
 };
 
 #endif

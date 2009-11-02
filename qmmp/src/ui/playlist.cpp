@@ -74,6 +74,10 @@ PlayList::PlayList (QWidget *parent)
     m_sortButton= new Button (this,Skin::PL_BT_SORT,Skin::PL_BT_SORT, Skin::CUR_PNORMAL);
     m_sortButton->move (99,86);
     m_playlistButton = new Button (this,Skin::PL_BT_LST,Skin::PL_BT_LST, Skin::CUR_PNORMAL);
+    m_resizeWidget = new QWidget(this);
+    m_resizeWidget->resize(25,25);
+    m_resizeWidget->setGeometry(width()-25, height()-25, 25, 25);
+    m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
 
     m_pl_control = new PlaylistControl (this);
     m_pl_control->move (0,0);
@@ -81,7 +85,7 @@ PlayList::PlayList (QWidget *parent)
 
     m_length_totalLength = new SymbolDisplay (this,14);
     m_length_totalLength->setAlignment (Qt::AlignLeft);
-    m_length_totalLength -> show();
+    m_length_totalLength->show();
 
     m_current_time = new SymbolDisplay (this,6);
     m_current_time->show();
@@ -367,11 +371,12 @@ void PlayList::resizeEvent (QResizeEvent *e)
     m_current_time->move (190+sx*25,101+29*sy);
 
     m_plslider->move (255+sx*25,20);
+    m_resizeWidget->move(250 + sx * 25, 91 + sy * 29);
 }
 void PlayList::mousePressEvent (QMouseEvent *e)
 {
     m_pos = e->pos ();
-    if ((m_pos.x() > width()-25) && (m_pos.y() > height()-25))
+    if (m_resizeWidget->underMouse())
     {
         m_resize = TRUE;
         setCursor (m_skin->getCursor (Skin::CUR_PSIZE));
@@ -535,5 +540,6 @@ void PlayList::keyPressEvent (QKeyEvent *ke)
 void PlayList::updateSkin()
 {
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL)); // TODO shaded
+    m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
     update();
 }
