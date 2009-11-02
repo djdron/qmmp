@@ -30,7 +30,7 @@
 EqSlider::EqSlider(QWidget *parent)
         : PixmapWidget(parent)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getEqSlider(0));
     m_moving = FALSE;

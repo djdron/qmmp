@@ -25,7 +25,7 @@
 MonoStereo::MonoStereo ( QWidget *parent )
       : PixmapWidget ( parent )
 {
-   m_skin = Skin::getPointer();
+   m_skin = Skin::instance();
    m_pixmap = QPixmap ( 54,12 );
    setChannels ( 0 );
    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));

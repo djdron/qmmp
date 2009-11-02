@@ -33,7 +33,7 @@ ToggleButton::ToggleButton ( QWidget *parent,uint on_n,uint on_p,uint off_n,uint
    m_off_n = off_n;
    m_off_p = off_p;
    m_on = FALSE;
-   skin = Skin::getPointer();
+   skin = Skin::instance();
    setON ( FALSE );
    connect ( skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
 }

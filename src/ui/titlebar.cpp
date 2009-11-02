@@ -37,7 +37,7 @@ TitleBar::TitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
     m_align = FALSE;
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
     m_mw = qobject_cast<MainWindow*>(parent);
     m_shaded = FALSE;
@@ -67,7 +67,6 @@ TitleBar::TitleBar(QWidget *parent)
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
 }
 
-
 TitleBar::~TitleBar()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -79,15 +78,11 @@ void TitleBar::mousePressEvent(QMouseEvent* event)
     switch ((int) event->button ())
     {
     case Qt::LeftButton:
-    {
         m_pos = event->pos();
         Dock::getPointer()->calculateDistances();
         break;
-    }
     case Qt::RightButton:
-    {
         m_mw->menu()->exec(event->globalPos());
-    }
     }
 }
 
@@ -109,34 +104,16 @@ void TitleBar::setActive(bool a)
     if (a)
     {
         if (m_shaded)
-        {
             setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_SHADED_A));
-            m_shade2->show();
-        }
         else
-        {
             setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
-            m_shade->show();
-        }
-        m_menu->show();
-        m_minimize->show();
-        m_close->show();
     }
     else
     {
         if (m_shaded)
-        {
             setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_SHADED_I));
-            m_shade2->hide();
-        }
         else
-        {
             setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_I));
-            m_shade->hide();
-        }
-        m_menu->hide();
-        m_minimize->hide();
-        m_close->hide();
     }
 }
 

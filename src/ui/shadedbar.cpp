@@ -35,7 +35,7 @@ ShadedBar::ShadedBar(QWidget *parent, uint slider1, uint slider2, uint slider3)
     m_slider3 = slider3;
     setFixedSize(97,7);
     //setAutoFillBackground (TRUE);
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     m_moving = FALSE;
     m_min = 0;

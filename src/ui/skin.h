@@ -31,8 +31,6 @@
 #include <QRegion>
 #include <QCursor>
 
-
-
 class Skin : public QObject
 {
     Q_OBJECT
@@ -41,33 +39,32 @@ public:
 
     ~Skin();
 
-    static Skin *getPointer();
+    static Skin *instance();
     static QPixmap getPixmap(const QString&, QDir);
-    void setSkin(const QString& path);
     const QPixmap getMain() const
     {
         return m_main;
-    };
+    }
     const QPixmap getButton(uint bt) const
     {
         return buttons[bt];
-    };
+    }
     const QCursor getCursor(uint cu) const
     {
         return cursors[cu];
-    };
+    }
     const QPixmap getTitleBar(uint tb) const
     {
         return titlebar[tb];
-    };
+    }
     const QPixmap getPosBar() const
     {
         return posbar;
-    };
+    }
     const QPixmap getNumber(uint n) const
     {
         return m_numbers[n];
-    };
+    }
     /*!
      * Returns count of numbers in number list.
      * We need this to check if we have "-" in pixmaps.
@@ -80,59 +77,51 @@ public:
     const QPixmap getPlPart(uint p) const
     {
         return m_pl_parts[p];
-    };
+    }
     const QPixmap getEqPart(uint p) const
     {
         return m_eq_parts[p];
-    };
+    }
     const QPixmap getEqSlider(uint n) const
     {
         return m_eq_bar[n];
-    };
+    }
     const QPixmap getEqSpline(uint n) const
     {
         return m_eq_spline[n];
-    };
+    }
     const QPixmap getMSPart(uint n) const
     {
         return m_ms_parts[n];
-    };
+    }
     const QPixmap getLetter(const QChar& ch) const
     {
         return m_letters[ch];
-    };
+    }
     const QPixmap getItem(uint n) const
     {
         return m_parts[n];
-    };
+    }
     const QPixmap getVolumeBar(int n) const
     {
         return m_volume[n];
-    };
+    }
     const QPixmap getBalanceBar(int n) const
     {
         return m_balance[n];
-    };
+    }
     const QByteArray getPLValue (QByteArray c) const
     {
         return m_pledit_txt[c];
-    };
+    }
     const QColor getVisColor(int n) const
     {
         return m_vis_colors[n];
-    };
-    /*const QRegion getMWRegion() const
-    {
-        return m_mwRegion;
-    };
-    const QRegion getPLRegion() const
-    {
-        return m_plRegion;
-    };*/
+    }
     const QRegion getRegion(uint r) const
     {
         return m_regions[r];
-    };
+    }
 
     enum Buttons
     {
@@ -330,6 +319,10 @@ public:
         CUR_WSWINBUT,
     };
 
+public slots:
+    void setSkin(const QString& path);
+    void reloadSkin();
+
 signals:
     void skinChanged();
 
@@ -346,7 +339,7 @@ private:
      * to load pixmap from default skin.
      */
     QPixmap *getDummyPixmap(const QString&);
-    static Skin *pointer;
+    static Skin *m_instance;
     QDir m_skin_dir;
     QMap<uint, QPixmap> buttons;
     QMap<uint, QCursor> cursors;
@@ -366,8 +359,7 @@ private:
     QList<QPixmap> m_volume;
     QList<QPixmap> m_balance;
     QList<QColor> m_vis_colors;
-    //QRegion m_mwRegion;
-    //QRegion m_plRegion;
+    bool m_use_cursors;
 
     void loadMain();
     void loadButtons();
@@ -387,7 +379,6 @@ private:
     void loadBalance();
     void loadRegion();
     QRegion createRegion(const QString &path, const QString &key);
-
 };
 
 #endif

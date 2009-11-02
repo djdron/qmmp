@@ -25,7 +25,7 @@
 EQGraph::EQGraph (QWidget *parent)
         : PixmapWidget (parent)
 {
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     setPixmap (m_skin->getEqPart (Skin::EQ_GRAPH));
     clear();
     draw();

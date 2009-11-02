@@ -82,7 +82,7 @@ public slots:
     QMenu *menu()
     {
         return m_menu;
-    };
+    }
 
 signals:
     void selectionChanged();

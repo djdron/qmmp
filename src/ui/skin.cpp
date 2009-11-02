@@ -33,13 +33,13 @@
 #include "skin.h"
 #include "cursorimage.h"
 
-Skin *Skin::pointer = 0;
+Skin *Skin::m_instance = 0;
 
-Skin *Skin::getPointer()
+Skin *Skin::instance()
 {
-    if (!pointer)
-        pointer = new Skin();
-    return pointer;
+    if (!m_instance)
+        m_instance = new Skin();
+    return m_instance;
 }
 
 QPixmap Skin::getPixmap (const QString& name, QDir dir)
@@ -58,10 +58,9 @@ QPixmap Skin::getPixmap (const QString& name, QDir dir)
     return QPixmap();
 }
 
-Skin::Skin (QObject *parent)
-        : QObject (parent)
+Skin::Skin (QObject *parent) : QObject (parent)
 {
-    pointer = this;
+    m_instance = this;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString path = settings.value("skin_path","").toString();
     if (path.isEmpty() || !QDir(path).exists ())
@@ -72,37 +71,38 @@ Skin::Skin (QObject *parent)
     skinDir.mkdir ("skins");
 }
 
-
 Skin::~Skin()
 {}
 
 void Skin::setSkin (const QString& path)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_use_cursors = settings.value("General/skin_cursors", FALSE).toBool();
     settings.setValue("skin_path",path);
-
-    qDebug ("Skin: set skin %s",qPrintable(path));    //TODO don't clear lists
+    qDebug ("Skin: using %s",qPrintable(path));
     m_skin_dir = QDir (path);
-
+    //clear old values
     m_pledit_txt.clear();
-    loadPLEdit();
-    loadMain();
     buttons.clear();
-    loadButtons();
-    loadShufRep();
     titlebar.clear();
-    loadTitleBar();
-    loadPosBar();
     m_numbers.clear();
-    loadNumbers();
     m_pl_parts.clear();
-    loadPlayList();
     m_eq_parts.clear();
-    loadEq_ex();
     m_eq_bar.clear();
     m_eq_spline.clear();
-    loadEqMain();
     m_vis_colors.clear();
+    cursors.clear();
+    //load skin parts
+    loadPLEdit();
+    loadMain();
+    loadButtons();
+    loadShufRep();
+    loadTitleBar();
+    loadPosBar();
+    loadNumbers();
+    loadPlayList();
+    loadEq_ex();
+    loadEqMain();
     loadVisColor();
     loadLetters();
     loadMonoSter();
@@ -111,6 +111,11 @@ void Skin::setSkin (const QString& path)
     loadRegion();
     loadCursors();
     emit skinChanged();
+}
+
+void Skin::reloadSkin()
+{
+    setSkin (m_skin_dir.absolutePath ());
 }
 
 void Skin::loadMain()
@@ -125,6 +130,11 @@ void Skin::loadMain()
 
 void Skin::loadCursors()
 {
+    if(!m_use_cursors)
+    {
+        cursors[CUR_PSIZE] = QCursor(Qt::SizeFDiagCursor);
+        return;
+    }
     cursors[CUR_NORMAL] = createCursor(getPath("normal"));
     cursors[CUR_CLOSE] = createCursor(getPath("close"));
     cursors[CUR_MAINMENU] = createCursor(getPath("mainmenu"));
@@ -146,6 +156,8 @@ void Skin::loadCursors()
     cursors[CUR_PCLOSE] = createCursor(getPath("pclose"));
     cursors[CUR_PNORMAL] = createCursor(getPath("pnormal"));
     cursors[CUR_PSIZE] = createCursor(getPath("psize"));
+    if(cursors[CUR_PSIZE].shape() == Qt::ArrowCursor)
+        cursors[CUR_PSIZE] = QCursor(Qt::SizeFDiagCursor);
     cursors[CUR_PTBAR] = createCursor(getPath("ptbar"));
     cursors[CUR_PVSCROLL] = createCursor(getPath("pvscroll"));
     cursors[CUR_PWINBUT] = createCursor(getPath("pwinbut"));
@@ -185,12 +197,10 @@ void Skin::loadButtons()
     buttons[BT_EJECT_N] = pixmap->copy (114, 0,22,16);
     buttons[BT_EJECT_P] = pixmap->copy (114,16,22,16);
     delete pixmap;
-
 }
 
 void Skin::loadTitleBar()
 {
-
     QPixmap *pixmap = getPixmap ("titlebar");
 
     if (!pixmap)
@@ -211,12 +221,10 @@ void Skin::loadTitleBar()
     titlebar[TITLEBAR_SHADED_A] = pixmap->copy (27,29,275,14);
     titlebar[TITLEBAR_SHADED_I] = pixmap->copy (27,42,275,14);
     delete pixmap;
-
 }
 
 void Skin::loadPosBar()
 {
-
     QPixmap *pixmap = getPixmap ("posbar");
 
     if (!pixmap)
@@ -236,7 +244,6 @@ void Skin::loadPosBar()
     }
     posbar = pixmap->copy (0,0,248,pixmap->height());
     delete pixmap;
-
 }
 
 void Skin::loadNumbers()
@@ -274,7 +281,6 @@ void Skin::loadNumbers()
 
 void Skin::loadPlayList()
 {
-
     QPixmap *pixmap = getPixmap ("pledit");
 
     if (!pixmap)
@@ -359,7 +365,7 @@ QString Skin::getPath (const QString& name)
             return fileInfo.filePath();
         }
     }
-    return "";
+    return QString();
 }
 
 
@@ -443,7 +449,6 @@ void Skin::loadEqMain()
         m_eq_spline << pixmap->copy (115, 294+i, 1, 1);
     }
     delete pixmap;
-
 }
 
 void Skin::loadEq_ex()
@@ -545,7 +550,6 @@ void Skin::loadShufRep()
     buttons[SHUFFLE_OFF_P] = pixmap->copy (28,15,46,15);
 
     delete pixmap;
-
 }
 
 void Skin::loadLetters(void)
@@ -713,8 +717,6 @@ void Skin::loadBalance()
 
 void Skin::loadRegion()
 {
-    //m_mwRegion = QRegion();
-    //m_plRegion = QRegion();
     m_regions.clear();
     QString path = findFile("region.txt", m_skin_dir);
 
@@ -776,7 +778,7 @@ QPixmap * Skin::getDummyPixmap(const QString& name)
             return new QPixmap (fileInfo.filePath());
         }
     }
-    qFatal("Skin: default skin corrupted");
+    qFatal("Skin: default skin is corrupted");
     return 0;
 }
 

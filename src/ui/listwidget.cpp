@@ -43,7 +43,7 @@ ListWidget::ListWidget(QWidget *parent)
         : QWidget(parent)
 {
     m_update = FALSE;
-    m_skin = Skin::getPointer();
+    m_skin = Skin::instance();
     loadColors();
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;

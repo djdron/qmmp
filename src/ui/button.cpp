@@ -31,7 +31,7 @@ Button::Button (QWidget *parent, uint normal, uint pressed, uint cursor)
     name_normal = normal;
     name_pressed = pressed;
     name_cursor = cursor;
-    skin = Skin::getPointer();
+    skin = Skin::instance();
     setON (FALSE);
     setCursor (skin->getCursor (name_cursor));
     connect (skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
