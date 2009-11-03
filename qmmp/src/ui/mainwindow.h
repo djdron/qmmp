@@ -113,10 +113,9 @@ private:
     bool seeking;
     SoundCore *m_core;
     QMenu *m_mainMenu;
-    MainDisplay *display;
+    MainDisplay *m_display;
     PlayList *m_playlist;
     PlayListModel *m_playListModel;
-    TitleBar *m_titlebar;
     ConfigDialog *m_confDialog;
     int m_preamp;
     EqWidget *m_equalizer;

@@ -24,7 +24,6 @@
 #include <QCloseEvent>
 #include <qmmpui/filedialog.h>
 #include <qmmp/soundcore.h>
-
 #include "skin.h"
 #include "eqslider.h"
 #include "eqtitlebar.h"
@@ -37,56 +36,40 @@
 #include "playlist.h"
 #include "eqwidget.h"
 
-
-
 EqWidget::EqWidget (QWidget *parent)
         : PixmapWidget (parent)
 {
+    m_shaded = FALSE;
     m_skin = Skin::instance();
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
-    //setPixmap(QPixmap(275,116));
     m_titleBar = new EqTitleBar (this);
     m_titleBar -> move (0,0);
-    m_titleBar -> show();
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
 
     m_preamp = new EqSlider (this);
-    m_preamp->show();
-    m_preamp->move (21,38);
     connect (m_preamp,SIGNAL (sliderMoved (double)),SLOT (setPreamp ()));
 
     m_on = new ToggleButton (this,Skin::EQ_BT_ON_N,Skin::EQ_BT_ON_P,
                              Skin::EQ_BT_OFF_N,Skin::EQ_BT_OFF_P);
-    m_on->show();
-    m_on->move (14,18);
     connect (m_on, SIGNAL (clicked(bool)), SIGNAL(valueChanged()));
 
     m_autoButton = new ToggleButton(this, Skin::EQ_BT_AUTO_1_N, Skin::EQ_BT_AUTO_1_P,
                                     Skin::EQ_BT_AUTO_0_N, Skin::EQ_BT_AUTO_0_P);
-    m_autoButton->move(39, 18);
-    m_autoButton->show();
-
     m_eqg = new EQGraph(this);
-    m_eqg->move(87,17);
-
     m_presetsMenu = new QMenu(this);
-
     m_presetButton = new Button (this, Skin::EQ_BT_PRESETS_N, Skin::EQ_BT_PRESETS_P, Skin::CUR_EQNORMAL);
-    m_presetButton->move(217,18);
-    m_presetButton->show();
-
     connect(m_presetButton, SIGNAL(clicked()), SLOT(showPresetsMenu()));
 
     for (int i = 0; i<10; ++i)
     {
         m_sliders << new EqSlider (this);
-        m_sliders.at (i)->move (78+i*18,38);
-        m_sliders.at (i)->show();
         connect (m_sliders.at (i), SIGNAL (sliderMoved (double)),SLOT (setGain()));
     }
     readSettings();
     createActions();
+    updatePositions();
+    updateMask();
     connect(SoundCore::instance(), SIGNAL(volumeChanged(int, int)), m_titleBar, SLOT(setVolume(int, int)));
 }
 
@@ -96,6 +79,18 @@ EqWidget::~EqWidget()
         delete m_presets.takeFirst();
     while (!m_autoPresets.isEmpty())
         delete m_autoPresets.takeFirst();
+}
+
+void EqWidget::updatePositions()
+{
+    int r = m_skin->ratio();
+    m_preamp->move (21*r,38*r);
+    m_on->move (14*r,18*r);
+    m_autoButton->move(39*r,18*r);
+    m_eqg->move(87*r,17*r);
+    m_presetButton->move(217*r,18*r);
+     for (int i = 0; i < 10; ++i)
+         m_sliders.at (i)->move ((78+i*18)*r,38*r);
 }
 
 double EqWidget::preamp()
@@ -128,6 +123,20 @@ void EqWidget::updateSkin()
     m_titleBar->setActive (FALSE);
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
+    setMimimalMode(m_shaded);
+    updatePositions();
+}
+
+void EqWidget::setMimimalMode(bool b)
+{
+    m_shaded = b;
+    int r = m_skin->ratio();
+
+    if(m_shaded)
+         resize(r*275,r*14);
+    else
+         resize(r*275,r*116);
+    updateMask();
 }
 
 void EqWidget::readSettings()
@@ -427,3 +436,13 @@ void EqWidget::keyPressEvent (QKeyEvent *ke)
                                 ke->modifiers(), ke->text(),ke->isAutoRepeat(), ke->count());
     QApplication::sendEvent(qobject_cast<MainWindow*>(parent())->playlist(), &event);
 }
+
+void EqWidget::updateMask()
+{
+    clearMask();
+    setMask(QRegion(0,0,width(),height()));
+    QRegion region = m_skin->getRegion(m_shaded? Skin::EQUALIZER_WS : Skin::EQUALIZER);
+    if (!region.isEmpty())
+        setMask(region);
+}
+

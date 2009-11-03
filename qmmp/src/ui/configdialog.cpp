@@ -139,6 +139,7 @@ void ConfigDialog::readSettings()
     ui.openboxCheckBox->setChecked(settings.value("General/openbox_compat", FALSE).toBool());
     //skin options
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", FALSE).toBool());
+    ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", FALSE).toBool());
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -416,7 +417,7 @@ void ConfigDialog::loadFonts()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value ("PlayList/Font").toString();
-    QFont font;
+    QFont font = QApplication::font();
     if(!fontname.isEmpty())
         font.fromString(fontname);
     ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
@@ -630,6 +631,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("General/openbox_compat", ui.openboxCheckBox->isChecked());
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
+    settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
 }
 
 void ConfigDialog::updateButtons()

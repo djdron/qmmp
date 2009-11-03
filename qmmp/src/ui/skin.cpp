@@ -78,6 +78,7 @@ void Skin::setSkin (const QString& path)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_use_cursors = settings.value("General/skin_cursors", FALSE).toBool();
+    m_double_size = settings.value("General/double_size", FALSE).toBool();
     settings.setValue("skin_path",path);
     qDebug ("Skin: using %s",qPrintable(path));
     m_skin_dir = QDir (path);
@@ -110,6 +111,40 @@ void Skin::setSkin (const QString& path)
     loadBalance();
     loadRegion();
     loadCursors();
+    if(m_double_size)
+    {
+        uint key;
+        foreach(key, buttons.keys())
+            buttons[key] = scalePixmap(buttons[key]);
+        foreach(key, titlebar.keys())
+            titlebar[key] = scalePixmap(titlebar[key]);
+        foreach(key, m_pl_parts.keys())
+            m_pl_parts[key] = scalePixmap(m_pl_parts[key]);
+        foreach(key, m_eq_parts.keys())
+            m_eq_parts[key] = scalePixmap(m_eq_parts[key]);
+        foreach(key, m_ms_parts.keys())
+            m_ms_parts[key] = scalePixmap(m_ms_parts[key]);
+        foreach(key, m_parts.keys())
+            m_parts[key] = scalePixmap(m_parts[key]);
+        foreach(QChar c, m_letters.keys())
+            m_letters[c] = scalePixmap(m_letters[c]);
+        m_main = scalePixmap(m_main);
+        posbar = scalePixmap(posbar);
+        int i;
+        for(i = 0; i < m_numbers.size(); ++i)
+            m_numbers[i] = scalePixmap(m_numbers[i]);
+
+        for(i = 0; i < m_eq_bar.size(); ++i)
+            m_eq_bar[i] = scalePixmap(m_eq_bar[i]);
+
+        for(i = 0; i < m_eq_spline.size(); ++i)
+            m_eq_spline[i] = scalePixmap(m_eq_spline[i]);
+
+        for(i = 0; i < m_volume.size(); ++i)
+            m_volume[i] = scalePixmap(m_volume[i]);
+        for(i = 0; i < m_balance.size(); ++i)
+            m_balance[i] = scalePixmap(m_balance[i]);
+    }
     emit skinChanged();
 }
 
@@ -780,6 +815,12 @@ QPixmap * Skin::getDummyPixmap(const QString& name)
     }
     qFatal("Skin: default skin is corrupted");
     return 0;
+}
+
+QPixmap Skin::scalePixmap(const QPixmap &pix, int ratio)
+{
+    return pix.scaled(pix.width() * ratio, pix.height() * ratio,
+                      Qt::KeepAspectRatio);
 }
 
 const QString Skin::findFile(const QString &name, QDir dir)

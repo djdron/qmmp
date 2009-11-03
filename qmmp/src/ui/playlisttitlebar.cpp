@@ -21,7 +21,7 @@
 #include <QResizeEvent>
 #include <QMenu>
 #include <QSettings>
-
+#include <QApplication>
 #include <qmmpui/playlistmodel.h>
 
 #include "dock.h"
@@ -40,19 +40,20 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
     m_shaded = FALSE;
     m_align = FALSE;
     m_skin = Skin::instance();
-    setSizeIncrement(25,1);
+    m_ratio = m_skin->ratio();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     m_pl = qobject_cast<PlayList*>(parent);
     m_mw = qobject_cast<MainWindow*>(m_pl->parent());
 
     m_close = new Button(this,Skin::PL_BT_CLOSE_N, Skin::PL_BT_CLOSE_P, Skin::CUR_PCLOSE);
     connect (m_close, SIGNAL(clicked()), m_pl, SIGNAL(closed()));
-    m_close->move(264,3);
+
     m_shade = new Button(this, Skin::PL_BT_SHADE1_N, Skin::PL_BT_SHADE1_P, Skin::CUR_PWINBUT);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
-    m_shade->move(255,3);
-    resize(275,20);
-    setMinimumWidth(275);
+
+    resize(275*m_ratio,20*m_ratio);
+    setMinimumWidth(275*m_ratio);
+
     readSettings();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     m_pl->resize (settings.value ("PlayList/size", QSize (275, 116)).toSize());
@@ -61,6 +62,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
     resize(m_pl->width(),height());
     m_align = TRUE;
     setCursor(m_skin->getCursor(Skin::CUR_PTBAR));
+    updatePositions();
 }
 
 
@@ -71,20 +73,26 @@ PlayListTitleBar::~PlayListTitleBar()
     settings.setValue ("PlayList/shaded", m_shaded);
 }
 
-void PlayListTitleBar::drawPixmap(int sx)
+void PlayListTitleBar::updatePositions()
 {
-    m_close->move(264+sx*25,3);
-    m_shade->move(255+sx*25,3);
+    int sx = (width()-275*m_ratio)/25;
+    m_ratio = m_skin->ratio();
+    m_close->move(m_ratio*264+sx*25,m_ratio*3);
+    m_shade->move(m_ratio*255+sx*25,m_ratio*3);
     if (m_shade2)
-        m_shade2->move(255+sx*25,3);
-    QPixmap pixmap(275+sx*25,20);
-    pixmap.fill("black");
+        m_shade2->move(m_ratio*255+sx*25,m_ratio*3);
+}
+
+void PlayListTitleBar::updatePixmap()
+{
+    int sx = ((m_shaded ? m_pl->width() : width())-275*m_ratio)/25;
+    QPixmap pixmap(275*m_ratio+sx*25,20*m_ratio);
     QPainter paint;
     paint.begin(&pixmap);
     if (m_shaded)
     {
         paint.drawPixmap(0,0,m_skin->getPlPart(Skin::PL_TITLEBAR_SHADED2));
-        for (int i = 1; i<sx+9; i++)
+        for (int i = 1; i<sx+9*m_ratio; i++)
         {
             paint.drawPixmap(25*i,0,m_skin->getPlPart(Skin::PL_TFILL_SHADED));
         }
@@ -93,31 +101,31 @@ void PlayListTitleBar::drawPixmap(int sx)
     if (m_active)
     {
         if (m_shaded)
-            paint.drawPixmap(225+sx*25,0,m_skin->getPlPart(Skin::PL_TITLEBAR_SHADED1_A));
+            paint.drawPixmap(225*m_ratio+sx*25,0,m_skin->getPlPart(Skin::PL_TITLEBAR_SHADED1_A));
         else
         {
             paint.drawPixmap(0,0,m_skin->getPlPart(Skin::PL_CORNER_UL_A));
-            for (int i = 1; i<sx+10; i++)
+            for (int i = 1; i<sx+10*m_ratio; i++)
             {
                 paint.drawPixmap(25*i,0,m_skin->getPlPart(Skin::PL_TFILL1_A));
             }
-            paint.drawPixmap(100-12+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_A));
-            paint.drawPixmap(250+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_A));
+            paint.drawPixmap((100-12)*m_ratio+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_A));
+            paint.drawPixmap(250*m_ratio+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_A));
         }
     }
     else
     {
         if (m_shaded)
-            paint.drawPixmap(275-50+sx*25,0,m_skin->getPlPart(Skin::PL_TITLEBAR_SHADED1_I));
+            paint.drawPixmap(225*m_ratio+sx*25,0,m_skin->getPlPart(Skin::PL_TITLEBAR_SHADED1_I));
         else
         {
             paint.drawPixmap(0,0,m_skin->getPlPart(Skin::PL_CORNER_UL_I));
-            for (int i = 1; i<sx+10; i++)
+            for (int i = 1; i<sx+10*m_ratio; i++)
             {
                 paint.drawPixmap(25*i,0,m_skin->getPlPart(Skin::PL_TFILL1_I));
             }
-            paint.drawPixmap(100-12+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_I));
-            paint.drawPixmap(250+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_I));
+            paint.drawPixmap((100-12)*m_ratio+12*sx,0,m_skin->getPlPart(Skin::PL_TITLEBAR_I));
+            paint.drawPixmap(250*m_ratio+sx*25,0,m_skin->getPlPart(Skin::PL_CORNER_UR_I));
         }
     }
     if (m_shaded)
@@ -126,20 +134,22 @@ void PlayListTitleBar::drawPixmap(int sx)
         col.setNamedColor(QString(m_skin->getPLValue("mbbg")));
         paint.setBrush(QBrush(col));
         paint.setPen(col);
-        paint.drawRect(8,1, 235 + sx*25, 11);
+        paint.drawRect(8*m_ratio, m_ratio, 235*m_ratio + sx*25, 11*m_ratio);
         //draw text
         paint.setFont(m_font);
         paint.setPen(QString(m_skin->getPLValue("mbfg")));
-        paint.drawText(9, 11, m_truncatedText);
+        paint.drawText(9*m_ratio, 11*m_ratio, m_truncatedText);
     }
     paint.end();
     setPixmap(pixmap);
 }
 
-void PlayListTitleBar::resizeEvent(QResizeEvent *e)
+void PlayListTitleBar::resizeEvent(QResizeEvent *)
 {
-    truncate();
-    drawPixmap((e->size().width()-275)/25);
+    QFontMetrics metrics(m_font);
+    m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);
+    updatePixmap();
+    updatePositions();
 }
 
 void PlayListTitleBar::mousePressEvent(QMouseEvent* event)
@@ -147,30 +157,23 @@ void PlayListTitleBar::mousePressEvent(QMouseEvent* event)
     switch ((int) event->button ())
     {
     case Qt::LeftButton:
-    {
         pos = event->pos();
-
-        if (m_shaded && (width() - 30) < pos.x() && pos.x() < (width() - 22))
+        if (m_shaded && (width() - 30*m_ratio) < pos.x() && pos.x() < (width() - 22*m_ratio))
         {
             m_resize = TRUE;
-            m_pl->setCursor (Qt::SizeHorCursor);
+            setCursor (Qt::SizeHorCursor);
         }
-
-
         break;
-    }
     case Qt::RightButton:
-    {
         m_mw->menu()->exec(event->globalPos());
-    }
     }
 }
 
 void PlayListTitleBar::mouseReleaseEvent(QMouseEvent*)
 {
-    Dock::getPointer()->updateDock();
+    Dock::instance()->updateDock();
     m_resize = FALSE;
-    m_pl->setCursor (Qt::ArrowCursor);
+    setCursor (Qt::ArrowCursor);
 }
 
 void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)
@@ -179,17 +182,17 @@ void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)
     QPoint oldpos = npos;
     if (m_shaded && m_resize)
     {
-        m_pl->resize((event->x() + 25), m_pl->height());
-        resize((event->x() + 25), height());
+        resize((event->x() + 25*m_ratio), height());
+        m_pl->resize((event->x() + 25*m_ratio), m_pl->height());
     }
-    else if (pos.x() < width() - 30)
-        Dock::getPointer()->move(m_pl, npos);
+    else if (pos.x() < width() - 30*m_ratio)
+        Dock::instance()->move(m_pl, npos);
 }
 
 void PlayListTitleBar::setActive(bool a)
 {
     m_active = a;
-    drawPixmap((width()-275)/25);
+    updatePixmap();
 }
 
 
@@ -202,17 +205,20 @@ void PlayListTitleBar::setModel(PlayListModel *model)
 void PlayListTitleBar::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value("PlayList/Font","").toString();
-    if (fontname.isEmpty ())
-        fontname = QFont("Helvetica [Cronyx]", 8).toString();
-    m_font.fromString(fontname);
+    m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
     m_font.setPointSize(8);
 }
 
 void PlayListTitleBar::updateSkin()
 {
-    drawPixmap((width()-275)/25);
     setCursor(m_skin->getCursor(Skin::CUR_PTBAR));
+    if(m_ratio != m_skin->ratio())
+    {
+        m_ratio = m_skin->ratio();
+        setMinimumWidth(275*m_ratio);
+        updatePositions();
+    }
+    updatePixmap();
 }
 
 void PlayListTitleBar::shade()
@@ -222,7 +228,7 @@ void PlayListTitleBar::shade()
     if (m_shaded)
     {
         m_height = m_pl->height();
-        m_pl->setFixedHeight(14);
+        m_pl->setFixedHeight(14*m_ratio);
         m_shade->hide();
         m_shade2 = new Button(this, Skin::PL_BT_SHADE2_N, Skin::PL_BT_SHADE2_P, Skin::CUR_PWSNORM);
         m_shade2->move(254,3);
@@ -231,7 +237,7 @@ void PlayListTitleBar::shade()
     }
     else
     {
-        m_pl->setMinimumSize (275,116);
+        m_pl->setMinimumSize (275*m_ratio,116*m_ratio);
         m_pl->setMaximumSize (10000,10000);
         m_pl->resize(width(),m_height);
         m_shade2->deleteLater();
@@ -241,7 +247,8 @@ void PlayListTitleBar::shade()
     showCurrent();
     update();
     if (m_align)
-        Dock::getPointer()->align(m_pl, m_shaded? -m_height+14: m_height-14);
+        Dock::instance()->align(m_pl, m_shaded? -m_height+14*m_ratio: m_height-14*m_ratio);
+    updatePositions();
 }
 
 void PlayListTitleBar::showCurrent()
@@ -259,20 +266,9 @@ void PlayListTitleBar::showCurrent()
         else
             m_text.clear();
     }
-    truncate();
-    drawPixmap((width()-275)/25);
-}
 
-void PlayListTitleBar::truncate()
-{
-    m_truncatedText = m_text;
     QFontMetrics metrics(m_font);
-    bool truncate = FALSE;
-    while (metrics.width(m_truncatedText) > (this->width() - 35))
-    {
-        truncate = TRUE;
-        m_truncatedText = m_truncatedText.left(m_truncatedText.length()-1);
-    }
-    if (truncate)
-        m_truncatedText = m_truncatedText.left(m_truncatedText.length()-3).trimmed()+"...";
+    m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);
+
+    updatePixmap();
 }

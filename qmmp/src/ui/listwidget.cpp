@@ -67,9 +67,7 @@ ListWidget::~ListWidget()
 void ListWidget::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value("PlayList/Font").toString();
-    if (!fontname.isEmpty())
-        m_font.fromString(fontname);
+    m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
     m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
     m_show_number = settings.value ("PlayList/show_numbers", TRUE).toBool();
 
@@ -304,8 +302,8 @@ void ListWidget::updateList()
         emit positionChanged(0, qMax(0, m_model->count() - m_rows));
     }
 
-    m_titles = m_model->getTitles(m_first, m_rows );
-    m_times  = m_model->getTimes(m_first, m_rows );
+    m_titles = m_model->getTitles(m_first, m_rows);
+    m_times  = m_model->getTimes(m_first, m_rows);
     m_scroll = FALSE;
     //add numbers
     for (int i = 0; i < m_titles.size() && m_show_number; ++i)
@@ -316,7 +314,7 @@ void ListWidget::updateList()
     }
     //elide title
     QString extra_string;
-    for (int i=0; i<m_titles.size(); ++i )
+    for (int i=0; i<m_titles.size(); ++i)
     {
         extra_string = getExtraString(m_first + i);
         int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);

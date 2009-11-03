@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,12 +24,10 @@
 #include <QPoint>
 #include <QWidget>
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
 class QAction;
-
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class Dock : public QObject
 {
     Q_OBJECT
@@ -38,7 +36,7 @@ public:
 
     ~Dock();
 
-    static Dock *getPointer();
+    static Dock *instance();
     void setMainWidget(QWidget*);
     void addWidget(QWidget *);
     void move(QWidget*, QPoint);
@@ -51,7 +49,7 @@ public:
 private:
     bool isDocked(QWidget*, QWidget*);
     bool isUnder(QWidget*, QWidget*, int);
-    static Dock *pointer;
+    static Dock *m_instance;
     QWidget *m_mainWidget;
     QList <QWidget *> m_widgetList;
     QList <bool> m_dockedList;

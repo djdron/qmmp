@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -117,6 +117,7 @@ private:
     QActionGroup *m_analyzerTypeGroup;
     QAction *m_peaksAction;
     QAction *m_transparentAction;
+    int m_ratio;
 };
 
 namespace mainvisual
@@ -133,7 +134,7 @@ public:
     const QString name() 
     {
         return "Analyzer";
-    };
+    }
 
 private:
     QSize m_size;

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,11 +22,11 @@
 
 #include "pixmapwidget.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 class Skin;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class MonoStereo : public PixmapWidget
 {
 Q_OBJECT

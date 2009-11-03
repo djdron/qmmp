@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,7 +29,6 @@ PlayListSlider::PlayListSlider(QWidget *parent)
         : QWidget(parent)
 {
     m_skin = Skin::instance();
-
     m_moving = FALSE;
     m_pressed = FALSE;
     m_min = 0;
@@ -57,26 +56,25 @@ void PlayListSlider::paintEvent(QPaintEvent *)
         paint.drawPixmap(0,58+i*29,m_skin->getPlPart(Skin::PL_RFILL));
     }
     if (m_pressed)
-        paint.drawPixmap(5,p,m_skin->getButton(Skin::PL_BT_SCROLL_P));
+        paint.drawPixmap(5*m_skin->ratio(),p,m_skin->getButton(Skin::PL_BT_SCROLL_P));
     else
-        paint.drawPixmap(5,p,m_skin->getButton(Skin::PL_BT_SCROLL_N));
+        paint.drawPixmap(5*m_skin->ratio(),p,m_skin->getButton(Skin::PL_BT_SCROLL_N));
     m_pos = p;
 }
 
 void PlayListSlider::mousePressEvent(QMouseEvent *e)
 {
-
     m_moving = TRUE;
     m_pressed = TRUE;
     press_pos = e->y();
-    if (m_pos<e->y() && e->y()<m_pos+18)
+    if (m_pos<e->y() && e->y()<m_pos+18*m_skin->ratio())
     {
         press_pos = e->y()-m_pos;
     }
     else
     {
-        m_value = convert(qMax(qMin(height()-18,e->y()-9),0));
-        press_pos = 9;
+        m_value = convert(qMax(qMin(height()-18*m_skin->ratio(),e->y()-9*m_skin->ratio()),0));
+        press_pos = 9*m_skin->ratio();
         if (m_value!=m_old)
         {
             emit sliderMoved(m_value);
@@ -101,7 +99,7 @@ void PlayListSlider::mouseMoveEvent(QMouseEvent* e)
         int po = e->y();
         po = po - press_pos;
 
-        if (0<=po && po<=height()-18)
+        if (0<=po && po<=height()-18*m_skin->ratio())
         {
             m_value = convert(po);
             update();
@@ -132,6 +130,6 @@ void PlayListSlider::updateSkin()
 
 int PlayListSlider::convert(int p)
 {
-    return int(floor(double(m_max-m_min)*(p)/(height()-18)+m_min));
+    return int(floor(double(m_max-m_min)*(p)/(height()-18*m_skin->ratio())+m_min));
 }
 
