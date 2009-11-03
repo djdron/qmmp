@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,9 +47,8 @@ MainVisual::MainVisual (QWidget *parent)
         : Visual (parent), m_vis (0), m_playing (FALSE)
 {
     m_skin = Skin::instance();
+    m_ratio = m_skin->ratio();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSettings()));
-    resize(75,20);
-    m_pixmap = QPixmap (75,20);
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
     m_nodes.clear();
@@ -208,18 +207,18 @@ void MainVisual::mousePressEvent (QMouseEvent *e)
 
 void MainVisual::drawBackGround()
 {
-    m_bg = QPixmap (75,20);
+    m_bg = QPixmap (76 * m_ratio, 16 * m_ratio);
     if (m_transparentAction->isChecked())
     {
         m_bg.fill (Qt::transparent);
         return;
     }
     QPainter painter(&m_bg);
-    for (int x = 0; x < 75; x += 2)
+    for (int x = 0; x < 76 * m_ratio; x += 2)
     {
         painter.setPen(m_skin->getVisColor(0));
-        painter.drawLine(x + 1, 0, x + 1, 20);
-        for (int y = 0; y < 20; y +=2)
+        painter.drawLine(x + 1, 0, x + 1, 16 *m_ratio);
+        for (int y = 0; y < 16 *m_ratio; y += 2)
         {
             painter.setPen(m_skin->getVisColor(0));
             painter.drawPoint(x,y);
@@ -231,6 +230,9 @@ void MainVisual::drawBackGround()
 
 void MainVisual::updateSettings()
 {
+    m_ratio = m_skin->ratio();
+    resize(76 * m_ratio, 16 * m_ratio);
+    m_pixmap = QPixmap (76 * m_ratio, 16 * m_ratio);
     drawBackGround();
     m_pixmap = m_bg;
     update();
@@ -426,9 +428,9 @@ using namespace mainvisual;
 Analyzer::Analyzer()
         : m_analyzerBarWidth (4), m_fps (20)
 {
-    m_size = QSize(75,20);
     clear();
     m_skin = Skin::instance();
+    m_size = QSize(76*m_skin->ratio(), 16*m_skin->ratio());
 
     double peaks_speed[] = { 0.05, 0.1, 0.2, 0.4, 0.8 };
     double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
@@ -528,6 +530,7 @@ bool Analyzer::process (VisualNode *node)
 
 void Analyzer::draw (QPainter *p)
 {
+    int r = m_skin->ratio();
     if (m_lines)
         for (int j = 0; j < 75; ++j)
         {
@@ -539,11 +542,17 @@ void Analyzer::draw (QPainter *p)
                     p->setPen (m_skin->getVisColor (3+(int(m_intern_vis_data[j])-i)));
                 else
                     p->setPen (m_skin->getVisColor (18-int(m_intern_vis_data[j])));
-                p->drawPoint (j, m_size.height()-i);
+                p->drawPoint (j*r, m_size.height() - r*i);
+                if(r == 2)
+                    p->drawPoint (j*r+1, m_size.height() - r*i);
             }
             p->setPen (m_skin->getVisColor (23));
             if (m_show_peaks)
-                p->drawPoint (j, m_size.height()-int(m_peaks[j]));
+            {
+                p->drawPoint (j*r, m_size.height() - r*m_peaks[j]);
+                if(r == 2)
+                    p->drawPoint (j*r+1, m_size.height() - r*m_peaks[j]);
+            }
         }
     else
         for (int j = 0; j < 19; ++j)
@@ -556,12 +565,20 @@ void Analyzer::draw (QPainter *p)
                     p->setPen (m_skin->getVisColor (3+(int(m_intern_vis_data[j])-i)));
                 else
                     p->setPen (m_skin->getVisColor (18-int(m_intern_vis_data[j])));
-                p->drawLine (j*4,m_size.height()-i, (j+1)*4-2,m_size.height()-i);
+
+                p->drawLine (j*4*r,m_size.height()-r*i, (j*4+2)*r,m_size.height()-r*i);
+                if(r == 2)
+                    p->drawLine (j*4*r, m_size.height()-r*i +1, (j*4+2)*r,m_size.height()-r*i+1);
             }
             p->setPen (m_skin->getVisColor (23));
             if (m_show_peaks)
-                p->drawLine (j*4,m_size.height()-int(m_peaks[j]),
-                             (j+1) *4-2,m_size.height()-int(m_peaks[j]));
+            {
+                p->drawLine (j*4*r,m_size.height()-r*m_peaks[j],
+                             (j*4+2)*r,m_size.height()-r*m_peaks[j]);
+                if(r == 2)
+                    p->drawLine (j*4*r,m_size.height()-r*m_peaks[j]+1,
+                             (j*4+2)*r,m_size.height()-r*m_peaks[j]+1);
+            }
         }
 }
 

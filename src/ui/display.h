@@ -21,23 +21,14 @@
 #define DISPLAY_H
 
 #include <QPixmap>
-
 #include <qmmp/statehandler.h>
 #include "pixmapwidget.h"
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class QPushButton;
-class QLabel;
-
 class TimeIndicator;
-class TitleBar;
 class PositionBar;
-class Number;
 class Skin;
 class ToggleButton;
-class OutputState;
+class TitleBar;
 class NumberDisplay;
 class SymbolDisplay;
 class MonoStereo;
@@ -46,7 +37,14 @@ class VolumeBar;
 class BalanceBar;
 class MainWindow;
 class SoundCore;
+class Button;
+class TextScroller;
+class MainVisual;
+class TitleBar;
 
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class MainDisplay : public PixmapWidget
 {
     Q_OBJECT
@@ -63,6 +61,8 @@ public:
     bool isShuffle()const;
     void setIsRepeatable(bool);
     void setIsShuffle(bool);
+    void setMinimalMode(bool b = TRUE);
+    void setActive(bool b);
 
 public slots:
     void setDuration(qint64);
@@ -84,14 +84,20 @@ private slots:
     void setVolume(int left, int right);
 
 private:
+    void updatePositions();
+    void updateMask();
     QWidget* m_equlizer;
     QWidget* m_playlist;
-    QPixmap pixmap;
-    QPushButton *button;
-    QLabel *label;
+    bool m_shaded;
     Skin *m_skin;
-    TitleBar *titleBar;
-    PositionBar *posbar;
+    PositionBar *m_posbar;
+    Button *m_previous;
+    Button *m_play;
+    Button *m_pause;
+    Button *m_stop;
+    Button *m_next;
+    Button *m_eject;
+    TextScroller *m_text;
     ToggleButton *m_eqButton;
     ToggleButton *m_plButton;
     ToggleButton *m_shuffleButton;
@@ -103,7 +109,9 @@ private:
     VolumeBar* m_volumeBar;
     BalanceBar* m_balanceBar;
     MainWindow* m_mw;
+    MainVisual* m_vis;
     TimeIndicator* m_timeIndicator;
+    TitleBar *m_titlebar;
     SoundCore *m_core;
 };
 

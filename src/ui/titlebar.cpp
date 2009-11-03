@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,6 +30,7 @@
 #include "dock.h"
 #include "titlebarcontrol.h"
 #include "shadedvisual.h"
+#include "display.h"
 #include "titlebar.h"
 
 // TODO skin cursor with shade mode
@@ -39,32 +40,30 @@ TitleBar::TitleBar(QWidget *parent)
     m_align = FALSE;
     m_skin = Skin::instance();
     setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
-    m_mw = qobject_cast<MainWindow*>(parent);
+    m_mw = qobject_cast<MainWindow*>(parent->parent());
     m_shaded = FALSE;
+    m_shade2 = 0;
     m_currentTime = 0;
+    m_control = 0;
+    m_visual = 0;
     //buttons
     m_menu = new Button(this,Skin::BT_MENU_N,Skin::BT_MENU_P, Skin::CUR_MAINMENU);
     connect(m_menu,SIGNAL(clicked()),this,SLOT(showMainMenu()));
     m_menu->move(6,3);
     m_minimize = new Button(this,Skin::BT_MINIMIZE_N,Skin::BT_MINIMIZE_P, Skin::CUR_MIN);
-    m_minimize->move(244,3);
     connect(m_minimize, SIGNAL(clicked()), m_mw, SLOT(showMinimized()));
     m_shade = new Button(this,Skin::BT_SHADE1_N,Skin::BT_SHADE1_P, Skin::CUR_WINBUT);
-    m_shade->move(254,3);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
     m_close = new Button(this,Skin::BT_CLOSE_N,Skin::BT_CLOSE_P, Skin::CUR_CLOSE);
-    m_close->move(264,3);
     connect(m_close, SIGNAL(clicked()), m_mw, SLOT(handleCloseRequest()));
     setActive(FALSE);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
-
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Display/shaded", FALSE).toBool())
         shade();
-    else
-        updateMask();
     m_align = TRUE;
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
+    updatePositions();
 }
 
 TitleBar::~TitleBar()
@@ -73,13 +72,30 @@ TitleBar::~TitleBar()
     settings.setValue("Display/shaded", m_shaded);
 }
 
+void TitleBar::updatePositions()
+{
+    int r = m_skin->ratio();
+    m_menu->move(r*6, r*3);
+    m_minimize->move(r*244, r*3);
+    m_shade->move(r*254, r*3);
+    m_close->move(r*264, r*3);
+    if(m_shade2)
+        m_shade2->move(r*254, r*3);
+    if(m_currentTime)
+        m_currentTime->move(r*127, r*4);
+    if(m_control)
+        m_control->move(r*168, r*2);
+    if(m_visual)
+        m_visual->move(r*79,r*5);
+}
+
 void TitleBar::mousePressEvent(QMouseEvent* event)
 {
     switch ((int) event->button ())
     {
     case Qt::LeftButton:
         m_pos = event->pos();
-        Dock::getPointer()->calculateDistances();
+        Dock::instance()->calculateDistances();
         break;
     case Qt::RightButton:
         m_mw->menu()->exec(event->globalPos());
@@ -88,14 +104,14 @@ void TitleBar::mousePressEvent(QMouseEvent* event)
 
 void TitleBar::mouseReleaseEvent(QMouseEvent*)
 {
-    Dock::getPointer()->updateDock();
+    Dock::instance()->updateDock();
 }
 void TitleBar::mouseMoveEvent(QMouseEvent* event)
 {
-    if (m_pos.x() < width() - 37)
+    if (m_pos.x() < width() - m_skin->ratio() * 37)
     {
         QPoint npos = (event->globalPos()-m_pos);
-        Dock::getPointer()->move(m_mw, npos);
+        Dock::instance()->move(m_mw, npos);
     }
 }
 
@@ -120,8 +136,8 @@ void TitleBar::setActive(bool a)
 void TitleBar::updateSkin()
 {
     setActive(FALSE);
-    updateMask();
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
+    updatePositions();
 }
 
 void TitleBar::showMainMenu()
@@ -132,37 +148,31 @@ void TitleBar::showMainMenu()
 void TitleBar::shade()
 {
     m_shaded = !m_shaded;
-
+    int r = m_skin->ratio();
     if (m_shaded)
     {
-        m_mw->setFixedSize(275,14);
         setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_SHADED_A));
         m_shade->hide();
         m_shade2 = new Button(this,Skin::BT_SHADE2_N, Skin::BT_SHADE2_P, Skin::CUR_WSNORMAL);
-        m_shade2->move(254,3);
         connect(m_shade2, SIGNAL(clicked()), SLOT(shade()));
         m_shade2->show();
         m_currentTime = new SymbolDisplay(this, 6);
-        m_currentTime->move(127,4);
         m_currentTime->show();
         m_currentTime->display("--:--");
         m_control = new TitleBarControl(this);
-        m_control->move(168,2);
         m_control->show();
-        connect (m_control, SIGNAL (nextClicked()), parent(), SLOT (next()));
-        connect (m_control, SIGNAL (previousClicked()), parent(), SLOT (previous()));
-        connect (m_control, SIGNAL (playClicked()), parent(), SLOT (play()));
-        connect (m_control, SIGNAL (pauseClicked()), parent(), SLOT (pause()));
-        connect (m_control, SIGNAL (stopClicked()), parent(), SLOT (stop()));
-        connect (m_control, SIGNAL (ejectClicked()), parent(), SLOT (addFile()));
+        connect (m_control, SIGNAL (nextClicked()), m_mw, SLOT (next()));
+        connect (m_control, SIGNAL (previousClicked()), m_mw, SLOT (previous()));
+        connect (m_control, SIGNAL (playClicked()), m_mw, SLOT (play()));
+        connect (m_control, SIGNAL (pauseClicked()), m_mw, SLOT (pause()));
+        connect (m_control, SIGNAL (stopClicked()), m_mw, SLOT (stop()));
+        connect (m_control, SIGNAL (ejectClicked()), m_mw, SLOT (addFile()));
         m_visual = new ShadedVisual(this);
         Visual::add(m_visual);
         m_visual->show();
-        m_visual->move(79,5);
     }
     else
     {
-        m_mw->setFixedSize(275,116);
         setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
         m_shade2->deleteLater();
         m_currentTime->deleteLater();
@@ -171,11 +181,14 @@ void TitleBar::shade()
         m_visual->deleteLater();
         m_shade2 = 0;
         m_currentTime = 0;
+        m_control = 0;
+        m_visual = 0;
         m_shade->show();
     }
+    qobject_cast<MainDisplay *> (parent())->setMinimalMode(m_shaded);
     if (m_align)
-        Dock::getPointer()->align(m_mw, m_shaded? -102: 102);
-    updateMask();
+        Dock::instance()->align(m_mw, m_shaded? -r*102: r*102);
+    updatePositions();
 }
 
 QString TitleBar::formatTime ( int sec )
@@ -202,11 +215,3 @@ void TitleBar::setTime(qint64 time)
         m_currentTime->display(formatTime(time/1000));
 }
 
-void TitleBar::updateMask()
-{
-    m_mw->clearMask();
-    m_mw->setMask(QRegion(0,0,m_mw->width(),m_mw->height()));
-    QRegion region = m_skin->getRegion(m_shaded? Skin::WINDOW_SHADE : Skin::NORMAL);
-    if (!region.isEmpty())
-        m_mw->setMask(region);
-}

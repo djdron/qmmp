@@ -50,46 +50,30 @@ PlayList::PlayList (QWidget *parent)
 {
     m_update = FALSE;
     m_resize = FALSE;
-    m_anchor_row = -1;
-    createMenus();
-    resize (275,116);
-    setMinimumSize (275,116);
-    setBaseSize (275,116);
-    m_listWidget = new ListWidget (this);
-    m_listWidget->show();
-    m_listWidget->setGeometry (12,20,243,58);
-
-    m_plslider = new PlayListSlider (this);
-    m_plslider->show();
-
-    setSizeIncrement (25,29);
     m_skin = Skin::instance();
+    m_ratio = m_skin->ratio();
+    createMenus();
+    resize (275*m_ratio, 116*m_ratio);
+    m_listWidget = new ListWidget (this);
+    m_plslider = new PlayListSlider (this);
+
+    setSizeIncrement (25*m_ratio, 29*m_ratio);
 
     m_buttonAdd = new Button (this,Skin::PL_BT_ADD,Skin::PL_BT_ADD, Skin::CUR_PNORMAL);
-    m_buttonAdd->move (11,86);
     m_buttonSub = new Button (this,Skin::PL_BT_SUB,Skin::PL_BT_SUB, Skin::CUR_PNORMAL);
-    m_buttonSub->move (40,86);
     m_selectButton  = new Button (this,Skin::PL_BT_SEL,Skin::PL_BT_SEL, Skin::CUR_PNORMAL);
-    m_selectButton->move (70,86);
     m_sortButton= new Button (this,Skin::PL_BT_SORT,Skin::PL_BT_SORT, Skin::CUR_PNORMAL);
-    m_sortButton->move (99,86);
     m_playlistButton = new Button (this,Skin::PL_BT_LST,Skin::PL_BT_LST, Skin::CUR_PNORMAL);
     m_resizeWidget = new QWidget(this);
     m_resizeWidget->resize(25,25);
-    m_resizeWidget->setGeometry(width()-25, height()-25, 25, 25);
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
-
     m_pl_control = new PlaylistControl (this);
     m_pl_control->move (0,0);
-    m_pl_control->show();
 
     m_length_totalLength = new SymbolDisplay (this,14);
     m_length_totalLength->setAlignment (Qt::AlignLeft);
-    m_length_totalLength->show();
 
     m_current_time = new SymbolDisplay (this,6);
-    m_current_time->show();
-
     m_keyboardManager = new KeyboardManager (this);
 
     connect (m_listWidget, SIGNAL (selectionChanged()), parent, SLOT (replay()));
@@ -114,11 +98,43 @@ PlayList::PlayList (QWidget *parent)
     m_titleBar->move (0,0);
     readSettings();
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
+    updatePositions();
 }
 
 
 PlayList::~PlayList()
 {}
+
+void PlayList::updatePositions()
+{
+    int sx = (width()-275*m_ratio)/25;
+    int sy = (height()-116*m_ratio)/29;
+    if (sx < 0 || sy < 0) //skip shaded mode
+        return;
+
+    setMinimumSize (275*m_ratio, 116*m_ratio);
+    setBaseSize (275*m_ratio,116*m_ratio);
+
+    m_titleBar->resize (275*m_ratio+25*sx, 20*m_ratio);
+    m_plslider->resize (20*m_ratio, 58*m_ratio+sy*29);
+
+    m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy);
+    m_listWidget->move (12*m_ratio,20*m_ratio);
+
+    m_buttonAdd->move (11*m_ratio, 86*m_ratio+29*sy);
+    m_buttonSub->move (40*m_ratio, 86*m_ratio+29*sy);
+    m_selectButton->move (70*m_ratio, 86*m_ratio+29*sy);
+    m_sortButton->move (99*m_ratio, 86*m_ratio+29*sy);
+
+    m_pl_control->move (128*m_ratio+sx*25, 100*m_ratio+29*sy);
+    m_playlistButton->move (228*m_ratio+sx*25,86*m_ratio+29*sy);
+
+    m_length_totalLength -> move (131*m_ratio+sx*25,88*m_ratio+29*sy);
+    m_current_time->move (190*m_ratio+sx*25,101*m_ratio+29*sy);
+
+    m_plslider->move (255*m_ratio+sx*25,20*m_ratio);
+    m_resizeWidget->move(width() - 25, height() - 29);
+}
 
 void PlayList::createMenus()
 {
@@ -310,7 +326,7 @@ void PlayList::createActions()
     connect (saveListAct, SIGNAL (triggered()), this, SIGNAL (savePlaylist()));
     //this->addActions (m_playlistMenu->actions());
 
-    Dock::getPointer()->addActions (m_actions);
+    Dock::instance()->addActions (m_actions);
 }
 
 void PlayList::closeEvent (QCloseEvent *e)
@@ -322,8 +338,8 @@ void PlayList::closeEvent (QCloseEvent *e)
 
 void PlayList::paintEvent (QPaintEvent *)
 {
-    int m_sx = (width()-275) /25;
-    int m_sy = (height()-116) /29;
+    int m_sx = (width()-275*m_ratio) /25;
+    int m_sy = (height()-116*m_ratio) /29;
     drawPixmap (m_sx, m_sy);
 }
 
@@ -331,48 +347,27 @@ void PlayList::drawPixmap (int sx, int sy)
 {
     QPainter paint;
     paint.begin (this);
-    paint.drawPixmap (0,20,m_skin->getPlPart (Skin::PL_LFILL));
-    for (int i = 1; i<sy+2; i++)
+    paint.drawPixmap (0,20*m_ratio, m_skin->getPlPart (Skin::PL_LFILL));
+    for (int i = 1; i<sy+2*m_ratio; i++)
     {
-        paint.drawPixmap (0,20+29*i,m_skin->getPlPart (Skin::PL_LFILL));
+        paint.drawPixmap (0,20*m_ratio+29*i,m_skin->getPlPart (Skin::PL_LFILL));
     }
-    paint.drawPixmap (0,78+29*sy,m_skin->getPlPart (Skin::PL_LSBAR));
+    paint.drawPixmap (0,78*m_ratio+29*sy,m_skin->getPlPart (Skin::PL_LSBAR));
     for (int i = 0; i<sx; i++)
     {
-        paint.drawPixmap (125+i*25,78+sy*29,m_skin->getPlPart (Skin::PL_SFILL1));
+        paint.drawPixmap (125*m_ratio+i*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_SFILL1));
     }
 
-    paint.drawPixmap (125+sx*25,78+sy*29,m_skin->getPlPart (Skin::PL_RSBAR));
+    paint.drawPixmap (125*m_ratio+sx*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_RSBAR));
     paint.end();
 
 }
 
-void PlayList::resizeEvent (QResizeEvent *e)
+void PlayList::resizeEvent (QResizeEvent *)
 {
-    int sx = (e->size().width()-275) /25;
-    int sy = (e->size().height()-116) /29;
-    if (sx < 0 || sy < 0)
-        return;
-
-    m_titleBar->resize (275+25*sx,20);
-    m_plslider->resize (20,58+sy*29);
-
-    m_listWidget->resize (243+25*sx,58+29*sy);
-
-    m_buttonAdd->move (11,86+29*sy);
-    m_buttonSub->move (40,86+29*sy);
-    m_selectButton->move (70,86+29*sy);
-    m_sortButton->move (99,86+29*sy);
-
-    m_pl_control->move (128+sx*25,100+29*sy);
-    m_playlistButton->move (228+sx*25,86+29*sy);
-
-    m_length_totalLength -> move (131+sx*25,88+29*sy);
-    m_current_time->move (190+sx*25,101+29*sy);
-
-    m_plslider->move (255+sx*25,20);
-    m_resizeWidget->move(250 + sx * 25, 91 + sy * 29);
+    updatePositions();
 }
+
 void PlayList::mousePressEvent (QMouseEvent *e)
 {
     m_pos = e->pos ();
@@ -411,7 +406,7 @@ void PlayList::mouseReleaseEvent (QMouseEvent *)
     /*if (m_resize)
         m_listWidget->updateList();*/
     m_resize = FALSE;
-    Dock::getPointer()->updateDock();
+    Dock::instance()->updateDock();
 }
 void PlayList::setModel (PlayListModel *model)
 {
@@ -541,5 +536,17 @@ void PlayList::updateSkin()
 {
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL)); // TODO shaded
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
+    if(m_ratio != m_skin->ratio()) //update minimal size if needed
+    {
+        int prev = m_ratio; //save previous ratio
+        m_ratio = m_skin->ratio();
+        if(height() < 116*prev) //minimal mode
+            setMinimumSize (275*m_ratio, 14*m_ratio);
+        else
+            setMinimumSize (275*m_ratio, 116*m_ratio);
+        setBaseSize (275*m_ratio,116*m_ratio);
+        setSizeIncrement (25*m_ratio, 29*m_ratio);
+        updatePositions();
+    }
     update();
 }

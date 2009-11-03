@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,17 +22,15 @@
 
 #include "pixmapwidget.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
 class QMouseEvent;
-
 class Skin;
 class MainWindow;
 class Button;
 class ShadedBar;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class EqTitleBar : public PixmapWidget
 {
 Q_OBJECT
@@ -49,10 +47,10 @@ public slots:
 private slots:
     void shade();
     void updateVolume();
-    void updateMask();
     void updateSkin();
 
 private:
+    void updatePositions();
     Skin* m_skin;
     bool m_active;
     int m_left;
@@ -71,7 +69,6 @@ protected:
     void mousePressEvent(QMouseEvent*);
     void mouseReleaseEvent(QMouseEvent*);
     void mouseMoveEvent(QMouseEvent*);
-
 };
 
 #endif

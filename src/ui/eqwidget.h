@@ -53,6 +53,7 @@ public:
     * necessary for auto-load presets
     */
     void loadPreset(const QString &name);
+    void setMimimalMode(bool b = TRUE);
 
 signals:
     void valueChanged();
@@ -72,9 +73,11 @@ private slots:
     void importWinampEQF();
 
 private:
+    void updatePositions();
     void readSettings();
     void writeSettings();
     void createActions();
+    void updateMask();
     EQPreset *findPreset(const QString &name);
     virtual void keyPressEvent (QKeyEvent *);
     Skin *m_skin;
@@ -90,6 +93,7 @@ private:
     QList<EQPreset*> m_presets;
     QList<EQPreset*> m_autoPresets;
     QString m_autoName;
+    bool m_shaded;
 
 protected:
     virtual void changeEvent(QEvent*);

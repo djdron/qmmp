@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov          m                       *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -70,7 +70,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
 #endif
     //setFixedSize (275,116);
-    resize(275,116);
     setWindowTitle("Qmmp");
 
     //prepare libqmmp and libqmmpui libraries for playing
@@ -84,12 +83,12 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
     //user interface
     m_skin = new Skin(this);
+    resize(275 * m_skin->ratio(),116 * m_skin->ratio());
     Dock *dock = new Dock(this);
     dock->setMainWidget(this);
-    display = new MainDisplay(this);
-    setCentralWidget(display);
-    display->show();
-    display->setFocus ();
+    m_display = new MainDisplay(this);
+    setCentralWidget(m_display);
+    m_display->setFocus ();
 
     m_playlist = new PlayList(this);
     m_playlist->setModel(m_playListModel);
@@ -101,11 +100,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_jumpDialog = new JumpToTrackDialog(this);
     m_jumpDialog->setModel(m_playListModel);
     m_jumpDialog->hide();
-
-    m_titlebar = new TitleBar(this);
-    m_titlebar->move(0,0);
-    m_titlebar->show();
-    m_titlebar->setActive(TRUE);
 
     createActions();
     //prepare visualization
@@ -123,17 +117,14 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect (m_playlist,SIGNAL(loadPlaylist()),SLOT(loadPlaylist()));
     connect (m_playlist,SIGNAL(savePlaylist()),SLOT(savePlaylist()));
 
-    connect(display,SIGNAL(shuffleToggled(bool)),m_playListModel,SLOT(prepareForShufflePlaying(bool)));
-    connect(display,SIGNAL(repeatableToggled(bool)),m_playListModel,SLOT(prepareForRepeatablePlaying(bool)));
+    connect(m_display,SIGNAL(shuffleToggled(bool)),m_playListModel,SLOT(prepareForShufflePlaying(bool)));
+    connect(m_display,SIGNAL(repeatableToggled(bool)),m_playListModel,SLOT(prepareForRepeatablePlaying(bool)));
 
     connect(m_equalizer, SIGNAL(valueChanged()), SLOT(updateEQ()));
-
     connect(m_jumpDialog,SIGNAL(playRequest()),this,SLOT(play()));
 
-    //connect(m_core, SIGNAL(finished()), SLOT(next()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
-    connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
     connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
             SLOT(setProgress(int)));
@@ -142,8 +133,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
 
     readSettings();
-    display->setEQ(m_equalizer);
-    display->setPL(m_playlist);
+    m_display->setEQ(m_equalizer);
+    m_display->setPL(m_playlist);
     dock->updateDock();
     //m_playListModel->readSettings();
     m_playListModel->doCurrentVisibleRequest();
@@ -203,7 +194,6 @@ void MainWindow::pause(void)
 
 void MainWindow::stop()
 {
-    //display->setTime(0);
     m_player->stop();
 }
 
@@ -232,29 +222,20 @@ void MainWindow::showState(Qmmp::State state)
     switch ((int) state)
     {
     case Qmmp::Playing:
-    {
         if (m_playListModel->currentItem())
             m_equalizer->loadPreset(m_playListModel->currentItem()->url().section("/",-1));
         if (m_playlist->listWidget())
             m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
         break;
-    }
     case Qmmp::Paused:
-    {
-        //m_generalHandler->setState(General::Paused);
         break;
-    }
     case Qmmp::Stopped:
-    {
-        //m_generalHandler->setState(General::Stopped);
         m_playlist->setTime(-1);
-        m_titlebar->setTime(-1);
         if (m_playlist->currentItem())
             setWindowTitle(m_playlist->currentItem()->text());
         else
             setWindowTitle("Qmmp");
         break;
-    }
     }
 }
 void MainWindow::showMetaData()
@@ -324,7 +305,7 @@ void MainWindow::changeEvent (QEvent * event)
 {
     if (event->type() == QEvent::ActivationChange)
     {
-        m_titlebar->setActive(isActiveWindow());
+        m_display->setActive(isActiveWindow());
     }
 }
 
@@ -349,9 +330,9 @@ void MainWindow::readSettings()
 
         // Repeat/Shuffle
         m_playListModel->prepareForRepeatablePlaying(val);
-        display->setIsRepeatable(val);
+        m_display->setIsRepeatable(val);
         val = settings.value("Playlist/shuffle",FALSE).toBool();
-        display->setIsShuffle(val);
+        m_display->setIsShuffle(val);
         m_playListModel->prepareForShufflePlaying(val);
 
         // Playlist name
@@ -377,8 +358,8 @@ void MainWindow::writeSettings()
 
     // Repeat/Shuffle
     settings.beginGroup("Playlist");
-    settings.setValue("repeatable",display->isRepeatable());
-    settings.setValue("shuffle",display->isShuffle());
+    settings.setValue("repeatable",m_display->isRepeatable());
+    settings.setValue("shuffle",m_display->isShuffle());
 
     // Playlist name
     settings.setValue("playlist_name",m_playlistName);
@@ -396,6 +377,7 @@ void MainWindow::showSettings()
         //m_core->updateConfig();
         m_visMenu->updateActions();
         m_skin->reloadSkin();
+        Dock::instance()->updateDock();
     }
     delete m_confDialog;
 }
@@ -407,8 +389,8 @@ void MainWindow::toggleVisibility()
         show();
         raise();
         activateWindow();
-        m_playlist->setVisible(display->isPlaylistVisible());
-        m_equalizer->setVisible(display->isEqualizerVisible());
+        m_playlist->setVisible(m_display->isPlaylistVisible());
+        m_equalizer->setVisible(m_display->isEqualizerVisible());
         qApp->processEvents();
         setFocus ();
         if (isMinimized())
@@ -466,7 +448,7 @@ void MainWindow::createActions()
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&About"), this, SLOT(about()));
     m_mainMenu->addAction(tr("&About Qt"), qApp, SLOT(aboutQt()));
-    Dock::getPointer()->addActions(m_mainMenu->actions());
+    Dock::instance()->addActions(m_mainMenu->actions());
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Exit"),this, SLOT(close ()), tr("Ctrl+Q"));
 
@@ -477,8 +459,8 @@ void MainWindow::createActions()
     backward->setShortcut(QKeySequence(Qt::Key_Left));
     connect(backward,SIGNAL(triggered(bool)),this,SLOT(backward()));
 
-    Dock::getPointer()->addActions( QList<QAction*>() << forward << backward );
-    Dock::getPointer()->addActions(m_mainMenu->actions());
+    Dock::instance()->addActions( QList<QAction*>() << forward << backward );
+    Dock::instance()->addActions(m_mainMenu->actions());
 }
 
 
@@ -632,7 +614,7 @@ void MainWindow::handleCloseRequest()
         QApplication::closeAllWindows();
 }
 
-void MainWindow::addUrl( )
+void MainWindow::addUrl()
 {
     AddUrlDialog::popup(this,m_playListModel);
 }
@@ -644,7 +626,7 @@ SoundCore * MainWindow::soundCore() const
 
 MainDisplay * MainWindow::mainDisplay() const
 {
-    return display;
+    return m_display;
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *ke)

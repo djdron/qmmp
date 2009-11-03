@@ -26,11 +26,11 @@
 #include "skin.h"
 #include "timeindicator.h"
 
-TimeIndicator::TimeIndicator ( QWidget *parent )
-        : PixmapWidget ( parent )
+TimeIndicator::TimeIndicator (QWidget *parent)
+        : PixmapWidget (parent)
 {
     m_skin = Skin::instance();
-    m_pixmap = QPixmap ( 65,13 );
+    m_pixmap = QPixmap (65 * m_skin->ratio(),13 * m_skin->ratio());
     m_elapsed = true;
     m_time = m_songDuration = 0;
     readSettings();
@@ -47,34 +47,35 @@ TimeIndicator::TimeIndicator ( QWidget *parent )
 void TimeIndicator::setTime ( int t )
 {
     m_time = t;
-    m_pixmap.fill ( Qt::transparent );
-    QPainter paint ( &m_pixmap );
+    m_pixmap.fill (Qt::transparent);
+    int r = m_skin->ratio();
+    QPainter paint (&m_pixmap);
 
     if (!m_elapsed)
     {
         t = m_songDuration - t;
-        paint.drawPixmap(QPoint(2,0),m_skin->getNumber( 10 ));
+        paint.drawPixmap(r*2,0,m_skin->getNumber(10));
     }
     if (t < 0)
         t = 0;
 
-    paint.drawPixmap(QPoint(13,0),m_skin->getNumber( t/600%10 ));
-    paint.drawPixmap(QPoint(26,0),m_skin->getNumber( t/60%10 ));
-    paint.drawPixmap(QPoint(43,0),m_skin->getNumber( t%60/10 ));
-    paint.drawPixmap(QPoint(56,0),m_skin->getNumber( t%60%10 ));
+    paint.drawPixmap(r*13,0,m_skin->getNumber(t/600%10));
+    paint.drawPixmap(r*26,0,m_skin->getNumber(t/60%10));
+    paint.drawPixmap(r*43,0,m_skin->getNumber(t%60/10));
+    paint.drawPixmap(r*56,0,m_skin->getNumber(t%60%10));
 
-    setPixmap ( m_pixmap );
+    setPixmap (m_pixmap);
 
 }
 
 void TimeIndicator::reset()
 {
-    m_pixmap.fill ( Qt::transparent );
-    QPainter paint ( &m_pixmap );
-    setPixmap ( m_pixmap );
+    m_pixmap.fill (Qt::transparent);
+    QPainter paint (&m_pixmap);
+    setPixmap (m_pixmap );
 }
 
-void TimeIndicator::mousePressEvent(QMouseEvent* e )
+void TimeIndicator::mousePressEvent(QMouseEvent* e)
 {
     if (m_needToShowTime && e->button() & Qt::LeftButton)
     {
@@ -97,6 +98,7 @@ TimeIndicator::~TimeIndicator()
 
 void TimeIndicator::updateSkin()
 {
+    m_pixmap = QPixmap (65 * m_skin->ratio(),13 * m_skin->ratio());
     if (m_needToShowTime)
         setTime(m_time);
 }
@@ -109,7 +111,6 @@ void TimeIndicator::readSettings()
     settings.endGroup();
 }
 
-
 void TimeIndicator::writeSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -118,11 +119,9 @@ void TimeIndicator::writeSettings()
     settings.endGroup();
 }
 
-
 void TimeIndicator::setNeedToShowTime(bool need)
 {
     m_needToShowTime = need;
-    //if (!need) reset();
     if (!need)
         m_timer->start();
     else

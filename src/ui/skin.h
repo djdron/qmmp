@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Based on Promoe, an XMMS2 Client                                      *
@@ -41,6 +41,10 @@ public:
 
     static Skin *instance();
     static QPixmap getPixmap(const QString&, QDir);
+    int ratio()
+    {
+        return m_double_size ? 2 : 1;
+    }
     const QPixmap getMain() const
     {
         return m_main;
@@ -339,6 +343,7 @@ private:
      * to load pixmap from default skin.
      */
     QPixmap *getDummyPixmap(const QString&);
+    QPixmap scalePixmap(const QPixmap &pix, int ratio = 2);
     static Skin *m_instance;
     QDir m_skin_dir;
     QMap<uint, QPixmap> buttons;
@@ -360,6 +365,7 @@ private:
     QList<QPixmap> m_balance;
     QList<QColor> m_vis_colors;
     bool m_use_cursors;
+    bool m_double_size;
 
     void loadMain();
     void loadButtons();

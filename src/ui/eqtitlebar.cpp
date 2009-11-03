@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,13 +20,12 @@
 #include <QMouseEvent>
 #include <QMenu>
 #include <QSettings>
-
+#include "eqwidget.h"
 #include "skin.h"
 #include "shadedbar.h"
 #include "dock.h"
 #include "mainwindow.h"
 #include "button.h"
-
 #include "eqtitlebar.h"
 
 EqTitleBar::EqTitleBar(QWidget *parent)
@@ -44,19 +43,16 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     m_mw = qobject_cast<MainWindow*>(m_eq->parent());
     m_close = new Button(this, Skin::EQ_BT_CLOSE_N, Skin::EQ_BT_CLOSE_P, Skin::CUR_EQCLOSE);
     connect(m_close, SIGNAL(clicked()),m_eq, SIGNAL(closed()));
-    m_close->move(264,3);
     m_shade = new Button(this, Skin::EQ_BT_SHADE1_N, Skin::EQ_BT_SHADE1_P, Skin::CUR_EQNORMAL);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
-    m_shade->move(254,3);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Equalizer/shaded", FALSE).toBool())
         shade();
-    else
-        updateMask();
     m_align = TRUE;
     setActive(FALSE);
     setCursor(m_skin->getCursor(Skin::CUR_EQTITLE));
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
+    updatePositions();
 }
 
 
@@ -64,6 +60,19 @@ EqTitleBar::~EqTitleBar()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Equalizer/shaded", m_shaded);
+}
+
+void EqTitleBar::updatePositions()
+{
+     int r = m_skin->ratio();
+     m_close->move(r*264,r*3);
+     m_shade->move(r*254,r*3);
+     if(m_volumeBar)
+         m_volumeBar->move(r*61,r*4);
+     if(m_balanceBar)
+         m_balanceBar->move(r*164,r*4);
+     if(m_shade2)
+         m_shade2->move(r*254,r*3);
 }
 
 void EqTitleBar::setActive(bool active)
@@ -111,46 +120,45 @@ void EqTitleBar::mousePressEvent(QMouseEvent* event)
 
 void EqTitleBar::mouseMoveEvent(QMouseEvent* event)
 {
-    if (m_pos.x() < width() - 30)
+    if (m_pos.x() < width() - 30 * m_skin->ratio())
     {
         QPoint npos = (event->globalPos()-m_pos);
-        Dock::getPointer()->move(m_eq, npos);
+        Dock::instance()->move(m_eq, npos);
     }
 }
 
 void EqTitleBar::mouseReleaseEvent(QMouseEvent*)
 {
-    Dock::getPointer()->updateDock();
+    Dock::instance()->updateDock();
 }
 
 void EqTitleBar::shade()
 {
     m_shaded = !m_shaded;
+    int r = m_skin->ratio();
 
     if (m_shaded)
     {
-        m_eq->setFixedSize(275,14);
         setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_SHADED_A));
         m_shade->hide();
         m_shade2 = new Button(this, Skin::EQ_BT_SHADE2_N, Skin::EQ_BT_SHADE2_P, Skin::CUR_EQNORMAL);
-        m_shade2->move(254,3);
+        m_shade2->move(r*254,r*3);
         connect(m_shade2, SIGNAL(clicked()), SLOT(shade()));
         m_shade2->show();
         m_volumeBar = new ShadedBar(this, Skin::EQ_VOLUME1, Skin::EQ_VOLUME2, Skin::EQ_VOLUME3);
-        m_volumeBar->move(61,4);
+        m_volumeBar->move(r*61,r*4);
         m_volumeBar->show();
         connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
         m_balanceBar = new ShadedBar(this, Skin::EQ_BALANCE1, Skin::EQ_BALANCE2, Skin::EQ_BALANCE3);
-        m_balanceBar->move(164,4);
-        m_balanceBar->setFixedSize(42,7);
-        m_balanceBar->setRange(-100,100);
+        m_balanceBar->move(r*164,r*4);
+        m_balanceBar->setFixedSize(r*42,r*7);
+        m_balanceBar->setRange(-100*r,r*100);
         m_balanceBar->show();
         connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
         setVolume(m_left, m_right); //show current volume and balance
     }
     else
     {
-        m_eq->setFixedSize(275,116);
         setPixmap(m_skin->getEqPart(Skin::EQ_TITLEBAR_A));
         m_shade2->deleteLater();
         m_volumeBar->deleteLater();
@@ -160,9 +168,9 @@ void EqTitleBar::shade()
         m_shade2 = 0;
         m_shade->show();
     }
+    qobject_cast<EqWidget *>(m_eq)->setMimimalMode(m_shaded);
     if (m_align)
-        Dock::getPointer()->align(m_eq, m_shaded? -102: 102);
-    updateMask();
+        Dock::instance()->align(m_eq, m_shaded? -102*r: 102*r);
 }
 
 void EqTitleBar::updateVolume()
@@ -170,17 +178,8 @@ void EqTitleBar::updateVolume()
     m_mw->setVolume(m_volumeBar->value(), m_balanceBar->value());
 }
 
-void EqTitleBar::updateMask()
-{
-    m_eq->clearMask();
-    m_eq->setMask(QRegion(0,0,m_eq->width(),m_eq->height()));
-    QRegion region = m_skin->getRegion(m_shaded? Skin::EQUALIZER_WS : Skin::EQUALIZER);
-    if (!region.isEmpty())
-        m_eq->setMask(region);
-}
-
 void EqTitleBar::updateSkin()
 {
-    updateMask();
     setCursor(m_skin->getCursor(Skin::CUR_EQTITLE));
+    updatePositions();
 }

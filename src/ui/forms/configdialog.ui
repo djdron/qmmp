@@ -356,6 +356,13 @@
                   </property>
                  </widget>
                 </item>
+                <item>
+                 <widget class="QCheckBox" name="doubleSizeCheckBox">
+                  <property name="text">
+                   <string>Double size</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </widget>
              </item>

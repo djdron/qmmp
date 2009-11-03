@@ -173,84 +173,84 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="228"/>
-        <location filename="../configdialog.cpp" line="281"/>
-        <location filename="../configdialog.cpp" line="313"/>
-        <location filename="../configdialog.cpp" line="346"/>
-        <location filename="../configdialog.cpp" line="379"/>
+        <location filename="../configdialog.cpp" line="229"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="314"/>
+        <location filename="../configdialog.cpp" line="347"/>
+        <location filename="../configdialog.cpp" line="380"/>
         <source>Enabled</source>
         <translation>Włączone</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="228"/>
-        <location filename="../configdialog.cpp" line="281"/>
-        <location filename="../configdialog.cpp" line="313"/>
-        <location filename="../configdialog.cpp" line="346"/>
-        <location filename="../configdialog.cpp" line="379"/>
+        <location filename="../configdialog.cpp" line="229"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="314"/>
+        <location filename="../configdialog.cpp" line="347"/>
+        <location filename="../configdialog.cpp" line="380"/>
         <source>Description</source>
         <translation>Opis</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="228"/>
-        <location filename="../configdialog.cpp" line="281"/>
-        <location filename="../configdialog.cpp" line="313"/>
-        <location filename="../configdialog.cpp" line="346"/>
-        <location filename="../configdialog.cpp" line="379"/>
+        <location filename="../configdialog.cpp" line="229"/>
+        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="314"/>
+        <location filename="../configdialog.cpp" line="347"/>
+        <location filename="../configdialog.cpp" line="380"/>
         <source>Filename</source>
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="578"/>
+        <location filename="../configdialog.cpp" line="579"/>
         <source>Artist</source>
         <translation>Artysta</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="579"/>
+        <location filename="../configdialog.cpp" line="580"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="580"/>
+        <location filename="../configdialog.cpp" line="581"/>
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="581"/>
+        <location filename="../configdialog.cpp" line="582"/>
         <source>Track number</source>
         <translation>Numer utworu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="582"/>
+        <location filename="../configdialog.cpp" line="583"/>
         <source>Disc number</source>
         <translation>Numer albumu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="583"/>
+        <location filename="../configdialog.cpp" line="584"/>
         <source>Genre</source>
         <translation>Gatunek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="584"/>
+        <location filename="../configdialog.cpp" line="585"/>
         <source>Composer</source>
         <translation>Kompozytor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="585"/>
+        <location filename="../configdialog.cpp" line="586"/>
         <source>File name</source>
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="586"/>
+        <location filename="../configdialog.cpp" line="587"/>
         <source>File path</source>
         <translation>Lokalizacja</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="587"/>
+        <location filename="../configdialog.cpp" line="588"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="588"/>
+        <location filename="../configdialog.cpp" line="589"/>
         <source>Comment</source>
         <translation>Komentarz</translation>
     </message>
@@ -288,48 +288,48 @@
     <message>
         <location filename="../forms/configdialog.ui" line="284"/>
         <location filename="../forms/configdialog.ui" line="332"/>
-        <location filename="../forms/configdialog.ui" line="427"/>
+        <location filename="../forms/configdialog.ui" line="434"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="386"/>
+        <location filename="../forms/configdialog.ui" line="393"/>
         <source>Metadata</source>
         <translation>Metadane</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="398"/>
+        <location filename="../forms/configdialog.ui" line="405"/>
         <source>Load metadata from files</source>
         <translation>Załaduj metadane z pliku</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="408"/>
+        <location filename="../forms/configdialog.ui" line="415"/>
         <source>Song Display</source>
         <translation>Wyświetlanie utworu</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="414"/>
+        <location filename="../forms/configdialog.ui" line="421"/>
         <source>Title format:</source>
         <translation>Format tytułu:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="546"/>
+        <location filename="../forms/configdialog.ui" line="553"/>
         <source>Input</source>
         <translation>Wejście</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="569"/>
+        <location filename="../forms/configdialog.ui" line="576"/>
         <source>Output</source>
         <translation>Wyjście</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="503"/>
+        <location filename="../forms/configdialog.ui" line="510"/>
         <source>Preferences</source>
         <translation>Ustawienia</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="516"/>
-        <location filename="../forms/configdialog.ui" line="708"/>
+        <location filename="../forms/configdialog.ui" line="523"/>
+        <location filename="../forms/configdialog.ui" line="715"/>
         <source>Information</source>
         <translation>Informacje</translation>
     </message>
@@ -340,7 +340,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="101"/>
-        <location filename="../forms/configdialog.ui" line="791"/>
+        <location filename="../forms/configdialog.ui" line="798"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>
@@ -355,17 +355,17 @@
         <translation>Zaawansowane</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="966"/>
+        <location filename="../forms/configdialog.ui" line="973"/>
         <source>Close</source>
         <translation>Zamknij</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="190"/>
+        <location filename="../configdialog.cpp" line="191"/>
         <source>Archived skin</source>
         <translation>Skompresowana skórka</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="210"/>
+        <location filename="../configdialog.cpp" line="211"/>
         <source>Unarchived skin</source>
         <translation>Niekompresowana skórka</translation>
     </message>
@@ -375,27 +375,27 @@
         <translation>Sieć</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="586"/>
+        <location filename="../forms/configdialog.ui" line="593"/>
         <source>Visualization</source>
         <translation>Wizualizacje</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="603"/>
+        <location filename="../forms/configdialog.ui" line="610"/>
         <source>Effects</source>
         <translation>Efekty</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="620"/>
+        <location filename="../forms/configdialog.ui" line="627"/>
         <source>General</source>
         <translation>Ogólne</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="699"/>
+        <location filename="../forms/configdialog.ui" line="706"/>
         <source>File Dialog</source>
         <translation>Okno dialogowe</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="644"/>
+        <location filename="../forms/configdialog.ui" line="651"/>
         <source>Audio</source>
         <translation>Dźwięk</translation>
     </message>
@@ -420,92 +420,97 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="455"/>
+        <location filename="../forms/configdialog.ui" line="362"/>
+        <source>Double size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="462"/>
         <source>Show song numbers</source>
         <translation>Wyświetl numery utworów na liście odtwarzania</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="650"/>
+        <location filename="../forms/configdialog.ui" line="657"/>
         <source>Use software volume control</source>
         <translation>Użyj programowej regulacji głośności</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="660"/>
+        <location filename="../forms/configdialog.ui" line="667"/>
         <source>Visibility Control</source>
         <translation>Sterowanie</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="666"/>
+        <location filename="../forms/configdialog.ui" line="673"/>
         <source>Hide on close</source>
         <translation>Zminimalizuj przy zamykaniu</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="673"/>
+        <location filename="../forms/configdialog.ui" line="680"/>
         <source>Start hidden</source>
         <translation>Uruchom zminimalizowany</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="683"/>
+        <location filename="../forms/configdialog.ui" line="690"/>
         <source>Compatibility</source>
         <translation>Kompatybilność</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="689"/>
+        <location filename="../forms/configdialog.ui" line="696"/>
         <source>Openbox compatibility</source>
         <translation>Zgodność z Openbox</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="834"/>
+        <location filename="../forms/configdialog.ui" line="841"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="846"/>
+        <location filename="../forms/configdialog.ui" line="853"/>
         <source>Enable proxy usage</source>
         <translation>Włącz proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="853"/>
+        <location filename="../forms/configdialog.ui" line="860"/>
         <source>Proxy host name:</source>
         <translation>Nazwa hosta proxy:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="866"/>
+        <location filename="../forms/configdialog.ui" line="873"/>
         <source>Proxy port:</source>
         <translation>Port proxy:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="879"/>
+        <location filename="../forms/configdialog.ui" line="886"/>
         <source>Use authentication with proxy</source>
         <translation>Użyj autoryzacji z proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="886"/>
+        <location filename="../forms/configdialog.ui" line="893"/>
         <source>Proxy user name:</source>
         <translation>Nazwa użytkownika:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="899"/>
+        <location filename="../forms/configdialog.ui" line="906"/>
         <source>Proxy password:</source>
         <translation>Hasło:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="434"/>
+        <location filename="../forms/configdialog.ui" line="441"/>
         <source>Convert underscores to blanks</source>
         <translation>Konwertuj podkreślenia na spacje</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="441"/>
+        <location filename="../forms/configdialog.ui" line="448"/>
         <source>Convert %20 to blanks</source>
         <translation>Konwertuj sekwencje %20 na spacje</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="720"/>
+        <location filename="../configdialog.cpp" line="722"/>
         <source>Select Skin Files</source>
         <translation>Wybierz skórę</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="721"/>
+        <location filename="../configdialog.cpp" line="723"/>
         <source>Skin files</source>
         <translation>Pliki skór</translation>
     </message>
@@ -520,29 +525,29 @@
         <translation>Odśwież</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="448"/>
+        <location filename="../forms/configdialog.ui" line="455"/>
         <source>Show protocol</source>
         <translation>Pokaż protokół</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="731"/>
+        <location filename="../forms/configdialog.ui" line="738"/>
         <source>Transparency</source>
         <translation>Przezroczystość</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="737"/>
+        <location filename="../forms/configdialog.ui" line="744"/>
         <source>Main window</source>
         <translation>Okno główne</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="760"/>
-        <location filename="../forms/configdialog.ui" line="784"/>
-        <location filename="../forms/configdialog.ui" line="808"/>
+        <location filename="../forms/configdialog.ui" line="767"/>
+        <location filename="../forms/configdialog.ui" line="791"/>
+        <location filename="../forms/configdialog.ui" line="815"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="767"/>
+        <location filename="../forms/configdialog.ui" line="774"/>
         <source>Equalizer</source>
         <translation>Equalizer</translation>
     </message>
@@ -550,53 +555,53 @@
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="159"/>
-        <location filename="../eqwidget.cpp" line="182"/>
+        <location filename="../eqwidget.cpp" line="168"/>
+        <location filename="../eqwidget.cpp" line="191"/>
         <source>preset</source>
         <translation>preset</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="268"/>
+        <location filename="../eqwidget.cpp" line="277"/>
         <source>&amp;Load/Delete</source>
         <translation>Wczytaj/&amp;Usuń</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="270"/>
+        <location filename="../eqwidget.cpp" line="279"/>
         <source>&amp;Save Preset</source>
         <translation>Zapi&amp;sz Preset</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="271"/>
+        <location filename="../eqwidget.cpp" line="280"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>Zapi&amp;sz Auto-ładowanie Preset&apos;u</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="274"/>
+        <location filename="../eqwidget.cpp" line="283"/>
         <source>&amp;Clear</source>
         <translation>&amp;Wyczyść</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="303"/>
+        <location filename="../eqwidget.cpp" line="312"/>
         <source>Saving Preset</source>
         <translation>Zapisywanie Preset&apos;u</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="304"/>
+        <location filename="../eqwidget.cpp" line="313"/>
         <source>Preset name:</source>
         <translation>Nazwa Preset&apos;u:</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="305"/>
+        <location filename="../eqwidget.cpp" line="314"/>
         <source>preset #</source>
         <translation>preset #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="272"/>
+        <location filename="../eqwidget.cpp" line="281"/>
         <source>&amp;Import</source>
         <translation>&amp;Importuj</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="396"/>
+        <location filename="../eqwidget.cpp" line="405"/>
         <source>Import Preset</source>
         <translation>Importuj Preset</translation>
     </message>
@@ -645,62 +650,62 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="62"/>
+        <location filename="../display.cpp" line="56"/>
         <source>Previous</source>
         <translation>Poprzedni</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="66"/>
+        <location filename="../display.cpp" line="60"/>
         <source>Play</source>
         <translation>Odtwarzaj</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="70"/>
+        <location filename="../display.cpp" line="63"/>
         <source>Pause</source>
         <translation>Pauza</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="74"/>
+        <location filename="../display.cpp" line="66"/>
         <source>Stop</source>
         <translation>Zatrzymaj</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="78"/>
+        <location filename="../display.cpp" line="69"/>
         <source>Next</source>
         <translation>Następny</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="82"/>
+        <location filename="../display.cpp" line="72"/>
         <source>Add file</source>
         <translation>Dodaj plik</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="97"/>
+        <location filename="../display.cpp" line="80"/>
         <source>Equalizer</source>
         <translation>Equalizer</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="102"/>
+        <location filename="../display.cpp" line="83"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="110"/>
+        <location filename="../display.cpp" line="88"/>
         <source>Repeat playlist</source>
         <translation>Powtórz listę odtwarzania</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="114"/>
+        <location filename="../display.cpp" line="91"/>
         <source>Shuffle</source>
         <translation>Losowo</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="145"/>
+        <location filename="../display.cpp" line="102"/>
         <source>Volume</source>
         <translation>Głośność</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="151"/>
+        <location filename="../display.cpp" line="106"/>
         <source>Balance</source>
         <translation>Balans</translation>
     </message>
@@ -708,132 +713,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="292"/>
+        <location filename="../mainvisual.cpp" line="294"/>
         <source>Visualization Mode</source>
         <translation>Tryb wizualizacji</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="295"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Analyzer</source>
         <translation>Analizator</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="296"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Scope</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Off</source>
         <translation>Wyłączone</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="304"/>
+        <location filename="../mainvisual.cpp" line="306"/>
         <source>Analyzer Mode</source>
         <translation>Tryb Analizatora</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="307"/>
+        <location filename="../mainvisual.cpp" line="309"/>
         <source>Normal</source>
         <translation>Normalny</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="308"/>
+        <location filename="../mainvisual.cpp" line="310"/>
         <source>Fire</source>
         <translation>Ogień</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="309"/>
+        <location filename="../mainvisual.cpp" line="311"/>
         <source>Vertical Lines</source>
         <translation>Pionowe Linie</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="310"/>
+        <location filename="../mainvisual.cpp" line="312"/>
         <source>Lines</source>
         <translation>Linie</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="311"/>
+        <location filename="../mainvisual.cpp" line="313"/>
         <source>Bars</source>
         <translation>Słupki</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="324"/>
+        <location filename="../mainvisual.cpp" line="326"/>
         <source>Peaks</source>
         <translation>Piki</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="328"/>
+        <location filename="../mainvisual.cpp" line="330"/>
         <source>Refresh Rate</source>
         <translation>Odświeżanie</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="331"/>
+        <location filename="../mainvisual.cpp" line="333"/>
         <source>50 fps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="332"/>
+        <location filename="../mainvisual.cpp" line="334"/>
         <source>25 fps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
+        <location filename="../mainvisual.cpp" line="335"/>
         <source>10 fps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="336"/>
         <source>5 fps</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="341"/>
+        <location filename="../mainvisual.cpp" line="343"/>
         <source>Analyzer Falloff</source>
         <translation>Prędkość Analizatora</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="344"/>
-        <location filename="../mainvisual.cpp" line="358"/>
+        <location filename="../mainvisual.cpp" line="346"/>
+        <location filename="../mainvisual.cpp" line="360"/>
         <source>Slowest</source>
         <translation>Najwolniej</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="345"/>
-        <location filename="../mainvisual.cpp" line="359"/>
+        <location filename="../mainvisual.cpp" line="347"/>
+        <location filename="../mainvisual.cpp" line="361"/>
         <source>Slow</source>
         <translation>Wolno</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
-        <location filename="../mainvisual.cpp" line="360"/>
+        <location filename="../mainvisual.cpp" line="348"/>
+        <location filename="../mainvisual.cpp" line="362"/>
         <source>Medium</source>
         <translation>Średnio</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
-        <location filename="../mainvisual.cpp" line="361"/>
+        <location filename="../mainvisual.cpp" line="349"/>
+        <location filename="../mainvisual.cpp" line="363"/>
         <source>Fast</source>
         <translation>Szybko</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
-        <location filename="../mainvisual.cpp" line="362"/>
+        <location filename="../mainvisual.cpp" line="350"/>
+        <location filename="../mainvisual.cpp" line="364"/>
         <source>Fastest</source>
         <translation>Najszybciej</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="355"/>
+        <location filename="../mainvisual.cpp" line="357"/>
         <source>Peaks Falloff</source>
         <translation>Opadanie Pików</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="368"/>
+        <location filename="../mainvisual.cpp" line="370"/>
         <source>Background</source>
         <translation>Tło</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="369"/>
+        <location filename="../mainvisual.cpp" line="371"/>
         <source>Transparent</source>
         <translation>Przezroczystość</translation>
     </message>
@@ -842,173 +847,173 @@
     <name>MainWindow</name>
     <message>
         <location filename="../mainwindow.cpp" line="64"/>
-        <location filename="../mainwindow.cpp" line="499"/>
+        <location filename="../mainwindow.cpp" line="481"/>
         <source>Default</source>
         <translation>Domyślne</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="294"/>
+        <location filename="../mainwindow.cpp" line="275"/>
         <source>Choose a directory</source>
         <translation>Wybierz katalog</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="305"/>
+        <location filename="../mainwindow.cpp" line="286"/>
         <source>Select one or more files to open</source>
         <translation>Wybierz jeden lub więcej plików do otwarcia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>&amp;Play</source>
         <translation>&amp;Odtwarzaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="419"/>
         <source>&amp;Pause</source>
         <translation>&amp;Wstrzymaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="419"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="438"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>&amp;Stop</source>
         <translation>&amp;Zatrzymaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="438"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>V</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="439"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Previous</source>
         <translation>&amp;Poprzedni</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="439"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>Z</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Next</source>
         <translation>&amp;Następny</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Skocz do pliku</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="465"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>&amp;Settings</source>
         <translation>&amp;Ustawienia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="465"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>&amp;Exit</source>
         <translation>&amp;Wyjście</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="513"/>
+        <location filename="../mainwindow.cpp" line="495"/>
         <source>Open Playlist</source>
         <translation>Otwórz listę odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="520"/>
         <source>Save Playlist</source>
         <translation>Zapisz listę odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>&amp;About</source>
         <translation>&amp;O programie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="511"/>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="493"/>
+        <location filename="../mainwindow.cpp" line="519"/>
         <source>Playlist Files</source>
         <translation>Pliki listy odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="450"/>
         <source>&amp;About Qt</source>
         <translation>&amp;O Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>&amp;Play/Pause</source>
         <translation>&amp;Odtwarzaj/Wstrzymaj</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="300"/>
+        <location filename="../mainwindow.cpp" line="281"/>
         <source>All Supported Bitstreams</source>
         <translation>Wszystkie wspierane formaty</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Repeat Track</source>
         <translation>&amp;Powtórz utwór</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>&amp;Shuffle</source>
         <translation>&amp;Losowo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="449"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="450"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>Ctrl+R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>&amp;Repeat Playlist</source>
         <translation>Powtó&amp;rz listę odtwarzania</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>Tools</source>
         <translation>Narzędzia</translation>
     </message>
@@ -1016,194 +1021,194 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="132"/>
+        <location filename="../playlist.cpp" line="152"/>
         <source>F</source>
         <translation>F</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="138"/>
+        <location filename="../playlist.cpp" line="158"/>
         <source>D</source>
         <translation>D</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="173"/>
+        <location filename="../playlist.cpp" line="193"/>
         <source>Alt+I</source>
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="281"/>
+        <location filename="../playlist.cpp" line="301"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="317"/>
         <source>O</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="131"/>
+        <location filename="../playlist.cpp" line="151"/>
         <source>&amp;Add File</source>
         <translation>&amp;Dodaj plik</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="137"/>
+        <location filename="../playlist.cpp" line="157"/>
         <source>&amp;Add Directory</source>
         <translation>Dodaj &amp;katalog</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="150"/>
+        <location filename="../playlist.cpp" line="170"/>
         <source>&amp;Remove Selected</source>
         <translation>&amp;Usuń zaznaczone</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="157"/>
+        <location filename="../playlist.cpp" line="177"/>
         <source>&amp;Remove All</source>
         <translation>Usuń &amp;wszystkie</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="163"/>
+        <location filename="../playlist.cpp" line="183"/>
         <source>&amp;Remove Unselected</source>
         <translation>Usuń &amp;niezaznaczone</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="169"/>
+        <location filename="../playlist.cpp" line="189"/>
         <source>Remove unavailable files</source>
         <translation>Usuń niedostępne pliki</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="172"/>
+        <location filename="../playlist.cpp" line="192"/>
         <source>&amp;View Track Details</source>
         <translation>&amp;Pokaż informacje o pliku</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="181"/>
+        <location filename="../playlist.cpp" line="201"/>
         <source>Sort List</source>
         <translation>Sortuj listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="184"/>
-        <location filename="../playlist.cpp" line="219"/>
+        <location filename="../playlist.cpp" line="204"/>
+        <location filename="../playlist.cpp" line="239"/>
         <source>By Title</source>
         <translation>Według nazwy</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="188"/>
-        <location filename="../playlist.cpp" line="223"/>
+        <location filename="../playlist.cpp" line="208"/>
+        <location filename="../playlist.cpp" line="243"/>
         <source>By Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="192"/>
-        <location filename="../playlist.cpp" line="227"/>
+        <location filename="../playlist.cpp" line="212"/>
+        <location filename="../playlist.cpp" line="247"/>
         <source>By Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="196"/>
-        <location filename="../playlist.cpp" line="231"/>
+        <location filename="../playlist.cpp" line="216"/>
+        <location filename="../playlist.cpp" line="251"/>
         <source>By Filename</source>
         <translation>Według nazwy pliku</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="200"/>
-        <location filename="../playlist.cpp" line="235"/>
+        <location filename="../playlist.cpp" line="220"/>
+        <location filename="../playlist.cpp" line="255"/>
         <source>By Path + Filename</source>
         <translation>Według Ścieżki + Nazwy pliku</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="204"/>
-        <location filename="../playlist.cpp" line="239"/>
+        <location filename="../playlist.cpp" line="224"/>
+        <location filename="../playlist.cpp" line="259"/>
         <source>By Date</source>
         <translation>Wg Daty</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="217"/>
+        <location filename="../playlist.cpp" line="237"/>
         <source>Sort Selection</source>
         <translation>Sortuj zaznaczone</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="253"/>
+        <location filename="../playlist.cpp" line="273"/>
         <source>Randomize List</source>
         <translation>Tasuj listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="254"/>
+        <location filename="../playlist.cpp" line="274"/>
         <source>Reverse List</source>
         <translation>Odwróć listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="266"/>
+        <location filename="../playlist.cpp" line="286"/>
         <source>Invert Selection</source>
         <translation>Odwróć zaznaczenie</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="273"/>
+        <location filename="../playlist.cpp" line="293"/>
         <source>&amp;Select None</source>
         <translation>&amp;Odznacz wszystkie</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="280"/>
+        <location filename="../playlist.cpp" line="300"/>
         <source>&amp;Select All</source>
         <translation>&amp;Zaznacz wszystkie</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="289"/>
+        <location filename="../playlist.cpp" line="309"/>
         <source>&amp;New List</source>
         <translation>&amp;Nowa lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="290"/>
+        <location filename="../playlist.cpp" line="310"/>
         <source>Shift+N</source>
         <translation>Shift+N</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="296"/>
+        <location filename="../playlist.cpp" line="316"/>
         <source>&amp;Load List</source>
         <translation>&amp;Ładuj listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="302"/>
+        <location filename="../playlist.cpp" line="322"/>
         <source>&amp;Save List</source>
         <translation>&amp;Zapisz listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="303"/>
+        <location filename="../playlist.cpp" line="323"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="151"/>
+        <location filename="../playlist.cpp" line="171"/>
         <source>Del</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="143"/>
+        <location filename="../playlist.cpp" line="163"/>
         <source>&amp;Add Url</source>
         <translation>Dod&amp;aj Url</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="144"/>
+        <location filename="../playlist.cpp" line="164"/>
         <source>U</source>
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="208"/>
-        <location filename="../playlist.cpp" line="243"/>
+        <location filename="../playlist.cpp" line="228"/>
+        <location filename="../playlist.cpp" line="263"/>
         <source>By Track Number</source>
         <translation>Wg numeru utworu</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="262"/>
+        <location filename="../playlist.cpp" line="282"/>
         <source>&amp;Queue</source>
         <translation>&amp;Kolejkuj</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="262"/>
+        <location filename="../playlist.cpp" line="282"/>
         <source>Q</source>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="259"/>
+        <location filename="../playlist.cpp" line="279"/>
         <source>Actions</source>
         <translation>Akcje</translation>
     </message>

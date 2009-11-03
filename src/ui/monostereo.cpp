@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,12 +22,12 @@
 #include "skin.h"
 #include "monostereo.h"
 
-MonoStereo::MonoStereo ( QWidget *parent )
-      : PixmapWidget ( parent )
+MonoStereo::MonoStereo (QWidget *parent)
+      : PixmapWidget (parent)
 {
    m_skin = Skin::instance();
-   m_pixmap = QPixmap ( 54,12 );
-   setChannels ( 0 );
+   m_pixmap = QPixmap (54*m_skin->ratio(), 12*m_skin->ratio());
+   setChannels (0);
    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
 }
 
@@ -35,34 +35,35 @@ MonoStereo::MonoStereo ( QWidget *parent )
 MonoStereo::~MonoStereo()
 {}
 
-void MonoStereo::setChannels ( int c )
+void MonoStereo::setChannels (int c)
 {
    m_channels  = c;
-   QPainter paint ( &m_pixmap );
-   switch ( ( int ) c )
+   QPainter paint (&m_pixmap);
+   switch ((int) c)
    {
       case 0:
       {
-         paint.drawPixmap ( 0,0,m_skin->getMSPart ( Skin::MONO_I ) );
-         paint.drawPixmap ( 27,0,m_skin->getMSPart ( Skin::STEREO_I ) );
+         paint.drawPixmap (0,0,m_skin->getMSPart (Skin::MONO_I));
+         paint.drawPixmap (27*m_skin->ratio(),0,m_skin->getMSPart (Skin::STEREO_I));
          break;
       }
       case 1:
       {
-         paint.drawPixmap ( 0,0,m_skin->getMSPart ( Skin::MONO_A ) );
-         paint.drawPixmap ( 27,0,m_skin->getMSPart ( Skin::STEREO_I ) );
+         paint.drawPixmap (0,0,m_skin->getMSPart (Skin::MONO_A));
+         paint.drawPixmap (27*m_skin->ratio(),0,m_skin->getMSPart (Skin::STEREO_I));
          break;
       }
    }
-   if ( c > 1 )
+   if (c > 1)
    {
-      paint.drawPixmap ( 0,0,m_skin->getMSPart ( Skin::MONO_I ) );
-      paint.drawPixmap ( 27,0,m_skin->getMSPart ( Skin::STEREO_A ) );
+      paint.drawPixmap (0,0,m_skin->getMSPart (Skin::MONO_I));
+      paint.drawPixmap (27*m_skin->ratio(),0,m_skin->getMSPart (Skin::STEREO_A));
    }
-   setPixmap ( m_pixmap );
+   setPixmap (m_pixmap);
 }
 
 void MonoStereo::updateSkin()
 {
-   setChannels ( m_channels );
+   m_pixmap = QPixmap (54*m_skin->ratio(), 12*m_skin->ratio());
+   setChannels (m_channels);
 }

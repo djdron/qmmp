@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,13 +22,12 @@
 
 #include "pixmapwidget.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
 class Skin;
 class MainWindow;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class VolumeBar : public PixmapWidget
 {
 Q_OBJECT
@@ -37,8 +36,14 @@ public:
 
     ~VolumeBar();
 
-    int value() { return m_value; };
-    int isPressed() {return m_moving; }
+    int value()
+    {
+        return m_value;
+    }
+    int isPressed()
+    {
+        return m_moving;
+    }
 
 public slots:
     void setValue(int);
@@ -64,8 +69,6 @@ protected:
     void mousePressEvent(QMouseEvent*);
     void mouseReleaseEvent(QMouseEvent*);
     void mouseMoveEvent(QMouseEvent*);
-
-
 };
 
 #endif

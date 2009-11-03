@@ -83,6 +83,7 @@ class PlayList : public QWidget
 
 
     private:
+        void updatePositions();
         QString formatTime (int sec);
         void drawPixmap (int, int);
         void writeSettings();
@@ -113,7 +114,7 @@ class PlayList : public QWidget
         QPoint m_pos;
         bool m_resize;
         bool m_update;
-        int m_anchor_row;
+        int m_ratio;
         KeyboardManager* m_keyboardManager;
 
     protected:

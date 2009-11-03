@@ -25,24 +25,26 @@
 #include "dock.h"
 
 
-Dock *Dock::pointer = 0;
+Dock *Dock::m_instance = 0;
 
-Dock *Dock::getPointer()
+Dock *Dock::instance()
 {
-    if (!pointer)
-        pointer = new Dock();
-    return pointer;
+    if (!m_instance)
+        m_instance = new Dock();
+    return m_instance;
 }
 
 Dock::Dock (QObject *parent)
         : QObject (parent)
 {
-    pointer = this;
+    m_instance = this;
     m_mainWidget = 0;
 }
 
 Dock::~Dock()
-{}
+{
+    m_instance = 0;
+}
 
 void Dock::setMainWidget (QWidget *widget)
 {

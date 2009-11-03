@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,8 +52,8 @@ private slots:
     void shade();
 
 private:
-    void drawPixmap(int);
-    void truncate();
+    void updatePositions();
+    void updatePixmap();
     Skin *m_skin;
     QPoint pos;
     bool m_active;
@@ -65,6 +65,7 @@ private:
     bool m_shaded;
     bool m_align, m_resize;
     int m_height;
+    int m_ratio;
     PlayListModel* m_model;
     QString m_text;
     QString m_truncatedText;

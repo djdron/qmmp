@@ -50,17 +50,16 @@ PositionBar::~PositionBar()
 
 void PositionBar::mousePressEvent(QMouseEvent *e)
 {
-
     m_moving = TRUE;
     press_pos = e->x();
-    if (m_pos<e->x() && e->x()<m_pos+29)
+    if (m_pos<e->x() && e->x()<m_pos+29*m_skin->ratio())
     {
         press_pos = e->x()-m_pos;
     }
     else
     {
-        m_value = convert(qMax(qMin(width()-30,e->x()-15),0));
-        press_pos = 15;
+        m_value = convert(qMax(qMin(width()-30*m_skin->ratio(),e->x()-15*m_skin->ratio()),0));
+        press_pos = 15*m_skin->ratio();
         if (m_value!=m_old)
         {
             emit sliderMoved(m_value);
@@ -77,7 +76,7 @@ void PositionBar::mouseMoveEvent (QMouseEvent *e)
         qint64 po = e->x();
         po = po - press_pos;
 
-        if (0<=po && po<=width()-30)
+        if (0<=po && po<=width()-30*m_skin->ratio())
         {
             m_value = convert(po);
             draw();
@@ -113,15 +112,14 @@ void PositionBar::setMax(qint64 max)
 
 void PositionBar::updateSkin()
 {
+    resize(m_skin->getPosBar().size());
     draw(FALSE);
     setCursor(m_skin->getCursor(Skin::CUR_POSBAR));
-    //setPixmap(m_skin->getPosBar());
-    //setButtonPixmap(Skin::BT_POSBAR_N);
 }
 
 void PositionBar::draw(bool pressed)
 {
-    qint64 p=qint64(ceil(double(m_value-m_min)*(width()-30)/(m_max-m_min)));
+    qint64 p=qint64(ceil(double(m_value-m_min)*(width()-30*m_skin->ratio())/(m_max-m_min)));
     m_pixmap = m_skin->getPosBar();
     if (m_max > 0)
     {
@@ -131,11 +129,11 @@ void PositionBar::draw(bool pressed)
         else
             paint.drawPixmap(p,0,m_skin->getButton(Skin::BT_POSBAR_N));
     }
-        setPixmap(m_pixmap);
+    setPixmap(m_pixmap);
     m_pos = p;
 }
 
 qint64 PositionBar::convert(qint64 p)
 {
-    return qint64(ceil(double(m_max-m_min)*(p)/(width()-30)+m_min));
+    return qint64(ceil(double(m_max-m_min)*(p)/(width()-30*m_skin->ratio())+m_min));
 }

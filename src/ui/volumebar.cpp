@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,8 +29,7 @@
 #include "volumebar.h"
 
 
-VolumeBar::VolumeBar(QWidget *parent)
-        : PixmapWidget(parent)
+VolumeBar::VolumeBar(QWidget *parent) : PixmapWidget(parent)
 {
     m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
@@ -49,22 +48,18 @@ VolumeBar::~VolumeBar()
 
 void VolumeBar::mousePressEvent(QMouseEvent *e)
 {
-
     m_moving = TRUE;
     press_pos = e->x();
-    if(m_pos<e->x() && e->x()<m_pos+11)
+    if(m_pos<e->x() && e->x()<m_pos+11*m_skin->ratio())
     {
         press_pos = e->x()-m_pos;
     }
     else
     {
-        m_value = convert(qMax(qMin(width()-18,e->x()-6),0));
-        press_pos = 6;
-        if (m_value!=m_old)
-        {
+        m_value = convert(qMax(qMin(width()-18*m_skin->ratio(),e->x()-6*m_skin->ratio()),0));
+        press_pos = 6*m_skin->ratio();
+        if (m_value != m_old)
             emit sliderMoved(m_value);
-
-        }
     }
     draw();
 }
@@ -76,7 +71,7 @@ void VolumeBar::mouseMoveEvent (QMouseEvent *e)
         int po = e->x();
         po = po - press_pos;
 
-        if(0<=po && po<=width()-18)
+        if(0<=po && po<=width()-18*m_skin->ratio())
         {
             m_value = convert(po);
             draw();
@@ -108,13 +103,14 @@ void VolumeBar::setMax(int max)
 
 void VolumeBar::updateSkin()
 {
+    resize(m_skin->getVolumeBar(0).size());
     draw(FALSE);
     setCursor(m_skin->getCursor(Skin::CUR_VOLBAL));
 }
 
 void VolumeBar::draw(bool pressed)
 {
-    int p=int(ceil(double(m_value-m_min)*(width()-18)/(m_max-m_min)));
+    int p=int(ceil(double(m_value-m_min)*(width()-18*m_skin->ratio())/(m_max-m_min)));
     m_pixmap = m_skin->getVolumeBar(27*(m_value-m_min)/(m_max-m_min));
     QPainter paint(&m_pixmap);
     if(pressed)
@@ -127,5 +123,5 @@ void VolumeBar::draw(bool pressed)
 
 int VolumeBar::convert(int p)
 {
-    return int(ceil(double(m_max-m_min)*(p)/(width()-18)+m_min));
+    return int(ceil(double(m_max-m_min)*(p)/(width()-18*m_skin->ratio())+m_min));
 }

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,13 +21,10 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <math.h>
-
 #include "skin.h"
 #include "button.h"
 #include "mainwindow.h"
-
 #include "balancebar.h"
-
 
 BalanceBar::BalanceBar(QWidget *parent)
         : PixmapWidget(parent)
@@ -48,17 +45,16 @@ BalanceBar::~BalanceBar()
 
 void BalanceBar::mousePressEvent(QMouseEvent *e)
 {
-
     m_moving = TRUE;
     press_pos = e->x();
-    if(m_pos<e->x() && e->x()<m_pos+11)
+    if(m_pos<e->x() && e->x()<m_pos+11*m_skin->ratio())
     {
         press_pos = e->x()-m_pos;
     }
     else
     {
-        m_value = convert(qMax(qMin(width()-18,e->x()-6),0));
-        press_pos = 6;
+        m_value = convert(qMax(qMin(width()-18*m_skin->ratio(),e->x()-6*m_skin->ratio()),0));
+        press_pos = 6*m_skin->ratio();
         if (m_value!=m_old)
         {
             emit sliderMoved(m_value);
@@ -75,7 +71,7 @@ void BalanceBar::mouseMoveEvent (QMouseEvent *e)
         int po = e->x();
         po = po - press_pos;
 
-        if(0<=po && po<=width()-13)
+        if(0 <= po && po <= width()-13*m_skin->ratio())
         {
             m_value = convert(po);
             draw();
@@ -107,6 +103,7 @@ void BalanceBar::setMax(int max)
 
 void BalanceBar::updateSkin()
 {
+    resize(m_skin->getBalanceBar(0).size());
     draw(FALSE);
 }
 
@@ -114,19 +111,19 @@ void BalanceBar::draw(bool pressed)
 {
     if(abs(m_value)<6)
         m_value = 0;
-    int p=int(ceil(double(m_value-m_min)*(width()-13)/(m_max-m_min)));
+    int p=int(ceil(double(m_value-m_min)*(width()-13*m_skin->ratio())/(m_max-m_min)));
     m_pixmap = m_skin->getBalanceBar(abs(27*m_value/m_max));
     QPainter paint(&m_pixmap);
     if(pressed)
-        paint.drawPixmap(p,1,m_skin->getButton(Skin::BT_BAL_P));
+        paint.drawPixmap(p,m_skin->ratio(),m_skin->getButton(Skin::BT_BAL_P));
     else
-        paint.drawPixmap(p,1,m_skin->getButton(Skin::BT_BAL_N));
+        paint.drawPixmap(p,m_skin->ratio(),m_skin->getButton(Skin::BT_BAL_N));
     setPixmap(m_pixmap);
     m_pos = p;
 }
 
 int BalanceBar::convert(int p)
 {
-    return int(ceil(double(m_max-m_min)*(p)/(width()-13)+m_min));
+    return int(ceil(double(m_max-m_min)*(p)/(width()-13*m_skin->ratio())+m_min));
 }
 

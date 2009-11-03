@@ -17,14 +17,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <QCoreApplication>
-#include <QPainter>
-#include <QPushButton>
-#include <QLabel>
+
+#include <QApplication>
 #include <QSettings>
 #include <QMenu>
-
-#include <qmmp/output.h>
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
@@ -43,115 +39,72 @@
 #include "balancebar.h"
 #include "mainwindow.h"
 #include "timeindicator.h"
-
 #include "display.h"
 
 MainDisplay::MainDisplay (QWidget *parent)
         : PixmapWidget (parent)
 {
+    m_shaded = FALSE;
     m_skin = Skin::instance();
     setPixmap (m_skin->getMain());
     setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
-    setMaximumSize (QSize (275,116));
-    setMinimumSize (QSize (275,116));
-
     m_mw = qobject_cast<MainWindow*>(parent);
+    m_titlebar = new TitleBar(this);
+    m_titlebar->move(0,0);
+    m_titlebar->setActive(TRUE);
+    m_previous = new Button (this, Skin::BT_PREVIOUS_N, Skin::BT_PREVIOUS_P, Skin::CUR_NORMAL);
+    m_previous->setToolTip(tr("Previous"));
+    connect (m_previous, SIGNAL (clicked()), parent, SLOT (previous()));
 
-    Button *previous = new Button (this, Skin::BT_PREVIOUS_N, Skin::BT_PREVIOUS_P, Skin::CUR_NORMAL);
-    previous->move (16, 88);
-    previous->setToolTip(tr("Previous"));
-    connect (previous,SIGNAL (clicked()), parent, SLOT (previous()));
-    Button *play = new Button (this, Skin::BT_PLAY_N, Skin::BT_PLAY_P, Skin::CUR_NORMAL);
-    play->move (39, 88);
-    play->setToolTip(tr("Play"));
-    connect (play,SIGNAL (clicked()),parent,SLOT (play()));
-    Button *pause = new Button (this, Skin::BT_PAUSE_N,Skin::BT_PAUSE_P, Skin::CUR_NORMAL);
-    pause->move (62, 88);
-    pause->setToolTip(tr("Pause"));
-    connect (pause,SIGNAL (clicked()),parent,SLOT (pause()));
-    Button *stop = new Button (this, Skin::BT_STOP_N,Skin::BT_STOP_P, Skin::CUR_NORMAL);
-    stop->move (85, 88);
-    stop->setToolTip(tr("Stop"));
-    connect (stop,SIGNAL (clicked()),parent,SLOT (stop()));
-    Button *next = new Button (this, Skin::BT_NEXT_N,Skin::BT_NEXT_P, Skin::CUR_NORMAL);
-    next->move (108, 88);
-    next->setToolTip(tr("Next"));
-    connect (next,SIGNAL (clicked()),parent,SLOT (next()));
-    Button *eject = new Button (this, Skin::BT_EJECT_N,Skin::BT_EJECT_P, Skin::CUR_NORMAL);
-    eject->move (136, 89);
-    eject->setToolTip(tr("Add file"));
-    connect (eject,SIGNAL (clicked()),parent,SLOT (addFile()));
+    m_play = new Button (this, Skin::BT_PLAY_N, Skin::BT_PLAY_P, Skin::CUR_NORMAL);
+    m_play->setToolTip(tr("Play"));
+    connect (m_play, SIGNAL (clicked()),parent,SLOT (play()));
+    m_pause = new Button (this, Skin::BT_PAUSE_N,Skin::BT_PAUSE_P, Skin::CUR_NORMAL);
+    m_pause->setToolTip(tr("Pause"));
+    connect (m_pause,SIGNAL (clicked()),parent,SLOT (pause()));
+    m_stop = new Button (this, Skin::BT_STOP_N,Skin::BT_STOP_P, Skin::CUR_NORMAL);
+    m_stop->setToolTip(tr("Stop"));
+    connect (m_stop,SIGNAL (clicked()),parent,SLOT (stop()));
+    m_next = new Button (this, Skin::BT_NEXT_N,Skin::BT_NEXT_P, Skin::CUR_NORMAL);
+    m_next->setToolTip(tr("Next"));
+    connect (m_next,SIGNAL (clicked()),parent,SLOT (next()));
+    m_eject = new Button (this, Skin::BT_EJECT_N,Skin::BT_EJECT_P, Skin::CUR_NORMAL);
+    m_eject->setToolTip(tr("Add file"));
+    connect (m_eject,SIGNAL (clicked()),parent,SLOT (addFile()));
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
-    posbar = new PositionBar (this);
-    posbar->move (16,72);
-
-    //connect(posbar, SIGNAL(sliderMoved(int)), SLOT(setTime(int)));
-    MainVisual* vis = new MainVisual (this);
-    vis->move(24,39);
-    vis->show();
+    m_posbar = new PositionBar (this);
+    m_vis = new MainVisual (this);
 
     m_eqButton = new ToggleButton (this,Skin::BT_EQ_ON_N,Skin::BT_EQ_ON_P,
                                    Skin::BT_EQ_OFF_N,Skin::BT_EQ_OFF_P);
-    m_eqButton->move (219,58);
-    m_eqButton->show();
     m_eqButton->setToolTip(tr("Equalizer"));
     m_plButton = new ToggleButton (this,Skin::BT_PL_ON_N,Skin::BT_PL_ON_P,
                                    Skin::BT_PL_OFF_N,Skin::BT_PL_OFF_P);
-    m_plButton->move (241,58);
-    m_plButton->show();
     m_plButton->setToolTip(tr("Playlist"));
 
     m_repeatButton = new ToggleButton (this,Skin::REPEAT_ON_N,Skin::REPEAT_ON_P,
                                        Skin::REPEAT_OFF_N,Skin::REPEAT_OFF_P);
     connect(m_repeatButton,SIGNAL(clicked(bool)),this,SIGNAL(repeatableToggled(bool)));
-
-    m_repeatButton->move (210,89);
-    m_repeatButton->show();
     m_repeatButton->setToolTip(tr("Repeat playlist"));
-
     m_shuffleButton = new ToggleButton (this,Skin::SHUFFLE_ON_N,Skin::SHUFFLE_ON_P,
                                         Skin::SHUFFLE_OFF_N,Skin::SHUFFLE_OFF_P);
     m_shuffleButton->setToolTip(tr("Shuffle"));
     connect(m_shuffleButton,SIGNAL(clicked(bool)),this,SIGNAL(shuffleToggled(bool)));
-    m_shuffleButton->move (164,89);
-    m_shuffleButton->show();
-
 
     m_kbps = new SymbolDisplay(this,3);
-    m_kbps -> move (111,43);
-    m_kbps -> show();
-
     m_freq = new SymbolDisplay(this,2);
-    m_freq -> move (156,43);
-    m_freq -> show();
-
-    TextScroller *m_text = new TextScroller (this);
-    m_text->resize (154,15);
-    m_text->move (109,23);
-    m_text->show();
-
+    m_text = new TextScroller (this);
     m_monoster = new MonoStereo (this);
-    m_monoster->move (212,41);
-    m_monoster->show();
-
     m_playstatus = new PlayStatus(this);
-    m_playstatus->move(24,28);
-    m_playstatus->show();
 
     m_volumeBar = new VolumeBar(this);
     connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
-    m_volumeBar->move(107,57);
-    m_volumeBar->show();
     m_volumeBar->setToolTip(tr("Volume"));
 
     m_balanceBar = new BalanceBar(this);
     connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
-    m_balanceBar->move(177,57);
-    m_balanceBar->show();
     m_balanceBar->setToolTip(tr("Balance"));
     m_timeIndicator = new TimeIndicator(this);
-    m_timeIndicator->move(34,26);
-    m_timeIndicator->show();
 
     m_core = SoundCore::instance();
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(setTime(qint64)));
@@ -160,9 +113,12 @@ MainDisplay::MainDisplay (QWidget *parent)
     connect(m_core, SIGNAL(channelsChanged(int)), m_monoster, SLOT(setChannels(int)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(setVolume(int, int)));
+    connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
     PlayListModel *model = MediaPlayer::instance()->playListModel();
     connect(model, SIGNAL(repeatableListChanged(bool)), m_repeatButton, SLOT(setON(bool)));
     connect(model, SIGNAL(shuffleChanged(bool)), m_shuffleButton, SLOT(setON(bool)));
+    updatePositions();
+    updateMask();
 }
 
 
@@ -173,14 +129,40 @@ MainDisplay::~MainDisplay()
     settings.setValue ("Equalizer/visible",m_eqButton->isChecked());
 }
 
+void MainDisplay::updatePositions()
+{
+    int r = m_skin->ratio();
+    m_previous->move (r*16, r*88);
+    m_play->move (r*39,  r*88);
+    m_pause->move (r*62,  r*88);
+    m_vis->move(r*24,  r*43);
+    m_stop->move (r*85,  r*88);
+    m_next->move (r*108, r*88);
+    m_eject->move (r*136, r*89);
+    m_posbar->move (r*16, r*72);
+    m_eqButton->move (r*219, r*58);
+    m_plButton->move (r*241, r*58);
+    m_repeatButton->move (r*210, r*89);
+    m_shuffleButton->move (r*164, r*89);
+    m_kbps->move (r*111, r*43);
+    m_freq->move (r*156, r*43);
+    m_text->resize (r*154, r*15);
+    m_text->move (r*109, r*23);
+    m_monoster->move (r*212, r*41);
+    m_playstatus->move(r*24, r*28);
+    m_volumeBar->move(r*107, r*57);
+    m_balanceBar->move(r*177, r*57);
+    m_timeIndicator->move(r*34, r*26);
+}
+
 void MainDisplay::setTime (qint64 t)
 {
-    posbar->setValue (t);
+    m_posbar->setValue (t);
     m_timeIndicator->setTime(t/1000);
 }
 void MainDisplay::setDuration(qint64 t)
 {
-    posbar->setMax (t);
+    m_posbar->setMax (t);
     m_timeIndicator->setSongDuration(t/1000);
 }
 
@@ -189,26 +171,20 @@ void MainDisplay::setState(Qmmp::State state)
     switch ((int) state)
     {
     case Qmmp::Playing:
-    {
         m_playstatus->setStatus(PlayStatus::PLAY);
         m_timeIndicator->setNeedToShowTime(TRUE);
         setDuration(m_core->totalTime());
         break;
-    }
     case Qmmp::Paused:
-    {
         m_playstatus->setStatus(PlayStatus::PAUSE);
         break;
-    }
     case Qmmp::Stopped:
-    {
         m_playstatus->setStatus(PlayStatus::STOP);
         m_monoster->setChannels (0);
         m_timeIndicator->setNeedToShowTime(FALSE);
-        posbar->setValue (0);
-        posbar->setMax (0);
-        break;
-    }
+        m_posbar->setValue (0);
+        m_posbar->setMax (0);
+        m_titlebar->setTime(-1);
     }
 }
 
@@ -223,7 +199,36 @@ void MainDisplay::setVolume(int left, int right)
 void MainDisplay::updateSkin()
 {
     setPixmap (m_skin->getMain());
+    m_mw->resize(size());
     setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
+    setMinimalMode(m_shaded);
+    updatePositions();
+}
+
+void MainDisplay::updateMask()
+{
+    m_mw->clearMask();
+    m_mw->setMask(QRegion(0,0,m_mw->width(),m_mw->height()));
+    QRegion region = m_skin->getRegion(m_shaded? Skin::WINDOW_SHADE : Skin::NORMAL);
+    if (!region.isEmpty())
+        m_mw->setMask(region);
+}
+
+void MainDisplay::setMinimalMode(bool b)
+{
+    m_shaded = b;
+    int r = m_skin->ratio();
+
+    if(m_shaded)
+         m_mw->resize(r*275,r*14);
+    else
+         m_mw->resize(r*275,r*116);
+    updateMask();
+}
+
+void MainDisplay::setActive(bool b)
+{
+    m_titlebar->setActive(b);
 }
 
 void MainDisplay::setSampleRate(quint32 rate)
@@ -295,3 +300,4 @@ void MainDisplay::mousePressEvent(QMouseEvent *e)
     }
     PixmapWidget::mousePressEvent(e);
 }
+

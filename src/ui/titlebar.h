@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,18 +27,17 @@
 #include "playlist.h"
 #include "mainwindow.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 class MainWindow;
 class QMouseEvent;
-
 class Skin;
 class Button;
 class SymbolDisplay;
 class TitleBarControl;
 class ShadedVisual;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class TitleBar : public PixmapWidget
 {
 Q_OBJECT
@@ -48,7 +47,6 @@ public:
     ~TitleBar();
 
     void setActive(bool);
-    //void setInfo(const OutputState &st);
 
 public slots:
     void setTime(qint64 time);
@@ -73,7 +71,7 @@ private:
     bool m_align;
     TitleBarControl *m_control;
     ShadedVisual *m_visual;
-    void updateMask();
+    void updatePositions();
 
 protected:
     void mousePressEvent(QMouseEvent*);
