@@ -142,7 +142,8 @@ void EqWidget::setMimimalMode(bool b)
 void EqWidget::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("General/openbox_compat", FALSE).toBool())
+    if (settings.value("General/openbox_compat", FALSE).toBool() ||
+        settings.value("General/metacity_compat", FALSE).toBool())
         setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
     else
         setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);

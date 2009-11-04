@@ -110,11 +110,8 @@ void PlayList::updatePositions()
 {
     int sx = (width()-275*m_ratio)/25;
     int sy = (height()-116*m_ratio)/29;
-    if (sx < 0 || sy < 0) //skip shaded mode
+    if (sx < 0 || sy < 0 || m_shaded) //skip shaded mode
         return;
-
-    /*setMinimumSize (275*m_ratio, 116*m_ratio);
-    setBaseSize (275*m_ratio,116*m_ratio);*/
 
     m_titleBar->resize (275*m_ratio+25*sx, 20*m_ratio);
     m_plslider->resize (20*m_ratio, 58*m_ratio+sy*29);
@@ -434,7 +431,8 @@ void PlayList::readSettings()
     else
     {
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        if (settings.value("General/openbox_compat", FALSE).toBool())
+        if (settings.value("General/openbox_compat", FALSE).toBool() ||
+            settings.value("General/metacity_compat", FALSE).toBool())
             setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
         else
             setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
