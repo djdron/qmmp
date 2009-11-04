@@ -697,6 +697,13 @@
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QCheckBox" name="metacityCheckBox">
+              <property name="text">
+               <string>Metacity compatibility</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>

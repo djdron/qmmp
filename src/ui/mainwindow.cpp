@@ -339,9 +339,12 @@ void MainWindow::readSettings()
 
         m_update = TRUE;
     }
-    setWindowOpacity(settings.value("MainWindow/opacity", 1.0).toDouble());
-    m_equalizer->setWindowOpacity(settings.value("Equalizer/opacity", 1.0).toDouble());
-    m_playlist->setWindowOpacity(settings.value("PlayList/opacity", 1.0).toDouble());
+    if(!settings.value("General/metacity_compat", FALSE).toBool())
+    {
+        setWindowOpacity(settings.value("MainWindow/opacity", 1.0).toDouble());
+        m_equalizer->setWindowOpacity(settings.value("Equalizer/opacity", 1.0).toDouble());
+        m_playlist->setWindowOpacity(settings.value("PlayList/opacity", 1.0).toDouble());
+    }
     m_hideOnClose = settings.value("MainWindow/hide_on_close", FALSE).toBool();
 }
 
