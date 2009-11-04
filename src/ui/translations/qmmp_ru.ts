@@ -412,17 +412,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="349"/>
         <source>Skin Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Параметры обложки</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="355"/>
         <source>Use skin cursors</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать встроенные курсоры</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="362"/>
         <source>Double size</source>
-        <translation type="unfinished"></translation>
+        <translation>Двойной размер</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="462"/>
