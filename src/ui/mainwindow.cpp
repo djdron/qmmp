@@ -104,7 +104,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     createActions();
     //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
-    m_vis = MainVisual::getPointer();
+    m_vis = MainVisual::instance();
     Visual::add(m_vis);
     //connections
     connect (m_playlist,SIGNAL(next()),SLOT(next()));
@@ -136,7 +136,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_display->setEQ(m_equalizer);
     m_display->setPL(m_playlist);
     dock->updateDock();
-    //m_playListModel->readSettings();
     m_playListModel->doCurrentVisibleRequest();
     updateEQ();
 #ifndef Q_OS_WIN32

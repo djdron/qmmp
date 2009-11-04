@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,26 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
  
- /**
-	@author Vladimir Kuznetsov <vovanec@gmail.ru>
- */
-
 #ifndef _PALYLISTCONTROL_H
 #define _PALYLISTCONTROL_H
 
 #include "pixmapwidget.h"
 
+class QMouseEvent;
 class PaintEvent;
 class Skin;
-class QMouseEvent;
 
+ /**
+    @author Vladimir Kuznetsov <vovanec@gmail.ru>
+ */
 class PlaylistControl : public PixmapWidget
 {
 Q_OBJECT
 public:
     PlaylistControl(QWidget* parent = 0);
-	 void paintEvent(QPaintEvent*);
-	 void mouseReleaseEvent(QMouseEvent*);
+
+
 signals:
 	void previousClicked();
 	void nextClicked();
@@ -45,10 +44,14 @@ signals:
 	void playClicked();
 	void stopClicked();
 	void ejectClicked();
-protected:
-	Skin* m_skin;
+
 private slots:
 	void updateSkin();
+
+private:
+    void mouseReleaseEvent(QMouseEvent*);
+    int m_ratio;
+    Skin* m_skin;
 };
 
 #endif 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,9 +24,7 @@
 
 class QMouseEvent;
 class QPaintEvent;
-
 class Skin;
-
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -41,7 +39,7 @@ public:
     int value()
     {
         return m_value;
-    };
+    }
     int isPressed()
     {
         return m_moving;
@@ -66,6 +64,7 @@ private:
     int convert(int);   // value = convert(position);
     void draw();
     uint m_slider1, m_slider2, m_slider3;
+    int m_ratio;
 
 protected:
     void mousePressEvent(QMouseEvent*);

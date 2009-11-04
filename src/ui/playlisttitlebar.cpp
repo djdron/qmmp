@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,6 @@
 #include <QSettings>
 #include <QApplication>
 #include <qmmpui/playlistmodel.h>
-
 #include "dock.h"
 #include "button.h"
 #include "playlisttitlebar.h"
@@ -56,7 +55,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
 
     readSettings();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    m_pl->resize (settings.value ("PlayList/size", QSize (275, 116)).toSize());
+    m_pl->resize (settings.value ("PlayList/size", QSize (m_ratio*275, m_ratio*116)).toSize());
     if (settings.value ("PlayList/shaded", FALSE).toBool())
         shade();
     resize(m_pl->width(),height());
@@ -224,11 +223,9 @@ void PlayListTitleBar::updateSkin()
 void PlayListTitleBar::shade()
 {
     m_shaded = !m_shaded;
-
     if (m_shaded)
     {
         m_height = m_pl->height();
-        m_pl->setFixedHeight(14*m_ratio);
         m_shade->hide();
         m_shade2 = new Button(this, Skin::PL_BT_SHADE2_N, Skin::PL_BT_SHADE2_P, Skin::CUR_PWSNORM);
         m_shade2->move(254,3);
@@ -237,13 +234,11 @@ void PlayListTitleBar::shade()
     }
     else
     {
-        m_pl->setMinimumSize (275*m_ratio,116*m_ratio);
-        m_pl->setMaximumSize (10000,10000);
-        m_pl->resize(width(),m_height);
         m_shade2->deleteLater();
         m_shade2 = 0;
         m_shade->show();
     }
+    m_pl->setMinimalMode(m_shaded);
     showCurrent();
     update();
     if (m_align)
@@ -266,9 +261,7 @@ void PlayListTitleBar::showCurrent()
         else
             m_text.clear();
     }
-
     QFontMetrics metrics(m_font);
     m_truncatedText = metrics.elidedText (m_text, Qt::ElideRight, width() -  35*m_ratio);
-
     updatePixmap();
 }

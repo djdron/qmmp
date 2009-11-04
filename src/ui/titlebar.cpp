@@ -191,16 +191,16 @@ void TitleBar::shade()
     updatePositions();
 }
 
-QString TitleBar::formatTime ( int sec )
+QString TitleBar::formatTime (int sec)
 {
     int minutes = sec / 60;
     int seconds = sec % 60;
 
-    QString str_minutes = QString::number ( minutes );
-    QString str_seconds = QString::number ( seconds );
+    QString str_minutes = QString::number (minutes);
+    QString str_seconds = QString::number (seconds);
 
-    if ( minutes < 10 ) str_minutes.prepend ( "0" );
-    if ( seconds < 10 ) str_seconds.prepend ( "0" );
+    if (minutes < 10) str_minutes.prepend ("0");
+    if (seconds < 10) str_seconds.prepend ("0");
 
     return str_minutes + ":" + str_seconds;
 }

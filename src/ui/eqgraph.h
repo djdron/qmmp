@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,34 +22,31 @@
 
 #include "pixmapwidget.h"
 
+class Skin;
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
-class Skin;
-
 class EQGraph : public PixmapWidget
 {
    Q_OBJECT
 public:
-    EQGraph ( QWidget *parent = 0 );
+    EQGraph (QWidget *parent = 0);
 
    ~EQGraph();
 
-   void addValue ( int );
+   void addValue (int);
    void clear();
 
-/*protected:
-   void paintEvent ( QPaintEvent * );*/
 private slots:
    void updateSkin();
 
 private:
    QList <int> m_values;
    Skin *m_skin;
-   void init_spline ( double * x, double * y, int n, double * y2 );
-   double eval_spline ( double xa[], double ya[], double y2a[], int n, double x );
+   void init_spline (double * x, double * y, int n, double * y2);
+   double eval_spline (double xa[], double ya[], double y2a[], int n, double x);
    void draw();
+   int m_ratio;
 
 };
 

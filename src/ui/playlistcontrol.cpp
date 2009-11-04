@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,40 +22,37 @@
 #include <QPaintEvent>
 #include <QMouseEvent>
 
-#include    "playlistcontrol.h"
+#include "playlistcontrol.h"
 #include "skin.h"
 
 PlaylistControl::PlaylistControl(QWidget* parent) : PixmapWidget(parent)
 {
 	m_skin = Skin::instance();
-	connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
-}
-
-void PlaylistControl::paintEvent(QPaintEvent *)
-{
-	QPainter painter(this);
-	painter.drawPixmap(0,0,m_skin->getPlPart(Skin::PL_CONTROL));
+    setPixmap(m_skin->getPlPart(Skin::PL_CONTROL));
+    m_ratio = m_skin->ratio();
+    connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
 }
 
 void PlaylistControl::mouseReleaseEvent(QMouseEvent *me)
 {
 	QPoint pt = me->pos();
-	if(QRect(4,1,7,7).contains(pt))
+    if(QRect(4*m_ratio,m_ratio,7*m_ratio,7*m_ratio).contains(pt))
 		emit previousClicked();
-	else if(QRect(12,1,7,7).contains(pt))
+    else if(QRect(12*m_ratio,m_ratio,7*m_ratio,7*m_ratio).contains(pt))
 		emit playClicked();
-	else if(QRect(21,1,7,7).contains(pt))
+    else if(QRect(21*m_ratio,m_ratio,7*m_ratio,7*m_ratio).contains(pt))
 		emit pauseClicked();
-	else if(QRect(31,1,7,7).contains(pt))
+    else if(QRect(31*m_ratio,m_ratio,7*m_ratio,7*m_ratio).contains(pt))
 		emit stopClicked();
-	else if(QRect(40,1,7,7).contains(pt))
+    else if(QRect(40*m_ratio,m_ratio,7*m_ratio,7*m_ratio).contains(pt))
 		emit nextClicked();
-	else if(QRect(49,1,7,7).contains(pt))
+    else if(QRect(49*m_ratio,m_ratio,7*m_ratio,7*m_ratio).contains(pt))
 		emit ejectClicked();
 }
 
 void PlaylistControl::updateSkin()
 {
-	setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
-	update();
+    setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
+    setPixmap(m_skin->getPlPart(Skin::PL_CONTROL));
+    m_ratio = m_skin->ratio();
 }

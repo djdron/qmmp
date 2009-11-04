@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,16 +23,14 @@
 #include "skin.h"
 #include "mainvisual.h"
 #include "inlines.h"
-
-
 #include "shadedvisual.h"
 
-ShadedVisual::ShadedVisual(QWidget *parent)
-        : Visual(parent)
-{
-    setFixedSize(38,5);
-    m_pixmap = QPixmap (38,5);
+ShadedVisual::ShadedVisual(QWidget *parent) : Visual(parent)
+{    
     m_skin = Skin::instance();
+    m_ratio = m_skin->ratio();
+    resize(m_ratio*38,m_ratio*5);
+    m_pixmap = QPixmap (m_ratio*38,m_ratio*5);
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
@@ -40,7 +38,6 @@ ShadedVisual::ShadedVisual(QWidget *parent)
     m_timer->start();
     clear();
 }
-
 
 ShadedVisual::~ShadedVisual()
 {}
@@ -92,7 +89,7 @@ void ShadedVisual::clear()
     m_r = 0;
     m_pixmap.fill(m_skin->getVisColor(0));
     update();
-};
+}
 
 void ShadedVisual::timeout()
 {
@@ -164,11 +161,11 @@ void ShadedVisual::draw (QPainter *p)
 {
     for (int i = 0; i < m_l; ++i)
     {
-        p->fillRect (i*3, 0, 3, 2, QBrush(m_skin->getVisColor (17-i)));
+        p->fillRect (i*3*m_ratio, 0, 3*m_ratio, 2*m_ratio, QBrush(m_skin->getVisColor (17-i)));
     }
     for (int i = 0; i < m_r; ++i)
     {
-        p->fillRect (i*3, 3, 3, 2, QBrush(m_skin->getVisColor (17-i)));
+        p->fillRect (i*3*m_ratio, 3*m_ratio, 3*m_ratio, 2*m_ratio, QBrush(m_skin->getVisColor (17-i)));
     }
 }
 
@@ -190,5 +187,8 @@ void ShadedVisual::showEvent (QShowEvent *)
 
 void ShadedVisual::updateSkin()
 {
+    m_ratio = m_skin->ratio();
+    resize(m_ratio*38,m_ratio*5);
+    m_pixmap = QPixmap (m_ratio*38,m_ratio*5);
     clear();
 }

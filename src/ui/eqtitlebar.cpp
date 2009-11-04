@@ -151,8 +151,7 @@ void EqTitleBar::shade()
         connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
         m_balanceBar = new ShadedBar(this, Skin::EQ_BALANCE1, Skin::EQ_BALANCE2, Skin::EQ_BALANCE3);
         m_balanceBar->move(r*164,r*4);
-        m_balanceBar->setFixedSize(r*42,r*7);
-        m_balanceBar->setRange(-100*r,r*100);
+        m_balanceBar->setRange(-100, 100);
         m_balanceBar->show();
         connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
         setVolume(m_left, m_right); //show current volume and balance

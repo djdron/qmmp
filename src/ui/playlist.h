@@ -56,6 +56,7 @@ class PlayList : public QWidget
         {
             return m_listWidget;
         }
+        void setMinimalMode(bool b = TRUE);
 
     signals:
         void play();
@@ -115,6 +116,8 @@ class PlayList : public QWidget
         bool m_resize;
         bool m_update;
         int m_ratio;
+        int m_height;
+        bool m_shaded;
         KeyboardManager* m_keyboardManager;
 
     protected:

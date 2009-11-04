@@ -44,7 +44,7 @@ EqWidget::EqWidget (QWidget *parent)
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
     m_titleBar = new EqTitleBar (this);
-    m_titleBar -> move (0,0);
+    m_titleBar->move (0,0);
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
 
     m_preamp = new EqSlider (this);
