@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,14 +20,12 @@
 #ifndef SHADEDVISUAL_H
 #define SHADEDVISUAL_H
 
-
 #include <QPainter>
 #include <qmmp/visual.h>
 #include <qmmp/buffer.h>
 
 class QTimer;
 class QPixmap;
-
 class Skin;
 class VisualNode;
 
@@ -63,6 +61,7 @@ private:
     QPixmap m_pixmap;
     QList <VisualNode*> m_nodes;
     double m_l, m_r;
+    int m_ratio;
 
 };
 

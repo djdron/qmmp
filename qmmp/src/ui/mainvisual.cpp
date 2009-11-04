@@ -22,25 +22,23 @@
 #include <QPainter>
 #include <QMenu>
 #include <QActionGroup>
-
 #include <qmmp/buffer.h>
-#include <qmmp/output.h>
+#include <qmmp/qmmp.h>
 #include <math.h>
 #include <stdlib.h>
-
 #include "skin.h"
 #include "fft.h"
 #include "inlines.h"
 #include "mainvisual.h"
 
 
-MainVisual *MainVisual::pointer = 0;
+MainVisual *MainVisual::m_instance = 0;
 
-MainVisual *MainVisual::getPointer()
+MainVisual *MainVisual::instance()
 {
-    if (!pointer)
-        qFatal ("MainVisual: this object not created!");
-    return pointer;
+    if (!m_instance)
+        qFatal ("MainVisual: this object is not created!");
+    return m_instance;
 }
 
 MainVisual::MainVisual (QWidget *parent)
@@ -54,7 +52,7 @@ MainVisual::MainVisual (QWidget *parent)
     m_nodes.clear();
     createMenu();
     readSettings();
-    pointer = this;
+    m_instance = this;
 }
 
 MainVisual::~MainVisual()
@@ -71,6 +69,7 @@ MainVisual::~MainVisual()
     settings.setValue("Visualization/rate", 1000/m_timer->interval());
     while (!m_nodes.isEmpty())
         delete m_nodes.takeFirst();
+    m_instance = 0;
 }
 
 void MainVisual::setVisual (VisualBase *newvis)
@@ -586,11 +585,12 @@ Scope::Scope()
 {
     clear();
     m_skin = Skin::instance();
+    m_ratio = m_skin->ratio();
 }
 
 void Scope::clear()
 {
-    for (int i = 0; i< 75; ++i)
+    for (int i = 0; i< 76; ++i)
         m_intern_vis_data[i] = 7;
 }
 
@@ -602,10 +602,10 @@ bool Scope::process(VisualNode *node)
     if (!node)
         return FALSE;
 
-    int step = (node->length << 8)/74;
+    int step = (node->length << 8)/76;
     int pos = 0;
 
-    for (int i = 0; i < 75; ++i)
+    for (int i = 0; i < 76; ++i)
     {
         pos += step;
         m_intern_vis_data[i] = (node->left[pos >> 8] >> 12);
@@ -620,15 +620,15 @@ bool Scope::process(VisualNode *node)
 
 void Scope::draw(QPainter *p)
 {
-    for (int i = 0; i<73; ++i)
+    for (int i = 0; i<75; ++i)
     {
-        int h1 = 10 - m_intern_vis_data[i];
-        int h2 = 10 - m_intern_vis_data[i+1];
+        int h1 = 8 - m_intern_vis_data[i];
+        int h2 = 8 - m_intern_vis_data[i+1];
         if (h1 > h2)
             qSwap(h1, h2);
-        p->setPen (m_skin->getVisColor(19 + (10 - h2)/2));
-        p->drawLine(i, h1, i, h2);
+        p->setPen (m_skin->getVisColor(19 + (8 - h2)/2));
+        p->drawLine(i*m_ratio, h1*m_ratio, (i+1)*m_ratio, h2*m_ratio);
     }
-    for (int i = 0; i< 75; ++i)
+    for (int i = 0; i< 76; ++i)
         m_intern_vis_data[i] = 0;
 }

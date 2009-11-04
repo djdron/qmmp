@@ -12,7 +12,7 @@
 QCursor createCursor(QString path)
 {
 	if (path.isEmpty())
-		return QCursor();
+        return QCursor();
 	
 	// read file headers
 	QFile curFile(path);

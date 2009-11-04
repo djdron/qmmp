@@ -64,8 +64,8 @@ private:
     Button* m_shade2;
     bool m_shaded;
     bool m_align, m_resize;
-    int m_height;
     int m_ratio;
+    int m_height;
     PlayListModel* m_model;
     QString m_text;
     QString m_truncatedText;

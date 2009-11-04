@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,9 +22,7 @@
 #include <QPainter>
 #include <QPainter>
 #include <math.h>
-
 #include "skin.h"
-
 #include "shadedbar.h"
 
 ShadedBar::ShadedBar(QWidget *parent, uint slider1, uint slider2, uint slider3)
@@ -33,9 +31,12 @@ ShadedBar::ShadedBar(QWidget *parent, uint slider1, uint slider2, uint slider3)
     m_slider1 = slider1;
     m_slider2 = slider2;
     m_slider3 = slider3;
-    setFixedSize(97,7);
-    //setAutoFillBackground (TRUE);
     m_skin = Skin::instance();
+    m_ratio = m_skin->ratio();
+    if(slider1 == Skin::EQ_VOLUME1)
+        resize(m_ratio*97,m_ratio*7);
+    else
+        resize(m_ratio*42,m_ratio*7);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     m_moving = FALSE;
     m_min = 0;
@@ -51,7 +52,6 @@ ShadedBar::~ShadedBar()
 
 void ShadedBar::mousePressEvent(QMouseEvent *e)
 {
-
     m_moving = TRUE;
     press_pos = e->x();
     if(m_pos<e->x() && e->x()<m_pos+3)
@@ -110,6 +110,11 @@ void ShadedBar::setRange(int min, int max)
 
 void ShadedBar::updateSkin()
 {
+    m_ratio = m_skin->ratio();
+    if(m_slider1 == Skin::EQ_VOLUME1)
+        resize(m_ratio*97,m_ratio*7);
+    else
+        resize(m_ratio*42,m_ratio*7);
     draw();
 }
 
@@ -121,7 +126,7 @@ void ShadedBar::draw()
         m_pixmap = m_skin->getEqPart(m_slider2);
     else
         m_pixmap = m_skin->getEqPart(m_slider3);
-    m_pos = int(ceil(double(m_value-m_min)*(width()-3)/(m_max-m_min)));
+    m_pos = int(ceil(double(m_value-m_min)*(width()-3*m_ratio)/(m_max-m_min)));
     update();
 }
 

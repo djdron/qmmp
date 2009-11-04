@@ -53,12 +53,14 @@ PlayList::PlayList (QWidget *parent)
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
     createMenus();
+    m_shaded = FALSE;
+
     resize (275*m_ratio, 116*m_ratio);
+    setSizeIncrement (25*m_ratio, 29*m_ratio);
+    setMinimumSize(275*m_ratio, 116*m_ratio);
+
     m_listWidget = new ListWidget (this);
     m_plslider = new PlayListSlider (this);
-
-    setSizeIncrement (25*m_ratio, 29*m_ratio);
-
     m_buttonAdd = new Button (this,Skin::PL_BT_ADD,Skin::PL_BT_ADD, Skin::CUR_PNORMAL);
     m_buttonSub = new Button (this,Skin::PL_BT_SUB,Skin::PL_BT_SUB, Skin::CUR_PNORMAL);
     m_selectButton  = new Button (this,Skin::PL_BT_SEL,Skin::PL_BT_SEL, Skin::CUR_PNORMAL);
@@ -68,7 +70,6 @@ PlayList::PlayList (QWidget *parent)
     m_resizeWidget->resize(25,25);
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
     m_pl_control = new PlaylistControl (this);
-    m_pl_control->move (0,0);
 
     m_length_totalLength = new SymbolDisplay (this,14);
     m_length_totalLength->setAlignment (Qt::AlignLeft);
@@ -112,8 +113,8 @@ void PlayList::updatePositions()
     if (sx < 0 || sy < 0) //skip shaded mode
         return;
 
-    setMinimumSize (275*m_ratio, 116*m_ratio);
-    setBaseSize (275*m_ratio,116*m_ratio);
+    /*setMinimumSize (275*m_ratio, 116*m_ratio);
+    setBaseSize (275*m_ratio,116*m_ratio);*/
 
     m_titleBar->resize (275*m_ratio+25*sx, 20*m_ratio);
     m_plslider->resize (20*m_ratio, 58*m_ratio+sy*29);
@@ -357,10 +358,8 @@ void PlayList::drawPixmap (int sx, int sy)
     {
         paint.drawPixmap (125*m_ratio+i*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_SFILL1));
     }
-
     paint.drawPixmap (125*m_ratio+sx*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_RSBAR));
     paint.end();
-
 }
 
 void PlayList::resizeEvent (QResizeEvent *)
@@ -536,17 +535,29 @@ void PlayList::updateSkin()
 {
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL)); // TODO shaded
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
-    if(m_ratio != m_skin->ratio()) //update minimal size if needed
+    m_ratio = m_skin->ratio();
+    setMinimalMode(m_shaded);
+}
+
+void PlayList::setMinimalMode(bool b)
+{
+    if(!m_shaded)
+        m_height = height();
+    m_shaded = b;
+    if(m_shaded)
     {
-        int prev = m_ratio; //save previous ratio
-        m_ratio = m_skin->ratio();
-        if(height() < 116*prev) //minimal mode
-            setMinimumSize (275*m_ratio, 14*m_ratio);
-        else
-            setMinimumSize (275*m_ratio, 116*m_ratio);
-        setBaseSize (275*m_ratio,116*m_ratio);
-        setSizeIncrement (25*m_ratio, 29*m_ratio);
-        updatePositions();
+        m_height = height();
+        setSizeIncrement (25*m_ratio, 1);
+        setMinimumSize (275*m_ratio, 14*m_ratio);
+        resize(width(), 14*m_ratio);
     }
+    else
+    {
+        setMinimumSize(275*m_ratio, 116*m_ratio);
+        resize (width(), m_height);
+        setSizeIncrement (25*m_ratio, 29*m_ratio);
+
+    }
+    updatePositions();
     update();
 }

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,14 +19,15 @@
  ***************************************************************************/
 
 #include <QMouseEvent>
-
+#include "skin.h"
 #include "titlebarcontrol.h"
 
-TitleBarControl::TitleBarControl(QWidget *parent)
- : QWidget(parent)
+TitleBarControl::TitleBarControl(QWidget *parent) : QWidget(parent)
 {
     //setAutoFillBackground(TRUE);
-    setFixedSize(57,10);
+    m_ratio = Skin::instance()->ratio();
+    resize(m_ratio*57, m_ratio*10);
+    connect(Skin::instance(), SIGNAL(skinChanged()),SLOT(updateSkin()));
 }
 
 
@@ -40,19 +41,25 @@ void TitleBarControl::mousePressEvent (QMouseEvent *)
 void TitleBarControl::mouseReleaseEvent (QMouseEvent * event)
 {
     QPoint pt = event->pos();
-    if(QRect(0,0,8,10).contains(pt))
+    if(QRect(0,0,m_ratio*8,m_ratio*10).contains(pt))
         emit previousClicked();
-    else if(QRect(8,0,11,10).contains(pt))
+    else if(QRect(m_ratio*8,0,m_ratio*11,m_ratio*10).contains(pt))
         emit playClicked();
-    else if(QRect(19,0,10,10).contains(pt))
+    else if(QRect(m_ratio*19,0,m_ratio*10,m_ratio*10).contains(pt))
         emit pauseClicked();
-    else if(QRect(29,0,8,10).contains(pt))
+    else if(QRect(m_ratio*29,0,m_ratio*8,m_ratio*10).contains(pt))
         emit stopClicked();
-    else if(QRect(37,0,10,10).contains(pt))
+    else if(QRect(m_ratio*37,0,m_ratio*10,m_ratio*10).contains(pt))
         emit nextClicked();
-    else if(QRect(47,0,10,10).contains(pt))
+    else if(QRect(m_ratio*47,0,m_ratio*10,m_ratio*10).contains(pt))
         emit ejectClicked();
 }
 
 void TitleBarControl::mouseMoveEvent(QMouseEvent*)
 {}
+
+void TitleBarControl::updateSkin()
+{
+    m_ratio = Skin::instance()->ratio();
+    resize(m_ratio*57, m_ratio*10);
+}

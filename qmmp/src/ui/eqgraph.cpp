@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,6 +28,7 @@ EQGraph::EQGraph (QWidget *parent)
     m_skin = Skin::instance();
     setPixmap (m_skin->getEqPart (Skin::EQ_GRAPH));
     clear();
+    m_ratio = m_skin->ratio();
     draw();
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
     setVisible(!m_skin->getEqPart (Skin::EQ_GRAPH).isNull());
@@ -107,7 +108,7 @@ void EQGraph::draw()
 {
     QPixmap pixmap = m_skin->getEqPart (Skin::EQ_GRAPH);
     if (pixmap.isNull())
-        pixmap = QPixmap(113,19);
+        pixmap = QPixmap(113*m_ratio,19*m_ratio);
 
     if (m_values.size()!=10)
     {
@@ -125,7 +126,7 @@ void EQGraph::draw()
     }
 
     init_spline (x, bands, 10, yf);
-    for (i = 0; i < 109; i++)
+    for (i = 0; i < 113; i++)
     {
         y = 9 - (int) ((eval_spline (x, bands, yf, 10, i) * 9.0) / 20.0);
         if (y < 0)
@@ -147,9 +148,7 @@ void EQGraph::draw()
         py = y;
 
         QPainter paint (&pixmap);
-        paint.drawPixmap (i, y, m_skin->getEqSpline (y)) ;
-
-
+        paint.drawPixmap (i*m_ratio, y*m_ratio, m_skin->getEqSpline (y));
     }
     setPixmap (pixmap);
     delete [] bands;
@@ -157,6 +156,7 @@ void EQGraph::draw()
 
 void EQGraph::updateSkin()
 {
+    m_ratio = m_skin->ratio();
     draw();
     setVisible(!m_skin->getEqPart (Skin::EQ_GRAPH).isNull());
 }

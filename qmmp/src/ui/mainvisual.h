@@ -23,16 +23,13 @@
 #include <QWidget>
 #include <QResizeEvent>
 #include <qmmp/visual.h>
-
 #include "logscale.h"
 
 class QSettings;
 class QTimer;
 class QMenu;
 class QActionGroup;
-
 class Buffer;
-
 
 class VisualNode
 {
@@ -57,8 +54,7 @@ public:
 class VisualBase
 {
 public:
-    virtual ~VisualBase()
-    {};
+    virtual ~VisualBase(){}
     virtual void clear() = 0;
     virtual bool process(VisualNode *node) = 0;
     virtual void draw(QPainter *) = 0;
@@ -75,10 +71,8 @@ public:
     MainVisual( QWidget *parent = 0);
     virtual ~MainVisual();
 
-    static MainVisual *getPointer();
-
-    void setVisual( VisualBase *newvis );
-
+    static MainVisual *instance();
+    void setVisual(VisualBase *newvis);
     void add(Buffer *, unsigned long, int, int);
     void clear();
     void paintEvent(QPaintEvent *);
@@ -98,7 +92,7 @@ private:
     void drawBackGround();
     void createMenu();
     void readSettings();
-    static MainVisual *pointer;
+    static MainVisual *m_instance;
     VisualBase *m_vis;
     QPixmap m_pixmap;
     QPixmap m_bg;
@@ -154,18 +148,18 @@ class Scope : public VisualBase
 public:
     Scope();
     virtual ~Scope();
-
     void clear();
     bool process(VisualNode *node);
     void draw(QPainter *p);
     const QString name() 
     {
         return "Scope";
-    };
+    }
 
 private:
-    int m_intern_vis_data[75];
+    int m_intern_vis_data[76];
     Skin *m_skin;
+    int m_ratio;
 };
 }
 
