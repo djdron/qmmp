@@ -780,6 +780,7 @@ QRegion Skin::createRegion(const QString &path, const QString &key)
 
     QList<QString>::iterator n;
     n = numbers.begin();
+    int r = m_double_size ? 2 : 1;
     for (int i = 0; i < numPoints.size(); ++i)
     {
         QList <int> lp;
@@ -792,7 +793,7 @@ QRegion Skin::createRegion(const QString &path, const QString &key)
 
         for (int l = 0; l < lp.size(); l+=2)
         {
-            points << QPoint(lp.at(l), lp.at(l+1));
+            points << QPoint(lp.at(l)*r, lp.at(l+1)*r);
         }
         region = region.united(QRegion(QPolygon(points)));
     }
