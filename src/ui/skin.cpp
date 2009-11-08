@@ -167,6 +167,8 @@ void Skin::loadCursors()
 {
     if(!m_use_cursors)
     {
+        for(int i = CUR_NORMAL; i <= CUR_WSWINBUT; ++i)
+            cursors[i] = QCursor(Qt::ArrowCursor);
         cursors[CUR_PSIZE] = QCursor(Qt::SizeFDiagCursor);
         return;
     }
