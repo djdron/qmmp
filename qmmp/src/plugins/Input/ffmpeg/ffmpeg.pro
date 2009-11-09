@@ -30,8 +30,7 @@ LIBS += -lqmmp \
     -I/usr/include/libavcodec \
     -I/usr/include/libavformat
 DEFINES += __STDC_CONSTANT_MACROS
-PKGCONFIG += libavcodec \
-    libavformat
+PKGCONFIG += libavcodec libavformat libavutil
 TRANSLATIONS = translations/ffmpeg_plugin_ru.ts \
     translations/ffmpeg_plugin_uk_UA.ts \
     translations/ffmpeg_plugin_zh_CN.ts \
