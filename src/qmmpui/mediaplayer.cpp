@@ -22,11 +22,7 @@
 #include <QString>
 #include <QTranslator>
 #include <QLocale>
-
-#include <qmmp/soundcore.h>
-#include "playlistmodel.h"
 #include "playlistitem.h"
-
 #include "mediaplayer.h"
 
 #define MAX_SKIPS 5
@@ -37,7 +33,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
         : QObject(parent)
 {
     m_instance = this;
-    m_model = 0;
+    m_pl_manager = 0;
     m_core = 0;
     m_skips = 0;
     m_repeat = FALSE;
@@ -47,7 +43,6 @@ MediaPlayer::MediaPlayer(QObject *parent)
     qApp->installTranslator(translator);
 }
 
-
 MediaPlayer::~MediaPlayer()
 {}
 
@@ -56,20 +51,20 @@ MediaPlayer* MediaPlayer::instance()
     return m_instance;
 }
 
-void MediaPlayer::initialize(SoundCore *core, PlayListModel *model)
+void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
 {
     Q_CHECK_PTR(core);
-    Q_CHECK_PTR(model);
+    Q_CHECK_PTR(m_pl_manager);
     m_core = core;
-    m_model = model;
+    m_pl_manager = pl_manager;
     m_repeat = FALSE;
     connect(m_core, SIGNAL(aboutToFinish()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(next()));
 }
 
-PlayListModel *MediaPlayer::playListModel()
+PlayListManager *MediaPlayer::playListManager()
 {
-    return m_model;
+    return m_pl_manager;
 }
 
 bool MediaPlayer::isRepeatable() const
@@ -79,17 +74,17 @@ bool MediaPlayer::isRepeatable() const
 
 void MediaPlayer::play()
 {
-    m_model->doCurrentVisibleRequest();
+    m_pl_manager->currentPlayList()->doCurrentVisibleRequest();
     if (m_core->state() == Qmmp::Paused)
     {
         m_core->pause();
         return;
     }
 
-    if (m_model->count() == 0)
+    if (m_pl_manager->currentPlayList()->count() == 0)
         return;
 
-    QString s = m_model->currentItem()->url();
+    QString s = m_pl_manager->currentPlayList()->currentItem()->url();
     if (s.isEmpty())
     {
         m_nextUrl.clear();
@@ -122,11 +117,11 @@ void MediaPlayer::play()
                 break;
             }
             qApp->processEvents();
-            if (!m_model->isEmptyQueue())
+            if (!m_pl_manager->currentPlayList()->isEmptyQueue())
             {
-                m_model->setCurrentToQueued();
+                m_pl_manager->currentPlayList()->setCurrentToQueued();
             }
-            else if (!m_model->next())
+            else if (!m_pl_manager->currentPlayList()->next())
             {
                 stop();
                 return;
@@ -148,11 +143,11 @@ void MediaPlayer::stop()
 
 void MediaPlayer::next()
 {
-    if (!m_model->isEmptyQueue())
+    if (!m_pl_manager->currentPlayList()->isEmptyQueue())
     {
-        m_model->setCurrentToQueued();
+        m_pl_manager->currentPlayList()->setCurrentToQueued();
     }
-    else if (!m_model->next())
+    else if (!m_pl_manager->currentPlayList()->next())
     {
         stop();
         return;
@@ -168,7 +163,7 @@ void MediaPlayer::next()
 
 void MediaPlayer::previous()
 {
-    if (!m_model->previous())
+    if (!m_pl_manager->currentPlayList()->previous())
     {
         stop();
         return;
@@ -200,10 +195,10 @@ void MediaPlayer::setRepeatable(bool r)
 
 void MediaPlayer::updateNextUrl()
 {
-    if(m_model->nextItem() && !isRepeatable())
+    if(m_pl_manager->currentPlayList()->nextItem() && !isRepeatable())
     {
-        m_core->play(m_model->nextItem()->url(), TRUE);
-        m_nextUrl = m_model->nextItem()->url();
+        m_core->play(m_pl_manager->currentPlayList()->nextItem()->url(), TRUE);
+        m_nextUrl = m_pl_manager->currentPlayList()->nextItem()->url();
         qDebug("MediaPlayer: sending next url");
     }
     else

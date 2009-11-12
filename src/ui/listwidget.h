@@ -46,7 +46,6 @@ public:
 
     ~ListWidget();
 
-    void setModel(PlayListModel *);
     void readSettings();
     /*!
      * Returns count of currently visible rows.
@@ -74,15 +73,24 @@ public:
         m_anchor_row = r;
     }
 
-public slots:
-    void updateList();
-    void scroll(int); //0-99
-    void recenterCurrent();
-
     QMenu *menu()
     {
         return m_menu;
     }
+
+    PlayListModel *model()
+    {
+        Q_ASSERT(!m_model);
+        return m_model;
+    }
+
+
+public slots:
+    void updateList();
+    void scroll(int); //0-99
+    void recenterCurrent();
+    void setModel(PlayListModel *selected, PlayListModel *previous = 0);
+
 
 signals:
     void selectionChanged();

@@ -24,24 +24,22 @@
 #include <QDialog>
 #include "ui_jumptotrackdialog.h"
 
+class QStringListModel;
+class QSortFilterProxyModel;
+class PlayListManager;
+
 /**
    @author Vladimir Kuznetsov <vovanec@gmail.com>
  */
-
-class QStringListModel;
-class PlayListModel;
-class QSortFilterProxyModel;
-
-
 class JumpToTrackDialog : public QDialog, private Ui::JumpToTrackDialog
 {
     Q_OBJECT
 
 public:
-    JumpToTrackDialog(QWidget* parent = 0, Qt::WFlags fl = 0 );
+    JumpToTrackDialog(PlayListManager *manager, QWidget* parent = 0);
     ~JumpToTrackDialog();
-    void setModel(PlayListModel* model);
     void refresh();
+
 protected slots:
     void on_closePushButton_clicked();
     void on_refreshPushButton_clicked();
@@ -51,12 +49,14 @@ protected slots:
     void on_filterLineEdit_returnPressed ();
     void jumpTo(const QModelIndex&);
     void queueUnqueue(const QModelIndex&,const QModelIndex&);
+
 signals:
     void playRequest();
+
 private:
-    PlayListModel* m_playListModel;
     QStringListModel* m_listModel;
     QSortFilterProxyModel* m_proxyModel;
+    PlayListManager *m_pl_manager;
 };
 
 #endif

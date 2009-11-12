@@ -30,6 +30,7 @@
 #include <qmmp/soundcore.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
 #include "fileops.h"
@@ -84,7 +85,7 @@ void FileOps::execAction(int n)
     QString pattern = m_patterns.at(n);
     QString destination = m_destinations.at(n);
 
-    PlayListModel *model = MediaPlayer::instance()->playListModel();
+    PlayListModel *model = MediaPlayer::instance()->playListManager()->selectedPlayList();
     QList<PlayListItem*> items = model->getSelectedItems();
 
     switch (type)

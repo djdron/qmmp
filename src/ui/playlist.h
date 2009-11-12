@@ -23,6 +23,7 @@
 #include <QWidget>
 
 class QMenu;
+class QActionGroup;
 class Skin;
 class ListWidget;
 class PlayListItem;
@@ -36,6 +37,7 @@ class OutputState;
 class PixmapWidget;
 class PlaylistControl;
 class KeyboardManager;
+class PlayListManager;
 
 
 /**
@@ -45,11 +47,10 @@ class PlayList : public QWidget
 {
         Q_OBJECT
     public:
-        PlayList (QWidget *parent = 0);
+        PlayList (PlayListManager *manager, QWidget *parent = 0);
 
         ~PlayList();
         void load (PlayListItem *);
-        void setModel (PlayListModel *);
         void readSettings();
         PlayListItem *currentItem();
         ListWidget* listWidget() const
@@ -67,7 +68,6 @@ class PlayList : public QWidget
         void eject();
         void loadPlaylist();
         void savePlaylist();
-        void newPlaylist();
         void closed();
 
     public slots:
@@ -81,7 +81,10 @@ class PlayList : public QWidget
         void showSortMenu();
         void showPlaylistMenu();
         void updateSkin();
-
+        void select(QAction *a); //selects playlist with action
+        void addModel(int i);
+        void removeModel(int i);
+        void deletePlaylist();
 
     private:
         void updatePositions();
@@ -108,7 +111,6 @@ class PlayList : public QWidget
 
         Skin *m_skin;
         ListWidget *m_listWidget;
-        PlayListModel *m_playListModel;
         PlayListTitleBar *m_titleBar;
         PlayListSlider *m_plslider;
         QList <QAction *> m_actions;
@@ -118,7 +120,9 @@ class PlayList : public QWidget
         int m_ratio;
         int m_height;
         bool m_shaded;
+        PlayListManager *m_pl_manager;
         KeyboardManager* m_keyboardManager;
+        QActionGroup *m_pl_actions;
 
     protected:
         virtual void paintEvent (QPaintEvent *);

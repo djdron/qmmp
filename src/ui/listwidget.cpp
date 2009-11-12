@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,11 +27,9 @@
 #include <QUrl>
 #include <QApplication>
 #include <QHelpEvent>
-
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
-
 #include "textscroller.h"
 #include "listwidget.h"
 #include "skin.h"
@@ -70,7 +68,6 @@ void ListWidget::readSettings()
     m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
     m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
     m_show_number = settings.value ("PlayList/show_numbers", TRUE).toBool();
-
 
     if (m_update)
     {
@@ -179,19 +176,11 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
             if (m_pressed_row > m_anchor_row)
             {
-                //int upper_selected = m_model->firstSelectedUpper(m_anchor_row);
-                //if (INVALID_ROW != upper_selected)
-                //{
-                /*for (int j = upper_selected;j < m_anchor_row;j++)
-                {
-                 m_model->setSelected(j, false);
-                }*/
                 m_model->clearSelection();
                 for (int j = m_anchor_row;j <= m_pressed_row;j++)
                 {
                     m_model->setSelected(j, true);
                 }
-                //}
             }
             else
             {
@@ -201,27 +190,6 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
                     m_model->setSelected(j, true);
                 }
             }
-
-            /*
-                   int upper_selected = m_model->firstSelectedUpper(row);
-                   int lower_selected = m_model->firstSelectedLower(row);
-                   if (INVALID_ROW != upper_selected)
-                   {
-                       for (int j = upper_selected;j <= row;j++)
-                       {
-                           m_model->setSelected(j, true);
-                       }
-                   }
-                   else if (INVALID_ROW != lower_selected)
-                   {
-                       for (int j = row;j <= lower_selected;j++)
-                       {
-                           m_model->setSelected(j, true);
-                       }
-                   }
-                   else
-                       m_model->setSelected(row, true);
-            */
         }
         else
         {
@@ -324,9 +292,11 @@ void ListWidget::updateList()
     update();
 }
 
-void ListWidget::setModel(PlayListModel *model)
+void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 {
-    m_model = model;
+    if(previous)
+        disconnect(previous, 0, this, 0); //disconnect previous model
+    m_model = selected;
     connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
     connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
     updateList();
@@ -463,7 +433,6 @@ int ListWidget::rowAt(int y) const
     }
     return INVALID_ROW;
 }
-
 
 void ListWidget::contextMenuEvent(QContextMenuEvent * event)
 {

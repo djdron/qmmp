@@ -26,6 +26,7 @@
 #include <QMap>
 #include <QPointer>
 #include <QVector>
+#include "playlistitem.h"
 
 class FileLoader;
 class PlayListItem;
@@ -102,11 +103,14 @@ public:
      * Constructs a playlist model.
      * @param parent QObject parent
      */
-    PlayListModel(QObject *parent = 0);
+    PlayListModel(const QString &name, QObject *parent = 0);
     /*!
      * Object destructor.
      */
     ~PlayListModel();
+
+    QString name() const;
+    void setName(const QString &name);
     /*!
      * Returns number of items.
      */
@@ -201,15 +205,15 @@ public:
     /*!
      * Returns list with selected rows indexes.
      */
-    QList<int> getSelectedRows()const;
+    QList<int> getSelectedRows() const;
     /*!
      * Returns list of \b PlayListItem pointers that are selected.
      */
-    QList<PlayListItem*> getSelectedItems()const;
+    QList<PlayListItem*> getSelectedItems() const;
     /*!
      * Returns list of all \b PlayListItem pointers.
      */
-    QList<PlayListItem*> items()const
+    QList<PlayListItem*> items() const
     {
         return m_items;
     }
@@ -232,7 +236,6 @@ public:
      * Loads playlist with \b f_name name.
      */
     void loadPlaylist(const QString& f_name);
-
     /*!
      * Saves current songs to the playlist with \b f_name name.
      */
@@ -272,26 +275,17 @@ signals:
      * Emitted when first item has added.
      */
     void firstAdded();
-    /*!
-     * Emitted when state of the "Repeat All" option has changed.
-     * @param state New state of the "Repeat All" option (\b true - enabled, \b false disabled)
-     */
-    void repeatableListChanged(bool state);
-    /*!
-     * Emitted when state of the "Shuffle" option has changed.
-     * @param state New state of the "Shuffle" option (\b true - enabled, \b false disabled)
-     */
-    void shuffleChanged(bool state);
-    /*!
-     * Emitted when other settings (format, metadata, etc) have changed.
-     */
-    void settingsChanged();
 
 public slots:
     /*!
      * Adds \b item to the playlist.
      */
-    void load(PlayListItem *item);
+    void add(PlayListItem *item);
+    /*!
+     * Adds a list of items to the playlist.
+     * @param items List of items
+     */
+    void add(QList <PlayListItem *> items);
     /*!
      * Removes all items.
      */
@@ -387,44 +381,6 @@ public slots:
      */
     void setQueued(PlayListItem* f);
     /*!
-     * Returns state of the "Convert underscores to blanks" option (\b true - enabled, \b false - disabled).
-     */
-    bool convertUnderscore();
-    /*!
-     * Returns state of the "Convert %20 to blanks" option (\b true - enabled, \b false - disabled).
-     */
-    bool convertTwenty();
-    /*!
-     * Returns the state of metadata usage (\b true - use, \b false - not use).
-     */
-    bool useMetadata();
-    /*!
-     * Returns title format string.
-     */
-    const QString format() const;
-    /*!
-     * Sets the "Convert underscores to blanks" option state to \b enabled
-     * @param enabled Option state (\b true - enabled, \b false - disabled)
-     */
-    void setConvertUnderscore(bool enabled);
-    /*!
-     * Sets the "Convert %20 to blanks" option state to \b enabled
-     * @param enabled Option state (\b true - enabled, \b false - disabled)
-     */
-    void setConvertTwenty(bool enabled);
-    /*!
-     * Sets metadata usage option state to \b enabled
-     * @param enabled Option state (\b true - enabled, \b false - disabled)
-     */
-    void setUseMetadata(bool enabled);
-    /*!
-     * Sets short title format
-     * @param format title format. (Expressions: "%p" - artist, "%a" - album, "%t" - title, "%n" - track,
-     * "%g" - genre, "%c" - comment, "%C" - composer, "%D" - disc number "%f" - file name, "
-     * %F" - full path, "%y" - year)
-     */
-    void setFormat(const QString &format);
-    /*!
      * Removes invalid items from playlist
      */
     void clearInvalidItems();
@@ -465,13 +421,6 @@ private:
     QList <PlayListItem*> m_editing_items;
     PlayListItem* m_currentItem;
     int m_current;
-    void readSettings();
-    void writeSettings();
-    void setUpdatesEnabled(bool);
-    bool updatesEnabled()const
-    {
-        return !m_block_update_signals;
-    }
     /*!
      * This flyweight object represents current selection.
      */
@@ -488,7 +437,6 @@ private:
      * Current playing state (Normal or Shuffle)
      */
     PlayState* m_play_state;
-    bool m_block_update_signals;
     int m_total_length;
     typedef QPointer<FileLoader> GuardedFileLoader;
     /*!
@@ -498,6 +446,7 @@ private:
      */
     QVector<GuardedFileLoader> m_running_loaders;
     bool m_shuffle;
+    QString m_name;
 };
 
 

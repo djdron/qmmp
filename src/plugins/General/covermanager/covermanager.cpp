@@ -37,7 +37,7 @@ CoverManager::CoverManager(QObject *parent) : General(parent)
 
 void CoverManager::showWindow()
 {
-    QList <PlayListItem *> items = MediaPlayer::instance()->playListModel()->getSelectedItems();
+    QList <PlayListItem *> items = MediaPlayer::instance()->playListManager()->selectedPlayList()->getSelectedItems();
     if (!items.isEmpty())
     {
         if (items.at(0)->url().contains("://"))
