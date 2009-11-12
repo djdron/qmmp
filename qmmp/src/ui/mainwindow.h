@@ -34,7 +34,7 @@
    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class PlayList;
-class PlayListModel;
+class PlayListManager;
 class ConfigDialog;
 class EqWidget;
 class MainVisual;
@@ -82,23 +82,19 @@ public slots:
     void addFile();
     void addUrl();
 
-    void newPlaylist();
     void loadPlaylist();
     void savePlaylist();
 
     void setFileList(const QStringList&);
 
 protected:
-    virtual  void closeEvent ( QCloseEvent *);
-    virtual  void changeEvent ( QEvent * event );
-    virtual void keyPressEvent ( QKeyEvent* );
+    virtual void closeEvent (QCloseEvent *);
+    virtual void changeEvent (QEvent *event);
+    virtual void keyPressEvent (QKeyEvent* );
 
 private slots:
     void showState(Qmmp::State state);
     void showMetaData();
-    void clear();
-    void startSeek();
-    void endSeek();
     void showSettings();
     void updateEQ();
     void forward();
@@ -110,12 +106,11 @@ private:
     void readSettings();
     void writeSettings();
     void createActions();
-    bool seeking;
     SoundCore *m_core;
     QMenu *m_mainMenu;
     MainDisplay *m_display;
     PlayList *m_playlist;
-    PlayListModel *m_playListModel;
+    PlayListManager *m_pl_manager;
     ConfigDialog *m_confDialog;
     int m_preamp;
     EqWidget *m_equalizer;
@@ -127,7 +122,6 @@ private:
     bool m_paused;
     bool m_showToolTip;
     Skin *m_skin;
-    QString m_playlistName;
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;
     VisualMenu *m_visMenu;

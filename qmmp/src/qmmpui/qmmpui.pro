@@ -36,7 +36,8 @@ HEADERS += general.h \
     mediaplayer.h \
     playlistsettings.h \
     detailsdialog.h \
-    tageditor.h
+    tageditor.h \
+    playlistmanager.h
 SOURCES += general.cpp \
     generalhandler.cpp \
     playlistparser.cpp \
@@ -51,7 +52,8 @@ SOURCES += general.cpp \
     mediaplayer.cpp \
     playlistsettings.cpp \
     detailsdialog.cpp \
-    tageditor.cpp
+    tageditor.cpp \
+    playlistmanager.cpp
 FORMS += detailsdialog.ui \
     tageditor.ui
 unix:DESTDIR = .

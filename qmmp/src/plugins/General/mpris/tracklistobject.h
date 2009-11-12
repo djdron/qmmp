@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,7 @@
 #include <QVariantMap>
 
 class PlayListModel;
+class PlayListManager;
 class MediaPlayer;
 
 /**
@@ -54,9 +55,11 @@ signals:
 
 private slots:
     void updateTrackList();
+    void switchPlayList(PlayListModel *cur, PlayListModel *prev);
 
 private:
     PlayListModel *m_model;
+    PlayListManager *m_pl_manager;
     MediaPlayer *m_player;
 
 };

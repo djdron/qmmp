@@ -4,37 +4,37 @@
 <context>
     <name>FileOps</name>
     <message>
-        <location filename="../fileops.cpp" line="97"/>
+        <location filename="../fileops.cpp" line="98"/>
         <source>Error</source>
         <translation>Błąd</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="99"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>Katalog docelowy nie istnieje</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="103"/>
+        <location filename="../fileops.cpp" line="104"/>
         <source>Copying</source>
         <translation>Kopiowanie</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="105"/>
         <source>Stop</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="134"/>
+        <location filename="../fileops.cpp" line="135"/>
         <source>Copying file %1/%2</source>
         <translation>Kopiowanie pliku %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="176"/>
+        <location filename="../fileops.cpp" line="177"/>
         <source>Remove files</source>
         <translation>Usuń pliki</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="177"/>
+        <location filename="../fileops.cpp" line="178"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>Czy napewno chcesz usunąć %n plik(ów) z dysku?</numerusform>

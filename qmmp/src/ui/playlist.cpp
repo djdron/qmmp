@@ -41,18 +41,19 @@
 
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmpui/fileloader.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmp/soundcore.h>
 
-PlayList::PlayList (QWidget *parent)
+PlayList::PlayList (PlayListManager *manager, QWidget *parent)
         : QWidget (parent)
 {
+    m_pl_manager = manager;
     m_update = FALSE;
     m_resize = FALSE;
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
-    createMenus();
     m_shaded = FALSE;
 
     resize (275*m_ratio, 116*m_ratio);
@@ -76,6 +77,7 @@ PlayList::PlayList (QWidget *parent)
 
     m_current_time = new SymbolDisplay (this,6);
     m_keyboardManager = new KeyboardManager (this);
+    m_pl_actions = new QActionGroup (this);
 
     connect (m_listWidget, SIGNAL (selectionChanged()), parent, SLOT (replay()));
 
@@ -95,16 +97,29 @@ PlayList::PlayList (QWidget *parent)
     connect (m_pl_control, SIGNAL (pauseClicked()), SIGNAL (pause()));
     connect (m_pl_control, SIGNAL (stopClicked()), SIGNAL (stop()));
     connect (m_pl_control, SIGNAL (ejectClicked()), SIGNAL (eject()));
+
+    connect (m_pl_manager, SIGNAL (selectedPlayListChanged(PlayListModel *, PlayListModel *)),
+             m_listWidget, SLOT(setModel(PlayListModel*)));
+    m_listWidget->setModel(m_pl_manager->selectedPlayList());
+
     m_titleBar = new PlayListTitleBar (this);
     m_titleBar->move (0,0);
+    connect (m_pl_manager, SIGNAL (currentPlayListChanged(PlayListModel *, PlayListModel *)),
+             m_titleBar, SLOT(setModel(PlayListModel*)));
+    m_titleBar->setModel(m_pl_manager->currentPlayList());
+
+    createMenus();
+    createActions();
+
     readSettings();
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
     updatePositions();
 }
 
-
 PlayList::~PlayList()
-{}
+{
+    delete m_keyboardManager;
+}
 
 void PlayList::updatePositions()
 {
@@ -168,29 +183,27 @@ void PlayList::createActions()
     QAction *remSelAct = new QAction (tr ("&Remove Selected"),this);
     remSelAct->setShortcut (tr ("Del"));
     m_subMenu->addAction (remSelAct);
-    connect (remSelAct, SIGNAL (triggered()),
-             m_playListModel, SLOT (removeSelected ()));
-    this->addAction (remSelAct);
+    connect (remSelAct, SIGNAL (triggered()), m_pl_manager, SLOT (removeSelected ()));
+    addAction (remSelAct);
 
     QAction *remAllAct = new QAction (tr ("&Remove All"),this);
     //remAllAct->setShortcut(tr("D")); FIXME: add correct shortcat
     m_subMenu->addAction (remAllAct);
-    connect (remAllAct, SIGNAL (triggered()), m_playListModel, SLOT (clear ()));
+    connect (remAllAct, SIGNAL (triggered()), m_pl_manager, SLOT (clear ()));
     m_actions << remAllAct;
 
     QAction *remUnselAct = new QAction (tr ("&Remove Unselected"),this);
     m_subMenu->addAction (remUnselAct);
-    connect (remUnselAct, SIGNAL (triggered()),
-             m_playListModel, SLOT (removeUnselected ()));
+    connect (remUnselAct, SIGNAL (triggered()), m_pl_manager, SLOT (removeUnselected ()));
 
     m_subMenu->addSeparator();
-    m_subMenu->addAction (tr("Remove unavailable files"), m_playListModel, SLOT(clearInvalidItems()));
+    m_subMenu->addAction (tr("Remove unavailable files"), m_pl_manager, SLOT(clearInvalidItems()));
 
     //listwidget menu
     QAction *detailsAct = new QAction (tr ("&View Track Details"),this);
     detailsAct->setShortcut (tr ("Alt+I"));
     m_listWidget->menu()->addAction (detailsAct);
-    connect (detailsAct, SIGNAL (triggered()), m_playListModel, SLOT (showDetails ()));
+    connect (detailsAct, SIGNAL (triggered()), m_pl_manager, SLOT (showDetails ()));
 
     // sort menu
     m_sortMenu->addAction (detailsAct);
@@ -227,8 +240,7 @@ void PlayList::createActions()
     connect (trackAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (trackAct, PlayListModel::TRACK);
 
-    connect (signalMapper, SIGNAL (mapped (int)),
-             m_playListModel, SLOT (sort (int)));
+    connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sort (int)));
 
     m_sortMenu->addMenu (sort_mode_menu);
 
@@ -262,14 +274,13 @@ void PlayList::createActions()
     connect (trackAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (trackAct, PlayListModel::TRACK);
 
-    connect (signalMapper, SIGNAL (mapped (int)),
-             m_playListModel, SLOT (sortSelection (int)));
+    connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sortSelection (int)));
 
     m_sortMenu->addMenu (sort_mode_menu);
 
     m_sortMenu->addSeparator();
-    m_sortMenu->addAction (tr ("Randomize List"),m_playListModel,SLOT (randomizeList()));
-    m_sortMenu->addAction (tr ("Reverse List"),m_playListModel,SLOT (reverseList()));
+    m_sortMenu->addAction (tr ("Randomize List"),m_pl_manager,SLOT (randomizeList()));
+    m_sortMenu->addAction (tr ("Reverse List"),m_pl_manager,SLOT (reverseList()));
 
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addActions (m_subMenu->actions().mid(0,3)); //use 3 first actions
@@ -277,38 +288,39 @@ void PlayList::createActions()
                                   tr("Actions"), this));
 
     m_listWidget->menu()->addSeparator();
-    m_listWidget->menu()->addAction(tr("&Queue"),m_playListModel, SLOT(addToQueue()), tr("Q"));
+    m_listWidget->menu()->addAction(tr("&Queue"),m_pl_manager, SLOT(addToQueue()), tr("Q"));
     m_actions << m_listWidget->menu()->actions();
 
     //select menu
     QAction *invSelAct = new QAction (tr ("Invert Selection"),this);
     m_selectMenu->addAction (invSelAct);
-    connect (invSelAct, SIGNAL (triggered()),
-             m_playListModel, SLOT (invertSelection ()));
+    connect (invSelAct, SIGNAL (triggered()), m_pl_manager, SLOT (invertSelection ()));
 
     m_selectMenu->addSeparator();
 
     QAction *selNoneAct = new QAction (tr ("&Select None"),this);
-    //selNoneAct->setShortcut(tr("Ctrl+Shift+A"));
+    selNoneAct->setShortcut(tr("Shift+A"));
     m_selectMenu->addAction (selNoneAct);
-    connect (selNoneAct, SIGNAL (triggered()),
-             m_playListModel, SLOT (clearSelection ()));
+    connect (selNoneAct, SIGNAL (triggered()), m_pl_manager, SLOT (clearSelection ()));
     this->addAction (selNoneAct);
 
     QAction *selAllAct = new QAction (tr ("&Select All"),this);
     selAllAct->setShortcut (tr ("Ctrl+A"));
     m_actions << selAllAct;
     m_selectMenu->addAction (selAllAct);
-    connect (selAllAct, SIGNAL (triggered()),
-             m_playListModel, SLOT (selectAll ()));
-    //this->addAction (selAllAct);
+    connect (selAllAct, SIGNAL (triggered()), m_pl_manager, SLOT (selectAll ()));
 
-//  Playlist Menu
+    //  Playlist Menu
     QAction *newListAct = new QAction (tr ("&New List"),this);
     newListAct->setShortcut (tr ("Shift+N"));
     m_actions << newListAct;
     m_playlistMenu->addAction (newListAct);
-    connect (newListAct, SIGNAL (triggered()), this, SIGNAL (newPlaylist()));
+    connect (newListAct, SIGNAL (triggered()), m_pl_manager, SLOT (createPlayList()));
+    QAction *deleteListAct = new QAction (tr ("&Delete List"),this);
+    deleteListAct->setShortcut (tr ("Shift+D"));
+    m_actions << deleteListAct;
+    m_playlistMenu->addAction (deleteListAct);
+    connect (deleteListAct, SIGNAL (triggered()), SLOT (deletePlaylist()));
     m_playlistMenu->addSeparator();
 
     QAction *loadListAct = new QAction (tr ("&Load List"),this);
@@ -322,8 +334,19 @@ void PlayList::createActions()
     m_actions << saveListAct;
     m_playlistMenu->addAction (saveListAct);
     connect (saveListAct, SIGNAL (triggered()), this, SIGNAL (savePlaylist()));
-    //this->addActions (m_playlistMenu->actions());
-
+    //plalists
+    m_playlistMenu->addSeparator();
+    foreach(QString name, m_pl_manager->playListNames())
+    {
+        QAction *pl = new QAction(name, this);
+        pl->setCheckable(TRUE);
+        m_playlistMenu->addAction (pl);
+        m_pl_actions->addAction(pl);
+    }
+    m_pl_actions->actions().at(m_pl_manager->indexOf(m_pl_manager->currentPlayList()))->setChecked(TRUE);
+    connect(m_pl_actions, SIGNAL(triggered(QAction*)), SLOT(select(QAction*)));
+    connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addModel(int)));
+    connect(m_pl_manager, SIGNAL(playListRemoved(int)), SLOT(removeModel(int)));
     Dock::instance()->addActions (m_actions);
 }
 
@@ -375,6 +398,7 @@ void PlayList::mousePressEvent (QMouseEvent *e)
     else
         m_resize = FALSE;
 }
+
 void PlayList::mouseMoveEvent (QMouseEvent *e)
 {
     if (m_resize)
@@ -396,6 +420,7 @@ void PlayList::mouseMoveEvent (QMouseEvent *e)
 #endif
     }
 }
+
 void PlayList::mouseReleaseEvent (QMouseEvent *)
 {
     setCursor (m_skin->getCursor (Skin::CUR_PNORMAL));
@@ -403,14 +428,6 @@ void PlayList::mouseReleaseEvent (QMouseEvent *)
         m_listWidget->updateList();*/
     m_resize = FALSE;
     Dock::instance()->updateDock();
-}
-void PlayList::setModel (PlayListModel *model)
-{
-    m_playListModel = model;
-    m_listWidget->setModel (model);
-    m_keyboardManager->setModel (model);
-    m_titleBar->setModel (model);
-    createActions();
 }
 
 void PlayList::changeEvent (QEvent * event)
@@ -442,7 +459,6 @@ void PlayList::readSettings()
         settings.endGroup();
         m_update = TRUE;
     }
-
 }
 
 void PlayList::writeSettings()
@@ -496,14 +512,12 @@ void PlayList::setTime(qint64 time)
         m_current_time->display (formatTime (time/1000));
     m_current_time->update();
 
-    if (m_playListModel && SoundCore::instance())
+    if (SoundCore::instance())
     {
-        m_playListModel->totalLength();
-        QString str_length = formatTime (m_playListModel->totalLength()) +
+        QString str_length = formatTime (m_pl_manager->currentPlayList()->totalLength()) +
                              "/" + formatTime (SoundCore::instance()->totalTime()/1000);
         m_length_totalLength->display (str_length);
         m_length_totalLength->update();
-
     }
 }
 
@@ -515,7 +529,7 @@ void PlayList::updateList()
 
 PlayListItem *PlayList::currentItem()
 {
-    return m_playListModel ? m_playListModel->currentItem() : 0;
+    return m_pl_manager->currentPlayList()->currentItem();
 }
 
 void PlayList::showPlaylistMenu()
@@ -535,6 +549,45 @@ void PlayList::updateSkin()
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
     m_ratio = m_skin->ratio();
     setMinimalMode(m_shaded);
+}
+
+void PlayList::select(QAction *a)
+{
+    int i = m_pl_actions->actions().indexOf(a);
+    m_pl_manager->selectPlayList(i);
+}
+
+void PlayList::addModel(int i)
+{
+    QList <QAction *> actions = m_pl_actions->actions();
+    foreach(QAction *a, actions) //clear action group
+    {
+        m_pl_actions->removeAction(a);
+        m_playlistMenu->removeAction (a);
+    }
+    QAction *new_action = new QAction(m_pl_manager->playListNames().at(i), this);
+    new_action->setCheckable(TRUE);
+    actions.insert(i, new_action);
+    foreach(QAction *a, actions)
+    {
+        m_pl_actions->addAction(a);
+        m_playlistMenu->addAction (a);
+    }
+    m_pl_actions->actions().at(m_pl_manager->indexOf(m_pl_manager->currentPlayList()))->setChecked(TRUE);
+}
+
+void PlayList::removeModel(int i)
+{
+    QAction *a = m_pl_actions->actions().at(i);
+    m_pl_actions->removeAction(a);
+    m_playlistMenu->removeAction (a);
+    a->deleteLater();
+    m_pl_actions->actions().at(m_pl_manager->indexOf(m_pl_manager->currentPlayList()))->setChecked(TRUE);
+}
+
+void PlayList::deletePlaylist()
+{
+    m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
 }
 
 void PlayList::setMinimalMode(bool b)

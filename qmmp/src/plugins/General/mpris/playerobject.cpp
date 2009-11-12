@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,7 @@
 #include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
 #include <qmmpui/mediaplayer.h>
-#include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 
 #include "playerobject.h"
 
@@ -53,18 +53,17 @@ const QDBusArgument &operator >> (const QDBusArgument &arg, PlayerStatus &status
     return arg;
 }
 
-PlayerObject::PlayerObject(QObject *parent)
-        : QObject(parent)
+PlayerObject::PlayerObject(QObject *parent) : QObject(parent)
 {
     qDBusRegisterMetaType<PlayerStatus>();
     m_core = SoundCore::instance();
     m_player = MediaPlayer::instance();
-    m_model =  m_player->playListModel();
+    m_pl_manager =  m_player->playListManager();
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateCaps()));
     connect(m_core, SIGNAL(metaDataChanged ()), SLOT(updateTrack()));
     connect(m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(updateStatus()));
-    connect(m_model, SIGNAL(repeatableListChanged(bool)), SLOT(updateStatus()));
-    connect(m_model, SIGNAL(shuffleChanged(bool)), SLOT(updateStatus()));
+    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), SLOT(updateStatus()));
+    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), SLOT(updateStatus()));
     connect(m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateStatus()));
 }
 
@@ -118,9 +117,9 @@ PlayerStatus PlayerObject::GetStatus()
     case Qmmp::Paused:
         st.state = 1;
     };
-    st.random = int(m_model->isShuffle());
+    st.random = int(m_pl_manager->isShuffle());
     st.repeat = int(m_player->isRepeatable());
-    st.repeatPlayList = int(m_model->isRepeatableList());
+    st.repeatPlayList = int(m_pl_manager->isRepeatableList());
     return st;
 }
 

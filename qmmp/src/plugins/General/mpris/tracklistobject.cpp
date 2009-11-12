@@ -21,18 +21,20 @@
 #include <QFile>
 #include <QUrl>
 
-#include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistitem.h>
 
 #include "tracklistobject.h"
 
-TrackListObject::TrackListObject(QObject *parent)
-        : QObject(parent)
+TrackListObject::TrackListObject(QObject *parent) : QObject(parent)
 {
     m_player = MediaPlayer::instance();
-    m_model = m_player->playListModel();
+    m_pl_manager = m_player->playListManager();
+    m_model = m_pl_manager->currentPlayList();
     connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
+    connect (m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
+             SLOT(switchPlayList(PlayListModel*,PlayListModel*)));
 }
 
 
@@ -110,4 +112,13 @@ void TrackListObject::SetRandom(bool in0)
 void  TrackListObject::updateTrackList()
 {
     emit TrackListChange(m_model->count());
+}
+
+void TrackListObject::switchPlayList(PlayListModel *cur, PlayListModel *prev)
+{
+    m_model = cur;
+    connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
+    if(prev)
+        disconnect(prev,0,this,0);
+    updateTrackList();
 }

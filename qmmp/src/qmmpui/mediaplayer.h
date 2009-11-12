@@ -21,9 +21,9 @@
 #define MEDIAPLAYER_H
 
 #include <QObject>
+#include <qmmp/soundcore.h>
+#include "playlistmanager.h"
 
-class PlayListModel;
-class SoundCore;
 
 /*! @brief The MediaPlayer class provides a simple way to use SoundCore and PlayListModel together.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -50,11 +50,11 @@ public:
      * @param core Pointer to the SoundCore object.
      * @param model Playlist model
      */
-    void initialize(SoundCore *core, PlayListModel *model);
+    void initialize(SoundCore *core, PlayListManager *pl_mamager);
     /*!
-     * Returns playlist model pointer
+     * Returns playlist manager pointer
      */
-    PlayListModel *playListModel();
+    PlayListManager *playListManager();
     /*!
      * Returns \b true if "Repeate Track" option is enabled, otherwise returns \b false
      */
@@ -94,7 +94,7 @@ private slots:
     void updateNextUrl();
 
 private:
-    PlayListModel *m_model;
+    PlayListManager *m_pl_manager;
     SoundCore *m_core;
     static MediaPlayer* m_instance;
     bool m_repeat;

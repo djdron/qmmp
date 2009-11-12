@@ -19,19 +19,19 @@
  ***************************************************************************/
 
 #include "jumptotrackdialog.h"
-#include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 
 #include <QStringListModel>
 #include <QSortFilterProxyModel>
 #include <QShortcut>
 #include <QKeySequence>
 
-JumpToTrackDialog::JumpToTrackDialog(QWidget* parent, Qt::WFlags fl)
-        : QDialog( parent, fl )
+JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
+        : QDialog (parent)
 {
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
-    m_playListModel = 0;
+    m_pl_manager = manager;
     m_listModel = new QStringListModel(this);
 
     m_proxyModel = new QSortFilterProxyModel;
@@ -76,8 +76,8 @@ void JumpToTrackDialog::on_queuePushButton_clicked()
     if (!mi_list.isEmpty())
     {
         int selected = (m_proxyModel->mapToSource(mi_list.at(0))).row();
-        m_playListModel->setQueued(m_playListModel->item(selected));
-        if (m_playListModel->isQueued(m_playListModel->item(selected)))
+        m_pl_manager->selectedPlayList()->setQueued(m_pl_manager->selectedPlayList()->item(selected));
+        if (m_pl_manager->selectedPlayList()->isQueued(m_pl_manager->selectedPlayList()->item(selected)))
             queuePushButton->setText(tr("Unqueue"));
         else
             queuePushButton->setText(tr("Queue"));
@@ -96,14 +96,9 @@ void JumpToTrackDialog::on_jumpToPushButton_clicked()
 void JumpToTrackDialog::refresh()
 {
     filterLineEdit->clear();
-    QStringList titles = m_playListModel->getTitles(0,m_playListModel->count());
+    QStringList titles = m_pl_manager->selectedPlayList()->getTitles(0, m_pl_manager->selectedPlayList()->count());
     m_listModel->setStringList(titles);
     filterLineEdit->setFocus();
-}
-
-void JumpToTrackDialog::setModel(PlayListModel * model)
-{
-    m_playListModel = model;
 }
 
 void JumpToTrackDialog::on_filterLineEdit_textChanged(const QString &str)
@@ -126,14 +121,14 @@ void JumpToTrackDialog::on_filterLineEdit_returnPressed ()
 void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 {
     int selected = (m_proxyModel->mapToSource(index)).row();
-    m_playListModel->setCurrent(selected);
+    m_pl_manager->selectedPlayList()->setCurrent(selected);
     emit playRequest();
 }
 
 void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
 {
     int row = m_proxyModel->mapToSource(curr).row();
-    if (m_playListModel->isQueued(m_playListModel->item(row)))
+    if (m_pl_manager->selectedPlayList()->isQueued(m_pl_manager->selectedPlayList()->item(row)))
         queuePushButton->setText(tr("Unqueue"));
     else
         queuePushButton->setText(tr("Queue"));

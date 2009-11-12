@@ -105,10 +105,10 @@ void ConfigDialog::readSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     if (MediaPlayer *player = MediaPlayer::instance())
     {
-        ui.formatLineEdit->setText(player->playListModel()->format());
-        ui.metadataCheckBox->setChecked(player->playListModel()->useMetadata());
-        ui.underscoresCheckBox->setChecked(player->playListModel()->convertUnderscore());
-        ui.per20CheckBox->setChecked(player->playListModel()->convertTwenty());
+        ui.formatLineEdit->setText(player->playListManager()->format());
+        ui.metadataCheckBox->setChecked(player->playListManager()->useMetadata());
+        ui.underscoresCheckBox->setChecked(player->playListManager()->convertUnderscore());
+        ui.per20CheckBox->setChecked(player->playListManager()->convertTwenty());
     }
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
     ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", TRUE).toBool());
@@ -607,10 +607,10 @@ void ConfigDialog::saveSettings()
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     if (MediaPlayer *player = MediaPlayer::instance())
     {
-        player->playListModel()->setFormat(ui.formatLineEdit->text().trimmed());
-        player->playListModel()->setUseMetadata(ui.metadataCheckBox->isChecked());
-        player->playListModel()->setConvertUnderscore(ui.underscoresCheckBox->isChecked());
-        player->playListModel()->setConvertTwenty(ui.per20CheckBox->isChecked());
+        player->playListManager()->setFormat(ui.formatLineEdit->text().trimmed());
+        player->playListManager()->setUseMetadata(ui.metadataCheckBox->isChecked());
+        player->playListManager()->setConvertUnderscore(ui.underscoresCheckBox->isChecked());
+        player->playListManager()->setConvertTwenty(ui.per20CheckBox->isChecked());
     }
     settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
     settings.setValue ("PlayList/show_numbers", ui.numbersCheckBox->isChecked());

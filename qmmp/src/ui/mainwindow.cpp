@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov          m                       *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QAction>
 #include <QMenu>
+#include <QLibrary>
 
 #include <math.h>
 
@@ -35,6 +36,7 @@
 #include <qmmpui/commandlinemanager.h>
 #include <qmmpui/filedialog.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmpui/mediaplayer.h>
 
 #include "textscroller.h"
@@ -58,10 +60,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
         : QMainWindow(parent)
 {
     m_vis = 0;
-    seeking = FALSE;
     m_update = FALSE;
     m_paused = FALSE;
-    m_playlistName = tr("Default");
     m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
 #if QT_VERSION >= 0x040500
@@ -69,14 +69,13 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 #else
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
 #endif
-    //setFixedSize (275,116);
     setWindowTitle("Qmmp");
 
     //prepare libqmmp and libqmmpui libraries for playing
     m_player = new MediaPlayer(this);
     m_core = new SoundCore(this);
-    m_playListModel = new PlayListModel(this);
-    m_player->initialize(m_core, m_playListModel);
+    m_pl_manager = new PlayListManager(this);
+    m_player->initialize(m_core, m_pl_manager);
     //additional featuries
     new PlaylistParser(this);
     m_generalHandler = new GeneralHandler(this);
@@ -90,15 +89,13 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     setCentralWidget(m_display);
     m_display->setFocus ();
 
-    m_playlist = new PlayList(this);
-    m_playlist->setModel(m_playListModel);
+    m_playlist = new PlayList(m_pl_manager, this);
     dock->addWidget(m_playlist);
 
     m_equalizer = new EqWidget(this);
     dock->addWidget(m_equalizer);
 
-    m_jumpDialog = new JumpToTrackDialog(this);
-    m_jumpDialog->setModel(m_playListModel);
+    m_jumpDialog = new JumpToTrackDialog(m_pl_manager, this);
     m_jumpDialog->hide();
 
     createActions();
@@ -113,22 +110,19 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect (m_playlist,SIGNAL(pause()), m_core ,SLOT(pause()));
     connect (m_playlist,SIGNAL(stop()),SLOT(stop()));
     connect (m_playlist,SIGNAL(eject()),SLOT(addFile()));
-    connect (m_playlist,SIGNAL(newPlaylist()),SLOT(newPlaylist()));
     connect (m_playlist,SIGNAL(loadPlaylist()),SLOT(loadPlaylist()));
     connect (m_playlist,SIGNAL(savePlaylist()),SLOT(savePlaylist()));
 
-    connect(m_display,SIGNAL(shuffleToggled(bool)),m_playListModel,SLOT(prepareForShufflePlaying(bool)));
-    connect(m_display,SIGNAL(repeatableToggled(bool)),m_playListModel,SLOT(prepareForRepeatablePlaying(bool)));
+    connect(m_display,SIGNAL(shuffleToggled(bool)),m_pl_manager,SLOT(setShuffle(bool)));
+    connect(m_display,SIGNAL(repeatableToggled(bool)),m_pl_manager,SLOT(setRepeatableList(bool)));
 
     connect(m_equalizer, SIGNAL(valueChanged()), SLOT(updateEQ()));
-    connect(m_jumpDialog,SIGNAL(playRequest()),this,SLOT(play()));
+    connect(m_jumpDialog,SIGNAL(playRequest()), SLOT(replay()));
 
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
-    connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(),
-            SLOT(setProgress(int)));
-
+    connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(), SLOT(setProgress(int)));
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
 
@@ -136,7 +130,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_display->setEQ(m_equalizer);
     m_display->setPL(m_playlist);
     dock->updateDock();
-    m_playListModel->doCurrentVisibleRequest();
+    m_pl_manager->currentPlayList()->doCurrentVisibleRequest();
     updateEQ();
 #ifndef Q_OS_WIN32
     QString cwd = QDir::currentPath();
@@ -148,9 +142,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 
 
 MainWindow::~MainWindow()
-{
-    //stop();
-}
+{}
 
 void MainWindow::play()
 {
@@ -160,15 +152,14 @@ void MainWindow::play()
 void MainWindow::replay()
 {
     stop();
+    m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
     play();
 }
 
 void MainWindow::seek(qint64 pos)
 {
-    if (!seeking)
-        m_core->seek(pos);
+    m_core->seek(pos);
 }
-
 
 void MainWindow::forward()
 {
@@ -217,12 +208,12 @@ void MainWindow::updateEQ()
 
 void MainWindow::showState(Qmmp::State state)
 {
-    disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
+    //disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
     switch ((int) state)
     {
     case Qmmp::Playing:
-        if (m_playListModel->currentItem())
-            m_equalizer->loadPreset(m_playListModel->currentItem()->url().section("/",-1));
+        if (m_pl_manager->currentPlayList()->currentItem())
+            m_equalizer->loadPreset(m_pl_manager->currentPlayList()->currentItem()->url().section("/",-1));
         if (m_playlist->listWidget())
             m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
         break;
@@ -237,6 +228,7 @@ void MainWindow::showState(Qmmp::State state)
         break;
     }
 }
+
 void MainWindow::showMetaData()
 {
     qDebug("===== metadata ======");
@@ -270,7 +262,7 @@ void MainWindow::closeEvent (QCloseEvent *)
 void MainWindow::addDir()
 {
     FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
-                      m_playListModel, SLOT(addFileList(const QStringList&)),
+                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
                       tr("Choose a directory"));
 }
 
@@ -281,23 +273,8 @@ void MainWindow::addFile()
             MetaDataManager::instance()->nameFilters().join (" ") +")";
     filters << MetaDataManager::instance()->filters();
     FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
-                      m_playListModel, SLOT(addFileList(const QStringList&)),
+                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
                       tr("Select one or more files to open"), filters.join(";;"));
-}
-
-void MainWindow::clear()
-{
-    m_playListModel->clear();
-}
-
-void MainWindow::startSeek()
-{
-    seeking = TRUE;
-}
-
-void MainWindow::endSeek()
-{
-    seeking = FALSE;
 }
 
 void MainWindow::changeEvent (QEvent * event)
@@ -328,14 +305,11 @@ void MainWindow::readSettings()
         bool val = settings.value("Playlist/repeatable",FALSE).toBool();
 
         // Repeat/Shuffle
-        m_playListModel->prepareForRepeatablePlaying(val);
+        m_pl_manager->setRepeatableList(val);
         m_display->setIsRepeatable(val);
         val = settings.value("Playlist/shuffle",FALSE).toBool();
         m_display->setIsShuffle(val);
-        m_playListModel->prepareForShufflePlaying(val);
-
-        // Playlist name
-        m_playlistName = settings.value("Playlist/playlist_name","Default").toString();
+        m_pl_manager->setShuffle(val);
 
         m_update = TRUE;
     }
@@ -363,8 +337,6 @@ void MainWindow::writeSettings()
     settings.setValue("repeatable",m_display->isRepeatable());
     settings.setValue("shuffle",m_display->isShuffle());
 
-    // Playlist name
-    settings.setValue("playlist_name",m_playlistName);
     settings.endGroup();
 }
 
@@ -376,7 +348,6 @@ void MainWindow::showSettings()
         readSettings();
         m_playlist->readSettings();
         TextScroller::getPointer()->readSettings();
-        //m_core->updateConfig();
         m_visMenu->updateActions();
         m_skin->reloadSkin();
         Dock::instance()->updateDock();
@@ -433,12 +404,12 @@ void MainWindow::createActions()
     repeateAllAction->setShortcut(tr("R")) ;
     repeateTrackAction->setShortcut(tr("Ctrl+R")) ;
     shuffleAction->setShortcut(tr("S")) ;
-    connect(repeateAllAction, SIGNAL(triggered (bool)), m_playListModel, SLOT(prepareForRepeatablePlaying(bool)));
+    connect(repeateAllAction, SIGNAL(triggered (bool)), m_pl_manager, SLOT(setRepeatableList(bool)));
     connect(repeateTrackAction, SIGNAL(triggered (bool)), m_player, SLOT(setRepeatable(bool)));
-    connect(shuffleAction, SIGNAL(triggered (bool)), m_playListModel, SLOT(prepareForShufflePlaying(bool)));
-    connect(m_playListModel, SIGNAL(repeatableListChanged(bool)), repeateAllAction, SLOT(setChecked(bool)));
+    connect(shuffleAction, SIGNAL(triggered (bool)), m_pl_manager, SLOT(setShuffle(bool)));
+    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), repeateAllAction, SLOT(setChecked(bool)));
     connect(m_player, SIGNAL (repeatableChanged(bool)), repeateTrackAction, SLOT(setChecked(bool)));
-    connect(m_playListModel, SIGNAL(shuffleChanged(bool)), shuffleAction, SLOT(setChecked(bool)));
+    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), shuffleAction, SLOT(setChecked(bool)));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(tr("&Jump To File"),this, SLOT(jumpToFile()), tr("J"));
     m_mainMenu->addSeparator();
@@ -477,12 +448,6 @@ QMenu* MainWindow::menu()
     return m_mainMenu;
 }
 
-void MainWindow::newPlaylist()
-{
-    m_playListModel->clear();
-    m_playlistName = tr("Default");
-}
-
 void MainWindow::loadPlaylist()
 {
     QStringList l;
@@ -497,9 +462,9 @@ void MainWindow::loadPlaylist()
         QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
         if (!f_name.isEmpty())
         {
-            m_playListModel->clear();
-            m_playListModel->loadPlaylist(f_name);
-            m_playlistName = QFileInfo(f_name).baseName();
+            m_pl_manager->selectedPlayList()->clear();
+            m_pl_manager->selectedPlayList()->loadPlaylist(f_name);
+            m_pl_manager->selectedPlayList()->setName(QFileInfo(f_name).baseName());
             m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
     }
@@ -520,12 +485,11 @@ void MainWindow::savePlaylist()
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
         QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
-                         m_playlistName + "." + l[0],mask);
+                         m_pl_manager->selectedPlayList()->name() + "." + l[0],mask);
 
         if (!f_name.isEmpty())
         {
-            m_playListModel->savePlaylist(f_name);
-            m_playlistName = QFileInfo(f_name).baseName();
+            m_pl_manager->selectedPlayList()->savePlaylist(f_name);
             m_lastDir = QFileInfo(f_name).absoluteDir().path();
         }
     }
@@ -538,12 +502,12 @@ void MainWindow::setFileList(const QStringList & l)
     if (m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
         stop();
     qApp->processEvents(); //receive stop signal
-    connect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
-    if (!m_playListModel->setFileList(l))
+    //connect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
+    /*if (!m_playListModel->setFileList(l))
     {
         disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
         addFile();
-    }
+    }*/
 }
 
 void MainWindow::playPause()
@@ -572,7 +536,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
                 else
                     full_path_list << cwd + "/" + slist.at(i);
             }
-            m_playListModel->addFileList(full_path_list); //TODO url support
+            m_pl_manager->currentPlayList()->addFileList(full_path_list); //TODO url support
         }
         else if (str.startsWith("-")) // is it a command?
         {
@@ -618,7 +582,7 @@ void MainWindow::handleCloseRequest()
 
 void MainWindow::addUrl()
 {
-    AddUrlDialog::popup(this,m_playListModel);
+    AddUrlDialog::popup(this, m_pl_manager->currentPlayList());
 }
 
 SoundCore * MainWindow::soundCore() const

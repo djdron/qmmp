@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 
 class SoundCore;
 class MediaPlayer;
-class PlayListModel;
+class PlayListManager;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -94,7 +94,7 @@ private slots:
 private:
     SoundCore *m_core;
     MediaPlayer *m_player;
-    PlayListModel *m_model;
+    PlayListManager *m_pl_manager;
 
 };
 

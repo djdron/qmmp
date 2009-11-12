@@ -23,7 +23,7 @@
 
 #include <qmmp/soundcore.h>
 #include <qmmpui/generalhandler.h>
-#include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
 #include "lyricswindow.h"
@@ -43,7 +43,8 @@ Lyrics::~Lyrics()
 
 void Lyrics::showLyrics()
 {
-    QList <PlayListItem *> items = MediaPlayer::instance()->playListModel()->getSelectedItems();
+    PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
+    QList <PlayListItem *> items = pl_manager->selectedPlayList()->getSelectedItems();
     if (!items.isEmpty())
     {
         if (items.at(0)->artist().isEmpty() || items.at(0)->title().isEmpty())

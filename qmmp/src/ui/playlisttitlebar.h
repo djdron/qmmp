@@ -37,15 +37,13 @@ class PlayListTitleBar : public PixmapWidget
 Q_OBJECT
 public:
     PlayListTitleBar(QWidget *parent = 0);
-
     ~PlayListTitleBar();
-
     void setActive(bool);
-    void setModel(PlayListModel *model);
     void readSettings();
 
 public slots:
     void showCurrent();
+    void setModel(PlayListModel *selected, PlayListModel *previous = 0);
 
 private slots:
     void updateSkin();

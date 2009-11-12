@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,6 @@
 #define _KEYBOARDMANAGER_H
 
 class PlayList;
-class PlayListModel;
 class QKeyEvent;
 
 
@@ -52,10 +51,6 @@ class KeyboardManager
          */
         bool handleKeyRelease (QKeyEvent*);
 
-        /*!
-         * Inits the \b KeyboardManager object with data model.
-         */
-        void setModel (PlayListModel*);
     protected:
         void keyUp (QKeyEvent* ke);
         void keyDown (QKeyEvent* ke);
@@ -66,7 +61,6 @@ class KeyboardManager
         void keyEnd(QKeyEvent* ke);
     private:
         PlayList* m_playlist;
-        PlayListModel* m_playListModel;
 };
 
 #endif

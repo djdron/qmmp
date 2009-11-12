@@ -23,7 +23,7 @@
 
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/mediaplayer.h>
-#include <qmmpui/playlistmodel.h>
+#include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmp/qmmp.h>
 #include "haldevice.h"
@@ -190,9 +190,9 @@ void HalPlugin::processAction(QAction *action)
     qDebug("HalPlugin: action triggered: %s", qPrintable(action->data().toString()));
     QString path = action->data().toString();
     if (path.startsWith("cdda://"))
-        MediaPlayer::instance()->playListModel()->addFile(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->addFile(path);
     else
-        MediaPlayer::instance()->playListModel()->addDirectory(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->addDirectory(path);
 }
 
 QAction *HalPlugin::findAction(const QString &dev_path)
@@ -229,7 +229,7 @@ HalDevice *HalPlugin::findDevice(QAction *action)
 
 void HalPlugin::addPath(const QString &path)
 {
-    foreach(PlayListItem *item, MediaPlayer::instance()->playListModel()->items()) // Is it already exist?
+    foreach(PlayListItem *item, MediaPlayer::instance()->playListManager()->selectedPlayList()->items()) // Is it already exist?
     {
         if (item->url().startsWith(path))
             return;
@@ -237,11 +237,11 @@ void HalPlugin::addPath(const QString &path)
 
     if (path.startsWith("cdda://") && m_addTracks)
     {
-        MediaPlayer::instance()->playListModel()->addFile(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->addFile(path);
         return;
     }
     else if (!path.startsWith("cdda://") && m_addFiles)
-        MediaPlayer::instance()->playListModel()->addDirectory(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->addDirectory(path);
 }
 
 void HalPlugin::removePath(const QString &path)
@@ -250,7 +250,7 @@ void HalPlugin::removePath(const QString &path)
             (!path.startsWith("cdda://") && !m_removeFiles)) //process settings
         return;
 
-    PlayListModel *model = MediaPlayer::instance()->playListModel();
+    PlayListModel *model = MediaPlayer::instance()->playListManager()->selectedPlayList();
 
     int i = 0;
     while (model->count() > 0 && i < model->count())

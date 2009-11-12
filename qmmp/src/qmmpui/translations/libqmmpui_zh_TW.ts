@@ -69,6 +69,14 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>PlayListManager</name>
+    <message>
+        <location filename="../playlistmanager.cpp" line="97"/>
+        <source>Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QtFileDialogFactory</name>
     <message>
         <location filename="../qtfiledialog.cpp" line="33"/>

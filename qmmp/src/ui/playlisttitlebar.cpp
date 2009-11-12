@@ -194,10 +194,13 @@ void PlayListTitleBar::setActive(bool a)
 }
 
 
-void PlayListTitleBar::setModel(PlayListModel *model)
+void PlayListTitleBar::setModel(PlayListModel *selected, PlayListModel *previous)
 {
-    m_model = model;
+    if(previous)
+        disconnect(previous, 0, this, 0); //disconnect previous model
+    m_model = selected;
     connect (m_model, SIGNAL(listChanged()), SLOT(showCurrent()));
+    showCurrent();
 }
 
 void PlayListTitleBar::readSettings()
