@@ -21,9 +21,9 @@
 #define PLAYLIST_H
 
 #include <QWidget>
+#include <QPointer>
 
-class QMenu;
-class QActionGroup;
+class QMenu;;
 class Skin;
 class ListWidget;
 class PlayListItem;
@@ -38,7 +38,7 @@ class PixmapWidget;
 class PlaylistControl;
 class KeyboardManager;
 class PlayListManager;
-
+class PlayListBrowser;
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -81,10 +81,8 @@ class PlayList : public QWidget
         void showSortMenu();
         void showPlaylistMenu();
         void updateSkin();
-        void select(QAction *a); //selects playlist with action
-        void addModel(int i);
-        void removeModel(int i);
         void deletePlaylist();
+        void showPlayLists();
 
     private:
         void updatePositions();
@@ -122,7 +120,7 @@ class PlayList : public QWidget
         bool m_shaded;
         PlayListManager *m_pl_manager;
         KeyboardManager* m_keyboardManager;
-        QActionGroup *m_pl_actions;
+        QPointer <PlayListBrowser> m_pl_browser;
 
     protected:
         virtual void paintEvent (QPaintEvent *);

@@ -7,7 +7,8 @@ FORMS += ./forms/configdialog.ui \
     ./forms/preseteditor.ui \
     ./forms/jumptotrackdialog.ui \
     ./forms/aboutdialog.ui \
-    ./forms/addurldialog.ui
+    ./forms/addurldialog.ui \
+    ./forms/playlistbrowser.ui
 HEADERS += mainwindow.h \
     button.h \
     display.h \
@@ -53,7 +54,8 @@ HEADERS += mainwindow.h \
     shadedvisual.h \
     shadedbar.h \
     builtincommandlineoption.h \
-    cursorimage.h
+    cursorimage.h \
+    playlistbrowser.h
 SOURCES += mainwindow.cpp \
     mp3player.cpp \
     button.cpp \
@@ -99,7 +101,8 @@ SOURCES += mainwindow.cpp \
     shadedvisual.cpp \
     shadedbar.cpp \
     builtincommandlineoption.cpp \
-    cursorimage.cpp
+    cursorimage.cpp \
+    playlistbrowser.cpp
 win32:HEADERS += ../qmmp/visual.h
 unix { 
     HEADERS += unixdomainsocket.h
