@@ -22,10 +22,7 @@
 #include <QDir>
 #include <QAction>
 #include <QMenu>
-#include <QLibrary>
-
 #include <math.h>
-
 #include <qmmp/soundcore.h>
 #include <qmmp/visual.h>
 #include <qmmp/metadatamanager.h>
@@ -38,7 +35,6 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/mediaplayer.h>
-
 #include "textscroller.h"
 #include "mainwindow.h"
 #include "skin.h"

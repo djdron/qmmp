@@ -76,6 +76,7 @@ SET(ui_SRCS
     visualmenu.cpp
     volumebar.cpp
     cursorimage.cpp
+    playlistbrowser.cpp
 )
 
 SET(ui_MOC_HDRS
@@ -126,6 +127,7 @@ SET(ui_MOC_HDRS
     visualmenu.h
     volumebar.h
     cursorimage.h
+    playlistbrowser.h
 )
 
 SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
@@ -144,6 +146,7 @@ SET(ui_UIS
     forms/configdialog.ui
     forms/jumptotrackdialog.ui
     forms/preseteditor.ui
+    forms/playlistbrowser.ui
 )
 
 QT4_WRAP_UI(ui_UIS_H ${ui_UIS})

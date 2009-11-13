@@ -92,6 +92,7 @@ signals:
     void selectedPlayListChanged (PlayListModel *selected, PlayListModel *previous);
     void playListAdded(int index);
     void playListRemoved(int index);
+    void playListsChanged();
     /*!
      * Emitted when state of the "Repeat All" option has changed.
      * @param state New state of the "Repeat All" option (\b true - enabled, \b false disabled)
@@ -110,6 +111,8 @@ signals:
 public slots:
     void selectPlayList(PlayListModel *model);
     void selectPlayList(int index);
+    void selectNextPlayList();
+    void selectPreviousPlayList();
     void activatePlayList(PlayListModel *model);
     PlayListModel *createPlayList(const QString &name = QString());
     void removePlayList(PlayListModel *model);

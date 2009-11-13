@@ -38,6 +38,7 @@
 #include "symboldisplay.h"
 #include "playlistcontrol.h"
 #include "keyboardmanager.h"
+#include "playlistbrowser.h"
 
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
@@ -55,6 +56,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
     m_shaded = FALSE;
+    m_pl_browser = 0;
 
     resize (275*m_ratio, 116*m_ratio);
     setSizeIncrement (25*m_ratio, 29*m_ratio);
@@ -77,7 +79,6 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
 
     m_current_time = new SymbolDisplay (this,6);
     m_keyboardManager = new KeyboardManager (this);
-    m_pl_actions = new QActionGroup (this);
 
     connect (m_listWidget, SIGNAL (selectionChanged()), parent, SLOT (replay()));
 
@@ -312,12 +313,12 @@ void PlayList::createActions()
 
     //  Playlist Menu
     QAction *newListAct = new QAction (tr ("&New List"),this);
-    newListAct->setShortcut (tr ("Shift+N"));
+    newListAct->setShortcut (tr ("Ctrl+T"));
     m_actions << newListAct;
     m_playlistMenu->addAction (newListAct);
     connect (newListAct, SIGNAL (triggered()), m_pl_manager, SLOT (createPlayList()));
     QAction *deleteListAct = new QAction (tr ("&Delete List"),this);
-    deleteListAct->setShortcut (tr ("Shift+D"));
+    deleteListAct->setShortcut (tr ("Ctrl+W"));
     m_actions << deleteListAct;
     m_playlistMenu->addAction (deleteListAct);
     connect (deleteListAct, SIGNAL (triggered()), SLOT (deletePlaylist()));
@@ -334,19 +335,26 @@ void PlayList::createActions()
     m_actions << saveListAct;
     m_playlistMenu->addAction (saveListAct);
     connect (saveListAct, SIGNAL (triggered()), this, SIGNAL (savePlaylist()));
-    //plalists
+
     m_playlistMenu->addSeparator();
-    foreach(QString name, m_pl_manager->playListNames())
-    {
-        QAction *pl = new QAction(name, this);
-        pl->setCheckable(TRUE);
-        m_playlistMenu->addAction (pl);
-        m_pl_actions->addAction(pl);
-    }
-    m_pl_actions->actions().at(m_pl_manager->indexOf(m_pl_manager->currentPlayList()))->setChecked(TRUE);
-    connect(m_pl_actions, SIGNAL(triggered(QAction*)), SLOT(select(QAction*)));
-    connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addModel(int)));
-    connect(m_pl_manager, SIGNAL(playListRemoved(int)), SLOT(removeModel(int)));
+    QAction *nextListAct = new QAction (tr ("&Select Next Playlist"),this);
+    nextListAct->setShortcut (tr ("Ctrl+PgDown"));
+    m_actions << nextListAct;
+    m_playlistMenu->addAction (nextListAct);
+    connect (nextListAct, SIGNAL (triggered()), m_pl_manager, SLOT (selectNextPlayList()));
+
+    QAction *previousListAct = new QAction (tr ("&Select Previous Playlist"),this);
+    previousListAct->setShortcut (tr ("Ctrl+PgUp"));
+    m_actions << previousListAct;
+    m_playlistMenu->addAction (previousListAct);
+    connect (previousListAct, SIGNAL (triggered()), m_pl_manager, SLOT (selectPreviousPlayList()));
+
+    QAction *browseListsAct = new QAction (tr ("&Show Playlists"),this);
+    browseListsAct->setShortcut (tr ("P"));
+    m_actions << browseListsAct;
+    m_playlistMenu->addAction (browseListsAct);
+    connect (browseListsAct, SIGNAL (triggered()), SLOT (showPlayLists()));
+
     Dock::instance()->addActions (m_actions);
 }
 
@@ -551,43 +559,20 @@ void PlayList::updateSkin()
     setMinimalMode(m_shaded);
 }
 
-void PlayList::select(QAction *a)
-{
-    int i = m_pl_actions->actions().indexOf(a);
-    m_pl_manager->selectPlayList(i);
-}
-
-void PlayList::addModel(int i)
-{
-    QList <QAction *> actions = m_pl_actions->actions();
-    foreach(QAction *a, actions) //clear action group
-    {
-        m_pl_actions->removeAction(a);
-        m_playlistMenu->removeAction (a);
-    }
-    QAction *new_action = new QAction(m_pl_manager->playListNames().at(i), this);
-    new_action->setCheckable(TRUE);
-    actions.insert(i, new_action);
-    foreach(QAction *a, actions)
-    {
-        m_pl_actions->addAction(a);
-        m_playlistMenu->addAction (a);
-    }
-    m_pl_actions->actions().at(m_pl_manager->indexOf(m_pl_manager->currentPlayList()))->setChecked(TRUE);
-}
-
-void PlayList::removeModel(int i)
-{
-    QAction *a = m_pl_actions->actions().at(i);
-    m_pl_actions->removeAction(a);
-    m_playlistMenu->removeAction (a);
-    a->deleteLater();
-    m_pl_actions->actions().at(m_pl_manager->indexOf(m_pl_manager->currentPlayList()))->setChecked(TRUE);
-}
-
 void PlayList::deletePlaylist()
 {
     m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
+}
+
+void PlayList::showPlayLists()
+{
+    if(!m_pl_browser)
+    {
+        m_pl_browser = new PlayListBrowser(m_pl_manager, this);
+        m_pl_browser->show();
+    }
+    else
+        m_pl_browser->show();
 }
 
 void PlayList::setMinimalMode(bool b)

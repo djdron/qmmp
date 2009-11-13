@@ -72,6 +72,7 @@ void PlayListManager::selectPlayList(PlayListModel *model)
         PlayListModel *prev = m_selected;
         m_selected = model;
         emit selectedPlayListChanged(model, prev);
+        emit playListsChanged();
     }
 }
 
@@ -82,6 +83,22 @@ void PlayListManager::selectPlayList(int i)
     selectPlayList(playListAt(i));
 }
 
+void PlayListManager::selectNextPlayList()
+{
+    int i = m_models.indexOf(m_selected);
+    i++;
+    if( i >= 0 && i < m_models.size())
+        selectPlayList(i);
+}
+
+void PlayListManager::selectPreviousPlayList()
+{
+    int i = m_models.indexOf(m_selected);
+    i--;
+    if( i >= 0 && i < m_models.size())
+        selectPlayList(i);
+}
+
 void PlayListManager::activatePlayList(PlayListModel *model)
 {
     if(model != m_current && m_models.contains(model))
@@ -89,6 +106,7 @@ void PlayListManager::activatePlayList(PlayListModel *model)
         PlayListModel *prev = m_current;
         m_current = model;
         emit currentPlayListChanged(model, prev);
+        emit playListsChanged();
     }
 }
 
@@ -100,6 +118,7 @@ PlayListModel *PlayListManager::createPlayList(const QString &name)
     model->prepareForRepeatablePlaying(m_repeatable);
     model->prepareForShufflePlaying(m_shuffle);
     emit playListAdded(i);
+    emit playListsChanged();
     return model;
 }
 
@@ -111,12 +130,19 @@ void PlayListManager::removePlayList(PlayListModel *model)
      int i = m_models.indexOf(model);
 
      if(m_current == model)
-         activatePlayList(m_models.at(i + (i > 0) ? -1 : 1));
+     {
+         m_current = m_models.at((i > 0) ? (i - 1) : (i + 1));
+         emit currentPlayListChanged(m_current, model);
+     }
      if(m_selected == model)
-         selectPlayList(m_models.at(i + (i > 0) ? -1 : 1));
+     {
+         m_selected = m_models.at((i > 0) ? (i - 1) : (i + 1));
+         emit selectedPlayListChanged(m_selected, model);
+     }
      m_models.removeAt(i);
      model->deleteLater();
      emit playListRemoved(i);
+     emit playListsChanged();
 }
 
 void PlayListManager::setRepeatableList(bool r)
