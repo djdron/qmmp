@@ -1042,12 +1042,12 @@
     <message>
         <location filename="../playlist.cpp" line="316"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="321"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="328"/>
@@ -1158,7 +1158,7 @@
     <message>
         <location filename="../playlist.cpp" line="303"/>
         <source>Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="308"/>
@@ -1173,37 +1173,37 @@
     <message>
         <location filename="../playlist.cpp" line="340"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибрати &amp;наступний список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="341"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="346"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибрати &amp;попередній список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="347"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="352"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати &amp;всі списки</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="353"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="320"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="327"/>
@@ -1262,23 +1262,23 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Переглядач списків</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
         <location filename="../playlistbrowser.cpp" line="36"/>
         <source>Delete</source>
-        <translation type="unfinished">Видалити</translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="35"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Переіменувати</translation>
     </message>
 </context>
 <context>
