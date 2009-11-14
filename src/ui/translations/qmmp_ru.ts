@@ -1168,12 +1168,12 @@
     <message>
         <location filename="../playlist.cpp" line="315"/>
         <source>&amp;New List</source>
-        <translation>&amp;Новый лист</translation>
+        <translation>&amp;Новый список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="340"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Выбрать следующий список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="341"/>
@@ -1183,7 +1183,7 @@
     <message>
         <location filename="../playlist.cpp" line="346"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Выбрать предыдущий список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="347"/>
@@ -1193,7 +1193,7 @@
     <message>
         <location filename="../playlist.cpp" line="352"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Показать списки</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="353"/>
@@ -1262,23 +1262,23 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Обзор списков воспроизведения</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Создать</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
         <location filename="../playlistbrowser.cpp" line="36"/>
         <source>Delete</source>
-        <translation type="unfinished">Удалить</translation>
+        <translation>Удалить</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="35"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Переименовать</translation>
     </message>
 </context>
 <context>

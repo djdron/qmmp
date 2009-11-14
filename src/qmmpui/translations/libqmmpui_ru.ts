@@ -73,7 +73,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../playlistmanager.cpp" line="115"/>
         <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Список воспроизведения</translation>
     </message>
 </context>
 <context>
