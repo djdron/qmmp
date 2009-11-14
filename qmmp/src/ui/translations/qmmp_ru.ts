@@ -1203,7 +1203,7 @@
     <message>
         <location filename="../playlist.cpp" line="320"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Удалить список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="327"/>
