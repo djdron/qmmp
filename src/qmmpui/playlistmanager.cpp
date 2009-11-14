@@ -222,8 +222,17 @@ void PlayListManager::setUseMetadata(bool yes)
 
 void PlayListManager::setFormat(const QString &format)
 {
-    PlaylistSettings::instance()->setFormat(format);
-    emit settingsChanged();
+    if(format != PlaylistSettings::instance()->format())
+    {
+        PlaylistSettings::instance()->setFormat(format);
+        emit settingsChanged();
+        foreach(PlayListModel *model, m_models)
+        {
+            foreach(PlayListItem *item, model->items())
+                item->setText(QString());
+            model->doCurrentVisibleRequest();
+        }
+    }
 }
 
 bool PlayListManager::isRepeatableList() const
@@ -239,8 +248,8 @@ bool PlayListManager::isShuffle() const
 void PlayListManager::readPlayLists()
 {
     QString line, param, value;
-    int s;
-    QList <FileInfo *> infoList;
+    int s = 0, row = 0, pl = 0;
+    QList <PlayListItem *> items;
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     file.open(QIODevice::ReadOnly);
     QByteArray array = file.readAll();
@@ -257,74 +266,89 @@ void PlayListManager::readPlayLists()
         param = line.left(s);
         value = line.right(line.size() - s - 1);
 
-        if(param == "playlist")
+        if(param == "current_playlist")
+            pl = value.toInt();
+        else if(param == "playlist")
         {
+
             if(!m_models.isEmpty())
             {
-                foreach(FileInfo *info, infoList)
-                    m_models.last()->add(new PlayListItem(info));
+                m_models.last()->add(items);
+                m_models.last()->setCurrent(row);
             }
-            infoList.clear();
+            items.clear();
+            row = 0;
             m_models << new PlayListModel(value, this);
         }
+        else if (param == "current")
+        {
+            row = value.toInt();
+        }
         else if (param == "file")
-            infoList << new FileInfo(value);
-        else if (infoList.isEmpty())
+        {
+            items << new PlayListItem();
+            items.last()->setMetaData(Qmmp::URL, value);
+        }
+        else if (items.isEmpty())
             continue;
         else if (param == "title")
-            infoList.last()->setMetaData(Qmmp::TITLE, value);
+            items.last()->setMetaData(Qmmp::TITLE, value);
         else if (param == "artist")
-            infoList.last()->setMetaData(Qmmp::ARTIST, value);
+            items.last()->setMetaData(Qmmp::ARTIST, value);
         else if (param == "album")
-            infoList.last()->setMetaData(Qmmp::ALBUM, value);
+            items.last()->setMetaData(Qmmp::ALBUM, value);
         else if (param == "comment")
-            infoList.last()->setMetaData(Qmmp::COMMENT, value);
+            items.last()->setMetaData(Qmmp::COMMENT, value);
         else if (param == "genre")
-            infoList.last()->setMetaData(Qmmp::GENRE, value);
+            items.last()->setMetaData(Qmmp::GENRE, value);
         else if (param == "composer")
-            infoList.last()->setMetaData(Qmmp::COMPOSER, value);
+            items.last()->setMetaData(Qmmp::COMPOSER, value);
         else if (param == "year")
-            infoList.last()->setMetaData(Qmmp::YEAR, value);
+            items.last()->setMetaData(Qmmp::YEAR, value);
         else if (param == "track")
-            infoList.last()->setMetaData(Qmmp::TRACK, value);
+            items.last()->setMetaData(Qmmp::TRACK, value);
         else if (param == "disc")
-            infoList.last()->setMetaData(Qmmp::DISCNUMBER, value);
+            items.last()->setMetaData(Qmmp::DISCNUMBER, value);
         else if (param == "length")
-            infoList.last()->setLength(value.toInt());
+            items.last()->setLength(value.toInt());
     }
     buffer.close();
     if(!m_models.isEmpty())
     {
-        foreach(FileInfo *info, infoList)
-            m_models.last()->add(new PlayListItem(info));
+        m_models.last()->add(items);
+        m_models.last()->setCurrent(row);
     }
     else
-        m_models << new PlayListModel("Default",this);
-    m_selected = m_models.at(0);
-    m_current = m_models.at(0);
+        m_models << new PlayListModel(tr("Playlist"),this);
+    if(pl < 0 || pl >= m_models.count())
+        pl = 0;
+    m_selected = m_models.at(pl);
+    m_current = m_models.at(pl);
 }
 
 void PlayListManager::writePlayLists()
 {
     QFile file(QDir::homePath() +"/.qmmp/playlist.txt");
     file.open(QIODevice::WriteOnly);
+    file.write(QString("current_playlist=%1\n").arg(m_models.indexOf(m_current)).toUtf8());
     foreach(PlayListModel *model, m_models)
     {
         QList<PlayListItem *> items = model->items();
-        file.write(QString("playlist=%1").arg(model->name()).toUtf8() +"\n");
+        file.write(QString("playlist=%1\n").arg(model->name()).toUtf8());
+        file.write(QString("current=%1\n").arg(model->currentRow()).toUtf8());
         foreach(PlayListItem* m, items)
         {
-            file.write(QString("file=%1").arg(m->url()).toUtf8() +"\n");
-            file.write(QString("title=%1").arg(m->title()).toUtf8() +"\n");
-            file.write(QString("artist=%1").arg(m->artist()).toUtf8() +"\n");
-            file.write(QString("album=%1").arg(m->album()).toUtf8() +"\n");
-            file.write(QString("comment=%1").arg(m->comment()).toUtf8() +"\n");
-            file.write(QString("genre=%1").arg(m->genre()).toUtf8() +"\n");
-            file.write(QString("composer=%1").arg(m->composer()).toUtf8() +"\n");
-            file.write(QString("year=%1").arg(m->year()).toUtf8() +"\n");
-            file.write(QString("track=%1").arg(m->track()).toUtf8() +"\n");
-            file.write(QString("disc=%1").arg(m->discNumber()).toUtf8() +"\n");
-            file.write(QString("length=%1").arg(m->length()).toUtf8() +"\n");
+            file.write(QString("file=%1\n").arg(m->url()).toUtf8());
+            file.write(QString("title=%1\n").arg(m->title()).toUtf8());
+            file.write(QString("artist=%1\n").arg(m->artist()).toUtf8());
+            file.write(QString("album=%1\n").arg(m->album()).toUtf8());
+            file.write(QString("comment=%1\n").arg(m->comment()).toUtf8());
+            file.write(QString("genre=%1\n").arg(m->genre()).toUtf8());
+            file.write(QString("composer=%1\n").arg(m->composer()).toUtf8());
+            file.write(QString("year=%1\n").arg(m->year()).toUtf8());
+            file.write(QString("track=%1\n").arg(m->track()).toUtf8());
+            file.write(QString("disc=%1\n").arg(m->discNumber()).toUtf8());
+            file.write(QString("length=%1\n").arg(m->length()).toUtf8());
         }
     }
     file.close();

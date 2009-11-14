@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,6 +27,8 @@
 PlayListItem::PlayListItem() : AbstractPlaylistItem(), m_flag(FREE)
 {
     m_info = 0;
+    m_selected = FALSE;
+    m_current = FALSE;
 }
 
 PlayListItem::PlayListItem(FileInfo *info) : AbstractPlaylistItem(), m_flag(FREE)
@@ -38,7 +40,6 @@ PlayListItem::PlayListItem(FileInfo *info) : AbstractPlaylistItem(), m_flag(FREE
     setMetaData(info->metaData());
     setMetaData(Qmmp::URL, m_info->path());
     setLength(m_info->length());
-    readMetadata();
 }
 
 PlayListItem::~PlayListItem()
@@ -102,8 +103,10 @@ void PlayListItem::updateTags()
         delete list.takeLast();
 }
 
-const QString PlayListItem::text() const
+const QString PlayListItem::text()
 {
+    if(m_title.isEmpty())
+        readMetadata();
     return m_title;
 }
 

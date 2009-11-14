@@ -86,7 +86,7 @@ public:
     /*!
      * Returns item short title.
      */
-    const QString text() const;
+    const QString text();
     /*!
      * Direct access to the item short title.
      * @param title New short title.
