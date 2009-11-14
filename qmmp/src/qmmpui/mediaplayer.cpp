@@ -54,7 +54,7 @@ MediaPlayer* MediaPlayer::instance()
 void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
 {
     Q_CHECK_PTR(core);
-    Q_CHECK_PTR(m_pl_manager);
+    Q_CHECK_PTR(pl_manager);
     m_core = core;
     m_pl_manager = pl_manager;
     m_repeat = FALSE;
