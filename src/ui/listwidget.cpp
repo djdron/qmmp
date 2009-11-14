@@ -209,9 +209,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_rows = (e->size().height() - 10) / m_metrics->ascent ();
-
     m_scroll = TRUE;
-
     updateList();
     QWidget::resizeEvent(e);
 }
@@ -299,6 +297,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     m_model = selected;
     connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
     connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
+    recenterCurrent();
     updateList();
 }
 
