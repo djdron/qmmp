@@ -27,6 +27,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QSettings>
+#include <QDebug>
 #include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
 #include "kdenotify.h"
@@ -35,11 +36,13 @@ KdeNotify::KdeNotify(QObject *parent) : General(parent)
 {
     notifier = new QDBusInterface("org.kde.VisualNotifications",
                                   "/VisualNotifications", "org.kde.VisualNotifications");
-    if(notifier->isValid())
+    if(notifier->lastError().type() != QDBusError::NoError)
     {
-        qWarning("KdeNotify: unable to create dbus interface");
+        qWarning() << "KdeNotify: unable to create dbus interface(" +
+                notifier->lastError().message() + ")";
         return;
     }
+
     QSettings settings(Qmmp::configFile(),QSettings::IniFormat);
     settings.beginGroup("Kde_Notifier");
     m_NotifyDelay = settings.value("notify_delay",10000).toInt();
