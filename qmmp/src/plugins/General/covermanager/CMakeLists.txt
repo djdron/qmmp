@@ -21,6 +21,7 @@ ADD_DEFINITIONS(-DQT_SHARED)
 ADD_DEFINITIONS(-DQT_THREAD)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # libqmmpui
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
