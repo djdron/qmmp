@@ -55,7 +55,8 @@ HEADERS += mainwindow.h \
     shadedbar.h \
     builtincommandlineoption.h \
     cursorimage.h \
-    playlistbrowser.h
+    playlistbrowser.h \
+    playlistselector.h
 SOURCES += mainwindow.cpp \
     mp3player.cpp \
     button.cpp \
@@ -102,7 +103,8 @@ SOURCES += mainwindow.cpp \
     shadedbar.cpp \
     builtincommandlineoption.cpp \
     cursorimage.cpp \
-    playlistbrowser.cpp
+    playlistbrowser.cpp \
+    playlistselector.cpp
 win32:HEADERS += ../qmmp/visual.h
 unix { 
     HEADERS += unixdomainsocket.h
