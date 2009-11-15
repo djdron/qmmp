@@ -112,6 +112,7 @@ void ConfigDialog::readSettings()
     }
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
     ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", TRUE).toBool());
+    ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", FALSE).toBool());
     //proxy settings
     ui.enableProxyCheckBox->setChecked(Qmmp::useProxy());
     ui.authProxyCheckBox->setChecked(Qmmp::useProxyAuth());
@@ -614,6 +615,7 @@ void ConfigDialog::saveSettings()
     }
     settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
     settings.setValue ("PlayList/show_numbers", ui.numbersCheckBox->isChecked());
+    settings.setValue ("PlayList/show_plalists", ui.playlistsCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
 
     Qmmp::setProxyEnabled(ui.enableProxyCheckBox->isChecked());

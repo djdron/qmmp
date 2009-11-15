@@ -57,6 +57,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_ratio = m_skin->ratio();
     m_shaded = FALSE;
     m_pl_browser = 0;
+    m_pl_selector = 0;
 
     resize (275*m_ratio, 116*m_ratio);
     setSizeIncrement (25*m_ratio, 29*m_ratio);
@@ -73,7 +74,6 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_resizeWidget->resize(25,25);
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
     m_pl_control = new PlaylistControl (this);
-    m_pl_selector = new PlayListSelector(m_pl_manager, this);
 
     m_length_totalLength = new SymbolDisplay (this,14);
     m_length_totalLength->setAlignment (Qt::AlignLeft);
@@ -133,11 +133,14 @@ void PlayList::updatePositions()
     m_titleBar->resize (275*m_ratio+25*sx, 20*m_ratio);
     m_plslider->resize (20*m_ratio, 58*m_ratio+sy*29);
 
-
-    m_pl_selector->resize(243*m_ratio+25*sx, m_pl_selector->height());
-    m_pl_selector->move(12*m_ratio, 20*m_ratio + 58*m_ratio+29*sy - m_pl_selector->height());
-
-    m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy - m_pl_selector->height());
+    if(m_pl_selector)
+    {
+        m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy - m_pl_selector->height());
+        m_pl_selector->resize(243*m_ratio+25*sx, m_pl_selector->height());
+        m_pl_selector->move(12*m_ratio, 20*m_ratio + 58*m_ratio+29*sy - m_pl_selector->height());
+    }
+    else
+        m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy);
     m_listWidget->move (12*m_ratio,20*m_ratio);
 
     m_buttonAdd->move (11*m_ratio, 86*m_ratio+29*sy);
@@ -453,24 +456,35 @@ void PlayList::changeEvent (QEvent * event)
 
 void PlayList::readSettings()
 {
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    if (settings.value("PlayList/show_plalists", FALSE).toBool())
+    {
+        if(!m_pl_selector)
+            m_pl_selector = new PlayListSelector(m_pl_manager, this);
+        m_pl_selector->show();
+    }
+    else
+    {
+        if(m_pl_selector)
+            m_pl_selector->deleteLater();
+        m_pl_selector = 0;
+    }
     if (m_update)
     {
         m_listWidget->readSettings();
         m_titleBar->readSettings();
-        m_pl_selector->readSettings();
+        if(m_pl_selector)
+            m_pl_selector->readSettings();
+        updatePositions();
     }
     else
     {
-        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         if (settings.value("General/openbox_compat", FALSE).toBool() ||
             settings.value("General/metacity_compat", FALSE).toBool())
             setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
         else
-            setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
-        settings.beginGroup ("PlayList");
-        //position
-        move (settings.value ("pos", QPoint (100, 332)).toPoint());
-        settings.endGroup();
+            setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint); 
+        move (settings.value ("PlayList/pos", QPoint (100, 332)).toPoint());  //position
         m_update = TRUE;
     }
 }
