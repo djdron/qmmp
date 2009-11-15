@@ -77,6 +77,7 @@ SET(ui_SRCS
     volumebar.cpp
     cursorimage.cpp
     playlistbrowser.cpp
+    playlistselector.cpp
 )
 
 SET(ui_MOC_HDRS
@@ -128,6 +129,7 @@ SET(ui_MOC_HDRS
     volumebar.h
     cursorimage.h
     playlistbrowser.h
+    playlistselector.h
 )
 
 SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)

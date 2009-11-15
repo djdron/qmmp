@@ -117,6 +117,7 @@ PlayListModel *PlayListManager::createPlayList(const QString &name)
     m_models.insert(i, model);
     model->prepareForRepeatablePlaying(m_repeatable);
     model->prepareForShufflePlaying(m_shuffle);
+    connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
     emit playListAdded(i);
     emit playListsChanged();
     return model;
@@ -324,6 +325,8 @@ void PlayListManager::readPlayLists()
         pl = 0;
     m_selected = m_models.at(pl);
     m_current = m_models.at(pl);
+    foreach(PlayListModel *model, m_models)
+        connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
 }
 
 void PlayListManager::writePlayLists()

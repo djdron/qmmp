@@ -39,6 +39,7 @@ class PlaylistControl;
 class KeyboardManager;
 class PlayListManager;
 class PlayListBrowser;
+class PlayListSelector;
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -121,6 +122,7 @@ class PlayList : public QWidget
         PlayListManager *m_pl_manager;
         KeyboardManager* m_keyboardManager;
         QPointer <PlayListBrowser> m_pl_browser;
+        PlayListSelector *m_pl_selector;
 
     protected:
         virtual void paintEvent (QPaintEvent *);

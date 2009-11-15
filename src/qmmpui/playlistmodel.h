@@ -275,6 +275,11 @@ signals:
      * Emitted when first item has added.
      */
     void firstAdded();
+    /*!
+     * Emitted when playlist name has chanded.
+     * @param name New playlist name.
+     */
+    void nameChanged(const QString& name);
 
 public slots:
     /*!

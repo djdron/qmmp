@@ -97,7 +97,11 @@ QString PlayListModel::name() const
 
 void PlayListModel::setName(const QString &name)
 {
-    m_name = name;
+    if(m_name != name)
+    {
+        m_name = name;
+        emit nameChanged(name);
+    }
 }
 
 void PlayListModel::add(PlayListItem *item)

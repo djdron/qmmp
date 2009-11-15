@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,20 +24,19 @@
 #include <QDir>
 #include <QContextMenuEvent>
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 class QFont;
 class QFontMetrics;
 class QMenu;
 class QAction;
-
 class PlayList;
 class PlayListModel;
 class Skin;
 class PlayListItem;
 class MediaPlayer;
 
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class ListWidget : public QWidget
 {
     Q_OBJECT

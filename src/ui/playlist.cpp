@@ -39,7 +39,7 @@
 #include "playlistcontrol.h"
 #include "keyboardmanager.h"
 #include "playlistbrowser.h"
-
+#include "playlistselector.h"
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
@@ -73,6 +73,7 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     m_resizeWidget->resize(25,25);
     m_resizeWidget->setCursor(m_skin->getCursor (Skin::CUR_PSIZE));
     m_pl_control = new PlaylistControl (this);
+    m_pl_selector = new PlayListSelector(m_pl_manager, this);
 
     m_length_totalLength = new SymbolDisplay (this,14);
     m_length_totalLength->setAlignment (Qt::AlignLeft);
@@ -132,7 +133,11 @@ void PlayList::updatePositions()
     m_titleBar->resize (275*m_ratio+25*sx, 20*m_ratio);
     m_plslider->resize (20*m_ratio, 58*m_ratio+sy*29);
 
-    m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy);
+
+    m_pl_selector->resize(243*m_ratio+25*sx, m_pl_selector->height());
+    m_pl_selector->move(12*m_ratio, 20*m_ratio + 58*m_ratio+29*sy - m_pl_selector->height());
+
+    m_listWidget->resize (243*m_ratio+25*sx, 58*m_ratio+29*sy - m_pl_selector->height());
     m_listWidget->move (12*m_ratio,20*m_ratio);
 
     m_buttonAdd->move (11*m_ratio, 86*m_ratio+29*sy);
@@ -452,6 +457,7 @@ void PlayList::readSettings()
     {
         m_listWidget->readSettings();
         m_titleBar->readSettings();
+        m_pl_selector->readSettings();
     }
     else
     {
