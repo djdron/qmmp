@@ -57,7 +57,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 {
     m_vis = 0;
     m_update = FALSE;
-    m_paused = FALSE;
     m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
 #if QT_VERSION >= 0x040500
@@ -204,7 +203,11 @@ void MainWindow::updateEQ()
 
 void MainWindow::showState(Qmmp::State state)
 {
-    //disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
+    if(m_model)
+    {
+        disconnect(m_model, SIGNAL(firstAdded()), this, 0);
+        m_model = 0;
+    }
     switch ((int) state)
     {
     case Qmmp::Playing:
@@ -498,12 +501,17 @@ void MainWindow::setFileList(const QStringList & l)
     if (m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
         stop();
     qApp->processEvents(); //receive stop signal
-    //connect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
-    /*if (!m_playListModel->setFileList(l))
+    connect(m_pl_manager->selectedPlayList(), SIGNAL(firstAdded()), this, SLOT(play()));
+    if (m_pl_manager->selectedPlayList()->setFileList(l))
     {
-        disconnect(m_playListModel, SIGNAL(firstAdded()), this, SLOT(play()));
+        m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
+        m_model = m_pl_manager->selectedPlayList();
+    }
+    else
+    {
+        disconnect(m_pl_manager->selectedPlayList(), SIGNAL(firstAdded()), this, SLOT(play()));
         addFile();
-    }*/
+    }
 }
 
 void MainWindow::playPause()

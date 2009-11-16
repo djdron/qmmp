@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,18 +21,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QPointer>
 #include <qmmp/output.h>
 #include <qmmp/decoder.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmpui/playlistitem.h>
-
 #include "display.h"
 #include "titlebar.h"
 
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 class PlayList;
 class PlayListManager;
 class ConfigDialog;
@@ -44,12 +40,13 @@ class JumpToTrackDialog;
 class VisualMenu;
 class GeneralHandler;
 class MediaPlayer;
-
 class QMenu;
 class QKeyEvent;
 class BuiltinCommandLineOption;
 
-
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -111,16 +108,13 @@ private:
     MainDisplay *m_display;
     PlayList *m_playlist;
     PlayListManager *m_pl_manager;
+    QPointer <PlayListModel> m_model;
     ConfigDialog *m_confDialog;
     int m_preamp;
     EqWidget *m_equalizer;
     MainVisual *m_vis;
     QString m_lastDir;
     bool m_update;
-    bool m_showMessage;
-    int m_messageDelay;
-    bool m_paused;
-    bool m_showToolTip;
     Skin *m_skin;
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;
