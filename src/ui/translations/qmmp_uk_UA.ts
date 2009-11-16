@@ -432,7 +432,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="469"/>
         <source>Show playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати списки</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="664"/>
