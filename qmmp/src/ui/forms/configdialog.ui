@@ -463,7 +463,7 @@
               </property>
              </widget>
             </item>
-            <item row="5" column="0">
+            <item row="5" column="0" colspan="3">
              <widget class="QCheckBox" name="playlistsCheckBox">
               <property name="text">
                <string>Show playlists</string>
