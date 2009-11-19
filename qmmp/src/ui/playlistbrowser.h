@@ -42,6 +42,8 @@ private slots:
     void on_listWidget_itemChanged(QListWidgetItem *item);
     void rename();
     void on_deleteButton_clicked();
+    void on_downButton_clicked();
+    void on_upButton_clicked();
 
 private:
     Ui::PlayListBrowser ui;
