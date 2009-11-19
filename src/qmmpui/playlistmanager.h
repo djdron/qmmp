@@ -116,6 +116,7 @@ public slots:
     void activatePlayList(PlayListModel *model);
     PlayListModel *createPlayList(const QString &name = QString());
     void removePlayList(PlayListModel *model);
+    void move(int i, int j);
     void setRepeatableList(bool r);
     void setShuffle(bool s);
     /*!
@@ -190,6 +191,7 @@ public slots:
      * This is a convenience function and is the same as calling \b selectedPlayList()->clearInvalidItems()
      */
     void clearInvalidItems();
+
 
 private:
     void readPlayLists();

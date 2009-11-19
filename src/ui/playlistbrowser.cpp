@@ -19,6 +19,8 @@
  ***************************************************************************/
 
 #include <QAction>
+#include <QApplication>
+#include <QStyle>
 #include <qmmpui/playlistmanager.h>
 #include "playlistbrowser.h"
 
@@ -39,6 +41,8 @@ PlayListBrowser::PlayListBrowser(PlayListManager *manager, QWidget *parent) : QD
     ui.listWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
     ui.listWidget->addAction(renameAct);
     ui.listWidget->addAction(removeAct);
+    ui.downButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowDown));
+    ui.upButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowUp));
 }
 
 PlayListBrowser::~PlayListBrowser()
@@ -83,4 +87,18 @@ void PlayListBrowser::on_deleteButton_clicked()
         models.append(m_pl_manager->playListAt(ui.listWidget->row (item)));
     foreach(PlayListModel *model, models)
         m_pl_manager->removePlayList(model);
+}
+
+void PlayListBrowser::on_downButton_clicked()
+{
+    int pos = m_pl_manager->indexOf(m_pl_manager->selectedPlayList());
+    if(pos < m_pl_manager->count() - 1)
+        m_pl_manager->move(pos, pos + 1);
+}
+
+void PlayListBrowser::on_upButton_clicked()
+{
+    int pos = m_pl_manager->indexOf(m_pl_manager->selectedPlayList());
+    if(pos > 0)
+        m_pl_manager->move(pos, pos - 1);
 }
