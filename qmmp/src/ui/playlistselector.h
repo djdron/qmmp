@@ -23,6 +23,7 @@
 
 #include <QWidget>
 #include <QColor>
+#include <QPixmap>
 
 class QFontMetrics;
 class QFont;
@@ -48,15 +49,24 @@ private slots:
 private:
     void paintEvent(QPaintEvent *);
     void mousePressEvent ( QMouseEvent *e);
+    void resizeEvent (QResizeEvent *);
     void updateOffsets();
     void loadColors();
+    void drawButtons();
+    void updateScrollers();
+    int firstVisible();
+    int lastVisible();
     PlayListManager *m_pl_manager;
     QFontMetrics *m_metrics;
     QFont m_font;
     bool m_update;
+    bool m_scrollable;
     QList <QRect> m_rects;
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
+    QPixmap m_pixmap;
+    bool m_showButtons;
+    int m_offset, m_offset_max;
 };
 
 #endif // PLAYLISTSELECTOR_H
