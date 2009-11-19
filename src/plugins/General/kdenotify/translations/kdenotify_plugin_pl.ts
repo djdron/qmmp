@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="pl_PL" sourcelanguage="pl">
 <context>
     <name>KdeNotify</name>
     <message>
@@ -10,7 +10,7 @@
     <message>
         <location filename="../kdenotify.cpp" line="63"/>
         <source>Qmmp now playing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp teraz odtwarza:</translation>
     </message>
     <message>
         <location filename="../kdenotify.cpp" line="73"/>
@@ -33,13 +33,14 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="30"/>
         <source>About KDE Notification Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O wtyczce Powiadomienia KDE</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="31"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Powiadomienia KDE 4 dla Qmmp 
+</translation>
     </message>
 </context>
 <context>
