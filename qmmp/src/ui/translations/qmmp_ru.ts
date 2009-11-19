@@ -1276,12 +1276,18 @@
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
-        <location filename="../playlistbrowser.cpp" line="36"/>
+        <location filename="../playlistbrowser.cpp" line="38"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../playlistbrowser.cpp" line="35"/>
+        <location filename="../forms/playlistbrowser.ui" line="69"/>
+        <location filename="../forms/playlistbrowser.ui" line="76"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../playlistbrowser.cpp" line="37"/>
         <source>Rename</source>
         <translation>Переименовать</translation>
     </message>
