@@ -1213,12 +1213,12 @@
     <message>
         <location filename="../playlist.cpp" line="335"/>
         <source>&amp;Load List</source>
-        <translation>&amp;Загрузить лист</translation>
+        <translation>&amp;Загрузить список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="341"/>
         <source>&amp;Save List</source>
-        <translation>&amp;Сохранить лист</translation>
+        <translation>&amp;Сохранить список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="342"/>
