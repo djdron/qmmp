@@ -1284,7 +1284,7 @@
         <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="76"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="37"/>
