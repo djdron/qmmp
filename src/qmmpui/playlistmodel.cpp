@@ -127,7 +127,7 @@ void PlayListModel::add(QList <PlayListItem *> items)
 
     foreach(PlayListItem *item, items)
         m_total_length += item->length();
-    m_items.append(items);
+    m_items << items;
 
     if (m_items.size() == items.size())
         emit firstAdded();
