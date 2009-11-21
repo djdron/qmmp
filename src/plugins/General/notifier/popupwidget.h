@@ -23,6 +23,8 @@
 #include <QWidget>
 #include <QFrame>
 
+#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b> \\(%l\\)\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
+
 class QTimer;
 class QLabel;
 

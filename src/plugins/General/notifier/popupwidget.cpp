@@ -58,7 +58,7 @@ PopupWidget::PopupWidget(QWidget *parent)
     setWindowOpacity(settings.value("opacity", 1.0).toDouble());
     QString fontname = settings.value("font").toString();
     m_coverSize = settings.value("cover_size", 64).toInt();
-    m_template = settings.value("template","").toString();
+    m_template = settings.value("template",DEFAULT_TEMPLATE).toString();
     settings.endGroup();
     //font
     QFont font;
