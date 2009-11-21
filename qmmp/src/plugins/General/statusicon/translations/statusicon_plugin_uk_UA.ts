@@ -11,38 +11,38 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Tooltip</source>
-        <translation type="unfinished"></translation>
+        <translation>Підказка</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <location filename="../settingsdialog.ui" line="149"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>Затримка, мс:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="87"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Прозорість:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="121"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="130"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Розділити ім&apos;я файла, якщо немає тегів</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="140"/>
         <source>Balloone message</source>
-        <translation type="unfinished"></translation>
+        <translation>Повідомлення</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="184"/>
         <source>Use standard icons</source>
-        <translation>Використовувати стандартну іконку</translation>
+        <translation>Використовувати стандартні іконки</translation>
     </message>
 </context>
 <context>
@@ -103,17 +103,17 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розробники:</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="53"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -121,7 +121,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="149"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Зупинено</translation>
     </message>
 </context>
 </TS>
