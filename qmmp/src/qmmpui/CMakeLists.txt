@@ -39,6 +39,7 @@ SET(libqmmpui_SRCS
     detailsdialog.cpp
     tageditor.cpp
     playlistmanager.cpp
+    metadataformatter.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -62,6 +63,7 @@ SET(libqmmpui_MOC_HDRS
     detailsdialog.h
     tageditor.h
     playlistmanager.h
+    metadataformatter.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -81,6 +83,7 @@ SET(libqmmpui_DEVEL_HDRS
     detailsdialog.h
     tageditor.h
     playlistmanager.h
+    metadataformatter.h
 )
 
 

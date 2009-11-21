@@ -20,11 +20,12 @@
 
 #include <QSettings>
 #include <QFontDialog>
-
+#include <QMenu>
 #include <qmmp/qmmp.h>
-
 #include "popupwidget.h"
 #include "settingsdialog.h"
+
+#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b> \\(%l\\)\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
@@ -52,6 +53,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
     QString fontname = settings.value ("font").toString();
     ui.coverSizeSlider->setValue(settings.value ("cover_size", 64).toInt());
+    ui.textEdit->setPlainText(settings.value ("template", DEFAULT_TEMPLATE).toString());
     settings.endGroup();
     QFont font;
     if(!fontname.isEmpty())
@@ -59,6 +61,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.fontLabel->setFont(font);
     connect (ui.fontButton, SIGNAL (clicked()), SLOT (setFont()));
+    createMenu();
 }
 
 
@@ -80,9 +83,10 @@ void SettingsDialog::accept()
     settings.setValue("psi_notification", ui.psiCheckBox->isChecked());
     settings.setValue("song_notification", ui.songCheckBox->isChecked());
     settings.setValue("volume_notification", ui.volumeCheckBox->isChecked());
-    settings.setValue ("opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
-    settings.setValue ("font", ui.fontLabel->font().toString());
-    settings.setValue ("cover_size", ui.coverSizeSlider->value());
+    settings.setValue("opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
+    settings.setValue("font", ui.fontLabel->font().toString());
+    settings.setValue("cover_size", ui.coverSizeSlider->value());
+    settings.setValue("template", ui.textEdit->toPlainText());
     settings.endGroup();
     QDialog::accept();
 }
@@ -97,4 +101,35 @@ void SettingsDialog::setFont()
         ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         ui.fontLabel->setFont(font);
     }
+}
+
+void SettingsDialog::createMenu()
+{
+    QMenu *menu = new QMenu(this);
+    menu->addAction(tr("Artist"))->setData("%p");
+    menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Title"))->setData("%t");
+    menu->addAction(tr("Track number"))->setData("%n");
+    menu->addAction(tr("Two-digit track number"))->setData("%NN");
+    menu->addAction(tr("Genre"))->setData("%g");
+    menu->addAction(tr("Comment"))->setData("%c");
+    menu->addAction(tr("Composer"))->setData("%C");
+    menu->addAction(tr("Duration"))->setData("%l");
+    menu->addAction(tr("Disc number"))->setData("%D");
+    menu->addAction(tr("File name"))->setData("%f");
+    menu->addAction(tr("File path"))->setData("%F");
+    menu->addAction(tr("Year"))->setData("%y");
+    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
+    ui.insertButton->setMenu(menu);
+    connect(menu, SIGNAL(triggered (QAction *)), SLOT(insertExpression(QAction *)));
+}
+
+void SettingsDialog::insertExpression(QAction *a)
+{
+    ui.textEdit->insertPlainText(a->data().toString());
+}
+
+void SettingsDialog::on_resetButton_clicked()
+{
+    ui.textEdit->setPlainText(DEFAULT_TEMPLATE);
 }
