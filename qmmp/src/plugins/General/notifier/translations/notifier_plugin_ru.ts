@@ -116,72 +116,72 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="109"/>
+        <location filename="../settingsdialog.cpp" line="107"/>
         <source>Artist</source>
         <translation>Исполнитель</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
+        <location filename="../settingsdialog.cpp" line="108"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="111"/>
+        <location filename="../settingsdialog.cpp" line="109"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="112"/>
+        <location filename="../settingsdialog.cpp" line="110"/>
         <source>Track number</source>
         <translation>Номер трека</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="113"/>
+        <location filename="../settingsdialog.cpp" line="111"/>
         <source>Two-digit track number</source>
         <translation>2- разрядный номер трека</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="114"/>
+        <location filename="../settingsdialog.cpp" line="112"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="115"/>
+        <location filename="../settingsdialog.cpp" line="113"/>
         <source>Comment</source>
         <translation>Комментрий</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="116"/>
+        <location filename="../settingsdialog.cpp" line="114"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="117"/>
+        <location filename="../settingsdialog.cpp" line="115"/>
         <source>Duration</source>
         <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="118"/>
+        <location filename="../settingsdialog.cpp" line="116"/>
         <source>Disc number</source>
         <translation>Номер диска</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="119"/>
+        <location filename="../settingsdialog.cpp" line="117"/>
         <source>File name</source>
         <translation>Имя файла</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="120"/>
+        <location filename="../settingsdialog.cpp" line="118"/>
         <source>File path</source>
         <translation>Путь к файлу</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="121"/>
+        <location filename="../settingsdialog.cpp" line="119"/>
         <source>Year</source>
         <translation>Год</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="122"/>
+        <location filename="../settingsdialog.cpp" line="120"/>
         <source>Condition</source>
         <translation>Условие</translation>
     </message>
