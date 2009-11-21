@@ -27,7 +27,7 @@
 <context>
     <name>PopupWidget</name>
     <message>
-        <location filename="../popupwidget.cpp" line="136"/>
+        <location filename="../popupwidget.cpp" line="127"/>
         <source>Volume:</source>
         <translation>Hlasitost:</translation>
     </message>
@@ -40,65 +40,150 @@
         <translation>Nastavení notifikačního modulu</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
+        <location filename="../settingsdialog.ui" line="344"/>
+        <source>Notification Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="373"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="380"/>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="390"/>
         <source>Psi Notification</source>
         <translation>Notifikace v Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
+        <location filename="../settingsdialog.ui" line="402"/>
         <source>Enable Psi notification</source>
         <translation>Povolit notifikaci v Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="45"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>Desktop Notification</source>
         <translation>Notifikace na pracovní ploše</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="65"/>
+        <location filename="../settingsdialog.ui" line="55"/>
         <source>Font:</source>
         <translation>Písmo:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="318"/>
+        <location filename="../settingsdialog.ui" line="308"/>
         <source>Cover size:</source>
         <translation>Velikost obalu:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="85"/>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>Delay (ms):</source>
         <translation>Prodleva (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="291"/>
+        <location filename="../settingsdialog.ui" line="281"/>
         <source>Position</source>
         <translation>Umístění</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="311"/>
+        <location filename="../settingsdialog.ui" line="301"/>
         <source>...</source>
         <translation>…</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="51"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>Song change notification</source>
         <translation>Upozornění na změnu skladby</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
         <translation>Upozornění na změnu hlasitosti</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="111"/>
+        <location filename="../settingsdialog.ui" line="101"/>
         <source>Transparency</source>
         <translation>Průhlednost</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="134"/>
-        <location filename="../settingsdialog.ui" line="344"/>
+        <location filename="../settingsdialog.ui" line="124"/>
+        <location filename="../settingsdialog.ui" line="334"/>
         <source>0</source>
         <translation>0</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="109"/>
+        <source>Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="110"/>
+        <source>Album</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="111"/>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="112"/>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="113"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="114"/>
+        <source>Genre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="115"/>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="116"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="117"/>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="118"/>
+        <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="119"/>
+        <source>File name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="120"/>
+        <source>File path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="121"/>
+        <source>Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="122"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

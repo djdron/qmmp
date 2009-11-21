@@ -582,13 +582,15 @@ void ConfigDialog::createMenus()
     menu->addAction(tr("Album"))->setData("%a");
     menu->addAction(tr("Title"))->setData("%t");
     menu->addAction(tr("Track number"))->setData("%n");
-    menu->addAction(tr("Disc number"))->setData("%D");
+    menu->addAction(tr("Two-digit track number"))->setData("%NN");
     menu->addAction(tr("Genre"))->setData("%g");
+    menu->addAction(tr("Comment"))->setData("%c");
     menu->addAction(tr("Composer"))->setData("%C");
+    menu->addAction(tr("Disc number"))->setData("%D");
     menu->addAction(tr("File name"))->setData("%f");
     menu->addAction(tr("File path"))->setData("%F");
     menu->addAction(tr("Year"))->setData("%y");
-    menu->addAction(tr("Comment"))->setData("%c");
+    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
 
     ui.titleButton->setMenu(menu);
     ui.titleButton->setPopupMode(QToolButton::InstantPopup);

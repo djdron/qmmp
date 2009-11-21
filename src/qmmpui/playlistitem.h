@@ -104,7 +104,6 @@ public:
 
 private:
     void readMetadata();
-    QString printTag(QString str, QString regExp, QString tagStr);
     QString m_title;
     FileInfo *m_info;
     bool m_selected;

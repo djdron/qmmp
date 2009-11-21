@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,39 +17,27 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SETTINGSDIALOG_H
-#define SETTINGSDIALOG_H
 
-#include <QDialog>
-#include "ui_settingsdialog.h"
+#ifndef METADATAFORMATTER_H
+#define METADATAFORMATTER_H
 
-class Action;
+#include <QString>
+#include <QMap>
+#include <qmmp/qmmp.h>
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class SettingsDialog : public QDialog
+/*!
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class MetaDataFormatter
 {
-Q_OBJECT
 public:
-    SettingsDialog(QWidget *parent = 0);
-
-    ~SettingsDialog();
-
-
-public slots:
-    virtual void accept();
-
-private slots:
-    void setFont();
-    void insertExpression(QAction *);
-    void on_resetButton_clicked();
+    MetaDataFormatter(const QString &format);
+    QString parse(const QMap<Qmmp::MetaData, QString> metaData);
 
 private:
-    void createMenu();
-    Ui::SettingsDialog ui;
-    QMap<uint, QPushButton*> m_buttons;
+    QString m_format;
+    QString processIfKeyWord(QString title);
 
 };
 
-#endif
+#endif // METADATAFORMATTER_H

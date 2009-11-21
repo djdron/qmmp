@@ -221,7 +221,17 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="585"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="589"/>
         <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="593"/>
+        <source>Condition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -230,27 +240,27 @@
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="587"/>
+        <location filename="../configdialog.cpp" line="588"/>
         <source>Composer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="588"/>
+        <location filename="../configdialog.cpp" line="590"/>
         <source>File name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="589"/>
+        <location filename="../configdialog.cpp" line="591"/>
         <source>File path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="590"/>
+        <location filename="../configdialog.cpp" line="592"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="591"/>
+        <location filename="../configdialog.cpp" line="587"/>
         <source>Comment</source>
         <translation>备注</translation>
     </message>
@@ -515,12 +525,12 @@
         <translation>转换 %20 为空格</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="726"/>
+        <location filename="../configdialog.cpp" line="728"/>
         <source>Select Skin Files</source>
         <translation>选择皮肤文件</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="727"/>
+        <location filename="../configdialog.cpp" line="729"/>
         <source>Skin files</source>
         <translation>皮肤文件</translation>
     </message>

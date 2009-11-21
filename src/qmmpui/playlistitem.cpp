@@ -21,6 +21,7 @@
 #include <QDir>
 
 #include <qmmp/metadatamanager.h>
+#include "metadataformatter.h"
 #include "playlistsettings.h"
 #include "playlistitem.h"
 
@@ -117,18 +118,8 @@ void PlayListItem::setText(const QString &title)
 
 void PlayListItem::readMetadata()
 {
-    m_title = PlaylistSettings::instance()->format();
-    m_title = printTag(m_title, "%p", artist());
-    m_title = printTag(m_title, "%a", album());
-    m_title = printTag(m_title, "%t", title());
-    m_title = printTag(m_title, "%n", track());
-    m_title = printTag(m_title, "%c", comment());
-    m_title = printTag(m_title, "%C", composer());
-    m_title = printTag(m_title, "%g", genre());
-    m_title = printTag(m_title, "%D", discNumber());
-    m_title = printTag(m_title, "%f", url().section('/',-1));
-    m_title = printTag(m_title, "%F", url());
-    m_title = printTag(m_title, "%y", year ());
+    MetaDataFormatter f(PlaylistSettings::instance()->format());
+    m_title = f.parse(metaData());
     //TODO rewrite this
     if (m_title.isEmpty())
     {
@@ -142,31 +133,4 @@ void PlayListItem::readMetadata()
         m_title.replace("_", " ");
     if (PlaylistSettings::instance()->convertTwenty())
         m_title.replace("%20", " ");
-}
-
-QString PlayListItem::printTag(QString str, QString regExp, QString tagStr)
-{
-    QString format = PlaylistSettings::instance()->format();
-    if (!tagStr.isEmpty())
-        str.replace(regExp, tagStr);
-    else
-    {
-        //remove unused separators
-        int regExpPos = str.indexOf(regExp);
-        if (regExpPos < 0)
-            return str;
-        int nextPos = str.indexOf("%", regExpPos + 1);
-        if (nextPos < 0)
-        {
-            //last separator
-            regExpPos = format.lastIndexOf(regExp);
-            nextPos = format.lastIndexOf("%", regExpPos - 1);
-            QString lastSep = format.right (format.size() - nextPos - 2);
-            str.remove(lastSep);
-            str.remove(regExp);
-        }
-        else
-            str.remove ( regExpPos, nextPos - regExpPos);
-    }
-    return str;
 }

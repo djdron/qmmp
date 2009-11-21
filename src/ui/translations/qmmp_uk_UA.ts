@@ -221,8 +221,18 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="585"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="589"/>
         <source>Disc number</source>
         <translation>Номер диску</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="593"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="586"/>
@@ -230,27 +240,27 @@
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="587"/>
+        <location filename="../configdialog.cpp" line="588"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="588"/>
+        <location filename="../configdialog.cpp" line="590"/>
         <source>File name</source>
         <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="589"/>
+        <location filename="../configdialog.cpp" line="591"/>
         <source>File path</source>
         <translation>Шлях файлу</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="590"/>
+        <location filename="../configdialog.cpp" line="592"/>
         <source>Year</source>
         <translation>Рік</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="591"/>
+        <location filename="../configdialog.cpp" line="587"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
@@ -515,12 +525,12 @@
         <translation>Конвертувати %20 в пробіл</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="726"/>
+        <location filename="../configdialog.cpp" line="728"/>
         <source>Select Skin Files</source>
         <translation>Вибрати файли скінів</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="727"/>
+        <location filename="../configdialog.cpp" line="729"/>
         <source>Skin files</source>
         <translation>Файли скінів</translation>
     </message>

@@ -30,6 +30,7 @@
 #include <QFont>
 #include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
+#include <qmmpui/metadataformatter.h>
 
 #include "popupwidget.h"
 
@@ -57,6 +58,7 @@ PopupWidget::PopupWidget(QWidget *parent)
     setWindowOpacity(settings.value("opacity", 1.0).toDouble());
     QString fontname = settings.value("font").toString();
     m_coverSize = settings.value("cover_size", 64).toInt();
+    m_template = settings.value("template","").toString();
     settings.endGroup();
     //font
     QFont font;
@@ -81,30 +83,19 @@ void PopupWidget::mousePressEvent (QMouseEvent *)
 void PopupWidget::showMetaData()
 {
     m_timer->stop();
+    QString title = m_template;
+
     SoundCore *core = SoundCore::instance();
-    QString title = "<b>";
-    if (core->metaData(Qmmp::TITLE).isEmpty())
-        title.append(core->metaData(Qmmp::URL).section('/',-1));
-    else
-        title.append(core->metaData(Qmmp::TITLE));
-    title.append("</b>");
     if (core->totalTime() > 0)
     {
-        title.append(" ");
         int l = core->totalTime()/1000;
-        title.append(QString("(%1:%2)").arg(l/60).arg(l%60, 2, 10, QChar('0')));
+        title.replace("%l",QString("%1:%2").arg(l/60).arg(l%60, 2, 10, QChar('0')));
     }
-    if(!core->metaData(Qmmp::ARTIST).isEmpty())
-    {
-        title.append("<br>");
-        title.append(core->metaData(Qmmp::ARTIST));
-    }
+    else
+        title.replace("%l","");
+    MetaDataFormatter f(title);
+    title = f.parse(core->metaData());
 
-    if(!core->metaData(Qmmp::ALBUM).isEmpty())
-    {
-        title.append("<br>");
-        title.append(core->metaData(Qmmp::ALBUM));
-    }
     m_label1->setText(title);
 
     QPixmap pix = MetaDataManager::instance()->getCover(core->metaData(Qmmp::URL));

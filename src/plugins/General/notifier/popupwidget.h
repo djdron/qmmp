@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -61,6 +61,7 @@ private:
     QTimer *m_timer;
     QLabel *m_label1;
     QLabel *m_pixlabel;
+    QString m_template;
     uint m_pos;
     int m_coverSize;
 
