@@ -222,7 +222,7 @@
     <message>
         <location filename="../configdialog.cpp" line="585"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>2-x разрядный номер трека</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="589"/>
@@ -232,7 +232,7 @@
     <message>
         <location filename="../configdialog.cpp" line="593"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Условие</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="586"/>

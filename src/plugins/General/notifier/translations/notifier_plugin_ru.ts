@@ -42,17 +42,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="344"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Шаблон уведомления</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="373"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Сброс</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="380"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Вставить</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="390"/>
@@ -118,72 +118,72 @@
     <message>
         <location filename="../settingsdialog.cpp" line="109"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Исполнитель</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Название</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="112"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="113"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>2- разрядный номер трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="114"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="115"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментрий</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="116"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="117"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Длительность</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="118"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="119"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="120"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Путь к файлу</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="121"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Год</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="122"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Условие</translation>
     </message>
 </context>
 </TS>
