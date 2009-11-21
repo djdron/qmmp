@@ -25,8 +25,6 @@
 #include "popupwidget.h"
 #include "settingsdialog.h"
 
-#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b> \\(%l\\)\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
-
 SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
