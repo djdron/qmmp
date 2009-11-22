@@ -111,10 +111,10 @@ void PlayListModel::add(PlayListItem *item)
 
     m_total_length += item->length();
     m_items << item;
+    m_current = m_items.indexOf(m_currentItem);
 
     if (m_items.size() == 1)
-        emit firstAdded();
-    m_current = m_items.indexOf(m_currentItem);
+        emit firstAdded();    
     emit listChanged();
 }
 
