@@ -27,7 +27,7 @@ PlaylistSettings *PlaylistSettings::m_instance = 0;
 PlaylistSettings::PlaylistSettings()
 {
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
-    m_format = s.value("PlayList/title_format", "%p - %t").toString();
+    m_format = s.value("PlayList/title_format", "%p%if(%p&%t, - ,)%t").toString();
     m_convertUnderscore = s.value ("PlayList/convert_underscore", TRUE).toBool();
     m_convertTwenty = s.value ("PlayList/convert_twenty", TRUE).toBool();
     m_useMetadata = s.value ("PlayList/load_metadata", TRUE).toBool();
