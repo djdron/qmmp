@@ -42,7 +42,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="101"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Прозорість:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="344"/>
