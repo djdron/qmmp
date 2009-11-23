@@ -33,6 +33,7 @@
 #include "textscroller.h"
 #include "listwidget.h"
 #include "skin.h"
+#include "popupwidget.h"
 #include "playlist.h"
 
 #define INVALID_ROW -1
@@ -42,6 +43,7 @@ ListWidget::ListWidget(QWidget *parent)
 {
     m_update = FALSE;
     m_skin = Skin::instance();
+    m_popupWidget = 0;
     loadColors();
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
@@ -56,6 +58,7 @@ ListWidget::ListWidget(QWidget *parent)
     readSettings();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setAcceptDrops(true);
+    setMouseTracking(true);
 }
 
 
@@ -68,6 +71,7 @@ void ListWidget::readSettings()
     m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
     m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
     m_show_number = settings.value ("PlayList/show_numbers", TRUE).toBool();
+    bool show_popup = settings.value("PlayList/show_popup", FALSE).toBool();
 
     if (m_update)
     {
@@ -75,12 +79,19 @@ void ListWidget::readSettings()
         m_metrics = new QFontMetrics(m_font);
         m_rows = (height() - 10) / m_metrics->ascent ();
         updateList();
+        if(m_popupWidget)
+        {
+            m_popupWidget->deleteLater();
+            m_popupWidget = 0;
+        }
     }
     else
     {
         m_update = TRUE;
         m_metrics = new QFontMetrics(m_font);
     }
+    if(show_popup)
+        m_popupWidget = new PlayListPopup::PopupWidget(this);
 }
 
 void ListWidget::loadColors()
@@ -154,6 +165,8 @@ void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
 
 void ListWidget::mousePressEvent(QMouseEvent *e)
 {
+    if(m_popupWidget)
+        m_popupWidget->hide();
     m_scroll = TRUE;
     int y = e->y();
     int row = rowAt(y);
@@ -236,12 +249,17 @@ bool ListWidget::event (QEvent *e)
 {
     if(e->type() == QEvent::ToolTip)
     {
-        e->accept();
         QHelpEvent *helpEvent = (QHelpEvent *) e;
         int row = rowAt(helpEvent->y());
-        qDebug("==== %d", row);
+        if(row < 0)
+            return QWidget::event(e);
+        e->accept();
+        if(m_popupWidget)
+            m_popupWidget->popup(m_model->item(row), helpEvent->globalPos() + QPoint(15,10));
         return TRUE;
     }
+    else if(e->type() == QEvent::Leave && m_popupWidget)
+        m_popupWidget->hide();
     return QWidget::event(e);
 }
 
@@ -257,11 +275,7 @@ void ListWidget::updateList()
         emit positionChanged(0,0);
     }
     else
-    {
-        //int pos = m_first*99/(m_model->count() - m_rows);
-        //emit positionChanged(pos);
         emit positionChanged(m_first, m_model->count() - m_rows);
-    }
     if (m_model->count() <= m_first)
     {
         m_first = 0;
@@ -375,34 +389,39 @@ const QString ListWidget::getExtraString(int i)
 
 void ListWidget::mouseMoveEvent(QMouseEvent *e)
 {
-    m_scroll = true;
-    if (m_prev_y > e->y())
-        m_scroll_direction = TOP;
-    else if (m_prev_y < e->y())
-        m_scroll_direction = DOWN;
-    else
-        m_scroll_direction = NONE;
-
-    int row = rowAt(e->y());
-
-    if (INVALID_ROW != row)
+    if(e->buttons() == Qt::LeftButton)
     {
-        SimpleSelection sel = m_model->getSelection(m_pressed_row);
-        if (((sel.m_top == 0 && m_scroll_direction == TOP) && sel.count() > 1) ||
+        m_scroll = true;
+        if (m_prev_y > e->y())
+            m_scroll_direction = TOP;
+        else if (m_prev_y < e->y())
+            m_scroll_direction = DOWN;
+        else
+            m_scroll_direction = NONE;
+
+        int row = rowAt(e->y());
+
+        if (INVALID_ROW != row)
+        {
+            SimpleSelection sel = m_model->getSelection(m_pressed_row);
+            if (((sel.m_top == 0 && m_scroll_direction == TOP) && sel.count() > 1) ||
                 (sel.m_bottom == m_model->count() - 1 && m_scroll_direction == DOWN && sel.count() > 1)
-           )
-            return;
+                )
+                return;
 
-        if (row + 1 == m_first + m_rows && m_scroll_direction == DOWN)
-            (m_first + m_rows < m_model->count() ) ? m_first ++ : m_first;
-        else if (row == m_first && m_scroll_direction == TOP)
-            (m_first > 0)  ? m_first -- : 0;
+            if (row + 1 == m_first + m_rows && m_scroll_direction == DOWN)
+                (m_first + m_rows < m_model->count() ) ? m_first ++ : m_first;
+            else if (row == m_first && m_scroll_direction == TOP)
+                (m_first > 0)  ? m_first -- : 0;
 
-        m_model->moveItems(m_pressed_row,row);
-        m_prev_y = e->y();
-        m_scroll = false;
-        m_pressed_row = row;
+            m_model->moveItems(m_pressed_row,row);
+            m_prev_y = e->y();
+            m_scroll = false;
+            m_pressed_row = row;
+        }
     }
+    else if(e->buttons() == Qt::NoButton && m_popupWidget && m_popupWidget->isVisible())
+        m_popupWidget->move(e->globalPos() + QPoint(15,10));
 }
 
 void ListWidget::mouseReleaseEvent(QMouseEvent *e)
@@ -425,7 +444,7 @@ int ListWidget::rowAt(int y) const
     if (y <= 14 && y >= 2 && m_model->count())
         return m_first;
 
-    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first); ++i )
+    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first) - 1; ++i )
     {
         if ((y >= 14 + i * m_metrics->ascent ()) && (y <= 14 + (i+1) * m_metrics->ascent()))
             return m_first + i + 1;

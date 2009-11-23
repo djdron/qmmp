@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Erik Ölsar                                      *
- *   erlk.ozlr@gmail.com                                                   *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,10 +17,36 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#ifndef CURSORIMAGE_H
-#define CURSORIMAGE_H
+#include <QDialog>
+#include "ui_popupsettings.h"
 
-QCursor createCursor(QString path);
+class Action;
+
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class PopupSettings : public QDialog
+{
+Q_OBJECT
+public:
+    PopupSettings(QWidget *parent = 0);
+    ~PopupSettings();
+
+
+public slots:
+    virtual void accept();
+
+private slots:
+    void insertExpression(QAction *);
+    void on_resetButton_clicked();
+
+private:
+    void createMenu();
+    Ui::PopupSettings ui;
+    QMap<uint, QPushButton*> m_buttons;
+};
 
 #endif

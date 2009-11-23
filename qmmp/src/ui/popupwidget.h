@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Erik Ölsar                                      *
- *   erlk.ozlr@gmail.com                                                   *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,10 +17,45 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef POPUPWIDGET_H
+#define POPUPWIDGET_H
 
-#ifndef CURSORIMAGE_H
-#define CURSORIMAGE_H
+#include <QWidget>
+#include <QFrame>
 
-QCursor createCursor(QString path);
+#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b>\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
+
+class QTimer;
+class QLabel;
+class PlayListItem;
+
+namespace PlayListPopup {
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class PopupWidget : public QFrame
+{
+    Q_OBJECT
+public:
+    PopupWidget(QWidget *parent = 0);
+
+    ~PopupWidget();
+
+    void popup(PlayListItem *item, QPoint pos);
+
+protected:
+    virtual void mousePressEvent (QMouseEvent *);
+
+private:
+    QTimer *m_timer;
+    QLabel *m_label1;
+    QLabel *m_pixlabel;
+    QString m_template;
+    uint m_pos;
+    int m_coverSize;
+    PlayListItem *m_lastItem;
+
+};
+}
 
 #endif
