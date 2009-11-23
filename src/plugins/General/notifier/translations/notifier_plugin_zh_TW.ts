@@ -55,6 +55,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="101"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="281"/>
         <source>Position</source>
         <translation>位置</translation>
@@ -73,11 +78,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
         <translation>音量改變通知</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="101"/>
-        <source>Transparency</source>
-        <translation>透明度</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="124"/>

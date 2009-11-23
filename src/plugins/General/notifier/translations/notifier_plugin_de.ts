@@ -55,6 +55,11 @@
         <translation>Anzeigedauer (ms):</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="101"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="281"/>
         <source>Position</source>
         <translation>Position</translation>
@@ -73,11 +78,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
         <translation>Benachrichtigung bei Lautstärkeänderung</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="101"/>
-        <source>Transparency</source>
-        <translation>Transparenz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="124"/>

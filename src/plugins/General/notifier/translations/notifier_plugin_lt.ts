@@ -40,6 +40,11 @@
         <translation>Notifier įskiepio nustatymai</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="101"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="344"/>
         <source>Notification Template</source>
         <translation type="unfinished"></translation>
@@ -88,11 +93,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
         <translation>Pranešti pasikeitus garsumui</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="101"/>
-        <source>Transparency</source>
-        <translation>Permatomumas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="124"/>

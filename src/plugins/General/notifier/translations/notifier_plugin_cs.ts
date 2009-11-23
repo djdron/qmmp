@@ -40,6 +40,11 @@
         <translation>Nastavení notifikačního modulu</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="101"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="344"/>
         <source>Notification Template</source>
         <translation type="unfinished"></translation>
@@ -103,11 +108,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
         <translation>Upozornění na změnu hlasitosti</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="101"/>
-        <source>Transparency</source>
-        <translation>Průhlednost</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="124"/>
