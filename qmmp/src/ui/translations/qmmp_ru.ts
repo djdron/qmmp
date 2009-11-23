@@ -447,12 +447,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="552"/>
         <source>Show popup information</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать всплывающее окно с информацией</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="562"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Настроить</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="772"/>
@@ -1304,7 +1304,7 @@
         <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="76"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="37"/>
@@ -1317,108 +1317,108 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки всплывающей информации</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="48"/>
         <location filename="../forms/popupsettings.ui" line="78"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="55"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Прозрачность:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер обложки:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="122"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Шаблон</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="151"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Сброс</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="158"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Вставить</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="58"/>
         <source>Artist</source>
-        <translation type="unfinished">Исполнитель</translation>
+        <translation>Исполнитель</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="59"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="60"/>
         <source>Title</source>
-        <translation type="unfinished">Название</translation>
+        <translation>Название</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="61"/>
         <source>Track number</source>
-        <translation type="unfinished">Номер трека</translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished">2-x разрядный номер трека</translation>
+        <translation>2-x разрядный номер трека</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанр</translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Comment</source>
-        <translation type="unfinished">Комментарий</translation>
+        <translation>Комментарий</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Composer</source>
-        <translation type="unfinished">Композитор</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Длительность</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Disc number</source>
-        <translation type="unfinished">Номер диска</translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>File name</source>
-        <translation type="unfinished">Имя файла</translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>File path</source>
-        <translation type="unfinished">Путь к файлу</translation>
+        <translation>Путь к файлу</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Year</source>
-        <translation type="unfinished">Год</translation>
+        <translation>Год</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Condition</source>
-        <translation type="unfinished">Условие</translation>
+        <translation>Условие</translation>
     </message>
 </context>
 <context>
