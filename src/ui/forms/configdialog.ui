@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>601</width>
-    <height>402</height>
+    <height>424</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -367,17 +367,91 @@
               </widget>
              </item>
              <item>
-              <spacer name="verticalSpacer">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
+              <widget class="QGroupBox" name="groupBox_7">
+               <property name="title">
+                <string>Transparency</string>
                </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>160</height>
-                </size>
-               </property>
-              </spacer>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string>Main window</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSlider" name="mwTransparencySlider">
+                  <property name="maximum">
+                   <number>90</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QLabel" name="mwTransparencyLabel">
+                  <property name="minimumSize">
+                   <size>
+                    <width>25</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_9">
+                  <property name="text">
+                   <string>Equalizer</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QSlider" name="eqTransparencySlider">
+                  <property name="maximum">
+                   <number>90</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="eqTransparencyLabel">
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_10">
+                  <property name="text">
+                   <string>Playlist</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QSlider" name="plTransparencySlider">
+                  <property name="maximum">
+                   <number>90</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLabel" name="plTransparencyLabel">
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -435,53 +509,87 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0" colspan="3">
+            <item row="1" column="0" colspan="2">
              <widget class="QCheckBox" name="underscoresCheckBox">
               <property name="text">
                <string>Convert underscores to blanks</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="0" colspan="3">
+            <item row="2" column="0" colspan="2">
              <widget class="QCheckBox" name="per20CheckBox">
               <property name="text">
                <string>Convert %20 to blanks</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="0" colspan="3">
+            <item row="3" column="0" colspan="2">
              <widget class="QCheckBox" name="protocolCheckBox">
               <property name="text">
                <string>Show protocol</string>
               </property>
              </widget>
             </item>
-            <item row="4" column="0" colspan="3">
+            <item row="4" column="0" colspan="2">
              <widget class="QCheckBox" name="numbersCheckBox">
               <property name="text">
                <string>Show song numbers</string>
               </property>
              </widget>
             </item>
-            <item row="5" column="0" colspan="3">
+            <item row="5" column="0" colspan="2">
              <widget class="QCheckBox" name="playlistsCheckBox">
               <property name="text">
                <string>Show playlists</string>
               </property>
              </widget>
             </item>
+            <item row="6" column="0" colspan="3">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QCheckBox" name="popupCheckBox">
+                <property name="text">
+                 <string>Show popup information</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="popupCustomizeButton">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Customize</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
            </layout>
           </widget>
          </item>
          <item>
-          <spacer>
+          <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>387</width>
-             <height>101</height>
+             <width>20</width>
+             <height>54</height>
             </size>
            </property>
           </spacer>
@@ -747,91 +855,17 @@
           </widget>
          </item>
          <item row="3" column="0" colspan="2">
-          <widget class="QGroupBox" name="groupBox_7">
-           <property name="title">
-            <string>Transparency</string>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
            </property>
-           <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>Main window</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QSlider" name="mwTransparencySlider">
-              <property name="maximum">
-               <number>90</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="mwTransparencyLabel">
-              <property name="minimumSize">
-               <size>
-                <width>25</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_9">
-              <property name="text">
-               <string>Equalizer</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QSlider" name="eqTransparencySlider">
-              <property name="maximum">
-               <number>90</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QLabel" name="eqTransparencyLabel">
-              <property name="text">
-               <string>0</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_10">
-              <property name="text">
-               <string>Playlist</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QSlider" name="plTransparencySlider">
-              <property name="maximum">
-               <number>90</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLabel" name="plTransparencyLabel">
-              <property name="text">
-               <string>0</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
@@ -1019,12 +1053,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>305</x>
-     <y>52</y>
+     <x>276</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>424</x>
-     <y>82</y>
+     <x>276</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1035,12 +1069,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>506</x>
-     <y>56</y>
+     <x>276</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>506</x>
-     <y>116</y>
+     <x>276</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1051,12 +1085,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>318</x>
-     <y>142</y>
+     <x>276</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>326</x>
-     <y>163</y>
+     <x>276</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1067,12 +1101,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>264</x>
-     <y>138</y>
+     <x>276</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>580</x>
-     <y>197</y>
+     <x>276</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>popupCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>popupCustomizeButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1083,12 +1133,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>285</y>
+     <x>397</x>
+     <y>294</y>
     </hint>
     <hint type="destinationlabel">
-     <x>553</x>
-     <y>284</y>
+     <x>540</x>
+     <y>289</y>
     </hint>
    </hints>
   </connection>
@@ -1099,12 +1149,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>519</x>
-     <y>305</y>
+     <x>496</x>
+     <y>315</y>
     </hint>
     <hint type="destinationlabel">
-     <x>549</x>
-     <y>309</y>
+     <x>550</x>
+     <y>315</y>
     </hint>
    </hints>
   </connection>
@@ -1115,12 +1165,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>511</x>
-     <y>327</y>
+     <x>494</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
-     <x>549</x>
-     <y>330</y>
+     <x>542</x>
+     <y>332</y>
     </hint>
    </hints>
   </connection>

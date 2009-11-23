@@ -62,6 +62,7 @@ private slots:
     void showFileDialogInfo();
     void installSkin();
     void loadSkins();
+    void on_popupCustomizeButton_clicked();
 
 private:
     void readSettings();

@@ -43,7 +43,7 @@
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
 
-
+#include "popupsettings.h"
 #include "skin.h"
 #include "pluginitem.h"
 #include "configdialog.h"
@@ -113,6 +113,7 @@ void ConfigDialog::readSettings()
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
     ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", TRUE).toBool());
     ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", FALSE).toBool());
+    ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", FALSE).toBool());
     //proxy settings
     ui.enableProxyCheckBox->setChecked(Qmmp::useProxy());
     ui.authProxyCheckBox->setChecked(Qmmp::useProxyAuth());
@@ -618,6 +619,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
     settings.setValue ("PlayList/show_numbers", ui.numbersCheckBox->isChecked());
     settings.setValue ("PlayList/show_plalists", ui.playlistsCheckBox->isChecked());
+    settings.setValue ("PlayList/show_popup", ui.popupCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
 
     Qmmp::setProxyEnabled(ui.enableProxyCheckBox->isChecked());
@@ -733,4 +735,11 @@ void ConfigDialog::installSkin()
         file.copy(QDir::homePath() +"/.qmmp/skins/" + QFileInfo(path).fileName());
     }
     loadSkins();
+}
+
+void ConfigDialog::on_popupCustomizeButton_clicked()
+{
+    PopupSettings *p = new PopupSettings(this);
+    p->exec();
+    p->deleteLater();
 }
