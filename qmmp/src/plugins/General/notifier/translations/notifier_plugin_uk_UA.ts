@@ -40,6 +40,11 @@
         <translation>Налаштування модуля повідомлень</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="101"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="344"/>
         <source>Notification Template</source>
         <translation>Шаблон повідомлення</translation>
@@ -88,11 +93,6 @@
         <location filename="../settingsdialog.ui" line="48"/>
         <source>Volume change notification</source>
         <translation>Повідомлення зміни гучності</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="101"/>
-        <source>Transparency</source>
-        <translation>Прозорість</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="124"/>
