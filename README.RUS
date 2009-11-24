@@ -72,7 +72,7 @@ make
 make install
 
 Если какой-либо модуль (например, Jack) не собирается или не нужен, то вы можете отключить его командой:
-cmake ./ -D USE_JACK:BOOL=FALSE
+cmake ./ -DUSE_JACK:BOOL=FALSE
 
 Доступные опции:
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
