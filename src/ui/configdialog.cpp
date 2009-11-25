@@ -25,7 +25,7 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QMenu>
-
+#include <QMessageBox>
 #include <qmmp/decoder.h>
 #include <qmmp/output.h>
 #include <qmmp/decoderfactory.h>
@@ -36,13 +36,13 @@
 #include <qmmp/soundcore.h>
 #include <qmmp/enginefactory.h>
 #include <qmmp/abstractengine.h>
+#include <qmmp/metadatamanager.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/filedialog.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
-
 #include "popupsettings.h"
 #include "skin.h"
 #include "pluginitem.h"
@@ -143,6 +143,10 @@ void ConfigDialog::readSettings()
     //skin options
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", FALSE).toBool());
     ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", FALSE).toBool());
+    //cover options
+    ui.coverIncludeLineEdit->setText(MetaDataManager::instance()->coverNameFilters(TRUE).join(","));
+    ui.coverExcludeLineEdit->setText(MetaDataManager::instance()->coverNameFilters(FALSE).join(","));
+    ui.coverDepthSpinBox->setValue(MetaDataManager::instance()->coverSearchDepth());
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -640,6 +644,9 @@ void ConfigDialog::saveSettings()
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
     settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
+    MetaDataManager::instance()->setCoverSearchSettings(ui.coverIncludeLineEdit->text().split(","),
+                                                        ui.coverExcludeLineEdit->text().split(","),
+                                                        ui.coverDepthSpinBox->value());
 }
 
 void ConfigDialog::updateButtons()

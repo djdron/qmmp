@@ -19,8 +19,8 @@
  ***************************************************************************/
 
 #include <QFile>
-#include <QDir>
 #include <QFileInfo>
+#include <QSettings>
 #include "decoder.h"
 #include "decoderfactory.h"
 #include "abstractengine.h"
@@ -37,6 +37,10 @@ MetaDataManager::MetaDataManager()
     m_decoderFactories = Decoder::factories();
     m_engineFactories = AbstractEngine::factories();
     m_inputSourceFactories = InputSource::factories();
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    m_includeList = settings.value("Cover/include", (QStringList() << "*.jpg" << "*.png")).toStringList();
+    m_excludeList = settings.value("Cover/exclude", (QStringList() << "*back*")).toStringList();
+    m_depth = settings.value("Cover/depth", 0).toInt();
 }
 
 MetaDataManager::~MetaDataManager()
@@ -194,19 +198,60 @@ QString MetaDataManager::getCoverPath(const QString &url) const
     else //local file
     {
         QString p = QFileInfo(url).absolutePath();
-        QDir dir(p);
-        dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-        dir.setSorting(QDir::Name);
-        QStringList filters;
-        filters << "*.jpg" << "*.png";
-        QFileInfoList file_list = dir.entryInfoList(filters);
-        foreach(QFileInfo i, file_list)
-        {
-            if(!i.absoluteFilePath().contains("back", Qt::CaseInsensitive))
-                return i.absoluteFilePath();
-        }
+        QFileInfoList l = findCoverFiles(p, m_depth);
+        return l.isEmpty() ? QString() : l.at(0).filePath();
     }
     return QString();
+}
+
+QStringList MetaDataManager::coverNameFilters(bool include) const
+{
+    return include ? m_includeList : m_excludeList;
+}
+
+int MetaDataManager::MetaDataManager::coverSearchDepth() const
+{
+    return m_depth;
+}
+
+void MetaDataManager::setCoverSearchSettings(const QStringList &inc, const QStringList &exc, int depth)
+{
+    m_includeList = inc;
+    m_excludeList = exc;
+    m_depth = depth;
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Cover/include", m_includeList);
+    settings.setValue("Cover/exclude", m_excludeList);
+    settings.setValue("Cover/depth", m_depth);
+}
+
+QFileInfoList MetaDataManager::findCoverFiles(QDir dir, int depth) const
+{
+    dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
+    dir.setSorting(QDir::Name);
+    QFileInfoList file_list = dir.entryInfoList(m_includeList);
+    foreach(QFileInfo i, file_list)
+    {
+        foreach(QString pattern, m_excludeList)
+        {
+            if(QRegExp (pattern, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(i.fileName()))
+            {
+                file_list.removeAll(i);
+                break;
+            }
+        }
+    }
+    if(!depth || !file_list.isEmpty())
+        return file_list;
+    depth--;
+    dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
+    dir.setSorting(QDir::Name);
+    QFileInfoList dir_info_list = dir.entryInfoList();
+    foreach(QFileInfo i, dir_info_list)
+    {
+        file_list << findCoverFiles(QDir(i.absoluteFilePath()), depth);
+    }
+    return file_list;
 }
 
 MetaDataManager *MetaDataManager::instance()
