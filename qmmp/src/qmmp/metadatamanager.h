@@ -24,6 +24,7 @@
 #include <QList>
 #include <QStringList>
 #include <QPixmap>
+#include <QDir>
 #include "fileinfo.h"
 #include "metadatamodel.h"
 
@@ -80,15 +81,36 @@ public:
      */
     QString getCoverPath(const QString &fileName) const;
     /*!
+     * If \b include is \b true, this function returns include cover file name filters,
+     * otherwise returns exclude filters.
+     */
+    QStringList coverNameFilters(bool include = TRUE) const;
+    /*!
+     * Returns a depth of recursive cover file search.
+     */
+    int coverSearchDepth() const;
+    /*!
+     * Sets cover search options.
+     * @param inc Include cover name filters
+     * @param exc Exclude cover name filters
+     * @param depth Depth of recursive cover file search.
+     * Recursive cover file search can be disabled by setting \b depth to \b 0.
+     */
+    void setCoverSearchSettings(const QStringList &inc, const QStringList &exc, int depth);
+    /*!
      * Returns a pointer to the MetaDataManager instance.
      */
     static MetaDataManager* instance();
     static void destroy();
 
 private:
+    QFileInfoList findCoverFiles(QDir dir, int depth) const;
     QList <DecoderFactory *> *m_decoderFactories;
     QList <EngineFactory *> *m_engineFactories;
     QList <InputSourceFactory *> *m_inputSourceFactories;
+    QStringList m_includeList;
+    QStringList m_excludeList;
+    int m_depth;
     static MetaDataManager* m_instance;
 };
 
