@@ -491,7 +491,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="860"/>
-        <source>Cover Image Retrive</source>
+        <source>Cover Image Retrieve</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

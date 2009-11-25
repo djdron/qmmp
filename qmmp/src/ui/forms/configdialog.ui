@@ -857,7 +857,7 @@
          <item row="3" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_9">
            <property name="title">
-            <string>Cover Image Retrive</string>
+            <string>Cover Image Retrieve</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_6">
             <item row="0" column="0">
