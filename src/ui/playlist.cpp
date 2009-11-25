@@ -50,6 +50,7 @@
 PlayList::PlayList (PlayListManager *manager, QWidget *parent)
         : QWidget (parent)
 {
+    setAttribute(Qt::WA_AlwaysShowToolTips,TRUE);
     m_pl_manager = manager;
     m_update = FALSE;
     m_resize = FALSE;
