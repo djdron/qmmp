@@ -492,22 +492,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="860"/>
         <source>Cover Image Retrieve</source>
-        <translation type="unfinished"></translation>
+        <translation>Пошук обладинки альбома</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="866"/>
         <source>Include files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Включити файли:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="876"/>
         <source>Exclude files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виключити файли:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="888"/>
         <source>Recursive search depth:</source>
-        <translation type="unfinished"></translation>
+        <translation>Глибина рекурсивного пошуку:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="936"/>
