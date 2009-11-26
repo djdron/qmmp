@@ -147,7 +147,7 @@ PlayListItem* PlayListModel::currentItem()
 
 PlayListItem* PlayListModel::nextItem()
 {
-    if(isShuffle() || m_items.isEmpty())
+    if(isShuffle() || m_items.isEmpty() || !isEmptyQueue())
         return 0;
     if(m_current < m_items.size() - 1)
         return m_items.at(m_current + 1);
