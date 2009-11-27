@@ -28,7 +28,11 @@
 
 Effect::Effect(QObject *parent)
         : QObject(parent)
-{}
+{
+    m_freq = 0;
+    m_chan = 0;
+    m_res = 0;
+}
 
 Effect::~Effect()
 {}
