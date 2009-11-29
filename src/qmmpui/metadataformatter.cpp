@@ -53,6 +53,7 @@ QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData)
     title.replace("\\)", "%29");
     title.replace(")", "%)");
     title.replace("&", "%&");
+    title.replace(",", "%,");
     title.replace("%p", metaData[Qmmp::ARTIST]);
     title.replace("%a", metaData[Qmmp::ALBUM]);
     title.replace("%t", metaData[Qmmp::TITLE]);
@@ -78,7 +79,7 @@ QString MetaDataFormatter::processIfKeyWord(QString title)
     int pos = title.indexOf("%if(");
     int size = title.indexOf("%)",pos) - pos;
 
-    QStringList args = title.mid (pos + 4, size - 4).split(",");
+    QStringList args = title.mid (pos + 4, size - 4).split("%,");
     if(args.count() < 3)
     {
         qWarning("TitleFormatter: invalid title format");
