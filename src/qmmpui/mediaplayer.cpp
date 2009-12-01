@@ -59,7 +59,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
     m_pl_manager = pl_manager;
     m_repeat = FALSE;
     connect(m_core, SIGNAL(aboutToFinish()), SLOT(updateNextUrl()));
-    connect(m_core, SIGNAL(finished()), SLOT(next()));
+    connect(m_core, SIGNAL(finished()), SLOT(playNext()));
 }
 
 PlayListManager *MediaPlayer::playListManager()
@@ -152,7 +152,6 @@ void MediaPlayer::next()
         stop();
         return;
     }
-
     if (m_core->state() != Qmmp::Stopped)
     {
         if (m_core->state() == Qmmp::Paused)
@@ -191,6 +190,20 @@ void MediaPlayer::setRepeatable(bool r)
     }
     m_repeat = r;
     emit repeatableChanged(r);
+}
+
+void MediaPlayer::playNext()
+{
+    if (!m_pl_manager->currentPlayList()->isEmptyQueue()) //TODO move this inside PlayListModel
+    {
+        m_pl_manager->currentPlayList()->setCurrentToQueued();
+    }
+    else if (!m_pl_manager->currentPlayList()->next())
+    {
+        stop();
+        return;
+    }
+    play();
 }
 
 void MediaPlayer::updateNextUrl()
