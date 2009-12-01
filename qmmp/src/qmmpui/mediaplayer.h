@@ -91,6 +91,7 @@ signals:
     void repeatableChanged(bool enabled);
 
 private slots:
+    void playNext();
     void updateNextUrl();
 
 private:
