@@ -143,11 +143,7 @@ void MediaPlayer::stop()
 
 void MediaPlayer::next()
 {
-    if (!m_pl_manager->currentPlayList()->isEmptyQueue())
-    {
-        m_pl_manager->currentPlayList()->setCurrentToQueued();
-    }
-    else if (!m_pl_manager->currentPlayList()->next())
+    if (!m_pl_manager->currentPlayList()->next())
     {
         stop();
         return;
@@ -194,11 +190,7 @@ void MediaPlayer::setRepeatable(bool r)
 
 void MediaPlayer::playNext()
 {
-    if (!m_pl_manager->currentPlayList()->isEmptyQueue()) //TODO move this inside PlayListModel
-    {
-        m_pl_manager->currentPlayList()->setCurrentToQueued();
-    }
-    else if (!m_pl_manager->currentPlayList()->next())
+    if (!m_pl_manager->currentPlayList()->next())
     {
         stop();
         return;
