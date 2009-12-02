@@ -177,6 +177,12 @@ bool PlayListModel::setCurrent(int c)
 
 bool PlayListModel::next()
 {
+    if (!isEmptyQueue())
+    {
+        setCurrentToQueued();
+        return TRUE;
+    }
+
     if (isFileLoaderRunning())
         m_play_state->prepare();
     return m_play_state->next();
