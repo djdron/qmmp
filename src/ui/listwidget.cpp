@@ -104,7 +104,6 @@ void ListWidget::loadColors()
 
 void ListWidget::paintEvent(QPaintEvent *)
 {
-
     QPainter m_painter(this);
     //m_painter.setPen(Qt::white);
     m_painter.setFont(m_font);
@@ -311,8 +310,9 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     m_model = selected;
     connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
     connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
-    updateList();
+    m_first = 0;
     recenterCurrent();
+    updateList();
 }
 
 void ListWidget::scroll(int sc)
@@ -352,7 +352,6 @@ void ListWidget::dropEvent(QDropEvent *event)
                 processFileInfo(QFileInfo(add_string));
         }
     }
-
 }
 
 void ListWidget::processFileInfo(const QFileInfo& info)
