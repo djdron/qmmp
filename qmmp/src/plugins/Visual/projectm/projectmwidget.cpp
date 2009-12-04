@@ -90,9 +90,18 @@ void ProjectMWidget::initializeGL()
         QStringList filters;
         filters << "*.prjm" << "*.milk";
         QFileInfoList l = presetDir.entryInfoList(filters);
+#ifdef PROJECTM_20
+        RatingList list;
+        list.push_back(3);
+        list.push_back(3);
+#endif
         foreach (QFileInfo info, l)
         {
+#if PROJECTM_20
+            m_projectM->addPresetURL (info.absoluteFilePath().toStdString(), info.fileName().toStdString(), list);
+#else
             m_projectM->addPresetURL (info.absoluteFilePath().toStdString(), info.fileName().toStdString(), 1);
+#endif
         }
         createActions();
         updateTitle();

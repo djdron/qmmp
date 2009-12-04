@@ -30,7 +30,14 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # projectM
+pkg_search_module(PROJECTM libprojectM>=2.0.0)
+
+IF(PROJECTM_FOUND)
+ADD_DEFINITIONS(-DPROJECTM_20)
+ELSE(PROJECTM_FOUND)
 pkg_search_module(PROJECTM libprojectM)
+ENDIF(PROJECTM_FOUND)
+
 
 SET(libprojectm_SRCS
     projectmwidget.cpp
