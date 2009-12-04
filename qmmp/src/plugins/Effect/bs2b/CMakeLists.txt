@@ -48,17 +48,9 @@ QT4_ADD_RESOURCES(libbs2b_RCC_SRCS ${libbs2b_RCCS})
 
 QT4_WRAP_CPP(libbs2b_MOC_SRCS ${libbs2b_MOC_HDRS})
 
-pkg_search_module(BS2B libbs2b)
-
-IF(COMMAND VERSION_LESS)
-IF(BS2B_VERSION VERSION_LESS 3.0.0)
-UNSET(BS2B_FOUND CACHE)
-ENDIF(BS2B_VERSION VERSION_LESS 3.0.0)
-ENDIF(COMMAND VERSION_LESS)
-
+pkg_search_module(BS2B libbs2b>=3.0.0)
 
 # user interface
-
 
 SET(libbs2b_UIS
     settingsdialog.ui
