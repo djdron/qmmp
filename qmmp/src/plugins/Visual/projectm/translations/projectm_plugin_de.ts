@@ -12,82 +12,82 @@
 <context>
     <name>ProjectMWidget</name>
     <message>
-        <location filename="../projectmwidget.cpp" line="125"/>
+        <location filename="../projectmwidget.cpp" line="134"/>
         <source>&amp;Help</source>
         <translation>&amp;Hilfe</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="125"/>
+        <location filename="../projectmwidget.cpp" line="134"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="126"/>
+        <location filename="../projectmwidget.cpp" line="135"/>
         <source>&amp;Show Song Title</source>
         <translation>Na&amp;me des Titels anzeigen</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="126"/>
+        <location filename="../projectmwidget.cpp" line="135"/>
         <source>F2</source>
         <translation>F2</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="127"/>
+        <location filename="../projectmwidget.cpp" line="136"/>
         <source>&amp;Show Preset Name</source>
         <translation>N&amp;ame der Voreinstellung anzeigen</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="127"/>
+        <location filename="../projectmwidget.cpp" line="136"/>
         <source>F3</source>
         <translation>F3</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="129"/>
+        <location filename="../projectmwidget.cpp" line="138"/>
         <source>&amp;Next Preset</source>
         <translation>&amp;Nächste Voreinstellung</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="129"/>
+        <location filename="../projectmwidget.cpp" line="138"/>
         <source>N</source>
         <translation type="unfinished">N</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="130"/>
+        <location filename="../projectmwidget.cpp" line="139"/>
         <source>&amp;Previous Preset</source>
         <translation>Vor&amp;herige Voreinstellung</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="130"/>
+        <location filename="../projectmwidget.cpp" line="139"/>
         <source>P</source>
         <translation type="unfinished">H</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="131"/>
+        <location filename="../projectmwidget.cpp" line="140"/>
         <source>&amp;Random Preset</source>
         <translation>&amp;Zufällige Voreinstellung</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="131"/>
+        <location filename="../projectmwidget.cpp" line="140"/>
         <source>R</source>
         <translation type="unfinished">Z</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="132"/>
+        <location filename="../projectmwidget.cpp" line="141"/>
         <source>&amp;Lock Preset</source>
         <translation>V&amp;oreinstellung sperren</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="132"/>
+        <location filename="../projectmwidget.cpp" line="141"/>
         <source>L</source>
         <translation type="unfinished">O</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="134"/>
+        <location filename="../projectmwidget.cpp" line="143"/>
         <source>&amp;Fullscreen</source>
         <translation>&amp;Vollbild</translation>
     </message>
     <message>
-        <location filename="../projectmwidget.cpp" line="134"/>
+        <location filename="../projectmwidget.cpp" line="143"/>
         <source>F</source>
         <translation type="unfinished">V</translation>
     </message>
