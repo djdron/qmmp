@@ -30,9 +30,8 @@
 
 class Bs2bPlugin : public Effect
 {
-    Q_OBJECT
 public:
-    Bs2bPlugin(QObject *parent = 0);
+    Bs2bPlugin();
 
     virtual ~Bs2bPlugin();
 

@@ -22,7 +22,11 @@
 #include <QApplication>
 #include <QStyle>
 #include <QStandardItemModel>
+#include <QFormLayout>
+#include <QWidget>
+#include <QLabel>
 #include <qmmp/qmmp.h>
+#include "ladspaslider.h"
 #include "ladspaplugin.h"
 #include "settingsdialog.h"
 
@@ -90,13 +94,34 @@ void SettingsDialog::on_configureButton_clicked()
 {
     LADSPAHost *l = LADSPAHost::instance();
     QModelIndex index = ui.runningListWidget->currentIndex ();
-    if(index.isValid())
+    if(!index.isValid())
+        return;
+
+    LADSPAEffect *effect = l->runningPlugins().at(index.row());
+    QDialog *dialog = new QDialog(this);
+    dialog->setWindowTitle(effect->descriptor->Name);
+    QFormLayout *formLayout = new QFormLayout(dialog);
+
+    foreach(LADSPAControl *c, effect->controls)
     {
-        l->runningPlugins().at(index.row())->widget->setParent(this);
-        l->runningPlugins().at(index.row())->widget->setWindowFlags(Qt::Window);
-        l->runningPlugins().at(index.row())->widget->show();
-        //updateRunningPlugins();
+        switch ((int) c->type)
+        {
+        case LADSPAControl::BUTTON:
+            break;
+        case LADSPAControl::SLIDER:
+             LADSPASlider *slider = new LADSPASlider(c->min, c->max, c->step, c->value, l, dialog);
+             formLayout->addRow(c->name, slider);
+        }
     }
+    if (effect->controls.isEmpty())
+    {
+        QLabel *label = new QLabel(tr("This LADSPA plugin has no user controls"), dialog);
+        formLayout->addRow(label);
+    }
+    dialog->setLayout(formLayout);
+    dialog->setFixedSize(dialog->sizeHint());
+    dialog->exec();
+    dialog->deleteLater();
 }
 
 void SettingsDialog::accept()

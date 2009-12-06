@@ -46,7 +46,7 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     setEQ(b, 0);
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
     _blksize = Buffer::size();
-    m_effects = Effect::create(this);
+    m_effects = Effect::create();
     m_bks = Buffer::size();
     m_decoder = 0;
     m_output = 0;
@@ -60,6 +60,7 @@ QmmpAudioEngine::~QmmpAudioEngine()
     if(m_output_buf)
         delete [] m_output_buf;
     m_output_buf = 0;
+    qDeleteAll(m_effects);
 }
 
 void QmmpAudioEngine::reset()

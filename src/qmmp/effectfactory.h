@@ -58,9 +58,8 @@ public:
     virtual const EffectProperties properties() const = 0;
     /*!
      * Creates effect provided by plugin.
-     * @param parent Parent object.
      */
-    virtual Effect *create(QObject *parent) = 0;
+    virtual Effect *create() = 0;
     /*!
      * Shows settings dialog.
      * @param parent Parent widget.

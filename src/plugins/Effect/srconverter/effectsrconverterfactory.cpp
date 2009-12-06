@@ -21,8 +21,8 @@
 #include <QtGui>
 #include <qmmp/qmmp.h>
 #include "settingsdialog.h"
-#include "effectsrconverterfactory.h"
 #include "srconverter.h"
+#include "effectsrconverterfactory.h"
 
 const EffectProperties EffectSRConverterFactory::properties() const
 {
@@ -32,25 +32,25 @@ const EffectProperties EffectSRConverterFactory::properties() const
     properties.hasSettings = TRUE;
     properties.hasAbout = TRUE;
     return properties;
-};
+}
 
-Effect *EffectSRConverterFactory::create(QObject *parent) 
+Effect *EffectSRConverterFactory::create()
 {
-    return new SRConverter(parent);
-};
+    return new SRConverter();
+}
 
 void EffectSRConverterFactory::showSettings(QWidget *parent) 
 {
     SettingsDialog *s = new SettingsDialog(parent);
     s ->show();
-};
+}
 
 void EffectSRConverterFactory::showAbout(QWidget *parent) 
 {
      QMessageBox::about (parent, tr("About Sample Rate Converter Plugin"),
                         tr("Qmmp Sample Rate Converter Plugin")+"\n"+
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-};
+}
 
 QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent) 
 {
@@ -58,6 +58,6 @@ QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent)
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/srconverter_plugin_") + locale);
     return translator;
-};
+}
 
 Q_EXPORT_PLUGIN2(srconverter, EffectSRConverterFactory)

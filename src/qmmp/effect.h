@@ -20,7 +20,6 @@
 #ifndef EFFECT_H
 #define EFFECT_H
 
-#include <QObject>
 #include <QList>
 #include <QStringList>
 
@@ -29,15 +28,13 @@ class EffectFactory;
 /*! @brief The Effect class provides the base interface class of audio effects.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class Effect : public QObject
+class Effect
 {
-    Q_OBJECT
 public:
     /*!
      * Object contsructor.
-     * @param parent Parent object.
      */
-    Effect(QObject *parent = 0);
+    Effect();
     /*!
      * Destructor.
      */
@@ -71,9 +68,8 @@ public:
     int bitsPerSample();
     /*!
      * Creates a list of enabled effects.
-     * @param parent Parent object of all created Effect objects.
      */
-    static QList<Effect*> create(QObject *parent = 0);
+    static QList<Effect*> create();
     /*!
      * Returns a list of effect factories.
      */

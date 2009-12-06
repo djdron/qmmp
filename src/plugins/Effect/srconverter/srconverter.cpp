@@ -25,7 +25,7 @@
 
 #include "srconverter.h"
 
-SRConverter::SRConverter(QObject* parent) : Effect(parent)
+SRConverter::SRConverter() : Effect()
 {
     m_isSrcAlloc = FALSE;
     int converter_type_array[] = {SRC_SINC_BEST_QUALITY, SRC_SINC_MEDIUM_QUALITY, SRC_SINC_FASTEST,
