@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,38 +17,43 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SETTINGSDIALOG_H
-#define SETTINGSDIALOG_H
+#ifndef LADSPASLIDER_H
+#define LADSPASLIDER_H
 
-#include <QDialog>
-#include "ui_settingsdialog.h"
+#include <QWidget>
+#include <ladspa.h>
 
-class QStandardItemModel;
+class QDoubleSpinBox;
+class QSlider;
+class LADSPAHost;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class SettingsDialog : public QDialog
+class LADSPASlider : public QWidget
 {
 Q_OBJECT
 public:
-    SettingsDialog(QWidget *parent = 0);
-
-    ~SettingsDialog();
-
-public slots:
-    virtual void accept();
+    LADSPASlider(double min,
+                 double max,
+                 double step,
+                 LADSPA_Data *value,
+                 LADSPAHost *host,
+                 QWidget *parent = 0);
 
 private slots:
-    void on_loadButton_clicked();
-    void on_unloadButton_clicked();
-    void on_configureButton_clicked();
+    void setValue(double);
+    void setValue(int);
 
 private:
-    void updateRunningPlugins();
-    Ui::SettingsDialog ui;
-    QStandardItemModel *m_model;
-    bool m_created;
+   QDoubleSpinBox *m_spinBox;
+   QSlider *m_slider;
+   LADSPA_Data *m_value;
+   double m_min;
+   double m_max;
+   double m_step;
+   LADSPAHost *m_host;
+
 };
 
-#endif
+#endif // LADSPASLIDER_H

@@ -22,9 +22,10 @@
 
 #include <QMutex>
 #include <QList>
-#include <QSlider>
 #include <qmmp/effect.h>
 #include <ladspa.h>
+
+class QWidget;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -54,6 +55,7 @@ public:
     LADSPA_Handle handle;	/* left or mono */
     LADSPA_Handle handle2;	/* right stereo */
     LADSPA_Data knobs[MAX_KNOBS];
+    QWidget *widget;
 };
 
 

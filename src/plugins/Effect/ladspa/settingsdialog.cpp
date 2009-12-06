@@ -77,7 +77,26 @@ void SettingsDialog::on_loadButton_clicked()
 
 void SettingsDialog::on_unloadButton_clicked()
 {
+    LADSPAHost *l = LADSPAHost::instance();
+    QModelIndex index = ui.runningListWidget->currentIndex ();
+    if(index.isValid())
+    {
+        l->unload(l->runningPlugins().at(index.row()));
+        updateRunningPlugins();
+    }
+}
 
+void SettingsDialog::on_configureButton_clicked()
+{
+    LADSPAHost *l = LADSPAHost::instance();
+    QModelIndex index = ui.runningListWidget->currentIndex ();
+    if(index.isValid())
+    {
+        l->runningPlugins().at(index.row())->widget->setParent(this);
+        l->runningPlugins().at(index.row())->widget->setWindowFlags(Qt::Window);
+        l->runningPlugins().at(index.row())->widget->show();
+        //updateRunningPlugins();
+    }
 }
 
 void SettingsDialog::accept()
