@@ -20,12 +20,8 @@
 #ifndef SRCONVERTER_H
 #define SRCONVERTER_H
 
-#include <qmmp/effect.h>
-
-extern "C"
-{
 #include <samplerate.h>
-}
+#include <qmmp/effect.h>
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -33,10 +29,8 @@ extern "C"
 
 class SRConverter : public Effect
 {
-    Q_OBJECT
 public:
-    SRConverter(QObject *parent = 0);
-
+    SRConverter();
     virtual ~SRConverter();
 
     ulong process(char *in_data, const ulong size, char **out_data);

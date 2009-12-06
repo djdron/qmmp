@@ -45,6 +45,22 @@ public:
     bool stereo;
 };
 
+class LADSPAControl
+{
+public:
+    enum Type
+    {
+        BUTTON = 0,
+        SLIDER
+    };
+    double min;
+    double max;
+    double step;
+    LADSPA_Data *value;
+    bool type;
+    QString name;
+};
+
 class LADSPAEffect
 {
 public:
@@ -55,15 +71,14 @@ public:
     LADSPA_Handle handle;	/* left or mono */
     LADSPA_Handle handle2;	/* right stereo */
     LADSPA_Data knobs[MAX_KNOBS];
-    QWidget *widget;
+    QList <LADSPAControl*> controls;
 };
 
 
 class LADSPAHost : public Effect
 {
-    Q_OBJECT
 public:
-    LADSPAHost(QObject *parent = 0);
+    LADSPAHost();
 
     virtual ~LADSPAHost();
 
@@ -84,7 +99,7 @@ private:
     void findPlugins(const QString &path);
     LADSPAEffect *load(const QString &path, long num);
     void portAssign(LADSPAEffect *instance);
-    void draw_plugin(LADSPAEffect *instance);
+    void initialize(LADSPAEffect *instance);
 
     QList <LADSPAPlugin *> m_plugins;
     QList <LADSPAEffect *> m_effects;

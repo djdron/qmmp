@@ -26,7 +26,7 @@
 
 Bs2bPlugin *Bs2bPlugin::m_instance = 0;
 
-Bs2bPlugin::Bs2bPlugin(QObject* parent) : Effect(parent)
+Bs2bPlugin::Bs2bPlugin() : Effect()
 {
     m_instance = this;
     m_bs2b_handler = bs2b_open();

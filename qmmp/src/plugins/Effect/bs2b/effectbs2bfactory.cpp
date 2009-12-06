@@ -33,18 +33,18 @@ const EffectProperties EffectBs2bFactory::properties() const
     properties.hasSettings = TRUE;
     properties.hasAbout = TRUE;
     return properties;
-};
+}
 
-Effect *EffectBs2bFactory::create(QObject *parent)
+Effect *EffectBs2bFactory::create()
 {
-    return new Bs2bPlugin(parent);
-};
+    return new Bs2bPlugin();
+}
 
 void EffectBs2bFactory::showSettings(QWidget *parent)
 {
     SettingsDialog *s = new SettingsDialog(parent);
     s ->show();
-};
+}
 
 void EffectBs2bFactory::showAbout(QWidget *parent)
 {
@@ -57,7 +57,7 @@ void EffectBs2bFactory::showAbout(QWidget *parent)
                         "<p>"+tr("Developers:")+"<br>"+
                         tr("Ilya Kotov") + " &lt;forkotov02@hotmail.ru&gt;"+"<br>"+
                         tr("Sebastian Pipping") + " &lt;sebastian@pipping.org&gt;"+"</p>");
-};
+}
 
 QTranslator *EffectBs2bFactory::createTranslator(QObject *parent)
 {
@@ -65,6 +65,6 @@ QTranslator *EffectBs2bFactory::createTranslator(QObject *parent)
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/bs2b_plugin_") + locale);
     return translator;
-};
+}
 
 Q_EXPORT_PLUGIN2(bs2b,EffectBs2bFactory)

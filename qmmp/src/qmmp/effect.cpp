@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,8 +26,7 @@
 #include "effectfactory.h"
 #include "effect.h"
 
-Effect::Effect(QObject *parent)
-        : QObject(parent)
+Effect::Effect()
 {
     m_freq = 0;
     m_chan = 0;
@@ -94,7 +93,7 @@ static void checkFactories()
     }
 }
 
-QList<Effect*> Effect::create(QObject *parent)
+QList<Effect*> Effect::create()
 {
     checkFactories();
     QList<Effect*> effects;
@@ -102,7 +101,7 @@ QList<Effect*> Effect::create(QObject *parent)
     foreach (factory, *factories)
     {
         if(isEnabled(factory))
-            effects.append(factory->create(parent));
+            effects.append(factory->create());
     }
     return effects;
 }

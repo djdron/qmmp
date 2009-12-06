@@ -34,9 +34,9 @@ const EffectProperties EffectLADSPAFactory::properties() const
     return properties;
 }
 
-Effect *EffectLADSPAFactory::create(QObject *parent)
+Effect *EffectLADSPAFactory::create()
 {
-    return new LADSPAHost(parent);
+    return new LADSPAHost();
 }
 
 void EffectLADSPAFactory::showSettings(QWidget *parent)

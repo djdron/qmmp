@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,9 +20,7 @@
 #ifndef EFFECTSRCONVERTERFACTORY_H
 #define EFFECTSRCONVERTERFACTORY_H
 
-
 #include <QObject>
-
 #include <qmmp/effectfactory.h>
 #include <qmmp/effect.h>
 
@@ -36,7 +34,7 @@ Q_INTERFACES(EffectFactory);
 
 public:
     const EffectProperties properties() const;
-    Effect *create(QObject *parent);
+    Effect *create();
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

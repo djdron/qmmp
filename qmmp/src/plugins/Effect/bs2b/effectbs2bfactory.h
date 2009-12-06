@@ -20,9 +20,7 @@
 #ifndef EFFECTBS2BFACTORY_H
 #define EFFECTBS2BFACTORY_H
 
-
 #include <QObject>
-
 #include <qmmp/effectfactory.h>
 #include <qmmp/effect.h>
 
@@ -36,7 +34,7 @@ Q_INTERFACES(EffectFactory);
 
 public:
     const EffectProperties properties() const;
-    Effect *create(QObject *parent);
+    Effect *create();
     void showSettings(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);
