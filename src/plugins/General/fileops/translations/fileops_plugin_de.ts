@@ -26,7 +26,7 @@
     <message>
         <location filename="../fileops.cpp" line="135"/>
         <source>Copying file %1/%2</source>
-        <translation>Kopiere Datei %1/%2</translation>
+        <translation>Datei %1/%2 wird kopiert</translation>
     </message>
     <message>
         <location filename="../fileops.cpp" line="177"/>
