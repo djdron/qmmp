@@ -22,11 +22,13 @@
 #include <QByteArray>
 #include <QDir>
 #include <QFileInfo>
-#include <QVBoxLayout>
+#include <QFormLayout>
+#include <QWidget>
 #include <math.h>
 #include <stdlib.h>
 #include <dlfcn.h>
 #include <qmmp/qmmp.h>
+#include "ladspaslider.h"
 #include "ladspaplugin.h"
 
 #ifndef PATH_MAX
@@ -298,7 +300,6 @@ void LADSPAHost::findPlugins(const QString &path_entry)
 {
     LADSPAPlugin *plugin;
     void *library = 0;
-    //char *lib_name;
     LADSPA_Descriptor_Function descriptor_fn;
     const LADSPA_Descriptor *descriptor;
     long int k;
@@ -370,7 +371,7 @@ LADSPAEffect *LADSPAHost::addPlugin(LADSPAPlugin *plugin)
     return instance;
 }
 
-void LADSPAHost::draw_plugin(LADSPAEffect * instance)
+void LADSPAHost::draw_plugin(LADSPAEffect *instance)
 {
     const LADSPA_Descriptor *plugin = instance->descriptor;
     const LADSPA_PortRangeHint *hints = plugin->PortRangeHints;
@@ -378,20 +379,10 @@ void LADSPAHost::draw_plugin(LADSPAEffect * instance)
     int dp;
     unsigned long k;
     bool no_ui = TRUE;
-    //GtkWidget *widget, *vbox, *hbox;
-    //GtkObject *adjustment;
+    QWidget *widget = new QWidget();
+    QFormLayout *formLayout = new QFormLayout(widget);
 
-    /*if (instance->window != NULL)
-    {
-    /* Just show window */
-    /*gtk_widget_show(instance->window);
-    return;
-    }*/
-
-    //instance->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    //gtk_window_set_title(GTK_WINDOW(instance->window), plugin->Name);
-
-    //vbox = gtk_vbox_new(FALSE, 3);
+    widget->setLayout(formLayout);
 
     for (k = 0; k < MAX_KNOBS && k < plugin->PortCount; ++k)
     {
@@ -408,6 +399,9 @@ void LADSPAHost::draw_plugin(LADSPAEffect * instance)
             g_signal_connect(G_OBJECT(widget), "toggled", G_CALLBACK(toggled), &(instance->knobs[k]));
             gtk_container_add(GTK_CONTAINER(hbox), widget);
             gtk_container_add(GTK_CONTAINER(vbox), hbox);*/
+
+
+            //formLayout->addRow(plugin->PortNames[k], slider);
             continue;
         }
 
@@ -494,39 +488,19 @@ void LADSPAHost::draw_plugin(LADSPAEffect * instance)
             start = min * 0.5f + max * 0.5f;
 
         instance->knobs[k] = start;
-        //adjustment = gtk_adjustment_new(start, min, max, step, step * 10.0, 0.0);
-        //instance->adjustments[k] = GTK_ADJUSTMENT(adjustment);
-        //widget = gtk_spin_button_new(GTK_ADJUSTMENT(adjustment), step, dp);
-        if (LADSPA_IS_PORT_OUTPUT(plugin->PortDescriptors[k]))
-        {
-            //gtk_widget_set_sensitive(widget, FALSE);
-        }
-        else
-        {
-            //g_signal_connect(adjustment, "value-changed", G_CALLBACK(value_changed), &(instance->knobs[k]));
-        }
-        /*gtk_container_add(GTK_CONTAINER(hbox), widget);
-        widget = gtk_hscale_new(GTK_ADJUSTMENT(adjustment));
-        gtk_scale_set_digits(GTK_SCALE(widget), dp);
-        if (LADSPA_IS_PORT_OUTPUT(plugin->PortDescriptors[k]))
-        {
-            gtk_widget_set_sensitive(widget, FALSE);
-        }
-        gtk_container_add(GTK_CONTAINER(hbox), widget);
+        LADSPASlider *slider = new LADSPASlider(min, max, step, &instance->knobs[k], this, widget);
 
-        gtk_container_add(GTK_CONTAINER(vbox), hbox);*/
+        //slider->setEnabled(!LADSPA_IS_PORT_OUTPUT(plugin->PortDescriptors[k]));
+
+        formLayout->addRow(plugin->PortNames[k], slider);
     }
+    widget->setLayout(formLayout);
+    widget->setFixedSize(widget->sizeHint());
+    instance->widget = widget;
 
     /*if (no_ui)
     {
         widget = gtk_label_new(_("This LADSPA plugin has no user controls"));
         gtk_container_add(GTK_CONTAINER(vbox), widget);
-    }
-
-    instance->timeout = gtk_timeout_add(100, update_instance, instance);
-
-    gtk_container_add(GTK_CONTAINER(instance->window), vbox);
-
-    g_signal_connect(G_OBJECT(instance->window), "delete_event", G_CALLBACK(gtk_widget_hide_on_delete), NULL);
-    gtk_widget_show_all(instance->window);*/
+    }*/
 }

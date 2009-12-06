@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,38 +17,51 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SETTINGSDIALOG_H
-#define SETTINGSDIALOG_H
 
-#include <QDialog>
-#include "ui_settingsdialog.h"
 
-class QStandardItemModel;
+#include <QDoubleSpinBox>
+#include <QSlider>
+#include <QHBoxLayout>
+#include "ladspaplugin.h"
+#include "ladspaslider.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class SettingsDialog : public QDialog
+LADSPASlider::LADSPASlider(double min, double max, double step, LADSPA_Data *value,
+                           LADSPAHost *host, QWidget *parent) : QWidget(parent)
 {
-Q_OBJECT
-public:
-    SettingsDialog(QWidget *parent = 0);
+    m_min = min;
+    m_max = max;
+    m_step = step;
+    m_host = host;
+    m_value = value;
+    m_slider = new QSlider(Qt::Horizontal, this);
+    m_spinBox = new QDoubleSpinBox(this);
 
-    ~SettingsDialog();
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    layout->addWidget(m_slider);
+    layout->addWidget(m_spinBox);
+    layout->setContentsMargins (0, 0, 0, 0);
+    setLayout(layout);
 
-public slots:
-    virtual void accept();
+    m_spinBox->setRange(min, max);
+    m_spinBox->setSingleStep(step);
+    m_spinBox->setValue(*value);
 
-private slots:
-    void on_loadButton_clicked();
-    void on_unloadButton_clicked();
-    void on_configureButton_clicked();
+    m_slider->setRange(0, (max-min)/step);
+    m_slider->setSingleStep(1);
+    m_slider->setPageStep(10);
+    m_slider->setValue((*value-min)/step);
 
-private:
-    void updateRunningPlugins();
-    Ui::SettingsDialog ui;
-    QStandardItemModel *m_model;
-    bool m_created;
-};
+    connect(m_spinBox, SIGNAL(valueChanged (double)), SLOT(setValue(double)));
+    connect(m_slider, SIGNAL(sliderMoved (int)),SLOT(setValue(int)));
+}
 
-#endif
+void LADSPASlider::setValue(double v)
+{
+    *m_value = v;
+    m_slider->setValue((v-m_min)/m_step);
+}
+
+void LADSPASlider::setValue(int v)
+{
+    m_spinBox->setValue(v*m_step + m_min);
+}
