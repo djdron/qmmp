@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
- *   forkotov02@hotmail.ru                                                 *
+ *   Copyright (C) 2002,2003 Nick Lamb <njl195@zepler.org.uk>              *
+ *   Copyright (C) 2005 Giacomo Lozito <city_hunter@users.sf.net>          *
+ *   Copyright (C) 2009 by Ilya Kotov <forkotov02@hotmail.ru>              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,7 +23,7 @@
 
 #include <QMutex>
 #include <QList>
-#include <qmmp/effect.h>
+#include <QObject>
 #include "ladspa.h"
 
 class QWidget;
@@ -73,25 +74,23 @@ public:
 };
 
 
-class LADSPAHost : public Effect
+class LADSPAHost : public QObject
 {
+Q_OBJECT
 public:
-    LADSPAHost();
+    LADSPAHost(QObject *parent);
 
     virtual ~LADSPAHost();
 
-    ulong process(char *in_data, const ulong size, char **out_data);
+    int applyEffect(qint16 *d, int length);
     void configure(quint32 freq, int chan, int res);
     QList <LADSPAPlugin *> plugins();
     QList <LADSPAEffect *> runningPlugins();
     LADSPAEffect *addPlugin(LADSPAPlugin * plugin);
     void unload(LADSPAEffect *instance);
-
     static LADSPAHost* instance();
 
 private:
-    int applyEffect(qint16 *d, int length);
-
     void bootPlugin(LADSPAEffect *instance);
     void findAllPlugins();
     void findPlugins(const QString &path);
@@ -105,6 +104,8 @@ private:
     LADSPA_Data m_left[MAX_SAMPLES], m_right[MAX_SAMPLES], m_trash[MAX_SAMPLES];
 
     static LADSPAHost *m_instance;
+    int m_chan, m_prec;
+    quint32 m_freq;
 };
 
 #endif

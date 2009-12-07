@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,37 +17,23 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SETTINGSDIALOG_H
-#define SETTINGSDIALOG_H
 
-#include <QDialog>
-#include "ui_settingsdialog.h"
+#ifndef LADSPAHELPER_H
+#define LADSPAHELPER_H
 
-class QStandardItemModel;
+#include <qmmp/effect.h>
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class SettingsDialog : public QDialog
+class LADSPAHelper : public Effect
 {
-Q_OBJECT
 public:
-    SettingsDialog(QWidget *parent = 0);
+    LADSPAHelper();
+    virtual ~LADSPAHelper();
 
-    ~SettingsDialog();
-
-public slots:
-    virtual void accept();
-
-private slots:
-    void on_loadButton_clicked();
-    void on_unloadButton_clicked();
-    void on_configureButton_clicked();
-
-private:
-    void updateRunningPlugins();
-    Ui::SettingsDialog ui;
-    QStandardItemModel *m_model;
+    ulong process(char *in_data, const ulong size, char **out_data);
+    void configure(quint32 freq, int chan, int res);
 };
 
-#endif
+#endif // LADSPAHELPER_H

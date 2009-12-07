@@ -3,11 +3,13 @@ HEADERS += ladspahost.h \
     effectladspafactory.h \
     settingsdialog.h \
     ladspaslider.h \
-    ladspa.h
+    ladspa.h \
+    ladspahelper.h
 SOURCES += ladspahost.cpp \
     effectladspafactory.cpp \
     settingsdialog.cpp \
-    ladspaslider.cpp
+    ladspaslider.cpp \
+    ladspahelper.cpp
 TARGET = $$PLUGINS_PREFIX/Effect/ladspa
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Effect/libladspa.so
 INCLUDEPATH += ../../../
@@ -31,7 +33,7 @@ TRANSLATIONS = translations/ladspa_plugin_cs.ts \
     translations/ladspa_plugin_tr.ts \
     translations/ladspa_plugin_lt.ts
 
-# RESOURCES = translations/translations.qrc
+RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Effect
 INSTALLS += target

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,37 +17,29 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SETTINGSDIALOG_H
-#define SETTINGSDIALOG_H
 
-#include <QDialog>
-#include "ui_settingsdialog.h"
+#include <QApplication>
+#include "ladspahost.h"
+#include "ladspahelper.h"
 
-class QStandardItemModel;
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class SettingsDialog : public QDialog
+LADSPAHelper::LADSPAHelper() : Effect()
 {
-Q_OBJECT
-public:
-    SettingsDialog(QWidget *parent = 0);
+    if(!LADSPAHost::instance())
+        new LADSPAHost(qApp);
+}
 
-    ~SettingsDialog();
+LADSPAHelper::~LADSPAHelper()
+{}
 
-public slots:
-    virtual void accept();
+ulong LADSPAHelper::process(char *in_data, const ulong size, char **out_data)
+{
+    LADSPAHost::instance()->applyEffect((qint16 *) in_data, size);
+    memcpy(*out_data, in_data, size);
+    return size;
+}
 
-private slots:
-    void on_loadButton_clicked();
-    void on_unloadButton_clicked();
-    void on_configureButton_clicked();
-
-private:
-    void updateRunningPlugins();
-    Ui::SettingsDialog ui;
-    QStandardItemModel *m_model;
-};
-
-#endif
+void LADSPAHelper::configure(quint32 freq, int chan, int res)
+{
+    LADSPAHost::instance()->configure(freq,chan,res);
+    Effect::configure(freq, chan, res);
+}

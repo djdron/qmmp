@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>LADSPA Host Catalog</string>
+   <string>LADSPA Plugin Catalog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">

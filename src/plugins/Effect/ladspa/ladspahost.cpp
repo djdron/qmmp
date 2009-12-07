@@ -1,6 +1,7 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
- *   <forkotov02@hotmail.ru>                                               *
+ *   Copyright (C) 2002-2003 Nick Lamb <njl195@zepler.org.uk>              *
+ *   Copyright (C) 2005 Giacomo Lozito <city_hunter@users.sf.net>          *
+ *   Copyright (C) 2009 by Ilya Kotov <forkotov02@hotmail.ru>              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -37,8 +38,11 @@
 
 LADSPAHost *LADSPAHost::m_instance = 0;
 
-LADSPAHost::LADSPAHost() : Effect()
+LADSPAHost::LADSPAHost(QObject *parent) : QObject(parent)
 {
+    m_chan = 0;
+    m_prec = 0;
+    m_freq = 0;
     m_instance = this;
     findAllPlugins();
 }
@@ -52,16 +56,30 @@ LADSPAHost::~LADSPAHost()
     }
 }
 
-ulong LADSPAHost::process(char *in_data, const ulong size, char **out_data)
-{
-    applyEffect((qint16 *) in_data, size);
-    memcpy(*out_data, in_data, size);
-    return size;
-}
-
 void LADSPAHost::configure(quint32 freq, int chan, int res)
 {
-    Effect::configure(freq, chan, res);
+    m_chan = chan;
+    m_prec = res;
+    m_freq = freq;
+    foreach(LADSPAEffect *e, m_effects)
+    {
+        const LADSPA_Descriptor *descriptor = e->descriptor;
+        if (e->handle)
+        {
+            if (descriptor->deactivate)
+                descriptor->deactivate(e->handle);
+            descriptor->cleanup(e->handle);
+            e->handle = 0;
+        }
+        if (e->handle2)
+        {
+            if (descriptor->deactivate)
+                descriptor->deactivate(e->handle2);
+            descriptor->cleanup(e->handle2);
+            e->handle2 = 0;
+        }
+        bootPlugin(e);
+    }
 }
 
 LADSPAHost* LADSPAHost::instance()
@@ -79,7 +97,7 @@ QList <LADSPAEffect *> LADSPAHost::runningPlugins()
     return m_effects;
 }
 
-/*!!!!*/
+/*Based on xmms_ladspa */
 void LADSPAHost::findAllPlugins()
 {
     while(!m_plugins.isEmpty()) /* empty list */
@@ -159,11 +177,11 @@ void LADSPAHost::bootPlugin(LADSPAEffect *instance)
 {
     const LADSPA_Descriptor *descriptor = instance->descriptor;
 
-    instance->handle = descriptor->instantiate(descriptor, (int)sampleRate());
-    if (channels() > 1 && !instance->stereo)
+    instance->handle = descriptor->instantiate(descriptor, m_freq);
+    if (m_chan > 1 && !instance->stereo)
     {
         /* Create an additional instance */
-        instance->handle2 = descriptor->instantiate(descriptor, (int)sampleRate());
+        instance->handle2 = descriptor->instantiate(descriptor, m_freq);
     }
 
     portAssign(instance);
@@ -181,12 +199,11 @@ int LADSPAHost::applyEffect(qint16 *d, int length)
     qint16 *raw16 = d;
     LADSPAEffect *instance;
     int k;
-    int nch = channels();
 
     if (m_effects.isEmpty())
         return length;
 
-    if (nch == 1)
+    if (m_chan == 1)
     {
         for (k = 0; k < length / 2; ++k)
             m_left[k] = ((LADSPA_Data) raw16[k]) * (1.0f / 32768.0f);
@@ -362,7 +379,7 @@ LADSPAEffect *LADSPAHost::addPlugin(LADSPAPlugin *plugin)
     if (!(instance = load(plugin->fileName, plugin->id)))
         return 0;
     instance->stereo = plugin->stereo;
-    if (channels() && sampleRate())
+    if (m_chan && m_freq)
         bootPlugin(instance);
     initialize(instance);
     m_effects.append(instance);
@@ -396,7 +413,7 @@ void LADSPAHost::initialize(LADSPAEffect *instance)
         }
 
         if (LADSPA_IS_HINT_SAMPLE_RATE(hints[k].HintDescriptor))
-            fact = sampleRate();
+            fact = m_freq;
         else
             fact = 1.0f;
 

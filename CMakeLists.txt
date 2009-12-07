@@ -112,7 +112,8 @@ PRINT_SUMMARY ("Win32 Waveout support ............." USE_WAVEOUT WINDOWS_H_FOUND
 MESSAGE("")
 MESSAGE("Effect Plugins:")
 PRINT_SUMMARY ("Sample Rate Conversion ............" USE_SRC SAMPLERATE_FOUND)
-PRINT_SUMMARY ("BS2B Plugin........................" USE_BS2B BS2B_FOUND)
+PRINT_SUMMARY ("BS2B Plugin ......................." USE_BS2B BS2B_FOUND)
+PRINT_SUMMARY ("LADSPA Host ......................." USE_LADSPA 1)
 
 MESSAGE("")
 MESSAGE("Visual Plugins:")

@@ -84,3 +84,7 @@ aacDECdrop - windows decoder/player with drag'n'drop functionality (C) 2002
 
     John Edwards
 
+BMP-ladspa - LADSPA Host for BMP (c) 2002-2003
+
+    Nick Lamb <njl195@zepler.org.uk>
+    Giacomo Lozito <city_hunter@users.sf.net>

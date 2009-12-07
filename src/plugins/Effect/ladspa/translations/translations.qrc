@@ -1,0 +1,15 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>ladspa_plugin_it.qm</file>
+    <file>ladspa_plugin_cs.qm</file>
+    <file>ladspa_plugin_de.qm</file>
+    <file>ladspa_plugin_zh_CN.qm</file>
+    <file>ladspa_plugin_zh_TW.qm</file>
+    <file>ladspa_plugin_uk_UA.qm</file>
+    <file>ladspa_plugin_pl.qm</file>
+    <file>ladspa_plugin_ru.qm</file>
+    <file>ladspa_plugin_tr.qm</file>
+    <file>ladspa_plugin_lt.qm</file>
+  </qresource>
+</RCC>
