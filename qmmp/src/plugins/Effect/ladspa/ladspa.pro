@@ -1,9 +1,10 @@
 include(../../plugins.pri)
-HEADERS += ladspaplugin.h \
+HEADERS += ladspahost.h \
     effectladspafactory.h \
     settingsdialog.h \
-    ladspaslider.h
-SOURCES += ladspaplugin.cpp \
+    ladspaslider.h \
+    ladspa.h
+SOURCES += ladspahost.cpp \
     effectladspafactory.cpp \
     settingsdialog.cpp \
     ladspaslider.cpp

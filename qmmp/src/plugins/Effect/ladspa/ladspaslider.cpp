@@ -22,7 +22,7 @@
 #include <QDoubleSpinBox>
 #include <QSlider>
 #include <QHBoxLayout>
-#include "ladspaplugin.h"
+#include "ladspahost.h"
 #include "ladspaslider.h"
 
 LADSPASlider::LADSPASlider(double min, double max, double step, LADSPA_Data *value,

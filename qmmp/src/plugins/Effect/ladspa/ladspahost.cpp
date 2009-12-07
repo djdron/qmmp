@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 #include <qmmp/qmmp.h>
-#include "ladspaplugin.h"
+#include "ladspahost.h"
 
 #ifndef PATH_MAX
 #define PATH_MAX 4096
@@ -151,6 +151,7 @@ void LADSPAHost::unload(LADSPAEffect *instance)
         instance->library = 0;
     }
     m_effects.removeAll(instance);
+    qDeleteAll(instance->controls);
     delete instance;
 }
 
