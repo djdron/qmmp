@@ -22,7 +22,7 @@
 #include <qmmp/qmmp.h>
 #include "effectladspafactory.h"
 #include "settingsdialog.h"
-#include "ladspaplugin.h"
+#include "ladspahost.h"
 
 const EffectProperties EffectLADSPAFactory::properties() const
 {

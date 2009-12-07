@@ -27,7 +27,7 @@
 #include <QLabel>
 #include <qmmp/qmmp.h>
 #include "ladspaslider.h"
-#include "ladspaplugin.h"
+#include "ladspahost.h"
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
@@ -59,6 +59,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         m_model->setData(m_model->index(i, 0), (uint) plugin_list[i]->unique_id);
         m_model->setData(m_model->index(i, 1), plugin_list[i]->name);
     }
+    ui.pluginsTreeView->resizeColumnToContents (0);
+    ui.pluginsTreeView->resizeColumnToContents (1);
     updateRunningPlugins();
 }
 

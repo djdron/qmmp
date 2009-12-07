@@ -17,24 +17,22 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef LADSPAPLUGIN_H
-#define LADSPAPLUGIN_H
+#ifndef LADSPAHOST_H
+#define LADSPAHOST_H
 
 #include <QMutex>
 #include <QList>
 #include <qmmp/effect.h>
-#include <ladspa.h>
+#include "ladspa.h"
 
 class QWidget;
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
 
 #define MAX_SAMPLES 8192
 #define MAX_KNOBS 64
 
-
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class LADSPAPlugin
 {
 public:

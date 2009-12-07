@@ -21,7 +21,7 @@
 #define LADSPASLIDER_H
 
 #include <QWidget>
-#include <ladspa.h>
+#include "ladspa.h"
 
 class QDoubleSpinBox;
 class QSlider;
