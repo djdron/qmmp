@@ -43,13 +43,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     m_model->setHeaderData(1, Qt::Horizontal, tr("Name"));
     ui.pluginsTreeView->setModel(m_model);
 
-
-    m_created = FALSE;
     if(!LADSPAHost::instance())
-    {
-        new LADSPAHost();
-        m_created = TRUE;
-    }
+        new LADSPAHost(qApp);
 
     QList <LADSPAPlugin *> plugin_list = LADSPAHost::instance()->plugins();
 
@@ -65,10 +60,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 }
 
 SettingsDialog::~SettingsDialog()
-{
-    if(m_created)
-        delete LADSPAHost::instance();
-}
+{}
 
 void SettingsDialog::on_loadButton_clicked()
 {

@@ -20,9 +20,9 @@
 
 #include <QtGui>
 #include <qmmp/qmmp.h>
-#include "effectladspafactory.h"
 #include "settingsdialog.h"
-#include "ladspahost.h"
+#include "ladspahelper.h"
+#include "effectladspafactory.h"
 
 const EffectProperties EffectLADSPAFactory::properties() const
 {
@@ -36,7 +36,7 @@ const EffectProperties EffectLADSPAFactory::properties() const
 
 Effect *EffectLADSPAFactory::create()
 {
-    return new LADSPAHost();
+    return new LADSPAHelper();
 }
 
 void EffectLADSPAFactory::showSettings(QWidget *parent)
@@ -46,7 +46,15 @@ void EffectLADSPAFactory::showSettings(QWidget *parent)
 }
 
 void EffectLADSPAFactory::showAbout(QWidget *parent)
-{}
+{
+    QMessageBox::about (parent, tr("About LADSPA Host for Qmmp"),
+                        tr("LADSPA Host for Qmmp")+"\n"+
+                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Based on the LADSPA Host for BMP")+"\n"+
+                        tr("BMP-ladspa developers:")+"\n"+
+                        tr("Nick Lamb <njl195@zepler.org.uk>")+"\n"+
+                        tr("Giacomo Lozito <city_hunter@users.sf.net>"));
+}
 
 QTranslator *EffectLADSPAFactory::createTranslator(QObject *parent)
 {
