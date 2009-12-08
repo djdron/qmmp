@@ -114,11 +114,11 @@ PlayListModel *PlayListManager::createPlayList(const QString &name)
 {
     PlayListModel *model = new PlayListModel (name.isEmpty() ? tr("Playlist") : name, this);
     int i = m_models.indexOf(m_selected);
-    m_models.insert(i, model);
+    m_models.insert(i+1, model);
     model->prepareForRepeatablePlaying(m_repeatable);
     model->prepareForShufflePlaying(m_shuffle);
     connect(model, SIGNAL(nameChanged(QString)), SIGNAL(playListsChanged()));
-    emit playListAdded(i);
+    emit playListAdded(i+1);
     emit playListsChanged();
     return model;
 }
