@@ -19,7 +19,6 @@
  ***************************************************************************/
 #include <QApplication>
 #include <QUrl>
-
 #include "downloader.h"
 #include "streamreader.h"
 
@@ -28,13 +27,12 @@ StreamReader::StreamReader(const QString &name, QObject *parent)
 {
     m_downloader = new Downloader(this, name);
     connect(m_downloader, SIGNAL(readyRead()), SIGNAL(readyRead()));
-    connect(m_downloader, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
 }
 
 StreamReader::~StreamReader()
 {
     m_downloader->abort();
-    qDebug("StreamReader::~StreamReader()");
+    qDebug("%s", Q_FUNC_INFO);
 }
 
 bool StreamReader::atEnd () const

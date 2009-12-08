@@ -62,6 +62,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(startPendingEngine()));
     connect(m_handler, SIGNAL(aboutToFinish()), SIGNAL(aboutToFinish()));
+    connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
 }
@@ -84,6 +85,8 @@ bool SoundCore::play(const QString &source, bool queue)
 
     InputSource *s = InputSource::create(source, this);
     m_pendingSources.append(s);
+    if(state() == Qmmp::Stopped)
+        m_handler->dispatch(Qmmp::Buffering);
     connect(s, SIGNAL(ready(InputSource *)), SLOT(enqueue(InputSource *)));
     bool ok = s->initialize();
     if(!ok)
@@ -109,8 +112,8 @@ void SoundCore::stop()
     delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
-    if(state() == Qmmp::NormalError || state() == Qmmp::FatalError) //clear error state
-        StateHandler::instance()->dispatch(Qmmp::Stopped);
+    if(state() == Qmmp::NormalError || state() == Qmmp::FatalError || state() == Qmmp::Buffering)
+        StateHandler::instance()->dispatch(Qmmp::Stopped); //clear error and buffering state
 }
 
 void SoundCore::pause()
@@ -243,7 +246,7 @@ bool SoundCore::enqueue(InputSource *s)
     if(m_engine->enqueue(s))
     {
         m_source = s->url();
-        if(state() == Qmmp::Stopped)
+        if(state() == Qmmp::Stopped || state() == Qmmp::Buffering)
             m_engine->play();
     }
     else

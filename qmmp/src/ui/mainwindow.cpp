@@ -586,7 +586,7 @@ void MainWindow::handleCloseRequest()
 
 void MainWindow::addUrl()
 {
-    AddUrlDialog::popup(this, m_pl_manager->currentPlayList());
+    AddUrlDialog::popup(this, m_pl_manager->selectedPlayList());
 }
 
 SoundCore * MainWindow::soundCore() const

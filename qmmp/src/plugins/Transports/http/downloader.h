@@ -27,7 +27,7 @@
 
 #include <curl/curl.h>
 
-#define BUFFER_SIZE 128000 
+#define BUFFER_SIZE 128000
 
 /*! @internal
  *   @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -65,7 +65,6 @@ public:
 
 signals:
     void readyRead();
-    void bufferingProgress(int);
 
 private:
     qint64 readBuffer(char* data, qint64 maxlen);
