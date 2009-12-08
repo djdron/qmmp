@@ -94,6 +94,9 @@ private:
     quint32 m_freq;
     int m_chan;
     int m_res;
+    static void checkFactories();
+    static QList<EffectFactory*> *m_factories;
+    static QStringList m_files;
 };
 
 #endif

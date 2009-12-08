@@ -58,17 +58,19 @@ int Effect::bitsPerSample()
     return m_res;
 }
 
-static QList<EffectFactory*> *factories = 0;
-static QStringList files;
+//static members
 
-static void checkFactories()
+QList<EffectFactory*> *Effect::m_factories = 0;
+QStringList Effect::m_files;
+
+void Effect::checkFactories()
 {
-    if (! factories)
+    if (!m_factories)
     {
-        files.clear();
-        factories = new QList<EffectFactory *>;
+        m_files.clear();
+        m_factories = new QList<EffectFactory *>;
 
-         QDir pluginsDir (Qmmp::pluginsPath());
+        QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Effect");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
@@ -85,8 +87,8 @@ static void checkFactories()
 
             if (factory)
             {
-                factories->append(factory);
-                files << pluginsDir.absoluteFilePath(fileName);
+                m_factories->append(factory);
+                m_files << pluginsDir.absoluteFilePath(fileName);
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
@@ -98,7 +100,7 @@ QList<Effect*> Effect::create()
     checkFactories();
     QList<Effect*> effects;
     EffectFactory *factory = 0;
-    foreach (factory, *factories)
+    foreach (factory, *m_factories)
     {
         if(isEnabled(factory))
             effects.append(factory->create());
@@ -109,19 +111,19 @@ QList<Effect*> Effect::create()
 QList<EffectFactory*> *Effect::effectFactories()
 {
     checkFactories();
-    return factories;
+    return m_factories;
 }
 
 QStringList Effect::effectFiles()
 {
     checkFactories();
-    return files;
+    return m_files;
 }
 
 void Effect::setEnabled(EffectFactory* factory, bool enable)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if(!m_factories->contains(factory))
         return;
 
     QString name = factory->properties().shortName;
@@ -141,10 +143,10 @@ void Effect::setEnabled(EffectFactory* factory, bool enable)
 bool Effect::isEnabled(EffectFactory* factory)
 {
     checkFactories();
-    if(!factories->contains(factory))
+    if(!m_factories->contains(factory))
         return FALSE;
     QString name = factory->properties().shortName;
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QStringList effList = settings.value("Effect/enabled_plugins").toStringList();
     return effList.contains(name);
 }
