@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -92,7 +92,8 @@ void FileInfo::setLength(qint64 length)
 
 void FileInfo::setMetaData(Qmmp::MetaData key, const QString &value)
 {
-    m_metaData.insert(key, value);
+    if (!value.isEmpty() && value != "0")
+        m_metaData.insert(key, value);
 }
 
 void FileInfo::setMetaData(Qmmp::MetaData key, int value)
