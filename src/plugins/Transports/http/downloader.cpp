@@ -303,7 +303,7 @@ void Downloader::checkBuffer()
     }
     else if (!m_ready)
     {
-        emit bufferingProgress(100 * m_stream.buf_fill / BUFFER_SIZE);
+        StateHandler::instance()->dispatchBuffer(100 * m_stream.buf_fill / BUFFER_SIZE);
         qApp->processEvents();
     }
 

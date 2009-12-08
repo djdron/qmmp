@@ -64,7 +64,6 @@ public:
 
 signals:
     void readyRead();
-    void bufferingProgress(int);
 
 protected:
     qint64 readData(char*, qint64);

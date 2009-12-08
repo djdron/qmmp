@@ -26,7 +26,6 @@
 #define TICK_INTERVAL 250
 #define PREFINISH_TIME 2000
 
-
 StateHandler* StateHandler::m_instance = 0;
 
 StateHandler::StateHandler(QObject *parent)
@@ -120,7 +119,7 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
     m_mutex.unlock();
 }
 
-void StateHandler::dispatch(const Qmmp::State &state)
+void StateHandler::dispatch(Qmmp::State state)
 {
     m_mutex.lock();
     //clear
@@ -152,6 +151,12 @@ void StateHandler::dispatch(const Qmmp::State &state)
         }
     }
     m_mutex.unlock();
+}
+
+void StateHandler::dispatchBuffer(int percent)
+{
+    if(m_state == Qmmp::Buffering)
+        emit bufferingProgress(percent);
 }
 
 qint64 StateHandler::elapsed()

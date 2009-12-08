@@ -62,7 +62,12 @@ public:
     /*!
      * Sends playback state.
      */
-    virtual void dispatch(const Qmmp::State &state);
+    virtual void dispatch(Qmmp::State state);
+    /*!
+     * Sends buffering progress.
+     * @param \b percent Indicates the current percentage of buffering completed.
+     */
+    virtual void dispatchBuffer(int percent);
     /*!
      * Returns the current time (in milliseconds).
      */
@@ -142,6 +147,11 @@ signals:
      *
      */
     void aboutToFinish();
+     /*!
+     * This signal is emitted when the stream reader fills it's buffer.
+     * The argument \b progress indicates the current percentage of buffering completed.
+     */
+    void bufferingProgress(int progress);
 
 private:
     qint64 m_elapsed;
