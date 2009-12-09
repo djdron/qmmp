@@ -6,7 +6,7 @@ plugin  \
  lib  \
  link_pkgconfig
 
-PKGCONFIG += xf86miscproto x11
+PKGCONFIG += x11
 
 TARGET = $$PLUGINS_PREFIX/General/hotkey
 QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libhotkey.so
