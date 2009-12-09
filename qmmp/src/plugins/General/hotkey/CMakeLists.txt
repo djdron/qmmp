@@ -22,7 +22,7 @@ SET(QT_INCLUDES
   ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
 
-pkg_check_modules(X11 xf86miscproto x11)
+pkg_search_module(X11 x11)
 
 include_directories(${X11_INCLUDE_DIRS})
 link_directories(${X11_LIBRARY_DIRS})
