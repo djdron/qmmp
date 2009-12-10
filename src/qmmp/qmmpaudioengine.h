@@ -33,6 +33,7 @@ class DecoderFactory;
 class StateHandler;
 class Decoder;
 class InputSource;
+class EffectFactory;
 
 
 class QmmpAudioEngine : public AbstractEngine
@@ -50,6 +51,9 @@ public:
     void pause();
     void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
+    void addEffect(EffectFactory *factory);
+    void removeEffect(EffectFactory *factory);
+    static QmmpAudioEngine *instance();
 
 private slots:
     void finish();
@@ -80,6 +84,7 @@ private:
     QHash <Decoder*, InputSource*> m_inputs;
     AudioParameters m_ap;
     bool m_next;
+    static QmmpAudioEngine *m_instance;
 
 };
 
