@@ -22,6 +22,7 @@
 
 #include <QList>
 #include <QStringList>
+#include "audioparameters.h"
 
 class EffectFactory;
 
@@ -66,6 +67,10 @@ public:
      * Returns bits per sample.
      */
     int bitsPerSample();
+
+    const AudioParameters audioParameters() const;
+    EffectFactory* factory() const;
+
     /*!
      * Creates a list of enabled effects.
      */
@@ -91,6 +96,7 @@ public:
     static bool isEnabled(EffectFactory* factory);
 
 private:
+    EffectFactory *m_factory;
     quint32 m_freq;
     int m_chan;
     int m_res;

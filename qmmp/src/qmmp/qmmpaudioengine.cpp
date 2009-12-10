@@ -27,6 +27,7 @@
 #include "decoder.h"
 #include "output.h"
 #include "decoderfactory.h"
+#include "effectfactory.h"
 #include "inputsource.h"
 #include "qmmpaudioengine.h"
 #include "metadatamanager.h"
@@ -51,6 +52,7 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_decoder = 0;
     m_output = 0;
     reset();
+    m_instance = this;
 }
 
 QmmpAudioEngine::~QmmpAudioEngine()
@@ -61,6 +63,7 @@ QmmpAudioEngine::~QmmpAudioEngine()
         delete [] m_output_buf;
     m_output_buf = 0;
     qDeleteAll(m_effects);
+    m_instance = 0;
 }
 
 void QmmpAudioEngine::reset()
@@ -158,6 +161,54 @@ void QmmpAudioEngine::setEQEnabled(bool on)
     mutex()->lock();
     m_useEQ = on;
     mutex()->unlock();
+}
+
+void QmmpAudioEngine::addEffect(EffectFactory *factory)
+{
+    if(m_output && m_output->isRunning())
+    {
+        Effect *effect = factory->create();
+        effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.bits());
+        if(effect->audioParameters() == m_ap)
+        {
+            mutex()->lock();
+            m_effects << effect;
+            mutex()->unlock();
+        }
+        else
+        {
+            qDebug("QmmpAudioEngine: restart required");
+            delete effect;
+        }
+    }
+}
+
+void QmmpAudioEngine::removeEffect(EffectFactory *factory)
+{
+    Effect *effect = 0;
+    foreach(effect, m_effects)
+    {
+        if(effect->factory() == factory)
+            break;
+    }
+    if(!effect)
+        return;
+    int index = m_effects.indexOf(effect);
+    if(m_output && m_output->isRunning())
+    {
+        if(index == 0 && m_decoder->audioParameters() == effect->audioParameters())
+        {
+            mutex()->lock();
+            m_effects.removeAll(effect);
+            mutex()->unlock();
+        }
+        else if(m_effects.at(index - 1)->audioParameters() == effect->audioParameters())
+        {
+            mutex()->lock();
+            m_effects.removeAll(effect);
+            mutex()->unlock();
+        }
+    }
 }
 
 void QmmpAudioEngine::seek(qint64 time)
@@ -541,4 +592,12 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
     m_chan = chan;
     output->configure(srate, chan, bps);
     return output;
+}
+
+//static members
+QmmpAudioEngine *QmmpAudioEngine::m_instance = 0;
+
+QmmpAudioEngine *QmmpAudioEngine::instance()
+{
+    return m_instance;
 }

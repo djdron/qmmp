@@ -21,7 +21,7 @@
 #include <QStringList>
 #include <QDir>
 #include <QApplication>
-
+#include "qmmpaudioengine.h"
 #include "qmmp.h"
 #include "effectfactory.h"
 #include "effect.h"
@@ -31,6 +31,7 @@ Effect::Effect()
     m_freq = 0;
     m_chan = 0;
     m_res = 0;
+    m_factory = 0;
 }
 
 Effect::~Effect()
@@ -56,6 +57,16 @@ int Effect::channels()
 int Effect::bitsPerSample()
 {
     return m_res;
+}
+
+const AudioParameters  Effect::audioParameters() const
+{
+    return AudioParameters(m_freq, m_chan, m_res);
+}
+
+EffectFactory* Effect::factory() const
+{
+    return m_factory;
 }
 
 //static members
@@ -103,7 +114,10 @@ QList<Effect*> Effect::create()
     foreach (factory, *m_factories)
     {
         if(isEnabled(factory))
+        {
             effects.append(factory->create());
+            effects.last()->m_factory = factory;
+        }
     }
     return effects;
 }
@@ -133,10 +147,18 @@ void Effect::setEnabled(EffectFactory* factory, bool enable)
     if(enable)
     {
         if (!effList.contains(name))
+        {
             effList << name;
+            if(QmmpAudioEngine::instance())
+                QmmpAudioEngine::instance()->addEffect(factory);
+        }
     }
-    else
+    else if (effList.contains(name))
+    {
         effList.removeAll(name);
+        if(QmmpAudioEngine::instance())
+            QmmpAudioEngine::instance()->removeEffect(factory);
+    }
     settings.setValue("Effect/enabled_plugins", effList);
 }
 
