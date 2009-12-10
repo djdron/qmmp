@@ -85,7 +85,7 @@
         <bool>false</bool>
        </property>
        <property name="currentRow">
-        <number>0</number>
+        <number>-1</number>
        </property>
        <item>
         <property name="text">
@@ -130,6 +130,15 @@
         <property name="icon">
          <iconset resource="../images/images.qrc">
           <normaloff>:/network.png</normaloff>:/network.png</iconset>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Replay Gain</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../images/images.qrc">
+          <normaloff>:/replaygain.png</normaloff>:/replaygain.png</iconset>
         </property>
        </item>
       </widget>
@@ -1030,6 +1039,7 @@
          </item>
         </layout>
        </widget>
+       <widget class="QWidget" name="replaygain"/>
       </widget>
      </item>
     </layout>
