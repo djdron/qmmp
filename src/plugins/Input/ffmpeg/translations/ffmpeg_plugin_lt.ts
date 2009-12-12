@@ -39,42 +39,42 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Trukmė</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylos dydis</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>KB</source>
-        <translation type="unfinished">КB</translation>
+        <translation>КB</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Dažnis</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="73"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanalai</translation>
     </message>
 </context>
 <context>
@@ -87,37 +87,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Windows Media Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows Media Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>Monkey&apos;s Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Monkey Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="65"/>
         <source>True Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>True Audio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
         <source>ALAC (Apple Lossless Audio Codec)</source>
-        <translation type="unfinished"></translation>
+        <translation>ALAC (Apple Lossless Audio Codec)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>ADTS AAC</source>
-        <translation type="unfinished"></translation>
+        <translation>ADTS AAC</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="93"/>
         <source>MPEG-4 AAC</source>
-        <translation type="unfinished"></translation>
+        <translation>MPEG-4 AAC</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>RealAudio 1.0/2.0</source>
-        <translation type="unfinished"></translation>
+        <translation>RealAudio 1.0/2.0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
@@ -127,7 +127,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="86"/>
         <source>MP3 (MPEG audio layer 3)</source>
-        <translation type="unfinished"></translation>
+        <translation>MP3 (MPEG audio layer 3)</translation>
     </message>
 </context>
 </TS>

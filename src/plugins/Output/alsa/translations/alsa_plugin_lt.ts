@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="200"/>
         <source>Use snd_pcm_pause function</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudoti snd_pcm_pause funciją</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>

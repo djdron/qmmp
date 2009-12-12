@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru">
+<TS version="2.0" language="lt">
 <context>
     <name>SettingsDialog</name>
     <message>
@@ -17,12 +17,12 @@
         <location filename="../settingsdialog.ui" line="67"/>
         <location filename="../settingsdialog.ui" line="149"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>Užlaikymas ms:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="87"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Permatomumas:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="121"/>
@@ -32,17 +32,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="130"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Bandyti išskirti bylos pavadinimą, kai nėra meta duomenų</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="140"/>
         <source>Balloone message</source>
-        <translation type="unfinished"></translation>
+        <translation>Iššokantis pranešimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="184"/>
         <source>Use standard icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudoti standartines ikonas</translation>
     </message>
 </context>
 <context>
@@ -103,17 +103,17 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukūrė:</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="53"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
@@ -121,7 +121,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="149"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Sustojo</translation>
     </message>
 </context>
 </TS>

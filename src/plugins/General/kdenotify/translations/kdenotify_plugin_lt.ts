@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="lt_LT">
 <context>
     <name>KdeNotify</name>
     <message>
         <location filename="../kdenotify.cpp" line="63"/>
         <source>Qmmp now playing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp dabar groja:</translation>
     </message>
     <message>
         <location filename="../kdenotify.cpp" line="73"/>
@@ -24,18 +24,19 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="10"/>
         <source>KDE 4 notification plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>KDE 4 pranešimų įskiepis</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="30"/>
         <source>About KDE Notification Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie qmmp KDE 4 pranešimų įskiepį</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="31"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp KDE 4 pranešimų įskiepis 
+</translation>
     </message>
 </context>
 <context>
@@ -43,12 +44,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>KDE 4 Notification Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>KDE 4 pranešimų įskiepio nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="20"/>
         <source>Notification delay [ms]:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pranešimo užlaikymas [ms]:</translation>
     </message>
 </context>
 </TS>

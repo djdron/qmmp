@@ -44,27 +44,27 @@
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Best Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Geriausias interpoliacijos lygis</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>
         <source>Medium Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidutinis interpoliacijos lygis</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Fastest Sinc Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Greičiausias interpoliacijos lygis</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>ZOH Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>ZOH interpoliacija</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Linear Interpolation</source>
-        <translation type="unfinished"></translation>
+        <translation>Linijinė interpoliacija</translation>
     </message>
 </context>
 </TS>

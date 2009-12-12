@@ -106,7 +106,8 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
         <location filename="../qmmpfiledialogimpl.cpp" line="457"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 jau yra.
+Ar norite perrašyti?</translation>
     </message>
 </context>
 </TS>
