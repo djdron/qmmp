@@ -6,7 +6,7 @@
     <message>
         <location filename="../projectmplugin.cpp" line="40"/>
         <source>ProjectM</source>
-        <translation type="unfinished"></translation>
+        <translation>ProjectM</translation>
     </message>
 </context>
 <context>
@@ -97,7 +97,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="29"/>
         <source>ProjectM</source>
-        <translation type="unfinished"></translation>
+        <translation>ProjectM</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="49"/>

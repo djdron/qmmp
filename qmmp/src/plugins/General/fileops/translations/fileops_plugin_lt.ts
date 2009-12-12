@@ -36,8 +36,8 @@
     <message numerus="yes">
         <location filename="../fileops.cpp" line="178"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Ar tu tikras, jog nori ištrinti  %n bylą(as) iš disko?</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -200,7 +200,7 @@
         <location filename="../settingsdialog.ui" line="158"/>
         <location filename="../settingsdialog.ui" line="175"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="148"/>

@@ -26,7 +26,7 @@
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sukurta Brad Hughes &lt;bhughes@trolltech.com&gt; kodo pagrindu</translation>
     </message>
 </context>
 <context>

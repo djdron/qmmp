@@ -39,52 +39,52 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="66"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Trukmė</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="67"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Dažnis</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="67"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanalai</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="69"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="69"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="71"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Bylos dydis</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="71"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Koeficientas</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="73"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Versija</translation>
     </message>
 </context>
 </TS>

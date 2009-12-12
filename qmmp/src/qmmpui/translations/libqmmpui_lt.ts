@@ -6,27 +6,27 @@
     <message>
         <location filename="../detailsdialog.cpp" line="78"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Pavadinimas</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="79"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Atlikėjas</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="80"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Albumas</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="81"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Komentaras</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="82"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Žanras</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="83"/>
@@ -36,27 +36,27 @@
     <message>
         <location filename="../detailsdialog.cpp" line="85"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Metai</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="87"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelis</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="89"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disko numeris</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="14"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="46"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelio informacija</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="55"/>
@@ -74,7 +74,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../playlistmanager.cpp" line="115"/>
         <location filename="../playlistmanager.cpp" line="334"/>
         <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojaraštis</translation>
     </message>
 </context>
 <context>
@@ -90,32 +90,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="38"/>
         <source>Title:</source>
-        <translation type="unfinished">Pavadinimas:</translation>
+        <translation>Pavadinimas:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="64"/>
         <source>Artist:</source>
-        <translation type="unfinished">Atlikėjas:</translation>
+        <translation>Atlikėjas:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="90"/>
         <source>Album:</source>
-        <translation type="unfinished">Albumas:</translation>
+        <translation>Albumas:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="113"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Autorius</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="133"/>
         <source>Genre:</source>
-        <translation type="unfinished">Žanras:</translation>
+        <translation>Žanras:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="159"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>Disko numeris</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="169"/>
@@ -127,22 +127,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="275"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelis</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="259"/>
         <source>Year:</source>
-        <translation type="unfinished"></translation>
+        <translation>Metai</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="14"/>
         <source>Tag Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta informacijos redaktorius</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="182"/>
         <source>Comment:</source>
-        <translation type="unfinished">Komantaras:</translation>
+        <translation type="unfinished">Komentaras:</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="204"/>
@@ -156,7 +156,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="288"/>
         <source>Include selected tag in file</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Įtraukti meta informaciją į bylą</translation>
     </message>
 </context>
 </TS>

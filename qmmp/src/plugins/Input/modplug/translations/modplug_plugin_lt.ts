@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Modplug Plugin developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Modplug įskiepio kūrėjai:</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="135"/>
@@ -59,54 +59,54 @@
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="71"/>
         <source>File name</source>
-        <translation type="unfinished">Bylos pavadinimas</translation>
+        <translation>Bylos pavadinimas</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="142"/>
         <source>Type</source>
-        <translation type="unfinished">Tipas</translation>
+        <translation>Tipas</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="147"/>
         <source>Length</source>
-        <translation type="unfinished">Ilgis</translation>
+        <translation>Trukmė</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="148"/>
         <source>Speed</source>
-        <translation type="unfinished">Greitis</translation>
+        <translation>Greitis</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="149"/>
         <source>Tempo</source>
-        <translation type="unfinished">Tempas</translation>
+        <translation>Tempas</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation type="unfinished">Samples</translation>
+        <translation>Pavyzdžiai</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translation type="unfinished">Instrumentai</translation>
+        <translation>Instrumentai</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="152"/>
         <source>Patterns</source>
-        <translation type="unfinished">Pavyzdžiai</translation>
+        <translation>Pavyzdžiai</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="153"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanalai</translation>
+        <translation>Kanalai</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="185"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Komentaras</translation>
     </message>
 </context>
 <context>
