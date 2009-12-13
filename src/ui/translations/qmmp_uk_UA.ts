@@ -412,7 +412,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="137"/>
         <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>Повторити знову</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="234"/>
