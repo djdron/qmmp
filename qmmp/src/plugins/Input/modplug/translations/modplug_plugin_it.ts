@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Modplug Plugin developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sviluppatori del modulo Modplug:</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="135"/>
@@ -59,54 +59,54 @@
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="71"/>
         <source>File name</source>
-        <translation type="unfinished">Nome del brano</translation>
+        <translation>Nome del brano</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="142"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="147"/>
         <source>Length</source>
-        <translation type="unfinished">Durata</translation>
+        <translation>Durata</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="148"/>
         <source>Speed</source>
-        <translation type="unfinished">Velocità</translation>
+        <translation>Velocità</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="149"/>
         <source>Tempo</source>
-        <translation type="unfinished">Tempo</translation>
+        <translation>Tempo</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation type="unfinished">Campioni</translation>
+        <translation>Campionamenti</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translation type="unfinished">Strumenti</translation>
+        <translation>Strumenti</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="152"/>
         <source>Patterns</source>
-        <translation type="unfinished">Schema</translation>
+        <translation>Schemi</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="153"/>
         <source>Channels</source>
-        <translation type="unfinished">Canali</translation>
+        <translation>Canali</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="185"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Commento</translation>
     </message>
 </context>
 <context>

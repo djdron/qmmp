@@ -39,42 +39,42 @@
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Durata</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione file</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Bit/secondo</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Campionamento</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../ffmpegmetadatamodel.cpp" line="73"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canali</translation>
     </message>
 </context>
 <context>

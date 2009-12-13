@@ -39,42 +39,42 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="49"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Durata</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Campionamento</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Channels</source>
-        <translation type="unfinished">Canali</translation>
+        <translation>Canali</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Campionamento bit</translation>
+        <translation>bit al secondo</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>File size</source>
-        <translation type="unfinished">Dimensione file</translation>
+        <translation>Dimensione file</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
 </context>
 </TS>

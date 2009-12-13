@@ -105,7 +105,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="138"/>
         <source>New action</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova azione</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="192"/>

@@ -11,7 +11,7 @@
     <message>
         <location filename="../lyrics.cpp" line="36"/>
         <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+L</translation>
     </message>
 </context>
 <context>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="75"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>Non trovato</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="91"/>

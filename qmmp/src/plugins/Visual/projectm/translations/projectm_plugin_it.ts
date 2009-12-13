@@ -6,7 +6,7 @@
     <message>
         <location filename="../projectmplugin.cpp" line="40"/>
         <source>ProjectM</source>
-        <translation type="unfinished">Visualizzatore musicale ProjectM</translation>
+        <translation>Visualizzatore musicale ProjectM</translation>
     </message>
 </context>
 <context>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../visualprojectmfactory.cpp" line="50"/>
         <source>Qmmp ProjectM Visual Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulo Visulaizzatore Projectm per Qmmp</translation>
     </message>
     <message>
         <location filename="../visualprojectmfactory.cpp" line="51"/>
