@@ -21,7 +21,7 @@
 #include <QMetaType>
 #include <QIODevice>
 #include <QFile>
-
+#include "replaygain.h"
 #include "effect.h"
 #include "buffer.h"
 #include "decoder.h"
@@ -51,6 +51,7 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_bks = Buffer::size();
     m_decoder = 0;
     m_output = 0;
+    m_replayGain = new ReplayGain;
     reset();
     m_instance = this;
 }
@@ -64,6 +65,7 @@ QmmpAudioEngine::~QmmpAudioEngine()
     m_output_buf = 0;
     qDeleteAll(m_effects);
     m_instance = 0;
+    delete m_replayGain;
 }
 
 void QmmpAudioEngine::reset()
@@ -304,6 +306,8 @@ void QmmpAudioEngine::stop()
 qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int chan)
 {
     ulong sz = size < _blksize ? size : _blksize;
+
+    //m_replayGain->applyReplayGain(data, sz);
 
     if (m_useEQ)
     {
@@ -581,6 +585,7 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
     quint32 srate = m_ap.sampleRate();
     int chan = m_ap.channels();
     int bps = m_ap.bits();
+    m_replayGain->setSampleSize(bps);
 
     foreach(Effect *effect, m_effects)
     {
