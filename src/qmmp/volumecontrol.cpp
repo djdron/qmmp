@@ -170,7 +170,7 @@ void SoftwareVolume::changeVolume(uchar *data, qint64 size, int chan, int bits)
         }
         else
         {
-            for (qint64 i = 0; i < size/4; i++)
+            for (qint64 i = 0; i < size; i++)
                 ((qint32*)data)[i]*= qMax(m_scaleRight, m_scaleLeft);
         }
     }
