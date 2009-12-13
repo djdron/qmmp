@@ -11,38 +11,38 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Tooltip</source>
-        <translation type="unfinished"></translation>
+        <translation>Strumento suggerimenti</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <location filename="../settingsdialog.ui" line="149"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ritardo, ms:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="87"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Trasparenza:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="121"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="130"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Dividi nome file se senza tag</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="140"/>
         <source>Balloone message</source>
-        <translation type="unfinished"></translation>
+        <translation>Fumetto messaggio</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="184"/>
         <source>Use standard icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa icone standard</translation>
     </message>
 </context>
 <context>
@@ -98,17 +98,17 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Autori:</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="53"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="50"/>
@@ -121,7 +121,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="149"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>Fermato</translation>
     </message>
 </context>
 </TS>

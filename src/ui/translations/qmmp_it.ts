@@ -217,22 +217,22 @@
     <message>
         <location filename="../configdialog.cpp" line="589"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Traccia n°</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="590"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Traccia n° a due cifre</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="594"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disco n°</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="598"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Condizione</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="591"/>
@@ -242,17 +242,17 @@
     <message>
         <location filename="../configdialog.cpp" line="593"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Compositore</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="595"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome file</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="596"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Percorso file</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="597"/>
@@ -412,52 +412,52 @@
     <message>
         <location filename="../forms/configdialog.ui" line="137"/>
         <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>Guadagno riesecuzione</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="234"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Varie</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="348"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa carattere bitmap se disponibile</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="358"/>
         <source>Skin Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opzioni skin</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="364"/>
         <source>Use skin cursors</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa cursore skin</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="371"/>
         <source>Double size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione doppia</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="545"/>
         <source>Show song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra numero brani</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="552"/>
         <source>Show playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra lista esecuzione brani</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="561"/>
         <source>Show popup information</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra informazioni popup</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="571"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizza</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="781"/>
@@ -492,27 +492,27 @@
     <message>
         <location filename="../forms/configdialog.ui" line="827"/>
         <source>Metacity compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Compatibilità Metacity</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="869"/>
         <source>Cover Image Retrieve</source>
-        <translation type="unfinished"></translation>
+        <translation>Trova immagine copertina</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="875"/>
         <source>Include files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Includi i file:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="885"/>
         <source>Exclude files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Escludi i file:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="897"/>
         <source>Recursive search depth:</source>
-        <translation type="unfinished"></translation>
+        <translation>Profondità ricerca ricorsiva:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="945"/>
@@ -1092,12 +1092,12 @@
     <message>
         <location filename="../playlist.cpp" line="325"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="330"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="337"/>
@@ -1154,13 +1154,13 @@
         <location filename="../playlist.cpp" line="229"/>
         <location filename="../playlist.cpp" line="263"/>
         <source>By Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Per album</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="233"/>
         <location filename="../playlist.cpp" line="267"/>
         <source>By Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>PEr interprete</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="237"/>
@@ -1208,7 +1208,7 @@
     <message>
         <location filename="../playlist.cpp" line="312"/>
         <source>Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+A</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="317"/>
@@ -1223,37 +1223,37 @@
     <message>
         <location filename="../playlist.cpp" line="349"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Seleziona la successiva lista esecuzione brani</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="350"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgDown</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="355"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Seleziona la rpecedente lista esecuzione brani</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="356"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgUp</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="361"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra lista esecuzione brani</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="362"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation>P</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="329"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cancella lista</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="336"/>
@@ -1312,29 +1312,29 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Esplora lista esecuzione</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
         <location filename="../playlistbrowser.cpp" line="38"/>
         <source>Delete</source>
-        <translation type="unfinished">Elimina</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="76"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="37"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina</translation>
     </message>
 </context>
 <context>
@@ -1342,108 +1342,108 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Popup delle impostazioni</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="48"/>
         <location filename="../forms/popupsettings.ui" line="78"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="55"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Trasparenza:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione copertina:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="122"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Modello</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="151"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Azzera</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="158"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="58"/>
         <source>Artist</source>
-        <translation type="unfinished">Interprete</translation>
+        <translation>Interprete</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="59"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="60"/>
         <source>Title</source>
-        <translation type="unfinished">Titolo</translation>
+        <translation>Titolo</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="61"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Traccia n°</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Traccia n° a due cifre</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Genre</source>
-        <translation type="unfinished">Genere</translation>
+        <translation>Genere</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Comment</source>
-        <translation type="unfinished">Commento</translation>
+        <translation>Commento</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Compositore</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Durata</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Disco n°</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome file</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Percorso file</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Year</source>
-        <translation type="unfinished">Anno</translation>
+        <translation>Anno</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Condizione</translation>
     </message>
 </context>
 <context>
@@ -1489,7 +1489,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="156"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Non ripulire la lista esecuzione</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="160"/>
@@ -1504,7 +1504,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="167"/>
         <source>Qt version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Versione Qt:</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="159"/>
