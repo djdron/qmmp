@@ -110,6 +110,14 @@ public:
      */
     void setVolume(int left, int right);
     /*!
+     * Changes volume of buffer.
+     * @param data Pointer to the buffer.
+     * @param size Buffer size in bytes.
+     * @param chan Number of channels.
+     * @param bits Sample size in bits.
+     */
+    void changeVolume(uchar *data, qint64 size, int chan, int bits);
+    /*!
      * Returns software volume object instance.
      */
     static SoftwareVolume *instance();
@@ -129,6 +137,7 @@ protected:
 
 private:
     int m_left, m_right;
+    double m_scaleLeft, m_scaleRight;
     static SoftwareVolume *m_instance;
 };
 

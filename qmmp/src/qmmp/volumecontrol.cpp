@@ -95,6 +95,8 @@ SoftwareVolume::SoftwareVolume(QObject *parent)
     checkVolume();
     blockSignals(FALSE);
     QTimer::singleShot(125, this, SLOT(checkVolume()));
+    m_scaleLeft = (double)m_left/100.0;
+    m_scaleRight = (double)m_right/100.0;
     m_instance = this;
 }
 
@@ -111,6 +113,8 @@ void SoftwareVolume::setVolume(int left, int right)
     m_left = left;
     m_right = right;
     checkVolume();
+    m_scaleLeft = (double)m_left/100.0;
+    m_scaleRight = (double)m_right/100.0;
 }
 
 void SoftwareVolume::volume(int *left, int *right)
@@ -118,6 +122,60 @@ void SoftwareVolume::volume(int *left, int *right)
     *left = m_left;
     *right = m_right;
 }
+
+void SoftwareVolume::changeVolume(uchar *data, qint64 size, int chan, int bits)
+{
+    size = size*8/bits;
+    if(bits == 16)
+    {
+        if (chan > 1)
+        {
+            for (qint64 i = 0; i < size; i+=2)
+            {
+                ((short*)data)[i]*= m_scaleLeft;
+                ((short*)data)[i+1]*= m_scaleRight;
+            }
+        }
+        else
+        {
+            for (qint64 i = 0; i < size; i++)
+                ((short*)data)[i]*= qMax(m_scaleRight, m_scaleLeft);
+        }
+    }
+    else if(bits == 8)
+    {
+        if (chan > 1)
+        {
+            for (qint64 i = 0; i < size; i++)
+            {
+                ((char*)data)[i]*= m_scaleLeft;
+                ((char*)data)[i+1]*= m_scaleRight;
+            }
+        }
+        else
+        {
+            for (qint64 i = 0; i < size; i++)
+                ((char*)data)[i]*= qMax(m_scaleRight, m_scaleLeft);
+        }
+    }
+    else if(bits == 32)
+    {
+        if (chan > 1)
+        {
+            for (qint64 i = 0; i < size; i+=2)
+            {
+                ((qint32*)data)[i]*= m_scaleLeft;
+                ((qint32*)data)[i+1]*= m_scaleRight;
+            }
+        }
+        else
+        {
+            for (qint64 i = 0; i < size/4; i++)
+                ((qint32*)data)[i]*= qMax(m_scaleRight, m_scaleLeft);
+        }
+    }
+}
+
 //static
 SoftwareVolume *SoftwareVolume::instance()
 {

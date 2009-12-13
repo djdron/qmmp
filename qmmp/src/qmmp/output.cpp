@@ -187,7 +187,8 @@ void Output::run()
         if (b)
         {
             dispatchVisual(b, m_totalWritten, m_channels, m_precision);
-            changeVolume(b->data, b->nbytes, m_channels);
+            if (SoftwareVolume::instance())
+                SoftwareVolume::instance()->changeVolume(b->data, b->nbytes, m_channels, m_precision);
             l = 0;
             m = 0;
             while (l < b->nbytes)
@@ -235,24 +236,6 @@ void Output::status()
         m_currentMilliseconds = ct;
         dispatch(m_currentMilliseconds, m_kbps,
                  m_frequency, m_precision, m_channels);
-    }
-}
-
-void Output::changeVolume(uchar *data, qint64 size, int chan)
-{
-    if (!SoftwareVolume::instance())
-        return;
-    if (chan > 1)
-        for (qint64 i = 0; i < size/2; i+=2)
-        {
-            ((short*)data)[i]*= SoftwareVolume::instance()->left()/100.0;
-            ((short*)data)[i+1]*= SoftwareVolume::instance()->right()/100.0;
-        }
-    else
-    {
-        int l = qMax(SoftwareVolume::instance()->left(), SoftwareVolume::instance()->right());
-        for (qint64 i = 0; i < size/2; i++)
-            ((short*)data)[i]*= l/100.0;
     }
 }
 

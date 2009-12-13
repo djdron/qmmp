@@ -143,7 +143,6 @@ protected:
 private:
     void run(); //thread run function
     void status();
-    void changeVolume(uchar *data, qint64 size, int chan);
     void dispatch(qint64 elapsed,
                   int bitrate,
                   int frequency,
