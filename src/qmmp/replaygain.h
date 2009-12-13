@@ -32,7 +32,7 @@ class ReplayGain
 public:
     ReplayGain();
 
-    void configure(quint32 freq, int chan, int bits);
+    void setSampleSize(int bits);
     void setReplayGainInfo(const ReplayGainInfo &info);
     void applyReplayGain(char *data, qint64 size);
 

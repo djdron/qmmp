@@ -53,6 +53,8 @@ SET(libqmmp_SRCS
     fileinputsource.cpp
     emptyinputsource.cpp
     metadatamanager.cpp
+    replaygain.cpp
+    replaygaininfo.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -83,6 +85,8 @@ SET(libqmmp_MOC_HDRS
     emptyinputsource.h
     enginefactory.h
     metadatamanager.h
+    replaygain.h
+    replaygaininfo.h
 )
 
 SET(libqmmp_DEVEL_HDRS

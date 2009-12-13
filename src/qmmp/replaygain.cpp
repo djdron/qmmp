@@ -29,7 +29,7 @@ ReplayGain::ReplayGain()
     m_scale = 0;
 }
 
-void ReplayGain::configure(quint32 freq, int chan, int bits)
+void ReplayGain::setSampleSize(int bits)
 {
     m_bits = bits;
 }

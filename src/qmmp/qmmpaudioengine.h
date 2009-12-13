@@ -34,7 +34,7 @@ class StateHandler;
 class Decoder;
 class InputSource;
 class EffectFactory;
-
+class ReplayGain;
 
 class QmmpAudioEngine : public AbstractEngine
 {
@@ -85,6 +85,7 @@ private:
     AudioParameters m_ap;
     bool m_next;
     static QmmpAudioEngine *m_instance;
+    ReplayGain *m_replayGain;
 
 };
 
