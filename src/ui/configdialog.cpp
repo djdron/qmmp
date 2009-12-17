@@ -84,6 +84,9 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     loadPluginsInfo();
     loadFonts();
     createMenus();
+    ui.replayGainModeComboBox->addItem (tr("Track"), ReplayGainSettings::TRACK);
+    ui.replayGainModeComboBox->addItem (tr("Album"), ReplayGainSettings::ALBUM);
+    ui.replayGainModeComboBox->addItem (tr("Disabled"), ReplayGainSettings::DISABLED);
 }
 
 ConfigDialog::~ConfigDialog()
@@ -147,6 +150,12 @@ void ConfigDialog::readSettings()
     ui.coverIncludeLineEdit->setText(MetaDataManager::instance()->coverNameFilters(TRUE).join(","));
     ui.coverExcludeLineEdit->setText(MetaDataManager::instance()->coverNameFilters(FALSE).join(","));
     ui.coverDepthSpinBox->setValue(MetaDataManager::instance()->coverSearchDepth());
+    //replay gain
+    ReplayGainSettings rgs = SoundCore::instance()->replayGainSettings();
+    ui.clippingCheckBox->setChecked(rgs.preventClipping());
+    ui.replayGainModeComboBox->setCurrentIndex(ui.replayGainModeComboBox->findData(rgs.mode()));
+    ui.preampDoubleSpinBox->setValue(rgs.preamp());
+    ui.defaultGainDoubleSpinBox->setValue(rgs.defaultGain());
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -647,6 +656,12 @@ void ConfigDialog::saveSettings()
     MetaDataManager::instance()->setCoverSearchSettings(ui.coverIncludeLineEdit->text().split(","),
                                                         ui.coverExcludeLineEdit->text().split(","),
                                                         ui.coverDepthSpinBox->value());
+    int i = ui.replayGainModeComboBox->currentIndex();
+    ReplayGainSettings rs (ui.replayGainModeComboBox->itemData(i).toInt(),
+                           ui.preampDoubleSpinBox->value(),
+                           ui.defaultGainDoubleSpinBox->value(),
+                           ui.clippingCheckBox->isChecked());
+    SoundCore::instance()->setReplayGainSettings(rs);
 }
 
 void ConfigDialog::updateButtons()

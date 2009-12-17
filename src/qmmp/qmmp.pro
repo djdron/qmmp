@@ -30,7 +30,8 @@ HEADERS += recycler.h \
     enginefactory.h \
     metadatamanager.h \
     replaygaininfo.h \
-    replaygain.h
+    replaygain.h \
+    replaygainsettings.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -54,7 +55,8 @@ SOURCES += recycler.cpp \
     emptyinputsource.cpp \
     metadatamanager.cpp \
     replaygaininfo.cpp \
-    replaygain.cpp
+    replaygain.cpp \
+    replaygainsettings.cpp
 FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp

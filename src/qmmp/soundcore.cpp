@@ -310,6 +310,16 @@ void SoundCore::startPendingEngine()
     }
 }
 
+ReplayGainSettings SoundCore::replayGainSettings() const
+{
+    return m_replayGainSettings;
+}
+
+void SoundCore::setReplayGainSettings(const ReplayGainSettings &settings)
+{
+    m_replayGainSettings = settings;
+}
+
 SoundCore* SoundCore::instance()
 {
     return m_instance;

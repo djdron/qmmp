@@ -26,6 +26,7 @@
 #include "output.h"
 #include "visual.h"
 #include "qmmp.h"
+#include "replaygainsettings.h"
 
 class QIODevice;
 class VolumeControl;
@@ -105,7 +106,10 @@ public:
      * Returns the metdata string associated with the given \b key.
      */
     QString metaData(Qmmp::MetaData key);
-    /*!
+
+    ReplayGainSettings replayGainSettings() const;
+    void setReplayGainSettings(const ReplayGainSettings &settings);
+     /*!
      * Returns a pointer to the SoundCore instance.
      */
     static SoundCore* instance();
@@ -223,6 +227,7 @@ private:
     AbstractEngine *m_engine;
     AbstractEngine *m_pendingEngine;
     QList<InputSource *> m_pendingSources;
+    ReplayGainSettings m_replayGainSettings;
 };
 
 #endif
