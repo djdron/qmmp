@@ -40,6 +40,11 @@ QWaitCondition *AbstractEngine::cond()
     return &m_waitCondition;
 }
 
+void AbstractEngine::setReplayGainSettings(const ReplayGainSettings &settings)
+{
+    Q_UNUSED(settings);
+}
+
 // static methods
 QList<EngineFactory*> *AbstractEngine::m_factories = 0;
 QStringList AbstractEngine::m_files;

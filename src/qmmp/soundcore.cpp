@@ -243,6 +243,7 @@ bool SoundCore::enqueue(InputSource *s)
 
     setEQ(m_bands, m_preamp);
     setEQEnabled(m_useEQ);
+    setReplayGainSettings(m_replayGainSettings);
     if(m_engine->enqueue(s))
     {
         m_source = s->url();
@@ -279,6 +280,9 @@ bool SoundCore::enqueue(InputSource *s)
             return FALSE;
         }
         connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
+        engine->setEQ(m_bands, m_preamp);
+        engine->setEQEnabled(m_useEQ);
+        engine->setReplayGainSettings(m_replayGainSettings);
         if (m_handler->state() == Qmmp::Playing || m_handler->state() == Qmmp::Paused)
         {
             if(m_pendingEngine)
@@ -292,9 +296,7 @@ bool SoundCore::enqueue(InputSource *s)
             m_engine->play();
             m_pendingEngine = 0;
         }
-        return FALSE;
     }
-
     return TRUE;
 }
 
@@ -318,6 +320,8 @@ ReplayGainSettings SoundCore::replayGainSettings() const
 void SoundCore::setReplayGainSettings(const ReplayGainSettings &settings)
 {
     m_replayGainSettings = settings;
+    if(m_engine)
+        m_engine->setReplayGainSettings(settings);
 }
 
 SoundCore* SoundCore::instance()
