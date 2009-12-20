@@ -177,11 +177,11 @@ void MediaPlayer::setRepeatable(bool r)
     if (r != m_repeat && !r)
     {
         disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
-        connect(m_core, SIGNAL(finished()), SLOT(next()));
+        connect(m_core, SIGNAL(finished()), SLOT(playNext()));
     }
     else if (r != m_repeat && r)
     {
-        disconnect(m_core, SIGNAL(finished()), this, SLOT(next()));
+        disconnect(m_core, SIGNAL(finished()), this, SLOT(playNext()));
         connect(m_core, SIGNAL(finished()), SLOT(play()));
     }
     m_repeat = r;
