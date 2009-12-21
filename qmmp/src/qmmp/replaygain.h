@@ -23,6 +23,7 @@
 
 #include <QtGlobal>
 #include "replaygaininfo.h"
+#include "replaygainsettings.h"
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -33,14 +34,15 @@ public:
     ReplayGain();
 
     void setSampleSize(int bits);
+    void setReplayGainSettings(const ReplayGainSettings &settings);
     void setReplayGainInfo(const ReplayGainInfo &info);
     void applyReplayGain(char *data, qint64 size);
 
 private:
-    quint32 m_freq;
-    int m_chan;
+    void updateScale();
     int m_bits;
     ReplayGainInfo m_info;
+    ReplayGainSettings m_settings;
     double m_scale;
 };
 
