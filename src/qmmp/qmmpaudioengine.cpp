@@ -165,6 +165,11 @@ void QmmpAudioEngine::setEQEnabled(bool on)
     mutex()->unlock();
 }
 
+void QmmpAudioEngine::setReplayGainSettings(const ReplayGainSettings &settings)
+{
+    m_replayGain->setReplayGainSettings(settings);
+}
+
 void QmmpAudioEngine::addEffect(EffectFactory *factory)
 {
     if(m_output && m_output->isRunning())

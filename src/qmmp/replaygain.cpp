@@ -23,25 +23,32 @@
 
 ReplayGain::ReplayGain()
 {
-    m_freq = 0;
-    m_chan = 0;
     m_bits = 0;
-    m_scale = 0;
+    m_scale = 1.0;
 }
 
 void ReplayGain::setSampleSize(int bits)
 {
     m_bits = bits;
+    updateScale();
 }
 
 void ReplayGain::setReplayGainInfo(const ReplayGainInfo &info)
 {
     m_info = info;
-    m_scale = pow(10.0, (info.trackGain()/20) * info.trackPeak());
+    updateScale();
+}
+
+void ReplayGain::setReplayGainSettings(const ReplayGainSettings &settings)
+{
+    m_settings = settings;
+    updateScale();
 }
 
 void ReplayGain::applyReplayGain(char *data, qint64 size)
 {
+    if(m_settings.mode() == ReplayGainSettings::DISABLED || m_scale == 1.0)
+        return;
     size = size*8/m_bits;
     if(m_bits == 16)
     {
@@ -59,4 +66,34 @@ void ReplayGain::applyReplayGain(char *data, qint64 size)
         for (qint64 i = 0; i < size; i++)
            ((qint32*)data)[i]*= m_scale;
     }
+}
+
+void ReplayGain::updateScale()
+{
+    double peak = 0.0;
+    m_scale = 0.0;
+    switch((int) m_settings.mode())
+    {
+    case ReplayGainSettings::TRACK:
+        m_scale = pow(10.0, m_info.trackGain()/20);
+        peak = m_info.trackPeak();
+        break;
+    case ReplayGainSettings::ALBUM:
+        m_scale = pow(10.0, m_info.albumGain()/20);
+        peak = m_info.albumPeak();
+        break;
+    case ReplayGainSettings::DISABLED:
+        m_scale = 1.0;
+    }
+    if(m_scale == 0.0)
+        m_scale = pow(10.0, m_settings.defaultGain()/20);
+    if(peak > 0.0 && m_scale != 1.0 && m_scale > 0.0)
+    {
+        m_scale *= pow(10.0, m_settings.preamp()/20);
+        if(m_settings.preventClipping())
+            m_scale = m_scale*peak > 1.0 ? 1.0 / peak : m_scale;
+    }
+    if(m_scale < 0.0)
+        m_scale = 1.0;
+    m_scale = qMin(m_scale, 15.0);
 }
