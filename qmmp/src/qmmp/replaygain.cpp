@@ -33,7 +33,7 @@ void ReplayGain::setSampleSize(int bits)
     updateScale();
 }
 
-void ReplayGain::setReplayGainInfo(const ReplayGainInfo &info)
+void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info)
 {
     m_info = info;
     updateScale();
@@ -75,12 +75,12 @@ void ReplayGain::updateScale()
     switch((int) m_settings.mode())
     {
     case ReplayGainSettings::TRACK:
-        m_scale = pow(10.0, m_info.trackGain()/20);
-        peak = m_info.trackPeak();
+        m_scale = pow(10.0, m_info[Qmmp::REPLAYGAIN_TRACK_GAIN]/20);
+        peak = m_info[Qmmp::REPLAYGAIN_TRACK_PEAK];
         break;
     case ReplayGainSettings::ALBUM:
-        m_scale = pow(10.0, m_info.albumGain()/20);
-        peak = m_info.albumPeak();
+        m_scale = pow(10.0, m_info[Qmmp::REPLAYGAIN_ALBUM_GAIN]/20);
+        peak = m_info[Qmmp::REPLAYGAIN_ALBUM_PEAK];
         break;
     case ReplayGainSettings::DISABLED:
         m_scale = 1.0;

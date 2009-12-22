@@ -56,6 +56,13 @@ public:
         DISCNUMBER,/*!< Disc number */
         URL        /*!< Stream url or local file path */
     };
+    enum ReplayGainKey
+    {
+        REPLAYGAIN_TRACK_GAIN = 0,
+        REPLAYGAIN_TRACK_PEAK,
+        REPLAYGAIN_ALBUM_GAIN,
+        REPLAYGAIN_ALBUM_PEAK
+    };
     /*!
      * Returns configuration file path.
      */
