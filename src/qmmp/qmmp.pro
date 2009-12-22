@@ -29,7 +29,6 @@ HEADERS += recycler.h \
     inputsourcefactory.h \
     enginefactory.h \
     metadatamanager.h \
-    replaygaininfo.h \
     replaygain.h \
     replaygainsettings.h
 SOURCES += recycler.cpp \
@@ -54,7 +53,6 @@ SOURCES += recycler.cpp \
     fileinputsource.cpp \
     emptyinputsource.cpp \
     metadatamanager.cpp \
-    replaygaininfo.cpp \
     replaygain.cpp \
     replaygainsettings.cpp
 FORMS += 

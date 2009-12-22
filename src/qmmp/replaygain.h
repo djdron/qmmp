@@ -22,7 +22,8 @@
 #define REPLAYGAIN_H
 
 #include <QtGlobal>
-#include "replaygaininfo.h"
+#include <QMap>
+#include "qmmp.h"
 #include "replaygainsettings.h"
 
 /*!
@@ -35,13 +36,13 @@ public:
 
     void setSampleSize(int bits);
     void setReplayGainSettings(const ReplayGainSettings &settings);
-    void setReplayGainInfo(const ReplayGainInfo &info);
+    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
     void applyReplayGain(char *data, qint64 size);
 
 private:
     void updateScale();
     int m_bits;
-    ReplayGainInfo m_info;
+    QMap<Qmmp::ReplayGainKey, double> m_info;
     ReplayGainSettings m_settings;
     double m_scale;
 };
