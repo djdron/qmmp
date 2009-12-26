@@ -213,12 +213,12 @@
     <message>
         <location filename="../configdialog.cpp" line="81"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Дорожка</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="83"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Отключено</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="597"/>
@@ -424,7 +424,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1044"/>
         <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>Выравнивание громкости (Replay Gain)</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="234"/>
@@ -474,28 +474,28 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1050"/>
         <source>Replay Gain mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим Replay Gain:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1067"/>
         <source>Preamp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Предусиление:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1099"/>
         <location filename="../forms/configdialog.ui" line="1144"/>
         <source>dB</source>
-        <translation type="unfinished"></translation>
+        <translation>дБ</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1112"/>
         <source>Default gain:</source>
-        <translation type="unfinished"></translation>
+        <translation>Усиление по умолчанию:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1164"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать пиковое значение для предотвращения срезания</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1180"/>
