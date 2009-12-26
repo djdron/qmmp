@@ -146,7 +146,7 @@ void SoftwareVolume::changeVolume(uchar *data, qint64 size, int chan, int bits)
     {
         if (chan > 1)
         {
-            for (qint64 i = 0; i < size; i++)
+            for (qint64 i = 0; i < size; i+=2)
             {
                 ((char*)data)[i]*= m_scaleLeft;
                 ((char*)data)[i+1]*= m_scaleRight;
