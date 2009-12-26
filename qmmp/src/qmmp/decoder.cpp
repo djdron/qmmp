@@ -32,9 +32,15 @@ Decoder::Decoder(QIODevice *input) : m_input(input)
 Decoder::~Decoder()
 {}
 
-void Decoder::configure(quint32 srate, int chan, int bps)
+void Decoder::configure(quint32 srate, int chan, int bps, const QMap<Qmmp::ReplayGainKey, double> &rg)
 {
     m_parameters = AudioParameters(srate, chan, bps);
+    m_rg = rg;
+}
+
+void Decoder::configure(quint32 srate, int chan, int bps)
+{
+   configure(srate, chan, bps, QMap<Qmmp::ReplayGainKey, double>());
 }
 
 void Decoder::next()
@@ -45,9 +51,14 @@ const QString Decoder::nextURL()
     return QString();
 }
 
-const AudioParameters Decoder::audioParameters()
+AudioParameters Decoder::audioParameters() const
 {
     return m_parameters;
+}
+
+QMap<Qmmp::ReplayGainKey, double> Decoder::replayGainInfo() const
+{
+    return m_rg;
 }
 
 QIODevice *Decoder::input()

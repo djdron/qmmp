@@ -4,37 +4,37 @@
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="87"/>
+        <location filename="../decodermadfactory.cpp" line="86"/>
         <source>MPEG Plugin</source>
         <translation>Modul MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="90"/>
+        <location filename="../decodermadfactory.cpp" line="89"/>
         <source>MPEG Files</source>
         <translation>Soubory MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="223"/>
+        <location filename="../decodermadfactory.cpp" line="213"/>
         <source>About MPEG Audio Plugin</source>
         <translation>O modulu MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="224"/>
+        <location filename="../decodermadfactory.cpp" line="214"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>Vstupní modul Qmmp MPEG</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="225"/>
+        <location filename="../decodermadfactory.cpp" line="215"/>
         <source>Compiled against libmad version:</source>
         <translation>Zkompilováno s libmad verze:</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="229"/>
+        <location filename="../decodermadfactory.cpp" line="219"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="230"/>
+        <location filename="../decodermadfactory.cpp" line="220"/>
         <source>Source code based on mq3 progect</source>
         <translation>Zdrojový kód je založen na projektu mq3</translation>
     </message>

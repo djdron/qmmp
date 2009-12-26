@@ -22,9 +22,9 @@
 
 ReplayGainSettings::ReplayGainSettings()
 {
-    m_mode = TRACK;
-    m_preamp = 1.0;
-    m_defaultGain = 0.0;
+    m_mode = DISABLED;
+    m_preamp = 0.0;
+    m_defaultGain = -8.0;
     m_preventClipping = false;
 }
 

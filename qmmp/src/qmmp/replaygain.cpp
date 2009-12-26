@@ -37,12 +37,23 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
 {
     m_info = info;
     updateScale();
+    if(m_settings.mode() != ReplayGainSettings::DISABLED)
+    {
+        qDebug("ReplayGain: track: gain=%f dB, peak=%f; album: gain=%f dB, peak=%f",
+               m_info[Qmmp::REPLAYGAIN_TRACK_GAIN],
+               m_info[Qmmp::REPLAYGAIN_TRACK_PEAK],
+               m_info[Qmmp::REPLAYGAIN_ALBUM_GAIN],
+               m_info[Qmmp::REPLAYGAIN_ALBUM_PEAK]);
+        qDebug("ReplayGain: scale=%f", m_scale);
+    }
+    else
+        qDebug("ReplayGain: disabled");
 }
 
 void ReplayGain::setReplayGainSettings(const ReplayGainSettings &settings)
 {
     m_settings = settings;
-    updateScale();
+    setReplayGainInfo(m_info);
 }
 
 void ReplayGain::applyReplayGain(char *data, qint64 size)
@@ -71,7 +82,7 @@ void ReplayGain::applyReplayGain(char *data, qint64 size)
 void ReplayGain::updateScale()
 {
     double peak = 0.0;
-    m_scale = 0.0;
+    m_scale = 1.0;
     switch((int) m_settings.mode())
     {
     case ReplayGainSettings::TRACK:
@@ -84,16 +95,13 @@ void ReplayGain::updateScale()
         break;
     case ReplayGainSettings::DISABLED:
         m_scale = 1.0;
+        return;
     }
-    if(m_scale == 0.0)
+    if(m_scale == 1.0)
         m_scale = pow(10.0, m_settings.defaultGain()/20);
-    if(peak > 0.0 && m_scale != 1.0 && m_scale > 0.0)
-    {
-        m_scale *= pow(10.0, m_settings.preamp()/20);
-        if(m_settings.preventClipping())
-            m_scale = m_scale*peak > 1.0 ? 1.0 / peak : m_scale;
-    }
-    if(m_scale < 0.0)
-        m_scale = 1.0;
-    m_scale = qMin(m_scale, 15.0);
+    m_scale *= pow(10.0, m_settings.preamp()/20);
+    if(peak > 0.0 && m_settings.preventClipping())
+        m_scale = m_scale*peak > 1.0 ? 1.0 / peak : m_scale;
+    m_scale = qMin(m_scale, 5.6234); // +15 dB
+    m_scale = qMax(m_scale, 0.1778);  // -15 dB
 }

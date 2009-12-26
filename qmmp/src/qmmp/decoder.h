@@ -7,13 +7,14 @@
 #ifndef DECODER_H
 #define DECODER_H
 
-
 #include <QList>
 #include <QStringList>
 #include <QUrl>
 #include <QList>
 #include <QPixmap>
+#include <QMap>
 #include "fileinfo.h"
+#include "qmmp.h"
 #include "audioparameters.h"
 
 class Decoder;
@@ -63,7 +64,8 @@ public:
     virtual void next();
     virtual const QString nextURL();
 
-    const AudioParameters audioParameters();
+    AudioParameters audioParameters() const;
+    QMap<Qmmp::ReplayGainKey, double> replayGainInfo() const;
     QIODevice *input();
     /*!
      * Returns DecoderFactory pointer which supports file \b path or 0 if file \b path is unsupported
@@ -108,6 +110,14 @@ protected:
      * @param srate Sample rate.
      * @param chan Number of channels.
      * @param bps Bits per sample.
+     * @param rg ReplayGaing information.
+     */
+    void configure(quint32 srate, int chan, int bps, const QMap<Qmmp::ReplayGainKey,double> &rg);
+    /*!
+     * Use this function inside initialize() reimplementation to tell other plugins about audio parameters.
+     * @param srate Sample rate.
+     * @param chan Number of channels.
+     * @param bps Bits per sample.
      */
     void configure(quint32 srate, int chan, int bps);
 
@@ -118,6 +128,7 @@ private:
     static QStringList m_files;
     AudioParameters m_parameters;
     QIODevice *m_input;
+    QMap <Qmmp::ReplayGainKey, double> m_rg; //replay gain information
 };
 
 #endif // DECODER_H

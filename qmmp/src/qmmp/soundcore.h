@@ -108,7 +108,7 @@ public:
     QString metaData(Qmmp::MetaData key);
 
     ReplayGainSettings replayGainSettings() const;
-    void setReplayGainSettings(const ReplayGainSettings &settings);
+    void setReplayGainSettings(const ReplayGainSettings &rgs);
      /*!
      * Returns a pointer to the SoundCore instance.
      */
@@ -227,7 +227,7 @@ private:
     AbstractEngine *m_engine;
     AbstractEngine *m_pendingEngine;
     QList<InputSource *> m_pendingSources;
-    ReplayGainSettings m_replayGainSettings;
+    ReplayGainSettings m_rgs; //ReplayGain settings
 };
 
 #endif

@@ -32,7 +32,6 @@
 #include "qmmpaudioengine.h"
 #include "metadatamanager.h"
 
-
 extern "C"
 {
 #include "equ/iir.h"
@@ -311,9 +310,7 @@ void QmmpAudioEngine::stop()
 qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int chan)
 {
     ulong sz = size < _blksize ? size : _blksize;
-
-    //m_replayGain->applyReplayGain(data, sz);
-
+    m_replayGain->applyReplayGain(data, sz);
     if (m_useEQ)
     {
         if (!m_eqInited)
@@ -388,6 +385,7 @@ void QmmpAudioEngine::run()
     }
 
     m_decoder = m_decoders.dequeue();
+    m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
     mutex()->unlock();
     m_output->start();
     sendMetaData();
@@ -437,6 +435,7 @@ void QmmpAudioEngine::run()
                 m_inputs.take(m_decoder)->deleteLater ();
                 delete m_decoder;
                 m_decoder = m_decoders.dequeue();
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
                 //use current output if possible
                 if(m_decoder->audioParameters() == m_ap)
                 {

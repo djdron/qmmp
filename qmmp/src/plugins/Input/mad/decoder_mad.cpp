@@ -8,21 +8,18 @@
 #include <QtGui>
 #include <taglib/id3v2header.h>
 #include <taglib/tbytevector.h>
-
-#include "decoder_mad.h"
-#include "tagextractor.h"
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
-
 #include <math.h>
 #include <stdio.h>
+#include "tagextractor.h"
+#include "replaygainreader.h"
+#include "decoder_mad.h"
 
 #define XING_MAGIC (('X' << 24) | ('i' << 16) | ('n' << 8) | 'g')
 #define INPUT_BUFFER_SIZE (32*1024)
 
-
-DecoderMAD::DecoderMAD(QIODevice *i)
-        : Decoder(i)
+DecoderMAD::DecoderMAD(const QString &url, QIODevice *i) : Decoder(i)
 {
     m_inited = false;
     m_totalTime = 0;
@@ -36,6 +33,7 @@ DecoderMAD::DecoderMAD(QIODevice *i)
     m_output_at = 0;
     m_skip_frames = 0;
     m_eof = false;
+    m_url = url;
 }
 
 DecoderMAD::~DecoderMAD()
@@ -100,7 +98,14 @@ bool DecoderMAD::initialize()
     mad_frame_mute (&frame);
     stream.next_frame = 0;
     stream.sync = 0;
-    configure(m_freq, m_channels, 16);
+
+    if(!m_url.contains("://"))
+    {
+        ReplayGainReader rg(m_url);
+        configure(m_freq, m_channels, 16, rg.replayGainInfo());
+    }
+    else
+        configure(m_freq, m_channels, 16);
 
     m_inited = TRUE;
     return TRUE;

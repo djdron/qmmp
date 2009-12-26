@@ -205,18 +205,18 @@
         <translation>Umělec</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="88"/>
+        <location filename="../configdialog.cpp" line="82"/>
         <location filename="../configdialog.cpp" line="596"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="87"/>
+        <location filename="../configdialog.cpp" line="81"/>
         <source>Track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="89"/>
+        <location filename="../configdialog.cpp" line="83"/>
         <source>Disabled</source>
         <translation type="unfinished"></translation>
     </message>
@@ -471,23 +471,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1090"/>
-        <location filename="../forms/configdialog.ui" line="1126"/>
+        <location filename="../forms/configdialog.ui" line="1099"/>
+        <location filename="../forms/configdialog.ui" line="1144"/>
         <source>dB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1103"/>
+        <location filename="../forms/configdialog.ui" line="1112"/>
         <source>Default gain:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1146"/>
+        <location filename="../forms/configdialog.ui" line="1164"/>
         <source>Use  peak info to prevent clipping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1219"/>
+        <location filename="../forms/configdialog.ui" line="1237"/>
         <source>Close</source>
         <translation>Zavřít</translation>
     </message>
@@ -563,12 +563,12 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="137"/>
-        <location filename="../forms/configdialog.ui" line="1156"/>
+        <location filename="../forms/configdialog.ui" line="1174"/>
         <source>Audio</source>
         <translation>Zvuk</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1162"/>
+        <location filename="../forms/configdialog.ui" line="1180"/>
         <source>Use software volume control</source>
         <translation>Používat softwarové ovládání hlasitosti</translation>
     </message>

@@ -38,6 +38,7 @@ SET(libmad_SRCS
   settingsdialog.cpp
   tagextractor.cpp
   mpegmetadatamodel.cpp
+  replaygainreader.cpp
 )
 
 SET(libmad_MOC_HDRS
@@ -46,6 +47,7 @@ SET(libmad_MOC_HDRS
   decoder_mad.h
   tagextractor.h
   mpegmetadatamodel.h
+  replaygainreader.h
 )
 
 SET(libmad_RCCS translations/translations.qrc)

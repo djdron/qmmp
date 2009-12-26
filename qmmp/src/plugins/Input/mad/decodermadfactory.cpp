@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,7 +30,6 @@
 #include <taglib/apetag.h>
 #include <taglib/tfile.h>
 #include <taglib/mpegfile.h>
-
 #include "mpegmetadatamodel.h"
 #include "settingsdialog.h"
 #include "decoder_mad.h"
@@ -94,9 +93,9 @@ const DecoderProperties DecoderMADFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderMADFactory::create(const QString&, QIODevice *input)
+Decoder *DecoderMADFactory::create(const QString &url, QIODevice *input)
 {
-    return new DecoderMAD(input);
+    return new DecoderMAD(url, input);
 }
 
 QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -117,21 +116,17 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
         tag_array[1] = settings.value("tag_2", SettingsDialog::Disabled).toInt();
         tag_array[2] = settings.value("tag_3", SettingsDialog::Disabled).toInt();
 
-
+        QByteArray name;
         for (int i = 0; i < 3; ++i)
         {
             switch ((uint) tag_array[i])
             {
             case SettingsDialog::ID3v1:
-            {
                 codec = QTextCodec::codecForName(settings.value("ID3v1_encoding","ISO-8859-1")
                                                  .toByteArray ());
                 tag = fileRef.ID3v1Tag();
                 break;
-            }
             case SettingsDialog::ID3v2:
-            {
-                QByteArray name;
                 name = settings.value("ID3v2_encoding","UTF-8").toByteArray ();
                 if (name.contains("UTF"))
                     codec = QTextCodec::codecForName ("UTF-8");
@@ -139,17 +134,12 @@ QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, boo
                     codec = QTextCodec::codecForName(name);
                 tag = fileRef.ID3v2Tag();
                 break;
-            }
             case SettingsDialog::APE:
-            {
                 codec = QTextCodec::codecForName ("UTF-8");
                 tag = fileRef.APETag();
                 break;
-            }
             case SettingsDialog::Disabled:
-            {
                 break;
-            }
             }
             if (tag && !tag->isEmpty())
                 break;

@@ -4,12 +4,14 @@ HEADERS += decodermadfactory.h \
     decoder_mad.h \
     settingsdialog.h \
     tagextractor.h \
-    mpegmetadatamodel.h
+    mpegmetadatamodel.h \
+    replaygainreader.h
 SOURCES += decoder_mad.cpp \
     decodermadfactory.cpp \
     settingsdialog.cpp \
     tagextractor.cpp \
-    mpegmetadatamodel.cpp
+    mpegmetadatamodel.cpp \
+    replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/mad
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmad.so
 INCLUDEPATH += ../../../ \
@@ -47,6 +49,5 @@ unix {
     target.path = $$LIB_DIR/qmmp/Input
     INSTALLS += target
 }
-
 win32:HEADERS += ../../../../src/qmmp/metadatamodel.h \
-    		../../../../src/qmmp/decoderfactory.h
+    ../../../../src/qmmp/decoderfactory.h
