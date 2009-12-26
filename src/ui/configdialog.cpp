@@ -78,15 +78,15 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)), this, SLOT (changeSkin()));
     ui.listWidget->setIconSize (QSize (105,34));
     m_skin = Skin::instance();
+    ui.replayGainModeComboBox->addItem (tr("Track"), ReplayGainSettings::TRACK);
+    ui.replayGainModeComboBox->addItem (tr("Album"), ReplayGainSettings::ALBUM);
+    ui.replayGainModeComboBox->addItem (tr("Disabled"), ReplayGainSettings::DISABLED);
     readSettings();
     m_reader = new SkinReader(this);
     loadSkins();
     loadPluginsInfo();
     loadFonts();
-    createMenus();
-    ui.replayGainModeComboBox->addItem (tr("Track"), ReplayGainSettings::TRACK);
-    ui.replayGainModeComboBox->addItem (tr("Album"), ReplayGainSettings::ALBUM);
-    ui.replayGainModeComboBox->addItem (tr("Disabled"), ReplayGainSettings::DISABLED);
+    createMenus();    
 }
 
 ConfigDialog::~ConfigDialog()

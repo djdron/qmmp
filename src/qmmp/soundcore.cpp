@@ -23,7 +23,6 @@
 #include <QApplication>
 #include <QSettings>
 #include <QDir>
-
 #include "qmmpaudioengine.h"
 #include "decoderfactory.h"
 #include "effect.h"
@@ -65,6 +64,14 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    //replaygain settings
+    settings.beginGroup("ReplayGain");
+    m_rgs = ReplayGainSettings(settings.value("mode", m_rgs.mode()).toInt(),
+                               settings.value("preamp", m_rgs.preamp()).toDouble(),
+                               settings.value("default_gain", m_rgs.defaultGain()).toDouble(),
+                               settings.value("prevent_clipping",m_rgs.preventClipping()).toBool());
+    settings.endGroup();
 }
 
 
@@ -243,7 +250,7 @@ bool SoundCore::enqueue(InputSource *s)
 
     setEQ(m_bands, m_preamp);
     setEQEnabled(m_useEQ);
-    setReplayGainSettings(m_replayGainSettings);
+    setReplayGainSettings(m_rgs);
     if(m_engine->enqueue(s))
     {
         m_source = s->url();
@@ -282,7 +289,7 @@ bool SoundCore::enqueue(InputSource *s)
         connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
         engine->setEQ(m_bands, m_preamp);
         engine->setEQEnabled(m_useEQ);
-        engine->setReplayGainSettings(m_replayGainSettings);
+        engine->setReplayGainSettings(m_rgs);
         if (m_handler->state() == Qmmp::Playing || m_handler->state() == Qmmp::Paused)
         {
             if(m_pendingEngine)
@@ -314,14 +321,23 @@ void SoundCore::startPendingEngine()
 
 ReplayGainSettings SoundCore::replayGainSettings() const
 {
-    return m_replayGainSettings;
+    return m_rgs;
 }
 
-void SoundCore::setReplayGainSettings(const ReplayGainSettings &settings)
+void SoundCore::setReplayGainSettings(const ReplayGainSettings &rgs)
 {
-    m_replayGainSettings = settings;
+    m_rgs = rgs;
+    //save replaygain settings
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("ReplayGain");
+    settings.setValue("mode", m_rgs.mode());
+    settings.setValue("preamp", m_rgs.preamp());
+    settings.setValue("default_gain", m_rgs.defaultGain());
+    settings.setValue("prevent_clipping",m_rgs.preventClipping());
+    settings.endGroup();
+    //apply replaygain settings
     if(m_engine)
-        m_engine->setReplayGainSettings(settings);
+        m_engine->setReplayGainSettings(rgs);
 }
 
 SoundCore* SoundCore::instance()
