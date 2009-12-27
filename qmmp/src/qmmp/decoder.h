@@ -66,6 +66,7 @@ public:
 
     AudioParameters audioParameters() const;
     QMap<Qmmp::ReplayGainKey, double> replayGainInfo() const;
+    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey,double> &rg);
     QIODevice *input();
     /*!
      * Returns DecoderFactory pointer which supports file \b path or 0 if file \b path is unsupported
@@ -105,14 +106,6 @@ public:
     static bool isEnabled(DecoderFactory* factory);
 
 protected:
-    /*!
-     * Use this function inside initialize() reimplementation to tell other plugins about audio parameters.
-     * @param srate Sample rate.
-     * @param chan Number of channels.
-     * @param bps Bits per sample.
-     * @param rg ReplayGaing information.
-     */
-    void configure(quint32 srate, int chan, int bps, const QMap<Qmmp::ReplayGainKey,double> &rg);
     /*!
      * Use this function inside initialize() reimplementation to tell other plugins about audio parameters.
      * @param srate Sample rate.

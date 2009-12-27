@@ -22,7 +22,7 @@ extern "C"
 class DecoderMAD : public Decoder
 {
 public:
-    DecoderMAD(const QString &url, QIODevice *i);
+    DecoderMAD(QIODevice *i);
     virtual ~DecoderMAD();
 
     // standard decoder API
@@ -46,7 +46,6 @@ private:
     uint m_bitrate;
     long m_freq, m_len;
     qint64 m_output_bytes, m_output_at;
-    QString m_url;
 
     // file input buffer
     char *m_input_buf;

@@ -21,7 +21,7 @@
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/vorbisfile.h>
-
+#include "replaygainreader.h"
 #include "decoder_vorbis.h"
 #include "vorbismetadatamodel.h"
 #include "decodervorbisfactory.h"
@@ -58,10 +58,15 @@ const DecoderProperties DecoderVorbisFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderVorbisFactory::create(const QString &path, QIODevice *input)
+Decoder *DecoderVorbisFactory::create(const QString &url, QIODevice *input)
 {
-    Q_UNUSED(path);
-    return new DecoderVorbis(input);
+    Decoder *d = new DecoderVorbis(input);
+    if(!url.contains("://")) //local file
+    {
+        ReplayGainReader rg(url);
+        d->setReplayGainInfo(rg.replayGainInfo());
+    }
+    return d;
 }
 
 MetaDataModel* DecoderVorbisFactory::createMetaDataModel(const QString &path, QObject *parent)
