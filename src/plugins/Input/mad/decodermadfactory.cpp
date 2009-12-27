@@ -31,6 +31,7 @@
 #include <taglib/tfile.h>
 #include <taglib/mpegfile.h>
 #include "mpegmetadatamodel.h"
+#include "replaygainreader.h"
 #include "settingsdialog.h"
 #include "decoder_mad.h"
 #include "decodermadfactory.h"
@@ -95,7 +96,13 @@ const DecoderProperties DecoderMADFactory::properties() const
 
 Decoder *DecoderMADFactory::create(const QString &url, QIODevice *input)
 {
-    return new DecoderMAD(url, input);
+    Decoder *d = new DecoderMAD(input);
+    if(!url.contains("://")) //local file
+    {
+        ReplayGainReader rg(url);
+        d->setReplayGainInfo(rg.replayGainInfo());
+    }
+    return d;
 }
 
 QList<FileInfo *> DecoderMADFactory::createPlayList(const QString &fileName, bool useMetaData)

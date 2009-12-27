@@ -32,15 +32,14 @@ Decoder::Decoder(QIODevice *input) : m_input(input)
 Decoder::~Decoder()
 {}
 
-void Decoder::configure(quint32 srate, int chan, int bps, const QMap<Qmmp::ReplayGainKey, double> &rg)
+void Decoder::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &rg)
 {
-    m_parameters = AudioParameters(srate, chan, bps);
     m_rg = rg;
 }
 
 void Decoder::configure(quint32 srate, int chan, int bps)
 {
-   configure(srate, chan, bps, QMap<Qmmp::ReplayGainKey, double>());
+    m_parameters = AudioParameters(srate, chan, bps);
 }
 
 void Decoder::next()

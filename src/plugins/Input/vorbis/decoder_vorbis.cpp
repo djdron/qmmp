@@ -9,10 +9,8 @@
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
 #include <qmmp/fileinfo.h>
-
 #include <QObject>
 #include <QIODevice>
-
 #include "decoder_vorbis.h"
 // ic functions for OggVorbis
 
@@ -55,10 +53,8 @@ static int oggseek(void *src, int64_t offset, int whence)
 }
 
 
-static int oggclose(void *src)
+static int oggclose(void *)
 {
-    DecoderVorbis *dogg = (DecoderVorbis *) src;
-    //dogg->input()->close();
     return 0;
 }
 
@@ -137,9 +133,7 @@ bool DecoderVorbis::initialize()
         freq = ogginfo->rate;
         chan = ogginfo->channels;
     }
-
     configure(freq, chan, 16);
-
     inited = TRUE;
     return TRUE;
 }
