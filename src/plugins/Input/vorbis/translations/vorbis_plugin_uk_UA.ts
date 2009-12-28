@@ -39,42 +39,42 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="49"/>
         <source>Length</source>
-        <translation type="unfinished">Тривалість</translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Частота</translation>
+        <translation>Частота</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Hz</source>
-        <translation type="unfinished">Гц</translation>
+        <translation>Гц</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Channels</source>
-        <translation type="unfinished">Канали</translation>
+        <translation>Канали</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Бітрейт</translation>
+        <translation>Бітрейт</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>kbps</source>
-        <translation type="unfinished">Кб/с</translation>
+        <translation>Кб/с</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>File size</source>
-        <translation type="unfinished">Розмір файлу</translation>
+        <translation>Розмір файлу</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>KB</source>
-        <translation type="unfinished">Кб</translation>
+        <translation>Кб</translation>
     </message>
 </context>
 </TS>
