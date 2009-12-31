@@ -19,8 +19,6 @@
  ***************************************************************************/
 
 #include <QtGlobal>
-#include <taglib/wavpackfile.h>
-#include <taglib/tag.h>
 #include "replaygainreader.h"
 
 ReplayGainReader::ReplayGainReader(const QString &path)
