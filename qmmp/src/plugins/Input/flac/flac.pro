@@ -3,11 +3,13 @@ FORMS +=
 HEADERS += decoderflacfactory.h \
     decoder_flac.h \
     cueparser.h \
-    flacmetadatamodel.h
+    flacmetadatamodel.h \
+    replaygainreader.h
 SOURCES += decoder_flac.cpp \
     decoderflacfactory.cpp \
     cueparser.cpp \
-    flacmetadatamodel.cpp
+    flacmetadatamodel.cpp \
+    replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/flac
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libflac.so
 INCLUDEPATH += ../../../
