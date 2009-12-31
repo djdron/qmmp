@@ -21,11 +21,10 @@
 
 #include <QObject>
 #include <QIODevice>
-
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
-
+#include <math.h>
 #include "decoder_mpc.h"
 
 // this function used from xmms
@@ -192,7 +191,7 @@ bool DecoderMPC::initialize()
 
     int chan = data()->info.channels;
     configure(data()->info.sample_freq, chan, 16);
-
+    QMap<Qmmp::ReplayGainKey, double> rg_info; //replay gain information
 #ifdef MPC_OLD_API
     mpc_decoder_setup (&data()->decoder, &data()->reader);
 
@@ -202,7 +201,18 @@ bool DecoderMPC::initialize()
         qWarning("DecoderMPC: cannot get info.");
         return FALSE;
     }
+    rg_info[Qmmp::REPLAYGAIN_ALBUM_GAIN] = data()->info.gain_album/100.0;
+    rg_info[Qmmp::REPLAYGAIN_TRACK_GAIN] = data()->info.gain_title/100.0;
+    rg_info[Qmmp::REPLAYGAIN_ALBUM_PEAK] = data()->info.peak_album/32768.0;
+    rg_info[Qmmp::REPLAYGAIN_TRACK_PEAK] = data()->info.peak_title/32768.0;
+#else
+    rg_info[Qmmp::REPLAYGAIN_ALBUM_GAIN] = data()->info.gain_album/256.0;
+    rg_info[Qmmp::REPLAYGAIN_TRACK_GAIN] = data()->info.gain_title/256.0;
+    rg_info[Qmmp::REPLAYGAIN_ALBUM_PEAK] = pow(10, data()->info.peak_album/256.0/20.0);
+    rg_info[Qmmp::REPLAYGAIN_TRACK_PEAK] = pow(10, data()->info.peak_title/256.0/20.0);
 #endif
+    setReplayGainInfo(rg_info);
+
     m_totalTime = mpc_streaminfo_get_length(&data()->info) * 1000;
     qDebug("DecoderMPC: initialize succes");
     return TRUE;
