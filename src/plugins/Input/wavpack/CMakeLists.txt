@@ -36,6 +36,7 @@ SET(libwavpack_SRCS
   decoderwavpackfactory.cpp
   wavpackmetadatamodel.cpp
   cueparser.cpp
+  replaygainreader.cpp
 )
 
 SET(libwavpack_MOC_HDRS
@@ -43,6 +44,7 @@ SET(libwavpack_MOC_HDRS
   decoder_wavpack.h
   wavpackmetadatamodel.h
   cueparser.h
+  replaygainreader.h
 )
 
 SET(libwavpack_RCCS translations/translations.qrc)

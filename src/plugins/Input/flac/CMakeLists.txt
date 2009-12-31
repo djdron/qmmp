@@ -41,6 +41,7 @@ SET(libflac_SRCS
   decoderflacfactory.cpp
   flacmetadatamodel.cpp
   cueparser.cpp
+  replaygainreader.cpp
 )
 
 SET(libflac_MOC_HDRS
@@ -48,6 +49,7 @@ SET(libflac_MOC_HDRS
   decoder_flac.h
   flacmetadatamodel.h
   cueparser.h
+  replaygainreader.h
 )
 
 SET(libflac_RCCS translations/translations.qrc)

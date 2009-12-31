@@ -3,11 +3,13 @@ FORMS +=
 HEADERS += decoderwavpackfactory.h \
     decoder_wavpack.h \
     cueparser.h \
-    wavpackmetadatamodel.h
+    wavpackmetadatamodel.h \
+    replaygainreader.h
 SOURCES += decoder_wavpack.cpp \
     decoderwavpackfactory.cpp \
     cueparser.cpp \
-    wavpackmetadatamodel.cpp
+    wavpackmetadatamodel.cpp \
+    replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/wavpack
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libwavpack.so
 INCLUDEPATH += ../../../

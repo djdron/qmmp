@@ -38,7 +38,6 @@
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
 </context>
