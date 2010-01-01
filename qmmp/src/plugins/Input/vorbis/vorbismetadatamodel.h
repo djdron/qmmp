@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,10 +33,12 @@ public:
     ~VorbisMetaDataModel();
     QHash<QString, QString> audioProperties();
     QList<TagModel* > tags();
+    QPixmap cover();
 
 private:
     QString m_path;
     QList<TagModel* > m_tags;
+    ulong readPictureBlockField(QByteArray data, int offset);
 };
 
 class VorbisCommentModel : public TagModel

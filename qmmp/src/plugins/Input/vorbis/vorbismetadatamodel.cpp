@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -57,6 +57,53 @@ QHash<QString, QString> VorbisMetaDataModel::audioProperties()
 QList<TagModel* > VorbisMetaDataModel::tags()
 {
     return m_tags;
+}
+
+QPixmap VorbisMetaDataModel::cover()
+{
+    TagLib::Ogg::Vorbis::File file(m_path.toLocal8Bit().constData());
+    TagLib::Ogg::XiphComment *tag = file.tag();
+    if(!tag)
+        return QPixmap();
+    TagLib::StringList list = tag->fieldListMap()["METADATA_BLOCK_PICTURE"];
+    if(list.isEmpty())
+        return QPixmap();
+    for(uint i = 0; i < list.size(); ++i)
+    {
+        TagLib::String value = list[i];
+        QByteArray block = QByteArray::fromBase64(TStringToQString_qt4(value).toAscii());
+        if(block.size() < 32)
+            continue;
+        qint64 pos = 0;
+        if(readPictureBlockField(block, pos) != 3) //picture type, use front cover only
+            continue;
+        pos += 4;
+        int mimeLength = readPictureBlockField(block, pos); //mime type length
+        pos += 4;
+        pos += mimeLength; //skip mime type
+        int descLength = readPictureBlockField(block, pos); //description length
+        pos += 4;
+        pos += descLength; //skip description
+        pos += 4; //width
+        pos += 4; //height
+        pos += 4; //color depth
+        pos += 4; //the number of colors used
+        int length = readPictureBlockField(block, pos); //picture size
+        pos += 4;
+        QPixmap cover;
+        cover.loadFromData(block.mid(pos, length)); //read binary picture data
+        return cover;
+    }
+    return QPixmap();
+}
+
+ulong VorbisMetaDataModel::readPictureBlockField(QByteArray data, int offset)
+{
+    return (((uchar)data.data()[offset] & 0xff) << 24) |
+           (((uchar)data.data()[offset+1] & 0xff) << 16) |
+           (((uchar)data.data()[offset+2] & 0xff) << 16) |
+           ((uchar)data.data()[offset+3] & 0xff);
+
 }
 
 VorbisCommentModel::VorbisCommentModel(const QString &path) : TagModel(TagModel::Save)
