@@ -39,12 +39,12 @@ HEADERS += statusiconfactory.h \
     settingsdialog.h \
     qmmptrayicon.h \
     statusiconpopupwidget.h \
-    ../covermanager/coverwidget.h
+    coverwidget.h
 SOURCES += statusiconfactory.cpp \
     statusicon.cpp \
     settingsdialog.cpp \
     qmmptrayicon.cpp \
     statusiconpopupwidget.cpp \
-    ../covermanager/coverwidget.cpp
+    coverwidget.cpp
 FORMS += settingsdialog.ui
 win32:HEADERS += ../../../../src/qmmpui/general.h
