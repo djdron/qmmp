@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,7 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/generalhandler.h>
+#include <qmmpui/metadataformatter.h>
 #include <qmmp/metadatamanager.h>
 #include "coverwidget.h"
 #include "covermanager.h"
@@ -46,7 +47,8 @@ void CoverManager::showWindow()
         w->setFixedSize(400,400);
         QPixmap pix = MetaDataManager::instance()->getCover(items.at(0)->url());
         w->setPixmap(pix);
-        w->setWindowTitle(items.at(0)->artist() + " - " + items.at(0)->album());
+        MetaDataFormatter formatter("%p%if(%p&%t, - ,)%if(%t,%t,%f)");
+        w->setWindowTitle(formatter.parse(items.at(0)->metaData()));
         w->show();
     }
 }
