@@ -4,12 +4,12 @@
 <context>
     <name>CoverManager</name>
     <message>
-        <location filename="../covermanager.cpp" line="32"/>
+        <location filename="../covermanager.cpp" line="35"/>
         <source>Show Cover</source>
         <translation>Rodyti viršelį</translation>
     </message>
     <message>
-        <location filename="../covermanager.cpp" line="33"/>
+        <location filename="../covermanager.cpp" line="36"/>
         <source>Ctrl+M</source>
         <translation>Ctrl+M</translation>
     </message>
@@ -35,49 +35,6 @@
         <location filename="../covermanagerfactory.cpp" line="51"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>CoverWindow</name>
-    <message>
-        <location filename="../coverwindow.ui" line="20"/>
-        <source>Cover Manager</source>
-        <translation>Viršelų tvarkyklė</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="46"/>
-        <source>Album:</source>
-        <translation>Albumas</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="56"/>
-        <source>Artist:</source>
-        <translation>Atlikėjas</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="76"/>
-        <source>Preview</source>
-        <translation>Peržiūra</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="116"/>
-        <source>Open</source>
-        <translation>Atverti</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="126"/>
-        <source>Download</source>
-        <translation>Parsisiųsti</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="136"/>
-        <source>Remove</source>
-        <translation>Pašalinti</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="172"/>
-        <source>Save as...</source>
-        <translation>Išsaugoti kaip...</translation>
     </message>
 </context>
 </TS>

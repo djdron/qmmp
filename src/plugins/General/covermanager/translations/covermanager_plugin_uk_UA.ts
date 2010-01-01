@@ -4,12 +4,12 @@
 <context>
     <name>CoverManager</name>
     <message>
-        <location filename="../covermanager.cpp" line="32"/>
+        <location filename="../covermanager.cpp" line="35"/>
         <source>Show Cover</source>
         <translation>Показати обкладинку</translation>
     </message>
     <message>
-        <location filename="../covermanager.cpp" line="33"/>
+        <location filename="../covermanager.cpp" line="36"/>
         <source>Ctrl+M</source>
         <translation></translation>
     </message>
@@ -35,49 +35,6 @@
         <location filename="../covermanagerfactory.cpp" line="51"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>CoverWindow</name>
-    <message>
-        <location filename="../coverwindow.ui" line="20"/>
-        <source>Cover Manager</source>
-        <translation>Керування обкладинками</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="46"/>
-        <source>Album:</source>
-        <translation>Альбом:</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="56"/>
-        <source>Artist:</source>
-        <translation>Виконавець:</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="76"/>
-        <source>Preview</source>
-        <translation>Перегляд</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="116"/>
-        <source>Open</source>
-        <translation>Відкрити</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="126"/>
-        <source>Download</source>
-        <translation>Завантажити</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="136"/>
-        <source>Remove</source>
-        <translation>Видалити</translation>
-    </message>
-    <message>
-        <location filename="../coverwindow.ui" line="172"/>
-        <source>Save as...</source>
-        <translation>Зберегти як...</translation>
     </message>
 </context>
 </TS>
