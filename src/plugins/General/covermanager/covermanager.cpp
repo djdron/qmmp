@@ -19,12 +19,14 @@
  ***************************************************************************/
 
 #include <QAction>
+#include <QApplication>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/generalhandler.h>
-#include "coverwindow.h"
+#include <qmmp/metadatamanager.h>
+#include "coverwidget.h"
 #include "covermanager.h"
 
 CoverManager::CoverManager(QObject *parent) : General(parent)
@@ -40,9 +42,11 @@ void CoverManager::showWindow()
     QList <PlayListItem *> items = MediaPlayer::instance()->playListManager()->selectedPlayList()->getSelectedItems();
     if (!items.isEmpty())
     {
-        if (items.at(0)->url().contains("://"))
-            return;
-        CoverWindow *w = new CoverWindow(items.at(0), qApp->activeWindow ());
+        CoverWidget *w = new CoverWidget(qApp->activeWindow ());
+        w->setFixedSize(400,400);
+        QPixmap pix = MetaDataManager::instance()->getCover(items.at(0)->url());
+        w->setPixmap(pix);
+        w->setWindowTitle(items.at(0)->artist() + " - " + items.at(0)->album());
         w->show();
     }
 }
