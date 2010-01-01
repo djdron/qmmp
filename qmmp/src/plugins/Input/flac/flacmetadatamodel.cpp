@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/tmap.h>
+#include <FLAC/all.h>
 #include <qmmp/metadatamanager.h>
 #include "flacmetadatamodel.h"
 
@@ -74,6 +75,20 @@ QList<TagModel* > FLACMetaDataModel::tags()
 
 QPixmap FLACMetaDataModel::cover()
 {
+    //embedded cover
+    FLAC__StreamMetadata *metadata;
+    FLAC__metadata_get_picture (qPrintable(m_path),
+                                &metadata,
+                                FLAC__STREAM_METADATA_PICTURE_TYPE_FRONT_COVER,
+                                0,0, -1,-1,-1,-1);
+    if(metadata)
+    {
+        FLAC__StreamMetadata_Picture *pict = &metadata->data.picture;
+        QPixmap cover;
+        cover.loadFromData(QByteArray((char *)pict->data, (int) pict->data_length));
+        FLAC__metadata_object_delete(metadata);
+        return cover;
+    }
     QString cPath = coverPath();
     return cPath.isEmpty() ? QPixmap() : QPixmap(cPath);
 }
