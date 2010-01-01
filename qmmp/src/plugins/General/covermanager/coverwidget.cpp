@@ -25,7 +25,10 @@
 
 CoverWidget::CoverWidget(QWidget *parent)
         : QWidget(parent)
-{}
+{
+    setWindowFlags(Qt::Window);
+    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+}
 
 CoverWidget::~CoverWidget()
 {}

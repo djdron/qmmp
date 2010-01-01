@@ -32,14 +32,12 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 SET(libcovermanager_SRCS
     coverwidget.cpp
     covermanager.cpp
-    coverwindow.cpp
     covermanagerfactory.cpp
 )
 
 SET(libcovermanager_MOC_HDRS
     coverwidget.h
     covermanager.h
-    coverwindow.h
     covermanagerfactory.h
 )
 
@@ -53,7 +51,6 @@ QT4_WRAP_CPP(libcovermanager_MOC_SRCS ${libcovermanager_MOC_HDRS})
 
 
 SET(libcovermanager_UIS
-    coverwindow.ui
 )
 
 QT4_WRAP_UI(libcovermanager_UIS_H ${libcovermanager_UIS})
