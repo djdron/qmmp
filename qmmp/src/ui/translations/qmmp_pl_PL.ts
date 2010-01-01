@@ -213,12 +213,12 @@
     <message>
         <location filename="../configdialog.cpp" line="81"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Utwór</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="83"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłączone</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="597"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../configdialog.cpp" line="599"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dwuznakowy numer utworu</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="603"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../configdialog.cpp" line="607"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Warunek</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="600"/>
@@ -424,7 +424,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1044"/>
         <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="234"/>
@@ -464,38 +464,38 @@
     <message>
         <location filename="../forms/configdialog.ui" line="561"/>
         <source>Show popup information</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż informację popup</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="571"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostosuj</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1050"/>
         <source>Replay Gain mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tryb Replay Gain:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1067"/>
         <source>Preamp:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1099"/>
         <location filename="../forms/configdialog.ui" line="1144"/>
         <source>dB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1112"/>
         <source>Default gain:</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślne wzmocnienie:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1164"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj informacji peak by zapobiec &quot;klipnięciom&quot;</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1180"/>
@@ -535,22 +535,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="853"/>
         <source>Cover Image Retrieve</source>
-        <translation type="unfinished"></translation>
+        <translation>Pobieranie okładek</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="859"/>
         <source>Include files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj plików:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="869"/>
         <source>Exclude files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyłącz pliki:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="881"/>
         <source>Recursive search depth:</source>
-        <translation type="unfinished"></translation>
+        <translation>Głębokość rekursywnego przeszukiwania:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="942"/>
@@ -1367,7 +1367,7 @@
         <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="76"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="37"/>
@@ -1380,108 +1380,108 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia informacji Popup</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="48"/>
         <location filename="../forms/popupsettings.ui" line="78"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="55"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Przezroczystość:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar okładki:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="122"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="151"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Przywróć</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="158"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="58"/>
         <source>Artist</source>
-        <translation type="unfinished">Artysta</translation>
+        <translation>Artysta</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="59"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="60"/>
         <source>Title</source>
-        <translation type="unfinished">Tytuł</translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="61"/>
         <source>Track number</source>
-        <translation type="unfinished">Numer utworu</translation>
+        <translation>Numer utworu</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dwuznakowy numer utworu</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Genre</source>
-        <translation type="unfinished">Gatunek</translation>
+        <translation>Gatunek</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Comment</source>
-        <translation type="unfinished">Komentarz</translation>
+        <translation>Komentarz</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Composer</source>
-        <translation type="unfinished">Kompozytor</translation>
+        <translation>Kompozytor</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Długość</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Disc number</source>
-        <translation type="unfinished">Numer albumu</translation>
+        <translation>Numer albumu</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>File name</source>
-        <translation type="unfinished">Nazwa pliku</translation>
+        <translation>Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>File path</source>
-        <translation type="unfinished">Lokalizacja</translation>
+        <translation>Lokalizacja</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Year</source>
-        <translation type="unfinished">Rok</translation>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Warunek</translation>
     </message>
 </context>
 <context>
