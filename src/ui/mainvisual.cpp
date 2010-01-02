@@ -110,7 +110,7 @@ void MainVisual::add (Buffer *b, unsigned long w, int c, int p)
         len = 512;
     cnt = len;
 
-    if (c == 2)
+    if (c >= 2)
     {
         l = new short[len];
         r = new short[len];
