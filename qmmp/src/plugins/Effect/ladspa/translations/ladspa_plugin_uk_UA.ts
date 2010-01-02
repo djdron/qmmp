@@ -6,7 +6,7 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="30"/>
         <source>LADSPA Plugin</source>
-        <translation type="unfinished">Модуль LADSPA</translation>
+        <translation>Модуль LADSPA</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="50"/>
