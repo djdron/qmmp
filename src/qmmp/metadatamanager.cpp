@@ -62,8 +62,26 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
             return efact->createPlayList(fileName, useMetaData);
         return list;
     }
-    else if(protocols().contains(fileName.section("://",0,0)))
-        list << new FileInfo(fileName);
+    else
+    {
+        QString scheme = fileName.section("://",0,0);
+        QStringList p;
+        foreach(InputSourceFactory *f, *m_inputSourceFactories)
+        {
+            p << f->properties().protocols.split(" ", QString::SkipEmptyParts);
+        }
+        if(p.contains(scheme))
+        {
+            list << new FileInfo(fileName);
+            return list;
+        }
+        foreach(fact, *m_decoderFactories)
+        {
+            p = fact->properties().protocols.split(" ", QString::SkipEmptyParts);
+            if(p.contains(scheme) && Decoder::isEnabled(fact))
+                return fact->createPlayList(fileName, useMetaData);
+        }
+    }
     return list;
 }
 
