@@ -702,15 +702,15 @@
 <context>
     <name>JumpToTrackDialog</name>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="81"/>
-        <location filename="../jumptotrackdialog.cpp" line="132"/>
+        <location filename="../jumptotrackdialog.cpp" line="87"/>
+        <location filename="../jumptotrackdialog.cpp" line="138"/>
         <source>Unqueue</source>
         <translation>Aus Warteschlange entfernen</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="79"/>
-        <location filename="../jumptotrackdialog.cpp" line="83"/>
-        <location filename="../jumptotrackdialog.cpp" line="134"/>
+        <location filename="../jumptotrackdialog.cpp" line="89"/>
+        <location filename="../jumptotrackdialog.cpp" line="140"/>
         <source>Queue</source>
         <translation>In Warteschlange</translation>
     </message>
