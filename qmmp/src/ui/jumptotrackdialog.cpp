@@ -20,7 +20,7 @@
 
 #include "jumptotrackdialog.h"
 #include <qmmpui/playlistmanager.h>
-
+#include <QAction>
 #include <QStringListModel>
 #include <QSortFilterProxyModel>
 #include <QShortcut>
@@ -53,6 +53,12 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
     new QShortcut(QKeySequence("Q"),this,SLOT(on_queuePushButton_clicked()));
     new QShortcut(QKeySequence("J"),this,SLOT(on_jumpToPushButton_clicked()));
     new QShortcut(QKeySequence("F5"),this,SLOT(on_refreshPushButton_clicked()));
+
+    QAction *selectSongViewAction = new QAction(filterLineEdit);
+    selectSongViewAction->setShortcut(Qt::Key_Down);
+    selectSongViewAction->setShortcutContext(Qt::WidgetShortcut);
+    filterLineEdit->addAction(selectSongViewAction);
+    connect(selectSongViewAction, SIGNAL(triggered()),songsListView, SLOT(setFocus()));
 }
 
 JumpToTrackDialog::~JumpToTrackDialog()
