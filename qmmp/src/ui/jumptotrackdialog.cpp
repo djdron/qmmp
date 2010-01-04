@@ -50,9 +50,9 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
             SIGNAL(currentRowChanged(const QModelIndex&,const QModelIndex&)),
             this,SLOT(queueUnqueue(const QModelIndex&,const QModelIndex&)));
 
-    new QShortcut(QKeySequence("Q"),this,SLOT(on_queuePushButton_clicked()));
-    new QShortcut(QKeySequence("J"),this,SLOT(on_jumpToPushButton_clicked()));
-    new QShortcut(QKeySequence("F5"),this,SLOT(on_refreshPushButton_clicked()));
+    new QShortcut(tr("Q"),this,SLOT(on_queuePushButton_clicked()));
+    new QShortcut(tr("J"),this,SLOT(on_jumpToPushButton_clicked()));
+    new QShortcut(tr("F5"),this,SLOT(on_refreshPushButton_clicked()));
 
     QAction *selectSongViewAction = new QAction(filterLineEdit);
     selectSongViewAction->setShortcut(Qt::Key_Down);
