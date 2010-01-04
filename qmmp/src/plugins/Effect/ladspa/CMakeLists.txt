@@ -29,6 +29,7 @@ SET(libladspa_SRCS
     ladspahost.cpp
     ladspahelper.cpp
     ladspaslider.cpp
+    ladspabutton.cpp
     settingsdialog.cpp
     effectladspafactory.cpp
 )
@@ -37,6 +38,7 @@ SET(libladspa_MOC_HDRS
     ladspahost.h
     ladspahelper.h
     ladspaslider.h
+    ladspabutton.h
     settingsdialog.h
     effectladspafactory.h
 )

@@ -27,6 +27,7 @@
 #include <QLabel>
 #include <qmmp/qmmp.h>
 #include "ladspaslider.h"
+#include "ladspabutton.h"
 #include "ladspahost.h"
 #include "settingsdialog.h"
 
@@ -95,16 +96,21 @@ void SettingsDialog::on_configureButton_clicked()
     QDialog *dialog = new QDialog(this);
     dialog->setWindowTitle(effect->descriptor->Name);
     QFormLayout *formLayout = new QFormLayout(dialog);
+    LADSPAButton *button = 0;
+    LADSPASlider *slider = 0;
 
     foreach(LADSPAControl *c, effect->controls)
     {
         switch ((int) c->type)
         {
         case LADSPAControl::BUTTON:
+            button = new LADSPAButton(c->value, dialog);
+            button->setText(c->name);
+            formLayout->addRow(button);
             break;
         case LADSPAControl::SLIDER:
-             LADSPASlider *slider = new LADSPASlider(c->min, c->max, c->step, c->value, l, dialog);
-             formLayout->addRow(c->name, slider);
+            slider = new LADSPASlider(c->min, c->max, c->step, c->value, dialog);
+            formLayout->addRow(c->name, slider);
         }
     }
     if (effect->controls.isEmpty())

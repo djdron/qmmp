@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,39 +17,29 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef LADSPASLIDER_H
-#define LADSPASLIDER_H
 
-#include <QWidget>
+#ifndef LADSPABUTTON_H
+#define LADSPABUTTON_H
+
+#include <QCheckBox>
 #include "ladspa.h"
 
-class QDoubleSpinBox;
-class QSlider;
+class LADSPAHost;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class LADSPASlider : public QWidget
+class LADSPAButton : public QCheckBox
 {
 Q_OBJECT
 public:
-    LADSPASlider(double min,
-                 double max,
-                 double step,
-                 LADSPA_Data *value,
-                 QWidget *parent = 0);
+    LADSPAButton(LADSPA_Data *value, QWidget *parent = 0);
 
 private slots:
-    void setValue(double);
-    void setValue(int);
+    void enable(bool yes);
 
 private:
-   QDoubleSpinBox *m_spinBox;
-   QSlider *m_slider;
-   LADSPA_Data *m_value;
-   double m_min;
-   double m_max;
-   double m_step;
+    LADSPA_Data *m_value;
 };
 
-#endif // LADSPASLIDER_H
+#endif // LADSPABUTTON_H

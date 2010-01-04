@@ -18,20 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <QDoubleSpinBox>
 #include <QSlider>
 #include <QHBoxLayout>
-#include "ladspahost.h"
 #include "ladspaslider.h"
 
-LADSPASlider::LADSPASlider(double min, double max, double step, LADSPA_Data *value,
-                           LADSPAHost *host, QWidget *parent) : QWidget(parent)
+LADSPASlider::LADSPASlider(double min, double max, double step,
+                           LADSPA_Data *value, QWidget *parent) : QWidget(parent)
 {
     m_min = min;
     m_max = max;
     m_step = step;
-    m_host = host;
     m_value = value;
     m_slider = new QSlider(Qt::Horizontal, this);
     m_spinBox = new QDoubleSpinBox(this);
