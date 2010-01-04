@@ -47,17 +47,17 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.cpp" line="42"/>
+        <location filename="../settingsdialog.cpp" line="43"/>
         <source>UID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="43"/>
+        <location filename="../settingsdialog.cpp" line="44"/>
         <source>Name</source>
         <translation>Pavadinimas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="112"/>
+        <location filename="../settingsdialog.cpp" line="118"/>
         <source>This LADSPA plugin has no user controls</source>
         <translation>Šis LADSPA įskiepis neturi nustatymų</translation>
     </message>
