@@ -139,5 +139,3 @@ void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
     else
         queuePushButton->setText(tr("Queue"));
 }
-
-
