@@ -27,10 +27,45 @@
 
 #include "decoder_ffmpeg.h"
 
+// callbacks
+
+static int ffmpeg_read(void *data, uint8_t *buf, int size)
+{
+    DecoderFFmpeg *d = (DecoderFFmpeg*)data;
+    return (int)d->input()->read((char*)buf, size);
+}
+
+static int64_t ffmpeg_seek(void *data, int64_t offset, int whence)
+{
+    DecoderFFmpeg *d = (DecoderFFmpeg*)data;
+    int64_t absolute_pos = 0;
+    /*if(d->input()->isSequential())
+        return -1;*/
+    switch( whence )
+    {
+    case AVSEEK_SIZE:
+        return d->input()->size();
+    case SEEK_SET:
+        absolute_pos = offset;
+        break;
+    case SEEK_CUR:
+        absolute_pos = d->input()->pos() + offset;
+        break;
+    case SEEK_END:
+        absolute_pos = d->input()->size() - offset;
+    default:
+        return -1;
+    }
+    if(absolute_pos < 0 || absolute_pos > d->input()->size())
+        return -1;
+    return d->input()->seek(absolute_pos);
+}
+
+
 // Decoder class
 
-DecoderFFmpeg::DecoderFFmpeg(const QString &path)
-        : Decoder()
+DecoderFFmpeg::DecoderFFmpeg(const QString &path, QIODevice *i)
+        : Decoder(i)
 {
     m_bitrate = 0;
     m_skip = FALSE;
@@ -39,9 +74,12 @@ DecoderFFmpeg::DecoderFFmpeg(const QString &path)
     m_path = path;
     m_temp_pkt.size = 0;
     m_pkt.size = 0;
+    m_pkt.data = 0;
     m_output_buf = 0;
     m_output_at = 0;
     m_skipBytes = 0;
+    av_init_packet(&m_pkt);
+    av_init_packet(&m_temp_pkt);
 }
 
 
@@ -50,8 +88,8 @@ DecoderFFmpeg::~DecoderFFmpeg()
     m_bitrate = 0;
     m_temp_pkt.size = 0;
     if (ic)
-        av_close_input_file(ic);
-    if(m_pkt.data)
+        av_close_input_stream(ic);
+   if(m_pkt.data)
         av_free_packet(&m_pkt);
     if(m_output_buf)
         delete [] m_output_buf;
@@ -63,21 +101,48 @@ bool DecoderFFmpeg::initialize()
     m_skip = FALSE;
     m_totalTime = 0;
     m_seekTime = -1;
-
-    avcodec_init();
-    avcodec_register_all();
     av_register_all();
 
-    AVCodec *codec;
-    if (av_open_input_file(&ic, m_path.toLocal8Bit(), NULL,0, NULL) < 0)
+    AVProbeData  pd;
+    uint8_t buf[2048];
+    pd.filename = m_path.toLocal8Bit().constData();
+    pd.buf_size = input()->peek((char*)buf, sizeof(buf));
+    pd.buf = buf;
+    if(pd.buf_size < 2048)
+        return FALSE;
+    AVInputFormat *fmt = av_probe_input_format(&pd, 1);
+    if(!fmt)
     {
-        qDebug("DecoderFFmpeg: cannot open input file");
+        qWarning("DecoderFFmpeg: usupported format");
+        return FALSE;
+    }
+    qDebug("DecoderFFmpeg: detected format: %s", fmt->long_name);
+
+    init_put_byte(&m_stream, m_input_buf, INPUT_BUFFER_SIZE,
+                   0, this, ffmpeg_read, NULL, ffmpeg_seek);
+
+    m_stream.is_streamed = input()->isSequential();
+    m_stream.max_packet_size = INPUT_BUFFER_SIZE;
+
+
+    AVFormatParameters ap;
+    memset(&ap, 0, sizeof(ap));
+
+    if(av_open_input_stream(&ic, &m_stream, m_path.toLocal8Bit(),
+                              fmt, &ap) != 0)
+    {
+        qDebug("DecoderFFmpeg: av_open_input_stream() failed");
         return FALSE;
     }
 
-    av_find_stream_info(ic);
-    av_read_play(ic);
+    AVCodec *codec;
 
+    av_find_stream_info(ic);
+    if(ic->pb)
+        ic->pb->eof_reached = 0;
+
+    ic->flags |= AVFMT_FLAG_GENPTS;
+    av_read_play(ic);
     for (wma_idx = 0; wma_idx < (int)ic->nb_streams; wma_idx++)
     {
         c = ic->streams[wma_idx]->codec;
@@ -90,14 +155,19 @@ bool DecoderFFmpeg::initialize()
         c->channels = 2;
 
     dump_format(ic,0,0,0);
-    //dump_stream_info(ic);
-
     codec = avcodec_find_decoder(c->codec_id);
 
-    if (!codec) return FALSE;
-    if (avcodec_open(c, codec) < 0)
+    if (!codec)
+    {
+        qWarning("DecoderFFmpeg: unsupported codec for output stream");
         return FALSE;
+    }
 
+    if (avcodec_open(c, codec) < 0)
+    {
+        qWarning("DecoderFFmpeg: error while opening codec for output stream");
+        return FALSE;
+    }
     m_totalTime = ic->duration * 1000 / AV_TIME_BASE;
     m_output_buf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + Qmmp::globalBufferSize()];
     configure(c->sample_rate, c->channels, 16);
@@ -112,7 +182,6 @@ qint64 DecoderFFmpeg::totalTime()
     return m_totalTime;
 }
 
-
 int DecoderFFmpeg::bitrate()
 {
     return m_bitrate;
@@ -120,6 +189,7 @@ int DecoderFFmpeg::bitrate()
 
 qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
 {
+   
     m_skipBytes = 0;
     if (m_skip)
     {
@@ -136,7 +206,6 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
     memcpy(audio, m_output_buf, len);
     m_output_at -= len;
     memmove(m_output_buf, m_output_buf + len, m_output_at-m_skipBytes);
-
     return len;
 }
 
@@ -164,7 +233,7 @@ qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
 
 void DecoderFFmpeg::seek(qint64 pos)
 {    
-    int64_t timestamp = int64_t(pos)*AV_TIME_BASE/1000;
+   int64_t timestamp = int64_t(pos)*AV_TIME_BASE/1000;
     if (ic->start_time != (qint64)AV_NOPTS_VALUE)
         timestamp += ic->start_time;
     m_seekTime = timestamp;
@@ -233,11 +302,11 @@ void DecoderFFmpeg::fillBuffer()
         m_output_at = ffmpeg_decode(m_output_buf);
 #endif
 
-
         if(m_output_at < 0)
         {
             m_output_at = 0;
-            break;
+            m_temp_pkt.size = 0;
+            continue;
         }
         else if(m_output_at == 0)
         {

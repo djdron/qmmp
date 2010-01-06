@@ -87,15 +87,14 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     properties.shortName = "ffmpeg";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;
-    properties.noInput = TRUE;
-    properties.protocols = "file";
+    properties.noInput = FALSE;
+    //properties.protocols = "file";
     return properties;
 }
 
 Decoder *DecoderFFmpegFactory::create(const QString &path, QIODevice *input)
 {
-    Q_UNUSED(input);
-    return new DecoderFFmpeg(path);
+    return new DecoderFFmpeg(path, input);
 }
 
 QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -104,9 +103,9 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
     avcodec_init();
     avcodec_register_all();
     av_register_all();
-    AVFormatContext *in;
+    AVFormatContext *in = 0;
 
-    if (av_open_input_file(&in, fileName.toLocal8Bit(), NULL,0, NULL) < 0)
+    if (av_open_input_file(&in, fileName.toLocal8Bit(), 0, 0, 0) < 0)
     {
         qDebug("DecoderFFmpegFactory: unable to open file");
         return list;
