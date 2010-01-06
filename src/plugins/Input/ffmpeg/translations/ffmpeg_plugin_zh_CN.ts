@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="146"/>
+        <location filename="../decoderffmpegfactory.cpp" line="179"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>关于 FFmpeg 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="148"/>
+        <location filename="../decoderffmpegfactory.cpp" line="181"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="158"/>
+        <location filename="../decoderffmpegfactory.cpp" line="191"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="83"/>
+        <location filename="../decoderffmpegfactory.cpp" line="110"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg 插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="85"/>
+        <location filename="../decoderffmpegfactory.cpp" line="112"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg 格式</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="150"/>
+        <location filename="../decoderffmpegfactory.cpp" line="183"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>编译依赖 libavformat-%1.%2.%3 和 libavcodec-%4.%5.%6</translation>
     </message>
@@ -80,52 +80,52 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="45"/>
+        <location filename="../settingsdialog.ui" line="55"/>
         <source>Formats</source>
         <translation>格式</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="51"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Windows Media Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="68"/>
         <source>Monkey&apos;s Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="65"/>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>True Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>ALAC (Apple Lossless Audio Codec)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
+        <location filename="../settingsdialog.ui" line="89"/>
         <source>ADTS AAC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="93"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>MPEG-4 AAC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="100"/>
+        <location filename="../settingsdialog.ui" line="110"/>
         <source>RealAudio 1.0/2.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>FFmpeg Plugin Settings</source>
         <translation>FFmpeg 插件设置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="86"/>
+        <location filename="../settingsdialog.ui" line="96"/>
         <source>MP3 (MPEG audio layer 3)</source>
         <translation type="unfinished"></translation>
     </message>
