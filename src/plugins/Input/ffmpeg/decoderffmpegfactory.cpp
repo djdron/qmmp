@@ -64,8 +64,33 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
     return FALSE;
 }
 
-bool DecoderFFmpegFactory::canDecode(QIODevice *) const
+bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
 {
+    av_register_all();
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    QStringList filters;
+#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
+    filters << "*.wma" << "*.ape";
+#else
+    filters << "*.wma";
+#endif
+    filters = settings.value("FFMPEG/filters", filters).toStringList();
+
+    AVProbeData  pd;
+    uint8_t buf[8192 + AVPROBE_PADDING_SIZE];
+    pd.filename = 0;
+    pd.buf_size = i->peek((char*)buf, sizeof(buf) - AVPROBE_PADDING_SIZE);
+    pd.buf = buf;
+    if(pd.buf_size < 8192)
+        return FALSE;
+    AVInputFormat *fmt = av_probe_input_format(&pd, 1);
+    if(!fmt)
+    {
+        qWarning("DecoderFFmpegFactory: usupported format");
+        return FALSE;
+    }
+    if(filters.contains("*.mp3") && !memcmp(fmt->name, "mp3", 3))
+        return TRUE;
     return FALSE;
 }
 
@@ -87,6 +112,7 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
         properties.contentType += "audio/x-ms-wma";
     if(filters.contains("*.mp3"))
         properties.contentType += " audio/mpeg";
+    properties.contentType = properties.contentType.trimmed();
     properties.shortName = "ffmpeg";
     properties.hasAbout = TRUE;
     properties.hasSettings = TRUE;

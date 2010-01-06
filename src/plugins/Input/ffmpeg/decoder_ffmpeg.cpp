@@ -104,11 +104,11 @@ bool DecoderFFmpeg::initialize()
     av_register_all();
 
     AVProbeData  pd;
-    uint8_t buf[2048 + AVPROBE_PADDING_SIZE];
+    uint8_t buf[8192 + AVPROBE_PADDING_SIZE];
     pd.filename = m_path.toLocal8Bit().constData();
-    pd.buf_size = input()->peek((char*)buf, sizeof(buf));
+    pd.buf_size = input()->peek((char*)buf, sizeof(buf) - AVPROBE_PADDING_SIZE);
     pd.buf = buf;
-    if(pd.buf_size < 2048)
+    if(pd.buf_size < 8192)
         return FALSE;
     AVInputFormat *fmt = av_probe_input_format(&pd, 1);
     if(!fmt)
@@ -168,7 +168,7 @@ bool DecoderFFmpeg::initialize()
         qWarning("DecoderFFmpeg: error while opening codec for output stream");
         return FALSE;
     }
-    m_totalTime = ic->duration * 1000 / AV_TIME_BASE;
+    m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
     m_output_buf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + Qmmp::globalBufferSize()];
     configure(c->sample_rate, c->channels, 16);
     m_bitrate = c->bit_rate;
@@ -189,7 +189,6 @@ int DecoderFFmpeg::bitrate()
 
 qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
 {
-   
     m_skipBytes = 0;
     if (m_skip)
     {
