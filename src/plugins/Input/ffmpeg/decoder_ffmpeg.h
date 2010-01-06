@@ -42,10 +42,12 @@ extern "C"{
 }
 #include <qmmp/decoder.h>
 
+#define INPUT_BUFFER_SIZE 16384
+
 class DecoderFFmpeg : public Decoder
 {
 public:
-    DecoderFFmpeg(const QString &);
+    DecoderFFmpeg(const QString &, QIODevice *i);
     virtual ~DecoderFFmpeg();
 
     // Standard Decoder API
@@ -70,11 +72,13 @@ private:
 
     AVPacket m_pkt;
     AVPacket m_temp_pkt;
+    ByteIOContext m_stream;
     uint8_t *m_output_buf;
     qint64 m_output_at;
+    uchar m_input_buf[INPUT_BUFFER_SIZE + FF_INPUT_BUFFER_PADDING_SIZE];
 
     int64_t m_seekTime;
-    qint64  m_skipBytes;
+    qint64  m_skipBytes;    
 };
 
 
