@@ -104,7 +104,7 @@ bool DecoderFFmpeg::initialize()
     av_register_all();
 
     AVProbeData  pd;
-    uint8_t buf[2048];
+    uint8_t buf[2048 + AVPROBE_PADDING_SIZE];
     pd.filename = m_path.toLocal8Bit().constData();
     pd.buf_size = input()->peek((char*)buf, sizeof(buf));
     pd.buf = buf;
