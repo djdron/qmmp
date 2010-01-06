@@ -348,13 +348,14 @@ void Downloader::parseICYMetaData(char *data)
         {
             line = line.right(line.size() - line.indexOf("=") - 1).trimmed();
             m_title = line.remove("'");
+            QMap<Qmmp::MetaData, QString> metaData;
             if (!m_title.isEmpty())
-            {
-                QMap<Qmmp::MetaData, QString> metaData;
                 metaData.insert(Qmmp::TITLE, m_title);
-                metaData.insert(Qmmp::URL, m_url);
-                StateHandler::instance()->dispatch(metaData);
-            }
+            else
+                metaData.insert(Qmmp::TITLE, m_stream.header.value("icy-name"));
+            metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
+            metaData.insert(Qmmp::URL, m_url);
+            StateHandler::instance()->dispatch(metaData);
             break;
         }
     }
