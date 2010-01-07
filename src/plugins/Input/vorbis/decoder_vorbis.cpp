@@ -69,7 +69,7 @@ static long oggtell(void *src)
 
 // Decoder class
 
-DecoderVorbis::DecoderVorbis(QIODevice *i)
+DecoderVorbis::DecoderVorbis(const QString &url, QIODevice *i)
         : Decoder(i)
 {
     inited = FALSE;
@@ -77,6 +77,7 @@ DecoderVorbis::DecoderVorbis(QIODevice *i)
     m_section = 0;
     m_last_section = -1;
     m_bitrate = 0;
+    m_url = url;
 }
 
 
@@ -212,8 +213,8 @@ void DecoderVorbis::updateTags()
                               "discnumber=", strlen ("discnumber=")))
             metaData.insert(Qmmp::DISCNUMBER, QString::number(atoi(comments->user_comments[i]
                             + strlen ("discnumber="))));
-
     }
+    metaData.insert(Qmmp::URL, m_url);
     StateHandler::instance()->dispatch(metaData);
 }
 
