@@ -60,7 +60,7 @@ const DecoderProperties DecoderVorbisFactory::properties() const
 
 Decoder *DecoderVorbisFactory::create(const QString &url, QIODevice *input)
 {
-    Decoder *d = new DecoderVorbis(input);
+    Decoder *d = new DecoderVorbis(url, input);
     if(!url.contains("://")) //local file
     {
         ReplayGainReader rg(url);
