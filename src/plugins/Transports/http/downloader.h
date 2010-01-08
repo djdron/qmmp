@@ -77,6 +77,7 @@ private:
     int m_metacount;
     QString m_title;
     bool m_ready;
+    bool m_meta_sent;
 
 protected:
     void run();

@@ -45,7 +45,6 @@ bool HTTPInputSource::isReady()
 
 void HTTPInputSource::open()
 {
-    qDebug("open");
     m_reader->open(QIODevice::ReadOnly);
     emit(ready(this));
 }

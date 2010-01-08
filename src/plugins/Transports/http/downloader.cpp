@@ -74,7 +74,7 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     else
     {
         QString key = str.left(str.indexOf(":")).trimmed().toLower();
-        QString value = str.right(str.size() - str.indexOf(":") - 1).trimmed().toLower();
+        QString value = str.right(str.size() - str.indexOf(":") - 1).trimmed();
         dl->stream()->header.insert(key, value);
         qDebug("Downloader: key=%s, value=%s",qPrintable(key),qPrintable(value));
 
@@ -115,6 +115,7 @@ Downloader::Downloader(QObject *parent, const QString &url)
     m_stream.icy_metaint = 0;
     m_handle = 0;
     m_metacount = 0;
+    m_meta_sent = FALSE;
 }
 
 
@@ -177,10 +178,9 @@ QMutex *Downloader::mutex()
 
 QString Downloader::contentType()
 {
-    QString content;
     if (m_stream.header.contains("content-type"))
-        content = m_stream.header.value("content-type");
-    return content;
+        return m_stream.header.value("content-type").toLower();
+    return QString();
 }
 
 void Downloader::abort()
@@ -299,6 +299,14 @@ void Downloader::checkBuffer()
     {
         m_ready  = TRUE;
         qDebug("Downloader: ready");
+        if(!m_meta_sent && stream()->icy_meta_data)
+        {
+            QMap<Qmmp::MetaData, QString> metaData;
+            metaData.insert(Qmmp::TITLE, m_stream.header.value("icy-name"));
+            metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
+            metaData.insert(Qmmp::URL, m_url);
+            StateHandler::instance()->dispatch(metaData);
+        }
         emit readyRead();
     }
     else if (!m_ready)
@@ -306,7 +314,6 @@ void Downloader::checkBuffer()
         StateHandler::instance()->dispatchBuffer(100 * m_stream.buf_fill / BUFFER_SIZE);
         qApp->processEvents();
     }
-
 }
 
 bool Downloader::isReady()
@@ -356,6 +363,7 @@ void Downloader::parseICYMetaData(char *data)
             metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
             metaData.insert(Qmmp::URL, m_url);
             StateHandler::instance()->dispatch(metaData);
+            m_meta_sent = TRUE;
             break;
         }
     }
