@@ -119,6 +119,12 @@ CUEParser::CUEParser(const QString &fileName)
                 comment = words[2];
         }
     }
+    file.close();
+    if(m_infoList.isEmpty())
+    {
+        qWarning("CUEParser: invalid cue file");
+        return;
+    }
     //calculate last item length
     QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(file_path, FALSE);
     qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
@@ -126,7 +132,6 @@ CUEParser::CUEParser(const QString &fileName)
         m_infoList.last().setLength(l - m_offsets.last());
     else
         m_infoList.last().setLength(0);
-    file.close();
 }
 
 CUEParser::~CUEParser()
