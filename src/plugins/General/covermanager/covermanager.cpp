@@ -47,9 +47,7 @@ void CoverManager::showWindow()
         CoverWidget *w = new CoverWidget(qApp->activeWindow ());
         QPixmap pix = MetaDataManager::instance()->getCover(items.at(0)->url());
         if(pix.isNull())
-        {
-            return;
-        }
+            pix = QPixmap(":/cm_no_cover.png");
         w->setPixmap(pix);
         MetaDataFormatter formatter("%p%if(%p&%t, - ,)%if(%t,%t,%f)");
         w->setWindowTitle(formatter.parse(items.at(0)->metaData()));

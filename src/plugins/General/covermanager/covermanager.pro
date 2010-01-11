@@ -17,7 +17,8 @@ TRANSLATIONS = translations/covermanager_plugin_cs.ts \
     translations/covermanager_plugin_it.ts \
     translations/covermanager_plugin_tr.ts \
     translations/covermanager_plugin_lt.ts
-RESOURCES = translations/translations.qrc
+RESOURCES = translations/translations.qrc \
+            images/cm_images.qrc
 unix { 
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/General
