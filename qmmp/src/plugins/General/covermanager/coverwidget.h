@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,6 +23,9 @@
 #include <QWidget>
 #include <QPixmap>
 
+class QMenu;
+class QMouseEvent;
+
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
 */
@@ -39,12 +42,16 @@ public:
 
 protected:
     void paintEvent (QPaintEvent *event);
+    void mousePressEvent (QMouseEvent * event);
+
+private slots:
+    void saveAs();
+    void processResizeAction(QAction *action);
 
 private: 
-      QPixmap m_pixmap;
-
-
-
+    QPixmap m_pixmap;
+    QMenu *m_menu;
+    int m_size;
 };
 
 #endif

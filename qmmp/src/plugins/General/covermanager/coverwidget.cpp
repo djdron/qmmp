@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,8 +19,13 @@
  ***************************************************************************/
 #include <QPixmap>
 #include <QPainter>
+#include <QMouseEvent>
 #include <QPaintEvent>
-
+#include <QMenu>
+#include <QAction>
+#include <QSettings>
+#include <qmmp/qmmp.h>
+#include <qmmpui/filedialog.h>
 #include "coverwidget.h"
 
 CoverWidget::CoverWidget(QWidget *parent)
@@ -28,6 +33,32 @@ CoverWidget::CoverWidget(QWidget *parent)
 {
     setWindowFlags(Qt::Window);
     setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    m_menu = new QMenu(this);
+    m_menu->addAction(tr("&Save As..."), this, SLOT(saveAs()), tr("Ctrl+S"));
+    QMenu *sizeMenu = m_menu->addMenu(tr("Size"));
+    QActionGroup *sizeGroup = new QActionGroup(this);
+    sizeGroup->addAction(tr("Actual Size"))->setData(0);
+    sizeGroup->addAction(tr("128x128"))->setData(128);
+    sizeGroup->addAction(tr("256x256"))->setData(256);
+    sizeGroup->addAction(tr("512x512"))->setData(512);
+    sizeGroup->addAction(tr("1024x1024"))->setData(1024);
+    sizeMenu->addActions(sizeGroup->actions());
+    connect(sizeMenu, SIGNAL(triggered (QAction *)), SLOT(processResizeAction(QAction *)));
+    m_menu->addAction(tr("&Close"), this, SLOT(close()), tr("Alt+F4"));
+    addActions(m_menu->actions());
+    m_size = 0;
+    //settings
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_size = settings.value("CoverManager/size", 0).toInt();
+    foreach(QAction *a, sizeMenu->actions ())
+    {
+        a->setCheckable(TRUE);
+        if(a->data().toInt() == m_size)
+        {
+            a->setChecked(TRUE);
+            processResizeAction(a);
+        }
+    }
 }
 
 CoverWidget::~CoverWidget()
@@ -36,12 +67,42 @@ CoverWidget::~CoverWidget()
 void CoverWidget::setPixmap(const QPixmap &pixmap)
 {
     m_pixmap = pixmap;
+    if(m_size == 0)
+       resize(m_pixmap.size());
     update();
 }
 
-void CoverWidget::paintEvent (QPaintEvent *p)
+void CoverWidget::paintEvent(QPaintEvent *p)
 {
     QPainter paint(this);
     if(!m_pixmap.isNull())
         paint.drawPixmap(0,0, m_pixmap.scaled(p->rect().size()));
+}
+
+void CoverWidget::mousePressEvent(QMouseEvent *e)
+{
+    if(e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
+}
+
+void CoverWidget::saveAs()
+{
+    QString path = FileDialog::getSaveFileName(this, tr("Save Cover As"),
+                                                 QDir::homePath() + "/cover.jpg",
+                                                 tr("Images") +" (*.png *.jpg)");
+
+    if (!path.isEmpty())
+        m_pixmap.save(path);
+}
+
+void CoverWidget::processResizeAction(QAction *action)
+{
+    m_size = action->data().toInt();
+    if(m_size == 0)
+        resize(m_pixmap.size());
+    else
+        resize(m_size, m_size);
+    update();
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("CoverManager/size", m_size);
 }

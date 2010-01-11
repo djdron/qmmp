@@ -1374,7 +1374,7 @@
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
-        <location filename="../playlistbrowser.cpp" line="38"/>
+        <location filename="../playlistbrowser.cpp" line="39"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
@@ -1385,7 +1385,7 @@
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../playlistbrowser.cpp" line="37"/>
+        <location filename="../playlistbrowser.cpp" line="38"/>
         <source>Rename</source>
         <translation>Umbenennen</translation>
     </message>
