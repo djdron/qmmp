@@ -41,7 +41,10 @@ SET(libcovermanager_MOC_HDRS
     covermanagerfactory.h
 )
 
-SET(libcovermanager_RCCS translations/translations.qrc)
+SET(libcovermanager_RCCS
+    translations/translations.qrc
+    images/cm_images.qrc
+)
 
 QT4_ADD_RESOURCES(libcovermanager_RCC_SRCS ${libcovermanager_RCCS})
 
