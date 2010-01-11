@@ -20,6 +20,7 @@
 
 #include <QAction>
 #include <QApplication>
+#include <QMessageBox>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistitem.h>
@@ -44,8 +45,11 @@ void CoverManager::showWindow()
     if (!items.isEmpty())
     {
         CoverWidget *w = new CoverWidget(qApp->activeWindow ());
-        w->setFixedSize(400,400);
         QPixmap pix = MetaDataManager::instance()->getCover(items.at(0)->url());
+        if(pix.isNull())
+        {
+            return;
+        }
         w->setPixmap(pix);
         MetaDataFormatter formatter("%p%if(%p&%t, - ,)%if(%t,%t,%f)");
         w->setWindowTitle(formatter.parse(items.at(0)->metaData()));
