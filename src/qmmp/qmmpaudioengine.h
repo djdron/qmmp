@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -71,6 +71,7 @@ private:
 
     DecoderFactory *m_factory;
     QList <Effect*> m_effects;
+    QList <Effect*> m_blockedEffects;
     Output *m_output;
 
     bool m_eqInited;

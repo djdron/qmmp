@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -201,7 +201,10 @@ void QmmpAudioEngine::removeEffect(EffectFactory *factory)
     if(m_output && m_output->isRunning())
     {
         mutex()->lock();
-        m_effects.removeAll(effect);
+        if(m_blockedEffects.contains(effect))
+            qDebug("QmmpAudioEngine: restart required");
+        else
+            m_effects.removeAll(effect);
         mutex()->unlock();
     }
 }
@@ -531,6 +534,7 @@ void QmmpAudioEngine::sendMetaData()
 
 Output *QmmpAudioEngine::createOutput(Decoder *d)
 {
+    m_blockedEffects.clear();
     while(!m_effects.isEmpty()) //delete effects
         delete m_effects.takeFirst();
 
@@ -551,20 +555,20 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
         return FALSE;
     }
     m_effects = Effect::create();
-    quint32 srate = m_ap.sampleRate();
-    int chan = m_ap.channels();
-    Qmmp::AudioFormat format = m_ap.format();
+    AudioParameters ap = m_ap;
     m_replayGain->setSampleSize(m_ap.sampleSize());
 
     foreach(Effect *effect, m_effects)
     {
-        effect->configure(srate, chan, format);
-        srate = effect->sampleRate();
-        chan = effect->channels();
-        format = effect->format();
+        effect->configure(ap.sampleRate(), ap.channels(), ap.format());
+        if (ap != effect->audioParameters())
+        {
+            m_blockedEffects << effect; //list of effects which require restart
+            ap = effect->audioParameters();
+        }
     }
-    m_chan = chan;
-    output->configure(srate, chan, format);
+    m_chan = ap.channels();
+    output->configure(ap.sampleRate(), ap.channels(), ap.format());
     return output;
 }
 
