@@ -269,8 +269,8 @@ void Output::run()
         if (b)
         {
             dispatchVisual(b);
-            /*if (SoftwareVolume::instance())
-                SoftwareVolume::instance()->changeVolume(b->data, b->nbytes, m_channels, m_precision);*/
+            if (SoftwareVolume::instance())
+                SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
             l = 0;
             m = 0;
             while (l < b->nbytes)

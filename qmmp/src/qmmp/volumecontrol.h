@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,8 @@
 #define VOLUMECONTROL_H
 
 #include <QObject>
+#include "qmmp.h"
+#include "buffer.h"
 
 /*! @brief The VolumeControl class provides the base interface class for volume control.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -111,12 +113,11 @@ public:
     void setVolume(int left, int right);
     /*!
      * Changes volume of buffer.
-     * @param data Pointer to the buffer.
-     * @param size Buffer size in bytes.
+     * @param b Pointer to the buffer object.
      * @param chan Number of channels.
-     * @param bits Sample size in bits.
+     * @param format Audio format.
      */
-    void changeVolume(uchar *data, qint64 size, int chan, int bits);
+    void changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format);
     /*!
      * Returns software volume object instance.
      */

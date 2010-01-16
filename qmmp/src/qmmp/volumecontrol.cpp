@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -123,56 +123,61 @@ void SoftwareVolume::volume(int *left, int *right)
     *right = m_right;
 }
 
-void SoftwareVolume::changeVolume(uchar *data, qint64 size, int chan, int bits)
+void SoftwareVolume::changeVolume(Buffer *b, int chan, Qmmp::AudioFormat format)
 {
-    size = size*8/bits;
-    if(bits == 16)
+    int samples = 0;
+    switch(format)
     {
+    case Qmmp::PCM_S8:
+        samples = b->nbytes;
         if (chan > 1)
         {
-            for (qint64 i = 0; i < size; i+=2)
+            for (int i = 0; i < samples; i+=2)
             {
-                ((short*)data)[i]*= m_scaleLeft;
-                ((short*)data)[i+1]*= m_scaleRight;
+                ((char*)b->data)[i]*= m_scaleLeft;
+                ((char*)b->data)[i+1]*= m_scaleRight;
             }
         }
         else
         {
-            for (qint64 i = 0; i < size; i++)
-                ((short*)data)[i]*= qMax(m_scaleRight, m_scaleLeft);
+            for (int i = 0; i < samples; i++)
+                ((char*)b->data)[i]*= qMax(m_scaleRight, m_scaleLeft);
         }
-    }
-    else if(bits == 8)
-    {
+    case Qmmp::PCM_S16LE:
+        samples = b->nbytes/2;
         if (chan > 1)
         {
-            for (qint64 i = 0; i < size; i+=2)
+            for (int i = 0; i < samples; i+=2)
             {
-                ((char*)data)[i]*= m_scaleLeft;
-                ((char*)data)[i+1]*= m_scaleRight;
+                ((short*)b->data)[i]*= m_scaleLeft;
+                ((short*)b->data)[i+1]*= m_scaleRight;
             }
         }
         else
         {
-            for (qint64 i = 0; i < size; i++)
-                ((char*)data)[i]*= qMax(m_scaleRight, m_scaleLeft);
+            for (int i = 0; i < samples; i++)
+                ((short*)b->data)[i]*= qMax(m_scaleRight, m_scaleLeft);
         }
-    }
-    else if(bits == 32)
-    {
+        break;
+    case Qmmp::PCM_S24LE:
+    case Qmmp::PCM_S32LE:
+        samples = b->nbytes/4;
         if (chan > 1)
         {
-            for (qint64 i = 0; i < size; i+=2)
+            for (qint64 i = 0; i < samples; i+=2)
             {
-                ((qint32*)data)[i]*= m_scaleLeft;
-                ((qint32*)data)[i+1]*= m_scaleRight;
+                ((qint32*)b->data)[i]*= m_scaleLeft;
+                ((qint32*)b->data)[i+1]*= m_scaleRight;
             }
         }
         else
         {
-            for (qint64 i = 0; i < size; i++)
-                ((qint32*)data)[i]*= qMax(m_scaleRight, m_scaleLeft);
+            for (qint64 i = 0; i < samples; i++)
+                ((qint32*)b->data)[i]*= qMax(m_scaleRight, m_scaleLeft);
         }
+        break;
+    default:
+        ;
     }
 }
 
