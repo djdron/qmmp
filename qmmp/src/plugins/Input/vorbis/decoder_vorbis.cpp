@@ -134,7 +134,7 @@ bool DecoderVorbis::initialize()
         freq = ogginfo->rate;
         chan = ogginfo->channels;
     }
-    configure(freq, chan, 16);
+    configure(freq, chan, Qmmp::PCM_S16LE);
     inited = TRUE;
     return TRUE;
 }

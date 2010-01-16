@@ -10,7 +10,7 @@
 Recycler::Recycler ( unsigned int sz )
         : add_index ( 0 ), done_index ( 0 ), current_count ( 0 )
 {
-    buffer_count = sz / Buffer::size();
+    buffer_count = sz / QMMP_BLOCK_SIZE;
     if (buffer_count < 4)
     {
         buffer_count = 4;
@@ -60,18 +60,10 @@ int Recycler::used() const
 }
 
 
-Buffer *Recycler::get(unsigned long size)
+Buffer *Recycler::get()
 {
     if (full())
         return 0;
-    if (size > Buffer::size() + buffers[add_index]->exceeding)
-    {
-        delete buffers[add_index]->data;
-        buffers[add_index]->data = new unsigned char[size];
-        buffers[add_index]->exceeding = size - Buffer::size();
-        //qDebug("new size = %d, index = %d", size, add_index);
-    }
-
     return buffers[add_index];
 }
 
@@ -105,5 +97,5 @@ void Recycler::clear()
 
 unsigned int Recycler::size() const
 {
-    return buffer_count * Buffer::size();
+    return buffer_count * QMMP_BLOCK_SIZE;
 }

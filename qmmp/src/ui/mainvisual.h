@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,8 +34,8 @@ class Buffer;
 class VisualNode
 {
 public:
-    VisualNode(short *l, short *r, unsigned long n, unsigned long o)
-            : left(l), right(r), length(n), offset(o)
+    VisualNode(short *l, short *r, unsigned long n)
+            : left(l), right(r), length(n)
     {
         // left and right are allocated and then passed to this class
         // the code that allocated left and right should give up all ownership
@@ -48,7 +48,7 @@ public:
     }
 
     short *left, *right;
-    long length, offset;
+    long length;
 };
 
 class VisualBase
@@ -73,7 +73,7 @@ public:
 
     static MainVisual *instance();
     void setVisual(VisualBase *newvis);
-    void add(Buffer *, unsigned long, int, int);
+    void add(unsigned char *data, qint64 size, int chan);
     void clear();
     void paintEvent(QPaintEvent *);
 
@@ -111,6 +111,8 @@ private:
     QActionGroup *m_analyzerTypeGroup;
     QAction *m_peaksAction;
     QAction *m_transparentAction;
+    unsigned char m_buf[2048];
+    int m_buf_at;
     int m_ratio;
 };
 

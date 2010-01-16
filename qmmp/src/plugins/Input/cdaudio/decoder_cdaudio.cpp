@@ -251,7 +251,7 @@ bool DecoderCDAudio::initialize()
         }
         qDebug("DecoderCDAudio: using cd audio capable drive \"%s\"", QUrl(m_url).path().toAscii().constData());
     }
-    configure(44100, 2, 16);
+    configure(44100, 2, Qmmp::PCM_S16LE);
     m_bitrate = 1411;
     m_totalTime = tracks[track_at].info.length() * 1000;
     m_first_sector = tracks[track_at].first_sector;

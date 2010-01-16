@@ -190,7 +190,7 @@ bool DecoderMPC::initialize()
 #endif
 
     int chan = data()->info.channels;
-    configure(data()->info.sample_freq, chan, 16);
+    configure(data()->info.sample_freq, chan, Qmmp::PCM_S16LE);
     QMap<Qmmp::ReplayGainKey, double> rg_info; //replay gain information
 #ifdef MPC_OLD_API
     mpc_decoder_setup (&data()->decoder, &data()->reader);

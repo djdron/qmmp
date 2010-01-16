@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -57,7 +57,7 @@ OutputALSA::~OutputALSA()
     free (pcm_name);
 }
 
-void OutputALSA::configure(quint32 freq, int chan, int prec)
+void OutputALSA::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     // we need to configure
 
@@ -99,32 +99,32 @@ void OutputALSA::configure(quint32 freq, int chan, int prec)
             return;
         }
     }
-    snd_pcm_format_t format = SND_PCM_FORMAT_UNKNOWN;
-    switch (prec)
+    snd_pcm_format_t alsa_format = SND_PCM_FORMAT_UNKNOWN;
+    switch (format)
     {
-    case 8:
-        format = SND_PCM_FORMAT_S8;
+    case Qmmp::PCM_S8:
+        alsa_format = SND_PCM_FORMAT_S8;
         break;
-    case 16:
-        format = SND_PCM_FORMAT_S16_LE;
+    case Qmmp::PCM_S16LE:
+        alsa_format = SND_PCM_FORMAT_S16_LE;
         break;
-    case 24:
-        format = SND_PCM_FORMAT_S24_LE;
+    case Qmmp::PCM_S24LE:
+        alsa_format = SND_PCM_FORMAT_S24_LE;
         break;
-    case 32:
-        format = SND_PCM_FORMAT_S32_LE;
+    case Qmmp::PCM_S32LE:
+        alsa_format = SND_PCM_FORMAT_S32_LE;
         break;
     default:
         qWarning("OutputALSA: unsupported format detected");
         return;
     }
-    if ((err = snd_pcm_hw_params_set_format(pcm_handle, hwparams, format)) < 0)
+    if ((err = snd_pcm_hw_params_set_format(pcm_handle, hwparams, alsa_format)) < 0)
     {
         qDebug("OutputALSA: Error setting format: %s", snd_strerror(err));
         return;
     }
     exact_rate = rate;// = 11000;
-    qDebug("OutputALSA: frequency=%d, channels=%d, bits=%d", rate, chan,prec);
+    //qDebug("OutputALSA: frequency=%d, channels=%d, bits=%d", rate, chan,prec);
 
     if ((err = snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0)) < 0)
     {
@@ -181,13 +181,13 @@ void OutputALSA::configure(quint32 freq, int chan, int prec)
         return;
     }
     //setup needed values
-    m_bits_per_frame = snd_pcm_format_physical_width(format) * chan;
+    m_bits_per_frame = snd_pcm_format_physical_width(alsa_format) * chan;
     m_chunk_size = period_size;
     m_can_pause = snd_pcm_hw_params_can_pause(hwparams) && use_pause;
     qDebug("OutputALSA: can pause: %d", m_can_pause);
-    Output::configure(freq, chan, prec); //apply configuration
+    Output::configure(freq, chan, format); //apply configuration
     //create alsa prebuffer;
-    m_prebuf_size = Buffer::size() + m_bits_per_frame * m_chunk_size / 8;
+    m_prebuf_size = QMMP_BLOCK_SIZE + m_bits_per_frame * m_chunk_size / 8;
     m_prebuf = (uchar *)malloc(m_prebuf_size);
 }
 
@@ -225,7 +225,7 @@ bool OutputALSA::initialize()
 
 qint64 OutputALSA::latency()
 {
-    return m_prebuf_fill * 8000 / sampleRate() / numChannels() / sampleSize();
+    return m_prebuf_fill * 1000 / sampleRate() / numChannels() / sampleSize();
 }
 
 void OutputALSA::pause()

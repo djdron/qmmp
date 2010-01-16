@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,32 +50,32 @@ SRConverter::~SRConverter()
     m_src_data.output_frames = 0;
     if (m_isSrcAlloc)
     {
-        free(m_srcIn);
-        free(m_srcOut);
-        free(m_wOut);
+        delete [] m_srcIn;
+        delete [] m_srcOut;
+        delete [] m_wOut;
         m_isSrcAlloc = FALSE;
     }
 }
 
-ulong SRConverter::process(char *in_data, const ulong size, char **out_data)
+void SRConverter::applyEffect(Buffer *b)
 {
     if (m_isSrcAlloc)
     {
-        free(m_srcIn);
-        free(m_srcOut);
-        free(m_wOut);
+        delete [] m_srcIn;
+        delete [] m_srcOut;
+        delete [] m_wOut;
         m_isSrcAlloc = FALSE;
     }
     ulong wbytes = 0;
 
-    if (m_src_state && size > 0)
+    if (m_src_state && b->nbytes > 0)
     {
-        int lrLength = size/2;
+        int lrLength = b->nbytes/2;
         int overLrLength= (int)floor(lrLength*(m_src_data.src_ratio+1));
-        m_srcIn = (float*) malloc(sizeof(float)*lrLength);
-        m_srcOut = (float*) malloc(sizeof(float)*overLrLength);
-        m_wOut = (short int*) malloc(sizeof(short int)*overLrLength);
-        src_short_to_float_array((short int*)in_data, m_srcIn, lrLength);
+        m_srcIn = new float [lrLength];
+        m_srcOut = new float [overLrLength];
+        m_wOut = new short[overLrLength];
+        src_short_to_float_array((short *)b->data, m_srcIn, lrLength);
         m_isSrcAlloc = TRUE;
         m_src_data.data_in = m_srcIn;
         m_src_data.data_out = m_srcOut;
@@ -90,14 +90,15 @@ ulong SRConverter::process(char *in_data, const ulong size, char **out_data)
         {
             src_float_to_short_array(m_srcOut, m_wOut, m_src_data.output_frames_gen*2);
             wbytes = m_src_data.output_frames_gen*4;
-            *out_data = new char[wbytes];
-            memcpy(*out_data, (char*) m_wOut, wbytes);
+            delete [] b->data;
+            b->data = (unsigned char *) m_wOut;
+            b->nbytes = wbytes;
+            m_wOut = 0;
         }
     }
-    return wbytes;
 }
 
-void SRConverter::configure(quint32 freq, int chan, int res)
+void SRConverter::configure(quint32 freq, int chan,  Qmmp::AudioFormat format)
 {
     freeSRC();
     uint rate = freq;
@@ -111,7 +112,7 @@ void SRConverter::configure(quint32 freq, int chan, int res)
         else
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
     }
-    Effect::configure(m_overSamplingFs, chan, res);
+    Effect::configure(m_overSamplingFs, chan, format);
 }
 
 void SRConverter::freeSRC()

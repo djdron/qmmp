@@ -55,9 +55,9 @@ public:
      * Setups audio parameters of output interface.
      * @param freq Sample rate.
      * @param chan Number of channels.
-     * @param bits Bits per sample
+     * @param format Audio format
      */
-    virtual void configure(quint32 freq, int chan, int bits);
+    virtual void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
      * Subclasses that reimplement this function must call the base implementation.
@@ -101,9 +101,11 @@ public:
      */
     int numChannels();
     /*!
-     * Returns bits per sample.
+     * Returns selected audio format.
      */
-    int sampleSize();
+    Qmmp::AudioFormat format() const;
+
+    int sampleSize() const;
     /*!
      * Creates selected output.
      * @param parent Parent object.
@@ -146,20 +148,24 @@ private:
     void dispatch(qint64 elapsed,
                   int bitrate,
                   int frequency,
-                  int precision,
+                  int bits,
                   int channels);
     void dispatch(const Qmmp::State &state);
-    void dispatchVisual(Buffer *, unsigned long, int, int);
+    void dispatchVisual(Buffer *buffer);
     void clearVisuals();
     QMutex m_mutex;
     Recycler m_recycler;
     StateHandler *m_handler;
     quint32 m_frequency;
-    int m_channels, m_precision, m_kbps;
+    int m_channels, m_kbps;
+    Qmmp::AudioFormat m_format;
     qint64 m_bytesPerMillisecond;
     bool m_userStop, m_pause;
     bool m_finish;
     qint64 m_totalWritten, m_currentMilliseconds;
+    unsigned char *m_visBuffer;
+    qint64 m_visBufferSize;
+
 
     static void checkFactories();
     static void registerFactory(OutputFactory *);

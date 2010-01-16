@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,7 +40,7 @@ public:
     ~OutputPulseAudio();
 
     bool initialize();
-    void configure(quint32, int, int);
+    void configure(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
 
 private:

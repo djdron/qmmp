@@ -54,8 +54,10 @@ void ProjectMPlugin::clear()
     update();
 }
 
-void ProjectMPlugin::add ( Buffer *b, unsigned long, int, int)
-{ //TODO 8 bit support
+void ProjectMPlugin::add (unsigned char *data, qint64 size, int chan)
+{
+    Q_UNUSED(chan);
+    //TODO multichannel support
     if (m_projectMWidget->projectMInstance())
-        m_projectMWidget->projectMInstance()->pcm()->addPCM16Data((short *)b->data, b->nbytes/4);
+        m_projectMWidget->projectMInstance()->pcm()->addPCM16Data((short *)data, size/4);
 }

@@ -32,8 +32,8 @@ public:
     LADSPAHelper();
     virtual ~LADSPAHelper();
 
-    ulong process(char *in_data, const ulong size, char **out_data);
-    void configure(quint32 freq, int chan, int res);
+    void applyEffect(Buffer *b);
+    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
 };
 
 #endif // LADSPAHELPER_H

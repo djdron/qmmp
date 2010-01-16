@@ -95,7 +95,7 @@ bool DecoderModPlug::initialize()
     m_soundFile->Create((uchar*) m_input_buf.data(), m_input_buf.size());
     m_bitrate = m_soundFile->GetNumChannels();
     m_totalTime = (qint64) m_soundFile->GetSongTime() * 1000;
-    configure(m_freq, m_chan, m_bps);
+    configure(m_freq, m_chan, (m_bps == 8 ? Qmmp::PCM_S8 : Qmmp::PCM_S16LE));
     return TRUE;
 }
 
@@ -111,7 +111,7 @@ int DecoderModPlug::bitrate()
 
 qint64 DecoderModPlug::read(char *audio, qint64 maxSize)
 {
-    long len = m_soundFile->Read (audio, qMin((qint64)Buffer::size(), maxSize)) * m_sampleSize;
+    long len = m_soundFile->Read (audio, qMin((qint64)QMMP_BLOCK_SIZE, maxSize)) * m_sampleSize;
     if (m_usePreamp)
     {
         {

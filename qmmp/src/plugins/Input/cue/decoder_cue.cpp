@@ -105,14 +105,14 @@ bool DecoderCUE::initialize()
 
     configure(m_decoder->audioParameters().sampleRate(),
               m_decoder->audioParameters().channels(),
-              m_decoder->audioParameters().bits());
+              m_decoder->audioParameters().format());
     setReplayGainInfo(m_decoder->replayGainInfo());
     length_in_bytes = audioParameters().sampleRate() *
                       audioParameters().channels() *
-                      audioParameters().bits() * m_length/8000;
+                      audioParameters().format() * m_length/8000;
     m_totalBytes = 0;
 
-    m_sz = audioParameters().bits() * audioParameters().channels()/8;
+    m_sz = audioParameters().sampleSize();
 
     StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
     return TRUE;
@@ -128,7 +128,7 @@ void DecoderCUE::seek(qint64 pos)
      m_decoder->seek(m_offset + pos);
      m_totalBytes = audioParameters().sampleRate() *
                     audioParameters().channels() *
-                    audioParameters().bits() * pos/8000;
+                    audioParameters().sampleSize() * pos/1000;
 }
 
 qint64 DecoderCUE::read(char *data, qint64 size)
@@ -197,7 +197,7 @@ void DecoderCUE::next()
         m_offset = m_parser->offset(m_track);
         length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
-                          audioParameters().bits() * m_length/8000;
+                          audioParameters().sampleSize() * m_length/1000;
         StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
         m_totalBytes = 0;
     }

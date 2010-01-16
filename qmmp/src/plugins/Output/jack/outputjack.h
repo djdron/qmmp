@@ -40,7 +40,7 @@ public:
     ~OutputJACK();
 
     bool initialize();
-    void configure(quint32, int, int);
+    void configure(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
 
 private:

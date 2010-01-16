@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ public:
     ProjectMPlugin(QWidget *parent = 0);
     virtual ~ProjectMPlugin();
 
-    void add(Buffer *, unsigned long, int, int);
+    void add(unsigned char *data, qint64 size, int chan);
     void clear();
 
 private:

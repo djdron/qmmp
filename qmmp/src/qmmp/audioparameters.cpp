@@ -24,33 +24,33 @@ AudioParameters::AudioParameters()
 {
     m_srate = 0;
     m_chan = 0;
-    m_bps = 0;
+    m_format = Qmmp::PCM_S16LE;
 }
 
 AudioParameters::AudioParameters(const AudioParameters &other)
 {
     m_srate = other.sampleRate();
     m_chan = other.channels();
-    m_bps = other.bits();
+    m_format = other.format();
 }
 
-AudioParameters::AudioParameters(quint32 srate, int chan, int bps)
+AudioParameters::AudioParameters(quint32 srate, int chan, Qmmp::AudioFormat  format)
 {
     m_srate = srate;
     m_chan = chan;
-    m_bps = bps;
+    m_format = format;
 }
 
 void AudioParameters::operator=(const AudioParameters &p)
 {
     m_srate = p.sampleRate();
     m_chan = p.channels();
-    m_bps = p.bits();
+    m_format = p.format();
 }
 
 bool AudioParameters::operator==(const AudioParameters &p) const
 {
-    return m_srate == p.sampleRate() && m_chan == p.channels() && m_bps == p.bits();
+    return m_srate == p.sampleRate() && m_chan == p.channels() && m_format == p.format();
 }
 
 bool AudioParameters::operator!=(const AudioParameters &p) const
@@ -68,7 +68,29 @@ int AudioParameters::channels() const
     return m_chan;
 }
 
-int AudioParameters::bits() const
+Qmmp::AudioFormat AudioParameters::format() const
 {
-    return m_bps;
+    return m_format;
 }
+
+int AudioParameters::sampleSize() const
+{
+    return sampleSize(m_format);
+}
+
+int AudioParameters::sampleSize(Qmmp::AudioFormat format)
+{
+    switch(format)
+    {
+    case Qmmp::PCM_S8:
+        return 1;
+    case Qmmp::PCM_S16LE:
+    case Qmmp::PCM_UNKNOWM:
+        return 2;
+    case Qmmp::PCM_S24LE:
+    case Qmmp::PCM_S32LE:
+        return 4;
+    }
+    return 2;
+}
+

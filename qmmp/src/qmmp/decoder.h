@@ -110,9 +110,9 @@ protected:
      * Use this function inside initialize() reimplementation to tell other plugins about audio parameters.
      * @param srate Sample rate.
      * @param chan Number of channels.
-     * @param bps Bits per sample.
+     * @param f Audio format.
      */
-    void configure(quint32 srate, int chan, int bps);
+    void configure(quint32 srate = 44100, int chan = 2, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
 
 private:
     static void checkFactories();

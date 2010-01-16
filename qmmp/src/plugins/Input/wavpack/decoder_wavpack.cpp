@@ -106,8 +106,21 @@ bool DecoderWavPack::initialize()
     m_freq = WavpackGetSampleRate (m_context);
     int bps = WavpackGetBitsPerSample (m_context);
     if (!m_output_buf)
-        m_output_buf = new int32_t[Qmmp::globalBufferSize()/4];
-    configure(m_freq, m_chan, bps);
+        m_output_buf = new int32_t[QMMP_BUFFER_SIZE/4];
+    switch(bps)
+    {
+    case 8:
+        configure(m_freq, m_chan, Qmmp::PCM_S8);
+        break;
+    case 16:
+        configure(m_freq, m_chan, Qmmp::PCM_S16LE);
+        break;
+    case 24:
+        configure(m_freq, m_chan, Qmmp::PCM_S24LE);
+        break;
+    case 32:
+        configure(m_freq, m_chan, Qmmp::PCM_S32LE);
+    }
     if(!m_parser)
         m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
     else
@@ -116,11 +129,11 @@ bool DecoderWavPack::initialize()
         m_offset = m_parser->offset(m_track);
         length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
-                          audioParameters().bits() * m_length/8000;
+                          audioParameters().sampleSize() * m_length/1000;
         seek(0);
     }
     m_totalBytes = 0;
-    m_sz = audioParameters().bits() * audioParameters().channels()/8;
+    m_sz = audioParameters().sampleSize() * audioParameters().channels();
     qDebug("DecoderWavPack: initialize succes");
     return TRUE;
 }
@@ -158,7 +171,7 @@ void DecoderWavPack::seek(qint64 time)
 {
     m_totalBytes = audioParameters().sampleRate() *
                    audioParameters().channels() *
-                   audioParameters().bits() * time/8000;
+                   audioParameters().sampleSize() * time/1000;
     if(m_parser)
         time += m_offset;
     WavpackSeekSample (m_context, time * m_freq / 1000);
@@ -229,7 +242,7 @@ void DecoderWavPack::next()
         m_length = m_parser->length(m_track);
         length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
-                          audioParameters().bits() * m_length/8000;
+                          audioParameters().sampleSize() * m_length/1000;
         StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
         m_totalBytes = 0;
     }

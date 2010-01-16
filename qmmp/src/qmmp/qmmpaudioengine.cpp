@@ -41,13 +41,12 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
         : AbstractEngine(parent), m_factory(0), m_output(0), m_eqInited(FALSE),
         m_useEQ(FALSE)
 {
-    m_output_buf = new unsigned char[Qmmp::globalBufferSize()];
+    m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
     double b[] = {0,0,0,0,0,0,0,0,0,0};
     setEQ(b, 0);
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
-    _blksize = Buffer::size();
     m_effects = Effect::create();
-    m_bks = Buffer::size();
+    m_bks = QMMP_BLOCK_SIZE;
     m_decoder = 0;
     m_output = 0;
     m_replayGain = new ReplayGain;
@@ -174,7 +173,7 @@ void QmmpAudioEngine::addEffect(EffectFactory *factory)
     if(m_output && m_output->isRunning())
     {
         Effect *effect = factory->create();
-        effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.bits());
+        effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
         if(effect->audioParameters() == m_ap)
         {
             mutex()->lock();
@@ -199,21 +198,11 @@ void QmmpAudioEngine::removeEffect(EffectFactory *factory)
     }
     if(!effect)
         return;
-    int index = m_effects.indexOf(effect);
     if(m_output && m_output->isRunning())
     {
-        if(index == 0 && m_decoder->audioParameters() == effect->audioParameters())
-        {
-            mutex()->lock();
-            m_effects.removeAll(effect);
-            mutex()->unlock();
-        }
-        else if(m_effects.at(index - 1)->audioParameters() == effect->audioParameters())
-        {
-            mutex()->lock();
-            m_effects.removeAll(effect);
-            mutex()->unlock();
-        }
+        mutex()->lock();
+        m_effects.removeAll(effect);
+        mutex()->unlock();
     }
 }
 
@@ -309,7 +298,7 @@ void QmmpAudioEngine::stop()
 
 qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int chan)
 {
-    ulong sz = size < _blksize ? size : _blksize;
+    uint sz = size < m_bks ? size : m_bks;
     m_replayGain->applyReplayGain(data, sz);
     if (m_useEQ)
     {
@@ -318,43 +307,19 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
             init_iir();
             m_eqInited = TRUE;
         }
-        iir((void*) data, sz, chan > 2 ? 2 : chan);
-    }
-    char *out_data = data;
-    char *prev_data = data;
-    qint64 w = sz;
-    Effect* effect = 0;
-    foreach(effect, m_effects)
-    {
-        w = effect->process(prev_data, sz, &out_data);
-
-        if (w <= 0)
-        {
-            // copy data if plugin can not process it
-            w = sz;
-            out_data = new char[w];
-            memcpy(out_data, prev_data, w);
-        }
-        if (data != prev_data)
-            delete prev_data;
-        prev_data = out_data;
+        iir((void*) data, sz, chan);
     }
 
-    Buffer *b = m_output->recycler()->get(w);
+    Buffer *b = m_output->recycler()->get();
 
-    memcpy(b->data, out_data, w);
-
-    if (data != out_data)
-        delete out_data;
-
-    if (w < _blksize + b->exceeding)
-        memset(b->data + w, 0, _blksize + b->exceeding - w);
-
-    b->nbytes = w;
+    memcpy(b->data, data, sz);
+    b->nbytes = sz;
     b->rate = brate;
-
+    foreach(Effect* effect, m_effects)
+    {
+        effect->applyEffect(b);
+    }
     m_output->recycler()->add();
-
     size -= sz;
     memmove(data, data + sz, size);
     return sz;
@@ -406,7 +371,7 @@ void QmmpAudioEngine::run()
         }
 
         len = m_decoder->read((char *)(m_output_buf + m_output_at),
-                              Qmmp::globalBufferSize() - m_output_at);
+                              QMMP_BUFFER_SIZE - m_output_at);
 
         if (len > 0)
         {
@@ -588,18 +553,18 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
     m_effects = Effect::create();
     quint32 srate = m_ap.sampleRate();
     int chan = m_ap.channels();
-    int bps = m_ap.bits();
-    m_replayGain->setSampleSize(bps);
+    Qmmp::AudioFormat format = m_ap.format();
+    m_replayGain->setSampleSize(m_ap.sampleSize());
 
     foreach(Effect *effect, m_effects)
     {
-        effect->configure(srate, chan, bps);
+        effect->configure(srate, chan, format);
         srate = effect->sampleRate();
         chan = effect->channels();
-        bps = effect->bitsPerSample();
+        format = effect->format();
     }
     m_chan = chan;
-    output->configure(srate, chan, bps);
+    output->configure(srate, chan, format);
     return output;
 }
 

@@ -32,6 +32,7 @@ Bs2bPlugin::Bs2bPlugin() : Effect()
     m_bs2b_handler = bs2b_open();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     bs2b_set_level(m_bs2b_handler, settings.value("bs2b/level", BS2B_DEFAULT_CLEVEL).toUInt());
+    m_chan = 0;
 }
 
 Bs2bPlugin::~Bs2bPlugin()
@@ -43,35 +44,33 @@ Bs2bPlugin::~Bs2bPlugin()
 #define CASE_BS2B(bitsPerSample, dataType, functionToCall, samples, out_data) \
     case bitsPerSample: \
         { \
-            dataType * data = reinterpret_cast<dataType *>(*out_data); \
+            dataType * data = reinterpret_cast<dataType *>(out_data); \
             functionToCall(m_bs2b_handler, data, samples); \
         } \
         break;
 
-ulong Bs2bPlugin::process(char *in_data, const ulong size, char **out_data)
+void Bs2bPlugin::applyEffect(Buffer *b)
 {
-    memcpy(*out_data, in_data, size);
-    if (channels() != 2)
-        return size;
-
-    uint samples = size / (bitsPerSample() / 8) / 2;
+    if(m_chan != 2)
+        return;
+    uint samples = b->nbytes / audioParameters().sampleSize() / 2;
     m_mutex.lock();
-    switch (bitsPerSample())
+    switch (format())
     {
-        CASE_BS2B(8,  int8_t,  bs2b_cross_feed_s8, samples, out_data)
-        CASE_BS2B(16, int16_t, bs2b_cross_feed_s16le, samples, out_data)
-        CASE_BS2B(24, bs2b_int24_t, bs2b_cross_feed_s24, samples, out_data)
-        CASE_BS2B(32, int32_t,  bs2b_cross_feed_s32le, samples, out_data)
+        CASE_BS2B(Qmmp::PCM_S8,  int8_t,  bs2b_cross_feed_s8, samples, b->data)
+        CASE_BS2B(Qmmp::PCM_S16LE, int16_t, bs2b_cross_feed_s16le, samples, b->data)
+        //CASE_BS2B(Qmmp::PCM_S24LE, bs2b_int24_t,  bs2b_cross_feed_s24le, samples, out_data)
+        CASE_BS2B(Qmmp::PCM_S32LE, int32_t,  bs2b_cross_feed_s32le, samples, b->data)
     default:
         ; // noop
     }
     m_mutex.unlock();
-    return size;
 }
 
-void Bs2bPlugin::configure(quint32 freq, int chan, int res)
+void Bs2bPlugin::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
-    Effect::configure(freq, chan, res);
+    m_chan = chan;
+    Effect::configure(freq, chan, format);
     bs2b_set_srate(m_bs2b_handler,freq);
 }
 

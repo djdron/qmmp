@@ -49,12 +49,11 @@ public:
     /*!
      * Adds data for visualization.
      * Subclass should reimplement this function.
-     * @param b Buffer object pointer.
-     * @param freq Samplerate.
-     * @param chan Number of channels
-     * @param bits Bits per sample.
+     * @param data Audio data.
+     * @param size Size of audio data.
+     * @param chan Number of channels.
      */
-    virtual void add(Buffer *b, unsigned long freq, int chan, int bits) = 0;
+    virtual void add(unsigned char *data, qint64 size, int chan) = 0;
     /*!
      * Resets visual plugin buffers and widgets.
      * Subclass should reimplement this function.

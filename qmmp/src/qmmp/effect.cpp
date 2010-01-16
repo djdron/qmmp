@@ -30,18 +30,18 @@ Effect::Effect()
 {
     m_freq = 0;
     m_chan = 0;
-    m_res = 0;
+    m_format = Qmmp::PCM_UNKNOWM;
     m_factory = 0;
 }
 
 Effect::~Effect()
 {}
 
-void Effect::configure(quint32 freq, int chan, int res)
+void Effect::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     m_freq = freq;
     m_chan = chan;
-    m_res = res;
+    m_format = format;
 }
 
 quint32 Effect::sampleRate()
@@ -54,14 +54,14 @@ int Effect::channels()
     return m_chan;
 }
 
-int Effect::bitsPerSample()
+Qmmp::AudioFormat Effect::format()
 {
-    return m_res;
+    return m_format;
 }
 
 const AudioParameters  Effect::audioParameters() const
 {
-    return AudioParameters(m_freq, m_chan, m_res);
+    return AudioParameters(m_freq, m_chan, m_format);
 }
 
 EffectFactory* Effect::factory() const

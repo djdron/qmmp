@@ -36,7 +36,7 @@ public:
     virtual ~OutputOSS();
 
     bool initialize();
-    void configure(quint32, int, int);
+    void configure(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
     int audio_fd();
     static OutputOSS* instance();
@@ -62,7 +62,7 @@ private:
 
     bool m_inited;
     quint32 m_frequency;
-    int m_channels, m_precision;
+    int m_channels;
 
     bool do_select;
     int m_audio_fd;

@@ -73,11 +73,10 @@ private:
     QList <Effect*> m_effects;
     Output *m_output;
 
-    uint _blksize;
     bool m_eqInited;
     bool m_useEQ;
     bool m_done, m_finish, m_user_stop;
-    ulong m_bks;
+    uint m_bks;
     qint64 m_totalTime, m_seekTime;
     qint64 m_output_at;
     int m_bitrate, m_chan, m_bps;

@@ -22,6 +22,7 @@
 #define AUDIOPARAMETERS_H
 
 #include <QtGlobal>
+#include "qmmp.h"
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -30,7 +31,7 @@ class AudioParameters
 {
 public:
     AudioParameters();
-    AudioParameters(quint32 srate, int chan, int bps);
+    AudioParameters(quint32 srate, int chan, Qmmp::AudioFormat format);
     AudioParameters(const AudioParameters &other);
 
     void operator=(const AudioParameters &p);
@@ -39,12 +40,14 @@ public:
 
     quint32 sampleRate() const;
     int channels() const;
-    int bits() const;
+    Qmmp::AudioFormat format() const;
+    int sampleSize() const;
+    static int sampleSize(Qmmp::AudioFormat format);
 
 private:
     quint32 m_srate;
     int m_chan;
-    int m_bps;
+    Qmmp::AudioFormat m_format;
 };
 
 #endif // AUDIOPARAMETERS_H
