@@ -42,22 +42,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="101"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Průhlednost:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="344"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Šablona notifikace</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="373"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Původní</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="380"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="390"/>
@@ -118,72 +118,72 @@
     <message>
         <location filename="../settingsdialog.cpp" line="107"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Umělec</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="108"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="109"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="110"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo stopy</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="111"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="112"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>Žánr</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="113"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="114"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Skladatel</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="115"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="116"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo disku</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="117"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název souboru</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="118"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta k souboru</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="119"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="120"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav</translation>
     </message>
 </context>
 </TS>

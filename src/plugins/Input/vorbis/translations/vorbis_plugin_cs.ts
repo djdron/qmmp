@@ -39,42 +39,42 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="49"/>
         <source>Length</source>
-        <translation type="unfinished">Délka</translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Vzorkovací frekvence</translation>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Channels</source>
-        <translation type="unfinished">Počet kanálů</translation>
+        <translation>Počet kanálů</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Datový tok</translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>File size</source>
-        <translation type="unfinished">Velikost souboru</translation>
+        <translation>Velikost souboru</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KiB</translation>
     </message>
 </context>
 </TS>

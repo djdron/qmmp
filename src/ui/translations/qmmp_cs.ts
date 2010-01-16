@@ -213,12 +213,12 @@
     <message>
         <location filename="../configdialog.cpp" line="81"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Stopa</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="83"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Vypnuto</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="597"/>
@@ -233,7 +233,7 @@
     <message>
         <location filename="../configdialog.cpp" line="599"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="603"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../configdialog.cpp" line="607"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="602"/>
@@ -273,7 +273,7 @@
     <message>
         <location filename="../configdialog.cpp" line="601"/>
         <source>Comment</source>
-        <translation>Komentář</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="14"/>
@@ -330,12 +330,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1044"/>
         <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>Zisk při přehrávání</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="234"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Různé</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="293"/>
@@ -347,22 +347,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="348"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít bitmapové písmo, je-li dostupné</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="358"/>
         <source>Skin Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Volby tématu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="364"/>
         <source>Use skin cursors</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít kurzory z tématu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="371"/>
         <source>Double size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvojitá velikost</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="476"/>
@@ -392,17 +392,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="552"/>
         <source>Show playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit seznam skladeb</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="561"/>
         <source>Show popup information</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit informace ve vyskakovacím okně</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="571"/>
         <source>Customize</source>
-        <translation type="unfinished"></translation>
+        <translation>Přizpůsobit</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="634"/>
@@ -438,53 +438,53 @@
     <message>
         <location filename="../forms/configdialog.ui" line="811"/>
         <source>Metacity compatibility</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompatibilita s Metacity</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="853"/>
         <source>Cover Image Retrieve</source>
-        <translation type="unfinished"></translation>
+        <translation>Získat obrázek obalu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="859"/>
         <source>Include files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zahrnout soubory:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="869"/>
         <source>Exclude files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vynechat soubory:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="881"/>
         <source>Recursive search depth:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hloubka rekurzivního hledání:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1050"/>
         <source>Replay Gain mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Režim úpravy zisku při přehrávání:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1067"/>
         <source>Preamp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Předzesílení:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1099"/>
         <location filename="../forms/configdialog.ui" line="1144"/>
         <source>dB</source>
-        <translation type="unfinished"></translation>
+        <translation>dB</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1112"/>
         <source>Default gain:</source>
-        <translation type="unfinished"></translation>
+        <translation>Výchozí zisk:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1164"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít informaci o vrcholu k zabránění ořezu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1237"/>
@@ -704,17 +704,17 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="53"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="54"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="55"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="87"/>
@@ -1192,13 +1192,13 @@
         <location filename="../playlist.cpp" line="229"/>
         <location filename="../playlist.cpp" line="263"/>
         <source>By Album</source>
-        <translation type="unfinished"></translation>
+        <translation>Podle alba</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="233"/>
         <location filename="../playlist.cpp" line="267"/>
         <source>By Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>Podle umělce</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="237"/>
@@ -1246,7 +1246,7 @@
     <message>
         <location filename="../playlist.cpp" line="312"/>
         <source>Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift+A</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="317"/>
@@ -1266,47 +1266,47 @@
     <message>
         <location filename="../playlist.cpp" line="325"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="330"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="349"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat další &amp;seznam skladeb</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="350"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgDown</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="355"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat předchozí &amp;seznam skladeb</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="356"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+PgUp</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="361"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit &amp;seznamy skladeb</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="362"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation>P</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="329"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished"></translation>
+        <translation>O&amp;dstranit seznam</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="336"/>
@@ -1365,29 +1365,29 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Prohlížeč seznamů skladeb</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
         <location filename="../playlistbrowser.cpp" line="39"/>
         <source>Delete</source>
-        <translation type="unfinished">Odstranit</translation>
+        <translation>Odstranit</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="76"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="38"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>Přejmenovat</translation>
     </message>
 </context>
 <context>
@@ -1395,108 +1395,108 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení informací ve vyskakovacím okně</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="48"/>
         <location filename="../forms/popupsettings.ui" line="78"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="55"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>Průhlednost:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost obalu:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="122"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Šablona</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="151"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Původní</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="158"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="58"/>
         <source>Artist</source>
-        <translation type="unfinished">Umělec</translation>
+        <translation>Umělec</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="59"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="60"/>
         <source>Title</source>
-        <translation type="unfinished">Název</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="61"/>
         <source>Track number</source>
-        <translation type="unfinished">Číslo stopy</translation>
+        <translation>Číslo stopy</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Genre</source>
-        <translation type="unfinished">Žánr</translation>
+        <translation>Žánr</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Comment</source>
-        <translation type="unfinished">Komentář</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Composer</source>
-        <translation type="unfinished">Skladatel</translation>
+        <translation>Skladatel</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Disc number</source>
-        <translation type="unfinished">Číslo disku</translation>
+        <translation>Číslo disku</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>File name</source>
-        <translation type="unfinished">Název souboru</translation>
+        <translation>Název souboru</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>File path</source>
-        <translation type="unfinished">Cesta k souboru</translation>
+        <translation>Cesta k souboru</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Year</source>
-        <translation type="unfinished">Rok</translation>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav</translation>
     </message>
 </context>
 <context>

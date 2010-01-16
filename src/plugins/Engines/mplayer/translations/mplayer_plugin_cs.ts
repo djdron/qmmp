@@ -6,32 +6,32 @@
     <message>
         <location filename="../mplayerenginefactory.cpp" line="33"/>
         <source>Mplayer Plugin</source>
-        <translation type="unfinished">Modul MPlayer</translation>
+        <translation>Modul MPlayer</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="36"/>
         <source>Video Files</source>
-        <translation type="unfinished">Videosoubory</translation>
+        <translation>Videosoubory</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="82"/>
         <source>About MPlayer Plugin</source>
-        <translation type="unfinished">O modulu MPlayer</translation>
+        <translation>O modulu MPlayer</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="83"/>
         <source>Qmmp MPlayer Plugin</source>
-        <translation type="unfinished">Modul Qmmp MPlayer</translation>
+        <translation>Modul Qmmp MPlayer</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation type="unfinished">Tento modul používá jako backend MPlayer</translation>
+        <translation>Tento modul používá jako backend MPlayer</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="85"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,72 +39,72 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished">Velikost</translation>
+        <translation>Velikost</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="75"/>
         <source>Length</source>
-        <translation type="unfinished">Délka</translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="77"/>
         <source>Demuxer</source>
-        <translation type="unfinished">Demultiplexor</translation>
+        <translation>Demultiplexor</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>
         <source>Video format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formát videa</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="82"/>
         <source>FPS</source>
-        <translation type="unfinished">FPS</translation>
+        <translation>FPS</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="84"/>
         <source>Video codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="86"/>
         <source>Aspect ratio</source>
-        <translation type="unfinished">Poměr stran</translation>
+        <translation>Poměr stran</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="88"/>
         <source>Video bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok videa</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="95"/>
         <source>Audio codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Zvukový kodek</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="97"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Vzorkovací frekvence</translation>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="99"/>
         <source>Audio bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok audia</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="101"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanály</translation>
+        <translation>Počet kanálů</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="103"/>
         <source>Resolution</source>
-        <translation type="unfinished">Rozlišení</translation>
+        <translation>Rozlišení</translation>
     </message>
 </context>
 <context>
@@ -127,17 +127,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Video:</source>
-        <translation type="unfinished"></translation>
+        <translation>Video:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Synchronization factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronizační faktor:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>

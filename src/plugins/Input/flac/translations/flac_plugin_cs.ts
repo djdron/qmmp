@@ -34,42 +34,42 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="63"/>
         <source>Length</source>
-        <translation type="unfinished">Délka</translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="64"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Vzorkovací frekvence</translation>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="64"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="65"/>
         <source>Channels</source>
-        <translation type="unfinished">Počet kanálů</translation>
+        <translation>Počet kanálů</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="66"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Datový tok</translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="66"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="67"/>
         <source>File size</source>
-        <translation type="unfinished">Velikost souboru</translation>
+        <translation>Velikost souboru</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="67"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KiB</translation>
     </message>
 </context>
 </TS>

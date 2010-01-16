@@ -6,37 +6,37 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="43"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="48"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="49"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost souboru</translation>
     </message>
 </context>
 <context>

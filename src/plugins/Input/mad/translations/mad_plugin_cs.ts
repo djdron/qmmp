@@ -44,27 +44,27 @@
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="70"/>
         <source>Format</source>
-        <translation type="unfinished">Formát</translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>Bitrate</source>
-        <translation type="unfinished">Datový tok</translation>
+        <translation>Datový tok</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="72"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Vzorkovací frekvence</translation>
+        <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="74"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="78"/>
@@ -72,49 +72,49 @@
         <location filename="../mpegmetadatamodel.cpp" line="84"/>
         <location filename="../mpegmetadatamodel.cpp" line="87"/>
         <source>Mode</source>
-        <translation type="unfinished">Režim</translation>
+        <translation>Režim</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="90"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="91"/>
         <source>File size</source>
-        <translation type="unfinished">Velikost souboru</translation>
+        <translation>Velikost souboru</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="93"/>
         <location filename="../mpegmetadatamodel.cpp" line="95"/>
         <source>Protection</source>
-        <translation type="unfinished">Ochrana</translation>
+        <translation>Ochrana</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="93"/>
         <location filename="../mpegmetadatamodel.cpp" line="97"/>
         <location filename="../mpegmetadatamodel.cpp" line="101"/>
         <source>Yes</source>
-        <translation type="unfinished">Ano</translation>
+        <translation>Ano</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="95"/>
         <location filename="../mpegmetadatamodel.cpp" line="99"/>
         <location filename="../mpegmetadatamodel.cpp" line="103"/>
         <source>No</source>
-        <translation type="unfinished">Ne</translation>
+        <translation>Ne</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="97"/>
         <location filename="../mpegmetadatamodel.cpp" line="99"/>
         <source>Copyright</source>
-        <translation type="unfinished">Copyright</translation>
+        <translation>Copyright</translation>
     </message>
     <message>
         <location filename="../mpegmetadatamodel.cpp" line="101"/>
         <location filename="../mpegmetadatamodel.cpp" line="103"/>
         <source>Original</source>
-        <translation type="unfinished">Originál</translation>
+        <translation>Originál</translation>
     </message>
 </context>
 <context>
