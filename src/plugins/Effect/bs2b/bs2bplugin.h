@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,13 +35,14 @@ public:
 
     virtual ~Bs2bPlugin();
 
-    ulong process(char *in_data, const ulong size, char **out_data);
-    void configure(quint32 freq, int chan, int res);
+    void applyEffect(Buffer *b);
+    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
     void setCrossfeedLevel(uint32_t level);
     static Bs2bPlugin* instance();
 
 private:
     t_bs2bdp m_bs2b_handler;
+    int m_chan;
     QMutex m_mutex;
     static Bs2bPlugin *m_instance;
 };

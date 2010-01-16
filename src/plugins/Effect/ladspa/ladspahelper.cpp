@@ -31,15 +31,13 @@ LADSPAHelper::LADSPAHelper() : Effect()
 LADSPAHelper::~LADSPAHelper()
 {}
 
-ulong LADSPAHelper::process(char *in_data, const ulong size, char **out_data)
+void LADSPAHelper::applyEffect(Buffer *b)
 {
-    LADSPAHost::instance()->applyEffect((qint16 *) in_data, size);
-    memcpy(*out_data, in_data, size);
-    return size;
+    LADSPAHost::instance()->applyEffect((qint16 *)b->data, b->nbytes);
 }
 
-void LADSPAHelper::configure(quint32 freq, int chan, int res)
+void LADSPAHelper::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
-    LADSPAHost::instance()->configure(freq,chan,res);
-    Effect::configure(freq, chan, res);
+    LADSPAHost::instance()->configure(freq,chan,format);
+    Effect::configure(freq, chan, format);
 }

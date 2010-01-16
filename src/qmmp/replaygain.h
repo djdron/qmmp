@@ -34,14 +34,14 @@ class ReplayGain
 public:
     ReplayGain();
 
-    void setSampleSize(int bits);
+    void setSampleSize(int size);
     void setReplayGainSettings(const ReplayGainSettings &settings);
     void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
     void applyReplayGain(char *data, qint64 size);
 
 private:
     void updateScale();
-    int m_bits;
+    int m_sampleSize;
     QMap<Qmmp::ReplayGainKey, double> m_info;
     ReplayGainSettings m_settings;
     double m_scale;

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,8 +33,8 @@ public:
     SRConverter();
     virtual ~SRConverter();
 
-    ulong process(char *in_data, const ulong size, char **out_data);
-    void configure(quint32 freq, int chan, int res);
+    void applyEffect(Buffer *b);
+    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
 
 private:
     void freeSRC();

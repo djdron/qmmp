@@ -9,27 +9,27 @@
         <translation>CD 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="84"/>
+        <location filename="../decodercdaudiofactory.cpp" line="87"/>
         <source>About CD Audio Plugin</source>
         <translation>關於 CD 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="85"/>
+        <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>Qmmp CD Audio Plugin</source>
         <translation>Qmmp CD 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="87"/>
+        <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="88"/>
+        <location filename="../decodercdaudiofactory.cpp" line="91"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
         <translation>用法：open cdda:/// 使用添加 URL會話或命令行</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="86"/>
+        <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Compiled against libcdio version:</source>
         <translation>編譯依賴 libcdio 版本：</translation>
     </message>

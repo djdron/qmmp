@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,17 +28,15 @@
 #include <taglib/flacfile.h>
 #include <taglib/xiphcomment.h>
 #include <taglib/tmap.h>
-
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
 #include <qmmp/statehandler.h>
-
 #include <QObject>
 #include <QFile>
 #include <QIODevice>
 #include <FLAC/all.h>
-
+#include "replaygainreader.h"
 #include "cueparser.h"
 #include "decoder_flac.h"
 
@@ -56,11 +54,10 @@ static size_t pack_pcm_signed (FLAC__byte *data,
     unsigned bytes_per_sample;
     unsigned incr;
 
-    if (bps == 24)
-        bps = 32; /* we encode to 32-bit words */
+    if(bps == 24) // we encode to 32-bit words
+        bps = 32;
     bytes_per_sample = bps / 8;
     incr = bytes_per_sample * channels;
-
     for (channel = 0; channel < channels; channel++)
     {
         samples = wide_samples;
@@ -77,21 +74,18 @@ static size_t pack_pcm_signed (FLAC__byte *data,
                 data[0] = sample;
                 break;
             case 16:
-                data[1] = (FLAC__byte)(sample >> 8);
-                data[0] = (FLAC__byte)sample;
+                data[1] = (FLAC__byte)(sample >> 8) & 0xff;
+                data[0] = (FLAC__byte)sample & 0xff;
                 break;
             case 32:
-                data[3] = (FLAC__byte)(sample >> 16);
-                data[2] = (FLAC__byte)(sample >> 8);
-                data[1] = (FLAC__byte)sample;
+                data[3] = (FLAC__byte)(sample >> 16) & 0xff;
+                data[2] = (FLAC__byte)(sample >> 8) & 0xff;
+                data[1] = (FLAC__byte)sample & 0xff;
                 data[0] = 0;
-                break;
             }
-
             data += incr;
         }
     }
-
     return wide_samples * channels * bytes_per_sample;
 }
 
@@ -324,6 +318,8 @@ bool DecoderFLAC::initialize()
                 data()->input->open(QIODevice::ReadOnly);
                 QMap<Qmmp::MetaData, QString> metaData = m_parser->info(m_track)->metaData();
                 StateHandler::instance()->dispatch(metaData); //send metadata
+                ReplayGainReader rg(p);
+                setReplayGainInfo(rg.replayGainInfo());
             }
             else
             {
@@ -376,10 +372,26 @@ bool DecoderFLAC::initialize()
         data()->ok = 0;
         return FALSE;
     }
-    if (data()->bits_per_sample == 24)
-        configure(data()->sample_rate, data()->channels, 32);
-    else
-        configure(data()->sample_rate, data()->channels, data()->bits_per_sample);
+    switch(data()->bits_per_sample)
+    {
+    case 8:
+        configure(data()->sample_rate, data()->channels, Qmmp::PCM_S8);
+        break;
+    case 16:
+        configure(data()->sample_rate, data()->channels, Qmmp::PCM_S16LE);
+        break;
+    case 24:
+    case 32:
+        configure(data()->sample_rate, data()->channels, Qmmp::PCM_S32LE);
+        break;
+    default:
+        return FALSE;
+    }
+    if(!m_path.contains("://"))
+    {
+        ReplayGainReader rg(m_path);
+        setReplayGainInfo(rg.replayGainInfo());
+    }
 
     if(m_parser)
     {
@@ -387,11 +399,11 @@ bool DecoderFLAC::initialize()
         m_offset = m_parser->offset(m_track);
         length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
-                          audioParameters().bits() * m_length/8000;
+                          audioParameters().sampleSize() * m_length/1000;
         seek(0);
     }
     m_totalBytes = 0;
-    m_sz = audioParameters().bits() * audioParameters().channels()/8;
+    m_sz = audioParameters().sampleSize() * audioParameters().channels();
 
     qDebug("DecoderFLAC: initialize succes");
     return TRUE;
@@ -413,7 +425,7 @@ void DecoderFLAC::seek(qint64 time)
 {
     m_totalBytes = audioParameters().sampleRate() *
                    audioParameters().channels() *
-                   audioParameters().bits() * time/8000;
+                   audioParameters().sampleSize() * time/1000;
     if(m_parser)
         time += m_offset;
     FLAC__uint64 target_sample = FLAC__uint64(time * data()->total_samples /data()->length);
@@ -502,7 +514,7 @@ void DecoderFLAC::next()
         m_length = m_parser->length(m_track);
         length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
-                          audioParameters().bits() * m_length/8000;
+                          audioParameters().sampleSize() * m_length/1000;
         StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
         m_totalBytes = 0;
     }

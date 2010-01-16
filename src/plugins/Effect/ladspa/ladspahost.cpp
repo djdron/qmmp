@@ -27,6 +27,7 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 #include <qmmp/qmmp.h>
+#include <qmmp/audioparameters.h>
 #include "ladspahost.h"
 
 #ifndef PATH_MAX
@@ -56,10 +57,10 @@ LADSPAHost::~LADSPAHost()
     }
 }
 
-void LADSPAHost::configure(quint32 freq, int chan, int res)
+void LADSPAHost::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     m_chan = chan;
-    m_prec = res;
+    m_prec = AudioParameters::sampleSize(format);
     m_freq = freq;
     foreach(LADSPAEffect *e, m_effects)
     {

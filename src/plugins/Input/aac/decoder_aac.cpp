@@ -142,7 +142,7 @@ bool DecoderAAC::initialize()
 
     memmove(m_input_buf, m_input_buf + res, m_input_at - res);
     m_input_at -= res;
-    configure(freq, chan, 16);
+    configure(freq, chan, Qmmp::PCM_S16LE);
     qDebug("DecoderAAC: initialize succes");
     return TRUE;
 }

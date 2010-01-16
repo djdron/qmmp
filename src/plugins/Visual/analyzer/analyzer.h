@@ -36,8 +36,8 @@ class Buffer;
 class VisualNode
 {
 public:
-    VisualNode(short *l, short *r, unsigned long n, unsigned long o)
-            : left(l), right(r), length(n), offset(o)
+    VisualNode(short *l, short *r, unsigned long n)
+            : left(l), right(r), length(n)
     {
         // left and right are allocated and then passed to this class
         // the code that allocated left and right should give up all ownership
@@ -50,7 +50,7 @@ public:
     }
 
     short *left, *right;
-    long length, offset;
+    long length;
 };
 
 class Analyzer : public Visual
@@ -61,7 +61,7 @@ public:
     Analyzer( QWidget *parent = 0);
     virtual ~Analyzer();
 
-    void add(Buffer *, unsigned long, int, int);
+    void add(unsigned char *data, qint64 size, int chan);
     void clear();
     void paintEvent( QPaintEvent * );
 

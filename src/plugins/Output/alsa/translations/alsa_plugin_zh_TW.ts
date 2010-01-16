@@ -27,52 +27,52 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="24"/>
+        <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
         <translation>裝置設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="36"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Audio device</source>
         <translation>聲訊裝置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="48"/>
+        <location filename="../settingsdialog.ui" line="57"/>
         <source>Mixer</source>
         <translation>混頻</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="63"/>
+        <location filename="../settingsdialog.ui" line="72"/>
         <source>Mixer card:</source>
         <translation>混頻卡：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="73"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>Mixer device:</source>
         <translation>混頻裝置：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="90"/>
+        <location filename="../settingsdialog.ui" line="99"/>
         <source>Advanced Settings</source>
         <translation>進階設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="102"/>
+        <location filename="../settingsdialog.ui" line="111"/>
         <source>Soundcard</source>
         <translation>音效卡</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="108"/>
+        <location filename="../settingsdialog.ui" line="117"/>
         <source>Buffer time (ms):</source>
         <translation>緩衝時間(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="144"/>
+        <location filename="../settingsdialog.ui" line="153"/>
         <source>Period time (ms):</source>
         <translation>周期時間(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="200"/>
+        <location filename="../settingsdialog.ui" line="209"/>
         <source>Use snd_pcm_pause function</source>
         <translation type="unfinished"></translation>
     </message>
@@ -82,7 +82,7 @@
         <translation>ALSA 插件設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="180"/>
+        <location filename="../settingsdialog.ui" line="189"/>
         <source>Use mmap access</source>
         <translation>使用內存對映</translation>
     </message>

@@ -58,11 +58,14 @@ Decoder *DecoderCDAudioFactory::create(const QString &url, QIODevice *input)
 
 QList<FileInfo *> DecoderCDAudioFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
+    qDebug("create!!");
     Q_UNUSED(useMetaData);
     QList <FileInfo*> list;
     QList <CDATrack> tracks = DecoderCDAudio::generateTrackList(QUrl(fileName).path());
     foreach(CDATrack t, tracks)
-    list << new FileInfo(t.info);
+    {
+        list << new FileInfo(t.info);
+    }
     return list;
 }
 

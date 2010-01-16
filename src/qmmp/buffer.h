@@ -8,6 +8,7 @@
 #define   __buffer_h
 
 #define QMMP_BLOCK_SIZE 2048
+#define QMMP_BUFFER_SIZE (QMMP_BLOCK_SIZE*128)
 
 /*! @brief Audio buffer class.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -23,31 +24,24 @@ public:
         data = new unsigned char[QMMP_BLOCK_SIZE];
         nbytes = 0;
         rate = 0;
-        exceeding = 0;
+        size = QMMP_BLOCK_SIZE;
     }
     /*!
      * Destructor.
      */
     ~Buffer()
     {
-        delete data;
+        delete[] data;
         data = 0;
         nbytes = 0;
         rate = 0;
-        exceeding = 0;
+        size = 0;
     }
 
     unsigned char *data;      /*!< Audio data */
     unsigned long nbytes;     /*!< Audio data size */
     unsigned long rate;       /*!< Buffer bitrate */
-    unsigned long exceeding;  /*!< The number of bytes on which the size of buffer exceeds the size of the block */
-    /*!
-     * Returns block size.
-     */
-    static unsigned int size()
-    {
-        return QMMP_BLOCK_SIZE;
-    }
+    unsigned long size;       /*!< Buffer size */
 };
 
 

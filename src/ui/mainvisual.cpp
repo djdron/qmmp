@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -52,6 +52,7 @@ MainVisual::MainVisual (QWidget *parent)
     m_nodes.clear();
     createMenu();
     readSettings();
+    m_buf_at = 0;
     m_instance = this;
 }
 
@@ -97,42 +98,40 @@ void MainVisual::clear()
     update();
 }
 
-void MainVisual::add (Buffer *b, unsigned long w, int c, int p)
+void MainVisual::add (unsigned char *data, qint64 size, int chan)
 {
     if (!m_timer->isActive () || !m_vis)
         return;
-    long len = b->nbytes, cnt;
+    long len = size, cnt;
     short *l = 0, *r = 0;
 
-    len /= c;
-    len /= (p / 8);
+
+    memcpy(m_buf + m_buf_at, data, qMin(qint64(2048 - m_buf_at), size));
+    m_buf_at += qMin(qint64(2048 - m_buf_at), size);
+    if(m_buf_at < 2048)
+        return;
+    len = m_buf_at;
+    len /= chan;
+    len /= 2;
     if (len > 512)
         len = 512;
     cnt = len;
 
-    if (c >= 2)
+    if (chan >= 2)
     {
         l = new short[len];
         r = new short[len];
-
-        if (p == 8)
-            stereo16_from_stereopcm8 (l, r, b->data, cnt);
-        else if (p == 16)
-            stereo16_from_stereopcm16 (l, r, (short *) b->data, cnt);
+        stereo16_from_stereopcm16 (l, r, (short *) m_buf, cnt);
     }
-    else if (c == 1)
+    else if (chan == 1)
     {
         l = new short[len];
-
-        if (p == 8)
-            mono16_from_monopcm8 (l, b->data, cnt);
-        else if (p == 16)
-            mono16_from_monopcm16 (l, (short *) b->data, cnt);
+        mono16_from_monopcm16 (l, (short *) m_buf, cnt);
     }
     else
         len = 0;
-
-    m_nodes.append (new VisualNode (l, r, len, w));
+     m_buf_at = 0;
+    m_nodes.append (new VisualNode (l, r, len));
 }
 
 void MainVisual::timeout()

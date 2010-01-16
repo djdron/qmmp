@@ -169,8 +169,8 @@ bool DecoderFFmpeg::initialize()
         return FALSE;
     }
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
-    m_output_buf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + Qmmp::globalBufferSize()];
-    configure(c->sample_rate, c->channels, 16);
+    m_output_buf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + QMMP_BUFFER_SIZE];
+    configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
     m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");
     return TRUE;

@@ -9,27 +9,27 @@
         <translation>Модуль AudioCD</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="84"/>
+        <location filename="../decodercdaudiofactory.cpp" line="87"/>
         <source>About CD Audio Plugin</source>
         <translation>Про модуль AudioCD</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="85"/>
+        <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>Qmmp CD Audio Plugin</source>
         <translation>Модуль AudioCD для Qmmp</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="87"/>
+        <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="88"/>
+        <location filename="../decodercdaudiofactory.cpp" line="91"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
         <translation>Використання: відкрийте cdda:/// використовуючи діалог &quot;Додати адресу&quot; чи командний рядок</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="86"/>
+        <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Compiled against libcdio version:</source>
         <translation>Зібрано з libcdio версії:</translation>
     </message>

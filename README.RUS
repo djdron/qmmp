@@ -51,7 +51,7 @@ Qmmp - Qt-based multimedia player
 - libmodplug >= 0.8.4 (Опционально)
 - libsndfile >= 1.0.17 (Опционально)
 - wavpack >= 4.41 (Опционально)
-- pulseaudio >= 0.9.9 (Опционально)
+- pulseaudio >= 0.9.15 (Опционально)
 - ffmpeg >= 0.4.9-pre1 (Опционально)
 - libcdio >= 0.80 (Опционально)
 - faad2 >= 2.6.1 (Опционально)

@@ -49,9 +49,8 @@ public:
     Buffer *next();
     /*!
      * Returns current buffer for writing.
-     * @param size Buffer size.
      */
-    Buffer *get(unsigned long size); // get next in recycle
+    Buffer *get(); // get next in recycle
     /*!
      * Adds current buffer to queue.
      */

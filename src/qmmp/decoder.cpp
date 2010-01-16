@@ -37,9 +37,9 @@ void Decoder::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &rg)
     m_rg = rg;
 }
 
-void Decoder::configure(quint32 srate, int chan, int bps)
+void Decoder::configure(quint32 srate, int chan, Qmmp::AudioFormat format)
 {
-    m_parameters = AudioParameters(srate, chan, bps);
+    m_parameters = AudioParameters(srate, chan, format);
 }
 
 void Decoder::next()

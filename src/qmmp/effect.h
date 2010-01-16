@@ -23,6 +23,7 @@
 #include <QList>
 #include <QStringList>
 #include "audioparameters.h"
+#include "buffer.h"
 
 class EffectFactory;
 
@@ -41,20 +42,18 @@ public:
      */
     virtual ~Effect();
     /*!
-     * Adds effect to the input data pointer \b in_data with the size \b size.
-     * Result is stored in the output data \b out_data.
-     * Return value is the size of the output data.
+     * Adds audio effect to the buffer \b b.
      * Subclass should implement this function.
      */
-    virtual ulong process(char *in_data, const ulong size, char **out_data) = 0;
+    virtual void applyEffect(Buffer *b) = 0;
     /*!
      * Prepares object for usage.
      * Subclasses that reimplement this function must call the base implementation.
      * @param freq Sample rate.
      * @param chan Number of channels.
-     * @param res Bits per sample.
+     * @param f Audio format.
      */
-    virtual void configure(quint32 freq, int chan, int res);
+    virtual void configure(quint32 srate = 44100, int chan = 2, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
     /*!
      * Returns samplerate.
      */
@@ -64,9 +63,9 @@ public:
      */
     int channels();
     /*!
-     * Returns bits per sample.
+     * Returns audio format.
      */
-    int bitsPerSample();
+    Qmmp::AudioFormat format();
 
     const AudioParameters audioParameters() const;
     EffectFactory* factory() const;
@@ -99,7 +98,7 @@ private:
     EffectFactory *m_factory;
     quint32 m_freq;
     int m_chan;
-    int m_res;
+    Qmmp::AudioFormat m_format;
     static void checkFactories();
     static QList<EffectFactory*> *m_factories;
     static QStringList m_files;

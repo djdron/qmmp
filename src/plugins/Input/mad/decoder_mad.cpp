@@ -96,7 +96,7 @@ bool DecoderMAD::initialize()
     mad_frame_mute (&frame);
     stream.next_frame = 0;
     stream.sync = 0;
-    configure(m_freq, m_channels, 16);
+    configure(m_freq, m_channels, Qmmp::PCM_S16LE);
     m_inited = TRUE;
     return TRUE;
 }

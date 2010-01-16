@@ -24,6 +24,7 @@
 #include <QMutex>
 #include <QList>
 #include <QObject>
+#include <qmmp/qmmp.h>
 #include "ladspa.h"
 
 class QWidget;
@@ -83,7 +84,7 @@ public:
     virtual ~LADSPAHost();
 
     int applyEffect(qint16 *d, int length);
-    void configure(quint32 freq, int chan, int res);
+    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
     QList <LADSPAPlugin *> plugins();
     QList <LADSPAEffect *> runningPlugins();
     LADSPAEffect *addPlugin(LADSPAPlugin * plugin);

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,7 +42,7 @@ public:
     ~OutputALSA();
 
     bool initialize();
-    void configure(quint32, int, int);
+    void configure(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
     void pause();
 
@@ -93,6 +93,5 @@ private:
     snd_mixer_elem_t *pcm_element;
     bool m_use_mmap;
 };
-
 
 #endif // OUTPUTALSA_H

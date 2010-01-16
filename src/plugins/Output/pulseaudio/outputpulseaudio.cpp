@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -46,19 +46,24 @@ OutputPulseAudio::~OutputPulseAudio()
     uninitialize();
 }
 
-void OutputPulseAudio::configure(quint32 freq, int chan, int prec)
+void OutputPulseAudio::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     pa_sample_spec ss;
 
-    switch (prec)
+    switch (format)
     {
-    case 8:
+    case Qmmp::PCM_S8:
         ss.format = PA_SAMPLE_U8;
         break;
-    case 32:
+    case Qmmp::PCM_S16LE:
+        ss.format = PA_SAMPLE_S16LE;
+        break;
+    case Qmmp::PCM_S24LE:
+        ss.format = PA_SAMPLE_S24_32LE;
+        break;
+    case Qmmp::PCM_S32LE:
         ss.format = PA_SAMPLE_S32LE;
         break;
-    case 16:
     default:
         ss.format = PA_SAMPLE_S16LE;
     }
@@ -81,8 +86,7 @@ void OutputPulseAudio::configure(quint32 freq, int chan, int prec)
         qWarning("OutputPulseAudio: pa_simple_new() failed: %s", pa_strerror(error));
         return;
     }
-    qDebug("OutputPulseAudio: frequency=%d, channels=%d, bits=%d",  uint(freq), chan, prec);
-    Output::configure(freq, chan, prec);
+    Output::configure(freq, chan, format);
 }
 
 bool OutputPulseAudio::initialize()

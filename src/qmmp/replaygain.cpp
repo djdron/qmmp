@@ -23,13 +23,13 @@
 
 ReplayGain::ReplayGain()
 {
-    m_bits = 0;
+    m_sampleSize = 2;
     m_scale = 1.0;
 }
 
-void ReplayGain::setSampleSize(int bits)
+void ReplayGain::setSampleSize(int size)
 {
-    m_bits = bits;
+    m_sampleSize = size;
     updateScale();
 }
 
@@ -60,19 +60,19 @@ void ReplayGain::applyReplayGain(char *data, qint64 size)
 {
     if(m_settings.mode() == ReplayGainSettings::DISABLED || m_scale == 1.0)
         return;
-    size = size*8/m_bits;
-    if(m_bits == 16)
+    size = size/m_sampleSize;
+    if(m_sampleSize == 2)
     {
         for (qint64 i = 0; i < size; i++)
             ((short*)data)[i]*= m_scale;
 
     }
-    else if(m_bits == 8)
+    else if(m_sampleSize == 1)
     {
         for (qint64 i = 0; i < size; i++)
             ((char*)data)[i]*= m_scale;
     }
-    else if(m_bits == 32)
+    else if(m_sampleSize == 4)
     {
         for (qint64 i = 0; i < size; i++)
            ((qint32*)data)[i]*= m_scale;

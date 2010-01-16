@@ -82,43 +82,35 @@ void Analyzer::clear()
     update();
 }
 
-void Analyzer::add (Buffer *b, unsigned long w, int c, int p)
+void Analyzer::add (unsigned char *data, qint64 size, int chan)
 {
     if (!m_timer->isActive ())
         return;
-    long len = b->nbytes, cnt;
+    long len = size, cnt;
     short *l = 0, *r = 0;
 
-    len /= c;
-    len /= (p / 8);
+    len /= chan;
+    len /= 2;
     if (len > 512)
         len = 512;
     cnt = len;
 
-    if (c == 2)
+    if (chan == 2)
     {
         l = new short[len];
         r = new short[len];
-
-        if (p == 8)
-            stereo16_from_stereopcm8 (l, r, b->data, cnt);
-        else if (p == 16)
-            stereo16_from_stereopcm16 (l, r, (short *) b->data, cnt);
+        stereo16_from_stereopcm16 (l, r, (short *) data, cnt);
     }
-    else if (c == 1)
+    else if (chan == 1)
     {
         l = new short[len];
-
-        if (p == 8)
-            mono16_from_monopcm8 (l, b->data, cnt);
-        else if (p == 16)
-            mono16_from_monopcm16 (l, (short *) b->data, cnt);
+        mono16_from_monopcm16 (l, (short *) data, cnt);
     }
     else
         len = 0;
 
     if (len)
-        m_nodes.append (new VisualNode (l, r, len, w));
+        m_nodes.append (new VisualNode (l, r, len));
 }
 
 void Analyzer::timeout()
