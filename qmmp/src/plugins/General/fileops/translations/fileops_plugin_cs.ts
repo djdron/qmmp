@@ -152,7 +152,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
         <source>Comment</source>
-        <translation>Komentář</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="216"/>

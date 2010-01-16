@@ -112,7 +112,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Reset</source>
-        <translation>Obnovit</translation>
+        <translation>Původní</translation>
     </message>
 </context>
 </TS>
