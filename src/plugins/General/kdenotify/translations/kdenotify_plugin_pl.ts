@@ -4,21 +4,17 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <source>Now playing:</source>
-        <translation type="obsolete">Teraz odtwarzane:</translation>
-    </message>
-    <message>
-        <location filename="../kdenotify.cpp" line="63"/>
+        <location filename="../kdenotify.cpp" line="97"/>
         <source>Qmmp now playing:</source>
         <translation>Qmmp teraz odtwarza:</translation>
     </message>
     <message>
-        <location filename="../kdenotify.cpp" line="73"/>
+        <location filename="../kdenotify.cpp" line="107"/>
         <source>by </source>
         <translation>przez </translation>
     </message>
     <message>
-        <location filename="../kdenotify.cpp" line="78"/>
+        <location filename="../kdenotify.cpp" line="112"/>
         <source>on </source>
         <translation>na </translation>
     </message>
@@ -26,17 +22,17 @@
 <context>
     <name>KdeNotifyFactory</name>
     <message>
-        <location filename="../kdenotifyfactory.cpp" line="10"/>
+        <location filename="../kdenotifyfactory.cpp" line="30"/>
         <source>KDE 4 notification plugin</source>
         <translation>Wtyczka powiadamiania KDE 4</translation>
     </message>
     <message>
-        <location filename="../kdenotifyfactory.cpp" line="30"/>
+        <location filename="../kdenotifyfactory.cpp" line="50"/>
         <source>About KDE Notification Plugin</source>
         <translation>O wtyczce Powiadomienia KDE</translation>
     </message>
     <message>
-        <location filename="../kdenotifyfactory.cpp" line="31"/>
+        <location filename="../kdenotifyfactory.cpp" line="51"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
         <translation>Wtyczka Powiadomienia KDE 4 dla Qmmp 
@@ -54,6 +50,11 @@
         <location filename="../settingsdialog.ui" line="20"/>
         <source>Notification delay [ms]:</source>
         <translation>Czas zanikania [ms]:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="47"/>
+        <source>Show covers</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

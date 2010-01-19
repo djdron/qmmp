@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Artur Guzik                                     *
+ *   Copyright (C) 2009-2010 by Artur Guzik                                *
  *   a.guzik88@gmail.com                                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,13 +21,13 @@
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDBusInterface>
-#include <QList>
-#include <QStringList>
-#include <QVariant>
 #include <QFileInfo>
 #include <QDir>
 #include <QSettings>
 #include <QDebug>
+#include <QTimer>
+#include <QImage>
+
 #include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
 #include "kdenotify.h"
@@ -43,36 +43,47 @@ KdeNotify::KdeNotify(QObject *parent) : General(parent)
         return;
     }
 
+    m_ConfigDir = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+
     QSettings settings(Qmmp::configFile(),QSettings::IniFormat);
     settings.beginGroup("Kde_Notifier");
     m_NotifyDelay = settings.value("notify_delay",10000).toInt();
+    m_ShowCovers = settings.value("show_covers",true).toBool();
     settings.endGroup();
-    connect(SoundCore::instance(),SIGNAL(metaDataChanged()), SLOT(showMetaData()));
+
+    QTimer *timer = new QTimer(this);
+    timer->setSingleShot(true);
+    timer->setInterval(3000); //after that notification will be showed.
+    connect(timer,SIGNAL(timeout()),SLOT(showMetaData()));
+    connect(SoundCore::instance(),SIGNAL(metaDataChanged()),timer, SLOT(start()));
 }
 
 KdeNotify::~KdeNotify()
 {
+    QDir dir(QDir::home());
+    dir.remove(m_ConfigDir + "/cover.jpg");
     delete notifier;
 }
 
 QString KdeNotify::totalTimeString()
 {
-    SoundCore * core = SoundCore::instance();
-    int second = core->totalTime() / 1000;
-    int minute = second / 60;
-    int hour = minute / 60;
+    int time = SoundCore::instance()->totalTime()/1000;
 
-    if(core->totalTime() >= 3600000)
+    if(time >= 3600)
     {
-        return QString("%1:%2:%3").arg(hour,2,10,QChar('0')).arg(minute%60,2,10,QChar('0'))
-                                  .arg(second%60,2,10,QChar('0'));
+	return QString("%1:%2:%3").arg(time/3600,2,10,QChar('0')).arg(time%3600/60,2,10,QChar('0'))
+				  .arg(time%60,2,10,QChar('0'));
     }
-    return QString("%1:%2").arg(minute%60,2,10,QChar('0')).arg(second%60,2,10,QChar('0'));
+    return QString("%1:%2").arg(time/60,2,10,QChar('0')).arg(time%60,2,10,QChar('0'));
 }
 
-void KdeNotify::showMetaData()
+QList<QVariant> KdeNotify::prepareNotification()
 {
     SoundCore *core = SoundCore::instance();
+    if(core->metaData(Qmmp::URL).isEmpty()) //prevent show empty notification
+    {
+	return QList<QVariant>();
+    }
     QList<QVariant> args;
     QString body(""); //metadata set
     QString title(core->metaData(Qmmp::TITLE));
@@ -82,8 +93,8 @@ void KdeNotify::showMetaData()
     args.append("Qmmp"); //app-name
     args.append(0U); //replaces-id
     args.append(""); //event-id
-    args.append(QFileInfo(Qmmp::configFile()).absoluteDir().path() + "/app_icon.png"); //app-icon(path to icon on disk)
-   args.append(tr("Qmmp now playing:")); //summary (notification title)
+    args.append(m_ConfigDir + "/app_icon.png"); //app-icon(path to icon on disk)
+    args.append(tr("Qmmp now playing:")); //summary (notification title)
 
     if(title.isEmpty())
     {
@@ -93,20 +104,26 @@ void KdeNotify::showMetaData()
 
     if(!artist.isEmpty())
     {
-        body.append(tr("by ") + artist + "<br>");
+	body.append(tr("by ") + artist + "<br>");
     }
 
     if(!album.isEmpty())
     {
-        body.append(tr("on ") + album);
+	body.append(tr("on ") + album);
     }
 
     QString nBody;
-    QString coverPath = MetaDataManager::instance()->getCoverPath(core->metaData(Qmmp::URL));
 
-    if(coverPath.isEmpty())
+    QString coverPath = MetaDataManager::instance()->getCoverPath(core->metaData(Qmmp::URL));
+    if(!coverPath.isEmpty() && m_ShowCovers)
     {
-        coverPath = QFileInfo(Qmmp::configFile()).absoluteDir().path() + "/empty_cover.png";
+	QImage image(coverPath);
+	image.scaled(100,100,Qt::IgnoreAspectRatio,Qt::SmoothTransformation).save(m_ConfigDir + "/cover.jpg","JPG");
+	coverPath = m_ConfigDir + "/cover.jpg";
+    }
+    else if(coverPath.isEmpty() || !m_ShowCovers)
+    {
+	coverPath = m_ConfigDir + "/empty_cover.png";
     }
 
     nBody.append("<table padding=\"3px\"><tr><td width=\"80px\" height=\"80px\" padding=\"3px\">");
@@ -118,5 +135,12 @@ void KdeNotify::showMetaData()
     args.append(QVariantMap()); //hints
     args.append(m_NotifyDelay); //timeout
 
-    notifier->callWithArgumentList(QDBus::AutoDetect,"Notify",args);
+    return args;
+}
+
+void KdeNotify::showMetaData()
+{
+    QList<QVariant> n = prepareNotification();
+    if(!n.isEmpty())
+	notifier->callWithArgumentList(QDBus::NoBlock,"Notify",n);
 }
