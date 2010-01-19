@@ -83,10 +83,9 @@ Buffer *Recycler::next()
 
 void Recycler::done()
 {
-    if (!current_count)
-        return;
     done_index = ++done_index % buffer_count;
-    current_count--;
+    if (current_count)
+        current_count--;
 }
 
 
