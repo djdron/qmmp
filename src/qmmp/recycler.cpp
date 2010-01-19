@@ -91,7 +91,7 @@ void Recycler::done()
 
 void Recycler::clear()
 {
-    add_index = current_count = 0;
+    current_count = 0;
 }
 
 
