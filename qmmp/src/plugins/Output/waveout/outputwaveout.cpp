@@ -94,13 +94,13 @@ OutputWaveOut::~OutputWaveOut()
     uninitialize();
 }
 
-void OutputWaveOut::configure(quint32 freq, int chan, int prec)
+void OutputWaveOut::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     WAVEFORMATEX fmt;
     UINT deviceID = WAVE_MAPPER;
 
     fmt.wFormatTag = WAVE_FORMAT_PCM;
-    fmt.wBitsPerSample  = prec;
+    fmt.wBitsPerSample  = 16;
     fmt.nChannels       = chan;
     fmt.nSamplesPerSec  = (unsigned long)(freq);
     fmt.nBlockAlign     = fmt.nChannels * fmt.wBitsPerSample/8;
@@ -128,7 +128,7 @@ void OutputWaveOut::configure(quint32 freq, int chan, int prec)
 
     waveOutReset (dev);
     InitializeCriticalSection ( &cs );
-    Output::configure(freq, chan, prec);
+    Output::configure(freq, chan, format);
     return;
 }
 
