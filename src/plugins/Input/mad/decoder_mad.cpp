@@ -364,7 +364,7 @@ void DecoderMAD::seek(qint64 pos)
         stream.sync = 0;
         m_input_bytes = 0;
         stream.next_frame = 0;
-        m_skip_frames = 2;
+        m_skip_frames = 3;
     }
 }
 
