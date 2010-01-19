@@ -179,7 +179,8 @@ void FileDialog::registerExternalFactories()
             qApp->installTranslator(fct->createTranslator(qApp));
         }
     }
-#if QT_VERSION < 0x040600
+#ifndef Q_OS_WIN32
+#if (QT_VERSION < 0x040600)
     //load native kde dialog
     QStringList paths;
     paths << "/usr/lib/kde4/kio_file.so";
@@ -189,10 +190,12 @@ void FileDialog::registerExternalFactories()
     {
         if(QFile::exists(path))
         {
-            QLibrary *l = new QLibrary("/usr/lib/kde4/kio_file.so", qApp);
+            QLibrary *l = new QLibrary(path, qApp);
             l->load();
+            break;
         }
     }
+#endif
 #endif
 }
 
