@@ -368,9 +368,9 @@ void QmmpAudioEngine::run()
             m_decoder->seek(m_seekTime);
             m_seekTime = -1;
             m_output->recycler()->mutex()->lock ();
-            while(m_output->recycler()->used() > 1)
-                m_output->recycler()->done();
+            m_output->recycler()->clear();
             m_output->recycler()->mutex()->unlock ();
+            m_output_at = 0;
         }
 
         len = m_decoder->read((char *)(m_output_buf + m_output_at),
@@ -484,8 +484,7 @@ void QmmpAudioEngine::flush(bool final)
         m_output->recycler()->mutex()->lock ();
         if(m_seekTime >= 0)
         {
-            while(m_output->recycler()->used() > 1)
-                m_output->recycler()->done();
+            m_output->recycler()->clear();
             m_output->recycler()->mutex()->unlock ();
             m_output_at = 0;
             break;

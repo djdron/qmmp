@@ -7,8 +7,8 @@
 #include "recycler.h"
 #include "buffer.h"
 
-Recycler::Recycler ( unsigned int sz )
-        : add_index ( 0 ), done_index ( 0 ), current_count ( 0 )
+Recycler::Recycler (unsigned int sz)
+        : add_index (0), done_index (0), current_count (0)
 {
     buffer_count = sz / QMMP_BLOCK_SIZE;
     if (buffer_count < 4)
@@ -18,7 +18,7 @@ Recycler::Recycler ( unsigned int sz )
 
     buffers = new Buffer*[buffer_count];
 
-    for ( unsigned int i = 0; i < buffer_count; i ++ )
+    for (unsigned int i = 0; i < buffer_count; i++)
     {
         buffers[i] = new Buffer;
     }
@@ -27,7 +27,7 @@ Recycler::Recycler ( unsigned int sz )
 
 Recycler::~Recycler()
 {
-    for ( unsigned int i = 0; i < buffer_count; i++ )
+    for (unsigned int i = 0; i < buffer_count; i++)
     {
         delete buffers[i];
         buffers[i] = 0;
@@ -77,21 +77,22 @@ void Recycler::add()
 
 Buffer *Recycler::next()
 {
-    return empty() ? 0 : buffers[done_index];
+    return !current_count ? 0 : buffers[done_index];
 }
 
 
 void Recycler::done()
 {
+    if (!current_count)
+        return;
     done_index = ++done_index % buffer_count;
-    if (current_count)
-        current_count--;
+    current_count--;
 }
 
 
 void Recycler::clear()
 {
-    add_index = done_index = current_count = 0;
+    add_index = current_count = 0;
 }
 
 
