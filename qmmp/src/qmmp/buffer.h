@@ -7,8 +7,8 @@
 #ifndef   __buffer_h
 #define   __buffer_h
 
-#define QMMP_BLOCK_SIZE 2048
-#define QMMP_BUFFER_SIZE (QMMP_BLOCK_SIZE*128)
+#define QMMP_BLOCK_SIZE (2048*6) //512*4*6
+#define QMMP_BUFFER_SIZE (QMMP_BLOCK_SIZE*64)
 
 /*! @brief Audio buffer class.
  * @author Brad Hughes <bhughes@trolltech.com>
