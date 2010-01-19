@@ -21,6 +21,9 @@
 #ifndef KDENOTIFY_H
 #define KDENOTIFY_H
 
+#include <QList>
+#include <QVariant>
+
 #include "qmmpui/general.h"
 #include "qmmp/qmmp.h"
 
@@ -34,8 +37,11 @@ public:
     ~KdeNotify();
 
 private:
+    QList<QVariant> prepareNotification();
     QDBusInterface *notifier;
+    QString m_ConfigDir;
     int m_NotifyDelay;
+    bool m_ShowCovers;
 
 private slots:
     void showMetaData();

@@ -28,3 +28,14 @@ HEADERS += kdenotifyfactory.h \
     settingsdialog.h
 RESOURCES += translations/translations.qrc
 FORMS += settingsdialog.ui
+
+TRANSLATIONS = translations/kdenotify_plugin_cs.ts \
+               translations/kdenotify_plugin_de.ts \
+               translations/kdenotify_plugin_zh_CN.ts \
+               translations/kdenotify_plugin_zh_TW.ts \
+               translations/kdenotify_plugin_ru.ts \
+               translations/kdenotify_plugin_pl.ts \
+               translations/kdenotify_plugin_uk_UA.ts \
+               translations/kdenotify_plugin_it.ts \
+               translations/kdenotify_plugin_tr.ts \
+               translations/kdenotify_plugin_lt.ts
