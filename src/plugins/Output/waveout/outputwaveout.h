@@ -37,12 +37,12 @@ public:
     ~OutputWaveOut();
 
     bool initialize();
-    void configure(quint32, int, int);
+    void configure(quint32, int,  Qmmp::AudioFormat format);
     qint64 latency();
 
 private:
     //output api
-    qint64 writeAudio(unsigned char *data, qint64 maxSize);
+    qint64 writeAudio(unsigned char *data, qint64 size);
     void flush();
 
     // helper functions
