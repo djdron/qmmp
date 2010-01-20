@@ -47,49 +47,27 @@ calc_mono_freq(short dest[2][256], short src[2][512], int nch)
     }
 }
 
-static inline void stereo16_from_stereopcm8(register short *l,
-        register short *r,
-        register uchar *c,
-        long cnt)
+static inline void stereo16_from_multichannel(register short *l,
+                                              register short *r,
+                                              register short *s,
+                                              long cnt, int chan)
 {
-    while (cnt >= 4l)
+    while (cnt > 0)
     {
-        l[0] = c[0];
-        r[0] = c[1];
-        l[1] = c[2];
-        r[1] = c[3];
-        l[2] = c[4];
-        r[2] = c[5];
-        l[3] = c[6];
-        r[3] = c[7];
-        l += 4;
-        r += 4;
-        c += 8;
-        cnt -= 4l;
-    }
-
-    if (cnt > 0l)
-    {
-        l[0] = c[0];
-        r[0] = c[1];
-        if (cnt > 1l)
-        {
-            l[1] = c[2];
-            r[1] = c[3];
-            if (cnt > 2l)
-            {
-                l[2] = c[4];
-                r[2] = c[5];
-            }
-        }
+        l[0] = s[0];
+        r[0] = s[1];
+        s += chan;
+        l++;
+        r++;
+        cnt--;
     }
 }
 
 
 static inline void stereo16_from_stereopcm16(register short *l,
-        register short *r,
-        register short *s,
-        long cnt)
+                                             register short *r,
+                                             register short *s,
+                                             long cnt)
 {
     while (cnt >= 4l)
     {
@@ -124,40 +102,9 @@ static inline void stereo16_from_stereopcm16(register short *l,
     }
 }
 
-
-static inline void mono16_from_monopcm8(register short *l,
-                                        register uchar *c,
-                                        long cnt)
-{
-    while (cnt >= 4l)
-    {
-        l[0] = c[0];
-        l[1] = c[1];
-        l[2] = c[2];
-        l[3] = c[3];
-        l += 4;
-        c += 4;
-        cnt -= 4l;
-    }
-
-    if (cnt > 0l)
-    {
-        l[0] = c[0];
-        if (cnt > 1l)
-        {
-            l[1] = c[1];
-            if (cnt > 2l)
-            {
-                l[2] = c[2];
-            }
-        }
-    }
-}
-
-
 static inline void mono16_from_monopcm16(register short *l,
-        register short *s,
-        long cnt)
+                                         register short *s,
+                                         long cnt)
 {
     while (cnt >= 4l)
     {
