@@ -75,7 +75,8 @@ private:
     Output *m_output;
 
     bool m_eqInited;
-    bool m_useEQ;
+    bool m_useEq;
+    bool m_eqEnabled;
     bool m_done, m_finish, m_user_stop;
     uint m_bks;
     qint64 m_totalTime, m_seekTime;

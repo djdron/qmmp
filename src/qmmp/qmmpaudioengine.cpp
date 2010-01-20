@@ -39,7 +39,7 @@ extern "C"
 
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
         : AbstractEngine(parent), m_factory(0), m_output(0), m_eqInited(FALSE),
-        m_useEQ(FALSE)
+        m_useEq(FALSE), m_eqEnabled(FALSE)
 {
     m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
     double b[] = {0,0,0,0,0,0,0,0,0,0};
@@ -159,7 +159,9 @@ void QmmpAudioEngine::setEQ(double bands[10], double preamp)
 void QmmpAudioEngine::setEQEnabled(bool on)
 {
     mutex()->lock();
-    m_useEQ = on;
+    m_eqEnabled = on;
+    if(m_decoder)
+        m_useEq = m_eqEnabled && m_decoder->audioParameters().format() == Qmmp::PCM_S16LE;
     mutex()->unlock();
 }
 
@@ -303,7 +305,7 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
 {
     uint sz = size < m_bks ? size : m_bks;
     m_replayGain->applyReplayGain(data, sz);
-    if (m_useEQ)
+    if (m_useEq && m_decoder->audioParameters().format() == Qmmp::PCM_S16LE)
     {
         if (!m_eqInited)
         {
@@ -556,6 +558,12 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
     m_effects = Effect::create();
     AudioParameters ap = m_ap;
     m_replayGain->setSampleSize(m_ap.sampleSize());
+    if(!m_eqInited)
+    {
+        init_iir();
+        m_eqInited = TRUE;
+    }
+    m_useEq = m_eqEnabled && ap.format() == Qmmp::PCM_S16LE;
 
     foreach(Effect *effect, m_effects)
     {
