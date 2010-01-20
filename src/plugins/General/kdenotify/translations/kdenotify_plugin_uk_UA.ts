@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати обкладинки</translation>
     </message>
 </context>
 </TS>
