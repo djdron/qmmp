@@ -111,8 +111,6 @@ private:
     QActionGroup *m_analyzerTypeGroup;
     QAction *m_peaksAction;
     QAction *m_transparentAction;
-    unsigned char m_buf[2048];
-    int m_buf_at;
     int m_ratio;
 };
 
