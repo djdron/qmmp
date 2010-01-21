@@ -86,31 +86,28 @@ void Analyzer::add (unsigned char *data, qint64 size, int chan)
 {
     if (!m_timer->isActive ())
         return;
-    long len = size, cnt;
+
     short *l = 0, *r = 0;
-
-    len /= chan;
-    len /= 2;
-    if (len > 512)
-        len = 512;
-    cnt = len;
-
-    if (chan == 2)
+    qint64 samples = size/chan >> 1;
+    int frames = samples/512;
+    for (int i = 0; i < frames; ++i)
     {
-        l = new short[len];
-        r = new short[len];
-        stereo16_from_stereopcm16 (l, r, (short *) data, cnt);
+        l = new short[512];
+        r = 0;
+        if (chan == 2)
+        {
+            r = new short[512];
+            stereo16_from_stereopcm16 (l, r, (short *) (data + i*4*512), 512);
+        }
+        else if (chan == 1)
+            mono16_from_monopcm16 (l, (short *) (data + i*2*512), 512);
+        else
+        {
+            r = new short[512];
+            stereo16_from_multichannel(l, r, (short *) (data + i*2*chan*512), 512, chan);
+        }
+        m_nodes.append (new VisualNode (l, r, 512));
     }
-    else if (chan == 1)
-    {
-        l = new short[len];
-        mono16_from_monopcm16 (l, (short *) data, cnt);
-    }
-    else
-        len = 0;
-
-    if (len)
-        m_nodes.append (new VisualNode (l, r, len));
 }
 
 void Analyzer::timeout()
