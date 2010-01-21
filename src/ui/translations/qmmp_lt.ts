@@ -173,40 +173,40 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
-        <location filename="../configdialog.cpp" line="298"/>
-        <location filename="../configdialog.cpp" line="330"/>
-        <location filename="../configdialog.cpp" line="363"/>
-        <location filename="../configdialog.cpp" line="396"/>
+        <location filename="../configdialog.cpp" line="246"/>
+        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="331"/>
+        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="397"/>
         <source>Enabled</source>
         <translation>Įjungtas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
-        <location filename="../configdialog.cpp" line="298"/>
-        <location filename="../configdialog.cpp" line="330"/>
-        <location filename="../configdialog.cpp" line="363"/>
-        <location filename="../configdialog.cpp" line="396"/>
+        <location filename="../configdialog.cpp" line="246"/>
+        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="331"/>
+        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="397"/>
         <source>Description</source>
         <translation>Aprašymas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
-        <location filename="../configdialog.cpp" line="298"/>
-        <location filename="../configdialog.cpp" line="330"/>
-        <location filename="../configdialog.cpp" line="363"/>
-        <location filename="../configdialog.cpp" line="396"/>
+        <location filename="../configdialog.cpp" line="246"/>
+        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="331"/>
+        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="397"/>
         <source>Filename</source>
         <translation>Bylos pavadinimas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="595"/>
+        <location filename="../configdialog.cpp" line="596"/>
         <source>Artist</source>
         <translation>Atlikėjas</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="82"/>
-        <location filename="../configdialog.cpp" line="596"/>
+        <location filename="../configdialog.cpp" line="597"/>
         <source>Album</source>
         <translation>Albumas</translation>
     </message>
@@ -221,57 +221,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="597"/>
+        <location filename="../configdialog.cpp" line="598"/>
         <source>Title</source>
         <translation>Pavadinimas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="598"/>
+        <location filename="../configdialog.cpp" line="599"/>
         <source>Track number</source>
         <translation>Takelio numeris</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="599"/>
+        <location filename="../configdialog.cpp" line="600"/>
         <source>Two-digit track number</source>
         <translation>Dviejų skaičių takelio numeris</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="603"/>
+        <location filename="../configdialog.cpp" line="604"/>
         <source>Disc number</source>
         <translation>Disko numeris</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="607"/>
+        <location filename="../configdialog.cpp" line="608"/>
         <source>Condition</source>
         <translation>Būklė</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="602"/>
+        <location filename="../configdialog.cpp" line="603"/>
         <source>Composer</source>
         <translation>Autorius</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="604"/>
+        <location filename="../configdialog.cpp" line="605"/>
         <source>File name</source>
         <translation>Bylos pavadinimas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="605"/>
+        <location filename="../configdialog.cpp" line="606"/>
         <source>File path</source>
         <translation>Bylos kelias</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="600"/>
+        <location filename="../configdialog.cpp" line="601"/>
         <source>Genre</source>
         <translation>Žanras</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="606"/>
+        <location filename="../configdialog.cpp" line="607"/>
         <source>Year</source>
         <translation>Metai</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="601"/>
+        <location filename="../configdialog.cpp" line="602"/>
         <source>Comment</source>
         <translation>Komentaras</translation>
     </message>
@@ -376,17 +376,22 @@
         <translation>Papildomi</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1237"/>
+        <location filename="../forms/configdialog.ui" line="1187"/>
+        <source>16-bit output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1244"/>
         <source>Close</source>
         <translation>Užverti</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="207"/>
+        <location filename="../configdialog.cpp" line="208"/>
         <source>Archived skin</source>
         <translation>Suspausta tema</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="227"/>
+        <location filename="../configdialog.cpp" line="228"/>
         <source>Unarchived skin</source>
         <translation>Išskleista tema</translation>
     </message>
@@ -599,12 +604,12 @@
         <translation>Paversti %20 į tarpus</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="752"/>
+        <location filename="../configdialog.cpp" line="757"/>
         <source>Select Skin Files</source>
         <translation>Pasirinkti temų bylas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="753"/>
+        <location filename="../configdialog.cpp" line="758"/>
         <source>Skin files</source>
         <translation>Temų bylos</translation>
     </message>
@@ -822,132 +827,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="292"/>
+        <location filename="../mainvisual.cpp" line="283"/>
         <source>Visualization Mode</source>
         <translation>Vizualizacijos metodas</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="295"/>
+        <location filename="../mainvisual.cpp" line="286"/>
         <source>Analyzer</source>
         <translation>Analizatorius</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="296"/>
+        <location filename="../mainvisual.cpp" line="287"/>
         <source>Scope</source>
         <translation>Scope</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="288"/>
         <source>Off</source>
         <translation>Išjungta</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="304"/>
+        <location filename="../mainvisual.cpp" line="295"/>
         <source>Analyzer Mode</source>
         <translation>Analizatoriaus metodas</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="307"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Normal</source>
         <translation>Įprastinis</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="308"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Fire</source>
         <translation>Ugnis</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="309"/>
+        <location filename="../mainvisual.cpp" line="300"/>
         <source>Vertical Lines</source>
         <translation>Vertikalios linijos</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="310"/>
+        <location filename="../mainvisual.cpp" line="301"/>
         <source>Lines</source>
         <translation>Linijos</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="311"/>
+        <location filename="../mainvisual.cpp" line="302"/>
         <source>Bars</source>
         <translation>Bangos</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="324"/>
+        <location filename="../mainvisual.cpp" line="315"/>
         <source>Peaks</source>
         <translation>Pikai</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="328"/>
+        <location filename="../mainvisual.cpp" line="319"/>
         <source>Refresh Rate</source>
         <translation>Atnaujinimo dažnumas</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="331"/>
+        <location filename="../mainvisual.cpp" line="322"/>
         <source>50 fps</source>
         <translation>50 kps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="332"/>
+        <location filename="../mainvisual.cpp" line="323"/>
         <source>25 fps</source>
         <translation>25 kps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
+        <location filename="../mainvisual.cpp" line="324"/>
         <source>10 fps</source>
         <translation>10 kps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="325"/>
         <source>5 fps</source>
         <translation>5 kps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="341"/>
+        <location filename="../mainvisual.cpp" line="332"/>
         <source>Analyzer Falloff</source>
         <translation>Analyzer Falloff</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="344"/>
-        <location filename="../mainvisual.cpp" line="358"/>
+        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="349"/>
         <source>Slowest</source>
         <translation>Lėčiausias</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="345"/>
-        <location filename="../mainvisual.cpp" line="359"/>
+        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="350"/>
         <source>Slow</source>
         <translation>Lėtas</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
-        <location filename="../mainvisual.cpp" line="360"/>
+        <location filename="../mainvisual.cpp" line="337"/>
+        <location filename="../mainvisual.cpp" line="351"/>
         <source>Medium</source>
         <translation>Vidutinis</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
-        <location filename="../mainvisual.cpp" line="361"/>
+        <location filename="../mainvisual.cpp" line="338"/>
+        <location filename="../mainvisual.cpp" line="352"/>
         <source>Fast</source>
         <translation>Greitas</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
-        <location filename="../mainvisual.cpp" line="362"/>
+        <location filename="../mainvisual.cpp" line="339"/>
+        <location filename="../mainvisual.cpp" line="353"/>
         <source>Fastest</source>
         <translation>Greičiausias</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="355"/>
+        <location filename="../mainvisual.cpp" line="346"/>
         <source>Peaks Falloff</source>
         <translation>Peaks Falloff</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="368"/>
+        <location filename="../mainvisual.cpp" line="359"/>
         <source>Background</source>
         <translation>Fonas</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="369"/>
+        <location filename="../mainvisual.cpp" line="360"/>
         <source>Transparent</source>
         <translation>Permatomumas</translation>
     </message>

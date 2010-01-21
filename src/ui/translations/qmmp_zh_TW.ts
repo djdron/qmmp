@@ -173,40 +173,40 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
-        <location filename="../configdialog.cpp" line="298"/>
-        <location filename="../configdialog.cpp" line="330"/>
-        <location filename="../configdialog.cpp" line="363"/>
-        <location filename="../configdialog.cpp" line="396"/>
+        <location filename="../configdialog.cpp" line="246"/>
+        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="331"/>
+        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="397"/>
         <source>Enabled</source>
         <translation>啟用</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
-        <location filename="../configdialog.cpp" line="298"/>
-        <location filename="../configdialog.cpp" line="330"/>
-        <location filename="../configdialog.cpp" line="363"/>
-        <location filename="../configdialog.cpp" line="396"/>
+        <location filename="../configdialog.cpp" line="246"/>
+        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="331"/>
+        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="397"/>
         <source>Description</source>
         <translation>說明</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
-        <location filename="../configdialog.cpp" line="298"/>
-        <location filename="../configdialog.cpp" line="330"/>
-        <location filename="../configdialog.cpp" line="363"/>
-        <location filename="../configdialog.cpp" line="396"/>
+        <location filename="../configdialog.cpp" line="246"/>
+        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="331"/>
+        <location filename="../configdialog.cpp" line="364"/>
+        <location filename="../configdialog.cpp" line="397"/>
         <source>Filename</source>
         <translation>檔名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="595"/>
+        <location filename="../configdialog.cpp" line="596"/>
         <source>Artist</source>
         <translation>藝術家</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="82"/>
-        <location filename="../configdialog.cpp" line="596"/>
+        <location filename="../configdialog.cpp" line="597"/>
         <source>Album</source>
         <translation>專輯</translation>
     </message>
@@ -221,57 +221,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="597"/>
+        <location filename="../configdialog.cpp" line="598"/>
         <source>Title</source>
         <translation>標題</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="598"/>
+        <location filename="../configdialog.cpp" line="599"/>
         <source>Track number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="599"/>
+        <location filename="../configdialog.cpp" line="600"/>
         <source>Two-digit track number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="603"/>
+        <location filename="../configdialog.cpp" line="604"/>
         <source>Disc number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="607"/>
+        <location filename="../configdialog.cpp" line="608"/>
         <source>Condition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="600"/>
+        <location filename="../configdialog.cpp" line="601"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="602"/>
+        <location filename="../configdialog.cpp" line="603"/>
         <source>Composer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="604"/>
+        <location filename="../configdialog.cpp" line="605"/>
         <source>File name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="605"/>
+        <location filename="../configdialog.cpp" line="606"/>
         <source>File path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="606"/>
+        <location filename="../configdialog.cpp" line="607"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="601"/>
+        <location filename="../configdialog.cpp" line="602"/>
         <source>Comment</source>
         <translation>備註</translation>
     </message>
@@ -376,17 +376,22 @@
         <translation>進階</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1237"/>
+        <location filename="../forms/configdialog.ui" line="1187"/>
+        <source>16-bit output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1244"/>
         <source>Close</source>
         <translation>關閉</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="207"/>
+        <location filename="../configdialog.cpp" line="208"/>
         <source>Archived skin</source>
         <translation>封包皮膚</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="227"/>
+        <location filename="../configdialog.cpp" line="228"/>
         <source>Unarchived skin</source>
         <translation>未封包皮膚</translation>
     </message>
@@ -598,12 +603,12 @@
         <translation>轉換 %20 為空格</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="752"/>
+        <location filename="../configdialog.cpp" line="757"/>
         <source>Select Skin Files</source>
         <translation>選取皮膚檔案</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="753"/>
+        <location filename="../configdialog.cpp" line="758"/>
         <source>Skin files</source>
         <translation>皮膚檔案</translation>
     </message>
@@ -821,132 +826,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="292"/>
+        <location filename="../mainvisual.cpp" line="283"/>
         <source>Visualization Mode</source>
         <translation>可視化型態</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="295"/>
+        <location filename="../mainvisual.cpp" line="286"/>
         <source>Analyzer</source>
         <translation>解析器</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="296"/>
+        <location filename="../mainvisual.cpp" line="287"/>
         <source>Scope</source>
         <translation>示波器</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="288"/>
         <source>Off</source>
         <translation>關閉</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="304"/>
+        <location filename="../mainvisual.cpp" line="295"/>
         <source>Analyzer Mode</source>
         <translation>解析型態</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="307"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Normal</source>
         <translation>標準</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="308"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Fire</source>
         <translation>火花</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="309"/>
+        <location filename="../mainvisual.cpp" line="300"/>
         <source>Vertical Lines</source>
         <translation>垂直線</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="310"/>
+        <location filename="../mainvisual.cpp" line="301"/>
         <source>Lines</source>
         <translation>線形</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="311"/>
+        <location filename="../mainvisual.cpp" line="302"/>
         <source>Bars</source>
         <translation>條形</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="324"/>
+        <location filename="../mainvisual.cpp" line="315"/>
         <source>Peaks</source>
         <translation>峰值</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="328"/>
+        <location filename="../mainvisual.cpp" line="319"/>
         <source>Refresh Rate</source>
         <translation>刷新率</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="331"/>
+        <location filename="../mainvisual.cpp" line="322"/>
         <source>50 fps</source>
         <translation>50 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="332"/>
+        <location filename="../mainvisual.cpp" line="323"/>
         <source>25 fps</source>
         <translation>25 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
+        <location filename="../mainvisual.cpp" line="324"/>
         <source>10 fps</source>
         <translation>10 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="325"/>
         <source>5 fps</source>
         <translation>5 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="341"/>
+        <location filename="../mainvisual.cpp" line="332"/>
         <source>Analyzer Falloff</source>
         <translation>解析器下降速度</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="344"/>
-        <location filename="../mainvisual.cpp" line="358"/>
+        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="349"/>
         <source>Slowest</source>
         <translation>最慢</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="345"/>
-        <location filename="../mainvisual.cpp" line="359"/>
+        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="350"/>
         <source>Slow</source>
         <translation>慢</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
-        <location filename="../mainvisual.cpp" line="360"/>
+        <location filename="../mainvisual.cpp" line="337"/>
+        <location filename="../mainvisual.cpp" line="351"/>
         <source>Medium</source>
         <translation>中</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="347"/>
-        <location filename="../mainvisual.cpp" line="361"/>
+        <location filename="../mainvisual.cpp" line="338"/>
+        <location filename="../mainvisual.cpp" line="352"/>
         <source>Fast</source>
         <translation>快</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="348"/>
-        <location filename="../mainvisual.cpp" line="362"/>
+        <location filename="../mainvisual.cpp" line="339"/>
+        <location filename="../mainvisual.cpp" line="353"/>
         <source>Fastest</source>
         <translation>最快</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="355"/>
+        <location filename="../mainvisual.cpp" line="346"/>
         <source>Peaks Falloff</source>
         <translation>峰值下降速度</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="368"/>
+        <location filename="../mainvisual.cpp" line="359"/>
         <source>Background</source>
         <translation>背景</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="369"/>
+        <location filename="../mainvisual.cpp" line="360"/>
         <source>Transparent</source>
         <translation>透明</translation>
     </message>

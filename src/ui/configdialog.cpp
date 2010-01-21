@@ -78,9 +78,9 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)), this, SLOT (changeSkin()));
     ui.listWidget->setIconSize (QSize (105,34));
     m_skin = Skin::instance();
-    ui.replayGainModeComboBox->addItem (tr("Track"), ReplayGainSettings::TRACK);
-    ui.replayGainModeComboBox->addItem (tr("Album"), ReplayGainSettings::ALBUM);
-    ui.replayGainModeComboBox->addItem (tr("Disabled"), ReplayGainSettings::DISABLED);
+    ui.replayGainModeComboBox->addItem (tr("Track"), AudioSettings::REPLAYGAIN_TRACK);
+    ui.replayGainModeComboBox->addItem (tr("Album"), AudioSettings::REPLAYGAIN_ALBUM);
+    ui.replayGainModeComboBox->addItem (tr("Disabled"), AudioSettings::REPLAYGAIN_DISABLED);
     readSettings();
     m_reader = new SkinReader(this);
     loadSkins();
@@ -133,9 +133,6 @@ void ConfigDialog::readSettings()
 
     ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", FALSE).toBool());
     ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", FALSE).toBool());
-    //volume
-    ui.softVolumeCheckBox->setChecked(SoundCore::instance()->softwareVolume());
-    connect(ui.softVolumeCheckBox, SIGNAL(clicked(bool)), SoundCore::instance(), SLOT(setSoftwareVolume(bool)));
     //transparency
     ui.mwTransparencySlider->setValue(100 - settings.value("MainWindow/opacity", 1.0).toDouble()*100);
     ui.eqTransparencySlider->setValue(100 - settings.value("Equalizer/opacity", 1.0).toDouble()*100);
@@ -151,11 +148,15 @@ void ConfigDialog::readSettings()
     ui.coverExcludeLineEdit->setText(MetaDataManager::instance()->coverNameFilters(FALSE).join(","));
     ui.coverDepthSpinBox->setValue(MetaDataManager::instance()->coverSearchDepth());
     //replay gain
-    ReplayGainSettings rgs = SoundCore::instance()->replayGainSettings();
-    ui.clippingCheckBox->setChecked(rgs.preventClipping());
-    ui.replayGainModeComboBox->setCurrentIndex(ui.replayGainModeComboBox->findData(rgs.mode()));
-    ui.preampDoubleSpinBox->setValue(rgs.preamp());
-    ui.defaultGainDoubleSpinBox->setValue(rgs.defaultGain());
+    AudioSettings as = SoundCore::instance()->audioSettings();
+    ui.clippingCheckBox->setChecked(as.value(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING).toBool());
+    AudioSettings::ReplayGainMode mode = (AudioSettings::ReplayGainMode)as.value(AudioSettings::REPLAYGAIN_MODE).toInt();
+    ui.replayGainModeComboBox->setCurrentIndex(ui.replayGainModeComboBox->findData(mode));
+    ui.preampDoubleSpinBox->setValue(as.value(AudioSettings::REPLAYGAIN_PREAMP).toDouble());
+    ui.defaultGainDoubleSpinBox->setValue(as.value(AudioSettings::REPLAYGAIN_DEFAULT_GAIN).toDouble());
+     //audio
+    ui.softVolumeCheckBox->setChecked(as.value(AudioSettings::SOFTWARE_VOLUME).toBool());
+    ui.use16BitCheckBox->setChecked(as.value(AudioSettings::OUTPUT_16BIT).toBool());
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -657,11 +658,15 @@ void ConfigDialog::saveSettings()
                                                         ui.coverExcludeLineEdit->text().split(","),
                                                         ui.coverDepthSpinBox->value());
     int i = ui.replayGainModeComboBox->currentIndex();
-    ReplayGainSettings rs (ui.replayGainModeComboBox->itemData(i).toInt(),
-                           ui.preampDoubleSpinBox->value(),
-                           ui.defaultGainDoubleSpinBox->value(),
-                           ui.clippingCheckBox->isChecked());
-    SoundCore::instance()->setReplayGainSettings(rs);
+    //audio
+    AudioSettings as = SoundCore::instance()->audioSettings();
+    as.setValue(AudioSettings::REPLAYGAIN_MODE, ui.replayGainModeComboBox->itemData(i).toInt());
+    as.setValue(AudioSettings::REPLAYGAIN_PREAMP, ui.preampDoubleSpinBox->value());
+    as.setValue(AudioSettings::REPLAYGAIN_DEFAULT_GAIN, ui.defaultGainDoubleSpinBox->value());
+    as.setValue(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING, ui.clippingCheckBox->isChecked());
+    as.setValue(AudioSettings::SOFTWARE_VOLUME, ui.softVolumeCheckBox->isChecked());
+    as.setValue(AudioSettings::OUTPUT_16BIT, ui.use16BitCheckBox->isChecked());
+    SoundCore::instance()->setAudioSettings(as);
 }
 
 void ConfigDialog::updateButtons()

@@ -24,7 +24,6 @@
 #include <QQueue>
 #include <QHash>
 #include "abstractengine.h"
-#include "replaygainsettings.h"
 #include "audioparameters.h"
 
 class QIODevice;
@@ -52,7 +51,7 @@ public:
     void pause();
     void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
-    void setReplayGainSettings(const ReplayGainSettings &settings);
+    void setAudioSettings(const AudioSettings &settings);
     void addEffect(EffectFactory *factory);
     void removeEffect(EffectFactory *factory);
 
@@ -90,6 +89,7 @@ private:
     bool m_next;
     static QmmpAudioEngine *m_instance;
     ReplayGain *m_replayGain;
+    AudioSettings m_as;
 
 };
 

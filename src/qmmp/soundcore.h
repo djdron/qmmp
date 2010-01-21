@@ -26,7 +26,7 @@
 #include "output.h"
 #include "visual.h"
 #include "qmmp.h"
-#include "replaygainsettings.h"
+#include "audiosettings.h"
 
 class QIODevice;
 class VolumeControl;
@@ -107,8 +107,8 @@ public:
      */
     QString metaData(Qmmp::MetaData key);
 
-    ReplayGainSettings replayGainSettings() const;
-    void setReplayGainSettings(const ReplayGainSettings &rgs);
+    AudioSettings audioSettings() const;
+    void setAudioSettings(const AudioSettings &as);
      /*!
      * Returns a pointer to the SoundCore instance.
      */
@@ -227,7 +227,7 @@ private:
     AbstractEngine *m_engine;
     AbstractEngine *m_pendingEngine;
     QList<InputSource *> m_pendingSources;
-    ReplayGainSettings m_rgs; //ReplayGain settings
+    AudioSettings m_as; //audio settings
 };
 
 #endif
