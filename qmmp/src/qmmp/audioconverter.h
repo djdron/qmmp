@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,33 +18,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef REPLAYGAIN_H
-#define REPLAYGAIN_H
+#ifndef AUDIOCONVERTER_H
+#define AUDIOCONVERTER_H
 
-#include <QtGlobal>
-#include <QMap>
-#include "qmmp.h"
-#include "audiosettings.h"
+#include "effect.h"
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class ReplayGain
+class AudioConverter : public Effect
 {
 public:
-    ReplayGain();
-
-    void setSampleSize(int size);
-    void setAudioSettings(const AudioSettings &settings);
-    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
-    void applyReplayGain(char *data, qint64 size);
+    AudioConverter();
+    void configure(quint32 srate = 44100, int chan = 2, Qmmp::AudioFormat f = Qmmp::PCM_S16LE);
+    void applyEffect(Buffer *b);
 
 private:
-    void updateScale();
-    int m_sampleSize;
-    QMap<Qmmp::ReplayGainKey, double> m_info;
-    AudioSettings m_settings;
-    double m_scale;
+    Qmmp::AudioFormat m_format;
+
 };
 
-#endif // REPLAYGAIN_H
+#endif // AUDIOCONVERTER_H

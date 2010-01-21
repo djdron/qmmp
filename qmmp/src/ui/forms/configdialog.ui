@@ -1181,6 +1181,13 @@
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QCheckBox" name="use16BitCheckBox">
+              <property name="text">
+               <string>16-bit output</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>

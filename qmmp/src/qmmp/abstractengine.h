@@ -26,7 +26,7 @@
 #include <QThread>
 #include <QStringList>
 #include "enginefactory.h"
-#include "replaygainsettings.h"
+#include "audiosettings.h"
 
 class QIODevice;
 class InputSource;
@@ -87,7 +87,7 @@ public:
      */
     virtual void setEQEnabled(bool on) = 0;
 
-    virtual void setReplayGainSettings(const ReplayGainSettings &settings);
+    virtual void setAudioSettings(const AudioSettings &settings);
     /*!
      * Returns a list of decoder factories.
      */

@@ -40,7 +40,7 @@ QWaitCondition *AbstractEngine::cond()
     return &m_waitCondition;
 }
 
-void AbstractEngine::setReplayGainSettings(const ReplayGainSettings &settings)
+void AbstractEngine::setAudioSettings(const AudioSettings &settings)
 {
     Q_UNUSED(settings);
 }

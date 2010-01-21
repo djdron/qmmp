@@ -29,6 +29,7 @@
 #include "decoderfactory.h"
 #include "effectfactory.h"
 #include "inputsource.h"
+#include "audioconverter.h"
 #include "qmmpaudioengine.h"
 #include "metadatamanager.h"
 
@@ -165,9 +166,10 @@ void QmmpAudioEngine::setEQEnabled(bool on)
     mutex()->unlock();
 }
 
-void QmmpAudioEngine::setReplayGainSettings(const ReplayGainSettings &settings)
+void QmmpAudioEngine::setAudioSettings(const AudioSettings &settings)
 {
-    m_replayGain->setReplayGainSettings(settings);
+    m_as = settings;
+    m_replayGain->setAudioSettings(settings);
 }
 
 void QmmpAudioEngine::addEffect(EffectFactory *factory)
@@ -564,6 +566,9 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
         m_eqInited = TRUE;
     }
     m_useEq = m_eqEnabled && ap.format() == Qmmp::PCM_S16LE;
+
+    if(m_as.value(AudioSettings::OUTPUT_16BIT).toBool())
+        m_effects.prepend (new AudioConverter());
 
     foreach(Effect *effect, m_effects)
     {

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -37,7 +37,7 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
 {
     m_info = info;
     updateScale();
-    if(m_settings.mode() != ReplayGainSettings::DISABLED)
+    if(m_settings.value(AudioSettings::REPLAYGAIN_MODE).toInt() != AudioSettings::REPLAYGAIN_DISABLED)
     {
         qDebug("ReplayGain: track: gain=%f dB, peak=%f; album: gain=%f dB, peak=%f",
                m_info[Qmmp::REPLAYGAIN_TRACK_GAIN],
@@ -50,7 +50,7 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
         qDebug("ReplayGain: disabled");
 }
 
-void ReplayGain::setReplayGainSettings(const ReplayGainSettings &settings)
+void ReplayGain::setAudioSettings(const AudioSettings &settings)
 {
     m_settings = settings;
     setReplayGainInfo(m_info);
@@ -58,7 +58,8 @@ void ReplayGain::setReplayGainSettings(const ReplayGainSettings &settings)
 
 void ReplayGain::applyReplayGain(char *data, qint64 size)
 {
-    if(m_settings.mode() == ReplayGainSettings::DISABLED || m_scale == 1.0)
+    if( m_scale == 1.0 ||
+        m_settings.value(AudioSettings::REPLAYGAIN_MODE).toInt() == AudioSettings::REPLAYGAIN_DISABLED)
         return;
     size = size/m_sampleSize;
     if(m_sampleSize == 2)
@@ -83,24 +84,24 @@ void ReplayGain::updateScale()
 {
     double peak = 0.0;
     m_scale = 1.0;
-    switch((int) m_settings.mode())
+    switch(m_settings.value(AudioSettings::REPLAYGAIN_MODE).toInt())
     {
-    case ReplayGainSettings::TRACK:
+    case AudioSettings::REPLAYGAIN_TRACK:
         m_scale = pow(10.0, m_info[Qmmp::REPLAYGAIN_TRACK_GAIN]/20);
         peak = m_info[Qmmp::REPLAYGAIN_TRACK_PEAK];
         break;
-    case ReplayGainSettings::ALBUM:
+    case AudioSettings::REPLAYGAIN_ALBUM:
         m_scale = pow(10.0, m_info[Qmmp::REPLAYGAIN_ALBUM_GAIN]/20);
         peak = m_info[Qmmp::REPLAYGAIN_ALBUM_PEAK];
         break;
-    case ReplayGainSettings::DISABLED:
+    case AudioSettings::REPLAYGAIN_DISABLED:
         m_scale = 1.0;
         return;
     }
     if(m_scale == 1.0)
-        m_scale = pow(10.0, m_settings.defaultGain()/20);
-    m_scale *= pow(10.0, m_settings.preamp()/20);
-    if(peak > 0.0 && m_settings.preventClipping())
+        m_scale = pow(10.0, m_settings.value(AudioSettings::REPLAYGAIN_DEFAULT_GAIN).toDouble()/20);
+    m_scale *= pow(10.0, m_settings.value(AudioSettings::REPLAYGAIN_PREAMP).toDouble()/20);
+    if(peak > 0.0 && m_settings.value(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING).toBool())
         m_scale = m_scale*peak > 1.0 ? 1.0 / peak : m_scale;
     m_scale = qMin(m_scale, 5.6234); // +15 dB
     m_scale = qMax(m_scale, 0.1778);  // -15 dB

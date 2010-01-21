@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,33 +18,44 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef REPLAYGAIN_H
-#define REPLAYGAIN_H
+#ifndef AUDIOSETTINGS_H
+#define AUDIOSETTINGS_H
 
-#include <QtGlobal>
+#include <QVariant>
 #include <QMap>
-#include "qmmp.h"
-#include "audiosettings.h"
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class ReplayGain
+class AudioSettings
 {
 public:
-    ReplayGain();
+    AudioSettings();
+    AudioSettings(const AudioSettings &settings);
 
-    void setSampleSize(int size);
-    void setAudioSettings(const AudioSettings &settings);
-    void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
-    void applyReplayGain(char *data, qint64 size);
+    enum ReplayGainMode
+    {
+        REPLAYGAIN_TRACK = 0,
+        REPLAYGAIN_ALBUM,
+        REPLAYGAIN_DISABLED
+    };
+    enum Key
+    {
+        REPLAYGAIN_MODE = 0,
+        REPLAYGAIN_PREAMP,
+        REPLAYGAIN_DEFAULT_GAIN,
+        REPLAYGAIN_PREVENT_CLIPPING,
+        SOFTWARE_VOLUME,
+        OUTPUT_16BIT,
+    };
+    void operator=(const AudioSettings &settings);
+    bool operator==(const AudioSettings &settings) const;
+    bool operator!=(const AudioSettings &settings) const;
+    void setValue(Key key, QVariant value);
+    QVariant value(Key key) const;
 
 private:
-    void updateScale();
-    int m_sampleSize;
-    QMap<Qmmp::ReplayGainKey, double> m_info;
-    AudioSettings m_settings;
-    double m_scale;
+    QMap <Key, QVariant> m_settings;
 };
 
-#endif // REPLAYGAIN_H
+#endif // AUDIOSETTINGS_H
