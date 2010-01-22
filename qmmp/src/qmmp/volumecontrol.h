@@ -122,11 +122,6 @@ public:
      * Returns software volume object instance.
      */
     static SoftwareVolume *instance();
-    /*!
-     * This funtion allows to force software volume for all output plugins.
-     * @param b Software volume enable state (\b true - enable, \b false - disable)
-     */
-    static void setEnabled(bool b);
 
 protected:
     /*! @internal

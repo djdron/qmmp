@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -53,42 +53,6 @@ const QString Qmmp::strVersion()
 #else
     return QMMP_STR_VERSION;
 #endif
-}
-
-bool Qmmp::useProxy()
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    return settings.value("Proxy/use_proxy", FALSE).toBool();
-}
-
-bool Qmmp::useProxyAuth()
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    return settings.value("Proxy/authentication", FALSE).toBool();
-}
-
-const QUrl Qmmp::proxy()
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    return settings.value("Proxy/url").toUrl();
-}
-
-void Qmmp::setProxyEnabled(bool yes)
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    settings.setValue("Proxy/use_proxy", yes);
-}
-
-void Qmmp::setProxyAuthEnabled(bool yes)
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    settings.setValue("Proxy/authentication", yes);
-}
-
-void Qmmp::setProxy (const QUrl &proxy)
-{
-    QSettings settings(configFile(), QSettings::IniFormat);
-    settings.setValue("Proxy/url", proxy);
 }
 
 const QString Qmmp::pluginsPath()

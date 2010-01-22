@@ -35,6 +35,7 @@ class Decoder;
 class InputSource;
 class EffectFactory;
 class ReplayGain;
+class QmmpSettings;
 
 class QmmpAudioEngine : public AbstractEngine
 {
@@ -51,7 +52,6 @@ public:
     void pause();
     void setEQ(double bands[10], double preamp);
     void setEQEnabled(bool on);
-    void setAudioSettings(const AudioSettings &settings);
     void addEffect(EffectFactory *factory);
     void removeEffect(EffectFactory *factory);
 
@@ -59,6 +59,7 @@ public:
 
 private slots:
     void finish();
+    void updateReplayGainSettings();
 
 private:
     void run();
@@ -89,8 +90,7 @@ private:
     bool m_next;
     static QmmpAudioEngine *m_instance;
     ReplayGain *m_replayGain;
-    AudioSettings m_as;
-
+    QmmpSettings *m_settings;
 };
 
 #endif // QMMPAUDIOENGINE_H

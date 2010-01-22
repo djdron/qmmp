@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,11 +20,11 @@
 
 #include <QApplication>
 #include <QStringList>
-#include <QSettings>
 #include <QDir>
 #include <QMap>
 #include <stdint.h>
 #include <stdlib.h>
+#include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
 #include <qmmp/statehandler.h>
 #include "downloader.h"
@@ -215,17 +215,16 @@ void Downloader::run()
     qDebug("Downloader: starting download thread");
     m_handle = curl_easy_init();
     //proxy
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    if (Qmmp::useProxy())
+    if (QmmpSettings::instance()->isProxyEnabled())
         curl_easy_setopt(m_handle, CURLOPT_PROXY,
-                         strdup((Qmmp::proxy().host() + ":" +
-                                 QString("%1").arg(Qmmp::proxy().port())).
+                         strdup((QmmpSettings::instance()->proxy().host() + ":" +
+                                 QString("%1").arg(QmmpSettings::instance()->proxy().port())).
                                 toLatin1 ().constData ()));
 
-    if (Qmmp::useProxyAuth())
+    if (QmmpSettings::instance()->useProxyAuth())
         curl_easy_setopt(m_handle, CURLOPT_PROXYUSERPWD,
-                         strdup((Qmmp::proxy().userName() + ":" +
-                                 Qmmp::proxy().password()).
+                         strdup((QmmpSettings::instance()->proxy().userName() + ":" +
+                                 QmmpSettings::instance()->proxy().password()).
                                 toLatin1 ().constData ()));
 
     // Set url to download

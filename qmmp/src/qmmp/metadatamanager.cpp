@@ -20,11 +20,11 @@
 
 #include <QFile>
 #include <QFileInfo>
-#include <QSettings>
 #include "decoder.h"
 #include "decoderfactory.h"
 #include "abstractengine.h"
 #include "inputsource.h"
+#include "qmmpsettings.h"
 #include "metadatamanager.h"
 
 MetaDataManager* MetaDataManager::m_instance = 0;
@@ -37,10 +37,7 @@ MetaDataManager::MetaDataManager()
     m_decoderFactories = Decoder::factories();
     m_engineFactories = AbstractEngine::factories();
     m_inputSourceFactories = InputSource::factories();
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    m_includeList = settings.value("Cover/include", (QStringList() << "*.jpg" << "*.png")).toStringList();
-    m_excludeList = settings.value("Cover/exclude", (QStringList() << "*back*")).toStringList();
-    m_depth = settings.value("Cover/depth", 0).toInt();
+    m_settings = QmmpSettings::instance();
 }
 
 MetaDataManager::~MetaDataManager()
@@ -216,41 +213,20 @@ QString MetaDataManager::getCoverPath(const QString &url) const
     else //local file
     {
         QString p = QFileInfo(url).absolutePath();
-        QFileInfoList l = findCoverFiles(p, m_depth);
+        QFileInfoList l = findCoverFiles(p, m_settings->coverSearchDepth());
         return l.isEmpty() ? QString() : l.at(0).filePath();
     }
     return QString();
-}
-
-QStringList MetaDataManager::coverNameFilters(bool include) const
-{
-    return include ? m_includeList : m_excludeList;
-}
-
-int MetaDataManager::MetaDataManager::coverSearchDepth() const
-{
-    return m_depth;
-}
-
-void MetaDataManager::setCoverSearchSettings(const QStringList &inc, const QStringList &exc, int depth)
-{
-    m_includeList = inc;
-    m_excludeList = exc;
-    m_depth = depth;
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("Cover/include", m_includeList);
-    settings.setValue("Cover/exclude", m_excludeList);
-    settings.setValue("Cover/depth", m_depth);
 }
 
 QFileInfoList MetaDataManager::findCoverFiles(QDir dir, int depth) const
 {
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     dir.setSorting(QDir::Name);
-    QFileInfoList file_list = dir.entryInfoList(m_includeList);
+    QFileInfoList file_list = dir.entryInfoList(m_settings->coverNameFilters());
     foreach(QFileInfo i, file_list)
     {
-        foreach(QString pattern, m_excludeList)
+        foreach(QString pattern, m_settings->coverNameFilters(FALSE))
         {
             if(QRegExp (pattern, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(i.fileName()))
             {

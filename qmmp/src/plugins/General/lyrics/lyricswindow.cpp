@@ -21,6 +21,7 @@
 #include <QHttp>
 #include <QUrl>
 #include <QRegExp>
+#include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
 
 #include "lyricswindow.h"
@@ -35,12 +36,13 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
     ui.artistLineEdit->setText(artist);
     ui.titleLineEdit->setText(title);
     m_http = new QHttp(this);
-    //load global proxy settings
-    if (Qmmp::useProxy())
-        m_http->setProxy(Qmmp::proxy().host(),
-                         Qmmp::proxy().port(),
-                         Qmmp::useProxyAuth() ? Qmmp::proxy().userName() : QString(),
-                         Qmmp::useProxyAuth() ? Qmmp::proxy().password() : QString());
+     //load global proxy settings
+    QmmpSettings *gs = QmmpSettings::instance();
+    if (gs->isProxyEnabled())
+        m_http->setProxy(gs->proxy().host(),
+                         gs->proxy().port(),
+                         gs->useProxyAuth() ? gs->proxy().userName() : QString(),
+                         gs->useProxyAuth() ? gs->proxy().password() : QString());
     connect(m_http, SIGNAL(done(bool)), SLOT(showText(bool)));
     connect(m_http, SIGNAL(stateChanged(int)), SLOT(showState (int)));
     on_searchPushButton_clicked();

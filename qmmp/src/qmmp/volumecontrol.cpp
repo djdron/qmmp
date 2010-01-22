@@ -19,11 +19,10 @@
  ***************************************************************************/
 
 #include <QTimer>
-#include <QSettings>
 #include <QDir>
-
+#include <QSettings>
+#include "qmmpsettings.h"
 #include "output.h"
-
 #include "volumecontrol.h"
 
 VolumeControl::VolumeControl(QObject *parent)
@@ -40,8 +39,7 @@ VolumeControl::~VolumeControl()
 
 VolumeControl *VolumeControl::create(QObject *parent)
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("Volume/software_volume", FALSE).toBool())
+    if(QmmpSettings::instance()->useSoftVolume())
         return new SoftwareVolume(parent);
     VolumeControl *control = 0;
     if (Output::currentFactory())
@@ -187,8 +185,3 @@ SoftwareVolume *SoftwareVolume::instance()
     return m_instance;
 }
 
-void  SoftwareVolume::setEnabled(bool b)
-{
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("Volume/software_volume", b);
-}

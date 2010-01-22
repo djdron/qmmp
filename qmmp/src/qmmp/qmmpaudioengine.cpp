@@ -51,6 +51,9 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_decoder = 0;
     m_output = 0;
     m_replayGain = new ReplayGain;
+    m_settings = QmmpSettings::instance();
+    connect(m_settings,SIGNAL(replayGainSettingsChanged()), SLOT(updateReplayGainSettings()));
+    updateReplayGainSettings();
     reset();
     m_instance = this;
 }
@@ -164,12 +167,6 @@ void QmmpAudioEngine::setEQEnabled(bool on)
     if(m_decoder)
         m_useEq = m_eqEnabled && m_decoder->audioParameters().format() == Qmmp::PCM_S16LE;
     mutex()->unlock();
-}
-
-void QmmpAudioEngine::setAudioSettings(const AudioSettings &settings)
-{
-    m_as = settings;
-    m_replayGain->setAudioSettings(settings);
 }
 
 void QmmpAudioEngine::addEffect(EffectFactory *factory)
@@ -341,6 +338,16 @@ void QmmpAudioEngine::finish()
         m_output->mutex()->unlock();
     }
     emit playbackFinished();
+}
+
+void QmmpAudioEngine::updateReplayGainSettings()
+{
+    mutex()->lock();
+    m_replayGain->updateSettings(m_settings->replayGainMode(),
+                                 m_settings->replayGainPreamp(),
+                                 m_settings->replayGainDefaultGain(),
+                                 m_settings->replayGainPreventClipping());
+    mutex()->unlock();
 }
 
 void QmmpAudioEngine::run()
@@ -567,7 +574,7 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
     }
     m_useEq = m_eqEnabled && ap.format() == Qmmp::PCM_S16LE;
 
-    if(m_as.value(AudioSettings::OUTPUT_16BIT).toBool())
+    if(m_settings->use16BitOutput())
         m_effects.prepend (new AudioConverter());
 
     foreach(Effect *effect, m_effects)

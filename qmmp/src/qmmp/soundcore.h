@@ -26,7 +26,7 @@
 #include "output.h"
 #include "visual.h"
 #include "qmmp.h"
-#include "audiosettings.h"
+#include "qmmpsettings.h"
 
 class QIODevice;
 class VolumeControl;
@@ -106,9 +106,6 @@ public:
      * Returns the metdata string associated with the given \b key.
      */
     QString metaData(Qmmp::MetaData key);
-
-    AudioSettings audioSettings() const;
-    void setAudioSettings(const AudioSettings &as);
      /*!
      * Returns a pointer to the SoundCore instance.
      */
@@ -116,11 +113,6 @@ public:
 
 
 public slots:
-    /*!
-     * This funtion allows to force software volume for all output plugins.
-     * @param yes Software volume enable state (\b true - enable, \b false - disable)
-     */
-    void setSoftwareVolume(bool yes);
     /*!
      * Sets volume.
      * @param left - volume of the left channel \b [0..100].
@@ -207,6 +199,7 @@ signals:
 private slots:
     bool enqueue(InputSource *);
     void startPendingEngine();
+    void updateVolume();
 
 private:
     Decoder* m_decoder;
@@ -227,7 +220,6 @@ private:
     AbstractEngine *m_engine;
     AbstractEngine *m_pendingEngine;
     QList<InputSource *> m_pendingSources;
-    AudioSettings m_as; //audio settings
 };
 
 #endif

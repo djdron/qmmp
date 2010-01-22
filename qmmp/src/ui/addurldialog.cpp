@@ -27,6 +27,7 @@
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/playlistmodel.h>
+#include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
 
 #define HISTORY_SIZE 10
@@ -41,11 +42,12 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     urlComboBox->addItems(m_history);
     m_http = new QHttp(this);
     //load global proxy settings
-    if (Qmmp::useProxy())
-        m_http->setProxy(Qmmp::proxy().host(),
-                         Qmmp::proxy().port(),
-                         Qmmp::useProxyAuth() ? Qmmp::proxy().userName() : QString(),
-                         Qmmp::useProxyAuth() ? Qmmp::proxy().password() : QString());
+    QmmpSettings *gs = QmmpSettings::instance();
+    if (gs->isProxyEnabled())
+        m_http->setProxy(gs->proxy().host(),
+                         gs->proxy().port(),
+                         gs->useProxyAuth() ? gs->proxy().userName() : QString(),
+                         gs->useProxyAuth() ? gs->proxy().password() : QString());
 }
 
 AddUrlDialog::~AddUrlDialog()
