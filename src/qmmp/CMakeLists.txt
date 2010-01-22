@@ -54,7 +54,7 @@ SET(libqmmp_SRCS
     emptyinputsource.cpp
     metadatamanager.cpp
     replaygain.cpp
-    audiosettings.cpp
+    qmmpsettings.cpp
     audioconverter.cpp
 )
 
@@ -87,28 +87,33 @@ SET(libqmmp_MOC_HDRS
     enginefactory.h
     metadatamanager.h
     replaygain.h
-    audiosettings.h
+    qmmpsettings.h
     audioconverter.h
 )
 
 SET(libqmmp_DEVEL_HDRS
+    visual.h
     buffer.h
-    decoderfactory.h
     decoder.h
-    effectfactory.h
-    effect.h
+    output.h
     fileinfo.h
     outputfactory.h
-    output.h
-    qmmp.h
-    recycler.h
+    decoderfactory.h
     soundcore.h
+    effectfactory.h
+    effect.h
+    qmmp.h
     statehandler.h
-    visualfactory.h
-    visual.h
     volumecontrol.h
     metadatamodel.h
     tagmodel.h
+    qmmpaudioengine.h
+    abstractengine.h
+    audioparameters.h
+    inputsource.h
+    enginefactory.h
+    metadatamanager.h
+    qmmpsettings.h
 )
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})

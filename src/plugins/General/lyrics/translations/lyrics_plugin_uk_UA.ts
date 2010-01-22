@@ -45,48 +45,48 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="113"/>
+        <location filename="../lyricswindow.cpp" line="115"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Тексти: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="88"/>
+        <location filename="../lyricswindow.cpp" line="90"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Немає з&apos;єднання</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="75"/>
+        <location filename="../lyricswindow.cpp" line="77"/>
         <source>Not found</source>
         <translation>Не знайдено</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="91"/>
+        <location filename="../lyricswindow.cpp" line="93"/>
         <source>Looking up host...</source>
         <translation>Пошук хоста...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="94"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
         <source>Connecting...</source>
         <translation>З&apos;єднання...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="97"/>
+        <location filename="../lyricswindow.cpp" line="99"/>
         <source>Sending request...</source>
         <translation>Відсилання запиту...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="100"/>
+        <location filename="../lyricswindow.cpp" line="102"/>
         <source>Receiving</source>
         <translation>Отримання</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="103"/>
+        <location filename="../lyricswindow.cpp" line="105"/>
         <source>Connected</source>
         <translation>З&apos;єднано</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="106"/>
+        <location filename="../lyricswindow.cpp" line="108"/>
         <source>Closing connection...</source>
         <translation>Закриття з&apos;єднання...</translation>
     </message>

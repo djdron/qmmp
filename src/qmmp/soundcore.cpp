@@ -31,6 +31,7 @@
 #include "volumecontrol.h"
 #include "enginefactory.h"
 #include "metadatamanager.h"
+#include "qmmpsettings.h"
 #include "soundcore.h"
 
 SoundCore *SoundCore::m_instance = 0;
@@ -64,21 +65,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    //replaygain settings
-    settings.beginGroup("ReplayGain");
-    m_as.setValue(AudioSettings::REPLAYGAIN_MODE,
-                  settings.value("mode", AudioSettings::REPLAYGAIN_DISABLED));
-    m_as.setValue(AudioSettings::REPLAYGAIN_PREAMP,
-                  settings.value("preamp", 0.0));
-    m_as.setValue(AudioSettings::REPLAYGAIN_DEFAULT_GAIN,
-                  settings.value("default_gain", 0.0));
-    m_as.setValue(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING,
-                  settings.value("prevent_clipping", FALSE));
-    settings.endGroup();
-    //other settings
-    m_as.setValue(AudioSettings::SOFTWARE_VOLUME, settings.value("Output/software_volume", FALSE));
-    m_as.setValue(AudioSettings::OUTPUT_16BIT, settings.value("Output/use_16bit", FALSE));
+    connect(QmmpSettings::instance(), SIGNAL(audioSettingsChanged()), SLOT(updateVolume()));
 }
 
 
@@ -189,9 +176,8 @@ int SoundCore::rightVolume()
     return m_volumeControl->right();
 }
 
-void SoundCore::setSoftwareVolume(bool b)
+void SoundCore::updateVolume()
 {
-    SoftwareVolume::setEnabled(b); //TODO move to engine settings
     if (m_engine)
         m_engine->mutex()->lock();
     delete m_volumeControl;
@@ -257,7 +243,6 @@ bool SoundCore::enqueue(InputSource *s)
 
     setEQ(m_bands, m_preamp);
     setEQEnabled(m_useEQ);
-    setAudioSettings(m_as);
     if(m_engine->enqueue(s))
     {
         m_source = s->url();
@@ -296,7 +281,6 @@ bool SoundCore::enqueue(InputSource *s)
         connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
         engine->setEQ(m_bands, m_preamp);
         engine->setEQEnabled(m_useEQ);
-        engine->setAudioSettings(m_as);
         if (m_handler->state() == Qmmp::Playing || m_handler->state() == Qmmp::Paused)
         {
             if(m_pendingEngine)
@@ -324,31 +308,6 @@ void SoundCore::startPendingEngine()
         m_pendingEngine = 0;
         m_engine->play();
     }
-}
-
-AudioSettings SoundCore::audioSettings() const
-{
-    return m_as;
-}
-
-void SoundCore::setAudioSettings(const AudioSettings &as)
-{
-    m_as = as;
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    //replaygain settings
-    settings.beginGroup("ReplayGain");
-    settings.setValue("mode", m_as.value(AudioSettings::REPLAYGAIN_MODE));
-    settings.setValue("preamp", m_as.value(AudioSettings::REPLAYGAIN_PREAMP));
-    settings.setValue("default_gain", m_as.value(AudioSettings::REPLAYGAIN_DEFAULT_GAIN));
-    settings.setValue("prevent_clipping", m_as.value(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING));
-    settings.endGroup();
-    //other settings
-    settings.setValue("Output/software_volume", m_as.value(AudioSettings::SOFTWARE_VOLUME));
-    settings.setValue("Output/use_16bit", m_as.value(AudioSettings::OUTPUT_16BIT));
-    setSoftwareVolume(m_as.value(AudioSettings::SOFTWARE_VOLUME).toBool());
-    //apply replaygain settings
-    if(m_engine)
-        m_engine->setAudioSettings(m_as);
 }
 
 SoundCore* SoundCore::instance()

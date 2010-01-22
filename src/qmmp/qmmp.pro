@@ -31,7 +31,7 @@ HEADERS += recycler.h \
     metadatamanager.h \
     replaygain.h \
     audioconverter.h \
-    audiosettings.h
+    qmmpsettings.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -56,7 +56,7 @@ SOURCES += recycler.cpp \
     metadatamanager.cpp \
     replaygain.cpp \
     audioconverter.cpp \
-    audiosettings.cpp
+    qmmpsettings.cpp
 FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp

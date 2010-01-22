@@ -45,48 +45,48 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="113"/>
+        <location filename="../lyricswindow.cpp" line="115"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Testo: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="88"/>
+        <location filename="../lyricswindow.cpp" line="90"/>
         <location filename="../lyricswindow.ui" line="67"/>
         <source>No connection</source>
         <translation>Nessuna connessione</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="75"/>
+        <location filename="../lyricswindow.cpp" line="77"/>
         <source>Not found</source>
         <translation>Non trovato</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="91"/>
+        <location filename="../lyricswindow.cpp" line="93"/>
         <source>Looking up host...</source>
         <translation>Ricerca host</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="94"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
         <source>Connecting...</source>
         <translation>Connessione...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="97"/>
+        <location filename="../lyricswindow.cpp" line="99"/>
         <source>Sending request...</source>
         <translation>Invio richiesta...</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="100"/>
+        <location filename="../lyricswindow.cpp" line="102"/>
         <source>Receiving</source>
         <translation>Ricezione</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="103"/>
+        <location filename="../lyricswindow.cpp" line="105"/>
         <source>Connected</source>
         <translation>Connesso</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="106"/>
+        <location filename="../lyricswindow.cpp" line="108"/>
         <source>Closing connection...</source>
         <translation>Chiusura connessione...</translation>
     </message>

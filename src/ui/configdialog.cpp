@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,7 +36,7 @@
 #include <qmmp/soundcore.h>
 #include <qmmp/enginefactory.h>
 #include <qmmp/abstractengine.h>
-#include <qmmp/metadatamanager.h>
+#include <qmmp/qmmpsettings.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
@@ -78,9 +78,9 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)), this, SLOT (changeSkin()));
     ui.listWidget->setIconSize (QSize (105,34));
     m_skin = Skin::instance();
-    ui.replayGainModeComboBox->addItem (tr("Track"), AudioSettings::REPLAYGAIN_TRACK);
-    ui.replayGainModeComboBox->addItem (tr("Album"), AudioSettings::REPLAYGAIN_ALBUM);
-    ui.replayGainModeComboBox->addItem (tr("Disabled"), AudioSettings::REPLAYGAIN_DISABLED);
+    ui.replayGainModeComboBox->addItem (tr("Track"), QmmpSettings::REPLAYGAIN_TRACK);
+    ui.replayGainModeComboBox->addItem (tr("Album"), QmmpSettings::REPLAYGAIN_ALBUM);
+    ui.replayGainModeComboBox->addItem (tr("Disabled"), QmmpSettings::REPLAYGAIN_DISABLED);
     readSettings();
     m_reader = new SkinReader(this);
     loadSkins();
@@ -117,14 +117,15 @@ void ConfigDialog::readSettings()
     ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", TRUE).toBool());
     ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", FALSE).toBool());
     ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", FALSE).toBool());
+    QmmpSettings *gs = QmmpSettings::instance();
     //proxy settings
-    ui.enableProxyCheckBox->setChecked(Qmmp::useProxy());
-    ui.authProxyCheckBox->setChecked(Qmmp::useProxyAuth());
-    ui.hostLineEdit->setText(Qmmp::proxy().host());
-    if (Qmmp::proxy().port(0))
-        ui.portLineEdit->setText(QString::number(Qmmp::proxy().port(0)));
-    ui.proxyUserLineEdit->setText(Qmmp::proxy().userName());
-    ui.proxyPasswLineEdit->setText(Qmmp::proxy().password());
+    ui.enableProxyCheckBox->setChecked(gs->isProxyEnabled());
+    ui.authProxyCheckBox->setChecked(gs->useProxyAuth());
+    ui.hostLineEdit->setText(gs->proxy().host());
+    if (gs->proxy().port(0))
+        ui.portLineEdit->setText(QString::number(gs->proxy().port(0)));
+    ui.proxyUserLineEdit->setText(gs->proxy().userName());
+    ui.proxyPasswLineEdit->setText(gs->proxy().password());
 
     ui.hostLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
     ui.portLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
@@ -144,19 +145,17 @@ void ConfigDialog::readSettings()
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", FALSE).toBool());
     ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", FALSE).toBool());
     //cover options
-    ui.coverIncludeLineEdit->setText(MetaDataManager::instance()->coverNameFilters(TRUE).join(","));
-    ui.coverExcludeLineEdit->setText(MetaDataManager::instance()->coverNameFilters(FALSE).join(","));
-    ui.coverDepthSpinBox->setValue(MetaDataManager::instance()->coverSearchDepth());
+    ui.coverIncludeLineEdit->setText(gs->coverNameFilters(TRUE).join(","));
+    ui.coverExcludeLineEdit->setText(gs->coverNameFilters(FALSE).join(","));
+    ui.coverDepthSpinBox->setValue(gs->coverSearchDepth());
     //replay gain
-    AudioSettings as = SoundCore::instance()->audioSettings();
-    ui.clippingCheckBox->setChecked(as.value(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING).toBool());
-    AudioSettings::ReplayGainMode mode = (AudioSettings::ReplayGainMode)as.value(AudioSettings::REPLAYGAIN_MODE).toInt();
-    ui.replayGainModeComboBox->setCurrentIndex(ui.replayGainModeComboBox->findData(mode));
-    ui.preampDoubleSpinBox->setValue(as.value(AudioSettings::REPLAYGAIN_PREAMP).toDouble());
-    ui.defaultGainDoubleSpinBox->setValue(as.value(AudioSettings::REPLAYGAIN_DEFAULT_GAIN).toDouble());
+    ui.clippingCheckBox->setChecked(gs->replayGainPreventClipping());
+    ui.replayGainModeComboBox->setCurrentIndex(ui.replayGainModeComboBox->findData(gs->replayGainMode()));
+    ui.preampDoubleSpinBox->setValue(gs->replayGainPreamp());
+    ui.defaultGainDoubleSpinBox->setValue(gs->replayGainDefaultGain());
      //audio
-    ui.softVolumeCheckBox->setChecked(as.value(AudioSettings::SOFTWARE_VOLUME).toBool());
-    ui.use16BitCheckBox->setChecked(as.value(AudioSettings::OUTPUT_16BIT).toBool());
+    ui.softVolumeCheckBox->setChecked(gs->useSoftVolume());
+    ui.use16BitCheckBox->setChecked(gs->use16BitOutput());
 }
 
 void ConfigDialog::changePage (QListWidgetItem *current, QListWidgetItem *previous)
@@ -635,15 +634,17 @@ void ConfigDialog::saveSettings()
     settings.setValue ("PlayList/show_plalists", ui.playlistsCheckBox->isChecked());
     settings.setValue ("PlayList/show_popup", ui.popupCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
-
-    Qmmp::setProxyEnabled(ui.enableProxyCheckBox->isChecked());
-    Qmmp::setProxyAuthEnabled(ui.authProxyCheckBox->isChecked());
+    QmmpSettings *gs = QmmpSettings::instance();
+    //proxy
     QUrl proxyUrl;
     proxyUrl.setHost(ui.hostLineEdit->text());
     proxyUrl.setPort(ui.portLineEdit->text().toUInt());
     proxyUrl.setUserName(ui.proxyUserLineEdit->text());
     proxyUrl.setPassword(ui.proxyPasswLineEdit->text());
-    Qmmp::setProxy(proxyUrl);
+    gs->setNetworkSettings(ui.enableProxyCheckBox->isChecked(),
+                           ui.authProxyCheckBox->isChecked(),
+                           proxyUrl);
+
     settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
     settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
     settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
@@ -654,19 +655,16 @@ void ConfigDialog::saveSettings()
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
     settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
-    MetaDataManager::instance()->setCoverSearchSettings(ui.coverIncludeLineEdit->text().split(","),
-                                                        ui.coverExcludeLineEdit->text().split(","),
-                                                        ui.coverDepthSpinBox->value());
+    gs->setCoverSettings(ui.coverIncludeLineEdit->text().split(","),
+                         ui.coverExcludeLineEdit->text().split(","),
+                         ui.coverDepthSpinBox->value(), TRUE);
     int i = ui.replayGainModeComboBox->currentIndex();
-    //audio
-    AudioSettings as = SoundCore::instance()->audioSettings();
-    as.setValue(AudioSettings::REPLAYGAIN_MODE, ui.replayGainModeComboBox->itemData(i).toInt());
-    as.setValue(AudioSettings::REPLAYGAIN_PREAMP, ui.preampDoubleSpinBox->value());
-    as.setValue(AudioSettings::REPLAYGAIN_DEFAULT_GAIN, ui.defaultGainDoubleSpinBox->value());
-    as.setValue(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING, ui.clippingCheckBox->isChecked());
-    as.setValue(AudioSettings::SOFTWARE_VOLUME, ui.softVolumeCheckBox->isChecked());
-    as.setValue(AudioSettings::OUTPUT_16BIT, ui.use16BitCheckBox->isChecked());
-    SoundCore::instance()->setAudioSettings(as);
+    gs->setReplayGainSettings((QmmpSettings::ReplayGainMode)
+                              ui.replayGainModeComboBox->itemData(i).toInt(),
+                              ui.preampDoubleSpinBox->value(),
+                              ui.defaultGainDoubleSpinBox->value(),
+                              ui.clippingCheckBox->isChecked());
+    gs->setAudioSettings(ui.softVolumeCheckBox->isChecked(), ui.use16BitCheckBox->isChecked());
 }
 
 void ConfigDialog::updateButtons()

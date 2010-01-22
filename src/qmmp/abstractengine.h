@@ -26,7 +26,7 @@
 #include <QThread>
 #include <QStringList>
 #include "enginefactory.h"
-#include "audiosettings.h"
+#include "qmmpsettings.h"
 
 class QIODevice;
 class InputSource;
@@ -86,8 +86,6 @@ public:
      * Subclass with own equalizer should reimplement this function.
      */
     virtual void setEQEnabled(bool on) = 0;
-
-    virtual void setAudioSettings(const AudioSettings &settings);
     /*!
      * Returns a list of decoder factories.
      */

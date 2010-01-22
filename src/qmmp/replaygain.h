@@ -23,8 +23,8 @@
 
 #include <QtGlobal>
 #include <QMap>
+#include "qmmpsettings.h"
 #include "qmmp.h"
-#include "audiosettings.h"
 
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,7 +35,8 @@ public:
     ReplayGain();
 
     void setSampleSize(int size);
-    void setAudioSettings(const AudioSettings &settings);
+    void updateSettings(QmmpSettings::ReplayGainMode mode, double preamp,
+                        double default_gain, bool clip);
     void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info);
     void applyReplayGain(char *data, qint64 size);
 
@@ -43,8 +44,11 @@ private:
     void updateScale();
     int m_sampleSize;
     QMap<Qmmp::ReplayGainKey, double> m_info;
-    AudioSettings m_settings;
     double m_scale;
+    QmmpSettings::ReplayGainMode m_mode;
+    double m_preamp;
+    double m_default_gain;
+    bool m_prevent_clipping;
 };
 
 #endif // REPLAYGAIN_H

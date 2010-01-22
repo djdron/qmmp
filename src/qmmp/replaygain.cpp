@@ -25,6 +25,10 @@ ReplayGain::ReplayGain()
 {
     m_sampleSize = 2;
     m_scale = 1.0;
+    m_mode = QmmpSettings::REPLAYGAIN_DISABLED;
+    m_preamp = 0.0;
+    m_default_gain = 0.0;
+    m_prevent_clipping = FALSE;
 }
 
 void ReplayGain::setSampleSize(int size)
@@ -37,7 +41,7 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
 {
     m_info = info;
     updateScale();
-    if(m_settings.value(AudioSettings::REPLAYGAIN_MODE).toInt() != AudioSettings::REPLAYGAIN_DISABLED)
+    if(m_mode != QmmpSettings::REPLAYGAIN_DISABLED)
     {
         qDebug("ReplayGain: track: gain=%f dB, peak=%f; album: gain=%f dB, peak=%f",
                m_info[Qmmp::REPLAYGAIN_TRACK_GAIN],
@@ -50,16 +54,19 @@ void ReplayGain::setReplayGainInfo(const QMap<Qmmp::ReplayGainKey, double> &info
         qDebug("ReplayGain: disabled");
 }
 
-void ReplayGain::setAudioSettings(const AudioSettings &settings)
+void ReplayGain::updateSettings(QmmpSettings::ReplayGainMode mode, double preamp,
+                                double default_gain, bool clip)
 {
-    m_settings = settings;
+    m_mode = mode;
+    m_preamp = preamp;
+    m_default_gain = default_gain;
+    m_prevent_clipping = clip;
     setReplayGainInfo(m_info);
 }
 
 void ReplayGain::applyReplayGain(char *data, qint64 size)
 {
-    if( m_scale == 1.0 ||
-        m_settings.value(AudioSettings::REPLAYGAIN_MODE).toInt() == AudioSettings::REPLAYGAIN_DISABLED)
+    if(m_mode == QmmpSettings::REPLAYGAIN_DISABLED || m_scale == 1.0)
         return;
     size = size/m_sampleSize;
     if(m_sampleSize == 2)
@@ -84,25 +91,25 @@ void ReplayGain::updateScale()
 {
     double peak = 0.0;
     m_scale = 1.0;
-    switch(m_settings.value(AudioSettings::REPLAYGAIN_MODE).toInt())
+    switch(m_mode)
     {
-    case AudioSettings::REPLAYGAIN_TRACK:
+    case QmmpSettings::REPLAYGAIN_TRACK:
         m_scale = pow(10.0, m_info[Qmmp::REPLAYGAIN_TRACK_GAIN]/20);
         peak = m_info[Qmmp::REPLAYGAIN_TRACK_PEAK];
         break;
-    case AudioSettings::REPLAYGAIN_ALBUM:
+    case QmmpSettings::REPLAYGAIN_ALBUM:
         m_scale = pow(10.0, m_info[Qmmp::REPLAYGAIN_ALBUM_GAIN]/20);
         peak = m_info[Qmmp::REPLAYGAIN_ALBUM_PEAK];
         break;
-    case AudioSettings::REPLAYGAIN_DISABLED:
+    case QmmpSettings::REPLAYGAIN_DISABLED:
         m_scale = 1.0;
         return;
     }
     if(m_scale == 1.0)
-        m_scale = pow(10.0, m_settings.value(AudioSettings::REPLAYGAIN_DEFAULT_GAIN).toDouble()/20);
-    m_scale *= pow(10.0, m_settings.value(AudioSettings::REPLAYGAIN_PREAMP).toDouble()/20);
-    if(peak > 0.0 && m_settings.value(AudioSettings::REPLAYGAIN_PREVENT_CLIPPING).toBool())
+        m_scale = pow(10.0, m_default_gain/20);
+    m_scale *= pow(10.0, m_preamp/20);
+    if(peak > 0.0 && m_prevent_clipping)
         m_scale = m_scale*peak > 1.0 ? 1.0 / peak : m_scale;
     m_scale = qMin(m_scale, 5.6234); // +15 dB
-    m_scale = qMax(m_scale, 0.1778);  // -15 dB
+    m_scale = qMax(m_scale, 0.1778);  // -15 dB*/
 }

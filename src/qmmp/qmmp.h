@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -72,7 +72,7 @@ public:
         PCM_S8 = 0, /*!< Signed 8 bit */
         PCM_S16LE,  /*!< Signed 16 bit Little Endian */
         PCM_S24LE,  /*!< Signed 24 bit Little Endian using low three bytes in 32-bit word */
-        PCM_S32LE  /*!< Signed 32 bit Little Endian */
+        PCM_S32LE   /*!< Signed 32 bit Little Endian */
     };
     /*!
      * Returns configuration file path.
@@ -86,32 +86,6 @@ public:
      * Returns %Qmmp library version.
      */
     static const QString strVersion();
-    /*!
-     * Returns \b true if global proxy is enabled, otherwise returns \b false
-     */
-    static bool useProxy();
-    /*!
-     * Returns \b true if global proxy authentication is enabled, otherwise returns \b false
-     */
-    static bool useProxyAuth();
-    /*!
-     * Returns global proxy url.
-     */
-    static const QUrl proxy();
-    /*!
-     * Enables or disables global proxy.
-     * @param yes Proxy enable state (\b true - enabled, \b false - disabled)
-     */
-    static void setProxyEnabled(bool yes);
-    /*!
-     * Enables or disables global proxy authentication.
-     * @param yes Proxy authentication enable state (\b true - enabled, \b false - disabled)
-     */
-    static void setProxyAuthEnabled(bool yes);
-    /*!
-     * Sets global proxy url to \b proxy
-     */
-    static void setProxy (const QUrl &proxy);
     /*!
      * Returns the location of the installed Qmmp plugins.
      */

@@ -27,6 +27,7 @@
 #include <QDateTime>
 #include <QDir>
 #include <qmmp/soundcore.h>
+#include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
 
 #include "scrobbler.h"
@@ -51,11 +52,12 @@ Scrobbler::Scrobbler(const QString &url,
     m_server = url;
     m_name = name;
     //load global proxy settings
-    if (Qmmp::useProxy())
-        m_http->setProxy(Qmmp::proxy().host(),
-                         Qmmp::proxy().port(),
-                         Qmmp::useProxyAuth() ? Qmmp::proxy().userName() : QString(),
-                         Qmmp::useProxyAuth() ? Qmmp::proxy().password() : QString());
+    QmmpSettings *gs = QmmpSettings::instance(); //TODO use QmmpSettings::networkSettingsChanged()
+    if (gs->isProxyEnabled())
+        m_http->setProxy(gs->proxy().host(),
+                         gs->proxy().port(),
+                         gs->useProxyAuth() ? gs->proxy().userName() : QString(),
+                         gs->useProxyAuth() ? gs->proxy().password() : QString());
 
     m_disabled = m_login.isEmpty() || m_passw.isEmpty();
     m_passw = QString(QCryptographicHash::hash(m_passw.toAscii(), QCryptographicHash::Md5).toHex());
