@@ -378,7 +378,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1187"/>
         <source>16-bit output</source>
-        <translation type="unfinished"></translation>
+        <translation>16-бітний вивід</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1244"/>
