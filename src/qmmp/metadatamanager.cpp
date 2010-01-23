@@ -182,7 +182,7 @@ bool MetaDataManager::supports(const QString &fileName) const
 
 QPixmap MetaDataManager::getCover(const QString &url) const
 {
-    if(!url.contains("://"))
+    if(!url.contains("://") && m_settings->useCoverFiles())
     {
         QString p = getCoverPath(url);
         if(!p.isEmpty())
@@ -200,6 +200,8 @@ QPixmap MetaDataManager::getCover(const QString &url) const
 
 QString MetaDataManager::getCoverPath(const QString &url) const
 {
+    if(!m_settings->useCoverFiles())
+        return QString();
     if(url.contains("://")) //url
     {
         MetaDataModel *model = createMetaDataModel(url);
