@@ -148,6 +148,7 @@ void ConfigDialog::readSettings()
     ui.coverIncludeLineEdit->setText(gs->coverNameFilters(TRUE).join(","));
     ui.coverExcludeLineEdit->setText(gs->coverNameFilters(FALSE).join(","));
     ui.coverDepthSpinBox->setValue(gs->coverSearchDepth());
+    ui.useCoverFilesCheckBox->setChecked(gs->useCoverFiles());
     //replay gain
     ui.clippingCheckBox->setChecked(gs->replayGainPreventClipping());
     ui.replayGainModeComboBox->setCurrentIndex(ui.replayGainModeComboBox->findData(gs->replayGainMode()));
@@ -657,7 +658,8 @@ void ConfigDialog::saveSettings()
     settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
     gs->setCoverSettings(ui.coverIncludeLineEdit->text().split(","),
                          ui.coverExcludeLineEdit->text().split(","),
-                         ui.coverDepthSpinBox->value(), TRUE);
+                         ui.coverDepthSpinBox->value(),
+                         ui.useCoverFilesCheckBox->isChecked());
     int i = ui.replayGainModeComboBox->currentIndex();
     gs->setReplayGainSettings((QmmpSettings::ReplayGainMode)
                               ui.replayGainModeComboBox->itemData(i).toInt(),
