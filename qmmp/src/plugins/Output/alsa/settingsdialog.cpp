@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,9 +31,9 @@ extern "C"
 SettingsDialog::SettingsDialog ( QWidget *parent )
         : QDialog ( parent )
 {
-    ui.setupUi ( this );
-    setAttribute ( Qt::WA_DeleteOnClose );
-    ui.deviceComboBox->setEditable ( TRUE );
+    ui.setupUi (this);
+    setAttribute (Qt::WA_DeleteOnClose);
+    ui.deviceComboBox->setEditable (TRUE);
     getCards();
     getSoftDevices();
     connect (ui.deviceComboBox, SIGNAL(activated(int)),SLOT(setText(int)));
@@ -91,6 +91,7 @@ void SettingsDialog::getCards()
 
 void SettingsDialog::getSoftDevices()
 {
+#if SND_LIB_VERSION >= 0x011600 //1.22.00
     void **hints = 0;
     int i = 0;
 
@@ -119,6 +120,7 @@ void SettingsDialog::getSoftDevices()
 
     if (hints)
         snd_device_name_free_hint (hints);
+#endif
 }
 
 void SettingsDialog::getCardDevices(int card)
