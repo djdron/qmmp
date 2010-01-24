@@ -545,7 +545,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="859"/>
         <source>Use separate image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Використовувати окремі файли зображень</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="869"/>
