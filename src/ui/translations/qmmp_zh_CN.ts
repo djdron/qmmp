@@ -1512,27 +1512,27 @@
 <context>
     <name>PresetEditor</name>
     <message>
-        <location filename="../forms/preseteditor.ui" line="13"/>
+        <location filename="../forms/preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
         <translation>预设编辑器</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="28"/>
+        <location filename="../forms/preseteditor.ui" line="77"/>
         <source>Load</source>
         <translation>载入</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="35"/>
+        <location filename="../forms/preseteditor.ui" line="84"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="46"/>
+        <location filename="../forms/preseteditor.ui" line="36"/>
         <source>Preset</source>
         <translation>预设</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="62"/>
+        <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
         <translation>自动预设</translation>
     </message>

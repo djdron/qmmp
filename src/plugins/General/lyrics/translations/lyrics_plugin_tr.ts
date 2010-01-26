@@ -50,8 +50,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="90"/>
         <location filename="../lyricswindow.ui" line="67"/>
+        <location filename="../lyricswindow.cpp" line="90"/>
         <source>No connection</source>
         <translation>Bağlantı yok</translation>
     </message>

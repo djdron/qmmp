@@ -50,8 +50,8 @@
         <translation>歌词：%1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="90"/>
         <location filename="../lyricswindow.ui" line="67"/>
+        <location filename="../lyricswindow.cpp" line="90"/>
         <source>No connection</source>
         <translation>无连接</translation>
     </message>
