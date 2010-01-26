@@ -1512,27 +1512,27 @@
 <context>
     <name>PresetEditor</name>
     <message>
-        <location filename="../forms/preseteditor.ui" line="13"/>
+        <location filename="../forms/preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
         <translation type="unfinished">Editor de Preset</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="28"/>
+        <location filename="../forms/preseteditor.ui" line="77"/>
         <source>Load</source>
         <translation type="unfinished">Carregar</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="35"/>
+        <location filename="../forms/preseteditor.ui" line="84"/>
         <source>Delete</source>
         <translation type="unfinished">Remover</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="46"/>
+        <location filename="../forms/preseteditor.ui" line="36"/>
         <source>Preset</source>
         <translation type="unfinished">Preset</translation>
     </message>
     <message>
-        <location filename="../forms/preseteditor.ui" line="62"/>
+        <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
         <translation type="unfinished">Auto-preset</translation>
     </message>
