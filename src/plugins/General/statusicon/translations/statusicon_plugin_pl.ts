@@ -9,76 +9,101 @@
         <translation>Ustawienia wtyczki Ikona Statusu</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
         <translation>Powiadomienie</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="67"/>
-        <location filename="../settingsdialog.ui" line="149"/>
+        <location filename="../settingsdialog.ui" line="38"/>
+        <location filename="../settingsdialog.ui" line="105"/>
         <source>Delay, ms:</source>
         <translation>Opóźnienie, ms:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="87"/>
+        <location filename="../settingsdialog.ui" line="98"/>
+        <source>Show progress bar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="131"/>
         <source>Transparency:</source>
         <translation>Przezroczystość:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="121"/>
+        <location filename="../settingsdialog.ui" line="165"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="130"/>
+        <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
         <translation>Próbuj rozdzielić nazwę pliku jeśli brakuje tagu</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="140"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloone message</source>
         <translation>Powiadomienie w chmurce</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="184"/>
+        <location filename="../settingsdialog.ui" line="174"/>
+        <source>Cover size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="214"/>
+        <source>32</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Change template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="250"/>
         <source>Use standard icons</source>
         <translation>Użyj standardowych ikon</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="70"/>
+        <source>Tooltip Template</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="89"/>
+        <location filename="../statusicon.cpp" line="65"/>
         <source>Play</source>
         <translation>Odtwarzaj</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="90"/>
+        <location filename="../statusicon.cpp" line="66"/>
         <source>Pause</source>
         <translation>Pauza</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="91"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Stop</source>
         <translation>Zatrzymaj</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="93"/>
+        <location filename="../statusicon.cpp" line="69"/>
         <source>Next</source>
         <translation>Następny</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="94"/>
+        <location filename="../statusicon.cpp" line="70"/>
         <source>Previous</source>
         <translation>Poprzedni</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="96"/>
+        <location filename="../statusicon.cpp" line="72"/>
         <source>Exit</source>
         <translation>Wyjdź</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="156"/>
+        <location filename="../statusicon.cpp" line="125"/>
         <source>Now Playing</source>
         <translation>Teraz odtwarza</translation>
     </message>
@@ -119,7 +144,7 @@
 <context>
     <name>StatusIconPopupWidget</name>
     <message>
-        <location filename="../statusiconpopupwidget.cpp" line="149"/>
+        <location filename="../statusiconpopupwidget.cpp" line="135"/>
         <source>Stopped</source>
         <translation>Zatrzymane</translation>
     </message>

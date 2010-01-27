@@ -167,4 +167,92 @@ p, li { white-space: pre-wrap; }
         <translation>Includi le etichette selezionate nel file</translation>
     </message>
 </context>
+<context>
+    <name>TemplateEditor</name>
+    <message>
+        <location filename="../templateeditor.ui" line="39"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.ui" line="46"/>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.ui" line="14"/>
+        <source>Template Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="50"/>
+        <source>Artist</source>
+        <translation type="unfinished">Interprete</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="51"/>
+        <source>Album</source>
+        <translation type="unfinished">Album</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="52"/>
+        <source>Title</source>
+        <translation type="unfinished">Titolo</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="53"/>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="54"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="55"/>
+        <source>Genre</source>
+        <translation type="unfinished">Genere</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="56"/>
+        <source>Comment</source>
+        <translation type="unfinished">Commento</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="57"/>
+        <source>Composer</source>
+        <translation type="unfinished">Compositore</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="58"/>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="59"/>
+        <source>Disc number</source>
+        <translation type="unfinished">Disco n°</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="60"/>
+        <source>File name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="61"/>
+        <source>File path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="62"/>
+        <source>Year</source>
+        <translation type="unfinished">Anno</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="63"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

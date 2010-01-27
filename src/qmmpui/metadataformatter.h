@@ -23,6 +23,7 @@
 
 #include <QString>
 #include <QMap>
+#include <qmmpui/abstractplaylistitem.h>
 #include <qmmp/qmmp.h>
 
 /*!
@@ -32,12 +33,12 @@ class MetaDataFormatter
 {
 public:
     MetaDataFormatter(const QString &format);
-    QString parse(const QMap<Qmmp::MetaData, QString> metaData);
+    QString parse(AbstractPlaylistItem *item);
+    QString parse(const QMap<Qmmp::MetaData, QString> metaData, qint64 length = 0);
 
 private:
     QString m_format;
     QString processIfKeyWord(QString title);
-
 };
 
 #endif // METADATAFORMATTER_H

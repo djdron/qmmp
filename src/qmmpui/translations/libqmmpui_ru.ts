@@ -31,7 +31,7 @@
     <message>
         <location filename="../detailsdialog.cpp" line="83"/>
         <source>Composer</source>
-        <translation>Композитр</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="85"/>
@@ -157,6 +157,94 @@ p, li { white-space: pre-wrap; }
         <location filename="../tageditor.ui" line="288"/>
         <source>Include selected tag in file</source>
         <translation>Включить выбранный тег в файл</translation>
+    </message>
+</context>
+<context>
+    <name>TemplateEditor</name>
+    <message>
+        <location filename="../templateeditor.ui" line="39"/>
+        <source>Reset</source>
+        <translation>Сброс</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.ui" line="46"/>
+        <source>Insert</source>
+        <translation>Вставить</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.ui" line="14"/>
+        <source>Template Editor</source>
+        <translation>Редактор шаблонов</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="50"/>
+        <source>Artist</source>
+        <translation>Исполнитель</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="51"/>
+        <source>Album</source>
+        <translation>Альбом</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="52"/>
+        <source>Title</source>
+        <translation>Название</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="53"/>
+        <source>Track number</source>
+        <translation>Номер трека</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="54"/>
+        <source>Two-digit track number</source>
+        <translation>2-х разрядный номер трека</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="55"/>
+        <source>Genre</source>
+        <translation>Жанр</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="56"/>
+        <source>Comment</source>
+        <translation>Комментарий</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="57"/>
+        <source>Composer</source>
+        <translation>Композитор</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="58"/>
+        <source>Duration</source>
+        <translation>Длительность</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="59"/>
+        <source>Disc number</source>
+        <translation>Номер диска</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="60"/>
+        <source>File name</source>
+        <translation>Имя файла</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="61"/>
+        <source>File path</source>
+        <translation>Путь к файлу</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="62"/>
+        <source>Year</source>
+        <translation>Год</translation>
+    </message>
+    <message>
+        <location filename="../templateeditor.cpp" line="63"/>
+        <source>Condition</source>
+        <translation>Условие</translation>
     </message>
 </context>
 </TS>

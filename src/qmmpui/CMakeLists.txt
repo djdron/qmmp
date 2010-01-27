@@ -40,6 +40,7 @@ SET(libqmmpui_SRCS
     tageditor.cpp
     playlistmanager.cpp
     metadataformatter.cpp
+    templateeditor.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -64,6 +65,7 @@ SET(libqmmpui_MOC_HDRS
     tageditor.h
     playlistmanager.h
     metadataformatter.h
+    templateeditor.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -84,12 +86,14 @@ SET(libqmmpui_DEVEL_HDRS
     tageditor.h
     playlistmanager.h
     metadataformatter.h
+    templateeditor.h
 )
 
 
 SET(libqmmpui_UIS
     detailsdialog.ui
     tageditor.ui
+    templateeditor.ui
 )
 
 QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
