@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -43,21 +43,6 @@ void QmmpTrayIcon::showNiceToolTip(bool value)
     m_showNiceToolTip = value;
 }
 
-void QmmpTrayIcon::setNiceToolTipDelay(int value)
-{
-    m_niceToolTipDelay = value;
-}
-
-void QmmpTrayIcon::setNiceToolTipOpacity(qreal value)
-{
-    m_niceToolTipOpacity = value;
-}
-
-void QmmpTrayIcon::setSplitFileName(bool value)
-{
-    m_splitFileName = value;
-}
-
 bool QmmpTrayIcon::event(QEvent *e)
 {
     if (e->type() == QEvent::Wheel )
@@ -96,7 +81,6 @@ void QmmpTrayIcon::showToolTip()
         {
             m_PopupWidget = new StatusIconPopupWidget();
         }
-        m_PopupWidget->setWindowOpacity(m_niceToolTipOpacity);
-        m_PopupWidget->showInfo(geometry().x(),geometry().y(),m_niceToolTipDelay,m_splitFileName);
+        m_PopupWidget->showInfo(geometry().x(),geometry().y());
     }
 }

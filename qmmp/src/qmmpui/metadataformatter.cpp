@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,6 +33,7 @@ Syntax:
 %f - file name
 %F - full path
 %y - year
+%l - duration
 %if(A,B,C)
 %if(A&B&C,D,E)
 */
@@ -46,7 +47,12 @@ MetaDataFormatter::MetaDataFormatter(const QString &format)
     m_format = format;
 }
 
-QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData)
+QString MetaDataFormatter::parse(AbstractPlaylistItem *item)
+{
+    return parse(item->metaData(), item->length());
+}
+
+QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData, qint64 length)
 {
     QString title = m_format;
     title.replace("\\(", "%28");
@@ -66,6 +72,22 @@ QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData)
     title.replace("%f", metaData[Qmmp::URL].section('/',-1));
     title.replace("%F", metaData[Qmmp::URL]);
     title.replace("%y", metaData[Qmmp::YEAR]);
+    if(title.contains("l"))
+    {
+        if (length)
+        {
+            QString time;
+            int l = length;
+            if(l > 3600)
+                time == QString("%1:%2:%3").arg(l/3600,2,10,QChar('0'))
+                .arg(l%3600/60,2,10,QChar('0')).arg(l%60,2,10,QChar('0'));
+            else
+                time = QString("%1:%2").arg(l/60,2,10,QChar('0')).arg(l%60,2,10,QChar('0'));
+            title.replace("%l",time);
+        }
+        else
+            title.replace("%l","");
+    }
 
     if(title.contains("%if"))
         title = processIfKeyWord(title);

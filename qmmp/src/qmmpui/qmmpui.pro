@@ -38,7 +38,8 @@ HEADERS += general.h \
     detailsdialog.h \
     tageditor.h \
     playlistmanager.h \
-    metadataformatter.h
+    metadataformatter.h \
+    templateeditor.h
 SOURCES += general.cpp \
     generalhandler.cpp \
     playlistparser.cpp \
@@ -55,9 +56,11 @@ SOURCES += general.cpp \
     detailsdialog.cpp \
     tageditor.cpp \
     playlistmanager.cpp \
-    metadataformatter.cpp
+    metadataformatter.cpp \
+    templateeditor.cpp
 FORMS += detailsdialog.ui \
-    tageditor.ui
+    tageditor.ui \
+    templateeditor.ui
 unix:DESTDIR = .
 RESOURCES += translations/libqmmpui_locales.qrc
 TRANSLATIONS = translations/libqmmpui_ru.ts \

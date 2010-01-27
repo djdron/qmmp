@@ -1,8 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2009 by Artur Guzik                                     *
- *   a.guzik88@gmail.com
- *
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   a.guzik88@gmail.com                                                   *
+ *                                                                         *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,8 @@
 #ifndef STATUSICONPOPUPWIDGET_H
 #define STATUSICONPOPUPWIDGET_H
 
+#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b>\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)\n%if(%l,<br><b>%l</b>,)"
+
 #include <QFrame>
 #include <QWidget>
 #include <QProgressBar>
@@ -44,7 +46,7 @@ public:
     StatusIconPopupWidget(QWidget * parent = 0);
     ~StatusIconPopupWidget();
 
-    void showInfo(int x, int y, int delay, bool splitFileName); //x,y are tray icon position
+    void showInfo(int x, int y); //x,y are tray icon position
 
 protected:
     virtual void mousePressEvent(QMouseEvent *);
@@ -66,6 +68,8 @@ private:
     int m_lastTrayX;
     int m_lastTrayY;
     int m_splitFileName;
+    QString m_template;
+    bool m_showProgress;
 };
 
 class TimeBar : public QProgressBar

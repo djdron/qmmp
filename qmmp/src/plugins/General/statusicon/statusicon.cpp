@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -49,43 +49,19 @@ StatusIcon::StatusIcon(QObject *parent)
     m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
     m_useStandardIcons = settings.value("use_standard_icons",FALSE).toBool();
     m_tray->showNiceToolTip(settings.value("show_nicetooltip",TRUE).toBool());
-    m_tray->setNiceToolTipDelay(settings.value("nicetooltip_delay",2000).toInt());
-    m_tray->setNiceToolTipOpacity(1 - (settings.value("nicetooltip_transparency",0).toDouble()/100));
-    m_tray->setSplitFileName(settings.value("split_file_name",TRUE).toBool());
-#if QT_VERSION >= 0x040400
     if(m_useStandardIcons)
         m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
     else
-#endif
         m_tray->setIcon ( QIcon(":/tray_stop.png"));
     m_tray->show();
     settings.endGroup();
     //actions
     QMenu *menu = new QMenu(qobject_cast<QWidget *>(parent));
-    QIcon playIcon;
-    QIcon pauseIcon;
-    QIcon stopIcon;
-    QIcon nextIcon;
-    QIcon previousIcon;
-#if QT_VERSION >= 0x040400
-    if(m_useStandardIcons)
-    {
-        playIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPlay);
-        pauseIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPause);
-        stopIcon = QApplication::style()->standardIcon(QStyle::SP_MediaStop);
-        nextIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipForward);
-        previousIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipBackward);
-    }
-    else
-    {
-#endif
-        playIcon = QIcon(":/tray_play.png");
-        pauseIcon = QIcon(":/tray_pause.png");
-        stopIcon = QIcon(":/tray_stop.png");
-        //TODO add more icons
-#if QT_VERSION >= 0x040400
-    }
-#endif
+    QIcon playIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPlay);
+    QIcon pauseIcon = QApplication::style()->standardIcon(QStyle::SP_MediaPause);
+    QIcon stopIcon = QApplication::style()->standardIcon(QStyle::SP_MediaStop);
+    QIcon nextIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipForward);
+    QIcon previousIcon = QApplication::style()->standardIcon(QStyle::SP_MediaSkipBackward);
     menu->addAction(playIcon,tr("Play"), m_player, SLOT(play()));
     menu->addAction(pauseIcon,tr("Pause"), m_core, SLOT(pause()));
     menu->addAction(stopIcon,tr("Stop"), m_core, SLOT(stop()));
@@ -95,7 +71,6 @@ StatusIcon::StatusIcon(QObject *parent)
     menu->addSeparator();
     menu->addAction(tr("Exit"), this, SLOT(exit()));
     m_tray->setContextMenu(menu);
-
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     setState(m_core->state()); //update state
@@ -113,32 +88,26 @@ void StatusIcon::setState(Qmmp::State state)
     {
     case Qmmp::Playing:
     {
-#if QT_VERSION >= 0x040400
          if(m_useStandardIcons)
             m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaPlay));
         else
-#endif
-            m_tray->setIcon ( QIcon(":/tray_play.png"));
+            m_tray->setIcon (QIcon(":/tray_play.png"));
         break;
     }
     case Qmmp::Paused:
     {
-#if QT_VERSION >= 0x040400
          if(m_useStandardIcons)
             m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaPause));
         else
-#endif
-            m_tray->setIcon ( QIcon(":/tray_pause.png"));
+            m_tray->setIcon (QIcon(":/tray_pause.png"));
         break;
     }
     case Qmmp::Stopped:
     {
-#if QT_VERSION >= 0x040400
         if(m_useStandardIcons)
             m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
         else
-#endif
-            m_tray->setIcon ( QIcon(":/tray_stop.png"));
+            m_tray->setIcon (QIcon(":/tray_stop.png"));
         break;
     }
     }

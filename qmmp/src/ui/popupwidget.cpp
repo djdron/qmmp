@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -84,16 +84,8 @@ void PopupWidget::popup(PlayListItem *item, QPoint pos)
     m_lastItem = item;
     move(pos);
     QString title = m_template;
-
-    if (item->length() > 0)
-    {
-        int l = item->length();
-        title.replace("%l",QString("%1:%2").arg(l/60).arg(l%60, 2, 10, QChar('0')));
-    }
-    else
-        title.replace("%l","");
     MetaDataFormatter f(title);
-    title = f.parse(item->metaData());
+    title = f.parse(item);
 
     m_label1->setText(title);
 

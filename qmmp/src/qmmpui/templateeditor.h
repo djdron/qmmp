@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,37 +17,43 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef QMMPTRAYICON_H
-#define QMMPTRAYICON_H
 
-#include <QSystemTrayIcon>
-#include <QPointer>
+#ifndef TEMPLATEEDITOR_H
+#define TEMPLATEEDITOR_H
 
-class QEvent;
-class QWheelEvent;
-class StatusIconPopupWidget;
+#include <QDialog>
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class QmmpTrayIcon : public QSystemTrayIcon
+
+namespace Ui {
+    class TemplateEditor;
+}
+class QAction;
+
+
+/*!
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class TemplateEditor : public QDialog
 {
 Q_OBJECT
 public:
-    QmmpTrayIcon(QObject *parent = 0);
-    ~QmmpTrayIcon();
+    explicit TemplateEditor(QWidget *parent = 0);
 
-    void showNiceToolTip(bool value);
+    QString currentTemplate() const;
+    void setTemplate(const QString &text = QString());
+    void setDefaultTemplate(const QString &text);
+    static QString getTemplate (QWidget *parent, const QString &title, const QString &text = QString(),
+                                const QString &default_template = QString(), bool *ok = 0);
 
-protected:
-    bool event(QEvent *e);
+private slots:
+    void insertExpression(QAction *a);
+    void on_resetButton_clicked();
 
 private:
-    void wheelEvent(QWheelEvent *e);
-    void showToolTip();
-    bool m_showNiceToolTip;
-    QPointer<StatusIconPopupWidget> m_PopupWidget;
+    void createMenu();
+    Ui::TemplateEditor *m_ui;
+    QString m_defaultTemplate;
 
 };
 
-#endif
+#endif // TEMPLATEEDITOR_H
