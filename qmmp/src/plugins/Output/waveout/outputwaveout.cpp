@@ -155,6 +155,7 @@ qint64 OutputWaveOut::writeAudio(unsigned char *data, qint64 len)
     HGLOBAL    hg2;
     LPWAVEHDR  wh;
     void*      allocptr;
+    len = qMin(len, (qint64)1024);
 
     do
     {
