@@ -81,12 +81,17 @@ public:
     {
         return &cnd;
     }
+    /*!
+     * Returns \b true if the next buffer is used by output. Otherwise returns \b false.
+     */
+    bool blocked();
 
 private:
     unsigned int buffer_count, add_index, done_index, current_count;
     Buffer **buffers;
     QMutex mtx;
     QWaitCondition cnd;
+    Buffer *m_blocked;
 };
 
 #endif // __recycler_h
