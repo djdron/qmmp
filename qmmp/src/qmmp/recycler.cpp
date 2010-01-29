@@ -22,6 +22,7 @@ Recycler::Recycler (unsigned int sz)
     {
         buffers[i] = new Buffer;
     }
+    m_blocked = 0;
 }
 
 
@@ -32,14 +33,19 @@ Recycler::~Recycler()
         delete buffers[i];
         buffers[i] = 0;
     }
-
     delete [] buffers;
+    m_blocked = 0;
 }
 
 
 bool Recycler::full() const
 {
     return current_count == buffer_count;
+}
+
+bool Recycler::blocked()
+{
+    return buffers[add_index] == m_blocked;
 }
 
 
@@ -74,24 +80,25 @@ void Recycler::add()
     current_count++;
 }
 
-
 Buffer *Recycler::next()
 {
-    return !current_count ? 0 : buffers[done_index];
+    if(current_count)
+    {
+        m_blocked = buffers[done_index];
+        return m_blocked;
+    }
+    return 0;
 }
-
 
 void Recycler::done()
 {
-    //done_index = ++done_index % buffer_count;
+    m_blocked = 0;
     if (current_count)
     {
         current_count--;
         done_index = ++done_index % buffer_count;
     }
-    //scurrent_count--;
 }
-
 
 void Recycler::clear()
 {
@@ -99,7 +106,6 @@ void Recycler::clear()
     add_index = 0;
     done_index = 0;
 }
-
 
 unsigned int Recycler::size() const
 {

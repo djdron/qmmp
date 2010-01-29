@@ -501,7 +501,7 @@ void QmmpAudioEngine::flush(bool final)
             break;
         }
 
-        while ((!m_done && !m_finish) && m_output->recycler()->full())
+        while ((m_output->recycler()->full() || m_output->recycler()->blocked()) && (!m_done && !m_finish))
         {
             mutex()->unlock();
             m_output->recycler()->cond()->wait(m_output->recycler()->mutex());
