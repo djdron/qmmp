@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,12 +32,6 @@
 class QFileInfo;
 
 class Skin;
-class EnginePluginItem;
-class InputPluginItem;
-class OutputPluginItem;
-class VisualPluginItem;
-class EffectPluginItem;
-class GeneralPluginItem;
 class SkinReader;
 
 class ConfigDialog : public QDialog
@@ -49,20 +43,24 @@ public:
     ~ConfigDialog();
 
 private slots:
-    void changePage(QListWidgetItem *current, QListWidgetItem *previous);
+    void on_contentsWidget_currentItemChanged (QListWidgetItem *current, QListWidgetItem *previous);
     void changeSkin();
     void setPlFont();
     void setMainFont();
-    void showPluginSettings();
-    void showPluginInfo();
+    void on_preferencesButton_clicked();
+    void on_informationButton_clicked();
     void addTitleString(QAction *);
     void saveSettings();
-    void updateButtons();
     void updateDialogButton(int);
-    void showFileDialogInfo();
+    void on_fdInformationButton_clicked();
     void installSkin();
     void loadSkins();
     void on_popupCustomizeButton_clicked();
+    void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
+    void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
+    void on_outputComboBox_activated (int index);
+    void on_outputPreferencesButton_clicked();
+    void on_outputInformationButton_clicked();
 
 private:
     void readSettings();
@@ -77,13 +75,6 @@ private:
     Skin *m_skin;
     QPixmap pixmap;
     SkinReader *m_reader;
-
-    QList <InputPluginItem*> m_inputPluginItems;
-    QList <EnginePluginItem*> m_enginePluginItems;
-    QList <OutputPluginItem*> m_outputPluginItems;
-    QList <VisualPluginItem*> m_visualPluginItems;
-    QList <EffectPluginItem*> m_effectPluginItems;
-    QList <GeneralPluginItem*> m_generalPluginItems;
 };
 
 #endif

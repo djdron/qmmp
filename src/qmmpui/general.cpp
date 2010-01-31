@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,19 +23,17 @@
 #include <QList>
 #include <QApplication>
 #include <qmmp/qmmp.h>
-
 #include "general.h"
 
+QList<GeneralFactory*> *General::m_factories = 0;
+QStringList General::m_files;
 
-static QList<GeneralFactory*> *factories = 0;
-static QStringList files;
-
-static void checkFactories()
+void General::checkFactories()
 {
-    if (! factories)
+    if (!m_factories)
     {
-        files.clear();
-        factories = new QList<GeneralFactory *>;
+        m_files.clear();
+        m_factories = new QList<GeneralFactory *>;
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("General");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
@@ -53,8 +51,8 @@ static void checkFactories()
 
             if (factory)
             {
-                factories->append(factory);
-                files << pluginsDir.absoluteFilePath(fileName);
+                m_factories->append(factory);
+                m_files << pluginsDir.absoluteFilePath(fileName);
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
@@ -81,22 +79,22 @@ void General::toggleVisibility()
     emit toggleVisibilityCalled();
 }
 
-QList<GeneralFactory*> *General::generalFactories()
+QList<GeneralFactory*> *General::factories()
 {
     checkFactories();
-    return factories;
+    return m_factories;
 }
 
-QStringList General::generalFiles()
+QStringList General::files()
 {
     checkFactories();
-    return files;
+    return m_files;
 }
 
 void General::setEnabled(GeneralFactory* factory, bool enable)
 {
     checkFactories();
-    if (!factories->contains(factory))
+    if (!m_factories->contains(factory))
         return;
 
     QString name = factory->properties().shortName;
@@ -116,7 +114,7 @@ void General::setEnabled(GeneralFactory* factory, bool enable)
 bool General::isEnabled(GeneralFactory* factory)
 {
     checkFactories();
-    if (!factories->contains(factory))
+    if (!m_factories->contains(factory))
         return FALSE;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat );
     QStringList genList = settings.value("General/enabled_plugins").toStringList();

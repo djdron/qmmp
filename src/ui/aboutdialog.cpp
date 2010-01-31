@@ -92,7 +92,7 @@ QString AboutDialog::loadAbout()
     text.append("</ul>");
     text.append("<h5>"+tr("Output plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
-    foreach(OutputFactory *fact, *Output::outputFactories())
+    foreach(OutputFactory *fact, *Output::factories())
     {
         text.append("<li>");
         text.append(fact->properties().name);
@@ -110,7 +110,7 @@ QString AboutDialog::loadAbout()
     text.append("</ul>");
     text.append("<h5>"+tr("Effect plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
-    foreach(EffectFactory *fact, *Effect::effectFactories())
+    foreach(EffectFactory *fact, *Effect::factories())
     {
         text.append("<li>");
         text.append(fact->properties().name);
@@ -119,7 +119,7 @@ QString AboutDialog::loadAbout()
     text.append("</ul>");
     text.append("<h5>"+tr("General plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
-    foreach(GeneralFactory *fact, *General::generalFactories())
+    foreach(GeneralFactory *fact, *General::factories())
     {
         text.append("<li>");
         text.append(fact->properties().name);

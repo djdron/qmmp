@@ -40,6 +40,7 @@ void PixmapWidget::setPixmap(const QPixmap pixmap)
 
 void PixmapWidget::paintEvent (QPaintEvent *e)
 {
+    Q_UNUSED(e);
     QPainter paint(this);
     paint.drawPixmap(0,0, m_pixmap);
 }

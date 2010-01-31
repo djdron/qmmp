@@ -359,9 +359,9 @@ void Output::checkFactories()
     }
 }
 
-void Output::registerFactory ( OutputFactory *fact )
+void Output::registerFactory (OutputFactory *fact)
 {
-    m_factories->append ( fact );
+    m_factories->append (fact);
 }
 
 Output *Output::create (QObject *parent)
@@ -382,13 +382,13 @@ Output *Output::create (QObject *parent)
     return output;
 }
 
-QList<OutputFactory*> *Output::outputFactories()
+QList<OutputFactory*> *Output::factories()
 {
     checkFactories();
     return m_factories;
 }
 
-QStringList Output::outputFiles()
+QStringList Output::files()
 {
     checkFactories();
     return m_files;

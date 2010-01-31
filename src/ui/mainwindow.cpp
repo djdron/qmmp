@@ -342,15 +342,13 @@ void MainWindow::writeSettings()
 void MainWindow::showSettings()
 {
     m_confDialog = new ConfigDialog(this);
-    if (m_confDialog->exec() == QDialog::Accepted)
-    {
-        readSettings();
-        m_playlist->readSettings();
-        TextScroller::getPointer()->readSettings();
-        m_visMenu->updateActions();
-        m_skin->reloadSkin();
-        Dock::instance()->updateDock();
-    }
+    m_confDialog->exec();
+    readSettings();
+    m_playlist->readSettings();
+    TextScroller::getPointer()->readSettings();
+    m_visMenu->updateActions();
+    m_skin->reloadSkin();
+    Dock::instance()->updateDock();
     delete m_confDialog;
 }
 

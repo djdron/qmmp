@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,9 @@
 #define VISUALMENU_H
 
 #include <QMenu>
+#include <QAction>
+
+class VisualFactory;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -35,6 +38,19 @@ public:
 
 public slots:
     void updateActions();
+};
+
+class VisualAction : public QAction
+{
+    Q_OBJECT
+public:
+    VisualAction(VisualFactory *factory, QWidget *parent = 0);
+
+private slots:
+    void select(bool);
+
+private:
+    VisualFactory *m_factory;
 
 };
 
