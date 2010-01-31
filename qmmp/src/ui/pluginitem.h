@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,12 +20,13 @@
 #ifndef PLUGINITEM_H
 #define PLUGINITEM_H
 
-#include <QObject>
+#include <QTreeWidgetItem>
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
+class QWidget;
 class DecoderFactory;
 class EngineFactory;
 class OutputFactory;
@@ -33,115 +34,38 @@ class VisualFactory;
 class EffectFactory;
 class GeneralFactory;
 
-class InputPluginItem : public QObject
+class PluginItem : public QTreeWidgetItem
 {
-    Q_OBJECT
 public:
-    InputPluginItem(QObject *parent, DecoderFactory *fact);
 
-    ~InputPluginItem();
+    PluginItem(QTreeWidgetItem *parent, DecoderFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, EngineFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, EffectFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, VisualFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, GeneralFactory *factory, const QString &path);
+    ~PluginItem();
 
-    bool isSelected();
-    DecoderFactory * factory();
+    enum PluginType
+    {
+        TRANSPORT = QTreeWidgetItem::UserType,
+        DECODER,
+        ENGINE,
+        EFFECT,
+        VISUAL,
+        GENERAL
+    };
 
-public slots:
-    void setSelected(bool);
+    bool hasAbout() const;
+    bool hasSettings() const;
+    void showAbout(QWidget *parent);
+    void showSettings(QWidget *parent);
+    void setEnabled(bool enabled);
+
 
 private:
-    DecoderFactory *m_factory;
-
-};
-
-class EnginePluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    EnginePluginItem(QObject *parent, EngineFactory *fact);
-
-    ~EnginePluginItem();
-
-    bool isSelected();
-    EngineFactory *factory();
-
-public slots:
-    void setSelected(bool);
-
-private:
-    EngineFactory *m_factory;
-
-};
-
-class OutputPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    OutputPluginItem(QObject *parent, OutputFactory *fact);
-
-    ~OutputPluginItem();
-
-    bool isSelected();
-    OutputFactory * factory();
-
-public slots:
-    void select();
-
-private:
-    OutputFactory *m_factory;
-
-};
-
-class VisualPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    VisualPluginItem(QObject *parent, VisualFactory *fact);
-
-    ~VisualPluginItem();
-
-    bool isSelected();
-    VisualFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    VisualFactory *m_factory;
-};
-
-class EffectPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    EffectPluginItem(QObject *parent, EffectFactory *fact);
-
-    ~EffectPluginItem();
-
-    bool isSelected();
-    EffectFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    EffectFactory *m_factory;
-};
-
-class GeneralPluginItem : public QObject
-{
-    Q_OBJECT
-public:
-    GeneralPluginItem(QObject *parent, GeneralFactory *fact);
-
-    ~GeneralPluginItem();
-
-    bool isSelected();
-    GeneralFactory * factory();
-
-public slots:
-    void select(bool);
-
-private:
-    GeneralFactory *m_factory;
+    bool m_has_about;
+    bool m_has_config;
+    void *m_factory;
 };
 
 #endif

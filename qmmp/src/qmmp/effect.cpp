@@ -122,13 +122,13 @@ QList<Effect*> Effect::create()
     return effects;
 }
 
-QList<EffectFactory*> *Effect::effectFactories()
+QList<EffectFactory*> *Effect::factories()
 {
     checkFactories();
     return m_factories;
 }
 
-QStringList Effect::effectFiles()
+QStringList Effect::files()
 {
     checkFactories();
     return m_files;

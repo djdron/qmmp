@@ -38,7 +38,7 @@ GeneralHandler::GeneralHandler(QObject *parent)
     m_toolsMenu = 0;
     m_playlistMenu = 0;
     GeneralFactory* factory;
-    foreach(factory, *General::generalFactories())
+    foreach(factory, *General::factories())
     {
         if (General::isEnabled(factory))
         {
@@ -94,7 +94,7 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
 bool GeneralHandler::visibilityControl()
 {
     GeneralFactory* factory;
-    foreach(factory, *General::generalFactories())
+    foreach(factory, *General::factories())
     {
         if (General::isEnabled(factory) && factory->properties().visibilityControl)
             return TRUE;

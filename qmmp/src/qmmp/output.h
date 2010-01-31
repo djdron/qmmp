@@ -115,11 +115,11 @@ public:
     /*!
      * Returns a list of output factories.
      */
-    static QList<OutputFactory*> *outputFactories();
+    static QList<OutputFactory*> *factories();
     /*!
      * Returns a list of output plugin file names.
      */
-    static QStringList outputFiles();
+    static QStringList files();
     /*!
      * Selects current output \b factory.
      */

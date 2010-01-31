@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,11 +44,11 @@ public:
     /*!
      * Returns a list of the loaded general plugin factories.
      */
-    static QList<GeneralFactory*> *generalFactories();
+    static QList<GeneralFactory*> *factories();
     /*!
      * Returns a list of the loaded general plugin files.
      */
-    static QStringList generalFiles();
+    static QStringList files();
     /*!
      * Sets whether the general plugin is enabled.
      * @param factory General plugin factory.
@@ -84,6 +84,9 @@ public slots:
 private:
     QMap <uint, QString> m_strValues;
     QMap <uint, uint> m_numValues;
+    static QList<GeneralFactory*> *m_factories;
+    static QStringList m_files;
+    static void checkFactories();
 };
 
 #endif

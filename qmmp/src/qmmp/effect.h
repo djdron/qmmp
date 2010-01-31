@@ -77,11 +77,11 @@ public:
     /*!
      * Returns a list of effect factories.
      */
-    static QList<EffectFactory*> *effectFactories();
+    static QList<EffectFactory*> *factories();
     /*!
      * Returns a list of effect plugin file names.
      */
-    static QStringList effectFiles();
+    static QStringList files();
     /*!
      * Sets whether the effect plugin is enabled.
      * @param factory Effect plugin factory.

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,17 +26,13 @@
 #include "pluginitem.h"
 #include "visualmenu.h"
 
-VisualMenu::VisualMenu(QWidget *parent)
- : QMenu(tr("Visualization"), parent)
+VisualMenu::VisualMenu(QWidget *parent) : QMenu(tr("Visualization"), parent)
 {
     VisualFactory *factory = 0;
     foreach(factory, *Visual::factories())
     {
-        QAction *act = this->addAction(factory->properties().name);
-        act->setCheckable (TRUE);
-        act->setChecked (Visual::isEnabled(factory));
-        VisualPluginItem *vi = new VisualPluginItem(this,factory);
-        connect(act, SIGNAL(toggled(bool)), vi, SLOT(select(bool)));
+        VisualAction *act = new VisualAction(factory, this);
+        addAction(act);
     }
 }
 
@@ -50,4 +46,18 @@ void VisualMenu::updateActions()
     {
         actions()[i]->setChecked(Visual::isEnabled(Visual::factories()->at(i)));
     }
+}
+
+VisualAction::VisualAction(VisualFactory *factory, QWidget *parent) :
+        QAction(factory->properties().name, parent)
+{
+    setCheckable (TRUE);
+    setChecked (Visual::isEnabled(factory));
+    m_factory = factory;
+    connect(this, SIGNAL(triggered(bool)), SLOT(select(bool)));
+}
+
+void VisualAction::select(bool select)
+{
+    Visual::setEnabled(m_factory, select);
 }
