@@ -23,6 +23,7 @@
 #include <QTranslator>
 #include <curl/curlver.h>
 #include <qmmp/qmmp.h>
+#include "settingsdialog.h"
 #include "httpinputsource.h"
 #include "httpinputfactory.h"
 
@@ -44,6 +45,8 @@ InputSource *HTTPInputFactory::create(const QString &url, QObject *parent)
 
 void HTTPInputFactory::showSettings(QWidget *parent)
 {
+    SettingsDialog *s = new SettingsDialog(parent);
+    s->show();
 }
 
 void HTTPInputFactory::showAbout(QWidget *parent)

@@ -22,6 +22,8 @@
 #include <QStringList>
 #include <QDir>
 #include <QMap>
+#include <QSettings>
+#include <QTextCodec>
 #include <stdint.h>
 #include <stdlib.h>
 #include <qmmp/qmmpsettings.h>
@@ -116,6 +118,11 @@ Downloader::Downloader(QObject *parent, const QString &url)
     m_handle = 0;
     m_metacount = 0;
     m_meta_sent = FALSE;
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_codec = QTextCodec::codecForName(settings.value("HTTP/icy_encoding","windows-1252").toByteArray ());
+    m_buffer_size = settings.value("HTTP/buffer_size",128).toInt() * 1000;
+    if (!m_codec)
+        m_codec = QTextCodec::codecForName ("UTF-8");
 }
 
 
@@ -294,7 +301,7 @@ const QString &Downloader::title() const
 
 void Downloader::checkBuffer()
 {
-    if (m_stream.buf_fill > BUFFER_SIZE && !m_ready)
+    if (m_stream.buf_fill > m_buffer_size && !m_ready)
     {
         m_ready  = TRUE;
         qDebug("Downloader: ready");
@@ -310,7 +317,7 @@ void Downloader::checkBuffer()
     }
     else if (!m_ready)
     {
-        StateHandler::instance()->dispatchBuffer(100 * m_stream.buf_fill / BUFFER_SIZE);
+        StateHandler::instance()->dispatchBuffer(100 * m_stream.buf_fill / m_buffer_size);
         qApp->processEvents();
     }
 }
@@ -346,7 +353,7 @@ void Downloader::readICYMetaData()
 
 void Downloader::parseICYMetaData(char *data)
 {    
-    QString str(data);
+    QString str = m_codec->toUnicode(data).trimmed();
     QStringList list(str.split(";", QString::SkipEmptyParts));
     foreach(QString line, list)
     {

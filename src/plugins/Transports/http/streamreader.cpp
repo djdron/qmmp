@@ -94,14 +94,16 @@ qint64 StreamReader::size () const
     return bytesAvailable ();
 }
 
-bool StreamReader::waitForBytesWritten ( int msecs )
+bool StreamReader::waitForBytesWritten (int msecs)
 {
+    Q_UNUSED(msecs);
     //usleep(msecs*1000);
     return TRUE;
 }
 
-bool StreamReader::waitForReadyRead ( int msecs )
+bool StreamReader::waitForReadyRead (int msecs)
 {
+    Q_UNUSED(msecs);
     //usleep(msecs*1000);
     return TRUE;
 }
