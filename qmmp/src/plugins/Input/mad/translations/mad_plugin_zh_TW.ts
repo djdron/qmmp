@@ -120,70 +120,70 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="47"/>
-        <location filename="../settingsdialog.ui" line="94"/>
-        <location filename="../settingsdialog.ui" line="141"/>
+        <location filename="../settingsdialog.ui" line="61"/>
+        <location filename="../settingsdialog.ui" line="110"/>
+        <location filename="../settingsdialog.ui" line="159"/>
         <source>ID3v1</source>
         <translation>ID3v1</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="52"/>
-        <location filename="../settingsdialog.ui" line="99"/>
-        <location filename="../settingsdialog.ui" line="146"/>
+        <location filename="../settingsdialog.ui" line="66"/>
+        <location filename="../settingsdialog.ui" line="115"/>
+        <location filename="../settingsdialog.ui" line="164"/>
         <source>ID3v2</source>
         <translation>ID3v2</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="183"/>
+        <location filename="../settingsdialog.ui" line="210"/>
         <source>ID3v1 encoding:</source>
         <translation>ID3v1 編碼：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="206"/>
+        <location filename="../settingsdialog.ui" line="236"/>
         <source>ID3v2 encoding:</source>
         <translation>ID3v2 編碼：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>MPEG Plugin Settings</source>
         <translation>MPEG 插件設定</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="19"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Tag Priority</source>
         <translation>標簽優先</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="33"/>
+        <location filename="../settingsdialog.ui" line="41"/>
         <source>First:</source>
         <translation>第一：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
-        <location filename="../settingsdialog.ui" line="104"/>
-        <location filename="../settingsdialog.ui" line="151"/>
+        <location filename="../settingsdialog.ui" line="71"/>
+        <location filename="../settingsdialog.ui" line="120"/>
+        <location filename="../settingsdialog.ui" line="169"/>
         <source>APE</source>
         <translation>APE</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="62"/>
-        <location filename="../settingsdialog.ui" line="109"/>
-        <location filename="../settingsdialog.ui" line="156"/>
+        <location filename="../settingsdialog.ui" line="76"/>
+        <location filename="../settingsdialog.ui" line="125"/>
+        <location filename="../settingsdialog.ui" line="174"/>
         <source>Disabled</source>
         <translation>無效</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="80"/>
+        <location filename="../settingsdialog.ui" line="90"/>
         <source>Second:</source>
         <translation>第二：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="127"/>
+        <location filename="../settingsdialog.ui" line="139"/>
         <source>Third:</source>
         <translation>第三：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="169"/>
+        <location filename="../settingsdialog.ui" line="198"/>
         <source>Encodings</source>
         <translation>編碼</translation>
     </message>
