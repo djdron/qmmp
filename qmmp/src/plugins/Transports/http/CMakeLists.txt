@@ -36,6 +36,7 @@ SET(libhttp_SRCS
     downloader.cpp
     httpinputfactory.cpp
     httpinputsource.cpp
+    settingsdialog.cpp
 )
 
 SET(libhttp_MOC_HDRS    
@@ -43,7 +44,20 @@ SET(libhttp_MOC_HDRS
     httpinputfactory.h
     httpinputsource.h
     streamreader.h
+    settingsdialog.h
 )
+
+# resources
+SET(libhttp_RCCS translations/translations.qrc)
+QT4_ADD_RESOURCES(libhttp_RCC_SRCS ${libhttp_RCCS})
+
+# user interface
+SET(libhttp_UIS
+    settingsdialog.ui
+)
+QT4_WRAP_UI(libhttp_UIS_H ${libhttp_UIS})
+
+
 
 QT4_WRAP_CPP(libhttp_MOC_SRCS ${libhttp_MOC_HDRS})
 
@@ -52,7 +66,7 @@ QT4_WRAP_CPP(libhttp_MOC_SRCS ${libhttp_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(CURL_FOUND)
-ADD_LIBRARY(http MODULE ${libhttp_SRCS} ${libhttp_MOC_SRCS})
+ADD_LIBRARY(http MODULE ${libhttp_SRCS} ${libhttp_MOC_SRCS} ${libhttp_UIS_H} ${libhttp_RCC_SRCS})
 add_dependencies(http qmmp)
 target_link_libraries(http ${QT_LIBRARIES} -lqmmp ${CURL_LDFLAGS} ${CURL_CFLAGS})
 install(TARGETS http DESTINATION ${LIB_DIR}/qmmp/Transports)

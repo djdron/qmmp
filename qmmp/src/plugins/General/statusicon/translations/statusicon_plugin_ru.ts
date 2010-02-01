@@ -22,7 +22,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation type="unfinished"></translation>
+        <translation>Всплывающее сообщение</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
