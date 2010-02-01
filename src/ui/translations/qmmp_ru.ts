@@ -206,7 +206,7 @@
     <message>
         <location filename="../configdialog.cpp" line="221"/>
         <source>Transports</source>
-        <translation type="unfinished"></translation>
+        <translation>Транспорты</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="232"/>
