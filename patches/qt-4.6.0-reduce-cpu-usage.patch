@@ -1,0 +1,15 @@
+--- old/src/gui/painting/qpaintengine_x11.cpp	2010-01-24 14:58:26.000000000 +0300
++++ new/src/gui/painting/qpaintengine_x11.cpp	2010-01-25 18:46:34.000000000 +0300
+@@ -2380,9 +2380,9 @@
+         GlyphSet glyphSet = set->id;
+         const QColor &pen = d->cpen.color();
+         ::Picture src = X11->getSolidFill(d->scrn, pen);
+-        XRenderPictFormat *maskFormat = 0;
+-        if (ft->xglyph_format != PictStandardA1)
+-            maskFormat = XRenderFindStandardFormat(X11->display, ft->xglyph_format);
++        /*XRenderPictFormat *maskFormat = 0;
++        if (ft->xglyph_format != PictStandardA1)*/
++        XRenderPictFormat *maskFormat = XRenderFindStandardFormat(X11->display, ft->xglyph_format);
+ 
+         enum { t_min = SHRT_MIN, t_max = SHRT_MAX };
+ 
