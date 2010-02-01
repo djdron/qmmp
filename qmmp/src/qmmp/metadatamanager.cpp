@@ -53,6 +53,8 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
 
     if (!fileName.contains("://")) //local file
     {
+        if(!QFile::exists(fileName))
+            return list;
         if((fact = Decoder::findByPath(fileName)))
             return fact->createPlayList(fileName, useMetaData);
         else if((efact = AbstractEngine::findByPath(fileName)))
@@ -88,6 +90,8 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
     EngineFactory *efact = 0;
     if (!path.contains("://")) //local file
     {
+        if(!QFile::exists(path))
+            return 0;
         if((fact = Decoder::findByPath(path)))
             return fact->createMetaDataModel(path, parent);
         else if((efact = AbstractEngine::findByPath(path)))
