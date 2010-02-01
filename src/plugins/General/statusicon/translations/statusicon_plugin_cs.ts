@@ -20,6 +20,11 @@
         <translation>Prodleva, ms:</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
         <translation type="unfinished"></translation>
@@ -38,11 +43,6 @@
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
         <translation>Pokusit se rozdělit název souboru, není-li tag</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloone message</source>
-        <translation>Zobrazovat zprávu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
