@@ -11,22 +11,22 @@
     <message>
         <location filename="../httpinputfactory.cpp" line="54"/>
         <source>About HTTP Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>О модуле HTTP</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="55"/>
         <source>Qmmp HTTP Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Транспортный модуль HTTP для Qmmp</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="56"/>
         <source>Compiled against libcurl-%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Собрано с libcurl-%1</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="57"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
