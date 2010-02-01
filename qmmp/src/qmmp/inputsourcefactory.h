@@ -23,6 +23,7 @@
 
 #include <QObject>
 
+class QTranslator;
 class InputSource;
 
 /*! @brief Helper class to store transport plugin properies.
@@ -31,8 +32,20 @@ class InputSource;
 class InputSourceProperties
 {
 public:
-    QString protocols; /*!< Supported protocols. */
+    /*!
+     * Constructor
+     */
+    InputSourceProperties()
+    {
+        hasSettings = FALSE;
+        hasAbout = FALSE;
+    }
+
+    QString name;      /*!< Transport plugin full name */
     QString shortName; /*!< Transport plugin name for internal usage */
+    QString protocols; /*!< Supported protocols. */
+    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise \b false */
+    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
 };
 
 
@@ -52,6 +65,21 @@ public:
      * @param parent Parent object.
      */
     virtual InputSource *create(const QString &url, QObject *parent = 0) = 0;
+    /*!
+     * Shows settings dialog.
+     * @param parent Parent widget.
+     */
+    virtual void showSettings(QWidget *parent) = 0;
+    /*!
+     * Shows about dialog.
+     * @param parent Parent widget.
+     */
+    virtual void showAbout(QWidget *parent) = 0;
+    /*!
+     * Creates QTranslator object of the system locale. Should return 0 if translation doesn't exist.
+     * @param parent Parent object.
+     */
+    virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
 Q_DECLARE_INTERFACE(InputSourceFactory, "InputSourceFactory/1.0");

@@ -27,6 +27,7 @@
 */
 
 class QWidget;
+class InputSourceFactory;
 class DecoderFactory;
 class EngineFactory;
 class OutputFactory;
@@ -38,6 +39,7 @@ class PluginItem : public QTreeWidgetItem
 {
 public:
 
+    PluginItem(QTreeWidgetItem *parent, InputSourceFactory *factory, const QString &path);
     PluginItem(QTreeWidgetItem *parent, DecoderFactory *factory, const QString &path);
     PluginItem(QTreeWidgetItem *parent, EngineFactory *factory, const QString &path);
     PluginItem(QTreeWidgetItem *parent, EffectFactory *factory, const QString &path);

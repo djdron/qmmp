@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,6 +19,10 @@
  ***************************************************************************/
 
 #include <QtPlugin>
+#include <QMessageBox>
+#include <QTranslator>
+#include <curl/curlver.h>
+#include <qmmp/qmmp.h>
 #include "httpinputsource.h"
 #include "httpinputfactory.h"
 
@@ -26,12 +30,35 @@ const InputSourceProperties HTTPInputFactory::properties() const
 {
     InputSourceProperties p;
     p.protocols = "http";
+    p.name = tr("HTTP Plugin");
     p.shortName = "http";
+    p.hasAbout = TRUE;
+    p.hasSettings = TRUE;
     return p;
 }
 
 InputSource *HTTPInputFactory::create(const QString &url, QObject *parent)
 {
     return new HTTPInputSource(url, parent);
+}
+
+void HTTPInputFactory::showSettings(QWidget *parent)
+{
+}
+
+void HTTPInputFactory::showAbout(QWidget *parent)
+{
+    QMessageBox::about (parent, tr("About HTTP Transport Plugin"),
+                        tr("Qmmp HTTP Transport Plugin")+"\n"+
+                        tr("Compiled against libcurl-%1").arg(LIBCURL_VERSION) + "\n" +
+                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+}
+
+QTranslator *HTTPInputFactory::createTranslator(QObject *parent)
+{
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = Qmmp::systemLanguageID();
+    translator->load(QString(":/http_plugin_") + locale);
+    return translator;
 }
 Q_EXPORT_PLUGIN2(http, HTTPInputFactory);

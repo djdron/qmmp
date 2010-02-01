@@ -36,6 +36,16 @@
 
 #include "pluginitem.h"
 
+
+PluginItem::PluginItem(QTreeWidgetItem *parent, InputSourceFactory *factory, const QString &path)
+    : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path.section('/',-1), TRANSPORT)
+{
+    m_has_about = factory->properties().hasAbout;
+    m_has_config = factory->properties().hasSettings;
+    m_factory = factory;
+}
+
+
 PluginItem::PluginItem(QTreeWidgetItem *parent, DecoderFactory *factory, const QString &path)
     : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path.section('/',-1), DECODER)
 {
@@ -100,7 +110,7 @@ void PluginItem::showAbout(QWidget *parent)
     switch(type())
     {
     case PluginItem::TRANSPORT:
-        //dynamic_cast<InputSourceFactory *>(m_factory)
+        static_cast<InputSourceFactory *>(m_factory)->showAbout(parent);
         break;
     case PluginItem::DECODER:
         static_cast<DecoderFactory *>(m_factory)->showAbout(parent);
@@ -128,7 +138,7 @@ void PluginItem::showSettings(QWidget *parent)
     switch(type())
     {
     case PluginItem::TRANSPORT:
-        //dynamic_cast<InputSourceFactory *>(m_factory)
+        static_cast<InputSourceFactory *>(m_factory)->showSettings(parent);
         break;
     case PluginItem::DECODER:
         static_cast<DecoderFactory *>(m_factory)->showSettings (parent);

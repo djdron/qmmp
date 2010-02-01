@@ -55,10 +55,10 @@ public:
     QString description; /*!< File filter description */
     QString contentType; /*!< Supported content types */
     QString protocols;   /*!< Supported protocols. Should be empty if plugin uses stream input. */
-    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
-    bool hasSettings;    /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
-    bool noInput;        /*!< Should be \b true if plugin has own input, otherwise returns \b false */
-    bool noOutput;       /*!< Should be \b true if plugin has own output, otherwise returns \b false */
+    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise \b false */
+    bool hasSettings;    /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
+    bool noInput;        /*!< Should be \b true if plugin has own input, otherwise \b false */
+    bool noOutput;       /*!< Should be \b true if plugin has own output, otherwise \b false */
 };
 /*! @brief Input plugin interface (decoder factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>

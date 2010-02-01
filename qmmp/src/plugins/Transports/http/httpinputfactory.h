@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,8 @@
 #include <QObject>
 #include <qmmp/inputsourcefactory.h>
 
+class QTranslator;
+
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -34,6 +36,9 @@ Q_INTERFACES(InputSourceFactory);
 public:
     const InputSourceProperties properties() const;
     InputSource *create(const QString &url, QObject *parent = 0);
+    void showSettings(QWidget *parent);
+    void showAbout(QWidget *parent);
+    QTranslator *createTranslator(QObject *parent);
 };
 
 #endif // HTTPINPUTFACTORY_H
