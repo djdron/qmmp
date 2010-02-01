@@ -78,6 +78,12 @@ QList<InputSourceFactory*> *InputSource::factories()
     return m_factories;
 }
 
+QStringList InputSource::files()
+{
+    checkFactories();
+    return m_files;
+}
+
 void InputSource::checkFactories()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
@@ -105,7 +111,7 @@ void InputSource::checkFactories()
             {
                 m_factories->append(factory);
                 m_files << pluginsDir.absoluteFilePath(fileName);
-                //qApp->installTranslator(factory->createTranslator(qApp));
+                qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
     }

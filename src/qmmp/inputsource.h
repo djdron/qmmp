@@ -45,6 +45,10 @@ public:
      * Returns a list of transport factories.
      */
     static QList<InputSourceFactory *> *factories();
+    /*!
+     * Returns a list of transport plugin file names.
+     */
+    static QStringList files();
 
 signals:
     void ready(InputSource *);

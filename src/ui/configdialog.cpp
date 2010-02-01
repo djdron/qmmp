@@ -37,6 +37,8 @@
 #include <qmmp/enginefactory.h>
 #include <qmmp/abstractengine.h>
 #include <qmmp/qmmpsettings.h>
+#include <qmmp/inputsource.h>
+#include <qmmp/inputsourcefactory.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalhandler.h>
@@ -214,11 +216,22 @@ void ConfigDialog::loadPluginsInfo()
 {
     ui.treeWidget->blockSignals(TRUE);
     /*
+        load transport plugin information
+     */
+    QTreeWidgetItem *item = new QTreeWidgetItem (ui.treeWidget, QStringList() << tr("Transports"));
+    QList <InputSourceFactory *> *transports = InputSource::factories();
+    QStringList files = InputSource::files();
+    for (int i = 0; i < transports->count (); ++i)
+        new PluginItem (item, transports->at(i), files.at (i));
+    ui.treeWidget->addTopLevelItem(item);
+    item->setExpanded(TRUE);
+
+    /*
         load input plugins information
     */
-    QTreeWidgetItem *item = new QTreeWidgetItem (ui.treeWidget, QStringList() << tr("Decoders"));
+    item = new QTreeWidgetItem (ui.treeWidget, QStringList() << tr("Decoders"));
     QList <DecoderFactory *> *decoders = Decoder::factories();
-    QStringList files = Decoder::files();
+    files = Decoder::files();
     for (int i = 0; i < decoders->count (); ++i)
         new PluginItem (item, decoders->at(i), files.at (i));
     ui.treeWidget->addTopLevelItem(item);
