@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>302</width>
-    <height>322</height>
+    <height>321</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,7 @@
    <item row="0" column="0" colspan="2">
     <widget class="QGroupBox" name="messageGroupBox">
      <property name="title">
-      <string>Balloone message</string>
+      <string>Balloon message</string>
      </property>
      <property name="checkable">
       <bool>true</bool>

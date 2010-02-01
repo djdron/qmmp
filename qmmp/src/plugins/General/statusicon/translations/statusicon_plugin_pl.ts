@@ -20,6 +20,11 @@
         <translation>Opóźnienie, ms:</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Balloon message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
         <translation type="unfinished"></translation>
@@ -38,11 +43,6 @@
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
         <translation>Próbuj rozdzielić nazwę pliku jeśli brakuje tagu</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Balloone message</source>
-        <translation>Powiadomienie w chmurce</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
