@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>DetailsDialog</name>
     <message>
@@ -71,7 +71,6 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="115"/>
         <location filename="../playlistmanager.cpp" line="334"/>
         <source>Playlist</source>
         <translation>Список</translation>
@@ -118,8 +117,6 @@ p, li { white-space: pre-wrap; }
         <translation>Номер диску:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="169"/>
-        <location filename="../tageditor.ui" line="224"/>
         <location filename="../tageditor.ui" line="240"/>
         <source>?</source>
         <translation></translation>
@@ -164,87 +161,87 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../templateeditor.ui" line="39"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="46"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Вставити</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="14"/>
         <source>Template Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактор шаблонів</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
         <source>Artist</source>
-        <translation type="unfinished">Виконавець</translation>
+        <translation>Виконавець</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="51"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Title</source>
-        <translation type="unfinished">Заголовок</translation>
+        <translation>Заголовок</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер треку</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>2-розрядний номер треку</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанр</translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Comment</source>
-        <translation type="unfinished">Коментар</translation>
+        <translation>Коментар</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
         <source>Composer</source>
-        <translation type="unfinished">Композитор</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="58"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Disc number</source>
-        <translation type="unfinished">Номер диску</translation>
+        <translation>Номер диску</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях до файла</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>Year</source>
-        <translation type="unfinished">Рік</translation>
+        <translation>Рік</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Умова</translation>
     </message>
 </context>
 </TS>
