@@ -57,6 +57,7 @@ Requirements:
 - faad2 >= 2.6.1 (Optional)
 - libbs2b >= 3.0.0 (Optional)
 - libprojectM >= 1.2.0 (Optional)
+- libenca >= 1.11 (Optional)
 - mplayer (Optional)
 - cmake >= 2.4.8 (for build only)
 
@@ -80,7 +81,7 @@ Available options:
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
 USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_BS2B, USE_ANALYZER, USE_MPRIS,
 USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG, USE_PROJECTM,
-USE_FILEOPS
+USE_FILEOPS, USE_ENCA
 
 Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
