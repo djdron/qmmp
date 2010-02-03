@@ -57,6 +57,7 @@ Qmmp - Qt-based multimedia player
 - faad2 >= 2.6.1 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
 - libprojectM >= 1.2.0 (Опционально)
+- libenca >= 1.11 (Опционально)
 - mplayer (Опционально)
 - cmake >= 2.4.8 (только для сборки)
 
@@ -78,7 +79,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
 USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_BS2B, USE_ANALYZER, USE_MPRIS,
 USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG, USE_PROJECTM,
-USE_FILEOPS
+USE_FILEOPS, USE_ENCA
 
 Также вы можете использовать ccmake для изменения конфигурации модулей.
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:
