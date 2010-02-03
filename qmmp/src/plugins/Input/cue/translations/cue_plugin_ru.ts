@@ -37,19 +37,24 @@
         <translation>Настройки модуля CUE</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
-        <source>CUE encoding:</source>
-        <translation>Кодировка CUE:</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>CUE encoding</source>
+        <translation>Кодировка CUE</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="48"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic charset detection</source>
         <translation>Определять кодировку автоматически</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Language:</source>
         <translation>Язык:</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="65"/>
+        <source>Default encoding:</source>
+        <translation>Кодировка по умолчанию:</translation>
     </message>
 </context>
 </TS>

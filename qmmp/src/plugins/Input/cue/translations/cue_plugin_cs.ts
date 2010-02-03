@@ -37,18 +37,23 @@
         <translation>Nastavení modulu CUE</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
-        <source>CUE encoding:</source>
-        <translation>Kódování CUE:</translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>CUE encoding</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="48"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic charset detection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="58"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Language:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="65"/>
+        <source>Default encoding:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
