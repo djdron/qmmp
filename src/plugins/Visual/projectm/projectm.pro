@@ -1,6 +1,8 @@
 include(../../plugins.pri)
 
-#DEFINES += PROJECTM_20
+contains(CONFIG, WITH_PROJECTM20){
+DEFINES += PROJECTM_20
+}
 
 TARGET =$$PLUGINS_PREFIX/Visual/projectm
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Visual/libprojectm.so

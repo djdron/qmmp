@@ -136,4 +136,9 @@ PRINT_SUMMARY ("KDE4 notifications support ........" USE_KDENOTIFY 1)
 MESSAGE("")
 MESSAGE("File Dialogs:")
 PRINT_SUMMARY ("QMMP File Dialog .................." USE_QMMP_DIALOG 1)
+
+MESSAGE("")
+MESSAGE("Advanced:")
+PRINT_SUMMARY ("Automatic charset detection ......." USE_ENCA ENCA_FOUND)
+
 MESSAGE("")

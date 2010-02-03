@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,10 +23,11 @@
 #include <QSettings>
 #include <QTextStream>
 #include <QTextCodec>
-
 #include <qmmp/decoder.h>
 #include <qmmp/metadatamanager.h>
-
+#ifdef WITH_ENCA
+#include <enca.h>
+#endif
 #include "cueparser.h"
 
 CUEParser::CUEParser(const QString &fileName)
@@ -39,7 +40,32 @@ CUEParser::CUEParser(const QString &fileName)
     }
     QTextStream textStream (&file);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QTextCodec *codec = QTextCodec::codecForName(settings.value("CUE/encoding","ISO-8859-1").toByteArray ());
+    settings.beginGroup("CUE");
+    QTextCodec *codec = QTextCodec::codecForName(settings.value("encoding","ISO-8859-1").toByteArray ());
+    if(!codec)
+        codec = QTextCodec::codecForName("UTF-8");
+#ifdef WITH_ENCA
+    EncaAnalyser analyser = 0;
+    if(settings.value("use_enca", FALSE).toBool())
+    {
+        analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
+        if(analyser)
+        {
+            EncaEncoding encoding = enca_analyse(analyser,
+                                                 (uchar *)file.readAll().constData(),
+                                                 file.size());
+            file.reset();
+            if(encoding.charset != ENCA_CS_UNKNOWN)
+            {
+                codec = QTextCodec::codecForName(enca_charset_name(encoding.charset,ENCA_NAME_STYLE_ENCA));
+                //qDebug("CUEParser: detected charset: %s",
+                  //     enca_charset_name(encoding.charset,ENCA_NAME_STYLE_ENCA));
+            }
+        }
+    }
+#endif
+    settings.endGroup();
+    //qDebug("CUEParser: using %s encoding", codec->name().constData());
     textStream.setCodec(codec);
     QString album, genre, date, comment, artist, file_path;
     bool new_file = FALSE;
@@ -120,6 +146,10 @@ CUEParser::CUEParser(const QString &fileName)
         }
     }
     file.close();
+#ifdef WITH_ENCA
+    if(analyser)
+        enca_analyser_free(analyser);
+#endif
     if(m_infoList.isEmpty())
     {
         qWarning("CUEParser: invalid cue file");

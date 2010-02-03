@@ -19,11 +19,21 @@ CONFIG += release \
     warn_on \
     plugin
 TEMPLATE = lib
-unix:QMAKE_LIBDIR += ../../../../lib
-win32:QMAKE_LIBDIR += ../../../../bin
-unix:LIBS += -lqmmp \
-    -L/usr/lib
-win32:LIBS += -lqmmp0
+unix{
+   QMAKE_LIBDIR += ../../../../lib
+   LIBS += -lqmmp -L/usr/lib
+   contains(CONFIG, WITH_ENCA){
+       CONFIG += link_pkgconfig
+       PKGCONFIG += enca
+       DEFINES += WITH_ENCA
+   }
+}
+
+win32{
+   QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0
+}
+
 TRANSLATIONS = translations/cue_plugin_ru.ts \
     translations/cue_plugin_uk_UA.ts \
     translations/cue_plugin_zh_CN.ts \
@@ -41,5 +51,5 @@ unix {
     desktop.files = qmmp_cue.desktop
     desktop.path = /share/applications
     INSTALLS += target \
-        desktop
+                desktop
 }

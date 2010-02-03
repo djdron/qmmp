@@ -32,14 +32,24 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>CUE Plugin Settings</source>
         <translation>CUE 插件设置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="25"/>
+        <location filename="../settingsdialog.ui" line="35"/>
         <source>CUE encoding:</source>
         <translation>CUE 编码：</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="48"/>
+        <source>Automatic charset detection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="58"/>
+        <source>Language:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

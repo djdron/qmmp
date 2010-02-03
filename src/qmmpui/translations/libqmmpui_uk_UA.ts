@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>DetailsDialog</name>
     <message>
@@ -71,6 +71,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
+        <location filename="../playlistmanager.cpp" line="115"/>
         <location filename="../playlistmanager.cpp" line="334"/>
         <source>Playlist</source>
         <translation>Список</translation>
@@ -117,6 +118,8 @@ p, li { white-space: pre-wrap; }
         <translation>Номер диску:</translation>
     </message>
     <message>
+        <location filename="../tageditor.ui" line="169"/>
+        <location filename="../tageditor.ui" line="224"/>
         <location filename="../tageditor.ui" line="240"/>
         <source>?</source>
         <translation></translation>

@@ -26,6 +26,11 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
+IF(USE_ENCA AND ENCA_FOUND)
+ADD_DEFINITIONS(-DWITH_ENCA)
+include_directories(${ENCA_INCLUDE_DIRS})
+link_directories(${ENCA_LIBRARY_DIRS})
+ENDIF(USE_ENCA AND ENCA_FOUND)
 
 SET(libcue_SRCS
   decoder_cue.cpp
@@ -63,6 +68,10 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(cue MODULE ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS} ${libcue_UIS_H})
 add_dependencies(cue qmmp)
+IF(USE_ENCA AND ENCA_FOUND)
+target_link_libraries(cue ${QT_LIBRARIES} -lqmmp ${ENCA_LDFLAGS} ${ENCA_CFLAGS})
+ELSE(USE_ENCA AND ENCA_FOUND)
 target_link_libraries(cue ${QT_LIBRARIES} -lqmmp)
+ENDIF(USE_ENCA AND ENCA_FOUND)
 install(TARGETS cue DESTINATION ${LIB_DIR}/qmmp/Input)
 install(FILES qmmp_cue.desktop DESTINATION share/applications)

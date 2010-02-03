@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,8 +19,11 @@
  ***************************************************************************/
 #include <QTextCodec>
 #include <QSettings>
-
 #include <qmmp/qmmp.h>
+
+#ifdef WITH_ENCA
+#include <enca.h>
+#endif
 
 #include "settingsdialog.h"
 
@@ -31,16 +34,27 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     findCodecs();
     foreach (QTextCodec *codec, codecs)
-    {
         ui.cueEncComboBox->addItem(codec->name());
-    }
+
+#ifdef WITH_ENCA
+    size_t n = 0;
+    const char **langs = enca_get_languages(&n);
+    for (size_t i = 0; i < n; ++i)
+        ui.encaAnalyserComboBox->addItem(langs[i]);
+#endif
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("CUE");
     int pos = ui.cueEncComboBox->findText(settings.value("encoding","ISO-8859-1").toString());
     ui.cueEncComboBox->setCurrentIndex(pos);
+#ifdef WITH_ENCA
+    ui.autoCharsetCheckBox->setChecked(settings.value("use_enca", FALSE).toBool());
+    pos = ui.encaAnalyserComboBox->findText(settings.value("enca_lang", langs[n-1]).toString());
+    ui.encaAnalyserComboBox->setCurrentIndex(pos);
+#else
+    ui.autoCharsetCheckBox->setEnabled(FALSE);
+#endif
     settings.endGroup();
 }
-
 
 SettingsDialog::~SettingsDialog()
 {}
@@ -50,6 +64,10 @@ void SettingsDialog::accept()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("CUE");
     settings.setValue("encoding", ui.cueEncComboBox->currentText());
+#ifdef WITH_ENCA
+    settings.setValue("use_enca", ui.autoCharsetCheckBox->isChecked());
+    settings.setValue("enca_lang", ui.encaAnalyserComboBox->currentText());
+#endif
     settings.endGroup();
     QDialog::accept();
 }
