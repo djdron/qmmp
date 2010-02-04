@@ -20,6 +20,9 @@
 #include <QTextCodec>
 #include <QSettings>
 #include <qmmp/qmmp.h>
+#ifdef WITH_ENCA
+#include <enca.h>
+#endif
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
@@ -30,11 +33,24 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     findCodecs();
     foreach (QTextCodec *codec, codecs)
         ui.icyEncodingComboBox->addItem(codec->name());
+#ifdef WITH_ENCA
+    size_t n = 0;
+    const char **langs = enca_get_languages(&n);
+    for (size_t i = 0; i < n; ++i)
+        ui.encaAnalyserComboBox->addItem(langs[i]);
+#endif
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HTTP");
     int pos = ui.icyEncodingComboBox->findText(settings.value("icy_encoding","windows-1252").toString());
     ui.icyEncodingComboBox->setCurrentIndex(pos);
     ui.bufferSizeSpinBox->setValue(settings.value("buffer_size",128).toInt());
+#ifdef WITH_ENCA
+    ui.autoCharsetCheckBox->setChecked(settings.value("use_enca", FALSE).toBool());
+    pos = ui.encaAnalyserComboBox->findText(settings.value("enca_lang", langs[n-1]).toString());
+    ui.encaAnalyserComboBox->setCurrentIndex(pos);
+#else
+    ui.autoCharsetCheckBox->setEnabled(FALSE);
+#endif
     settings.endGroup();
 }
 
@@ -48,6 +64,10 @@ void SettingsDialog::accept()
     settings.beginGroup("HTTP");
     settings.setValue("icy_encoding", ui.icyEncodingComboBox->currentText());
     settings.setValue("buffer_size", ui.bufferSizeSpinBox->value());
+#ifdef WITH_ENCA
+    settings.setValue("use_enca", ui.autoCharsetCheckBox->isChecked());
+    settings.setValue("enca_lang", ui.encaAnalyserComboBox->currentText());
+#endif
     settings.endGroup();
     QDialog::accept();
 }

@@ -25,7 +25,9 @@
 #include <QByteArray>
 #include <QMap>
 #include <curl/curl.h>
-
+#ifdef WITH_ENCA
+#include <enca.h>
+#endif
 class QTextCodec;
 
 /*! @internal
@@ -68,7 +70,7 @@ signals:
 private:
     qint64 readBuffer(char* data, qint64 maxlen);
     void readICYMetaData();
-    void parseICYMetaData(char *data);
+    void parseICYMetaData(char *data, qint64 size);
     CURL *m_handle;
     QMutex m_mutex;
     Stream m_stream;
@@ -79,6 +81,9 @@ private:
     bool m_meta_sent;
     long m_buffer_size;
     QTextCodec *m_codec;
+#ifdef WITH_ENCA
+    EncaAnalyser m_analyser;
+#endif
 
 protected:
     void run();
