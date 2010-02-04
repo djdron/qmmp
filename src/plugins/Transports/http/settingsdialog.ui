@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>235</width>
-    <height>91</height>
+    <width>218</width>
+    <height>179</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>HTTP Plugin Settings</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <property name="leftMargin">
     <number>6</number>
    </property>
@@ -23,33 +23,7 @@
    <property name="bottomMargin">
     <number>6</number>
    </property>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_15_4">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Metadata encoding:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QComboBox" name="icyEncodingComboBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="2">
+   <item row="0" column="0">
     <widget class="QLabel" name="label_17_2_2">
      <property name="text">
       <string>Buffer size:</string>
@@ -59,7 +33,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
+   <item row="0" column="1">
     <widget class="QSpinBox" name="bufferSizeSpinBox">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -78,7 +52,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
+   <item row="0" column="2">
     <widget class="QLabel" name="label">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -91,14 +65,78 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="4">
+   <item row="2" column="1" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Metadata encoding</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0" colspan="3">
+       <widget class="QCheckBox" name="autoCharsetCheckBox">
+        <property name="text">
+         <string>Automatic charset detection</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>Language:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="2">
+       <widget class="QComboBox" name="encaAnalyserComboBox">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_15_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Default encoding:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="2">
+       <widget class="QComboBox" name="icyEncodingComboBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
+  <zorder>label_17_2_2</zorder>
+  <zorder>bufferSizeSpinBox</zorder>
+  <zorder>label</zorder>
+  <zorder>buttonBox</zorder>
+  <zorder>groupBox</zorder>
  </widget>
  <resources/>
  <connections>
@@ -109,8 +147,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>168</x>
-     <y>84</y>
+     <x>222</x>
+     <y>172</y>
     </hint>
     <hint type="destinationlabel">
      <x>70</x>
@@ -125,12 +163,28 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>219</x>
-     <y>73</y>
+     <x>222</x>
+     <y>172</y>
     </hint>
     <hint type="destinationlabel">
      <x>61</x>
      <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>autoCharsetCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>encaAnalyserComboBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>90</y>
     </hint>
    </hints>
   </connection>

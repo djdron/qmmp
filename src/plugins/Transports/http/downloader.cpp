@@ -119,10 +119,17 @@ Downloader::Downloader(QObject *parent, const QString &url)
     m_metacount = 0;
     m_meta_sent = FALSE;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_codec = QTextCodec::codecForName(settings.value("HTTP/icy_encoding","windows-1252").toByteArray ());
-    m_buffer_size = settings.value("HTTP/buffer_size",128).toInt() * 1000;
+    settings.beginGroup("HTTP");
+    m_codec = QTextCodec::codecForName(settings.value("icy_encoding","windows-1252").toByteArray ());
+    m_buffer_size = settings.value("buffer_size",128).toInt() * 1000;
     if (!m_codec)
         m_codec = QTextCodec::codecForName ("UTF-8");
+#ifdef WITH_ENCA
+    m_analyser = 0;
+    if(settings.value("use_enca", FALSE).toBool())
+        m_analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
+#endif
+    settings.endGroup();
 }
 
 
@@ -136,6 +143,10 @@ Downloader::~Downloader()
         free(m_stream.buf);
 
     m_stream.buf = 0;
+#ifdef WITH_ENCA
+    if(m_analyser)
+        enca_analyser_free(m_analyser);
+#endif
 }
 
 
@@ -224,10 +235,7 @@ void Downloader::run()
     //proxy
     if (QmmpSettings::instance()->isProxyEnabled())
         curl_easy_setopt(m_handle, CURLOPT_PROXY,
-                         strdup((QmmpSettings::instance()->proxy().host() + ":" +
-                                 QString("%1").arg(QmmpSettings::instance()->proxy().port())).
-                                toLatin1 ().constData ()));
-
+                         strdup((QmmpSettings::instance()->proxy().toString().toLatin1().constData())));
     if (QmmpSettings::instance()->useProxyAuth())
         curl_easy_setopt(m_handle, CURLOPT_PROXYUSERPWD,
                          strdup((QmmpSettings::instance()->proxy().userName() + ":" +
@@ -343,17 +351,34 @@ void Downloader::readICYMetaData()
             qApp->processEvents();
             m_mutex.lock();
         }
-        readBuffer(packet, size);
+        qint64 l = readBuffer(packet, size);
         qDebug("Downloader: ICY metadata: %s", packet);
-        parseICYMetaData(packet);
+        parseICYMetaData(packet, l);
     }
     m_mutex.unlock();
 
 }
 
-void Downloader::parseICYMetaData(char *data)
-{    
-    QString str = m_codec->toUnicode(data).trimmed();
+void Downloader::parseICYMetaData(char *data, qint64 size)
+{
+    if(!size)
+        return;
+    QTextCodec *codec = m_codec;
+#ifdef WITH_ENCA
+    if(m_analyser)
+    {
+        EncaEncoding encoding = enca_analyse(m_analyser, (uchar *) data, size);
+        if(encoding.charset != ENCA_CS_UNKNOWN)
+        {
+            codec = QTextCodec::codecForName(enca_charset_name(encoding.charset,ENCA_NAME_STYLE_ENCA));
+            qDebug("Downloader: detected charset: %s",
+                   enca_charset_name(encoding.charset,ENCA_NAME_STYLE_ENCA));
+            if(!codec)
+                codec = m_codec;
+        }
+    }
+#endif
+    QString str = codec->toUnicode(data).trimmed();
     QStringList list(str.split(";", QString::SkipEmptyParts));
     foreach(QString line, list)
     {

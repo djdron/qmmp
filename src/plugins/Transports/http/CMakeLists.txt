@@ -31,6 +31,13 @@ pkg_search_module(CURL libcurl)
 include_directories(${CURL_INCLUDE_DIRS})
 link_directories(${CURL_LIBRARY_DIRS})
 
+# libenca
+IF(USE_ENCA AND ENCA_FOUND)
+ADD_DEFINITIONS(-DWITH_ENCA)
+include_directories(${ENCA_INCLUDE_DIRS})
+link_directories(${ENCA_LIBRARY_DIRS})
+ENDIF(USE_ENCA AND ENCA_FOUND)
+
 SET(libhttp_SRCS
     streamreader.cpp
     downloader.cpp
@@ -67,7 +74,13 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(CURL_FOUND)
 ADD_LIBRARY(http MODULE ${libhttp_SRCS} ${libhttp_MOC_SRCS} ${libhttp_UIS_H} ${libhttp_RCC_SRCS})
-add_dependencies(http qmmp)
+
+IF(USE_ENCA AND ENCA_FOUND)
+target_link_libraries(http ${QT_LIBRARIES} -lqmmp ${CURL_LDFLAGS} ${CURL_CFLAGS} ${ENCA_LDFLAGS} ${ENCA_CFLAGS})
+ELSE(USE_ENCA AND ENCA_FOUND)
 target_link_libraries(http ${QT_LIBRARIES} -lqmmp ${CURL_LDFLAGS} ${CURL_CFLAGS})
+ENDIF(USE_ENCA AND ENCA_FOUND)
+
+add_dependencies(http qmmp)
 install(TARGETS http DESTINATION ${LIB_DIR}/qmmp/Transports)
 ENDIF(CURL_FOUND)

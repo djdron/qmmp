@@ -37,19 +37,34 @@
         <translation>Налаштування модуля HTTP</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
-        <source>Metadata encoding:</source>
-        <translation>Кодування метаданих:</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
         <translation>Розмір буфера:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="90"/>
+        <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
         <translation>Кб</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="78"/>
+        <source>Metadata encoding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="84"/>
+        <source>Automatic charset detection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="94"/>
+        <source>Language:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="114"/>
+        <source>Default encoding:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
