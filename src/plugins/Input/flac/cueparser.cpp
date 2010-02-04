@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,9 +20,7 @@
 
 #include <QTextStream>
 #include <QTextCodec>
-
 #include <qmmp/metadatamanager.h>
-
 #include "cueparser.h"
 
 CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
@@ -32,7 +30,6 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
     textStream.setCodec("UTF-8");
     m_filePath = fileName;
     QString artist;
-    bool skip_index = FALSE;
     while (!textStream.atEnd())
     {
         QString line = textStream.readLine().trimmed();
@@ -42,18 +39,14 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
 
         if (words[0] == "PERFORMER")
         {
-            if (m_infoList.isEmpty())
-            {
+            if(m_infoList.isEmpty())
                 artist = words[1];
-                continue;
-            }
             else
                 m_infoList.last().setMetaData(Qmmp::ARTIST, words[1]);
-
         }
         else if (words[0] == "TITLE")
         {
-            if (m_infoList.isEmpty())
+            if(m_infoList.isEmpty())
                 album = words[1];
             else
                 m_infoList.last().setMetaData(Qmmp::TITLE, words[1]);
@@ -66,17 +59,22 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
             path.replace("?", QString(QUrl::toPercentEncoding("?")));
             FileInfo info("flac://" + path + QString("#%1").arg(words[1].toInt()));
             info.setMetaData(Qmmp::TRACK, words[1].toInt());
+            info.setMetaData(Qmmp::ALBUM, album);
+            info.setMetaData(Qmmp::GENRE, genre);
+            info.setMetaData(Qmmp::YEAR, date);
+            info.setMetaData(Qmmp::COMMENT, comment);
+            info.setMetaData(Qmmp::ARTIST, artist);
             m_infoList << info;
             m_offsets << 0;
-            skip_index = FALSE;
         }
-        else if (words[0] == "INDEX")
+        else if (words[0] == "INDEX" && words[1] == "01")
         {
-            if (m_infoList.isEmpty() || skip_index)
-               continue;
-            m_infoList.last ().setLength(getLength(words[2]));
+            if (m_infoList.isEmpty())
+                continue;
             m_offsets.last() = getLength(words[2]);
-            skip_index = (words[1] == "01"); //use 01 index only
+            int c = m_infoList.count();
+            if(c > 1)
+                m_infoList[c - 2].setLength(m_offsets[c - 1] - m_offsets[c - 2]);
         }
         else if (words[0] == "REM")
         {
@@ -90,26 +88,18 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
                 comment = words[2];
         }
     }
-    //calculate length
-    for (int i = 0; i < m_infoList.size() - 1; ++i)
-        m_infoList[i].setLength(m_infoList[i+1].length() - m_infoList[i].length());
+    if(m_infoList.isEmpty())
+    {
+        qWarning("CUEParser: invalid cue file");
+        return;
+    }
     //calculate last item length
     QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(m_filePath, FALSE);
     qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
-    if (l > m_infoList.last().length())
-        m_infoList.last().setLength(l - m_infoList.last().length());
+    if (l > m_offsets.last())
+        m_infoList.last().setLength(l - m_offsets.last());
     else
         m_infoList.last().setLength(0);
-
-    for (int i = 0; i < m_infoList.size(); ++i)
-    {
-        m_infoList[i].setMetaData(Qmmp::ALBUM, album);
-        m_infoList[i].setMetaData(Qmmp::GENRE, genre);
-        m_infoList[i].setMetaData(Qmmp::YEAR, date);
-        m_infoList[i].setMetaData(Qmmp::COMMENT, comment);
-        if (!m_infoList[i].metaData().count(Qmmp::ARTIST) && !artist.isEmpty())
-            m_infoList[i].setMetaData(Qmmp::ARTIST, artist);
-    }
 }
 
 
