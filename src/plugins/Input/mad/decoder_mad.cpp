@@ -214,11 +214,17 @@ bool DecoderMAD::findHeader()
             stream.error = MAD_ERROR_NONE;
         }
 
-        if (mad_header_decode(&header, &stream) == -1)
+        if (mad_header_decode(&header, &stream) < 0)
         {
-            if (stream.error == MAD_ERROR_BUFLEN)
+            if(stream.error == MAD_ERROR_LOSTSYNC)
+            {
+                uint tagSize = findID3v2((uchar *)stream.this_frame,
+                                         (ulong) (stream.bufend - stream.this_frame));
+                if (tagSize > 0)
+                    mad_stream_skip(&stream, tagSize);
                 continue;
-            else if (MAD_RECOVERABLE(stream.error))
+            }
+            else if (stream.error == MAD_ERROR_BUFLEN || MAD_RECOVERABLE(stream.error))
                 continue;
             else
             {
