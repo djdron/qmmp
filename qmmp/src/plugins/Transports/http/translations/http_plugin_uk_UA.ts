@@ -49,22 +49,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Metadata encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Кодування метаданих</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматичне визначення кодування</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Мова:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="114"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>Кодування за умовчанням:</translation>
     </message>
 </context>
 </TS>
