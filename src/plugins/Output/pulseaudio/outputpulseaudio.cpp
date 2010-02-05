@@ -18,21 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QObject>
-#include <QApplication>
-#include <QtGlobal>
-
-extern "C"
-{
+extern "C"{
 #include <pulse/error.h>
 }
-
-#include <stdio.h>
-#include <string.h>
-#include <iostream>
-
-#include <qmmp/buffer.h>
-#include <qmmp/visual.h>
 #include "outputpulseaudio.h"
 
 OutputPulseAudio::OutputPulseAudio(QObject * parent)

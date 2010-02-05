@@ -22,11 +22,9 @@
 #define OUTPUTPULSEAUDIO_H
 
 #include <QObject>
-extern "C"
-{
+extern "C"{
 #include <pulse/simple.h>
 }
-
 #include <qmmp/output.h>
 
 /**
