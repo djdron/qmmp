@@ -40,13 +40,6 @@ contains(CONFIG, AAC_PLUGIN){
   message(**********************)
 }
 
-contains(CONFIG, MPLAYER_PLUGIN){
-#  SUBDIRS += mplayer
-  message(**************************)
-  message(* Mplayer plugin enabled *)
-  message(**************************)
-}
-
 contains(CONFIG, CDAUDIO_PLUGIN){
   SUBDIRS += cdaudio
   message(***************************)
