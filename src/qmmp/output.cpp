@@ -325,7 +325,6 @@ void Output::status()
 
 QList<OutputFactory*> *Output::m_factories = 0;
 QStringList Output::m_files;
-QTimer *Output::m_timer = 0;
 
 void Output::checkFactories()
 {

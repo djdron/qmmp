@@ -107,6 +107,7 @@ PRINT_SUMMARY ("ALSA support ......................" USE_ALSA ALSA_FOUND)
 PRINT_SUMMARY ("OSS support ......................." USE_OSS 1)
 PRINT_SUMMARY ("JACK support ......................" USE_JACK JACK_FOUND)
 PRINT_SUMMARY ("PulseAudio support ................" USE_PULSE PULSE_FOUND)
+PRINT_SUMMARY ("Null output support ..............." USE_NULL 1)
 PRINT_SUMMARY ("Win32 Waveout support ............." USE_WAVEOUT WINDOWS_H_FOUND)
 
 MESSAGE("")

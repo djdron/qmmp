@@ -172,7 +172,6 @@ private:
     //TODO use QMap instead
     static QList<OutputFactory*> *m_factories;
     static QStringList m_files;
-    static QTimer *m_timer;
 };
 
 
