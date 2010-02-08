@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,7 +22,8 @@
 #include <QObject>
 #include <QRegExp>
 #include <QSettings>
-
+#include <QFileInfo>
+#include <QDir>
 #include <cdio/cdtext.h>
 #include <cdio/track.h>
 #include <cdio/cdda.h>
@@ -30,10 +31,11 @@
 #include <cdio/sector.h>
 #include <cdio/cd_types.h>
 #include <cdio/logging.h>
-
+#include <cddb/cddb.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
+#include <qmmp/qmmpsettings.h>
 
 #define CDDA_SECTORS 8
 
@@ -145,6 +147,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
         cdio = 0;
         return tracks;
     }
+    bool use_cddb = TRUE;
     //fill track list
     for (int i = first_track_number; i <= last_track_number; ++i)
     {
@@ -169,15 +172,155 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             t.info.setMetaData(Qmmp::TITLE, QString::fromLocal8Bit(cdtext->field[CDTEXT_TITLE]));
             t.info.setMetaData(Qmmp::ARTIST, QString::fromLocal8Bit(cdtext->field[CDTEXT_PERFORMER]));
             t.info.setMetaData(Qmmp::GENRE, QString::fromLocal8Bit(cdtext->field[CDTEXT_GENRE]));
+            use_cddb = FALSE;
         }
         else
             t.info.setMetaData(Qmmp::TITLE, QString("CDA Track %1").arg(i, 2, 10, QChar('0')));
         tracks  << t;
     }
     qDebug("DecoderCDAudio: found %d audio tracks", tracks.size());
+
+    use_cddb = use_cddb && settings.value("cdaudio/use_cddb", FALSE).toBool();
+    if(use_cddb)
+    {
+        qDebug("DecoderCDAudio: reading CDDB...");
+        cddb_conn_t *cddb_conn = cddb_new ();
+        cddb_disc_t *cddb_disc = NULL;
+        cddb_track_t *cddb_track = NULL;
+        lba_t lba;
+        if (!cddb_conn)
+            qWarning ("DecoderCDAudio: unable to create cddb connection");
+        else
+        {
+            cddb_cache_disable (cddb_conn); //disable libcddb cache, use own cache implementation instead
+            settings.beginGroup("cdaudio");
+            cddb_set_server_name (cddb_conn, settings.value("cddb_server", "freedb.org").toByteArray());
+            cddb_set_server_port (cddb_conn, settings.value("cddb_port", 8880).toInt());
+
+            if (QmmpSettings::instance()->isProxyEnabled())
+            {
+                QUrl proxy = QmmpSettings::instance()->proxy();
+                cddb_http_proxy_enable (cddb_conn);
+                cddb_set_http_proxy_server_name (cddb_conn, proxy.host().toAscii ());
+                cddb_set_http_proxy_server_port (cddb_conn, proxy.port());
+                if(QmmpSettings::instance()->useProxyAuth())
+                {
+                    cddb_set_http_proxy_username (cddb_conn, proxy.userName().toAscii());
+                    cddb_set_http_proxy_password (cddb_conn, proxy.password().toAscii());
+                }
+            }
+            else if (settings.value("cddb_http", FALSE).toBool())
+            {
+                cddb_http_enable (cddb_conn);
+                cddb_set_http_path_query (cddb_conn, settings.value("cddb_path").toByteArray());
+            }
+            settings.endGroup();
+
+            cddb_disc = cddb_disc_new ();
+            lba = cdio_get_track_lba (cdio, CDIO_CDROM_LEADOUT_TRACK);
+            cddb_disc_set_length (cddb_disc, FRAMES_TO_SECONDS (lba));
+
+            for (int i = first_track_number; i <= last_track_number; ++i)
+            {
+                cddb_track = cddb_track_new ();
+                cddb_track_set_frame_offset (cddb_track, cdio_get_track_lba (cdio, i));
+                cddb_disc_add_track (cddb_disc, cddb_track);
+            }
+
+            cddb_disc_calc_discid (cddb_disc);
+            qDebug ("DecoderCDAudio: disc id = %x", cddb_disc_get_discid (cddb_disc));
+            uint id = cddb_disc_get_discid (cddb_disc);
+
+            int matches = 0;
+            if(readFromCache(&tracks, id))
+                qDebug("DecoderCDAudio: using local cddb cache");
+            else if ((matches = cddb_query (cddb_conn, cddb_disc)) == -1)
+            {
+
+                qWarning ("DecoderCDAudio: unable to query the CDDB server, error: %s",
+                          cddb_error_str (cddb_errno(cddb_conn)));
+            }
+            else if (!matches)
+                qDebug ("DecoderCDAudio: no CDDB info found");
+            else
+            {
+                cddb_read(cddb_conn, cddb_disc);
+                if (cddb_errno (cddb_conn) != CDDB_ERR_OK)
+                {
+                    qWarning ("DecoderCDAudio: unable to read the CDDB info: %s",
+                              cddb_error_str (cddb_errno(cddb_conn)));
+                }
+                else
+                {
+                    for (int i = first_track_number; i <= last_track_number; ++i)
+                    {
+                        cddb_track_t *cddb_track = cddb_disc_get_track (cddb_disc, i - 1);
+                        int t = i - first_track_number;
+                        tracks[t].info.setMetaData(Qmmp::ARTIST,
+                                                   QString::fromUtf8(cddb_track_get_artist(cddb_track)));
+                        tracks[t].info.setMetaData(Qmmp::TITLE,
+                                                   QString::fromUtf8(cddb_track_get_title(cddb_track)));
+                        tracks[t].info.setMetaData(Qmmp::GENRE,
+                                                   QString::fromUtf8(cddb_disc_get_genre(cddb_disc)));
+                        tracks[t].info.setMetaData(Qmmp::ALBUM,
+                                                   QString::fromUtf8(cddb_disc_get_title(cddb_disc)));
+                    }
+                    saveToCache(tracks,  id);
+                }
+            }
+        }
+        if (cddb_disc)
+            cddb_disc_destroy (cddb_disc);
+
+        if (cddb_conn)
+            cddb_destroy (cddb_conn);
+    }
+
     cdio_destroy(cdio);
     cdio = 0;
     return tracks;
+}
+
+void DecoderCDAudio::saveToCache(QList <CDATrack> tracks,  uint disc_id)
+{
+    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+    QDir dir(path);
+    if(!dir.exists("cddbcache"))
+        dir.mkdir("cddbcache");
+    dir.cd("cddbcache");
+    path = dir.absolutePath() + QString("/%1").arg(disc_id, 0, 16);
+    QSettings settings(path, QSettings::IniFormat);
+    settings.clear();
+    settings.setValue("count", tracks.size());
+    for(int i = 0; i < tracks.size(); ++i)
+    {
+        CDATrack track = tracks[i];
+        QMap<Qmmp::MetaData, QString> meta = track.info.metaData();
+        settings.setValue(QString("artist%1").arg(i), meta[Qmmp::ARTIST]);
+        settings.setValue(QString("title%1").arg(i), meta[Qmmp::TITLE]);
+        settings.setValue(QString("genre%1").arg(i), meta[Qmmp::GENRE]);
+        settings.setValue(QString("album%1").arg(i), meta[Qmmp::ALBUM]);
+    }
+}
+
+bool DecoderCDAudio::readFromCache(QList <CDATrack> *tracks, uint disc_id)
+{
+    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+    path += QString("/cddbcache/%1").arg(disc_id, 0, 16);
+    if(!QFile::exists(path))
+        return FALSE;
+    QSettings settings(path, QSettings::IniFormat);
+    int count = settings.value("count").toInt();
+    if(count != tracks->count())
+        return FALSE;
+    for(int i = 0; i < count; ++i)
+    {
+        (*tracks)[i].info.setMetaData(Qmmp::ARTIST, settings.value(QString("artist%1").arg(i)).toString());
+        (*tracks)[i].info.setMetaData(Qmmp::TITLE, settings.value(QString("title%1").arg(i)).toString());
+        (*tracks)[i].info.setMetaData(Qmmp::GENRE, settings.value(QString("genre%1").arg(i)).toString());
+        (*tracks)[i].info.setMetaData(Qmmp::ALBUM, settings.value(QString("album%1").arg(i)).toString());
+    }
+    return TRUE;
 }
 
 qint64 DecoderCDAudio::calculateTrackLength(lsn_t startlsn, lsn_t endlsn)
