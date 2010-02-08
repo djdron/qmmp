@@ -19,7 +19,7 @@ link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp -L/usr/lib  -I/usr/include
-PKGCONFIG += libcdio libcdio_cdda libcdio_paranoia
+PKGCONFIG += libcdio libcdio_cdda libcdio_paranoia libcddb
 TRANSLATIONS = translations/cdaudio_plugin_ru.ts \
                translations/cdaudio_plugin_uk_UA.ts \
                translations/cdaudio_plugin_zh_CN.ts \

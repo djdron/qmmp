@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,7 @@
 
 #include <sys/types.h>
 #include <cdio/cdio.h>
-
+#include <QMultiHash>
 #include <qmmp/decoder.h>
 
 class CDATrack
@@ -46,7 +46,7 @@ public:
     DecoderCDAudio(const QString &url);
     virtual ~DecoderCDAudio();
 
-    static QList <CDATrack> generateTrackList(const QString &device = QString());
+    static QList <CDATrack> generateTrackList(const QString &device);
     static qint64 calculateTrackLength(lsn_t startlsn, lsn_t endlsn);
 
      // Standard Decoder API
@@ -57,6 +57,9 @@ public:
     void seek(qint64 time);
 
 private:
+    //helper functions
+    static void saveToCache(QList <CDATrack> tracks,  uint disc_id);
+    static bool readFromCache(QList <CDATrack> *tracks, uint disc_id);
     // libcdio variables
     lsn_t m_first_sector;
     lsn_t m_last_sector;

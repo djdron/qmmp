@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,9 +19,8 @@
  ***************************************************************************/
 #include <QTextCodec>
 #include <QSettings>
-
+#include <QDir>
 #include <qmmp/qmmp.h>
-
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
@@ -37,9 +36,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.speedCheckBox->setChecked(speed > 0);
     ui.speedSpinBox->setValue(speed);
     ui.cdtextCheckBox->setChecked(settings.value("cdtext", TRUE).toBool());
+    ui.cddbGroupBox->setChecked(settings.value("use_cddb", FALSE).toBool());
+    ui.httpCheckBox->setChecked(settings.value("cddb_http", FALSE).toBool());
+    ui.serverLineEdit->setText(settings.value("cddb_server", "freedb.org").toString());
+    ui.pathLineEdit->setText(settings.value("cddb_path").toString());
+    ui.portLineEdit->setText(settings.value("cddb_port", 8880).toString());
     settings.endGroup();
 }
-
 
 SettingsDialog::~SettingsDialog()
 {}
@@ -57,6 +60,22 @@ void SettingsDialog::accept()
     else
         settings.setValue("speed", 0);
     settings.setValue("cdtext", ui.cdtextCheckBox->isChecked());
+    settings.setValue("cdtext", ui.cdtextCheckBox->isChecked());
+    settings.setValue("use_cddb", ui.cddbGroupBox->isChecked());
+    settings.setValue("cddb_http", ui.httpCheckBox->isChecked());
+    settings.setValue("cddb_server",  ui.serverLineEdit->text());
+    settings.setValue("cddb_path", ui.pathLineEdit->text());
+    settings.setValue("cddb_port", ui.portLineEdit->text());
     settings.endGroup();
     QDialog::accept();
+}
+
+void SettingsDialog::on_clearCacheButton_clicked()
+{
+    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+    QDir dir(path);
+    dir.cd("cddbcache");
+    QStringList list = dir.entryList(QStringList() << "*", QDir::Files);
+    foreach(QString name, list)
+        dir.remove(name);
 }

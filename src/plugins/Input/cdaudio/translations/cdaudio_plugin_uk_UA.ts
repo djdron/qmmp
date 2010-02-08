@@ -4,57 +4,87 @@
 <context>
     <name>DecoderCDAudioFactory</name>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="44"/>
+        <location filename="../decodercdaudiofactory.cpp" line="45"/>
         <source>CD Audio Plugin</source>
         <translation>Модуль AudioCD</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="87"/>
+        <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>About CD Audio Plugin</source>
         <translation>Про модуль AudioCD</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="88"/>
+        <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Qmmp CD Audio Plugin</source>
         <translation>Модуль AudioCD для Qmmp</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
+        <source>Compiled against libcdio-%1 and libcddb-%2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decodercdaudiofactory.cpp" line="92"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodercdaudiofactory.cpp" line="91"/>
+        <location filename="../decodercdaudiofactory.cpp" line="93"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
         <translation>Використання: відкрийте cdda:/// використовуючи діалог &quot;Додати адресу&quot; чи командний рядок</translation>
-    </message>
-    <message>
-        <location filename="../decodercdaudiofactory.cpp" line="89"/>
-        <source>Compiled against libcdio version:</source>
-        <translation>Зібрано з libcdio версії:</translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
+        <location filename="../settingsdialog.ui" line="14"/>
         <source>CD Audio Plugin Settings</source>
         <translation>Налаштування модуля AudioCD</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="31"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Override device:</source>
         <translation>Перевизначити пристрій:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="44"/>
+        <location filename="../settingsdialog.ui" line="42"/>
         <source>Limid cd speed:</source>
         <translation>Обмежити швидкість CD:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="64"/>
+        <location filename="../settingsdialog.ui" line="62"/>
         <source>Use cd-text</source>
         <translation>Використовувати cd-text</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="69"/>
+        <source>CDDB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="78"/>
+        <source>Use HTTP instead of CDDBP</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="88"/>
+        <source>Server:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="95"/>
+        <source>Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="105"/>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="117"/>
+        <source>Clear CDDB cache</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

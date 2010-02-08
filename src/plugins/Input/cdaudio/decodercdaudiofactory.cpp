@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #include <QtGui>
 
 #include <cdio/version.h>
+#include <cddb/version.h>
 #include "settingsdialog.h"
 #include "decoder_cdaudio.h"
 #include "decodercdaudiofactory.h"
@@ -86,7 +87,8 @@ void DecoderCDAudioFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About CD Audio Plugin"),
                         tr("Qmmp CD Audio Plugin")+"\n"+
-                        tr("Compiled against libcdio version:")+ " "+CDIO_VERSION+"\n"+
+                        QString(tr("Compiled against libcdio-%1 and libcddb-%2")).arg(CDIO_VERSION)
+                        .arg(CDDB_VERSION) + "\n" +
                         tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Usage: open cdda:/// using Add URL dialog or command line"));
 }
