@@ -2,6 +2,9 @@
     Klaos Lacerda
     Bruno Gonçalves
 
+Венгерский:
+    Németh Gábor <sutee84@freemail.hu>
+
 Итальянский:
     Gian Paolo Renello <emmerkar@gmail.com>
 

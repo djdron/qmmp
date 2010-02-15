@@ -18,6 +18,9 @@ German:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
+Hungarian:
+    Németh Gábor <sutee84@freemail.hu>
+
 Italian:
     Gian Paolo Renello <emmerkar@gmail.com>
 
