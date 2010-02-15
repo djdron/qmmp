@@ -60,7 +60,7 @@ Requirements:
 - libprojectM >= 1.2.0 (Optional)
 - libenca >= 1.11 (Optional)
 - mplayer (Optional)
-- cmake >= 2.4.8 (for build only)
+- cmake >= 2.6.0 (for build only)
 
 
 Attention! Qmmp build needs lrelease installed. The libqt4-devel package often contains this utility.
