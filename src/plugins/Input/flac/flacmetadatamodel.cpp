@@ -55,16 +55,39 @@ FLACMetaDataModel::~FLACMetaDataModel()
 QHash<QString, QString> FLACMetaDataModel::audioProperties()
 {
     QHash<QString, QString> ap;
-    TagLib::FLAC::File f (m_path.toLocal8Bit());
-    if(!f.audioProperties())
+    TagLib::FLAC::File *flacFile = 0;
+    TagLib::Ogg::FLAC::File *oggFlacFile = 0;
+    TagLib::FLAC::Properties *taglib_ap = 0;
+    qint64 size = 0;
+    if(m_path.endsWith(".flac"))
+    {
+        flacFile = new TagLib::FLAC::File(m_path.toLocal8Bit ());
+        taglib_ap = flacFile->audioProperties();
+        size = flacFile->length();
+    }
+    else if(m_path.endsWith(".oga"))
+    {
+        oggFlacFile = new TagLib::Ogg::FLAC::File(m_path.toLocal8Bit ());
+        taglib_ap = oggFlacFile->audioProperties();
+        size = oggFlacFile->length();
+    }
+    else
         return ap;
-    QString text = QString("%1").arg(f.audioProperties()->length()/60);
-    text +=":"+QString("%1").arg(f.audioProperties()->length()%60,2,10,QChar('0'));
-    ap.insert(tr("Length"), text);
-    ap.insert(tr("Sample rate"), QString("%1 " + tr("Hz")).arg(f.audioProperties()->sampleRate()));
-    ap.insert(tr("Channels"), QString("%1").arg(f.audioProperties()->channels()));
-    ap.insert(tr("Bitrate"), QString("%1 " + tr("kbps")).arg(f.audioProperties()->bitrate()));
-    ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(f.length()/1024));
+
+    if(taglib_ap)
+    {
+        QString text = QString("%1").arg(taglib_ap->length()/60);
+        text +=":"+QString("%1").arg(taglib_ap->length()%60,2,10,QChar('0'));
+        ap.insert(tr("Length"), text);
+        ap.insert(tr("Sample rate"), QString("%1 " + tr("Hz")).arg(taglib_ap->sampleRate()));
+        ap.insert(tr("Channels"), QString("%1").arg(taglib_ap->channels()));
+        ap.insert(tr("Bitrate"), QString("%1 " + tr("kbps")).arg(taglib_ap->bitrate()));
+    }
+    ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(size/1024));
+    if(flacFile)
+        delete flacFile;
+    if(oggFlacFile)
+        delete oggFlacFile;
     return ap;
 }
 
@@ -100,13 +123,27 @@ QString FLACMetaDataModel::coverPath()
 
 VorbisCommentModel::VorbisCommentModel(const QString &path) : TagModel(TagModel::Save)
 {
-    m_file = new TagLib::FLAC::File (path.toLocal8Bit().constData());
-    m_tag = m_file->xiphComment();
+    m_file = 0;
+    m_ogg_file = 0;
+    m_tag = 0;
+    if(path.endsWith(".flac"))
+    {
+        m_file = new TagLib::FLAC::File (path.toLocal8Bit().constData());
+        m_tag = m_file->xiphComment();
+    }
+    else if (path.endsWith(".oga"))
+    {
+        m_ogg_file = new TagLib::Ogg::FLAC::File(path.toLocal8Bit().constData());
+        m_tag = m_ogg_file->tag();
+    }
 }
 
 VorbisCommentModel::~VorbisCommentModel()
 {
-    delete m_file;
+    if(m_file)
+        delete m_file;
+    if(m_ogg_file)
+        delete m_ogg_file;
 }
 
 const QString VorbisCommentModel::name()
@@ -192,5 +229,8 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
 
 void VorbisCommentModel::save()
 {
-    m_file->save();
+    if(m_file)
+        m_file->save();
+    else if(m_ogg_file)
+        m_ogg_file->save();
 }

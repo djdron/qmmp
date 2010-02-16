@@ -50,7 +50,7 @@ struct flac_data
     unsigned sample_rate;
     unsigned channels;
 
-    FLAC__uint64 last_decode_position;
+    FLAC__uint64 last_bytes;
 
     int ok; /* was this stream successfully opened? */
     //struct decoder_error error;
