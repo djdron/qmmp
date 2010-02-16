@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #define FLACMETADATAMODEL_H
 
 #include <taglib/flacfile.h>
+#include <taglib/oggflacfile.h>
 #include <taglib/xiphcomment.h>
 #include <qmmp/metadatamodel.h>
 
@@ -53,6 +54,7 @@ public:
 
 private:
     TagLib::FLAC::File *m_file;
+    TagLib::Ogg::FLAC::File *m_ogg_file;
     TagLib::Ogg::XiphComment *m_tag;
 };
 

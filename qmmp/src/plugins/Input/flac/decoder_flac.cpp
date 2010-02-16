@@ -40,8 +40,6 @@
 #include "cueparser.h"
 #include "decoder_flac.h"
 
-
-
 static size_t pack_pcm_signed (FLAC__byte *data,
                                const FLAC__int32 * const input[],
                                unsigned wide_samples,
@@ -94,7 +92,6 @@ static int flac_decode (void *void_data, char *buf, int buf_len)
     DecoderFLAC *dflac = (DecoderFLAC *) void_data;
     unsigned to_copy;
     int bytes_per_sample;
-    FLAC__uint64 decode_position;
 
     bytes_per_sample = dflac->data()->bits_per_sample / 8;
 
@@ -112,23 +109,6 @@ static int flac_decode (void *void_data, char *buf, int buf_len)
         {
             return 0;
         }
-
-        /* Count the bitrate */
-        if (!FLAC__stream_decoder_get_decode_position(
-                    dflac->data()->decoder, &decode_position))
-            decode_position = 0;
-        if (decode_position > dflac->data()->last_decode_position)
-        {
-            int bytes_per_sec = bytes_per_sample * dflac->data()->sample_rate
-                                * dflac->data()->channels;
-
-            dflac->data()->bitrate = int(((float)decode_position -
-                                          dflac->data()->last_decode_position) * 8.0 *
-                                         bytes_per_sec /
-                                         dflac->data()->sample_buffer_fill / 1000);
-        }
-
-        dflac->data()->last_decode_position = decode_position;
     }
 
     to_copy = qMin((unsigned)buf_len, dflac->data()->sample_buffer_fill);
@@ -147,9 +127,8 @@ static FLAC__StreamDecoderReadStatus flac_callback_read (const FLAC__StreamDecod
         void *client_data)
 {
     DecoderFLAC *dflac = (DecoderFLAC *) client_data;
-    qint64 res;
-
-    res = dflac->data()->input->read((char *)buffer, *bytes);
+    qint64 res = dflac->data()->input->read((char *)buffer, *bytes);
+    dflac->data()->last_bytes += res;
 
     if (res > 0)
     {
@@ -177,6 +156,9 @@ static FLAC__StreamDecoderWriteStatus flac_callback_write (const FLAC__StreamDec
     if (dflac->data()->abort)
         return FLAC__STREAM_DECODER_WRITE_STATUS_ABORT;
 
+    dflac->data()->bitrate = dflac->data()->last_bytes * 8.0 * frame->header.sample_rate /
+                             frame->header.blocksize / 1000.0;
+    dflac->data()->last_bytes = 0;
 
     dflac->data()->sample_buffer_fill = pack_pcm_signed (
                                             dflac->data()->sample_buffer,
@@ -343,14 +325,23 @@ bool DecoderFLAC::initialize()
     m_data->bitrate = -1;
     m_data->abort = 0;
     m_data->sample_buffer_fill = 0;
-    m_data->last_decode_position = 0;
+    m_data->last_bytes = 0;
     if (!m_data->decoder)
     {
         qDebug("DecoderFLAC: creating FLAC__StreamDecoder");
         m_data->decoder = FLAC__stream_decoder_new ();
     }
+    char buf[22];
+    data()->input->peek(buf,sizeof(buf));
     qDebug("DecoderFLAC: setting callbacks");
-    if (FLAC__stream_decoder_init_stream(
+    if(!memcmp(buf, "OggS", 4))
+    {
+        if(!FLAC_API_SUPPORTS_OGG_FLAC)
+        {
+            qWarning("DecoderFLAC: unsupported format");
+            return FALSE;
+        }
+        if (FLAC__stream_decoder_init_ogg_stream(
                 m_data->decoder,
                 flac_callback_read,
                 flac_callback_seek,
@@ -361,8 +352,32 @@ bool DecoderFLAC::initialize()
                 flac_callback_metadata,
                 flac_callback_error,
                 this) != FLAC__STREAM_DECODER_INIT_STATUS_OK)
+        {
+            data()->ok = 0;
+            return FALSE;
+        }
+    }
+    else if (!memcmp(buf, "fLaC", 4))
     {
-        data()->ok = 0;
+        if (FLAC__stream_decoder_init_stream(
+                m_data->decoder,
+                flac_callback_read,
+                flac_callback_seek,
+                flac_callback_tell,
+                flac_callback_length,
+                flac_callback_eof,
+                flac_callback_write,
+                flac_callback_metadata,
+                flac_callback_error,
+                this) != FLAC__STREAM_DECODER_INIT_STATUS_OK)
+        {
+            data()->ok = 0;
+            return FALSE;
+        }
+    }
+    else
+    {
+        qWarning("DecoderFLAC: unsupported format");
         return FALSE;
     }
 

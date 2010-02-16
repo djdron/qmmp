@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,13 +22,23 @@
 #include <taglib/tag.h>
 #include <taglib/fileref.h>
 #include <taglib/flacfile.h>
+#include <taglib/oggflacfile.h>
 #include "replaygainreader.h"
 
 ReplayGainReader::ReplayGainReader(const QString &path)
 {
-    TagLib::FLAC::File fileRef(path.toLocal8Bit ().constData());
-    if(fileRef.xiphComment())
-        readVorbisComment(fileRef.xiphComment());
+    if(path.endsWith("*.flac"))
+    {
+        TagLib::FLAC::File fileRef(path.toLocal8Bit ().constData());
+        if(fileRef.xiphComment())
+            readVorbisComment(fileRef.xiphComment());
+    }
+    else if(path.endsWith("*.oga"))
+    {
+        TagLib::Ogg::FLAC::File fileRef(path.toLocal8Bit ().constData());
+        if(fileRef.tag())
+            readVorbisComment(fileRef.tag());
+    }
 }
 
 QMap <Qmmp::ReplayGainKey, double> ReplayGainReader::replayGainInfo() const
