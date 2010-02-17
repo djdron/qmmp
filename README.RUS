@@ -58,7 +58,7 @@ Qmmp - Qt-based multimedia player
 - faad2 >= 2.6.1 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
 - libprojectM >= 1.2.0 (Опционально)
-- libenca >= 1.11 (Опционально)
+- libenca >= 1.9 (Опционально)
 - mplayer (Опционально)
 - cmake >= 2.6.0 (только для сборки)
 
