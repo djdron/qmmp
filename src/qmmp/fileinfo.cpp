@@ -73,6 +73,12 @@ void FileInfo::setMetaData(const QMap<Qmmp::MetaData,  QString> &metaData)
     m_metaData = metaData;
     if(m_metaData.value(Qmmp::URL).isEmpty())
          m_metaData.insert(Qmmp::URL, m_path);
+
+    foreach(QString value, m_metaData.values()) //remove empty keys
+    {
+        if (value.isEmpty() || value == "0")
+            m_metaData.remove(m_metaData.key(value));
+    }
 }
 
 bool FileInfo::isEmpty() const
@@ -98,7 +104,8 @@ void FileInfo::setMetaData(Qmmp::MetaData key, const QString &value)
 
 void FileInfo::setMetaData(Qmmp::MetaData key, int value)
 {
-    m_metaData.insert(key, QString::number(value));
+    if(value != 0)
+        m_metaData.insert(key, QString::number(value));
 }
 
 void FileInfo::setPath(const QString &path)
