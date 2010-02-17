@@ -58,7 +58,7 @@ Requirements:
 - faad2 >= 2.6.1 (Optional)
 - libbs2b >= 3.0.0 (Optional)
 - libprojectM >= 1.2.0 (Optional)
-- libenca >= 1.11 (Optional)
+- libenca >= 1.9 (Optional)
 - mplayer (Optional)
 - cmake >= 2.6.0 (for build only)
 
