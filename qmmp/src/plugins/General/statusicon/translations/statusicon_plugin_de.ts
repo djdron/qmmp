@@ -27,7 +27,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Fortschrittsanzeige zeigen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
@@ -47,17 +47,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cover-Größe:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
-        <translation type="unfinished"></translation>
+        <translation>32</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorlage ändern</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Tooltip Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzinfo-Vorlage</translation>
     </message>
 </context>
 <context>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="135"/>
         <source>Stopped</source>
-        <translation type="unfinished">Angehalten</translation>
+        <translation>Gestoppt</translation>
     </message>
 </context>
 </TS>

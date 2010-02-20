@@ -6,7 +6,7 @@
     <message>
         <location filename="../covermanager.cpp" line="36"/>
         <source>Show Cover</source>
-        <translation type="unfinished">Cover anzeigen</translation>
+        <translation>Cover anzeigen</translation>
     </message>
     <message>
         <location filename="../covermanager.cpp" line="37"/>
@@ -19,17 +19,17 @@
     <message>
         <location filename="../covermanagerfactory.cpp" line="29"/>
         <source>Cover Manager Plugin</source>
-        <translation type="unfinished">Cover-Verwaltungsmodul</translation>
+        <translation>Cover-Verwaltungsmodul</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="49"/>
         <source>About Cover Manager Plugin</source>
-        <translation type="unfinished">Über Cover-Verwaltungsmodul</translation>
+        <translation>Über Cover-Verwaltungsmodul</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="50"/>
         <source>Qmmp Cover Manager Plugin</source>
-        <translation type="unfinished">Qmmp Cover-Verwaltungsmodul</translation>
+        <translation>Qmmp Cover-Verwaltungsmodul</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="51"/>
@@ -42,62 +42,62 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Speichern unter …</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+S</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Größe</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="40"/>
         <source>Actual Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Originalgröße</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
         <source>128x128</source>
-        <translation type="unfinished"></translation>
+        <translation>128x128</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="42"/>
         <source>256x256</source>
-        <translation type="unfinished"></translation>
+        <translation>256x256</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="43"/>
         <source>512x512</source>
-        <translation type="unfinished"></translation>
+        <translation>512x512</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="44"/>
         <source>1024x1024</source>
-        <translation type="unfinished"></translation>
+        <translation>1024x1024</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>S&amp;chließen</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>Alt+F4</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+F4</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>Cover speichern unter</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder</translation>
     </message>
 </context>
 </TS>

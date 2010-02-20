@@ -56,7 +56,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="46"/>
         <source>Summary</source>
-        <translation type="unfinished">Zusammenfassung</translation>
+        <translation>Zusammenfassung</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="55"/>
@@ -164,7 +164,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="288"/>
         <source>Include selected tag in file</source>
-        <translation type="unfinished">Ausgewählten Tag in Datei einbeziehen</translation>
+        <translation>Ausgewählten Tag in Datei einbeziehen</translation>
     </message>
 </context>
 <context>
@@ -172,87 +172,87 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../templateeditor.ui" line="39"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Zurücksetzen</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="46"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Einfügen</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="14"/>
         <source>Template Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorlagen-Editor</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
         <source>Artist</source>
-        <translation type="unfinished">Interpret</translation>
+        <translation>Interpret</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="51"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Stücknummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweistellige Stücknummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation type="unfinished">Genre</translation>
+        <translation>Genre</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Comment</source>
-        <translation type="unfinished">Kommentar</translation>
+        <translation>Kommentar</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
         <source>Composer</source>
-        <translation type="unfinished">Komponent</translation>
+        <translation>Komponent</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="58"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Abspieldauer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Disc number</source>
-        <translation type="unfinished">CD-Nummer</translation>
+        <translation>CD-Nummer</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>Year</source>
-        <translation type="unfinished">Jahr</translation>
+        <translation>Jahr</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Zustand</translation>
     </message>
 </context>
 </TS>

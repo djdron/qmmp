@@ -36,9 +36,9 @@
     <message numerus="yes">
         <location filename="../fileops.cpp" line="178"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Möchten Sie wirklich %n Datei von der Festplatte entfernen?</numerusform>
+            <numerusform>Möchten Sie wirklich %n Dateien von der Festplatte entfernen?</numerusform>
         </translation>
     </message>
 </context>
@@ -191,7 +191,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="92"/>
         <source>-</source>
-        <translation>-</translation>
+        <translation>−</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
@@ -199,7 +199,7 @@
         <location filename="../settingsdialog.ui" line="158"/>
         <location filename="../settingsdialog.ui" line="175"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="148"/>
