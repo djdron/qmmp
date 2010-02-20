@@ -6,32 +6,32 @@
     <message>
         <location filename="../mplayerenginefactory.cpp" line="33"/>
         <source>Mplayer Plugin</source>
-        <translation type="unfinished">MPlayer-Modul</translation>
+        <translation>MPlayer-Modul</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="36"/>
         <source>Video Files</source>
-        <translation type="unfinished">Videodateien</translation>
+        <translation>Videodateien</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="82"/>
         <source>About MPlayer Plugin</source>
-        <translation type="unfinished">Über MPlayer-Modul</translation>
+        <translation>Über MPlayer-Modul</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="83"/>
         <source>Qmmp MPlayer Plugin</source>
-        <translation type="unfinished">Qmmp MPlayer-Modul</translation>
+        <translation>Qmmp MPlayer-Modul</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation type="unfinished">Dieses Modul nutzt MPlayer als Backend</translation>
+        <translation>Dieses Modul nutzt MPlayer als Backend</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="85"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,72 +39,72 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished">Größe</translation>
+        <translation>Größe</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="75"/>
         <source>Length</source>
-        <translation type="unfinished">Länge</translation>
+        <translation>Länge</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="77"/>
         <source>Demuxer</source>
-        <translation type="unfinished">Demuxer</translation>
+        <translation>Demuxer</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>
         <source>Video format</source>
-        <translation type="unfinished"></translation>
+        <translation>Videoformat</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="82"/>
         <source>FPS</source>
-        <translation type="unfinished">FPS</translation>
+        <translation>FPS</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="84"/>
         <source>Video codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Videocodec</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="86"/>
         <source>Aspect ratio</source>
-        <translation type="unfinished">Seitenverhältnis</translation>
+        <translation>Seitenverhältnis</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="88"/>
         <source>Video bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Videobitrate</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="95"/>
         <source>Audio codec</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiocodec</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="97"/>
         <source>Sample rate</source>
-        <translation type="unfinished">Abtastrate</translation>
+        <translation>Abtastrate</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="99"/>
         <source>Audio bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiobitrate</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="101"/>
         <source>Channels</source>
-        <translation type="unfinished">Kanäle</translation>
+        <translation>Kanäle</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="103"/>
         <source>Resolution</source>
-        <translation type="unfinished">Auflösung</translation>
+        <translation>Auflösung</translation>
     </message>
 </context>
 <context>
@@ -127,12 +127,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Video:</source>
-        <translation type="unfinished"></translation>
+        <translation>Video:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>

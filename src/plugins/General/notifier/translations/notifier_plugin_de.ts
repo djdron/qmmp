@@ -113,7 +113,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="301"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="107"/>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="115"/>
         <source>Duration</source>
-        <translation type="unfinished">Abspieldauer</translation>
+        <translation>Abspieldauer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="116"/>
@@ -183,7 +183,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="120"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Zustand</translation>
     </message>
 </context>
 </TS>

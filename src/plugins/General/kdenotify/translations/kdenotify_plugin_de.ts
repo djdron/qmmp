@@ -6,17 +6,17 @@
     <message>
         <location filename="../kdenotify.cpp" line="97"/>
         <source>Qmmp now playing:</source>
-        <translation type="unfinished">Qmmp spielt zurzeit:</translation>
+        <translation>Qmmp spielt zurzeit:</translation>
     </message>
     <message>
         <location filename="../kdenotify.cpp" line="107"/>
         <source>by </source>
-        <translation type="unfinished">von</translation>
+        <translation>von</translation>
     </message>
     <message>
         <location filename="../kdenotify.cpp" line="112"/>
         <source>on </source>
-        <translation type="unfinished">auf</translation>
+        <translation>auf</translation>
     </message>
 </context>
 <context>
@@ -53,7 +53,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>Cover anzeigen</translation>
     </message>
 </context>
 </TS>

@@ -196,22 +196,22 @@
     <message>
         <location filename="../configdialog.cpp" line="71"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Stück</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="73"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Deaktiviert</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="221"/>
         <source>Transports</source>
-        <translation type="unfinished"></translation>
+        <translation>Transporte</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="232"/>
         <source>Decoders</source>
-        <translation type="unfinished"></translation>
+        <translation>Decoder</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="242"/>
@@ -241,7 +241,7 @@
     <message>
         <location filename="../configdialog.cpp" line="387"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Zustand</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="380"/>
@@ -328,7 +328,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="985"/>
         <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
+        <translation>Replay Gain</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="240"/>
@@ -433,7 +433,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="784"/>
         <source>Cover Image Retrieve</source>
-        <translation type="unfinished"></translation>
+        <translation>Holen von Cover-Bildern</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="790"/>
@@ -443,22 +443,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="800"/>
         <source>Include files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Einzubeziehende Dateien:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="810"/>
         <source>Exclude files:</source>
-        <translation type="unfinished"></translation>
+        <translation>Auszuschließende Dateien:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="822"/>
         <source>Recursive search depth:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekursive Suchtiefe:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="991"/>
         <source>Replay Gain mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Replay-Gain-Modus:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1008"/>
@@ -469,7 +469,7 @@
         <location filename="../forms/configdialog.ui" line="1040"/>
         <location filename="../forms/configdialog.ui" line="1085"/>
         <source>dB</source>
-        <translation type="unfinished"></translation>
+        <translation>dB</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1053"/>
@@ -484,12 +484,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabe:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1168"/>
         <source>16-bit output</source>
-        <translation type="unfinished"></translation>
+        <translation>16-Bit-Ausgabe</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="134"/>
@@ -580,7 +580,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="712"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Beim Schließen in den Systemabschnitt der Kontrollleiste minimieren</translation>
+        <translation>Beim Schließen in den Systemabschnitt der Kontrollleiste minimieren</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="719"/>
@@ -704,17 +704,17 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="53"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="54"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="55"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="87"/>
@@ -1365,7 +1365,7 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation type="unfinished">Wiedergabelisten durchsuchen</translation>
+        <translation>Wiedergabelisten durchsuchen</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
@@ -1382,7 +1382,7 @@
         <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="76"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../playlistbrowser.cpp" line="38"/>
@@ -1471,7 +1471,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Abspieldauer</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
@@ -1496,7 +1496,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Zustand</translation>
     </message>
 </context>
 <context>

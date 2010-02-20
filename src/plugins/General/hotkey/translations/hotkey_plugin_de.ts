@@ -92,7 +92,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="50"/>
         <source>Volume -</source>
-        <translation>Lautstärke -</translation>
+        <translation>Lautstärke −</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
