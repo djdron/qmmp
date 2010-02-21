@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -63,6 +63,8 @@ Decoder *DecoderCUEFactory::create(const QString &path, QIODevice *input)
 QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     Q_UNUSED(useMetaData);
+    if(!QFile::exists(fileName))
+        return QList<FileInfo *>();
     CUEParser parser(fileName);
     return parser.createPlayList();
 }
