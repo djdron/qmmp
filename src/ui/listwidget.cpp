@@ -307,12 +307,13 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 {
     if(previous)
         disconnect(previous, 0, this, 0); //disconnect previous model
+    qApp->processEvents();
     m_model = selected;
-    connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
-    connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
     m_first = 0;
     recenterCurrent();
     updateList();
+    connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
+    connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
 }
 
 void ListWidget::scroll(int sc)
