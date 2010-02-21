@@ -78,6 +78,7 @@ private:
     bool m_useEq;
     bool m_eqEnabled;
     bool m_done, m_finish, m_user_stop;
+    bool m_skip;
     uint m_bks;
     qint64 m_totalTime, m_seekTime;
     qint64 m_output_at;

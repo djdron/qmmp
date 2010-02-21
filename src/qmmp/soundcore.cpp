@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -77,14 +77,15 @@ SoundCore::~SoundCore()
 
 bool SoundCore::play(const QString &source, bool queue)
 {
-    if(!queue)
+    /*if(!queue)
     {
         stop();
         qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
-    }
+    }*/
     MetaDataManager::instance(); //create metadata manager
 
     InputSource *s = InputSource::create(source, this);
+    s->setQueued(queue);
     m_pendingSources.append(s);
     if(state() == Qmmp::Stopped)
         m_handler->dispatch(Qmmp::Buffering);
@@ -251,6 +252,11 @@ bool SoundCore::enqueue(InputSource *s)
     }
     else
     {
+        if(!s->isQueued())
+        {
+            stop();
+            qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
+        }
         //current engine doesn't support this stream, trying to find another
         AbstractEngine *engine = new QmmpAudioEngine(this); //internal engine
         if(!engine->enqueue(s))
@@ -261,7 +267,6 @@ bool SoundCore::enqueue(InputSource *s)
 
         if(!engine)
         {
-            QList <EngineFactory*> factories = *AbstractEngine::factories();
             foreach(EngineFactory *f, *AbstractEngine::factories())
             {
                 engine = f->create(this); //engine plugin

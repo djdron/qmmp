@@ -146,7 +146,6 @@ void MainWindow::play()
 
 void MainWindow::replay()
 {
-    stop();
     m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
     play();
 }
