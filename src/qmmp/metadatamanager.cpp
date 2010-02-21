@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -184,7 +184,7 @@ bool MetaDataManager::supports(const QString &fileName) const
     return FALSE;
 }
 
-QPixmap MetaDataManager::getCover(const QString &url) const
+QPixmap MetaDataManager::getCover(const QString &url)
 {
     if(!url.contains("://") && m_settings->useCoverFiles())
     {
@@ -202,7 +202,7 @@ QPixmap MetaDataManager::getCover(const QString &url) const
     return QPixmap();
 }
 
-QString MetaDataManager::getCoverPath(const QString &url) const
+QString MetaDataManager::getCoverPath(const QString &url)
 {
     if(!m_settings->useCoverFiles())
         return QString();
@@ -219,8 +219,12 @@ QString MetaDataManager::getCoverPath(const QString &url) const
     else //local file
     {
         QString p = QFileInfo(url).absolutePath();
+        if(m_cover_cache.keys().contains(p))
+            return m_cover_cache.value(p);
         QFileInfoList l = findCoverFiles(p, m_settings->coverSearchDepth());
-        return l.isEmpty() ? QString() : l.at(0).filePath();
+        QString cover_path = l.isEmpty() ? QString() : l.at(0).filePath();
+        m_cover_cache.insert (p, cover_path);
+        return cover_path;
     }
     return QString();
 }

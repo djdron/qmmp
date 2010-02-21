@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -74,13 +74,13 @@ public:
      * Returns cover pixmap for the given file \b fileName,
      * or returns an empty pixmap if cover is not available.
      */
-    QPixmap getCover(const QString &fileName) const;
+    QPixmap getCover(const QString &fileName);
     /*!
      * Returns cover file path for the given file \b fileName, or returns
      * an empty string if cover file is not available. This function does not work
      * with embedded covers.
      */
-    QString getCoverPath(const QString &fileName) const;
+    QString getCoverPath(const QString &fileName);
     /*!
      * Returns a pointer to the MetaDataManager instance.
      */
@@ -92,6 +92,7 @@ private:
     QList <DecoderFactory *> *m_decoderFactories;
     QList <EngineFactory *> *m_engineFactories;
     QList <InputSourceFactory *> *m_inputSourceFactories;
+    QMap <QString, QString> m_cover_cache;
     QmmpSettings *m_settings;
     static MetaDataManager* m_instance;
 };
