@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -120,11 +120,21 @@ bool MplayerEngine::enqueue(InputSource *source)
     }
     if(!supports)
         return FALSE;
-    source->deleteLater();
+
     if(m_process->state() == QProcess::NotRunning)
         m_url = url;
     else
-        m_files.enqueue(url);
+    {
+        if(source->isQueued())
+            m_files.enqueue(url);
+        else
+        {
+            stop();
+            m_url = url;
+            start();
+        }
+    }
+    source->deleteLater();
     return TRUE;
 }
 

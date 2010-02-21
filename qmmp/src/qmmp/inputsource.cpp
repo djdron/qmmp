@@ -31,11 +31,22 @@
 InputSource::InputSource(const QString &source, QObject *parent) : QObject(parent)
 {
     m_url = source;
+    m_queued = TRUE;
 }
 
 const QString InputSource::url()
 {
     return m_url;
+}
+
+void InputSource::setQueued(bool queued)
+{
+    m_queued = queued;
+}
+
+bool InputSource::isQueued()
+{
+    return m_queued;
 }
 
 // static methods
