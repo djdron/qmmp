@@ -56,7 +56,6 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     updateReplayGainSettings();
     reset();
     m_instance = this;
-    m_skip = FALSE;
 }
 
 QmmpAudioEngine::~QmmpAudioEngine()
@@ -100,7 +99,7 @@ bool QmmpAudioEngine::play()
 bool QmmpAudioEngine::enqueue(InputSource *source)
 {
     mutex()->lock();
-    if(m_decoder && source->isQueued() && m_decoder->nextURL() == source->url())
+    if(m_decoder && m_decoder->nextURL() == source->url())
     {
         delete source;
         m_next = TRUE;
@@ -133,25 +132,9 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
         delete decoder;
         return FALSE;
     }
-
-    while(!m_decoders.isEmpty() && !source->isQueued())
-    {
-        Decoder *d = m_decoders.dequeue();
-        m_inputs.take(d)->deleteLater ();
-        delete d;
-    }
-
     m_decoders.enqueue(decoder);
     m_inputs.insert(decoder, source);
     source->setParent(this);
-
-    if(isRunning() && !source->isQueued()) //source should be played immediately
-    {
-        mutex()->lock();
-        m_skip = TRUE;
-        mutex()->unlock();
-    }
-
     return TRUE;
 }
 
@@ -266,6 +249,7 @@ void QmmpAudioEngine::pause()
         m_output->recycler()->cond()->wakeAll();
         m_output->recycler()->mutex()->unlock();
     }
+
 }
 
 void QmmpAudioEngine::stop()
@@ -400,49 +384,8 @@ void QmmpAudioEngine::run()
             m_output_at = 0;
         }
 
-        if(m_skip)
-        {
-            m_skip = FALSE;
-            m_output->recycler()->mutex()->lock ();
-            m_output->recycler()->clear();
-            m_output->recycler()->mutex()->unlock ();
-            m_output_at = 0;
-            if(!m_decoders.isEmpty())
-            {
-                m_inputs.take(m_decoder)->deleteLater ();
-                delete m_decoder;
-                m_decoder = m_decoders.dequeue();
-                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
-                //use current output if possible
-                if(m_decoder->audioParameters() == m_ap)
-                {
-                    StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
-                    StateHandler::instance()->dispatch(Qmmp::Buffering);
-                    StateHandler::instance()->dispatch(Qmmp::Playing);
-                    m_output->seek(0); //reset counter
-                }
-                else
-                {
-                    m_output->mutex()->lock();
-                    m_output->stop();
-                    m_output->mutex()->unlock();
-                    cond()->wakeAll();
-                    m_output->recycler()->mutex()->lock ();
-                    m_output->recycler()->cond()->wakeAll();
-                    m_output->recycler()->mutex()->unlock();
-                    m_output->wait();
-                    delete m_output;
-                    if((m_output = createOutput(m_decoder)))
-                        m_output->start();
-                    else
-                        m_done = TRUE;
-                }
-                mutex()->unlock();
-                sendMetaData();
-            }
-        }
-
-        len = m_decoder->read((char *)(m_output_buf + m_output_at), QMMP_BUFFER_SIZE - m_output_at);
+        len = m_decoder->read((char *)(m_output_buf + m_output_at),
+                              QMMP_BUFFER_SIZE - m_output_at);
 
         if (len > 0)
         {

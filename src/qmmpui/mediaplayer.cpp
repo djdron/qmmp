@@ -74,25 +74,17 @@ bool MediaPlayer::isRepeatable() const
 
 void MediaPlayer::play()
 {
-    QString s;
     m_pl_manager->currentPlayList()->doCurrentVisibleRequest();
-    if(m_pl_manager->currentPlayList()->count() > 0)
-        s = m_pl_manager->currentPlayList()->currentItem()->url();
-
     if (m_core->state() == Qmmp::Paused)
     {
-        if(m_core->url() == s)
-        {
-            m_core->pause();
-            return;
-        }
-        else
-        {
-            stop();
-            qApp->processEvents();
-        }
+        m_core->pause();
+        return;
     }
 
+    if (m_pl_manager->currentPlayList()->count() == 0)
+        return;
+
+    QString s = m_pl_manager->currentPlayList()->currentItem()->url();
     if (s.isEmpty())
     {
         m_nextUrl.clear();

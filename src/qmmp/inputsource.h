@@ -39,8 +39,6 @@ public:
     virtual bool initialize() = 0;
     virtual bool isReady() = 0;
     const QString url();
-    void setQueued(bool queued);
-    bool isQueued();
 
     static InputSource *create(const QString &url, QObject *parent = 0);
     /*!
@@ -57,7 +55,6 @@ signals:
 
 private:
     QString m_url;
-    bool m_queued;
     static void checkFactories();
     static QList<InputSourceFactory*> *m_factories;
     static QStringList m_files;
