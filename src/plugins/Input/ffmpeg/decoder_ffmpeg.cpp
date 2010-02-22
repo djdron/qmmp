@@ -20,7 +20,7 @@
 
 #include <QObject>
 #include <QFile>
-
+#include <malloc.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -92,7 +92,7 @@ DecoderFFmpeg::~DecoderFFmpeg()
    if(m_pkt.data)
         av_free_packet(&m_pkt);
     if(m_output_buf)
-        delete [] m_output_buf;
+        free(m_output_buf);
 }
 
 bool DecoderFFmpeg::initialize()
@@ -163,8 +163,6 @@ bool DecoderFFmpeg::initialize()
         return FALSE;
     }
 
-    c->dsp_mask |= FF_MM_MMX; //ffmpeg bug workarround
-
     if (avcodec_open(c, codec) < 0)
     {
         qWarning("DecoderFFmpeg: error while opening codec for output stream");
@@ -172,7 +170,8 @@ bool DecoderFFmpeg::initialize()
     }
 
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
-    m_output_buf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + QMMP_BUFFER_SIZE];
+    m_output_buf = (uint8_t *)memalign(16, AVCODEC_MAX_AUDIO_FRAME_SIZE * 3 / 2 + QMMP_BUFFER_SIZE);
+
     configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
     m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");
