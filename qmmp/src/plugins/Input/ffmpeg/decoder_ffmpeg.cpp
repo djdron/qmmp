@@ -163,11 +163,14 @@ bool DecoderFFmpeg::initialize()
         return FALSE;
     }
 
+    c->dsp_mask |= FF_MM_MMX; //ffmpeg bug workarround
+
     if (avcodec_open(c, codec) < 0)
     {
         qWarning("DecoderFFmpeg: error while opening codec for output stream");
         return FALSE;
     }
+
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
     m_output_buf = new uint8_t[AVCODEC_MAX_AUDIO_FRAME_SIZE*sizeof(int16_t) + QMMP_BUFFER_SIZE];
     configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
