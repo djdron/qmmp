@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -101,7 +101,7 @@ bool SoundCore::play(const QString &source, bool queue)
 
 void SoundCore::stop()
 {
-    m_source.clear();
+    m_url.clear();
     if(m_engine)
         m_engine->stop();
     qDeleteAll(m_pendingSources);
@@ -131,7 +131,7 @@ void SoundCore::seek(qint64 pos)
 
 const QString SoundCore::url()
 {
-    return m_source;
+    return m_url;
 }
 
 qint64 SoundCore::totalTime() const
@@ -235,6 +235,7 @@ QString SoundCore::metaData(Qmmp::MetaData key)
 bool SoundCore::enqueue(InputSource *s)
 {
     m_pendingSources.removeAll(s);
+    m_url = s->url();
     if(!m_engine)
     {
         m_engine = new QmmpAudioEngine(this);
@@ -245,7 +246,6 @@ bool SoundCore::enqueue(InputSource *s)
     setEQEnabled(m_useEQ);
     if(m_engine->enqueue(s))
     {
-        m_source = s->url();
         if(state() == Qmmp::Stopped || state() == Qmmp::Buffering)
             m_engine->play();
     }
@@ -261,7 +261,6 @@ bool SoundCore::enqueue(InputSource *s)
 
         if(!engine)
         {
-            QList <EngineFactory*> factories = *AbstractEngine::factories();
             foreach(EngineFactory *f, *AbstractEngine::factories())
             {
                 engine = f->create(this); //engine plugin

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -203,7 +203,7 @@ private slots:
 
 private:
     Decoder* m_decoder;
-    QString m_source;
+    QString m_url;
     uint m_error;
     bool m_paused;
     bool m_useEQ;
