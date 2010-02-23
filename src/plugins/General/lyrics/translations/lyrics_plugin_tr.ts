@@ -110,10 +110,5 @@
         <source>Search</source>
         <translation>Ara</translation>
     </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="87"/>
-        <source>Close</source>
-        <translation>Kapat</translation>
-    </message>
 </context>
 </TS>

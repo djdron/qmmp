@@ -110,10 +110,5 @@
         <source>Search</source>
         <translation>Hledat</translation>
     </message>
-    <message>
-        <location filename="../lyricswindow.ui" line="87"/>
-        <source>Close</source>
-        <translation>Zavřít</translation>
-    </message>
 </context>
 </TS>
