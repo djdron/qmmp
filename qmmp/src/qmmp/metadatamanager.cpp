@@ -258,6 +258,11 @@ QFileInfoList MetaDataManager::findCoverFiles(QDir dir, int depth) const
     return file_list;
 }
 
+ void MetaDataManager::clearCoverChache()
+ {
+     m_cover_cache.clear();
+ }
+
 MetaDataManager *MetaDataManager::instance()
 {
     if(!m_instance)
