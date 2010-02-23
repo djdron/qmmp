@@ -20,6 +20,7 @@
 
 #include <QSettings>
 #include <QApplication>
+#include "metadatamanager.h"
 #include "qmmp.h"
 #include "qmmpsettings.h"
 
@@ -125,6 +126,7 @@ void QmmpSettings::setCoverSettings(QStringList inc, QStringList exc, int depth,
     m_cover_exclude = exc;
     m_cover_depth = depth;
     m_cover_use_files = use_files;
+    MetaDataManager::instance()->clearCoverChache();
     emit coverSettingsChanged();
 }
 

@@ -82,11 +82,14 @@ public:
      */
     QString getCoverPath(const QString &fileName);
     /*!
+     * Clears cover path cache.
+     */
+    void clearCoverChache();
+    /*!
      * Returns a pointer to the MetaDataManager instance.
      */
     static MetaDataManager* instance();
     static void destroy();
-
 private:
     QFileInfoList findCoverFiles(QDir dir, int depth) const;
     QList <DecoderFactory *> *m_decoderFactories;
