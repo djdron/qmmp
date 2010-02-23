@@ -82,9 +82,9 @@
     </spacer>
    </item>
    <item row="2" column="2">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Close</string>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
      </property>
     </widget>
    </item>
@@ -93,18 +93,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>LyricsWindow</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>333</y>
+     <x>465</x>
+     <y>405</y>
     </hint>
     <hint type="destinationlabel">
-     <x>174</x>
-     <y>343</y>
+     <x>513</x>
+     <y>391</y>
     </hint>
    </hints>
   </connection>
