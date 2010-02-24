@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,10 +25,9 @@
 #include <QDialog>
 #include <QPointer>
 
-class QHttp;
-
+class QNetworkAccessManager;
+class QNetworkReply;
 class PlayListModel;
-class QHttpResponseHeader;
 
 /**
    @author Vladimir Kuznetsov <vovanec@gmail.com>
@@ -48,14 +47,14 @@ protected slots:
     virtual void accept();
 
 private slots:
-    void readResponse(bool);
+    void readResponse(QNetworkReply *reply);
 
 private:
     void setModel(PlayListModel*);
     static QPointer<AddUrlDialog> instance;
     PlayListModel* m_model;
     QStringList m_history;
-    QHttp *m_http;
+    QNetworkAccessManager *m_http;
 
 };
 #endif //ADDURLDIALOG_H

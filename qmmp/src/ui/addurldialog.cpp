@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,15 +20,18 @@
 
 #include <QSettings>
 #include <QDir>
-#include <QHttp>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QNetworkProxy>
 #include <QUrl>
 #include <QMessageBox>
-#include "addurldialog.h"
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
+#include "addurldialog.h"
 
 #define HISTORY_SIZE 10
 
@@ -40,14 +43,19 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
-    m_http = new QHttp(this);
+    m_http = new QNetworkAccessManager(this);
     //load global proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
     if (gs->isProxyEnabled())
-        m_http->setProxy(gs->proxy().host(),
-                         gs->proxy().port(),
-                         gs->useProxyAuth() ? gs->proxy().userName() : QString(),
-                         gs->useProxyAuth() ? gs->proxy().password() : QString());
+    {
+        QNetworkProxy proxy(QNetworkProxy::HttpProxy, gs->proxy().host(),  gs->proxy().port());
+        if(gs->useProxyAuth())
+        {
+            proxy.setUser(gs->proxy().userName());
+            proxy.setPassword(gs->proxy().password());
+        }
+        m_http->setProxy(proxy);
+    }
 }
 
 AddUrlDialog::~AddUrlDialog()
@@ -56,7 +64,6 @@ AddUrlDialog::~AddUrlDialog()
         m_history.removeLast();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("URLDialog/history", m_history);
-    m_http->close();
 }
 
 QPointer<AddUrlDialog> AddUrlDialog::instance = 0;
@@ -88,11 +95,11 @@ void AddUrlDialog::accept( )
             PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
             if (prs)
             {
-                //download playlist;
-                QUrl url(s);
-                m_http->setHost(url.host(), url.port(80));
-                connect(m_http, SIGNAL(done (bool)), SLOT(readResponse(bool)));
-                m_http->get(url.path());
+                connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(readResponse(QNetworkReply *)));
+                QNetworkRequest request;
+                request.setUrl(QUrl(s));
+                request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
+                m_http->get(request);
                 addButton->setEnabled(FALSE);
                 return;
             }
@@ -102,21 +109,22 @@ void AddUrlDialog::accept( )
     QDialog::accept();
 }
 
-void AddUrlDialog::readResponse(bool error)
+void AddUrlDialog::readResponse(QNetworkReply *reply)
 {
-    disconnect(m_http, SIGNAL(done (bool)));
-    if (error)
-        QMessageBox::critical (this, tr("Error"), m_http->errorString ());
+    disconnect(m_http, SIGNAL(finished (QNetworkReply *)));
+    if (reply->error() != QNetworkReply::NoError)
+        QMessageBox::critical (this, tr("Error"), reply->errorString ());
     else if (!urlComboBox->currentText().isEmpty())
     {
         QString s = urlComboBox->currentText();
         PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
         if (prs)
         {
-            m_model->addFiles(prs->decode(m_http->readAll()));
+            m_model->addFiles(prs->decode(reply->readAll()));
             QDialog::accept();
         }
     }
+    reply->deleteLater();
 }
 
 void AddUrlDialog::setModel( PlayListModel *m )
