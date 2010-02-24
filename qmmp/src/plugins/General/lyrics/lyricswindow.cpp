@@ -97,8 +97,7 @@ void LyricsWindow::on_searchPushButton_clicked()
                    .arg(ui.titleLineEdit->text()));
     QNetworkRequest request;
     request.setUrl(QUrl("http://www.lyricsplugin.com/winamp03/plugin/?artist=" +
-                        QUrl::toPercentEncoding(ui.artistLineEdit->text())+"&title=" +
-                        QUrl::toPercentEncoding(ui.titleLineEdit->text())));
+                        ui.artistLineEdit->text()+"&title=" + ui.titleLineEdit->text()));
     request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
     m_http->get(request);
 }
