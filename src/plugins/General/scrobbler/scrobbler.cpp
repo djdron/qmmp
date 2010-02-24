@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,7 +19,10 @@
  ***************************************************************************/
 
 #include <QMenu>
-#include <QHttp>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkProxy>
+#include <QNetworkReply>
 #include <QByteArray>
 #include <QCryptographicHash>
 #include <QUrl>
@@ -34,7 +37,7 @@
 
 #define PROTOCOL_VER "1.2"
 #define CLIENT_ID "qmm"
-#define CLIENT_VER "0.2"
+#define CLIENT_VER "0.3"
 
 
 Scrobbler::Scrobbler(const QString &url,
@@ -44,8 +47,8 @@ Scrobbler::Scrobbler(const QString &url,
                      QObject *parent)
         : QObject(parent)
 {
-    m_http = new QHttp(this);
-    m_http->setHost(url, 80);
+    m_http = new QNetworkAccessManager(this);
+    //m_http->setHost(url, 80);
     m_state = Qmmp::Stopped;
     m_login = login;
     m_passw = passw;
@@ -54,16 +57,19 @@ Scrobbler::Scrobbler(const QString &url,
     //load global proxy settings
     QmmpSettings *gs = QmmpSettings::instance(); //TODO use QmmpSettings::networkSettingsChanged()
     if (gs->isProxyEnabled())
-        m_http->setProxy(gs->proxy().host(),
-                         gs->proxy().port(),
-                         gs->useProxyAuth() ? gs->proxy().userName() : QString(),
-                         gs->useProxyAuth() ? gs->proxy().password() : QString());
+    {
+        QNetworkProxy proxy(QNetworkProxy::HttpProxy, gs->proxy().host(),  gs->proxy().port());
+        if(gs->useProxyAuth())
+        {
+            proxy.setUser(gs->proxy().userName());
+            proxy.setPassword(gs->proxy().password());
+        }
+        m_http->setProxy(proxy);
+    }
 
     m_disabled = m_login.isEmpty() || m_passw.isEmpty();
     m_passw = QString(QCryptographicHash::hash(m_passw.toAscii(), QCryptographicHash::Md5).toHex());
-    connect(m_http, SIGNAL(requestFinished (int, bool)), SLOT(processResponse(int, bool)));
-    connect(m_http, SIGNAL(readyRead (const QHttpResponseHeader&)),
-            SLOT(readResponse(const QHttpResponseHeader&)));
+    connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(processResponse(QNetworkReply *)));
 
     m_core = SoundCore::instance();
     connect (m_core, SIGNAL(metaDataChanged()), SLOT(updateMetaData()));
@@ -71,9 +77,10 @@ Scrobbler::Scrobbler(const QString &url,
 
     m_time = new QTime();
     m_submitedSongs = 0;
-    m_handshakeid = 0;
-    m_submitid = 0;
-    m_notificationid = 0;
+    m_handshakeReply = 0;
+    m_submitReply = 0;
+    m_notificationReply = 0;
+    m_ua = QString("iScrobbler/1.5.1qmmp-plugins/%1").arg(Qmmp::strVersion()).toAscii();
 
     QFile file(QDir::homePath() +"/.qmmp/scrobbler_" + m_name + ".cache");
 
@@ -157,7 +164,7 @@ void Scrobbler::setState(Qmmp::State state)
     {
         m_start_ts = QDateTime::currentDateTime().toTime_t();
         m_time->restart();
-        if (!isReady() && m_handshakeid == 0)
+        if (!isReady() && !m_handshakeReply)
             handshake();
         break;
     }
@@ -180,10 +187,7 @@ void Scrobbler::setState(Qmmp::State state)
         if (m_songCache.isEmpty())
             break;
 
-        if (m_http->error() != QHttp::NoError)
-            m_http->clearPendingRequests ();
-
-        if (isReady() && m_submitid == 0)
+        if (isReady() && !m_submitReply)
             submit();
         break;
     }
@@ -208,39 +212,41 @@ void Scrobbler::updateMetaData()
         metadata[Qmmp::ALBUM].replace("&", QUrl::toPercentEncoding("&"));
         metadata[Qmmp::TITLE].replace("&", QUrl::toPercentEncoding("&"));
         m_song = SongInfo(metadata, m_core->totalTime()/1000);
-        if (isReady() && m_notificationid == 0)
+        if (isReady() && !m_notificationReply)
             sendNotification(m_song);
     }
 }
 
-void Scrobbler::processResponse(int id, bool error)
+void Scrobbler::processResponse(QNetworkReply *reply)
 {
-    if (error)
+    if (reply->error() != QNetworkReply::NoError)
     {
-        qWarning("Scrobbler: %s", qPrintable(m_http->errorString ()));
+        qWarning("Scrobbler: %s", qPrintable(reply->errorString ()));
         //TODO hard failure handling
 
-        if (id == m_submitid)
-            m_submitid = 0;
-        else if (id == m_handshakeid)
-            m_handshakeid = 0;
-        else if (id == m_notificationid)
-            m_notificationid = 0;
+        if (reply == m_submitReply)
+            m_submitReply = 0;
+        else if (reply == m_handshakeReply)
+            m_handshakeReply = 0;
+        else if (reply == m_notificationReply)
+            m_notificationReply = 0;
+        reply->deleteLater();
         return;
     }
-    QString str(m_array);
+    QString str(reply->readAll());
     QStringList strlist = str.split("\n");
 
-    if (id == m_handshakeid)
+    if (reply == m_handshakeReply)
     {
-        m_handshakeid = 0;
+        m_handshakeReply = 0;
         if (!strlist[0].contains("OK") || strlist.size() < 4)
         {
-            qWarning("Scrobbler[%s]: handshake phase error: %s",qPrintable(m_name), qPrintable(strlist[0]));
+            qWarning("Scrobbler[%s]: handshake phase error: %s",
+                     qPrintable(m_name),
+                     qPrintable(strlist[0]));
             //TODO: badtime handling
-            return;
         }
-        if (strlist.size() > 3) //process handshake response
+        else if (strlist.size() > 3) //process handshake response
         {
             qDebug("Scrobbler[%s]: reading handshake response",qPrintable(m_name));
             qDebug("Scrobbler[%s]: Session ID: %s",qPrintable(m_name),qPrintable(strlist[1]));
@@ -252,12 +258,11 @@ void Scrobbler::processResponse(int id, bool error)
             updateMetaData(); //send now-playing notification for already playing song
             if (!m_songCache.isEmpty()) //submit recent songs
                 submit();
-            return;
         }
     }
-    else if (id == m_submitid)
+    else if (reply == m_submitReply)
     {
-        m_submitid = 0;
+        m_submitReply = 0;
         if (!strlist[0].contains("OK"))
         {
             qWarning("Scrobbler[%s]: submit error: %s",qPrintable(m_name), qPrintable(strlist[0]));
@@ -273,9 +278,9 @@ void Scrobbler::processResponse(int id, bool error)
         if (!m_songCache.isEmpty()) //submit remaining songs
             submit();
     }
-    else if (id == m_notificationid)
+    else if (reply == m_notificationReply)
     {
-        m_notificationid = 0;
+        m_notificationReply = 0;
         if (!strlist[0].contains("OK"))
         {
             qWarning("Scrobbler[%s]: notification error: %s",qPrintable(m_name), qPrintable(strlist[0]));
@@ -284,18 +289,7 @@ void Scrobbler::processResponse(int id, bool error)
         }
         qDebug("Scrobbler[%s]: Now-Playing notification done", qPrintable(m_name));
     }
-    m_array.clear();
-}
-
-void Scrobbler::readResponse(const QHttpResponseHeader &header)
-{
-    if (header.statusCode () != 200)
-    {
-        qWarning("Scrobbler[%s]: error: %s", qPrintable(m_name), qPrintable(header.reasonPhrase ()));
-        //TODO Failure Handling
-        return;
-    }
-    m_array = m_http->readAll();
+    reply->deleteLater();
 }
 
 void Scrobbler::handshake()
@@ -306,19 +300,21 @@ void Scrobbler::handshake()
     QString auth_tmp = QString("%1%2").arg(m_passw).arg(ts);
     QByteArray auth = QCryptographicHash::hash(auth_tmp.toAscii (), QCryptographicHash::Md5);
     auth = auth.toHex();
-
-    QString url = QString("%1?hs=true&p=%2&c=%3&v=%4&u=%5&t=%6&a=%7")
-                  .arg("/")
-                  .arg(PROTOCOL_VER)
-                  .arg(CLIENT_ID)
-                  .arg(CLIENT_VER)
-                  .arg(m_login)
-                  .arg(ts)
-                  .arg(QString(auth));
-
-    qDebug("Scrobbler[%s]: request url: %s",qPrintable(m_name),qPrintable(url));
-    m_http->setHost(m_server, 80);
-    m_handshakeid = m_http->get(url);
+    QUrl url(QString("http://") + m_server + "/?");
+    url.addQueryItem("hs", "true");
+    url.addQueryItem("p", PROTOCOL_VER);
+    url.addQueryItem("c", CLIENT_ID);
+    url.addQueryItem("v", CLIENT_VER);
+    url.addQueryItem("u", m_login);
+    url.addQueryItem("t", QString::number(ts));
+    url.addQueryItem("a", QString(auth));
+    url.setPort(80);
+    qDebug("Scrobbler[%s]: request url: %s",qPrintable(m_name),qPrintable(url.toString()));
+    QNetworkRequest request(url);
+    request.setRawHeader("User-Agent",  m_ua);
+    request.setRawHeader("Host",url.host().toAscii());
+    request.setRawHeader("Accept", "*/*");
+    m_handshakeReply = m_http->get(request);
 }
 
 void Scrobbler::submit()
@@ -344,14 +340,14 @@ void Scrobbler::submit()
     }
     qDebug("%s",qPrintable(body));
     QUrl url(m_submitUrl);
-    m_http->setHost(url.host(), url.port(80));
-    QHttpRequestHeader header("POST", url.path());
-    header.setContentType("application/x-www-form-urlencoded");
-    header.setValue("User-Agent","iScrobbler/1.5.1qmmp-plugins/" + Qmmp::strVersion());
-    header.setValue("Host",url.host());
-    header.setValue("Accept", "*/*");
-    header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=%").size());
-    m_submitid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&=%"));
+    url.setPort(80);
+    QNetworkRequest request(url);
+    request.setRawHeader("User-Agent", m_ua);
+    request.setRawHeader("Host",url.host().toAscii());
+    request.setRawHeader("Accept", "*/*");
+    request.setHeader(QNetworkRequest::ContentLengthHeader,
+                      QUrl::toPercentEncoding(body,":/[]&=%").size());
+    m_submitReply = m_http->post(request, QUrl::toPercentEncoding(body,":/[]&=%"));
 }
 
 void Scrobbler::sendNotification(const SongInfo &info)
@@ -365,14 +361,14 @@ void Scrobbler::sendNotification(const SongInfo &info)
             .arg(info.length())
             .arg(info.metaData(Qmmp::TRACK));
     QUrl url(m_nowPlayingUrl);
-        m_http->setHost(url.host(), url.port(80));
-    QHttpRequestHeader header("POST", url.path());
-    header.setContentType("application/x-www-form-urlencoded");
-    header.setValue("User-Agent","iScrobbler/1.5.1qmmp-plugins/" + Qmmp::strVersion());
-    header.setValue("Host",url.host());
-    header.setValue("Accept", "*/*");
-    header.setContentLength(QUrl::toPercentEncoding(body,":/[]&=%").size());
-    m_notificationid = m_http->request(header, QUrl::toPercentEncoding(body,":/[]&=%"));
+    url.setPort(80);
+    QNetworkRequest request(url);
+    request.setRawHeader("User-Agent", m_ua);
+    request.setRawHeader("Host", url.host().toAscii());
+    request.setRawHeader("Accept", "*/*");
+    request.setHeader(QNetworkRequest::ContentLengthHeader,
+                      QUrl::toPercentEncoding(body,":/[]&=%").size());
+    m_notificationReply = m_http->post(request, QUrl::toPercentEncoding(body,":/[]&=%"));
 }
 
 bool Scrobbler::isReady()

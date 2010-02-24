@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,11 +20,11 @@
 #ifndef SCROBBLER_H
 #define SCROBBLER_H
 
-#include <QHttpResponseHeader>
 #include <QMap>
 #include <qmmp/qmmp.h>
 
-class QHttp;
+class QNetworkAccessManager;
+class QNetworkReply;
 class QTime;
 class SoundCore;
 
@@ -77,8 +77,7 @@ public:
 private slots:
     void setState(Qmmp::State state);
     void updateMetaData();
-    void processResponse(int, bool);
-    void readResponse(const QHttpResponseHeader&);
+    void processResponse(QNetworkReply *reply);
 
 private:
     void handshake();
@@ -87,7 +86,7 @@ private:
     bool isReady();
     uint m_start_ts;
     SongInfo m_song;
-    QHttp *m_http;
+    QNetworkAccessManager *m_http;
     Qmmp::State m_state;
     SoundCore *m_core;
     QString m_login;
@@ -96,15 +95,14 @@ private:
     QString m_nowPlayingUrl;
     QString m_session;
     QList <SongInfo> m_songCache;
+    QByteArray m_ua;
     QTime* m_time;
     int m_submitedSongs;
-    int m_handshakeid;
-    int m_submitid;
-    int m_notificationid;
-    QByteArray m_array;
+    QNetworkReply *m_handshakeReply;
+    QNetworkReply *m_submitReply;
+    QNetworkReply *m_notificationReply;
     bool m_disabled;
     QString m_server, m_name;
-
 };
 
 #endif
