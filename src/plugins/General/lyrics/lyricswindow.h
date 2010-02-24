@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,8 @@
 
 #include "ui_lyricswindow.h"
 
-class QHttp;
+class QNetworkAccessManager;
+class QNetworkReply;
 
 /**
 	@author Ilya Kotov <forkotov02@hotmail.ru>
@@ -38,13 +39,12 @@ public:
     ~LyricsWindow();
 
 private slots:
-    void showText(bool error);
-    void showState(int state);
+    void showText(QNetworkReply *reply);
     void on_searchPushButton_clicked();
 
 private:
     Ui::LyricsWindow ui;
-    QHttp *m_http;
+    QNetworkAccessManager *m_http;
 
 };
 

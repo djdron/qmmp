@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,12 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QHttp>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkProxy>
 #include <QUrl>
 #include <QRegExp>
 #include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
-
 #include "lyricswindow.h"
 
 LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget *parent)
@@ -35,16 +36,20 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     ui.artistLineEdit->setText(artist);
     ui.titleLineEdit->setText(title);
-    m_http = new QHttp(this);
+    m_http = new QNetworkAccessManager(this);
      //load global proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
     if (gs->isProxyEnabled())
-        m_http->setProxy(gs->proxy().host(),
-                         gs->proxy().port(),
-                         gs->useProxyAuth() ? gs->proxy().userName() : QString(),
-                         gs->useProxyAuth() ? gs->proxy().password() : QString());
-    connect(m_http, SIGNAL(done(bool)), SLOT(showText(bool)));
-    connect(m_http, SIGNAL(stateChanged(int)), SLOT(showState (int)));
+    {
+        QNetworkProxy proxy(QNetworkProxy::HttpProxy, gs->proxy().host(),  gs->proxy().port());
+        if(gs->useProxyAuth())
+        {
+            proxy.setUser(gs->proxy().userName());
+            proxy.setPassword(gs->proxy().password());
+        }
+        m_http->setProxy(proxy);
+    }
+    connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(showText(QNetworkReply *)));
     on_searchPushButton_clicked();
 }
 
@@ -53,14 +58,16 @@ LyricsWindow::~LyricsWindow()
 {
 }
 
-void LyricsWindow::showText(bool error)
+void LyricsWindow::showText(QNetworkReply *reply)
 {
-    if (error)
+    ui.stateLabel->setText(tr("Done"));
+    if (reply->error() != QNetworkReply::NoError)
     {
-        ui.textEdit->setText(m_http->errorString());
+        ui.stateLabel->setText(tr("Error"));
+        ui.textEdit->setText(reply->errorString());
         return;
     }
-    QString content = QString::fromUtf8(m_http->readAll().constData());
+    QString content = QString::fromUtf8(reply->readAll().constData());
 
     QRegExp artist_regexp("<div id=\\\"artist\\\">([^<]*)</div>");
     QRegExp title_regexp("<div id=\\\"title\\\">([^<]*)</div>");
@@ -82,37 +89,15 @@ void LyricsWindow::showText(bool error)
     }
 }
 
-void LyricsWindow::showState(int state)
-{
-    switch ((int) state)
-    {
-    case QHttp::Unconnected:
-        ui.stateLabel->setText(tr("No connection"));
-        break;
-    case QHttp::HostLookup:
-        ui.stateLabel->setText(tr("Looking up host..."));
-        break;
-    case QHttp::Connecting:
-        ui.stateLabel->setText(tr("Connecting..."));
-        break;
-    case QHttp::Sending:
-        ui.stateLabel->setText(tr("Sending request..."));
-        break;
-    case QHttp::Reading:
-        ui.stateLabel->setText(tr("Receiving"));
-        break;
-    case QHttp::Connected:
-        ui.stateLabel->setText(tr("Connected"));
-        break;
-    case QHttp::Closing:
-        ui.stateLabel->setText(tr("Closing connection..."));
-    }
-}
-
 void LyricsWindow::on_searchPushButton_clicked()
 {
-    m_http->setHost("www.lyricsplugin.com");
-    setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(ui.artistLineEdit->text()).arg(ui.titleLineEdit->text()));
-    m_http->get("/winamp03/plugin/?artist=" + QUrl::toPercentEncoding(ui.artistLineEdit->text())
-                +"&title=" + QUrl::toPercentEncoding(ui.titleLineEdit->text()));
+    ui.stateLabel->setText(tr("Receiving"));
+    setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(ui.artistLineEdit->text())
+                   .arg(ui.titleLineEdit->text()));
+    QNetworkRequest request;
+    request.setUrl(QUrl("http://www.lyricsplugin.com/winamp03/plugin/?artist=" +
+                        QUrl::toPercentEncoding(ui.artistLineEdit->text())+"&title=" +
+                        QUrl::toPercentEncoding(ui.titleLineEdit->text())));
+    request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
+    m_http->get(request);
 }
