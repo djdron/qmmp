@@ -87,6 +87,7 @@ void LyricsWindow::showText(QNetworkReply *reply)
         text += lyrics;
         ui.textEdit->setHtml(text);
     }
+    reply->deleteLater();
 }
 
 void LyricsWindow::on_searchPushButton_clicked()
