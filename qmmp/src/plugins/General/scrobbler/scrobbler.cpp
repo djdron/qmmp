@@ -118,26 +118,7 @@ Scrobbler::Scrobbler(const QString &url,
 Scrobbler::~Scrobbler()
 {
     delete m_time;
-    QFile file(QDir::homePath() +"/.qmmp/scrobbler_" + m_name + ".cache");
-    if (m_songCache.isEmpty())
-    {
-        file.remove();
-        return;
-    }
-    file.open(QIODevice::WriteOnly);
-    foreach(SongInfo m, m_songCache)
-    {
-        file.write(QString("title=%1").arg(m.metaData(Qmmp::TITLE)).toUtf8() +"\n");
-        file.write(QString("artist=%1").arg(m.metaData(Qmmp::ARTIST)).toUtf8() +"\n");
-        file.write(QString("album=%1").arg(m.metaData(Qmmp::ALBUM)).toUtf8() +"\n");
-        file.write(QString("comment=%1").arg(m.metaData(Qmmp::COMMENT)).toUtf8() +"\n");
-        file.write(QString("genre=%1").arg(m.metaData(Qmmp::GENRE)).toUtf8() +"\n");
-        file.write(QString("year=%1").arg(m.metaData(Qmmp::YEAR)).toUtf8() +"\n");
-        file.write(QString("track=%1").arg(m.metaData(Qmmp::TRACK)).toUtf8() +"\n");
-        file.write(QString("length=%1").arg(m.length()).toUtf8() +"\n");
-        file.write(QString("time=%1").arg(m.timeStamp()).toUtf8() +"\n");
-    }
-    file.close();
+    syncCache();
 }
 
 void Scrobbler::setState(Qmmp::State state)
@@ -158,6 +139,7 @@ void Scrobbler::setState(Qmmp::State state)
         {
             m_song.setTimeStamp(m_start_ts);
             m_songCache << m_song;
+            syncCache();
         }
 
         m_song.clear();
@@ -411,6 +393,30 @@ void Scrobbler::sendNotification(const SongInfo &info)
 bool Scrobbler::isReady()
 {
     return !m_submitUrl.isEmpty() && !m_session.isEmpty();
+}
+
+void Scrobbler::syncCache()
+{
+    QFile file(QDir::homePath() +"/.qmmp/scrobbler_" + m_name + ".cache");
+    if (m_songCache.isEmpty())
+    {
+        file.remove();
+        return;
+    }
+    file.open(QIODevice::WriteOnly);
+    foreach(SongInfo m, m_songCache)
+    {
+        file.write(QString("title=%1").arg(m.metaData(Qmmp::TITLE)).toUtf8() +"\n");
+        file.write(QString("artist=%1").arg(m.metaData(Qmmp::ARTIST)).toUtf8() +"\n");
+        file.write(QString("album=%1").arg(m.metaData(Qmmp::ALBUM)).toUtf8() +"\n");
+        file.write(QString("comment=%1").arg(m.metaData(Qmmp::COMMENT)).toUtf8() +"\n");
+        file.write(QString("genre=%1").arg(m.metaData(Qmmp::GENRE)).toUtf8() +"\n");
+        file.write(QString("year=%1").arg(m.metaData(Qmmp::YEAR)).toUtf8() +"\n");
+        file.write(QString("track=%1").arg(m.metaData(Qmmp::TRACK)).toUtf8() +"\n");
+        file.write(QString("length=%1").arg(m.length()).toUtf8() +"\n");
+        file.write(QString("time=%1").arg(m.timeStamp()).toUtf8() +"\n");
+    }
+    file.close();
 }
 
 SongInfo::SongInfo()
