@@ -27,12 +27,12 @@
 #include <QCryptographicHash>
 #include <QUrl>
 #include <QTime>
+#include <QTimer>
 #include <QDateTime>
 #include <QDir>
 #include <qmmp/soundcore.h>
 #include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
-
 #include "scrobbler.h"
 
 #define PROTOCOL_VER "1.2"
@@ -44,37 +44,24 @@ Scrobbler::Scrobbler(const QString &url,
                      const QString &login,
                      const QString &passw,
                      const QString &name,
-                     QObject *parent)
-        : QObject(parent)
+                     QObject *parent) : QObject(parent)
 {
+    m_failure_count = 0;
+    m_handshake_count = 0;
     m_http = new QNetworkAccessManager(this);
-    //m_http->setHost(url, 80);
     m_state = Qmmp::Stopped;
     m_login = login;
     m_passw = passw;
     m_server = url;
     m_name = name;
-    //load global proxy settings
-    QmmpSettings *gs = QmmpSettings::instance(); //TODO use QmmpSettings::networkSettingsChanged()
-    if (gs->isProxyEnabled())
-    {
-        QNetworkProxy proxy(QNetworkProxy::HttpProxy, gs->proxy().host(),  gs->proxy().port());
-        if(gs->useProxyAuth())
-        {
-            proxy.setUser(gs->proxy().userName());
-            proxy.setPassword(gs->proxy().password());
-        }
-        m_http->setProxy(proxy);
-    }
-
+    connect(QmmpSettings::instance(), SIGNAL(networkSettingsChanged()), SLOT(setupProxy()));
+    setupProxy();
     m_disabled = m_login.isEmpty() || m_passw.isEmpty();
     m_passw = QString(QCryptographicHash::hash(m_passw.toAscii(), QCryptographicHash::Md5).toHex());
     connect(m_http, SIGNAL(finished (QNetworkReply *)), SLOT(processResponse(QNetworkReply *)));
-
     m_core = SoundCore::instance();
     connect (m_core, SIGNAL(metaDataChanged()), SLOT(updateMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
-
     m_time = new QTime();
     m_submitedSongs = 0;
     m_handshakeReply = 0;
@@ -156,28 +143,18 @@ Scrobbler::~Scrobbler()
 void Scrobbler::setState(Qmmp::State state)
 {
     m_state = state;
-    if (m_disabled)
-        return;
     switch ((uint) state)
     {
     case Qmmp::Playing:
-    {
         m_start_ts = QDateTime::currentDateTime().toTime_t();
         m_time->restart();
         if (!isReady() && !m_handshakeReply)
             handshake();
         break;
-    }
-    case Qmmp::Paused:
-    {
-        break;
-    }
     case Qmmp::Stopped:
-    {
         if (!m_song.metaData().isEmpty()
-                && ((m_time->elapsed ()/1000 > 240)
-                    || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
-                && (m_time->elapsed ()/1000 > 60))
+            && ((m_time->elapsed ()/1000 > 240) || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
+            && (m_time->elapsed ()/1000 > 60))
         {
             m_song.setTimeStamp(m_start_ts);
             m_songCache << m_song;
@@ -190,7 +167,8 @@ void Scrobbler::setState(Qmmp::State state)
         if (isReady() && !m_submitReply)
             submit();
         break;
-    }
+    default:
+        ;
     }
 }
 
@@ -219,32 +197,45 @@ void Scrobbler::updateMetaData()
 
 void Scrobbler::processResponse(QNetworkReply *reply)
 {
-    if (reply->error() != QNetworkReply::NoError)
-    {
-        qWarning("Scrobbler: %s", qPrintable(reply->errorString ()));
-        //TODO hard failure handling
+    QString data;
+    if (reply->error() == QNetworkReply::NoError)
+        data = reply->readAll();
+    else
+        data = reply->errorString ();
 
-        if (reply == m_submitReply)
-            m_submitReply = 0;
-        else if (reply == m_handshakeReply)
-            m_handshakeReply = 0;
-        else if (reply == m_notificationReply)
-            m_notificationReply = 0;
-        reply->deleteLater();
-        return;
+    data = data.trimmed();
+    if (data.startsWith("OK"))
+    {
+        m_failure_count = 0;
+        m_handshake_count = 0;
     }
-    QString str(reply->readAll());
-    QStringList strlist = str.split("\n");
 
     if (reply == m_handshakeReply)
     {
-        m_handshakeReply = 0;
+        m_submitUrl.clear();
+        m_session.clear();
+        m_nowPlayingUrl.clear();
+        m_failure_count = 0;
+        QStringList strlist = data.split("\n");
         if (!strlist[0].contains("OK") || strlist.size() < 4)
         {
-            qWarning("Scrobbler[%s]: handshake phase error: %s",
-                     qPrintable(m_name),
-                     qPrintable(strlist[0]));
-            //TODO: badtime handling
+            qWarning("Scrobbler[%s]: handshake phase error", qPrintable(m_name));
+            m_disabled = TRUE;
+            if(strlist[0].contains("BANNED"))
+                qWarning("Scrobbler[%s]: client has been banned", qPrintable(m_name));
+            else if(strlist[0].contains("BADAUTH"))
+                qWarning("Scrobbler[%s]: incorrect user/password", qPrintable(m_name));
+            else if(strlist[0].contains("BADTIME"))
+                qWarning("Scrobbler[%s]: incorrect system time", qPrintable(m_name));
+            else
+            {
+                qWarning("Scrobbler[%s]: service error: %s", qPrintable(m_name), qPrintable(strlist[0]));
+                m_disabled = FALSE;
+                m_handshake_count++;
+                QTimer::singleShot (60000 * qMin(m_handshake_count^2, 120) , this, SLOT(handshake()));
+                qWarning("Scrobbler[%s]: waiting %d minutes...", qPrintable(m_name),
+                         qMin(m_handshake_count^2, 120));
+            }
         }
         else if (strlist.size() > 3) //process handshake response
         {
@@ -263,37 +254,83 @@ void Scrobbler::processResponse(QNetworkReply *reply)
     else if (reply == m_submitReply)
     {
         m_submitReply = 0;
-        if (!strlist[0].contains("OK"))
+        if (!data.startsWith("OK"))
         {
-            qWarning("Scrobbler[%s]: submit error: %s",qPrintable(m_name), qPrintable(strlist[0]));
-            //TODO badsession handling
-            return;
+            qWarning("Scrobbler[%s]: submit error",qPrintable(m_name));
+            if(data.contains("BADSESSION"))
+            {
+                qWarning("Scrobbler[%s]: invalid session ID",qPrintable(m_name));
+                qWarning("Scrobbler[%s]: performing re-handshake",qPrintable(m_name));
+                handshake();
+            }
+            else
+            {
+                qWarning("Scrobbler[%s]: %s",qPrintable(m_name),qPrintable(data));
+                m_failure_count ++;
+            }
         }
-        qWarning("Scrobbler[%s]: submited %d song(s)",qPrintable(m_name), m_submitedSongs);
-        while (m_submitedSongs)
+        else
         {
-            m_submitedSongs--;
-            m_songCache.removeFirst ();
+            qDebug("Scrobbler[%s]: submited %d song(s)",qPrintable(m_name), m_submitedSongs);
+            while (m_submitedSongs)
+            {
+                m_submitedSongs--;
+                m_songCache.removeFirst ();
+            }
+            if (!m_songCache.isEmpty()) //submit remaining songs
+                submit();
         }
-        if (!m_songCache.isEmpty()) //submit remaining songs
-            submit();
     }
     else if (reply == m_notificationReply)
     {
         m_notificationReply = 0;
-        if (!strlist[0].contains("OK"))
+        if (!data.startsWith("OK"))
         {
-            qWarning("Scrobbler[%s]: notification error: %s",qPrintable(m_name), qPrintable(strlist[0]));
-            //TODO badsession handling
-            return;
+            qWarning("Scrobbler[%s]: notification error",qPrintable(m_name));
+            if(data.contains("BADSESSION"))
+            {
+                qWarning("Scrobbler[%s]: invalid session ID",qPrintable(m_name));
+                qWarning("Scrobbler[%s]: performing re-handshake",qPrintable(m_name));
+                handshake();
+            }
+            else
+            {
+                qWarning("Scrobbler[%s]: %s",qPrintable(m_name),qPrintable(data));
+                m_failure_count ++;
+            }
         }
-        qDebug("Scrobbler[%s]: Now-Playing notification done", qPrintable(m_name));
+        else
+            qDebug("Scrobbler[%s]: Now-Playing notification done", qPrintable(m_name));
+    }
+    if(m_failure_count >= 3)
+    {
+        qWarning("Scrobbler[%s]: performing re-handshake",qPrintable(m_name));
+        handshake();
     }
     reply->deleteLater();
 }
 
+void Scrobbler::setupProxy()
+{
+    QmmpSettings *gs = QmmpSettings::instance();
+    if (gs->isProxyEnabled())
+    {
+        QNetworkProxy proxy(QNetworkProxy::HttpProxy, gs->proxy().host(),  gs->proxy().port());
+        if(gs->useProxyAuth())
+        {
+            proxy.setUser(gs->proxy().userName());
+            proxy.setPassword(gs->proxy().password());
+        }
+        m_http->setProxy(proxy);
+    }
+    else
+        m_http->setProxy(QNetworkProxy::NoProxy);
+}
+
 void Scrobbler::handshake()
 {
+    if (m_disabled)
+        return;
     qDebug("Scrobbler[%s] handshake request",qPrintable(m_name));
     uint ts = QDateTime::currentDateTime().toTime_t();
     qDebug("Scrobbler[%s]: current time stamp %d",qPrintable(m_name),ts);
@@ -338,7 +375,7 @@ void Scrobbler::submit()
                 .arg(info.metaData(Qmmp::TRACK))
                 .arg(i);
     }
-    qDebug("%s",qPrintable(body));
+    //qDebug("%s",qPrintable(body));
     QUrl url(m_submitUrl);
     url.setPort(80);
     QNetworkRequest request(url);
