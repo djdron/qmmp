@@ -99,6 +99,7 @@
         <translation>Переименовать</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="92"/>
         <location filename="../settingsdialog.cpp" line="55"/>
         <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
@@ -210,30 +211,23 @@
         <translation>Сочетание клавиш</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>+</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <source>-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="105"/>
-        <location filename="../settingsdialog.ui" line="121"/>
-        <location filename="../settingsdialog.ui" line="158"/>
-        <location filename="../settingsdialog.ui" line="175"/>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="148"/>
+        <location filename="../settingsdialog.ui" line="116"/>
         <source>Destination:</source>
         <translation>Назначение:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="165"/>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation>Добавить</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="133"/>
         <source>File name pattern:</source>
         <translation>Формат имени файла:</translation>
     </message>

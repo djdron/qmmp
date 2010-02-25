@@ -68,7 +68,7 @@
    <item row="1" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QToolButton" name="newButton">
+      <widget class="QPushButton" name="newButton">
        <property name="minimumSize">
         <size>
          <width>26</width>
@@ -76,12 +76,12 @@
         </size>
        </property>
        <property name="text">
-        <string>+</string>
+        <string>Add</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="deleteButton">
+      <widget class="QPushButton" name="deleteButton">
        <property name="minimumSize">
         <size>
          <width>26</width>
@@ -89,39 +89,7 @@
         </size>
        </property>
        <property name="text">
-        <string>-</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="toolButton">
-       <property name="minimumSize">
-        <size>
-         <width>26</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>...</string>
-       </property>
-       <property name="arrowType">
-        <enum>Qt::UpArrow</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="toolButton_3">
-       <property name="minimumSize">
-        <size>
-         <width>26</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>...</string>
-       </property>
-       <property name="arrowType">
-        <enum>Qt::DownArrow</enum>
+        <string>Remove</string>
        </property>
       </widget>
      </item>

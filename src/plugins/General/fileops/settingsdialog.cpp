@@ -23,7 +23,7 @@
 #include <QComboBox>
 #include <QMenu>
 #include <QHeaderView>
-
+#include <QApplication>
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
 #include "fileops.h"
