@@ -172,7 +172,7 @@ void Scrobbler::updateMetaData()
         metadata[Qmmp::ALBUM].replace("&", QUrl::toPercentEncoding("&"));
         metadata[Qmmp::TITLE].replace("&", QUrl::toPercentEncoding("&"));
         m_song = SongInfo(metadata, m_core->totalTime()/1000);
-        if (isReady() && !m_notificationReply)
+        if (isReady() && !m_notificationReply && !m_submitReply)
             sendNotification(m_song);
     }
 }
@@ -261,6 +261,8 @@ void Scrobbler::processResponse(QNetworkReply *reply)
             }
             if (!m_songCache.isEmpty()) //submit remaining songs
                 submit();
+            else
+                updateMetaData();
         }
     }
     else if (reply == m_notificationReply)
