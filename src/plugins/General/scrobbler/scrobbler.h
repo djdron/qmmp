@@ -26,6 +26,7 @@
 class QNetworkAccessManager;
 class QNetworkReply;
 class QTime;
+class QTimer;
 class SoundCore;
 
 /**
@@ -78,9 +79,10 @@ private slots:
     void setState(Qmmp::State state);
     void updateMetaData();
     void processResponse(QNetworkReply *reply);
+    void setupProxy();
+    void handshake();
 
 private:
-    void handshake();
     void submit();
     void sendNotification(const SongInfo &info);
     bool isReady();
@@ -98,11 +100,14 @@ private:
     QByteArray m_ua;
     QTime* m_time;
     int m_submitedSongs;
+    int m_failure_count;
+    int m_handshake_count;
     QNetworkReply *m_handshakeReply;
     QNetworkReply *m_submitReply;
     QNetworkReply *m_notificationReply;
     bool m_disabled;
     QString m_server, m_name;
+    QTimer *m_timer;
 };
 
 #endif
