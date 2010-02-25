@@ -26,7 +26,6 @@
 class QNetworkAccessManager;
 class QNetworkReply;
 class QTime;
-class QTimer;
 class SoundCore;
 
 /**
@@ -86,6 +85,7 @@ private:
     void submit();
     void sendNotification(const SongInfo &info);
     bool isReady();
+    void syncCache();
     uint m_start_ts;
     SongInfo m_song;
     QNetworkAccessManager *m_http;
@@ -107,7 +107,6 @@ private:
     QNetworkReply *m_notificationReply;
     bool m_disabled;
     QString m_server, m_name;
-    QTimer *m_timer;
 };
 
 #endif
