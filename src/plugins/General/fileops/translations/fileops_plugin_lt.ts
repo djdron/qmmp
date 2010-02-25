@@ -24,17 +24,17 @@
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="135"/>
+        <location filename="../fileops.cpp" line="146"/>
         <source>Copying file %1/%2</source>
         <translation>Kopijuoju bylą %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="177"/>
+        <location filename="../fileops.cpp" line="189"/>
         <source>Remove files</source>
         <translation>Ištrinti bylas</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="178"/>
+        <location filename="../fileops.cpp" line="190"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>Ar tu tikras, jog nori ištrinti  %n bylą(as) iš disko?</numerusform>
@@ -125,37 +125,62 @@
         <translation>Pavadinimas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="195"/>
-        <source>Tracknumber</source>
-        <translation>Takelio numeris</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="196"/>
+        <location filename="../settingsdialog.cpp" line="197"/>
         <source>Genre</source>
         <translation>Žanras</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="197"/>
-        <source>Filename</source>
-        <translation>Bylos pavadinimas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="198"/>
-        <source>Date</source>
-        <translation>Data</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="199"/>
+        <location filename="../settingsdialog.cpp" line="204"/>
         <source>Year</source>
         <translation>Metai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="200"/>
+        <location filename="../settingsdialog.cpp" line="198"/>
         <source>Comment</source>
         <translation>Komentaras</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="216"/>
+        <location filename="../settingsdialog.cpp" line="195"/>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="196"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="199"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="200"/>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="201"/>
+        <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="202"/>
+        <source>File name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="203"/>
+        <source>File path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="205"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="221"/>
         <source>Choose a directory</source>
         <translation>Pasirinkite aplanką</translation>
     </message>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,8 +50,6 @@ private slots:
     void execAction(int n);
 
 private:
-    QString generateFileName(PlayListItem *item, QString pattern);
-    QString printTag(QString str, QString regExp, QString tagStr, QString fmt);
     QList <int> m_types;
     QStringList m_patterns;
     QStringList m_destinations;
