@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,13 +26,13 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QDir>
-
 #include <qmmp/soundcore.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/metadataformatter.h>
 #include "fileops.h"
 
 #define COPY_BLOCK_SIZE 102400
@@ -111,22 +111,33 @@ void FileOps::execAction(int n)
             if (!QFile::exists(item->url()))
                 continue;
             //generate file name
-            QString fname = generateFileName(item, pattern);
+            MetaDataFormatter formatter(pattern);
+            QString fname = formatter.parse(item);
             //append extension
             QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
             if (!fname.endsWith(ext))
                 fname += ext;
+            QString path = destination + "/" + fname;
+            QDir dir = QFileInfo(path).dir();
+            if(!dir.exists())
+            {
+                if(!dir.mkpath(dir.absolutePath()))
+                {
+                    qWarning("FileOps: unable to create directory");
+                    continue;
+                }
+            }
             //copy file
             QFile in(item->url());
-            QFile out(destination + "/" + fname);
+            QFile out(path);
             if (!in.open(QIODevice::ReadOnly))
             {
-                qDebug("FileOps: %s", qPrintable(in.errorString ()));
+                qWarning("FileOps: %s", qPrintable(in.errorString ()));
                 continue;
             }
             if (!out.open(QIODevice::WriteOnly))
             {
-                qDebug("FileOps: %s", qPrintable(out.errorString ()));
+                qWarning("FileOps: %s", qPrintable(out.errorString ()));
                 continue;
             }
 
@@ -153,7 +164,8 @@ void FileOps::execAction(int n)
             if (!QFile::exists(item->url()))
                 continue;
             //generate file name
-            QString fname = generateFileName(item, pattern);
+            MetaDataFormatter formatter(pattern);
+            QString fname = formatter.parse(item);
             //append extension
             QString ext = QString(".") + item->url().split('.',QString::SkipEmptyParts).takeLast ();
             if (!fname.endsWith(ext))
@@ -175,7 +187,8 @@ void FileOps::execAction(int n)
     case REMOVE:
         qDebug("FileOps: remove");
         if (QMessageBox::question (qApp->activeWindow (), tr("Remove files"),
-                                   tr("Are you sure you want to remove %n file(s) from disk?","",items.size()),
+                                   tr("Are you sure you want to remove %n file(s) from disk?",
+                                      "",items.size()),
                                    QMessageBox::Yes | QMessageBox::No) !=  QMessageBox::Yes)
             break;
 
@@ -185,52 +198,4 @@ void FileOps::execAction(int n)
                 model->removeAt (model->row(item));
         }
     }
-}
-//generate file name from tags using given pattern
-QString FileOps::generateFileName(PlayListItem *item, QString pattern)
-{
-    QString fname = pattern;
-    fname = printTag(fname, "%p", item->artist(), pattern);
-    fname = printTag(fname, "%a", item->album(), pattern);
-    fname = printTag(fname, "%t", item->title(), pattern);
-    if(item->track().size() > 1)
-        fname = printTag(fname, "%n", item->track(), pattern);
-    else
-        fname = printTag(fname, "%n", QString("0") + item->track(), pattern);
-    fname = printTag(fname, "%g", item->genre(), pattern);
-    fname = printTag(fname, "%f", item->url().section('/',-1), pattern);
-    fname = printTag(fname, "%y", QString("%1").arg(item->year ()), pattern);
-    if (fname.isEmpty())
-    {
-        if (item->url().contains('/'))
-            fname = item->url().split('/',QString::SkipEmptyParts).takeLast ();
-    }
-    return fname;
-}
-
-QString FileOps::printTag(QString str, QString regExp, QString tagStr, QString fmt)
-{
-    QString format = fmt;
-    if (!tagStr.isEmpty())
-        str.replace(regExp, tagStr);
-    else
-    {
-        //remove unused separators
-        int regExpPos = str.indexOf(regExp);
-        if (regExpPos < 0)
-            return str;
-        int nextPos = str.indexOf("%", regExpPos + 1);
-        if (nextPos < 0)
-        {
-            //last separator
-            regExpPos = format.lastIndexOf(regExp);
-            nextPos = format.lastIndexOf("%", regExpPos - 1);
-            QString lastSep = format.right (format.size() - nextPos - 2);
-            str.remove(lastSep);
-            str.remove(regExp);
-        }
-        else
-            str.remove ( regExpPos, nextPos - regExpPos);
-    }
-    return str;
 }

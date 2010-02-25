@@ -192,12 +192,17 @@ void SettingsDialog::createMenus()
     menu->addAction(tr("Artist"))->setData("%p");
     menu->addAction(tr("Album"))->setData("%a");
     menu->addAction(tr("Title"))->setData("%t");
-    menu->addAction(tr("Tracknumber"))->setData("%n");
+    menu->addAction(tr("Track number"))->setData("%n");
+    menu->addAction(tr("Two-digit track number"))->setData("%NN");
     menu->addAction(tr("Genre"))->setData("%g");
-    menu->addAction(tr("Filename"))->setData("%f");
-    menu->addAction(tr("Date"))->setData("%d");
-    menu->addAction(tr("Year"))->setData("%y");
     menu->addAction(tr("Comment"))->setData("%c");
+    menu->addAction(tr("Composer"))->setData("%C");
+    menu->addAction(tr("Duration"))->setData("%l");
+    menu->addAction(tr("Disc number"))->setData("%D");
+    menu->addAction(tr("File name"))->setData("%f");
+    menu->addAction(tr("File path"))->setData("%F");
+    menu->addAction(tr("Year"))->setData("%y");
+    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
     ui.patternButton->setMenu(menu);
     ui.patternButton->setPopupMode(QToolButton::InstantPopup);
     connect(menu, SIGNAL(triggered (QAction *)), SLOT(addTitleString( QAction *)));
@@ -224,5 +229,5 @@ void SettingsDialog::on_tableWidget_itemDoubleClicked (QTableWidgetItem *item)
     HotkeyDialog *dialog = new HotkeyDialog(item->text(), this);
     if (ui.tableWidget->column (item) == 3 && dialog->exec() == QDialog::Accepted)
         item->setText(dialog->key());
-    delete dialog;
+    dialog->deleteLater();
 }

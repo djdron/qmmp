@@ -65,12 +65,12 @@
         <translation>Bağlantı yok</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="94"/>
+        <location filename="../lyricswindow.cpp" line="95"/>
         <source>Receiving</source>
         <translation>Alınıyor</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="95"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Şarkı Sözü: %1 - %2</translation>
     </message>

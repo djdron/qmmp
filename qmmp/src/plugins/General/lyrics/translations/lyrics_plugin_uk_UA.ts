@@ -55,7 +55,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="95"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Тексти: %1 - %2</translation>
     </message>
@@ -70,7 +70,7 @@
         <translation>Не знайдено</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="94"/>
+        <location filename="../lyricswindow.cpp" line="95"/>
         <source>Receiving</source>
         <translation>Отримання</translation>
     </message>
