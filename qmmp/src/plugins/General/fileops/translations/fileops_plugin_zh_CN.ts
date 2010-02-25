@@ -97,6 +97,7 @@
         <translation>重命名</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="92"/>
         <location filename="../settingsdialog.cpp" line="55"/>
         <location filename="../settingsdialog.cpp" line="135"/>
         <source>Remove</source>
@@ -208,30 +209,23 @@
         <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="79"/>
-        <source>+</source>
-        <translation>+</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="92"/>
-        <source>-</source>
-        <translation>-</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="105"/>
-        <location filename="../settingsdialog.ui" line="121"/>
-        <location filename="../settingsdialog.ui" line="158"/>
-        <location filename="../settingsdialog.ui" line="175"/>
+        <location filename="../settingsdialog.ui" line="126"/>
+        <location filename="../settingsdialog.ui" line="143"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="148"/>
+        <location filename="../settingsdialog.ui" line="116"/>
         <source>Destination:</source>
         <translation>目标目录：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="165"/>
+        <location filename="../settingsdialog.ui" line="79"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="133"/>
         <source>File name pattern:</source>
         <translation>文件名方案：</translation>
     </message>
