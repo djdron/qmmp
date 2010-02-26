@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -103,6 +103,7 @@ private:
     void readSettings();
     void writeSettings();
     void createActions();
+    void resume();
     SoundCore *m_core;
     QMenu *m_mainMenu;
     MainDisplay *m_display;

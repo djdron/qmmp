@@ -123,6 +123,8 @@ void ConfigDialog::readSettings()
     //skin options
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", FALSE).toBool());
     ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", FALSE).toBool());
+    //resume playback
+    ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", FALSE).toBool());
     //cover options
     ui.coverIncludeLineEdit->setText(gs->coverNameFilters(TRUE).join(","));
     ui.coverExcludeLineEdit->setText(gs->coverNameFilters(FALSE).join(","));
@@ -432,6 +434,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
     settings.setValue ("General/openbox_compat", ui.openboxCheckBox->isChecked());
     settings.setValue ("General/metacity_compat", ui.metacityCheckBox->isChecked());
+    settings.setValue ("General/resume_on_startup",  ui.continuePlaybackCheckBox->isChecked());
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
     settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
