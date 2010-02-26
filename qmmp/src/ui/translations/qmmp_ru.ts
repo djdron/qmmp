@@ -1401,6 +1401,39 @@
     </message>
 </context>
 <context>
+    <name>PlayListSelector</name>
+    <message>
+        <location filename="../playlistselector.cpp" line="49"/>
+        <source>&amp;Load</source>
+        <translation>&amp;Загрузить</translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="50"/>
+        <source>&amp;Save As...</source>
+        <translation>&amp;Сохранить как...</translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="52"/>
+        <source>Rename</source>
+        <translation>Переименовать</translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="53"/>
+        <source>&amp;Delete</source>
+        <translation>&amp;Удалить</translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="109"/>
+        <source>Rename Playlist</source>
+        <translation>Переименовать список</translation>
+    </message>
+    <message>
+        <location filename="../playlistselector.cpp" line="109"/>
+        <source>Playlist name:</source>
+        <translation>Имя списка:</translation>
+    </message>
+</context>
+<context>
     <name>PopupSettings</name>
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
