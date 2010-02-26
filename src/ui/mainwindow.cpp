@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -133,6 +133,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 #endif
     if (m_startHidden && m_generalHandler->visibilityControl())
         toggleVisibility();
+    if(args.isEmpty())
+        resume();
 }
 
 
@@ -330,12 +332,16 @@ void MainWindow::writeSettings()
     //last directory
     settings.setValue("last_dir",m_lastDir);
     settings.endGroup();
-
     // Repeat/Shuffle
     settings.beginGroup("Playlist");
     settings.setValue("repeatable",m_display->isRepeatable());
     settings.setValue("shuffle",m_display->isShuffle());
-
+    settings.endGroup();
+    // playback state
+    settings.beginGroup("General");
+    settings.setValue("resume_playback", m_core->state() == Qmmp::Playing &&
+                      settings.value("resume_on_startup", FALSE).toBool());
+    settings.setValue("resume_playback_time", m_core->totalTime() > 0 ? m_core->elapsed() : 0);
     settings.endGroup();
 }
 
@@ -602,4 +608,17 @@ void MainWindow::keyPressEvent(QKeyEvent *ke)
     QKeyEvent event = QKeyEvent(ke->type(), ke->key(),
                                 ke->modifiers(), ke->text(),ke->isAutoRepeat(), ke->count());
     QApplication::sendEvent(m_playlist,&event);
+}
+
+void MainWindow::resume()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("General");
+    if(settings.value("resume_playback", FALSE).toBool())
+    {
+        play();
+        qint64 pos =  settings.value("resume_playback_time").toLongLong();
+        if(pos)
+            m_core->seek(pos);
+    }
 }

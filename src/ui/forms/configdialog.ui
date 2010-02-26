@@ -848,7 +848,7 @@
            </layout>
           </widget>
          </item>
-         <item row="3" column="0">
+         <item row="4" column="0" colspan="2">
           <spacer name="verticalSpacer_3">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -860,6 +860,22 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item row="3" column="0" colspan="2">
+          <widget class="QGroupBox" name="groupBox_6">
+           <property name="title">
+            <string>Playback</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <item>
+             <widget class="QCheckBox" name="continuePlaybackCheckBox">
+              <property name="text">
+               <string>Continue playback on startup</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </item>
         </layout>
        </widget>
