@@ -35,7 +35,7 @@
 #include <qmmp/qmmp.h>
 #include "scrobbler.h"
 
-#define PROTOCOL_VER "1.2"
+#define PROTOCOL_VER "1.2.1"
 #define CLIENT_ID "qmm"
 #define CLIENT_VER "0.3"
 
