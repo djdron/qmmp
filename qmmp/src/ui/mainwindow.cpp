@@ -618,6 +618,7 @@ void MainWindow::resume()
     {
         play();
         qint64 pos =  settings.value("resume_playback_time").toLongLong();
+        qApp->processEvents();
         if(pos)
             m_core->seek(pos);
     }
