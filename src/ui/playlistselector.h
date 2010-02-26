@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -28,6 +28,7 @@
 class QFontMetrics;
 class QFont;
 class QMouseEvent;
+class QMenu;
 class PlayListManager;
 class Skin;
 
@@ -45,10 +46,12 @@ public:
 private slots:
     void updateTabs();
     void updateSkin();
+    void renamePlaylist();
 
 private:
     void paintEvent(QPaintEvent *);
-    void mousePressEvent ( QMouseEvent *e);
+    void mousePressEvent (QMouseEvent *e);
+    void mouseDoubleClickEvent (QMouseEvent *e);
     void resizeEvent (QResizeEvent *);
     void updateOffsets();
     void loadColors();
@@ -59,6 +62,7 @@ private:
     PlayListManager *m_pl_manager;
     QFontMetrics *m_metrics;
     QFont m_font;
+    QMenu *m_menu;
     bool m_update;
     bool m_scrollable;
     QList <QRect> m_rects;

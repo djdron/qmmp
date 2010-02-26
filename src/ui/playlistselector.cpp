@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,9 @@
 #include <QSettings>
 #include <QApplication>
 #include <QMouseEvent>
+#include <QMenu>
+#include <QLineEdit>
+#include <QInputDialog>
 #include <qmmp/qmmp.h>
 #include <qmmpui/playlistmanager.h>
 #include "skin.h"
@@ -42,6 +45,12 @@ PlayListSelector::PlayListSelector(PlayListManager *manager, QWidget *parent) : 
     loadColors();
     readSettings();
     updateTabs();
+    m_menu = new QMenu(this);
+    m_menu->addAction(tr("&Load"), parent, SIGNAL (loadPlaylist()));
+    m_menu->addAction(tr("&Save As..."), parent, SIGNAL (savePlaylist()));
+    m_menu->addSeparator();
+    m_menu->addAction(tr("Rename"),this, SLOT (renamePlaylist()));
+    m_menu->addAction(tr("&Delete"),parent, SLOT (deletePlaylist()));
 }
 
 PlayListSelector::~PlayListSelector()
@@ -91,6 +100,17 @@ void PlayListSelector::updateSkin()
     loadColors();
     drawButtons();
     updateTabs();
+}
+
+void PlayListSelector::renamePlaylist()
+{
+    bool ok = FALSE;
+    QString name = QInputDialog::getText (this,
+                                          tr("Rename Playlist"), tr("Playlist name:"),
+                                          QLineEdit::Normal,
+                                          m_pl_manager->selectedPlayList()->name(), &ok);
+    if(ok)
+        m_pl_manager->selectedPlayList()->setName(name);
 }
 
 void PlayListSelector::paintEvent(QPaintEvent *)
@@ -156,6 +176,17 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
             break;
         }
     }
+    update();
+    if(e->button() == Qt::RightButton)
+        m_menu->exec(e->globalPos());
+}
+
+void PlayListSelector::mouseDoubleClickEvent (QMouseEvent *e)
+{
+    if(e->button() == Qt::LeftButton)
+        renamePlaylist();
+    else
+        QWidget::mouseDoubleClickEvent(e);
 }
 
 void PlayListSelector::resizeEvent (QResizeEvent *)
