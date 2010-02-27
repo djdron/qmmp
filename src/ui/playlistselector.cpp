@@ -36,6 +36,8 @@ PlayListSelector::PlayListSelector(PlayListManager *manager, QWidget *parent) : 
 {
     m_update = FALSE;
     m_scrollable = FALSE;
+    m_left_pressed = FALSE;
+    m_right_pressed = FALSE;
     m_offset = 0;
     m_offset_max = 0;
     m_skin = Skin::instance();
@@ -155,6 +157,8 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
     {
         m_offset += m_rects.at(lastVisible()).right() - m_offset - width() + 42;
         m_offset = qMin(m_offset, m_offset_max);
+        m_right_pressed = TRUE;
+        drawButtons();
         update();
         return;
     }
@@ -162,6 +166,8 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
     {
         m_offset -=  11 - m_rects.at(firstVisible()).x() + m_offset;
         m_offset = qMax(0, m_offset);
+        m_left_pressed = TRUE;
+        drawButtons();
         update();
         return;
     }
@@ -181,9 +187,18 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
         m_menu->exec(e->globalPos());
 }
 
+void PlayListSelector::mouseReleaseEvent (QMouseEvent *e)
+{
+    m_left_pressed = FALSE;
+    m_right_pressed = FALSE;
+    drawButtons();
+    update();
+    QWidget::mouseReleaseEvent(e);
+}
+
 void PlayListSelector::mouseDoubleClickEvent (QMouseEvent *e)
 {
-    if(e->button() == Qt::LeftButton)
+    if(e->button() == Qt::LeftButton && !(m_scrollable && (e->x() > width() - 40)))
         renamePlaylist();
     else
         QWidget::mouseDoubleClickEvent(e);
@@ -207,19 +222,20 @@ void PlayListSelector::drawButtons()
     m_pixmap = QPixmap(40, height());
     m_pixmap.fill(m_normal_bg);
     QPainter painter(&m_pixmap);
-    painter.setPen(m_normal);
-    painter.setBrush(QBrush(m_normal));
+    painter.setPen(m_left_pressed ? m_current : m_normal);
+    painter.setBrush(QBrush(m_left_pressed ? m_current : m_normal));
     QPoint points[3] = {
-        QPoint(m_pixmap.width() - 25, height()/2 - 6),
+        QPoint(m_pixmap.width() - 25, height()/2 - 5),
         QPoint(m_pixmap.width() - 35, height()/2-1),
-        QPoint(m_pixmap.width() - 25, height()/2 + 4),
+        QPoint(m_pixmap.width() - 25, height()/2 + 3),
     };
     painter.drawPolygon(points, 3);
-
+    painter.setPen(m_right_pressed ? m_current : m_normal);
+    painter.setBrush(QBrush(m_right_pressed ? m_current : m_normal));
     QPoint points2[3] = {
-        QPoint(m_pixmap.width() - 20, height()/2 - 6),
+        QPoint(m_pixmap.width() - 20, height()/2 - 5),
         QPoint(m_pixmap.width() - 10, height()/2-1),
-        QPoint(m_pixmap.width() - 20, height()/2 + 4),
+        QPoint(m_pixmap.width() - 20, height()/2 + 3),
     };
     painter.drawPolygon(points2, 3);
 }
