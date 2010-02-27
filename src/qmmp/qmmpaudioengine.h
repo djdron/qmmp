@@ -65,6 +65,7 @@ private:
     void run();
     void reset();
     void flush(bool = FALSE);
+    void addOffset();
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
     void sendMetaData();
     Output *createOutput(Decoder *d);

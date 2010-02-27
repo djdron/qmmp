@@ -75,7 +75,7 @@ SoundCore::~SoundCore()
     MetaDataManager::destroy();
 }
 
-bool SoundCore::play(const QString &source, bool queue)
+bool SoundCore::play(const QString &source, bool queue, qint64 offset)
 {
     if(!queue)
     {
@@ -85,6 +85,7 @@ bool SoundCore::play(const QString &source, bool queue)
     MetaDataManager::instance(); //create metadata manager
 
     InputSource *s = InputSource::create(source, this);
+    s->setOffset(offset);
     m_pendingSources.append(s);
     if(state() == Qmmp::Stopped)
         m_handler->dispatch(Qmmp::Buffering);

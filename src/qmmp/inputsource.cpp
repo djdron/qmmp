@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,11 +31,21 @@
 InputSource::InputSource(const QString &source, QObject *parent) : QObject(parent)
 {
     m_url = source;
+    m_offset = -1;
 }
 
-const QString InputSource::url()
+const QString InputSource::url() const
 {
     return m_url;
+}
+
+qint64 InputSource::offset() const
+{
+    return m_offset;
+}
+void InputSource::setOffset(qint64 offset)
+{
+    m_offset = offset;
 }
 
 // static methods

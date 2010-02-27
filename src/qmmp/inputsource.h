@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,7 +38,9 @@ public:
     virtual QIODevice *ioDevice() = 0;
     virtual bool initialize() = 0;
     virtual bool isReady() = 0;
-    const QString url();
+    const QString url() const;
+    qint64 offset() const;
+    void setOffset(qint64 offset);
 
     static InputSource *create(const QString &url, QObject *parent = 0);
     /*!
@@ -55,6 +57,7 @@ signals:
 
 private:
     QString m_url;
+    qint64 m_offset;
     static void checkFactories();
     static QList<InputSourceFactory*> *m_factories;
     static QStringList m_files;

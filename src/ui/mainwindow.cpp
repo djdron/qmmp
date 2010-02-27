@@ -616,10 +616,7 @@ void MainWindow::resume()
     settings.beginGroup("General");
     if(settings.value("resume_playback", FALSE).toBool())
     {
-        play();
         qint64 pos =  settings.value("resume_playback_time").toLongLong();
-        qApp->processEvents();
-        if(pos)
-            m_core->seek(pos);
+        m_player->play(pos);
     }
 }
