@@ -37,9 +37,9 @@
         <location filename="../fileops.cpp" line="190"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
-            <numerusform>Ви дійсно бажаєте видалити %n файл(ів) з диску?</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Ви дійсно бажаєте видалити %n файл з диску?</numerusform>
+            <numerusform>Ви дійсно бажаєте видалити %n файла з диску?</numerusform>
+            <numerusform>Ви дійсно бажаєте видалити %n файлів з диску?</numerusform>
         </translation>
     </message>
 </context>
@@ -143,42 +143,42 @@
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>2-розрядний номер трека</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="201"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="202"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Шлях до файла</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Умова</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="221"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="133"/>
