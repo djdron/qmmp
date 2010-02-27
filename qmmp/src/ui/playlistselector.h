@@ -51,6 +51,7 @@ private slots:
 private:
     void paintEvent(QPaintEvent *);
     void mousePressEvent (QMouseEvent *e);
+    void mouseReleaseEvent (QMouseEvent *e);
     void mouseDoubleClickEvent (QMouseEvent *e);
     void resizeEvent (QResizeEvent *);
     void updateOffsets();
@@ -71,6 +72,7 @@ private:
     QPixmap m_pixmap;
     bool m_showButtons;
     int m_offset, m_offset_max;
+    bool m_left_pressed, m_right_pressed;
 };
 
 #endif // PLAYLISTSELECTOR_H

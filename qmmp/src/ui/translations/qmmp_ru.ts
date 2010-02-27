@@ -1403,32 +1403,32 @@
 <context>
     <name>PlayListSelector</name>
     <message>
-        <location filename="../playlistselector.cpp" line="49"/>
+        <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Load</source>
         <translation>&amp;Загрузить</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="50"/>
+        <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="52"/>
+        <location filename="../playlistselector.cpp" line="54"/>
         <source>Rename</source>
         <translation>Переименовать</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="53"/>
+        <location filename="../playlistselector.cpp" line="55"/>
         <source>&amp;Delete</source>
         <translation>&amp;Удалить</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="109"/>
+        <location filename="../playlistselector.cpp" line="111"/>
         <source>Rename Playlist</source>
         <translation>Переименовать список</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="109"/>
+        <location filename="../playlistselector.cpp" line="111"/>
         <source>Playlist name:</source>
         <translation>Имя списка:</translation>
     </message>
