@@ -101,6 +101,7 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     mutex()->lock();
     if(m_decoder && m_decoder->nextURL() == source->url())
     {
+        m_inputs.value(m_decoder)->setOffset(source->offset());
         delete source;
         m_next = TRUE;
         mutex()->unlock();
@@ -134,6 +135,8 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     }
     m_decoders.enqueue(decoder);
     m_inputs.insert(decoder, source);
+    if(!decoder->totalTime())
+        source->setOffset(-1);
     source->setParent(this);
     return TRUE;
 }
@@ -362,8 +365,8 @@ void QmmpAudioEngine::run()
          mutex()->unlock ();
          return;
     }
-
     m_decoder = m_decoders.dequeue();
+    addOffset(); //offset
     m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
     mutex()->unlock();
     m_output->start();
@@ -406,6 +409,7 @@ void QmmpAudioEngine::run()
                 StateHandler::instance()->dispatch(Qmmp::Playing);
                 m_decoder->next();
                 m_output->seek(0); //reset counter
+                addOffset(); //offset
                 mutex()->unlock();
                 continue;
             }
@@ -414,6 +418,7 @@ void QmmpAudioEngine::run()
                 m_inputs.take(m_decoder)->deleteLater ();
                 delete m_decoder;
                 m_decoder = m_decoders.dequeue();
+                //m_seekTime = m_inputs.value(m_decoder)->offset();
                 m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
                 //use current output if possible
                 if(m_decoder->audioParameters() == m_ap)
@@ -425,6 +430,7 @@ void QmmpAudioEngine::run()
                     m_output->seek(0); //reset counter
                     mutex()->unlock();
                     sendMetaData();
+                    addOffset(); //offset
                     continue;
                 }
                 else
@@ -445,6 +451,7 @@ void QmmpAudioEngine::run()
                     {
                         m_output->start();
                         sendMetaData();
+                        addOffset(); //offset
                         continue;
                     }
                 }
@@ -522,6 +529,16 @@ void QmmpAudioEngine::flush(bool final)
         }
 
         m_output->recycler()->mutex()->unlock();
+    }
+}
+
+void QmmpAudioEngine::addOffset()
+{
+    qint64 pos = m_inputs.value(m_decoder)->offset();
+    if(pos > 0)
+    {
+        m_seekTime = pos;
+        m_output->seek(pos);
     }
 }
 

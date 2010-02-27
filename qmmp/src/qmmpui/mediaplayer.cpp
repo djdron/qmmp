@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -72,7 +72,7 @@ bool MediaPlayer::isRepeatable() const
     return m_repeat;
 }
 
-void MediaPlayer::play()
+void MediaPlayer::play(qint64 offset)
 {
     m_pl_manager->currentPlayList()->doCurrentVisibleRequest();
     if (m_core->state() == Qmmp::Paused)
@@ -96,7 +96,7 @@ void MediaPlayer::play()
         return;
     }
 
-    if (!m_core->play(s))
+    if (!m_core->play(s, FALSE, offset))
     {
         //find out the reason why playback failed
         switch ((int) m_core->state())

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,7 +64,7 @@ public slots:
     /*!
      * Starts playback.
      */
-    void play();
+    void play(qint64 offset = -1);
     /*!
      * Stops playback.
      */
