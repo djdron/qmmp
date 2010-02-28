@@ -310,6 +310,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     qApp->processEvents();
     m_model = selected;
     m_first = 0;
+    m_scroll = FALSE;
     recenterCurrent();
     updateList();
     connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
