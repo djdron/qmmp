@@ -28,6 +28,7 @@
 #include <taglib/flacfile.h>
 #include <taglib/xiphcomment.h>
 #include <taglib/tmap.h>
+#include <taglib/id3v2header.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -331,8 +332,17 @@ bool DecoderFLAC::initialize()
         qDebug("DecoderFLAC: creating FLAC__StreamDecoder");
         m_data->decoder = FLAC__stream_decoder_new ();
     }
-    char buf[22];
+    char buf[500];
+    //skip id3v2
+    data()->input->peek(buf, sizeof(buf));
+    ulong id3v2_size = findID3v2(buf, sizeof(buf));
+    if(id3v2_size)
+    {
+        qDebug("DecoderFLAC: skipping id3v2 tag (%lu bytes)", id3v2_size);
+        data()->input->seek(id3v2_size);
+    }
     data()->input->peek(buf,sizeof(buf));
+    data()->input->seek(0);
     qDebug("DecoderFLAC: setting callbacks");
     if(!memcmp(buf, "OggS", 4))
     {
@@ -533,4 +543,17 @@ void DecoderFLAC::next()
         StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
         m_totalBytes = 0;
     }
+}
+
+uint DecoderFLAC::findID3v2(char *data, ulong size) //retuns ID3v2 tag size
+{
+    if (size < 10)
+        return 0;
+    if (!memcmp(data, "ID3", 3))
+    {
+        TagLib::ByteVector byteVector(data, size);
+        TagLib::ID3v2::Header header(byteVector);
+        return header.completeTagSize();
+    }
+    return 0;
 }

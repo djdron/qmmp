@@ -81,6 +81,7 @@ private:
 
     // helper functions
     void deinit();
+    uint findID3v2(char *data, ulong size); //retuns ID3v2 tag size
 
     // FLAC Decoder
     FLAC__StreamDecoder *m_flacDecoder;
