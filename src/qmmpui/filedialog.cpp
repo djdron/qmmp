@@ -180,7 +180,7 @@ void FileDialog::registerExternalFactories()
         }
     }
 #ifndef Q_OS_WIN32
-#if (QT_VERSION < 0x040600)
+#if (QT_VERSION >= 0x040500 || QT_VERSION < 0x040600)
     //load native kde dialog
     QStringList paths;
     paths << "/usr/lib/kde4/kio_file.so";
