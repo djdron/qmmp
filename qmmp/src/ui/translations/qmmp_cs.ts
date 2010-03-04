@@ -115,57 +115,57 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip forward in playlist</source>
         <translation>Přejít vpřed v seznamu skladeb</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Skip backwards in playlist</source>
         <translation>Přejít zpět v seznamu skladeb</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="57"/>
         <source>Start playing current song</source>
         <translation>Spustit přehrávání aktuální skladby</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="58"/>
         <source>Pause current song</source>
         <translation>Pozastavit aktuální skladbu</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="59"/>
         <source>Pause if playing, play otherwise</source>
         <translation>Pozastavit, přehrává-li se, jinak přehrávat</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="60"/>
         <source>Stop current song</source>
         <translation>Zastavit aktuální skladbu</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
-        <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation>Nastavit hlasitot přehrávání (příklady: qmmp --volume20, qmmp --volume100)</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Display Jump to File dialog</source>
         <translation>Zobrazit dialog Přeskočit na soubor</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <source>Set playback volume (example: qmmp --volume 20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Show/hide application</source>
         <translation>Zobrazit/skrýt aplikaci</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Add File dialog</source>
         <translation>Zobrazit dialog Přidat soubor</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Display Add Directory dialog</source>
         <translation>Zobrazit dialog Přidat adresář</translation>
     </message>
@@ -1573,42 +1573,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="153"/>
+        <location filename="../qmmpstarter.cpp" line="161"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Použití: qmmp [volby] [soubory]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="154"/>
+        <location filename="../qmmpstarter.cpp" line="162"/>
         <source>Options:</source>
         <translation>Volby:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="160"/>
+        <location filename="../qmmpstarter.cpp" line="168"/>
         <source>Print version number and exit</source>
         <translation>Vypsat číslo verze a skončit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="161"/>
+        <location filename="../qmmpstarter.cpp" line="169"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Nápady, patche, hlášení chyb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="159"/>
+        <location filename="../qmmpstarter.cpp" line="167"/>
         <source>Display this text and exit</source>
         <translation>Zobrazit tento text a skončit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="166"/>
+        <location filename="../qmmpstarter.cpp" line="72"/>
+        <source>Unknown command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="174"/>
         <source>QMMP version:</source>
         <translation>Verze QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="156"/>
+        <location filename="../qmmpstarter.cpp" line="164"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Nevyprazdňovat seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="167"/>
+        <location filename="../qmmpstarter.cpp" line="175"/>
         <source>Qt version:</source>
         <translation>Verze Qt:</translation>
     </message>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -79,14 +79,14 @@ CommandLineManager::~CommandLineManager()
 {
 }
 
-void CommandLineManager::executeCommand(const QString& opt_str)
+void CommandLineManager::executeCommand(const QString& opt_str, const QStringList &args)
 {
     checkOptions();
     foreach(CommandLineOption *opt, *m_options)
     {
         if (opt->identify(opt_str))
         {
-            opt->executeCommand(opt_str, this);
+            opt->executeCommand(opt_str, args);
             return;
         }
     }

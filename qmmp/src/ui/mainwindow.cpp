@@ -526,47 +526,57 @@ void MainWindow::playPause()
         play();
 }
 
-bool MainWindow::processCommandArgs(const QStringList &slist,const QString& cwd)
+bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd)
 {
-    if (slist.count() > 0)
+    if(slist.isEmpty())
+        return TRUE;
+    QString paths;
+    foreach(QString arg, slist)
     {
-        QString str = slist[0];
-
-        if (str.startsWith("--enqueue") || str.startsWith("-e")) //check for "--enqueue" modifier
+        if(arg.startsWith("-"))
+            break;
+        else
+            paths.append(arg);
+    }
+    if(!paths.isEmpty())
+    {
+        QStringList full_path_list;
+        foreach(QString s, paths)
         {
-            if (slist.count() < 2)
-                return FALSE;
-            QStringList full_path_list;
-            for (int i = 1; i < slist.count(); ++i)
-            {
-                if ((slist.at(i).startsWith("/")) || (slist.at(i).contains("://")))   //is it absolute path or url?
-                    full_path_list << slist.at(i);
-                else
-                    full_path_list << cwd + "/" + slist.at(i);
-            }
-            m_pl_manager->currentPlayList()->addFileList(full_path_list); //TODO url support
-        }
-        else if (str.startsWith("-")) // is it a command?
-        {
-            if (CommandLineManager::hasOption(str))
-                m_generalHandler->executeCommand(str);
-            else if (m_option_manager->identify(str))
-                m_option_manager->executeCommand(str, this);
+            if ((s.startsWith("/")) || (s.contains("://")))   //is it absolute path or url?
+                full_path_list << s;
             else
-                return FALSE;
+                full_path_list << cwd + "/" + s;
         }
-        else// maybe it is a list of files or dirs
+        setFileList(full_path_list);
+        return TRUE;
+    }
+    QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
+    if(commands.isEmpty())
+        return FALSE;
+    foreach(QString key, commands.keys())
+    {
+        if(key == "--enqueue" || key == "-e")
         {
+            QStringList args = commands.value(key);
+            if(args.isEmpty())
+                return FALSE;
             QStringList full_path_list;
-            foreach(QString s,slist)
+            foreach(QString s, args)
             {
                 if ((s.startsWith("/")) || (s.contains("://")))   //is it absolute path or url?
                     full_path_list << s;
                 else
                     full_path_list << cwd + "/" + s;
             }
-            setFileList(full_path_list); //TODO url support
+            m_pl_manager->currentPlayList()->addFileList(full_path_list);
         }
+        else if (CommandLineManager::hasOption(key))
+            m_generalHandler->executeCommand(key, commands.value(key));
+        else if (m_option_manager->identify(key))
+            m_option_manager->executeCommand(key, commands.value(key), this);
+        else
+            return FALSE;
     }
     return TRUE;
 }

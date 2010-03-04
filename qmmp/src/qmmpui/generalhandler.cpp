@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -102,10 +102,10 @@ bool GeneralHandler::visibilityControl()
     return FALSE;
 }
 
-void GeneralHandler::executeCommand(const QString &opt_str)
+void GeneralHandler::executeCommand(const QString &opt_str, const QStringList &args)
 {
     if (CommandLineManager::hasOption(opt_str))
-        m_commandLineManager->executeCommand(opt_str);
+        m_commandLineManager->executeCommand(opt_str, args);
 }
 
 void GeneralHandler::addAction(QAction *action, MenuType type)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,30 +44,37 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     m_option_manager = new BuiltinCommandLineOption(this);
     QStringList tmp;
     for (int i = 1;i < argc;i++)
-        tmp << QString::fromLocal8Bit(argv[i]);
+        tmp << QString::fromLocal8Bit(argv[i]).trimmed();
 
     argString = tmp.join("\n");
+    QHash <QString, QStringList> commands = m_option_manager->splitArgs(tmp);
 
-    if (argString == "--help")
+    if(commands.keys().contains("--help"))
     {
         printUsage();
         exit(0);
     }
-    else if (argString == "--version")
+    if(commands.keys().contains("--version"))
     {
         printVersion();
         exit(0);
     }
 
-    if (argString.startsWith("-") && // command?
-            !(m_option_manager->identify(argString) ||
-              CommandLineManager::hasOption(argString) ||
-              argString.startsWith("--enqueue") ||
-              argString.startsWith("-e")))
+    if(!commands.isEmpty())
     {
-        qFatal("QMMP: Unknown command...");
-        exit(1);
+        foreach(QString arg, commands.keys())
+        {
+            if(!m_option_manager->identify(arg) &&
+               !CommandLineManager::hasOption(arg) &&
+               arg != "--enqueue" &&
+               arg != "-e")
+            {
+                cout << qPrintable(tr("Unknown command")) << endl;
+                exit(0);
+            }
+        }
     }
+
 #ifndef Q_OS_WIN32
     m_sock = new UnixDomainSocket(this);
     if (m_sock->bind(UDS_PATH))
@@ -97,7 +104,8 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
 
 QMMPStarter::~ QMMPStarter()
 {
-    if (mw) delete mw;
+    if (mw)
+        delete mw;
 }
 
 void QMMPStarter::startMainWindow()

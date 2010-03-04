@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -36,23 +36,18 @@ BuiltinCommandLineOption::~BuiltinCommandLineOption()
 // BuiltinCommandLineOption methods implementation
 bool BuiltinCommandLineOption::identify(const QString & str) const
 {
-    if (
-        str == QString("--next") ||
-        str == QString("--previous") ||
-        str == QString("--play") || str == QString("-p") ||
-        str == QString("--pause") || str == QString("-u") ||
-        str == QString("--play-pause") || str == QString("-t") ||
-        str == QString("--stop") || str == QString("-s") ||
-        str.startsWith("--volume") ||
-        str.startsWith("--jump-to-file") || str.startsWith("-j") ||
-        str.startsWith("--toggle-visibility") ||
-        str.startsWith("--add-file") ||
-        str.startsWith("--add-dir")
-    )
-    {
+    if (str == "--next" ||
+        str == "--previous" ||
+        str == "--play" || str == "-p" ||
+        str == "--pause" || str == "-u" ||
+        str == "--play-pause" || str == "-t" ||
+        str == "--stop" || str == "-s" ||
+        str == "--volume" ||
+        str == "--jump-to-file" || str == "-j" ||
+        str == "--toggle-visibility" ||
+        str == "--add-file" ||
+        str == "--add-dir")
         return TRUE;
-    }
-
     return FALSE;
 }
 
@@ -64,7 +59,7 @@ const QString BuiltinCommandLineOption::helpString() const
                "-t, --play-pause     "+tr("Pause if playing, play otherwise")+ "\n"
                "-s, --stop           "+tr("Stop current song")+ "\n" +
                "-j, --jump-to-file   "+tr("Display Jump to File dialog")+ "\n" +
-               "--volume             "+tr("Set playback volume(example: qmmp --volume20, qmmp --volume100)")+ "\n"
+               "--volume <0..100>    "+tr("Set playback volume (example: qmmp --volume 20") + "\n"
                "--next               "+tr("Skip forward in playlist")+ "\n" +
                "--previous           "+tr("Skip backwards in playlist")+"\n" +
                "--toggle-visibility  "+tr("Show/hide application")+ "\n" +
@@ -73,7 +68,8 @@ const QString BuiltinCommandLineOption::helpString() const
            );
 }
 
-void BuiltinCommandLineOption::executeCommand(const QString &option_string, MainWindow *mw)
+void BuiltinCommandLineOption::executeCommand(const QString &option_string,
+                                              const QStringList &args, MainWindow *mw)
 {
     if (option_string == "--play" || option_string == "-p")
     {
@@ -119,21 +115,24 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string, Main
     {
         mw->addDir();
     }
-    else if (option_string.startsWith("--volume"))
+    else if (option_string == "--volume" && !args.isEmpty())
     {
-        QString vol_str(option_string);
-        vol_str.remove("--volume");
         bool ok = FALSE;
-        int volume = vol_str.toUInt(&ok);
+        int volume = args.at(0).toInt(&ok);
         if (ok)
-        {
             mw->soundCore()->setVolume(volume,volume);
-        }
     }
 }
 
-const QString BuiltinCommandLineOption::name() const
+QHash <QString, QStringList> BuiltinCommandLineOption::splitArgs(const QStringList &args) const
 {
-    return "BuiltinCommandLineOption";
+    QHash <QString, QStringList> commands;
+    foreach(QString arg, args)
+    {
+        if(arg.startsWith("-") || arg.startsWith("--"))
+            commands.insert(arg, QStringList());
+        else if(!commands.isEmpty())
+            commands[commands.keys().last()] << arg;
+    }
+    return commands;
 }
-

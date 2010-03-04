@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,7 @@
 
 #include <QString>
 #include <QObject>
-
+#include <QStringList>
 #include <qmmpui/commandlineoption.h>
 #include <qmmpui/commandlinemanager.h>
 
@@ -36,7 +36,7 @@ public:
     virtual bool identify(const QString& opt_str)const;
     virtual const QString name()const;
     virtual const QString helpString()const;
-    virtual void executeCommand(const QString& opt_str, CommandLineManager* clm);
+    virtual void executeCommand(const QString& opt_str, const QStringList &args);
     virtual QTranslator *createTranslator(QObject *parent);
 };
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include <QMap>
 #include <QList>
 #include <QPointer>
+#include <QStringList>
 
 class QAction;
 class QMenu;
@@ -76,8 +77,9 @@ public:
     /*!
      * Executes command by command line plugins
      * @param opt_str Command line option string
+     * @param args Command arguments
      */
-    void executeCommand(const QString &opt_str);
+    void executeCommand(const QString &opt_str, const QStringList &args = QStringList());
     /*!
      * Adds the newly created action to the menu with type \b type.
      * Menu with type \b type should be created first.

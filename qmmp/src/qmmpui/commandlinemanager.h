@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -43,8 +43,9 @@ public:
     /*!
      * Executes command \b opt_str
      * @param opt_str Command line option string
+     * @param args Command arguments
      */
-    void executeCommand(const QString& opt_str);
+    void executeCommand(const QString& opt_str, const QStringList &args = QStringList());
     /*!
      * Return \b true if command \b opt_str is supported, otherwise returns \b false
      */
