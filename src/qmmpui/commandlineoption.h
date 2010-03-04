@@ -25,6 +25,7 @@ class CommandLineManager;
 class QTranslator;
 class QString;
 class QObject;
+class QStringList;
 
 /*! @brief Abstract base class of the command line plugins.
  * @author Vladimir Kuznetsov <vovanec@gmail.ru>
@@ -47,8 +48,10 @@ public:
     virtual const QString helpString()const = 0;
     /*!
      * Parses \b opt_str args(if needed), executes command.
+     * @param opt_str Command to execute
+     * @param args Command arguments
      */
-    virtual void executeCommand(const QString& opt_str, CommandLineManager* clm) = 0;
+    virtual void executeCommand(const QString &opt_str, const QStringList &args) = 0;
     /*!
      * Creates translator with parent object \b parent
      */

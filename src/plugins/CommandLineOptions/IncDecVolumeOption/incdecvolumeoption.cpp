@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -46,10 +46,9 @@ const QString IncDecVolumeCommandLineOption::helpString() const
             );
 }
 
-
-void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, CommandLineManager* clm)
+void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, const QStringList &args)
 {
-    Q_UNUSED(clm);
+    Q_UNUSED(args);
     SoundCore *core = SoundCore::instance();
     int volume = qMax(core->leftVolume(), core->rightVolume());
     int balance = 0;

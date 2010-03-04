@@ -115,57 +115,57 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="57"/>
         <source>Start playing current song</source>
         <translation>Aktuális szám lejátszásának indítása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="58"/>
         <source>Pause current song</source>
         <translation>Aktuális szám szüneteltetése</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="59"/>
         <source>Pause if playing, play otherwise</source>
         <translation>Szünet ha lejátszás van, különben lejátszás</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="60"/>
         <source>Stop current song</source>
         <translation>Aktuális szám megállítása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Display Jump to File dialog</source>
         <translation>Számra ugrás ablak mutatása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
-        <source>Set playback volume(example: qmmp --volume20, qmmp --volume100)</source>
-        <translation>Lejátszási hangerő beállítása(pl.: qmmp --volume20, qmmp --volume100)</translation>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <source>Set playback volume (example: qmmp --volume 20</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip forward in playlist</source>
         <translation>Lejátszási lista következő számának kihagyása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Skip backwards in playlist</source>
         <translation>Lejátszási lista előző számainak kihagyása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Show/hide application</source>
         <translation>Alkalmazás mutatása/elrejtése</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Add File dialog</source>
         <translation>Fájl hozzáadása ablak mutatása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="72"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Display Add Directory dialog</source>
         <translation>Könyvtár hozzáadása ablak mutatása</translation>
     </message>
@@ -1573,42 +1573,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="153"/>
+        <location filename="../qmmpstarter.cpp" line="72"/>
+        <source>Unknown command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="161"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Használat: qmmp [opciók] [fájlok]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="154"/>
+        <location filename="../qmmpstarter.cpp" line="162"/>
         <source>Options:</source>
         <translation>Opciók:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="156"/>
+        <location filename="../qmmpstarter.cpp" line="164"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Ne töröld a lejátszási listát</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="159"/>
+        <location filename="../qmmpstarter.cpp" line="167"/>
         <source>Display this text and exit</source>
         <translation>Mutasd ezt a szöveget, majd lépj ki</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="160"/>
+        <location filename="../qmmpstarter.cpp" line="168"/>
         <source>Print version number and exit</source>
         <translation>Mutasd a verziószámot, majd lépj ki</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="161"/>
+        <location filename="../qmmpstarter.cpp" line="169"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Ötleteket, foltokat, hibajelentéseket küld a forkotov02@hotmail.ru címre</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="166"/>
+        <location filename="../qmmpstarter.cpp" line="174"/>
         <source>QMMP version:</source>
         <translation>QMMP verzió:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="167"/>
+        <location filename="../qmmpstarter.cpp" line="175"/>
         <source>Qt version:</source>
         <translation>Qt verzió:</translation>
     </message>

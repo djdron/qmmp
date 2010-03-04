@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,6 +21,7 @@
 #define BUILTINCOMMANDLINEOPTION_H
 
 #include <QObject>
+#include <QHash>
 
 class MainWindow;
 
@@ -41,9 +42,8 @@ public:
 
     bool identify(const QString& str)const;
     const QString helpString()const;
-    void executeCommand(const QString& option,MainWindow* = NULL);
-    const QString name()const;
-
+    void executeCommand(const QString& option, const QStringList &args, MainWindow* = NULL);
+    QHash <QString, QStringList> splitArgs(const QStringList &args) const;
 };
 
 #endif
