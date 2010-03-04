@@ -530,7 +530,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd
 {
     if(slist.isEmpty())
         return TRUE;
-    QString paths;
+    QStringList paths;
     foreach(QString arg, slist)
     {
         if(arg.startsWith("-"))
