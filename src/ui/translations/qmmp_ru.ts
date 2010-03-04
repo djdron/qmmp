@@ -1600,7 +1600,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="72"/>
         <source>Unknown command</source>
-        <translation type="unfinished"></translation>
+        <translation>Неизвестная команда</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="174"/>

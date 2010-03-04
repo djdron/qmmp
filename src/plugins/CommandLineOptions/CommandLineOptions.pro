@@ -1,2 +1,4 @@
 TEMPLATE = subdirs
-SUBDIRS = IncDecVolumeOption
+SUBDIRS = IncDecVolumeOption \
+          SeekOption
+
