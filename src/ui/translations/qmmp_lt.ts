@@ -1442,103 +1442,112 @@
         <translation>Iššokančios informacijos nustatymai</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="48"/>
-        <location filename="../forms/popupsettings.ui" line="78"/>
-        <source>0</source>
+        <location filename="../forms/popupsettings.ui" line="75"/>
+        <source>Show cover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="55"/>
+        <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
         <translation>Permatomumas</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="115"/>
+        <location filename="../forms/popupsettings.ui" line="145"/>
+        <source>Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="178"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
         <translation>Nuotraukos dydis</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="122"/>
+        <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
         <translation>Šablonas</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="151"/>
+        <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
         <translation>Ištrinti</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="158"/>
+        <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
         <translation>Įtraukti</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="58"/>
+        <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
         <translation>Atlikėjas</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="59"/>
+        <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
         <translation>Albumas</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="60"/>
+        <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
         <translation>Pavadinimas</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="61"/>
+        <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
         <translation>Takelio numeris</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="62"/>
+        <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
         <translation>Dviejų skaičių takelio numeris</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="63"/>
+        <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
         <translation>Žanras</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="64"/>
+        <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
         <translation>Komentaras</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="65"/>
+        <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
         <translation type="unfinished">Autorius</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="66"/>
+        <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
         <translation>Ilgis</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="67"/>
+        <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
         <translation>Disko numeris</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="68"/>
+        <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
         <translation>Bylos pavadinimas</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="69"/>
+        <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
         <translation>Bylos kelias</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="70"/>
+        <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
         <translation>Metai</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="71"/>
+        <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
         <translation>Būklė</translation>
     </message>

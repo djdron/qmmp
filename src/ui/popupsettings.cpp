@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,6 +33,8 @@ PopupSettings::PopupSettings(QWidget *parent)
     ui.transparencySlider->setValue(100 - settings.value("popup_opacity", 1.0).toDouble()*100);
     ui.coverSizeSlider->setValue(settings.value ("popup_cover_size", 48).toInt());
     ui.textEdit->setPlainText(settings.value ("popup_template", DEFAULT_TEMPLATE).toString());
+    ui.delaySpinBox->setValue(settings.value("popup_delay", 2500).toInt());
+    ui.coverCheckBox->setChecked(settings.value("popup_show_cover",TRUE).toBool());
     settings.endGroup();
     createMenu();
 }
@@ -48,6 +50,8 @@ void PopupSettings::accept()
     settings.setValue("popup_opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
     settings.setValue("popup_cover_size", ui.coverSizeSlider->value());
     settings.setValue("popup_template", ui.textEdit->toPlainText());
+    settings.setValue("popup_delay",  ui.delaySpinBox->value());
+    settings.setValue("popup_show_cover", ui.coverCheckBox->isChecked());
     settings.endGroup();
     QDialog::accept();
 }

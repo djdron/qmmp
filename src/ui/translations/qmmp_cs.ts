@@ -1441,103 +1441,112 @@
         <translation>Nastavení informací ve vyskakovacím okně</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="48"/>
-        <location filename="../forms/popupsettings.ui" line="78"/>
-        <source>0</source>
-        <translation>0</translation>
+        <location filename="../forms/popupsettings.ui" line="75"/>
+        <source>Show cover</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="55"/>
+        <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
         <translation>Průhlednost:</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="115"/>
+        <location filename="../forms/popupsettings.ui" line="145"/>
+        <source>Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="178"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
         <translation>Velikost obalu:</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="122"/>
+        <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
         <translation>Šablona</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="151"/>
+        <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
         <translation>Původní</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="158"/>
+        <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
         <translation>Vložit</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="58"/>
+        <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
         <translation>Umělec</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="59"/>
+        <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="60"/>
+        <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
         <translation>Název</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="61"/>
+        <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
         <translation>Číslo stopy</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="62"/>
+        <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
         <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="63"/>
+        <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
         <translation>Žánr</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="64"/>
+        <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
         <translation>Poznámka</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="65"/>
+        <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
         <translation>Skladatel</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="66"/>
+        <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
         <translation>Délka</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="67"/>
+        <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
         <translation>Číslo disku</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="68"/>
+        <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
         <translation>Název souboru</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="69"/>
+        <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
         <translation>Cesta k souboru</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="70"/>
+        <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="71"/>
+        <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
         <translation>Stav</translation>
     </message>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -246,19 +246,24 @@ void ListWidget::wheelEvent (QWheelEvent *e)
 
 bool ListWidget::event (QEvent *e)
 {
-    if(e->type() == QEvent::ToolTip)
+    if(m_popupWidget)
     {
-        QHelpEvent *helpEvent = (QHelpEvent *) e;
-        int row = rowAt(helpEvent->y());
-        if(row < 0)
-            return QWidget::event(e);
-        e->accept();
-        if(m_popupWidget)
-            m_popupWidget->popup(m_model->item(row), helpEvent->globalPos() + QPoint(15,10));
-        return TRUE;
+        if(e->type() == QEvent::ToolTip)
+        {
+            QHelpEvent *helpEvent = (QHelpEvent *) e;
+            int row = rowAt(helpEvent->y());
+            if(row < 0)
+            {
+                m_popupWidget->deactivate();
+                return QWidget::event(e);
+            }
+            e->accept();
+            m_popupWidget->prepare(m_model->item(row), helpEvent->globalPos());
+            return TRUE;
+        }
+        else if(e->type() == QEvent::Leave)
+            m_popupWidget->deactivate();
     }
-    else if(e->type() == QEvent::Leave && m_popupWidget)
-        m_popupWidget->hide();
     return QWidget::event(e);
 }
 
@@ -411,7 +416,7 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
                 return;
 
             if (row + 1 == m_first + m_rows && m_scroll_direction == DOWN)
-                (m_first + m_rows < m_model->count() ) ? m_first ++ : m_first;
+                (m_first + m_rows < m_model->count()) ? m_first ++ : m_first;
             else if (row == m_first && m_scroll_direction == TOP)
                 (m_first > 0)  ? m_first -- : 0;
 
@@ -421,8 +426,12 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
             m_pressed_row = row;
         }
     }
-    else if(e->buttons() == Qt::NoButton && m_popupWidget && m_popupWidget->isVisible())
-        m_popupWidget->move(e->globalPos() + QPoint(15,10));
+    else if(m_popupWidget)
+    {
+        int row = rowAt(e->y());
+        if(row < 0 || m_popupWidget->item() != m_model->item(row))
+            m_popupWidget->deactivate();
+    }
 }
 
 void ListWidget::mouseReleaseEvent(QMouseEvent *e)
@@ -445,7 +454,7 @@ int ListWidget::rowAt(int y) const
     if (y <= 14 && y >= 2 && m_model->count())
         return m_first;
 
-    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first) - 1; ++i )
+    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first) - 1; ++i)
     {
         if ((y >= 14 + i * m_metrics->ascent ()) && (y <= 14 + (i+1) * m_metrics->ascent()))
             return m_first + i + 1;

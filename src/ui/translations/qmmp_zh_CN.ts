@@ -1441,103 +1441,112 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="48"/>
-        <location filename="../forms/popupsettings.ui" line="78"/>
-        <source>0</source>
-        <translation type="unfinished">0</translation>
-    </message>
-    <message>
-        <location filename="../forms/popupsettings.ui" line="55"/>
-        <source>Transparency:</source>
+        <location filename="../forms/popupsettings.ui" line="75"/>
+        <source>Show cover</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="145"/>
+        <source>Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="178"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="122"/>
+        <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="151"/>
+        <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="158"/>
+        <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="58"/>
+        <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
         <translation type="unfinished">艺术家</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="59"/>
+        <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
         <translation type="unfinished">专辑</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="60"/>
+        <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
         <translation type="unfinished">标题</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="61"/>
+        <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="62"/>
+        <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="63"/>
+        <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
         <translation type="unfinished">流派</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="64"/>
+        <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
         <translation type="unfinished">备注</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="65"/>
+        <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="66"/>
+        <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="67"/>
+        <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="68"/>
+        <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="69"/>
+        <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="70"/>
+        <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
         <translation type="unfinished">年代</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="71"/>
+        <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
         <translation type="unfinished"></translation>
     </message>

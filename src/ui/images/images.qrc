@@ -8,5 +8,6 @@
         <file>network.png</file>
         <file>logo-qmmp.png</file>
         <file>replaygain.png</file>
+        <file>ui_no_cover.png</file>
     </qresource>
 </RCC>

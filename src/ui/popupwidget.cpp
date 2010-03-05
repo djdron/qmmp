@@ -34,17 +34,14 @@
 using namespace PlayListPopup;
 
 PopupWidget::PopupWidget(QWidget *parent)
-        : QFrame(parent)
+        : QWidget(parent)
 {
-    setWindowFlags(Qt::X11BypassWindowManagerHint |
-                   Qt::WindowStaysOnTopHint | Qt::Dialog | Qt::FramelessWindowHint);
-    setFrameStyle(QFrame::Box | QFrame::Plain);
+    setWindowFlags(Qt::X11BypassWindowManagerHint | Qt::Dialog);
+    //setFrameStyle(QFrame::Box | QFrame::Plain);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
-    m_lastItem = 0;
+    m_item = 0;
     QHBoxLayout *hlayout = new QHBoxLayout(this); //layout
     m_pixlabel = new QLabel(this);
-    m_pixlabel->setPixmap(QPixmap(":/32x32/qmmp.png"));
-    m_pixlabel->setFixedSize(32,32);
     hlayout->addWidget(m_pixlabel);
 
     m_label1 = new QLabel(this);
@@ -56,12 +53,19 @@ PopupWidget::PopupWidget(QWidget *parent)
     setWindowOpacity(settings.value("popup_opacity", 1.0).toDouble());
     m_coverSize = settings.value("popup_cover_size", 48).toInt();
     m_template = settings.value("popup_template",DEFAULT_TEMPLATE).toString();
+    int delay = settings.value("popup_delay", 2500).toInt();
+    bool show_cover = settings.value("popup_show_cover",TRUE).toBool();
     settings.endGroup();
     //timer
     m_timer = new QTimer(this);
-    m_timer->setInterval(10000);
+    m_timer->setInterval(delay);
     m_timer->setSingleShot (TRUE);
-    connect(m_timer, SIGNAL(timeout ()), SLOT(hide()));
+    if(show_cover)
+        connect(m_timer, SIGNAL(timeout ()), SLOT(loadCover()));
+    else
+        m_pixlabel->hide();
+    connect(m_timer, SIGNAL(timeout ()), SLOT(show()));
+    setMouseTracking(TRUE);
 }
 
 PopupWidget::~PopupWidget()
@@ -69,40 +73,54 @@ PopupWidget::~PopupWidget()
 
 void PopupWidget::mousePressEvent (QMouseEvent *)
 {
-    deleteLater();
+    hide();
 }
 
-void PopupWidget::popup(PlayListItem *item, QPoint pos)
+void PopupWidget::mouseMoveEvent (QMouseEvent *)
 {
-    if(m_lastItem == item)
+    hide();
+}
+
+void PopupWidget::prepare(PlayListItem *item, QPoint pos)
+{
+    pos += QPoint(15,10);
+
+    m_item = item;
+    hide();
+    if(!item)
     {
-        show();
-        m_timer->start();
+        m_timer->stop();
         return;
     }
-    m_timer->stop();
-    m_lastItem = item;
     move(pos);
     QString title = m_template;
     MetaDataFormatter f(title);
     title = f.parse(item);
-
     m_label1->setText(title);
-
-    QPixmap pix = MetaDataManager::instance()->getCover(item->url());
-    if(!pix.isNull())
-    {
-        m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
-        m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
-    }
-    else
-    {
-        m_pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
-        m_pixlabel->setFixedSize(32,32);
-    }
     qApp->processEvents();
-    resize(sizeHint());
+    updateGeometry ();
     qApp->processEvents();
-    show();
     m_timer->start();
+}
+
+void PopupWidget::deactivate()
+{
+    m_timer->stop();
+    hide();
+}
+
+PlayListItem *PopupWidget::item()
+{
+    return m_item;
+}
+
+void PopupWidget::loadCover()
+{
+    if(!m_item)
+        return;
+    QPixmap pix = MetaDataManager::instance()->getCover(m_item->url());
+    if(pix.isNull())
+        pix = QPixmap(":/ui_no_cover.png");
+    m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
+    m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
 }

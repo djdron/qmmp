@@ -1441,103 +1441,112 @@
         <translation>Налаштування спливаючої інформації</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="48"/>
-        <location filename="../forms/popupsettings.ui" line="78"/>
-        <source>0</source>
-        <translation></translation>
+        <location filename="../forms/popupsettings.ui" line="75"/>
+        <source>Show cover</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="55"/>
+        <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
         <translation>Прозорість:</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="115"/>
+        <location filename="../forms/popupsettings.ui" line="145"/>
+        <source>Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="178"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
         <translation>Розмір обкладинки:</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="122"/>
+        <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
         <translation>Шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="151"/>
+        <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
         <translation>Скинути</translation>
     </message>
     <message>
-        <location filename="../forms/popupsettings.ui" line="158"/>
+        <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
         <translation>Вставити</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="58"/>
+        <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
         <translation>Виконавець</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="59"/>
+        <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="60"/>
+        <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
         <translation>Назва</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="61"/>
+        <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
         <translation>Номер треку</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="62"/>
+        <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
         <translation>2- розрядний номер трека</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="63"/>
+        <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="64"/>
+        <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="65"/>
+        <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="66"/>
+        <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
         <translation>Тривалість</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="67"/>
+        <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
         <translation>Номер диску</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="68"/>
+        <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
         <translation>Ім&apos;я файлу</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="69"/>
+        <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
         <translation>Шлях файлу</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="70"/>
+        <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
         <translation>Рік</translation>
     </message>
     <message>
-        <location filename="../popupsettings.cpp" line="71"/>
+        <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
         <translation>Умова</translation>
     </message>
