@@ -152,7 +152,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Set playback volume (example: qmmp --volume 20</source>
-        <translation type="unfinished"></translation>
+        <translation>Встановити гучність (приклад: qmmp --volume 20)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
@@ -1600,7 +1600,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="72"/>
         <source>Unknown command</source>
-        <translation type="unfinished"></translation>
+        <translation>Невідома команда</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="174"/>
