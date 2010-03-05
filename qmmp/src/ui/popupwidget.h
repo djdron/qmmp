@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,7 +21,6 @@
 #define POPUPWIDGET_H
 
 #include <QWidget>
-#include <QFrame>
 
 #define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b>\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
 
@@ -33,7 +32,7 @@ namespace PlayListPopup {
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class PopupWidget : public QFrame
+class PopupWidget : public QWidget
 {
     Q_OBJECT
 public:
@@ -41,10 +40,16 @@ public:
 
     ~PopupWidget();
 
-    void popup(PlayListItem *item, QPoint pos);
+    void prepare(PlayListItem *item, QPoint pos);
+    void deactivate();
+    PlayListItem *item();
 
 protected:
     virtual void mousePressEvent (QMouseEvent *);
+    virtual void mouseMoveEvent (QMouseEvent *);
+
+private slots:
+    void loadCover();
 
 private:
     QTimer *m_timer;
@@ -53,7 +58,7 @@ private:
     QString m_template;
     uint m_pos;
     int m_coverSize;
-    PlayListItem *m_lastItem;
+    PlayListItem *m_item;
 
 };
 }
