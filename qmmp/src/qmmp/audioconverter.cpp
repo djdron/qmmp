@@ -63,16 +63,16 @@ void AudioConverter::applyEffect(Buffer *b)
             s8_to_s16((qint8 *)b->data, (qint16 *) out, b->nbytes);
             delete [] b->data;
             b->data = out;
-            b->nbytes = b->nbytes*2;
+            b->nbytes <<= 1;
             break;
         }
     case Qmmp::PCM_S24LE:
         s24_to_s16((qint32 *)b->data, (qint16 *)b->data, b->nbytes/4);
-        b->nbytes /= 2;
+        b->nbytes >>= 1;
         break;
     case Qmmp::PCM_S32LE:
         s32_to_s16((qint32 *)b->data, (qint16 *)b->data, b->nbytes/4);
-        b->nbytes /= 2;
+        b->nbytes >>= 1;
         break;
     default:
         ;
