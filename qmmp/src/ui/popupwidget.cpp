@@ -36,7 +36,7 @@ using namespace PlayListPopup;
 PopupWidget::PopupWidget(QWidget *parent)
         : QWidget(parent)
 {
-    setWindowFlags(Qt::X11BypassWindowManagerHint | Qt::Dialog);
+    setWindowFlags(Qt::X11BypassWindowManagerHint | Qt::Dialog | Qt::FramelessWindowHint);
     //setFrameStyle(QFrame::Box | QFrame::Plain);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     m_item = 0;
