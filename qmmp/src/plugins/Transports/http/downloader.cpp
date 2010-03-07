@@ -235,7 +235,9 @@ void Downloader::run()
     //proxy
     if (QmmpSettings::instance()->isProxyEnabled())
         curl_easy_setopt(m_handle, CURLOPT_PROXY,
-                         strdup((QmmpSettings::instance()->proxy().toString().toLatin1().constData())));
+                         strdup((QmmpSettings::instance()->proxy().host() + ":" +
+                                 QString("%1").arg(QmmpSettings::instance()->proxy().port())).
+                                toLatin1 ().constData ()));
     if (QmmpSettings::instance()->useProxyAuth())
         curl_easy_setopt(m_handle, CURLOPT_PROXYUSERPWD,
                          strdup((QmmpSettings::instance()->proxy().userName() + ":" +
