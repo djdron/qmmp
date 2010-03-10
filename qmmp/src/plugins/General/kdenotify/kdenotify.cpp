@@ -32,17 +32,26 @@
 #include <qmmp/metadatamanager.h>
 #include "kdenotify.h"
 
-KdeNotify::KdeNotify(QObject *parent) : General(parent)
+KdeNotify::KdeNotify(QObject *parent) : General(parent),m_UseFreedesktopSpec(false)
 {
     notifier = new QDBusInterface("org.kde.VisualNotifications",
                                   "/VisualNotifications", "org.kde.VisualNotifications");
     if(notifier->lastError().type() != QDBusError::NoError)
     {
-        qWarning() << "KdeNotify: unable to create dbus interface(" +
-                notifier->lastError().message() + ")";
-        return;
-    }
+        delete(notifier);
+        qWarning() << "KdeNotify: unable to create dbus interface."
+                   << "Have you got KDE SC 4.4 or newer? Lets try...";
 
+        notifier = new QDBusInterface("org.freedesktop.Notifications",
+                                      "/org/freedesktop/Notifications","org.freedesktop.Notifications");
+        if(notifier->lastError().type() != QDBusError::NoError)
+        {
+            qWarning() << "KdeNotify: Can't create interface. Sorry.";
+            return;
+        }
+        m_UseFreedesktopSpec = true;
+    }
+    qWarning() << "KdeNotify: DBus interfece created successfully.";
     m_ConfigDir = QFileInfo(Qmmp::configFile()).absoluteDir().path();
 
     QSettings settings(Qmmp::configFile(),QSettings::IniFormat);
@@ -92,7 +101,8 @@ QList<QVariant> KdeNotify::prepareNotification()
 
     args.append("Qmmp"); //app-name
     args.append(0U); //replaces-id
-    args.append(""); //event-id
+    if(!m_UseFreedesktopSpec)
+        args.append(""); //event-id
     args.append(m_ConfigDir + "/app_icon.png"); //app-icon(path to icon on disk)
     args.append(tr("Qmmp now playing:")); //summary (notification title)
 

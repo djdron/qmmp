@@ -42,7 +42,7 @@ private:
     QString m_ConfigDir;
     int m_NotifyDelay;
     bool m_ShowCovers;
-
+    bool m_UseFreedesktopSpec;
 private slots:
     void showMetaData();
     QString totalTimeString();

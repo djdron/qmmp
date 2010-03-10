@@ -4,17 +4,17 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <location filename="../kdenotify.cpp" line="97"/>
+        <location filename="../kdenotify.cpp" line="107"/>
         <source>Qmmp now playing:</source>
         <translation>Відтворюється:</translation>
     </message>
     <message>
-        <location filename="../kdenotify.cpp" line="107"/>
+        <location filename="../kdenotify.cpp" line="117"/>
         <source>by </source>
         <translation>виконавець</translation>
     </message>
     <message>
-        <location filename="../kdenotify.cpp" line="112"/>
+        <location filename="../kdenotify.cpp" line="122"/>
         <source>on </source>
         <translation>на</translation>
     </message>
