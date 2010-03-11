@@ -68,7 +68,7 @@ PopupWidget::PopupWidget(QWidget *parent)
     //timer
     m_timer = new QTimer(this);
     m_timer->setInterval(delay);
-    m_timer->setSingleShot (TRUE);
+    m_timer->setSingleShot (true);
     connect(m_timer, SIGNAL(timeout ()), SLOT(deleteLater()));
 }
 

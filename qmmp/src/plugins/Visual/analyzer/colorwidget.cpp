@@ -23,7 +23,7 @@
 ColorWidget::ColorWidget(QWidget *parent) : QFrame(parent)
 {
     setFrameShape(QFrame::Box);
-    setAutoFillBackground(TRUE);
+    setAutoFillBackground(true);
 }
 
 

@@ -32,7 +32,7 @@
 
 Visual::Visual(QWidget *parent) : QWidget(parent)
 {
-    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    setAttribute(Qt::WA_DeleteOnClose, true);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     m_decoder = 0;
     m_output = 0;

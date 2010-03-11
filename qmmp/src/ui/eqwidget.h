@@ -53,7 +53,7 @@ public:
     * necessary for auto-load presets
     */
     void loadPreset(const QString &name);
-    void setMimimalMode(bool b = TRUE);
+    void setMimimalMode(bool b = true);
 
 signals:
     void valueChanged();

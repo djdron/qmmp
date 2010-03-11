@@ -215,25 +215,25 @@ bool Dock::isDocked (QWidget* mv, QWidget* st)
     int nx = mv->x() - st->x();
     int ny = abs (mv->y() - st->y() + mv->height());
     if (ny < 2 && nx > -mv->width() && nx < st->width()) //above
-        return TRUE;
+        return true;
 
     /***********/
     nx = mv->x() - st->x();
     ny = abs (mv->y() - st->y() - st->height());
     if (ny < 2 && nx > -mv->width() && nx < st->width()) //near
-        return TRUE;
+        return true;
 
     /**************/
     nx = abs (mv->x() - st->x() + mv->width());
     ny = mv->y() - st->y();
     if (nx < 2 && ny > -mv->height() && ny < st->height())   //left
-        return TRUE;
+        return true;
 
     /*****************/
     nx = abs (mv->x() - st->x() - st->width());
     ny = mv->y() - st->y();
     if (nx < 2 && ny > -mv->height() && ny < st->height())   //right
-        return TRUE;
+        return true;
     return FALSE;
 }
 

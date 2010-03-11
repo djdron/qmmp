@@ -40,7 +40,7 @@ TimeIndicator::TimeIndicator (QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     m_timer = new QTimer(this);
     m_timer->setInterval(125);
-    m_timer->setSingleShot (TRUE);
+    m_timer->setSingleShot (true);
     connect(m_timer, SIGNAL(timeout()),SLOT(reset()));
 }
 

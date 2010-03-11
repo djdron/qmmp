@@ -59,7 +59,7 @@ private:
     QPixmap m_pixmap;
     MainWindow *mw;
     qint64 convert(qint64);   // value = convert(position);
-    void draw(bool pressed = TRUE);
+    void draw(bool pressed = true);
 
 protected:
     void mousePressEvent(QMouseEvent*);

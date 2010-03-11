@@ -61,7 +61,7 @@ public:
     bool isShuffle()const;
     void setIsRepeatable(bool);
     void setIsShuffle(bool);
-    void setMinimalMode(bool b = TRUE);
+    void setMinimalMode(bool b = true);
     void setActive(bool b);
 
 public slots:

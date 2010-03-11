@@ -50,7 +50,7 @@ void OutputNull::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 
 bool OutputNull::initialize()
 {
-    return TRUE;
+    return true;
 }
 
 

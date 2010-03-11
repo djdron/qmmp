@@ -29,8 +29,8 @@ const GeneralProperties HotkeyFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("Global Hotkey Plugin");
     properties.shortName = "hotkey";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     properties.visibilityControl = FALSE;
     return properties;
 }

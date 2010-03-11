@@ -54,18 +54,18 @@ PopupWidget::PopupWidget(QWidget *parent)
     m_coverSize = settings.value("popup_cover_size", 48).toInt();
     m_template = settings.value("popup_template",DEFAULT_TEMPLATE).toString();
     int delay = settings.value("popup_delay", 2500).toInt();
-    bool show_cover = settings.value("popup_show_cover",TRUE).toBool();
+    bool show_cover = settings.value("popup_show_cover",true).toBool();
     settings.endGroup();
     //timer
     m_timer = new QTimer(this);
     m_timer->setInterval(delay);
-    m_timer->setSingleShot (TRUE);
+    m_timer->setSingleShot (true);
     if(show_cover)
         connect(m_timer, SIGNAL(timeout ()), SLOT(loadCover()));
     else
         m_pixlabel->hide();
     connect(m_timer, SIGNAL(timeout ()), SLOT(show()));
-    setMouseTracking(TRUE);
+    setMouseTracking(true);
 }
 
 PopupWidget::~PopupWidget()

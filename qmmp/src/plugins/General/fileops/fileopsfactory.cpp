@@ -29,8 +29,8 @@ const GeneralProperties FileOpsFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("File Operations Plugin");
     properties.shortName = "fileops";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     properties.visibilityControl = FALSE;
     return properties;
 }

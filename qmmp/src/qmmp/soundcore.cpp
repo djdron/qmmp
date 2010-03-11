@@ -295,7 +295,7 @@ bool SoundCore::enqueue(InputSource *s)
             m_pendingEngine = 0;
         }
     }
-    return TRUE;
+    return true;
 }
 
 void SoundCore::startPendingEngine()

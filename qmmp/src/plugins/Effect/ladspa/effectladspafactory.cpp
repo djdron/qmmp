@@ -29,8 +29,8 @@ const EffectProperties EffectLADSPAFactory::properties() const
     EffectProperties properties;
     properties.name = tr("LADSPA Plugin");
     properties.shortName = "ladspa";
-    properties.hasSettings = TRUE;
-    properties.hasAbout = TRUE;
+    properties.hasSettings = true;
+    properties.hasAbout = true;
     return properties;
 }
 

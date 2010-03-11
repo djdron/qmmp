@@ -271,7 +271,7 @@ void HotkeyManager::ensureModifiers()
         m_meta_mask = Mod4Mask;
     }
 
-    m_haveMods = TRUE;
+    m_haveMods = true;
 }
 
 QList<long> HotkeyManager::ignModifiersList()

@@ -79,7 +79,7 @@ void OutputPulseAudio::configure(quint32 freq, int chan, Qmmp::AudioFormat forma
 
 bool OutputPulseAudio::initialize()
 {
-    return TRUE;
+    return true;
 }
 
 

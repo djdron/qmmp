@@ -89,7 +89,7 @@ CUEParser::CUEParser(const QString &fileName)
                     m_infoList.last().setLength(0);
             }
             file_path = QFileInfo(fileName).dir().filePath(words[1]);
-            new_file = TRUE;
+            new_file = true;
         }
 
         else if (words[0] == "PERFORMER")

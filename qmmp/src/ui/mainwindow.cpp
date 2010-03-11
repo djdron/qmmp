@@ -301,8 +301,8 @@ void MainWindow::readSettings()
         show();
         qApp->processEvents();
         //visibility
-        m_playlist->setVisible(settings.value("Playlist/visible",TRUE).toBool());
-        m_equalizer->setVisible(settings.value("Equalizer/visible",TRUE).toBool());
+        m_playlist->setVisible(settings.value("Playlist/visible",true).toBool());
+        m_equalizer->setVisible(settings.value("Equalizer/visible",true).toBool());
         bool val = settings.value("Playlist/repeatable",FALSE).toBool();
 
         // Repeat/Shuffle
@@ -312,7 +312,7 @@ void MainWindow::readSettings()
         m_display->setIsShuffle(val);
         m_pl_manager->setShuffle(val);
 
-        m_update = TRUE;
+        m_update = true;
     }
     if(!settings.value("General/metacity_compat", FALSE).toBool())
     {
@@ -401,9 +401,9 @@ void MainWindow::createActions()
     QAction *repeateAllAction = m_mainMenu->addAction(tr("&Repeat Playlist"));
     QAction *repeateTrackAction = m_mainMenu->addAction(tr("&Repeat Track"));
     QAction *shuffleAction = m_mainMenu->addAction(tr("&Shuffle"));
-    repeateAllAction->setCheckable (TRUE);
-    repeateTrackAction->setCheckable (TRUE);
-    shuffleAction->setCheckable (TRUE);
+    repeateAllAction->setCheckable (true);
+    repeateTrackAction->setCheckable (true);
+    shuffleAction->setCheckable (true);
     repeateAllAction->setShortcut(tr("R")) ;
     repeateTrackAction->setShortcut(tr("Ctrl+R")) ;
     shuffleAction->setShortcut(tr("S")) ;
@@ -529,7 +529,7 @@ void MainWindow::playPause()
 bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd)
 {
     if(slist.isEmpty())
-        return TRUE;
+        return true;
     QStringList paths;
     foreach(QString arg, slist)
     {
@@ -549,7 +549,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd
                 full_path_list << cwd + "/" + s;
         }
         setFileList(full_path_list);
-        return TRUE;
+        return true;
     }
     QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
     if(commands.isEmpty())
@@ -578,7 +578,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd
         else
             return FALSE;
     }
-    return TRUE;
+    return true;
 }
 
 void MainWindow::jumpToFile()

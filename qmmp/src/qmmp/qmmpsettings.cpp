@@ -45,7 +45,7 @@ QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
     m_cover_inc = settings.value("include", (QStringList() << "*.jpg" << "*.png")).toStringList();
     m_cover_exclude = settings.value("exclude", (QStringList() << "*back*")).toStringList();
     m_cover_depth = settings.value("depth", 0).toInt();
-    m_cover_use_files = settings.value("use_files", TRUE).toBool();
+    m_cover_use_files = settings.value("use_files", true).toBool();
     settings.endGroup();
     //network settings
     m_proxy_enabled = settings.value("Proxy/use_proxy", FALSE).toBool();

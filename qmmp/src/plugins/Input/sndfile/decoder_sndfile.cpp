@@ -68,7 +68,7 @@ bool DecoderSndFile::initialize()
     configure(m_freq, chan, Qmmp::PCM_S16LE);
     qDebug("DecoderSndFile: detected format: %08X", snd_info.format);
     qDebug("DecoderSndFile: initialize succes");
-    return TRUE;
+    return true;
 }
 
 void DecoderSndFile::deinit()

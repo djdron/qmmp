@@ -176,9 +176,9 @@ bool MetaDataManager::supports(const QString &fileName) const
         if (!QFile::exists(fileName))
             return FALSE;
         if((fact = Decoder::findByPath(fileName)))
-            return TRUE;
+            return true;
         else if((efact = AbstractEngine::findByPath(fileName)))
-            return TRUE;
+            return true;
         return FALSE;
     }
     return FALSE;

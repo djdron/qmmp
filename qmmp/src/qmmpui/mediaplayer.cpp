@@ -202,7 +202,7 @@ void MediaPlayer::updateNextUrl()
 {
     if(m_pl_manager->currentPlayList()->nextItem() && !isRepeatable())
     {
-        m_core->play(m_pl_manager->currentPlayList()->nextItem()->url(), TRUE);
+        m_core->play(m_pl_manager->currentPlayList()->nextItem()->url(), true);
         m_nextUrl = m_pl_manager->currentPlayList()->nextItem()->url();
         qDebug("MediaPlayer: sending next url");
     }

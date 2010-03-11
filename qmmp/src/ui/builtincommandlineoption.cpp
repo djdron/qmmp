@@ -47,7 +47,7 @@ bool BuiltinCommandLineOption::identify(const QString & str) const
         str == "--toggle-visibility" ||
         str == "--add-file" ||
         str == "--add-dir")
-        return TRUE;
+        return true;
     return FALSE;
 }
 

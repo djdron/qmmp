@@ -51,7 +51,7 @@ void VisualMenu::updateActions()
 VisualAction::VisualAction(VisualFactory *factory, QWidget *parent) :
         QAction(factory->properties().name, parent)
 {
-    setCheckable (TRUE);
+    setCheckable (true);
     setChecked (Visual::isEnabled(factory));
     m_factory = factory;
     connect(this, SIGNAL(triggered(bool)), SLOT(select(bool)));

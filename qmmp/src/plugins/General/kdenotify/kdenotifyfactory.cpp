@@ -29,8 +29,8 @@ const GeneralProperties KdeNotifyFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("KDE 4 notification plugin");
     properties.shortName = "kdenotify_icon";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     properties.visibilityControl = FALSE;
     return properties;
 }

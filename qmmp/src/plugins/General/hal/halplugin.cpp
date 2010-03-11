@@ -41,8 +41,8 @@ HalPlugin::HalPlugin(QObject *parent)
     //load settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HAL");
-    m_detectCDA = settings.value("cda", TRUE).toBool();
-    m_detectRemovable = settings.value("removable", TRUE).toBool();
+    m_detectCDA = settings.value("cda", true).toBool();
+    m_detectRemovable = settings.value("removable", true).toBool();
     m_addTracks = FALSE; //do not load tracks on startup
     m_addFiles = FALSE;
     //find existing devices

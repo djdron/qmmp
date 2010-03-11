@@ -96,7 +96,7 @@ bool DecoderModPlug::initialize()
     m_bitrate = m_soundFile->GetNumChannels();
     m_totalTime = (qint64) m_soundFile->GetSongTime() * 1000;
     configure(m_freq, m_chan, (m_bps == 8 ? Qmmp::PCM_S8 : Qmmp::PCM_S16LE));
-    return TRUE;
+    return true;
 }
 
 qint64 DecoderModPlug::totalTime()
@@ -187,10 +187,10 @@ void DecoderModPlug::readSettings()
 
     CSoundFile::SetWaveConfigEx
     (
-        settings.value("Surround", TRUE).toBool(),
-        TRUE,
+        settings.value("Surround", true).toBool(),
+        true,
         settings.value("Reverb", FALSE).toBool(),
-        TRUE,
+        true,
         settings.value("Megabass", FALSE).toBool(),
         settings.value("NoiseReduction", FALSE).toBool(),
         FALSE
@@ -211,7 +211,7 @@ void DecoderModPlug::readSettings()
             settings.value("BassRange", 30).toInt()
         );
     }
-    if (settings.value("Surround", TRUE).toBool())
+    if (settings.value("Surround", true).toBool())
     {
         CSoundFile::SetSurroundParameters
         (
@@ -225,7 +225,7 @@ void DecoderModPlug::readSettings()
 
     //general
     /*
-     settings.value("GrabAmigaMOD", TRUE).toBool());*/
+     settings.value("GrabAmigaMOD", true).toBool());*/
     //preamp
     m_usePreamp = settings.value("PreAmp", FALSE).toBool();
     m_preampFactor = exp(settings.value("PreAmpLevel", 0.0f).toDouble());

@@ -59,14 +59,14 @@ TextScroller::TextScroller ( QWidget *parent )
     m_timer->start();
     updateSkin();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
-    m_autoscroll = TRUE;
+    m_autoscroll = true;
     m_menu = new QMenu(this);
     QAction *autoscrollAction = new QAction(tr("Autoscroll Songname"), m_menu);
-    autoscrollAction->setCheckable (TRUE);
+    autoscrollAction->setCheckable (true);
     connect(autoscrollAction, SIGNAL(toggled(bool)), SLOT(setAutoscroll(bool)));
     m_menu->addAction(autoscrollAction);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    autoscrollAction->setChecked(settings.value("TextScroller/autoscroll", TRUE).toBool());
+    autoscrollAction->setChecked(settings.value("TextScroller/autoscroll", true).toBool());
     setAutoscroll(autoscrollAction->isChecked());
 }
 
@@ -151,7 +151,7 @@ void TextScroller::readSettings()
     }
     else
     {
-        m_update = TRUE;
+        m_update = true;
         m_bitmap = FALSE;
 
     }
@@ -236,7 +236,7 @@ void TextScroller::mousePressEvent (QMouseEvent *e)
     {
         m_timer->stop();
         press_pos = e->x() - (x + 154);
-        m_pressing = TRUE;
+        m_pressing = true;
     }
     else
         QWidget::mousePressEvent(e);

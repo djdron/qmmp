@@ -54,7 +54,7 @@ const DecoderProperties DecoderFLACFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "flac";
     properties.protocols = "flac";
-    properties.hasAbout = TRUE;
+    properties.hasAbout = true;
     properties.hasSettings = FALSE;
     return properties;
 }
@@ -92,21 +92,21 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
     if (tag && !tag->isEmpty())
     {
         info->setMetaData(Qmmp::ALBUM,
-                          QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->album().toCString(true)).trimmed());
         info->setMetaData(Qmmp::ARTIST,
-                          QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->artist().toCString(true)).trimmed());
         info->setMetaData(Qmmp::COMMENT,
-                          QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->comment().toCString(true)).trimmed());
         info->setMetaData(Qmmp::GENRE,
-                          QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->genre().toCString(true)).trimmed());
         info->setMetaData(Qmmp::TITLE,
-                          QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
+                          QString::fromUtf8(tag->title().toCString(true)).trimmed());
         info->setMetaData(Qmmp::YEAR, tag->year());
         info->setMetaData(Qmmp::TRACK, tag->track());
 
         if (tag->fieldListMap().contains("CUESHEET"))
         {
-            CUEParser parser(tag->fieldListMap()["CUESHEET"].toString().toCString(TRUE), fileName);
+            CUEParser parser(tag->fieldListMap()["CUESHEET"].toString().toCString(true), fileName);
             list = parser.createPlayList();
             delete info;
             if(flacFile)
@@ -120,10 +120,10 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
         TagLib::StringList fld;
         if(!(fld = tag->fieldListMap()["COMPOSER"]).isEmpty())
             info->setMetaData(Qmmp::COMPOSER,
-                              QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
         if(!(fld = tag->fieldListMap()["DISCNUMBER"]).isEmpty())
             info->setMetaData(Qmmp::DISCNUMBER,
-                              QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
     }
     if(ap)
         info->setLength(ap->length());

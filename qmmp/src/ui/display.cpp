@@ -51,7 +51,7 @@ MainDisplay::MainDisplay (QWidget *parent)
     m_mw = qobject_cast<MainWindow*>(parent);
     m_titlebar = new TitleBar(this);
     m_titlebar->move(0,0);
-    m_titlebar->setActive(TRUE);
+    m_titlebar->setActive(true);
     m_previous = new Button (this, Skin::BT_PREVIOUS_N, Skin::BT_PREVIOUS_P, Skin::CUR_NORMAL);
     m_previous->setToolTip(tr("Previous"));
     connect (m_previous, SIGNAL (clicked()), parent, SLOT (previous()));
@@ -172,7 +172,7 @@ void MainDisplay::setState(Qmmp::State state)
     {
     case Qmmp::Playing:
         m_playstatus->setStatus(PlayStatus::PLAY);
-        m_timeIndicator->setNeedToShowTime(TRUE);
+        m_timeIndicator->setNeedToShowTime(true);
         setDuration(m_core->totalTime());
         break;
     case Qmmp::Paused:

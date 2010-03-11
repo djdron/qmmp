@@ -42,9 +42,9 @@ FileOps::FileOps(QObject *parent)
 {
     //separators
     QAction *separator1 = new QAction(this);
-    separator1->setSeparator (TRUE);
+    separator1->setSeparator (true);
     QAction *separator2 = new QAction(this);
-    separator2->setSeparator (TRUE);
+    separator2->setSeparator (true);
     //load settings
     QSignalMapper *mapper = new QSignalMapper(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -58,7 +58,7 @@ FileOps::FileOps(QObject *parent)
     for (int i = 0; i < count; ++i)
     {
 
-        if (settings.value(QString("enabled_%1").arg(i), TRUE).toBool())
+        if (settings.value(QString("enabled_%1").arg(i), true).toBool())
         {
             m_types << settings.value(QString("action_%1").arg(i), FileOps::COPY).toInt();
             QString name = settings.value(QString("name_%1").arg(i), "Action").toString();

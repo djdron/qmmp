@@ -96,12 +96,12 @@ void Output::pause()
 
 void Output::stop()
 {
-    m_userStop = TRUE;
+    m_userStop = true;
 }
 
 void Output::finish()
 {
-    m_finish = TRUE;
+    m_finish = true;
 }
 
 qint64 Output::written()

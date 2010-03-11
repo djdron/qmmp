@@ -85,7 +85,7 @@ QString TemplateEditor::getTemplate (QWidget *parent, const QString &title, cons
     if(editor->exec() == QDialog::Accepted)
     {
         if(ok)
-            *ok = TRUE;
+            *ok = true;
         QString t = editor->currentTemplate();
         editor->deleteLater();
         return t;

@@ -29,8 +29,8 @@ const GeneralProperties ScrobblerFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("Scrobbler Plugin");
     properties.shortName = "scrobbler";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     properties.visibilityControl = FALSE;
     return properties;
 }

@@ -47,10 +47,10 @@ const DecoderProperties DecoderCUEFactory::properties() const
     properties.description = tr("CUE Files");
     //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
     properties.protocols = "cue";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.noInput = TRUE;
-    properties.noOutput = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
+    properties.noInput = true;
+    properties.noOutput = true;
     return properties;
 }
 

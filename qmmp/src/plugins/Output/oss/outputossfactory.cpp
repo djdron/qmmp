@@ -35,8 +35,8 @@ const OutputProperties OutputOSSFactory::properties() const
     OutputProperties properties;
     properties.name = tr("OSS Plugin");
     properties.shortName = "oss";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     return properties;
 }
 

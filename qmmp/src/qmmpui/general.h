@@ -54,7 +54,7 @@ public:
      * @param factory General plugin factory.
      * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
-    static void setEnabled(GeneralFactory* factory, bool enable = TRUE);
+    static void setEnabled(GeneralFactory* factory, bool enable = true);
     /*!
      * Returns \b true if general plugin is enabled, otherwise returns \b false
      * @param factory General plugin factory.

@@ -42,7 +42,7 @@ bool DecoderMADFactory::supports(const QString &source) const
 {
     QString ext = source.right(4).toLower();
     if (ext == ".mp1" || ext == ".mp2" || ext == ".mp3")
-        return TRUE;
+        return true;
     else if (ext == ".wav") //check for mp3 wav files
     {
         QFile file(source);
@@ -52,7 +52,7 @@ bool DecoderMADFactory::supports(const QString &source) const
         file.close();
         if (!memcmp(buf + 8, "WAVE", 4) && !memcmp(buf + 20, "U" ,1))
         {
-            return TRUE;
+            return true;
         }
     }
     return FALSE;
@@ -76,7 +76,7 @@ bool DecoderMADFactory::canDecode(QIODevice *input) const
         while ((dec_res = mad_header_decode(&header, &stream)) == -1
                 && MAD_RECOVERABLE(stream.error))
             ;
-        return dec_res != -1 ? TRUE: FALSE;
+        return dec_res != -1 ? true: FALSE;
     }
     return FALSE;
 }
@@ -89,8 +89,8 @@ const DecoderProperties DecoderMADFactory::properties() const
     properties.filter = "*.mp1 *.mp2 *.mp3 *.wav";
     properties.description = tr("MPEG Files");
     properties.contentType = "audio/mp3;audio/mpeg";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     return properties;
 }
 

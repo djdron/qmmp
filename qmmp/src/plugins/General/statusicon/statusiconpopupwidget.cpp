@@ -65,7 +65,7 @@ StatusIconPopupWidget::StatusIconPopupWidget(QWidget * parent)
     setLayout(m_hLayout);
 
     m_timer = new QTimer(this);
-    m_timer->setSingleShot(TRUE);
+    m_timer->setSingleShot(true);
 
     m_bar->setMinimumWidth(110);
 
@@ -80,8 +80,8 @@ StatusIconPopupWidget::StatusIconPopupWidget(QWidget * parent)
     setWindowOpacity(1.0 - settings.value("tooltip_transparency",0).toInt()/100.0);
     int size = settings.value("tooltip_cover_size",100).toInt();
     m_cover->setFixedSize(size,size);
-    m_splitFileName = settings.value("split_file_name",TRUE).toBool();
-    m_showProgress = settings.value("tooltip_progress",TRUE).toBool();
+    m_splitFileName = settings.value("split_file_name",true).toBool();
+    m_showProgress = settings.value("tooltip_progress",true).toBool();
     m_template = settings.value("tooltip_template", DEFAULT_TEMPLATE).toString();
     settings.endGroup();
 }

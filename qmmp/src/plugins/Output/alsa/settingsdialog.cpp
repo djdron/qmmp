@@ -33,7 +33,7 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
 {
     ui.setupUi (this);
     setAttribute (Qt::WA_DeleteOnClose);
-    ui.deviceComboBox->setEditable (TRUE);
+    ui.deviceComboBox->setEditable (true);
     getCards();
     getSoftDevices();
     connect (ui.deviceComboBox, SIGNAL(activated(int)),SLOT(setText(int)));

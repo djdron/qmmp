@@ -52,7 +52,7 @@ int TagModel::caps()
 
 bool TagModel::exists()
 {
-    return TRUE;
+    return true;
 }
 
 void TagModel::create()

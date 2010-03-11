@@ -290,7 +290,7 @@ bool DecoderFLAC::initialize()
             {
                 qDebug("DecoderFLAC: using cuesheet xiph comment.");
                 m_parser = new CUEParser(xiph_comment->fieldListMap()["CUESHEET"].toString()
-                                            .toCString(TRUE), p);
+                                            .toCString(true), p);
                 m_track = m_path.section("#", -1).toInt();
                 if(m_track > m_parser->count())
                 {
@@ -431,7 +431,7 @@ bool DecoderFLAC::initialize()
     m_sz = audioParameters().sampleSize() * audioParameters().channels();
 
     qDebug("DecoderFLAC: initialize succes");
-    return TRUE;
+    return true;
 }
 
 qint64 DecoderFLAC::totalTime()

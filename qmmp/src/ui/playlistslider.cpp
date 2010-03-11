@@ -64,8 +64,8 @@ void PlayListSlider::paintEvent(QPaintEvent *)
 
 void PlayListSlider::mousePressEvent(QMouseEvent *e)
 {
-    m_moving = TRUE;
-    m_pressed = TRUE;
+    m_moving = true;
+    m_pressed = true;
     press_pos = e->y();
     if (m_pos<e->y() && e->y()<m_pos+18*m_skin->ratio())
     {

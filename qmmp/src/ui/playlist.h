@@ -58,7 +58,7 @@ class PlayList : public QWidget
         {
             return m_listWidget;
         }
-        void setMinimalMode(bool b = TRUE);
+        void setMinimalMode(bool b = true);
 
     signals:
         void play();

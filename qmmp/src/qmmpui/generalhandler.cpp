@@ -97,7 +97,7 @@ bool GeneralHandler::visibilityControl()
     foreach(factory, *General::factories())
     {
         if (General::isEnabled(factory) && factory->properties().visibilityControl)
-            return TRUE;
+            return true;
     }
     return FALSE;
 }

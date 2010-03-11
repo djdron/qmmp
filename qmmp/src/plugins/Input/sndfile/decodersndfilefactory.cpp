@@ -40,7 +40,7 @@ bool DecoderSndFileFactory::supports(const QString &source) const
             (source.right(4).toLower() == ".sph") ||
             (source.right(3).toLower() == ".sf") ||
             (source.right(4).toLower() == ".voc"))
-        return TRUE;
+        return true;
     else if (source.right(4).toLower() == ".wav")
     {
         //try top open the file
@@ -50,7 +50,7 @@ bool DecoderSndFileFactory::supports(const QString &source) const
             return FALSE;
         sf_close (sndfile);
         sndfile = 0;
-        return TRUE;
+        return true;
     }
     return FALSE;
 }
@@ -68,9 +68,9 @@ const DecoderProperties DecoderSndFileFactory::properties() const
     properties.description = tr("PCM Files");
     //properties.contentType = "";
     properties.shortName = "sndfile";
-    properties.hasAbout = TRUE;
+    properties.hasAbout = true;
     properties.hasSettings = FALSE;
-    properties.noInput = TRUE;
+    properties.noInput = true;
     properties.protocols = "file";
     return properties;
 }

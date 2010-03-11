@@ -56,7 +56,7 @@ private:
     double m_max, m_min, m_pos, m_value, m_old;
     QPixmap m_pixmap;
     double convert(int);   // value = convert(position);
-    void draw(bool pressed = TRUE);
+    void draw(bool pressed = true);
 
 protected:
     void mousePressEvent(QMouseEvent*);

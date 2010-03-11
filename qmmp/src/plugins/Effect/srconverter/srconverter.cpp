@@ -76,7 +76,7 @@ void SRConverter::applyEffect(Buffer *b)
         m_srcOut = new float [overLrLength];
         m_wOut = new short[overLrLength];
         src_short_to_float_array((short *)b->data, m_srcIn, lrLength);
-        m_isSrcAlloc = TRUE;
+        m_isSrcAlloc = true;
         m_src_data.data_in = m_srcIn;
         m_src_data.data_out = m_srcOut;
         m_src_data.end_of_input = 0;

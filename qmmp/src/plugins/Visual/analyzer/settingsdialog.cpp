@@ -30,7 +30,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     ui.analyzerComboBox->setCurrentIndex(settings.value("Analyzer/analyzer_falloff", 3).toInt()-1);
-    ui.peaksCheckBox->setChecked(settings.value("Analyzer/show_peaks", TRUE).toBool());
+    ui.peaksCheckBox->setChecked(settings.value("Analyzer/show_peaks", true).toBool());
     ui.peaksComboBox->setCurrentIndex(settings.value("Analyzer/peaks_falloff", 3).toInt()-1);
     ui.fpsComboBox->setCurrentIndex(settings.value("Analyzer/refresh_rate", 2).toInt()-1);
     ui.colorWidget1->setColor(settings.value("Analyzer/color1", "Green").toString());

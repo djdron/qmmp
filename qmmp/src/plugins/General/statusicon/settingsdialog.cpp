@@ -30,15 +30,15 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Tray");
-    ui.messageGroupBox->setChecked(settings.value("show_message",TRUE).toBool());
+    ui.messageGroupBox->setChecked(settings.value("show_message",true).toBool());
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
-    ui.niceTooltipGroupBox->setChecked(settings.value("show_tooltip", TRUE).toBool());
+    ui.niceTooltipGroupBox->setChecked(settings.value("show_tooltip", true).toBool());
     ui.niceTooltipDelaySpinBox->setValue(settings.value("tooltip_delay",2000).toInt());
     ui.transparencySlider->setValue(settings.value("tooltip_transparency",0).toInt());
     ui.coverSizeSlider->setValue(settings.value("tooltip_cover_size", 100).toInt());
-    ui.niceTooltipSplitCheckBox->setChecked(settings.value("split_file_name",TRUE).toBool());
+    ui.niceTooltipSplitCheckBox->setChecked(settings.value("split_file_name",true).toBool());
     ui.standardIconsCheckBox->setChecked(settings.value("use_standard_icons",FALSE).toBool());
-    ui.progressCheckBox->setChecked(settings.value("tooltip_progress",TRUE).toBool());
+    ui.progressCheckBox->setChecked(settings.value("tooltip_progress",true).toBool());
     m_template = settings.value("tooltip_template", DEFAULT_TEMPLATE).toString();
     settings.endGroup();
 }

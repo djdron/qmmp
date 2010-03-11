@@ -42,7 +42,7 @@ class QBuffer;
 class AACFile
 {
 public:
-    AACFile(QIODevice *i, bool metaData = TRUE);
+    AACFile(QIODevice *i, bool metaData = true);
 
     ~AACFile();
 

@@ -29,8 +29,8 @@ const VisualProperties VisualAnalyzerFactory::properties() const
     VisualProperties properties;
     properties.name = tr("Analyzer Plugin");
     properties.shortName = "analyzer";
-    properties.hasSettings = TRUE;
-    properties.hasAbout = TRUE;
+    properties.hasSettings = true;
+    properties.hasAbout = true;
     return properties;
 }
 

@@ -140,7 +140,7 @@ bool OutputWaveOut::initialize()
         return FALSE;
     }
 
-    return TRUE;
+    return true;
 }
 
 

@@ -72,7 +72,7 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
 
     fileListView->setModel(m_model);
     treeView->setModel(m_model);
-    treeView->setSortingEnabled(TRUE);
+    treeView->setSortingEnabled(true);
     treeView->setItemsExpandable(FALSE);
     treeView->header()->setSortIndicator(0, Qt::AscendingOrder);
     treeView->header()->setStretchLastSection (FALSE);
@@ -291,7 +291,7 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
     else
     {
         m_model->setFilter(QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot);
-        fileTypeComboBox->setEnabled(TRUE);
+        fileTypeComboBox->setEnabled(true);
         fileTypeComboBox->addItems(mask);
         on_fileTypeComboBox_activated(0);
     }
@@ -374,7 +374,7 @@ void QmmpFileDialogImpl::updateSelection ()
             fileNameLineEdit->setText(str);
         if (m_mode == FileDialog::AddFiles || m_mode == FileDialog::AddFile/* || FileDialog::SaveFile*/)
         {
-            addPushButton->setEnabled(TRUE);
+            addPushButton->setEnabled(true);
             foreach(str, files)
             {
                 if (QFileInfo(str).isDir())
@@ -385,7 +385,7 @@ void QmmpFileDialogImpl::updateSelection ()
             }
         }
         else
-            addPushButton->setEnabled(TRUE);
+            addPushButton->setEnabled(true);
     }
     else
     {
@@ -432,7 +432,7 @@ void QmmpFileDialogImpl::addFiles(const QStringList &list)
             regExp.setPatternSyntax(QRegExp::Wildcard);
             if (f_name.contains(regExp))
             {
-                contains = TRUE;
+                contains = true;
                 break;
             }
         }

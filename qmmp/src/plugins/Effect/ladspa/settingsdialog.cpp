@@ -35,7 +35,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
     ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    setAttribute(Qt::WA_DeleteOnClose, true);
     ui.loadButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowRight));
     ui.unloadButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowLeft));
 

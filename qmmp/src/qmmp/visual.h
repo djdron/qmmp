@@ -76,7 +76,7 @@ public:
      * @param factory Visual plugin factory.
      * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
-    static void setEnabled(VisualFactory* factory, bool enable = TRUE);
+    static void setEnabled(VisualFactory* factory, bool enable = true);
     /*!
      * Returns \b true if visual plugin is enabled, otherwise returns \b false
      * @param factory Effect plugin factory.

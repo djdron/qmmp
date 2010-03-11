@@ -28,7 +28,7 @@ const OutputProperties OutputJACKFactory::properties() const
 {
     OutputProperties properties;
     properties.name = tr("JACK Plugin");
-    properties.hasAbout = TRUE;
+    properties.hasAbout = true;
     properties.hasSettings = FALSE;
     properties.shortName = "jack";
     return properties;

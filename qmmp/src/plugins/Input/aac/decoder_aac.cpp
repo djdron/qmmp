@@ -144,7 +144,7 @@ bool DecoderAAC::initialize()
     m_input_at -= res;
     configure(freq, chan, Qmmp::PCM_S16LE);
     qDebug("DecoderAAC: initialize succes");
-    return TRUE;
+    return true;
 }
 
 qint64 DecoderAAC::read(char *audio, qint64 maxSize)

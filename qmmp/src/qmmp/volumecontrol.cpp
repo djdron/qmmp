@@ -89,7 +89,7 @@ SoftwareVolume::SoftwareVolume(QObject *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_left = settings.value("Volume/left", 80).toInt();
     m_right = settings.value("Volume/right", 80).toInt();
-    blockSignals(TRUE);
+    blockSignals(true);
     checkVolume();
     blockSignals(FALSE);
     QTimer::singleShot(125, this, SLOT(checkVolume()));

@@ -52,8 +52,8 @@ void OutputJACK::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
         return;
     }
     else
-        m_configure = TRUE;
-    m_inited = TRUE;
+        m_configure = true;
+    m_inited = true;
     Output::configure(freq, chan, format);
     qDebug("OutputJACK: configure end");
 }
@@ -75,8 +75,8 @@ bool OutputJACK::initialize()
         return FALSE;
     }
     jack_client_close (client);
-    m_inited = TRUE;
-    return TRUE;
+    m_inited = true;
+    return true;
 }
 
 qint64 OutputJACK::latency()

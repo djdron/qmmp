@@ -161,7 +161,7 @@ void EqWidget::readSettings()
     setGain();
     //equalizer presets
     QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
-    for (int i = 1; TRUE; ++i)
+    for (int i = 1; true; ++i)
     {
         if (eq_preset.contains("Presets/Preset"+QString("%1").arg(i)))
         {
@@ -184,7 +184,7 @@ void EqWidget::readSettings()
     }
     //equalizer auto-load presets
     QSettings eq_auto (QDir::homePath() +"/.qmmp/eq.auto_preset", QSettings::IniFormat);
-    for (int i = 1; TRUE; ++i)
+    for (int i = 1; true; ++i)
     {
         if (eq_auto.contains("Presets/Preset"+QString("%1").arg(i)))
         {

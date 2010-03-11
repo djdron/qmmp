@@ -66,7 +66,7 @@ bool ShufflePlayState::previous()
         if (itm_count > 1) m_shuffled_current --;
 
         m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
-        return TRUE;
+        return true;
     }
     return FALSE;
 }
@@ -124,7 +124,7 @@ bool NormalPlayState::previous()
         if ( m_model->currentRow() < 1 && !m_model->isRepeatableList())
             return FALSE;
         else if (m_model->setCurrent(m_model->currentRow() - 1))
-            return TRUE;
+            return true;
         else if (m_model->isRepeatableList())
             return m_model->setCurrent(m_model->items().count() - 1);
     }

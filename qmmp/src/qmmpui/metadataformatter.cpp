@@ -108,7 +108,7 @@ QString MetaDataFormatter::processIfKeyWord(QString title)
         return title;
     }
     //process condition
-    bool cond = TRUE;
+    bool cond = true;
     foreach(QString arg, args.at(0).split("%&"))
     {
         cond &= !arg.isEmpty();

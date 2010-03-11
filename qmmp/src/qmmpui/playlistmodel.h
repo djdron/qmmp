@@ -356,7 +356,7 @@ public slots:
     void addDirectory(const QString& dir);
     /*!
      * Removes previous items and loads list of files (regular files or directories),
-     * returns \b TRUE if at least one file has been successfully loaded,
+     * returns \b true if at least one file has been successfully loaded,
      * otherwise returns \b FALSE
      */
     bool setFileList(const QStringList &l);

@@ -63,7 +63,7 @@ const QMap<Qmmp::MetaData, QString> TagExtractor::id3v2tag()
     if (name.contains("UTF"))
     {
         codec = QTextCodec::codecForName ("UTF-8");
-        utf = TRUE;
+        utf = true;
     }
     else
         codec = QTextCodec::codecForName(name);

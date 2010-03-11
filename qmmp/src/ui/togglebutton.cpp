@@ -70,7 +70,7 @@ void ToggleButton::setON ( bool on )
 }
 void ToggleButton::mousePressEvent ( QMouseEvent* )
 {
-   m_cursorin = TRUE;
+   m_cursorin = true;
    m_old_on = m_on;
    if ( m_on )
       setPixmap ( skin->getButton ( m_off_p ) );
@@ -93,7 +93,7 @@ void ToggleButton::mouseReleaseEvent ( QMouseEvent* )
 void ToggleButton::mouseMoveEvent (QMouseEvent *e)
 {
     if ( !m_cursorin && rect().contains(e->pos()) ) {
-        m_cursorin = TRUE;
+        m_cursorin = true;
         if ( m_old_on )
             setPixmap ( skin->getButton ( m_off_p ) );
         else
