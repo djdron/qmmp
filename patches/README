@@ -1,2 +1,1 @@
-ffmpeg-r21407-force-sse.patch - fixes segmentation fault with aac streams
 qt-4.6.0-reduce-cpu-usage.patch - reduses cpu usage when using terminus font
