@@ -35,7 +35,7 @@ bool IncDecVolumeCommandLineOption::identify(const QString & str) const
         return true;
     }
 
-    return FALSE;
+    return false;
 }
 
 const QString IncDecVolumeCommandLineOption::helpString() const

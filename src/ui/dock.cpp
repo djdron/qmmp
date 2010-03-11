@@ -50,7 +50,7 @@ void Dock::setMainWidget (QWidget *widget)
 {
     m_mainWidget = widget;
     m_widgetList.prepend (widget);
-    m_dockedList.prepend (FALSE);
+    m_dockedList.prepend (false);
 }
 
 
@@ -109,7 +109,7 @@ QPoint Dock::snap (QPoint npos, QWidget* mv, QWidget* st)
 void Dock::addWidget (QWidget *widget)
 {
     m_widgetList.append (widget);
-    m_dockedList.append (FALSE);
+    m_dockedList.append (false);
     widget->addActions(m_actions);
 
 }
@@ -157,7 +157,7 @@ void Dock::move (QWidget* mv, QPoint npos)
     {
         for (int i = 0; i<m_widgetList.size(); ++i)
         {
-            m_dockedList[i] = FALSE;
+            m_dockedList[i] = false;
             if (mv != m_widgetList.at (i) && !m_dockedList.at (i) && m_widgetList.at (i)->isVisible())
             {
                 npos = snap (npos, mv, m_widgetList.at (i));
@@ -234,7 +234,7 @@ bool Dock::isDocked (QWidget* mv, QWidget* st)
     ny = mv->y() - st->y();
     if (nx < 2 && ny > -mv->height() && ny < st->height())   //right
         return true;
-    return FALSE;
+    return false;
 }
 
 void Dock::addActions (QList<QAction *> actions)

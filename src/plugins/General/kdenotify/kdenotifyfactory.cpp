@@ -31,7 +31,7 @@ const GeneralProperties KdeNotifyFactory::properties() const
     properties.shortName = "kdenotify_icon";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.visibilityControl = FALSE;
+    properties.visibilityControl = false;
     return properties;
 }
 

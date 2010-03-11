@@ -29,7 +29,7 @@ const OutputProperties OutputPulseAudioFactory::properties() const
     OutputProperties properties;
     properties.name = tr("PulseAudio Plugin");
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = false;
     properties.shortName = "pulse";
     return properties;
 }

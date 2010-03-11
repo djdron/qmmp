@@ -35,7 +35,7 @@ bool DecoderCUEFactory::supports(const QString &source) const
 
 bool DecoderCUEFactory::canDecode(QIODevice *) const
 {
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderCUEFactory::properties() const

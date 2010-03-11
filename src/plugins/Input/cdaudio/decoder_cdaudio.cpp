@@ -172,7 +172,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
             t.info.setMetaData(Qmmp::TITLE, QString::fromLocal8Bit(cdtext->field[CDTEXT_TITLE]));
             t.info.setMetaData(Qmmp::ARTIST, QString::fromLocal8Bit(cdtext->field[CDTEXT_PERFORMER]));
             t.info.setMetaData(Qmmp::GENRE, QString::fromLocal8Bit(cdtext->field[CDTEXT_GENRE]));
-            use_cddb = FALSE;
+            use_cddb = false;
         }
         else
             t.info.setMetaData(Qmmp::TITLE, QString("CDA Track %1").arg(i, 2, 10, QChar('0')));
@@ -180,7 +180,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
     }
     qDebug("DecoderCDAudio: found %d audio tracks", tracks.size());
 
-    use_cddb = use_cddb && settings.value("cdaudio/use_cddb", FALSE).toBool();
+    use_cddb = use_cddb && settings.value("cdaudio/use_cddb", false).toBool();
     if(use_cddb)
     {
         qDebug("DecoderCDAudio: reading CDDB...");
@@ -209,7 +209,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
                     cddb_set_http_proxy_password (cddb_conn, proxy.password().toAscii());
                 }
             }
-            else if (settings.value("cddb_http", FALSE).toBool())
+            else if (settings.value("cddb_http", false).toBool())
             {
                 cddb_http_enable (cddb_conn);
                 cddb_set_http_path_query (cddb_conn, settings.value("cddb_path").toByteArray());
@@ -308,11 +308,11 @@ bool DecoderCDAudio::readFromCache(QList <CDATrack> *tracks, uint disc_id)
     QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
     path += QString("/cddbcache/%1").arg(disc_id, 0, 16);
     if(!QFile::exists(path))
-        return FALSE;
+        return false;
     QSettings settings(path, QSettings::IniFormat);
     int count = settings.value("count").toInt();
     if(count != tracks->count())
-        return FALSE;
+        return false;
     for(int i = 0; i < count; ++i)
     {
         (*tracks)[i].info.setMetaData(Qmmp::ARTIST, settings.value(QString("artist%1").arg(i)).toString());
@@ -339,7 +339,7 @@ bool DecoderCDAudio::initialize()
     if (tracks.isEmpty())
     {
         qWarning("DecoderCDAudio: initialize failed");
-        return FALSE;
+        return false;
     }
     //find track by number
     int track_at = -1;
@@ -352,7 +352,7 @@ bool DecoderCDAudio::initialize()
     if (track_at < 0)
     {
         qWarning("DecoderCDAudio: invalid track number");
-        return FALSE;
+        return false;
     }
 
     if (QUrl(m_url).path().isEmpty() || QUrl(m_url).path() == "/") //try default path from config
@@ -372,14 +372,14 @@ bool DecoderCDAudio::initialize()
             {
                 qWarning("DecoderCDAudio: failed to open CD.");
                 cdio_free_device_list(cd_drives);
-                return FALSE;
+                return false;
             }
             qDebug("DecoderCDAudio: found cd audio capable drive \"%s\"", *cd_drives);
         }
         else
         {
             qWarning("DecoderCDAudio: unable to find cd audio drive.");
-            return FALSE;
+            return false;
         }
         if (cd_drives && *cd_drives) //free device list
             cdio_free_device_list(cd_drives);
@@ -390,7 +390,7 @@ bool DecoderCDAudio::initialize()
         if (!m_cdio)
         {
             qWarning("DecoderCDAudio: failed to open CD.");
-            return FALSE;
+            return false;
         }
         qDebug("DecoderCDAudio: using cd audio capable drive \"%s\"", QUrl(m_url).path().toAscii().constData());
     }

@@ -41,7 +41,7 @@
 ListWidget::ListWidget(QWidget *parent)
         : QWidget(parent)
 {
-    m_update = FALSE;
+    m_update = false;
     m_skin = Skin::instance();
     m_popupWidget = 0;
     loadColors();
@@ -53,8 +53,8 @@ ListWidget::ListWidget(QWidget *parent)
     connect (m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateList()));
     m_first = 0;
     m_rows = 0;
-    m_scroll = FALSE;
-    m_select_on_release = FALSE;
+    m_scroll = false;
+    m_select_on_release = false;
     readSettings();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setAcceptDrops(true);
@@ -69,9 +69,9 @@ void ListWidget::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
-    m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
+    m_show_protocol = settings.value ("PlayList/show_protocol", false).toBool();
     m_show_number = settings.value ("PlayList/show_numbers", true).toBool();
-    bool show_popup = settings.value("PlayList/show_popup", FALSE).toBool();
+    bool show_popup = settings.value("PlayList/show_popup", false).toBool();
 
     if (m_update)
     {
@@ -240,7 +240,7 @@ void ListWidget::wheelEvent (QWheelEvent *e)
     if (m_first > m_model->count() - m_rows)
         m_first = m_model->count() - m_rows;
 
-    m_scroll = FALSE;
+    m_scroll = false;
     updateList();
 }
 
@@ -288,7 +288,7 @@ void ListWidget::updateList()
 
     m_titles = m_model->getTitles(m_first, m_rows);
     m_times  = m_model->getTimes(m_first, m_rows);
-    m_scroll = FALSE;
+    m_scroll = false;
     //add numbers
     for (int i = 0; i < m_titles.size() && m_show_number; ++i)
     {
@@ -315,7 +315,7 @@ void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
     qApp->processEvents();
     m_model = selected;
     m_first = 0;
-    m_scroll = FALSE;
+    m_scroll = false;
     recenterCurrent();
     updateList();
     connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
@@ -436,13 +436,13 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
 
 void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 {
-    if (FALSE != m_select_on_release)
+    if (false != m_select_on_release)
     {
         m_model->clearSelection();
         m_model->setSelected(m_pressed_row,true);
         //if(e->modifiers() != Qt::ShiftModifier)
         m_anchor_row = m_pressed_row;
-        m_select_on_release = FALSE;
+        m_select_on_release = false;
     }
     m_pressed_row = INVALID_ROW;
     m_scroll_direction = NONE;

@@ -32,11 +32,11 @@ EqSlider::EqSlider(QWidget *parent): PixmapWidget(parent)
     m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getEqSlider(0));
-    m_moving = FALSE;
+    m_moving = false;
     m_min = -20;
     m_max = 20;
     m_old = m_value = 0;
-    draw(FALSE);
+    draw(false);
     setCursor(m_skin->getCursor(Skin::CUR_EQSLID));
 }
 
@@ -66,8 +66,8 @@ void EqSlider::mousePressEvent(QMouseEvent *e)
 
 void EqSlider::mouseReleaseEvent(QMouseEvent*)
 {
-    m_moving = FALSE;
-    draw(FALSE);
+    m_moving = false;
+    draw(false);
 }
 
 void EqSlider::mouseMoveEvent(QMouseEvent* e)
@@ -102,19 +102,19 @@ void EqSlider::setValue(double p)
     if (m_moving)
         return;
     m_value = -p;
-    draw(FALSE);
+    draw(false);
 }
 
 void EqSlider::setMax(double m)
 {
     m_max = m;
-    draw(FALSE);
+    draw(false);
 }
 
 void EqSlider::updateSkin()
 {
     resize(m_skin->getEqSlider(0).size());
-    draw(FALSE);
+    draw(false);
     setCursor(m_skin->getCursor(Skin::CUR_EQSLID));
 }
 
@@ -141,7 +141,7 @@ void EqSlider::wheelEvent(QWheelEvent *e)
     m_value -= e->delta()/60;
     m_value = m_value > m_max ? m_max : m_value;
     m_value = m_value < m_min ? m_min : m_value;
-    draw(FALSE);
+    draw(false);
     emit sliderMoved(m_value);
 }
 

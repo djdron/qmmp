@@ -115,7 +115,7 @@ bool General::isEnabled(GeneralFactory* factory)
 {
     checkFactories();
     if (!m_factories->contains(factory))
-        return FALSE;
+        return false;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat );
     QStringList genList = settings.value("General/enabled_plugins").toStringList();
     return genList.contains(factory->properties().shortName);

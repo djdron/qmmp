@@ -35,11 +35,11 @@ QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
     m_rg_mode = (ReplayGainMode) settings.value("mode", REPLAYGAIN_DISABLED).toInt();
     m_rg_preamp = settings.value("preamp", 0.0).toDouble();
     m_rg_defaut_gain = settings.value("default_gain", 0.0).toDouble();
-    m_rg_prevent_clipping = settings.value("prevent_clipping", FALSE).toBool();
+    m_rg_prevent_clipping = settings.value("prevent_clipping", false).toBool();
     settings.endGroup();
     //audio settings
-    m_aud_software_volume = settings.value("Output/software_volume", FALSE).toBool();
-    m_aud_16bit = settings.value("Output/use_16bit", FALSE).toBool();
+    m_aud_software_volume = settings.value("Output/software_volume", false).toBool();
+    m_aud_16bit = settings.value("Output/use_16bit", false).toBool();
     //cover settings
     settings.beginGroup("Cover");
     m_cover_inc = settings.value("include", (QStringList() << "*.jpg" << "*.png")).toStringList();
@@ -48,8 +48,8 @@ QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
     m_cover_use_files = settings.value("use_files", true).toBool();
     settings.endGroup();
     //network settings
-    m_proxy_enabled = settings.value("Proxy/use_proxy", FALSE).toBool();
-    m_proxy_auth = settings.value("Proxy/authentication", FALSE).toBool();
+    m_proxy_enabled = settings.value("Proxy/use_proxy", false).toBool();
+    m_proxy_auth = settings.value("Proxy/authentication", false).toBool();
     m_proxy_url = settings.value("Proxy/url").toUrl();
 }
 

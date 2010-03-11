@@ -41,8 +41,8 @@ public:
      */
     EngineProperties()
     {
-        hasAbout = FALSE;
-        hasSettings = FALSE;
+        hasAbout = false;
+        hasSettings = false;
     }
     QString name;        /*!< Input plugin full name */
     QString shortName;   /*!< Input plugin short name for internal usage */

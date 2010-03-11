@@ -182,7 +182,7 @@ bool Analyzer::process (VisualNode *node)
             calc_freq (dest_r, node->right);
     }
     else
-        return FALSE;
+        return false;
     const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
     int yl,yr, j;
 

@@ -52,11 +52,11 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
 {
     setAttribute(Qt::WA_AlwaysShowToolTips,true);
     m_pl_manager = manager;
-    m_update = FALSE;
-    m_resize = FALSE;
+    m_update = false;
+    m_resize = false;
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
-    m_shaded = FALSE;
+    m_shaded = false;
     m_pl_browser = 0;
     m_pl_selector = 0;
 
@@ -413,7 +413,7 @@ void PlayList::mousePressEvent (QMouseEvent *e)
         setCursor (m_skin->getCursor (Skin::CUR_PSIZE));
     }
     else
-        m_resize = FALSE;
+        m_resize = false;
 }
 
 void PlayList::mouseMoveEvent (QMouseEvent *e)
@@ -443,7 +443,7 @@ void PlayList::mouseReleaseEvent (QMouseEvent *)
     setCursor (m_skin->getCursor (Skin::CUR_PNORMAL));
     /*if (m_resize)
         m_listWidget->updateList();*/
-    m_resize = FALSE;
+    m_resize = false;
     Dock::instance()->updateDock();
 }
 
@@ -458,7 +458,7 @@ void PlayList::changeEvent (QEvent * event)
 void PlayList::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("PlayList/show_plalists", FALSE).toBool())
+    if (settings.value("PlayList/show_plalists", false).toBool())
     {
         if(!m_pl_selector)
             m_pl_selector = new PlayListSelector(m_pl_manager, this);
@@ -480,8 +480,8 @@ void PlayList::readSettings()
     }
     else
     {
-        if (settings.value("General/openbox_compat", FALSE).toBool() ||
-            settings.value("General/metacity_compat", FALSE).toBool())
+        if (settings.value("General/openbox_compat", false).toBool() ||
+            settings.value("General/metacity_compat", false).toBool())
             setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
         else
             setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint); 

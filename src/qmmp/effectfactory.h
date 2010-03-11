@@ -38,8 +38,8 @@ public:
      */
     EffectProperties()
     {
-        hasAbout = FALSE;
-        hasSettings = FALSE;
+        hasAbout = false;
+        hasSettings = false;
     }
     QString name;      /*!< Effect plugin full name */
     QString shortName; /*!< Effect plugin short name for internal usage */

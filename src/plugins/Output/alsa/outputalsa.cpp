@@ -37,18 +37,18 @@
 #include "outputalsa.h"
 
 OutputALSA::OutputALSA(QObject * parent)
-        : Output(parent), m_inited(FALSE)
+        : Output(parent), m_inited(false)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString dev_name = settings.value("ALSA/device","default").toString();
-    m_use_mmap = settings.value("ALSA/use_mmap", FALSE).toBool();
+    m_use_mmap = settings.value("ALSA/use_mmap", false).toBool();
     pcm_name = strdup(dev_name.toAscii().data());
     pcm_handle = 0;
     m_prebuf = 0;
     m_prebuf_size = 0;
     m_prebuf_fill = 0;
-    m_pause = FALSE;
-    m_can_pause = FALSE;
+    m_pause = false;
+    m_can_pause = false;
 }
 
 OutputALSA::~OutputALSA()
@@ -69,7 +69,7 @@ void OutputALSA::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     settings.beginGroup("ALSA");
     uint buffer_time = settings.value("buffer_time",500).toUInt()*1000;
     uint period_time = settings.value("period_time",100).toUInt()*1000;
-    bool use_pause =  settings.value("use_snd_pcm_pause", FALSE).toBool();
+    bool use_pause =  settings.value("use_snd_pcm_pause", false).toBool();
     settings.endGroup();
 
     snd_pcm_hw_params_t *hwparams = 0;
@@ -88,7 +88,7 @@ void OutputALSA::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
         if ((err = snd_pcm_hw_params_set_access(pcm_handle, hwparams, SND_PCM_ACCESS_MMAP_INTERLEAVED)) < 0)
         {
             qWarning("OutputALSA: Error setting mmap access: %s", snd_strerror(err));
-            m_use_mmap = FALSE;
+            m_use_mmap = false;
         }
     }
     if (!m_use_mmap)
@@ -207,15 +207,15 @@ void OutputALSA::reset()
 
 bool OutputALSA::initialize()
 {
-    m_inited = FALSE;
+    m_inited = false;
 
     if (pcm_handle)
-        return FALSE;
+        return false;
 
     if (snd_pcm_open(&pcm_handle, pcm_name, SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK) < 0)
     {
         qWarning ("OutputALSA: Error opening PCM device %s", pcm_name);
-        return FALSE;
+        return false;
     }
 
     m_inited = true;
@@ -358,7 +358,7 @@ void OutputALSA::uninitialize()
 {
     if (!m_inited)
         return;
-    m_inited = FALSE;
+    m_inited = false;
     if (pcm_handle)
     {
         snd_pcm_drop(pcm_handle);

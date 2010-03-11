@@ -36,9 +36,9 @@ public:
      */
     GeneralProperties()
     {
-        hasAbout = FALSE;
-        hasSettings = FALSE;
-        visibilityControl = FALSE;
+        hasAbout = false;
+        hasSettings = false;
+        visibilityControl = false;
     }
     QString name;           /*!< File dialog plugin full name */
     QString shortName;      /*!< File dialog short name for internal usage */

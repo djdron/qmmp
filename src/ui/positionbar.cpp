@@ -36,11 +36,11 @@ PositionBar::PositionBar(QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getPosBar());
     mw = qobject_cast<MainWindow*>(window());
-    m_moving = FALSE;
+    m_moving = false;
     m_min = 0;
     m_max = 0;
     m_old = m_value = 0;
-    draw(FALSE);
+    draw(false);
     setCursor(m_skin->getCursor(Skin::CUR_POSBAR));
 }
 
@@ -87,13 +87,13 @@ void PositionBar::mouseMoveEvent (QMouseEvent *e)
 
 void PositionBar::mouseReleaseEvent(QMouseEvent*)
 {
-    draw(FALSE);
+    draw(false);
     if (m_value!=m_old && m_max > 0)
     {
         m_old = m_value;
         mw->seek(m_value);
     }
-    m_moving = FALSE;
+    m_moving = false;
 }
 
 void PositionBar::setValue(qint64 v)
@@ -101,19 +101,19 @@ void PositionBar::setValue(qint64 v)
     if (m_moving || m_max == 0)
         return;
     m_value = v;
-    draw(FALSE);
+    draw(false);
 }
 
 void PositionBar::setMax(qint64 max)
 {
     m_max = max;
-    draw(FALSE);
+    draw(false);
 }
 
 void PositionBar::updateSkin()
 {
     resize(m_skin->getPosBar().size());
-    draw(FALSE);
+    draw(false);
     setCursor(m_skin->getCursor(Skin::CUR_POSBAR));
 }
 

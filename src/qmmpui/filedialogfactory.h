@@ -34,7 +34,7 @@ public:
      */
     FileDialogProperties()
     {
-        hasAbout = FALSE;
+        hasAbout = false;
     }
     bool hasAbout;      /*!< Should be \b true if the file dialog plugin has about dialog, otherwise should be
                          * \b false */

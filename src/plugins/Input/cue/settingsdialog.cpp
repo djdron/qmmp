@@ -47,11 +47,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     int pos = ui.cueEncComboBox->findText(settings.value("encoding","ISO-8859-1").toString());
     ui.cueEncComboBox->setCurrentIndex(pos);
 #ifdef WITH_ENCA
-    ui.autoCharsetCheckBox->setChecked(settings.value("use_enca", FALSE).toBool());
+    ui.autoCharsetCheckBox->setChecked(settings.value("use_enca", false).toBool());
     pos = ui.encaAnalyserComboBox->findText(settings.value("enca_lang", langs[n-1]).toString());
     ui.encaAnalyserComboBox->setCurrentIndex(pos);
 #else
-    ui.autoCharsetCheckBox->setEnabled(FALSE);
+    ui.autoCharsetCheckBox->setEnabled(false);
 #endif
     settings.endGroup();
 }

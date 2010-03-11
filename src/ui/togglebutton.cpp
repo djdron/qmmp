@@ -32,9 +32,9 @@ ToggleButton::ToggleButton ( QWidget *parent,uint on_n,uint on_p,uint off_n,uint
    m_on_p = on_p;
    m_off_n = off_n;
    m_off_p = off_p;
-   m_on = FALSE;
+   m_on = false;
    skin = Skin::instance();
-   setON ( FALSE );
+   setON ( false );
    connect ( skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
 }
 
@@ -99,7 +99,7 @@ void ToggleButton::mouseMoveEvent (QMouseEvent *e)
         else
             setPixmap ( skin->getButton ( m_on_p ) );            
     } else if ( m_cursorin && !rect().contains(e->pos()) ) {
-        m_cursorin = FALSE;
+        m_cursorin = false;
         if ( m_old_on )
             setPixmap ( skin->getButton ( m_on_n ) );
         else

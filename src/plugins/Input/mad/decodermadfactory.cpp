@@ -55,7 +55,7 @@ bool DecoderMADFactory::supports(const QString &source) const
             return true;
         }
     }
-    return FALSE;
+    return false;
 }
 
 bool DecoderMADFactory::canDecode(QIODevice *input) const
@@ -76,9 +76,9 @@ bool DecoderMADFactory::canDecode(QIODevice *input) const
         while ((dec_res = mad_header_decode(&header, &stream)) == -1
                 && MAD_RECOVERABLE(stream.error))
             ;
-        return dec_res != -1 ? true: FALSE;
+        return dec_res != -1 ? true: false;
     }
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderMADFactory::properties() const

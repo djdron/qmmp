@@ -37,7 +37,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.transparencySlider->setValue(settings.value("tooltip_transparency",0).toInt());
     ui.coverSizeSlider->setValue(settings.value("tooltip_cover_size", 100).toInt());
     ui.niceTooltipSplitCheckBox->setChecked(settings.value("split_file_name",true).toBool());
-    ui.standardIconsCheckBox->setChecked(settings.value("use_standard_icons",FALSE).toBool());
+    ui.standardIconsCheckBox->setChecked(settings.value("use_standard_icons",false).toBool());
     ui.progressCheckBox->setChecked(settings.value("tooltip_progress",true).toBool());
     m_template = settings.value("tooltip_template", DEFAULT_TEMPLATE).toString();
     settings.endGroup();

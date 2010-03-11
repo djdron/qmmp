@@ -29,8 +29,8 @@ PlayListSlider::PlayListSlider(QWidget *parent)
         : QWidget(parent)
 {
     m_skin = Skin::instance();
-    m_moving = FALSE;
-    m_pressed = FALSE;
+    m_moving = false;
+    m_pressed = false;
     m_min = 0;
     m_max = 0;
     m_value = 0;
@@ -87,8 +87,8 @@ void PlayListSlider::mousePressEvent(QMouseEvent *e)
 
 void PlayListSlider::mouseReleaseEvent(QMouseEvent*)
 {
-    m_moving = FALSE;
-    m_pressed = FALSE;
+    m_moving = false;
+    m_pressed = false;
     update();
 }
 

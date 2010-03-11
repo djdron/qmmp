@@ -357,7 +357,7 @@ public slots:
     /*!
      * Removes previous items and loads list of files (regular files or directories),
      * returns \b true if at least one file has been successfully loaded,
-     * otherwise returns \b FALSE
+     * otherwise returns \b false
      */
     bool setFileList(const QStringList &l);
     /*!

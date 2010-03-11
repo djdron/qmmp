@@ -99,7 +99,7 @@ bool GeneralHandler::visibilityControl()
         if (General::isEnabled(factory) && factory->properties().visibilityControl)
             return true;
     }
-    return FALSE;
+    return false;
 }
 
 void GeneralHandler::executeCommand(const QString &opt_str, const QStringList &args)

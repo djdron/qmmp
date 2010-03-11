@@ -41,7 +41,7 @@ bool DecoderVorbisFactory::canDecode(QIODevice *input) const
             && !memcmp(buf + 29, "vorbis", 6))
         return true;
 
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderVorbisFactory::properties() const
@@ -53,8 +53,8 @@ const DecoderProperties DecoderVorbisFactory::properties() const
     properties.description = tr("Ogg Vorbis Files");
     properties.contentType = "application/ogg;audio/x-vorbis+ogg";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
-    properties.noInput = FALSE;
+    properties.hasSettings = false;
+    properties.noInput = false;
     return properties;
 }
 

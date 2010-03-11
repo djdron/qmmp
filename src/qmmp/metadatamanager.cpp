@@ -174,14 +174,14 @@ bool MetaDataManager::supports(const QString &fileName) const
     if (!fileName.contains("://")) //local file
     {
         if (!QFile::exists(fileName))
-            return FALSE;
+            return false;
         if((fact = Decoder::findByPath(fileName)))
             return true;
         else if((efact = AbstractEngine::findByPath(fileName)))
             return true;
-        return FALSE;
+        return false;
     }
-    return FALSE;
+    return false;
 }
 
 QPixmap MetaDataManager::getCover(const QString &url)
@@ -236,7 +236,7 @@ QFileInfoList MetaDataManager::findCoverFiles(QDir dir, int depth) const
     QFileInfoList file_list = dir.entryInfoList(m_settings->coverNameFilters());
     foreach(QFileInfo i, file_list)
     {
-        foreach(QString pattern, m_settings->coverNameFilters(FALSE))
+        foreach(QString pattern, m_settings->coverNameFilters(false))
         {
             if(QRegExp (pattern, Qt::CaseInsensitive, QRegExp::Wildcard).exactMatch(i.fileName()))
             {

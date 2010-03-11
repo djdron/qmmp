@@ -34,7 +34,7 @@ FileDialog* FileDialog::_instance = 0;
 
 QMap<QString,FileDialogFactory*> FileDialog::factories = QMap<QString,FileDialogFactory*>();
 
-FileDialog::FileDialog() : QObject(), m_initialized(FALSE)
+FileDialog::FileDialog() : QObject(), m_initialized(false)
 {
     m_lastDir = 0;
 }

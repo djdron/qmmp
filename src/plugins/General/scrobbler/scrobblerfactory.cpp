@@ -31,7 +31,7 @@ const GeneralProperties ScrobblerFactory::properties() const
     properties.shortName = "scrobbler";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.visibilityControl = FALSE;
+    properties.visibilityControl = false;
     return properties;
 }
 

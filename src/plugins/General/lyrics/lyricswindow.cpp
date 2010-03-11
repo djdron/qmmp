@@ -33,7 +33,7 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
     ui.setupUi(this);
     setWindowFlags(Qt::Dialog);
     setAttribute(Qt::WA_DeleteOnClose);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
     ui.artistLineEdit->setText(artist);
     ui.titleLineEdit->setText(title);
     m_http = new QNetworkAccessManager(this);

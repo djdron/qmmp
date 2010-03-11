@@ -137,7 +137,7 @@ bool OutputWaveOut::initialize()
     if (!waveOutGetNumDevs ())
     {
         qWarning("OutputWaveOut: no audio device found");
-        return FALSE;
+        return false;
     }
 
     return true;

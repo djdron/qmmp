@@ -64,7 +64,7 @@ OutputOSS* OutputOSS::instance()
 }
 
 OutputOSS::OutputOSS(QObject * parent)
-        : Output(parent), m_inited(FALSE),
+        : Output(parent), m_inited(false),
          m_frequency(-1), m_channels(-1),
         do_select(true),
         m_audio_fd(-1)
@@ -212,7 +212,7 @@ bool OutputOSS::initialize()
 {
     reset();
     if (m_audio_fd < 0)
-        return FALSE;
+        return false;
     m_inited = true;
     return true;
 }
@@ -221,7 +221,7 @@ void OutputOSS::uninitialize()
 {
     if (!m_inited)
         return;
-    m_inited = FALSE;
+    m_inited = false;
     m_frequency = -1;
     m_channels = -1;
     resetDSP();
@@ -283,7 +283,7 @@ VolumeControlOSS::VolumeControlOSS(QObject *parent) : VolumeControl(parent)
 #else
     m_mixer_device = settings.value("OSS/device","/dev/dsp").toString();
     int mixer_fd = -1;
-    bool to_close = FALSE;
+    bool to_close = false;
     if (OutputOSS::instance() && OutputOSS::instance()->audio_fd() > 0)
         mixer_fd = OutputOSS::instance()->audio_fd();
     else

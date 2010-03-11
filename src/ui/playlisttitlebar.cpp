@@ -32,12 +32,12 @@
 PlayListTitleBar::PlayListTitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
-    m_active = FALSE;
-    m_resize = FALSE;
+    m_active = false;
+    m_resize = false;
     m_shade2 = 0;
     m_model = 0;
-    m_shaded = FALSE;
-    m_align = FALSE;
+    m_shaded = false;
+    m_align = false;
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
@@ -56,7 +56,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
     readSettings();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     m_pl->resize (settings.value ("PlayList/size", QSize (m_ratio*275, m_ratio*116)).toSize());
-    if (settings.value ("PlayList/shaded", FALSE).toBool())
+    if (settings.value ("PlayList/shaded", false).toBool())
         shade();
     resize(m_pl->width(),height());
     m_align = true;
@@ -171,7 +171,7 @@ void PlayListTitleBar::mousePressEvent(QMouseEvent* event)
 void PlayListTitleBar::mouseReleaseEvent(QMouseEvent*)
 {
     Dock::instance()->updateDock();
-    m_resize = FALSE;
+    m_resize = false;
 }
 
 void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)

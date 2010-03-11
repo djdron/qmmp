@@ -31,8 +31,8 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
 {
     m_current = 0;
     m_selected = 0;
-    m_repeatable = FALSE;
-    m_shuffle = FALSE;
+    m_repeatable = false;
+    m_shuffle = false;
     readPlayLists();
 }
 

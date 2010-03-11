@@ -167,7 +167,7 @@ int PlayListModel::currentRow()
 bool PlayListModel::setCurrent(int c)
 {
     if (c > count()-1 || c < 0)
-        return FALSE;
+        return false;
     m_current = c;
     m_currentItem = m_items.at(c);
     emit currentChanged();
@@ -232,7 +232,7 @@ void PlayListModel::clear()
 void PlayListModel::clearSelection()
 {
     for (int i = 0; i<m_items.size(); ++i)
-        m_items.at(i)->setSelected(FALSE);
+        m_items.at(i)->setSelected(false);
     emit listChanged();
 }
 
@@ -457,7 +457,7 @@ void PlayListModel::addFileList(const QStringList &l)
 
 bool PlayListModel::setFileList(const QStringList & l)
 {
-    bool model_cleared = FALSE;
+    bool model_cleared = false;
     foreach(QString str,l)
     {
         QFileInfo f_info(str);
@@ -899,7 +899,7 @@ bool PlayListModel::isFileLoaderRunning() const
     if (l && l->isRunning())
         return true;
 
-    return FALSE;
+    return false;
 }
 
 void PlayListModel::preparePlayState()
@@ -911,7 +911,7 @@ void PlayListModel::removeInvalidItems()
 {
     foreach(PlayListItem *item, m_items)
     {
-        bool ok = FALSE;
+        bool ok = false;
         if(!item->url().contains("://"))
             ok = MetaDataManager::instance()->supports(item->url());
         else

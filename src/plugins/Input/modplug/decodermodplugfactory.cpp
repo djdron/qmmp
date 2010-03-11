@@ -46,12 +46,12 @@ bool DecoderModPlugFactory::supports(const QString &source) const
     << ".xm" << ".mtm" << ".psm" << ".ft2";
     if (lExtList.contains(lExt))
         return true;
-    return FALSE;
+    return false;
 }
 
 bool DecoderModPlugFactory::canDecode(QIODevice *) const
 {
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderModPlugFactory::properties() const
@@ -81,7 +81,7 @@ QList<FileInfo *> DecoderModPlugFactory::createPlayList(const QString &fileName,
 {
     QList <FileInfo*> list;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    if (!useMetaData || settings.value("UseFileName", FALSE).toBool())
+    if (!useMetaData || settings.value("UseFileName", false).toBool())
     {
         list << new FileInfo(fileName);
         list.at(0)->setMetaData(Qmmp::TITLE, fileName.section('/',-1));

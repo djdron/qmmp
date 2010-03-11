@@ -36,7 +36,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_pl_manager = 0;
     m_core = 0;
     m_skips = 0;
-    m_repeat = FALSE;
+    m_repeat = false;
     QTranslator *translator = new QTranslator(parent);
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/libqmmpui_") + locale);
@@ -57,7 +57,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
     Q_CHECK_PTR(pl_manager);
     m_core = core;
     m_pl_manager = pl_manager;
-    m_repeat = FALSE;
+    m_repeat = false;
     connect(m_core, SIGNAL(aboutToFinish()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
 }
@@ -96,7 +96,7 @@ void MediaPlayer::play(qint64 offset)
         return;
     }
 
-    if (!m_core->play(s, FALSE, offset))
+    if (!m_core->play(s, false, offset))
     {
         //find out the reason why playback failed
         switch ((int) m_core->state())

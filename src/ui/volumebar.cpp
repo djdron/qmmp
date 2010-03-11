@@ -35,11 +35,11 @@ VolumeBar::VolumeBar(QWidget *parent) : PixmapWidget(parent)
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getVolumeBar(0));
     mw = qobject_cast<MainWindow*>(window());
-    m_moving = FALSE;
+    m_moving = false;
     m_min = 0;
     m_max = 100;
     m_old = m_value = 0;
-    draw(FALSE);
+    draw(false);
 }
 
 
@@ -82,8 +82,8 @@ void VolumeBar::mouseMoveEvent (QMouseEvent *e)
 
 void VolumeBar::mouseReleaseEvent(QMouseEvent*)
 {
-    m_moving = FALSE;
-    draw(FALSE);
+    m_moving = false;
+    draw(false);
     m_old = m_value;
 }
 
@@ -92,19 +92,19 @@ void VolumeBar::setValue(int v)
     if (m_moving || m_max == 0)
         return;
     m_value = v;
-    draw(FALSE);
+    draw(false);
 }
 
 void VolumeBar::setMax(int max)
 {
     m_max = max;
-    draw(FALSE);
+    draw(false);
 }
 
 void VolumeBar::updateSkin()
 {
     resize(m_skin->getVolumeBar(0).size());
-    draw(FALSE);
+    draw(false);
     setCursor(m_skin->getCursor(Skin::CUR_VOLBAL));
 }
 

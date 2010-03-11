@@ -43,10 +43,10 @@ public:
      */
     DecoderProperties()
     {
-        hasAbout = FALSE;
-        hasSettings = FALSE;
-        noInput = FALSE;
-        noOutput = FALSE;
+        hasAbout = false;
+        hasSettings = false;
+        noInput = false;
+        noOutput = false;
 
     }
     QString name;        /*!< Input plugin full name */

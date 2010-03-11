@@ -110,7 +110,7 @@ QCursor createCursor(QString path)
 	
 	// now we need the mask (transparency)
 	QByteArray maskData = bmpData.right((width * height) / 8);
-	QImage maskImage = QBitmap::fromData(QSize(width, height), (const uchar*) maskData.constData(), QImage::Format_Mono).toImage().mirrored(FALSE, true);
+	QImage maskImage = QBitmap::fromData(QSize(width, height), (const uchar*) maskData.constData(), QImage::Format_Mono).toImage().mirrored(false, true);
 	maskImage.invertPixels();
 	pix.setMask(QBitmap::fromImage(maskImage));
 	

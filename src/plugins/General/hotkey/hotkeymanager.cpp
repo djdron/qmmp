@@ -193,7 +193,7 @@ long HotkeyManager::m_meta_mask = 0;
 long HotkeyManager::m_super_mask = 0;
 long HotkeyManager::m_hyper_mask = 0;
 long HotkeyManager::m_numlock_mask = 0;
-bool HotkeyManager::m_haveMods = FALSE;
+bool HotkeyManager::m_haveMods = false;
 
 //copied from globalshortcutmanager_x11.cpp by Justin Karneges and Michail Pishchagin (Psi project)
 void HotkeyManager::ensureModifiers()

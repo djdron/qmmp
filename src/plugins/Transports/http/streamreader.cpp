@@ -37,7 +37,7 @@ StreamReader::~StreamReader()
 
 bool StreamReader::atEnd () const
 {
-    return FALSE;
+    return false;
 }
 
 qint64 StreamReader::bytesAvailable () const
@@ -52,7 +52,7 @@ qint64 StreamReader::bytesToWrite () const
 
 bool StreamReader::canReadLine () const
 {
-    return FALSE;
+    return false;
 }
 
 void StreamReader::close ()
@@ -68,13 +68,13 @@ bool StreamReader::isSequential () const
 bool StreamReader::open ( OpenMode mode )
 {
     if (mode != QIODevice::ReadOnly)
-        return FALSE;
+        return false;
     //downloadFile();
     setOpenMode(QIODevice::ReadOnly);
     if (m_downloader->isReady())
         return true;
     else
-        return FALSE;
+        return false;
 }
 
 bool StreamReader::reset ()
@@ -86,7 +86,7 @@ bool StreamReader::reset ()
 bool StreamReader::seek ( qint64 pos )
 {
     QIODevice::seek(pos);
-    return FALSE;
+    return false;
 }
 
 qint64 StreamReader::size () const

@@ -45,7 +45,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
     m_buttons.value(pos)->setChecked(true);
-    ui.psiCheckBox->setChecked(settings.value("psi_notification", FALSE).toBool());
+    ui.psiCheckBox->setChecked(settings.value("psi_notification", false).toBool());
     ui.songCheckBox->setChecked(settings.value("song_notification", true).toBool());
     ui.volumeCheckBox->setChecked(settings.value("volume_notification", true).toBool());
     ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);

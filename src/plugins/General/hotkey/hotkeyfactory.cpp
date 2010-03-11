@@ -31,7 +31,7 @@ const GeneralProperties HotkeyFactory::properties() const
     properties.shortName = "hotkey";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.visibilityControl = FALSE;
+    properties.visibilityControl = false;
     return properties;
 }
 

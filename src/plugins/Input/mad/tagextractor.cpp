@@ -58,7 +58,7 @@ const QMap<Qmmp::MetaData, QString> TagExtractor::id3v2tag()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("MAD");
     QByteArray name = settings.value("ID3v2_encoding","UTF-8").toByteArray ();
-    bool utf = FALSE;
+    bool utf = false;
     QTextCodec *codec = 0;
     if (name.contains("UTF"))
     {

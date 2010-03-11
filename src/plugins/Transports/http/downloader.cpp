@@ -112,12 +112,12 @@ Downloader::Downloader(QObject *parent, const QString &url)
     curl_global_init(CURL_GLOBAL_ALL);
     m_stream.buf_fill = 0;
     m_stream.buf = 0;
-    m_stream.icy_meta_data = FALSE;
+    m_stream.icy_meta_data = false;
     m_stream.aborted = true;
     m_stream.icy_metaint = 0;
     m_handle = 0;
     m_metacount = 0;
-    m_meta_sent = FALSE;
+    m_meta_sent = false;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HTTP");
     m_codec = QTextCodec::codecForName(settings.value("icy_encoding","windows-1252").toByteArray ());
@@ -126,7 +126,7 @@ Downloader::Downloader(QObject *parent, const QString &url)
         m_codec = QTextCodec::codecForName ("UTF-8");
 #ifdef WITH_ENCA
     m_analyser = 0;
-    if(settings.value("use_enca", FALSE).toBool())
+    if(settings.value("use_enca", false).toBool())
         m_analyser = enca_analyser_alloc(settings.value("enca_lang").toByteArray ().constData());
 #endif
     settings.endGroup();
@@ -255,7 +255,7 @@ void Downloader::run()
     curl_easy_setopt(m_handle, CURLOPT_HEADERDATA, this);
     curl_easy_setopt(m_handle, CURLOPT_HEADERFUNCTION, curl_header);
     // Disable SSL
-    curl_easy_setopt(m_handle, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_easy_setopt(m_handle, CURLOPT_SSL_VERIFYPEER, false);
     curl_easy_setopt(m_handle, CURLOPT_SSL_VERIFYHOST, 0);
     // Enable progress meter
     curl_easy_setopt(m_handle, CURLOPT_NOPROGRESS, 0);
@@ -282,9 +282,9 @@ void Downloader::run()
     m_mutex.lock();
     m_stream.buf_fill = 0;
     m_stream.buf = 0;
-    m_stream.aborted = FALSE;
+    m_stream.aborted = false;
     m_stream.header.clear ();
-    m_ready  = FALSE;
+    m_ready  = false;
     int return_code;
     qDebug("Downloader: starting libcurl");
     m_mutex.unlock();

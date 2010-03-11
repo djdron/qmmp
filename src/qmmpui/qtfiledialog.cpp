@@ -32,7 +32,7 @@ const FileDialogProperties QtFileDialogFactory::properties() const
     FileDialogProperties properties;
     properties.name = tr("Qt File Dialog");
     properties.shortName = "qt_dialog";
-    properties.hasAbout = FALSE;
+    properties.hasAbout = false;
     return properties;
 }
 

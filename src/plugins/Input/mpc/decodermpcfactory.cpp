@@ -38,7 +38,7 @@ bool DecoderMPCFactory::supports(const QString &source) const
 
 bool DecoderMPCFactory::canDecode(QIODevice *) const
 {
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderMPCFactory::properties() const
@@ -50,7 +50,7 @@ const DecoderProperties DecoderMPCFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "mpc";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = false;
     return properties;
 }
 

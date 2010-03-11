@@ -43,17 +43,17 @@ HalPlugin::HalPlugin(QObject *parent)
     settings.beginGroup("HAL");
     m_detectCDA = settings.value("cda", true).toBool();
     m_detectRemovable = settings.value("removable", true).toBool();
-    m_addTracks = FALSE; //do not load tracks on startup
-    m_addFiles = FALSE;
+    m_addTracks = false; //do not load tracks on startup
+    m_addFiles = false;
     //find existing devices
     QStringList udis = m_manager->findDeviceByCapability("volume");
     foreach(QString udi, udis)
     addDevice(udi);
     //load remaining settings
-    m_addTracks = settings.value("add_tracks", FALSE).toBool();
-    m_removeTracks = settings.value("remove_tracks", FALSE).toBool();
-    m_addFiles = settings.value("add_files", FALSE).toBool();
-    m_removeFiles = settings.value("remove_files", FALSE).toBool();
+    m_addTracks = settings.value("add_tracks", false).toBool();
+    m_removeTracks = settings.value("remove_tracks", false).toBool();
+    m_addFiles = settings.value("add_files", false).toBool();
+    m_removeFiles = settings.value("remove_files", false).toBool();
     settings.endGroup();
 }
 

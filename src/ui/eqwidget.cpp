@@ -39,7 +39,7 @@
 EqWidget::EqWidget (QWidget *parent)
         : PixmapWidget (parent)
 {
-    m_shaded = FALSE;
+    m_shaded = false;
     m_skin = Skin::instance();
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
@@ -120,7 +120,7 @@ void EqWidget::closeEvent (QCloseEvent* e)
 
 void EqWidget::updateSkin()
 {
-    m_titleBar->setActive (FALSE);
+    m_titleBar->setActive (false);
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
     setCursor (m_skin->getCursor (Skin::CUR_EQNORMAL));
     setMimimalMode(m_shaded);
@@ -142,8 +142,8 @@ void EqWidget::setMimimalMode(bool b)
 void EqWidget::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("General/openbox_compat", FALSE).toBool() ||
-        settings.value("General/metacity_compat", FALSE).toBool())
+    if (settings.value("General/openbox_compat", false).toBool() ||
+        settings.value("General/metacity_compat", false).toBool())
         setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
     else
         setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
@@ -156,7 +156,7 @@ void EqWidget::readSettings()
         m_sliders.at(i)->setValue(settings.value("band_"+
                                   QString("%1").arg(i), 0).toDouble());
     m_preamp->setValue(settings.value("preamp", 0).toDouble());
-    m_on->setON(settings.value("enabled", FALSE).toBool());
+    m_on->setON(settings.value("enabled", false).toBool());
     settings.endGroup();
     setGain();
     //equalizer presets

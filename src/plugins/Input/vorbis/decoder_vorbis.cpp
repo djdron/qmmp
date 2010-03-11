@@ -72,7 +72,7 @@ static long oggtell(void *src)
 DecoderVorbis::DecoderVorbis(const QString &url, QIODevice *i)
         : Decoder(i)
 {
-    inited = FALSE;
+    inited = false;
     m_totalTime = 0;
     m_section = 0;
     m_last_section = -1;
@@ -89,12 +89,12 @@ DecoderVorbis::~DecoderVorbis()
 bool DecoderVorbis::initialize()
 {
     qDebug("DecoderVorbis: initialize");
-    inited = FALSE;
+    inited = false;
     m_totalTime = 0;
     if (!input())
     {
         qDebug("DecoderVorbis: cannot initialize.  No input");
-        return FALSE;
+        return false;
     }
 
     if (!input()->isOpen())
@@ -103,7 +103,7 @@ bool DecoderVorbis::initialize()
         {
             qWarning("%s",qPrintable("DecoderVorbis: failed to open input. " +
                                 input()->errorString () + "."));
-            return FALSE;
+            return false;
         }
     }
 
@@ -118,7 +118,7 @@ bool DecoderVorbis::initialize()
     {
         qWarning("DecoderVorbis: cannot open stream");
 
-        return FALSE;
+        return false;
     }
 
     quint32 freq = 0;

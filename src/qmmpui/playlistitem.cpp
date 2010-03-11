@@ -28,14 +28,14 @@
 PlayListItem::PlayListItem() : AbstractPlaylistItem(), m_flag(FREE)
 {
     m_info = 0;
-    m_selected = FALSE;
-    m_current = FALSE;
+    m_selected = false;
+    m_current = false;
 }
 
 PlayListItem::PlayListItem(FileInfo *info) : AbstractPlaylistItem(), m_flag(FREE)
 {
-    m_selected = FALSE;
-    m_current = FALSE;
+    m_selected = false;
+    m_current = false;
     m_info = info;
 
     setMetaData(info->metaData());

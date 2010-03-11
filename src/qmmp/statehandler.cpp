@@ -69,7 +69,7 @@ void StateHandler::dispatch(qint64 elapsed,
                  && (SoundCore::instance()->totalTime() - m_elapsed < PREFINISH_TIME)
                  && m_sendAboutToFinish)
         {
-            m_sendAboutToFinish = FALSE;
+            m_sendAboutToFinish = false;
             emit aboutToFinish();
         }
     }

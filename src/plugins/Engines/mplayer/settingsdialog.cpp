@@ -47,7 +47,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     settings.beginGroup("mplayer");
     ui.audioComboBox->setEditText(settings.value("ao","default").toString().replace("default", tr("default")));
     ui.videoComboBox->setEditText(settings.value("vo","default").toString().replace("default", tr("default")));
-    ui.autoSyncCheckBox->setChecked(settings.value("autosync", FALSE).toBool());
+    ui.autoSyncCheckBox->setChecked(settings.value("autosync", false).toBool());
     ui.syncFactorSpinBox->setValue(settings.value("autosync_factor", 100).toInt());
     settings.endGroup();
 }

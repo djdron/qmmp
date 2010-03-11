@@ -48,9 +48,9 @@ Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
     m_totalWritten = 0;
     m_currentMilliseconds = -1;
     m_bytesPerMillisecond = 0;
-    m_userStop = FALSE;
-    m_pause = FALSE;
-    m_finish = FALSE;
+    m_userStop = false;
+    m_pause = false;
+    m_finish = false;
     m_visBuffer = 0;
     m_visBufferSize = 0;
     m_kbps = 0;
@@ -235,7 +235,7 @@ void Output::run()
     }
     mutex()->unlock ();
 
-    bool done = FALSE;
+    bool done = false;
     Buffer *b = 0;
     qint64 l, m = 0;
 

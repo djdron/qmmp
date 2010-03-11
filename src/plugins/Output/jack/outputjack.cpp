@@ -32,7 +32,7 @@
 #include <string.h>
 
 OutputJACK::OutputJACK(QObject *parent)
-        : Output(parent), m_inited(FALSE), m_configure(FALSE)
+        : Output(parent), m_inited(false), m_configure(FALSE)
 {
     JACK_Init();
 }
@@ -47,8 +47,8 @@ void OutputJACK::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     qDebug("OutputJACK: configure");
     if(JACK_Open(&jack_device, AudioParameters::sampleSize(format)*8, (unsigned long *)&freq, chan))
     {
-        m_configure = FALSE;
-        m_inited = FALSE;
+        m_configure = false;
+        m_inited = false;
         return;
     }
     else
@@ -60,8 +60,8 @@ void OutputJACK::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 
 bool OutputJACK::initialize()
 {
-    m_inited = FALSE;
-    m_configure = FALSE;
+    m_inited = false;
+    m_configure = false;
     jack_options_t options = JackNoStartServer;
     jack_status_t status;
     jack_client_t *client = jack_client_open ("test_qmmp", options, &status, NULL);
@@ -72,7 +72,7 @@ bool OutputJACK::initialize()
         {
             qDebug("Unable to connect to JACK server.");
         }
-        return FALSE;
+        return false;
     }
     jack_client_close (client);
     m_inited = true;

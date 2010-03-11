@@ -30,7 +30,7 @@ VolumeControl::VolumeControl(QObject *parent)
 {
     m_left = 0;
     m_right = 0;
-    m_prev_block = FALSE;
+    m_prev_block = false;
 }
 
 VolumeControl::~VolumeControl()
@@ -91,7 +91,7 @@ SoftwareVolume::SoftwareVolume(QObject *parent)
     m_right = settings.value("Volume/right", 80).toInt();
     blockSignals(true);
     checkVolume();
-    blockSignals(FALSE);
+    blockSignals(false);
     QTimer::singleShot(125, this, SLOT(checkVolume()));
     m_scaleLeft = (double)m_left/100.0;
     m_scaleRight = (double)m_right/100.0;

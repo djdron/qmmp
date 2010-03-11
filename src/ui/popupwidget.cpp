@@ -38,7 +38,7 @@ PopupWidget::PopupWidget(QWidget *parent)
 {
     setWindowFlags(Qt::X11BypassWindowManagerHint | Qt::Dialog | Qt::FramelessWindowHint);
     //setFrameStyle(QFrame::Box | QFrame::Plain);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
     m_item = 0;
     QHBoxLayout *hlayout = new QHBoxLayout(this); //layout
     m_pixlabel = new QLabel(this);
