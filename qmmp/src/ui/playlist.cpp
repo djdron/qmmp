@@ -208,6 +208,7 @@ void PlayList::createActions()
 
     m_subMenu->addSeparator();
     m_subMenu->addAction (tr("Remove unavailable files"), m_pl_manager, SLOT(removeInvalidItems()));
+    m_subMenu->addAction (tr("Remove duplicates"), m_pl_manager, SLOT(removeDuplicates()));
 
     //listwidget menu
     QAction *detailsAct = new QAction (tr ("&View Track Details"),this);

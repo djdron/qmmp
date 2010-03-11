@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -403,7 +403,7 @@ public slots:
     /*!
      * Removes duplicate items by URL.
      */
-    //void removeDuplicates();
+    void removeDuplicates();
 
 private:
     /*!
@@ -431,7 +431,6 @@ private:
      * selected items will be removed, else - unselected.
      */
     void removeSelection(bool inverted = false);
-
 
 private slots:
     void preparePlayState();

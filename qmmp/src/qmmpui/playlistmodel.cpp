@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright(C) 2006-2009 by Ilya Kotov                                  *
+ *   Copyright(C) 2006-2010 by Ilya Kotov                                  *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -414,7 +414,7 @@ FileLoader * PlayListModel::createFileLoader()
     FileLoader* f_loader = new FileLoader(this);
 // f_loader->setStackSize(20 * 1024 * 1024);
     m_running_loaders << f_loader;
-    connect(f_loader,SIGNAL(newPlayListItem(PlayListItem*)), SLOT(add(PlayListItem*)),Qt::QueuedConnection);
+    connect(f_loader,SIGNAL(newPlayListItem(PlayListItem*)),SLOT(add(PlayListItem*)),Qt::QueuedConnection);
     connect(f_loader,SIGNAL(finished()),this,SLOT(preparePlayState()));
     connect(f_loader,SIGNAL(finished()),f_loader,SLOT(deleteLater()));
     return f_loader;
@@ -918,5 +918,17 @@ void PlayListModel::removeInvalidItems()
             ok = MetaDataManager::instance()->protocols().contains(item->url().section("://",0,0));
         if(!ok)
             removeItem(item);
+    }
+}
+
+void PlayListModel::removeDuplicates()
+{
+    for(int i = 0; i < m_items.size(); ++i)
+    {
+        for(int j = i + 1; j < m_items.size(); ++j)
+        {
+            if(m_items.at(i)->url() == m_items.at(j)->url())
+                removeItem(m_items.at(j));
+        }
     }
 }
