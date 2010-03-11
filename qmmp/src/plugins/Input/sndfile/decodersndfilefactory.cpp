@@ -47,17 +47,17 @@ bool DecoderSndFileFactory::supports(const QString &source) const
         SF_INFO snd_info;
         SNDFILE *sndfile = sf_open(source.toLocal8Bit(), SFM_READ, &snd_info);
         if (!sndfile)
-            return FALSE;
+            return false;
         sf_close (sndfile);
         sndfile = 0;
         return true;
     }
-    return FALSE;
+    return false;
 }
 
 bool DecoderSndFileFactory::canDecode(QIODevice *) const
 {
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderSndFileFactory::properties() const
@@ -69,7 +69,7 @@ const DecoderProperties DecoderSndFileFactory::properties() const
     //properties.contentType = "";
     properties.shortName = "sndfile";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = false;
     properties.noInput = true;
     properties.protocols = "file";
     return properties;

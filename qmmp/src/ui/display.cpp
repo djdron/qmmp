@@ -44,7 +44,7 @@
 MainDisplay::MainDisplay (QWidget *parent)
         : PixmapWidget (parent)
 {
-    m_shaded = FALSE;
+    m_shaded = false;
     m_skin = Skin::instance();
     setPixmap (m_skin->getMain());
     setCursor(m_skin->getCursor(Skin::CUR_NORMAL));
@@ -181,7 +181,7 @@ void MainDisplay::setState(Qmmp::State state)
     case Qmmp::Stopped:
         m_playstatus->setStatus(PlayStatus::STOP);
         m_monoster->setChannels (0);
-        m_timeIndicator->setNeedToShowTime(FALSE);
+        m_timeIndicator->setNeedToShowTime(false);
         m_posbar->setValue (0);
         m_posbar->setMax (0);
         m_titlebar->setTime(-1);

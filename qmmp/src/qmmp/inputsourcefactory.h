@@ -37,8 +37,8 @@ public:
      */
     InputSourceProperties()
     {
-        hasSettings = FALSE;
-        hasAbout = FALSE;
+        hasSettings = false;
+        hasAbout = false;
     }
 
     QString name;      /*!< Transport plugin full name */

@@ -31,7 +31,7 @@ const GeneralProperties HalFactory::properties() const
     properties.shortName = "hal";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.visibilityControl = FALSE;
+    properties.visibilityControl = false;
     return properties;
 }
 

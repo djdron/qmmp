@@ -29,8 +29,8 @@ const GeneralProperties CoverManagerFactory::properties() const
     properties.name = tr("Cover Manager Plugin");
     properties.shortName = "cover_manager";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
-    properties.visibilityControl = FALSE;
+    properties.hasSettings = false;
+    properties.visibilityControl = false;
     return properties;
 }
 

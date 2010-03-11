@@ -101,7 +101,7 @@ MplayerEngine::~MplayerEngine()
 bool MplayerEngine::play()
 {
     if(m_process->state() != QProcess::NotRunning)
-        return FALSE;
+        return false;
     startMplayerProcess();
     return true;
 }
@@ -110,7 +110,7 @@ bool MplayerEngine::enqueue(InputSource *source)
 {
     QString url = source->url();
     QStringList filters = MplayerInfo::filters();
-    bool supports = FALSE;
+    bool supports = false;
     foreach(QString filter, filters)
     {
         QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
@@ -119,7 +119,7 @@ bool MplayerEngine::enqueue(InputSource *source)
             break;
     }
     if(!supports)
-        return FALSE;
+        return false;
     source->deleteLater();
     if(m_process->state() == QProcess::NotRunning)
         m_url = url;
@@ -143,7 +143,7 @@ bool MplayerEngine::initialize()
     if (vo_str != "default")
         m_args << "vo=" + vo_str;
 
-    if (settings.value("autosync", FALSE).toBool())
+    if (settings.value("autosync", false).toBool())
         m_args << QString("-autosync %1").arg(settings.value("autosync_factor", 100).toInt());
 
     m_args << m_url;

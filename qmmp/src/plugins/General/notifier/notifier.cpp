@@ -38,7 +38,7 @@ Notifier::Notifier(QObject *parent)
     settings.beginGroup("Notifier");
     m_desktop = settings.value("song_notification", true).toBool();
     m_showVolume = settings.value("volume_notification", true).toBool();
-    m_psi = settings.value("psi_notification", FALSE).toBool();
+    m_psi = settings.value("psi_notification", false).toBool();
     settings.endGroup();
     m_core = SoundCore::instance();
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));

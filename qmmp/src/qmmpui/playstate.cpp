@@ -34,7 +34,7 @@ bool ShufflePlayState::next()
         if (m_shuffled_current >= m_shuffled_indexes.count() -1 )
         {
             if (!m_model->isRepeatableList())
-                return FALSE;
+                return false;
             else
                 prepare();
         }
@@ -43,7 +43,7 @@ bool ShufflePlayState::next()
 
         return m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
     }
-    return FALSE;
+    return false;
 }
 
 bool ShufflePlayState::previous()
@@ -55,7 +55,7 @@ bool ShufflePlayState::previous()
         if (m_shuffled_current <= 0)
         {
             if (!m_model->isRepeatableList())
-                return FALSE;
+                return false;
             else
             {
                 prepare();
@@ -68,7 +68,7 @@ bool ShufflePlayState::previous()
         m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
         return true;
     }
-    return FALSE;
+    return false;
 }
 
 void ShufflePlayState::prepare()
@@ -107,12 +107,12 @@ bool NormalPlayState::next()
             if (m_model->isRepeatableList())
                 return m_model->setCurrent(0);
             else
-                return FALSE;
+                return false;
         }
         return m_model->setCurrent(m_model->currentRow() + 1);
     }
     else
-        return FALSE;
+        return false;
 }
 
 bool NormalPlayState::previous()
@@ -122,13 +122,13 @@ bool NormalPlayState::previous()
     if (itm_count > 0)
     {
         if ( m_model->currentRow() < 1 && !m_model->isRepeatableList())
-            return FALSE;
+            return false;
         else if (m_model->setCurrent(m_model->currentRow() - 1))
             return true;
         else if (m_model->isRepeatableList())
             return m_model->setCurrent(m_model->items().count() - 1);
     }
 
-    return FALSE;
+    return false;
 }
 

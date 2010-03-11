@@ -42,7 +42,7 @@ MainVisual *MainVisual::instance()
 }
 
 MainVisual::MainVisual (QWidget *parent)
-        : Visual (parent), m_vis (0), m_playing (FALSE)
+        : Visual (parent), m_vis (0), m_playing (false)
 {
     m_skin = Skin::instance();
     m_ratio = m_skin->ratio();
@@ -407,7 +407,7 @@ void MainVisual::readSettings()
         act->setChecked(true);
 
     m_transparentAction->setChecked(
-        settings.value("Visualization/transparent_bg", FALSE).toBool());
+        settings.value("Visualization/transparent_bg", false).toBool());
 
     updateSettings();
 }
@@ -475,7 +475,7 @@ bool Analyzer::process (VisualNode *node)
         calc_freq (dest, node->left);
     }
     else
-        return FALSE;
+        return false;
     const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
     int max = m_lines ? 75 : 19, y, j;
 
@@ -590,7 +590,7 @@ Scope::~Scope()
 bool Scope::process(VisualNode *node)
 {
     if (!node)
-        return FALSE;
+        return false;
 
     int step = (node->length << 8)/76;
     int pos = 0;

@@ -31,7 +31,7 @@ const GeneralProperties NotifierFactory::properties() const
     properties.shortName = "notifier";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.visibilityControl = FALSE;
+    properties.visibilityControl = false;
     return properties;
 }
 

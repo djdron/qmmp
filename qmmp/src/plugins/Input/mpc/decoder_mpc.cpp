@@ -153,7 +153,7 @@ bool DecoderMPC::initialize()
     if (!input())
     {
         qWarning("DecoderMPC: cannot initialize.  No input.");
-        return FALSE;
+        return false;
     }
 
     if (!input()->isOpen())
@@ -161,7 +161,7 @@ bool DecoderMPC::initialize()
         if (!input()->open(QIODevice::ReadOnly))
         {
             qWarning("DecoderMPC: unable to open input.");
-            return FALSE;
+            return false;
         }
     }
     if (!m_data)
@@ -180,12 +180,12 @@ bool DecoderMPC::initialize()
 #ifdef MPC_OLD_API
     mpc_streaminfo_init (&m_data->info);
     if (mpc_streaminfo_read (&m_data->info, &m_data->reader) != ERROR_CODE_OK)
-        return FALSE;
+        return false;
 #else
     m_data->demuxer = mpc_demux_init (&m_data->reader);
 
     if (!m_data->demuxer)
-        return FALSE;
+        return false;
     mpc_demux_get_info (m_data->demuxer, &m_data->info);
 #endif
 
@@ -199,7 +199,7 @@ bool DecoderMPC::initialize()
     if (!mpc_decoder_initialize (&data()->decoder, &data()->info))
     {
         qWarning("DecoderMPC: cannot get info.");
-        return FALSE;
+        return false;
     }
     rg_info[Qmmp::REPLAYGAIN_ALBUM_GAIN] = data()->info.gain_album/100.0;
     rg_info[Qmmp::REPLAYGAIN_TRACK_GAIN] = data()->info.gain_title/100.0;

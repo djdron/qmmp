@@ -38,7 +38,7 @@ ShadedBar::ShadedBar(QWidget *parent, uint slider1, uint slider2, uint slider3)
     else
         resize(m_ratio*42,m_ratio*7);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
-    m_moving = FALSE;
+    m_moving = false;
     m_min = 0;
     m_max = 100;
     m_old = m_value = 0;
@@ -88,7 +88,7 @@ void ShadedBar::mouseMoveEvent (QMouseEvent *e)
 
 void ShadedBar::mouseReleaseEvent(QMouseEvent*)
 {
-    m_moving = FALSE;
+    m_moving = false;
     draw();
     m_old = m_value;
 }

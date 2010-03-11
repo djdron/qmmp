@@ -56,7 +56,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
         : QMainWindow(parent)
 {
     m_vis = 0;
-    m_update = FALSE;
+    m_update = false;
     m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
 #if QT_VERSION >= 0x040500
@@ -296,31 +296,31 @@ void MainWindow::readSettings()
         move(settings.value("pos", QPoint(100, 100)).toPoint());
         //last directory
         m_lastDir = settings.value("last_dir","/").toString();
-        m_startHidden = settings.value("start_hidden", FALSE).toBool();
+        m_startHidden = settings.value("start_hidden", false).toBool();
         settings.endGroup();
         show();
         qApp->processEvents();
         //visibility
         m_playlist->setVisible(settings.value("Playlist/visible",true).toBool());
         m_equalizer->setVisible(settings.value("Equalizer/visible",true).toBool());
-        bool val = settings.value("Playlist/repeatable",FALSE).toBool();
+        bool val = settings.value("Playlist/repeatable",false).toBool();
 
         // Repeat/Shuffle
         m_pl_manager->setRepeatableList(val);
         m_display->setIsRepeatable(val);
-        val = settings.value("Playlist/shuffle",FALSE).toBool();
+        val = settings.value("Playlist/shuffle",false).toBool();
         m_display->setIsShuffle(val);
         m_pl_manager->setShuffle(val);
 
         m_update = true;
     }
-    if(!settings.value("General/metacity_compat", FALSE).toBool())
+    if(!settings.value("General/metacity_compat", false).toBool())
     {
         setWindowOpacity(settings.value("MainWindow/opacity", 1.0).toDouble());
         m_equalizer->setWindowOpacity(settings.value("Equalizer/opacity", 1.0).toDouble());
         m_playlist->setWindowOpacity(settings.value("PlayList/opacity", 1.0).toDouble());
     }
-    m_hideOnClose = settings.value("MainWindow/hide_on_close", FALSE).toBool();
+    m_hideOnClose = settings.value("MainWindow/hide_on_close", false).toBool();
 }
 
 void MainWindow::writeSettings()
@@ -340,7 +340,7 @@ void MainWindow::writeSettings()
     // playback state
     settings.beginGroup("General");
     settings.setValue("resume_playback", m_core->state() == Qmmp::Playing &&
-                      settings.value("resume_on_startup", FALSE).toBool());
+                      settings.value("resume_on_startup", false).toBool());
     settings.setValue("resume_playback_time", m_core->totalTime() > 0 ? m_core->elapsed() : 0);
     settings.endGroup();
 }
@@ -553,14 +553,14 @@ bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd
     }
     QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
     if(commands.isEmpty())
-        return FALSE;
+        return false;
     foreach(QString key, commands.keys())
     {
         if(key == "--enqueue" || key == "-e")
         {
             QStringList args = commands.value(key);
             if(args.isEmpty())
-                return FALSE;
+                return false;
             QStringList full_path_list;
             foreach(QString s, args)
             {
@@ -576,7 +576,7 @@ bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd
         else if (m_option_manager->identify(key))
             m_option_manager->executeCommand(key, commands.value(key), this);
         else
-            return FALSE;
+            return false;
     }
     return true;
 }
@@ -624,7 +624,7 @@ void MainWindow::resume()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("General");
-    if(settings.value("resume_playback", FALSE).toBool())
+    if(settings.value("resume_playback", false).toBool())
     {
         qint64 pos =  settings.value("resume_playback_time").toLongLong();
         m_player->play(pos);

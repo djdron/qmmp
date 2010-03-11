@@ -39,7 +39,7 @@ void QmmpFileDialog::handleSelected(/*const QStringList& s */)
 
 bool QmmpFileDialog::modal()const
 {
-    return FALSE;
+    return false;
 }
 
 QmmpFileDialog::~QmmpFileDialog()

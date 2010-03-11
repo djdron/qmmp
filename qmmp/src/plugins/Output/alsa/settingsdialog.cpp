@@ -55,8 +55,8 @@ SettingsDialog::SettingsDialog ( QWidget *parent )
     if (d >= 0)
         ui.mixerDeviceComboBox->setCurrentIndex(d);
 
-    ui.mmapCheckBox->setChecked(settings.value("use_mmap", FALSE).toBool());
-    ui.pauseCheckBox->setChecked(settings.value("use_snd_pcm_pause", FALSE).toBool());
+    ui.mmapCheckBox->setChecked(settings.value("use_mmap", false).toBool());
+    ui.pauseCheckBox->setChecked(settings.value("use_snd_pcm_pause", false).toBool());
     settings.endGroup();
 }
 

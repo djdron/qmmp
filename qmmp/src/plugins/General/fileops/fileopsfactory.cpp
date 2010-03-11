@@ -31,7 +31,7 @@ const GeneralProperties FileOpsFactory::properties() const
     properties.shortName = "fileops";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.visibilityControl = FALSE;
+    properties.visibilityControl = false;
     return properties;
 }
 

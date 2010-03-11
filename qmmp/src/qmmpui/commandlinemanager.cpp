@@ -100,7 +100,7 @@ bool CommandLineManager::hasOption(const QString &opt_str)
         if (opt->identify(opt_str))
             return true;
     }
-    return FALSE;
+    return false;
 }
 
 void CommandLineManager::printUsage()

@@ -36,8 +36,8 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     m_shade2 = 0;
     m_left = 0;
     m_right = 0;
-    m_shaded = FALSE;
-    m_align = FALSE;
+    m_shaded = false;
+    m_align = false;
     m_skin = Skin::instance();
     m_eq = parentWidget();
     m_mw = qobject_cast<MainWindow*>(m_eq->parent());
@@ -46,10 +46,10 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     m_shade = new Button(this, Skin::EQ_BT_SHADE1_N, Skin::EQ_BT_SHADE1_P, Skin::CUR_EQNORMAL);
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("Equalizer/shaded", FALSE).toBool())
+    if (settings.value("Equalizer/shaded", false).toBool())
         shade();
     m_align = true;
-    setActive(FALSE);
+    setActive(false);
     setCursor(m_skin->getCursor(Skin::CUR_EQTITLE));
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     updatePositions();

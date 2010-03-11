@@ -60,11 +60,11 @@ static QStringList qt_clean_filter_list(const QString &filter)
 QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QDialog(parent,f)
 {
     setupUi(this);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
 #if QT_VERSION >= 0x040400
     m_model = new QFileSystemModel(this);
-    m_model->setNameFilterDisables (FALSE);
-    m_model->setReadOnly(FALSE);
+    m_model->setNameFilterDisables (false);
+    m_model->setReadOnly(false);
 #else
     m_model = new QDirModel(this);
     m_model->setSorting(QDir::Type);
@@ -73,9 +73,9 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
     fileListView->setModel(m_model);
     treeView->setModel(m_model);
     treeView->setSortingEnabled(true);
-    treeView->setItemsExpandable(FALSE);
+    treeView->setItemsExpandable(false);
     treeView->header()->setSortIndicator(0, Qt::AscendingOrder);
-    treeView->header()->setStretchLastSection (FALSE);
+    treeView->header()->setStretchLastSection (false);
     listToolButton->setChecked(true);
     upToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_ArrowUp));
     listToolButton->setIcon(qApp->style()->standardIcon(QStyle::SP_FileDialogListView));
@@ -90,7 +90,7 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
     PathCompleter* completer = new PathCompleter (m_model, fileListView, this);
     fileNameLineEdit->setCompleter (completer);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    closeOnAddToolButton->setChecked(settings.value("QMMPFileDialog/close_on_add", FALSE).toBool());
+    closeOnAddToolButton->setChecked(settings.value("QMMPFileDialog/close_on_add", false).toBool());
     restoreGeometry(settings.value("QMMPFileDialog/geometry").toByteArray());
     m_history = settings.value("QMMPFileDialog/history").toStringList();
     lookInComboBox->addItems(m_history);
@@ -255,7 +255,7 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
     fileListView->clearSelection ();
     treeView->clearSelection ();
     fileTypeComboBox->clear();
-    addPushButton->setEnabled(FALSE);
+    addPushButton->setEnabled(false);
     addPushButton->setText(tr("Add"));
 
     QString fileName;
@@ -286,7 +286,7 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
     {
         m_model->setFilter(QDir::AllDirs | QDir::NoDotAndDotDot); //dirs only
         fileTypeComboBox->addItem(tr("Directories"));
-        fileTypeComboBox->setEnabled(FALSE);
+        fileTypeComboBox->setEnabled(false);
     }
     else
     {
@@ -379,7 +379,7 @@ void QmmpFileDialogImpl::updateSelection ()
             {
                 if (QFileInfo(str).isDir())
                 {
-                    addPushButton->setEnabled(FALSE);
+                    addPushButton->setEnabled(false);
                     break;
                 }
             }
@@ -390,7 +390,7 @@ void QmmpFileDialogImpl::updateSelection ()
     else
     {
         fileNameLineEdit->clear();
-        addPushButton->setEnabled(FALSE);
+        addPushButton->setEnabled(false);
     }
 }
 
@@ -425,7 +425,7 @@ void QmmpFileDialogImpl::addFiles(const QStringList &list)
     {
         //check file extension
         QString f_name = fileNameLineEdit->text();
-        bool contains = FALSE;
+        bool contains = false;
         foreach(QString str, qt_clean_filter_list(fileTypeComboBox->currentText()))
         {
             QRegExp regExp(str);

@@ -39,7 +39,7 @@ AddUrlDialog::AddUrlDialog( QWidget * parent, Qt::WindowFlags f) : QDialog(paren
 {
     setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_history = settings.value("URLDialog/history").toStringList();
     urlComboBox->addItems(m_history);
@@ -100,7 +100,7 @@ void AddUrlDialog::accept( )
                 request.setUrl(QUrl(s));
                 request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
                 m_http->get(request);
-                addButton->setEnabled(FALSE);
+                addButton->setEnabled(false);
                 return;
             }
         }

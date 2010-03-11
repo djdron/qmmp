@@ -222,7 +222,7 @@ static void flac_callback_metadata (const FLAC__StreamDecoder *,
 
 static FLAC__bool flac_callback_eof (const FLAC__StreamDecoder *, void *)
 {
-    return FALSE;
+    return false;
 }
 
 static void flac_callback_error (const FLAC__StreamDecoder *,
@@ -277,7 +277,7 @@ bool DecoderFLAC::initialize()
             if (!p.endsWith(".flac"))
             {
                 qWarning("DecoderFLAC: invalid url.");
-                return FALSE;
+                return false;
             }
             p.replace(QString(QUrl::toPercentEncoding("#")), "#");
             p.replace(QString(QUrl::toPercentEncoding("?")), "?");
@@ -295,7 +295,7 @@ bool DecoderFLAC::initialize()
                 if(m_track > m_parser->count())
                 {
                     qWarning("DecoderFLAC: invalid cuesheet xiph comment");
-                    return FALSE;
+                    return false;
                 }
                 data()->input = new QFile(p);
                 data()->input->open(QIODevice::ReadOnly);
@@ -307,20 +307,20 @@ bool DecoderFLAC::initialize()
             else
             {
                 qWarning("DecoderFLAC: unable to find cuesheet comment.");
-                return FALSE;
+                return false;
             }
         }
         else
         {
             qWarning("DecoderFLAC: cannot initialize.  No input.");
-            return FALSE;
+            return false;
         }
     }
 
     if (!data()->input->isOpen())
     {
         qWarning("DecoderFLAC: unable to open input file");
-        return FALSE;
+        return false;
     }
 
     m_data->bitrate = -1;
@@ -349,7 +349,7 @@ bool DecoderFLAC::initialize()
         if(!FLAC_API_SUPPORTS_OGG_FLAC)
         {
             qWarning("DecoderFLAC: unsupported format");
-            return FALSE;
+            return false;
         }
         if (FLAC__stream_decoder_init_ogg_stream(
                 m_data->decoder,
@@ -364,7 +364,7 @@ bool DecoderFLAC::initialize()
                 this) != FLAC__STREAM_DECODER_INIT_STATUS_OK)
         {
             data()->ok = 0;
-            return FALSE;
+            return false;
         }
     }
     else if (!memcmp(buf, "fLaC", 4))
@@ -382,20 +382,20 @@ bool DecoderFLAC::initialize()
                 this) != FLAC__STREAM_DECODER_INIT_STATUS_OK)
         {
             data()->ok = 0;
-            return FALSE;
+            return false;
         }
     }
     else
     {
         qWarning("DecoderFLAC: unsupported format");
-        return FALSE;
+        return false;
     }
 
     if (!FLAC__stream_decoder_process_until_end_of_metadata(
                 data()->decoder))
     {
         data()->ok = 0;
-        return FALSE;
+        return false;
     }
     switch(data()->bits_per_sample)
     {
@@ -410,7 +410,7 @@ bool DecoderFLAC::initialize()
         configure(data()->sample_rate, data()->channels, Qmmp::PCM_S32LE);
         break;
     default:
-        return FALSE;
+        return false;
     }
     if(!m_path.contains("://"))
     {

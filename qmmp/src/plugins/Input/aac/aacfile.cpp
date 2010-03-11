@@ -33,7 +33,7 @@ static int adts_sample_rates[] = {96000,88200,64000,48000,44100,32000,24000,2205
 
 AACFile::AACFile(QIODevice *i, bool metaData)
 {
-    m_isValid = FALSE;
+    m_isValid = false;
     m_length = 0;
     m_bitrate = 0;
     m_samplerate = 0;

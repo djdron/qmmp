@@ -86,7 +86,7 @@ bool DecoderWavPack::initialize()
             if(m_track > m_parser->count())
             {
                 qWarning("DecoderWavPack: invalid cuesheet comment");
-                return FALSE;
+                return false;
             }
             m_path = p;
             //send metadata
@@ -100,7 +100,7 @@ bool DecoderWavPack::initialize()
     if (!m_context)
     {
         qWarning("DecoderWavPack: error: %s", err);
-        return FALSE;
+        return false;
     }
 
     m_chan = WavpackGetNumChannels(m_context);

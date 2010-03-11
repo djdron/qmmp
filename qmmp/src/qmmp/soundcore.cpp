@@ -41,10 +41,10 @@ SoundCore::SoundCore(QObject *parent)
 {
     m_instance = this;
     m_decoder = 0;
-    m_paused = FALSE;
-    m_useEQ = FALSE;
-    m_update = FALSE;
-    m_block = FALSE;
+    m_paused = false;
+    m_useEQ = false;
+    m_update = false;
+    m_block = false;
     m_preamp = 0;
     m_vis = 0;
     m_parentWidget = 0;
@@ -276,7 +276,7 @@ bool SoundCore::enqueue(InputSource *s)
         if(!engine) //unsupported file format
         {
             s->deleteLater();
-            return FALSE;
+            return false;
         }
         connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
         engine->setEQ(m_bands, m_preamp);

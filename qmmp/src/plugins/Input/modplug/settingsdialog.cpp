@@ -37,8 +37,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("ModPlug");
     //general
-    ui.noiseCheckBox->setChecked(settings.value("NoiseReduction", FALSE).toBool());
-    ui.fileNameCheckBox->setChecked(settings.value("UseFileName", FALSE).toBool());
+    ui.noiseCheckBox->setChecked(settings.value("NoiseReduction", false).toBool());
+    ui.fileNameCheckBox->setChecked(settings.value("UseFileName", false).toBool());
     ui.amigaCheckBox->setChecked(settings.value("GrabAmigaMOD", true).toBool());
     //settings.value("Oversampling", true).toBool();
     //settings.value("VolumeRamp", true).toBool();
@@ -74,7 +74,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     else
         ui.resampPolyphaseRadioButton->setChecked(true);
     //reverberation
-    ui.reverbGroupBox->setChecked(settings.value("Reverb", FALSE).toBool());
+    ui.reverbGroupBox->setChecked(settings.value("Reverb", false).toBool());
     ui.reverbDepthSlider->setValue(settings.value("ReverbDepth", 30).toInt());
     ui.reverbDelaySlider->setValue(settings.value("ReverbDelay", 100).toInt());
     //surround
@@ -82,11 +82,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.surDepthSlider->setValue(settings.value("SurroundDepth", 20).toInt());
     ui.surDelaySlider->setValue(settings.value("SurroundDelay", 20).toInt());
     //bass
-    ui.bassGroupBox->setChecked(settings.value("Megabass", FALSE).toBool());
+    ui.bassGroupBox->setChecked(settings.value("Megabass", false).toBool());
     ui.bassAmountSlider->setValue(settings.value("BassAmount", 40).toInt());
     ui.bassRangeSlider->setValue(settings.value("BassRange", 30).toInt());
     //preamp
-    ui.preampGroupBox->setChecked(settings.value("PreAmp", FALSE).toBool());
+    ui.preampGroupBox->setChecked(settings.value("PreAmp", false).toBool());
     connect(ui.preampSlider, SIGNAL(valueChanged(int)), SLOT(setPreamp(int)));
     ui.preampSlider->setValue(int(settings.value("PreAmpLevel", 0.0f).toDouble()*10));
     //looping

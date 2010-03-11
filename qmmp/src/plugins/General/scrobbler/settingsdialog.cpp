@@ -29,10 +29,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
-    ui.lastfmGroupBox->setChecked(settings.value("use_lastfm", FALSE).toBool());
+    ui.lastfmGroupBox->setChecked(settings.value("use_lastfm", false).toBool());
     ui.userLineEdit->setText(settings.value("lastfm_login").toString());
     ui.passwordLineEdit->setText(settings.value("lastfm_password").toString());
-    ui.librefmGroupBox->setChecked(settings.value("use_librefm", FALSE).toBool());
+    ui.librefmGroupBox->setChecked(settings.value("use_librefm", false).toBool());
     ui.userLineEdit_libre->setText(settings.value("librefm_login").toString());
     ui.passwordLineEdit_libre->setText(settings.value("librefm_password").toString());
     settings.endGroup();

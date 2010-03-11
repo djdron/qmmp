@@ -212,7 +212,7 @@ void Scrobbler::processResponse(QNetworkReply *reply)
             else
             {
                 qWarning("Scrobbler[%s]: service error: %s", qPrintable(m_name), qPrintable(strlist[0]));
-                m_disabled = FALSE;
+                m_disabled = false;
                 m_handshake_count++;
                 QTimer::singleShot (60000 * qMin(m_handshake_count^2, 120) , this, SLOT(handshake()));
                 qWarning("Scrobbler[%s]: waiting %d minutes...", qPrintable(m_name),

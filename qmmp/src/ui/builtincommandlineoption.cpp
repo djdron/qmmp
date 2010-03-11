@@ -48,7 +48,7 @@ bool BuiltinCommandLineOption::identify(const QString & str) const
         str == "--add-file" ||
         str == "--add-dir")
         return true;
-    return FALSE;
+    return false;
 }
 
 const QString BuiltinCommandLineOption::helpString() const
@@ -117,7 +117,7 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     }
     else if (option_string == "--volume" && !args.isEmpty())
     {
-        bool ok = FALSE;
+        bool ok = false;
         int volume = args.at(0).toInt(&ok);
         if (ok)
             mw->soundCore()->setVolume(volume,volume);

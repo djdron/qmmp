@@ -30,7 +30,7 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
         : QDialog (parent)
 {
     setupUi(this);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
     m_pl_manager = manager;
     m_listModel = new QStringListModel(this);
 

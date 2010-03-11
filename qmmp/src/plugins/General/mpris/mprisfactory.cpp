@@ -29,8 +29,8 @@ const GeneralProperties MPRISFactory::properties() const
     properties.name = tr("MPRIS Plugin");
     properties.shortName = "mpris";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
-    properties.visibilityControl = FALSE;
+    properties.hasSettings = false;
+    properties.visibilityControl = false;
     return properties;
 }
 

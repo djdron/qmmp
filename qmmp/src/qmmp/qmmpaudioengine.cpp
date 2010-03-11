@@ -39,8 +39,8 @@ extern "C"
 }
 
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
-        : AbstractEngine(parent), m_factory(0), m_output(0), m_eqInited(FALSE),
-        m_useEq(FALSE), m_eqEnabled(FALSE)
+        : AbstractEngine(parent), m_factory(0), m_output(0), m_eqInited(false),
+        m_useEq(false), m_eqEnabled(FALSE)
 {
     m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
     double b[] = {0,0,0,0,0,0,0,0,0,0};
@@ -72,26 +72,26 @@ QmmpAudioEngine::~QmmpAudioEngine()
 
 void QmmpAudioEngine::reset()
 {
-    m_done = FALSE;
-    m_finish = FALSE;
+    m_done = false;
+    m_finish = false;
     m_totalTime = 0;
     m_seekTime = -1;
     m_output_at = 0;
-    m_user_stop = FALSE;
+    m_user_stop = false;
     m_bitrate = 0;
     m_chan = 0;
     m_bps = 0;
-    m_next = FALSE;
+    m_next = false;
 }
 
 bool QmmpAudioEngine::play()
 {
     if(isRunning() || m_decoders.isEmpty() || (m_output && m_output->isRunning()))
-        return FALSE;
+        return false;
     if(m_output)
         delete m_output;
     if(!(m_output = createOutput(m_decoders.head())))
-        return FALSE;
+        return false;
     start();
     return true;
 }
@@ -121,7 +121,7 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     if(!factory)
     {
         qWarning("QmmpAudioEngine: unsupported file format");
-        return FALSE;
+        return false;
     }
     qDebug("QmmpAudioEngine: selected decoder: %s",qPrintable(factory->properties().shortName));
     if(factory->properties().noInput && source->ioDevice())
@@ -131,7 +131,7 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
     {
         qWarning("QmmpAudioEngine: invalid file format");
         delete decoder;
-        return FALSE;
+        return false;
     }
     m_decoders.enqueue(decoder);
     m_inputs.insert(decoder, source);
@@ -358,7 +358,7 @@ void QmmpAudioEngine::run()
     Q_ASSERT(m_chan == 0);
     Q_ASSERT(!m_output_buf);
     mutex()->lock ();
-    m_next = FALSE;
+    m_next = false;
     qint64 len = 0;
     if(m_decoders.isEmpty())
     {
@@ -401,7 +401,7 @@ void QmmpAudioEngine::run()
         {
             if(m_next) //decoder can play next track without initialization
             {
-                m_next = FALSE;
+                m_next = false;
                 qDebug("QmmpAudioEngine: switching to the next track");
                 emit playbackFinished();
                 StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
@@ -486,7 +486,7 @@ void QmmpAudioEngine::run()
     }
 
     mutex()->lock ();
-    m_next = FALSE;
+    m_next = false;
     if (m_finish)
         finish();
     m_output->recycler()->cond()->wakeAll();
@@ -579,7 +579,7 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
         delete output;
         output = 0;
         StateHandler::instance()->dispatch(Qmmp::FatalError);
-        return FALSE;
+        return false;
     }
     m_effects = Effect::create();
     AudioParameters ap = m_ap;

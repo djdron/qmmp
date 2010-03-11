@@ -22,7 +22,7 @@
 
 EmptyInputSource::EmptyInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
-    m_ok = FALSE;
+    m_ok = false;
 }
 
 QIODevice *EmptyInputSource::ioDevice()

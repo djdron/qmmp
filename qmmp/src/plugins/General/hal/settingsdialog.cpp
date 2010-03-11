@@ -31,11 +31,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HAL");
     ui.cdGroupBox->setChecked(settings.value("cda", true).toBool());
-    ui.addTracksCheckBox->setChecked(settings.value("add_tracks", FALSE).toBool());
-    ui.removeTracksCheckBox->setChecked(settings.value("remove_tracks", FALSE).toBool());
+    ui.addTracksCheckBox->setChecked(settings.value("add_tracks", false).toBool());
+    ui.removeTracksCheckBox->setChecked(settings.value("remove_tracks", false).toBool());
     ui.removableGroupBox->setChecked(settings.value("removable", true).toBool());
-    ui.addFilesCheckBox->setChecked(settings.value("add_files", FALSE).toBool());
-    ui.removeFilesCheckBox->setChecked(settings.value("remove_files", FALSE).toBool());
+    ui.addFilesCheckBox->setChecked(settings.value("add_files", false).toBool());
+    ui.removeFilesCheckBox->setChecked(settings.value("remove_files", false).toBool());
     settings.endGroup();
 }
 

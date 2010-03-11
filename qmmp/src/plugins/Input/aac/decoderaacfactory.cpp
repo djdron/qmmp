@@ -36,7 +36,7 @@ bool DecoderAACFactory::supports(const QString &source) const
 
 bool DecoderAACFactory::canDecode(QIODevice *) const
 {
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderAACFactory::properties() const
@@ -48,7 +48,7 @@ const DecoderProperties DecoderAACFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "aac";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = false;
     return properties;
 }
 

@@ -124,7 +124,7 @@ public slots:
      * Returns \b true if playback has been started successful or source is not a local file,
      * otherwise returns \b false. Useful for invalid files skipping.
      */
-    bool play(const QString &source, bool queue = FALSE, qint64 offset = -1);
+    bool play(const QString &source, bool queue = false, qint64 offset = -1);
     /*!
      *  Stops playback
      */

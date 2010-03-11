@@ -46,8 +46,8 @@ StatusIcon::StatusIcon(QObject *parent)
     settings.beginGroup("Tray");
     m_showMessage = settings.value("show_message",true).toBool();
     m_messageDelay = settings.value("message_delay", 2000).toInt();
-    m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
-    m_useStandardIcons = settings.value("use_standard_icons",FALSE).toBool();
+    m_hideToTray = settings.value("hide_on_close", false).toBool();
+    m_useStandardIcons = settings.value("use_standard_icons",false).toBool();
     m_tray->showNiceToolTip(settings.value("show_nicetooltip",true).toBool());
     if(m_useStandardIcons)
         m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));

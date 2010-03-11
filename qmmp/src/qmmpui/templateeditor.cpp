@@ -93,7 +93,7 @@ QString TemplateEditor::getTemplate (QWidget *parent, const QString &title, cons
     else
     {
         if(ok)
-            *ok = FALSE;
+            *ok = false;
         editor->deleteLater();
         return QString();
     }

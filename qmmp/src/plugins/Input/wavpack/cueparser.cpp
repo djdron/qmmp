@@ -94,7 +94,7 @@ CUEParser::CUEParser(const QByteArray &array, const QString &fileName)
         return;
     }
     //calculate last item length
-    QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(m_filePath, FALSE);
+    QList <FileInfo *> f_list = MetaDataManager::instance()->createPlayList(m_filePath, false);
     qint64 l = f_list.isEmpty() ? 0 : f_list.at(0)->length() * 1000;
     if (l > m_offsets.last())
         m_infoList.last().setLength(l - m_offsets.last());

@@ -55,10 +55,10 @@ ConfigDialog::ConfigDialog (QWidget *parent)
         : QDialog (parent)
 {
     ui.setupUi (this);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
-    setAttribute(Qt::WA_DeleteOnClose, FALSE);
-    ui.preferencesButton->setEnabled(FALSE);
-    ui.informationButton->setEnabled(FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
+    setAttribute(Qt::WA_DeleteOnClose, false);
+    ui.preferencesButton->setEnabled(false);
+    ui.informationButton->setEnabled(false);
     connect (ui.mainFontButton, SIGNAL (clicked()), SLOT (setMainFont()));
     connect (ui.plFontButton, SIGNAL (clicked()), SLOT (setPlFont()));
     connect (this, SIGNAL(rejected()),SLOT(saveSettings()));
@@ -92,10 +92,10 @@ void ConfigDialog::readSettings()
         ui.underscoresCheckBox->setChecked(player->playListManager()->convertUnderscore());
         ui.per20CheckBox->setChecked(player->playListManager()->convertTwenty());
     }
-    ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
+    ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", false).toBool());
     ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", true).toBool());
-    ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", FALSE).toBool());
-    ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", FALSE).toBool());
+    ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", false).toBool());
+    ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", false).toBool());
     QmmpSettings *gs = QmmpSettings::instance();
     //proxy settings
     ui.enableProxyCheckBox->setChecked(gs->isProxyEnabled());
@@ -111,23 +111,23 @@ void ConfigDialog::readSettings()
     ui.proxyUserLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
     ui.proxyPasswLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
 
-    ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", FALSE).toBool());
-    ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", FALSE).toBool());
+    ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", false).toBool());
+    ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", false).toBool());
     //transparency
     ui.mwTransparencySlider->setValue(100 - settings.value("MainWindow/opacity", 1.0).toDouble()*100);
     ui.eqTransparencySlider->setValue(100 - settings.value("Equalizer/opacity", 1.0).toDouble()*100);
     ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
     //compatibility
-    ui.openboxCheckBox->setChecked(settings.value("General/openbox_compat", FALSE).toBool());
-    ui.metacityCheckBox->setChecked(settings.value("General/metacity_compat", FALSE).toBool());
+    ui.openboxCheckBox->setChecked(settings.value("General/openbox_compat", false).toBool());
+    ui.metacityCheckBox->setChecked(settings.value("General/metacity_compat", false).toBool());
     //skin options
-    ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", FALSE).toBool());
-    ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", FALSE).toBool());
+    ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", false).toBool());
+    ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", false).toBool());
     //resume playback
-    ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", FALSE).toBool());
+    ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", false).toBool());
     //cover options
     ui.coverIncludeLineEdit->setText(gs->coverNameFilters(true).join(","));
-    ui.coverExcludeLineEdit->setText(gs->coverNameFilters(FALSE).join(","));
+    ui.coverExcludeLineEdit->setText(gs->coverNameFilters(false).join(","));
     ui.coverDepthSpinBox->setValue(gs->coverSearchDepth());
     ui.useCoverFilesCheckBox->setChecked(gs->useCoverFiles());
     //replay gain
@@ -279,14 +279,14 @@ void ConfigDialog::loadPluginsInfo()
     ui.treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
 
-    ui.treeWidget->blockSignals(FALSE);
+    ui.treeWidget->blockSignals(false);
     ui.treeWidget->resizeColumnToContents(0);
     ui.treeWidget->resizeColumnToContents(1);
     /*
         load output plugins information
     */
-    ui.outputInformationButton->setEnabled(FALSE);
-    ui.outputPreferencesButton->setEnabled(FALSE);
+    ui.outputInformationButton->setEnabled(false);
+    ui.outputPreferencesButton->setEnabled(false);
     QList <OutputFactory *> *outputs = Output::factories();
     for (int i = 0; i < outputs->count (); ++i)
     {
@@ -324,7 +324,7 @@ void ConfigDialog::loadFonts()
         font.fromString(fontname);
     ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.mainFontLabel->setFont(font);
-    ui.useBitmapCheckBox->setChecked(settings.value("MainWindow/bitmap_font", FALSE).toBool());
+    ui.useBitmapCheckBox->setChecked(settings.value("MainWindow/bitmap_font", false).toBool());
 }
 
 void ConfigDialog::setPlFont()
@@ -499,8 +499,8 @@ void ConfigDialog::on_treeWidget_currentItemChanged (QTreeWidgetItem *current, Q
     }
     else
     {
-        ui.preferencesButton->setEnabled(FALSE);
-        ui.informationButton->setEnabled(FALSE);
+        ui.preferencesButton->setEnabled(false);
+        ui.informationButton->setEnabled(false);
     }
 }
 

@@ -35,7 +35,7 @@ bool DecoderWavPackFactory::supports(const QString &source) const
 
 bool DecoderWavPackFactory::canDecode(QIODevice *) const
 {
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderWavPackFactory::properties() const
@@ -47,7 +47,7 @@ const DecoderProperties DecoderWavPackFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "wavpack";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = false;
     properties.noInput = true;
     properties.protocols = "file wvpack";
     return properties;

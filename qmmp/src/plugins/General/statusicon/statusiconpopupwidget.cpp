@@ -44,7 +44,7 @@ StatusIconPopupWidget::StatusIconPopupWidget(QWidget * parent)
     setWindowFlags(Qt::X11BypassWindowManagerHint |
                    Qt::WindowStaysOnTopHint | Qt::Dialog | Qt::FramelessWindowHint);
     setFrameStyle(QFrame::NoFrame | QFrame::Plain);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
 
     m_hLayout = new QHBoxLayout();
     m_vLayout = new QVBoxLayout();

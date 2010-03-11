@@ -51,7 +51,7 @@ TextScroller::TextScroller ( QWidget *parent )
     m_progress = -1;
     m_metrics = 0;
     m_text = "Qt-based Multimedia Player (Qmmp " + Qmmp::strVersion() + ")";
-    m_update = FALSE;
+    m_update = false;
     readSettings();
     m_timer = new QTimer ( this );
     connect (m_timer, SIGNAL (timeout()), SLOT (addOffset()));
@@ -141,7 +141,7 @@ void TextScroller::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value("MainWindow/Font","").toString();
-    m_bitmapConf = settings.value("MainWindow/bitmap_font", FALSE).toBool();
+    m_bitmapConf = settings.value("MainWindow/bitmap_font", false).toBool();
     m_font.fromString(fontname);
 
     if (m_update)
@@ -152,7 +152,7 @@ void TextScroller::readSettings()
     else
     {
         m_update = true;
-        m_bitmap = FALSE;
+        m_bitmap = false;
 
     }
     m_metrics = new QFontMetrics(m_font);
@@ -249,7 +249,7 @@ void TextScroller::mouseReleaseEvent (QMouseEvent *e)
     else if (e->button() == Qt::LeftButton && m_autoscroll)
     {
         m_timer->start();
-        m_pressing = FALSE;
+        m_pressing = false;
     }
     else
         QWidget::mouseReleaseEvent(e);

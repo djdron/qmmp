@@ -27,7 +27,7 @@
 PlayListBrowser::PlayListBrowser(PlayListManager *manager, QWidget *parent) : QDialog(parent)
 {
     setAttribute(Qt::WA_DeleteOnClose, true);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
     setWindowModality(Qt::NonModal);
     ui.setupUi(this);
     m_pl_manager = manager;

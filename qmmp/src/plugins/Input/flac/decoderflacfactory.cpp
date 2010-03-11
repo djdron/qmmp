@@ -42,7 +42,7 @@ bool DecoderFLACFactory::supports(const QString &source) const
 bool DecoderFLACFactory::canDecode(QIODevice *input) const
 {
     Q_UNUSED(input);
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderFLACFactory::properties() const
@@ -55,7 +55,7 @@ const DecoderProperties DecoderFLACFactory::properties() const
     properties.shortName = "flac";
     properties.protocols = "flac";
     properties.hasAbout = true;
-    properties.hasSettings = FALSE;
+    properties.hasSettings = false;
     return properties;
 }
 

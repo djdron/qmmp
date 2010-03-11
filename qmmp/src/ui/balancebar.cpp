@@ -32,11 +32,11 @@ BalanceBar::BalanceBar(QWidget *parent)
     m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getBalanceBar(0));
-    m_moving = FALSE;
+    m_moving = false;
     m_min = -100;
     m_max = 100;
     m_old = m_value = 0;
-    draw(FALSE);
+    draw(false);
 }
 
 
@@ -82,8 +82,8 @@ void BalanceBar::mouseMoveEvent (QMouseEvent *e)
 
 void BalanceBar::mouseReleaseEvent(QMouseEvent*)
 {
-    m_moving = FALSE;
-    draw(FALSE);
+    m_moving = false;
+    draw(false);
     m_old = m_value;
 }
 
@@ -92,19 +92,19 @@ void BalanceBar::setValue(int v)
     if (m_moving || m_max == 0)
         return;
     m_value = v;
-    draw(FALSE);
+    draw(false);
 }
 
 void BalanceBar::setMax(int max)
 {
     m_max = max;
-    draw(FALSE);
+    draw(false);
 }
 
 void BalanceBar::updateSkin()
 {
     resize(m_skin->getBalanceBar(0).size());
-    draw(FALSE);
+    draw(false);
 }
 
 void BalanceBar::draw(bool pressed)

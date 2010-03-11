@@ -28,7 +28,7 @@ ReplayGain::ReplayGain()
     m_mode = QmmpSettings::REPLAYGAIN_DISABLED;
     m_preamp = 0.0;
     m_default_gain = 0.0;
-    m_prevent_clipping = FALSE;
+    m_prevent_clipping = false;
 }
 
 void ReplayGain::setSampleSize(int size)

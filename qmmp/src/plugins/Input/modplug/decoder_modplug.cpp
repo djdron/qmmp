@@ -79,7 +79,7 @@ bool DecoderModPlug::initialize()
         if (!file.open(QIODevice::ReadOnly))
         {
             qWarning("DecoderModPlug: error: %s", qPrintable(file.errorString ()));
-            return FALSE;
+            return false;
         }
         m_input_buf = file.readAll();
         file.close();
@@ -87,7 +87,7 @@ bool DecoderModPlug::initialize()
     if (m_input_buf.isEmpty())
     {
         qWarning("DecoderModPlug: error reading moplug file");
-        return FALSE;
+        return false;
     }
     m_soundFile = new CSoundFile();
     readSettings();
@@ -189,13 +189,13 @@ void DecoderModPlug::readSettings()
     (
         settings.value("Surround", true).toBool(),
         true,
-        settings.value("Reverb", FALSE).toBool(),
+        settings.value("Reverb", false).toBool(),
         true,
-        settings.value("Megabass", FALSE).toBool(),
-        settings.value("NoiseReduction", FALSE).toBool(),
-        FALSE
+        settings.value("Megabass", false).toBool(),
+        settings.value("NoiseReduction", false).toBool(),
+        false
     );
-    if (settings.value("Reverb", FALSE).toBool())
+    if (settings.value("Reverb", false).toBool())
     {
         CSoundFile::SetReverbParameters
         (
@@ -203,7 +203,7 @@ void DecoderModPlug::readSettings()
             settings.value("ReverbDelay", 100).toInt()
         );
     }
-    if (settings.value("Megabass", FALSE).toBool())
+    if (settings.value("Megabass", false).toBool())
     {
         CSoundFile::SetXBassParameters
         (
@@ -227,7 +227,7 @@ void DecoderModPlug::readSettings()
     /*
      settings.value("GrabAmigaMOD", true).toBool());*/
     //preamp
-    m_usePreamp = settings.value("PreAmp", FALSE).toBool();
+    m_usePreamp = settings.value("PreAmp", false).toBool();
     m_preampFactor = exp(settings.value("PreAmpLevel", 0.0f).toDouble());
     settings.endGroup();
 }

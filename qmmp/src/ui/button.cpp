@@ -32,7 +32,7 @@ Button::Button (QWidget *parent, uint normal, uint pressed, uint cursor)
     name_pressed = pressed;
     name_cursor = cursor;
     skin = Skin::instance();
-    setON (FALSE);
+    setON (false);
     setCursor (skin->getCursor (name_cursor));
     connect (skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
 }
@@ -63,7 +63,7 @@ void Button::mousePressEvent (QMouseEvent *e)
 
 void Button::mouseReleaseEvent (QMouseEvent*)
 {
-    setON (FALSE);
+    setON (false);
     if (m_cursorin)
         emit clicked();
 }
@@ -74,7 +74,7 @@ void Button::mouseMoveEvent (QMouseEvent *e)
         m_cursorin = true;
         setON (true);
     } else if ( m_cursorin && !rect().contains(e->pos()) ) {
-        m_cursorin = FALSE;
-        setON (FALSE);
+        m_cursorin = false;
+        setON (false);
     }
 }

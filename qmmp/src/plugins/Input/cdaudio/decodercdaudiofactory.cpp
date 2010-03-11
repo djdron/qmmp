@@ -36,7 +36,7 @@ bool DecoderCDAudioFactory::supports(const QString &source) const
 
 bool DecoderCDAudioFactory::canDecode(QIODevice *) const
 {
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderCDAudioFactory::properties() const

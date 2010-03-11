@@ -166,7 +166,7 @@ bool Effect::isEnabled(EffectFactory* factory)
 {
     checkFactories();
     if(!m_factories->contains(factory))
-        return FALSE;
+        return false;
     QString name = factory->properties().shortName;
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     QStringList effList = settings.value("Effect/enabled_plugins").toStringList();

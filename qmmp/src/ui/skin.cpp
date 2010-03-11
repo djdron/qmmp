@@ -77,8 +77,8 @@ Skin::~Skin()
 void Skin::setSkin (const QString& path)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_use_cursors = settings.value("General/skin_cursors", FALSE).toBool();
-    m_double_size = settings.value("General/double_size", FALSE).toBool();
+    m_use_cursors = settings.value("General/skin_cursors", false).toBool();
+    m_double_size = settings.value("General/double_size", false).toBool();
     settings.setValue("skin_path",path);
     qDebug ("Skin: using %s",qPrintable(path));
     m_skin_dir = QDir (path);

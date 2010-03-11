@@ -61,7 +61,7 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
         if (regexp.exactMatch(source))
             return true;
     }
-    return FALSE;
+    return false;
 }
 
 bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
@@ -82,18 +82,18 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
     pd.buf_size = i->peek((char*)buf, sizeof(buf) - AVPROBE_PADDING_SIZE);
     pd.buf = buf;
     if(pd.buf_size < 8192)
-        return FALSE;
+        return false;
     AVInputFormat *fmt = av_probe_input_format(&pd, 1);
     if(!fmt)
     {
         qWarning("DecoderFFmpegFactory: usupported format");
-        return FALSE;
+        return false;
     }
     if(filters.contains("*.mp3") && !memcmp(fmt->name, "mp3", 3))
         return true;
     if(filters.contains("*.aac") && !memcmp(fmt->name, "aac", 3))
         return true;
-    return FALSE;
+    return false;
 }
 
 const DecoderProperties DecoderFFmpegFactory::properties() const
@@ -122,7 +122,7 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     properties.shortName = "ffmpeg";
     properties.hasAbout = true;
     properties.hasSettings = true;
-    properties.noInput = FALSE;
+    properties.noInput = false;
     return properties;
 }
 

@@ -68,7 +68,7 @@ bool DecoderAAC::initialize()
     if (!input())
     {
         qWarning("DecoderAAC: cannot initialize.  No input.");
-        return FALSE;
+        return false;
     }
     if (!m_input_buf)
         m_input_buf = new char[AAC_BUFFER_SIZE];
@@ -79,14 +79,14 @@ bool DecoderAAC::initialize()
         if (!input()->open(QIODevice::ReadOnly))
         {
             qWarning("DecoderAAC: %s", qPrintable(input()->errorString ()));
-            return FALSE;
+            return false;
         }
     }
     AACFile aac_file(input());
     if (!aac_file.isValid())
     {
         qWarning("DecoderAAC: unsupported AAC file");
-        return FALSE;
+        return false;
     }
     m_totalTime = aac_file.length() * 1000;
     m_bitrate = aac_file.bitrate();
@@ -132,12 +132,12 @@ bool DecoderAAC::initialize()
     if (res < 0)
     {
         qWarning("DecoderAAC: NeAACDecInit() failed");
-        return FALSE;
+        return false;
     }
     if (!freq || !chan)
     {
         qWarning("DecoderAAC: invalid sound parameters");
-        return FALSE;
+        return false;
     }
 
     memmove(m_input_buf, m_input_buf + res, m_input_at - res);
@@ -152,7 +152,7 @@ qint64 DecoderAAC::read(char *audio, qint64 maxSize)
     NeAACDecFrameInfo frame_info;
     qint64 size = 0, to_read, read;
     void *out = 0;
-    bool eof = FALSE;
+    bool eof = false;
 
     while (size <= 0 && !eof)
     {

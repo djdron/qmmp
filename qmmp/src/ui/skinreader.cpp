@@ -64,7 +64,7 @@ void SkinReader::generateThumbs()
         {
             if (fileInfo.baseName () == thumbFile.baseName ())
             {
-                del = FALSE;
+                del = false;
                 break;
             }
         }
@@ -84,7 +84,7 @@ void SkinReader::generateThumbs()
         {
             if (fileInfo.baseName () == thumbInfo.baseName ())
             {
-                create = FALSE;
+                create = false;
                 break;
             }
         }
@@ -126,9 +126,9 @@ void SkinReader::unpackSkin(const QString &path)
         dir.remove(file.fileName());
     //unpack
     if (path.endsWith(".tgz") || path.endsWith(".tar.gz") || path.endsWith(".tar.bz2"))
-        untar(path, QDir::homePath() +"/.qmmp/cache/skin", FALSE);
+        untar(path, QDir::homePath() +"/.qmmp/cache/skin", false);
     if (path.endsWith(".zip") || path.endsWith(".wsz"))
-        unzip(path, QDir::homePath() +"/.qmmp/cache/skin", FALSE);
+        unzip(path, QDir::homePath() +"/.qmmp/cache/skin", false);
 }
 
 const QStringList SkinReader::skins()

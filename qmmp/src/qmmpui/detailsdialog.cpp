@@ -33,8 +33,8 @@
 DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
         : QDialog(parent)
 {
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
-    setAttribute(Qt::WA_DeleteOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
+    setAttribute(Qt::WA_DeleteOnClose, false);
     m_metaDataModel = 0;
     m_item = item;
     ui.setupUi(this);

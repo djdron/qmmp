@@ -29,13 +29,13 @@ ScrobblerHandler::ScrobblerHandler(QObject *parent) : General(parent)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
-    if(settings.value("use_lastfm", FALSE).toBool())
+    if(settings.value("use_lastfm", false).toBool())
     {
         new Scrobbler(SCROBBLER_LASTFM_URL, settings.value("lastfm_login").toString(),
                    settings.value("lastfm_password").toString(), "lastfm", this);
 
     }
-    if(settings.value("use_librefm", FALSE).toBool())
+    if(settings.value("use_librefm", false).toBool())
     {
         new Scrobbler(SCROBBLER_LIBREFM_URL, settings.value("librefm_login").toString(),
                    settings.value("librefm_password").toString(), "librefm", this);

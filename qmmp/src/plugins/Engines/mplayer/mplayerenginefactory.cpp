@@ -50,7 +50,7 @@ bool MplayerEngineFactory::supports(const QString &source) const
         if (regexp.exactMatch(source))
             return true;
     }
-    return FALSE;
+    return false;
 }
 
 AbstractEngine *MplayerEngineFactory::create(QObject *parent)

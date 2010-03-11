@@ -27,7 +27,7 @@
 
 SRConverter::SRConverter() : Effect()
 {
-    m_isSrcAlloc = FALSE;
+    m_isSrcAlloc = false;
     int converter_type_array[] = {SRC_SINC_BEST_QUALITY, SRC_SINC_MEDIUM_QUALITY, SRC_SINC_FASTEST,
                                   SRC_ZERO_ORDER_HOLD,  SRC_LINEAR};
     m_srcIn = 0;
@@ -53,7 +53,7 @@ SRConverter::~SRConverter()
         delete [] m_srcIn;
         delete [] m_srcOut;
         delete [] m_wOut;
-        m_isSrcAlloc = FALSE;
+        m_isSrcAlloc = false;
     }
 }
 
@@ -64,7 +64,7 @@ void SRConverter::applyEffect(Buffer *b)
         delete [] m_srcIn;
         delete [] m_srcOut;
         delete [] m_wOut;
-        m_isSrcAlloc = FALSE;
+        m_isSrcAlloc = false;
     }
     ulong wbytes = 0;
 

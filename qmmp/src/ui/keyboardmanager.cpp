@@ -60,14 +60,14 @@ bool KeyboardManager::handleKeyPress (QKeyEvent* ke)
             keyEnd(ke);
             break;
         default:
-            handled = FALSE;
+            handled = false;
     }
     return handled;
 }
 
 bool KeyboardManager::handleKeyRelease (QKeyEvent*)
 {
-    return FALSE;
+    return false;
 }
 
 void KeyboardManager::keyUp (QKeyEvent * ke)

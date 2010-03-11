@@ -104,7 +104,7 @@ void FileOps::execAction(int n)
         progress.setWindowTitle(tr("Copying"));
         progress.setCancelButtonText(tr("Stop"));
         progress.show();
-        progress.setAutoClose (FALSE);
+        progress.setAutoClose (false);
         int i  = 0;
         foreach(PlayListItem *item, items)
         {

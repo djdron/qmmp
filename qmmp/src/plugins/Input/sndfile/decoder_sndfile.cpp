@@ -57,7 +57,7 @@ bool DecoderSndFile::initialize()
     if (!m_sndfile)
     {
         qWarning("DecoderSndFile: failed to open: %s", qPrintable(m_path));
-        return FALSE;
+        return false;
     }
 
     m_freq = snd_info.samplerate;

@@ -37,11 +37,11 @@
 TitleBar::TitleBar(QWidget *parent)
         : PixmapWidget(parent)
 {
-    m_align = FALSE;
+    m_align = false;
     m_skin = Skin::instance();
     setPixmap(m_skin->getTitleBar(Skin::TITLEBAR_A));
     m_mw = qobject_cast<MainWindow*>(parent->parent());
-    m_shaded = FALSE;
+    m_shaded = false;
     m_shade2 = 0;
     m_currentTime = 0;
     m_control = 0;
@@ -56,10 +56,10 @@ TitleBar::TitleBar(QWidget *parent)
     connect(m_shade, SIGNAL(clicked()), SLOT(shade()));
     m_close = new Button(this,Skin::BT_CLOSE_N,Skin::BT_CLOSE_P, Skin::CUR_CLOSE);
     connect(m_close, SIGNAL(clicked()), m_mw, SLOT(handleCloseRequest()));
-    setActive(FALSE);
+    setActive(false);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("Display/shaded", FALSE).toBool())
+    if (settings.value("Display/shaded", false).toBool())
         shade();
     m_align = true;
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
@@ -135,7 +135,7 @@ void TitleBar::setActive(bool a)
 
 void TitleBar::updateSkin()
 {
-    setActive(FALSE);
+    setActive(false);
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
     updatePositions();
 }

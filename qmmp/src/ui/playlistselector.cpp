@@ -34,10 +34,10 @@
 
 PlayListSelector::PlayListSelector(PlayListManager *manager, QWidget *parent) : QWidget(parent)
 {
-    m_update = FALSE;
-    m_scrollable = FALSE;
-    m_left_pressed = FALSE;
-    m_right_pressed = FALSE;
+    m_update = false;
+    m_scrollable = false;
+    m_left_pressed = false;
+    m_right_pressed = false;
     m_offset = 0;
     m_offset_max = 0;
     m_skin = Skin::instance();
@@ -106,7 +106,7 @@ void PlayListSelector::updateSkin()
 
 void PlayListSelector::renamePlaylist()
 {
-    bool ok = FALSE;
+    bool ok = false;
     QString name = QInputDialog::getText (this,
                                           tr("Rename Playlist"), tr("Playlist name:"),
                                           QLineEdit::Normal,
@@ -189,8 +189,8 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
 
 void PlayListSelector::mouseReleaseEvent (QMouseEvent *e)
 {
-    m_left_pressed = FALSE;
-    m_right_pressed = FALSE;
+    m_left_pressed = false;
+    m_right_pressed = false;
     drawButtons();
     update();
     QWidget::mouseReleaseEvent(e);

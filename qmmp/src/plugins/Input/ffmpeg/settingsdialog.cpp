@@ -66,8 +66,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.apeCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_APE));
     ui.apeCheckBox->setChecked(filters.contains("*.ape") && avcodec_find_decoder(CODEC_ID_APE));
 #else
-    ui.apeCheckBox->setChecked(FALSE);
-    ui.apeCheckBox->setEnabled(FALSE);
+    ui.apeCheckBox->setChecked(false);
+    ui.apeCheckBox->setEnabled(false);
 #endif
     ui.ttaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TTA));
     ui.ttaCheckBox->setChecked(filters.contains("*.tta") && avcodec_find_decoder(CODEC_ID_TTA));

@@ -33,7 +33,7 @@
 Visual::Visual(QWidget *parent) : QWidget(parent)
 {
     setAttribute(Qt::WA_DeleteOnClose, true);
-    setAttribute(Qt::WA_QuitOnClose, FALSE);
+    setAttribute(Qt::WA_QuitOnClose, false);
     m_decoder = 0;
     m_output = 0;
 }
@@ -55,7 +55,7 @@ void Visual::closeEvent (QCloseEvent *event)
     {
         VisualFactory *factory = m_vis_map.key(this);
         m_vis_map.remove(factory);
-        Visual::setEnabled(factory, FALSE);
+        Visual::setEnabled(factory, false);
         emit closedByUser();
     }
     else
@@ -132,7 +132,7 @@ bool Visual::isEnabled(VisualFactory* factory)
 {
     checkFactories();
     if (!m_factories->contains(factory))
-        return FALSE;
+        return false;
     QString name = factory->properties().shortName;
     QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
     QStringList visList = settings.value("Visualization/enabled_plugins").toStringList();

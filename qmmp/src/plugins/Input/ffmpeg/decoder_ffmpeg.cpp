@@ -68,7 +68,7 @@ DecoderFFmpeg::DecoderFFmpeg(const QString &path, QIODevice *i)
         : Decoder(i)
 {
     m_bitrate = 0;
-    m_skip = FALSE;
+    m_skip = false;
     m_totalTime = 0;
     ic = 0;
     m_path = path;
@@ -98,7 +98,7 @@ DecoderFFmpeg::~DecoderFFmpeg()
 bool DecoderFFmpeg::initialize()
 {
     m_bitrate = 0;
-    m_skip = FALSE;
+    m_skip = false;
     m_totalTime = 0;
     m_seekTime = -1;
     av_register_all();
@@ -109,12 +109,12 @@ bool DecoderFFmpeg::initialize()
     pd.buf_size = input()->peek((char*)buf, sizeof(buf) - AVPROBE_PADDING_SIZE);
     pd.buf = buf;
     if(pd.buf_size < 8192)
-        return FALSE;
+        return false;
     AVInputFormat *fmt = av_probe_input_format(&pd, 1);
     if(!fmt)
     {
         qWarning("DecoderFFmpeg: usupported format");
-        return FALSE;
+        return false;
     }
     qDebug("DecoderFFmpeg: detected format: %s", fmt->long_name);
 
@@ -132,7 +132,7 @@ bool DecoderFFmpeg::initialize()
                               fmt, &ap) != 0)
     {
         qDebug("DecoderFFmpeg: av_open_input_stream() failed");
-        return FALSE;
+        return false;
     }
 
     AVCodec *codec;
@@ -160,13 +160,13 @@ bool DecoderFFmpeg::initialize()
     if (!codec)
     {
         qWarning("DecoderFFmpeg: unsupported codec for output stream");
-        return FALSE;
+        return false;
     }
 
     if (avcodec_open(c, codec) < 0)
     {
         qWarning("DecoderFFmpeg: error while opening codec for output stream");
-        return FALSE;
+        return false;
     }
 
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
@@ -197,7 +197,7 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
         while(m_temp_pkt.size)
             ffmpeg_decode(m_output_buf);
         m_output_at = 0;
-        m_skip = FALSE;
+        m_skip = false;
     }
     if(!m_output_at)
         fillBuffer();

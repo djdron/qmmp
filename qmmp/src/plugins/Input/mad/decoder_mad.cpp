@@ -60,7 +60,7 @@ bool DecoderMAD::initialize()
     if (!input())
     {
         qWarning("DecoderMAD: cannot initialize.  No input.");
-        return FALSE;
+        return false;
     }
 
     if (!m_input_buf)
@@ -71,7 +71,7 @@ bool DecoderMAD::initialize()
         if (!input()->open(QIODevice::ReadOnly))
         {
             qWarning("DecoderMAD: %s", qPrintable(input()->errorString ()));
-            return FALSE;
+            return false;
         }
     }
 
@@ -89,7 +89,7 @@ bool DecoderMAD::initialize()
     if (!findHeader())
     {
         qDebug("DecoderMAD: Can't find a valid MPEG header.");
-        return FALSE;
+        return false;
     }
     mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
     stream.error = MAD_ERROR_BUFLEN;
@@ -111,7 +111,7 @@ void DecoderMAD::deinit()
     mad_frame_finish(&frame);
     mad_stream_finish(&stream);
 
-    m_inited = FALSE;
+    m_inited = false;
     m_totalTime = 0;
     m_channels = 0;
     m_bitrate = 0;
@@ -184,10 +184,10 @@ fail:
 
 bool DecoderMAD::findHeader()
 {
-    bool result = FALSE;
+    bool result = false;
     int count = 0;
-    bool has_xing = FALSE;
-    bool is_vbr = FALSE;
+    bool has_xing = false;
+    bool is_vbr = false;
     mad_timer_t duration = mad_timer_zero;
     struct mad_header header;
     mad_header_init (&header);
@@ -277,7 +277,7 @@ bool DecoderMAD::findHeader()
     }
 
     if (!result)
-        return FALSE;
+        return false;
 
     if (!is_vbr && !input()->isSequential())
     {
@@ -385,12 +385,12 @@ bool DecoderMAD::fillBuffer()
     if (!len)
     {
         qDebug("DecoderMAD: end of file");
-        return FALSE;
+        return false;
     }
     else if(len < 0)
     {
         qWarning("DecoderMAD: error");
-        return FALSE;
+        return false;
     }
     m_input_bytes += len;
     mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
