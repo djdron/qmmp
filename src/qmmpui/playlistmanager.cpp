@@ -453,7 +453,7 @@ void PlayListManager::addToQueue()
     m_selected->addToQueue();
 }
 
-void PlayListManager::clearInvalidItems()
+void PlayListManager::removeInvalidItems()
 {
-    m_selected->clearInvalidItems();
+    m_selected->removeInvalidItems();
 }
