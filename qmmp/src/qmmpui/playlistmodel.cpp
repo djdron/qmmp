@@ -262,6 +262,16 @@ bool PlayListModel::isSelected(int row)
     return false;
 }
 
+bool PlayListModel::contains(const QString &url)
+{
+    foreach (PlayListItem *item, m_items)
+    {
+        if(item->url() == url)
+            return true;
+    }
+    return false;
+}
+
 void PlayListModel::setSelected(int row, bool yes)
 {
     if (m_items.count() > row && row >= 0)
@@ -897,7 +907,7 @@ void PlayListModel::preparePlayState()
     m_play_state->prepare();
 }
 
-void PlayListModel::clearInvalidItems()
+void PlayListModel::removeInvalidItems()
 {
     foreach(PlayListItem *item, m_items)
     {

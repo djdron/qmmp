@@ -108,8 +108,13 @@ public:
      * Object destructor.
      */
     ~PlayListModel();
-
+    /*!
+     * Returns playlist name.
+     */
     QString name() const;
+    /*!
+     * Sets the name of the playlist to \b name.
+     */
     void setName(const QString &name);
     /*!
      * Returns number of items.
@@ -119,7 +124,9 @@ public:
      * Returns the current item.
      */
     PlayListItem* currentItem();
-
+    /*!
+     * Returns the next playing item or 0 if next item is unknown.
+     */
     PlayListItem* nextItem();
     /*!
      * Returns the row of the \b item
@@ -248,6 +255,10 @@ public:
      * Returns state of "Shuffle" option.
      */
     bool isShuffle() const;
+    /*!
+     * Returns \b true if the playlist contains an item with URL \b url; otherwise returns \b false.
+     */
+    bool contains(const QString &url);
     /*!
      * Enum of available sort modes
      */
@@ -388,7 +399,11 @@ public slots:
     /*!
      * Removes invalid items from playlist
      */
-    void clearInvalidItems();
+    void removeInvalidItems();
+    /*!
+     * Removes duplicate items by URL.
+     */
+    //void removeDuplicates();
 
 private:
     /*!

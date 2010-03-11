@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -207,7 +207,7 @@ void PlayList::createActions()
     connect (remUnselAct, SIGNAL (triggered()), m_pl_manager, SLOT (removeUnselected ()));
 
     m_subMenu->addSeparator();
-    m_subMenu->addAction (tr("Remove unavailable files"), m_pl_manager, SLOT(clearInvalidItems()));
+    m_subMenu->addAction (tr("Remove unavailable files"), m_pl_manager, SLOT(removeInvalidItems()));
 
     //listwidget menu
     QAction *detailsAct = new QAction (tr ("&View Track Details"),this);

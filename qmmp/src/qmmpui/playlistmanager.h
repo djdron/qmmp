@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -190,7 +190,7 @@ public slots:
     /*!
      * This is a convenience function and is the same as calling \b selectedPlayList()->clearInvalidItems()
      */
-    void clearInvalidItems();
+    void removeInvalidItems();
 
 
 private:
