@@ -59,6 +59,7 @@ private:
     QString m_path;
     CUEParser *m_parser;
     int m_track;
+    int m_bps;
     char *m_buf; //buffer for remainig data
     qint64 m_buf_size;
     qint64 m_sz; //sample size
