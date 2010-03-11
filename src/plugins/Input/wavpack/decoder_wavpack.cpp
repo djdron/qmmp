@@ -51,6 +51,7 @@ DecoderWavPack::DecoderWavPack(const QString &path)
     m_sz = 0;
     m_buf = 0;
     m_offset = 0;
+    m_bps = 0;
 }
 
 DecoderWavPack::~DecoderWavPack()
@@ -104,10 +105,10 @@ bool DecoderWavPack::initialize()
 
     m_chan = WavpackGetNumChannels(m_context);
     m_freq = WavpackGetSampleRate (m_context);
-    int bps = WavpackGetBitsPerSample (m_context);
+    m_bps = WavpackGetBitsPerSample (m_context);
     if (!m_output_buf)
         m_output_buf = new int32_t[QMMP_BUFFER_SIZE/4];
-    switch(bps)
+    switch(m_bps)
     {
     case 8:
         configure(m_freq, m_chan, Qmmp::PCM_S8);
@@ -116,11 +117,11 @@ bool DecoderWavPack::initialize()
         configure(m_freq, m_chan, Qmmp::PCM_S16LE);
         break;
     case 24:
-        configure(m_freq, m_chan, Qmmp::PCM_S24LE);
-        break;
     case 32:
         configure(m_freq, m_chan, Qmmp::PCM_S32LE);
     }
+    if(m_bps == 24)
+        m_bps = 32;
     if(!m_parser)
         m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
     else
@@ -255,8 +256,21 @@ qint64 DecoderWavPack::wavpack_decode(char *data, qint64 size)
     //convert 32 to 16
     for (uint i = 0;  i < len * m_chan; ++i)
     {
-        data[m++] = (m_output_buf[i] >> 0) & 0xff;
-        data[m++] = (m_output_buf[i] >> 8) & 0xff;
+        switch (m_bps)
+        {
+        case 8:
+            data[m++] = m_output_buf[i] & 0xff;
+            break;
+        case 16:
+            data[m++] = (m_output_buf[i] >> 0) & 0xff;
+            data[m++] = (m_output_buf[i] >> 8) & 0xff;
+            break;
+        case 32:
+            data[m++] = 0;
+            data[m++] = (m_output_buf[i] >> 0) & 0xff;
+            data[m++] = (m_output_buf[i] >> 8) & 0xff;
+            data[m++] = (m_output_buf[i] >> 16) & 0xff;
+        }
     }
-    return len * m_chan * 2;
+    return len * m_chan * m_bps / 8;
 }
