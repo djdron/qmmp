@@ -29,8 +29,8 @@ const GeneralProperties HalFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("HAL Plugin");
     properties.shortName = "hal";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     properties.visibilityControl = FALSE;
     return properties;
 }

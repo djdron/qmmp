@@ -49,13 +49,13 @@ bool QmmpTrayIcon::event(QEvent *e)
     {
         wheelEvent((QWheelEvent *) e);
         e->accept();
-        return TRUE;
+        return true;
     }
     if (e->type() == QEvent::ToolTip)
     {
         showToolTip();
         e->accept();
-        return TRUE;
+        return true;
     }
     return QSystemTrayIcon::event(e);
 }

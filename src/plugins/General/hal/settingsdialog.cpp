@@ -30,10 +30,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HAL");
-    ui.cdGroupBox->setChecked(settings.value("cda", TRUE).toBool());
+    ui.cdGroupBox->setChecked(settings.value("cda", true).toBool());
     ui.addTracksCheckBox->setChecked(settings.value("add_tracks", FALSE).toBool());
     ui.removeTracksCheckBox->setChecked(settings.value("remove_tracks", FALSE).toBool());
-    ui.removableGroupBox->setChecked(settings.value("removable", TRUE).toBool());
+    ui.removableGroupBox->setChecked(settings.value("removable", true).toBool());
     ui.addFilesCheckBox->setChecked(settings.value("add_files", FALSE).toBool());
     ui.removeFilesCheckBox->setChecked(settings.value("remove_files", FALSE).toBool());
     settings.endGroup();

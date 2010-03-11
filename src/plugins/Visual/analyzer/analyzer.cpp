@@ -55,7 +55,7 @@ Analyzer::Analyzer (QWidget *parent)
         peaks_speed[settings.value("Analyzer/peaks_falloff", 3).toInt()-1];
     m_analyzer_falloff =
         analyzer_speed[settings.value("Analyzer/analyzer_falloff", 3).toInt()-1];
-    m_show_peaks = settings.value("Analyzer/show_peaks", TRUE).toBool();
+    m_show_peaks = settings.value("Analyzer/show_peaks", true).toBool();
     m_timer->setInterval(intervals[settings.value("Analyzer/refresh_rate", 2).toInt() - 1]);
     m_color1.setNamedColor(settings.value("Analyzer/color1", "Green").toString());
     m_color2.setNamedColor(settings.value("Analyzer/color2", "Yellow").toString());
@@ -244,7 +244,7 @@ bool Analyzer::process (VisualNode *node)
             }
         }
     }
-    return TRUE;
+    return true;
 }
 
 void Analyzer::draw (QPainter *p)

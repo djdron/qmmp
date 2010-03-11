@@ -38,7 +38,7 @@
 ProjectMWidget::ProjectMWidget(QWidget *parent)
         : QGLWidget(parent)
 {
-    setMouseTracking(TRUE);
+    setMouseTracking(true);
     m_projectM = 0;
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()),SLOT(updateGL ()));

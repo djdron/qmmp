@@ -172,7 +172,7 @@ bool PlayListModel::setCurrent(int c)
     m_currentItem = m_items.at(c);
     emit currentChanged();
     emit listChanged();
-    return TRUE;
+    return true;
 }
 
 bool PlayListModel::next()
@@ -180,7 +180,7 @@ bool PlayListModel::next()
     if (!isEmptyQueue())
     {
         setCurrentToQueued();
-        return TRUE;
+        return true;
     }
 
     if (isFileLoaderRunning())
@@ -377,7 +377,7 @@ void PlayListModel::invertSelection()
 void PlayListModel::selectAll()
 {
     for (int i = 0; i<m_items.size(); ++i)
-        m_items.at(i)->setSelected(TRUE);
+        m_items.at(i)->setSelected(true);
     emit listChanged();
 }
 
@@ -466,7 +466,7 @@ bool PlayListModel::setFileList(const QStringList & l)
             if (!model_cleared)
             {
                 clear();
-                model_cleared = TRUE;
+                model_cleared = true;
             }
             if (f_info.isDir())
                 addDirectory(str);
@@ -897,7 +897,7 @@ bool PlayListModel::isFileLoaderRunning() const
 {
     foreach(FileLoader* l,m_running_loaders)
     if (l && l->isRunning())
-        return TRUE;
+        return true;
 
     return FALSE;
 }

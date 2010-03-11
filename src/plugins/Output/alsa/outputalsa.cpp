@@ -218,8 +218,8 @@ bool OutputALSA::initialize()
         return FALSE;
     }
 
-    m_inited = TRUE;
-    return TRUE;
+    m_inited = true;
+    return true;
 }
 
 

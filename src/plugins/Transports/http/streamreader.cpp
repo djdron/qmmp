@@ -62,7 +62,7 @@ void StreamReader::close ()
 
 bool StreamReader::isSequential () const
 {
-    return TRUE;
+    return true;
 }
 
 bool StreamReader::open ( OpenMode mode )
@@ -72,7 +72,7 @@ bool StreamReader::open ( OpenMode mode )
     //downloadFile();
     setOpenMode(QIODevice::ReadOnly);
     if (m_downloader->isReady())
-        return TRUE;
+        return true;
     else
         return FALSE;
 }
@@ -80,7 +80,7 @@ bool StreamReader::open ( OpenMode mode )
 bool StreamReader::reset ()
 {
     QIODevice::reset();
-    return TRUE;
+    return true;
 }
 
 bool StreamReader::seek ( qint64 pos )
@@ -98,14 +98,14 @@ bool StreamReader::waitForBytesWritten (int msecs)
 {
     Q_UNUSED(msecs);
     //usleep(msecs*1000);
-    return TRUE;
+    return true;
 }
 
 bool StreamReader::waitForReadyRead (int msecs)
 {
     Q_UNUSED(msecs);
     //usleep(msecs*1000);
-    return TRUE;
+    return true;
 }
 
 qint64 StreamReader::readData(char* data, qint64 maxlen)

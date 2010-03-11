@@ -48,7 +48,7 @@ EqTitleBar::EqTitleBar(QWidget *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Equalizer/shaded", FALSE).toBool())
         shade();
-    m_align = TRUE;
+    m_align = true;
     setActive(FALSE);
     setCursor(m_skin->getCursor(Skin::CUR_EQTITLE));
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));

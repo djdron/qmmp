@@ -175,7 +175,7 @@ bool DecoderFFmpeg::initialize()
     configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
     m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");
-    return TRUE;
+    return true;
 }
 
 
@@ -241,7 +241,7 @@ void DecoderFFmpeg::seek(qint64 pos)
     av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
     avcodec_flush_buffers(c);
     if(m_pkt.size)
-        m_skip = TRUE;
+        m_skip = true;
 }
 
 void DecoderFFmpeg::fillBuffer()

@@ -63,7 +63,7 @@ private:
     QPixmap m_pixmap;
     MainWindow *mw;
     int convert(int);   // value = convert(position);
-    void draw(bool pressed = TRUE);
+    void draw(bool pressed = true);
 
 protected:
     void mousePressEvent(QMouseEvent*);

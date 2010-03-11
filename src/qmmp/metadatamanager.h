@@ -46,7 +46,7 @@ public:
      * @param path Source file path.
      * @param useMetaData Metadata usage (\b true - use, \b - do not use)
      */
-    QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = TRUE) const;
+    QList <FileInfo *> createPlayList(const QString &path, bool useMetaData = true) const;
     /*!
      * Creats metadata object, which provides full access to file tags.
      * @param url File path or URL.

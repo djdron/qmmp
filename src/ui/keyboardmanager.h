@@ -40,13 +40,13 @@ class KeyboardManager
         KeyboardManager (PlayList*);
 
         /*!
-         * Handles key press events from \b PlayList object. Returns \b TRUE 
+         * Handles key press events from \b PlayList object. Returns \b true 
          * if the key was handled, otherwise \b FALSE.
          */
         bool handleKeyPress (QKeyEvent*);
 
         /*!
-         * Handles key release events from \b PlayList object. Returns \b TRUE 
+         * Handles key release events from \b PlayList object. Returns \b true 
          * if the key was handled, otherwise \b FALSE.
          */
         bool handleKeyRelease (QKeyEvent*);

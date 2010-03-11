@@ -323,11 +323,11 @@ void MpegFileTagModel::create()
     if (m_tag)
         return;
     if (m_tagType == TagLib::MPEG::File::ID3v1)
-        m_tag = m_file->ID3v1Tag(TRUE);
+        m_tag = m_file->ID3v1Tag(true);
     else if (m_tagType == TagLib::MPEG::File::ID3v2)
-        m_tag = m_file->ID3v2Tag(TRUE);
+        m_tag = m_file->ID3v2Tag(true);
     else if (m_tagType == TagLib::MPEG::File::APE)
-        m_tag = m_file->APETag(TRUE);
+        m_tag = m_file->APETag(true);
 }
 
 void MpegFileTagModel::remove()

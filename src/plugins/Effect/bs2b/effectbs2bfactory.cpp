@@ -30,8 +30,8 @@ const EffectProperties EffectBs2bFactory::properties() const
     EffectProperties properties;
     properties.name = tr("BS2B Plugin");
     properties.shortName = "bs2b";
-    properties.hasSettings = TRUE;
-    properties.hasAbout = TRUE;
+    properties.hasSettings = true;
+    properties.hasAbout = true;
     return properties;
 }
 

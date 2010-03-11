@@ -99,7 +99,7 @@ public:
      * @param factory Engine plugin factory.
      * @param enable Plugin enable state (\b true - enable, \b false - disable)
      */
-    static void setEnabled(EngineFactory* factory, bool enable = TRUE);
+    static void setEnabled(EngineFactory* factory, bool enable = true);
     /*!
      * Returns \b true if engine is enabled, otherwise returns \b false
      * @param factory Engine plugin factory.

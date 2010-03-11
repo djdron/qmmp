@@ -44,10 +44,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     settings.beginGroup("Notifier");
     ui.messageDelaySpinBox->setValue(settings.value("message_delay", 2000).toInt());
     uint pos = settings.value("message_pos", PopupWidget::BOTTOMLEFT).toUInt();
-    m_buttons.value(pos)->setChecked(TRUE);
+    m_buttons.value(pos)->setChecked(true);
     ui.psiCheckBox->setChecked(settings.value("psi_notification", FALSE).toBool());
-    ui.songCheckBox->setChecked(settings.value("song_notification", TRUE).toBool());
-    ui.volumeCheckBox->setChecked(settings.value("volume_notification", TRUE).toBool());
+    ui.songCheckBox->setChecked(settings.value("song_notification", true).toBool());
+    ui.volumeCheckBox->setChecked(settings.value("volume_notification", true).toBool());
     ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
     QString fontname = settings.value ("font").toString();
     ui.coverSizeSlider->setValue(settings.value ("cover_size", 64).toInt());

@@ -85,7 +85,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
     //read settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     int cd_speed = settings.value("cdaudio/speed", 0).toInt();
-    bool use_cd_text = settings.value("cdaudio/cdtext", TRUE).toBool();
+    bool use_cd_text = settings.value("cdaudio/cdtext", true).toBool();
     QList <CDATrack> tracks;
     cdio_log_set_handler(log_handler); //setup cdio log handler
     CdIo_t *cdio = 0;
@@ -94,7 +94,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
         device_path = settings.value("device").toString();
     if (device_path.isEmpty() || device_path == "/")
     {
-        char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, TRUE); //get drive list with CDA disks
+        char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, true); //get drive list with CDA disks
         // open first audio capable cd drive
         if (cd_drives && *cd_drives)
         {
@@ -147,7 +147,7 @@ QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
         cdio = 0;
         return tracks;
     }
-    bool use_cddb = TRUE;
+    bool use_cddb = true;
     //fill track list
     for (int i = first_track_number; i <= last_track_number; ++i)
     {
@@ -320,7 +320,7 @@ bool DecoderCDAudio::readFromCache(QList <CDATrack> *tracks, uint disc_id)
         (*tracks)[i].info.setMetaData(Qmmp::GENRE, settings.value(QString("genre%1").arg(i)).toString());
         (*tracks)[i].info.setMetaData(Qmmp::ALBUM, settings.value(QString("album%1").arg(i)).toString());
     }
-    return TRUE;
+    return true;
 }
 
 qint64 DecoderCDAudio::calculateTrackLength(lsn_t startlsn, lsn_t endlsn)
@@ -363,7 +363,7 @@ bool DecoderCDAudio::initialize()
 
     if (QUrl(m_url).path() == "/")
     {
-        char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, TRUE); //get drive list with CDA disks
+        char **cd_drives = cdio_get_devices_with_cap(0, CDIO_FS_AUDIO, true); //get drive list with CDA disks
         // open first audio capable cd drive
         if (cd_drives && *cd_drives)
         {
@@ -402,7 +402,7 @@ bool DecoderCDAudio::initialize()
     m_last_sector = tracks[track_at].last_sector;
     StateHandler::instance()->dispatch(tracks[track_at].info.metaData()); //send metadata
     qDebug("DecoderCDAudio: initialize succes");
-    return TRUE;
+    return true;
 }
 
 

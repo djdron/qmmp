@@ -32,7 +32,7 @@ bool IncDecVolumeCommandLineOption::identify(const QString & str) const
         str == QString("--volume-dec")
     )
     {
-        return TRUE;
+        return true;
     }
 
     return FALSE;

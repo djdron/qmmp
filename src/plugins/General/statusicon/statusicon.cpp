@@ -44,11 +44,11 @@ StatusIcon::StatusIcon(QObject *parent)
     m_player = MediaPlayer::instance();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Tray");
-    m_showMessage = settings.value("show_message",TRUE).toBool();
+    m_showMessage = settings.value("show_message",true).toBool();
     m_messageDelay = settings.value("message_delay", 2000).toInt();
     m_hideToTray = settings.value("hide_on_close", FALSE).toBool();
     m_useStandardIcons = settings.value("use_standard_icons",FALSE).toBool();
-    m_tray->showNiceToolTip(settings.value("show_nicetooltip",TRUE).toBool());
+    m_tray->showNiceToolTip(settings.value("show_nicetooltip",true).toBool());
     if(m_useStandardIcons)
         m_tray->setIcon(QApplication::style ()->standardIcon(QStyle::SP_MediaStop));
     else

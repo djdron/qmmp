@@ -71,7 +71,7 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     else if (str.left(4).contains("ICY"))
     {
         qDebug("Downloader: shoutcast header received");
-        //dl->stream()->icy_meta_data = TRUE;
+        //dl->stream()->icy_meta_data = true;
     }
     else
     {
@@ -83,7 +83,7 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
         if (key == "icy-metaint")
         {
             dl->stream()->icy_metaint = value.toInt();
-            dl->stream()->icy_meta_data = TRUE;
+            dl->stream()->icy_meta_data = true;
         }
     }
     dl->mutex()->unlock();
@@ -113,7 +113,7 @@ Downloader::Downloader(QObject *parent, const QString &url)
     m_stream.buf_fill = 0;
     m_stream.buf = 0;
     m_stream.icy_meta_data = FALSE;
-    m_stream.aborted = TRUE;
+    m_stream.aborted = true;
     m_stream.icy_metaint = 0;
     m_handle = 0;
     m_metacount = 0;
@@ -137,7 +137,7 @@ Downloader::~Downloader()
 {
     abort();
     curl_global_cleanup();
-    m_stream.aborted = TRUE;
+    m_stream.aborted = true;
     m_stream.buf_fill = 0;
     if (m_stream.buf)
         free(m_stream.buf);
@@ -210,7 +210,7 @@ void Downloader::abort()
         m_mutex.unlock();
         return;
     }
-    m_stream.aborted = TRUE;
+    m_stream.aborted = true;
     m_mutex.unlock();
     wait();
     if (m_handle)
@@ -315,7 +315,7 @@ void Downloader::checkBuffer()
 {
     if (m_stream.buf_fill > m_buffer_size && !m_ready)
     {
-        m_ready  = TRUE;
+        m_ready  = true;
         qDebug("Downloader: ready");
         if(!m_meta_sent && stream()->icy_meta_data)
         {
@@ -398,7 +398,7 @@ void Downloader::parseICYMetaData(char *data, qint64 size)
             metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
             metaData.insert(Qmmp::URL, m_url);
             StateHandler::instance()->dispatch(metaData);
-            m_meta_sent = TRUE;
+            m_meta_sent = true;
             break;
         }
     }

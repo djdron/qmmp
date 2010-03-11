@@ -120,7 +120,7 @@ const FileDialogProperties QmmpFileDialogFactory::properties() const
     FileDialogProperties properties;
     properties.name = tr("Qmmp File Dialog");
     properties.shortName = "qmmp_dialog";
-    properties.hasAbout =TRUE;
+    properties.hasAbout =true;
     return properties;
 }
 

@@ -188,7 +188,7 @@ void MainVisual::mousePressEvent (QMouseEvent *e)
         foreach(QAction *act, m_visModeGroup->actions ())
         if (str == act->data().toString())
         {
-            act->setChecked(TRUE);
+            act->setChecked(true);
             break;
         }
     }
@@ -282,13 +282,13 @@ void MainVisual::createMenu()
     connect(m_menu, SIGNAL(triggered (QAction *)),SLOT(updateSettings()));
     QMenu *visMode = m_menu->addMenu(tr("Visualization Mode"));
     m_visModeGroup = new QActionGroup(this);
-    m_visModeGroup->setExclusive(TRUE);
+    m_visModeGroup->setExclusive(true);
     m_visModeGroup->addAction(tr("Analyzer"))->setData("Analyzer");
     m_visModeGroup->addAction(tr("Scope"))->setData("Scope");
     m_visModeGroup->addAction(tr("Off"))->setData("None");
     foreach(QAction *act, m_visModeGroup->actions ())
     {
-        act->setCheckable(TRUE);
+        act->setCheckable(true);
         visMode->addAction(act);
     }
 
@@ -302,36 +302,36 @@ void MainVisual::createMenu()
     m_analyzerTypeGroup->addAction(tr("Bars"))->setData(1);
     foreach(QAction *act, m_analyzerModeGroup->actions ())
     {
-        act->setCheckable(TRUE);
+        act->setCheckable(true);
         analyzerMode->addAction(act);
     }
     analyzerMode->addSeparator ();
     foreach(QAction *act, m_analyzerTypeGroup->actions ())
     {
-        act->setCheckable(TRUE);
+        act->setCheckable(true);
         analyzerMode->addAction(act);
     }
     analyzerMode->addSeparator ();
     m_peaksAction = analyzerMode->addAction(tr("Peaks"));
-    m_peaksAction->setCheckable(TRUE);
+    m_peaksAction->setCheckable(true);
 
 
     QMenu *refreshRate = m_menu->addMenu(tr("Refresh Rate"));
     m_fpsGroup = new QActionGroup(this);
-    m_fpsGroup->setExclusive(TRUE);
+    m_fpsGroup->setExclusive(true);
     m_fpsGroup->addAction(tr("50 fps"))->setData(50);
     m_fpsGroup->addAction(tr("25 fps"))->setData(25);
     m_fpsGroup->addAction(tr("10 fps"))->setData(10);
     m_fpsGroup->addAction(tr("5 fps"))->setData(5);
     foreach(QAction *act, m_fpsGroup->actions ())
     {
-        act->setCheckable(TRUE);
+        act->setCheckable(true);
         refreshRate->addAction(act);
     }
 
     QMenu *analyzerFalloff = m_menu->addMenu(tr("Analyzer Falloff"));
     m_analyzerFalloffGroup = new QActionGroup(this);
-    m_analyzerFalloffGroup->setExclusive(TRUE);
+    m_analyzerFalloffGroup->setExclusive(true);
     m_analyzerFalloffGroup->addAction(tr("Slowest"))->setData(1);
     m_analyzerFalloffGroup->addAction(tr("Slow"))->setData(2);
     m_analyzerFalloffGroup->addAction(tr("Medium"))->setData(3);
@@ -339,13 +339,13 @@ void MainVisual::createMenu()
     m_analyzerFalloffGroup->addAction(tr("Fastest"))->setData(5);
     foreach(QAction *act, m_analyzerFalloffGroup->actions ())
     {
-        act->setCheckable(TRUE);
+        act->setCheckable(true);
         analyzerFalloff->addAction(act);
     }
 
     QMenu *peaksFalloff = m_menu->addMenu(tr("Peaks Falloff"));
     m_peaksFalloffGroup = new QActionGroup(this);
-    m_peaksFalloffGroup->setExclusive(TRUE);
+    m_peaksFalloffGroup->setExclusive(true);
     m_peaksFalloffGroup->addAction(tr("Slowest"))->setData(1);
     m_peaksFalloffGroup->addAction(tr("Slow"))->setData(2);
     m_peaksFalloffGroup->addAction(tr("Medium"))->setData(3);
@@ -353,12 +353,12 @@ void MainVisual::createMenu()
     m_peaksFalloffGroup->addAction(tr("Fastest"))->setData(5);
     foreach(QAction *act, m_peaksFalloffGroup->actions ())
     {
-        act->setCheckable(TRUE);
+        act->setCheckable(true);
         peaksFalloff->addAction(act);
     }
     QMenu *background = m_menu->addMenu(tr("Background"));
     m_transparentAction = background->addAction(tr("Transparent"));
-    m_transparentAction->setCheckable(TRUE);
+    m_transparentAction->setCheckable(true);
     update();
 }
 
@@ -368,43 +368,43 @@ void MainVisual::readSettings()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
 
     QString name = settings.value("Visualization/type","Analyzer").toString();
-    m_visModeGroup->actions ()[0]->setChecked(TRUE);
+    m_visModeGroup->actions ()[0]->setChecked(true);
     foreach(QAction *act, m_visModeGroup->actions ())
     if (name == act->data().toString())
-        act->setChecked(TRUE);
+        act->setChecked(true);
 
     m_peaksAction->setChecked(
-        settings.value("Visualization/show_peaks", TRUE).toBool());
+        settings.value("Visualization/show_peaks", true).toBool());
 
     int fps = settings.value("Visualization/rate", 25).toInt();
-    m_fpsGroup->actions ()[1]->setChecked(TRUE);
+    m_fpsGroup->actions ()[1]->setChecked(true);
     foreach(QAction *act, m_fpsGroup->actions ())
     if (fps == act->data().toInt())
-        act->setChecked(TRUE);
+        act->setChecked(true);
 
     int mode = settings.value("Visualization/analyzer_mode", 0).toInt();
-    m_analyzerModeGroup->actions ()[0]->setChecked(TRUE);
+    m_analyzerModeGroup->actions ()[0]->setChecked(true);
     foreach(QAction *act, m_analyzerModeGroup->actions ())
     if (mode == act->data().toInt())
-        act->setChecked(TRUE);
+        act->setChecked(true);
 
     int type = settings.value("Visualization/analyzer_type", 1).toInt();
-    m_analyzerTypeGroup->actions ()[1]->setChecked(TRUE);
+    m_analyzerTypeGroup->actions ()[1]->setChecked(true);
     foreach(QAction *act, m_analyzerTypeGroup->actions ())
     if (type == act->data().toInt())
-        act->setChecked(TRUE);
+        act->setChecked(true);
 
     int speed = settings.value("Visualization/peaks_falloff", 3).toInt();
-    m_peaksFalloffGroup->actions ()[2]->setChecked(TRUE);
+    m_peaksFalloffGroup->actions ()[2]->setChecked(true);
     foreach(QAction *act, m_peaksFalloffGroup->actions ())
     if (speed == act->data().toInt())
-        act->setChecked(TRUE);
+        act->setChecked(true);
 
     speed = settings.value("Visualization/analyzer_falloff", 3).toInt();
-    m_analyzerFalloffGroup->actions ()[2]->setChecked(TRUE);
+    m_analyzerFalloffGroup->actions ()[2]->setChecked(true);
     foreach(QAction *act, m_analyzerFalloffGroup->actions ())
     if (speed == act->data().toInt())
-        act->setChecked(TRUE);
+        act->setChecked(true);
 
     m_transparentAction->setChecked(
         settings.value("Visualization/transparent_bg", FALSE).toBool());
@@ -429,7 +429,7 @@ Analyzer::Analyzer()
         peaks_speed[settings.value("Visualization/peaks_falloff", 3).toInt()-1];
     m_analyzer_falloff =
         analyzer_speed[settings.value("Visualization/analyzer_falloff", 3).toInt()-1];
-    m_show_peaks = settings.value("Visualization/show_peaks", TRUE).toBool();
+    m_show_peaks = settings.value("Visualization/show_peaks", true).toBool();
 
     m_lines = settings.value("Visualization/analyzer_type", 1).toInt() == 0;
     m_mode = settings.value("Visualization/analyzer_mode", 0).toInt();
@@ -514,7 +514,7 @@ bool Analyzer::process (VisualNode *node)
                          ? magnitude : m_peaks[i];
         }
     }
-    return TRUE;
+    return true;
 }
 
 void Analyzer::draw (QPainter *p)
@@ -605,7 +605,7 @@ bool Scope::process(VisualNode *node)
         else if (m_intern_vis_data[i] < -5)
             m_intern_vis_data[i] = -5;
     }
-    return TRUE;
+    return true;
 }
 
 void Scope::draw(QPainter *p)

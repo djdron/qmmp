@@ -55,7 +55,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         comboBox->addItem (tr("Remove"), FileOps::REMOVE);
         comboBox->setFocusPolicy (Qt::NoFocus);
 
-        checkBox->setChecked(settings.value(QString("enabled_%1").arg(i), TRUE).toBool());
+        checkBox->setChecked(settings.value(QString("enabled_%1").arg(i), true).toBool());
         int ci = comboBox->findData (settings.value(QString("action_%1").arg(i), FileOps::COPY).toInt());
         if (ci >= 0)
             comboBox->setCurrentIndex(ci);
@@ -126,7 +126,7 @@ void SettingsDialog::createAction()
     ui.tableWidget->insertRow (row);
     QCheckBox *checkBox = new QCheckBox;
     checkBox->setFocusPolicy (Qt::NoFocus);
-    checkBox->setChecked(TRUE);
+    checkBox->setChecked(true);
 
     QComboBox *comboBox = new QComboBox;
     comboBox->addItem (tr("Copy"), FileOps::COPY);

@@ -30,8 +30,8 @@ const OutputProperties OutputALSAFactory::properties() const
     OutputProperties properties;
     properties.name = tr("ALSA Plugin");
     properties.shortName = "alsa";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     return properties;
 }
 

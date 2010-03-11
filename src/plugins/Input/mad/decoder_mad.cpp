@@ -97,8 +97,8 @@ bool DecoderMAD::initialize()
     stream.next_frame = 0;
     stream.sync = 0;
     configure(m_freq, m_channels, Qmmp::PCM_S16LE);
-    m_inited = TRUE;
-    return TRUE;
+    m_inited = true;
+    return true;
 }
 
 
@@ -232,7 +232,7 @@ bool DecoderMAD::findHeader()
                 break;
             }
         }
-        result = TRUE;
+        result = true;
 
         if (input()->isSequential())
             break;
@@ -245,13 +245,13 @@ bool DecoderMAD::findHeader()
             if (mad_frame_decode(&frame, &stream) != -1 &&
                     findXingHeader(stream.anc_ptr, stream.anc_bitlen))
             {
-                is_vbr = TRUE;
+                is_vbr = true;
 
                 qDebug ("DecoderMAD: Xing header detected");
 
                 if (xing.flags & XING_FRAMES)
                 {
-                    has_xing = TRUE;
+                    has_xing = true;
                     count = xing.frames;
                     break;
                 }
@@ -263,7 +263,7 @@ bool DecoderMAD::findHeader()
             if (m_bitrate && header.bitrate != m_bitrate)
             {
                 qDebug ("DecoderMAD: VBR detected");
-                is_vbr = TRUE;
+                is_vbr = true;
             }
             else
                 m_bitrate = header.bitrate;
@@ -299,7 +299,7 @@ bool DecoderMAD::findHeader()
     mad_header_finish(&header);
     input()->seek(0);
     m_input_bytes = 0;
-    return TRUE;
+    return true;
 }
 
 qint64 DecoderMAD::totalTime()
@@ -394,7 +394,7 @@ bool DecoderMAD::fillBuffer()
     }
     m_input_bytes += len;
     mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
-    return TRUE;
+    return true;
 }
 
 uint DecoderMAD::findID3v2(uchar *data, ulong size) //retuns ID3v2 tag size

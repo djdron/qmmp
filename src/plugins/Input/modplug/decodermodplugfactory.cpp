@@ -45,7 +45,7 @@ bool DecoderModPlugFactory::supports(const QString &source) const
     << ".xmgz" << ".itz"  << /*".itr" <<*/ ".itgz" << ".dmf" << ".umx" << ".it" << ".669"
     << ".xm" << ".mtm" << ".psm" << ".ft2";
     if (lExtList.contains(lExt))
-        return TRUE;
+        return true;
     return FALSE;
 }
 
@@ -64,9 +64,9 @@ const DecoderProperties DecoderModPlugFactory::properties() const
     properties.description = tr("ModPlug Files");
     //properties.contentType = ;
     properties.shortName = "modplug";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
-    properties.noInput = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
+    properties.noInput = true;
     properties.protocols = "file";
     return properties;
 }

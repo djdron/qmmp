@@ -29,7 +29,7 @@ const VisualProperties VisualProjectMFactory::properties() const
     properties.name = tr("ProjectM");
     properties.shortName = "projectm";
     properties.hasSettings = FALSE;
-    properties.hasAbout = TRUE;
+    properties.hasAbout = true;
     return properties;
 }
 

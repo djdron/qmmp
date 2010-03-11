@@ -93,7 +93,7 @@ void ConfigDialog::readSettings()
         ui.per20CheckBox->setChecked(player->playListManager()->convertTwenty());
     }
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", FALSE).toBool());
-    ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", TRUE).toBool());
+    ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", true).toBool());
     ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", FALSE).toBool());
     ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", FALSE).toBool());
     QmmpSettings *gs = QmmpSettings::instance();
@@ -126,7 +126,7 @@ void ConfigDialog::readSettings()
     //resume playback
     ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", FALSE).toBool());
     //cover options
-    ui.coverIncludeLineEdit->setText(gs->coverNameFilters(TRUE).join(","));
+    ui.coverIncludeLineEdit->setText(gs->coverNameFilters(true).join(","));
     ui.coverExcludeLineEdit->setText(gs->coverNameFilters(FALSE).join(","));
     ui.coverDepthSpinBox->setValue(gs->coverSearchDepth());
     ui.useCoverFilesCheckBox->setChecked(gs->useCoverFiles());
@@ -216,7 +216,7 @@ void ConfigDialog::findSkins(const QString &path)
 
 void ConfigDialog::loadPluginsInfo()
 {
-    ui.treeWidget->blockSignals(TRUE);
+    ui.treeWidget->blockSignals(true);
     /*
         load transport plugin information
      */
@@ -226,7 +226,7 @@ void ConfigDialog::loadPluginsInfo()
     for (int i = 0; i < transports->count (); ++i)
         new PluginItem (item, transports->at(i), files.at (i));
     ui.treeWidget->addTopLevelItem(item);
-    item->setExpanded(TRUE);
+    item->setExpanded(true);
 
     /*
         load input plugins information
@@ -237,7 +237,7 @@ void ConfigDialog::loadPluginsInfo()
     for (int i = 0; i < decoders->count (); ++i)
         new PluginItem (item, decoders->at(i), files.at (i));
     ui.treeWidget->addTopLevelItem(item);
-    item->setExpanded(TRUE);
+    item->setExpanded(true);
     /*
         load audio engines information
     */
@@ -247,7 +247,7 @@ void ConfigDialog::loadPluginsInfo()
     for (int i = 0; i < engines->count (); ++i)
         new PluginItem (item, engines->at(i), files.at (i));
     ui.treeWidget->addTopLevelItem(item);
-    item->setExpanded(TRUE);
+    item->setExpanded(true);
     /*
         load effect plugin information
     */
@@ -257,7 +257,7 @@ void ConfigDialog::loadPluginsInfo()
     for (int i = 0; i < effects->count (); ++i)
         new PluginItem (item, effects->at(i), files.at (i));
     ui.treeWidget->addTopLevelItem(item);
-    item->setExpanded(TRUE);
+    item->setExpanded(true);
     /*
         load visual plugin information
     */
@@ -267,7 +267,7 @@ void ConfigDialog::loadPluginsInfo()
     for (int i = 0; i < visuals->count (); ++i)
         new PluginItem (item, visuals->at(i), files.at (i));
     ui.treeWidget->addTopLevelItem(item);
-    item->setExpanded(TRUE);
+    item->setExpanded(true);
     /*
         load general plugin information
     */
@@ -277,7 +277,7 @@ void ConfigDialog::loadPluginsInfo()
     for (int i = 0; i < generals->count (); ++i)
         new PluginItem (item, generals->at(i), files.at (i));
     ui.treeWidget->addTopLevelItem(item);
-    item->setExpanded(TRUE);
+    item->setExpanded(true);
 
     ui.treeWidget->blockSignals(FALSE);
     ui.treeWidget->resizeColumnToContents(0);

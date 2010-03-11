@@ -115,7 +115,7 @@ bool DecoderCUE::initialize()
     m_sz = audioParameters().sampleSize();
 
     StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
-    return TRUE;
+    return true;
 }
 
 qint64 DecoderCUE::totalTime()

@@ -59,7 +59,7 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
     if (settings.value ("PlayList/shaded", FALSE).toBool())
         shade();
     resize(m_pl->width(),height());
-    m_align = TRUE;
+    m_align = true;
     setCursor(m_skin->getCursor(Skin::CUR_PTBAR));
     updatePositions();
 }
@@ -159,7 +159,7 @@ void PlayListTitleBar::mousePressEvent(QMouseEvent* event)
         pos = event->pos();
         if (m_shaded && (width() - 30*m_ratio) < pos.x() && pos.x() < (width() - 22*m_ratio))
         {
-            m_resize = TRUE;
+            m_resize = true;
             setCursor (Qt::SizeHorCursor);
         }
         break;

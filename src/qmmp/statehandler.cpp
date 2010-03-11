@@ -38,7 +38,7 @@ StateHandler::StateHandler(QObject *parent)
     m_frequency = 0;
     m_precision = 0;
     m_channels = 0;
-    m_sendAboutToFinish = TRUE;
+    m_sendAboutToFinish = true;
     m_state = Qmmp::Stopped;
 }
 
@@ -132,7 +132,7 @@ void StateHandler::dispatch(Qmmp::State state)
         m_frequency = 0;
         m_precision = 0;
         m_channels = 0;
-        m_sendAboutToFinish = TRUE;
+        m_sendAboutToFinish = true;
         m_metaData.clear();
     }
     if (m_state != state)

@@ -28,7 +28,7 @@ const OutputProperties OutputWaveOutFactory::properties() const
 {
     OutputProperties properties;
     properties.name = tr("WaveOut Plugin");
-    properties.hasAbout = TRUE;
+    properties.hasAbout = true;
     properties.hasSettings = FALSE;
     properties.shortName = "waveout";
     return properties;

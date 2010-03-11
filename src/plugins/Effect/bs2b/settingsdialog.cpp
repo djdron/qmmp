@@ -28,7 +28,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         : QDialog(parent)
 {
     ui.setupUi(this);
-    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    setAttribute(Qt::WA_DeleteOnClose, true);
     ui.feedSlider->setRange(BS2B_MINFEED, BS2B_MAXFEED);
     ui.freqSlider->setRange(BS2B_MINFCUT, BS2B_MAXFCUT);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);

@@ -215,7 +215,7 @@ bool DecoderMPC::initialize()
 
     m_totalTime = mpc_streaminfo_get_length(&data()->info) * 1000;
     qDebug("DecoderMPC: initialize succes");
-    return TRUE;
+    return true;
 }
 
 qint64 DecoderMPC::totalTime()

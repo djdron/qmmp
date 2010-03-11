@@ -32,7 +32,7 @@ CoverWidget::CoverWidget(QWidget *parent)
         : QWidget(parent)
 {
     setWindowFlags(Qt::Window);
-    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    setAttribute(Qt::WA_DeleteOnClose, true);
     m_menu = new QMenu(this);
     m_menu->addAction(tr("&Save As..."), this, SLOT(saveAs()), tr("Ctrl+S"));
     QMenu *sizeMenu = m_menu->addMenu(tr("Size"));
@@ -52,10 +52,10 @@ CoverWidget::CoverWidget(QWidget *parent)
     m_size = settings.value("CoverManager/size", 0).toInt();
     foreach(QAction *a, sizeMenu->actions ())
     {
-        a->setCheckable(TRUE);
+        a->setCheckable(true);
         if(a->data().toInt() == m_size)
         {
-            a->setChecked(TRUE);
+            a->setChecked(true);
             processResizeAction(a);
         }
     }

@@ -26,7 +26,7 @@
 
 PlayListBrowser::PlayListBrowser(PlayListManager *manager, QWidget *parent) : QDialog(parent)
 {
-    setAttribute(Qt::WA_DeleteOnClose, TRUE);
+    setAttribute(Qt::WA_DeleteOnClose, true);
     setAttribute(Qt::WA_QuitOnClose, FALSE);
     setWindowModality(Qt::NonModal);
     ui.setupUi(this);
@@ -57,7 +57,7 @@ void PlayListBrowser::updateList()
     int c = m_pl_manager->indexOf(m_pl_manager->selectedPlayList());
     ui.listWidget->setCurrentRow (c);
     QFont font = ui.listWidget->currentItem()->font();
-    font.setBold(TRUE);
+    font.setBold(true);
     ui.listWidget->currentItem()->setFont(font);
 }
 

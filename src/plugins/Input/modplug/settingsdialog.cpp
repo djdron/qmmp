@@ -39,46 +39,46 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     //general
     ui.noiseCheckBox->setChecked(settings.value("NoiseReduction", FALSE).toBool());
     ui.fileNameCheckBox->setChecked(settings.value("UseFileName", FALSE).toBool());
-    ui.amigaCheckBox->setChecked(settings.value("GrabAmigaMOD", TRUE).toBool());
-    //settings.value("Oversampling", TRUE).toBool();
-    //settings.value("VolumeRamp", TRUE).toBool();
-    //settings.value("FastInfo", TRUE).toBool();
+    ui.amigaCheckBox->setChecked(settings.value("GrabAmigaMOD", true).toBool());
+    //settings.value("Oversampling", true).toBool();
+    //settings.value("VolumeRamp", true).toBool();
+    //settings.value("FastInfo", true).toBool();
     //channels number
     if (settings.value("Channels", 2).toInt() == 2)
-        ui.stereoRadioButton->setChecked(TRUE);
+        ui.stereoRadioButton->setChecked(true);
     else
-        ui.monoRadioButton->setChecked(TRUE);
+        ui.monoRadioButton->setChecked(true);
     //bits number
     if (settings.value("Bits", 16).toInt() == 8)
-        ui.bit8RadioButton->setChecked(TRUE);
+        ui.bit8RadioButton->setChecked(true);
     else
-        ui.bit16RadioButton->setChecked(TRUE);
+        ui.bit16RadioButton->setChecked(true);
     //resampling frequency
     int freq = settings.value("Frequency", 44100).toInt();
     if (freq == 48000)
-        ui.khz48RadioButton->setChecked(TRUE);
+        ui.khz48RadioButton->setChecked(true);
     else if (freq == 44100)
-        ui.khz44RadioButton->setChecked(TRUE);
+        ui.khz44RadioButton->setChecked(true);
     else if (freq == 22050)
-        ui.khz22RadioButton->setChecked(TRUE);
+        ui.khz22RadioButton->setChecked(true);
     else
-        ui.khz11RadioButton->setChecked(TRUE);
+        ui.khz11RadioButton->setChecked(true);
     //resampling mode
     int res = settings.value("ResamplineMode", SRCMODE_POLYPHASE).toInt();
     if (res == SRCMODE_NEAREST)
-        ui.resampNearestRadioButton->setChecked(TRUE);
+        ui.resampNearestRadioButton->setChecked(true);
     else if (res == SRCMODE_LINEAR)
-        ui.resampLinearRadioButton->setChecked(TRUE);
+        ui.resampLinearRadioButton->setChecked(true);
     else if (res == SRCMODE_SPLINE)
-        ui.resampSplineRadioButton->setChecked(TRUE);
+        ui.resampSplineRadioButton->setChecked(true);
     else
-        ui.resampPolyphaseRadioButton->setChecked(TRUE);
+        ui.resampPolyphaseRadioButton->setChecked(true);
     //reverberation
     ui.reverbGroupBox->setChecked(settings.value("Reverb", FALSE).toBool());
     ui.reverbDepthSlider->setValue(settings.value("ReverbDepth", 30).toInt());
     ui.reverbDelaySlider->setValue(settings.value("ReverbDelay", 100).toInt());
     //surround
-    ui.surGroupBox->setChecked(settings.value("Surround", TRUE).toBool());
+    ui.surGroupBox->setChecked(settings.value("Surround", true).toBool());
     ui.surDepthSlider->setValue(settings.value("SurroundDepth", 20).toInt());
     ui.surDelaySlider->setValue(settings.value("SurroundDelay", 20).toInt());
     //bass
@@ -92,12 +92,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     //looping
     int l = settings.value("LoopCount", 0).toInt();
     if (l == 0)
-        ui.dontLoopRadioButton->setChecked(TRUE);
+        ui.dontLoopRadioButton->setChecked(true);
     else if (l < 0)
-        ui.loopForeverRadioButton->setChecked(TRUE);
+        ui.loopForeverRadioButton->setChecked(true);
     else
     {
-        ui.loopRadioButton->setChecked(TRUE);
+        ui.loopRadioButton->setChecked(true);
         ui.loopSpinBox->setValue(l);
     }
     settings.endGroup();
@@ -116,9 +116,9 @@ void SettingsDialog::writeSettings()
     settings.setValue("NoiseReduction", ui.noiseCheckBox->isChecked());
     settings.setValue("UseFileName", ui.fileNameCheckBox->isChecked());
     settings.setValue("GrabAmigaMOD", ui.amigaCheckBox->isChecked());
-    //settings.value("Oversampling", TRUE).toBool();
-    //settings.value("VolumeRamp", TRUE).toBool();
-    //settings.value("FastInfo", TRUE).toBool();
+    //settings.value("Oversampling", true).toBool();
+    //settings.value("VolumeRamp", true).toBool();
+    //settings.value("FastInfo", true).toBool();
     //channels number
     settings.setValue("Channels", ui.stereoRadioButton->isChecked() ? 2 : 1 );
     //bits number

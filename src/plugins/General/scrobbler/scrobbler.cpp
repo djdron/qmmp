@@ -202,7 +202,7 @@ void Scrobbler::processResponse(QNetworkReply *reply)
         if (!strlist[0].contains("OK") || strlist.size() < 4)
         {
             qWarning("Scrobbler[%s]: handshake phase error", qPrintable(m_name));
-            m_disabled = TRUE;
+            m_disabled = true;
             if(strlist[0].contains("BANNED"))
                 qWarning("Scrobbler[%s]: client has been banned", qPrintable(m_name));
             else if(strlist[0].contains("BADAUTH"))

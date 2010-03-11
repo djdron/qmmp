@@ -36,8 +36,8 @@ const EngineProperties MplayerEngineFactory::properties() const
     properties.description = tr("Video Files");
     //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
     properties.protocols = "file";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     return properties;
 }
 
@@ -48,7 +48,7 @@ bool MplayerEngineFactory::supports(const QString &source) const
     {
         QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
         if (regexp.exactMatch(source))
-            return TRUE;
+            return true;
     }
     return FALSE;
 }

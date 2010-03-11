@@ -70,7 +70,7 @@ void ListWidget::readSettings()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
     m_show_protocol = settings.value ("PlayList/show_protocol", FALSE).toBool();
-    m_show_number = settings.value ("PlayList/show_numbers", TRUE).toBool();
+    m_show_number = settings.value ("PlayList/show_numbers", true).toBool();
     bool show_popup = settings.value("PlayList/show_popup", FALSE).toBool();
 
     if (m_update)
@@ -87,7 +87,7 @@ void ListWidget::readSettings()
     }
     else
     {
-        m_update = TRUE;
+        m_update = true;
         m_metrics = new QFontMetrics(m_font);
     }
     if(show_popup)
@@ -166,7 +166,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 {
     if(m_popupWidget)
         m_popupWidget->hide();
-    m_scroll = TRUE;
+    m_scroll = true;
     int y = e->y();
     int row = rowAt(y);
 
@@ -178,7 +178,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
             m_model->clearSelection();
 
         if (m_model->isSelected(row) && (e->modifiers() == Qt::NoModifier))
-            m_select_on_release = TRUE;
+            m_select_on_release = true;
 
         //qWarning("m_prev_clicked_row: %d",m_prev_clicked_row);
 
@@ -221,7 +221,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_rows = (e->size().height() - 10) / m_metrics->ascent ();
-    m_scroll = TRUE;
+    m_scroll = true;
     updateList();
     QWidget::resizeEvent(e);
 }
@@ -259,7 +259,7 @@ bool ListWidget::event (QEvent *e)
             }
             e->accept();
             m_popupWidget->prepare(m_model->item(row), helpEvent->globalPos());
-            return TRUE;
+            return true;
         }
         else if(e->type() == QEvent::Leave)
             m_popupWidget->deactivate();
@@ -327,7 +327,7 @@ void ListWidget::scroll(int sc)
     if (m_model->count() <= m_rows)
         return;
     m_first = sc; //*(m_model->count() - m_rows)/99;
-    m_scroll = TRUE;
+    m_scroll = true;
     updateList();
 }
 

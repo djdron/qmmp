@@ -50,7 +50,7 @@
 PlayList::PlayList (PlayListManager *manager, QWidget *parent)
         : QWidget (parent)
 {
-    setAttribute(Qt::WA_AlwaysShowToolTips,TRUE);
+    setAttribute(Qt::WA_AlwaysShowToolTips,true);
     m_pl_manager = manager;
     m_update = FALSE;
     m_resize = FALSE;
@@ -409,7 +409,7 @@ void PlayList::mousePressEvent (QMouseEvent *e)
     m_pos = e->pos ();
     if (m_resizeWidget->underMouse())
     {
-        m_resize = TRUE;
+        m_resize = true;
         setCursor (m_skin->getCursor (Skin::CUR_PSIZE));
     }
     else
@@ -486,7 +486,7 @@ void PlayList::readSettings()
         else
             setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint); 
         move (settings.value ("PlayList/pos", QPoint (100, 332)).toPoint());  //position
-        m_update = TRUE;
+        m_update = true;
     }
 }
 

@@ -45,7 +45,7 @@ BalanceBar::~BalanceBar()
 
 void BalanceBar::mousePressEvent(QMouseEvent *e)
 {
-    m_moving = TRUE;
+    m_moving = true;
     press_pos = e->x();
     if(m_pos<e->x() && e->x()<m_pos+11*m_skin->ratio())
     {

@@ -32,7 +32,7 @@ QIODevice *EmptyInputSource::ioDevice()
 
 bool EmptyInputSource::initialize()
 {
-    m_ok = TRUE; //check decoders
+    m_ok = true; //check decoders
     if(m_ok)
         emit ready(this);
     return m_ok;

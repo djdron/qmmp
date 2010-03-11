@@ -34,7 +34,7 @@ KeyboardManager::KeyboardManager (PlayList* pl)
 
 bool KeyboardManager::handleKeyPress (QKeyEvent* ke)
 {
-    bool handled = TRUE;
+    bool handled = true;
     switch (ke->key())
     {
         case Qt::Key_Up:

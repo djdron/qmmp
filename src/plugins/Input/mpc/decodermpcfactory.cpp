@@ -49,7 +49,7 @@ const DecoderProperties DecoderMPCFactory::properties() const
     properties.description = tr("Musepack Files");
     //properties.contentType = ;
     properties.shortName = "mpc";
-    properties.hasAbout = TRUE;
+    properties.hasAbout = true;
     properties.hasSettings = FALSE;
     return properties;
 }
@@ -68,15 +68,15 @@ QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, boo
     if (tag && !tag->isEmpty())
     {
         info->setMetaData(Qmmp::ALBUM,
-                       QString::fromUtf8(tag->album().toCString(TRUE)).trimmed());
+                       QString::fromUtf8(tag->album().toCString(true)).trimmed());
         info->setMetaData(Qmmp::ARTIST,
-                       QString::fromUtf8(tag->artist().toCString(TRUE)).trimmed());
+                       QString::fromUtf8(tag->artist().toCString(true)).trimmed());
         info->setMetaData(Qmmp::COMMENT,
-                       QString::fromUtf8(tag->comment().toCString(TRUE)).trimmed());
+                       QString::fromUtf8(tag->comment().toCString(true)).trimmed());
         info->setMetaData(Qmmp::GENRE,
-                       QString::fromUtf8(tag->genre().toCString(TRUE)).trimmed());
+                       QString::fromUtf8(tag->genre().toCString(true)).trimmed());
         info->setMetaData(Qmmp::TITLE,
-                       QString::fromUtf8(tag->title().toCString(TRUE)).trimmed());
+                       QString::fromUtf8(tag->title().toCString(true)).trimmed());
         info->setMetaData(Qmmp::YEAR, tag->year());
         info->setMetaData(Qmmp::TRACK, tag->track());
     }
@@ -88,7 +88,7 @@ QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, boo
         TagLib::APE::Item fld;
         if(!(fld = tag->itemListMap()["COMPOSER"]).isEmpty())
             info->setMetaData(Qmmp::COMPOSER,
-                              QString::fromUtf8(fld.toString().toCString(TRUE)).trimmed());
+                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
     }
 
     QList <FileInfo*> list;

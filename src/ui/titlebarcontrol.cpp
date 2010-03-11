@@ -24,7 +24,7 @@
 
 TitleBarControl::TitleBarControl(QWidget *parent) : QWidget(parent)
 {
-    //setAutoFillBackground(TRUE);
+    //setAutoFillBackground(true);
     m_ratio = Skin::instance()->ratio();
     resize(m_ratio*57, m_ratio*10);
     connect(Skin::instance(), SIGNAL(skinChanged()),SLOT(updateSkin()));

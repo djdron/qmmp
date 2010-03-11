@@ -36,8 +36,8 @@ Notifier::Notifier(QObject *parent)
     QFile::remove(QDir::homePath()+"/.psi/tune");
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
-    m_desktop = settings.value("song_notification", TRUE).toBool();
-    m_showVolume = settings.value("volume_notification", TRUE).toBool();
+    m_desktop = settings.value("song_notification", true).toBool();
+    m_showVolume = settings.value("volume_notification", true).toBool();
     m_psi = settings.value("psi_notification", FALSE).toBool();
     settings.endGroup();
     m_core = SoundCore::instance();

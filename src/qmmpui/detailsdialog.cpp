@@ -53,7 +53,7 @@ DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
         foreach(QString title, m_metaDataModel->descriptions().keys())
         {
             QTextEdit *textEdit = new QTextEdit(this);
-            textEdit->setReadOnly(TRUE);
+            textEdit->setReadOnly(true);
             textEdit->setPlainText(m_metaDataModel->descriptions().value(title));
             ui.tabWidget->addTab(textEdit, title);
         }
@@ -66,7 +66,7 @@ DetailsDialog::~DetailsDialog()
 
 void DetailsDialog::printInfo()
 {
-    QList <FileInfo *> flist = MetaDataManager::instance()->createPlayList(m_path, TRUE);
+    QList <FileInfo *> flist = MetaDataManager::instance()->createPlayList(m_path, true);
     QMap <Qmmp::MetaData, QString> metaData;
     if(!flist.isEmpty() && QFile::exists(m_item->url()))
         metaData = flist.at(0)->metaData();

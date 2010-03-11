@@ -59,7 +59,7 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
     {
         QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
         if (regexp.exactMatch(source))
-            return TRUE;
+            return true;
     }
     return FALSE;
 }
@@ -90,9 +90,9 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
         return FALSE;
     }
     if(filters.contains("*.mp3") && !memcmp(fmt->name, "mp3", 3))
-        return TRUE;
+        return true;
     if(filters.contains("*.aac") && !memcmp(fmt->name, "aac", 3))
-        return TRUE;
+        return true;
     return FALSE;
 }
 
@@ -120,8 +120,8 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
         properties.contentType += " audio/3gpp audio/3gpp2 audio/mp4 audio/MP4A-LATM audio/mpeg4-generic";
     properties.contentType = properties.contentType.trimmed();
     properties.shortName = "ffmpeg";
-    properties.hasAbout = TRUE;
-    properties.hasSettings = TRUE;
+    properties.hasAbout = true;
+    properties.hasSettings = true;
     properties.noInput = FALSE;
     return properties;
 }

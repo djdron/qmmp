@@ -103,7 +103,7 @@ bool MplayerEngine::play()
     if(m_process->state() != QProcess::NotRunning)
         return FALSE;
     startMplayerProcess();
-    return TRUE;
+    return true;
 }
 
 bool MplayerEngine::enqueue(InputSource *source)
@@ -125,7 +125,7 @@ bool MplayerEngine::enqueue(InputSource *source)
         m_url = url;
     else
         m_files.enqueue(url);
-    return TRUE;
+    return true;
 }
 
 bool MplayerEngine::initialize()
@@ -147,7 +147,7 @@ bool MplayerEngine::initialize()
         m_args << QString("-autosync %1").arg(settings.value("autosync_factor", 100).toInt());
 
     m_args << m_url;
-    return TRUE;
+    return true;
 }
 
 qint64 MplayerEngine::totalTime()

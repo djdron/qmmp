@@ -45,7 +45,7 @@ EqSlider::~EqSlider()
 
 void EqSlider::mousePressEvent(QMouseEvent *e)
 {
-    m_moving = TRUE;
+    m_moving = true;
     press_pos = e->y();
     if (m_pos<e->y() && e->y()<m_pos+11*m_skin->ratio())
     {

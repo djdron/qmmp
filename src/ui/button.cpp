@@ -56,8 +56,8 @@ void Button::setON (bool on)
 }
 void Button::mousePressEvent (QMouseEvent *e)
 {
-    setON (TRUE);
-    m_cursorin = TRUE;
+    setON (true);
+    m_cursorin = true;
     QWidget::mousePressEvent(e);
 }
 
@@ -71,8 +71,8 @@ void Button::mouseReleaseEvent (QMouseEvent*)
 void Button::mouseMoveEvent (QMouseEvent *e)
 {
     if ( !m_cursorin && rect().contains(e->pos()) ) {
-        m_cursorin = TRUE;
-        setON (TRUE);
+        m_cursorin = true;
+        setON (true);
     } else if ( m_cursorin && !rect().contains(e->pos()) ) {
         m_cursorin = FALSE;
         setON (FALSE);

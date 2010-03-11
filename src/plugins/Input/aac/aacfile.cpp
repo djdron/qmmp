@@ -65,7 +65,7 @@ AACFile::AACFile(QIODevice *i, bool metaData)
         qDebug("AACFile: ADTS header found");
         if (!i->isSequential())
             parseADTS();
-        m_isValid = TRUE;
+        m_isValid = true;
     }
     else if (memcmp(buf, "ADIF", 4) == 0)
     {
@@ -81,7 +81,7 @@ AACFile::AACFile(QIODevice *i, bool metaData)
         else
             m_length = 0;
         m_bitrate = (int)((float)m_bitrate/1000.0f + 0.5f);
-        m_isValid = TRUE;
+        m_isValid = true;
     }
 }
 
@@ -198,7 +198,7 @@ void AACFile::parseID3v2()
     TagLib::String title = taglib_tag.title();
 
     QTextCodec *codec = QTextCodec::codecForName ("UTF-8");
-    bool utf = TRUE;
+    bool utf = true;
 
     m_metaData.insert(Qmmp::ALBUM,
                       codec->toUnicode(album.toCString(utf)).trimmed());

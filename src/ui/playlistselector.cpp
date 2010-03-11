@@ -70,7 +70,7 @@ void PlayListSelector::readSettings()
     }
     else
     {
-        m_update = TRUE;
+        m_update = true;
     }
     m_metrics = new QFontMetrics(m_font);
 
@@ -157,7 +157,7 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
     {
         m_offset += m_rects.at(lastVisible()).right() - m_offset - width() + 42;
         m_offset = qMin(m_offset, m_offset_max);
-        m_right_pressed = TRUE;
+        m_right_pressed = true;
         drawButtons();
         update();
         return;
@@ -166,7 +166,7 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
     {
         m_offset -=  11 - m_rects.at(firstVisible()).x() + m_offset;
         m_offset = qMax(0, m_offset);
-        m_left_pressed = TRUE;
+        m_left_pressed = true;
         drawButtons();
         update();
         return;

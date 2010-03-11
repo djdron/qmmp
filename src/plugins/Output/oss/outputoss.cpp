@@ -66,7 +66,7 @@ OutputOSS* OutputOSS::instance()
 OutputOSS::OutputOSS(QObject * parent)
         : Output(parent), m_inited(FALSE),
          m_frequency(-1), m_channels(-1),
-        do_select(TRUE),
+        do_select(true),
         m_audio_fd(-1)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -213,8 +213,8 @@ bool OutputOSS::initialize()
     reset();
     if (m_audio_fd < 0)
         return FALSE;
-    m_inited = TRUE;
-    return TRUE;
+    m_inited = true;
+    return true;
 }
 
 void OutputOSS::uninitialize()
@@ -274,7 +274,7 @@ VolumeControlOSS *VolumeControlOSS::instance()
 
 VolumeControlOSS::VolumeControlOSS(QObject *parent) : VolumeControl(parent)
 {
-    m_master = TRUE;
+    m_master = true;
     m_mixer_fd = -1;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
 #if SOUND_VERSION < 0x040000
@@ -289,7 +289,7 @@ VolumeControlOSS::VolumeControlOSS(QObject *parent) : VolumeControl(parent)
     else
     {
         mixer_fd = open(m_audio_device.toAscii(), O_WRONLY, 0);
-        to_close = TRUE;
+        to_close = true;
     }
     if(mixer_fd > 0)
     {

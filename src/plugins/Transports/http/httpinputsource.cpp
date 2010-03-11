@@ -35,7 +35,7 @@ QIODevice *HTTPInputSource::ioDevice()
 bool HTTPInputSource::initialize()
 {
     m_reader->downloadFile();
-    return TRUE;
+    return true;
 }
 
 bool HTTPInputSource::isReady()

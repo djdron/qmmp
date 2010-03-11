@@ -28,7 +28,7 @@ const OutputProperties OutputNullFactory::properties() const
 {
     OutputProperties properties;
     properties.name = tr("Null Plugin");
-    properties.hasAbout = TRUE;
+    properties.hasAbout = true;
     properties.hasSettings = FALSE;
     properties.shortName = "null";
     return properties;

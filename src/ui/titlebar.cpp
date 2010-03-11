@@ -61,7 +61,7 @@ TitleBar::TitleBar(QWidget *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("Display/shaded", FALSE).toBool())
         shade();
-    m_align = TRUE;
+    m_align = true;
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
     updatePositions();
 }

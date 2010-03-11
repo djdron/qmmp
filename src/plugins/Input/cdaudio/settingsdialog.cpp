@@ -35,7 +35,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     int speed = settings.value("speed", 0).toInt();
     ui.speedCheckBox->setChecked(speed > 0);
     ui.speedSpinBox->setValue(speed);
-    ui.cdtextCheckBox->setChecked(settings.value("cdtext", TRUE).toBool());
+    ui.cdtextCheckBox->setChecked(settings.value("cdtext", true).toBool());
     ui.cddbGroupBox->setChecked(settings.value("use_cddb", FALSE).toBool());
     ui.httpCheckBox->setChecked(settings.value("cddb_http", FALSE).toBool());
     ui.serverLineEdit->setText(settings.value("cddb_server", "freedb.org").toString());

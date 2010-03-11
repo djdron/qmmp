@@ -134,7 +134,7 @@ bool DecoderWavPack::initialize()
     m_totalBytes = 0;
     m_sz = audioParameters().sampleSize() * audioParameters().channels();
     qDebug("DecoderWavPack: initialize succes");
-    return TRUE;
+    return true;
 }
 
 int DecoderWavPack::bitrate()

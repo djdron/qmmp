@@ -98,7 +98,7 @@ bool CommandLineManager::hasOption(const QString &opt_str)
     foreach(CommandLineOption *opt, *m_options)
     {
         if (opt->identify(opt_str))
-            return TRUE;
+            return true;
     }
     return FALSE;
 }

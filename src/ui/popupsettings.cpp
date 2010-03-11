@@ -34,7 +34,7 @@ PopupSettings::PopupSettings(QWidget *parent)
     ui.coverSizeSlider->setValue(settings.value ("popup_cover_size", 48).toInt());
     ui.textEdit->setPlainText(settings.value ("popup_template", DEFAULT_TEMPLATE).toString());
     ui.delaySpinBox->setValue(settings.value("popup_delay", 2500).toInt());
-    ui.coverCheckBox->setChecked(settings.value("popup_show_cover",TRUE).toBool());
+    ui.coverCheckBox->setChecked(settings.value("popup_show_cover",true).toBool());
     settings.endGroup();
     createMenu();
 }

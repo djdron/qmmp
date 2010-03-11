@@ -59,7 +59,7 @@ void SkinReader::generateThumbs()
     //clear removed skins from cache
     foreach(QFileInfo thumbFile, d)
     {
-        bool del = TRUE;
+        bool del = true;
         foreach(QFileInfo fileInfo, f)
         {
             if (fileInfo.baseName () == thumbFile.baseName ())
@@ -79,7 +79,7 @@ void SkinReader::generateThumbs()
     //add new skins to cache
     foreach(QFileInfo fileInfo, f)
     {
-        bool create = TRUE;
+        bool create = true;
         foreach(QFileInfo thumbInfo, d)
         {
             if (fileInfo.baseName () == thumbInfo.baseName ())
@@ -95,9 +95,9 @@ void SkinReader::generateThumbs()
             QString name = fileInfo.fileName ().toLower();
 
             if (name.endsWith(".tgz") || name.endsWith(".tar.gz") || name.endsWith(".tar.bz2"))
-                untar(fileInfo.filePath (), cache_dir.absolutePath (), TRUE);
+                untar(fileInfo.filePath (), cache_dir.absolutePath (), true);
             if (name.endsWith(".zip") || name.endsWith(".wsz"))
-                unzip(fileInfo.filePath (), cache_dir.absolutePath (), TRUE);
+                unzip(fileInfo.filePath (), cache_dir.absolutePath (), true);
         }
     }
     //add thumbs to map

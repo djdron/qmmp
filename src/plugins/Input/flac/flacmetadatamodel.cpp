@@ -27,7 +27,7 @@
 #include "flacmetadatamodel.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
-#define TStringToQString_qt4(s) QString::fromUtf8(s.toCString(TRUE)).trimmed()
+#define TStringToQString_qt4(s) QString::fromUtf8(s.toCString(true)).trimmed()
 
 FLACMetaDataModel::FLACMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
@@ -212,7 +212,7 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
     case Qmmp::COMPOSER:
         value.isEmpty() ?
         m_tag->removeField("COMPOSER"):
-        m_tag->addField("COMPOSER", str, TRUE);
+        m_tag->addField("COMPOSER", str, true);
         return;
     case Qmmp::TRACK:
         m_tag->setTrack(value.toInt());
@@ -223,7 +223,7 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
     case Qmmp::DISCNUMBER:
         value == "0" ?
         m_tag->removeField("DISCNUMBER"):
-        m_tag->addField("DISCNUMBER", str, TRUE);
+        m_tag->addField("DISCNUMBER", str, true);
     }
 }
 

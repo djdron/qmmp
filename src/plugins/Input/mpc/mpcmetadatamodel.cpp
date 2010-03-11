@@ -175,9 +175,9 @@ void MPCFileTagModel::create()
     if (m_tag)
         return;
     if (m_tagType == TagLib::MPC::File::ID3v1)
-        m_tag = m_file->ID3v1Tag(TRUE);
+        m_tag = m_file->ID3v1Tag(true);
     else
-        m_tag = m_file->APETag(TRUE);
+        m_tag = m_file->APETag(true);
 }
 
 void MPCFileTagModel::remove()
