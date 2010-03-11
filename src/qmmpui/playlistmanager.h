@@ -191,6 +191,10 @@ public slots:
      * This is a convenience function and is the same as calling \b selectedPlayList()->clearInvalidItems()
      */
     void removeInvalidItems();
+    /*!
+     * This is a convenience function and is the same as calling \b selectedPlayList()->removeDuplicates()
+     */
+    void removeDuplicates();
 
 
 private:

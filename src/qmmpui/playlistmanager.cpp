@@ -457,3 +457,8 @@ void PlayListManager::removeInvalidItems()
 {
     m_selected->removeInvalidItems();
 }
+
+void PlayListManager::removeDuplicates()
+{
+    m_selected->removeDuplicates();
+}
