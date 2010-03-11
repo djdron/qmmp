@@ -120,8 +120,6 @@ bool DecoderWavPack::initialize()
     case 32:
         configure(m_freq, m_chan, Qmmp::PCM_S32LE);
     }
-    if(m_bps == 24)
-        m_bps = 32;
     if(!m_parser)
         m_totalTime = (qint64) WavpackGetNumSamples(m_context) * 1000 / m_freq;
     else
@@ -252,25 +250,29 @@ void DecoderWavPack::next()
 qint64 DecoderWavPack::wavpack_decode(char *data, qint64 size)
 {
     ulong len = WavpackUnpackSamples (m_context, m_output_buf, size / m_chan / 4);
-    uint m = 0;
     //convert 32 to 16
-    for (uint i = 0;  i < len * m_chan; ++i)
+    qint8 *data8 = (qint8 *)data;
+    qint16 *data16 = (qint16 *)data;
+    qint32 *data32 = (qint32 *)data;
+    uint i = 0;
+    switch (m_bps)
     {
-        switch (m_bps)
-        {
-        case 8:
-            data[m++] = m_output_buf[i] & 0xff;
-            break;
-        case 16:
-            data[m++] = (m_output_buf[i] >> 0) & 0xff;
-            data[m++] = (m_output_buf[i] >> 8) & 0xff;
-            break;
-        case 32:
-            data[m++] = 0;
-            data[m++] = (m_output_buf[i] >> 0) & 0xff;
-            data[m++] = (m_output_buf[i] >> 8) & 0xff;
-            data[m++] = (m_output_buf[i] >> 16) & 0xff;
-        }
+    case 8:
+        for (i = 0;  i < len * m_chan; ++i)
+            data8[i] = m_output_buf[i];
+         return len * m_chan;
+    case 16:
+        for (i = 0;  i < len * m_chan; ++i)
+            data16[i] = m_output_buf[i];
+         return len * m_chan * 2;
+    case 24:
+        for (i = 0;  i < len * m_chan; ++i)
+            data32[i] = m_output_buf[i] << 8;
+         return len * m_chan * 4;
+    case 32:
+        for (i = 0;  i < len * m_chan; ++i)
+            data32[i] = m_output_buf[i];
+         return len * m_chan * 4;
     }
-    return len * m_chan * m_bps / 8;
+    return 0;
 }
