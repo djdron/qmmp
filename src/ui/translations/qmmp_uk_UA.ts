@@ -1200,7 +1200,7 @@
     <message>
         <location filename="../playlist.cpp" line="211"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити дублікати</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
