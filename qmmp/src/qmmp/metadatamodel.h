@@ -28,16 +28,45 @@
 #include <QPixmap>
 #include "tagmodel.h"
 
+/*! @brief The MetaDataModel is the base interface class of metadata access.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class MetaDataModel : public QObject
 {
 Q_OBJECT
 public:
+    /*!
+     * Constructor.
+     * @param parent Parent Object.
+     */
     MetaDataModel(QObject *parent = 0);
+    /*!
+     * Destructor.
+     */
     virtual ~MetaDataModel();
+    /*!
+     * Returns an associative array of the audio properties.
+     * Subclass should reimplement this function. Default implementation returns empty array.
+     */
     virtual QHash<QString, QString> audioProperties();
+    /*!
+     * Returns an associative array of the long descriptions.
+     * Subclass should reimplement this function. Default implementation returns empty array.
+     */
     virtual QHash<QString, QString> descriptions();
+    /*!
+     * Returns a list of available tags.
+     * Subclass should reimplement this function. Default implementation returns empty array.
+     */
     virtual QList<TagModel* > tags();
+    /*!
+     * Returns cover pixmap.
+     * Subclass should reimplement this function. Default implementation returns empty pixmap.
+     */
     virtual QPixmap cover();
+    /*!
+     * Returns path to cover pixmap.
+     */
     virtual QString coverPath();
 };
 

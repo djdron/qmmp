@@ -32,13 +32,20 @@ class DecoderFactory;
 class EngineFactory;
 class InputSourceFactory;
 class QmmpSettings;
-/*!
+
+/*! @brief The MetaDataManager class is the base class for metadata access.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class MetaDataManager
 {
 public:
+    /*!
+     * Constructor. Use MetaDataManager::instance() instead.
+     */
     MetaDataManager();
+    /*!
+     * Destructor. Use MetaDataManager::destroy() instead.
+     */
     ~MetaDataManager();
     /*!
      * Extracts metadata and audio information from file \b path and returns a list of FileInfo items.
@@ -89,7 +96,11 @@ public:
      * Returns a pointer to the MetaDataManager instance.
      */
     static MetaDataManager* instance();
+    /*!
+     * Destroys MetaDataManager object.
+     */
     static void destroy();
+
 private:
     QFileInfoList findCoverFiles(QDir dir, int depth) const;
     QList <DecoderFactory *> *m_decoderFactories;

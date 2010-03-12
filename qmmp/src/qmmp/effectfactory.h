@@ -27,7 +27,7 @@ class QWidget;
 class QTranslator;
 class Effect;
 
-/*! @brief Helper class to store effect plugin properies.
+/*! @brief Helper class to store effect plugin properties.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class EffectProperties

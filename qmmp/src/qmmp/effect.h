@@ -49,7 +49,7 @@ public:
     /*!
      * Prepares object for usage.
      * Subclasses that reimplement this function must call the base implementation.
-     * @param freq Sample rate.
+     * @param srate Sample rate.
      * @param chan Number of channels.
      * @param f Audio format.
      */
@@ -66,10 +66,14 @@ public:
      * Returns audio format.
      */
     Qmmp::AudioFormat format();
-
+    /*!
+     * Returns audio parameters for output data.
+     */
     const AudioParameters audioParameters() const;
+    /*!
+     * Returns assigned factory object.
+     */
     EffectFactory* factory() const;
-
     /*!
      * Creates a list of enabled effects.
      */

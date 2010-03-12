@@ -29,7 +29,8 @@ class Decoder
 {
 public:
     /*!
-     *
+     * Object contsructor.
+     * @param input QIODevice-based input source.
      */
     Decoder(QIODevice *input = 0);
     /*!
@@ -61,12 +62,34 @@ public:
      * Subclass should reimplement this function.
      */
     virtual int bitrate() = 0;
+    /*!
+     * Tells decoder that it should play next track.
+     * By default this function does nothing.
+     * Reimplemet it if your decoder can play next track without stop/start cycle.
+     * This may be useful for multitrack formats like cue or cda.
+     */
     virtual void next();
+    /*!
+     * Returns url which decoder can play without stop/start cycle.
+     * By default this function does nothing.
+     * Reimplemet it if your decoder can play next track without stop/start cycle.
+     */
     virtual const QString nextURL();
-
+    /*!
+     * Returns detected audio parameters.
+     */
     AudioParameters audioParameters() const;
+    /*!
+     * Returns ReplayGain information.
+     */
     QMap<Qmmp::ReplayGainKey, double> replayGainInfo() const;
+    /*!
+     * Sets ReplayGain information. Use this function before playback.
+     */
     void setReplayGainInfo(const QMap<Qmmp::ReplayGainKey,double> &rg);
+    /*!
+     * Returns QIODevice-based input source assigned for this decoder.
+     */
     QIODevice *input();
     /*!
      * Returns DecoderFactory pointer which supports file \b path or 0 if file \b path is unsupported

@@ -65,7 +65,7 @@ public:
     virtual void dispatch(Qmmp::State state);
     /*!
      * Sends buffering progress.
-     * @param \b percent Indicates the current percentage of buffering completed.
+     * @param percent Indicates the current percentage of buffering completed.
      */
     virtual void dispatchBuffer(int percent);
     /*!
@@ -144,7 +144,7 @@ signals:
     */
     void finished();
     /*!
-     *
+     * Emitted before the playback ends.
      */
     void aboutToFinish();
      /*!
