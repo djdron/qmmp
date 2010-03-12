@@ -104,7 +104,9 @@ public:
      * Returns selected audio format.
      */
     Qmmp::AudioFormat format() const;
-
+    /*!
+     * Returns sample size in bytes.
+     */
     int sampleSize() const;
     /*!
      * Creates selected output.

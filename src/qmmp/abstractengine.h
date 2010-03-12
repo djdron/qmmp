@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,15 +32,18 @@ class QIODevice;
 class InputSource;
 
 
-/*!
+/*! @brief The AbstractEngine class provides the base interface class of audio audio engines.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class AbstractEngine : public QThread
 {
  Q_OBJECT
 public:
+    /*!
+     * Object contsructor.
+     * @param parent Parent object.
+     */
     AbstractEngine(QObject *parent = 0);
-
     /*!
      * Prepares decoder for usage.
      * Subclass should reimplement this function.
@@ -78,12 +81,12 @@ public:
     QWaitCondition *cond();
     /*!
      * Sets equalizer settings. Each item of \p bands[] and \p reamp should be \b -20.0..20.0
-     * Subclass with own equalizer should reimplement this function.
+     * Subclass should reimplement this function.
      */
     virtual void setEQ(double bands[10], double preamp) = 0;
     /*!
      * Enables equalizer if \p on is \b true or disables it if \p on is \b false
-     * Subclass with own equalizer should reimplement this function.
+     * Subclass should reimplement this function.
      */
     virtual void setEQEnabled(bool on) = 0;
     /*!

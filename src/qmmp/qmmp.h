@@ -56,12 +56,15 @@ public:
         DISCNUMBER,/*!< Disc number */
         URL        /*!< Stream url or local file path */
     };
+    /*!
+     * Keys of ReplayGain information
+     */
     enum ReplayGainKey
     {
-        REPLAYGAIN_TRACK_GAIN = 0,
-        REPLAYGAIN_TRACK_PEAK,
-        REPLAYGAIN_ALBUM_GAIN,
-        REPLAYGAIN_ALBUM_PEAK
+        REPLAYGAIN_TRACK_GAIN = 0, /*!< track gain */
+        REPLAYGAIN_TRACK_PEAK,     /*!< track peak */
+        REPLAYGAIN_ALBUM_GAIN,     /*!< album gain */
+        REPLAYGAIN_ALBUM_PEAK      /*!< album peak */
     };
     /*!
      * Audio formats

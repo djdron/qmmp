@@ -25,7 +25,7 @@
 
 class QFile;
 
-/**
+/** @internal
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class FileInputSource : public InputSource

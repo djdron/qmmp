@@ -23,7 +23,7 @@
 
 #include "effect.h"
 
-/*!
+/*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class AudioConverter : public Effect

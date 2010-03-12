@@ -78,21 +78,29 @@ contains(CONFIG, SVN_VERSION) {
 unix { 
     target.path = $$LIB_DIR
     devel.files += buffer.h \
-        decoderfactory.h \
-        decoder.h \
-        effectfactory.h \
-        effect.h \
-        fileinfo.h \
-        outputfactory.h \
-        output.h \
-        qmmp.h \
-        recycler.h \
-        soundcore.h \
-        statehandler.h \
-        visualfactory.h \
-        visual.h \
-        volumecontrol.h \
-        abstractdetailsdialog.h
+                   buffer.h \
+                   decoder.h \
+                   output.h \
+                   outputfactory.h \
+                   decoderfactory.h \
+                   soundcore.h \
+                   visual.h \
+                   visualfactory.h \
+                   effect.h \
+                   effectfactory.h \
+                   statehandler.h \
+                   qmmp.h \
+                   fileinfo.h \
+                   volumecontrol.h \
+                   metadatamodel.h \
+                   tagmodel.h \
+                   abstractengine.h \
+                   audioparameters.h \
+                   inputsource.h \
+                   inputsourcefactory.h \
+                   enginefactory.h \
+                   metadatamanager.h \
+                   qmmpsettings.h
     devel.path = /include/qmmp
     INSTALLS += target \
         devel

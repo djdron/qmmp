@@ -26,7 +26,7 @@
 #include "qmmpsettings.h"
 #include "qmmp.h"
 
-/*!
+/*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class ReplayGain

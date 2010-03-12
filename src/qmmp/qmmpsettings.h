@@ -25,31 +25,69 @@
 #include <QUrl>
 #include <QStringList>
 
-/*!
+/*! @brief The QmmpSettings class provides access to global settings.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class QmmpSettings : public QObject
 {
 Q_OBJECT
 public:
+    /*!
+     * Constructor.
+     * @param parent Parent object.
+     * This functions is for internal usage only, use QmmpSettings::instance() instead.
+     */
     QmmpSettings(QObject *parent = 0);
+    /*!
+     * Destructor.
+     */
     ~QmmpSettings();
-
+    /*!
+     * This enum describes possible replaygain modes.
+     */
     enum ReplayGainMode
     {
-        REPLAYGAIN_TRACK = 0,
-        REPLAYGAIN_ALBUM,
-        REPLAYGAIN_DISABLED
+        REPLAYGAIN_TRACK = 0, /*!< Use track gain/peak */
+        REPLAYGAIN_ALBUM,     /*!< Use album gain/peak */
+        REPLAYGAIN_DISABLED   /*!< Disable ReplayGain */
     };
-
+    /*!
+     * Returns current ReplayGain mode.
+     */
     QmmpSettings::ReplayGainMode replayGainMode() const;
+    /*!
+     * Returns preamp in dB.
+     */
     double replayGainPreamp() const;
+    /*!
+     * Returns default gain in dB.
+     */
     double replayGainDefaultGain() const;
+    /*!
+     * Returns \b true if clipping prevention is enabled; otherwise returns \b false.
+     */
     bool replayGainPreventClipping() const;
+    /*!
+     * Sets ReplayGains settings.
+     * @param mode ReplayGain mode.
+     * @param preamp Preamp in dB.
+     * @param default_gain Default gain in dB.
+     * @param clip Clipping prevention state.
+     */
     void setReplayGainSettings(ReplayGainMode mode, double preamp, double default_gain, bool clip);
-
+    /*!
+     * Returns \b true if software volume is enabled; otherwise returns \b false.
+     */
     bool useSoftVolume() const;
+    /*!
+     * Returns \b true if 16-bit converter is enabled; otherwise returns \b false.
+     */
     bool use16BitOutput() const;
+    /*!
+     * Sets audio settings.
+     * @param soft_volume State of software volume.
+     * @param use_16bit State of the 16-bit audio converter.
+     */
     void setAudioSettings(bool soft_volume, bool use_16bit);
     /*!
      * If \b include is \b true, this function returns include cover file name filters,
@@ -60,6 +98,9 @@ public:
      * Returns a depth of recursive cover file search.
      */
     int coverSearchDepth() const;
+    /*!
+     * Returns \b true if cover file search is enabled; otherwise returns \b false.
+     */
     bool useCoverFiles() const;
     /*!
      * Sets cover search options.
@@ -67,6 +108,8 @@ public:
      * @param exc Exclude cover name filters
      * @param depth Depth of recursive cover file search.
      * Recursive cover file search can be disabled by setting \b depth to \b 0.
+     * @param use_files Use or not use files with covers.
+     * This parameter doesn't take effect in embedded covers.
      */
     void setCoverSettings(QStringList inc, QStringList exc, int depth, bool use_files);
     /*!
@@ -81,15 +124,34 @@ public:
      * Returns global proxy url.
      */
     QUrl proxy() const;
+    /*!
+     * Sets network settings.
+     * @param use_proxy Enables or disables global proxy.
+     * @param auth Enables or disables proxy authentication.
+     * @param proxy Proxy url.
+     */
     void setNetworkSettings(bool use_proxy, bool auth, const QUrl &proxy);
-
-
+    /*!
+     * Returns a pointer to the QmmpSettings instance.
+     */
     static QmmpSettings* instance();
 
 signals:
+    /*!
+     * Emitted when ReplayGain settings are changed.
+     */
     void replayGainSettingsChanged();
+    /*!
+     * Emitted when audio settings are changed.
+     */
     void audioSettingsChanged();
+    /*!
+     * Emitted when cover settings are changed.
+     */
     void coverSettingsChanged();
+    /*!
+     * Emitted when network settings are changed.
+     */
     void networkSettingsChanged();
 
 private slots:

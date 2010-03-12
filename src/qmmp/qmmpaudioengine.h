@@ -37,6 +37,9 @@ class EffectFactory;
 class ReplayGain;
 class QmmpSettings;
 
+/*! @internal
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class QmmpAudioEngine : public AbstractEngine
 {
 Q_OBJECT

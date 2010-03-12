@@ -27,21 +27,51 @@
 #include <QIODevice>
 #include "inputsourcefactory.h"
 
-/*!
+/*! @brief The InputSource class provides the base interface class of transports.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class InputSource : public QObject
 {
 Q_OBJECT
 public:
+    /*!
+     * Object contsructor.
+     * @param url Input source path or url.
+     * @param parent Parent object.
+     */
     InputSource(const QString &url, QObject *parent = 0);
+    /*!
+     * Returns QIODevice-based object for I/O operations.
+     * Subclass shoud reimplement this function.
+     */
     virtual QIODevice *ioDevice() = 0;
+    /*!
+     * Prepares input data source for usage.
+     * Subclass shoud reimplement this function.
+     */
     virtual bool initialize() = 0;
+    /*!
+     * Returns \b true if transport is ready for usage; otherwise returns \b false.
+     */
     virtual bool isReady() = 0;
+    /*!
+     * Returns input source path or url.
+     */
     const QString url() const;
+    /*!
+     * Returns start position is ms;
+     */
     qint64 offset() const;
+    /*!
+     * Sets start position to \b offset ms.
+     */
     void setOffset(qint64 offset);
-
+    /*!
+     * Creates InputSource object.
+     * @param url Input source path or url.
+     * @param parent Parent object.
+     * Returns \b 0 if the given url is not supported.
+     */
     static InputSource *create(const QString &url, QObject *parent = 0);
     /*!
      * Returns a list of transport factories.
@@ -53,7 +83,11 @@ public:
     static QStringList files();
 
 signals:
-    void ready(InputSource *);
+    /*!
+     * This signal is emitted when transport is ready for usage.
+     * @param s Pointer of this object.
+     */
+    void ready(InputSource *s);
 
 private:
     QString m_url;

@@ -93,12 +93,12 @@ SET(libqmmp_MOC_HDRS
 
 SET(libqmmp_DEVEL_HDRS
     visual.h
+    recycler.h
     buffer.h
     decoder.h
     output.h
     fileinfo.h
     outputfactory.h
-    decoderfactory.h
     soundcore.h
     effectfactory.h
     effect.h
@@ -107,7 +107,6 @@ SET(libqmmp_DEVEL_HDRS
     volumecontrol.h
     metadatamodel.h
     tagmodel.h
-    qmmpaudioengine.h
     abstractengine.h
     audioparameters.h
     inputsource.h

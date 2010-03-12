@@ -23,7 +23,7 @@
 
 #include "inputsource.h"
 
-/**
+/*! @internal
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class EmptyInputSource : public InputSource

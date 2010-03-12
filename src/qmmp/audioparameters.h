@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,24 +24,58 @@
 #include <QtGlobal>
 #include "qmmp.h"
 
-/*!
+/*! @brief The AudioParameters class keeps information about audio settings.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class AudioParameters
 {
 public:
+    /*!
+     * Contsructor.
+     */
     AudioParameters();
+    /*!
+     * Constructs audio settings with the given parameters.
+     * @param srate Sampling rate.
+     * @param chan Number of channels.
+     * @param format PCM data format.
+     */
     AudioParameters(quint32 srate, int chan, Qmmp::AudioFormat format);
+    /*!
+     * Constructs a copy of \b other.
+     */
     AudioParameters(const AudioParameters &other);
-
+    /*!
+     * Assigns audio parameters \b p to this parameters.
+     */
     void operator=(const AudioParameters &p);
+    /*!
+     * Returns \b true if parameters \b p is equal to this parameters; otherwise returns \b false.
+     */
     bool operator==(const AudioParameters &p) const;
+    /*!
+     * Returns \b true if parameters \b p is not equal to this parameters; otherwise returns \b false.
+     */
     bool operator!=(const AudioParameters &p) const;
-
+    /*!
+     * Returns sample rate in Hz.
+     */
     quint32 sampleRate() const;
+    /*!
+     * Returns number of channels.
+     */
     int channels() const;
+    /*!
+     * Returns pcm format.
+     */
     Qmmp::AudioFormat format() const;
+    /*!
+     * Returns sample size in bytes.
+     */
     int sampleSize() const;
+    /*!
+     * Returns sample size in bytes of the given pcm data \b format.
+     */
     static int sampleSize(Qmmp::AudioFormat format);
 
 private:
