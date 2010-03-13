@@ -46,7 +46,7 @@
         <location filename="../settingsdialog.ui" line="51"/>
         <location filename="../settingsdialog.ui" line="87"/>
         <source>Password:</source>
-        <translation>Passowrd:</translation>
+        <translation>Password:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
