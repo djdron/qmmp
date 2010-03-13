@@ -23,6 +23,8 @@
 class QObject;
 class QTranslator;
 class QDialog;
+class QString;
+class QWidget;
 class Control;
 class General;
 

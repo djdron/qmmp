@@ -22,10 +22,10 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
-
 #include <qmmp/metadatamanager.h>
 #include <qmmp/metadatamodel.h>
 #include <qmmp/tagmodel.h>
+#include "ui_detailsdialog.h"
 #include "abstractplaylistitem.h"
 #include "tageditor.h"
 #include "detailsdialog.h"
@@ -33,36 +33,39 @@
 DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
         : QDialog(parent)
 {
+    m_ui = new Ui::DetailsDialog;
     setAttribute(Qt::WA_QuitOnClose, false);
     setAttribute(Qt::WA_DeleteOnClose, false);
     m_metaDataModel = 0;
     m_item = item;
-    ui.setupUi(this);
+    m_ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     m_path = item->url();
     setWindowTitle (m_path.section('/',-1));
-    ui.pathEdit->setText(m_path);
+    m_ui->pathEdit->setText(m_path);
 
     m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(item->url(), this);
 
     if(m_metaDataModel)
     {
         foreach(TagModel *tagModel, m_metaDataModel->tags())
-            ui.tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
+            m_ui->tabWidget->addTab(new TagEditor(tagModel, this), tagModel->name());
 
         foreach(QString title, m_metaDataModel->descriptions().keys())
         {
             QTextEdit *textEdit = new QTextEdit(this);
             textEdit->setReadOnly(true);
             textEdit->setPlainText(m_metaDataModel->descriptions().value(title));
-            ui.tabWidget->addTab(textEdit, title);
+            m_ui->tabWidget->addTab(textEdit, title);
         }
     }
     printInfo();
 }
 
 DetailsDialog::~DetailsDialog()
-{}
+{
+    delete m_ui;
+}
 
 void DetailsDialog::printInfo()
 {
@@ -91,7 +94,7 @@ void DetailsDialog::printInfo()
     if(!m_metaDataModel)
     {
         formattedText.append("</TABLE>");
-        ui.textEdit->setHtml(formattedText);
+        m_ui->textEdit->setHtml(formattedText);
         return;
     }
     QHash <QString, QString> ap = m_metaDataModel->audioProperties();
@@ -109,7 +112,7 @@ void DetailsDialog::printInfo()
         formattedText += formatRow(key, ap.value(key));
 
     formattedText.append("</TABLE>");
-    ui.textEdit->setHtml(formattedText);
+    m_ui->textEdit->setHtml(formattedText);
 }
 
 QString DetailsDialog::formatRow(const QString key, const QString value)
@@ -124,9 +127,9 @@ QString DetailsDialog::formatRow(const QString key, const QString value)
 
 void DetailsDialog::on_buttonBox_clicked(QAbstractButton *button)
 {
-    if(ui.buttonBox->standardButton(button) == QDialogButtonBox::Save)
+    if(m_ui->buttonBox->standardButton(button) == QDialogButtonBox::Save)
     {
-        TagEditor *tab = qobject_cast<TagEditor *> (ui.tabWidget->currentWidget());
+        TagEditor *tab = qobject_cast<TagEditor *> (m_ui->tabWidget->currentWidget());
         if(tab)
             tab->save();
     }

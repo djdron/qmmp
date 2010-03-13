@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,14 +26,41 @@
 #include <qmmpui/abstractplaylistitem.h>
 #include <qmmp/qmmp.h>
 
-/*!
+/*! @brief The MetaDataFormatter formats metadata using templates.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class MetaDataFormatter
 {
 public:
+    /*!
+     * Constructor.
+     * @param format Metadata template.
+     * Syntax:
+     * %p - artist,
+     * %a - album,
+     * %t - title,
+     * %n - track number,
+     * %NN - 2-digit track number,
+     * %g - genre,
+     * %c - comment,
+     * %C - composer,
+     * %D - disc number,
+     * %f - file name,
+     * %F - full path,
+     * %y - year,
+     * %l - duration,
+     * %if(A,B,C) or %if(A&B&C,D,E) - condition.
+     */
     MetaDataFormatter(const QString &format);
+    /*!
+     * Converts metadata of item \b item to one string using template.
+     */
     QString parse(AbstractPlaylistItem *item);
+    /*!
+     * Converts metadata to one string using template.
+     * @param metaData Metadata array.
+     * @param length Length in seconds.
+     */
     QString parse(const QMap<Qmmp::MetaData, QString> metaData, qint64 length = 0);
 
 private:

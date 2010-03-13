@@ -4,47 +4,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="78"/>
+        <location filename="../detailsdialog.cpp" line="81"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="79"/>
+        <location filename="../detailsdialog.cpp" line="82"/>
         <source>Artist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="80"/>
+        <location filename="../detailsdialog.cpp" line="83"/>
         <source>Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../detailsdialog.cpp" line="84"/>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="82"/>
+        <location filename="../detailsdialog.cpp" line="85"/>
         <source>Genre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="83"/>
+        <location filename="../detailsdialog.cpp" line="86"/>
         <source>Composer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="85"/>
+        <location filename="../detailsdialog.cpp" line="88"/>
         <source>Year</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="87"/>
+        <location filename="../detailsdialog.cpp" line="90"/>
         <source>Track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="89"/>
+        <location filename="../detailsdialog.cpp" line="92"/>
         <source>Disc number</source>
         <translation type="unfinished"></translation>
     </message>

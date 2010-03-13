@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,35 +25,43 @@
 #include <QMap>
 #include <qmmp/qmmp.h>
 
-#include "ui_detailsdialog.h"
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
 class QTextCodec;
+class QAbstractButton;
 class AbstractPlaylistItem;
 class MetaDataModel;
 
+namespace Ui {
+    class DetailsDialog;
+}
+
+/** @brief The DetailsDialog class provides dialog to show/edit metadata.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class DetailsDialog : public QDialog
 {
     Q_OBJECT
 public:
+    /*!
+     * Constructor.
+     * @param item Playlist item which should be used.
+     * @param parent Parent widget.
+     */
     DetailsDialog(AbstractPlaylistItem *item, QWidget *parent = 0);
-
+    /*!
+     * Destructor.
+     */
     ~DetailsDialog();
 
 private slots:
     void on_buttonBox_clicked(QAbstractButton *button);
 
 private:
-    Ui::DetailsDialog ui;
+    Ui::DetailsDialog *m_ui;
     void printInfo();
     QString m_path;
     QString formatRow(const QString key, const QString value);
     MetaDataModel *m_metaDataModel;
     AbstractPlaylistItem *m_item;
-
 };
 
 #endif

@@ -101,6 +101,7 @@ class PlayListModel : public QObject
 public:
     /*!
      * Constructs a playlist model.
+     * @param name Playlist name.
      * @param parent QObject parent
      */
     PlayListModel(const QString &name, QObject *parent = 0);

@@ -23,22 +23,50 @@
 #include <QObject>
 #include "playlistmodel.h"
 
-/*!
+/*! @brief The PlayListManager class is used to handle multiple playlists.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class PlayListManager : public QObject
 {
 Q_OBJECT
 public:
+    /*!
+     * Constructor.
+     * @param parent Parent object.
+     */
     PlayListManager(QObject *parent);
+    /*!
+     * Destructor.
+     */
     ~PlayListManager();
-
+    /*!
+     * Returns a list of all playlists.
+     */
     QList <PlayListModel *> playLists() const;
+    /*!
+     * Returns a names of all playlists.
+     */
     QStringList playListNames() const;
+    /*!
+     * Returns selected playlist.
+     */
     PlayListModel *selectedPlayList() const;
+    /*!
+     * Returns active playlist.
+     */
     PlayListModel *currentPlayList() const;
+    /*!
+     * Returns a number of playlists.
+     */
     int count();
+    /*!
+     * Returns the index position of the playlist \b model.
+     */
     int indexOf(PlayListModel *model);
+    /*!
+     * Returns the playlist at index position \b i in the list.
+     * \b i must be a valid index position in the list (i.e., 0 <= i < count()).
+     */
     PlayListModel *playListAt(int i);
     /*!
      * Returns state of the "Convert underscores to blanks" option (\b true - enabled, \b false - disabled).
@@ -72,10 +100,8 @@ public:
      */
     void setUseMetadata(bool enabled);
     /*!
-     * Sets short title format
-     * @param format title format. (Expressions: "%p" - artist, "%a" - album, "%t" - title, "%n" - track,
-     * "%g" - genre, "%c" - comment, "%C" - composer, "%D" - disc number "%f" - file name, "
-     * %F" - full path, "%y" - year)
+     * Sets short title template.
+     * @param format title template. \sa MetaDataFormatter
      */
     void setFormat(const QString &format);
     /*!
@@ -88,10 +114,29 @@ public:
     bool isShuffle() const;
 
 signals:
+    /*!
+     * Emitted when current playlist changes.
+     * @param current Current playlist.
+     * @param previous Previous playlist.
+     */
     void currentPlayListChanged (PlayListModel *current, PlayListModel *previous);
+    /*!
+     * Emitted when selected playlist changes.
+     * @param selected Selected playlist.
+     * @param previous Previous selected playlist.
+     */
     void selectedPlayListChanged (PlayListModel *selected, PlayListModel *previous);
+    /*!
+     * Emitted when the playlist with index \b index is added.
+     */
     void playListAdded(int index);
+    /*!
+     * Emitted when the playlist with index \b index is removed.
+     */
     void playListRemoved(int index);
+    /*!
+     * Emitted when the list of playlists is changed.
+     */
     void playListsChanged();
     /*!
      * Emitted when state of the "Repeat All" option has changed.
@@ -109,15 +154,47 @@ signals:
     void settingsChanged();
 
 public slots:
+    /*!
+     * Selects playlist \b model.
+     */
     void selectPlayList(PlayListModel *model);
+    /*!
+     * Selects playlist with index \b index.
+     */
     void selectPlayList(int index);
+    /*!
+     * Selects next playlist if possible.
+     */
     void selectNextPlayList();
+    /*!
+     * Selects previous playlist if possible.
+     */
     void selectPreviousPlayList();
+    /*!
+     * Sets current playlist to \b model.
+     */
     void activatePlayList(PlayListModel *model);
+    /*!
+     * Creates new playlist with the given name \b name.
+     */
     PlayListModel *createPlayList(const QString &name = QString());
+    /*!
+     * Removes playlist \b model.
+     */
     void removePlayList(PlayListModel *model);
+    /*!
+     * Moves playlist with index \b i to index \b j.
+     */
     void move(int i, int j);
+    /*!
+     * Prepares all playlists for repeatable playing (loop mode).
+     * @param r State of the repeatable mode (\b true - enabled, \b false - disabled)
+     */
     void setRepeatableList(bool r);
+    /*!
+     * Prepares all playlists for shuffle playing.
+     * @param s State of the shuffle mode (\b true - enabled, \b false - disabled)
+     */
     void setShuffle(bool s);
     /*!
      * This is a convenience function and is the same as calling \b selectedPlayList()->clear()
