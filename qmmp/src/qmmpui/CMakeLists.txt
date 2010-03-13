@@ -70,20 +70,19 @@ SET(libqmmpui_MOC_HDRS
 
 SET(libqmmpui_DEVEL_HDRS
     abstractplaylistitem.h
+    generalfactory.h
+    generalhandler.h
+    playlistformat.h
+    playlistparser.h
     commandlinemanager.h
     commandlineoption.h
-    filedialogfactory.h
     filedialog.h
-    generalfactory.h
-    general.h
-    generalhandler.h
-    mediaplayer.h
-    playlistformat.h
+    filedialogfactory.h
+    abstractplaylistitem.h
     playlistitem.h
     playlistmodel.h
-    playlistparser.h
+    mediaplayer.h
     detailsdialog.h
-    tageditor.h
     playlistmanager.h
     metadataformatter.h
     templateeditor.h

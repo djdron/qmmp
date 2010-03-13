@@ -23,6 +23,8 @@
 class QObject;
 class QTranslator;
 class FileDialog;
+class QWidget;
+class QString;
 
 /*! @brief Helper class to store file dialog plugin properies.
  */

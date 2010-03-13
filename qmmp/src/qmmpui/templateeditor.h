@@ -23,25 +23,45 @@
 
 #include <QDialog>
 
-
 namespace Ui {
     class TemplateEditor;
 }
 class QAction;
 
 
-/*!
+/*! @brief The TemplateEditor class provides simple template editor dialog.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class TemplateEditor : public QDialog
 {
 Q_OBJECT
 public:
+    /*!
+     * Constructor.
+     * @param parent Parent widget.
+     */
     explicit TemplateEditor(QWidget *parent = 0);
-
+    /*!
+     * Returns current template from editor.
+     */
     QString currentTemplate() const;
+    /*!
+     * Sets template which is placed in the text edit to \b text.
+     */
     void setTemplate(const QString &text = QString());
+    /*!
+     * Sets default template to \b text.
+     * This template will be placed in the text edit if the user pressed Reset
+     */
     void setDefaultTemplate(const QString &text);
+    /*!
+     * Static convenience function to get a template from the user.
+     * @param parent Parent widget.
+     * @param title Window title.
+     * @param text Template which is placed in the text edit.
+     * @param default_template This template will be placed in the text edit if the user pressed Reset.
+     * @param ok This varible will be set to \b true (\b false) if the user pressed OK (Cancel).
+     */
     static QString getTemplate (QWidget *parent, const QString &title, const QString &text = QString(),
                                 const QString &default_template = QString(), bool *ok = 0);
 

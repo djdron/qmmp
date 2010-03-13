@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -106,7 +106,7 @@ public:
      */
     virtual void setLength(qint64 length);
     /*!
-     *
+     * Returns all meta data in map.
      */
     const QMap <Qmmp::MetaData, QString> metaData();
 

@@ -29,6 +29,9 @@ namespace Ui {
 
 class TagModel;
 
+/*! @internal
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
 class TagEditor : public QWidget
 {
 Q_OBJECT

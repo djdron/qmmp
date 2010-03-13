@@ -48,7 +48,7 @@ public:
     /*!
      * Prepares object for usage.
      * @param core Pointer to the SoundCore object.
-     * @param model Playlist model
+     * @param pl_mamager Playlist manager.
      */
     void initialize(SoundCore *core, PlayListManager *pl_mamager);
     /*!
