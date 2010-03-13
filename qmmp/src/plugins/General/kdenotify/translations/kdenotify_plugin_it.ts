@@ -24,7 +24,7 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="30"/>
         <source>KDE 4 notification plugin</source>
-        <translation>Plugin notificazione epr KIDE 4</translation>
+        <translation>Plugin notificazione per KDE 4</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="50"/>
@@ -53,7 +53,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="47"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra copertine</translation>
     </message>
 </context>
 </TS>

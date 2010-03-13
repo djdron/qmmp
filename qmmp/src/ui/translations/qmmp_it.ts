@@ -152,7 +152,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Set playback volume (example: qmmp --volume 20</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposta volume di riproduzione (esempio qmmp --volume 20)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
@@ -196,27 +196,27 @@
     <message>
         <location filename="../configdialog.cpp" line="71"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Traccia</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="73"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Disabilitato</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="223"/>
         <source>Transports</source>
-        <translation type="unfinished"></translation>
+        <translation>Protocolli di trasporto</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="234"/>
         <source>Decoders</source>
-        <translation type="unfinished"></translation>
+        <translation>Decodificatori</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="244"/>
         <source>Engines</source>
-        <translation type="unfinished"></translation>
+        <translation>Meccanismi</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="379"/>
@@ -368,7 +368,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1184"/>
         <source>16-bit output</source>
-        <translation type="unfinished"></translation>
+        <translation>uscita a 16 bit</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="190"/>
@@ -414,7 +414,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1001"/>
         <source>Replay Gain</source>
-        <translation>Guadagno riesecuzione</translation>
+        <translation>Normalizzazione</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="240"/>
@@ -464,33 +464,33 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1007"/>
         <source>Replay Gain mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Metodo di normalizzazione</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1024"/>
         <source>Preamp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Preamp:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1056"/>
         <location filename="../forms/configdialog.ui" line="1101"/>
         <source>dB</source>
-        <translation type="unfinished"></translation>
+        <translation>dB</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1069"/>
         <source>Default gain:</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalizzazione predefinita</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizza informazioni di picco per evitare tagli</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>Uscita:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1177"/>
@@ -535,7 +535,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa immagini separate</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="800"/>
@@ -555,12 +555,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="867"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Riproduzione</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Continua la riproduzione all&apos;avvio</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="899"/>
@@ -714,17 +714,17 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="53"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="54"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="55"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="87"/>
@@ -1200,7 +1200,7 @@
     <message>
         <location filename="../playlist.cpp" line="211"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi duplicati</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
@@ -1410,32 +1410,32 @@
     <message>
         <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Load</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Carica</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Salva come</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="54"/>
         <source>Rename</source>
-        <translation type="unfinished">Rinomina</translation>
+        <translation>Rinomina</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="55"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Elimina</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina lista brani</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome della lista brani:</translation>
     </message>
 </context>
 <context>
@@ -1448,7 +1448,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra copertina</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -1458,12 +1458,12 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ritardo:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
@@ -1624,7 +1624,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="72"/>
         <source>Unknown command</source>
-        <translation type="unfinished"></translation>
+        <translation>Comando sconosciuto</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="174"/>
