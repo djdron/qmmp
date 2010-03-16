@@ -292,3 +292,97 @@ Version 0.3.0
 * updated German translation (Panagiotis Papadopoulos)
 * updated Polish translation (Grzegorz Gibas)
 
+Version 0.3.1
+* added Home/End hotkeys
+* added possibility to hide song numbers
+* added cygwin support (yselkowitz AT gmail.com)
+* added standard icons support to the status icon plugin
+* added openbox compatibility option
+* added possibility to load plugins form a different location (Holger Schurig)
+* added mkv extension to mplayer plugin
+* added volume control using global hotkeys
+* added scrolling with mouse to text scroller (Erik Ölsar)
+* added Qt 4.6 support
+* fixed build on some systems (Pino Toskano)
+* fixed problem with "buffering" message
+* fixed sorting by name
+* fixed cue parsing
+* fixed displayed mpeg version
+* fixed bug with missing comment in playlist
+* fixed non-working global hotkeys with enabled caps-lock
+* fixed keyboard lock by hotkey plugin
+* fixed non-working equalizer when using Ogg Vorbis plugin
+* fixed jack regression
+* fixed data receiving from UDS
+* fixed button focus behavior (Erik Ölsar)
+* fixed problem with slow visualization
+* fixed problems with some sound cards
+* fixed locale detection
+* fixed current track loss
+* removed broken LyricWiki.org support, added lyricsplugin.com instead
+* added Lithuanian translation (Algirdas Butkus)
+* added Kazakh translation (Baurzhan Muftakhidinov)
+* updated Chinese Traditional and Chinese Simplified translations (lon)
+* updated Russian translation
+* updated Turkish translation (Bilgesu Güngör)
+* updated German translation (Panagiotis Papadopoulos)
+* updated Ukrainian translation (Gennadi Motsyo)
+* updated Italian translation (Gian Paolo Renello)
+* updated Polish translation (Grzegorz Gibas)
+
+Version 0.3.2
+* added metacity compatibility
+* added projectM 2.0 support
+* added kde dialog support
+* removed XFree86-Misc dependency
+* fixed software volume control (added 8/32-bits support)
+* fixed segfault with 6-channel files
+* fixed cue parsing
+* improved "jump to" dialog behaviour
+
+Version 0.3.3
+* added Hungarian translation (Németh Gábor)
+* fixed kde dialog support (thanks to Sebastian Piping)
+* fixed problems with some mp3 files
+* fixed crash on m4a files
+* fixed settings dialog
+* fixed proxy support
+
+Version 0.4.0
+* partially rewritten sound core
+* added transport plugin api
+* added engine plugin api
+* added template based tag formatting
+* added templates support to notification plugin
+* added cover support
+* added unified details dialog
+* added support for additional tags
+* added bitmap text support (Erik Ölsar)
+* added status icon popup message (Artur Guzik)
+* added kde notifications plugin (Artur Guzik)
+* added skinned cursors (Erik Ölsar)
+* added double size mode
+* added multiple playlists support
+* added popup information
+* added ladspa host plugin
+* added ReplayGain support
+* added aac streams support
+* added cover manager plugin
+* added 16-bit output
+* added automatic charset detection (for cue and icy metadata)
+* added null output plugin
+* added cddb support
+* added ogg flac support
+* added option 'continue playback on startup'
+* added seeking to command line
+* added possibility to remove invalid or duplicate tracks from playlist
+* added http plugin
+* added cover support to mpris plugin
+* removed deprecated Qt classes
+* removed http support from core
+* improved and optimized cue support
+* improved scrobbler plugin
+* improved fileops plugin
+* fixed 24-bit wavpack support
+* fixed gaps between cue tracks
+* fixed ape seeking (thanks to Michail Zeludkov)
