@@ -24,7 +24,7 @@
 #include "statehandler.h"
 
 #define TICK_INTERVAL 250
-#define PREFINISH_TIME 2000
+#define PREFINISH_TIME 6000
 
 StateHandler* StateHandler::m_instance = 0;
 
@@ -70,7 +70,8 @@ void StateHandler::dispatch(qint64 elapsed,
                  && m_sendAboutToFinish)
         {
             m_sendAboutToFinish = false;
-            emit aboutToFinish();
+            if(SoundCore::instance()->totalTime() - m_elapsed > PREFINISH_TIME/2)
+                emit aboutToFinish();
         }
     }
     if (m_frequency != frequency)
