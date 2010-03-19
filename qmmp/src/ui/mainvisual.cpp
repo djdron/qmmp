@@ -581,7 +581,7 @@ Scope::Scope()
 void Scope::clear()
 {
     for (int i = 0; i< 76; ++i)
-        m_intern_vis_data[i] = 7;
+        m_intern_vis_data[i] = 5;
 }
 
 Scope::~Scope()
@@ -600,10 +600,10 @@ bool Scope::process(VisualNode *node)
         pos += step;
         m_intern_vis_data[i] = (node->left[pos >> 8] >> 12);
 
-        if (m_intern_vis_data[i] > 5)
-            m_intern_vis_data[i] = 5;
-        else if (m_intern_vis_data[i] < -5)
-            m_intern_vis_data[i] = -5;
+        if (m_intern_vis_data[i] > 4)
+            m_intern_vis_data[i] = 4;
+        else if (m_intern_vis_data[i] < -4)
+            m_intern_vis_data[i] = -4;
     }
     return true;
 }
@@ -616,7 +616,7 @@ void Scope::draw(QPainter *p)
         int h2 = 8 - m_intern_vis_data[i+1];
         if (h1 > h2)
             qSwap(h1, h2);
-        p->setPen (m_skin->getVisColor(19 + (8 - h2)/2));
+        p->setPen (m_skin->getVisColor(18 + qAbs(8 - h2)));
         p->drawLine(i*m_ratio, h1*m_ratio, (i+1)*m_ratio, h2*m_ratio);
     }
     for (int i = 0; i< 76; ++i)
