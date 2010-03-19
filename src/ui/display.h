@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -113,6 +113,7 @@ private:
     TimeIndicator* m_timeIndicator;
     TitleBar *m_titlebar;
     SoundCore *m_core;
+    QWidget *m_aboutWidget;
 };
 
 #endif

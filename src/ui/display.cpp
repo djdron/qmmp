@@ -105,7 +105,7 @@ MainDisplay::MainDisplay (QWidget *parent)
     connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
     m_balanceBar->setToolTip(tr("Balance"));
     m_timeIndicator = new TimeIndicator(this);
-
+    m_aboutWidget = new QWidget(this);
     m_core = SoundCore::instance();
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(bitrateChanged(int)), m_kbps, SLOT(display(int)));
@@ -153,6 +153,7 @@ void MainDisplay::updatePositions()
     m_volumeBar->move(r*107, r*57);
     m_balanceBar->move(r*177, r*57);
     m_timeIndicator->move(r*34, r*26);
+    m_aboutWidget->setGeometry(r*247,r*83,r*20,r*25);
 }
 
 void MainDisplay::setTime (qint64 t)
@@ -295,9 +296,9 @@ void MainDisplay::setIsShuffle(bool yes)
 void MainDisplay::mousePressEvent(QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
-    {
         m_mw->menu()->exec(e->globalPos());
-    }
+    else if(e->button() == Qt::LeftButton && m_aboutWidget->underMouse())
+        m_mw->about();
     PixmapWidget::mousePressEvent(e);
 }
 
