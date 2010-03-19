@@ -81,8 +81,8 @@ public slots:
 
     void loadPlaylist();
     void savePlaylist();
-
     void setFileList(const QStringList&);
+    void about();
 
 protected:
     virtual void closeEvent (QCloseEvent *);
@@ -96,7 +96,6 @@ private slots:
     void updateEQ();
     void forward();
     void backward();
-    void about();
     void handleCloseRequest();
 
 private:
