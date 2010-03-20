@@ -50,6 +50,7 @@ SoundCore::SoundCore(QObject *parent)
     m_parentWidget = 0;
     m_engine = 0;
     m_pendingEngine = 0;
+    m_volumeControl = 0;
     for (int i = 1; i < 10; ++i)
         m_bands[i] = 0;
     m_handler = new StateHandler(this);
@@ -63,8 +64,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(startPendingEngine()));
     connect(m_handler, SIGNAL(aboutToFinish()), SIGNAL(aboutToFinish()));
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
-    m_volumeControl = VolumeControl::create(this);
-    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    updateVolume();
     connect(QmmpSettings::instance(), SIGNAL(audioSettingsChanged()), SLOT(updateVolume()));
 }
 
@@ -110,10 +110,7 @@ void SoundCore::stop()
     if(m_pendingEngine)
         delete m_pendingEngine;
     m_pendingEngine = 0;
-    //update VolumeControl
-    delete m_volumeControl;
-    m_volumeControl = VolumeControl::create(this);
-    connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
+    updateVolume();
     if(state() == Qmmp::NormalError || state() == Qmmp::FatalError || state() == Qmmp::Buffering)
         StateHandler::instance()->dispatch(Qmmp::Stopped); //clear error and buffering state
 }
@@ -181,16 +178,12 @@ void SoundCore::updateVolume()
 {
     if (m_engine)
         m_engine->mutex()->lock();
-    delete m_volumeControl;
+    if(m_volumeControl)
+        delete m_volumeControl;
     m_volumeControl = VolumeControl::create(this);
     connect(m_volumeControl, SIGNAL(volumeChanged(int, int)), SIGNAL(volumeChanged(int, int)));
     if (m_engine)
         m_engine->mutex()->unlock();
-}
-
-bool SoundCore::softwareVolume()
-{
-    return SoftwareVolume::instance() != 0;
 }
 
 qint64 SoundCore::elapsed()
