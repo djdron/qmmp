@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Artur Guzik                                     *
+ *   Copyright (C) 2009-2010 by Artur Guzik                                *
  *   a.guzik88@gmail.com                                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -38,11 +38,15 @@ public:
 public slots:
     virtual void accept();
 
+private slots:
+    virtual void on_templateButton_clicked();
+
 protected:
     void changeEvent(QEvent *e);
 
 private:
     Ui::SettingsDialog *ui;
+    QString m_template;
 };
 
 #endif // SETTINGSDIALOG_H

@@ -4,19 +4,9 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <location filename="../kdenotify.cpp" line="107"/>
+        <location filename="../kdenotify.cpp" line="104"/>
         <source>Qmmp now playing:</source>
         <translation>Відтворюється:</translation>
-    </message>
-    <message>
-        <location filename="../kdenotify.cpp" line="117"/>
-        <source>by </source>
-        <translation>виконавець</translation>
-    </message>
-    <message>
-        <location filename="../kdenotify.cpp" line="122"/>
-        <source>on </source>
-        <translation>на</translation>
     </message>
 </context>
 <context>
@@ -47,14 +37,24 @@
         <translation>Налаштування модуля повідомлень KDE4</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="20"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Notification delay [ms]:</source>
         <translation>Час показу [мс]:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="47"/>
+        <location filename="../settingsdialog.ui" line="46"/>
         <source>Show covers</source>
         <translation>Показати обкладинки</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Change template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="73"/>
+        <source>Notification Template</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

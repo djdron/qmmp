@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Artur Guzik                                     *
+ *   Copyright (C) 2009-2010 by Artur Guzik                                *
  *   a.guzik88@gmail.com                                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,9 @@
 
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
+#include "kdenotify.h"
 #include <qmmp/qmmp.h>
+#include <qmmpui/templateeditor.h>
 
 #include <QSettings>
 
@@ -34,6 +36,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     settings.beginGroup("Kde_Notifier");
     ui->kNotifyDelaySpinBox->setValue(settings.value("notify_delay",10000).toInt());
     ui->showCoversCheckBox->setChecked(settings.value("show_covers",true).toBool());
+    m_template = settings.value("template", DEFAULT_TEMPLATE).toString();
     settings.endGroup();
 }
 
@@ -48,6 +51,7 @@ void SettingsDialog::accept()
     settings.beginGroup("Kde_Notifier");
     settings.setValue("notify_delay",ui->kNotifyDelaySpinBox->value());
     settings.setValue("show_covers",ui->showCoversCheckBox->isChecked());
+    settings.setValue("template",m_template);
     settings.endGroup();
     QDialog::accept();
 }
@@ -62,4 +66,12 @@ void SettingsDialog::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+
+void SettingsDialog::on_templateButton_clicked()
+{
+    QString t = TemplateEditor::getTemplate(this, tr("Notification Template"), m_template,
+                                            DEFAULT_TEMPLATE);
+    if(!t.isEmpty())
+        m_template = t;
 }
