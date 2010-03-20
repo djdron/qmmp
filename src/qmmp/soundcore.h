@@ -71,10 +71,6 @@ public:
      */
     int rightVolume();
     /*!
-     * Returns \b true if software volume is used, otherwise returns \b false
-     */
-    bool softwareVolume();
-    /*!
      * Returns the current time (in milliseconds).
      */
     qint64 elapsed();
