@@ -4,19 +4,9 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <location filename="../kdenotify.cpp" line="107"/>
+        <location filename="../kdenotify.cpp" line="104"/>
         <source>Qmmp now playing:</source>
         <translation>Qmmp teraz odtwarza:</translation>
-    </message>
-    <message>
-        <location filename="../kdenotify.cpp" line="117"/>
-        <source>by </source>
-        <translation>przez </translation>
-    </message>
-    <message>
-        <location filename="../kdenotify.cpp" line="122"/>
-        <source>on </source>
-        <translation>na </translation>
     </message>
 </context>
 <context>
@@ -47,13 +37,23 @@
         <translation>Ustawienia wtyczki Powiadamianie KDE 4</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="20"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>Notification delay [ms]:</source>
         <translation>Czas zanikania [ms]:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="47"/>
+        <location filename="../settingsdialog.ui" line="46"/>
         <source>Show covers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Change template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.cpp" line="73"/>
+        <source>Notification Template</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

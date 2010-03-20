@@ -27,6 +27,8 @@
 #include "qmmpui/general.h"
 #include "qmmp/qmmp.h"
 
+#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b>\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)\n%if(%l,<br><b>%l</b>,)"
+
 class QDBusInterface;
 
 class KdeNotify : public General
@@ -43,11 +45,11 @@ private:
     int m_NotifyDelay;
     bool m_ShowCovers;
     bool m_UseFreedesktopSpec;
+    QString m_template;
+    
 private slots:
     void showMetaData();
     QString totalTimeString();
-
-
 };
 
 #endif // KDENOTIFY_H
