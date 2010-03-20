@@ -63,3 +63,5 @@ ADD_LIBRARY(kdenotify MODULE ${libkdenotify_SRCS} ${libkdenotify_MOC_SRCS} ${lib
 add_dependencies(kdenotify qmmpui)
 target_link_libraries(kdenotify ${QT_LIBRARIES} -lqmmpui -lqmmp)
 install(TARGETS kdenotify DESTINATION ${LIB_DIR}/qmmp/General)
+install(FILES images/empty_cover.png DESTINATION share/qmmp/images)
+install(FILES images/app_icon.png DESTINATION share/qmmp/images)

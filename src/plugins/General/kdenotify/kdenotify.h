@@ -41,11 +41,12 @@ public:
 private:
     QList<QVariant> prepareNotification();
     QDBusInterface *notifier;
-    QString m_ConfigDir;
+    QString m_coverPath;
     int m_NotifyDelay;
     bool m_ShowCovers;
     bool m_UseFreedesktopSpec;
     QString m_template;
+    QString m_imagesDir;
     
 private slots:
     void showMetaData();

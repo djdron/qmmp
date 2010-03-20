@@ -27,6 +27,7 @@
 #include <QDebug>
 #include <QTimer>
 #include <QImage>
+#include <QApplication>
 #include <qmmpui/metadataformatter.h>
 #include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
@@ -53,7 +54,14 @@ KdeNotify::KdeNotify(QObject *parent) : General(parent),m_UseFreedesktopSpec(fal
         m_UseFreedesktopSpec = true;
     }
     qWarning() << "KdeNotify: DBus interfece created successfully.";
-    m_ConfigDir = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+    //m_ConfigDir = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+    QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
+    QDir dir(path);
+    if(!dir.exists("kdenotifycache"))
+        dir.mkdir("kdenotifycache");
+    dir.cd("kdenotifycache");
+    m_coverPath = dir.absolutePath() + "/cover.jpg";
+    m_imagesDir = QDir(qApp->applicationFilePath () +"/../../share/qmmp/images").absolutePath();
 
     QSettings settings(Qmmp::configFile(),QSettings::IniFormat);
     settings.beginGroup("Kde_Notifier");
@@ -73,7 +81,7 @@ KdeNotify::KdeNotify(QObject *parent) : General(parent),m_UseFreedesktopSpec(fal
 KdeNotify::~KdeNotify()
 {
     QDir dir(QDir::home());
-    dir.remove(m_ConfigDir + "/cover.jpg");
+    dir.remove(m_coverPath);
 }
 
 QString KdeNotify::totalTimeString()
@@ -100,7 +108,7 @@ QList<QVariant> KdeNotify::prepareNotification()
     args.append(0U); //replaces-id
     if(!m_UseFreedesktopSpec)
         args.append(""); //event-id
-    args.append(m_ConfigDir + "/app_icon.png"); //app-icon(path to icon on disk)
+    args.append(m_imagesDir + "/app_icon.png");  //app-icon(path to icon on disk)
     args.append(tr("Qmmp now playing:")); //summary (notification title)
 
     MetaDataFormatter f(m_template);
@@ -112,13 +120,12 @@ QList<QVariant> KdeNotify::prepareNotification()
         QPixmap cover = MetaDataManager::instance()->instance()->getCover(core->metaData(Qmmp::URL));
         if(!cover.isNull())
         {
-            coverPath = m_ConfigDir + "/cover.jpg";
+            coverPath = m_coverPath;
             cover.scaled(100,100,Qt::IgnoreAspectRatio,Qt::SmoothTransformation).save(coverPath);
         }
     }
     if(coverPath.isEmpty())
-        coverPath = m_ConfigDir + "/empty_cover.png";
-
+        coverPath = m_imagesDir + "/empty_cover.png";
 
     QString nBody;
     nBody.append("<table padding=\"3px\"><tr><td width=\"80px\" height=\"80px\" padding=\"3px\">");
