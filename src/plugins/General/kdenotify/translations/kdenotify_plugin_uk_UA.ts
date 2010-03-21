@@ -49,12 +49,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити шаблон</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="73"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Шаблон повідомлення</translation>
     </message>
 </context>
 </TS>
