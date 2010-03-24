@@ -148,7 +148,7 @@ MpegFileTagModel::MpegFileTagModel(TagLib::MPEG::File *file, TagLib::MPEG::File:
     else if (m_tagType == TagLib::MPEG::File::ID3v2)
     {
         m_tag = m_file->ID3v2Tag();
-        m_codec = QTextCodec::codecForName(settings.value("ID3v1_encoding", "UTF-8").toByteArray ());
+        m_codec = QTextCodec::codecForName(settings.value("ID3v2_encoding", "UTF-8").toByteArray ());
         if (!m_codec)
             QTextCodec::codecForName ("UTF-8");
     }
