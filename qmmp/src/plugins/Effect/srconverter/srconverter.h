@@ -43,9 +43,6 @@ private:
     quint32 m_overSamplingFs;
     int m_srcError;
     int m_converter_type;
-    bool m_isSrcAlloc;
-    float *m_srcIn, *m_srcOut;
-    short *m_wOut;
     quint32 m_freq;
 };
 
