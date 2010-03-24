@@ -27,11 +27,8 @@
 
 SRConverter::SRConverter() : Effect()
 {
-    m_isSrcAlloc = false;
     int converter_type_array[] = {SRC_SINC_BEST_QUALITY, SRC_SINC_MEDIUM_QUALITY, SRC_SINC_FASTEST,
                                   SRC_ZERO_ORDER_HOLD,  SRC_LINEAR};
-    m_srcIn = 0;
-    m_srcOut = 0;
     m_src_state = 0;
     m_srcError = 0;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -48,66 +45,57 @@ SRConverter::~SRConverter()
     m_src_data.end_of_input = 0;
     m_src_data.input_frames = 0;
     m_src_data.output_frames = 0;
-    if (m_isSrcAlloc)
-    {
-        delete [] m_srcIn;
-        delete [] m_srcOut;
-        delete [] m_wOut;
-        m_isSrcAlloc = false;
-    }
 }
 
 void SRConverter::applyEffect(Buffer *b)
 {
-    if (m_isSrcAlloc)
-    {
-        delete [] m_srcIn;
-        delete [] m_srcOut;
-        delete [] m_wOut;
-        m_isSrcAlloc = false;
-    }
-    ulong wbytes = 0;
-
     if (m_src_state && b->nbytes > 0)
     {
-        int lrLength = b->nbytes/2;
-        int overLrLength= (int)floor(lrLength*(m_src_data.src_ratio+1));
-        m_srcIn = new float [lrLength];
-        m_srcOut = new float [overLrLength];
-        m_wOut = new short[overLrLength];
-        src_short_to_float_array((short *)b->data, m_srcIn, lrLength);
-        m_isSrcAlloc = true;
-        m_src_data.data_in = m_srcIn;
-        m_src_data.data_out = m_srcOut;
+        m_src_data.input_frames = b->nbytes / 2 / channels();
+        m_src_data.data_in = new float [m_src_data.input_frames * channels()];
+        m_src_data.output_frames = m_src_data.src_ratio * m_src_data.input_frames + 1;
         m_src_data.end_of_input = 0;
-        m_src_data.input_frames = lrLength/2;
-        m_src_data.output_frames = overLrLength/2;
+        m_src_data.data_out = new float [m_src_data.output_frames * channels()];
+        src_short_to_float_array((short*) b->data, m_src_data.data_in,
+                                 m_src_data.input_frames * channels());
         if ((m_srcError = src_process(m_src_state, &m_src_data)) > 0)
         {
             qWarning("SRConverter: src_process(): %s\n", src_strerror(m_srcError));
         }
         else
         {
-            src_float_to_short_array(m_srcOut, m_wOut, m_src_data.output_frames_gen*2);
-            wbytes = m_src_data.output_frames_gen*4;
-            delete [] b->data;
-            b->data = (unsigned char *) m_wOut;
-            b->nbytes = wbytes;
-            m_wOut = 0;
+            qint16 *out_data = new qint16 [m_src_data.output_frames_gen * channels()];
+            src_float_to_short_array(m_src_data.data_out, out_data,
+                                     m_src_data.output_frames_gen*channels());
+            b->nbytes = m_src_data.output_frames_gen * channels() * 2;
+            if(b->nbytes > b->size)
+            {
+                delete [] b->data;
+                b->data = (uchar *) out_data;
+            }
+            else
+            {
+                memcpy(b->data, out_data, b->nbytes);
+                delete [] out_data;
+            }
+
         }
+        delete [] m_src_data.data_in;
+        delete [] m_src_data.data_out;
     }
 }
 
 void SRConverter::configure(quint32 freq, int chan,  Qmmp::AudioFormat format)
 {
     freeSRC();
-    uint rate = freq;
+    if(freq != m_overSamplingFs)
     {
-        m_src_state = src_new(m_converter_type, 2, &m_srcError);
+        m_src_state = src_new(m_converter_type, chan, &m_srcError);
         if (m_src_state)
         {
-            m_src_data.src_ratio = (float)m_overSamplingFs/(float)rate;
-            rate = m_overSamplingFs;
+            m_src_data.src_ratio = (float)m_overSamplingFs/(float)freq;
+            src_set_ratio(m_src_state, m_src_data.src_ratio);
+            qDebug("%f", m_src_data.src_ratio);
         }
         else
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
@@ -117,6 +105,7 @@ void SRConverter::configure(quint32 freq, int chan,  Qmmp::AudioFormat format)
 
 void SRConverter::freeSRC()
 {
-    if (m_src_state != NULL)
+    if (m_src_state)
         m_src_state = src_delete(m_src_state);
+    m_src_state = 0;
 }
