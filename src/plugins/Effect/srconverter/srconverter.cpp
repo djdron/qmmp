@@ -95,7 +95,6 @@ void SRConverter::configure(quint32 freq, int chan,  Qmmp::AudioFormat format)
         {
             m_src_data.src_ratio = (float)m_overSamplingFs/(float)freq;
             src_set_ratio(m_src_state, m_src_data.src_ratio);
-            qDebug("%f", m_src_data.src_ratio);
         }
         else
             qDebug("SRConverter: src_new(): %s", src_strerror(m_srcError));
