@@ -28,6 +28,7 @@ class QFont;
 class QFontMetrics;
 class QMenu;
 class QAction;
+class QTimer;
 class PlayList;
 class PlayListModel;
 class Skin;
@@ -114,6 +115,7 @@ protected:
 
 private slots:
     void updateSkin();
+    void autoscroll();
 
 private:
     void loadColors();
@@ -152,6 +154,7 @@ private:
     bool m_show_number;
     MediaPlayer *m_player;
     PlayListPopup::PopupWidget *m_popupWidget;
+    QTimer *m_timer;
 };
 
 #endif
