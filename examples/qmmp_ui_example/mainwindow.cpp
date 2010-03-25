@@ -21,6 +21,7 @@
 #include <QHBoxLayout>
 #include <QSlider>
 #include <QLabel>
+#include <QTreeView>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
 #include <qmmpui/general.h>
@@ -29,6 +30,7 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/generalhandler.h>
 #include "abstractplaylistmodel.h"
 #include "playlistitemdelegate.h"
 #include "mainwindow.h"
@@ -40,9 +42,12 @@ MainWindow::MainWindow(QWidget *parent)
     //qmmp objects
     m_player = new MediaPlayer(this);
     m_core = new SoundCore(this);
-    m_model = new PlayListModel(this);
-    m_player->initialize(m_core, m_model);
+    m_pl_manager = new PlayListManager(this);
+    m_player->initialize(m_core, m_pl_manager);
     new PlaylistParser(this);
+    //m_generalHandler = new GeneralHandler(this);
+
+
     //connections
     connect(ui.actionPlay, SIGNAL(triggered()), m_player, SLOT(play()));
     connect(ui.actionPause, SIGNAL(triggered()), m_core, SLOT(pause()));
@@ -50,16 +55,28 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui.actionPrevious, SIGNAL(triggered()), m_player, SLOT(previous()));
     connect(ui.actionStop, SIGNAL(triggered()), m_player, SLOT(stop()));
     connect(ui.actionOpen, SIGNAL(triggered()),SLOT(addFiles()));
-    connect(ui.actionClear, SIGNAL(triggered()),m_model,SLOT(clear()));
+    connect(ui.actionClear, SIGNAL(triggered()),m_pl_manager,SLOT(clear()));
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(updatePosition(qint64)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(showBitrate(int)));
-    AbstractPlaylistModel *m = new AbstractPlaylistModel(m_model, this);
+    foreach(PlayListModel *model, m_pl_manager->playLists())
+    {
+        QTreeView *view = new QTreeView(this);
+        view->setRootIsDecorated(false);
+        AbstractPlaylistModel *m = new AbstractPlaylistModel(model, this);
+
+        //view->setItemDelegate(new PlaylistDelegate(this));
+        view->setModel(m);
+        ui.tabWidget->addTab(view, model->name());
+    }
+
+
+    /*AbstractPlaylistModel *m = new AbstractPlaylistModel(m_model, this);
     ui.listView->setItemDelegate(new PlaylistDelegate(this));
     ui.listView->setModel(m);
     connect(m_model, SIGNAL(listChanged()), ui.listView, SLOT(reset()));
     connect(ui.listView, SIGNAL(doubleClicked (const QModelIndex &)),
-                                SLOT (playSelected(const QModelIndex &)));
+                                SLOT (playSelected(const QModelIndex &)));*/
 
     m_slider = new QSlider (Qt::Horizontal, this);
     m_label = new QLabel(this);
@@ -76,19 +93,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::addFiles()
 {
-    QString lastDir;
+    /*QString lastDir;
     QStringList filters;
     filters << tr("All Supported Bitstreams")+" (" + Decoder::nameFilters().join (" ") +")";
     filters << Decoder::filters();
     FileDialog::popup(this, FileDialog::AddDirsFiles, &lastDir,
                             m_model, SLOT(addFileList(const QStringList&)),
-                            tr("Select one or more files to open"), filters.join(";;"));
+                            tr("Select one or more files to open"), filters.join(";;"));*/
 }
 
 void MainWindow::playSelected(const QModelIndex &i)
 {
     m_player->stop();
-    m_model->setCurrent(i.row());
+    //m_model->setCurrent(i.row());
     m_player->play();
 }
 
@@ -134,4 +151,10 @@ void MainWindow::showBitrate(int)
     ui.statusbar->showMessage(QString(tr("Playing [%1 kbps/%2 bit/%3]")).arg(m_core->bitrate())
                                     .arg(m_core->precision())
                                     .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
+}
+
+void MainWindow::initPlayLists()
+{
+
+
 }

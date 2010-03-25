@@ -23,7 +23,7 @@
 #include <qmmpui/playlistitem.h>
 #include "abstractplaylistmodel.h"
 
-AbstractPlaylistModel::AbstractPlaylistModel(PlayListModel *pl, QObject *parent) : QAbstractTableModel(parent)
+AbstractPlaylistModel::AbstractPlaylistModel(PlayListModel *pl, QObject *parent) :  QAbstractListModel(parent)
 {
     m_pl = pl;
 }
@@ -32,7 +32,7 @@ AbstractPlaylistModel::~AbstractPlaylistModel(){}
 
 int AbstractPlaylistModel::columnCount (const QModelIndex &) const
 {
-    return 2;
+    return 4;
 }
 
 QVariant AbstractPlaylistModel::data (const QModelIndex &index, int role) const
@@ -40,7 +40,16 @@ QVariant AbstractPlaylistModel::data (const QModelIndex &index, int role) const
     if(role == Qt::DisplayRole && index.row () < m_pl->count())
     {
         PlayListItem *item = m_pl->item(index.row ());
-        return QString("%1. %2 |%3").arg(index.row () + 1).arg(item->text()).arg(formatTime(item->length()));
+        if(index.column() == 0)
+            return QString::number(index.row () + 1);
+        else if(index.column() == 1)
+            return item->artist();
+        else if(index.column() == 2)
+            return item->title();
+        else if(index.column() == 3)
+            return formatTime(item->length());
+        else
+            return QVariant();
     }
     else if(role == Qt::FontRole)
     {
@@ -53,16 +62,6 @@ QVariant AbstractPlaylistModel::data (const QModelIndex &index, int role) const
         return QVariant();
 }
 
-/*QModelIndex AbstractPlaylistModel::index(int row, int column, const QModelIndex &parent) const
-{
-    return QModelIndex();
-}*/
-
-/*QModelIndex AbstractPlaylistModel::parent(const QModelIndex &child) const
-{
-    return QModelIndex();
-}*/
-
 int AbstractPlaylistModel::rowCount(const QModelIndex &parent) const
 {
     return m_pl->count();
@@ -71,4 +70,22 @@ int AbstractPlaylistModel::rowCount(const QModelIndex &parent) const
 QString AbstractPlaylistModel::formatTime(qint64 time) const
 {
     return QString("%1:%2").arg(time/60).arg(time%60,2,10,QChar('0'));
+}
+
+QVariant AbstractPlaylistModel::headerData (int section, Qt::Orientation orientation, int role) const
+{
+    if (role != Qt::DisplayRole)
+        return QVariant();
+
+    if (orientation == Qt::Horizontal)
+        switch(section)
+        {
+        case 0: return tr("#");
+        case 1: return tr("Artist");
+        case 2: return tr("Title");
+        case 3: return tr("Length");
+        default: return QVariant();
+        }
+
+    return QString::number(section);
 }

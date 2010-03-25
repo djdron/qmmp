@@ -30,7 +30,7 @@ class QLabel;
 class PlayListModel;
 class MediaPlayer;
 class SoundCore;
-
+class PlayListManager;
 
 class MainWindow : public QMainWindow
 {
@@ -49,8 +49,8 @@ private slots:
     void showBitrate(int);
 
 private:
-
-    PlayListModel *m_model;
+    void initPlayLists();
+    PlayListManager *m_pl_manager;
     Ui::MainWindow ui;
     MediaPlayer *m_player;
     QSlider *m_slider;
