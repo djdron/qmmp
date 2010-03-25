@@ -27,6 +27,7 @@
 #include <QUrl>
 #include <QApplication>
 #include <QHelpEvent>
+#include <QTimer>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
@@ -59,6 +60,9 @@ ListWidget::ListWidget(QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setAcceptDrops(true);
     setMouseTracking(true);
+    m_timer = new QTimer(this);
+    m_timer->setInterval(50);
+    connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
 }
 
 
@@ -308,6 +312,28 @@ void ListWidget::updateList()
     update();
 }
 
+void ListWidget::autoscroll()
+{
+    SimpleSelection sel = m_model->getSelection(m_pressed_row);
+    if ((sel.m_top == 0 && m_scroll_direction == TOP && sel.count() > 1) ||
+        (sel.m_bottom == m_model->count() - 1 && m_scroll_direction == DOWN && sel.count() > 1))
+        return;
+
+    if(m_scroll_direction == DOWN)
+    {
+        int row = m_first + m_rows;
+        (m_first + m_rows < m_model->count()) ? m_first ++ : m_first;
+        m_model->moveItems(m_pressed_row,row);
+        m_pressed_row = row;
+    }
+    else if(m_scroll_direction == TOP && m_first > 0)
+    {
+        m_first --;
+        m_model->moveItems(m_pressed_row, m_first);
+        m_pressed_row = m_first;
+    }
+}
+
 void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
 {
     if(previous)
@@ -405,22 +431,31 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
         else
             m_scroll_direction = NONE;
 
+        if(e->y() < 0 || e->y() > height())
+        {
+            if(!m_timer->isActive())
+                m_timer->start();
+            return;
+        }
+        m_timer->stop();
+
         int row = rowAt(e->y());
 
         if (INVALID_ROW != row)
         {
             SimpleSelection sel = m_model->getSelection(m_pressed_row);
-            if (((sel.m_top == 0 && m_scroll_direction == TOP) && sel.count() > 1) ||
-                (sel.m_bottom == m_model->count() - 1 && m_scroll_direction == DOWN && sel.count() > 1)
-                )
-                return;
-
-            if (row + 1 == m_first + m_rows && m_scroll_direction == DOWN)
-                (m_first + m_rows < m_model->count()) ? m_first ++ : m_first;
-            else if (row == m_first && m_scroll_direction == TOP)
-                (m_first > 0)  ? m_first -- : 0;
-
+            if(sel.count() > 1 && m_scroll_direction == TOP)
+            {
+                if(sel.m_top == 0 || sel.m_top == m_first)
+                    return;
+            }
+            else if(sel.count() > 1 && m_scroll_direction == DOWN)
+            {
+                if(sel.m_bottom == m_model->count() - 1 || sel.m_bottom == m_first + m_rows)
+                    return;
+            }
             m_model->moveItems(m_pressed_row,row);
+
             m_prev_y = e->y();
             m_scroll = false;
             m_pressed_row = row;
@@ -446,6 +481,8 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
     }
     m_pressed_row = INVALID_ROW;
     m_scroll_direction = NONE;
+    m_timer->stop();
+    m_scroll = false;
     QWidget::mouseReleaseEvent(e);
 }
 
