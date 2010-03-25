@@ -31,7 +31,6 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
-#include "textscroller.h"
 #include "listwidget.h"
 #include "skin.h"
 #include "popupwidget.h"
