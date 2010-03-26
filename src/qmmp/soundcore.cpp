@@ -161,6 +161,8 @@ void SoundCore::setEQEnabled(bool on)
 
 void SoundCore::setVolume(int L, int R)
 {
+    L = qBound(0, L, 100);
+    R = qBound(0, R, 100);
     m_volumeControl->setVolume(L, R);
 }
 
