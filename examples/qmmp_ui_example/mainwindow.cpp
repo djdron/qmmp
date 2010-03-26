@@ -33,6 +33,8 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/generalhandler.h>
+#include "configdialog.h"
+#include "visualmenu.h"
 #include "listwidget.h"
 #include "mainwindow.h"
 
@@ -49,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_generalHandler = new GeneralHandler(this);
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), qApp, SLOT(closeAllWindows()));
-
+    m_visMenu = new VisualMenu(this); //visual menu
     //actions
     //playback
     connect(ui.actionPlay, SIGNAL(triggered()), m_player, SLOT(play()));
@@ -66,11 +68,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui.actionRemoveSelected, SIGNAL(triggered()), m_pl_manager, SLOT(removeSelected()));
     connect(ui.actionRemoveUnselected, SIGNAL(triggered()), m_pl_manager, SLOT(removeUnselected()));
     connect(ui.actionClearPlayList, SIGNAL(triggered()),m_pl_manager, SLOT(clear()));
-
     //playlist menu
     connect(ui.actionNewPlayList, SIGNAL(triggered()),SLOT(addPlaylist()));
-
     connect(ui.actionClosePlayList,SIGNAL(triggered()),SLOT(removePlaylist()));
+    //tools menu
+    connect(ui.actionSettings, SIGNAL(triggered()),SLOT(showSettings()));
+    ui.actionVisualization->setMenu(m_visMenu);
     //help menu
     connect(ui.actionAbout, SIGNAL(triggered()), SLOT(about()));
     connect(ui.actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
@@ -95,6 +98,9 @@ MainWindow::MainWindow(QWidget *parent)
     m_label->setText("--:--/--:--");
     ui.toolBar->addWidget(m_slider);
     ui.toolBar->addWidget(m_label);
+    //prepare visualization
+    Visual::initialize(this, m_visMenu, SLOT(updateActions()));
+
     //playlist manager
     connect(m_slider, SIGNAL(sliderReleased()), SLOT(seek()));
     connect(m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
@@ -214,7 +220,32 @@ void MainWindow::addTab(int index)
 
  void MainWindow::toggleVisibility()
  {
-     setVisible(isHidden());
+     if (isHidden())
+     {
+         show();
+         raise();
+         activateWindow();
+         qApp->processEvents();
+         setFocus ();
+         if (isMinimized())
+         {
+             if (isMaximized())
+                 showMaximized();
+             else
+                 showNormal();
+         }
+     }
+     else
+         hide();
+     qApp->processEvents();
+ }
+
+ void MainWindow::showSettings()
+ {
+     ConfigDialog *confDialog = new ConfigDialog(this);
+     confDialog->exec();
+     m_visMenu->updateActions();
+     confDialog->deleteLater();
  }
 
 void MainWindow::showBitrate(int)

@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include <QDir>
-#include <QSettings>
-#include <QFontDialog>
 #include <QTreeWidgetItem>
 #include <QHeaderView>
 #include <QCheckBox>
@@ -45,11 +43,8 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
-#include "popupsettings.h"
-#include "skin.h"
 #include "pluginitem.h"
 #include "configdialog.h"
-#include "skinreader.h"
 
 ConfigDialog::ConfigDialog (QWidget *parent)
         : QDialog (parent)
@@ -59,23 +54,13 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose, false);
     ui.preferencesButton->setEnabled(false);
     ui.informationButton->setEnabled(false);
-    connect (ui.mainFontButton, SIGNAL (clicked()), SLOT (setMainFont()));
-    connect (ui.plFontButton, SIGNAL (clicked()), SLOT (setPlFont()));
     connect (this, SIGNAL(rejected()),SLOT(saveSettings()));
     connect (ui.fileDialogComboBox, SIGNAL (currentIndexChanged (int)), SLOT(updateDialogButton(int)));
-    connect (ui.skinInstallButton, SIGNAL (clicked()), SLOT(installSkin()));
-    connect (ui.skinReloadButton, SIGNAL (clicked()), SLOT(loadSkins()));
-    connect (ui.listWidget, SIGNAL (itemClicked (QListWidgetItem *)), this, SLOT (changeSkin()));
-    ui.listWidget->setIconSize (QSize (105,34));
-    m_skin = Skin::instance();
     ui.replayGainModeComboBox->addItem (tr("Track"), QmmpSettings::REPLAYGAIN_TRACK);
     ui.replayGainModeComboBox->addItem (tr("Album"), QmmpSettings::REPLAYGAIN_ALBUM);
     ui.replayGainModeComboBox->addItem (tr("Disabled"), QmmpSettings::REPLAYGAIN_DISABLED);
     readSettings();
-    m_reader = new SkinReader(this);
-    loadSkins();
     loadPluginsInfo();
-    loadFonts();
     createMenus();    
 }
 
@@ -84,7 +69,6 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::readSettings()
 {
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     if (MediaPlayer *player = MediaPlayer::instance())
     {
         ui.formatLineEdit->setText(player->playListManager()->format());
@@ -92,10 +76,6 @@ void ConfigDialog::readSettings()
         ui.underscoresCheckBox->setChecked(player->playListManager()->convertUnderscore());
         ui.per20CheckBox->setChecked(player->playListManager()->convertTwenty());
     }
-    ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", false).toBool());
-    ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", true).toBool());
-    ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", false).toBool());
-    ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", false).toBool());
     QmmpSettings *gs = QmmpSettings::instance();
     //proxy settings
     ui.enableProxyCheckBox->setChecked(gs->isProxyEnabled());
@@ -110,21 +90,6 @@ void ConfigDialog::readSettings()
     ui.portLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
     ui.proxyUserLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
     ui.proxyPasswLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
-
-    ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", false).toBool());
-    ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", false).toBool());
-    //transparency
-    ui.mwTransparencySlider->setValue(100 - settings.value("MainWindow/opacity", 1.0).toDouble()*100);
-    ui.eqTransparencySlider->setValue(100 - settings.value("Equalizer/opacity", 1.0).toDouble()*100);
-    ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
-    //compatibility
-    ui.openboxCheckBox->setChecked(settings.value("General/openbox_compat", false).toBool());
-    ui.metacityCheckBox->setChecked(settings.value("General/metacity_compat", false).toBool());
-    //skin options
-    ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", false).toBool());
-    ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", false).toBool());
-    //resume playback
-    ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", false).toBool());
     //cover options
     ui.coverIncludeLineEdit->setText(gs->coverNameFilters(true).join(","));
     ui.coverExcludeLineEdit->setText(gs->coverNameFilters(false).join(","));
@@ -138,80 +103,6 @@ void ConfigDialog::readSettings()
      //audio
     ui.softVolumeCheckBox->setChecked(gs->useSoftVolume());
     ui.use16BitCheckBox->setChecked(gs->use16BitOutput());
-}
-
-void ConfigDialog::on_contentsWidget_currentItemChanged (QListWidgetItem *current,
-                                                         QListWidgetItem *previous)
-{
-    if (!current)
-        current = previous;
-    ui.stackedWidget->setCurrentIndex (ui.contentsWidget->row (current));
-    ui.visibilityGroupBox->setEnabled(GeneralHandler::instance()->visibilityControl());
-}
-
-void ConfigDialog::changeSkin()
-{
-    int row = ui.listWidget->currentRow();
-    QString path;
-    if (m_skinList.at (row).isDir())
-    {
-        path = m_skinList.at (row).canonicalFilePath();
-        m_skin->setSkin (path);
-    }
-    else if (m_skinList.at (row).isFile())
-    {
-        m_reader->unpackSkin(m_skinList.at (row).canonicalFilePath());
-        m_skin->setSkin(QDir::homePath() +"/.qmmp/cache/skin");
-    }
-}
-
-void ConfigDialog::loadSkins()
-{
-    m_reader->generateThumbs();
-    m_skinList.clear();
-    ui.listWidget->clear();
-    QFileInfo fileInfo (":/default");
-    QPixmap preview = Skin::getPixmap ("main", QDir (fileInfo.filePath()));
-    QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
-    item->setIcon (preview);
-    ui.listWidget->addItem (item);
-    m_skinList << fileInfo;
-
-    findSkins(QDir::homePath() +"/.qmmp/skins");
-#ifdef Q_OS_WIN32
-    findSkins(qApp->applicationDirPath()+"/skins");
-#else
-    findSkins(qApp->applicationDirPath()+"/../share/qmmp/skins");
-#endif
-    foreach(QString path, m_reader->skins())
-    {
-        QListWidgetItem *item = new QListWidgetItem (path.section('/', -1));
-        item->setIcon (m_reader->getPreview(path));
-        item->setToolTip(tr("Archived skin") + " " + path);
-        ui.listWidget->addItem (item);
-        m_skinList << QFileInfo(path);
-    }
-}
-
-void ConfigDialog::findSkins(const QString &path)
-{
-    QDir dir(path);
-    dir.setFilter (QDir::Dirs | QDir::NoDotAndDotDot);
-    QList <QFileInfo> fileList = dir.entryInfoList();
-    if (fileList.count() == 0)
-        return;
-    foreach (QFileInfo fileInfo, fileList)
-    {
-        QPixmap preview = Skin::getPixmap ("main", QDir(fileInfo.filePath ()));
-        if (!preview.isNull())
-        {
-            QListWidgetItem *item = new QListWidgetItem (fileInfo.fileName ());
-            item->setIcon (preview);
-            item->setToolTip(tr("Unarchived skin") + " " + fileInfo.filePath ());
-            ui.listWidget->addItem (item);
-            m_skinList << fileInfo;
-        }
-    }
 }
 
 void ConfigDialog::loadPluginsInfo()
@@ -308,53 +199,6 @@ void ConfigDialog::loadPluginsInfo()
     }
 }
 
-void ConfigDialog::loadFonts()
-{
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value ("PlayList/Font").toString();
-    QFont font = QApplication::font();
-    if(!fontname.isEmpty())
-        font.fromString(fontname);
-    ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-    ui.plFontLabel->setFont(font);
-
-    font = QApplication::font ();
-    fontname = settings.value ("MainWindow/Font").toString();
-    if(!fontname.isEmpty())
-        font.fromString(fontname);
-    ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-    ui.mainFontLabel->setFont(font);
-    ui.useBitmapCheckBox->setChecked(settings.value("MainWindow/bitmap_font", false).toBool());
-}
-
-void ConfigDialog::setPlFont()
-{
-    bool ok;
-    QFont font = ui.plFontLabel->font();
-    font = QFontDialog::getFont (&ok, font, this);
-    if (ok)
-    {
-        ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-        ui.plFontLabel->setFont(font);
-        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("PlayList/Font", font.toString());
-    }
-}
-
-void ConfigDialog::setMainFont()
-{
-    bool ok;
-    QFont font = ui.mainFontLabel->font();
-    font = QFontDialog::getFont (&ok, font, this);
-    if (ok)
-    {
-        ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
-        ui.mainFontLabel->setFont(font);
-        QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("MainWindow/Font", font.toString());
-    }
-}
-
 void ConfigDialog::on_preferencesButton_clicked()
 {
     QTreeWidgetItem *item = ui.treeWidget->currentItem();
@@ -403,7 +247,7 @@ void ConfigDialog::addTitleString(QAction * a)
 
 void ConfigDialog::saveSettings()
 {
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    //QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     if (MediaPlayer *player = MediaPlayer::instance())
     {
         player->playListManager()->setFormat(ui.formatLineEdit->text().trimmed());
@@ -411,10 +255,6 @@ void ConfigDialog::saveSettings()
         player->playListManager()->setConvertUnderscore(ui.underscoresCheckBox->isChecked());
         player->playListManager()->setConvertTwenty(ui.per20CheckBox->isChecked());
     }
-    settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
-    settings.setValue ("PlayList/show_numbers", ui.numbersCheckBox->isChecked());
-    settings.setValue ("PlayList/show_plalists", ui.playlistsCheckBox->isChecked());
-    settings.setValue ("PlayList/show_popup", ui.popupCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
     QmmpSettings *gs = QmmpSettings::instance();
     //proxy
@@ -426,18 +266,6 @@ void ConfigDialog::saveSettings()
     gs->setNetworkSettings(ui.enableProxyCheckBox->isChecked(),
                            ui.authProxyCheckBox->isChecked(),
                            proxyUrl);
-
-    settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
-    settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
-    settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
-    settings.setValue ("Equalizer/opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
-    settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
-    settings.setValue ("General/openbox_compat", ui.openboxCheckBox->isChecked());
-    settings.setValue ("General/metacity_compat", ui.metacityCheckBox->isChecked());
-    settings.setValue ("General/resume_on_startup",  ui.continuePlaybackCheckBox->isChecked());
-    settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
-    settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
-    settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
     gs->setCoverSettings(ui.coverIncludeLineEdit->text().split(","),
                          ui.coverExcludeLineEdit->text().split(","),
                          ui.coverDepthSpinBox->value(),
@@ -463,25 +291,6 @@ void ConfigDialog::on_fdInformationButton_clicked()
 {
     int index = ui.fileDialogComboBox->currentIndex ();
     FileDialog::registeredFactories()[index]->showAbout(this);
-}
-
-void ConfigDialog::installSkin()
-{
-    QStringList files = FileDialog::getOpenFileNames(this,tr("Select Skin Files"), QDir::homePath(),
-                        tr("Skin files") + " (*.tar.gz *.tgz *.tar.bz2 *.zip *.wsz)");
-    foreach(QString path, files)
-    {
-        QFile file(path);
-        file.copy(QDir::homePath() +"/.qmmp/skins/" + QFileInfo(path).fileName());
-    }
-    loadSkins();
-}
-
-void ConfigDialog::on_popupCustomizeButton_clicked()
-{
-    PopupSettings *p = new PopupSettings(this);
-    p->exec();
-    p->deleteLater();
 }
 
 void ConfigDialog::on_treeWidget_itemChanged (QTreeWidgetItem *item, int column)

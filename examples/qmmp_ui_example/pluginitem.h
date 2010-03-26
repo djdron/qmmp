@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,45 +17,57 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
+#ifndef PLUGINITEM_H
+#define PLUGINITEM_H
 
-#include <QDialog>
 #include <QTreeWidgetItem>
-#include "ui_configdialog.h"
-
-class QFileInfo;
 
 /**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
+   @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class ConfigDialog : public QDialog
+
+class QWidget;
+class InputSourceFactory;
+class DecoderFactory;
+class EngineFactory;
+class OutputFactory;
+class VisualFactory;
+class EffectFactory;
+class GeneralFactory;
+
+class PluginItem : public QTreeWidgetItem
 {
-    Q_OBJECT
 public:
-    ConfigDialog(QWidget *parent = 0);
 
-    ~ConfigDialog();
+    PluginItem(QTreeWidgetItem *parent, InputSourceFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, DecoderFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, EngineFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, EffectFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, VisualFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, GeneralFactory *factory, const QString &path);
+    ~PluginItem();
 
-private slots:
-    void on_preferencesButton_clicked();
-    void on_informationButton_clicked();
-    void addTitleString(QAction *);
-    void saveSettings();
-    void updateDialogButton(int);
-    void on_fdInformationButton_clicked();
-    void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
-    void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
-    void on_outputComboBox_activated (int index);
-    void on_outputPreferencesButton_clicked();
-    void on_outputInformationButton_clicked();
+    enum PluginType
+    {
+        TRANSPORT = QTreeWidgetItem::UserType,
+        DECODER,
+        ENGINE,
+        EFFECT,
+        VISUAL,
+        GENERAL
+    };
+
+    bool hasAbout() const;
+    bool hasSettings() const;
+    void showAbout(QWidget *parent);
+    void showSettings(QWidget *parent);
+    void setEnabled(bool enabled);
+
 
 private:
-    void readSettings();
-    void loadPluginsInfo();
-    void createMenus();
-    Ui::ConfigDialog ui;
-    QPixmap pixmap;
+    bool m_has_about;
+    bool m_has_config;
+    void *m_factory;
 };
 
 #endif

@@ -64,6 +64,10 @@
     <property name="title">
      <string>Tools</string>
     </property>
+    <addaction name="separator"/>
+    <addaction name="actionVisualization"/>
+    <addaction name="separator"/>
+    <addaction name="actionSettings"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -194,11 +198,6 @@
     <string>About Qt</string>
    </property>
   </action>
-  <action name="actionSettings">
-   <property name="text">
-    <string>Settings</string>
-   </property>
-  </action>
   <action name="actionSelectAll">
    <property name="text">
     <string>&amp;Select All</string>
@@ -212,6 +211,16 @@
   <action name="actionRemoveUnselected">
    <property name="text">
     <string>&amp;Remove Unselected</string>
+   </property>
+  </action>
+  <action name="actionVisualization">
+   <property name="text">
+    <string>Visualization</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>

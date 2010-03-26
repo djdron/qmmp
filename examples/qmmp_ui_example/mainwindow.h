@@ -32,6 +32,7 @@ class MediaPlayer;
 class SoundCore;
 class PlayListManager;
 class GeneralHandler;
+class VisualMenu;
 
 class MainWindow : public QMainWindow
 {
@@ -55,6 +56,7 @@ private slots:
     void removeTab(int);
     void about();
     void toggleVisibility();
+    void showSettings();
 
 private:
     QString m_lastDir;
@@ -65,6 +67,7 @@ private:
     QLabel *m_label;
     SoundCore *m_core;
     GeneralHandler *m_generalHandler;
+    VisualMenu *m_visMenu;
 
 };
 

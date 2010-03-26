@@ -17,45 +17,47 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
 
-#include <QDialog>
-#include <QTreeWidgetItem>
-#include "ui_configdialog.h"
+#include <QAction>
 
-class QFileInfo;
+#include <qmmp/visual.h>
+#include <qmmp/visualfactory.h>
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class ConfigDialog : public QDialog
+#include "pluginitem.h"
+#include "visualmenu.h"
+
+VisualMenu::VisualMenu(QWidget *parent) : QMenu(tr("Visualization"), parent)
 {
-    Q_OBJECT
-public:
-    ConfigDialog(QWidget *parent = 0);
+    VisualFactory *factory = 0;
+    foreach(factory, *Visual::factories())
+    {
+        VisualAction *act = new VisualAction(factory, this);
+        addAction(act);
+    }
+}
 
-    ~ConfigDialog();
+VisualMenu::~VisualMenu()
+{
+}
 
-private slots:
-    void on_preferencesButton_clicked();
-    void on_informationButton_clicked();
-    void addTitleString(QAction *);
-    void saveSettings();
-    void updateDialogButton(int);
-    void on_fdInformationButton_clicked();
-    void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
-    void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
-    void on_outputComboBox_activated (int index);
-    void on_outputPreferencesButton_clicked();
-    void on_outputInformationButton_clicked();
+void VisualMenu::updateActions()
+{
+    for(int i = 0; i < Visual::factories()->size(); ++i)
+    {
+        actions()[i]->setChecked(Visual::isEnabled(Visual::factories()->at(i)));
+    }
+}
 
-private:
-    void readSettings();
-    void loadPluginsInfo();
-    void createMenus();
-    Ui::ConfigDialog ui;
-    QPixmap pixmap;
-};
+VisualAction::VisualAction(VisualFactory *factory, QWidget *parent) :
+        QAction(factory->properties().name, parent)
+{
+    setCheckable (true);
+    setChecked (Visual::isEnabled(factory));
+    m_factory = factory;
+    connect(this, SIGNAL(triggered(bool)), SLOT(select(bool)));
+}
 
-#endif
+void VisualAction::select(bool select)
+{
+    Visual::setEnabled(m_factory, select);
+}

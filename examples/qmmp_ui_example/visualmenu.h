@@ -17,45 +17,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
+#ifndef VISUALMENU_H
+#define VISUALMENU_H
 
-#include <QDialog>
-#include <QTreeWidgetItem>
-#include "ui_configdialog.h"
+#include <QMenu>
+#include <QAction>
 
-class QFileInfo;
+class VisualFactory;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class ConfigDialog : public QDialog
+class VisualMenu : public QMenu
 {
     Q_OBJECT
 public:
-    ConfigDialog(QWidget *parent = 0);
+    VisualMenu(QWidget *parent = 0);
 
-    ~ConfigDialog();
+    ~VisualMenu();
+
+public slots:
+    void updateActions();
+};
+
+class VisualAction : public QAction
+{
+    Q_OBJECT
+public:
+    VisualAction(VisualFactory *factory, QWidget *parent = 0);
 
 private slots:
-    void on_preferencesButton_clicked();
-    void on_informationButton_clicked();
-    void addTitleString(QAction *);
-    void saveSettings();
-    void updateDialogButton(int);
-    void on_fdInformationButton_clicked();
-    void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
-    void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
-    void on_outputComboBox_activated (int index);
-    void on_outputPreferencesButton_clicked();
-    void on_outputInformationButton_clicked();
+    void select(bool);
 
 private:
-    void readSettings();
-    void loadPluginsInfo();
-    void createMenus();
-    Ui::ConfigDialog ui;
-    QPixmap pixmap;
+    VisualFactory *m_factory;
+
 };
 
 #endif
