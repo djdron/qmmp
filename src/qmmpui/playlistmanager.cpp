@@ -148,11 +148,12 @@ void PlayListManager::removePlayList(PlayListModel *model)
 
 void PlayListManager::move(int i, int j)
 {
-    if(i < 0 || j < 0)
+    if(i < 0 || j < 0 || i == j)
         return;
     if(i < m_models.count() && j < m_models.count())
     {
         m_models.move(i,j);
+        emit playListMoved(i,j);
         emit playListsChanged();
     }
 }

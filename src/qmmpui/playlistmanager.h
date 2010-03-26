@@ -135,6 +135,10 @@ signals:
      */
     void playListRemoved(int index);
     /*!
+     * Emitted when playlist changes its position from \b i to  \b j.
+     */
+    void playListMoved(int i, int j);
+    /*!
      * Emitted when the list of playlists is changed.
      */
     void playListsChanged();
