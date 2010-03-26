@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,8 +22,10 @@
 #include <QSlider>
 #include <QLabel>
 #include <QTreeView>
+#include <QMessageBox>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
+#include <qmmp/metadatamanager.h>
 #include <qmmpui/general.h>
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
@@ -31,8 +33,7 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/generalhandler.h>
-#include "abstractplaylistmodel.h"
-#include "playlistitemdelegate.h"
+#include "listwidget.h"
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -45,68 +46,86 @@ MainWindow::MainWindow(QWidget *parent)
     m_pl_manager = new PlayListManager(this);
     m_player->initialize(m_core, m_pl_manager);
     new PlaylistParser(this);
-    //m_generalHandler = new GeneralHandler(this);
+    m_generalHandler = new GeneralHandler(this);
+    connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
+    connect(m_generalHandler, SIGNAL(exitCalled()), qApp, SLOT(closeAllWindows()));
 
-
-    //connections
+    //actions
+    //playback
     connect(ui.actionPlay, SIGNAL(triggered()), m_player, SLOT(play()));
     connect(ui.actionPause, SIGNAL(triggered()), m_core, SLOT(pause()));
     connect(ui.actionNext, SIGNAL(triggered()), m_player, SLOT(next()));
     connect(ui.actionPrevious, SIGNAL(triggered()), m_player, SLOT(previous()));
     connect(ui.actionStop, SIGNAL(triggered()), m_player, SLOT(stop()));
-    connect(ui.actionOpen, SIGNAL(triggered()),SLOT(addFiles()));
-    connect(ui.actionClear, SIGNAL(triggered()),m_pl_manager,SLOT(clear()));
+    //file menu
+    connect(ui.actionAddFile, SIGNAL(triggered()),SLOT(addFiles()));
+    connect(ui.actionAddDirectory, SIGNAL(triggered()),SLOT(addDir()));
+    connect(ui.actionExit, SIGNAL(triggered()),qApp, SLOT(closeAllWindows()));
+    //edit menu
+    connect(ui.actionSelectAll, SIGNAL(triggered()), m_pl_manager, SLOT(selectAll()));
+    connect(ui.actionRemoveSelected, SIGNAL(triggered()), m_pl_manager, SLOT(removeSelected()));
+    connect(ui.actionRemoveUnselected, SIGNAL(triggered()), m_pl_manager, SLOT(removeUnselected()));
+    connect(ui.actionClearPlayList, SIGNAL(triggered()),m_pl_manager, SLOT(clear()));
+
+    //playlist menu
+    connect(ui.actionNewPlayList, SIGNAL(triggered()),SLOT(addPlaylist()));
+
+    connect(ui.actionClosePlayList,SIGNAL(triggered()),SLOT(removePlaylist()));
+    //help menu
+    connect(ui.actionAbout, SIGNAL(triggered()), SLOT(about()));
+    connect(ui.actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    //status
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(updatePosition(qint64)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(showBitrate(int)));
+    //create tabs
     foreach(PlayListModel *model, m_pl_manager->playLists())
     {
-        QTreeView *view = new QTreeView(this);
-        view->setRootIsDecorated(false);
-        AbstractPlaylistModel *m = new AbstractPlaylistModel(model, this);
-
-        //view->setItemDelegate(new PlaylistDelegate(this));
-        view->setModel(m);
-        ui.tabWidget->addTab(view, model->name());
+        ListWidget *list = new ListWidget(model, this);
+        if(m_pl_manager->currentPlayList() != model)
+            ui.tabWidget->addTab(list, model->name());
+        else
+        {
+            ui.tabWidget->addTab(list, "[" + model->name() + "]");
+            ui.tabWidget->setCurrentWidget(list);
+        }
     }
-
-
-    /*AbstractPlaylistModel *m = new AbstractPlaylistModel(m_model, this);
-    ui.listView->setItemDelegate(new PlaylistDelegate(this));
-    ui.listView->setModel(m);
-    connect(m_model, SIGNAL(listChanged()), ui.listView, SLOT(reset()));
-    connect(ui.listView, SIGNAL(doubleClicked (const QModelIndex &)),
-                                SLOT (playSelected(const QModelIndex &)));*/
-
     m_slider = new QSlider (Qt::Horizontal, this);
     m_label = new QLabel(this);
     m_label->setText("--:--/--:--");
     ui.toolBar->addWidget(m_slider);
     ui.toolBar->addWidget(m_label);
-
+    //playlist manager
     connect(m_slider, SIGNAL(sliderReleased()), SLOT(seek()));
+    connect(m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
+            SLOT(updateTabs()));
+    connect(m_pl_manager, SIGNAL(selectedPlayListChanged(PlayListModel*,PlayListModel*)),
+            SLOT(updateTabs()));
+    connect(m_pl_manager, SIGNAL(playListRemoved(int)), SLOT(removeTab(int)));
+    connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
+    connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
 }
 
 MainWindow::~MainWindow()
 {
 }
 
-void MainWindow::addFiles()
+void MainWindow::addDir()
 {
-    /*QString lastDir;
-    QStringList filters;
-    filters << tr("All Supported Bitstreams")+" (" + Decoder::nameFilters().join (" ") +")";
-    filters << Decoder::filters();
-    FileDialog::popup(this, FileDialog::AddDirsFiles, &lastDir,
-                            m_model, SLOT(addFileList(const QStringList&)),
-                            tr("Select one or more files to open"), filters.join(";;"));*/
+    FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
+                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
+                      tr("Choose a directory"));
 }
 
-void MainWindow::playSelected(const QModelIndex &i)
+void MainWindow::addFiles()
 {
-    m_player->stop();
-    //m_model->setCurrent(i.row());
-    m_player->play();
+    QStringList filters;
+    filters << tr("All Supported Bitstreams")+" (" +
+            MetaDataManager::instance()->nameFilters().join (" ") +")";
+    filters << MetaDataManager::instance()->filters();
+    FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
+                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
+                      tr("Select one or more files to open"), filters.join(";;"));
 }
 
 void MainWindow::updatePosition(qint64 pos)
@@ -143,8 +162,60 @@ void MainWindow::showState(Qmmp::State state)
         m_slider->setValue(0);
         break;
     }
-
 }
+
+void MainWindow::updateTabs()
+{
+    for(int i = 0; i < m_pl_manager->count(); ++i)
+    {
+        PlayListModel *model = m_pl_manager->playListAt(i);
+        if(model == m_pl_manager->currentPlayList())
+            ui.tabWidget->setTabText(i, "[" + model->name() + "]");
+        else
+            ui.tabWidget->setTabText(i, model->name());
+        if(model == m_pl_manager->selectedPlayList())
+            ui.tabWidget->setCurrentIndex(i);
+    }
+}
+
+void MainWindow::addPlaylist()
+{
+    m_pl_manager->createPlayList(tr("Playlist"));
+}
+
+void MainWindow::removePlaylist()
+{
+     m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
+}
+
+void MainWindow::addTab(int index)
+{
+    ListWidget *list = new ListWidget(m_pl_manager->playListAt(index), this);
+    ui.tabWidget->insertTab(index, list, m_pl_manager->playListAt(index)->name());
+    updateTabs();
+}
+
+ void MainWindow::removeTab(int index)
+ {
+     ui.tabWidget->widget(index)->deleteLater();
+     ui.tabWidget->removeTab(index);
+     updateTabs();
+ }
+
+ void MainWindow::about()
+ {
+     QMessageBox::about (this, tr("About Qmmp UI example"),
+                         tr("<p>The <b>Qmmp UI example</b> shows how to develop an alternative "
+                            "user interface for <a href=\"http://qmmp.ylsoftware.com\">"
+                            "Qt-based Multimedia Player</a></p>"
+                            "<p>Written by Ilya Kotov "
+                            "<a href=\"mailto:trialuser02@gmail.com\">trialuser02@gmail.com</a></p>"));
+ }
+
+ void MainWindow::toggleVisibility()
+ {
+     setVisible(isHidden());
+ }
 
 void MainWindow::showBitrate(int)
 {
@@ -153,8 +224,3 @@ void MainWindow::showBitrate(int)
                                     .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
 }
 
-void MainWindow::initPlayLists()
-{
-
-
-}

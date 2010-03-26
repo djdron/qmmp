@@ -29,14 +29,13 @@ class QFontMetrics;
 class QMenu;
 class QAction;
 class QTimer;
-class PlayList;
+class QScrollBar;
 class PlayListModel;
-class Skin;
 class PlayListItem;
 class MediaPlayer;
-namespace PlayListPopup{
+/*namespace PlayListPopup{
 class PopupWidget;
-}
+}*/
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -45,7 +44,7 @@ class ListWidget : public QWidget
 {
     Q_OBJECT
 public:
-    ListWidget(QWidget *parent = 0);
+    ListWidget(PlayListModel *model, QWidget *parent = 0);
 
     ~ListWidget();
 
@@ -92,8 +91,6 @@ public slots:
     void updateList();
     void scroll(int); //0-99
     void recenterCurrent();
-    void setModel(PlayListModel *selected, PlayListModel *previous = 0);
-
 
 signals:
     void selectionChanged();
@@ -105,6 +102,7 @@ protected:
     void mousePressEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *);
     void mouseReleaseEvent(QMouseEvent *);
+
     void resizeEvent(QResizeEvent *);
     void wheelEvent(QWheelEvent *);
     int rowAt(int)const;
@@ -118,7 +116,6 @@ private slots:
     void autoscroll();
 
 private:
-    void loadColors();
     void processFileInfo(const QFileInfo&);
     bool m_update;
     bool m_scroll;
@@ -132,11 +129,11 @@ private:
     int m_rows, m_first;
     QList <QString> m_titles;
     QList <QString> m_times;
-    PlayList *m_pl;
+    //PlayList *m_pl;
     QFont m_font;
     QFontMetrics *m_metrics;
-    Skin *m_skin;
-    QColor m_normal, m_current, m_normal_bg, m_selected_bg;
+    //Skin *m_skin;
+    QColor m_normal, m_current, m_highlighted, m_normal_bg, m_selected_bg;
     int m_anchor_row;
 
     enum ScrollDirection
@@ -153,8 +150,9 @@ private:
     bool m_show_protocol;
     bool m_show_number;
     MediaPlayer *m_player;
-    PlayListPopup::PopupWidget *m_popupWidget;
+    //PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
+    QScrollBar *m_scrollBar;
 };
 
 #endif

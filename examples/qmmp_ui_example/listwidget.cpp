@@ -28,23 +28,20 @@
 #include <QApplication>
 #include <QHelpEvent>
 #include <QTimer>
+#include <QScrollBar>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/playlistmanager.h>
 #include "listwidget.h"
-#include "skin.h"
-#include "popupwidget.h"
-#include "playlist.h"
 
 #define INVALID_ROW -1
 
-ListWidget::ListWidget(QWidget *parent)
-        : QWidget(parent)
+ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
 {
     m_update = false;
-    m_skin = Skin::instance();
-    m_popupWidget = 0;
-    loadColors();
+    //m_skin = Skin::instance();
+    //m_popupWidget = 0;
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
     m_prev_y = 0;
@@ -56,12 +53,17 @@ ListWidget::ListWidget(QWidget *parent)
     m_scroll = false;
     m_select_on_release = false;
     readSettings();
-    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    //connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setAcceptDrops(true);
     setMouseTracking(true);
     m_timer = new QTimer(this);
     m_timer->setInterval(50);
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
+    m_model = model;
+    connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
+    connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
+    m_scrollBar = new QScrollBar(Qt::Vertical, this);
+    connect(m_scrollBar, SIGNAL(valueChanged (int)), SLOT(scroll(int)));
 }
 
 
@@ -70,11 +72,10 @@ ListWidget::~ListWidget()
 
 void ListWidget::readSettings()
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
-    m_show_protocol = settings.value ("PlayList/show_protocol", false).toBool();
-    m_show_number = settings.value ("PlayList/show_numbers", true).toBool();
-    bool show_popup = settings.value("PlayList/show_popup", false).toBool();
+    m_font = QApplication::font();
+    m_show_protocol = true;
+    m_show_number = true;
+    //bool show_popup = settings.value("PlayList/show_popup", false).toBool();
 
     if (m_update)
     {
@@ -82,27 +83,24 @@ void ListWidget::readSettings()
         m_metrics = new QFontMetrics(m_font);
         m_rows = (height() - 10) / m_metrics->ascent ();
         updateList();
-        if(m_popupWidget)
+        /*if(m_popupWidget)
         {
             m_popupWidget->deleteLater();
             m_popupWidget = 0;
-        }
+        }*/
     }
     else
     {
         m_update = true;
         m_metrics = new QFontMetrics(m_font);
     }
-    if(show_popup)
-        m_popupWidget = new PlayListPopup::PopupWidget(this);
-}
-
-void ListWidget::loadColors()
-{
-    m_normal.setNamedColor(m_skin->getPLValue("normal"));
-    m_current.setNamedColor(m_skin->getPLValue("current"));
-    m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
-    m_selected_bg.setNamedColor(m_skin->getPLValue("selectedbg"));
+    /*if(show_popup)
+        m_popupWidget = new PlayListPopup::PopupWidget(this);*/
+    m_normal = palette().color(QPalette::Text);
+    m_current = palette().color(QPalette::Text);
+    m_highlighted = palette().color(QPalette::HighlightedText);
+    m_normal_bg = palette().color(QPalette::Base);
+    m_selected_bg = palette().color(QPalette::Highlight);
 }
 
 void ListWidget::paintEvent(QPaintEvent *)
@@ -111,22 +109,44 @@ void ListWidget::paintEvent(QPaintEvent *)
     //m_painter.setPen(Qt::white);
     m_painter.setFont(m_font);
     m_painter.setBrush(QBrush(m_normal_bg));
-    m_painter.drawRect(-1,-1,width()+1,height()+1);
+    int x = width() - m_scrollBar->sizeHint().width();
+
+    m_painter.drawRect(-1,-1, x + 1, height()+1);
 
     for (int i=0; i<m_titles.size(); ++i )
     {
+        if(i % 2 == 0)
+        {
+            m_painter.setBrush(QBrush(palette().color(QPalette::AlternateBase)));
+            m_painter.setPen(palette().color(QPalette::AlternateBase));
+            m_painter.drawRect (6, 15+(i-1)*m_metrics->ascent() + 2, x - 10, m_metrics->ascent());
+        }
+        else
+        {
+            m_painter.setPen(m_normal_bg);
+            m_painter.setBrush(QBrush(m_normal_bg));
+            m_painter.drawRect (6, 15+(i-1)*m_metrics->ascent() + 2, x - 10, m_metrics->ascent());
+        }
+
         if (m_model->isSelected(i + m_first))
         {
-            m_painter.setBrush(QBrush(m_selected_bg));
+            m_painter.setBrush(palette().highlight ());
             m_painter.setPen(m_selected_bg);
-            m_painter.drawRect ( 6, 15+(i-1)*m_metrics->ascent(),
-                                 width() - 10, m_metrics->ascent());
+            m_painter.drawRect (6, 15+(i-1)*m_metrics->ascent() + 2, x - 10, m_metrics->ascent());
         }
 
         if (m_model->currentRow() == i + m_first)
+        {
+            m_font.setBold(true);
+            m_painter.setFont(m_font);
+            m_font.setBold(false);
             m_painter.setPen(m_current);
+        }
+        if (m_model->isSelected(i + m_first))
+            m_painter.setPen(m_highlighted);
         else
-            m_painter.setPen(m_normal);  //243,58
+            m_painter.setPen(m_normal);
+
 
         m_painter.drawText(10,14+i*m_metrics->ascent(),m_titles.at(i));
 
@@ -139,17 +159,16 @@ void ListWidget::paintEvent(QPaintEvent *)
             m_font.setPointSize(old_size - 1 );
             m_painter.setFont(m_font);
 
-            m_painter.drawText(width() - 10 - m_metrics->width(extra_string) - m_metrics->width(m_times.at(i)),
+            m_painter.drawText(x - 10 - m_metrics->width(extra_string) - m_metrics->width(m_times.at(i)),
                                14+i*m_metrics->ascent (), extra_string);
             m_font.setPointSize(old_size);
             m_painter.setFont(m_font);
             m_painter.setBrush(QBrush(m_normal_bg));
         }
 
-        m_painter.drawText(width() - 7 - m_metrics->width(m_times.at(i)),
+        m_painter.drawText(x - 7 - m_metrics->width(m_times.at(i)),
                            14+i*m_metrics->ascent (), m_times.at(i));
     }
-
 }
 
 void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
@@ -159,6 +178,10 @@ void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
     if (INVALID_ROW != row)
     {
         m_model->setCurrent(row);
+        MediaPlayer::instance()->playListManager()->selectPlayList(m_model);
+        MediaPlayer::instance()->playListManager()->activatePlayList(m_model);
+        MediaPlayer::instance()->stop();
+        MediaPlayer::instance()->play();
         emit selectionChanged();
         update();
     }
@@ -167,8 +190,8 @@ void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
 
 void ListWidget::mousePressEvent(QMouseEvent *e)
 {
-    if(m_popupWidget)
-        m_popupWidget->hide();
+    /*if(m_popupWidget)
+        m_popupWidget->hide();*/
     m_scroll = true;
     int y = e->y();
     int row = rowAt(y);
@@ -223,8 +246,12 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
+    m_scrollBar->setGeometry(width() - m_scrollBar->sizeHint().width(), 0,
+                             m_scrollBar->sizeHint().width(), height());
+    
     m_rows = (e->size().height() - 10) / m_metrics->ascent ();
-    m_scroll = true;
+    //m_scroll = true;
+    recenterCurrent();
     updateList();
     QWidget::resizeEvent(e);
 }
@@ -249,7 +276,7 @@ void ListWidget::wheelEvent (QWheelEvent *e)
 
 bool ListWidget::event (QEvent *e)
 {
-    if(m_popupWidget)
+    /*if(m_popupWidget)
     {
         if(e->type() == QEvent::ToolTip)
         {
@@ -266,7 +293,7 @@ bool ListWidget::event (QEvent *e)
         }
         else if(e->type() == QEvent::Leave)
             m_popupWidget->deactivate();
-    }
+    }*/
     return QWidget::event(e);
 }
 
@@ -279,13 +306,21 @@ void ListWidget::updateList()
     if (m_model->count() < m_rows + 1)
     {
         m_first = 0;
+        m_scrollBar->setMaximum(0);
+        m_scrollBar->setValue(0);
         emit positionChanged(0,0);
     }
     else
+    {
+        m_scrollBar->setMaximum(m_model->count() - m_rows);
+        m_scrollBar->setValue(m_first);
         emit positionChanged(m_first, m_model->count() - m_rows);
+    }
     if (m_model->count() <= m_first)
     {
         m_first = 0;
+        m_scrollBar->setMaximum(qMax(0, m_model->count() - m_rows));
+        m_scrollBar->setValue(0);
         emit positionChanged(0, qMax(0, m_model->count() - m_rows));
     }
 
@@ -301,12 +336,13 @@ void ListWidget::updateList()
     }
     //elide title
     QString extra_string;
+    int x = width() - m_scrollBar->width();
     for (int i=0; i<m_titles.size(); ++i)
     {
         extra_string = getExtraString(m_first + i);
         int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
         m_titles.replace(i, m_metrics->elidedText (m_titles.at(i), Qt::ElideRight,
-                            width() -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
+                            x -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
     }
     update();
 }
@@ -333,32 +369,18 @@ void ListWidget::autoscroll()
     }
 }
 
-void ListWidget::setModel(PlayListModel *selected, PlayListModel *previous)
-{
-    if(previous)
-        disconnect(previous, 0, this, 0); //disconnect previous model
-    qApp->processEvents();
-    m_model = selected;
-    m_first = 0;
-    m_scroll = false;
-    recenterCurrent();
-    updateList();
-    connect (m_model, SIGNAL(currentChanged()), SLOT(recenterCurrent()));
-    connect (m_model, SIGNAL(listChanged()), SLOT(updateList()));
-}
-
 void ListWidget::scroll(int sc)
 {
     if (m_model->count() <= m_rows)
         return;
-    m_first = sc; //*(m_model->count() - m_rows)/99;
+    m_first = sc;
     m_scroll = true;
     updateList();
 }
 
 void ListWidget::updateSkin()
 {
-    loadColors();
+    //loadColors();
     update();
 }
 
@@ -460,12 +482,12 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
             m_pressed_row = row;
         }
     }
-    else if(m_popupWidget)
+    /*else if(m_popupWidget)
     {
         int row = rowAt(e->y());
         if(row < 0 || m_popupWidget->item() != m_model->item(row))
             m_popupWidget->deactivate();
-    }
+    }*/
 }
 
 void ListWidget::mouseReleaseEvent(QMouseEvent *e)
@@ -506,6 +528,7 @@ void ListWidget::contextMenuEvent(QContextMenuEvent * event)
 
 void ListWidget::recenterCurrent()
 {
+    //qDebug("%d", m_rows);
     if (!m_scroll)
     {
         if (m_first + m_rows < m_model->currentRow() + 1)

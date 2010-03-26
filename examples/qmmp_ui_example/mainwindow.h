@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,6 +31,7 @@ class PlayListModel;
 class MediaPlayer;
 class SoundCore;
 class PlayListManager;
+class GeneralHandler;
 
 class MainWindow : public QMainWindow
 {
@@ -41,21 +42,29 @@ public:
     ~MainWindow();
 
 private slots:
+    void addDir();
     void addFiles();
-    void playSelected(const QModelIndex &i);
     void updatePosition(qint64 pos);
     void seek();
     void showState(Qmmp::State);
     void showBitrate(int);
+    void updateTabs();
+    void addPlaylist();
+    void removePlaylist();
+    void addTab(int);
+    void removeTab(int);
+    void about();
+    void toggleVisibility();
 
 private:
-    void initPlayLists();
+    QString m_lastDir;
     PlayListManager *m_pl_manager;
     Ui::MainWindow ui;
     MediaPlayer *m_player;
     QSlider *m_slider;
     QLabel *m_label;
     SoundCore *m_core;
+    GeneralHandler *m_generalHandler;
 
 };
 

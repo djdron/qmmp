@@ -26,6 +26,9 @@
       <property name="currentIndex">
        <number>-1</number>
       </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
    </layout>
@@ -44,13 +47,18 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen"/>
+    <addaction name="actionAddFile"/>
+    <addaction name="actionAddDirectory"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuPlaylist">
     <property name="title">
      <string>Playlist</string>
     </property>
-    <addaction name="actionClear"/>
+    <addaction name="actionNewPlayList"/>
+    <addaction name="separator"/>
+    <addaction name="actionClosePlayList"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -61,8 +69,21 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAboutQt"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionSelectAll"/>
+    <addaction name="separator"/>
+    <addaction name="actionRemoveSelected"/>
+    <addaction name="actionRemoveUnselected"/>
+    <addaction name="actionClearPlayList"/>
    </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
    <addaction name="menuPlaylist"/>
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
@@ -133,14 +154,64 @@
     <string>Stop</string>
    </property>
   </action>
-  <action name="actionOpen">
+  <action name="actionAddFile">
    <property name="text">
-    <string>&amp;Open</string>
+    <string>&amp;Add File</string>
    </property>
   </action>
-  <action name="actionClear">
+  <action name="actionClearPlayList">
    <property name="text">
-    <string>&amp;Clear</string>
+    <string>&amp;Remove All</string>
+   </property>
+  </action>
+  <action name="actionNewPlayList">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionClosePlayList">
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionAddDirectory">
+   <property name="text">
+    <string>&amp;Add Directory</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>&amp;Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionSelectAll">
+   <property name="text">
+    <string>&amp;Select All</string>
+   </property>
+  </action>
+  <action name="actionRemoveSelected">
+   <property name="text">
+    <string>&amp;Remove Selected</string>
+   </property>
+  </action>
+  <action name="actionRemoveUnselected">
+   <property name="text">
+    <string>&amp;Remove Unselected</string>
    </property>
   </action>
  </widget>
