@@ -31,7 +31,6 @@
 
 class PlayList;
 class PlayListManager;
-class ConfigDialog;
 class EqWidget;
 class MainVisual;
 class Skin;
@@ -109,7 +108,6 @@ private:
     PlayList *m_playlist;
     PlayListManager *m_pl_manager;
     QPointer <PlayListModel> m_model;
-    ConfigDialog *m_confDialog;
     int m_preamp;
     EqWidget *m_equalizer;
     MainVisual *m_vis;

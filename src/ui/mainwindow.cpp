@@ -347,15 +347,15 @@ void MainWindow::writeSettings()
 
 void MainWindow::showSettings()
 {
-    m_confDialog = new ConfigDialog(this);
-    m_confDialog->exec();
+    ConfigDialog *confDialog = new ConfigDialog(this);
+    confDialog->exec();
     readSettings();
     m_playlist->readSettings();
     TextScroller::getPointer()->readSettings();
     m_visMenu->updateActions();
     m_skin->reloadSkin();
     Dock::instance()->updateDock();
-    delete m_confDialog;
+    confDialog->deleteLater();
 }
 
 void MainWindow::toggleVisibility()
