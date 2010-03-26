@@ -83,6 +83,7 @@ SET(libqmmp_MOC_HDRS
     abstractengine.h
     audioparameters.h
     inputsource.h
+    inputsourcefactory.h
     fileinputsource.h
     emptyinputsource.h
     enginefactory.h
@@ -112,6 +113,7 @@ SET(libqmmp_DEVEL_HDRS
     abstractengine.h
     audioparameters.h
     inputsource.h
+    inputsourcefactory.h
     enginefactory.h
     metadatamanager.h
     qmmpsettings.h
