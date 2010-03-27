@@ -80,7 +80,7 @@ void ListWidget::readSettings()
     {
         delete m_metrics;
         m_metrics = new QFontMetrics(m_font);
-        m_rows = (height() - 10) / m_metrics->height ();
+        m_rows = (height() - 3) / m_metrics->height ();
         updateList();
         if(m_popupWidget)
         {
@@ -223,7 +223,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    m_rows = e->size().height() / m_metrics->height ();
+    m_rows = (e->size().height() - 3) / m_metrics->height ();
     m_scroll = true;
     updateList();
     QWidget::resizeEvent(e);
