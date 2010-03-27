@@ -250,8 +250,6 @@ void ListWidget::resizeEvent(QResizeEvent *e)
                              m_scrollBar->sizeHint().width(), height());
     
     m_rows = (e->size().height() - 10) / m_metrics->height ();
-    qDebug("ascent = %d", m_metrics->ascent ());
-    qDebug("height = %d", m_metrics->height ());
 
     //m_scroll = true;
     recenterCurrent();
