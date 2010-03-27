@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,10 +29,12 @@ HotkeyDialog::HotkeyDialog(quint32 key, quint32 mod, QWidget *parent)
     m_key = key;
     m_modifiers = mod;
     ui.keyLineEdit->setText(HotkeyManager::getKeyString(m_key, m_modifiers));
+    grabKeyboard();
 }
 
 HotkeyDialog::~HotkeyDialog()
 {
+    releaseKeyboard();
 }
 
 void HotkeyDialog::keyPressEvent (QKeyEvent *event)
@@ -40,7 +42,7 @@ void HotkeyDialog::keyPressEvent (QKeyEvent *event)
     m_key = HotkeyManager::keycodeToKeysym(event->nativeScanCode ());
     m_modifiers = event->nativeModifiers ();
     foreach(long mask_mod, HotkeyManager::ignModifiersList())
-    m_modifiers &= ~mask_mod; //remove ignoried modifiers (num lock, caps lock, etc)
+        m_modifiers &= ~mask_mod; //remove ignoried modifiers (num lock, caps lock, etc)
 
     ui.keyLineEdit->setText(HotkeyManager::getKeyString(m_key, m_modifiers));
     QWidget::keyPressEvent(event);
