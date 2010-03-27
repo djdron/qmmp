@@ -223,7 +223,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    m_rows = (e->size().height() - 10) / m_metrics->height ();
+    m_rows = e->size().height() / m_metrics->height ();
     m_scroll = true;
     updateList();
     QWidget::resizeEvent(e);
@@ -506,12 +506,12 @@ void ListWidget::contextMenuEvent(QContextMenuEvent * event)
 
 void ListWidget::recenterCurrent()
 {
-    if (!m_scroll)
+    if (!m_scroll && m_rows)
     {
         if (m_first + m_rows < m_model->currentRow() + 1)
             m_first = qMin(m_model->count() - m_rows,
-                           m_model->currentRow() - m_rows/2 + 1);
+                           m_model->currentRow() - m_rows/2);
         else if (m_first > m_model->currentRow())
-            m_first = qMax (m_model->currentRow() - m_rows/2 + 1, 0);
+            m_first = qMax (m_model->currentRow() - m_rows/2, 0);
     }
 }
