@@ -80,7 +80,7 @@ void ListWidget::readSettings()
     {
         delete m_metrics;
         m_metrics = new QFontMetrics(m_font);
-        m_rows = (height() - 10) / m_metrics->ascent ();
+        m_rows = (height() - 10) / m_metrics->height ();
         updateList();
         if(m_popupWidget)
         {
@@ -119,8 +119,8 @@ void ListWidget::paintEvent(QPaintEvent *)
         {
             m_painter.setBrush(QBrush(m_selected_bg));
             m_painter.setPen(m_selected_bg);
-            m_painter.drawRect ( 6, 15+(i-1)*m_metrics->ascent(),
-                                 width() - 10, m_metrics->ascent());
+            m_painter.drawRect ( 6, 15+(i-1)*m_metrics->height() + 2,
+                                 width() - 10, m_metrics->height());
         }
 
         if (m_model->currentRow() == i + m_first)
@@ -128,7 +128,7 @@ void ListWidget::paintEvent(QPaintEvent *)
         else
             m_painter.setPen(m_normal);  //243,58
 
-        m_painter.drawText(10,14+i*m_metrics->ascent(),m_titles.at(i));
+        m_painter.drawText(10,14+i*m_metrics->height(),m_titles.at(i));
 
         if (m_model->isQueued(m_model->item(i + m_first)) ||
                 (m_player->isRepeatable() && (m_model->currentRow() == m_first + i)) || m_show_protocol)
@@ -140,14 +140,14 @@ void ListWidget::paintEvent(QPaintEvent *)
             m_painter.setFont(m_font);
 
             m_painter.drawText(width() - 10 - m_metrics->width(extra_string) - m_metrics->width(m_times.at(i)),
-                               14+i*m_metrics->ascent (), extra_string);
+                               14+i*m_metrics->height (), extra_string);
             m_font.setPointSize(old_size);
             m_painter.setFont(m_font);
             m_painter.setBrush(QBrush(m_normal_bg));
         }
 
         m_painter.drawText(width() - 7 - m_metrics->width(m_times.at(i)),
-                           14+i*m_metrics->ascent (), m_times.at(i));
+                           14+i*m_metrics->height (), m_times.at(i));
     }
 
 }
@@ -223,7 +223,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    m_rows = (e->size().height() - 10) / m_metrics->ascent ();
+    m_rows = (e->size().height() - 10) / m_metrics->height ();
     m_scroll = true;
     updateList();
     QWidget::resizeEvent(e);
@@ -492,7 +492,7 @@ int ListWidget::rowAt(int y) const
 
     for (int i = 0; i < qMin(m_rows, m_model->count() - m_first) - 1; ++i)
     {
-        if ((y >= 14 + i * m_metrics->ascent ()) && (y <= 14 + (i+1) * m_metrics->ascent()))
+        if ((y >= 14 + i * m_metrics->height ()) && (y <= 14 + (i+1) * m_metrics->height()))
             return m_first + i + 1;
     }
     return INVALID_ROW;
