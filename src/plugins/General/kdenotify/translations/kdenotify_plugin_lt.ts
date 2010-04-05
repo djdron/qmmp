@@ -4,7 +4,7 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <location filename="../kdenotify.cpp" line="104"/>
+        <location filename="../kdenotify.cpp" line="122"/>
         <source>Qmmp now playing:</source>
         <translation>Qmmp dabar groja:</translation>
     </message>
@@ -37,22 +37,37 @@
         <translation>KDE 4 pranešimų įskiepio nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Notification delay [ms]:</source>
-        <translation>Pranešimo užlaikymas [ms]:</translation>
+        <location filename="../settingsdialog.ui" line="39"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="46"/>
+        <location filename="../settingsdialog.ui" line="45"/>
+        <source>Notification delay [s]:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="75"/>
+        <source>Update visible notification instead create new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="85"/>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="100"/>
         <source>Change template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="73"/>
+        <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
         <translation type="unfinished"></translation>
     </message>

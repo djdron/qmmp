@@ -9,12 +9,12 @@
         <translation>修改快捷键</translation>
     </message>
     <message>
-        <location filename="../hotkeydialog.ui" line="29"/>
+        <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
         <translation>请按您想指派的组合键</translation>
     </message>
     <message>
-        <location filename="../hotkeydialog.ui" line="43"/>
+        <location filename="../hotkeydialog.ui" line="52"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>

@@ -9,12 +9,12 @@
         <translation>Kurzbefehl bearbeiten</translation>
     </message>
     <message>
-        <location filename="../hotkeydialog.ui" line="29"/>
+        <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
         <translation>Drücken Sie die Tastenkombination, die verwendet werden soll</translation>
     </message>
     <message>
-        <location filename="../hotkeydialog.ui" line="43"/>
+        <location filename="../hotkeydialog.ui" line="52"/>
         <source>Clear</source>
         <translation>Zurücksetzen</translation>
     </message>

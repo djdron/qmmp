@@ -4,7 +4,7 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <location filename="../kdenotify.cpp" line="104"/>
+        <location filename="../kdenotify.cpp" line="122"/>
         <source>Qmmp now playing:</source>
         <translation>Играет:</translation>
     </message>
@@ -37,22 +37,37 @@
         <translation>Настройки модуля уведомлений KDE4</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="29"/>
-        <source>Notification delay [ms]:</source>
-        <translation>Задержка уведомления [мс]:</translation>
+        <location filename="../settingsdialog.ui" line="39"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="46"/>
+        <location filename="../settingsdialog.ui" line="45"/>
+        <source>Notification delay [s]:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="75"/>
+        <source>Update visible notification instead create new</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="85"/>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
         <translation>Показывать обложки</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="55"/>
+        <location filename="../settingsdialog.ui" line="100"/>
         <source>Change template</source>
         <translation>Изменить шаблон</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="73"/>
+        <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
         <translation>Шаблон уведомления</translation>
     </message>
