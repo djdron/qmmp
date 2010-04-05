@@ -32,7 +32,7 @@
 #include <string.h>
 
 OutputJACK::OutputJACK(QObject *parent)
-        : Output(parent), m_inited(false), m_configure(FALSE)
+        : Output(parent), m_inited(false), m_configure(false)
 {
     JACK_Init();
 }

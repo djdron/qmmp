@@ -40,7 +40,7 @@ extern "C"
 
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
         : AbstractEngine(parent), m_factory(0), m_output(0), m_eqInited(false),
-        m_useEq(false), m_eqEnabled(FALSE)
+        m_useEq(false), m_eqEnabled(false)
 {
     m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
     double b[] = {0,0,0,0,0,0,0,0,0,0};
