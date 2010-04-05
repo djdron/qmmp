@@ -11,7 +11,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
-        <translation>Powiadomienie</translation>
+        <translation>Podpowiedź</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -22,12 +22,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż dymek</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż pasek postępu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
@@ -47,17 +47,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wielkość okładki:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmień szablon</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Tooltip Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon podpowiedzi</translation>
     </message>
 </context>
 <context>

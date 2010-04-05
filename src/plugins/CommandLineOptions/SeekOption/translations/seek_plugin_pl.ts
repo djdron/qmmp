@@ -6,17 +6,17 @@
     <message>
         <location filename="../seekoption.cpp" line="38"/>
         <source>Seek to position in the current track</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewiń do pozycji w aktualnym utworze</translation>
     </message>
     <message>
         <location filename="../seekoption.cpp" line="39"/>
         <source>Seek forward</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewiń do przodu</translation>
     </message>
     <message>
         <location filename="../seekoption.cpp" line="40"/>
         <source>Seek backwards</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewiń do tyłu</translation>
     </message>
 </context>
 </TS>

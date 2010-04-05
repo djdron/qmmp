@@ -4,7 +4,7 @@
 <context>
     <name>KdeNotify</name>
     <message>
-        <location filename="../kdenotify.cpp" line="122"/>
+        <location filename="../kdenotify.cpp" line="104"/>
         <source>Qmmp now playing:</source>
         <translation>Qmmp teraz odtwarza:</translation>
     </message>
@@ -37,39 +37,24 @@
         <translation>Ustawienia wtyczki Powiadamianie KDE 4</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="39"/>
-        <source>Options</source>
-        <translation type="unfinished"></translation>
+        <location filename="../settingsdialog.ui" line="29"/>
+        <source>Notification delay [ms]:</source>
+        <translation>Czas zanikania [ms]:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="45"/>
-        <source>Notification delay [s]:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="75"/>
-        <source>Update visible notification instead create new</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="85"/>
-        <source>Appearance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="91"/>
+        <location filename="../settingsdialog.ui" line="46"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż okładki</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="100"/>
+        <location filename="../settingsdialog.ui" line="55"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmień szablon</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="75"/>
+        <location filename="../settingsdialog.cpp" line="73"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon powiadomień</translation>
     </message>
 </context>
 </TS>

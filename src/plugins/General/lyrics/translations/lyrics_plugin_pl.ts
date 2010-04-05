@@ -47,12 +47,12 @@
     <message>
         <location filename="../lyricswindow.cpp" line="63"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Gotowe</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="66"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Błąd</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="84"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="95"/>
         <source>Receiving</source>
-        <translation>Odbieranie</translation>
+        <translation>Pobieranie</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="96"/>

@@ -1,0 +1,13 @@
+Główni programiści:
+
+    Ilya Kotov <forkotov02@hotmail.ru> (pomysł i właściwy kod)
+    Vladimir Kuznetsov <vovanec@gmail.com> (look&feel oraz wiele usprawnień)
+
+Twórcy wtyczek:
+
+    Yuriy Zhuravlev <stalkerg@gmail.com> (wtyczki jack & oss)
+
+Grafika:
+
+    Andrey Adreev <andreev00@gmail.com>
+

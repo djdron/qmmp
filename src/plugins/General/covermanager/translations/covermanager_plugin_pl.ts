@@ -42,62 +42,62 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapi&amp;sz jako...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="40"/>
         <source>Actual Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualny rozmiar</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
         <source>128x128</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="42"/>
         <source>256x256</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="43"/>
         <source>512x512</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="44"/>
         <source>1024x1024</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamknij</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>Alt+F4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisz okładkę jako</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrazki</translation>
     </message>
 </context>
 </TS>

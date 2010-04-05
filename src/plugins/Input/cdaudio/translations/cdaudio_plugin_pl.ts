@@ -21,7 +21,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
-        <translation type="unfinished"></translation>
+        <translation>Skompilowane przy użyciu libcdio-%1 oraz libcddb-%2</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="92"/>
@@ -59,32 +59,32 @@
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Use HTTP instead of CDDBP</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj HTTP zamiast CDDBP</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation type="unfinished"></translation>
+        <translation>Serwer:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Clear CDDB cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyczyść bufor CDDB</translation>
     </message>
 </context>
 </TS>

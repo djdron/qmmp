@@ -152,7 +152,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Set playback volume (example: qmmp --volume 20</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustaw głośność odtwarzania (przykładowo: qmmp --volume 20</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
@@ -206,17 +206,17 @@
     <message>
         <location filename="../configdialog.cpp" line="223"/>
         <source>Transports</source>
-        <translation type="unfinished"></translation>
+        <translation>Transporty</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="234"/>
         <source>Decoders</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekodery</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="244"/>
         <source>Engines</source>
-        <translation type="unfinished"></translation>
+        <translation>Silniki</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="379"/>
@@ -368,7 +368,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1184"/>
         <source>16-bit output</source>
-        <translation type="unfinished"></translation>
+        <translation>16-bitowe odtwarzanie</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="190"/>
@@ -490,7 +490,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyjście:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1177"/>
@@ -535,7 +535,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj oddzielnych obrazków</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="800"/>
@@ -555,12 +555,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="867"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Odtwarzanie</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Wznów odtwarzanie po uruchomieniu programu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="899"/>
@@ -661,7 +661,7 @@
         <location filename="../eqwidget.cpp" line="169"/>
         <location filename="../eqwidget.cpp" line="192"/>
         <source>preset</source>
-        <translation>preset</translation>
+        <translation>profil</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="278"/>
@@ -671,12 +671,12 @@
     <message>
         <location filename="../eqwidget.cpp" line="280"/>
         <source>&amp;Save Preset</source>
-        <translation>Zapi&amp;sz Preset</translation>
+        <translation>Zapi&amp;sz Profil</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="281"/>
         <source>&amp;Save Auto-load Preset</source>
-        <translation>Zapi&amp;sz Auto-ładowanie Preset&apos;u</translation>
+        <translation>Zapi&amp;sz Auto-ładowanie Profilu</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="284"/>
@@ -686,17 +686,17 @@
     <message>
         <location filename="../eqwidget.cpp" line="313"/>
         <source>Saving Preset</source>
-        <translation>Zapisywanie Preset&apos;u</translation>
+        <translation>Zapisywanie Profilu</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="314"/>
         <source>Preset name:</source>
-        <translation>Nazwa Preset&apos;u:</translation>
+        <translation>Nazwa Profilu:</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="315"/>
         <source>preset #</source>
-        <translation>preset #</translation>
+        <translation>profil #</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="282"/>
@@ -706,7 +706,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="406"/>
         <source>Import Preset</source>
-        <translation>Importuj Preset</translation>
+        <translation>Importuj Profil</translation>
     </message>
 </context>
 <context>
@@ -714,17 +714,17 @@
     <message>
         <location filename="../jumptotrackdialog.cpp" line="53"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="54"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="55"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="87"/>
@@ -1200,7 +1200,7 @@
     <message>
         <location filename="../playlist.cpp" line="211"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń duplikaty</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
@@ -1410,32 +1410,32 @@
     <message>
         <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Load</source>
-        <translation type="unfinished"></translation>
+        <translation>Załaduj</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapi&amp;sz jako...</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="54"/>
         <source>Rename</source>
-        <translation type="unfinished">Zmień nazwę</translation>
+        <translation>Zmień nazwę</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="55"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmień nazwę listy</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa listy odtwarzania:</translation>
     </message>
 </context>
 <context>
@@ -1448,7 +1448,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż okładkę</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -1458,12 +1458,12 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>Opóźnienie:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
@@ -1561,7 +1561,7 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation>Edytor Presetów</translation>
+        <translation>Edytor Profili</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="77"/>
@@ -1576,12 +1576,12 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="36"/>
         <source>Preset</source>
-        <translation>Preset</translation>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
-        <translation>Auto-preset</translation>
+        <translation>Auto-profil</translation>
     </message>
 </context>
 <context>
@@ -1614,7 +1614,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="72"/>
         <source>Unknown command</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieznane polecenie</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="174"/>
