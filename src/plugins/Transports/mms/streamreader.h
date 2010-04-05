@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,76 +17,64 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DOWNLOADER_H
-#define DOWNLOADER_H
+#ifndef STREAMREADER_H
+#define STREAMREADER_H
 
-#include <QThread>
-#include <QMutex>
-#include <QByteArray>
-#include <QMap>
-#include <curl/curl.h>
-#ifdef WITH_ENCA
-#include <enca.h>
-#endif
-class QTextCodec;
+#include <QObject>
+#include <QIODevice>
+#include <QUrl>
+
+class QFileInfo;
+
+class Downloader;
 
 /*! @internal
  *   @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-struct Stream
-{
-    char *buf;
-    long buf_fill;
-    QString content_type;
-    bool aborted;
-    QMap <QString, QString> header;
-    bool icy_meta_data;
-    int icy_metaint;
-};
-/*! @internal
- *  @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class Downloader : public QThread
+class StreamReader : public QIODevice
 {
     Q_OBJECT
 public:
-    Downloader(QObject *parent, const QString &url);
+    StreamReader(const QString &name, QObject *parent = 0);
 
-    ~Downloader();
+    ~StreamReader();
 
-    qint64 read(char* data, qint64 maxlen);
-    Stream *stream();
-    QMutex *mutex();
-    QString contentType();
-    void abort();
-    qint64 bytesAvailable();
-    void checkBuffer();
-    bool isReady();
+    /** 
+     *  QIODevice API
+     */
+    bool atEnd () const;
+    qint64 bytesAvailable () const;
+    qint64 bytesToWrite () const;
+    bool canReadLine () const;
+    void close ();
+    bool isSequential () const;
+    bool open ( OpenMode mode );
+    //qint64 pos () const;
+    bool reset ();
+    bool seek ( qint64 pos );
+    qint64 size () const;
+    bool waitForBytesWritten ( int msecs );
+    bool waitForReadyRead ( int msecs );
+
+    /**
+     *  returns content type of a stream
+     */
+    const QString &contentType();
+    void downloadFile();
 
 signals:
     void readyRead();
 
-private:
-    qint64 readBuffer(char* data, qint64 maxlen);
-    void readICYMetaData();
-    void parseICYMetaData(char *data, qint64 size);
-    CURL *m_handle;
-    QMutex m_mutex;
-    Stream m_stream;
-    QString m_url;
-    int m_metacount;
-    QString m_title;
-    bool m_ready;
-    bool m_meta_sent;
-    long m_buffer_size;
-    QTextCodec *m_codec;
-#ifdef WITH_ENCA
-    EncaAnalyser m_analyser;
-#endif
-
 protected:
-    void run();
+    qint64 readData(char*, qint64);
+    qint64 writeData(const char*, qint64);
 
+private:
+    //void downloadFile();
+    void fillBuffer();
+    QUrl m_url;
+    QString m_contentType;
+    Downloader *m_downloader;
 };
 
 #endif

@@ -89,6 +89,8 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
         qWarning("DecoderFFmpegFactory: usupported format");
         return false;
     }
+    if(filters.contains("*.wma") && !memcmp(fmt->name, "asf", 3))
+        return true;
     if(filters.contains("*.mp3") && !memcmp(fmt->name, "mp3", 3))
         return true;
     if(filters.contains("*.aac") && !memcmp(fmt->name, "aac", 3))
