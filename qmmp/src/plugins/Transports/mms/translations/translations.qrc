@@ -1,0 +1,15 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>mms_plugin_it.qm</file>
+    <file>mms_plugin_ru.qm</file>
+    <file>mms_plugin_uk_UA.qm</file>
+    <file>mms_plugin_zh_CN.qm</file>
+    <file>mms_plugin_zh_TW.qm</file>
+    <file>mms_plugin_cs.qm</file>
+    <file>mms_plugin_de.qm</file>
+    <file>mms_plugin_pl.qm</file>
+    <file>mms_plugin_tr.qm</file>
+    <file>mms_plugin_lt.qm</file>
+  </qresource>
+</RCC>

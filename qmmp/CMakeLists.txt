@@ -86,6 +86,7 @@ ENDIF(UNIX)
 MESSAGE("")
 MESSAGE("Transports:")
 PRINT_SUMMARY ("HTTP support ......................" USE_CURL CURL_FOUND)
+PRINT_SUMMARY ("MMS support ......................." USE_MMS MMS_FOUND)
 
 MESSAGE("")
 MESSAGE("Input Plugins:")

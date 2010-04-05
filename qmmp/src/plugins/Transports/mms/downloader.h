@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,25 +24,12 @@
 #include <QMutex>
 #include <QByteArray>
 #include <QMap>
-#include <curl/curl.h>
-#ifdef WITH_ENCA
-#include <enca.h>
-#endif
-class QTextCodec;
+#define this var
+#include <libmms/mms.h>
+#undef this
 
-/*! @internal
- *   @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-struct Stream
-{
-    char *buf;
-    long buf_fill;
-    QString content_type;
-    bool aborted;
-    QMap <QString, QString> header;
-    bool icy_meta_data;
-    int icy_metaint;
-};
+
+
 /*! @internal
  *  @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -55,7 +42,6 @@ public:
     ~Downloader();
 
     qint64 read(char* data, qint64 maxlen);
-    Stream *stream();
     QMutex *mutex();
     QString contentType();
     void abort();
@@ -67,22 +53,14 @@ signals:
     void readyRead();
 
 private:
-    qint64 readBuffer(char* data, qint64 maxlen);
-    void readICYMetaData();
-    void parseICYMetaData(char *data, qint64 size);
-    CURL *m_handle;
     QMutex m_mutex;
-    Stream m_stream;
     QString m_url;
-    int m_metacount;
-    QString m_title;
+    mms_t *m_handle;
+    bool m_aborted;
+    qint64 m_buffer_size, m_prebuf_size;
+    char *m_buffer;
+    qint64 m_buffer_at;
     bool m_ready;
-    bool m_meta_sent;
-    long m_buffer_size;
-    QTextCodec *m_codec;
-#ifdef WITH_ENCA
-    EncaAnalyser m_analyser;
-#endif
 
 protected:
     void run();

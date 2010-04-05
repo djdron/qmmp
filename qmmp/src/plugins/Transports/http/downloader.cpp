@@ -220,10 +220,10 @@ void Downloader::abort()
     }
 }
 
-int Downloader::bytesAvailable()
+qint64 Downloader::bytesAvailable()
 {
     m_mutex.lock();
-    int b = m_stream.buf_fill;
+    qint64 b = m_stream.buf_fill;
     m_mutex.unlock();
     return b;
 }
@@ -306,11 +306,6 @@ qint64 Downloader::readBuffer(char* data, qint64 maxlen)
         return len;
     }
     return 0;
-}
-
-const QString &Downloader::title() const
-{
-    return m_title;
 }
 
 void Downloader::checkBuffer()
