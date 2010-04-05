@@ -28,8 +28,10 @@
 #include "qmmp/qmmp.h"
 
 #define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b>\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)\n%if(%l,<br><b>%l</b>,)"
+#define NOTIFY_DELAY 2
 
 class QDBusInterface;
+class QTimer;
 
 class KdeNotify : public General
 {
@@ -40,17 +42,20 @@ public:
 
 private:
     QList<QVariant> prepareNotification();
-    QDBusInterface *notifier;
+    QString totalTimeString();
+    QDBusInterface *m_notifier;
     QString m_coverPath;
-    int m_NotifyDelay;
-    bool m_ShowCovers;
-    bool m_UseFreedesktopSpec;
+    int m_notifyDuration;
+    unsigned int m_currentNotifyId;
+    bool m_showCovers;
+    bool m_useFreedesktopSpec;
+    bool m_updateNotify;
     QString m_template;
     QString m_imagesDir;
-    
+
 private slots:
     void showMetaData();
-    QString totalTimeString();
+    void notificationClosed(uint id, uint reason);
 };
 
 #endif // KDENOTIFY_H

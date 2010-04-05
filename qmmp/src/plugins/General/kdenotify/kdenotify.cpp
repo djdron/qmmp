@@ -28,33 +28,33 @@
 #include <QTimer>
 #include <QImage>
 #include <QApplication>
+#include <QVariant>
+
 #include <qmmpui/metadataformatter.h>
 #include <qmmp/soundcore.h>
 #include <qmmp/metadatamanager.h>
+
 #include "kdenotify.h"
 
-KdeNotify::KdeNotify(QObject *parent) : General(parent),m_UseFreedesktopSpec(false)
+KdeNotify::KdeNotify(QObject *parent) : General(parent),m_useFreedesktopSpec(true)
 {
-    notifier = new QDBusInterface("org.kde.VisualNotifications",
-                                  "/VisualNotifications", "org.kde.VisualNotifications",
+    m_notifier = new QDBusInterface("org.freedesktop.Notifications",
+                                  "/org/freedesktop/Notifications","org.freedesktop.Notifications",
                                   QDBusConnection::sessionBus(), this);
-    if(notifier->lastError().type() != QDBusError::NoError)
+    if(m_notifier->lastError().type() != QDBusError::NoError)
     {
-        delete(notifier);
-        qWarning() << "KdeNotify: unable to create dbus interface."
-                << "Have you got KDE SC 4.4 or newer? Lets try...";
-
-        notifier = new QDBusInterface("org.freedesktop.Notifications",
-                                      "/org/freedesktop/Notifications","org.freedesktop.Notifications");
-        if(notifier->lastError().type() != QDBusError::NoError)
+        delete(m_notifier);
+        m_notifier = new QDBusInterface("org.kde.VisualNotifications",
+                                      "/VisualNotifications", "org.kde.VisualNotifications",
+                                      QDBusConnection::sessionBus(), this);
+        if(m_notifier->lastError().type() != QDBusError::NoError)
         {
-            qWarning() << "KdeNotify: Can't create interface. Sorry.";
+            qWarning() << "KdeNotify: Unable to create interface.";
             return;
         }
-        m_UseFreedesktopSpec = true;
+        m_useFreedesktopSpec = false;
     }
     qWarning() << "KdeNotify: DBus interfece created successfully.";
-    //m_ConfigDir = QFileInfo(Qmmp::configFile()).absoluteDir().path();
     QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
     QDir dir(path);
     if(!dir.exists("kdenotifycache"))
@@ -65,17 +65,27 @@ KdeNotify::KdeNotify(QObject *parent) : General(parent),m_UseFreedesktopSpec(fal
 
     QSettings settings(Qmmp::configFile(),QSettings::IniFormat);
     settings.beginGroup("Kde_Notifier");
-    m_NotifyDelay = settings.value("notify_delay",10000).toInt();
-    m_ShowCovers = settings.value("show_covers",true).toBool();
+    m_notifyDuration = settings.value("notify_duration",5000).toInt();
+    m_showCovers = settings.value("show_covers",true).toBool();
     m_template = settings.value("template", DEFAULT_TEMPLATE).toString();
     m_template.remove("\n");
+    m_updateNotify = settings.value("update_notify",true).toBool();
     settings.endGroup();
+    m_currentNotifyId = 0;
 
-    QTimer *timer = new QTimer(this);
-    timer->setSingleShot(true);
-    timer->setInterval(3000); //after that notification will be showed.
-    connect(timer,SIGNAL(timeout()),SLOT(showMetaData()));
-    connect(SoundCore::instance(),SIGNAL(metaDataChanged()),timer, SLOT(start()));
+    if(m_updateNotify)
+    {
+        connect(SoundCore::instance(),SIGNAL(metaDataChanged()),SLOT(showMetaData()));
+        connect(m_notifier,SIGNAL(NotificationClosed(uint,uint)),this,SLOT(notificationClosed(uint,uint)));
+    }
+    else
+    {
+        QTimer *timer = new QTimer(this);
+        timer->setSingleShot(true);
+        timer->setInterval(NOTIFY_DELAY); //after that notification will be showed.
+        connect(timer,SIGNAL(timeout()),SLOT(showMetaData()));
+        connect(SoundCore::instance(),SIGNAL(metaDataChanged()),timer, SLOT(start()));
+    }
 }
 
 KdeNotify::~KdeNotify()
@@ -105,37 +115,39 @@ QList<QVariant> KdeNotify::prepareNotification()
     }
     QList<QVariant> args;
     args.append("Qmmp"); //app-name
-    args.append(0U); //replaces-id
-    if(!m_UseFreedesktopSpec)
+    args.append(m_currentNotifyId); //replaces-id;
+    if(!m_useFreedesktopSpec)
         args.append(""); //event-id
-    args.append(m_imagesDir + "/app_icon.png");  //app-icon(path to icon on disk)
+    args.append(m_imagesDir + "/app.png");  //app-icon(path to icon on disk)
     args.append(tr("Qmmp now playing:")); //summary (notification title)
 
     MetaDataFormatter f(m_template);
     QString body = f.parse(core->metaData(), core->totalTime()/1000);
 
     QString coverPath;
-    if(m_ShowCovers)
+    if(m_showCovers)
     {
-        QPixmap cover = MetaDataManager::instance()->instance()->getCover(core->metaData(Qmmp::URL));
+        QPixmap cover = MetaDataManager::instance()->getCover(core->metaData(Qmmp::URL));
         if(!cover.isNull())
         {
             coverPath = m_coverPath;
-            cover.scaled(100,100,Qt::IgnoreAspectRatio,Qt::SmoothTransformation).save(coverPath);
+            cover.scaled(90,90,Qt::IgnoreAspectRatio,Qt::SmoothTransformation).save(coverPath);
         }
     }
     if(coverPath.isEmpty())
         coverPath = m_imagesDir + "/empty_cover.png";
 
     QString nBody;
-    nBody.append("<table padding=\"3px\"><tr><td width=\"80px\" height=\"80px\" padding=\"3px\">");
-    nBody.append("<img height=\"80\" width=\"80\" src=\"%1\"></td><td width=\"10\"></td><td>%2</td></tr><table>");
-    nBody = nBody.arg(coverPath,body);
-
+    nBody.append(body);
     args.append(nBody); //body
+
     args.append(QStringList()); //actions
-    args.append(QVariantMap()); //hints
-    args.append(m_NotifyDelay); //timeout
+
+    QVariantMap hints;
+    hints.insert("image_path",coverPath);
+    args.append(hints); //hints
+
+    args.append(m_notifyDuration); //timeout
 
     return args;
 }
@@ -144,5 +156,19 @@ void KdeNotify::showMetaData()
 {
     QList<QVariant> n = prepareNotification();
     if(!n.isEmpty())
-        notifier->callWithArgumentList(QDBus::NoBlock,"Notify",n);
+    {
+        QDBusReply<uint> reply = m_notifier->callWithArgumentList(QDBus::Block,"Notify",n);
+        if(reply.isValid() && m_updateNotify)
+        {
+            m_currentNotifyId = reply.value();
+        }
+    }
+}
+
+void KdeNotify::notificationClosed(uint id, uint reason)
+{
+    Q_UNUSED(reason);
+    qWarning() << "notificationClosed: " << id;
+    if(m_currentNotifyId == id)
+        m_currentNotifyId = 0;
 }

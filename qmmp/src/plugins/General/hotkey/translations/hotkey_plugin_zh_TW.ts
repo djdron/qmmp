@@ -9,12 +9,12 @@
         <translation>修改熱鍵</translation>
     </message>
     <message>
-        <location filename="../hotkeydialog.ui" line="29"/>
+        <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
         <translation>請按您想指定的組合鍵</translation>
     </message>
     <message>
-        <location filename="../hotkeydialog.ui" line="43"/>
+        <location filename="../hotkeydialog.ui" line="52"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
