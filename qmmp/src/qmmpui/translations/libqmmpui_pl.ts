@@ -72,7 +72,7 @@ p, li { white-space: pre-wrap; }
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="115"/>
-        <location filename="../playlistmanager.cpp" line="335"/>
+        <location filename="../playlistmanager.cpp" line="334"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>
@@ -164,87 +164,87 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../templateeditor.ui" line="39"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyczyść</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="46"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="14"/>
         <source>Template Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytor szablonów</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
         <source>Artist</source>
-        <translation type="unfinished">Artysta</translation>
+        <translation>Artysta</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="51"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Title</source>
-        <translation type="unfinished">Tytuł</translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer utworu</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dwucyfrowy numer utworu</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation type="unfinished">Gatunek</translation>
+        <translation>Gatunek</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Comment</source>
-        <translation type="unfinished">Komentarz</translation>
+        <translation>Komentarz</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
         <source>Composer</source>
-        <translation type="unfinished">Kompozytor</translation>
+        <translation>Kompozytor</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="58"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Długość</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Disc number</source>
-        <translation type="unfinished">Numer płyty</translation>
+        <translation>Numer płyty</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka pliku</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>Year</source>
-        <translation type="unfinished">Rok</translation>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Warunek</translation>
     </message>
 </context>
 </TS>

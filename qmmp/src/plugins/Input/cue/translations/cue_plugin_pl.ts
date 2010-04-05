@@ -39,22 +39,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>CUE encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodowanie CUE</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne wykrywanie kodowania</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Język:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="65"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślne kodowanie:</translation>
     </message>
 </context>
 </TS>

@@ -143,42 +143,42 @@
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer utworu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dwucyfrowy numer utworu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompozytor</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Długość</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="201"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Numer płyty</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="202"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Ścieżka pliku</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Warunek</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="221"/>
@@ -224,12 +224,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="133"/>
         <source>File name pattern:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wzorzec nazwy pliku:</translation>
     </message>
 </context>
 </TS>
