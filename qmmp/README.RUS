@@ -1,38 +1,55 @@
 Qmmp - Qt-based multimedia player
 
 Программа является аудио-плеером, написанным с использованием библиотеки Qt.
+Официальная домашняя страница: http://qmmp.ylsoftware.com/
 
-Основные возможности:
-- поддержка тем winamp и xmms;
-- поддержка модулей
-- поддержка MPEG1 layer 1/2/3
-- поддержка Ogg Vorbis
-- поддержка native FLAC
-- поддержка Musepack
-- поддержка WavePack
-- поддержка ModPlug
-- поддержка WMA, APE (и др. форматов библиотеки FFmpeg)
-- поддержка PCM WAVE (и др. форматов библиотеки libsndfile)
-- поддержка AAC
-- поддержка CD Audio
-- поддержка CUE (экспериментальная)
-- поддержка CUE встроенного в FLAC (экспериментальная)
-- поддержка CUE встроенного в WavPack (экспериментальная)
-- вывод звука через ALSA
-- вывод звука через JACK
-- вывод звука через OSS
-- вывод звука через PulseAudio
-- скробблер Last.fm/Libre.fm
-- анализатор спектра
-- визуализация с помощью projectM
+Поддерживаемые форматы: 
+- MPEG1 layer 2/3 
+- Ogg Vorbis
+- Native FLAC, Ogg FLAC
+- Musepack
+- WavePack
+- трекерные форматы (mod, s3m, it, xm и т.д.)
+- ADTS AAC
+- CD Audio
+- WMA, Monkey's Audio (и др. форматы библиотеки FFmpeg)
+- PCM WAVE (и др. форматы библиотеки libsndfile)
+
+Аудио-эффекты:
+- эффект BS2B
 - передискретизация
-- эффект bs2b
-- поддержка потокового вещания (MP3, Vorbis через IceCast/ShoutCast)
-- определение съёмных устройств устройств (через HAL)
-- поддержка MPRIS
-- поддержка глобальных клавиш
-- поддержка видео с помощью Mplayer
-- получение текстов песен с LyricWiki.org
+- эффекты LADSPA
+
+Визуальные эффекты:
+- визуализация projectM
+- анализатор спектра
+
+Системы вывода звука:
+- OSS
+- ALSA (Linux)
+- Pulse Audio
+- JACK
+- WaveOut (Win32)
+
+Другие возможности:
+- поддержка обложек Xmms и Winamp 2.x
+- 10-полосный эквалайзер
+- поддержка потоков MP3, Vorbis, AAC, AAC+
+- поддержка протокола MMS (экспериментальная)
+- MPRIS
+- автоопределение съёмных устройств (с помощью HAL)
+- воспроизведение видео с помощью Mplayer-а
+- получение текстов песен с lyricsplugin.com
+- просмотр обложек
+- поддержка CUE
+- поддержка "встроенного" CUE (для файлов FLAC и WavPack)
+- возможность использовать несколько списков воспроизведения
+- автоматической определение кодировки для cue-файлов и ShoutCast-метаданных
+- поддерживаемые форматы списков воспроизведения: m3u, pls, xspf
+- поддержка ReplayGain
+- скробблер Last.fm/Libre.fm
+- поддержка CDDB
+
 
 Требования:
 - OS GNU Linux
@@ -44,6 +61,7 @@ Qmmp - Qt-based multimedia player
 - libalsa >= 1.0.1
 - taglib >= 1.6
 - curl >= 7.16
+- libmms >= 0.4 (Опционально)
 - flac >= 1.1.3 (Опционально)
 - libmpcdec >= 1.2.6 (Опционально)
 - jackit >= 0.102.5 (Опционально)
@@ -70,17 +88,23 @@ cmake ./
 Сборка:
 make
 
-Устнановка:
+Установка:
 make install
 
 Если какой-либо модуль (например, Jack) не собирается или не нужен, то вы можете отключить его командой:
 cmake ./ -DUSE_JACK:BOOL=FALSE
 
 Доступные опции:
-USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC,
-USE_CUE, USE_MPLAYER, USE_CDA, USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_SRC, USE_BS2B, USE_ANALYZER, USE_MPRIS,
-USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_QMMP_DIALOG, USE_PROJECTM,
-USE_FILEOPS, USE_ENCA
+- USE_CURL, USE_MMS (транспортные модули);
+- USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
+  USE_MPLAYER, USE_CDA (декодеры);
+- USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_WAVEOUT (output plugins);
+- USE_SRC, USE_BS2B, USE_LADSPA (эффекты);
+- USE_ANALYZER, USE_PROJECTM (визуализация);
+- USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
+  USE_KDENOTIFY (модули общего назначения);
+- USE_QMMP_DIALOG (файловый диалог);
+- USE_ENCA (автоматическое определение кодировки);
 
 Также вы можете использовать ccmake для изменения конфигурации модулей.
 По умолчанию программа будет установлена в /usr/local. Вы можете изменить этот путь командой:
