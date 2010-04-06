@@ -36,7 +36,7 @@
 
 bool DecoderFLACFactory::supports(const QString &source) const
 {
-    return source.endsWith(".flac") || source.endsWith(".oga");
+    return source.endsWith(".flac", Qt::CaseInsensitive) || source.endsWith(".oga", Qt::CaseInsensitive);
 }
 
 bool DecoderFLACFactory::canDecode(QIODevice *input) const
@@ -73,13 +73,13 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
     TagLib::FLAC::File *flacFile = 0;
     TagLib::Ogg::FLAC::File *oggFlacFile = 0;
 
-    if(fileName.endsWith(".flac"))
+    if(fileName.endsWith(".flac", Qt::CaseInsensitive))
     {
         flacFile = new TagLib::FLAC::File(fileName.toLocal8Bit ());
         tag = useMetaData ? flacFile->xiphComment() : 0;
         ap = flacFile->audioProperties();
     }
-    else if(fileName.endsWith(".oga"))
+    else if(fileName.endsWith(".oga", Qt::CaseInsensitive))
     {
         oggFlacFile = new TagLib::Ogg::FLAC::File(fileName.toLocal8Bit ());
         tag = useMetaData ? oggFlacFile->tag() : 0;
