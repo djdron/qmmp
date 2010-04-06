@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotovs                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -113,6 +113,21 @@ void PlayListManager::activatePlayList(PlayListModel *model)
 PlayListModel *PlayListManager::createPlayList(const QString &name)
 {
     PlayListModel *model = new PlayListModel (name.isEmpty() ? tr("Playlist") : name, this);
+    QString pl_name = model->name();
+    if(playListNames().contains(pl_name))
+    {
+        int i = 0;
+        forever
+        {
+            i++;
+            if(!playListNames().contains(pl_name + QString(" (%1)").arg(i)))
+            {
+                pl_name = pl_name + QString(" (%1)").arg(i);
+                break;
+            }
+        }
+        model->setName(pl_name);
+    }
     int i = m_models.indexOf(m_selected);
     m_models.insert(i+1, model);
     model->prepareForRepeatablePlaying(m_repeatable);
