@@ -151,8 +151,8 @@
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
-        <source>Set playback volume (example: qmmp --volume 20</source>
-        <translation>Установить громкость (пример: qmmp --volume 20)</translation>
+        <source>Set playback volume (example: qmmp --volume 20)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>

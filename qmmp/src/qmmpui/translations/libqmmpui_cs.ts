@@ -172,87 +172,87 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../templateeditor.ui" line="39"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyčistit</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="46"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="14"/>
         <source>Template Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor šablony</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
         <source>Artist</source>
-        <translation type="unfinished">Umělec</translation>
+        <translation>Umělec</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="51"/>
         <source>Album</source>
-        <translation type="unfinished">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Title</source>
-        <translation type="unfinished">Název</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo stopy</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation type="unfinished">Žánr</translation>
+        <translation>Žánr</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Comment</source>
-        <translation type="unfinished">Poznámka</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
         <source>Composer</source>
-        <translation type="unfinished">Skladatel</translation>
+        <translation>Skladatel</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="58"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Disc number</source>
-        <translation type="unfinished">Číslo disku</translation>
+        <translation>Číslo disku</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název souboru</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta k souboru</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>Year</source>
-        <translation type="unfinished">Rok</translation>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav</translation>
     </message>
 </context>
 </TS>
