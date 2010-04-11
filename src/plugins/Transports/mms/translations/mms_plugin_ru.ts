@@ -28,8 +28,8 @@
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
-        <source>HTTP Plugin Settings</source>
-        <translation>Настройки модуля HTTP</translation>
+        <source>MMS Plugin Settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>

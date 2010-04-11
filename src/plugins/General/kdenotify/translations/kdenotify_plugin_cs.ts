@@ -38,37 +38,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Možnosti</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prodleva notifikace [s]:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizovat viditelnou notifikaci namísto vytvoření nové</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzhled</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazovat obaly</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit šablonu</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Šablona notifikace</translation>
     </message>
 </context>
 </TS>

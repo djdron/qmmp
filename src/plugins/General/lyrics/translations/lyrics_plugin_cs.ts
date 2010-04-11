@@ -47,12 +47,12 @@
     <message>
         <location filename="../lyricswindow.cpp" line="63"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Hotovo</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="66"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="96"/>

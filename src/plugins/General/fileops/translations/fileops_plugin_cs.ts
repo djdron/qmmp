@@ -143,42 +143,42 @@
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo stopy</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvoumístné číslo stopy</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Skladatel</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Délka</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="201"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo disku</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="202"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Název souboru</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Cesta k souboru</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Stav</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="221"/>
@@ -224,7 +224,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="133"/>

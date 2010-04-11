@@ -151,8 +151,8 @@
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
-        <source>Set playback volume (example: qmmp --volume 20</source>
-        <translation type="unfinished"></translation>
+        <source>Set playback volume (example: qmmp --volume 20)</source>
+        <translation>Nastavit hlasitost přehrávání (příklad: qmmp --volume 20)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
@@ -206,17 +206,17 @@
     <message>
         <location filename="../configdialog.cpp" line="223"/>
         <source>Transports</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokoly</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="234"/>
         <source>Decoders</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekodéry</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="244"/>
         <source>Engines</source>
-        <translation type="unfinished"></translation>
+        <translation>Přehrávače</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="379"/>
@@ -438,7 +438,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít samostatné obrázky</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="800"/>
@@ -458,12 +458,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="867"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Přehrávání</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Po startu pokračovat v přehrávání</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1007"/>
@@ -494,12 +494,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>Výstup:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1184"/>
         <source>16-bit output</source>
-        <translation type="unfinished"></translation>
+        <translation>16bitový výstup</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="134"/>
@@ -1180,7 +1180,7 @@
     <message>
         <location filename="../playlist.cpp" line="211"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished"></translation>
+        <translation>Odstranit duplicity</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
@@ -1410,32 +1410,32 @@
     <message>
         <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Load</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Načíst</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit j&amp;ako...</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="54"/>
         <source>Rename</source>
-        <translation type="unfinished">Přejmenovat</translation>
+        <translation>Přejmenovat</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="55"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>O&amp;dstranit</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Přejmenovat seznam skladeb</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Název seznamu skladeb:</translation>
     </message>
 </context>
 <context>
@@ -1448,7 +1448,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit obal</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -1458,12 +1458,12 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>Prodleva:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
@@ -1614,7 +1614,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="72"/>
         <source>Unknown command</source>
-        <translation type="unfinished"></translation>
+        <translation>Neznámý příkaz</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="174"/>

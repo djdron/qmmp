@@ -6,27 +6,27 @@
     <message>
         <location filename="../httpinputfactory.cpp" line="34"/>
         <source>HTTP Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul HTTP</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="54"/>
         <source>About HTTP Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O modulu pro protokol HTTP</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="55"/>
         <source>Qmmp HTTP Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Modul Qmmp pro protokol HTTP</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="56"/>
         <source>Compiled against libcurl-%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zkompilováno s libcurl-%1</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="57"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,37 +34,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>HTTP Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení modulu HTTP</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost bufferu:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Metadata encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>Kódování metadat</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Autodetekce znakové sady</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Jazyk:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="114"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>Výchozí kódování:</translation>
     </message>
 </context>
 </TS>
