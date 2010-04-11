@@ -36,23 +36,23 @@
 
 #include "kdenotify.h"
 
-KdeNotify::KdeNotify(QObject *parent) : General(parent),m_useFreedesktopSpec(true)
+KdeNotify::KdeNotify(QObject *parent) : General(parent),m_useFreedesktopSpec(false)
 {
-    m_notifier = new QDBusInterface("org.freedesktop.Notifications",
-                                  "/org/freedesktop/Notifications","org.freedesktop.Notifications",
-                                  QDBusConnection::sessionBus(), this);
+    m_notifier = new QDBusInterface("org.kde.VisualNotifications",
+                                      "/VisualNotifications", "org.kde.VisualNotifications",
+                                      QDBusConnection::sessionBus(), this);
     if(m_notifier->lastError().type() != QDBusError::NoError)
     {
         delete(m_notifier);
-        m_notifier = new QDBusInterface("org.kde.VisualNotifications",
-                                      "/VisualNotifications", "org.kde.VisualNotifications",
-                                      QDBusConnection::sessionBus(), this);
+	m_notifier = new QDBusInterface("org.freedesktop.Notifications",
+                                  "/org/freedesktop/Notifications","org.freedesktop.Notifications",
+                                  QDBusConnection::sessionBus(), this);
         if(m_notifier->lastError().type() != QDBusError::NoError)
         {
             qWarning() << "KdeNotify: Unable to create interface.";
             return;
         }
-        m_useFreedesktopSpec = false;
+        m_useFreedesktopSpec = true;
     }
     qWarning() << "KdeNotify: DBus interfece created successfully.";
     QString path = QFileInfo(Qmmp::configFile()).absoluteDir().path();
@@ -118,7 +118,7 @@ QList<QVariant> KdeNotify::prepareNotification()
     args.append(m_currentNotifyId); //replaces-id;
     if(!m_useFreedesktopSpec)
         args.append(""); //event-id
-    args.append(m_imagesDir + "/app.png");  //app-icon(path to icon on disk)
+    args.append(m_imagesDir + "/app-icon.png");  //app-icon(path to icon on disk)
     args.append(tr("Qmmp now playing:")); //summary (notification title)
 
     MetaDataFormatter f(m_template);
@@ -137,12 +137,18 @@ QList<QVariant> KdeNotify::prepareNotification()
     if(coverPath.isEmpty())
         coverPath = m_imagesDir + "/empty_cover.png";
 
-    QString nBody;
-    nBody.append(body);
-    args.append(nBody); //body
+    if(m_useFreedesktopSpec)
+        args.append(body); //body
+    else
+    {
+        QString nBody;
+        nBody.append("<table padding=\"3px\"><tr><td width=\"80px\" height=\"80px\" padding=\"3px\">");
+        nBody.append("<img height=\"80\" width=\"80\" src=\"%1\"></td><td width=\"10\"></td><td>%2</td></tr></table>");
+        nBody = nBody.arg(coverPath,body);
+        args.append(nBody);
+    }
 
     args.append(QStringList()); //actions
-
     QVariantMap hints;
     hints.insert("image_path",coverPath);
     args.append(hints); //hints
@@ -168,7 +174,6 @@ void KdeNotify::showMetaData()
 void KdeNotify::notificationClosed(uint id, uint reason)
 {
     Q_UNUSED(reason);
-    qWarning() << "notificationClosed: " << id;
     if(m_currentNotifyId == id)
         m_currentNotifyId = 0;
 }

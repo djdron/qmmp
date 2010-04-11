@@ -34,7 +34,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
     QSettings settings(Qmmp::configFile(),QSettings::IniFormat);
     settings.beginGroup("Kde_Notifier");
-    ui->notifyDelaySpinBox->setValue(settings.value("notify_duration",10000).toInt()/1000);
+    ui->notifyDelaySpinBox->setValue(settings.value("notify_duration",5000).toInt()/1000);
     ui->showCoversCheckBox->setChecked(settings.value("show_covers",true).toBool());
     ui->updateNotifyCheckBox->setChecked(settings.value("update_notify",true).toBool());
     m_template = settings.value("template", DEFAULT_TEMPLATE).toString();
