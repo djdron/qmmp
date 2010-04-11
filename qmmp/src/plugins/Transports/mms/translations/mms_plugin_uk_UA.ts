@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MMS Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування модуля MMS</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
