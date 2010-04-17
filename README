@@ -3,8 +3,8 @@ Qmmp - Qt-based multimedia player
 This program is an audio-player, written with help of Qt library.
 Official home page: http://qmmp.ylsoftware.com/
 
-Supported formats: 
-- MPEG1 layer 2/3 
+Supported formats:
+- MPEG1 layer 2/3
 - Ogg Vorbis
 - Native FLAC, Ogg FLAC
 - Musepack
@@ -138,4 +138,3 @@ cmake ./ -DLIB_DIR=lib64
 
 All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
 http://code.google.com/p/qmmp/issues/list
-
