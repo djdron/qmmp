@@ -64,12 +64,13 @@ void LyricsWindow::showText(QNetworkReply *reply)
     if (reply->error() != QNetworkReply::NoError)
     {
         ui.stateLabel->setText(tr("Error"));
-        ui.textEdit->setText(reply->errorString());
+        ui.textBrowser->setText(reply->errorString());
         return;
     }
     QString content = QString::fromUtf8(reply->readAll().constData());
 
-    QRegExp artist_regexp("<div id=\\\"artist\\\">([^<]*)</div>");
+    QRegExp artist_regexp("<div id=\\\"artist\\\">(.*)</div>");
+    artist_regexp.setMinimal(true);
     QRegExp title_regexp("<div id=\\\"title\\\">([^<]*)</div>");
     QRegExp lyrics_regexp("<div id=\\\"lyrics\\\">([^<]*)</div>");
     artist_regexp.indexIn(content);
@@ -81,11 +82,11 @@ void LyricsWindow::showText(QNetworkReply *reply)
     QString lyrics = lyrics_regexp.cap(1);
     lyrics.replace("[br /]", "<br />");
     if(lyrics.trimmed().isEmpty())
-        ui.textEdit->setHtml("<b>" + tr("Not found") + "</b>");
+        ui.textBrowser->setHtml("<b>" + tr("Not found") + "</b>");
     else
     {
         text += lyrics;
-        ui.textEdit->setHtml(text);
+        ui.textBrowser->setHtml(text);
     }
     reply->deleteLater();
 }

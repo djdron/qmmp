@@ -55,22 +55,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="84"/>
+        <location filename="../lyricswindow.cpp" line="85"/>
         <source>Not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyricswindow.ui" line="67"/>
+        <location filename="../lyricswindow.ui" line="60"/>
         <source>No connection</source>
         <translation>Bağlantı yok</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="95"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
         <source>Receiving</source>
         <translation>Alınıyor</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="96"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Şarkı Sözü: %1 - %2</translation>
     </message>

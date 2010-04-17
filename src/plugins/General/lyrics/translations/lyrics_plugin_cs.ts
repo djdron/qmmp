@@ -55,22 +55,22 @@
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="96"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Text: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.ui" line="67"/>
+        <location filename="../lyricswindow.ui" line="60"/>
         <source>No connection</source>
         <translation>Nespojeno</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="84"/>
+        <location filename="../lyricswindow.cpp" line="85"/>
         <source>Not found</source>
         <translation>Nenalezeno</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="95"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
         <source>Receiving</source>
         <translation>Příjímám</translation>
     </message>
