@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>659</width>
-    <height>448</height>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -361,13 +361,20 @@
              <item>
               <widget class="QGroupBox" name="groupBox">
                <property name="title">
-                <string>Skin Options</string>
+                <string>View</string>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_5">
                 <item>
                  <widget class="QCheckBox" name="skinCursorsCheckBox">
                   <property name="text">
                    <string>Use skin cursors</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="alwaysOnTopCheckBox">
+                  <property name="text">
+                   <string>Always on top</string>
                   </property>
                  </widget>
                 </item>

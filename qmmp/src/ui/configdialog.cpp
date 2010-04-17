@@ -120,9 +120,10 @@ void ConfigDialog::readSettings()
     //compatibility
     ui.openboxCheckBox->setChecked(settings.value("General/openbox_compat", false).toBool());
     ui.metacityCheckBox->setChecked(settings.value("General/metacity_compat", false).toBool());
-    //skin options
+    //view
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", false).toBool());
     ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", false).toBool());
+    ui.alwaysOnTopCheckBox->setChecked(settings.value("General/always_on_top", false).toBool());
     //resume playback
     ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", false).toBool());
     //cover options
@@ -438,6 +439,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
     settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
+    settings.setValue ("General/always_on_top", ui.alwaysOnTopCheckBox->isChecked());
     gs->setCoverSettings(ui.coverIncludeLineEdit->text().split(","),
                          ui.coverExcludeLineEdit->text().split(","),
                          ui.coverDepthSpinBox->value(),
