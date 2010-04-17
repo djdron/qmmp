@@ -500,12 +500,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="364"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Вигляд</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="377"/>
         <source>Always on top</source>
-        <translation type="unfinished"></translation>
+        <translation>Видимий завжди</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="719"/>
