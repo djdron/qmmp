@@ -89,7 +89,7 @@ void Downloader::abort()
     m_mutex.unlock();
     wait();
     if (m_handle)
-        mms_close(m_handle);
+        mmsx_close(m_handle);
     m_handle = 0;
 }
 
@@ -103,7 +103,7 @@ qint64 Downloader::bytesAvailable()
 
 void Downloader::run()
 {
-    m_handle = mms_connect (0, 0, m_url.toLocal8Bit().constData(), 128 * 1024);
+    m_handle = mmsx_connect (0, 0, m_url.toLocal8Bit().constData(), 128 * 1024);
     if(!m_handle)
     {
         qWarning("Downloader: connection failed");
@@ -127,7 +127,7 @@ void Downloader::run()
             m_buffer_size = m_buffer_at + to_read;
             m_buffer = (char *)realloc(m_buffer, m_buffer_size);
         }
-        len = mms_read (0, m_handle, m_buffer + m_buffer_at, to_read);
+        len = mmsx_read (0, m_handle, m_buffer + m_buffer_at, to_read);
         if(len < 0)
         {
             qWarning("Downloader: error: %s", strerror(len));
