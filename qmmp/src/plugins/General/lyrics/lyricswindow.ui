@@ -54,13 +54,6 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="QTextEdit" name="textEdit">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="0">
     <widget class="QLabel" name="stateLabel">
      <property name="text">
@@ -85,6 +78,13 @@
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="openExternalLinks">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

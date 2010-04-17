@@ -55,22 +55,22 @@
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="96"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Текст песни: %1 - %2</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.ui" line="67"/>
+        <location filename="../lyricswindow.ui" line="60"/>
         <source>No connection</source>
         <translation>Нет соединения</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="84"/>
+        <location filename="../lyricswindow.cpp" line="85"/>
         <source>Not found</source>
         <translation>Не найдено</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="95"/>
+        <location filename="../lyricswindow.cpp" line="96"/>
         <source>Receiving</source>
         <translation>Получение</translation>
     </message>
