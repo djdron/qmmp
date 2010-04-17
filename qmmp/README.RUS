@@ -3,8 +3,8 @@ Qmmp - Qt-based multimedia player
 Программа является аудио-плеером, написанным с использованием библиотеки Qt.
 Официальная домашняя страница: http://qmmp.ylsoftware.com/
 
-Поддерживаемые форматы: 
-- MPEG1 layer 2/3 
+Поддерживаемые форматы:
+- MPEG1 layer 2/3
 - Ogg Vorbis
 - Native FLAC, Ogg FLAC
 - Musepack
