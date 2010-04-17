@@ -565,7 +565,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="880"/>
         <source>Continue playback on startup</source>
-        <translation>Продолжить воспроизведение при запуске</translation>
+        <translation>Продолжить воспроизведение после запуска</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="906"/>
