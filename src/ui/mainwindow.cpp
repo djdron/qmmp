@@ -292,12 +292,14 @@ void MainWindow::readSettings()
     if (!m_update)
     {
         settings.beginGroup("MainWindow");
-        //geometry
-        move(settings.value("pos", QPoint(100, 100)).toPoint());
-        //last directory
-        m_lastDir = settings.value("last_dir","/").toString();
+
+        move(settings.value("pos", QPoint(100, 100)).toPoint()); //geometry
+
+        m_lastDir = settings.value("last_dir","/").toString(); //last directory
         m_startHidden = settings.value("start_hidden", false).toBool();
         settings.endGroup();
+        if(settings.value("General/always_on_top", false).toBool())
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
         show();
         qApp->processEvents();
         //visibility
@@ -314,6 +316,25 @@ void MainWindow::readSettings()
 
         m_update = true;
     }
+    else
+    {
+        if(settings.value("General/always_on_top", false).toBool())
+        {
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+            m_playlist->setWindowFlags(m_playlist->windowFlags() | Qt::WindowStaysOnTopHint);
+            m_equalizer->setWindowFlags(m_equalizer->windowFlags() | Qt::WindowStaysOnTopHint);
+        }
+        else
+        {
+            setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
+            m_playlist->setWindowFlags(m_playlist->windowFlags() & ~Qt::WindowStaysOnTopHint);
+            m_equalizer->setWindowFlags(m_equalizer->windowFlags() & ~Qt::WindowStaysOnTopHint);
+        }
+        show();
+        m_playlist->show();
+        m_equalizer->show();
+    }
+
     if(!settings.value("General/metacity_compat", false).toBool())
     {
         setWindowOpacity(settings.value("MainWindow/opacity", 1.0).toDouble());
