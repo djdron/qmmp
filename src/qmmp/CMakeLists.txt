@@ -95,6 +95,7 @@ SET(libqmmp_MOC_HDRS
 
 SET(libqmmp_DEVEL_HDRS
     visual.h
+    decoderfactory.h
     visualfactory.h
     recycler.h
     buffer.h
