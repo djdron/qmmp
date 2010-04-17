@@ -71,6 +71,7 @@ SET(libqmmpui_MOC_HDRS
 SET(libqmmpui_DEVEL_HDRS
     abstractplaylistitem.h
     generalfactory.h
+    general.h
     generalhandler.h
     playlistformat.h
     playlistparser.h
