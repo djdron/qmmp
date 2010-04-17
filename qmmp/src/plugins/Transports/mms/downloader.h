@@ -25,7 +25,7 @@
 #include <QByteArray>
 #include <QMap>
 #define this var
-#include <libmms/mms.h>
+#include <libmms/mmsx.h>
 #undef this
 
 
@@ -55,7 +55,7 @@ signals:
 private:
     QMutex m_mutex;
     QString m_url;
-    mms_t *m_handle;
+    mmsx_t *m_handle;
     bool m_aborted;
     qint64 m_buffer_size, m_prebuf_size;
     char *m_buffer;
