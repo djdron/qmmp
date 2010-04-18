@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -64,5 +64,6 @@ void LADSPASlider::setValue(int v)
 {
     m_spinBox->blockSignals(true);
     m_spinBox->setValue(v*m_step + m_min);
+    *m_value = v*m_step + m_min;
     m_spinBox->blockSignals(false);
 }

@@ -80,7 +80,7 @@ void SettingsDialog::on_unloadButton_clicked()
     QModelIndex index = ui.runningListWidget->currentIndex ();
     if(index.isValid())
     {
-        l->unload(l->runningPlugins().at(index.row()));
+        l->unload(l->effects().at(index.row()));
         updateRunningPlugins();
     }
 }
@@ -92,7 +92,7 @@ void SettingsDialog::on_configureButton_clicked()
     if(!index.isValid())
         return;
 
-    LADSPAEffect *effect = l->runningPlugins().at(index.row());
+    LADSPAEffect *effect = l->effects().at(index.row());
     QDialog *dialog = new QDialog(this);
     dialog->setWindowTitle(effect->descriptor->Name);
     QFormLayout *formLayout = new QFormLayout(dialog);
@@ -132,7 +132,7 @@ void SettingsDialog::accept()
 void SettingsDialog::updateRunningPlugins()
 {
     ui.runningListWidget->clear();
-    QList <LADSPAEffect *> plugin_list = LADSPAHost::instance()->runningPlugins();
+    QList <LADSPAEffect *> plugin_list = LADSPAHost::instance()->effects();
 
     for(int i = 0; i < plugin_list.size(); ++i)
         ui.runningListWidget->addItem(plugin_list[i]->descriptor->Name);

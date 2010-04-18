@@ -86,7 +86,7 @@ public:
     int applyEffect(qint16 *d, int length);
     void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
     QList <LADSPAPlugin *> plugins();
-    QList <LADSPAEffect *> runningPlugins();
+    QList <LADSPAEffect *> effects();
     LADSPAEffect *addPlugin(LADSPAPlugin * plugin);
     void unload(LADSPAEffect *instance);
     static LADSPAHost* instance();

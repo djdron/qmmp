@@ -23,6 +23,7 @@
 #include <QByteArray>
 #include <QDir>
 #include <QFileInfo>
+#include <QSettings>
 #include <math.h>
 #include <stdlib.h>
 #include <dlfcn.h>
@@ -46,15 +47,59 @@ LADSPAHost::LADSPAHost(QObject *parent) : QObject(parent)
     m_freq = 0;
     m_instance = this;
     findAllPlugins();
+
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    int p = settings.value("LADSPA/plugins_number", 0).toInt();
+    for(int i = 0; i < p; ++i)
+    {
+        QString section = QString("LADSPA_%1/").arg(i);
+        int id = settings.value(section +"id").toInt();
+        QString file = settings.value(section +"file").toString();
+        int ports = settings.value(section +"ports").toInt();
+
+
+        LADSPAPlugin *plugin = 0;
+        foreach(LADSPAPlugin *p, plugins())
+        {
+            if(p->unique_id == id)
+            {
+                plugin = p;
+                break;
+            }
+        }
+        if(!plugin)
+            continue;
+
+        LADSPAEffect *effect = addPlugin(plugin);
+        for(int j = 0; j < ports; ++j)
+        {
+            double value = settings.value(section + QString("port%1").arg(j)).toDouble();
+            effect->knobs[j] = value;
+        }
+    }
 }
 
 LADSPAHost::~LADSPAHost()
 {
     m_instance = 0;
-    foreach(LADSPAEffect *instance, m_effects)
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("LADSPA/plugins_number", m_effects.count());
+    for(int i = 0; i < m_effects.count(); ++i)
     {
-        unload(instance);
+        QString section = QString("LADSPA_%1/").arg(i);
+        settings.setValue(section +"id", (quint64)m_effects[i]->descriptor->UniqueID);
+        settings.setValue(section +"file", m_effects[i]->fileName);
+
+        int ports = qMin((int)m_effects[i]->descriptor->PortCount, MAX_KNOBS);
+        settings.setValue(section +"ports", ports);
+        for(int j = 0; j < ports; ++j)
+        {
+            settings.setValue(section + QString("port%1").arg(j),
+                              m_effects[i]->knobs[j]);
+        }
     }
+    foreach(LADSPAEffect *effect, m_effects)
+        unload(effect);
 }
 
 void LADSPAHost::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
@@ -93,7 +138,7 @@ QList <LADSPAPlugin *> LADSPAHost::plugins()
     return m_plugins;
 }
 
-QList <LADSPAEffect *> LADSPAHost::runningPlugins()
+QList <LADSPAEffect *> LADSPAHost::effects()
 {
     return m_effects;
 }
@@ -112,6 +157,8 @@ void LADSPAHost::findAllPlugins()
         /* Fallback, look in obvious places */
         directories << "/usr/lib/ladspa";
         directories << "/usr/local/lib/ladspa";
+        directories << "/usr/lib64/ladspa";
+        directories << "/usr/local/lib64/ladspa";
     }
     else
         directories = ladspa_path.split(':');
