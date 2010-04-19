@@ -348,6 +348,13 @@ Version 0.3.3
 * fixed settings dialog
 * fixed proxy support
 
+Version 0.3.4
+* fixed build
+* fixed bug in the global shortcut editor
+* fixed 24-bit wavpack support
+* fixed lyrics viewer
+* fixed desktop file (Karel Volný)
+
 Version 0.4.0
 * partially rewritten sound core
 * added transport plugin api
@@ -383,6 +390,5 @@ Version 0.4.0
 * improved and optimized cue support
 * improved scrobbler plugin
 * improved fileops plugin
-* fixed 24-bit wavpack support
 * fixed gaps between cue tracks
 * fixed ape seeking (thanks to Michail Zeludkov)
