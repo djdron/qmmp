@@ -5,6 +5,7 @@ Core Developers:
 
 Plugin Developers:
 
+    Artur Guzik <aguzik88@gmail.com> (kde4 notification plugin, tray icon improvements)
     Yuriy Zhuravlev <stalkerg@gmail.com> (jack & oss plugin)
 
 Artwork:
