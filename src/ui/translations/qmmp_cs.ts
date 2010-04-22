@@ -355,7 +355,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="377"/>
         <source>Always on top</source>
-        <translation type="unfinished"></translation>
+        <translation>Vždy na vrchu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="384"/>
@@ -509,7 +509,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="364"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazení</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="759"/>
