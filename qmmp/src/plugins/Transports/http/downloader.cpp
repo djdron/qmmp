@@ -314,11 +314,14 @@ void Downloader::checkBuffer()
     {
         m_ready  = true;
         qDebug("Downloader: ready");
-        if(!m_meta_sent && stream()->icy_meta_data)
+        if(!m_meta_sent)
         {
             QMap<Qmmp::MetaData, QString> metaData;
-            metaData.insert(Qmmp::TITLE, m_stream.header.value("icy-name"));
-            metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
+            if(stream()->icy_meta_data)
+            {
+                metaData.insert(Qmmp::TITLE, m_stream.header.value("icy-name"));
+                metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
+            }
             metaData.insert(Qmmp::URL, m_url);
             StateHandler::instance()->dispatch(metaData);
         }
@@ -389,7 +392,16 @@ void Downloader::parseICYMetaData(char *data, qint64 size)
             m_title = line.remove("'");
             QMap<Qmmp::MetaData, QString> metaData;
             if (!m_title.isEmpty())
-                metaData.insert(Qmmp::TITLE, m_title);
+            {
+                QStringList l = m_title.split(" - ");
+                if(l.count() > 1)
+                {
+                    metaData.insert(Qmmp::ARTIST, l.at(0));
+                    metaData.insert(Qmmp::TITLE, l.at(1));
+                }
+                else
+                    metaData.insert(Qmmp::TITLE, m_title);
+            }
             else
                 metaData.insert(Qmmp::TITLE, m_stream.header.value("icy-name"));
             metaData.insert(Qmmp::GENRE, m_stream.header.value("icy-genre"));
