@@ -505,7 +505,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="377"/>
         <source>Always on top</source>
-        <translation>Видимый всегда</translation>
+        <translation>Поверх всех окон</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="719"/>
