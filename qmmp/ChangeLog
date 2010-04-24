@@ -384,6 +384,7 @@ Version 0.4.0
 * added seeking to command line
 * added possibility to remove invalid or duplicate tracks from playlist
 * added http plugin
+* added mms plugin (experimental)
 * added cover support to mpris plugin
 * removed deprecated Qt classes
 * removed http support from core
@@ -391,4 +392,8 @@ Version 0.4.0
 * improved scrobbler plugin
 * improved fileops plugin
 * fixed gaps between cue tracks
-* fixed ape seeking (thanks to Michail Zeludkov)
+* fixed ape seeking (thanks to Michail Zheludkov)
+* updated Ukrainian translation (Gennadi Motsyo)
+* updated Czech translation (Karel Volný)
+* updated Russian translation
+* updated Hungarian translation (Németh Gábor)
