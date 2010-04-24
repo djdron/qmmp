@@ -79,7 +79,7 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>Ratio</source>
-        <translation type="unfinished">Koeficientas</translation>
+        <translation>Koeficientas</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="73"/>

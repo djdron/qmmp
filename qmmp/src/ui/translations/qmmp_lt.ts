@@ -152,7 +152,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nustatyti grojimo garsą (pvz: qmmp --volume 20)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
@@ -196,27 +196,27 @@
     <message>
         <location filename="../configdialog.cpp" line="71"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Takelis</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="73"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Išjungta</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="224"/>
         <source>Transports</source>
-        <translation type="unfinished"></translation>
+        <translation>Transportas</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="235"/>
         <source>Decoders</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekoderiai</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="245"/>
         <source>Engines</source>
-        <translation type="unfinished"></translation>
+        <translation>Varikliai</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="380"/>
@@ -368,7 +368,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1191"/>
         <source>16-bit output</source>
-        <translation type="unfinished"></translation>
+        <translation>16 bitų išvestis</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="191"/>
@@ -486,7 +486,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1144"/>
         <source>Output:</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvestis</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1184"/>
@@ -501,12 +501,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="364"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="377"/>
         <source>Always on top</source>
-        <translation type="unfinished"></translation>
+        <translation>Visada viršuje</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="719"/>
@@ -541,7 +541,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="797"/>
         <source>Use separate image files</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudoti atskiras paveiksliukų bylas</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="807"/>
@@ -561,12 +561,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="874"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojimas</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="880"/>
         <source>Continue playback on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Tęsti grojimą įjungus</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="906"/>
@@ -1206,7 +1206,7 @@
     <message>
         <location filename="../playlist.cpp" line="211"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished"></translation>
+        <translation>Pašalinti besidubliuojančius pavadinimus</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="214"/>
@@ -1416,32 +1416,32 @@
     <message>
         <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Load</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Įkelti</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Įrašyti kaip...</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="54"/>
         <source>Rename</source>
-        <translation type="unfinished">Pervadinti</translation>
+        <translation>Pervadinti</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="55"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ištrinti</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Pervadinti grojaraštį</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Playlist name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojaraščio pavadinimas</translation>
     </message>
 </context>
 <context>
@@ -1454,7 +1454,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti viršelį</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -1464,12 +1464,12 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>Atidėjimas:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
@@ -1529,7 +1529,7 @@
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
-        <translation type="unfinished">Autorius</translation>
+        <translation>Autorius</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
@@ -1615,7 +1615,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="72"/>
         <source>Unknown command</source>
-        <translation type="unfinished"></translation>
+        <translation>Nežinoma komanda</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="169"/>

@@ -42,7 +42,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Išsaugoti kaip...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dydis</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="40"/>
         <source>Actual Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tikras dydis</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Užverti</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
@@ -92,12 +92,12 @@
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>Išsaugoti viršelį kaip...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Paveiklėliai</translation>
     </message>
 </context>
 </TS>
