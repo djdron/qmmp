@@ -11,7 +11,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
-        <translation type="unfinished"></translation>
+        <translation>Patarimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
@@ -22,12 +22,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation type="unfinished"></translation>
+        <translation>Iššokantis pranešimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti eigos juostą</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Viršelio dydis</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
@@ -57,7 +57,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Keisti šabloną</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Tooltip Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Patarimo šablonas</translation>
     </message>
 </context>
 <context>

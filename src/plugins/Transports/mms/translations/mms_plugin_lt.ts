@@ -6,22 +6,22 @@
     <message>
         <location filename="../mmsinputfactory.cpp" line="34"/>
         <source>MMS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MMS įskiepis</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="54"/>
         <source>About MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie MMS transporto įskiepį</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="55"/>
         <source>Qmmp MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp MMS transporto įskiepis</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="56"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MMS Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>MMS įskiepio nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Buferio dydis:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
-        <translation type="unfinished">КB</translation>
+        <translation>КB</translation>
     </message>
 </context>
 </TS>

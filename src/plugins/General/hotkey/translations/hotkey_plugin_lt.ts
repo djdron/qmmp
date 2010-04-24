@@ -87,12 +87,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="49"/>
         <source>Volume +</source>
-        <translation type="unfinished"></translation>
+        <translation>Garsas +</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="50"/>
         <source>Volume -</source>
-        <translation type="unfinished"></translation>
+        <translation>Garsas -</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>

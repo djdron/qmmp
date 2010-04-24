@@ -21,7 +21,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> libcdio-%1 and libcddb-%2</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="92"/>
@@ -59,32 +59,32 @@
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation type="unfinished"></translation>
+        <translation>CDDB</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Use HTTP instead of CDDBP</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudoti HTTP, o ne CDDBP</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation type="unfinished"></translation>
+        <translation>Serveris:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kelias:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>Portas:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Clear CDDB cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti CDDB talpyklą</translation>
     </message>
 </context>
 </TS>

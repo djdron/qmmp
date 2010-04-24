@@ -39,37 +39,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pranešimo uždelsimas  [s]:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation type="unfinished"></translation>
+        <translation>Atnaujinti matomą pranešimą, o ne sukurti naują</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvaizda</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti viršelius</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Pakeisti šabloną</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Pranešimo šablonas</translation>
     </message>
 </context>
 </TS>

@@ -39,22 +39,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>CUE encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>CUE kodavimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatinis koduotės aptikimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalba:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="65"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kodavinas pagal nutylėjimą:</translation>
     </message>
 </context>
 </TS>
