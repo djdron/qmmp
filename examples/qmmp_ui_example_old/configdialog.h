@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,60 +17,45 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef CONFIGDIALOG_H
+#define CONFIGDIALOG_H
 
-#include <QMainWindow>
-#include <QDebug>
-#include <qmmp/qmmp.h>
-#include <ui_mainwindow.h>
+#include <QDialog>
+#include <QTreeWidgetItem>
+#include "ui_configdialog.h"
 
-class QSlider;
-class QLabel;
+class QFileInfo;
 
-class PlayListModel;
-class MediaPlayer;
-class SoundCore;
-class PlayListManager;
-class GeneralHandler;
-class VisualMenu;
-
-class MainWindow : public QMainWindow
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class ConfigDialog : public QDialog
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-	MainWindow(QWidget *parent = 0);
-	~MainWindow();
+    ConfigDialog(QWidget *parent = 0);
+
+    ~ConfigDialog();
 
 private slots:
-	void addDir();
-	void addFiles();
-	void updatePosition(qint64 pos);
-	void seek();
-	void showState(Qmmp::State);
-	void showBitrate(int);
-	void updateTabs();
-	void addPlaylist();
-	void removePlaylist();
-	void removePlaylistWithIndex(int);
-	void addTab(int);
-	void removeTab(int);
-	void renameTab();
-	void about();
-	void toggleVisibility();
-	void showSettings();
+    void on_preferencesButton_clicked();
+    void on_informationButton_clicked();
+    void addTitleString(QAction *);
+    void saveSettings();
+    void updateDialogButton(int);
+    void on_fdInformationButton_clicked();
+    void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
+    void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
+    void on_outputComboBox_activated (int index);
+    void on_outputPreferencesButton_clicked();
+    void on_outputInformationButton_clicked();
 
 private:
-	QString m_lastDir;
-	PlayListManager *m_pl_manager;
-	Ui::MainWindow ui;
-	MediaPlayer *m_player;
-	QSlider *m_slider;
-	QLabel *m_label;
-	SoundCore *m_core;
-	GeneralHandler *m_generalHandler;
-	VisualMenu *m_visMenu;
-
+    void readSettings();
+    void loadPluginsInfo();
+    void createMenus();
+    Ui::ConfigDialog ui;
+    QPixmap pixmap;
 };
 
 #endif

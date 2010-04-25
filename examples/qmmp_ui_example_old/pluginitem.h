@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,60 +17,57 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef PLUGINITEM_H
+#define PLUGINITEM_H
 
-#include <QMainWindow>
-#include <QDebug>
-#include <qmmp/qmmp.h>
-#include <ui_mainwindow.h>
+#include <QTreeWidgetItem>
 
-class QSlider;
-class QLabel;
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 
-class PlayListModel;
-class MediaPlayer;
-class SoundCore;
-class PlayListManager;
-class GeneralHandler;
-class VisualMenu;
+class QWidget;
+class InputSourceFactory;
+class DecoderFactory;
+class EngineFactory;
+class OutputFactory;
+class VisualFactory;
+class EffectFactory;
+class GeneralFactory;
 
-class MainWindow : public QMainWindow
+class PluginItem : public QTreeWidgetItem
 {
-Q_OBJECT
 public:
-	MainWindow(QWidget *parent = 0);
-	~MainWindow();
 
-private slots:
-	void addDir();
-	void addFiles();
-	void updatePosition(qint64 pos);
-	void seek();
-	void showState(Qmmp::State);
-	void showBitrate(int);
-	void updateTabs();
-	void addPlaylist();
-	void removePlaylist();
-	void removePlaylistWithIndex(int);
-	void addTab(int);
-	void removeTab(int);
-	void renameTab();
-	void about();
-	void toggleVisibility();
-	void showSettings();
+    PluginItem(QTreeWidgetItem *parent, InputSourceFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, DecoderFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, EngineFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, EffectFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, VisualFactory *factory, const QString &path);
+    PluginItem(QTreeWidgetItem *parent, GeneralFactory *factory, const QString &path);
+    ~PluginItem();
+
+    enum PluginType
+    {
+        TRANSPORT = QTreeWidgetItem::UserType,
+        DECODER,
+        ENGINE,
+        EFFECT,
+        VISUAL,
+        GENERAL
+    };
+
+    bool hasAbout() const;
+    bool hasSettings() const;
+    void showAbout(QWidget *parent);
+    void showSettings(QWidget *parent);
+    void setEnabled(bool enabled);
+
 
 private:
-	QString m_lastDir;
-	PlayListManager *m_pl_manager;
-	Ui::MainWindow ui;
-	MediaPlayer *m_player;
-	QSlider *m_slider;
-	QLabel *m_label;
-	SoundCore *m_core;
-	GeneralHandler *m_generalHandler;
-	VisualMenu *m_visMenu;
-
+    bool m_has_about;
+    bool m_has_config;
+    void *m_factory;
 };
 
 #endif

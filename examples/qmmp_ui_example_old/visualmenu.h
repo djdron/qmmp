@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,59 +17,40 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef VISUALMENU_H
+#define VISUALMENU_H
 
-#include <QMainWindow>
-#include <QDebug>
-#include <qmmp/qmmp.h>
-#include <ui_mainwindow.h>
+#include <QMenu>
+#include <QAction>
 
-class QSlider;
-class QLabel;
+class VisualFactory;
 
-class PlayListModel;
-class MediaPlayer;
-class SoundCore;
-class PlayListManager;
-class GeneralHandler;
-class VisualMenu;
-
-class MainWindow : public QMainWindow
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class VisualMenu : public QMenu
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-	MainWindow(QWidget *parent = 0);
-	~MainWindow();
+    VisualMenu(QWidget *parent = 0);
+
+    ~VisualMenu();
+
+public slots:
+    void updateActions();
+};
+
+class VisualAction : public QAction
+{
+    Q_OBJECT
+public:
+    VisualAction(VisualFactory *factory, QWidget *parent = 0);
 
 private slots:
-	void addDir();
-	void addFiles();
-	void updatePosition(qint64 pos);
-	void seek();
-	void showState(Qmmp::State);
-	void showBitrate(int);
-	void updateTabs();
-	void addPlaylist();
-	void removePlaylist();
-	void removePlaylistWithIndex(int);
-	void addTab(int);
-	void removeTab(int);
-	void renameTab();
-	void about();
-	void toggleVisibility();
-	void showSettings();
+    void select(bool);
 
 private:
-	QString m_lastDir;
-	PlayListManager *m_pl_manager;
-	Ui::MainWindow ui;
-	MediaPlayer *m_player;
-	QSlider *m_slider;
-	QLabel *m_label;
-	SoundCore *m_core;
-	GeneralHandler *m_generalHandler;
-	VisualMenu *m_visMenu;
+    VisualFactory *m_factory;
 
 };
 
