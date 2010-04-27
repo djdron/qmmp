@@ -21,6 +21,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QApplication>
+#include <QDesktopWidget>
 #include <QTimer>
 #include <QSettings>
 #include <QApplication>
@@ -92,7 +93,7 @@ void PopupWidget::prepare(PlayListItem *item, QPoint pos)
         m_timer->stop();
         return;
     }
-    move(pos);
+
     QString title = m_template;
     MetaDataFormatter f(title);
     title = f.parse(item);
@@ -101,6 +102,10 @@ void PopupWidget::prepare(PlayListItem *item, QPoint pos)
     updateGeometry ();
     qApp->processEvents();
     m_timer->start();
+    QRect rect = QApplication::desktop()->availableGeometry(this);
+    if(pos.x() + width() > rect.x() + rect.width())
+        pos.rx() -= width();
+    move(pos);
 }
 
 void PopupWidget::deactivate()
