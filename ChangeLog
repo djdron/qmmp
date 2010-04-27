@@ -386,6 +386,7 @@ Version 0.4.0
 * added http plugin
 * added mms plugin (experimental)
 * added cover support to mpris plugin
+* added scalable icons (Adria Arrufat and Quentin Denis)
 * removed deprecated Qt classes
 * removed http support from core
 * improved and optimized cue support
