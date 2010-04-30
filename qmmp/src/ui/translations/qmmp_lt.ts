@@ -319,7 +319,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="501"/>
         <source>Load metadata from files</source>
-        <translation>Įkelti meta duomenis iš bylų</translation>
+        <translation>Įkelti metaduomenis iš bylų</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="511"/>
@@ -415,7 +415,7 @@
         <location filename="../forms/configdialog.ui" line="1008"/>
         <source>Replay Gain</source>
         <translatorcomment>Neįsivaizduoju kaip verst</translatorcomment>
-        <translation type="unfinished"></translation>
+        <translation>Replay Gain</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="240"/>
@@ -445,7 +445,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="565"/>
         <source>Show playlists</source>
-        <translation>Rodyti grojanaščius</translation>
+        <translation>Rodyti grojaraščius</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="574"/>
@@ -460,28 +460,28 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1014"/>
         <source>Replay Gain mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Replay Gain metodas:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1031"/>
         <source>Preamp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Išankstinis stiprinimas:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1063"/>
         <location filename="../forms/configdialog.ui" line="1108"/>
         <source>dB</source>
-        <translation type="unfinished"></translation>
+        <translation>dB</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1076"/>
         <source>Default gain:</source>
-        <translation type="unfinished"></translation>
+        <translation>Stiprinimas pagal nutylėjima:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1128"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Naudoti pikų informaciją trūkinėjimo išvengimui</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1144"/>
@@ -1272,7 +1272,7 @@
     <message>
         <location filename="../playlist.cpp" line="306"/>
         <source>Invert Selection</source>
-        <translation type="unfinished">Atšaukti pasirinkimą</translation>
+        <translation>Pasirinkti visus, išskyrus pažymėtą</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="312"/>

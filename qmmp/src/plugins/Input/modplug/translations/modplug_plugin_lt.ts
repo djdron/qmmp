@@ -124,7 +124,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Resolution</source>
-        <translation>Rezoliucija</translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
@@ -154,7 +154,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="103"/>
         <source>Resampling</source>
-        <translation>Resampling</translation>
+        <translation>Diskretizavimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="109"/>
@@ -164,7 +164,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="116"/>
         <source>Linear (fast)</source>
-        <translation>Linear (greitas)</translation>
+        <translation>Linijinis (greitas)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="123"/>
@@ -179,7 +179,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="146"/>
         <source>Sampling Rate</source>
-        <translation>Sampling Rate</translation>
+        <translation>Dažnio keitimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="152"/>
@@ -209,7 +209,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="190"/>
         <source>Reverb</source>
-        <translation>Reverb</translation>
+        <translation>Aidas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="202"/>
@@ -223,7 +223,7 @@
         <location filename="../settingsdialog.ui" line="499"/>
         <location filename="../settingsdialog.ui" line="618"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="260"/>
@@ -234,7 +234,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
         <source>40</source>
-        <translation type="unfinished"></translation>
+        <translation>40</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="324"/>
@@ -244,7 +244,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="336"/>
         <source>Amount (%)</source>
-        <translation>Amount (%)</translation>
+        <translation>Kiekis (%)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="394"/>
@@ -280,8 +280,9 @@
         <location filename="../settingsdialog.ui" line="656"/>
         <source>Note: Setting the preamp
 too high may cause clipping!</source>
-        <translation type="unfinished">Note: Setting the preamp
-too high may cause clipping!</translation>
+        <translation>Priminimas: Per didelis garso
+ triprinimas gali sukelti garso
+ trūkinėjimą</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
@@ -306,7 +307,7 @@ too high may cause clipping!</translation>
     <message>
         <location filename="../settingsdialog.ui" line="700"/>
         <source>Fast playlist info</source>
-        <translation>Fast playlist info</translation>
+        <translation>Greita grojaraščio informacija</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="710"/>
