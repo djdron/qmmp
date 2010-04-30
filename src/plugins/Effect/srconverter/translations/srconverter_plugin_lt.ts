@@ -34,12 +34,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="19"/>
         <source>Sample Rate (Hz):</source>
-        <translation>Sample Rate (Hz):</translation>
+        <translation>Diskretizacijos dažnis (Hz):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Interpolation Engine:</source>
-        <translation>Interpolation Engine:</translation>
+        <translation>Interpoliacijos variklis:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="47"/>

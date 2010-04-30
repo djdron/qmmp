@@ -14,7 +14,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Analyzer Plugin Settings</source>
-        <translation>Analizatorius įskiepio nustatymai</translation>
+        <translation>Analizatoriaus įskiepio nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Analyzer falloff:</source>
-        <translation>Analyzer falloff:</translation>
+        <translation>Analizatoriaus kritimas:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="83"/>
         <source>Peaks falloff:</source>
-        <translation>Peaks falloff:</translation>
+        <translation>Pikų kritimas:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="125"/>

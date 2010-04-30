@@ -54,7 +54,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="77"/>
         <source>Demuxer</source>
-        <translation type="unfinished">Demuxer</translation>
+        <translation>Demuxeris</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>
@@ -137,7 +137,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Synchronization factor:</source>
-        <translation>Sinchronizacijos faktorius</translation>
+        <translation>Sinchronizacijos korekcija</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
