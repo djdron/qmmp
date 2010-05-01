@@ -356,7 +356,7 @@ Version 0.3.4
 * fixed desktop file (Karel Volný)
 
 Version 0.4.0
-* partially rewritten sound core
+* sound core has been partially rewritten
 * added transport plugin api
 * added engine plugin api
 * added template based tag formatting
@@ -381,6 +381,7 @@ Version 0.4.0
 * added cddb support
 * added ogg flac support
 * added option 'continue playback on startup'
+* added option 'always on top'
 * added seeking to command line
 * added possibility to remove invalid or duplicate tracks from playlist
 * added http plugin
@@ -389,7 +390,7 @@ Version 0.4.0
 * added scalable icons (Adria Arrufat and Quentin Denis)
 * removed deprecated Qt classes
 * removed http support from core
-* improved and optimized cue support
+* improved cue support
 * improved scrobbler plugin
 * improved fileops plugin
 * fixed gaps between cue tracks
@@ -399,3 +400,4 @@ Version 0.4.0
 * updated Russian translation
 * updated Hungarian translation (Németh Gábor)
 * updated Lithuanian translation (Algirdas Butkus)
+* updated Polish translation (Grzegorz Gibas)
