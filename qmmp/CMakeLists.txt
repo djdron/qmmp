@@ -37,7 +37,11 @@ MESSAGE(FATAL_ERROR "Could NOT find lrelease executable")
 ENDIF(QT_LRELEASE_EXECUTABLE)
 
 MESSAGE(STATUS "Generating translations ...")
+IF(SVN_VERSION)
 execute_process(COMMAND find ${CMAKE_CURRENT_SOURCE_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent -nounfinished)
+ELSE(SVN_VERSION)
+execute_process(COMMAND find ${CMAKE_CURRENT_SOURCE_DIR} -name *.ts COMMAND xargs ${QT_LRELEASE_EXECUTABLE} -silent)
+ENDIF(SVN_VERSION)
 
 IF(NOT LIB_SUFFIX)
 IF("${QT_LIBRARY_DIR}" MATCHES lib64)
