@@ -331,8 +331,8 @@ void MainWindow::readSettings()
             m_equalizer->setWindowFlags(m_equalizer->windowFlags() & ~Qt::WindowStaysOnTopHint);
         }
         show();
-        m_playlist->show();
-        m_equalizer->show();
+        m_playlist->setVisible(m_display->isPlaylistVisible());
+        m_equalizer->setVisible(m_display->isEqualizerVisible());
     }
 
     if(!settings.value("General/metacity_compat", false).toBool())
