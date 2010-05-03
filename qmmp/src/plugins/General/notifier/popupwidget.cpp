@@ -69,7 +69,7 @@ PopupWidget::PopupWidget(QWidget *parent)
     m_timer = new QTimer(this);
     m_timer->setInterval(delay);
     m_timer->setSingleShot (true);
-    connect(m_timer, SIGNAL(timeout ()), SLOT(deleteLater()));
+    connect(m_timer, SIGNAL(timeout ()), SLOT(hide()));
 }
 
 PopupWidget::~PopupWidget()
@@ -77,7 +77,7 @@ PopupWidget::~PopupWidget()
 
 void PopupWidget::mousePressEvent (QMouseEvent *)
 {
-    deleteLater();
+    hide();
 }
 
 void PopupWidget::showMetaData()
