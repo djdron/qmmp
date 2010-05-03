@@ -64,6 +64,9 @@ bool DecoderMADFactory::canDecode(QIODevice *input) const
 
     if (input->peek(buf,sizeof(buf)) == sizeof(buf))
     {
+        if(!memcmp(buf, "FLV", 3)) //skip flv files
+            return false;
+
         struct mad_stream stream;
         struct mad_header header;
         int dec_res;
