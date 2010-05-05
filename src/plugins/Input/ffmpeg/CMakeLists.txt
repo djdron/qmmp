@@ -28,7 +28,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libffmpeg
-pkg_check_modules(FFMPEG libavcodec libavformat)
+pkg_check_modules(FFMPEG libavcodec libavformat libavutil)
 
 
 # old ffmpeg support
@@ -43,6 +43,7 @@ ELSEIF(EXISTS /usr/include/libavformat/avformat.h)
 ELSE(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
   include_directories(/usr/local/include/ffmpeg
                       /usr/local/include/libavformat
+                      /usr/local/include/libavutil
 )
 ENDIF(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
 
@@ -56,6 +57,7 @@ ELSEIF(EXISTS /usr/include/libavcodec/avcodec.h)
 ELSE(EXISTS /usr/include/ffmpeg/libavcodec/avcodec.h)
   include_directories(/usr/local/include/ffmpeg
                       /usr/local/include/libavcodec
+                      /usr/local/include/libavutil
 )
 ENDIF(EXISTS /usr/include/ffmpeg/libavcodec/avcodec.h)
 
