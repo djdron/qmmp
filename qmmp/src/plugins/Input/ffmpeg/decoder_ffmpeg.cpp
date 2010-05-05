@@ -92,7 +92,7 @@ DecoderFFmpeg::~DecoderFFmpeg()
    if(m_pkt.data)
         av_free_packet(&m_pkt);
     if(m_output_buf)
-        free(m_output_buf);
+        av_free(m_output_buf);
 }
 
 bool DecoderFFmpeg::initialize()
@@ -170,7 +170,7 @@ bool DecoderFFmpeg::initialize()
     }
 
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
-    m_output_buf = (uint8_t *)memalign(16, AVCODEC_MAX_AUDIO_FRAME_SIZE * 3 / 2 + QMMP_BUFFER_SIZE);
+    m_output_buf = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE * 3 / 2 + QMMP_BUFFER_SIZE);
 
     configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
     m_bitrate = c->bit_rate;
