@@ -109,13 +109,11 @@ void PopupWidget::showMetaData()
         m_pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
         m_pixlabel->setFixedSize(32,32);
     }
+    show();
     qApp->processEvents();
     updateGeometry();
     resize(sizeHint());
-    qApp->processEvents();
     updatePosition();
-    qApp->processEvents();
-    show();
     m_timer->start();
 }
 
