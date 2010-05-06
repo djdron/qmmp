@@ -110,6 +110,7 @@ void PopupWidget::showMetaData()
         m_pixlabel->setFixedSize(32,32);
     }
     qApp->processEvents();
+    updateGeometry();
     resize(sizeHint());
     qApp->processEvents();
     updatePosition();
@@ -127,6 +128,7 @@ void PopupWidget::showVolume(int v)
     m_label1->setText("<b>" + tr("Volume:") + QString (" %1\%").arg(v)+ + "</b>");
 
     qApp->processEvents();
+    updateGeometry();
     resize(sizeHint());
     qApp->processEvents();
     updatePosition();
