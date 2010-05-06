@@ -139,12 +139,12 @@ bool MplayerEngine::initialize()
     QString ao_str = settings.value("mplayer/ao","default").toString();
     QString vo_str = settings.value("mplayer/vo","default").toString();
     if (ao_str != "default")
-        m_args << "ao=" + ao_str;
+        m_args << "-ao" << ao_str;
     if (vo_str != "default")
-        m_args << "vo=" + vo_str;
+        m_args << "-vo" << vo_str;
 
     if (settings.value("autosync", false).toBool())
-        m_args << QString("-autosync %1").arg(settings.value("autosync_factor", 100).toInt());
+        m_args << "-autosync" << QString("%1").arg(settings.value("autosync_factor", 100).toInt());
 
     m_args << m_url;
     return true;
