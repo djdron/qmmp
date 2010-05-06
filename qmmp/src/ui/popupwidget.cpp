@@ -61,11 +61,11 @@ PopupWidget::PopupWidget(QWidget *parent)
     m_timer = new QTimer(this);
     m_timer->setInterval(delay);
     m_timer->setSingleShot (true);
+    connect(m_timer, SIGNAL(timeout ()), SLOT(show()));
     if(show_cover)
         connect(m_timer, SIGNAL(timeout ()), SLOT(loadCover()));
     else
         m_pixlabel->hide();
-    connect(m_timer, SIGNAL(timeout ()), SLOT(show()));
     setMouseTracking(true);
 }
 
@@ -100,6 +100,7 @@ void PopupWidget::prepare(PlayListItem *item, QPoint pos)
     m_label1->setText(title);
     qApp->processEvents();
     updateGeometry ();
+    resize(sizeHint());
     qApp->processEvents();
     m_timer->start();
     QRect rect = QApplication::desktop()->availableGeometry(this);
@@ -128,4 +129,8 @@ void PopupWidget::loadCover()
         pix = QPixmap(":/ui_no_cover.png");
     m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
     m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
+    qApp->processEvents();
+    updateGeometry ();
+    resize(sizeHint());
+    qApp->processEvents();
 }
