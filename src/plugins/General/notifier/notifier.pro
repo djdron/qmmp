@@ -28,7 +28,7 @@ TRANSLATIONS = translations/notifier_plugin_cs.ts \
 RESOURCES = notifier_images.qrc \
             translations/translations.qrc
 
-win32 {
+unix {
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }
