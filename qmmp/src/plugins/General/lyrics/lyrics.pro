@@ -27,7 +27,7 @@ TRANSLATIONS = translations/lyrics_plugin_cs.ts \
                translations/lyrics_plugin_tr.ts \
                translations/lyrics_plugin_lt.ts
 RESOURCES = translations/translations.qrc
-wnix{
+unix{
 isEmpty(LIB_DIR){
     LIB_DIR = /lib
 }
