@@ -125,13 +125,11 @@ void PopupWidget::showVolume(int v)
     m_label1->setAlignment(Qt::AlignVCenter);
     m_label1->setText("<b>" + tr("Volume:") + QString (" %1\%").arg(v)+ + "</b>");
 
+    show();
     qApp->processEvents();
     updateGeometry();
     resize(sizeHint());
-    qApp->processEvents();
     updatePosition();
-    qApp->processEvents();
-    show();
     m_timer->start();
 }
 
