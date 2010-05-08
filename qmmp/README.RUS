@@ -53,7 +53,7 @@ Qmmp - Qt-based multimedia player
 
 Требования:
 - OS GNU Linux
-- Qt >= 4.4
+- Qt >= 4.6
 - tar, unzip, bzip2, gzip
 - libmad
 - libvorbis
