@@ -59,11 +59,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_update = false;
     m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
-#if QT_VERSION >= 0x040500
-    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
-#else
-    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::WindowSystemMenuHint);
-#endif
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
+                   Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
     setWindowTitle("Qmmp");
 
     //prepare libqmmp and libqmmpui libraries for playing
