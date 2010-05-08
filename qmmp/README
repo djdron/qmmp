@@ -106,6 +106,7 @@ Available options:
   USE_KDENOTIFY (general plugins);
 - USE_QMMP_DIALOG (file dialog);
 - USE_ENCA (automatic charset detection);
+- USE_SKINNED (standard skinned UI)
 
 Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
