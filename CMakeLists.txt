@@ -50,9 +50,12 @@ ENDIF("${QT_LIBRARY_DIR}" MATCHES lib64)
 ENDIF(NOT LIB_SUFFIX)
 
 SET(LIB_DIR "lib${LIB_SUFFIX}" CACHE STRING "library path")
+SET(USE_SKINNED TRUE CACHE BOOL "enable/disable standard skinned user interface")
 add_subdirectory(src/qmmp)
 add_subdirectory(src/qmmpui)
+IF(USE_SKINNED)
 add_subdirectory(src/ui)
+ENDIF(USE_SKINNED)
 add_subdirectory(src/plugins)
 
 MACRO(PRINT_SUMMARY str USE FOUND)
@@ -146,6 +149,7 @@ PRINT_SUMMARY ("QMMP File Dialog .................." USE_QMMP_DIALOG 1)
 
 MESSAGE("")
 MESSAGE("Advanced:")
+PRINT_SUMMARY ("Skinned user interface ............" USE_SKINNED 1)
 PRINT_SUMMARY ("Automatic charset detection ......." USE_ENCA ENCA_FOUND)
 
 MESSAGE("")
