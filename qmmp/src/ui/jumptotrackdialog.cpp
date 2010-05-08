@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -59,6 +59,10 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
     selectSongViewAction->setShortcutContext(Qt::WidgetShortcut);
     filterLineEdit->addAction(selectSongViewAction);
     connect(selectSongViewAction, SIGNAL(triggered()),songsListView, SLOT(setFocus()));
+    //setup icons
+    refreshPushButton->setIcon(QIcon::fromTheme("view-refresh"));
+    jumpToPushButton->setIcon(QIcon::fromTheme("go-top"));
+    closePushButton->setIcon(QIcon::fromTheme("window-close"));
 }
 
 JumpToTrackDialog::~JumpToTrackDialog()

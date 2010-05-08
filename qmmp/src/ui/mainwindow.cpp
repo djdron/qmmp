@@ -412,11 +412,16 @@ void MainWindow::toggleVisibility()
 void MainWindow::createActions()
 {
     m_mainMenu = new QMenu(this);
-    m_mainMenu->addAction(tr("&Play"),this, SLOT(play()), tr("X"));
-    m_mainMenu->addAction(tr("&Pause"),m_core, SLOT(pause()), tr("C"));
-    m_mainMenu->addAction(tr("&Stop"),this, SLOT(stop()), tr("V"));
-    m_mainMenu->addAction(tr("&Previous"),this, SLOT(previous()), tr("Z"));
-    m_mainMenu->addAction(tr("&Next"),this, SLOT(next()), tr("B"));
+    m_mainMenu->addAction(QIcon::fromTheme("media-playback-start"), tr("&Play"),
+                          this, SLOT(play()), tr("X"));
+    m_mainMenu->addAction(QIcon::fromTheme("media-playback-pause"), tr("&Pause"),
+                          m_core, SLOT(pause()), tr("C"));
+    m_mainMenu->addAction(QIcon::fromTheme("media-playback-stop"), tr("&Stop"),
+                          this ,SLOT(stop()), tr("V"));
+    m_mainMenu->addAction(QIcon::fromTheme("media-skip-backward"), tr("&Previous"),
+                          this, SLOT(previous()), tr("Z"));
+    m_mainMenu->addAction(QIcon::fromTheme("media-skip-forward"), tr("&Next"),
+                          this, SLOT(next()), tr("B"));
     m_mainMenu->addAction(tr("&Play/Pause"),this, SLOT(playPause()), tr("Space"));
     m_mainMenu->addSeparator();
     QAction *repeateAllAction = m_mainMenu->addAction(tr("&Repeat Playlist"));
@@ -435,19 +440,22 @@ void MainWindow::createActions()
     connect(m_player, SIGNAL (repeatableChanged(bool)), repeateTrackAction, SLOT(setChecked(bool)));
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), shuffleAction, SLOT(setChecked(bool)));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(tr("&Jump To File"),this, SLOT(jumpToFile()), tr("J"));
+    m_mainMenu->addAction(QIcon::fromTheme("go-up"), tr("&Jump To File"),
+                          this, SLOT(jumpToFile()), tr("J"));
     m_mainMenu->addSeparator();
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
     m_mainMenu->addMenu(m_generalHandler->createMenu(GeneralHandler::TOOLS_MENU, tr("Tools"), this));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(tr("&Settings"), this, SLOT(showSettings()), tr("Ctrl+P"));
+    m_mainMenu->addAction(QIcon::fromTheme("configure"), tr("&Settings"),
+                          this, SLOT(showSettings()), tr("Ctrl+P"));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(tr("&About"), this, SLOT(about()));
+    m_mainMenu->addAction(QIcon(":/32x32/qmmp.png"), tr("&About"), this, SLOT(about()));
     m_mainMenu->addAction(tr("&About Qt"), qApp, SLOT(aboutQt()));
     Dock::instance()->addActions(m_mainMenu->actions());
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(tr("&Exit"),this, SLOT(close ()), tr("Ctrl+Q"));
+    m_mainMenu->addAction(QIcon::fromTheme("application-exit"), tr("&Exit"),
+                          this, SLOT(close ()), tr("Ctrl+Q"));
 
     QAction* forward = new QAction(this);
     forward->setShortcut(QKeySequence(Qt::Key_Right));
@@ -456,7 +464,7 @@ void MainWindow::createActions()
     backward->setShortcut(QKeySequence(Qt::Key_Left));
     connect(backward,SIGNAL(triggered(bool)),this,SLOT(backward()));
 
-    Dock::instance()->addActions( QList<QAction*>() << forward << backward );
+    Dock::instance()->addActions(QList<QAction*>() << forward << backward);
     Dock::instance()->addActions(m_mainMenu->actions());
 }
 

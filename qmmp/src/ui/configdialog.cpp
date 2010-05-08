@@ -76,7 +76,23 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     loadSkins();
     loadPluginsInfo();
     loadFonts();
-    createMenus();    
+    createMenus();
+    //setup icons
+    ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
+    ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
+    ui.popupCustomizeButton->setIcon(QIcon::fromTheme("configure"));
+    ui.preferencesButton->setIcon(QIcon::fromTheme("configure"));
+    ui.informationButton->setIcon(QIcon::fromTheme("dialog-information"));
+    ui.fdInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
+    ui.outputInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
+    ui.outputPreferencesButton->setIcon(QIcon::fromTheme("configure"));
+    //TODO add kde detection
+    ui.contentsWidget->item(0)->setIcon(QIcon::fromTheme("preferences-desktop-theme"));
+    ui.contentsWidget->item(1)->setIcon(QIcon::fromTheme("view-list-details"));
+    ui.contentsWidget->item(2)->setIcon(QIcon::fromTheme("preferences-plugin"));
+    ui.contentsWidget->item(3)->setIcon(QIcon::fromTheme("preferences-other"));
+    ui.contentsWidget->item(4)->setIcon(QIcon::fromTheme("applications-internet"));
+    ui.contentsWidget->item(5)->setIcon(QIcon::fromTheme("preferences-desktop-sound"));
 }
 
 ConfigDialog::~ConfigDialog()

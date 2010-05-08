@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -277,11 +277,14 @@ void EqWidget::createActions()
 {
     m_presetsMenu->addAction(tr("&Load/Delete"),this, SLOT(showEditor()));
     m_presetsMenu->addSeparator();
-    m_presetsMenu->addAction(tr("&Save Preset"),this,SLOT(savePreset()));
-    m_presetsMenu->addAction(tr("&Save Auto-load Preset"),this,SLOT(saveAutoPreset()));
-    m_presetsMenu->addAction(tr("&Import"),this,SLOT(importWinampEQF()));
+    m_presetsMenu->addAction(QIcon::fromTheme("document-save"), tr("&Save Preset"),
+                             this, SLOT(savePreset()));
+    m_presetsMenu->addAction(QIcon::fromTheme("document-save"), tr("&Save Auto-load Preset"),
+                             this, SLOT(saveAutoPreset()));
+    m_presetsMenu->addAction(QIcon::fromTheme("document-open"), tr("&Import"),
+                             this, SLOT(importWinampEQF()));
     m_presetsMenu->addSeparator();
-    m_presetsMenu->addAction(tr("&Clear"),this, SLOT(reset()));
+    m_presetsMenu->addAction(QIcon::fromTheme("edit-clear"), tr("&Clear"), this, SLOT(reset()));
 }
 
 void EqWidget::showPresetsMenu()

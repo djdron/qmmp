@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,6 +44,8 @@ PlayListBrowser::PlayListBrowser(PlayListManager *manager, QWidget *parent) : QD
     ui.listWidget->addAction(removeAct);
     ui.downButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowDown));
     ui.upButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_ArrowUp));
+    ui.newButton->setIcon(QIcon::fromTheme("document-new"));
+    ui.deleteButton->setIcon(QIcon::fromTheme("edit-delete"));
 }
 
 PlayListBrowser::~PlayListBrowser()
