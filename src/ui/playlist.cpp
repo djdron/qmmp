@@ -171,47 +171,49 @@ void PlayList::createMenus()
 void PlayList::createActions()
 {
     //add menu
-    QAction *addFileAct = new QAction (tr ("&Add File"),this);
+    QAction *addFileAct = new QAction (QIcon::fromTheme("audio-x-generic"), tr("&Add File"), this);
     addFileAct->setShortcut (tr ("F"));
     m_addMenu->addAction (addFileAct);
     connect (addFileAct, SIGNAL (triggered()), parent(), SLOT (addFile ()));
     m_actions << addFileAct;
 
-    QAction *addDirAct = new QAction (tr ("&Add Directory"),this);
+    QAction *addDirAct = new QAction (QIcon::fromTheme("folder"), tr("&Add Directory"),this);
     addDirAct->setShortcut (tr ("D"));
     m_addMenu->addAction (addDirAct);
     connect (addDirAct, SIGNAL (triggered()), parent(), SLOT (addDir ()));
     m_actions << addDirAct;
 
-    QAction *addUrlAct = new QAction (tr ("&Add Url"),this);
+    QAction *addUrlAct = new QAction (QIcon::fromTheme("network-server"), tr("&Add Url"),this);
     addUrlAct->setShortcut (tr ("U"));
     m_addMenu->addAction (addUrlAct);
     connect (addUrlAct, SIGNAL (triggered()), parent(), SLOT (addUrl ()));
     m_actions << addUrlAct;
 
     //remove menu
-    QAction *remSelAct = new QAction (tr ("&Remove Selected"),this);
+    QAction *remSelAct = new QAction (QIcon::fromTheme("edit-delete"), tr("&Remove Selected"),this);
     remSelAct->setShortcut (tr ("Del"));
     m_subMenu->addAction (remSelAct);
     connect (remSelAct, SIGNAL (triggered()), m_pl_manager, SLOT (removeSelected ()));
     addAction (remSelAct);
 
-    QAction *remAllAct = new QAction (tr ("&Remove All"),this);
+    QAction *remAllAct = new QAction (QIcon::fromTheme("edit-clear"), tr("&Remove All"),this);
     //remAllAct->setShortcut(tr("D")); FIXME: add correct shortcat
     m_subMenu->addAction (remAllAct);
     connect (remAllAct, SIGNAL (triggered()), m_pl_manager, SLOT (clear ()));
     m_actions << remAllAct;
 
-    QAction *remUnselAct = new QAction (tr ("&Remove Unselected"),this);
+    QAction *remUnselAct = new QAction (QIcon::fromTheme("edit-delete"), tr("&Remove Unselected"),this);
     m_subMenu->addAction (remUnselAct);
     connect (remUnselAct, SIGNAL (triggered()), m_pl_manager, SLOT (removeUnselected ()));
 
     m_subMenu->addSeparator();
-    m_subMenu->addAction (tr("Remove unavailable files"), m_pl_manager, SLOT(removeInvalidItems()));
+    m_subMenu->addAction (QIcon::fromTheme("dialog-error"), tr("Remove unavailable files"),
+                          m_pl_manager, SLOT(removeInvalidItems()));
     m_subMenu->addAction (tr("Remove duplicates"), m_pl_manager, SLOT(removeDuplicates()));
 
     //listwidget menu
-    QAction *detailsAct = new QAction (tr ("&View Track Details"),this);
+    QAction *detailsAct = new QAction (QIcon::fromTheme("dialog-information"),
+                                       tr("&View Track Details"),this);
     detailsAct->setShortcut (tr ("Alt+I"));
     m_listWidget->menu()->addAction (detailsAct);
     connect (detailsAct, SIGNAL (triggered()), m_pl_manager, SLOT (showDetails ()));
@@ -220,8 +222,8 @@ void PlayList::createActions()
     m_sortMenu->addAction (detailsAct);
     m_sortMenu->addSeparator();
 
-    QMenu* sort_mode_menu = new QMenu (tr ("Sort List"),m_sortMenu);
-
+    QMenu* sort_mode_menu = new QMenu (tr("Sort List"), m_sortMenu);
+    sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
     QSignalMapper* signalMapper = new QSignalMapper (this);
     QAction* titleAct = sort_mode_menu->addAction (tr ("By Title"));
     connect (titleAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
@@ -247,7 +249,7 @@ void PlayList::createActions()
     connect (dateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (dateAct, PlayListModel::DATE);
 
-    QAction* trackAct = sort_mode_menu->addAction (tr ("By Track Number"));
+    QAction* trackAct = sort_mode_menu->addAction (tr("By Track Number"));
     connect (trackAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (trackAct, PlayListModel::TRACK);
 
@@ -255,7 +257,8 @@ void PlayList::createActions()
 
     m_sortMenu->addMenu (sort_mode_menu);
 
-    sort_mode_menu = new QMenu (tr ("Sort Selection"),m_sortMenu);
+    sort_mode_menu = new QMenu (tr("Sort Selection"), m_sortMenu);
+    sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
     signalMapper = new QSignalMapper (this);
     titleAct = sort_mode_menu->addAction (tr ("By Title"));
     connect (titleAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
@@ -290,8 +293,10 @@ void PlayList::createActions()
     m_sortMenu->addMenu (sort_mode_menu);
 
     m_sortMenu->addSeparator();
-    m_sortMenu->addAction (tr ("Randomize List"),m_pl_manager,SLOT (randomizeList()));
-    m_sortMenu->addAction (tr ("Reverse List"),m_pl_manager,SLOT (reverseList()));
+    m_sortMenu->addAction (QIcon::fromTheme("media-playlist-shuffle"), tr("Randomize List"),
+                           m_pl_manager, SLOT(randomizeList()));
+    m_sortMenu->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
+                           m_pl_manager, SLOT(reverseList()));
 
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addActions (m_subMenu->actions().mid(0,3)); //use 3 first actions
@@ -315,51 +320,54 @@ void PlayList::createActions()
     connect (selNoneAct, SIGNAL (triggered()), m_pl_manager, SLOT (clearSelection ()));
     this->addAction (selNoneAct);
 
-    QAction *selAllAct = new QAction (tr ("&Select All"),this);
+    QAction *selAllAct = new QAction (QIcon::fromTheme("edit-select-all"), tr ("&Select All"),this);
     selAllAct->setShortcut (tr ("Ctrl+A"));
     m_actions << selAllAct;
     m_selectMenu->addAction (selAllAct);
     connect (selAllAct, SIGNAL (triggered()), m_pl_manager, SLOT (selectAll ()));
 
     //  Playlist Menu
-    QAction *newListAct = new QAction (tr ("&New List"),this);
+    QAction *newListAct = new QAction (QIcon::fromTheme("document-new"), tr("&New List"), this);
     newListAct->setShortcut (tr ("Ctrl+T"));
     m_actions << newListAct;
     m_playlistMenu->addAction (newListAct);
     connect (newListAct, SIGNAL (triggered()), m_pl_manager, SLOT (createPlayList()));
-    QAction *deleteListAct = new QAction (tr ("&Delete List"),this);
+    QAction *deleteListAct = new QAction (QIcon::fromTheme("window-close"), tr ("&Delete List"),this);
     deleteListAct->setShortcut (tr ("Ctrl+W"));
     m_actions << deleteListAct;
     m_playlistMenu->addAction (deleteListAct);
     connect (deleteListAct, SIGNAL (triggered()), SLOT (deletePlaylist()));
     m_playlistMenu->addSeparator();
 
-    QAction *loadListAct = new QAction (tr ("&Load List"),this);
+    QAction *loadListAct = new QAction (QIcon::fromTheme("document-open"), tr("&Load List"), this);
     loadListAct->setShortcut (tr ("O"));
     m_actions << loadListAct;
     m_playlistMenu->addAction (loadListAct);
     connect (loadListAct, SIGNAL (triggered()), this, SIGNAL (loadPlaylist()));
 
-    QAction *saveListAct = new QAction (tr ("&Save List"),this);
+    QAction *saveListAct = new QAction (QIcon::fromTheme("document-save-as"), tr("&Save List"), this);
     saveListAct->setShortcut (tr ("Shift+S"));
     m_actions << saveListAct;
     m_playlistMenu->addAction (saveListAct);
     connect (saveListAct, SIGNAL (triggered()), this, SIGNAL (savePlaylist()));
 
     m_playlistMenu->addSeparator();
-    QAction *nextListAct = new QAction (tr ("&Select Next Playlist"),this);
+    QAction *nextListAct = new QAction (QIcon::fromTheme("go-next"),
+                                        tr("&Select Next Playlist"), this);
     nextListAct->setShortcut (tr ("Ctrl+PgDown"));
     m_actions << nextListAct;
     m_playlistMenu->addAction (nextListAct);
     connect (nextListAct, SIGNAL (triggered()), m_pl_manager, SLOT (selectNextPlayList()));
 
-    QAction *previousListAct = new QAction (tr ("&Select Previous Playlist"),this);
+    QAction *previousListAct = new QAction (QIcon::fromTheme("go-previous"),
+                                            tr("&Select Previous Playlist"),this);
     previousListAct->setShortcut (tr ("Ctrl+PgUp"));
     m_actions << previousListAct;
     m_playlistMenu->addAction (previousListAct);
     connect (previousListAct, SIGNAL (triggered()), m_pl_manager, SLOT (selectPreviousPlayList()));
 
-    QAction *browseListsAct = new QAction (tr ("&Show Playlists"),this);
+    QAction *browseListsAct = new QAction (QIcon::fromTheme("view-list-details"),
+                                           tr("&Show Playlists"), this);
     browseListsAct->setShortcut (tr ("P"));
     m_actions << browseListsAct;
     m_playlistMenu->addAction (browseListsAct);

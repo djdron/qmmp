@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,8 +17,9 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "eqpreset.h"
 
+#include <QIcon>
+#include "eqpreset.h"
 #include "preseteditor.h"
 
 PresetEditor::PresetEditor(QWidget *parent)
@@ -28,6 +29,8 @@ PresetEditor::PresetEditor(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     connect(ui.loadButton,SIGNAL(clicked()),SLOT(loadPreset()));
     connect(ui.deleteButton,SIGNAL(clicked()),SLOT(deletePreset()));
+    ui.loadButton->setIcon(QIcon::fromTheme("document-open"));
+    ui.deleteButton->setIcon(QIcon::fromTheme("edit-delete"));
 }
 
 
