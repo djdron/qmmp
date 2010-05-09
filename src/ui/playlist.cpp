@@ -530,16 +530,9 @@ void PlayList::showSortMenu()
 
 QString PlayList::formatTime (int sec)
 {
-    int minutes = sec / 60;
-    int seconds = sec % 60;
-
-    QString str_minutes = QString::number (minutes);
-    QString str_seconds = QString::number (seconds);
-
-    if (minutes < 10) str_minutes.prepend ("0");
-    if (seconds < 10) str_seconds.prepend ("0");
-
-    return str_minutes + ":" + str_seconds;
+    if(sec > 3600)
+        sec /= 60;
+    return QString("%1:%2").arg(sec/60, 2, 10, QChar('0')).arg(sec%60, 2, 10, QChar('0'));
 }
 
 void PlayList::setTime(qint64 time)
