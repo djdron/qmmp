@@ -44,7 +44,7 @@ TimeIndicator::TimeIndicator (QWidget *parent)
     connect(m_timer, SIGNAL(timeout()),SLOT(reset()));
 }
 
-void TimeIndicator::setTime ( int t )
+void TimeIndicator::setTime (int t)
 {
     m_time = t;
     m_pixmap.fill (Qt::transparent);
@@ -58,6 +58,9 @@ void TimeIndicator::setTime ( int t )
     }
     if (t < 0)
         t = 0;
+
+    if(t > 3600)
+        t /= 60;
 
     paint.drawPixmap(r*13,0,m_skin->getNumber(t/600%10));
     paint.drawPixmap(r*26,0,m_skin->getNumber(t/60%10));

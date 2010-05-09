@@ -247,10 +247,19 @@ QList <QString> PlayListModel::getTitles(int b,int l)
 QList <QString> PlayListModel::getTimes(int b,int l)
 {
     QList <QString> m_times;
-    for (int i = b;(i < b + l) &&(i < m_items.size()); ++i)
-        m_times << QString("%1").arg(m_items.at(i)->length() /60) +":"
-        +QString("%1").arg(m_items.at(i)->length() %60/10) +
-        QString("%1").arg(m_items.at(i)->length() %60%10);
+    int d = 0;
+    QString str;
+    for (int i = b; (i < b + l) && (i < m_items.size()); ++i)
+    {
+        d = m_items.at(i)->length();
+        if(d > 3600)
+            str += QString("%1:%2").arg(d/3600).arg(d%3600/60, 2, 10, QChar('0'));
+        else
+            str += QString("%1").arg(d%3600/60);
+        str += QString(":%1").arg(d%60, 2, 10, QChar('0'));
+        m_times << str;
+        str.clear();
+    }
     return m_times;
 }
 
