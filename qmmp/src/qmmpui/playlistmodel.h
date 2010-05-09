@@ -175,13 +175,13 @@ public:
      * @param first First item.
      * @param last Last item.
      */
-    QList <QString> getTitles(int first,int last);
+    QStringList getTitles(int first,int last);
     /*!
      * Returns a list of the formated durations.
      * @param first First item.
      * @param last Last item.
      */
-    QList <QString> getTimes(int first,int last);
+    QStringList getTimes(int first,int last);
     /*!
      *  Moves the item at index position \b from to index position \b to
      */

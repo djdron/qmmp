@@ -236,7 +236,7 @@ void PlayListModel::clearSelection()
     emit listChanged();
 }
 
-QList <QString> PlayListModel::getTitles(int b,int l)
+QStringList PlayListModel::getTitles(int b,int l)
 {
     QList <QString> m_titles;
     for (int i = b;(i < b + l) &&(i < m_items.size()); ++i)
@@ -244,7 +244,7 @@ QList <QString> PlayListModel::getTitles(int b,int l)
     return m_titles;
 }
 
-QList <QString> PlayListModel::getTimes(int b,int l)
+QStringList PlayListModel::getTimes(int b,int l)
 {
     QList <QString> m_times;
     int d = 0;
