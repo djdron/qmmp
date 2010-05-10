@@ -732,15 +732,15 @@
         <translation>F5</translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="91"/>
-        <location filename="../jumptotrackdialog.cpp" line="142"/>
+        <location filename="../jumptotrackdialog.cpp" line="84"/>
+        <location filename="../jumptotrackdialog.cpp" line="135"/>
         <source>Unqueue</source>
         <translation>Vyřadit</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="89"/>
-        <location filename="../jumptotrackdialog.cpp" line="93"/>
-        <location filename="../jumptotrackdialog.cpp" line="144"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
+        <location filename="../jumptotrackdialog.cpp" line="86"/>
+        <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Queue</source>
         <translation>Zařadit</translation>
     </message>
@@ -750,24 +750,19 @@
         <translation>Přeskočit na skladbu</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="43"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
         <translation>Filtr</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
         <translation>Načíst znovu</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="103"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
         <translation>Přeskočit na</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="110"/>
-        <source>Close</source>
-        <translation>Zavřít</translation>
     </message>
 </context>
 <context>
@@ -969,168 +964,168 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="267"/>
+        <location filename="../mainwindow.cpp" line="264"/>
         <source>Choose a directory</source>
         <translation>Výběr adresáře</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="278"/>
+        <location filename="../mainwindow.cpp" line="275"/>
         <source>Select one or more files to open</source>
         <translation>Vyberte jeden či více souborů k otevření</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="415"/>
+        <location filename="../mainwindow.cpp" line="412"/>
         <source>&amp;Play</source>
         <translation>Pře&amp;hrát</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="416"/>
+        <location filename="../mainwindow.cpp" line="413"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="414"/>
         <source>&amp;Pause</source>
         <translation>Pau&amp;za</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="416"/>
         <source>&amp;Stop</source>
         <translation>&amp;Stop</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>V</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>&amp;Previous</source>
         <translation>&amp;Předchozí</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="419"/>
         <source>Z</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="423"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>&amp;Next</source>
         <translation>&amp;Další</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>&amp;Jump To File</source>
         <translation>Přeskočit na soubo&amp;r</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="450"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>&amp;Settings</source>
         <translation>&amp;Nastavení</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="450"/>
         <source>&amp;About</source>
         <translation>O &amp;aplikaci</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="457"/>
+        <location filename="../mainwindow.cpp" line="454"/>
         <source>&amp;Exit</source>
         <translation>U&amp;končit</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="458"/>
+        <location filename="../mainwindow.cpp" line="455"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="489"/>
+        <location filename="../mainwindow.cpp" line="515"/>
         <source>Playlist Files</source>
         <translation>Seznamy skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="494"/>
+        <location filename="../mainwindow.cpp" line="491"/>
         <source>Open Playlist</source>
         <translation>Načíst seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
+        <location filename="../mainwindow.cpp" line="516"/>
         <source>Save Playlist</source>
         <translation>Uložit seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Space</source>
         <translation>Mezerník</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>&amp;About Qt</source>
         <translation>O knihovně &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Play/Pause</source>
         <translation>&amp;Přehrát/Pauza</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="273"/>
+        <location filename="../mainwindow.cpp" line="270"/>
         <source>All Supported Bitstreams</source>
         <translation>Všechny podporované formáty</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>&amp;Repeat Track</source>
         <translation>&amp;Opakovat stopu</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Shuffle</source>
         <translation>Za&amp;míchat</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>R</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="434"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>S</source>
         <translation>M</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="427"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>&amp;Repeat Playlist</source>
         <translation>&amp;Opakovat seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>Tools</source>
         <translation>Nástroje</translation>
     </message>

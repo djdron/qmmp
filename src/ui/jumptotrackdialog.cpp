@@ -62,17 +62,10 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
     //setup icons
     refreshPushButton->setIcon(QIcon::fromTheme("view-refresh"));
     jumpToPushButton->setIcon(QIcon::fromTheme("go-top"));
-    closePushButton->setIcon(QIcon::fromTheme("window-close"));
 }
 
 JumpToTrackDialog::~JumpToTrackDialog()
 {
-}
-
-
-void JumpToTrackDialog::on_closePushButton_clicked()
-{
-    hide();
 }
 
 void JumpToTrackDialog::on_refreshPushButton_clicked()
