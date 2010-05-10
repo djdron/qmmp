@@ -733,15 +733,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="91"/>
-        <location filename="../jumptotrackdialog.cpp" line="142"/>
+        <location filename="../jumptotrackdialog.cpp" line="84"/>
+        <location filename="../jumptotrackdialog.cpp" line="135"/>
         <source>Unqueue</source>
         <translation>Pašalinti iš eilės</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="89"/>
-        <location filename="../jumptotrackdialog.cpp" line="93"/>
-        <location filename="../jumptotrackdialog.cpp" line="144"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
+        <location filename="../jumptotrackdialog.cpp" line="86"/>
+        <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Queue</source>
         <translation>Į eilę</translation>
     </message>
@@ -751,24 +751,19 @@
         <translation>Pereiti prie takelio</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="43"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
         <translation>Filtras</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
         <translation>Atnaujinti</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="103"/>
+        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
         <translation>Prereiti prie</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="110"/>
-        <source>Close</source>
-        <translation>Uždaryti</translation>
     </message>
 </context>
 <context>
@@ -970,168 +965,168 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="267"/>
+        <location filename="../mainwindow.cpp" line="264"/>
         <source>Choose a directory</source>
         <translation>Pasirinkite aplanką</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="278"/>
+        <location filename="../mainwindow.cpp" line="275"/>
         <source>Select one or more files to open</source>
         <translation>Pasirinkite vieną ar kelias bylas atvėrimui</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="415"/>
+        <location filename="../mainwindow.cpp" line="412"/>
         <source>&amp;Play</source>
         <translation>&amp;Groti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="416"/>
+        <location filename="../mainwindow.cpp" line="413"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="414"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pristabdyti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="415"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="416"/>
         <source>&amp;Stop</source>
         <translation>&amp;Sustabdyti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="417"/>
         <source>V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="418"/>
         <source>&amp;Previous</source>
         <translation>&amp;Ankstesnis</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="419"/>
         <source>Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="423"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>&amp;Next</source>
         <translation>&amp;Sekantis</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Pereiti prie bylos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>J</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="450"/>
+        <location filename="../mainwindow.cpp" line="447"/>
         <source>&amp;Settings</source>
         <translation>&amp;Nustatymai</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="457"/>
+        <location filename="../mainwindow.cpp" line="454"/>
         <source>&amp;Exit</source>
         <translation>&amp;Išeiti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="458"/>
+        <location filename="../mainwindow.cpp" line="455"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="494"/>
+        <location filename="../mainwindow.cpp" line="491"/>
         <source>Open Playlist</source>
         <translation>Atverti grojaraštį</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
+        <location filename="../mainwindow.cpp" line="516"/>
         <source>Save Playlist</source>
         <translation>Išsaugoti grojaraštį</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="450"/>
         <source>&amp;About</source>
         <translation>&amp;Apie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="492"/>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="489"/>
+        <location filename="../mainwindow.cpp" line="515"/>
         <source>Playlist Files</source>
         <translation>Grojaraščio bylos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>&amp;About Qt</source>
         <translation>&amp;Apie Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Play/Pause</source>
         <translation>&amp;Groti/Pristabdyti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="273"/>
+        <location filename="../mainwindow.cpp" line="270"/>
         <source>All Supported Bitstreams</source>
         <translation>Palaikomi bylų tipai</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>&amp;Repeat Track</source>
         <translation>&amp;Kartoti takelį</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Shuffle</source>
         <translation>&amp;Atsitiktine tvarka</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="434"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>Ctrl+R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="427"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>&amp;Repeat Playlist</source>
         <translation>&amp;Kartoti grojaraštį</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>Tools</source>
         <translation>Įrankiai</translation>
     </message>

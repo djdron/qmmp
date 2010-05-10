@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -41,7 +41,6 @@ public:
     void refresh();
 
 protected slots:
-    void on_closePushButton_clicked();
     void on_refreshPushButton_clicked();
     void on_queuePushButton_clicked();
     void on_jumpToPushButton_clicked();
