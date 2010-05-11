@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -54,6 +54,9 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
     filters << "*.wma" << "*.ape";
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+    filters << "*.shn";
+#endif
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     foreach(QString filter, filters)
     {
@@ -73,6 +76,9 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
     filters << "*.wma" << "*.ape";
 #else
     filters << "*.wma";
+#endif
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+    filters << "*.shn";
 #endif
     filters = settings.value("FFMPEG/filters", filters).toStringList();
 
@@ -107,6 +113,9 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
 #else
     filters << "*.wma";
 #endif
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+    filters << "*.shn";
+#endif
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     DecoderProperties properties;
     properties.name = tr("FFmpeg Plugin");
@@ -119,6 +128,8 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     if(filters.contains("*.aac"))
         properties.contentType += " audio/aac audio/aacp";
     if(filters.contains("*.m4a"))
+        properties.contentType += " audio/x-ffmpeg-shorten";
+    if(filters.contains("*.shn"))
         properties.contentType += " audio/3gpp audio/3gpp2 audio/mp4 audio/MP4A-LATM audio/mpeg4-generic";
     properties.contentType = properties.contentType.trimmed();
     properties.shortName = "ffmpeg";

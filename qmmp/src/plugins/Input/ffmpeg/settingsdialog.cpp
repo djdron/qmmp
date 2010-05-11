@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -40,7 +40,6 @@ extern "C"
 #else
 #include <avcodec.h>
 #endif
-
 }
 
 #include "settingsdialog.h"
@@ -55,6 +54,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     filters << "*.wma";
 #if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
     filters << "*.ape";
+#endif
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+    filters << "*.shn";
 #endif
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     avcodec_init();
@@ -81,8 +83,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.mp4CheckBox->setChecked(filters.contains("*.m4a") && avcodec_find_decoder(CODEC_ID_AAC));
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
     ui.raCheckBox->setChecked(filters.contains("*.ra") && avcodec_find_decoder(CODEC_ID_RA_288));
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+    ui.shCheckBox->setChecked(filters.contains("*.shn") && avcodec_find_decoder(CODEC_ID_SHORTEN));
+#else
+    ui.shCheckBox->setChecked(false);
+    ui.shCheckBox->setEnabled(false);
+#endif
 }
-
 
 SettingsDialog::~SettingsDialog()
 {
@@ -107,6 +114,8 @@ void SettingsDialog::accept()
         filters << "*.m4a";
     if (ui.raCheckBox->isChecked())
         filters << "*.ra";
+    if (ui.shCheckBox->isChecked())
+        filters << "*.shn";
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FFMPEG/filters", filters);
     QDialog::accept();

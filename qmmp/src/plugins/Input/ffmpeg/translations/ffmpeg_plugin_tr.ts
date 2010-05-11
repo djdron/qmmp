@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="112"/>
+        <location filename="../decoderffmpegfactory.cpp" line="121"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="114"/>
+        <location filename="../decoderffmpegfactory.cpp" line="123"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg Biçimleri</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="181"/>
+        <location filename="../decoderffmpegfactory.cpp" line="192"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>FFmpeg Ses Eklentisi Hakkında</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="183"/>
+        <location filename="../decoderffmpegfactory.cpp" line="194"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg Ses Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="185"/>
+        <location filename="../decoderffmpegfactory.cpp" line="196"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>libavformat-%1.%2.%3 ve libavcodec-%4.%5.%6 ile derlenmiştir</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="193"/>
+        <location filename="../decoderffmpegfactory.cpp" line="204"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -128,6 +128,11 @@
         <location filename="../settingsdialog.ui" line="110"/>
         <source>RealAudio 1.0/2.0</source>
         <translation>RealAudio 1.0/2.0</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="117"/>
+        <source>Shorten</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
