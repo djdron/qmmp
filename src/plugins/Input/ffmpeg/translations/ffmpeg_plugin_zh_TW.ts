@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="181"/>
+        <location filename="../decoderffmpegfactory.cpp" line="192"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>關於 FFmpeg 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="183"/>
+        <location filename="../decoderffmpegfactory.cpp" line="194"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg 聲訊插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="193"/>
+        <location filename="../decoderffmpegfactory.cpp" line="204"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="112"/>
+        <location filename="../decoderffmpegfactory.cpp" line="121"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg 插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="114"/>
+        <location filename="../decoderffmpegfactory.cpp" line="123"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg 格式</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="185"/>
+        <location filename="../decoderffmpegfactory.cpp" line="196"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>編譯依賴 libavformat-%1.%2.%3 與 libavcodec-%4.%5.%6</translation>
     </message>
@@ -117,6 +117,11 @@
     <message>
         <location filename="../settingsdialog.ui" line="110"/>
         <source>RealAudio 1.0/2.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="117"/>
+        <source>Shorten</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

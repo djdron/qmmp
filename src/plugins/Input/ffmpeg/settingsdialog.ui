@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>302</width>
-    <height>298</height>
+    <height>311</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -108,6 +108,13 @@
        <widget class="QCheckBox" name="raCheckBox">
         <property name="text">
          <string>RealAudio 1.0/2.0</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="shCheckBox">
+        <property name="text">
+         <string>Shorten</string>
         </property>
        </widget>
       </item>
