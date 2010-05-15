@@ -200,13 +200,17 @@ void MediaPlayer::playNext()
 
 void MediaPlayer::updateNextUrl()
 {
+    m_nextUrl.clear();
     if(m_pl_manager->currentPlayList()->nextItem() && !isRepeatable())
     {
         qDebug("MediaPlayer: sending next url");
-        m_core->play(m_pl_manager->currentPlayList()->nextItem()->url(), true);
-        m_nextUrl = m_pl_manager->currentPlayList()->nextItem()->url();
-        qDebug("MediaPlayer: sending next url - done");
+        bool ok = m_core->play(m_pl_manager->currentPlayList()->nextItem()->url(), true);
+        if(ok)
+        {
+            m_nextUrl = m_pl_manager->currentPlayList()->nextItem()->url();
+            qDebug("MediaPlayer: sending next url - done");
+        }
+        else
+            qDebug("MediaPlayer: sending next url - failed");
     }
-    else
-        m_nextUrl.clear();
 }
