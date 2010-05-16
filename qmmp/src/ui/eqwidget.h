@@ -79,7 +79,14 @@ private:
     void createActions();
     void updateMask();
     EQPreset *findPreset(const QString &name);
+    //events
     virtual void keyPressEvent (QKeyEvent *);
+    virtual void changeEvent(QEvent*);
+    virtual void closeEvent(QCloseEvent*);
+#ifdef Q_WS_X11
+    virtual bool event (QEvent *event);
+#endif
+
     Skin *m_skin;
     EqTitleBar *m_titleBar;
     EqSlider *m_preamp;
@@ -94,11 +101,6 @@ private:
     QList<EQPreset*> m_autoPresets;
     QString m_autoName;
     bool m_shaded;
-
-protected:
-    virtual void changeEvent(QEvent*);
-    virtual void closeEvent(QCloseEvent*);
-
 };
 
 #endif

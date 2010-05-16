@@ -28,6 +28,10 @@ link_directories(${CMAKE_INSTALL_PREFIX}/${LIB_DIR})
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmpui)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
 
+# X11
+include_directories(${X11_INCLUDE_DIRS})
+link_directories(${X11_LIBRARY_DIRS})
+
 SET(ui_SRCS
     fft.c
     aboutdialog.cpp
@@ -80,6 +84,7 @@ SET(ui_SRCS
     playlistselector.cpp
     popupwidget.cpp
     popupsettings.cpp
+    windowsystem.cpp
 )
 
 SET(ui_MOC_HDRS
@@ -134,6 +139,7 @@ SET(ui_MOC_HDRS
     playlistselector.h
     popupwidget.h
     popupsettings.h
+    windowsystem.h
 )
 
 SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
@@ -163,7 +169,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_EXECUTABLE(qmmp ${ui_SRCS} ${ui_MOC_SRCS} ${ui_UIS_H}
   ${ui_RCC_SRCS})
-target_link_libraries(qmmp ${QT_LIBRARIES} libqmmp qmmpui)
+target_link_libraries(qmmp ${QT_LIBRARIES} libqmmp qmmpui ${X11_LDFLAGS})
 add_dependencies(qmmp qmmpui libqmmp)
 install(TARGETS qmmp DESTINATION bin)
 install(FILES qmmp.desktop DESTINATION share/applications)

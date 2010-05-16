@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -92,6 +92,18 @@ class PlayList : public QWidget
         void writeSettings();
         void createMenus();
         void createActions();
+        //events
+        virtual void paintEvent (QPaintEvent *);
+        virtual void resizeEvent (QResizeEvent *);
+        virtual void mouseMoveEvent (QMouseEvent *);
+        virtual void mousePressEvent (QMouseEvent *);
+        virtual void mouseReleaseEvent (QMouseEvent *);
+        virtual void changeEvent (QEvent*);
+        virtual void closeEvent (QCloseEvent*);
+        virtual void keyPressEvent (QKeyEvent*);
+#ifdef Q_WS_X11
+        virtual bool event (QEvent *event);
+#endif
         QMenu *m_addMenu;
         QMenu *m_subMenu;
         QMenu *m_selectMenu;
@@ -124,15 +136,7 @@ class PlayList : public QWidget
         QPointer <PlayListBrowser> m_pl_browser;
         PlayListSelector *m_pl_selector;
 
-    protected:
-        virtual void paintEvent (QPaintEvent *);
-        virtual void resizeEvent (QResizeEvent *);
-        virtual void mouseMoveEvent (QMouseEvent *);
-        virtual void mousePressEvent (QMouseEvent *);
-        virtual void mouseReleaseEvent (QMouseEvent *);
-        virtual void changeEvent (QEvent*);
-        virtual void closeEvent (QCloseEvent*);
-        virtual void keyPressEvent (QKeyEvent*);
+
 };
 
 #endif
