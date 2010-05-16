@@ -142,13 +142,16 @@ void EqWidget::setMimimalMode(bool b)
 
 void EqWidget::readSettings()
 {
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("General/openbox_compat", false).toBool() ||
-        settings.value("General/metacity_compat", false).toBool())
+#ifdef Q_WS_X11
+    QString wm_name = WindowSystem::netWindowManagerName();
+    if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
+       wm_name.contains("openbox", Qt::CaseInsensitive))
         setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
     else
+#endif
         setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
 
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup ("Equalizer");
     //geometry
     move (settings.value ("pos", QPoint (100, 216)).toPoint());
@@ -459,6 +462,3 @@ void EqWidget::updateMask()
     if (!region.isEmpty())
         setMask(region);
 }
-
-
-

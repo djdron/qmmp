@@ -467,6 +467,14 @@ void PlayList::changeEvent (QEvent * event)
 
 void PlayList::readSettings()
 {
+#ifdef Q_WS_X11
+    QString wm_name = WindowSystem::netWindowManagerName();
+    if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
+       wm_name.contains("openbox", Qt::CaseInsensitive))
+        setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
+    else
+#endif
+        setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("PlayList/show_plalists", false).toBool())
     {
@@ -490,11 +498,6 @@ void PlayList::readSettings()
     }
     else
     {
-        if (settings.value("General/openbox_compat", false).toBool() ||
-            settings.value("General/metacity_compat", false).toBool())
-            setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
-        else
-            setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
         move (settings.value ("PlayList/pos", QPoint (100, 332)).toPoint());  //position
         m_update = true;
     }

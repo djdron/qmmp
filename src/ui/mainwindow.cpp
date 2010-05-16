@@ -48,6 +48,7 @@
 #include "addurldialog.h"
 #include "listwidget.h"
 #include "visualmenu.h"
+#include "windowsystem.h"
 #include "builtincommandlineoption.h"
 
 #define KEY_OFFSET 10000
@@ -55,6 +56,9 @@
 MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option_manager, QWidget *parent)
         : QMainWindow(parent)
 {
+#ifdef Q_WS_X11
+    qDebug("MainWindow: detected wm: %s", qPrintable(WindowSystem::netWindowManagerName()));
+#endif
     m_vis = 0;
     m_update = false;
     m_option_manager = option_manager;
@@ -133,7 +137,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     if(args.isEmpty())
         resume();
 }
-
 
 MainWindow::~MainWindow()
 {}
@@ -331,13 +334,16 @@ void MainWindow::readSettings()
         m_playlist->setVisible(m_display->isPlaylistVisible());
         m_equalizer->setVisible(m_display->isEqualizerVisible());
     }
-
-    if(!settings.value("General/metacity_compat", false).toBool())
+#ifdef Q_WS_X11
+    if(!WindowSystem::netWindowManagerName().contains("metacity", Qt::CaseInsensitive))
     {
+#endif
         setWindowOpacity(settings.value("MainWindow/opacity", 1.0).toDouble());
         m_equalizer->setWindowOpacity(settings.value("Equalizer/opacity", 1.0).toDouble());
         m_playlist->setWindowOpacity(settings.value("PlayList/opacity", 1.0).toDouble());
+#ifdef Q_WS_X11
     }
+#endif
     m_hideOnClose = settings.value("MainWindow/hide_on_close", false).toBool();
 }
 
