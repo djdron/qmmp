@@ -304,6 +304,7 @@ void MainWindow::readSettings()
         qApp->processEvents();
         //visibility
         m_playlist->setVisible(settings.value("Playlist/visible",true).toBool());
+        qApp->processEvents();
         m_equalizer->setVisible(settings.value("Equalizer/visible",true).toBool());
         bool val = settings.value("Playlist/repeatable",false).toBool();
 
@@ -331,6 +332,7 @@ void MainWindow::readSettings()
             m_equalizer->setWindowFlags(m_equalizer->windowFlags() & ~Qt::WindowStaysOnTopHint);
         }
         show();
+        qApp->processEvents();
         m_playlist->setVisible(m_display->isPlaylistVisible());
         m_equalizer->setVisible(m_display->isEqualizerVisible());
     }
