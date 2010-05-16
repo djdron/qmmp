@@ -126,9 +126,6 @@ void ConfigDialog::readSettings()
     ui.mwTransparencySlider->setValue(100 - settings.value("MainWindow/opacity", 1.0).toDouble()*100);
     ui.eqTransparencySlider->setValue(100 - settings.value("Equalizer/opacity", 1.0).toDouble()*100);
     ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
-    //compatibility
-    ui.openboxCheckBox->setChecked(settings.value("General/openbox_compat", false).toBool());
-    ui.metacityCheckBox->setChecked(settings.value("General/metacity_compat", false).toBool());
     //view
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", false).toBool());
     ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", false).toBool());
@@ -442,8 +439,6 @@ void ConfigDialog::saveSettings()
     settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
     settings.setValue ("Equalizer/opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
     settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
-    settings.setValue ("General/openbox_compat", ui.openboxCheckBox->isChecked());
-    settings.setValue ("General/metacity_compat", ui.metacityCheckBox->isChecked());
     settings.setValue ("General/resume_on_startup",  ui.continuePlaybackCheckBox->isChecked());
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());

@@ -59,10 +59,8 @@ void WindowSystem::ghostWindow(WId win)
       SubstructureRedirectMask | SubstructureNotifyMask, &xev);
 }
 
-char* WindowSystem::netWindowManagerName()
+QString WindowSystem::netWindowManagerName()
 {
-    char* name = NULL;
-
     Display* dsp = QX11Info::display();
     WId root = DefaultRootWindow(dsp);
 
@@ -71,7 +69,7 @@ char* WindowSystem::netWindowManagerName()
 
     retValue1 = getWindowProperty(root, "_NET_SUPPORTING_WM_CHECK");
     if (retValue1 == NULL)
-        return NULL;
+        return QString();
 
     WId win = *(reinterpret_cast<unsigned long*>(retValue1));
 
@@ -79,14 +77,14 @@ char* WindowSystem::netWindowManagerName()
     if (retValue2 == NULL)
     {
         XFree(retValue1);
-        return NULL;
+        return QString();
     }
 
     if (win != *(reinterpret_cast<unsigned long*>(retValue2)))
     {
         XFree(retValue1);
         XFree(retValue2);
-        return NULL;
+        return QString();
     }
 
     XFree(retValue2);
@@ -95,12 +93,10 @@ char* WindowSystem::netWindowManagerName()
     retValue2 = getWindowProperty(win, "_NET_WM_NAME");
     XFree(retValue1);
     if (retValue2 == NULL)
-        return NULL;
+        return QString();
 
-    name = strdup(reinterpret_cast<const char*>(retValue2));
-
+    QString name = QString((char *)retValue2);
     XFree(retValue2);
-
     return name;
 }
 
