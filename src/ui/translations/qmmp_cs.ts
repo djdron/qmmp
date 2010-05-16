@@ -648,53 +648,53 @@
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="173"/>
-        <location filename="../eqwidget.cpp" line="196"/>
+        <location filename="../eqwidget.cpp" line="172"/>
+        <location filename="../eqwidget.cpp" line="195"/>
         <source>preset</source>
         <translation>předvolba</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="282"/>
+        <location filename="../eqwidget.cpp" line="281"/>
         <source>&amp;Load/Delete</source>
         <translation>&amp;Načíst/Odstranit</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="284"/>
+        <location filename="../eqwidget.cpp" line="283"/>
         <source>&amp;Save Preset</source>
         <translation>&amp;Uložit předvolbu</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="286"/>
+        <location filename="../eqwidget.cpp" line="285"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>Uložit &amp;automatickou předvolbu</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="288"/>
+        <location filename="../eqwidget.cpp" line="287"/>
         <source>&amp;Import</source>
         <translation>&amp;Importovat</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="291"/>
+        <location filename="../eqwidget.cpp" line="290"/>
         <source>&amp;Clear</source>
         <translation>&amp;Vynulovat</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="320"/>
+        <location filename="../eqwidget.cpp" line="319"/>
         <source>Saving Preset</source>
         <translation>Uložení předvolby</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="321"/>
+        <location filename="../eqwidget.cpp" line="320"/>
         <source>Preset name:</source>
         <translation>Název předvolby:</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="322"/>
+        <location filename="../eqwidget.cpp" line="321"/>
         <source>preset #</source>
         <translation>předvolba #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="413"/>
+        <location filename="../eqwidget.cpp" line="412"/>
         <source>Import Preset</source>
         <translation>Importovat předvolbu</translation>
     </message>
@@ -959,118 +959,118 @@
         <translation>Vyberte jeden či více souborů k otevření</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>&amp;Play</source>
         <translation>Pře&amp;hrát</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="419"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Pause</source>
         <translation>Pau&amp;za</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>C</source>
         <translation>C</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>&amp;Stop</source>
         <translation>&amp;Stop</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="423"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>V</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="426"/>
         <source>&amp;Previous</source>
         <translation>&amp;Předchozí</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>Z</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="426"/>
+        <location filename="../mainwindow.cpp" line="428"/>
         <source>&amp;Next</source>
         <translation>&amp;Další</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="427"/>
+        <location filename="../mainwindow.cpp" line="429"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>&amp;Jump To File</source>
         <translation>Přeskočit na soubo&amp;r</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="447"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="455"/>
         <source>&amp;Settings</source>
         <translation>&amp;Nastavení</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="458"/>
         <source>&amp;About</source>
         <translation>O &amp;aplikaci</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="462"/>
         <source>&amp;Exit</source>
         <translation>U&amp;končit</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="463"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="495"/>
-        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="497"/>
+        <location filename="../mainwindow.cpp" line="523"/>
         <source>Playlist Files</source>
         <translation>Seznamy skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="497"/>
+        <location filename="../mainwindow.cpp" line="499"/>
         <source>Open Playlist</source>
         <translation>Načíst seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="522"/>
+        <location filename="../mainwindow.cpp" line="524"/>
         <source>Save Playlist</source>
         <translation>Uložit seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>Space</source>
         <translation>Mezerník</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="457"/>
+        <location filename="../mainwindow.cpp" line="459"/>
         <source>&amp;About Qt</source>
         <translation>O knihovně &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="428"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Play/Pause</source>
         <translation>&amp;Přehrát/Pauza</translation>
     </message>
@@ -1080,37 +1080,37 @@
         <translation>Všechny podporované formáty</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>&amp;Repeat Track</source>
         <translation>&amp;Opakovat stopu</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="434"/>
         <source>&amp;Shuffle</source>
         <translation>Za&amp;míchat</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="438"/>
         <source>R</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="439"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="438"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>S</source>
         <translation>M</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>&amp;Repeat Playlist</source>
         <translation>&amp;Opakovat seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>Tools</source>
         <translation>Nástroje</translation>
     </message>
@@ -1118,244 +1118,244 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="175"/>
+        <location filename="../playlist.cpp" line="183"/>
         <source>&amp;Add File</source>
         <translation>Přidat &amp;soubor</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="176"/>
+        <location filename="../playlist.cpp" line="184"/>
         <source>F</source>
         <translation>F</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="181"/>
+        <location filename="../playlist.cpp" line="189"/>
         <source>&amp;Add Directory</source>
         <translation>Přidat &amp;adresář</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="182"/>
+        <location filename="../playlist.cpp" line="190"/>
         <source>D</source>
         <translation>D</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="194"/>
+        <location filename="../playlist.cpp" line="202"/>
         <source>&amp;Remove Selected</source>
         <translation>&amp;Odstranit vybrané</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="195"/>
+        <location filename="../playlist.cpp" line="203"/>
         <source>Del</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="200"/>
+        <location filename="../playlist.cpp" line="208"/>
         <source>&amp;Remove All</source>
         <translation>Odstranit &amp;vše</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="206"/>
+        <location filename="../playlist.cpp" line="214"/>
         <source>&amp;Remove Unselected</source>
         <translation>Odstranit &amp;nevybrané</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="211"/>
+        <location filename="../playlist.cpp" line="219"/>
         <source>Remove unavailable files</source>
         <translation>Odstranit nedostupné soubory</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="213"/>
+        <location filename="../playlist.cpp" line="221"/>
         <source>Remove duplicates</source>
         <translation>Odstranit duplicity</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="217"/>
+        <location filename="../playlist.cpp" line="225"/>
         <source>&amp;View Track Details</source>
         <translation>Zobrazit &amp;informace o skladbě</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="218"/>
+        <location filename="../playlist.cpp" line="226"/>
         <source>Alt+I</source>
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="226"/>
+        <location filename="../playlist.cpp" line="234"/>
         <source>Sort List</source>
         <translation>Seřadit seznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="229"/>
-        <location filename="../playlist.cpp" line="264"/>
+        <location filename="../playlist.cpp" line="237"/>
+        <location filename="../playlist.cpp" line="272"/>
         <source>By Title</source>
         <translation>Podle názvu skladby</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="233"/>
-        <location filename="../playlist.cpp" line="268"/>
+        <location filename="../playlist.cpp" line="241"/>
+        <location filename="../playlist.cpp" line="276"/>
         <source>By Album</source>
         <translation>Podle alba</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="237"/>
-        <location filename="../playlist.cpp" line="272"/>
+        <location filename="../playlist.cpp" line="245"/>
+        <location filename="../playlist.cpp" line="280"/>
         <source>By Artist</source>
         <translation>Podle umělce</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="241"/>
-        <location filename="../playlist.cpp" line="276"/>
+        <location filename="../playlist.cpp" line="249"/>
+        <location filename="../playlist.cpp" line="284"/>
         <source>By Filename</source>
         <translation>Podle názvu souboru</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="245"/>
-        <location filename="../playlist.cpp" line="280"/>
+        <location filename="../playlist.cpp" line="253"/>
+        <location filename="../playlist.cpp" line="288"/>
         <source>By Path + Filename</source>
         <translation>Podle cesty a názvu souboru</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="249"/>
-        <location filename="../playlist.cpp" line="284"/>
+        <location filename="../playlist.cpp" line="257"/>
+        <location filename="../playlist.cpp" line="292"/>
         <source>By Date</source>
         <translation>Podle data</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="269"/>
         <source>Sort Selection</source>
         <translation>Seřadit výběr</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="297"/>
+        <location filename="../playlist.cpp" line="305"/>
         <source>Randomize List</source>
         <translation>Zamíchat seznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="299"/>
+        <location filename="../playlist.cpp" line="307"/>
         <source>Reverse List</source>
         <translation>Obrátit pořadí seznamu</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="312"/>
+        <location filename="../playlist.cpp" line="320"/>
         <source>Invert Selection</source>
         <translation>Invertovat výběr</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="318"/>
+        <location filename="../playlist.cpp" line="326"/>
         <source>&amp;Select None</source>
         <translation>&amp;Zrušit výběr</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="319"/>
+        <location filename="../playlist.cpp" line="327"/>
         <source>Shift+A</source>
         <translation>Shift+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="324"/>
+        <location filename="../playlist.cpp" line="332"/>
         <source>&amp;Select All</source>
         <translation>&amp;Vybrat vše</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="325"/>
+        <location filename="../playlist.cpp" line="333"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="331"/>
+        <location filename="../playlist.cpp" line="339"/>
         <source>&amp;New List</source>
         <translation>&amp;Nový seznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="332"/>
+        <location filename="../playlist.cpp" line="340"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="337"/>
+        <location filename="../playlist.cpp" line="345"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="357"/>
+        <location filename="../playlist.cpp" line="365"/>
         <source>&amp;Select Next Playlist</source>
         <translation>Vybrat další &amp;seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="358"/>
+        <location filename="../playlist.cpp" line="366"/>
         <source>Ctrl+PgDown</source>
         <translation>Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="364"/>
+        <location filename="../playlist.cpp" line="372"/>
         <source>&amp;Select Previous Playlist</source>
         <translation>Vybrat předchozí &amp;seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="365"/>
+        <location filename="../playlist.cpp" line="373"/>
         <source>Ctrl+PgUp</source>
         <translation>Ctrl+PgUp</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="371"/>
+        <location filename="../playlist.cpp" line="379"/>
         <source>&amp;Show Playlists</source>
         <translation>Zobrazit &amp;seznamy skladeb</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="372"/>
+        <location filename="../playlist.cpp" line="380"/>
         <source>P</source>
         <translation>P</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="336"/>
+        <location filename="../playlist.cpp" line="344"/>
         <source>&amp;Delete List</source>
         <translation>O&amp;dstranit seznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="343"/>
+        <location filename="../playlist.cpp" line="351"/>
         <source>&amp;Load List</source>
         <translation>Načíst &amp;seznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="344"/>
+        <location filename="../playlist.cpp" line="352"/>
         <source>O</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="349"/>
+        <location filename="../playlist.cpp" line="357"/>
         <source>&amp;Save List</source>
         <translation>&amp;Uložit seznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="350"/>
+        <location filename="../playlist.cpp" line="358"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="187"/>
+        <location filename="../playlist.cpp" line="195"/>
         <source>&amp;Add Url</source>
         <translation>Přidat &amp;URL</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="188"/>
+        <location filename="../playlist.cpp" line="196"/>
         <source>U</source>
         <translation>U</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="253"/>
-        <location filename="../playlist.cpp" line="288"/>
+        <location filename="../playlist.cpp" line="261"/>
+        <location filename="../playlist.cpp" line="296"/>
         <source>By Track Number</source>
         <translation>Podle čísla skladby</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="308"/>
+        <location filename="../playlist.cpp" line="316"/>
         <source>&amp;Queue</source>
         <translation>&amp;Fronta</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="308"/>
+        <location filename="../playlist.cpp" line="316"/>
         <source>Q</source>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="305"/>
+        <location filename="../playlist.cpp" line="313"/>
         <source>Actions</source>
         <translation>Činnosti</translation>
     </message>
