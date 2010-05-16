@@ -72,6 +72,14 @@ EqWidget::EqWidget (QWidget *parent)
     updatePositions();
     updateMask();
     connect(SoundCore::instance(), SIGNAL(volumeChanged(int, int)), m_titleBar, SLOT(setVolume(int, int)));
+#ifdef Q_WS_X11
+    QString wm_name = WindowSystem::netWindowManagerName();
+    if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
+       wm_name.contains("openbox", Qt::CaseInsensitive))
+        setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
+    else
+#endif
+        setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
 }
 
 EqWidget::~EqWidget()
@@ -142,15 +150,6 @@ void EqWidget::setMimimalMode(bool b)
 
 void EqWidget::readSettings()
 {
-#ifdef Q_WS_X11
-    QString wm_name = WindowSystem::netWindowManagerName();
-    if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
-       wm_name.contains("openbox", Qt::CaseInsensitive))
-        setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
-    else
-#endif
-        setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
-
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup ("Equalizer");
     //geometry
@@ -448,8 +447,8 @@ void EqWidget::keyPressEvent (QKeyEvent *ke)
 #ifdef Q_WS_X11
 bool EqWidget::event (QEvent *event)
 {
-    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
-        WindowSystem::ghostWindow(winId());
+    /*if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+        WindowSystem::ghostWindow(winId());*/
     return QWidget::event(event);
 }
 #endif

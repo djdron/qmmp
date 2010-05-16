@@ -118,6 +118,14 @@ PlayList::PlayList (PlayListManager *manager, QWidget *parent)
     readSettings();
     setCursor(m_skin->getCursor(Skin::CUR_PNORMAL));
     updatePositions();
+#ifdef Q_WS_X11
+    QString wm_name = WindowSystem::netWindowManagerName();
+    if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
+       wm_name.contains("openbox", Qt::CaseInsensitive))
+        setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
+    else
+#endif
+        setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
 }
 
 PlayList::~PlayList()
@@ -467,14 +475,6 @@ void PlayList::changeEvent (QEvent * event)
 
 void PlayList::readSettings()
 {
-#ifdef Q_WS_X11
-    QString wm_name = WindowSystem::netWindowManagerName();
-    if(wm_name.contains("metacity", Qt::CaseInsensitive) ||
-       wm_name.contains("openbox", Qt::CaseInsensitive))
-        setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
-    else
-#endif
-        setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     if (settings.value("PlayList/show_plalists", false).toBool())
     {
@@ -506,8 +506,8 @@ void PlayList::readSettings()
 #ifdef Q_WS_X11
 bool PlayList::event (QEvent *event)
 {
-    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
-        WindowSystem::ghostWindow(winId());
+    /*if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+        WindowSystem::ghostWindow(winId());*/
     return QWidget::event(event);
 }
 #endif
