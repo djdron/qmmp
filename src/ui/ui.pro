@@ -55,7 +55,8 @@ HEADERS += mainwindow.h \
     playlistbrowser.h \
     playlistselector.h \
     popupwidget.h \
-    popupsettings.h
+    popupsettings.h \
+    windowsystem.h
 SOURCES += mainwindow.cpp \
     mp3player.cpp \
     button.cpp \
@@ -105,7 +106,8 @@ SOURCES += mainwindow.cpp \
     playlistbrowser.cpp \
     playlistselector.cpp \
     popupwidget.cpp \
-    popupsettings.cpp
+    popupsettings.cpp \
+    windowsystem.cpp
 win32:HEADERS += ../qmmp/visual.h
 unix { 
     HEADERS += unixdomainsocket.h
@@ -143,7 +145,8 @@ unix {
     icon16.files = images/16x16/qmmp.png
     icon32.files = images/32x32/qmmp.png
     icon48.files = images/48x48/qmmp.png
-    icon_svg.files = images/scalable/qmmp.png images/scalable/qmmp.png
+    icon_svg.files = images/scalable/qmmp.png \
+        images/scalable/qmmp.png
     icon16.path = /share/icons/hicolor/16x16/apps
     icon32.path = /share/icons/hicolor/32x32/apps
     icon48.path = /share/icons/hicolor/48x48/apps
@@ -169,3 +172,7 @@ TRANSLATIONS = translations/qmmp_ru.ts \
     translations/qmmp_lt.ts \
     translations/qmmp_hu.ts
 
+x11{
+CONFIG += link_pkgconfig
+PKGCONFIG += x11
+}

@@ -1,7 +1,6 @@
 project(libhotkey)
 
 cmake_minimum_required(VERSION 2.4.7)
-INCLUDE(FindX11)
 
 if(COMMAND cmake_policy)
 cmake_policy(SET CMP0003 NEW)
@@ -21,8 +20,6 @@ SET(QT_INCLUDES
   ${QT_INCLUDES}
   ${CMAKE_CURRENT_SOURCE_DIR}/../../../
 )
-
-pkg_search_module(X11 x11)
 
 include_directories(${X11_INCLUDE_DIRS})
 link_directories(${X11_LIBRARY_DIRS})

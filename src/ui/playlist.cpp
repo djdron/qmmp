@@ -40,6 +40,7 @@
 #include "keyboardmanager.h"
 #include "playlistbrowser.h"
 #include "playlistselector.h"
+#include "windowsystem.h"
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
@@ -493,11 +494,20 @@ void PlayList::readSettings()
             settings.value("General/metacity_compat", false).toBool())
             setWindowFlags (Qt::Tool | Qt::FramelessWindowHint);
         else
-            setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint); 
+            setWindowFlags (Qt::Dialog | Qt::FramelessWindowHint);
         move (settings.value ("PlayList/pos", QPoint (100, 332)).toPoint());  //position
         m_update = true;
     }
 }
+
+#ifdef Q_WS_X11
+bool PlayList::event (QEvent *event)
+{
+    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+        WindowSystem::ghostWindow(winId());
+    return QWidget::event(event);
+}
+#endif
 
 void PlayList::writeSettings()
 {

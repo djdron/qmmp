@@ -34,6 +34,7 @@
 #include "preseteditor.h"
 #include "mainwindow.h"
 #include "playlist.h"
+#include "windowsystem.h"
 #include "eqwidget.h"
 
 EqWidget::EqWidget (QWidget *parent)
@@ -441,6 +442,15 @@ void EqWidget::keyPressEvent (QKeyEvent *ke)
     QApplication::sendEvent(qobject_cast<MainWindow*>(parent())->playlist(), &event);
 }
 
+#ifdef Q_WS_X11
+bool EqWidget::event (QEvent *event)
+{
+    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+        WindowSystem::ghostWindow(winId());
+    return QWidget::event(event);
+}
+#endif
+
 void EqWidget::updateMask()
 {
     clearMask();
@@ -449,4 +459,6 @@ void EqWidget::updateMask()
     if (!region.isEmpty())
         setMask(region);
 }
+
+
 
