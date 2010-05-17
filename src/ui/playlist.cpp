@@ -506,8 +506,8 @@ void PlayList::readSettings()
 #ifdef Q_WS_X11
 bool PlayList::event (QEvent *event)
 {
-    /*if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
-        WindowSystem::ghostWindow(winId());*/
+    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+        WindowSystem::ghostWindow(winId());
     return QWidget::event(event);
 }
 #endif
