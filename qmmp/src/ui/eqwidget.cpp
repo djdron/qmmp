@@ -447,8 +447,8 @@ void EqWidget::keyPressEvent (QKeyEvent *ke)
 #ifdef Q_WS_X11
 bool EqWidget::event (QEvent *event)
 {
-    /*if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
-        WindowSystem::ghostWindow(winId());*/
+    if(event->type() == QEvent::WinIdChange || event->type() == QEvent::Show)
+        WindowSystem::ghostWindow(winId());
     return QWidget::event(event);
 }
 #endif
