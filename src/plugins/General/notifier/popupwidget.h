@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,7 @@
 #include <QWidget>
 #include <QFrame>
 
-#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b> \\(%l\\)\n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
+#define DEFAULT_TEMPLATE "<b>%if(%t,%t,%f)</b> %if(%l,\\(%l\\),) \n%if(%p,<br>%p,)\n%if(%a,<br>%a,)"
 
 class QTimer;
 class QLabel;
