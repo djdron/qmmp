@@ -101,12 +101,12 @@ QVariantMap TrackListObject::GetMetadata(int in0)
 
 void TrackListObject::SetLoop(bool in0)
 {
-    m_model->prepareForRepeatablePlaying(in0);
+    m_pl_manager->setRepeatableList(in0);
 }
 
 void TrackListObject::SetRandom(bool in0)
 {
-    m_model->prepareForShufflePlaying(in0);
+    m_pl_manager->setShuffle(in0);
 }
 
 void  TrackListObject::updateTrackList()
