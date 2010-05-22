@@ -56,7 +56,8 @@ HEADERS += mainwindow.h \
     playlistselector.h \
     popupwidget.h \
     popupsettings.h \
-    windowsystem.h
+    windowsystem.h \
+    viewmenu.h
 SOURCES += mainwindow.cpp \
     mp3player.cpp \
     button.cpp \
@@ -107,7 +108,8 @@ SOURCES += mainwindow.cpp \
     playlistselector.cpp \
     popupwidget.cpp \
     popupsettings.cpp \
-    windowsystem.cpp
+    windowsystem.cpp \
+    viewmenu.cpp
 win32:HEADERS += ../qmmp/visual.h
 unix { 
     HEADERS += unixdomainsocket.h
@@ -171,8 +173,7 @@ TRANSLATIONS = translations/qmmp_ru.ts \
     translations/qmmp_it.ts \
     translations/qmmp_lt.ts \
     translations/qmmp_hu.ts
-
-x11{
-CONFIG += link_pkgconfig
-PKGCONFIG += x11
+x11 { 
+    CONFIG += link_pkgconfig
+    PKGCONFIG += x11
 }

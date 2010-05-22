@@ -119,17 +119,14 @@ void ConfigDialog::readSettings()
     ui.portLineEdit->setEnabled(ui.enableProxyCheckBox->isChecked());
     ui.proxyUserLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
     ui.proxyPasswLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
-
-    ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", false).toBool());
-    ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", false).toBool());
     //transparency
     ui.mwTransparencySlider->setValue(100 - settings.value("MainWindow/opacity", 1.0).toDouble()*100);
     ui.eqTransparencySlider->setValue(100 - settings.value("Equalizer/opacity", 1.0).toDouble()*100);
     ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
     //view
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", false).toBool());
-    ui.doubleSizeCheckBox->setChecked(settings.value("General/double_size", false).toBool());
-    ui.alwaysOnTopCheckBox->setChecked(settings.value("General/always_on_top", false).toBool());
+    ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", false).toBool());
+    ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", false).toBool());
     //resume playback
     ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", false).toBool());
     //cover options
@@ -153,7 +150,8 @@ void ConfigDialog::on_contentsWidget_currentItemChanged (QListWidgetItem *curren
     if (!current)
         current = previous;
     ui.stackedWidget->setCurrentIndex (ui.contentsWidget->row (current));
-    ui.visibilityGroupBox->setEnabled(GeneralHandler::instance()->visibilityControl());
+    ui.hiddenCheckBox->setEnabled(GeneralHandler::instance()->visibilityControl());
+    ui.hideOnCloseCheckBox->setEnabled(GeneralHandler::instance()->visibilityControl());
 }
 
 void ConfigDialog::changeSkin()
@@ -434,16 +432,15 @@ void ConfigDialog::saveSettings()
                            ui.authProxyCheckBox->isChecked(),
                            proxyUrl);
 
-    settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
-    settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
+
     settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
     settings.setValue ("Equalizer/opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
     settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
     settings.setValue ("General/resume_on_startup",  ui.continuePlaybackCheckBox->isChecked());
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
-    settings.setValue ("General/double_size", ui.doubleSizeCheckBox->isChecked());
-    settings.setValue ("General/always_on_top", ui.alwaysOnTopCheckBox->isChecked());
+    settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
+    settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
     gs->setCoverSettings(ui.coverIncludeLineEdit->text().split(","),
                          ui.coverExcludeLineEdit->text().split(","),
                          ui.coverDepthSpinBox->value(),
