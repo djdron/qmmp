@@ -102,7 +102,7 @@ QString WindowSystem::netWindowManagerName()
 
 void WindowSystem::changeWinSticky(WId win, bool stick)
 {
-    qDebug("WindowSystem: setting sticky state of window 0x%lx to %s.\n",
+    qDebug("WindowSystem: setting sticky state of window 0x%lx to %s.",
            static_cast<unsigned long>(win), stick ? "true" : "false");
     Display* dsp = QX11Info::display();
     Window root  = DefaultRootWindow(dsp);

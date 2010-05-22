@@ -83,6 +83,8 @@ public slots:
     void setFileList(const QStringList&);
     void about();
 
+    void updateSettings();
+
 protected:
     virtual void closeEvent (QCloseEvent *);
     virtual void changeEvent (QEvent *event);
@@ -113,6 +115,7 @@ private:
     MainVisual *m_vis;
     QString m_lastDir;
     bool m_update;
+    bool m_allDesktops;
     Skin *m_skin;
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;

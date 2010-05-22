@@ -49,6 +49,7 @@
 #include "listwidget.h"
 #include "visualmenu.h"
 #include "windowsystem.h"
+#include "viewmenu.h"
 #include "builtincommandlineoption.h"
 
 #define KEY_OFFSET 10000
@@ -61,6 +62,7 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 #endif
     m_vis = 0;
     m_update = false;
+    m_allDesktops = false;
     m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
@@ -289,6 +291,7 @@ void MainWindow::changeEvent (QEvent * event)
 void MainWindow::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_allDesktops = settings.value("General/show_on_all_desktops", false).toBool();
     if (!m_update)
     {
         settings.beginGroup("MainWindow");
@@ -337,6 +340,7 @@ void MainWindow::readSettings()
         m_equalizer->setVisible(m_display->isEqualizerVisible());
     }
 #ifdef Q_WS_X11
+    WindowSystem::changeWinSticky(this->winId(), m_allDesktops);
     if(!WindowSystem::netWindowManagerName().contains("metacity", Qt::CaseInsensitive))
     {
 #endif
@@ -375,12 +379,7 @@ void MainWindow::showSettings()
 {
     ConfigDialog *confDialog = new ConfigDialog(this);
     confDialog->exec();
-    readSettings();
-    m_playlist->readSettings();
-    TextScroller::getPointer()->readSettings();
-    m_visMenu->updateActions();
-    m_skin->reloadSkin();
-    Dock::instance()->updateDock();
+    updateSettings();
     confDialog->deleteLater();
 }
 
@@ -402,6 +401,10 @@ void MainWindow::toggleVisibility()
             else
                 showNormal();
         }
+#ifdef Q_WS_X11
+        WindowSystem::changeWinSticky(winId(), m_allDesktops);
+        raise();
+#endif
     }
     else
     {
@@ -448,6 +451,7 @@ void MainWindow::createActions()
     m_mainMenu->addAction(QIcon::fromTheme("go-up"), tr("&Jump To File"),
                           this, SLOT(jumpToFile()), tr("J"));
     m_mainMenu->addSeparator();
+    m_mainMenu->addMenu(new ViewMenu(this));
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
     m_mainMenu->addMenu(m_generalHandler->createMenu(GeneralHandler::TOOLS_MENU, tr("Tools"), this));
@@ -478,6 +482,16 @@ void MainWindow::about()
 {
     AboutDialog dlg(this);
     dlg.exec();
+}
+
+void MainWindow::updateSettings()
+{
+    readSettings();
+    m_playlist->readSettings();
+    TextScroller::getPointer()->readSettings();
+    m_visMenu->updateActions();
+    m_skin->reloadSkin();
+    Dock::instance()->updateDock();
 }
 
 QMenu* MainWindow::menu()

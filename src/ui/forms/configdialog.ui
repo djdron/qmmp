@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>659</width>
-    <height>450</height>
+    <height>462</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -239,7 +239,37 @@
             <attribute name="title">
              <string>Miscellaneous</string>
             </attribute>
-            <layout class="QVBoxLayout" name="verticalLayout_6">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QGroupBox" name="groupBox">
+               <property name="title">
+                <string>View</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QCheckBox" name="hideOnCloseCheckBox">
+                  <property name="text">
+                   <string>Hide on close</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="hiddenCheckBox">
+                  <property name="text">
+                   <string>Start hidden</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="skinCursorsCheckBox">
+                  <property name="text">
+                   <string>Use skin cursors</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
              <item>
               <widget class="QGroupBox" name="plGroupBox">
                <property name="sizePolicy">
@@ -359,36 +389,6 @@
               </widget>
              </item>
              <item>
-              <widget class="QGroupBox" name="groupBox">
-               <property name="title">
-                <string>View</string>
-               </property>
-               <layout class="QVBoxLayout" name="verticalLayout_5">
-                <item>
-                 <widget class="QCheckBox" name="skinCursorsCheckBox">
-                  <property name="text">
-                   <string>Use skin cursors</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="alwaysOnTopCheckBox">
-                  <property name="text">
-                   <string>Always on top</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="doubleSizeCheckBox">
-                  <property name="text">
-                   <string>Double size</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
               <widget class="QGroupBox" name="groupBox_7">
                <property name="title">
                 <string>Transparency</string>
@@ -474,6 +474,19 @@
                 </item>
                </layout>
               </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </widget>
@@ -708,29 +721,6 @@
        <widget class="QWidget" name="page_2">
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="0" column="0" colspan="2">
-          <widget class="QGroupBox" name="visibilityGroupBox">
-           <property name="title">
-            <string>Visibility Control</string>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
-            <item>
-             <widget class="QCheckBox" name="hideOnCloseCheckBox">
-              <property name="text">
-               <string>Hide on close</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QCheckBox" name="hiddenCheckBox">
-              <property name="text">
-               <string>Start hidden</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="1" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_4">
            <property name="title">
             <string>File Dialog</string>
@@ -762,7 +752,7 @@
            </layout>
           </widget>
          </item>
-         <item row="2" column="0" colspan="2">
+         <item row="1" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_9">
            <property name="title">
             <string>Cover Image Retrieve</string>
@@ -832,7 +822,7 @@
            </layout>
           </widget>
          </item>
-         <item row="4" column="0" colspan="2">
+         <item row="3" column="0" colspan="2">
           <spacer name="verticalSpacer_3">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -845,7 +835,7 @@
            </property>
           </spacer>
          </item>
-         <item row="3" column="0" colspan="2">
+         <item row="2" column="0" colspan="2">
           <widget class="QGroupBox" name="groupBox_6">
            <property name="title">
             <string>Playback</string>

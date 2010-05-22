@@ -85,6 +85,7 @@ SET(ui_SRCS
     popupwidget.cpp
     popupsettings.cpp
     windowsystem.cpp
+    viewmenu.cpp
 )
 
 SET(ui_MOC_HDRS
@@ -140,6 +141,7 @@ SET(ui_MOC_HDRS
     popupwidget.h
     popupsettings.h
     windowsystem.h
+    viewmenu.h
 )
 
 SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
