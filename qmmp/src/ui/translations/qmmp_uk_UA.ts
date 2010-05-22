@@ -1620,22 +1620,22 @@
     <message>
         <location filename="../viewmenu.cpp" line="27"/>
         <source>View</source>
-        <translation type="unfinished">Вигляд</translation>
+        <translation>Вигляд</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="28"/>
         <source>Always on top</source>
-        <translation type="unfinished">Видимий завжди</translation>
+        <translation>Видимий завжди</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="29"/>
         <source>Put on all workspaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмістити на всіх робочих столах</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="30"/>
         <source>Double size</source>
-        <translation type="unfinished">Подвійний розмір</translation>
+        <translation>Подвійний розмір</translation>
     </message>
 </context>
 <context>
