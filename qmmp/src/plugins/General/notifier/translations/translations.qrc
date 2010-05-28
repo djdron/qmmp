@@ -11,5 +11,6 @@
     <file>notifier_plugin_uk_UA.qm</file>
     <file>notifier_plugin_tr.qm</file>
     <file>notifier_plugin_lt.qm</file>
+    <file>notifier_plugin_nl.qm</file>
   </qresource>
 </RCC>

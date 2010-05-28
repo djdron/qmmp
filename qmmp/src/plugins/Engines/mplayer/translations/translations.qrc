@@ -11,5 +11,6 @@
     <file>mplayer_plugin_de.qm</file>
     <file>mplayer_plugin_tr.qm</file>
     <file>mplayer_plugin_lt.qm</file>
+    <file>mplayer_plugin_nl.qm</file>
   </qresource>
 </RCC>

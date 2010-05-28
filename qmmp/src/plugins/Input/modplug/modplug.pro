@@ -34,7 +34,9 @@ TRANSLATIONS = translations/modplug_plugin_cs.ts \
     translations/modplug_plugin_uk_UA.ts \
     translations/modplug_plugin_it.ts \
     translations/modplug_plugin_tr.ts \
-    translations/modplug_plugin_lt.ts
+    translations/modplug_plugin_lt.ts \
+    translations/modplug_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input

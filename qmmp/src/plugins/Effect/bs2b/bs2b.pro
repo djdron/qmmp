@@ -30,7 +30,8 @@ TRANSLATIONS = translations/bs2b_plugin_cs.ts \
                translations/bs2b_plugin_ru.ts \
                translations/bs2b_plugin_it.ts \
                translations/bs2b_plugin_tr.ts \
-               translations/bs2b_plugin_lt.ts
+               translations/bs2b_plugin_lt.ts \
+               translations/bs2b_plugin_nl.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

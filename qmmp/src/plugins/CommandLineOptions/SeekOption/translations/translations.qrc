@@ -11,5 +11,6 @@
   <file>seek_plugin_zh_CN.qm</file>
   <file>seek_plugin_tr.qm</file>
   <file>seek_plugin_lt.qm</file>
+  <file>seek_plugin_nl.qm</file>
   </qresource>
 </RCC>

@@ -25,7 +25,8 @@ TRANSLATIONS = translations/fileops_plugin_cs.ts \
                translations/fileops_plugin_uk_UA.ts \
                translations/fileops_plugin_it.ts \
                translations/fileops_plugin_tr.ts \
-               translations/fileops_plugin_lt.ts
+               translations/fileops_plugin_lt.ts \
+               translations/fileops_plugin_nl.ts
 RESOURCES = translations/translations.qrc
 unix {
     isEmpty(LIB_DIR){

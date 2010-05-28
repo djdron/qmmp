@@ -11,5 +11,6 @@
     <file>mpc_plugin_de.qm</file>
     <file>mpc_plugin_tr.qm</file>
     <file>mpc_plugin_lt.qm</file>
+    <file>mpc_plugin_nl.qm</file>
   </qresource>
 </RCC>

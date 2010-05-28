@@ -26,7 +26,9 @@ TRANSLATIONS = translations/statusicon_plugin_cs.ts \
     translations/statusicon_plugin_uk_UA.ts \
     translations/statusicon_plugin_it.ts \
     translations/statusicon_plugin_tr.ts \
-    translations/statusicon_plugin_lt.ts
+    translations/statusicon_plugin_lt.ts \
+    translations/statusicon_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 unix { 
     isEmpty(LIB_DIR):LIB_DIR = /lib

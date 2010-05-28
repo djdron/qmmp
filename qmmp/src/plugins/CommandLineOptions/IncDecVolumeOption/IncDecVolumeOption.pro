@@ -20,7 +20,8 @@ TRANSLATIONS = translations/incdecvolume_plugin_cs.ts \
                translations/incdecvolume_plugin_zh_CN.ts \
                translations/incdecvolume_plugin_it.ts \
                translations/incdecvolume_plugin_tr.ts \
-               translations/incdecvolume_plugin_lt.ts
+               translations/incdecvolume_plugin_lt.ts \
+               translations/incdecvolume_plugin_nl.ts
 
 RESOURCES = translations/translations.qrc
 
