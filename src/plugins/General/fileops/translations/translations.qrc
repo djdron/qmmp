@@ -11,5 +11,6 @@
     <file>fileops_plugin_pl.qm</file>
     <file>fileops_plugin_tr.qm</file>
     <file>fileops_plugin_lt.qm</file>
+    <file>fileops_plugin_nl.qm</file>
   </qresource>
 </RCC>

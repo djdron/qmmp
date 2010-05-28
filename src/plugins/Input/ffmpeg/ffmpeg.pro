@@ -43,7 +43,9 @@ TRANSLATIONS = translations/ffmpeg_plugin_ru.ts \
     translations/ffmpeg_plugin_de.ts \
     translations/ffmpeg_plugin_it.ts \
     translations/ffmpeg_plugin_tr.ts \
-    translations/ffmpeg_plugin_lt.ts
+    translations/ffmpeg_plugin_lt.ts \
+    translations/ffmpeg_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input

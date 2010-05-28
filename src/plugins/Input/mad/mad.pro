@@ -42,7 +42,9 @@ TRANSLATIONS = translations/mad_plugin_ru.ts \
     translations/mad_plugin_it.ts \
     translations/mad_plugin_tr.ts \
     translations/mad_plugin_tr.ts \
-    translations/mad_plugin_lt.ts
+    translations/mad_plugin_lt.ts \
+    translations/mad_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 unix { 
     isEmpty(LIB_DIR):LIB_DIR = /lib

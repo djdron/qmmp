@@ -29,7 +29,9 @@ TRANSLATIONS = translations/mpc_plugin_ru.ts \
     translations/mpc_plugin_de.ts \
     translations/mpc_plugin_it.ts \
     translations/mpc_plugin_tr.ts \
-    translations/mpc_plugin_lt.ts
+    translations/mpc_plugin_lt.ts \
+    translations/mpc_plugin_nl.ts 
+
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR):LIB_DIR = /lib
 exists(/usr/include/mpcdec/mpcdec.h):DEFINES += MPC_OLD_API

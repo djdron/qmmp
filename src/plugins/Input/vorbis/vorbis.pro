@@ -32,7 +32,9 @@ TRANSLATIONS = translations/vorbis_plugin_ru.ts \
     translations/vorbis_plugin_de.ts \
     translations/vorbis_plugin_it.ts \
     translations/vorbis_plugin_tr.ts \
-    translations/vorbis_plugin_lt.ts
+    translations/vorbis_plugin_lt.ts \
+    translations/vorbis_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input

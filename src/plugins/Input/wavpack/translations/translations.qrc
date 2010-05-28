@@ -11,5 +11,6 @@
     <file>wavpack_plugin_uk_UA.qm</file>
     <file>wavpack_plugin_tr.qm</file>
     <file>wavpack_plugin_lt.qm</file>
+    <file>wavpack_plugin_nl.qm</file>
   </qresource>
 </RCC>

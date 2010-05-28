@@ -11,5 +11,6 @@
     <file>bs2b_plugin_ru.qm</file>
     <file>bs2b_plugin_tr.qm</file>
     <file>bs2b_plugin_lt.qm</file>
+    <file>bs2b_plugin_nl.qm</file>
   </qresource>
 </RCC>

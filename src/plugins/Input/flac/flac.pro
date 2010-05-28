@@ -33,7 +33,9 @@ TRANSLATIONS = translations/flac_plugin_ru.ts \
     translations/flac_plugin_de.ts \
     translations/flac_plugin_it.ts \
     translations/flac_plugin_tr.ts \
-    translations/flac_plugin_lt.ts
+    translations/flac_plugin_lt.ts \
+    translations/flac_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input

@@ -31,7 +31,9 @@ TRANSLATIONS = translations/aac_plugin_ru.ts \
     translations/aac_plugin_de.ts \
     translations/aac_plugin_it.ts \
     translations/aac_plugin_tr.ts \
-    translations/aac_plugin_lt.ts
+    translations/aac_plugin_lt.ts \
+    translations/aac_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input

@@ -11,5 +11,6 @@
     <file>kdenotify_plugin_uk_UA.qm</file>
     <file>kdenotify_plugin_tr.qm</file>
     <file>kdenotify_plugin_lt.qm</file>
+    <file>kdenotify_plugin_nl.qm</file>
   </qresource>
 </RCC>

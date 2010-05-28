@@ -172,7 +172,8 @@ TRANSLATIONS = translations/qmmp_ru.ts \
     translations/qmmp_pl_PL.ts \
     translations/qmmp_it.ts \
     translations/qmmp_lt.ts \
-    translations/qmmp_hu.ts
+    translations/qmmp_hu.ts \
+    translations/qmmp_nl.ts
 x11 { 
     CONFIG += link_pkgconfig
     PKGCONFIG += x11

@@ -32,7 +32,9 @@ TRANSLATIONS = translations/wavpack_plugin_cs.ts \
     translations/wavpack_plugin_uk_UA.ts \
     translations/wavpack_plugin_it.ts \
     translations/wavpack_plugin_tr.ts \
-    translations/wavpack_plugin_lt.ts
+    translations/wavpack_plugin_lt.ts \
+    translations/wavpack_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input

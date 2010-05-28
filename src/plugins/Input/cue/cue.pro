@@ -43,7 +43,9 @@ TRANSLATIONS = translations/cue_plugin_ru.ts \
     translations/cue_plugin_de.ts \
     translations/cue_plugin_it.ts \
     translations/cue_plugin_tr.ts \
-    translations/cue_plugin_lt.ts
+    translations/cue_plugin_lt.ts \
+    translations/cue_plugin_nl.ts
+  
 RESOURCES = translations/translations.qrc
 unix { 
     isEmpty(LIB_DIR):LIB_DIR = /lib

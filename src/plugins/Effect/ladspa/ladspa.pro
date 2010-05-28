@@ -34,7 +34,9 @@ TRANSLATIONS = translations/ladspa_plugin_cs.ts \
     translations/ladspa_plugin_ru.ts \
     translations/ladspa_plugin_it.ts \
     translations/ladspa_plugin_tr.ts \
-    translations/ladspa_plugin_lt.ts
+    translations/ladspa_plugin_lt.ts \
+    translations/ladspa_plugin_nl.ts
+
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Effect
