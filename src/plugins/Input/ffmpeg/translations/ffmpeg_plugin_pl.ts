@@ -132,7 +132,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Shorten</source>
-        <translation type="unfinished"></translation>
+        <translation>Shorten (SHN)</translation>
     </message>
 </context>
 </TS>

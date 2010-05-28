@@ -152,7 +152,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustaw głośność odtwarzania (np: qmmp --volume 20)</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
@@ -490,7 +490,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="246"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Wygląd</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="252"/>
@@ -1620,22 +1620,22 @@
     <message>
         <location filename="../viewmenu.cpp" line="27"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Wygląd</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="28"/>
         <source>Always on top</source>
-        <translation type="unfinished"></translation>
+        <translation>Zawsze na wierzchu</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="29"/>
         <source>Put on all workspaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż na wszystkich pulpitach</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="30"/>
         <source>Double size</source>
-        <translation type="unfinished">Podwójny rozmiar</translation>
+        <translation>Podwójny rozmiar</translation>
     </message>
 </context>
 <context>
