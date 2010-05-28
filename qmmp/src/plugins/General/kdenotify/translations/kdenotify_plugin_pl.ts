@@ -39,22 +39,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opcje</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation type="unfinished"></translation>
+        <translation>Czas trwania [s]:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualizuj widoczne powiadomienie (nie twórz nowego)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Wygląd</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
