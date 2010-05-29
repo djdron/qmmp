@@ -340,16 +340,21 @@ void MainWindow::readSettings()
         m_equalizer->setVisible(m_display->isEqualizerVisible());
     }
 #ifdef Q_WS_X11
-    WindowSystem::changeWinSticky(this->winId(), m_allDesktops);
-    if(!WindowSystem::netWindowManagerName().contains("metacity", Qt::CaseInsensitive))
-    {
+    WindowSystem::changeWinSticky(winId(), m_allDesktops);
 #endif
-        setWindowOpacity(settings.value("MainWindow/opacity", 1.0).toDouble());
-        m_equalizer->setWindowOpacity(settings.value("Equalizer/opacity", 1.0).toDouble());
-        m_playlist->setWindowOpacity(settings.value("PlayList/opacity", 1.0).toDouble());
-#ifdef Q_WS_X11
-    }
-#endif
+    //Call setWindowOpacity only if needed
+    double opacity = settings.value("MainWindow/opacity", 1.0).toDouble();
+    if(opacity != windowOpacity ())
+        setWindowOpacity(opacity);
+
+    opacity = settings.value("Equalizer/opacity", 1.0).toDouble();
+    if(opacity !=  m_equalizer->windowOpacity ())
+        m_equalizer->setWindowOpacity(opacity);
+
+    opacity = settings.value("PlayList/opacity", 1.0).toDouble();
+    if(opacity !=  m_playlist->windowOpacity ())
+        m_playlist->setWindowOpacity(opacity);
+
     m_hideOnClose = settings.value("MainWindow/hide_on_close", false).toBool();
 }
 
