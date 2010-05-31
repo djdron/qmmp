@@ -110,8 +110,6 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
     if (m_state == Qmmp::Playing &&
         (m_metaData.isEmpty() || m_metaData.value(Qmmp::URL) == metaData.value(Qmmp::URL)))
     {
-        qDebug("sending meta data %s", qPrintable(SoundCore::instance()->url()));
-        qDebug("sending meta data 2%s", qPrintable(metaData.value(Qmmp::URL)));
         if (m_metaData != tmp)
         {
             m_metaData = tmp;
