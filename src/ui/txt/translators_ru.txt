@@ -5,6 +5,9 @@
 Венгерский:
     Németh Gábor <sutee84@freemail.hu>
 
+Голландский:
+    Ronald Uitermark <ronald645@gmail.com>
+
 Итальянский:
     Gian Paolo Renello <emmerkar@gmail.com>
 
@@ -39,3 +42,6 @@
 
 Украинский:
     Геннадий Моцьо <drool@altlinux.ru>
+
+Французский:
+    Stanislas Zeller <uncensored.assault@gmail.com>
