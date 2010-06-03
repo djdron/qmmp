@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="197"/>
         <source>PCM over Master</source>
-        <translation>PCM over Master</translation>
+        <translation>PCM preferen over Master</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="224"/>

@@ -53,6 +53,11 @@
     <file>txt/translators_lt.txt</file>
     <file>txt/description_lt.txt</file>
 
+    <file>txt/authors_nl.txt</file>
+    <file>txt/thanks_nl.txt</file>
+    <file>txt/translators_nl.txt</file>
+    <file>txt/description_nl.txt</file>
+
     <file>default/balance.png</file>
     <file>default/eqmain.png</file>
     <file>default/numbers.png</file>

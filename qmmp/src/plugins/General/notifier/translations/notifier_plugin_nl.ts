@@ -97,7 +97,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="301"/>
         <source>...</source>
-        <translation>…</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

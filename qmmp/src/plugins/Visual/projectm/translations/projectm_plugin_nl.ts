@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="cs_CZ">
+<TS version="2.0" language="nl">
 <context>
     <name>ProjectMPlugin</name>
     <message>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
         <source>&amp;Previous Preset</source>
-        <translation>Př&amp;Vorige instelling</translation>
+        <translation>&amp;Vorige instelling</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="139"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
         <source>&amp;Random Preset</source>
-        <translation>Ná&amp;Willekeure instelling</translation>
+        <translation>&amp;Willekeure instelling</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="140"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
         <source>&amp;Lock Preset</source>
-        <translation>U&amp;Ze instelling vast</translation>
+        <translation>&amp;Zet instelling vast</translation>
     </message>
     <message>
         <location filename="../projectmwidget.cpp" line="141"/>
