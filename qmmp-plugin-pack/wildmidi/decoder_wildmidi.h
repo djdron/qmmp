@@ -31,29 +31,28 @@ extern "C"{
 class DecoderWildMidi : public Decoder
 {
 public:
-    DecoderWildMidi(QObject *, DecoderFactory *, Output *, const QString &);
+    DecoderWildMidi(const QString &path);
     virtual ~DecoderWildMidi();
 
     // Standard Decoder API
     bool initialize();
-    qint64 lengthInSeconds();
+    qint64 totalTime();
+    int bitrate();
+    qint64 read(char *data, qint64 size);
     void seek(qint64);
-    void stop();
 
 private:
-    // thread run function
-    void run();
     void *midi_ptr;
     // helper functions
-    void flush(bool = FALSE);
+    /*void flush(bool = FALSE);*/
     void deinit();
 
-    bool m_inited, m_user_stop;
+   /* bool m_inited, m_user_stop;
     int m_bps; //bits per sample
 
     // output buffer
     char *m_output_buf;
-    qint64 m_output_bytes, m_output_at;
+    qint64 m_output_bytes, m_output_at;*/
 
     unsigned int m_bks; //block size
     bool m_done, m_finish;

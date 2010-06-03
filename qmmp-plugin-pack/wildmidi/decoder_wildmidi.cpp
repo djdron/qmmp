@@ -25,7 +25,6 @@
 #include <math.h>
 #include <stdint.h>
 
-#include <qmmp/constants.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
@@ -33,82 +32,26 @@
 #include "decoder_wildmidi.h"
 
 // Decoder class
+bool Iinited = false;
 
-DecoderWildMidi::DecoderWildMidi(QObject *parent, DecoderFactory *d, Output *o, const QString &path)
-        : Decoder(parent, d, o)
+DecoderWildMidi::DecoderWildMidi(const QString &path) : Decoder()
 {
     m_path = path;
-    m_inited = FALSE;
-    m_user_stop = FALSE;
-    m_output_buf = 0;
-    m_output_bytes = 0;
-    m_output_at = 0;
-    m_bks = 0;
-    m_done = FALSE;
-    m_finish = FALSE;
-    m_freq = 0;
-    m_bitrate = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
-    m_chan = 0;
-    m_output_size = 0;
-    //m_context = 0;
     midi_ptr =  0;
 }
 
 DecoderWildMidi::~DecoderWildMidi()
 {
     deinit();
-    if (m_output_buf)
+    /*if (m_output_buf)
         delete [] m_output_buf;
-    m_output_buf = 0;
-}
-
-void DecoderWildMidi::stop()
-{
-    m_user_stop = TRUE;
-}
-
-void DecoderWildMidi::flush(bool final)
-{
-    ulong min = final ? 0 : m_bks;
-
-    while ((! m_done && ! m_finish) && m_output_bytes > min)
-    {
-        output()->recycler()->mutex()->lock ();
-
-        while ((! m_done && ! m_finish) && output()->recycler()->full())
-        {
-            mutex()->unlock();
-
-            output()->recycler()->cond()->wait(output()->recycler()->mutex());
-
-            mutex()->lock ();
-            m_done = m_user_stop;
-        }
-
-        if (m_user_stop || m_finish)
-            m_done = TRUE;
-        else
-        {
-            m_output_bytes -= produceSound(m_output_buf, m_output_bytes, m_bitrate, m_chan);
-            m_output_size += m_bks;
-            m_output_at = m_output_bytes;
-        }
-
-        if (output()->recycler()->full())
-        {
-            output()->recycler()->cond()->wakeOne();
-        }
-
-        output()->recycler()->mutex()->unlock();
-    }
+    m_output_buf = 0;*/
 }
 
 bool DecoderWildMidi::initialize()
 {
-    m_bks = Buffer::size();
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
+    //m_bks = Buffer::size();
+    //m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
     m_output_size = 0;
@@ -116,139 +59,71 @@ bool DecoderWildMidi::initialize()
     m_totalTime = 0.0;
     _WM_Info *wm_info = 0;
 
-    if (! m_output_buf)
-        m_output_buf = new char[globalBufferSize];
-    m_output_at = 0;
-    m_output_bytes = 0;
+    /*if (! m_output_buf)
+        m_output_buf = new char[globalBufferSize];*/
+    /*m_output_at = 0;
+    m_output_bytes = 0;*/
 
     //wm_info = new _WM_Info;
 
     unsigned long int mixer_options = 0;
 
-    if (WildMidi_Init ("/etc/timidity/timidity.cfg", 44100, mixer_options) == -1)
-        return FALSE;
+    if(!Iinited)
+    {
+
+        if (WildMidi_Init ("/etc/timidity/timidity.cfg", 44100, 0) == -1)
+        {
+            qDebug("FATAL ERROR");
+            return false;
+        }
+        Iinited = true;
+    }
 
     midi_ptr = WildMidi_Open (m_path.toLocal8Bit());
 
     wm_info = WildMidi_GetInfo(midi_ptr);
 
-    m_totalTime = wm_info->approx_total_samples / 44100;
+    m_totalTime = (qint64)wm_info->approx_total_samples / 48000;
 
-    configure(44100, 2, 16);
+    configure(44100, 2, Qmmp::PCM_S16LE);
 
-    m_inited = TRUE;
+    //m_inited = TRUE;
     qDebug("DecoderWildMidi: initialize succes");
-    return TRUE;
+    return true;
 }
 
-qint64 DecoderWildMidi::lengthInSeconds()
+qint64 DecoderWildMidi::totalTime()
 {
-    if (!m_inited)
-        return 0;
+    /*if (!m_inited)
+        return 0;*/
 
-    return m_totalTime;
+    return m_totalTime * 1000;
 }
 
 
 void DecoderWildMidi::seek(qint64 pos)
 {
-    m_seekTime = pos;
+    ulong sample = ulong(pos*48);
+    WildMidi_FastSeek(midi_ptr, &sample);
+}
+
+int DecoderWildMidi::bitrate()
+{
+    return 8;
+}
+
+qint64 DecoderWildMidi::read(char *data, qint64 size)
+{
+    return WildMidi_GetOutput (midi_ptr, data, size);
 }
 
 void DecoderWildMidi::deinit()
 {
-    if (m_inited)
-        WildMidi_Shutdown();
-    m_inited = m_user_stop = m_done = m_finish = FALSE;
+    //if (m_inited)
+     WildMidi_Close(midi_ptr);
+      //  WildMidi_Shutdown();
+    //m_inited = false;/*m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
-    m_output_size = 0;
-}
-
-void DecoderWildMidi::run()
-{
-    mutex()->lock ();
-
-    ulong len = 0;
-
-    _WM_Info *wm_info = new _WM_Info;
-
-    if (!m_inited)
-    {
-        mutex()->unlock();
-        return;
-    }
-    mutex()->unlock();
-
-    while (! m_done && ! m_finish)
-    {
-        mutex()->lock ();
-
-        //seeking
-
-        if (m_seekTime >= 0.0)
-        {
-            qint64 i = m_seekTime *44100;
-            long unsigned int *sample_pos = (long unsigned int *) &i;
-            WildMidi_FastSeek(midi_ptr, sample_pos);
-            m_seekTime = -1.0;
-        }
-
-        wm_info = WildMidi_GetInfo(midi_ptr);
-
-        if (wm_info->approx_total_samples > wm_info->current_sample)
-            len = WildMidi_GetOutput (midi_ptr, m_output_buf, globalBufferSize - m_output_at);
-        else
-            len = 0;
-
-        if (len > 0)
-        {
-            m_bitrate = 0; //TODO calculate bitrate using file size and length
-            m_output_at += len;
-            m_output_bytes += len;
-
-            if (output())
-                flush();
-
-        }
-        else if (len == 0)
-        {
-            flush(TRUE);
-
-            if (output())
-            {
-                output()->recycler()->mutex()->lock ();
-                // end of stream
-                while (! output()->recycler()->empty() && ! m_user_stop)
-                {
-                    output()->recycler()->cond()->wakeOne();
-                    mutex()->unlock();
-                    output()->recycler()->cond()->wait(output()->recycler()->mutex());
-                    mutex()->lock ();
-                }
-                output()->recycler()->mutex()->unlock();
-            }
-
-            m_done = TRUE;
-            if (! m_user_stop)
-            {
-                m_finish = TRUE;
-            }
-        }
-        else
-        {
-            // error while reading
-            qWarning("DecoderWildMidi: Error while decoding stream, file appears to be corrupted");
-            m_finish = TRUE;
-        }
-        mutex()->unlock();
-    }
-
-    mutex()->lock ();
-
-    if (m_finish)
-        finish();
-
-    mutex()->unlock();
-    deinit();
+    /*m_output_size = 0;*/
 }

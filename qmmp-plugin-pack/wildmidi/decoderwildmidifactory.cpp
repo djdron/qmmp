@@ -20,7 +20,7 @@
 
 #include <QtGui>
 
-#include "detailsdialog.h"
+//#include "detailsdialog.h"
 #include "decoder_wildmidi.h"
 #include "decoderwildmidifactory.h"
 
@@ -52,11 +52,10 @@ const DecoderProperties DecoderWildMidiFactory::properties() const
     return properties;
 }
 
-Decoder *DecoderWildMidiFactory::create(QObject *parent, QIODevice *input,
-                                        Output *output, const QString &path)
+Decoder *DecoderWildMidiFactory::create(const QString &path, QIODevice *input)
 {
     Q_UNUSED(input);
-    return new DecoderWildMidi(parent, this, output, path);
+    return new DecoderWildMidi(path);
 }
 
 QList<FileInfo *> DecoderWildMidiFactory::createPlayList(const QString &fileName, bool useMetaData)
@@ -70,7 +69,7 @@ QList<FileInfo *> DecoderWildMidiFactory::createPlayList(const QString &fileName
         //wm_info = new _WM_Info;
         _WM_Info *wm_info = WildMidi_GetInfo(midi_ptr);
         info->setLength(wm_info->approx_total_samples / 44100);
-        qDebug("===== %d", wm_info->approx_total_samples / 44100);
+        qDebug("===== %lu", wm_info->approx_total_samples);
         WildMidi_Close(midi_ptr);
     }
 
@@ -78,7 +77,7 @@ QList<FileInfo *> DecoderWildMidiFactory::createPlayList(const QString &fileName
     return list;
 }
 
-QObject* DecoderWildMidiFactory::showDetails(QWidget *parent, const QString &path)
+MetaDataModel* DecoderWildMidiFactory::createMetaDataModel(const QString &path, QObject *parent)
 {
     /*DetailsDialog *d = new DetailsDialog(parent, path);
     d -> show();*/
