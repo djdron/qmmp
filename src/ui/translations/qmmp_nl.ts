@@ -31,12 +31,12 @@
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
         <source>:/txt/authors_en.txt</source>
-        <translation>:/txt/authors_en.txt</translation>
+        <translation>:/txt/authors_nl.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
         <source>:/txt/thanks_en.txt</source>
-        <translation>:/txt/thanks_en.txt</translation>
+        <translation>:/txt/thanks_nl.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
@@ -51,7 +51,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>:txt/description_en.txt</source>
-        <translation>:txt/description_en.txt</translation>
+        <translation>:txt/description_nl.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="84"/>
@@ -86,7 +86,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="63"/>
         <source>:/txt/translators_en.txt</source>
-        <translation>:/txt/translators_en.txt</translation>
+        <translation>:/txt/translators_nl.txt</translation>
     </message>
 </context>
 <context>
@@ -651,7 +651,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="285"/>
         <source>&amp;Save Auto-load Preset</source>
-        <translation>Uložit &amp;Bewaar Auto-laad Instelling</translation>
+        <translation>&amp;Bewaar Auto-laad Instelling</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="287"/>
@@ -785,7 +785,7 @@
     <message>
         <location filename="../display.cpp" line="91"/>
         <source>Shuffle</source>
-        <translation>Mixen</translation>
+        <translation>Willekeurig</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="102"/>
@@ -1072,7 +1072,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="442"/>
         <source>&amp;Shuffle</source>
-        <translation>&amp;Mixen</translation>
+        <translation>&amp;Willekeurig</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="446"/>
@@ -1211,7 +1211,7 @@
     <message>
         <location filename="../playlist.cpp" line="305"/>
         <source>Randomize List</source>
-        <translation>Mix Lijst</translation>
+        <translation>Schud Lijst</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="307"/>
@@ -1355,7 +1355,7 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
         <source>New</source>
-        <translation>New</translation>
+        <translation>Nieuw</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
