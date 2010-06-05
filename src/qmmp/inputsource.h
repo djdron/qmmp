@@ -55,6 +55,10 @@ public:
      */
     virtual bool isReady() = 0;
     /*!
+     * Returns content type of the input stream. Default implementation returns empty string.
+     */
+    virtual QString contentType() const;
+    /*!
      * Returns input source path or url.
      */
     const QString url() const;

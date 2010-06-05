@@ -43,7 +43,6 @@ public:
 
     qint64 read(char* data, qint64 maxlen);
     QMutex *mutex();
-    QString contentType();
     void abort();
     qint64 bytesAvailable();
     void checkBuffer();

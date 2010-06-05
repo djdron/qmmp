@@ -113,9 +113,10 @@ bool QmmpAudioEngine::enqueue(InputSource *source)
 
     if(!source->url().contains("://"))
         factory = Decoder::findByPath(source->url());
+    if(!factory)
+        factory = Decoder::findByMime(source->contentType());
     if(!factory && source->ioDevice())
         factory = Decoder::findByContent(source->ioDevice());
-    //TODO mimetype
     if(!factory && source->url().contains("://"))
         factory = Decoder::findByProtocol(source->url().section("://",0,0));
     if(!factory)

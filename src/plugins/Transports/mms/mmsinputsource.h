@@ -37,6 +37,7 @@ public:
     QIODevice *ioDevice();
     bool initialize();
     bool isReady();
+    QString contentType() const;
 
 private slots:
     void open();

@@ -43,6 +43,11 @@ bool MMSInputSource::isReady()
     return m_reader->isOpen();
 }
 
+QString  MMSInputSource::contentType() const
+{
+    return "audio/x-ms-wma";
+}
+
 void MMSInputSource::open()
 {
     m_reader->open(QIODevice::ReadOnly);

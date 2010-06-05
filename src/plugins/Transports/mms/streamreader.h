@@ -56,10 +56,6 @@ public:
     bool waitForBytesWritten ( int msecs );
     bool waitForReadyRead ( int msecs );
 
-    /**
-     *  returns content type of a stream
-     */
-    const QString &contentType();
     void downloadFile();
 
 signals:
