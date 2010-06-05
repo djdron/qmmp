@@ -71,11 +71,6 @@ QMutex *Downloader::mutex()
     return &m_mutex;
 }
 
-QString Downloader::contentType()
-{
-    return "audio/x-ms-wma";
-}
-
 void Downloader::abort()
 {
     m_mutex.lock();

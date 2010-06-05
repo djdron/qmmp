@@ -43,6 +43,11 @@ bool HTTPInputSource::isReady()
     return m_reader->isOpen();
 }
 
+QString  HTTPInputSource::contentType() const
+{
+    return m_reader->contentType();
+}
+
 void HTTPInputSource::open()
 {
     m_reader->open(QIODevice::ReadOnly);

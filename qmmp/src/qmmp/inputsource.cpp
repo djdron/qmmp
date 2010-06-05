@@ -34,6 +34,11 @@ InputSource::InputSource(const QString &source, QObject *parent) : QObject(paren
     m_offset = -1;
 }
 
+QString InputSource::contentType() const
+{
+    return QString();
+}
+
 const QString InputSource::url() const
 {
     return m_url;

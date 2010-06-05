@@ -140,6 +140,8 @@ DecoderFactory *Decoder::findByPath(const QString& source)
 
 DecoderFactory *Decoder::findByMime(const QString& type)
 {
+    if(type.isEmpty())
+        return 0;
     checkFactories();
     DecoderFactory *fact;
     foreach(fact, *m_factories)

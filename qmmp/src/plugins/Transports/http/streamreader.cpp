@@ -123,7 +123,7 @@ void StreamReader::downloadFile()
     m_downloader->start();
 }
 
-const QString &StreamReader::contentType()
+QString StreamReader::contentType()
 {
     m_downloader->mutex()->lock ();
     m_contentType = m_downloader->contentType();

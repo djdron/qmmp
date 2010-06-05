@@ -59,7 +59,7 @@ public:
     /**
      *  returns content type of a stream
      */
-    const QString &contentType();
+    QString contentType();
     void downloadFile();
 
 signals:
