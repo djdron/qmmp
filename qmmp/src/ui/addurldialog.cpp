@@ -99,8 +99,8 @@ void AddUrlDialog::accept( )
                 QNetworkRequest request;
                 request.setUrl(QUrl(s));
                 request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
-                m_http->get(request);
                 addButton->setEnabled(false);
+                m_http->get(request);
                 return;
             }
         }
@@ -111,7 +111,8 @@ void AddUrlDialog::accept( )
 
 void AddUrlDialog::readResponse(QNetworkReply *reply)
 {
-    disconnect(m_http, SIGNAL(finished (QNetworkReply *)));
+    addButton->setEnabled(true);
+    disconnect(m_http, SIGNAL(finished (QNetworkReply *)), 0, 0);
     if (reply->error() != QNetworkReply::NoError)
         QMessageBox::critical (this, tr("Error"), reply->errorString ());
     else if (!urlComboBox->currentText().isEmpty())
