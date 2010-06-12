@@ -92,7 +92,7 @@
 <context>
     <name>AddUrlDialog</name>
     <message>
-        <location filename="../addurldialog.cpp" line="116"/>
+        <location filename="../addurldialog.cpp" line="117"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>

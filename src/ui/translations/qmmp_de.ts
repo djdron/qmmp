@@ -97,7 +97,7 @@
         <translation>Hinzuzufügende URL eingeben</translation>
     </message>
     <message>
-        <location filename="../addurldialog.cpp" line="116"/>
+        <location filename="../addurldialog.cpp" line="117"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>

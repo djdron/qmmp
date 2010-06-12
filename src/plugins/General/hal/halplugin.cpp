@@ -117,7 +117,7 @@ void HalPlugin::addDevice(const QString &udi)
         return;
     }
 
-    if (device->property("volume.size").toLongLong() < 5000000000LL &&
+    if (device->property("volume.size").toLongLong() < 17000000000LL &&
             (device->property("volume.fstype").toString() == "vfat" ||
              device->property("volume.fstype").toString() == "iso" ||
              device->property("volume.fstype").toString() == "udf" ||
