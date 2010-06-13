@@ -142,42 +142,42 @@
     <message>
         <location filename="../settingsdialog.cpp" line="195"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Stücknummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="196"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>Zweistellige Stücknummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="199"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponist</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="200"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>Abspieldauer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="201"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-Nummer</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="202"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiname</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="203"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateipfad</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="205"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>Zustand</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="221"/>
@@ -223,7 +223,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinzufügen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="133"/>
