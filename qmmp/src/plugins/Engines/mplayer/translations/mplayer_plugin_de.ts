@@ -137,7 +137,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Synchronization factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchronisationsfaktor:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>

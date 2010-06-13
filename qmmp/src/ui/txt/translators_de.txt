@@ -8,18 +8,24 @@ Chinesisch (Langzeichen):
 Chinesisch (Kurzzeichen):
     lon <lon83129@126.com>
 
-Tschechisch:
-    Karel Volný <kvolny@redhat.com>
-
-Französisch:
-    Stanislas Zeller <uncensored.assault@gmail.com>
-
 Deutsch:
     Stefan Koelling <stefankoelling.ext@googlemail.com>
     Panagiotis Papadopoulos <pano_90@gmx.net>
 
+Französisch:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
 Italienisch:
     Gian Paolo Renello <emmerkar@gmail.com>
+
+Kasachisch:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+Litauisch:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+Niederländisch:
+    Ronald Uitermark <ronald645@gmail.com>
 
 Polnisch:
     Grzegorz Gibas <amigib@gmail.com>
@@ -27,8 +33,15 @@ Polnisch:
 Russisch:
     Ilya Kotov <forkotov02@hotmail.ru>
 
+Tschechisch:
+    Karel Volný <kvolny@redhat.com>
+
 Türkisch:
     Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
 
 Ukrainisch:
     Gennadi Motsyo <drool@altlinux.ru>
+
+Ungarisch:
+    Németh Gábor <sutee84@freemail.hu>

@@ -38,22 +38,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Optionen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzeigedauer (Sekunden):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation type="unfinished"></translation>
+        <translation>Angezeigte Benachrichtigung aktualisieren anstatt neue zu erstellen</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Erscheinungsbild</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
@@ -63,12 +63,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorlage ändern</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Benachrichtigungsvorlage</translation>
     </message>
 </context>
 </TS>

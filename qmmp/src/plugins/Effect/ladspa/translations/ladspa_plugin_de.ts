@@ -6,17 +6,17 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="30"/>
         <source>LADSPA Plugin</source>
-        <translation type="unfinished">LADSPA-Modul</translation>
+        <translation>LADSPA-Modul</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="50"/>
         <source>About LADSPA Host for Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>Über LADSPA-Host für Qmmp</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="51"/>
         <source>LADSPA Host for Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>LADSPA-Host für Qmmp</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="52"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="53"/>
         <source>Based on the LADSPA Host for BMP</source>
-        <translation type="unfinished"></translation>
+        <translation>Basierend auf dem LADSPA-Host für BMP</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="54"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>LADSPA Plugin Catalog</source>
-        <translation type="unfinished"></translation>
+        <translation>LADSPA-Modul-Katalog</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="52"/>

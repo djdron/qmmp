@@ -22,7 +22,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation type="unfinished"></translation>
+        <translation>Ballon-Nachricht</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Versuchen Dateinamen zu trennen, wenn kein Tag vorhanden</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>

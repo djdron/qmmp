@@ -16,7 +16,7 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="52"/>
         <source>This is the Qmmp plugin version of Boris Mikhaylov&apos;s headphone DSP effect &quot;Bauer stereophonic-to-binaural&quot;, abbreviated bs2b.</source>
-        <translation type="unfinished"></translation>
+        <translation>Das ist das Qmmp-Modul von Boris Mikhaylovs Kopfhörer-DSP-Effekt „Bauer stereophonic-to-binaural”, abgekürzt bs2b.</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="54"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translation type="unfinished">Crossfeed-Stärke</translation>
+        <translation>Crossfeed-Stärke</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>

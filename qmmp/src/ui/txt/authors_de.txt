@@ -1,10 +1,11 @@
-Entwickler:
+Hauptentwickler:
 
     Ilya Kotov <forkotov02@hotmail.ru> (Idee und Programmierung)
     Vladimir Kuznetsov <vovanec@gmail.com> (Look & Feel und viele Verbesserungen)
 
 Plugin-Entwickler:
 
+    Artur Guzik <aguzik88@gmail.com> (KDE-4-Benachrichtigungs-Modul, Verbesserungen am Statussymbol-Modul)
     Yuriy Zhuravlev <stalkerg@gmail.com> (JACK- und OSS-Plugin)
 
 Artwork:
