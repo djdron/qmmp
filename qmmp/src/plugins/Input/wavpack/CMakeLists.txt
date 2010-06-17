@@ -28,7 +28,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 # wavpack
 pkg_search_module(WAVPACK wavpack)
 
-include_directories(${CWAVPACK_INCLUDE_DIRS})
+include_directories(${WAVPACK_INCLUDE_DIRS})
 link_directories(${WAVPACK_LIBRARY_DIRS})
 
 SET(libwavpack_SRCS
