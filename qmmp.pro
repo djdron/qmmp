@@ -1,3 +1,5 @@
+CONFIG += ordered
+
 include (qmmp.pri)
 
 TEMPLATE = subdirs
