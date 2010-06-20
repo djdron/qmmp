@@ -175,6 +175,15 @@ void QmmpAudioEngine::setEQEnabled(bool on)
 
 void QmmpAudioEngine::addEffect(EffectFactory *factory)
 {
+    foreach(Effect *effect, m_effects)
+    {
+        if(effect->factory() == factory)
+        {
+            qWarning("QmmpAudioEngine: effect %s already exists",
+                     qPrintable(factory->properties().shortName));
+            return;
+        }
+    }
     if(m_output && m_output->isRunning())
     {
         Effect *effect = factory->create();

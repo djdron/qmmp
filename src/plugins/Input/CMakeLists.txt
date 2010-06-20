@@ -47,9 +47,9 @@ IF(USE_MODPLUG)
 add_subdirectory(modplug)
 ENDIF(USE_MODPLUG)
 
-IF(USE_AAC)
+IF(USE_AAC AND TAGLIB_FOUND)
 add_subdirectory(aac)
-ENDIF(USE_AAC)
+ENDIF(USE_AAC AND TAGLIB_FOUND)
 
 IF(USE_CUE)
 add_subdirectory(cue)
