@@ -63,7 +63,7 @@ QList<FileInfo *> DecoderWildMidiFactory::createPlayList(const QString &fileName
     QList <FileInfo*> list;
     FileInfo *info = new FileInfo(fileName);
 
-    void *midi_ptr = WildMidi_Open (fileName.toLocal8Bit());
+    /*void *midi_ptr = WildMidi_Open (fileName.toLocal8Bit());
     if(midi_ptr)
     {
         //wm_info = new _WM_Info;
@@ -71,7 +71,7 @@ QList<FileInfo *> DecoderWildMidiFactory::createPlayList(const QString &fileName
         info->setLength(wm_info->approx_total_samples / 44100);
         qDebug("===== %lu", wm_info->approx_total_samples);
         WildMidi_Close(midi_ptr);
-    }
+    }*/
 
     list << info;
     return list;

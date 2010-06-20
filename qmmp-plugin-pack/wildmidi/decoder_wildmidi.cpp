@@ -64,28 +64,29 @@ bool DecoderWildMidi::initialize()
     /*m_output_at = 0;
     m_output_bytes = 0;*/
 
-    //wm_info = new _WM_Info;
+    wm_info = new _WM_Info;
 
     unsigned long int mixer_options = 0;
 
-    if(!Iinited)
-    {
+    /*if(!Iinited)
+    {*/
 
-        if (WildMidi_Init ("/etc/timidity/timidity.cfg", 44100, 0) == -1)
+        if (WildMidi_Init ("/etc/timidity/timidity.cfg", 48000, 0) == -1)
         {
             qDebug("FATAL ERROR");
-            return false;
+            //return false;
         }
-        Iinited = true;
-    }
+       /* Iinited = true;
+    }*/
 
     midi_ptr = WildMidi_Open (m_path.toLocal8Bit());
+    WildMidi_Open (m_path.toLocal8Bit());
 
     wm_info = WildMidi_GetInfo(midi_ptr);
 
-    m_totalTime = (qint64)wm_info->approx_total_samples / 48000;
+    m_totalTime = (qint64)wm_info->approx_total_samples  / 48;
 
-    configure(44100, 2, Qmmp::PCM_S16LE);
+    configure(48000, 2, Qmmp::PCM_S16LE);
 
     //m_inited = TRUE;
     qDebug("DecoderWildMidi: initialize succes");
@@ -97,7 +98,7 @@ qint64 DecoderWildMidi::totalTime()
     /*if (!m_inited)
         return 0;*/
 
-    return m_totalTime * 1000;
+    return m_totalTime;
 }
 
 
@@ -121,7 +122,7 @@ void DecoderWildMidi::deinit()
 {
     //if (m_inited)
      WildMidi_Close(midi_ptr);
-      //  WildMidi_Shutdown();
+     WildMidi_Shutdown();
     //m_inited = false;/*m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
