@@ -43,17 +43,8 @@ public:
 
 private:
     void *midi_ptr;
-    // helper functions
-    /*void flush(bool = FALSE);*/
+
     void deinit();
-
-   /* bool m_inited, m_user_stop;
-    int m_bps; //bits per sample
-
-    // output buffer
-    char *m_output_buf;
-    qint64 m_output_bytes, m_output_at;*/
-
     unsigned int m_bks; //block size
     bool m_done, m_finish;
     long m_freq, m_bitrate;

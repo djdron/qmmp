@@ -43,64 +43,39 @@ DecoderWildMidi::DecoderWildMidi(const QString &path) : Decoder()
 DecoderWildMidi::~DecoderWildMidi()
 {
     deinit();
-    /*if (m_output_buf)
-        delete [] m_output_buf;
-    m_output_buf = 0;*/
 }
 
 bool DecoderWildMidi::initialize()
 {
-    //m_bks = Buffer::size();
-    //m_inited = m_user_stop = m_done = m_finish = FALSE;
     m_freq = m_bitrate = 0;
     m_chan = 0;
     m_output_size = 0;
-    m_seekTime = -1.0;
-    m_totalTime = 0.0;
-    _WM_Info *wm_info = 0;
-
-    /*if (! m_output_buf)
-        m_output_buf = new char[globalBufferSize];*/
-    /*m_output_at = 0;
-    m_output_bytes = 0;*/
-
-    wm_info = new _WM_Info;
+    m_totalTime = 0;
 
     unsigned long int mixer_options = 0;
 
-    /*if(!Iinited)
-    {*/
-
-        if (WildMidi_Init ("/etc/timidity/timidity.cfg", 48000, 0) == -1)
-        {
-            qDebug("FATAL ERROR");
-            //return false;
-        }
-       /* Iinited = true;
-    }*/
+    if (WildMidi_Init ("/etc/timidity/timidity.cfg", 48000, 0) == -1)
+    {
+        qDebug("FATAL ERROR");
+        return false;
+    }
 
     midi_ptr = WildMidi_Open (m_path.toLocal8Bit());
-    WildMidi_Open (m_path.toLocal8Bit());
 
-    wm_info = WildMidi_GetInfo(midi_ptr);
+    _WM_Info *wm_info = WildMidi_GetInfo(midi_ptr);
 
     m_totalTime = (qint64)wm_info->approx_total_samples  / 48;
 
     configure(48000, 2, Qmmp::PCM_S16LE);
 
-    //m_inited = TRUE;
     qDebug("DecoderWildMidi: initialize succes");
     return true;
 }
 
 qint64 DecoderWildMidi::totalTime()
 {
-    /*if (!m_inited)
-        return 0;*/
-
     return m_totalTime;
 }
-
 
 void DecoderWildMidi::seek(qint64 pos)
 {
@@ -120,11 +95,8 @@ qint64 DecoderWildMidi::read(char *data, qint64 size)
 
 void DecoderWildMidi::deinit()
 {
-    //if (m_inited)
-     WildMidi_Close(midi_ptr);
-     WildMidi_Shutdown();
-    //m_inited = false;/*m_user_stop = m_done = m_finish = FALSE;
+    WildMidi_Close(midi_ptr);
+    WildMidi_Shutdown();
     m_freq = m_bitrate = 0;
     m_chan = 0;
-    /*m_output_size = 0;*/
 }
