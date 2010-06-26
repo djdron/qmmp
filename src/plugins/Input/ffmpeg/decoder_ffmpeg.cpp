@@ -20,7 +20,6 @@
 
 #include <QObject>
 #include <QFile>
-#include <malloc.h>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
