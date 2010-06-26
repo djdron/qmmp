@@ -390,11 +390,11 @@ public slots:
      */
     void sort(int mode);
     /*!
-     * Adds selected items to play queue.
+     * Adds/removes first selected item to/from playback queue.
      */
     void addToQueue();
     /*!
-     * Sets \b f media file to queue.
+     * Adds/removes media file \b f to/from playback queue.
      */
     void setQueued(PlayListItem* f);
     /*!
