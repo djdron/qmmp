@@ -172,6 +172,11 @@ bool DecoderFFmpeg::initialize()
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
     m_output_buf = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE * 3 / 2 + QMMP_BUFFER_SIZE);
 
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+    if(c->codec_id == CODEC_ID_SHORTEN) //ffmpeg bug workaround
+        m_totalTime = 0;
+#endif
+
     configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
     m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");
@@ -191,6 +196,7 @@ int DecoderFFmpeg::bitrate()
 
 qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
 {
+    qDebug("read");
     m_skipBytes = 0;
     if (m_skip)
     {
@@ -286,6 +292,8 @@ void DecoderFFmpeg::fillBuffer()
             while (m_skipBytes > 0)
             {
                 m_output_at = ffmpeg_decode(m_output_buf);
+                if(m_output_at < 0)
+                    break;
                 m_skipBytes -= m_output_at;
             }
 
@@ -302,18 +310,15 @@ void DecoderFFmpeg::fillBuffer()
 #else
         m_output_at = ffmpeg_decode(m_output_buf);
 #endif
-
         if(m_output_at < 0)
         {
-            m_output_at = 0;
-            m_temp_pkt.size = 0;
-            continue;
-        }
-        else if(m_output_at == 0)
-        {
+            qWarning("DecoderFFmpeg: decoder error");
             if(m_pkt.data)
                 av_free_packet(&m_pkt);
+            m_pkt.data = 0;
             m_temp_pkt.size = 0;
+            m_output_at = 0;
+            break;
         }
     }
 }
