@@ -46,9 +46,6 @@ public:
 
     ~EqWidget();
 
-    double preamp();
-    double gain(int);
-    bool isEQEnabled();
     /*!
     * necessary for auto-load presets
     */
@@ -56,13 +53,12 @@ public:
     void setMimimalMode(bool b = true);
 
 signals:
-    void valueChanged();
     void closed();
 
 private slots:
     void updateSkin();
-    void setPreamp();
-    void setGain();
+    void readEq();
+    void writeEq();
     void showPresetsMenu();
     void reset();
     void showEditor();

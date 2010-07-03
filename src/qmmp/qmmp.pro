@@ -31,7 +31,8 @@ HEADERS += recycler.h \
     metadatamanager.h \
     replaygain.h \
     audioconverter.h \
-    qmmpsettings.h
+    qmmpsettings.h \
+    eqsettings.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -56,7 +57,8 @@ SOURCES += recycler.cpp \
     metadatamanager.cpp \
     replaygain.cpp \
     audioconverter.cpp \
-    qmmpsettings.cpp
+    qmmpsettings.cpp \
+    eqsettings.cpp
 FORMS += 
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
@@ -78,29 +80,30 @@ contains(CONFIG, SVN_VERSION) {
 unix { 
     target.path = $$LIB_DIR
     devel.files += buffer.h \
-                   buffer.h \
-                   decoder.h \
-                   output.h \
-                   outputfactory.h \
-                   decoderfactory.h \
-                   soundcore.h \
-                   visual.h \
-                   visualfactory.h \
-                   effect.h \
-                   effectfactory.h \
-                   statehandler.h \
-                   qmmp.h \
-                   fileinfo.h \
-                   volumecontrol.h \
-                   metadatamodel.h \
-                   tagmodel.h \
-                   abstractengine.h \
-                   audioparameters.h \
-                   inputsource.h \
-                   inputsourcefactory.h \
-                   enginefactory.h \
-                   metadatamanager.h \
-                   qmmpsettings.h
+        buffer.h \
+        decoder.h \
+        output.h \
+        outputfactory.h \
+        decoderfactory.h \
+        soundcore.h \
+        visual.h \
+        visualfactory.h \
+        effect.h \
+        effectfactory.h \
+        statehandler.h \
+        qmmp.h \
+        fileinfo.h \
+        volumecontrol.h \
+        metadatamodel.h \
+        tagmodel.h \
+        abstractengine.h \
+        audioparameters.h \
+        inputsource.h \
+        inputsourcefactory.h \
+        enginefactory.h \
+        metadatamanager.h \
+        qmmpsettings.h \
+        eqsettings.h
     devel.path = /include/qmmp
     INSTALLS += target \
         devel

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,62 +18,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MPLAYERENGINE_H
-#define MPLAYERENGINE_H
+#ifndef EQSETTINGS_H
+#define EQSETTINGS_H
 
-#include <QQueue>
-#include <QString>
-#include <qmmp/statehandler.h>
-#include <qmmp/abstractengine.h>
-
-class Output;
-class QIDevice;
-class DecoderPhonon;
-class QMenu;
-class QProcess;
-class FileInfo;
-class InputSource;
-
-class MplayerInfo
+class EqSettings
 {
 public:
-    static FileInfo *createFileInfo(const QString &path);
-    static QStringList filters();
-};
+    EqSettings();
 
-class MplayerEngine : public AbstractEngine
-{
-    Q_OBJECT
-public:
-    MplayerEngine(QObject *parent);
-    virtual ~MplayerEngine();
+    bool isEnabled() const;
+    double gain(int chan) const;
+    double preamp() const;
+    void setEnabled(bool enabled = true);
+    void setGain(int chan, double gain);
+    void setPreamp(double preamp);
 
-    // Engine API
-    bool play();
-    bool enqueue(InputSource *source);
-    bool initialize();
-    qint64 totalTime();
-    void seek(qint64);
-    void stop();
-    void pause();
+    void operator=(const EqSettings &s);
+    bool operator==(const EqSettings &s) const;
+    bool operator!=(const EqSettings &s) const;
 
-private slots:
-    void readStdOut();
-    void startMplayerProcess();
 
 private:
-    int mplayer_pipe[2];
-    QString m_url;
-    QStringList m_args;
-    QProcess *m_process;
-    int m_bitrate;
-    int m_samplerate;
-    int m_channels;
-    int m_bitsPerSample;
-    qint64 m_currentTime;
-    qint64 m_length;
-    QQueue <QString> m_files;
+    double m_gain[10];
+    double m_preamp;
+    bool m_is_enabled;
+
 };
 
-
-#endif // MPLAYERENGINE_H
+#endif // EQSETTINGS_H

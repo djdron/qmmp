@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,62 +18,64 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef MPLAYERENGINE_H
-#define MPLAYERENGINE_H
+#include "eqsettings.h"
 
-#include <QQueue>
-#include <QString>
-#include <qmmp/statehandler.h>
-#include <qmmp/abstractengine.h>
-
-class Output;
-class QIDevice;
-class DecoderPhonon;
-class QMenu;
-class QProcess;
-class FileInfo;
-class InputSource;
-
-class MplayerInfo
+EqSettings::EqSettings()
 {
-public:
-    static FileInfo *createFileInfo(const QString &path);
-    static QStringList filters();
-};
+    for(int i = 0; i < 10; ++i)
+        m_gain[i] = 0;
+    m_preamp = 0;
+}
 
-class MplayerEngine : public AbstractEngine
+bool EqSettings::isEnabled() const
 {
-    Q_OBJECT
-public:
-    MplayerEngine(QObject *parent);
-    virtual ~MplayerEngine();
+    return m_is_enabled;
+}
 
-    // Engine API
-    bool play();
-    bool enqueue(InputSource *source);
-    bool initialize();
-    qint64 totalTime();
-    void seek(qint64);
-    void stop();
-    void pause();
+double EqSettings::gain(int chan) const
+{
+    return m_gain[chan];
+}
 
-private slots:
-    void readStdOut();
-    void startMplayerProcess();
+double EqSettings::preamp() const
+{
+    return m_preamp;
+}
 
-private:
-    int mplayer_pipe[2];
-    QString m_url;
-    QStringList m_args;
-    QProcess *m_process;
-    int m_bitrate;
-    int m_samplerate;
-    int m_channels;
-    int m_bitsPerSample;
-    qint64 m_currentTime;
-    qint64 m_length;
-    QQueue <QString> m_files;
-};
+void EqSettings::setEnabled(bool enabled)
+{
+    m_is_enabled = enabled;
+}
 
+void EqSettings::setGain(int chan, double gain)
+{
+    m_gain[chan] = gain;
+}
 
-#endif // MPLAYERENGINE_H
+void EqSettings::setPreamp(double preamp)
+{
+    m_preamp = preamp;
+}
+
+void EqSettings::operator=(const EqSettings &s)
+{
+    for(int i = 0; i < 10; ++i)
+        m_gain[i] = s.m_gain[i];
+    m_preamp = s.m_preamp;
+    m_is_enabled = s.m_is_enabled;
+}
+
+bool EqSettings::operator==(const EqSettings &s) const
+{
+    for(int i = 0; i < 10; ++i)
+    {
+        if(m_gain[i] != s.m_gain[i])
+            return false;
+    }
+    return (m_preamp == s.m_preamp) && (m_is_enabled == s.m_is_enabled);
+}
+
+bool EqSettings::operator!=(const EqSettings &s) const
+{
+    return !operator==(s);
+}

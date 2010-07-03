@@ -42,17 +42,13 @@ SoundCore::SoundCore(QObject *parent)
     m_instance = this;
     m_decoder = 0;
     m_paused = false;
-    m_useEQ = false;
     m_update = false;
     m_block = false;
-    m_preamp = 0;
     m_vis = 0;
     m_parentWidget = 0;
     m_engine = 0;
     m_pendingEngine = 0;
     m_volumeControl = 0;
-    for (int i = 1; i < 10; ++i)
-        m_bands[i] = 0;
     m_handler = new StateHandler(this);
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
     connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
@@ -65,9 +61,9 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(aboutToFinish()), SIGNAL(aboutToFinish()));
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
     updateVolume();
+    connect(QmmpSettings::instance(), SIGNAL(eqSettingsChanged()), SIGNAL(eqSettingsChanged()));
     connect(QmmpSettings::instance(), SIGNAL(audioSettingsChanged()), SLOT(updateVolume()));
 }
-
 
 SoundCore::~SoundCore()
 {
@@ -137,26 +133,14 @@ qint64 SoundCore::totalTime() const
     return  (m_engine) ? m_engine->totalTime() : 0;
 }
 
-void SoundCore::setEQ(double bands[10], double preamp)
+EqSettings SoundCore::eqSettings() const
 {
-    for (int i = 0; i < 10; ++i)
-        m_bands[i] = bands[i];
-    m_preamp = preamp;
-    if (m_engine)
-    {
-        m_engine->setEQ(m_bands, m_preamp);
-        m_engine->setEQEnabled(m_useEQ);
-    }
+    return QmmpSettings::instance()->eqSettings();
 }
 
-void SoundCore::setEQEnabled(bool on)
+void SoundCore::setEqSettings(const EqSettings &settings)
 {
-    m_useEQ = on;
-    if (m_engine)
-    {
-        m_engine->setEQ(m_bands, m_preamp);
-        m_engine->setEQEnabled(on);
-    }
+    QmmpSettings::instance()->setEqSettings(settings);
 }
 
 void SoundCore::setVolume(int L, int R)
@@ -238,8 +222,6 @@ bool SoundCore::enqueue(InputSource *s)
         connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
     }
 
-    setEQ(m_bands, m_preamp);
-    setEQEnabled(m_useEQ);
     if(m_engine->enqueue(s))
     {
         if(state() == Qmmp::Stopped || state() == Qmmp::Buffering)
@@ -274,8 +256,6 @@ bool SoundCore::enqueue(InputSource *s)
             return false;
         }
         connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
-        engine->setEQ(m_bands, m_preamp);
-        engine->setEQEnabled(m_useEQ);
         if (m_handler->state() == Qmmp::Playing || m_handler->state() == Qmmp::Paused)
         {
             if(m_pendingEngine)

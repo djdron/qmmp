@@ -51,9 +51,8 @@ EqWidget::EqWidget (QWidget *parent)
     m_preamp = new EqSlider (this);
     connect (m_preamp,SIGNAL (sliderMoved (double)),SLOT (setPreamp ()));
 
-    m_on = new ToggleButton (this,Skin::EQ_BT_ON_N,Skin::EQ_BT_ON_P,
-                             Skin::EQ_BT_OFF_N,Skin::EQ_BT_OFF_P);
-    connect (m_on, SIGNAL (clicked(bool)), SIGNAL(valueChanged()));
+    m_on = new ToggleButton (this,Skin::EQ_BT_ON_N,Skin::EQ_BT_ON_P, Skin::EQ_BT_OFF_N,Skin::EQ_BT_OFF_P);
+    connect (m_on, SIGNAL (clicked(bool)), SLOT(writeEq()));
 
     m_autoButton = new ToggleButton(this, Skin::EQ_BT_AUTO_1_N, Skin::EQ_BT_AUTO_1_P,
                                     Skin::EQ_BT_AUTO_0_N, Skin::EQ_BT_AUTO_0_P);
@@ -61,11 +60,12 @@ EqWidget::EqWidget (QWidget *parent)
     m_presetsMenu = new QMenu(this);
     m_presetButton = new Button (this, Skin::EQ_BT_PRESETS_N, Skin::EQ_BT_PRESETS_P, Skin::CUR_EQNORMAL);
     connect(m_presetButton, SIGNAL(clicked()), SLOT(showPresetsMenu()));
+    connect(SoundCore::instance(), SIGNAL(eqSettingsChanged()), SLOT(readEq()));
 
     for (int i = 0; i<10; ++i)
     {
         m_sliders << new EqSlider (this);
-        connect (m_sliders.at (i), SIGNAL (sliderMoved (double)),SLOT (setGain()));
+        connect (m_sliders.at (i), SIGNAL (sliderMoved (double)),SLOT (writeEq()));
     }
     readSettings();
     createActions();
@@ -100,16 +100,6 @@ void EqWidget::updatePositions()
     m_presetButton->move(217*r,18*r);
      for (int i = 0; i < 10; ++i)
          m_sliders.at (i)->move ((78+i*18)*r,38*r);
-}
-
-double EqWidget::preamp()
-{
-    return m_preamp->value();
-}
-
-double EqWidget::gain (int g)
-{
-    return m_sliders.at (g)->value();
 }
 
 void EqWidget::changeEvent (QEvent * event)
@@ -151,17 +141,8 @@ void EqWidget::setMimimalMode(bool b)
 void EqWidget::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup ("Equalizer");
-    //geometry
-    move (settings.value ("pos", QPoint (100, 216)).toPoint());
-    //equalizer
-    for (int i = 0; i < m_sliders.size(); ++i)
-        m_sliders.at(i)->setValue(settings.value("band_"+
-                                  QString("%1").arg(i), 0).toDouble());
-    m_preamp->setValue(settings.value("preamp", 0).toDouble());
-    m_on->setON(settings.value("enabled", false).toBool());
-    settings.endGroup();
-    setGain();
+    move (settings.value ("Equalizer/pos", QPoint (100, 216)).toPoint()); //geometry
+    readEq();
     //equalizer presets
     QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
     for (int i = 1; true; ++i)
@@ -213,15 +194,7 @@ void EqWidget::readSettings()
 void EqWidget::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup ("Equalizer");
-    //geometry
-    settings.setValue ("pos", this->pos());
-    //equalizer
-    for (int i = 0; i < m_sliders.size(); ++i)
-        settings.setValue("band_"+QString("%1").arg(i), m_sliders.at(i)->value());
-    settings.setValue("preamp", m_preamp->value());
-    settings.setValue("enabled",m_on->isChecked());
-    settings.endGroup();
+    settings.setValue ("Equalizer/pos", this->pos()); //geometry
     //equalizer presets
     QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
     eq_preset.clear ();
@@ -255,25 +228,31 @@ void EqWidget::writeSettings()
     }
 }
 
-void EqWidget::setPreamp ()
-{
-    emit valueChanged();
-}
-
-void EqWidget::setGain()
+void EqWidget::readEq()
 {
     m_eqg->clear();
+    EqSettings eqSettings = SoundCore::instance()->eqSettings();
+    m_preamp->setValue(eqSettings.preamp());
     for (int i=0; i<10; ++i)
     {
-        int value = m_sliders.at(i)->value();
-        m_eqg->addValue(value);
+        m_sliders.at(i)->setValue(eqSettings.gain(i));
+        m_eqg->addValue(m_sliders.at(i)->value());
     }
-    emit valueChanged();
+    m_on->setON(eqSettings.isEnabled());
 }
 
-bool EqWidget::isEQEnabled()
+void EqWidget::writeEq()
 {
-    return m_on->isChecked();
+    m_eqg->clear();
+    EqSettings eqSettings;
+    eqSettings.setPreamp(m_preamp->value());
+    for (int i=0; i<10; ++i)
+    {
+        eqSettings.setGain(i,m_sliders.at(i)->value());
+        m_eqg->addValue(m_sliders.at(i)->value());
+    }
+    eqSettings.setEnabled(m_on->isChecked());
+    SoundCore::instance()->setEqSettings(eqSettings);
 }
 
 void EqWidget::createActions()
@@ -300,7 +279,7 @@ void EqWidget::reset()
     for (int i = 0; i < m_sliders.size(); ++i)
         m_sliders.at(i)->setValue(0);
     m_preamp->setValue(0);
-    setGain();
+    writeEq();
 }
 
 void EqWidget::showEditor()
@@ -363,7 +342,8 @@ void EqWidget::setPreset(EQPreset* preset)
     for (int i = 0; i<10; ++i)
         m_sliders.at(i)->setValue(preset->gain(i));
     m_preamp->setValue(preset->preamp());
-    setGain();
+    //setGain();
+    writeEq();
 }
 
 void EqWidget::deletePreset(EQPreset* preset)

@@ -114,7 +114,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect(m_display,SIGNAL(shuffleToggled(bool)),m_pl_manager,SLOT(setShuffle(bool)));
     connect(m_display,SIGNAL(repeatableToggled(bool)),m_pl_manager,SLOT(setRepeatableList(bool)));
 
-    connect(m_equalizer, SIGNAL(valueChanged()), SLOT(updateEQ()));
     connect(m_jumpDialog,SIGNAL(playRequest()), SLOT(replay()));
 
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
@@ -129,7 +128,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_display->setPL(m_playlist);
     dock->updateDock();
     m_pl_manager->currentPlayList()->doCurrentVisibleRequest();
-    updateEQ();
 #ifndef Q_OS_WIN32
     QString cwd = QDir::currentPath();
     processCommandArgs(args,cwd);
@@ -194,15 +192,6 @@ void MainWindow::next()
 void MainWindow::previous()
 {
     m_player->previous();
-}
-
-void MainWindow::updateEQ()
-{
-    double b[10];
-    for (int i=0; i<10; ++i)
-        b[i] = m_equalizer->gain(i);
-    m_core->setEQ(b, m_equalizer->preamp());
-    m_core->setEQEnabled(m_equalizer->isEQEnabled());
 }
 
 void MainWindow::showState(Qmmp::State state)
