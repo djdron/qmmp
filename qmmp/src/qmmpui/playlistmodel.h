@@ -390,7 +390,7 @@ public slots:
      */
     void sort(int mode);
     /*!
-     * Adds/removes first selected item to/from playback queue.
+     * Adds/removes selected items to/from playback queue.
      */
     void addToQueue();
     /*!
