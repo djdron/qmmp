@@ -46,10 +46,10 @@ bool UnixDomainSocket::bind(const QString& path){
     bzero(&_local,sizeof(_local));
     _local.sun_family = AF_UNIX;
     strcpy(_local.sun_path,path.toLocal8Bit().data());
-    len = strlen(_local.sun_path) + sizeof(_local.sun_family);
+    len = strlen(_local.sun_path) + sizeof(_local.sun_family) + 1;
     bool res = !(::bind(_s, (struct sockaddr *)&_local, len));
     if(res)
-	_bound = true;
+        _bound = true;
     return res;
 }
 
