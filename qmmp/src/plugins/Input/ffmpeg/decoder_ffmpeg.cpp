@@ -195,7 +195,6 @@ int DecoderFFmpeg::bitrate()
 
 qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
 {
-    qDebug("read");
     m_skipBytes = 0;
     if (m_skip)
     {
