@@ -43,8 +43,6 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
         m_useEq(false), m_eqEnabled(false)
 {
     m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
-    double b[] = {0,0,0,0,0,0,0,0,0,0};
-    setEQ(b, 0);
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
     m_effects = Effect::create();
     m_bks = QMMP_BLOCK_SIZE;
@@ -53,6 +51,8 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_replayGain = new ReplayGain;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(replayGainSettingsChanged()), SLOT(updateReplayGainSettings()));
+    connect(m_settings,SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
+    updateEqSettings();
     updateReplayGainSettings();
     reset();
     m_instance = this;
@@ -148,29 +148,6 @@ qint64 QmmpAudioEngine::totalTime()
         return m_decoder->totalTime();
     else
         return 0;
-}
-
-void QmmpAudioEngine::setEQ(double bands[10], double preamp)
-{
-    mutex()->lock();
-    set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    for (int i=0; i<10; ++i)
-    {
-        double value = bands[i];
-        set_gain(i,0, 0.03*value+0.000999999*value*value);
-        set_gain(i,1, 0.03*value+0.000999999*value*value);
-    }
-    mutex()->unlock();
-}
-
-void QmmpAudioEngine::setEQEnabled(bool on)
-{
-    mutex()->lock();
-    m_eqEnabled = on;
-    if(m_decoder)
-        m_useEq = m_eqEnabled && m_decoder->audioParameters().format() == Qmmp::PCM_S16LE;
-    mutex()->unlock();
 }
 
 void QmmpAudioEngine::addEffect(EffectFactory *factory)
@@ -351,6 +328,24 @@ void QmmpAudioEngine::finish()
         m_output->mutex()->unlock();
     }
     emit playbackFinished();
+}
+
+void QmmpAudioEngine::updateEqSettings()
+{
+    mutex()->lock();
+    m_eqEnabled = m_settings->eqSettings().isEnabled();
+    double preamp = m_settings->eqSettings().preamp();
+    set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+    set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+    for(int i = 0; i < 10; ++i)
+    {
+        double value =  m_settings->eqSettings().gain(i);
+        set_gain(i,0, 0.03*value+0.000999999*value*value);
+        set_gain(i,1, 0.03*value+0.000999999*value*value);
+    }
+    if(m_decoder)
+        m_useEq = m_eqEnabled && m_decoder->audioParameters().format() == Qmmp::PCM_S16LE;
+    mutex()->unlock();
 }
 
 void QmmpAudioEngine::updateReplayGainSettings()

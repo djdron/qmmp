@@ -94,7 +94,6 @@ private slots:
     void showState(Qmmp::State state);
     void showMetaData();
     void showSettings();
-    void updateEQ();
     void forward();
     void backward();
     void handleCloseRequest();

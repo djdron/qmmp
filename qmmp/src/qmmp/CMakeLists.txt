@@ -56,6 +56,7 @@ SET(libqmmp_SRCS
     replaygain.cpp
     qmmpsettings.cpp
     audioconverter.cpp
+    eqsettings.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -91,6 +92,7 @@ SET(libqmmp_MOC_HDRS
     replaygain.h
     qmmpsettings.h
     audioconverter.h
+    eqsettings.h
 )
 
 SET(libqmmp_DEVEL_HDRS
@@ -118,6 +120,7 @@ SET(libqmmp_DEVEL_HDRS
     enginefactory.h
     metadatamanager.h
     qmmpsettings.h
+    eqsettings.h
 )
 
 QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})

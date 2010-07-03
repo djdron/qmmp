@@ -53,8 +53,6 @@ public:
     void seek(qint64 time);
     void stop();
     void pause();
-    void setEQ(double bands[10], double preamp);
-    void setEQEnabled(bool on);
     void addEffect(EffectFactory *factory);
     void removeEffect(EffectFactory *factory);
 
@@ -62,6 +60,7 @@ public:
 
 private slots:
     void finish();
+    void updateEqSettings();
     void updateReplayGainSettings();
 
 private:

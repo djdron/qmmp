@@ -178,17 +178,6 @@ void MplayerEngine::pause()
     m_process->write("pause\n");
 }
 
-void MplayerEngine::setEQ(double bands[10], double preamp)
-{
-    Q_UNUSED(bands[10]);
-    Q_UNUSED(preamp);
-}
-
-void MplayerEngine::setEQEnabled(bool on)
-{
-    Q_UNUSED(on);
-}
-
 void MplayerEngine::readStdOut()
 {
     QString line = QString::fromLocal8Bit(m_process->readAll ()).trimmed();

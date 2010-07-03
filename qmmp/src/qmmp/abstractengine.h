@@ -83,12 +83,12 @@ public:
      * Sets equalizer settings. Each item of \p bands[] and \p reamp should be \b -20.0..20.0
      * Subclass should reimplement this function.
      */
-    virtual void setEQ(double bands[10], double preamp) = 0;
+    //virtual void setEQ(double bands[10], double preamp) = 0;
     /*!
      * Enables equalizer if \p on is \b true or disables it if \p on is \b false
      * Subclass should reimplement this function.
      */
-    virtual void setEQEnabled(bool on) = 0;
+    //virtual void setEQEnabled(bool on) = 0;
     /*!
      * Returns a list of decoder factories.
      */

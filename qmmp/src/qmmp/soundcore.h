@@ -27,6 +27,7 @@
 #include "visual.h"
 #include "qmmp.h"
 #include "qmmpsettings.h"
+#include "eqsettings.h"
 
 class QIODevice;
 class VolumeControl;
@@ -53,15 +54,10 @@ public:
      * Returns length in milliseconds
      */
     qint64 totalTime() const;
-    /*!
-     * Sets equalizer settings. Each item of \p bands[] and \p reamp should be
-     *  \b -20.0..20.0
-     */
-    void setEQ(double bands[10], double preamp);
-    /*!
-     * Enables equalizer if \p on is \b true or disables it if \p on is \b false
-     */
-    void setEQEnabled(bool on);
+
+    EqSettings eqSettings() const;
+    void setEqSettings(const EqSettings &settings);
+
     /*!
      * Returns left volume level.
      */
@@ -187,6 +183,7 @@ signals:
      * @param right Right channel volume level. It should be \b [0..100]
      */
     void volumeChanged(int left, int right);
+    void eqSettingsChanged();
     /*!
      * Emitted before the playback ends.
      */
@@ -202,11 +199,8 @@ private:
     QString m_url;
     uint m_error;
     bool m_paused;
-    bool m_useEQ;
     bool m_update;
     bool m_block;
-    double m_preamp;
-    double m_bands[10];
     Visual *m_vis;
     QList <Visual*> m_visuals;
     QWidget *m_parentWidget;

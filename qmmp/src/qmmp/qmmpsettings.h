@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QUrl>
 #include <QStringList>
+#include "eqsettings.h"
 
 /*! @brief The QmmpSettings class provides access to global settings.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -131,6 +132,10 @@ public:
      * @param proxy Proxy url.
      */
     void setNetworkSettings(bool use_proxy, bool auth, const QUrl &proxy);
+
+
+    EqSettings eqSettings() const;
+    void setEqSettings(const EqSettings &settings);
     /*!
      * Returns a pointer to the QmmpSettings instance.
      */
@@ -153,6 +158,10 @@ signals:
      * Emitted when network settings are changed.
      */
     void networkSettingsChanged();
+    /*!
+     * Emitted when equalizer settings are changed.
+     */
+    void eqSettingsChanged();
 
 private slots:
     void sync();
@@ -175,6 +184,8 @@ private:
     bool m_proxy_enabled;
     bool m_proxy_auth;
     QUrl m_proxy_url;
+    //equalizer settings
+    EqSettings m_eq_settings;
 
     static QmmpSettings* m_instance;
 
