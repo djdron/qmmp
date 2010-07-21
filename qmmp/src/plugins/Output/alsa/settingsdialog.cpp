@@ -91,7 +91,7 @@ void SettingsDialog::getCards()
 
 void SettingsDialog::getSoftDevices()
 {
-#if SND_LIB_VERSION >= 0x011600 //1.22.00
+#if SND_LIB_VERSION >= 0x010016 //1.0.22
     void **hints = 0;
     int i = 0;
 
