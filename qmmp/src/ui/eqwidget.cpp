@@ -49,7 +49,7 @@ EqWidget::EqWidget (QWidget *parent)
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
 
     m_preamp = new EqSlider (this);
-    connect (m_preamp,SIGNAL (sliderMoved (double)),SLOT (setPreamp ()));
+    connect (m_preamp,SIGNAL (sliderMoved (double)),SLOT (writeEq()));
 
     m_on = new ToggleButton (this,Skin::EQ_BT_ON_N,Skin::EQ_BT_ON_P, Skin::EQ_BT_OFF_N,Skin::EQ_BT_OFF_P);
     connect (m_on, SIGNAL (clicked(bool)), SLOT(writeEq()));
