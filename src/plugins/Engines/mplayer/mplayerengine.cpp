@@ -42,7 +42,6 @@ static QRegExp rx_audio("^AUDIO: *([0-9,.]+) *Hz.*([0-9,.]+) *ch.*([0-9]+).* ([0
 
 FileInfo *MplayerInfo::createFileInfo(const QString &path)
 {
-    qDebug("%s", Q_FUNC_INFO);
     QRegExp rx_id_length("^ID_LENGTH=([0-9,.]+)*");
     QStringList args;
     args << "-slave";
@@ -68,7 +67,6 @@ FileInfo *MplayerInfo::createFileInfo(const QString &path)
 #ifdef MPLAYER_DEBUG
     qDebug("%s",qPrintable(str));
 #endif
-    qDebug("%s+", Q_FUNC_INFO);
     return info;
 }
 
@@ -83,7 +81,7 @@ QStringList MplayerInfo::filters()
 MplayerEngine::MplayerEngine(QObject *parent)
         : AbstractEngine(parent)
 {
-    //m_url = url;
+    m_source = 0;
     m_bitrate = 0;
     m_samplerate = 0;
     m_channels = 0;
@@ -98,6 +96,8 @@ MplayerEngine::~MplayerEngine()
 {
     qDebug("%s",__FUNCTION__);
     m_process->kill();
+    while(!m_sources.isEmpty())
+        m_sources.dequeue()->deleteLater();
 }
 
 bool MplayerEngine::play()
@@ -122,17 +122,17 @@ bool MplayerEngine::enqueue(InputSource *source)
     }
     if(!supports)
         return false;
-    source->deleteLater();
+
     if(m_process->state() == QProcess::NotRunning)
-        m_url = url;
+        m_source = source;
     else
-        m_files.enqueue(url);
+        m_sources.enqueue(source);
     return true;
 }
 
 bool MplayerEngine::initialize()
 {
-    FileInfo *info = MplayerInfo::createFileInfo(m_url);
+    FileInfo *info = MplayerInfo::createFileInfo(m_source->url());
     m_length = info->length();
     delete info;
     m_args.clear();
@@ -148,7 +148,9 @@ bool MplayerEngine::initialize()
     if (settings.value("autosync", false).toBool())
         m_args << "-autosync" << QString("%1").arg(settings.value("autosync_factor", 100).toInt());
 
-    m_args << m_url;
+    if(m_source->offset() > 0)
+        m_args << "-ss" << QString("%1").arg(m_source->offset()/1000);
+    m_args << m_source->url();
     return true;
 }
 
@@ -171,8 +173,8 @@ void MplayerEngine::stop()
         m_process->waitForFinished(1500);
     }
     StateHandler::instance()->dispatch(Qmmp::Stopped);
-    m_files.clear();
-    m_url.clear();
+    while(!m_sources.isEmpty())
+        m_sources.dequeue()->deleteLater();
 }
 
 void MplayerEngine::pause()
@@ -205,10 +207,10 @@ void MplayerEngine::readStdOut()
             if (m_process->state() == QProcess::Running)
                 m_process->waitForFinished(3500);
             emit playbackFinished();
-            if(!m_files.isEmpty())
+            if(!m_sources.isEmpty())
             {
                 StateHandler::instance()->dispatch(Qmmp::Stopped);
-                m_url = m_files.dequeue();
+                m_source = m_sources.dequeue();
                 startMplayerProcess();
             }
             else
@@ -242,7 +244,9 @@ void MplayerEngine::startMplayerProcess()
     initialize();
     m_process->start ("mplayer", m_args);
     StateHandler::instance()->dispatch(Qmmp::Playing);
-    FileInfo *info = MplayerInfo::createFileInfo(m_url);
+    FileInfo *info = MplayerInfo::createFileInfo(m_source->url());
     StateHandler::instance()->dispatch(info->metaData());
     delete info;
+    m_source->deleteLater();
+    m_source = 0;
 }

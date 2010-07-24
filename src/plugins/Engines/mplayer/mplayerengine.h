@@ -63,7 +63,6 @@ private slots:
 
 private:
     int mplayer_pipe[2];
-    QString m_url;
     QStringList m_args;
     QProcess *m_process;
     int m_bitrate;
@@ -72,7 +71,8 @@ private:
     int m_bitsPerSample;
     qint64 m_currentTime;
     qint64 m_length;
-    QQueue <QString> m_files;
+    QQueue <InputSource*> m_sources;
+    InputSource *m_source;
 };
 
 
