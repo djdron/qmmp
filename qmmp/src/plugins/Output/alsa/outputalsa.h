@@ -44,15 +44,16 @@ public:
     bool initialize();
     void configure(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
-    void pause();
 
 private:
     //output api
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
-    void flush();
+    void drain();
+    void reset();
+    void suspend();
+    void resume();
 
     // helper functions
-    void reset();
     long alsa_write(unsigned char *data, long size);
     void uninitialize();
 
@@ -67,7 +68,6 @@ private:
     uchar *m_prebuf;
     qint64 m_prebuf_size;
     qint64 m_prebuf_fill;
-    bool m_pause;
     bool m_can_pause;
 };
 

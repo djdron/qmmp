@@ -679,7 +679,7 @@
         <translation type="unfinished">&amp;Importar</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="392"/>
+        <location filename="../eqwidget.cpp" line="391"/>
         <source>Import Preset</source>
         <translation type="unfinished">Importar Preset</translation>
     </message>

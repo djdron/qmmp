@@ -679,7 +679,7 @@
         <translation>&amp;Імпортувати</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="392"/>
+        <location filename="../eqwidget.cpp" line="391"/>
         <source>Import Preset</source>
         <translation>Імпорт предвстановлення</translation>
     </message>

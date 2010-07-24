@@ -62,7 +62,7 @@ public:
      * Requests playback to pause. If it was paused already, playback should resume.
      * Subclasses that reimplement this function must call the base implementation.
      */
-    virtual void pause();
+    void pause();
     /*!
      * Requests playback to stop.
      */
@@ -142,7 +142,20 @@ protected:
      * Writes all remaining plugin's internal data to audio output device.
      * Subclass should reimplement this function.
      */
-    virtual void flush() = 0;
+    virtual void drain() = 0;
+    /*!
+     * Drops all plugin's internal data, resets audio device
+     * Subclass should reimplement this function.
+     */
+    virtual void reset() = 0;
+    /*!
+     * Stops processing audio data, preserving buffered audio data.
+     */
+    virtual void suspend();
+    /*!
+     * Resumes processing audio data.
+     */
+    virtual void resume();
 
 private:
     void run(); //thread run function
@@ -155,6 +168,7 @@ private:
     void dispatch(const Qmmp::State &state);
     void dispatchVisual(Buffer *buffer);
     void clearVisuals();
+    bool m_skip;
     QMutex m_mutex;
     Recycler m_recycler;
     StateHandler *m_handler;
@@ -163,6 +177,7 @@ private:
     Qmmp::AudioFormat m_format;
     qint64 m_bytesPerMillisecond;
     bool m_userStop, m_pause;
+    bool m_prev_pause;
     bool m_finish;
     qint64 m_totalWritten, m_currentMilliseconds;
     unsigned char *m_visBuffer;

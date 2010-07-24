@@ -94,6 +94,11 @@ qint64 OutputJACK::writeAudio(unsigned char *data, qint64 maxSize)
     return m;
 }
 
+void OutputJACK::reset()
+{
+    JACK_Reset(jack_device);
+}
+
 void OutputJACK::uninitialize()
 {
     if (!m_inited)
