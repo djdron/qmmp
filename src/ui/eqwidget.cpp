@@ -342,7 +342,6 @@ void EqWidget::setPreset(EQPreset* preset)
     for (int i = 0; i<10; ++i)
         m_sliders.at(i)->setValue(preset->gain(i));
     m_preamp->setValue(preset->preamp());
-    //setGain();
     writeEq();
 }
 
