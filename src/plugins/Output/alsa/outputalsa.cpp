@@ -47,7 +47,6 @@ OutputALSA::OutputALSA(QObject * parent)
     m_prebuf = 0;
     m_prebuf_size = 0;
     m_prebuf_fill = 0;
-    m_pause = false;
     m_can_pause = false;
 }
 
@@ -123,8 +122,7 @@ void OutputALSA::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
         qDebug("OutputALSA: Error setting format: %s", snd_strerror(err));
         return;
     }
-    exact_rate = rate;// = 11000;
-    //qDebug("OutputALSA: frequency=%d, channels=%d, bits=%d", rate, chan,prec);
+    exact_rate = rate;
 
     if ((err = snd_pcm_hw_params_set_rate_near(pcm_handle, hwparams, &exact_rate, 0)) < 0)
     {
@@ -187,22 +185,8 @@ void OutputALSA::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     qDebug("OutputALSA: can pause: %d", m_can_pause);
     Output::configure(freq, chan, format); //apply configuration
     //create alsa prebuffer;
-    m_prebuf_size = QMMP_BLOCK_SIZE + m_bits_per_frame * m_chunk_size / 8;
+    m_prebuf_size = QMMP_BUFFER_SIZE + m_bits_per_frame * m_chunk_size / 8;
     m_prebuf = (uchar *)malloc(m_prebuf_size);
-}
-
-void OutputALSA::reset()
-{
-    if (pcm_handle)
-    {
-        snd_pcm_close(pcm_handle);
-        pcm_handle = 0;
-    }
-    if (snd_pcm_open(&pcm_handle, pcm_name, SND_PCM_STREAM_PLAYBACK, SND_PCM_NONBLOCK) < 0)
-    {
-        qWarning ("OutputALSA: Error opening PCM device %s", pcm_name);
-        return;
-    }
 }
 
 bool OutputALSA::initialize()
@@ -228,29 +212,55 @@ qint64 OutputALSA::latency()
     return m_prebuf_fill * 1000 / sampleRate() / numChannels() / sampleSize();
 }
 
-void OutputALSA::pause()
+void OutputALSA::drain()
 {
-    m_pause = !m_pause;
-    if (m_can_pause)
-        snd_pcm_pause(pcm_handle, m_pause);
-    else if (m_pause && pcm_handle)
+    long m = 0;
+    snd_pcm_uframes_t l = snd_pcm_bytes_to_frames(pcm_handle, m_prebuf_fill);
+    while (l > 0)
     {
-        snd_pcm_drop(pcm_handle);
-        snd_pcm_prepare(pcm_handle);
+        if ((m = alsa_write(m_prebuf, l)) >= 0)
+        {
+            l -= m;
+            m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
+            m_prebuf_fill -= m;
+            memcpy(m_prebuf, m_prebuf + m, m_prebuf_fill);
+        }
+        else
+            break;
     }
-    Output::pause();
+    snd_pcm_nonblock(pcm_handle, 0);
+    snd_pcm_drain(pcm_handle);
+    snd_pcm_nonblock(pcm_handle, 1);
+}
+
+void OutputALSA::reset()
+{
+    m_prebuf_fill = 0;
+    snd_pcm_drop(pcm_handle);
+    snd_pcm_prepare(pcm_handle);
+}
+
+void OutputALSA::suspend()
+{
+    if (m_can_pause)
+        snd_pcm_pause(pcm_handle, 1);
+    snd_pcm_prepare(pcm_handle);
+}
+
+void OutputALSA::resume()
+{
+    if (m_can_pause)
+        snd_pcm_pause(pcm_handle, 0);
+    snd_pcm_prepare(pcm_handle);
 }
 
 qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
 {
-    //increase buffer size if needed
-    if (m_prebuf_size < m_prebuf_fill + maxSize)
+    if((maxSize = qMin(maxSize, m_prebuf_size - m_prebuf_fill)) > 0)
     {
-        m_prebuf_size = m_prebuf_fill + maxSize;
-        m_prebuf = (uchar*) realloc(m_prebuf, m_prebuf_size);
+        memcpy(m_prebuf + m_prebuf_fill, data, maxSize);
+        m_prebuf_fill += maxSize;
     }
-    memcpy(m_prebuf + m_prebuf_fill, data, maxSize);
-    m_prebuf_fill += maxSize;
 
     snd_pcm_uframes_t l = snd_pcm_bytes_to_frames(pcm_handle, m_prebuf_fill);
 
@@ -271,28 +281,6 @@ qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
     return maxSize;
 }
 
-void OutputALSA::flush()
-{
-    snd_pcm_uframes_t l = snd_pcm_bytes_to_frames(pcm_handle, m_prebuf_fill);
-    long m;
-    l = snd_pcm_bytes_to_frames(pcm_handle, l);
-    while (l > 0)
-    {
-        if ((m = alsa_write(m_prebuf, l)) >= 0)
-        {
-            l -= m;
-            m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
-            m_prebuf_fill -= m;
-            memcpy(m_prebuf, m_prebuf + m, m_prebuf_fill);
-        }
-        else
-            break;
-    }
-    snd_pcm_nonblock(pcm_handle, 0);
-    snd_pcm_drain(pcm_handle);
-    snd_pcm_nonblock(pcm_handle, 1);
-}
-
 long OutputALSA::alsa_write(unsigned char *data, long size)
 {
     long m = 0;
@@ -303,18 +291,18 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
 
     if (m == -EAGAIN)
     {
-        //mutex()->unlock();
+        mutex()->unlock();
         snd_pcm_wait(pcm_handle, 500);
-        //mutex()->lock ();
+        mutex()->lock ();
         return 0;
     }
     else if (m >= 0)
     {
         if (m < size)
         {
-            //mutex()->unlock();
+            mutex()->unlock();
             snd_pcm_wait(pcm_handle, 500);
-            //mutex()->lock ();
+            mutex()->lock ();
         }
         return m;
     }

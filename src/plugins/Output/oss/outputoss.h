@@ -44,18 +44,12 @@ public:
 private:
     //output api
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
-    void flush(){};
+    void drain();
+    void reset();
 
 private:
-    // thread run function
-    //void run();
-
-    // helper functions
-    void reset();
-    void resetDSP();
     void post();
     void sync();
-    //void openMixer();
     void uninitialize();
 
     QString m_audio_device, m_mixer_device;

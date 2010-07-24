@@ -219,11 +219,8 @@ void QmmpAudioEngine::seek(qint64 time)
 void QmmpAudioEngine::pause()
 {
     if (m_output)
-    {
-        m_output->mutex()->lock ();
         m_output->pause();
-        m_output->mutex()->unlock();
-    }
+
 
     // wake up threads
     if (m_decoder)
@@ -505,16 +502,15 @@ void QmmpAudioEngine::flush(bool final)
     while ((!m_done && !m_finish) && m_output_at > min)
     {
         m_output->recycler()->mutex()->lock ();
-        if(m_seekTime >= 0)
-        {
-            m_output->recycler()->clear();
-            m_output->recycler()->mutex()->unlock ();
-            m_output_at = 0;
-            break;
-        }
 
         while ((m_output->recycler()->full() || m_output->recycler()->blocked()) && (!m_done && !m_finish))
         {
+            if(m_seekTime > 0)
+            {
+                m_output_at = 0;
+                m_output->recycler()->mutex()->unlock ();
+                return;
+            }
             mutex()->unlock();
             m_output->recycler()->cond()->wait(m_output->recycler()->mutex());
             mutex()->lock ();

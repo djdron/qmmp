@@ -679,7 +679,7 @@
         <translation>Voreinstellung #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="392"/>
+        <location filename="../eqwidget.cpp" line="391"/>
         <source>Import Preset</source>
         <translation>Voreinstellung importieren</translation>
     </message>

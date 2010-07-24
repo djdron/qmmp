@@ -81,22 +81,13 @@ int OutputOSS::audio_fd()
 
 OutputOSS::~OutputOSS()
 {
-     m_instance = 0;
-    if (m_audio_fd > 0)
-    {
-        close(m_audio_fd);
-        m_audio_fd = -1;
-    }
+    uninitialize();
+    m_instance = 0;
 }
 
 void OutputOSS::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
-    // we need to configure
-    if (freq != m_frequency || chan != m_channels)
-    {
-        // we have already configured, but are changing settings...
-        // reset the device
-        resetDSP();
+
 #if SOUND_VERSION >= 0x040000
     if (VolumeControlOSS::instance())
     {
@@ -108,75 +99,36 @@ void OutputOSS::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
             ioctl(m_audio_fd, cmd, &v);
     }
 #endif
-        m_frequency = freq;
-        m_channels = chan;
+    m_frequency = freq;
+    m_channels = chan;
 
-        //m_bps = freq * chan * (prec / 8);
+    //m_bps = freq * chan * (prec / 8);
 
-        int p;
-        switch (format)
-        {
-        default:
-        case Qmmp::PCM_S16LE:
+    int p;
+    switch (format)
+    {
+    default:
+    case Qmmp::PCM_S16LE:
 #if defined(AFMT_S16_NE)
-            p = AFMT_S16_NE;
+        p = AFMT_S16_NE;
 #else
-            p = AFMT_S16_LE;
+        p = AFMT_S16_LE;
 #endif
-            break;
+        break;
 
-        case Qmmp::PCM_S8:
-            p = AFMT_S8;
-            break;
+    case Qmmp::PCM_S8:
+        p = AFMT_S8;
+        break;
 
-        }
-
-        if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) == -1)
-            qWarning("OutputOSS: can't set audio format");
-        /*if(ioctl(m_audio_fd, SNDCTL_DSP_SAMPLESIZE, &prec) == -1)
-            qDebug("OutputOSS: can't set audio format");*/
-        int stereo = (chan > 1) ? 1 : 0;
-            ioctl(m_audio_fd, SNDCTL_DSP_STEREO, &stereo);
-        /*if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &m_channels) == -1)
-            qWarning("OutputOSS: can't set number of channels");*/
-        /*if (chan != m_channels)
-            qWarning("OutputOSS: can't set number of channels, using %d instead", m_channels);*/
-        if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq) == -1)
-            qWarning("OutputOSS: can't set audio format");
     }
+
+    if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) == -1)
+        qWarning("OutputOSS: can't set audio format");
+    int stereo = (chan > 1) ? 1 : 0;
+    ioctl(m_audio_fd, SNDCTL_DSP_STEREO, &stereo);
+    if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq) == -1)
+        qWarning("OutputOSS: can't set audio format");
     Output::configure(freq, chan, format);
-}
-
-void OutputOSS::reset()
-{
-    if (m_audio_fd > 0)
-    {
-        close(m_audio_fd);
-        m_audio_fd = -1;
-    }
-
-    m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY, 0);
-
-    if (m_audio_fd < 0)
-    {
-        qWarning("OSSOutput: failed to open output device '%s'", qPrintable(m_audio_device));
-        return;
-    }
-
-    int flags;
-    if ((flags = fcntl(m_audio_fd, F_GETFL, 0)) > 0)
-    {
-        flags &= O_NDELAY;
-        fcntl(m_audio_fd, F_SETFL, flags);
-    }
-
-    fd_set afd;
-    FD_ZERO(&afd);
-    FD_SET(m_audio_fd, &afd);
-    struct timeval tv;
-    tv.tv_sec = 0l;
-    tv.tv_usec = 50000l;
-    do_select = (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0);
 }
 
 void OutputOSS::post()
@@ -197,22 +149,29 @@ void OutputOSS::sync()
     ioctl(m_audio_fd, SNDCTL_DSP_SYNC, &unused);
 }
 
-
-void OutputOSS::resetDSP()
-{
-    if (m_audio_fd < 1)
-        return;
-
-    int unused;
-    ioctl(m_audio_fd, SNDCTL_DSP_RESET, &unused);
-}
-
-
 bool OutputOSS::initialize()
 {
-    reset();
+    m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY, 0);
+
     if (m_audio_fd < 0)
+    {
+        qWarning("OSSOutput: failed to open output device '%s'", qPrintable(m_audio_device));
         return false;
+    }
+
+    int flags;
+    if ((flags = fcntl(m_audio_fd, F_GETFL, 0)) > 0)
+    {
+        flags &= O_NDELAY;
+        fcntl(m_audio_fd, F_SETFL, flags);
+    }
+    fd_set afd;
+    FD_ZERO(&afd);
+    FD_SET(m_audio_fd, &afd);
+    struct timeval tv;
+    tv.tv_sec = 0l;
+    tv.tv_usec = 50000l;
+    do_select = (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0);
     m_inited = true;
     return true;
 }
@@ -224,9 +183,9 @@ void OutputOSS::uninitialize()
     m_inited = false;
     m_frequency = -1;
     m_channels = -1;
-    resetDSP();
     if (m_audio_fd > 0)
     {
+        ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
         close(m_audio_fd);
         m_audio_fd = -1;
     }
@@ -265,8 +224,17 @@ qint64 OutputOSS::writeAudio(unsigned char *data, qint64 maxSize)
     return m;
 }
 
-/***** MIXER *****/
+void OutputOSS::drain()
+{
+    ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
+}
 
+void OutputOSS::reset()
+{
+    ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
+}
+
+/***** MIXER *****/
 VolumeControlOSS *VolumeControlOSS::instance()
 {
     return m_instance;

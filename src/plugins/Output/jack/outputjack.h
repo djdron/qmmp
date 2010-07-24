@@ -46,7 +46,8 @@ public:
 private:
      //output api
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
-    void flush(){};
+    void drain(){};
+    void reset();
 
     // helper functions
     void uninitialize();

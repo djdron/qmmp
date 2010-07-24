@@ -66,5 +66,8 @@ qint64 OutputNull::writeAudio(unsigned char *data, qint64 maxSize)
    return maxSize;
 }
 
-void OutputNull::flush()
+void OutputNull::drain()
+{}
+
+void OutputNull::reset()
 {}

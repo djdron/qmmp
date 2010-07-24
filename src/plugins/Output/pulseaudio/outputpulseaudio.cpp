@@ -82,7 +82,6 @@ bool OutputPulseAudio::initialize()
     return true;
 }
 
-
 qint64 OutputPulseAudio::latency()
 {
     if (!m_connection)
@@ -112,11 +111,18 @@ qint64 OutputPulseAudio::writeAudio(unsigned char *data, qint64 maxSize)
     return maxSize;
 }
 
-void OutputPulseAudio::flush()
+void OutputPulseAudio::drain()
 {
     int error;
     if (m_connection)
         pa_simple_drain(m_connection, &error);
+}
+
+void OutputPulseAudio::reset()
+{
+    int error;
+    if (m_connection)
+        pa_simple_flush(m_connection, &error);
 }
 
 void OutputPulseAudio::uninitialize()

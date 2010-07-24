@@ -49,11 +49,13 @@ Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
     m_currentMilliseconds = -1;
     m_bytesPerMillisecond = 0;
     m_userStop = false;
-    m_pause = false;
     m_finish = false;
     m_visBuffer = 0;
     m_visBufferSize = 0;
     m_kbps = 0;
+    m_skip = false;
+    m_pause = false;
+    m_prev_pause = false;
 }
 
 void Output::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
@@ -89,7 +91,9 @@ void Output::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 
 void Output::pause()
 {
+    mutex()->lock();
     m_pause = !m_pause;
+    mutex()->unlock();
     Qmmp::State state = m_pause ? Qmmp::Paused: Qmmp::Playing;
     dispatch(state);
 }
@@ -113,6 +117,7 @@ void Output::seek(qint64 pos)
 {
     m_totalWritten = pos * m_bytesPerMillisecond;
     m_currentMilliseconds = -1;
+    m_skip = isRunning();
 }
 
 Recycler *Output::recycler()
@@ -149,6 +154,12 @@ int Output::sampleSize() const
 {
     return AudioParameters::sampleSize(m_format);
 }
+
+void Output::suspend()
+{}
+
+void Output::resume()
+{}
 
 Output::~Output()
 {}
@@ -244,6 +255,19 @@ void Output::run()
     while (!done)
     {
         mutex()->lock ();
+        if(m_pause != m_prev_pause)
+        {
+            if(m_pause)
+            {
+                suspend();
+                mutex()->unlock();
+                m_prev_pause = m_pause;
+                continue;
+            }
+            else
+                resume();
+            m_prev_pause = m_pause;
+        }
         recycler()->mutex()->lock ();
         done = m_userStop || (m_finish && recycler()->empty());
 
@@ -255,6 +279,7 @@ void Output::run()
             mutex()->lock ();
             done = m_userStop || m_finish;
         }
+
         status();
         if (!b)
         {
@@ -273,8 +298,17 @@ void Output::run()
                 SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
             l = 0;
             m = 0;
-            while (l < b->nbytes)
+            while (l < b->nbytes && !m_pause)
             {
+                mutex()->lock();
+                if(m_skip)
+                {
+                    m_skip = false;
+                    reset();
+                    mutex()->unlock();
+                    break;
+                }
+                mutex()->unlock();
                 m = writeAudio(b->data + l, b->nbytes - l);
                 if(m >= 0)
                 {
@@ -299,7 +333,7 @@ void Output::run()
     //write remaining data
     if(m_finish)
     {
-        flush();
+        drain();
         qDebug("Output: total written %lld", m_totalWritten);
     }
     dispatch(Qmmp::Stopped);
