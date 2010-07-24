@@ -31,7 +31,7 @@
 #include <qmmp/inputsource.h>
 #include "mplayerengine.h"
 
-#define MPLAYER_DEBUG
+//#define MPLAYER_DEBUG
 
 static QRegExp rx_av("^[AV]: *([0-9,:.-]+)");
 static QRegExp rx_pause("^(.*)=(.*)PAUSE(.*)");
@@ -42,6 +42,7 @@ static QRegExp rx_audio("^AUDIO: *([0-9,.]+) *Hz.*([0-9,.]+) *ch.*([0-9]+).* ([0
 
 FileInfo *MplayerInfo::createFileInfo(const QString &path)
 {
+    qDebug("%s", Q_FUNC_INFO);
     QRegExp rx_id_length("^ID_LENGTH=([0-9,.]+)*");
     QStringList args;
     args << "-slave";
@@ -55,7 +56,7 @@ FileInfo *MplayerInfo::createFileInfo(const QString &path)
     args << path;
     QProcess mplayer_process;
     mplayer_process.start("mplayer", args);
-    mplayer_process.waitForFinished();
+    mplayer_process.waitForFinished(1500);
     QString str = QString::fromLocal8Bit(mplayer_process.readAll()).trimmed();
     FileInfo *info = new FileInfo(path);
     QStringList lines = str.split("\n");
@@ -67,6 +68,7 @@ FileInfo *MplayerInfo::createFileInfo(const QString &path)
 #ifdef MPLAYER_DEBUG
     qDebug("%s",qPrintable(str));
 #endif
+    qDebug("%s+", Q_FUNC_INFO);
     return info;
 }
 
@@ -95,7 +97,7 @@ MplayerEngine::MplayerEngine(QObject *parent)
 MplayerEngine::~MplayerEngine()
 {
     qDebug("%s",__FUNCTION__);
-    m_process->close();
+    m_process->kill();
 }
 
 bool MplayerEngine::play()

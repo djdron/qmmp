@@ -49,6 +49,7 @@ PopupWidget::PopupWidget(QWidget *parent)
 
     m_label1 = new QLabel(this);
     hlayout->addWidget (m_label1);
+    setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
     //settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
@@ -109,10 +110,10 @@ void PopupWidget::showMetaData()
         m_pixlabel->setPixmap(QPixmap(":/notifier_icon.png"));
         m_pixlabel->setFixedSize(32,32);
     }
-    show();
-    qApp->processEvents();
     updateGeometry();
-    resize(sizeHint());
+    setFixedSize(sizeHint());
+    update();
+    show();
     updatePosition();
     m_timer->start();
 }
@@ -125,7 +126,7 @@ void PopupWidget::showVolume(int v)
     m_label1->setAlignment(Qt::AlignVCenter);
     m_label1->setText("<b>" + tr("Volume:") + QString (" %1\%").arg(v)+ + "</b>");
 
-    show();
+    
     qApp->processEvents();
     updateGeometry();
     resize(sizeHint());
