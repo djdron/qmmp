@@ -17,25 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#ifndef WILDMIDIHELPER_H
-#define WILDMIDIHELPER_H
+#include <QDialog>
 
-#include <QObject>
+#include "ui_settingsdialog.h"
 
-class WildMidiHelper : public QObject
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class SettingsDialog : public QDialog
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    explicit WildMidiHelper(QObject *parent = 0);
-    ~WildMidiHelper();
-    bool initialize();
-    static WildMidiHelper *instance();
+    SettingsDialog(QWidget *parent = 0);
+
+    ~SettingsDialog();
+
+public slots:
+    virtual void accept();
 
 private:
-    static WildMidiHelper *m_instance;
-    bool m_inited;
+    Ui::SettingsDialog ui;
 
 };
 
-#endif // WILDMIDIHELPER_H
+#endif

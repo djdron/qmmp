@@ -18,24 +18,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef WILDMIDIHELPER_H
-#define WILDMIDIHELPER_H
+#include <QSettings>
+#include <QStringList>
+#include <qmmp/qmmp.h>
+#include "settingsdialog.h"
 
-#include <QObject>
-
-class WildMidiHelper : public QObject
+SettingsDialog::SettingsDialog(QWidget *parent)
+        : QDialog(parent)
 {
-Q_OBJECT
-public:
-    explicit WildMidiHelper(QObject *parent = 0);
-    ~WildMidiHelper();
-    bool initialize();
-    static WildMidiHelper *instance();
+    ui.setupUi(this);
+    setAttribute(Qt::WA_DeleteOnClose);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+}
 
-private:
-    static WildMidiHelper *m_instance;
-    bool m_inited;
+SettingsDialog::~SettingsDialog()
+{
+}
 
-};
-
-#endif // WILDMIDIHELPER_H
+void SettingsDialog::accept()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    //settings.setValue("FFMPEG/filters", filters);
+    QDialog::accept();
+}
