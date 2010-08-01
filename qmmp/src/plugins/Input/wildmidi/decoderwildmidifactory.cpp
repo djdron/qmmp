@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,7 @@
 
 #include <QtGui>
 
-//#include "detailsdialog.h"
+#include "wildmidihelper.h"
 #include "decoder_wildmidi.h"
 #include "decoderwildmidifactory.h"
 
@@ -63,16 +63,16 @@ QList<FileInfo *> DecoderWildMidiFactory::createPlayList(const QString &fileName
     QList <FileInfo*> list;
     FileInfo *info = new FileInfo(fileName);
 
-    /*void *midi_ptr = WildMidi_Open (fileName.toLocal8Bit());
-    if(midi_ptr)
+    if(WildMidiHelper::instance()->initialize())
     {
-        //wm_info = new _WM_Info;
-        _WM_Info *wm_info = WildMidi_GetInfo(midi_ptr);
-        info->setLength(wm_info->approx_total_samples / 44100);
-        qDebug("===== %lu", wm_info->approx_total_samples);
-        WildMidi_Close(midi_ptr);
-    }*/
-
+        void *midi_ptr = WildMidi_Open (fileName.toLocal8Bit());
+        if(midi_ptr)
+        {
+            _WM_Info *wm_info = WildMidi_GetInfo(midi_ptr);
+            info->setLength((qint64)wm_info->approx_total_samples / 48000);
+            WildMidi_Close(midi_ptr);
+        }
+    }
     list << info;
     return list;
 }
@@ -97,5 +97,4 @@ QTranslator *DecoderWildMidiFactory::createTranslator(QObject *parent)
     translator->load(QString(":/wildmidi_plugin_") + locale);
     return translator;
 }
-
 Q_EXPORT_PLUGIN(DecoderWildMidiFactory)

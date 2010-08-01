@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,22 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-#include <QObject>
-#include <QIODevice>
-#include <QFile>
-#include <math.h>
-#include <stdint.h>
-
-#include <qmmp/buffer.h>
-#include <qmmp/output.h>
-#include <qmmp/recycler.h>
-
+#include "wildmidihelper.h"
 #include "decoder_wildmidi.h"
 
 // Decoder class
-bool Iinited = false;
-
 DecoderWildMidi::DecoderWildMidi(const QString &path) : Decoder()
 {
     m_path = path;
@@ -42,26 +30,27 @@ DecoderWildMidi::DecoderWildMidi(const QString &path) : Decoder()
 
 DecoderWildMidi::~DecoderWildMidi()
 {
-    deinit();
+    if(midi_ptr)
+        WildMidi_Close(midi_ptr);
 }
 
 bool DecoderWildMidi::initialize()
 {
-    m_freq = m_bitrate = 0;
-    m_chan = 0;
-    m_output_size = 0;
     m_totalTime = 0;
 
-    unsigned long int mixer_options = 0;
-
-    if (WildMidi_Init ("/etc/timidity/timidity.cfg", 48000, 0) == -1)
+    if(!WildMidiHelper::instance()->initialize())
     {
-        qDebug("FATAL ERROR");
+        qWarning("DecoderWildMidi: initialization failed");
         return false;
     }
 
-    midi_ptr = WildMidi_Open (m_path.toLocal8Bit());
 
+    midi_ptr = WildMidi_Open (m_path.toLocal8Bit());
+    if(!midi_ptr)
+    {
+        qWarning("DecoderWildMidi: unable to open file");
+        return false;
+    }
     _WM_Info *wm_info = WildMidi_GetInfo(midi_ptr);
 
     m_totalTime = (qint64)wm_info->approx_total_samples  / 48;
@@ -91,12 +80,4 @@ int DecoderWildMidi::bitrate()
 qint64 DecoderWildMidi::read(char *data, qint64 size)
 {
     return WildMidi_GetOutput (midi_ptr, data, size);
-}
-
-void DecoderWildMidi::deinit()
-{
-    WildMidi_Close(midi_ptr);
-    WildMidi_Shutdown();
-    m_freq = m_bitrate = 0;
-    m_chan = 0;
 }

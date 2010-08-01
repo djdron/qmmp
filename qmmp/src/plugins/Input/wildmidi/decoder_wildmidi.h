@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,9 +24,7 @@
 extern "C"{
 #include <wildmidi_lib.h>
 }
-
 #include <qmmp/decoder.h>
-
 
 class DecoderWildMidi : public Decoder
 {
@@ -43,16 +41,8 @@ public:
 
 private:
     void *midi_ptr;
-
-    void deinit();
-    unsigned int m_bks; //block size
-    bool m_done, m_finish;
-    long m_freq, m_bitrate;
-    int m_chan;
-    unsigned long m_output_size;
-    qint64 m_totalTime, m_seekTime;
+    qint64 m_totalTime;
     QString m_path;
 };
-
 
 #endif // DECODER_WILDMIDI_H
