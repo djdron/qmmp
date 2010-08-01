@@ -1,11 +1,13 @@
 include(../../plugins.pri)
-FORMS += 
+FORMS += settingsdialog.ui
 HEADERS += decoderwildmidifactory.h \
     decoder_wildmidi.h \
-    wildmidihelper.h
+    wildmidihelper.h \
+    settingsdialog.h
 SOURCES += decoder_wildmidi.cpp \
     decoderwildmidifactory.cpp \
-    wildmidihelper.cpp
+    wildmidihelper.cpp \
+    settingsdialog.cpp
 TARGET = $$PLUGINS_PREFIX/Input/wildmidi
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libwildmidi.so
 INCLUDEPATH += ../../../
