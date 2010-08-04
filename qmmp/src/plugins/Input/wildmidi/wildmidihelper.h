@@ -22,6 +22,7 @@
 #define WILDMIDIHELPER_H
 
 #include <QObject>
+#include <QMutex>
 
 class WildMidiHelper : public QObject
 {
@@ -30,12 +31,18 @@ public:
     explicit WildMidiHelper(QObject *parent = 0);
     ~WildMidiHelper();
     bool initialize();
+    void readSettings();
+    quint32 sampleRate();
+    void addPtr(void *);
+    void removePtr(void *);
     static WildMidiHelper *instance();
 
 private:
     static WildMidiHelper *m_instance;
     bool m_inited;
-
+    QMutex m_mutex;
+    QList <void *> m_ptrs;
+    quint32 m_sample_rate;
 };
 
 #endif // WILDMIDIHELPER_H

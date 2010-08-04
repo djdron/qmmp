@@ -42,6 +42,7 @@ public:
 private:
     void *midi_ptr;
     qint64 m_totalTime;
+    quint32 m_sample_rate;
     QString m_path;
 };
 

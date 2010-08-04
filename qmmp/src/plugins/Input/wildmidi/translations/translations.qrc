@@ -1,0 +1,16 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>wildmidi_plugin_it.qm</file>
+    <file>wildmidi_plugin_ru.qm</file>
+    <file>wildmidi_plugin_uk_UA.qm</file>
+    <file>wildmidi_plugin_zh_CN.qm</file>
+    <file>wildmidi_plugin_zh_TW.qm</file>
+    <file>wildmidi_plugin_cs.qm</file>
+    <file>wildmidi_plugin_de.qm</file>
+    <file>wildmidi_plugin_pl.qm</file>
+    <file>wildmidi_plugin_tr.qm</file>
+    <file>wildmidi_plugin_lt.qm</file>
+    <file>wildmidi_plugin_nl.qm</file>
+  </qresource>
+</RCC>

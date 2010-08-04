@@ -20,14 +20,19 @@ LIBS += -lqmmp \
     -L/usr/lib \
     -I/usr/include \
     -lWildMidi
-TRANSLATIONS = translations/wildmidi_plugin_cs.ts \
-    translations/wildmidi_plugin_de.ts \
-    translations/wildmidi_plugin_zh_CN.ts \
-    translations/wildmidi_plugin_zh_TW.ts \
-    translations/wildmidi_plugin_ru.ts \
-    translations/wildmidi_plugin_uk_UA.ts
+TRANSLATIONS = translations/wildmidi_plugin_it.ts \
+               translations/wildmidi_plugin_ru.ts \
+               translations/wildmidi_plugin_cs.ts \
+               translations/wildmidi_plugin_de.ts \
+               translations/wildmidi_plugin_zh_CN.ts \
+               translations/wildmidi_plugin_zh_TW.ts \
+               translations/wildmidi_plugin_uk_UA.ts \
+               translations/wildmidi_plugin_pl.ts \
+               translations/wildmidi_plugin_tr.ts \
+               translations/wildmidi_plugin_lt.ts \
+               translations/wildmidi_plugin_nl.ts
 
-# RESOURCES = translations/translations.qrc
+RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
