@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QStringList>
 #include <qmmp/qmmp.h>
+#include "wildmidihelper.h"
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
@@ -29,6 +30,15 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Midi");
+    ui.confPathComboBox->setEditText(settings.value("conf_path", "/etc/timidity/timidity.cfg").toString());
+    ui.sampleRateComboBox->addItem(tr("44100 Hz"), 44100);
+    ui.sampleRateComboBox->addItem(tr("48000 Hz"), 48000);
+    int i = ui.sampleRateComboBox->findData(settings.value("sample_rate", 44100).toInt());
+    ui.sampleRateComboBox->setCurrentIndex(i);
+    ui.enhancedResemplingCheckBox->setChecked(settings.value("enhanced_resampling", false).toBool());
+    ui.reverbCheckBox->setChecked(settings.value("reverberation", false).toBool());
+    settings.endGroup();
 }
 
 SettingsDialog::~SettingsDialog()
@@ -38,6 +48,13 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    //settings.setValue("FFMPEG/filters", filters);
+    settings.beginGroup("Midi");
+    settings.setValue("conf_path", ui.confPathComboBox->currentText());
+    settings.setValue("sample_rate",
+                      ui.sampleRateComboBox->itemData(ui.sampleRateComboBox->currentIndex()));
+    settings.setValue("enhanced_resampling", ui.enhancedResemplingCheckBox->isChecked());
+    settings.setValue("reverberation", ui.reverbCheckBox->isChecked());
+    settings.endGroup();
+    WildMidiHelper::instance()->readSettings();
     QDialog::accept();
 }

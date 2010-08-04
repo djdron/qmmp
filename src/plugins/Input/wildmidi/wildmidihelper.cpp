@@ -19,9 +19,11 @@
  ***************************************************************************/
 
 #include <QApplication>
+#include <QSettings>
 extern "C"{
 #include <wildmidi_lib.h>
 }
+#include <qmmp/qmmp.h>
 #include "wildmidihelper.h"
 
 WildMidiHelper *WildMidiHelper::m_instance = 0;
@@ -30,6 +32,7 @@ WildMidiHelper::WildMidiHelper(QObject *parent) :
     QObject(parent)
 {
     m_inited = false;
+    m_sample_rate = 0;
 }
 
 WildMidiHelper::~WildMidiHelper()
@@ -41,17 +44,69 @@ WildMidiHelper::~WildMidiHelper()
 
 bool WildMidiHelper::initialize()
 {
+    m_mutex.lock();
     if(m_inited)
+    {
+        m_mutex.unlock();
         return true;
-    if (WildMidi_Init ("/etc/timidity/timidity.cfg", 48000, 0) < 0)
+    }
+
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Midi");
+    unsigned short int mixer_options = 0;
+    QString conf_path = settings.value("conf_path", "/etc/timidity/timidity.cfg").toString();
+    unsigned short int sample_rate = settings.value("sample_rate", 44100).toInt();
+    if(settings.value("enhanced_resampling", false).toBool())
+        mixer_options |= WM_MO_ENHANCED_RESAMPLING;
+    if(settings.value("reverberation", false).toBool())
+        mixer_options |= WM_MO_REVERB;
+    settings.endGroup();
+
+    m_sample_rate = sample_rate;
+    if (WildMidi_Init (qPrintable(conf_path), sample_rate, mixer_options) < 0)
     {
         qWarning("WildMidiHelper: unable to initialize WildMidi library");
+        m_mutex.unlock();
         return false;
     }
     m_inited = true;
+    m_mutex.unlock();
     return true;
 }
 
+void WildMidiHelper::readSettings()
+{
+    m_mutex.lock();
+    if(!m_ptrs.isEmpty())
+    {
+        m_mutex.unlock();
+        return;
+    }
+    if(m_inited)
+        WildMidi_Shutdown();
+    m_inited = false;
+    m_mutex.unlock();
+    initialize();
+}
+
+void WildMidiHelper::addPtr(void *t)
+{
+    m_mutex.lock();
+    m_ptrs.append(t);
+    m_mutex.unlock();
+}
+
+void WildMidiHelper::removePtr(void *t)
+{
+    m_mutex.lock();
+    m_ptrs.removeAll(t);
+    m_mutex.unlock();
+}
+
+quint32 WildMidiHelper::sampleRate()
+{
+    return m_sample_rate;
+}
 
 WildMidiHelper *WildMidiHelper::instance()
 {

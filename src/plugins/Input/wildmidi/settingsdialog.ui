@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>292</width>
+    <width>329</width>
     <height>133</height>
    </rect>
   </property>
@@ -31,7 +31,7 @@
     </widget>
    </item>
    <item row="0" column="1" colspan="2">
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="confPathComboBox">
      <property name="editable">
       <bool>true</bool>
      </property>
@@ -55,14 +55,14 @@
     </widget>
    </item>
    <item row="2" column="0" colspan="3">
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="enhancedResemplingCheckBox">
      <property name="text">
       <string>Enhanced resempling</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0" colspan="3">
-    <widget class="QCheckBox" name="checkBox_2">
+    <widget class="QCheckBox" name="reverbCheckBox">
      <property name="text">
       <string>Reverberation</string>
      </property>
@@ -82,18 +82,7 @@
     </widget>
    </item>
    <item row="1" column="1" colspan="2">
-    <widget class="QComboBox" name="comboBox_2">
-     <item>
-      <property name="text">
-       <string>44100</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>48000</string>
-      </property>
-     </item>
-    </widget>
+    <widget class="QComboBox" name="sampleRateComboBox"/>
    </item>
   </layout>
  </widget>
