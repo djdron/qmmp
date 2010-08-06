@@ -6,32 +6,32 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="43"/>
         <source>WildMidi Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль WildMidi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="45"/>
         <source>Midi Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли Midi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="99"/>
         <source>About WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про аудіо модуль WildMidi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="100"/>
         <source>Qmmp WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудіо-модуль WildMidi для Qmmp</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="101"/>
         <source>This plugin uses WildMidi library to play midi files</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей модуль використовує бібліотеку WildMidi для програвання файлів midi</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="102"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,47 +39,47 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>FFmpeg Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування модуля FFmpeg</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Instrument configuration: </source>
-        <translation type="unfinished"></translation>
+        <translation>Конфігурація інструменту: </translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="40"/>
         <source>/etc/timidity.cfg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>/etc/timidity/timidity.cfg</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Частота:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="60"/>
         <source>Enhanced resempling</source>
-        <translation type="unfinished"></translation>
+        <translation>Розширення ресамплінгу</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Reverberation</source>
-        <translation type="unfinished"></translation>
+        <translation>Реверберація</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="35"/>
         <source>44100 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>44100 Гц</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="36"/>
         <source>48000 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>48000 Гц</translation>
     </message>
 </context>
 </TS>
