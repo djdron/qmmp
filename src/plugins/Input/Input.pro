@@ -46,4 +46,12 @@ contains(CONFIG, CDAUDIO_PLUGIN){
   message(* CD Audio plugin enabled *)
   message(***************************)
 }
+
+contains(CONFIG, WILDMIDI_PLUGIN){
+  SUBDIRS += wildmidi
+  message(*******************)
+  message(* WildMidi Plugin *)
+  message(*******************)
+}
+
 }
