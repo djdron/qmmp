@@ -49,6 +49,7 @@ const DecoderProperties DecoderWildMidiFactory::properties() const
     properties.hasSettings = true;
     properties.noInput = true;
     properties.protocols = "file";
+    WildMidiHelper::instance()->initialize();
     return properties;
 }
 
