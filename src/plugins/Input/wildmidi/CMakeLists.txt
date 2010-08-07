@@ -31,12 +31,14 @@ SET(libwildmidi_SRCS
   decoder_wildmidi.cpp
   decoderwildmidifactory.cpp
   settingsdialog.cpp
+  wildmidihelper.cpp
 )
 
 SET(libwildmidi_MOC_HDRS
   decoder_wildmidi.h
   decoderwildmidifactory.h
   settingsdialog.h
+  wildmidihelper.h
 )
 
 # libwildmidi
