@@ -14,6 +14,7 @@ Qmmp - Qt-based multimedia player
 - CD Audio
 - WMA, Monkey's Audio (и др. форматы библиотеки FFmpeg)
 - PCM WAVE (и др. форматы библиотеки libsndfile)
+- Midi
 
 Аудио-эффекты:
 - эффект BS2B
@@ -74,6 +75,7 @@ Qmmp - Qt-based multimedia player
 - libcdio >= 0.80 (Опционально)
 - libcddb >= 1.3.1 (Опционально)
 - faad2 >= 2.6.1 (Опционально)
+- libWildMidi >= 0.2.3.4 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
 - libprojectM >= 1.2.0 (Опционально)
 - libenca >= 1.9 (Опционально)
@@ -97,7 +99,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 Доступные опции:
 - USE_CURL, USE_MMS (транспортные модули);
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
-  USE_MPLAYER, USE_CDA (декодеры);
+  USE_MPLAYER, USE_CDA, USE_MIDI (декодеры);
 - USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_WAVEOUT (output plugins);
 - USE_SRC, USE_BS2B, USE_LADSPA (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
