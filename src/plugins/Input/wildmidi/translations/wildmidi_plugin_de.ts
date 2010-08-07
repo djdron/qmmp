@@ -38,22 +38,12 @@
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
-        <source>FFmpeg Plugin Settings</source>
+        <source>WildMidi Plugin Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Instrument configuration: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="40"/>
-        <source>/etc/timidity.cfg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="45"/>
-        <source>/etc/timidity/timidity.cfg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -63,7 +53,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="60"/>
-        <source>Enhanced resempling</source>
+        <source>Enhanced resampling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>329</width>
-    <height>133</height>
+    <height>135</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>FFmpeg Plugin Settings</string>
+   <string>WildMidi Plugin Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">
@@ -37,12 +37,12 @@
      </property>
      <item>
       <property name="text">
-       <string>/etc/timidity.cfg</string>
+       <string notr="true">/etc/timidity.cfg</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>/etc/timidity/timidity.cfg</string>
+       <string notr="true">/etc/timidity/timidity.cfg</string>
       </property>
      </item>
     </widget>
@@ -55,9 +55,9 @@
     </widget>
    </item>
    <item row="2" column="0" colspan="3">
-    <widget class="QCheckBox" name="enhancedResemplingCheckBox">
+    <widget class="QCheckBox" name="enhancedResamplingCheckBox">
      <property name="text">
-      <string>Enhanced resempling</string>
+      <string>Enhanced resampling</string>
      </property>
     </widget>
    </item>
