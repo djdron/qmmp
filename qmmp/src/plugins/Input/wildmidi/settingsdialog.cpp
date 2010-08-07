@@ -36,7 +36,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.sampleRateComboBox->addItem(tr("48000 Hz"), 48000);
     int i = ui.sampleRateComboBox->findData(settings.value("sample_rate", 44100).toInt());
     ui.sampleRateComboBox->setCurrentIndex(i);
-    ui.enhancedResemplingCheckBox->setChecked(settings.value("enhanced_resampling", false).toBool());
+    ui.enhancedResamplingCheckBox->setChecked(settings.value("enhanced_resampling", false).toBool());
     ui.reverbCheckBox->setChecked(settings.value("reverberation", false).toBool());
     settings.endGroup();
 }
@@ -52,7 +52,7 @@ void SettingsDialog::accept()
     settings.setValue("conf_path", ui.confPathComboBox->currentText());
     settings.setValue("sample_rate",
                       ui.sampleRateComboBox->itemData(ui.sampleRateComboBox->currentIndex()));
-    settings.setValue("enhanced_resampling", ui.enhancedResemplingCheckBox->isChecked());
+    settings.setValue("enhanced_resampling", ui.enhancedResamplingCheckBox->isChecked());
     settings.setValue("reverberation", ui.reverbCheckBox->isChecked());
     settings.endGroup();
     WildMidiHelper::instance()->readSettings();
