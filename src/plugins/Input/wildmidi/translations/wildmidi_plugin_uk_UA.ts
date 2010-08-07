@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>WildMidi Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування модуля WildMidi</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="60"/>
         <source>Enhanced resampling</source>
-        <translation type="unfinished"></translation>
+        <translation>Покращена передискретизація</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
