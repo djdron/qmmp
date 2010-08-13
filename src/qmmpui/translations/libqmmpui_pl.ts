@@ -56,7 +56,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="46"/>
         <source>Summary</source>
-        <translation>Streszczenie</translation>
+        <translation>Informacje</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="55"/>

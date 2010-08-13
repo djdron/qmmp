@@ -1,3 +1,17 @@
 Podziękowania:
 
-    Vadim Kalinnikov <moose@ylsoftware.com> (hosting projektu)
+    Adria Arrufat <swiftscythe@gmail.com> - raporty błędów
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - poprawki dla wtyczki jack, raporty błędów
+    Csaba Hruska <csaba.hruska@gmail.com> - poprawki dla wtyczki ffmpeg
+    Dmitry Kostin <kostindima@gmail.com> - wsparcie dla iso.wv
+    Gennadi Motsyo <drool@altlinux.ru> - raporty błędów
+    Vadim Kalinnikov <moose@ylsoftware.com> - hosting projektu
+    Erik Ölsar <erlk.ozlr@gmail.com> - wsparcie dla kursorów z motywu, udoskonalenia dla ui
+    Funda Wang <fundawang@gmail.com> - poprawki plików cmake
+    Michail Zheludkov <zheludkovm@mail.ru> - poprawki dla wtyczki ffmpeg
+    Panagiotis Papadopoulos <pano_90@gmx.net> - poprawki ui, raporty błędów
+    Pino Toscano <toscano.pino@tiscali.it> - poprawki dotyczące przenośności programu
+    Karel Volný <kvolny@redhat.com> - różne poprawki
+    Sebastian Pipping <webmaster@hartwork.org> - poprawki bs2b
+    Stefan Koelling <stefankoelling.ext@googlemail.com> - poprawki błędów kompilacji
+    Yaakov Selkowitz <yselkowitz@gmail.com> - poprawki cygwin

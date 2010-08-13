@@ -11,6 +11,9 @@ Chiński Uproszczony:
 Czeski:
     Karel Volný <kvolny@redhat.com>
 
+Holenderski:
+    Ronald Uitermark <ronald645@gmail.com>
+
 Francuski:
     Stanislas Zeller <uncensored.assault@gmail.com>
 
