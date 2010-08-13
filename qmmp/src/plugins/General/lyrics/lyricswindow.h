@@ -45,7 +45,7 @@ private slots:
 private:
     Ui::LyricsWindow ui;
     QNetworkAccessManager *m_http;
-
+    QNetworkReply *m_requestReply;
 };
 
 #endif

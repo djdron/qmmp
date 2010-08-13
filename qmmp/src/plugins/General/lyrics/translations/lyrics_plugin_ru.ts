@@ -45,17 +45,17 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="63"/>
+        <location filename="../lyricswindow.cpp" line="64"/>
         <source>Done</source>
         <translation>Готово</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="66"/>
+        <location filename="../lyricswindow.cpp" line="67"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="97"/>
+        <location filename="../lyricswindow.cpp" line="127"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Текст песни: %1 - %2</translation>
     </message>
@@ -65,12 +65,13 @@
         <translation>Нет соединения</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="85"/>
+        <location filename="../lyricswindow.cpp" line="115"/>
         <source>Not found</source>
         <translation>Не найдено</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="96"/>
+        <location filename="../lyricswindow.cpp" line="126"/>
         <source>Receiving</source>
         <translation>Получение</translation>
     </message>

@@ -34,6 +34,7 @@ LyricsWindow::LyricsWindow(const QString &artist, const QString &title, QWidget 
     setWindowFlags(Qt::Dialog);
     setAttribute(Qt::WA_DeleteOnClose);
     setAttribute(Qt::WA_QuitOnClose, false);
+    m_requestReply = 0;
     ui.artistLineEdit->setText(artist);
     ui.titleLineEdit->setText(title);
     m_http = new QNetworkAccessManager(this);
@@ -65,9 +66,38 @@ void LyricsWindow::showText(QNetworkReply *reply)
     {
         ui.stateLabel->setText(tr("Error"));
         ui.textBrowser->setText(reply->errorString());
+        m_requestReply = 0;
+        reply->deleteLater();
         return;
     }
     QString content = QString::fromUtf8(reply->readAll().constData());
+
+    if(m_requestReply == reply)
+    {
+        m_requestReply = 0;
+        QRegExp js_params("javascript:getContent\\(\\\'(.*)\\\', \\\'(.*)\\\', \\\'(.*)\\\', \\\'(.*)\\\'");
+        js_params.setMinimal (true);
+        js_params.indexIn(content);
+
+        QUrl url = QString("http://www.lyricsplugin.com/winamp03/plugin/content.php?")
+                   + "artist=" + js_params.cap(1)
+                   + "&title=" + js_params.cap(2)
+                   + "&time=" + js_params.cap(3)
+                   + "&check=" + js_params.cap(4);
+
+        QString referer = QString("http://www.lyricsplugin.com/winamp03/plugin/?")
+                          + "artist=" + js_params.cap(1)
+                          + "&title=" + js_params.cap(2);
+
+        qDebug("LyricsWindow: request url = %s", url.toEncoded().constData());
+        QNetworkRequest request;
+        request.setUrl(url);
+        request.setRawHeader("Referer", referer.toAscii());
+        ui.stateLabel->setText(tr("Receiving"));
+        m_http->get(request);
+        reply->deleteLater();
+        return;
+    }
 
     QRegExp artist_regexp("<div id=\\\"artist\\\">(.*)</div>");
     artist_regexp.setMinimal(true);
@@ -100,5 +130,5 @@ void LyricsWindow::on_searchPushButton_clicked()
     request.setUrl(QUrl("http://www.lyricsplugin.com/winamp03/plugin/?artist=" +
                         ui.artistLineEdit->text()+"&title=" + ui.titleLineEdit->text()));
     request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
-    m_http->get(request);
+    m_requestReply = m_http->get(request);
 }

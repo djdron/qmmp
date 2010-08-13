@@ -45,17 +45,17 @@
 <context>
     <name>LyricsWindow</name>
     <message>
-        <location filename="../lyricswindow.cpp" line="63"/>
+        <location filename="../lyricswindow.cpp" line="64"/>
         <source>Done</source>
         <translation>Fertig</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="66"/>
+        <location filename="../lyricswindow.cpp" line="67"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="97"/>
+        <location filename="../lyricswindow.cpp" line="127"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Liedtext: %1 - %2</translation>
     </message>
@@ -65,12 +65,13 @@
         <translation>Keine Verbindung</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="85"/>
+        <location filename="../lyricswindow.cpp" line="115"/>
         <source>Not found</source>
         <translation>Es kann kein Liedtext für dieses Stück gefunden werden.</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="96"/>
+        <location filename="../lyricswindow.cpp" line="126"/>
         <source>Receiving</source>
         <translation>Daten werden empfangen</translation>
     </message>
