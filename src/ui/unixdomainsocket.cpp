@@ -61,7 +61,7 @@ bool UnixDomainSocket::alive(const QString& path)
     bzero(&server,sizeof(server));
     server.sun_family = AF_UNIX;
     strcpy(server.sun_path,path.toLocal8Bit().data());
-    len = strlen(server.sun_path) + sizeof(server.sun_family);
+    len = strlen(server.sun_path) + sizeof(server.sun_family) + 1;
 
     if (::connect(_s, (struct sockaddr *)&server, len) == -1)
     {
@@ -79,7 +79,7 @@ void UnixDomainSocket::writeDatagram(const char* command,const QString& path)
     server.sun_family = AF_UNIX;
     strcpy(server.sun_path,path.toLocal8Bit().data());
 
-    len = strlen(server.sun_path) + sizeof(server.sun_family);
+    len = strlen(server.sun_path) + sizeof(server.sun_family) + 1;
 
     sendto(_s,command,strlen(command),0,(struct sockaddr*)&server,len);
 }
