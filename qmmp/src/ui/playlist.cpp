@@ -314,6 +314,7 @@ void PlayList::createActions()
 
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addAction(tr("&Queue"),m_pl_manager, SLOT(addToQueue()), tr("Q"));
+    m_listWidget->menu()->addAction(tr("&Stop after track"),m_pl_manager, SLOT(addToStopAfter()), tr("Ctrl+S"));
     m_actions << m_listWidget->menu()->actions();
 
     //select menu
@@ -394,27 +395,28 @@ void PlayList::closeEvent (QCloseEvent *e)
 
 void PlayList::paintEvent (QPaintEvent *)
 {
-    int m_sx = (width()-275*m_ratio) /25;
-    int m_sy = (height()-116*m_ratio) /29;
-    drawPixmap (m_sx, m_sy);
-}
+    int sx = (width()-275*m_ratio) /25;
+    int sy = (height()-116*m_ratio) /29;
 
-void PlayList::drawPixmap (int sx, int sy)
-{
-    QPainter paint;
-    paint.begin (this);
-    paint.drawPixmap (0,20*m_ratio, m_skin->getPlPart (Skin::PL_LFILL));
+    QPainter paint(this);
+    drawPixmap (&paint, 0, 20*m_ratio, m_skin->getPlPart (Skin::PL_LFILL));
     for (int i = 1; i<sy+2*m_ratio; i++)
     {
-        paint.drawPixmap (0,20*m_ratio+29*i,m_skin->getPlPart (Skin::PL_LFILL));
+        drawPixmap (&paint, 0, 20*m_ratio+29*i, m_skin->getPlPart (Skin::PL_LFILL));
     }
-    paint.drawPixmap (0,78*m_ratio+29*sy,m_skin->getPlPart (Skin::PL_LSBAR));
+    drawPixmap (&paint, 0, 78*m_ratio+29*sy, m_skin->getPlPart (Skin::PL_LSBAR));
+
     for (int i = 0; i<sx; i++)
     {
-        paint.drawPixmap (125*m_ratio+i*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_SFILL1));
+        drawPixmap (&paint, 125*m_ratio+i*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_SFILL1));
     }
-    paint.drawPixmap (125*m_ratio+sx*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_RSBAR));
-    paint.end();
+    drawPixmap (&paint,125*m_ratio+sx*25,78*m_ratio+sy*29,m_skin->getPlPart (Skin::PL_RSBAR));
+
+}
+
+void PlayList::drawPixmap (QPainter *painter, int x, int y, const QPixmap &pix)
+{
+    style()->drawItemPixmap(painter, QRect(x, y, pix.width(), pix.height()), Qt::AlignCenter, pix);
 }
 
 void PlayList::resizeEvent (QResizeEvent *)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QPaintEvent>
-
+#include <QStyle>
 #include "pixmapwidget.h"
 
 PixmapWidget::PixmapWidget(QWidget *parent)
@@ -42,6 +42,6 @@ void PixmapWidget::paintEvent (QPaintEvent *e)
 {
     Q_UNUSED(e);
     QPainter paint(this);
-    paint.drawPixmap(0,0, m_pixmap);
+    style()->drawItemPixmap(&paint, rect(), Qt::AlignCenter, m_pixmap);
 }
 
