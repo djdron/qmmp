@@ -88,7 +88,7 @@ class PlayList : public QWidget
     private:
         void updatePositions();
         QString formatTime (int sec);
-        void drawPixmap (int, int);
+        void drawPixmap (QPainter *painter, int x, int y, const QPixmap &pix);
         void writeSettings();
         void createMenus();
         void createActions();
