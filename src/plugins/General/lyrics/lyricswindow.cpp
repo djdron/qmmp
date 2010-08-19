@@ -79,11 +79,11 @@ void LyricsWindow::showText(QNetworkReply *reply)
         js_params.setMinimal (true);
         js_params.indexIn(content);
 
-        QUrl url = QString("http://www.lyricsplugin.com/winamp03/plugin/content.php?")
-                   + "artist=" + js_params.cap(1)
-                   + "&title=" + js_params.cap(2)
-                   + "&time=" + js_params.cap(3)
-                   + "&check=" + js_params.cap(4);
+        QUrl url = QUrl::fromEncoded(QByteArray("http://www.lyricsplugin.com/winamp03/plugin/content.php?")
+                   + "artist=" + js_params.cap(1).toAscii()
+                   + "&title=" + js_params.cap(2).toAscii()
+                   + "&time=" + js_params.cap(3).toAscii()
+                   + "&check=" + js_params.cap(4).toAscii());
 
         QString referer = QString("http://www.lyricsplugin.com/winamp03/plugin/?")
                           + "artist=" + js_params.cap(1)
@@ -132,3 +132,4 @@ void LyricsWindow::on_searchPushButton_clicked()
     request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
     m_requestReply = m_http->get(request);
 }
+
