@@ -1219,97 +1219,107 @@
         <translation>Draai Lijst Om</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="320"/>
+        <location filename="../playlist.cpp" line="317"/>
+        <source>&amp;Stop after track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="317"/>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="321"/>
         <source>Invert Selection</source>
         <translation>Draai Selectie Om</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="326"/>
+        <location filename="../playlist.cpp" line="327"/>
         <source>&amp;Select None</source>
         <translation>&amp;Selecteer Niets</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="327"/>
+        <location filename="../playlist.cpp" line="328"/>
         <source>Shift+A</source>
         <translation>Shift+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="332"/>
+        <location filename="../playlist.cpp" line="333"/>
         <source>&amp;Select All</source>
         <translation>&amp;Selecteer Alles</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="333"/>
+        <location filename="../playlist.cpp" line="334"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="339"/>
+        <location filename="../playlist.cpp" line="340"/>
         <source>&amp;New List</source>
         <translation>&amp;Nieuwe Lijst</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="340"/>
+        <location filename="../playlist.cpp" line="341"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="345"/>
+        <location filename="../playlist.cpp" line="346"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="365"/>
+        <location filename="../playlist.cpp" line="366"/>
         <source>&amp;Select Next Playlist</source>
         <translation>&amp;Selecteer Volgende Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="366"/>
+        <location filename="../playlist.cpp" line="367"/>
         <source>Ctrl+PgDown</source>
         <translation>Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="372"/>
+        <location filename="../playlist.cpp" line="373"/>
         <source>&amp;Select Previous Playlist</source>
         <translation>&amp;Selecteer Vorige Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="373"/>
+        <location filename="../playlist.cpp" line="374"/>
         <source>Ctrl+PgUp</source>
         <translation>Ctrl+PgUp</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="379"/>
+        <location filename="../playlist.cpp" line="380"/>
         <source>&amp;Show Playlists</source>
         <translation>&amp;Toon Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="380"/>
+        <location filename="../playlist.cpp" line="381"/>
         <source>P</source>
         <translation>P</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="344"/>
+        <location filename="../playlist.cpp" line="345"/>
         <source>&amp;Delete List</source>
         <translation>&amp;Verwijder Lijst</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="351"/>
+        <location filename="../playlist.cpp" line="352"/>
         <source>&amp;Load List</source>
         <translation>&amp;Laad Lijst</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="352"/>
+        <location filename="../playlist.cpp" line="353"/>
         <source>O</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="357"/>
+        <location filename="../playlist.cpp" line="358"/>
         <source>&amp;Save List</source>
         <translation>&amp;Bewaar Lijst</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="358"/>
+        <location filename="../playlist.cpp" line="359"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>

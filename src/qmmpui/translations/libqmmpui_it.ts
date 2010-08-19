@@ -117,24 +117,24 @@ p, li { white-space: pre-wrap; }
         <translation>Genere:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="159"/>
+        <location filename="../tageditor.ui" line="244"/>
         <source>Disc number:</source>
         <translation>Disco numero: </translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="169"/>
-        <location filename="../tageditor.ui" line="224"/>
-        <location filename="../tageditor.ui" line="240"/>
+        <location filename="../tageditor.ui" line="184"/>
+        <location filename="../tageditor.ui" line="222"/>
+        <location filename="../tageditor.ui" line="254"/>
         <source>?</source>
         <translation>?</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="275"/>
+        <location filename="../tageditor.ui" line="163"/>
         <source>Track:</source>
         <translation>Traccia:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="259"/>
+        <location filename="../tageditor.ui" line="197"/>
         <source>Year:</source>
         <translation>Anno:</translation>
     </message>
@@ -144,12 +144,12 @@ p, li { white-space: pre-wrap; }
         <translation>Editor etichette</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="182"/>
+        <location filename="../tageditor.ui" line="269"/>
         <source>Comment:</source>
         <translation>Commento:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="204"/>
+        <location filename="../tageditor.ui" line="291"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -162,7 +162,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="288"/>
+        <location filename="../tageditor.ui" line="305"/>
         <source>Include selected tag in file</source>
         <translation>Includi le etichette selezionate nel file</translation>
     </message>
