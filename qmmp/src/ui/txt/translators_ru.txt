@@ -11,6 +11,9 @@
 Итальянский:
     Gian Paolo Renello <emmerkar@gmail.com>
 
+Японский:
+    SimaMoto,RyoTa <liangtai.s4@gmail.com>
+
 Казахский:
     Бауржан Муфтахидинов <baurthefirst@gmail.com>
 
@@ -35,6 +38,9 @@
 
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
+
+Испанский:
+    Félix Medrano <xukosky@yahoo.es>
 
 Турецкий:
     Mustafa GUNAY <mustafagunay@pgmail.com>
