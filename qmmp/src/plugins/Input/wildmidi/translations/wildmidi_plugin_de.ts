@@ -6,32 +6,32 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="43"/>
         <source>WildMidi Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>WildMidi-Modul</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="45"/>
         <source>Midi Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Midi-Dateien</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="100"/>
         <source>About WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Über WildMidi-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="101"/>
         <source>Qmmp WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp WildMidi-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="102"/>
         <source>This plugin uses WildMidi library to play midi files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Modul nutz die WildMidi-Bibliothek, um Midi-Dateien abzuspielen</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="103"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,17 +39,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>WildMidi Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen WildMidi-Modul</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Instrument configuration: </source>
-        <translation type="unfinished"></translation>
+        <translation>Instrumenteneinrichtung:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abtastrate:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="60"/>
@@ -64,12 +64,12 @@
     <message>
         <location filename="../settingsdialog.cpp" line="35"/>
         <source>44100 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>44100 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="36"/>
         <source>48000 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>48000 Hz</translation>
     </message>
 </context>
 </TS>
