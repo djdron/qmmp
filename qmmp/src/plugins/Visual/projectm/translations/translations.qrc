@@ -12,5 +12,6 @@
     <file>projectm_plugin_lt.qm</file>
     <file>projectm_plugin_pl.qm</file>
     <file>projectm_plugin_nl.qm</file>
+    <file>projectm_plugin_ja.qm</file>
   </qresource>
 </RCC>

@@ -12,5 +12,6 @@
     <file>alsa_plugin_tr.qm</file>
     <file>alsa_plugin_lt.qm</file>
     <file>alsa_plugin_nl.qm</file>
+    <file>alsa_plugin_ja.qm</file>
   </qresource>
 </RCC>

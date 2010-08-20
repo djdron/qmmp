@@ -30,7 +30,8 @@ TRANSLATIONS = translations/cdaudio_plugin_ru.ts \
                translations/cdaudio_plugin_it.ts \
                translations/cdaudio_plugin_tr.ts \
                translations/cdaudio_plugin_lt.ts \
-               translations/cdaudio_plugin_nl.ts
+               translations/cdaudio_plugin_nl.ts \
+               translations/cdaudio_plugin_ja.ts
  
 RESOURCES = translations/translations.qrc
 

@@ -34,7 +34,8 @@ TRANSLATIONS = translations/flac_plugin_ru.ts \
     translations/flac_plugin_it.ts \
     translations/flac_plugin_tr.ts \
     translations/flac_plugin_lt.ts \
-    translations/flac_plugin_nl.ts
+    translations/flac_plugin_nl.ts \
+    translations/flac_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib

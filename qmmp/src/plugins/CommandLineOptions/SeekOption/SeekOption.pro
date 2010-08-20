@@ -21,7 +21,8 @@ TRANSLATIONS = translations/seek_plugin_cs.ts \
                translations/seek_plugin_it.ts \
                translations/seek_plugin_tr.ts \
                translations/seek_plugin_lt.ts \
-               translations/seek_plugin_nl.ts
+               translations/seek_plugin_nl.ts \
+               translations/seek_plugin_ja.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

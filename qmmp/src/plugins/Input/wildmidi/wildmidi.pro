@@ -30,7 +30,8 @@ TRANSLATIONS = translations/wildmidi_plugin_it.ts \
                translations/wildmidi_plugin_pl.ts \
                translations/wildmidi_plugin_tr.ts \
                translations/wildmidi_plugin_lt.ts \
-               translations/wildmidi_plugin_nl.ts
+               translations/wildmidi_plugin_nl.ts \
+               translations/wildmidi_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR):LIB_DIR = /lib

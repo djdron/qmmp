@@ -44,7 +44,8 @@ TRANSLATIONS = translations/cue_plugin_ru.ts \
     translations/cue_plugin_it.ts \
     translations/cue_plugin_tr.ts \
     translations/cue_plugin_lt.ts \
-    translations/cue_plugin_nl.ts
+    translations/cue_plugin_nl.ts \
+    translations/cue_plugin_ja.ts
   
 RESOURCES = translations/translations.qrc
 unix { 

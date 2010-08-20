@@ -32,7 +32,8 @@ TRANSLATIONS = translations/aac_plugin_ru.ts \
     translations/aac_plugin_it.ts \
     translations/aac_plugin_tr.ts \
     translations/aac_plugin_lt.ts \
-    translations/aac_plugin_nl.ts
+    translations/aac_plugin_nl.ts \
+    translations/aac_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib

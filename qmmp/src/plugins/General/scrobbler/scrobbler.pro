@@ -17,7 +17,8 @@ TRANSLATIONS = translations/scrobbler_plugin_cs.ts \
     translations/scrobbler_plugin_it.ts \
     translations/scrobbler_plugin_tr.ts \
     translations/scrobbler_plugin_lt.ts \
-    translations/scrobbler_plugin_nl.ts
+    translations/scrobbler_plugin_nl.ts \
+    translations/scrobbler_plugin_ja.ts
     
 RESOURCES = translations/translations.qrc
 unix { 

@@ -32,7 +32,8 @@ TRANSLATIONS = translations/jack_plugin_ru.ts \
                translations/jack_plugin_it.ts \
                translations/jack_plugin_tr.ts \
                translations/jack_plugin_lt.ts \
-               translations/jack_plugin_nl.ts
+               translations/jack_plugin_nl.ts \
+               translations/jack_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc
 
