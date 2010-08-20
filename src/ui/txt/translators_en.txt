@@ -27,6 +27,9 @@ Hungarian:
 Italian:
     Gian Paolo Renello <emmerkar@gmail.com>
 
+Japan:
+    SimaMoto,RyoTa <liangtai.s4@gmail.com>
+
 Kazakh:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
@@ -38,6 +41,9 @@ Polish:
 
 Russian:
     Ilya Kotov <forkotov02@hotmail.ru>
+
+Spanish:
+    Félix Medrano <xukosky@yahoo.es>
 
 Turkish:
     Mustafa GUNAY <mustafagunay@pgmail.com>
