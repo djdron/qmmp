@@ -12,5 +12,6 @@
     <file>analyzer_plugin_tr.qm</file>
     <file>analyzer_plugin_lt.qm</file>
     <file>analyzer_plugin_nl.qm</file>
+    <file>analyzer_plugin_ja.qm</file>
   </qresource>
 </RCC>

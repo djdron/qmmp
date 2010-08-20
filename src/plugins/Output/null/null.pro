@@ -32,7 +32,8 @@ TRANSLATIONS = translations/null_plugin_cs.ts \
                translations/null_plugin_it.ts \
                translations/null_plugin_tr.ts \
                translations/null_plugin_lt.ts \
-               translations/null_plugin_nl.ts
+               translations/null_plugin_nl.ts \
+               translations/null_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc
 

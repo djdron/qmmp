@@ -36,7 +36,8 @@ TRANSLATIONS = translations/oss_plugin_cs.ts \
                translations/oss_plugin_it.ts \
                translations/oss_plugin_tr.ts \
                translations/oss_plugin_lt.ts \
-               translations/oss_plugin_nl.ts
+               translations/oss_plugin_nl.ts \
+               translations/oss_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR){

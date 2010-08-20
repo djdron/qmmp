@@ -17,7 +17,8 @@ TRANSLATIONS = translations/covermanager_plugin_cs.ts \
     translations/covermanager_plugin_it.ts \
     translations/covermanager_plugin_tr.ts \
     translations/covermanager_plugin_lt.ts \
-    translations/covermanager_plugin_nl.ts
+    translations/covermanager_plugin_nl.ts \
+    translations/covermanager_plugin_ja.ts
 
 RESOURCES = translations/translations.qrc \
             images/cm_images.qrc

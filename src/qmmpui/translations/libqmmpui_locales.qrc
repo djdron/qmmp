@@ -13,5 +13,6 @@
     <file>libqmmpui_it.qm</file>
     <file>libqmmpui_lt.qm</file>
     <file>libqmmpui_nl.qm</file>
+    <file>libqmmpui_ja.qm</file>
   </qresource>
 </RCC>

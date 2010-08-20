@@ -12,5 +12,6 @@
     <file>null_plugin_lt.qm</file>
     <file>null_plugin_pl.qm</file>
     <file>null_plugin_nl.qm</file>
+    <file>null_plugin_ja.qm</file>
   </qresource>
 </RCC>

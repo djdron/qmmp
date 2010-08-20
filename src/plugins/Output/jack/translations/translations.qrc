@@ -12,5 +12,6 @@
     <file>jack_plugin_tr.qm</file>
     <file>jack_plugin_lt.qm</file>
     <file>jack_plugin_nl.qm</file>
+    <file>jack_plugin_ja.qm</file>
   </qresource>
 </RCC>
