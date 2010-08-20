@@ -6,22 +6,22 @@
     <message>
         <location filename="../mprisfactory.cpp" line="29"/>
         <source>MPRIS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MPRIS プラグイン</translation>
     </message>
     <message>
         <location filename="../mprisfactory.cpp" line="49"/>
         <source>About MPRIS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MPRIS プラグインについて</translation>
     </message>
     <message>
         <location filename="../mprisfactory.cpp" line="50"/>
         <source>Qmmp MPRIS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP MPRIS プラグイン</translation>
     </message>
     <message>
         <location filename="../mprisfactory.cpp" line="51"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

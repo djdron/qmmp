@@ -6,37 +6,37 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="43"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>長さ</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>サンプルレート</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>ビットレート</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation>キロビット毎秒</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="48"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="49"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの大きさ</translation>
     </message>
 </context>
 <context>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../decoderaacfactory.cpp" line="45"/>
         <source>AAC Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC プラグイン</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="47"/>
         <source>AAC Files</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC ファイル</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="87"/>
         <source>About AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>AAC 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="88"/>
         <source>Qmmp AAC Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP AAC 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decoderaacfactory.cpp" line="89"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

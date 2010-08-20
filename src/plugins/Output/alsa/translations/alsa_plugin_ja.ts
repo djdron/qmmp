@@ -6,22 +6,22 @@
     <message>
         <location filename="../outputalsafactory.cpp" line="31"/>
         <source>ALSA Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>ALSA プラグイン</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="56"/>
         <source>About ALSA Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>ALSA 出力プラグインについて</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="57"/>
         <source>Qmmp ALSA Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP ALSA 出力プラグイン</translation>
     </message>
     <message>
         <location filename="../outputalsafactory.cpp" line="58"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,62 +29,62 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>ALSA Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ALSA プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="33"/>
         <source>Device Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>デバイス設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Audio device</source>
-        <translation type="unfinished"></translation>
+        <translation>音響デバイス</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>
         <source>Mixer</source>
-        <translation type="unfinished"></translation>
+        <translation>ミキサー</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="72"/>
         <source>Mixer card:</source>
-        <translation type="unfinished"></translation>
+        <translation>ミキサーカード:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>Mixer device:</source>
-        <translation type="unfinished"></translation>
+        <translation>ミキサーデバイス:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="99"/>
         <source>Advanced Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>上級設定:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="111"/>
         <source>Soundcard</source>
-        <translation type="unfinished"></translation>
+        <translation>サウンドカード</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Buffer time (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>バッファ時間 (ミリ秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="153"/>
         <source>Period time (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>期間 (ミリ秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="189"/>
         <source>Use mmap access</source>
-        <translation type="unfinished"></translation>
+        <translation>メモリマップアクセスを利用</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="209"/>
         <source>Use snd_pcm_pause function</source>
-        <translation type="unfinished"></translation>
+        <translation>snd_pcm_pause 機能を利用</translation>
     </message>
 </context>
 </TS>

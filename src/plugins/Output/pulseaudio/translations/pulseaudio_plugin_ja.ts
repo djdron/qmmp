@@ -6,22 +6,22 @@
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="30"/>
         <source>PulseAudio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>PulseAudio プラグイン</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="54"/>
         <source>About PulseAudio Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>PulseAudio 出力プラグインについて</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="55"/>
         <source>Qmmp PulseAudio Output Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP PulseAudio 出力プラグイン</translation>
     </message>
     <message>
         <location filename="../outputpulseaudiofactory.cpp" line="56"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>

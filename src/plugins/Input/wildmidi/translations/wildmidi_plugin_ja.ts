@@ -6,32 +6,32 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="43"/>
         <source>WildMidi Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>WildMidi プラグイン</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="45"/>
         <source>Midi Files</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI ファイル</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="100"/>
         <source>About WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>WildMidi 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="101"/>
         <source>Qmmp WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP WildMidi 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="102"/>
         <source>This plugin uses WildMidi library to play midi files</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインは MIDI ファイルの再生に WildMidi ライブラリを利用します</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="103"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,37 +39,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>WildMidi Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>WildMidi プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Instrument configuration: </source>
-        <translation type="unfinished"></translation>
+        <translation>楽器編成:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>
         <source>Sample rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>サンプルレート:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="60"/>
         <source>Enhanced resampling</source>
-        <translation type="unfinished"></translation>
+        <translation>拡張リサンプリング</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Reverberation</source>
-        <translation type="unfinished"></translation>
+        <translation>反響効果 (リバーブ)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="35"/>
         <source>44100 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>44100 Hz</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="36"/>
         <source>48000 Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>48000 Hz</translation>
     </message>
 </context>
 </TS>

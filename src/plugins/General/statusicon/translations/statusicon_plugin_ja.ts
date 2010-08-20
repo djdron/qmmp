@@ -6,68 +6,68 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Status Icon Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ステイタスアイコンプラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation type="unfinished"></translation>
+        <translation>吹き出しメッセージ</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>表示時間 (ミリ秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
-        <translation type="unfinished"></translation>
+        <translation>ツールティップ</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation>タグ情報がない場合はファイル名を分解してみる</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>進捗バーを表示</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>透明度:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>カバー絵の大きさ:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
-        <translation type="unfinished"></translation>
+        <translation>32</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Change template</source>
-        <translation type="unfinished"></translation>
+        <translation>雛形を変更</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>
         <source>Use standard icons</source>
-        <translation type="unfinished"></translation>
+        <translation>標準アイコンを使用</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Tooltip Template</source>
-        <translation type="unfinished"></translation>
+        <translation>ツールティップの雛形</translation>
     </message>
 </context>
 <context>
@@ -75,37 +75,37 @@
     <message>
         <location filename="../statusicon.cpp" line="65"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>再生</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="66"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>一時停止</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="67"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>終止</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="69"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>次の曲</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="70"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>前の曲</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="72"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>終了</translation>
     </message>
     <message>
         <location filename="../statusicon.cpp" line="125"/>
         <source>Now Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>今の曲</translation>
     </message>
 </context>
 <context>
@@ -113,32 +113,32 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="30"/>
         <source>Status Icon Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>ステイタスアイコンプラグイン</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="50"/>
         <source>About Status Icon Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>ステイタスアイコンプラグインについて</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="51"/>
         <source>Qmmp Status Icon Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP ステイタスアイコンプラグイン</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Writen by:</source>
-        <translation type="unfinished"></translation>
+        <translation>制作:</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="53"/>
         <source>Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="54"/>
         <source>Artur Guzik &lt;a.guzik88@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Artur Guzik &lt;a.guzik88@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="135"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>停止中</translation>
     </message>
 </context>
 </TS>
