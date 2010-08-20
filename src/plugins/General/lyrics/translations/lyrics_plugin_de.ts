@@ -57,7 +57,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="127"/>
         <source>Lyrics: %1 - %2</source>
-        <translation>Liedtext: %1 - %2</translation>
+        <translation>Liedtext: %1 – %2</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="60"/>
@@ -83,7 +83,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="31"/>
         <source>Artist:</source>
-        <translation>Künstler:</translation>
+        <translation>Interpret:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="41"/>
