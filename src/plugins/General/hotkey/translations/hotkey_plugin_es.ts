@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es_ES">
+<TS version="2.0" language="es">
 <context>
     <name>HotkeyDialog</name>
     <message>
         <location filename="../hotkeydialog.ui" line="14"/>
         <source>Modify Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificar atajo</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse la combinación de teclas que quiere asignar</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="52"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Limpiar</translation>
     </message>
 </context>
 <context>
@@ -24,95 +24,95 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="30"/>
         <source>Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Módulo de atajos de teclado global</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="50"/>
         <source>About Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca del módulo de atajos de teclado global</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="51"/>
         <source>Qmmp Global Hotkey Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Módulo de atajos de teclado global para Qmmp</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
-        <translation type="unfinished"></translation>
+        <translation>Este módulo añade soporte para teclas multimedia o combinaciones de teclas globales</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="14"/>
-        <source>Global Hotkey Plugin Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="42"/>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="47"/>
-        <source>Shortcut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="55"/>
-        <source>Reset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../settingsdialog.cpp" line="42"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="43"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="44"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="45"/>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproducir/Pausar</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="46"/>
         <source>Next</source>
-        <translation type="unfinished"></translation>
+        <translation>Siguiente</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="47"/>
         <source>Previous</source>
-        <translation type="unfinished"></translation>
+        <translation>Anterior</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="48"/>
         <source>Show/Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar/Ocultar</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="49"/>
         <source>Volume +</source>
-        <translation type="unfinished"></translation>
+        <translation>Volumen +</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="50"/>
         <source>Volume -</source>
-        <translation type="unfinished"></translation>
+        <translation>Volumen -</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>Global Hotkey Plugin Settings</source>
+        <translation>Configuración del módulo de atajos de teclado global</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="42"/>
+        <source>Action</source>
+        <translation>Acción</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="47"/>
+        <source>Shortcut</source>
+        <translation>Atajo</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="55"/>
+        <source>Reset</source>
+        <translation>Restaurar</translation>
     </message>
 </context>
 </TS>

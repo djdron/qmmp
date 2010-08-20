@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es_ES">
+<TS version="2.0" language="es">
 <context>
     <name>DecoderMPCFactory</name>
     <message>
         <location filename="../decodermpcfactory.cpp" line="47"/>
         <source>Musepack Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Módulo Musepack</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="49"/>
         <source>Musepack Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivos Musepack</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="109"/>
         <source>About Musepack Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Acerca del módulo de audio Musepack</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="110"/>
         <source>Qmmp Musepack Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Módulo de audio Musepack para Qmmp</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="111"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,42 +34,42 @@
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="46"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>Duración</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="47"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>Frecuencia</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="47"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="48"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Canales</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>Tasa de bits</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="50"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño del archivo</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="50"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
 </context>
 </TS>
