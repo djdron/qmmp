@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="45"/>
         <source>CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>CD 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="88"/>
         <source>About CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>CD 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="89"/>
         <source>Qmmp CD Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP CD 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
-        <translation type="unfinished"></translation>
+        <translation>libcdio-%1 と libcddb-%2 対応でコンパイル</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="92"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="93"/>
         <source>Usage: open cdda:/// using Add URL dialog or command line</source>
-        <translation type="unfinished"></translation>
+        <translation>使い方: コマンド入力行もしくは「URL を追加」ダイアログで cdda:/// を開く</translation>
     </message>
 </context>
 <context>
@@ -39,52 +39,52 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>CD Audio Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>CD 音響プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Override device:</source>
-        <translation type="unfinished"></translation>
+        <translation>オーバライドするデバイス:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>Limid cd speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>CD 回転速度の限度:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="62"/>
         <source>Use cd-text</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-text を利用する</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="69"/>
         <source>CDDB</source>
-        <translation type="unfinished"></translation>
+        <translation>CDDB</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Use HTTP instead of CDDBP</source>
-        <translation type="unfinished"></translation>
+        <translation>CDDBP ではなく HTTP を利用する</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation type="unfinished"></translation>
+        <translation>サーバ:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>パス:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>ポート番号:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Clear CDDB cache</source>
-        <translation type="unfinished"></translation>
+        <translation>CDDB キャッシュを消去:</translation>
     </message>
 </context>
 </TS>

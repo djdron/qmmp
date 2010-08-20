@@ -6,12 +6,12 @@
     <message>
         <location filename="../lyrics.cpp" line="35"/>
         <source>View Lyrics</source>
-        <translation type="unfinished"></translation>
+        <translation>歌詞を表示</translation>
     </message>
     <message>
         <location filename="../lyrics.cpp" line="36"/>
         <source>Ctrl+L</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+L</translation>
     </message>
 </context>
 <context>
@@ -19,27 +19,27 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="29"/>
         <source>Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>歌詞プラグイン</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="50"/>
         <source>About Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>歌詞プラグインについて</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="51"/>
         <source>Qmmp Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP 歌詞プラグイン</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from lyricsplugin.com</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインは lyricsplugin.com より歌詞を取得します</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -47,53 +47,53 @@
     <message>
         <location filename="../lyricswindow.ui" line="14"/>
         <source>Lyrics Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>歌詞プラグイン</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="31"/>
         <source>Artist:</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="41"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>タイトル:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="51"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>検索:</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="60"/>
         <source>No connection</source>
-        <translation type="unfinished"></translation>
+        <translation>接続できません</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="64"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>完了</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="67"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>事故</translation>
+    </message>
+    <message>
+        <location filename="../lyricswindow.cpp" line="115"/>
+        <source>Not found</source>
+        <translation>見付かりません</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="96"/>
         <location filename="../lyricswindow.cpp" line="126"/>
         <source>Receiving</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../lyricswindow.cpp" line="115"/>
-        <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>取得中</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="127"/>
         <source>Lyrics: %1 - %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2 の歌詞</translation>
     </message>
 </context>
 </TS>

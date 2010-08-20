@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodervorbisfactory.cpp" line="50"/>
         <source>Ogg Vorbis Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogg Vorbis プラグイン</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="53"/>
         <source>Ogg Vorbis Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogg Vorbis ファイル</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="124"/>
         <source>About Ogg Vorbis Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogg Vorbis 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="125"/>
         <source>Qmmp Ogg Vorbis Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP Ogg Vorbis 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="126"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodervorbisfactory.cpp" line="127"/>
         <source>Source code based on mq3 progect</source>
-        <translation type="unfinished"></translation>
+        <translation>ソースコードは MP3 プロジェクトから流用</translation>
     </message>
 </context>
 <context>
@@ -39,42 +39,42 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="49"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>長さ</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>サンプルレート</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="50"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>チャンネル</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>ビットレート</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation>キロビット毎秒</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの大きさ</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
 </context>
 </TS>

@@ -6,27 +6,27 @@
     <message>
         <location filename="../decodermpcfactory.cpp" line="47"/>
         <source>Musepack Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Musepack プラグイン</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="49"/>
         <source>Musepack Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Musepack ファイル</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="109"/>
         <source>About Musepack Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Musepack 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="110"/>
         <source>Qmmp Musepack Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP Musepack 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decodermpcfactory.cpp" line="111"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,42 +34,42 @@
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="46"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>長さ</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="47"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>サンプルレート</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="47"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="48"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>チャンネル</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>ビットレート</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="49"/>
         <source>kbps</source>
-        <translation type="unfinished"></translation>
+        <translation>キロビット毎秒</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="50"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルの大きさ</translation>
     </message>
     <message>
         <location filename="../mpcmetadatamodel.cpp" line="50"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
 </context>
 </TS>

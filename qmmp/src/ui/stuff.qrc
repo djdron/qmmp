@@ -58,10 +58,10 @@
     <file>txt/translators_nl.txt</file>
     <file>txt/description_nl.txt</file>
 
-    <!-- <file>txt/authors_ja.txt</file>
+    <file>txt/authors_ja.txt</file>
     <file>txt/thanks_ja.txt</file>
     <file>txt/translators_ja.txt</file>
-    <file>txt/description_ja.txt</file> -->
+    <file>txt/description_ja.txt</file>
 
      <!--<file>txt/authors_es.txt</file>
     <file>txt/thanks_es.txt</file>

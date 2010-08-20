@@ -6,42 +6,42 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="31"/>
         <source>BS2B Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>BS2Bプラグイン</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="51"/>
         <source>About BS2B Effect Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>BS2B効果プラグインについて</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="52"/>
         <source>This is the Qmmp plugin version of Boris Mikhaylov&apos;s headphone DSP effect &quot;Bauer stereophonic-to-binaural&quot;, abbreviated bs2b.</source>
-        <translation type="unfinished"></translation>
+        <translation>これは &quot;Bauer stereophonic-to-binaural&quot; (BS2B) に基づき Борис Михайлов (Boris Mikhaylov) 氏が作成したヘッドフォン用 DSP 効果ライブラリを利用するための QMMP 用プラグインです。</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="54"/>
         <source>Visit %1 for more details</source>
-        <translation type="unfinished"></translation>
+        <translation>詳しい情報は %1 でご覧ください。</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="56"/>
         <source>Compiled against libbs2b-%1</source>
-        <translation type="unfinished"></translation>
+        <translation>libbs2b-%1 対応でコンパイル</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="57"/>
         <source>Developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>開発者:</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="58"/>
         <source>Ilya Kotov</source>
-        <translation type="unfinished"></translation>
+        <translation>Илья Котов (Ilya Kotov)</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="59"/>
         <source>Sebastian Pipping</source>
-        <translation type="unfinished"></translation>
+        <translation>Sebastian Pipping</translation>
     </message>
 </context>
 <context>
@@ -49,43 +49,43 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>BS2B Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>BS2B プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translation type="unfinished"></translation>
+        <translation>クロスフィード レベル</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <location filename="../settingsdialog.ui" line="59"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="71"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>初期設定値</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>C.Moy</source>
-        <translation type="unfinished"></translation>
+        <translation>C.Moy</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>J. Meier</source>
-        <translation type="unfinished"></translation>
+        <translation>J. Meier</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="60"/>
         <source>%1 Hz, %2 us</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Hz, %2 us</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="67"/>
         <source>%1 dB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 dB</translation>
     </message>
 </context>
 </TS>

@@ -6,22 +6,22 @@
     <message>
         <location filename="../mmsinputfactory.cpp" line="34"/>
         <source>MMS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MMS プラグイン</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="54"/>
         <source>About MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MMS 搬送プラグインについて</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="55"/>
         <source>Qmmp MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP MMS 搬送プラグイン</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="56"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MMS Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>MMS プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>バッファ容量:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KiB</translation>
     </message>
 </context>
 </TS>
