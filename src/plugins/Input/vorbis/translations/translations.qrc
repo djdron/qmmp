@@ -13,5 +13,6 @@
     <file>vorbis_plugin_lt.qm</file>
     <file>vorbis_plugin_nl.qm</file>
     <file>vorbis_plugin_ja.qm</file>
+    <file>vorbis_plugin_es.qm</file>
   </qresource>
 </RCC>

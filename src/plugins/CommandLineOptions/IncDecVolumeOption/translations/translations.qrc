@@ -13,5 +13,6 @@
   <file>incdecvolume_plugin_lt.qm</file>
   <file>incdecvolume_plugin_nl.qm</file>
   <file>incdecvolume_plugin_ja.qm</file>
+  <file>incdecvolume_plugin_es.qm</file>
   </qresource>
 </RCC>

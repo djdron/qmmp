@@ -34,7 +34,8 @@ TRANSLATIONS = translations/wavpack_plugin_cs.ts \
     translations/wavpack_plugin_tr.ts \
     translations/wavpack_plugin_lt.ts \
     translations/wavpack_plugin_nl.ts \
-    translations/wavpack_plugin_ja.ts
+    translations/wavpack_plugin_ja.ts \
+    translations/wavpack_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty (LIB_DIR):LIB_DIR = /lib

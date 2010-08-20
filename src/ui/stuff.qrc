@@ -63,6 +63,11 @@
     <file>txt/translators_ja.txt</file>
     <file>txt/description_ja.txt</file> -->
 
+     <!--<file>txt/authors_es.txt</file>
+    <file>txt/thanks_es.txt</file>
+    <file>txt/translators_es.txt</file>
+    <file>txt/description_es.txt</file>-->
+
     <file>default/balance.png</file>
     <file>default/eqmain.png</file>
     <file>default/numbers.png</file>

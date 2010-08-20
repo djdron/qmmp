@@ -13,5 +13,6 @@
     <file>wavpack_plugin_lt.qm</file>
     <file>wavpack_plugin_nl.qm</file>
     <file>wavpack_plugin_ja.qm</file>
+    <file>wavpack_plugin_es.qm</file>
   </qresource>
 </RCC>

@@ -13,5 +13,6 @@
     <file>sndfile_plugin_lt.qm</file>
     <file>sndfile_plugin_nl.qm</file>
     <file>sndfile_plugin_ja.qm</file>
+    <file>sndfile_plugin_es.qm</file>
   </qresource>
 </RCC>

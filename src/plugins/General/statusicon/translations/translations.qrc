@@ -13,5 +13,6 @@
     <file>statusicon_plugin_lt.qm</file>
     <file>statusicon_plugin_nl.qm</file>
     <file>statusicon_plugin_ja.qm</file>
+    <file>statusicon_plugin_es.qm</file>
   </qresource>
 </RCC>

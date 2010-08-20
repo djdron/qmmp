@@ -23,7 +23,8 @@ TRANSLATIONS = translations/hal_plugin_cs.ts \
                translations/hal_plugin_tr.ts \
                translations/hal_plugin_lt.ts \
                translations/hal_plugin_nl.ts \
-               translations/hal_plugin_ja.ts
+               translations/hal_plugin_ja.ts \
+               translations/hal_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
 

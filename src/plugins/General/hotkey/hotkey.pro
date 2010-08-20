@@ -25,7 +25,8 @@ TRANSLATIONS = translations/hotkey_plugin_cs.ts \
                translations/hotkey_plugin_tr.ts \
                translations/hotkey_plugin_lt.ts \
                translations/hotkey_plugin_nl.ts \
-               translations/hotkey_plugin_ja.ts 
+               translations/hotkey_plugin_ja.ts \
+               translations/hotkey_plugin_es.ts
 RESOURCES = translations/translations.qrc
 
 isEmpty(LIB_DIR){

@@ -13,5 +13,6 @@
     <file>cdaudio_plugin_lt.qm</file>
     <file>cdaudio_plugin_nl.qm</file>
     <file>cdaudio_plugin_ja.qm</file>
+    <file>cdaudio_plugin_es.qm</file>
   </qresource>
 </RCC>

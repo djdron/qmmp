@@ -12,5 +12,6 @@
     <file>waveout_plugin_lt.qm</file>
     <file>waveout_plugin_nl.qm</file>
     <file>waveout_plugin_ja.qm</file>
+    <file>waveout_plugin_es.qm</file>
   </qresource>
 </RCC>

@@ -44,7 +44,8 @@ TRANSLATIONS = translations/mad_plugin_ru.ts \
     translations/mad_plugin_tr.ts \
     translations/mad_plugin_lt.ts \
     translations/mad_plugin_nl.ts \
-    translations/mad_plugin_ja.ts
+    translations/mad_plugin_ja.ts \
+    translations/mad_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
 unix { 
