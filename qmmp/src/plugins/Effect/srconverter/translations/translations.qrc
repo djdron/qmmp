@@ -13,5 +13,6 @@
     <file>srconverter_plugin_lt.qm</file>
     <file>srconverter_plugin_nl.qm</file>
     <file>srconverter_plugin_ja.qm</file>
+    <file>srconverter_plugin_es.qm</file>
   </qresource>
 </RCC>

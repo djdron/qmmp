@@ -13,5 +13,6 @@
     <file>hal_plugin_lt.qm</file>
     <file>hal_plugin_nl.qm</file>
     <file>hal_plugin_ja.qm</file>
+    <file>hal_plugin_es.qm</file>
   </qresource>
 </RCC>

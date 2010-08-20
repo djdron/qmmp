@@ -13,5 +13,6 @@
     <file>ladspa_plugin_lt.qm</file>
     <file>ladspa_plugin_nl.qm</file>
     <file>ladspa_plugin_ja.qm</file>
+    <file>ladspa_plugin_es.qm</file>
   </qresource>
 </RCC>

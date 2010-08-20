@@ -13,5 +13,6 @@
     <file>flac_plugin_lt.qm</file>
     <file>flac_plugin_nl.qm</file>
     <file>flac_plugin_ja.qm</file>
+    <file>flac_plugin_es.qm</file>
   </qresource>
 </RCC>

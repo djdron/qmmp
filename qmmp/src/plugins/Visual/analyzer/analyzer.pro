@@ -39,7 +39,8 @@ TRANSLATIONS = translations/analyzer_plugin_cs.ts \
                translations/analyzer_plugin_tr.ts \
                translations/analyzer_plugin_lt.ts \
                translations/analyzer_plugin_nl.ts \
-               translations/analyzer_plugin_ja.ts
+               translations/analyzer_plugin_ja.ts \
+               translations/analyzer_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
 unix{

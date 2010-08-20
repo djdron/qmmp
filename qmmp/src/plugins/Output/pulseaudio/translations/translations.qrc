@@ -13,5 +13,6 @@
     <file>pulseaudio_plugin_pl.qm</file>
     <file>pulseaudio_plugin_nl.qm</file>
     <file>pulseaudio_plugin_ja.qm</file>
+    <file>pulseaudio_plugin_es.qm</file>
   </qresource>
 </RCC>

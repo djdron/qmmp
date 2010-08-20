@@ -12,5 +12,6 @@
     <file>qmmp_file_dialog_plugin_lt.qm</file>
     <file>qmmp_file_dialog_plugin_nl.qm</file>
     <file>qmmp_file_dialog_plugin_ja.qm</file>
+    <file>qmmp_file_dialog_plugin_es.qm</file>
   </qresource>
 </RCC>

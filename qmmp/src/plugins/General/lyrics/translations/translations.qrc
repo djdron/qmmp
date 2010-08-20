@@ -13,5 +13,6 @@
     <file>lyrics_plugin_lt.qm</file>
     <file>lyrics_plugin_nl.qm</file>
     <file>lyrics_plugin_ja.qm</file>
+    <file>lyrics_plugin_es.qm</file>
   </qresource>
 </RCC>

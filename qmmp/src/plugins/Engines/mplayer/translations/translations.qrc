@@ -13,5 +13,6 @@
     <file>mplayer_plugin_lt.qm</file>
     <file>mplayer_plugin_nl.qm</file>
     <file>mplayer_plugin_ja.qm</file>
+    <file>mplayer_plugin_es.qm</file>
   </qresource>
 </RCC>

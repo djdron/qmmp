@@ -45,7 +45,8 @@ TRANSLATIONS = translations/ffmpeg_plugin_ru.ts \
     translations/ffmpeg_plugin_tr.ts \
     translations/ffmpeg_plugin_lt.ts \
     translations/ffmpeg_plugin_nl.ts \
-    translations/ffmpeg_plugin_ja.ts
+    translations/ffmpeg_plugin_ja.ts \
+    translations/ffmpeg_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib

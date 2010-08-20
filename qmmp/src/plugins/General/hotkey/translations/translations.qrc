@@ -13,5 +13,6 @@
     <file>hotkey_plugin_lt.qm</file>
     <file>hotkey_plugin_nl.qm</file>
     <file>hotkey_plugin_ja.qm</file>
+    <file>hotkey_plugin_es.qm</file>
   </qresource>
 </RCC>

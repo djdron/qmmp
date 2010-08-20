@@ -36,7 +36,8 @@ TRANSLATIONS = translations/ladspa_plugin_cs.ts \
     translations/ladspa_plugin_tr.ts \
     translations/ladspa_plugin_lt.ts \
     translations/ladspa_plugin_nl.ts \
-    translations/ladspa_plugin_ja.ts
+    translations/ladspa_plugin_ja.ts \
+    translations/ladspa_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
