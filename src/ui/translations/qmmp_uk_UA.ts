@@ -1236,12 +1236,12 @@
     <message>
         <location filename="../playlist.cpp" line="317"/>
         <source>&amp;Stop after track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Зупинка після треку</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="317"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="321"/>
