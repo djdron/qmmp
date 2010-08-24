@@ -19,7 +19,7 @@ class Output;
 #include "outputfactory.h"
 #include "visualfactory.h"
 #include "statehandler.h"
-
+#include "audioparameters.h"
 #include "recycler.h"
 
 class QTimer;
@@ -93,13 +93,17 @@ public:
      */
     void setStateHandler(StateHandler *handler);
     /*!
+     * Returns selected audio parameters.
+     */
+    AudioParameters audioParameters() const;
+    /*!
      * Returns samplerate.
      */
     quint32 sampleRate();
     /*!
      * Returns channels number.
      */
-    int numChannels();
+    int channels();
     /*!
      * Returns selected audio format.
      */
@@ -182,7 +186,6 @@ private:
     qint64 m_totalWritten, m_currentMilliseconds;
     unsigned char *m_visBuffer;
     qint64 m_visBufferSize;
-
 
     static void checkFactories();
     static void registerFactory(OutputFactory *);

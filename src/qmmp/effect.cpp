@@ -106,6 +106,11 @@ void Effect::checkFactories()
     }
 }
 
+bool effectCompareFunc(Effect *e1, Effect *e2)
+{
+    return e1->factory()->properties().priority > e2->factory()->properties().priority;
+}
+
 QList<Effect*> Effect::create()
 {
     checkFactories();
@@ -119,6 +124,7 @@ QList<Effect*> Effect::create()
             effects.last()->m_factory = factory;
         }
     }
+    qSort(effects.begin(), effects.end(), effectCompareFunc);
     return effects;
 }
 

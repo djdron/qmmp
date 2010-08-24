@@ -34,6 +34,7 @@ static sIIRCoefficients iir_cforiginal10_44100[10] __attribute__((aligned));
 static sIIRCoefficients iir_cforiginal10_48000[10] __attribute__((aligned));
 static sIIRCoefficients iir_cf10_44100[10] __attribute__((aligned));
 static sIIRCoefficients iir_cf10_48000[10] __attribute__((aligned));
+static sIIRCoefficients iir_cf10_96000[10] __attribute__((aligned));
 static sIIRCoefficients iir_cf15_44100[15] __attribute__((aligned));
 static sIIRCoefficients iir_cf15_48000[15] __attribute__((aligned));
 static sIIRCoefficients iir_cf25_44100[25] __attribute__((aligned));
@@ -107,6 +108,7 @@ struct {
   { iir_cforiginal10_48000, band_original_f010, 1.0,     10, 48000.0 },
   { iir_cf10_44100,         band_f010,          1.0,     10, 44100.0 },
   { iir_cf10_48000,         band_f010,          1.0,     10, 48000.0 },
+  { iir_cf10_96000,         band_f010,          1.0,     10, 96000.0 },
   { iir_cf15_44100,         band_f015,          2.0/3.0, 15, 44100.0 },
   { iir_cf15_48000,         band_f015,          2.0/3.0, 15, 48000.0 },
   { iir_cf25_44100,         band_f025,          1.0/3.0, 25, 44100.0 },
@@ -121,7 +123,7 @@ struct {
  *************/
 
 /* Get the coeffs for a given number of bands and sampling frequency */
-sIIRCoefficients* get_coeffs(int *bands, int sfreq)
+sIIRCoefficients* get_coeffs(int *bands, unsigned int sfreq)
 {
   sIIRCoefficients *iir_cf = 0;
   switch(sfreq)
@@ -146,6 +148,9 @@ sIIRCoefficients* get_coeffs(int *bands, int sfreq)
                            break;
                 }
                 break;
+    case 96000:
+                iir_cf = iir_cf10_96000;
+
     default:
                 switch(*bands)
                 {

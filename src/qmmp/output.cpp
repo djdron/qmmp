@@ -135,12 +135,17 @@ void Output::setStateHandler(StateHandler *handler)
     m_handler = handler;
 }
 
+AudioParameters Output::audioParameters() const
+{
+    return AudioParameters(m_frequency, m_channels, m_format);
+}
+
 quint32 Output::sampleRate()
 {
     return m_frequency;
 }
 
-int Output::numChannels()
+int Output::channels()
 {
     return m_channels;
 }

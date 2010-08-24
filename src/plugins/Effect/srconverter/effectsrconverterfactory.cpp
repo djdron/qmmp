@@ -31,6 +31,7 @@ const EffectProperties EffectSRConverterFactory::properties() const
     properties.shortName = "SRC";
     properties.hasSettings = true;
     properties.hasAbout = true;
+    properties.priority = EffectProperties::EFFECT_PRIORITY_HIGH;
     return properties;
 }
 

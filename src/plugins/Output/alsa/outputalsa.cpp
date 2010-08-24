@@ -209,7 +209,7 @@ bool OutputALSA::initialize()
 
 qint64 OutputALSA::latency()
 {
-    return m_prebuf_fill * 1000 / sampleRate() / numChannels() / sampleSize();
+    return m_prebuf_fill * 1000 / sampleRate() / channels() / sampleSize();
 }
 
 void OutputALSA::drain()

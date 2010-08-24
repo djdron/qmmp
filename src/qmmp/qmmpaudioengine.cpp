@@ -39,7 +39,7 @@ extern "C"
 }
 
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
-        : AbstractEngine(parent), m_factory(0), m_output(0), m_eqInited(false),
+        : AbstractEngine(parent), m_factory(0), m_output(0),
         m_useEq(false), m_eqEnabled(false)
 {
     m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
@@ -90,7 +90,8 @@ bool QmmpAudioEngine::play()
         return false;
     if(m_output)
         delete m_output;
-    if(!(m_output = createOutput(m_decoders.head())))
+    prepareEffects(m_decoders.head());
+    if(!(m_output = createOutput()))
         return false;
     start();
     return true;
@@ -291,18 +292,7 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
 {
     uint sz = size < m_bks ? size : m_bks;
     m_replayGain->applyReplayGain(data, sz);
-    if (m_useEq && m_decoder->audioParameters().format() == Qmmp::PCM_S16LE)
-    {
-        if (!m_eqInited)
-        {
-            init_iir();
-            m_eqInited = true;
-        }
-        iir((void*) data, sz, chan);
-    }
-
     Buffer *b = m_output->recycler()->get();
-
     memcpy(b->data, data, sz);
     b->nbytes = sz;
     b->rate = brate;
@@ -311,6 +301,9 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
         effect->applyEffect(b);
     }
     m_output->recycler()->add();
+
+    if (m_useEq)
+        iir((void*) b->data, b->nbytes, chan);
     size -= sz;
     memmove(data, data + sz, size);
     return sz;
@@ -341,7 +334,7 @@ void QmmpAudioEngine::updateEqSettings()
         set_gain(i,1, 0.03*value+0.000999999*value*value);
     }
     if(m_decoder)
-        m_useEq = m_eqEnabled && m_decoder->audioParameters().format() == Qmmp::PCM_S16LE;
+        m_useEq = m_eqEnabled && m_ap.format() == Qmmp::PCM_S16LE;
     mutex()->unlock();
 }
 
@@ -423,7 +416,8 @@ void QmmpAudioEngine::run()
                 //m_seekTime = m_inputs.value(m_decoder)->offset();
                 m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
                 //use current output if possible
-                if(m_decoder->audioParameters() == m_ap)
+                prepareEffects(m_decoder);
+                if(m_ap == m_output->audioParameters())
                 {
                     emit playbackFinished();
                     StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
@@ -448,7 +442,7 @@ void QmmpAudioEngine::run()
 
                     m_output->wait();
                     delete m_output;
-                    m_output = createOutput(m_decoder);
+                    m_output = createOutput();
                     if(m_output)
                     {
                         m_output->start();
@@ -560,13 +554,8 @@ void QmmpAudioEngine::sendMetaData()
     }
 }
 
-Output *QmmpAudioEngine::createOutput(Decoder *d)
+Output *QmmpAudioEngine::createOutput()
 {
-    m_blockedEffects.clear();
-    while(!m_effects.isEmpty()) //delete effects
-        delete m_effects.takeFirst();
-
-    m_ap = d->audioParameters();
     Output *output = Output::create(0);
     if(!output)
     {
@@ -582,31 +571,34 @@ Output *QmmpAudioEngine::createOutput(Decoder *d)
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return false;
     }
+    output->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+    return output;
+}
+
+void QmmpAudioEngine::prepareEffects(Decoder *d)
+{
+    m_blockedEffects.clear();
+    while(!m_effects.isEmpty()) //delete effects
+        delete m_effects.takeFirst();
+
     m_effects = Effect::create();
-    AudioParameters ap = m_ap;
-    m_replayGain->setSampleSize(m_ap.sampleSize());
-    if(!m_eqInited)
-    {
-        init_iir();
-        m_eqInited = true;
-    }
-    m_useEq = m_eqEnabled && ap.format() == Qmmp::PCM_S16LE;
+    m_ap = d->audioParameters();
 
     if(m_settings->use16BitOutput())
         m_effects.prepend (new AudioConverter());
 
     foreach(Effect *effect, m_effects)
     {
-        effect->configure(ap.sampleRate(), ap.channels(), ap.format());
-        if (ap != effect->audioParameters())
+        effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+        if (m_ap != effect->audioParameters())
         {
             m_blockedEffects << effect; //list of effects which require restart
-            ap = effect->audioParameters();
+            m_ap = effect->audioParameters();
         }
     }
-    m_chan = ap.channels();
-    output->configure(ap.sampleRate(), ap.channels(), ap.format());
-    return output;
+    m_chan = m_ap.channels();
+    m_useEq = m_eqEnabled && m_ap.format() == Qmmp::PCM_S16LE;
+    init_iir(m_ap.sampleRate());
 }
 
 //static members
