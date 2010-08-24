@@ -70,14 +70,14 @@ private:
     void addOffset();
     qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
     void sendMetaData();
-    Output *createOutput(Decoder *d);
+    Output *createOutput();
+    void prepareEffects(Decoder *d);
 
     DecoderFactory *m_factory;
     QList <Effect*> m_effects;
     QList <Effect*> m_blockedEffects;
     Output *m_output;
 
-    bool m_eqInited;
     bool m_useEq;
     bool m_eqEnabled;
     bool m_done, m_finish, m_user_stop;

@@ -9,17 +9,17 @@
         <translation>SRC Module</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="50"/>
+        <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>About Sample Rate Converter Plugin</source>
         <translation>Over de Sample Rate Converter Module</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="51"/>
+        <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
         <translation>Sample Rate Converter Plugin voor Qmmp</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="52"/>
+        <location filename="../effectsrconverterfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

@@ -33,7 +33,7 @@ typedef struct
     float dummy; // Word alignment
 }sIIRCoefficients;
 
-sIIRCoefficients* get_coeffs(int *bands, int sfreq); //, bool use_xmms_original_freqs);
+sIIRCoefficients* get_coeffs(int *bands, unsigned int sfreq); //, bool use_xmms_original_freqs);
 void calc_coeffs();
 
 #endif

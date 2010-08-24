@@ -51,7 +51,7 @@
 /*
  * Function prototypes
  */
-void init_iir();
+void init_iir(unsigned int srate);
 void clean_history();
 void set_gain(int index, int chn, float val);
 void set_preamp(int chn, float val);
@@ -71,7 +71,7 @@ __inline__ int round_ppc(float x);
 
 extern float preamp[EQ_CHANNELS];
 extern sIIRCoefficients *iir_cf;
-extern int rate;
+extern unsigned int rate;
 extern int band_count;
 
 #ifdef BENCHMARK

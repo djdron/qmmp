@@ -42,7 +42,7 @@ unsigned int blength = 0;
 /* 
  * Global vars
  */
-int rate;
+unsigned int rate;
 int band_count;
 
 void set_preamp(int chn, float val)
@@ -51,7 +51,7 @@ void set_preamp(int chn, float val)
 }
 
 /* Init the filters */
-void init_iir()
+void init_iir(unsigned int srate)
 {
   calc_coeffs();
 #if 0
@@ -60,7 +60,7 @@ void init_iir()
 
   band_count = 10;
 
-  rate = 44100;
+  rate = srate;
 
   iir_cf = get_coeffs(&band_count, rate);
   clean_history();

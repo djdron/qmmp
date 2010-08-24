@@ -9,17 +9,17 @@
         <translation>SRC įskiepis</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="50"/>
+        <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>About Sample Rate Converter Plugin</source>
         <translation>Apie SRC įskiepį</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="51"/>
+        <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
         <translation>Qmmp SRC įskiepis</translation>
     </message>
     <message>
-        <location filename="../effectsrconverterfactory.cpp" line="52"/>
+        <location filename="../effectsrconverterfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Sukurta: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>

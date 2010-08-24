@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,17 +34,28 @@ class EffectProperties
 {
 public:
     /*!
+     * This enum describes effect preferd position.
+     */
+    enum Priority
+    {
+        EFFECT_PRIORITY_LOW = 0,    /*!< Low priority */
+        EFFECT_PRIORITY_DEFAULT,    /*!< Default priority */
+        EFFECT_PRIORITY_HIGH        /*!< High priority */
+    };
+    /*!
      * Constructor
      */
     EffectProperties()
     {
         hasAbout = false;
         hasSettings = false;
+        priority = EFFECT_PRIORITY_DEFAULT;
     }
     QString name;      /*!< Effect plugin full name */
     QString shortName; /*!< Effect plugin short name for internal usage */
     bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
     bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
+    int priority;      /*!< Effect priority. Effecs with higher priority are applied first */
 };
 /*! @brief Effect plugin interface (effect factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>
