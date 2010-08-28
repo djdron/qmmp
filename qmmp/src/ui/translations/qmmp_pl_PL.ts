@@ -627,7 +627,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="430"/>
         <source>Equalizer</source>
-        <translation>Equalizer</translation>
+        <translation>Korektor</translation>
     </message>
 </context>
 <context>
@@ -1236,12 +1236,12 @@
     <message>
         <location filename="../playlist.cpp" line="317"/>
         <source>&amp;Stop after track</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatrzymaj po aktualnie odtwarzanym utworze</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="317"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="321"/>
