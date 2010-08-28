@@ -27,7 +27,7 @@ Hungarian:
 Italian:
     Gian Paolo Renello <emmerkar@gmail.com>
 
-Japan:
+Japanese:
     SimaMoto,RyoTa <liangtai.s4@gmail.com>
 
 Kazakh:
