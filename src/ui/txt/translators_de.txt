@@ -18,6 +18,9 @@ Französisch:
 Italienisch:
     Gian Paolo Renello <emmerkar@gmail.com>
 
+Japanisch:
+    SimaMoto,RyoTa <liangtai.s4@gmail.com>
+
 Kasachisch:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
@@ -32,6 +35,9 @@ Polnisch:
 
 Russisch:
     Ilya Kotov <forkotov02@hotmail.ru>
+
+Spanisch:
+    Félix Medrano <xukosky@yahoo.es>
 
 Tschechisch:
     Karel Volný <kvolny@redhat.com>
