@@ -1236,7 +1236,7 @@
     <message>
         <location filename="../playlist.cpp" line="317"/>
         <source>&amp;Stop after track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Остановить после трека</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="317"/>

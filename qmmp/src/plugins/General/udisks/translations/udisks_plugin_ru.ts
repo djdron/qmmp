@@ -4,37 +4,37 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="13"/>
-        <source>HAL Plugin Settings</source>
-        <translation>Настройки модуля HAL</translation>
+        <location filename="../settingsdialog.ui" line="14"/>
+        <source>UDisks Plugin Settings</source>
+        <translation>Настройки модуля UDisks</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="28"/>
+        <location filename="../settingsdialog.ui" line="29"/>
         <source>CD Audio Detection</source>
         <translation>Автоопределение аудио-CD</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="37"/>
+        <location filename="../settingsdialog.ui" line="38"/>
         <source>Add tracks to playlist automatically</source>
         <translation>Автоматически добавлять треки в список</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="44"/>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>Remove tracks from playlist automatically</source>
         <translation>Автоматически удалять треки из списка</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="54"/>
+        <location filename="../settingsdialog.ui" line="55"/>
         <source>Removable Device Detection</source>
         <translation>Автоопределение съёмных устройств</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="63"/>
+        <location filename="../settingsdialog.ui" line="64"/>
         <source>Add files to playlist automatically</source>
         <translation>Автоматически добавлять треки в список</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="70"/>
+        <location filename="../settingsdialog.ui" line="71"/>
         <source>Remove files from playlist automatically</source>
         <translation>Автоматически удалять треки из списка </translation>
     </message>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../udisksfactory.cpp" line="30"/>
         <source>UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="50"/>
         <source>About UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>О модуле UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="51"/>
         <source>Qmmp UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль UDisks для Qmmp</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using UDisks</source>
-        <translation type="unfinished"></translation>
+        <translation>Этот модуль отслеживает съёмные устройства с помощью UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Разработчик: Илья Котов</translation>
+        <translation>Разработчик: Илья Котов</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisksplugin.cpp" line="152"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished">Добавить CD &quot;%1&quot;</translation>
+        <translation>Добавить CD &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../udisksplugin.cpp" line="158"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished">Добавить том &quot;%1&quot;</translation>
+        <translation>Добавить том &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
