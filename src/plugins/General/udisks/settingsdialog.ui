@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>SettingsDialog</class>
- <widget class="QDialog" name="SettingsDialog" >
-  <property name="geometry" >
+ <widget class="QDialog" name="SettingsDialog">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,38 +10,38 @@
     <height>247</height>
    </rect>
   </property>
-  <property name="windowTitle" >
-   <string>HAL Plugin Settings</string>
+  <property name="windowTitle">
+   <string>UDisks Plugin Settings</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3" >
-   <property name="leftMargin" >
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="leftMargin">
     <number>6</number>
    </property>
-   <property name="rightMargin" >
+   <property name="rightMargin">
     <number>6</number>
    </property>
-   <property name="bottomMargin" >
+   <property name="bottomMargin">
     <number>6</number>
    </property>
    <item>
-    <widget class="QGroupBox" name="cdGroupBox" >
-     <property name="title" >
+    <widget class="QGroupBox" name="cdGroupBox">
+     <property name="title">
       <string>CD Audio Detection</string>
      </property>
-     <property name="checkable" >
+     <property name="checkable">
       <bool>true</bool>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2" >
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QCheckBox" name="addTracksCheckBox" >
-        <property name="text" >
+       <widget class="QCheckBox" name="addTracksCheckBox">
+        <property name="text">
          <string>Add tracks to playlist automatically</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="removeTracksCheckBox" >
-        <property name="text" >
+       <widget class="QCheckBox" name="removeTracksCheckBox">
+        <property name="text">
          <string>Remove tracks from playlist automatically</string>
         </property>
        </widget>
@@ -49,24 +50,24 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="removableGroupBox" >
-     <property name="title" >
+    <widget class="QGroupBox" name="removableGroupBox">
+     <property name="title">
       <string>Removable Device Detection</string>
      </property>
-     <property name="checkable" >
+     <property name="checkable">
       <bool>true</bool>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout" >
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QCheckBox" name="addFilesCheckBox" >
-        <property name="text" >
+       <widget class="QCheckBox" name="addFilesCheckBox">
+        <property name="text">
          <string>Add files to playlist automatically</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="removeFilesCheckBox" >
-        <property name="text" >
+       <widget class="QCheckBox" name="removeFilesCheckBox">
+        <property name="text">
          <string>Remove files from playlist automatically</string>
         </property>
        </widget>
@@ -75,8 +76,8 @@
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox" >
-     <property name="standardButtons" >
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
@@ -91,11 +92,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>199</x>
      <y>221</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>22</x>
      <y>242</y>
     </hint>
@@ -107,11 +108,11 @@
    <receiver>SettingsDialog</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>247</x>
      <y>225</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>273</x>
      <y>229</y>
     </hint>
