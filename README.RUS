@@ -38,7 +38,7 @@ Qmmp - Qt-based multimedia player
 - поддержка потоков MP3, Vorbis, AAC, AAC+
 - поддержка протокола MMS (экспериментальная)
 - MPRIS
-- автоопределение съёмных устройств (с помощью HAL)
+- автоопределение съёмных устройств (с помощью HAL или UDisks)
 - воспроизведение видео с помощью Mplayer-а
 - получение текстов песен с lyricsplugin.com
 - просмотр обложек
@@ -104,7 +104,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_SRC, USE_BS2B, USE_LADSPA (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
-  USE_KDENOTIFY (модули общего назначения);
+  USE_KDENOTIFY, USE_UDISKS (модули общего назначения);
 - USE_QMMP_DIALOG (файловый диалог);
 - USE_ENCA (автоматическое определение кодировки);
 - USE_SKINNED (стандартный пользовательский интерфейс)

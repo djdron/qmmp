@@ -1,0 +1,18 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>udisks_plugin_it.qm</file>
+    <file>udisks_plugin_ru.qm</file>
+    <file>udisks_plugin_uk_UA.qm</file>
+    <file>udisks_plugin_zh_CN.qm</file>
+    <file>udisks_plugin_zh_TW.qm</file>
+    <file>udisks_plugin_cs.qm</file>
+    <file>udisks_plugin_de.qm</file>
+    <file>udisks_plugin_pl.qm</file>
+    <file>udisks_plugin_tr.qm</file>
+    <file>udisks_plugin_lt.qm</file>
+    <file>udisks_plugin_nl.qm</file>
+    <file>udisks_plugin_ja.qm</file>
+    <file>udisks_plugin_es.qm</file>
+  </qresource>
+</RCC>

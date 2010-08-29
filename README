@@ -38,7 +38,7 @@ Other features:
 - MP3, Vorbis, AAC, AAC+ streams support
 - mms support (experimental)
 - MPRIS
-- Removable device detection (via HAL)
+- Removable device detection (via HAL or UDisks)
 - Video playback via Mplayer
 - Lyrics (using lyricsplugin.com)
 - Cover art support
@@ -105,7 +105,7 @@ Available options:
 - USE_SRC, USE_BS2B, USE_LADSPA (effects);
 - USE_ANALYZER, USE_PROJECTM (visualization);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
-  USE_KDENOTIFY (general plugins);
+  USE_KDENOTIFY, USE_UDISKS (general plugins);
 - USE_QMMP_DIALOG (file dialog);
 - USE_ENCA (automatic charset detection);
 - USE_SKINNED (standard skinned UI)
