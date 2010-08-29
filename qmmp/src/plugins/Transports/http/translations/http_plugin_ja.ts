@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="114"/>
         <source>Default encoding:</source>
-        <translation>初期設定での文字符号化形式:</translation>
+        <translation>文字符号化形式(初期設定値):</translation>
     </message>
 </context>
 </TS>

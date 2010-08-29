@@ -69,12 +69,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="167"/>
         <source>Period time (ms):</source>
-        <translation>期間 (ミリ秒):</translation>
+        <translation>割り込み間隔 (ミリ秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="197"/>
         <source>PCM over Master</source>
-        <translation>PCM over Master</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="224"/>

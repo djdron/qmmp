@@ -84,7 +84,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Clear CDDB cache</source>
-        <translation>CDDB キャッシュを消去:</translation>
+        <translation>CDDB キャッシュを消去</translation>
     </message>
 </context>
 </TS>

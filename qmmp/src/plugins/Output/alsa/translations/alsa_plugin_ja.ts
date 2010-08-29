@@ -59,7 +59,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="99"/>
         <source>Advanced Settings</source>
-        <translation>上級設定:</translation>
+        <translation>上級設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="111"/>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="153"/>
         <source>Period time (ms):</source>
-        <translation>期間 (ミリ秒):</translation>
+        <translation>割り込み間隔 (ミリ秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="189"/>

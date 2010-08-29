@@ -26,7 +26,7 @@
     <message>
         <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation>このプラグインの実行は MPlayer で裏打ちされています。</translation>
+        <translation>このプラグインの実行は MPlayer で裏打ちされています</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="85"/>

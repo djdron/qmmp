@@ -62,7 +62,7 @@
     <message>
         <location filename="../lyricswindow.ui" line="51"/>
         <source>Search</source>
-        <translation>検索:</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <location filename="../lyricswindow.ui" line="60"/>

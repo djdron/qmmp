@@ -21,7 +21,7 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="54"/>
         <source>Visit %1 for more details</source>
-        <translation>詳しい情報は %1 でご覧ください。</translation>
+        <translation>詳しい情報は %1 でご覧ください</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="56"/>

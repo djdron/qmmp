@@ -37,7 +37,7 @@
         <location filename="../fileops.cpp" line="190"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
-            <numerusform>%n 個のファイルをディスク上から削除しようとしています。</numerusform>
+            <numerusform>%n 個のファイルをディスク上から削除しようとしています。 よろしいですか？</numerusform>
         </translation>
     </message>
 </context>
@@ -74,7 +74,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation>割り当てたいキーの組み合わせを押します。</translation>
+        <translation>割り当てたいキーの組み合わせを押します</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="43"/>
