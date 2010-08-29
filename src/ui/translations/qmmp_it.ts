@@ -994,53 +994,58 @@
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="439"/>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="450"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Vai al brano</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="446"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="453"/>
+        <location filename="../mainwindow.cpp" line="458"/>
         <source>&amp;Settings</source>
         <translation>&amp;Configurazione</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="459"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="465"/>
         <source>&amp;Exit</source>
         <translation>&amp;Esci</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="466"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="507"/>
+        <location filename="../mainwindow.cpp" line="512"/>
         <source>Open Playlist</source>
         <translation>Apri lista di brani</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="532"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>Save Playlist</source>
         <translation>Salva lista di brani</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="461"/>
         <source>&amp;About</source>
         <translation>&amp;Informazioni</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="505"/>
-        <location filename="../mainwindow.cpp" line="531"/>
+        <location filename="../mainwindow.cpp" line="510"/>
+        <location filename="../mainwindow.cpp" line="536"/>
         <source>Playlist Files</source>
         <translation>Brani della lista</translation>
     </message>
@@ -1050,7 +1055,7 @@
         <translation>Spazio</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="457"/>
+        <location filename="../mainwindow.cpp" line="462"/>
         <source>&amp;About Qt</source>
         <translation>&amp;Informazioni su Qt</translation>
     </message>
@@ -1065,27 +1070,32 @@
         <translation>Elenco di tutti i tipi di flusso accettati</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>&amp;Repeat Track</source>
         <translation>&amp;Ripeti brano</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="431"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Shuffle</source>
         <translation>&amp;Ordine casuale</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="431"/>
+        <source>&amp;Auto Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="437"/>
         <source>R</source>
         <translation>R</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="438"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="440"/>
         <source>S</source>
         <translation>S</translation>
     </message>
@@ -1095,7 +1105,7 @@
         <translation>&amp;Ripeti lista brani</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="451"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>Tools</source>
         <translation>Strumenti</translation>
     </message>
@@ -1118,22 +1128,22 @@
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="334"/>
+        <location filename="../playlist.cpp" line="333"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="341"/>
+        <location filename="../playlist.cpp" line="340"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="346"/>
+        <location filename="../playlist.cpp" line="345"/>
         <source>Ctrl+W</source>
         <translation>Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="353"/>
+        <location filename="../playlist.cpp" line="352"/>
         <source>O</source>
         <translation>O</translation>
     </message>
@@ -1234,87 +1244,77 @@
         <translation>Inverti la lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="317"/>
-        <source>&amp;Stop after track</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="317"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="321"/>
+        <location filename="../playlist.cpp" line="320"/>
         <source>Invert Selection</source>
         <translation>Inverti la selezione</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="327"/>
+        <location filename="../playlist.cpp" line="326"/>
         <source>&amp;Select None</source>
         <translation>&amp;Non scegliere alcun brano</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="328"/>
+        <location filename="../playlist.cpp" line="327"/>
         <source>Shift+A</source>
         <translation>Shift+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="333"/>
+        <location filename="../playlist.cpp" line="332"/>
         <source>&amp;Select All</source>
         <translation>&amp;Seleziona tutto</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="340"/>
+        <location filename="../playlist.cpp" line="339"/>
         <source>&amp;New List</source>
         <translation>&amp;Nuova lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="366"/>
+        <location filename="../playlist.cpp" line="365"/>
         <source>&amp;Select Next Playlist</source>
         <translation>&amp;Seleziona la successiva lista esecuzione brani</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="367"/>
+        <location filename="../playlist.cpp" line="366"/>
         <source>Ctrl+PgDown</source>
         <translation>Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="373"/>
+        <location filename="../playlist.cpp" line="372"/>
         <source>&amp;Select Previous Playlist</source>
         <translation>&amp;Seleziona la rpecedente lista esecuzione brani</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="374"/>
+        <location filename="../playlist.cpp" line="373"/>
         <source>Ctrl+PgUp</source>
         <translation>Ctrl+PgUp</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="380"/>
+        <location filename="../playlist.cpp" line="379"/>
         <source>&amp;Show Playlists</source>
         <translation>Mostra lista esecuzione brani</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="381"/>
+        <location filename="../playlist.cpp" line="380"/>
         <source>P</source>
         <translation>P</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="345"/>
+        <location filename="../playlist.cpp" line="344"/>
         <source>&amp;Delete List</source>
         <translation>&amp;Cancella lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="352"/>
+        <location filename="../playlist.cpp" line="351"/>
         <source>&amp;Load List</source>
         <translation>&amp;Carica lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="358"/>
+        <location filename="../playlist.cpp" line="357"/>
         <source>&amp;Save List</source>
         <translation>&amp;Salva lista</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="359"/>
+        <location filename="../playlist.cpp" line="358"/>
         <source>Shift+S</source>
         <translation>Shift+S</translation>
     </message>

@@ -427,19 +427,24 @@ void MainWindow::createActions()
     m_mainMenu->addAction(tr("&Play/Pause"),this, SLOT(playPause()), tr("Space"));
     m_mainMenu->addSeparator();
     QAction *repeateAllAction = m_mainMenu->addAction(tr("&Repeat Playlist"));
-    QAction *repeateTrackAction = m_mainMenu->addAction(tr("&Repeat Track"));
     QAction *shuffleAction = m_mainMenu->addAction(tr("&Shuffle"));
+    QAction *autoStopAction = m_mainMenu->addAction(tr("&Auto Stop"));
+    QAction *repeateTrackAction = m_mainMenu->addAction(tr("&Repeat Track"));
     repeateAllAction->setCheckable (true);
     repeateTrackAction->setCheckable (true);
+    autoStopAction->setCheckable (true);
     shuffleAction->setCheckable (true);
     repeateAllAction->setShortcut(tr("R")) ;
     repeateTrackAction->setShortcut(tr("Ctrl+R")) ;
+    autoStopAction->setShortcut(tr("Ctrl+S")) ;
     shuffleAction->setShortcut(tr("S")) ;
     connect(repeateAllAction, SIGNAL(triggered (bool)), m_pl_manager, SLOT(setRepeatableList(bool)));
     connect(repeateTrackAction, SIGNAL(triggered (bool)), m_player, SLOT(setRepeatable(bool)));
+    connect(autoStopAction, SIGNAL(triggered (bool)), m_player, SLOT(setAutoStop(bool)));
     connect(shuffleAction, SIGNAL(triggered (bool)), m_pl_manager, SLOT(setShuffle(bool)));
     connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), repeateAllAction, SLOT(setChecked(bool)));
     connect(m_player, SIGNAL (repeatableChanged(bool)), repeateTrackAction, SLOT(setChecked(bool)));
+    connect(m_player, SIGNAL (autoStopChanged(bool)), autoStopAction, SLOT(setChecked(bool)));
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), shuffleAction, SLOT(setChecked(bool)));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(QIcon::fromTheme("go-up"), tr("&Jump To File"),

@@ -206,6 +206,13 @@ public:
         return m_queued_songs.indexOf(item);
     }
     /*!
+     * Returns the number of items in the queue
+     */
+    int queueSize() const
+    {
+        return m_queued_songs.size();
+    }
+    /*!
      * Returns current selection(playlist can contain a lot of selections,
      * this method returns selection which \b row belongs to)
      */

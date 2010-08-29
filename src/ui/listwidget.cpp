@@ -51,6 +51,7 @@ ListWidget::ListWidget(QWidget *parent)
     m_anchor_row = INVALID_ROW;
     m_player = MediaPlayer::instance();
     connect (m_player, SIGNAL(repeatableChanged(bool)), SLOT(updateList()));
+    connect (m_player, SIGNAL(autoStopChanged(bool)), SLOT(updateList()));
     m_first = 0;
     m_rows = 0;
     m_scroll = false;
@@ -131,7 +132,8 @@ void ListWidget::paintEvent(QPaintEvent *)
         m_painter.drawText(10,14+i*m_metrics->height(),m_titles.at(i));
 
         if (m_model->isQueued(m_model->item(i + m_first)) ||
-                (m_player->isRepeatable() && (m_model->currentRow() == m_first + i)) || m_show_protocol)
+                (m_player->isRepeatable() && (m_model->currentRow() == m_first + i)) ||
+                m_show_protocol || m_player->isAutoStopping())
         {
             QString extra_string = getExtraString(m_first + i);
 
@@ -406,15 +408,24 @@ const QString ListWidget::getExtraString(int i)
     if (m_show_protocol && m_model->item(i)->url().contains("://"))
         extra_string = "[" + m_model->item(i)->url().split("://").at(0) + "]";
 
-    if (m_player->isRepeatable() && (m_model->currentRow() == i))
-        extra_string += " |R|";
+    if ((m_model->currentRow() == i))
+    {
+        if (m_player->isRepeatable() )
+            extra_string += "|R|";
+        if (m_player->isAutoStopping() && (m_player->isRepeatable() || m_model->isEmptyQueue()))
+            extra_string += "|S|";
+    }
 
     if (m_model->isQueued(m_model->item(i)))
     {
         int index = m_model->queuedIndex(m_model->item(i));
-        extra_string += " |"+QString::number(index + 1)+"|";
+        if (m_player->isAutoStopping() && !m_player->isRepeatable() && index + 1== m_model->queueSize())
+            extra_string += "|S|";
+        extra_string += "|"+QString::number(index + 1)+"|";
     }
     extra_string = extra_string.trimmed(); //remove white space
+    if(!extra_string.isEmpty())
+        extra_string.prepend(" ");
     return extra_string;
 }
 
