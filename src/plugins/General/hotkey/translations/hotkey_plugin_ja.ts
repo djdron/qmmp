@@ -11,7 +11,7 @@
     <message>
         <location filename="../hotkeydialog.ui" line="32"/>
         <source>Press the key combination you want to assign</source>
-        <translation>割り当てたいキーの組み合わせを押します。</translation>
+        <translation>割り当てたいキーの組み合わせを押します</translation>
     </message>
     <message>
         <location filename="../hotkeydialog.ui" line="52"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../hotkeyfactory.cpp" line="52"/>
         <source>This plugin adds support for multimedia keys or global key combinations</source>
-        <translation>このプラグインはマルティミディアキーや共通キーを組み合わせるサポートを加えます。</translation>
+        <translation>このプラグインはマルティミディアキーや共通キーを組み合わせるサポートを加えます</translation>
     </message>
     <message>
         <location filename="../hotkeyfactory.cpp" line="53"/>

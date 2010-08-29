@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="222"/>
         <source>Compiled against libmad version:</source>
-        <translation>コンパイル時に使われた libmad の版はつぎのとおり</translation>
+        <translation>コンパイル時に使われた libmad の版はつぎのとおり:</translation>
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="226"/>
@@ -165,12 +165,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="90"/>
         <source>Second:</source>
-        <translation>第二</translation>
+        <translation>第二:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="139"/>
         <source>Third:</source>
-        <translation>第三</translation>
+        <translation>第三:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="198"/>
@@ -180,12 +180,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="210"/>
         <source>ID3v1 encoding:</source>
-        <translation>ID3v1 用文字符号化形式</translation>
+        <translation>ID3v1 用文字符号化形式:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="236"/>
         <source>ID3v2 encoding:</source>
-        <translation>ID3v2 用文字符号化形式</translation>
+        <translation>ID3v2 用文字符号化形式:</translation>
     </message>
 </context>
 </TS>

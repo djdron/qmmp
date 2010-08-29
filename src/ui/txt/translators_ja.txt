@@ -10,6 +10,9 @@
 カザフ語:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 
+スペイン語:
+    Félix Medrano <xukosky@yahoo.es>
+
 チェコ語:
     Karel Volný <kvolny@redhat.com>
 
@@ -45,3 +48,6 @@
 
 繁体字中国語:
     李红昆 (lon) <lon83129@126.com>
+
+日本語:
+    島本良太 <liangtai.s4@gmail.com>

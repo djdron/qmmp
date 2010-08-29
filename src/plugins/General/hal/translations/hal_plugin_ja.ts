@@ -21,7 +21,7 @@
     <message>
         <location filename="../halfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using HAL</source>
-        <translation>このプラグインは着脱可能なデバイスの検知機能を HAL によって提供します。</translation>
+        <translation>このプラグインは着脱可能なデバイスの検知機能を HAL によって提供します</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="53"/>
@@ -31,7 +31,7 @@
     <message>
         <location filename="../halfactory.cpp" line="54"/>
         <source>Based on Solid (KDE hardware library)</source>
-        <translation>Solid (KDE ハードウェアライブラリ) を流用しました。</translation>
+        <translation>Solid (KDE ハードウェアライブラリ) を流用しました</translation>
     </message>
 </context>
 <context>

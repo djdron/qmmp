@@ -280,7 +280,8 @@
         <location filename="../settingsdialog.ui" line="656"/>
         <source>Note: Setting the preamp
 too high may cause clipping!</source>
-        <translation>ご注意: プリアンプ値を高くし過ぎるとクリッピング現象を起こします。</translation>
+        <translation>ご注意: プリアンプ値を高くし過ぎると
+クリッピング現象を起こすおそれがあります!</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="671"/>
@@ -325,17 +326,18 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="733"/>
         <source>Loop</source>
-        <translation>繰り返す</translation>
+        <translatorcomment>もう [n] 回繰り返す</translatorcomment>
+        <translation>もう</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="750"/>
         <source>time(s)</source>
-        <translation>回</translation>
+        <translation>回繰り返す</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="770"/>
         <source>Loop forever</source>
-        <translation>恒久的に繰り返し</translation>
+        <translation>恒久的に繰り返す</translation>
     </message>
 </context>
 </TS>

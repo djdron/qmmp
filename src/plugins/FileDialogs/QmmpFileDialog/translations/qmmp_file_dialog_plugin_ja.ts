@@ -82,7 +82,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="134"/>
         <source>Some code is copied from the Qt library</source>
-        <translation>コードの一部に Qt ライブラリのソースを流用しています。</translation>
+        <translation>コードの一部に Qt ライブラリのソースを流用しています</translation>
     </message>
 </context>
 <context>

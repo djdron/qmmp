@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Analyzer falloff:</source>
-        <translation>アナライザ減衰速度</translation>
+        <translation>アナライザ減衰速度:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="83"/>
         <source>Peaks falloff:</source>
-        <translation>ピーク減衰速度</translation>
+        <translation>ピーク減衰速度:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="125"/>

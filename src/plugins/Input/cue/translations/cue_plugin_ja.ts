@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>CUE encoding</source>
-        <translation>CUE 文字符号化法式</translation>
+        <translation>CUE 文字符号化形式</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="65"/>
         <source>Default encoding:</source>
-        <translation>文字符号化方式の初期設定値:</translation>
+        <translation>文字符号化形式(初期設定値):</translation>
     </message>
 </context>
 </TS>

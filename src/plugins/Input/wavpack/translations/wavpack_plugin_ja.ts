@@ -26,7 +26,7 @@
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="134"/>
         <source>WavPack library version:</source>
-        <translation>WavPack ライブラリのバージョン</translation>
+        <translation>WavPack ライブラリのバージョン:</translation>
     </message>
     <message>
         <location filename="../decoderwavpackfactory.cpp" line="136"/>
