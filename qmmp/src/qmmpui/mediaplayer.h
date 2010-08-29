@@ -59,6 +59,10 @@ public:
      * Returns \b true if "Repeate Track" option is enabled, otherwise returns \b false
      */
     bool isRepeatable() const;
+    /*!
+     * Returns \b true if "Auto Stop" option is enabled, otherwise returns \b false
+     */
+    bool isAutoStopping() const;
 
 public slots:
     /*!
@@ -82,6 +86,11 @@ public slots:
      * @param enable Repeate state of the current track (\b true - to repeat, \b false - to stop repeating)
      */
     void setRepeatable(bool enable);
+    /*!
+     * Toggles the AutoStop feature.
+     * @param enable the AutoStop state (\b true - automatic stop, \b false - normal play)
+     */
+    void setAutoStop(bool enable);
 
 signals:
     /*!
@@ -89,9 +98,11 @@ signals:
      * @param enabled New repeate state of the current track (\b true - enabled, \b false - disabled)
      */
     void repeatableChanged(bool enabled);
+    void autoStopChanged(bool enabled);
 
 private slots:
     void playNext();
+    void autoStop();
     void updateNextUrl();
 
 private:
@@ -99,6 +110,7 @@ private:
     SoundCore *m_core;
     static MediaPlayer* m_instance;
     bool m_repeat;
+    bool m_autoStop;
     int m_skips;
     QString m_nextUrl;
 };

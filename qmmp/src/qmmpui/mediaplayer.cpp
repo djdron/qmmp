@@ -37,6 +37,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_core = 0;
     m_skips = 0;
     m_repeat = false;
+    m_autoStop = false;
     QTranslator *translator = new QTranslator(parent);
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/libqmmpui_") + locale);
@@ -58,6 +59,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
     m_core = core;
     m_pl_manager = pl_manager;
     m_repeat = false;
+    m_autoStop = false;
     connect(m_core, SIGNAL(aboutToFinish()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
 }
@@ -70,6 +72,11 @@ PlayListManager *MediaPlayer::playListManager()
 bool MediaPlayer::isRepeatable() const
 {
     return m_repeat;
+}
+
+bool MediaPlayer::isAutoStopping() const
+{
+    return m_autoStop;
 }
 
 void MediaPlayer::play(qint64 offset)
@@ -174,15 +181,18 @@ void MediaPlayer::previous()
 
 void MediaPlayer::setRepeatable(bool r)
 {
-    if (r != m_repeat && !r)
+    if (!isAutoStopping())
     {
-        disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
-        connect(m_core, SIGNAL(finished()), SLOT(playNext()));
-    }
-    else if (r != m_repeat && r)
-    {
-        disconnect(m_core, SIGNAL(finished()), this, SLOT(playNext()));
-        connect(m_core, SIGNAL(finished()), SLOT(play()));
+        if (r != m_repeat && !r)
+        {
+            disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
+            connect(m_core, SIGNAL(finished()), SLOT(playNext()));
+        }
+        else if (r != m_repeat && r)
+        {
+            disconnect(m_core, SIGNAL(finished()), this, SLOT(playNext()));
+            connect(m_core, SIGNAL(finished()), SLOT(play()));
+        }
     }
     m_repeat = r;
     emit repeatableChanged(r);
@@ -196,6 +206,42 @@ void MediaPlayer::playNext()
         return;
     }
     play();
+}
+
+void MediaPlayer::setAutoStop(bool enable)
+{
+    if (enable != m_autoStop)
+    {
+        if(enable)
+        {
+            if (m_repeat)
+                disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
+            else
+                disconnect(m_core, SIGNAL(finished()), this, SLOT(playNext()));
+            connect(m_core, SIGNAL(finished()), SLOT(autoStop()));
+        }
+        else
+        {
+            disconnect(m_core, SIGNAL(finished()), this, SLOT(autoStop()));
+            if (m_repeat)
+                connect(m_core, SIGNAL(finished()), SLOT(play()));
+            else
+                connect(m_core, SIGNAL(finished()), SLOT(playNext()));
+        }
+        m_autoStop = enable;
+        emit autoStopChanged(enable);
+    }
+}
+
+void MediaPlayer::autoStop()
+{
+    if (!m_repeat && !m_pl_manager->currentPlayList()->isEmptyQueue())
+    {
+        playNext();
+        return;
+    }
+    setAutoStop(false);
+    stop();
 }
 
 void MediaPlayer::updateNextUrl()

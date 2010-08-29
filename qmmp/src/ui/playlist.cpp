@@ -314,7 +314,6 @@ void PlayList::createActions()
 
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addAction(tr("&Queue"),m_pl_manager, SLOT(addToQueue()), tr("Q"));
-    m_listWidget->menu()->addAction(tr("&Stop after track"),m_pl_manager, SLOT(addToStopAfter()), tr("Ctrl+S"));
     m_actions << m_listWidget->menu()->actions();
 
     //select menu
