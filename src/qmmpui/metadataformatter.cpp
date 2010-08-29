@@ -98,7 +98,7 @@ QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData, q
 
 QString MetaDataFormatter::processIfKeyWord(QString title)
 {
-    int pos = title.indexOf("%if(");
+    int pos = title.lastIndexOf("%if(");
     int size = title.indexOf("%)",pos) - pos;
 
     QStringList args = title.mid (pos + 4, size - 4).split("%,");
