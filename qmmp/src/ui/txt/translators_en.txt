@@ -28,7 +28,7 @@ Italian:
     Gian Paolo Renello <emmerkar@gmail.com>
 
 Japanese:
-    SimaMoto,RyoTa <liangtai.s4@gmail.com>
+    Ryota Shimamoto <liangtai.s4@gmail.com>
 
 Kazakh:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
