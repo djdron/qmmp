@@ -58,7 +58,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
     connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(startPendingEngine()));
-    connect(m_handler, SIGNAL(aboutToFinish()), SIGNAL(aboutToFinish()));
+    connect(m_handler, SIGNAL(nextTrackRequest()), SIGNAL(nextTrackRequest()));
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
     updateVolume();
     connect(QmmpSettings::instance(), SIGNAL(eqSettingsChanged()), SIGNAL(eqSettingsChanged()));

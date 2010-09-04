@@ -60,7 +60,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
     m_pl_manager = pl_manager;
     m_repeat = false;
     m_autoStop = false;
-    connect(m_core, SIGNAL(aboutToFinish()), SLOT(updateNextUrl()));
+    connect(m_core, SIGNAL(nextTrackRequest()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
 }
 

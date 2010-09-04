@@ -183,11 +183,14 @@ signals:
      * @param right Right channel volume level. It should be \b [0..100]
      */
     void volumeChanged(int left, int right);
+    /*!
+     * Emitted when equalizer settings have changed.
+     */
     void eqSettingsChanged();
     /*!
-     * Emitted before the playback ends.
+     * Emitted before playback ends. Use this signal to append new url to the queue.
      */
-    void aboutToFinish();
+    void nextTrackRequest();
 
 private slots:
     bool enqueue(InputSource *);

@@ -24,7 +24,7 @@
 #include "statehandler.h"
 
 #define TICK_INTERVAL 250
-#define PREFINISH_TIME 11000
+#define PREFINISH_TIME 6000
 
 StateHandler* StateHandler::m_instance = 0;
 
@@ -71,7 +71,7 @@ void StateHandler::dispatch(qint64 elapsed,
         {
             m_sendAboutToFinish = false;
             if(SoundCore::instance()->totalTime() - m_elapsed > PREFINISH_TIME/2)
-                emit aboutToFinish();
+                emit nextTrackRequest();
         }
     }
     if (m_frequency != frequency)
@@ -201,6 +201,17 @@ QMap<Qmmp::MetaData, QString> StateHandler::metaData()
 QString StateHandler::metaData(Qmmp::MetaData key)
 {
     return m_metaData.value(key);
+}
+
+void StateHandler::sendNextTrackRequest()
+{
+    m_mutex.lock();
+    if(m_sendAboutToFinish)
+    {
+        m_sendAboutToFinish = false;
+        emit nextTrackRequest();
+    }
+    m_mutex.unlock();
 }
 
 StateHandler *StateHandler::instance()
