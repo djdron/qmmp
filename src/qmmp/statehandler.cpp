@@ -24,7 +24,7 @@
 #include "statehandler.h"
 
 #define TICK_INTERVAL 250
-#define PREFINISH_TIME 6000
+#define PREFINISH_TIME 11000
 
 StateHandler* StateHandler::m_instance = 0;
 

@@ -205,7 +205,7 @@ void QmmpAudioEngine::seek(qint64 time)
     if (m_output && m_output->isRunning())
     {
         m_output->mutex()->lock ();
-        m_output->seek(time);
+        m_output->seek(time, true);
         m_output->mutex()->unlock();
         if (isRunning())
         {
@@ -299,12 +299,11 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
     {
         effect->applyEffect(b);
     }
-    m_output->recycler()->add();
-
     if (m_useEq)
         iir((void*) b->data, b->nbytes, chan);
     size -= sz;
     memmove(data, data + sz, size);
+    m_output->recycler()->add();
     return sz;
 }
 

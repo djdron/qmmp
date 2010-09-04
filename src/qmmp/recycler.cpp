@@ -12,9 +12,7 @@ Recycler::Recycler (unsigned int sz)
 {
     buffer_count = sz / QMMP_BLOCK_SIZE;
     if (buffer_count < 4)
-    {
         buffer_count = 4;
-    }
 
     buffers = new Buffer*[buffer_count];
 
@@ -76,8 +74,11 @@ Buffer *Recycler::get()
 
 void Recycler::add()
 {
-    add_index = ++add_index % buffer_count;
-    current_count++;
+    if(buffers[add_index]->nbytes)
+    {
+        add_index = ++add_index % buffer_count;
+        current_count++;
+    }
 }
 
 Buffer *Recycler::next()
