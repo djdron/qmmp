@@ -101,6 +101,10 @@ public:
      */
     QString metaData(Qmmp::MetaData key);
     /*!
+     * Sends \b nextTrackRequest() signal manually.
+     */
+    void sendNextTrackRequest();
+    /*!
      * Returns a pointer to the first created StateHandler instance.
      */
     static StateHandler* instance();
@@ -146,7 +150,7 @@ signals:
     /*!
      * Emitted before the playback ends.
      */
-    void aboutToFinish();
+    void nextTrackRequest();
      /*!
      * This signal is emitted when the stream reader fills it's buffer.
      * The argument \b progress indicates the current percentage of buffering completed.
