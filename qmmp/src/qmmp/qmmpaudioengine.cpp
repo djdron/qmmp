@@ -44,7 +44,6 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
 {
     m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
-    m_effects = Effect::create();
     m_bks = QMMP_BLOCK_SIZE;
     m_decoder = 0;
     m_output = 0;
@@ -174,7 +173,7 @@ void QmmpAudioEngine::addEffect(EffectFactory *factory)
         }
         else
         {
-            qDebug("QmmpAudioEngine: restart required");
+            qDebug("QmmpAudioEngine: restart is required");
             delete effect;
         }
     }
@@ -194,7 +193,7 @@ void QmmpAudioEngine::removeEffect(EffectFactory *factory)
     {
         mutex()->lock();
         if(m_blockedEffects.contains(effect))
-            qDebug("QmmpAudioEngine: restart required");
+            qDebug("QmmpAudioEngine: restart is required");
         else
             m_effects.removeAll(effect);
         mutex()->unlock();
@@ -577,25 +576,61 @@ Output *QmmpAudioEngine::createOutput()
 
 void QmmpAudioEngine::prepareEffects(Decoder *d)
 {
-    m_blockedEffects.clear();
-    while(!m_effects.isEmpty()) //delete effects
-        delete m_effects.takeFirst();
-
-    m_effects = Effect::create();
     m_ap = d->audioParameters();
 
-    if(m_settings->use16BitOutput())
-        m_effects.prepend (new AudioConverter());
-
-    foreach(Effect *effect, m_effects)
+    foreach(Effect *e, m_effects) //remove disabled and external effects
     {
-        effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
-        if (m_ap != effect->audioParameters())
+        if(!e->factory() || !Effect::isEnabled(e->factory()))
         {
-            m_blockedEffects << effect; //list of effects which require restart
-            m_ap = effect->audioParameters();
+            m_effects.removeAll(e);
+            m_blockedEffects.removeAll(e);
+            delete e;
         }
     }
+    QList <Effect *> m_tmp_effects = m_effects;
+    m_effects.clear();
+
+    if(m_settings->use16BitOutput())
+    {
+        m_effects << new AudioConverter();
+        m_effects.at(0)->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+        m_ap = m_effects.at(0)->audioParameters();
+    }
+
+    foreach(EffectFactory *factory, *Effect::factories())
+    {
+        if(!Effect::isEnabled(factory))
+            continue;
+
+        Effect *effect = 0;
+        foreach(Effect *e, m_tmp_effects) //find effect
+        {
+            if(e->factory() == factory)
+                effect = e;
+        }
+
+        if(effect && (effect->audioParameters() != m_ap ||
+                      m_blockedEffects.contains(effect))) //destroy effect which require restart
+        {
+            m_blockedEffects.removeAll(effect);
+            m_tmp_effects.removeAll(effect);
+            delete effect;
+            effect = 0;
+        }
+        if(!effect)
+        {
+            effect = Effect::create(factory);
+            effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+            if (m_ap != effect->audioParameters())
+            {
+                m_blockedEffects << effect; //list of effects which require restart
+                m_ap = effect->audioParameters();
+            }
+        }
+        m_effects << effect;
+        m_tmp_effects.removeAll(effect);
+    }
+
     m_chan = m_ap.channels();
     m_useEq = m_eqEnabled && m_ap.format() == Qmmp::PCM_S16LE;
     init_iir(m_ap.sampleRate());

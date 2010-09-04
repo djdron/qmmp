@@ -75,9 +75,10 @@ public:
      */
     EffectFactory* factory() const;
     /*!
-     * Creates a list of enabled effects.
+     * Creates effect object from \b factory. Returns effect objects if factory is enabled,
+     * otherwise returns \b 0.
      */
-    static QList<Effect*> create();
+    static Effect* create(EffectFactory *factory);
     /*!
      * Returns a list of effect factories.
      */
