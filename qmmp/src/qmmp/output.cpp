@@ -39,7 +39,7 @@ static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
     return;
 }
 
-Output::Output (QObject* parent) : QThread (parent), m_recycler (stackSize())
+Output::Output (QObject* parent) : QThread (parent), m_recycler (QMMP_BUFFER_SIZE)
 {
     m_handler = StateHandler::instance();
     m_frequency = 0;
@@ -113,11 +113,11 @@ qint64 Output::written()
     return m_totalWritten;
 }
 
-void Output::seek(qint64 pos)
+void Output::seek(qint64 pos, bool reset)
 {
     m_totalWritten = pos * m_bytesPerMillisecond;
     m_currentMilliseconds = -1;
-    m_skip = isRunning();
+    m_skip = isRunning() && reset;
 }
 
 Recycler *Output::recycler()

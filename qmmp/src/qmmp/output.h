@@ -77,8 +77,10 @@ public:
     qint64 written();
     /*!
      * Requests a seek to the time \b pos indicated, specified in milliseconds.
+     * If \b reset is \b true, this function also clears internal output buffers for faster seeking;
+     * otherwise does nothing with buffers.
      */
-    void seek(qint64 pos);
+    void seek(qint64 pos, bool reset = false);
     /*!
      * Returns Recycler pointer.
      */
