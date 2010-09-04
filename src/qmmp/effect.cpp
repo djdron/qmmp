@@ -21,6 +21,7 @@
 #include <QStringList>
 #include <QDir>
 #include <QApplication>
+#include <QHash>
 #include "qmmpaudioengine.h"
 #include "qmmp.h"
 #include "effectfactory.h"
@@ -59,7 +60,7 @@ Qmmp::AudioFormat Effect::format()
     return m_format;
 }
 
-const AudioParameters  Effect::audioParameters() const
+const AudioParameters Effect::audioParameters() const
 {
     return AudioParameters(m_freq, m_chan, m_format);
 }
@@ -67,6 +68,11 @@ const AudioParameters  Effect::audioParameters() const
 EffectFactory* Effect::factory() const
 {
     return m_factory;
+}
+
+bool effectCompareFunc(EffectFactory *e1, EffectFactory *e2)
+{
+    return e1->properties().priority > e2->properties().priority;
 }
 
 //static members
@@ -83,6 +89,7 @@ void Effect::checkFactories()
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Effect");
+        QHash <EffectFactory*, QString> m_hash;
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
@@ -99,33 +106,28 @@ void Effect::checkFactories()
             if (factory)
             {
                 m_factories->append(factory);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_hash.insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
-    }
-}
-
-bool effectCompareFunc(Effect *e1, Effect *e2)
-{
-    return e1->factory()->properties().priority > e2->factory()->properties().priority;
-}
-
-QList<Effect*> Effect::create()
-{
-    checkFactories();
-    QList<Effect*> effects;
-    EffectFactory *factory = 0;
-    foreach (factory, *m_factories)
-    {
-        if(isEnabled(factory))
+        qSort(m_factories->begin(), m_factories->end(), effectCompareFunc);
+        foreach(EffectFactory *factory, *m_factories) //generate files list with same order
         {
-            effects.append(factory->create());
-            effects.last()->m_factory = factory;
+            m_files << m_hash.value(factory);
         }
     }
-    qSort(effects.begin(), effects.end(), effectCompareFunc);
-    return effects;
+}
+
+Effect* Effect::create(EffectFactory *factory)
+{
+    checkFactories();
+    Effect *effect = 0;
+    if(isEnabled(factory))
+    {
+        effect = factory->create();
+        effect->m_factory = factory;
+    }
+    return effect;
 }
 
 QList<EffectFactory*> *Effect::factories()
