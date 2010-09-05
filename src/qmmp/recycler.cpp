@@ -76,7 +76,7 @@ void Recycler::add()
 {
     if(buffers[add_index]->nbytes)
     {
-        add_index = ++add_index % buffer_count;
+        add_index = (add_index + 1) % buffer_count;
         current_count++;
     }
 }
@@ -97,7 +97,7 @@ void Recycler::done()
     if (current_count)
     {
         current_count--;
-        done_index = ++done_index % buffer_count;
+        done_index = (done_index + 1) % buffer_count;
     }
 }
 
