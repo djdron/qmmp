@@ -25,11 +25,6 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-pkg_check_modules(SAMPLERATE samplerate)
-
-include_directories(${BS2B_INCLUDE_DIRS})
-link_directories(${BS2B_LIBRARY_DIRS})
-
 SET(libbs2b_SRCS
     bs2bplugin.cpp
     settingsdialog.cpp
@@ -49,6 +44,9 @@ QT4_ADD_RESOURCES(libbs2b_RCC_SRCS ${libbs2b_RCCS})
 QT4_WRAP_CPP(libbs2b_MOC_SRCS ${libbs2b_MOC_HDRS})
 
 pkg_search_module(BS2B libbs2b>=3.0.0)
+
+include_directories(${BS2B_INCLUDE_DIRS})
+link_directories(${BS2B_LIBRARY_DIRS})
 
 # user interface
 
