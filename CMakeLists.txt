@@ -128,6 +128,7 @@ MESSAGE("Effect Plugins:")
 PRINT_SUMMARY ("Sample Rate Conversion ............" USE_SRC SAMPLERATE_FOUND)
 PRINT_SUMMARY ("BS2B Plugin ......................." USE_BS2B BS2B_FOUND)
 PRINT_SUMMARY ("LADSPA Host ......................." USE_LADSPA 1)
+PRINT_SUMMARY ("Crossfade ........................." USE_CROSSFADE 1)
 
 MESSAGE("")
 MESSAGE("Visual Plugins:")
