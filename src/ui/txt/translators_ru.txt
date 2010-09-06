@@ -26,7 +26,7 @@
 Литовский:
     Algirdas Butkus <butkus.algirdas@gmail.com>
 
-Польский
+Польский:
    Grzegorz Gibas <amigib@gmail.com>
 
 Чешский:

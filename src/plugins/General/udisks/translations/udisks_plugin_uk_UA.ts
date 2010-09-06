@@ -6,7 +6,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>UDisks Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування модуля UDisks</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../udisksfactory.cpp" line="30"/>
         <source>UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="50"/>
         <source>About UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про модуль UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="51"/>
         <source>Qmmp UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль UDisks для Qmmp</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using UDisks</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей модуль забезпечує виявлення знімних пристроїв за допомогою UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisksplugin.cpp" line="152"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished">Додати CD &quot;%1&quot;</translation>
+        <translation>Додати CD &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../udisksplugin.cpp" line="158"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished">Додати том &quot;%1&quot;</translation>
+        <translation>Додати том &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
