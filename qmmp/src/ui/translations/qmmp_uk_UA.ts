@@ -996,7 +996,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="450"/>
@@ -1082,7 +1082,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Auto Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Авто-стоп</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="437"/>
