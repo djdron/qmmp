@@ -42,6 +42,7 @@ public:
 signals:
     void deviceAdded(QDBusObjectPath);
     void deviceRemoved(QDBusObjectPath);
+    void deviceChanged(QDBusObjectPath);
 
 private:
     QDBusInterface *m_interface;
