@@ -121,7 +121,8 @@ void HalPlugin::addDevice(const QString &udi)
             (device->property("volume.fstype").toString() == "vfat" ||
              device->property("volume.fstype").toString() == "iso" ||
              device->property("volume.fstype").toString() == "udf" ||
-             device->property("volume.fstype").toString() == "ext2"))
+             device->property("volume.fstype").toString() == "ext2" ||
+             device->property("volume.fstype").toString() == "iso9660"))
     {
         if (m_detectRemovable)
         {

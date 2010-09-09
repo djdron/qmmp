@@ -38,6 +38,10 @@ UDisksManager::UDisksManager(QObject *parent)
                                       "org.freedesktop.UDisks", "DeviceRemoved",
                                       this, SIGNAL(deviceRemoved(QDBusObjectPath)));
 
+    m_interface->connection().connect("org.freedesktop.UDisks", "/org/freedesktop/UDisks",
+                                      "org.freedesktop.UDisks", "DeviceChanged",
+                                      this, SIGNAL(deviceChanged(QDBusObjectPath)));
+
 }
 
 

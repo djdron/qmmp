@@ -35,6 +35,7 @@ UDisksPlugin::UDisksPlugin(QObject *parent)
     m_manager = new UDisksManager(this);
     m_actions = new QActionGroup(this);
     connect(m_manager,SIGNAL(deviceAdded(QDBusObjectPath)), SLOT(addDevice(QDBusObjectPath)));
+    connect(m_manager,SIGNAL(deviceChanged(QDBusObjectPath)), SLOT(addDevice(QDBusObjectPath)));
     connect(m_manager,SIGNAL(deviceRemoved(QDBusObjectPath)), SLOT(removeDevice(QDBusObjectPath)));
     connect(m_actions,SIGNAL(triggered (QAction *)), SLOT(processAction(QAction *)));
     //load settings
