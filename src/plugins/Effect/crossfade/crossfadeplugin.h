@@ -44,6 +44,7 @@ private:
     enum State
     {
         WAITING = 0,
+        CHECKING,
         PREPARING,
         PROCESSING,
     };

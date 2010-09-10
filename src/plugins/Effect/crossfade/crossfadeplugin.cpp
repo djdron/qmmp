@@ -50,9 +50,15 @@ void CrossfadePlugin::applyEffect(Buffer *b)
         if(m_core->totalTime() - m_handler->elapsed() < m_overlap + 2000)
         {
             StateHandler::instance()->sendNextTrackRequest();
-            m_state = PREPARING;
+            m_state = CHECKING;
         }
         return;
+    case CHECKING:
+        //next source has been received and current engine will be used to play it
+        if(m_handler->nextEngine() == m_handler->currentEngine())
+            m_state = PREPARING;
+        else
+            return;
     case PREPARING:
         if(m_core->totalTime() - m_handler->elapsed() <  m_overlap)
         {
@@ -92,7 +98,5 @@ void CrossfadePlugin::applyEffect(Buffer *b)
 
 void CrossfadePlugin::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
-    //m_buffer_size = m_overlap * freq * chan * AudioParameters::sampleSize(format) / 1000;
-    //m_buffer =(uchar *) malloc(m_buffer_size);
     Effect::configure(freq, chan, format);
 }

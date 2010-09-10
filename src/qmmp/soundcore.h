@@ -98,11 +98,10 @@ public:
      * Returns the metdata string associated with the given \b key.
      */
     QString metaData(Qmmp::MetaData key);
-     /*!
+    /*!
      * Returns a pointer to the SoundCore instance.
      */
     static SoundCore* instance();
-
 
 public slots:
     /*!
