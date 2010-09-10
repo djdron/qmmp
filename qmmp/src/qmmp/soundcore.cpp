@@ -226,6 +226,9 @@ bool SoundCore::enqueue(InputSource *s)
     {
         if(state() == Qmmp::Stopped || state() == Qmmp::Buffering)
             m_engine->play();
+        else
+            m_handler->setNextEngine(m_engine);
+        m_handler->setCurrentEngine(m_engine);
     }
     else
     {
@@ -247,12 +250,15 @@ bool SoundCore::enqueue(InputSource *s)
                     engine->deleteLater();
                     engine = 0;
                 }
+                else
+                    break;
             }
         }
 
         if(!engine) //unsupported file format
         {
             s->deleteLater();
+            m_handler->setCurrentEngine(0);
             return false;
         }
         connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
@@ -261,12 +267,14 @@ bool SoundCore::enqueue(InputSource *s)
             if(m_pendingEngine)
                 m_pendingEngine->deleteLater();
             m_pendingEngine = engine;
+            m_handler->setNextEngine(engine);
         }
         else
         {
             m_engine->deleteLater();
             m_engine = engine;
             m_engine->play();
+            m_handler->setCurrentEngine(m_engine);
             m_pendingEngine = 0;
         }
     }
@@ -282,6 +290,7 @@ void SoundCore::startPendingEngine()
         m_engine = m_pendingEngine;
         m_pendingEngine = 0;
         m_engine->play();
+        m_handler->setCurrentEngine(m_engine);
     }
 }
 

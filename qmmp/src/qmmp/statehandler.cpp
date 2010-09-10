@@ -40,6 +40,8 @@ StateHandler::StateHandler(QObject *parent)
     m_channels = 0;
     m_sendAboutToFinish = true;
     m_state = Qmmp::Stopped;
+    m_next_engine = 0;
+    m_current_engine = 0;
 }
 
 
@@ -134,6 +136,7 @@ void StateHandler::dispatch(Qmmp::State state)
         m_frequency = 0;
         m_precision = 0;
         m_channels = 0;
+        m_next_engine = 0;
         m_metaData.clear();
     }
     if(state == Qmmp::Playing)
@@ -161,6 +164,16 @@ void StateHandler::dispatchBuffer(int percent)
 {
     if(m_state == Qmmp::Buffering)
         emit bufferingProgress(percent);
+}
+
+void StateHandler::setNextEngine(AbstractEngine *engine)
+{
+    m_next_engine = engine;
+}
+
+void StateHandler::setCurrentEngine(AbstractEngine *engine)
+{
+    m_current_engine = engine;
 }
 
 qint64 StateHandler::elapsed()
@@ -212,6 +225,16 @@ void StateHandler::sendNextTrackRequest()
         emit nextTrackRequest();
     }
     m_mutex.unlock();
+}
+
+AbstractEngine *StateHandler::nextEngine()
+{
+    return m_next_engine;
+}
+
+AbstractEngine *StateHandler::currentEngine()
+{
+    return m_current_engine;
 }
 
 StateHandler *StateHandler::instance()

@@ -23,7 +23,7 @@
 #include <QObject>
 #include <QMap>
 #include <QMutex>
-
+#include "abstractengine.h"
 #include "qmmp.h"
 
 /*! @brief The StateHandler class allows to track information about playback progress.
@@ -69,6 +69,14 @@ public:
      */
     virtual void dispatchBuffer(int percent);
     /*!
+     * Sets next audio engine.
+     */
+    void setNextEngine(AbstractEngine *engine);
+    /*!
+     * Sets current audio engine.
+     */
+    void setCurrentEngine(AbstractEngine *engine);
+    /*!
      * Returns the current time (in milliseconds).
      */
     qint64 elapsed();
@@ -104,6 +112,16 @@ public:
      * Sends \b nextTrackRequest() signal manually.
      */
     void sendNextTrackRequest();
+    /*!
+     * Returns a pointer to the audio engine which will be used to play next (queued) audio source.
+     * Otherwise returns \b 0
+     */
+    AbstractEngine *nextEngine();
+    /*!
+     * Returns a pointer to the current audio engine.
+     * Otherwise returns \b 0
+     */
+    AbstractEngine *currentEngine();
     /*!
      * Returns a pointer to the first created StateHandler instance.
      */
@@ -167,6 +185,8 @@ private:
     QMap <Qmmp::MetaData, QString> m_cachedMetaData;
     Qmmp::State m_state;
     QMutex m_mutex;
+    AbstractEngine *m_next_engine;
+    AbstractEngine *m_current_engine;
 };
 
 #endif
