@@ -291,18 +291,14 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
 
     if (m == -EAGAIN)
     {
-        mutex()->unlock();
         snd_pcm_wait(pcm_handle, 500);
-        mutex()->lock ();
         return 0;
     }
     else if (m >= 0)
     {
         if (m < size)
-        {
-            mutex()->unlock();
-            snd_pcm_wait(pcm_handle, 500);
-            mutex()->lock ();
+        { 
+            snd_pcm_wait(pcm_handle, 500);  
         }
         return m;
     }
