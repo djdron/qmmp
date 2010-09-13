@@ -405,8 +405,6 @@ void VolumeControlALSA::volume(int *l, int *r)
 int VolumeControlALSA::setupMixer(QString card, QString device)
 {
     char *name;
-    long int a, b;
-    long alsa_min_vol = 0, alsa_max_vol = 100;
     int err, index;
     pcm_element = 0;
 
@@ -427,30 +425,14 @@ int VolumeControlALSA::setupMixer(QString card, QString device)
         return -1;
     }
 
-    /* This hack was copied from xmms.
-     * Work around a bug in alsa-lib up to 1.0.0rc2 where the
-     * new range don't take effect until the volume is changed.
-     * This hack should be removed once we depend on Alsa 1.0.0.
-     */
-    snd_mixer_selem_get_playback_volume(pcm_element,
-                                        SND_MIXER_SCHN_FRONT_LEFT, &a);
-    snd_mixer_selem_get_playback_volume(pcm_element,
-                                        SND_MIXER_SCHN_FRONT_RIGHT, &b);
-
-    snd_mixer_selem_get_playback_volume_range(pcm_element,
-            &alsa_min_vol, &alsa_max_vol);
-    snd_mixer_selem_set_playback_volume_range(pcm_element, 0, 100);
-
-    if (alsa_max_vol == 0)
+    if((err = snd_mixer_selem_set_playback_volume_range(pcm_element, 0, 100)) < 0)
     {
+        qWarning("OutputALSA: Unable to set volume range: %s", snd_strerror(-err));
         pcm_element = NULL;
         return -1;
     }
 
-    setVolume(a * 100 / alsa_max_vol, b * 100 / alsa_max_vol);
-
     qDebug("OutputALSA: setupMixer() success");
-
     return 0;
 }
 
