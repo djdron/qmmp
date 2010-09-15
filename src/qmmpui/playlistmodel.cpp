@@ -147,11 +147,12 @@ PlayListItem* PlayListModel::currentItem()
 
 PlayListItem* PlayListModel::nextItem()
 {
-    if(isShuffle() || m_items.isEmpty() || !isEmptyQueue())
+    if(m_items.isEmpty() || !isEmptyQueue() || !m_play_state)
         return 0;
-    if(m_current < m_items.size() - 1)
-        return m_items.at(m_current + 1);
-    return 0;
+    int index = m_play_state->nextIndex();
+    if(index < 0 || (index + 1 > m_items.count()))
+        return 0;
+    return m_items.at(index);
 }
 
 PlayListItem* PlayListModel::item(int row) const
