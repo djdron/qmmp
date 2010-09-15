@@ -136,13 +136,13 @@ QVariantMap PlayerObject::GetMetadata()
     map.insert("artist", m_core->metaData(Qmmp::ARTIST));
     map.insert("album", m_core->metaData(Qmmp::ALBUM));
     map.insert("tracknumber", m_core->metaData(Qmmp::TRACK));
-    map.insert("time", m_core->totalTime()/1000);
-    map.insert("mtime", m_core->totalTime());
+    map.insert("time", (quint32)m_core->totalTime()/1000);
+    map.insert("mtime", (quint32)m_core->totalTime());
     map.insert("genre", m_core->metaData(Qmmp::GENRE));
     map.insert("comment", m_core->metaData(Qmmp::COMMENT));
-    map.insert("audio-bitrate", m_core->bitrate());
-    map.insert("audio-samplerate", m_core->frequency());
-    map.insert("year", m_core->metaData(Qmmp::YEAR));
+    map.insert("audio-bitrate", (quint32)m_core->bitrate());
+    map.insert("audio-samplerate", (quint32)m_core->frequency());
+    map.insert("year", m_core->metaData(Qmmp::YEAR).toUInt());
     return map;
 }
 
