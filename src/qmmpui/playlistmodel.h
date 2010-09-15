@@ -24,6 +24,7 @@
 #include <QString>
 #include <QStringList>
 #include <QMap>
+#include <QQueue>
 #include <QPointer>
 #include <QVector>
 #include "playlistitem.h"
@@ -455,7 +456,7 @@ private:
     /*!
      * Songs in play queue.
      */
-    QList<PlayListItem*> m_queued_songs;
+    QQueue <PlayListItem*> m_queued_songs;
     /*!
      * Is playlist repeatable?
      */
