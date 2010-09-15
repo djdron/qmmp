@@ -147,8 +147,10 @@ PlayListItem* PlayListModel::currentItem()
 
 PlayListItem* PlayListModel::nextItem()
 {
-    if(m_items.isEmpty() || !isEmptyQueue() || !m_play_state)
+    if(m_items.isEmpty() || !m_play_state)
         return 0;
+    if(!isEmptyQueue())
+        return m_queued_songs.at(0);
     int index = m_play_state->nextIndex();
     if(index < 0 || (index + 1 > m_items.count()))
         return 0;
@@ -621,9 +623,9 @@ void PlayListModel::addToQueue()
 void PlayListModel::setQueued(PlayListItem* file)
 {
     if (isQueued(file))
-        m_queued_songs.removeAt(m_queued_songs.indexOf(file));
+        m_queued_songs.removeAll(file);
     else
-        m_queued_songs.append(file);
+        m_queued_songs.enqueue(file);
     emit listChanged();
 }
 
@@ -634,8 +636,7 @@ bool PlayListModel::isQueued(PlayListItem* f) const
 
 void PlayListModel::setCurrentToQueued()
 {
-    setCurrent(row(m_queued_songs.at(0)));
-    m_queued_songs.pop_front();
+    setCurrent(row(m_queued_songs.dequeue()));
 }
 
 bool PlayListModel::isEmptyQueue() const
