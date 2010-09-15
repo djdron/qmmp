@@ -31,7 +31,7 @@ bool ShufflePlayState::next()
 
     if (itm_count > 0)
     {
-        if (m_shuffled_current >= m_shuffled_indexes.count() -1 )
+        if (m_shuffled_current >= m_shuffled_indexes.count() - 1)
         {
             if (!m_model->isRepeatableList())
                 return false;
@@ -39,11 +39,29 @@ bool ShufflePlayState::next()
                 prepare();
         }
 
-        if (m_shuffled_current < m_shuffled_indexes.count() - 1)m_shuffled_current++;
+        if (m_shuffled_current < m_shuffled_indexes.count() - 1)
+            m_shuffled_current++;
 
         return m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
     }
     return false;
+}
+
+int ShufflePlayState::nextIndex()
+{
+    int itm_count = m_model->items().count();
+    if(!itm_count)
+        return -1;
+
+
+    if (m_shuffled_current >= m_shuffled_indexes.count() - 1)
+    {
+        if (!m_model->isRepeatableList())
+            return -1;
+        else
+            prepare();
+    }
+    return m_shuffled_indexes.at(m_shuffled_current + 1);
 }
 
 bool ShufflePlayState::previous()
@@ -63,7 +81,8 @@ bool ShufflePlayState::previous()
             }
         }
 
-        if (itm_count > 1) m_shuffled_current --;
+        if (itm_count > 1)
+            m_shuffled_current --;
 
         m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
         return true;
@@ -130,5 +149,21 @@ bool NormalPlayState::previous()
     }
 
     return false;
+}
+
+int NormalPlayState::nextIndex()
+{
+    int itm_count = m_model->items().count();
+    if(!itm_count)
+        return -1;
+
+    if (m_model->currentRow() == itm_count - 1)
+    {
+        if (m_model->isRepeatableList())
+            return 0;
+        else
+            return -1;
+    }
+    return m_model->currentRow() + 1;
 }
 

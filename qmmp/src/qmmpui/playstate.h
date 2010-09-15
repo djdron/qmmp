@@ -39,7 +39,10 @@ public:
      *  If the step has done returns \b true, otherwise returns \b false
      */
     virtual bool previous() = 0;
-
+    /*!
+     * Returns next item index.
+     */
+    virtual int nextIndex() = 0;
     /*!
      * Service method, resets state to it's defaults.
      */
@@ -77,6 +80,7 @@ class NormalPlayState : public PlayState
 public:
     virtual bool next();
     virtual bool previous();
+    virtual int nextIndex();
     NormalPlayState(PlayListModel* model);
 };
 
@@ -89,6 +93,7 @@ class ShufflePlayState : public PlayState
 public:
     virtual bool next();
     virtual bool previous();
+    virtual int nextIndex();
     virtual void prepare();
     ShufflePlayState(PlayListModel* model);
     virtual void resetState();
