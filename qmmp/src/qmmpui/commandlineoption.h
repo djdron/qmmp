@@ -50,8 +50,9 @@ public:
      * Parses \b opt_str args(if needed), executes command.
      * @param opt_str Command to execute
      * @param args Command arguments
+     * @return Command output
      */
-    virtual void executeCommand(const QString &opt_str, const QStringList &args) = 0;
+    virtual QString executeCommand(const QString &opt_str, const QStringList &args) = 0;
     /*!
      * Creates translator with parent object \b parent
      */

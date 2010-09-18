@@ -27,25 +27,16 @@
 /*! @brief Helper class used for handle command line plugins
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class CommandLineManager : public General
+class CommandLineManager
 {
-    Q_OBJECT
 public:
-    /*!
-     * Constructs a command line manager.
-     * @param parent QObject parent
-     */
-    CommandLineManager(QObject *parent = 0);
-    /*!
-     * Object destructor.
-     */
-    ~CommandLineManager();
     /*!
      * Executes command \b opt_str
      * @param opt_str Command line option string
      * @param args Command arguments
+     * @return Command output result
      */
-    void executeCommand(const QString& opt_str, const QStringList &args = QStringList());
+    static QString executeCommand(const QString& opt_str, const QStringList &args = QStringList());
     /*!
      * Return \b true if command \b opt_str is supported, otherwise returns \b false
      */
@@ -57,9 +48,6 @@ public:
 
 private:
     static void checkOptions();
-    uint m_state;
-    int m_left, m_right;
-    int m_time;
     static QList<CommandLineOption *> *m_options;
     static QStringList m_files;
 };

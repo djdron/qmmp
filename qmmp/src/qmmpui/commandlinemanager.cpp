@@ -22,10 +22,12 @@
 #include <QObject>
 #include <QList>
 #include <QApplication>
-
 #include <cstdlib>
 #include <iostream>
 #include <qmmp/qmmp.h>
+#include <qmmp/soundcore.h>
+#include <qmmpui/generalhandler.h>
+#include <qmmpui/mediaplayer.h>
 #include "commandlinemanager.h"
 
 using namespace std;
@@ -65,31 +67,22 @@ void CommandLineManager::checkOptions()
     }
 }
 
-CommandLineManager::CommandLineManager(QObject *parent)
-        : General(parent)
-{
-    //m_state = General::Stopped;
-    m_left = 0;
-    m_right = 0;
-    m_time = 0;
-}
-
-
-CommandLineManager::~CommandLineManager()
-{
-}
-
-void CommandLineManager::executeCommand(const QString& opt_str, const QStringList &args)
+QString CommandLineManager::executeCommand(const QString& opt_str, const QStringList &args)
 {
     checkOptions();
+    if(!GeneralHandler::instance() || !SoundCore::instance() || !MediaPlayer::instance())
+    {
+        qWarning("CommandLineManager: player objects are not created");
+        return QString();
+    }
     foreach(CommandLineOption *opt, *m_options)
     {
         if (opt->identify(opt_str))
         {
-            opt->executeCommand(opt_str, args);
-            return;
+            return opt->executeCommand(opt_str, args);
         }
     }
+    return QString();
 }
 
 bool CommandLineManager::hasOption(const QString &opt_str)
@@ -107,5 +100,5 @@ void CommandLineManager::printUsage()
 {
     checkOptions();
     foreach(CommandLineOption *opt, *m_options)
-    cout << qPrintable(opt->helpString());
+        cout << qPrintable(opt->helpString());
 }

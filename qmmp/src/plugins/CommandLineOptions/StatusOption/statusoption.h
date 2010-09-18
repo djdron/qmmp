@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef IncDecVolumeCommandLineOption_H
-#define IncDecVolumeCommandLineOption_H
+#ifndef STATUSOPTION_H
+#define STATUSOPTION_H
 
 #include <QString>
 #include <QObject>
@@ -28,7 +28,7 @@
 #include <qmmpui/commandlinemanager.h>
 
 
-class IncDecVolumeCommandLineOption : public QObject, public CommandLineOption
+class StatusOption : public QObject, public CommandLineOption
 {
 Q_OBJECT
 Q_INTERFACES(CommandLineOption)
@@ -38,6 +38,9 @@ public:
     virtual const QString helpString()const;
     virtual QString executeCommand(const QString& opt_str, const QStringList &args);
     virtual QTranslator *createTranslator(QObject *parent);
+
+private:
+    QString genProgressBar();
 };
 
 #endif

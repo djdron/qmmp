@@ -136,6 +136,9 @@ void QMMPStarter::writeCommand()
             barray.remove(0, size);
         }
         m_socket->flush();
+        //reading answer
+        if(m_socket->waitForReadyRead(1500))
+            cout << m_socket->readAll().data();
     }
     else
     {
@@ -148,17 +151,20 @@ void QMMPStarter::writeCommand()
 void QMMPStarter::readCommand()
 {   
     QLocalSocket *socket = m_server->nextPendingConnection();
-    socket->waitForDisconnected();
+    socket->waitForReadyRead();
     QByteArray inputArray = socket->readAll();
-    socket->deleteLater();
     if(inputArray.isEmpty())
         return;
     QStringList slist = QString::fromUtf8(inputArray.data()).split("\n",QString::SkipEmptyParts);
     QString cwd = slist.takeAt(0);
-    if (mw)
+    QString out = mw ? mw->processCommandArgs(slist, cwd) : QString();
+    if(!out.isEmpty())
     {
-        mw->processCommandArgs(slist,cwd);
+        //writing answer
+        socket->write(out.toLocal8Bit());
+        socket->flush();
     }
+    socket->deleteLater();
 }
 
 void QMMPStarter::printUsage()

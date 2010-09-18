@@ -573,10 +573,10 @@ void MainWindow::playPause()
         play();
 }
 
-bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd)
+QString MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd)
 {
     if(slist.isEmpty())
-        return true;
+        return QString();
     QStringList paths;
     foreach(QString arg, slist)
     {
@@ -596,11 +596,11 @@ bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd
                 full_path_list << cwd + "/" + s;
         }
         setFileList(full_path_list);
-        return true;
+        return QString();
     }
     QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
     if(commands.isEmpty())
-        return false;
+        return QString();
     foreach(QString key, commands.keys())
     {
         if(key == "--enqueue" || key == "-e")
@@ -619,13 +619,13 @@ bool MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd
             m_pl_manager->currentPlayList()->addFileList(full_path_list);
         }
         else if (CommandLineManager::hasOption(key))
-            m_generalHandler->executeCommand(key, commands.value(key));
+            return CommandLineManager::executeCommand(key, commands.value(key));
         else if (m_option_manager->identify(key))
             m_option_manager->executeCommand(key, commands.value(key), this);
         else
-            return false;
+            return QString();
     }
-    return true;
+    return QString();
 }
 
 void MainWindow::jumpToFile()

@@ -36,7 +36,7 @@ public:
     virtual bool identify(const QString& opt_str)const;
     virtual const QString name()const;
     virtual const QString helpString()const;
-    virtual void executeCommand(const QString& opt_str, const QStringList &args);
+    virtual QString executeCommand(const QString& opt_str, const QStringList &args);
     virtual QTranslator *createTranslator(QObject *parent);
 };
 
