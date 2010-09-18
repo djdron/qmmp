@@ -48,8 +48,6 @@ GeneralHandler::GeneralHandler(QObject *parent)
             m_generals.insert(factory, general);
         }
     }
-    m_commandLineManager = new CommandLineManager(this);
-    m_generals.insert(0, m_commandLineManager);
 }
 
 GeneralHandler::~GeneralHandler()
@@ -100,12 +98,6 @@ bool GeneralHandler::visibilityControl()
             return true;
     }
     return false;
-}
-
-void GeneralHandler::executeCommand(const QString &opt_str, const QStringList &args)
-{
-    if (CommandLineManager::hasOption(opt_str))
-        m_commandLineManager->executeCommand(opt_str, args);
 }
 
 void GeneralHandler::addAction(QAction *action, MenuType type)

@@ -32,7 +32,6 @@ class QWidget;
 class General;
 class Control;
 class GeneralFactory;
-class CommandLineManager;
 
 /*! @brief The GeneralHandler class provides simple api to access general and command line plugins.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -74,12 +73,6 @@ public:
      * Returns \b true if one of the general plugin can change visibility, otherwise returns \b false
      */
     bool visibilityControl();
-    /*!
-     * Executes command by command line plugins
-     * @param opt_str Command line option string
-     * @param args Command arguments
-     */
-    void executeCommand(const QString &opt_str, const QStringList &args = QStringList());
     /*!
      * Adds the newly created action to the menu with type \b type.
      * Menu with type \b type should be created first.
@@ -124,7 +117,6 @@ private slots:
 
 private:
     QMap <GeneralFactory*, General*> m_generals;
-    CommandLineManager *m_commandLineManager;
     QList <QAction*> m_toolsActions;
     QList <QAction*> m_playlistActions;
     QPointer<QMenu> m_toolsMenu;

@@ -1567,27 +1567,27 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="166"/>
+        <location filename="../qmmpstarter.cpp" line="172"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Použití: qmmp [volby] [soubory]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="167"/>
+        <location filename="../qmmpstarter.cpp" line="173"/>
         <source>Options:</source>
         <translation>Volby:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="173"/>
+        <location filename="../qmmpstarter.cpp" line="179"/>
         <source>Print version number and exit</source>
         <translation>Vypsat číslo verze a skončit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="174"/>
+        <location filename="../qmmpstarter.cpp" line="180"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Nápady, patche, hlášení chyb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="172"/>
+        <location filename="../qmmpstarter.cpp" line="178"/>
         <source>Display this text and exit</source>
         <translation>Zobrazit tento text a skončit</translation>
     </message>
@@ -1597,17 +1597,17 @@
         <translation>Neznámý příkaz</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="179"/>
+        <location filename="../qmmpstarter.cpp" line="185"/>
         <source>QMMP version:</source>
         <translation>Verze QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="169"/>
+        <location filename="../qmmpstarter.cpp" line="175"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Nevyprazdňovat seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="180"/>
+        <location filename="../qmmpstarter.cpp" line="186"/>
         <source>Qt version:</source>
         <translation>Verze Qt:</translation>
     </message>

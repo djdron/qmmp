@@ -1567,27 +1567,27 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="166"/>
+        <location filename="../qmmpstarter.cpp" line="172"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Gebruik: qmmp [opties] [bestanden]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="167"/>
+        <location filename="../qmmpstarter.cpp" line="173"/>
         <source>Options:</source>
         <translation>Opties:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="173"/>
+        <location filename="../qmmpstarter.cpp" line="179"/>
         <source>Print version number and exit</source>
         <translation>Print versienummer en sluit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="174"/>
+        <location filename="../qmmpstarter.cpp" line="180"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Ideëen, patches, foutrapporten zenden naar forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="172"/>
+        <location filename="../qmmpstarter.cpp" line="178"/>
         <source>Display this text and exit</source>
         <translation>Toon dit tekstje en sluit</translation>
     </message>
@@ -1597,17 +1597,17 @@
         <translation>Onbekend commando</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="179"/>
+        <location filename="../qmmpstarter.cpp" line="185"/>
         <source>QMMP version:</source>
         <translation>QMMP versie:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="169"/>
+        <location filename="../qmmpstarter.cpp" line="175"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Niet de afspellijst leeghalen</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="180"/>
+        <location filename="../qmmpstarter.cpp" line="186"/>
         <source>Qt version:</source>
         <translation>Qt versie:</translation>
     </message>

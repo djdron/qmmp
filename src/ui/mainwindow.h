@@ -60,7 +60,7 @@ public:
     void setVolume(int volume, int balance);
     SoundCore* soundCore()const;
     MainDisplay* mainDisplay()const;
-    bool processCommandArgs(const QStringList &list,const QString& cwd);
+    QString processCommandArgs(const QStringList &list,const QString& cwd);
 
 public slots:
     void seek(qint64);

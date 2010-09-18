@@ -46,7 +46,7 @@ const QString IncDecVolumeCommandLineOption::helpString() const
             );
 }
 
-void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, const QStringList &args)
+QString IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, const QStringList &args)
 {
     Q_UNUSED(args);
     SoundCore *core = SoundCore::instance();
@@ -67,6 +67,7 @@ void IncDecVolumeCommandLineOption::executeCommand(const QString& opt_str, const
     }
     core->setVolume(volume-qMax(balance,0)*volume/100,
                     volume+qMin(balance,0)*volume/100);
+    return QString();
 }
 
 const QString IncDecVolumeCommandLineOption::name() const
