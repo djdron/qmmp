@@ -98,7 +98,7 @@ QString StatusOption::executeCommand(const QString &opt_str, const QStringList &
         out += tr("%F - full path") + "\n";
         out += tr("%y - year") + "\n";
         out += tr("%l - duration") + "\n";
-        out += tr("%if(A&B&C,D,E)") + "\n";
+        out += tr("%if(A&B&C,D,E) - condition") + "\n";
     }
     return out;
 }

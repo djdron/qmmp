@@ -90,7 +90,7 @@
     </message>
     <message>
         <location filename="../statusoption.cpp" line="101"/>
-        <source>%if(A&amp;B&amp;C,D,E)</source>
+        <source>%if(A&amp;B&amp;C,D,E) - condition</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
