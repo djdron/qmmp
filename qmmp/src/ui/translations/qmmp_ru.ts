@@ -157,7 +157,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Show/hide application</source>
-        <translation>Показать/скрытть приложение</translation>
+        <translation>Показать/скрыть приложение</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
