@@ -994,6 +994,11 @@
         <translation>B</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="431"/>
+        <source>&amp;Stop After Track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
@@ -1078,11 +1083,6 @@
         <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Shuffle</source>
         <translation>Za&amp;míchat</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="431"/>
-        <source>&amp;Auto Stop</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="437"/>
@@ -1567,47 +1567,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="161"/>
+        <location filename="../qmmpstarter.cpp" line="166"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Použití: qmmp [volby] [soubory]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="162"/>
+        <location filename="../qmmpstarter.cpp" line="167"/>
         <source>Options:</source>
         <translation>Volby:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="168"/>
+        <location filename="../qmmpstarter.cpp" line="173"/>
         <source>Print version number and exit</source>
         <translation>Vypsat číslo verze a skončit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="169"/>
+        <location filename="../qmmpstarter.cpp" line="174"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Nápady, patche, hlášení chyb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="167"/>
+        <location filename="../qmmpstarter.cpp" line="172"/>
         <source>Display this text and exit</source>
         <translation>Zobrazit tento text a skončit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="72"/>
+        <location filename="../qmmpstarter.cpp" line="73"/>
         <source>Unknown command</source>
         <translation>Neznámý příkaz</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="174"/>
+        <location filename="../qmmpstarter.cpp" line="179"/>
         <source>QMMP version:</source>
         <translation>Verze QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="164"/>
+        <location filename="../qmmpstarter.cpp" line="169"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Nevyprazdňovat seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="175"/>
+        <location filename="../qmmpstarter.cpp" line="180"/>
         <source>Qt version:</source>
         <translation>Verze Qt:</translation>
     </message>

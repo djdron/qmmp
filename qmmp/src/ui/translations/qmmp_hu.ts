@@ -1014,6 +1014,11 @@
         <translation>Lista &amp;ismétlése</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="431"/>
+        <source>&amp;Stop After Track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>&amp;Repeat Track</source>
         <translation>Számok i&amp;smétlése</translation>
@@ -1022,11 +1027,6 @@
         <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Shuffle</source>
         <translation>&amp;Véletlenszerű</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="431"/>
-        <source>&amp;Auto Stop</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="437"/>
@@ -1567,47 +1567,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="72"/>
+        <location filename="../qmmpstarter.cpp" line="73"/>
         <source>Unknown command</source>
         <translation>Ismeretlen parancs</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="161"/>
+        <location filename="../qmmpstarter.cpp" line="166"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Használat: qmmp [opciók] [fájlok]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="162"/>
+        <location filename="../qmmpstarter.cpp" line="167"/>
         <source>Options:</source>
         <translation>Opciók:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="164"/>
+        <location filename="../qmmpstarter.cpp" line="169"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>Ne töröld a lejátszási listát</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="167"/>
+        <location filename="../qmmpstarter.cpp" line="172"/>
         <source>Display this text and exit</source>
         <translation>Mutasd ezt a szöveget, majd lépj ki</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="168"/>
+        <location filename="../qmmpstarter.cpp" line="173"/>
         <source>Print version number and exit</source>
         <translation>Mutasd a verziószámot, majd lépj ki</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="169"/>
+        <location filename="../qmmpstarter.cpp" line="174"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Ötleteket, foltokat, hibajelentéseket küld a forkotov02@hotmail.ru címre</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="174"/>
+        <location filename="../qmmpstarter.cpp" line="179"/>
         <source>QMMP version:</source>
         <translation>QMMP verzió:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="175"/>
+        <location filename="../qmmpstarter.cpp" line="180"/>
         <source>Qt version:</source>
         <translation>Qt verzió:</translation>
     </message>

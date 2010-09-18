@@ -550,14 +550,14 @@ void MainWindow::savePlaylist()
 void MainWindow::setFileList(const QStringList & l)
 {
     if (m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
+    {
         stop();
-    qApp->processEvents(); //receive stop signal
+        qApp->processEvents(); //receive stop signal
+    }
+    m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
     connect(m_pl_manager->selectedPlayList(), SIGNAL(firstAdded()), this, SLOT(play()));
     if (m_pl_manager->selectedPlayList()->setFileList(l))
-    {
-        m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
         m_model = m_pl_manager->selectedPlayList();
-    }
     else
     {
         disconnect(m_pl_manager->selectedPlayList(), SIGNAL(firstAdded()), this, SLOT(play()));
