@@ -20,22 +20,23 @@
 
 #include <QApplication>
 #include <QDir>
-
+#include <QLocalServer>
+#include <QLocalSocket>
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
 #include <sys/types.h>
 #include <string.h>
 #include <qmmpui/commandlinemanager.h>
-
-#ifndef Q_OS_WIN32
-#include "unixdomainsocket.h"
-#endif
 #include "mainwindow.h"
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
 
+#ifdef Q_OS_WIN32
+#define UDS_PATH QString("qmmp")
+#else
 #define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toAscii().constData()
+#endif
 
 using namespace std;
 
@@ -75,31 +76,36 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
         }
     }
 
-#ifndef Q_OS_WIN32
-    m_sock = new UnixDomainSocket(this);
-    if (m_sock->bind(UDS_PATH))
+    m_server = new QLocalServer(this);
+    m_socket = new QLocalSocket(this);
+    if(m_server->listen (UDS_PATH)) //trying to create server
     {
         startMainWindow();
     }
-    else if (!m_sock->alive(UDS_PATH))
+    else
     {
-        // Socket is present but not connectable - application was terminated previously???
-        unlink(UDS_PATH);
-        if (m_sock->bind(UDS_PATH))
+        m_socket->connectToServer(UDS_PATH); //connecting
+        m_socket->waitForConnected();
+        if(!m_socket->isValid()) //invalid connection
         {
-            startMainWindow();
+            qWarning("QMMPStarter: trying to remove invalid socket file");
+            if(!QLocalServer::removeServer(UDS_PATH))
+            {
+                qWarning("QMMPStarter: unable to remove invalid socket file");
+                exit(1);
+                return;
+            }
+            if(m_server->listen (UDS_PATH))
+                startMainWindow();
+            else
+            {
+                qWarning("QMMPStarter: server error: %s", qPrintable(m_server->errorString()));
+                exit(1);
+            }
         }
         else
-        {
-            qWarning("QMMPStarter: fatal socket error, exiting");
-            exit(1);
-        }
+            writeCommand();
     }
-    else // socket is alive, qmmp application is already running. passing command to it!
-        writeCommand();
-#else
-    startMainWindow();
-#endif
 }
 
 QMMPStarter::~ QMMPStarter()
@@ -110,16 +116,13 @@ QMMPStarter::~ QMMPStarter()
 
 void QMMPStarter::startMainWindow()
 {
-#ifndef Q_OS_WIN32
-    connect(m_sock, SIGNAL(readyRead()),this, SLOT(readCommand()));
-#endif
+    connect(m_server, SIGNAL(newConnection()), SLOT(readCommand()));
     QStringList arg_l = argString.split("\n", QString::SkipEmptyParts);
     mw = new MainWindow(arg_l,m_option_manager,0);
 }
 
 void QMMPStarter::writeCommand()
 {
-#ifndef Q_OS_WIN32
     if (!argString.isEmpty())
     {
         QString workingDir = QDir::currentPath() + "\n";
@@ -127,7 +130,12 @@ void QMMPStarter::writeCommand()
         QByteArray barray;
         barray.append(workingDir.toUtf8 ());
         barray.append(argString.toUtf8 ());
-        m_sock->writeDatagram ( barray.data(),UDS_PATH);
+        while(!barray.isEmpty())
+        {
+            qint64 size = m_socket->write(barray);
+            barray.remove(0, size);
+        }
+        m_socket->flush();
     }
     else
     {
@@ -135,25 +143,22 @@ void QMMPStarter::writeCommand()
     }
 
     exit(0);
-#endif
 }
 
 void QMMPStarter::readCommand()
-{
-#ifndef Q_OS_WIN32
-    QByteArray inputArray;
-    inputArray.resize(m_sock->pendingDatagramSize ());
-    bzero(inputArray.data(),inputArray.size());
-    m_sock->readDatagram(inputArray.data(), inputArray.size());
+{   
+    QLocalSocket *socket = m_server->nextPendingConnection();
+    socket->waitForDisconnected();
+    QByteArray inputArray = socket->readAll();
+    socket->deleteLater();
+    if(inputArray.isEmpty())
+        return;
     QStringList slist = QString::fromUtf8(inputArray.data()).split("\n",QString::SkipEmptyParts);
     QString cwd = slist.takeAt(0);
     if (mw)
     {
         mw->processCommandArgs(slist,cwd);
     }
-    if(m_sock->pendingDatagramSize () > 0)
-        readCommand();
-#endif
 }
 
 void QMMPStarter::printUsage()
