@@ -25,7 +25,8 @@
 #include <QAbstractSocket>
 #include <QStringList>
 
-class UnixDomainSocket;
+class QLocalServer;
+class QLocalSocket;
 class MainWindow;
 class BuiltinCommandLineOption;
 
@@ -64,9 +65,10 @@ private:
 
 private:
     MainWindow* mw;
-    UnixDomainSocket* m_sock;
     QString argString;
     BuiltinCommandLineOption* m_option_manager;
+    QLocalServer *m_server;
+    QLocalSocket *m_socket;
 };
 
 #endif

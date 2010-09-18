@@ -428,7 +428,7 @@ void MainWindow::createActions()
     m_mainMenu->addSeparator();
     QAction *repeateAllAction = m_mainMenu->addAction(tr("&Repeat Playlist"));
     QAction *shuffleAction = m_mainMenu->addAction(tr("&Shuffle"));
-    QAction *autoStopAction = m_mainMenu->addAction(tr("&Auto Stop"));
+    QAction *autoStopAction = m_mainMenu->addAction(tr("&Stop After Track"));
     QAction *repeateTrackAction = m_mainMenu->addAction(tr("&Repeat Track"));
     repeateAllAction->setCheckable (true);
     repeateTrackAction->setCheckable (true);

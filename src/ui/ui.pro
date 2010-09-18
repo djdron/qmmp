@@ -112,8 +112,8 @@ SOURCES += mainwindow.cpp \
     viewmenu.cpp
 win32:HEADERS += ../qmmp/visual.h
 unix { 
-    HEADERS += unixdomainsocket.h
-    SOURCES += unixdomainsocket.cpp
+    HEADERS +=
+    SOURCES +=
 }
 
 # Some conf to redirect intermediate stuff in separate dirs

@@ -76,7 +76,6 @@ SET(ui_SRCS
     titlebarcontrol.cpp
     titlebar.cpp
     togglebutton.cpp
-    unixdomainsocket.cpp
     visualmenu.cpp
     volumebar.cpp
     cursorimage.cpp
@@ -132,7 +131,6 @@ SET(ui_MOC_HDRS
     titlebarcontrol.h
     titlebar.h
     togglebutton.h
-    unixdomainsocket.h
     visualmenu.h
     volumebar.h
     cursorimage.h
