@@ -994,6 +994,11 @@
         <translation>B</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="431"/>
+        <source>&amp;Stop After Track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
@@ -1078,11 +1083,6 @@
         <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Shuffle</source>
         <translation>&amp;Revolver</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="431"/>
-        <source>&amp;Auto Stop</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="437"/>
@@ -1567,47 +1567,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="161"/>
+        <location filename="../qmmpstarter.cpp" line="166"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Uso: qmmp [opciones] [archivos]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="162"/>
+        <location filename="../qmmpstarter.cpp" line="167"/>
         <source>Options:</source>
         <translation>Opciones: </translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="164"/>
+        <location filename="../qmmpstarter.cpp" line="169"/>
         <source>Don&apos;t clear the playlist</source>
         <translation>No limpiar la lista de reproducción</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="168"/>
+        <location filename="../qmmpstarter.cpp" line="173"/>
         <source>Print version number and exit</source>
         <translation>Mostrar el número de versión y salir</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="169"/>
+        <location filename="../qmmpstarter.cpp" line="174"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Enviar ideas, parches, errores a: forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="175"/>
+        <location filename="../qmmpstarter.cpp" line="180"/>
         <source>Qt version:</source>
         <translation>Versión de Qt:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="167"/>
+        <location filename="../qmmpstarter.cpp" line="172"/>
         <source>Display this text and exit</source>
         <translation>Muestra este texto y sale</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="72"/>
+        <location filename="../qmmpstarter.cpp" line="73"/>
         <source>Unknown command</source>
         <translation>Comando desconocido</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="174"/>
+        <location filename="../qmmpstarter.cpp" line="179"/>
         <source>QMMP version:</source>
         <translation>Versión de QMMP: </translation>
     </message>
