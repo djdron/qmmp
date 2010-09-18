@@ -101,6 +101,7 @@ void SkinReader::generateThumbs()
         }
     }
     //add thumbs to map
+    cache_dir.refresh();
     d = cache_dir.entryInfoList();
     foreach(QFileInfo fileInfo, f)
     {
