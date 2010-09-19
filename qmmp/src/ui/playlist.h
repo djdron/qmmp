@@ -84,6 +84,8 @@ class PlayList : public QWidget
         void updateSkin();
         void deletePlaylist();
         void showPlayLists();
+        void generateCopySelectedMenu();
+        void copySelectedMenuActionTriggered( QAction * action);
 
     private:
         void updatePositions();
@@ -109,6 +111,7 @@ class PlayList : public QWidget
         QMenu *m_selectMenu;
         QMenu *m_sortMenu;
         QMenu *m_playlistMenu;
+        QMenu *m_copySelectedMenu;
         QWidget *m_resizeWidget;
         Button *m_buttonAdd;
         Button *m_buttonSub;
