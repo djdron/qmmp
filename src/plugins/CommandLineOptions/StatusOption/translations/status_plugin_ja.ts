@@ -6,92 +6,92 @@
     <message>
         <location filename="../statusoption.cpp" line="39"/>
         <source>Print playback status</source>
-        <translation type="unfinished"></translation>
+        <translation>再生の状況を表示</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="41"/>
         <source>Print formatted track name (example: qmmp --nowplaying &quot;%t - %a&quot;)</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック名を整形して表示 (例: qmmp --nowplaying &quot;%t - %a&quot;)</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="42"/>
         <source>Print --nowplaying syntax</source>
-        <translation type="unfinished"></translation>
+        <translation>--nowplaying の構文規則を表示</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="87"/>
         <source>Syntax:</source>
-        <translation type="unfinished"></translation>
+        <translation>構文規則:</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="88"/>
         <source>%p - artist</source>
-        <translation type="unfinished"></translation>
+        <translation>%p - アーティスト名</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="89"/>
         <source>%a - album</source>
-        <translation type="unfinished"></translation>
+        <translation>%a - アルバム名</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="90"/>
         <source>%t - title</source>
-        <translation type="unfinished"></translation>
+        <translation>%t - 題名</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="91"/>
         <source>%n - track</source>
-        <translation type="unfinished"></translation>
+        <translation>%n - トラック番号</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="92"/>
         <source>%NN - 2-digit track</source>
-        <translation type="unfinished"></translation>
+        <translation>%NN - トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="93"/>
         <source>%g - genre</source>
-        <translation type="unfinished"></translation>
+        <translation>%g - ジャンル名</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="94"/>
         <source>%c - comment</source>
-        <translation type="unfinished"></translation>
+        <translation>%c - コメント</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="95"/>
         <source>%C - composer</source>
-        <translation type="unfinished"></translation>
+        <translation>%C - 作曲者名</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="96"/>
         <source>%D - disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>%D - ディスク番号</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="97"/>
         <source>%f - file name</source>
-        <translation type="unfinished"></translation>
+        <translation>%f - ファイル名</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="98"/>
         <source>%F - full path</source>
-        <translation type="unfinished"></translation>
+        <translation>%F - 完全なファイルパス</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="99"/>
         <source>%y - year</source>
-        <translation type="unfinished"></translation>
+        <translation>%y - 年</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="100"/>
         <source>%l - duration</source>
-        <translation type="unfinished"></translation>
+        <translation>%l - 演奏時間</translation>
     </message>
     <message>
         <location filename="../statusoption.cpp" line="101"/>
         <source>%if(A&amp;B&amp;C,D,E) - condition</source>
-        <translation type="unfinished"></translation>
+        <translation>%if(A&amp;B&amp;C,D,E) - 状態</translation>
     </message>
 </context>
 </TS>
