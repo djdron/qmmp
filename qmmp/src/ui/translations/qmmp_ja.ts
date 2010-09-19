@@ -1016,7 +1016,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Stop After Track</source>
-        <translation type="unfinished"></translation>
+        <translation>曲が終わると再生停止(&amp;S)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="432"/>
@@ -1041,7 +1041,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
