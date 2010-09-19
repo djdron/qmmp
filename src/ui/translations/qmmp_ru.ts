@@ -996,7 +996,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Stop After Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Остановать после трека</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
@@ -1155,7 +1155,7 @@
     <message>
         <location filename="../playlist.cpp" line="178"/>
         <source>&amp;Copy Selection To</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Копировать выделенное в</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="193"/>
@@ -1306,7 +1306,7 @@
     <message>
         <location filename="../playlist.cpp" line="629"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Новый список</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="351"/>
