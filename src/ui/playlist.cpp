@@ -175,6 +175,10 @@ void PlayList::createMenus()
     m_selectMenu = new QMenu (this);
     m_sortMenu = new QMenu (this);
     m_playlistMenu = new QMenu (this);
+    m_copySelectedMenu = new QMenu (tr("&Copy Selection To"), m_listWidget->menu());
+    m_copySelectedMenu->setIcon(QIcon::fromTheme("edit-copy"));
+    connect (m_copySelectedMenu, SIGNAL (aboutToShow ()  ), this, SLOT (generateCopySelectedMenu ()));
+    connect (m_copySelectedMenu, SIGNAL (triggered ( QAction *)  ), this, SLOT (copySelectedMenuActionTriggered( QAction *)));
 }
 
 void PlayList::createActions()
@@ -307,8 +311,11 @@ void PlayList::createActions()
     m_sortMenu->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
                            m_pl_manager, SLOT(reverseList()));
 
+
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addActions (m_subMenu->actions().mid(0,3)); //use 3 first actions
+
+
     m_listWidget->menu()->addMenu(GeneralHandler::instance()->createMenu(GeneralHandler::PLAYLIST_MENU,
                                   tr("Actions"), this));
 
@@ -482,11 +489,15 @@ void PlayList::readSettings()
         if(!m_pl_selector)
             m_pl_selector = new PlayListSelector(m_pl_manager, this);
         m_pl_selector->show();
+        m_listWidget->menu()->insertMenu(m_listWidget->menu()->actions().at(2),m_copySelectedMenu);
     }
     else
     {
         if(m_pl_selector)
+        {
             m_pl_selector->deleteLater();
+            m_listWidget->menu()->removeAction(m_copySelectedMenu->menuAction());
+        }
         m_pl_selector = 0;
     }
     if (m_update)
@@ -610,6 +621,62 @@ void PlayList::showPlayLists()
     }
     else
         m_pl_browser->show();
+}
+
+void PlayList::generateCopySelectedMenu()
+{
+    m_copySelectedMenu->clear();
+    QAction* action = m_copySelectedMenu->addAction (tr ("&New PlayList"));
+    action->setIcon(QIcon::fromTheme("document-new"));
+    m_copySelectedMenu->addSeparator();
+    
+    foreach(QString name, m_pl_manager->playListNames())
+    {
+        action = m_copySelectedMenu->addAction("&"+name.replace("&", "&&"));
+    }
+}
+
+void PlayList::copySelectedMenuActionTriggered( QAction * action)
+{
+    PlayListModel *targetPlayList = 0;
+    QString actionText=action->text();
+    if(action == m_copySelectedMenu->actions().at(0))//actionText == tr ("&New PlayList"))
+    {
+        targetPlayList = m_pl_manager->createPlayList(m_pl_manager->selectedPlayList()->name());
+    }
+    else
+    {
+        actionText.remove(0,1).replace("&&", "&");
+        foreach(PlayListModel *model, m_pl_manager->playLists())
+        {
+            //if("&" + model->name().replace("&", "&&") == actionText)
+            if(model->name() == actionText)
+            {
+                targetPlayList=model;
+                break;
+            }
+        }
+    }
+    if(!targetPlayList)
+    {
+        qWarning("Error: Cannot find target playlist '%s'",qPrintable(actionText));
+        return;
+    }
+    QList <PlayListItem *> theCopy;
+    foreach(PlayListItem *item, m_pl_manager->selectedPlayList()->getSelectedItems())
+    {
+        item->updateTags();
+        //NOTE: explicitly using default copy constructor default copy
+        //constructor doesn't do a deep copy so *m_info points to where the
+        //original did.this may very well be unnecessary, but I call
+        //updateTags() for readMetadata() to zero it before the copy
+        //TODO: If the PlayListItem default copy constructor isn't used
+        //elsewhere, a default copy constructor should be written that takes
+        //care of m_info and remove the line above
+        PlayListItem *newItem = new PlayListItem(*item);
+        theCopy << newItem;
+    }
+    targetPlayList->add(theCopy);
 }
 
 void PlayList::setMinimalMode(bool b)

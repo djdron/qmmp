@@ -1113,244 +1113,254 @@
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="184"/>
+        <location filename="../playlist.cpp" line="188"/>
         <source>F</source>
         <translation>F</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="190"/>
+        <location filename="../playlist.cpp" line="194"/>
         <source>D</source>
         <translation>D</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="226"/>
+        <location filename="../playlist.cpp" line="230"/>
         <source>Alt+I</source>
         <translation>Alt+I</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="333"/>
+        <location filename="../playlist.cpp" line="340"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="340"/>
+        <location filename="../playlist.cpp" line="347"/>
         <source>Ctrl+T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="345"/>
+        <location filename="../playlist.cpp" line="352"/>
         <source>Ctrl+W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="352"/>
+        <location filename="../playlist.cpp" line="359"/>
         <source>O</source>
         <translation>O</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="183"/>
+        <location filename="../playlist.cpp" line="187"/>
         <source>&amp;Add File</source>
         <translation>&amp;Dosya Ekle</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="189"/>
+        <location filename="../playlist.cpp" line="178"/>
+        <source>&amp;Copy Selection To</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="193"/>
         <source>&amp;Add Directory</source>
         <translation>&amp;Dizin Ekle</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="202"/>
+        <location filename="../playlist.cpp" line="206"/>
         <source>&amp;Remove Selected</source>
         <translation>&amp;Seçileni Kaldır</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="208"/>
+        <location filename="../playlist.cpp" line="212"/>
         <source>&amp;Remove All</source>
         <translation>&amp;Hepsini Kaldır</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="214"/>
+        <location filename="../playlist.cpp" line="218"/>
         <source>&amp;Remove Unselected</source>
         <translation>&amp;Seçilmemişleri Kaldır</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="219"/>
+        <location filename="../playlist.cpp" line="223"/>
         <source>Remove unavailable files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="221"/>
+        <location filename="../playlist.cpp" line="225"/>
         <source>Remove duplicates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="225"/>
+        <location filename="../playlist.cpp" line="229"/>
         <source>&amp;View Track Details</source>
         <translation>&amp;Parça Detaylarını Göster</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="234"/>
+        <location filename="../playlist.cpp" line="238"/>
         <source>Sort List</source>
         <translation>Listeyi Sınıflandır</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="237"/>
-        <location filename="../playlist.cpp" line="272"/>
+        <location filename="../playlist.cpp" line="241"/>
+        <location filename="../playlist.cpp" line="276"/>
         <source>By Title</source>
         <translation>Başlığa Göre</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="241"/>
-        <location filename="../playlist.cpp" line="276"/>
-        <source>By Album</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../playlist.cpp" line="245"/>
         <location filename="../playlist.cpp" line="280"/>
-        <source>By Artist</source>
+        <source>By Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="249"/>
         <location filename="../playlist.cpp" line="284"/>
-        <source>By Filename</source>
-        <translation>Dosya Adına Göre</translation>
+        <source>By Artist</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="253"/>
         <location filename="../playlist.cpp" line="288"/>
-        <source>By Path + Filename</source>
-        <translation>Dosya Yolu + Dosya Adına Göre</translation>
+        <source>By Filename</source>
+        <translation>Dosya Adına Göre</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="257"/>
         <location filename="../playlist.cpp" line="292"/>
-        <source>By Date</source>
-        <translation>Tarihe Göre</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="269"/>
-        <source>Sort Selection</source>
-        <translation>Seçilenleri Sınıflandır</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="305"/>
-        <source>Randomize List</source>
-        <translation>Rastgele Listele</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="307"/>
-        <source>Reverse List</source>
-        <translation>Listeyi Ters Çevir</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="320"/>
-        <source>Invert Selection</source>
-        <translation>Seçimi Tersine Çevir</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="326"/>
-        <source>&amp;Select None</source>
-        <translation>&amp;Hiçbirini Seçme</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="327"/>
-        <source>Shift+A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="332"/>
-        <source>&amp;Select All</source>
-        <translation>&amp;Tümünü Seç</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="339"/>
-        <source>&amp;New List</source>
-        <translation>&amp;Yeni Liste</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="365"/>
-        <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="366"/>
-        <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="372"/>
-        <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="373"/>
-        <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="379"/>
-        <source>&amp;Show Playlists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="380"/>
-        <source>P</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="344"/>
-        <source>&amp;Delete List</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="351"/>
-        <source>&amp;Load List</source>
-        <translation>&amp;Liste Yükle</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="357"/>
-        <source>&amp;Save List</source>
-        <translation>&amp;Listeyi Kaydet</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="358"/>
-        <source>Shift+S</source>
-        <translation>Shift+S</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="203"/>
-        <source>Del</source>
-        <translation>Del</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="195"/>
-        <source>&amp;Add Url</source>
-        <translation>&amp;Url Ekle</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="196"/>
-        <source>U</source>
-        <translation>U</translation>
+        <source>By Path + Filename</source>
+        <translation>Dosya Yolu + Dosya Adına Göre</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="261"/>
         <location filename="../playlist.cpp" line="296"/>
+        <source>By Date</source>
+        <translation>Tarihe Göre</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="273"/>
+        <source>Sort Selection</source>
+        <translation>Seçilenleri Sınıflandır</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="309"/>
+        <source>Randomize List</source>
+        <translation>Rastgele Listele</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="311"/>
+        <source>Reverse List</source>
+        <translation>Listeyi Ters Çevir</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="327"/>
+        <source>Invert Selection</source>
+        <translation>Seçimi Tersine Çevir</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="333"/>
+        <source>&amp;Select None</source>
+        <translation>&amp;Hiçbirini Seçme</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="334"/>
+        <source>Shift+A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="339"/>
+        <source>&amp;Select All</source>
+        <translation>&amp;Tümünü Seç</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="346"/>
+        <source>&amp;New List</source>
+        <translation>&amp;Yeni Liste</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="372"/>
+        <source>&amp;Select Next Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="373"/>
+        <source>Ctrl+PgDown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="379"/>
+        <source>&amp;Select Previous Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="380"/>
+        <source>Ctrl+PgUp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="386"/>
+        <source>&amp;Show Playlists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="387"/>
+        <source>P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="629"/>
+        <source>&amp;New PlayList</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="351"/>
+        <source>&amp;Delete List</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="358"/>
+        <source>&amp;Load List</source>
+        <translation>&amp;Liste Yükle</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="364"/>
+        <source>&amp;Save List</source>
+        <translation>&amp;Listeyi Kaydet</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="365"/>
+        <source>Shift+S</source>
+        <translation>Shift+S</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="207"/>
+        <source>Del</source>
+        <translation>Del</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="199"/>
+        <source>&amp;Add Url</source>
+        <translation>&amp;Url Ekle</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="200"/>
+        <source>U</source>
+        <translation>U</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="265"/>
+        <location filename="../playlist.cpp" line="300"/>
         <source>By Track Number</source>
         <translation>Parça Numarasına Göre</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="316"/>
+        <location filename="../playlist.cpp" line="323"/>
         <source>&amp;Queue</source>
         <translation>&amp;Kuyruğa ekle</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="316"/>
+        <location filename="../playlist.cpp" line="323"/>
         <source>Q</source>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="313"/>
+        <location filename="../playlist.cpp" line="320"/>
         <source>Actions</source>
         <translation>Eylemler</translation>
     </message>
