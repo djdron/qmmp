@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="ru_RU">
+<!DOCTYPE TS><TS version="1.1" language="ru_RU">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutDialog</name>
     <message>
@@ -188,7 +188,6 @@
         <translation>Исполнитель</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="72"/>
         <location filename="../configdialog.cpp" line="383"/>
         <source>Album</source>
         <translation>Альбом</translation>
@@ -299,14 +298,11 @@
         <translation>Список:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="322"/>
         <location filename="../forms/configdialog.ui" line="370"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="329"/>
-        <location filename="../forms/configdialog.ui" line="377"/>
         <location filename="../forms/configdialog.ui" line="543"/>
         <source>...</source>
         <translation>...</translation>
@@ -332,14 +328,11 @@
         <translation>Формат названия:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="660"/>
         <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Preferences</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="673"/>
-        <location filename="../forms/configdialog.ui" line="735"/>
         <location filename="../forms/configdialog.ui" line="1128"/>
         <source>Information</source>
         <translation>Информация</translation>
@@ -350,7 +343,6 @@
         <translation>Внешний вид</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="107"/>
         <location filename="../forms/configdialog.ui" line="454"/>
         <source>Playlist</source>
         <translation>Список</translation>
@@ -406,7 +398,6 @@
         <translation>Файловый диалог</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="143"/>
         <location filename="../forms/configdialog.ui" line="1105"/>
         <source>Audio</source>
         <translation>Аудио</translation>
@@ -462,7 +453,6 @@
         <translation>Предусиление:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1030"/>
         <location filename="../forms/configdialog.ui" line="1075"/>
         <source>dB</source>
         <translation>дБ</translation>
@@ -618,8 +608,6 @@
         <translation>Главное окно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="423"/>
-        <location filename="../forms/configdialog.ui" line="447"/>
         <location filename="../forms/configdialog.ui" line="471"/>
         <source>0</source>
         <translation>0</translation>
@@ -633,7 +621,6 @@
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="153"/>
         <location filename="../eqwidget.cpp" line="176"/>
         <source>preset</source>
         <translation>предустановка</translation>
@@ -702,14 +689,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../jumptotrackdialog.cpp" line="84"/>
         <location filename="../jumptotrackdialog.cpp" line="135"/>
         <source>Unqueue</source>
         <translation>Снять с очереди</translation>
     </message>
     <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="86"/>
         <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Queue</source>
         <translation>В очередь</translation>
@@ -886,31 +870,26 @@
         <translation>Падение анализатора</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
         <location filename="../mainvisual.cpp" line="349"/>
         <source>Slowest</source>
         <translation>Самое медленное</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="336"/>
         <location filename="../mainvisual.cpp" line="350"/>
         <source>Slow</source>
         <translation>Медленное</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="337"/>
         <location filename="../mainvisual.cpp" line="351"/>
         <source>Medium</source>
         <translation>Среднее</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="338"/>
         <location filename="../mainvisual.cpp" line="352"/>
         <source>Fast</source>
         <translation>Быстрое</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="339"/>
         <location filename="../mainvisual.cpp" line="353"/>
         <source>Fastest</source>
         <translation>Самое быстрое</translation>
@@ -996,7 +975,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Stop After Track</source>
-        <translation>&amp;Остановать после трека</translation>
+        <translation>&amp;Остановить после трека</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
@@ -1049,7 +1028,6 @@
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="510"/>
         <location filename="../mainwindow.cpp" line="536"/>
         <source>Playlist Files</source>
         <translation>Файлы списков</translation>
@@ -1198,37 +1176,31 @@
         <translation>Сортировать</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="241"/>
         <location filename="../playlist.cpp" line="276"/>
         <source>By Title</source>
         <translation>По названию</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="245"/>
         <location filename="../playlist.cpp" line="280"/>
         <source>By Album</source>
         <translation>По альбому</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="249"/>
         <location filename="../playlist.cpp" line="284"/>
         <source>By Artist</source>
         <translation>По исполнителю</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="253"/>
         <location filename="../playlist.cpp" line="288"/>
         <source>By Filename</source>
         <translation>По имени файла</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="257"/>
         <location filename="../playlist.cpp" line="292"/>
         <source>By Path + Filename</source>
         <translation>По пути и файлу</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="261"/>
         <location filename="../playlist.cpp" line="296"/>
         <source>By Date</source>
         <translation>По дате</translation>
@@ -1344,7 +1316,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="265"/>
         <location filename="../playlist.cpp" line="300"/>
         <source>By Track Number</source>
         <translation>По номеру трека</translation>
@@ -1378,13 +1349,11 @@
         <translation>Создать</translation>
     </message>
     <message>
-        <location filename="../forms/playlistbrowser.ui" line="52"/>
         <location filename="../playlistbrowser.cpp" line="39"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="76"/>
         <source>...</source>
         <translation>...</translation>
