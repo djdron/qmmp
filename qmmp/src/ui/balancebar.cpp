@@ -47,6 +47,11 @@ void BalanceBar::mousePressEvent(QMouseEvent *e)
 {
     m_moving = true;
     press_pos = e->x();
+    if(e->button() == Qt::MidButton)
+    {
+        m_value = 0;
+        emit sliderMoved(m_value);
+    }
     if(m_pos<e->x() && e->x()<m_pos+11*m_skin->ratio())
     {
         press_pos = e->x()-m_pos;
