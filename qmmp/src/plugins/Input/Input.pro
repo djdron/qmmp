@@ -54,4 +54,11 @@ contains(CONFIG, WILDMIDI_PLUGIN){
   message(*******************)
 }
 
+contains(CONFIG, GME_PLUGIN){
+  SUBDIRS += gme
+  message(**************)
+  message(* GME Plugin *)
+  message(**************)
+}
+
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>gme_plugin_it.qm</file>
+    <file>gme_plugin_ru.qm</file>
+    <file>gme_plugin_uk_UA.qm</file>
+    <file>gme_plugin_zh_CN.qm</file>
+    <file>gme_plugin_zh_TW.qm</file>
+    <file>gme_plugin_cs.qm</file>
+    <file>gme_plugin_de.qm</file>
+    <file>gme_plugin_pl.qm</file>
+    <file>gme_plugin_tr.qm</file>
+    <file>gme_plugin_lt.qm</file>
+    <file>gme_plugin_nl.qm</file>
+    <file>gme_plugin_ja.qm</file>
+  </qresource>
+</RCC>
