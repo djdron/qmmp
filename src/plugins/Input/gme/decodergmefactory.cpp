@@ -52,7 +52,7 @@ const DecoderProperties DecoderGmeFactory::properties() const
     //properties.contentType = ;
     properties.shortName = "gme";
     properties.hasAbout = true;
-    properties.hasSettings = true;
+    properties.hasSettings = false;
     properties.noInput = true;
     properties.protocols = "gme";
     return properties;
