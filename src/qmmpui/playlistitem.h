@@ -50,6 +50,10 @@ public:
      */
     PlayListItem();
     /*!
+     * Constructs a new PlayListItem that is a copy of the given \b item
+     */
+    PlayListItem(const PlayListItem &item);
+    /*!
      * Constructs plalist item with given metadata.
      * @param info Media file information.
      */

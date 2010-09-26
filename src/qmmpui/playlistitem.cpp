@@ -32,6 +32,17 @@ PlayListItem::PlayListItem() : AbstractPlaylistItem(), m_flag(FREE)
     m_current = false;
 }
 
+PlayListItem::PlayListItem(const PlayListItem &other) : AbstractPlaylistItem(other), m_flag(other.m_flag)
+{
+    m_title = other.m_title;
+    if (other.m_info)
+    {
+        m_info = new FileInfo(*(other.m_info));
+    }
+    m_selected = other.m_selected;
+    m_current = other.m_current;
+}
+
 PlayListItem::PlayListItem(FileInfo *info) : AbstractPlaylistItem(), m_flag(FREE)
 {
     m_selected = false;
