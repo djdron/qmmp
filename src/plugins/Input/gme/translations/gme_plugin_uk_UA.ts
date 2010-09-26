@@ -6,32 +6,32 @@
     <message>
         <location filename="../decodergmefactory.cpp" line="49"/>
         <source>GME Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="51"/>
         <source>Game Music Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Програми звукогенераторів</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="95"/>
         <source>About GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про аудіо-модуль GME</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="96"/>
         <source>Qmmp GME Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Аудіо-модуль GME для Qmmp</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="97"/>
         <source>This plugin uses Game_Music_Emu library to play game music files</source>
-        <translation type="unfinished"></translation>
+        <translation>Для відтворення використовується бібліотека Game_Music_Emu</translation>
     </message>
     <message>
         <location filename="../decodergmefactory.cpp" line="98"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 </TS>
