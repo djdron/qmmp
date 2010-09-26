@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Analyzer falloff:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abfallen des Analyzers:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -64,7 +64,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="83"/>
         <source>Peaks falloff:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abfallen der Spitzen:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="125"/>

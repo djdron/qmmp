@@ -21,7 +21,7 @@
     <message>
         <location filename="../halfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using HAL</source>
-        <translation>Dieses Modul bietet die Erkennung von Wechseldatenträgern mithilfe von HAL</translation>
+        <translation>Dieses Modul bietet die Erkennung von Wechseldatenträgern mit Hilfe von HAL</translation>
     </message>
     <message>
         <location filename="../halfactory.cpp" line="53"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../halplugin.cpp" line="167"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerät „%1“ hinzufügen</translation>
     </message>
 </context>
 <context>
