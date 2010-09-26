@@ -68,7 +68,7 @@ QStringList XSPFPlaylistFormat::decode(const QString & contents)
 
 // Needs more work - it's better use libSpiff there and put it as plugin.
 
-QString XSPFPlaylistFormat::encode(const QList<AbstractPlaylistItem*> & files)
+QString XSPFPlaylistFormat::encode(const QList<PlayListItem*> & files)
 {
     QDomDocument doc;
     QDomElement root = doc.createElement("playlist");
@@ -83,7 +83,7 @@ QString XSPFPlaylistFormat::encode(const QList<AbstractPlaylistItem*> & files)
     QDomElement tracklist = doc.createElement("trackList");
 
     int counter = 1;
-    foreach(AbstractPlaylistItem* f,files)
+    foreach(PlayListItem* f,files)
     {
         QDomElement track = doc.createElement("track");
 
@@ -98,22 +98,22 @@ QString XSPFPlaylistFormat::encode(const QList<AbstractPlaylistItem*> & files)
         track.appendChild(ch);
 
         ch = doc.createElement("title");
-        text = doc.createTextNode(f->title());
+        text = doc.createTextNode(f->value(Qmmp::TITLE));
         ch.appendChild(text);
         track.appendChild(ch);
 
         ch = doc.createElement("creator");
-        text = doc.createTextNode(f->artist());
+        text = doc.createTextNode(f->value(Qmmp::ARTIST));
         ch.appendChild(text);
         track.appendChild(ch);
 
         ch = doc.createElement("annotation");
-        text = doc.createTextNode(f->comment());
+        text = doc.createTextNode(f->value(Qmmp::COMMENT));
         ch.appendChild(text);
         track.appendChild(ch);
 
         ch = doc.createElement("album");
-        text = doc.createTextNode(f->album());
+        text = doc.createTextNode(f->value(Qmmp::ALBUM));
         ch.appendChild(text);
         track.appendChild(ch);
 
@@ -124,7 +124,7 @@ QString XSPFPlaylistFormat::encode(const QList<AbstractPlaylistItem*> & files)
 
         ch = doc.createElement("meta");
         ch.setAttribute("rel", "year");
-        text = doc.createTextNode(f->year());
+        text = doc.createTextNode(f->value(Qmmp::YEAR));
         ch.appendChild(text);
         track.appendChild(ch);
 

@@ -175,7 +175,7 @@ void FileOps::execAction(int n)
             destination = QFileInfo(item->url()).absolutePath ();
             if (file.rename(destination + "/" + fname))
             {
-                item->setMetaData(Qmmp::URL, destination + "/" + fname);
+                item->insert(Qmmp::URL, destination + "/" + fname);
                 model->doCurrentVisibleRequest();
             }
             else

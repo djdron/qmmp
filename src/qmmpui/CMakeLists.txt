@@ -54,7 +54,6 @@ SET(libqmmpui_MOC_HDRS
     filedialog.h
     filedialogfactory.h
     qtfiledialog.h
-    abstractplaylistitem.h
     fileloader.h
     playstate.h
     playlistmodel.h
@@ -69,7 +68,6 @@ SET(libqmmpui_MOC_HDRS
 )
 
 SET(libqmmpui_DEVEL_HDRS
-    abstractplaylistitem.h
     generalfactory.h
     general.h
     generalhandler.h
@@ -79,7 +77,6 @@ SET(libqmmpui_DEVEL_HDRS
     commandlineoption.h
     filedialog.h
     filedialogfactory.h
-    abstractplaylistitem.h
     playlistitem.h
     playlistmodel.h
     mediaplayer.h

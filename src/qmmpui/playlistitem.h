@@ -20,8 +20,8 @@
 #ifndef PLAYLISTITEM_H
 #define PLAYLISTITEM_H
 
+#include <QMap>
 #include <qmmp/qmmp.h>
-#include <qmmpui/abstractplaylistitem.h>
 
 class FileInfo;
 class QSettings;
@@ -29,7 +29,7 @@ class QSettings;
 /** @brief The PlayListItem class provides an item for use with the PlayListModel class.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class PlayListItem : public AbstractPlaylistItem
+class PlayListItem : public QMap <Qmmp::MetaData, QString>
 {
 public:
     /*!
@@ -97,6 +97,18 @@ public:
      */
     void setText(const QString &title);
     /*!
+     * Returns song length in seconds.
+     */
+    qint64 length() const;
+    /*!
+     * Sets length in seconds.
+     */
+    void setLength(qint64 length);
+    /*!
+     * Same as url()
+     */
+    const QString url() const;
+    /*!
      * Updates current metadata.
      * @param metaData Map with metadata values.
      */
@@ -113,6 +125,7 @@ private:
     bool m_selected;
     bool m_current;
     FLAGS m_flag;
+    qint64 m_length;
 };
 
 #endif

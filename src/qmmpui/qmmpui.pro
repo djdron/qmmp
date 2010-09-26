@@ -28,7 +28,6 @@ HEADERS += general.h \
     filedialog.h \
     filedialogfactory.h \
     qtfiledialog.h \
-    abstractplaylistitem.h \
     playlistitem.h \
     playlistmodel.h \
     playstate.h \
@@ -46,7 +45,6 @@ SOURCES += general.cpp \
     commandlinemanager.cpp \
     filedialog.cpp \
     qtfiledialog.cpp \
-    abstractplaylistitem.cpp \
     playlistmodel.cpp \
     playstate.cpp \
     playlistitem.cpp \
@@ -78,7 +76,7 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
     translations/libqmmpui_ja.ts \
     translations/libqmmpui_es.ts
 unix { 
-    devel.files += abstractplaylistitem.h \
+    devel.files += \
                    generalfactory.h \
                    generalhandler.h \
                    playlistformat.h \
@@ -87,7 +85,6 @@ unix {
                    commandlineoption.h \
                    filedialog.h \
                    filedialogfactory.h \
-                   abstractplaylistitem.h \
                    playlistitem.h \
                    playlistmodel.h \
                    mediaplayer.h \

@@ -670,32 +670,32 @@ void PlayListModel::reverseList()
 //by title
 static bool _titleLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return QString::localeAwareCompare (s1->title(), s2->title()) < 0;
+    return QString::localeAwareCompare (s1->value(Qmmp::TITLE), s2->value(Qmmp::TITLE)) < 0;
 }
 
 static bool _titleGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return QString::localeAwareCompare (s1->title(), s2->title()) > 0;
+    return QString::localeAwareCompare (s1->value(Qmmp::TITLE), s2->value(Qmmp::TITLE)) > 0;
 }
 //by album
 static bool _albumLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return QString::localeAwareCompare (s1->album(), s2->album()) < 0;
+    return QString::localeAwareCompare (s1->value(Qmmp::ALBUM), s2->value(Qmmp::ALBUM)) < 0;
 }
 
 static bool _albumGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return QString::localeAwareCompare (s1->album(), s2->album()) > 0;
+    return QString::localeAwareCompare (s1->value(Qmmp::ALBUM), s2->value(Qmmp::ALBUM)) > 0;
 }
 //by artist
 static bool _artistLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return QString::localeAwareCompare (s1->artist(), s2->artist()) < 0;
+    return QString::localeAwareCompare (s1->value(Qmmp::ALBUM), s2->value(Qmmp::ALBUM)) < 0;
 }
 
 static bool _artistGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return QString::localeAwareCompare (s1->artist(), s2->artist()) > 0;
+    return QString::localeAwareCompare (s1->value(Qmmp::ARTIST), s2->value(Qmmp::ARTIST)) > 0;
 }
 //by path
 static bool _pathAndFilenameLessComparator(PlayListItem* s1,PlayListItem* s2)
@@ -724,22 +724,22 @@ static bool _filenameGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 //by date
 static bool _dateLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->year().toInt() < s2->year().toInt();
+    return s1->value(Qmmp::YEAR).toInt() < s2->value(Qmmp::YEAR).toInt();
 }
 
 static bool _dateGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->year().toInt() > s2->year().toInt();
+    return s1->value(Qmmp::YEAR).toInt() > s2->value(Qmmp::YEAR).toInt();
 }
 //by track
 static bool _trackLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->track().toInt() < s2->track().toInt();
+    return s1->value(Qmmp::TRACK).toInt() < s2->value(Qmmp::TRACK).toInt();
 }
 
 static bool _trackGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return s1->track().toInt() > s2->track().toInt();
+    return s1->value(Qmmp::TRACK).toInt() > s2->value(Qmmp::TRACK).toInt();
 }
 
 // This is main sort method
@@ -883,7 +883,7 @@ void PlayListModel::savePlaylist(const QString & f_name)
         if (file.open(QIODevice::WriteOnly))
         {
             QTextStream ts(&file);
-            QList <AbstractPlaylistItem *> songs;
+            QList <PlayListItem *> songs;
             foreach(PlayListItem* item, m_items)
             songs << item;
             ts << prs->encode(songs);

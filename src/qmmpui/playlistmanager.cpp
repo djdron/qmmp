@@ -315,28 +315,28 @@ void PlayListManager::readPlayLists()
         else if (param == "file")
         {
             items << new PlayListItem();
-            items.last()->setMetaData(Qmmp::URL, value);
+            items.last()->insert(Qmmp::URL, value);
         }
         else if (items.isEmpty())
             continue;
         else if (param == "title")
-            items.last()->setMetaData(Qmmp::TITLE, value);
+            items.last()->insert(Qmmp::TITLE, value);
         else if (param == "artist")
-            items.last()->setMetaData(Qmmp::ARTIST, value);
+            items.last()->insert(Qmmp::ARTIST, value);
         else if (param == "album")
-            items.last()->setMetaData(Qmmp::ALBUM, value);
+            items.last()->insert(Qmmp::ALBUM, value);
         else if (param == "comment")
-            items.last()->setMetaData(Qmmp::COMMENT, value);
+            items.last()->insert(Qmmp::COMMENT, value);
         else if (param == "genre")
-            items.last()->setMetaData(Qmmp::GENRE, value);
+            items.last()->insert(Qmmp::GENRE, value);
         else if (param == "composer")
-            items.last()->setMetaData(Qmmp::COMPOSER, value);
+            items.last()->insert(Qmmp::COMPOSER, value);
         else if (param == "year")
-            items.last()->setMetaData(Qmmp::YEAR, value);
+            items.last()->insert(Qmmp::YEAR, value);
         else if (param == "track")
-            items.last()->setMetaData(Qmmp::TRACK, value);
+            items.last()->insert(Qmmp::TRACK, value);
         else if (param == "disc")
-            items.last()->setMetaData(Qmmp::DISCNUMBER, value);
+            items.last()->insert(Qmmp::DISCNUMBER, value);
         else if (param == "length")
             items.last()->setLength(value.toInt());
     }
@@ -369,15 +369,15 @@ void PlayListManager::writePlayLists()
         foreach(PlayListItem* m, items)
         {
             file.write(QString("file=%1\n").arg(m->url()).toUtf8());
-            file.write(QString("title=%1\n").arg(m->title()).toUtf8());
-            file.write(QString("artist=%1\n").arg(m->artist()).toUtf8());
-            file.write(QString("album=%1\n").arg(m->album()).toUtf8());
-            file.write(QString("comment=%1\n").arg(m->comment()).toUtf8());
-            file.write(QString("genre=%1\n").arg(m->genre()).toUtf8());
-            file.write(QString("composer=%1\n").arg(m->composer()).toUtf8());
-            file.write(QString("year=%1\n").arg(m->year()).toUtf8());
-            file.write(QString("track=%1\n").arg(m->track()).toUtf8());
-            file.write(QString("disc=%1\n").arg(m->discNumber()).toUtf8());
+            file.write(QString("title=%1\n").arg(m->value(Qmmp::TITLE)).toUtf8());
+            file.write(QString("artist=%1\n").arg(m->value(Qmmp::ARTIST)).toUtf8());
+            file.write(QString("album=%1\n").arg(m->value(Qmmp::ALBUM)).toUtf8());
+            file.write(QString("comment=%1\n").arg(m->value(Qmmp::COMMENT)).toUtf8());
+            file.write(QString("genre=%1\n").arg(m->value(Qmmp::GENRE)).toUtf8());
+            file.write(QString("composer=%1\n").arg(m->value(Qmmp::COMPOSER)).toUtf8());
+            file.write(QString("year=%1\n").arg(m->value(Qmmp::YEAR)).toUtf8());
+            file.write(QString("track=%1\n").arg(m->value(Qmmp::TRACK)).toUtf8());
+            file.write(QString("disc=%1\n").arg(m->value(Qmmp::DISCNUMBER)).toUtf8());
             file.write(QString("length=%1\n").arg(m->length()).toUtf8());
         }
     }

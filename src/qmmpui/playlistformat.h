@@ -22,7 +22,7 @@
 #define _PALYLISTFORMAT_H
 #include <QStringList>
 
-class AbstractPlaylistItem;
+class PlayListItem;
 
 /*! @brief Abstract interface for playlist formats.
  * @author Vladimir Kuznetsov <vovanec@gmail.com>
@@ -46,7 +46,7 @@ public:
      * Takes the list of AbstractPlaylistItem objects, should return string of
      * encoded playlist file
      */
-    virtual QString encode(const QList<AbstractPlaylistItem*>& contents) = 0;
+    virtual QString encode(const QList<PlayListItem*>& contents) = 0;
     /*!
      * Returns list of file extensions that current format supports
      */

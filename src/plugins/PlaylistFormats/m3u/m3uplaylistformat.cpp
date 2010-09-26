@@ -68,13 +68,13 @@ QStringList M3UPlaylistFormat::decode(const QString & contents)
     return QStringList();
 }
 
-QString M3UPlaylistFormat::encode(const QList<AbstractPlaylistItem*> & contents)
+QString M3UPlaylistFormat::encode(const QList<PlayListItem*> & contents)
 {
     QStringList out;
     out << QString("#EXTM3U");
-    foreach(AbstractPlaylistItem* f,contents)
+    foreach(PlayListItem* f,contents)
     {
-        QString info = "#EXTINF:" + QString::number(f->length()) + "," + f->title();
+        QString info = "#EXTINF:" + QString::number(f->length()) + "," + f->value(Qmmp::TITLE);
         out.append(info);
         out.append(f->url());
     }

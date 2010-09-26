@@ -27,7 +27,7 @@
 
 class QTextCodec;
 class QAbstractButton;
-class AbstractPlaylistItem;
+class PlayListItem;
 class MetaDataModel;
 
 namespace Ui {
@@ -46,7 +46,7 @@ public:
      * @param item Playlist item which should be used.
      * @param parent Parent widget.
      */
-    DetailsDialog(AbstractPlaylistItem *item, QWidget *parent = 0);
+    DetailsDialog(PlayListItem *item, QWidget *parent = 0);
     /*!
      * Destructor.
      */
@@ -61,7 +61,7 @@ private:
     QString m_path;
     QString formatRow(const QString key, const QString value);
     MetaDataModel *m_metaDataModel;
-    AbstractPlaylistItem *m_item;
+    PlayListItem *m_item;
 };
 
 #endif

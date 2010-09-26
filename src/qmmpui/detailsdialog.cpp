@@ -26,11 +26,11 @@
 #include <qmmp/metadatamodel.h>
 #include <qmmp/tagmodel.h>
 #include "ui_detailsdialog.h"
-#include "abstractplaylistitem.h"
+#include "playlistitem.h"
 #include "tageditor.h"
 #include "detailsdialog.h"
 
-DetailsDialog::DetailsDialog(AbstractPlaylistItem *item, QWidget *parent)
+DetailsDialog::DetailsDialog(PlayListItem *item, QWidget *parent)
         : QDialog(parent)
 {
     m_ui = new Ui::DetailsDialog;
@@ -74,7 +74,7 @@ void DetailsDialog::printInfo()
     if(!flist.isEmpty() && QFile::exists(m_item->url()))
         metaData = flist.at(0)->metaData();
     else
-        metaData = m_item->metaData();
+        metaData = *m_item;
     QString formattedText;
     formattedText.append("<TABLE>");
     //tags

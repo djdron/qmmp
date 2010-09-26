@@ -19,20 +19,21 @@
  ***************************************************************************/
 #include <QSettings>
 #include <QDir>
-
 #include <qmmp/metadatamanager.h>
 #include "metadataformatter.h"
 #include "playlistsettings.h"
 #include "playlistitem.h"
 
-PlayListItem::PlayListItem() : AbstractPlaylistItem(), m_flag(FREE)
+PlayListItem::PlayListItem() : QMap<Qmmp::MetaData, QString>(), m_flag(FREE)
 {
     m_info = 0;
+    m_length = 0;
     m_selected = false;
     m_current = false;
 }
 
-PlayListItem::PlayListItem(const PlayListItem &other) : AbstractPlaylistItem(other), m_flag(other.m_flag)
+PlayListItem::PlayListItem(const PlayListItem &other) : QMap<Qmmp::MetaData, QString>(other),
+    m_flag(other.m_flag)
 {
     m_title = other.m_title;
     if (other.m_info)
@@ -41,17 +42,16 @@ PlayListItem::PlayListItem(const PlayListItem &other) : AbstractPlaylistItem(oth
     }
     m_selected = other.m_selected;
     m_current = other.m_current;
+    m_length = other.m_length;
 }
 
-PlayListItem::PlayListItem(FileInfo *info) : AbstractPlaylistItem(), m_flag(FREE)
+PlayListItem::PlayListItem(FileInfo *info) :  QMap<Qmmp::MetaData, QString>(info->metaData()), m_flag(FREE)
 {
+    m_length = info->length();
     m_selected = false;
     m_current = false;
     m_info = info;
-
-    setMetaData(info->metaData());
-    setMetaData(Qmmp::URL, m_info->path());
-    setLength(m_info->length());
+    insert(Qmmp::URL, m_info->path());
 }
 
 PlayListItem::~PlayListItem()
@@ -92,7 +92,7 @@ PlayListItem::FLAGS PlayListItem::flag() const
 
 void PlayListItem::updateMetaData(const QMap <Qmmp::MetaData, QString> &metaData)
 {
-    setMetaData(metaData);
+    QMap <Qmmp::MetaData, QString>::operator =(metaData);
     readMetadata();
 }
 
@@ -103,12 +103,13 @@ void PlayListItem::updateTags()
         delete m_info;
         m_info = 0;
     }
-    QList <FileInfo *> list =  MetaDataManager::instance()->createPlayList(url());
+    QList <FileInfo *> list =  MetaDataManager::instance()->createPlayList(value(Qmmp::URL));
     if(!list.isEmpty() && !list.at(0)->path().contains("://"))
     {
         m_info = list.at(0);
-        setMetaData(m_info->metaData());
-        setMetaData(Qmmp::URL, m_info->path());
+        m_length = m_info->length();
+        QMap <Qmmp::MetaData, QString>::operator =(m_info->metaData());
+        insert(Qmmp::URL, m_info->path());
         readMetadata();
     }
     while(list.size() > 1)
@@ -127,15 +128,30 @@ void PlayListItem::setText(const QString &title)
     m_title = title;
 }
 
+qint64 PlayListItem::length() const
+{
+    return m_length;
+}
+
+void PlayListItem::setLength(qint64 length)
+{
+    m_length = length;
+}
+
+const QString PlayListItem::url() const
+{
+    return value(Qmmp::URL);
+}
+
 void PlayListItem::readMetadata()
 {
     MetaDataFormatter f(PlaylistSettings::instance()->format());
-    m_title = f.parse(metaData());
+    m_title = f.parse(this);
     //TODO rewrite this
     if (m_title.isEmpty())
     {
-        if (url().contains('/'))
-            m_title = url().split('/',QString::SkipEmptyParts).takeLast ();
+        if (value(Qmmp::URL).contains('/'))
+            m_title = value(Qmmp::URL).split('/',QString::SkipEmptyParts).takeLast ();
     }
     if (m_info)
         delete m_info;
