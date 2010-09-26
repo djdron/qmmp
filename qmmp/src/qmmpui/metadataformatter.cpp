@@ -47,9 +47,9 @@ MetaDataFormatter::MetaDataFormatter(const QString &format)
     m_format = format;
 }
 
-QString MetaDataFormatter::parse(AbstractPlaylistItem *item)
+QString MetaDataFormatter::parse(PlayListItem *item)
 {
-    return parse(item->metaData(), item->length());
+    return parse(*item, item->length());
 }
 
 QString MetaDataFormatter::parse(const QMap<Qmmp::MetaData, QString> metaData, qint64 length)

@@ -86,15 +86,15 @@ QVariantMap TrackListObject::GetMetadata(int in0)
             map.insert("location", "file://" + item->url());
         else
             map.insert("location", item->url());
-        map.insert("title", item->title());
-        map.insert("artist", item->artist());
-        map.insert("album", item->album());
-        map.insert("tracknumber", item->track());
+        map.insert("title", item->value(Qmmp::TITLE));
+        map.insert("artist", item->value(Qmmp::ARTIST));
+        map.insert("album", item->value(Qmmp::ALBUM));
+        map.insert("tracknumber", item->value(Qmmp::TRACK));
         map.insert("time", (quint32)item->length());
         map.insert("mtime", (quint32)item->length() * 1000);
-        map.insert("genre", item->genre());
-        map.insert("comment", item->comment());
-        map.insert("year", item->year().toUInt());
+        map.insert("genre", item->value(Qmmp::GENRE));
+        map.insert("comment", item->value(Qmmp::COMMENT));
+        map.insert("year", item->value(Qmmp::YEAR).toUInt());
     }
     return map;
 }

@@ -23,7 +23,7 @@
 
 #include <QString>
 #include <QMap>
-#include <qmmpui/abstractplaylistitem.h>
+#include <qmmpui/playlistitem.h>
 #include <qmmp/qmmp.h>
 
 /*! @brief The MetaDataFormatter formats metadata using templates.
@@ -55,7 +55,7 @@ public:
     /*!
      * Converts metadata of item \b item to one string using template.
      */
-    QString parse(AbstractPlaylistItem *item);
+    QString parse(PlayListItem *item);
     /*!
      * Converts metadata to one string using template.
      * @param metaData Metadata array.

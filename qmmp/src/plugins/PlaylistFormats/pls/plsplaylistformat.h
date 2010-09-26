@@ -24,7 +24,7 @@
 #include <QString>
 #include <QStringList>
 #include <qmmpui/playlistformat.h>
-#include <qmmpui/abstractplaylistitem.h>
+#include <qmmpui/playlistitem.h>
 
 /*!
  * Class for PLS playlist format parsing
@@ -39,7 +39,7 @@ public:
     virtual QStringList getExtensions()const;
     virtual bool hasFormat(const QString&);
     virtual QStringList decode(const QString& contents);
-    virtual QString encode(const QList<AbstractPlaylistItem*>& contents);
+    virtual QString encode(const QList<PlayListItem*>& contents);
     virtual QString name()const;
 protected:
     QStringList m_supported_formats;

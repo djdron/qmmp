@@ -256,7 +256,7 @@ void HalPlugin::removePath(const QString &path)
     int i = 0;
     while (model->count() > 0 && i < model->count())
     {
-        if (model->item(i)->url ().startsWith(path))
+        if (model->item(i)->url().startsWith(path))
             model->removeAt (i);
         else
             ++i;

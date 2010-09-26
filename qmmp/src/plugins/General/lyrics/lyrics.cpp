@@ -47,9 +47,10 @@ void Lyrics::showLyrics()
     QList <PlayListItem *> items = pl_manager->selectedPlayList()->getSelectedItems();
     if (!items.isEmpty())
     {
-        if (items.at(0)->artist().isEmpty() || items.at(0)->title().isEmpty())
+        if (items.at(0)->value(Qmmp::ARTIST).isEmpty() || items.at(0)->value(Qmmp::TITLE).isEmpty())
                 return;
-            LyricsWindow *w = new LyricsWindow(items.at(0)->artist(), items.at(0)->title(), qApp->activeWindow ());
+            LyricsWindow *w = new LyricsWindow(items.at(0)->value(Qmmp::ARTIST),
+                                               items.at(0)->value(Qmmp::TITLE), qApp->activeWindow ());
             w->show();
     }
 }
