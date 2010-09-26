@@ -665,14 +665,6 @@ void PlayList::copySelectedMenuActionTriggered( QAction * action)
     QList <PlayListItem *> theCopy;
     foreach(PlayListItem *item, m_pl_manager->selectedPlayList()->getSelectedItems())
     {
-        item->updateTags();
-        //NOTE: explicitly using default copy constructor default copy
-        //constructor doesn't do a deep copy so *m_info points to where the
-        //original did.this may very well be unnecessary, but I call
-        //updateTags() for readMetadata() to zero it before the copy
-        //TODO: If the PlayListItem default copy constructor isn't used
-        //elsewhere, a default copy constructor should be written that takes
-        //care of m_info and remove the line above
         PlayListItem *newItem = new PlayListItem(*item);
         theCopy << newItem;
     }
