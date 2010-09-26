@@ -448,7 +448,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="998"/>
         <source>Preamp:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorverstärkung:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1030"/>
@@ -717,7 +717,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation>Springe zu Titel</translation>
+        <translation>Zu Titel springen</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
@@ -732,7 +732,7 @@
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation>Springe zu</translation>
+        <translation>Springen zu</translation>
     </message>
 </context>
 <context>
@@ -918,7 +918,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="346"/>
         <source>Peaks Falloff</source>
-        <translation type="unfinished">Peaks-Abfall</translation>
+        <translation>Abfallen der Spitzen</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="359"/>
@@ -996,12 +996,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Stop After Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach diesem &amp;Stück stoppen</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+S</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="450"/>
@@ -1301,7 +1301,7 @@
     <message>
         <location filename="../playlist.cpp" line="629"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Neue Wiedergabeliste</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="351"/>
@@ -1311,7 +1311,7 @@
     <message>
         <location filename="../playlist.cpp" line="178"/>
         <source>&amp;Copy Selection To</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl kopieren na&amp;ch</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="358"/>
@@ -1632,7 +1632,7 @@
     <message>
         <location filename="../textscroller.cpp" line="64"/>
         <source>Autoscroll Songname</source>
-        <translation>Automatischer Bildlauf</translation>
+        <translation>Automatischer Bildlauf des Titelnamens</translation>
     </message>
 </context>
 <context>
