@@ -115,57 +115,62 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Skip forward in playlist</source>
         <translation>Nächsten Titel in Wiedergabeliste abspielen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Skip backwards in playlist</source>
         <translation>Vorherigen Titel in Wiedergabeliste abspielen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="57"/>
+        <location filename="../builtincommandlineoption.cpp" line="55"/>
         <source>Start playing current song</source>
         <translation>Aktuellen Titel abspielen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="58"/>
+        <location filename="../builtincommandlineoption.cpp" line="54"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="unfinished">Titel an Wiedergabeliste anhängen</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="56"/>
         <source>Pause current song</source>
         <translation>Aktuellen Titel anhalten</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="59"/>
+        <location filename="../builtincommandlineoption.cpp" line="57"/>
         <source>Pause if playing, play otherwise</source>
         <translation>Wiedergabe anhalten oder fortsetzen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <location filename="../builtincommandlineoption.cpp" line="58"/>
         <source>Stop current song</source>
         <translation>Aktuellen Titel stoppen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="59"/>
         <source>Display Jump to File dialog</source>
         <translation>„Springe zu Titel“-Dialog anzeigen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="60"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>Lautstärke der Wiedergabe einstellen (Beispiel: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Show/hide application</source>
         <translation>Anwendung ein-/ausblenden</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Display Add File dialog</source>
         <translation>„Datei hinzufügen“-Dialog anzeigen</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Add Directory dialog</source>
         <translation>„Verzeichnis hinzufügen“-Dialog anzeigen</translation>
     </message>
@@ -1577,47 +1582,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="172"/>
+        <location filename="../qmmpstarter.cpp" line="176"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Aufruf: qmmp [Optionen] [Dateien]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="173"/>
+        <location filename="../qmmpstarter.cpp" line="177"/>
         <source>Options:</source>
         <translation>Optionen:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="179"/>
+        <location filename="../qmmpstarter.cpp" line="181"/>
+        <source>Don&apos;t start the application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="183"/>
         <source>Print version number and exit</source>
         <translation>Gibt die Versionsnummer aus</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="180"/>
+        <location filename="../qmmpstarter.cpp" line="184"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Ideen, Patches und Bugreports an &lt;forkotov02@hotmail.ru&gt; senden</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="178"/>
+        <location filename="../qmmpstarter.cpp" line="182"/>
         <source>Display this text and exit</source>
         <translation>Zeigt diesen Hilfetext an</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="73"/>
+        <location filename="../qmmpstarter.cpp" line="71"/>
         <source>Unknown command</source>
         <translation>Unbekannter Befehl</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="185"/>
+        <location filename="../qmmpstarter.cpp" line="189"/>
         <source>QMMP version:</source>
         <translation>Qmmp-Version:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="175"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>Titel an Wiedergabeliste anhängen</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="186"/>
+        <location filename="../qmmpstarter.cpp" line="190"/>
         <source>Qt version:</source>
         <translation>Qt-Version:</translation>
     </message>

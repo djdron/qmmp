@@ -65,10 +65,8 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     {
         foreach(QString arg, commands.keys())
         {
-            if(!m_option_manager->identify(arg) &&
-               !CommandLineManager::hasOption(arg) &&
-               arg != "--enqueue" &&
-               arg != "-e")
+            if(!m_option_manager->identify(arg) && !CommandLineManager::hasOption(arg) &&
+                    arg != "--no-start")
             {
                 cout << qPrintable(tr("Unknown command")) << endl;
                 exit(0);
@@ -78,24 +76,28 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
 
     m_server = new QLocalServer(this);
     m_socket = new QLocalSocket(this);
-    if(m_server->listen (UDS_PATH)) //trying to create server
+    bool noStart = commands.keys().contains("--no-start");
+
+    if(!noStart && m_server->listen (UDS_PATH)) //trying to create server
     {
         startMainWindow();
     }
-    else
+    else if(QFile::exists(UDS_PATH))
     {
         m_socket->connectToServer(UDS_PATH); //connecting
         m_socket->waitForConnected();
         if(!m_socket->isValid()) //invalid connection
         {
-            qWarning("QMMPStarter: trying to remove invalid socket file");
             if(!QLocalServer::removeServer(UDS_PATH))
             {
                 qWarning("QMMPStarter: unable to remove invalid socket file");
                 exit(1);
                 return;
             }
-            if(m_server->listen (UDS_PATH))
+            qWarning("QMMPStarter: removed invalid socket file");
+            if(noStart)
+                exit(0);
+            else if(m_server->listen (UDS_PATH))
                 startMainWindow();
             else
             {
@@ -106,6 +108,8 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
         else
             writeCommand();
     }
+    else
+        exit(0);
 }
 
 QMMPStarter::~ QMMPStarter()
@@ -172,9 +176,9 @@ void QMMPStarter::printUsage()
     cout << qPrintable(tr("Usage: qmmp [options] [files]")) << endl;
     cout << qPrintable(tr("Options:")) << endl;
     cout << "--------" << endl;
-    cout << "-e, --enqueue        " << qPrintable(tr("Don't clear the playlist")) << endl;
     cout << qPrintable(m_option_manager->helpString()) << endl;
     CommandLineManager::printUsage();
+    cout << "--no-start           " << qPrintable(tr("Don't start the application")) << endl;
     cout << "--help               " << qPrintable(tr("Display this text and exit")) << endl;
     cout << "--version            " << qPrintable(tr("Print version number and exit")) << endl;
     cout << qPrintable(tr("Ideas, patches, bugreports send to forkotov02@hotmail.ru")) << endl;

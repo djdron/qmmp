@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QHash>
+#include <QStringList>
 
 class MainWindow;
 
@@ -42,8 +43,12 @@ public:
 
     bool identify(const QString& str)const;
     const QString helpString()const;
-    void executeCommand(const QString& option, const QStringList &args, MainWindow* = NULL);
+    void executeCommand(const QString& option, const QStringList &args,
+                        const QString &cwd, MainWindow *mw);
     QHash <QString, QStringList> splitArgs(const QStringList &args) const;
+
+private:
+    QStringList m_options;
 };
 
 #endif

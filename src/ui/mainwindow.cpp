@@ -547,8 +547,13 @@ void MainWindow::savePlaylist()
         qWarning("Error: There is no registered playlist parsers");
 }
 
-void MainWindow::setFileList(const QStringList & l)
+void MainWindow::setFileList(const QStringList &l, bool clear)
 {
+    if(!clear)
+    {
+        m_pl_manager->currentPlayList()->addFileList(l);
+        return;
+    }
     if (m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
     {
         stop();
@@ -578,24 +583,15 @@ QString MainWindow::processCommandArgs(const QStringList &slist, const QString& 
     if(slist.isEmpty())
         return QString();
     QStringList paths;
-    foreach(QString arg, slist)
+    foreach(QString arg, slist) //detect file/directory paths
     {
         if(arg.startsWith("-"))
             break;
-        else
-            paths.append(arg);
+        paths.append(arg);
     }
     if(!paths.isEmpty())
     {
-        QStringList full_path_list;
-        foreach(QString s, paths)
-        {
-            if ((s.startsWith("/")) || (s.contains("://")))   //is it absolute path or url?
-                full_path_list << s;
-            else
-                full_path_list << cwd + "/" + s;
-        }
-        setFileList(full_path_list);
+        m_option_manager->executeCommand(QString(), paths, cwd, this); //add paths only
         return QString();
     }
     QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
@@ -603,25 +599,12 @@ QString MainWindow::processCommandArgs(const QStringList &slist, const QString& 
         return QString();
     foreach(QString key, commands.keys())
     {
-        if(key == "--enqueue" || key == "-e")
-        {
-            QStringList args = commands.value(key);
-            if(args.isEmpty())
-                return false;
-            QStringList full_path_list;
-            foreach(QString s, args)
-            {
-                if ((s.startsWith("/")) || (s.contains("://")))   //is it absolute path or url?
-                    full_path_list << s;
-                else
-                    full_path_list << cwd + "/" + s;
-            }
-            m_pl_manager->currentPlayList()->addFileList(full_path_list);
-        }
-        else if (CommandLineManager::hasOption(key))
+        if(key == "--no-start")
+            continue;
+        if (CommandLineManager::hasOption(key))
             return CommandLineManager::executeCommand(key, commands.value(key));
         else if (m_option_manager->identify(key))
-            m_option_manager->executeCommand(key, commands.value(key), this);
+            m_option_manager->executeCommand(key, commands.value(key), cwd, this);
         else
             return QString();
     }

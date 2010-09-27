@@ -115,57 +115,62 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Skip forward in playlist</source>
         <translation>跳到播放清單中的下一曲</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Skip backwards in playlist</source>
         <translation>跳到播放清單中的上一曲</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="57"/>
+        <location filename="../builtincommandlineoption.cpp" line="55"/>
         <source>Start playing current song</source>
         <translation>開始播放目前曲目</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="58"/>
+        <location filename="../builtincommandlineoption.cpp" line="54"/>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="unfinished">不要清除這個播放清單</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="56"/>
         <source>Pause current song</source>
         <translation>暫停目前曲目</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="59"/>
+        <location filename="../builtincommandlineoption.cpp" line="57"/>
         <source>Pause if playing, play otherwise</source>
         <translation>正在播放則暫停，相反處於暫停則播放</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <location filename="../builtincommandlineoption.cpp" line="58"/>
         <source>Stop current song</source>
         <translation>停止目前曲目</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="59"/>
         <source>Display Jump to File dialog</source>
         <translation>察看跳到檔案對話</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="60"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Show/hide application</source>
         <translation>察看/隱藏程式</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Display Add File dialog</source>
         <translation>察看添加檔案對話</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Add Directory dialog</source>
         <translation>察看添加目錄對話</translation>
     </message>
@@ -1577,47 +1582,47 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="172"/>
+        <location filename="../qmmpstarter.cpp" line="176"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>使用：qmmp [設定] [檔案]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="173"/>
+        <location filename="../qmmpstarter.cpp" line="177"/>
         <source>Options:</source>
         <translation>設定：</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="179"/>
+        <location filename="../qmmpstarter.cpp" line="181"/>
+        <source>Don&apos;t start the application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="183"/>
         <source>Print version number and exit</source>
         <translation>察看版本並結束</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="180"/>
+        <location filename="../qmmpstarter.cpp" line="184"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>建議、補丁或提交 bug 請傳送到 forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="178"/>
+        <location filename="../qmmpstarter.cpp" line="182"/>
         <source>Display this text and exit</source>
         <translation>察看這些字檔並結束</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="73"/>
+        <location filename="../qmmpstarter.cpp" line="71"/>
         <source>Unknown command</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="185"/>
+        <location filename="../qmmpstarter.cpp" line="189"/>
         <source>QMMP version:</source>
         <translation>Qmmp 版本：</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="175"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>不要清除這個播放清單</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="186"/>
+        <location filename="../qmmpstarter.cpp" line="190"/>
         <source>Qt version:</source>
         <translation>Qt 版本：</translation>
     </message>
