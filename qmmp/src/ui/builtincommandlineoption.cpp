@@ -26,34 +26,32 @@
 BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent)
         : QObject(parent)
 {
+    m_options << "--enqueue" << "-e"
+              << "--play" << "-p"
+              << "--pause" << "-u"
+              << "--play-pause" << "-t"
+              << "--stop" << "-s"
+              << "--jump-to-file" << "-j"
+              << "--volume"
+              << "--next" << "--previous"
+              << "--toggle-visibility"
+              << "--add-file" << "--add-dir";
 }
-
 
 BuiltinCommandLineOption::~BuiltinCommandLineOption()
 {
 }
 
 // BuiltinCommandLineOption methods implementation
-bool BuiltinCommandLineOption::identify(const QString & str) const
+bool BuiltinCommandLineOption::identify(const QString &str) const
 {
-    if (str == "--next" ||
-        str == "--previous" ||
-        str == "--play" || str == "-p" ||
-        str == "--pause" || str == "-u" ||
-        str == "--play-pause" || str == "-t" ||
-        str == "--stop" || str == "-s" ||
-        str == "--volume" ||
-        str == "--jump-to-file" || str == "-j" ||
-        str == "--toggle-visibility" ||
-        str == "--add-file" ||
-        str == "--add-dir")
-        return true;
-    return false;
+    return m_options.contains(str);
 }
 
 const QString BuiltinCommandLineOption::helpString() const
 {
     return QString(
+               "-e, --enqueue        "+tr("Don't clear the playlist") + "\n" +
                "-p, --play           "+tr("Start playing current song")+"\n" +
                "-u, --pause          "+tr("Pause current song")+ "\n"
                "-t, --play-pause     "+tr("Pause if playing, play otherwise")+ "\n"
@@ -69,9 +67,27 @@ const QString BuiltinCommandLineOption::helpString() const
 }
 
 void BuiltinCommandLineOption::executeCommand(const QString &option_string,
-                                              const QStringList &args, MainWindow *mw)
+                                              const QStringList &args,
+                                              const QString &cwd,
+                                              MainWindow *mw)
 {
-    if (option_string == "--play" || option_string == "-p")
+    if(option_string == "--enqueue" || option_string == "-e" || option_string.isEmpty())
+    {
+        //QStringList args = commands.value(key);
+        if(args.isEmpty())
+            return;
+        QStringList full_path_list;
+        foreach(QString s, args)
+        {
+            if ((s.startsWith("/")) || (s.contains("://")))   //is it absolute path or url?
+                full_path_list << s;
+            else
+                full_path_list << cwd + "/" + s;
+        }
+        //clear playlist if option is empty
+        mw->setFileList(full_path_list, option_string.isEmpty());
+    }
+    else if (option_string == "--play" || option_string == "-p")
     {
         mw->play();
     }

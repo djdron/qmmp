@@ -80,7 +80,7 @@ public slots:
 
     void loadPlaylist();
     void savePlaylist();
-    void setFileList(const QStringList&);
+    void setFileList(const QStringList&, bool clear = true);
     void about();
 
     void updateSettings();
