@@ -26,6 +26,9 @@
 
 class GmeHelper;
 
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class DecoderGme : public Decoder
 {
 public:

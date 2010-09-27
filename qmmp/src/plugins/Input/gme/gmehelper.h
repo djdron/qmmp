@@ -26,6 +26,9 @@
 #include <gme/Music_Emu.h>
 #include <qmmp/fileinfo.h>
 
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class GmeHelper
 {
 public:
