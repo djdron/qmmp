@@ -30,7 +30,9 @@
 #include <qmmp/decoderfactory.h>
 #include <qmmp/fileinfo.h>
 
-
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class DecoderGmeFactory : public QObject, DecoderFactory
 {
     Q_OBJECT

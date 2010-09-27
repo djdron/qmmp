@@ -75,6 +75,7 @@ Qmmp - Qt-based multimedia player
 - libcdio >= 0.80 (Опционально)
 - libcddb >= 1.3.1 (Опционально)
 - faad2 >= 2.6.1 (Опционально)
+- game-music-emu >= 0.5.5 (Опционально)
 - libWildMidi >= 0.2.3.4 (Опционально)
 - libbs2b >= 3.0.0 (Опционально)
 - libprojectM >= 1.2.0 (Опционально)
