@@ -91,7 +91,8 @@ bool SoundCore::play(const QString &source, bool queue, qint64 offset)
     {
         m_pendingSources.removeAll(s);
         s->deleteLater();
-        m_handler->dispatch(Qmmp::NormalError);
+        if(m_handler->state() == Qmmp::Stopped || m_handler->state() == Qmmp::Buffering)
+            m_handler->dispatch(Qmmp::NormalError);
     }
     return ok;
 }
