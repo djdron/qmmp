@@ -132,7 +132,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="54"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">Не очищати список</translation>
+        <translation>Не очищати список</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="56"/>
@@ -1594,7 +1594,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="181"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Не запускати програму</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="183"/>
