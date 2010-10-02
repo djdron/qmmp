@@ -56,21 +56,31 @@ void PlayListBrowser::updateList()
     ui.listWidget->clear();
     foreach(PlayListModel *model, m_pl_manager->playLists())
         ui.listWidget->addItem(model->name());
-    int c = m_pl_manager->indexOf(m_pl_manager->selectedPlayList());
-    ui.listWidget->setCurrentRow (c);
-    QFont font = ui.listWidget->currentItem()->font();
-    font.setBold(true);
-    ui.listWidget->currentItem()->setFont(font);
+    ui.listWidget->setCurrentRow (m_pl_manager->selectedPlayListIndex());
+    //mark current playlist
+    int current = m_pl_manager->currentPlayListIndex();
+    QListWidgetItem *item = ui.listWidget->item(current);
+    if(item)
+    {
+        QFont font = item->font();
+        font.setBold(true);
+        item->setFont(font);
+    }
 }
 
 void PlayListBrowser::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
-    m_pl_manager->selectPlayList(ui.listWidget->row(item));
+    m_pl_manager->activatePlayList(ui.listWidget->row(item));
 }
 
 void PlayListBrowser::on_listWidget_itemChanged(QListWidgetItem *item)
 {
     m_pl_manager->playListAt(ui.listWidget->row(item))->setName(item->text());
+}
+
+void PlayListBrowser::on_listWidget_itemPressed (QListWidgetItem *item)
+{
+    m_pl_manager->selectPlayList(ui.listWidget->row(item));
 }
 
 void PlayListBrowser::rename()
