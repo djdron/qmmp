@@ -52,6 +52,16 @@ PlayListModel *PlayListManager::currentPlayList() const
     return m_current;
 }
 
+int PlayListManager::selectedPlayListIndex() const
+{
+    return indexOf(m_selected);
+}
+
+int PlayListManager::currentPlayListIndex() const
+{
+    return indexOf(m_current);
+}
+
 QList <PlayListModel *> PlayListManager::playLists() const
 {
     return m_models;
@@ -108,6 +118,11 @@ void PlayListManager::activatePlayList(PlayListModel *model)
         emit currentPlayListChanged(model, prev);
         emit playListsChanged();
     }
+}
+
+void PlayListManager::activatePlayList(int index)
+{
+    activatePlayList(playListAt(index));
 }
 
 PlayListModel *PlayListManager::createPlayList(const QString &name)
@@ -193,34 +208,34 @@ void PlayListManager::setShuffle(bool s)
     emit shuffleChanged(s);
 }
 
-int PlayListManager::count()
+int PlayListManager::count() const
 {
     return m_models.count();
 }
 
-int PlayListManager::indexOf(PlayListModel *model)
+int PlayListManager::indexOf(PlayListModel *model) const
 {
     return m_models.indexOf(model);
 }
 
-PlayListModel *PlayListManager::playListAt(int i)
+PlayListModel *PlayListManager::playListAt(int i) const
 {
     if(i >= 0 || i < m_models.count())
         return m_models.at(i);
     return 0;
 }
 
-bool PlayListManager::convertUnderscore()
+bool PlayListManager::convertUnderscore() const
 {
     return PlaylistSettings::instance()->convertUnderscore();
 }
 
-bool PlayListManager::convertTwenty()
+bool PlayListManager::convertTwenty() const
 {
     return PlaylistSettings::instance()->convertTwenty();
 }
 
-bool PlayListManager::useMetadata()
+bool PlayListManager::useMetadata() const
 {
     return PlaylistSettings::instance()->useMetadata();
 }

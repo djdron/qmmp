@@ -185,6 +185,8 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
     update();
     if(e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
+    else
+        QWidget::mousePressEvent(e);
 }
 
 void PlayListSelector::mouseReleaseEvent (QMouseEvent *e)
@@ -202,6 +204,27 @@ void PlayListSelector::mouseDoubleClickEvent (QMouseEvent *e)
         renamePlaylist();
     else
         QWidget::mouseDoubleClickEvent(e);
+}
+
+void PlayListSelector::mouseMoveEvent(QMouseEvent *e)
+{
+    QPoint mp = e->pos();
+    mp.rx() += m_offset;
+    int dest = -1;
+    for(int i = 0; i < m_rects.count(); ++i)
+    {
+        if(m_rects.at(i).contains(mp))
+        {
+            dest = i;
+            break;
+        }
+    }
+    if(dest == -1 || dest == m_pl_manager->selectedPlayListIndex())
+    {
+        QWidget::mouseMoveEvent(e);
+        return;
+    }
+    m_pl_manager->move(m_pl_manager->selectedPlayListIndex(), dest);
 }
 
 void PlayListSelector::resizeEvent (QResizeEvent *)

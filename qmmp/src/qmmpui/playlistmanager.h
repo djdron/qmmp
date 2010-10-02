@@ -56,30 +56,38 @@ public:
      */
     PlayListModel *currentPlayList() const;
     /*!
+     * Returns selected playlist index.
+     */
+    int selectedPlayListIndex() const;
+    /*!
+     * Returns active playlist index.
+     */
+    int currentPlayListIndex() const;
+    /*!
      * Returns a number of playlists.
      */
-    int count();
+    int count() const;
     /*!
      * Returns the index position of the playlist \b model.
      */
-    int indexOf(PlayListModel *model);
+    int indexOf(PlayListModel *model) const;
     /*!
      * Returns the playlist at index position \b i in the list.
      * \b i must be a valid index position in the list (i.e., 0 <= i < count()).
      */
-    PlayListModel *playListAt(int i);
+    PlayListModel *playListAt(int i) const;
     /*!
      * Returns state of the "Convert underscores to blanks" option (\b true - enabled, \b false - disabled).
      */
-    bool convertUnderscore();
+    bool convertUnderscore() const;
     /*!
      * Returns state of the "Convert %20 to blanks" option (\b true - enabled, \b false - disabled).
      */
-    bool convertTwenty();
+    bool convertTwenty() const;
     /*!
      * Returns the state of metadata usage (\b true - use, \b false - not use).
      */
-    bool useMetadata();
+    bool useMetadata() const;
     /*!
      * Returns title format string.
      */
@@ -178,6 +186,10 @@ public slots:
      * Sets current playlist to \b model.
      */
     void activatePlayList(PlayListModel *model);
+    /*!
+     * Sets current playlist by \b index.
+     */
+    void activatePlayList(int index);
     /*!
      * Creates new playlist with the given name \b name.
      */

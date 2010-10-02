@@ -1391,7 +1391,7 @@
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="69"/>
-        <location filename="../forms/playlistbrowser.ui" line="76"/>
+        <location filename="../forms/playlistbrowser.ui" line="79"/>
         <source>...</source>
         <translation>...</translation>
     </message>

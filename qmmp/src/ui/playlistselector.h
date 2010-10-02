@@ -53,6 +53,7 @@ private:
     void mousePressEvent (QMouseEvent *e);
     void mouseReleaseEvent (QMouseEvent *e);
     void mouseDoubleClickEvent (QMouseEvent *e);
+    void mouseMoveEvent(QMouseEvent *e);
     void resizeEvent (QResizeEvent *);
     void updateOffsets();
     void loadColors();
