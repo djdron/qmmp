@@ -60,7 +60,7 @@ public:
 
 private slots:
     void finish();
-    void updateEqSettings();
+    //void updateEqSettings();
     void updateReplayGainSettings();
 
 private:
@@ -68,7 +68,7 @@ private:
     void reset();
     void flush(bool = false);
     void addOffset();
-    qint64 produceSound(char *data, qint64 size, quint32 brate, int chan);
+    qint64 produceSound(char *data, qint64 size, quint32 brate);
     void sendMetaData();
     Output *createOutput();
     void prepareEffects(Decoder *d);
@@ -78,8 +78,6 @@ private:
     QList <Effect*> m_blockedEffects;
     Output *m_output;
 
-    bool m_useEq;
-    bool m_eqEnabled;
     bool m_done, m_finish, m_user_stop;
     uint m_bks;
     qint64 m_totalTime, m_seekTime;

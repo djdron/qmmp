@@ -5,10 +5,8 @@
 // warranty, or liability of any kind.
 //
 
-#ifndef   OUTPUT_H
-#define   OUTPUT_H
-
-class Output;
+#ifndef OUTPUT_H
+#define OUTPUT_H
 
 #include <QObject>
 #include <QThread>
@@ -23,6 +21,7 @@ class Output;
 #include "recycler.h"
 
 class QTimer;
+class QmmpSettings;
 
 /*! @brief The Output class provides the base interface class of audio outputs.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -167,6 +166,9 @@ protected:
      */
     virtual void resume();
 
+private slots:
+    void updateEqSettings();
+
 private:
     void run(); //thread run function
     void status();
@@ -189,10 +191,11 @@ private:
     bool m_userStop, m_pause;
     bool m_prev_pause;
     bool m_finish;
+    bool m_useEq, m_eqEnabled;
     qint64 m_totalWritten, m_currentMilliseconds;
     unsigned char *m_visBuffer;
     qint64 m_visBufferSize;
-
+    QmmpSettings *m_settings;
     static void checkFactories();
     static void registerFactory(OutputFactory *);
     //TODO use QMap instead
