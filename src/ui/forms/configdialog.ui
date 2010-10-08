@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>659</width>
-    <height>462</height>
+    <height>466</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1117,6 +1117,12 @@
             </item>
             <item row="0" column="2">
              <widget class="QPushButton" name="outputPreferencesButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
                <string>Preferences</string>
               </property>
@@ -1124,6 +1130,12 @@
             </item>
             <item row="0" column="3">
              <widget class="QPushButton" name="outputInformationButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="text">
                <string>Information</string>
               </property>
@@ -1139,20 +1151,62 @@
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>110</width>
+                <width>20</width>
                 <height>20</height>
                </size>
               </property>
              </spacer>
             </item>
-            <item row="1" column="0" colspan="5">
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_20">
+              <property name="text">
+               <string>Buffer size:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QSpinBox" name="bufferSizeSpinBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="suffix">
+               <string>ms</string>
+              </property>
+              <property name="minimum">
+               <number>500</number>
+              </property>
+              <property name="maximum">
+               <number>6000</number>
+              </property>
+              <property name="singleStep">
+               <number>50</number>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2" colspan="3">
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>266</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="0" colspan="3">
              <widget class="QCheckBox" name="softVolumeCheckBox">
               <property name="text">
                <string>Use software volume control</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="0" colspan="5">
+            <item row="3" column="0" colspan="2">
              <widget class="QCheckBox" name="use16BitCheckBox">
               <property name="text">
                <string>16-bit output</string>

@@ -188,13 +188,13 @@
         <translation>Nombre del archivo</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="382"/>
+        <location filename="../configdialog.cpp" line="383"/>
         <source>Artist</source>
         <translation>Intérprete</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="72"/>
-        <location filename="../configdialog.cpp" line="383"/>
+        <location filename="../configdialog.cpp" line="384"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
@@ -209,72 +209,72 @@
         <translation>Deshabilitado</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="228"/>
+        <location filename="../configdialog.cpp" line="229"/>
         <source>Transports</source>
         <translation>Transportes</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="239"/>
+        <location filename="../configdialog.cpp" line="240"/>
         <source>Decoders</source>
         <translation>Decodificadores</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="249"/>
+        <location filename="../configdialog.cpp" line="250"/>
         <source>Engines</source>
         <translation>Motores</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="384"/>
+        <location filename="../configdialog.cpp" line="385"/>
         <source>Title</source>
         <translation>Título</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="385"/>
+        <location filename="../configdialog.cpp" line="386"/>
         <source>Track number</source>
         <translation>Número de pista</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="386"/>
+        <location filename="../configdialog.cpp" line="387"/>
         <source>Two-digit track number</source>
         <translation>Número de pista con dos cifras</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="390"/>
+        <location filename="../configdialog.cpp" line="391"/>
         <source>Disc number</source>
         <translation>Número de disco</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="394"/>
+        <location filename="../configdialog.cpp" line="395"/>
         <source>Condition</source>
         <translation>Condición</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="387"/>
+        <location filename="../configdialog.cpp" line="388"/>
         <source>Genre</source>
         <translation>Género</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="389"/>
+        <location filename="../configdialog.cpp" line="390"/>
         <source>Composer</source>
         <translation>Compositor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="391"/>
+        <location filename="../configdialog.cpp" line="392"/>
         <source>File name</source>
         <translation>Nombre del archivo</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="392"/>
+        <location filename="../configdialog.cpp" line="393"/>
         <source>File path</source>
         <translation>Ruta del archivo</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="393"/>
+        <location filename="../configdialog.cpp" line="394"/>
         <source>Year</source>
         <translation>Año</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="388"/>
+        <location filename="../configdialog.cpp" line="389"/>
         <source>Comment</source>
         <translation>Comentario</translation>
     </message>
@@ -338,14 +338,14 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="660"/>
-        <location filename="../forms/configdialog.ui" line="1121"/>
+        <location filename="../forms/configdialog.ui" line="1127"/>
         <source>Preferences</source>
         <translation>Preferencias</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="673"/>
         <location filename="../forms/configdialog.ui" line="735"/>
-        <location filename="../forms/configdialog.ui" line="1128"/>
+        <location filename="../forms/configdialog.ui" line="1140"/>
         <source>Information</source>
         <translation>Información</translation>
     </message>
@@ -371,17 +371,17 @@
         <translation>Avanzado</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1158"/>
+        <location filename="../forms/configdialog.ui" line="1212"/>
         <source>16-bit output</source>
         <translation>Salida de 16 bits</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="195"/>
+        <location filename="../configdialog.cpp" line="196"/>
         <source>Archived skin</source>
         <translation>Piel archivada</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="215"/>
+        <location filename="../configdialog.cpp" line="216"/>
         <source>Unarchived skin</source>
         <translation>Piel no archivada</translation>
     </message>
@@ -391,17 +391,17 @@
         <translation>Conectividad</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="269"/>
+        <location filename="../configdialog.cpp" line="270"/>
         <source>Visualization</source>
         <translation>Visualización</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="259"/>
+        <location filename="../configdialog.cpp" line="260"/>
         <source>Effects</source>
         <translation>Efectos</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="279"/>
+        <location filename="../configdialog.cpp" line="280"/>
         <source>General</source>
         <translation>General</translation>
     </message>
@@ -488,7 +488,17 @@
         <translation>Salida:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1151"/>
+        <location filename="../forms/configdialog.ui" line="1163"/>
+        <source>Buffer size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1176"/>
+        <source>ms</source>
+        <translation type="unfinished">ms</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1205"/>
         <source>Use software volume control</source>
         <translation>Usar control de volumen por software</translation>
     </message>
@@ -588,12 +598,12 @@
         <translation>Convertir los %20 en espacios</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="473"/>
+        <location filename="../configdialog.cpp" line="475"/>
         <source>Select Skin Files</source>
         <translation>Seleccionar archivos de pieles</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="474"/>
+        <location filename="../configdialog.cpp" line="476"/>
         <source>Skin files</source>
         <translation>Archivos de pieles</translation>
     </message>
@@ -806,132 +816,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="283"/>
+        <location filename="../mainvisual.cpp" line="280"/>
         <source>Visualization Mode</source>
         <translation>Modo de visualización</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="286"/>
+        <location filename="../mainvisual.cpp" line="283"/>
         <source>Analyzer</source>
         <translation>Analizador</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="287"/>
+        <location filename="../mainvisual.cpp" line="284"/>
         <source>Scope</source>
         <translation>Osciloscopio</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="288"/>
+        <location filename="../mainvisual.cpp" line="285"/>
         <source>Off</source>
         <translation>Apagado</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="295"/>
+        <location filename="../mainvisual.cpp" line="292"/>
         <source>Analyzer Mode</source>
         <translation>Modo del analizador</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="295"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="299"/>
+        <location filename="../mainvisual.cpp" line="296"/>
         <source>Fire</source>
         <translation>Fuego</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="300"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Vertical Lines</source>
         <translation>Líneas verticales</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="301"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Lines</source>
         <translation>Líneas</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="302"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Bars</source>
         <translation>Barras</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="315"/>
+        <location filename="../mainvisual.cpp" line="312"/>
         <source>Peaks</source>
         <translation>Picos</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="319"/>
+        <location filename="../mainvisual.cpp" line="316"/>
         <source>Refresh Rate</source>
         <translation>Velocidad de actualización</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="322"/>
+        <location filename="../mainvisual.cpp" line="319"/>
         <source>50 fps</source>
         <translation>50 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="323"/>
+        <location filename="../mainvisual.cpp" line="320"/>
         <source>25 fps</source>
         <translation>25 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="324"/>
+        <location filename="../mainvisual.cpp" line="321"/>
         <source>10 fps</source>
         <translation>10 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="325"/>
+        <location filename="../mainvisual.cpp" line="322"/>
         <source>5 fps</source>
         <translation>5 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="332"/>
+        <location filename="../mainvisual.cpp" line="329"/>
         <source>Analyzer Falloff</source>
         <translation>Caída del analizador</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
-        <location filename="../mainvisual.cpp" line="349"/>
+        <location filename="../mainvisual.cpp" line="332"/>
+        <location filename="../mainvisual.cpp" line="346"/>
         <source>Slowest</source>
         <translation>Muy lenta</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="336"/>
-        <location filename="../mainvisual.cpp" line="350"/>
+        <location filename="../mainvisual.cpp" line="333"/>
+        <location filename="../mainvisual.cpp" line="347"/>
         <source>Slow</source>
         <translation>Lenta</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="337"/>
-        <location filename="../mainvisual.cpp" line="351"/>
+        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="348"/>
         <source>Medium</source>
         <translation>Media</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="338"/>
-        <location filename="../mainvisual.cpp" line="352"/>
+        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="349"/>
         <source>Fast</source>
         <translation>Rápida</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="339"/>
-        <location filename="../mainvisual.cpp" line="353"/>
+        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="350"/>
         <source>Fastest</source>
         <translation>Muy rápida</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="346"/>
+        <location filename="../mainvisual.cpp" line="343"/>
         <source>Peaks Falloff</source>
         <translation>Caída de picos</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="359"/>
+        <location filename="../mainvisual.cpp" line="356"/>
         <source>Background</source>
         <translation>Fondo</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="360"/>
+        <location filename="../mainvisual.cpp" line="357"/>
         <source>Transparent</source>
         <translation>Transparente</translation>
     </message>
