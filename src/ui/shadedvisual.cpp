@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,9 @@
 #include "inlines.h"
 #include "shadedvisual.h"
 
+#define VISUAL_NODE_SIZE 512 //samples
+#define VISUAL_BUFFER_SIZE (5*VISUAL_NODE_SIZE)
+
 ShadedVisual::ShadedVisual(QWidget *parent) : Visual(parent)
 {    
     m_skin = Skin::instance();
@@ -34,49 +37,52 @@ ShadedVisual::ShadedVisual(QWidget *parent) : Visual(parent)
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
+    m_left_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_right_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_buffer_at = 0;
     m_timer->setInterval(50);
     m_timer->start();
     clear();
 }
 
 ShadedVisual::~ShadedVisual()
-{}
+{
+    delete [] m_left_buffer;
+    delete [] m_right_buffer;
+}
 
 void ShadedVisual::add(unsigned char *data, qint64 size, int chan)
 {
     if (!m_timer->isActive ())
         return;
-    long len = size, cnt;
-    short *l = 0, *r = 0;
 
-    len /= chan;
-    len /= 2;
-    if ( len > 512 )
-        len = 512;
-    cnt = len;
-
-    if (chan == 2)
+    if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
-        l = new short[len];
-        r = new short[len];
-        stereo16_from_stereopcm16 ( l, r, (short *) data, cnt);
+        m_buffer_at -= VISUAL_NODE_SIZE;
+        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        return;
     }
-    else if (chan == 1)
+
+    int frames = qMin((int)size/chan >> 1, VISUAL_BUFFER_SIZE - m_buffer_at);
+
+    if (chan >= 2)
     {
-        l = new short[len];
-        mono16_from_monopcm16 (l, (short *) data, cnt);
+        stereo16_from_multichannel(m_left_buffer + m_buffer_at,
+                                   m_right_buffer + m_buffer_at,(short *) data, frames, chan);
     }
     else
-        len = 0;
+    {
+        memcpy(m_left_buffer + m_buffer_at, (short *) data, frames << 1);
+        memcpy(m_right_buffer + m_buffer_at, (short *) data, frames << 1);
+    }
 
-    if (len)
-        m_nodes.append (new VisualNode (l, r, len));
+    m_buffer_at += frames;
 }
 
 void ShadedVisual::clear()
 {
-    while (!m_nodes.isEmpty())
-        m_nodes.removeFirst();
+    m_buffer_at = 0;
     m_l = 0;
     m_r = 0;
     m_pixmap.fill(m_skin->getVisColor(0));
@@ -85,39 +91,28 @@ void ShadedVisual::clear()
 
 void ShadedVisual::timeout()
 {
-    VisualNode *node = 0;
     m_pixmap.fill(m_skin->getVisColor(0));
 
     mutex()->lock ();
-    VisualNode *prev = 0;
-    while ((!m_nodes.isEmpty()))
+    if(m_buffer_at < VISUAL_NODE_SIZE)
     {
-        node = m_nodes.takeFirst();
-        /*if ( node->offset > synctime )
-           break;*/
-
-        if (prev)
-            delete prev;
-        prev = node;
-    }
-    mutex()->unlock();
-    node = prev;
-
-    if (!node)
+        mutex()->unlock ();
         return;
-    process (node);
-    delete node;
+    }
+
+    process (m_left_buffer, m_right_buffer);
+    m_buffer_at -= VISUAL_NODE_SIZE;
+    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
     QPainter p(&m_pixmap);
     draw (&p);
+    mutex()->unlock ();
     update();
 }
 
-void ShadedVisual::process (VisualNode *node)
+void ShadedVisual::process (short *left, short *right)
 {
-    if (!node)
-        return;
-
-    int step = (node->length << 8)/74;
+    int step = (VISUAL_NODE_SIZE << 8)/74;
     int pos = 0;
     int l = 0;
     int r = 0;
@@ -127,17 +122,17 @@ void ShadedVisual::process (VisualNode *node)
     {
         pos += step;
 
-        if (node->left)
+        if (left)
         {
-            j_l = abs((node->left[pos >> 8] >> 12));
+            j_l = abs((left[pos >> 8] >> 12));
 
             if (j_l > 15)
                 j_l = 15;
             l = qMax(l, j_l);
         }
-        if (node->right)
+        if (right)
         {
-            j_r = abs((node->right[pos >> 8] >> 12));
+            j_r = abs((right[pos >> 8] >> 12));
             if (j_r > 15)
                 j_r = 15;
             r = qMax(r, j_r);

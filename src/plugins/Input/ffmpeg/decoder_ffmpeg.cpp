@@ -169,7 +169,7 @@ bool DecoderFFmpeg::initialize()
     }
 
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
-    m_output_buf = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE * 3 / 2 + QMMP_BUFFER_SIZE);
+    m_output_buf = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE * 3 / 2/* + QMMP_BUFFER_SIZE*/);
 
 #if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
     if(c->codec_id == CODEC_ID_SHORTEN) //ffmpeg bug workaround

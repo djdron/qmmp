@@ -115,6 +115,10 @@ public:
      */
     int sampleSize() const;
     /*!
+     * Returns buffer size in bytes.
+     */
+    qint64 bufferSize() const;
+    /*!
      * Creates selected output.
      * @param parent Parent object.
      * @return Output subclass object.

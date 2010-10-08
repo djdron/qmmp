@@ -38,12 +38,13 @@ int main(int argc, char *argv[])
 {
     QApplication a (argc, argv );
     a.setApplicationName("qmmp");
+
+    LXDESupport::load(); //load lxde icons
+
     QTranslator translator;
     QString locale = Qmmp::systemLanguageID();
     translator.load(QString(":/qmmp_") + locale);
     a.installTranslator(&translator);
-
-    LXDESupport::load(); //lxde icons
 
     QTranslator qt_translator;
     qt_translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qt_" + locale);

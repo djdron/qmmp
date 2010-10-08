@@ -132,10 +132,23 @@ public:
      * @param proxy Proxy url.
      */
     void setNetworkSettings(bool use_proxy, bool auth, const QUrl &proxy);
-
-
+    /*!
+     * Returns equalizer settings.
+     */
     EqSettings eqSettings() const;
+    /*!
+     * Changes equalizer settings to \b settings
+     */
     void setEqSettings(const EqSettings &settings);
+    /*!
+     * Returns buffer size in milliseconds
+     */
+    int bufferSize() const;
+    /*!
+     * Sets buffer size
+     * @param msec Buffer size in milliseconds
+     */
+    void setBufferSize(int msec);
     /*!
      * Returns a pointer to the QmmpSettings instance.
      */
@@ -186,6 +199,8 @@ private:
     QUrl m_proxy_url;
     //equalizer settings
     EqSettings m_eq_settings;
+    //buffer size
+    int m_buffer_size;
 
     static QmmpSettings* m_instance;
 

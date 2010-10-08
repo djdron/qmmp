@@ -9,6 +9,7 @@
 
 #include <QMutex>
 #include <QWaitCondition>
+#include "qmmp.h"
 
 class Buffer;
 
@@ -20,13 +21,19 @@ class Recycler
 public:
     /*!
      * Constructor.
-     * @param sz Preferd total size of the all buffers in bytes.
      */
-    Recycler(unsigned int sz);
+    Recycler();
     /*!
      * Destructor.
      */
     ~Recycler();
+    /*!
+     * Setups audio parameters of output interface.
+     * @param freq Sample rate.
+     * @param chan Number of channels.
+     * @param format Audio format
+     */
+    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
     /*!
      * Returns \b true if queue if full, otherwise returns \b false
      */
@@ -66,20 +73,20 @@ public:
     /*!
      * Returns size of all buffers in bytes.
      */
-    unsigned int size() const; // size in bytes
+    unsigned long size() const; // size in bytes
     /*!
     * Returns mutex pointer.
     */
     QMutex *mutex()
     {
-        return &mtx;
+        return &m_mtx;
     }
     /*!
      * Returns wait condition pointer.
      */
     QWaitCondition *cond()
     {
-        return &cnd;
+        return &m_cnd;
     }
     /*!
      * Returns \b true if the next buffer is used by output. Otherwise returns \b false.
@@ -87,10 +94,11 @@ public:
     bool blocked();
 
 private:
-    unsigned int buffer_count, add_index, done_index, current_count;
-    Buffer **buffers;
-    QMutex mtx;
-    QWaitCondition cnd;
+    unsigned int m_buffer_count, m_add_index, m_done_index, m_current_count;
+    unsigned long m_block_size;
+    Buffer **m_buffers;
+    QMutex m_mtx;
+    QWaitCondition m_cnd;
     Buffer *m_blocked;
 };
 

@@ -27,7 +27,7 @@
 class QTimer;
 class QPixmap;
 class Skin;
-class VisualNode;
+//class VisualNode;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -54,12 +54,14 @@ private slots:
     void updateSkin();
 
 private:
-    void process (VisualNode *node);
+    void process (short *l, short *r);
     void draw (QPainter *);
     Skin *m_skin;
     QTimer *m_timer;
     QPixmap m_pixmap;
-    QList <VisualNode*> m_nodes;
+    short *m_left_buffer;
+    short *m_right_buffer;
+    int m_buffer_at;
     double m_l, m_r;
     int m_ratio;
 

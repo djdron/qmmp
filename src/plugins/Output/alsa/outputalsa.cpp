@@ -185,7 +185,7 @@ void OutputALSA::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     qDebug("OutputALSA: can pause: %d", m_can_pause);
     Output::configure(freq, chan, format); //apply configuration
     //create alsa prebuffer;
-    m_prebuf_size = QMMP_BUFFER_SIZE + m_bits_per_frame * m_chunk_size / 8;
+    m_prebuf_size = /*QMMP_BUFFER_SIZE + */m_bits_per_frame * m_chunk_size / 8;
     m_prebuf = (uchar *)malloc(m_prebuf_size);
 }
 

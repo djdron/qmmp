@@ -83,7 +83,7 @@ private:
     bool m_done, m_finish, m_user_stop;
     uint m_bks;
     qint64 m_totalTime, m_seekTime;
-    qint64 m_output_at;
+    qint64 m_output_at, m_output_size;
     int m_bitrate, m_chan, m_bps;
     unsigned char *m_output_buf;
     Decoder *m_decoder;

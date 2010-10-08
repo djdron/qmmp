@@ -23,40 +23,17 @@
 #include <QWidget>
 #include <QResizeEvent>
 #include <qmmp/visual.h>
-#include "logscale.h"
 
-class QSettings;
 class QTimer;
 class QMenu;
 class QActionGroup;
-class Buffer;
-
-class VisualNode
-{
-public:
-    VisualNode(short *l, short *r, unsigned long n)
-            : left(l), right(r), length(n)
-    {
-        // left and right are allocated and then passed to this class
-        // the code that allocated left and right should give up all ownership
-    }
-
-    ~VisualNode()
-    {
-        delete [] left;
-        delete [] right;
-    }
-
-    short *left, *right;
-    long length;
-};
 
 class VisualBase
 {
 public:
     virtual ~VisualBase(){}
     virtual void clear() = 0;
-    virtual bool process(VisualNode *node) = 0;
+    virtual bool process(short *l) = 0;
     virtual void draw(QPainter *) = 0;
     virtual const QString name() = 0;
 };
@@ -96,7 +73,6 @@ private:
     VisualBase *m_vis;
     QPixmap m_pixmap;
     QPixmap m_bg;
-    QList <VisualNode*> m_nodes;
     QTimer *m_timer;
     bool m_playing;
     Skin *m_skin;
@@ -112,6 +88,9 @@ private:
     QAction *m_peaksAction;
     QAction *m_transparentAction;
     int m_ratio;
+    short *m_left_buffer;
+    short *m_right_buffer;
+    int m_buffer_at;
 };
 
 namespace mainvisual
@@ -123,7 +102,7 @@ public:
     virtual ~Analyzer();
 
     void clear();
-    bool process(VisualNode *node);
+    bool process(short *l);
     void draw(QPainter *p);
     const QString name() 
     {
@@ -149,7 +128,7 @@ public:
     Scope();
     virtual ~Scope();
     void clear();
-    bool process(VisualNode *node);
+    bool process(short *l);
     void draw(QPainter *p);
     const QString name() 
     {

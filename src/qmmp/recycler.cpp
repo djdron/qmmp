@@ -5,62 +5,91 @@
 //
 
 #include "recycler.h"
+#include "qmmpsettings.h"
+#include "audioparameters.h"
 #include "buffer.h"
 
-Recycler::Recycler (unsigned int sz)
-        : add_index (0), done_index (0), current_count (0)
+Recycler::Recycler ()
 {
-    buffer_count = sz / QMMP_BLOCK_SIZE;
-    if (buffer_count < 4)
-        buffer_count = 4;
-
-    buffers = new Buffer*[buffer_count];
-
-    for (unsigned int i = 0; i < buffer_count; i++)
-    {
-        buffers[i] = new Buffer;
-    }
+    m_add_index = 0;
+    m_done_index = 0;
+    m_current_count = 0;
+    m_buffer_count = 0;
     m_blocked = 0;
+    m_block_size = 0;
+    m_buffers = 0;
 }
-
 
 Recycler::~Recycler()
 {
-    for (unsigned int i = 0; i < buffer_count; i++)
+    for (unsigned int i = 0; i < m_buffer_count; i++)
     {
-        delete buffers[i];
-        buffers[i] = 0;
+        delete m_buffers[i];
+        m_buffers[i] = 0;
     }
-    delete [] buffers;
+    if(m_buffer_count)
+        delete [] m_buffers;
     m_blocked = 0;
 }
 
+void Recycler::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+{
+    unsigned long block_size = AudioParameters::sampleSize(format) * chan * QMMP_BLOCK_FRAMES;
+    unsigned int buffer_count = freq * QmmpSettings::instance()->bufferSize() / 1000 / QMMP_BLOCK_FRAMES;
+    if(block_size == m_block_size && buffer_count == m_buffer_count)
+        return;
+
+    for (unsigned int i = 0; i < m_buffer_count; i++)
+    {
+        delete m_buffers[i];
+        m_buffers[i] = 0;
+    }
+    if(m_buffer_count)
+        delete [] m_buffers;
+    m_add_index = 0;
+    m_done_index = 0;
+    m_current_count = 0;
+    m_blocked = 0;
+    m_block_size = block_size;
+    m_buffer_count = buffer_count;
+
+
+    if (m_buffer_count < 4)
+        m_buffer_count = 4;
+
+    m_buffers = new Buffer*[m_buffer_count];
+
+    for (unsigned int i = 0; i < m_buffer_count; i++)
+    {
+        m_buffers[i] = new Buffer(m_block_size);
+    }
+}
 
 bool Recycler::full() const
 {
-    return current_count == buffer_count;
+    return m_current_count == m_buffer_count;
 }
 
 bool Recycler::blocked()
 {
-    return buffers[add_index] == m_blocked;
+    return m_buffers[m_add_index] == m_blocked;
 }
 
 
 bool Recycler::empty() const
 {
-    return current_count == 0;
+    return m_current_count == 0;
 }
 
 
 int Recycler::available() const
 {
-    return buffer_count - current_count;
+    return m_buffer_count - m_current_count;
 }
 
 int Recycler::used() const
 {
-    return current_count;
+    return m_current_count;
 }
 
 
@@ -68,24 +97,23 @@ Buffer *Recycler::get()
 {
     if (full())
         return 0;
-    return buffers[add_index];
+    return m_buffers[m_add_index];
 }
-
 
 void Recycler::add()
 {
-    if(buffers[add_index]->nbytes)
+    if(m_buffers[m_add_index]->nbytes)
     {
-        add_index = (add_index + 1) % buffer_count;
-        current_count++;
+        m_add_index = (m_add_index + 1) % m_buffer_count;
+        m_current_count++;
     }
 }
 
 Buffer *Recycler::next()
 {
-    if(current_count)
+    if(m_current_count)
     {
-        m_blocked = buffers[done_index];
+        m_blocked = m_buffers[m_done_index];
         return m_blocked;
     }
     return 0;
@@ -94,21 +122,21 @@ Buffer *Recycler::next()
 void Recycler::done()
 {
     m_blocked = 0;
-    if (current_count)
+    if (m_current_count)
     {
-        current_count--;
-        done_index = (done_index + 1) % buffer_count;
+        m_current_count--;
+        m_done_index = (m_done_index + 1) % m_buffer_count;
     }
 }
 
 void Recycler::clear()
 {
-    current_count = 0;
-    add_index = 0;
-    done_index = 0;
+    m_current_count = 0;
+    m_add_index = 0;
+    m_done_index = 0;
 }
 
-unsigned int Recycler::size() const
+unsigned long Recycler::size() const
 {
-    return buffer_count * QMMP_BLOCK_SIZE;
+    return m_buffer_count * m_block_size;
 }
