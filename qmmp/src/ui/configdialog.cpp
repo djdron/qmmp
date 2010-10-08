@@ -142,6 +142,7 @@ void ConfigDialog::readSettings()
      //audio
     ui.softVolumeCheckBox->setChecked(gs->useSoftVolume());
     ui.use16BitCheckBox->setChecked(gs->use16BitOutput());
+    ui.bufferSizeSpinBox->setValue(gs->bufferSize());
 }
 
 void ConfigDialog::on_contentsWidget_currentItemChanged (QListWidgetItem *current,
@@ -452,6 +453,7 @@ void ConfigDialog::saveSettings()
                               ui.defaultGainDoubleSpinBox->value(),
                               ui.clippingCheckBox->isChecked());
     gs->setAudioSettings(ui.softVolumeCheckBox->isChecked(), ui.use16BitCheckBox->isChecked());
+    gs->setBufferSize(ui.bufferSizeSpinBox->value());
     QList <OutputFactory *> *outputs = Output::factories();
     if(ui.outputComboBox->currentIndex() >= 0 && outputs->count())
         Output::setCurrentFactory(outputs->at(ui.outputComboBox->currentIndex()));
