@@ -7,8 +7,7 @@
 #ifndef   __buffer_h
 #define   __buffer_h
 
-#define QMMP_BLOCK_SIZE (2048*6) //512*4*6
-#define QMMP_BUFFER_SIZE (QMMP_BLOCK_SIZE*32)
+#define QMMP_BLOCK_FRAMES 512
 
 /*! @brief Audio buffer class.
  * @author Brad Hughes <bhughes@trolltech.com>
@@ -18,13 +17,14 @@ class Buffer
 public:
     /*!
      * Constructs an empty buffer object.
+     * @param sz Size in bytes;
      */
-    Buffer()
+    Buffer(unsigned long sz)
     {
-        data = new unsigned char[QMMP_BLOCK_SIZE];
+        data = new unsigned char[sz];
         nbytes = 0;
         rate = 0;
-        size = QMMP_BLOCK_SIZE;
+        size = sz;
     }
     /*!
      * Destructor.

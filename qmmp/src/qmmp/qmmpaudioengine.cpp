@@ -42,9 +42,10 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
         : AbstractEngine(parent), m_factory(0), m_output(0),
         m_useEq(false), m_eqEnabled(false)
 {
-    m_output_buf = new unsigned char[QMMP_BUFFER_SIZE];
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
-    m_bks = QMMP_BLOCK_SIZE;
+    m_output_buf = 0;
+    m_output_size = 0;
+    m_bks = 0;
     m_decoder = 0;
     m_output = 0;
     m_replayGain = new ReplayGain;
@@ -289,9 +290,9 @@ void QmmpAudioEngine::stop()
 
 qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int chan)
 {
+    Buffer *b = m_output->recycler()->get();
     uint sz = size < m_bks ? size : m_bks;
     m_replayGain->applyReplayGain(data, sz);
-    Buffer *b = m_output->recycler()->get();
     memcpy(b->data, data, sz);
     b->nbytes = sz;
     b->rate = brate;
@@ -380,8 +381,7 @@ void QmmpAudioEngine::run()
             m_output_at = 0;
         }
 
-        len = m_decoder->read((char *)(m_output_buf + m_output_at),
-                              QMMP_BUFFER_SIZE - m_output_at);
+        len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
 
         if (len > 0)
         {
@@ -442,7 +442,7 @@ void QmmpAudioEngine::run()
                     delete m_output;
                     m_output = createOutput();
                     if(m_output)
-                    {
+                    { 
                         m_output->start();
                         sendMetaData();
                         addOffset(); //offset
@@ -570,6 +570,11 @@ Output *QmmpAudioEngine::createOutput()
         return false;
     }
     output->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
+    if(m_output_buf)
+        delete [] m_output_buf;
+    m_bks = QMMP_BLOCK_FRAMES * m_ap.channels() * m_ap.sampleSize();
+    m_output_size = m_bks * 4;
+    m_output_buf = new unsigned char[m_output_size];
     return output;
 }
 

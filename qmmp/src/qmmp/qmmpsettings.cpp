@@ -56,6 +56,7 @@ QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
         m_eq_settings.setGain(i, settings.value("Equalizer/band_"+ QString("%1").arg(i), 0).toDouble());
     m_eq_settings.setPreamp(settings.value("Equalizer/preamp", 0).toDouble());
     m_eq_settings.setEnabled(settings.value("Equalizer/enabled", true).toBool());
+    m_buffer_size = settings.value("Output/buffer_size", 500).toInt();
 }
 
 QmmpSettings::~QmmpSettings()
@@ -169,6 +170,16 @@ void QmmpSettings::setEqSettings(const EqSettings &settings)
     emit eqSettingsChanged();
 }
 
+int QmmpSettings:: bufferSize() const
+{
+    return m_buffer_size;
+}
+
+void QmmpSettings::setBufferSize(int msec)
+{
+    m_buffer_size = msec;
+}
+
 void QmmpSettings::sync()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
@@ -198,6 +209,8 @@ void QmmpSettings::sync()
         settings.setValue("Equalizer/band_"+ QString("%1").arg(i), m_eq_settings.gain(i));
     settings.setValue("Equalizer/preamp", m_eq_settings.preamp());
     settings.setValue("Equalizer/enabled", m_eq_settings.isEnabled());
+    //buffer size
+    settings.setValue("Output/buffer_size", m_buffer_size);
 }
 
 QmmpSettings* QmmpSettings::instance()

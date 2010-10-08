@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,12 +24,9 @@
 #include <QFile>
 #include <math.h>
 #include <stdint.h>
-
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
-#include "QtDebug"
-
 #include "decoder_wavpack.h"
 #include "cueparser.h"
 
@@ -107,7 +104,7 @@ bool DecoderWavPack::initialize()
     m_freq = WavpackGetSampleRate (m_context);
     m_bps = WavpackGetBitsPerSample (m_context);
     if (!m_output_buf)
-        m_output_buf = new int32_t[QMMP_BUFFER_SIZE/4];
+        m_output_buf = new int32_t[QMMP_BLOCK_FRAMES * m_chan];
     switch(m_bps)
     {
     case 8:
@@ -249,7 +246,8 @@ void DecoderWavPack::next()
 
 qint64 DecoderWavPack::wavpack_decode(char *data, qint64 size)
 {
-    ulong len = WavpackUnpackSamples (m_context, m_output_buf, size / m_chan / 4);
+    ulong len = qMin(QMMP_BLOCK_FRAMES, (int)size / m_chan / 4);
+    len = WavpackUnpackSamples (m_context, m_output_buf, len);
     //convert 32 to 16
     qint8 *data8 = (qint8 *)data;
     qint16 *data16 = (qint16 *)data;

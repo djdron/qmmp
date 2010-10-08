@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,35 +23,11 @@
 #include <QWidget>
 #include <QResizeEvent>
 #include <qmmp/visual.h>
-#include <QDir>
 
-class QSettings;
 class QTimer;
 class QMenu;
 class QActionGroup;
 
-class Buffer;
-
-
-class VisualNode
-{
-public:
-    VisualNode(short *l, short *r, unsigned long n)
-            : left(l), right(r), length(n)
-    {
-        // left and right are allocated and then passed to this class
-        // the code that allocated left and right should give up all ownership
-    }
-
-    ~VisualNode()
-    {
-        delete [] left;
-        delete [] right;
-    }
-
-    short *left, *right;
-    long length;
-};
 
 class Analyzer : public Visual
 {
@@ -74,11 +50,10 @@ public slots:
     void timeout();
 
 private:
-    bool process(VisualNode *node);
+    void process(short *l, short *r);
     void draw(QPainter *p);
     QPixmap m_pixmap;
     QPixmap m_bg;
-    QList <VisualNode*> m_nodes;
     QTimer *m_timer;
     int m_fps;
     double m_intern_vis_data[75];
@@ -86,6 +61,9 @@ private:
     double m_peaks_falloff;
     double m_analyzer_falloff;
     bool m_show_peaks;
+    short *m_left_buffer;
+    short *m_right_buffer;
+    int m_buffer_at;
     //colors
     QColor m_color1;
     QColor m_color2;

@@ -39,7 +39,7 @@ static inline void s32_to_s16(qint32 *in, qint16 *out, qint64 samples)
     return;
 }
 
-Output::Output (QObject* parent) : QThread (parent), m_recycler (QMMP_BUFFER_SIZE)
+Output::Output (QObject* parent) : QThread (parent)
 {
     m_handler = StateHandler::instance();
     m_frequency = 0;
@@ -68,25 +68,15 @@ void Output::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     formatNames.insert(Qmmp::PCM_S16LE, "s16le");
     formatNames.insert(Qmmp::PCM_S24LE, "s24le");
     formatNames.insert(Qmmp::PCM_S32LE, "s32le");
-    qDebug("Output: %d Hz, %d ch, %s", freq, chan, qPrintable(formatNames.value(format)));
+    qDebug("Output: [%s] %d Hz, %d ch, %s", qPrintable(Output::currentFactory()->properties().shortName),
+           freq, chan, qPrintable(formatNames.value(format)));
     m_bytesPerMillisecond = freq * chan * AudioParameters::sampleSize(format) / 1000;
+    m_recycler.configure(freq, chan, format); //calculate output buffer size
     //visual buffer
     if(m_visBuffer)
-    {
         delete [] m_visBuffer;
-        m_visBuffer = 0;
-        m_visBufferSize = 0;
-    }
-    if(format == Qmmp::PCM_S8)
-    {
-        m_visBufferSize = QMMP_BLOCK_SIZE * 2;
-        m_visBuffer = new unsigned char [m_visBufferSize];
-    }
-    else if(format == Qmmp::PCM_S24LE || format == Qmmp::PCM_S32LE)
-    {
-        m_visBufferSize = QMMP_BLOCK_SIZE / 2;
-        m_visBuffer = new unsigned char [m_visBufferSize];
-    }
+    m_visBufferSize = QMMP_BLOCK_FRAMES * 2 * chan; //16-bit samples
+    m_visBuffer = new unsigned char [m_visBufferSize];
 }
 
 void Output::pause()
@@ -158,6 +148,11 @@ Qmmp::AudioFormat Output::format() const
 int Output::sampleSize() const
 {
     return AudioParameters::sampleSize(m_format);
+}
+
+qint64 Output::bufferSize() const
+{
+    return m_recycler.size();
 }
 
 void Output::suspend()

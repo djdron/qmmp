@@ -31,6 +31,9 @@
 #include "inlines.h"
 #include "mainvisual.h"
 
+#define VISUAL_NODE_SIZE 512 //samples
+#define VISUAL_BUFFER_SIZE (5*VISUAL_NODE_SIZE)
+
 
 MainVisual *MainVisual::m_instance = 0;
 
@@ -49,9 +52,10 @@ MainVisual::MainVisual (QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSettings()));
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
-    m_nodes.clear();
     createMenu();
     readSettings();
+    m_left_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_buffer_at = 0;
     m_instance = this;
 }
 
@@ -67,8 +71,7 @@ MainVisual::~MainVisual()
     else
         settings.setValue("Visualization/type", "None");
     settings.setValue("Visualization/rate", 1000/m_timer->interval());
-    while (!m_nodes.isEmpty())
-        delete m_nodes.takeFirst();
+    delete [] m_left_buffer;
     m_instance = 0;
 }
 
@@ -89,8 +92,7 @@ void MainVisual::setVisual (VisualBase *newvis)
 
 void MainVisual::clear()
 {
-    while (!m_nodes.isEmpty())
-        delete m_nodes.takeFirst();
+    m_buffer_at = 0;
     if (m_vis)
         m_vis->clear();
     m_pixmap = m_bg;
@@ -102,52 +104,47 @@ void MainVisual::add (unsigned char *data, qint64 size, int chan)
     if (!m_timer->isActive () || !m_vis)
         return;
 
-    short *l = 0, *r = 0;
-    qint64 samples = size/chan >> 1;
-    int frames = samples/512;
-    for (int i = 0; i < frames; ++i)
+    if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
-        l = new short[512];
-        r = 0;
-        if (chan == 2)
-        {
-            r = new short[512];
-            stereo16_from_stereopcm16 (l, r, (short *) (data + i*4*512), 512);
-        }
-        else if (chan == 1)
-            mono16_from_monopcm16 (l, (short *) (data + i*2*512), 512);
-        else
-        {
-            r = new short[512];
-            stereo16_from_multichannel(l, r, (short *) (data + i*2*chan*512), 512, chan);
-        }
-        m_nodes.append (new VisualNode (l, r, 512));
+        m_buffer_at -= VISUAL_NODE_SIZE;
+        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        return;
     }
+
+    int frames = qMin((int)size/chan >> 1, VISUAL_BUFFER_SIZE - m_buffer_at);
+
+    if (chan >= 2)
+    {
+        mono16_from_multichannel(m_left_buffer + m_buffer_at, (short *) data, frames, chan);
+    }
+    else
+    {
+        memcpy(m_left_buffer + m_buffer_at, (short *) data, frames << 1);
+    }
+
+    m_buffer_at += frames;
 }
 
 void MainVisual::timeout()
 {
-    VisualNode *node = 0;
     mutex()->lock ();
 
-    while(m_nodes.size() > 5)
+    if(m_buffer_at < VISUAL_NODE_SIZE)
     {
-        delete m_nodes.takeFirst();
+        mutex()->unlock ();
+        return;
     }
 
-    if(!m_nodes.isEmpty())
-        node = m_nodes.takeFirst();
-
-    mutex()->unlock();
-
-    if (m_vis && node)
+    if (m_vis)
     {
-        m_vis->process (node);
+        m_vis->process (m_left_buffer);
+        m_buffer_at -= VISUAL_NODE_SIZE;
+        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
         m_pixmap = m_bg;
         QPainter p(&m_pixmap);
         m_vis->draw (&p);
-        delete node;
     }
+    mutex()->unlock ();
     update();
 }
 
@@ -447,14 +444,14 @@ void Analyzer::clear()
     }
 }
 
-bool Analyzer::process (VisualNode *node)
+bool Analyzer::process (short *l)
 {
     static fft_state *state = 0;
     if (!state)
         state = fft_init();
     short dest[256];
 
-    const int xscale_long[] =
+    static const int xscale_long[] =
     {
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
         19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34,
@@ -463,19 +460,14 @@ bool Analyzer::process (VisualNode *node)
         114, 122, 131, 140, 150, 161, 172, 184, 255
     };
 
-    const int xscale_short[] =
+    static const int xscale_short[] =
     {
         0, 1, 2, 3, 4, 5, 6, 7, 8, 11, 15, 20, 27,
         36, 47, 62, 82, 107, 141, 184, 255
     };
 
-    if (node)
-    {
-        //i = node->length;
-        calc_freq (dest, node->left);
-    }
-    else
-        return false;
+    calc_freq (dest, l);
+
     const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
     int max = m_lines ? 75 : 19, y, j;
 
@@ -587,18 +579,15 @@ void Scope::clear()
 Scope::~Scope()
 {}
 
-bool Scope::process(VisualNode *node)
+bool Scope::process(short *l)
 {
-    if (!node)
-        return false;
-
-    int step = (node->length << 8)/76;
+    int step = (VISUAL_NODE_SIZE << 8)/76;
     int pos = 0;
 
     for (int i = 0; i < 76; ++i)
     {
         pos += step;
-        m_intern_vis_data[i] = (node->left[pos >> 8] >> 12);
+        m_intern_vis_data[i] = (l[pos >> 8] >> 12);
 
         if (m_intern_vis_data[i] > 4)
             m_intern_vis_data[i] = 4;

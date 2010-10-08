@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Ilya Kotov                                      *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,6 +32,8 @@
 #include "inlines.h"
 #include "analyzer.h"
 
+#define VISUAL_NODE_SIZE 512 //samples
+#define VISUAL_BUFFER_SIZE (5*VISUAL_NODE_SIZE)
 
 Analyzer::Analyzer (QWidget *parent)
         : Visual (parent), m_fps (20)
@@ -42,8 +44,9 @@ Analyzer::Analyzer (QWidget *parent)
     m_pixmap = QPixmap (75,20);
     m_timer = new QTimer (this);
     connect(m_timer, SIGNAL (timeout()), this, SLOT (timeout()));
-    m_nodes.clear();
-
+    m_left_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_right_buffer = new short[VISUAL_BUFFER_SIZE];
+    m_buffer_at = 0;
     clear();
     setWindowTitle (tr("Qmmp Analyzer"));
 
@@ -66,14 +69,13 @@ Analyzer::Analyzer (QWidget *parent)
 
 Analyzer::~Analyzer()
 {
-    while (!m_nodes.isEmpty())
-        m_nodes.removeFirst();
+    delete [] m_left_buffer;
+    delete [] m_right_buffer;
 }
 
 void Analyzer::clear()
 {
-    while (!m_nodes.isEmpty())
-        m_nodes.removeFirst();
+    m_buffer_at = 0;
     for (int i = 0; i< 75; ++i)
     {
         m_intern_vis_data[i] = 0;
@@ -87,50 +89,44 @@ void Analyzer::add (unsigned char *data, qint64 size, int chan)
     if (!m_timer->isActive ())
         return;
 
-    short *l = 0, *r = 0;
-    qint64 samples = size/chan >> 1;
-    int frames = samples/512;
-    for (int i = 0; i < frames; ++i)
+    if(VISUAL_BUFFER_SIZE == m_buffer_at)
     {
-        l = new short[512];
-        r = 0;
-        if (chan == 2)
-        {
-            r = new short[512];
-            stereo16_from_stereopcm16 (l, r, (short *) (data + i*4*512), 512);
-        }
-        else if (chan == 1)
-            mono16_from_monopcm16 (l, (short *) (data + i*2*512), 512);
-        else
-        {
-            r = new short[512];
-            stereo16_from_multichannel(l, r, (short *) (data + i*2*chan*512), 512, chan);
-        }
-        m_nodes.append (new VisualNode (l, r, 512));
+        m_buffer_at -= VISUAL_NODE_SIZE;
+        memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+        return;
     }
+
+    int frames = qMin((int)size/chan >> 1, VISUAL_BUFFER_SIZE - m_buffer_at);
+
+    if (chan >= 2)
+    {
+        stereo16_from_multichannel(m_left_buffer + m_buffer_at,
+                                   m_right_buffer + m_buffer_at,(short *) data, frames, chan);
+    }
+    else
+    {
+        memcpy(m_left_buffer + m_buffer_at, (short *) data, frames << 1);
+        memcpy(m_right_buffer + m_buffer_at, (short *) data, frames << 1);
+    }
+
+    m_buffer_at += frames;
 }
 
 void Analyzer::timeout()
 {
-    VisualNode *node = 0;
     mutex()->lock ();
-
-    while(m_nodes.size() > 5)
+    if(m_buffer_at < VISUAL_NODE_SIZE)
     {
-        delete m_nodes.takeFirst();
+        mutex()->unlock ();
+        return;
     }
 
-    if(!m_nodes.isEmpty())
-        node = m_nodes.takeFirst();
-
-    mutex()->unlock();
-
-    if (node)
-    {
-        process (node);
-        delete node;
-        update();
-    }
+    process (m_left_buffer, m_right_buffer);
+    m_buffer_at -= VISUAL_NODE_SIZE;
+    memmove(m_left_buffer, m_left_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+    memmove(m_right_buffer, m_right_buffer + VISUAL_NODE_SIZE, m_buffer_at << 1);
+    mutex()->unlock ();
     update();
 }
 
@@ -159,7 +155,7 @@ void Analyzer::closeEvent (QCloseEvent *event)
     Visual::closeEvent(event); //removes visualization before class deleting
 }
 
-bool Analyzer::process (VisualNode *node)
+void Analyzer::process (short *left, short *right)
 {
     static fft_state *state = 0;
     if (!state)
@@ -174,15 +170,9 @@ bool Analyzer::process (VisualNode *node)
             36, 47, 62, 82, 107, 141, 184, 255
         };
 
-    if (node)
-    {
-        //i = node->length;
-        calc_freq (dest_l, node->left);
-        if (node->right)
-            calc_freq (dest_r, node->right);
-    }
-    else
-        return false;
+    calc_freq (dest_l, left);
+    calc_freq (dest_r, right);
+
     const double y_scale = 3.60673760222;   /* 20.0 / log(256) */
     int yl,yr, j;
 
@@ -194,16 +184,14 @@ bool Analyzer::process (VisualNode *node)
         {
             if (dest_l[j] > yl)
                 yl = dest_l[j];
-            if (dest_r[j] > yr && node->right)
+            if (dest_r[j] > yr)
                 yr = dest_r[j];
         }
         yl >>= 7;
+        yr >>= 7;
         int magnitude_l = 0;
         int magnitude_r = 0;
-        if (node->right)
-        {
-            yr >>= 7;
-        }
+
         if (yl)
         {
             magnitude_l = int(log (yl) * y_scale);
@@ -212,7 +200,7 @@ bool Analyzer::process (VisualNode *node)
             if (magnitude_l < 0)
                 magnitude_l = 0;
         }
-        if (yr && node->right)
+        if (yr)
         {
             magnitude_r = int(log (yr) * y_scale);
             if (magnitude_r > 15)
@@ -224,27 +212,20 @@ bool Analyzer::process (VisualNode *node)
         m_intern_vis_data[i] -= m_analyzer_falloff;
         m_intern_vis_data[i] = magnitude_l > m_intern_vis_data[i]
                                ? magnitude_l : m_intern_vis_data[i];
-        if (node->right)
-        {
-            m_intern_vis_data[37-i] -= m_analyzer_falloff;
-            m_intern_vis_data[37-i] = magnitude_r > m_intern_vis_data[37-i]
-                                      ? magnitude_r : m_intern_vis_data[37-i];
-        }
+
+        m_intern_vis_data[37-i] -= m_analyzer_falloff;
+        m_intern_vis_data[37-i] = magnitude_r > m_intern_vis_data[37-i]
+                                  ? magnitude_r : m_intern_vis_data[37-i];
 
         if (m_show_peaks)
         {
             m_peaks[i] -= m_peaks_falloff;
-            m_peaks[i] = magnitude_l > m_peaks[i]
-                         ? magnitude_l : m_peaks[i];
-            if (node->right)
-            {
-                m_peaks[37-i] -= m_peaks_falloff;
-                m_peaks[37-i] = magnitude_r > m_peaks[37-i]
-                                ? magnitude_r : m_peaks[37-i];
-            }
+            m_peaks[i] = magnitude_l > m_peaks[i] ? magnitude_l : m_peaks[i];
+
+            m_peaks[37-i] -= m_peaks_falloff;
+            m_peaks[37-i] = magnitude_r > m_peaks[37-i] ? magnitude_r : m_peaks[37-i];
         }
     }
-    return true;
 }
 
 void Analyzer::draw (QPainter *p)
