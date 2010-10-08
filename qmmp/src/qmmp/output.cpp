@@ -9,13 +9,17 @@
 #include <QStringList>
 #include <QApplication>
 #include <QTimer>
+#include <stdio.h>
 #include "audioparameters.h"
+#include "qmmpsettings.h"
 #include "buffer.h"
-#include "output.h"
 #include "volumecontrol.h"
 #include "qmmp.h"
+#include "output.h"
 
-#include <stdio.h>
+extern "C" {
+#include "equ/iir.h"
+}
 
 //static functions
 static inline void s8_to_s16(qint8 *in, qint16 *out, qint64 samples)
@@ -56,6 +60,11 @@ Output::Output (QObject* parent) : QThread (parent)
     m_skip = false;
     m_pause = false;
     m_prev_pause = false;
+    m_useEq = false;
+    m_eqEnabled = false;
+    m_settings = QmmpSettings::instance();
+    connect(m_settings,SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
+    updateEqSettings();
 }
 
 void Output::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
@@ -77,6 +86,9 @@ void Output::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
         delete [] m_visBuffer;
     m_visBufferSize = QMMP_BLOCK_FRAMES * 2 * chan; //16-bit samples
     m_visBuffer = new unsigned char [m_visBufferSize];
+    m_useEq = m_eqEnabled && m_frequency && m_format == Qmmp::PCM_S16LE;
+    if(m_frequency)
+        init_iir(m_frequency);
 }
 
 void Output::pause()
@@ -294,6 +306,8 @@ void Output::run()
         if (b)
         {
             dispatchVisual(b);
+            if (m_useEq)
+                iir((void*) b->data, b->nbytes, m_channels);
             if (SoftwareVolume::instance())
                 SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
             l = 0;
@@ -353,6 +367,24 @@ void Output::status()
         dispatch(m_currentMilliseconds, m_kbps,
                  m_frequency, AudioParameters::sampleSize(m_format)*8, m_channels);
     }
+}
+
+void Output::updateEqSettings()
+{
+    mutex()->lock();
+    m_eqEnabled = m_settings->eqSettings().isEnabled();
+    double preamp = m_settings->eqSettings().preamp();
+    set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+    set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
+    for(int i = 0; i < 10; ++i)
+    {
+        double value =  m_settings->eqSettings().gain(i);
+        set_gain(i,0, 0.03*value+0.000999999*value*value);
+        set_gain(i,1, 0.03*value+0.000999999*value*value);
+    }
+    if(isRunning())
+        m_useEq = m_eqEnabled && m_format == Qmmp::PCM_S16LE;
+    mutex()->unlock();
 }
 
 // static methods

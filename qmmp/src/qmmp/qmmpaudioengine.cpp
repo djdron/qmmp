@@ -33,14 +33,9 @@
 #include "qmmpaudioengine.h"
 #include "metadatamanager.h"
 
-extern "C"
-{
-#include "equ/iir.h"
-}
 
 QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
-        : AbstractEngine(parent), m_factory(0), m_output(0),
-        m_useEq(false), m_eqEnabled(false)
+        : AbstractEngine(parent), m_factory(0), m_output(0)
 {
     qRegisterMetaType<Qmmp::State>("Qmmp::State");
     m_output_buf = 0;
@@ -51,8 +46,6 @@ QmmpAudioEngine::QmmpAudioEngine(QObject *parent)
     m_replayGain = new ReplayGain;
     m_settings = QmmpSettings::instance();
     connect(m_settings,SIGNAL(replayGainSettingsChanged()), SLOT(updateReplayGainSettings()));
-    connect(m_settings,SIGNAL(eqSettingsChanged()), SLOT(updateEqSettings()));
-    updateEqSettings();
     updateReplayGainSettings();
     reset();
     m_instance = this;
@@ -288,7 +281,7 @@ void QmmpAudioEngine::stop()
         delete m_effects.takeFirst();
 }
 
-qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int chan)
+qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate)
 {
     Buffer *b = m_output->recycler()->get();
     uint sz = size < m_bks ? size : m_bks;
@@ -300,8 +293,6 @@ qint64 QmmpAudioEngine::produceSound(char *data, qint64 size, quint32 brate, int
     {
         effect->applyEffect(b);
     }
-    if (m_useEq)
-        iir((void*) b->data, b->nbytes, chan);
     size -= sz;
     memmove(data, data + sz, size);
     m_output->recycler()->add();
@@ -317,24 +308,6 @@ void QmmpAudioEngine::finish()
         m_output->mutex()->unlock();
     }
     emit playbackFinished();
-}
-
-void QmmpAudioEngine::updateEqSettings()
-{
-    mutex()->lock();
-    m_eqEnabled = m_settings->eqSettings().isEnabled();
-    double preamp = m_settings->eqSettings().preamp();
-    set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    for(int i = 0; i < 10; ++i)
-    {
-        double value =  m_settings->eqSettings().gain(i);
-        set_gain(i,0, 0.03*value+0.000999999*value*value);
-        set_gain(i,1, 0.03*value+0.000999999*value*value);
-    }
-    if(m_decoder)
-        m_useEq = m_eqEnabled && m_ap.format() == Qmmp::PCM_S16LE;
-    mutex()->unlock();
 }
 
 void QmmpAudioEngine::updateReplayGainSettings()
@@ -513,7 +486,7 @@ void QmmpAudioEngine::flush(bool final)
             m_done = true;
         else
         {
-            m_output_at -= produceSound((char*)m_output_buf, m_output_at, m_bitrate, m_chan);
+            m_output_at -= produceSound((char*)m_output_buf, m_output_at, m_bitrate);
         }
 
         if (m_output->recycler()->full())
@@ -634,10 +607,7 @@ void QmmpAudioEngine::prepareEffects(Decoder *d)
         m_effects << effect;
         m_tmp_effects.removeAll(effect);
     }
-
     m_chan = m_ap.channels();
-    m_useEq = m_eqEnabled && m_ap.format() == Qmmp::PCM_S16LE;
-    init_iir(m_ap.sampleRate());
 }
 
 //static members
