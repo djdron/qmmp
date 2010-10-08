@@ -489,7 +489,7 @@ void QmmpAudioEngine::flush(bool final)
             m_output_at -= produceSound((char*)m_output_buf, m_output_at, m_bitrate);
         }
 
-        if (m_output->recycler()->full())
+        if (!m_output->recycler()->empty())
         {
             m_output->recycler()->cond()->wakeOne();
         }
