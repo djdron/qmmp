@@ -490,12 +490,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1163"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Размер буфера:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1176"/>
         <source>ms</source>
-        <translation type="unfinished">мс</translation>
+        <translation>мс</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1205"/>
