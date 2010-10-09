@@ -117,7 +117,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="54"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">プレイリストをクリアしない</translation>
+        <translation>プレイリストをクリアしない</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="55"/>
@@ -470,7 +470,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="981"/>
         <source>Replay Gain mode:</source>
-        <translation>リプレイゲインモード</translation>
+        <translation>リプレイゲインモード:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="998"/>
@@ -501,12 +501,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1163"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>バッファサイズ:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1176"/>
         <source>ms</source>
-        <translation type="unfinished">ミリ秒</translation>
+        <translation>ミリ秒</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1205"/>
@@ -716,7 +716,7 @@
         <location filename="../jumptotrackdialog.cpp" line="86"/>
         <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Queue</source>
-        <translation type="unfinished"></translation>
+        <translation>キューに入れる</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
@@ -747,7 +747,7 @@
         <location filename="../jumptotrackdialog.cpp" line="84"/>
         <location filename="../jumptotrackdialog.cpp" line="135"/>
         <source>Unqueue</source>
-        <translation type="unfinished"></translation>
+        <translation>キューから除く</translation>
     </message>
 </context>
 <context>
@@ -1130,7 +1130,7 @@
     <message>
         <location filename="../playlist.cpp" line="178"/>
         <source>&amp;Copy Selection To</source>
-        <translation type="unfinished"></translation>
+        <translation>選んだ曲目で新しいプレイリストを作る(&amp;C)</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="187"/>
@@ -1272,7 +1272,7 @@
     <message>
         <location filename="../playlist.cpp" line="323"/>
         <source>&amp;Queue</source>
-        <translation type="unfinished"></translation>
+        <translation>キューに入れる(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="323"/>
@@ -1377,7 +1377,7 @@
     <message>
         <location filename="../playlist.cpp" line="629"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいプレイリスト(&amp;N)</translation>
     </message>
 </context>
 <context>
@@ -1609,7 +1609,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="181"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>アプリケーションを始動しない</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="182"/>
