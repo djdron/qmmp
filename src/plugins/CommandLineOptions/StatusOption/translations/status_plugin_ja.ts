@@ -19,77 +19,77 @@
         <translation>--nowplaying の構文規則を表示</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="87"/>
+        <location filename="../statusoption.cpp" line="88"/>
         <source>Syntax:</source>
         <translation>構文規則:</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="88"/>
+        <location filename="../statusoption.cpp" line="89"/>
         <source>%p - artist</source>
         <translation>%p - アーティスト名</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="89"/>
+        <location filename="../statusoption.cpp" line="90"/>
         <source>%a - album</source>
         <translation>%a - アルバム名</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="90"/>
+        <location filename="../statusoption.cpp" line="91"/>
         <source>%t - title</source>
         <translation>%t - 題名</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="91"/>
+        <location filename="../statusoption.cpp" line="92"/>
         <source>%n - track</source>
         <translation>%n - トラック番号</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="92"/>
+        <location filename="../statusoption.cpp" line="93"/>
         <source>%NN - 2-digit track</source>
         <translation>%NN - トラック番号 数字2桁</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="93"/>
+        <location filename="../statusoption.cpp" line="94"/>
         <source>%g - genre</source>
         <translation>%g - ジャンル名</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="94"/>
+        <location filename="../statusoption.cpp" line="95"/>
         <source>%c - comment</source>
         <translation>%c - コメント</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="95"/>
+        <location filename="../statusoption.cpp" line="96"/>
         <source>%C - composer</source>
         <translation>%C - 作曲者名</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="96"/>
+        <location filename="../statusoption.cpp" line="97"/>
         <source>%D - disc number</source>
         <translation>%D - ディスク番号</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="97"/>
+        <location filename="../statusoption.cpp" line="98"/>
         <source>%f - file name</source>
         <translation>%f - ファイル名</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="98"/>
+        <location filename="../statusoption.cpp" line="99"/>
         <source>%F - full path</source>
         <translation>%F - 完全なファイルパス</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="99"/>
+        <location filename="../statusoption.cpp" line="100"/>
         <source>%y - year</source>
         <translation>%y - 年</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="100"/>
+        <location filename="../statusoption.cpp" line="101"/>
         <source>%l - duration</source>
         <translation>%l - 演奏時間</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="101"/>
+        <location filename="../statusoption.cpp" line="102"/>
         <source>%if(A&amp;B&amp;C,D,E) - condition</source>
         <translation>%if(A&amp;B&amp;C,D,E) - 状態</translation>
     </message>
