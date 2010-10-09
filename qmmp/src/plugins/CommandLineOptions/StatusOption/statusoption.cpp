@@ -69,6 +69,7 @@ QString StatusOption::executeCommand(const QString &opt_str, const QStringList &
             out += "GENRE = %g\n";
             out += "YEAR = %y\n";
             out += "TRACK = %n\n";
+            out += "FILE = %f\n";
             MetaDataFormatter formatter(out);
             out = formatter.parse(core->metaData(), core->totalTime());
         }
