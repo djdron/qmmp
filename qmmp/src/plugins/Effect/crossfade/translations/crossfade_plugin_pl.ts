@@ -6,22 +6,22 @@
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="30"/>
         <source>Crossfade Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Crossfade</translation>
     </message>
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="51"/>
         <source>About Crossfade Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>O wtyczce Crossfade</translation>
     </message>
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="52"/>
         <source>Qmmp Crossfade Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczka Crossfade dla Qmmp</translation>
     </message>
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Crossfade Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia wtyczki Crossfade</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Overlap:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nakładanie się:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation> ms</translation>
     </message>
 </context>
 </TS>

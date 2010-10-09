@@ -132,7 +132,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="54"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">Nie czyść listy</translation>
+        <translation>Nie czyść listy</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="56"/>
@@ -490,12 +490,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1163"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar bufora:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1176"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1205"/>
@@ -1011,12 +1011,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="431"/>
         <source>&amp;Stop After Track</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatrzymaj po tym utworze (&amp;S)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="450"/>
@@ -1170,7 +1170,7 @@
     <message>
         <location filename="../playlist.cpp" line="178"/>
         <source>&amp;Copy Selection To</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiuj zazna&amp;czenie do</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="193"/>
@@ -1321,7 +1321,7 @@
     <message>
         <location filename="../playlist.cpp" line="629"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nowa lista odtwarzania</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="351"/>
@@ -1604,7 +1604,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="181"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie uruchamiaj aplikacji</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="183"/>

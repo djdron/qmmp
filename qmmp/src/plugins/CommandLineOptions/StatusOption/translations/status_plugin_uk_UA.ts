@@ -19,77 +19,77 @@
         <translation>Показати синтаксис команди --nowplaying</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="87"/>
+        <location filename="../statusoption.cpp" line="88"/>
         <source>Syntax:</source>
         <translation>Синтаксис:</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="88"/>
+        <location filename="../statusoption.cpp" line="89"/>
         <source>%p - artist</source>
         <translation>%p - виконавець</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="89"/>
+        <location filename="../statusoption.cpp" line="90"/>
         <source>%a - album</source>
         <translation>%a - альбом</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="90"/>
+        <location filename="../statusoption.cpp" line="91"/>
         <source>%t - title</source>
         <translation>%t - назва</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="91"/>
+        <location filename="../statusoption.cpp" line="92"/>
         <source>%n - track</source>
         <translation>%n - номер трека</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="92"/>
+        <location filename="../statusoption.cpp" line="93"/>
         <source>%NN - 2-digit track</source>
         <translation>%NN - 2-розрядний номер трека</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="93"/>
+        <location filename="../statusoption.cpp" line="94"/>
         <source>%g - genre</source>
         <translation>%g - жанр</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="94"/>
+        <location filename="../statusoption.cpp" line="95"/>
         <source>%c - comment</source>
         <translation>%c - коментар</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="95"/>
+        <location filename="../statusoption.cpp" line="96"/>
         <source>%C - composer</source>
         <translation>%С - композитор</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="96"/>
+        <location filename="../statusoption.cpp" line="97"/>
         <source>%D - disc number</source>
         <translation>%D - номер диска</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="97"/>
+        <location filename="../statusoption.cpp" line="98"/>
         <source>%f - file name</source>
         <translation>%f - ім&apos;я файла</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="98"/>
+        <location filename="../statusoption.cpp" line="99"/>
         <source>%F - full path</source>
         <translation>%F - повний шлях</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="99"/>
+        <location filename="../statusoption.cpp" line="100"/>
         <source>%y - year</source>
         <translation>%y - рік</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="100"/>
+        <location filename="../statusoption.cpp" line="101"/>
         <source>%l - duration</source>
         <translation>%l - тривалість</translation>
     </message>
     <message>
-        <location filename="../statusoption.cpp" line="101"/>
+        <location filename="../statusoption.cpp" line="102"/>
         <source>%if(A&amp;B&amp;C,D,E) - condition</source>
         <translation>%if(A&amp;B&amp;C,D,E) - умова</translation>
     </message>
