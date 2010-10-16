@@ -78,6 +78,14 @@ bool SoundCore::play(const QString &source, bool queue, qint64 offset)
         stop();
         qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
     }
+    else
+    {
+        qDeleteAll(m_pendingSources);
+        m_pendingSources.clear();
+        if(m_pendingEngine)
+            delete m_pendingEngine;
+        m_pendingEngine = 0;
+    }
     MetaDataManager::instance(); //create metadata manager
 
     InputSource *s = InputSource::create(source, this);
@@ -100,13 +108,13 @@ bool SoundCore::play(const QString &source, bool queue, qint64 offset)
 void SoundCore::stop()
 {
     m_url.clear();
+    if(m_pendingEngine)
+        delete m_pendingEngine;
+    m_pendingEngine = 0;
     if(m_engine)
         m_engine->stop();
     qDeleteAll(m_pendingSources);
     m_pendingSources.clear();
-    if(m_pendingEngine)
-        delete m_pendingEngine;
-    m_pendingEngine = 0;
     updateVolume();
     if(state() == Qmmp::NormalError || state() == Qmmp::FatalError || state() == Qmmp::Buffering)
         StateHandler::instance()->dispatch(Qmmp::Stopped); //clear error and buffering state
