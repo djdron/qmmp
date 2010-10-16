@@ -1044,6 +1044,11 @@
         <translation>シャッフル(&amp;F)</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="439"/>
+        <source>&amp;Stop After Selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="445"/>
         <source>R</source>
         <translation>R</translation>
@@ -1076,11 +1081,6 @@
     <message>
         <location filename="../mainwindow.cpp" line="438"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="439"/>
-        <source>&amp;Stop After Selected Song</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

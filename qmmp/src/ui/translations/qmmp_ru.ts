@@ -1009,6 +1009,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="439"/>
+        <source>&amp;Stop After Selected</source>
+        <translation>&amp;Остановить после выделенного</translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="448"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
@@ -1026,22 +1031,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="434"/>
         <source>Playlist</source>
-        <translation type="unfinished">Список</translation>
+        <translation>Список</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="438"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="439"/>
-        <source>&amp;Stop After Selected Song</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Не продвигаться по списку</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>&amp;Clear Queue</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Очистить очередь</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="447"/>

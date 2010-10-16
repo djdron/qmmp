@@ -1009,6 +1009,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="439"/>
+        <source>&amp;Stop After Selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../mainwindow.cpp" line="448"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
@@ -1031,11 +1036,6 @@
     <message>
         <location filename="../mainwindow.cpp" line="438"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="439"/>
-        <source>&amp;Stop After Selected Song</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

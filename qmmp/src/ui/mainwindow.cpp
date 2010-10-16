@@ -436,7 +436,7 @@ void MainWindow::createActions()
     QAction *repeateTrackAction = plMenu->addAction(tr("&Repeat Track"));
     QAction *shuffleAction = plMenu->addAction(tr("&Shuffle"));
     QAction *noPlAdvanceAction = plMenu->addAction(tr("&No Playlist Advance"));
-    QAction *stopAfterSelectedAction = plMenu->addAction(tr("&Stop After Selected Song"));
+    QAction *stopAfterSelectedAction = plMenu->addAction(tr("&Stop After Selected"));
     QAction *clearQueueAction = plMenu->addAction(tr("&Clear Queue"));
     repeateAllAction->setCheckable (true);
     repeateTrackAction->setCheckable (true);
