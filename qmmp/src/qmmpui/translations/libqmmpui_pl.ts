@@ -80,7 +80,7 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>QtFileDialogFactory</name>
     <message>
-        <location filename="../qtfiledialog.cpp" line="33"/>
+        <location filename="../qtfiledialog.cpp" line="34"/>
         <source>Qt File Dialog</source>
         <translation>Okno dialogowe QT</translation>
     </message>

@@ -493,3 +493,13 @@ void PlayListManager::removeDuplicates()
 {
     m_selected->removeDuplicates();
 }
+
+void PlayListManager::clearQueue()
+{
+    m_selected->clearQueue();
+}
+
+void PlayListManager::stopAfterSelected()
+{
+    m_selected->stopAfterSelected();
+}

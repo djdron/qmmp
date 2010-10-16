@@ -37,7 +37,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     m_core = 0;
     m_skips = 0;
     m_repeat = false;
-    m_autoStop = false;
+    m_noPlaylistAdvance = false;
     QTranslator *translator = new QTranslator(parent);
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/libqmmpui_") + locale);
@@ -59,7 +59,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
     m_core = core;
     m_pl_manager = pl_manager;
     m_repeat = false;
-    m_autoStop = false;
+    m_noPlaylistAdvance = false;
     connect(m_core, SIGNAL(nextTrackRequest()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
 }
@@ -74,9 +74,9 @@ bool MediaPlayer::isRepeatable() const
     return m_repeat;
 }
 
-bool MediaPlayer::isAutoStopping() const
+bool MediaPlayer::isNoPlaylistAdvance() const
 {
-    return m_autoStop;
+    return m_noPlaylistAdvance;
 }
 
 void MediaPlayer::play(qint64 offset)
@@ -181,25 +181,30 @@ void MediaPlayer::previous()
 
 void MediaPlayer::setRepeatable(bool r)
 {
-    if (!isAutoStopping())
+    if (r != m_repeat)
     {
-        if (r != m_repeat && !r)
-        {
-            disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
-            connect(m_core, SIGNAL(finished()), SLOT(playNext()));
-        }
-        else if (r != m_repeat && r)
+        if(r)
         {
             disconnect(m_core, SIGNAL(finished()), this, SLOT(playNext()));
             connect(m_core, SIGNAL(finished()), SLOT(play()));
         }
+        else
+        {
+            disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
+            connect(m_core, SIGNAL(finished()), SLOT(playNext()));
+        }
+        m_repeat = r;
+        emit repeatableChanged(r);
     }
-    m_repeat = r;
-    emit repeatableChanged(r);
 }
 
 void MediaPlayer::playNext()
 {
+    if(m_noPlaylistAdvance)
+    {
+        stop();
+        return;
+    }
     if (!m_pl_manager->currentPlayList()->next())
     {
         stop();
@@ -208,55 +213,36 @@ void MediaPlayer::playNext()
     play();
 }
 
-void MediaPlayer::setAutoStop(bool enable)
+void MediaPlayer::setNoPlaylistAdvance(bool enabled)
 {
-    if (enable != m_autoStop)
+    if (enabled != m_noPlaylistAdvance)
     {
-        if(enable)
-        {
-            if (m_repeat)
-                disconnect(m_core, SIGNAL(finished()), this, SLOT(play()));
-            else
-                disconnect(m_core, SIGNAL(finished()), this, SLOT(playNext()));
-            connect(m_core, SIGNAL(finished()), SLOT(autoStop()));
-        }
-        else
-        {
-            disconnect(m_core, SIGNAL(finished()), this, SLOT(autoStop()));
-            if (m_repeat)
-                connect(m_core, SIGNAL(finished()), SLOT(play()));
-            else
-                connect(m_core, SIGNAL(finished()), SLOT(playNext()));
-        }
-        m_autoStop = enable;
-        emit autoStopChanged(enable);
+        m_noPlaylistAdvance = enabled;
+        emit noPlaylistAdvanceChanged(enabled);
     }
-}
-
-void MediaPlayer::autoStop()
-{
-    if (!m_repeat && !m_pl_manager->currentPlayList()->isEmptyQueue())
-    {
-        playNext();
-        return;
-    }
-    setAutoStop(false);
-    stop();
 }
 
 void MediaPlayer::updateNextUrl()
 {
     m_nextUrl.clear();
-    if(m_pl_manager->currentPlayList()->nextItem() && !isRepeatable())
+    PlayListItem *item = 0;
+    if(isRepeatable())
+        item = m_pl_manager->currentPlayList()->currentItem();
+    else if(!m_noPlaylistAdvance)
+        item = m_pl_manager->currentPlayList()->nextItem();
+
+    if(item)
     {
-        qDebug("MediaPlayer: sending next url");
-        bool ok = m_core->play(m_pl_manager->currentPlayList()->nextItem()->url(), true);
+        bool ok = m_core->play(item->url(), true);
         if(ok)
         {
             m_nextUrl = m_pl_manager->currentPlayList()->nextItem()->url();
-            qDebug("MediaPlayer: sending next url - done");
+            qDebug("MediaPlayer: next track state: received");
         }
         else
-            qDebug("MediaPlayer: sending next url - failed");
+            qDebug("MediaPlayer: next track state: error");
     }
+    else
+        qDebug("MediaPlayer: next track state: unknown");
+
 }
