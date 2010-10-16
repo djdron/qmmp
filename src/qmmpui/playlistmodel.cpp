@@ -74,6 +74,7 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_current = 0;
     is_repeatable_list = false;
     m_play_state = new NormalPlayState(this);
+    m_stop_item = 0;
 }
 
 PlayListModel::~PlayListModel()
@@ -146,8 +147,10 @@ PlayListItem* PlayListModel::currentItem()
 }
 
 PlayListItem* PlayListModel::nextItem()
-{
+{ 
     if(m_items.isEmpty() || !m_play_state)
+        return 0;
+    if(m_stop_item && m_stop_item == currentItem())
         return 0;
     if(!isEmptyQueue())
         return m_queued_songs.at(0);
@@ -180,6 +183,12 @@ bool PlayListModel::setCurrent(int c)
 
 bool PlayListModel::next()
 {
+    if(m_stop_item == currentItem())
+    {
+        m_stop_item = 0;
+        emit listChanged();
+        return false;
+    }
     if (!isEmptyQueue())
     {
         setCurrentToQueued();
@@ -212,6 +221,7 @@ void PlayListModel::clear()
     m_running_loaders.clear();
 
     m_current = 0;
+    m_stop_item = 0;
     while (!m_items.isEmpty())
     {
         PlayListItem* mf = m_items.takeFirst();
@@ -305,6 +315,8 @@ void PlayListModel::removeAt (int i)
     if ((i < count()) && (i >= 0))
     {
         PlayListItem* f = m_items.takeAt(i);
+        if(m_stop_item == f)
+            m_stop_item = 0;
         m_total_length -= f->length();
         if (m_total_length < 0)
             m_total_length = qMin(0, m_total_length);
@@ -345,6 +357,8 @@ void PlayListModel::removeSelection(bool inverted)
         if (m_items.at(i)->isSelected() ^ inverted)
         {
             PlayListItem* f = m_items.takeAt(i);
+            if(f == m_stop_item)
+                m_stop_item = 0;
             m_total_length -= f->length();
             if (m_total_length < 0)
                 m_total_length = 0;
@@ -642,6 +656,21 @@ void PlayListModel::setCurrentToQueued()
 bool PlayListModel::isEmptyQueue() const
 {
     return m_queued_songs.isEmpty();
+}
+
+int PlayListModel::queuedIndex(PlayListItem* item) const
+{
+    return m_queued_songs.indexOf(item);
+}
+
+int PlayListModel::queueSize() const
+{
+    return m_queued_songs.size();
+}
+
+bool PlayListModel::isStopAfter(PlayListItem* item) const
+{
+    return m_stop_item == item;
 }
 
 void PlayListModel::randomizeList()
@@ -942,4 +971,32 @@ void PlayListModel::removeDuplicates()
                 removeItem(m_items.at(j));
         }
     }
+}
+
+void PlayListModel::clearQueue()
+{
+     m_queued_songs.clear();
+     m_stop_item = 0;
+     emit listChanged();
+}
+
+void PlayListModel::stopAfterSelected()
+{
+    QList<PlayListItem*> selected_items = getSelectedItems();
+    if(!m_queued_songs.isEmpty())
+    {
+        m_stop_item = m_stop_item != m_queued_songs.last() ? m_queued_songs.last() : 0;
+    }
+    else if(selected_items.count() == 1)
+    {
+        m_stop_item = m_stop_item != selected_items.at(0) ? selected_items.at(0) : 0;
+    }
+    else if(selected_items.count() > 1)
+    {
+        addToQueue();
+        m_stop_item = m_queued_songs.last();
+    }
+    else
+        return;
+    emit listChanged();
 }

@@ -60,9 +60,9 @@ public:
      */
     bool isRepeatable() const;
     /*!
-     * Returns \b true if "Auto Stop" option is enabled, otherwise returns \b false
+     * Returns \b true if "No playlist advance" option is enabled, otherwise returns \b false
      */
-    bool isAutoStopping() const;
+    bool isNoPlaylistAdvance() const;
 
 public slots:
     /*!
@@ -87,10 +87,11 @@ public slots:
      */
     void setRepeatable(bool enable);
     /*!
-     * Toggles the AutoStop feature.
-     * @param enable the AutoStop state (\b true - automatic stop, \b false - normal play)
+     * When finished playing a song, don't automatically advance to the next
+     * @param enable State of the 'No playlist advance' option
+     * (\b true - enabled, \b false - normal playback)
      */
-    void setAutoStop(bool enable);
+    void setNoPlaylistAdvance(bool enable);
 
 signals:
     /*!
@@ -98,11 +99,15 @@ signals:
      * @param enabled New repeate state of the current track (\b true - enabled, \b false - disabled)
      */
     void repeatableChanged(bool enabled);
-    void autoStopChanged(bool enabled);
+    /*!
+     * Emitted when state of the "No playlist advance" option changes.
+     * @param enabled New state of this option (\b true - no playlist advance,
+     * \b false - normal playlist behaviour)
+     */
+    void noPlaylistAdvanceChanged(bool enabled);
 
 private slots:
     void playNext();
-    void autoStop();
     void updateNextUrl();
 
 private:
@@ -110,7 +115,7 @@ private:
     SoundCore *m_core;
     static MediaPlayer* m_instance;
     bool m_repeat;
-    bool m_autoStop;
+    bool m_noPlaylistAdvance;
     int m_skips;
     QString m_nextUrl;
 };

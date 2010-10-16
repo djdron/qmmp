@@ -184,11 +184,11 @@ public:
      */
     QStringList getTimes(int first,int last);
     /*!
-     *  Moves the item at index position \b from to index position \b to
+     *  Moves the item at index position \b from to index position \b to.
      */
     void moveItems(int from, int to);
     /*!
-     * Returns \b true if \b f file is in play queue, else returns \b false
+     * Returns \b true if \b f file is in play queue, otherwise returns \b false.
      */
     bool isQueued(PlayListItem* item) const;
     /*!
@@ -202,17 +202,15 @@ public:
     /*!
      * Returns index of \b f file in queue.e
      */
-    int queuedIndex(PlayListItem* item) const
-    {
-        return m_queued_songs.indexOf(item);
-    }
+    int queuedIndex(PlayListItem* item) const;
     /*!
      * Returns the number of items in the queue
      */
-    int queueSize() const
-    {
-        return m_queued_songs.size();
-    }
+    int queueSize() const;
+    /*!
+     * Returns \b true if playback stops after \b item, otherwise returns \b false.
+     */
+    bool isStopAfter(PlayListItem* item) const;
     /*!
      * Returns current selection(playlist can contain a lot of selections,
      * this method returns selection which \b row belongs to)
@@ -413,6 +411,14 @@ public slots:
      * Removes duplicate items by URL.
      */
     void removeDuplicates();
+    /*!
+     * Removes all items from queue.
+     */
+    void clearQueue();
+    /*!
+     * Toggles 'stop after selected' feature.
+     */
+    void stopAfterSelected();
 
 private:
     /*!
@@ -448,6 +454,7 @@ private:
     QList <PlayListItem*> m_items;
     QList <PlayListItem*> m_editing_items;
     PlayListItem* m_currentItem;
+    PlayListItem* m_stop_item;
     int m_current;
     /*!
      * This flyweight object represents current selection.

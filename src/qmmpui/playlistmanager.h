@@ -288,6 +288,14 @@ public slots:
      * This is a convenience function and is the same as calling \b selectedPlayList()->removeDuplicates()
      */
     void removeDuplicates();
+    /*!
+     * This is a convenience function and is the same as calling \b selectedPlayList()->clearQueue()
+     */
+    void clearQueue();
+    /*!
+     * This is a convenience function and is the same as calling \b selectedPlayList()->stopAfterSelected()
+     */
+    void stopAfterSelected();
 
 
 private:
