@@ -157,8 +157,7 @@ void MediaPlayer::next()
     }
     if (m_core->state() != Qmmp::Stopped)
     {
-        if (m_core->state() == Qmmp::Paused)
-            stop();
+        stop();
         play();
     }
 }
