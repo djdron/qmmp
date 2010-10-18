@@ -37,7 +37,8 @@
 #include <qmmp/recycler.h>
 #include <qmmp/qmmpsettings.h>
 
-#define CDDA_SECTORS 8
+#define CDDA_SECTORS 4
+#define CDDA_BUFFER_SIZE (CDDA_SECTORS*CDIO_CD_FRAMESIZE_RAW)
 
 #include "decoder_cdaudio.h"
 
@@ -67,6 +68,8 @@ DecoderCDAudio::DecoderCDAudio(const QString &url) : Decoder()
     m_current_sector  = -1;
     m_url = url;
     m_cdio = 0;
+    m_buffer_at = 0;
+    m_buffer = new char[CDDA_BUFFER_SIZE];
 }
 
 
@@ -78,6 +81,7 @@ DecoderCDAudio::~DecoderCDAudio()
         cdio_destroy(m_cdio);
         m_cdio = 0;
     }
+    delete [] m_buffer;
 }
 
 QList <CDATrack> DecoderCDAudio::generateTrackList(const QString &device)
@@ -418,30 +422,40 @@ int DecoderCDAudio::bitrate()
 
 qint64 DecoderCDAudio::read(char *audio, qint64 maxSize)
 {
-    long len = 0;
-    lsn_t secorts_to_read = qMin(CDDA_SECTORS, (m_last_sector - m_current_sector + 1));
-    if(secorts_to_read * CDIO_CD_FRAMESIZE_RAW > maxSize)
+    if(!m_buffer_at)
     {
-        qWarning("DecoderCDAudio: buffer is too small");
-        return 0;
-    }
-    if (secorts_to_read <= 0)
-        len = 0;
-    else
-    {
-        if (cdio_read_audio_sectors(m_cdio, audio,
+
+        lsn_t secorts_to_read = qMin(CDDA_SECTORS, (m_last_sector - m_current_sector + 1));
+
+        if (secorts_to_read <= 0)
+            return 0;
+
+        if (cdio_read_audio_sectors(m_cdio, m_buffer,
                                     m_current_sector, secorts_to_read) != DRIVER_OP_SUCCESS)
-            len = -1;
+        {
+            m_buffer_at = 0;
+            return -1;
+        }
         else
         {
-            len = secorts_to_read * CDIO_CD_FRAMESIZE_RAW;
+            m_buffer_at = secorts_to_read * CDIO_CD_FRAMESIZE_RAW;
             m_current_sector += secorts_to_read;
         }
     }
-    return len;
+
+    if(m_buffer_at > 0)
+    {
+        long len = qMin(maxSize, m_buffer_at);
+        memcpy(audio, m_buffer, len);
+        m_buffer_at -= len;
+        memmove(m_buffer, m_buffer + len, m_buffer_at);
+        return len;
+    }
+    return 0;
 }
 
 void DecoderCDAudio::seek(qint64 pos)
 {
     m_current_sector = m_first_sector + pos * 75 / 1000;
+    m_buffer_at = 0;
 }

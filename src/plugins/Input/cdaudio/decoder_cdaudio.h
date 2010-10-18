@@ -69,6 +69,8 @@ private:
     QString m_url;
     int m_bitrate;
     qint64 m_totalTime;
+    char *m_buffer;
+    qint64 m_buffer_at;
 };
 
 #endif // DECODER_CDAUIDO_H
