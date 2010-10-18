@@ -138,7 +138,7 @@ void UDisksPlugin::updateActions()
         QString dev_path;
         if (device->property("DeviceIsOpticalDisc").toBool() &&
                 device->property("OpticalDiscNumAudioTracks").toInt()) //cd audio
-            dev_path = "cdda://" + device->property("block.device").toString();
+            dev_path = "cdda://" + device->property("DeviceFile").toString();
         else if (device->property("DeviceIsMounted").toBool()) //mounted volume
             dev_path = device->property("DeviceMountPaths").toStringList()[0];
         else
@@ -206,7 +206,7 @@ UDisksDevice *UDisksPlugin::findDevice(QAction *action)
         if (device->property("DeviceIsOpticalDisc").toBool() &&
                 device->property("OpticalDiscNumAudioTracks").toInt())
         {
-            dev_path = "cdda://" + device->property("DeviceFile").toString();
+            dev_path = "cdda://" + device->property("DeviceFile").toString();   
             if (dev_path == action->data().toString())
                 return device;
         }
