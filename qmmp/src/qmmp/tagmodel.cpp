@@ -25,6 +25,9 @@ TagModel::TagModel(int f)
     m_f = f;
 }
 
+TagModel::~TagModel()
+{}
+
 void TagModel::setValue(Qmmp::MetaData key, int value)
 {
     setValue(key, QString::number(value));

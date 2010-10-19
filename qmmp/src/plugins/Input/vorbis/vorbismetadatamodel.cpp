@@ -44,13 +44,16 @@ QHash<QString, QString> VorbisMetaDataModel::audioProperties()
 {
     QHash<QString, QString> ap;
     TagLib::Ogg::Vorbis::File f (m_path.toLocal8Bit());
-    QString text = QString("%1").arg(f.audioProperties()->length()/60);
-    text +=":"+QString("%1").arg(f.audioProperties()->length()%60,2,10,QChar('0'));
-    ap.insert(tr("Length"), text);
-    ap.insert(tr("Sample rate"), QString("%1 " + tr("Hz")).arg(f.audioProperties()->sampleRate()));
-    ap.insert(tr("Channels"), QString("%1").arg(f.audioProperties()->channels()));
-    ap.insert(tr("Bitrate"), QString("%1 " + tr("kbps")).arg(f.audioProperties()->bitrate()));
-    ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(f.length()/1024));
+    if(f.audioProperties())
+    {
+        QString text = QString("%1").arg(f.audioProperties()->length()/60);
+        text +=":"+QString("%1").arg(f.audioProperties()->length()%60,2,10,QChar('0'));
+        ap.insert(tr("Length"), text);
+        ap.insert(tr("Sample rate"), QString("%1 " + tr("Hz")).arg(f.audioProperties()->sampleRate()));
+        ap.insert(tr("Channels"), QString("%1").arg(f.audioProperties()->channels()));
+        ap.insert(tr("Bitrate"), QString("%1 " + tr("kbps")).arg(f.audioProperties()->bitrate()));
+        ap.insert(tr("File size"), QString("%1 "+tr("KB")).arg(f.length()/1024));
+    }
     return ap;
 }
 
@@ -108,7 +111,7 @@ ulong VorbisMetaDataModel::readPictureBlockField(QByteArray data, int offset)
 
 VorbisCommentModel::VorbisCommentModel(const QString &path) : TagModel(TagModel::Save)
 {
-    m_file = new  TagLib::Ogg::Vorbis::File (path.toLocal8Bit().constData());
+    m_file = new TagLib::Ogg::Vorbis::File (path.toLocal8Bit().constData());
     m_tag = m_file->tag();
 }
 
@@ -200,5 +203,11 @@ void VorbisCommentModel::setValue(Qmmp::MetaData key, const QString &value)
 
 void VorbisCommentModel::save()
 {
-    m_file->save();
+    if(m_tag)
+        m_file->save();
+    //taglib bug workarround
+    QString path = QString::fromLocal8Bit(m_file->name());
+    delete m_file;
+    m_file = new TagLib::Ogg::Vorbis::File(path.toLocal8Bit());
+    m_tag = m_file->tag();
 }
