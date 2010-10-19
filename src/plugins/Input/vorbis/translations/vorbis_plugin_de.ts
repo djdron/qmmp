@@ -37,42 +37,42 @@
 <context>
     <name>VorbisMetaDataModel</name>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="49"/>
+        <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Length</source>
         <translation>Länge</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="50"/>
+        <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
         <translation>Abtastrate</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="50"/>
+        <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="51"/>
+        <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>Channels</source>
         <translation>Kanäle</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="52"/>
+        <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
         <translation>Bitrate</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="52"/>
+        <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="53"/>
+        <location filename="../vorbismetadatamodel.cpp" line="55"/>
         <source>File size</source>
         <translation>Dateigröße</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="53"/>
+        <location filename="../vorbismetadatamodel.cpp" line="55"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>

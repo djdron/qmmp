@@ -37,42 +37,42 @@
 <context>
     <name>VorbisMetaDataModel</name>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="49"/>
+        <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Length</source>
         <translation>Длительность</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="50"/>
+        <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
         <translation>Дискретизация</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="50"/>
+        <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="51"/>
+        <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>Channels</source>
         <translation>Каналов</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="52"/>
+        <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
         <translation>Битовая частота</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="52"/>
+        <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="53"/>
+        <location filename="../vorbismetadatamodel.cpp" line="55"/>
         <source>File size</source>
         <translation>Размер файла</translation>
     </message>
     <message>
-        <location filename="../vorbismetadatamodel.cpp" line="53"/>
+        <location filename="../vorbismetadatamodel.cpp" line="55"/>
         <source>KB</source>
         <translation>КБ</translation>
     </message>

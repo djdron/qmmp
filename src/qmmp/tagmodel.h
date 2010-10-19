@@ -46,6 +46,10 @@ public:
      */
     TagModel(int f = TagModel::CreateRemove | TagModel::Save);
     /*!
+     * Destructor.
+     */
+    virtual ~TagModel();
+    /*!
      * Returns tag name.
      * Subclass should reimplement this fucntion.
      */
