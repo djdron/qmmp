@@ -47,7 +47,8 @@ void CrossfadePlugin::applyEffect(Buffer *b)
     switch (m_state)
     {
     case WAITING:
-        if(m_core->totalTime() - m_handler->elapsed() < m_overlap + 2000)
+        if((m_core->totalTime() > m_overlap + 2000)
+                && (m_core->totalTime() - m_handler->elapsed() < m_overlap + 2000))
         {
             StateHandler::instance()->sendNextTrackRequest();
             m_state = CHECKING;
@@ -60,7 +61,7 @@ void CrossfadePlugin::applyEffect(Buffer *b)
         else
             return;
     case PREPARING:
-        if(m_core->totalTime() - m_handler->elapsed() <  m_overlap)
+        if(m_core->totalTime() && (m_core->totalTime() - m_handler->elapsed() <  m_overlap))
         {
             if(m_buffer_at + b->nbytes > m_buffer_size)
             {
