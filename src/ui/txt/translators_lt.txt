@@ -32,3 +32,19 @@ Ukrainiečių:
 
 Lietuvių:
     Algirdas Butkus <butkus.algirdas@gmail.com>
+
+Lenkų:
+    Grzegorz Gibas <amigib@gmail.com>
+
+Rusų:
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+spanų:
+    Félix Medrano <xukosky@yahoo.es>
+
+Turkų:
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+Ukrainiečių:
+    Gennadi Motsyo <drool@altlinux.ru>
