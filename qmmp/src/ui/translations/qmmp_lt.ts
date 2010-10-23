@@ -132,7 +132,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="54"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">Neišvalyti sąrašo</translation>
+        <translation>Neišvalyti sąrašo</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="56"/>
@@ -358,7 +358,7 @@
         <location filename="../forms/configdialog.ui" line="107"/>
         <location filename="../forms/configdialog.ui" line="454"/>
         <source>Playlist</source>
-        <translation>Grojaraštis</translation>
+        <translation>Grojaraštį</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="116"/>
@@ -491,12 +491,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1163"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Buferio dydis:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1176"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1205"/>
@@ -1012,7 +1012,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>&amp;Stop After Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Stabdyti po pasirinkto</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="448"/>
@@ -1042,7 +1042,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>&amp;Clear Queue</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Išvalyti eilę</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="447"/>
@@ -1098,7 +1098,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="427"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Tarpas</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="470"/>
@@ -1196,7 +1196,7 @@
     <message>
         <location filename="../playlist.cpp" line="178"/>
         <source>&amp;Copy Selection To</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kopijuoti pasirinkimą į</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="193"/>
@@ -1221,7 +1221,7 @@
     <message>
         <location filename="../playlist.cpp" line="223"/>
         <source>Remove unavailable files</source>
-        <translation>Pašalinti nesamas bylas</translation>
+        <translation>Pašalinti neesamas bylas</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="225"/>
@@ -1347,7 +1347,7 @@
     <message>
         <location filename="../playlist.cpp" line="629"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Naujas grojaraštis</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="351"/>
@@ -1645,7 +1645,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="181"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>Nepaleisti programos</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="184"/>
@@ -1681,22 +1681,22 @@
     <message>
         <location filename="../viewmenu.cpp" line="27"/>
         <source>View</source>
-        <translation type="unfinished">Rodyti</translation>
+        <translation>Rodyti</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="28"/>
         <source>Always on top</source>
-        <translation type="unfinished">Visada viršuje</translation>
+        <translation>Visada viršuje</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="29"/>
         <source>Put on all workspaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti visuose darbastaliuose</translation>
     </message>
     <message>
         <location filename="../viewmenu.cpp" line="30"/>
         <source>Double size</source>
-        <translation type="unfinished">Dvigubas dydis</translation>
+        <translation>Dvigubas dydis</translation>
     </message>
 </context>
 <context>
