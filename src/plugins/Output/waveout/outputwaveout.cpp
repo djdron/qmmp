@@ -203,10 +203,6 @@ qint64 OutputWaveOut::writeAudio(unsigned char *data, qint64 len)
     return len;
 }
 
-void OutputWaveOut::flush()
-{
-}
-
 void OutputWaveOut::uninitialize()
 {
     if (dev)
