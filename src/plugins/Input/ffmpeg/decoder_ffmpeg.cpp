@@ -60,7 +60,6 @@ static int64_t ffmpeg_seek(void *data, int64_t offset, int whence)
     return d->input()->seek(absolute_pos);
 }
 
-
 // Decoder class
 
 DecoderFFmpeg::DecoderFFmpeg(const QString &path, QIODevice *i)
@@ -169,7 +168,7 @@ bool DecoderFFmpeg::initialize()
     }
 
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
-    m_output_buf = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE * 3 / 2/* + QMMP_BUFFER_SIZE*/);
+    m_output_buf = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE*2);
 
 #if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
     if(c->codec_id == CODEC_ID_SHORTEN) //ffmpeg bug workaround
@@ -210,13 +209,13 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
     qint64 len = qMin(m_output_at, maxSize);
     memcpy(audio, m_output_buf, len);
     m_output_at -= len;
-    memmove(m_output_buf, m_output_buf + len, m_output_at-m_skipBytes);
+    memmove(m_output_buf, m_output_buf + len, m_output_at);
     return len;
 }
 
 qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
 {
-    int out_size = AVCODEC_MAX_AUDIO_FRAME_SIZE * sizeof(int16_t);
+    int out_size = AVCODEC_MAX_AUDIO_FRAME_SIZE * 2;
     if((m_pkt.stream_index == wma_idx))
     {
 #if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(23<<8)+0))
@@ -237,7 +236,7 @@ qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
 }
 
 void DecoderFFmpeg::seek(qint64 pos)
-{    
+{
    int64_t timestamp = int64_t(pos)*AV_TIME_BASE/1000;
     if (ic->start_time != (qint64)AV_NOPTS_VALUE)
         timestamp += ic->start_time;
@@ -297,9 +296,10 @@ void DecoderFFmpeg::fillBuffer()
 
             if(m_skipBytes < 0)
             {
+                qint64 size = m_output_at;
                 m_output_at = - m_skipBytes;
                 m_output_at = m_output_at/4*4;
-                memmove(m_output_buf, m_output_buf + m_output_at, m_output_at);
+                memmove(m_output_buf, (m_output_buf + size - m_output_at), m_output_at);
                 m_skipBytes = 0;
             }
         }
@@ -310,12 +310,24 @@ void DecoderFFmpeg::fillBuffer()
 #endif
         if(m_output_at < 0)
         {
-            qWarning("DecoderFFmpeg: decoder error");
+            m_output_at = 0;
+            m_temp_pkt.size = 0;
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+            if(c->codec_id == CODEC_ID_SHORTEN)
+            {
+                if(m_pkt.data)
+                    av_free_packet(&m_pkt);
+                m_pkt.data = 0;
+                break;
+            }
+#endif
+            continue;
+        }
+        else if(m_output_at == 0)
+        {
             if(m_pkt.data)
                 av_free_packet(&m_pkt);
             m_pkt.data = 0;
-            m_temp_pkt.size = 0;
-            m_output_at = 0;
             break;
         }
     }
