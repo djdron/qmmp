@@ -325,6 +325,10 @@ void DecoderFFmpeg::fillBuffer()
         }
         else if(m_output_at == 0)
         {
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+            if(c->codec_id == CODEC_ID_SHORTEN)
+                continue;
+#endif
             if(m_pkt.data)
                 av_free_packet(&m_pkt);
             m_pkt.data = 0;
