@@ -63,6 +63,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 ADD_LIBRARY(ladspa MODULE ${libladspa_SRCS} ${libladspa_MOC_SRCS} ${libladspa_UIS_H}
   ${libladspa_RCC_SRCS})
 add_dependencies(ladspa qmmp)
-target_link_libraries(ladspa ${QT_LIBRARIES} -lqmmp)
+target_link_libraries(ladspa ${QT_LIBRARIES} -lqmmp -ldl)
 install(TARGETS ladspa DESTINATION ${LIB_DIR}/qmmp/Effect)
 

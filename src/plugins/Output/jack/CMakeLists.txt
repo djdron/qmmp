@@ -53,6 +53,10 @@ QT4_WRAP_CPP(libjack_MOC_SRCS ${libjack_MOC_HDRS})
 IF(JACK_FOUND)
 ADD_LIBRARY(jack MODULE ${libjack_SRCS} ${libjack_MOC_SRCS} ${libjack_RCC_SRCS})
 add_dependencies(jack qmmp)
+set_target_properties(jack PROPERTIES
+                           COMPILE_FLAGS -pthread
+                           LINK_FLAGS -pthread
+)
 target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LDFLAGS} ${JACK_CFLAGS})
 install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(JACK_FOUND)
