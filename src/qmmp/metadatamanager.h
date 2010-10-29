@@ -25,6 +25,7 @@
 #include <QStringList>
 #include <QPixmap>
 #include <QDir>
+#include <QMutex>
 #include "fileinfo.h"
 #include "metadatamodel.h"
 
@@ -32,6 +33,7 @@ class DecoderFactory;
 class EngineFactory;
 class InputSourceFactory;
 class QmmpSettings;
+
 
 /*! @brief The MetaDataManager class is the base class for metadata access.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -108,6 +110,7 @@ private:
     QList <InputSourceFactory *> *m_inputSourceFactories;
     QMap <QString, QString> m_cover_cache;
     QmmpSettings *m_settings;
+    mutable QMutex m_mutex;
     static MetaDataManager* m_instance;
 };
 
