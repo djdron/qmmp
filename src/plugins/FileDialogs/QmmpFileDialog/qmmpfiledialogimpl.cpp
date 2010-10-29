@@ -61,14 +61,9 @@ QmmpFileDialogImpl::QmmpFileDialogImpl(QWidget * parent, Qt::WindowFlags f) : QD
 {
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
-#if QT_VERSION >= 0x040400
     m_model = new QFileSystemModel(this);
     m_model->setNameFilterDisables (false);
-    m_model->setReadOnly(false);
-#else
-    m_model = new QDirModel(this);
-    m_model->setSorting(QDir::Type);
-#endif
+    m_model->setReadOnly(true);
 
     fileListView->setModel(m_model);
     treeView->setModel(m_model);
@@ -126,9 +121,7 @@ void QmmpFileDialogImpl::on_lookInComboBox_activated(const QString &path)
     {
         fileListView->setRootIndex(m_model->index(path));
         treeView->setRootIndex(m_model->index(path));
-#if QT_VERSION >= 0x040400
         m_model->setRootPath(path);
-#endif
     }
 }
 
@@ -140,9 +133,7 @@ void QmmpFileDialogImpl::on_upToolButton_clicked()
     treeView->setRootIndex(fileListView->rootIndex());
     lookInComboBox->setEditText(m_model->filePath(fileListView->rootIndex()));
     fileListView->selectionModel()->clear ();
-#if QT_VERSION >= 0x040400
     m_model->setRootPath(m_model->filePath(treeView->rootIndex()));
-#endif
 }
 
 void QmmpFileDialogImpl::on_treeView_doubleClicked(const QModelIndex& ind)
@@ -157,9 +148,7 @@ void QmmpFileDialogImpl::on_treeView_doubleClicked(const QModelIndex& ind)
             treeView->selectionModel()->clear ();
             fileListView->setRootIndex(ind);
             fileListView->selectionModel()->clear ();
-#if QT_VERSION >= 0x040400
             m_model->setRootPath(m_model->filePath(ind));
-#endif
         }
         else
         {
@@ -183,9 +172,7 @@ void QmmpFileDialogImpl::on_fileListView_doubleClicked(const QModelIndex& ind)
             fileListView->selectionModel()->clear ();
             treeView->setRootIndex(ind);
             treeView->selectionModel()->clear ();
-#if QT_VERSION >= 0x040400
             m_model->setRootPath(m_model->filePath(ind));
-#endif
         }
         else
         {
@@ -277,9 +264,7 @@ void QmmpFileDialogImpl::setModeAndMask(const QString& d,FileDialog::Mode m, con
     {
         fileListView->setRootIndex(m_model->index(path));
         treeView->setRootIndex(m_model->index(path));
-#if QT_VERSION >= 0x040400
         m_model->setRootPath(path);
-#endif
     }
 
     if (m == FileDialog::AddDirs || m == FileDialog::AddDir)
