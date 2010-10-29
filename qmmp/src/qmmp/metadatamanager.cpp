@@ -20,6 +20,7 @@
 
 #include <QFile>
 #include <QFileInfo>
+#include <QMutexLocker>
 #include "decoder.h"
 #include "decoderfactory.h"
 #include "abstractengine.h"
@@ -47,6 +48,7 @@ MetaDataManager::~MetaDataManager()
 
 QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool useMetaData) const
 {
+    QMutexLocker locker(&m_mutex);
     QList <FileInfo *> list;
     DecoderFactory *fact = 0;
     EngineFactory *efact = 0;
