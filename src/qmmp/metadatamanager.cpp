@@ -30,7 +30,7 @@
 
 MetaDataManager* MetaDataManager::m_instance = 0;
 
-MetaDataManager::MetaDataManager()
+MetaDataManager::MetaDataManager() : m_mutex(QMutex::Recursive)
 {
     if(m_instance)
         qFatal("MetaDataManager is already created");
