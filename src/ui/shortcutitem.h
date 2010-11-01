@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,54 +17,28 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef TRACKLISTOBJECT_H
-#define TRACKLISTOBJECT_H
+#ifndef SHORTCUTITEM_H
+#define SHORTCUTITEM_H
 
-#include <QObject>
-#include <QString>
-#include <QVariantMap>
+#include <QTreeWidgetItem>
 
-class PlayListModel;
-class PlayListManager;
-class MediaPlayer;
+class QWidget;
+class QAction;
 
 /**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
+   @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class TrackListObject : public QObject
+
+class ShortcutItem : public QTreeWidgetItem
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.freedesktop.MediaPlayer")
-
 public:
-    TrackListObject(QObject *parent = 0);
 
-    ~TrackListObject();
-
-public slots:
-    int AddTrack(const QString &in0, bool in1);
-    void DelTrack(int in0);
-    int GetCurrentTrack();
-    int GetLength();
-    QVariantMap GetMetadata(int in0);
-    void SetLoop(bool in0);
-    void SetRandom(bool in0);
-
-signals:
-    void TrackListChange(int in0);
-
-private slots:
-    void disconnectPl();
-    void checkNewItem();
-    void updateTrackList();
-    void switchPlayList(PlayListModel *cur, PlayListModel *prev);
+    ShortcutItem(QTreeWidgetItem *parent, int type);
+    ~ShortcutItem();
 
 private:
-    PlayListModel *m_model;
-    PlayListManager *m_pl_manager;
-    MediaPlayer *m_player;
-    int m_prev_count;
+    QAction *m_action;
 
 };
 
-#endif
+#endif //SHORTCUTITEM_H

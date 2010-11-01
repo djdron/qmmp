@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,72 +17,54 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef FILELOADER_H
-#define FILELOADER_H
+
+#ifndef ACTIONMANAGER_H
+#define ACTIONMANAGER_H
 
 #include <QObject>
-#include <QDir>
-#include <QQueue>
-#include <QThread>
+#include <QString>
+#include <QHash>
 
-class PlayListItem;
+#define ACTION(type, receiver, member) ActionManager::instance()->use(type, receiver, member)
 
-/*! @internal
- * @brief File loader class.
- *
- * This class represents fileloader object that
- * processes file list in separate thread and emits
- * \b newPlayListItem(PlayListItem*) signal for every newly
- * created media file.
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
-class FileLoader : public QThread
+class QAction;
+class QSettings;
+
+
+
+class ActionManager : public QObject
 {
     Q_OBJECT
 public:
-    /*!
-     * Constructs FileLoader object.
-     * @param parent QObject parent
-     */
-    FileLoader(QObject *parent = 0);
-    /*!
-     * Object destructor.
-     */
-    ~FileLoader();
-    /*!
-     * Sets files to load
-     */
-    void finish();
-    /*!
-     * Sets file to load
-     */
-    void loadFile(const QString &path);
-    /*!
-     * Sets files to load
-     */
-    void loadFiles(const QStringList &paths);
-    /*!
-     * Sets directory to load
-     */
-    void loadDirectory(const QString &path);
+    explicit ActionManager(QObject *parent = 0);
+    ~ActionManager();
 
-signals:
-    /*!
-     * Emitted when new playlist item is available.
-     * @param item Pointer of the new PlayListItem object.
-     */
-    void newPlayListItem(PlayListItem *item);
+    enum Type
+    {
+        PLAY = 0,
+        PAUSE,
+        STOP,
+        PREVIOUS,
+        NEXT,
+        PLAY_PAUSE,
+        JUMP,
 
-protected:
-    virtual void run();
-    void addFile(const QString &path);
-    void addDirectory(const QString &s);
+        SETTINGS,
+        ABOUT,
+        ABOUT_QT
+    };
+
+    QAction *action(int type);
+    QAction *use(int type, const QObject *receiver, const char *member);
+    QList<int> actions();
+    static ActionManager* instance();
 
 private:
-    QStringList m_filters;
-    QQueue <QString> m_files;
-    QQueue <QString> m_directories;
-    bool m_finished;
+    QAction *createAction(QString name, QString confKey, QString key, QString iconName = QString());
+    QSettings *m_settings;
+    QHash <int, QAction *> m_actions;
+    static ActionManager *m_instance;
+
 };
 
-#endif
+#endif // ACTIONMANAGER_H

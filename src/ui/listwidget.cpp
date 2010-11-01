@@ -385,15 +385,7 @@ void ListWidget::dropEvent(QDropEvent *event)
 
 void ListWidget::processFileInfo(const QFileInfo& info)
 {
-    if (info.isDir())
-    {
-        m_model->addDirectory(info.absoluteFilePath());
-    }
-    else
-    {
-        m_model->addFile(info.absoluteFilePath());
-        m_model->loadPlaylist(info.absoluteFilePath());
-    }
+    m_model->add(info.absoluteFilePath());
 }
 
 const QString ListWidget::getExtraString(int i)

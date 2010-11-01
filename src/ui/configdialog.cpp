@@ -45,6 +45,8 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
+#include "actionmanager.h"
+#include "shortcutitem.h"
 #include "popupsettings.h"
 #include "skin.h"
 #include "pluginitem.h"
@@ -75,6 +77,7 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     m_reader = new SkinReader(this);
     loadSkins();
     loadPluginsInfo();
+    loadShortcuts();
     loadFonts();
     createMenus();
     //setup icons
@@ -331,6 +334,18 @@ void ConfigDialog::loadFonts()
     ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.mainFontLabel->setFont(font);
     ui.useBitmapCheckBox->setChecked(settings.value("MainWindow/bitmap_font", false).toBool());
+}
+
+void ConfigDialog::loadShortcuts()
+{
+    //playback
+    QTreeWidgetItem *item = new QTreeWidgetItem (ui.shortcutTreeWidget, QStringList() << tr("Playback"));
+    for(int i = ActionManager::PLAY; i <= ActionManager::PLAY_PAUSE; ++i)
+        new ShortcutItem(item, i);
+    item->setExpanded(true);
+    ui.shortcutTreeWidget->addTopLevelItem(item);
+    ui.shortcutTreeWidget->resizeColumnToContents(0);
+    ui.shortcutTreeWidget->resizeColumnToContents(1);
 }
 
 void ConfigDialog::setPlFont()

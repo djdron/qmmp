@@ -97,6 +97,7 @@ private slots:
     void forward();
     void backward();
     void handleCloseRequest();
+    void disconnectPl();
 
 private:
     void readSettings();

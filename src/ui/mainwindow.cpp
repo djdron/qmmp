@@ -50,6 +50,7 @@
 #include "visualmenu.h"
 #include "windowsystem.h"
 #include "viewmenu.h"
+#include "actionmanager.h"
 #include "builtincommandlineoption.h"
 
 #define KEY_OFFSET 10000
@@ -68,6 +69,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
                    Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
     setWindowTitle("Qmmp");
+
+    new ActionManager();
 
     //prepare libqmmp and libqmmpui libraries for playing
     m_player = new MediaPlayer(this);
@@ -196,11 +199,7 @@ void MainWindow::previous()
 
 void MainWindow::showState(Qmmp::State state)
 {
-    if(m_model)
-    {
-        disconnect(m_model, SIGNAL(firstAdded()), this, 0);
-        m_model = 0;
-    }
+    disconnectPl();
     switch ((int) state)
     {
     case Qmmp::Playing:
@@ -254,7 +253,7 @@ void MainWindow::closeEvent (QCloseEvent *)
 void MainWindow::addDir()
 {
     FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
+                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
                       tr("Choose a directory"));
 }
 
@@ -265,7 +264,7 @@ void MainWindow::addFile()
             MetaDataManager::instance()->nameFilters().join (" ") +")";
     filters << MetaDataManager::instance()->filters();
     FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
+                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
                       tr("Select one or more files to open"), filters.join(";;"));
 }
 
@@ -414,17 +413,12 @@ void MainWindow::toggleVisibility()
 void MainWindow::createActions()
 {
     m_mainMenu = new QMenu(this);
-    m_mainMenu->addAction(QIcon::fromTheme("media-playback-start"), tr("&Play"),
-                          this, SLOT(play()), tr("X"));
-    m_mainMenu->addAction(QIcon::fromTheme("media-playback-pause"), tr("&Pause"),
-                          m_core, SLOT(pause()), tr("C"));
-    m_mainMenu->addAction(QIcon::fromTheme("media-playback-stop"), tr("&Stop"),
-                          this ,SLOT(stop()), tr("V"));
-    m_mainMenu->addAction(QIcon::fromTheme("media-skip-backward"), tr("&Previous"),
-                          this, SLOT(previous()), tr("Z"));
-    m_mainMenu->addAction(QIcon::fromTheme("media-skip-forward"), tr("&Next"),
-                          this, SLOT(next()), tr("B"));
-    m_mainMenu->addAction(tr("&Play/Pause"),this, SLOT(playPause()), tr("Space"));
+    m_mainMenu->addAction(ACTION(ActionManager::PLAY, this, SLOT(play())));
+    m_mainMenu->addAction(ACTION(ActionManager::PAUSE, this, SLOT(pause())));
+    m_mainMenu->addAction(ACTION(ActionManager::STOP, this, SLOT(stop())));
+    m_mainMenu->addAction(ACTION(ActionManager::PREVIOUS, this, SLOT(previous())));
+    m_mainMenu->addAction(ACTION(ActionManager::NEXT, this, SLOT(next())));
+    m_mainMenu->addAction(ACTION(ActionManager::PLAY_PAUSE, this, SLOT(playPause())));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(QIcon::fromTheme("go-up"), tr("&Jump To File"),
                           this, SLOT(jumpToFile()), tr("J"));
@@ -557,25 +551,23 @@ void MainWindow::savePlaylist()
 
 void MainWindow::setFileList(const QStringList &l, bool clear)
 {
+    clear = true;
+    m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
     if(!clear)
     {
-        m_pl_manager->currentPlayList()->addFileList(l);
+        m_pl_manager->selectedPlayList()->add(l);
         return;
     }
-    if (m_core->state() == Qmmp::Playing || m_core->state() == Qmmp::Paused)
+    if (m_core->state() != Qmmp::Stopped)
     {
         stop();
         qApp->processEvents(); //receive stop signal
     }
-    m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
-    connect(m_pl_manager->selectedPlayList(), SIGNAL(firstAdded()), this, SLOT(play()));
-    if (m_pl_manager->selectedPlayList()->setFileList(l))
-        m_model = m_pl_manager->selectedPlayList();
-    else
-    {
-        disconnect(m_pl_manager->selectedPlayList(), SIGNAL(firstAdded()), this, SLOT(play()));
-        addFile();
-    }
+    m_model = m_pl_manager->selectedPlayList();
+    m_model->clear();
+    connect(m_model, SIGNAL(firstAdded()), SLOT(play()));
+    connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
+    m_model->add(l);
 }
 
 void MainWindow::playPause()
@@ -634,6 +626,16 @@ void MainWindow::handleCloseRequest()
         toggleVisibility();
     else
         QApplication::closeAllWindows();
+}
+
+void MainWindow::disconnectPl()
+{
+    if(m_model)
+    {
+        disconnect(m_model, SIGNAL(firstAdded()), this, SLOT(play()));
+        disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
+        m_model = 0;
+    }
 }
 
 void MainWindow::addUrl()

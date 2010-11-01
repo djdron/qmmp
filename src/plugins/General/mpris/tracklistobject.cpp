@@ -35,6 +35,7 @@ TrackListObject::TrackListObject(QObject *parent) : QObject(parent)
     connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
     connect (m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
              SLOT(switchPlayList(PlayListModel*,PlayListModel*)));
+    m_prev_count = 0;
 }
 
 
@@ -44,21 +45,25 @@ TrackListObject::~TrackListObject()
 
 int TrackListObject::AddTrack(const QString &in0, bool in1)
 {
-    int old_count = m_model->count();
+    QString path = in0;
     if(in0.startsWith("file://"))
-        m_model->addFile(QUrl(in0).toLocalFile ()); //converts url to local file path
-    else
-        m_model->addFile(in0);
-    int new_count = m_model->count();
-    if(new_count == old_count)
-        return 0;
+    {
+        path = QUrl(in0).toLocalFile ();
+        if(!QFile::exists(path))
+            return 1; //error
+    }
     if(in1)
     {
-        m_model->setCurrent(new_count-1);
+        m_pl_manager->selectPlayList(m_model);
         m_player->stop();
-        m_player->play();
+        qDebug("1");
+        m_prev_count = m_model->count();
+        connect(m_model, SIGNAL(listChanged()), this, SLOT(checkNewItem()));
+        connect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
+        qDebug("2");
     }
-    return 1;
+    m_model->add(path);
+    return 0;
 }
 
 void TrackListObject::DelTrack(int in0)
@@ -109,6 +114,22 @@ void TrackListObject::SetRandom(bool in0)
     m_pl_manager->setShuffle(in0);
 }
 
+void TrackListObject::disconnectPl()
+{
+    disconnect(m_model, SIGNAL(listChanged()), this, SLOT(checkNewItem()));
+    disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
+}
+
+void TrackListObject::checkNewItem() //checks for new item in playlist
+{
+    if(m_model->count() > m_prev_count)
+    {
+        disconnectPl(); //disconnect playlist;
+        m_model->setCurrent(m_prev_count); // activate first added item
+        m_player->play(); // ... and play it
+    }
+}
+
 void  TrackListObject::updateTrackList()
 {
     emit TrackListChange(m_model->count());
@@ -116,6 +137,7 @@ void  TrackListObject::updateTrackList()
 
 void TrackListObject::switchPlayList(PlayListModel *cur, PlayListModel *prev)
 {
+    disconnectPl();
     m_model = cur;
     connect (m_model, SIGNAL(listChanged()), SLOT(updateTrackList()));
     if(prev)

@@ -57,7 +57,9 @@ HEADERS += mainwindow.h \
     popupsettings.h \
     windowsystem.h \
     viewmenu.h \
-    lxdesupport.h
+    lxdesupport.h \
+    actionmanager.h \
+    shortcutitem.h
 SOURCES += mainwindow.cpp \
     mp3player.cpp \
     button.cpp \
@@ -109,7 +111,9 @@ SOURCES += mainwindow.cpp \
     popupsettings.cpp \
     windowsystem.cpp \
     viewmenu.cpp \
-    lxdesupport.cpp
+    lxdesupport.cpp \
+    actionmanager.cpp \
+    shortcutitem.cpp
 win32:HEADERS += ../qmmp/visual.h
 unix { 
     HEADERS +=
