@@ -94,72 +94,72 @@
     <message>
         <location filename="../actionmanager.cpp" line="36"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Відтворити</translation>
+        <translation>&amp;Відтворити</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="36"/>
         <source>X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished">&amp;Пауза</translation>
+        <translation>&amp;Пауза</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
         <source>C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished">&amp;Стоп</translation>
+        <translation>&amp;Стоп</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Previous</source>
-        <translation type="unfinished">&amp;Назад</translation>
+        <translation>&amp;Назад</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>Z</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Next</source>
-        <translation type="unfinished">&amp;Вперед</translation>
+        <translation>&amp;Вперед</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished">&amp;Грати/Пауза</translation>
+        <translation>&amp;Грати/Пауза</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Jump to File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Перейти до файлу</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>J</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -583,7 +583,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="152"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Комбінації клавіш</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="257"/>
@@ -669,22 +669,22 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1251"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Дія</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1256"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Комбінація</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1264"/>
         <source>Change</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1271"/>
         <source>Reset</source>
-        <translation type="unfinished">Скинути</translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="555"/>
