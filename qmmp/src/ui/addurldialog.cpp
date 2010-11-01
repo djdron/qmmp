@@ -104,7 +104,7 @@ void AddUrlDialog::accept( )
                 return;
             }
         }
-        m_model->addFile(s); //TODO fix interface freezes
+        m_model->add(s);
     }
     QDialog::accept();
 }
@@ -121,7 +121,7 @@ void AddUrlDialog::readResponse(QNetworkReply *reply)
         PlaylistFormat* prs = PlaylistParser::instance()->findByPath(s);
         if (prs)
         {
-            m_model->addFiles(prs->decode(reply->readAll()));
+            m_model->add(prs->decode(reply->readAll()));
             QDialog::accept();
         }
     }

@@ -182,10 +182,7 @@ void UDisksPlugin::processAction(QAction *action)
 {
     qDebug("UDisksPlugin: action triggered: %s", qPrintable(action->data().toString()));
     QString path = action->data().toString();
-    if (path.startsWith("cdda://"))
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addFile(path);
-    else
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addDirectory(path);
+    MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
 }
 
 QAction *UDisksPlugin::findAction(const QString &dev_path)
@@ -206,7 +203,7 @@ UDisksDevice *UDisksPlugin::findDevice(QAction *action)
         if (device->property("DeviceIsOpticalDisc").toBool() &&
                 device->property("OpticalDiscNumAudioTracks").toInt())
         {
-            dev_path = "cdda://" + device->property("DeviceFile").toString();   
+            dev_path = "cdda://" + device->property("DeviceFile").toString();
             if (dev_path == action->data().toString())
                 return device;
         }
@@ -230,11 +227,11 @@ void UDisksPlugin::addPath(const QString &path)
 
     if (path.startsWith("cdda://") && m_addTracks)
     {
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addFile(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
         return;
     }
     else if (!path.startsWith("cdda://") && m_addFiles)
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addDirectory(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
 }
 
 void UDisksPlugin::removePath(const QString &path)

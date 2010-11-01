@@ -190,10 +190,7 @@ void HalPlugin::processAction(QAction *action)
 {
     qDebug("HalPlugin: action triggered: %s", qPrintable(action->data().toString()));
     QString path = action->data().toString();
-    if (path.startsWith("cdda://"))
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addFile(path);
-    else
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addDirectory(path);
+    MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
 }
 
 QAction *HalPlugin::findAction(const QString &dev_path)
@@ -238,11 +235,11 @@ void HalPlugin::addPath(const QString &path)
 
     if (path.startsWith("cdda://") && m_addTracks)
     {
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addFile(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
         return;
     }
     else if (!path.startsWith("cdda://") && m_addFiles)
-        MediaPlayer::instance()->playListManager()->selectedPlayList()->addDirectory(path);
+        MediaPlayer::instance()->playListManager()->selectedPlayList()->add(path);
 }
 
 void HalPlugin::removePath(const QString &path)

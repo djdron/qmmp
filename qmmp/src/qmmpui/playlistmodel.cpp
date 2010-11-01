@@ -73,22 +73,20 @@ PlayListModel::PlayListModel(const QString &name, QObject *parent)
     m_total_length = 0;
     m_current = 0;
     is_repeatable_list = false;
-    m_play_state = new NormalPlayState(this);
     m_stop_item = 0;
+    m_play_state = new NormalPlayState(this);
+    m_loader = new FileLoader(this);
+    connect(m_loader, SIGNAL(newPlayListItem(PlayListItem*)),
+            SLOT(add(PlayListItem*)), Qt::QueuedConnection);
+    connect(m_loader, SIGNAL(finished()), SLOT(preparePlayState()));
+    connect(m_loader, SIGNAL(finished()), SIGNAL(loaderFinished()));
 }
 
 PlayListModel::~PlayListModel()
 {
     clear();
     delete m_play_state;
-    foreach(GuardedFileLoader l,m_running_loaders)
-    {
-        if (!l.isNull())
-        {
-            l->finish();
-            l->wait();
-        }
-    }
+    m_loader->finish();
 }
 
 QString PlayListModel::name() const
@@ -115,7 +113,7 @@ void PlayListModel::add(PlayListItem *item)
     m_current = m_items.indexOf(m_currentItem);
 
     if (m_items.size() == 1)
-        emit firstAdded();    
+        emit firstAdded();
     emit listChanged();
 }
 
@@ -136,6 +134,29 @@ void PlayListModel::add(QList <PlayListItem *> items)
     emit listChanged();
 }
 
+void PlayListModel::add(const QString &path)
+{
+    QFileInfo f_info(path);
+    //if (f_info.exists() || path.contains("://"))
+    {
+        if (f_info.isDir())
+            m_loader->loadDirectory(path);
+        else
+        {
+            m_loader->loadFile(path);
+            loadPlaylist(path);
+        }
+    }
+}
+
+void PlayListModel::add(const QStringList &paths)
+{
+    foreach(QString str, paths)
+    {
+        add(str);
+    }
+}
+
 int PlayListModel::count()
 {
     return m_items.size();
@@ -147,7 +168,7 @@ PlayListItem* PlayListModel::currentItem()
 }
 
 PlayListItem* PlayListModel::nextItem()
-{ 
+{
     if(m_items.isEmpty() || !m_play_state)
         return 0;
     if(m_stop_item && m_stop_item == currentItem())
@@ -195,31 +216,21 @@ bool PlayListModel::next()
         return true;
     }
 
-    if (isFileLoaderRunning())
+    if(m_loader->isRunning())
         m_play_state->prepare();
     return m_play_state->next();
 }
 
 bool PlayListModel::previous()
 {
-    if (isFileLoaderRunning())
+    if (m_loader->isRunning())
         m_play_state->prepare();
     return m_play_state->previous();
 }
 
 void PlayListModel::clear()
 {
-    foreach(GuardedFileLoader l,m_running_loaders)
-    {
-        if (!l.isNull())
-        {
-            l->finish();
-            l->wait();
-        }
-    }
-
-    m_running_loaders.clear();
-
+    m_loader->finish();
     m_current = 0;
     m_stop_item = 0;
     while (!m_items.isEmpty())
@@ -407,13 +418,13 @@ void PlayListModel::selectAll()
     emit listChanged();
 }
 
-void PlayListModel::showDetails()
+void PlayListModel::showDetails(QWidget *parent)
 {
     for (int i = 0; i<m_items.size(); ++i)
     {
         if (m_items.at(i)->isSelected())
         {
-            QDialog *d = new DetailsDialog(m_items.at(i)); //TODO set parent widget
+            QDialog *d = new DetailsDialog(m_items.at(i), parent);
             TagUpdater *updater = new TagUpdater(d, m_items.at(i));
             m_editing_items.append(m_items.at(i));
             connect(updater, SIGNAL(destroyed(QObject *)),SIGNAL(listChanged()));
@@ -421,92 +432,6 @@ void PlayListModel::showDetails()
             return;
         }
     }
-}
-
-void PlayListModel::addFile(const QString& path)
-{
-    if (path.isEmpty())
-        return;
-    QList <FileInfo *> playList =
-            MetaDataManager::instance()->createPlayList(path, PlaylistSettings::instance()->useMetadata());
-    foreach(FileInfo *info, playList)
-        add(new PlayListItem(info));
-
-    m_play_state->prepare();
-}
-
-FileLoader * PlayListModel::createFileLoader()
-{
-    FileLoader* f_loader = new FileLoader(this);
-// f_loader->setStackSize(20 * 1024 * 1024);
-    m_running_loaders << f_loader;
-    connect(f_loader,SIGNAL(newPlayListItem(PlayListItem*)),SLOT(add(PlayListItem*)),Qt::QueuedConnection);
-    connect(f_loader,SIGNAL(finished()),this,SLOT(preparePlayState()));
-    connect(f_loader,SIGNAL(finished()),f_loader,SLOT(deleteLater()));
-    return f_loader;
-}
-
-void PlayListModel::addFiles(const QStringList &files)
-{
-    FileLoader* f_loader = createFileLoader();
-    f_loader->setFilesToLoad(files);
-    f_loader->start(QThread::IdlePriority);
-}
-
-void PlayListModel::addDirectory(const QString& s)
-{
-    FileLoader* f_loader = createFileLoader();
-    f_loader->setDirectoryToLoad(s);
-    f_loader->start(QThread::IdlePriority);
-}
-
-void PlayListModel::addFileList(const QStringList &l)
-{
-//    qWarning("void// PlayListModel::addFileList(const QStringList &l)");
-    foreach(QString str,l)
-    {
-        QFileInfo f_info(str);
-        if (f_info.exists() || str.contains("://"))
-        {
-            if (f_info.isDir())
-                addDirectory(str);
-            else
-            {
-                addFile(str);
-                loadPlaylist(str);
-            }
-        }
-        // Do processing the rest of events to avoid GUI freezing
-        QApplication::processEvents(QEventLoop::AllEvents,10);
-    }
-}
-
-bool PlayListModel::setFileList(const QStringList & l)
-{
-    bool model_cleared = false;
-    foreach(QString str,l)
-    {
-        QFileInfo f_info(str);
-        if (f_info.exists() || str.contains("://"))
-        {
-            if (!model_cleared)
-            {
-                clear();
-                model_cleared = true;
-            }
-            if (f_info.isDir())
-                addDirectory(str);
-            else
-            {
-                addFile(str);
-                loadPlaylist(str);
-            }
-        }
-        // Do processing the rest of events to avoid GUI freezing
-        QApplication::processEvents(QEventLoop::AllEvents,10);
-    }
-
-    return model_cleared;
 }
 
 int PlayListModel::firstSelectedUpper(int row)
@@ -895,7 +820,7 @@ void PlayListModel::loadPlaylist(const QString &f_name)
                 if (QFileInfo(list.at(i)).isRelative() && !list.at(i).contains("://"))
                     QString path = list[i].prepend(QFileInfo(f_name).canonicalPath () + QDir::separator ());
             }
-            addFiles(list);
+            m_loader->loadFiles(list);
             file.close();
         }
         else
@@ -931,15 +856,6 @@ bool PlayListModel::isRepeatableList() const
 bool PlayListModel::isShuffle() const
 {
     return m_shuffle;
-}
-
-bool PlayListModel::isFileLoaderRunning() const
-{
-    foreach(FileLoader* l,m_running_loaders)
-    if (l && l->isRunning())
-        return true;
-
-    return false;
 }
 
 void PlayListModel::preparePlayState()

@@ -298,6 +298,10 @@ signals:
      * @param name New playlist name.
      */
     void nameChanged(const QString& name);
+    /*!
+     * Emitted when playlist loader thread has finished.
+     */
+    void loaderFinished();
 
 public slots:
     /*!
@@ -306,9 +310,19 @@ public slots:
     void add(PlayListItem *item);
     /*!
      * Adds a list of items to the playlist.
-     * @param items List of items
+     * @param items List of items.
      */
     void add(QList <PlayListItem *> items);
+    /*!
+     * Adds a list of files and directories to the playlist
+     * @param path Full path of file or directory.
+     */
+    void add(const QString &path);
+    /*!
+     * Adds a list of files and directories to the playlist
+     * @param paths Full paths of files and directories.
+     */
+    void add(const QStringList &paths);
     /*!
      * Removes all items.
      */
@@ -343,34 +357,13 @@ public slots:
     void selectAll();
     /*!
      * Shows details for the first selected item.
+     * @param parent parent Widget.
      */
-    void showDetails();
+    void showDetails(QWidget *parent = 0);
     /*!
      * Emits update signals manually.
      */
     void doCurrentVisibleRequest();
-    /*!
-     * Adds file \b path to the playlist. File should be supported.
-     */
-    void addFile(const QString &path);
-    /*!
-     * Adds the list \b l of files to the model.
-     */
-    void addFiles(const QStringList& l);
-    /*!
-     * Adds \b dir to the model.
-     */
-    void addDirectory(const QString& dir);
-    /*!
-     * Removes previous items and loads list of files (regular files or directories),
-     * returns \b true if at least one file has been successfully loaded,
-     * otherwise returns \b false
-     */
-    bool setFileList(const QStringList &l);
-    /*!
-     * Loads list of files (regular files or directories)
-     */
-    void addFileList(const QStringList &l);
     /*!
      * Randomly changes items order.
      */
@@ -434,14 +427,6 @@ private:
      */
     int bottommostInSelection(int);
     /*!
-     * Creates and initializes file loader object.
-     */
-    FileLoader* createFileLoader();
-    /*!
-     * Is someone of file loaders is running?
-     */
-    bool isFileLoaderRunning()const;
-    /*!
      * Removes items from model. If \b inverted is \b false -
      * selected items will be removed, else - unselected.
      */
@@ -473,13 +458,7 @@ private:
      */
     PlayState* m_play_state;
     int m_total_length;
-    typedef QPointer<FileLoader> GuardedFileLoader;
-    /*!
-     * Vector of currently running file loaders.
-     *  All loaders are automatically sheduled for deletion
-     * when finished.
-     */
-    QVector<GuardedFileLoader> m_running_loaders;
+    FileLoader *m_loader;
     bool m_shuffle;
     QString m_name;
 };

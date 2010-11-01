@@ -249,17 +249,9 @@ public slots:
      */
     void showDetails();
     /*!
-     * This is a convenience function and is the same as calling \b selectedPlayList()->addFile(path)
+     * This is a convenience function and is the same as calling \b selectedPlayList()->add(paths)
      */
-    void addFile(const QString &path);
-    /*!
-     * This is a convenience function and is the same as calling \b selectedPlayList()->addFiles(l)
-     */
-    void addFiles(const QStringList& l);
-    /*!
-     * This is a convenience function and is the same as calling \b selectedPlayList()->addDirectory(dir)
-     */
-    void addDirectory(const QString& dir);
+    void add(const QStringList &paths);
     /*!
      * This is a convenience function and is the same as calling \b selectedPlayList()->randomizeList()
      */

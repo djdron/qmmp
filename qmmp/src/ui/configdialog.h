@@ -67,6 +67,7 @@ private:
     void findSkins(const QString &path);
     void loadPluginsInfo();
     void loadFonts();
+    void loadShortcuts();
     void createMenus();
 
 

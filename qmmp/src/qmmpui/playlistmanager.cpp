@@ -444,19 +444,9 @@ void PlayListManager::showDetails()
     m_selected->showDetails();
 }
 
-void PlayListManager::addFile(const QString &path)
+void PlayListManager::add(const QStringList &paths)
 {
-    m_selected->addFile(path);
-}
-
-void PlayListManager::addFiles(const QStringList& l)
-{
-    m_selected->addFiles(l);
-}
-
-void PlayListManager::addDirectory(const QString& dir)
-{
-    m_selected->addDirectory(dir);
+    m_selected->add(paths);
 }
 
 void PlayListManager::randomizeList()
