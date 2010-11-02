@@ -426,32 +426,20 @@ void MainWindow::createActions()
     m_mainMenu->addMenu(new ViewMenu(this));
 
     QMenu *plMenu = m_mainMenu->addMenu(tr("Playlist"));
-    QAction *repeateAllAction = plMenu->addAction(tr("&Repeat Playlist"));
-    QAction *repeateTrackAction = plMenu->addAction(tr("&Repeat Track"));
-    QAction *shuffleAction = plMenu->addAction(tr("&Shuffle"));
-    QAction *noPlAdvanceAction = plMenu->addAction(tr("&No Playlist Advance"));
-    QAction *stopAfterSelectedAction = plMenu->addAction(tr("&Stop After Selected"));
-    QAction *clearQueueAction = plMenu->addAction(tr("&Clear Queue"));
-    repeateAllAction->setCheckable (true);
-    repeateTrackAction->setCheckable (true);
-    noPlAdvanceAction->setCheckable (true);
-    shuffleAction->setCheckable (true);
-    repeateAllAction->setShortcut(tr("R")) ;
-    repeateTrackAction->setShortcut(tr("Ctrl+R")) ;
-    noPlAdvanceAction->setShortcut(tr("Ctrl+N")) ;
-    stopAfterSelectedAction->setShortcut(tr("Ctrl+S"));
-    clearQueueAction->setShortcut(tr("Alt+Q"));
-    shuffleAction->setShortcut(tr("S")) ;
-    connect(repeateAllAction, SIGNAL(triggered (bool)), m_pl_manager, SLOT(setRepeatableList(bool)));
-    connect(repeateTrackAction, SIGNAL(triggered (bool)), m_player, SLOT(setRepeatable(bool)));
-    connect(noPlAdvanceAction, SIGNAL(triggered (bool)), m_player, SLOT(setNoPlaylistAdvance(bool)));
-    connect(shuffleAction, SIGNAL(triggered (bool)), m_pl_manager, SLOT(setShuffle(bool)));
-    connect(stopAfterSelectedAction, SIGNAL(triggered (bool)), m_pl_manager, SLOT(stopAfterSelected()));
-    connect(clearQueueAction, SIGNAL(triggered()), m_pl_manager, SLOT(clearQueue()));
-    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)), repeateAllAction, SLOT(setChecked(bool)));
-    connect(m_player, SIGNAL (repeatableChanged(bool)), repeateTrackAction, SLOT(setChecked(bool)));
-    connect(m_player, SIGNAL (noPlaylistAdvanceChanged(bool)), noPlAdvanceAction, SLOT(setChecked(bool)));
-    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)), shuffleAction, SLOT(setChecked(bool)));
+    plMenu->addAction(ACTION(ActionManager::REPEAT_ALL, m_pl_manager, SLOT(setRepeatableList(bool))));
+    plMenu->addAction(ACTION(ActionManager::REPEAT_TRACK, m_player, SLOT(setRepeatable(bool))));
+    plMenu->addAction(ACTION(ActionManager::SHUFFLE, m_pl_manager, SLOT(setShuffle(bool))));
+    plMenu->addAction(ACTION(ActionManager::NO_PL_ADVANCE, m_player, SLOT(setNoPlaylistAdvance(bool))));
+    plMenu->addAction(ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager, SLOT(stopAfterSelected())));
+    plMenu->addAction(ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
+    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)),
+            ActionManager::instance()->action(ActionManager::REPEAT_ALL), SLOT(setChecked(bool)));
+    connect(m_player, SIGNAL (repeatableChanged(bool)),
+            ActionManager::instance()->action(ActionManager::REPEAT_TRACK), SLOT(setChecked(bool)));
+    connect(m_player, SIGNAL (noPlaylistAdvanceChanged(bool)),
+            ActionManager::instance()->action(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
+    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
+            ActionManager::instance()->action(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
 
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);

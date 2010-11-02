@@ -49,6 +49,14 @@ public:
         PLAY_PAUSE,
         JUMP,
 
+        REPEAT_ALL,
+        REPEAT_TRACK,
+        SHUFFLE,
+        NO_PL_ADVANCE,
+        STOP_AFTER_SELECTED,
+        CLEAR_QUEUE,
+
+
         SETTINGS,
         ABOUT,
         ABOUT_QT
@@ -61,6 +69,7 @@ public:
 
 private:
     QAction *createAction(QString name, QString confKey, QString key, QString iconName = QString());
+    QAction *createAction2(QString name, QString confKey, QString key);
     QSettings *m_settings;
     QHash <int, QAction *> m_actions;
     static ActionManager *m_instance;

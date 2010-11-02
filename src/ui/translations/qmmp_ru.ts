@@ -92,73 +92,133 @@
 <context>
     <name>ActionManager</name>
     <message>
-        <location filename="../actionmanager.cpp" line="36"/>
+        <location filename="../actionmanager.cpp" line="37"/>
         <source>&amp;Play</source>
         <translation type="unfinished">&amp;Воспроизвести</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="36"/>
+        <location filename="../actionmanager.cpp" line="37"/>
         <source>X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="37"/>
+        <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Pause</source>
         <translation type="unfinished">&amp;Приостановить</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="37"/>
+        <location filename="../actionmanager.cpp" line="38"/>
         <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="38"/>
+        <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Stop</source>
         <translation type="unfinished">&amp;Стоп</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="38"/>
+        <location filename="../actionmanager.cpp" line="39"/>
         <source>V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="39"/>
+        <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Previous</source>
         <translation type="unfinished">&amp;Предыдущий фрагмент</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="39"/>
+        <location filename="../actionmanager.cpp" line="40"/>
         <source>Z</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="40"/>
+        <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Next</source>
         <translation type="unfinished">&amp;Следующий фрагмент</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="40"/>
+        <location filename="../actionmanager.cpp" line="41"/>
         <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="41"/>
+        <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Play/Pause</source>
         <translation type="unfinished">&amp;Воспр/приост</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="41"/>
+        <location filename="../actionmanager.cpp" line="42"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="42"/>
+        <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Jump to File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="42"/>
+        <location filename="../actionmanager.cpp" line="43"/>
         <source>J</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="44"/>
+        <source>&amp;Repeat Playlist</source>
+        <translation type="unfinished">&amp;Повторять список</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="44"/>
+        <source>R</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>&amp;Repeat Track</source>
+        <translation type="unfinished">&amp;Повторять трек</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>Ctrl+R</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="46"/>
+        <source>&amp;Shuffle</source>
+        <translation type="unfinished">&amp;В случайном порядке</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="46"/>
+        <source>S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="47"/>
+        <source>&amp;No Playlist Advance</source>
+        <translation type="unfinished">&amp;Не продвигаться по списку</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="48"/>
+        <source>Ctrl+N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="49"/>
+        <source>&amp;Stop After Selected</source>
+        <translation type="unfinished">&amp;Остановить после выделенного</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="50"/>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="51"/>
+        <source>&amp;Clear Queue</source>
+        <translation type="unfinished">&amp;Очистить очередь</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="51"/>
+        <source>Alt+Q</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1058,16 +1118,6 @@
         <translation>Выберите один или несколько файлов</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="433"/>
-        <source>&amp;Stop After Selected</source>
-        <translation>&amp;Остановить после выделенного</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="442"/>
-        <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="423"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Перейти к файлу</translation>
@@ -1083,68 +1133,48 @@
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
-        <source>&amp;No Playlist Advance</source>
-        <translation>&amp;Не продвигаться по списку</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="434"/>
-        <source>&amp;Clear Queue</source>
-        <translation>&amp;Очистить очередь</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="441"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="443"/>
-        <source>Alt+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>&amp;Settings</source>
         <translation>&amp;Настройки</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="455"/>
         <source>&amp;Exit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="514"/>
+        <location filename="../mainwindow.cpp" line="502"/>
         <source>Open Playlist</source>
         <translation>Открыть список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="527"/>
         <source>Save Playlist</source>
         <translation>Сохранить список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>&amp;About</source>
         <translation>&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="512"/>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="500"/>
+        <location filename="../mainwindow.cpp" line="526"/>
         <source>Playlist Files</source>
         <translation>Файлы списков</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="464"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>&amp;About Qt</source>
         <translation>&amp;О библиотеке Qt</translation>
     </message>
@@ -1154,37 +1184,7 @@
         <translation>Все форматы</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
-        <source>&amp;Repeat Track</source>
-        <translation>&amp;Повторять трек</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="431"/>
-        <source>&amp;Shuffle</source>
-        <translation>&amp;В случайном порядке</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="439"/>
-        <source>R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="440"/>
-        <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="444"/>
-        <source>S</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="429"/>
-        <source>&amp;Repeat Playlist</source>
-        <translation>&amp;Повторять список</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="458"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>Tools</source>
         <translation>Сервис</translation>
     </message>
