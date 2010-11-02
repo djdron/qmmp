@@ -92,74 +92,134 @@
 <context>
     <name>ActionManager</name>
     <message>
-        <location filename="../actionmanager.cpp" line="36"/>
+        <location filename="../actionmanager.cpp" line="37"/>
         <source>&amp;Play</source>
         <translation type="unfinished">再生(&amp;Y)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="36"/>
+        <location filename="../actionmanager.cpp" line="37"/>
         <source>X</source>
         <translation type="unfinished">X</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="37"/>
+        <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Pause</source>
         <translation type="unfinished">一時停止(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="37"/>
+        <location filename="../actionmanager.cpp" line="38"/>
         <source>C</source>
         <translation type="unfinished">C</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="38"/>
+        <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Stop</source>
         <translation type="unfinished">終止(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="38"/>
+        <location filename="../actionmanager.cpp" line="39"/>
         <source>V</source>
         <translation type="unfinished">V</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="39"/>
+        <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Previous</source>
         <translation type="unfinished">前の曲(&amp;R)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="39"/>
+        <location filename="../actionmanager.cpp" line="40"/>
         <source>Z</source>
         <translation type="unfinished">Z</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="40"/>
+        <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Next</source>
         <translation type="unfinished">次の曲(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="40"/>
+        <location filename="../actionmanager.cpp" line="41"/>
         <source>B</source>
         <translation type="unfinished">B</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="41"/>
+        <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Play/Pause</source>
         <translation type="unfinished">再生/停止(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="41"/>
+        <location filename="../actionmanager.cpp" line="42"/>
         <source>Space</source>
         <translation type="unfinished">Space</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="42"/>
+        <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Jump to File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="42"/>
+        <location filename="../actionmanager.cpp" line="43"/>
         <source>J</source>
         <translation type="unfinished">J</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="44"/>
+        <source>&amp;Repeat Playlist</source>
+        <translation type="unfinished">プレイリストを繰り返す(&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="44"/>
+        <source>R</source>
+        <translation type="unfinished">R</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>&amp;Repeat Track</source>
+        <translation type="unfinished">トラックを繰り返す(&amp;T)</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="45"/>
+        <source>Ctrl+R</source>
+        <translation type="unfinished">Ctrl+R</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="46"/>
+        <source>&amp;Shuffle</source>
+        <translation type="unfinished">シャッフル(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="46"/>
+        <source>S</source>
+        <translation type="unfinished">S</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="47"/>
+        <source>&amp;No Playlist Advance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="48"/>
+        <source>Ctrl+N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="49"/>
+        <source>&amp;Stop After Selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="50"/>
+        <source>Ctrl+S</source>
+        <translation type="unfinished">Ctrl+S</translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="51"/>
+        <source>&amp;Clear Queue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="51"/>
+        <source>Alt+Q</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1068,46 +1128,6 @@
         <translation type="unfinished">プレイリスト</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="429"/>
-        <source>&amp;Repeat Playlist</source>
-        <translation>プレイリストを繰り返す(&amp;L)</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="430"/>
-        <source>&amp;Repeat Track</source>
-        <translation>トラックを繰り返す(&amp;T)</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="431"/>
-        <source>&amp;Shuffle</source>
-        <translation>シャッフル(&amp;F)</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="433"/>
-        <source>&amp;Stop After Selected</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="439"/>
-        <source>R</source>
-        <translation>R</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="440"/>
-        <source>Ctrl+R</source>
-        <translation>Ctrl+R</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="442"/>
-        <source>Ctrl+S</source>
-        <translation>Ctrl+S</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="444"/>
-        <source>S</source>
-        <translation>S</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="423"/>
         <source>&amp;Jump To File</source>
         <translation>ファイルを指定して即刻再生(&amp;J)</translation>
@@ -1118,73 +1138,53 @@
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
-        <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="434"/>
-        <source>&amp;Clear Queue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="441"/>
-        <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="443"/>
-        <source>Alt+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="458"/>
+        <location filename="../mainwindow.cpp" line="446"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="448"/>
         <source>&amp;Settings</source>
         <translation>設定(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="451"/>
         <source>&amp;About</source>
         <translation>QMMPについて(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="464"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>&amp;About Qt</source>
         <translation>Qtについて(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="455"/>
         <source>&amp;Exit</source>
         <translation>終了(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="512"/>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="500"/>
+        <location filename="../mainwindow.cpp" line="526"/>
         <source>Playlist Files</source>
         <translation>プレイリストファイル</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="514"/>
+        <location filename="../mainwindow.cpp" line="502"/>
         <source>Open Playlist</source>
         <translation>プレイリストを開く</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="527"/>
         <source>Save Playlist</source>
         <translation>プレイリストを保存</translation>
     </message>

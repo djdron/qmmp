@@ -33,6 +33,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_instance = this;
     m_settings = new QSettings(Qmmp::configFile(), QSettings::IniFormat);
     m_settings->beginGroup("Shortcuts");
+    //playback
     m_actions[PLAY] = createAction(tr("&Play"), "play", tr("X"), "media-playback-start");
     m_actions[PAUSE] = createAction(tr("&Pause"), "pause", tr("C"), "media-playback-pause");
     m_actions[STOP] = createAction(tr("&Stop"), "stop", tr("V"), "media-playback-stop");
@@ -40,6 +41,15 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[NEXT] = createAction(tr("&Next"), "next", tr("B"), "media-skip-forward");
     m_actions[PLAY_PAUSE] = createAction(tr("&Play/Pause"), "play_pause", tr("Space"));
     m_actions[JUMP] = createAction(tr("&Jump to File"), "jump", tr("J"), "go-up");
+    m_actions[REPEAT_ALL] = createAction2(tr("&Repeat Playlist"), "repeate_playlist", tr("R"));
+    m_actions[REPEAT_TRACK] = createAction2(tr("&Repeat Track"), "repeate_track", tr("Ctrl+R"));
+    m_actions[SHUFFLE] = createAction2(tr("&Shuffle"), "shuffle", tr("S"));
+    m_actions[NO_PL_ADVANCE] = createAction2(tr("&No Playlist Advance"), "no_playlist_advance",
+                                            tr("Ctrl+N"));
+    m_actions[STOP_AFTER_SELECTED] = createAction(tr("&Stop After Selected"), "stop_after_selected",
+                                                  tr("Ctrl+S"));
+    m_actions[CLEAR_QUEUE] = createAction(tr("&Clear Queue"), "clear_queue", tr("Alt+Q"));
+
     m_settings->endGroup();
     delete m_settings;
     m_settings = 0;
@@ -78,5 +88,12 @@ QAction *ActionManager::createAction(QString name, QString confKey, QString key,
         action->setIcon(QIcon(iconName));
     else
         action->setIcon(QIcon::fromTheme(iconName));
+    return action;
+}
+
+QAction *ActionManager::createAction2(QString name, QString confKey, QString key)
+{
+    QAction *action = createAction(name, confKey, key);
+    action->setCheckable(true);
     return action;
 }

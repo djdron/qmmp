@@ -340,7 +340,7 @@ void ConfigDialog::loadShortcuts()
 {
     //playback
     QTreeWidgetItem *item = new QTreeWidgetItem (ui.shortcutTreeWidget, QStringList() << tr("Playback"));
-    for(int i = ActionManager::PLAY; i <= ActionManager::PLAY_PAUSE; ++i)
+    for(int i = ActionManager::PLAY; i <= ActionManager::CLEAR_QUEUE; ++i)
         new ShortcutItem(item, i);
     item->setExpanded(true);
     ui.shortcutTreeWidget->addTopLevelItem(item);
