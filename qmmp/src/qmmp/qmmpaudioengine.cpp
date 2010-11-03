@@ -157,7 +157,9 @@ void QmmpAudioEngine::addEffect(EffectFactory *factory)
     }
     if(m_output && m_output->isRunning())
     {
-        Effect *effect = factory->create();
+        Effect *effect = Effect::create(factory);
+        if(!effect)
+            return;
         effect->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
         if(effect->audioParameters() == m_ap)
         {
@@ -176,10 +178,13 @@ void QmmpAudioEngine::addEffect(EffectFactory *factory)
 void QmmpAudioEngine::removeEffect(EffectFactory *factory)
 {
     Effect *effect = 0;
-    foreach(effect, m_effects)
+    foreach(Effect *e, m_effects)
     {
-        if(effect->factory() == factory)
+        if(e->factory() == factory)
+        {
+            effect = e;
             break;
+        }
     }
     if(!effect)
         return;
@@ -415,7 +420,7 @@ void QmmpAudioEngine::run()
                     delete m_output;
                     m_output = createOutput();
                     if(m_output)
-                    { 
+                    {
                         m_output->start();
                         sendMetaData();
                         addOffset(); //offset

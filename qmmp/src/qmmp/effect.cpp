@@ -121,12 +121,8 @@ void Effect::checkFactories()
 Effect* Effect::create(EffectFactory *factory)
 {
     checkFactories();
-    Effect *effect = 0;
-    if(isEnabled(factory))
-    {
-        effect = factory->create();
-        effect->m_factory = factory;
-    }
+    Effect *effect = factory->create();
+    effect->m_factory = factory;
     return effect;
 }
 
