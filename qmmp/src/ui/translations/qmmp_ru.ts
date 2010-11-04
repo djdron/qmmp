@@ -574,7 +574,7 @@
     <message>
         <location filename="../configdialog.cpp" line="361"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Другие</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="420"/>
@@ -865,7 +865,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="152"/>
         <source>Shortcuts</source>
-        <translation>Сочетание клавиш</translation>
+        <translation>Сочетания клавиш</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="261"/>
