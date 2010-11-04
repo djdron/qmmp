@@ -17,29 +17,47 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SHORTCUTITEM_H
-#define SHORTCUTITEM_H
 
-#include <QTreeWidgetItem>
+#include <QKeyEvent>
+#include "shortcutdialog.h"
 
-class QWidget;
-class QAction;
-
-/**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
-class ShortcutItem : public QTreeWidgetItem
+ShortcutDialog::ShortcutDialog(const QString &key, QWidget *parent)
+        : QDialog(parent)
 {
-public:
+    ui.setupUi(this);
+    ui.keyLineEdit->setText(key);
+}
 
-    ShortcutItem(QTreeWidgetItem *parent, int type);
-    ~ShortcutItem();
-    QAction *action();
+ShortcutDialog::~ShortcutDialog()
+{
+}
 
-private:
-    QAction *m_action;
+void ShortcutDialog::keyPressEvent (QKeyEvent *event)
+{
+    int key = event->key();
+    switch (key)
+    {
+    case Qt::Key_Shift:
+    case Qt::Key_Control:
+    case Qt::Key_Meta:
+    case Qt::Key_Alt:
+    case Qt::Key_AltGr:
+    case Qt::Key_Super_L:
+    case Qt::Key_Super_R:
+    case Qt::Key_Menu:
+    case 0:
+    case Qt::Key_unknown:
+        key = 0;
+        ui.keyLineEdit->clear();
+        QWidget::keyPressEvent(event);
+        return;
+    }
+    QKeySequence seq(event->modifiers() + event->key());
+    ui.keyLineEdit->setText(seq.toString());
+    QWidget::keyPressEvent(event);
+}
 
-};
-
-#endif //SHORTCUTITEM_H
+const QString ShortcutDialog::key()
+{
+    return ui.keyLineEdit->text();
+}

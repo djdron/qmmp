@@ -5,7 +5,8 @@ FORMS += ./forms/configdialog.ui \
     ./forms/aboutdialog.ui \
     ./forms/addurldialog.ui \
     ./forms/playlistbrowser.ui \
-    ./forms/popupsettings.ui
+    ./forms/popupsettings.ui \
+    ./forms/shortcutdialog.ui
 HEADERS += mainwindow.h \
     button.h \
     display.h \
@@ -59,7 +60,8 @@ HEADERS += mainwindow.h \
     viewmenu.h \
     lxdesupport.h \
     actionmanager.h \
-    shortcutitem.h
+    shortcutitem.h \
+    shortcutdialog.h
 SOURCES += mainwindow.cpp \
     mp3player.cpp \
     button.cpp \
@@ -113,9 +115,10 @@ SOURCES += mainwindow.cpp \
     viewmenu.cpp \
     lxdesupport.cpp \
     actionmanager.cpp \
-    shortcutitem.cpp
+    shortcutitem.cpp \
+    shortcutdialog.cpp
 win32:HEADERS += ../qmmp/visual.h
-unix { 
+unix {
     HEADERS +=
     SOURCES +=
 }
@@ -143,7 +146,7 @@ INCLUDEPATH += ../
 RESOURCES = images/images.qrc \
     stuff.qrc
 TEMPLATE = app
-unix { 
+unix {
     target.path = /bin
     desktop.files = qmmp.desktop \
         qmmp_enqueue.desktop
@@ -180,7 +183,7 @@ TRANSLATIONS = translations/qmmp_ru.ts \
     translations/qmmp_nl.ts \
     translations/qmmp_ja.ts \
     translations/qmmp_es.ts
-x11 { 
+x11 {
     CONFIG += link_pkgconfig
     PKGCONFIG += x11
 }

@@ -118,16 +118,13 @@ class PlayList : public QWidget
         Button *m_selectButton;
         Button *m_sortButton;
         Button* m_playlistButton;
-
         PlaylistControl* m_pl_control;
         SymbolDisplay* m_length_totalLength;
         SymbolDisplay* m_current_time;
-
         Skin *m_skin;
         ListWidget *m_listWidget;
         PlayListTitleBar *m_titleBar;
         PlayListSlider *m_plslider;
-        QList <QAction *> m_actions;
         QPoint m_pos;
         bool m_resize;
         bool m_update;
@@ -138,8 +135,6 @@ class PlayList : public QWidget
         KeyboardManager* m_keyboardManager;
         QPointer <PlayListBrowser> m_pl_browser;
         PlayListSelector *m_pl_selector;
-
-
 };
 
 #endif

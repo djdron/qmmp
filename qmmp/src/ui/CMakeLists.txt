@@ -87,6 +87,7 @@ SET(ui_SRCS
     lxdesupport.cpp
     actionmanager.cpp
     shortcutitem.cpp
+    shortcutdialog.cpp
 )
 
 SET(ui_MOC_HDRS
@@ -144,6 +145,7 @@ SET(ui_MOC_HDRS
     lxdesupport.h
     shortcutitem.h
     actionmanager.h
+    shortcutdialog.h
 )
 
 SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
@@ -164,6 +166,7 @@ SET(ui_UIS
     forms/preseteditor.ui
     forms/playlistbrowser.ui
     forms/popupsettings.ui
+    forms/shortcutdialog.ui
 )
 
 QT4_WRAP_UI(ui_UIS_H ${ui_UIS})

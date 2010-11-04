@@ -374,6 +374,7 @@ void MainWindow::showSettings()
     confDialog->exec();
     updateSettings();
     confDialog->deleteLater();
+    ActionManager::instance()->saveActions();
 }
 
 void MainWindow::toggleVisibility()
@@ -445,15 +446,12 @@ void MainWindow::createActions()
     m_mainMenu->addMenu(m_visMenu);
     m_mainMenu->addMenu(m_generalHandler->createMenu(GeneralHandler::TOOLS_MENU, tr("Tools"), this));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(QIcon::fromTheme("configure"), tr("&Settings"),
-                          this, SLOT(showSettings()), tr("Ctrl+P"));
+    m_mainMenu->addAction(ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(QIcon(":/32x32/qmmp.png"), tr("&About"), this, SLOT(about()));
-    m_mainMenu->addAction(tr("&About Qt"), qApp, SLOT(aboutQt()));
-    Dock::instance()->addActions(m_mainMenu->actions());
+    m_mainMenu->addAction(ACTION(ActionManager::ABOUT, this, SLOT(about())));
+    m_mainMenu->addAction(ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(QIcon::fromTheme("application-exit"), tr("&Exit"),
-                          this, SLOT(close ()), tr("Ctrl+Q"));
+    m_mainMenu->addAction(ACTION(ActionManager::QUIT, this, SLOT(close())));
 
     QAction* forward = new QAction(this);
     forward->setShortcut(QKeySequence(Qt::Key_Right));

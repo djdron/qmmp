@@ -17,29 +17,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SHORTCUTITEM_H
-#define SHORTCUTITEM_H
+#ifndef SHORTCUTDIALOG_H
+#define SHORTCUTDIALOG_H
 
-#include <QTreeWidgetItem>
+#include <QDialog>
+#include "ui_shortcutdialog.h"
 
-class QWidget;
-class QAction;
+class QKeyEvent;
 
 /**
-   @author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
-class ShortcutItem : public QTreeWidgetItem
+class ShortcutDialog : public QDialog
 {
+    Q_OBJECT
 public:
+    ShortcutDialog(const QString &key, QWidget *parent = 0);
 
-    ShortcutItem(QTreeWidgetItem *parent, int type);
-    ~ShortcutItem();
-    QAction *action();
+    ~ShortcutDialog();
+
+    const QString key();
+
+protected:
+    virtual void keyPressEvent (QKeyEvent *event);
 
 private:
-    QAction *m_action;
+    Ui::ShortcutDialog ui;
 
 };
 
-#endif //SHORTCUTITEM_H
+#endif
