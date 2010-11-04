@@ -45,6 +45,7 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
+#include "shortcutdialog.h"
 #include "actionmanager.h"
 #include "shortcutitem.h"
 #include "popupsettings.h"
@@ -54,7 +55,7 @@
 #include "skinreader.h"
 
 ConfigDialog::ConfigDialog (QWidget *parent)
-        : QDialog (parent)
+    : QDialog (parent)
 {
     ui.setupUi (this);
     setAttribute(Qt::WA_QuitOnClose, false);
@@ -142,7 +143,7 @@ void ConfigDialog::readSettings()
     ui.replayGainModeComboBox->setCurrentIndex(ui.replayGainModeComboBox->findData(gs->replayGainMode()));
     ui.preampDoubleSpinBox->setValue(gs->replayGainPreamp());
     ui.defaultGainDoubleSpinBox->setValue(gs->replayGainDefaultGain());
-     //audio
+    //audio
     ui.softVolumeCheckBox->setChecked(gs->useSoftVolume());
     ui.use16BitCheckBox->setChecked(gs->use16BitOutput());
     ui.bufferSizeSpinBox->setValue(gs->bufferSize());
@@ -344,6 +345,25 @@ void ConfigDialog::loadShortcuts()
         new ShortcutItem(item, i);
     item->setExpanded(true);
     ui.shortcutTreeWidget->addTopLevelItem(item);
+    //view
+    item = new QTreeWidgetItem (ui.shortcutTreeWidget, QStringList() << tr("View"));
+    for(int i = ActionManager::WM_ALLWAYS_ON_TOP; i <= ActionManager::WM_DOUBLE_SIZE; ++i)
+        new ShortcutItem(item, i);
+    item->setExpanded(true);
+    ui.shortcutTreeWidget->addTopLevelItem(item);
+    //playlist
+    item = new QTreeWidgetItem (ui.shortcutTreeWidget, QStringList() << tr("Playlist"));
+    for(int i = ActionManager::PL_ADD_FILE; i <= ActionManager::PL_SHOW_MANAGER; ++i)
+        new ShortcutItem(item, i);
+    item->setExpanded(true);
+    ui.shortcutTreeWidget->addTopLevelItem(item);
+    //misc
+    item = new QTreeWidgetItem (ui.shortcutTreeWidget, QStringList() << tr("Misc"));
+    for(int i = ActionManager::SETTINGS; i <= ActionManager::QUIT; ++i)
+        new ShortcutItem(item, i);
+    item->setExpanded(true);
+    ui.shortcutTreeWidget->addTopLevelItem(item);
+
     ui.shortcutTreeWidget->resizeColumnToContents(0);
     ui.shortcutTreeWidget->resizeColumnToContents(1);
 }
@@ -488,7 +508,7 @@ void ConfigDialog::on_fdInformationButton_clicked()
 void ConfigDialog::installSkin()
 {
     QStringList files = FileDialog::getOpenFileNames(this,tr("Select Skin Files"), QDir::homePath(),
-                        tr("Skin files") + " (*.tar.gz *.tgz *.tar.bz2 *.zip *.wsz)");
+                                                     tr("Skin files") + " (*.tar.gz *.tgz *.tar.bz2 *.zip *.wsz)");
     foreach(QString path, files)
     {
         QFile file(path);
@@ -524,21 +544,34 @@ void ConfigDialog::on_treeWidget_currentItemChanged (QTreeWidgetItem *current, Q
     }
 }
 
- void ConfigDialog::on_outputComboBox_activated (int index)
- {
-     OutputFactory *factory = Output::factories()->at(index);
-     ui.outputInformationButton->setEnabled(factory->properties().hasAbout);
-     ui.outputPreferencesButton->setEnabled(factory->properties().hasSettings);
- }
+void ConfigDialog::on_outputComboBox_activated (int index)
+{
+    OutputFactory *factory = Output::factories()->at(index);
+    ui.outputInformationButton->setEnabled(factory->properties().hasAbout);
+    ui.outputPreferencesButton->setEnabled(factory->properties().hasSettings);
+}
 
- void ConfigDialog::on_outputPreferencesButton_clicked()
- {
-     int index = ui.outputComboBox->currentIndex();
-     Output::factories()->at(index)->showSettings(this);
- }
+void ConfigDialog::on_outputPreferencesButton_clicked()
+{
+    int index = ui.outputComboBox->currentIndex();
+    Output::factories()->at(index)->showSettings(this);
+}
 
- void ConfigDialog::on_outputInformationButton_clicked()
- {
-     int index = ui.outputComboBox->currentIndex();
-     Output::factories()->at(index)->showAbout(this);
- }
+void ConfigDialog::on_outputInformationButton_clicked()
+{
+    int index = ui.outputComboBox->currentIndex();
+    Output::factories()->at(index)->showAbout(this);
+}
+
+void ConfigDialog::on_changeShortcutButton_clicked()
+{
+    ShortcutItem *item = dynamic_cast<ShortcutItem *> (ui.shortcutTreeWidget->currentItem());
+    if(!item)
+        return;
+    ShortcutDialog editor(item->action()->shortcut().toString(), this);
+    if(editor.exec() == QDialog::Accepted)
+    {
+        item->action()->setShortcut(editor.key());
+        item->setText(1, item->action()->shortcut().toString());
+    }
+}

@@ -25,13 +25,14 @@
 #include <QString>
 #include <QHash>
 
-#define ACTION(type, receiver, member) ActionManager::instance()->use(type, receiver, member)
-
 class QAction;
 class QSettings;
 
+#define ACTION(type, receiver, member) ActionManager::instance()->use(type, receiver, member)
 
-
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class ActionManager : public QObject
 {
     Q_OBJECT
@@ -56,20 +57,47 @@ public:
         STOP_AFTER_SELECTED,
         CLEAR_QUEUE,
 
+        WM_ALLWAYS_ON_TOP,
+        WM_STICKY,
+        WM_DOUBLE_SIZE,
+
+        PL_ADD_FILE,
+        PL_ADD_DIRECTORY,
+        PL_ADD_URL,
+        PL_REMOVE_SELECTED,
+        PL_REMOVE_ALL,
+        PL_REMOVE_UNSELECTED,
+        PL_REMOVE_INVALID,
+        PL_REMOVE_DUPLICATES,
+        PL_ENQUEUE,
+        PL_INVERT_SELECTION,
+        PL_CLEAR_SELECTION,
+        PL_SELECT_ALL,
+        PL_SHOW_INFO,
+        PL_NEW,
+        PL_CLOSE,
+        PL_LOAD,
+        PL_SAVE,
+        PL_SELECT_NEXT,
+        PL_SELECT_PREVIOUS,
+        PL_SHOW_MANAGER,
 
         SETTINGS,
         ABOUT,
-        ABOUT_QT
+        ABOUT_QT,
+        QUIT,
     };
 
     QAction *action(int type);
     QAction *use(int type, const QObject *receiver, const char *member);
     QList<int> actions();
+    void saveActions();
     static ActionManager* instance();
 
 private:
     QAction *createAction(QString name, QString confKey, QString key, QString iconName = QString());
     QAction *createAction2(QString name, QString confKey, QString key);
+
     QSettings *m_settings;
     QHash <int, QAction *> m_actions;
     static ActionManager *m_instance;

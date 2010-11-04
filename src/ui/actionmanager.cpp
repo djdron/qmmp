@@ -49,7 +49,48 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[STOP_AFTER_SELECTED] = createAction(tr("&Stop After Selected"), "stop_after_selected",
                                                   tr("Ctrl+S"));
     m_actions[CLEAR_QUEUE] = createAction(tr("&Clear Queue"), "clear_queue", tr("Alt+Q"));
+    //view
+    m_actions[WM_ALLWAYS_ON_TOP] = createAction2(tr("Always on Top"), "always_on_top", "");
+    m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "General/always_on_top", "");
+    m_actions[WM_DOUBLE_SIZE] = createAction2(tr("Double Size"), "double_size", "");
+    //playlist
+    m_actions[PL_ADD_FILE] = createAction(tr("&Add File"), "add_file", tr("F"), "audio-x-generic");
+    m_actions[PL_ADD_DIRECTORY] = createAction(tr("&Add Directory"), "add_dir", tr("D"), "folder");
+    m_actions[PL_ADD_URL] = createAction(tr("&Add Url"), "add_url", tr("U"), "network-server");
+    m_actions[PL_REMOVE_SELECTED] = createAction(tr("&Remove Selected"), "remove_selected",
+                                                 tr("Del"), "edit-delete");
+    m_actions[PL_REMOVE_ALL] = createAction(tr("&Remove All"), "remove_all", "", "edit-clear");
+    m_actions[PL_REMOVE_UNSELECTED] = createAction(tr("&Remove Unselected"), "remove_unselected",
+                                                   "", "edit-delete");
+    m_actions[PL_REMOVE_INVALID] = createAction(tr("Remove unavailable files"), "remove_invalid",
+                                                "", "dialog-error");
+    m_actions[PL_REMOVE_DUPLICATES] = createAction(tr("Remove duplicates"), "remove_duplicates", "");
+    m_actions[PL_ENQUEUE] = createAction(tr("&Queue Toggle"), "enqueue", tr("Q"));
+    m_actions[PL_INVERT_SELECTION] = createAction(tr("Invert Selection"), "invert_selection", "");
+    m_actions[PL_CLEAR_SELECTION] = createAction(tr("&Select None"), "clear_selection", "");
+    m_actions[PL_SELECT_ALL] = createAction(tr("&Select All"), "select_all",
+                                            tr("Ctrl+A"), "edit-select-all");
+    m_actions[PL_SHOW_INFO] = createAction(tr("&View Track Details"), "show_info", tr("Alt+I"),
+                                           "dialog-information");
+    m_actions[PL_NEW] = createAction(tr("&New List"), "new_pl", tr("Ctrl+T"), "document-new");
+    m_actions[PL_CLOSE] = createAction(tr("&Delete List"), "close_pl", tr("Ctrl+W"), "window-close");
 
+    m_actions[PL_LOAD] = createAction(tr("&Load List"), "load_pl", tr("O"), "document-open");
+
+    m_actions[PL_SAVE] = createAction(tr("&Save List"), "save_pl", tr("Shift+S"), "document-save-as");
+
+
+    m_actions[PL_SELECT_NEXT] = createAction(tr("&Select Next Playlist"), "next_pl",
+                                             tr("Ctrl+PgDown"), "go-next");
+    m_actions[PL_SELECT_PREVIOUS] = createAction(tr("&Select Previous Playlist"), "prev_pl",
+                                                 tr("Ctrl+PgUp"), "go-previous");
+    m_actions[PL_SHOW_MANAGER] = createAction(tr("&Show Playlists"), "show_playlists",
+                                              tr("P"), "view-list-details");
+    //other
+    m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
+    m_actions[ABOUT] = createAction(tr("&About"), "about", "", ":/32x32/qmmp.png");
+    m_actions[ABOUT_QT] = createAction(tr("&About Qt"), "about_qt", "");
+    m_actions[QUIT] = createAction(tr("&Exit"), "exit", tr("Ctrl+Q"), "application-exit");
     m_settings->endGroup();
     delete m_settings;
     m_settings = 0;
@@ -96,4 +137,13 @@ QAction *ActionManager::createAction2(QString name, QString confKey, QString key
     QAction *action = createAction(name, confKey, key);
     action->setCheckable(true);
     return action;
+}
+
+void ActionManager::saveActions()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    foreach(QAction *action, m_actions.values())
+    {
+        settings.setValue(QString("Shortcuts/")+action->objectName(), action->shortcut());
+    }
 }

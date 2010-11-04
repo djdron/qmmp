@@ -27,7 +27,7 @@
 
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class QFileInfo;
 
@@ -61,6 +61,7 @@ private slots:
     void on_outputComboBox_activated (int index);
     void on_outputPreferencesButton_clicked();
     void on_outputInformationButton_clicked();
+    void on_changeShortcutButton_clicked();
 
 private:
     void readSettings();

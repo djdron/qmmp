@@ -20,17 +20,18 @@
 
 #include <QSettings>
 #include <qmmp/qmmp.h>
+#include "actionmanager.h"
 #include "viewmenu.h"
 
 ViewMenu::ViewMenu(MainWindow *parent) : QMenu(parent)
 {
     setTitle(tr("View"));
-    m_alwaysOnTopAction = addAction(tr("Always on top"));
-    m_showOnAllDesktopsAction = addAction(tr("Put on all workspaces"));
-    m_doubleSizeAction = addAction(tr("Double size"));
-    m_alwaysOnTopAction->setCheckable(true);
-    m_showOnAllDesktopsAction->setCheckable(true);
-    m_doubleSizeAction->setCheckable(true);
+    m_alwaysOnTopAction = ActionManager::instance()->action(ActionManager::WM_ALLWAYS_ON_TOP);
+    m_showOnAllDesktopsAction = ActionManager::instance()->action(ActionManager::WM_STICKY);
+    m_doubleSizeAction = ActionManager::instance()->action(ActionManager::WM_DOUBLE_SIZE);
+    addAction(m_alwaysOnTopAction);
+    addAction(m_showOnAllDesktopsAction);
+    addAction(m_doubleSizeAction);
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     m_doubleSizeAction->setChecked(settings.value ("General/double_size", false).toBool());
     m_alwaysOnTopAction->setChecked(settings.value ("General/always_on_top",false).toBool());

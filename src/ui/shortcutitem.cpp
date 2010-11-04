@@ -27,8 +27,13 @@ ShortcutItem::ShortcutItem(QTreeWidgetItem *parent, int type) : QTreeWidgetItem(
         << ActionManager::instance()->action(type)->shortcut())
 {
     m_action = ActionManager::instance()->action(type);
+    setIcon(0, m_action->icon());
 }
 
 ShortcutItem::~ShortcutItem()
 {}
 
+QAction *ShortcutItem::action()
+{
+    return m_action;
+}
