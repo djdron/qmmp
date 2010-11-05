@@ -537,7 +537,6 @@ void MainWindow::savePlaylist()
 
 void MainWindow::setFileList(const QStringList &l, bool clear)
 {
-    clear = true;
     m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
     if(!clear)
     {
