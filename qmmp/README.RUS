@@ -101,7 +101,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_CURL, USE_MMS (транспортные модули);
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
   USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME (декодеры);
-- USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_WAVEOUT (output plugins);
+- USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT (модули  вывода);
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
@@ -137,6 +137,8 @@ qmake-qt4 LIB_DIR=/lib64
 или
 cmake ./ -DLIB_DIR=lib64
 
+Поддержка OSS4.
+Модуль вывода OSS4 отключён по умолчанию. Для его включения выполните cmake ./ -DUSE_OSS4:BOOL=TRUE перед сборкой.
 
 Патчи, багрепорты, идеи и т.п.: forkotov02@hotmail.ru или http://code.google.com/p/qmmp/issues/list
 

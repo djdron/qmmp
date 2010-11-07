@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Uriy Zhuravlev stalkerg@gmail.com               *
- *                                                                         *
- *   Copyright (c) 2000-2001 Brad Hughes bhughes@trolltech.com             *
+ *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,61 +17,31 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef OUTPUTOSSFACTORY_H
+#define OUTPUTOSSFACTORY_H
 
 
-#ifndef OUTPUTOSS_H
-#define OUTPUTOSS_H
-
-class OutputOSS;
-
+#include <QObject>
+#include <QString>
+#include <QIODevice>
+#include <QWidget>
 #include <qmmp/output.h>
-#include <qmmp/volumecontrol.h>
+#include <qmmp/outputfactory.h>
 
-class OutputOSS : public Output
+
+class OutputOSS4Factory : public QObject,
+                          OutputFactory
 {
 Q_OBJECT
+Q_INTERFACES(OutputFactory);
+
 public:
-    OutputOSS(QObject * parent = 0);
-    virtual ~OutputOSS();
-
-    bool initialize();
-    void configure(quint32, int, Qmmp::AudioFormat format);
-    qint64 latency();
-
-private:
-    //output api
-    qint64 writeAudio(unsigned char *data, qint64 maxSize);
-    void drain();
-    void reset();
-
-private:
-    void post();
-    void sync();
-    QString m_audio_device;
-
-    bool do_select;
-    int m_audio_fd;
-    long bl, br;
+    const OutputProperties properties() const;
+    Output* create(QObject* parent);
+    VolumeControl *createVolumeControl(QObject *parent);
+    void showSettings(QWidget* parent);
+    void showAbout(QWidget *parent);
+    QTranslator *createTranslator(QObject *parent);
 };
-
-class VolumeControlOSS : public VolumeControl
-{
-    Q_OBJECT
-public:
-    VolumeControlOSS(QObject *parent = 0);
-    ~VolumeControlOSS();
-
-    void setVolume(int left, int right);
-    void volume(int *left, int *right);
-
-private:
-    //oss mixer
-    QString m_audio_device;
-    void openMixer();
-    int m_mixer_fd;
-    QString m_mixer_device;
-    bool m_master;
-};
-
 
 #endif

@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Uriy Zhuravlev stalkerg@gmail.com               *
- *                                                                         *
- *   Copyright (c) 2000-2001 Brad Hughes bhughes@trolltech.com             *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -30,6 +29,7 @@ extern "C"
 #else
 #include <soundcard.h>
 #endif
+//#include </usr/lib/oss/include/sys/soundcard.h>
 }
 
 #include <stdio.h>
@@ -42,15 +42,21 @@ extern "C"
 #include <sys/time.h>
 #include <qmmp/buffer.h>
 #include <qmmp/visual.h>
-#include "outputoss.h"
+#include "outputoss4.h"
 
-OutputOSS::OutputOSS(QObject * parent) : Output(parent), do_select(true), m_audio_fd(-1)
+
+OutputOSS4 *OutputOSS4::m_instance = 0;
+
+OutputOSS4::OutputOSS4(QObject *parent) : Output(parent)
 {
+    m_do_select = true;
+    m_audio_fd = -1;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_audio_device = settings.value("OSS/device","/dev/dsp").toString();
+    m_audio_device = settings.value("OSS4/device", DEFAULT_DEV).toString();
+    m_instance = this;
 }
 
-OutputOSS::~OutputOSS()
+OutputOSS4::~OutputOSS4()
 {
     if (m_audio_fd >= 0)
     {
@@ -58,13 +64,20 @@ OutputOSS::~OutputOSS()
         close(m_audio_fd);
         m_audio_fd = -1;
     }
+    m_instance = 0;
 }
 
-void OutputOSS::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+void OutputOSS4::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     int p;
     switch (format)
     {
+    case Qmmp::PCM_S32LE:
+        p = AFMT_S32_LE;
+        break;
+    case Qmmp::PCM_S24LE:
+        p = AFMT_S24_LE;
+        break;
     case Qmmp::PCM_S16LE:
         p = AFMT_S16_LE;
         break;
@@ -72,63 +85,74 @@ void OutputOSS::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
         p = AFMT_S8;
         break;
     default:
-        qWarning("OutputOSS: unsupported audio format");
+        qWarning("OutputOSS4: unsupported audio format");
         return;
     }
     int param = p;
     if (ioctl(m_audio_fd, SNDCTL_DSP_SETFMT, &p) < 0)
     {
-        qWarning("OutputOSS: ioctl SNDCTL_DSP_SETFMT failed: %s",strerror(errno));
+        qWarning("OutputOSS4: ioctl SNDCTL_DSP_SETFMT failed: %s",strerror(errno));
         return;
     }
     if(param != p)
     {
-        qWarning("OutputOSS: unsupported audio format");
+        qWarning("OutputOSS4: unsupported audio format");
         return;
     }
     param = chan;
     if(ioctl(m_audio_fd, SNDCTL_DSP_CHANNELS, &chan) < 0)
     {
-        qWarning("OutputOSS: ioctl SNDCTL_DSP_CHANNELS failed: %s", strerror(errno));
+        qWarning("OutputOSS4: ioctl SNDCTL_DSP_CHANNELS failed: %s", strerror(errno));
         return;
     }
     if(param != chan)
     {
-        qWarning("OutputOSS: unsupported %d-channel mode", param);
+        qWarning("OutputOSS4: unsupported %d-channel mode", param);
         return;
     }
     uint param2 = freq;
     if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq) < 0)
     {
-        qWarning("OutputOSS: ioctl SNDCTL_DSP_SPEED failed: %s", strerror(errno));
+        qWarning("OutputOSS4: ioctl SNDCTL_DSP_SPEED failed: %s", strerror(errno));
         return;
     }
     if(param2 != freq)
     {
-        qWarning("OutputOSS: unsupported sample rate");
+        qWarning("OutputOSS4: unsupported sample rate");
         return;
     }
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
     Output::configure(freq, chan, format);
 }
 
-void OutputOSS::post()
+int OutputOSS4::fd()
+{
+    return m_audio_fd;
+}
+
+OutputOSS4 *OutputOSS4::instance()
+{
+    return m_instance;
+}
+
+void OutputOSS4::post()
 {
     ioctl(m_audio_fd, SNDCTL_DSP_POST, 0);
 }
 
-void OutputOSS::sync()
+void OutputOSS4::sync()
 {
     ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
 }
 
-bool OutputOSS::initialize()
+bool OutputOSS4::initialize()
 {
     m_audio_fd = open(m_audio_device.toAscii(), O_WRONLY, 0);
 
     if (m_audio_fd < 0)
     {
-        qWarning("OSSOutput: failed to open output device '%s'", qPrintable(m_audio_device));
+        qWarning("OSS4Output: unable to open output device '%s'; error: %s",
+                 qPrintable(m_audio_device), strerror(errno));
         return false;
     }
 
@@ -144,20 +168,16 @@ bool OutputOSS::initialize()
     struct timeval tv;
     tv.tv_sec = 0l;
     tv.tv_usec = 50000l;
-    do_select = (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0);
+    m_do_select = (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0);
     return true;
 }
 
-qint64 OutputOSS::latency()
+qint64 OutputOSS4::latency()
 {
-    //ulong used = 0;
-
-    /*if (ioctl(m_audio_fd, SNDCTL_DSP_GETODELAY, &used) == -1)
-        used = 0;*/
     return 0;
 }
 
-qint64 OutputOSS::writeAudio(unsigned char *data, qint64 maxSize)
+qint64 OutputOSS4::writeAudio(unsigned char *data, qint64 maxSize)
 {
     fd_set afd;
     struct timeval tv;
@@ -167,7 +187,7 @@ qint64 OutputOSS::writeAudio(unsigned char *data, qint64 maxSize)
     // nice long poll timeout
     tv.tv_sec = 5l;
     tv.tv_usec = 0l;
-    if ((!do_select || (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0 &&
+    if ((!m_do_select || (select(m_audio_fd + 1, 0, &afd, 0, &tv) > 0 &&
                                  FD_ISSET(m_audio_fd, &afd))))
     {
         l = qMin(int(2048), int(maxSize));
@@ -180,92 +200,42 @@ qint64 OutputOSS::writeAudio(unsigned char *data, qint64 maxSize)
     return m;
 }
 
-void OutputOSS::drain()
+void OutputOSS4::drain()
 {
     ioctl(m_audio_fd, SNDCTL_DSP_SYNC, 0);
 }
 
-void OutputOSS::reset()
+void OutputOSS4::reset()
 {
     ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
 }
 
 /***** MIXER *****/
-VolumeControlOSS::VolumeControlOSS(QObject *parent) : VolumeControl(parent)
-{
-    m_master = true;
-    m_mixer_fd = -1;
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_mixer_device = settings.value("OSS/mixer_device","/dev/mixer").toString();
-    openMixer();
+VolumeControlOSS4::VolumeControlOSS4(QObject *parent) : VolumeControl(parent)
+{}
 
-}
+VolumeControlOSS4::~VolumeControlOSS4()
+{}
 
-VolumeControlOSS::~VolumeControlOSS()
+void VolumeControlOSS4::setVolume(int l, int r)
 {
-    if (m_mixer_fd >= 0)
+    if(OutputOSS4::instance() && OutputOSS4::instance()->fd() >= 0)
     {
-        close(m_mixer_fd);
-        m_mixer_fd = -1;
+        int v = (r << 8) | l;
+        ioctl(OutputOSS4::instance()->fd(), SNDCTL_DSP_SETPLAYVOL, &v);
     }
 }
 
-void VolumeControlOSS::setVolume(int l, int r)
-{
-    if (m_mixer_fd < 0)
-        return;
-    int v;
-    long cmd;
-    int devs = 0;
-    ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
-    if ((devs & SOUND_MASK_PCM) && !m_master)
-        cmd = SOUND_MIXER_WRITE_PCM;
-    else if ((devs & SOUND_MASK_VOLUME) && m_master)
-        cmd = SOUND_MIXER_WRITE_VOLUME;
-    else
-    {
-        //close(mifd);
-        return;
-    }
-    v = (r << 8) | l;
-    ioctl(m_mixer_fd, cmd, &v);
-}
-
-void VolumeControlOSS::volume(int *ll,int *rr)
+void VolumeControlOSS4::volume(int *ll,int *rr)
 {
     *ll = 0;
     *rr = 0;
-    if(m_mixer_fd < 0)
-        return;
-    int cmd;
-    int v, devs = 0;
-    ioctl(m_mixer_fd, SOUND_MIXER_READ_DEVMASK, &devs);
-    if ((devs & SOUND_MASK_PCM) && !m_master)
-        cmd = SOUND_MIXER_READ_PCM;
-
-    else if ((devs & SOUND_MASK_VOLUME) && m_master)
-        cmd = SOUND_MIXER_READ_VOLUME;
-    else
-        return;
-
-    ioctl(m_mixer_fd, cmd, &v);
-    *ll = (v & 0xFF00) >> 8;
-    *rr = (v & 0x00FF);
-
-    *ll = (*ll > 100) ? 100 : *ll;
-    *rr = (*rr > 100) ? 100 : *rr;
-    *ll = (*ll < 0) ? 0 : *ll;
-    *rr = (*rr < 0) ? 0 : *rr;
-}
-
-void VolumeControlOSS::openMixer()
-{
-    if (m_mixer_fd >= 0)
-        return;
-    m_mixer_fd = open(m_mixer_device.toAscii(), O_RDWR);
-    if (m_mixer_fd < 0)
+    if(OutputOSS4::instance() && OutputOSS4::instance()->fd() >= 0)
     {
-        qWarning("VolumeControlOSS: unable to open mixer device '%s'", qPrintable(m_mixer_device));
-        return;
+        int v = 0;
+        if (ioctl(OutputOSS4::instance()->fd(), SNDCTL_DSP_GETPLAYVOL, &v) < 0)
+            v = 0;
+        *rr = (v & 0xFF00) >> 8;
+        *ll = (v & 0x00FF);
     }
 }
