@@ -34,4 +34,10 @@ contains(CONFIG, ALSA_PLUGIN){
     message(* ALSA plugin enabled *)
     message(***********************)
 }
+
+contains(CONFIG, OSS4_PLUGIN){
+   SUBDIRS += oss4
+   message(***********************)
+   message(* OSS4 plugin enabled *)
+   message(***********************)
 }

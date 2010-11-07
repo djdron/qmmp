@@ -102,7 +102,7 @@ Available options:
 - USE_CURL, USE_MMS (transports);
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
   USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME (decoders);
-- USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_WAVEOUT (output plugins);
+- USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT (output plugins);
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE (effects);
 - USE_ANALYZER, USE_PROJECTM (visualization);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
@@ -139,6 +139,9 @@ to "lib64" by running qmake-qt4 or cmake with special parameter:
 qmake-qt4 LIB_DIR=/lib64
 or
 cmake ./ -DLIB_DIR=lib64
+
+OSS4 support.
+OSS4 plugin is disabled by default. To enable it run cmake ./ -DUSE_OSS4:BOOL=TRUE before compilation.
 
 All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
 http://code.google.com/p/qmmp/issues/list

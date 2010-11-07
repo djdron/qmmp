@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Uriy Zhuravlev stalkerg@gmail.com               *
- *                                                                         *
- *   Copyright (c) 2000-2001 Brad Hughes bhughes@trolltech.com             *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,61 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
+#include <QDialog>
+#include "ui_settingsdialog.h"
 
-#ifndef OUTPUTOSS_H
-#define OUTPUTOSS_H
-
-class OutputOSS;
-
-#include <qmmp/output.h>
-#include <qmmp/volumecontrol.h>
-
-class OutputOSS : public Output
+/**
+    @author Ilya Kotov <forkotov@hotmail.ru>
+*/
+class SettingsDialog : public QDialog
 {
 Q_OBJECT
 public:
-    OutputOSS(QObject * parent = 0);
-    virtual ~OutputOSS();
+    SettingsDialog(QWidget *parent);
+    ~SettingsDialog();
 
-    bool initialize();
-    void configure(quint32, int, Qmmp::AudioFormat format);
-    qint64 latency();
-
-private:
-    //output api
-    qint64 writeAudio(unsigned char *data, qint64 maxSize);
-    void drain();
-    void reset();
+private slots:
+    void setText(int n);
 
 private:
-    void post();
-    void sync();
-    QString m_audio_device;
+    virtual void accept();
+    Ui::SettingsDialog ui;
+    QStringList m_devices;
 
-    bool do_select;
-    int m_audio_fd;
-    long bl, br;
 };
-
-class VolumeControlOSS : public VolumeControl
-{
-    Q_OBJECT
-public:
-    VolumeControlOSS(QObject *parent = 0);
-    ~VolumeControlOSS();
-
-    void setVolume(int left, int right);
-    void volume(int *left, int *right);
-
-private:
-    //oss mixer
-    QString m_audio_device;
-    void openMixer();
-    int m_mixer_fd;
-    QString m_mixer_device;
-    bool m_master;
-};
-
 
 #endif

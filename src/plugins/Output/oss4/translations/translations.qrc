@@ -1,0 +1,18 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>oss4_plugin_it.qm</file>
+    <file>oss4_plugin_cs.qm</file>
+    <file>oss4_plugin_de.qm</file>
+    <file>oss4_plugin_zh_CN.qm</file>
+    <file>oss4_plugin_zh_TW.qm</file>
+    <file>oss4_plugin_pl.qm</file>
+    <file>oss4_plugin_ru.qm</file>
+    <file>oss4_plugin_uk_UA.qm</file>
+    <file>oss4_plugin_tr.qm</file>
+    <file>oss4_plugin_lt.qm</file>
+    <file>oss4_plugin_nl.qm</file>
+    <file>oss4_plugin_ja.qm</file>
+    <file>oss4_plugin_es.qm</file>
+  </qresource>
+</RCC>

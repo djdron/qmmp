@@ -1,7 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2007 by Uriy Zhuravlev stalkerg@gmail.com               *
- *                                                                         *
- *   Copyright (c) 2000-2001 Brad Hughes bhughes@trolltech.com             *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,25 +18,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-#ifndef OUTPUTOSS_H
-#define OUTPUTOSS_H
-
-class OutputOSS;
+#ifndef OUTPUTOSS4_H
+#define OUTPUTOSS4_H
 
 #include <qmmp/output.h>
 #include <qmmp/volumecontrol.h>
 
-class OutputOSS : public Output
+#define DEFAULT_DEV "/dev/dsp"
+#define DEFAULT_MIXER "/dev/mixer"
+
+/**
+    @author Ilya Kotov <forkotov@hotmail.ru>
+*/
+class OutputOSS4 : public Output
 {
 Q_OBJECT
 public:
-    OutputOSS(QObject * parent = 0);
-    virtual ~OutputOSS();
+    OutputOSS4(QObject * parent);
+    virtual ~OutputOSS4();
 
     bool initialize();
     void configure(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
+    int fd();
+
+    static OutputOSS4 *instance();
 
 private:
     //output api
@@ -49,30 +54,20 @@ private:
     void post();
     void sync();
     QString m_audio_device;
-
-    bool do_select;
+    bool m_do_select;
     int m_audio_fd;
-    long bl, br;
+    static OutputOSS4 *m_instance;
 };
 
-class VolumeControlOSS : public VolumeControl
+class VolumeControlOSS4 : public VolumeControl
 {
     Q_OBJECT
 public:
-    VolumeControlOSS(QObject *parent = 0);
-    ~VolumeControlOSS();
+    VolumeControlOSS4(QObject *parent);
+    ~VolumeControlOSS4();
 
     void setVolume(int left, int right);
     void volume(int *left, int *right);
-
-private:
-    //oss mixer
-    QString m_audio_device;
-    void openMixer();
-    int m_mixer_fd;
-    QString m_mixer_device;
-    bool m_master;
 };
-
 
 #endif
