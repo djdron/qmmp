@@ -164,277 +164,277 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished">&amp;Повторити список</translation>
+        <translation>&amp;Повторити список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished">&amp;Повторити трек</translation>
+        <translation>&amp;Повторити трек</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished">&amp;Перемішати</translation>
+        <translation>&amp;Перемішати</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished">&amp;Не пересуватися по списку</translation>
+        <translation>&amp;Не пересуватися по списку</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>&amp;Stop After Selected</source>
-        <translation type="unfinished">&amp;Зупинити після вибраного</translation>
+        <translation>&amp;Зупинити після вибраного</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>&amp;Clear Queue</source>
-        <translation type="unfinished">&amp;Очистити чергу</translation>
+        <translation>&amp;Очистити чергу</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>Alt+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Always on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Завжди зверху</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Put on All Workspaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмістити на усіх робочих столах</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Double Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Подвійний розмір</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">&amp;Додати файл</translation>
+        <translation>&amp;Додати файл</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
         <source>F</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="58"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">&amp;Додати теку</translation>
+        <translation>&amp;Додати теку</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="58"/>
         <source>D</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished">&amp;Додати адресу</translation>
+        <translation>&amp;Додати адресу</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>U</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">&amp;Видалити вибране</translation>
+        <translation>&amp;Видалити вибране</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>Del</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Видалити все</translation>
+        <translation>&amp;Видалити все</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">&amp;Видалити не вибране</translation>
+        <translation>&amp;Видалити не вибране</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished">Видалити недоступні файли</translation>
+        <translation>Видалити недоступні файли</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished">Видалити дублікати</translation>
+        <translation>Видалити дублікати</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="68"/>
         <source>&amp;Queue Toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;В чергу</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="68"/>
         <source>Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>Invert Selection</source>
-        <translation type="unfinished">Інвертувати вибране</translation>
+        <translation>Інвертувати вибране</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="70"/>
         <source>&amp;Select None</source>
-        <translation type="unfinished">&amp;Зняти виділення</translation>
+        <translation>&amp;Зняти виділення</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Вибрати все</translation>
+        <translation>&amp;Вибрати все</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
         <source>&amp;View Track Details</source>
-        <translation type="unfinished">&amp;Інформація</translation>
+        <translation>&amp;Інформація</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;New List</source>
-        <translation type="unfinished">&amp;Новий список</translation>
+        <translation>&amp;Новий список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="76"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished">&amp;Видалити список</translation>
+        <translation>&amp;Видалити список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="76"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;Load List</source>
-        <translation type="unfinished">&amp;Завантажити список</translation>
+        <translation>&amp;Завантажити список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
         <source>O</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;Save List</source>
-        <translation type="unfinished">&amp;Зберегти список</translation>
+        <translation>&amp;Зберегти список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished">Вибрати &amp;наступний список</translation>
+        <translation>Вибрати &amp;наступний список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="84"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished">Вибрати &amp;попередній список</translation>
+        <translation>Вибрати &amp;попередній список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="87"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished">Показати &amp;всі списки</translation>
+        <translation>Показати &amp;всі списки</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished">&amp;Налаштування</translation>
+        <translation>&amp;Налаштування</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;About</source>
-        <translation type="unfinished">&amp;Про програму</translation>
+        <translation>&amp;Про програму</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished">&amp;Про Qt</translation>
+        <translation>&amp;Про Qt</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">&amp;Вихід</translation>
+        <translation>&amp;Вихід</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="93"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -574,7 +574,7 @@
     <message>
         <location filename="../configdialog.cpp" line="361"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Інші</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="420"/>
@@ -961,7 +961,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1268"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити комбінації клавіш...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="559"/>
@@ -1718,17 +1718,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити комбінації клавіш</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Натисніть клавіші, комбінації яких ви бажаєте використовувати</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити</translation>
     </message>
 </context>
 <context>
