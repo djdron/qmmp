@@ -37,9 +37,9 @@ PlayListItem::PlayListItem(const PlayListItem &other) : QMap<Qmmp::MetaData, QSt
 {
     m_title = other.m_title;
     if (other.m_info)
-    {
         m_info = new FileInfo(*(other.m_info));
-    }
+    else
+        m_info = 0;
     m_selected = other.m_selected;
     m_current = other.m_current;
     m_length = other.m_length;
