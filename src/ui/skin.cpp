@@ -28,8 +28,9 @@
 #include <QPolygon>
 #include <QImage>
 #include <QBuffer>
-
+#include <QAction>
 #include <qmmp/qmmp.h>
+#include <actionmanager.h>
 #include "skin.h"
 #include "cursorimage.h"
 
@@ -65,6 +66,8 @@ Skin::Skin (QObject *parent) : QObject (parent)
     QString path = settings.value("skin_path","").toString();
     if (path.isEmpty() || !QDir(path).exists ())
         path = ":/default";
+    m_double_size = settings.value("General/double_size", false).toBool();
+    ACTION(ActionManager::WM_DOUBLE_SIZE)->setChecked(m_double_size);
     setSkin (QDir::cleanPath(path));
     /* skin directory */
     QDir skinDir(QDir::homePath()+"/.qmmp");
@@ -78,7 +81,7 @@ void Skin::setSkin (const QString& path)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_use_cursors = settings.value("General/skin_cursors", false).toBool();
-    m_double_size = settings.value("General/double_size", false).toBool();
+    m_double_size = ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked();
     settings.setValue("skin_path",path);
     qDebug ("Skin: using %s",qPrintable(path));
     m_skin_dir = QDir (path);
@@ -207,7 +210,7 @@ void Skin::loadCursors()
     cursors[CUR_WSMIN] = createCursor(getPath("wsmin"));
     cursors[CUR_WSWINBUT] = createCursor(getPath("wswinbut"));
 }
-	
+
 void Skin::loadButtons()
 {
 

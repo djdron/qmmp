@@ -347,7 +347,7 @@ void ConfigDialog::loadShortcuts()
     ui.shortcutTreeWidget->addTopLevelItem(item);
     //view
     item = new QTreeWidgetItem (ui.shortcutTreeWidget, QStringList() << tr("View"));
-    for(int i = ActionManager::WM_ALLWAYS_ON_TOP; i <= ActionManager::WM_DOUBLE_SIZE; ++i)
+    for(int i = ActionManager::SHOW_PLAYLIST; i <= ActionManager::WM_DOUBLE_SIZE; ++i)
         new ShortcutItem(item, i);
     item->setExpanded(true);
     ui.shortcutTreeWidget->addTopLevelItem(item);

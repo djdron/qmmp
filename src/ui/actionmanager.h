@@ -28,7 +28,8 @@
 class QAction;
 class QSettings;
 
-#define ACTION(type, receiver, member) ActionManager::instance()->use(type, receiver, member)
+#define SET_ACTION(type, receiver, member) ActionManager::instance()->use(type, receiver, member)
+#define ACTION(type) ActionManager::instance()->action(type)
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -56,6 +57,9 @@ public:
         NO_PL_ADVANCE,
         STOP_AFTER_SELECTED,
         CLEAR_QUEUE,
+
+        SHOW_PLAYLIST,
+        SHOW_EQUALIZER,
 
         WM_ALLWAYS_ON_TOP,
         WM_STICKY,
