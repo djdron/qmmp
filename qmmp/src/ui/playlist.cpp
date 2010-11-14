@@ -183,21 +183,21 @@ void PlayList::createMenus()
 void PlayList::createActions()
 {
     //add menu
-    m_addMenu->addAction(ACTION(ActionManager::PL_ADD_FILE, parent(), SLOT(addFile())));
-    m_addMenu->addAction(ACTION(ActionManager::PL_ADD_DIRECTORY, parent(), SLOT(addDir())));
-    m_addMenu->addAction(ACTION(ActionManager::PL_ADD_URL, parent(), SLOT(addUrl())));
+    m_addMenu->addAction(SET_ACTION(ActionManager::PL_ADD_FILE, parent(), SLOT(addFile())));
+    m_addMenu->addAction(SET_ACTION(ActionManager::PL_ADD_DIRECTORY, parent(), SLOT(addDir())));
+    m_addMenu->addAction(SET_ACTION(ActionManager::PL_ADD_URL, parent(), SLOT(addUrl())));
     //sub menu
-    m_subMenu->addAction(ACTION(ActionManager::PL_REMOVE_SELECTED, m_pl_manager, SLOT(removeSelected())));
-    m_subMenu->addAction(ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
-    m_subMenu->addAction(ACTION(ActionManager::PL_REMOVE_UNSELECTED, m_pl_manager,
+    m_subMenu->addAction(SET_ACTION(ActionManager::PL_REMOVE_SELECTED, m_pl_manager, SLOT(removeSelected())));
+    m_subMenu->addAction(SET_ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
+    m_subMenu->addAction(SET_ACTION(ActionManager::PL_REMOVE_UNSELECTED, m_pl_manager,
                                 SLOT(removeUnselected())));
     m_subMenu->addSeparator();
-    m_subMenu->addAction(ACTION(ActionManager::PL_REMOVE_INVALID, m_pl_manager,
+    m_subMenu->addAction(SET_ACTION(ActionManager::PL_REMOVE_INVALID, m_pl_manager,
                                 SLOT(removeInvalidItems())));
-    m_subMenu->addAction(ACTION(ActionManager::PL_REMOVE_DUPLICATES, m_pl_manager,
+    m_subMenu->addAction(SET_ACTION(ActionManager::PL_REMOVE_DUPLICATES, m_pl_manager,
                                 SLOT(removeDuplicates())));
     //sort menu
-    m_sortMenu->addAction(ACTION(ActionManager::PL_SHOW_INFO, m_pl_manager, SLOT (showDetails ())));
+    m_sortMenu->addAction(SET_ACTION(ActionManager::PL_SHOW_INFO, m_pl_manager, SLOT (showDetails ())));
     m_sortMenu->addAction (ActionManager::instance()->action(ActionManager::PL_SHOW_INFO));
     m_sortMenu->addSeparator();
 
@@ -282,26 +282,26 @@ void PlayList::createActions()
     m_listWidget->menu()->addMenu(GeneralHandler::instance()->createMenu(GeneralHandler::PLAYLIST_MENU,
                                   tr("Actions"), this));
     m_listWidget->menu()->addSeparator();
-    m_listWidget->menu()->addAction(ACTION(ActionManager::PL_ENQUEUE, m_pl_manager, SLOT(addToQueue())));
+    m_listWidget->menu()->addAction(SET_ACTION(ActionManager::PL_ENQUEUE, m_pl_manager, SLOT(addToQueue())));
     //select menu
-    m_selectMenu->addAction(ACTION(ActionManager::PL_INVERT_SELECTION, m_pl_manager,
+    m_selectMenu->addAction(SET_ACTION(ActionManager::PL_INVERT_SELECTION, m_pl_manager,
                                    SLOT(invertSelection ())));
     m_selectMenu->addSeparator();
-    m_selectMenu->addAction(ACTION(ActionManager::PL_CLEAR_SELECTION, m_pl_manager,
+    m_selectMenu->addAction(SET_ACTION(ActionManager::PL_CLEAR_SELECTION, m_pl_manager,
                                    SLOT(clearSelection ())));
-    m_selectMenu->addAction(ACTION(ActionManager::PL_SELECT_ALL, m_pl_manager, SLOT(selectAll())));
+    m_selectMenu->addAction(SET_ACTION(ActionManager::PL_SELECT_ALL, m_pl_manager, SLOT(selectAll())));
     //Playlist Menu
-    m_playlistMenu->addAction(ACTION(ActionManager::PL_NEW, m_pl_manager, SLOT(createPlayList())));
-    m_playlistMenu->addAction(ACTION(ActionManager::PL_CLOSE, this, SLOT(deletePlaylist())));
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_NEW, m_pl_manager, SLOT(createPlayList())));
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(deletePlaylist())));
     m_playlistMenu->addSeparator();
-    m_playlistMenu->addAction(ACTION(ActionManager::PL_LOAD, this, SIGNAL(loadPlaylist())));
-    m_playlistMenu->addAction(ACTION(ActionManager::PL_SAVE, this, SIGNAL(savePlaylist())));
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_LOAD, this, SIGNAL(loadPlaylist())));
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_SAVE, this, SIGNAL(savePlaylist())));
     m_playlistMenu->addSeparator();
-    m_playlistMenu->addAction(ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,
                                      SLOT(selectNextPlayList())));
-    m_playlistMenu->addAction(ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
                                      SLOT(selectPreviousPlayList())));
-    m_playlistMenu->addAction(ACTION(ActionManager::PL_SHOW_MANAGER, this, SLOT(showPlayLists())));
+    m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_SHOW_MANAGER, this, SLOT(showPlayLists())));
     Dock::instance()->addActions (m_addMenu->actions());
     Dock::instance()->addActions (m_subMenu->actions());
     Dock::instance()->addActions (m_sortMenu->actions());

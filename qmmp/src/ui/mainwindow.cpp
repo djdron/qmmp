@@ -49,7 +49,6 @@
 #include "listwidget.h"
 #include "visualmenu.h"
 #include "windowsystem.h"
-#include "viewmenu.h"
 #include "actionmanager.h"
 #include "builtincommandlineoption.h"
 
@@ -63,7 +62,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
 #endif
     m_vis = 0;
     m_update = false;
-    m_allDesktops = false;
     m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
@@ -279,7 +277,6 @@ void MainWindow::changeEvent (QEvent * event)
 void MainWindow::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_allDesktops = settings.value("General/show_on_all_desktops", false).toBool();
     if (!m_update)
     {
         settings.beginGroup("MainWindow");
@@ -289,8 +286,14 @@ void MainWindow::readSettings()
         m_lastDir = settings.value("last_dir","/").toString(); //last directory
         m_startHidden = settings.value("start_hidden", false).toBool();
         settings.endGroup();
+
         if(settings.value("General/always_on_top", false).toBool())
+        {
+            ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->setChecked(true);
             setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+        }
+        ACTION(ActionManager::WM_STICKY)->setChecked(settings.value("General/show_on_all_desktops",
+                                                                    false).toBool());
         show();
         qApp->processEvents();
         //visibility
@@ -310,7 +313,7 @@ void MainWindow::readSettings()
     }
     else
     {
-        if(settings.value("General/always_on_top", false).toBool())
+        if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
         {
             setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
             m_playlist->setWindowFlags(m_playlist->windowFlags() | Qt::WindowStaysOnTopHint);
@@ -328,7 +331,7 @@ void MainWindow::readSettings()
         m_equalizer->setVisible(m_display->isEqualizerVisible());
     }
 #ifdef Q_WS_X11
-    WindowSystem::changeWinSticky(winId(), m_allDesktops);
+    WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());
 #endif
     //Call setWindowOpacity only if needed
     double opacity = settings.value("MainWindow/opacity", 1.0).toDouble();
@@ -365,6 +368,9 @@ void MainWindow::writeSettings()
     settings.setValue("resume_playback", m_core->state() == Qmmp::Playing &&
                       settings.value("resume_on_startup", false).toBool());
     settings.setValue("resume_playback_time", m_core->totalTime() > 0 ? m_core->elapsed() : 0);
+    settings.setValue("double_size", ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked());
+    settings.setValue("always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
+    settings.setValue("show_on_all_desktops", ACTION(ActionManager::WM_STICKY)->isChecked());
     settings.endGroup();
 }
 
@@ -396,7 +402,7 @@ void MainWindow::toggleVisibility()
                 showNormal();
         }
 #ifdef Q_WS_X11
-        WindowSystem::changeWinSticky(winId(), m_allDesktops);
+        WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());
         raise();
 #endif
     }
@@ -414,44 +420,52 @@ void MainWindow::toggleVisibility()
 void MainWindow::createActions()
 {
     m_mainMenu = new QMenu(this);
-    m_mainMenu->addAction(ACTION(ActionManager::PLAY, this, SLOT(play())));
-    m_mainMenu->addAction(ACTION(ActionManager::PAUSE, this, SLOT(pause())));
-    m_mainMenu->addAction(ACTION(ActionManager::STOP, this, SLOT(stop())));
-    m_mainMenu->addAction(ACTION(ActionManager::PREVIOUS, this, SLOT(previous())));
-    m_mainMenu->addAction(ACTION(ActionManager::NEXT, this, SLOT(next())));
-    m_mainMenu->addAction(ACTION(ActionManager::PLAY_PAUSE, this, SLOT(playPause())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::PLAY, this, SLOT(play())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::PAUSE, this, SLOT(pause())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::STOP, this, SLOT(stop())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::PREVIOUS, this, SLOT(previous())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::NEXT, this, SLOT(next())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::PLAY_PAUSE, this, SLOT(playPause())));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(QIcon::fromTheme("go-up"), tr("&Jump To File"),
                           this, SLOT(jumpToFile()), tr("J"));
     m_mainMenu->addSeparator();
-    m_mainMenu->addMenu(new ViewMenu(this));
+    QMenu *viewMenu = m_mainMenu->addMenu(tr("View"));
+    viewMenu->addAction(ACTION(ActionManager::SHOW_PLAYLIST));
+    viewMenu->addAction(ACTION(ActionManager::SHOW_EQUALIZER));
+    viewMenu->addSeparator();
+    viewMenu->addAction(SET_ACTION(ActionManager::WM_ALLWAYS_ON_TOP, this, SLOT(updateSettings())));
+    viewMenu->addAction(SET_ACTION(ActionManager::WM_STICKY, this, SLOT(updateSettings())));
+    viewMenu->addAction(SET_ACTION(ActionManager::WM_DOUBLE_SIZE, this, SLOT(updateSettings())));
 
     QMenu *plMenu = m_mainMenu->addMenu(tr("Playlist"));
-    plMenu->addAction(ACTION(ActionManager::REPEAT_ALL, m_pl_manager, SLOT(setRepeatableList(bool))));
-    plMenu->addAction(ACTION(ActionManager::REPEAT_TRACK, m_player, SLOT(setRepeatable(bool))));
-    plMenu->addAction(ACTION(ActionManager::SHUFFLE, m_pl_manager, SLOT(setShuffle(bool))));
-    plMenu->addAction(ACTION(ActionManager::NO_PL_ADVANCE, m_player, SLOT(setNoPlaylistAdvance(bool))));
-    plMenu->addAction(ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager, SLOT(stopAfterSelected())));
-    plMenu->addAction(ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
+    plMenu->addAction(SET_ACTION(ActionManager::REPEAT_ALL, m_pl_manager, SLOT(setRepeatableList(bool))));
+    plMenu->addAction(SET_ACTION(ActionManager::REPEAT_TRACK, m_player, SLOT(setRepeatable(bool))));
+    plMenu->addAction(SET_ACTION(ActionManager::SHUFFLE, m_pl_manager, SLOT(setShuffle(bool))));
+    plMenu->addAction(SET_ACTION(ActionManager::NO_PL_ADVANCE, m_player,
+                                 SLOT(setNoPlaylistAdvance(bool))));
+    plMenu->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
+                                 SLOT(stopAfterSelected())));
+    plMenu->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
     connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)),
-            ActionManager::instance()->action(ActionManager::REPEAT_ALL), SLOT(setChecked(bool)));
+            ACTION(ActionManager::REPEAT_ALL), SLOT(setChecked(bool)));
     connect(m_player, SIGNAL (repeatableChanged(bool)),
-            ActionManager::instance()->action(ActionManager::REPEAT_TRACK), SLOT(setChecked(bool)));
+            ACTION(ActionManager::REPEAT_TRACK), SLOT(setChecked(bool)));
     connect(m_player, SIGNAL (noPlaylistAdvanceChanged(bool)),
-            ActionManager::instance()->action(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
+            ACTION(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
     connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
-            ActionManager::instance()->action(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
+            ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
 
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
     m_mainMenu->addMenu(m_generalHandler->createMenu(GeneralHandler::TOOLS_MENU, tr("Tools"), this));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(ACTION(ActionManager::ABOUT, this, SLOT(about())));
-    m_mainMenu->addAction(ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(ACTION(ActionManager::QUIT, this, SLOT(close())));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::QUIT, this, SLOT(close())));
 
     QAction* forward = new QAction(this);
     forward->setShortcut(QKeySequence(Qt::Key_Right));

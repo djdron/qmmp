@@ -83,7 +83,6 @@ SET(ui_SRCS
     popupwidget.cpp
     popupsettings.cpp
     windowsystem.cpp
-    viewmenu.cpp
     lxdesupport.cpp
     actionmanager.cpp
     shortcutitem.cpp
@@ -141,7 +140,6 @@ SET(ui_MOC_HDRS
     popupwidget.h
     popupsettings.h
     windowsystem.h
-    viewmenu.h
     lxdesupport.h
     shortcutitem.h
     actionmanager.h

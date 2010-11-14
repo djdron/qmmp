@@ -115,7 +115,6 @@ private:
     MainVisual *m_vis;
     QString m_lastDir;
     bool m_update;
-    bool m_allDesktops;
     Skin *m_skin;
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;

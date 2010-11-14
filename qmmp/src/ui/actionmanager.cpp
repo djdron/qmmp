@@ -50,6 +50,8 @@ ActionManager::ActionManager(QObject *parent) :
                                                   tr("Ctrl+S"));
     m_actions[CLEAR_QUEUE] = createAction(tr("&Clear Queue"), "clear_queue", tr("Alt+Q"));
     //view
+    m_actions[SHOW_PLAYLIST] = createAction2(tr("Show Playlist"), "show_playlist", tr("Alt+E"));
+    m_actions[SHOW_EQUALIZER] = createAction2(tr("Show Equalizer"), "show_equalizer", tr("Alt+G"));
     m_actions[WM_ALLWAYS_ON_TOP] = createAction2(tr("Always on Top"), "always_on_top", "");
     m_actions[WM_STICKY] = createAction2(tr("Put on All Workspaces"), "General/always_on_top", "");
     m_actions[WM_DOUBLE_SIZE] = createAction2(tr("Double Size"), "double_size", "");
@@ -74,12 +76,8 @@ ActionManager::ActionManager(QObject *parent) :
                                            "dialog-information");
     m_actions[PL_NEW] = createAction(tr("&New List"), "new_pl", tr("Ctrl+T"), "document-new");
     m_actions[PL_CLOSE] = createAction(tr("&Delete List"), "close_pl", tr("Ctrl+W"), "window-close");
-
     m_actions[PL_LOAD] = createAction(tr("&Load List"), "load_pl", tr("O"), "document-open");
-
     m_actions[PL_SAVE] = createAction(tr("&Save List"), "save_pl", tr("Shift+S"), "document-save-as");
-
-
     m_actions[PL_SELECT_NEXT] = createAction(tr("&Select Next Playlist"), "next_pl",
                                              tr("Ctrl+PgDown"), "go-next");
     m_actions[PL_SELECT_PREVIOUS] = createAction(tr("&Select Previous Playlist"), "prev_pl",

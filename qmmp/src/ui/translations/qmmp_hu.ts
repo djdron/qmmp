@@ -223,146 +223,166 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
-        <source>Always on Top</source>
+        <source>Show Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="53"/>
+        <source>Alt+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
-        <source>Put on All Workspaces</source>
+        <source>Show Equalizer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="54"/>
+        <source>Alt+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
+        <source>Always on Top</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="56"/>
+        <source>Put on All Workspaces</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../actionmanager.cpp" line="57"/>
         <source>Double Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="57"/>
+        <location filename="../actionmanager.cpp" line="59"/>
         <source>&amp;Add File</source>
         <translation type="unfinished">&amp;Fájl hozzáadása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="57"/>
+        <location filename="../actionmanager.cpp" line="59"/>
         <source>F</source>
         <translation type="unfinished">F</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="58"/>
+        <location filename="../actionmanager.cpp" line="60"/>
         <source>&amp;Add Directory</source>
         <translation type="unfinished">&amp;Könyvtár hazááadása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="58"/>
+        <location filename="../actionmanager.cpp" line="60"/>
         <source>D</source>
         <translation type="unfinished">D</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="59"/>
+        <location filename="../actionmanager.cpp" line="61"/>
         <source>&amp;Add Url</source>
         <translation type="unfinished">&amp;Url hozzáadása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="59"/>
+        <location filename="../actionmanager.cpp" line="61"/>
         <source>U</source>
         <translation type="unfinished">U</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="60"/>
+        <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Remove Selected</source>
         <translation type="unfinished">&amp;Megjelöltek eltávolítása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="61"/>
+        <location filename="../actionmanager.cpp" line="63"/>
         <source>Del</source>
         <translation type="unfinished">Del</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="62"/>
+        <location filename="../actionmanager.cpp" line="64"/>
         <source>&amp;Remove All</source>
         <translation type="unfinished">&amp;Összes eltávolítása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="63"/>
+        <location filename="../actionmanager.cpp" line="65"/>
         <source>&amp;Remove Unselected</source>
         <translation type="unfinished">&amp;Jelöletlenek eltávolítása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="65"/>
+        <location filename="../actionmanager.cpp" line="67"/>
         <source>Remove unavailable files</source>
         <translation type="unfinished">Elérhetetlen fájlok eltávolítása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="67"/>
+        <location filename="../actionmanager.cpp" line="69"/>
         <source>Remove duplicates</source>
         <translation type="unfinished">Duplikációk eltávolítása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="68"/>
+        <location filename="../actionmanager.cpp" line="70"/>
         <source>&amp;Queue Toggle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="68"/>
+        <location filename="../actionmanager.cpp" line="70"/>
         <source>Q</source>
         <translation type="unfinished">Q</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="69"/>
+        <location filename="../actionmanager.cpp" line="71"/>
         <source>Invert Selection</source>
         <translation type="unfinished">Fordított kijelölés</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="70"/>
+        <location filename="../actionmanager.cpp" line="72"/>
         <source>&amp;Select None</source>
         <translation type="unfinished">&amp;Kijelölés megszűntetése</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
+        <location filename="../actionmanager.cpp" line="73"/>
         <source>&amp;Select All</source>
         <translation type="unfinished">&amp;Összes kijelölése</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="72"/>
+        <location filename="../actionmanager.cpp" line="74"/>
         <source>Ctrl+A</source>
         <translation type="unfinished">Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="73"/>
+        <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;View Track Details</source>
         <translation type="unfinished">Szám adatainak &amp;megnézése</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="73"/>
+        <location filename="../actionmanager.cpp" line="75"/>
         <source>Alt+I</source>
         <translation type="unfinished">Alt+I</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="75"/>
+        <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;New List</source>
         <translation type="unfinished">&amp;Új lista</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="75"/>
+        <location filename="../actionmanager.cpp" line="77"/>
         <source>Ctrl+T</source>
         <translation type="unfinished">Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="76"/>
+        <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;Delete List</source>
         <translation type="unfinished">&amp;Lista törlése</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="76"/>
+        <location filename="../actionmanager.cpp" line="78"/>
         <source>Ctrl+W</source>
         <translation type="unfinished">Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="79"/>
         <source>&amp;Load List</source>
         <translation type="unfinished">&amp;Lista betöltése</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="79"/>
         <source>O</source>
         <translation type="unfinished">O</translation>
     </message>
@@ -377,62 +397,62 @@
         <translation type="unfinished">Shift+S</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="83"/>
+        <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Select Next Playlist</source>
         <translation type="unfinished">&amp;Következő lista választása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="84"/>
+        <location filename="../actionmanager.cpp" line="82"/>
         <source>Ctrl+PgDown</source>
         <translation type="unfinished">Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="85"/>
+        <location filename="../actionmanager.cpp" line="83"/>
         <source>&amp;Select Previous Playlist</source>
         <translation type="unfinished">&amp;Előző lista választása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="86"/>
+        <location filename="../actionmanager.cpp" line="84"/>
         <source>Ctrl+PgUp</source>
         <translation type="unfinished">Ctrl+PgUp</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="87"/>
+        <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Show Playlists</source>
         <translation type="unfinished">&amp;Lejátszási lista mutatása</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="86"/>
         <source>P</source>
         <translation type="unfinished">P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Settings</source>
         <translation type="unfinished">&amp;Beállítások</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+P</source>
         <translation type="unfinished">Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="91"/>
+        <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;About</source>
         <translation type="unfinished">&amp;Névjegy</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="92"/>
+        <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Qt</source>
         <translation type="unfinished">N&amp;évjegy: Qt</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;Exit</source>
         <translation type="unfinished">&amp;Kilépés</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="93"/>
+        <location filename="../actionmanager.cpp" line="91"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished">Ctrl+Q</translation>
     </message>
@@ -1129,62 +1149,62 @@
 <context>
     <name>MainDisplay</name>
     <message>
-        <location filename="../display.cpp" line="56"/>
+        <location filename="../display.cpp" line="57"/>
         <source>Previous</source>
         <translation>Előző</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="60"/>
+        <location filename="../display.cpp" line="61"/>
         <source>Play</source>
         <translation>Lejátszás</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="63"/>
+        <location filename="../display.cpp" line="64"/>
         <source>Pause</source>
         <translation>Szünet</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="66"/>
+        <location filename="../display.cpp" line="67"/>
         <source>Stop</source>
         <translation>Megállít</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="69"/>
+        <location filename="../display.cpp" line="70"/>
         <source>Next</source>
         <translation>Következő</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="72"/>
+        <location filename="../display.cpp" line="73"/>
         <source>Add file</source>
         <translation>Fájl hozzáadása</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="80"/>
+        <location filename="../display.cpp" line="81"/>
         <source>Equalizer</source>
         <translation>Hangszínszabályzó</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="83"/>
+        <location filename="../display.cpp" line="84"/>
         <source>Playlist</source>
         <translation>Lejátszási lista</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="88"/>
+        <location filename="../display.cpp" line="89"/>
         <source>Repeat playlist</source>
         <translation>Lista ismétlése</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="91"/>
+        <location filename="../display.cpp" line="92"/>
         <source>Shuffle</source>
         <translation>Véletlenszerű</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="102"/>
+        <location filename="../display.cpp" line="103"/>
         <source>Volume</source>
         <translation>Hangerő</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="106"/>
+        <location filename="../display.cpp" line="107"/>
         <source>Balance</source>
         <translation>Egyensúly</translation>
     </message>
@@ -1325,53 +1345,58 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="257"/>
+        <location filename="../mainwindow.cpp" line="255"/>
         <source>Choose a directory</source>
         <translation>Válassz egy könyvtárat</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="263"/>
+        <location filename="../mainwindow.cpp" line="261"/>
         <source>All Supported Bitstreams</source>
         <translation>Minden támogatott bitráta</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="268"/>
+        <location filename="../mainwindow.cpp" line="266"/>
         <source>Select one or more files to open</source>
         <translation>Válassz egy vagy több fájlat megnyitásra</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>Playlist</source>
         <translation type="unfinished">Lejátszási lista</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Ugrás fájlra</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="447"/>
+        <location filename="../mainwindow.cpp" line="433"/>
+        <source>View</source>
+        <translation type="unfinished">Megnéz</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="461"/>
         <source>Tools</source>
         <translation>Eszközök</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="498"/>
-        <location filename="../mainwindow.cpp" line="524"/>
+        <location filename="../mainwindow.cpp" line="512"/>
+        <location filename="../mainwindow.cpp" line="538"/>
         <source>Playlist Files</source>
         <translation>Lejátszási lista fájl</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="500"/>
+        <location filename="../mainwindow.cpp" line="514"/>
         <source>Open Playlist</source>
         <translation>Lista megnyitása</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="525"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Save Playlist</source>
         <translation>Lista mentése</translation>
     </message>
@@ -1742,14 +1767,6 @@
         <location filename="../textscroller.cpp" line="228"/>
         <source>Buffering:</source>
         <translation>Töltés:</translation>
-    </message>
-</context>
-<context>
-    <name>ViewMenu</name>
-    <message>
-        <location filename="../viewmenu.cpp" line="28"/>
-        <source>View</source>
-        <translation type="unfinished">Megnéz</translation>
     </message>
 </context>
 <context>

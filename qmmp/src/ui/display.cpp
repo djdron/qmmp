@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,6 +39,7 @@
 #include "balancebar.h"
 #include "mainwindow.h"
 #include "timeindicator.h"
+#include "actionmanager.h"
 #include "display.h"
 
 MainDisplay::MainDisplay (QWidget *parent)
@@ -236,19 +237,37 @@ void MainDisplay::setSampleRate(quint32 rate)
 {
     m_freq->display((int) rate/1000);
 }
-
+//TODO optimize this connections
 void MainDisplay::setEQ (QWidget* w)
 {
     m_equlizer = w;
     m_eqButton->setON (m_equlizer->isVisible());
-    connect (m_eqButton, SIGNAL (clicked(bool)), m_equlizer, SLOT (setVisible (bool)));
-    connect (m_equlizer, SIGNAL (closed ()), m_eqButton, SLOT (click()));
+    ACTION(ActionManager::SHOW_EQUALIZER)->setChecked(m_equlizer->isVisible());
+
+    connect (ACTION(ActionManager::SHOW_EQUALIZER), SIGNAL(triggered(bool)),
+             m_equlizer, SLOT (setVisible (bool)));
+    connect (ACTION(ActionManager::SHOW_EQUALIZER), SIGNAL(triggered(bool)),
+             m_eqButton, SLOT (setON (bool)));
+
+    connect (m_eqButton, SIGNAL(clicked(bool)),
+             ACTION(ActionManager::SHOW_EQUALIZER), SLOT(setChecked (bool)));
+    connect (m_eqButton, SIGNAL(clicked(bool)), m_equlizer, SLOT (setVisible (bool)));
+    connect (m_equlizer, SIGNAL(closed ()), m_eqButton, SLOT (click()));
 }
 
 void MainDisplay::setPL (QWidget* w)
 {
     m_playlist = w;
     m_plButton->setON (m_playlist->isVisible());
+    ACTION(ActionManager::SHOW_PLAYLIST)->setChecked(m_playlist->isVisible());
+
+    connect (ACTION(ActionManager::SHOW_PLAYLIST), SIGNAL(triggered(bool)),
+             m_playlist, SLOT (setVisible (bool)));
+    connect (ACTION(ActionManager::SHOW_PLAYLIST), SIGNAL(triggered(bool)),
+             m_plButton, SLOT (setON (bool)));
+
+    connect (m_plButton, SIGNAL(clicked(bool)),
+             ACTION(ActionManager::SHOW_PLAYLIST), SLOT(setChecked (bool)));
     connect (m_plButton, SIGNAL (clicked (bool)), m_playlist, SLOT (setVisible (bool)));
     connect (m_playlist, SIGNAL (closed ()), m_plButton, SLOT (click()));
 }
