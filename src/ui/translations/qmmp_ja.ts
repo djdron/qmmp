@@ -194,7 +194,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>&amp;No Playlist Advance</source>
-        <translation>次の曲に進まず終止(&map;N)</translation>
+        <translation>次の曲に進まず終止(&amp;N)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
