@@ -224,22 +224,22 @@
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Show Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати список</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Alt+E</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Show Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати еквалайзер</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Alt+G</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
@@ -1367,7 +1367,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="433"/>
         <source>View</source>
-        <translation type="unfinished">Вигляд</translation>
+        <translation>Вигляд</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="441"/>
