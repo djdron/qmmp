@@ -5,6 +5,7 @@ Główni programiści:
 
 Twórcy wtyczek:
 
+    Artur Guzik <aguzik88@gmail.com> (wtyczka powiadamiania KDE4, usprawnienia ikony statusu)
     Yuriy Zhuravlev <stalkerg@gmail.com> (wtyczki jack & oss)
 
 Grafika:
