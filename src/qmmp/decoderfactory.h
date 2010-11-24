@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,6 +26,7 @@ class QString;
 class QIODevice;
 class QWidget;
 class QTranslator;
+class QStringList;
 
 class Decoder;
 class Output;
@@ -47,18 +48,18 @@ public:
         hasSettings = false;
         noInput = false;
         noOutput = false;
-
     }
-    QString name;        /*!< Input plugin full name */
-    QString shortName;   /*!< Input plugin short name for internal usage */
-    QString filter;      /*!< File filter (example: "*.mp3 *.ogg") */
-    QString description; /*!< File filter description */
-    QString contentType; /*!< Supported content types */
-    QString protocols;   /*!< Supported protocols. Should be empty if plugin uses stream input. */
-    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise \b false */
-    bool hasSettings;    /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
-    bool noInput;        /*!< Should be \b true if plugin has own input, otherwise \b false */
-    bool noOutput;       /*!< Should be \b true if plugin has own output, otherwise \b false */
+    QString name;             /*!< Input plugin full name */
+    QString shortName;        /*!< Input plugin short name for internal usage */
+    QStringList filters;      /*!< File filters (example: "*.mp3") */
+    QString description;      /*!< File filters description */
+    QStringList contentTypes; /*!< Supported content types */
+    QStringList protocols;    /*!< A list of supported protocols.
+                               *   Should be empty if plugin uses stream input. */
+    bool hasAbout;            /*!< Should be \b true if plugin has about dialog, otherwise \b false */
+    bool hasSettings;         /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
+    bool noInput;             /*!< Should be \b true if plugin has own input, otherwise \b false */
+    bool noOutput;            /*!< Should be \b true if plugin has own output, otherwise \b false */
 };
 /*! @brief Input plugin interface (decoder factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>

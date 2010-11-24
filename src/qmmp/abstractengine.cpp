@@ -42,6 +42,7 @@ QWaitCondition *AbstractEngine::cond()
 
 // static methods
 QList<EngineFactory*> *AbstractEngine::m_factories = 0;
+QList<EngineFactory*> *AbstractEngine::m_disabledFactories = 0;
 QStringList AbstractEngine::m_files;
 
 void AbstractEngine::checkFactories()
@@ -49,8 +50,10 @@ void AbstractEngine::checkFactories()
     if (!m_factories)
     {
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+        QStringList disabledNames  = settings.value("Engine/disabled_plugins").toStringList ();
         m_files.clear();
         m_factories = new QList<EngineFactory *>;
+        m_disabledFactories = new QList<EngineFactory *>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Engines");
@@ -71,6 +74,8 @@ void AbstractEngine::checkFactories()
                 m_factories->append(factory);
                 m_files << pluginsDir.absoluteFilePath(fileName);
                 qApp->installTranslator(factory->createTranslator(qApp));
+                if(disabledNames.contains(factory->properties().shortName))
+                    m_disabledFactories->append(factory);
             }
         }
         //remove physically deleted plugins from disabled list
@@ -79,13 +84,12 @@ void AbstractEngine::checkFactories()
         {
             names.append(factory->properties().shortName);
         }
-        QStringList disabledList  = settings.value("Engine/disabled_plugins").toStringList ();
-        foreach (QString name, disabledList)
+        foreach (QString name, disabledNames)
         {
             if (!names.contains(name))
-                disabledList.removeAll(name);
+                disabledNames.removeAll(name);
         }
-        settings.setValue("Engine/disabled_plugins",disabledList);
+        settings.setValue("Engine/disabled_plugins", disabledNames);
     }
 }
 
@@ -112,34 +116,45 @@ void AbstractEngine::setEnabled(EngineFactory* factory, bool enable)
     if (!m_factories->contains(factory))
         return;
 
-    QString name = factory->properties().shortName;
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat );
-    QStringList disabledList = settings.value("Engine/disabled_plugins").toStringList();
+    if(enable == isEnabled(factory))
+        return;
 
-    if (enable)
-        disabledList.removeAll(name);
+    if(enable)
+        m_disabledFactories->removeAll(factory);
     else
+        m_disabledFactories->append(factory);
+
+    QStringList disabledNames;
+    foreach(EngineFactory *f, *m_disabledFactories)
     {
-        if (!disabledList.contains(name))
-            disabledList << name;
+        disabledNames << f->properties().shortName;
     }
-    settings.setValue("Engine/disabled_plugins", disabledList);
+    disabledNames.removeDuplicates();
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Engine/disabled_plugins", disabledNames);
 }
 
 bool AbstractEngine::isEnabled(EngineFactory* factory)
 {
     checkFactories();
-    if (!m_factories->contains(factory))
-        return false;
-    QString name = factory->properties().shortName;
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    QStringList disabledList = settings.value("Engine/disabled_plugins").toStringList();
-    return !disabledList.contains(name);
+    return !m_disabledFactories->contains(factory);
 }
 
 QStringList AbstractEngine::files()
 {
     checkFactories();
     return m_files;
+}
+
+QStringList AbstractEngine::protocols()
+{
+    QStringList protocolsList;
+    foreach(EngineFactory *f, *m_factories)
+    {
+        if(isEnabled(f))
+            protocolsList << f->properties().protocols;
+    }
+    protocolsList.removeDuplicates();
+    return protocolsList;
 }
 

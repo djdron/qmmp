@@ -107,7 +107,6 @@ private:
     QFileInfoList findCoverFiles(QDir dir, int depth) const;
     QList <DecoderFactory *> *m_decoderFactories;
     QList <EngineFactory *> *m_engineFactories;
-    QList <InputSourceFactory *> *m_inputSourceFactories;
     QMap <QString, QString> m_cover_cache;
     QmmpSettings *m_settings;
     mutable QMutex m_mutex;

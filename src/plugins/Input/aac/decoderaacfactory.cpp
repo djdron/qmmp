@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -43,7 +43,7 @@ const DecoderProperties DecoderAACFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("AAC Plugin");
-    properties.filter = "*.aac";
+    properties.filters << "*.aac";
     properties.description = tr("AAC Files");
     //properties.contentType = ;
     properties.shortName = "aac";

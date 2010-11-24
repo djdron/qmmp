@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 #include <QtGui>
+#include <QRegExp>
 extern "C"
 {
 #include <sndfile.h>
@@ -31,17 +32,7 @@ extern "C"
 
 bool DecoderSndFileFactory::supports(const QString &source) const
 {
-
-    if ((source.right(3).toLower() == ".au") ||
-            (source.right(4).toLower() == ".snd") ||
-            (source.right(4).toLower() == ".aif") ||
-            (source.right(5).toLower() == ".aiff") ||
-            (source.right(5).toLower() == ".8svx") ||
-            (source.right(4).toLower() == ".sph") ||
-            (source.right(3).toLower() == ".sf") ||
-            (source.right(4).toLower() == ".voc"))
-        return true;
-    else if (source.right(4).toLower() == ".wav")
+    if (source.right(4).toLower() == ".wav")
     {
         //try top open the file
         SF_INFO snd_info;
@@ -51,6 +42,12 @@ bool DecoderSndFileFactory::supports(const QString &source) const
         sf_close (sndfile);
         sndfile = 0;
         return true;
+    }
+    foreach(QString filter, properties().filters)
+    {
+        QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+        if (regexp.exactMatch(source))
+            return true;
     }
     return false;
 }
@@ -64,14 +61,15 @@ const DecoderProperties DecoderSndFileFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("Sndfile Plugin");
-    properties.filter = "*.wav *.au *.snd *.aif *.aiff *.8svx *.sph *.sf *.voc";
+    properties.filters << "*.wav" << "*.au" << "*.snd" << "*.aif" << "*.aiff" << "*.8svx";
+    properties.filters << "*.sph" << "*.sf" << "*.voc";
     properties.description = tr("PCM Files");
     //properties.contentType = "";
     properties.shortName = "sndfile";
     properties.hasAbout = true;
     properties.hasSettings = false;
     properties.noInput = true;
-    properties.protocols = "file";
+    properties.protocols << "file";
     return properties;
 }
 

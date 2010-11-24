@@ -40,16 +40,17 @@ INSTALLS += target
 HEADERS += mprisfactory.h \
            mpris.h  \
            playerobject.h \
- rootobject.h \
- tracklistobject.h
+           rootobject.h \
+           tracklistobject.h \
+           root2object.h
 
 SOURCES += mprisfactory.cpp \
            mpris.cpp \
            playerobject.cpp \
- rootobject.cpp \
- tracklistobject.cpp
+           rootobject.cpp \
+           tracklistobject.cpp \
+           root2object.cpp
 
 INCLUDEPATH += ../../../../src
 
 LIBS += -lqmmpui -lqmmp
-

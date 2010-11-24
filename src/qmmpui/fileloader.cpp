@@ -31,9 +31,7 @@ FileLoader::FileLoader(QObject *parent) : QThread(parent)
 
 
 FileLoader::~FileLoader()
-{
-    qWarning("FileLoader::~FileLoader()");
-}
+{}
 
 
 void FileLoader::addFile(const QString &path)

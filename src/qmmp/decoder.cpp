@@ -67,6 +67,7 @@ QIODevice *Decoder::input()
 
 // static methods
 QList<DecoderFactory*> *Decoder::m_factories = 0;
+QList<DecoderFactory*> *Decoder::m_disabledFactories = 0;
 DecoderFactory *Decoder::m_lastFactory = 0;
 QStringList Decoder::m_files;
 
@@ -75,8 +76,11 @@ void Decoder::checkFactories()
     if (!m_factories)
     {
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+        QStringList disabledNames  = settings.value("Decoder/disabled_plugins").toStringList ();
+
         m_files.clear();
         m_factories = new QList<DecoderFactory *>;
+        m_disabledFactories = new QList<DecoderFactory *>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Input");
@@ -97,6 +101,8 @@ void Decoder::checkFactories()
                 m_factories->append(factory);
                 m_files << pluginsDir.absoluteFilePath(fileName);
                 qApp->installTranslator(factory->createTranslator(qApp));
+                if(disabledNames.contains(factory->properties().shortName))
+                    m_disabledFactories->append(factory);
             }
         }
         //remove physically deleted plugins from disabled list
@@ -105,13 +111,12 @@ void Decoder::checkFactories()
         {
             names.append(factory->properties().shortName);
         }
-        QStringList disabledList  = settings.value("Decoder/disabled_plugins").toStringList ();
-        foreach (QString name, disabledList)
+        foreach (QString name, disabledNames)
         {
             if (!names.contains(name))
-                disabledList.removeAll(name);
+                disabledNames.removeAll(name);
         }
-        settings.setValue("Decoder/disabled_plugins",disabledList);
+        settings.setValue("Decoder/disabled_plugins",disabledNames);
     }
 }
 
@@ -119,6 +124,18 @@ QStringList Decoder::files()
 {
     checkFactories();
     return m_files;
+}
+
+QStringList Decoder::protocols()
+{
+    QStringList protocolsList;
+    foreach(DecoderFactory *f, *m_factories)
+    {
+        if(isEnabled(f))
+            protocolsList << f->properties().protocols;
+    }
+    protocolsList.removeDuplicates();
+    return protocolsList;
 }
 
 DecoderFactory *Decoder::findByPath(const QString& source)
@@ -146,15 +163,8 @@ DecoderFactory *Decoder::findByMime(const QString& type)
     DecoderFactory *fact;
     foreach(fact, *m_factories)
     {
-        if (isEnabled(fact))
-        {
-            QStringList types = fact->properties().contentType.split(";");
-            for (int j=0; j<types.size(); ++j)
-            {
-                if (type == types[j] && !types[j].isEmpty())
-                    return fact;
-            }
-        }
+        if (isEnabled(fact) && fact->properties().contentTypes.contains(type))
+            return fact;
     }
     return 0;
 }
@@ -164,7 +174,7 @@ DecoderFactory *Decoder::findByContent(QIODevice *input)
     checkFactories();
     foreach(DecoderFactory *fact, *m_factories)
     {
-        if (fact->canDecode(input) && isEnabled(fact))
+        if (isEnabled(fact) && fact->canDecode(input))
         {
             return fact;
         }
@@ -177,7 +187,7 @@ DecoderFactory *Decoder::findByProtocol(const QString &p)
     checkFactories();
     foreach(DecoderFactory *fact, *m_factories)
     {
-        if (isEnabled(fact) && fact->properties().protocols.split(" ").contains(p))
+        if (isEnabled(fact) && fact->properties().protocols.contains(p))
             return fact;
     }
     return 0;
@@ -189,29 +199,28 @@ void Decoder::setEnabled(DecoderFactory* factory, bool enable)
     if (!m_factories->contains(factory))
         return;
 
-    QString name = factory->properties().shortName;
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
+    if(enable == isEnabled(factory))
+        return;
 
-    if (enable)
-        disabledList.removeAll(name);
+    if(enable)
+        m_disabledFactories->removeAll(factory);
     else
+        m_disabledFactories->append(factory);
+
+    QStringList disabledNames;
+    foreach(DecoderFactory *f, *m_disabledFactories)
     {
-        if (!disabledList.contains(name))
-            disabledList << name;
+        disabledNames << f->properties().shortName;
     }
-    settings.setValue("Decoder/disabled_plugins", disabledList);
+    disabledNames.removeDuplicates();
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Decoder/disabled_plugins", disabledNames);
 }
 
 bool Decoder::isEnabled(DecoderFactory* factory)
 {
     checkFactories();
-    if (!m_factories->contains(factory))
-        return false;
-    QString name = factory->properties().shortName;
-    QSettings settings ( Qmmp::configFile(), QSettings::IniFormat );
-    QStringList disabledList = settings.value("Decoder/disabled_plugins").toStringList();
-    return !disabledList.contains(name);
+    return !m_disabledFactories->contains(factory);
 }
 
 QList<DecoderFactory*> *Decoder::factories()

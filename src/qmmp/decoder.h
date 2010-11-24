@@ -117,6 +117,11 @@ public:
      */
     static QStringList files();
     /*!
+     * Returns a list of supported protocols (including meta-protocols).
+     * This fuction ignores disabled decoders.
+     */
+    static QStringList protocols();
+    /*!
      * Sets whether the input plugin is enabled.
      * @param factory Decoder plugin factory.
      * @param enable Plugin enable state (\b true - enable, \b false - disable)
@@ -140,6 +145,7 @@ protected:
 private:
     static void checkFactories();
     static QList<DecoderFactory*> *m_factories;
+    static QList<DecoderFactory*> *m_disabledFactories;
     static DecoderFactory *m_lastFactory;
     static QStringList m_files;
     AudioParameters m_parameters;
