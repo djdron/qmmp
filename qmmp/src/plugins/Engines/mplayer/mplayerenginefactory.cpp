@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,10 +32,10 @@ const EngineProperties MplayerEngineFactory::properties() const
     EngineProperties properties;
     properties.name = tr("Mplayer Plugin");
     properties.shortName = "mplayer";
-    properties.filter = MplayerInfo::filters().join(" ");
+    properties.filters = MplayerInfo::filters();
     properties.description = tr("Video Files");
     //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
-    properties.protocols = "file";
+    properties.protocols << "file";
     properties.hasAbout = true;
     properties.hasSettings = true;
     return properties;

@@ -18,49 +18,71 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtPlugin>
-#include <QMessageBox>
-#include <QTranslator>
-//#include <curl/curlver.h>
 #include <qmmp/qmmp.h>
-#include "settingsdialog.h"
-#include "mmsinputsource.h"
-#include "mmsinputfactory.h"
+#include <qmmp/decoder.h>
+#include <qmmp/decoderfactory.h>
+#include <qmmp/abstractengine.h>
+#include <qmmp/enginefactory.h>
+#include <qmmp/enginefactory.h>
+#include <qmmp/inputsource.h>
+#include <qmmp/inputsourcefactory.h>
+#include <qmmp/metadatamanager.h>
+#include "root2object.h"
 
-const InputSourceProperties MMSInputFactory::properties() const
+Root2Object::Root2Object(QObject *parent) : QObject(parent)
+{}
+
+
+Root2Object::~Root2Object()
+{}
+
+bool Root2Object::canQuit() const
 {
-    InputSourceProperties p;
-    p.protocols << "mms" << "mmsh" << "mmst" << "mmsu";
-    p.name = tr("MMS Plugin");
-    p.shortName = "mms";
-    p.hasAbout = true;
-    p.hasSettings = true;
-    return p;
+    return true;
 }
 
-InputSource *MMSInputFactory::create(const QString &url, QObject *parent)
+bool Root2Object::canRaise() const
 {
-    return new MMSInputSource(url, parent);
+    return false;
 }
 
-void MMSInputFactory::showSettings(QWidget *parent)
+QString Root2Object::desktopEntry() const
 {
-    SettingsDialog *s = new SettingsDialog(parent);
-    s->show();
+    return "qmmp";
 }
 
-void MMSInputFactory::showAbout(QWidget *parent)
+bool Root2Object::hasTrackList() const
 {
-    QMessageBox::about (parent, tr("About MMS Transport Plugin"),
-                        tr("Qmmp MMS Transport Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+    return false;
+}
+QString Root2Object::identity() const
+{
+    QString name = "Qmmp " + Qmmp::strVersion();
+    return name;
 }
 
-QTranslator *MMSInputFactory::createTranslator(QObject *parent)
+QStringList Root2Object::supportedMimeTypes() const
 {
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/mms_plugin_") + locale);
-    return translator;
+    QStringList mimeTypes;
+    foreach(DecoderFactory *factory, *Decoder::factories())
+        mimeTypes << factory->properties().contentTypes;
+    foreach(EngineFactory *factory, *AbstractEngine::factories())
+        mimeTypes << factory->properties().contentTypes;
+    mimeTypes.removeDuplicates();
+    return mimeTypes;
 }
-Q_EXPORT_PLUGIN2(mms, MMSInputFactory);
+
+QStringList Root2Object::supportedUriSchemes() const
+{
+    QStringList protocols = MetaDataManager::instance()->protocols();
+    if(!protocols.contains("file")) //append file if needed
+        protocols.append("file");
+    return protocols;
+}
+
+void Root2Object::Quit()
+{
+    QMetaObject::invokeMethod(parent(), "exit");
+}
+
+void Root2Object::Raise(){}

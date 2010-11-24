@@ -24,6 +24,7 @@
 #include <QObject>
 
 class QTranslator;
+class QStringList;
 class InputSource;
 
 /*! @brief Helper class to store transport plugin properies.
@@ -41,11 +42,11 @@ public:
         hasAbout = false;
     }
 
-    QString name;      /*!< Transport plugin full name */
-    QString shortName; /*!< Transport plugin name for internal usage */
-    QString protocols; /*!< Supported protocols. */
-    bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise \b false */
-    bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
+    QString name;          /*!< Transport plugin full name */
+    QString shortName;     /*!< Transport plugin name for internal usage */
+    QStringList protocols; /*!< A list of supported protocols. */
+    bool hasAbout;         /*!< Should be \b true if plugin has about dialog, otherwise \b false */
+    bool hasSettings;      /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
 };
 
 

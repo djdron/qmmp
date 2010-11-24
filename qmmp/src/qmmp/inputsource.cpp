@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QFile>
-#include <QSettings>
 #include <QDir>
 #include <QApplication>
 #include <QPluginLoader>
@@ -68,8 +67,7 @@ InputSource *InputSource::create(const QString &url, QObject *parent)
     }
     foreach(InputSourceFactory *f, *m_factories)
     {
-        QStringList protocols = f->properties().protocols.split(" ");
-        if(protocols.contains(url.section("://", 0, 0)))
+        if(f->properties().protocols.contains(url.section("://", 0, 0)))
         {
             factory =  f;
             break;
@@ -99,10 +97,20 @@ QStringList InputSource::files()
     return m_files;
 }
 
+QStringList InputSource::protocols()
+{
+    checkFactories();
+    QStringList protocolsList;
+    foreach(InputSourceFactory *f, *m_factories)
+    {
+        protocolsList << f->properties().protocols;
+    }
+    protocolsList.removeDuplicates();
+    return protocolsList;
+}
+
 void InputSource::checkFactories()
 {
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-
     if (!m_factories)
     {
         m_files.clear();

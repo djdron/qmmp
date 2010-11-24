@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QRegExp>
 #include <gme/Gme_File.h>
 #include "gmehelper.h"
 #include "decoder_gme.h"
@@ -28,13 +29,12 @@
 
 bool DecoderGmeFactory::supports(const QString &source) const
 {
-    QString lExt = source.section(".",-1).toLower();
-    lExt.prepend(".");
-    QStringList lExtList;
-    lExtList << ".ay" << ".gms" << ".gym" << ".hes" << ".kss" << ".nsf" << ".nsfe" << ".sap" << ".spc"
-             << ".vgm" << ".vgz";
-    if (lExtList.contains(lExt))
-        return true;
+    foreach(QString filter, properties().filters)
+    {
+        QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+        if (regexp.exactMatch(source))
+            return true;
+    }
     return false;
 }
 
@@ -47,14 +47,15 @@ const DecoderProperties DecoderGmeFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("GME Plugin");
-    properties.filter = QString("*.ay *.gms *.gym *.hes *.kss *.nsf *.nsfe *.sap *.spc *.vgm *.vgz");
+    properties.filters << "*.ay" << "*.gms" << "*.gym" << "*.hes" << "*.kss" << "*.nsf" << "*.nsfe";
+    properties.filters << "*.sap" << "*.spc" << "*.vgm" << "*.vgz";
     properties.description = tr("Game Music Files");
     //properties.contentType = ;
     properties.shortName = "gme";
     properties.hasAbout = true;
     properties.hasSettings = false;
     properties.noInput = true;
-    properties.protocols = "gme";
+    properties.protocols << "gme";
     return properties;
 }
 

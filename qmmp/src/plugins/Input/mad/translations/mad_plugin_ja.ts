@@ -4,37 +4,37 @@
 <context>
     <name>DecoderMADFactory</name>
     <message>
-        <location filename="../decodermadfactory.cpp" line="87"/>
+        <location filename="../decodermadfactory.cpp" line="88"/>
         <source>MPEG Plugin</source>
         <translation>MPEG プラグイン</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="90"/>
+        <location filename="../decodermadfactory.cpp" line="91"/>
         <source>MPEG Files</source>
         <translation>MPEG ファイル</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="220"/>
+        <location filename="../decodermadfactory.cpp" line="221"/>
         <source>About MPEG Audio Plugin</source>
         <translation>MPEG 音響プラグインについて</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="221"/>
+        <location filename="../decodermadfactory.cpp" line="222"/>
         <source>Qmmp MPEG Audio Plugin</source>
         <translation>QMMP MPEG 音響プラグイン</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="222"/>
+        <location filename="../decodermadfactory.cpp" line="223"/>
         <source>Compiled against libmad version:</source>
         <translation>コンパイル時に使われた libmad の版はつぎのとおり:</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="226"/>
+        <location filename="../decodermadfactory.cpp" line="227"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermadfactory.cpp" line="227"/>
+        <location filename="../decodermadfactory.cpp" line="228"/>
         <source>Source code based on mq3 progect</source>
         <translation>ソースコードは MP3 プロジェクトより流用</translation>
     </message>

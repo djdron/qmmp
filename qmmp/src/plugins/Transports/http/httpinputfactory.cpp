@@ -30,7 +30,7 @@
 const InputSourceProperties HTTPInputFactory::properties() const
 {
     InputSourceProperties p;
-    p.protocols = "http";
+    p.protocols << "http";
     p.name = tr("HTTP Plugin");
     p.shortName = "http";
     p.hasAbout = true;

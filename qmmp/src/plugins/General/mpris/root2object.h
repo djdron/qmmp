@@ -17,50 +17,42 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef ROOT2OBJECT_H
+#define ROOT2OBJECT_H
 
-#include <QtPlugin>
-#include <QMessageBox>
-#include <QTranslator>
-//#include <curl/curlver.h>
-#include <qmmp/qmmp.h>
-#include "settingsdialog.h"
-#include "mmsinputsource.h"
-#include "mmsinputfactory.h"
+#include <QObject>
+#include <QStringList>
 
-const InputSourceProperties MMSInputFactory::properties() const
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class Root2Object : public QObject
 {
-    InputSourceProperties p;
-    p.protocols << "mms" << "mmsh" << "mmst" << "mmsu";
-    p.name = tr("MMS Plugin");
-    p.shortName = "mms";
-    p.hasAbout = true;
-    p.hasSettings = true;
-    return p;
-}
+Q_OBJECT
+Q_CLASSINFO("D-Bus Interface", "org.mpris.MediaPlayer2")
+Q_PROPERTY(bool CanQuit READ canQuit)
+Q_PROPERTY(bool CanRaise READ canRaise)
+Q_PROPERTY(QString DesktopEntry READ desktopEntry)
+Q_PROPERTY(bool HasTrackList READ hasTrackList)
+Q_PROPERTY(QString Identity READ identity)
+Q_PROPERTY(QStringList SupportedMimeTypes READ supportedMimeTypes)
+Q_PROPERTY(QStringList SupportedUriSchemes READ supportedUriSchemes)
 
-InputSource *MMSInputFactory::create(const QString &url, QObject *parent)
-{
-    return new MMSInputSource(url, parent);
-}
+public:
+    Root2Object(QObject *parent = 0);
+    virtual ~Root2Object();
 
-void MMSInputFactory::showSettings(QWidget *parent)
-{
-    SettingsDialog *s = new SettingsDialog(parent);
-    s->show();
-}
+    bool canQuit() const;
+    bool canRaise() const;
+    QString desktopEntry() const;
+    bool hasTrackList() const;
+    QString identity() const;
+    QStringList supportedMimeTypes() const;
+    QStringList supportedUriSchemes() const;
 
-void MMSInputFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About MMS Transport Plugin"),
-                        tr("Qmmp MMS Transport Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
-}
+public slots:
+     void Quit();
+     void Raise();
+};
 
-QTranslator *MMSInputFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/mms_plugin_") + locale);
-    return translator;
-}
-Q_EXPORT_PLUGIN2(mms, MMSInputFactory);
+#endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,28 +19,28 @@
  ***************************************************************************/
 
 #include <QtDBus>
-
 #include "playerobject.h"
 #include "rootobject.h"
 #include "tracklistobject.h"
+#include "root2object.h"
 #include "mpris.h"
 
-MPRIS::MPRIS(QObject *parent)
-        : General(parent)
+MPRIS::MPRIS(QObject *parent) : General(parent)
 {
-    PlayerObject *player = new PlayerObject(this);
-    RootObject *root = new RootObject(this);
-    TrackListObject *trackList = new TrackListObject(this);
     QDBusConnection connection = QDBusConnection::sessionBus();
-    connection.registerObject("/TrackList", trackList, QDBusConnection::ExportAllContents);
-    connection.registerObject("/Player", player, QDBusConnection::ExportAllContents);
-    connection.registerObject("/", root, QDBusConnection::ExportAllContents);
+    //MPRISv1
+    connection.registerObject("/TrackList", new TrackListObject(this), QDBusConnection::ExportAllContents);
+    connection.registerObject("/Player", new PlayerObject(this), QDBusConnection::ExportAllContents);
+    connection.registerObject("/", new RootObject(this), QDBusConnection::ExportAllContents);
+    //MPRISv2
+    connection.registerObject("/org/mpris/MediaPlayer2", new Root2Object(this),
+                              QDBusConnection::ExportAllContents);
     connection.registerService("org.mpris.qmmp");
+    connection.registerService("org.mpris.MediaPlayer2.qmmp");
 }
-
 
 MPRIS::~MPRIS()
 {
+    QDBusConnection::sessionBus().unregisterService("org.mpris.qmmp");
+    QDBusConnection::sessionBus().unregisterService("org.mpris.MediaPlayer2.qmmp");
 }
-
-

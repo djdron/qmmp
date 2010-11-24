@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,14 +42,14 @@ const DecoderProperties DecoderWavPackFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("WavPack Plugin");
-    properties.filter = "*.wv";
+    properties.filters << "*.wv";
     properties.description = tr("WavPack Files");
     //properties.contentType = ;
     properties.shortName = "wavpack";
     properties.hasAbout = true;
     properties.hasSettings = false;
     properties.noInput = true;
-    properties.protocols = "file wvpack";
+    properties.protocols << "file" << "wvpack";
     return properties;
 }
 

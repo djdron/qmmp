@@ -43,10 +43,10 @@ const DecoderProperties DecoderCUEFactory::properties() const
     DecoderProperties properties;
     properties.name = tr("CUE Plugin");
     properties.shortName = "cue";
-    properties.filter = "*.cue";
+    properties.filters << "*.cue";
     properties.description = tr("CUE Files");
     //properties.contentType = "application/ogg;audio/x-vorbis+ogg";
-    properties.protocols = "cue";
+    properties.protocols << "cue";
     properties.hasAbout = true;
     properties.hasSettings = true;
     properties.noInput = true;

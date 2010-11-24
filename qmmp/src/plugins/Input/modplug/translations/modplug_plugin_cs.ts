@@ -4,52 +4,52 @@
 <context>
     <name>DecoderModPlugFactory</name>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="60"/>
+        <location filename="../decodermodplugfactory.cpp" line="55"/>
         <source>ModPlug Plugin</source>
         <translation>Modul ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="64"/>
+        <location filename="../decodermodplugfactory.cpp" line="61"/>
         <source>ModPlug Files</source>
         <translation>Soubory ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="130"/>
+        <location filename="../decodermodplugfactory.cpp" line="127"/>
         <source>About ModPlug Audio Plugin</source>
         <translation>O modulu ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="131"/>
+        <location filename="../decodermodplugfactory.cpp" line="128"/>
         <source>Qmmp ModPlug Audio Plugin</source>
         <translation>Vstupní modul Qmmp ModPlug</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="132"/>
+        <location filename="../decodermodplugfactory.cpp" line="129"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="133"/>
+        <location filename="../decodermodplugfactory.cpp" line="130"/>
         <source>Based on the Modplug Plugin for Xmms</source>
         <translation>Založeno na modulu Modplug pro XMMS</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="134"/>
+        <location filename="../decodermodplugfactory.cpp" line="131"/>
         <source>Modplug Plugin developers:</source>
         <translation>Vývojáři modulu ModPlug:</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="135"/>
+        <location filename="../decodermodplugfactory.cpp" line="132"/>
         <source>Olivier Lapicque &lt;olivierl@jps.net&gt;</source>
         <translation>Olivier Lapicque &lt;olivierl@jps.net&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="136"/>
+        <location filename="../decodermodplugfactory.cpp" line="133"/>
         <source>Kenton Varda &lt;temporal@gauge3d.org&gt;</source>
         <translation>Kenton Varda &lt;temporal@gauge3d.org&gt;</translation>
     </message>
     <message>
-        <location filename="../decodermodplugfactory.cpp" line="137"/>
+        <location filename="../decodermodplugfactory.cpp" line="134"/>
         <source>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</source>
         <translation>Konstanty Bialkowski &lt;konstanty@ieee.org&gt;</translation>
     </message>

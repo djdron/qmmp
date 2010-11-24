@@ -37,7 +37,6 @@ MetaDataManager::MetaDataManager() : m_mutex(QMutex::Recursive)
     m_instance = this;
     m_decoderFactories = Decoder::factories();
     m_engineFactories = AbstractEngine::factories();
-    m_inputSourceFactories = InputSource::factories();
     m_settings = QmmpSettings::instance();
 }
 
@@ -66,20 +65,14 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
     else
     {
         QString scheme = fileName.section("://",0,0);
-        QStringList p;
-        foreach(InputSourceFactory *f, *m_inputSourceFactories)
-        {
-            p << f->properties().protocols.split(" ", QString::SkipEmptyParts);
-        }
-        if(p.contains(scheme))
+        if(InputSource::protocols().contains(scheme))
         {
             list << new FileInfo(fileName);
             return list;
         }
         foreach(fact, *m_decoderFactories)
         {
-            p = fact->properties().protocols.split(" ", QString::SkipEmptyParts);
-            if(p.contains(scheme) && Decoder::isEnabled(fact))
+            if(fact->properties().protocols.contains(scheme) && Decoder::isEnabled(fact))
                 return fact->createPlayList(fileName, useMetaData);
         }
     }
@@ -104,16 +97,13 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
     {
         QString scheme = path.section("://",0,0);
         MetaDataModel *model = 0;
-        foreach(fact, *Decoder::factories())
+        if((fact = Decoder::findByProtocol(scheme)))
         {
-            if(fact->properties().protocols.split(" ").contains(scheme))
-                model = fact->createMetaDataModel(path, parent);
-            if(model)
-                return model;
+            return fact->createMetaDataModel(path, parent);
         }
         foreach(efact, *AbstractEngine::factories())
         {
-            if(efact->properties().protocols.split(" ").contains(scheme))
+            if(efact->properties().protocols.contains(scheme) && AbstractEngine::isEnabled(efact))
                 model = efact->createMetaDataModel(path, parent);
             if(model)
                 return model;
@@ -127,13 +117,13 @@ QStringList MetaDataManager::filters() const
     QStringList filters;
     foreach(DecoderFactory *fact, *m_decoderFactories)
     {
-        if (Decoder::isEnabled(fact) && !fact->properties().filter.isEmpty())
-            filters << fact->properties().description + " (" + fact->properties().filter + ")";
+        if (Decoder::isEnabled(fact) && !fact->properties().filters.isEmpty())
+            filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
     }
     foreach(EngineFactory *fact, *m_engineFactories)
     {
-        if (AbstractEngine::isEnabled(fact) && !fact->properties().filter.isEmpty())
-            filters << fact->properties().description + " (" + fact->properties().filter + ")";
+        if (AbstractEngine::isEnabled(fact) && !fact->properties().filters.isEmpty())
+            filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
     }
     return filters;
 }
@@ -144,12 +134,12 @@ QStringList MetaDataManager::nameFilters() const
     foreach(DecoderFactory *fact, *m_decoderFactories)
     {
         if (Decoder::isEnabled(fact))
-            filters << fact->properties().filter.split(" ", QString::SkipEmptyParts);
+            filters << fact->properties().filters;
     }
     foreach(EngineFactory *fact, *m_engineFactories)
     {
         if (AbstractEngine::isEnabled(fact))
-            filters << fact->properties().filter.split(" ", QString::SkipEmptyParts);
+            filters << fact->properties().filters;
     }
     return filters;
 }
@@ -157,15 +147,10 @@ QStringList MetaDataManager::nameFilters() const
 QStringList MetaDataManager::protocols() const
 {
     QStringList p;
-    foreach(InputSourceFactory *f, *m_inputSourceFactories)
-    {
-        p << f->properties().protocols.split(" ", QString::SkipEmptyParts);
-    }
-    foreach(DecoderFactory *f, *m_decoderFactories)
-    {
-        if (Decoder::isEnabled(f))
-            p << f->properties().protocols.split(" ", QString::SkipEmptyParts);
-    }
+    p << InputSource::protocols();
+    p << Decoder::protocols();
+    p << AbstractEngine::protocols();
+    p.removeDuplicates();
     return p;
 }
 

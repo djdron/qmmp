@@ -80,16 +80,6 @@ public:
      */
     QWaitCondition *cond();
     /*!
-     * Sets equalizer settings. Each item of \p bands[] and \p reamp should be \b -20.0..20.0
-     * Subclass should reimplement this function.
-     */
-    //virtual void setEQ(double bands[10], double preamp) = 0;
-    /*!
-     * Enables equalizer if \p on is \b true or disables it if \p on is \b false
-     * Subclass should reimplement this function.
-     */
-    //virtual void setEQEnabled(bool on) = 0;
-    /*!
      * Returns a list of decoder factories.
      */
     static QList<EngineFactory*> *factories();
@@ -112,6 +102,11 @@ public:
      * Returns a list of engine plugin files.
      */
     static QStringList files();
+    /*!
+     * Returns a list of supported protocols (including meta-protocols).
+     * This fuction ignores disabled engines.
+     */
+    static QStringList protocols();
 
 signals:
     /*!
@@ -125,6 +120,7 @@ private:
 
     static void checkFactories();
     static QList<EngineFactory*> *m_factories;
+    static QList<EngineFactory*> *m_disabledFactories;
     static QStringList m_files;
 };
 

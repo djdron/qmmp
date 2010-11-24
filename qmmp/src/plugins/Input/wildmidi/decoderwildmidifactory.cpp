@@ -41,14 +41,14 @@ const DecoderProperties DecoderWildMidiFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("WildMidi Plugin");
-    properties.filter = "*.mid";
+    properties.filters << "*.mid";
     properties.description = tr("Midi Files");
     //properties.contentType = ;
     properties.shortName = "wildmidi";
     properties.hasAbout = true;
     properties.hasSettings = true;
     properties.noInput = true;
-    properties.protocols = "file";
+    properties.protocols << "file";
     WildMidiHelper::instance()->initialize();
     return properties;
 }

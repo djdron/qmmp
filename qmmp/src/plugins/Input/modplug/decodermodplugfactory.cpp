@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,11 +20,10 @@
 
 #include <QtGui>
 #include <QStringList>
-
+#include <QRegExp>
 #include <libmodplug/stdafx.h>
 #include <libmodplug/it_defs.h>
 #include <libmodplug/sndfile.h>
-
 #include "settingsdialog.h"
 #include "modplugmetadatamodel.h"
 #include "decoder_modplug.h"
@@ -36,16 +35,12 @@
 
 bool DecoderModPlugFactory::supports(const QString &source) const
 {
-    QString lExt = source.section(".",-1).toLower();
-    lExt.prepend(".");
-    QStringList lExtList;
-    lExtList << ".amf" << ".ams" << ".dbm" << ".dbf"  << ".dsm" << ".far" << ".mdl"
-    << ".stm" << ".ult" << ".ult" << ".j2b" << ".mt2" << ".mdz" /*<< ".mdr"*/ << ".mdgz"
-    << ".mdbz"  << ".mod" << ".s3z" << /*".s3r" <<*/ ".s3gz" << ".s3m" << ".xmz" /*<< ".xmr"*/
-    << ".xmgz" << ".itz"  << /*".itr" <<*/ ".itgz" << ".dmf" << ".umx" << ".it" << ".669"
-    << ".xm" << ".mtm" << ".psm" << ".ft2";
-    if (lExtList.contains(lExt))
-        return true;
+    foreach(QString filter, properties().filters)
+    {
+        QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+        if (regexp.exactMatch(source))
+            return true;
+    }
     return false;
 }
 
@@ -58,16 +53,18 @@ const DecoderProperties DecoderModPlugFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("ModPlug Plugin");
-    properties.filter = (QString) "*.amf *.ams *.dbm *.dbf *.dsm *.far *.mdl *.stm *.ult" +
-                        "*.j2b *.mt2 *.mdz *.mdr *.mdgz *.mdbz *.mod *.s3z *.s3r *.s3gz *.s3m *.xmz"+
-                        "*.xmr *.xmgz *.itz *.itr *.itgz *.dmf *.umx *.it *.669 *.xm *.mtm *.psm *.ft2";
+    properties.filters << "*.amf" << "*.ams" << "*.dbm" << "*.dbf" << "*.dsm" << "*.far" << "*.mdl";
+    properties.filters << "*.stm" << "*.ult" << "*.j2b" << "*.mt2" << "*.mdz" << "*.mdr" << "*.mdgz";
+    properties.filters << "*.mdbz" << "*.mod" << "*.s3z" << "*.s3r" << "*.s3gz" << "*.s3m" << "*.xmz";
+    properties.filters << "*.xmr" << "*.xmgz" << "*.itz" << "*.itr" << "*.itgz" << "*.dmf" "*.umx";
+    properties.filters << "*.it" << "*.669" << "*.xm" << "*.mtm" << "*.psm" << "*.ft2";
     properties.description = tr("ModPlug Files");
     //properties.contentType = ;
     properties.shortName = "modplug";
     properties.hasAbout = true;
     properties.hasSettings = true;
     properties.noInput = true;
-    properties.protocols = "file";
+    properties.protocols << "file";
     return properties;
 }
 

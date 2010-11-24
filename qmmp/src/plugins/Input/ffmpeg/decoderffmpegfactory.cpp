@@ -51,14 +51,7 @@ extern "C"
 
 bool DecoderFFmpegFactory::supports(const QString &source) const
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QStringList filters;
-    filters << "*.wma" << "*.ape";
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
-    filters << "*.shn";
-#endif
-    filters = settings.value("FFMPEG/filters", filters).toStringList();
-    foreach(QString filter, filters)
+    foreach(QString filter, properties().filters)
     {
         QRegExp regexp(filter, Qt::CaseInsensitive, QRegExp::Wildcard);
         if (regexp.exactMatch(source))
@@ -70,17 +63,7 @@ bool DecoderFFmpegFactory::supports(const QString &source) const
 bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
 {
     av_register_all();
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QStringList filters;
-#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
-    filters << "*.wma" << "*.ape";
-#else
-    filters << "*.wma";
-#endif
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
-    filters << "*.shn";
-#endif
-    filters = settings.value("FFMPEG/filters", filters).toStringList();
+    QStringList filters = properties().filters;
 
     AVProbeData  pd;
     uint8_t buf[8192 + AVPROBE_PADDING_SIZE];
@@ -119,19 +102,21 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     DecoderProperties properties;
     properties.name = tr("FFmpeg Plugin");
-    properties.filter = filters.join(" ");
+    properties.filters = filters;
     properties.description = tr("FFmpeg Formats");
     if(filters.contains("*.wma"))
-        properties.contentType += "audio/x-ms-wma";
+        properties.contentTypes << "audio/x-ms-wma";
     if(filters.contains("*.mp3"))
-        properties.contentType += " audio/mpeg";
+        properties.contentTypes << "audio/mpeg";
     if(filters.contains("*.aac"))
-        properties.contentType += " audio/aac audio/aacp";
+        properties.contentTypes << "audio/aac" << "audio/aacp";
     if(filters.contains("*.m4a"))
-        properties.contentType += " audio/x-ffmpeg-shorten";
+        properties.contentTypes << "audio/x-ffmpeg-shorten";
     if(filters.contains("*.shn"))
-        properties.contentType += " audio/3gpp audio/3gpp2 audio/mp4 audio/MP4A-LATM audio/mpeg4-generic";
-    properties.contentType = properties.contentType.trimmed();
+    {
+        properties.contentTypes << "audio/3gpp" << "audio/3gpp2" << "audio/mp4";
+        properties.contentTypes << "audio/MP4A-LATM" << "audio/mpeg4-generic";
+    }
     properties.shortName = "ffmpeg";
     properties.hasAbout = true;
     properties.hasSettings = true;

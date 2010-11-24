@@ -22,6 +22,7 @@
 #define HTTPINPUTFACTORY_H
 
 #include <QObject>
+#include <QStringList>
 #include <qmmp/inputsourcefactory.h>
 
 class QTranslator;

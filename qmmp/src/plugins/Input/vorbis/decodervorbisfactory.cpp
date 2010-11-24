@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -49,9 +49,9 @@ const DecoderProperties DecoderVorbisFactory::properties() const
     DecoderProperties properties;
     properties.name = tr("Ogg Vorbis Plugin");
     properties.shortName = "vorbis";
-    properties.filter = "*.ogg";
+    properties.filters << "*.ogg";
     properties.description = tr("Ogg Vorbis Files");
-    properties.contentType = "application/ogg;audio/x-vorbis+ogg";
+    properties.contentTypes << "application/ogg" << "audio/x-vorbis+ogg";
     properties.hasAbout = true;
     properties.hasSettings = false;
     properties.noInput = false;

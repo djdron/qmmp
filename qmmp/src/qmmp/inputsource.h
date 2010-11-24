@@ -85,6 +85,10 @@ public:
      * Returns a list of transport plugin file names.
      */
     static QStringList files();
+    /*!
+     * Returns a list of supported protocols.
+     */
+    static QStringList protocols();
 
 signals:
     /*!

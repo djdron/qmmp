@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -45,7 +45,7 @@ const DecoderProperties DecoderMPCFactory::properties() const
 {
     DecoderProperties properties;
     properties.name = tr("Musepack Plugin");
-    properties.filter = "*.mpc";
+    properties.filters << "*.mpc";
     properties.description = tr("Musepack Files");
     //properties.contentType = ;
     properties.shortName = "mpc";
