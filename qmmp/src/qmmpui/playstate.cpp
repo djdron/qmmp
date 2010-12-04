@@ -38,9 +38,8 @@ bool ShufflePlayState::next()
             else
                 prepare();
         }
-
-        if (m_shuffled_current < m_shuffled_indexes.count() - 1)
-            m_shuffled_current++;
+        else
+            m_shuffled_current = (m_shuffled_current + 1) % m_shuffled_indexes.count();
 
         return m_model->setCurrent(m_shuffled_indexes.at(m_shuffled_current));
     }
@@ -61,7 +60,7 @@ int ShufflePlayState::nextIndex()
         else
             prepare();
     }
-    return m_shuffled_indexes.at(m_shuffled_current + 1);
+    return m_shuffled_indexes.at((m_shuffled_current + 1) % m_shuffled_indexes.count());
 }
 
 bool ShufflePlayState::previous()
@@ -93,14 +92,14 @@ bool ShufflePlayState::previous()
 void ShufflePlayState::prepare()
 {
     resetState();
-    for (int i = 0;i < m_model->items().count();i++)
+    for(int i = 0;i < m_model->items().count();i++)
     {
         if (i != m_model->currentRow())
             m_shuffled_indexes << i;
     }
 
-    for (int i = 0;i < m_shuffled_indexes.count();i++)
-        m_shuffled_indexes.swap(qrand()%m_shuffled_indexes.size(),qrand()%m_shuffled_indexes.size());
+    for (int i = 0; i < m_shuffled_indexes.count(); i++)
+        m_shuffled_indexes.swap(i, qrand()%m_shuffled_indexes.size());
 
     m_shuffled_indexes.prepend(m_model->currentRow());
 }
