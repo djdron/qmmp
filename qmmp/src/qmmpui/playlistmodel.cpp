@@ -112,8 +112,7 @@ void PlayListModel::add(PlayListItem *item)
     m_items << item;
     m_current = m_items.indexOf(m_currentItem);
 
-    if (m_items.size() == 1)
-        emit firstAdded();
+    emit itemAdded(item);
     emit listChanged();
 }
 
@@ -124,29 +123,27 @@ void PlayListModel::add(QList <PlayListItem *> items)
     if (m_items.isEmpty())
         m_currentItem = items.at(0);
 
-    foreach(PlayListItem *item, items)
-        m_total_length += item->length();
     m_items << items;
-
-    if (m_items.size() == items.size())
-        emit firstAdded();
     m_current = m_items.indexOf(m_currentItem);
+    foreach(PlayListItem *item, items)
+    {
+        m_total_length += item->length();
+        emit itemAdded(item);
+    }
     emit listChanged();
 }
 
 void PlayListModel::add(const QString &path)
 {
     QFileInfo f_info(path);
-    //if (f_info.exists() || path.contains("://"))
+    if (f_info.isDir())
+        m_loader->loadDirectory(path);
+    else
     {
-        if (f_info.isDir())
-            m_loader->loadDirectory(path);
-        else
-        {
-            m_loader->loadFile(path);
-            loadPlaylist(path);
-        }
+        m_loader->loadFile(path);
+        loadPlaylist(path);
     }
+
 }
 
 void PlayListModel::add(const QStringList &paths)
@@ -200,6 +197,13 @@ bool PlayListModel::setCurrent(int c)
     emit currentChanged();
     emit listChanged();
     return true;
+}
+
+bool PlayListModel::setCurrent(PlayListItem *item)
+{
+    if(!m_items.contains(item))
+        return false;
+    return setCurrent(m_items.indexOf(item));
 }
 
 bool PlayListModel::next()
@@ -856,6 +860,11 @@ bool PlayListModel::isRepeatableList() const
 bool PlayListModel::isShuffle() const
 {
     return m_shuffle;
+}
+
+bool PlayListModel::isLoaderRunning() const
+{
+    return m_loader->isRunning();
 }
 
 void PlayListModel::preparePlayState()
