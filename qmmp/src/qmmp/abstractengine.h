@@ -79,6 +79,9 @@ public:
      * Returns wait condition pointer.
      */
     QWaitCondition *cond();
+
+
+    static AbstractEngine *create(InputSource *s, QObject *parent = 0);
     /*!
      * Returns a list of decoder factories.
      */

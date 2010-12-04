@@ -55,7 +55,6 @@ bool DecoderMADFactory::supports(const QString &source) const
             return true;
         }
     }
-    qDebug("false");
     return false;
 }
 
