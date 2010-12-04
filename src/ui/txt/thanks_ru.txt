@@ -2,6 +2,8 @@
 
     Adria Arrufat <swiftscythe@gmail.com> - сообщения об ошибках
     Adrian Knoth <adi@drcomp.erfurt.thur.de> - исправления в модуле jack plugin, сообщения об ошибках
+    Anton Petrusevich <casus@casus.us> - улучшение случайного воспроизведения    
+    Avihay Baratz <avihayb@gmail.com> - опции авто-остановки, исправления ошибок
     Csaba Hruska <csaba.hruska@gmail.com> - исправления в модуле ffmpeg
     Dmitry Kostin <kostindima@gmail.com> - поддержка iso.wv
     Геннадий Моцьо <drool@altlinux.ru> - сообщения об ошибках
