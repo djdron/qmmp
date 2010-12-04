@@ -32,19 +32,21 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 SET(libmpris_SRCS
     mpris.cpp
     mprisfactory.cpp
-    rootobject.cpp
-    root2object.cpp
-    playerobject.cpp
-    tracklistobject.cpp
+    mpris1/rootobject.cpp
+    mpris1/playerobject.cpp
+    mpris1/tracklistobject.cpp
+    mpris2/root2object.cpp
+    mpris2/player2object.cpp
 )
 
 SET(libmpris_MOC_HDRS
     mprisfactory.h
     mpris.h
-    rootobject.h
-    root2object.h
-    playerobject.h
-    tracklistobject.h
+    mpris1/rootobject.h
+    mpris1/playerobject.h
+    mpris1/tracklistobject.h
+    mpris2/root2object.h
+    mpris2/player2object.cpp
 )
 
 SET(libmpris_RCCS translations/translations.qrc)

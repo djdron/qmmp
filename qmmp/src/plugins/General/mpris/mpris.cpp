@@ -19,21 +19,24 @@
  ***************************************************************************/
 
 #include <QtDBus>
-#include "playerobject.h"
-#include "rootobject.h"
-#include "tracklistobject.h"
-#include "root2object.h"
+#include "mpris1/playerobject.h"
+#include "mpris1/rootobject.h"
+#include "mpris1/tracklistobject.h"
+#include "mpris2/root2object.h"
+#include "mpris2/player2object.h"
 #include "mpris.h"
 
 MPRIS::MPRIS(QObject *parent) : General(parent)
 {
     QDBusConnection connection = QDBusConnection::sessionBus();
-    //MPRISv1
+    //MPRISv1.0
     connection.registerObject("/TrackList", new TrackListObject(this), QDBusConnection::ExportAllContents);
     connection.registerObject("/Player", new PlayerObject(this), QDBusConnection::ExportAllContents);
     connection.registerObject("/", new RootObject(this), QDBusConnection::ExportAllContents);
-    //MPRISv2
+    //MPRISv2.0
     connection.registerObject("/org/mpris/MediaPlayer2", new Root2Object(this),
+                              QDBusConnection::ExportAllContents);
+    connection.registerObject("/org/mpris/MediaPlayer2/Player", new Player2Object(this),
                               QDBusConnection::ExportAllContents);
     connection.registerService("org.mpris.qmmp");
     connection.registerService("org.mpris.MediaPlayer2.qmmp");
