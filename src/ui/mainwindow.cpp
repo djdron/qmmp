@@ -564,7 +564,7 @@ void MainWindow::setFileList(const QStringList &l, bool clear)
     }
     m_model = m_pl_manager->selectedPlayList();
     m_model->clear();
-    connect(m_model, SIGNAL(firstAdded()), SLOT(play()));
+    connect(m_model, SIGNAL(itemAdded(PlayListItem*)), SLOT(play()));
     connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
     m_model->add(l);
 }
@@ -631,7 +631,7 @@ void MainWindow::disconnectPl()
 {
     if(m_model)
     {
-        disconnect(m_model, SIGNAL(firstAdded()), this, SLOT(play()));
+        disconnect(m_model, SIGNAL(itemAdded(PlayListItem*)), this, SLOT(play()));
         disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
         m_model = 0;
     }

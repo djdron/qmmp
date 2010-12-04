@@ -152,6 +152,11 @@ public:
      */
     bool setCurrent (int row);
     /*!
+     * Sets current item to \b item.
+     * Returns \b true if success, otherwise returns \b false
+     */
+    bool setCurrent(PlayListItem *item);
+    /*!
      * Returns \b true if \b row is selected, otherwise returns \b false
      */
     bool isSelected(int row);
@@ -263,6 +268,10 @@ public:
      */
     bool isShuffle() const;
     /*!
+     * Returns \b true if the file loader thread is active; otherwise returns \b false.
+     */
+    bool isLoaderRunning() const;
+    /*!
      * Returns \b true if the playlist contains an item with URL \b url; otherwise returns \b false.
      */
     bool contains(const QString &url);
@@ -290,9 +299,10 @@ signals:
      */
     void currentChanged();
     /*!
-     * Emitted when first item has added.
+     * Emitted when new item has added.
+     * @param name New playlist item pointer.
      */
-    void firstAdded();
+    void itemAdded(PlayListItem *item);
     /*!
      * Emitted when playlist name has chanded.
      * @param name New playlist name.

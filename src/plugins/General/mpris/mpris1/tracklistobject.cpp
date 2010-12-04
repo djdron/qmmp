@@ -56,11 +56,9 @@ int TrackListObject::AddTrack(const QString &in0, bool in1)
     {
         m_pl_manager->selectPlayList(m_model);
         m_player->stop();
-        qDebug("1");
         m_prev_count = m_model->count();
         connect(m_model, SIGNAL(listChanged()), this, SLOT(checkNewItem()));
         connect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
-        qDebug("2");
     }
     m_model->add(path);
     return 0;
