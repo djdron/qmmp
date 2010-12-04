@@ -23,6 +23,7 @@
 #include <QPluginLoader>
 #include <QApplication>
 #include "enginefactory.h"
+#include "qmmpaudioengine.h"
 #include "qmmp.h"
 #include "abstractengine.h"
 
@@ -91,6 +92,34 @@ void AbstractEngine::checkFactories()
         }
         settings.setValue("Engine/disabled_plugins", disabledNames);
     }
+}
+
+AbstractEngine *AbstractEngine::create(InputSource *s, QObject *parent)
+{
+    AbstractEngine *engine = new QmmpAudioEngine(parent); //internal engine
+    if(!engine->enqueue(s))
+    {
+        engine->deleteLater();
+        engine = 0;
+    }
+    else
+        return engine;
+
+
+    foreach(EngineFactory *f, *m_factories)
+    {
+        if(!isEnabled(f))
+            continue;
+        engine = f->create(parent); //engine plugin
+        if(!engine->enqueue(s))
+        {
+            engine->deleteLater();
+            engine = 0;
+        }
+        else
+            break;
+    }
+    return engine;
 }
 
 QList<EngineFactory*> *AbstractEngine::factories()

@@ -227,8 +227,19 @@ bool SoundCore::enqueue(InputSource *s)
     m_url = s->url();
     if(!m_engine)
     {
-        m_engine = new QmmpAudioEngine(this);
-        connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
+        if((m_engine = AbstractEngine::create(s, this)))
+        {
+            connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
+            m_engine->play();
+            m_handler->setCurrentEngine(m_engine);
+            return true;
+        }
+        else
+        {
+            s->deleteLater();
+            m_handler->setCurrentEngine(0);
+            return false;
+        }
     }
 
     if(m_engine->enqueue(s))
@@ -241,30 +252,8 @@ bool SoundCore::enqueue(InputSource *s)
     }
     else
     {
-        //current engine doesn't support this stream, trying to find another
-        AbstractEngine *engine = new QmmpAudioEngine(this); //internal engine
-        if(!engine->enqueue(s))
-        {
-            engine->deleteLater();
-            engine = 0;
-        }
-
+        AbstractEngine *engine = AbstractEngine::create(s, this);
         if(!engine)
-        {
-            foreach(EngineFactory *f, *AbstractEngine::factories())
-            {
-                engine = f->create(this); //engine plugin
-                if(!engine->enqueue(s))
-                {
-                    engine->deleteLater();
-                    engine = 0;
-                }
-                else
-                    break;
-            }
-        }
-
-        if(!engine) //unsupported file format
         {
             s->deleteLater();
             m_handler->setCurrentEngine(0);
