@@ -23,6 +23,7 @@
 #include <QWidget>
 #include <QDir>
 #include <QContextMenuEvent>
+#include <QPen>
 
 class QFont;
 class QFontMetrics;
@@ -137,6 +138,7 @@ private:
     QFontMetrics *m_metrics;
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
+    QPen m_anchor_pen_normal,m_anchor_pen_selected;
     int m_anchor_row;
 
     enum ScrollDirection
