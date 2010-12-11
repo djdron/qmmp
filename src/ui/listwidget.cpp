@@ -62,8 +62,6 @@ ListWidget::ListWidget(QWidget *parent)
     m_timer = new QTimer(this);
     m_timer->setInterval(50);
     connect(m_timer, SIGNAL(timeout()), SLOT(autoscroll()));
-    m_anchor_pen_normal.setStyle(Qt::DotLine);
-    m_anchor_pen_selected.setStyle(Qt::DotLine);
 }
 
 
@@ -76,6 +74,7 @@ void ListWidget::readSettings()
     m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
     m_show_protocol = settings.value ("PlayList/show_protocol", false).toBool();
     m_show_number = settings.value ("PlayList/show_numbers", true).toBool();
+    m_show_anchor = settings.value("PlayList/show_anchor", false).toBool();
     bool show_popup = settings.value("PlayList/show_popup", false).toBool();
 
     if (m_update)
@@ -105,34 +104,23 @@ void ListWidget::loadColors()
     m_current.setNamedColor(m_skin->getPLValue("current"));
     m_normal_bg.setNamedColor(m_skin->getPLValue("normalbg"));
     m_selected_bg.setNamedColor(m_skin->getPLValue("selectedbg"));
-    m_anchor_pen_normal.setColor(m_selected_bg);
-    m_anchor_pen_selected.setColor(m_normal_bg);
 }
 
 void ListWidget::paintEvent(QPaintEvent *)
 {
     QPainter m_painter(this);
-    //m_painter.setPen(Qt::white);
     m_painter.setFont(m_font);
     m_painter.setBrush(QBrush(m_normal_bg));
     m_painter.drawRect(-1,-1,width()+1,height()+1);
 
-    for (int i=0; i<m_titles.size(); ++i )
+    for (int i = 0; i < m_titles.size(); ++i )
     {
-        if (i==m_anchor_row-m_first)
+        if (m_show_anchor && i == m_anchor_row - m_first)
         {
-            if(m_model->isSelected(i + m_first))
-            {
-                m_painter.setPen(m_anchor_pen_selected);
-                m_painter.setBrush(QBrush(m_selected_bg));
-            }
-            else
-            {
-                m_painter.setPen(m_anchor_pen_normal);
-                m_painter.setBrush(QBrush(m_normal_bg));
-            }
-            m_painter.drawRect ( 6, 15+(i-1)*m_metrics->height() + 2,
-                                 width() - 10, m_metrics->height());
+            m_painter.setBrush(m_model->isSelected(i + m_first) ? m_selected_bg : m_normal_bg);
+            m_painter.setPen(m_normal);
+            m_painter.drawRect (6, 15+(i-1)*m_metrics->height() + 2,
+                                width() - 10, m_metrics->height() - 1);
         }
         else
         {
@@ -140,8 +128,8 @@ void ListWidget::paintEvent(QPaintEvent *)
             {
                 m_painter.setBrush(QBrush(m_selected_bg));
                 m_painter.setPen(m_selected_bg);
-                m_painter.drawRect ( 6, 15+(i-1)*m_metrics->height() + 2,
-                                    width() - 10, m_metrics->height());
+                m_painter.drawRect (6, 15+(i-1)*m_metrics->height() + 2,
+                                    width() - 10, m_metrics->height() - 1);
             }
         }
 
@@ -194,90 +182,54 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
     if (INVALID_ROW != row && m_model->count() > row)
     {
-        /*
-        if (!(Qt::ControlModifier & e->modifiers () ||
-                Qt::ShiftModifier & e->modifiers () ||
-                m_model->isSelected(row)))
+        m_pressed_row = row;
+        if(e->button() == Qt::RightButton)
+        {
             m_model->clearSelection();
-*/
+            m_model->setSelected(row, true);
+            m_anchor_row = m_pressed_row;
+            QWidget::mousePressEvent(e);
+            return;
+        }
+
         if (m_model->isSelected(row) && (e->modifiers() == Qt::NoModifier))
+        {
             m_select_on_release = true;
+            QWidget::mousePressEvent(e);
+            return;
+        }
 
-        //qWarning("m_prev_clicked_row: %d",m_prev_clicked_row);
-
-        m_pressed_row = row;/*
         if ((Qt::ShiftModifier & e->modifiers()))
         {
-
+            bool select = true;
             if (m_pressed_row > m_anchor_row)
             {
-                m_model->clearSelection();
                 for (int j = m_anchor_row;j <= m_pressed_row;j++)
                 {
-                    m_model->setSelected(j, true);
+                    m_model->setSelected(j, select);
                 }
             }
             else
             {
-                m_model->clearSelection();
                 for (int j = m_anchor_row;j >= m_pressed_row;j--)
                 {
-                    m_model->setSelected(j, true);
+                    m_model->setSelected(j, select);
                 }
             }
-        }
-        else
-        {
-            if (!m_model->isSelected(row) || (Qt::ControlModifier & e->modifiers()))
-                m_model->setSelected(row, !m_model->isSelected(row));
-        }
-
-        if (m_model->getSelection(m_pressed_row).count() == 1)
             m_anchor_row = m_pressed_row;
-        //qWarning("m_anchor_row: %d",m_anchor_row);
-*/
-        if (e->button()==Qt::LeftButton)
+        }
+        else //ShiftModifier released
         {
-            if ((Qt::ShiftModifier & e->modifiers()))
+            if ((Qt::ControlModifier & e->modifiers()))
             {
-                bool select = true;
-                if ((Qt::ControlModifier & e->modifiers()))
-                {
-                    select = m_model->isSelected(m_anchor_row);
-                }
-                else //ControlModifier released
-                {
-                    m_model->clearSelection();
-                    //select = true;
-                }
-                if (m_pressed_row > m_anchor_row)
-                {
-                    for (int j = m_anchor_row;j <= m_pressed_row;j++)
-                    {
-                        m_model->setSelected(j, select);
-                    }
-                }
-                else
-                {
-                    for (int j = m_anchor_row;j >= m_pressed_row;j--)
-                    {
-                        m_model->setSelected(j, select);
-                    }
-                }
+                m_model->setSelected(row, !m_model->isSelected(row));
             }
-            else //ShiftModifier released
+            else //ControlModifier released
             {
-                if ((Qt::ControlModifier & e->modifiers()))
-                {
-                    m_model->setSelected(row, !m_model->isSelected(row));
-                }
-                else //ControlModifier released
-                {
-                    m_model->clearSelection();
-                    m_model->setSelected(row, true);
-                }
-                m_anchor_row = m_pressed_row;
+                m_model->clearSelection();
+                m_model->setSelected(row, true);
             }
+            m_anchor_row = m_pressed_row;
         }
         update();
     }
@@ -518,6 +470,7 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
             m_prev_y = e->y();
             m_scroll = false;
             m_pressed_row = row;
+            m_anchor_row = row;
         }
     }
     else if(m_popupWidget)
@@ -530,11 +483,10 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
 
 void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 {
-    if (false != m_select_on_release)
+    if (m_select_on_release)
     {
         m_model->clearSelection();
         m_model->setSelected(m_pressed_row,true);
-        //if(e->modifiers() != Qt::ShiftModifier)
         m_anchor_row = m_pressed_row;
         m_select_on_release = false;
     }

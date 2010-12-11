@@ -107,6 +107,7 @@ void ConfigDialog::readSettings()
     }
     ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", false).toBool());
     ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", true).toBool());
+    ui.anchorCheckBox->setChecked(settings.value("PlayList/show_anchor", false).toBool());
     ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", false).toBool());
     ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", false).toBool());
     QmmpSettings *gs = QmmpSettings::instance();
@@ -454,6 +455,7 @@ void ConfigDialog::saveSettings()
     }
     settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
     settings.setValue ("PlayList/show_numbers", ui.numbersCheckBox->isChecked());
+    settings.setValue ("PlayList/show_anchor", ui.anchorCheckBox->isChecked());
     settings.setValue ("PlayList/show_plalists", ui.playlistsCheckBox->isChecked());
     settings.setValue ("PlayList/show_popup", ui.popupCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
