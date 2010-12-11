@@ -47,9 +47,9 @@ private slots:
     void setupProxy();
     void getToken();
     void getSession();
+    void submit();
 
 private:
-    void submit();
     void sendNotification(const SongInfo &info);
     void syncCache();
     uint m_start_ts;

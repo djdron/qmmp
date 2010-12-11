@@ -281,7 +281,7 @@ void Scrobbler2::processResponse(QNetworkReply *reply)
         }
         else if(error_code == "11" || error_code == "16" || error_code.isEmpty()) //unavailable
         {
-            submit();
+            QTimer::singleShot(120000, this, SLOT(submit()));
         }
         else
         {
