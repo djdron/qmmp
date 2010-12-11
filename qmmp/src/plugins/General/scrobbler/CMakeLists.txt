@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 2.4.7)
 
 
 SET(QT_USE_QTNETWORK TRUE)
+SET(QT_USE_QTXML TRUE)
 INCLUDE(FindQt4)
 
 include(${QT_USE_FILE})
@@ -33,6 +34,7 @@ SET(libscrobbler_SRCS
     scrobbler.cpp
     scrobblerhandler.cpp
     scrobblerfactory.cpp
+    scrobbler2.cpp
 )
 
 SET(libscrobbler_MOC_HDRS
@@ -40,6 +42,7 @@ SET(libscrobbler_MOC_HDRS
     scrobblerfactory.h
     scrobblerhandler.h
     scrobbler.h
+    scrobbler2.h
 )
 
 SET(libscrobbler_RCCS translations/translations.qrc)

@@ -20,9 +20,9 @@ TRANSLATIONS = translations/scrobbler_plugin_cs.ts \
     translations/scrobbler_plugin_nl.ts \
     translations/scrobbler_plugin_ja.ts \
     translations/scrobbler_plugin_es.ts
-    
+
 RESOURCES = translations/translations.qrc
-unix { 
+unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/General
     INSTALLS += target
@@ -30,13 +30,15 @@ unix {
 HEADERS += scrobblerfactory.h \
     scrobbler.h \
     settingsdialog.h \
-    scrobblerhandler.h
+    scrobblerhandler.h \
+    scrobbler2.h
 win32:HEADERS += ../../../../src/qmmpui/general.h
 SOURCES += scrobblerfactory.cpp \
     scrobbler.cpp \
     settingsdialog.cpp \
-    scrobblerhandler.cpp
-QT += network
+    scrobblerhandler.cpp \
+    scrobbler2.cpp
+QT += network xml
 INCLUDEPATH += ../../../
 unix:LIBS += -lqmmpui \
     -lqmmp

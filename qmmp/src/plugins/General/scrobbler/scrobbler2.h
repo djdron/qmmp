@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,31 +17,54 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SCROBBLER2_H
+#define SCROBBLER2_H
 
-#define SCROBBLER_LIBREFM_URL "turtle.libre.fm"
-#define SCROBBLER_LASTFM_URL "ws.audioscrobbler.com/2.0"
-
-#include <QSettings>
+#include <QMap>
+#include <qmmp/qmmp.h>
 #include "scrobbler.h"
-#include "scrobbler2.h"
-#include "scrobblerhandler.h"
 
-ScrobblerHandler::ScrobblerHandler(QObject *parent) : General(parent)
+class QNetworkAccessManager;
+class QNetworkReply;
+class QTime;
+class SoundCore;
+
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+
+class Scrobbler2 : public QObject
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("Scrobbler");
-    if(settings.value("use_lastfm", false).toBool())
-    {
-        new Scrobbler2(SCROBBLER_LASTFM_URL, "lastfm", this);
-    }
-    if(settings.value("use_librefm", false).toBool())
-    {
-        new Scrobbler(SCROBBLER_LIBREFM_URL, settings.value("librefm_login").toString(),
-                   settings.value("librefm_password").toString(), "librefm", this);
+    Q_OBJECT
+public:
+    Scrobbler2(const QString &url, const QString &name, QObject *parent = 0);
+    ~Scrobbler2();
 
-    }
-    settings.endGroup();
-}
+private slots:
+    void setState(Qmmp::State state);
+    void updateMetaData();
+    void processResponse(QNetworkReply *reply);
+    void setupProxy();
+    void getToken();
+    void getSession();
 
-ScrobblerHandler::~ScrobblerHandler()
-{}
+private:
+    void submit();
+    void sendNotification(const SongInfo &info);
+    void syncCache();
+    uint m_start_ts;
+    SongInfo m_song;
+    QNetworkAccessManager *m_http;
+    Qmmp::State m_state;
+    SoundCore *m_core;
+    QList <SongInfo> m_songCache;
+    QByteArray m_ua;
+    QTime* m_time;
+    int m_submitedSongs;
+    QNetworkReply *m_getTokenReply, *m_getSessionReply;
+    QNetworkReply *m_submitReply, *m_notificationReply;
+    QString m_server, m_name;
+    QString m_token, m_session;
+};
+
+#endif
