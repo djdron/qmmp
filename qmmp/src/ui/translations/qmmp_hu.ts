@@ -546,53 +546,53 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="200"/>
+        <location filename="../configdialog.cpp" line="201"/>
         <source>Archived skin</source>
         <translation>Tömörített skin</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="220"/>
+        <location filename="../configdialog.cpp" line="221"/>
         <source>Unarchived skin</source>
         <translation>Tömörítettlen skin</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="718"/>
+        <location filename="../forms/configdialog.ui" line="725"/>
         <source>Description</source>
         <translation>Leírás</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="723"/>
+        <location filename="../forms/configdialog.ui" line="730"/>
         <source>Filename</source>
         <translation>Fájlnév</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="418"/>
+        <location filename="../configdialog.cpp" line="419"/>
         <source>Artist</source>
         <translation>Előadó</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="75"/>
-        <location filename="../configdialog.cpp" line="419"/>
+        <location filename="../configdialog.cpp" line="420"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="420"/>
+        <location filename="../configdialog.cpp" line="421"/>
         <source>Title</source>
         <translation>Cím</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="423"/>
+        <location filename="../configdialog.cpp" line="424"/>
         <source>Genre</source>
         <translation>Műfaj</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="429"/>
+        <location filename="../configdialog.cpp" line="430"/>
         <source>Year</source>
         <translation>Év</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="424"/>
+        <location filename="../configdialog.cpp" line="425"/>
         <source>Comment</source>
         <translation>Megjegyzés</translation>
     </message>
@@ -607,67 +607,67 @@
         <translation>Kikapcsolva</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="233"/>
+        <location filename="../configdialog.cpp" line="234"/>
         <source>Transports</source>
         <translation>Transzportálás</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="244"/>
+        <location filename="../configdialog.cpp" line="245"/>
         <source>Decoders</source>
         <translation>Dekóderek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="254"/>
+        <location filename="../configdialog.cpp" line="255"/>
         <source>Engines</source>
         <translation>Motorok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="361"/>
+        <location filename="../configdialog.cpp" line="362"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="421"/>
+        <location filename="../configdialog.cpp" line="422"/>
         <source>Track number</source>
         <translation>Zeneszám</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="422"/>
+        <location filename="../configdialog.cpp" line="423"/>
         <source>Two-digit track number</source>
         <translation>Két jegyű zeneszám</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="425"/>
+        <location filename="../configdialog.cpp" line="426"/>
         <source>Composer</source>
         <translation>Zeneszerző</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="426"/>
+        <location filename="../configdialog.cpp" line="427"/>
         <source>Disc number</source>
         <translation>Lemezszám</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="427"/>
+        <location filename="../configdialog.cpp" line="428"/>
         <source>File name</source>
         <translation>Fájl neve</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="428"/>
+        <location filename="../configdialog.cpp" line="429"/>
         <source>File path</source>
         <translation>File útvonala</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="430"/>
+        <location filename="../configdialog.cpp" line="431"/>
         <source>Condition</source>
         <translation>Feltétel</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="510"/>
+        <location filename="../configdialog.cpp" line="512"/>
         <source>Select Skin Files</source>
         <translation>Skin fájl kiválasztása</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="511"/>
+        <location filename="../configdialog.cpp" line="513"/>
         <source>Skin files</source>
         <translation>Skin fájlok</translation>
     </message>
@@ -684,7 +684,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="107"/>
         <location filename="../forms/configdialog.ui" line="463"/>
-        <location filename="../configdialog.cpp" line="355"/>
+        <location filename="../configdialog.cpp" line="356"/>
         <source>Playlist</source>
         <translation>Lejátszási lista</translation>
     </message>
@@ -822,118 +822,123 @@
         <translation>Testreszab</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="669"/>
-        <location filename="../forms/configdialog.ui" line="1136"/>
+        <location filename="../forms/configdialog.ui" line="628"/>
+        <source>Show anchor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="676"/>
+        <location filename="../forms/configdialog.ui" line="1143"/>
         <source>Preferences</source>
         <translation>Tulajdonságok</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="682"/>
-        <location filename="../forms/configdialog.ui" line="744"/>
-        <location filename="../forms/configdialog.ui" line="1149"/>
+        <location filename="../forms/configdialog.ui" line="689"/>
+        <location filename="../forms/configdialog.ui" line="751"/>
+        <location filename="../forms/configdialog.ui" line="1156"/>
         <source>Information</source>
         <translation>Információ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="850"/>
-        <location filename="../configdialog.cpp" line="343"/>
+        <location filename="../forms/configdialog.ui" line="857"/>
+        <location filename="../configdialog.cpp" line="344"/>
         <source>Playback</source>
         <translation>Lejátszás</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="856"/>
+        <location filename="../forms/configdialog.ui" line="863"/>
         <source>Continue playback on startup</source>
         <translation>Lejátszás folytatása indításkor</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1172"/>
+        <location filename="../forms/configdialog.ui" line="1179"/>
         <source>Buffer size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1185"/>
+        <location filename="../forms/configdialog.ui" line="1192"/>
         <source>ms</source>
         <translation type="unfinished">ms</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1221"/>
+        <location filename="../forms/configdialog.ui" line="1228"/>
         <source>16-bit output</source>
         <translation>16 bites kimenet</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1255"/>
+        <location filename="../forms/configdialog.ui" line="1262"/>
         <source>Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1260"/>
+        <location filename="../forms/configdialog.ui" line="1267"/>
         <source>Shortcut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1268"/>
+        <location filename="../forms/configdialog.ui" line="1275"/>
         <source>Change shortcut...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="274"/>
+        <location filename="../configdialog.cpp" line="275"/>
         <source>Visualization</source>
         <translation>Vizualizáció</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="264"/>
+        <location filename="../configdialog.cpp" line="265"/>
         <source>Effects</source>
         <translation>Effektek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="284"/>
+        <location filename="../configdialog.cpp" line="285"/>
         <source>General</source>
         <translation>Általános</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="143"/>
-        <location filename="../forms/configdialog.ui" line="1114"/>
+        <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Audio</source>
         <translation>Audió</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="984"/>
+        <location filename="../forms/configdialog.ui" line="991"/>
         <source>Replay Gain</source>
         <translation>Replay Gain</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="990"/>
+        <location filename="../forms/configdialog.ui" line="997"/>
         <source>Replay Gain mode:</source>
         <translation>Replay Gain mód:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1007"/>
+        <location filename="../forms/configdialog.ui" line="1014"/>
         <source>Preamp:</source>
         <translation>Preamp:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1039"/>
-        <location filename="../forms/configdialog.ui" line="1084"/>
+        <location filename="../forms/configdialog.ui" line="1046"/>
+        <location filename="../forms/configdialog.ui" line="1091"/>
         <source>dB</source>
         <translation>dB</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1052"/>
+        <location filename="../forms/configdialog.ui" line="1059"/>
         <source>Default gain:</source>
         <translation>Alapértelmezett gain:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1104"/>
+        <location filename="../forms/configdialog.ui" line="1111"/>
         <source>Use  peak info to prevent clipping</source>
         <translation>Csúcs információ használata a klippelés megelőzéséhez</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1120"/>
+        <location filename="../forms/configdialog.ui" line="1127"/>
         <source>Output:</source>
         <translation>Kimenet:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1214"/>
+        <location filename="../forms/configdialog.ui" line="1221"/>
         <source>Use software volume control</source>
         <translation>Szoftveres hangerőszabályzó használata</translation>
     </message>
@@ -948,7 +953,7 @@
         <translation>Rejtve induljon</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="735"/>
+        <location filename="../forms/configdialog.ui" line="742"/>
         <source>File Dialog</source>
         <translation>Fájl ablak</translation>
     </message>
@@ -959,7 +964,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="255"/>
-        <location filename="../configdialog.cpp" line="349"/>
+        <location filename="../configdialog.cpp" line="350"/>
         <source>View</source>
         <translation>Megnéz</translation>
     </message>
@@ -981,62 +986,62 @@
         <translation>Hangszínszabályozó</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="767"/>
+        <location filename="../forms/configdialog.ui" line="774"/>
         <source>Cover Image Retrieve</source>
         <translation>Borító beszerzése</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="773"/>
+        <location filename="../forms/configdialog.ui" line="780"/>
         <source>Use separate image files</source>
         <translation>Különböző képfájlok használata</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="783"/>
+        <location filename="../forms/configdialog.ui" line="790"/>
         <source>Include files:</source>
         <translation>Tartalmazott fájlok:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="793"/>
+        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Exclude files:</source>
         <translation>Kihagyott fájlok:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="805"/>
+        <location filename="../forms/configdialog.ui" line="812"/>
         <source>Recursive search depth:</source>
         <translation>Rekúrzív keresési mélység:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="882"/>
+        <location filename="../forms/configdialog.ui" line="889"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="894"/>
+        <location filename="../forms/configdialog.ui" line="901"/>
         <source>Enable proxy usage</source>
         <translation>Proxy használatának engedélyezése</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="901"/>
+        <location filename="../forms/configdialog.ui" line="908"/>
         <source>Proxy host name:</source>
         <translation>Proxy host name:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="914"/>
+        <location filename="../forms/configdialog.ui" line="921"/>
         <source>Proxy port:</source>
         <translation>Proxy port:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="927"/>
+        <location filename="../forms/configdialog.ui" line="934"/>
         <source>Use authentication with proxy</source>
         <translation>Hitelesítés hasznáalta proxy-val</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="934"/>
+        <location filename="../forms/configdialog.ui" line="941"/>
         <source>Proxy user name:</source>
         <translation>Proxy felhasználónév:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="947"/>
+        <location filename="../forms/configdialog.ui" line="954"/>
         <source>Proxy password:</source>
         <translation>Proxy jelszó:</translation>
     </message>

@@ -138,7 +138,7 @@ private:
     QFontMetrics *m_metrics;
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
-    QPen m_anchor_pen_normal,m_anchor_pen_selected;
+    //QPen m_anchor_pen_normal,m_anchor_pen_selected;
     int m_anchor_row;
 
     enum ScrollDirection
@@ -154,6 +154,7 @@ private:
     bool m_select_on_release;
     bool m_show_protocol;
     bool m_show_number;
+    bool m_show_anchor;
     MediaPlayer *m_player;
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
