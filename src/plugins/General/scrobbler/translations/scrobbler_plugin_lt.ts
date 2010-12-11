@@ -38,18 +38,26 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
-        <location filename="../settingsdialog.ui" line="77"/>
+        <source>Session:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="51"/>
+        <source>Register new session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="70"/>
         <source>User name:</source>
         <translation>Vartotojo vardas:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="51"/>
-        <location filename="../settingsdialog.ui" line="87"/>
+        <location filename="../settingsdialog.ui" line="80"/>
         <source>Password:</source>
         <translation>Slaptažodis:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="68"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Libre.fm</source>
         <translation>Libre.fm</translation>
     </message>

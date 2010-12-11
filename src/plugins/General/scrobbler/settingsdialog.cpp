@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,18 +20,15 @@
 
 #include <QSettings>
 #include <qmmp/qmmp.h>
-
 #include "settingsdialog.h"
 
-SettingsDialog::SettingsDialog(QWidget *parent)
-        : QDialog(parent)
+SettingsDialog::SettingsDialog(QWidget *parent) : QDialog(parent)
 {
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     ui.lastfmGroupBox->setChecked(settings.value("use_lastfm", false).toBool());
-    ui.userLineEdit->setText(settings.value("lastfm_login").toString());
-    ui.passwordLineEdit->setText(settings.value("lastfm_password").toString());
+    ui.sessionLineEdit_lastfm->setText(settings.value("lastfm_session").toString());
     ui.librefmGroupBox->setChecked(settings.value("use_librefm", false).toBool());
     ui.userLineEdit_libre->setText(settings.value("librefm_login").toString());
     ui.passwordLineEdit_libre->setText(settings.value("librefm_password").toString());
@@ -47,8 +44,9 @@ void SettingsDialog::accept()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");
     settings.setValue("use_lastfm", ui.lastfmGroupBox->isChecked());
-    settings.setValue("lastfm_login",ui.userLineEdit->text());
-    settings.setValue("lastfm_password", ui.passwordLineEdit->text());
+    if(ui.newSessionCheckBox_lastfm->isChecked())
+        ui.sessionLineEdit_lastfm->clear();
+    settings.setValue("lastfm_session",ui.sessionLineEdit_lastfm->text());
     settings.setValue("use_librefm", ui.librefmGroupBox->isChecked());
     settings.setValue("librefm_login",ui.userLineEdit_libre->text());
     settings.setValue("librefm_password", ui.passwordLineEdit_libre->text());
