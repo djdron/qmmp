@@ -392,11 +392,13 @@ void MainWindow::toggleVisibility()
         activateWindow();
         m_playlist->setVisible(m_display->isPlaylistVisible());
         m_equalizer->setVisible(m_display->isEqualizerVisible());
+#ifdef Q_WS_X11
         if(WindowSystem::netWindowManagerName() == "Metacity")
         {
             m_playlist->activateWindow();
             m_equalizer->activateWindow();
         }
+#endif
         qApp->processEvents();
         setFocus ();
         if (isMinimized())
