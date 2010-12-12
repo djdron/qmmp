@@ -30,7 +30,7 @@
 #include <QBuffer>
 #include <QAction>
 #include <qmmp/qmmp.h>
-#include <actionmanager.h>
+#include "actionmanager.h"
 #include "skin.h"
 #include "cursorimage.h"
 
