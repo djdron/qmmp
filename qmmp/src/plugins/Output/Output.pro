@@ -41,3 +41,5 @@ contains(CONFIG, OSS4_PLUGIN){
    message(* OSS4 plugin enabled *)
    message(***********************)
 }
+
+}
