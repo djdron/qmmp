@@ -49,6 +49,10 @@ private:
         PROCESSING,
     };
 
+    void mix8(uchar *cur_buf, uchar *prev_buf, uint samples, double volume);
+    void mix16(uchar *cur_buf, uchar *prev_buf, uint samples, double volume);
+    void mix32(uchar *cur_buf, uchar *prev_buf, uint samples, double volume);
+
     uchar *m_buffer;
     ulong  m_buffer_at;
     ulong  m_buffer_size;
