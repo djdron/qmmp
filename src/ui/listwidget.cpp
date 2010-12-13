@@ -81,7 +81,7 @@ void ListWidget::readSettings()
     {
         delete m_metrics;
         m_metrics = new QFontMetrics(m_font);
-        m_rows = (height() - 3) / m_metrics->height ();
+        m_rows = height() / (m_metrics->lineSpacing() + 2);
         updateList();
         if(m_popupWidget)
         {
@@ -112,6 +112,7 @@ void ListWidget::paintEvent(QPaintEvent *)
     m_painter.setFont(m_font);
     m_painter.setBrush(QBrush(m_normal_bg));
     m_painter.drawRect(-1,-1,width()+1,height()+1);
+    int font_y = 0, old_size = 0;
 
     for (int i = 0; i < m_titles.size(); ++i )
     {
@@ -119,8 +120,8 @@ void ListWidget::paintEvent(QPaintEvent *)
         {
             m_painter.setBrush(m_model->isSelected(i + m_first) ? m_selected_bg : m_normal_bg);
             m_painter.setPen(m_normal);
-            m_painter.drawRect (6, 15+(i-1)*m_metrics->height() + 2,
-                                width() - 10, m_metrics->height() - 1);
+            m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                                width() - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
@@ -128,8 +129,8 @@ void ListWidget::paintEvent(QPaintEvent *)
             {
                 m_painter.setBrush(QBrush(m_selected_bg));
                 m_painter.setPen(m_selected_bg);
-                m_painter.drawRect (6, 15+(i-1)*m_metrics->height() + 2,
-                                    width() - 10, m_metrics->height() - 1);
+                m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                                    width() - 10, m_metrics->lineSpacing() + 1);
             }
         }
 
@@ -138,24 +139,23 @@ void ListWidget::paintEvent(QPaintEvent *)
         else
             m_painter.setPen(m_normal);  //243,58
 
-        m_painter.drawText(10,14+i*m_metrics->height(),m_titles.at(i));
+        font_y = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
+        m_painter.drawText(10, font_y, m_titles.at(i));
 
         QString extra_string = getExtraString(m_first + i);
         if(!extra_string.isEmpty())
         {
-            int old_size = m_font.pointSize();
-            m_font.setPointSize(old_size - 1 );
+            old_size = m_font.pointSize();
+            m_font.setPointSize(old_size - 1);
             m_painter.setFont(m_font);
 
-            m_painter.drawText(width() - 10 - m_metrics->width(extra_string) - m_metrics->width(m_times.at(i)),
-                               14+i*m_metrics->height (), extra_string);
+            m_painter.drawText(width() - 10 - m_metrics->width(extra_string) -
+                               m_metrics->width(m_times.at(i)), font_y, extra_string);
             m_font.setPointSize(old_size);
             m_painter.setFont(m_font);
             m_painter.setBrush(QBrush(m_normal_bg));
         }
-
-        m_painter.drawText(width() - 7 - m_metrics->width(m_times.at(i)),
-                           14+i*m_metrics->height (), m_times.at(i));
+        m_painter.drawText(width() - 7 - m_metrics->width(m_times.at(i)), font_y, m_times.at(i));
     }
 }
 
@@ -238,7 +238,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
 void ListWidget::resizeEvent(QResizeEvent *e)
 {
-    m_rows = (e->size().height() - 3) / m_metrics->height ();
+    m_rows = e->size().height() / (m_metrics->lineSpacing() + 2);
     m_scroll = true;
     updateList();
     QWidget::resizeEvent(e);
@@ -499,13 +499,10 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 
 int ListWidget::rowAt(int y) const
 {
-    if (y <= 14 && y >= 2 && m_model->count())
-        return m_first;
-
-    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first) - 1; ++i)
+    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first); ++i)
     {
-        if ((y >= 14 + i * m_metrics->height ()) && (y <= 14 + (i+1) * m_metrics->height()))
-            return m_first + i + 1;
+        if ((y >= i * (m_metrics->lineSpacing() + 2)) && (y <= (i+1) * (m_metrics->lineSpacing() + 2)))
+            return m_first + i;
     }
     return INVALID_ROW;
 }
