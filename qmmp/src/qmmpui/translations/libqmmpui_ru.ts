@@ -4,47 +4,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="81"/>
+        <location filename="../detailsdialog.cpp" line="105"/>
         <source>Title</source>
         <translation>Название</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="82"/>
+        <location filename="../detailsdialog.cpp" line="106"/>
         <source>Artist</source>
         <translation>Исполнитель</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="83"/>
+        <location filename="../detailsdialog.cpp" line="107"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="84"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Comment</source>
         <translation>Комментарий</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="85"/>
+        <location filename="../detailsdialog.cpp" line="109"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="86"/>
+        <location filename="../detailsdialog.cpp" line="110"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="88"/>
+        <location filename="../detailsdialog.cpp" line="112"/>
         <source>Year</source>
         <translation>Год</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="90"/>
+        <location filename="../detailsdialog.cpp" line="114"/>
         <source>Track</source>
         <translation>Дорожка</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="92"/>
+        <location filename="../detailsdialog.cpp" line="116"/>
         <source>Disc number</source>
         <translation>Номер диска</translation>
     </message>
@@ -54,12 +54,22 @@
         <translation>Информация</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="46"/>
+        <location filename="../detailsdialog.ui" line="42"/>
+        <source>Open the directory containing this file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="45"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../detailsdialog.ui" line="59"/>
         <source>Summary</source>
         <translation>Общая информация</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="55"/>
+        <location filename="../detailsdialog.ui" line="71"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
