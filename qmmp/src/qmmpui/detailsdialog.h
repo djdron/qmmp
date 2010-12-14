@@ -20,6 +20,7 @@
 #ifndef DETAILSDIALOG_H
 #define DETAILSDIALOG_H
 
+#include "ui_detailsdialog.h"
 #include <QDialog>
 #include <QList>
 #include <QMap>
@@ -54,6 +55,7 @@ public:
 
 private slots:
     void on_buttonBox_clicked(QAbstractButton *button);
+    void on_directoryButton_clicked();
 
 private:
     Ui::DetailsDialog *m_ui;
