@@ -37,7 +37,7 @@
 
 #define PROTOCOL_VER "1.2.1"
 #define CLIENT_ID "qmm"
-#define CLIENT_VER "0.3"
+#define CLIENT_VER "0.5"
 
 
 Scrobbler::Scrobbler(const QString &url,
