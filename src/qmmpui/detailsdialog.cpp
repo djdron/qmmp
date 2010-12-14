@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,11 +17,13 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#include <QDesktopServices>
 #include <QTextCodec>
 #include <QSettings>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QProcess>
 #include <qmmp/metadatamanager.h>
 #include <qmmp/metadatamodel.h>
 #include <qmmp/tagmodel.h>
@@ -43,7 +45,7 @@ DetailsDialog::DetailsDialog(PlayListItem *item, QWidget *parent)
     m_path = item->url();
     setWindowTitle (m_path.section('/',-1));
     m_ui->pathEdit->setText(m_path);
-
+    m_ui->directoryButton->setIcon(QApplication::style()->standardIcon(QStyle::SP_DirOpenIcon));
     m_metaDataModel = MetaDataManager::instance()->createMetaDataModel(item->url(), this);
 
     if(m_metaDataModel)
@@ -65,6 +67,28 @@ DetailsDialog::DetailsDialog(PlayListItem *item, QWidget *parent)
 DetailsDialog::~DetailsDialog()
 {
     delete m_ui;
+}
+
+void DetailsDialog:: on_directoryButton_clicked()
+{
+    QString dir_path;
+    if(!m_path.contains("://")) //local file
+        dir_path = QFileInfo(m_path).absolutePath();
+    else if (m_path.contains(":///")) //pseudo-protocol
+    {
+        dir_path = QUrl(m_path).path();
+        dir_path.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        dir_path.replace(QString(QUrl::toPercentEncoding("?")), "?");
+        dir_path.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        dir_path = QFileInfo(dir_path).absolutePath();
+    }
+    else
+        return;
+#ifdef Q_WS_X11
+    QProcess::execute("xdg-open", QStringList() << dir_path); //works with lxde
+#else
+    QDesktopServices::openUrl(QUrl::fromLocalFile(dir_path));
+#endif
 }
 
 void DetailsDialog::printInfo()
