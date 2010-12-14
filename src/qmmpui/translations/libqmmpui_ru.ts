@@ -56,7 +56,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Open the directory containing this file</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть директорию, содержащую файл</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="45"/>
