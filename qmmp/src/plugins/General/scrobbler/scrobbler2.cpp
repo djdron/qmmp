@@ -389,6 +389,12 @@ void Scrobbler2::submit()
     params.insert("method", "track.scrobble");
     params.insert("sk", m_session);
 
+    foreach (QString key, params) //removes empty keys
+    {
+        if(params.value(key).isEmpty())
+            params.remove(key);
+    }
+
     QUrl url(QString("http://") + m_server + "/");
     url.setPort(80);
 
@@ -415,28 +421,33 @@ void Scrobbler2::sendNotification(const SongInfo &info)
     if(m_session.isEmpty())
         return;
     qDebug("Scrobbler2[%s] sending notification", qPrintable(m_name));
+
+    QMap <QString, QString> params;
+    params.insert("track", info.metaData(Qmmp::TITLE));
+    params.insert("artist", info.metaData(Qmmp::ARTIST));
+    params.insert("album", info.metaData(Qmmp::ALBUM));
+    params.insert("trackNumber", info.metaData(Qmmp::TRACK));
+    params.insert("duration", QString("%1").arg(info.length()));
+    params.insert("api_key", API_KEY);
+    params.insert("method", "track.updateNowPlaying");
+    params.insert("sk", m_session);
+
+    foreach (QString key, params) //removes empty keys
+    {
+        if(params.value(key).isEmpty())
+            params.remove(key);
+    }
+
     QUrl url(QString("http://") + m_server + "/");
     url.setPort(80);
 
     QUrl body("");
-    body.addQueryItem("api_key", API_KEY);
-    body.addQueryItem("method", "track.updateNowPlaying");
-    body.addQueryItem("track", info.metaData(Qmmp::TITLE));
-    body.addQueryItem("trackNumber", info.metaData(Qmmp::TRACK));
-    body.addQueryItem("artist", info.metaData(Qmmp::ARTIST));
-    body.addQueryItem("album", info.metaData(Qmmp::ALBUM));
-    body.addQueryItem("duration", QString("%1").arg(info.length()));
-    body.addQueryItem("sk", m_session);
-
     QByteArray data;
-    data.append("album"+info.metaData(Qmmp::ALBUM).toUtf8());
-    data.append("api_key"API_KEY);
-    data.append("artist"+info.metaData(Qmmp::ARTIST).toUtf8());
-    data.append("duration"+QString("%1").arg(info.length()).toUtf8());
-    data.append("methodtrack.updateNowPlaying");
-    data.append("sk"+m_session.toUtf8());
-    data.append("track"+info.metaData(Qmmp::TITLE).toUtf8());
-    data.append("trackNumber"+info.metaData(Qmmp::TRACK).toUtf8());
+    foreach (QString key, params.keys())
+    {
+        body.addQueryItem(key, params.value(key));
+        data.append(key.toUtf8() + params.value(key).toUtf8());
+    }
     data.append(SECRET);
     body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
 
