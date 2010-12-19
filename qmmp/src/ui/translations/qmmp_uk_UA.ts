@@ -900,7 +900,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати &quot;якір&quot;</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="774"/>
