@@ -37,12 +37,12 @@
 <context>
     <name>HalPlugin</name>
     <message>
-        <location filename="../halplugin.cpp" line="161"/>
+        <location filename="../halplugin.cpp" line="162"/>
         <source>Add CD &quot;%1&quot;</source>
         <translation>Cd &quot;%1&quot; を追加</translation>
     </message>
     <message>
-        <location filename="../halplugin.cpp" line="167"/>
+        <location filename="../halplugin.cpp" line="168"/>
         <source>Add Volume &quot;%1&quot;</source>
         <translation>量目 &quot;%1&quot; を追加</translation>
     </message>

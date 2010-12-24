@@ -20,7 +20,8 @@
 
 #include <QtDBus>
 #include <QActionGroup>
-
+#include <QApplication>
+#include <QStyle>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmanager.h>
@@ -168,6 +169,17 @@ void HalPlugin::updateActions()
             }
             action->setText(actionText);
             action->setData(dev_path);
+
+            if (caps.contains("volume.disc"))
+            {
+                if(device->property("volume.fstype").toString() == "iso9660")
+                    action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveDVDIcon));
+                else
+                    action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveCDIcon));
+            }
+            else
+                action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveHDIcon));
+
             m_actions->addAction(action);
             GeneralHandler::instance()->addAction(action, GeneralHandler::TOOLS_MENU);
             addPath(dev_path);
