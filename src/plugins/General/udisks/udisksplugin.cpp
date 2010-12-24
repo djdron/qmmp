@@ -20,6 +20,8 @@
 
 #include <QtDBus>
 #include <QActionGroup>
+#include <QApplication>
+#include <QStyle>
 #include <qmmpui/generalhandler.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmanager.h>
@@ -158,6 +160,17 @@ void UDisksPlugin::updateActions()
                     name = dev_path;
                 actionText = QString(tr("Add Volume \"%1\"")).arg(name);
             }
+
+            if (device->property("DeviceIsOpticalDisc").toBool())
+            {
+                if(device->property("IdType").toString() == "iso9660")
+                    action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveDVDIcon));
+                else
+                    action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveCDIcon));
+            }
+            else
+                action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveHDIcon));
+
             action->setText(actionText);
             action->setData(dev_path);
             m_actions->addAction(action);

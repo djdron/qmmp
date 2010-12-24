@@ -70,12 +70,12 @@
 <context>
     <name>UDisksPlugin</name>
     <message>
-        <location filename="../udisksplugin.cpp" line="153"/>
+        <location filename="../udisksplugin.cpp" line="155"/>
         <source>Add CD &quot;%1&quot;</source>
         <translation type="unfinished">Voeg CD &quot;%1&quot; toe</translation>
     </message>
     <message>
-        <location filename="../udisksplugin.cpp" line="159"/>
+        <location filename="../udisksplugin.cpp" line="161"/>
         <source>Add Volume &quot;%1&quot;</source>
         <translation type="unfinished">Voeg Station &quot;%1&quot; toe</translation>
     </message>
