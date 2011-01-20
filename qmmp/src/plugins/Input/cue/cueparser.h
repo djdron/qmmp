@@ -51,9 +51,10 @@ private:
     QList <FileInfo> m_infoList;
     QList <qint64> m_offsets;
     QStringList m_files;
+    bool m_dirty;
     QStringList splitLine(const QString &line);
     qint64 getLength(const QString &str);
-
+    QString getDirtyPath(const QString &cue, const QString &path);
 };
 
 #endif

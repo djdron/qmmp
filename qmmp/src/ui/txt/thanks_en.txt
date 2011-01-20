@@ -6,6 +6,7 @@ Thanks to:
     Avihay Baratz <avihayb@gmail.com> - auto stop feature, bug fixes
     Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg plugin fixes
     Dmitry Kostin <kostindima@gmail.com> - iso.wv support
+    Evgeny Gleyzerman <evgley@gmail.com> - cue parsing improvements
     Gennadi Motsyo <drool@altlinux.ru> - bug reports
     Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
     Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements

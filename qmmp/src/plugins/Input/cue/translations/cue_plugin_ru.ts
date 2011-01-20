@@ -38,21 +38,31 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
+        <source>Common settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="35"/>
+        <source>Automatic file detection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="45"/>
         <source>CUE encoding</source>
         <translation>Кодировка CUE</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="35"/>
+        <location filename="../settingsdialog.ui" line="51"/>
         <source>Automatic charset detection</source>
         <translation>Определять кодировку автоматически</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="45"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Language:</source>
         <translation>Язык:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="65"/>
+        <location filename="../settingsdialog.ui" line="81"/>
         <source>Default encoding:</source>
         <translation>Кодировка по умолчанию:</translation>
     </message>
