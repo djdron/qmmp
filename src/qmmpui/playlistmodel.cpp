@@ -812,24 +812,35 @@ void PlayListModel::doCurrentVisibleRequest()
 void PlayListModel::loadPlaylist(const QString &f_name)
 {
     PlaylistFormat* prs = PlaylistParser::instance()->findByPath(f_name);
-    if (prs)
+    if(!prs)
     {
-        QFile file(f_name);
-        if (file.open(QIODevice::ReadOnly))
-        {
-            //clear();
-            QStringList list = prs->decode(QTextStream(&file).readAll());
-            for (int i = 0; i < list.size(); ++i)
-            {
-                if (QFileInfo(list.at(i)).isRelative() && !list.at(i).contains("://"))
-                    QString path = list[i].prepend(QFileInfo(f_name).canonicalPath () + QDir::separator ());
-            }
-            m_loader->loadFiles(list);
-            file.close();
-        }
-        else
-            qWarning("Error opening %s",f_name.toLocal8Bit().data());
+        qWarning("PlayListModel: unsupported playlist format");
+        return;
     }
+
+    QFile file(f_name);
+    if (!file.open(QIODevice::ReadOnly))
+    {
+        qWarning("PlayListModel: %s", qPrintable(file.errorString()));
+        return;
+    }
+
+    //clear();
+    QStringList list = prs->decode(QTextStream(&file).readAll());
+    if(list.isEmpty())
+    {
+        qWarning("PlayListModel: error opening %s",qPrintable(f_name));
+    }
+    for (int i = 0; i < list.size(); ++i)
+    {
+        if(list.at(i).contains("://"))
+            continue;
+
+        if (QFileInfo(list.at(i)).isRelative())
+            list[i].prepend(QFileInfo(f_name).canonicalPath () + QDir::separator ());
+    }
+    m_loader->loadFiles(list);
+    file.close();
 }
 
 void PlayListModel::savePlaylist(const QString & f_name)
