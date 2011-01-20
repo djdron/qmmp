@@ -20,16 +20,11 @@
 
 #include <QFileInfo>
 #include <QtPlugin>
-
 #include "m3uplaylistformat.h"
 
-bool M3UPlaylistFormat::hasFormat(const QString & f)
+bool M3UPlaylistFormat::hasFormat(const QString &f)
 {
-    foreach(QString s,m_supported_formats)
-    if (f == s)
-        return true;
-
-    return false;
+    return m_supported_formats.contains(f);
 }
 
 QStringList M3UPlaylistFormat::getExtensions() const
@@ -46,26 +41,20 @@ QStringList M3UPlaylistFormat::decode(const QString & contents)
 {
     QStringList out;
     QStringList splitted = contents.split("\n");
-    if (!splitted.isEmpty())
-    {
-        foreach(QString str, splitted)
-        {
-            str = str.trimmed ();
-            if (str.startsWith("#EXTM3U") || str.startsWith("#EXTINF:") || str.isEmpty())
-                ;//TODO: Let's skip it for now...
-            else if (str.startsWith("http://"))
-                out << str;
-            else if (!str.startsWith("#"))
-                out << str;
-            else
-                qWarning("File %s does not exist", qPrintable(str));
-        }
-        return out;
-    }
-    else
-        qWarning("Error parsing M3U format");
+    if(splitted.isEmpty())
+        return QStringList();
 
-    return QStringList();
+    foreach(QString str, splitted)
+    {
+        str = str.trimmed ();
+        if (str.startsWith("#EXTM3U") || str.startsWith("#EXTINF:") || str.isEmpty())
+            continue;//TODO: Let's skip it for now..
+        else if (str.startsWith("#") || str.isEmpty())
+            continue;
+        else
+            out << str;
+    }
+    return out;
 }
 
 QString M3UPlaylistFormat::encode(const QList<PlayListItem*> & contents)
