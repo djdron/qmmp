@@ -6,6 +6,7 @@
     Avihay Baratz <avihayb@gmail.com> - опции авто-остановки, исправления ошибок
     Csaba Hruska <csaba.hruska@gmail.com> - исправления в модуле ffmpeg
     Dmitry Kostin <kostindima@gmail.com> - поддержка iso.wv
+    Evgeny Gleyzerman <evgley@gmail.com> - улучшение поддержки cue
     Геннадий Моцьо <drool@altlinux.ru> - сообщения об ошибках
     Вадим Калинников <moose@ylsoftware.com> - хоcтинг проекта
     Erik Ölsar <erlk.ozlr@gmail.com> - растровые курсоры, улучшения в интерфейсе пользователя

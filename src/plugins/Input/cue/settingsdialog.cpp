@@ -53,6 +53,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 #else
     ui.autoCharsetCheckBox->setEnabled(false);
 #endif
+    ui.dirtyCueCheckBox->setChecked(settings.value("dirty_cue", false).toBool());
     settings.endGroup();
 }
 
@@ -68,6 +69,7 @@ void SettingsDialog::accept()
     settings.setValue("use_enca", ui.autoCharsetCheckBox->isChecked());
     settings.setValue("enca_lang", ui.encaAnalyserComboBox->currentText());
 #endif
+    settings.setValue("dirty_cue", ui.dirtyCueCheckBox->isChecked());
     settings.endGroup();
     QDialog::accept();
 }
