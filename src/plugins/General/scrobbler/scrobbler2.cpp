@@ -427,8 +427,10 @@ void Scrobbler2::sendNotification(const SongInfo &info)
     QMap <QString, QString> params;
     params.insert("track", info.metaData(Qmmp::TITLE));
     params.insert("artist", info.metaData(Qmmp::ARTIST));
-    params.insert("album", info.metaData(Qmmp::ALBUM));
-    params.insert("trackNumber", info.metaData(Qmmp::TRACK));
+    if(!info.metaData(Qmmp::ALBUM).isEmpty())
+        params.insert("album", info.metaData(Qmmp::ALBUM));
+    if(!info.metaData(Qmmp::TRACK).isEmpty())
+        params.insert("trackNumber", info.metaData(Qmmp::TRACK));
     params.insert("duration", QString("%1").arg(info.length()));
     params.insert("api_key", API_KEY);
     params.insert("method", "track.updateNowPlaying");
