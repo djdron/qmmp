@@ -28,7 +28,7 @@ class QNetworkAccessManager;
 class QNetworkReply;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class LyricsWindow : public QWidget
 {
@@ -46,6 +46,7 @@ private:
     Ui::LyricsWindow ui;
     QNetworkAccessManager *m_http;
     QNetworkReply *m_requestReply;
+    QString m_artist, m_title;
 };
 
 #endif

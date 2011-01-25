@@ -71,24 +71,67 @@ void LyricsWindow::showText(QNetworkReply *reply)
         return;
     }
     QString content = QString::fromUtf8(reply->readAll().constData());
+    //qDebug("=%s=",qPrintable(content));
 
     if(m_requestReply == reply)
     {
         m_requestReply = 0;
-        QRegExp js_params("javascript:getContent\\(\\\'(.*)\\\', \\\'(.*)\\\', \\\'(.*)\\\', \\\'(.*)\\\'");
-        js_params.setMinimal (true);
-        js_params.indexIn(content);
+        reply->deleteLater();
+        QRegExp artist_regexp("<artist>(.*)</artist>");
+        artist_regexp.setMinimal(true);
+        QRegExp song_regexp("<song>(.*)</song>");
+        song_regexp.setMinimal(true);
+        QRegExp lyrics_regexp("<lyrics>(.*)</lyrics>");
+        lyrics_regexp.setMinimal(true);
+        QRegExp url_regexp("<url>(.*)</url>");
+        url_regexp.setMinimal(true);
 
-        QUrl url = QUrl::fromEncoded(QByteArray("http://www.lyricsplugin.com/winamp03/plugin/content.php?")
-                   + "artist=" + js_params.cap(1).toAscii()
-                   + "&title=" + js_params.cap(2).toAscii()
-                   + "&time=" + js_params.cap(3).toAscii()
-                   + "&check=" + js_params.cap(4).toAscii());
+        if(artist_regexp.indexIn(content) < 0)
+        {
+            ui.textBrowser->setHtml("<b>" + tr("Error") + "</b>");
+            return;
+        }
 
-        QString referer = QString("http://www.lyricsplugin.com/winamp03/plugin/?")
-                          + "artist=" + js_params.cap(1)
-                          + "&title=" + js_params.cap(2);
+        if(artist_regexp.indexIn(content) < 0)
+        {
+            ui.textBrowser->setHtml("<b>" + tr("Error") + "</b>");
+            return;
+        }
+        else
+            m_artist = artist_regexp.cap(1);
 
+        if(song_regexp.indexIn(content) < 0)
+        {
+            ui.textBrowser->setHtml("<b>" + tr("Error") + "</b>");
+            return;
+        }
+        else
+            m_title = song_regexp.cap(1);
+
+        if(lyrics_regexp.indexIn(content) < 0)
+        {
+            ui.textBrowser->setHtml("<b>" + tr("Error") + "</b>");
+            return;
+        }
+        else if(lyrics_regexp.cap(1) == "Not found")
+        {
+            ui.textBrowser->setHtml("<b>" + tr("Not found") + "</b>");
+            return;
+        }
+
+        if(url_regexp.indexIn(content) < 0)
+        {
+            ui.textBrowser->setHtml("<b>" + tr("Error") + "</b>");
+            return;
+        }
+
+        QString temp = url_regexp.cap(1).toAscii();
+        qDebug("LyricsWindow: received url = %s", qPrintable(temp));
+        temp.replace("http://lyrics.wikia.com/","http://lyrics.wikia.com/index.php?title=");
+        temp.append("&action=edit");
+
+        QUrl url = QUrl::fromEncoded(temp.toAscii());
+        QString referer = url_regexp.cap(1);
         qDebug("LyricsWindow: request url = %s", url.toEncoded().constData());
         QNetworkRequest request;
         request.setUrl(url);
@@ -98,20 +141,15 @@ void LyricsWindow::showText(QNetworkReply *reply)
         reply->deleteLater();
         return;
     }
-
-    QRegExp artist_regexp("<div id=\\\"artist\\\">(.*)</div>");
-    artist_regexp.setMinimal(true);
-    QRegExp title_regexp("<div id=\\\"title\\\">([^<]*)</div>");
-    QRegExp lyrics_regexp("<div id=\\\"lyrics\\\">([^<]*)</div>");
-    artist_regexp.indexIn(content);
-    title_regexp.indexIn(content);
-    content.replace("<br />", "[br /]");
+    content.replace("&lt;", "<");
+    QRegExp lyrics_regexp("<lyrics>(.*)</lyrics>");
     lyrics_regexp.indexIn(content);
 
-    QString text = "<h2>" +artist_regexp.cap(1) + " - " + title_regexp.cap(1) + "</h2>";
+    QString text = "<h2>" + m_artist + " - " + m_title + "</h2>";
     QString lyrics = lyrics_regexp.cap(1);
-    lyrics.replace("[br /]", "<br />");
-    if(lyrics.trimmed().isEmpty())
+    lyrics = lyrics.trimmed();
+    lyrics.replace("\n", "<br>");
+    if(lyrics.isEmpty())
         ui.textBrowser->setHtml("<b>" + tr("Not found") + "</b>");
     else
     {
@@ -127,9 +165,8 @@ void LyricsWindow::on_searchPushButton_clicked()
     setWindowTitle(QString(tr("Lyrics: %1 - %2")).arg(ui.artistLineEdit->text())
                    .arg(ui.titleLineEdit->text()));
     QNetworkRequest request;
-    request.setUrl(QUrl("http://www.lyricsplugin.com/winamp03/plugin/?artist=" +
-                        ui.artistLineEdit->text()+"&title=" + ui.titleLineEdit->text()));
+    request.setUrl(QUrl("http://lyrics.wikia.com/api.php?action=lyrics&artist=" +
+                        ui.artistLineEdit->text()+"&song=" + ui.titleLineEdit->text() + "&fmt=xml"));
     request.setRawHeader("User-Agent", QString("qmmp/%1").arg(Qmmp::strVersion()).toAscii());
     m_requestReply = m_http->get(request);
 }
-
