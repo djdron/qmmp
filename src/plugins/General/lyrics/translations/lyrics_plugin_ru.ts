@@ -51,11 +51,16 @@
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="67"/>
+        <location filename="../lyricswindow.cpp" line="91"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
+        <location filename="../lyricswindow.cpp" line="105"/>
+        <location filename="../lyricswindow.cpp" line="113"/>
+        <location filename="../lyricswindow.cpp" line="124"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="127"/>
+        <location filename="../lyricswindow.cpp" line="165"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Текст песни: %1 - %2</translation>
     </message>
@@ -65,13 +70,14 @@
         <translation>Нет соединения</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="115"/>
+        <location filename="../lyricswindow.cpp" line="118"/>
+        <location filename="../lyricswindow.cpp" line="153"/>
         <source>Not found</source>
         <translation>Не найдено</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="96"/>
-        <location filename="../lyricswindow.cpp" line="126"/>
+        <location filename="../lyricswindow.cpp" line="139"/>
+        <location filename="../lyricswindow.cpp" line="164"/>
         <source>Receiving</source>
         <translation>Получение</translation>
     </message>

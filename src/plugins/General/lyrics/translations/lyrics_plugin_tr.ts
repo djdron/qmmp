@@ -51,11 +51,17 @@
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="67"/>
+        <location filename="../lyricswindow.cpp" line="91"/>
+        <location filename="../lyricswindow.cpp" line="97"/>
+        <location filename="../lyricswindow.cpp" line="105"/>
+        <location filename="../lyricswindow.cpp" line="113"/>
+        <location filename="../lyricswindow.cpp" line="124"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="115"/>
+        <location filename="../lyricswindow.cpp" line="118"/>
+        <location filename="../lyricswindow.cpp" line="153"/>
         <source>Not found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -65,13 +71,13 @@
         <translation>Bağlantı yok</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="96"/>
-        <location filename="../lyricswindow.cpp" line="126"/>
+        <location filename="../lyricswindow.cpp" line="139"/>
+        <location filename="../lyricswindow.cpp" line="164"/>
         <source>Receiving</source>
         <translation>Alınıyor</translation>
     </message>
     <message>
-        <location filename="../lyricswindow.cpp" line="127"/>
+        <location filename="../lyricswindow.cpp" line="165"/>
         <source>Lyrics: %1 - %2</source>
         <translation>Şarkı Sözü: %1 - %2</translation>
     </message>
