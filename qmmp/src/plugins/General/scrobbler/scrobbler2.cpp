@@ -381,8 +381,10 @@ void Scrobbler2::submit()
         params.insert(QString("track[%1]").arg(i),info.metaData(Qmmp::TITLE));
         params.insert(QString("timestamp[%1]").arg(i),QString("%1").arg(info.timeStamp()));
         params.insert(QString("artist[%1]").arg(i),info.metaData(Qmmp::ARTIST));
-        params.insert(QString("album[%1]").arg(i),info.metaData(Qmmp::ALBUM));
-        params.insert(QString("trackNumber[%1]").arg(i),info.metaData(Qmmp::TRACK));
+        if(!info.metaData(Qmmp::ALBUM).isEmpty())
+            params.insert(QString("album[%1]").arg(i),info.metaData(Qmmp::ALBUM));
+        if(!info.metaData(Qmmp::TRACK).isEmpty())
+            params.insert(QString("trackNumber[%1]").arg(i),info.metaData(Qmmp::TRACK));
         params.insert(QString("duration[%1]").arg(i),QString("%1").arg(info.length()));
     }
     params.insert("api_key", API_KEY);
