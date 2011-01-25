@@ -1,5 +1,6 @@
 SUBDIRS += statusicon \
            notifier \
+           lyrics \
            scrobbler \
            fileops
 unix:SUBDIRS += mpris \
@@ -7,5 +8,6 @@ unix:SUBDIRS += mpris \
                 udisks \
                 hotkey \
                 covermanager \
-                kdenotify
+                kdenotify \
+                streambrowser
 TEMPLATE = subdirs
