@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,6 @@
 
 #include <QFile>
 #include <QDir>
-#include <QDirIterator>
 #include <QSettings>
 #include <QTextStream>
 #include <QTextCodec>
@@ -31,8 +30,18 @@
 #endif
 #include "cueparser.h"
 
-CUEParser::CUEParser(const QString &fileName)
+CUEParser::CUEParser(const QString &url)
 {
+    QString fileName = url;
+    if(url.contains("://"))
+    {
+        QString p = QUrl(url).path();
+        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
+        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        p.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        fileName = p;
+    }
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly))
     {
@@ -45,7 +54,6 @@ CUEParser::CUEParser(const QString &fileName)
     QTextCodec *codec = QTextCodec::codecForName(settings.value("encoding","ISO-8859-1").toByteArray ());
     if(!codec)
         codec = QTextCodec::codecForName("UTF-8");
-    m_dirty = settings.value("dirty_cue", false).toBool();
 #ifdef WITH_ENCA
     EncaAnalyser analyser = 0;
     if(settings.value("use_enca", false).toBool())
@@ -90,7 +98,7 @@ CUEParser::CUEParser(const QString &fileName)
                 else
                     m_infoList.last().setLength(0);
             }
-            file_path = getDirtyPath(fileName, QFileInfo(fileName).dir().filePath(words[1]));
+            file_path = QFileInfo(fileName).dir().filePath(words[1]);
             new_file = true;
         }
 
@@ -114,6 +122,7 @@ CUEParser::CUEParser(const QString &fileName)
             path.replace("%", QString(QUrl::toPercentEncoding("%"))); //replace special symbols
             path.replace("#", QString(QUrl::toPercentEncoding("#")));
             path.replace("?", QString(QUrl::toPercentEncoding("?")));
+            path.replace(":", QString(QUrl::toPercentEncoding(":")));
             FileInfo info("cue://" + path + QString("#%1").arg(words[1].toInt()));
             info.setMetaData(Qmmp::TRACK, words[1].toInt());
             info.setMetaData(Qmmp::ALBUM, album);
@@ -248,51 +257,4 @@ qint64 CUEParser::getLength(const QString &str)
     else if (list.size() == 3)
         return (qint64)list.at(0).toInt()*60000 + list.at(1).toInt()*1000 + list.at(2).toInt()*1000/75;
     return 0;
-}
-
-QString CUEParser::getDirtyPath(const QString &cue, const QString &path)
-{
-
-    if (Decoder::findByPath(path) || ! m_dirty)
-        return path;
-
-    QStringList candidates;
-    QDirIterator it(QFileInfo(path).dir().path(), QDir::Files);
-    while (it.hasNext())
-    {
-        it.next();
-        QString f = it.filePath();
-        if ((f != cue) && Decoder::findByPath(f))
-            candidates.push_back(f);
-    }
-
-    if (candidates.empty())
-        return path;
-    else if (candidates.count() == 1)
-        return candidates.first();
-
-    int dot = cue.lastIndexOf('.');
-    if (dot != -1)
-    {
-        QRegExp r(QRegExp::escape(cue.left(dot)) + "\\.[^\\.]+$");
-
-        int index = candidates.indexOf(r);
-        int rindex = candidates.lastIndexOf(r);
-
-        if ((index != -1) && (index == rindex))
-            return candidates[index];
-    }
-    dot = path.lastIndexOf('.');
-    if (dot != -1)
-    {
-        QRegExp r(QRegExp::escape(path.left(dot)) + "\\.[^\\.]+$");
-
-        int index = candidates.indexOf(r);
-        int rindex = candidates.lastIndexOf(r);
-
-        if ((index != -1) && (index == rindex))
-            return candidates[index];
-    }
-
-    return path;
 }

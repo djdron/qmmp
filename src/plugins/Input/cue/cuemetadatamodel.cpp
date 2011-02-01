@@ -24,11 +24,7 @@
 
 CUEMetaDataModel::CUEMetaDataModel(const QString &url, QObject *parent) : MetaDataModel(parent)
 {
-    QString p = QUrl(url).path();
-    p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-    p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-    p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-    m_parser = new CUEParser(p);
+    m_parser = new CUEParser(url);
     if (m_parser->count() == 0)
     {
         qWarning("CUEMetaDataModel: invalid cue file");
