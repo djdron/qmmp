@@ -37,52 +37,52 @@
 <context>
     <name>WavPackMetaDataModel</name>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="66"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
         <source>Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Sample rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Hz</source>
         <translation type="unfinished">Hz</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
         <source>Channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>kbps</source>
         <translation type="unfinished">kbps</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>File size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>KB</source>
         <translation type="unfinished">KB</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
         <source>Ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="74"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>

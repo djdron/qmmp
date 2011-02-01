@@ -37,52 +37,52 @@
 <context>
     <name>WavPackMetaDataModel</name>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="66"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
         <source>Length</source>
         <translation>Délka</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Sample rate</source>
         <translation>Vzorkovací frekvence</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
         <source>Channels</source>
         <translation>Počet kanálů</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>Bitrate</source>
         <translation>Datový tok</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>File size</source>
         <translation>Velikost souboru</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>KB</source>
         <translation>KiB</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
         <source>Ratio</source>
         <translation>Poměr</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="74"/>
         <source>Version</source>
         <translation>Verze</translation>
     </message>

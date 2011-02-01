@@ -37,52 +37,52 @@
 <context>
     <name>WavPackMetaDataModel</name>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="66"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
         <source>Length</source>
         <translation>Тривалість</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Sample rate</source>
         <translation>Частота</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
         <source>Channels</source>
         <translation>Канали</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>Bitrate</source>
         <translation>Бітрейт</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>kbps</source>
         <translation>кБ/с</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>File size</source>
         <translation>Розмір файлу</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>KB</source>
         <translation>кБ</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
         <source>Ratio</source>
         <translation>Стиснення</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="74"/>
         <source>Version</source>
         <translation>Версія</translation>
     </message>

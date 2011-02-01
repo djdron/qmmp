@@ -37,52 +37,52 @@
 <context>
     <name>WavPackMetaDataModel</name>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="66"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
         <source>Length</source>
         <translation>長さ</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Sample rate</source>
         <translation>サンプルレート</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="67"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="68"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
         <source>Channels</source>
         <translation>チャンネル</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>Bitrate</source>
         <translation>ビットレート</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="69"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>kbps</source>
         <translation>キロビット毎秒</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>File size</source>
         <translation>ファイルの大きさ</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="71"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>KB</source>
         <translation>KiB</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="72"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
         <source>Ratio</source>
         <translation>率</translation>
     </message>
     <message>
-        <location filename="../wavpackmetadatamodel.cpp" line="73"/>
+        <location filename="../wavpackmetadatamodel.cpp" line="74"/>
         <source>Version</source>
         <translation>版</translation>
     </message>

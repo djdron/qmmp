@@ -32,42 +32,42 @@
 <context>
     <name>FLACMetaDataModel</name>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="81"/>
+        <location filename="../flacmetadatamodel.cpp" line="82"/>
         <source>Length</source>
         <translation>Тривалість</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="82"/>
+        <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>Sample rate</source>
         <translation>Частота</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="82"/>
+        <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>Hz</source>
         <translation>Гц</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="83"/>
+        <location filename="../flacmetadatamodel.cpp" line="84"/>
         <source>Channels</source>
         <translation>Канали</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="84"/>
+        <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>Bitrate</source>
         <translation>Бітрейт</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="84"/>
+        <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>kbps</source>
         <translation>Кб/с</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="86"/>
+        <location filename="../flacmetadatamodel.cpp" line="87"/>
         <source>File size</source>
         <translation>Розмір файлу</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="86"/>
+        <location filename="../flacmetadatamodel.cpp" line="87"/>
         <source>KB</source>
         <translation>Кб</translation>
     </message>
