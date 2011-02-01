@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2002-2003 Nick Lamb <njl195@zepler.org.uk>              *
  *   Copyright (C) 2005 Giacomo Lozito <city_hunter@users.sf.net>          *
- *   Copyright (C) 2009 by Ilya Kotov <forkotov02@hotmail.ru>              *
+ *   Copyright (C) 2009-2011 by Ilya Kotov <forkotov02@hotmail.ru>         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -34,9 +34,6 @@
 #ifndef PATH_MAX
 #define PATH_MAX 4096
 #endif
-
-#undef	CLAMP
-#define CLAMP(x, low, high)  (((x) > (high)) ? (high) : (((x) < (low)) ? (low) : (x)))
 
 LADSPAHost *LADSPAHost::m_instance = 0;
 
@@ -253,35 +250,34 @@ int LADSPAHost::applyEffect(qint16 *d, int length)
 
     if (m_chan == 1)
     {
-        for (k = 0; k < length / 2; ++k)
-            m_left[k] = ((LADSPA_Data) raw16[k]) * (1.0f / 32768.0f);
+        for (k = 0; k < length >> 1; ++k)
+            m_left[k] = (LADSPA_Data) raw16[k] / 32768.0f;
         foreach(instance, m_effects)
         {
             if (instance->handle)
-                instance->descriptor->run(instance->handle, length / 2);
+                instance->descriptor->run(instance->handle, length >> 1);
         }
-        for (k = 0; k < length / 2; ++k)
-            raw16[k] = CLAMP((int)(m_left[k] * 32768.0f), -32768, 32767);
+        for (k = 0; k < length >> 1; ++k)
+            raw16[k] = qBound((int)(m_left[k] * 32768.0f), -32768, 32767);
     }
     else
     {
-        for (k = 0; k < length / 2; k += 2)
+        for (k = 0; k < length >> 1; k += 2)
         {
-            m_left[k/2] = ((LADSPA_Data) raw16[k]) * (1.0f / 32768.0f);
-            m_right[(k+1)/2] = ((LADSPA_Data) raw16[k+1]) * (1.0f / 32768.0f);
+            m_left[k >> 1] = (LADSPA_Data) raw16[k] / 32768.0f;
+            m_right[k >> 1] = (LADSPA_Data) raw16[k+1] / 32768.0f;
         }
         foreach(instance, m_effects)
         {
             if (instance->handle)
-                instance->descriptor->run(instance->handle, length/4);
+                instance->descriptor->run(instance->handle, length >> 2);
             if (instance->handle2)
-                instance->descriptor->run(instance->handle2, length/4);
+                instance->descriptor->run(instance->handle2, length >> 2);
         }
-        for (k = 0; k < length / 2; k += 2)
+        for (k = 0; k < length >> 1; k += 2)
         {
-            raw16[k] = CLAMP((int)(m_left[k/2] * 32768.0f), -32768, 32767);
-            raw16[k+1] = CLAMP((int)(m_right[(k+1)/2] * 32768.0f), -32768, 32767);
-
+            raw16[k] = qBound((int)(m_left[k >> 1] * 32768.0f), -32768, 32767);
+            raw16[k+1] = qBound((int)(m_right[k >> 1] * 32768.0f), -32768, 32767);
         }
     }
     return length;
