@@ -30,12 +30,12 @@
 
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class CUEParser
 {
 public:
-    CUEParser(const QString &fileName);
+    CUEParser(const QString &url);
 
     ~CUEParser();
 
@@ -51,10 +51,9 @@ private:
     QList <FileInfo> m_infoList;
     QList <qint64> m_offsets;
     QStringList m_files;
-    bool m_dirty;
     QStringList splitLine(const QString &line);
     qint64 getLength(const QString &str);
-    QString getDirtyPath(const QString &cue, const QString &path);
+
 };
 
 #endif

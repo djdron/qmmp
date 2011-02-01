@@ -46,6 +46,7 @@ Music_Emu *GmeHelper::load(const QString &url, int sample_rate)
         path.replace(QString(QUrl::toPercentEncoding("#")), "#");
         path.replace(QString(QUrl::toPercentEncoding("?")), "?");
         path.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        path.replace(QString(QUrl::toPercentEncoding(":")), ":");
     }
     const char *err = 0;
     gme_type_t file_type;
@@ -112,6 +113,7 @@ QList <FileInfo*> GmeHelper::createPlayList(bool meta)
         path.replace("%", QString(QUrl::toPercentEncoding("%"))); //replace special symbols
         path.replace("#", QString(QUrl::toPercentEncoding("#")));
         path.replace("?", QString(QUrl::toPercentEncoding("?")));
+        path.replace(":", QString(QUrl::toPercentEncoding(":")));
         info->setPath("gme://"+path+QString("#%1").arg(i+1));
         info->setLength(track_info.length/1000);
         list << info;

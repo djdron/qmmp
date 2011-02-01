@@ -30,6 +30,7 @@ WavPackMetaDataModel::WavPackMetaDataModel(const QString &path, QObject *parent)
         p.replace(QString(QUrl::toPercentEncoding("#")), "#");
         p.replace(QString(QUrl::toPercentEncoding("?")), "?");
         p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        p.replace(QString(QUrl::toPercentEncoding(":")), ":");
         m_path = p;
     }
     else
