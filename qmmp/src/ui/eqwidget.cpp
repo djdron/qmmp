@@ -40,6 +40,7 @@
 EqWidget::EqWidget (QWidget *parent)
         : PixmapWidget (parent)
 {
+    setWindowTitle(tr("Equalizer"));
     m_shaded = false;
     m_skin = Skin::instance();
     setPixmap (m_skin->getEqPart (Skin::EQ_MAIN));
