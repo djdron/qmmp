@@ -9,22 +9,22 @@
         <translation>Modul WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="132"/>
+        <location filename="../decoderwavpackfactory.cpp" line="153"/>
         <source>About WavPack Audio Plugin</source>
         <translation>O modulu WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="133"/>
+        <location filename="../decoderwavpackfactory.cpp" line="154"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Vstupní modul Qmmp WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="134"/>
+        <location filename="../decoderwavpackfactory.cpp" line="155"/>
         <source>WavPack library version:</source>
         <translation>Verze knihovny WavPack:</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="136"/>
+        <location filename="../decoderwavpackfactory.cpp" line="157"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
