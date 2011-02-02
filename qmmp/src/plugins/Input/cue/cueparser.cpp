@@ -55,7 +55,7 @@ CUEParser::CUEParser(const QString &url)
     QTextCodec *codec = QTextCodec::codecForName(settings.value("encoding","ISO-8859-1").toByteArray ());
     if(!codec)
         codec = QTextCodec::codecForName("UTF-8");
-    m_dirty = settings.value("dirty_cue", true).toBool();
+    m_dirty = settings.value("dirty_cue", false).toBool();
 #ifdef WITH_ENCA
     EncaAnalyser analyser = 0;
     if(settings.value("use_enca", false).toBool())
