@@ -63,10 +63,20 @@ Decoder *DecoderCUEFactory::create(const QString &path, QIODevice *input)
 QList<FileInfo *> DecoderCUEFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     Q_UNUSED(useMetaData);
-    if(!QFile::exists(fileName))
-        return QList<FileInfo *>();
     CUEParser parser(fileName);
-    return parser.createPlayList();
+    if(fileName.contains("://"))
+    {
+        QList<FileInfo *> list;
+        int track = fileName.section("#", -1).toInt();
+        if (!parser.count() || track <= 0 || track > parser.count())
+            return list;
+        list = parser.createPlayList();
+        FileInfo *info = list.takeAt(track - 1);
+        qDeleteAll(list);
+        return QList<FileInfo *>() << info;
+    }
+    else
+        return parser.createPlayList();
 }
 
 MetaDataModel* DecoderCUEFactory::createMetaDataModel(const QString &path, QObject *parent)

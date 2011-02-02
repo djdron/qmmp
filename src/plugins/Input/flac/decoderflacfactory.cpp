@@ -73,6 +73,27 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
     TagLib::FLAC::File *flacFile = 0;
     TagLib::Ogg::FLAC::File *oggFlacFile = 0;
 
+    //extract metadata of one cue track
+    if(fileName.contains("://"))
+    {
+        QString path = QUrl(fileName).path();
+        path.replace(QString(QUrl::toPercentEncoding("#")), "#");
+        path.replace(QString(QUrl::toPercentEncoding("?")), "?");
+        path.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        path.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        int track = fileName.section("#", -1).toInt();
+        list = createPlayList(path, true);
+        if (list.isEmpty() || track <= 0 || track > list.count())
+        {
+            qDeleteAll(list);
+            list.clear();
+            return list;
+        }
+        FileInfo *info = list.takeAt(track - 1);
+        qDeleteAll(list);
+        return QList<FileInfo *>() << info;
+    }
+
     if(fileName.endsWith(".flac", Qt::CaseInsensitive))
     {
         flacFile = new TagLib::FLAC::File(fileName.toLocal8Bit ());
