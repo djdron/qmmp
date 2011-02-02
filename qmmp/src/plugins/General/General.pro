@@ -8,6 +8,5 @@ unix:SUBDIRS += mpris \
                 udisks \
                 hotkey \
                 covermanager \
-                kdenotify \
-                streambrowser
+                kdenotify
 TEMPLATE = subdirs
