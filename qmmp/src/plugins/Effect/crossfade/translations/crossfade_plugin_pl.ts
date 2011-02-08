@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Overlap:</source>
-        <translation type="unfinished">Nakładanie:</translation>
+        <translation>Nakładanie:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
