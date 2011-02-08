@@ -56,12 +56,12 @@
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Open the directory containing this file</source>
-        <translation type="unfinished"></translation>
+        <translation>Otwórz katalog zawierający ten plik</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="45"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="59"/>
@@ -75,7 +75,7 @@
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Arial&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

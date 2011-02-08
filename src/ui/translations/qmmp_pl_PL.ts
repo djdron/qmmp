@@ -1097,7 +1097,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="43"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Korektor</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="392"/>
@@ -1488,7 +1488,7 @@
     <message>
         <location filename="../playlist.cpp" line="54"/>
         <source>Playlist</source>
-        <translation type="unfinished">Lista odtwarzania</translation>
+        <translation>Lista odtwarzania</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="284"/>
