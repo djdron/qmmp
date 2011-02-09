@@ -54,8 +54,13 @@ public:
      * Returns length in milliseconds
      */
     qint64 totalTime() const;
-
+    /*!
+     * Returns equalizer settings
+     */
     EqSettings eqSettings() const;
+    /*!
+     * Chages equalizer settings to \b settings.
+     */
     void setEqSettings(const EqSettings &settings);
 
     /*!

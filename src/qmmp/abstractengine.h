@@ -79,8 +79,12 @@ public:
      * Returns wait condition pointer.
      */
     QWaitCondition *cond();
-
-
+    /*!
+     * Creates Engine object.
+     * @param s InputSource object.
+     * @param parent Parent object.
+     * Returns \b 0 if the given source is not supported.
+     */
     static AbstractEngine *create(InputSource *s, QObject *parent = 0);
     /*!
      * Returns a list of decoder factories.
