@@ -300,7 +300,7 @@ signals:
     void currentChanged();
     /*!
      * Emitted when new item has added.
-     * @param name New playlist item pointer.
+     * @param item New playlist item pointer.
      */
     void itemAdded(PlayListItem *item);
     /*!
