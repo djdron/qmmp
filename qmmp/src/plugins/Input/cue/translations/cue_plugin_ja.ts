@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>共通設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic file detection</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルを自動検出</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>

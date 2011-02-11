@@ -2,11 +2,14 @@
 
     Adria Arrufat <swiftscythe@gmail.com> - バグ報告
     Adrian Knoth <adi@drcomp.erfurt.thur.de> - jack プラグイン改修, バグ報告
+    Anton Petrusevich <casus@casus.us> - シャッフル再生の改良
+    Avihay Baratz <avihayb@gmail.com> - 自動終止機能, バグ改修
     Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg プラグイン改修
     Dmitry Kostin <kostindima@gmail.com> - iso.wv サポート
+    Evgeny Gleyzerman <evgley@gmail.com> - cue 解析の改良
     Геннадий Моцьо (Gennadi Motsyo) <drool@altlinux.ru> - バグ報告
     Вадим Калинников (Vadim Kalinnikov) <moose@ylsoftware.com> - ホスト提供
-    Erik Ölsar <erlk.ozlr@gmail.com> - スキン化カーソル, UI拡張
+    Erik Ölsar <erlk.ozlr@gmail.com> - スキン化カーソル, UI改良
     Funda Wang <fundawang@gmail.com> - cmake files 改修
     Михаил Желудков (Michail Zheludkov) <zheludkovm@mail.ru> - ffmpeg プラグイン改修
     Panagiotis Papadopoulos <pano_90@gmx.net> - UI改修, バグ報告
