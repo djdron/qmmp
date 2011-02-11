@@ -12,6 +12,7 @@
     Erik Ölsar <erlk.ozlr@gmail.com> - растровые курсоры, улучшения в интерфейсе пользователя
     Funda Wang <fundawang@gmail.com> - исправления файлов cmake
     Михаил Желудков <zheludkovm@mail.ru> - исправления в модуле ffmpeg
+    Michał Grosicki <grosik88@o2.pl> - исправления в модуле alsa
     Panagiotis Papadopoulos <pano_90@gmx.net> - улучшения в интерфейсе пользователя, сообщения об ошибках
     Pino Toscano <toscano.pino@tiscali.it> - улучшение кроссплатформенности
     Karel Volný <kvolny@redhat.com> - различные исправления
