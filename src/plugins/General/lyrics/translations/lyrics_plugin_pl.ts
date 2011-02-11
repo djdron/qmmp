@@ -33,8 +33,8 @@
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
-        <source>This plugin retrieves lyrics from lyricsplugin.com</source>
-        <translation>Ta wtyczka ściąga teksty piosenek z lyricsplugin.com</translation>
+        <source>This plugin retrieves lyrics from LyricWiki</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
