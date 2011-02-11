@@ -32,14 +32,14 @@
         <translation>Qmmp 歌词插件</translation>
     </message>
     <message>
+        <location filename="../lyricsfactory.cpp" line="52"/>
+        <source>This plugin retrieves lyrics from LyricWiki</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
-    </message>
-    <message>
-        <location filename="../lyricsfactory.cpp" line="52"/>
-        <source>This plugin retrieves lyrics from lyricsplugin.com</source>
-        <translation>此插件使用的歌词来源于 lyricsplugin.com</translation>
     </message>
 </context>
 <context>
