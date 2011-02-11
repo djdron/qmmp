@@ -48,6 +48,7 @@ Thanks to:
     Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
     Funda Wang <fundawang@gmail.com> - cmake files fixes
     Michail Zheludkov <zheludkovm@mail.ru> - ffmpeg plugin fixes
+    Michał Grosicki <grosik88@o2.pl> - alsa plugin fixes
     Panagiotis Papadopoulos <pano_90@gmx.net> - ui fixes, bug reports
     Pino Toscano <toscano.pino@tiscali.it> - portability patches
     Karel Volný <kvolny@redhat.com> - various fixes

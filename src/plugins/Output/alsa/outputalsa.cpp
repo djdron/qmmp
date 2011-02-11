@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -223,7 +223,7 @@ void OutputALSA::drain()
             l -= m;
             m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
             m_prebuf_fill -= m;
-            memcpy(m_prebuf, m_prebuf + m, m_prebuf_fill);
+            memmove(m_prebuf, m_prebuf + m, m_prebuf_fill);
         }
         else
             break;
@@ -258,7 +258,7 @@ qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
 {
     if((maxSize = qMin(maxSize, m_prebuf_size - m_prebuf_fill)) > 0)
     {
-        memcpy(m_prebuf + m_prebuf_fill, data, maxSize);
+        memmove(m_prebuf + m_prebuf_fill, data, maxSize);
         m_prebuf_fill += maxSize;
     }
 
@@ -273,7 +273,7 @@ qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
             l -= m;
             m = snd_pcm_frames_to_bytes(pcm_handle, m); // convert frames to bytes
             m_prebuf_fill -= m;
-            memcpy(m_prebuf, m_prebuf + m, m_prebuf_fill); //move data to begin
+            memmove(m_prebuf, m_prebuf + m, m_prebuf_fill); //move data to begin
         }
         else
             return -1;
@@ -297,8 +297,8 @@ long OutputALSA::alsa_write(unsigned char *data, long size)
     else if (m >= 0)
     {
         if (m < size)
-        { 
-            snd_pcm_wait(pcm_handle, 500);  
+        {
+            snd_pcm_wait(pcm_handle, 500);
         }
         return m;
     }
