@@ -742,7 +742,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translation>アンカーを表示</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="676"/>
@@ -1051,7 +1051,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="43"/>
         <source>Equalizer</source>
-        <translation type="unfinished">イコライザ</translation>
+        <translation>イコライザ</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="154"/>
@@ -1416,7 +1416,7 @@
     <message>
         <location filename="../playlist.cpp" line="54"/>
         <source>Playlist</source>
-        <translation type="unfinished">プレイリスト</translation>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="178"/>
