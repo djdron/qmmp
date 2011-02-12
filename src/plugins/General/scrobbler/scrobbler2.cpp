@@ -151,17 +151,8 @@ void Scrobbler2::updateMetaData()
     if (m_state == Qmmp::Playing
             && !metadata.value(Qmmp::TITLE).isEmpty()      //skip empty tags
             && !metadata.value(Qmmp::ARTIST).isEmpty()
-            && m_core->totalTime()                         //skip stream
-            && !metadata.value(Qmmp::ARTIST).contains("=") //skip tags with special symbols
-            && !metadata.value(Qmmp::TITLE).contains("=")
-            && !metadata.value(Qmmp::ALBUM).contains("="))
+            && m_core->totalTime())                        //skip stream
     {
-        metadata[Qmmp::ARTIST].replace("%", QUrl::toPercentEncoding("%")); //replace special symbols
-        metadata[Qmmp::ALBUM].replace("%", QUrl::toPercentEncoding("%"));
-        metadata[Qmmp::TITLE].replace("%", QUrl::toPercentEncoding("%"));
-        metadata[Qmmp::ARTIST].replace("&", QUrl::toPercentEncoding("&"));
-        metadata[Qmmp::ALBUM].replace("&", QUrl::toPercentEncoding("&"));
-        metadata[Qmmp::TITLE].replace("&", QUrl::toPercentEncoding("&"));
         m_song = SongInfo(metadata, m_core->totalTime()/1000);
         if (!m_session.isEmpty() && !m_notificationReply && !m_submitReply)
             sendNotification(m_song);
