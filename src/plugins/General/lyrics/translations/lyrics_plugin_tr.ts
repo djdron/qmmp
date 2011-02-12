@@ -34,7 +34,7 @@
     <message>
         <location filename="../lyricsfactory.cpp" line="52"/>
         <source>This plugin retrieves lyrics from LyricWiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu eklenti şarkı sözlerini LyricWiki adresinden alır</translation>
     </message>
     <message>
         <location filename="../lyricsfactory.cpp" line="53"/>

@@ -32,14 +32,14 @@
         <translation>Modulo Lirica per Qmmp</translation>
     </message>
     <message>
-        <location filename="../lyricsfactory.cpp" line="52"/>
-        <source>This plugin retrieves lyrics from LyricWiki</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../lyricsfactory.cpp" line="53"/>
         <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+    </message>
+    <message>
+        <location filename="../lyricsfactory.cpp" line="52"/>
+        <source>This plugin retrieves lyrics from LyricWiki</source>
+        <translation>Modulo che permette di trovare testi di canzoni da LyricWiki</translation>
     </message>
 </context>
 <context>
