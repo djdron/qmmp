@@ -8,7 +8,7 @@
     Csaba Hruska <csaba.hruska@gmail.com> - виправлення в модулі ffmpeg
     Dmitry Kostin <kostindima@gmail.com> - підтримка iso.wv
     Evgeny Gleyzerman <evgley@gmail.com> - покращення підтримки cue
-    Геннадий Моцьо <drool@altlinux.ru> - повідомлення про помилки
+    Геннадій Моцьо <drool@altlinux.ru> - повідомлення про помилки
     Erik Ölsar <erlk.ozlr@gmail.com> - растрові курсори, покращення інтерфейсу користувача
     Funda Wang <fundawang@gmail.com> - виправлення файлів cmake
     Михаил Желудков <zheludkovm@mail.ru> - виправлення в модулі ffmpeg
