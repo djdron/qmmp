@@ -50,13 +50,12 @@ TextScroller::TextScroller (QWidget *parent)
     m_menu = new QMenu(this);
     m_scrollAction = m_menu->addAction(tr("Autoscroll Songname"));
     m_scrollAction->setCheckable(true);
-    connect(m_scrollAction, SIGNAL(toggled(bool)), SLOT(setAutoscroll(bool)));
-    readSettings();
+    connect(m_scrollAction, SIGNAL(toggled(bool)), SLOT(updateText()));
     connect(m_timer, SIGNAL (timeout()), SLOT (addOffset()));
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
-    connect(m_scrollAction, SIGNAL(toggled(bool)), SLOT(updateText()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
     connect(m_core, SIGNAL(metaDataChanged()), SLOT(processMetaData()));
+    readSettings();
 }
 
 TextScroller::~TextScroller()
