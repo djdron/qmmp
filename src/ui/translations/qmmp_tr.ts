@@ -1209,14 +1209,34 @@
         <translation>Rastgele</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="103"/>
+        <location filename="../display.cpp" line="102"/>
         <source>Volume</source>
         <translation>Ses</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="107"/>
+        <location filename="../display.cpp" line="108"/>
         <source>Balance</source>
         <translation>Denge</translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="292"/>
+        <source>Volume: %1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="296"/>
+        <source>Balance: %1% right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="298"/>
+        <source>Balance: %1% left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="300"/>
+        <source>Balance: center</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1355,58 +1375,58 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="255"/>
+        <location filename="../mainwindow.cpp" line="250"/>
         <source>Choose a directory</source>
         <translation>Bir dizin seçin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="266"/>
+        <location filename="../mainwindow.cpp" line="261"/>
         <source>Select one or more files to open</source>
         <translation>Açmak için bir yada daha çok dosya seçin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Parçaya Git</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="438"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="448"/>
+        <location filename="../mainwindow.cpp" line="443"/>
         <source>Playlist</source>
         <translation type="unfinished">Çalma Listesi</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="515"/>
         <source>Open Playlist</source>
         <translation>Çalma Listesini Aç</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="546"/>
+        <location filename="../mainwindow.cpp" line="540"/>
         <source>Save Playlist</source>
         <translation>Çalma Listesini Kaydet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
-        <location filename="../mainwindow.cpp" line="545"/>
+        <location filename="../mainwindow.cpp" line="513"/>
+        <location filename="../mainwindow.cpp" line="539"/>
         <source>Playlist Files</source>
         <translation>Çalma Listesi Dosyaları</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="261"/>
+        <location filename="../mainwindow.cpp" line="256"/>
         <source>All Supported Bitstreams</source>
         <translation>Tüm Desteklenen Bitstreamler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="463"/>
         <source>Tools</source>
         <translation>Araçlar</translation>
     </message>
@@ -1774,14 +1794,14 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="228"/>
-        <source>Buffering:</source>
-        <translation>Arabelleğe alınıyor:</translation>
-    </message>
-    <message>
-        <location filename="../textscroller.cpp" line="64"/>
+        <location filename="../textscroller.cpp" line="51"/>
         <source>Autoscroll Songname</source>
         <translation>Şarkı Adını Otomatik Kaydır</translation>
+    </message>
+    <message>
+        <location filename="../textscroller.cpp" line="121"/>
+        <source>Buffering: %1%</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
