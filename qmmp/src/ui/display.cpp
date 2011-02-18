@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -99,12 +99,17 @@ MainDisplay::MainDisplay (QWidget *parent)
     m_playstatus = new PlayStatus(this);
 
     m_volumeBar = new VolumeBar(this);
-    connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
     m_volumeBar->setToolTip(tr("Volume"));
+    connect(m_volumeBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
+    connect(m_volumeBar, SIGNAL(sliderPressed()),SLOT(updateVolume()));
+    connect(m_volumeBar, SIGNAL(sliderReleased()),m_text,SLOT(clear()));
 
     m_balanceBar = new BalanceBar(this);
-    connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
     m_balanceBar->setToolTip(tr("Balance"));
+    connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
+    connect(m_balanceBar, SIGNAL(sliderPressed()),SLOT(updateVolume()));
+    connect(m_balanceBar, SIGNAL(sliderReleased()),m_text,SLOT(clear()));
+
     m_timeIndicator = new TimeIndicator(this);
     m_aboutWidget = new QWidget(this);
     m_core = SoundCore::instance();
@@ -121,7 +126,6 @@ MainDisplay::MainDisplay (QWidget *parent)
     updatePositions();
     updateMask();
 }
-
 
 MainDisplay::~MainDisplay()
 {
@@ -284,6 +288,17 @@ bool MainDisplay::isEqualizerVisible() const
 
 void MainDisplay::updateVolume()
 {
+    if(sender() == m_volumeBar)
+        m_text->setText(tr("Volume: %1%").arg(m_volumeBar->value()));
+    if(sender() == m_balanceBar)
+    {
+        if(m_balanceBar->value() > 0)
+            m_text->setText(tr("Balance: %1% right").arg(m_balanceBar->value()));
+        else if(m_balanceBar->value() < 0)
+            m_text->setText(tr("Balance: %1% left").arg(-m_balanceBar->value()));
+        else
+            m_text->setText(tr("Balance: center"));
+    }
     m_mw->setVolume(m_volumeBar->value(), m_balanceBar->value());
 }
 

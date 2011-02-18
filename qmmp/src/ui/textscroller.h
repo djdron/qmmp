@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,65 +21,63 @@
 #define TEXTSCROLLER_H
 
 #include <QWidget>
-
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+#include <qmmp/qmmp.h>
 
 class QTimer;
 class QMenu;
-
+class QAction;
 class Skin;
+class SoundCore;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class TextScroller : public QWidget
 {
 Q_OBJECT
 public:
     TextScroller(QWidget *parent = 0);
+    virtual ~TextScroller();
 
-    ~TextScroller();
-
-    static TextScroller *getPointer();
-    void setText(const QString&);
-    void readSettings();
-
+    void setText(const QString &text);
 
 public slots:
-    void setProgress(int);
+    void clear();
 
 private slots:
+    void setProgress(int);
     void addOffset();
     void updateSkin();
-    void setAutoscroll(bool);
-
-protected:
-    void hideEvent (QHideEvent *);
-    void showEvent (QShowEvent *);
-    void paintEvent (QPaintEvent *);
-    void mousePressEvent (QMouseEvent *);
-    void mouseReleaseEvent (QMouseEvent *);
-    void mouseMoveEvent (QMouseEvent *);
+    void processState(Qmmp::State state);
+    void processMetaData();
+    void updateText();
 
 private:
-    bool m_pressing;
-    int press_pos;
-    bool m_update;
-    static TextScroller *pointer;
+    void hideEvent(QHideEvent *);
+    void showEvent(QShowEvent *);
+    void paintEvent(QPaintEvent *);
+    void mousePressEvent(QMouseEvent *);
+    void mouseReleaseEvent(QMouseEvent *);
+    void mouseMoveEvent(QMouseEvent *);
+    void readSettings();
+    void preparePixmap(const QString &text, bool scrollable = false);
+    QString m_defautText;
+    QString m_bufferText;
+    QString m_sliderText;
+    QString m_titleText;
+
     QPixmap m_pixmap;
-    int x;
+    int m_x1, m_x2;
+    bool m_scroll, m_bitmap, m_pressed;
+    int m_press_pos;
     QFont m_font;
     QFontMetrics *m_metrics;
-    QString m_text;
-    QString m_scrollText;
     Skin *m_skin;
     QColor m_color;
     QTimer *m_timer;
-    int m_progress;
-    bool m_autoscroll;
-    bool m_bitmapConf;
-    bool m_bitmap;
     QMenu *m_menu;
-    int m_offset;
+    QAction *m_scrollAction;
+    SoundCore *m_core;
 };
 
 #endif
