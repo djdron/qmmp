@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -50,20 +50,22 @@ void BalanceBar::mousePressEvent(QMouseEvent *e)
     if(e->button() == Qt::MidButton)
     {
         m_value = 0;
+        emit sliderPressed();
         emit sliderMoved(m_value);
     }
     else if(m_pos<e->x() && e->x()<m_pos+11*m_skin->ratio())
     {
         press_pos = e->x()-m_pos;
+        emit sliderPressed();
     }
     else
     {
         m_value = convert(qMax(qMin(width()-18*m_skin->ratio(),e->x()-6*m_skin->ratio()),0));
         press_pos = 6*m_skin->ratio();
-        if (m_value!=m_old)
+        emit sliderPressed();
+        if (m_value != m_old)
         {
             emit sliderMoved(m_value);
-
         }
     }
     draw();
@@ -90,6 +92,7 @@ void BalanceBar::mouseReleaseEvent(QMouseEvent*)
     m_moving = false;
     draw(false);
     m_old = m_value;
+    emit sliderReleased();
 }
 
 void BalanceBar::setValue(int v)

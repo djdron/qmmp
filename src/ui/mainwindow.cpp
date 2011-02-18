@@ -35,7 +35,6 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/mediaplayer.h>
-#include "textscroller.h"
 #include "mainwindow.h"
 #include "skin.h"
 #include "playlist.h"
@@ -120,7 +119,6 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
-    connect(m_core, SIGNAL(bufferingProgress(int)), TextScroller::getPointer(), SLOT(setProgress(int)));
     connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
 
@@ -203,8 +201,6 @@ void MainWindow::showState(Qmmp::State state)
     case Qmmp::Playing:
         if (m_pl_manager->currentPlayList()->currentItem())
             m_equalizer->loadPreset(m_pl_manager->currentPlayList()->currentItem()->url().section("/",-1));
-        if (m_playlist->listWidget())
-            m_playlist->listWidget()->updateList(); //removes progress message from TextScroller
         break;
     case Qmmp::Paused:
         break;
@@ -235,7 +231,6 @@ void MainWindow::showMetaData()
     {
         m_playlist->currentItem()->updateMetaData(m_core->metaData());
         m_playlist->updateList();
-        TextScroller::getPointer()->setText(m_playlist->currentItem()->text());
         setWindowTitle(m_playlist->currentItem()->text());
     }
 }
@@ -496,7 +491,6 @@ void MainWindow::updateSettings()
 {
     readSettings();
     m_playlist->readSettings();
-    TextScroller::getPointer()->readSettings();
     m_visMenu->updateActions();
     m_skin->reloadSkin();
     Dock::instance()->updateDock();

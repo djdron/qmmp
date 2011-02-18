@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 class Skin;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class BalanceBar : public PixmapWidget
 {
@@ -43,6 +43,8 @@ public slots:
 
 signals:
     void sliderMoved (int);
+    void sliderPressed();
+    void sliderReleased();
 
 private slots:
     void updateSkin();

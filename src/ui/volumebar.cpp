@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,11 +21,9 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <math.h>
-
 #include "skin.h"
 #include "button.h"
 #include "mainwindow.h"
-
 #include "volumebar.h"
 
 
@@ -42,7 +40,6 @@ VolumeBar::VolumeBar(QWidget *parent) : PixmapWidget(parent)
     draw(false);
 }
 
-
 VolumeBar::~VolumeBar()
 {}
 
@@ -53,11 +50,13 @@ void VolumeBar::mousePressEvent(QMouseEvent *e)
     if(m_pos<e->x() && e->x()<m_pos+11*m_skin->ratio())
     {
         press_pos = e->x()-m_pos;
+        emit sliderPressed();
     }
     else
     {
         m_value = convert(qMax(qMin(width()-18*m_skin->ratio(),e->x()-6*m_skin->ratio()),0));
         press_pos = 6*m_skin->ratio();
+        emit sliderPressed();
         if (m_value != m_old)
             emit sliderMoved(m_value);
     }
@@ -85,6 +84,7 @@ void VolumeBar::mouseReleaseEvent(QMouseEvent*)
     m_moving = false;
     draw(false);
     m_old = m_value;
+    emit sliderReleased();
 }
 
 void VolumeBar::setValue(int v)

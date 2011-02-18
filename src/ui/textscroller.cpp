@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,92 +25,72 @@
 #include <QMouseEvent>
 #include <QSettings>
 #include <qmmp/qmmp.h>
-
+#include <qmmp/soundcore.h>
+#include <qmmpui/metadataformatter.h>
 #include "skin.h"
 #include "textscroller.h"
 
-#define SCROLL_SEP "*** "
+#define SCROLL_SEP "   *** "
+#define TITLE_FORMAT "%if(%p&%t,%p - %t,%p%t)%if(%p&%t,,%f)%if(%l, - %l,)"
 
-TextScroller *TextScroller::pointer = 0;
-
-TextScroller *TextScroller::getPointer()
+TextScroller::TextScroller (QWidget *parent)
+        : QWidget (parent)
 {
-    return pointer;
-}
-
-
-TextScroller::TextScroller ( QWidget *parent )
-        : QWidget ( parent )
-{
-    pointer = this;
-    m_skin = Skin::instance();
-    m_pixmap = QPixmap ( 150,15 );
-    resize(150,15);
-    x = 0;
-    m_offset = 0;
-    m_progress = -1;
+    m_pressed = false;
+    m_press_pos = 0;
     m_metrics = 0;
-    m_text = "Qt-based Multimedia Player (Qmmp " + Qmmp::strVersion() + ")";
-    m_update = false;
-    readSettings();
-    m_timer = new QTimer ( this );
-    connect (m_timer, SIGNAL (timeout()), SLOT (addOffset()));
+    m_defautText = QString("Qmmp ") + Qmmp::strVersion();
+    m_core = SoundCore::instance();
+    m_skin = Skin::instance();
+
+    m_timer = new QTimer (this);
     m_timer->setInterval(50);
     m_timer->start();
-    updateSkin();
-    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
-    m_autoscroll = true;
-    m_menu = new QMenu(this);
-    QAction *autoscrollAction = new QAction(tr("Autoscroll Songname"), m_menu);
-    autoscrollAction->setCheckable (true);
-    connect(autoscrollAction, SIGNAL(toggled(bool)), SLOT(setAutoscroll(bool)));
-    m_menu->addAction(autoscrollAction);
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    autoscrollAction->setChecked(settings.value("TextScroller/autoscroll", true).toBool());
-    setAutoscroll(autoscrollAction->isChecked());
-}
 
+    m_menu = new QMenu(this);
+    m_scrollAction = m_menu->addAction(tr("Autoscroll Songname"));
+    m_scrollAction->setCheckable(true);
+    connect(m_scrollAction, SIGNAL(toggled(bool)), SLOT(setAutoscroll(bool)));
+    readSettings();
+    connect(m_timer, SIGNAL (timeout()), SLOT (addOffset()));
+    connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
+    connect(m_scrollAction, SIGNAL(toggled(bool)), SLOT(updateText()));
+    connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
+    connect(m_core, SIGNAL(metaDataChanged()), SLOT(processMetaData()));
+}
 
 TextScroller::~TextScroller()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("TextScroller/autoscroll", m_autoscroll);
+    settings.setValue("TextScroller/autoscroll", m_scrollAction->isChecked());
     if(m_metrics)
         delete m_metrics;
 }
 
-void TextScroller::addOffset()
+void TextScroller::setText(const QString &text)
 {
-    x--;
-    if(m_bitmap)
-    {
-        if (154 + x < - m_scrollText.size() * 5 - 15 + 1)
-            x = -154;
-    }
-    else
-    {
-        if (154 + x < - m_metrics->width (m_scrollText) - 15 + 1)
-            x = -154;
-    }
-    update();
+    m_sliderText = text;
+    updateText();
 }
 
-void TextScroller::setText(const QString& text)
+void TextScroller::clear()
 {
-    m_progress = -1;
-    if (isVisible() && m_autoscroll)
-        m_timer->start();
-    if (m_text != text)
+    setText(QString());
+}
+
+void TextScroller::addOffset()
+{
+    if(!m_scroll)
     {
-        m_text = text;
-        m_scrollText = "*** " + text;
-        x = m_autoscroll ? -50 : -150;
-        m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
+        m_timer->stop();
+        return;
     }
-    if(m_bitmap)
-        m_offset = m_scrollText.size() * 5 + 15;
-    else
-         m_offset = m_metrics->width (m_scrollText) + 15;
+    m_x1--;
+    m_x2--;
+    if(m_x1 < - m_pixmap.width())
+        m_x1 = m_pixmap.width();
+    if(m_x2 < - m_pixmap.width())
+        m_x2 = m_pixmap.width();
     update();
 }
 
@@ -118,52 +98,28 @@ void TextScroller::updateSkin()
 {
     m_color.setNamedColor(m_skin->getPLValue("mbfg"));
     setCursor(m_skin->getCursor(Skin::CUR_SONGNAME));
-}
-
-
-void TextScroller::setAutoscroll(bool enabled)
-{
-    m_autoscroll = enabled;
-    x = -150;
-    if (m_autoscroll)
-    {
-        if (isVisible())
-            m_timer->start();
-    }
-    else
-    {
-        m_timer->stop();
-        update();
-    }
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_bitmap = settings.value("MainWindow/bitmap_font", false).toBool();
+    updateText();
 }
 
 void TextScroller::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QString fontname = settings.value("MainWindow/Font","").toString();
-    m_bitmapConf = settings.value("MainWindow/bitmap_font", false).toBool();
     m_font.fromString(fontname);
-
-    if (m_update)
-    {
+    if (m_metrics)
         delete m_metrics;
-        m_bitmap =  m_bitmapConf && (m_text.toLatin1() == m_text.toLocal8Bit());
-    }
     else
-    {
-        m_update = true;
-        m_bitmap = false;
-
-    }
+        m_scrollAction->setChecked(settings.value("TextScroller/autoscroll", true).toBool());
     m_metrics = new QFontMetrics(m_font);
-    setText(m_text);
+    updateSkin();
 }
 
 void TextScroller::setProgress(int progress)
 {
-    m_timer->stop();
-    m_progress = progress;
-    update();
+    m_bufferText = tr("Buffering: %1%").arg(progress);
+    updateText();
 }
 
 void TextScroller::hideEvent (QHideEvent *)
@@ -173,7 +129,7 @@ void TextScroller::hideEvent (QHideEvent *)
 
 void TextScroller::showEvent (QShowEvent *)
 {
-    if (m_autoscroll)
+    if (m_scroll)
         m_timer->start();
 }
 
@@ -196,47 +152,25 @@ inline void drawBitmapText(int x, int y, const QString &text, QPainter *paint, S
 
 void TextScroller::paintEvent (QPaintEvent *)
 {
-    QPainter paint (this);
-    paint.setPen(m_color);
-    paint.setFont(m_font);
-    if (m_progress < 0)
+    QPainter paint(this);
+    if(m_scroll)
     {
-        if(m_bitmap)
-        {
-            if (m_autoscroll)
-            {
-                drawBitmapText (154 + x + m_offset * 2, 12, m_scrollText, &paint, m_skin);
-                drawBitmapText (154 + x + m_offset, 12, m_scrollText, &paint, m_skin);
-                drawBitmapText (154 + x, 12, m_scrollText, &paint, m_skin);
-            }
-            else
-                drawBitmapText (154 + x,12, m_text, &paint, m_skin);
-        }
-        else
-        {
-            if (m_autoscroll)
-            {
-                paint.drawText (154 + x + m_offset * 2, 12, m_scrollText);
-                paint.drawText (154 + x + m_offset, 12, m_scrollText);
-                paint.drawText (154 + x, 12, m_scrollText);
-            }
-            else
-                paint.drawText (154 + x,12, m_text);
-        }
+        paint.drawPixmap(m_x1,0, m_pixmap);
+        paint.drawPixmap(m_x2,0, m_pixmap);
     }
     else
-        paint.drawText (4,12, tr("Buffering:") + QString(" %1\%").arg(m_progress));
+        paint.drawPixmap(4,0, m_pixmap);
 }
 
 void TextScroller::mousePressEvent (QMouseEvent *e)
 {
     if (e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
-    else if (e->button() == Qt::LeftButton && m_autoscroll)
+    else if (e->button() == Qt::LeftButton && m_scroll)
     {
         m_timer->stop();
-        press_pos = e->x() - (x + 154);
-        m_pressing = true;
+        m_press_pos = e->x() - m_x1;
+        m_pressed = true;
     }
     else
         QWidget::mousePressEvent(e);
@@ -244,28 +178,141 @@ void TextScroller::mousePressEvent (QMouseEvent *e)
 
 void TextScroller::mouseReleaseEvent (QMouseEvent *e)
 {
-    if (e->button() == Qt::RightButton)
+   if(e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
-    else if (e->button() == Qt::LeftButton && m_autoscroll)
-    {
+    else if (e->button() == Qt::LeftButton && m_scroll)
         m_timer->start();
-        m_pressing = false;
-    }
     else
         QWidget::mouseReleaseEvent(e);
+   m_pressed = false;
 }
 
 void TextScroller::mouseMoveEvent (QMouseEvent *e)
 {
-    if (m_pressing)
+    if (m_pressed)
     {
-        int bound = m_metrics->width (m_scrollText) + 15 - 1;
-        x = (e->x() - press_pos) % bound;
-        if (x < 0)
-        	x += bound;
-        x = x - bound - 154;
+        int bound = m_pixmap.width();
+        m_x1 = (e->x() - m_press_pos) % bound;
+        if (m_x1 > 0)
+            m_x1 -= bound;
+        m_x2 = m_x1 + m_pixmap.width();
         update();
     }
     else
         QWidget::mouseMoveEvent(e);
+}
+
+void TextScroller::processState(Qmmp::State state)
+{
+    switch(state)
+    {
+    case Qmmp::Buffering:
+    {
+        connect(m_core, SIGNAL(bufferingProgress(int)), SLOT(setProgress(int)));
+        break;
+    }
+    case Qmmp::Playing:
+    {
+        disconnect(m_core, SIGNAL(bufferingProgress(int)), this, 0);
+        m_bufferText.clear();
+        updateText();
+        break;
+    }
+    case Qmmp::Paused:
+    {
+        break;
+    }
+    case Qmmp::Stopped:
+    {
+        m_bufferText.clear();
+        m_titleText.clear();
+        updateText();
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+void TextScroller::processMetaData()
+{
+    MetaDataFormatter formater(TITLE_FORMAT);
+    if(m_core->state() == Qmmp::Playing)
+    {
+        m_titleText = formater.parse(m_core->metaData(), m_core->totalTime()/1000);
+        updateText();
+    }
+}
+
+void TextScroller::preparePixmap(const QString &text, bool scrollable)
+{
+    m_scroll = scrollable;
+    bool bitmap = m_bitmap && (text.toLatin1() == text.toLocal8Bit()); //use bitmap font if possible
+    if(scrollable)
+    {
+         int textWidth = m_bitmap ? QString(text + SCROLL_SEP).size() * 5
+                                  : m_metrics->width(text + SCROLL_SEP);
+         int count = 150 / textWidth + 1;
+         int width = count * textWidth;
+         QString fullText;
+         for(int i = 0; i < count; ++i)
+         {
+             fullText.append(text + SCROLL_SEP);
+         }
+         m_pixmap = QPixmap(width,15);
+         m_pixmap.fill(Qt::transparent);
+         QPainter painter(&m_pixmap);
+         painter.setPen(m_color);
+         painter.setFont(m_font);
+         if(m_bitmap)
+             drawBitmapText (0,12, fullText, &painter, m_skin);
+         else
+             painter.drawText (0,12, fullText);
+         m_x1 = 0;
+         m_x2 = m_pixmap.width();
+    }
+    else
+    {
+        m_pixmap = QPixmap(150,15);
+        m_pixmap.fill(Qt::transparent);
+        QPainter painter(&m_pixmap);
+        painter.setPen(m_color);
+        painter.setFont(m_font);
+        if(bitmap)
+            drawBitmapText (0,12, text, &painter, m_skin);
+        else
+            painter.drawText (0,12, text);
+    }
+}
+
+void TextScroller::updateText() //draw text according priority
+{
+    if(!m_sliderText.isEmpty())
+    {
+        preparePixmap(m_sliderText);
+        m_timer->stop();
+    }
+    else if(!m_bufferText.isEmpty())
+    {
+        preparePixmap(m_bufferText);
+        m_timer->stop();
+    }
+    else if (!m_titleText.isEmpty())
+    {
+        preparePixmap(m_titleText, m_scrollAction->isChecked());
+        m_timer->start();
+    }
+    else if(!m_defautText.isEmpty())
+    {
+        preparePixmap(m_defautText);
+        m_timer->stop();
+    }
+    else
+    {
+        m_timer->stop();
+        m_pixmap = QPixmap (150,15);
+        m_pixmap.fill(Qt::transparent);
+        m_scroll = false;
+    }
+    update();
 }
