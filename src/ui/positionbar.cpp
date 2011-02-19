@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,21 +21,15 @@
 #include <QMouseEvent>
 #include <QPainter>
 #include <math.h>
-
 #include "skin.h"
 #include "button.h"
-#include "mainwindow.h"
-
 #include "positionbar.h"
 
-
-PositionBar::PositionBar(QWidget *parent)
-        : PixmapWidget(parent)
+PositionBar::PositionBar(QWidget *parent) : PixmapWidget(parent)
 {
     m_skin = Skin::instance();
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setPixmap(m_skin->getPosBar());
-    mw = qobject_cast<MainWindow*>(window());
     m_moving = false;
     m_min = 0;
     m_max = 0;
@@ -55,11 +49,13 @@ void PositionBar::mousePressEvent(QMouseEvent *e)
     if (m_pos<e->x() && e->x()<m_pos+29*m_skin->ratio())
     {
         press_pos = e->x()-m_pos;
+        emit sliderPressed();
     }
     else
     {
         m_value = convert(qMax(qMin(width()-30*m_skin->ratio(),e->x()-15*m_skin->ratio()),0));
         press_pos = 15*m_skin->ratio();
+        emit sliderPressed();
         if (m_value!=m_old)
         {
             emit sliderMoved(m_value);
@@ -88,12 +84,11 @@ void PositionBar::mouseMoveEvent (QMouseEvent *e)
 void PositionBar::mouseReleaseEvent(QMouseEvent*)
 {
     draw(false);
-    if (m_value!=m_old && m_max > 0)
-    {
+    if (m_value != m_old && m_max > 0)
         m_old = m_value;
-        mw->seek(m_value);
-    }
     m_moving = false;
+    if(m_max > 0)
+        emit sliderReleased();
 }
 
 void PositionBar::setValue(qint64 v)
@@ -104,7 +99,7 @@ void PositionBar::setValue(qint64 v)
     draw(false);
 }
 
-void PositionBar::setMax(qint64 max)
+void PositionBar::setMaximum(qint64 max)
 {
     m_max = max;
     draw(false);

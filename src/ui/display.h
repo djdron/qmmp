@@ -78,10 +78,13 @@ protected:
 private slots:
     void updateSkin();
     void updateVolume();
+    void showPosition();
+    void updatePosition();
     void setSampleRate(quint32 rate);
     void setTime(qint64);
     void setState(Qmmp::State state);
     void setVolume(int left, int right);
+
 
 private:
     void updatePositions();
