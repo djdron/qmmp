@@ -1189,53 +1189,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="81"/>
+        <location filename="../display.cpp" line="80"/>
         <source>Equalizer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="84"/>
+        <location filename="../display.cpp" line="83"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de músicas</translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="89"/>
+        <location filename="../display.cpp" line="88"/>
         <source>Repeat playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="92"/>
+        <location filename="../display.cpp" line="91"/>
         <source>Shuffle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="102"/>
+        <location filename="../display.cpp" line="101"/>
         <source>Volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="108"/>
+        <location filename="../display.cpp" line="107"/>
         <source>Balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="292"/>
+        <location filename="../display.cpp" line="296"/>
         <source>Volume: %1%</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="296"/>
+        <location filename="../display.cpp" line="300"/>
         <source>Balance: %1% right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="298"/>
+        <location filename="../display.cpp" line="302"/>
         <source>Balance: %1% left</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../display.cpp" line="300"/>
+        <location filename="../display.cpp" line="304"/>
         <source>Balance: center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../display.cpp" line="315"/>
+        <source>Seek to: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1375,58 +1380,58 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="250"/>
+        <location filename="../mainwindow.cpp" line="245"/>
         <source>Choose a directory</source>
         <translation type="unfinished">Escolher o diretorio</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="261"/>
+        <location filename="../mainwindow.cpp" line="256"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished">Selecionar um ou mais arquivos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="427"/>
         <source>&amp;Jump To File</source>
         <translation type="unfinished">Pular para arquivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="428"/>
         <source>J</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="435"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="443"/>
+        <location filename="../mainwindow.cpp" line="438"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de músicas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="515"/>
+        <location filename="../mainwindow.cpp" line="510"/>
         <source>Open Playlist</source>
         <translation type="unfinished">Abrir Playlist</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="540"/>
+        <location filename="../mainwindow.cpp" line="535"/>
         <source>Save Playlist</source>
         <translation type="unfinished">Salvar Playlist</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="513"/>
-        <location filename="../mainwindow.cpp" line="539"/>
+        <location filename="../mainwindow.cpp" line="508"/>
+        <location filename="../mainwindow.cpp" line="534"/>
         <source>Playlist Files</source>
         <translation type="unfinished">ФArquivos de lista de músicas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="256"/>
+        <location filename="../mainwindow.cpp" line="251"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="458"/>
         <source>Tools</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1799,7 +1804,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="121"/>
+        <location filename="../textscroller.cpp" line="120"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>
