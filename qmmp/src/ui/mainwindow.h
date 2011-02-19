@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -63,7 +63,6 @@ public:
     QString processCommandArgs(const QStringList &list,const QString& cwd);
 
 public slots:
-    void seek(qint64);
     void previous();
     void play();
     void pause();

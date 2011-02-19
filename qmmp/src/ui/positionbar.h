@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,51 +22,44 @@
 
 #include "pixmapwidget.h"
 
-/**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-
 class QMouseEvent;
-
-class MainWindow;
 class Skin;
 
-
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class PositionBar : public PixmapWidget
 {
     Q_OBJECT
 public:
     PositionBar(QWidget *parent = 0);
-
-    ~PositionBar();
+    virtual ~PositionBar();
 
 public slots:
     void setValue(qint64);
     qint64 value()const{return m_value;}
-    void setMax(qint64);
+    void setMaximum(qint64);
+    qint64 maximum() const {return m_max;}
 
 signals:
     void sliderMoved (qint64);
+    void sliderPressed();
+    void sliderReleased();
 
 private slots:
     void updateSkin();
 
 private:
+    void mousePressEvent(QMouseEvent*);
+    void mouseReleaseEvent(QMouseEvent*);
+    void mouseMoveEvent(QMouseEvent*);
     Skin *m_skin;
     bool m_moving;
     qint64 press_pos;
     qint64 m_max, m_min, m_pos, m_value, m_old;
     QPixmap m_pixmap;
-    MainWindow *mw;
     qint64 convert(qint64);   // value = convert(position);
     void draw(bool pressed = true);
-
-protected:
-    void mousePressEvent(QMouseEvent*);
-    void mouseReleaseEvent(QMouseEvent*);
-    void mouseMoveEvent(QMouseEvent*);
-
-
 };
 
 #endif

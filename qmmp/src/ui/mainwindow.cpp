@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -152,19 +152,14 @@ void MainWindow::replay()
     play();
 }
 
-void MainWindow::seek(qint64 pos)
-{
-    m_core->seek(pos);
-}
-
 void MainWindow::forward()
 {
-    seek(m_core->elapsed() + KEY_OFFSET);
+    m_core->seek(m_core->elapsed() + KEY_OFFSET);
 }
 
 void MainWindow::backward()
 {
-    seek(qMax(qint64(0), m_core->elapsed() - KEY_OFFSET));
+    m_core->seek(qMax(qint64(0), m_core->elapsed() - KEY_OFFSET));
 }
 
 void MainWindow::setVolume(int volume, int balance)

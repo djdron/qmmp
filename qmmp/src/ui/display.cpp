@@ -73,7 +73,6 @@ MainDisplay::MainDisplay (QWidget *parent)
     m_eject->setToolTip(tr("Add file"));
     connect (m_eject,SIGNAL (clicked()),parent,SLOT (addFile()));
     connect (m_skin, SIGNAL (skinChanged()), this, SLOT (updateSkin()));
-    m_posbar = new PositionBar (this);
     m_vis = new MainVisual (this);
 
     m_eqButton = new ToggleButton (this,Skin::BT_EQ_ON_N,Skin::BT_EQ_ON_P,
@@ -109,6 +108,11 @@ MainDisplay::MainDisplay (QWidget *parent)
     connect(m_balanceBar, SIGNAL(sliderMoved(int)),SLOT(updateVolume()));
     connect(m_balanceBar, SIGNAL(sliderPressed()),SLOT(updateVolume()));
     connect(m_balanceBar, SIGNAL(sliderReleased()),m_text,SLOT(clear()));
+
+    m_posbar = new PositionBar(this);
+    connect(m_posbar, SIGNAL(sliderPressed()),SLOT(showPosition()));
+    connect(m_posbar, SIGNAL(sliderMoved(qint64)),SLOT(showPosition()));
+    connect(m_posbar, SIGNAL(sliderReleased()),SLOT(updatePosition()));
 
     m_timeIndicator = new TimeIndicator(this);
     m_aboutWidget = new QWidget(this);
@@ -168,7 +172,7 @@ void MainDisplay::setTime (qint64 t)
 }
 void MainDisplay::setDuration(qint64 t)
 {
-    m_posbar->setMax (t);
+    m_posbar->setMaximum (t);
     m_timeIndicator->setSongDuration(t/1000);
 }
 
@@ -189,7 +193,7 @@ void MainDisplay::setState(Qmmp::State state)
         m_monoster->setChannels (0);
         m_timeIndicator->setNeedToShowTime(false);
         m_posbar->setValue (0);
-        m_posbar->setMax (0);
+        m_posbar->setMaximum (0);
         m_titlebar->setTime(-1);
     }
 }
@@ -300,6 +304,21 @@ void MainDisplay::updateVolume()
             m_text->setText(tr("Balance: center"));
     }
     m_mw->setVolume(m_volumeBar->value(), m_balanceBar->value());
+}
+
+void MainDisplay::showPosition()
+{
+    int sec = m_posbar->value() / 1000;
+    if(sec > 3600)
+        sec /= 60;
+    QString time = QString("%1:%2").arg(sec/60, 2, 10, QChar('0')).arg(sec%60, 2, 10, QChar('0'));
+    m_text->setText(tr("Seek to: %1").arg(time));
+}
+
+void MainDisplay::updatePosition()
+{
+    m_text->clear();
+    m_core->seek(m_posbar->value());
 }
 
 void MainDisplay::wheelEvent (QWheelEvent *e)
