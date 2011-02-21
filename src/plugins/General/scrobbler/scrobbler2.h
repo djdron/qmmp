@@ -50,6 +50,8 @@ private slots:
     void submit();
 
 private:
+    enum { MIN_SONG_LENGTH = 30 };
+
     void sendNotification(const SongInfo &info);
     void syncCache();
     uint m_start_ts;

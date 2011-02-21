@@ -126,7 +126,7 @@ void Scrobbler2::setState(Qmmp::State state)
     case Qmmp::Stopped:
         if (!m_song.metaData().isEmpty()
             && ((m_time->elapsed ()/1000 > 240) || (m_time->elapsed ()/1000 > int(m_song.length()/2)))
-            && (m_time->elapsed ()/1000 > 60))
+            && (m_song.length() > MIN_SONG_LENGTH))
         {
             m_song.setTimeStamp(m_start_ts);
             m_songCache << m_song;
