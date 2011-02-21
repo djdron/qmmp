@@ -322,6 +322,7 @@ void MainWindow::readSettings()
     }
 #ifdef Q_WS_X11
     WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());
+    WindowSystem::setWinHint(winId(), "player", "Qmmp");
 #endif
     //Call setWindowOpacity only if needed
     double opacity = settings.value("MainWindow/opacity", 1.0).toDouble();
@@ -400,6 +401,7 @@ void MainWindow::toggleVisibility()
         }
 #ifdef Q_WS_X11
         WindowSystem::changeWinSticky(winId(), ACTION(ActionManager::WM_STICKY)->isChecked());
+        WindowSystem::setWinHint(winId(), "player", "Qmmp");
         raise();
 #endif
     }

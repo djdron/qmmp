@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Based on Licq                                                         *
  *   Copyright (C) 2006-2009 Licq developers                               *
+ *   Copyright (C) 2011 Ilya Kotov                                         *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -133,6 +134,17 @@ void WindowSystem::changeWinSticky(WId win, bool stick)
 
     XSendEvent(dsp, root, False,
                SubstructureRedirectMask | SubstructureNotifyMask, &xev);
+}
+
+void WindowSystem::setWinHint(WId win, const char *res_name, const char *res_class)
+{
+    Display* dsp = QX11Info::display();
+    XClassHint hint;
+    hint.res_name = strdup(res_name);
+    hint.res_class = strdup(res_class);
+    XSetClassHint(dsp, win, &hint);
+    free(hint.res_name);
+    free(hint.res_class);
 }
 
 unsigned char* WindowSystem::getWindowProperty(WId win, const char* prop)
