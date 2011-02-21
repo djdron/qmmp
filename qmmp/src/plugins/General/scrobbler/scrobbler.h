@@ -82,6 +82,8 @@ private slots:
     void handshake();
 
 private:
+    enum { MIN_SONG_LENGTH = 30 };
+
     void submit();
     void sendNotification(const SongInfo &info);
     bool isReady();
