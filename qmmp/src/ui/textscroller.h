@@ -65,9 +65,8 @@ private:
     QString m_bufferText;
     QString m_sliderText;
     QString m_titleText;
-
     QPixmap m_pixmap;
-    int m_x1, m_x2;
+    int m_x1, m_x2, m_ratio;
     bool m_scroll, m_bitmap, m_pressed;
     int m_press_pos;
     QFont m_font;

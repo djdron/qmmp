@@ -42,6 +42,7 @@ TextScroller::TextScroller (QWidget *parent)
     m_defautText = QString("Qmmp ") + Qmmp::strVersion();
     m_core = SoundCore::instance();
     m_skin = Skin::instance();
+    m_ratio = m_skin->ratio();
 
     m_timer = new QTimer (this);
     m_timer->setInterval(50);
@@ -99,6 +100,7 @@ void TextScroller::updateSkin()
     setCursor(m_skin->getCursor(Skin::CUR_SONGNAME));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_bitmap = settings.value("MainWindow/bitmap_font", false).toBool();
+    m_ratio = m_skin->ratio();
     updateText();
 }
 
@@ -251,14 +253,14 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
     {
          int textWidth = m_bitmap ? QString(text + SCROLL_SEP).size() * 5
                                   : m_metrics->width(text + SCROLL_SEP);
-         int count = 150 / textWidth + 1;
+         int count = 150*m_ratio / textWidth + 1;
          int width = count * textWidth;
          QString fullText;
          for(int i = 0; i < count; ++i)
          {
              fullText.append(text + SCROLL_SEP);
          }
-         m_pixmap = QPixmap(width,15);
+         m_pixmap = QPixmap(width,15*m_ratio);
          m_pixmap.fill(Qt::transparent);
          QPainter painter(&m_pixmap);
          painter.setPen(m_color);
@@ -272,7 +274,7 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
     }
     else
     {
-        m_pixmap = QPixmap(150,15);
+        m_pixmap = QPixmap(150*m_ratio,15*m_ratio);
         m_pixmap.fill(Qt::transparent);
         QPainter painter(&m_pixmap);
         painter.setPen(m_color);
@@ -309,7 +311,7 @@ void TextScroller::updateText() //draw text according priority
     else
     {
         m_timer->stop();
-        m_pixmap = QPixmap (150,15);
+        m_pixmap = QPixmap (150*m_ratio,15*m_ratio);
         m_pixmap.fill(Qt::transparent);
         m_scroll = false;
     }
