@@ -100,7 +100,7 @@ void Notifier::showMetaData()
     if(psi_dir.exists())
     {
         QFile file(QDir::homePath()+"/.psi/tune");
-        file.open(IODevice::WriteOnly | QIODevice::Text || QIODevice::Truncate);
+        file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
         file.write(data);
         file.close();
     }
@@ -109,7 +109,7 @@ void Notifier::showMetaData()
     if(psi_plus_dir.exists())
     {
         QFile file(QDir::homePath()+"/.psi-plus/tune");
-        file.open(IODevice::WriteOnly | QIODevice::Text || QIODevice::Truncate);
+        file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
         file.write(data);
         file.close();
     }
