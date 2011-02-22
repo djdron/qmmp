@@ -33,7 +33,6 @@ Notifier::Notifier(QObject *parent)
     m_popupWidget = 0;
     m_l = -1;
     m_r = -1;
-    QFile::remove(QDir::homePath()+"/.psi/tune");
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Notifier");
     m_desktop = settings.value("song_notification", true).toBool();
@@ -46,6 +45,12 @@ Notifier::Notifier(QObject *parent)
     connect (m_core, SIGNAL(volumeChanged(int, int)), SLOT(showVolume(int, int)));
     if (m_core->state() == Qmmp::Playing) //test message
         showMetaData();
+
+    if(m_psi) //clear psi notification
+    {
+        QFile::remove(QDir::homePath()+"/.psi/tune");
+        QFile::remove(QDir::homePath()+"/.psi-plus/tune");
+    }
 }
 
 Notifier::~Notifier()
@@ -62,7 +67,11 @@ void Notifier::setState(Qmmp::State state)
     }
     case Qmmp::Stopped:
     {
-        QFile::remove(QDir::homePath()+"/.psi/tune");
+        if (m_psi)
+        {
+            QFile::remove(QDir::homePath()+"/.psi/tune");
+            QFile::remove(QDir::homePath()+"/.psi-plus/tune");
+        }
         break;
     }
     }
@@ -79,14 +88,32 @@ void Notifier::showMetaData()
 
     if (!m_psi)
         return;
-    QFile file(QDir::homePath()+"/.psi/tune");   //psi file
-    file.open(QIODevice::WriteOnly | QIODevice::Text);
-    file.write(m_core->metaData(Qmmp::TITLE).toUtf8()+"\n");
-    file.write(m_core->metaData(Qmmp::ARTIST).toUtf8()+"\n");
-    file.write(m_core->metaData(Qmmp::ALBUM).toUtf8()+"\n");
-    file.write(m_core->metaData(Qmmp::TRACK).toUtf8()+"\n");
-    file.write(QString("%1").arg(m_core->totalTime()/1000).toUtf8()+"\n");
-    file.close();
+
+    QByteArray data;
+    data.append(m_core->metaData(Qmmp::TITLE).toUtf8()+"\n");
+    data.append(m_core->metaData(Qmmp::ARTIST).toUtf8()+"\n");
+    data.append(m_core->metaData(Qmmp::ALBUM).toUtf8()+"\n");
+    data.append(m_core->metaData(Qmmp::TRACK).toUtf8()+"\n");
+    data.append(QString("%1").arg(m_core->totalTime()/1000).toUtf8()+"\n");
+
+    QDir psi_dir(QDir::homePath()+"/.psi/");
+    if(psi_dir.exists())
+    {
+        QFile file(QDir::homePath()+"/.psi/tune");
+        file.open(IODevice::WriteOnly | QIODevice::Text || QIODevice::Truncate);
+        file.write(data);
+        file.close();
+    }
+
+    QDir psi_plus_dir(QDir::homePath()+"/.psi-plus/");
+    if(psi_plus_dir.exists())
+    {
+        QFile file(QDir::homePath()+"/.psi-plus/tune");
+        file.open(IODevice::WriteOnly | QIODevice::Text || QIODevice::Truncate);
+        file.write(data);
+        file.close();
+    }
+
 }
 
 void Notifier::showVolume(int l, int r)
