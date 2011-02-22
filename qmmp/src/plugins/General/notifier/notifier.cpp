@@ -43,18 +43,23 @@ Notifier::Notifier(QObject *parent)
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));
     connect (m_core, SIGNAL(volumeChanged(int, int)), SLOT(showVolume(int, int)));
+    if(m_psi) //clear psi notification
+    {
+        QFile::remove(QDir::homePath()+"/.psi/tune");
+        QFile::remove(QDir::homePath()+"/.psi-plus/tune");
+    }
     if (m_core->state() == Qmmp::Playing) //test message
         showMetaData();
+}
 
+Notifier::~Notifier()
+{
     if(m_psi) //clear psi notification
     {
         QFile::remove(QDir::homePath()+"/.psi/tune");
         QFile::remove(QDir::homePath()+"/.psi-plus/tune");
     }
 }
-
-Notifier::~Notifier()
-{}
 
 void Notifier::setState(Qmmp::State state)
 {
