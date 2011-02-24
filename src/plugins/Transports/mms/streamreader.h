@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -39,35 +39,30 @@ public:
 
     ~StreamReader();
 
-    /** 
+    /**
      *  QIODevice API
      */
     bool atEnd () const;
     qint64 bytesAvailable () const;
     qint64 bytesToWrite () const;
-    bool canReadLine () const;
     void close ();
     bool isSequential () const;
-    bool open ( OpenMode mode );
-    //qint64 pos () const;
-    bool reset ();
-    bool seek ( qint64 pos );
-    qint64 size () const;
-    bool waitForBytesWritten ( int msecs );
-    bool waitForReadyRead ( int msecs );
-
+    bool open (OpenMode mode);
+    bool seek (qint64 pos);
+    /**
+     *  helper functions
+     */
     void downloadFile();
 
 signals:
-    void readyRead();
+    void ready();
+    void error();
 
 protected:
     qint64 readData(char*, qint64);
     qint64 writeData(const char*, qint64);
 
 private:
-    //void downloadFile();
-    void fillBuffer();
     QUrl m_url;
     QString m_contentType;
     Downloader *m_downloader;

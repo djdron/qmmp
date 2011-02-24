@@ -34,7 +34,7 @@ bool EmptyInputSource::initialize()
 {
     m_ok = true; //check decoders
     if(m_ok)
-        emit ready(this);
+        emit ready();
     return m_ok;
 }
 

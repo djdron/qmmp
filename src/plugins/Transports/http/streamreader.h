@@ -39,39 +39,31 @@ public:
 
     ~StreamReader();
 
-    /** 
+    /**
      *  QIODevice API
      */
     bool atEnd () const;
     qint64 bytesAvailable () const;
     qint64 bytesToWrite () const;
-    bool canReadLine () const;
     void close ();
     bool isSequential () const;
-    bool open ( OpenMode mode );
-    //qint64 pos () const;
-    bool reset ();
-    bool seek ( qint64 pos );
-    qint64 size () const;
-    bool waitForBytesWritten ( int msecs );
-    bool waitForReadyRead ( int msecs );
-
+    bool open (OpenMode mode);
+    bool seek (qint64 pos);
     /**
-     *  returns content type of a stream
+     *  helper functions
      */
     QString contentType();
     void downloadFile();
 
 signals:
-    void readyRead();
+    void ready();
+    void error();
 
 protected:
     qint64 readData(char*, qint64);
     qint64 writeData(const char*, qint64);
 
 private:
-    //void downloadFile();
-    void fillBuffer();
     QUrl m_url;
     QString m_contentType;
     Downloader *m_downloader;

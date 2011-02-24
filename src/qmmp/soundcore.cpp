@@ -93,7 +93,7 @@ bool SoundCore::play(const QString &source, bool queue, qint64 offset)
     m_pendingSources.append(s);
     if(state() == Qmmp::Stopped)
         m_handler->dispatch(Qmmp::Buffering);
-    connect(s, SIGNAL(ready(InputSource *)), SLOT(enqueue(InputSource *)));
+    connect(s, SIGNAL(ready()), SLOT(enqueue()));
     bool ok = s->initialize();
     if(!ok)
     {
@@ -221,8 +221,15 @@ QString SoundCore::metaData(Qmmp::MetaData key)
     return m_handler->metaData(key);
 }
 
-bool SoundCore::enqueue(InputSource *s)
+bool SoundCore::enqueue()
 {
+    InputSource *s = qobject_cast<InputSource*>(sender());
+    if(!s)
+    {
+        qWarning("SoundCore: unknown signal source");
+        return false;
+    }
+
     m_pendingSources.removeAll(s);
     m_url = s->url();
     if(!m_engine)

@@ -49,7 +49,7 @@ public:
     bool isReady();
 
 signals:
-    void readyRead();
+    void ready();
 
 private:
     QMutex m_mutex;

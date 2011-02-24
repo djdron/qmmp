@@ -24,7 +24,7 @@
 MMSInputSource::MMSInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
     m_reader = new StreamReader(url, this);
-    connect(m_reader, SIGNAL(readyRead()),SLOT(open()));
+    connect(m_reader, SIGNAL(ready()),SLOT(ready()));
 }
 
 QIODevice *MMSInputSource::ioDevice()
@@ -48,8 +48,3 @@ QString  MMSInputSource::contentType() const
     return "audio/x-ms-wma";
 }
 
-void MMSInputSource::open()
-{
-    m_reader->open(QIODevice::ReadOnly);
-    emit(ready(this));
-}
