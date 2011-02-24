@@ -64,7 +64,7 @@ public:
     bool isReady();
 
 signals:
-    void readyRead();
+    void ready();
 
 private:
     qint64 readBuffer(char* data, qint64 maxlen);

@@ -325,7 +325,7 @@ void Downloader::checkBuffer()
             metaData.insert(Qmmp::URL, m_url);
             StateHandler::instance()->dispatch(metaData);
         }
-        emit readyRead();
+        emit ready();
     }
     else if (!m_ready)
     {

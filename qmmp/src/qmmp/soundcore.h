@@ -197,7 +197,7 @@ signals:
     void nextTrackRequest();
 
 private slots:
-    bool enqueue(InputSource *);
+    bool enqueue();
     void startPendingEngine();
     void updateVolume();
 

@@ -63,7 +63,7 @@ public:
      */
     const QString url() const;
     /*!
-     * Returns start position is ms;
+     * Returns start position in ms;
      */
     qint64 offset() const;
     /*!
@@ -93,9 +93,12 @@ public:
 signals:
     /*!
      * This signal is emitted when transport is ready for usage.
-     * @param s Pointer of this object.
      */
-    void ready(InputSource *s);
+    void ready();
+    /*!
+     * This signal is emitted after an error occurred.
+     */
+    void error();
 
 private:
     QString m_url;

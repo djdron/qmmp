@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,7 @@ StreamReader::StreamReader(const QString &name, QObject *parent)
         : QIODevice(parent)
 {
     m_downloader = new Downloader(this, name);
-    connect(m_downloader, SIGNAL(readyRead()), SIGNAL(readyRead()));
+    connect(m_downloader, SIGNAL(ready()), SIGNAL(ready()));
 }
 
 StreamReader::~StreamReader()
@@ -50,14 +50,10 @@ qint64 StreamReader::bytesToWrite () const
     return -1;
 }
 
-bool StreamReader::canReadLine () const
-{
-    return false;
-}
-
 void StreamReader::close ()
 {
     m_downloader->abort();
+    QIODevice::close();
 }
 
 bool StreamReader::isSequential () const
@@ -65,47 +61,18 @@ bool StreamReader::isSequential () const
     return true;
 }
 
-bool StreamReader::open ( OpenMode mode )
+bool StreamReader::open (OpenMode mode)
 {
     if (mode != QIODevice::ReadOnly)
         return false;
-    //downloadFile();
-    setOpenMode(QIODevice::ReadOnly);
-    if (m_downloader->isReady())
-        return true;
-    else
-        return false;
+    QIODevice::open(mode);
+    return m_downloader->isReady();
 }
 
-bool StreamReader::reset ()
+bool StreamReader::seek (qint64 pos)
 {
-    QIODevice::reset();
-    return true;
-}
-
-bool StreamReader::seek ( qint64 pos )
-{
-    QIODevice::seek(pos);
+    Q_UNUSED(pos);
     return false;
-}
-
-qint64 StreamReader::size () const
-{
-    return bytesAvailable ();
-}
-
-bool StreamReader::waitForBytesWritten (int msecs)
-{
-    Q_UNUSED(msecs);
-    //usleep(msecs*1000);
-    return true;
-}
-
-bool StreamReader::waitForReadyRead (int msecs)
-{
-    Q_UNUSED(msecs);
-    //usleep(msecs*1000);
-    return true;
 }
 
 qint64 StreamReader::readData(char* data, qint64 maxlen)
@@ -115,11 +82,10 @@ qint64 StreamReader::readData(char* data, qint64 maxlen)
 
 qint64 StreamReader::writeData(const char*, qint64)
 {
-    return 0;
+    return -1;
 }
 
 void StreamReader::downloadFile()
 {
     m_downloader->start();
 }
-
