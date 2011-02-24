@@ -1,14 +1,14 @@
 include(../../plugins.pri)
-HEADERS += downloader.h \
-    streamreader.h \
+HEADERS += \
     httpinputfactory.h \
     httpinputsource.h \
-    settingsdialog.h
-SOURCES += downloader.cpp \
-    streamreader.cpp \
+    settingsdialog.h \
+    httpstreamreader.h
+SOURCES += \
     httpinputfactory.cpp \
     httpinputsource.cpp \
-    settingsdialog.cpp
+    settingsdialog.cpp \
+    httpstreamreader.cpp
 win32:HEADERS += ../../../../src/qmmp/inputsource.h \
     ../../../../src/qmmp/inputsourcefactory.h
 TARGET = $$PLUGINS_PREFIX/Transports/http

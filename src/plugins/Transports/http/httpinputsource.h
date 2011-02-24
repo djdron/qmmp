@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,7 @@
 
 #include <qmmp/inputsource.h>
 
-class StreamReader;
+class HttpStreamReader;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -40,7 +40,7 @@ public:
     QString contentType() const;
 
 private:
-    StreamReader *m_reader;
+    HttpStreamReader *m_reader;
 
 };
 
