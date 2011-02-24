@@ -1800,12 +1800,12 @@
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="51"/>
+        <location filename="../textscroller.cpp" line="52"/>
         <source>Autoscroll Songname</source>
         <translation>Automatinis takelio slinkimas</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="120"/>
+        <location filename="../textscroller.cpp" line="122"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>
