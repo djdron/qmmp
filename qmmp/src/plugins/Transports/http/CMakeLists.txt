@@ -39,18 +39,16 @@ link_directories(${ENCA_LIBRARY_DIRS})
 ENDIF(USE_ENCA AND ENCA_FOUND)
 
 SET(libhttp_SRCS
-    streamreader.cpp
-    downloader.cpp
+    httpstreamreader.cpp
     httpinputfactory.cpp
     httpinputsource.cpp
     settingsdialog.cpp
 )
 
-SET(libhttp_MOC_HDRS    
-    downloader.h
+SET(libhttp_MOC_HDRS
     httpinputfactory.h
     httpinputsource.h
-    streamreader.h
+    httpstreamreader.h
     settingsdialog.h
 )
 

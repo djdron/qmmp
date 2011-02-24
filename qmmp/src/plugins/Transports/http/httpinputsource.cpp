@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,12 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "streamreader.h"
+#include "httpstreamreader.h"
 #include "httpinputsource.h"
 
 HTTPInputSource::HTTPInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
-    m_reader = new StreamReader(url, this);
+    m_reader = new HttpStreamReader(url, this);
     connect(m_reader, SIGNAL(ready()),SIGNAL(ready()));
 }
 

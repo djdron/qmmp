@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,11 +17,9 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
 #include <QApplication>
 #include <QStringList>
 #include <QDir>
-#include <QMap>
 #include <QSettings>
 #include <QTextCodec>
 #include <stdint.h>
@@ -29,13 +27,13 @@
 #include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
 #include <qmmp/statehandler.h>
-#include "downloader.h"
+#include "httpstreamreader.h"
 
 //curl callbacks
 static size_t curl_write_data(void *data, size_t size, size_t nmemb,
                               void *pointer)
 {
-    Downloader *dl = (Downloader *)pointer;
+    HttpStreamReader *dl = (HttpStreamReader *)pointer;
     dl->mutex()->lock ();
     size_t buf_start = dl->stream()->buf_fill;
     size_t data_size = size * nmemb;
@@ -51,7 +49,7 @@ static size_t curl_write_data(void *data, size_t size, size_t nmemb,
 static size_t curl_header(void *data, size_t size, size_t nmemb,
                           void *pointer)
 {
-    Downloader *dl = (Downloader *)pointer;
+    HttpStreamReader *dl = (HttpStreamReader *)pointer;
     dl->mutex()->lock ();
     size_t data_size = size * nmemb;
     if (data_size < 3)
@@ -65,12 +63,12 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
     str = str.trimmed ();
     if (str.left(4).contains("HTTP"))
     {
-        qDebug("Downloader: header received");
+        qDebug("HttpStreamReader: header received");
         //TODO open metadata socket
     }
     else if (str.left(4).contains("ICY"))
     {
-        qDebug("Downloader: shoutcast header received");
+        qDebug("HttpStreamReader: shoutcast header received");
         //dl->stream()->icy_meta_data = true;
     }
     else
@@ -78,7 +76,7 @@ static size_t curl_header(void *data, size_t size, size_t nmemb,
         QString key = str.left(str.indexOf(":")).trimmed().toLower();
         QString value = str.right(str.size() - str.indexOf(":") - 1).trimmed();
         dl->stream()->header.insert(key, value);
-        qDebug("Downloader: key=%s, value=%s",qPrintable(key),qPrintable(value));
+        qDebug("HttpStreamReader: key=%s, value=%s",qPrintable(key),qPrintable(value));
 
         if (key == "icy-metaint")
         {
@@ -96,7 +94,7 @@ int curl_progress(void *pointer, double dltotal, double dlnow, double ultotal, d
     Q_UNUSED(dlnow);
     Q_UNUSED(ultotal);
     Q_UNUSED(ulnow);
-    Downloader *dl = (Downloader *)pointer;
+    HttpStreamReader *dl = (HttpStreamReader *)pointer;
     dl->mutex()->lock ();
     bool aborted = dl->stream()->aborted;
     dl->mutex()->unlock();
@@ -105,8 +103,9 @@ int curl_progress(void *pointer, double dltotal, double dlnow, double ultotal, d
     return 0;
 }
 
-Downloader::Downloader(QObject *parent, const QString &url)
-        : QThread(parent)
+
+HttpStreamReader::HttpStreamReader(const QString &url, QObject *parent)
+        : QIODevice(parent)
 {
     m_url = url;
     curl_global_init(CURL_GLOBAL_ALL);
@@ -118,6 +117,7 @@ Downloader::Downloader(QObject *parent, const QString &url)
     m_handle = 0;
     m_metacount = 0;
     m_meta_sent = false;
+    m_thread = new DownloadThread(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("HTTP");
     m_codec = QTextCodec::codecForName(settings.value("icy_encoding","windows-1252").toByteArray ());
@@ -132,8 +132,7 @@ Downloader::Downloader(QObject *parent, const QString &url)
     settings.endGroup();
 }
 
-
-Downloader::~Downloader()
+HttpStreamReader::~HttpStreamReader()
 {
     abort();
     curl_global_cleanup();
@@ -149,8 +148,52 @@ Downloader::~Downloader()
 #endif
 }
 
+bool HttpStreamReader::atEnd () const
+{
+    return false;
+}
 
-qint64 Downloader::read(char* data, qint64 maxlen)
+qint64 HttpStreamReader::bytesToWrite () const
+{
+    return -1;
+}
+
+void HttpStreamReader::close ()
+{
+    abort();
+    QIODevice::close();
+}
+
+bool HttpStreamReader::isSequential () const
+{
+    return true;
+}
+
+bool HttpStreamReader::open (OpenMode mode)
+{
+    if (mode != QIODevice::ReadOnly)
+        return false;
+    QIODevice::open(mode);
+    return m_ready;
+}
+
+bool HttpStreamReader::seek (qint64 pos)
+{
+    Q_UNUSED(pos);
+    return false;
+}
+
+qint64 HttpStreamReader::writeData(const char*, qint64)
+{
+    return -1;
+}
+
+void HttpStreamReader::downloadFile()
+{
+    m_thread->start();
+}
+
+qint64 HttpStreamReader::readData(char* data, qint64 maxlen)
 {
 
     qint64 len = 0;
@@ -184,24 +227,24 @@ qint64 Downloader::read(char* data, qint64 maxlen)
     return len;
 }
 
-Stream *Downloader::stream()
+HttpStreamData *HttpStreamReader::stream()
 {
     return &m_stream;
 }
 
-QMutex *Downloader::mutex()
+QMutex *HttpStreamReader::mutex()
 {
     return &m_mutex;
 }
 
-QString Downloader::contentType()
+QString HttpStreamReader::contentType()
 {
     if (m_stream.header.contains("content-type"))
         return m_stream.header.value("content-type").toLower();
     return QString();
 }
 
-void Downloader::abort()
+void HttpStreamReader::abort()
 {
     m_mutex.lock();
 
@@ -212,7 +255,7 @@ void Downloader::abort()
     }
     m_stream.aborted = true;
     m_mutex.unlock();
-    wait();
+    m_thread->wait();
     if (m_handle)
     {
         curl_easy_cleanup(m_handle);
@@ -220,17 +263,14 @@ void Downloader::abort()
     }
 }
 
-qint64 Downloader::bytesAvailable()
+qint64 HttpStreamReader::bytesAvailable() const
 {
-    m_mutex.lock();
-    qint64 b = m_stream.buf_fill;
-    m_mutex.unlock();
-    return b;
+    return QIODevice::bytesAvailable() + m_stream.buf_fill;
 }
 
-void Downloader::run()
+void HttpStreamReader::run()
 {
-    qDebug("Downloader: starting download thread");
+    qDebug("HttpStreamReader: starting download thread");
     m_handle = curl_easy_init();
     //proxy
     if (QmmpSettings::instance()->isProxyEnabled())
@@ -288,14 +328,14 @@ void Downloader::run()
     m_stream.header.clear ();
     m_ready  = false;
     int return_code;
-    qDebug("Downloader: starting libcurl");
+    qDebug("HttpStreamReader: starting libcurl");
     m_mutex.unlock();
     return_code = curl_easy_perform(m_handle);
     qDebug("curl_easy_perform %d", return_code);
-    qDebug("Downloader: thread finished");
+    qDebug("HttpStreamReader: thread finished");
 }
 
-qint64 Downloader::readBuffer(char* data, qint64 maxlen)
+qint64 HttpStreamReader::readBuffer(char* data, qint64 maxlen)
 {
     if (m_stream.buf_fill > 0 && !m_stream.aborted)
     {
@@ -308,12 +348,12 @@ qint64 Downloader::readBuffer(char* data, qint64 maxlen)
     return 0;
 }
 
-void Downloader::checkBuffer()
+void HttpStreamReader::checkBuffer()
 {
     if (m_stream.buf_fill > m_buffer_size && !m_ready)
     {
         m_ready  = true;
-        qDebug("Downloader: ready");
+        qDebug("HttpStreamReader: ready");
         if(!m_meta_sent)
         {
             QMap<Qmmp::MetaData, QString> metaData;
@@ -334,12 +374,7 @@ void Downloader::checkBuffer()
     }
 }
 
-bool Downloader::isReady()
-{
-    return m_ready;
-}
-
-void Downloader::readICYMetaData()
+void HttpStreamReader::readICYMetaData()
 {
     uint8_t packet_size;
     m_metacount = 0;
@@ -349,21 +384,20 @@ void Downloader::readICYMetaData()
     {
         int size = packet_size * 16;
         char packet[size];
-        while (m_stream.buf_fill < size && isRunning())
+        while (m_stream.buf_fill < size && m_thread->isRunning())
         {
             m_mutex.unlock();
             qApp->processEvents();
             m_mutex.lock();
         }
         qint64 l = readBuffer(packet, size);
-        qDebug("Downloader: ICY metadata: %s", packet);
+        qDebug("HttpStreamReader: ICY metadata: %s", packet);
         parseICYMetaData(packet, l);
     }
     m_mutex.unlock();
-
 }
 
-void Downloader::parseICYMetaData(char *data, qint64 size)
+void HttpStreamReader::parseICYMetaData(char *data, qint64 size)
 {
     if(!size)
         return;
@@ -375,7 +409,7 @@ void Downloader::parseICYMetaData(char *data, qint64 size)
         if(encoding.charset != ENCA_CS_UNKNOWN)
         {
             codec = QTextCodec::codecForName(enca_charset_name(encoding.charset,ENCA_NAME_STYLE_ENCA));
-            qDebug("Downloader: detected charset: %s",
+            qDebug("HttpStreamReader: detected charset: %s",
                    enca_charset_name(encoding.charset,ENCA_NAME_STYLE_ENCA));
             if(!codec)
                 codec = m_codec;
@@ -411,4 +445,16 @@ void Downloader::parseICYMetaData(char *data, qint64 size)
             break;
         }
     }
+}
+
+DownloadThread::DownloadThread(HttpStreamReader *parent) : QThread(parent)
+{
+    m_parent = parent;
+}
+
+DownloadThread::~DownloadThread (){}
+
+void DownloadThread::run()
+{
+    m_parent->run();
 }
