@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,23 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
 #include <QApplication>
-#include <QStringList>
-#include <QDir>
-#include <QMap>
 #include <QSettings>
-#include <QTextCodec>
 #include <stdint.h>
 #include <stdlib.h>
-#include <qmmp/qmmpsettings.h>
 #include <qmmp/qmmp.h>
 #include <qmmp/statehandler.h>
-#include "downloader.h"
+#include "mmsstreamreader.h"
 
-Downloader::Downloader(QObject *parent, const QString &url)
-        : QThread(parent)
+MMSStreamReader::MMSStreamReader(const QString &url, QObject *parent)
+        : QIODevice(parent)
 {
+    qDebug("%s", Q_FUNC_INFO);
     m_url = url;
     m_handle = 0;
     m_aborted = false;
@@ -43,11 +38,12 @@ Downloader::Downloader(QObject *parent, const QString &url)
     m_buffer = (char *)malloc(m_buffer_size);
     m_ready = false;
     m_buffer_at = 0;
+    m_thread = new DownloadThread(this);
 }
 
-
-Downloader::~Downloader()
+MMSStreamReader::~MMSStreamReader()
 {
+    qDebug("%s", Q_FUNC_INFO);
     abort();
     free(m_buffer);
     m_buffer = 0;
@@ -55,24 +51,80 @@ Downloader::~Downloader()
     m_buffer_size = 0;
 }
 
-qint64 Downloader::read(char* data, qint64 maxlen)
+bool MMSStreamReader::atEnd () const
 {
+    qDebug("%s", Q_FUNC_INFO);
+    return false;
+}
+
+qint64 MMSStreamReader::bytesToWrite () const
+{
+    qDebug("%s", Q_FUNC_INFO);
+    return -1;
+}
+
+void MMSStreamReader::close ()
+{
+     qDebug("%s", Q_FUNC_INFO);
+    abort();
+    QIODevice::close();
+}
+
+bool MMSStreamReader::isSequential () const
+{
+     qDebug("%s", Q_FUNC_INFO);
+    return true;
+}
+
+bool MMSStreamReader::open (OpenMode mode)
+{
+     qDebug("%s", Q_FUNC_INFO);
+    if (mode != QIODevice::ReadOnly)
+        return false;
+    QIODevice::open(mode);
+    return m_ready;
+}
+
+bool MMSStreamReader::seek (qint64 pos)
+{
+     qDebug("%s", Q_FUNC_INFO);
+    Q_UNUSED(pos);
+    return false;
+}
+
+qint64 MMSStreamReader::writeData(const char*, qint64)
+{
+     qDebug("%s", Q_FUNC_INFO);
+    return -1;
+}
+
+qint64 MMSStreamReader::readData(char* data, qint64 maxlen)
+{
+     qDebug("%s", Q_FUNC_INFO);
     m_mutex.lock();
     qint64 len = qMin<qint64>(m_buffer_at, maxlen);
     memmove(data, m_buffer, len);
     m_buffer_at -= len;
     memmove(m_buffer, m_buffer + len, m_buffer_at);
     m_mutex.unlock();
+    qDebug("read=%lld", len);
     return len;
 }
 
-QMutex *Downloader::mutex()
+void MMSStreamReader::downloadFile()
+{
+     qDebug("%s", Q_FUNC_INFO);
+     m_thread->start();
+}
+
+QMutex *MMSStreamReader::mutex()
 {
     return &m_mutex;
 }
 
-void Downloader::abort()
+void MMSStreamReader::abort()
 {
+     qDebug("%s", Q_FUNC_INFO);
     m_mutex.lock();
     if (m_aborted)
     {
@@ -80,35 +132,34 @@ void Downloader::abort()
         return;
     }
     m_aborted = true;
-    m_ready = false;
     m_mutex.unlock();
-    wait();
+    m_thread->wait();
+    m_ready = false;
     if (m_handle)
         mmsx_close(m_handle);
     m_handle = 0;
 }
 
-qint64 Downloader::bytesAvailable()
+qint64 MMSStreamReader::bytesAvailable() const
 {
-    m_mutex.lock();
-    qint64 b = m_buffer_at;
-    m_mutex.unlock();
-    return b;
+    qDebug("+++%lld",QIODevice::bytesAvailable() + m_buffer_at);
+    return QIODevice::bytesAvailable() + m_buffer_at;
 }
 
-void Downloader::run()
+void MMSStreamReader::run()
 {
+     qDebug("%s", Q_FUNC_INFO);
     m_handle = mmsx_connect (0, 0, m_url.toLocal8Bit().constData(), 128 * 1024);
     if(!m_handle)
     {
-        qWarning("Downloader: connection failed");
+        qWarning("MMSStreamReader: connection failed");
         return;
     }
     m_mutex.lock();
     if(m_aborted)
     {
         m_mutex.unlock();
-        qDebug("Downloader: aborted");
+        qDebug("MMSStreamReader: aborted");
         return;
     }
     m_mutex.unlock();
@@ -125,7 +176,7 @@ void Downloader::run()
         len = mmsx_read (0, m_handle, m_buffer + m_buffer_at, to_read);
         if(len < 0)
         {
-            qWarning("Downloader: error: %s", strerror(len));
+            qWarning("MMSStreamReader: error: %s", strerror(len));
             m_mutex.unlock();
             break;
         }
@@ -139,12 +190,13 @@ void Downloader::run()
     }
 }
 
-void Downloader::checkBuffer()
+void MMSStreamReader::checkBuffer()
 {
+     qDebug("%s", Q_FUNC_INFO);
     if (m_buffer_at > m_prebuf_size && !m_ready)
     {
-        m_ready  = true;
-        qDebug("Downloader: ready");
+        m_ready = true;
+        qDebug("MMSStreamReader: ready");
         QMap<Qmmp::MetaData, QString> metaData;
         metaData.insert(Qmmp::URL, m_url);
         StateHandler::instance()->dispatch(metaData);
@@ -157,7 +209,14 @@ void Downloader::checkBuffer()
     }
 }
 
-bool Downloader::isReady()
+DownloadThread::DownloadThread(MMSStreamReader *parent) : QThread(parent)
 {
-    return m_ready;
+    m_parent = parent;
+}
+
+DownloadThread::~DownloadThread (){}
+
+void DownloadThread::run()
+{
+    m_parent->run();
 }

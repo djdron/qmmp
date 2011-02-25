@@ -107,7 +107,10 @@ bool DecoderFFmpeg::initialize()
     pd.buf_size = input()->peek((char*)buf, sizeof(buf) - AVPROBE_PADDING_SIZE);
     pd.buf = buf;
     if(pd.buf_size < 8192)
+    {
+        qWarning("DecoderFFmpeg: too small buffer size: %d bytes", pd.buf_size);
         return false;
+    }
     AVInputFormat *fmt = av_probe_input_format(&pd, 1);
     if(!fmt)
     {

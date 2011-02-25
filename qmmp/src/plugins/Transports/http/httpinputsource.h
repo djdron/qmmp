@@ -39,6 +39,9 @@ public:
     bool isReady();
     QString contentType() const;
 
+private slots:
+    void activate();
+
 private:
     HttpStreamReader *m_reader;
 

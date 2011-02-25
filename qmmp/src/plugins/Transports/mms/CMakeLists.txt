@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.4.7)
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
     cmake_policy(SET CMP0005 NEW)
-endif(COMMAND cmake_policy) 
+endif(COMMAND cmake_policy)
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -33,18 +33,16 @@ link_directories(${MMS_LIBRARY_DIRS})
 
 
 SET(libmms_SRCS
-    streamreader.cpp
-    downloader.cpp
+    mmsstreamreader.cpp
     mmsinputfactory.cpp
     mmsinputsource.cpp
     settingsdialog.cpp
 )
 
-SET(libmms_MOC_HDRS    
-    downloader.h
+SET(libmms_MOC_HDRS
     mmsinputfactory.h
     mmsinputsource.h
-    streamreader.h
+    mmsstreamreader.h
     settingsdialog.h
 )
 

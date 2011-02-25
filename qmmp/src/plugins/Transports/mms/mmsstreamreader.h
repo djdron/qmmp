@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,27 +17,31 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef STREAMREADER_H
-#define STREAMREADER_H
+#ifndef MMSSTREAMREADER_H
+#define MMSSTREAMREADER_H
 
 #include <QObject>
 #include <QIODevice>
 #include <QUrl>
+#include <QMutex>
+#include <QThread>
+#define this var
+#include <libmms/mmsx.h>
+#undef this
 
 class QFileInfo;
-
-class Downloader;
+class DownloadThread;
 
 /*! @internal
  *   @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class StreamReader : public QIODevice
+class MMSStreamReader : public QIODevice
 {
     Q_OBJECT
 public:
-    StreamReader(const QString &name, QObject *parent = 0);
+    MMSStreamReader(const QString &url, QObject *parent = 0);
 
-    ~StreamReader();
+    ~MMSStreamReader();
 
     /**
      *  QIODevice API
@@ -54,18 +58,41 @@ public:
      */
     void downloadFile();
 
+
+    QMutex *mutex();
+    void abort();
+    void checkBuffer();
+    void run();
+
 signals:
     void ready();
     void error();
 
-protected:
-    qint64 readData(char*, qint64);
-    qint64 writeData(const char*, qint64);
+private:
+    virtual qint64 readData(char*, qint64);
+    virtual qint64 writeData(const char*, qint64);
+
+    QMutex m_mutex;
+    QString m_url;
+    mmsx_t *m_handle;
+    bool m_aborted;
+    qint64 m_buffer_size, m_prebuf_size;
+    char *m_buffer;
+    qint64 m_buffer_at;
+    bool m_ready;
+    DownloadThread *m_thread;
+};
+
+class DownloadThread : public QThread
+{
+    Q_OBJECT
+public:
+    DownloadThread(MMSStreamReader *parent);
+    virtual ~DownloadThread ();
 
 private:
-    QUrl m_url;
-    QString m_contentType;
-    Downloader *m_downloader;
+    virtual void run();
+    MMSStreamReader *m_parent;
 };
 
 #endif

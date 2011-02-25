@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "streamreader.h"
+#include "mmsstreamreader.h"
 #include "mmsinputsource.h"
 
 MMSInputSource::MMSInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
-    m_reader = new StreamReader(url, this);
-    connect(m_reader, SIGNAL(ready()),SLOT(ready()));
+    m_reader = new MMSStreamReader(url, this);
+    connect(m_reader, SIGNAL(ready()),SLOT(activate()));
 }
 
 QIODevice *MMSInputSource::ioDevice()
@@ -48,3 +48,8 @@ QString  MMSInputSource::contentType() const
     return "audio/x-ms-wma";
 }
 
+void MMSInputSource::activate()
+{
+    m_reader->open(QIODevice::ReadOnly);
+    emit ready();
+}

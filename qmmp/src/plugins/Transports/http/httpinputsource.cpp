@@ -24,7 +24,7 @@
 HTTPInputSource::HTTPInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {
     m_reader = new HttpStreamReader(url, this);
-    connect(m_reader, SIGNAL(ready()),SIGNAL(ready()));
+    connect(m_reader, SIGNAL(ready()),SLOT(activate()));
 }
 
 QIODevice *HTTPInputSource::ioDevice()
@@ -43,8 +43,14 @@ bool HTTPInputSource::isReady()
     return m_reader->isOpen();
 }
 
-QString  HTTPInputSource::contentType() const
+QString HTTPInputSource::contentType() const
 {
     return m_reader->contentType();
+}
+
+void HTTPInputSource::activate()
+{
+    m_reader->open(QIODevice::ReadOnly);
+    emit ready();
 }
 
