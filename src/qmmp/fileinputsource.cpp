@@ -33,12 +33,8 @@ QIODevice *FileInputSource::ioDevice()
 
 bool FileInputSource::initialize()
 {
-    bool ok = m_file->open(QIODevice::ReadOnly);
-    if(ok)
-        emit ready();
-    else
-        qWarning("FileInputSource: error: %s", qPrintable(m_file->errorString()));
-    return ok;
+    emit ready();
+    return true;
 }
 
 bool FileInputSource::isReady()

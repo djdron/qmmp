@@ -183,32 +183,32 @@ void SoundCore::updateVolume()
 
 qint64 SoundCore::elapsed()
 {
-    return  m_handler->elapsed();
+    return m_handler->elapsed();
 }
 
 int SoundCore::bitrate()
 {
-    return  m_handler->bitrate();
+    return m_handler->bitrate();
 }
 
 quint32 SoundCore::frequency()
 {
-    return  m_handler->frequency();
+    return m_handler->frequency();
 }
 
 int SoundCore::precision() //TODO rename
 {
-    return  m_handler->precision();
+    return m_handler->precision();
 }
 
 int SoundCore::channels()
 {
-    return  m_handler->channels();
+    return m_handler->channels();
 }
 
 Qmmp::State SoundCore::state() const
 {
-    return  m_handler->state();
+    return m_handler->state();
 }
 
 QMap <Qmmp::MetaData, QString> SoundCore::metaData()
@@ -232,6 +232,20 @@ bool SoundCore::enqueue()
 
     m_pendingSources.removeAll(s);
     m_url = s->url();
+
+    if(s->ioDevice())
+    {
+        bool ok = s->ioDevice()->open(QIODevice::ReadOnly);
+        if(!ok)
+        {
+            qWarning("SoundCore: input error: %s", qPrintable(s->ioDevice()->errorString()));
+            m_url.clear();
+            s->deleteLater();
+            return false;
+        }
+    }
+
+
     if(!m_engine)
     {
         if((m_engine = AbstractEngine::create(s, this)))
