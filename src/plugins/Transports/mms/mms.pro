@@ -1,14 +1,14 @@
 include(../../plugins.pri)
-HEADERS += downloader.h \
-    streamreader.h \
+HEADERS += \
     mmsinputfactory.h \
     mmsinputsource.h \
-    settingsdialog.h
-SOURCES += downloader.cpp \
-    streamreader.cpp \
+    settingsdialog.h \
+    mmsstreamreader.h
+SOURCES += \
     mmsinputfactory.cpp \
     mmsinputsource.cpp \
-    settingsdialog.cpp
+    settingsdialog.cpp \
+    mmsstreamreader.cpp
 win32:HEADERS += ../../../../src/qmmp/inputsource.h \
     ../../../../src/qmmp/inputsourcefactory.h
 TARGET = $$PLUGINS_PREFIX/Transports/mms
