@@ -39,9 +39,6 @@ public:
     bool isReady();
     QString contentType() const;
 
-private slots:
-    void activate();
-
 private:
     MMSStreamReader *m_reader;
 
