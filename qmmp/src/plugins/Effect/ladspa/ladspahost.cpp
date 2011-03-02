@@ -539,7 +539,10 @@ void LADSPAHost::initialize(LADSPAEffect *instance)
             start = min * 0.5f + max * 0.5f;
 
         instance->knobs[k] = start;
-        c->type = LADSPAControl::SLIDER;
+        if(LADSPA_IS_PORT_OUTPUT(plugin->PortDescriptors[k]))
+            c->type = LADSPAControl::LABEL;
+        else
+            c->type = LADSPAControl::SLIDER;
         c->min = min;
         c->max = max;
         c->step = step;

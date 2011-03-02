@@ -51,13 +51,14 @@ public:
     enum Type
     {
         BUTTON = 0,
-        SLIDER
+        SLIDER,
+        LABEL
     };
     double min;
     double max;
     double step;
     LADSPA_Data *value;
-    bool type;
+    int type;
     QString name;
 };
 
