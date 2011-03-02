@@ -271,6 +271,7 @@ qint64 HttpStreamReader::bytesAvailable() const
 void HttpStreamReader::run()
 {
     qDebug("HttpStreamReader: starting download thread");
+    char errorBuffer[CURL_ERROR_SIZE];
     m_handle = curl_easy_init();
     //proxy
     if (QmmpSettings::instance()->isProxyEnabled())
@@ -316,6 +317,8 @@ void HttpStreamReader::run()
     QString user_agent = QString("qmmp/%1").arg(Qmmp::strVersion());
     curl_easy_setopt(m_handle, CURLOPT_USERAGENT, qPrintable(user_agent));
     curl_easy_setopt(m_handle, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
+    // error message
+    curl_easy_setopt(m_handle, CURLOPT_ERRORBUFFER, errorBuffer);
 
     struct curl_slist *http200_aliases = curl_slist_append(NULL, "ICY");
     struct curl_slist *http_headers = curl_slist_append(NULL, "Icy-MetaData: 1");
@@ -331,8 +334,12 @@ void HttpStreamReader::run()
     qDebug("HttpStreamReader: starting libcurl");
     m_mutex.unlock();
     return_code = curl_easy_perform(m_handle);
-    qDebug("curl_easy_perform %d", return_code);
-    qDebug("HttpStreamReader: thread finished");
+    qDebug("HttpStreamReader: curl thread finished with code %d (%s)", return_code, errorBuffer);
+    if(!m_stream.aborted && !m_ready)
+    {
+        setErrorString(errorBuffer);
+        emit error();
+    }
 }
 
 qint64 HttpStreamReader::readBuffer(char* data, qint64 maxlen)

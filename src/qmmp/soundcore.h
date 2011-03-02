@@ -204,11 +204,7 @@ private slots:
 private:
     Decoder* m_decoder;
     QString m_url;
-    uint m_error;
-    bool m_paused;
-    bool m_update;
-    bool m_block;
-    Visual *m_vis;
+    bool m_error;
     QList <Visual*> m_visuals;
     QWidget *m_parentWidget;
     static SoundCore* m_instance;

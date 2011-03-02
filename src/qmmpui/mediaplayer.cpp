@@ -62,6 +62,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
     m_noPlaylistAdvance = false;
     connect(m_core, SIGNAL(nextTrackRequest()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
+    connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
 }
 
 PlayListManager *MediaPlayer::playListManager()
@@ -103,7 +104,7 @@ void MediaPlayer::play(qint64 offset)
         return;
     }
 
-    if (!m_core->play(s, false, offset))
+    /*if (!m_core->play(s, false, offset))
     {
         //find out the reason why playback failed
         switch ((int) m_core->state())
@@ -139,7 +140,10 @@ void MediaPlayer::play(qint64 offset)
         }
     }
     else
-        m_skips = 0;
+        m_skips = 0;*/
+
+    m_core->play(s, false, offset);
+    m_skips = 0;
 }
 
 void MediaPlayer::stop()
@@ -244,4 +248,27 @@ void MediaPlayer::updateNextUrl()
     else
         qDebug("MediaPlayer: next track state: unknown");
 
+}
+
+void MediaPlayer::processState(Qmmp::State state)
+{
+    switch ((int) state)
+    {
+    case Qmmp::NormalError:
+        stop();
+        //playNext();
+        if (m_skips < MAX_SKIPS)
+        {
+            //stop();
+            //qWarning("MediaPlayer: skip limit exceeded");
+            playNext();
+            m_skips++;
+        }
+        break;
+    case Qmmp::FatalError:
+        stop();
+        break;
+    default:
+        m_skips = 0;
+    }
 }
