@@ -139,6 +139,8 @@ void MMSStreamReader::run()
     if(!m_handle)
     {
         qWarning("MMSStreamReader: connection failed");
+        setErrorString("connection failed");
+        emit error();
         return;
     }
     m_mutex.lock();
@@ -162,8 +164,13 @@ void MMSStreamReader::run()
         len = mmsx_read (0, m_handle, m_buffer + m_buffer_at, to_read);
         if(len < 0)
         {
-            qWarning("MMSStreamReader: error: %s", strerror(len));
             m_mutex.unlock();
+            qWarning("MMSStreamReader: mms thread funished with code %lld (%s)", len, strerror(len));
+            if(!m_aborted && !m_ready)
+            {
+                setErrorString(strerror(len));
+                emit error();
+            }
             break;
         }
         m_buffer_at += len;

@@ -109,6 +109,7 @@ signals:
 private slots:
     void playNext();
     void updateNextUrl();
+    void processState(Qmmp::State state);
 
 private:
     PlayListManager *m_pl_manager;

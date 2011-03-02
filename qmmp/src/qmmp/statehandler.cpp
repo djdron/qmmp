@@ -29,7 +29,7 @@
 StateHandler* StateHandler::m_instance = 0;
 
 StateHandler::StateHandler(QObject *parent)
-        : QObject(parent)
+        : QObject(parent), m_mutex(QMutex::Recursive)
 {
     if (!m_instance)
         m_instance = this;
@@ -42,6 +42,7 @@ StateHandler::StateHandler(QObject *parent)
     m_state = Qmmp::Stopped;
     m_next_engine = 0;
     m_current_engine = 0;
+    //m_mutex = QMutex(QMutex::Recursive);
 }
 
 

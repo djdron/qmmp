@@ -41,10 +41,7 @@ SoundCore::SoundCore(QObject *parent)
 {
     m_instance = this;
     m_decoder = 0;
-    m_paused = false;
-    m_update = false;
-    m_block = false;
-    m_vis = 0;
+    m_error = false;
     m_parentWidget = 0;
     m_engine = 0;
     m_pendingEngine = 0;
@@ -94,6 +91,7 @@ bool SoundCore::play(const QString &source, bool queue, qint64 offset)
     if(state() == Qmmp::Stopped)
         m_handler->dispatch(Qmmp::Buffering);
     connect(s, SIGNAL(ready()), SLOT(enqueue()));
+    connect(s, SIGNAL(error()), SLOT(enqueue()));
     bool ok = s->initialize();
     if(!ok)
     {
@@ -241,10 +239,15 @@ bool SoundCore::enqueue()
             qWarning("SoundCore: input error: %s", qPrintable(s->ioDevice()->errorString()));
             m_url.clear();
             s->deleteLater();
+            if(state() == Qmmp::Stopped || state() == Qmmp::Buffering)
+            {
+                m_handler->dispatch(Qmmp::NormalError);
+            }
+            else
+                m_error = true;
             return false;
         }
     }
-
 
     if(!m_engine)
     {
@@ -259,6 +262,7 @@ bool SoundCore::enqueue()
         {
             s->deleteLater();
             m_handler->setCurrentEngine(0);
+            m_handler->dispatch(Qmmp::NormalError);
             return false;
         }
     }
@@ -278,6 +282,10 @@ bool SoundCore::enqueue()
         {
             s->deleteLater();
             m_handler->setCurrentEngine(0);
+            if(state() == Qmmp::Stopped || state() == Qmmp::Buffering)
+                m_handler->dispatch(Qmmp::NormalError);
+            else
+                m_error = true;
             return false;
         }
         connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
@@ -310,6 +318,11 @@ void SoundCore::startPendingEngine()
         m_pendingEngine = 0;
         m_engine->play();
         m_handler->setCurrentEngine(m_engine);
+    }
+    else if(state() == Qmmp::Stopped && m_error)
+    {
+        m_error = false;
+        m_handler->dispatch(Qmmp::NormalError);
     }
 }
 
