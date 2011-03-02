@@ -57,7 +57,7 @@
         <translation>Název</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="118"/>
+        <location filename="../settingsdialog.cpp" line="126"/>
         <source>This LADSPA plugin has no user controls</source>
         <translation>Tento modul LADSPA nemá uživatelské ovládání</translation>
     </message>
