@@ -98,6 +98,7 @@ void SettingsDialog::on_configureButton_clicked()
     QFormLayout *formLayout = new QFormLayout(dialog);
     LADSPAButton *button = 0;
     LADSPASlider *slider = 0;
+    QLabel *label = 0;
 
     foreach(LADSPAControl *c, effect->controls)
     {
@@ -111,6 +112,13 @@ void SettingsDialog::on_configureButton_clicked()
         case LADSPAControl::SLIDER:
             slider = new LADSPASlider(c->min, c->max, c->step, c->value, dialog);
             formLayout->addRow(c->name, slider);
+            break;
+        case LADSPAControl::LABEL:
+            label = new QLabel(this);
+            label->setText(QString("%1").arg(*c->value));
+            label->setFrameStyle(QFrame::StyledPanel);
+            label->setFrameShadow(QFrame::Sunken);
+            formLayout->addRow(c->name, label);
         }
     }
     if (effect->controls.isEmpty())
