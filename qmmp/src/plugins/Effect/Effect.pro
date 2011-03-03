@@ -1,7 +1,7 @@
 include (../../../qmmp.pri)
 TEMPLATE = subdirs
 
-SUBDIRS += srconverter crossfade
+SUBDIRS += srconverter crossfade stereo
 contains(CONFIG, BS2B_PLUGIN){
 message(***********************)
 message(* BS2B plugin enabled *)
