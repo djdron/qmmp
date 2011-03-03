@@ -30,7 +30,7 @@
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="103"/>
-        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>

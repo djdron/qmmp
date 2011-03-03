@@ -48,7 +48,7 @@ void VisualAnalyzerFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Analyzer Visual Plugin"),
                         tr("Qmmp Analyzer Visual Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *VisualAnalyzerFactory::createTranslator(QObject *parent)

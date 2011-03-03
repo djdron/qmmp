@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../outputossfactory.cpp" line="58"/>
-        <source>Writen by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
+        <source>Written by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
         <translation>Autore: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</translation>
     </message>
     <message>

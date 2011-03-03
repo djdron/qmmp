@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../outputnullfactory.cpp" line="56"/>
-        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>

@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="56"/>
-        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>

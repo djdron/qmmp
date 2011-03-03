@@ -100,7 +100,7 @@ void DecoderWildMidiFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About WildMidi Audio Plugin"),
                         tr("Qmmp WildMidi Audio Plugin")+"\n"+
                         tr("This plugin uses WildMidi library to play midi files")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderWildMidiFactory::createTranslator(QObject *parent)

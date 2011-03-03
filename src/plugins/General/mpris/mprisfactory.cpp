@@ -48,7 +48,7 @@ void MPRISFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About MPRIS Plugin"),
                         tr("Qmmp MPRIS Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *MPRISFactory::createTranslator(QObject *parent)

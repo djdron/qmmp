@@ -223,7 +223,7 @@ void DecoderMADFactory::showAbout(QWidget *parent)
                         QString("%1.%2.%3%4").arg(MAD_VERSION_MAJOR)
                         .arg(MAD_VERSION_MINOR)
                         .arg(MAD_VERSION_PATCH).arg(MAD_VERSION_EXTRA)+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Source code based on mq3 progect")
                        );
 }

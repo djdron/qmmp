@@ -50,7 +50,7 @@ void HalFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About HAL Plugin"),
                         tr("Qmmp HAL Plugin") + "\n" +
                         tr("This plugin provides removable devices detection using HAL") + "\n" +
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
                         tr("Based on Solid (KDE hardware library)"));
 }
 

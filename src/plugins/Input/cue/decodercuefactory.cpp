@@ -94,7 +94,7 @@ void DecoderCUEFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About CUE Audio Plugin"),
                         tr("Qmmp CUE Audio Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderCUEFactory::createTranslator(QObject *parent)

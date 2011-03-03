@@ -171,7 +171,7 @@ void DecoderFLACFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About FLAC Audio Plugin"),
                         tr("Qmmp FLAC Audio Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderFLACFactory::createTranslator(QObject *parent)

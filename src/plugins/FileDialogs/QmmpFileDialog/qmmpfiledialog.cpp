@@ -128,7 +128,7 @@ void QmmpFileDialogFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Qmmp File Dialog"),
                         tr("Qmmp File Dialog")+"\n"+
-                        tr("Writen by:\n"
+                        tr("Written by:\n"
                            "Vladimir Kuznetsov <vovanec@gmail.com>\n"
                            "Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Some code is copied from the Qt library"));

@@ -48,7 +48,7 @@ void CoverManagerFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Cover Manager Plugin"),
                         tr("Qmmp Cover Manager Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *CoverManagerFactory::createTranslator(QObject *parent)

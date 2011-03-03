@@ -49,7 +49,7 @@ void NotifierFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Notifier Plugin"),
                         tr("Qmmp Notifier Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *NotifierFactory::createTranslator(QObject *parent)

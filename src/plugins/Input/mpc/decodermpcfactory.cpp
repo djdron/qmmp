@@ -108,7 +108,7 @@ void DecoderMPCFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Musepack Audio Plugin"),
                         tr("Qmmp Musepack Audio Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderMPCFactory::createTranslator(QObject *parent)

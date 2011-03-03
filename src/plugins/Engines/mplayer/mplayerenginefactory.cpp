@@ -82,7 +82,7 @@ void MplayerEngineFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About MPlayer Plugin"),
                         tr("Qmmp MPlayer Plugin")+"\n"+
                         tr("This plugin uses MPlayer as backend")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *MplayerEngineFactory::createTranslator(QObject *parent)

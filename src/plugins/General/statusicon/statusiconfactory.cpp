@@ -49,7 +49,7 @@ void StatusIconFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Status Icon Plugin"),
                         tr("Qmmp Status Icon Plugin")+"\n"+
-                        tr("Writen by:") + "\n"+
+                        tr("Written by:") + "\n"+
                         tr("Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Artur Guzik <a.guzik88@gmail.com>"));
 }

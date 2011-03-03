@@ -50,7 +50,7 @@ void HotkeyFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About Global Hotkey Plugin"),
                         tr("Qmmp Global Hotkey Plugin")+"\n"+
                         tr("This plugin adds support for multimedia keys or global key combinations")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *HotkeyFactory::createTranslator(QObject *parent)

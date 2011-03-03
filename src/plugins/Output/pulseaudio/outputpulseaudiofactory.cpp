@@ -53,7 +53,7 @@ void OutputPulseAudioFactory::showAbout(QWidget *parent)
 {
    QMessageBox::about (parent, tr("About PulseAudio Output Plugin"),
                         tr("Qmmp PulseAudio Output Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *OutputPulseAudioFactory::createTranslator(QObject *parent)
