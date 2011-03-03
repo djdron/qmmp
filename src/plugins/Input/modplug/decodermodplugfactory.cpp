@@ -126,7 +126,7 @@ void DecoderModPlugFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About ModPlug Audio Plugin"),
                         tr("Qmmp ModPlug Audio Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Based on the Modplug Plugin for Xmms")+"\n"+
                         tr("Modplug Plugin developers:")+"\n"+
                         tr("Olivier Lapicque <olivierl@jps.net>")+"\n"+

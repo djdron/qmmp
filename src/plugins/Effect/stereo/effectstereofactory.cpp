@@ -49,7 +49,7 @@ void EffectStereoFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Extra Stereo Plugin"),
                         tr("Qmmp Extra Stereo Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Based on the Extra Stereo Plugin for Xmms by Johan Levin"));
 }
 
