@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../effectstereofactory.cpp" line="52"/>
-        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -33,8 +33,8 @@
     <name>SettingsDialog</name>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
-        <source>BS2B Plugin Settings</source>
-        <translation>Nastavení modulu BS2B</translation>
+        <source>Extra Stereo Plugin Settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="31"/>
