@@ -117,7 +117,7 @@ void DecoderGmeFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About GME Audio Plugin"),
                         tr("Qmmp GME Audio Plugin")+"\n"+
                         tr("This plugin uses Game_Music_Emu library to play game music files")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderGmeFactory::createTranslator(QObject *parent)

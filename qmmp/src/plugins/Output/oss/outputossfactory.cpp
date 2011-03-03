@@ -55,7 +55,7 @@ void OutputOSSFactory::showAbout(QWidget *parent)
 {
 QMessageBox::about (parent, tr("About OSS Output Plugin"),
                         tr("Qmmp OSS Output Plugin")+"\n"+
-                        tr("Writen by: Yuriy Zhuravlev <slalkerg@gmail.com>")+"\n"+
+                        tr("Written by: Yuriy Zhuravlev <slalkerg@gmail.com>")+"\n"+
                         tr("Based on code by: Brad Hughes <bhughes@trolltech.com>"));
 }
 

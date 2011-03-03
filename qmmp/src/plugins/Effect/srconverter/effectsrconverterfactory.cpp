@@ -50,7 +50,7 @@ void EffectSRConverterFactory::showAbout(QWidget *parent)
 {
      QMessageBox::about (parent, tr("About Sample Rate Converter Plugin"),
                         tr("Qmmp Sample Rate Converter Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *EffectSRConverterFactory::createTranslator(QObject *parent) 

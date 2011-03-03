@@ -49,7 +49,7 @@ void ScrobblerFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Scrobbler Plugin"),
                         tr("Qmmp AudioScrobbler Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *ScrobblerFactory::createTranslator(QObject *parent)

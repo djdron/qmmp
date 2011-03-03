@@ -154,7 +154,7 @@ void DecoderWavPackFactory::showAbout(QWidget *parent)
                         tr("Qmmp WavPack Audio Plugin")+"\n"+
                         tr("WavPack library version:") +
                         QString(" %1").arg(WavpackGetLibraryVersionString ())+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderWavPackFactory::createTranslator(QObject *parent)

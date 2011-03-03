@@ -49,7 +49,7 @@ void FileOpsFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About File Operations Plugin"),
                         tr("Qmmp File Operations Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *FileOpsFactory::createTranslator(QObject *parent)

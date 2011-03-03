@@ -54,7 +54,7 @@ void HTTPInputFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About HTTP Transport Plugin"),
                         tr("Qmmp HTTP Transport Plugin")+"\n"+
                         tr("Compiled against libcurl-%1").arg(LIBCURL_VERSION) + "\n" +
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *HTTPInputFactory::createTranslator(QObject *parent)

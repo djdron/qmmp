@@ -86,7 +86,7 @@ void DecoderAACFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About AAC Audio Plugin"),
                         tr("Qmmp AAC Audio Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderAACFactory::createTranslator(QObject *parent)

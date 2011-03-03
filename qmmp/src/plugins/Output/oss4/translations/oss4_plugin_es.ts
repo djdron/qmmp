@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../outputoss4factory.cpp" line="58"/>
-        <source>Writen by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

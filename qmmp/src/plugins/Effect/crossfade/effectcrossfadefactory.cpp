@@ -50,7 +50,7 @@ void EffectCrossfadeFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Crossfade Plugin"),
                        tr("Qmmp Crossfade Plugin")+"\n"+
-                       tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                       tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *EffectCrossfadeFactory::createTranslator(QObject *parent)

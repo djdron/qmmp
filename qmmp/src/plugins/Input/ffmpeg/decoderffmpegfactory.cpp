@@ -186,7 +186,7 @@ void DecoderFFmpegFactory::showAbout(QWidget *parent)
                         .arg(LIBAVCODEC_VERSION_MINOR)
                         .arg(LIBAVCODEC_VERSION_MICRO)+"\n"+
 #endif
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *DecoderFFmpegFactory::createTranslator(QObject *parent)

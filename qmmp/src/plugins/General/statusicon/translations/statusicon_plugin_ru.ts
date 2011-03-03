@@ -127,7 +127,7 @@
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
-        <source>Writen by:</source>
+        <source>Written by:</source>
         <translation>Разработчики:</translation>
     </message>
     <message>

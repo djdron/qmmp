@@ -50,7 +50,7 @@ void UDisksFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About UDisks Plugin"),
                         tr("Qmmp UDisks Plugin") + "\n" +
                         tr("This plugin provides removable devices detection using UDisks") + "\n" +
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *UDisksFactory::createTranslator(QObject *parent)

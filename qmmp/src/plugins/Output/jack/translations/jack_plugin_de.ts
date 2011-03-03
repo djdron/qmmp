@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../outputjackfactory.cpp" line="55"/>
-        <source>Writen by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
+        <source>Written by: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</source>
         <translation>Autor: Yuriy Zhuravlev &lt;slalkerg@gmail.com&gt;</translation>
     </message>
 </context>

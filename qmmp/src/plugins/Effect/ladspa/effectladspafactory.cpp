@@ -49,7 +49,7 @@ void EffectLADSPAFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About LADSPA Host for Qmmp"),
                         tr("LADSPA Host for Qmmp")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
                         tr("Based on the LADSPA Host for BMP")+"\n"+
                         tr("BMP-ladspa developers:")+"\n"+
                         tr("Nick Lamb <njl195@zepler.org.uk>")+"\n"+

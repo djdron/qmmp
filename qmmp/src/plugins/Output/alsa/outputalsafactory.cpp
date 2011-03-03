@@ -55,7 +55,7 @@ void OutputALSAFactory::showAbout(QWidget *parent)
 {
    QMessageBox::about (parent, tr("About ALSA Output Plugin"),
                         tr("Qmmp ALSA Output Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *OutputALSAFactory::createTranslator(QObject *parent)

@@ -53,7 +53,7 @@ void MMSInputFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About MMS Transport Plugin"),
                         tr("Qmmp MMS Transport Plugin")+"\n"+
-                        tr("Writen by: Ilya Kotov <forkotov02@hotmail.ru>"));
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *MMSInputFactory::createTranslator(QObject *parent)

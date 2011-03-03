@@ -52,7 +52,7 @@ void OutputJACKFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about (parent, tr("About Jack Output Plugin"),
                         tr("Qmmp Jack Output Plugin")+"\n"+
-                        tr("Writen by: Yuriy Zhuravlev <slalkerg@gmail.com>"));
+                        tr("Written by: Yuriy Zhuravlev <slalkerg@gmail.com>"));
 }
 
 QTranslator *OutputJACKFactory::createTranslator(QObject *parent)
