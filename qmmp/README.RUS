@@ -20,6 +20,7 @@ Qmmp - Qt-based multimedia player
 - эффект BS2B
 - передискретизация
 - эффекты LADSPA
+- расширение стереобазы
 
 Визуальные эффекты:
 - визуализация projectM
@@ -102,7 +103,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_MAD, USE_FLAC, USE_VORBIS, USE_MPC, USE_MODPLUG, USE_SNDFILE, USE_WAVPACK, USE_FFMPEG, USE_AAC, USE_CUE,
   USE_MPLAYER, USE_CDA, USE_MIDI, USE_GME (декодеры);
 - USE_ALSA, USE_OSS, USE_JACK, USE_PULSE, USE_NULL, USE_OSS4, USE_WAVEOUT (модули  вывода);
-- USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE (эффекты);
+- USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
   USE_KDENOTIFY, USE_UDISKS (модули общего назначения);
