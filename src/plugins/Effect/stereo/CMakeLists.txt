@@ -1,4 +1,4 @@
-project(libbs2b)
+project(libstereo)
 
 cmake_minimum_required(VERSION 2.4.7)
 
@@ -25,44 +25,37 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-SET(libbs2b_SRCS
-    bs2bplugin.cpp
+SET(libstereo_SRCS
+    stereoplugin.cpp
     settingsdialog.cpp
-    effectbs2bfactory.cpp
+    effectstereofactory.cpp
 )
 
-SET(libbs2b_MOC_HDRS
-    bs2bplugin.h
+SET(libstereo_MOC_HDRS
+    stereoplugin.h
     settingsdialog.h
-    effectbs2bfactory.h
+    effectstereofactory.h
 )
 
-SET(libbs2b_RCCS translations/translations.qrc)
+SET(libstereo_RCCS translations/translations.qrc)
 
-QT4_ADD_RESOURCES(libbs2b_RCC_SRCS ${libbs2b_RCCS})
+QT4_ADD_RESOURCES(libstereo_RCC_SRCS ${libstereo_RCCS})
 
-QT4_WRAP_CPP(libbs2b_MOC_SRCS ${libbs2b_MOC_HDRS})
-
-pkg_search_module(BS2B libbs2b>=3.0.0)
-
-include_directories(${BS2B_INCLUDE_DIRS})
-link_directories(${BS2B_LIBRARY_DIRS})
+QT4_WRAP_CPP(libstereo_MOC_SRCS ${libstereo_MOC_HDRS})
 
 # user interface
 
-SET(libbs2b_UIS
+SET(libstereo_UIS
     settingsdialog.ui
 )
 
-QT4_WRAP_UI(libbs2b_UIS_H ${libbs2b_UIS})
+QT4_WRAP_UI(libstereo_UIS_H ${libstereo_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-IF(BS2B_FOUND)
-ADD_LIBRARY(bs2b MODULE ${libbs2b_SRCS} ${libbs2b_MOC_SRCS} ${libbs2b_UIS_H}
-  ${libbs2b_RCC_SRCS})
-add_dependencies(bs2b qmmp)
-target_link_libraries(bs2b ${QT_LIBRARIES} -lqmmp ${BS2B_LDFLAGS} ${BS2B_CFLAGS})
-install(TARGETS bs2b DESTINATION ${LIB_DIR}/qmmp/Effect)
-ENDIF(BS2B_FOUND)
+
+ADD_LIBRARY(stereo MODULE ${libstereo_SRCS} ${libstereo_MOC_SRCS} ${libstereo_UIS_H} ${libstereo_RCC_SRCS})
+add_dependencies(stereo qmmp)
+target_link_libraries(stereo ${QT_LIBRARIES} -lqmmp)
+install(TARGETS stereo DESTINATION ${LIB_DIR}/qmmp/Effect)
