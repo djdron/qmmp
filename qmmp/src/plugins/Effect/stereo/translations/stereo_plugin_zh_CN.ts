@@ -47,7 +47,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="58"/>
+        <location filename="../settingsdialog.cpp" line="57"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
