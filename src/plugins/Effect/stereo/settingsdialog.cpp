@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QSettings>
-#include <bs2b/bs2b.h>
 #include <qmmp/qmmp.h>
 #include "stereoplugin.h"
 #include "settingsdialog.h"
