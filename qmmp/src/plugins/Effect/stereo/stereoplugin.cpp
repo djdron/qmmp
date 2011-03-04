@@ -31,6 +31,7 @@ StereoPlugin *StereoPlugin::m_instance = 0;
 StereoPlugin::StereoPlugin() : Effect()
 {
     m_instance = this;
+    m_format = Qmmp::PCM_S16LE;
     m_avg = 0;
     m_ldiff = 0;
     m_rdiff = 0;
@@ -52,17 +53,35 @@ void StereoPlugin::applyEffect(Buffer *b)
         return;
 
     m_mutex.lock();
-    short *data = (short *)b->data;
-    for (uint i = 0; i < b->nbytes >> 1; i += 2)
+    if(m_format == Qmmp::PCM_S16LE)
     {
-        m_avg = (data[i] + data[i + 1]) / 2;
-        m_ldiff = data[i] - m_avg;
-        m_rdiff = data[i + 1] - m_avg;
+        short *data = (short *)b->data;
+        for (uint i = 0; i < b->nbytes >> 1; i += 2)
+        {
+            m_avg = (data[i] + data[i + 1]) / 2;
+            m_ldiff = data[i] - m_avg;
+            m_rdiff = data[i + 1] - m_avg;
 
-        m_tmp = m_avg + m_ldiff * m_mul;
-        data[i] = qBound(-32768.0, m_tmp, 32767.0);
-        m_tmp = m_avg + m_rdiff * m_mul;
-        data[i + 1] = qBound(-32768.0, m_tmp, 32767.0);
+            m_tmp = m_avg + m_ldiff * m_mul;
+            data[i] = qBound(-32768.0, m_tmp, 32767.0);
+            m_tmp = m_avg + m_rdiff * m_mul;
+            data[i + 1] = qBound(-32768.0, m_tmp, 32767.0);
+        }
+    }
+    else if(m_format == Qmmp::PCM_S24LE || m_format == Qmmp::PCM_S32LE)
+    {
+        int *data = (int *)b->data;
+        for (uint i = 0; i < b->nbytes >> 2; i += 2)
+        {
+            m_avg = (data[i] + data[i + 1]) / 2;
+            m_ldiff = data[i] - m_avg;
+            m_rdiff = data[i + 1] - m_avg;
+
+            m_tmp = m_avg + m_ldiff * m_mul;
+            data[i] = m_tmp;
+            m_tmp = m_avg + m_rdiff * m_mul;
+            data[i + 1] = m_tmp;
+        }
     }
     m_mutex.unlock();
 }
@@ -70,6 +89,7 @@ void StereoPlugin::applyEffect(Buffer *b)
 void StereoPlugin::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     m_chan = chan;
+    m_format = format;
     Effect::configure(freq, chan, format);
 }
 

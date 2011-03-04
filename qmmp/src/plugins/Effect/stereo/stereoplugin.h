@@ -42,6 +42,7 @@ private:
     int m_chan;
     QMutex m_mutex;
     double m_avg, m_ldiff, m_rdiff, m_tmp, m_mul;
+    int m_format;
     static StereoPlugin *m_instance;
 };
 
