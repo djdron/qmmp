@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -43,7 +43,7 @@ PlayListSelector::PlayListSelector(PlayListManager *manager, QWidget *parent) : 
     m_skin = Skin::instance();
     m_pl_manager = manager;
     connect(m_pl_manager, SIGNAL(playListsChanged()), SLOT(updateTabs()));
-    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));    
+    connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     loadColors();
     readSettings();
     updateTabs();
@@ -213,7 +213,7 @@ void PlayListSelector::mouseMoveEvent(QMouseEvent *e)
     int dest = -1;
     for(int i = 0; i < m_rects.count(); ++i)
     {
-        if(m_rects.at(i).contains(mp))
+        if(mp.x() >= m_rects.at(i).x() && mp.x() <= m_rects.at(i).x() + m_rects.at(i).width())
         {
             dest = i;
             break;
