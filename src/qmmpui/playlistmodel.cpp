@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright(C) 2006-2010 by Ilya Kotov                                  *
+ *   Copyright(C) 2006-2011 by Ilya Kotov                                  *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -285,6 +285,8 @@ QStringList PlayListModel::getTimes(int b,int l)
         else
             str += QString("%1").arg(d%3600/60);
         str += QString(":%1").arg(d%60, 2, 10, QChar('0'));
+        if(!d)
+            str.clear();
         m_times << str;
         str.clear();
     }

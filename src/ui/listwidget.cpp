@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -44,6 +44,8 @@ ListWidget::ListWidget(QWidget *parent)
     m_update = false;
     m_skin = Skin::instance();
     m_popupWidget = 0;
+    m_metrics = 0;
+    m_extra_metrics = 0;
     loadColors();
     m_menu = new QMenu(this);
     m_scroll_direction = NONE;
@@ -66,12 +68,19 @@ ListWidget::ListWidget(QWidget *parent)
 
 
 ListWidget::~ListWidget()
-{}
+{
+    if(m_metrics)
+        delete m_metrics;
+    if(m_extra_metrics)
+        delete m_extra_metrics;
+}
 
 void ListWidget::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
+    m_extra_font = m_font;
+    m_extra_font.setPointSize(m_font.pointSize() - 1);
     m_show_protocol = settings.value ("PlayList/show_protocol", false).toBool();
     m_show_number = settings.value ("PlayList/show_numbers", true).toBool();
     m_show_anchor = settings.value("PlayList/show_anchor", false).toBool();
@@ -80,7 +89,9 @@ void ListWidget::readSettings()
     if (m_update)
     {
         delete m_metrics;
+        delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
+        m_extra_metrics = new QFontMetrics(m_extra_font);
         m_rows = height() / (m_metrics->lineSpacing() + 2);
         updateList();
         if(m_popupWidget)
@@ -93,6 +104,7 @@ void ListWidget::readSettings()
     {
         m_update = true;
         m_metrics = new QFontMetrics(m_font);
+        m_extra_metrics = new QFontMetrics(m_extra_font);
     }
     if(show_popup)
         m_popupWidget = new PlayListPopup::PopupWidget(this);
@@ -112,7 +124,7 @@ void ListWidget::paintEvent(QPaintEvent *)
     m_painter.setFont(m_font);
     m_painter.setBrush(QBrush(m_normal_bg));
     m_painter.drawRect(-1,-1,width()+1,height()+1);
-    int font_y = 0, old_size = 0;
+    int font_y = 0;
 
     for (int i = 0; i < m_titles.size(); ++i )
     {
@@ -145,15 +157,15 @@ void ListWidget::paintEvent(QPaintEvent *)
         QString extra_string = getExtraString(m_first + i);
         if(!extra_string.isEmpty())
         {
-            old_size = m_font.pointSize();
-            m_font.setPointSize(old_size - 1);
-            m_painter.setFont(m_font);
+            m_painter.setFont(m_extra_font);
 
-            m_painter.drawText(width() - 10 - m_metrics->width(extra_string) -
-                               m_metrics->width(m_times.at(i)), font_y, extra_string);
-            m_font.setPointSize(old_size);
+            if(m_times.at(i).isEmpty())
+                m_painter.drawText(width() - 7 - m_extra_metrics->width(extra_string),
+                                   font_y, extra_string);
+            else
+                m_painter.drawText(width() - 10 - m_extra_metrics->width(extra_string) -
+                                   m_metrics->width(m_times.at(i)), font_y, extra_string);
             m_painter.setFont(m_font);
-            m_painter.setBrush(QBrush(m_normal_bg));
         }
         m_painter.drawText(width() - 7 - m_metrics->width(m_times.at(i)), font_y, m_times.at(i));
     }
