@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -134,11 +134,11 @@ private:
     QList <QString> m_titles;
     QList <QString> m_times;
     PlayList *m_pl;
-    QFont m_font;
+    QFont m_font, m_extra_font;
     QFontMetrics *m_metrics;
+    QFontMetrics *m_extra_metrics;
     Skin *m_skin;
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
-    //QPen m_anchor_pen_normal,m_anchor_pen_selected;
     int m_anchor_row;
 
     enum ScrollDirection
