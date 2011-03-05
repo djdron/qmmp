@@ -14,13 +14,15 @@ Qmmp - Qt-based multimedia player
 - CD Audio
 - WMA, Monkey's Audio (и др. форматы библиотеки FFmpeg)
 - PCM WAVE (и др. форматы библиотеки libsndfile)
-- Midi
+- midi
+- форматы звука игровых конслей (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ, VTX)
 
 Аудио-эффекты:
 - эффект BS2B
 - передискретизация
 - эффекты LADSPA
 - расширение стереобазы
+- плавный переход между треками (экспериментальный)
 
 Визуальные эффекты:
 - визуализация projectM
@@ -37,11 +39,11 @@ Qmmp - Qt-based multimedia player
 - поддержка обложек Xmms и Winamp 2.x
 - 10-полосный эквалайзер
 - поддержка потоков MP3, Vorbis, AAC, AAC+
-- поддержка протокола MMS (экспериментальная)
-- MPRIS
+- поддержка протокола MMS
+- MPRIS (1.0 и 2.0)
 - автоопределение съёмных устройств (с помощью HAL или UDisks)
 - воспроизведение видео с помощью Mplayer-а
-- получение текстов песен с lyricsplugin.com
+- получение текстов песен с lyrics.wikia.com
 - просмотр обложек
 - поддержка CUE
 - поддержка "встроенного" CUE (для файлов FLAC и WavPack)
