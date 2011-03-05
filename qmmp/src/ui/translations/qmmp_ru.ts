@@ -895,7 +895,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактировать шаблон</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
