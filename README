@@ -14,7 +14,7 @@ Supported formats:
 - CD Audio
 - WMA, Monkey's Audio (and other formats provided by FFmpeg library)
 - PCM WAVE (and other formats provided by libsndfile library)
-- Midi
+- midi
 - chiptune formats (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ, VTX)
 
 DSP effects:
@@ -137,7 +137,7 @@ in qmmp.pri file - just comment corresponding line( symbol '#').
 Attention! By default all modules are enabled.
 
 Changing shared library install path (needed by some 64-bit distributions).
-By default, all libraries and plugins will be installed to $(INSTALL PREFIX)/lib. You can change "lib" 
+By default, all libraries and plugins will be installed to $(INSTALL PREFIX)/lib. You can change "lib"
 to "lib64" by running qmake-qt4 or cmake with special parameter:
 qmake-qt4 LIB_DIR=/lib64
 or
