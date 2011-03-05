@@ -598,12 +598,12 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="popupCustomizeButton">
+               <widget class="QPushButton" name="popupTemplateButton">
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
                 <property name="text">
-                 <string>Customize</string>
+                 <string>Edit template</string>
                 </property>
                </widget>
               </item>
@@ -1405,7 +1405,7 @@
   <connection>
    <sender>popupCheckBox</sender>
    <signal>toggled(bool)</signal>
-   <receiver>popupCustomizeButton</receiver>
+   <receiver>popupTemplateButton</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">

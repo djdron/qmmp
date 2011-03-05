@@ -40,6 +40,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
         <translation>Bandyti išskirti bylos pavadinimą, kai nėra meta duomenų</translation>
@@ -53,11 +58,6 @@
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Change template</source>
-        <translation>Keisti šabloną</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>

@@ -62,7 +62,7 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
-        <source>Change template</source>
+        <source>Edit template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

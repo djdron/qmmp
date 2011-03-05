@@ -736,8 +736,8 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Customize</source>
-        <translation>カスタマイズ</translation>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>

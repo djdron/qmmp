@@ -40,32 +40,22 @@
         <translation>Notificatie Module Instellingen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="101"/>
+        <location filename="../settingsdialog.ui" line="141"/>
         <source>Transparency:</source>
         <translation>Transparantie:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="344"/>
+        <location filename="../settingsdialog.cpp" line="105"/>
         <source>Notification Template</source>
         <translation>Notificatie Layout</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="373"/>
-        <source>Reset</source>
-        <translation>Leeghalen</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="380"/>
-        <source>Insert</source>
-        <translation>Invoegen</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="390"/>
+        <location filename="../settingsdialog.ui" line="368"/>
         <source>Psi Notification</source>
         <translation>Psi Notificatie</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="402"/>
+        <location filename="../settingsdialog.ui" line="380"/>
         <source>Enable Psi notification</source>
         <translation>Psi notificatie Inschakelen</translation>
     </message>
@@ -80,22 +70,22 @@
         <translation>Lettertype:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="308"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
         <translation>Hoesgrootte:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>Delay (ms):</source>
         <translation>Vertraging (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="281"/>
+        <location filename="../settingsdialog.ui" line="321"/>
         <source>Position</source>
         <translation>Positie</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="301"/>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>...</source>
         <translation>...</translation>
     </message>
@@ -110,80 +100,15 @@
         <translation>Notificatie bij verandering van volume</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="124"/>
-        <location filename="../settingsdialog.ui" line="334"/>
+        <location filename="../settingsdialog.ui" line="134"/>
+        <location filename="../settingsdialog.ui" line="164"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <source>Artist</source>
-        <translation>Artiest</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <source>Album</source>
-        <translation>Album</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="109"/>
-        <source>Title</source>
-        <translation>Naam</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
-        <source>Track number</source>
-        <translation>Liednummer</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="111"/>
-        <source>Two-digit track number</source>
-        <translation>Twee-getal liednummer</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="112"/>
-        <source>Genre</source>
-        <translation>Genre</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="113"/>
-        <source>Comment</source>
-        <translation>Commentaar</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="114"/>
-        <source>Composer</source>
-        <translation>Componist</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="115"/>
-        <source>Duration</source>
-        <translation>Duur</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="116"/>
-        <source>Disc number</source>
-        <translation>CD Nummer</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="117"/>
-        <source>File name</source>
-        <translation>Bestandsnaam</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="118"/>
-        <source>File path</source>
-        <translation>Pad</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="119"/>
-        <source>Year</source>
-        <translation>Jaar</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="120"/>
-        <source>Condition</source>
-        <translation>Staat</translation>
+        <location filename="../settingsdialog.ui" line="343"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

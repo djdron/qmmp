@@ -40,32 +40,22 @@
         <translation>Ustawienia wtyczki Notifier</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="101"/>
+        <location filename="../settingsdialog.ui" line="141"/>
         <source>Transparency:</source>
         <translation>Przezroczystość:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="344"/>
+        <location filename="../settingsdialog.cpp" line="105"/>
         <source>Notification Template</source>
         <translation>Szablon powiadomienia</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="373"/>
-        <source>Reset</source>
-        <translation>Przywróć</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="380"/>
-        <source>Insert</source>
-        <translation>Wstaw</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="390"/>
+        <location filename="../settingsdialog.ui" line="368"/>
         <source>Psi Notification</source>
         <translation>Powiadomienia Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="402"/>
+        <location filename="../settingsdialog.ui" line="380"/>
         <source>Enable Psi notification</source>
         <translation>Włącz powiadomienia Psi</translation>
     </message>
@@ -85,15 +75,20 @@
         <translation>Powiadamianie o zmianie głośności</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="124"/>
-        <location filename="../settingsdialog.ui" line="334"/>
+        <location filename="../settingsdialog.ui" line="134"/>
+        <location filename="../settingsdialog.ui" line="164"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="281"/>
+        <location filename="../settingsdialog.ui" line="321"/>
         <source>Position</source>
         <translation>Pozycja</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="343"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -101,89 +96,19 @@
         <translation>Czcionka:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="308"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
         <translation>Wielkość okładki:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>Delay (ms):</source>
         <translation>Opóźnienie (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="301"/>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>...</source>
         <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <source>Artist</source>
-        <translation>Artysta</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <source>Album</source>
-        <translation>Album</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="109"/>
-        <source>Title</source>
-        <translation>Tytuł</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
-        <source>Track number</source>
-        <translation>Numer utworu</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="111"/>
-        <source>Two-digit track number</source>
-        <translation>Dwuznakowy numer utworu</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="112"/>
-        <source>Genre</source>
-        <translation>Gatunek</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="113"/>
-        <source>Comment</source>
-        <translation>Komentarz</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="114"/>
-        <source>Composer</source>
-        <translation>Kompozytor</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="115"/>
-        <source>Duration</source>
-        <translation>Długość</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="116"/>
-        <source>Disc number</source>
-        <translation>Numer albumu</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="117"/>
-        <source>File name</source>
-        <translation>Nazwa pliku</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="118"/>
-        <source>File path</source>
-        <translation>Scieżka do pliku</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="119"/>
-        <source>Year</source>
-        <translation>Rok</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="120"/>
-        <source>Condition</source>
-        <translation>Warunek</translation>
     </message>
 </context>
 </TS>

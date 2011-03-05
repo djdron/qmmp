@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,7 @@
 class Action;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class SettingsDialog : public QDialog
 {
@@ -41,13 +41,12 @@ public slots:
     virtual void accept();
 
 private slots:
-    void setFont();
-    void insertExpression(QAction *);
-    void on_resetButton_clicked();
+    void on_fontButton_pressed();
+    void on_templateButton_pressed();
 
 private:
-    void createMenu();
     Ui::SettingsDialog ui;
+    QString m_template;
     QMap<uint, QPushButton*> m_buttons;
 
 };

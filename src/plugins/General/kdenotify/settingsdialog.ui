@@ -97,7 +97,7 @@
         <item>
          <widget class="QPushButton" name="templateButton">
           <property name="text">
-           <string>Change template</string>
+           <string>Edit template</string>
           </property>
          </widget>
         </item>

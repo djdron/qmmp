@@ -826,11 +826,6 @@
         <translation>Pokaż informację popup</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Customize</source>
-        <translation>Dostosuj</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="997"/>
         <source>Replay Gain mode:</source>
         <translation>Tryb Replay Gain:</translation>
@@ -896,6 +891,11 @@
         <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
         <translation>Uruchom zminimalizowany</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="606"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>

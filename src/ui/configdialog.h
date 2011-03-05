@@ -55,7 +55,7 @@ private slots:
     void on_fdInformationButton_clicked();
     void installSkin();
     void loadSkins();
-    void on_popupCustomizeButton_clicked();
+    void on_popupTemplateButton_clicked();
     void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
     void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
     void on_outputComboBox_activated (int index);

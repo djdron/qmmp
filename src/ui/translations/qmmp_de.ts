@@ -772,11 +772,6 @@
         <translation>Informationen in einem Aufklapp-Fenster anzeigen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Customize</source>
-        <translation>Anpassen</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
         <translation type="unfinished"></translation>
@@ -901,6 +896,11 @@
         <location filename="../configdialog.cpp" line="350"/>
         <source>View</source>
         <translation>Ansicht</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="606"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="742"/>

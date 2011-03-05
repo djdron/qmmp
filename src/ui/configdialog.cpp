@@ -84,7 +84,7 @@ ConfigDialog::ConfigDialog (QWidget *parent)
     //setup icons
     ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
     ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
-    ui.popupCustomizeButton->setIcon(QIcon::fromTheme("configure"));
+    ui.popupTemplateButton->setIcon(QIcon::fromTheme("configure"));
     ui.preferencesButton->setIcon(QIcon::fromTheme("configure"));
     ui.informationButton->setIcon(QIcon::fromTheme("dialog-information"));
     ui.fdInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
@@ -519,7 +519,7 @@ void ConfigDialog::installSkin()
     loadSkins();
 }
 
-void ConfigDialog::on_popupCustomizeButton_clicked()
+void ConfigDialog::on_popupTemplateButton_clicked()
 {
     PopupSettings *p = new PopupSettings(this);
     p->exec();

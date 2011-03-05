@@ -35,12 +35,12 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../settingsdialog.ui" line="390"/>
+        <location filename="../settingsdialog.ui" line="368"/>
         <source>Psi Notification</source>
         <translation>Avisos Psi</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="402"/>
+        <location filename="../settingsdialog.ui" line="380"/>
         <source>Enable Psi notification</source>
         <translation>Habilitar avisos Psi</translation>
     </message>
@@ -50,19 +50,24 @@
         <translation>Avisos en el escritorio</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>Delay (ms):</source>
         <translation>Retardo (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="101"/>
+        <location filename="../settingsdialog.ui" line="141"/>
         <source>Transparency:</source>
         <translation>Transparencia:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="281"/>
+        <location filename="../settingsdialog.ui" line="321"/>
         <source>Position</source>
         <translation>Posición</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="343"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
@@ -80,25 +85,15 @@
         <translation>Aviso de cambio de volumen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="124"/>
-        <location filename="../settingsdialog.ui" line="334"/>
+        <location filename="../settingsdialog.ui" line="134"/>
+        <location filename="../settingsdialog.ui" line="164"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="344"/>
+        <location filename="../settingsdialog.cpp" line="105"/>
         <source>Notification Template</source>
         <translation>Plantilla de avisos</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="373"/>
-        <source>Reset</source>
-        <translation>Restaurar</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="380"/>
-        <source>Insert</source>
-        <translation>Insertar</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -106,84 +101,14 @@
         <translation>Tipografía:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="308"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
         <translation>Tamaño de la carátula:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="301"/>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>...</source>
         <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <source>Artist</source>
-        <translation>Intérprete</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <source>Album</source>
-        <translation>Album</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="109"/>
-        <source>Title</source>
-        <translation>Título</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
-        <source>Track number</source>
-        <translation>Número de pista</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="111"/>
-        <source>Two-digit track number</source>
-        <translation>Número de pista con dos cifras</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="112"/>
-        <source>Genre</source>
-        <translation>Género</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="113"/>
-        <source>Comment</source>
-        <translation>Comentario</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="114"/>
-        <source>Composer</source>
-        <translation>Compositor</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="115"/>
-        <source>Duration</source>
-        <translation>Duración</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="116"/>
-        <source>Disc number</source>
-        <translation>Número de disco</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="117"/>
-        <source>File name</source>
-        <translation>Nombre del archivo</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="118"/>
-        <source>File path</source>
-        <translation>Ruta del archivo</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="119"/>
-        <source>Year</source>
-        <translation>Año</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="120"/>
-        <source>Condition</source>
-        <translation>Condición</translation>
     </message>
 </context>
 </TS>

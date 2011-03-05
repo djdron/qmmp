@@ -62,8 +62,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
-        <source>Change template</source>
-        <translation>Verander layout</translation>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>

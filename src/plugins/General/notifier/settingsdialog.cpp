@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #include <QFontDialog>
 #include <QMenu>
 #include <qmmp/qmmp.h>
+#include <qmmpui/templateeditor.h>
 #include "popupwidget.h"
 #include "settingsdialog.h"
 
@@ -51,15 +52,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.transparencySlider->setValue(100 - settings.value("opacity", 1.0).toDouble()*100);
     QString fontname = settings.value ("font").toString();
     ui.coverSizeSlider->setValue(settings.value ("cover_size", 64).toInt());
-    ui.textEdit->setPlainText(settings.value ("template", DEFAULT_TEMPLATE).toString());
+    m_template = settings.value ("template", DEFAULT_TEMPLATE).toString();
     settings.endGroup();
     QFont font;
     if(!fontname.isEmpty())
         font.fromString(fontname);
     ui.fontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.fontLabel->setFont(font);
-    connect (ui.fontButton, SIGNAL (clicked()), SLOT (setFont()));
-    createMenu();
 }
 
 
@@ -84,12 +83,12 @@ void SettingsDialog::accept()
     settings.setValue("opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
     settings.setValue("font", ui.fontLabel->font().toString());
     settings.setValue("cover_size", ui.coverSizeSlider->value());
-    settings.setValue("template", ui.textEdit->toPlainText());
+    settings.setValue("template", m_template);
     settings.endGroup();
     QDialog::accept();
 }
 
-void SettingsDialog::setFont()
+void SettingsDialog::on_fontButton_pressed()
 {
     bool ok;
     QFont font = ui.fontLabel->font();
@@ -101,33 +100,10 @@ void SettingsDialog::setFont()
     }
 }
 
-void SettingsDialog::createMenu()
+void SettingsDialog::on_templateButton_pressed()
 {
-    QMenu *menu = new QMenu(this);
-    menu->addAction(tr("Artist"))->setData("%p");
-    menu->addAction(tr("Album"))->setData("%a");
-    menu->addAction(tr("Title"))->setData("%t");
-    menu->addAction(tr("Track number"))->setData("%n");
-    menu->addAction(tr("Two-digit track number"))->setData("%NN");
-    menu->addAction(tr("Genre"))->setData("%g");
-    menu->addAction(tr("Comment"))->setData("%c");
-    menu->addAction(tr("Composer"))->setData("%C");
-    menu->addAction(tr("Duration"))->setData("%l");
-    menu->addAction(tr("Disc number"))->setData("%D");
-    menu->addAction(tr("File name"))->setData("%f");
-    menu->addAction(tr("File path"))->setData("%F");
-    menu->addAction(tr("Year"))->setData("%y");
-    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
-    ui.insertButton->setMenu(menu);
-    connect(menu, SIGNAL(triggered (QAction *)), SLOT(insertExpression(QAction *)));
-}
-
-void SettingsDialog::insertExpression(QAction *a)
-{
-    ui.textEdit->insertPlainText(a->data().toString());
-}
-
-void SettingsDialog::on_resetButton_clicked()
-{
-    ui.textEdit->setPlainText(DEFAULT_TEMPLATE);
+    QString t = TemplateEditor::getTemplate(this, tr("Notification Template"), m_template,
+                                            DEFAULT_TEMPLATE);
+    if(!t.isEmpty())
+        m_template = t;
 }
