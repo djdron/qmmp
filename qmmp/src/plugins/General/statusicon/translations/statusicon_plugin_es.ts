@@ -40,6 +40,11 @@
         <translation>0</translation>
     </message>
     <message>
+        <location filename="../settingsdialog.ui" line="225"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
         <translation>Dividir el nombre de archivo si no hay etiqueta</translation>
@@ -53,11 +58,6 @@
         <location filename="../settingsdialog.ui" line="214"/>
         <source>32</source>
         <translation>32</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="225"/>
-        <source>Change template</source>
-        <translation>Cambia plantilla</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="250"/>

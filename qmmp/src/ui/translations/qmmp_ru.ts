@@ -826,11 +826,6 @@
         <translation>Показывать всплывающее окно с информацией</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Customize</source>
-        <translation>Настроить</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="997"/>
         <source>Replay Gain mode:</source>
         <translation>Режим Replay Gain:</translation>
@@ -896,6 +891,11 @@
         <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
         <translation>Запускать скрытым</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="606"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>

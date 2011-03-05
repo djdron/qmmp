@@ -826,11 +826,6 @@
         <translation>Показувати спливаюче вікно з інформацією</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Customize</source>
-        <translation>Налаштувати</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="997"/>
         <source>Replay Gain mode:</source>
         <translation>Режим нормалізації гучності:</translation>
@@ -896,6 +891,11 @@
         <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
         <translation>Запускати схованим</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="606"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>

@@ -817,11 +817,6 @@
         <translation>Felugró információk mutatása</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Customize</source>
-        <translation>Testreszab</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
         <translation type="unfinished"></translation>
@@ -984,6 +979,11 @@
         <location filename="../forms/configdialog.ui" line="439"/>
         <source>Equalizer</source>
         <translation>Hangszínszabályozó</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="606"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="774"/>

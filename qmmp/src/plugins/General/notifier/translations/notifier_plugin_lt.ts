@@ -40,32 +40,22 @@
         <translation>Notifier įskiepio nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="101"/>
+        <location filename="../settingsdialog.ui" line="141"/>
         <source>Transparency:</source>
         <translation>Permatomumas:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="344"/>
+        <location filename="../settingsdialog.cpp" line="105"/>
         <source>Notification Template</source>
         <translation>Pranešimų šablonas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="373"/>
-        <source>Reset</source>
-        <translation>Ištrinti</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="380"/>
-        <source>Insert</source>
-        <translation>Įkelti</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="390"/>
+        <location filename="../settingsdialog.ui" line="368"/>
         <source>Psi Notification</source>
         <translation>Psi pranešimas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="402"/>
+        <location filename="../settingsdialog.ui" line="380"/>
         <source>Enable Psi notification</source>
         <translation>Įjungti Psi pranešimą</translation>
     </message>
@@ -75,14 +65,19 @@
         <translation>Pranešimas darbalaukyje</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="75"/>
+        <location filename="../settingsdialog.ui" line="82"/>
         <source>Delay (ms):</source>
         <translation>Užlaikymas (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="281"/>
+        <location filename="../settingsdialog.ui" line="321"/>
         <source>Position</source>
         <translation>Padėtis</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="343"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
@@ -95,8 +90,8 @@
         <translation>Pranešti pasikeitus garsumui</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="124"/>
-        <location filename="../settingsdialog.ui" line="334"/>
+        <location filename="../settingsdialog.ui" line="134"/>
+        <location filename="../settingsdialog.ui" line="164"/>
         <source>0</source>
         <translation type="unfinished"></translation>
     </message>
@@ -106,84 +101,14 @@
         <translation>Šriftas:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="308"/>
+        <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
         <translation>Viršelio dydis:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="301"/>
+        <location filename="../settingsdialog.ui" line="75"/>
         <source>...</source>
         <translation>...</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="107"/>
-        <source>Artist</source>
-        <translation>Atlikėjas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="108"/>
-        <source>Album</source>
-        <translation>Albumas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="109"/>
-        <source>Title</source>
-        <translation>Pavadinimas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="110"/>
-        <source>Track number</source>
-        <translation>Takelio numeris</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="111"/>
-        <source>Two-digit track number</source>
-        <translation>Dviejų skaičių takelio numeris</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="112"/>
-        <source>Genre</source>
-        <translation>Žanras</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="113"/>
-        <source>Comment</source>
-        <translation>Comentaras</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="114"/>
-        <source>Composer</source>
-        <translation>Autorius</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="115"/>
-        <source>Duration</source>
-        <translation>Trukmė</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="116"/>
-        <source>Disc number</source>
-        <translation>Disko numeris</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="117"/>
-        <source>File name</source>
-        <translation>Bylos pavadinimas</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="118"/>
-        <source>File path</source>
-        <translation>Bylos kelias</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="119"/>
-        <source>Year</source>
-        <translation>Metai</translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.cpp" line="120"/>
-        <source>Condition</source>
-        <translation>Būklė</translation>
     </message>
 </context>
 </TS>

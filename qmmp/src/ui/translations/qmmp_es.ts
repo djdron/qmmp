@@ -826,11 +826,6 @@
         <translation>Mostrar información emergente</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Customize</source>
-        <translation>Personalizar</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="997"/>
         <source>Replay Gain mode:</source>
         <translation>Método de normalización:</translation>
@@ -896,6 +891,11 @@
         <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
         <translation>Iniciar oculto</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="606"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
