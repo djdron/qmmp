@@ -34,7 +34,7 @@ Q_OBJECT
 public:
     SettingsDialog(QWidget *parent = 0);
 
-    ~SettingsDialog();
+    virtual ~SettingsDialog();
 
 
 public slots:
