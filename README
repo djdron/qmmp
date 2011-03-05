@@ -9,18 +9,20 @@ Supported formats:
 - Native FLAC, Ogg FLAC
 - Musepack
 - WavePack
-- Tracker modules (mod, s3m, it, xm, etc)
+- tracker modules (mod, s3m, it, xm, etc)
 - ADTS AAC
 - CD Audio
 - WMA, Monkey's Audio (and other formats provided by FFmpeg library)
 - PCM WAVE (and other formats provided by libsndfile library)
 - Midi
+- chiptune formats (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ, VTX)
 
 DSP effects:
 - BS2B effect
 - Sample rate converter
 - LADSPA effects
 - Extra stereo
+- Crossfade (Experimental)
 
 Visual effects:
 - ProjectM visualization
@@ -37,8 +39,8 @@ Other features:
 - Xmms and Winamp 2.x skins support
 - 10-band equalizer
 - MP3, Vorbis, AAC, AAC+ streams support
-- mms support (experimental)
-- MPRIS
+- mms support
+- MPRIS (1.0 and 2.0)
 - Removable device detection (via HAL or UDisks)
 - Video playback via Mplayer
 - Lyrics (using lyrics.wikia.com)
