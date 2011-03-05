@@ -19,14 +19,14 @@ Supported formats:
 
 DSP effects:
 - BS2B effect
-- Sample rate converter
+- sample rate converter
 - LADSPA effects
-- Extra stereo
-- Crossfade (Experimental)
+- extra stereo
+- crossfade (Experimental)
 
 Visual effects:
-- ProjectM visualization
-- Spectrum analyzer
+- projectM visualization
+- spectrum analyzer
 
 Output system support:
 - OSS
@@ -36,20 +36,20 @@ Output system support:
 - WaveOut (Win32)
 
 Other features:
-- Xmms and Winamp 2.x skins support
+- XMMS and Winamp 2.x skins support
 - 10-band equalizer
 - MP3, Vorbis, AAC, AAC+ streams support
 - mms support
 - MPRIS (1.0 and 2.0)
-- Removable device detection (via HAL or UDisks)
-- Video playback via Mplayer
-- Lyrics (using lyrics.wikia.com)
-- Cover art support
+- removable device detection (via HAL or UDisks)
+- video playback via Mplayer
+- lyrics (using lyrics.wikia.com)
+- cover art support
 - CUE sheet support
-- Embedded CUE support (for FLAC and WavPack)
-- Multiple playlists
-- Automatic charset detection for cue files and ShoutCast metadata
-- Playlist formats: m3u, pls, xspf
+- embedded CUE support (for FLAC and WavPack)
+- multiple playlists
+- automatic charset detection for cue files and ShoutCast metadata
+- playlist formats: m3u, pls, xspf
 - ReplayGain support
 - Last.fm/Libre.fm scrobbler
 - CDDB support
@@ -73,7 +73,7 @@ Requirements:
 - libsndfile >= 1.0.17 (Optional)
 - wavpack >= 4.41 (Optional)
 - pulseaudio >= 0.9.15 (Optional)
-- ffmpeg >= 0.4.9-pre1 (Optional)
+- ffmpeg >= 0.5.0 (Optional)
 - libcdio >= 0.80 (Optional)
 - libcddb >= 1.3.1 (Optional)
 - faad2 >= 2.6.1 (Optional)
