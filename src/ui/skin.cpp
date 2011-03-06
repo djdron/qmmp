@@ -63,7 +63,7 @@ Skin::Skin (QObject *parent) : QObject (parent)
 {
     m_instance = this;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString path = settings.value("skin_path","").toString();
+    QString path = settings.value("General/skin_path").toString();
     if (path.isEmpty() || !QDir(path).exists ())
         path = ":/default";
     m_double_size = settings.value("General/double_size", false).toBool();
@@ -82,7 +82,7 @@ void Skin::setSkin (const QString& path)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_use_cursors = settings.value("General/skin_cursors", false).toBool();
     m_double_size = ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked();
-    settings.setValue("skin_path",path);
+    settings.setValue("General/skin_path",path);
     qDebug ("Skin: using %s",qPrintable(path));
     m_skin_dir = QDir (path);
     //clear old values
