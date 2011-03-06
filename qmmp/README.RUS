@@ -15,7 +15,7 @@ Qmmp - Qt-based multimedia player
 - WMA, Monkey's Audio (и др. форматы библиотеки FFmpeg)
 - PCM WAVE (и др. форматы библиотеки libsndfile)
 - midi
-- форматы звука игровых конслей (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ, VTX)
+- форматы звука игровых консолей (AY, GBS, GYM, HES, KSS, NSF, NSFE, SAP, SPC, VGM, VGZ, VTX)
 
 Аудио-эффекты:
 - эффект BS2B
