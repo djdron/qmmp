@@ -18,10 +18,10 @@ CONFIG += warn_on \
 TARGET = qmmp_ui_example
 LIBS += -lqmmp \
     -lqmmpui \
-    -L/home/user/qmmp-0.4/lib
+    -L/home/user/qmmp-0.5/lib
 FORMS += mainwindow.ui \
     configdialog.ui \
     dialog.ui
 RESOURCES += stuff.qrc
-INCLUDEPATH += /home/user/qmmp-0.4/include/
+INCLUDEPATH += /home/user/qmmp-0.5/include/
 OTHER_FILES += 

@@ -122,7 +122,7 @@ MainWindow::~MainWindow()
 void MainWindow::addDir()
 {
     FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
+                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
                       tr("Choose a directory"));
 }
 
@@ -133,7 +133,7 @@ void MainWindow::addFiles()
             MetaDataManager::instance()->nameFilters().join (" ") +")";
     filters << MetaDataManager::instance()->filters();
     FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(addFileList(const QStringList&)),
+                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
                       tr("Select one or more files to open"), filters.join(";;"));
 }
 
