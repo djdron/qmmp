@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -130,6 +130,7 @@ void ConfigDialog::readSettings()
     ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
     //view
     ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", false).toBool());
+    m_currentSkinName = settings.value("General/skin_name", "default").toString();
     ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", false).toBool());
     ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", false).toBool());
     //resume playback
@@ -174,6 +175,10 @@ void ConfigDialog::changeSkin()
         m_reader->unpackSkin(m_skinList.at (row).canonicalFilePath());
         m_skin->setSkin(QDir::homePath() +"/.qmmp/cache/skin");
     }
+    if(ui.listWidget->currentItem())
+        m_currentSkinName = ui.listWidget->currentItem()->text();
+    else
+        m_currentSkinName.clear();
 }
 
 void ConfigDialog::loadSkins()
@@ -187,6 +192,8 @@ void ConfigDialog::loadSkins()
     item->setIcon (preview);
     ui.listWidget->addItem (item);
     m_skinList << fileInfo;
+    if(item->text() == m_currentSkinName)
+        ui.listWidget->setCurrentItem(item);
 
     findSkins(QDir::homePath() +"/.qmmp/skins");
 #ifdef Q_OS_WIN32
@@ -201,6 +208,8 @@ void ConfigDialog::loadSkins()
         item->setToolTip(tr("Archived skin") + " " + path);
         ui.listWidget->addItem (item);
         m_skinList << QFileInfo(path);
+        if(item->text() == m_currentSkinName)
+            ui.listWidget->setCurrentItem(item);
     }
 }
 
@@ -477,6 +486,7 @@ void ConfigDialog::saveSettings()
     settings.setValue ("General/resume_on_startup",  ui.continuePlaybackCheckBox->isChecked());
     settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
     settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
+    settings.setValue ("General/skin_name", m_currentSkinName);
     settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
     settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
     gs->setCoverSettings(ui.coverIncludeLineEdit->text().split(","),
