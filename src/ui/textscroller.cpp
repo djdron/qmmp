@@ -56,7 +56,8 @@ TextScroller::TextScroller (QWidget *parent)
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
     connect(m_core, SIGNAL(metaDataChanged()), SLOT(processMetaData()));
-    readSettings();
+    //readSettings();
+    updateSkin();
 }
 
 TextScroller::~TextScroller()
@@ -101,20 +102,14 @@ void TextScroller::updateSkin()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_bitmap = settings.value("MainWindow/bitmap_font", false).toBool();
     m_ratio = m_skin->ratio();
-    updateText();
-}
-
-void TextScroller::readSettings()
-{
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value("MainWindow/Font","").toString();
+    QString fontname = settings.value("MainWindow/Font").toString();
     m_font.fromString(fontname);
     if (m_metrics)
         delete m_metrics;
     else
         m_scrollAction->setChecked(settings.value("TextScroller/autoscroll", true).toBool());
     m_metrics = new QFontMetrics(m_font);
-    updateSkin();
+    updateText();
 }
 
 void TextScroller::setProgress(int progress)
