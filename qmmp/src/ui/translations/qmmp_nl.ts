@@ -546,23 +546,23 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../forms/configdialog.ui" line="725"/>
+        <location filename="../forms/configdialog.ui" line="735"/>
         <source>Description</source>
         <translation>Popis</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="730"/>
+        <location filename="../forms/configdialog.ui" line="740"/>
         <source>Filename</source>
         <translation>Bestandsnaam</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="419"/>
+        <location filename="../configdialog.cpp" line="429"/>
         <source>Artist</source>
         <translation>Artiest</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="75"/>
-        <location filename="../configdialog.cpp" line="420"/>
+        <location filename="../configdialog.cpp" line="430"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
@@ -577,77 +577,77 @@
         <translation>Uitgeschakeld</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="234"/>
+        <location filename="../configdialog.cpp" line="244"/>
         <source>Transports</source>
         <translation>Protocols</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="245"/>
+        <location filename="../configdialog.cpp" line="255"/>
         <source>Decoders</source>
         <translation>Decoders</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="255"/>
+        <location filename="../configdialog.cpp" line="265"/>
         <source>Engines</source>
         <translation>Engines</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="362"/>
+        <location filename="../configdialog.cpp" line="372"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="421"/>
+        <location filename="../configdialog.cpp" line="431"/>
         <source>Title</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="422"/>
+        <location filename="../configdialog.cpp" line="432"/>
         <source>Track number</source>
         <translation>Liednummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="423"/>
+        <location filename="../configdialog.cpp" line="433"/>
         <source>Two-digit track number</source>
         <translation>Twee-getal liednummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="427"/>
+        <location filename="../configdialog.cpp" line="437"/>
         <source>Disc number</source>
         <translation>CD nummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="431"/>
+        <location filename="../configdialog.cpp" line="441"/>
         <source>Condition</source>
         <translation>Staat</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="426"/>
+        <location filename="../configdialog.cpp" line="436"/>
         <source>Composer</source>
         <translation>Componist</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="428"/>
+        <location filename="../configdialog.cpp" line="438"/>
         <source>File name</source>
         <translation>Bestandsnaam</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="429"/>
+        <location filename="../configdialog.cpp" line="439"/>
         <source>File path</source>
         <translation>Pad</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="424"/>
+        <location filename="../configdialog.cpp" line="434"/>
         <source>Genre</source>
         <translation>Genre</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="430"/>
+        <location filename="../configdialog.cpp" line="440"/>
         <source>Year</source>
         <translation>Jaar</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="425"/>
+        <location filename="../configdialog.cpp" line="435"/>
         <source>Comment</source>
         <translation>Commentaar</translation>
     </message>
@@ -664,7 +664,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="107"/>
         <location filename="../forms/configdialog.ui" line="463"/>
-        <location filename="../configdialog.cpp" line="356"/>
+        <location filename="../configdialog.cpp" line="366"/>
         <source>Playlist</source>
         <translation>Afspeellijst</translation>
     </message>
@@ -705,7 +705,7 @@
         <translation>???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="991"/>
+        <location filename="../forms/configdialog.ui" line="1001"/>
         <source>Replay Gain</source>
         <translation>Replay Gain</translation>
     </message>
@@ -777,112 +777,117 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="676"/>
-        <location filename="../forms/configdialog.ui" line="1143"/>
+        <location filename="../forms/configdialog.ui" line="638"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="686"/>
+        <location filename="../forms/configdialog.ui" line="1153"/>
         <source>Preferences</source>
         <translation>Voorkeuren</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="689"/>
-        <location filename="../forms/configdialog.ui" line="751"/>
-        <location filename="../forms/configdialog.ui" line="1156"/>
+        <location filename="../forms/configdialog.ui" line="699"/>
+        <location filename="../forms/configdialog.ui" line="761"/>
+        <location filename="../forms/configdialog.ui" line="1166"/>
         <source>Information</source>
         <translation>Informatie</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="774"/>
+        <location filename="../forms/configdialog.ui" line="784"/>
         <source>Cover Image Retrieve</source>
         <translation>Lees Hoes Af</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="780"/>
+        <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
         <translation>Gebruik aparte afbeeldingsbestanden</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="790"/>
+        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Include files:</source>
         <translation>Inclusief de bestanden:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="800"/>
+        <location filename="../forms/configdialog.ui" line="810"/>
         <source>Exclude files:</source>
         <translation>Exclusief de bestanden:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="812"/>
+        <location filename="../forms/configdialog.ui" line="822"/>
         <source>Recursive search depth:</source>
         <translation>Recursieve zoekdiepte:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="857"/>
-        <location filename="../configdialog.cpp" line="344"/>
+        <location filename="../forms/configdialog.ui" line="867"/>
+        <location filename="../configdialog.cpp" line="354"/>
         <source>Playback</source>
         <translation>Afspelen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="863"/>
+        <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
         <translation>Verdergaan met afspelen bij opstarten</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="997"/>
+        <location filename="../forms/configdialog.ui" line="1007"/>
         <source>Replay Gain mode:</source>
         <translation>Replay Gain stand:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1014"/>
+        <location filename="../forms/configdialog.ui" line="1024"/>
         <source>Preamp:</source>
         <translation>Voorversterking:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1046"/>
-        <location filename="../forms/configdialog.ui" line="1091"/>
+        <location filename="../forms/configdialog.ui" line="1056"/>
+        <location filename="../forms/configdialog.ui" line="1101"/>
         <source>dB</source>
         <translation>dB</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1059"/>
+        <location filename="../forms/configdialog.ui" line="1069"/>
         <source>Default gain:</source>
         <translation>Standaard verhoging:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1111"/>
+        <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Use  peak info to prevent clipping</source>
         <translation>Gebruik piek info om stotteren te voorkomen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1127"/>
+        <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
         <translation>Uitvoer:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1179"/>
+        <location filename="../forms/configdialog.ui" line="1189"/>
         <source>Buffer size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1192"/>
+        <location filename="../forms/configdialog.ui" line="1202"/>
         <source>ms</source>
         <translation type="unfinished">ms</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1228"/>
+        <location filename="../forms/configdialog.ui" line="1238"/>
         <source>16-bit output</source>
         <translation>16bit uitvoer</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1262"/>
+        <location filename="../forms/configdialog.ui" line="1272"/>
         <source>Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1267"/>
+        <location filename="../forms/configdialog.ui" line="1277"/>
         <source>Shortcut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1275"/>
+        <location filename="../forms/configdialog.ui" line="1285"/>
         <source>Change shortcut...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -893,7 +898,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="255"/>
-        <location filename="../configdialog.cpp" line="350"/>
+        <location filename="../configdialog.cpp" line="360"/>
         <source>View</source>
         <translation>Weergave</translation>
     </message>
@@ -903,78 +908,78 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="742"/>
+        <location filename="../forms/configdialog.ui" line="752"/>
         <source>File Dialog</source>
         <translation>Bestandsdialoog</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="889"/>
+        <location filename="../forms/configdialog.ui" line="899"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="901"/>
+        <location filename="../forms/configdialog.ui" line="911"/>
         <source>Enable proxy usage</source>
         <translation>Gebruik proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="908"/>
+        <location filename="../forms/configdialog.ui" line="918"/>
         <source>Proxy host name:</source>
         <translation>Proxy host naam:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="921"/>
+        <location filename="../forms/configdialog.ui" line="931"/>
         <source>Proxy port:</source>
         <translation>Proxy poort:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="934"/>
+        <location filename="../forms/configdialog.ui" line="944"/>
         <source>Use authentication with proxy</source>
         <translation>Gebruik authenticatie bij proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="941"/>
+        <location filename="../forms/configdialog.ui" line="951"/>
         <source>Proxy user name:</source>
         <translation>Proxy gebruikersnaam:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="954"/>
+        <location filename="../forms/configdialog.ui" line="964"/>
         <source>Proxy password:</source>
         <translation>Proxy wachtwoord:</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="201"/>
+        <location filename="../configdialog.cpp" line="209"/>
         <source>Archived skin</source>
         <translation>Gearchiveerd thema</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="221"/>
+        <location filename="../configdialog.cpp" line="231"/>
         <source>Unarchived skin</source>
         <translation>Niet gearchiveerd thema</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="275"/>
+        <location filename="../configdialog.cpp" line="285"/>
         <source>Visualization</source>
         <translation>Visualisatie</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="265"/>
+        <location filename="../configdialog.cpp" line="275"/>
         <source>Effects</source>
         <translation>Effecten</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="285"/>
+        <location filename="../configdialog.cpp" line="295"/>
         <source>General</source>
         <translation>Algemeen</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="143"/>
-        <location filename="../forms/configdialog.ui" line="1121"/>
+        <location filename="../forms/configdialog.ui" line="1131"/>
         <source>Audio</source>
         <translation>Audio</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1221"/>
+        <location filename="../forms/configdialog.ui" line="1231"/>
         <source>Use software volume control</source>
         <translation>Gebruik software volume</translation>
     </message>
@@ -999,12 +1004,12 @@
         <translation>Zet %20 om in spaties</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="512"/>
+        <location filename="../configdialog.cpp" line="524"/>
         <source>Select Skin Files</source>
         <translation>Selecteer themabestanden</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="513"/>
+        <location filename="../configdialog.cpp" line="525"/>
         <source>Skin files</source>
         <translation>Thema bestanden</translation>
     </message>
@@ -1804,7 +1809,7 @@
         <translation>Automatisch naar Liednummer Scrollen</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="122"/>
+        <location filename="../textscroller.cpp" line="117"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>
