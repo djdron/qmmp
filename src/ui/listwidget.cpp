@@ -83,6 +83,7 @@ void ListWidget::readSettings()
     m_extra_font.setPointSize(m_font.pointSize() - 1);
     m_show_protocol = settings.value ("PlayList/show_protocol", false).toBool();
     m_show_number = settings.value ("PlayList/show_numbers", true).toBool();
+    m_align_numbres = settings.value ("PlayList/align_numbers", false).toBool();
     m_show_anchor = settings.value("PlayList/show_anchor", false).toBool();
     bool show_popup = settings.value("PlayList/show_popup", false).toBool();
 
@@ -152,7 +153,19 @@ void ListWidget::paintEvent(QPaintEvent *)
             m_painter.setPen(m_normal);  //243,58
 
         font_y = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
-        m_painter.drawText(10, font_y, m_titles.at(i));
+
+
+
+        if(m_number_width)
+        {
+            QString number = QString("%1").arg(m_first+i+1);
+            m_painter.drawText(10 + m_number_width - m_extra_metrics->width(number),
+                               font_y, number);
+            m_painter.drawText(10 + m_number_width + m_metrics->width("9"), font_y, m_titles.at(i));
+        }
+        else
+            m_painter.drawText(10, font_y, m_titles.at(i));
+
 
         QString extra_string = getExtraString(m_first + i);
         if(!extra_string.isEmpty())
@@ -168,6 +181,13 @@ void ListWidget::paintEvent(QPaintEvent *)
             m_painter.setFont(m_font);
         }
         m_painter.drawText(width() - 7 - m_metrics->width(m_times.at(i)), font_y, m_times.at(i));
+    }
+    //draw line
+    if(m_number_width)
+    {
+        m_painter.setPen(m_normal);
+        m_painter.drawLine(10 + m_number_width + m_metrics->width("9") / 2, 2,
+                           10 + m_number_width + m_metrics->width("9") / 2, font_y);
     }
 }
 
@@ -320,21 +340,32 @@ void ListWidget::updateList()
     m_times  = m_model->getTimes(m_first, m_rows);
     m_scroll = false;
     //add numbers
-    for (int i = 0; i < m_titles.size() && m_show_number; ++i)
+    for (int i = 0; i < m_titles.size() && m_show_number && !m_align_numbres; ++i)
     {
         QString title = m_titles.at(i);
         m_titles.replace(i, title.prepend(QString("%1").arg(m_first+i+1)+". "));
 
     }
+    //song numbers width
+    if(m_show_number && m_align_numbres && m_model->count())
+    {
+        m_number_width = m_metrics->width("9") * QString::number(m_model->count() + 1).size();
+    }
+    else
+        m_number_width = 0;
+
     //elide title
     QString extra_string;
     for (int i=0; i<m_titles.size(); ++i)
     {
         extra_string = getExtraString(m_first + i);
         int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
+        if(m_number_width)
+            extra_string_space += m_number_width + m_metrics->width("9");
         m_titles.replace(i, m_metrics->elidedText (m_titles.at(i), Qt::ElideRight,
                             width() -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
     }
+
     update();
 }
 
