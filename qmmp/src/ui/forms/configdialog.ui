@@ -581,14 +581,14 @@
               </property>
              </widget>
             </item>
-            <item row="5" column="0" colspan="2">
+            <item row="6" column="0" colspan="2">
              <widget class="QCheckBox" name="playlistsCheckBox">
               <property name="text">
                <string>Show playlists</string>
               </property>
              </widget>
             </item>
-            <item row="7" column="0" colspan="3">
+            <item row="8" column="0" colspan="3">
              <layout class="QHBoxLayout" name="horizontalLayout_3">
               <item>
                <widget class="QCheckBox" name="popupCheckBox">
@@ -622,10 +622,20 @@
               </item>
              </layout>
             </item>
-            <item row="6" column="0" colspan="2">
+            <item row="7" column="0" colspan="2">
              <widget class="QCheckBox" name="anchorCheckBox">
               <property name="text">
                <string>Show anchor</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0" colspan="3">
+             <widget class="QCheckBox" name="alignCheckBox">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Align song numbers</string>
               </property>
              </widget>
             </item>
@@ -1345,12 +1355,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>272</x>
-     <y>40</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>272</x>
-     <y>40</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1361,8 +1371,8 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>272</x>
-     <y>40</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
      <x>272</x>
@@ -1409,12 +1419,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>226</x>
-     <y>33</y>
+     <x>362</x>
+     <y>310</y>
     </hint>
     <hint type="destinationlabel">
-     <x>256</x>
-     <y>33</y>
+     <x>455</x>
+     <y>315</y>
     </hint>
    </hints>
   </connection>
@@ -1473,12 +1483,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
-     <y>54</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>263</x>
-     <y>50</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1489,12 +1499,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
-     <y>54</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>263</x>
-     <y>45</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1505,12 +1515,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
-     <y>54</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
     <hint type="destinationlabel">
-     <x>256</x>
-     <y>41</y>
+     <x>286</x>
+     <y>39</y>
     </hint>
    </hints>
   </connection>
@@ -1521,8 +1531,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>587</x>
-     <y>415</y>
+     <x>651</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>225</x>
@@ -1537,12 +1547,28 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>603</x>
-     <y>422</y>
+     <x>651</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
      <x>141</x>
      <y>414</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>numbersCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>alignCheckBox</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>278</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>236</y>
     </hint>
    </hints>
   </connection>

@@ -155,6 +155,8 @@ private:
     bool m_show_protocol;
     bool m_show_number;
     bool m_show_anchor;
+    bool m_align_numbres;
+    int m_number_width;
     MediaPlayer *m_player;
     PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
