@@ -349,7 +349,7 @@ void ListWidget::updateList()
     //song numbers width
     if(m_show_number && m_align_numbres && m_model->count())
     {
-        m_number_width = m_metrics->width("9") * QString::number(m_model->count() + 1).size();
+        m_number_width = m_metrics->width("9") * QString::number(m_model->count()).size();
     }
     else
         m_number_width = 0;
