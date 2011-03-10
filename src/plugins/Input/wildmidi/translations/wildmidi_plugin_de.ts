@@ -54,12 +54,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="60"/>
         <source>Enhanced resampling</source>
-        <translation type="unfinished"></translation>
+        <translation>Verbessertes Resampling</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Reverberation</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachhall</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="35"/>

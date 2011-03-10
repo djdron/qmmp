@@ -47,7 +47,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished">Versuchen Dateinamen zu trennen, wenn kein Tag vorhanden</translation>
+        <translation>Versuchen Dateinamen zu trennen, wenn kein Tag vorhanden</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
