@@ -31,7 +31,7 @@
     <message>
         <location filename="../halfactory.cpp" line="54"/>
         <source>Based on Solid (KDE hardware library)</source>
-        <translation>Solid (KDE ハードウェアライブラリ) を流用しました</translation>
+        <translation>Solid (KDE ハードウェアライブラリ) を基に作成</translation>
     </message>
 </context>
 <context>

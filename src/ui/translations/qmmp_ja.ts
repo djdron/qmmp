@@ -722,7 +722,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="580"/>
         <source>Show song numbers</source>
-        <translation>曲番号を表示</translation>
+        <translation>曲番号つきで表示</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="587"/>
@@ -737,7 +737,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>ひな型を編集</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
@@ -747,7 +747,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>曲番号のみを表示</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="686"/>
@@ -1226,27 +1226,27 @@
     <message>
         <location filename="../display.cpp" line="296"/>
         <source>Volume: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>音量: %1%</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="300"/>
         <source>Balance: %1% right</source>
-        <translation type="unfinished"></translation>
+        <translation>バランス: %1% 右へ</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="302"/>
         <source>Balance: %1% left</source>
-        <translation type="unfinished"></translation>
+        <translation>バランス: %1% 左へ</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="304"/>
         <source>Balance: center</source>
-        <translation type="unfinished"></translation>
+        <translation>バランス: 中央に</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="315"/>
         <source>Seek to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 に移動</translation>
     </message>
 </context>
 <context>
@@ -1811,7 +1811,7 @@
     <message>
         <location filename="../textscroller.cpp" line="117"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>バッファへ先読み: %1%</translation>
     </message>
 </context>
 <context>

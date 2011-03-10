@@ -26,7 +26,7 @@
     <message>
         <location filename="../outputwaveoutfactory.cpp" line="57"/>
         <source>Based on aacDECdrop player</source>
-        <translation>aacDECdrop プレイヤから流用</translation>
+        <translation>aacDECdrop プレイヤを基に作成</translation>
     </message>
 </context>
 </TS>

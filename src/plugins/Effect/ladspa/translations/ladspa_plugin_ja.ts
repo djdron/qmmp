@@ -26,7 +26,7 @@
     <message>
         <location filename="../effectladspafactory.cpp" line="53"/>
         <source>Based on the LADSPA Host for BMP</source>
-        <translation>BMP 用 LADSPA ホストに基づく</translation>
+        <translation>BMP 用 LADSPA ホストを基に作成</translation>
     </message>
     <message>
         <location filename="../effectladspafactory.cpp" line="54"/>

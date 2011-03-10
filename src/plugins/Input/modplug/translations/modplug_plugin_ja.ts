@@ -26,12 +26,12 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="129"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="130"/>
         <source>Based on the Modplug Plugin for Xmms</source>
-        <translation>XMMS 用 ModPlug プラグインを流用</translation>
+        <translation>XMMS 用 ModPlug プラグインを基に作成</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="131"/>
