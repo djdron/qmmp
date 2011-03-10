@@ -72,7 +72,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="343"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>ひな型を編集</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="134"/>

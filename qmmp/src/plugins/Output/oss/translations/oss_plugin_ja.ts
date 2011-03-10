@@ -26,7 +26,7 @@
     <message>
         <location filename="../outputossfactory.cpp" line="59"/>
         <source>Based on code by: Brad Hughes &lt;bhughes@trolltech.com&gt;</source>
-        <translation>Brad Hughes &lt;bhughes@trolltech.com&gt; 氏のコードを利用</translation>
+        <translation>Brad Hughes &lt;bhughes@trolltech.com&gt; 氏のコードを基に作成</translation>
     </message>
 </context>
 <context>

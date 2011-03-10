@@ -12,6 +12,7 @@
     Erik Ölsar <erlk.ozlr@gmail.com> - スキン化カーソル, UI改良
     Funda Wang <fundawang@gmail.com> - cmake files 改修
     Михаил Желудков (Michail Zheludkov) <zheludkovm@mail.ru> - ffmpeg プラグイン改修
+    Michał Grosicki <grosik88@o2.pl> - alsa プラグイン改修
     Panagiotis Papadopoulos <pano_90@gmx.net> - UI改修, バグ報告
     Pino Toscano <toscano.pino@tiscali.it> - 移植適用パッチ
     Karel Volný <kvolny@redhat.com> - 各種改修
