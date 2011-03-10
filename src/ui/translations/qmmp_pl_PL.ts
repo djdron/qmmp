@@ -594,7 +594,7 @@
     <message>
         <location filename="../configdialog.cpp" line="372"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Inne</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="431"/>
@@ -895,17 +895,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj szablon</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż kotwicę</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż numery utworów</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="784"/>
@@ -1226,27 +1226,27 @@
     <message>
         <location filename="../display.cpp" line="296"/>
         <source>Volume: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Głośność: %1%</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="300"/>
         <source>Balance: %1% right</source>
-        <translation type="unfinished"></translation>
+        <translation>Balans: %1% prawy</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="302"/>
         <source>Balance: %1% left</source>
-        <translation type="unfinished"></translation>
+        <translation>Balans: %1% lewy</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="304"/>
         <source>Balance: center</source>
-        <translation type="unfinished"></translation>
+        <translation>Balans: środek</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="315"/>
         <source>Seek to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewijanie: %1</translation>
     </message>
 </context>
 <context>
@@ -1811,7 +1811,7 @@
     <message>
         <location filename="../textscroller.cpp" line="117"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Buforowanie: : %1%</translation>
     </message>
 </context>
 <context>

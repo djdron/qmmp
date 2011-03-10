@@ -88,7 +88,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="343"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj szablon</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
