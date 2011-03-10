@@ -2,13 +2,17 @@ Podziękowania:
 
     Adria Arrufat <swiftscythe@gmail.com> - raporty błędów
     Adrian Knoth <adi@drcomp.erfurt.thur.de> - poprawki dla wtyczki jack, raporty błędów
+    Anton Petrusevich <casus@casus.us> - ulepszenia losowego odtwarzania
+    Avihay Baratz <avihayb@gmail.com> - funkcja auto stop, poprawki błędów
     Csaba Hruska <csaba.hruska@gmail.com> - poprawki dla wtyczki ffmpeg
     Dmitry Kostin <kostindima@gmail.com> - wsparcie dla iso.wv
+    Evgeny Gleyzerman <evgley@gmail.com> - poprawki przetwarzania cue
     Gennadi Motsyo <drool@altlinux.ru> - raporty błędów
     Vadim Kalinnikov <moose@ylsoftware.com> - hosting projektu
     Erik Ölsar <erlk.ozlr@gmail.com> - wsparcie dla kursorów z motywu, udoskonalenia dla ui
     Funda Wang <fundawang@gmail.com> - poprawki plików cmake
     Michail Zheludkov <zheludkovm@mail.ru> - poprawki dla wtyczki ffmpeg
+    Michał Grosicki <grosik88@o2.pl> - poprawki wtyczki alsa
     Panagiotis Papadopoulos <pano_90@gmx.net> - poprawki ui, raporty błędów
     Pino Toscano <toscano.pino@tiscali.it> - poprawki dotyczące przenośności programu
     Karel Volný <kvolny@redhat.com> - różne poprawki
