@@ -42,7 +42,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати шаблон</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
