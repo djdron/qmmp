@@ -895,7 +895,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати шаблон</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
@@ -905,7 +905,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Вирівнювати номери фрагментів</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="784"/>
