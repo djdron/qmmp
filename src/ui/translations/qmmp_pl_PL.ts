@@ -905,7 +905,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation>Pokaż numery utworów</translation>
+        <translation>Wyrównaj w pionie numery utworów</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="784"/>
