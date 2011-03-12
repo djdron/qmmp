@@ -174,10 +174,12 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
 
     QPoint pp = e->pos();
     pp.rx() += m_offset;
+    bool selected = false;
     for(int i = 0; i < m_rects.count(); ++i)
     {
         if(m_rects.at(i).contains(pp))
         {
+            selected = true;
             m_pl_manager->selectPlayList(i);
             break;
         }
@@ -185,6 +187,8 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
     update();
     if(e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
+    else if(e->button() == Qt::MiddleButton && selected)
+        m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
     else
         QWidget::mousePressEvent(e);
 }
