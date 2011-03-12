@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Opciones comunes</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic file detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Detectar archivo automáticamente</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
