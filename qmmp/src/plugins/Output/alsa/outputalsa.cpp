@@ -283,7 +283,13 @@ qint64 OutputALSA::writeAudio(unsigned char *data, qint64 maxSize)
 
 long OutputALSA::alsa_write(unsigned char *data, long size)
 {
-    long m = 0;
+    long m = snd_pcm_avail_update(pcm_handle);
+    if(m >= 0 && m < size)
+    {
+        snd_pcm_wait(pcm_handle, 500);
+        return 0;
+    }
+
     if (m_use_mmap)
         m = snd_pcm_mmap_writei (pcm_handle, data, size);
     else
