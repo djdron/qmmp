@@ -263,7 +263,7 @@ Version 0.3.0
 * added more formats provided by ffmpeg library (including monkey's audio)
 * added global hotkey support
 * added mpris support
-* added lyrics plugin (uses lyricswiki.org)
+* added lyrics plugin (uses lyricwiki.org)
 * added removable device support (with help of hal)
 * added file operations plugin
 * added projectm visual plugin
@@ -401,3 +401,75 @@ Version 0.4.0
 * updated Hungarian translation (Németh Gábor)
 * updated Lithuanian translation (Algirdas Butkus)
 * updated Polish translation (Grzegorz Gibas)
+
+Version 0.4.1
+* added Dutch translation (Ronald Uitermark)
+* added shorten audio format
+* fixed flv playback
+* fixed mplayer support
+* fixed popup notifications
+* fixed time format
+* fixed possible segmentation fault
+* fixed bug which causes equalizer to appear when closing the preferences window
+* fixed notification template
+* fixed mpris regression
+* fixed url dialog
+* fixed removable volumes detection
+* fixed problem with metadata updating
+* skip invalid files
+* removed obsolete memalign function
+
+Version 0.4.2
+* added Japanese translation (RyoTa SimaMoto)
+* added Spanish translation (Félix Medrano)
+* added offset support into mplayer plugin
+* updated German translation (Panagiotis Papadopoulos)
+* updated Polish translation (Grzegorz Gibas)
+* fixed build scripts
+* fixed shorten playback
+* fixed freezes on corrupted files
+* fixed problem with UDS under freebsd (RyoTa SimaMoto)
+* fixed oss delays
+* fixed possible freezes with mplayer plugin
+* fixed problems with some video files 
+* fixed lyrics plugin (due api changes)
+* fixed template parsing (Avihay Baratz)
+* optimized tag editor form
+* removed deprecated functions from jack plugin
+
+Version 0.4.3
+* added dvd autodetection
+* added possibility to center balance on middle-click (Panagiotis Papadopoulos)
+* fixed build (Christian Morales Vega)
+* fixed problems with pidgin-musictracker
+* fixed command line processing
+* fixed skins list update
+* fixed segmentation fault on video playback
+* fixed bug with 'next' command processing
+* fixed memory leak
+* fixed vorbis comment saving
+* fixed aac streams support
+* fixed ape noise while seeking
+* fixed Russian translation
+* fixed crash when adding multiple directories simultaneously
+* fixed add/remove effects problem
+
+Version 0.4.4
+* added possibility to save cue tracks inside playlist files
+* optimized ladspa plugin
+* fixed random playback (Anton Petrusevich)
+* fixed metacity support
+* fixed windows titles
+* fixed cue parsing
+* fixed problem with glibc 2.13 (Michał Grosicki) 
+* switched to LyricWiki again
+* updated Japanese translation (Ryota Shimamoto)
+* updated Russian translation
+
+Version 0.4.5
+* added support for read-only options to ladspa plugin
+* fixed qmake build (Ryota Shimamoto)
+* fixed headers list (Ryota Shimamoto)
+* fixed typos
+* fixed scrobbler plugin (Ferdinand Vesely)
+* updated Japanese translation (Ryota Shimamoto)
