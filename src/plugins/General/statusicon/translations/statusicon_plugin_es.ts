@@ -42,7 +42,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar la plantilla</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>

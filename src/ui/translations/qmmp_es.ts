@@ -94,367 +94,367 @@
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Reproducir</translation>
+        <translation>&amp;Reproducir</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished">&amp;Pausar</translation>
+        <translation>&amp;Pausar</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>C</source>
-        <translation type="unfinished">C</translation>
+        <translation>C</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished">&amp;Detener</translation>
+        <translation>&amp;Detener</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>V</source>
-        <translation type="unfinished">V</translation>
+        <translation>V</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Previous</source>
-        <translation type="unfinished">&amp;Anterior</translation>
+        <translation>&amp;Anterior</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>Z</source>
-        <translation type="unfinished">Z</translation>
+        <translation>Z</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Next</source>
-        <translation type="unfinished">&amp;Siguiente</translation>
+        <translation>&amp;Siguiente</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>B</source>
-        <translation type="unfinished">B</translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished">&amp;Reproducir/Pausar</translation>
+        <translation>&amp;Reproducir/Pausar</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>Space</source>
-        <translation type="unfinished">Space</translation>
+        <translation>Espacio</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Jump to File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ir al archivo</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished">&amp;Repetir la lista</translation>
+        <translation>&amp;Repetir la lista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>R</source>
-        <translation type="unfinished">R</translation>
+        <translation>R</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished">&amp;Repetir pista</translation>
+        <translation>&amp;Repetir pista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished">Ctrl+R</translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished">&amp;Revolver</translation>
+        <translation>&amp;Revolver</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>S</source>
-        <translation type="unfinished">S</translation>
+        <translation>S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;No avanzar en la lista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>&amp;Stop After Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Parar tras los seleccionados</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>&amp;Clear Queue</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Limpiar la Cola</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>Alt+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Q</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Show Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar la lista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Alt+E</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+E</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Show Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar el ecualizador</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Alt+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+G</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Always on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Siempre encima</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="56"/>
         <source>Put on All Workspaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Ver en todos los escritorios</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
         <source>Double Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño doble</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">&amp;Añadir archivo</translation>
+        <translation>&amp;Añadir archivo</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>F</source>
-        <translation type="unfinished">F</translation>
+        <translation>F</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">&amp;Añadir directorio</translation>
+        <translation>&amp;Añadir directorio</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>D</source>
-        <translation type="unfinished">D</translation>
+        <translation>D</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished">&amp;Añadir URL</translation>
+        <translation>&amp;Añadir URL</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>U</source>
-        <translation type="unfinished">U</translation>
+        <translation>U</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">&amp;Eliminar los seleccionados</translation>
+        <translation>&amp;Eliminar los seleccionados</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Del</source>
-        <translation type="unfinished">Del</translation>
+        <translation>Supr</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Eliminar todo</translation>
+        <translation>&amp;Eliminar todo</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">&amp;Eliminar los no seleccionados</translation>
+        <translation>&amp;Eliminar los no seleccionados</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished">Eliminar los archivos no disponibles</translation>
+        <translation>Eliminar los archivos no disponibles</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished">Eliminar los duplicados</translation>
+        <translation>Eliminar los duplicados</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="70"/>
         <source>&amp;Queue Toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cambiar de cola</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="70"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
         <source>Invert Selection</source>
-        <translation type="unfinished">Invertir la selección</translation>
+        <translation>Invertir la selección</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
         <source>&amp;Select None</source>
-        <translation type="unfinished">&amp;No seleccionar nada</translation>
+        <translation>&amp;No seleccionar nada</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Seleccionar todo</translation>
+        <translation>&amp;Seleccionar todo</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="74"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished">Ctrl+A</translation>
+        <translation>Ctrl+A</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;View Track Details</source>
-        <translation type="unfinished">&amp;Ver detalles de la pista</translation>
+        <translation>&amp;Ver detalles de la pista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>Alt+I</source>
-        <translation type="unfinished">Alt+I</translation>
+        <translation>Alt+I</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;New List</source>
-        <translation type="unfinished">&amp;Nueva lista</translation>
+        <translation>&amp;Lista nueva</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished">&amp;Borrar lista</translation>
+        <translation>&amp;Borrar la lista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished">Ctrl+W</translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
         <source>&amp;Load List</source>
-        <translation type="unfinished">&amp;Cargar lista</translation>
+        <translation>&amp;Cargar una lista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
         <source>O</source>
-        <translation type="unfinished">O</translation>
+        <translation>O</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;Save List</source>
-        <translation type="unfinished">&amp;Guardar lista</translation>
+        <translation>&amp;Guardar la lista</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>Shift+S</source>
-        <translation type="unfinished">Shift+S</translation>
+        <translation>Shift+S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished">&amp;Seleccionar la lista siguiente</translation>
+        <translation>&amp;Seleccionar la lista siguiente</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished">Ctrl+PgDown</translation>
+        <translation>Ctrl+AvPág</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished">&amp;Seleccionar la lista anterior</translation>
+        <translation>&amp;Seleccionar la lista anterior</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="84"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished">Ctrl+PgUp</translation>
+        <translation>Ctrl+RePág</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished">&amp;Mostrar las listas</translation>
+        <translation>&amp;Mostrar las listas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>P</source>
-        <translation type="unfinished">P</translation>
+        <translation>P</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished">&amp;Configuración</translation>
+        <translation>&amp;Configuración</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished">Ctrl+P</translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;About</source>
-        <translation type="unfinished">&amp;Acerca de</translation>
+        <translation>&amp;Acerca de</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished">&amp;Acerca de Qt</translation>
+        <translation>&amp;Acerca de Qt</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">&amp;Salir</translation>
+        <translation>&amp;Salir</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished">Ctrl+Q</translation>
+        <translation>Ctrl+Q</translation>
     </message>
 </context>
 <context>
@@ -500,7 +500,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="54"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">No limpiar la lista de reproducción</translation>
+        <translation>No limpiar la lista de reproducción</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="56"/>
@@ -594,7 +594,7 @@
     <message>
         <location filename="../configdialog.cpp" line="372"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Varios</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="431"/>
@@ -859,12 +859,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1189"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño del buffer:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1202"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1231"/>
@@ -880,7 +880,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="152"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Atajos</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="261"/>
@@ -895,17 +895,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar la plantilla</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar ancla</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinear los números de canción</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="784"/>
@@ -981,17 +981,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1272"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Acción</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1277"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Atajo</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1285"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar atajo...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="559"/>
@@ -1102,7 +1102,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="43"/>
         <source>Equalizer</source>
-        <translation type="unfinished">Ecualizador</translation>
+        <translation>Ecualizador</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="392"/>
@@ -1226,27 +1226,27 @@
     <message>
         <location filename="../display.cpp" line="296"/>
         <source>Volume: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Volumen: %1%</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="300"/>
         <source>Balance: %1% right</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance: %1% derecha</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="302"/>
         <source>Balance: %1% left</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance: %1% izquierda</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="304"/>
         <source>Balance: center</source>
-        <translation type="unfinished"></translation>
+        <translation>Balance: centro</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="315"/>
         <source>Seek to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir hasta: %1</translation>
     </message>
 </context>
 <context>
@@ -1407,12 +1407,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>View</source>
-        <translation type="unfinished">Ver</translation>
+        <translation>Ver</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>Playlist</source>
-        <translation type="unfinished">Lista de reproducción</translation>
+        <translation>Lista de reproducción</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="512"/>
@@ -1446,7 +1446,7 @@
     <message>
         <location filename="../playlist.cpp" line="178"/>
         <source>&amp;Copy Selection To</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Copiar la selección a</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="205"/>
@@ -1507,7 +1507,7 @@
     <message>
         <location filename="../playlist.cpp" line="551"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lista nueva</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="232"/>
@@ -1518,7 +1518,7 @@
     <message>
         <location filename="../playlist.cpp" line="54"/>
         <source>Playlist</source>
-        <translation type="unfinished">Lista de reproducción</translation>
+        <translation>Lista de reproducción</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="284"/>
@@ -1775,7 +1775,7 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="181"/>
         <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
+        <translation>No iniciar la aplicación</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="189"/>
@@ -1788,17 +1788,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar atajo</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulse la combinación de teclas que quiere asignar</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrar</translation>
     </message>
 </context>
 <context>
@@ -1811,7 +1811,7 @@
     <message>
         <location filename="../textscroller.cpp" line="117"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargando: %1%</translation>
     </message>
 </context>
 <context>
