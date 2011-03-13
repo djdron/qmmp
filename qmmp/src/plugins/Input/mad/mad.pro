@@ -16,7 +16,7 @@ TARGET = $$PLUGINS_PREFIX/Input/mad
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmad.so
 INCLUDEPATH += ../../../ \
     ./
-win32:INCLUDEPATH += D:\qt\MINGW\include\taglib
+win32:INCLUDEPATH += D:\qt4\MINGW\include\taglib
 CONFIG += release \
     warn_on \
     plugin \
