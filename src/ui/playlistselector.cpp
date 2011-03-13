@@ -187,7 +187,7 @@ void PlayListSelector::mousePressEvent (QMouseEvent *e)
     update();
     if(e->button() == Qt::RightButton)
         m_menu->exec(e->globalPos());
-    else if(e->button() == Qt::MiddleButton && selected)
+    else if(e->button() == Qt::MidButton && selected)
         m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
     else
         QWidget::mousePressEvent(e);
