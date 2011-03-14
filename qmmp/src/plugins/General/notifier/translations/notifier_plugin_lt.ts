@@ -77,7 +77,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="343"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Taisyti šabloną</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="41"/>

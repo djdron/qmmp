@@ -6,32 +6,32 @@
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="43"/>
         <source>WildMidi Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>WildMidi įskiepis</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="45"/>
         <source>Midi Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Midi bylos</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="100"/>
         <source>About WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Apie WildMidi Audio įskiepį</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="101"/>
         <source>Qmmp WildMidi Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp WildMidi Audio įskiepis</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="102"/>
         <source>This plugin uses WildMidi library to play midi files</source>
-        <translation type="unfinished"></translation>
+        <translation>Šis įskiepis naudoja WildMidi biblioteką midi bylų grojimui</translation>
     </message>
     <message>
         <location filename="../decoderwildmidifactory.cpp" line="103"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Sukūrė: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>WildMidi Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>WildMidi įskiepio nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Instrument configuration: </source>
-        <translation type="unfinished"></translation>
+        <translation>Instrumentų nustatymai:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="53"/>

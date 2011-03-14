@@ -94,7 +94,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Groti</translation>
+        <translation>&amp;Groti</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished">&amp;Pristabdyti</translation>
+        <translation>&amp;Pristabdyti</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished">&amp;Sustabdyti</translation>
+        <translation>&amp;Sustabdyti</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
@@ -124,7 +124,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Previous</source>
-        <translation type="unfinished">&amp;Ankstesnis</translation>
+        <translation>&amp;Ankstesnis</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
@@ -134,7 +134,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Next</source>
-        <translation type="unfinished">&amp;Sekantis</translation>
+        <translation>&amp;Sekantis</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
@@ -144,17 +144,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished">&amp;Groti/Pristabdyti</translation>
+        <translation>&amp;Groti/Pristabdyti</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>Space</source>
-        <translation type="unfinished">Tarpas</translation>
+        <translation>Tarpas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Jump to File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Peršokti prie failo</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
@@ -164,7 +164,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished">&amp;Kartoti grojaraštį</translation>
+        <translation>&amp;Kartoti grojaraštį</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
@@ -174,7 +174,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished">&amp;Kartoti takelį</translation>
+        <translation>&amp;Kartoti takelį</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -184,7 +184,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished">&amp;Atsitiktine tvarka</translation>
+        <translation>&amp;Sumaišyti</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
@@ -194,7 +194,8 @@
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>?????</translatorcomment>
+        <translation>&amp;Nesislinkti grojaraščiu</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
@@ -204,7 +205,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>&amp;Stop After Selected</source>
-        <translation type="unfinished">&amp;Stabdyti po pasirinkto</translation>
+        <translation>&amp;Stabdyti po pasirinkto</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
@@ -214,7 +215,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>&amp;Clear Queue</source>
-        <translation type="unfinished">&amp;Išvalyti eilę</translation>
+        <translation>&amp;Išvalyti eilę</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
@@ -224,7 +225,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Show Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti grojaraštį</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
@@ -234,7 +235,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Show Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodyti glotintuvą</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
@@ -244,22 +245,22 @@
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Always on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Visada viršuje</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="56"/>
         <source>Put on All Workspaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Įkelti į visus darbastalius</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
         <source>Double Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvigubas dydis</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">&amp;Pridėti bylą</translation>
+        <translation>&amp;Pridėti bylą</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
@@ -269,7 +270,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">&amp;Pridėti aplanką</translation>
+        <translation>&amp;Pridėti aplanką</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
@@ -279,7 +280,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished">&amp;Pridėti interneto adresą</translation>
+        <translation>&amp;Pridėti interneto adresą</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
@@ -289,7 +290,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">&amp;Pašalinti pasirinktus</translation>
+        <translation>&amp;Pašalinti pasirinktus</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
@@ -299,27 +300,27 @@
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Pašalinti visus</translation>
+        <translation>&amp;Pašalinti visus</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">&amp;Pašalinti NEpasirinktus</translation>
+        <translation>&amp;Pašalinti NEpasirinktus</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished">Pašalinti neesamas bylas</translation>
+        <translation>Pašalinti neesamas bylas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished">Pašalinti besidubliuojančius pavadinimus</translation>
+        <translation>Pašalinti besidubliuojančius pavadinimus</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="70"/>
         <source>&amp;Queue Toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Įtraukti į eilę</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="70"/>
@@ -329,17 +330,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
         <source>Invert Selection</source>
-        <translation type="unfinished">Pasirinkti visus, išskyrus pažymėtą</translation>
+        <translation>Apverstinis pasirinkimas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
         <source>&amp;Select None</source>
-        <translation type="unfinished">&amp;Nepasirinkti nei vieno</translation>
+        <translation>&amp;Nepasirinkti nei vieno</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Pasirinkti visus</translation>
+        <translation>&amp;Pasirinkti visus</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="74"/>
@@ -349,7 +350,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;View Track Details</source>
-        <translation type="unfinished">&amp;Takelio informacija</translation>
+        <translation>&amp;Takelio informacija</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
@@ -359,7 +360,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;New List</source>
-        <translation type="unfinished">&amp;Naujas sąrašas</translation>
+        <translation>&amp;Naujas sąrašas</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
@@ -369,7 +370,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished">&amp;Pašalinti sąrašą</translation>
+        <translation>&amp;Pašalinti sąrašą</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
@@ -379,7 +380,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
         <source>&amp;Load List</source>
-        <translation type="unfinished">&amp;Įkelti sąrašą</translation>
+        <translation>&amp;Įkelti sąrašą</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
@@ -389,7 +390,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;Save List</source>
-        <translation type="unfinished">&amp;Išsaugoti sąrašą</translation>
+        <translation>&amp;Išsaugoti sąrašą</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
@@ -399,7 +400,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished">&amp;Pasirinkti sekantį grojaraštį</translation>
+        <translation>&amp;Pasirinkti sekantį grojaraštį</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
@@ -409,7 +410,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished">&amp;Pasirinkti ankstesnį grojaraštį</translation>
+        <translation>&amp;Pasirinkti ankstesnį grojaraštį</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="84"/>
@@ -419,7 +420,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished">&amp;Rodyti grojaraščius</translation>
+        <translation>&amp;Rodyti grojaraščius</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
@@ -429,7 +430,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished">&amp;Nustatymai</translation>
+        <translation>&amp;Nustatymai</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
@@ -439,17 +440,17 @@
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;About</source>
-        <translation type="unfinished">&amp;Apie</translation>
+        <translation>&amp;Apie</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished">&amp;Apie Qt</translation>
+        <translation>&amp;Apie Qt</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">&amp;Išeiti</translation>
+        <translation>&amp;Išeiti</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -594,7 +595,7 @@
     <message>
         <location filename="../configdialog.cpp" line="372"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Įvairūs</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="431"/>
@@ -732,7 +733,7 @@
         <location filename="../forms/configdialog.ui" line="463"/>
         <location filename="../configdialog.cpp" line="366"/>
         <source>Playlist</source>
-        <translation>Grojaraštį</translation>
+        <translation>Grojaraštis</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="116"/>
@@ -881,7 +882,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="152"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Santrumpos</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="261"/>
@@ -896,7 +897,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Taisyti šabloną</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="628"/>
@@ -906,7 +907,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Lygiuoti dainų numerius</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="784"/>
@@ -982,17 +983,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="1272"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Veiksmas</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1277"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Trumpinys</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="1285"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
+        <translation>Keisti trumpinį...</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="559"/>
@@ -1103,7 +1104,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="43"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Glotintuvas</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="392"/>
@@ -1227,27 +1228,27 @@
     <message>
         <location filename="../display.cpp" line="296"/>
         <source>Volume: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Garsas: %1%</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="300"/>
         <source>Balance: %1% right</source>
-        <translation type="unfinished"></translation>
+        <translation>Balansas: %1% dešinė</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="302"/>
         <source>Balance: %1% left</source>
-        <translation type="unfinished"></translation>
+        <translation>Balansas: %1% kairė</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="304"/>
         <source>Balance: center</source>
-        <translation type="unfinished"></translation>
+        <translation>Balansas: centras</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="315"/>
         <source>Seek to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Peršokti į: %1</translation>
     </message>
 </context>
 <context>
@@ -1408,12 +1409,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>View</source>
-        <translation type="unfinished">Rodyti</translation>
+        <translation>Rodyti</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="440"/>
         <source>Playlist</source>
-        <translation type="unfinished">Grojaraštis</translation>
+        <translation>Grojaraštis</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="512"/>
@@ -1508,7 +1509,7 @@
     <message>
         <location filename="../playlist.cpp" line="551"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished">&amp;Naujas grojaraštis</translation>
+        <translation>&amp;Naujas grojaraštis</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="232"/>
@@ -1519,7 +1520,7 @@
     <message>
         <location filename="../playlist.cpp" line="54"/>
         <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Grojaraštis</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="284"/>
@@ -1789,17 +1790,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Keisti trumpinį</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Paspauskite klavišų kombinaciją, kurią norite priskirti</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>Išvalyti</translation>
     </message>
 </context>
 <context>
@@ -1812,7 +1813,7 @@
     <message>
         <location filename="../textscroller.cpp" line="117"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Buferis: %1%</translation>
     </message>
 </context>
 <context>

@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Bendri nustatymai</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic file detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatinis bylų aptikimas</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
