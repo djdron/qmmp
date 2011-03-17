@@ -473,3 +473,49 @@ Version 0.4.5
 * fixed typos
 * fixed scrobbler plugin (Ferdinand Vesely)
 * updated Japanese translation (Ryota Shimamoto)
+
+Version 0.5.0
+* added extra stereo plugin
+* added udisks plugin
+* added midi support
+* added chiptune formats support
+* added crossfade effect (experimental)
+* added mpris 2.0 support
+* added scrobbling 2.0 protocol support
+* added xdg icons support
+* added tint2/lxpanel support
+* added wm autodetection
+* added lxde integration
+* added possibility to center balance on middle-click
+* added --status and --nowplaying command line options 
+* added possibility to move tabs
+* added possibility to copy tracks between  playlists (Avihay Baratz)
+* added 'show on all desktops' option
+* added 96 kHz samplerate support to equalizer
+* added icons for udisks/hal devices
+* added button to the details dialog, that opens up the directory of that file (thanks to Panagiotis Papadopoulos)
+* added audio buffer size option
+* added 'show playlist' and 'show equalizer' hotkeys
+* added shortcut editor
+* added 'stop after current song' and 'no playlist advance' features (Avihay Baratz)
+* added song numbers alignment
+* reduced seeking delay
+* reduced equalizer delay
+* reworked main menu
+* improved cue plugin (Evgeny Gleyzerman)
+* improved audio effects implementation
+* improved playlist mapping
+* improved text scroller
+* moved OSS4 support to separate plugin
+* fixed playlist behavior (Avihay Baratz)
+* fixed problems with large fonts in playlist
+* fixed problems with invalid URLs
+* fixed WM_CLASS/WM_ROLE properties
+* fixed format detection by mime type
+* updated Russian translation
+* updated Ukrainian translation (Gennadi Motsyo)
+* updated Polish translation (Grzegorz Gibas)
+* updated Japanese translation (Ryota Shimamoto)
+* updated German translation (Panagiotis Papadopoulos)
+* updated Spanish translation (Félix Medrano)
+* updated Lithuanian translation (Algirdas Butkus)
