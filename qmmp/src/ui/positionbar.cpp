@@ -44,6 +44,8 @@ PositionBar::~PositionBar()
 
 void PositionBar::mousePressEvent(QMouseEvent *e)
 {
+    if(m_max <= 0)
+        return;
     m_moving = true;
     press_pos = e->x();
     if (m_pos<e->x() && e->x()<m_pos+29*m_skin->ratio())
