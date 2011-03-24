@@ -118,10 +118,13 @@ Also you can use ccmake for changing plugins configuration.
 By default program will be installed in /usr/local. You can change default path by running:
 cmake ./ -DCMAKE_INSTALL_PREFIX=custom_path
 
+OSS4 support.
+OSS4 plugin is disabled by default. To enable it run cmake ./ -DUSE_OSS4:BOOL=TRUE before compilation.
+
 In some cases, you can use qmake for building and installation.
 
 Configure:
-qmake-qt4 (or qmake)
+qmake
 
 Build:
 make
@@ -134,7 +137,7 @@ Executable:
 
 If someone module doesn't build or doesn't needed you can disable it
 in qmmp.pri file - just comment corresponding line( symbol '#').
-Attention! By default all modules are enabled.
+Attention! By default all plugins except OSS4 are enabled by default.
 
 Changing shared library install path (needed by some 64-bit distributions).
 By default, all libraries and plugins will be installed to $(INSTALL PREFIX)/lib. You can change "lib"
@@ -143,8 +146,6 @@ qmake-qt4 LIB_DIR=/lib64
 or
 cmake ./ -DLIB_DIR=lib64
 
-OSS4 support.
-OSS4 plugin is disabled by default. To enable it run cmake ./ -DUSE_OSS4:BOOL=TRUE before compilation.
 
 All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
 http://code.google.com/p/qmmp/issues/list
