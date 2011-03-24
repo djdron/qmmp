@@ -258,6 +258,11 @@
         <translation>Dvigubas dydis</translation>
     </message>
     <message>
+        <location filename="../actionmanager.cpp" line="57"/>
+        <source>Meta+D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>&amp;Add File</source>
         <translation>&amp;Pridėti bylą</translation>
