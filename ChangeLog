@@ -52,7 +52,7 @@ Version 0.0.6
 * added equalizer preset support
 * added ffmpeg support plugin for playing WMA files
 * fixed bug in mad plugin, which cause program crash with invalid file paths
-* fixed bug in Jack plugin, which cause program crash when Jack server is 
+* fixed bug in Jack plugin, which cause program crash when Jack server is
   not running (Yuriy Zhuravlev)
 * added pkgconfig support for building
 
@@ -431,7 +431,7 @@ Version 0.4.2
 * fixed problem with UDS under freebsd (RyoTa SimaMoto)
 * fixed oss delays
 * fixed possible freezes with mplayer plugin
-* fixed problems with some video files 
+* fixed problems with some video files
 * fixed lyrics plugin (due api changes)
 * fixed template parsing (Avihay Baratz)
 * optimized tag editor form
@@ -461,7 +461,7 @@ Version 0.4.4
 * fixed metacity support
 * fixed windows titles
 * fixed cue parsing
-* fixed problem with glibc 2.13 (Michał Grosicki) 
+* fixed problem with glibc 2.13 (Michał Grosicki)
 * switched to LyricWiki again
 * updated Japanese translation (Ryota Shimamoto)
 * updated Russian translation
@@ -487,7 +487,7 @@ Version 0.5.0
 * added wm autodetection
 * added lxde integration
 * added possibility to center balance on middle-click
-* added --status and --nowplaying command line options 
+* added --status and --nowplaying command line options
 * added possibility to move tabs
 * added possibility to copy tracks between  playlists (Avihay Baratz)
 * added 'show on all desktops' option
@@ -510,7 +510,7 @@ Version 0.5.0
 * fixed playlist behavior (Avihay Baratz)
 * fixed problems with large fonts in playlist
 * fixed problems with invalid URLs
-* fixed WM_CLASS/WM_ROLE properties
+* fixed window WM_CLASS/WM_ROLE properties
 * fixed format detection by mime type
 * updated Russian translation
 * updated Ukrainian translation (Gennadi Motsyo)
