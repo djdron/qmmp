@@ -305,9 +305,9 @@ void Output::run()
         mutex()->unlock();
         if (b)
         {
-            dispatchVisual(b);
             if (m_useEq)
                 iir((void*) b->data, b->nbytes, m_channels);
+            dispatchVisual(b);
             if (SoftwareVolume::instance())
                 SoftwareVolume::instance()->changeVolume(b, m_channels, m_format);
             l = 0;
