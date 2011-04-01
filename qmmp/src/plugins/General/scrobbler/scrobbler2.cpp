@@ -400,13 +400,15 @@ void Scrobbler2::submit()
     }
     data.append(SECRET);
     body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
+    QByteArray bodyData =  body.toEncoded().remove(0,1);
+    bodyData.replace("+", QUrl::toPercentEncoding("+"));
 
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", m_ua);
     request.setRawHeader("Host", url.host().toAscii());
     request.setRawHeader("Accept", "*/*");
-    request.setHeader(QNetworkRequest::ContentLengthHeader,  body.toEncoded().remove(0,1).size());
-    m_submitReply = m_http->post(request, body.toEncoded().remove(0,1));
+    request.setHeader(QNetworkRequest::ContentLengthHeader, bodyData.size());
+    m_submitReply = m_http->post(request, bodyData);
 }
 
 void Scrobbler2::sendNotification(const SongInfo &info)
@@ -445,13 +447,15 @@ void Scrobbler2::sendNotification(const SongInfo &info)
     }
     data.append(SECRET);
     body.addQueryItem("api_sig", QCryptographicHash::hash(data, QCryptographicHash::Md5).toHex());
+    QByteArray bodyData =  body.toEncoded().remove(0,1);
+    bodyData.replace("+", QUrl::toPercentEncoding("+"));
 
     QNetworkRequest request(url);
     request.setRawHeader("User-Agent", m_ua);
     request.setRawHeader("Host", url.host().toAscii());
     request.setRawHeader("Accept", "*/*");
-    request.setHeader(QNetworkRequest::ContentLengthHeader,  body.toEncoded().remove(0,1).size());
-    m_notificationReply = m_http->post(request, body.toEncoded().remove(0,1));
+    request.setHeader(QNetworkRequest::ContentLengthHeader,  bodyData.size());
+    m_notificationReply = m_http->post(request, bodyData);
 }
 
 void Scrobbler2::syncCache()
