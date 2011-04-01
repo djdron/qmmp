@@ -41,7 +41,6 @@ class GeneralHandler;
 class MediaPlayer;
 class QMenu;
 class QKeyEvent;
-class BuiltinCommandLineOption;
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -50,7 +49,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    MainWindow(const QStringList& args, BuiltinCommandLineOption*, QWidget *parent);
+    MainWindow(QWidget *parent = 0);
 
     ~MainWindow();
 
@@ -60,7 +59,7 @@ public:
     void setVolume(int volume, int balance);
     SoundCore* soundCore()const;
     MainDisplay* mainDisplay()const;
-    QString processCommandArgs(const QStringList &list,const QString& cwd);
+    void resume();
 
 public slots:
     void previous();
@@ -102,7 +101,6 @@ private:
     void readSettings();
     void writeSettings();
     void createActions();
-    void resume();
     SoundCore *m_core;
     QMenu *m_mainMenu;
     MainDisplay *m_display;
@@ -118,7 +116,6 @@ private:
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;
     VisualMenu *m_visMenu;
-    BuiltinCommandLineOption* m_option_manager;
     GeneralHandler *m_generalHandler;
     MediaPlayer *m_player;
 };
