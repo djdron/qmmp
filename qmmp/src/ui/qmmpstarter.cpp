@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -112,7 +112,7 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
         exit(0);
 }
 
-QMMPStarter::~ QMMPStarter()
+QMMPStarter::~QMMPStarter()
 {
     if (mw)
         delete mw;
@@ -121,8 +121,11 @@ QMMPStarter::~ QMMPStarter()
 void QMMPStarter::startMainWindow()
 {
     connect(m_server, SIGNAL(newConnection()), SLOT(readCommand()));
-    QStringList arg_l = argString.split("\n", QString::SkipEmptyParts);
-    mw = new MainWindow(arg_l,m_option_manager,0);
+    QStringList args = argString.split("\n", QString::SkipEmptyParts);
+    mw = new MainWindow();
+    processCommandArgs(args, QDir::currentPath());
+    if(args.isEmpty())
+        mw->resume();
 }
 
 void QMMPStarter::writeCommand()
@@ -153,7 +156,7 @@ void QMMPStarter::writeCommand()
 }
 
 void QMMPStarter::readCommand()
-{   
+{
     QLocalSocket *socket = m_server->nextPendingConnection();
     socket->waitForReadyRead();
     QByteArray inputArray = socket->readAll();
@@ -161,7 +164,7 @@ void QMMPStarter::readCommand()
         return;
     QStringList slist = QString::fromUtf8(inputArray.data()).split("\n",QString::SkipEmptyParts);
     QString cwd = slist.takeAt(0);
-    QString out = mw ? mw->processCommandArgs(slist, cwd) : QString();
+    QString out = processCommandArgs(slist, cwd);
     if(!out.isEmpty())
     {
         //writing answer
@@ -169,6 +172,39 @@ void QMMPStarter::readCommand()
         socket->flush();
     }
     socket->deleteLater();
+}
+
+QString QMMPStarter::processCommandArgs(const QStringList &slist, const QString& cwd)
+{
+    if(slist.isEmpty())
+        return QString();
+    QStringList paths;
+    foreach(QString arg, slist) //detect file/directory paths
+    {
+        if(arg.startsWith("-"))
+            break;
+        paths.append(arg);
+    }
+    if(!paths.isEmpty())
+    {
+        m_option_manager->executeCommand(QString(), paths, cwd, mw); //add paths only
+        return QString();
+    }
+    QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
+    if(commands.isEmpty())
+        return QString();
+    foreach(QString key, commands.keys())
+    {
+        if(key == "--no-start")
+            continue;
+        if (CommandLineManager::hasOption(key))
+            return CommandLineManager::executeCommand(key, commands.value(key));
+        else if (m_option_manager->identify(key))
+            m_option_manager->executeCommand(key, commands.value(key), cwd, mw);
+        else
+            return QString();
+    }
+    return QString();
 }
 
 void QMMPStarter::printUsage()

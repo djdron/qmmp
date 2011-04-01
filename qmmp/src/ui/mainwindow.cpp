@@ -53,15 +53,13 @@
 
 #define KEY_OFFSET 10000
 
-MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option_manager, QWidget *parent)
-        : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
 #ifdef Q_WS_X11
     qDebug("MainWindow: detected wm: %s", qPrintable(WindowSystem::netWindowManagerName()));
 #endif
     m_vis = 0;
     m_update = false;
-    m_option_manager = option_manager;
     setWindowIcon(QIcon(":/32x32/qmmp.png"));
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
                    Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
@@ -127,14 +125,8 @@ MainWindow::MainWindow(const QStringList& args, BuiltinCommandLineOption* option
     m_display->setPL(m_playlist);
     dock->updateDock();
     m_pl_manager->currentPlayList()->doCurrentVisibleRequest();
-#ifndef Q_OS_WIN32
-    QString cwd = QDir::currentPath();
-    processCommandArgs(args,cwd);
-#endif
     if (m_startHidden && m_generalHandler->visibilityControl())
         toggleVisibility();
-    if(args.isEmpty())
-        resume();
 }
 
 MainWindow::~MainWindow()
@@ -573,39 +565,6 @@ void MainWindow::playPause()
         m_core->pause();
     else
         play();
-}
-
-QString MainWindow::processCommandArgs(const QStringList &slist, const QString& cwd)
-{
-    if(slist.isEmpty())
-        return QString();
-    QStringList paths;
-    foreach(QString arg, slist) //detect file/directory paths
-    {
-        if(arg.startsWith("-"))
-            break;
-        paths.append(arg);
-    }
-    if(!paths.isEmpty())
-    {
-        m_option_manager->executeCommand(QString(), paths, cwd, this); //add paths only
-        return QString();
-    }
-    QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
-    if(commands.isEmpty())
-        return QString();
-    foreach(QString key, commands.keys())
-    {
-        if(key == "--no-start")
-            continue;
-        if (CommandLineManager::hasOption(key))
-            return CommandLineManager::executeCommand(key, commands.value(key));
-        else if (m_option_manager->identify(key))
-            m_option_manager->executeCommand(key, commands.value(key), cwd, this);
-        else
-            return QString();
-    }
-    return QString();
 }
 
 void MainWindow::jumpToFile()

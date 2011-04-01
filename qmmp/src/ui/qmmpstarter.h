@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,15 +42,17 @@ class QMMPStarter : public QObject
 public:
     QMMPStarter(int argc,char ** argv,QObject* parent = 0);
     ~QMMPStarter();
-protected slots:
 
+
+protected slots:
     /*!
      * Passes command args to the running application
      */
     void writeCommand();
-
     void readCommand();
+
 private:
+    QString processCommandArgs(const QStringList &list,const QString& cwd);
     /*!
      * Prints usage
      */
