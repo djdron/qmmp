@@ -2,7 +2,7 @@ SET(USE_SRC TRUE CACHE BOOL "enable/disable SRC plugin")
 SET(USE_BS2B TRUE CACHE BOOL "enable/disable bs2b plugin")
 SET(USE_LADSPA TRUE CACHE BOOL "enable/disable ladspa plugin")
 SET(USE_CROSSFADE TRUE CACHE BOOL "enable/disable crossfade plugin")
-SET(USE_STEREO TRUE CACHE BOLL "enable/disable extra stereo plugin")
+SET(USE_STEREO TRUE CACHE BOOL "enable/disable extra stereo plugin")
 
 IF(USE_SRC)
 add_subdirectory(srconverter)

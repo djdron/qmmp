@@ -12,8 +12,8 @@ SET(USE_MODPLUG TRUE CACHE BOOL "enable/disable modplug plugin")
 SET(USE_AAC     TRUE CACHE BOOL "enable/disable aac plugin")
 SET(USE_CUE     TRUE CACHE BOOL "enable/disable cue plugin")
 SET(USE_CDA     TRUE CACHE BOOL "enable/disable cd audio support")
-SET(USE_MIDI    TRUE CACHE BOLL "enable/disable midi support")
-SET(USE_GME     TRUE CACHE BOLL "enable/disable game music plugin")
+SET(USE_MIDI    TRUE CACHE BOOL "enable/disable midi support")
+SET(USE_GME     TRUE CACHE BOOL "enable/disable game music plugin")
 
 pkg_check_modules(TAGLIB taglib)
 
