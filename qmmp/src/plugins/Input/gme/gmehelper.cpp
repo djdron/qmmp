@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,14 +30,14 @@ GmeHelper::GmeHelper()
 GmeHelper::~GmeHelper()
 {
     if(m_emu)
-        delete m_emu;
+        gme_delete(m_emu);
     m_emu = 0;
 }
 
 Music_Emu *GmeHelper::load(const QString &url, int sample_rate)
 {
     if(m_emu)
-        delete m_emu;
+        gme_delete(m_emu);
     m_emu = 0;
     QString path = url;
     if(url.contains("://"))
@@ -60,24 +60,19 @@ Music_Emu *GmeHelper::load(const QString &url, int sample_rate)
         qWarning("DecoderGme: unsupporetd music type");
         return 0;
     }
-    if(!(m_emu = file_type->new_emu()))
+    if(!(m_emu = gme_new_emu(file_type, sample_rate)))
     {
         qWarning("GmeHelper: out of memory");
         return 0;
     }
-    if((err = m_emu->set_sample_rate(sample_rate)))
-    {
-        qWarning("GmeHelper: %s", err);
-        return 0;
-    }
-    if((err = m_emu->load_file(qPrintable(path))))
+    if((err = gme_load_file(m_emu, qPrintable(path))))
     {
         qWarning("GmeHelper: %s", err);
         return 0;
     }
     QString m3u_path = path.left(path.lastIndexOf("."));
     m3u_path.append(".m3u");
-    m_emu->load_m3u(qPrintable(m3u_path));
+    gme_load_m3u(m_emu, qPrintable(m3u_path));
     m_path = path;
     return m_emu;
 }
@@ -87,26 +82,25 @@ QList <FileInfo*> GmeHelper::createPlayList(bool meta)
     QList <FileInfo*> list;
     if(!m_emu)
         return list;
-    int count = m_emu->track_count();
-    track_info_t track_info;
+    int count = gme_track_count(m_emu);
+    gme_info_t *track_info;
     for(int i = 0; i < count; ++i)
     {
         FileInfo *info = new FileInfo();
-        m_emu->start_track(i);
-        if(!m_emu->track_info(&track_info))
+        if(!gme_track_info(m_emu, &track_info, i))
         {
-            if(track_info.length <= 0)
-                track_info.length = track_info.intro_length + track_info.loop_length * 2;
+            if(track_info->length <= 0)
+                track_info->length = track_info->intro_length + track_info->loop_length * 2;
         }
-        if(track_info.length <= 0)
-            track_info.length = (long) (2.5 * 60 * 1000);
-        if(track_info.length < FADE_LENGTH)
-            track_info.length += FADE_LENGTH;
+        if(track_info->length <= 0)
+            track_info->length = (long) (2.5 * 60 * 1000);
+        if(track_info->length < FADE_LENGTH)
+            track_info->length += FADE_LENGTH;
         if(meta)
         {
-            info->setMetaData(Qmmp::TITLE, track_info.song);
-            info->setMetaData(Qmmp::ARTIST, track_info.author);
-            info->setMetaData(Qmmp::COMMENT, track_info.comment);
+            info->setMetaData(Qmmp::TITLE, track_info->song);
+            info->setMetaData(Qmmp::ARTIST, track_info->author);
+            info->setMetaData(Qmmp::COMMENT, track_info->comment);
             info->setMetaData(Qmmp::TRACK, i+1);
         }
         QString path = m_path;
@@ -115,7 +109,8 @@ QList <FileInfo*> GmeHelper::createPlayList(bool meta)
         path.replace("?", QString(QUrl::toPercentEncoding("?")));
         path.replace(":", QString(QUrl::toPercentEncoding(":")));
         info->setPath("gme://"+path+QString("#%1").arg(i+1));
-        info->setLength(track_info.length/1000);
+        info->setLength(track_info->length/1000);
+        gme_free_info(track_info);
         list << info;
     }
     return list;

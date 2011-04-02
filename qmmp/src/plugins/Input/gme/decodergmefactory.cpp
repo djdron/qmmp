@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,6 @@
 
 #include <QtGui>
 #include <QRegExp>
-#include <gme/Gme_File.h>
 #include "gmehelper.h"
 #include "decoder_gme.h"
 #include "decodergmefactory.h"
