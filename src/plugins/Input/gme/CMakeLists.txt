@@ -28,7 +28,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libgme
 
-CHECK_INCLUDE_FILE_CXX(gme/Music_Emu.h GME_FOUND)
+CHECK_INCLUDE_FILE_CXX(gme/gme.h GME_FOUND)
 
 IF(GME_FOUND)
 
