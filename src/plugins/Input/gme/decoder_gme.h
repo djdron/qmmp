@@ -21,7 +21,7 @@
 #ifndef DECODER_GME_H
 #define DECODER_GME_H
 
-#include <gme/Music_Emu.h>
+#include <gme/gme.h>
 #include <qmmp/decoder.h>
 
 class GmeHelper;

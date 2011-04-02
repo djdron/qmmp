@@ -39,34 +39,35 @@ bool DecoderGme::initialize()
     if(!m_emu)
         return false;
 
-    int count = m_emu->track_count();
+    int count = gme_track_count(m_emu);
     if(track > count + 1 || track < 0)
     {
         qWarning("DecoderGme: track number is out of range");
-        delete m_emu;
+        gme_delete(m_emu);
         m_emu = 0;
         return false;
     }
-    m_emu->start_track(track - 1);
-    track_info_t track_info;
-    if(!m_emu->track_info(&track_info))
+    gme_start_track(m_emu, track - 1);
+    gme_info_t *track_info;
+    if(!gme_track_info(m_emu, &track_info, track - 1))
     {
-        if(track_info.length <= 0)
-            track_info.length = track_info.intro_length + track_info.loop_length * 2;
+        if(track_info->length <= 0)
+            track_info->length = track_info->intro_length + track_info->loop_length * 2;
     }
-    if(track_info.length <= 0)
-        track_info.length = (long) (2.5 * 60 * 1000);
-    if(track_info.length < m_helper.fadeLength())
-        track_info.length += m_helper.fadeLength();
-    m_emu->set_fade(track_info.length - m_helper.fadeLength(), m_helper.fadeLength());
+    if(track_info->length <= 0)
+        track_info->length = (long) (2.5 * 60 * 1000);
+    if(track_info->length < m_helper.fadeLength())
+        track_info->length += m_helper.fadeLength();
+    gme_set_fade(m_emu, track_info->length - m_helper.fadeLength());
     QMap<Qmmp::MetaData, QString> metadata;
-    metadata.insert(Qmmp::TITLE, track_info.song);
-    metadata.insert(Qmmp::ARTIST, track_info.author);
-    metadata.insert(Qmmp::COMMENT, track_info.comment);
+    metadata.insert(Qmmp::TITLE, track_info->song);
+    metadata.insert(Qmmp::ARTIST, track_info->author);
+    metadata.insert(Qmmp::COMMENT, track_info->comment);
     metadata.insert(Qmmp::TRACK, QString("%1").arg(track));
     metadata.insert(Qmmp::URL, m_path);
     StateHandler::instance()->dispatch(metadata);
-    m_totalTime = track_info.length;
+    m_totalTime = track_info->length;
+    gme_free_info(track_info);
     configure(44100, 2);
     qDebug("DecoderGme: initialize succes");
     return true;
@@ -79,7 +80,7 @@ qint64 DecoderGme::totalTime()
 
 void DecoderGme::seek(qint64 pos)
 {
-    m_emu->seek(pos);
+    gme_seek(m_emu, pos);
 }
 
 int DecoderGme::bitrate()
@@ -89,9 +90,11 @@ int DecoderGme::bitrate()
 
 qint64 DecoderGme::read(char *data, qint64 size)
 {
-    if(m_emu->track_ended())
+    if(gme_track_ended(m_emu))
         return 0;
-    if (m_emu->play(size/2, (short*)data))
+    if(m_totalTime && gme_tell(m_emu) > m_totalTime)
+        return 0;
+    if (gme_play(m_emu, size/2, (short*)data))
     {
         return 0;
     }
