@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -79,7 +79,6 @@ protected:
     void addDirectory(const QString &s);
 
 private:
-    QStringList m_filters;
     QQueue <QString> m_files;
     QQueue <QString> m_directories;
     bool m_finished;
