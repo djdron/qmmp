@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,8 +35,6 @@ MetaDataManager::MetaDataManager() : m_mutex(QMutex::Recursive)
     if(m_instance)
         qFatal("MetaDataManager is already created");
     m_instance = this;
-    m_decoderFactories = Decoder::factories();
-    m_engineFactories = AbstractEngine::factories();
     m_settings = QmmpSettings::instance();
 }
 
@@ -70,7 +68,7 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
             list << new FileInfo(fileName);
             return list;
         }
-        foreach(fact, *m_decoderFactories)
+        foreach(fact, *Decoder::factories())
         {
             if(fact->properties().protocols.contains(scheme) && Decoder::isEnabled(fact))
                 return fact->createPlayList(fileName, useMetaData);
@@ -83,6 +81,7 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
 {
     DecoderFactory *fact = 0;
     EngineFactory *efact = 0;
+
     if (!path.contains("://")) //local file
     {
         if(!QFile::exists(path))
@@ -115,12 +114,12 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
 QStringList MetaDataManager::filters() const
 {
     QStringList filters;
-    foreach(DecoderFactory *fact, *m_decoderFactories)
+    foreach(DecoderFactory *fact, *Decoder::factories())
     {
         if (Decoder::isEnabled(fact) && !fact->properties().filters.isEmpty())
             filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
     }
-    foreach(EngineFactory *fact, *m_engineFactories)
+    foreach(EngineFactory *fact, *AbstractEngine::factories())
     {
         if (AbstractEngine::isEnabled(fact) && !fact->properties().filters.isEmpty())
             filters << fact->properties().description + " (" + fact->properties().filters.join(" ") + ")";
@@ -131,12 +130,12 @@ QStringList MetaDataManager::filters() const
 QStringList MetaDataManager::nameFilters() const
 {
     QStringList filters;
-    foreach(DecoderFactory *fact, *m_decoderFactories)
+    foreach(DecoderFactory *fact, *Decoder::factories())
     {
         if (Decoder::isEnabled(fact))
             filters << fact->properties().filters;
     }
-    foreach(EngineFactory *fact, *m_engineFactories)
+    foreach(EngineFactory *fact, *AbstractEngine::factories())
     {
         if (AbstractEngine::isEnabled(fact))
             filters << fact->properties().filters;
@@ -262,4 +261,3 @@ void MetaDataManager::destroy()
     if(m_instance)
         delete m_instance;
 }
-

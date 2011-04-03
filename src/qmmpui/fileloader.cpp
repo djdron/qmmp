@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,14 +25,11 @@
 
 FileLoader::FileLoader(QObject *parent) : QThread(parent)
 {
-    m_filters = MetaDataManager::instance()->nameFilters();
     m_finished = false;
 }
 
-
 FileLoader::~FileLoader()
 {}
-
 
 void FileLoader::addFile(const QString &path)
 {
@@ -42,14 +39,13 @@ void FileLoader::addFile(const QString &path)
         emit newPlayListItem(new PlayListItem(info));
 }
 
-
 void FileLoader::addDirectory(const QString& s)
 {
-    QList <FileInfo *> playList;
+    QStringList filters = MetaDataManager::instance()->nameFilters();
     QDir dir(s);
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     dir.setSorting(QDir::Name);
-    QFileInfoList l = dir.entryInfoList(m_filters);
+    QFileInfoList l = dir.entryInfoList(filters);
     foreach(QFileInfo info, l)
     {
         addFile(info.absoluteFilePath ());

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -105,8 +105,6 @@ public:
 
 private:
     QFileInfoList findCoverFiles(QDir dir, int depth) const;
-    QList <DecoderFactory *> *m_decoderFactories;
-    QList <EngineFactory *> *m_engineFactories;
     QMap <QString, QString> m_cover_cache;
     QmmpSettings *m_settings;
     mutable QMutex m_mutex;
