@@ -10,7 +10,7 @@ SOURCES += outputoss4factory.cpp \
            outputoss4.cpp \
            settingsdialog.cpp
 
-TARGET=$$PLUGINS_PREFIX/Output/oss
+TARGET=$$PLUGINS_PREFIX/Output/oss4
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Output/liboss4.so
 
 

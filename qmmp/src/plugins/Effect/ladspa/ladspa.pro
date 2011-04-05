@@ -23,8 +23,10 @@ TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
 LIBS += -lqmmp \
     -L/usr/lib \
-    -I/usr/include \
-    -ldl
+    -I/usr/include
+
+linux-g++:LIBS += -ldl
+
 TRANSLATIONS = translations/ladspa_plugin_cs.ts \
     translations/ladspa_plugin_de.ts \
     translations/ladspa_plugin_zh_CN.ts \
