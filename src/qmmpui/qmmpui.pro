@@ -76,7 +76,7 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
     translations/libqmmpui_ja.ts \
     translations/libqmmpui_es.ts
 unix { 
-    devel.files += \
+    devel.files += general.h \
                    generalfactory.h \
                    generalhandler.h \
                    playlistformat.h \
