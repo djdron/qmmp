@@ -41,11 +41,10 @@ void FileLoader::addFile(const QString &path)
 
 void FileLoader::addDirectory(const QString& s)
 {
-    QStringList filters = MetaDataManager::instance()->nameFilters();
     QDir dir(s);
     dir.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
     dir.setSorting(QDir::Name);
-    QFileInfoList l = dir.entryInfoList(filters);
+    QFileInfoList l = dir.entryInfoList(m_filters);
     foreach(QFileInfo info, l)
     {
         addFile(info.absoluteFilePath ());
@@ -85,18 +84,24 @@ void FileLoader::run()
 void FileLoader::loadFile(const QString &path)
 {
     m_files.enqueue(path);
+    if(m_filters.isEmpty())
+        m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
 
 void FileLoader::loadFiles(const QStringList &paths)
 {
     m_files << paths;
+    if(m_filters.isEmpty())
+        m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
 
 void FileLoader::loadDirectory(const QString &path)
 {
     m_directories.enqueue(path);
+    if(m_filters.isEmpty())
+        m_filters = MetaDataManager::instance()->nameFilters();
     start(QThread::IdlePriority);
 }
 

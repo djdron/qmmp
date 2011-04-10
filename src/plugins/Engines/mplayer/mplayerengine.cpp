@@ -167,14 +167,11 @@ void MplayerEngine::seek(qint64 pos)
 
 void MplayerEngine::stop()
 {
-    if (m_process->state() == QProcess::Running)
-    {
-        m_process->write("quit\n");
-        m_process->waitForFinished(1500);
-    }
-    StateHandler::instance()->dispatch(Qmmp::Stopped);
     while(!m_sources.isEmpty())
         m_sources.dequeue()->deleteLater();
+    m_process->write("quit\n");
+    m_process->close();
+    StateHandler::instance()->dispatch(Qmmp::Stopped);
 }
 
 void MplayerEngine::pause()
