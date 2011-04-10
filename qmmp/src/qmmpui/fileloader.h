@@ -81,6 +81,7 @@ protected:
 private:
     QQueue <QString> m_files;
     QQueue <QString> m_directories;
+    QStringList m_filters;
     bool m_finished;
 };
 

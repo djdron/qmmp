@@ -103,45 +103,6 @@ void MediaPlayer::play(qint64 offset)
         m_nextUrl.clear();
         return;
     }
-
-    /*if (!m_core->play(s, false, offset))
-    {
-        //find out the reason why playback failed
-        switch ((int) m_core->state())
-        {
-        case Qmmp::FatalError:
-        {
-            stop();
-            return; //unrecovable error in output, so abort playing
-        }
-        case Qmmp::NormalError:
-        {
-            //error in decoder, so we should try to play next song
-            m_skips++;
-            if (m_skips > MAX_SKIPS)
-            {
-                stop();
-                qWarning("MediaPlayer: skip limit exceeded");
-                break;
-            }
-            qApp->processEvents();
-            if (!m_pl_manager->currentPlayList()->isEmptyQueue())
-            {
-                m_pl_manager->currentPlayList()->setCurrentToQueued();
-            }
-            else if (!m_pl_manager->currentPlayList()->next())
-            {
-                stop();
-                return;
-            }
-            play();
-            break;
-        }
-        }
-    }
-    else
-        m_skips = 0;*/
-
     m_core->play(s, false, offset);
     m_skips = 0;
 }
@@ -256,11 +217,8 @@ void MediaPlayer::processState(Qmmp::State state)
     {
     case Qmmp::NormalError:
         stop();
-        //playNext();
         if (m_skips < MAX_SKIPS)
         {
-            //stop();
-            //qWarning("MediaPlayer: skip limit exceeded");
             playNext();
             m_skips++;
         }

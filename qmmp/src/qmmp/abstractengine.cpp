@@ -106,6 +106,7 @@ AbstractEngine *AbstractEngine::create(InputSource *s, QObject *parent)
         return engine;
 
 
+    checkFactories();
     foreach(EngineFactory *f, *m_factories)
     {
         if(!isEnabled(f))

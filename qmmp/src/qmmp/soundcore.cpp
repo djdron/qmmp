@@ -71,10 +71,7 @@ SoundCore::~SoundCore()
 bool SoundCore::play(const QString &source, bool queue, qint64 offset)
 {
     if(!queue)
-    {
         stop();
-        qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
-    }
     else
     {
         qDeleteAll(m_pendingSources);
