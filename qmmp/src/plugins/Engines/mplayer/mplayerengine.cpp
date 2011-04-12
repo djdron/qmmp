@@ -239,6 +239,9 @@ void MplayerEngine::readStdOut()
 void MplayerEngine::startMplayerProcess()
 {
     initialize();
+    delete m_process;
+    m_process = new QProcess(this);
+    connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(readStdOut()));
     m_process->start ("mplayer", m_args);
     StateHandler::instance()->dispatch(Qmmp::Playing);
     FileInfo *info = MplayerInfo::createFileInfo(m_source->url());
