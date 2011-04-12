@@ -162,7 +162,7 @@ qint64 MplayerEngine::totalTime()
 void MplayerEngine::seek(qint64 pos)
 {
     if (m_process->state() == QProcess::Running)
-        m_process->write(QString("seek %1 \n").arg(pos/1000 - m_currentTime).toLocal8Bit ());
+        m_process->write(QString("seek %1\n").arg(pos/1000 - m_currentTime).toLocal8Bit ());
 }
 
 void MplayerEngine::stop()
