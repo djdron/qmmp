@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -246,4 +246,5 @@ void MplayerEngine::startMplayerProcess()
     delete info;
     m_source->deleteLater();
     m_source = 0;
+    m_currentTime = 0;
 }
