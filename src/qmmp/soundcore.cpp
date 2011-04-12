@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -107,7 +107,10 @@ void SoundCore::stop()
         delete m_pendingEngine;
     m_pendingEngine = 0;
     if(m_engine)
+    {
         m_engine->stop();
+        qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
+    }
     qDeleteAll(m_pendingSources);
     m_pendingSources.clear();
     updateVolume();

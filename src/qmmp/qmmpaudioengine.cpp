@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -265,11 +265,10 @@ void QmmpAudioEngine::stop()
     }
 
     wait();
-    if (m_output)
-        m_output->wait();
 
     if (m_output)
     {
+        m_output->wait();
         delete m_output;
         m_output = 0;
     }
