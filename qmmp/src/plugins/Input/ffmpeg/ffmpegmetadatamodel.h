@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,15 +21,9 @@
 #ifndef FFMPEGMETADATAMODEL_H
 #define FFMPEGMETADATAMODEL_H
 
-extern "C"
-{
-#if defined HAVE_FFMPEG_AVFORMAT_H
-#include <ffmpeg/avformat.h>
-#elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
+extern "C"{
 #include <libavformat/avformat.h>
-#else
-#include <avformat.h>
-#endif
+#include <libavcodec/avcodec.h>
 }
 
 #include <qmmp/metadatamodel.h>

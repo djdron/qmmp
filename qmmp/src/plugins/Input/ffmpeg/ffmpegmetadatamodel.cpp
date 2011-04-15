@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,17 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-extern "C"
-{
-#if defined HAVE_FFMPEG_AVCODEC_H
-#include <ffmpeg/avcodec.h>
-#elif defined HAVE_LIBAVCODEC_AVCODEC_H
-#include <libavcodec/avcodec.h>
-#else
-#include <avcodec.h>
-#endif
-}
 #include "ffmpegmetadatamodel.h"
 
 FFmpegMetaDataModel::FFmpegMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)

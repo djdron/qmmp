@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,25 +23,10 @@
 
 #include <qmmp/qmmp.h>
 
-extern "C"
-{
-#if defined HAVE_FFMPEG_AVFORMAT_H
-#include <ffmpeg/avformat.h>
-#elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
+extern "C"{
 #include <libavformat/avformat.h>
-#else
-#include <avformat.h>
-#endif
-
-#if defined HAVE_FFMPEG_AVCODEC_H
-#include <ffmpeg/avcodec.h>
-#elif defined HAVE_LIBAVCODEC_AVCODEC_H
 #include <libavcodec/avcodec.h>
-#else
-#include <avcodec.h>
-#endif
 }
-
 #include "settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent)
@@ -52,25 +37,16 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
     filters << "*.wma";
-#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
     filters << "*.ape";
-#endif
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
     filters << "*.shn";
-#endif
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     avcodec_init();
     avcodec_register_all();
     av_register_all();
     ui.wmaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_WMAV1));
     ui.wmaCheckBox->setChecked(filters.contains("*.wma") && avcodec_find_decoder(CODEC_ID_WMAV1));
-#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
     ui.apeCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_APE));
     ui.apeCheckBox->setChecked(filters.contains("*.ape") && avcodec_find_decoder(CODEC_ID_APE));
-#else
-    ui.apeCheckBox->setChecked(false);
-    ui.apeCheckBox->setEnabled(false);
-#endif
     ui.ttaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TTA));
     ui.ttaCheckBox->setChecked(filters.contains("*.tta") && avcodec_find_decoder(CODEC_ID_TTA));
     ui.alacCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_ALAC));
@@ -83,12 +59,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.mp4CheckBox->setChecked(filters.contains("*.m4a") && avcodec_find_decoder(CODEC_ID_AAC));
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
     ui.raCheckBox->setChecked(filters.contains("*.ra") && avcodec_find_decoder(CODEC_ID_RA_288));
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
     ui.shCheckBox->setChecked(filters.contains("*.shn") && avcodec_find_decoder(CODEC_ID_SHORTEN));
-#else
-    ui.shCheckBox->setChecked(false);
-    ui.shCheckBox->setEnabled(false);
-#endif
 }
 
 SettingsDialog::~SettingsDialog()
