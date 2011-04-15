@@ -42,47 +42,47 @@
         <translation>Audio Apparaat</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer</source>
         <translation>Mixer</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="76"/>
         <source>Mixer card:</source>
         <translation>Mixerkaart:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="82"/>
+        <location filename="../settingsdialog.ui" line="86"/>
         <source>Mixer device:</source>
         <translation>Mixer apparaat:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="99"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>Advanced Settings</source>
         <translation>Gevanceerde Instellingen</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="111"/>
+        <location filename="../settingsdialog.ui" line="115"/>
         <source>Soundcard</source>
         <translation>Geluidskaart</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="121"/>
         <source>Buffer time (ms):</source>
         <translation>Buffertijd (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="153"/>
+        <location filename="../settingsdialog.ui" line="157"/>
         <source>Period time (ms):</source>
         <translation>Tijdsperiode (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="189"/>
+        <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>Gebruik MMAP toegang</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="209"/>
+        <location filename="../settingsdialog.ui" line="213"/>
         <source>Use snd_pcm_pause function</source>
         <translation>Gebruik de snd_pcm_pause functie</translation>
     </message>
