@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,23 +22,8 @@
 #define __decoder_ffmeg_h
 
 extern "C"{
-
-#if defined HAVE_FFMPEG_AVFORMAT_H
-#include <ffmpeg/avformat.h>
-#elif defined HAVE_LIBAVFORMAT_AVFORMAT_H
 #include <libavformat/avformat.h>
-#else
-#include <avformat.h>
-#endif
-
-
-#if defined HAVE_FFMPEG_AVCODEC_H
-#include <ffmpeg/avcodec.h>
-#elif defined HAVE_LIBAVCODEC_AVCODEC_H
 #include <libavcodec/avcodec.h>
-#else
-#include <avcodec.h>
-#endif
 }
 #include <qmmp/decoder.h>
 
@@ -57,7 +42,7 @@ public:
     qint64 read(char *audio, qint64 maxSize);
     void seek(qint64 time);
 
-private:    
+private:
     //helper functions
     void fillBuffer();
     qint64 ffmpeg_decode(uint8_t *audio);
@@ -72,13 +57,19 @@ private:
 
     AVPacket m_pkt;
     AVPacket m_temp_pkt;
-    ByteIOContext m_stream;
+
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(102<<8)+0))
+    AVIOContext *m_stream;
+#else
+    ByteIOContext *m_stream;
+#endif
+
     uint8_t *m_output_buf;
     qint64 m_output_at;
     uchar m_input_buf[INPUT_BUFFER_SIZE + FF_INPUT_BUFFER_PADDING_SIZE];
 
     int64_t m_seekTime;
-    qint64  m_skipBytes;    
+    qint64  m_skipBytes;
 };
 
 

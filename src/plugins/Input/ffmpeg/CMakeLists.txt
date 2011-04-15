@@ -28,39 +28,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # libffmpeg
-pkg_check_modules(FFMPEG libavcodec libavformat libavutil)
-
-
-# old ffmpeg support
-
-IF(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
-  ADD_DEFINITIONS(-DHAVE_LIBAVFORMAT_AVFORMAT_H)
-  include_directories(/usr/include/ffmpeg)
-ELSEIF(EXISTS /usr/include/ffmpeg/avformat.h)
-  ADD_DEFINITIONS(-DHAVE_FFMPEG_AVFORMAT_H)
-ELSEIF(EXISTS /usr/include/libavformat/avformat.h)
-  ADD_DEFINITIONS(-DHAVE_LIBAVFORMAT_AVFORMAT_H)
-ELSE(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
-  include_directories(/usr/local/include/ffmpeg
-                      /usr/local/include/libavformat
-                      /usr/local/include/libavutil
-)
-ENDIF(EXISTS /usr/include/ffmpeg/libavformat/avformat.h)
-
-IF(EXISTS /usr/include/ffmpeg/libavcodec/avcodec.h)
-  ADD_DEFINITIONS(-DHAVE_LIBAVCODEC_AVCODEC_H)
-  include_directories(/usr/include/ffmpeg)
-ELSEIF(EXISTS /usr/include/ffmpeg/avcodec.h)
-  ADD_DEFINITIONS(-DHAVE_FFMPEG_AVCODEC_H)
-ELSEIF(EXISTS /usr/include/libavcodec/avcodec.h)
-  ADD_DEFINITIONS(-DHAVE_LIBAVCODEC_AVCODEC_H)
-ELSE(EXISTS /usr/include/ffmpeg/libavcodec/avcodec.h)
-  include_directories(/usr/local/include/ffmpeg
-                      /usr/local/include/libavcodec
-                      /usr/local/include/libavutil
-)
-ENDIF(EXISTS /usr/include/ffmpeg/libavcodec/avcodec.h)
-
+pkg_check_modules(FFMPEG libavcodec>=52.20.0 libavformat>=52.31.0 libavutil>=49.15.0)
 
 include_directories(${FFMPEG_INCLUDE_DIRS})
 link_directories(${FFMPEG_LIBRARY_DIRS})

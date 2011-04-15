@@ -12,26 +12,14 @@ QMAKE_CLEAN = ../libffmpeg.so
 TARGET = $$PLUGINS_PREFIX/Input/ffmpeg
 QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libffmpeg.so
 INCLUDEPATH += ../../../
-INCLUDEPATH += /usr/include/libavformat
-INCLUDEPATH += /usr/include/libavcodec
-INCLUDEPATH += /usr/include/libavutil
-INCLUDEPATH += /usr/include/ffmpeg/libavcodec
-INCLUDEPATH += /usr/include/ffmpeg/libavformat
-INCLUDEPATH += /usr/include/ffmpeg/libavutil
-INCLUDEPATH += /usr/include/ffmpeg
 CONFIG += release \
     warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp \
-    -L/usr/lib \
-    -I/usr/include \
-    -I/usr/include/ffmpeg \
-    -I/usr/include/libavcodec \
-    -I/usr/include/libavformat \
-    -I/usr/include/libavutil
+LIBS += -lqmmp
+
 DEFINES += __STDC_CONSTANT_MACROS
 PKGCONFIG += libavcodec libavformat libavutil
 TRANSLATIONS = translations/ffmpeg_plugin_ru.ts \

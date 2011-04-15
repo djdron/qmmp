@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,6 @@
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
-
 #include "decoder_ffmpeg.h"
 
 // callbacks
@@ -76,6 +75,7 @@ DecoderFFmpeg::DecoderFFmpeg(const QString &path, QIODevice *i)
     m_output_buf = 0;
     m_output_at = 0;
     m_skipBytes = 0;
+    m_stream = 0;
     av_init_packet(&m_pkt);
     av_init_packet(&m_temp_pkt);
 }
@@ -91,6 +91,8 @@ DecoderFFmpeg::~DecoderFFmpeg()
         av_free_packet(&m_pkt);
     if(m_output_buf)
         av_free(m_output_buf);
+    if(m_stream)
+        av_free(m_stream);
 }
 
 bool DecoderFFmpeg::initialize()
@@ -119,23 +121,29 @@ bool DecoderFFmpeg::initialize()
     }
     qDebug("DecoderFFmpeg: detected format: %s", fmt->long_name);
 
-    init_put_byte(&m_stream, m_input_buf, INPUT_BUFFER_SIZE,
-                   0, this, ffmpeg_read, NULL, ffmpeg_seek);
-
-    m_stream.is_streamed = input()->isSequential();
-    m_stream.max_packet_size = INPUT_BUFFER_SIZE;
-
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(105<<8)+0))
+    m_stream = avio_alloc_context(m_input_buf, INPUT_BUFFER_SIZE, 0, this, ffmpeg_read, NULL, ffmpeg_seek);
+    if(!m_stream)
+    {
+        qWarning("DecoderFFmpeg: unable to initialize I/O callbacks");
+        return false;
+    }
+    m_stream->seekable = !input()->isSequential();
+#else
+    m_stream = (ByteIOContext *)av_malloc(sizeof(ByteIOContext));
+    init_put_byte(m_stream, m_input_buf, INPUT_BUFFER_SIZE, 0, this, ffmpeg_read, NULL, ffmpeg_seek);
+    m_stream->is_streamed = input()->isSequential();
+#endif
+    m_stream->max_packet_size = INPUT_BUFFER_SIZE;
 
     AVFormatParameters ap;
     memset(&ap, 0, sizeof(ap));
 
-    if(av_open_input_stream(&ic, &m_stream, m_path.toLocal8Bit(),
-                              fmt, &ap) != 0)
+    if(av_open_input_stream(&ic, m_stream, m_path.toLocal8Bit(), fmt, &ap) != 0)
     {
         qDebug("DecoderFFmpeg: av_open_input_stream() failed");
         return false;
     }
-
     AVCodec *codec;
 
     av_find_stream_info(ic);
@@ -155,7 +163,11 @@ bool DecoderFFmpeg::initialize()
     else
         c->channels = 2;
 
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(101<<8)+0))
+    av_dump_format(ic,0,0,0);
+#else
     dump_format(ic,0,0,0);
+#endif
     codec = avcodec_find_decoder(c->codec_id);
 
     if (!codec)
@@ -178,7 +190,17 @@ bool DecoderFFmpeg::initialize()
         m_totalTime = 0;
 #endif
 
-    configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
+#if (LIBAVUTIL_VERSION_INT >= ((50<<16)+(38<<8)+0))
+    if(c->sample_fmt == AV_SAMPLE_FMT_S32)
+        configure(c->sample_rate, c->channels, Qmmp::PCM_S32LE);
+    else
+        configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
+#else
+    if(c->sample_fmt == SAMPLE_FMT_S32)
+        configure(c->sample_rate, c->channels, Qmmp::PCM_S32LE);
+    else
+        configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
+#endif
     m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");
     return true;
@@ -245,7 +267,6 @@ void DecoderFFmpeg::seek(qint64 pos)
         timestamp += ic->start_time;
     m_seekTime = timestamp;
     av_seek_frame(ic, -1, timestamp, AVSEEK_FLAG_BACKWARD);
-    avcodec_flush_buffers(c);
     if(m_pkt.size)
         m_skip = true;
 }
@@ -271,7 +292,6 @@ void DecoderFFmpeg::fillBuffer()
                 m_temp_pkt.size = 0;
                 continue;
             }
-#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
             if(m_seekTime && c->codec_id == CODEC_ID_APE)
             {
                 int64_t rescaledPts = av_rescale(m_pkt.pts,
@@ -282,11 +302,9 @@ void DecoderFFmpeg::fillBuffer()
             }
             else
                 m_skipBytes = 0;
-
-#endif
             m_seekTime = 0;
         }
-#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
+
         if(m_skipBytes > 0 && c->codec_id == CODEC_ID_APE)
         {
             while (m_skipBytes > 0)
@@ -308,14 +326,12 @@ void DecoderFFmpeg::fillBuffer()
         }
         else
             m_output_at = ffmpeg_decode(m_output_buf);
-#else
-        m_output_at = ffmpeg_decode(m_output_buf);
-#endif
+
         if(m_output_at < 0)
         {
             m_output_at = 0;
             m_temp_pkt.size = 0;
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+
             if(c->codec_id == CODEC_ID_SHORTEN)
             {
                 if(m_pkt.data)
@@ -323,15 +339,13 @@ void DecoderFFmpeg::fillBuffer()
                 m_pkt.data = 0;
                 break;
             }
-#endif
             continue;
         }
         else if(m_output_at == 0)
         {
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
             if(c->codec_id == CODEC_ID_SHORTEN)
                 continue;
-#endif
+
             if(m_pkt.data)
                 av_free_packet(&m_pkt);
             m_pkt.data = 0;
