@@ -133,7 +133,11 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
     if (useMetaData)
     {
         AVMetadataTag *album = av_metadata_get(in->metadata,"album",0,0);
+        if(!album)
+            album = av_metadata_get(in->metadata,"WM/AlbumTitle",0,0);
         AVMetadataTag *artist = av_metadata_get(in->metadata,"artist",0,0);
+        if(!artist)
+            artist = av_metadata_get(in->metadata,"author",0,0);
         AVMetadataTag *comment = av_metadata_get(in->metadata,"comment",0,0);
         AVMetadataTag *genre = av_metadata_get(in->metadata,"genre",0,0);
         AVMetadataTag *title = av_metadata_get(in->metadata,"title",0,0);
@@ -141,6 +145,10 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
         if(!year)
             year = av_metadata_get(in->metadata,"year",0,0);
         AVMetadataTag *track = av_metadata_get(in->metadata,"track",0,0);
+        if(!track)
+            track = av_metadata_get(in->metadata,"WM/Track",0,0);
+        if(!track)
+            track = av_metadata_get(in->metadata,"WM/TrackNumber",0,0);
 
         if(album)
             info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(album->value).trimmed());
