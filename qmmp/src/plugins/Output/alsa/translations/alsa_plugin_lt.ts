@@ -37,42 +37,42 @@
         <translation>Garso įranga</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer</source>
         <translation>Glotintuvas</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="76"/>
         <source>Mixer card:</source>
         <translation>Glotintuvo plokštė :</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="82"/>
+        <location filename="../settingsdialog.ui" line="86"/>
         <source>Mixer device:</source>
         <translation>Glotintuvo įranga:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="99"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>Advanced Settings</source>
         <translation>Papildomi nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="111"/>
+        <location filename="../settingsdialog.ui" line="115"/>
         <source>Soundcard</source>
         <translation>Garso plokštė</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="121"/>
         <source>Buffer time (ms):</source>
         <translation>Buferio laikas (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="153"/>
+        <location filename="../settingsdialog.ui" line="157"/>
         <source>Period time (ms):</source>
         <translation>Periodo laikas (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="209"/>
+        <location filename="../settingsdialog.ui" line="213"/>
         <source>Use snd_pcm_pause function</source>
         <translation>Naudoti snd_pcm_pause funciją</translation>
     </message>
@@ -82,7 +82,7 @@
         <translation>ALSA įskiepio nustatymai</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="189"/>
+        <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>Naudoti mmap prieigą</translation>
     </message>

@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="104"/>
+        <location filename="../decoderffmpegfactory.cpp" line="89"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="106"/>
+        <location filename="../decoderffmpegfactory.cpp" line="91"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg Biçimleri</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="177"/>
+        <location filename="../decoderffmpegfactory.cpp" line="187"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>FFmpeg Ses Eklentisi Hakkında</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="179"/>
+        <location filename="../decoderffmpegfactory.cpp" line="189"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg Ses Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="181"/>
+        <location filename="../decoderffmpegfactory.cpp" line="191"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>libavformat-%1.%2.%3 ve libavcodec-%4.%5.%6 ile derlenmiştir</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="189"/>
+        <location filename="../decoderffmpegfactory.cpp" line="199"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -37,42 +37,42 @@
 <context>
     <name>FFmpegMetaDataModel</name>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="59"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="48"/>
         <source>Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="49"/>
         <source>File size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="60"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="49"/>
         <source>KB</source>
         <translation type="unfinished">KB</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="50"/>
         <source>Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="50"/>
         <source>kbps</source>
         <translation type="unfinished">kbps</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>Sample rate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="72"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
         <source>Hz</source>
         <translation type="unfinished">Hz</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="73"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="62"/>
         <source>Channels</source>
         <translation type="unfinished"></translation>
     </message>

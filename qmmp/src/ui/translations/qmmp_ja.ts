@@ -1390,58 +1390,58 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="237"/>
         <source>Choose a directory</source>
         <translation>ディレクトリを選択</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="251"/>
+        <location filename="../mainwindow.cpp" line="243"/>
         <source>All Supported Bitstreams</source>
         <translation>サポート対象のすべてのデジタル録音物</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="256"/>
+        <location filename="../mainwindow.cpp" line="248"/>
         <source>Select one or more files to open</source>
         <translation>開きたいファイルを選ぶ (複数可)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Jump To File</source>
         <translation>ファイルを指定して即刻再生(&amp;J)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="510"/>
-        <location filename="../mainwindow.cpp" line="536"/>
+        <location filename="../mainwindow.cpp" line="502"/>
+        <location filename="../mainwindow.cpp" line="528"/>
         <source>Playlist Files</source>
         <translation>プレイリストファイル</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="512"/>
+        <location filename="../mainwindow.cpp" line="504"/>
         <source>Open Playlist</source>
         <translation>プレイリストを開く</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>Save Playlist</source>
         <translation>プレイリストを保存</translation>
     </message>
@@ -1748,42 +1748,42 @@
         <translation>不明なコマンドです</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="176"/>
+        <location filename="../qmmpstarter.cpp" line="212"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>使用法: qmmp [オプション] [ファイル名:複数可]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="177"/>
+        <location filename="../qmmpstarter.cpp" line="213"/>
         <source>Options:</source>
         <translation>オプション:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="181"/>
+        <location filename="../qmmpstarter.cpp" line="217"/>
         <source>Don&apos;t start the application</source>
         <translation>アプリケーションを始動しない</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="182"/>
+        <location filename="../qmmpstarter.cpp" line="218"/>
         <source>Display this text and exit</source>
         <translation>このメッセージを表示して終了</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="183"/>
+        <location filename="../qmmpstarter.cpp" line="219"/>
         <source>Print version number and exit</source>
         <translation>バージョン番号を表示して終了</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="184"/>
+        <location filename="../qmmpstarter.cpp" line="220"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>名案, パッチ, バグ報告は forkotov02@hotmail.ru まで</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="189"/>
+        <location filename="../qmmpstarter.cpp" line="225"/>
         <source>QMMP version:</source>
         <translation>QMMP 版番号:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="190"/>
+        <location filename="../qmmpstarter.cpp" line="226"/>
         <source>Qt version:</source>
         <translation>Qt 版番号:</translation>
     </message>

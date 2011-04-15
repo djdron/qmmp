@@ -1390,58 +1390,58 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="237"/>
         <source>Choose a directory</source>
         <translation>Bir dizin seçin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="256"/>
+        <location filename="../mainwindow.cpp" line="248"/>
         <source>Select one or more files to open</source>
         <translation>Açmak için bir yada daha çok dosya seçin</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Parçaya Git</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>Playlist</source>
         <translation type="unfinished">Çalma Listesi</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="512"/>
+        <location filename="../mainwindow.cpp" line="504"/>
         <source>Open Playlist</source>
         <translation>Çalma Listesini Aç</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>Save Playlist</source>
         <translation>Çalma Listesini Kaydet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="510"/>
-        <location filename="../mainwindow.cpp" line="536"/>
+        <location filename="../mainwindow.cpp" line="502"/>
+        <location filename="../mainwindow.cpp" line="528"/>
         <source>Playlist Files</source>
         <translation>Çalma Listesi Dosyaları</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="251"/>
+        <location filename="../mainwindow.cpp" line="243"/>
         <source>All Supported Bitstreams</source>
         <translation>Tüm Desteklenen Bitstreamler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>Tools</source>
         <translation>Araçlar</translation>
     </message>
@@ -1743,32 +1743,32 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="176"/>
+        <location filename="../qmmpstarter.cpp" line="212"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Kullanım:qmmp [seçenek] [dosyalar]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="177"/>
+        <location filename="../qmmpstarter.cpp" line="213"/>
         <source>Options:</source>
         <translation>Seçenekler:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="181"/>
+        <location filename="../qmmpstarter.cpp" line="217"/>
         <source>Don&apos;t start the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="183"/>
+        <location filename="../qmmpstarter.cpp" line="219"/>
         <source>Print version number and exit</source>
         <translation>Sürüm numarasını yazdır ve çık</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="184"/>
+        <location filename="../qmmpstarter.cpp" line="220"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Fikirleinizi, yamalarınızı, hata raporlarınızı forkotov02@hotmail.ru adresine gönderin</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="182"/>
+        <location filename="../qmmpstarter.cpp" line="218"/>
         <source>Display this text and exit</source>
         <translation>Bu metni göster ve çık</translation>
     </message>
@@ -1778,12 +1778,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="189"/>
+        <location filename="../qmmpstarter.cpp" line="225"/>
         <source>QMMP version:</source>
         <translation>QMMP sürümü:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="190"/>
+        <location filename="../qmmpstarter.cpp" line="226"/>
         <source>Qt version:</source>
         <translation>Qt sürümü:</translation>
     </message>

@@ -42,47 +42,47 @@
         <translation>Dispositivo de sonido</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer</source>
         <translation>Mezclador</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="76"/>
         <source>Mixer card:</source>
         <translation>Tarjeta mezcladora:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="82"/>
+        <location filename="../settingsdialog.ui" line="86"/>
         <source>Mixer device:</source>
         <translation>Dispositivo mezclador:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="99"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>Advanced Settings</source>
         <translation>Configuración avanzada</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="111"/>
+        <location filename="../settingsdialog.ui" line="115"/>
         <source>Soundcard</source>
         <translation>Tarjeta de sonido</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="121"/>
         <source>Buffer time (ms):</source>
         <translation>Tiempo del buffer (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="153"/>
+        <location filename="../settingsdialog.ui" line="157"/>
         <source>Period time (ms):</source>
         <translation>Periodo (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="189"/>
+        <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>Usar accesso Mmap</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="209"/>
+        <location filename="../settingsdialog.ui" line="213"/>
         <source>Use snd_pcm_pause function</source>
         <translation>Usa la función snd_pcm_pause</translation>
     </message>

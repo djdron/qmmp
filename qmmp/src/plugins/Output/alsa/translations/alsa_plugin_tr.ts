@@ -42,47 +42,47 @@
         <translation>Ses aygıtı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer</source>
         <translation>Karıştırıcı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="76"/>
         <source>Mixer card:</source>
         <translation>Karıştırıcı kartı:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="82"/>
+        <location filename="../settingsdialog.ui" line="86"/>
         <source>Mixer device:</source>
         <translation>Karıştırıcı aygıtı:</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="99"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>Advanced Settings</source>
         <translation>Gelişmiş Ayarlar</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="111"/>
+        <location filename="../settingsdialog.ui" line="115"/>
         <source>Soundcard</source>
         <translation>Ses kartı</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="121"/>
         <source>Buffer time (ms):</source>
         <translation>Arabellek süresi (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="153"/>
+        <location filename="../settingsdialog.ui" line="157"/>
         <source>Period time (ms):</source>
         <translation>Periyot süresi (ms):</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="189"/>
+        <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>mmap erişimi kullan</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="209"/>
+        <location filename="../settingsdialog.ui" line="213"/>
         <source>Use snd_pcm_pause function</source>
         <translation type="unfinished"></translation>
     </message>

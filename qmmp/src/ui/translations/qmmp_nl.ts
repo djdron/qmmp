@@ -1390,58 +1390,58 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="245"/>
+        <location filename="../mainwindow.cpp" line="237"/>
         <source>Choose a directory</source>
         <translation>Kies een map</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="256"/>
+        <location filename="../mainwindow.cpp" line="248"/>
         <source>Select one or more files to open</source>
         <translation>Kies een of meer bestanden om te openen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Spring Naar Bestand</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="430"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>View</source>
         <translation type="unfinished">Weergave</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="440"/>
+        <location filename="../mainwindow.cpp" line="432"/>
         <source>Playlist</source>
         <translation type="unfinished">Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="510"/>
-        <location filename="../mainwindow.cpp" line="536"/>
+        <location filename="../mainwindow.cpp" line="502"/>
+        <location filename="../mainwindow.cpp" line="528"/>
         <source>Playlist Files</source>
         <translation>Afspeellijst Bestanden</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="512"/>
+        <location filename="../mainwindow.cpp" line="504"/>
         <source>Open Playlist</source>
         <translation>Open Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>Save Playlist</source>
         <translation>Bewaar Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="251"/>
+        <location filename="../mainwindow.cpp" line="243"/>
         <source>All Supported Bitstreams</source>
         <translation>Alle Ondersteunde Bitstromen</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="452"/>
         <source>Tools</source>
         <translation>Gereedschappen</translation>
     </message>
@@ -1743,32 +1743,32 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="176"/>
+        <location filename="../qmmpstarter.cpp" line="212"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Gebruik: qmmp [opties] [bestanden]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="177"/>
+        <location filename="../qmmpstarter.cpp" line="213"/>
         <source>Options:</source>
         <translation>Opties:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="181"/>
+        <location filename="../qmmpstarter.cpp" line="217"/>
         <source>Don&apos;t start the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="183"/>
+        <location filename="../qmmpstarter.cpp" line="219"/>
         <source>Print version number and exit</source>
         <translation>Print versienummer en sluit</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="184"/>
+        <location filename="../qmmpstarter.cpp" line="220"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Ideëen, patches, foutrapporten zenden naar forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="182"/>
+        <location filename="../qmmpstarter.cpp" line="218"/>
         <source>Display this text and exit</source>
         <translation>Toon dit tekstje en sluit</translation>
     </message>
@@ -1778,12 +1778,12 @@
         <translation>Onbekend commando</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="189"/>
+        <location filename="../qmmpstarter.cpp" line="225"/>
         <source>QMMP version:</source>
         <translation>QMMP versie:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="190"/>
+        <location filename="../qmmpstarter.cpp" line="226"/>
         <source>Qt version:</source>
         <translation>Qt versie:</translation>
     </message>

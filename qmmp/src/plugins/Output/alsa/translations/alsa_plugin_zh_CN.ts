@@ -37,42 +37,42 @@
         <translation>音频设备</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="57"/>
+        <location filename="../settingsdialog.ui" line="61"/>
         <source>Mixer</source>
         <translation>混频</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="72"/>
+        <location filename="../settingsdialog.ui" line="76"/>
         <source>Mixer card:</source>
         <translation>混频卡：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="82"/>
+        <location filename="../settingsdialog.ui" line="86"/>
         <source>Mixer device:</source>
         <translation>混频设备：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="99"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>Advanced Settings</source>
         <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="111"/>
+        <location filename="../settingsdialog.ui" line="115"/>
         <source>Soundcard</source>
         <translation>声卡</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="121"/>
         <source>Buffer time (ms):</source>
         <translation>缓冲时间(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="153"/>
+        <location filename="../settingsdialog.ui" line="157"/>
         <source>Period time (ms):</source>
         <translation>周期时间(ms)：</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="209"/>
+        <location filename="../settingsdialog.ui" line="213"/>
         <source>Use snd_pcm_pause function</source>
         <translation type="unfinished"></translation>
     </message>
@@ -82,7 +82,7 @@
         <translation>ALSA 插件设置</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="189"/>
+        <location filename="../settingsdialog.ui" line="193"/>
         <source>Use mmap access</source>
         <translation>使用内存映射</translation>
     </message>
