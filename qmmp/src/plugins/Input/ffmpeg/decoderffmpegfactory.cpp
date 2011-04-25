@@ -78,14 +78,7 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     QStringList filters;
-#if (LIBAVCODEC_VERSION_INT >= ((51<<16)+(44<<8)+0))
     filters << "*.wma" << "*.ape";
-#else
-    filters << "*.wma";
-#endif
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
-    filters << "*.shn";
-#endif
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     DecoderProperties properties;
     properties.name = tr("FFmpeg Plugin");
