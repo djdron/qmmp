@@ -69,6 +69,8 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
         return true;
     if(filters.contains("*.aac") && !memcmp(fmt->name, "aac", 3))
         return true;
+    if(filters.contains("*.ac3") && !memcmp(fmt->name, "ac3", 3))
+        return true;
     return false;
 }
 
@@ -95,13 +97,15 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
         properties.contentTypes << "audio/mpeg";
     if(filters.contains("*.aac"))
         properties.contentTypes << "audio/aac" << "audio/aacp";
-    if(filters.contains("*.m4a"))
-        properties.contentTypes << "audio/x-ffmpeg-shorten";
     if(filters.contains("*.shn"))
+        properties.contentTypes << "audio/x-ffmpeg-shorten";
+    if(filters.contains("*.m4a"))
     {
         properties.contentTypes << "audio/3gpp" << "audio/3gpp2" << "audio/mp4";
         properties.contentTypes << "audio/MP4A-LATM" << "audio/mpeg4-generic";
     }
+    if(filters.contains("*.ac3"))
+        properties.contentTypes << "audio/ac3";
     properties.shortName = "ffmpeg";
     properties.hasAbout = true;
     properties.hasSettings = true;

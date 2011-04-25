@@ -159,10 +159,10 @@ bool DecoderFFmpeg::initialize()
     }
 
     if (c->channels > 0)
-        c->channels = qMin(2, c->channels);
+         c->request_channels = qMin(2, c->channels);
     else
-        c->channels = 2;
-
+         c->request_channels = 2;
+        
 #if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(101<<8)+0))
     av_dump_format(ic,0,0,0);
 #else
@@ -192,14 +192,14 @@ bool DecoderFFmpeg::initialize()
 
 #if (LIBAVUTIL_VERSION_INT >= ((50<<16)+(38<<8)+0))
     if(c->sample_fmt == AV_SAMPLE_FMT_S32)
-        configure(c->sample_rate, c->channels, Qmmp::PCM_S32LE);
+        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S32LE);
     else
-        configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
+        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S16LE);
 #else
     if(c->sample_fmt == SAMPLE_FMT_S32)
-        configure(c->sample_rate, c->channels, Qmmp::PCM_S32LE);
+        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S32LE);
     else
-        configure(c->sample_rate, c->channels, Qmmp::PCM_S16LE);
+        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S16LE);
 #endif
     m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");

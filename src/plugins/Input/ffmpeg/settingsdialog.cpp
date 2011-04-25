@@ -60,6 +60,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
     ui.raCheckBox->setChecked(filters.contains("*.ra") && avcodec_find_decoder(CODEC_ID_RA_288));
     ui.shCheckBox->setChecked(filters.contains("*.shn") && avcodec_find_decoder(CODEC_ID_SHORTEN));
+    ui.ac3CheckBox->setChecked(filters.contains("*.ac3") && avcodec_find_decoder(CODEC_ID_AC3));
 }
 
 SettingsDialog::~SettingsDialog()
@@ -87,6 +88,8 @@ void SettingsDialog::accept()
         filters << "*.ra";
     if (ui.shCheckBox->isChecked())
         filters << "*.shn";
+    if (ui.ac3CheckBox->isChecked())
+        filters << "*.ac3";
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FFMPEG/filters", filters);
     QDialog::accept();
