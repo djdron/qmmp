@@ -38,7 +38,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     QStringList filters;
     filters << "*.wma";
     filters << "*.ape";
-    filters << "*.shn";
     filters = settings.value("FFMPEG/filters", filters).toStringList();
     avcodec_init();
     avcodec_register_all();
@@ -60,6 +59,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
     ui.raCheckBox->setChecked(filters.contains("*.ra") && avcodec_find_decoder(CODEC_ID_RA_288));
     ui.shCheckBox->setChecked(filters.contains("*.shn") && avcodec_find_decoder(CODEC_ID_SHORTEN));
+    ui.ac3CheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_AC3));
     ui.ac3CheckBox->setChecked(filters.contains("*.ac3") && avcodec_find_decoder(CODEC_ID_AC3));
 }
 
