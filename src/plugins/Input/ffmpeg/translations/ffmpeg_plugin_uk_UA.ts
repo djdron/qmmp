@@ -127,7 +127,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="124"/>
         <source>AC-3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
