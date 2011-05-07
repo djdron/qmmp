@@ -6,7 +6,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>UDisks Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>UDisks 插件设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
@@ -44,27 +44,27 @@
     <message>
         <location filename="../udisksfactory.cpp" line="30"/>
         <source>UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>UDisks 插件</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="50"/>
         <source>About UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于 UDisks 插件</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="51"/>
         <source>Qmmp UDisks Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp UDisks 插件</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="52"/>
         <source>This plugin provides removable devices detection using UDisks</source>
-        <translation type="unfinished"></translation>
+        <translation>此插件依据可移动检测使用 UDisks</translation>
     </message>
     <message>
         <location filename="../udisksfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -72,12 +72,12 @@
     <message>
         <location filename="../udisksplugin.cpp" line="155"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation type="unfinished">添加 CD &quot;%1&quot;</translation>
+        <translation>添加 CD &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../udisksplugin.cpp" line="161"/>
         <source>Add Volume &quot;%1&quot;</source>
-        <translation type="unfinished">添加卷 &quot;%1&quot;</translation>
+        <translation>添加卷 &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>

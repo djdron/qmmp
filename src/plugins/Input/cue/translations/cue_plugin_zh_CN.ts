@@ -39,32 +39,32 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Common settings</source>
-        <translation type="unfinished"></translation>
+        <translation>基本设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="35"/>
         <source>Automatic file detection</source>
-        <translation type="unfinished"></translation>
+        <translation>自动文件检测</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>CUE encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>CUE 编码</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>自动检测字符集</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>语言：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="81"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>默认编码：</translation>
     </message>
 </context>
 </TS>

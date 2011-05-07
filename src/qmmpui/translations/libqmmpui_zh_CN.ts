@@ -6,57 +6,57 @@
     <message>
         <location filename="../detailsdialog.cpp" line="105"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="106"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>艺术家</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="107"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>专辑</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="108"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>备注</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="109"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>流派</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="110"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>作曲</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="112"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>年代</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="114"/>
         <source>Track</source>
-        <translation type="unfinished"></translation>
+        <translation>音轨</translation>
     </message>
     <message>
         <location filename="../detailsdialog.cpp" line="116"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>光盘编号</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="14"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>详细资料</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="42"/>
         <source>Open the directory containing this file</source>
-        <translation type="unfinished"></translation>
+        <translation>打开该文件所在的文件夹</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="45"/>
@@ -66,7 +66,7 @@
     <message>
         <location filename="../detailsdialog.ui" line="59"/>
         <source>Summary</source>
-        <translation type="unfinished"></translation>
+        <translation>摘要</translation>
     </message>
     <message>
         <location filename="../detailsdialog.ui" line="71"/>
@@ -84,7 +84,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../playlistmanager.cpp" line="130"/>
         <location filename="../playlistmanager.cpp" line="365"/>
         <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>播放列表</translation>
     </message>
 </context>
 <context>
@@ -92,7 +92,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qtfiledialog.cpp" line="34"/>
         <source>Qt File Dialog</source>
-        <translation>Qmmp 文件会话</translation>
+        <translation>Qmmp 文件对话</translation>
     </message>
 </context>
 <context>
@@ -100,32 +100,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="38"/>
         <source>Title:</source>
-        <translation type="unfinished">标题：</translation>
+        <translation>标题：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="64"/>
         <source>Artist:</source>
-        <translation type="unfinished">艺术家：</translation>
+        <translation>艺术家：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="90"/>
         <source>Album:</source>
-        <translation type="unfinished">专辑：</translation>
+        <translation>专辑：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="113"/>
         <source>Composer:</source>
-        <translation type="unfinished"></translation>
+        <translation>作曲：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="133"/>
         <source>Genre:</source>
-        <translation type="unfinished">流派：</translation>
+        <translation>流派：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="244"/>
         <source>Disc number:</source>
-        <translation type="unfinished"></translation>
+        <translation>光盘编号</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="184"/>
@@ -137,22 +137,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="163"/>
         <source>Track:</source>
-        <translation type="unfinished"></translation>
+        <translation>音轨：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="197"/>
         <source>Year:</source>
-        <translation type="unfinished"></translation>
+        <translation>年代：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="14"/>
         <source>Tag Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>标签编辑</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="269"/>
         <source>Comment:</source>
-        <translation type="unfinished">备注：</translation>
+        <translation>备注：</translation>
     </message>
     <message>
         <location filename="../tageditor.ui" line="291"/>
@@ -166,7 +166,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tageditor.ui" line="305"/>
         <source>Include selected tag in file</source>
-        <translation type="unfinished"></translation>
+        <translation>包含文件中的已选标签</translation>
     </message>
 </context>
 <context>
@@ -174,87 +174,87 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../templateeditor.ui" line="39"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>重设</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="46"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>插入</translation>
     </message>
     <message>
         <location filename="../templateeditor.ui" line="14"/>
         <source>Template Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>模板编辑</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="50"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>艺术家</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="51"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>专辑</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="52"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="53"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>音轨编号</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="54"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>两位数音轨编号</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="55"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>流派</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="56"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>备注</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="57"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>作曲</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="58"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>持续时间</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="59"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>光盘编号</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="60"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>文件名</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="61"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>文件路径</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="62"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>年代</translation>
     </message>
     <message>
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>条件</translation>
     </message>
 </context>
 </TS>

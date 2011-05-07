@@ -6,7 +6,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="13"/>
         <source>Add Files</source>
-        <translation>添加檔案</translation>
+        <translation>添加文件</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="37"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="177"/>
         <source>File name:</source>
-        <translation>檔案名：</translation>
+        <translation>文件名：</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="193"/>
@@ -49,7 +49,7 @@
     <message>
         <location filename="../qmmpfiledialog.ui" line="200"/>
         <source>Files of type:</source>
-        <translation>檔案類型：</translation>
+        <translation>文件類型：</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="226"/>
@@ -106,7 +106,8 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
         <location filename="../qmmpfiledialogimpl.cpp" line="442"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>％1早已存在。
+你想要替換它嗎？</translation>
     </message>
 </context>
 </TS>

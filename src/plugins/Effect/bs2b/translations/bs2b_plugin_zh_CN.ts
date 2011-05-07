@@ -54,8 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translatorcomment>大意可能是互串级别，让耳机有音箱的效果，建议此词国内暂无专业的术语，不译</translatorcomment>
-        <translation>Crossfeed 级别</translation>
+        <translation>串扰水平</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>

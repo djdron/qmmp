@@ -39,52 +39,52 @@
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="67"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>长度</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>取样率</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="68"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="69"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>声音通道</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>比特率</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="70"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>文件大小</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="72"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="73"/>
         <source>Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>比值</translation>
     </message>
     <message>
         <location filename="../wavpackmetadatamodel.cpp" line="74"/>
         <source>Version</source>
-        <translation type="unfinished"></translation>
+        <translation>版本</translation>
     </message>
 </context>
 </TS>

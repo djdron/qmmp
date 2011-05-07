@@ -34,12 +34,12 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="82"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>長度</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>取樣率</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="83"/>
@@ -49,22 +49,22 @@
     <message>
         <location filename="../flacmetadatamodel.cpp" line="84"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>聲音通道</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>比特率</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation>kbps</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="87"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>文件大小</translation>
     </message>
     <message>
         <location filename="../flacmetadatamodel.cpp" line="87"/>

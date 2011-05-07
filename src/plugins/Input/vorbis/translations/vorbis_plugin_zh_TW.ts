@@ -39,12 +39,12 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>長度</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>取樣率</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
@@ -54,12 +54,12 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>聲音通道</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>比特率</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="54"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="55"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>文件大小</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="55"/>

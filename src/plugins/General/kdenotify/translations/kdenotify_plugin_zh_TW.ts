@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="zh_CN" sourcelanguage="zh_TW">
 <context>
     <name>KdeNotify</name>
     <message>
         <location filename="../kdenotify.cpp" line="122"/>
         <source>Qmmp now playing:</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp 正在播放：</translation>
     </message>
 </context>
 <context>
@@ -14,18 +14,19 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="30"/>
         <source>KDE 4 notification plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>KDE 4 通知插件</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="50"/>
         <source>About KDE Notification Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>關於 KDE 通知插件</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="51"/>
         <source>KDE 4 notification plugin for Qmmp 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp 的 KDE 4通知插件
+</translation>
     </message>
 </context>
 <context>
@@ -33,42 +34,42 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>KDE 4 Notification Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>KDE 4通知插件設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation type="unfinished"></translation>
+        <translation>通知延遲 [s]:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation type="unfinished"></translation>
+        <translation>更新現有可見通知而非新建通知</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>外觀</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
-        <translation type="unfinished"></translation>
+        <translation>顯示封面</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>編輯模板</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>通知模板</translation>
     </message>
 </context>
 </TS>
