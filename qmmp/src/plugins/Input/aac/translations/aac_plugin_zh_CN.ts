@@ -6,37 +6,37 @@
     <message>
         <location filename="../aacmetadatamodel.cpp" line="43"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>长度</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>取样率</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="45"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>比特率</translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="47"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="48"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aacmetadatamodel.cpp" line="49"/>
         <source>File size</source>
-        <translation type="unfinished"></translation>
+        <translation>文件大小</translation>
     </message>
 </context>
 <context>

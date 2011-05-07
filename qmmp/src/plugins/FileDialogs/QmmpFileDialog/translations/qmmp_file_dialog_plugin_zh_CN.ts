@@ -19,7 +19,7 @@
         <location filename="../qmmpfiledialog.ui" line="72"/>
         <location filename="../qmmpfiledialog.ui" line="97"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.ui" line="50"/>
@@ -63,12 +63,12 @@
         <location filename="../qmmpfiledialog.cpp" line="121"/>
         <location filename="../qmmpfiledialog.cpp" line="130"/>
         <source>Qmmp File Dialog</source>
-        <translation>Qmmp 文件会话</translation>
+        <translation>Qmmp 文件对话</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="129"/>
         <source>About Qmmp File Dialog</source>
-        <translation>关于 Qmmp 文件会话</translation>
+        <translation>关于 Qmmp 文件对话</translation>
     </message>
     <message>
         <location filename="../qmmpfiledialog.cpp" line="131"/>
@@ -106,7 +106,8 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
         <location filename="../qmmpfiledialogimpl.cpp" line="442"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 早已存在。
+你想要替换它吗？</translation>
     </message>
 </context>
 </TS>

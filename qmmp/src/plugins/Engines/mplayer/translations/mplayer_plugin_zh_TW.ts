@@ -6,32 +6,32 @@
     <message>
         <location filename="../mplayerenginefactory.cpp" line="33"/>
         <source>Mplayer Plugin</source>
-        <translation type="unfinished">Mplayer 插件</translation>
+        <translation>Mplayer 插件</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="36"/>
         <source>Video Files</source>
-        <translation type="unfinished">視頻檔案</translation>
+        <translation>視頻文件</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="82"/>
         <source>About MPlayer Plugin</source>
-        <translation type="unfinished">關於 Mplayer 插件</translation>
+        <translation>關於 Mplayer 插件</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="83"/>
         <source>Qmmp MPlayer Plugin</source>
-        <translation type="unfinished">Qmmp Mplayer 插件</translation>
+        <translation>Qmmp Mplayer 插件</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="84"/>
         <source>This plugin uses MPlayer as backend</source>
-        <translation type="unfinished">此插件使用 Mplayer 後端</translation>
+        <translation>此插件使用 Mplayer 後端</translation>
     </message>
     <message>
         <location filename="../mplayerenginefactory.cpp" line="85"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -39,72 +39,72 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished">大小：</translation>
+        <translation>大小：</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="38"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="75"/>
         <source>Length</source>
-        <translation type="unfinished">長度：</translation>
+        <translation>長度</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="77"/>
         <source>Demuxer</source>
-        <translation type="unfinished">流分離：</translation>
+        <translation>流分離</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>
         <source>Video format</source>
-        <translation type="unfinished"></translation>
+        <translation>視頻格式</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="82"/>
         <source>FPS</source>
-        <translation type="unfinished">FPS</translation>
+        <translation>FPS</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="84"/>
         <source>Video codec</source>
-        <translation type="unfinished"></translation>
+        <translation>視頻編碼</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="86"/>
         <source>Aspect ratio</source>
-        <translation type="unfinished">寬高比：</translation>
+        <translation>寬高比：</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="88"/>
         <source>Video bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>視頻比特率</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="95"/>
         <source>Audio codec</source>
-        <translation type="unfinished"></translation>
+        <translation>音頻編碼</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="97"/>
         <source>Sample rate</source>
-        <translation type="unfinished">取樣率：</translation>
+        <translation>取樣率</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="99"/>
         <source>Audio bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>音頻比特率</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="101"/>
         <source>Channels</source>
-        <translation type="unfinished">音頻通道：</translation>
+        <translation>音頻通道</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="103"/>
         <source>Resolution</source>
-        <translation type="unfinished">分辨率：</translation>
+        <translation>分辨率</translation>
     </message>
 </context>
 <context>
@@ -127,17 +127,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Video:</source>
-        <translation type="unfinished"></translation>
+        <translation>視頻：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="43"/>
         <source>Audio:</source>
-        <translation type="unfinished"></translation>
+        <translation>音頻：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="67"/>
         <source>Synchronization factor:</source>
-        <translation type="unfinished"></translation>
+        <translation>同步數系數：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="57"/>

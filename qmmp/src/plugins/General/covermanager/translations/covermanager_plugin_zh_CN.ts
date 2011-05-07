@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="zh_CN" sourcelanguage="zh_CN">
 <context>
     <name>CoverManager</name>
     <message>
         <location filename="../covermanager.cpp" line="36"/>
         <source>Show Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>显示封面</translation>
     </message>
     <message>
         <location filename="../covermanager.cpp" line="37"/>
@@ -19,22 +19,22 @@
     <message>
         <location filename="../covermanagerfactory.cpp" line="29"/>
         <source>Cover Manager Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>封面管理插件</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="49"/>
         <source>About Cover Manager Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于封面管理插件</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="50"/>
         <source>Qmmp Cover Manager Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp 封面管理插件</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="51"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
         <source>&amp;Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>另存为(&amp;S)...</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="37"/>
@@ -52,12 +52,12 @@
     <message>
         <location filename="../coverwidget.cpp" line="38"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>大小</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="40"/>
         <source>Actual Size</source>
-        <translation type="unfinished"></translation>
+        <translation>实际大小</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="41"/>
@@ -82,7 +82,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
         <source>&amp;Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭(&amp;C)</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="47"/>
@@ -92,12 +92,12 @@
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation type="unfinished"></translation>
+        <translation>封面另存为</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>图象</translation>
     </message>
 </context>
 </TS>

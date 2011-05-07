@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="zh_CN">
+<TS version="2.0" language="zh_CN" sourcelanguage="zh_CN">
 <context>
     <name>SettingsDialog</name>
     <message>
@@ -11,28 +11,28 @@
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
         <source>Tooltip</source>
-        <translation type="unfinished"></translation>
+        <translation>工具提示</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="38"/>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Delay, ms:</source>
-        <translation type="unfinished"></translation>
+        <translation>延迟 [ms]：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Balloon message</source>
-        <translation type="unfinished"></translation>
+        <translation>气球通知</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="98"/>
         <source>Show progress bar</source>
-        <translation type="unfinished"></translation>
+        <translation>显示进度条</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>透明度：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="165"/>
@@ -42,17 +42,17 @@
     <message>
         <location filename="../settingsdialog.ui" line="225"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑模板</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Try to split file name when no tag</source>
-        <translation type="unfinished"></translation>
+        <translation>无标签时尝试拆分文件名</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>封面大小：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Tooltip Template</source>
-        <translation type="unfinished"></translation>
+        <translation>工具提示模板</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../statusiconfactory.cpp" line="52"/>
         <source>Written by:</source>
-        <translation type="unfinished"></translation>
+        <translation>作者：</translation>
     </message>
     <message>
         <location filename="../statusiconfactory.cpp" line="53"/>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="135"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>已停止</translation>
     </message>
 </context>
 </TS>

@@ -26,7 +26,7 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="129"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="130"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermodplugfactory.cpp" line="131"/>
         <source>Modplug Plugin developers:</source>
-        <translation type="unfinished"></translation>
+        <translation>ModPlug 插件開發：</translation>
     </message>
     <message>
         <location filename="../decodermodplugfactory.cpp" line="132"/>
@@ -59,54 +59,54 @@
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="71"/>
         <source>File name</source>
-        <translation type="unfinished">檔名：</translation>
+        <translation>文件名</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="142"/>
         <source>Type</source>
-        <translation type="unfinished">類別：</translation>
+        <translation>類別</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="147"/>
         <source>Length</source>
-        <translation type="unfinished">長度：</translation>
+        <translation>長度</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="148"/>
         <source>Speed</source>
-        <translation type="unfinished">速度：</translation>
+        <translation>速度</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="149"/>
         <source>Tempo</source>
-        <translation type="unfinished">節拍：</translation>
+        <translation>節拍</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="150"/>
         <location filename="../modplugmetadatamodel.cpp" line="171"/>
         <source>Samples</source>
-        <translation type="unfinished">取樣率：</translation>
+        <translation>取樣率</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="151"/>
         <location filename="../modplugmetadatamodel.cpp" line="180"/>
         <source>Instruments</source>
-        <translation type="unfinished">樂器：</translation>
+        <translation>樂器</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="152"/>
         <source>Patterns</source>
-        <translation type="unfinished">架構：</translation>
+        <translation>架構</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="153"/>
         <source>Channels</source>
-        <translation type="unfinished">聲道</translation>
+        <translation>聲音通道</translation>
     </message>
     <message>
         <location filename="../modplugmetadatamodel.cpp" line="185"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>備註</translation>
     </message>
 </context>
 <context>

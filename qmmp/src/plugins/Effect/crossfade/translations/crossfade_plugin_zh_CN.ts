@@ -6,22 +6,22 @@
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="30"/>
         <source>Crossfade Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>交叉衰落插件</translation>
     </message>
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="51"/>
         <source>About Crossfade Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于交叉衰落插件</translation>
     </message>
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="52"/>
         <source>Qmmp Crossfade Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp 交叉衰落插件</translation>
     </message>
     <message>
         <location filename="../effectcrossfadefactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,17 +29,18 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>Crossfade Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>交叉衰落插件设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Overlap:</source>
-        <translation type="unfinished"></translation>
+        <translation>重叠：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+</translation>
     </message>
 </context>
 </TS>

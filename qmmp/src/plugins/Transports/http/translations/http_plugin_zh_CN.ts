@@ -6,27 +6,27 @@
     <message>
         <location filename="../httpinputfactory.cpp" line="34"/>
         <source>HTTP Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP 插件</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="54"/>
         <source>About HTTP Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于 HTTP 传输插件</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="55"/>
         <source>Qmmp HTTP Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp HTTP 传输插件</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="56"/>
         <source>Compiled against libcurl-%1</source>
-        <translation type="unfinished"></translation>
+        <translation>编译依赖 libcurl-%1</translation>
     </message>
     <message>
         <location filename="../httpinputfactory.cpp" line="57"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -34,37 +34,37 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>HTTP Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP 插件设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>缓冲大小：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Metadata encoding</source>
-        <translation type="unfinished"></translation>
+        <translation>元数据编码</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="84"/>
         <source>Automatic charset detection</source>
-        <translation type="unfinished"></translation>
+        <translation>自动检测字符集</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="94"/>
         <source>Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>语言：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="114"/>
         <source>Default encoding:</source>
-        <translation type="unfinished"></translation>
+        <translation>默认编码：</translation>
     </message>
 </context>
 </TS>

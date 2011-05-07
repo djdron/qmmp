@@ -47,7 +47,7 @@
     <message>
         <location filename="../lyricswindow.cpp" line="64"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>完成</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="67"/>
@@ -57,7 +57,7 @@
         <location filename="../lyricswindow.cpp" line="113"/>
         <location filename="../lyricswindow.cpp" line="124"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="165"/>
@@ -73,7 +73,7 @@
         <location filename="../lyricswindow.cpp" line="118"/>
         <location filename="../lyricswindow.cpp" line="153"/>
         <source>Not found</source>
-        <translation type="unfinished"></translation>
+        <translation>没有发现</translation>
     </message>
     <message>
         <location filename="../lyricswindow.cpp" line="139"/>

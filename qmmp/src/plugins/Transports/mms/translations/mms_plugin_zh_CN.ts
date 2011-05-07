@@ -6,22 +6,22 @@
     <message>
         <location filename="../mmsinputfactory.cpp" line="34"/>
         <source>MMS Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MMS 插件</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="54"/>
         <source>About MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>关于 MMS T传输插件</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="55"/>
         <source>Qmmp MMS Transport Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp MMS 传输插件</translation>
     </message>
     <message>
         <location filename="../mmsinputfactory.cpp" line="56"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -29,12 +29,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>MMS Plugin Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>MMS 插件设置</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
+        <translation>缓冲大小：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>

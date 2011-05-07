@@ -7,11 +7,7 @@
 
     Yuriy Zhuravlev <stalkerg@gmail.com> (jack plugin)
 
-简体中文翻译：
+美術:
 
-	李红昆 <lon83129@126.com>
-
-繁體中文翻譯：
-
-	李红昆 <lon83129@126.com>
+    Andrey Adreev <andreev00@gmail.com>
 

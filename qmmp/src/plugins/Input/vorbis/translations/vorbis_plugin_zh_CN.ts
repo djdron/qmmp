@@ -39,42 +39,42 @@
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="51"/>
         <source>Length</source>
-        <translation type="unfinished"></translation>
+        <translation>长度</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Sample rate</source>
-        <translation type="unfinished"></translation>
+        <translation>取样率</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="52"/>
         <source>Hz</source>
-        <translation type="unfinished">Hz</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="53"/>
         <source>Channels</source>
-        <translation type="unfinished"></translation>
+        <translation>声音通道</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>Bitrate</source>
-        <translation type="unfinished"></translation>
+        <translation>比特率</translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="54"/>
         <source>kbps</source>
-        <translation type="unfinished">kbps</translation>
-    </message>
-    <message>
-        <location filename="../vorbismetadatamodel.cpp" line="55"/>
-        <source>File size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../vorbismetadatamodel.cpp" line="55"/>
+        <source>File size</source>
+        <translation>文件大小</translation>
+    </message>
+    <message>
+        <location filename="../vorbismetadatamodel.cpp" line="55"/>
         <source>KB</source>
-        <translation type="unfinished">KB</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

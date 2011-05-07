@@ -21,7 +21,7 @@
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="90"/>
         <source>Compiled against libcdio-%1 and libcddb-%2</source>
-        <translation type="unfinished"></translation>
+        <translation>編譯依賴 libcdio-%1 and libcddb-%2</translation>
     </message>
     <message>
         <location filename="../decodercdaudiofactory.cpp" line="92"/>
@@ -64,27 +64,27 @@
     <message>
         <location filename="../settingsdialog.ui" line="78"/>
         <source>Use HTTP instead of CDDBP</source>
-        <translation type="unfinished"></translation>
+        <translation>使用 HTTP 而非 CDDBP</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation type="unfinished"></translation>
+        <translation>服務器：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>
         <source>Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>路徑：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>端口：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>Clear CDDB cache</source>
-        <translation type="unfinished"></translation>
+        <translation>清除 CDDB 緩存</translation>
     </message>
 </context>
 </TS>

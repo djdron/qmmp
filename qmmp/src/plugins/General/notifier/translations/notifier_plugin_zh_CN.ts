@@ -52,12 +52,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>Delay (ms):</source>
-        <translation type="unfinished"></translation>
+        <translation>延迟 (ms):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="141"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>透明度：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="321"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="343"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>编辑模板</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
@@ -93,17 +93,17 @@
     <message>
         <location filename="../settingsdialog.cpp" line="105"/>
         <source>Notification Template</source>
-        <translation type="unfinished"></translation>
+        <translation>通知模板</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
         <source>Font:</source>
-        <translation type="unfinished"></translation>
+        <translation>字体：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="108"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>封面大小：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>

@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Session:</source>
-        <translation type="unfinished"></translation>
+        <translation>會議：</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>註冊新會議</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="70"/>

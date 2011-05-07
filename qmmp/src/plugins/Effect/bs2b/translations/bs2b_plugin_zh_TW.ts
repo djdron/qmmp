@@ -54,7 +54,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="32"/>
         <source>Crossfeed level</source>
-        <translation type="unfinished"></translation>
+        <translation>串擾水平</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
