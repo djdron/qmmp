@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,7 +29,7 @@
 #include <qmmpui/playlistmanager.h>
 #include "player2object.h"
 
-Player2Object::Player2Object(QObject *parent) : QObject(parent)
+Player2Object::Player2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
 {
     m_prev_item = 0;
     m_previous_pos = 0;
@@ -348,7 +348,8 @@ void Player2Object::playItem(PlayListItem *item)
 
 void Player2Object::disconnectPl()
 {
-    disconnect(sender(), SIGNAL(itemAddded(itemAdded(PlayListItem*))), this, SLOT(playItem(PlayListItem*)));
+    disconnect(sender(), SIGNAL(itemAddded(itemAdded(PlayListItem*))),
+               this, SLOT(playItem(PlayListItem*)));
 }
 
 void Player2Object::syncProperties()

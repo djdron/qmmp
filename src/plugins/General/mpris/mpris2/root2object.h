@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,13 +20,13 @@
 #ifndef ROOT2OBJECT_H
 #define ROOT2OBJECT_H
 
-#include <QObject>
+#include <QDBusAbstractAdaptor>
 #include <QStringList>
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class Root2Object : public QObject
+class Root2Object : public QDBusAbstractAdaptor
 {
 Q_OBJECT
 Q_CLASSINFO("D-Bus Interface", "org.mpris.MediaPlayer2")

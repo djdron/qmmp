@@ -20,7 +20,7 @@
 #ifndef PLAYER2OBJECT_H
 #define PLAYER2OBJECT_H
 
-#include <QObject>
+#include <QDBusAbstractAdaptor>
 #include <QVariantMap>
 #include <QDBusObjectPath>
 #include <QMap>
@@ -35,7 +35,7 @@ class PlayListItem;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class Player2Object : public QObject
+class Player2Object : public QDBusAbstractAdaptor
 {
 Q_OBJECT
 Q_CLASSINFO("D-Bus Interface", "org.mpris.MediaPlayer2.Player")
