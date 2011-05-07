@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,10 +34,9 @@ MPRIS::MPRIS(QObject *parent) : General(parent)
     connection.registerObject("/Player", new PlayerObject(this), QDBusConnection::ExportAllContents);
     connection.registerObject("/", new RootObject(this), QDBusConnection::ExportAllContents);
     //MPRISv2.0
-    connection.registerObject("/org/mpris/MediaPlayer2", new Root2Object(this),
-                              QDBusConnection::ExportAllContents);
-    connection.registerObject("/org/mpris/MediaPlayer2/Player", new Player2Object(this),
-                              QDBusConnection::ExportAllContents);
+    new Root2Object(this);
+    new Player2Object(this);
+    connection.registerObject("/org/mpris/MediaPlayer2", this);
     connection.registerService("org.mpris.qmmp");
     connection.registerService("org.mpris.MediaPlayer2.qmmp");
 }

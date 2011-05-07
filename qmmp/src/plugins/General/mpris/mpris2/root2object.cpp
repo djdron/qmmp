@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,7 +29,7 @@
 #include <qmmp/metadatamanager.h>
 #include "root2object.h"
 
-Root2Object::Root2Object(QObject *parent) : QObject(parent)
+Root2Object::Root2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
 {}
 
 
