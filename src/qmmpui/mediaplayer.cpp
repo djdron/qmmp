@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 #include "playlistitem.h"
 #include "mediaplayer.h"
 
-#define MAX_SKIPS 5
+#define MAX_ERRORS 4
 
 MediaPlayer *MediaPlayer::m_instance = 0;
 
@@ -104,7 +104,6 @@ void MediaPlayer::play(qint64 offset)
         return;
     }
     m_core->play(s, false, offset);
-    m_skips = 0;
 }
 
 void MediaPlayer::stop()
@@ -217,16 +216,18 @@ void MediaPlayer::processState(Qmmp::State state)
     {
     case Qmmp::NormalError:
         stop();
-        if (m_skips < MAX_SKIPS)
+        if (m_skips <= MAX_ERRORS)
         {
-            playNext();
             m_skips++;
+            playNext();
         }
         break;
     case Qmmp::FatalError:
         stop();
         break;
-    default:
+    case Qmmp::Playing:
         m_skips = 0;
+    default:
+        ;
     }
 }
