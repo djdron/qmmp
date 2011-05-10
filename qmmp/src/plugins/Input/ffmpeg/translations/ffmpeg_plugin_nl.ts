@@ -62,17 +62,17 @@
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
         <source>Sample rate</source>
         <translation>Sample frequentie</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="61"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="62"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="67"/>
         <source>Channels</source>
         <translation>Kanalen</translation>
     </message>
