@@ -155,14 +155,19 @@ bool DecoderFFmpeg::initialize()
     for (wma_idx = 0; wma_idx < (int)ic->nb_streams; wma_idx++)
     {
         c = ic->streams[wma_idx]->codec;
-        if (c->codec_type == CODEC_TYPE_AUDIO) break;
+#if LIBAVCODEC_VERSION_MAJOR < 53
+        if (c->codec_type == CODEC_TYPE_AUDIO)
+#else
+        if (c->codec_type == AVMEDIA_TYPE_AUDIO)
+#endif
+            break;
     }
 
     if (c->channels > 0)
          c->request_channels = qMin(2, c->channels);
     else
          c->request_channels = 2;
-        
+
 #if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(101<<8)+0))
     av_dump_format(ic,0,0,0);
 #else

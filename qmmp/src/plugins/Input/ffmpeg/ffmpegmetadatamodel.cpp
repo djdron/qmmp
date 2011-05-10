@@ -54,7 +54,12 @@ QHash<QString, QString> FFmpegMetaDataModel::audioProperties()
     for (wma_idx = 0; wma_idx < m_in->nb_streams; wma_idx++)
     {
         c = m_in->streams[wma_idx]->codec;
-        if (c->codec_type == CODEC_TYPE_AUDIO) break;
+#if LIBAVCODEC_VERSION_MAJOR < 53
+        if (c->codec_type == CODEC_TYPE_AUDIO)
+#else
+        if (c->codec_type == AVMEDIA_TYPE_AUDIO)
+#endif
+            break;
     }
     if (c)
     {
