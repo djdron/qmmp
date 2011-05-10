@@ -119,6 +119,8 @@ void Dock::move (QWidget* mv, QPoint npos)
     QRect DesktopRect = QApplication::desktop()->availableGeometry(m_mainWidget);
     if(npos.y() < DesktopRect.y())
         npos.setY(DesktopRect.y());
+    if(npos.x() < DesktopRect.x())
+        npos.setX(DesktopRect.x());
     if (mv == m_mainWidget)
     {
 
