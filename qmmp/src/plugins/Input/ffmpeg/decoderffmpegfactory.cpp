@@ -141,6 +141,8 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
         AVMetadataTag *year = av_metadata_get(in->metadata,"WM/Year",0,0);
         if(!year)
             year = av_metadata_get(in->metadata,"year",0,0);
+        if(!year)
+            year = av_metadata_get(in->metadata,"date",0,0);
         AVMetadataTag *track = av_metadata_get(in->metadata,"track",0,0);
         if(!track)
             track = av_metadata_get(in->metadata,"WM/Track",0,0);
