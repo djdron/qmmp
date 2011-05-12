@@ -48,14 +48,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.apeCheckBox->setChecked(filters.contains("*.ape") && avcodec_find_decoder(CODEC_ID_APE));
     ui.ttaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TTA));
     ui.ttaCheckBox->setChecked(filters.contains("*.tta") && avcodec_find_decoder(CODEC_ID_TTA));
-    ui.alacCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_ALAC));
-    ui.alacCheckBox->setChecked(filters.contains("*.alac") && avcodec_find_decoder(CODEC_ID_ALAC));
     ui.aacCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_AAC));
     ui.aacCheckBox->setChecked(filters.contains("*.aac") && avcodec_find_decoder(CODEC_ID_AAC));
     ui.mp3CheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_MP3));
     ui.mp3CheckBox->setChecked(filters.contains("*.mp3") && avcodec_find_decoder(CODEC_ID_MP3));
     ui.mp4CheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_AAC));
-    ui.mp4CheckBox->setChecked(filters.contains("*.m4a") && avcodec_find_decoder(CODEC_ID_AAC));
+    ui.mp4CheckBox->setChecked(filters.contains("*.m4a") && (avcodec_find_decoder(CODEC_ID_AAC)
+                                                             || avcodec_find_decoder(CODEC_ID_ALAC)));
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
     ui.raCheckBox->setChecked(filters.contains("*.ra") && avcodec_find_decoder(CODEC_ID_RA_288));
     ui.shCheckBox->setChecked(filters.contains("*.shn") && avcodec_find_decoder(CODEC_ID_SHORTEN));
@@ -78,8 +77,6 @@ void SettingsDialog::accept()
         filters << "*.ape";
     if (ui.ttaCheckBox->isChecked())
         filters << "*.tta";
-    if (ui.alacCheckBox->isChecked())
-        filters << "*.alac";
     if (ui.aacCheckBox->isChecked())
         filters << "*.aac";
     if (ui.mp4CheckBox->isChecked())

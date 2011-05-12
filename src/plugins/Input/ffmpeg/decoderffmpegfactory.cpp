@@ -96,6 +96,7 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
     {
         properties.contentTypes << "audio/3gpp" << "audio/3gpp2" << "audio/mp4";
         properties.contentTypes << "audio/MP4A-LATM" << "audio/mpeg4-generic";
+        properties.contentTypes << "audio/m4a";
     }
     if(filters.contains("*.ac3"))
         properties.contentTypes << "audio/ac3";

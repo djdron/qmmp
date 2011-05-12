@@ -120,6 +120,7 @@ bool DecoderFFmpeg::initialize()
         return false;
     }
     qDebug("DecoderFFmpeg: detected format: %s", fmt->long_name);
+    qDebug("=%s=", fmt->name);
 
 #if (LIBAVFORMAT_VERSION_INT >= ((52<<16)+(105<<8)+0))
     m_stream = avio_alloc_context(m_input_buf, INPUT_BUFFER_SIZE, 0, this, ffmpeg_read, NULL, ffmpeg_seek);
