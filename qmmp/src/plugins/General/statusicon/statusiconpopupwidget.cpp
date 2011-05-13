@@ -42,7 +42,7 @@ StatusIconPopupWidget::StatusIconPopupWidget(QWidget * parent)
         : QFrame(parent)
 {
     setWindowFlags(Qt::X11BypassWindowManagerHint |
-                   Qt::WindowStaysOnTopHint | Qt::Dialog | Qt::FramelessWindowHint);
+                   Qt::WindowStaysOnTopHint | Qt::ToolTip | Qt::FramelessWindowHint);
     setFrameStyle(QFrame::NoFrame | QFrame::Plain);
     setAttribute(Qt::WA_QuitOnClose, false);
 
@@ -103,7 +103,7 @@ void StatusIconPopupWidget::updateMetaData()
     {
         QString title = m_template;
         SoundCore *core = SoundCore::instance();
-        QMap<Qmmp::MetaData, QString> meta;
+        QMap<Qmmp::MetaData, QString> meta = core->metaData();
         if(m_splitFileName && meta[Qmmp::TITLE].isEmpty() && !meta[Qmmp::URL].contains("://"))
         {
             QString name = QFileInfo(meta[Qmmp::URL]).completeBaseName();
