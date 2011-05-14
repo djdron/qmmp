@@ -282,6 +282,7 @@ void MainWindow::readSettings()
         m_playlist->setVisible(settings.value("Playlist/visible",true).toBool());
         qApp->processEvents();
         m_equalizer->setVisible(settings.value("Equalizer/visible",true).toBool());
+        qApp->processEvents();
         bool val = settings.value("Playlist/repeatable",false).toBool();
 
         // Repeat/Shuffle
