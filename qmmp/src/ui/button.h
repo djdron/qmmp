@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 class Skin;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class Button : public PixmapWidget
 {
@@ -43,7 +43,8 @@ private slots:
 
 private:
     Skin *skin;
-    bool m_cursorin;
+    //bool m_cursorin;
+    bool m_pressed;
     void setON(bool);
     uint name_normal, name_pressed;
     uint name_cursor;

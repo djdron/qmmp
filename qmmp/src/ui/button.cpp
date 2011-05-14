@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Based on Promoe, an XMMS2 Client                                      *
@@ -31,6 +31,7 @@ Button::Button (QWidget *parent, uint normal, uint pressed, uint cursor)
     name_normal = normal;
     name_pressed = pressed;
     name_cursor = cursor;
+    m_pressed = false;
     skin = Skin::instance();
     setON (false);
     setCursor (skin->getCursor (name_cursor));
@@ -56,25 +57,26 @@ void Button::setON (bool on)
 }
 void Button::mousePressEvent (QMouseEvent *e)
 {
+    if(e->button() != Qt::LeftButton)
+        return;
     setON (true);
-    m_cursorin = true;
+    m_pressed = true;
     QWidget::mousePressEvent(e);
 }
 
-void Button::mouseReleaseEvent (QMouseEvent*)
+void Button::mouseReleaseEvent (QMouseEvent *e)
 {
-    setON (false);
-    if (m_cursorin)
+    if (!m_pressed)
+        return;
+    m_pressed = false;
+    if(rect().contains(e->pos()))
+    {
+        setON (false);
         emit clicked();
+    }
 }
 
 void Button::mouseMoveEvent (QMouseEvent *e)
 {
-    if ( !m_cursorin && rect().contains(e->pos()) ) {
-        m_cursorin = true;
-        setON (true);
-    } else if ( m_cursorin && !rect().contains(e->pos()) ) {
-        m_cursorin = false;
-        setON (false);
-    }
+    setON (m_pressed && rect().contains(e->pos()));
 }
