@@ -63,7 +63,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
         <source>Edit template</source>
-        <translation type="unfinished"></translation>
+        <translation>Vorlage bearbeiten</translation>
     </message>
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>

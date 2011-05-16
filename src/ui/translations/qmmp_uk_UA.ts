@@ -1400,38 +1400,38 @@
         <translation>Виберіть один чи кілька файлів</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Перейти до файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="423"/>
         <source>J</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="424"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>View</source>
         <translation>Вигляд</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="504"/>
+        <location filename="../mainwindow.cpp" line="505"/>
         <source>Open Playlist</source>
         <translation>Відкрити список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="529"/>
+        <location filename="../mainwindow.cpp" line="530"/>
         <source>Save Playlist</source>
         <translation>Зберегти список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="502"/>
-        <location filename="../mainwindow.cpp" line="528"/>
+        <location filename="../mainwindow.cpp" line="503"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>Playlist Files</source>
         <translation>Файли списків</translation>
     </message>
@@ -1441,7 +1441,7 @@
         <translation>Усі формати</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="452"/>
+        <location filename="../mainwindow.cpp" line="453"/>
         <source>Tools</source>
         <translation>Утиліти</translation>
     </message>
