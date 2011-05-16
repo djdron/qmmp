@@ -248,6 +248,11 @@ void PlayListTitleBar::shade()
     updatePositions();
 }
 
+void PlayListTitleBar::mouseDoubleClickEvent (QMouseEvent* event)
+{
+       PlayListTitleBar::shade();
+}
+
 void PlayListTitleBar::showCurrent()
 {
     if (m_model)
