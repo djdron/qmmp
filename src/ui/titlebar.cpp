@@ -191,6 +191,11 @@ void TitleBar::shade()
     updatePositions();
 }
 
+void TitleBar::mouseDoubleClickEvent (QMouseEvent* event)
+{
+       TitleBar::shade();
+}
+
 QString TitleBar::formatTime (int sec)
 {
     int minutes = sec / 60;
