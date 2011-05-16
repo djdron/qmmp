@@ -132,6 +132,11 @@ void EqTitleBar::mouseReleaseEvent(QMouseEvent*)
     Dock::instance()->updateDock();
 }
 
+void EqTitleBar::mouseDoubleClickEvent (QMouseEvent *)
+{
+    EqTitleBar::shade();
+}
+
 void EqTitleBar::shade()
 {
     m_shaded = !m_shaded;
