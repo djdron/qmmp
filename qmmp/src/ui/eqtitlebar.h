@@ -69,6 +69,7 @@ protected:
     void mousePressEvent(QMouseEvent*);
     void mouseReleaseEvent(QMouseEvent*);
     void mouseMoveEvent(QMouseEvent*);
+    void mouseDoubleClickEvent (QMouseEvent *);
 };
 
 #endif

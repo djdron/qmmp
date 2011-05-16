@@ -191,7 +191,7 @@ void TitleBar::shade()
     updatePositions();
 }
 
-void TitleBar::mouseDoubleClickEvent (QMouseEvent* event)
+void TitleBar::mouseDoubleClickEvent (QMouseEvent *)
 {
        TitleBar::shade();
 }

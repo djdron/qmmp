@@ -248,7 +248,7 @@ void PlayListTitleBar::shade()
     updatePositions();
 }
 
-void PlayListTitleBar::mouseDoubleClickEvent (QMouseEvent* event)
+void PlayListTitleBar::mouseDoubleClickEvent (QMouseEvent *)
 {
        PlayListTitleBar::shade();
 }
