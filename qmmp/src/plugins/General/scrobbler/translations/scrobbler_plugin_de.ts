@@ -39,12 +39,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Session:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitzung:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>Register new session</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Sitzung registrieren</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="70"/>
