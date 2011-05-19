@@ -489,12 +489,12 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Skip forward in playlist</source>
         <translation>Eiti prie sekančio elemento</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip backwards in playlist</source>
         <translation>Eiti prie ankstesnio elemento</translation>
     </message>
@@ -530,21 +530,26 @@
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <source>Quit application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>Nustatyti grojimo garsą (pvz: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Show/hide application</source>
         <translation>Parodyti/Slėpti programą</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Add File dialog</source>
         <translation>Parodyti langą bylų pridėjimui</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Add Directory dialog</source>
         <translation>Parodyti langą aplanko pridėjimui</translation>
     </message>

@@ -488,12 +488,12 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Skip forward in playlist</source>
         <translation>Перейти к следующему фрагменту</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip backwards in playlist</source>
         <translation>Перейти к предыдущему фрагменту</translation>
     </message>
@@ -529,21 +529,26 @@
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <source>Quit application</source>
+        <translation>Завершить приложение</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>Установить громкость (пример: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Show/hide application</source>
         <translation>Показать/скрыть приложение</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Add File dialog</source>
         <translation>Показать диалог добавления файлов</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Add Directory dialog</source>
         <translation>Показать диалог добавления директорий</translation>
     </message>
