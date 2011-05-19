@@ -488,12 +488,12 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Skip forward in playlist</source>
         <translation>跳到播放清單中的下一曲</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip backwards in playlist</source>
         <translation>跳到播放清單中的上一曲</translation>
     </message>
@@ -529,21 +529,26 @@
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <source>Quit application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>設置回放音量 (例如：qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Show/hide application</source>
         <translation>察看/隱藏程式</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Add File dialog</source>
         <translation>察看添加文件對話</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Add Directory dialog</source>
         <translation>察看添加目錄對話</translation>
     </message>

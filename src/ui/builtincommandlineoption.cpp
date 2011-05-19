@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,13 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QApplication>
 #include <qmmp/soundcore.h>
-
 #include "mainwindow.h"
 #include "builtincommandlineoption.h"
 
-BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent)
-        : QObject(parent)
+BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent) : QObject(parent)
 {
     m_options << "--enqueue" << "-e"
               << "--play" << "-p"
@@ -32,6 +31,7 @@ BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent)
               << "--play-pause" << "-t"
               << "--stop" << "-s"
               << "--jump-to-file" << "-j"
+              << "--quit" << "-q"
               << "--volume"
               << "--next" << "--previous"
               << "--toggle-visibility"
@@ -57,6 +57,7 @@ const QString BuiltinCommandLineOption::helpString() const
                "-t, --play-pause     "+tr("Pause if playing, play otherwise")+ "\n"
                "-s, --stop           "+tr("Stop current song")+ "\n" +
                "-j, --jump-to-file   "+tr("Display Jump to File dialog")+ "\n" +
+               "-q, --quit           "+tr("Quit application") + "\n" +
                "--volume <0..100>    "+tr("Set playback volume (example: qmmp --volume 20)") + "\n"
                "--next               "+tr("Skip forward in playlist")+ "\n" +
                "--previous           "+tr("Skip backwards in playlist")+"\n" +
@@ -118,6 +119,10 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     else if (option_string == "--jump-to-file" || option_string == "-j")
     {
         mw->jumpToFile();
+    }
+    else if (option_string == "--quit" || option_string == "-q")
+    {
+        mw->close();
     }
     else if (option_string == "--toggle-visibility")
     {

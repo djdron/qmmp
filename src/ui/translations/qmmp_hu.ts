@@ -519,31 +519,36 @@
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <source>Quit application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>Lejátszási hangerő beállítása (pl.: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Skip forward in playlist</source>
         <translation>Lejátszási lista következő számának kihagyása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Skip backwards in playlist</source>
         <translation>Lejátszási lista előző számainak kihagyása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Show/hide application</source>
         <translation>Alkalmazás mutatása/elrejtése</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Add File dialog</source>
         <translation>Fájl hozzáadása ablak mutatása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Display Add Directory dialog</source>
         <translation>Könyvtár hozzáadása ablak mutatása</translation>
     </message>
