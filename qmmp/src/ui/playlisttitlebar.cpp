@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -172,6 +172,7 @@ void PlayListTitleBar::mouseReleaseEvent(QMouseEvent*)
 {
     Dock::instance()->updateDock();
     m_resize = false;
+    setCursor (Qt::ArrowCursor);
 }
 
 void PlayListTitleBar::mouseMoveEvent(QMouseEvent* event)
