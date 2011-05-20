@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>308</width>
-    <height>297</height>
+    <height>344</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,13 +73,6 @@
        <widget class="QCheckBox" name="ttaCheckBox">
         <property name="text">
          <string>True Audio</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QCheckBox" name="alacCheckBox">
-        <property name="text">
-         <string>ALAC (Apple Lossless Audio Codec)</string>
         </property>
        </widget>
       </item>
