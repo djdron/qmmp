@@ -101,31 +101,26 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
-        <source>ALAC (Apple Lossless Audio Codec)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../settingsdialog.ui" line="89"/>
         <source>ADTS AAC</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="103"/>
+        <location filename="../settingsdialog.ui" line="96"/>
         <source>MPEG-4 AAC/ALAC</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="110"/>
+        <location filename="../settingsdialog.ui" line="103"/>
         <source>RealAudio 1.0/2.0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="117"/>
+        <location filename="../settingsdialog.ui" line="110"/>
         <source>Shorten</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="124"/>
+        <location filename="../settingsdialog.ui" line="117"/>
         <source>AC-3</source>
         <translation></translation>
     </message>
@@ -135,7 +130,7 @@
         <translation>Налаштування модуля FFmpeg</translation>
     </message>
     <message>
-        <location filename="../settingsdialog.ui" line="96"/>
+        <location filename="../settingsdialog.ui" line="89"/>
         <source>MP3 (MPEG audio layer 3)</source>
         <translation></translation>
     </message>
