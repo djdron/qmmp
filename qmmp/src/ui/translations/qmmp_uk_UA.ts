@@ -530,7 +530,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="60"/>
         <source>Quit application</source>
-        <translation type="unfinished"></translation>
+        <translation>Закрити програму</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="61"/>
