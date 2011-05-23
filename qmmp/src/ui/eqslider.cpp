@@ -47,7 +47,13 @@ void EqSlider::mousePressEvent(QMouseEvent *e)
 {
     m_moving = true;
     press_pos = e->y();
-    if (m_pos<e->y() && e->y()<m_pos+11*m_skin->ratio())
+    if (e->button() == Qt::MidButton)
+    {
+        m_value = 0;
+        emit sliderMoved(m_value);
+        m_old = m_value;
+    }
+    else if (m_pos<e->y() && e->y()<m_pos+11*m_skin->ratio())
     {
         press_pos = e->y()-m_pos;
     }
@@ -90,10 +96,6 @@ void EqSlider::mouseMoveEvent(QMouseEvent* e)
             }
         }
     }
-    if (e->button() == Qt::MidButton)
-    {
-        m_value = 0;
-        emit sliderMoved(m_value);
 }
 
 double EqSlider::value()
