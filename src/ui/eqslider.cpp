@@ -90,6 +90,10 @@ void EqSlider::mouseMoveEvent(QMouseEvent* e)
             }
         }
     }
+    if (e->button() == Qt::MidButton)
+    {
+        m_value = 0;
+        emit sliderMoved(m_value);
 }
 
 double EqSlider::value()
