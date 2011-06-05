@@ -215,7 +215,7 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
     if (INVALID_ROW != row && m_model->count() > row)
     {
         m_pressed_row = row;
-        if(e->button() == Qt::RightButton)
+        if(e->button() == Qt::RightButton && !m_model->isSelected(row))
         {
             m_model->clearSelection();
             m_model->setSelected(row, true);
