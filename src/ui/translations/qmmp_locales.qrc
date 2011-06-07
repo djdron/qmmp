@@ -17,5 +17,6 @@
     <file>qmmp_hu.qm</file>
     <file>qmmp_nl.qm</file>
     <file>qmmp_ja.qm</file>
+    <file>qmmp_sk.qm</file>
   </qresource>
 </RCC>

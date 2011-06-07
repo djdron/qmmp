@@ -39,6 +39,9 @@
 Русский:
     Илья Котов <forkotov02@hotmail.ru>
 
+Словацкий:
+    Ján Ďanovský <dagsoftware@yahoo.co>
+
 Испанский:
     Félix Medrano <xukosky@yahoo.es>
 
