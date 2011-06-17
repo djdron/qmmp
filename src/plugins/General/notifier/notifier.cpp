@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -47,6 +47,7 @@ Notifier::Notifier(QObject *parent)
     {
         QFile::remove(QDir::homePath()+"/.psi/tune");
         QFile::remove(QDir::homePath()+"/.psi-plus/tune");
+        QFile::remove(QDir::homePath()+"/.cache/Psi+/tune");
     }
     if (m_core->state() == Qmmp::Playing) //test message
         showMetaData();
@@ -58,6 +59,7 @@ Notifier::~Notifier()
     {
         QFile::remove(QDir::homePath()+"/.psi/tune");
         QFile::remove(QDir::homePath()+"/.psi-plus/tune");
+        QFile::remove(QDir::homePath()+"/.cache/Psi+/tune");
     }
 }
 
@@ -76,6 +78,7 @@ void Notifier::setState(Qmmp::State state)
         {
             QFile::remove(QDir::homePath()+"/.psi/tune");
             QFile::remove(QDir::homePath()+"/.psi-plus/tune");
+            QFile::remove(QDir::homePath()+"/.cache/Psi+/tune");
         }
         break;
     }
@@ -114,6 +117,14 @@ void Notifier::showMetaData()
     if(psi_plus_dir.exists())
     {
         QFile file(QDir::homePath()+"/.psi-plus/tune");
+        file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
+        file.write(data);
+        file.close();
+    }
+    QDir psi_plus_dir2(QDir::homePath()+"/.cache/Psi+/");
+    if(psi_plus_dir2.exists())
+    {
+        QFile file(QDir::homePath()+"/.cache/Psi+/tune");
         file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate);
         file.write(data);
         file.close();
