@@ -203,21 +203,9 @@ void MainWindow::showState(Qmmp::State state)
 
 void MainWindow::showMetaData()
 {
-    qDebug("===== metadata ======");
-    qDebug("ARTIST = %s", qPrintable(m_core->metaData(Qmmp::ARTIST)));
-    qDebug("TITLE = %s", qPrintable(m_core->metaData(Qmmp::TITLE)));
-    qDebug("ALBUM = %s", qPrintable(m_core->metaData(Qmmp::ALBUM)));
-    qDebug("COMMENT = %s", qPrintable(m_core->metaData(Qmmp::COMMENT)));
-    qDebug("GENRE = %s", qPrintable(m_core->metaData(Qmmp::GENRE)));
-    qDebug("YEAR = %s", qPrintable(m_core->metaData(Qmmp::YEAR)));
-    qDebug("TRACK = %s", qPrintable(m_core->metaData(Qmmp::TRACK)));
-    qDebug("== end of metadata ==");
-
     if (m_playlist->currentItem() &&
         m_playlist->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
     {
-        m_playlist->currentItem()->updateMetaData(m_core->metaData());
-        m_playlist->updateList();
         setWindowTitle(m_playlist->currentItem()->text());
     }
 }

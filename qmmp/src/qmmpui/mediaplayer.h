@@ -110,6 +110,7 @@ private slots:
     void playNext();
     void updateNextUrl();
     void processState(Qmmp::State state);
+    void showMetaData();
 
 private:
     PlayListManager *m_pl_manager;
