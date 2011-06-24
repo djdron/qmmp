@@ -63,6 +63,7 @@ void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
     connect(m_core, SIGNAL(nextTrackRequest()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
+    connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
 }
 
 PlayListManager *MediaPlayer::playListManager()
@@ -229,5 +230,25 @@ void MediaPlayer::processState(Qmmp::State state)
         m_skips = 0;
     default:
         ;
+    }
+}
+
+void MediaPlayer::showMetaData()
+{
+    qDebug("===== metadata ======");
+    qDebug("ARTIST = %s", qPrintable(m_core->metaData(Qmmp::ARTIST)));
+    qDebug("TITLE = %s", qPrintable(m_core->metaData(Qmmp::TITLE)));
+    qDebug("ALBUM = %s", qPrintable(m_core->metaData(Qmmp::ALBUM)));
+    qDebug("COMMENT = %s", qPrintable(m_core->metaData(Qmmp::COMMENT)));
+    qDebug("GENRE = %s", qPrintable(m_core->metaData(Qmmp::GENRE)));
+    qDebug("YEAR = %s", qPrintable(m_core->metaData(Qmmp::YEAR)));
+    qDebug("TRACK = %s", qPrintable(m_core->metaData(Qmmp::TRACK)));
+    qDebug("== end of metadata ==");
+
+    PlayListModel *pl = m_pl_manager->currentPlayList();
+    if (pl->currentItem() && pl->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
+    {
+        pl->currentItem()->updateMetaData(m_core->metaData());
+        pl->doCurrentVisibleRequest();
     }
 }
