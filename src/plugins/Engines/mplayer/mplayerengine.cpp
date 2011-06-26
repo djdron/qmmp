@@ -203,7 +203,7 @@ void MplayerEngine::readStdOut()
         {
             if (m_process->state() == QProcess::Running)
                 m_process->waitForFinished(3500);
-            emit playbackFinished();
+            StateHandler::instance()->sendFinished();
             if(!m_sources.isEmpty())
             {
                 StateHandler::instance()->dispatch(Qmmp::Stopped);

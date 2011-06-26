@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.4.7)
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 OLD)
     cmake_policy(SET CMP0005 OLD)
-endif(COMMAND cmake_policy) 
+endif(COMMAND cmake_policy)
 
 # qt lib
 ADD_DEFINITIONS( -Wall )
@@ -57,6 +57,8 @@ SET(libqmmp_SRCS
     qmmpsettings.cpp
     audioconverter.cpp
     eqsettings.cpp
+    statechangedevent.cpp
+    metadatachangedevent.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -93,6 +95,8 @@ SET(libqmmp_MOC_HDRS
     qmmpsettings.h
     audioconverter.h
     eqsettings.h
+    statechangedevent.h
+    metadatachangedevent.h
 )
 
 SET(libqmmp_DEVEL_HDRS

@@ -244,6 +244,8 @@ void QmmpAudioEngine::stop()
     m_user_stop = true;
     mutex()->unlock();
 
+    wait();
+
     if (m_output)
     {
         m_output->mutex()->lock ();
@@ -263,8 +265,6 @@ void QmmpAudioEngine::stop()
         m_output->recycler()->cond()->wakeAll();
         m_output->recycler()->mutex()->unlock();
     }
-
-    wait();
 
     if (m_output)
     {
@@ -311,7 +311,7 @@ void QmmpAudioEngine::finish()
         m_output->finish();
         m_output->mutex()->unlock();
     }
-    emit playbackFinished();
+    StateHandler::instance()->sendFinished();
 }
 
 void QmmpAudioEngine::updateReplayGainSettings()
@@ -373,7 +373,7 @@ void QmmpAudioEngine::run()
             {
                 m_next = false;
                 qDebug("QmmpAudioEngine: switching to the next track");
-                emit playbackFinished();
+                StateHandler::instance()->sendFinished();
                 StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
                 StateHandler::instance()->dispatch(Qmmp::Buffering);
                 StateHandler::instance()->dispatch(Qmmp::Playing);
@@ -394,7 +394,7 @@ void QmmpAudioEngine::run()
                 prepareEffects(m_decoder);
                 if(m_ap == m_output->audioParameters())
                 {
-                    emit playbackFinished();
+                    StateHandler::instance()->sendFinished();
                     StateHandler::instance()->dispatch(Qmmp::Stopped); //fake stop/start cycle
                     StateHandler::instance()->dispatch(Qmmp::Buffering);
                     StateHandler::instance()->dispatch(Qmmp::Playing);

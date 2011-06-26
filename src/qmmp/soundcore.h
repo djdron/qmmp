@@ -202,6 +202,8 @@ private slots:
     void updateVolume();
 
 private:
+    bool event(QEvent *e);
+    QMap <Qmmp::MetaData, QString> m_metaData;
     Decoder* m_decoder;
     QString m_url;
     bool m_error;
