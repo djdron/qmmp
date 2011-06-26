@@ -101,15 +101,7 @@ public:
      */
     Qmmp::State state() const;
     /*!
-     * Returns all meta data in map.
-     */
-    QMap <Qmmp::MetaData, QString> metaData();
-    /*!
-     * Returns the metdata string associated with the given \b key.
-     */
-    QString metaData(Qmmp::MetaData key);
-    /*!
-     * Sends \b nextTrackRequest() signal manually.
+     * Sends \b nextTrackRequest() event manually.
      */
     void sendNextTrackRequest();
     void sendFinished();
@@ -155,22 +147,6 @@ signals:
      * @param channels New channels number.
      */
     void channelsChanged(int channels);
-    /*!
-     * Emitted when new metadata is available.
-     */
-    void metaDataChanged();
-    /*!
-     * This signal is emitted when the playback state has changed.
-     */
-    void stateChanged(Qmmp::State newState);
-    /*!
-    * Emitted when playback has finished.
-    */
-    //void finished();
-    /*!
-     * Emitted before the playback ends.
-     */
-    //void nextTrackRequest();
      /*!
      * This signal is emitted when the stream reader fills it's buffer.
      * The argument \b progress indicates the current percentage of buffering completed.
