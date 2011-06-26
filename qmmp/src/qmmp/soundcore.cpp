@@ -23,6 +23,8 @@
 #include <QApplication>
 #include <QSettings>
 #include <QDir>
+#include "statechangedevent.h"
+#include "metadatachangedevent.h"
 #include "qmmpaudioengine.h"
 #include "decoderfactory.h"
 #include "effect.h"
@@ -52,10 +54,6 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(frequencyChanged(quint32)), SIGNAL(frequencyChanged(quint32)));
     connect(m_handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
     connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
-    connect(m_handler, SIGNAL(metaDataChanged ()), SIGNAL(metaDataChanged ()));
-    connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SIGNAL(stateChanged(Qmmp::State)));
-    connect(m_handler, SIGNAL(stateChanged (Qmmp::State)), SLOT(startPendingEngine()));
-    connect(m_handler, SIGNAL(nextTrackRequest()), SIGNAL(nextTrackRequest()));
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
     updateVolume();
     connect(QmmpSettings::instance(), SIGNAL(eqSettingsChanged()), SIGNAL(eqSettingsChanged()));
@@ -102,6 +100,7 @@ bool SoundCore::play(const QString &source, bool queue, qint64 offset)
 
 void SoundCore::stop()
 {
+    qApp->sendPostedEvents(this, 0);
     m_url.clear();
     if(m_pendingEngine)
         delete m_pendingEngine;
@@ -109,7 +108,7 @@ void SoundCore::stop()
     if(m_engine)
     {
         m_engine->stop();
-        qApp->processEvents(QEventLoop::ExcludeUserInputEvents);
+        qApp->sendPostedEvents(this, 0);
     }
     qDeleteAll(m_pendingSources);
     m_pendingSources.clear();
@@ -211,12 +210,12 @@ Qmmp::State SoundCore::state() const
 
 QMap <Qmmp::MetaData, QString> SoundCore::metaData()
 {
-    return m_handler->metaData();
+    return m_metaData;
 }
 
 QString SoundCore::metaData(Qmmp::MetaData key)
 {
-    return m_handler->metaData(key);
+    return m_metaData[key];
 }
 
 bool SoundCore::enqueue()
@@ -253,7 +252,6 @@ bool SoundCore::enqueue()
     {
         if((m_engine = AbstractEngine::create(s, this)))
         {
-            connect(m_engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
             m_engine->play();
             m_handler->setCurrentEngine(m_engine);
             return true;
@@ -288,7 +286,6 @@ bool SoundCore::enqueue()
                 m_error = true;
             return false;
         }
-        connect(engine, SIGNAL(playbackFinished()), SIGNAL(finished()));
         if (m_handler->state() == Qmmp::Playing || m_handler->state() == Qmmp::Paused)
         {
             if(m_pendingEngine)
@@ -329,4 +326,25 @@ void SoundCore::startPendingEngine()
 SoundCore* SoundCore::instance()
 {
     return m_instance;
+}
+
+bool SoundCore::event(QEvent *e)
+{
+    if(e->type() == QEvent::Type(Qmmp::StateChanged))
+    {
+        emit stateChanged(((StateChangedEvent *) e)->currentState());
+        startPendingEngine();
+    }
+    else if(e->type() == QEvent::Type(Qmmp::MetaDataChanged))
+    {
+        m_metaData = ((MetaDataChangedEvent *) e)->metaData();
+        emit metaDataChanged();
+    }
+    else if(e->type() == QEvent::Type(Qmmp::NextTrackRequest))
+        emit nextTrackRequest();
+    else if(e->type() == QEvent::Type(Qmmp::Finished))
+        emit finished();
+    else
+        return QObject::event(e);
+    return true;
 }

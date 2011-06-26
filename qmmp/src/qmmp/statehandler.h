@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -112,6 +112,7 @@ public:
      * Sends \b nextTrackRequest() signal manually.
      */
     void sendNextTrackRequest();
+    void sendFinished();
     /*!
      * Returns a pointer to the audio engine which will be used to play next (queued) audio source.
      * Otherwise returns \b 0
@@ -122,6 +123,7 @@ public:
      * Otherwise returns \b 0
      */
     AbstractEngine *currentEngine();
+
     /*!
      * Returns a pointer to the first created StateHandler instance.
      */
@@ -164,16 +166,17 @@ signals:
     /*!
     * Emitted when playback has finished.
     */
-    void finished();
+    //void finished();
     /*!
      * Emitted before the playback ends.
      */
-    void nextTrackRequest();
+    //void nextTrackRequest();
      /*!
      * This signal is emitted when the stream reader fills it's buffer.
      * The argument \b progress indicates the current percentage of buffering completed.
      */
     void bufferingProgress(int progress);
+
 
 private:
     qint64 m_elapsed;

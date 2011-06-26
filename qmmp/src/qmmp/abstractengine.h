@@ -119,7 +119,7 @@ signals:
     /*!
      * Emitted when the decoder has finished playback.
      */
-    void playbackFinished();
+    //void playbackFinished();
 
 private:
     QMutex m_mutex;

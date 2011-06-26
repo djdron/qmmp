@@ -21,6 +21,7 @@
 #define QMMP_H
 
 #include <QUrl>
+#include <QEvent>
 
 /*! @brief The Qmmp class stores global settings and enums.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -40,6 +41,17 @@ public:
         NormalError, /*!< Input source is invalid or unsupported. Player should skip this file */
         FatalError   /*!< This means unrecorvable error die audio output problems. Player should abort playback. */
     };
+    /*!
+     * Even types
+     */
+    enum EventType
+    {
+        StateChanged = QEvent::User,
+        NextTrackRequest,
+        Finished,
+        MetaDataChanged
+    };
+
     /*!
      * Metadata keys
      */

@@ -19,8 +19,10 @@
  ***************************************************************************/
 
 #include <QStringList>
-
+#include <QApplication>
 #include "soundcore.h"
+#include "statechangedevent.h"
+#include "metadatachangedevent.h"
 #include "statehandler.h"
 
 #define TICK_INTERVAL 250
@@ -71,7 +73,7 @@ void StateHandler::dispatch(qint64 elapsed,
         {
             m_sendAboutToFinish = false;
             if(SoundCore::instance()->totalTime() - m_elapsed > PREFINISH_TIME/2)
-                emit nextTrackRequest();
+                qApp->postEvent(parent(), new QEvent(QEvent::Type(Qmmp::NextTrackRequest)));
         }
     }
     if (m_frequency != frequency)
@@ -113,11 +115,16 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
         if (m_metaData != tmp)
         {
             m_metaData = tmp;
-            emit metaDataChanged ();
+            //emit metaDataChanged ();
+            qDebug("added = %s", qPrintable(m_metaData.value(Qmmp::URL)));
+            qApp->postEvent(parent(), new MetaDataChangedEvent(m_metaData));
         }
     }
     else
+    {
+        qDebug("cached = %s", qPrintable(tmp.value(Qmmp::URL)));
         m_cachedMetaData = tmp;
+    }
     m_mutex.unlock();
 }
 
@@ -144,11 +151,15 @@ void StateHandler::dispatch(Qmmp::State state)
         states << "Playing" << "Paused" << "Stopped" << "Buffering" << "NormalError" << "FatalError";
         qDebug("StateHandler: Current state: %s; previous state: %s",
                qPrintable(states.at(state)), qPrintable(states.at(m_state)));
+        Qmmp::State prevState = state;
         m_state = state;
-        emit stateChanged(state);
+        qApp->postEvent(parent(), new StateChangedEvent(m_state, prevState));
+
+        //emit stateChanged(state);
         if(m_state == Qmmp::Playing && !m_cachedMetaData.isEmpty())
         {
             m_mutex.unlock();
+            qDebug("from cache = %s", qPrintable(m_cachedMetaData.value(Qmmp::URL)));
             dispatch(m_cachedMetaData);
             m_mutex.lock();
             m_cachedMetaData.clear();
@@ -219,9 +230,14 @@ void StateHandler::sendNextTrackRequest()
     if(m_sendAboutToFinish)
     {
         m_sendAboutToFinish = false;
-        emit nextTrackRequest();
+        qApp->postEvent(parent(), new QEvent(QEvent::Type(Qmmp::NextTrackRequest)));
     }
     m_mutex.unlock();
+}
+
+void StateHandler::sendFinished()
+{
+    qApp->postEvent(parent(), new QEvent(QEvent::Type(Qmmp::Finished)));
 }
 
 AbstractEngine *StateHandler::nextEngine()
@@ -233,6 +249,19 @@ AbstractEngine *StateHandler::currentEngine()
 {
     return m_current_engine;
 }
+
+/*void StateHandler::addReceiver(QObject *receiver)
+{
+    if(m_receivers.contains(receiver))
+        return;
+    m_receivers.append(receiver);
+    connect(receiver, SIGNAL(destroyed(QObject*)), SLOT(removeReceiver(QObject*)));
+}
+
+void StateHandler::removeReceiver(QObject *receiver)
+{
+    m_receivers.removeAll(receiver);
+}*/
 
 StateHandler *StateHandler::instance()
 {

@@ -22,6 +22,8 @@
 #include <QString>
 #include <QTranslator>
 #include <QLocale>
+#include <qmmp/statechangedevent.h>
+#include <qmmp/metadatachangedevent.h>
 #include "playlistitem.h"
 #include "mediaplayer.h"
 
@@ -115,32 +117,18 @@ void MediaPlayer::stop()
 
 void MediaPlayer::next()
 {
-    if (!m_pl_manager->currentPlayList()->next())
-    {
-        stop();
-        return;
-    }
-    if (m_core->state() != Qmmp::Stopped)
-    {
-        stop();
+    bool playNext = m_core->state() != Qmmp::Stopped;
+    stop();
+    if (m_pl_manager->currentPlayList()->next() && playNext)
         play();
-    }
 }
 
 void MediaPlayer::previous()
 {
-    if (!m_pl_manager->currentPlayList()->previous())
-    {
-        stop();
-        return;
-    }
-
-    if (m_core->state() != Qmmp::Stopped)
-    {
-        if (m_core->state() == Qmmp::Paused)
-            stop();
+    bool playNext = m_core->state() != Qmmp::Stopped;
+    stop();
+    if (m_pl_manager->currentPlayList()->next() && playNext)
         play();
-    }
 }
 
 void MediaPlayer::setRepeatable(bool r)
