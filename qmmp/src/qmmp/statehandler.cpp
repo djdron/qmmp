@@ -115,16 +115,11 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
         if (m_metaData != tmp)
         {
             m_metaData = tmp;
-            //emit metaDataChanged ();
-            qDebug("added = %s", qPrintable(m_metaData.value(Qmmp::URL)));
             qApp->postEvent(parent(), new MetaDataChangedEvent(m_metaData));
         }
     }
     else
-    {
-        qDebug("cached = %s", qPrintable(tmp.value(Qmmp::URL)));
         m_cachedMetaData = tmp;
-    }
     m_mutex.unlock();
 }
 
@@ -155,11 +150,9 @@ void StateHandler::dispatch(Qmmp::State state)
         m_state = state;
         qApp->postEvent(parent(), new StateChangedEvent(m_state, prevState));
 
-        //emit stateChanged(state);
         if(m_state == Qmmp::Playing && !m_cachedMetaData.isEmpty())
         {
             m_mutex.unlock();
-            qDebug("from cache = %s", qPrintable(m_cachedMetaData.value(Qmmp::URL)));
             dispatch(m_cachedMetaData);
             m_mutex.lock();
             m_cachedMetaData.clear();
@@ -214,16 +207,6 @@ Qmmp::State StateHandler::state() const
     return m_state;
 }
 
-QMap<Qmmp::MetaData, QString> StateHandler::metaData()
-{
-    return m_metaData;
-}
-
-QString StateHandler::metaData(Qmmp::MetaData key)
-{
-    return m_metaData.value(key);
-}
-
 void StateHandler::sendNextTrackRequest()
 {
     m_mutex.lock();
@@ -249,19 +232,6 @@ AbstractEngine *StateHandler::currentEngine()
 {
     return m_current_engine;
 }
-
-/*void StateHandler::addReceiver(QObject *receiver)
-{
-    if(m_receivers.contains(receiver))
-        return;
-    m_receivers.append(receiver);
-    connect(receiver, SIGNAL(destroyed(QObject*)), SLOT(removeReceiver(QObject*)));
-}
-
-void StateHandler::removeReceiver(QObject *receiver)
-{
-    m_receivers.removeAll(receiver);
-}*/
 
 StateHandler *StateHandler::instance()
 {
