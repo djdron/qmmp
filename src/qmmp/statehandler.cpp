@@ -79,17 +79,17 @@ void StateHandler::dispatch(qint64 elapsed,
     if (m_frequency != frequency)
     {
         m_frequency = frequency;
-        emit (frequencyChanged(frequency));
+        emit frequencyChanged(frequency);
     }
     if (m_precision != precision)
     {
         m_precision = precision;
-        emit (precisionChanged(precision));
+        emit sampleSizeChanged(precision);
     }
     if (m_channels != channels)
     {
         m_channels = channels;
-        emit (channelsChanged(channels));
+        emit channelsChanged(channels);
     }
     m_mutex.unlock();
 }
@@ -192,7 +192,7 @@ int StateHandler::frequency()
     return m_frequency;
 }
 
-int StateHandler::precision()
+int StateHandler::sampleSize()
 {
     return m_precision;
 }

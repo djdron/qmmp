@@ -52,7 +52,7 @@ SoundCore::SoundCore(QObject *parent)
     connect(m_handler, SIGNAL(elapsedChanged(qint64)), SIGNAL(elapsedChanged(qint64)));
     connect(m_handler, SIGNAL(bitrateChanged(int)), SIGNAL(bitrateChanged(int)));
     connect(m_handler, SIGNAL(frequencyChanged(quint32)), SIGNAL(frequencyChanged(quint32)));
-    connect(m_handler, SIGNAL(precisionChanged(int)), SIGNAL(precisionChanged(int)));
+    connect(m_handler, SIGNAL(sampleSizeChanged(int)), SIGNAL(sampleSizeChanged(int)));
     connect(m_handler, SIGNAL(channelsChanged(int)), SIGNAL(channelsChanged(int)));
     connect(m_handler, SIGNAL(bufferingProgress(int)), SIGNAL(bufferingProgress(int)));
     updateVolume();
@@ -193,9 +193,9 @@ quint32 SoundCore::frequency()
     return m_handler->frequency();
 }
 
-int SoundCore::precision() //TODO rename
+int SoundCore::sampleSize()
 {
-    return m_handler->precision();
+    return m_handler->sampleSize();
 }
 
 int SoundCore::channels()
