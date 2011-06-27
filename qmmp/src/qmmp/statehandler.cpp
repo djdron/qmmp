@@ -21,8 +21,8 @@
 #include <QStringList>
 #include <QApplication>
 #include "soundcore.h"
-#include "statechangedevent.h"
-#include "metadatachangedevent.h"
+#include "statechangedevent_p.h"
+#include "metadatachangedevent_p.h"
 #include "statehandler.h"
 
 #define TICK_INTERVAL 250

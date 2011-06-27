@@ -33,11 +33,11 @@
 #include <qmmp/metadatamanager.h>
 #include "playlistparser.h"
 #include "playlistformat.h"
-#include "fileloader.h"
+#include "fileloader_p.h"
 #include "playlistitem.h"
-#include "playstate.h"
+#include "playstate_p.h"
 #include "detailsdialog.h"
-#include "playlistsettings.h"
+#include "playlistsettings_p.h"
 #include "playlistmodel.h"
 
 

@@ -27,7 +27,7 @@
 #include <QLibrary>
 #include <qmmp/qmmp.h>
 #include "filedialog.h"
-#include "qtfiledialog.h"
+#include "qtfiledialog_p.h"
 
 
 FileDialog* FileDialog::_instance = 0;

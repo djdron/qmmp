@@ -24,7 +24,7 @@
 #include <QSettings>
 #include <QDir>
 #include <qmmp/fileinfo.h>
-#include "playlistsettings.h"
+#include "playlistsettings_p.h"
 #include "playlistmanager.h"
 
 PlayListManager::PlayListManager(QObject *parent) : QObject(parent)

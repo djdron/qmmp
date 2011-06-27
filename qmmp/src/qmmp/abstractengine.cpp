@@ -23,7 +23,7 @@
 #include <QPluginLoader>
 #include <QApplication>
 #include "enginefactory.h"
-#include "qmmpaudioengine.h"
+#include "qmmpaudioengine_p.h"
 #include "qmmp.h"
 #include "abstractengine.h"
 

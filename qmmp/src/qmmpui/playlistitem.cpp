@@ -21,7 +21,7 @@
 #include <QDir>
 #include <qmmp/metadatamanager.h>
 #include "metadataformatter.h"
-#include "playlistsettings.h"
+#include "playlistsettings_p.h"
 #include "playlistitem.h"
 
 PlayListItem::PlayListItem() : QMap<Qmmp::MetaData, QString>(), m_flag(FREE)

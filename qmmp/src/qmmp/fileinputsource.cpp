@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QFile>
-#include "fileinputsource.h"
+#include "fileinputsource_p.h"
 
 FileInputSource::FileInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {

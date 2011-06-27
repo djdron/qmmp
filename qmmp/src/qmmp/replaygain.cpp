@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <math.h>
-#include "replaygain.h"
+#include "replaygain_p.h"
 
 ReplayGain::ReplayGain()
 {
