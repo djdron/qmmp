@@ -49,27 +49,27 @@
         <translation>CD nummer</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="14"/>
+        <location filename="../forms/detailsdialog.ui" line="14"/>
         <source>Details</source>
         <translation>Details</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="42"/>
+        <location filename="../forms/detailsdialog.ui" line="42"/>
         <source>Open the directory containing this file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="45"/>
+        <location filename="../forms/detailsdialog.ui" line="45"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="59"/>
+        <location filename="../forms/detailsdialog.ui" line="59"/>
         <source>Summary</source>
         <translation>Samenvatting</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="71"/>
+        <location filename="../forms/detailsdialog.ui" line="71"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -102,64 +102,64 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TagEditor</name>
     <message>
-        <location filename="../tageditor.ui" line="38"/>
+        <location filename="../forms/tageditor.ui" line="38"/>
         <source>Title:</source>
         <translation>Naam:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="64"/>
+        <location filename="../forms/tageditor.ui" line="64"/>
         <source>Artist:</source>
         <translation>Artiest:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="90"/>
+        <location filename="../forms/tageditor.ui" line="90"/>
         <source>Album:</source>
         <translation>Album:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="113"/>
+        <location filename="../forms/tageditor.ui" line="113"/>
         <source>Composer:</source>
         <translation>Componist:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="133"/>
+        <location filename="../forms/tageditor.ui" line="133"/>
         <source>Genre:</source>
         <translation>Genre:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="244"/>
+        <location filename="../forms/tageditor.ui" line="244"/>
         <source>Disc number:</source>
         <translation>CD nummer:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="184"/>
-        <location filename="../tageditor.ui" line="222"/>
-        <location filename="../tageditor.ui" line="254"/>
+        <location filename="../forms/tageditor.ui" line="184"/>
+        <location filename="../forms/tageditor.ui" line="222"/>
+        <location filename="../forms/tageditor.ui" line="254"/>
         <source>?</source>
         <translation>?</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="163"/>
+        <location filename="../forms/tageditor.ui" line="163"/>
         <source>Track:</source>
         <translation>Nummer:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="197"/>
+        <location filename="../forms/tageditor.ui" line="197"/>
         <source>Year:</source>
         <translation>Jaar:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="14"/>
+        <location filename="../forms/tageditor.ui" line="14"/>
         <source>Tag Editor</source>
         <translation>Tag bewerker</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="269"/>
+        <location filename="../forms/tageditor.ui" line="269"/>
         <source>Comment:</source>
         <translation>Commentaar:</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="291"/>
+        <location filename="../forms/tageditor.ui" line="291"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -172,7 +172,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="305"/>
+        <location filename="../forms/tageditor.ui" line="305"/>
         <source>Include selected tag in file</source>
         <translation>Voeg geselecteerde tag toe aan bestand</translation>
     </message>
@@ -180,17 +180,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TemplateEditor</name>
     <message>
-        <location filename="../templateeditor.ui" line="39"/>
+        <location filename="../forms/templateeditor.ui" line="39"/>
         <source>Reset</source>
         <translation>Terugdraaien</translation>
     </message>
     <message>
-        <location filename="../templateeditor.ui" line="46"/>
+        <location filename="../forms/templateeditor.ui" line="46"/>
         <source>Insert</source>
         <translation>Invoegen</translation>
     </message>
     <message>
-        <location filename="../templateeditor.ui" line="14"/>
+        <location filename="../forms/templateeditor.ui" line="14"/>
         <source>Template Editor</source>
         <translation>Layout Bewerker</translation>
     </message>

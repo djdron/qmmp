@@ -87,9 +87,9 @@ SET(libqmmpui_DEVEL_HDRS
 
 
 SET(libqmmpui_UIS
-    detailsdialog.ui
-    tageditor.ui
-    templateeditor.ui
+    forms/detailsdialog.ui
+    forms/tageditor.ui
+    forms/templateeditor.ui
 )
 
 QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})

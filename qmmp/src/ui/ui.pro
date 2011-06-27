@@ -1,12 +1,12 @@
 include(../../qmmp.pri)
-FORMS += ./forms/configdialog.ui \
-    ./forms/preseteditor.ui \
-    ./forms/jumptotrackdialog.ui \
-    ./forms/aboutdialog.ui \
-    ./forms/addurldialog.ui \
-    ./forms/playlistbrowser.ui \
-    ./forms/popupsettings.ui \
-    ./forms/shortcutdialog.ui
+FORMS += forms/configdialog.ui \
+    forms/preseteditor.ui \
+    forms/jumptotrackdialog.ui \
+    forms/aboutdialog.ui \
+    forms/addurldialog.ui \
+    forms/playlistbrowser.ui \
+    forms/popupsettings.ui \
+    forms/shortcutdialog.ui
 HEADERS += mainwindow.h \
     button.h \
     display.h \
