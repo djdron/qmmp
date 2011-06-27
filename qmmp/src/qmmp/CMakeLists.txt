@@ -82,21 +82,21 @@ SET(libqmmp_MOC_HDRS
     volumecontrol.h
     metadatamodel.h
     tagmodel.h
-    qmmpaudioengine.h
+    qmmpaudioengine_p.h
     abstractengine.h
     audioparameters.h
     inputsource.h
     inputsourcefactory.h
-    fileinputsource.h
-    emptyinputsource.h
+    fileinputsource_p.h
+    emptyinputsource_p.h
     enginefactory.h
     metadatamanager.h
-    replaygain.h
+    replaygain_p.h
     qmmpsettings.h
-    audioconverter.h
+    audioconverter_p.h
     eqsettings.h
-    statechangedevent.h
-    metadatachangedevent.h
+    statechangedevent_p.h
+    metadatachangedevent_p.h
 )
 
 SET(libqmmp_DEVEL_HDRS
