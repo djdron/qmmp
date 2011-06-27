@@ -29,7 +29,6 @@ SET(libqmmpui_SRCS
     commandlinemanager.cpp
     filedialog.cpp
     qtfiledialog.cpp
-    abstractplaylistitem.cpp
     fileloader.cpp
     playstate.cpp
     playlistmodel.cpp
@@ -53,15 +52,15 @@ SET(libqmmpui_MOC_HDRS
     commandlineoption.h
     filedialog.h
     filedialogfactory.h
-    qtfiledialog.h
-    fileloader.h
-    playstate.h
+    qtfiledialog_p.h
+    fileloader_p.h
+    playstate_p.h
     playlistmodel.h
     playlistitem.h
     mediaplayer.h
-    playlistsettings.h
+    playlistsettings_p.h
     detailsdialog.h
-    tageditor.h
+    tageditor_p.h
     playlistmanager.h
     metadataformatter.h
     templateeditor.h
