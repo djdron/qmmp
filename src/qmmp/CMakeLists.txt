@@ -57,8 +57,7 @@ SET(libqmmp_SRCS
     qmmpsettings.cpp
     audioconverter.cpp
     eqsettings.cpp
-    statechangedevent.cpp
-    metadatachangedevent.cpp
+    qmmpevents.cpp
 )
 
 SET(libqmmp_MOC_HDRS
@@ -95,8 +94,7 @@ SET(libqmmp_MOC_HDRS
     qmmpsettings.h
     audioconverter_p.h
     eqsettings.h
-    statechangedevent_p.h
-    metadatachangedevent_p.h
+    qmmpevents_p.h
 )
 
 SET(libqmmp_DEVEL_HDRS

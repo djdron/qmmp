@@ -21,8 +21,7 @@
 #include <QStringList>
 #include <QApplication>
 #include "soundcore.h"
-#include "statechangedevent_p.h"
-#include "metadatachangedevent_p.h"
+#include "qmmpevents_p.h"
 #include "statehandler.h"
 
 #define TICK_INTERVAL 250
@@ -73,7 +72,7 @@ void StateHandler::dispatch(qint64 elapsed,
         {
             m_sendAboutToFinish = false;
             if(SoundCore::instance()->totalTime() - m_elapsed > PREFINISH_TIME/2)
-                qApp->postEvent(parent(), new QEvent(QEvent::Type(Qmmp::NextTrackRequest)));
+                qApp->postEvent(parent(), new QEvent(EVENT_NEXT_TRACK_REQUEST));
         }
     }
     if (m_frequency != frequency)
@@ -213,14 +212,14 @@ void StateHandler::sendNextTrackRequest()
     if(m_sendAboutToFinish)
     {
         m_sendAboutToFinish = false;
-        qApp->postEvent(parent(), new QEvent(QEvent::Type(Qmmp::NextTrackRequest)));
+        qApp->postEvent(parent(), new QEvent(EVENT_NEXT_TRACK_REQUEST));
     }
     m_mutex.unlock();
 }
 
 void StateHandler::sendFinished()
 {
-    qApp->postEvent(parent(), new QEvent(QEvent::Type(Qmmp::Finished)));
+    qApp->postEvent(parent(), new QEvent(EVENT_FINISHED));
 }
 
 AbstractEngine *StateHandler::nextEngine()

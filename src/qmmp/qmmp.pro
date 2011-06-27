@@ -33,8 +33,7 @@ HEADERS += recycler.h \
     audioconverter_p.h \
     qmmpsettings.h \
     eqsettings.h \
-    statechangedevent.h \
-    metadatachangedevent.h
+    qmmpevents_p.h
 SOURCES += recycler.cpp \
     decoder.cpp \
     output.cpp \
@@ -61,8 +60,7 @@ SOURCES += recycler.cpp \
     audioconverter.cpp \
     qmmpsettings.cpp \
     eqsettings.cpp \
-    statechangedevent.cpp \
-    metadatachangedevent.cpp
+    qmmpevents.cpp
 FORMS +=
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp

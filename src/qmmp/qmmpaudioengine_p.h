@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef QMMPAUDIOENGINE_H
-#define QMMPAUDIOENGINE_H
+#ifndef QMMPAUDIOENGINE_P_H
+#define QMMPAUDIOENGINE_P_H
 
 #include <QQueue>
 #include <QHash>
@@ -93,4 +93,4 @@ private:
     QmmpSettings *m_settings;
 };
 
-#endif // QMMPAUDIOENGINE_H
+#endif // QMMPAUDIOENGINE_P_H

@@ -18,23 +18,55 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "statechangedevent_p.h"
+#ifndef QMMPEVENTS_P_H
+#define QMMPEVENTS_P_H
 
-StateChangedEvent::StateChangedEvent(Qmmp::State currentState, Qmmp::State previousState)
-    : QEvent((QEvent::Type)Qmmp::StateChanged)
+#include <QMap>
+#include <QEvent>
+#include "qmmp.h"
+
+#define EVENT_STATE_CHANGED (QEvent::Type(QEvent::User)) /*!< @internal */
+#define EVENT_NEXT_TRACK_REQUEST (QEvent::Type(QEvent::User + 1)) /*!< @internal */
+#define EVENT_FINISHED (QEvent::Type(QEvent::User + 2)) /*!< @internal */
+#define EVENT_METADATA_CHANGED (QEvent::Type(QEvent::User + 3)) /*!< @internal */
+
+/*! @internal
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class StateChangedEvent : public QEvent
 {
-    m_state = currentState;
-    m_prevState = previousState;
-}
+public:
+    StateChangedEvent(Qmmp::State currentState, Qmmp::State previousState);
+    virtual ~StateChangedEvent();
 
-StateChangedEvent::~StateChangedEvent(){}
+    Qmmp::State currentState() const;
+    Qmmp::State previousState() const;
 
-Qmmp::State StateChangedEvent::currentState() const
+private:
+    Qmmp::State m_state;
+    Qmmp::State m_prevState;
+
+};
+
+/*! @internal
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class MetaDataChangedEvent : public QEvent
 {
-    return m_state;
-}
+public:
+    MetaDataChangedEvent(const QMap<Qmmp::MetaData, QString> &metaData);
+    virtual ~MetaDataChangedEvent();
+    /*!
+     * Returns all meta data in map.
+     */
+    QMap <Qmmp::MetaData, QString> metaData();
+    /*!
+     * Returns the metdata string associated with the given \b key.
+     */
+    QString metaData(Qmmp::MetaData key);
 
-Qmmp::State StateChangedEvent::previousState() const
-{
-    return m_prevState;
-}
+private:
+    QMap<Qmmp::MetaData, QString> m_metaData;
+};
+
+#endif // QMMPEVENTS_P_H
