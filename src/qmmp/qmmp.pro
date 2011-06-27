@@ -29,7 +29,7 @@ HEADERS += recycler.h \
     inputsourcefactory.h \
     enginefactory.h \
     metadatamanager.h \
-    replaygain.h \
+    replaygain_p.h \
     audioconverter_p.h \
     qmmpsettings.h \
     eqsettings.h \
