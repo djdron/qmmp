@@ -91,7 +91,7 @@ public:
     /*!
      * Returns sample size (in bits).
      */
-    int precision();
+    int sampleSize();
     /*!
      * Returns channels number.
      */
@@ -139,9 +139,9 @@ signals:
     void frequencyChanged(quint32 frequency);
     /*!
      * Emitted when sample size has changed.
-     * @param precision New sample size (in bits)
+     * @param size New sample size (in bits)
      */
-    void precisionChanged(int precision);
+    void sampleSizeChanged(int size);
     /*!
      * Emitted when channels number has changed.
      * @param channels New channels number.
