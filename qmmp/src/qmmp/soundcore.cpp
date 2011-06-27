@@ -23,8 +23,7 @@
 #include <QApplication>
 #include <QSettings>
 #include <QDir>
-#include "statechangedevent_p.h"
-#include "metadatachangedevent_p.h"
+#include "qmmpevents_p.h"
 #include "qmmpaudioengine_p.h"
 #include "decoderfactory.h"
 #include "effect.h"
@@ -330,19 +329,19 @@ SoundCore* SoundCore::instance()
 
 bool SoundCore::event(QEvent *e)
 {
-    if(e->type() == QEvent::Type(Qmmp::StateChanged))
+    if(e->type() == EVENT_STATE_CHANGED)
     {
         emit stateChanged(((StateChangedEvent *) e)->currentState());
         startPendingEngine();
     }
-    else if(e->type() == QEvent::Type(Qmmp::MetaDataChanged))
+    else if(e->type() == EVENT_METADATA_CHANGED)
     {
         m_metaData = ((MetaDataChangedEvent *) e)->metaData();
         emit metaDataChanged();
     }
-    else if(e->type() == QEvent::Type(Qmmp::NextTrackRequest))
+    else if(e->type() == EVENT_NEXT_TRACK_REQUEST)
         emit nextTrackRequest();
-    else if(e->type() == QEvent::Type(Qmmp::Finished))
+    else if(e->type() == EVENT_FINISHED)
         emit finished();
     else
         return QObject::event(e);

@@ -42,17 +42,6 @@ public:
         FatalError   /*!< This means unrecorvable error die audio output problems. Player should abort playback. */
     };
     /*!
-     * Even types
-     */
-    enum EventType
-    {
-        StateChanged = QEvent::User,
-        NextTrackRequest,
-        Finished,
-        MetaDataChanged
-    };
-
-    /*!
      * Metadata keys
      */
     enum MetaData

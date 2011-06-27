@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef AUDIOCONVERTER_H
-#define AUDIOCONVERTER_H
+#ifndef AUDIOCONVERTER_P_H
+#define AUDIOCONVERTER_P_H
 
 #include "effect.h"
 
@@ -38,4 +38,4 @@ private:
 
 };
 
-#endif // AUDIOCONVERTER_H
+#endif // AUDIOCONVERTER_P_H

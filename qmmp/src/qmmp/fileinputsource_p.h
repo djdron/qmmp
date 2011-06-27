@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef FILEINPUTSOURCE_H
-#define FILEINPUTSOURCE_H
+#ifndef FILEINPUTSOURCE_P_H
+#define FILEINPUTSOURCE_P_H
 
 #include "inputsource.h"
 
@@ -42,4 +42,4 @@ private:
     QFile *m_file;
 };
 
-#endif // FILEINPUTSOURCE_H
+#endif // FILEINPUTSOURCE_P_H

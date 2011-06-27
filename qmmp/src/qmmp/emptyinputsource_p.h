@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EMPTYINPUTSOURCE_H
-#define EMPTYINPUTSOURCE_H
+#ifndef EMPTYINPUTSOURCE_P_H
+#define EMPTYINPUTSOURCE_P_H
 
 #include "inputsource.h"
 
@@ -40,4 +40,4 @@ private:
     bool m_ok;
 };
 
-#endif // EMPTYINPUTSOURCE_H
+#endif // EMPTYINPUTSOURCE_P_H
