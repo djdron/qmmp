@@ -36,10 +36,10 @@ QMutex *AbstractEngine::mutex()
     return &m_mutex;
 }
 
-QWaitCondition *AbstractEngine::cond()
+/*QWaitCondition *AbstractEngine::cond()
 {
     return &m_waitCondition;
-}
+}*/
 
 // static methods
 QList<EngineFactory*> *AbstractEngine::m_factories = 0;

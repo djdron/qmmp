@@ -22,7 +22,7 @@
 #define ABSTRACTENGINE_H
 
 #include <QMutex>
-#include <QWaitCondition>
+//#include <QWaitCondition>
 #include <QThread>
 #include <QStringList>
 #include "enginefactory.h"
@@ -78,7 +78,7 @@ public:
     /*!
      * Returns wait condition pointer.
      */
-    QWaitCondition *cond();
+    //QWaitCondition *cond();
     /*!
      * Creates Engine object.
      * @param s InputSource object.
@@ -123,7 +123,7 @@ signals:
 
 private:
     QMutex m_mutex;
-    QWaitCondition m_waitCondition;
+    //QWaitCondition m_waitCondition;
 
     static void checkFactories();
     static QList<EngineFactory*> *m_factories;
