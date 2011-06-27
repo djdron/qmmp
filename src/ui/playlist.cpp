@@ -28,7 +28,6 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
-#include <qmmpui/fileloader.h>
 #include <qmmpui/generalhandler.h>
 #include <qmmp/soundcore.h>
 #include "dock.h"

@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "emptyinputsource.h"
+#include "emptyinputsource_p.h"
 
 EmptyInputSource::EmptyInputSource(const QString &url, QObject *parent) : InputSource(url,parent)
 {

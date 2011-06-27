@@ -22,8 +22,8 @@
 #include <QString>
 #include <QTranslator>
 #include <QLocale>
-#include <qmmp/statechangedevent.h>
-#include <qmmp/metadatachangedevent.h>
+#include <qmmp/statechangedevent_p.h>
+#include <qmmp/metadatachangedevent_p.h>
 #include "playlistitem.h"
 #include "mediaplayer.h"
 

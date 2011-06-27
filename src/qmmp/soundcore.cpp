@@ -23,9 +23,9 @@
 #include <QApplication>
 #include <QSettings>
 #include <QDir>
-#include "statechangedevent.h"
-#include "metadatachangedevent.h"
-#include "qmmpaudioengine.h"
+#include "statechangedevent_p.h"
+#include "metadatachangedevent_p.h"
+#include "qmmpaudioengine_p.h"
 #include "decoderfactory.h"
 #include "effect.h"
 #include "statehandler.h"

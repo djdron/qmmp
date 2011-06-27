@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QFileDialog>
-#include "qtfiledialog.h"
+#include "qtfiledialog_p.h"
 
 
 FileDialog* QtFileDialogFactory::create()

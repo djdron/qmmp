@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "statechangedevent.h"
+#include "statechangedevent_p.h"
 
 StateChangedEvent::StateChangedEvent(Qmmp::State currentState, Qmmp::State previousState)
     : QEvent((QEvent::Type)Qmmp::StateChanged)

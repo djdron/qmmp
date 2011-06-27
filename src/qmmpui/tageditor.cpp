@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <qmmp/tagmodel.h>
-#include "tageditor.h"
+#include "tageditor_p.h"
 #include "ui_tageditor.h"
 
 TagEditor::TagEditor(TagModel *tagModel, QWidget *parent) : QWidget(parent), m_ui(new Ui::TagEditor)

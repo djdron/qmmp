@@ -20,7 +20,7 @@
 
 #include <QSettings>
 #include <qmmp/qmmp.h>
-#include "playlistsettings.h"
+#include "playlistsettings_p.h"
 
 PlaylistSettings *PlaylistSettings::m_instance = 0;
 

@@ -21,16 +21,16 @@ HEADERS += recycler.h \
     metadatamodel.h \
     tagmodel.h \
     abstractengine.h \
-    qmmpaudioengine.h \
+    qmmpaudioengine_p.h \
     audioparameters.h \
     inputsource.h \
-    fileinputsource.h \
-    emptyinputsource.h \
+    fileinputsource_p.h \
+    emptyinputsource_p.h \
     inputsourcefactory.h \
     enginefactory.h \
     metadatamanager.h \
     replaygain.h \
-    audioconverter.h \
+    audioconverter_p.h \
     qmmpsettings.h \
     eqsettings.h \
     statechangedevent.h \
@@ -63,7 +63,7 @@ SOURCES += recycler.cpp \
     eqsettings.cpp \
     statechangedevent.cpp \
     metadatachangedevent.cpp
-FORMS += 
+FORMS +=
 unix:TARGET = ../../lib/qmmp
 win32:TARGET = ../../../bin/qmmp
 CONFIG += release \
@@ -77,11 +77,11 @@ unix:isEmpty(LIB_DIR):LIB_DIR = /lib
 unix:DEFINES += LIB_DIR=\\\"$$LIB_DIR\\\"
 DEFINES += QMMP_VERSION=$$QMMP_VERSION
 DEFINES += QMMP_STR_VERSION=\\\"$$QMMP_VERSION\\\"
-contains(CONFIG, SVN_VERSION) { 
+contains(CONFIG, SVN_VERSION) {
     unix:DEFINES += SVN_REVISION=\\\"$$system(./svn_revision.sh)\\\"
     win32:DEFINES += SVN_REVISION=\\\"svn\\\"
 }
-unix { 
+unix {
     target.path = $$LIB_DIR
     devel.files += recycler.h \
         buffer.h \

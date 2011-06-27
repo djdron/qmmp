@@ -21,7 +21,7 @@
 #include <QMetaType>
 #include <QIODevice>
 #include <QFile>
-#include "replaygain.h"
+#include "replaygain_p.h"
 #include "effect.h"
 #include "buffer.h"
 #include "decoder.h"
@@ -29,8 +29,8 @@
 #include "decoderfactory.h"
 #include "effectfactory.h"
 #include "inputsource.h"
-#include "audioconverter.h"
-#include "qmmpaudioengine.h"
+#include "audioconverter_p.h"
+#include "qmmpaudioengine_p.h"
 #include "metadatamanager.h"
 
 

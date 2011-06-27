@@ -23,8 +23,8 @@
 #include <QApplication>
 #include <QPluginLoader>
 #include "qmmp.h"
-#include "fileinputsource.h"
-#include "emptyinputsource.h"
+#include "fileinputsource_p.h"
+#include "emptyinputsource_p.h"
 #include "inputsource.h"
 
 InputSource::InputSource(const QString &source, QObject *parent) : QObject(parent)

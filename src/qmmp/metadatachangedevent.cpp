@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "metadatachangedevent.h"
+#include "metadatachangedevent_p.h"
 
 MetaDataChangedEvent::MetaDataChangedEvent(const QMap<Qmmp::MetaData, QString> &metaData)
     : QEvent (QEvent::Type(Qmmp::MetaDataChanged))

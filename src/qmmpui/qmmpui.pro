@@ -27,15 +27,15 @@ HEADERS += general.h \
     commandlineoption.h \
     filedialog.h \
     filedialogfactory.h \
-    qtfiledialog.h \
+    qtfiledialog_p.h \
     playlistitem.h \
     playlistmodel.h \
-    playstate.h \
-    fileloader.h \
+    playstate_p.h \
+    fileloader_p.h \
     mediaplayer.h \
-    playlistsettings.h \
+    playlistsettings_p.h \
     detailsdialog.h \
-    tageditor.h \
+    tageditor_p.h \
     playlistmanager.h \
     metadataformatter.h \
     templateeditor.h
@@ -75,7 +75,7 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
     translations/libqmmpui_nl.ts \
     translations/libqmmpui_ja.ts \
     translations/libqmmpui_es.ts
-unix { 
+unix {
     devel.files += general.h \
                    generalfactory.h \
                    generalhandler.h \

@@ -29,7 +29,7 @@
 #include <qmmp/tagmodel.h>
 #include "ui_detailsdialog.h"
 #include "playlistitem.h"
-#include "tageditor.h"
+#include "tageditor_p.h"
 #include "detailsdialog.h"
 
 DetailsDialog::DetailsDialog(PlayListItem *item, QWidget *parent)

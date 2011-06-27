@@ -22,7 +22,7 @@
 #include <QDir>
 #include <QApplication>
 #include <QHash>
-#include "qmmpaudioengine.h"
+#include "qmmpaudioengine_p.h"
 #include "qmmp.h"
 #include "effectfactory.h"
 #include "effect.h"
