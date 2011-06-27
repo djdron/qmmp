@@ -49,27 +49,27 @@
         <translation>光盘编号</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="14"/>
+        <location filename="../forms/detailsdialog.ui" line="14"/>
         <source>Details</source>
         <translation>详细资料</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="42"/>
+        <location filename="../forms/detailsdialog.ui" line="42"/>
         <source>Open the directory containing this file</source>
         <translation>打开该文件所在的文件夹</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="45"/>
+        <location filename="../forms/detailsdialog.ui" line="45"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="59"/>
+        <location filename="../forms/detailsdialog.ui" line="59"/>
         <source>Summary</source>
         <translation>摘要</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.ui" line="71"/>
+        <location filename="../forms/detailsdialog.ui" line="71"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -98,64 +98,64 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TagEditor</name>
     <message>
-        <location filename="../tageditor.ui" line="38"/>
+        <location filename="../forms/tageditor.ui" line="38"/>
         <source>Title:</source>
         <translation>标题：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="64"/>
+        <location filename="../forms/tageditor.ui" line="64"/>
         <source>Artist:</source>
         <translation>艺术家：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="90"/>
+        <location filename="../forms/tageditor.ui" line="90"/>
         <source>Album:</source>
         <translation>专辑：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="113"/>
+        <location filename="../forms/tageditor.ui" line="113"/>
         <source>Composer:</source>
         <translation>作曲：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="133"/>
+        <location filename="../forms/tageditor.ui" line="133"/>
         <source>Genre:</source>
         <translation>流派：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="244"/>
+        <location filename="../forms/tageditor.ui" line="244"/>
         <source>Disc number:</source>
         <translation>光盘编号</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="184"/>
-        <location filename="../tageditor.ui" line="222"/>
-        <location filename="../tageditor.ui" line="254"/>
+        <location filename="../forms/tageditor.ui" line="184"/>
+        <location filename="../forms/tageditor.ui" line="222"/>
+        <location filename="../forms/tageditor.ui" line="254"/>
         <source>?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="163"/>
+        <location filename="../forms/tageditor.ui" line="163"/>
         <source>Track:</source>
         <translation>音轨：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="197"/>
+        <location filename="../forms/tageditor.ui" line="197"/>
         <source>Year:</source>
         <translation>年代：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="14"/>
+        <location filename="../forms/tageditor.ui" line="14"/>
         <source>Tag Editor</source>
         <translation>标签编辑</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="269"/>
+        <location filename="../forms/tageditor.ui" line="269"/>
         <source>Comment:</source>
         <translation>备注：</translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="291"/>
+        <location filename="../forms/tageditor.ui" line="291"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -164,7 +164,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tageditor.ui" line="305"/>
+        <location filename="../forms/tageditor.ui" line="305"/>
         <source>Include selected tag in file</source>
         <translation>包含文件中的已选标签</translation>
     </message>
@@ -172,17 +172,17 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>TemplateEditor</name>
     <message>
-        <location filename="../templateeditor.ui" line="39"/>
+        <location filename="../forms/templateeditor.ui" line="39"/>
         <source>Reset</source>
         <translation>重设</translation>
     </message>
     <message>
-        <location filename="../templateeditor.ui" line="46"/>
+        <location filename="../forms/templateeditor.ui" line="46"/>
         <source>Insert</source>
         <translation>插入</translation>
     </message>
     <message>
-        <location filename="../templateeditor.ui" line="14"/>
+        <location filename="../forms/templateeditor.ui" line="14"/>
         <source>Template Editor</source>
         <translation>模板编辑</translation>
     </message>

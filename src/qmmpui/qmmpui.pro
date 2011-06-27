@@ -56,9 +56,9 @@ SOURCES += general.cpp \
     playlistmanager.cpp \
     metadataformatter.cpp \
     templateeditor.cpp
-FORMS += detailsdialog.ui \
-    tageditor.ui \
-    templateeditor.ui
+FORMS += forms/detailsdialog.ui \
+    forms/tageditor.ui \
+    forms/templateeditor.ui
 unix:DESTDIR = .
 RESOURCES += translations/libqmmpui_locales.qrc
 TRANSLATIONS = translations/libqmmpui_ru.ts \
