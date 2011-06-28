@@ -96,6 +96,7 @@ void TitleBar::mousePressEvent(QMouseEvent* event)
     case Qt::LeftButton:
         m_pos = event->pos();
         Dock::instance()->calculateDistances();
+        Dock::instance()->updateDock();
         break;
     case Qt::RightButton:
         m_mw->menu()->exec(event->globalPos());
