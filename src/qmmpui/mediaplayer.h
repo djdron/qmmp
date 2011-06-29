@@ -46,12 +46,6 @@ public:
      */
     static MediaPlayer* instance();
     /*!
-     * Prepares object for usage.
-     * @param core Pointer to the SoundCore object.
-     * @param pl_mamager Playlist manager.
-     */
-    void initialize(SoundCore *core, PlayListManager *pl_mamager);
-    /*!
      * Returns playlist manager pointer
      */
     PlayListManager *playListManager();

@@ -32,6 +32,8 @@ MediaPlayer *MediaPlayer::m_instance = 0;
 MediaPlayer::MediaPlayer(QObject *parent)
         : QObject(parent)
 {
+    if(m_instance)
+        qFatal("StateHandler: only one instance is allowed");
     m_instance = this;
     m_pl_manager = 0;
     m_core = 0;
@@ -42,28 +44,22 @@ MediaPlayer::MediaPlayer(QObject *parent)
     QString locale = Qmmp::systemLanguageID();
     translator->load(QString(":/libqmmpui_") + locale);
     qApp->installTranslator(translator);
-}
-
-MediaPlayer::~MediaPlayer()
-{}
-
-MediaPlayer* MediaPlayer::instance()
-{
-    return m_instance;
-}
-
-void MediaPlayer::initialize(SoundCore *core, PlayListManager *pl_manager)
-{
-    Q_CHECK_PTR(core);
-    Q_CHECK_PTR(pl_manager);
-    m_core = core;
-    m_pl_manager = pl_manager;
-    m_repeat = false;
-    m_noPlaylistAdvance = false;
+    m_core = new SoundCore(this);
+    m_pl_manager = new PlayListManager(this);
     connect(m_core, SIGNAL(nextTrackRequest()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
+}
+
+MediaPlayer::~MediaPlayer()
+{
+    m_instance = 0;
+}
+
+MediaPlayer* MediaPlayer::instance()
+{
+    return m_instance;
 }
 
 PlayListManager *MediaPlayer::playListManager()

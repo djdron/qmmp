@@ -27,8 +27,14 @@
 #include "playlistsettings_p.h"
 #include "playlistmanager.h"
 
+
+PlayListManager *PlayListManager::m_instance = 0;
+
 PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
 {
+    if(m_instance)
+        qFatal("PlayListManager: only one instance is allowed");
+    m_instance = this;
     m_current = 0;
     m_selected = 0;
     m_repeatable = false;
@@ -40,7 +46,14 @@ PlayListManager::~PlayListManager()
 {
     writePlayLists();
     delete PlaylistSettings::instance();
+    m_instance = 0;
 }
+
+PlayListManager* PlayListManager::instance()
+{
+    return m_instance;
+}
+
 
 PlayListModel *PlayListManager::selectedPlayList() const
 {

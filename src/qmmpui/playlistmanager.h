@@ -40,6 +40,10 @@ public:
      */
     ~PlayListManager();
     /*!
+     * Returns a pointer to the object's instance.
+     */
+    static PlayListManager* instance();
+    /*!
      * Returns a list of all playlists.
      */
     QList <PlayListModel *> playLists() const;
@@ -293,6 +297,7 @@ public slots:
 private:
     void readPlayLists();
     void writePlayLists();
+    static PlayListManager* m_instance;
     QList <PlayListModel *> m_models;
     PlayListModel *m_current;
     PlayListModel *m_selected;
