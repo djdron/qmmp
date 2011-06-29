@@ -40,6 +40,8 @@ SoundCore *SoundCore::m_instance = 0;
 SoundCore::SoundCore(QObject *parent)
         : QObject(parent)
 {
+    if(m_instance)
+        qFatal("SoundCore: only one instance is allowed");
     m_instance = this;
     m_decoder = 0;
     m_error = false;
@@ -63,6 +65,7 @@ SoundCore::~SoundCore()
 {
     stop();
     MetaDataManager::destroy();
+    m_instance = 0;
 }
 
 bool SoundCore::play(const QString &source, bool queue, qint64 offset)
