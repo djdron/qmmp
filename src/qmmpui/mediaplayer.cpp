@@ -121,7 +121,7 @@ void MediaPlayer::previous()
 {
     bool playNext = m_core->state() != Qmmp::Stopped;
     stop();
-    if (m_pl_manager->currentPlayList()->next() && playNext)
+    if (m_pl_manager->currentPlayList()->previous() && playNext)
         play();
 }
 
