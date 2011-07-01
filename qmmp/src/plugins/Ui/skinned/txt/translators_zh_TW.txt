@@ -1,0 +1,53 @@
+巴西 葡萄牙語：
+    Klaos Lacerda
+    Bruno Gonçalves
+
+簡體中文：
+    李紅昆 (lon) <lon83129@126.com>
+
+繁體中文：
+    李紅昆 (lon) <lon83129@126.com>
+
+捷克語：
+    Karel Volný <kvolny@redhat.com>
+
+荷蘭語:
+    Ronald Uitermark <ronald645@gmail.com>
+
+法語:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+德語:
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+匈牙利語:
+    Németh Gábor <sutee84@freemail.hu>
+
+意大利語:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+日語:
+    島本良太 (Ryota Shimamoto) <liangtai.s4@gmail.com>
+
+哈薩克語:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+立陶宛語:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+波蘭語:
+    Grzegorz Gibas <amigib@gmail.com>
+
+俄語：
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+西班牙語:
+    Félix Medrano <xukosky@yahoo.es>
+
+土耳其語：
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+烏克蘭語：
+    Gennadi Motsyo <drool@altlinux.ru>

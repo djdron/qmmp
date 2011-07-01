@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,36 +17,26 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef BUILTINCOMMANDLINEOPTION_H
-#define BUILTINCOMMANDLINEOPTION_H
+#ifndef SKINNEDFACTORY_H
+#define SKINNEDFACTORY_H
 
 #include <QObject>
-#include <QHash>
-#include <QStringList>
+#include <QTranslator>
+#include <qmmpui/uifactory.h>
 
-/**
-    @author Vladimir Kuznetsov <vovanec@gmail.ru>
-*/
 
 /*!
- * Represens command line option handling for standard operations.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class BuiltinCommandLineOption : public QObject
+class SkinnedFactory : public QObject, public UiFactory
 {
     Q_OBJECT
+    Q_INTERFACES(UiFactory)
 public:
-    BuiltinCommandLineOption(QObject *parent = 0);
-
-    ~BuiltinCommandLineOption();
-
-    bool identify(const QString& str)const;
-    const QString helpString()const;
-    void executeCommand(const QString& option, const QStringList &args,
-                        const QString &cwd/*, MainWindow *mw*/);
-    QHash <QString, QStringList> splitArgs(const QStringList &args) const;
-
-private:
-    QStringList m_options;
+    const UiProperties properties() const;
+    QObject *create();
+    void showAbout(QWidget *parent);
+    QTranslator *createTranslator(QObject *parent);
 };
 
 #endif

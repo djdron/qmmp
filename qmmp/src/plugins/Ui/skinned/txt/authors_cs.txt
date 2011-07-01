@@ -1,0 +1,16 @@
+Vývojáři programu:
+
+    Илья Котов (Ilja Kotov) <forkotov02@hotmail.ru> (nápad a základní kód)
+    Владимир Кузнецов (Vladimír Kuzněcov) <vovanec@gmail.com> (vzhled a mnoho vylepšení)
+
+Vývojáři zásuvných modulů:
+
+    Юрий Журавлёв (Jurij Žuravljov) <stalkerg@gmail.com> (jack plugin)
+
+Grafika:
+
+    Андрей Адреев (Andrej Adrejev) <andreev00@gmail.com>
+
+Český překlad:
+
+    Karel Volný <kavol@seznam.cz>

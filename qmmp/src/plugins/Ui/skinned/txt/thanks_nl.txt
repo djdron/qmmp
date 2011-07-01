@@ -1,0 +1,17 @@
+Met dank aan:
+
+    Adria Arrufat <swiftscythe@gmail.com> - foutrapportage
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - jack module reparatie's, foutrapportage
+    Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg module aanpassingen
+    Dmitry Kostin <kostindima@gmail.com> - iso.wv ondersteuning
+    Gennadi Motsyo <drool@altlinux.ru> - foutrapportage
+    Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
+    Erik Ölsar <erlk.ozlr@gmail.com> - cursor thema's, verbeteringen van de gebruikersinterface
+    Funda Wang <fundawang@gmail.com> - verbeteringen in cmake bestanden
+    Michail Zheludkov <zheludkovm@mail.ru> - ffmpeg module aanpassingen
+    Panagiotis Papadopoulos <pano_90@gmx.net> - interface reparatie's, foutrapportage
+    Pino Toscano <toscano.pino@tiscali.it> - compatibiliteit andere systemen
+    Karel Volný <kvolny@redhat.com> - overige reparatie's
+    Sebastian Pipping <webmaster@hartwork.org> - bs2b contributie
+    Stefan Koelling <stefankoelling.ext@googlemail.com> - aanpassingen voor bouwsysteem
+    Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin aanpassingen

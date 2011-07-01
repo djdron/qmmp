@@ -27,8 +27,12 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <string.h>
+#include <qmmp/qmmp.h>
 #include <qmmpui/commandlinemanager.h>
-#include "mainwindow.h"
+#include <qmmpui/mediaplayer.h>
+#include <qmmpui/playlistparser.h>
+#include <qmmpui/generalhandler.h>
+#include <qmmpui/uiloader.h>
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
 
@@ -40,7 +44,7 @@
 
 using namespace std;
 
-QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent), mw(NULL)
+QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent)
 {
     m_option_manager = new BuiltinCommandLineOption(this);
     QStringList tmp;
@@ -114,18 +118,35 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
 
 QMMPStarter::~QMMPStarter()
 {
-    if (mw)
-        delete mw;
+    /*if (mw)
+        delete mw;*/
 }
 
 void QMMPStarter::startMainWindow()
 {
     connect(m_server, SIGNAL(newConnection()), SLOT(readCommand()));
     QStringList args = argString.split("\n", QString::SkipEmptyParts);
-    mw = new MainWindow();
+
+    //prepare libqmmp and libqmmpui libraries for playing
+    /*m_player = */new MediaPlayer(this);
+    //m_core = */SoundCore::instance();
+    /*m_pl_manager = */PlayListManager::instance();
+    //additional featuries
+    new PlaylistParser(this);
+    /*m_generalHandler = */new GeneralHandler(this);
+
+    UiFactory *factory = UiLoader::currentUiFactory();
+    if(factory)
+    {
+        QObject *ui = factory->create();
+        //ui->setParent(this);
+    }
+
+
+    /*mw = new MainWindow();
     processCommandArgs(args, QDir::currentPath());
     if(args.isEmpty())
-        mw->resume();
+        mw->resume();*/
 }
 
 void QMMPStarter::writeCommand()
@@ -187,7 +208,7 @@ QString QMMPStarter::processCommandArgs(const QStringList &slist, const QString&
     }
     if(!paths.isEmpty())
     {
-        m_option_manager->executeCommand(QString(), paths, cwd, mw); //add paths only
+        m_option_manager->executeCommand(QString(), paths, cwd/*, mw*/); //add paths only
         return QString();
     }
     QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
@@ -200,7 +221,7 @@ QString QMMPStarter::processCommandArgs(const QStringList &slist, const QString&
         if (CommandLineManager::hasOption(key))
             return CommandLineManager::executeCommand(key, commands.value(key));
         else if (m_option_manager->identify(key))
-            m_option_manager->executeCommand(key, commands.value(key), cwd, mw);
+            m_option_manager->executeCommand(key, commands.value(key), cwd);
         else
             return QString();
     }

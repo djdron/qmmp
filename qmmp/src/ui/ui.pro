@@ -1,125 +1,16 @@
 include(../../qmmp.pri)
-FORMS += forms/configdialog.ui \
-    forms/preseteditor.ui \
-    forms/jumptotrackdialog.ui \
-    forms/aboutdialog.ui \
-    forms/addurldialog.ui \
-    forms/playlistbrowser.ui \
-    forms/popupsettings.ui \
-    forms/shortcutdialog.ui
-HEADERS += mainwindow.h \
-    button.h \
-    display.h \
-    skin.h \
-    titlebar.h \
-    positionbar.h \
-    number.h \
-    playlist.h \
-    listwidget.h \
-    pixmapwidget.h \
-    playlisttitlebar.h \
-    configdialog.h \
-    playlistslider.h \
-    dock.h \
-    eqwidget.h \
-    eqtitlebar.h \
-    eqslider.h \
-    togglebutton.h \
-    eqgraph.h \
-    mainvisual.h \
-    inlines.h \
-    fft.h \
-    textscroller.h \
-    monostereo.h \
-    playstatus.h \
-    pluginitem.h \
-    volumebar.h \
-    balancebar.h \
-    symboldisplay.h \
-    playlistcontrol.h \
-    qmmpstarter.h \
-    eqpreset.h \
-    preseteditor.h \
-    jumptotrackdialog.h \
-    aboutdialog.h \
-    timeindicator.h \
-    keyboardmanager.h \
-    addurldialog.h \
-    skinreader.h \
-    visualmenu.h \
-    titlebarcontrol.h \
-    shadedvisual.h \
-    shadedbar.h \
-    builtincommandlineoption.h \
-    cursorimage.h \
-    playlistbrowser.h \
-    playlistselector.h \
-    popupwidget.h \
-    popupsettings.h \
-    windowsystem.h \
-    lxdesupport.h \
-    actionmanager.h \
-    shortcutitem.h \
-    shortcutdialog.h
-SOURCES += mainwindow.cpp \
-    mp3player.cpp \
-    button.cpp \
-    display.cpp \
-    skin.cpp \
-    titlebar.cpp \
-    positionbar.cpp \
-    number.cpp \
-    playlist.cpp \
-    listwidget.cpp \
-    pixmapwidget.cpp \
-    playlisttitlebar.cpp \
-    configdialog.cpp \
-    playlistslider.cpp \
-    dock.cpp \
-    eqwidget.cpp \
-    eqtitlebar.cpp \
-    eqslider.cpp \
-    togglebutton.cpp \
-    eqgraph.cpp \
-    mainvisual.cpp \
-    fft.c \
-    textscroller.cpp \
-    monostereo.cpp \
-    playstatus.cpp \
-    pluginitem.cpp \
-    volumebar.cpp \
-    balancebar.cpp \
-    symboldisplay.cpp \
-    playlistcontrol.cpp \
-    qmmpstarter.cpp \
-    eqpreset.cpp \
-    preseteditor.cpp \
-    jumptotrackdialog.cpp \
-    aboutdialog.cpp \
-    timeindicator.cpp \
-    keyboardmanager.cpp \
-    addurldialog.cpp \
-    skinreader.cpp \
-    visualmenu.cpp \
-    titlebarcontrol.cpp \
-    shadedvisual.cpp \
-    shadedbar.cpp \
-    builtincommandlineoption.cpp \
-    cursorimage.cpp \
-    playlistbrowser.cpp \
-    playlistselector.cpp \
-    popupwidget.cpp \
-    popupsettings.cpp \
-    windowsystem.cpp \
+
+HEADERS += qmmpstarter.h \
+           builtincommandlineoption.h \
+    lxdesupport.h
+
+SOURCES += \
+           qmmpstarter.cpp \
+           builtincommandlineoption.cpp \
     lxdesupport.cpp \
-    actionmanager.cpp \
-    shortcutitem.cpp \
-    shortcutdialog.cpp
-win32:HEADERS += ../qmmp/visual.h
-unix {
-    HEADERS +=
-    SOURCES +=
-}
+    main.cpp
+
+
 
 # Some conf to redirect intermediate stuff in separate dirs
 UI_DIR = ./.build/ui/
@@ -141,8 +32,7 @@ win32:LIBS += -L../../bin \
     -lqmmp0 \
     -lqmmpui0
 INCLUDEPATH += ../
-RESOURCES = images/images.qrc \
-    stuff.qrc
+RESOURCES = images/images.qrc
 TEMPLATE = app
 unix {
     target.path = /bin
@@ -182,7 +72,3 @@ TRANSLATIONS = translations/qmmp_ru.ts \
     translations/qmmp_ja.ts \
     translations/qmmp_es.ts \
     translations/qmmp_sk.ts
-x11 {
-    CONFIG += link_pkgconfig
-    PKGCONFIG += x11
-}

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,62 +17,62 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef UIFACTORY_H
+#define UIFACTORY_H
 
-#ifndef _QMMPSTARTER_H
-#define _QMMPSTARTER_H
+class QObject;
+class QTranslator;
+class QDialog;
+class QString;
+class QWidget;
+class Control;
+class General;
 
-#include <QObject>
-#include <QAbstractSocket>
-#include <QStringList>
-
-class QLocalServer;
-class QLocalSocket;
-class MainWindow;
-class BuiltinCommandLineOption;
-
-/*!
- *  QMMPStarter represents wrapper object that is responsible
- * for proper QMMP initialization(only one instance of running
- * MainWindow) and passing command line args to application.
- * @author Vladimir Kuznetsov <vovanec@gmail.com>
+/*! @brief Helper class to store user interface plugin properies.
  */
-class QMMPStarter : public QObject
+class UiProperties
 {
-    Q_OBJECT
 public:
-    QMMPStarter(int argc,char ** argv,QObject* parent = 0);
-    ~QMMPStarter();
-
-
-protected slots:
     /*!
-     * Passes command args to the running application
+     * Constructor
      */
-    void writeCommand();
-    void readCommand();
-
-private:
-    QString processCommandArgs(const QStringList &list,const QString& cwd);
+    UiProperties()
+    {
+        hasAbout = false;
+    }
+    QString name;        /*!< File dialog plugin full name */
+    QString shortName;   /*!< File dialog short name for internal usage */
+    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
+};
+/*! @brief User interface plugin interface.
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class UiFactory
+{
+public:
     /*!
-     * Prints usage
+     * Object destructor.
      */
-    void printUsage();
-
+    virtual ~UiFactory() {}
     /*!
-     * Prints version of program
+     * Returns user interface plugin properties.
      */
-    void printVersion();
-
-    void startMainWindow();
-
-private:
-    //MainWindow* mw;
-    QString argString;
-    BuiltinCommandLineOption* m_option_manager;
-    QLocalServer *m_server;
-    QLocalSocket *m_socket;
+    virtual const UiProperties properties() const = 0;
+    /*!
+     * Creates user interface instance.
+     */
+    virtual QObject *create() = 0;
+    /*!
+     * Shows about dialog.
+     * @param parent Parent widget.
+     */
+    virtual void showAbout(QWidget *parent) = 0;
+    /*!
+     * Creates QTranslator object of the system locale. Should return \b 0 if translation doesn't exist.
+     * @param parent Parent object.
+     */
+    virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
+Q_DECLARE_INTERFACE(UiFactory, "UiFactory/1.0")
 #endif
-
-
