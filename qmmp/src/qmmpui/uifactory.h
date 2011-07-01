@@ -25,7 +25,6 @@ class QTranslator;
 class QDialog;
 class QString;
 class QWidget;
-class Control;
 class General;
 
 /*! @brief Helper class to store general plugin properies.
