@@ -56,10 +56,8 @@ pkg_search_module(X11 x11)
 
 add_subdirectory(src/qmmp)
 add_subdirectory(src/qmmpui)
-IF(USE_SKINNED AND X11_FOUND)
-add_subdirectory(src/ui)
-ENDIF(USE_SKINNED AND X11_FOUND)
 add_subdirectory(src/plugins)
+add_subdirectory(src/app)
 
 MACRO(PRINT_SUMMARY str USE FOUND)
 IF(${USE} AND ${FOUND})

@@ -40,6 +40,7 @@ SET(libqmmpui_SRCS
     playlistmanager.cpp
     metadataformatter.cpp
     templateeditor.cpp
+    uiloader.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -64,6 +65,8 @@ SET(libqmmpui_MOC_HDRS
     playlistmanager.h
     metadataformatter.h
     templateeditor.h
+    uiloader.h
+    uifactory.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -83,6 +86,8 @@ SET(libqmmpui_DEVEL_HDRS
     playlistmanager.h
     metadataformatter.h
     templateeditor.h
+    uiloader.h
+    uifactory.h
 )
 
 
