@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,41 +17,42 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef UI_H
+#define UI_H
 
+#include <QStringList>
+#include <QMap>
+#include "uifactory.h"
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include <QApplication>
-#include <QTranslator>
-#include <QLocale>
-#include <QLibraryInfo>
-#include <stdio.h>
-#include <stdlib.h>
-#include "lxdesupport.h"
-#include "mainwindow.h"
-#include "playlist.h"
-#include "qmmpstarter.h"
-
-int main(int argc, char *argv[])
+/*! @brief The UiLoader provides user interface plugins access
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class UiLoader
 {
-    QApplication a (argc, argv );
-    a.setApplicationName("qmmp");
+public:
+    /*!
+     * Returns a list of the loaded ui plugin factories.
+     */
+    static QList<UiFactory*> *factories();
+    /*!
+     * Returns a list of the loaded ui plugin files.
+     */
+    static QStringList files();
+    /*!
+     * Selects active user interface factory.
+     * @param factory Ui plugin factory.
+     */
+    static void setCurrentUiFactory(UiFactory* factory);
+    /*!
+     * Returns \b true if general plugin is enabled, otherwise returns \b false
+     * @param factory General plugin factory.
+     */
+    static UiFactory *currentUiFactory();
 
-    LXDESupport::load(); //load lxde icons
+private:
+    static QList<UiFactory*> *m_factories;
+    static QStringList m_files;
+    static void checkFactories();
+};
 
-    QTranslator translator;
-    QString locale = Qmmp::systemLanguageID();
-    translator.load(QString(":/qmmp_") + locale);
-    a.installTranslator(&translator);
-
-    QTranslator qt_translator;
-    qt_translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qt_" + locale);
-    a.installTranslator(&qt_translator);
-
-    QMMPStarter starter(argc,argv);
-    Q_UNUSED(starter)
-
-    return a.exec();
-}
+#endif //UI_H

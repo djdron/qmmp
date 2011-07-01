@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,36 +17,27 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef BUILTINCOMMANDLINEOPTION_H
-#define BUILTINCOMMANDLINEOPTION_H
 
-#include <QObject>
-#include <QHash>
-#include <QStringList>
+#include <QtPlugin>
+#include "mainwindow.h"
+#include "skinnedfactory.h"
 
-/**
-    @author Vladimir Kuznetsov <vovanec@gmail.ru>
-*/
-
-/*!
- * Represens command line option handling for standard operations.
- */
-class BuiltinCommandLineOption : public QObject
+const UiProperties SkinnedFactory::properties() const
 {
-    Q_OBJECT
-public:
-    BuiltinCommandLineOption(QObject *parent = 0);
+    UiProperties props;
+    return props;
+}
 
-    ~BuiltinCommandLineOption();
+QObject *SkinnedFactory::SkinnedFactory::create()
+{
+    return new MainWindow();
+}
 
-    bool identify(const QString& str)const;
-    const QString helpString()const;
-    void executeCommand(const QString& option, const QStringList &args,
-                        const QString &cwd/*, MainWindow *mw*/);
-    QHash <QString, QStringList> splitArgs(const QStringList &args) const;
+void SkinnedFactory::showAbout(QWidget *parent){}
 
-private:
-    QStringList m_options;
-};
+QTranslator *SkinnedFactory::createTranslator(QObject *parent)
+{
+    return 0;
+}
 
-#endif
+Q_EXPORT_PLUGIN2(skinned, SkinnedFactory)

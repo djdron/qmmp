@@ -1,0 +1,21 @@
+感谢：
+
+    Adria Arrufat <swiftscythe@gmail.com> - bug 报告
+    Adrian Knoth <adi@drcomp.erfurt.thur.de> - jack 插件修正，bug 报告
+    Anton Petrusevich <casus@casus.us> - 随机播放改进   
+    Avihay Baratz <avihayb@gmail.com> - 自动停放功能，bug 修正
+    Csaba Hruska <csaba.hruska@gmail.com> - ffmpeg 插件修正
+    Dmitry Kostin <kostindima@gmail.com> - iso.wv 支持
+    Evgeny Gleyzerman <evgley@gmail.com> - cue 解析改进
+    Gennadi Motsyo <drool@altlinux.ru> - bug 报告
+    Vadim Kalinnikov <moose@ylsoftware.com> - 项目网络支持
+    Erik Ölsar <erlk.ozlr@gmail.com> - 光标皮肤、用户界面改进
+    Funda Wang <fundawang@gmail.com> - cmake 文件修正
+    Michail Zheludkov <zheludkovm@mail.ru> - ffmpeg 插件修正
+    Michał Grosicki <grosik88@o2.pl> - alsa 插件修正
+    Panagiotis Papadopoulos <pano_90@gmx.net> - 用户界面修正，bug 报告
+    Pino Toscano <toscano.pino@tiscali.it> - 可移植性补丁
+    Karel Volný <kvolny@redhat.com> - 多项修正
+    Sebastian Pipping <webmaster@hartwork.org> - bs2b 补丁
+    Stefan Koelling <stefankoelling.ext@googlemail.com> - 一些编译修正
+    Yaakov Selkowitz <yselkowitz@gmail.com> - cygwin 补丁

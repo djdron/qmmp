@@ -38,7 +38,9 @@ HEADERS += general.h \
     tageditor_p.h \
     playlistmanager.h \
     metadataformatter.h \
-    templateeditor.h
+    templateeditor.h \
+    uifactory.h \
+    uiloader.h
 SOURCES += general.cpp \
     generalhandler.cpp \
     playlistparser.cpp \
@@ -55,7 +57,8 @@ SOURCES += general.cpp \
     tageditor.cpp \
     playlistmanager.cpp \
     metadataformatter.cpp \
-    templateeditor.cpp
+    templateeditor.cpp \
+    uiloader.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui

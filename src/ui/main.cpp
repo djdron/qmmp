@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,36 +17,40 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef BUILTINCOMMANDLINEOPTION_H
-#define BUILTINCOMMANDLINEOPTION_H
 
-#include <QObject>
-#include <QHash>
-#include <QStringList>
 
-/**
-    @author Vladimir Kuznetsov <vovanec@gmail.ru>
-*/
-
-/*!
- * Represens command line option handling for standard operations.
- */
-class BuiltinCommandLineOption : public QObject
-{
-    Q_OBJECT
-public:
-    BuiltinCommandLineOption(QObject *parent = 0);
-
-    ~BuiltinCommandLineOption();
-
-    bool identify(const QString& str)const;
-    const QString helpString()const;
-    void executeCommand(const QString& option, const QStringList &args,
-                        const QString &cwd/*, MainWindow *mw*/);
-    QHash <QString, QStringList> splitArgs(const QStringList &args) const;
-
-private:
-    QStringList m_options;
-};
-
+#ifdef HAVE_CONFIG_H
+#include <config.h>
 #endif
+
+#include <QApplication>
+#include <QTranslator>
+#include <QLocale>
+#include <QLibraryInfo>
+#include <stdio.h>
+#include <stdlib.h>
+#include <qmmp/qmmp.h>
+#include "lxdesupport.h"
+#include "qmmpstarter.h"
+
+int main(int argc, char *argv[])
+{
+    QApplication a (argc, argv );
+    a.setApplicationName("qmmp");
+
+    LXDESupport::load(); //load lxde icons
+
+    QTranslator translator;
+    QString locale = Qmmp::systemLanguageID();
+    translator.load(QString(":/qmmp_") + locale);
+    a.installTranslator(&translator);
+
+    QTranslator qt_translator;
+    qt_translator.load(QLibraryInfo::location (QLibraryInfo::TranslationsPath) + "/qt_" + locale);
+    a.installTranslator(&qt_translator);
+
+    QMMPStarter starter(argc,argv);
+    Q_UNUSED(starter)
+
+    return a.exec();
+}

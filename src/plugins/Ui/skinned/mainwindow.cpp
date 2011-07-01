@@ -49,7 +49,7 @@
 #include "visualmenu.h"
 #include "windowsystem.h"
 #include "actionmanager.h"
-#include "builtincommandlineoption.h"
+//#include "builtincommandlineoption.h"
 
 #define KEY_OFFSET 10000
 
@@ -68,12 +68,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     new ActionManager();
 
     //prepare libqmmp and libqmmpui libraries for playing
-    m_player = new MediaPlayer(this);
+    m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
     m_pl_manager = PlayListManager::instance();
     //additional featuries
-    new PlaylistParser(this);
-    m_generalHandler = new GeneralHandler(this);
+    //new PlaylistParser(this);
+    m_generalHandler = GeneralHandler::instance();
 
     //user interface
     m_skin = new Skin(this);

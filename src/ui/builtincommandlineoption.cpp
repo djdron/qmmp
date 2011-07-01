@@ -20,7 +20,7 @@
 
 #include <QApplication>
 #include <qmmp/soundcore.h>
-#include "mainwindow.h"
+#include <qmmpui/mediaplayer.h>
 #include "builtincommandlineoption.h"
 
 BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent) : QObject(parent)
@@ -69,10 +69,14 @@ const QString BuiltinCommandLineOption::helpString() const
 
 void BuiltinCommandLineOption::executeCommand(const QString &option_string,
                                               const QStringList &args,
-                                              const QString &cwd,
-                                              MainWindow *mw)
+                                              const QString &cwd/*,
+                                              MainWindow *mw*/)
 {
-    if(option_string == "--enqueue" || option_string == "-e" || option_string.isEmpty())
+    SoundCore *core = SoundCore::instance();
+    MediaPlayer *player = MediaPlayer::instance();
+    if(!core || !player)
+        return;
+    /*if(option_string == "--enqueue" || option_string == "-e" || option_string.isEmpty())
     {
         //QStringList args = commands.value(key);
         if(args.isEmpty())
@@ -86,62 +90,63 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
                 full_path_list << cwd + "/" + s;
         }
         //clear playlist if option is empty
-        mw->setFileList(full_path_list, option_string.isEmpty());
+        //mw->setFileList(full_path_list, option_string.isEmpty());
     }
-    else if (option_string == "--play" || option_string == "-p")
+    else*/ if (option_string == "--play" || option_string == "-p")
     {
-        mw->play();
+        player->play();
     }
     else if (option_string == "--stop" || option_string == "-s")
     {
-        mw->stop();
+        core->stop();
     }
     else if (option_string == "--pause" || option_string == "-u")
     {
-        mw->pause();
+        core->pause();
     }
     else if (option_string == "--next")
     {
-        mw->next();
-        if (mw->soundCore()->state() == Qmmp::Stopped)
-            mw->play();
+        player->next();
+        if (core->state() == Qmmp::Stopped)
+            player->play();
     }
     else if (option_string == "--previous")
     {
-        mw->previous();
-        if (mw->soundCore()->state() == Qmmp::Stopped)
-            mw->play();
+        player->previous();
+        if (core->state() == Qmmp::Stopped)
+            player->play();
     }
     else if (option_string == "--play-pause"  || option_string == "-t")
     {
-        mw->playPause();
+        //mw->playPause();
     }
     else if (option_string == "--jump-to-file" || option_string == "-j")
     {
-        mw->jumpToFile();
+        //mw->jumpToFile();
     }
     else if (option_string == "--quit" || option_string == "-q")
     {
-        mw->close();
+        //mw->close();
+        qApp->closeAllWindows();
     }
     else if (option_string == "--toggle-visibility")
     {
-        mw->toggleVisibility();
+        //mw->toggleVisibility();
     }
     else if (option_string == "--add-file")
     {
-        mw->addFile();
+        //mw->addFile();
     }
     else if (option_string == "--add-dir")
     {
-        mw->addDir();
+        //mw->addDir();
     }
     else if (option_string == "--volume" && !args.isEmpty())
     {
         bool ok = false;
         int volume = args.at(0).toInt(&ok);
         if (ok)
-            mw->soundCore()->setVolume(volume,volume);
+            core->setVolume(volume,volume);
     }
 }
 

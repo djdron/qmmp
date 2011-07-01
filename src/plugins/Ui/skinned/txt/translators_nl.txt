@@ -1,0 +1,47 @@
+Braziliaans Portugees:
+    Klaos Lacerda
+    Bruno Gonçalves
+
+Traditioneel Chinees:
+    lon <lon83129@126.com>
+
+Simpel Chinees:
+    lon <lon83129@126.com>
+
+Tsjechisch:
+    Karel Volný <kvolny@redhat.com>
+
+Nederlands:
+    Ronald Uitermark <ronald645@gmail.com>
+
+Frans:
+    Stanislas Zeller <uncensored.assault@gmail.com>
+
+Duits:
+    Stefan Koelling <stefankoelling.ext@googlemail.com>
+    Panagiotis Papadopoulos <pano_90@gmx.net>
+
+Hongaars:
+    Németh Gábor <sutee84@freemail.hu>
+
+Italiaans:
+    Gian Paolo Renello <emmerkar@gmail.com>
+
+Kazachstaans:
+    Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+
+Litouws:
+    Algirdas Butkus <butkus.algirdas@gmail.com>
+
+Pools:
+    Grzegorz Gibas <amigib@gmail.com>
+
+Russisch:
+    Ilya Kotov <forkotov02@hotmail.ru>
+
+Turks:
+    Mustafa GUNAY <mustafagunay@pgmail.com>
+    Bilgesu Güngör <h.ibrahim.gungor@gmail.com>
+
+Oekrains:
+    Gennadi Motsyo <drool@altlinux.ru>
