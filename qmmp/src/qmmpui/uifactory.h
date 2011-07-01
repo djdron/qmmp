@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef UIFACTORY_H
-#define UIFACTORY_H
+#ifndef GENERALFACTORY_H
+#define GENERALFACTORY_H
 
 class QObject;
 class QTranslator;
@@ -28,23 +28,28 @@ class QWidget;
 class Control;
 class General;
 
-/*! @brief Helper class to store user interface plugin properies.
+/*! @brief Helper class to store general plugin properies.
  */
-class UiProperties
+class GeneralProperties
 {
 public:
     /*!
      * Constructor
      */
-    UiProperties()
+    GeneralProperties()
     {
         hasAbout = false;
+        hasSettings = false;
+        visibilityControl = false;
     }
-    QString name;        /*!< File dialog plugin full name */
-    QString shortName;   /*!< File dialog short name for internal usage */
-    bool hasAbout;       /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
+    QString name;           /*!< File dialog plugin full name */
+    QString shortName;      /*!< File dialog short name for internal usage */
+    bool hasAbout;          /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
+    bool hasSettings;       /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
+    bool visibilityControl; /*!< Should be \b true if plugin can show/hide main window of the player,
+                             * otherwise returns \b false */
 };
-/*! @brief User interface plugin interface.
+/*! @brief %General plugin interface.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
 class UiFactory
@@ -53,15 +58,21 @@ public:
     /*!
      * Object destructor.
      */
-    virtual ~UiFactory() {}
+    virtual ~GeneralFactory() {}
     /*!
-     * Returns user interface plugin properties.
+     * Returns general plugin properties.
      */
-    virtual const UiProperties properties() const = 0;
+    virtual const GeneralProperties properties() const = 0;
     /*!
-     * Creates user interface instance.
+     * Creates object of the General class.
      */
-    virtual QObject *create() = 0;
+    virtual General *create(QObject *parent) = 0;
+    /*!
+     * Creates configuration dialog.
+     * @param parent Parent widget.
+     * @return Configuration dialog pointer.
+     */
+    virtual QDialog *createConfigDialog(QWidget *parent) = 0;
     /*!
      * Shows about dialog.
      * @param parent Parent widget.
@@ -74,5 +85,5 @@ public:
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
-Q_DECLARE_INTERFACE(UiFactory, "UiFactory/1.0")
+Q_DECLARE_INTERFACE(GeneralFactory, "GeneralFactory/1.0");
 #endif

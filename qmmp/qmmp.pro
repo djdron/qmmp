@@ -3,10 +3,8 @@ CONFIG += ordered
 include (qmmp.pri)
 
 TEMPLATE = subdirs
-SUBDIRS = src/qmmp src/qmmpui src/plugins
-contains(CONFIG, WITH_SKINNED){
-SUBDIRS += src/ui
-}
+SUBDIRS = src/qmmp src/qmmpui src/plugins src/app
+
 
 unix:exists($$[QT_INSTALL_BINS]/lrelease){
 LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease
