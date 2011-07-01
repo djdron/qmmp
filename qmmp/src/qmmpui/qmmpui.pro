@@ -94,7 +94,9 @@ unix {
                    detailsdialog.h \
                    playlistmanager.h \
                    metadataformatter.h \
-                   templateeditor.h
+                   templateeditor.h \
+                   uifactory.h \
+                   uiloader.h
     devel.path = /include/qmmpui
     INSTALLS += target \
         devel
