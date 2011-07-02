@@ -21,10 +21,12 @@
 #include <QApplication>
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/generalhandler.h>
 #include "builtincommandlineoption.h"
 
 BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent) : QObject(parent)
 {
+    m_model = 0;
     m_options << "--enqueue" << "-e"
               << "--play" << "-p"
               << "--pause" << "-u"
@@ -69,16 +71,15 @@ const QString BuiltinCommandLineOption::helpString() const
 
 void BuiltinCommandLineOption::executeCommand(const QString &option_string,
                                               const QStringList &args,
-                                              const QString &cwd/*,
-                                              MainWindow *mw*/)
+                                              const QString &cwd)
 {
     SoundCore *core = SoundCore::instance();
     MediaPlayer *player = MediaPlayer::instance();
+    PlayListManager *pl_manager = PlayListManager::instance();
     if(!core || !player)
         return;
-    /*if(option_string == "--enqueue" || option_string == "-e" || option_string.isEmpty())
+    if(option_string == "--enqueue" || option_string == "-e" || option_string.isEmpty())
     {
-        //QStringList args = commands.value(key);
         if(args.isEmpty())
             return;
         QStringList full_path_list;
@@ -89,10 +90,28 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
             else
                 full_path_list << cwd + "/" + s;
         }
-        //clear playlist if option is empty
-        //mw->setFileList(full_path_list, option_string.isEmpty());
+        pl_manager->activatePlayList(pl_manager->selectedPlayList());
+        if(option_string.isEmpty()) //clear playlist if option is empty
+        {
+            if (core->state() != Qmmp::Stopped)
+            {
+                core->stop();
+                qApp->processEvents(); //receive stop signal
+            }
+            m_model = pl_manager->selectedPlayList();
+            m_model->clear();
+            connect(m_model, SIGNAL(itemAdded(PlayListItem*)), player, SLOT(play()));
+            connect(core, SIGNAL(stateChanged(Qmmp::State)), SLOT(disconnectPl()));
+            connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
+            m_model->add(full_path_list);
+        }
+        else
+        {
+            pl_manager->selectedPlayList()->add(full_path_list);
+            return;
+        }
     }
-    else*/ if (option_string == "--play" || option_string == "-p")
+    else if (option_string == "--play" || option_string == "-p")
     {
         player->play();
     }
@@ -118,7 +137,10 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     }
     else if (option_string == "--play-pause"  || option_string == "-t")
     {
-        //mw->playPause();
+        if (core->state() == Qmmp::Playing)
+            core->pause();
+        else
+            player->play();
     }
     else if (option_string == "--jump-to-file" || option_string == "-j")
     {
@@ -128,10 +150,11 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     {
         //mw->close();
         qApp->closeAllWindows();
+        qApp->quit();
     }
     else if (option_string == "--toggle-visibility")
     {
-        //mw->toggleVisibility();
+        GeneralHandler::instance()->toggleVisibility();
     }
     else if (option_string == "--add-file")
     {
@@ -161,4 +184,15 @@ QHash <QString, QStringList> BuiltinCommandLineOption::splitArgs(const QStringLi
             commands[commands.keys().last()] << arg;
     }
     return commands;
+}
+
+void BuiltinCommandLineOption::disconnectPl()
+{
+    if(m_model)
+    {
+        disconnect(m_model, SIGNAL(itemAdded(PlayListItem*)), MediaPlayer::instance(), SLOT(play()));
+        disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
+        disconnect(SoundCore::instance(), SIGNAL(stateChanged(Qmmp::State)), this, SLOT(disconnectPl()));
+        m_model = 0;
+    }
 }

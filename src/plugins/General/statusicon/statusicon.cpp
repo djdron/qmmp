@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -30,6 +30,7 @@
 
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/generalhandler.h>
 
 #include "qmmptrayicon.h"
 #include "statusicon.h"
@@ -129,7 +130,7 @@ void StatusIcon::showMetaData()
 void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger)
-        toggleVisibility();
+        GeneralHandler::instance()->toggleVisibility();
     else if (reason == QSystemTrayIcon::MiddleClick)
     {
         if (SoundCore::instance()->state() == Qmmp::Stopped)
