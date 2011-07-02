@@ -27,7 +27,8 @@
 
 class QLocalServer;
 class QLocalSocket;
-class MainWindow;
+class MediaPlayer;
+class SoundCore;
 class BuiltinCommandLineOption;
 
 /*!
@@ -44,12 +45,13 @@ public:
     ~QMMPStarter();
 
 
-protected slots:
+private slots:
     /*!
      * Passes command args to the running application
      */
     void writeCommand();
     void readCommand();
+    void savePosition();
 
 private:
     QString processCommandArgs(const QStringList &list,const QString& cwd);
@@ -57,16 +59,16 @@ private:
      * Prints usage
      */
     void printUsage();
-
     /*!
      * Prints version of program
      */
     void printVersion();
-
-    void startMainWindow();
+    void startPlayer();
 
 private:
-    //MainWindow* mw;
+    MediaPlayer *m_player;
+    SoundCore *m_core;
+    QObject *m_ui;
     QString argString;
     BuiltinCommandLineOption* m_option_manager;
     QLocalServer *m_server;

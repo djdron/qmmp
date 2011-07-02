@@ -129,7 +129,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 }
 
 MainWindow::~MainWindow()
-{}
+{
+    qDebug("%s", Q_FUNC_INFO);
+}
 
 void MainWindow::play()
 {
@@ -336,9 +338,6 @@ void MainWindow::writeSettings()
     settings.endGroup();
     // playback state
     settings.beginGroup("General");
-    settings.setValue("resume_playback", m_core->state() == Qmmp::Playing &&
-                      settings.value("resume_on_startup", false).toBool());
-    settings.setValue("resume_playback_time", m_core->totalTime() > 0 ? m_core->elapsed() : 0);
     settings.setValue("double_size", ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked());
     settings.setValue("always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
     settings.setValue("show_on_all_desktops", ACTION(ActionManager::WM_STICKY)->isChecked());
@@ -456,7 +455,6 @@ void MainWindow::createActions()
     Dock::instance()->addActions(QList<QAction*>() << forward << backward);
     Dock::instance()->addActions(m_mainMenu->actions());
 }
-
 
 void MainWindow::about()
 {
@@ -602,15 +600,4 @@ void MainWindow::keyPressEvent(QKeyEvent *ke)
     QKeyEvent event = QKeyEvent(ke->type(), ke->key(),
                                 ke->modifiers(), ke->text(),ke->isAutoRepeat(), ke->count());
     QApplication::sendEvent(m_playlist,&event);
-}
-
-void MainWindow::resume()
-{
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("General");
-    if(settings.value("resume_playback", false).toBool())
-    {
-        qint64 pos =  settings.value("resume_playback_time").toLongLong();
-        m_player->play(pos);
-    }
 }

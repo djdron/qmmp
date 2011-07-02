@@ -22,6 +22,7 @@
 #include <QDir>
 #include <QLocalServer>
 #include <QLocalSocket>
+#include <QSettings>
 #include <cstdlib>
 #include <iostream>
 #include <unistd.h>
@@ -46,6 +47,9 @@ using namespace std;
 
 QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent)
 {
+    m_player = 0;
+    m_core = 0;
+    m_ui = 0;
     m_option_manager = new BuiltinCommandLineOption(this);
     QStringList tmp;
     for (int i = 1;i < argc;i++)
@@ -84,7 +88,7 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
 
     if(!noStart && m_server->listen (UDS_PATH)) //trying to create server
     {
-        startMainWindow();
+        startPlayer();
     }
     else if(QFile::exists(UDS_PATH))
     {
@@ -102,7 +106,7 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
             if(noStart)
                 exit(0);
             else if(m_server->listen (UDS_PATH))
-                startMainWindow();
+                startPlayer();
             else
             {
                 qWarning("QMMPStarter: server error: %s", qPrintable(m_server->errorString()));
@@ -118,35 +122,58 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
 
 QMMPStarter::~QMMPStarter()
 {
-    /*if (mw)
-        delete mw;*/
+    if (m_ui)
+        delete m_ui;
+
+    //qDebug("=%d", (int)SoundCore::instance()->state());
 }
 
-void QMMPStarter::startMainWindow()
+void QMMPStarter::startPlayer()
 {
     connect(m_server, SIGNAL(newConnection()), SLOT(readCommand()));
     QStringList args = argString.split("\n", QString::SkipEmptyParts);
 
-    //prepare libqmmp and libqmmpui libraries for playing
-    /*m_player = */new MediaPlayer(this);
-    //m_core = */SoundCore::instance();
-    /*m_pl_manager = */PlayListManager::instance();
+    //prepare libqmmp and libqmmpui libraries for usage
+    m_player = new MediaPlayer(this);
+    m_core = SoundCore::instance();
+
     //additional featuries
     new PlaylistParser(this);
-    /*m_generalHandler = */new GeneralHandler(this);
+    new GeneralHandler(this);
 
+    //interface
     UiFactory *factory = UiLoader::currentUiFactory();
     if(factory)
+        m_ui = factory->create();
+    else
     {
-        QObject *ui = factory->create();
-        //ui->setParent(this);
+        qWarning("QMMPStarter: no user interface found");
+        exit(1);
+        return;
     }
-
-
-    /*mw = new MainWindow();
+    connect(qApp, SIGNAL(aboutToQuit()), SLOT(savePosition()));
     processCommandArgs(args, QDir::currentPath());
     if(args.isEmpty())
-        mw->resume();*/
+    {
+        QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+        settings.beginGroup("General");
+        if(settings.value("resume_playback", false).toBool())
+        {
+            qint64 pos =  settings.value("resume_playback_time").toLongLong();
+            m_player->play(pos);
+        }
+    }
+}
+
+void QMMPStarter::savePosition()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("General");
+    settings.setValue("resume_playback", m_core->state() == Qmmp::Playing &&
+                      settings.value("resume_on_startup", false).toBool());
+    settings.setValue("resume_playback_time", m_core->totalTime() > 0 ? m_core->elapsed() : 0);
+    settings.endGroup();
+    m_core->stop();
 }
 
 void QMMPStarter::writeCommand()
@@ -208,7 +235,7 @@ QString QMMPStarter::processCommandArgs(const QStringList &slist, const QString&
     }
     if(!paths.isEmpty())
     {
-        m_option_manager->executeCommand(QString(), paths, cwd/*, mw*/); //add paths only
+        m_option_manager->executeCommand(QString(), paths, cwd); //add paths only
         return QString();
     }
     QHash<QString, QStringList> commands = m_option_manager->splitArgs(slist);
