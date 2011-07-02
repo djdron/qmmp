@@ -59,7 +59,6 @@ public:
     void setVolume(int volume, int balance);
     SoundCore* soundCore()const;
     MainDisplay* mainDisplay()const;
-    void resume();
 
 public slots:
     void previous();
