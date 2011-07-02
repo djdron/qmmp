@@ -2,7 +2,7 @@ include(../../../qmmp.pri)
 TEMPLATE = subdirs
 
 
-contains(CINFIG, WITH_SKINNED){
+contains(CONFIG, WITH_SKINNED){
 SUBDIRS += skinned
 }
 
