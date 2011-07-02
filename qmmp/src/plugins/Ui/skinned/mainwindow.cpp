@@ -49,7 +49,6 @@
 #include "visualmenu.h"
 #include "windowsystem.h"
 #include "actionmanager.h"
-//#include "builtincommandlineoption.h"
 
 #define KEY_OFFSET 10000
 
@@ -183,7 +182,6 @@ void MainWindow::previous()
 
 void MainWindow::showState(Qmmp::State state)
 {
-    disconnectPl();
     switch ((int) state)
     {
     case Qmmp::Playing:
@@ -525,26 +523,6 @@ void MainWindow::savePlaylist()
         qWarning("Error: There is no registered playlist parsers");
 }
 
-void MainWindow::setFileList(const QStringList &l, bool clear)
-{
-    m_pl_manager->activatePlayList(m_pl_manager->selectedPlayList());
-    if(!clear)
-    {
-        m_pl_manager->selectedPlayList()->add(l);
-        return;
-    }
-    if (m_core->state() != Qmmp::Stopped)
-    {
-        stop();
-        qApp->processEvents(); //receive stop signal
-    }
-    m_model = m_pl_manager->selectedPlayList();
-    m_model->clear();
-    connect(m_model, SIGNAL(itemAdded(PlayListItem*)), SLOT(play()));
-    connect(m_model, SIGNAL(loaderFinished()), SLOT(disconnectPl()));
-    m_model->add(l);
-}
-
 void MainWindow::playPause()
 {
     if (m_core->state() == Qmmp::Playing)
@@ -568,16 +546,6 @@ void MainWindow::handleCloseRequest()
         toggleVisibility();
     else
         QApplication::closeAllWindows();
-}
-
-void MainWindow::disconnectPl()
-{
-    if(m_model)
-    {
-        disconnect(m_model, SIGNAL(itemAdded(PlayListItem*)), this, SLOT(play()));
-        disconnect(m_model, SIGNAL(loaderFinished()), this, SLOT(disconnectPl()));
-        m_model = 0;
-    }
 }
 
 void MainWindow::addUrl()

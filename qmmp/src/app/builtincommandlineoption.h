@@ -24,6 +24,8 @@
 #include <QHash>
 #include <QStringList>
 
+class PlayListModel;
+
 /**
     @author Vladimir Kuznetsov <vovanec@gmail.ru>
 */
@@ -42,11 +44,15 @@ public:
     bool identify(const QString& str)const;
     const QString helpString()const;
     void executeCommand(const QString& option, const QStringList &args,
-                        const QString &cwd/*, MainWindow *mw*/);
+                        const QString &cwd);
     QHash <QString, QStringList> splitArgs(const QStringList &args) const;
+
+private slots:
+    void disconnectPl();
 
 private:
     QStringList m_options;
+    PlayListModel *m_model;
 };
 
 #endif

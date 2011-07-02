@@ -45,6 +45,7 @@ extern "C"
 #include <qmmp/qmmp.h>
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/generalhandler.h>
 #include "hotkeymanager.h"
 
 quint32 Hotkey::defaultKey()
@@ -164,7 +165,7 @@ bool HotkeyManager::eventFilter(QObject* o, QEvent* e)
                 MediaPlayer::instance()->previous();
                 break;
             case Hotkey::SHOW_HIDE:
-                toggleVisibility();
+                GeneralHandler::instance()->toggleVisibility();
                 break;
             case Hotkey::VOLUME_UP:
             case Hotkey::VOLUME_DOWN:

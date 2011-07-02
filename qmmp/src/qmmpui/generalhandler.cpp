@@ -163,6 +163,11 @@ QMenu *GeneralHandler::createMenu(MenuType type, const QString &title, QWidget *
     return 0;
 }
 
+void GeneralHandler::toggleVisibility()
+{
+    emit toggleVisibilityCalled();
+}
+
 GeneralHandler* GeneralHandler::instance()
 {
     return m_instance;

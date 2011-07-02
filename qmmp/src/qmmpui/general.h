@@ -76,10 +76,6 @@ public slots:
      * Tells the player to exit.
      */
     void exit();
-    /*!
-     * Toggles player window visibility.
-     */
-    void toggleVisibility();
 
 private:
     QMap <uint, QString> m_strValues;

@@ -96,6 +96,10 @@ public:
      */
     QMenu *createMenu(MenuType type, const QString &title = QString(), QWidget *parent = 0);
     /*!
+     * Toggles player window visibility.
+     */
+    void toggleVisibility();
+    /*!
      * Returns a pointer to the object's instance.
      */
     static GeneralHandler* instance();

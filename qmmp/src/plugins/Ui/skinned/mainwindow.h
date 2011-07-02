@@ -77,9 +77,7 @@ public slots:
 
     void loadPlaylist();
     void savePlaylist();
-    void setFileList(const QStringList&, bool clear = true);
     void about();
-
     void updateSettings();
 
 protected:
@@ -94,7 +92,6 @@ private slots:
     void forward();
     void backward();
     void handleCloseRequest();
-    void disconnectPl();
 
 private:
     void readSettings();

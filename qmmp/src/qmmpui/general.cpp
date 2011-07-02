@@ -74,11 +74,6 @@ void General::exit()
     emit exitCalled();
 }
 
-void General::toggleVisibility()
-{
-    emit toggleVisibilityCalled();
-}
-
 QList<GeneralFactory*> *General::factories()
 {
     checkFactories();
