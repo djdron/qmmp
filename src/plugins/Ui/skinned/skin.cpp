@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Based on Promoe, an XMMS2 Client                                      *
@@ -63,10 +63,10 @@ Skin::Skin (QObject *parent) : QObject (parent)
 {
     m_instance = this;
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString path = settings.value("General/skin_path").toString();
+    QString path = settings.value("Skinned/skin_path").toString();
     if (path.isEmpty() || !QDir(path).exists ())
         path = ":/default";
-    m_double_size = settings.value("General/double_size", false).toBool();
+    m_double_size = settings.value("Skinned/double_size", false).toBool();
     ACTION(ActionManager::WM_DOUBLE_SIZE)->setChecked(m_double_size);
     setSkin (QDir::cleanPath(path));
     /* skin directory */
@@ -80,9 +80,9 @@ Skin::~Skin()
 void Skin::setSkin (const QString& path)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_use_cursors = settings.value("General/skin_cursors", false).toBool();
+    m_use_cursors = settings.value("Skinned/skin_cursors", false).toBool();
     m_double_size = ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked();
-    settings.setValue("General/skin_path",path);
+    settings.setValue("Skinned/skin_path",path);
     qDebug ("Skin: using %s",qPrintable(path));
     m_skin_dir = QDir (path);
     //clear old values

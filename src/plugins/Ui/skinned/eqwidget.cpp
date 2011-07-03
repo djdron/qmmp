@@ -142,7 +142,7 @@ void EqWidget::setMimimalMode(bool b)
 void EqWidget::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    move (settings.value ("Equalizer/pos", QPoint (100, 216)).toPoint()); //geometry
+    move (settings.value ("Skinned/eq_pos", QPoint (100, 216)).toPoint()); //geometry
     readEq();
     //equalizer presets
     QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
@@ -195,7 +195,7 @@ void EqWidget::readSettings()
 void EqWidget::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue ("Equalizer/pos", this->pos()); //geometry
+    settings.setValue ("Skinned/eq_pos", this->pos()); //geometry
     //equalizer presets
     QSettings eq_preset (QDir::homePath() +"/.qmmp/eq.preset", QSettings::IniFormat);
     eq_preset.clear ();

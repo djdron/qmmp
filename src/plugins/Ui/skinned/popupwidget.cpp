@@ -50,7 +50,7 @@ PopupWidget::PopupWidget(QWidget *parent)
 
     //settings
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("PlayList");
+    settings.beginGroup("Skinned");
     setWindowOpacity(settings.value("popup_opacity", 1.0).toDouble());
     m_coverSize = settings.value("popup_cover_size", 48).toInt();
     m_template = settings.value("popup_template",DEFAULT_TEMPLATE).toString();

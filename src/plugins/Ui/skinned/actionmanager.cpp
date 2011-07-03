@@ -32,7 +32,7 @@ ActionManager::ActionManager(QObject *parent) :
 {
     m_instance = this;
     m_settings = new QSettings(Qmmp::configFile(), QSettings::IniFormat);
-    m_settings->beginGroup("Shortcuts");
+    m_settings->beginGroup("SkinnedShortcuts");
     //playback
     m_actions[PLAY] = createAction(tr("&Play"), "play", tr("X"), "media-playback-start");
     m_actions[PAUSE] = createAction(tr("&Pause"), "pause", tr("C"), "media-playback-pause");
@@ -142,6 +142,6 @@ void ActionManager::saveActions()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     foreach(QAction *action, m_actions.values())
     {
-        settings.setValue(QString("Shortcuts/")+action->objectName(), action->shortcut());
+        settings.setValue(QString("SkinnedShortcuts/")+action->objectName(), action->shortcut());
     }
 }

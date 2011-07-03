@@ -62,15 +62,15 @@ MainVisual::MainVisual (QWidget *parent)
 MainVisual::~MainVisual()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
     if (m_vis)
     {
-        settings.setValue("Visualization/type",m_vis->name());
+        settings.setValue("vis_type",m_vis->name());
         delete m_vis;
         m_vis = 0;
     }
     else
-        settings.setValue("Visualization/type", "None");
-    settings.setValue("Visualization/rate", 1000/m_timer->interval());
+        settings.setValue("vis_rate", 1000/m_timer->interval());
     delete [] m_left_buffer;
     m_instance = 0;
 }
@@ -229,33 +229,34 @@ void MainVisual::updateSettings()
         m_timer->setInterval (40);
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
     act = m_peaksFalloffGroup->checkedAction ();
     if (act)
-        settings.setValue("Visualization/peaks_falloff", act->data().toInt());
+        settings.setValue("vis_peaks_falloff", act->data().toInt());
     else
-        settings.setValue("Visualization/peaks_falloff", 3);
+        settings.setValue("vis_peaks_falloff", 3);
 
     act = m_analyzerFalloffGroup->checkedAction ();
     if (act)
-        settings.setValue("Visualization/analyzer_falloff", act->data().toInt());
+        settings.setValue("vis_analyzer_falloff", act->data().toInt());
     else
-        settings.setValue("Visualization/analyzer_falloff", 3);
+        settings.setValue("vis_analyzer_falloff", 3);
 
-    settings.setValue("Visualization/show_peaks", m_peaksAction->isChecked());
+    settings.setValue("vis_show_peaks", m_peaksAction->isChecked());
 
     act = m_analyzerModeGroup->checkedAction();
     if (act)
-        settings.setValue("Visualization/analyzer_mode", act->data().toInt());
+        settings.setValue("vis_analyzer_mode", act->data().toInt());
     else
-        settings.setValue("Visualization/analyzer_mode", 0);
+        settings.setValue("vis_analyzer_mode", 0);
 
     act = m_analyzerTypeGroup->checkedAction();
     if (act)
-        settings.setValue("Visualization/analyzer_type", act->data().toInt());
+        settings.setValue("vis_analyzer_type", act->data().toInt());
     else
-        settings.setValue("Visualization/analyzer_type", 1);
+        settings.setValue("vis_analyzer_type", 1);
 
-    settings.setValue("Visualization/transparent_bg", m_transparentAction->isChecked());
+    settings.setValue("vis_transparent_bg", m_transparentAction->isChecked());
 
     act = m_visModeGroup->checkedAction ();
     QString visName;
@@ -363,48 +364,49 @@ void MainVisual::createMenu()
 void MainVisual::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
 
-    QString name = settings.value("Visualization/type","Analyzer").toString();
+    QString name = settings.value("vis_type","Analyzer").toString();
     m_visModeGroup->actions ()[0]->setChecked(true);
     foreach(QAction *act, m_visModeGroup->actions ())
     if (name == act->data().toString())
         act->setChecked(true);
 
     m_peaksAction->setChecked(
-        settings.value("Visualization/show_peaks", true).toBool());
+        settings.value("vis_show_peaks", true).toBool());
 
-    int fps = settings.value("Visualization/rate", 25).toInt();
+    int fps = settings.value("vis_rate", 25).toInt();
     m_fpsGroup->actions ()[1]->setChecked(true);
     foreach(QAction *act, m_fpsGroup->actions ())
     if (fps == act->data().toInt())
         act->setChecked(true);
 
-    int mode = settings.value("Visualization/analyzer_mode", 0).toInt();
+    int mode = settings.value("vis_analyzer_mode", 0).toInt();
     m_analyzerModeGroup->actions ()[0]->setChecked(true);
     foreach(QAction *act, m_analyzerModeGroup->actions ())
     if (mode == act->data().toInt())
         act->setChecked(true);
 
-    int type = settings.value("Visualization/analyzer_type", 1).toInt();
+    int type = settings.value("vis_analyzer_type", 1).toInt();
     m_analyzerTypeGroup->actions ()[1]->setChecked(true);
     foreach(QAction *act, m_analyzerTypeGroup->actions ())
     if (type == act->data().toInt())
         act->setChecked(true);
 
-    int speed = settings.value("Visualization/peaks_falloff", 3).toInt();
+    int speed = settings.value("vis_peaks_falloff", 3).toInt();
     m_peaksFalloffGroup->actions ()[2]->setChecked(true);
     foreach(QAction *act, m_peaksFalloffGroup->actions ())
     if (speed == act->data().toInt())
         act->setChecked(true);
 
-    speed = settings.value("Visualization/analyzer_falloff", 3).toInt();
+    speed = settings.value("vis_analyzer_falloff", 3).toInt();
     m_analyzerFalloffGroup->actions ()[2]->setChecked(true);
     foreach(QAction *act, m_analyzerFalloffGroup->actions ())
     if (speed == act->data().toInt())
         act->setChecked(true);
 
     m_transparentAction->setChecked(
-        settings.value("Visualization/transparent_bg", false).toBool());
+        settings.value("vis_transparent_bg", false).toBool());
 
     updateSettings();
 }
@@ -422,14 +424,15 @@ Analyzer::Analyzer()
     double analyzer_speed[] = { 1.2, 1.8, 2.2, 2.8, 2.4 };
 
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
     m_peaks_falloff =
-        peaks_speed[settings.value("Visualization/peaks_falloff", 3).toInt()-1];
+        peaks_speed[settings.value("vis_peaks_falloff", 3).toInt()-1];
     m_analyzer_falloff =
-        analyzer_speed[settings.value("Visualization/analyzer_falloff", 3).toInt()-1];
-    m_show_peaks = settings.value("Visualization/show_peaks", true).toBool();
+        analyzer_speed[settings.value("vis_analyzer_falloff", 3).toInt()-1];
+    m_show_peaks = settings.value("vis_show_peaks", true).toBool();
 
-    m_lines = settings.value("Visualization/analyzer_type", 1).toInt() == 0;
-    m_mode = settings.value("Visualization/analyzer_mode", 0).toInt();
+    m_lines = settings.value("vis_analyzer_type", 1).toInt() == 0;
+    m_mode = settings.value("vis_analyzer_mode", 0).toInt();
 }
 
 Analyzer::~Analyzer()

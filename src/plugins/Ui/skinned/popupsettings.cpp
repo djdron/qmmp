@@ -29,7 +29,7 @@ PopupSettings::PopupSettings(QWidget *parent)
 {
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("PlayList");
+    settings.beginGroup("Skinned");
     ui.transparencySlider->setValue(100 - settings.value("popup_opacity", 1.0).toDouble()*100);
     ui.coverSizeSlider->setValue(settings.value ("popup_cover_size", 48).toInt());
     ui.textEdit->setPlainText(settings.value ("popup_template", DEFAULT_TEMPLATE).toString());
@@ -46,7 +46,7 @@ PopupSettings::~PopupSettings()
 void PopupSettings::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("PlayList");
+    settings.beginGroup("Skinned");
     settings.setValue("popup_opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
     settings.setValue("popup_cover_size", ui.coverSizeSlider->value());
     settings.setValue("popup_template", ui.textEdit->toPlainText());

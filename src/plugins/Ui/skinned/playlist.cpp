@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -402,7 +402,7 @@ void PlayList::changeEvent (QEvent * event)
 void PlayList::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("PlayList/show_plalists", false).toBool())
+    if (settings.value("Skinned/pl_show_plalists", false).toBool())
     {
         if(!m_pl_selector)
             m_pl_selector = new PlayListSelector(m_pl_manager, this);
@@ -428,7 +428,7 @@ void PlayList::readSettings()
     }
     else
     {
-        move (settings.value ("PlayList/pos", QPoint (100, 332)).toPoint());  //position
+        move (settings.value ("Skinned/pl_pos", QPoint (100, 332)).toPoint());  //position
         m_update = true;
     }
 }
@@ -448,10 +448,8 @@ bool PlayList::event (QEvent *event)
 void PlayList::writeSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup ("PlayList");
     //position
-    settings.setValue ("pos", this->pos());
-    settings.endGroup();
+    settings.setValue ("Skinned/pl_pos", this->pos());
 }
 
 void PlayList::showAddMenu()

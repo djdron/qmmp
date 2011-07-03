@@ -59,7 +59,7 @@ TitleBar::TitleBar(QWidget *parent)
     setActive(false);
     connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    if (settings.value("Display/shaded", false).toBool())
+    if (settings.value("Skinned/disp_shaded", false).toBool())
         shade();
     m_align = true;
     setCursor(m_skin->getCursor(Skin::CUR_TITLEBAR));
@@ -69,7 +69,7 @@ TitleBar::TitleBar(QWidget *parent)
 TitleBar::~TitleBar()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("Display/shaded", m_shaded);
+    settings.setValue("Skinned/disp_shaded", m_shaded);
 }
 
 void TitleBar::updatePositions()

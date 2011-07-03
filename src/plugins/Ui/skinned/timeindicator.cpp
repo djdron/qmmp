@@ -109,16 +109,16 @@ void TimeIndicator::updateSkin()
 void TimeIndicator::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("Display");
-    m_elapsed  = settings.value("Elapsed",true).toBool();
+    settings.beginGroup("Skinned");
+    m_elapsed  = settings.value("disp_elapsed",true).toBool();
     settings.endGroup();
 }
 
 void TimeIndicator::writeSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("Display");
-    settings.setValue("Elapsed",m_elapsed);
+    settings.beginGroup("Skinned");
+    settings.setValue("disp_elapsed",m_elapsed);
     settings.endGroup();
 }
 
