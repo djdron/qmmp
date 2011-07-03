@@ -81,8 +81,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="130"/>
-        <location filename="../playlistmanager.cpp" line="365"/>
+        <location filename="../playlistmanager.cpp" line="143"/>
+        <location filename="../playlistmanager.cpp" line="378"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
@@ -255,6 +255,24 @@ p, li { white-space: pre-wrap; }
         <location filename="../templateeditor.cpp" line="63"/>
         <source>Condition</source>
         <translation>Условие</translation>
+    </message>
+</context>
+<context>
+    <name>UiHelper</name>
+    <message>
+        <location filename="../uihelper.cpp" line="128"/>
+        <source>All Supported Bitstreams</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uihelper.cpp" line="133"/>
+        <source>Select one or more files to open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uihelper.cpp" line="140"/>
+        <source>Choose a directory</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
