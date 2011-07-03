@@ -146,7 +146,7 @@ SET(ui_MOC_HDRS
     skinnedfactory.h
 )
 
-SET(ui_RCCS images/images.qrc stuff.qrc translations/qmmp_locales.qrc)
+SET(ui_RCCS images/images.qrc stuff.qrc translations/translations.qrc)
 
 QT4_ADD_RESOURCES(ui_RCC_SRCS ${ui_RCCS})
 
