@@ -19,7 +19,6 @@
  ***************************************************************************/
 #include <QDesktopServices>
 #include <QTextCodec>
-#include <QSettings>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>

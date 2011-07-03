@@ -26,7 +26,6 @@
 #include <QPluginLoader>
 #include <QApplication>
 #include <QTimer>
-#include <QSettings>
 #include <QBuffer>
 #include <QMetaType>
 #include <time.h>

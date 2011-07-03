@@ -21,7 +21,6 @@
 #include <QByteArray>
 #include <QFile>
 #include <QBuffer>
-#include <QSettings>
 #include <QDir>
 #include <qmmp/fileinfo.h>
 #include "playlistsettings_p.h"
