@@ -106,7 +106,6 @@ private:
     int m_preamp;
     EqWidget *m_equalizer;
     MainVisual *m_vis;
-    QString m_lastDir;
     bool m_update;
     Skin *m_skin;
     JumpToTrackDialog* m_jumpDialog;

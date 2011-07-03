@@ -216,20 +216,12 @@ void MainWindow::closeEvent (QCloseEvent *)
 
 void MainWindow::addDir()
 {
-    FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
-                      tr("Choose a directory"));
+    m_generalHandler->addDirectory(this);
 }
 
 void MainWindow::addFile()
 {
-    QStringList filters;
-    filters << tr("All Supported Bitstreams")+" (" +
-            MetaDataManager::instance()->nameFilters().join (" ") +")";
-    filters << MetaDataManager::instance()->filters();
-    FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
-                      tr("Select one or more files to open"), filters.join(";;"));
+    m_generalHandler->addFile(this);
 }
 
 void MainWindow::changeEvent (QEvent * event)
@@ -248,8 +240,6 @@ void MainWindow::readSettings()
         settings.beginGroup("MainWindow");
 
         move(settings.value("pos", QPoint(100, 100)).toPoint()); //geometry
-
-        m_lastDir = settings.value("last_dir","/").toString(); //last directory
         m_startHidden = settings.value("start_hidden", false).toBool();
         settings.endGroup();
 
@@ -323,8 +313,6 @@ void MainWindow::writeSettings()
     settings.beginGroup("MainWindow");
     //geometry
     settings.setValue("pos", this->pos());
-    //last directory
-    settings.setValue("last_dir",m_lastDir);
     settings.endGroup();
     // Repeat/Shuffle
     settings.beginGroup("Playlist");
@@ -482,6 +470,7 @@ void MainWindow::loadPlaylist()
 
         QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
         //TODO use nonmodal dialog and multiplier playlists
+        QString m_lastDir;
         QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
         if (!f_name.isEmpty())
         {
@@ -501,6 +490,7 @@ void MainWindow::savePlaylist()
 {
     QStringList l;
     QList<PlaylistFormat*> p_list = PlaylistParser::instance()->formats();
+    QString m_lastDir;
     if (!p_list.isEmpty())
     {
         foreach(PlaylistFormat* fmt,p_list)

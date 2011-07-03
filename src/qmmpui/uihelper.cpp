@@ -22,6 +22,9 @@
 #include <QMenu>
 #include <QWidget>
 #include <QAction>
+#include <QSettings>
+#include <qmmp/metadatamanager.h>
+#include <qmmpui/filedialog.h>
 #include "general.h"
 #include "generalfactory.h"
 #include "uihelper.h"
@@ -35,10 +38,15 @@ UiHelper::UiHelper(QObject *parent)
     m_toolsMenu = 0;
     m_playlistMenu = 0;
     General::create(parent);
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    m_lastDir = settings.value("General/last_dir", QDir::homePath()).toString(); //last directory
 }
 
 UiHelper::~UiHelper()
-{}
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("General/last_dir",m_lastDir);
+}
 
 bool UiHelper::visibilityControl()
 {
@@ -112,6 +120,24 @@ QMenu *UiHelper::createMenu(MenuType type, const QString &title, QWidget *parent
         return m_playlistMenu;
     }
     return 0;
+}
+
+void UiHelper::addFile(QWidget *parent, PlayListModel *model)
+{
+    QStringList filters;
+    filters << tr("All Supported Bitstreams")+" (" +
+            MetaDataManager::instance()->nameFilters().join (" ") +")";
+    filters << MetaDataManager::instance()->filters();
+    FileDialog::popup(parent, FileDialog::AddDirsFiles, &m_lastDir,
+                      model, SLOT(add(const QStringList&)),
+                      tr("Select one or more files to open"), filters.join(";;"));
+}
+
+void UiHelper::addDirectory(QWidget *parent, PlayListModel *model)
+{
+    FileDialog::popup(parent, FileDialog::AddDirs, &m_lastDir,
+                      model, SLOT(add(const QStringList&)),
+                      tr("Choose a directory"));
 }
 
 void UiHelper::toggleVisibility()
