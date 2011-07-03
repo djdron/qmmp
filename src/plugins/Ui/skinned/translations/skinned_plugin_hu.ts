@@ -1351,22 +1351,6 @@
         <source>Tools</source>
         <translation>Eszközök</translation>
     </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <source>Playlist Files</source>
-        <translation>Lejátszási lista fájl</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <source>Open Playlist</source>
-        <translation>Lista megnyitása</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="500"/>
-        <source>Save Playlist</source>
-        <translation>Lista mentése</translation>
-    </message>
 </context>
 <context>
     <name>PlayList</name>

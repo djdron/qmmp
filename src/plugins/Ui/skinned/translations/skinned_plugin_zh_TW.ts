@@ -1347,22 +1347,6 @@
         <translation>播放清單</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <source>Open Playlist</source>
-        <translation>開啟播放清單</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="500"/>
-        <source>Save Playlist</source>
-        <translation>儲存播放清單</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <source>Playlist Files</source>
-        <translation>播放清單文件</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation>工具</translation>

@@ -37,7 +37,10 @@ void SkinnedFactory::showAbout(QWidget *parent){}
 
 QTranslator *SkinnedFactory::createTranslator(QObject *parent)
 {
-    return 0;
+    QTranslator *translator = new QTranslator(parent);
+    QString locale = Qmmp::systemLanguageID();
+    translator->load(QString(":/skinned_plugin_") + locale);
+    return translator;
 }
 
 Q_EXPORT_PLUGIN2(skinned, SkinnedFactory)

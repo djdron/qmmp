@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
     m_pl_manager = PlayListManager::instance();
-    m_generalHandler = UiHelper::instance();
+    m_uiHelper = UiHelper::instance();
 
     //user interface
     m_skin = new Skin(this);
@@ -112,15 +112,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
-    connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
-    connect(m_generalHandler, SIGNAL(exitCalled()), SLOT(close()));
+    connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
+    connect(m_uiHelper, SIGNAL(exitCalled()), SLOT(close()));
 
     readSettings();
     m_display->setEQ(m_equalizer);
     m_display->setPL(m_playlist);
     dock->updateDock();
     m_pl_manager->currentPlayList()->doCurrentVisibleRequest();
-    if (m_startHidden && m_generalHandler->visibilityControl())
+    if (m_startHidden && m_uiHelper->visibilityControl())
         toggleVisibility();
 }
 
@@ -216,12 +216,12 @@ void MainWindow::closeEvent (QCloseEvent *)
 
 void MainWindow::addDir()
 {
-    m_generalHandler->addDirectory(this);
+    m_uiHelper->addDirectory(this);
 }
 
 void MainWindow::addFile()
 {
-    m_generalHandler->addFile(this);
+    m_uiHelper->addFile(this);
 }
 
 void MainWindow::changeEvent (QEvent * event)
@@ -419,7 +419,7 @@ void MainWindow::createActions()
 
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
-    m_mainMenu->addMenu(m_generalHandler->createMenu(UiHelper::TOOLS_MENU, tr("Tools"), this));
+    m_mainMenu->addMenu(m_uiHelper->createMenu(UiHelper::TOOLS_MENU, tr("Tools"), this));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     m_mainMenu->addSeparator();
@@ -461,53 +461,12 @@ QMenu* MainWindow::menu()
 
 void MainWindow::loadPlaylist()
 {
-    QStringList l;
-    QList<PlaylistFormat*> p_list = PlaylistParser::instance()->formats();
-    if (!p_list.isEmpty())
-    {
-        foreach(PlaylistFormat* fmt,p_list)
-        l << fmt->getExtensions();
-
-        QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        //TODO use nonmodal dialog and multiplier playlists
-        QString m_lastDir;
-        QString f_name = FileDialog::getOpenFileName(this,tr("Open Playlist"),m_lastDir,mask);
-        if (!f_name.isEmpty())
-        {
-            m_pl_manager->selectedPlayList()->clear();
-            m_pl_manager->selectedPlayList()->loadPlaylist(f_name);
-            m_pl_manager->selectedPlayList()->setName(QFileInfo(f_name).baseName());
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
-        }
-    }
-    else
-    {
-        qWarning("Error: There is no registered playlist parsers");
-    }
+    m_uiHelper->loadPlayList(this);
 }
 
 void MainWindow::savePlaylist()
 {
-    QStringList l;
-    QList<PlaylistFormat*> p_list = PlaylistParser::instance()->formats();
-    QString m_lastDir;
-    if (!p_list.isEmpty())
-    {
-        foreach(PlaylistFormat* fmt,p_list)
-        l << fmt->getExtensions();
-
-        QString mask = tr("Playlist Files")+" (" + l.join(" *.").prepend("*.") + ")";
-        QString f_name = FileDialog::getSaveFileName(this, tr("Save Playlist"),m_lastDir + "/" +
-                         m_pl_manager->selectedPlayList()->name() + "." + l[0],mask);
-
-        if (!f_name.isEmpty())
-        {
-            m_pl_manager->selectedPlayList()->savePlaylist(f_name);
-            m_lastDir = QFileInfo(f_name).absoluteDir().path();
-        }
-    }
-    else
-        qWarning("Error: There is no registered playlist parsers");
+    m_uiHelper->savePlayList(this);
 }
 
 void MainWindow::playPause()
@@ -529,7 +488,7 @@ void MainWindow::jumpToFile()
 
 void MainWindow::handleCloseRequest()
 {
-    if (m_hideOnClose && m_generalHandler->visibilityControl())
+    if (m_hideOnClose && m_uiHelper->visibilityControl())
         toggleVisibility();
     else
         QApplication::closeAllWindows();

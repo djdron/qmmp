@@ -1351,22 +1351,6 @@
         <source>Tools</source>
         <translation>ツール</translation>
     </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <source>Playlist Files</source>
-        <translation>プレイリストファイル</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <source>Open Playlist</source>
-        <translation>プレイリストを開く</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="500"/>
-        <source>Save Playlist</source>
-        <translation>プレイリストを保存</translation>
-    </message>
 </context>
 <context>
     <name>PlayList</name>

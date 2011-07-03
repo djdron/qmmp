@@ -1347,22 +1347,6 @@
         <translation>Lista de reproducción</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <source>Open Playlist</source>
-        <translation>Abrir la lista de reproducción</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="500"/>
-        <source>Save Playlist</source>
-        <translation>Guardar la lista de reproducción</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <source>Playlist Files</source>
-        <translation>Archivos a reproducir</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation>Herramientas</translation>

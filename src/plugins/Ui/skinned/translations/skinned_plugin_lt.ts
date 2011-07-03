@@ -1349,22 +1349,6 @@
         <translation>Grojaraštis</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <source>Open Playlist</source>
-        <translation>Atverti grojaraštį</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="500"/>
-        <source>Save Playlist</source>
-        <translation>Išsaugoti grojaraštį</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <source>Playlist Files</source>
-        <translation>Grojaraščio bylos</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation>Įrankiai</translation>

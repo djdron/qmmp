@@ -260,18 +260,34 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="128"/>
+        <location filename="../uihelper.cpp" line="132"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="133"/>
+        <location filename="../uihelper.cpp" line="137"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="140"/>
+        <location filename="../uihelper.cpp" line="144"/>
         <source>Choose a directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uihelper.cpp" line="156"/>
+        <location filename="../uihelper.cpp" line="182"/>
+        <source>Playlist Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uihelper.cpp" line="158"/>
+        <source>Open Playlist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uihelper.cpp" line="183"/>
+        <source>Save Playlist</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

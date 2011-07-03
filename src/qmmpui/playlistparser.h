@@ -21,8 +21,7 @@
 #define PLAYLISTPARSER_H
 
 #include <QObject>
-
-class PlaylistFormat;
+#include "playlistformat.h"
 
 /*! @brief The PlaylistParser class provides a simple api to access playlist format plugins.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
