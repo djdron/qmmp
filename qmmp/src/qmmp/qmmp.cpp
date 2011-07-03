@@ -25,7 +25,7 @@
 #include <QByteArray>
 
 #ifndef QMMP_STR_VERSION
-#define QMMP_STR_VERSION "0.4.0"
+#define QMMP_STR_VERSION "0.6.0"
 #endif
 
 #ifndef LIB_DIR

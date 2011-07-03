@@ -25,6 +25,9 @@
 #include <QList>
 #include <QPointer>
 #include <QStringList>
+#include <QApplication>
+#include <qmmpui/playlistmanager.h>
+#include <qmmpui/playlistmodel.h>
 
 class QAction;
 class QMenu;
@@ -82,6 +85,11 @@ public:
      * @param parent Parent widget
      */
     QMenu *createMenu(MenuType type, const QString &title = QString(), QWidget *parent = 0);
+
+    void addFile(QWidget *parent = qApp->activeWindow(),
+                 PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    void addDirectory(QWidget *parent = qApp->activeWindow(),
+                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     /*!
      * Returns a pointer to the object's instance.
      */
@@ -118,6 +126,7 @@ private:
     QList <QAction*> m_playlistActions;
     QPointer<QMenu> m_toolsMenu;
     QPointer<QMenu> m_playlistMenu;
+    QString m_lastDir;
     static UiHelper* m_instance;
 };
 

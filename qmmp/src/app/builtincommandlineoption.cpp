@@ -23,6 +23,7 @@
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/filedialog.h>
+#include <qmmpui/uihelper.h>
 #include <qmmp/metadatamanager.h>
 #include "builtincommandlineoption.h"
 
@@ -159,21 +160,11 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     }
     else if (option_string == "--add-file")
     {
-        QString m_lastDir;
-        QStringList filters;
-        filters << tr("All Supported Bitstreams")+" (" +
-                MetaDataManager::instance()->nameFilters().join (" ") +")";
-        filters << MetaDataManager::instance()->filters();
-        FileDialog::popup(qApp->activeWindow(), FileDialog::AddDirsFiles, &m_lastDir,
-                          pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
-                          tr("Select one or more files to open"), filters.join(";;"));
+        UiHelper::instance()->addFile();
     }
     else if (option_string == "--add-dir")
     {
-        QString m_lastDir;
-        FileDialog::popup(qApp->activeWindow(), FileDialog::AddDirs, &m_lastDir,
-                          pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
-                          tr("Choose a directory"));
+        UiHelper::instance()->addDirectory();
     }
     else if (option_string == "--volume" && !args.isEmpty())
     {
