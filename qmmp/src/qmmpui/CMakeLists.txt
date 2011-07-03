@@ -24,7 +24,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../qmmp)
 
 SET(libqmmpui_SRCS
     general.cpp
-    generalhandler.cpp
+    uihelper.cpp
     playlistparser.cpp
     commandlinemanager.cpp
     filedialog.cpp
@@ -46,7 +46,7 @@ SET(libqmmpui_SRCS
 SET(libqmmpui_MOC_HDRS
     generalfactory.h
     general.h
-    generalhandler.h
+    uihelper.h
     playlistparser.h
     playlistformat.h
     commandlinemanager.h
@@ -72,7 +72,7 @@ SET(libqmmpui_MOC_HDRS
 SET(libqmmpui_DEVEL_HDRS
     generalfactory.h
     general.h
-    generalhandler.h
+    uihelper.h
     playlistformat.h
     playlistparser.h
     commandlinemanager.h

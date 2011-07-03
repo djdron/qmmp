@@ -61,21 +61,6 @@ public:
      */
     static bool isEnabled(GeneralFactory* factory);
 
-signals:
-    /*!
-     * Emitted when exit() slot is called.
-     */
-    void exitCalled();
-    /*!
-     * Emitted when toggleVisibility() slot is called.
-     */
-    void toggleVisibilityCalled();
-
-public slots:
-    /*!
-     * Tells the player to exit.
-     */
-    void exit();
 
 private:
     QMap <uint, QString> m_strValues;

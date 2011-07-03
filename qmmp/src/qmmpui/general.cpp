@@ -69,11 +69,6 @@ General::General(QObject *parent)
 General::~General()
 {}
 
-void General::exit()
-{
-    emit exitCalled();
-}
-
 QList<GeneralFactory*> *General::factories()
 {
     checkFactories();

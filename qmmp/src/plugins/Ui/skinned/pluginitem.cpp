@@ -32,7 +32,7 @@
 #include <qmmp/abstractengine.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 
 #include "pluginitem.h"
 
@@ -153,7 +153,7 @@ void PluginItem::showSettings(QWidget *parent)
         Visual::showSettings(static_cast<VisualFactory *>(m_factory), parent);
         break;
     case PluginItem::GENERAL:
-        GeneralHandler::instance()->showSettings(static_cast<GeneralFactory *>(m_factory), parent);
+        UiHelper::instance()->showSettings(static_cast<GeneralFactory *>(m_factory), parent);
         break;
     default:
         ;
@@ -180,7 +180,7 @@ void PluginItem::setEnabled(bool enabled)
         Visual::setEnabled(static_cast<VisualFactory *>(m_factory), enabled);
         break;
     case PluginItem::GENERAL:
-        GeneralHandler::instance()->setEnabled(static_cast<GeneralFactory *>(m_factory), enabled);
+        UiHelper::instance()->setEnabled(static_cast<GeneralFactory *>(m_factory), enabled);
         break;
     default:
         ;

@@ -22,7 +22,7 @@
 #include <QApplication>
 
 #include <qmmp/soundcore.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
@@ -34,7 +34,7 @@ Lyrics::Lyrics(QObject *parent)
 {
     m_action = new QAction(tr("View Lyrics"), this);
     m_action->setShortcut(tr("Ctrl+L"));
-    GeneralHandler::instance()->addAction(m_action, GeneralHandler::PLAYLIST_MENU);
+    UiHelper::instance()->addAction(m_action, UiHelper::PLAYLIST_MENU);
     connect (m_action, SIGNAL(triggered ()), SLOT(showLyrics()));
 }
 

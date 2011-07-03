@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,16 +22,13 @@
 #include <QMenu>
 #include <QWidget>
 #include <QAction>
-
 #include "general.h"
 #include "generalfactory.h"
-#include "commandlinemanager.h"
+#include "uihelper.h"
 
-#include "generalhandler.h"
+UiHelper *UiHelper::m_instance = 0;
 
-GeneralHandler *GeneralHandler::m_instance = 0;
-
-GeneralHandler::GeneralHandler(QObject *parent)
+UiHelper::UiHelper(QObject *parent)
         : QObject(parent)
 {
     m_instance = this;
@@ -43,25 +40,21 @@ GeneralHandler::GeneralHandler(QObject *parent)
         if (General::isEnabled(factory))
         {
             General *general = factory->create(parent);
-            connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
-            connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
             m_generals.insert(factory, general);
         }
     }
 }
 
-GeneralHandler::~GeneralHandler()
+UiHelper::~UiHelper()
 {}
 
-void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
+void UiHelper::setEnabled(GeneralFactory* factory, bool enable)
 {
     if (enable == m_generals.keys().contains(factory))
         return;
     if (enable)
     {
         General *general = factory->create(parent());
-        connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
-        connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals.insert(factory, general);
     }
     else
@@ -72,7 +65,7 @@ void GeneralHandler::setEnabled(GeneralFactory* factory, bool enable)
     General::setEnabled(factory, enable);
 }
 
-void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget)
+void UiHelper::showSettings(GeneralFactory* factory, QWidget* parentWidget)
 {
     QDialog *dialog = factory->createConfigDialog(parentWidget);
     if (!dialog)
@@ -82,14 +75,12 @@ void GeneralHandler::showSettings(GeneralFactory* factory, QWidget* parentWidget
     {
         delete m_generals.value(factory);
         General *general = factory->create(parent());
-        connect (general, SIGNAL(toggleVisibilityCalled()), SIGNAL(toggleVisibilityCalled()));
-        connect (general, SIGNAL(exitCalled()), SIGNAL(exitCalled()));
         m_generals[factory] = general;
     }
     dialog->deleteLater();
 }
 
-bool GeneralHandler::visibilityControl()
+bool UiHelper::visibilityControl()
 {
     GeneralFactory* factory;
     foreach(factory, *General::factories())
@@ -100,7 +91,7 @@ bool GeneralHandler::visibilityControl()
     return false;
 }
 
-void GeneralHandler::addAction(QAction *action, MenuType type)
+void UiHelper::addAction(QAction *action, MenuType type)
 {
     connect(action, SIGNAL(destroyed (QObject *)), SLOT(removeAction(QObject*)));
     switch ((int) type)
@@ -119,7 +110,7 @@ void GeneralHandler::addAction(QAction *action, MenuType type)
     }
 }
 
-void GeneralHandler::removeAction(QAction *action)
+void UiHelper::removeAction(QAction *action)
 {
     m_toolsActions.removeAll(action);
     if (m_toolsMenu)
@@ -129,7 +120,7 @@ void GeneralHandler::removeAction(QAction *action)
         m_playlistMenu->removeAction(action);
 }
 
-QList<QAction *> GeneralHandler::actions(MenuType type)
+QList<QAction *> UiHelper::actions(MenuType type)
 {
     if (type == TOOLS_MENU)
         return m_toolsActions;
@@ -137,7 +128,7 @@ QList<QAction *> GeneralHandler::actions(MenuType type)
         return m_playlistActions;
 }
 
-QMenu *GeneralHandler::createMenu(MenuType type, const QString &title, QWidget *parent)
+QMenu *UiHelper::createMenu(MenuType type, const QString &title, QWidget *parent)
 {
     switch ((int) type)
     {
@@ -163,17 +154,22 @@ QMenu *GeneralHandler::createMenu(MenuType type, const QString &title, QWidget *
     return 0;
 }
 
-void GeneralHandler::toggleVisibility()
+void UiHelper::toggleVisibility()
 {
     emit toggleVisibilityCalled();
 }
 
-GeneralHandler* GeneralHandler::instance()
+void UiHelper::exit()
+{
+    emit exitCalled();
+}
+
+UiHelper* UiHelper::instance()
 {
     return m_instance;
 }
 
-void GeneralHandler::removeAction(QObject *action)
+void UiHelper::removeAction(QObject *action)
 {
     removeAction((QAction *) action);
 }

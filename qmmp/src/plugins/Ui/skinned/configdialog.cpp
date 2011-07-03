@@ -41,7 +41,7 @@
 #include <qmmp/inputsourcefactory.h>
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/filedialog.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmodel.h>
@@ -158,8 +158,8 @@ void ConfigDialog::on_contentsWidget_currentItemChanged (QListWidgetItem *curren
     if (!current)
         current = previous;
     ui.stackedWidget->setCurrentIndex (ui.contentsWidget->row (current));
-    ui.hiddenCheckBox->setEnabled(GeneralHandler::instance()->visibilityControl());
-    ui.hideOnCloseCheckBox->setEnabled(GeneralHandler::instance()->visibilityControl());
+    ui.hiddenCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
+    ui.hideOnCloseCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
 }
 
 void ConfigDialog::changeSkin()

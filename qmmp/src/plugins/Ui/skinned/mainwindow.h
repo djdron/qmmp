@@ -37,7 +37,7 @@ class Skin;
 class SoundCore;
 class JumpToTrackDialog;
 class VisualMenu;
-class GeneralHandler;
+class UiHelper;
 class MediaPlayer;
 class QMenu;
 class QKeyEvent;
@@ -112,7 +112,7 @@ private:
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;
     VisualMenu *m_visMenu;
-    GeneralHandler *m_generalHandler;
+    UiHelper *m_generalHandler;
     MediaPlayer *m_player;
 };
 

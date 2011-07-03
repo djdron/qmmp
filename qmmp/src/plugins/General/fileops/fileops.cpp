@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,7 +27,7 @@
 #include <QFile>
 #include <QDir>
 #include <qmmp/soundcore.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
@@ -51,7 +51,7 @@ FileOps::FileOps(QObject *parent)
     settings.beginGroup("FileOps");
     int count = settings.value("count", 0).toInt();
     if (count > 0)
-        GeneralHandler::instance()->addAction(separator1, GeneralHandler::PLAYLIST_MENU);
+        UiHelper::instance()->addAction(separator1, UiHelper::PLAYLIST_MENU);
     else
         return;
 
@@ -68,12 +68,12 @@ FileOps::FileOps(QObject *parent)
             action->setShortcut(settings.value(QString("hotkey_%1").arg(i)).toString());
             connect (action, SIGNAL (triggered (bool)), mapper, SLOT (map()));
             mapper->setMapping(action, i);
-            GeneralHandler::instance()->addAction(action, GeneralHandler::PLAYLIST_MENU);
+            UiHelper::instance()->addAction(action, UiHelper::PLAYLIST_MENU);
         }
     }
     settings.endGroup();
     connect(mapper, SIGNAL(mapped(int)), SLOT(execAction(int)));
-    GeneralHandler::instance()->addAction(separator2, GeneralHandler::PLAYLIST_MENU);
+    UiHelper::instance()->addAction(separator2, UiHelper::PLAYLIST_MENU);
 }
 
 FileOps::~FileOps()

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,8 +17,8 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef GENERALHANDLER_H
-#define GENERALHANDLER_H
+#ifndef UiHelper_H
+#define UiHelper_H
 
 #include <QObject>
 #include <QMap>
@@ -30,13 +30,12 @@ class QAction;
 class QMenu;
 class QWidget;
 class General;
-class Control;
 class GeneralFactory;
 
-/*! @brief The GeneralHandler class provides simple api to access general and command line plugins.
+/*! @brief The UiHelper class provides simple api to access general plugins and some gui features.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class GeneralHandler : public QObject
+class UiHelper : public QObject
 {
     Q_OBJECT
 public:
@@ -44,11 +43,11 @@ public:
      * Object constructor,
      * @param parent Parent object
      */
-    GeneralHandler(QObject *parent = 0);
+    UiHelper(QObject *parent = 0);
     /*!
      * Destructor
      */
-    ~GeneralHandler();
+    ~UiHelper();
     /*!
      * Enum of menu type
      */
@@ -96,13 +95,19 @@ public:
      */
     QMenu *createMenu(MenuType type, const QString &title = QString(), QWidget *parent = 0);
     /*!
+     * Returns a pointer to the object's instance.
+     */
+    static UiHelper* instance();
+
+public slots:
+    /*!
      * Toggles player window visibility.
      */
     void toggleVisibility();
     /*!
-     * Returns a pointer to the object's instance.
+     * Tells the player to exit.
      */
-    static GeneralHandler* instance();
+    void exit();
 
 signals:
     /*!
@@ -125,7 +130,7 @@ private:
     QList <QAction*> m_playlistActions;
     QPointer<QMenu> m_toolsMenu;
     QPointer<QMenu> m_playlistMenu;
-    static GeneralHandler* m_instance;
+    static UiHelper* m_instance;
 };
 
 #endif
