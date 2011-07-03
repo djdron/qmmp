@@ -1347,22 +1347,6 @@
         <translation type="unfinished">Lista de músicas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <source>Open Playlist</source>
-        <translation type="unfinished">Abrir Playlist</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="500"/>
-        <source>Save Playlist</source>
-        <translation type="unfinished">Salvar Playlist</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <source>Playlist Files</source>
-        <translation type="unfinished">ФArquivos de lista de músicas</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation type="unfinished"></translation>

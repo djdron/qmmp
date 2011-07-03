@@ -111,7 +111,7 @@ private:
     JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;
     VisualMenu *m_visMenu;
-    UiHelper *m_generalHandler;
+    UiHelper *m_uiHelper;
     MediaPlayer *m_player;
 };
 

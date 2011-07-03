@@ -1347,22 +1347,6 @@
         <translation type="unfinished">Seznam skladeb</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="471"/>
-        <location filename="../mainwindow.cpp" line="499"/>
-        <source>Playlist Files</source>
-        <translation>Seznamy skladeb</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="474"/>
-        <source>Open Playlist</source>
-        <translation>Načíst seznam skladeb</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="500"/>
-        <source>Save Playlist</source>
-        <translation>Uložit seznam skladeb</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation>Nástroje</translation>

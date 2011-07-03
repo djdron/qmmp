@@ -90,6 +90,10 @@ public:
                  PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     void addDirectory(QWidget *parent = qApp->activeWindow(),
                       PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    void loadPlayList(QWidget *parent = qApp->activeWindow(),
+                     PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    void savePlayList(QWidget *parent = qApp->activeWindow(),
+                     PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     /*!
      * Returns a pointer to the object's instance.
      */

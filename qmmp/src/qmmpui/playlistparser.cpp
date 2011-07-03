@@ -34,7 +34,9 @@ PlaylistParser::PlaylistParser(QObject *parent) : QObject (parent)
 }
 
 PlaylistParser::~PlaylistParser()
-{}
+{
+    m_instance = 0;
+}
 
 QStringList PlaylistParser::getExtensions()
 {
