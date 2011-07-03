@@ -37,47 +37,47 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="105"/>
+        <location filename="../detailsdialog.cpp" line="104"/>
         <source>Title</source>
         <translation>タイトル</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="106"/>
+        <location filename="../detailsdialog.cpp" line="105"/>
         <source>Artist</source>
         <translation>アーティスト</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="107"/>
+        <location filename="../detailsdialog.cpp" line="106"/>
         <source>Album</source>
         <translation>アルバム</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="107"/>
         <source>Comment</source>
         <translation>コメント</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Genre</source>
         <translation>ジャンル</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="110"/>
+        <location filename="../detailsdialog.cpp" line="109"/>
         <source>Composer</source>
         <translation>作曲者</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="112"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Year</source>
         <translation>年</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="114"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Track</source>
         <translation>トラック</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="116"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Disc number</source>
         <translation>ディスク番号</translation>
     </message>
@@ -85,8 +85,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="143"/>
-        <location filename="../playlistmanager.cpp" line="378"/>
+        <location filename="../playlistmanager.cpp" line="149"/>
+        <location filename="../playlistmanager.cpp" line="384"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>

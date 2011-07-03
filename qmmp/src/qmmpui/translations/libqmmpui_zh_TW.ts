@@ -4,47 +4,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="105"/>
+        <location filename="../detailsdialog.cpp" line="104"/>
         <source>Title</source>
         <translation>標題</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="106"/>
+        <location filename="../detailsdialog.cpp" line="105"/>
         <source>Artist</source>
         <translation>藝術家</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="107"/>
+        <location filename="../detailsdialog.cpp" line="106"/>
         <source>Album</source>
         <translation>專輯</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="107"/>
         <source>Comment</source>
         <translation>備註</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="110"/>
+        <location filename="../detailsdialog.cpp" line="109"/>
         <source>Composer</source>
         <translation>作曲</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="112"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="114"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Track</source>
         <translation>音軌</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="116"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Disc number</source>
         <translation>光槃編號</translation>
     </message>
@@ -81,8 +81,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="143"/>
-        <location filename="../playlistmanager.cpp" line="378"/>
+        <location filename="../playlistmanager.cpp" line="149"/>
+        <location filename="../playlistmanager.cpp" line="384"/>
         <source>Playlist</source>
         <translation>播放清單</translation>
     </message>

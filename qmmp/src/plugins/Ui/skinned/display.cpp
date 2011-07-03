@@ -134,8 +134,8 @@ MainDisplay::MainDisplay (QWidget *parent)
 MainDisplay::~MainDisplay()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue ("Playlist/visible",m_plButton->isChecked());
-    settings.setValue ("Equalizer/visible",m_eqButton->isChecked());
+    settings.setValue ("Skinned/pl_visible",m_plButton->isChecked());
+    settings.setValue ("Skinned/mw_visible",m_eqButton->isChecked());
 }
 
 void MainDisplay::updatePositions()

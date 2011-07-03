@@ -63,7 +63,7 @@ TextScroller::TextScroller (QWidget *parent)
 TextScroller::~TextScroller()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue("TextScroller/autoscroll", m_scrollAction->isChecked());
+    settings.setValue("Skinned/autoscroll", m_scrollAction->isChecked());
     if(m_metrics)
         delete m_metrics;
 }
@@ -100,14 +100,14 @@ void TextScroller::updateSkin()
     m_color.setNamedColor(m_skin->getPLValue("mbfg"));
     setCursor(m_skin->getCursor(Skin::CUR_SONGNAME));
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_bitmap = settings.value("MainWindow/bitmap_font", false).toBool();
+    m_bitmap = settings.value("Skinned/bitmap_font", false).toBool();
     m_ratio = m_skin->ratio();
-    QString fontname = settings.value("MainWindow/Font").toString();
+    QString fontname = settings.value("Skinned/mw_font").toString();
     m_font.fromString(fontname);
     if (m_metrics)
         delete m_metrics;
     else
-        m_scrollAction->setChecked(settings.value("TextScroller/autoscroll", true).toBool());
+        m_scrollAction->setChecked(settings.value("Skinned/autoscroll", true).toBool());
     m_metrics = new QFontMetrics(m_font);
     updateText();
 }

@@ -235,37 +235,31 @@ void MainWindow::changeEvent (QEvent * event)
 void MainWindow::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
     if (!m_update)
     {
-        settings.beginGroup("MainWindow");
 
-        move(settings.value("pos", QPoint(100, 100)).toPoint()); //geometry
+        move(settings.value("mw_pos", QPoint(100, 100)).toPoint()); //geometry
         m_startHidden = settings.value("start_hidden", false).toBool();
-        settings.endGroup();
-
-        if(settings.value("General/always_on_top", false).toBool())
+        if(settings.value("always_on_top", false).toBool())
         {
             ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->setChecked(true);
             setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
         }
-        ACTION(ActionManager::WM_STICKY)->setChecked(settings.value("General/show_on_all_desktops",
+        ACTION(ActionManager::WM_STICKY)->setChecked(settings.value("show_on_all_desktops",
                                                                     false).toBool());
         show();
         qApp->processEvents();
         //visibility
-        m_playlist->setVisible(settings.value("Playlist/visible",true).toBool());
+        m_playlist->setVisible(settings.value("pl_visible",true).toBool());
         qApp->processEvents();
-        m_equalizer->setVisible(settings.value("Equalizer/visible",true).toBool());
+        m_equalizer->setVisible(settings.value("eq_visible",true).toBool());
         qApp->processEvents();
-        bool val = settings.value("Playlist/repeatable",false).toBool();
-
         // Repeat/Shuffle
-        m_pl_manager->setRepeatableList(val);
-        m_display->setIsRepeatable(val);
-        val = settings.value("Playlist/shuffle",false).toBool();
-        m_display->setIsShuffle(val);
-        m_pl_manager->setShuffle(val);
-
+        m_display->setIsRepeatable(m_pl_manager->isRepeatableList());
+        m_display->setIsShuffle(m_pl_manager->isShuffle());
+        ACTION(ActionManager::REPEAT_ALL)->setChecked(m_pl_manager->isRepeatableList());
+        ACTION(ActionManager::SHUFFLE)->setChecked(m_pl_manager->isShuffle());
         m_update = true;
     }
     else
@@ -292,35 +286,29 @@ void MainWindow::readSettings()
     WindowSystem::setWinHint(winId(), "player", "Qmmp");
 #endif
     //Call setWindowOpacity only if needed
-    double opacity = settings.value("MainWindow/opacity", 1.0).toDouble();
+    double opacity = settings.value("mw_opacity", 1.0).toDouble();
     if(opacity != windowOpacity ())
         setWindowOpacity(opacity);
 
-    opacity = settings.value("Equalizer/opacity", 1.0).toDouble();
+    opacity = settings.value("eq_opacity", 1.0).toDouble();
     if(opacity !=  m_equalizer->windowOpacity ())
         m_equalizer->setWindowOpacity(opacity);
 
-    opacity = settings.value("PlayList/opacity", 1.0).toDouble();
+    opacity = settings.value("pl_opacity", 1.0).toDouble();
     if(opacity !=  m_playlist->windowOpacity ())
         m_playlist->setWindowOpacity(opacity);
 
-    m_hideOnClose = settings.value("MainWindow/hide_on_close", false).toBool();
+    m_hideOnClose = settings.value("hide_on_close", false).toBool();
+    settings.endGroup();
 }
 
 void MainWindow::writeSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("MainWindow");
+    settings.beginGroup("Skinned");
     //geometry
-    settings.setValue("pos", this->pos());
-    settings.endGroup();
-    // Repeat/Shuffle
-    settings.beginGroup("Playlist");
-    settings.setValue("repeatable",m_display->isRepeatable());
-    settings.setValue("shuffle",m_display->isShuffle());
-    settings.endGroup();
-    // playback state
-    settings.beginGroup("General");
+    settings.setValue("mw_pos", this->pos());
+    //look & feel
     settings.setValue("double_size", ACTION(ActionManager::WM_DOUBLE_SIZE)->isChecked());
     settings.setValue("always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
     settings.setValue("show_on_all_desktops", ACTION(ActionManager::WM_STICKY)->isChecked());

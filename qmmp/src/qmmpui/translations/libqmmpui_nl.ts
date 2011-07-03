@@ -4,47 +4,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="105"/>
+        <location filename="../detailsdialog.cpp" line="104"/>
         <source>Title</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="106"/>
+        <location filename="../detailsdialog.cpp" line="105"/>
         <source>Artist</source>
         <translation>Artiest</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="107"/>
+        <location filename="../detailsdialog.cpp" line="106"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="107"/>
         <source>Comment</source>
         <translation>Commentaar</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Genre</source>
         <translation>Genre</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="110"/>
+        <location filename="../detailsdialog.cpp" line="109"/>
         <source>Composer</source>
         <translation>Componist</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="112"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Year</source>
         <translation>Jaar</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="114"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Track</source>
         <translation>Nummer</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="116"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Disc number</source>
         <translation>CD nummer</translation>
     </message>
@@ -85,8 +85,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="143"/>
-        <location filename="../playlistmanager.cpp" line="378"/>
+        <location filename="../playlistmanager.cpp" line="149"/>
+        <location filename="../playlistmanager.cpp" line="384"/>
         <source>Playlist</source>
         <translation>Afspeellijst</translation>
     </message>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotovs                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #include <QFile>
 #include <QBuffer>
 #include <QDir>
+#include <QSettings>
 #include <qmmp/fileinfo.h>
 #include "playlistsettings_p.h"
 #include "playlistmanager.h"
@@ -39,12 +40,18 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
     m_repeatable = false;
     m_shuffle = false;
     readPlayLists();
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    setRepeatableList(settings.value("Playlist/repeatable",false).toBool());
+    setShuffle(settings.value("Playlist/shuffle",false).toBool());
 }
 
 PlayListManager::~PlayListManager()
 {
     writePlayLists();
     delete PlaylistSettings::instance();
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Playlist/repeatable", m_repeatable);
+    settings.setValue("Playlist/shuffle", m_shuffle);
     m_instance = 0;
 }
 

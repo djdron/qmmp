@@ -105,12 +105,13 @@ void ConfigDialog::readSettings()
         ui.underscoresCheckBox->setChecked(player->playListManager()->convertUnderscore());
         ui.per20CheckBox->setChecked(player->playListManager()->convertTwenty());
     }
-    ui.protocolCheckBox->setChecked(settings.value ("PlayList/show_protocol", false).toBool());
-    ui.numbersCheckBox->setChecked(settings.value ("PlayList/show_numbers", true).toBool());
-    ui.alignCheckBox->setChecked(settings.value ("PlayList/align_numbers", false).toBool());
-    ui.anchorCheckBox->setChecked(settings.value("PlayList/show_anchor", false).toBool());
-    ui.playlistsCheckBox->setChecked(settings.value("PlayList/show_plalists", false).toBool());
-    ui.popupCheckBox->setChecked(settings.value("PlayList/show_popup", false).toBool());
+    settings.beginGroup("Skinned");
+    ui.protocolCheckBox->setChecked(settings.value ("pl_show_protocol", false).toBool());
+    ui.numbersCheckBox->setChecked(settings.value ("pl_show_numbers", true).toBool());
+    ui.alignCheckBox->setChecked(settings.value ("pl_align_numbers", false).toBool());
+    ui.anchorCheckBox->setChecked(settings.value("pl_show_anchor", false).toBool());
+    ui.playlistsCheckBox->setChecked(settings.value("pl_show_plalists", false).toBool());
+    ui.popupCheckBox->setChecked(settings.value("pl_show_popup", false).toBool());
     QmmpSettings *gs = QmmpSettings::instance();
     //proxy settings
     ui.enableProxyCheckBox->setChecked(gs->isProxyEnabled());
@@ -126,14 +127,15 @@ void ConfigDialog::readSettings()
     ui.proxyUserLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
     ui.proxyPasswLineEdit->setEnabled(ui.authProxyCheckBox->isChecked());
     //transparency
-    ui.mwTransparencySlider->setValue(100 - settings.value("MainWindow/opacity", 1.0).toDouble()*100);
-    ui.eqTransparencySlider->setValue(100 - settings.value("Equalizer/opacity", 1.0).toDouble()*100);
-    ui.plTransparencySlider->setValue(100 - settings.value("PlayList/opacity", 1.0).toDouble()*100);
+    ui.mwTransparencySlider->setValue(100 - settings.value("mw_opacity", 1.0).toDouble()*100);
+    ui.eqTransparencySlider->setValue(100 - settings.value("eq_opacity", 1.0).toDouble()*100);
+    ui.plTransparencySlider->setValue(100 - settings.value("pl_opacity", 1.0).toDouble()*100);
     //view
-    ui.skinCursorsCheckBox->setChecked(settings.value("General/skin_cursors", false).toBool());
-    m_currentSkinName = settings.value("General/skin_name", "default").toString();
-    ui.hiddenCheckBox->setChecked(settings.value("MainWindow/start_hidden", false).toBool());
-    ui.hideOnCloseCheckBox->setChecked(settings.value("MainWindow/hide_on_close", false).toBool());
+    ui.skinCursorsCheckBox->setChecked(settings.value("skin_cursors", false).toBool());
+    m_currentSkinName = settings.value("skin_name", "default").toString();
+    ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
+    ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
+    settings.endGroup();
     //resume playback
     ui.continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", false).toBool());
     //cover options
@@ -332,7 +334,7 @@ void ConfigDialog::loadPluginsInfo()
 void ConfigDialog::loadFonts()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    QString fontname = settings.value ("PlayList/Font").toString();
+    QString fontname = settings.value ("Skinned/pl_font").toString();
     QFont font = QApplication::font();
     if(!fontname.isEmpty())
         font.fromString(fontname);
@@ -340,12 +342,12 @@ void ConfigDialog::loadFonts()
     ui.plFontLabel->setFont(font);
 
     font = QApplication::font ();
-    fontname = settings.value ("MainWindow/Font").toString();
+    fontname = settings.value ("Skinned/mw_font").toString();
     if(!fontname.isEmpty())
         font.fromString(fontname);
     ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
     ui.mainFontLabel->setFont(font);
-    ui.useBitmapCheckBox->setChecked(settings.value("MainWindow/bitmap_font", false).toBool());
+    ui.useBitmapCheckBox->setChecked(settings.value("Skinned/bitmap_font", false).toBool());
 }
 
 void ConfigDialog::loadShortcuts()
@@ -389,7 +391,7 @@ void ConfigDialog::setPlFont()
         ui.plFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         ui.plFontLabel->setFont(font);
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("PlayList/Font", font.toString());
+        settings.setValue ("Skinned/pl_font", font.toString());
     }
 }
 
@@ -403,7 +405,7 @@ void ConfigDialog::setMainFont()
         ui.mainFontLabel->setText (font.family () + " " + QString::number(font.pointSize ()));
         ui.mainFontLabel->setFont(font);
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-        settings.setValue ("MainWindow/Font", font.toString());
+        settings.setValue ("Skinned/mw_font", font.toString());
     }
 }
 
@@ -456,6 +458,7 @@ void ConfigDialog::addTitleString(QAction * a)
 void ConfigDialog::saveSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Skinned");
     if (MediaPlayer *player = MediaPlayer::instance())
     {
         player->playListManager()->setFormat(ui.formatLineEdit->text().trimmed());
@@ -463,12 +466,12 @@ void ConfigDialog::saveSettings()
         player->playListManager()->setConvertUnderscore(ui.underscoresCheckBox->isChecked());
         player->playListManager()->setConvertTwenty(ui.per20CheckBox->isChecked());
     }
-    settings.setValue ("PlayList/show_protocol", ui.protocolCheckBox->isChecked());
-    settings.setValue ("PlayList/show_numbers", ui.numbersCheckBox->isChecked());
-    settings.setValue ("PlayList/align_numbers", ui.alignCheckBox->isChecked());
-    settings.setValue ("PlayList/show_anchor", ui.anchorCheckBox->isChecked());
-    settings.setValue ("PlayList/show_plalists", ui.playlistsCheckBox->isChecked());
-    settings.setValue ("PlayList/show_popup", ui.popupCheckBox->isChecked());
+    settings.setValue ("pl_show_protocol", ui.protocolCheckBox->isChecked());
+    settings.setValue ("pl_show_numbers", ui.numbersCheckBox->isChecked());
+    settings.setValue ("pl_align_numbers", ui.alignCheckBox->isChecked());
+    settings.setValue ("pl_show_anchor", ui.anchorCheckBox->isChecked());
+    settings.setValue ("pl_show_plalists", ui.playlistsCheckBox->isChecked());
+    settings.setValue ("pl_show_popup", ui.popupCheckBox->isChecked());
     FileDialog::setEnabled(FileDialog::registeredFactories().at(ui.fileDialogComboBox->currentIndex()));
     QmmpSettings *gs = QmmpSettings::instance();
     //proxy
@@ -482,15 +485,17 @@ void ConfigDialog::saveSettings()
                            proxyUrl);
 
 
-    settings.setValue ("MainWindow/opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
-    settings.setValue ("Equalizer/opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
-    settings.setValue ("PlayList/opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
+    settings.setValue ("mw_opacity", 1.0 -  (double)ui.mwTransparencySlider->value()/100);
+    settings.setValue ("eq_opacity", 1.0 -  (double)ui.eqTransparencySlider->value()/100);
+    settings.setValue ("pl_opacity", 1.0 -  (double)ui.plTransparencySlider->value()/100);
+
+    settings.setValue ("bitmap_font", ui.useBitmapCheckBox->isChecked());
+    settings.setValue ("skin_cursors", ui.skinCursorsCheckBox->isChecked());
+    settings.setValue ("skin_name", m_currentSkinName);
+    settings.setValue ("start_hidden", ui.hiddenCheckBox->isChecked());
+    settings.setValue ("hide_on_close", ui.hideOnCloseCheckBox->isChecked());
+    settings.endGroup();
     settings.setValue ("General/resume_on_startup",  ui.continuePlaybackCheckBox->isChecked());
-    settings.setValue ("MainWindow/bitmap_font", ui.useBitmapCheckBox->isChecked());
-    settings.setValue ("General/skin_cursors", ui.skinCursorsCheckBox->isChecked());
-    settings.setValue ("General/skin_name", m_currentSkinName);
-    settings.setValue ("MainWindow/start_hidden", ui.hiddenCheckBox->isChecked());
-    settings.setValue ("MainWindow/hide_on_close", ui.hideOnCloseCheckBox->isChecked());
     gs->setCoverSettings(ui.coverIncludeLineEdit->text().split(","),
                          ui.coverExcludeLineEdit->text().split(","),
                          ui.coverDepthSpinBox->value(),

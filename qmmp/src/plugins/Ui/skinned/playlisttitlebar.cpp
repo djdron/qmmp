@@ -55,8 +55,8 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
 
     readSettings();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    m_pl->resize (settings.value ("PlayList/size", QSize (m_ratio*275, m_ratio*116)).toSize());
-    if (settings.value ("PlayList/shaded", false).toBool())
+    m_pl->resize (settings.value ("Skinned/pl_size", QSize (m_ratio*275, m_ratio*116)).toSize());
+    if (settings.value ("Skinned/pl_shaded", false).toBool())
         shade();
     resize(m_pl->width(),height());
     m_align = true;
@@ -68,8 +68,8 @@ PlayListTitleBar::PlayListTitleBar(QWidget *parent)
 PlayListTitleBar::~PlayListTitleBar()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue ("PlayList/size", QSize (m_pl->width(), m_shaded ? m_height:m_pl->height()));
-    settings.setValue ("PlayList/shaded", m_shaded);
+    settings.setValue ("Skinned/pl_size", QSize (m_pl->width(), m_shaded ? m_height:m_pl->height()));
+    settings.setValue ("Skinned/pl_shaded", m_shaded);
 }
 
 void PlayListTitleBar::updatePositions()
@@ -207,7 +207,7 @@ void PlayListTitleBar::setModel(PlayListModel *selected, PlayListModel *previous
 void PlayListTitleBar::readSettings()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
+    m_font.fromString(settings.value("Skinned/pl_font", QApplication::font().toString()).toString());
     m_font.setPointSize(8);
 }
 

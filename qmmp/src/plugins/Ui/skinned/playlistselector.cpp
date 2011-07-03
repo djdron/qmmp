@@ -61,7 +61,7 @@ PlayListSelector::~PlayListSelector()
 void PlayListSelector::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
+    m_font.fromString(settings.value("Skinned/pl_font", QApplication::font().toString()).toString());
     if (m_update)
     {
         delete m_metrics;

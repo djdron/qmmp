@@ -78,14 +78,15 @@ ListWidget::~ListWidget()
 void ListWidget::readSettings()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    m_font.fromString(settings.value("PlayList/Font", QApplication::font().toString()).toString());
+    settings.beginGroup("Skinned");
+    m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
     m_extra_font = m_font;
     m_extra_font.setPointSize(m_font.pointSize() - 1);
-    m_show_protocol = settings.value ("PlayList/show_protocol", false).toBool();
-    m_show_number = settings.value ("PlayList/show_numbers", true).toBool();
-    m_align_numbres = settings.value ("PlayList/align_numbers", false).toBool();
-    m_show_anchor = settings.value("PlayList/show_anchor", false).toBool();
-    bool show_popup = settings.value("PlayList/show_popup", false).toBool();
+    m_show_protocol = settings.value ("pl_show_protocol", false).toBool();
+    m_show_number = settings.value ("pl_show_numbers", true).toBool();
+    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
+    m_show_anchor = settings.value("pl_show_anchor", false).toBool();
+    bool show_popup = settings.value("pl_show_popup", false).toBool();
 
     if (m_update)
     {
