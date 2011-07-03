@@ -127,7 +127,7 @@ CONFIG += release \
           plugin
 
 
-TARGET =$$PLUGINS_PREFIX/Ui/skinned
+TARGET = $$PLUGINS_PREFIX/Ui/skinned
 
 unix:LIBS += -lqmmp -lqmmpui
 win32:LIBS += -lqmmp0 -lqmmpui0
@@ -144,23 +144,23 @@ INSTALLS += target
 
 INCLUDEPATH += ../../../
 
-RESOURCES += translations/qmmp_locales.qrc
-TRANSLATIONS = translations/qmmp_ru.ts \
-    translations/qmmp_tr.ts \
-    translations/qmmp_zh_CN.ts \
-    translations/qmmp_cs.ts \
-    translations/qmmp_pt_BR.ts \
-    translations/qmmp_uk_UA.ts \
-    translations/qmmp_zh_TW.ts \
-    translations/qmmp_de.ts \
-    translations/qmmp_pl_PL.ts \
-    translations/qmmp_it.ts \
-    translations/qmmp_lt.ts \
-    translations/qmmp_hu.ts \
-    translations/qmmp_nl.ts \
-    translations/qmmp_ja.ts \
-    translations/qmmp_es.ts \
-    translations/qmmp_sk.ts
+RESOURCES += translations/translations.qrc
+TRANSLATIONS = translations/skinned_plugin_ru.ts \
+    translations/skinned_plugin_tr.ts \
+    translations/skinned_plugin_zh_CN.ts \
+    translations/skinned_plugin_cs.ts \
+    translations/skinned_plugin_pt_BR.ts \
+    translations/skinned_plugin_uk_UA.ts \
+    translations/skinned_plugin_zh_TW.ts \
+    translations/skinned_plugin_de.ts \
+    translations/skinned_plugin_pl_PL.ts \
+    translations/skinned_plugin_it.ts \
+    translations/skinned_plugin_lt.ts \
+    translations/skinned_plugin_hu.ts \
+    translations/skinned_plugin_nl.ts \
+    translations/skinned_plugin_ja.ts \
+    translations/skinned_plugin_es.ts \
+    translations/skinned_plugin_sk.ts
 
-    CONFIG += link_pkgconfig
-    PKGCONFIG += x11
+CONFIG += link_pkgconfig
+PKGCONFIG += x11
