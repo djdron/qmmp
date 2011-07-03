@@ -486,74 +486,6 @@
     </message>
 </context>
 <context>
-    <name>BuiltinCommandLineOption</name>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
-        <source>Skip forward in playlist</source>
-        <translation>İleri atla</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Geri atla</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="55"/>
-        <source>Start playing current song</source>
-        <translation>Mevcut şarkıyı çalmaya başla</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="54"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">Çalma listesini temizleme</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="56"/>
-        <source>Pause current song</source>
-        <translation>Mevcut şarkıyı duraklat</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="57"/>
-        <source>Pause if playing, play otherwise</source>
-        <translation>Çalıyorsa duraklat, değilse oynat</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="58"/>
-        <source>Stop current song</source>
-        <translation>Mevcut şarkıyı durdur</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="59"/>
-        <source>Display Jump to File dialog</source>
-        <translation>Dosyaya atlama diyaloğunu göster</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
-        <source>Quit application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
-        <source>Set playback volume (example: qmmp --volume 20)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
-        <source>Show/hide application</source>
-        <translation>Uygulamayı göster/gizle</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
-        <source>Display Add File dialog</source>
-        <translation>Dosya ekleme diyaloğunu göster</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
-        <source>Display Add Directory dialog</source>
-        <translation>Dizin ekleme diyaloğunu göster</translation>
-    </message>
-</context>
-<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="735"/>
@@ -1395,58 +1327,43 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="225"/>
-        <source>Choose a directory</source>
-        <translation>Bir dizin seçin</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="236"/>
-        <source>Select one or more files to open</source>
-        <translation>Açmak için bir yada daha çok dosya seçin</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="391"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Parçaya Git</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="392"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="394"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="402"/>
         <source>Playlist</source>
         <translation type="unfinished">Çalma Listesi</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="493"/>
+        <location filename="../mainwindow.cpp" line="474"/>
         <source>Open Playlist</source>
         <translation>Çalma Listesini Aç</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="500"/>
         <source>Save Playlist</source>
         <translation>Çalma Listesini Kaydet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="517"/>
+        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="499"/>
         <source>Playlist Files</source>
         <translation>Çalma Listesi Dosyaları</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="231"/>
-        <source>All Supported Bitstreams</source>
-        <translation>Tüm Desteklenen Bitstreamler</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation>Araçlar</translation>
     </message>
@@ -1743,54 +1660,6 @@
         <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
         <translation>Ayarları Otomatik Tanımla</translation>
-    </message>
-</context>
-<context>
-    <name>QMMPStarter</name>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="212"/>
-        <source>Usage: qmmp [options] [files]</source>
-        <translation>Kullanım:qmmp [seçenek] [dosyalar]</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="213"/>
-        <source>Options:</source>
-        <translation>Seçenekler:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="217"/>
-        <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="219"/>
-        <source>Print version number and exit</source>
-        <translation>Sürüm numarasını yazdır ve çık</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="220"/>
-        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation>Fikirleinizi, yamalarınızı, hata raporlarınızı forkotov02@hotmail.ru adresine gönderin</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="218"/>
-        <source>Display this text and exit</source>
-        <translation>Bu metni göster ve çık</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="71"/>
-        <source>Unknown command</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="225"/>
-        <source>QMMP version:</source>
-        <translation>QMMP sürümü:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="226"/>
-        <source>Qt version:</source>
-        <translation>Qt sürümü:</translation>
     </message>
 </context>
 <context>

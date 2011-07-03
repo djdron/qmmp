@@ -4,12 +4,12 @@
 <context>
     <name>CoverManager</name>
     <message>
-        <location filename="../covermanager.cpp" line="36"/>
+        <location filename="../covermanager.cpp" line="35"/>
         <source>Show Cover</source>
         <translation>显示封面</translation>
     </message>
     <message>
-        <location filename="../covermanager.cpp" line="37"/>
+        <location filename="../covermanager.cpp" line="36"/>
         <source>Ctrl+M</source>
         <translation type="unfinished"></translation>
     </message>

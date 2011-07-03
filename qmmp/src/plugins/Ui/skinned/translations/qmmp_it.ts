@@ -486,74 +486,6 @@
     </message>
 </context>
 <context>
-    <name>BuiltinCommandLineOption</name>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
-        <source>Skip forward in playlist</source>
-        <translation>Scorri in avanti lista dei brani</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
-        <source>Skip backwards in playlist</source>
-        <translation>Scorri indietro la lista dei brani</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="55"/>
-        <source>Start playing current song</source>
-        <translation>Inizia il brano scelto</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="54"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation type="unfinished">Non ripulire la lista esecuzione</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="56"/>
-        <source>Pause current song</source>
-        <translation>Sospendi il brano in esecuzione</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="57"/>
-        <source>Pause if playing, play otherwise</source>
-        <translation>Sospendi il brano se in esecuzione; lo riprende se in pausa</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="58"/>
-        <source>Stop current song</source>
-        <translation>Arresta il brano in esecuzione</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="59"/>
-        <source>Display Jump to File dialog</source>
-        <translation>Mostra il menu «Vai al brano»</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
-        <source>Quit application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
-        <source>Set playback volume (example: qmmp --volume 20)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
-        <source>Show/hide application</source>
-        <translation>Mostra/nascondi Qmmp</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
-        <source>Display Add File dialog</source>
-        <translation>Mostra il menu «Aggiungi brani»</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
-        <source>Display Add Directory dialog</source>
-        <translation>Mostra il menu «Aggiungi cartella»</translation>
-    </message>
-</context>
-<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="735"/>
@@ -1395,58 +1327,43 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="225"/>
-        <source>Choose a directory</source>
-        <translation>Scegliere una cartella</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="236"/>
-        <source>Select one or more files to open</source>
-        <translation>Seleziona uno o più brani da aprire</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="391"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Vai al brano</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="392"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="394"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="402"/>
         <source>Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="493"/>
+        <location filename="../mainwindow.cpp" line="474"/>
         <source>Open Playlist</source>
         <translation>Apri lista di brani</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="500"/>
         <source>Save Playlist</source>
         <translation>Salva lista di brani</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="517"/>
+        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="499"/>
         <source>Playlist Files</source>
         <translation>Brani della lista</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="231"/>
-        <source>All Supported Bitstreams</source>
-        <translation>Elenco di tutti i tipi di flusso accettati</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation>Strumenti</translation>
     </message>
@@ -1743,54 +1660,6 @@
         <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
         <translation>Impostazioni automatiche</translation>
-    </message>
-</context>
-<context>
-    <name>QMMPStarter</name>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="212"/>
-        <source>Usage: qmmp [options] [files]</source>
-        <translation>Uso: qmmp [options] [fichiers]</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="213"/>
-        <source>Options:</source>
-        <translation>Opzioni: </translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="219"/>
-        <source>Print version number and exit</source>
-        <translation>Stampa il numero di versione ed esci</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="220"/>
-        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation>Per idee, modifiche, segnalazione di errori scrivire a: forkotov02@hotmail.ru</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="226"/>
-        <source>Qt version:</source>
-        <translation>Versione Qt:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="218"/>
-        <source>Display this text and exit</source>
-        <translation>Mostra questo testo ed esci</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="71"/>
-        <source>Unknown command</source>
-        <translation>Comando sconosciuto</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="217"/>
-        <source>Don&apos;t start the application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="225"/>
-        <source>QMMP version:</source>
-        <translation>Versione di Qmmp: </translation>
     </message>
 </context>
 <context>

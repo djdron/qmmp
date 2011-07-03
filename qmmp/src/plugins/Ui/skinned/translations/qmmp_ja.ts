@@ -486,74 +486,6 @@
     </message>
 </context>
 <context>
-    <name>BuiltinCommandLineOption</name>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="54"/>
-        <source>Don&apos;t clear the playlist</source>
-        <translation>プレイリストをクリアしない</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="55"/>
-        <source>Start playing current song</source>
-        <translation>今の曲から再生を開始</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="56"/>
-        <source>Pause current song</source>
-        <translation>今の曲で一時停止</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="57"/>
-        <source>Pause if playing, play otherwise</source>
-        <translation>再生中なら一時停止、一時停止しておれば再生</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="58"/>
-        <source>Stop current song</source>
-        <translation>今の曲で終止</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="59"/>
-        <source>Display Jump to File dialog</source>
-        <translation>「ファイルを指定して即刻再生」ダイアログを表示</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
-        <source>Quit application</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
-        <source>Set playback volume (example: qmmp --volume 20)</source>
-        <translation>音量設定 (例: qmmp --volume 20)</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
-        <source>Skip forward in playlist</source>
-        <translation>プレイリストでの次の曲にスキップ</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
-        <source>Skip backwards in playlist</source>
-        <translation>プレイリストで前の曲にスキップ</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
-        <source>Show/hide application</source>
-        <translation>アプリケーションウィンドウを表示/非表示</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
-        <source>Display Add File dialog</source>
-        <translation>「ファイル追加」ダイアログを表示</translation>
-    </message>
-    <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
-        <source>Display Add Directory dialog</source>
-        <translation>「ディレクトリ追加」ダイアログを表示</translation>
-    </message>
-</context>
-<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="14"/>
@@ -1395,58 +1327,43 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="225"/>
-        <source>Choose a directory</source>
-        <translation>ディレクトリを選択</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="231"/>
-        <source>All Supported Bitstreams</source>
-        <translation>サポート対象のすべてのデジタル録音物</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="236"/>
-        <source>Select one or more files to open</source>
-        <translation>開きたいファイルを選ぶ (複数可)</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="402"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="391"/>
         <source>&amp;Jump To File</source>
         <translation>ファイルを指定して即刻再生(&amp;J)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="392"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="394"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
-        <location filename="../mainwindow.cpp" line="517"/>
+        <location filename="../mainwindow.cpp" line="471"/>
+        <location filename="../mainwindow.cpp" line="499"/>
         <source>Playlist Files</source>
         <translation>プレイリストファイル</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="493"/>
+        <location filename="../mainwindow.cpp" line="474"/>
         <source>Open Playlist</source>
         <translation>プレイリストを開く</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="518"/>
+        <location filename="../mainwindow.cpp" line="500"/>
         <source>Save Playlist</source>
         <translation>プレイリストを保存</translation>
     </message>
@@ -1743,54 +1660,6 @@
         <location filename="../forms/preseteditor.ui" line="84"/>
         <source>Delete</source>
         <translation>削除</translation>
-    </message>
-</context>
-<context>
-    <name>QMMPStarter</name>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="71"/>
-        <source>Unknown command</source>
-        <translation>不明なコマンドです</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="212"/>
-        <source>Usage: qmmp [options] [files]</source>
-        <translation>使用法: qmmp [オプション] [ファイル名:複数可]</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="213"/>
-        <source>Options:</source>
-        <translation>オプション:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="217"/>
-        <source>Don&apos;t start the application</source>
-        <translation>アプリケーションを始動しない</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="218"/>
-        <source>Display this text and exit</source>
-        <translation>このメッセージを表示して終了</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="219"/>
-        <source>Print version number and exit</source>
-        <translation>バージョン番号を表示して終了</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="220"/>
-        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation>名案, パッチ, バグ報告は forkotov02@hotmail.ru まで</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="225"/>
-        <source>QMMP version:</source>
-        <translation>QMMP 版番号:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="226"/>
-        <source>Qt version:</source>
-        <translation>Qt 版番号:</translation>
     </message>
 </context>
 <context>
