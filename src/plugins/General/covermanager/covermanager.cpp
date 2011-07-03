@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,11 +21,10 @@
 #include <QAction>
 #include <QApplication>
 #include <QMessageBox>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/mediaplayer.h>
-#include <qmmpui/generalhandler.h>
 #include <qmmpui/metadataformatter.h>
 #include <qmmp/metadatamanager.h>
 #include "coverwidget.h"
@@ -35,7 +34,7 @@ CoverManager::CoverManager(QObject *parent) : General(parent)
 {
     m_action = new QAction(tr("Show Cover"), this);
     m_action->setShortcut(tr("Ctrl+M"));
-    GeneralHandler::instance()->addAction(m_action, GeneralHandler::PLAYLIST_MENU);
+    UiHelper::instance()->addAction(m_action, UiHelper::PLAYLIST_MENU);
     connect (m_action, SIGNAL(triggered ()), SLOT(showWindow()));
 }
 

@@ -28,7 +28,7 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmp/soundcore.h>
 #include "dock.h"
 #include "skin.h"
@@ -279,7 +279,7 @@ void PlayList::createActions()
     m_listWidget->menu()->addAction(ActionManager::instance()->action(ActionManager::PL_SHOW_INFO));
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addActions (m_subMenu->actions().mid(0,3)); //use 3 first actions
-    m_listWidget->menu()->addMenu(GeneralHandler::instance()->createMenu(GeneralHandler::PLAYLIST_MENU,
+    m_listWidget->menu()->addMenu(UiHelper::instance()->createMenu(UiHelper::PLAYLIST_MENU,
                                   tr("Actions"), this));
     m_listWidget->menu()->addSeparator();
     m_listWidget->menu()->addAction(SET_ACTION(ActionManager::PL_ENQUEUE, m_pl_manager, SLOT(addToQueue())));

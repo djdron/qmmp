@@ -21,7 +21,9 @@
 #include <QApplication>
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
+#include <qmmpui/filedialog.h>
+#include <qmmp/metadatamanager.h>
 #include "builtincommandlineoption.h"
 
 BuiltinCommandLineOption::BuiltinCommandLineOption(QObject *parent) : QObject(parent)
@@ -148,21 +150,30 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     }
     else if (option_string == "--quit" || option_string == "-q")
     {
-        //mw->close();
         qApp->closeAllWindows();
         qApp->quit();
     }
     else if (option_string == "--toggle-visibility")
     {
-        GeneralHandler::instance()->toggleVisibility();
+        UiHelper::instance()->toggleVisibility();
     }
     else if (option_string == "--add-file")
     {
-        //mw->addFile();
+        QString m_lastDir;
+        QStringList filters;
+        filters << tr("All Supported Bitstreams")+" (" +
+                MetaDataManager::instance()->nameFilters().join (" ") +")";
+        filters << MetaDataManager::instance()->filters();
+        FileDialog::popup(qApp->activeWindow(), FileDialog::AddDirsFiles, &m_lastDir,
+                          pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
+                          tr("Select one or more files to open"), filters.join(";;"));
     }
     else if (option_string == "--add-dir")
     {
-        //mw->addDir();
+        QString m_lastDir;
+        FileDialog::popup(qApp->activeWindow(), FileDialog::AddDirs, &m_lastDir,
+                          pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
+                          tr("Choose a directory"));
     }
     else if (option_string == "--volume" && !args.isEmpty())
     {

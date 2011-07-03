@@ -30,7 +30,7 @@
 
 #include <qmmp/soundcore.h>
 #include <qmmpui/mediaplayer.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 
 #include "qmmptrayicon.h"
 #include "statusicon.h"
@@ -130,7 +130,7 @@ void StatusIcon::showMetaData()
 void StatusIcon::trayActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == QSystemTrayIcon::Trigger)
-        GeneralHandler::instance()->toggleVisibility();
+        UiHelper::instance()->toggleVisibility();
     else if (reason == QSystemTrayIcon::MiddleClick)
     {
         if (SoundCore::instance()->state() == Qmmp::Stopped)

@@ -26,7 +26,7 @@
 #include <qmmp/soundcore.h>
 #include <qmmp/visual.h>
 #include <qmmp/metadatamanager.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/general.h>
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/playlistformat.h>
@@ -72,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_pl_manager = PlayListManager::instance();
     //additional featuries
     //new PlaylistParser(this);
-    m_generalHandler = GeneralHandler::instance();
+    m_generalHandler = UiHelper::instance();
 
     //user interface
     m_skin = new Skin(this);
@@ -434,7 +434,7 @@ void MainWindow::createActions()
 
     m_visMenu = new VisualMenu(this);
     m_mainMenu->addMenu(m_visMenu);
-    m_mainMenu->addMenu(m_generalHandler->createMenu(GeneralHandler::TOOLS_MENU, tr("Tools"), this));
+    m_mainMenu->addMenu(m_generalHandler->createMenu(UiHelper::TOOLS_MENU, tr("Tools"), this));
     m_mainMenu->addSeparator();
     m_mainMenu->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     m_mainMenu->addSeparator();

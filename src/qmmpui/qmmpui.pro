@@ -20,7 +20,6 @@ VERSION = $$QMMP_VERSION
 unix:target.path = $$LIB_DIR
 HEADERS += general.h \
     generalfactory.h \
-    generalhandler.h \
     playlistformat.h \
     playlistparser.h \
     commandlinemanager.h \
@@ -40,9 +39,9 @@ HEADERS += general.h \
     metadataformatter.h \
     templateeditor.h \
     uifactory.h \
-    uiloader.h
+    uiloader.h \
+    uihelper.h
 SOURCES += general.cpp \
-    generalhandler.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
     filedialog.cpp \
@@ -58,7 +57,8 @@ SOURCES += general.cpp \
     playlistmanager.cpp \
     metadataformatter.cpp \
     templateeditor.cpp \
-    uiloader.cpp
+    uiloader.cpp \
+    uihelper.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui
@@ -81,7 +81,6 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
 unix {
     devel.files += general.h \
                    generalfactory.h \
-                   generalhandler.h \
                    playlistformat.h \
                    playlistparser.h \
                    commandlinemanager.h \
@@ -96,7 +95,8 @@ unix {
                    metadataformatter.h \
                    templateeditor.h \
                    uifactory.h \
-                   uiloader.h
+                   uiloader.h \
+                   uihelper.h
     devel.path = /include/qmmpui
     INSTALLS += target \
         devel

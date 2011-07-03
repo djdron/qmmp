@@ -32,7 +32,7 @@
 #include <qmmpui/commandlinemanager.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistparser.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/uiloader.h>
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
@@ -139,7 +139,7 @@ void QMMPStarter::startPlayer()
 
     //additional featuries
     new PlaylistParser(this);
-    new GeneralHandler(this);
+    new UiHelper(this);
 
     //interface
     UiFactory *factory = UiLoader::currentUiFactory();

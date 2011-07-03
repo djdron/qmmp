@@ -26,7 +26,7 @@
 #include <iostream>
 #include <qmmp/qmmp.h>
 #include <qmmp/soundcore.h>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/mediaplayer.h>
 #include "commandlinemanager.h"
 
@@ -70,7 +70,7 @@ void CommandLineManager::checkOptions()
 QString CommandLineManager::executeCommand(const QString& opt_str, const QStringList &args)
 {
     checkOptions();
-    if(!GeneralHandler::instance() || !SoundCore::instance() || !MediaPlayer::instance())
+    if(!UiHelper::instance() || !SoundCore::instance() || !MediaPlayer::instance())
     {
         qWarning("CommandLineManager: player objects are not created");
         return QString();

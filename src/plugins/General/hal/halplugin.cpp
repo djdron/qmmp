@@ -22,7 +22,7 @@
 #include <QActionGroup>
 #include <QApplication>
 #include <QStyle>
-#include <qmmpui/generalhandler.h>
+#include <qmmpui/uihelper.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistitem.h>
@@ -181,7 +181,7 @@ void HalPlugin::updateActions()
                 action->setIcon(qApp->style()->standardIcon(QStyle::SP_DriveHDIcon));
 
             m_actions->addAction(action);
-            GeneralHandler::instance()->addAction(action, GeneralHandler::TOOLS_MENU);
+            UiHelper::instance()->addAction(action, UiHelper::TOOLS_MENU);
             addPath(dev_path);
         }
     }
@@ -191,7 +191,7 @@ void HalPlugin::updateActions()
         if (!findDevice(action))
         {
             m_actions->removeAction(action);
-            GeneralHandler::instance()->removeAction(action);
+            UiHelper::instance()->removeAction(action);
             removePath(action->data().toString());
             action->deleteLater();
         }
