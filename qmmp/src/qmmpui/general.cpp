@@ -27,6 +27,8 @@
 
 QList<GeneralFactory*> *General::m_factories = 0;
 QStringList General::m_files;
+QMap <GeneralFactory*, General*> *General::m_generals = 0;
+QObject *General::m_parent = 0;
 
 void General::checkFactories()
 {
@@ -69,6 +71,23 @@ General::General(QObject *parent)
 General::~General()
 {}
 
+void General::create(QObject *parent)
+{
+    if(m_generals)
+        return;
+    m_generals = new QMap <GeneralFactory*, General*>();
+    m_parent = parent;
+    checkFactories();
+    foreach(GeneralFactory* factory, *General::factories())
+    {
+        if (General::isEnabled(factory))
+        {
+            General *general = factory->create(parent);
+            m_generals->insert(factory, general);
+        }
+    }
+}
+
 QList<GeneralFactory*> *General::factories()
 {
     checkFactories();
@@ -99,6 +118,37 @@ void General::setEnabled(GeneralFactory* factory, bool enable)
     else
         genList.removeAll(name);
     settings.setValue("General/enabled_plugins", genList);
+    if(!m_generals)
+        return;
+
+
+    if (enable == m_generals->keys().contains(factory))
+        return;
+    if (enable)
+    {
+        General *general = factory->create(m_parent);
+        m_generals->insert(factory, general);
+    }
+    else
+    {
+        delete m_generals->value(factory);
+        m_generals->remove(factory);
+    }
+}
+
+void General::showSettings(GeneralFactory* factory, QWidget* parentWidget)
+{
+    QDialog *dialog = factory->createConfigDialog(parentWidget);
+    if (!dialog)
+        return;
+
+    if (m_generals && dialog->exec() == QDialog::Accepted && m_generals->keys().contains(factory))
+    {
+        delete m_generals->value(factory);
+        General *general = factory->create(m_parent);
+        m_generals->insert(factory, general);
+    }
+    dialog->deleteLater();
 }
 
 bool General::isEnabled(GeneralFactory* factory)

@@ -70,7 +70,7 @@ StatusIcon::StatusIcon(QObject *parent)
     menu->addAction(nextIcon, tr("Next"), m_player, SLOT(next()));
     menu->addAction(previousIcon, tr("Previous"), m_player, SLOT(previous()));
     menu->addSeparator();
-    menu->addAction(tr("Exit"), this, SLOT(exit()));
+    menu->addAction(tr("Exit"), UiHelper::instance(), SLOT(exit()));
     m_tray->setContextMenu(menu);
     connect (m_core, SIGNAL(metaDataChanged ()), SLOT(showMetaData()));
     connect (m_core, SIGNAL(stateChanged (Qmmp::State)), SLOT(setState(Qmmp::State)));

@@ -57,18 +57,6 @@ public:
         PLAYLIST_MENU   /*!< playlist context menu */
     };
     /*!
-     * Sets whether the general plugin is enabled.
-     * @param factory General plugin factory.
-     * @param enable Plugin enable state (\b true - enable, \b false - disable)
-     */
-    void setEnabled(GeneralFactory* factory, bool enable);
-    /*!
-     * Shows configuration dialog and updates settings automatically.
-     * @param factory General plugin factory.
-     * @param parentWidget Parent widget.
-     */
-    void showSettings(GeneralFactory* factory, QWidget* parentWidget);
-    /*!
      * Returns \b true if one of the general plugin can change visibility, otherwise returns \b false
      */
     bool visibilityControl();

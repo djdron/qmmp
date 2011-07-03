@@ -27,6 +27,7 @@
 #include <qmmp/inputsource.h>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/metadatamanager.h>
+#include <qmmpui/uihelper.h>
 #include "root2object.h"
 
 Root2Object::Root2Object(QObject *parent) : QDBusAbstractAdaptor(parent)
@@ -82,7 +83,7 @@ QStringList Root2Object::supportedUriSchemes() const
 
 void Root2Object::Quit()
 {
-    QMetaObject::invokeMethod(parent(), "exit");
+    UiHelper::instance()->exit();
 }
 
 void Root2Object::Raise(){}
