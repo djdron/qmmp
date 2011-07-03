@@ -42,6 +42,11 @@ public:
      */
     ~General();
     /*!
+     * Prepares general plugins for usage.
+     * @param parent Parent object.
+     */
+    static void create(QObject *parent);
+    /*!
      * Returns a list of the loaded general plugin factories.
      */
     static QList<GeneralFactory*> *factories();
@@ -56,6 +61,12 @@ public:
      */
     static void setEnabled(GeneralFactory* factory, bool enable = true);
     /*!
+     * Shows configuration dialog and updates settings automatically.
+     * @param factory General plugin factory.
+     * @param parentWidget Parent widget.
+     */
+    static void showSettings(GeneralFactory* factory, QWidget* parentWidget);
+    /*!
      * Returns \b true if general plugin is enabled, otherwise returns \b false
      * @param factory General plugin factory.
      */
@@ -68,6 +79,8 @@ private:
     static QList<GeneralFactory*> *m_factories;
     static QStringList m_files;
     static void checkFactories();
+    static QMap <GeneralFactory*, General*> *m_generals;
+    static QObject *m_parent;
 };
 
 #endif

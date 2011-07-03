@@ -20,7 +20,7 @@
 
 #include <QDBusMetaType>
 #include <QDBusArgument>
-
+#include <qmmpui/uihelper.h>
 #include <qmmp/qmmp.h>
 #include "rootobject.h"
 
@@ -71,5 +71,5 @@ Version RootObject::MprisVersion()
 
 void RootObject::Quit()
 {
-    QMetaObject::invokeMethod(parent(), "exit");
+    UiHelper::instance()->exit();
 }

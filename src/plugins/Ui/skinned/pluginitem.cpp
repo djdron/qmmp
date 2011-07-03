@@ -130,7 +130,6 @@ void PluginItem::showAbout(QWidget *parent)
     default:
         ;
     }
-
 }
 
 void PluginItem::showSettings(QWidget *parent)
@@ -153,7 +152,7 @@ void PluginItem::showSettings(QWidget *parent)
         Visual::showSettings(static_cast<VisualFactory *>(m_factory), parent);
         break;
     case PluginItem::GENERAL:
-        UiHelper::instance()->showSettings(static_cast<GeneralFactory *>(m_factory), parent);
+        General::showSettings(static_cast<GeneralFactory *>(m_factory), parent);
         break;
     default:
         ;
@@ -180,7 +179,7 @@ void PluginItem::setEnabled(bool enabled)
         Visual::setEnabled(static_cast<VisualFactory *>(m_factory), enabled);
         break;
     case PluginItem::GENERAL:
-        UiHelper::instance()->setEnabled(static_cast<GeneralFactory *>(m_factory), enabled);
+        General::setEnabled(static_cast<GeneralFactory *>(m_factory), enabled);
         break;
     default:
         ;

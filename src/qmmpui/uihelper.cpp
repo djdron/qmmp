@@ -34,51 +34,11 @@ UiHelper::UiHelper(QObject *parent)
     m_instance = this;
     m_toolsMenu = 0;
     m_playlistMenu = 0;
-    GeneralFactory* factory;
-    foreach(factory, *General::factories())
-    {
-        if (General::isEnabled(factory))
-        {
-            General *general = factory->create(parent);
-            m_generals.insert(factory, general);
-        }
-    }
+    General::create(parent);
 }
 
 UiHelper::~UiHelper()
 {}
-
-void UiHelper::setEnabled(GeneralFactory* factory, bool enable)
-{
-    if (enable == m_generals.keys().contains(factory))
-        return;
-    if (enable)
-    {
-        General *general = factory->create(parent());
-        m_generals.insert(factory, general);
-    }
-    else
-    {
-        delete m_generals.value(factory);
-        m_generals.remove(factory);
-    }
-    General::setEnabled(factory, enable);
-}
-
-void UiHelper::showSettings(GeneralFactory* factory, QWidget* parentWidget)
-{
-    QDialog *dialog = factory->createConfigDialog(parentWidget);
-    if (!dialog)
-        return;
-
-    if (dialog->exec() == QDialog::Accepted && m_generals.keys().contains(factory))
-    {
-        delete m_generals.value(factory);
-        General *general = factory->create(parent());
-        m_generals[factory] = general;
-    }
-    dialog->deleteLater();
-}
 
 bool UiHelper::visibilityControl()
 {

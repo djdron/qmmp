@@ -66,12 +66,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     new ActionManager();
 
-    //prepare libqmmp and libqmmpui libraries for playing
     m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
     m_pl_manager = PlayListManager::instance();
-    //additional featuries
-    //new PlaylistParser(this);
     m_generalHandler = UiHelper::instance();
 
     //user interface
