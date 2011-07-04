@@ -26,6 +26,7 @@
 #include <QPointer>
 #include <QStringList>
 #include <QApplication>
+#include <QPointer>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistmodel.h>
 
@@ -34,6 +35,7 @@ class QMenu;
 class QWidget;
 class General;
 class GeneralFactory;
+class JumpToTrackDialog;
 
 /*! @brief The UiHelper class provides simple api to access general plugins and some gui features.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -94,6 +96,8 @@ public:
                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     void savePlayList(QWidget *parent = qApp->activeWindow(),
                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    void jumpToTrack(QWidget *parent = qApp->activeWindow(),
+                     PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     /*!
      * Returns a pointer to the object's instance.
      */
@@ -131,6 +135,8 @@ private:
     QPointer<QMenu> m_toolsMenu;
     QPointer<QMenu> m_playlistMenu;
     QString m_lastDir;
+    //JumpToTrackDialog *m_jumpDialog;
+    QPointer <JumpToTrackDialog> m_jumpDialog;
     static UiHelper* m_instance;
 };
 

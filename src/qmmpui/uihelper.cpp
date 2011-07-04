@@ -29,6 +29,7 @@
 #include <qmmpui/playlistmanager.h>
 #include "general.h"
 #include "generalfactory.h"
+#include "jumptotrackdialog_p.h"
 #include "uihelper.h"
 
 UiHelper *UiHelper::m_instance = 0;
@@ -39,6 +40,7 @@ UiHelper::UiHelper(QObject *parent)
     m_instance = this;
     m_toolsMenu = 0;
     m_playlistMenu = 0;
+    m_jumpDialog = 0;
     General::create(parent);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_lastDir = settings.value("General/last_dir", QDir::homePath()).toString(); //last directory
@@ -191,6 +193,20 @@ void UiHelper::savePlayList(QWidget *parent, PlayListModel *model)
     }
     else
         qWarning("Error: There is no registered playlist parsers");
+}
+
+void UiHelper::jumpToTrack(QWidget *parent, PlayListModel *model)
+{
+    if(!m_jumpDialog)
+    {
+        m_jumpDialog = new JumpToTrackDialog(model, parent);
+    }
+    if(m_jumpDialog->isHidden())
+    {
+        m_jumpDialog->show();
+        m_jumpDialog->refresh();
+    }
+    m_jumpDialog->raise();
 }
 
 void UiHelper::toggleVisibility()

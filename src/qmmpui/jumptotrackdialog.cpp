@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,20 +18,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "jumptotrackdialog.h"
-#include <qmmpui/playlistmanager.h>
+#include "jumptotrackdialog_p.h"
+#include "playlistmanager.h"
+#include "mediaplayer.h"
+#include <qmmp/soundcore.h>
 #include <QAction>
 #include <QStringListModel>
 #include <QSortFilterProxyModel>
 #include <QShortcut>
 #include <QKeySequence>
 
-JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
+JumpToTrackDialog::JumpToTrackDialog(PlayListModel *model, QWidget* parent)
         : QDialog (parent)
 {
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
-    m_pl_manager = manager;
+    setAttribute(Qt::WA_DeleteOnClose, true);
+    m_model = model;
+    m_pl_manager = PlayListManager::instance();
     m_listModel = new QStringListModel(this);
 
     m_proxyModel = new QSortFilterProxyModel;
@@ -49,6 +53,8 @@ JumpToTrackDialog::JumpToTrackDialog(PlayListManager *manager, QWidget* parent)
     connect(songsListView->selectionModel(),
             SIGNAL(currentRowChanged(const QModelIndex&,const QModelIndex&)),
             this,SLOT(queueUnqueue(const QModelIndex&,const QModelIndex&)));
+
+    connect(m_model, SIGNAL(destroyed()), SLOT(close()));
 
     new QShortcut(tr("Q"),this,SLOT(on_queuePushButton_clicked()));
     new QShortcut(tr("J"),this,SLOT(on_jumpToPushButton_clicked()));
@@ -79,8 +85,8 @@ void JumpToTrackDialog::on_queuePushButton_clicked()
     if (!mi_list.isEmpty())
     {
         int selected = (m_proxyModel->mapToSource(mi_list.at(0))).row();
-        m_pl_manager->selectedPlayList()->setQueued(m_pl_manager->selectedPlayList()->item(selected));
-        if (m_pl_manager->selectedPlayList()->isQueued(m_pl_manager->selectedPlayList()->item(selected)))
+        m_model->setQueued(m_model->item(selected));
+        if (m_model->isQueued(m_model->item(selected)))
             queuePushButton->setText(tr("Unqueue"));
         else
             queuePushButton->setText(tr("Queue"));
@@ -99,7 +105,7 @@ void JumpToTrackDialog::on_jumpToPushButton_clicked()
 void JumpToTrackDialog::refresh()
 {
     filterLineEdit->clear();
-    QStringList titles = m_pl_manager->selectedPlayList()->getTitles(0, m_pl_manager->selectedPlayList()->count());
+    QStringList titles = m_model->getTitles(0, m_model->count());
     m_listModel->setStringList(titles);
     filterLineEdit->setFocus();
 }
@@ -124,14 +130,16 @@ void JumpToTrackDialog::on_filterLineEdit_returnPressed ()
 void JumpToTrackDialog::jumpTo(const QModelIndex & index)
 {
     int selected = (m_proxyModel->mapToSource(index)).row();
-    m_pl_manager->selectedPlayList()->setCurrent(selected);
-    emit playRequest();
+    m_model->setCurrent(selected);
+    SoundCore::instance()->stop();
+    m_pl_manager->activatePlayList(m_model);
+    MediaPlayer::instance()->play();
 }
 
 void JumpToTrackDialog::queueUnqueue(const QModelIndex& curr,const QModelIndex&)
 {
     int row = m_proxyModel->mapToSource(curr).row();
-    if (m_pl_manager->selectedPlayList()->isQueued(m_pl_manager->selectedPlayList()->item(row)))
+    if (m_model->isQueued(m_model->item(row)))
         queuePushButton->setText(tr("Unqueue"));
     else
         queuePushButton->setText(tr("Queue"));
