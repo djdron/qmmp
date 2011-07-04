@@ -79,6 +79,57 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>JumpToTrackDialog</name>
+    <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="14"/>
+        <source>Jump To Track</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="37"/>
+        <source>Filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
+        <location filename="../jumptotrackdialog.cpp" line="92"/>
+        <location filename="../jumptotrackdialog.cpp" line="145"/>
+        <source>Queue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="83"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
+        <source>Jump To</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jumptotrackdialog.cpp" line="59"/>
+        <source>Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jumptotrackdialog.cpp" line="60"/>
+        <source>J</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jumptotrackdialog.cpp" line="61"/>
+        <source>F5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../jumptotrackdialog.cpp" line="90"/>
+        <location filename="../jumptotrackdialog.cpp" line="143"/>
+        <source>Unqueue</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="149"/>
@@ -260,33 +311,33 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="132"/>
+        <location filename="../uihelper.cpp" line="134"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="137"/>
+        <location filename="../uihelper.cpp" line="139"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="144"/>
+        <location filename="../uihelper.cpp" line="146"/>
         <source>Choose a directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="156"/>
-        <location filename="../uihelper.cpp" line="182"/>
+        <location filename="../uihelper.cpp" line="158"/>
+        <location filename="../uihelper.cpp" line="184"/>
         <source>Playlist Files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="158"/>
+        <location filename="../uihelper.cpp" line="160"/>
         <source>Open Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="183"/>
+        <location filename="../uihelper.cpp" line="185"/>
         <source>Save Playlist</source>
         <translation type="unfinished"></translation>
     </message>

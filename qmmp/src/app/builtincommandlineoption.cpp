@@ -147,7 +147,7 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
     }
     else if (option_string == "--jump-to-file" || option_string == "-j")
     {
-        //mw->jumpToFile();
+        UiHelper::instance()->jumpToTrack();
     }
     else if (option_string == "--quit" || option_string == "-q")
     {

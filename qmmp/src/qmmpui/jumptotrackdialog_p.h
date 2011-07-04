@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef JUMPTOTRACKDIALOG_H
-#define JUMPTOTRACKDIALOG_H
+#ifndef JUMPTOTRACKDIALOG_P_H
+#define JUMPTOTRACKDIALOG_P_H
 
 #include <QDialog>
 #include "ui_jumptotrackdialog.h"
@@ -27,6 +27,7 @@
 class QStringListModel;
 class QSortFilterProxyModel;
 class PlayListManager;
+class PlayListModel;
 
 /**
    @author Vladimir Kuznetsov <vovanec@gmail.com>
@@ -36,11 +37,11 @@ class JumpToTrackDialog : public QDialog, private Ui::JumpToTrackDialog
     Q_OBJECT
 
 public:
-    JumpToTrackDialog(PlayListManager *manager, QWidget* parent = 0);
+    JumpToTrackDialog(PlayListModel *model, QWidget* parent = 0);
     ~JumpToTrackDialog();
     void refresh();
 
-protected slots:
+private slots:
     void on_refreshPushButton_clicked();
     void on_queuePushButton_clicked();
     void on_jumpToPushButton_clicked();
@@ -49,14 +50,12 @@ protected slots:
     void jumpTo(const QModelIndex&);
     void queueUnqueue(const QModelIndex&,const QModelIndex&);
 
-signals:
-    void playRequest();
-
 private:
     QStringListModel* m_listModel;
     QSortFilterProxyModel* m_proxyModel;
     PlayListManager *m_pl_manager;
+    PlayListModel *m_model;
 };
 
-#endif
+#endif //JUMPTOTRACKDIALOG_P_H
 

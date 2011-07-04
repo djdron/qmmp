@@ -35,7 +35,6 @@ class EqWidget;
 class MainVisual;
 class Skin;
 class SoundCore;
-class JumpToTrackDialog;
 class VisualMenu;
 class UiHelper;
 class MediaPlayer;
@@ -108,7 +107,6 @@ private:
     MainVisual *m_vis;
     bool m_update;
     Skin *m_skin;
-    JumpToTrackDialog* m_jumpDialog;
     bool m_hideOnClose, m_startHidden;
     VisualMenu *m_visMenu;
     UiHelper *m_uiHelper;

@@ -1,7 +1,6 @@
 include(../../plugins.pri)
 FORMS += forms/configdialog.ui \
     forms/preseteditor.ui \
-    forms/jumptotrackdialog.ui \
     forms/aboutdialog.ui \
     forms/addurldialog.ui \
     forms/playlistbrowser.ui \
@@ -39,7 +38,6 @@ HEADERS += mainwindow.h \
     playlistcontrol.h \
     eqpreset.h \
     preseteditor.h \
-    jumptotrackdialog.h \
     aboutdialog.h \
     timeindicator.h \
     keyboardmanager.h \
@@ -91,7 +89,6 @@ SOURCES += mainwindow.cpp \
     playlistcontrol.cpp \
     eqpreset.cpp \
     preseteditor.cpp \
-    jumptotrackdialog.cpp \
     aboutdialog.cpp \
     timeindicator.cpp \
     keyboardmanager.cpp \

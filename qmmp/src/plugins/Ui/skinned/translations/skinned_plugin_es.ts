@@ -1053,57 +1053,6 @@
     </message>
 </context>
 <context>
-    <name>JumpToTrackDialog</name>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="53"/>
-        <source>Q</source>
-        <translation>Q</translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="54"/>
-        <source>J</source>
-        <translation>J</translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="55"/>
-        <source>F5</source>
-        <translation>F5</translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="84"/>
-        <location filename="../jumptotrackdialog.cpp" line="135"/>
-        <source>Unqueue</source>
-        <translation>Desencolar</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="86"/>
-        <location filename="../jumptotrackdialog.cpp" line="137"/>
-        <source>Queue</source>
-        <translation>Encolar</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="14"/>
-        <source>Jump To Track</source>
-        <translation>Saltar hasta pista</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="37"/>
-        <source>Filter</source>
-        <translation>Filtrar</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="83"/>
-        <source>Refresh</source>
-        <translation>Actualizar</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
-        <source>Jump To</source>
-        <translation>Saltar a</translation>
-    </message>
-</context>
-<context>
     <name>MainDisplay</name>
     <message>
         <location filename="../display.cpp" line="57"/>
@@ -1327,27 +1276,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="373"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Saltar a archivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="374"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="382"/>
+        <location filename="../mainwindow.cpp" line="376"/>
         <source>View</source>
         <translation>Ver</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="384"/>
         <source>Playlist</source>
         <translation>Lista de reproducción</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="404"/>
         <source>Tools</source>
         <translation>Herramientas</translation>
     </message>

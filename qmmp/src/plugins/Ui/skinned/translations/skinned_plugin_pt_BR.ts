@@ -1053,57 +1053,6 @@
     </message>
 </context>
 <context>
-    <name>JumpToTrackDialog</name>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="53"/>
-        <source>Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="54"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="55"/>
-        <source>F5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="84"/>
-        <location filename="../jumptotrackdialog.cpp" line="135"/>
-        <source>Unqueue</source>
-        <translation type="unfinished">Sem Faixa na Fila</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="86"/>
-        <location filename="../jumptotrackdialog.cpp" line="137"/>
-        <source>Queue</source>
-        <translation type="unfinished">Faixa na Fila</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="14"/>
-        <source>Jump To Track</source>
-        <translation type="unfinished">Pular de faixa</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="37"/>
-        <source>Filter</source>
-        <translation>Filtro</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="83"/>
-        <source>Refresh</source>
-        <translation type="unfinished">Recarregar</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
-        <source>Jump To</source>
-        <translation type="unfinished">Pular para</translation>
-    </message>
-</context>
-<context>
     <name>MainDisplay</name>
     <message>
         <location filename="../display.cpp" line="57"/>
@@ -1327,27 +1276,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="373"/>
         <source>&amp;Jump To File</source>
         <translation type="unfinished">Pular para arquivo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="374"/>
         <source>J</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="382"/>
+        <location filename="../mainwindow.cpp" line="376"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="384"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de músicas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="404"/>
         <source>Tools</source>
         <translation type="unfinished"></translation>
     </message>

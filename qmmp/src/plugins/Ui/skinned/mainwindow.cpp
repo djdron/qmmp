@@ -42,7 +42,6 @@
 #include "dock.h"
 #include "eqwidget.h"
 #include "mainvisual.h"
-#include "jumptotrackdialog.h"
 #include "aboutdialog.h"
 #include "addurldialog.h"
 #include "listwidget.h"
@@ -86,9 +85,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     m_equalizer = new EqWidget(this);
     dock->addWidget(m_equalizer);
 
-    m_jumpDialog = new JumpToTrackDialog(m_pl_manager, this);
-    m_jumpDialog->hide();
-
     createActions();
     //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
@@ -106,8 +102,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
     connect(m_display,SIGNAL(shuffleToggled(bool)),m_pl_manager,SLOT(setShuffle(bool)));
     connect(m_display,SIGNAL(repeatableToggled(bool)),m_pl_manager,SLOT(setRepeatableList(bool)));
-
-    connect(m_jumpDialog,SIGNAL(playRequest()), SLOT(replay()));
 
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
@@ -467,11 +461,7 @@ void MainWindow::playPause()
 
 void MainWindow::jumpToFile()
 {
-    if (m_jumpDialog->isHidden())
-    {
-        m_jumpDialog->show();
-        m_jumpDialog->refresh();
-    }
+    m_uiHelper->jumpToTrack(this);
 }
 
 void MainWindow::handleCloseRequest()

@@ -1053,57 +1053,6 @@
     </message>
 </context>
 <context>
-    <name>JumpToTrackDialog</name>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="53"/>
-        <source>Q</source>
-        <translation>Q</translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="54"/>
-        <source>J</source>
-        <translation>J</translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="55"/>
-        <source>F5</source>
-        <translation>F5</translation>
-    </message>
-    <message>
-        <location filename="../jumptotrackdialog.cpp" line="84"/>
-        <location filename="../jumptotrackdialog.cpp" line="135"/>
-        <source>Unqueue</source>
-        <translation>Verwijder uit lijst</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
-        <location filename="../jumptotrackdialog.cpp" line="86"/>
-        <location filename="../jumptotrackdialog.cpp" line="137"/>
-        <source>Queue</source>
-        <translation>Rij</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="14"/>
-        <source>Jump To Track</source>
-        <translation>Ga Naar Nummer</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="37"/>
-        <source>Filter</source>
-        <translation>Filter</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="83"/>
-        <source>Refresh</source>
-        <translation>Herlaad</translation>
-    </message>
-    <message>
-        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
-        <source>Jump To</source>
-        <translation>Ga Naar</translation>
-    </message>
-</context>
-<context>
     <name>MainDisplay</name>
     <message>
         <location filename="../display.cpp" line="57"/>
@@ -1327,27 +1276,27 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="373"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Spring Naar Bestand</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="374"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="382"/>
+        <location filename="../mainwindow.cpp" line="376"/>
         <source>View</source>
         <translation type="unfinished">Weergave</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="384"/>
         <source>Playlist</source>
         <translation type="unfinished">Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="404"/>
         <source>Tools</source>
         <translation>Gereedschappen</translation>
     </message>
