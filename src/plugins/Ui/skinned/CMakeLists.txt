@@ -51,7 +51,6 @@ SET(ui_SRCS
     eqslider.cpp
     eqtitlebar.cpp
     eqwidget.cpp
-    jumptotrackdialog.cpp
     keyboardmanager.cpp
     listwidget.cpp
     mainvisual.cpp
@@ -106,7 +105,6 @@ SET(ui_MOC_HDRS
     eqwidget.h
     fft.h
     inlines.h
-    jumptotrackdialog.h
     keyboardmanager.h
     listwidget.h
     mainvisual.h
@@ -160,7 +158,6 @@ SET(ui_UIS
     forms/aboutdialog.ui
     forms/addurldialog.ui
     forms/configdialog.ui
-    forms/jumptotrackdialog.ui
     forms/preseteditor.ui
     forms/playlistbrowser.ui
     forms/popupsettings.ui
