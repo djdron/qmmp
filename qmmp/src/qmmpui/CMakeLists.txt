@@ -42,6 +42,8 @@ SET(libqmmpui_SRCS
     templateeditor.cpp
     uiloader.cpp
     jumptotrackdialog.cpp
+    configdialog.cpp
+    pluginitem.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -69,6 +71,8 @@ SET(libqmmpui_MOC_HDRS
     uiloader.h
     uifactory.h
     jumptotrackdialog_p.h
+    configdialog.h
+    pluginitem_p.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -90,6 +94,7 @@ SET(libqmmpui_DEVEL_HDRS
     templateeditor.h
     uiloader.h
     uifactory.h
+    configdialog.h
 )
 
 
@@ -98,6 +103,7 @@ SET(libqmmpui_UIS
     forms/tageditor.ui
     forms/templateeditor.ui
     forms/jumptotrackdialog.ui
+    forms/configdialog.ui
 )
 
 QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
