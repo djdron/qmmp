@@ -20,7 +20,6 @@
 #ifndef DETAILSDIALOG_H
 #define DETAILSDIALOG_H
 
-#include "ui_detailsdialog.h"
 #include <QDialog>
 #include <QList>
 #include <QMap>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,43 +18,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QAction>
-#include <qmmp/visual.h>
-#include <qmmp/visualfactory.h>
-#include "visualmenu.h"
+#ifndef SKINNEDSETTINGS_H
+#define SKINNEDSETTINGS_H
 
-VisualMenu::VisualMenu(QWidget *parent) : QMenu(tr("Visualization"), parent)
-{
-    VisualFactory *factory = 0;
-    foreach(factory, *Visual::factories())
-    {
-        VisualAction *act = new VisualAction(factory, this);
-        addAction(act);
-    }
-}
+#include <QWidget>
+#include <QFileInfo>
+#include "ui_skinnedsettings.h"
 
-VisualMenu::~VisualMenu()
-{
-}
+class SkinReader;
+class Skin;
 
-void VisualMenu::updateActions()
+class SkinnedSettings : public QWidget
 {
-    for(int i = 0; i < Visual::factories()->size(); ++i)
-    {
-        actions()[i]->setChecked(Visual::isEnabled(Visual::factories()->at(i)));
-    }
-}
+    Q_OBJECT
+public:
+    explicit SkinnedSettings(QWidget *parent = 0);
+    virtual ~SkinnedSettings();
+    void writeSettings();
 
-VisualAction::VisualAction(VisualFactory *factory, QWidget *parent) :
-        QAction(factory->properties().name, parent)
-{
-    setCheckable (true);
-    setChecked (Visual::isEnabled(factory));
-    m_factory = factory;
-    connect(this, SIGNAL(triggered(bool)), SLOT(select(bool)));
-}
 
-void VisualAction::select(bool select)
-{
-    Visual::setEnabled(m_factory, select);
-}
+private slots:
+    void on_listWidget_itemClicked(QListWidgetItem *);
+    void on_plFontButton_clicked();
+    void on_mainFontButton_clicked();
+    void on_skinInstallButton_clicked();
+    void loadSkins();
+    void on_popupTemplateButton_clicked();
+
+private:
+    void loadFonts();
+    void findSkins(const QString &path);
+    void readSettings();
+
+    Ui::SkinnedSettings ui;
+    QList <QFileInfo> m_skinList;
+    QString m_currentSkinName;
+    Skin *m_skin;
+    QPixmap pixmap;
+    SkinReader *m_reader;
+
+};
+
+#endif // SKINNEDSETTINGS_H

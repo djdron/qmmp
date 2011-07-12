@@ -35,10 +35,12 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/mediaplayer.h>
+#include <qmmpui/configdialog.h>
+#include "hotkeyeditor.h"
+#include "skinnedsettings.h"
 #include "mainwindow.h"
 #include "skin.h"
 #include "playlist.h"
-#include "configdialog.h"
 #include "dock.h"
 #include "eqwidget.h"
 #include "mainvisual.h"
@@ -312,9 +314,13 @@ void MainWindow::writeSettings()
 void MainWindow::showSettings()
 {
     ConfigDialog *confDialog = new ConfigDialog(this);
+    SkinnedSettings *skinnedSettings = new SkinnedSettings(this);
+    confDialog->addPage(tr("Appearance"), skinnedSettings, QIcon(":/interface.png"));
+    confDialog->addPage(tr("Shortcuts"), new HotkeyEditor(this), QIcon(":/shortcuts.png"));
     confDialog->exec();
-    updateSettings();
+    skinnedSettings->writeSettings();
     confDialog->deleteLater();
+    updateSettings();
     ActionManager::instance()->saveActions();
 }
 

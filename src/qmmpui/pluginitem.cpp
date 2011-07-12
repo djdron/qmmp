@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,6 @@
 
 #include <QSettings>
 #include <QDir>
-
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/outputfactory.h>
@@ -33,9 +32,7 @@
 #include <qmmpui/generalfactory.h>
 #include <qmmpui/general.h>
 #include <qmmpui/uihelper.h>
-
-#include "pluginitem.h"
-
+#include "pluginitem_p.h"
 
 PluginItem::PluginItem(QTreeWidgetItem *parent, InputSourceFactory *factory, const QString &path)
     : QTreeWidgetItem(parent, QStringList() << factory->properties().name << path.section('/',-1), TRANSPORT)
