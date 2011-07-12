@@ -549,37 +549,37 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="27"/>
         <source>Action</source>
-        <translation type="unfinished">Действие</translation>
+        <translation>Действие</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="32"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Сочетание клавиш</translation>
+        <translation>Сочетание клавиш</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Изменить сочетание клавиш...</translation>
+        <translation>Изменить сочетание клавиш...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="54"/>
         <source>Playback</source>
-        <translation type="unfinished">Воспроизведение</translation>
+        <translation>Воспроизведение</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="60"/>
         <source>View</source>
-        <translation type="unfinished">Вид</translation>
+        <translation>Вид</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="66"/>
         <source>Playlist</source>
-        <translation type="unfinished">Список</translation>
+        <translation>Список</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="72"/>
         <source>Misc</source>
-        <translation type="unfinished">Другие</translation>
+        <translation>Другие</translation>
     </message>
 </context>
 <context>
@@ -808,12 +808,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Appearance</source>
-        <translation type="unfinished">Внешний вид</translation>
+        <translation>Внешний вид</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="319"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Сочетания клавиш</translation>
+        <translation>Сочетания клавиш</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="379"/>
@@ -1158,162 +1158,162 @@
     <message>
         <location filename="../forms/skinnedsettings.ui" line="24"/>
         <source>Skins</source>
-        <translation type="unfinished">Обложки</translation>
+        <translation>Обложки</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="55"/>
         <source>Add...</source>
-        <translation type="unfinished">Добавить...</translation>
+        <translation>Добавить...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="68"/>
         <source>Refresh</source>
-        <translation type="unfinished">Обновить</translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>View</source>
-        <translation type="unfinished">Вид</translation>
+        <translation>Вид</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Скрывать при закрытии</translation>
+        <translation>Скрывать при закрытии</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="108"/>
         <source>Start hidden</source>
-        <translation type="unfinished">Запускать скрытым</translation>
+        <translation>Запускать скрытым</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="115"/>
         <source>Use skin cursors</source>
-        <translation type="unfinished">Использовать встроенные курсоры</translation>
+        <translation>Использовать встроенные курсоры</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="131"/>
         <source>Fonts</source>
-        <translation type="unfinished">Шрифты</translation>
+        <translation>Шрифты</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="149"/>
         <source>Player:</source>
-        <translation type="unfinished">Плеер:</translation>
+        <translation>Плеер:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="171"/>
         <location filename="../forms/skinnedsettings.ui" line="219"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="178"/>
         <location filename="../forms/skinnedsettings.ui" line="226"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="197"/>
         <source>Playlist:</source>
-        <translation type="unfinished">Список:</translation>
+        <translation>Список:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="233"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished">Использовать растровые шрифты, если возможно</translation>
+        <translation>Использовать растровые шрифты, если возможно</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="243"/>
         <source>Transparency</source>
-        <translation type="unfinished">Прозрачность</translation>
+        <translation>Прозрачность</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="249"/>
         <source>Main window</source>
-        <translation type="unfinished">Главное окно</translation>
+        <translation>Главное окно</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="272"/>
         <location filename="../forms/skinnedsettings.ui" line="296"/>
         <location filename="../forms/skinnedsettings.ui" line="320"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="279"/>
         <source>Equalizer</source>
-        <translation type="unfinished">Эквалайзер</translation>
+        <translation>Эквалайзер</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="303"/>
         <source>Playlist</source>
-        <translation type="unfinished">Список</translation>
+        <translation>Список</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="344"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished">Разное</translation>
+        <translation>Разное</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="350"/>
         <source>Song Display</source>
-        <translation type="unfinished">Список песен</translation>
+        <translation>Список песен</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="356"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Показывать протокол</translation>
+        <translation>Показывать протокол</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="363"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Показывать номера песен</translation>
+        <translation>Показывать номера песен</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="370"/>
         <source>Show playlists</source>
-        <translation type="unfinished">Показывать списки воспроизведения</translation>
+        <translation>Показывать списки воспроизведения</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="379"/>
         <source>Show popup information</source>
-        <translation type="unfinished">Показывать всплывающее окно с информацией</translation>
+        <translation>Показывать всплывающее окно с информацией</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="389"/>
         <source>Edit template</source>
-        <translation type="unfinished">Редактировать шаблон</translation>
+        <translation>Редактировать шаблон</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="411"/>
         <source>Show anchor</source>
-        <translation type="unfinished">Показывать &quot;якорь&quot;</translation>
+        <translation>Показывать &quot;якорь&quot;</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="421"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">Выравнивать номера фрагментов</translation>
+        <translation>Выравнивать номера фрагментов</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="96"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished">Выберите файлы обложек</translation>
+        <translation>Выберите файлы обложек</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="97"/>
         <source>Skin files</source>
-        <translation type="unfinished">Файлы обложек</translation>
+        <translation>Файлы обложек</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="139"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished">Распакованная тема</translation>
+        <translation>Распакованная тема</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="170"/>
         <source>Archived skin</source>
-        <translation type="unfinished">Упакованная тема</translation>
+        <translation>Упакованная тема</translation>
     </message>
 </context>
 <context>
