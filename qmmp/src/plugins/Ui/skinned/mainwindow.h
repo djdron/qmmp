@@ -56,7 +56,6 @@ public:
 
     QMenu* menu();
     void setVolume(int volume, int balance);
-    SoundCore* soundCore()const;
     MainDisplay* mainDisplay()const;
 
 public slots:

@@ -483,11 +483,6 @@ void MainWindow::addUrl()
     AddUrlDialog::popup(this, m_pl_manager->selectedPlayList());
 }
 
-SoundCore * MainWindow::soundCore() const
-{
-    return m_core;
-}
-
 MainDisplay * MainWindow::mainDisplay() const
 {
     return m_display;
