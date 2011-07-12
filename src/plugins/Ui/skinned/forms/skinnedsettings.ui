@@ -343,7 +343,7 @@
       <attribute name="title">
        <string>Miscellaneous</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
@@ -364,55 +364,7 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0" colspan="2">
-           <widget class="QCheckBox" name="playlistsCheckBox">
-            <property name="text">
-             <string>Show playlists</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0" colspan="3">
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QCheckBox" name="popupCheckBox">
-              <property name="text">
-               <string>Show popup information</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="popupTemplateButton">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>Edit template</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item row="4" column="0" colspan="2">
-           <widget class="QCheckBox" name="anchorCheckBox">
-            <property name="text">
-             <string>Show anchor</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0" colspan="3">
+          <item row="2" column="0" colspan="2">
            <widget class="QCheckBox" name="alignCheckBox">
             <property name="enabled">
              <bool>false</bool>
@@ -421,6 +373,50 @@
              <string>Align song numbers</string>
             </property>
            </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="playlistsCheckBox">
+            <property name="text">
+             <string>Show playlists</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QCheckBox" name="anchorCheckBox">
+            <property name="text">
+             <string>Show anchor</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QCheckBox" name="popupCheckBox">
+            <property name="text">
+             <string>Show popup information</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QPushButton" name="popupTemplateButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Edit template</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>291</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </widget>

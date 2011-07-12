@@ -38,6 +38,10 @@ SkinnedSettings::SkinnedSettings(QWidget *parent) : QWidget(parent)
     readSettings();
     loadSkins();
     loadFonts();
+    //setup icons
+    ui.skinInstallButton->setIcon(QIcon::fromTheme("list-add"));
+    ui.skinReloadButton->setIcon(QIcon::fromTheme("view-refresh"));
+    ui.popupTemplateButton->setIcon(QIcon::fromTheme("configure"));
 }
 
 SkinnedSettings::~SkinnedSettings()

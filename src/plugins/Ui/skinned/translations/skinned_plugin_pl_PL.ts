@@ -562,22 +562,22 @@
         <translation type="unfinished">Zmień skrót...</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="54"/>
+        <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Playback</source>
         <translation type="unfinished">Odtwarzanie</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="60"/>
+        <location filename="../hotkeyeditor.cpp" line="61"/>
         <source>View</source>
         <translation type="unfinished">Wygląd</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="66"/>
+        <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista odtwarzania</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="72"/>
+        <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Misc</source>
         <translation type="unfinished">Inne</translation>
     </message>
@@ -1271,47 +1271,47 @@
         <translation type="unfinished">Wyświetl numery utworów na liście odtwarzania</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="370"/>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show playlists</source>
         <translation type="unfinished">Pokaż listy odtwarzania</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="379"/>
+        <location filename="../forms/skinnedsettings.ui" line="394"/>
         <source>Show popup information</source>
         <translation type="unfinished">Pokaż informację popup</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="389"/>
+        <location filename="../forms/skinnedsettings.ui" line="404"/>
         <source>Edit template</source>
         <translation type="unfinished">Edytuj szablon</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show anchor</source>
         <translation type="unfinished">Pokaż kotwicę</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <location filename="../forms/skinnedsettings.ui" line="373"/>
         <source>Align song numbers</source>
         <translation type="unfinished">Wyrównaj w pionie numery utworów</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="96"/>
+        <location filename="../skinnedsettings.cpp" line="100"/>
         <source>Select Skin Files</source>
         <translation type="unfinished">Wybierz skórę</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="97"/>
+        <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Skin files</source>
         <translation type="unfinished">Pliki skór</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="139"/>
+        <location filename="../skinnedsettings.cpp" line="143"/>
         <source>Unarchived skin</source>
         <translation type="unfinished">Niekompresowana skórka</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="170"/>
+        <location filename="../skinnedsettings.cpp" line="174"/>
         <source>Archived skin</source>
         <translation type="unfinished">Skompresowana skórka</translation>
     </message>
