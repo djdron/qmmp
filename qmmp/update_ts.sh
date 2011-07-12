@@ -5,7 +5,7 @@ do
     ts_pro=`cat $file | grep TRANSLATIONS`
     if [ "$ts_pro" ]
     then
-        lupdate $file
+        lupdate -no-obsolete $file
     fi
 
 done

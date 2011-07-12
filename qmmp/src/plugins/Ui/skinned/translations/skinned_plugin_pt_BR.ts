@@ -486,113 +486,6 @@
     </message>
 </context>
 <context>
-    <name>ConfigDialog</name>
-    <message>
-        <source>Description</source>
-        <translation type="obsolete">Descrição</translation>
-    </message>
-    <message>
-        <source>Filename</source>
-        <translation type="obsolete">Nome do Arquivo</translation>
-    </message>
-    <message>
-        <source>Artist</source>
-        <translation type="obsolete">Artista</translation>
-    </message>
-    <message>
-        <source>Album</source>
-        <translation type="obsolete">Álbum</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation type="obsolete">Título</translation>
-    </message>
-    <message>
-        <source>Genre</source>
-        <translation type="obsolete">Gênero</translation>
-    </message>
-    <message>
-        <source>Year</source>
-        <translation type="obsolete">Ano</translation>
-    </message>
-    <message>
-        <source>Comment</source>
-        <translation type="obsolete">Comentário</translation>
-    </message>
-    <message>
-        <source>Qmmp Settings</source>
-        <translation type="obsolete">Configurações</translation>
-    </message>
-    <message>
-        <source>Skins</source>
-        <translation type="obsolete">Temas</translation>
-    </message>
-    <message>
-        <source>Fonts</source>
-        <translation type="obsolete">Fontes</translation>
-    </message>
-    <message>
-        <source>Player:</source>
-        <translation type="obsolete">Player</translation>
-    </message>
-    <message>
-        <source>Playlist:</source>
-        <translation type="obsolete">Lista de músicas:</translation>
-    </message>
-    <message>
-        <source>???</source>
-        <translation type="obsolete">???</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="obsolete">...</translation>
-    </message>
-    <message>
-        <source>Metadata</source>
-        <translation type="obsolete">MetaData</translation>
-    </message>
-    <message>
-        <source>Load metadata from files</source>
-        <translation type="obsolete">Carregar arquivo MetaData</translation>
-    </message>
-    <message>
-        <source>Song Display</source>
-        <translation type="obsolete">Mostrar música</translation>
-    </message>
-    <message>
-        <source>Title format:</source>
-        <translation type="obsolete">Tipo de Formato:</translation>
-    </message>
-    <message>
-        <source>Preferences</source>
-        <translation type="obsolete">Preferências</translation>
-    </message>
-    <message>
-        <source>Information</source>
-        <translation type="obsolete">Informações</translation>
-    </message>
-    <message>
-        <source>Appearance</source>
-        <translation type="obsolete">Aparência</translation>
-    </message>
-    <message>
-        <source>Playlist</source>
-        <translation type="obsolete">Lista de músicas</translation>
-    </message>
-    <message>
-        <source>Plugins</source>
-        <translation type="obsolete">Plugins</translation>
-    </message>
-    <message>
-        <source>Advanced</source>
-        <translation type="obsolete">Avançado</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Recarregar</translation>
-    </message>
-</context>
-<context>
     <name>EqWidget</name>
     <message>
         <location filename="../eqwidget.cpp" line="154"/>
@@ -687,33 +580,6 @@
         <location filename="../hotkeyeditor.cpp" line="72"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>JumpToTrackDialog</name>
-    <message>
-        <source>Unqueue</source>
-        <translation type="obsolete">Sem Faixa na Fila</translation>
-    </message>
-    <message>
-        <source>Queue</source>
-        <translation type="obsolete">Faixa na Fila</translation>
-    </message>
-    <message>
-        <source>Jump To Track</source>
-        <translation type="obsolete">Pular de faixa</translation>
-    </message>
-    <message>
-        <source>Filter</source>
-        <translation type="obsolete">Filtro</translation>
-    </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Recarregar</translation>
-    </message>
-    <message>
-        <source>Jump To</source>
-        <translation type="obsolete">Pular para</translation>
     </message>
 </context>
 <context>
@@ -940,14 +806,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>Choose a directory</source>
-        <translation type="obsolete">Escolher o diretorio</translation>
-    </message>
-    <message>
-        <source>Select one or more files to open</source>
-        <translation type="obsolete">Selecionar um ou mais arquivos</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="318"/>
         <source>Appearance</source>
         <translation type="unfinished">Aparência</translation>
@@ -976,18 +834,6 @@
         <location filename="../mainwindow.cpp" line="390"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de músicas</translation>
-    </message>
-    <message>
-        <source>Open Playlist</source>
-        <translation type="obsolete">Abrir Playlist</translation>
-    </message>
-    <message>
-        <source>Save Playlist</source>
-        <translation type="obsolete">Salvar Playlist</translation>
-    </message>
-    <message>
-        <source>Playlist Files</source>
-        <translation type="obsolete">ФArquivos de lista de músicas</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="410"/>
