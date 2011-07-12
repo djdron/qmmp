@@ -43,7 +43,7 @@ SET(ui_SRCS
     addurldialog.cpp
     balancebar.cpp
     button.cpp
-    configdialog.cpp
+    skinnedsettings.cpp
     display.cpp
     dock.cpp
     eqgraph.cpp
@@ -63,7 +63,6 @@ SET(ui_SRCS
     playlistslider.cpp
     playlisttitlebar.cpp
     playstatus.cpp
-    pluginitem.cpp
     positionbar.cpp
     preseteditor.cpp
     shadedbar.cpp
@@ -88,6 +87,7 @@ SET(ui_SRCS
     shortcutitem.cpp
     shortcutdialog.cpp
     skinnedfactory.cpp
+    hotkeyeditor.cpp
 )
 
 SET(ui_MOC_HDRS
@@ -95,7 +95,7 @@ SET(ui_MOC_HDRS
     addurldialog.h
     balancebar.h
     button.h
-    configdialog.h
+    skinnedsettings.h
     display.h
     dock.h
     eqgraph.h
@@ -117,7 +117,6 @@ SET(ui_MOC_HDRS
     playlistslider.h
     playlisttitlebar.h
     playstatus.h
-    pluginitem.h
     positionbar.h
     preseteditor.h
     shadedbar.h
@@ -142,6 +141,7 @@ SET(ui_MOC_HDRS
     actionmanager.h
     shortcutdialog.h
     skinnedfactory.h
+    hotkeyeditor.h
 )
 
 SET(ui_RCCS images/images.qrc stuff.qrc translations/translations.qrc)
@@ -157,11 +157,12 @@ QT4_WRAP_CPP(ui_MOC_SRCS ${ui_MOC_HDRS})
 SET(ui_UIS
     forms/aboutdialog.ui
     forms/addurldialog.ui
-    forms/configdialog.ui
+    forms/skinnedsettings.ui
     forms/preseteditor.ui
     forms/playlistbrowser.ui
     forms/popupsettings.ui
     forms/shortcutdialog.ui
+    forms/hotkeyeditor.ui
 )
 
 QT4_WRAP_UI(ui_UIS_H ${ui_UIS})
