@@ -28,6 +28,7 @@ HotkeyEditor::HotkeyEditor(QWidget *parent) : QWidget(parent), m_ui(new Ui::Hotk
 {
     m_ui->setupUi(this);
     loadShortcuts();
+    m_ui->changeShortcutButton->setIcon(QIcon::fromTheme("configure"));
 }
 
 HotkeyEditor::~HotkeyEditor()

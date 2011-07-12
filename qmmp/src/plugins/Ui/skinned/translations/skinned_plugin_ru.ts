@@ -562,22 +562,22 @@
         <translation>Изменить сочетание клавиш...</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="54"/>
+        <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Playback</source>
         <translation>Воспроизведение</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="60"/>
+        <location filename="../hotkeyeditor.cpp" line="61"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="66"/>
+        <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../hotkeyeditor.cpp" line="72"/>
+        <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Misc</source>
         <translation>Другие</translation>
     </message>
@@ -1271,47 +1271,47 @@
         <translation>Показывать номера песен</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="370"/>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show playlists</source>
         <translation>Показывать списки воспроизведения</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="379"/>
+        <location filename="../forms/skinnedsettings.ui" line="394"/>
         <source>Show popup information</source>
         <translation>Показывать всплывающее окно с информацией</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="389"/>
+        <location filename="../forms/skinnedsettings.ui" line="404"/>
         <source>Edit template</source>
         <translation>Редактировать шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show anchor</source>
         <translation>Показывать &quot;якорь&quot;</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <location filename="../forms/skinnedsettings.ui" line="373"/>
         <source>Align song numbers</source>
         <translation>Выравнивать номера фрагментов</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="96"/>
+        <location filename="../skinnedsettings.cpp" line="100"/>
         <source>Select Skin Files</source>
         <translation>Выберите файлы обложек</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="97"/>
+        <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Skin files</source>
         <translation>Файлы обложек</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="139"/>
+        <location filename="../skinnedsettings.cpp" line="143"/>
         <source>Unarchived skin</source>
         <translation>Распакованная тема</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="170"/>
+        <location filename="../skinnedsettings.cpp" line="174"/>
         <source>Archived skin</source>
         <translation>Упакованная тема</translation>
     </message>
