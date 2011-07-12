@@ -486,511 +486,413 @@
     </message>
 </context>
 <context>
+    <name>BuiltinCommandLineOption</name>
+    <message>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="obsolete">Ne töröld a lejátszási listát</translation>
+    </message>
+    <message>
+        <source>Start playing current song</source>
+        <translation type="obsolete">Aktuális szám lejátszásának indítása</translation>
+    </message>
+    <message>
+        <source>Pause current song</source>
+        <translation type="obsolete">Aktuális szám szüneteltetése</translation>
+    </message>
+    <message>
+        <source>Pause if playing, play otherwise</source>
+        <translation type="obsolete">Szünet ha lejátszás van, különben lejátszás</translation>
+    </message>
+    <message>
+        <source>Stop current song</source>
+        <translation type="obsolete">Aktuális szám megállítása</translation>
+    </message>
+    <message>
+        <source>Display Jump to File dialog</source>
+        <translation type="obsolete">Számra ugrás ablak mutatása</translation>
+    </message>
+    <message>
+        <source>Set playback volume (example: qmmp --volume 20)</source>
+        <translation type="obsolete">Lejátszási hangerő beállítása (pl.: qmmp --volume 20)</translation>
+    </message>
+    <message>
+        <source>Skip forward in playlist</source>
+        <translation type="obsolete">Lejátszási lista következő számának kihagyása</translation>
+    </message>
+    <message>
+        <source>Skip backwards in playlist</source>
+        <translation type="obsolete">Lejátszási lista előző számainak kihagyása</translation>
+    </message>
+    <message>
+        <source>Show/hide application</source>
+        <translation type="obsolete">Alkalmazás mutatása/elrejtése</translation>
+    </message>
+    <message>
+        <source>Display Add File dialog</source>
+        <translation type="obsolete">Fájl hozzáadása ablak mutatása</translation>
+    </message>
+    <message>
+        <source>Display Add Directory dialog</source>
+        <translation type="obsolete">Könyvtár hozzáadása ablak mutatása</translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../configdialog.cpp" line="211"/>
         <source>Archived skin</source>
-        <translation>Tömörített skin</translation>
+        <translation type="obsolete">Tömörített skin</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="233"/>
         <source>Unarchived skin</source>
-        <translation>Tömörítettlen skin</translation>
+        <translation type="obsolete">Tömörítettlen skin</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="735"/>
         <source>Description</source>
-        <translation>Leírás</translation>
+        <translation type="obsolete">Leírás</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="740"/>
         <source>Filename</source>
-        <translation>Fájlnév</translation>
+        <translation type="obsolete">Fájlnév</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="431"/>
         <source>Artist</source>
-        <translation>Előadó</translation>
+        <translation type="obsolete">Előadó</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="75"/>
-        <location filename="../configdialog.cpp" line="432"/>
         <source>Album</source>
-        <translation>Album</translation>
+        <translation type="obsolete">Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="433"/>
         <source>Title</source>
-        <translation>Cím</translation>
+        <translation type="obsolete">Cím</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="436"/>
         <source>Genre</source>
-        <translation>Műfaj</translation>
+        <translation type="obsolete">Műfaj</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="442"/>
         <source>Year</source>
-        <translation>Év</translation>
+        <translation type="obsolete">Év</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="437"/>
         <source>Comment</source>
-        <translation>Megjegyzés</translation>
+        <translation type="obsolete">Megjegyzés</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="74"/>
         <source>Track</source>
-        <translation>Szám</translation>
+        <translation type="obsolete">Szám</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="76"/>
         <source>Disabled</source>
-        <translation>Kikapcsolva</translation>
+        <translation type="obsolete">Kikapcsolva</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="246"/>
         <source>Transports</source>
-        <translation>Transzportálás</translation>
+        <translation type="obsolete">Transzportálás</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="257"/>
         <source>Decoders</source>
-        <translation>Dekóderek</translation>
+        <translation type="obsolete">Dekóderek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="267"/>
         <source>Engines</source>
-        <translation>Motorok</translation>
+        <translation type="obsolete">Motorok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="374"/>
-        <source>Misc</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="434"/>
         <source>Track number</source>
-        <translation>Zeneszám</translation>
+        <translation type="obsolete">Zeneszám</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="435"/>
         <source>Two-digit track number</source>
-        <translation>Két jegyű zeneszám</translation>
+        <translation type="obsolete">Két jegyű zeneszám</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="438"/>
         <source>Composer</source>
-        <translation>Zeneszerző</translation>
+        <translation type="obsolete">Zeneszerző</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="439"/>
         <source>Disc number</source>
-        <translation>Lemezszám</translation>
+        <translation type="obsolete">Lemezszám</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="440"/>
         <source>File name</source>
-        <translation>Fájl neve</translation>
+        <translation type="obsolete">Fájl neve</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="441"/>
         <source>File path</source>
-        <translation>File útvonala</translation>
+        <translation type="obsolete">File útvonala</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="443"/>
         <source>Condition</source>
-        <translation>Feltétel</translation>
+        <translation type="obsolete">Feltétel</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="529"/>
         <source>Select Skin Files</source>
-        <translation>Skin fájl kiválasztása</translation>
+        <translation type="obsolete">Skin fájl kiválasztása</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="530"/>
         <source>Skin files</source>
-        <translation>Skin fájlok</translation>
+        <translation type="obsolete">Skin fájlok</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="14"/>
         <source>Qmmp Settings</source>
-        <translation>Qmmp beállítások</translation>
+        <translation type="obsolete">Qmmp beállítások</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="98"/>
         <source>Appearance</source>
-        <translation>Megjelenés</translation>
+        <translation type="obsolete">Megjelenés</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="107"/>
-        <location filename="../forms/configdialog.ui" line="463"/>
-        <location filename="../configdialog.cpp" line="368"/>
         <source>Playlist</source>
-        <translation>Lejátszási lista</translation>
+        <translation type="obsolete">Lejátszási lista</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="116"/>
         <source>Plugins</source>
-        <translation>Beépülők</translation>
+        <translation type="obsolete">Beépülők</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="125"/>
         <source>Advanced</source>
-        <translation>Haladó</translation>
+        <translation type="obsolete">Haladó</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="134"/>
         <source>Connectivity</source>
-        <translation>Összekapcsolhatóság</translation>
+        <translation type="obsolete">Összekapcsolhatóság</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="184"/>
         <source>Skins</source>
-        <translation>Skinek</translation>
+        <translation type="obsolete">Skinek</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="215"/>
         <source>Add...</source>
-        <translation>Hozzáad...</translation>
+        <translation type="obsolete">Hozzáad...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="228"/>
         <source>Refresh</source>
-        <translation>Frissít</translation>
+        <translation type="obsolete">Frissít</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="249"/>
         <source>Miscellaneous</source>
-        <translation>Vegyes</translation>
+        <translation type="obsolete">Vegyes</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="291"/>
         <source>Fonts</source>
-        <translation>Betűtípus</translation>
+        <translation type="obsolete">Betűtípus</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="309"/>
         <source>Player:</source>
-        <translation>Lejátszó:</translation>
+        <translation type="obsolete">Lejátszó:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="331"/>
-        <location filename="../forms/configdialog.ui" line="379"/>
         <source>???</source>
-        <translation>???</translation>
+        <translation type="obsolete">???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
-        <location filename="../forms/configdialog.ui" line="386"/>
-        <location filename="../forms/configdialog.ui" line="552"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="obsolete">...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="357"/>
         <source>Playlist:</source>
-        <translation>Lejátszási lista:</translation>
+        <translation type="obsolete">Lejátszási lista:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="393"/>
         <source>Use bitmap font if available</source>
-        <translation>Bittérképes betűtípus használata, ha elérhető</translation>
+        <translation type="obsolete">Bittérképes betűtípus használata, ha elérhető</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="275"/>
         <source>Use skin cursors</source>
-        <translation>Skin egértéma használata</translation>
+        <translation type="obsolete">Skin egértéma használata</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="152"/>
-        <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="511"/>
         <source>Metadata</source>
-        <translation>Metaadatok</translation>
+        <translation type="obsolete">Metaadatok</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="523"/>
         <source>Load metadata from files</source>
-        <translation>Metaadatok betöltése fájlból</translation>
+        <translation type="obsolete">Metaadatok betöltése fájlból</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="533"/>
         <source>Song Display</source>
-        <translation>Szám kijelző</translation>
+        <translation type="obsolete">Szám kijelző</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="539"/>
         <source>Title format:</source>
-        <translation>Cím formátum:</translation>
+        <translation type="obsolete">Cím formátum:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="559"/>
         <source>Convert underscores to blanks</source>
-        <translation>Lepontozottak átalakítása üressé</translation>
+        <translation type="obsolete">Lepontozottak átalakítása üressé</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="566"/>
         <source>Convert %20 to blanks</source>
-        <translation>Átalakítás %20 üressé</translation>
+        <translation type="obsolete">Átalakítás %20 üressé</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="573"/>
         <source>Show protocol</source>
-        <translation>Protokol mutatása</translation>
+        <translation type="obsolete">Protokol mutatása</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="580"/>
         <source>Show song numbers</source>
-        <translation>Zene sorszámának mutatása</translation>
+        <translation type="obsolete">Zene sorszámának mutatása</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="587"/>
         <source>Show playlists</source>
-        <translation>Lejátszási lista mutatása</translation>
+        <translation type="obsolete">Lejátszási lista mutatása</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="596"/>
         <source>Show popup information</source>
-        <translation>Felugró információk mutatása</translation>
+        <translation type="obsolete">Felugró információk mutatása</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="628"/>
-        <source>Show anchor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="638"/>
-        <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="686"/>
-        <location filename="../forms/configdialog.ui" line="1153"/>
         <source>Preferences</source>
-        <translation>Tulajdonságok</translation>
+        <translation type="obsolete">Tulajdonságok</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="699"/>
-        <location filename="../forms/configdialog.ui" line="761"/>
-        <location filename="../forms/configdialog.ui" line="1166"/>
         <source>Information</source>
-        <translation>Információ</translation>
+        <translation type="obsolete">Információ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="867"/>
-        <location filename="../configdialog.cpp" line="356"/>
         <source>Playback</source>
-        <translation>Lejátszás</translation>
+        <translation type="obsolete">Lejátszás</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation>Lejátszás folytatása indításkor</translation>
+        <translation type="obsolete">Lejátszás folytatása indításkor</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1189"/>
-        <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="1202"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation type="obsolete">ms</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1238"/>
         <source>16-bit output</source>
-        <translation>16 bites kimenet</translation>
+        <translation type="obsolete">16 bites kimenet</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1272"/>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="1277"/>
-        <source>Shortcut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="1285"/>
-        <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="287"/>
         <source>Visualization</source>
-        <translation>Vizualizáció</translation>
+        <translation type="obsolete">Vizualizáció</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="277"/>
         <source>Effects</source>
-        <translation>Effektek</translation>
+        <translation type="obsolete">Effektek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
         <source>General</source>
-        <translation>Általános</translation>
+        <translation type="obsolete">Általános</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="143"/>
-        <location filename="../forms/configdialog.ui" line="1131"/>
         <source>Audio</source>
-        <translation>Audió</translation>
+        <translation type="obsolete">Audió</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1001"/>
         <source>Replay Gain</source>
-        <translation>Replay Gain</translation>
+        <translation type="obsolete">Replay Gain</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1007"/>
         <source>Replay Gain mode:</source>
-        <translation>Replay Gain mód:</translation>
+        <translation type="obsolete">Replay Gain mód:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1024"/>
         <source>Preamp:</source>
-        <translation>Preamp:</translation>
+        <translation type="obsolete">Preamp:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1056"/>
-        <location filename="../forms/configdialog.ui" line="1101"/>
         <source>dB</source>
-        <translation>dB</translation>
+        <translation type="obsolete">dB</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1069"/>
         <source>Default gain:</source>
-        <translation>Alapértelmezett gain:</translation>
+        <translation type="obsolete">Alapértelmezett gain:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation>Csúcs információ használata a klippelés megelőzéséhez</translation>
+        <translation type="obsolete">Csúcs információ használata a klippelés megelőzéséhez</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
-        <translation>Kimenet:</translation>
+        <translation type="obsolete">Kimenet:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1231"/>
         <source>Use software volume control</source>
-        <translation>Szoftveres hangerőszabályzó használata</translation>
+        <translation type="obsolete">Szoftveres hangerőszabályzó használata</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="261"/>
         <source>Hide on close</source>
-        <translation>Elrejtés bezáráskor</translation>
+        <translation type="obsolete">Elrejtés bezáráskor</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
-        <translation>Rejtve induljon</translation>
+        <translation type="obsolete">Rejtve induljon</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="752"/>
         <source>File Dialog</source>
-        <translation>Fájl ablak</translation>
+        <translation type="obsolete">Fájl ablak</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
         <source>Transparency</source>
-        <translation>Átlátszóság</translation>
+        <translation type="obsolete">Átlátszóság</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="255"/>
-        <location filename="../configdialog.cpp" line="362"/>
         <source>View</source>
-        <translation>Megnéz</translation>
+        <translation type="obsolete">Megnéz</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="409"/>
         <source>Main window</source>
-        <translation>Fő ablak</translation>
+        <translation type="obsolete">Fő ablak</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="432"/>
-        <location filename="../forms/configdialog.ui" line="456"/>
-        <location filename="../forms/configdialog.ui" line="480"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation type="obsolete">0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="439"/>
         <source>Equalizer</source>
-        <translation>Hangszínszabályozó</translation>
+        <translation type="obsolete">Hangszínszabályozó</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Edit template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="784"/>
         <source>Cover Image Retrieve</source>
-        <translation>Borító beszerzése</translation>
+        <translation type="obsolete">Borító beszerzése</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation>Különböző képfájlok használata</translation>
+        <translation type="obsolete">Különböző képfájlok használata</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Include files:</source>
-        <translation>Tartalmazott fájlok:</translation>
+        <translation type="obsolete">Tartalmazott fájlok:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="810"/>
         <source>Exclude files:</source>
-        <translation>Kihagyott fájlok:</translation>
+        <translation type="obsolete">Kihagyott fájlok:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="822"/>
         <source>Recursive search depth:</source>
-        <translation>Rekúrzív keresési mélység:</translation>
+        <translation type="obsolete">Rekúrzív keresési mélység:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="899"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation type="obsolete">Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="911"/>
         <source>Enable proxy usage</source>
-        <translation>Proxy használatának engedélyezése</translation>
+        <translation type="obsolete">Proxy használatának engedélyezése</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="918"/>
         <source>Proxy host name:</source>
-        <translation>Proxy host name:</translation>
+        <translation type="obsolete">Proxy host name:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="931"/>
         <source>Proxy port:</source>
-        <translation>Proxy port:</translation>
+        <translation type="obsolete">Proxy port:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="944"/>
         <source>Use authentication with proxy</source>
-        <translation>Hitelesítés hasznáalta proxy-val</translation>
+        <translation type="obsolete">Hitelesítés hasznáalta proxy-val</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="951"/>
         <source>Proxy user name:</source>
-        <translation>Proxy felhasználónév:</translation>
+        <translation type="obsolete">Proxy felhasználónév:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="964"/>
         <source>Proxy password:</source>
-        <translation>Proxy jelszó:</translation>
+        <translation type="obsolete">Proxy jelszó:</translation>
     </message>
 </context>
 <context>
@@ -1050,6 +952,83 @@
         <location filename="../eqwidget.cpp" line="392"/>
         <source>Import Preset</source>
         <translation>Beállítás importálása</translation>
+    </message>
+</context>
+<context>
+    <name>HotkeyEditor</name>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="27"/>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="32"/>
+        <source>Shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="54"/>
+        <source>Playback</source>
+        <translation type="unfinished">Lejátszás</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="60"/>
+        <source>View</source>
+        <translation type="unfinished">Megnéz</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="66"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Lejátszási lista</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="72"/>
+        <source>Misc</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>JumpToTrackDialog</name>
+    <message>
+        <source>Jump To Track</source>
+        <translation type="obsolete">Ugrás számra</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="obsolete">Szűrő</translation>
+    </message>
+    <message>
+        <source>Queue</source>
+        <translation type="obsolete">Sorba betesz</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="obsolete">Frissít</translation>
+    </message>
+    <message>
+        <source>Jump To</source>
+        <translation type="obsolete">Ugrás</translation>
+    </message>
+    <message>
+        <source>Q</source>
+        <translation type="obsolete">Q</translation>
+    </message>
+    <message>
+        <source>J</source>
+        <translation type="obsolete">J</translation>
+    </message>
+    <message>
+        <source>F5</source>
+        <translation type="obsolete">F5</translation>
+    </message>
+    <message>
+        <source>Unqueue</source>
+        <translation type="obsolete">Sorból kivesz</translation>
     </message>
 </context>
 <context>
@@ -1276,29 +1255,63 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="384"/>
+        <source>Choose a directory</source>
+        <translation type="obsolete">Válassz egy könyvtárat</translation>
+    </message>
+    <message>
+        <source>All Supported Bitstreams</source>
+        <translation type="obsolete">Minden támogatott bitráta</translation>
+    </message>
+    <message>
+        <source>Select one or more files to open</source>
+        <translation type="obsolete">Válassz egy vagy több fájlat megnyitásra</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="390"/>
         <source>Playlist</source>
         <translation type="unfinished">Lejátszási lista</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Ugrás fájlra</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="374"/>
+        <location filename="../mainwindow.cpp" line="318"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Megjelenés</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="319"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="380"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="376"/>
+        <location filename="../mainwindow.cpp" line="382"/>
         <source>View</source>
         <translation type="unfinished">Megnéz</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="404"/>
+        <location filename="../mainwindow.cpp" line="410"/>
         <source>Tools</source>
         <translation>Eszközök</translation>
+    </message>
+    <message>
+        <source>Playlist Files</source>
+        <translation type="obsolete">Lejátszási lista fájl</translation>
+    </message>
+    <message>
+        <source>Open Playlist</source>
+        <translation type="obsolete">Lista megnyitása</translation>
+    </message>
+    <message>
+        <source>Save Playlist</source>
+        <translation type="obsolete">Lista mentése</translation>
     </message>
 </context>
 <context>
@@ -1596,6 +1609,41 @@
     </message>
 </context>
 <context>
+    <name>QMMPStarter</name>
+    <message>
+        <source>Unknown command</source>
+        <translation type="obsolete">Ismeretlen parancs</translation>
+    </message>
+    <message>
+        <source>Usage: qmmp [options] [files]</source>
+        <translation type="obsolete">Használat: qmmp [opciók] [fájlok]</translation>
+    </message>
+    <message>
+        <source>Options:</source>
+        <translation type="obsolete">Opciók:</translation>
+    </message>
+    <message>
+        <source>Display this text and exit</source>
+        <translation type="obsolete">Mutasd ezt a szöveget, majd lépj ki</translation>
+    </message>
+    <message>
+        <source>Print version number and exit</source>
+        <translation type="obsolete">Mutasd a verziószámot, majd lépj ki</translation>
+    </message>
+    <message>
+        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
+        <translation type="obsolete">Ötleteket, foltokat, hibajelentéseket küld a forkotov02@hotmail.ru címre</translation>
+    </message>
+    <message>
+        <source>QMMP version:</source>
+        <translation type="obsolete">QMMP verzió:</translation>
+    </message>
+    <message>
+        <source>Qt version:</source>
+        <translation type="obsolete">Qt verzió:</translation>
+    </message>
+</context>
+<context>
     <name>ShortcutDialog</name>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
@@ -1614,6 +1662,169 @@
     </message>
 </context>
 <context>
+    <name>SkinnedSettings</name>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="24"/>
+        <source>Skins</source>
+        <translation type="unfinished">Skinek</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="55"/>
+        <source>Add...</source>
+        <translation type="unfinished">Hozzáad...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="68"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Frissít</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <location filename="../forms/skinnedsettings.ui" line="95"/>
+        <source>View</source>
+        <translation type="unfinished">Megnéz</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="101"/>
+        <source>Hide on close</source>
+        <translation type="unfinished">Elrejtés bezáráskor</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="108"/>
+        <source>Start hidden</source>
+        <translation type="unfinished">Rejtve induljon</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="115"/>
+        <source>Use skin cursors</source>
+        <translation type="unfinished">Skin egértéma használata</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="131"/>
+        <source>Fonts</source>
+        <translation type="unfinished">Betűtípus</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="149"/>
+        <source>Player:</source>
+        <translation type="unfinished">Lejátszó:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="171"/>
+        <location filename="../forms/skinnedsettings.ui" line="219"/>
+        <source>???</source>
+        <translation type="unfinished">???</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="178"/>
+        <location filename="../forms/skinnedsettings.ui" line="226"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="197"/>
+        <source>Playlist:</source>
+        <translation type="unfinished">Lejátszási lista:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="233"/>
+        <source>Use bitmap font if available</source>
+        <translation type="unfinished">Bittérképes betűtípus használata, ha elérhető</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="243"/>
+        <source>Transparency</source>
+        <translation type="unfinished">Átlátszóság</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="249"/>
+        <source>Main window</source>
+        <translation type="unfinished">Fő ablak</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="272"/>
+        <location filename="../forms/skinnedsettings.ui" line="296"/>
+        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <source>0</source>
+        <translation type="unfinished">0</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <source>Equalizer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="303"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Lejátszási lista</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished">Vegyes</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="350"/>
+        <source>Song Display</source>
+        <translation type="unfinished">Szám kijelző</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <source>Show protocol</source>
+        <translation type="unfinished">Protokol mutatása</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="363"/>
+        <source>Show song numbers</source>
+        <translation type="unfinished">Zene sorszámának mutatása</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="370"/>
+        <source>Show playlists</source>
+        <translation type="unfinished">Lejátszási lista mutatása</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="379"/>
+        <source>Show popup information</source>
+        <translation type="unfinished">Felugró információk mutatása</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="389"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <source>Show anchor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="96"/>
+        <source>Select Skin Files</source>
+        <translation type="unfinished">Skin fájl kiválasztása</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="97"/>
+        <source>Skin files</source>
+        <translation type="unfinished">Skin fájlok</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="139"/>
+        <source>Unarchived skin</source>
+        <translation type="unfinished">Tömörítettlen skin</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="170"/>
+        <source>Archived skin</source>
+        <translation type="unfinished">Tömörített skin</translation>
+    </message>
+</context>
+<context>
     <name>TextScroller</name>
     <message>
         <location filename="../textscroller.cpp" line="52"/>
@@ -1629,7 +1840,7 @@
 <context>
     <name>VisualMenu</name>
     <message>
-        <location filename="../visualmenu.cpp" line="29"/>
+        <location filename="../visualmenu.cpp" line="26"/>
         <source>Visualization</source>
         <translation>Vizualizáció</translation>
     </message>

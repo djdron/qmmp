@@ -1,11 +1,13 @@
 include(../../plugins.pri)
-FORMS += forms/configdialog.ui \
+FORMS += \
     forms/preseteditor.ui \
     forms/aboutdialog.ui \
     forms/addurldialog.ui \
     forms/playlistbrowser.ui \
     forms/popupsettings.ui \
-    forms/shortcutdialog.ui
+    forms/shortcutdialog.ui \
+    forms/skinnedsettings.ui \
+    forms/hotkeyeditor.ui
 HEADERS += mainwindow.h \
     button.h \
     display.h \
@@ -17,7 +19,6 @@ HEADERS += mainwindow.h \
     listwidget.h \
     pixmapwidget.h \
     playlisttitlebar.h \
-    configdialog.h \
     playlistslider.h \
     dock.h \
     eqwidget.h \
@@ -31,7 +32,6 @@ HEADERS += mainwindow.h \
     textscroller.h \
     monostereo.h \
     playstatus.h \
-    pluginitem.h \
     volumebar.h \
     balancebar.h \
     symboldisplay.h \
@@ -57,7 +57,9 @@ HEADERS += mainwindow.h \
     actionmanager.h \
     shortcutitem.h \
     shortcutdialog.h \
-    skinnedfactory.h
+    skinnedfactory.h \
+    skinnedsettings.h \
+    hotkeyeditor.h
 SOURCES += mainwindow.cpp \
     button.cpp \
     display.cpp \
@@ -69,7 +71,6 @@ SOURCES += mainwindow.cpp \
     listwidget.cpp \
     pixmapwidget.cpp \
     playlisttitlebar.cpp \
-    configdialog.cpp \
     playlistslider.cpp \
     dock.cpp \
     eqwidget.cpp \
@@ -82,7 +83,6 @@ SOURCES += mainwindow.cpp \
     textscroller.cpp \
     monostereo.cpp \
     playstatus.cpp \
-    pluginitem.cpp \
     volumebar.cpp \
     balancebar.cpp \
     symboldisplay.cpp \
@@ -108,7 +108,9 @@ SOURCES += mainwindow.cpp \
     actionmanager.cpp \
     shortcutitem.cpp \
     shortcutdialog.cpp \
-    skinnedfactory.cpp
+    skinnedfactory.cpp \
+    skinnedsettings.cpp \
+    hotkeyeditor.cpp
 
 
 QT += network

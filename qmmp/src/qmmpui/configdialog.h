@@ -17,44 +17,55 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef CONFIGDIALOG_H
+#define CONFIGDIALOG_H
 
-#include <QAction>
-#include <qmmp/visual.h>
-#include <qmmp/visualfactory.h>
-#include "visualmenu.h"
+#include <QDialog>
+#include <QIcon>
 
-VisualMenu::VisualMenu(QWidget *parent) : QMenu(tr("Visualization"), parent)
-{
-    VisualFactory *factory = 0;
-    foreach(factory, *Visual::factories())
-    {
-        VisualAction *act = new VisualAction(factory, this);
-        addAction(act);
-    }
+
+namespace Ui {
+    class ConfigDialog;
 }
 
-VisualMenu::~VisualMenu()
-{
-}
+class QListWidgetItem;
+class QTreeWidgetItem;
 
-void VisualMenu::updateActions()
-{
-    for(int i = 0; i < Visual::factories()->size(); ++i)
-    {
-        actions()[i]->setChecked(Visual::isEnabled(Visual::factories()->at(i)));
-    }
-}
 
-VisualAction::VisualAction(VisualFactory *factory, QWidget *parent) :
-        QAction(factory->properties().name, parent)
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class ConfigDialog : public QDialog
 {
-    setCheckable (true);
-    setChecked (Visual::isEnabled(factory));
-    m_factory = factory;
-    connect(this, SIGNAL(triggered(bool)), SLOT(select(bool)));
-}
+    Q_OBJECT
+public:
+    ConfigDialog(QWidget *parent = 0);
+    virtual ~ConfigDialog();
 
-void VisualAction::select(bool select)
-{
-    Visual::setEnabled(m_factory, select);
-}
+    void addPage(const QString &name, QWidget *widget, const QIcon &icon = QIcon());
+
+private slots:
+    void on_contentsWidget_currentItemChanged (QListWidgetItem *current, QListWidgetItem *previous);
+    void on_preferencesButton_clicked();
+    void on_informationButton_clicked();
+    void addTitleString(QAction *);
+    void saveSettings();
+    void updateDialogButton(int);
+    void on_fdInformationButton_clicked();
+    void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
+    void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
+    void on_outputComboBox_activated (int index);
+    void on_outputPreferencesButton_clicked();
+    void on_outputInformationButton_clicked();
+
+private:
+    void readSettings();
+    void findSkins(const QString &path);
+    void loadPluginsInfo();
+    void createMenus();
+    int m_insert_row;
+    Ui::ConfigDialog *m_ui;
+
+};
+
+#endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2007-2011 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,67 +17,30 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef CONFIGDIALOG_H
-#define CONFIGDIALOG_H
 
-#include <QDialog>
-#include <QTreeWidgetItem>
+#ifndef HOTKEYEDITOR_H
+#define HOTKEYEDITOR_H
 
-#include "ui_configdialog.h"
+#include <QWidget>
 
+namespace Ui {
+    class HotkeyEditor;
+}
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class QFileInfo;
-
-class Skin;
-class SkinReader;
-
-class ConfigDialog : public QDialog
+class HotkeyEditor : public QWidget
 {
     Q_OBJECT
-public:
-    ConfigDialog(QWidget *parent = 0);
 
-    ~ConfigDialog();
+public:
+    explicit HotkeyEditor(QWidget *parent = 0);
+    virtual ~HotkeyEditor();
 
 private slots:
-    void on_contentsWidget_currentItemChanged (QListWidgetItem *current, QListWidgetItem *previous);
-    void changeSkin();
-    void setPlFont();
-    void setMainFont();
-    void on_preferencesButton_clicked();
-    void on_informationButton_clicked();
-    void addTitleString(QAction *);
-    void saveSettings();
-    void updateDialogButton(int);
-    void on_fdInformationButton_clicked();
-    void installSkin();
-    void loadSkins();
-    void on_popupTemplateButton_clicked();
-    void on_treeWidget_itemChanged (QTreeWidgetItem *item, int column);
-    void on_treeWidget_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *);
-    void on_outputComboBox_activated (int index);
-    void on_outputPreferencesButton_clicked();
-    void on_outputInformationButton_clicked();
     void on_changeShortcutButton_clicked();
 
 private:
-    void readSettings();
-    void findSkins(const QString &path);
-    void loadPluginsInfo();
-    void loadFonts();
     void loadShortcuts();
-    void createMenus();
-
-
-    QList <QFileInfo> m_skinList;
-    Ui::ConfigDialog ui;
-    QString m_currentSkinName;
-    Skin *m_skin;
-    QPixmap pixmap;
-    SkinReader *m_reader;
+    Ui::HotkeyEditor *m_ui;
 };
 
-#endif
+#endif // HOTKEYEDITOR_H

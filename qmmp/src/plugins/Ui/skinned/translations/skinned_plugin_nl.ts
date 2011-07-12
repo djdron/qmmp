@@ -486,511 +486,413 @@
     </message>
 </context>
 <context>
+    <name>BuiltinCommandLineOption</name>
+    <message>
+        <source>Skip forward in playlist</source>
+        <translation type="obsolete">Naar voren springen in afspeellijstb</translation>
+    </message>
+    <message>
+        <source>Skip backwards in playlist</source>
+        <translation type="obsolete">Naar achteren springen in afspeellijst</translation>
+    </message>
+    <message>
+        <source>Start playing current song</source>
+        <translation type="obsolete">Begin met afspelen van huidig nummer</translation>
+    </message>
+    <message>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="obsolete">Niet de afspellijst leeghalen</translation>
+    </message>
+    <message>
+        <source>Pause current song</source>
+        <translation type="obsolete">Pauzeer huidig nummer</translation>
+    </message>
+    <message>
+        <source>Pause if playing, play otherwise</source>
+        <translation type="obsolete">Pauzeer als er wordt gespeeld, anders spelen</translation>
+    </message>
+    <message>
+        <source>Stop current song</source>
+        <translation type="obsolete">Stop huidig nummer</translation>
+    </message>
+    <message>
+        <source>Display Jump to File dialog</source>
+        <translation type="obsolete">Toon Ga Naar Bestandsdialoog</translation>
+    </message>
+    <message>
+        <source>Set playback volume (example: qmmp --volume 20)</source>
+        <translation type="obsolete">Zet afspeelvolume (voorbeeld: qmmp --volume 20)</translation>
+    </message>
+    <message>
+        <source>Show/hide application</source>
+        <translation type="obsolete">Toon/verberg programma</translation>
+    </message>
+    <message>
+        <source>Display Add File dialog</source>
+        <translation type="obsolete">Toon venster om bestanden toe te voegen</translation>
+    </message>
+    <message>
+        <source>Display Add Directory dialog</source>
+        <translation type="obsolete">Toon venster om mappen toe te voegen</translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../forms/configdialog.ui" line="735"/>
         <source>Description</source>
-        <translation>Popis</translation>
+        <translation type="obsolete">Popis</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="740"/>
         <source>Filename</source>
-        <translation>Bestandsnaam</translation>
+        <translation type="obsolete">Bestandsnaam</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="431"/>
         <source>Artist</source>
-        <translation>Artiest</translation>
+        <translation type="obsolete">Artiest</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="75"/>
-        <location filename="../configdialog.cpp" line="432"/>
         <source>Album</source>
-        <translation>Album</translation>
+        <translation type="obsolete">Album</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="74"/>
         <source>Track</source>
-        <translation>Nummer</translation>
+        <translation type="obsolete">Nummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="76"/>
         <source>Disabled</source>
-        <translation>Uitgeschakeld</translation>
+        <translation type="obsolete">Uitgeschakeld</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="246"/>
         <source>Transports</source>
-        <translation>Protocols</translation>
+        <translation type="obsolete">Protocols</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="257"/>
         <source>Decoders</source>
-        <translation>Decoders</translation>
+        <translation type="obsolete">Decoders</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="267"/>
         <source>Engines</source>
-        <translation>Engines</translation>
+        <translation type="obsolete">Engines</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="374"/>
-        <source>Misc</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../configdialog.cpp" line="433"/>
         <source>Title</source>
-        <translation>Naam</translation>
+        <translation type="obsolete">Naam</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="434"/>
         <source>Track number</source>
-        <translation>Liednummer</translation>
+        <translation type="obsolete">Liednummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="435"/>
         <source>Two-digit track number</source>
-        <translation>Twee-getal liednummer</translation>
+        <translation type="obsolete">Twee-getal liednummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="439"/>
         <source>Disc number</source>
-        <translation>CD nummer</translation>
+        <translation type="obsolete">CD nummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="443"/>
         <source>Condition</source>
-        <translation>Staat</translation>
+        <translation type="obsolete">Staat</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="438"/>
         <source>Composer</source>
-        <translation>Componist</translation>
+        <translation type="obsolete">Componist</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="440"/>
         <source>File name</source>
-        <translation>Bestandsnaam</translation>
+        <translation type="obsolete">Bestandsnaam</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="441"/>
         <source>File path</source>
-        <translation>Pad</translation>
+        <translation type="obsolete">Pad</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="436"/>
         <source>Genre</source>
-        <translation>Genre</translation>
+        <translation type="obsolete">Genre</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="442"/>
         <source>Year</source>
-        <translation>Jaar</translation>
+        <translation type="obsolete">Jaar</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="437"/>
         <source>Comment</source>
-        <translation>Commentaar</translation>
+        <translation type="obsolete">Commentaar</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="14"/>
         <source>Qmmp Settings</source>
-        <translation>Qmmp Instellingen</translation>
+        <translation type="obsolete">Qmmp Instellingen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="98"/>
         <source>Appearance</source>
-        <translation>Vertoning</translation>
+        <translation type="obsolete">Vertoning</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="107"/>
-        <location filename="../forms/configdialog.ui" line="463"/>
-        <location filename="../configdialog.cpp" line="368"/>
         <source>Playlist</source>
-        <translation>Afspeellijst</translation>
+        <translation type="obsolete">Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="116"/>
         <source>Plugins</source>
-        <translation>Modules</translation>
+        <translation type="obsolete">Modules</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="125"/>
         <source>Advanced</source>
-        <translation>Geavanceerd</translation>
+        <translation type="obsolete">Geavanceerd</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="184"/>
         <source>Skins</source>
-        <translation>Thema&apos;s</translation>
+        <translation type="obsolete">Thema&apos;s</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="291"/>
         <source>Fonts</source>
-        <translation>Lettertypen</translation>
+        <translation type="obsolete">Lettertypen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="309"/>
         <source>Player:</source>
-        <translation>Speler:</translation>
+        <translation type="obsolete">Speler:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="357"/>
         <source>Playlist:</source>
-        <translation>Afspeellijst:</translation>
+        <translation type="obsolete">Afspeellijst:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="331"/>
-        <location filename="../forms/configdialog.ui" line="379"/>
         <source>???</source>
-        <translation>???</translation>
+        <translation type="obsolete">???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1001"/>
         <source>Replay Gain</source>
-        <translation>Replay Gain</translation>
+        <translation type="obsolete">Replay Gain</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="249"/>
         <source>Miscellaneous</source>
-        <translation>Overige</translation>
+        <translation type="obsolete">Overige</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
-        <location filename="../forms/configdialog.ui" line="386"/>
-        <location filename="../forms/configdialog.ui" line="552"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="obsolete">...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="393"/>
         <source>Use bitmap font if available</source>
-        <translation>Gebruik bitmap lettertype indien aanwezig</translation>
+        <translation type="obsolete">Gebruik bitmap lettertype indien aanwezig</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="275"/>
         <source>Use skin cursors</source>
-        <translation>Gebruik thema cursor</translation>
+        <translation type="obsolete">Gebruik thema cursor</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="152"/>
-        <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="511"/>
         <source>Metadata</source>
-        <translation>Metadata</translation>
+        <translation type="obsolete">Metadata</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="523"/>
         <source>Load metadata from files</source>
-        <translation>Laad metadata van bestanden</translation>
+        <translation type="obsolete">Laad metadata van bestanden</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="533"/>
         <source>Song Display</source>
-        <translation>Nummer Weergave</translation>
+        <translation type="obsolete">Nummer Weergave</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="539"/>
         <source>Title format:</source>
-        <translation>Titel formaat:</translation>
+        <translation type="obsolete">Titel formaat:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="580"/>
         <source>Show song numbers</source>
-        <translation>Toon liednummers</translation>
+        <translation type="obsolete">Toon liednummers</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="587"/>
         <source>Show playlists</source>
-        <translation>Toon afspeellijst</translation>
+        <translation type="obsolete">Toon afspeellijst</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="596"/>
         <source>Show popup information</source>
-        <translation>Toon popup informatie</translation>
+        <translation type="obsolete">Toon popup informatie</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="628"/>
-        <source>Show anchor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="638"/>
-        <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="686"/>
-        <location filename="../forms/configdialog.ui" line="1153"/>
         <source>Preferences</source>
-        <translation>Voorkeuren</translation>
+        <translation type="obsolete">Voorkeuren</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="699"/>
-        <location filename="../forms/configdialog.ui" line="761"/>
-        <location filename="../forms/configdialog.ui" line="1166"/>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation type="obsolete">Informatie</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="784"/>
         <source>Cover Image Retrieve</source>
-        <translation>Lees Hoes Af</translation>
+        <translation type="obsolete">Lees Hoes Af</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation>Gebruik aparte afbeeldingsbestanden</translation>
+        <translation type="obsolete">Gebruik aparte afbeeldingsbestanden</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Include files:</source>
-        <translation>Inclusief de bestanden:</translation>
+        <translation type="obsolete">Inclusief de bestanden:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="810"/>
         <source>Exclude files:</source>
-        <translation>Exclusief de bestanden:</translation>
+        <translation type="obsolete">Exclusief de bestanden:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="822"/>
         <source>Recursive search depth:</source>
-        <translation>Recursieve zoekdiepte:</translation>
+        <translation type="obsolete">Recursieve zoekdiepte:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="867"/>
-        <location filename="../configdialog.cpp" line="356"/>
         <source>Playback</source>
-        <translation>Afspelen</translation>
+        <translation type="obsolete">Afspelen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation>Verdergaan met afspelen bij opstarten</translation>
+        <translation type="obsolete">Verdergaan met afspelen bij opstarten</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1007"/>
         <source>Replay Gain mode:</source>
-        <translation>Replay Gain stand:</translation>
+        <translation type="obsolete">Replay Gain stand:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1024"/>
         <source>Preamp:</source>
-        <translation>Voorversterking:</translation>
+        <translation type="obsolete">Voorversterking:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1056"/>
-        <location filename="../forms/configdialog.ui" line="1101"/>
         <source>dB</source>
-        <translation>dB</translation>
+        <translation type="obsolete">dB</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1069"/>
         <source>Default gain:</source>
-        <translation>Standaard verhoging:</translation>
+        <translation type="obsolete">Standaard verhoging:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation>Gebruik piek info om stotteren te voorkomen</translation>
+        <translation type="obsolete">Gebruik piek info om stotteren te voorkomen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
-        <translation>Uitvoer:</translation>
+        <translation type="obsolete">Uitvoer:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1189"/>
-        <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="1202"/>
         <source>ms</source>
-        <translation type="unfinished">ms</translation>
+        <translation type="obsolete">ms</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1238"/>
         <source>16-bit output</source>
-        <translation>16bit uitvoer</translation>
+        <translation type="obsolete">16bit uitvoer</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1272"/>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="1277"/>
-        <source>Shortcut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="1285"/>
-        <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="134"/>
         <source>Connectivity</source>
-        <translation>Connectiviteit</translation>
+        <translation type="obsolete">Connectiviteit</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="255"/>
-        <location filename="../configdialog.cpp" line="362"/>
         <source>View</source>
-        <translation>Weergave</translation>
+        <translation type="obsolete">Weergave</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
-        <source>Edit template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="752"/>
         <source>File Dialog</source>
-        <translation>Bestandsdialoog</translation>
+        <translation type="obsolete">Bestandsdialoog</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="899"/>
         <source>Proxy</source>
-        <translation>Proxy</translation>
+        <translation type="obsolete">Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="911"/>
         <source>Enable proxy usage</source>
-        <translation>Gebruik proxy</translation>
+        <translation type="obsolete">Gebruik proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="918"/>
         <source>Proxy host name:</source>
-        <translation>Proxy host naam:</translation>
+        <translation type="obsolete">Proxy host naam:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="931"/>
         <source>Proxy port:</source>
-        <translation>Proxy poort:</translation>
+        <translation type="obsolete">Proxy poort:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="944"/>
         <source>Use authentication with proxy</source>
-        <translation>Gebruik authenticatie bij proxy</translation>
+        <translation type="obsolete">Gebruik authenticatie bij proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="951"/>
         <source>Proxy user name:</source>
-        <translation>Proxy gebruikersnaam:</translation>
+        <translation type="obsolete">Proxy gebruikersnaam:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="964"/>
         <source>Proxy password:</source>
-        <translation>Proxy wachtwoord:</translation>
+        <translation type="obsolete">Proxy wachtwoord:</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="211"/>
         <source>Archived skin</source>
-        <translation>Gearchiveerd thema</translation>
+        <translation type="obsolete">Gearchiveerd thema</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="233"/>
         <source>Unarchived skin</source>
-        <translation>Niet gearchiveerd thema</translation>
+        <translation type="obsolete">Niet gearchiveerd thema</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
         <source>Visualization</source>
-        <translation>Visualisatie</translation>
+        <translation type="obsolete">Visualisatie</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="277"/>
         <source>Effects</source>
-        <translation>Effecten</translation>
+        <translation type="obsolete">Effecten</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
         <source>General</source>
-        <translation>Algemeen</translation>
+        <translation type="obsolete">Algemeen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="143"/>
-        <location filename="../forms/configdialog.ui" line="1131"/>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation type="obsolete">Audio</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1231"/>
         <source>Use software volume control</source>
-        <translation>Gebruik software volume</translation>
+        <translation type="obsolete">Gebruik software volume</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="261"/>
         <source>Hide on close</source>
-        <translation>Verberg bij sluit</translation>
+        <translation type="obsolete">Verberg bij sluit</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
-        <translation>Start verborgen</translation>
+        <translation type="obsolete">Start verborgen</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="559"/>
         <source>Convert underscores to blanks</source>
-        <translation>Zet lage strepen om in spaties</translation>
+        <translation type="obsolete">Zet lage strepen om in spaties</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="566"/>
         <source>Convert %20 to blanks</source>
-        <translation>Zet %20 om in spaties</translation>
+        <translation type="obsolete">Zet %20 om in spaties</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="529"/>
         <source>Select Skin Files</source>
-        <translation>Selecteer themabestanden</translation>
+        <translation type="obsolete">Selecteer themabestanden</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="530"/>
         <source>Skin files</source>
-        <translation>Thema bestanden</translation>
+        <translation type="obsolete">Thema bestanden</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="215"/>
         <source>Add...</source>
-        <translation>Toevoegen...</translation>
+        <translation type="obsolete">Toevoegen...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="228"/>
         <source>Refresh</source>
-        <translation>Herlaad</translation>
+        <translation type="obsolete">Herlaad</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="573"/>
         <source>Show protocol</source>
-        <translation>Laad protocol</translation>
+        <translation type="obsolete">Laad protocol</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
         <source>Transparency</source>
-        <translation>Transparantie</translation>
+        <translation type="obsolete">Transparantie</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="409"/>
         <source>Main window</source>
-        <translation>Hoofdscherm</translation>
+        <translation type="obsolete">Hoofdscherm</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="432"/>
-        <location filename="../forms/configdialog.ui" line="456"/>
-        <location filename="../forms/configdialog.ui" line="480"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation type="obsolete">0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="439"/>
         <source>Equalizer</source>
-        <translation>Equalizer</translation>
+        <translation type="obsolete">Equalizer</translation>
     </message>
 </context>
 <context>
@@ -1050,6 +952,83 @@
         <location filename="../eqwidget.cpp" line="392"/>
         <source>Import Preset</source>
         <translation>Importer Instelling</translation>
+    </message>
+</context>
+<context>
+    <name>HotkeyEditor</name>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="27"/>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="32"/>
+        <source>Shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="54"/>
+        <source>Playback</source>
+        <translation type="unfinished">Afspelen</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="60"/>
+        <source>View</source>
+        <translation type="unfinished">Weergave</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="66"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Afspeellijst</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="72"/>
+        <source>Misc</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>JumpToTrackDialog</name>
+    <message>
+        <source>Q</source>
+        <translation type="obsolete">Q</translation>
+    </message>
+    <message>
+        <source>J</source>
+        <translation type="obsolete">J</translation>
+    </message>
+    <message>
+        <source>F5</source>
+        <translation type="obsolete">F5</translation>
+    </message>
+    <message>
+        <source>Unqueue</source>
+        <translation type="obsolete">Verwijder uit lijst</translation>
+    </message>
+    <message>
+        <source>Queue</source>
+        <translation type="obsolete">Rij</translation>
+    </message>
+    <message>
+        <source>Jump To Track</source>
+        <translation type="obsolete">Ga Naar Nummer</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="obsolete">Filter</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="obsolete">Herlaad</translation>
+    </message>
+    <message>
+        <source>Jump To</source>
+        <translation type="obsolete">Ga Naar</translation>
     </message>
 </context>
 <context>
@@ -1276,27 +1255,61 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="373"/>
+        <source>Choose a directory</source>
+        <translation type="obsolete">Kies een map</translation>
+    </message>
+    <message>
+        <source>Select one or more files to open</source>
+        <translation type="obsolete">Kies een of meer bestanden om te openen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="318"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Vertoning</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="319"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Spring Naar Bestand</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="374"/>
+        <location filename="../mainwindow.cpp" line="380"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="376"/>
+        <location filename="../mainwindow.cpp" line="382"/>
         <source>View</source>
         <translation type="unfinished">Weergave</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="384"/>
+        <location filename="../mainwindow.cpp" line="390"/>
         <source>Playlist</source>
         <translation type="unfinished">Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="404"/>
+        <source>Playlist Files</source>
+        <translation type="obsolete">Afspeellijst Bestanden</translation>
+    </message>
+    <message>
+        <source>Open Playlist</source>
+        <translation type="obsolete">Open Afspeellijst</translation>
+    </message>
+    <message>
+        <source>Save Playlist</source>
+        <translation type="obsolete">Bewaar Afspeellijst</translation>
+    </message>
+    <message>
+        <source>All Supported Bitstreams</source>
+        <translation type="obsolete">Alle Ondersteunde Bitstromen</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="410"/>
         <source>Tools</source>
         <translation>Gereedschappen</translation>
     </message>
@@ -1596,6 +1609,41 @@
     </message>
 </context>
 <context>
+    <name>QMMPStarter</name>
+    <message>
+        <source>Usage: qmmp [options] [files]</source>
+        <translation type="obsolete">Gebruik: qmmp [opties] [bestanden]</translation>
+    </message>
+    <message>
+        <source>Options:</source>
+        <translation type="obsolete">Opties:</translation>
+    </message>
+    <message>
+        <source>Print version number and exit</source>
+        <translation type="obsolete">Print versienummer en sluit</translation>
+    </message>
+    <message>
+        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
+        <translation type="obsolete">Ideëen, patches, foutrapporten zenden naar forkotov02@hotmail.ru (anglicky)</translation>
+    </message>
+    <message>
+        <source>Display this text and exit</source>
+        <translation type="obsolete">Toon dit tekstje en sluit</translation>
+    </message>
+    <message>
+        <source>Unknown command</source>
+        <translation type="obsolete">Onbekend commando</translation>
+    </message>
+    <message>
+        <source>QMMP version:</source>
+        <translation type="obsolete">QMMP versie:</translation>
+    </message>
+    <message>
+        <source>Qt version:</source>
+        <translation type="obsolete">Qt versie:</translation>
+    </message>
+</context>
+<context>
     <name>ShortcutDialog</name>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
@@ -1614,6 +1662,169 @@
     </message>
 </context>
 <context>
+    <name>SkinnedSettings</name>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="24"/>
+        <source>Skins</source>
+        <translation type="unfinished">Thema&apos;s</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="55"/>
+        <source>Add...</source>
+        <translation type="unfinished">Toevoegen...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="68"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Herlaad</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <location filename="../forms/skinnedsettings.ui" line="95"/>
+        <source>View</source>
+        <translation type="unfinished">Weergave</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="101"/>
+        <source>Hide on close</source>
+        <translation type="unfinished">Verberg bij sluit</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="108"/>
+        <source>Start hidden</source>
+        <translation type="unfinished">Start verborgen</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="115"/>
+        <source>Use skin cursors</source>
+        <translation type="unfinished">Gebruik thema cursor</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="131"/>
+        <source>Fonts</source>
+        <translation type="unfinished">Lettertypen</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="149"/>
+        <source>Player:</source>
+        <translation type="unfinished">Speler:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="171"/>
+        <location filename="../forms/skinnedsettings.ui" line="219"/>
+        <source>???</source>
+        <translation type="unfinished">???</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="178"/>
+        <location filename="../forms/skinnedsettings.ui" line="226"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="197"/>
+        <source>Playlist:</source>
+        <translation type="unfinished">Afspeellijst:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="233"/>
+        <source>Use bitmap font if available</source>
+        <translation type="unfinished">Gebruik bitmap lettertype indien aanwezig</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="243"/>
+        <source>Transparency</source>
+        <translation type="unfinished">Transparantie</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="249"/>
+        <source>Main window</source>
+        <translation type="unfinished">Hoofdscherm</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="272"/>
+        <location filename="../forms/skinnedsettings.ui" line="296"/>
+        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <source>0</source>
+        <translation type="unfinished">0</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <source>Equalizer</source>
+        <translation type="unfinished">Equalizer</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="303"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Afspeellijst</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished">Overige</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="350"/>
+        <source>Song Display</source>
+        <translation type="unfinished">Nummer Weergave</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <source>Show protocol</source>
+        <translation type="unfinished">Laad protocol</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="363"/>
+        <source>Show song numbers</source>
+        <translation type="unfinished">Toon liednummers</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="370"/>
+        <source>Show playlists</source>
+        <translation type="unfinished">Toon afspeellijst</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="379"/>
+        <source>Show popup information</source>
+        <translation type="unfinished">Toon popup informatie</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="389"/>
+        <source>Edit template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <source>Show anchor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="96"/>
+        <source>Select Skin Files</source>
+        <translation type="unfinished">Selecteer themabestanden</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="97"/>
+        <source>Skin files</source>
+        <translation type="unfinished">Thema bestanden</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="139"/>
+        <source>Unarchived skin</source>
+        <translation type="unfinished">Niet gearchiveerd thema</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="170"/>
+        <source>Archived skin</source>
+        <translation type="unfinished">Gearchiveerd thema</translation>
+    </message>
+</context>
+<context>
     <name>TextScroller</name>
     <message>
         <location filename="../textscroller.cpp" line="52"/>
@@ -1629,7 +1840,7 @@
 <context>
     <name>VisualMenu</name>
     <message>
-        <location filename="../visualmenu.cpp" line="29"/>
+        <location filename="../visualmenu.cpp" line="26"/>
         <source>Visualization</source>
         <translation>Visualisatie</translation>
     </message>

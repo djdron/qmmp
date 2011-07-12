@@ -486,511 +486,449 @@
     </message>
 </context>
 <context>
+    <name>BuiltinCommandLineOption</name>
+    <message>
+        <source>Skip forward in playlist</source>
+        <translation type="obsolete">Перейти к следующему фрагменту</translation>
+    </message>
+    <message>
+        <source>Skip backwards in playlist</source>
+        <translation type="obsolete">Перейти к предыдущему фрагменту</translation>
+    </message>
+    <message>
+        <source>Start playing current song</source>
+        <translation type="obsolete">Воспроизвести текущую песню</translation>
+    </message>
+    <message>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="obsolete">Не очищать лист</translation>
+    </message>
+    <message>
+        <source>Pause current song</source>
+        <translation type="obsolete">Приостановить текущую песню</translation>
+    </message>
+    <message>
+        <source>Pause if playing, play otherwise</source>
+        <translation type="obsolete">Приостановить/воспроизвести</translation>
+    </message>
+    <message>
+        <source>Stop current song</source>
+        <translation type="obsolete">Остановить текущую песню</translation>
+    </message>
+    <message>
+        <source>Display Jump to File dialog</source>
+        <translation type="obsolete">Показать диалог перехода к файлу</translation>
+    </message>
+    <message>
+        <source>Set playback volume (example: qmmp --volume 20)</source>
+        <translation type="obsolete">Установить громкость (пример: qmmp --volume 20)</translation>
+    </message>
+    <message>
+        <source>Show/hide application</source>
+        <translation type="obsolete">Показать/скрыть приложение</translation>
+    </message>
+    <message>
+        <source>Display Add File dialog</source>
+        <translation type="obsolete">Показать диалог добавления файлов</translation>
+    </message>
+    <message>
+        <source>Display Add Directory dialog</source>
+        <translation type="obsolete">Показать диалог добавления директорий</translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../forms/configdialog.ui" line="735"/>
         <source>Description</source>
-        <translation>Описание</translation>
+        <translation type="obsolete">Описание</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="740"/>
         <source>Filename</source>
-        <translation>Имя файла</translation>
+        <translation type="obsolete">Имя файла</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="431"/>
         <source>Artist</source>
-        <translation>Исполнитель</translation>
+        <translation type="obsolete">Исполнитель</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="75"/>
-        <location filename="../configdialog.cpp" line="432"/>
         <source>Album</source>
-        <translation>Альбом</translation>
+        <translation type="obsolete">Альбом</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="74"/>
         <source>Track</source>
-        <translation>Дорожка</translation>
+        <translation type="obsolete">Дорожка</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="76"/>
         <source>Disabled</source>
-        <translation>Отключено</translation>
+        <translation type="obsolete">Отключено</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="246"/>
         <source>Transports</source>
-        <translation>Транспорты</translation>
+        <translation type="obsolete">Транспорты</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="257"/>
         <source>Decoders</source>
-        <translation>Декодеры</translation>
+        <translation type="obsolete">Декодеры</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="267"/>
         <source>Engines</source>
-        <translation>Внешние проигрыватели</translation>
+        <translation type="obsolete">Внешние проигрыватели</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="374"/>
         <source>Misc</source>
-        <translation>Другие</translation>
+        <translation type="obsolete">Другие</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="433"/>
         <source>Title</source>
-        <translation>Название</translation>
+        <translation type="obsolete">Название</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="434"/>
         <source>Track number</source>
-        <translation>Номер трека</translation>
+        <translation type="obsolete">Номер трека</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="435"/>
         <source>Two-digit track number</source>
-        <translation>2-x разрядный номер трека</translation>
+        <translation type="obsolete">2-x разрядный номер трека</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="439"/>
         <source>Disc number</source>
-        <translation>Номер диска</translation>
+        <translation type="obsolete">Номер диска</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="443"/>
         <source>Condition</source>
-        <translation>Условие</translation>
+        <translation type="obsolete">Условие</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="436"/>
         <source>Genre</source>
-        <translation>Жанр</translation>
+        <translation type="obsolete">Жанр</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="438"/>
         <source>Composer</source>
-        <translation>Композитор</translation>
+        <translation type="obsolete">Композитор</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="440"/>
         <source>File name</source>
-        <translation>Имя файла</translation>
+        <translation type="obsolete">Имя файла</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="441"/>
         <source>File path</source>
-        <translation>Путь к файлу</translation>
+        <translation type="obsolete">Путь к файлу</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="442"/>
         <source>Year</source>
-        <translation>Год</translation>
+        <translation type="obsolete">Год</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="437"/>
         <source>Comment</source>
-        <translation>Комментарий</translation>
+        <translation type="obsolete">Комментарий</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="14"/>
         <source>Qmmp Settings</source>
-        <translation>Настройки Qmmp</translation>
+        <translation type="obsolete">Настройки Qmmp</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="184"/>
         <source>Skins</source>
-        <translation>Обложки</translation>
+        <translation type="obsolete">Обложки</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="291"/>
         <source>Fonts</source>
-        <translation>Шрифты</translation>
+        <translation type="obsolete">Шрифты</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="309"/>
         <source>Player:</source>
-        <translation>Плеер:</translation>
+        <translation type="obsolete">Плеер:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="357"/>
         <source>Playlist:</source>
-        <translation>Список:</translation>
+        <translation type="obsolete">Список:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="331"/>
-        <location filename="../forms/configdialog.ui" line="379"/>
         <source>???</source>
-        <translation>???</translation>
+        <translation type="obsolete">???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
-        <location filename="../forms/configdialog.ui" line="386"/>
-        <location filename="../forms/configdialog.ui" line="552"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="obsolete">...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="511"/>
         <source>Metadata</source>
-        <translation>Метаданные</translation>
+        <translation type="obsolete">Метаданные</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="523"/>
         <source>Load metadata from files</source>
-        <translation>Считывать метаданные из файлов</translation>
+        <translation type="obsolete">Считывать метаданные из файлов</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="533"/>
         <source>Song Display</source>
-        <translation>Список песен</translation>
+        <translation type="obsolete">Список песен</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="539"/>
         <source>Title format:</source>
-        <translation>Формат названия:</translation>
+        <translation type="obsolete">Формат названия:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="686"/>
-        <location filename="../forms/configdialog.ui" line="1153"/>
         <source>Preferences</source>
-        <translation>Настройки</translation>
+        <translation type="obsolete">Настройки</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="699"/>
-        <location filename="../forms/configdialog.ui" line="761"/>
-        <location filename="../forms/configdialog.ui" line="1166"/>
         <source>Information</source>
-        <translation>Информация</translation>
+        <translation type="obsolete">Информация</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="98"/>
         <source>Appearance</source>
-        <translation>Внешний вид</translation>
+        <translation type="obsolete">Внешний вид</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="107"/>
-        <location filename="../forms/configdialog.ui" line="463"/>
-        <location filename="../configdialog.cpp" line="368"/>
         <source>Playlist</source>
-        <translation>Список</translation>
+        <translation type="obsolete">Список</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="116"/>
         <source>Plugins</source>
-        <translation>Модули</translation>
+        <translation type="obsolete">Модули</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="125"/>
         <source>Advanced</source>
-        <translation>Дополнительно</translation>
+        <translation type="obsolete">Дополнительно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1238"/>
         <source>16-bit output</source>
-        <translation>16-битный вывод</translation>
+        <translation type="obsolete">16-битный вывод</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="211"/>
         <source>Archived skin</source>
-        <translation>Упакованная тема</translation>
+        <translation type="obsolete">Упакованная тема</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="233"/>
         <source>Unarchived skin</source>
-        <translation>Распакованная тема</translation>
+        <translation type="obsolete">Распакованная тема</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="134"/>
         <source>Connectivity</source>
-        <translation>Сеть</translation>
+        <translation type="obsolete">Сеть</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
         <source>Visualization</source>
-        <translation>Визуализация</translation>
+        <translation type="obsolete">Визуализация</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="277"/>
         <source>Effects</source>
-        <translation>Эффекты</translation>
+        <translation type="obsolete">Эффекты</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
         <source>General</source>
-        <translation>Общие</translation>
+        <translation type="obsolete">Общие</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="752"/>
         <source>File Dialog</source>
-        <translation>Файловый диалог</translation>
+        <translation type="obsolete">Файловый диалог</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="143"/>
-        <location filename="../forms/configdialog.ui" line="1131"/>
         <source>Audio</source>
-        <translation>Аудио</translation>
+        <translation type="obsolete">Аудио</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1001"/>
         <source>Replay Gain</source>
-        <translation>Выравнивание громкости (Replay Gain)</translation>
+        <translation type="obsolete">Выравнивание громкости (Replay Gain)</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="249"/>
         <source>Miscellaneous</source>
-        <translation>Разное</translation>
+        <translation type="obsolete">Разное</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="393"/>
         <source>Use bitmap font if available</source>
-        <translation>Использовать растровые шрифты, если возможно</translation>
+        <translation type="obsolete">Использовать растровые шрифты, если возможно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="275"/>
         <source>Use skin cursors</source>
-        <translation>Использовать встроенные курсоры</translation>
+        <translation type="obsolete">Использовать встроенные курсоры</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="580"/>
         <source>Show song numbers</source>
-        <translation>Показывать номера песен</translation>
+        <translation type="obsolete">Показывать номера песен</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="587"/>
         <source>Show playlists</source>
-        <translation>Показывать списки воспроизведения</translation>
+        <translation type="obsolete">Показывать списки воспроизведения</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="596"/>
         <source>Show popup information</source>
-        <translation>Показывать всплывающее окно с информацией</translation>
+        <translation type="obsolete">Показывать всплывающее окно с информацией</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1007"/>
         <source>Replay Gain mode:</source>
-        <translation>Режим Replay Gain:</translation>
+        <translation type="obsolete">Режим Replay Gain:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1024"/>
         <source>Preamp:</source>
-        <translation>Предусиление:</translation>
+        <translation type="obsolete">Предусиление:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1056"/>
-        <location filename="../forms/configdialog.ui" line="1101"/>
         <source>dB</source>
-        <translation>дБ</translation>
+        <translation type="obsolete">дБ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1069"/>
         <source>Default gain:</source>
-        <translation>Усиление по умолчанию:</translation>
+        <translation type="obsolete">Усиление по умолчанию:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation>Использовать пиковое значение для предотвращения срезания</translation>
+        <translation type="obsolete">Использовать пиковое значение для предотвращения срезания</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
-        <translation>Вывод:</translation>
+        <translation type="obsolete">Вывод:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1189"/>
         <source>Buffer size:</source>
-        <translation>Размер буфера:</translation>
+        <translation type="obsolete">Размер буфера:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1202"/>
         <source>ms</source>
-        <translation>мс</translation>
+        <translation type="obsolete">мс</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1231"/>
         <source>Use software volume control</source>
-        <translation>Использовать программную регулировку громкости</translation>
+        <translation type="obsolete">Использовать программную регулировку громкости</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="255"/>
-        <location filename="../configdialog.cpp" line="362"/>
         <source>View</source>
-        <translation>Вид</translation>
+        <translation type="obsolete">Вид</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="152"/>
         <source>Shortcuts</source>
-        <translation>Сочетания клавиш</translation>
+        <translation type="obsolete">Сочетания клавиш</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="261"/>
         <source>Hide on close</source>
-        <translation>Скрывать при закрытии</translation>
+        <translation type="obsolete">Скрывать при закрытии</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
-        <translation>Запускать скрытым</translation>
+        <translation type="obsolete">Запускать скрытым</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation>Редактировать шаблон</translation>
+        <translation type="obsolete">Редактировать шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
-        <translation>Показывать &quot;якорь&quot;</translation>
+        <translation type="obsolete">Показывать &quot;якорь&quot;</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation>Выравнивать номера фрагментов</translation>
+        <translation type="obsolete">Выравнивать номера фрагментов</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="784"/>
         <source>Cover Image Retrieve</source>
-        <translation>Поиск обложки альбома</translation>
+        <translation type="obsolete">Поиск обложки альбома</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation>Использовать отдельные файлы с изображениями</translation>
+        <translation type="obsolete">Использовать отдельные файлы с изображениями</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Include files:</source>
-        <translation>Включить файлы:</translation>
+        <translation type="obsolete">Включить файлы:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="810"/>
         <source>Exclude files:</source>
-        <translation>Исключить файлы:</translation>
+        <translation type="obsolete">Исключить файлы:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="822"/>
         <source>Recursive search depth:</source>
-        <translation>Глубина рекурсивного поиска:</translation>
+        <translation type="obsolete">Глубина рекурсивного поиска:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="867"/>
-        <location filename="../configdialog.cpp" line="356"/>
         <source>Playback</source>
-        <translation>Воспроизведение</translation>
+        <translation type="obsolete">Воспроизведение</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation>Продолжить воспроизведение после запуска</translation>
+        <translation type="obsolete">Продолжить воспроизведение после запуска</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="899"/>
         <source>Proxy</source>
-        <translation>Прокси</translation>
+        <translation type="obsolete">Прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="911"/>
         <source>Enable proxy usage</source>
-        <translation>Использовать прокси</translation>
+        <translation type="obsolete">Использовать прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="918"/>
         <source>Proxy host name:</source>
-        <translation>Прокси сервер:</translation>
+        <translation type="obsolete">Прокси сервер:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="931"/>
         <source>Proxy port:</source>
-        <translation>Прокси порт:</translation>
+        <translation type="obsolete">Прокси порт:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="944"/>
         <source>Use authentication with proxy</source>
-        <translation>Использовать авторизацию на прокси</translation>
+        <translation type="obsolete">Использовать авторизацию на прокси</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="951"/>
         <source>Proxy user name:</source>
-        <translation>Имя пользователя прокси:</translation>
+        <translation type="obsolete">Имя пользователя прокси:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="964"/>
         <source>Proxy password:</source>
-        <translation>Пароль прокси:</translation>
+        <translation type="obsolete">Пароль прокси:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1272"/>
         <source>Action</source>
-        <translation>Действие</translation>
+        <translation type="obsolete">Действие</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1277"/>
         <source>Shortcut</source>
-        <translation>Сочетание клавиш</translation>
+        <translation type="obsolete">Сочетание клавиш</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1285"/>
         <source>Change shortcut...</source>
-        <translation>Изменить сочетание клавиш...</translation>
+        <translation type="obsolete">Изменить сочетание клавиш...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="559"/>
         <source>Convert underscores to blanks</source>
-        <translation>Преобразовывать подчёркивание в пробел</translation>
+        <translation type="obsolete">Преобразовывать подчёркивание в пробел</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="566"/>
         <source>Convert %20 to blanks</source>
-        <translation>Преобразовывать %20 в пробел</translation>
+        <translation type="obsolete">Преобразовывать %20 в пробел</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="529"/>
         <source>Select Skin Files</source>
-        <translation>Выберите файлы обложек</translation>
+        <translation type="obsolete">Выберите файлы обложек</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="530"/>
         <source>Skin files</source>
-        <translation>Файлы обложек</translation>
+        <translation type="obsolete">Файлы обложек</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="215"/>
         <source>Add...</source>
-        <translation>Добавить...</translation>
+        <translation type="obsolete">Добавить...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="228"/>
         <source>Refresh</source>
-        <translation>Обновить</translation>
+        <translation type="obsolete">Обновить</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="573"/>
         <source>Show protocol</source>
-        <translation>Показывать протокол</translation>
+        <translation type="obsolete">Показывать протокол</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
         <source>Transparency</source>
-        <translation>Прозрачность</translation>
+        <translation type="obsolete">Прозрачность</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="409"/>
         <source>Main window</source>
-        <translation>Главное окно</translation>
+        <translation type="obsolete">Главное окно</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="432"/>
-        <location filename="../forms/configdialog.ui" line="456"/>
-        <location filename="../forms/configdialog.ui" line="480"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation type="obsolete">0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="439"/>
         <source>Equalizer</source>
-        <translation>Эквалайзер</translation>
+        <translation type="obsolete">Эквалайзер</translation>
     </message>
 </context>
 <context>
@@ -1050,6 +988,71 @@
         <location filename="../eqwidget.cpp" line="392"/>
         <source>Import Preset</source>
         <translation>Импорт предустановки</translation>
+    </message>
+</context>
+<context>
+    <name>HotkeyEditor</name>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="27"/>
+        <source>Action</source>
+        <translation type="unfinished">Действие</translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="32"/>
+        <source>Shortcut</source>
+        <translation type="unfinished">Сочетание клавиш</translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished">Изменить сочетание клавиш...</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="54"/>
+        <source>Playback</source>
+        <translation type="unfinished">Воспроизведение</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="60"/>
+        <source>View</source>
+        <translation type="unfinished">Вид</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="66"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Список</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="72"/>
+        <source>Misc</source>
+        <translation type="unfinished">Другие</translation>
+    </message>
+</context>
+<context>
+    <name>JumpToTrackDialog</name>
+    <message>
+        <source>Unqueue</source>
+        <translation type="obsolete">Снять с очереди</translation>
+    </message>
+    <message>
+        <source>Queue</source>
+        <translation type="obsolete">В очередь</translation>
+    </message>
+    <message>
+        <source>Jump To Track</source>
+        <translation type="obsolete">Перейти к треку</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="obsolete">Фильтр</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="obsolete">Обновить</translation>
+    </message>
+    <message>
+        <source>Jump To</source>
+        <translation type="obsolete">Перейти к</translation>
     </message>
 </context>
 <context>
@@ -1276,27 +1279,61 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="373"/>
+        <source>Choose a directory</source>
+        <translation type="obsolete">Выберите директорию</translation>
+    </message>
+    <message>
+        <source>Select one or more files to open</source>
+        <translation type="obsolete">Выберите один или несколько файлов</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="318"/>
+        <source>Appearance</source>
+        <translation type="unfinished">Внешний вид</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="319"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished">Сочетания клавиш</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Перейти к файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="374"/>
+        <location filename="../mainwindow.cpp" line="380"/>
         <source>J</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="376"/>
+        <location filename="../mainwindow.cpp" line="382"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="384"/>
+        <location filename="../mainwindow.cpp" line="390"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="404"/>
+        <source>Open Playlist</source>
+        <translation type="obsolete">Открыть список</translation>
+    </message>
+    <message>
+        <source>Save Playlist</source>
+        <translation type="obsolete">Сохранить список</translation>
+    </message>
+    <message>
+        <source>Playlist Files</source>
+        <translation type="obsolete">Файлы списков</translation>
+    </message>
+    <message>
+        <source>All Supported Bitstreams</source>
+        <translation type="obsolete">Все форматы</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="410"/>
         <source>Tools</source>
         <translation>Сервис</translation>
     </message>
@@ -1596,6 +1633,45 @@
     </message>
 </context>
 <context>
+    <name>QMMPStarter</name>
+    <message>
+        <source>Usage: qmmp [options] [files]</source>
+        <translation type="obsolete">Использование: qmmp [options] [files]</translation>
+    </message>
+    <message>
+        <source>Options:</source>
+        <translation type="obsolete">Опции:</translation>
+    </message>
+    <message>
+        <source>Don&apos;t start the application</source>
+        <translation type="obsolete">Не запускать приложение</translation>
+    </message>
+    <message>
+        <source>Print version number and exit</source>
+        <translation type="obsolete">Показать версии и выйти</translation>
+    </message>
+    <message>
+        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
+        <translation type="obsolete">Идеи, исправления, отчёты об ошибках:  forkotov02@hotmail.ru</translation>
+    </message>
+    <message>
+        <source>Display this text and exit</source>
+        <translation type="obsolete">Показать этот текст и выйти</translation>
+    </message>
+    <message>
+        <source>Unknown command</source>
+        <translation type="obsolete">Неизвестная команда</translation>
+    </message>
+    <message>
+        <source>QMMP version:</source>
+        <translation type="obsolete">Версия QMMP:</translation>
+    </message>
+    <message>
+        <source>Qt version:</source>
+        <translation type="obsolete">Версия Qt:</translation>
+    </message>
+</context>
+<context>
     <name>ShortcutDialog</name>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
@@ -1614,6 +1690,169 @@
     </message>
 </context>
 <context>
+    <name>SkinnedSettings</name>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="24"/>
+        <source>Skins</source>
+        <translation type="unfinished">Обложки</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="55"/>
+        <source>Add...</source>
+        <translation type="unfinished">Добавить...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="68"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <location filename="../forms/skinnedsettings.ui" line="95"/>
+        <source>View</source>
+        <translation type="unfinished">Вид</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="101"/>
+        <source>Hide on close</source>
+        <translation type="unfinished">Скрывать при закрытии</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="108"/>
+        <source>Start hidden</source>
+        <translation type="unfinished">Запускать скрытым</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="115"/>
+        <source>Use skin cursors</source>
+        <translation type="unfinished">Использовать встроенные курсоры</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="131"/>
+        <source>Fonts</source>
+        <translation type="unfinished">Шрифты</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="149"/>
+        <source>Player:</source>
+        <translation type="unfinished">Плеер:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="171"/>
+        <location filename="../forms/skinnedsettings.ui" line="219"/>
+        <source>???</source>
+        <translation type="unfinished">???</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="178"/>
+        <location filename="../forms/skinnedsettings.ui" line="226"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="197"/>
+        <source>Playlist:</source>
+        <translation type="unfinished">Список:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="233"/>
+        <source>Use bitmap font if available</source>
+        <translation type="unfinished">Использовать растровые шрифты, если возможно</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="243"/>
+        <source>Transparency</source>
+        <translation type="unfinished">Прозрачность</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="249"/>
+        <source>Main window</source>
+        <translation type="unfinished">Главное окно</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="272"/>
+        <location filename="../forms/skinnedsettings.ui" line="296"/>
+        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <source>0</source>
+        <translation type="unfinished">0</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <source>Equalizer</source>
+        <translation type="unfinished">Эквалайзер</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="303"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Список</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished">Разное</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="350"/>
+        <source>Song Display</source>
+        <translation type="unfinished">Список песен</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <source>Show protocol</source>
+        <translation type="unfinished">Показывать протокол</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="363"/>
+        <source>Show song numbers</source>
+        <translation type="unfinished">Показывать номера песен</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="370"/>
+        <source>Show playlists</source>
+        <translation type="unfinished">Показывать списки воспроизведения</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="379"/>
+        <source>Show popup information</source>
+        <translation type="unfinished">Показывать всплывающее окно с информацией</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="389"/>
+        <source>Edit template</source>
+        <translation type="unfinished">Редактировать шаблон</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <source>Show anchor</source>
+        <translation type="unfinished">Показывать &quot;якорь&quot;</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished">Выравнивать номера фрагментов</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="96"/>
+        <source>Select Skin Files</source>
+        <translation type="unfinished">Выберите файлы обложек</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="97"/>
+        <source>Skin files</source>
+        <translation type="unfinished">Файлы обложек</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="139"/>
+        <source>Unarchived skin</source>
+        <translation type="unfinished">Распакованная тема</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="170"/>
+        <source>Archived skin</source>
+        <translation type="unfinished">Упакованная тема</translation>
+    </message>
+</context>
+<context>
     <name>TextScroller</name>
     <message>
         <location filename="../textscroller.cpp" line="52"/>
@@ -1629,7 +1868,7 @@
 <context>
     <name>VisualMenu</name>
     <message>
-        <location filename="../visualmenu.cpp" line="29"/>
+        <location filename="../visualmenu.cpp" line="26"/>
         <source>Visualization</source>
         <translation>Визуализация</translation>
     </message>

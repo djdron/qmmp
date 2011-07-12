@@ -486,511 +486,449 @@
     </message>
 </context>
 <context>
+    <name>BuiltinCommandLineOption</name>
+    <message>
+        <source>Don&apos;t clear the playlist</source>
+        <translation type="obsolete">プレイリストをクリアしない</translation>
+    </message>
+    <message>
+        <source>Start playing current song</source>
+        <translation type="obsolete">今の曲から再生を開始</translation>
+    </message>
+    <message>
+        <source>Pause current song</source>
+        <translation type="obsolete">今の曲で一時停止</translation>
+    </message>
+    <message>
+        <source>Pause if playing, play otherwise</source>
+        <translation type="obsolete">再生中なら一時停止、一時停止しておれば再生</translation>
+    </message>
+    <message>
+        <source>Stop current song</source>
+        <translation type="obsolete">今の曲で終止</translation>
+    </message>
+    <message>
+        <source>Display Jump to File dialog</source>
+        <translation type="obsolete">「ファイルを指定して即刻再生」ダイアログを表示</translation>
+    </message>
+    <message>
+        <source>Set playback volume (example: qmmp --volume 20)</source>
+        <translation type="obsolete">音量設定 (例: qmmp --volume 20)</translation>
+    </message>
+    <message>
+        <source>Skip forward in playlist</source>
+        <translation type="obsolete">プレイリストでの次の曲にスキップ</translation>
+    </message>
+    <message>
+        <source>Skip backwards in playlist</source>
+        <translation type="obsolete">プレイリストで前の曲にスキップ</translation>
+    </message>
+    <message>
+        <source>Show/hide application</source>
+        <translation type="obsolete">アプリケーションウィンドウを表示/非表示</translation>
+    </message>
+    <message>
+        <source>Display Add File dialog</source>
+        <translation type="obsolete">「ファイル追加」ダイアログを表示</translation>
+    </message>
+    <message>
+        <source>Display Add Directory dialog</source>
+        <translation type="obsolete">「ディレクトリ追加」ダイアログを表示</translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../forms/configdialog.ui" line="14"/>
         <source>Qmmp Settings</source>
-        <translation>QMMP設定</translation>
+        <translation type="obsolete">QMMP設定</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="98"/>
         <source>Appearance</source>
-        <translation>外観</translation>
+        <translation type="obsolete">外観</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="107"/>
-        <location filename="../forms/configdialog.ui" line="463"/>
-        <location filename="../configdialog.cpp" line="368"/>
         <source>Playlist</source>
-        <translation>プレイリスト</translation>
+        <translation type="obsolete">プレイリスト</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="116"/>
         <source>Plugins</source>
-        <translation>プラグイン</translation>
+        <translation type="obsolete">プラグイン</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="125"/>
         <source>Advanced</source>
-        <translation>上級</translation>
+        <translation type="obsolete">上級</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="134"/>
         <source>Connectivity</source>
-        <translation>接続</translation>
+        <translation type="obsolete">接続</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="143"/>
-        <location filename="../forms/configdialog.ui" line="1131"/>
         <source>Audio</source>
-        <translation>音響</translation>
+        <translation type="obsolete">音響</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="152"/>
         <source>Shortcuts</source>
-        <translation>ショートカット</translation>
+        <translation type="obsolete">ショートカット</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="184"/>
         <source>Skins</source>
-        <translation>スキン</translation>
+        <translation type="obsolete">スキン</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="215"/>
         <source>Add...</source>
-        <translation>追加...</translation>
+        <translation type="obsolete">追加...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="228"/>
         <source>Refresh</source>
-        <translation>更新</translation>
+        <translation type="obsolete">更新</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="249"/>
         <source>Miscellaneous</source>
-        <translation>各種設定</translation>
+        <translation type="obsolete">各種設定</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="255"/>
-        <location filename="../configdialog.cpp" line="362"/>
         <source>View</source>
-        <translation>観容</translation>
+        <translation type="obsolete">観容</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="261"/>
         <source>Hide on close</source>
-        <translation>「閉じる」で隠す</translation>
+        <translation type="obsolete">「閉じる」で隠す</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="268"/>
         <source>Start hidden</source>
-        <translation>開始時に隠す</translation>
+        <translation type="obsolete">開始時に隠す</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="275"/>
         <source>Use skin cursors</source>
-        <translation>スキンカーソルを使用</translation>
+        <translation type="obsolete">スキンカーソルを使用</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="291"/>
         <source>Fonts</source>
-        <translation>書体</translation>
+        <translation type="obsolete">書体</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="309"/>
         <source>Player:</source>
-        <translation>プレイヤ:</translation>
+        <translation type="obsolete">プレイヤ:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="331"/>
-        <location filename="../forms/configdialog.ui" line="379"/>
         <source>???</source>
-        <translation>???</translation>
+        <translation type="obsolete">???</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
-        <location filename="../forms/configdialog.ui" line="386"/>
-        <location filename="../forms/configdialog.ui" line="552"/>
         <source>...</source>
-        <translation>...</translation>
+        <translation type="obsolete">...</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="357"/>
         <source>Playlist:</source>
-        <translation>プレイリスト:</translation>
+        <translation type="obsolete">プレイリスト:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="393"/>
         <source>Use bitmap font if available</source>
-        <translation>あればビットマップフォントを使用</translation>
+        <translation type="obsolete">あればビットマップフォントを使用</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="403"/>
         <source>Transparency</source>
-        <translation>透過効果</translation>
+        <translation type="obsolete">透過効果</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="409"/>
         <source>Main window</source>
-        <translation>メインウィンドウ</translation>
+        <translation type="obsolete">メインウィンドウ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="432"/>
-        <location filename="../forms/configdialog.ui" line="456"/>
-        <location filename="../forms/configdialog.ui" line="480"/>
         <source>0</source>
-        <translation>0</translation>
+        <translation type="obsolete">0</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="439"/>
         <source>Equalizer</source>
-        <translation>イコライザ</translation>
+        <translation type="obsolete">イコライザ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="511"/>
         <source>Metadata</source>
-        <translation>メタデータ</translation>
+        <translation type="obsolete">メタデータ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="523"/>
         <source>Load metadata from files</source>
-        <translation>ファイルからメタデータを読み込む</translation>
+        <translation type="obsolete">ファイルからメタデータを読み込む</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="533"/>
         <source>Song Display</source>
-        <translation>演目表示</translation>
+        <translation type="obsolete">演目表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="539"/>
         <source>Title format:</source>
-        <translation>タイトルの表示形式:</translation>
+        <translation type="obsolete">タイトルの表示形式:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="559"/>
         <source>Convert underscores to blanks</source>
-        <translation>下線記号_を空白文字で表示</translation>
+        <translation type="obsolete">下線記号_を空白文字で表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="566"/>
         <source>Convert %20 to blanks</source>
-        <translation>%20を空白文字で表示</translation>
+        <translation type="obsolete">%20を空白文字で表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="573"/>
         <source>Show protocol</source>
-        <translation>プロトコルを表示</translation>
+        <translation type="obsolete">プロトコルを表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="580"/>
         <source>Show song numbers</source>
-        <translation>曲番号つきで表示</translation>
+        <translation type="obsolete">曲番号つきで表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="587"/>
         <source>Show playlists</source>
-        <translation>プレイリストを表示</translation>
+        <translation type="obsolete">プレイリストを表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="596"/>
         <source>Show popup information</source>
-        <translation>情報吹き出しを表示</translation>
+        <translation type="obsolete">情報吹き出しを表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="606"/>
         <source>Edit template</source>
-        <translation>ひな型を編集</translation>
+        <translation type="obsolete">ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="628"/>
         <source>Show anchor</source>
-        <translation>アンカーを表示</translation>
+        <translation type="obsolete">アンカーを表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="638"/>
         <source>Align song numbers</source>
-        <translation>曲番号のみを表示</translation>
+        <translation type="obsolete">曲番号のみを表示</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="686"/>
-        <location filename="../forms/configdialog.ui" line="1153"/>
         <source>Preferences</source>
-        <translation>プラグイン調整</translation>
+        <translation type="obsolete">プラグイン調整</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="699"/>
-        <location filename="../forms/configdialog.ui" line="761"/>
-        <location filename="../forms/configdialog.ui" line="1166"/>
         <source>Information</source>
-        <translation>情報</translation>
+        <translation type="obsolete">情報</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="735"/>
         <source>Description</source>
-        <translation>プラグイン分類</translation>
+        <translation type="obsolete">プラグイン分類</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="740"/>
         <source>Filename</source>
-        <translation>ファイル名</translation>
+        <translation type="obsolete">ファイル名</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="752"/>
         <source>File Dialog</source>
-        <translation>ファイルダイアログ</translation>
+        <translation type="obsolete">ファイルダイアログ</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="784"/>
         <source>Cover Image Retrieve</source>
-        <translation>アルバム表紙画像の取得</translation>
+        <translation type="obsolete">アルバム表紙画像の取得</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation>分割された画像ファイルを利用</translation>
+        <translation type="obsolete">分割された画像ファイルを利用</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Include files:</source>
-        <translation>対象ファイル形式:</translation>
+        <translation type="obsolete">対象ファイル形式:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="810"/>
         <source>Exclude files:</source>
-        <translation>除外ファイル形式:</translation>
+        <translation type="obsolete">除外ファイル形式:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="822"/>
         <source>Recursive search depth:</source>
-        <translation>再帰検索の深度:</translation>
+        <translation type="obsolete">再帰検索の深度:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="867"/>
-        <location filename="../configdialog.cpp" line="356"/>
         <source>Playback</source>
-        <translation>再生</translation>
+        <translation type="obsolete">再生</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation>前回終了時の曲から継続して再生</translation>
+        <translation type="obsolete">前回終了時の曲から継続して再生</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="899"/>
         <source>Proxy</source>
-        <translation>代理</translation>
+        <translation type="obsolete">代理</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="911"/>
         <source>Enable proxy usage</source>
-        <translation>代理を利用する</translation>
+        <translation type="obsolete">代理を利用する</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="918"/>
         <source>Proxy host name:</source>
-        <translation>代理ホスト名:</translation>
+        <translation type="obsolete">代理ホスト名:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="931"/>
         <source>Proxy port:</source>
-        <translation>代理ポート:</translation>
+        <translation type="obsolete">代理ポート:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="944"/>
         <source>Use authentication with proxy</source>
-        <translation>代理経由の認証を利用</translation>
+        <translation type="obsolete">代理経由の認証を利用</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="951"/>
         <source>Proxy user name:</source>
-        <translation>代理者ユーザ名:</translation>
+        <translation type="obsolete">代理者ユーザ名:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="964"/>
         <source>Proxy password:</source>
-        <translation>代理者パスワード:</translation>
+        <translation type="obsolete">代理者パスワード:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1001"/>
         <source>Replay Gain</source>
-        <translation>リプレイゲイン</translation>
+        <translation type="obsolete">リプレイゲイン</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1007"/>
         <source>Replay Gain mode:</source>
-        <translation>リプレイゲインモード:</translation>
+        <translation type="obsolete">リプレイゲインモード:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1024"/>
         <source>Preamp:</source>
-        <translation>プリアンプ:</translation>
+        <translation type="obsolete">プリアンプ:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1056"/>
-        <location filename="../forms/configdialog.ui" line="1101"/>
         <source>dB</source>
-        <translation>dB</translation>
+        <translation type="obsolete">dB</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1069"/>
         <source>Default gain:</source>
-        <translation>デフォルトゲイン:</translation>
+        <translation type="obsolete">デフォルトゲイン:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1121"/>
         <source>Use  peak info to prevent clipping</source>
-        <translation>クリッピング現象を抑えるためピーク情報を使う</translation>
+        <translation type="obsolete">クリッピング現象を抑えるためピーク情報を使う</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1137"/>
         <source>Output:</source>
-        <translation>出力:</translation>
+        <translation type="obsolete">出力:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1189"/>
         <source>Buffer size:</source>
-        <translation>バッファサイズ:</translation>
+        <translation type="obsolete">バッファサイズ:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1202"/>
         <source>ms</source>
-        <translation>ミリ秒</translation>
+        <translation type="obsolete">ミリ秒</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1231"/>
         <source>Use software volume control</source>
-        <translation>ソフトウェアによる音量制御を利用</translation>
+        <translation type="obsolete">ソフトウェアによる音量制御を利用</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1238"/>
         <source>16-bit output</source>
-        <translation>16ビット出力</translation>
+        <translation type="obsolete">16ビット出力</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1272"/>
         <source>Action</source>
-        <translation>動作</translation>
+        <translation type="obsolete">動作</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1277"/>
         <source>Shortcut</source>
-        <translation>ショートカット</translation>
+        <translation type="obsolete">ショートカット</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="1285"/>
         <source>Change shortcut...</source>
-        <translation>変更</translation>
+        <translation type="obsolete">変更</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="74"/>
         <source>Track</source>
-        <translation>トラック</translation>
+        <translation type="obsolete">トラック</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="75"/>
-        <location filename="../configdialog.cpp" line="432"/>
         <source>Album</source>
-        <translation>アルバム</translation>
+        <translation type="obsolete">アルバム</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="76"/>
         <source>Disabled</source>
-        <translation>無効</translation>
+        <translation type="obsolete">無効</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="211"/>
         <source>Archived skin</source>
-        <translation>書庫化スキン</translation>
+        <translation type="obsolete">書庫化スキン</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="233"/>
         <source>Unarchived skin</source>
-        <translation>非書庫化スキン</translation>
+        <translation type="obsolete">非書庫化スキン</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="246"/>
         <source>Transports</source>
-        <translation>転送</translation>
+        <translation type="obsolete">転送</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="257"/>
         <source>Decoders</source>
-        <translation>デコーダ</translation>
+        <translation type="obsolete">デコーダ</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="267"/>
         <source>Engines</source>
-        <translation>エンジン</translation>
+        <translation type="obsolete">エンジン</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="277"/>
         <source>Effects</source>
-        <translation>音響効果</translation>
+        <translation type="obsolete">音響効果</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
         <source>Visualization</source>
-        <translation>視覚効果</translation>
+        <translation type="obsolete">視覚効果</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
         <source>General</source>
-        <translation>一般</translation>
+        <translation type="obsolete">一般</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="374"/>
         <source>Misc</source>
-        <translation>いろいろ</translation>
+        <translation type="obsolete">いろいろ</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="431"/>
         <source>Artist</source>
-        <translation>アーティスト</translation>
+        <translation type="obsolete">アーティスト</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="433"/>
         <source>Title</source>
-        <translation>タイトル</translation>
+        <translation type="obsolete">タイトル</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="434"/>
         <source>Track number</source>
-        <translation>トラック番号</translation>
+        <translation type="obsolete">トラック番号</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="435"/>
         <source>Two-digit track number</source>
-        <translation>トラック番号 数字2桁</translation>
+        <translation type="obsolete">トラック番号 数字2桁</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="436"/>
         <source>Genre</source>
-        <translation>ジャンル</translation>
+        <translation type="obsolete">ジャンル</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="437"/>
         <source>Comment</source>
-        <translation>コメント</translation>
+        <translation type="obsolete">コメント</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="438"/>
         <source>Composer</source>
-        <translation>作曲者</translation>
+        <translation type="obsolete">作曲者</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="439"/>
         <source>Disc number</source>
-        <translation>ディスク番号</translation>
+        <translation type="obsolete">ディスク番号</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="440"/>
         <source>File name</source>
-        <translation>ファイル名</translation>
+        <translation type="obsolete">ファイル名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="441"/>
         <source>File path</source>
-        <translation>ファイルパス</translation>
+        <translation type="obsolete">ファイルパス</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="442"/>
         <source>Year</source>
-        <translation>年</translation>
+        <translation type="obsolete">年</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="443"/>
         <source>Condition</source>
-        <translation>定番</translation>
+        <translation type="obsolete">定番</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="529"/>
         <source>Select Skin Files</source>
-        <translation>スキンファイルを選択</translation>
+        <translation type="obsolete">スキンファイルを選択</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="530"/>
         <source>Skin files</source>
-        <translation>スキンファイル</translation>
+        <translation type="obsolete">スキンファイル</translation>
     </message>
 </context>
 <context>
@@ -1050,6 +988,83 @@
         <location filename="../eqwidget.cpp" line="392"/>
         <source>Import Preset</source>
         <translation>プリセットを移入</translation>
+    </message>
+</context>
+<context>
+    <name>HotkeyEditor</name>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="27"/>
+        <source>Action</source>
+        <translation type="unfinished">動作</translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="32"/>
+        <source>Shortcut</source>
+        <translation type="unfinished">ショートカット</translation>
+    </message>
+    <message>
+        <location filename="../forms/hotkeyeditor.ui" line="40"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished">変更</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="54"/>
+        <source>Playback</source>
+        <translation type="unfinished">再生</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="60"/>
+        <source>View</source>
+        <translation type="unfinished">観容</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="66"/>
+        <source>Playlist</source>
+        <translation type="unfinished">プレイリスト</translation>
+    </message>
+    <message>
+        <location filename="../hotkeyeditor.cpp" line="72"/>
+        <source>Misc</source>
+        <translation type="unfinished">いろいろ</translation>
+    </message>
+</context>
+<context>
+    <name>JumpToTrackDialog</name>
+    <message>
+        <source>Jump To Track</source>
+        <translation type="obsolete">トラックを指定して即刻再生</translation>
+    </message>
+    <message>
+        <source>Filter</source>
+        <translation type="obsolete">フィルタ</translation>
+    </message>
+    <message>
+        <source>Queue</source>
+        <translation type="obsolete">キューに入れる</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="obsolete">再実行</translation>
+    </message>
+    <message>
+        <source>Jump To</source>
+        <translation type="obsolete">この曲に跳ぶ</translation>
+    </message>
+    <message>
+        <source>Q</source>
+        <translation type="obsolete">Q</translation>
+    </message>
+    <message>
+        <source>J</source>
+        <translation type="obsolete">J</translation>
+    </message>
+    <message>
+        <source>F5</source>
+        <translation type="obsolete">F5</translation>
+    </message>
+    <message>
+        <source>Unqueue</source>
+        <translation type="obsolete">キューから除く</translation>
     </message>
 </context>
 <context>
@@ -1276,29 +1291,63 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="384"/>
+        <source>Choose a directory</source>
+        <translation type="obsolete">ディレクトリを選択</translation>
+    </message>
+    <message>
+        <source>All Supported Bitstreams</source>
+        <translation type="obsolete">サポート対象のすべてのデジタル録音物</translation>
+    </message>
+    <message>
+        <source>Select one or more files to open</source>
+        <translation type="obsolete">開きたいファイルを選ぶ (複数可)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="390"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>&amp;Jump To File</source>
         <translation>ファイルを指定して即刻再生(&amp;J)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="374"/>
+        <location filename="../mainwindow.cpp" line="318"/>
+        <source>Appearance</source>
+        <translation type="unfinished">外観</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="319"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished">ショートカット</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="380"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="376"/>
+        <location filename="../mainwindow.cpp" line="382"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="404"/>
+        <location filename="../mainwindow.cpp" line="410"/>
         <source>Tools</source>
         <translation>ツール</translation>
+    </message>
+    <message>
+        <source>Playlist Files</source>
+        <translation type="obsolete">プレイリストファイル</translation>
+    </message>
+    <message>
+        <source>Open Playlist</source>
+        <translation type="obsolete">プレイリストを開く</translation>
+    </message>
+    <message>
+        <source>Save Playlist</source>
+        <translation type="obsolete">プレイリストを保存</translation>
     </message>
 </context>
 <context>
@@ -1596,6 +1645,45 @@
     </message>
 </context>
 <context>
+    <name>QMMPStarter</name>
+    <message>
+        <source>Unknown command</source>
+        <translation type="obsolete">不明なコマンドです</translation>
+    </message>
+    <message>
+        <source>Usage: qmmp [options] [files]</source>
+        <translation type="obsolete">使用法: qmmp [オプション] [ファイル名:複数可]</translation>
+    </message>
+    <message>
+        <source>Options:</source>
+        <translation type="obsolete">オプション:</translation>
+    </message>
+    <message>
+        <source>Don&apos;t start the application</source>
+        <translation type="obsolete">アプリケーションを始動しない</translation>
+    </message>
+    <message>
+        <source>Display this text and exit</source>
+        <translation type="obsolete">このメッセージを表示して終了</translation>
+    </message>
+    <message>
+        <source>Print version number and exit</source>
+        <translation type="obsolete">バージョン番号を表示して終了</translation>
+    </message>
+    <message>
+        <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
+        <translation type="obsolete">名案, パッチ, バグ報告は forkotov02@hotmail.ru まで</translation>
+    </message>
+    <message>
+        <source>QMMP version:</source>
+        <translation type="obsolete">QMMP 版番号:</translation>
+    </message>
+    <message>
+        <source>Qt version:</source>
+        <translation type="obsolete">Qt 版番号:</translation>
+    </message>
+</context>
+<context>
     <name>ShortcutDialog</name>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
@@ -1614,6 +1702,169 @@
     </message>
 </context>
 <context>
+    <name>SkinnedSettings</name>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="24"/>
+        <source>Skins</source>
+        <translation type="unfinished">スキン</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="55"/>
+        <source>Add...</source>
+        <translation type="unfinished">追加...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="68"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
+        <location filename="../forms/skinnedsettings.ui" line="95"/>
+        <source>View</source>
+        <translation type="unfinished">観容</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="101"/>
+        <source>Hide on close</source>
+        <translation type="unfinished">「閉じる」で隠す</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="108"/>
+        <source>Start hidden</source>
+        <translation type="unfinished">開始時に隠す</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="115"/>
+        <source>Use skin cursors</source>
+        <translation type="unfinished">スキンカーソルを使用</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="131"/>
+        <source>Fonts</source>
+        <translation type="unfinished">書体</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="149"/>
+        <source>Player:</source>
+        <translation type="unfinished">プレイヤ:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="171"/>
+        <location filename="../forms/skinnedsettings.ui" line="219"/>
+        <source>???</source>
+        <translation type="unfinished">???</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="178"/>
+        <location filename="../forms/skinnedsettings.ui" line="226"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="197"/>
+        <source>Playlist:</source>
+        <translation type="unfinished">プレイリスト:</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="233"/>
+        <source>Use bitmap font if available</source>
+        <translation type="unfinished">あればビットマップフォントを使用</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="243"/>
+        <source>Transparency</source>
+        <translation type="unfinished">透過効果</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="249"/>
+        <source>Main window</source>
+        <translation type="unfinished">メインウィンドウ</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="272"/>
+        <location filename="../forms/skinnedsettings.ui" line="296"/>
+        <location filename="../forms/skinnedsettings.ui" line="320"/>
+        <source>0</source>
+        <translation type="unfinished">0</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="279"/>
+        <source>Equalizer</source>
+        <translation type="unfinished">イコライザ</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="303"/>
+        <source>Playlist</source>
+        <translation type="unfinished">プレイリスト</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="344"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished">各種設定</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="350"/>
+        <source>Song Display</source>
+        <translation type="unfinished">演目表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="356"/>
+        <source>Show protocol</source>
+        <translation type="unfinished">プロトコルを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="363"/>
+        <source>Show song numbers</source>
+        <translation type="unfinished">曲番号つきで表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="370"/>
+        <source>Show playlists</source>
+        <translation type="unfinished">プレイリストを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="379"/>
+        <source>Show popup information</source>
+        <translation type="unfinished">情報吹き出しを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="389"/>
+        <source>Edit template</source>
+        <translation type="unfinished">ひな型を編集</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="411"/>
+        <source>Show anchor</source>
+        <translation type="unfinished">アンカーを表示</translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="421"/>
+        <source>Align song numbers</source>
+        <translation type="unfinished">曲番号のみを表示</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="96"/>
+        <source>Select Skin Files</source>
+        <translation type="unfinished">スキンファイルを選択</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="97"/>
+        <source>Skin files</source>
+        <translation type="unfinished">スキンファイル</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="139"/>
+        <source>Unarchived skin</source>
+        <translation type="unfinished">非書庫化スキン</translation>
+    </message>
+    <message>
+        <location filename="../skinnedsettings.cpp" line="170"/>
+        <source>Archived skin</source>
+        <translation type="unfinished">書庫化スキン</translation>
+    </message>
+</context>
+<context>
     <name>TextScroller</name>
     <message>
         <location filename="../textscroller.cpp" line="52"/>
@@ -1629,7 +1880,7 @@
 <context>
     <name>VisualMenu</name>
     <message>
-        <location filename="../visualmenu.cpp" line="29"/>
+        <location filename="../visualmenu.cpp" line="26"/>
         <source>Visualization</source>
         <translation>視覚効果</translation>
     </message>

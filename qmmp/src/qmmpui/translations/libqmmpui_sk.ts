@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="it">
+<TS version="2.0" language="sk">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="14"/>
         <source>About Qmmp</source>
-        <translation>Informazioni su Qmmp</translation>
+        <translation>O Qmmp</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="40"/>
         <source>About</source>
-        <translation>Info</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="96"/>
-        <source>License Agreement</source>
-        <translation>Contratto di licenza</translation>
+        <translation>O progarme</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="54"/>
@@ -26,17 +21,22 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="82"/>
         <source>Thanks To</source>
-        <translation>Ringraziamenti</translation>
+        <translation>Poďakovanie</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="96"/>
+        <source>License Agreement</source>
+        <translation>Licencia</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="61"/>
         <source>:/txt/authors_en.txt</source>
-        <translation>:/txt/authors_it.txt</translation>
+        <translation>:/txt/authors_sk.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="62"/>
         <source>:/txt/thanks_en.txt</source>
-        <translation>:/txt/thanks_it.txt</translation>
+        <translation>:/txt/thanks_sk.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="81"/>
@@ -46,47 +46,47 @@
     <message>
         <location filename="../aboutdialog.cpp" line="82"/>
         <source>Version:</source>
-        <translation>Versione: </translation>
+        <translation>Verzia:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="83"/>
         <source>:txt/description_en.txt</source>
-        <translation>:txt/description_it.txt</translation>
+        <translation>:txt/description_sk.txt</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="84"/>
         <source>Input plugins:</source>
-        <translation>Moduli d&apos;entrata: </translation>
+        <translation>Vstupné moduly:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="93"/>
         <source>Output plugins:</source>
-        <translation>Moduli d&apos;uscita : </translation>
+        <translation>Výstupné moduly:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="102"/>
         <source>Visual plugins:</source>
-        <translation>Moduli di visualizzazione: </translation>
+        <translation>Vizualizačné moduly:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="111"/>
         <source>Effect plugins:</source>
-        <translation>Мoduli per gli effetti: </translation>
+        <translation>Moduly efektov:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="120"/>
         <source>General plugins:</source>
-        <translation>Moduli generali: </translation>
+        <translation>Všebecné moduly:</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="68"/>
         <source>Translators</source>
-        <translation>Traduttori</translation>
+        <translation>Prekladatelia</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="63"/>
         <source>:/txt/translators_en.txt</source>
-        <translation>:/txt/translators_it.txt</translation>
+        <translation>:/txt/translators_sk.txt</translation>
     </message>
 </context>
 <context>
@@ -94,933 +94,1076 @@
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
         <source>&amp;Play</source>
-        <translation type="unfinished">&amp;Esegui</translation>
+        <translation>&amp;Hrať</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="37"/>
         <source>X</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished">&amp;Pausa</translation>
+        <translation>&amp;Pozastaviť</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="38"/>
         <source>C</source>
-        <translation type="unfinished">C</translation>
+        <translation>C</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Stop</source>
-        <translation type="unfinished">&amp;Arresta</translation>
+        <translation>Za&amp;staviť</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="39"/>
         <source>V</source>
-        <translation type="unfinished">V</translation>
+        <translation>V</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Previous</source>
-        <translation type="unfinished">&amp;Precedente</translation>
+        <translation>&amp;Predchádzajúca</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="40"/>
         <source>Z</source>
-        <translation type="unfinished">Z</translation>
+        <translation>Z</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Next</source>
-        <translation type="unfinished">&amp;Successivo</translation>
+        <translation>&amp;Nasledujúca</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="41"/>
         <source>B</source>
-        <translation type="unfinished">B</translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Play/Pause</source>
-        <translation type="unfinished">&amp;Esegui / Pausa</translation>
+        <translation>&amp;Hrať/Pozastaviť</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="42"/>
         <source>Space</source>
-        <translation type="unfinished">Spazio</translation>
+        <translation>Medzerník</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Jump to File</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;resjočiť na súbor</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Repeat Playlist</source>
-        <translation type="unfinished">&amp;Ripeti lista brani</translation>
+        <translation>&amp;Opakovať playlist</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>R</source>
-        <translation type="unfinished">R</translation>
+        <translation>R</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Repeat Track</source>
-        <translation type="unfinished">&amp;Ripeti brano</translation>
+        <translation>&amp;Opakovať skladbu</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished">Ctrl+R</translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>&amp;Shuffle</source>
-        <translation type="unfinished">&amp;Ordine casuale</translation>
+        <translation>&amp;Zamiešať</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="46"/>
         <source>S</source>
-        <translation type="unfinished">S</translation>
+        <translation>S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nepokročilý playlist</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
         <source>&amp;Stop After Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zastaviť po vybranej</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>&amp;Clear Queue</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vyčistiť rad</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
         <source>Alt+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+Q</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Show Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázať playlist</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="53"/>
         <source>Alt+E</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+E</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Show Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukázať ekvalizér</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="54"/>
         <source>Alt+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt+G</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Always on Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Vždy na vrchu</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="56"/>
         <source>Put on All Workspaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Dať na všetky plochy</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
         <source>Double Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Dvojitá veľkosť</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="57"/>
         <source>Meta+D</source>
-        <translation type="unfinished"></translation>
+        <translation>Meta+D</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">&amp;Aggiungi brani</translation>
+        <translation>&amp;Pridať súbor</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
         <source>F</source>
-        <translation type="unfinished">F</translation>
+        <translation>F</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">&amp;Aggiungi cartelle</translation>
+        <translation>&amp;Pridať priečinok</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="60"/>
         <source>D</source>
-        <translation type="unfinished">D</translation>
+        <translation>D</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>&amp;Add Url</source>
-        <translation type="unfinished">&amp;Aggiungi URL</translation>
+        <translation>&amp;Pridať URL</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="61"/>
         <source>U</source>
-        <translation type="unfinished">U</translation>
+        <translation>U</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">&amp;Elimina la selezione</translation>
+        <translation>Odst&amp;rániť vybraté</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="63"/>
         <source>Del</source>
-        <translation type="unfinished">Canc</translation>
+        <translation>Del</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="64"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">&amp;Elimina tutto</translation>
+        <translation>Odst&amp;rániť všetko</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="65"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">&amp;Elimina i non selezionati</translation>
+        <translation>Odst&amp;rániť nevybraté</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="67"/>
         <source>Remove unavailable files</source>
-        <translation type="unfinished">Rimuovi files non disponibili</translation>
+        <translation>Odstrániť nedostupné súbory</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="69"/>
         <source>Remove duplicates</source>
-        <translation type="unfinished">Rimuovi duplicati</translation>
+        <translation>Odstrániť duplikáty</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="70"/>
         <source>&amp;Queue Toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zaradiť prepínanie</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="70"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
         <source>Invert Selection</source>
-        <translation type="unfinished">Inverti la selezione</translation>
+        <translation>Invertovať výber</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="72"/>
         <source>&amp;Select None</source>
-        <translation type="unfinished">&amp;Non scegliere alcun brano</translation>
+        <translation>Zrušiť &amp;výber</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="73"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">&amp;Seleziona tutto</translation>
+        <translation>&amp;Vybrať všetko</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="74"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished">Ctrl+A</translation>
+        <translation>Ctrl+A</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>&amp;View Track Details</source>
-        <translation type="unfinished">&amp;Dettagli della traccia</translation>
+        <translation>&amp;Zobraziť detaily o skladbe</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="75"/>
         <source>Alt+I</source>
-        <translation type="unfinished">Alt+I</translation>
+        <translation>Alt+I</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
         <source>&amp;New List</source>
-        <translation type="unfinished">&amp;Nuova lista</translation>
+        <translation>&amp;Nový zoznam</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="77"/>
         <source>Ctrl+T</source>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;Delete List</source>
-        <translation type="unfinished">&amp;Cancella lista</translation>
+        <translation>&amp;Vymazať zoznam</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="78"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished">Ctrl+W</translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
         <source>&amp;Load List</source>
-        <translation type="unfinished">&amp;Carica lista</translation>
+        <translation>&amp;Načítať zoznam</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="79"/>
         <source>O</source>
-        <translation type="unfinished">O</translation>
+        <translation>O</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;Save List</source>
-        <translation type="unfinished">&amp;Salva lista</translation>
+        <translation>&amp;Uložiť zoznam</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="80"/>
         <source>Shift+S</source>
-        <translation type="unfinished">Shift+S</translation>
+        <translation>Shift+S</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Select Next Playlist</source>
-        <translation type="unfinished">&amp;Seleziona la successiva lista esecuzione brani</translation>
+        <translation>&amp;Vybrať nasledujúci playlist</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="82"/>
         <source>Ctrl+PgDown</source>
-        <translation type="unfinished">Ctrl+PgDown</translation>
+        <translation>Ctrl+Page Down</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
         <source>&amp;Select Previous Playlist</source>
-        <translation type="unfinished">&amp;Seleziona la rpecedente lista esecuzione brani</translation>
+        <translation>&amp;Vybrať predchádzajúci playlist</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="84"/>
         <source>Ctrl+PgUp</source>
-        <translation type="unfinished">Ctrl+PgUp</translation>
+        <translation>Ctrl+Page Up</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="85"/>
         <source>&amp;Show Playlists</source>
-        <translation type="unfinished">Mostra lista esecuzione brani</translation>
+        <translation>&amp;kázať playlisty</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="86"/>
         <source>P</source>
-        <translation type="unfinished">P</translation>
+        <translation>P</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Settings</source>
-        <translation type="unfinished">&amp;Configurazione</translation>
+        <translation>Na&amp;stavenia</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished">Ctrl+P</translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;About</source>
-        <translation type="unfinished">&amp;Informazioni</translation>
+        <translation>O progr&amp;ame</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Qt</source>
-        <translation type="unfinished">&amp;Informazioni su Qt</translation>
+        <translation>&amp;O Qt</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">&amp;Esci</translation>
+        <translation>&amp;Ukončiť</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished">Ctrl+Q</translation>
+        <translation>Ctrl+Q</translation>
     </message>
 </context>
 <context>
     <name>AddUrlDialog</name>
     <message>
-        <location filename="../addurldialog.cpp" line="117"/>
-        <source>Error</source>
-        <translation>Errore</translation>
-    </message>
-    <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation>Aggiungi un URL</translation>
+        <translation>Pridať URL</translation>
+    </message>
+    <message>
+        <location filename="../addurldialog.cpp" line="117"/>
+        <source>Error</source>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation>&amp;Aggiungi</translation>
+        <translation>Prid&amp;ať</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Annulla</translation>
+        <translation>&amp;Zrušiť</translation>
     </message>
 </context>
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Skip forward in playlist</source>
-        <translation type="obsolete">Scorri in avanti lista dei brani</translation>
+        <translation>Posunúť sa v plaliste</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Skip backwards in playlist</source>
-        <translation type="obsolete">Scorri indietro la lista dei brani</translation>
+        <translation>Vrátiť sa v playliste</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="55"/>
         <source>Start playing current song</source>
-        <translation type="obsolete">Inizia il brano scelto</translation>
+        <translation>Začať prehrávanie súčasnej piesne</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="54"/>
         <source>Don&apos;t clear the playlist</source>
-        <translation type="obsolete">Non ripulire la lista esecuzione</translation>
+        <translation>Nevyčisťovať playlist</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="56"/>
         <source>Pause current song</source>
-        <translation type="obsolete">Sospendi il brano in esecuzione</translation>
+        <translation>Pozastaviť súčasnú pieseň</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="57"/>
         <source>Pause if playing, play otherwise</source>
-        <translation type="obsolete">Sospendi il brano se in esecuzione; lo riprende se in pausa</translation>
+        <translation>Pozastaviť ak hrá, inak hrať</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="58"/>
         <source>Stop current song</source>
-        <translation type="obsolete">Arresta il brano in esecuzione</translation>
+        <translation>Zastaviť súčasnú pieseň</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="59"/>
         <source>Display Jump to File dialog</source>
-        <translation type="obsolete">Mostra il menu «Vai al brano»</translation>
+        <translation>Zobraziť dialóg Preskočiť na súbor</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <source>Set playback volume (example: qmmp --volume 20)</source>
+        <translation>Nastaviť hlasitosť prehrávania (napríklad: qmmp --volume 20)</translation>
+    </message>
+    <message>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Show/hide application</source>
-        <translation type="obsolete">Mostra/nascondi Qmmp</translation>
+        <translation>Zobraziť/skryť program</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Display Add File dialog</source>
-        <translation type="obsolete">Mostra il menu «Aggiungi brani»</translation>
+        <translation>Zobraziť dialóg Pridať súbor</translation>
     </message>
     <message>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Add Directory dialog</source>
-        <translation type="obsolete">Mostra il menu «Aggiungi cartella»</translation>
+        <translation>Zobraziť dialóg Pridať priečinok</translation>
     </message>
 </context>
 <context>
     <name>ConfigDialog</name>
     <message>
+        <location filename="../forms/configdialog.ui" line="735"/>
         <source>Description</source>
-        <translation type="obsolete">Descrizione</translation>
+        <translation>Popis</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="740"/>
         <source>Filename</source>
-        <translation type="obsolete">File</translation>
+        <translation>Názov súboru</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="429"/>
         <source>Artist</source>
-        <translation type="obsolete">Interprete</translation>
+        <translation>Interprét</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="75"/>
+        <location filename="../configdialog.cpp" line="430"/>
         <source>Album</source>
-        <translation type="obsolete">Album</translation>
+        <translation>Album</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="74"/>
         <source>Track</source>
-        <translation type="obsolete">Traccia</translation>
+        <translation>Skladba</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="76"/>
         <source>Disabled</source>
-        <translation type="obsolete">Disabilitato</translation>
+        <translation>Zakázané</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="244"/>
         <source>Transports</source>
-        <translation type="obsolete">Protocolli di trasporto</translation>
+        <translation>Protokoly</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="255"/>
         <source>Decoders</source>
-        <translation type="obsolete">Decodificatori</translation>
+        <translation>Dekodéry</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="265"/>
         <source>Engines</source>
-        <translation type="obsolete">Meccanismi</translation>
+        <translation>Prehrávače</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="372"/>
+        <source>Misc</source>
+        <translation>Rôzn.</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="431"/>
         <source>Title</source>
-        <translation type="obsolete">Titolo</translation>
+        <translation>Názov</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="432"/>
         <source>Track number</source>
-        <translation type="obsolete">Traccia n°</translation>
+        <translation>Číslo skladby</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="433"/>
         <source>Two-digit track number</source>
-        <translation type="obsolete">Traccia n° a due cifre</translation>
+        <translation>Dvojmiestne číslo skladby</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="437"/>
         <source>Disc number</source>
-        <translation type="obsolete">Disco n°</translation>
+        <translation>Číslo disku</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="441"/>
         <source>Condition</source>
-        <translation type="obsolete">Condizione</translation>
+        <translation>Stav</translation>
     </message>
     <message>
-        <source>Genre</source>
-        <translation type="obsolete">Genere</translation>
-    </message>
-    <message>
+        <location filename="../configdialog.cpp" line="436"/>
         <source>Composer</source>
-        <translation type="obsolete">Compositore</translation>
+        <translation>Skladateľ</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="438"/>
         <source>File name</source>
-        <translation type="obsolete">Nome file</translation>
+        <translation>Názov súboru</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="439"/>
         <source>File path</source>
-        <translation type="obsolete">Percorso file</translation>
+        <translation>Cesta k súboru</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="434"/>
+        <source>Genre</source>
+        <translation>Žáner</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="440"/>
         <source>Year</source>
-        <translation type="obsolete">Anno</translation>
+        <translation>Rok</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="435"/>
         <source>Comment</source>
-        <translation type="obsolete">Commento</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="14"/>
         <source>Qmmp Settings</source>
-        <translation type="obsolete">Configurazione di Qmmp</translation>
+        <translation>Qmmp nastavenia</translation>
     </message>
     <message>
-        <source>Skins</source>
-        <translation type="obsolete">Temi</translation>
-    </message>
-    <message>
-        <source>Fonts</source>
-        <translation type="obsolete">Caratteri</translation>
-    </message>
-    <message>
-        <source>Player:</source>
-        <translation type="obsolete">Player: </translation>
-    </message>
-    <message>
-        <source>Playlist:</source>
-        <translation type="obsolete">Lista brani : </translation>
-    </message>
-    <message>
-        <source>???</source>
-        <translation type="obsolete">???</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="obsolete">...</translation>
-    </message>
-    <message>
-        <source>Metadata</source>
-        <translation type="obsolete">Metadati</translation>
-    </message>
-    <message>
-        <source>Load metadata from files</source>
-        <translation type="obsolete">Carica i metadati dai brani</translation>
-    </message>
-    <message>
-        <source>Song Display</source>
-        <translation type="obsolete">Mostra il brano</translation>
-    </message>
-    <message>
-        <source>Title format:</source>
-        <translation type="obsolete">Formato del titolo : </translation>
-    </message>
-    <message>
-        <source>Preferences</source>
-        <translation type="obsolete">Impostazioni preferite</translation>
-    </message>
-    <message>
-        <source>Information</source>
-        <translation type="obsolete">Informazioni</translation>
-    </message>
-    <message>
+        <location filename="../forms/configdialog.ui" line="98"/>
         <source>Appearance</source>
-        <translation type="obsolete">Aspetto</translation>
+        <translation>Vzhľad</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="107"/>
+        <location filename="../forms/configdialog.ui" line="463"/>
+        <location filename="../configdialog.cpp" line="366"/>
         <source>Playlist</source>
-        <translation type="obsolete">Lista dei brani</translation>
+        <translation>Playlist</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="116"/>
         <source>Plugins</source>
-        <translation type="obsolete">Moduli</translation>
+        <translation>Moduly</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="125"/>
         <source>Advanced</source>
-        <translation type="obsolete">Avanzato</translation>
+        <translation>Pokročilé</translation>
     </message>
     <message>
-        <source>16-bit output</source>
-        <translation type="obsolete">uscita a 16 bit</translation>
+        <location filename="../forms/configdialog.ui" line="184"/>
+        <source>Skins</source>
+        <translation>Skiny</translation>
     </message>
     <message>
-        <source>Archived skin</source>
-        <translation type="obsolete">Tema archiviato</translation>
+        <location filename="../forms/configdialog.ui" line="291"/>
+        <source>Fonts</source>
+        <translation>Písma</translation>
     </message>
     <message>
-        <source>Unarchived skin</source>
-        <translation type="obsolete">Tema non archiviato</translation>
+        <location filename="../forms/configdialog.ui" line="309"/>
+        <source>Player:</source>
+        <translation>Prehrávač:</translation>
     </message>
     <message>
-        <source>Connectivity</source>
-        <translation type="obsolete">Connettività</translation>
+        <location filename="../forms/configdialog.ui" line="357"/>
+        <source>Playlist:</source>
+        <translation>Playlist:</translation>
     </message>
     <message>
-        <source>Visualization</source>
-        <translation type="obsolete">Visualizzazione</translation>
+        <location filename="../forms/configdialog.ui" line="331"/>
+        <location filename="../forms/configdialog.ui" line="379"/>
+        <source>???</source>
+        <translation>???</translation>
     </message>
     <message>
-        <source>Effects</source>
-        <translation type="obsolete">Effetti</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation type="obsolete">Generale</translation>
-    </message>
-    <message>
-        <source>File Dialog</source>
-        <translation type="obsolete">Menu brani</translation>
-    </message>
-    <message>
-        <source>Audio</source>
-        <translation type="obsolete">Audio</translation>
-    </message>
-    <message>
+        <location filename="../forms/configdialog.ui" line="1001"/>
         <source>Replay Gain</source>
-        <translation type="obsolete">Normalizzazione</translation>
+        <translation>Zisk pri prehrávaní</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="249"/>
         <source>Miscellaneous</source>
-        <translation type="obsolete">Varie</translation>
+        <translation>Rôzne</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="338"/>
+        <location filename="../forms/configdialog.ui" line="386"/>
+        <location filename="../forms/configdialog.ui" line="552"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="393"/>
         <source>Use bitmap font if available</source>
-        <translation type="obsolete">Usa carattere bitmap se disponibile</translation>
+        <translation>Použiť bitmapové písmo, ak je dostupné</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="275"/>
         <source>Use skin cursors</source>
-        <translation type="obsolete">Usa cursore skin</translation>
+        <translation>Použiť kurzory zo skinu</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="152"/>
+        <source>Shortcuts</source>
+        <translation>Skratky</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="511"/>
+        <source>Metadata</source>
+        <translation>Metadáta</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="523"/>
+        <source>Load metadata from files</source>
+        <translation>Čítať metadáta zo súborov</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="533"/>
+        <source>Song Display</source>
+        <translation>Zobrazenie skladby</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="539"/>
+        <source>Title format:</source>
+        <translation>Formát titulku:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="580"/>
         <source>Show song numbers</source>
-        <translation type="obsolete">Mostra numero brani</translation>
+        <translation>Zobrazovať čísla piesní</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="587"/>
         <source>Show playlists</source>
-        <translation type="obsolete">Mostra lista esecuzione brani</translation>
+        <translation>Zobrazovať playlisty</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="596"/>
         <source>Show popup information</source>
-        <translation type="obsolete">Mostra informazioni popup</translation>
+        <translation>Zobrazovať upozornenia s informáciami</translation>
     </message>
     <message>
-        <source>Replay Gain mode:</source>
-        <translation type="obsolete">Metodo di normalizzazione</translation>
+        <location filename="../forms/configdialog.ui" line="628"/>
+        <source>Show anchor</source>
+        <translation>Zobrazovať ukotvenie</translation>
     </message>
     <message>
-        <source>Preamp:</source>
-        <translation type="obsolete">Preamp:</translation>
+        <location filename="../forms/configdialog.ui" line="638"/>
+        <source>Align song numbers</source>
+        <translation>Zarovnať čísla piesní</translation>
     </message>
     <message>
-        <source>dB</source>
-        <translation type="obsolete">dB</translation>
+        <location filename="../forms/configdialog.ui" line="686"/>
+        <location filename="../forms/configdialog.ui" line="1153"/>
+        <source>Preferences</source>
+        <translation>Nastavenia</translation>
     </message>
     <message>
-        <source>Default gain:</source>
-        <translation type="obsolete">Normalizzazione predefinita</translation>
+        <location filename="../forms/configdialog.ui" line="699"/>
+        <location filename="../forms/configdialog.ui" line="761"/>
+        <location filename="../forms/configdialog.ui" line="1166"/>
+        <source>Information</source>
+        <translation>Informácie</translation>
     </message>
     <message>
-        <source>Use  peak info to prevent clipping</source>
-        <translation type="obsolete">Utilizza informazioni di picco per evitare tagli</translation>
-    </message>
-    <message>
-        <source>Output:</source>
-        <translation type="obsolete">Uscita:</translation>
-    </message>
-    <message>
-        <source>ms</source>
-        <translation type="obsolete">ms</translation>
-    </message>
-    <message>
-        <source>Use software volume control</source>
-        <translation type="obsolete">Utilizza il controllo volume del programma</translation>
-    </message>
-    <message>
-        <source>Hide on close</source>
-        <translation type="obsolete">Nascondi alla chiusura</translation>
-    </message>
-    <message>
-        <source>Start hidden</source>
-        <translation type="obsolete">Avvia nascosto</translation>
-    </message>
-    <message>
+        <location filename="../forms/configdialog.ui" line="784"/>
         <source>Cover Image Retrieve</source>
-        <translation type="obsolete">Trova immagine copertina</translation>
+        <translation>Získať obrázok obalu</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="790"/>
         <source>Use separate image files</source>
-        <translation type="obsolete">Usa immagini separate</translation>
+        <translation>Používať samostatné súbory obrázkov</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="800"/>
         <source>Include files:</source>
-        <translation type="obsolete">Includi i file:</translation>
+        <translation>Zahrnúť súbory:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="810"/>
         <source>Exclude files:</source>
-        <translation type="obsolete">Escludi i file:</translation>
+        <translation>Vynechať súbory:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="822"/>
         <source>Recursive search depth:</source>
-        <translation type="obsolete">Profondità ricerca ricorsiva:</translation>
+        <translation>Hĺbka rekurzívneho hľadania:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="867"/>
+        <location filename="../configdialog.cpp" line="354"/>
         <source>Playback</source>
-        <translation type="obsolete">Riproduzione</translation>
+        <translation>Prehrávanie</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="873"/>
         <source>Continue playback on startup</source>
-        <translation type="obsolete">Continua la riproduzione all&apos;avvio</translation>
+        <translation>Pri štarte pokračovať v prehrávaní</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="1007"/>
+        <source>Replay Gain mode:</source>
+        <translation>Režim úpravy zisku pri prehrávaní:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1024"/>
+        <source>Preamp:</source>
+        <translation>Predzosilnenie:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1056"/>
+        <location filename="../forms/configdialog.ui" line="1101"/>
+        <source>dB</source>
+        <translation>dB</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1069"/>
+        <source>Default gain:</source>
+        <translation>Východzý zisk:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1121"/>
+        <source>Use  peak info to prevent clipping</source>
+        <translation>Použiť informáciu o vrchole k zabráneniu orezu</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1137"/>
+        <source>Output:</source>
+        <translation>Výstup:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1189"/>
+        <source>Buffer size:</source>
+        <translation>Veľkosť bufferu:</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1202"/>
+        <source>ms</source>
+        <translation>ms</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1238"/>
+        <source>16-bit output</source>
+        <translation>16bitový výstup</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1272"/>
+        <source>Action</source>
+        <translation>Činnosť</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1277"/>
+        <source>Shortcut</source>
+        <translation>Skratka</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1285"/>
+        <source>Change shortcut...</source>
+        <translation>Zmeniť skratku...</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="134"/>
+        <source>Connectivity</source>
+        <translation>Pripojenie k sieti</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="255"/>
+        <location filename="../configdialog.cpp" line="360"/>
+        <source>View</source>
+        <translation>Zobrazenie</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="606"/>
+        <source>Edit template</source>
+        <translation>Upraviť šablónu</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="752"/>
+        <source>File Dialog</source>
+        <translation>Súborový dialóg</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="899"/>
         <source>Proxy</source>
-        <translation type="obsolete">Proxy</translation>
+        <translation>Proxy</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="911"/>
         <source>Enable proxy usage</source>
-        <translation type="obsolete">Attiva il proxy</translation>
+        <translation>Povoliť používanie proxy</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="918"/>
         <source>Proxy host name:</source>
-        <translation type="obsolete">Nome del server : </translation>
+        <translation>Adresa proxy:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="931"/>
         <source>Proxy port:</source>
-        <translation type="obsolete">Porta del server : </translation>
+        <translation>Port proxy:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="944"/>
         <source>Use authentication with proxy</source>
-        <translation type="obsolete">Usa autenticazione con il proxy</translation>
+        <translation>Použiť autentifikáciu s proxy</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="951"/>
         <source>Proxy user name:</source>
-        <translation type="obsolete">Utente: </translation>
+        <translation>Proxy použivateľské meno:</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="964"/>
         <source>Proxy password:</source>
-        <translation type="obsolete">Password : </translation>
+        <translation>Proxy heslo:</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="209"/>
+        <source>Archived skin</source>
+        <translation>Archivovaný skin</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="231"/>
+        <source>Unarchived skin</source>
+        <translation>Nearchivovaný skin</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="285"/>
+        <source>Visualization</source>
+        <translation>Vizualizácie</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="275"/>
+        <source>Effects</source>
+        <translation>Efekty</translation>
+    </message>
+    <message>
+        <location filename="../configdialog.cpp" line="295"/>
+        <source>General</source>
+        <translation>Všeobecné</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="143"/>
+        <location filename="../forms/configdialog.ui" line="1131"/>
+        <source>Audio</source>
+        <translation>Zvuk</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="1231"/>
+        <source>Use software volume control</source>
+        <translation>Používať softwarové ovládanie hlasitosti</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="261"/>
+        <source>Hide on close</source>
+        <translation>Skryť pri zatvorení</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="268"/>
+        <source>Start hidden</source>
+        <translation>Spustiť skryté</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="559"/>
         <source>Convert underscores to blanks</source>
-        <translation type="obsolete">Converti il carattere « _ » in spazi</translation>
+        <translation>Previesť podčiarknutia na medzery</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="566"/>
         <source>Convert %20 to blanks</source>
-        <translation type="obsolete">Converti il carattere « %20 » in spazi</translation>
+        <translation>Previesť %20 na mdezery</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="524"/>
         <source>Select Skin Files</source>
-        <translation type="obsolete">Seleziona aspetto</translation>
+        <translation>Vybrať súbory skinov</translation>
     </message>
     <message>
+        <location filename="../configdialog.cpp" line="525"/>
         <source>Skin files</source>
-        <translation type="obsolete">Aspetto</translation>
+        <translation>Súbory skinov</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="215"/>
         <source>Add...</source>
-        <translation type="obsolete">Aggiungi...</translation>
+        <translation>Pridať...</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="228"/>
         <source>Refresh</source>
-        <translation type="obsolete">Aggiorna</translation>
+        <translation>Obnoviť</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="573"/>
         <source>Show protocol</source>
-        <translation type="obsolete">Motra protocollo</translation>
+        <translation>Zobraziť protokol</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="403"/>
         <source>Transparency</source>
-        <translation type="obsolete">Transparenza</translation>
+        <translation>Priehľadnosť</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="409"/>
         <source>Main window</source>
-        <translation type="obsolete">Finestra principale</translation>
+        <translation>Hlavné okno</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="432"/>
+        <location filename="../forms/configdialog.ui" line="456"/>
+        <location filename="../forms/configdialog.ui" line="480"/>
         <source>0</source>
-        <translation type="obsolete">0</translation>
+        <translation>0</translation>
     </message>
     <message>
+        <location filename="../forms/configdialog.ui" line="439"/>
         <source>Equalizer</source>
-        <translation type="obsolete">Equalizzatore</translation>
+        <translation>Ekvalizér</translation>
     </message>
 </context>
 <context>
     <name>EqWidget</name>
     <message>
+        <location filename="../eqwidget.cpp" line="43"/>
+        <source>Equalizer</source>
+        <translation>Ekvalizér</translation>
+    </message>
+    <message>
         <location filename="../eqwidget.cpp" line="154"/>
         <location filename="../eqwidget.cpp" line="177"/>
         <source>preset</source>
-        <translation>Impostazione</translation>
+        <translation>předvolba</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="261"/>
         <source>&amp;Load/Delete</source>
-        <translation>&amp;Carica/Elimina</translation>
+        <translation>&amp;Načíst/Odstranit</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="263"/>
         <source>&amp;Save Preset</source>
-        <translation>&amp;Salva preimpostazione</translation>
+        <translation>&amp;Uložit předvolbu</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="265"/>
         <source>&amp;Save Auto-load Preset</source>
-        <translation>&amp;Salvare preimpostazioni caricate automaticamente</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="270"/>
-        <source>&amp;Clear</source>
-        <translation>&amp;Cancella</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="299"/>
-        <source>Saving Preset</source>
-        <translation>Salvataggio preimpostazioni</translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="300"/>
-        <source>Preset name:</source>
-        <translation>Nome delle preimpostazioni: </translation>
-    </message>
-    <message>
-        <location filename="../eqwidget.cpp" line="301"/>
-        <source>preset #</source>
-        <translation>Preimpostazione #</translation>
+        <translation>Uložit &amp;automatickou předvolbu</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="267"/>
         <source>&amp;Import</source>
-        <translation>&amp;Importa</translation>
+        <translation>&amp;Importovat</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="43"/>
-        <source>Equalizer</source>
-        <translation type="unfinished">Equalizzatore</translation>
+        <location filename="../eqwidget.cpp" line="270"/>
+        <source>&amp;Clear</source>
+        <translation>&amp;Vynulovat</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="299"/>
+        <source>Saving Preset</source>
+        <translation>Uložení předvolby</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="300"/>
+        <source>Preset name:</source>
+        <translation>Název předvolby:</translation>
+    </message>
+    <message>
+        <location filename="../eqwidget.cpp" line="301"/>
+        <source>preset #</source>
+        <translation>předvolba #</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="392"/>
         <source>Import Preset</source>
-        <translation>Importa preimpostazione</translation>
-    </message>
-</context>
-<context>
-    <name>HotkeyEditor</name>
-    <message>
-        <location filename="../forms/hotkeyeditor.ui" line="27"/>
-        <source>Action</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/hotkeyeditor.ui" line="32"/>
-        <source>Shortcut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/hotkeyeditor.ui" line="40"/>
-        <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../hotkeyeditor.cpp" line="54"/>
-        <source>Playback</source>
-        <translation type="unfinished">Riproduzione</translation>
-    </message>
-    <message>
-        <location filename="../hotkeyeditor.cpp" line="60"/>
-        <source>View</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../hotkeyeditor.cpp" line="66"/>
-        <source>Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../hotkeyeditor.cpp" line="72"/>
-        <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>Importovat předvolbu</translation>
     </message>
 </context>
 <context>
     <name>JumpToTrackDialog</name>
     <message>
+        <location filename="../jumptotrackdialog.cpp" line="53"/>
         <source>Q</source>
-        <translation type="obsolete">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
+        <location filename="../jumptotrackdialog.cpp" line="54"/>
         <source>J</source>
-        <translation type="obsolete">J</translation>
+        <translation>J</translation>
     </message>
     <message>
+        <location filename="../jumptotrackdialog.cpp" line="55"/>
         <source>F5</source>
-        <translation type="obsolete">F5</translation>
+        <translation>F5</translation>
     </message>
     <message>
+        <location filename="../jumptotrackdialog.cpp" line="84"/>
+        <location filename="../jumptotrackdialog.cpp" line="135"/>
         <source>Unqueue</source>
-        <translation type="obsolete">Elimna dalla coda</translation>
+        <translation>Vyradiť</translation>
     </message>
     <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="70"/>
+        <location filename="../jumptotrackdialog.cpp" line="86"/>
+        <location filename="../jumptotrackdialog.cpp" line="137"/>
         <source>Queue</source>
-        <translation type="obsolete">Metti in coda</translation>
+        <translation>Zaradiť</translation>
     </message>
     <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation type="obsolete">Vai alla traccia</translation>
+        <translation>Preskočiť na skladbu</translation>
     </message>
     <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
-        <translation type="obsolete">Filtra</translation>
+        <translation>Filter</translation>
     </message>
     <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation type="obsolete">Aggiorna</translation>
+        <translation>Obnoviť</translation>
     </message>
     <message>
+        <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation type="obsolete">Vai a</translation>
+        <translation>Preskočiť na</translation>
     </message>
 </context>
 <context>
@@ -1028,367 +1171,364 @@
     <message>
         <location filename="../display.cpp" line="57"/>
         <source>Previous</source>
-        <translation>Brano precedente</translation>
+        <translation>Predchádzajúca</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="61"/>
         <source>Play</source>
-        <translation>Esegui</translation>
+        <translation>Hrať</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="64"/>
         <source>Pause</source>
-        <translation>Sospendi</translation>
+        <translation>Pozastaviť</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="67"/>
         <source>Stop</source>
-        <translation>Ferma</translation>
+        <translation>Zastaviť</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="70"/>
         <source>Next</source>
-        <translation>Brano successivo</translation>
+        <translation>Nasledujúca</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="73"/>
         <source>Add file</source>
-        <translation>Aggiungi brani</translation>
+        <translation>Pridať súbor</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="80"/>
         <source>Equalizer</source>
-        <translation>Equalizzatore</translation>
+        <translation>Ekvalizér</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="83"/>
         <source>Playlist</source>
-        <translation>Lista brani</translation>
+        <translation>Playlist</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="88"/>
         <source>Repeat playlist</source>
-        <translation>Ripeti la lista brani</translation>
+        <translation>Opakovať playlist</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="91"/>
         <source>Shuffle</source>
-        <translation>Ordine casuale</translation>
+        <translation>Zamiešať</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="101"/>
         <source>Volume</source>
-        <translation>Volume</translation>
+        <translation>Hlasitosť</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="107"/>
         <source>Balance</source>
-        <translation>Bilanciamento</translation>
+        <translation>Vyváženie</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="296"/>
         <source>Volume: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Hlasitosť: %1%</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="300"/>
         <source>Balance: %1% right</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyváženie: %1% vpravo</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="302"/>
         <source>Balance: %1% left</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyváženie: %1% vľavo</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="304"/>
         <source>Balance: center</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyváženie: stred</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="315"/>
         <source>Seek to: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Pretočiť na: %1</translation>
     </message>
 </context>
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="281"/>
+        <location filename="../mainvisual.cpp" line="280"/>
         <source>Visualization Mode</source>
-        <translation>Modo visualizzazione</translation>
+        <translation>Režim vizualizácií</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="283"/>
+        <source>Analyzer</source>
+        <translation>Analyzér</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="284"/>
-        <source>Analyzer</source>
-        <translation>Analizzatore</translation>
+        <source>Scope</source>
+        <translation>Osciloskop</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="285"/>
-        <source>Scope</source>
-        <translation>Oscilloscopio</translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="286"/>
         <source>Off</source>
-        <translation>Chiudi</translation>
+        <translation>Vypnuté</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="293"/>
+        <location filename="../mainvisual.cpp" line="292"/>
         <source>Analyzer Mode</source>
-        <translation>Modo analizzatore</translation>
+        <translation>Režim analyzéra</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="295"/>
+        <source>Normal</source>
+        <translation>Normálny</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="296"/>
-        <source>Normal</source>
-        <translation>Normale</translation>
+        <source>Fire</source>
+        <translation>Oheň</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="297"/>
-        <source>Fire</source>
-        <translation>Fuoco</translation>
+        <source>Vertical Lines</source>
+        <translation>Stĺpce</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="298"/>
-        <source>Vertical Lines</source>
-        <translation>Linee verticali</translation>
+        <source>Lines</source>
+        <translation>Čiary</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="299"/>
-        <source>Lines</source>
-        <translation>Linee</translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="300"/>
         <source>Bars</source>
-        <translation>Barre</translation>
+        <translation>Prúžky</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="313"/>
+        <location filename="../mainvisual.cpp" line="312"/>
         <source>Peaks</source>
-        <translation>Picchi</translation>
+        <translation>Špičky</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="317"/>
+        <location filename="../mainvisual.cpp" line="316"/>
         <source>Refresh Rate</source>
-        <translation>Velocità di aggiornamento</translation>
+        <translation>Obnovovacia frekvencia</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="320"/>
+        <location filename="../mainvisual.cpp" line="319"/>
         <source>50 fps</source>
         <translation>50 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="321"/>
+        <location filename="../mainvisual.cpp" line="320"/>
         <source>25 fps</source>
         <translation>25 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="322"/>
+        <location filename="../mainvisual.cpp" line="321"/>
         <source>10 fps</source>
         <translation>10 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="323"/>
+        <location filename="../mainvisual.cpp" line="322"/>
         <source>5 fps</source>
         <translation>5 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="330"/>
+        <location filename="../mainvisual.cpp" line="329"/>
         <source>Analyzer Falloff</source>
-        <translation>Ricaduta analizzatore</translation>
+        <translation>Pokles analyzéra</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="332"/>
+        <location filename="../mainvisual.cpp" line="346"/>
+        <source>Slowest</source>
+        <translation>Najpomaljšie</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="333"/>
         <location filename="../mainvisual.cpp" line="347"/>
-        <source>Slowest</source>
-        <translation>Molto lenta</translation>
+        <source>Slow</source>
+        <translation>Pomaly</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="334"/>
         <location filename="../mainvisual.cpp" line="348"/>
-        <source>Slow</source>
-        <translation>Lenta</translation>
+        <source>Medium</source>
+        <translation>Stredne</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="335"/>
         <location filename="../mainvisual.cpp" line="349"/>
-        <source>Medium</source>
-        <translation>Media</translation>
+        <source>Fast</source>
+        <translation>Rýchlo</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="336"/>
         <location filename="../mainvisual.cpp" line="350"/>
-        <source>Fast</source>
-        <translation>Rapida</translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="337"/>
-        <location filename="../mainvisual.cpp" line="351"/>
         <source>Fastest</source>
-        <translation>Molto veloce</translation>
+        <translation>Najrýchlejšie</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="344"/>
+        <location filename="../mainvisual.cpp" line="343"/>
         <source>Peaks Falloff</source>
-        <translation>Ricadua picchi</translation>
+        <translation>Pokles špičiek</translation>
+    </message>
+    <message>
+        <location filename="../mainvisual.cpp" line="356"/>
+        <source>Background</source>
+        <translation>Pozadie</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="357"/>
-        <source>Background</source>
-        <translation>Sfondo</translation>
-    </message>
-    <message>
-        <location filename="../mainvisual.cpp" line="358"/>
         <source>Transparent</source>
-        <translation>Transparente</translation>
+        <translation>Priehľadné</translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
+        <location filename="../mainwindow.cpp" line="245"/>
         <source>Choose a directory</source>
-        <translation type="obsolete">Scegliere una cartella</translation>
+        <translation>Vyberte priečinok</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="256"/>
         <source>Select one or more files to open</source>
-        <translation type="obsolete">Seleziona uno o più brani da aprire</translation>
+        <translation>Vyberte jeden alebo viac súborov na otvorenie</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="318"/>
-        <source>Appearance</source>
-        <translation type="unfinished">Aspetto</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="319"/>
-        <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="430"/>
         <source>&amp;Jump To File</source>
-        <translation>&amp;Vai al brano</translation>
+        <translation>&amp;Preskočiť na súbor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="431"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="382"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobraziť</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Playlist</translation>
     </message>
     <message>
-        <source>Open Playlist</source>
-        <translation type="obsolete">Apri lista di brani</translation>
-    </message>
-    <message>
-        <source>Save Playlist</source>
-        <translation type="obsolete">Salva lista di brani</translation>
-    </message>
-    <message>
+        <location filename="../mainwindow.cpp" line="511"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>Playlist Files</source>
-        <translation type="obsolete">Brani della lista</translation>
+        <translation>Súbory playlistov</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="513"/>
+        <source>Open Playlist</source>
+        <translation>Otvoriť playlist</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="538"/>
+        <source>Save Playlist</source>
+        <translation>Uložiť playlist</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="251"/>
         <source>All Supported Bitstreams</source>
-        <translation type="obsolete">Elenco di tutti i tipi di flusso accettati</translation>
+        <translation>Všetky podporované formáty</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="461"/>
         <source>Tools</source>
-        <translation>Strumenti</translation>
+        <translation>Nástroje</translation>
     </message>
 </context>
 <context>
     <name>PlayList</name>
     <message>
-        <location filename="../playlist.cpp" line="177"/>
-        <source>&amp;Copy Selection To</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../playlist.cpp" line="204"/>
         <source>Sort List</source>
-        <translation>Riordina la lista</translation>
+        <translation>Triediť zoznam</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="207"/>
         <location filename="../playlist.cpp" line="242"/>
         <source>By Title</source>
-        <translation>Per titolo</translation>
+        <translation>Podľa názvu</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="211"/>
         <location filename="../playlist.cpp" line="246"/>
         <source>By Album</source>
-        <translation>Per album</translation>
+        <translation>Podľa albumu</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="215"/>
         <location filename="../playlist.cpp" line="250"/>
         <source>By Artist</source>
-        <translation>PEr interprete</translation>
+        <translation>Podľa interpréta</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="219"/>
         <location filename="../playlist.cpp" line="254"/>
         <source>By Filename</source>
-        <translation>Per titolo del brano</translation>
+        <translation>Podľa názvu súboru</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="223"/>
         <location filename="../playlist.cpp" line="258"/>
         <source>By Path + Filename</source>
-        <translation>per percorso più titolo del brano</translation>
+        <translation>Podľa cesty a názvu súboru</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="227"/>
         <location filename="../playlist.cpp" line="262"/>
         <source>By Date</source>
-        <translation>Per data</translation>
+        <translation>Podľa dátumu</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="239"/>
         <source>Sort Selection</source>
-        <translation>Riordina la selezione</translation>
+        <translation>Potriediť výber</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="274"/>
         <source>Randomize List</source>
-        <translation>Mescola i brnai della lista</translation>
+        <translation>Zamiešať zoznam</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="276"/>
         <source>Reverse List</source>
-        <translation>Inverti la lista</translation>
+        <translation>Otočiť zoznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="548"/>
+        <location filename="../playlist.cpp" line="550"/>
         <source>&amp;New PlayList</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nový playlist</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="177"/>
+        <source>&amp;Copy Selection To</source>
+        <translation>&amp;Skopírovať výber do</translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="53"/>
+        <source>Playlist</source>
+        <translation>Playlist</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="231"/>
         <location filename="../playlist.cpp" line="266"/>
         <source>By Track Number</source>
-        <translation>Per numero di traccia</translation>
-    </message>
-    <message>
-        <location filename="../playlist.cpp" line="53"/>
-        <source>Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Podľa čísla skladby</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="283"/>
         <source>Actions</source>
-        <translation>Azioni</translation>
+        <translation>Činnosti</translation>
     </message>
 </context>
 <context>
@@ -1396,18 +1536,18 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation>Esplora lista esecuzione</translation>
+        <translation>Prehliadač playlistu</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
         <source>New</source>
-        <translation>Nuova</translation>
+        <translation>Nový</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="52"/>
         <location filename="../playlistbrowser.cpp" line="39"/>
         <source>Delete</source>
-        <translation>Elimina</translation>
+        <translation>Vymazať</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="69"/>
@@ -1418,7 +1558,7 @@
     <message>
         <location filename="../playlistbrowser.cpp" line="38"/>
         <source>Rename</source>
-        <translation>Rinomina</translation>
+        <translation>Premenovať</translation>
     </message>
 </context>
 <context>
@@ -1426,32 +1566,32 @@
     <message>
         <location filename="../playlistselector.cpp" line="51"/>
         <source>&amp;Load</source>
-        <translation>&amp;Carica</translation>
+        <translation>&amp;Načítať</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Save As...</source>
-        <translation>&amp;Salva come</translation>
+        <translation>&amp;Uložiť ako...</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="54"/>
         <source>Rename</source>
-        <translation>Rinomina</translation>
+        <translation>Premenovať</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="55"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Elimina</translation>
+        <translation>&amp;Vymazať</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Rename Playlist</source>
-        <translation>Rinomina lista brani</translation>
+        <translation>Premenovať playlist</translation>
     </message>
     <message>
         <location filename="../playlistselector.cpp" line="111"/>
         <source>Playlist name:</source>
-        <translation>Nome della lista brani:</translation>
+        <translation>Název playlistu:</translation>
     </message>
 </context>
 <context>
@@ -1459,22 +1599,22 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation>Popup delle impostazioni</translation>
+        <translation>Nastavenie informácií v upozornení</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation>Mostra copertina</translation>
+        <translation>Zobraziť obal</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
-        <translation>Trasparenza:</translation>
+        <translation>Priehľadnosť:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation>Ritardo:</translation>
+        <translation>Oneskorenie:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
@@ -1484,27 +1624,27 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
-        <translation>Dimensione copertina:</translation>
+        <translation>Veľkosť obalu:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
-        <translation>Modello</translation>
+        <translation>Šablóna</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
-        <translation>Azzera</translation>
+        <translation>Zresetovať</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
-        <translation>Inserisci</translation>
+        <translation>Vložiť</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
-        <translation>Interprete</translation>
+        <translation>Interprét</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
@@ -1514,62 +1654,62 @@
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
-        <translation>Titolo</translation>
+        <translation>Názov</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
-        <translation>Traccia n°</translation>
+        <translation>Číslo skladby</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
-        <translation>Traccia n° a due cifre</translation>
+        <translation>Dvojmiestne číslo skladby</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
-        <translation>Genere</translation>
+        <translation>Žáner</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
-        <translation>Commento</translation>
+        <translation>Poznámka</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
-        <translation>Compositore</translation>
+        <translation>Skladateľ</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
-        <translation>Durata</translation>
+        <translation>Dĺžka</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
-        <translation>Disco n°</translation>
+        <translation>Číslo disku</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
-        <translation>Nome file</translation>
+        <translation>Názov súboru</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
-        <translation>Percorso file</translation>
+        <translation>Cesta k súboru</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
-        <translation>Anno</translation>
+        <translation>Rok</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
-        <translation>Condizione</translation>
+        <translation>Stav</translation>
     </message>
 </context>
 <context>
@@ -1577,62 +1717,75 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation>Editor delle impostazioni</translation>
+        <translation>Editor predvolieb</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="77"/>
         <source>Load</source>
-        <translation>Carica</translation>
+        <translation>Načítať</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="84"/>
         <source>Delete</source>
-        <translation>Elimina</translation>
+        <translation>Vymazať</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="36"/>
         <source>Preset</source>
-        <translation>Impostazioni</translation>
+        <translation>Predvoľba</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="52"/>
         <source>Auto-preset</source>
-        <translation>Impostazioni automatiche</translation>
+        <translation>Automatická predvoľba</translation>
     </message>
 </context>
 <context>
     <name>QMMPStarter</name>
     <message>
+        <location filename="../qmmpstarter.cpp" line="176"/>
         <source>Usage: qmmp [options] [files]</source>
-        <translation type="obsolete">Uso: qmmp [options] [fichiers]</translation>
+        <translation>Použitie: qmmp [možnosti] [súbory]</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="177"/>
         <source>Options:</source>
-        <translation type="obsolete">Opzioni: </translation>
+        <translation>Možnosti:</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="181"/>
+        <source>Don&apos;t start the application</source>
+        <translation>Nezapnúť program</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="183"/>
         <source>Print version number and exit</source>
-        <translation type="obsolete">Stampa il numero di versione ed esci</translation>
+        <translation>Vypísať číslo verzie a skončiť</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="184"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
-        <translation type="obsolete">Per idee, modifiche, segnalazione di errori scrivire a: forkotov02@hotmail.ru</translation>
+        <translation>Nápady, záplaty, hlásenie chýb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <source>Qt version:</source>
-        <translation type="obsolete">Versione Qt:</translation>
-    </message>
-    <message>
+        <location filename="../qmmpstarter.cpp" line="182"/>
         <source>Display this text and exit</source>
-        <translation type="obsolete">Mostra questo testo ed esci</translation>
+        <translation>Zobraziť tento text a skončiť</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="71"/>
         <source>Unknown command</source>
-        <translation type="obsolete">Comando sconosciuto</translation>
+        <translation>Neznámý príkaz</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="189"/>
         <source>QMMP version:</source>
-        <translation type="obsolete">Versione di Qmmp: </translation>
+        <translation>Verzia QMMP:</translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="190"/>
+        <source>Qt version:</source>
+        <translation>Verzia Qt:</translation>
     </message>
 </context>
 <context>
@@ -1640,180 +1793,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmeniť skratku</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>Stlačte klávesovú kombináciu ktorú chcete priradiť</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>SkinnedSettings</name>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="24"/>
-        <source>Skins</source>
-        <translation type="unfinished">Temi</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="55"/>
-        <source>Add...</source>
-        <translation type="unfinished">Aggiungi...</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="68"/>
-        <source>Refresh</source>
-        <translation type="unfinished">Aggiorna</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="89"/>
-        <location filename="../forms/skinnedsettings.ui" line="95"/>
-        <source>View</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="101"/>
-        <source>Hide on close</source>
-        <translation type="unfinished">Nascondi alla chiusura</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="108"/>
-        <source>Start hidden</source>
-        <translation type="unfinished">Avvia nascosto</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="115"/>
-        <source>Use skin cursors</source>
-        <translation type="unfinished">Usa cursore skin</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="131"/>
-        <source>Fonts</source>
-        <translation type="unfinished">Caratteri</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="149"/>
-        <source>Player:</source>
-        <translation type="unfinished">Player: </translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="171"/>
-        <location filename="../forms/skinnedsettings.ui" line="219"/>
-        <source>???</source>
-        <translation type="unfinished">???</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="178"/>
-        <location filename="../forms/skinnedsettings.ui" line="226"/>
-        <source>...</source>
-        <translation type="unfinished">...</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="197"/>
-        <source>Playlist:</source>
-        <translation type="unfinished">Lista brani : </translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="233"/>
-        <source>Use bitmap font if available</source>
-        <translation type="unfinished">Usa carattere bitmap se disponibile</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="243"/>
-        <source>Transparency</source>
-        <translation type="unfinished">Transparenza</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="249"/>
-        <source>Main window</source>
-        <translation type="unfinished">Finestra principale</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="272"/>
-        <location filename="../forms/skinnedsettings.ui" line="296"/>
-        <location filename="../forms/skinnedsettings.ui" line="320"/>
-        <source>0</source>
-        <translation type="unfinished">0</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="279"/>
-        <source>Equalizer</source>
-        <translation type="unfinished">Equalizzatore</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="303"/>
-        <source>Playlist</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="344"/>
-        <source>Miscellaneous</source>
-        <translation type="unfinished">Varie</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="350"/>
-        <source>Song Display</source>
-        <translation type="unfinished">Mostra il brano</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="356"/>
-        <source>Show protocol</source>
-        <translation type="unfinished">Motra protocollo</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="363"/>
-        <source>Show song numbers</source>
-        <translation type="unfinished">Mostra numero brani</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="370"/>
-        <source>Show playlists</source>
-        <translation type="unfinished">Mostra lista esecuzione brani</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="379"/>
-        <source>Show popup information</source>
-        <translation type="unfinished">Mostra informazioni popup</translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="389"/>
-        <source>Edit template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="411"/>
-        <source>Show anchor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/skinnedsettings.ui" line="421"/>
-        <source>Align song numbers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../skinnedsettings.cpp" line="96"/>
-        <source>Select Skin Files</source>
-        <translation type="unfinished">Seleziona aspetto</translation>
-    </message>
-    <message>
-        <location filename="../skinnedsettings.cpp" line="97"/>
-        <source>Skin files</source>
-        <translation type="unfinished">Aspetto</translation>
-    </message>
-    <message>
-        <location filename="../skinnedsettings.cpp" line="139"/>
-        <source>Unarchived skin</source>
-        <translation type="unfinished">Tema non archiviato</translation>
-    </message>
-    <message>
-        <location filename="../skinnedsettings.cpp" line="170"/>
-        <source>Archived skin</source>
-        <translation type="unfinished">Tema archiviato</translation>
+        <translation>Vyčistiť</translation>
     </message>
 </context>
 <context>
@@ -1821,20 +1811,20 @@
     <message>
         <location filename="../textscroller.cpp" line="52"/>
         <source>Autoscroll Songname</source>
-        <translation>Scorrimento automatico del titolo del brano</translation>
+        <translation>Automaticky skrolovať názov piesne</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="117"/>
         <source>Buffering: %1%</source>
-        <translation type="unfinished"></translation>
+        <translation>Bufferuje sa:%1%</translation>
     </message>
 </context>
 <context>
     <name>VisualMenu</name>
     <message>
-        <location filename="../visualmenu.cpp" line="26"/>
+        <location filename="../visualmenu.cpp" line="29"/>
         <source>Visualization</source>
-        <translation>Visualizzazione</translation>
+        <translation>Vizualizácie</translation>
     </message>
 </context>
 </TS>
