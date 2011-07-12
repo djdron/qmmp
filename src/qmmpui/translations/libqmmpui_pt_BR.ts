@@ -2,112 +2,6 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <source>About Qmmp</source>
-        <translation type="obsolete">Sobre QMMP</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">Sobre</translation>
-    </message>
-    <message>
-        <source>License Agreement</source>
-        <translation type="obsolete">Concordância com a Licença</translation>
-    </message>
-    <message>
-        <source>Authors</source>
-        <translation type="obsolete">Autores</translation>
-    </message>
-    <message>
-        <source>Thanks To</source>
-        <translation type="obsolete">Agradecimentos para</translation>
-    </message>
-</context>
-<context>
-    <name>ActionManager</name>
-    <message>
-        <source>&amp;Play</source>
-        <translation type="obsolete">Tocar</translation>
-    </message>
-    <message>
-        <source>&amp;Pause</source>
-        <translation type="obsolete">Pausar</translation>
-    </message>
-    <message>
-        <source>&amp;Stop</source>
-        <translation type="obsolete">Parar</translation>
-    </message>
-    <message>
-        <source>&amp;Previous</source>
-        <translation type="obsolete">Anterior</translation>
-    </message>
-    <message>
-        <source>&amp;Next</source>
-        <translation type="obsolete">Próximo</translation>
-    </message>
-    <message>
-        <source>&amp;Add File</source>
-        <translation type="obsolete">&amp;Adicionar arquivo</translation>
-    </message>
-    <message>
-        <source>&amp;Add Directory</source>
-        <translation type="obsolete">&amp;Adicionar Diretorio</translation>
-    </message>
-    <message>
-        <source>&amp;Remove Selected</source>
-        <translation type="obsolete">&amp;Remover selecionadas</translation>
-    </message>
-    <message>
-        <source>&amp;Remove All</source>
-        <translation type="obsolete">&amp;Remover tudo</translation>
-    </message>
-    <message>
-        <source>&amp;Remove Unselected</source>
-        <translation type="obsolete">&amp;Remover não selecionadas</translation>
-    </message>
-    <message>
-        <source>Invert Selection</source>
-        <translation type="obsolete">Inverter Seleção</translation>
-    </message>
-    <message>
-        <source>&amp;Select None</source>
-        <translation type="obsolete">&amp;Nenhum selecionado</translation>
-    </message>
-    <message>
-        <source>&amp;Select All</source>
-        <translation type="obsolete">&amp;Selecionar tudo</translation>
-    </message>
-    <message>
-        <source>&amp;View Track Details</source>
-        <translation type="obsolete">&amp;Ver detalhes da Faixa</translation>
-    </message>
-    <message>
-        <source>&amp;New List</source>
-        <translation type="obsolete">&amp;Nova lista</translation>
-    </message>
-    <message>
-        <source>&amp;Load List</source>
-        <translation type="obsolete">&amp;Carregar lista</translation>
-    </message>
-    <message>
-        <source>&amp;Save List</source>
-        <translation type="obsolete">&amp;Salvar lista</translation>
-    </message>
-    <message>
-        <source>&amp;Settings</source>
-        <translation type="obsolete">Configurações</translation>
-    </message>
-    <message>
-        <source>&amp;About</source>
-        <translation type="obsolete">&amp;Sobre</translation>
-    </message>
-    <message>
-        <source>&amp;Exit</source>
-        <translation type="obsolete">Sair</translation>
-    </message>
-</context>
-<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="287"/>
@@ -216,26 +110,6 @@
         <translation type="unfinished">Configurações</translation>
     </message>
     <message>
-        <source>Skins</source>
-        <translation type="obsolete">Temas</translation>
-    </message>
-    <message>
-        <source>Fonts</source>
-        <translation type="obsolete">Fontes</translation>
-    </message>
-    <message>
-        <source>Player:</source>
-        <translation type="obsolete">Player</translation>
-    </message>
-    <message>
-        <source>Playlist:</source>
-        <translation type="obsolete">Lista de músicas:</translation>
-    </message>
-    <message>
-        <source>???</source>
-        <translation type="obsolete">???</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="176"/>
         <source>...</source>
         <translation>...</translation>
@@ -273,10 +147,6 @@
         <location filename="../forms/configdialog.ui" line="750"/>
         <source>Information</source>
         <translation type="unfinished">Informações</translation>
-    </message>
-    <message>
-        <source>Appearance</source>
-        <translation type="obsolete">Aparência</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="70"/>
@@ -465,10 +335,6 @@
         <source>Convert %20 to blanks</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Refresh</source>
-        <translation type="obsolete">Recarregar</translation>
-    </message>
 </context>
 <context>
     <name>DetailsDialog</name>
@@ -548,49 +414,6 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>EqWidget</name>
-    <message>
-        <source>preset</source>
-        <translation type="obsolete">preset</translation>
-    </message>
-    <message>
-        <source>&amp;Load/Delete</source>
-        <translation type="obsolete">&amp;Carregar/Deletar</translation>
-    </message>
-    <message>
-        <source>&amp;Save Preset</source>
-        <translation type="obsolete">%Salvar preset</translation>
-    </message>
-    <message>
-        <source>&amp;Save Auto-load Preset</source>
-        <translation type="obsolete">&amp;Salvar Auto-Carregar preset</translation>
-    </message>
-    <message>
-        <source>&amp;Clear</source>
-        <translation type="obsolete">&amp;Limpar</translation>
-    </message>
-    <message>
-        <source>Saving Preset</source>
-        <translation type="obsolete">Salvando Preset</translation>
-    </message>
-    <message>
-        <source>Preset name:</source>
-        <translation type="obsolete">Nome Preset:</translation>
-    </message>
-    <message>
-        <source>preset #</source>
-        <translation type="obsolete">Preset #</translation>
-    </message>
-    <message>
-        <source>&amp;Import</source>
-        <translation type="obsolete">&amp;Importar</translation>
-    </message>
-    <message>
-        <source>Import Preset</source>
-        <translation type="obsolete">Importar Preset</translation>
-    </message>
-</context>
-<context>
     <name>JumpToTrackDialog</name>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
@@ -642,150 +465,12 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>MainDisplay</name>
-    <message>
-        <source>Playlist</source>
-        <translation type="obsolete">Lista de músicas</translation>
-    </message>
-</context>
-<context>
-    <name>MainWindow</name>
-    <message>
-        <source>Choose a directory</source>
-        <translation type="obsolete">Escolher o diretorio</translation>
-    </message>
-    <message>
-        <source>Select one or more files to open</source>
-        <translation type="obsolete">Selecionar um ou mais arquivos</translation>
-    </message>
-    <message>
-        <source>&amp;Jump To File</source>
-        <translation type="obsolete">Pular para arquivo</translation>
-    </message>
-    <message>
-        <source>Playlist</source>
-        <translation type="obsolete">Lista de músicas</translation>
-    </message>
-    <message>
-        <source>Open Playlist</source>
-        <translation type="obsolete">Abrir Playlist</translation>
-    </message>
-    <message>
-        <source>Save Playlist</source>
-        <translation type="obsolete">Salvar Playlist</translation>
-    </message>
-    <message>
-        <source>Playlist Files</source>
-        <translation type="obsolete">ФArquivos de lista de músicas</translation>
-    </message>
-</context>
-<context>
-    <name>PlayList</name>
-    <message>
-        <source>Sort List</source>
-        <translation type="obsolete">Classificar lista</translation>
-    </message>
-    <message>
-        <source>By Title</source>
-        <translation type="obsolete">Por Título</translation>
-    </message>
-    <message>
-        <source>By Filename</source>
-        <translation type="obsolete">Por Nome</translation>
-    </message>
-    <message>
-        <source>By Path + Filename</source>
-        <translation type="obsolete">Por Dirertório + Nome</translation>
-    </message>
-    <message>
-        <source>By Date</source>
-        <translation type="obsolete">Por Data</translation>
-    </message>
-    <message>
-        <source>Sort Selection</source>
-        <translation type="obsolete">Classificar por Seleção</translation>
-    </message>
-    <message>
-        <source>Randomize List</source>
-        <translation type="obsolete">Lista Eleatória</translation>
-    </message>
-    <message>
-        <source>Reverse List</source>
-        <translation type="obsolete">Lista Revertida</translation>
-    </message>
-    <message>
-        <source>Playlist</source>
-        <translation type="obsolete">Lista de músicas</translation>
-    </message>
-</context>
-<context>
-    <name>PlayListBrowser</name>
-    <message>
-        <source>Delete</source>
-        <translation type="obsolete">Remover</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="obsolete">...</translation>
-    </message>
-</context>
-<context>
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="149"/>
         <location filename="../playlistmanager.cpp" line="384"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de músicas</translation>
-    </message>
-</context>
-<context>
-    <name>PopupSettings</name>
-    <message>
-        <source>Artist</source>
-        <translation type="obsolete">Artista</translation>
-    </message>
-    <message>
-        <source>Album</source>
-        <translation type="obsolete">Álbum</translation>
-    </message>
-    <message>
-        <source>Title</source>
-        <translation type="obsolete">Título</translation>
-    </message>
-    <message>
-        <source>Genre</source>
-        <translation type="obsolete">Gênero</translation>
-    </message>
-    <message>
-        <source>Comment</source>
-        <translation type="obsolete">Comentário</translation>
-    </message>
-    <message>
-        <source>Year</source>
-        <translation type="obsolete">Ano</translation>
-    </message>
-</context>
-<context>
-    <name>PresetEditor</name>
-    <message>
-        <source>Preset Editor</source>
-        <translation type="obsolete">Editor de Preset</translation>
-    </message>
-    <message>
-        <source>Load</source>
-        <translation type="obsolete">Carregar</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation type="obsolete">Remover</translation>
-    </message>
-    <message>
-        <source>Preset</source>
-        <translation type="obsolete">Preset</translation>
-    </message>
-    <message>
-        <source>Auto-preset</source>
-        <translation type="obsolete">Auto-preset</translation>
     </message>
 </context>
 <context>
