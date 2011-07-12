@@ -418,29 +418,29 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation type="unfinished">Перейти к треку</translation>
+        <translation>Перейти к треку</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
-        <translation type="unfinished">Фильтр</translation>
+        <translation>Фильтр</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
         <location filename="../jumptotrackdialog.cpp" line="145"/>
         <source>Queue</source>
-        <translation type="unfinished">В очередь</translation>
+        <translation>В очередь</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation type="unfinished">Обновить</translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation type="unfinished">Перейти к</translation>
+        <translation>Перейти к</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
@@ -461,7 +461,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="143"/>
         <source>Unqueue</source>
-        <translation type="unfinished">Снять с очереди</translation>
+        <translation>Снять с очереди</translation>
     </message>
 </context>
 <context>
@@ -648,33 +648,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../uihelper.cpp" line="134"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished">Все форматы</translation>
+        <translation>Все форматы</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="139"/>
         <source>Select one or more files to open</source>
-        <translation type="unfinished">Выберите один или несколько файлов</translation>
+        <translation>Выберите один или несколько файлов</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="146"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">Выберите директорию</translation>
+        <translation>Выберите директорию</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="158"/>
         <location filename="../uihelper.cpp" line="184"/>
         <source>Playlist Files</source>
-        <translation type="unfinished">Файлы списков</translation>
+        <translation>Файлы списков</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="160"/>
         <source>Open Playlist</source>
-        <translation type="unfinished">Открыть список</translation>
+        <translation>Открыть список</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="185"/>
         <source>Save Playlist</source>
-        <translation type="unfinished">Сохранить список</translation>
+        <translation>Сохранить список</translation>
     </message>
 </context>
 </TS>
