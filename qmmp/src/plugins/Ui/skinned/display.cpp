@@ -135,7 +135,7 @@ MainDisplay::~MainDisplay()
 {
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue ("Skinned/pl_visible",m_plButton->isChecked());
-    settings.setValue ("Skinned/mw_visible",m_eqButton->isChecked());
+    settings.setValue ("Skinned/eq_visible",m_eqButton->isChecked());
 }
 
 void MainDisplay::updatePositions()
