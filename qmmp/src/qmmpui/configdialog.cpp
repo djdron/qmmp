@@ -330,7 +330,6 @@ void ConfigDialog::saveSettings()
     if(m_ui->outputComboBox->currentIndex() >= 0 && outputs->count())
         Output::setCurrentFactory(outputs->at(m_ui->outputComboBox->currentIndex()));
 
-    //settings.setValue("General/selector_geometry", m_ui->contentsWidget->saveGeometry());
     QList<QVariant> var_sizes;
     var_sizes << m_ui->splitter->sizes().first() << m_ui->splitter->sizes().last();
     settings.setValue("ConfigDialog/splitter_sizes", var_sizes);
