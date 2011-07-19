@@ -45,19 +45,7 @@
        </size>
       </property>
       <property name="spacing">
-       <number>3</number>
-      </property>
-      <property name="viewMode">
-       <enum>QListView::ListMode</enum>
-      </property>
-      <property name="modelColumn">
-       <number>0</number>
-      </property>
-      <property name="uniformItemSizes">
-       <bool>false</bool>
-      </property>
-      <property name="wordWrap">
-       <bool>false</bool>
+       <number>2</number>
       </property>
       <property name="selectionRectVisible">
        <bool>false</bool>
