@@ -130,6 +130,17 @@ void ConfigDialog::readSettings()
     m_ui->softVolumeCheckBox->setChecked(gs->useSoftVolume());
     m_ui->use16BitCheckBox->setChecked(gs->use16BitOutput());
     m_ui->bufferSizeSpinBox->setValue(gs->bufferSize());
+    //geometry
+    resize(settings.value("ConfigDialog/window_size", QSize(700,470)).toSize());
+    QList<QVariant> var_sizes = settings.value("ConfigDialog/splitter_sizes").toList();
+    if(var_sizes.count() != 2)
+    {
+        var_sizes.clear();
+        var_sizes << 180 << width()-180;
+    }
+    QList<int> sizes;
+    sizes << var_sizes.first().toInt() << var_sizes.last().toInt();
+    m_ui->splitter->setSizes(sizes);
 }
 
 void ConfigDialog::on_contentsWidget_currentItemChanged (QListWidgetItem *current,
@@ -318,6 +329,12 @@ void ConfigDialog::saveSettings()
     QList <OutputFactory *> *outputs = Output::factories();
     if(m_ui->outputComboBox->currentIndex() >= 0 && outputs->count())
         Output::setCurrentFactory(outputs->at(m_ui->outputComboBox->currentIndex()));
+
+    //settings.setValue("General/selector_geometry", m_ui->contentsWidget->saveGeometry());
+    QList<QVariant> var_sizes;
+    var_sizes << m_ui->splitter->sizes().first() << m_ui->splitter->sizes().last();
+    settings.setValue("ConfigDialog/splitter_sizes", var_sizes);
+    settings.setValue("ConfigDialog/window_size", size());
 }
 
 void ConfigDialog::updateDialogButton(int index)
