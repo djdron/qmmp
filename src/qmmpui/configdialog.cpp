@@ -45,6 +45,7 @@
 #include "generalfactory.h"
 #include "general.h"
 #include "uihelper.h"
+#include "uiloader.h"
 #include "filedialog.h"
 #include "mediaplayer.h"
 #include "playlistmodel.h"
@@ -72,6 +73,7 @@ ConfigDialog::ConfigDialog (QWidget *parent) : QDialog (parent)
     m_ui->informationButton->setIcon(QIcon::fromTheme("dialog-information"));
     m_ui->fdInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
     m_ui->outputInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
+    m_ui->uiInformationButton->setIcon(QIcon::fromTheme("dialog-information"));
     m_ui->outputPreferencesButton->setIcon(QIcon::fromTheme("configure"));
 }
 
@@ -221,6 +223,7 @@ void ConfigDialog::loadPluginsInfo()
     /*
         load output plugins information
     */
+
     m_ui->outputInformationButton->setEnabled(false);
     m_ui->outputPreferencesButton->setEnabled(false);
     QList <OutputFactory *> *outputs = Output::factories();
@@ -241,6 +244,19 @@ void ConfigDialog::loadPluginsInfo()
         m_ui->fileDialogComboBox->addItem(factory->properties().name);
         if (FileDialog::isEnabled(factory))
             m_ui->fileDialogComboBox->setCurrentIndex(m_ui->fileDialogComboBox->count()-1);
+    }
+    /*
+        load ui information
+    */
+    m_ui->uiInformationButton->setEnabled(false);
+    foreach(UiFactory *factory, *UiLoader::factories())
+    {
+        m_ui->uiComboBox->addItem(factory->properties().name);
+        if (UiLoader::selected() == factory)
+        {
+            m_ui->uiComboBox->setCurrentIndex(m_ui->uiComboBox->count()-1);
+            on_uiComboBox_activated(m_ui->uiComboBox->count()-1);
+        }
     }
 }
 
@@ -380,8 +396,20 @@ void ConfigDialog::on_outputPreferencesButton_clicked()
     Output::factories()->at(index)->showSettings(this);
 }
 
+void ConfigDialog::on_uiComboBox_activated (int index)
+{
+    UiFactory *factory =  UiLoader::factories()->at(index);
+    m_ui->uiInformationButton->setEnabled(factory->properties().hasAbout);
+}
+
 void ConfigDialog::on_outputInformationButton_clicked()
 {
     int index = m_ui->outputComboBox->currentIndex();
     Output::factories()->at(index)->showAbout(this);
+}
+
+void ConfigDialog::on_uiInformationButton_clicked()
+{
+    int index = m_ui->uiComboBox->currentIndex();
+    UiLoader::factories()->at(index)->showAbout(this);
 }

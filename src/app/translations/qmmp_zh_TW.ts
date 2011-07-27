@@ -72,32 +72,32 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="260"/>
+        <location filename="../qmmpstarter.cpp" line="258"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>使用：qmmp [設定] [文件]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="261"/>
+        <location filename="../qmmpstarter.cpp" line="259"/>
         <source>Options:</source>
         <translation>設定：</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="265"/>
+        <location filename="../qmmpstarter.cpp" line="263"/>
         <source>Don&apos;t start the application</source>
         <translation>無法啟動此程式</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="267"/>
+        <location filename="../qmmpstarter.cpp" line="265"/>
         <source>Print version number and exit</source>
         <translation>察看版本並結束</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="268"/>
+        <location filename="../qmmpstarter.cpp" line="266"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>建議、補丁或提交 bug 請傳送到 forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="266"/>
+        <location filename="../qmmpstarter.cpp" line="264"/>
         <source>Display this text and exit</source>
         <translation>察看這些字檔並結束</translation>
     </message>
@@ -107,12 +107,12 @@
         <translation>未知指令</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="273"/>
+        <location filename="../qmmpstarter.cpp" line="271"/>
         <source>QMMP version:</source>
         <translation>Qmmp 版本：</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="274"/>
+        <location filename="../qmmpstarter.cpp" line="272"/>
         <source>Qt version:</source>
         <translation>Qt 版本：</translation>
     </message>

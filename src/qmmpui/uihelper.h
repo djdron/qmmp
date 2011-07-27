@@ -27,8 +27,8 @@
 #include <QStringList>
 #include <QApplication>
 #include <QPointer>
-#include <qmmpui/playlistmanager.h>
-#include <qmmpui/playlistmodel.h>
+#include "playlistmanager.h"
+#include "playlistmodel.h"
 
 class QAction;
 class QMenu;
@@ -135,7 +135,6 @@ private:
     QPointer<QMenu> m_toolsMenu;
     QPointer<QMenu> m_playlistMenu;
     QString m_lastDir;
-    //JumpToTrackDialog *m_jumpDialog;
     QPointer <JumpToTrackDialog> m_jumpDialog;
     static UiHelper* m_instance;
 };

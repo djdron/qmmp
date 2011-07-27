@@ -71,7 +71,7 @@ QStringList UiLoader::files()
     return m_files;
 }
 
-void UiLoader::setCurrentUiFactory(UiFactory* factory)
+void UiLoader::select(UiFactory* factory)
 {
     checkFactories();
     if (!m_factories->contains(factory))
@@ -80,7 +80,7 @@ void UiLoader::setCurrentUiFactory(UiFactory* factory)
     settings.setValue ("Ui/current_plugin", factory->properties().shortName);
 }
 
-UiFactory *UiLoader::currentUiFactory()
+UiFactory *UiLoader::selected()
 {
     checkFactories();
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);

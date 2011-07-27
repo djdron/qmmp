@@ -19,12 +19,16 @@
  ***************************************************************************/
 
 #include <QtPlugin>
+#include <QMessageBox>
 #include "mainwindow.h"
 #include "skinnedfactory.h"
 
 const UiProperties SkinnedFactory::properties() const
 {
     UiProperties props;
+    props.hasAbout = true;
+    props.name = tr("Skinned User Interface");
+    props.shortName = "skinned";
     return props;
 }
 
@@ -33,7 +37,16 @@ QObject *SkinnedFactory::SkinnedFactory::create()
     return new MainWindow();
 }
 
-void SkinnedFactory::showAbout(QWidget *parent){}
+void SkinnedFactory::showAbout(QWidget *parent)
+{
+    QMessageBox::about (parent, tr("About Qmmp Skinned User Interface"),
+                        tr("Qmmp Skinned User Interface")+"\n"+
+                        tr("Simple user interface with Winamp-2.x/XMMS skins support")+ "\n" +
+                        tr("Written by:\n"
+                           "Vladimir Kuznetsov <vovanec@gmail.com>\n"
+                           "Ilya Kotov <forkotov02@hotmail.ru>"));
+
+}
 
 QTranslator *SkinnedFactory::createTranslator(QObject *parent)
 {
