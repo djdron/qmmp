@@ -1158,29 +1158,31 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="30"/>
         <source>Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Интерфейс с поддержкой обложек</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="42"/>
         <source>About Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Об интерфейсе с поддержкой обложек</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="43"/>
         <source>Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Интерфейс с поддержкой обложек для Qmmp</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="44"/>
         <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
-        <translation type="unfinished"></translation>
+        <translation>Простой пользовательский интерфейс с поддержкой обложек Winamp-2.x/XMMS</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="45"/>
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработчики:
+Владимир Кузнецов &lt;vovanec@gmail.com&gt;
+Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
