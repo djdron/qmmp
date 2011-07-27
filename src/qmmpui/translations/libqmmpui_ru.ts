@@ -288,7 +288,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="423"/>
         <source>User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Интерфейс пользователя</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="471"/>
