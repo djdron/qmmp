@@ -424,10 +424,10 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QComboBox" name="comboBox"/>
+            <widget class="QComboBox" name="uiComboBox"/>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QPushButton" name="uiInformationButton">
              <property name="text">
               <string>Information</string>
              </property>

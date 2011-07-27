@@ -72,32 +72,32 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="260"/>
+        <location filename="../qmmpstarter.cpp" line="258"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Použitie: qmmp [možnosti] [súbory]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="261"/>
+        <location filename="../qmmpstarter.cpp" line="259"/>
         <source>Options:</source>
         <translation>Možnosti:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="265"/>
+        <location filename="../qmmpstarter.cpp" line="263"/>
         <source>Don&apos;t start the application</source>
         <translation>Nezapnúť program</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="267"/>
+        <location filename="../qmmpstarter.cpp" line="265"/>
         <source>Print version number and exit</source>
         <translation>Vypísať číslo verzie a skončiť</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="268"/>
+        <location filename="../qmmpstarter.cpp" line="266"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Nápady, záplaty, hlásenie chýb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="266"/>
+        <location filename="../qmmpstarter.cpp" line="264"/>
         <source>Display this text and exit</source>
         <translation>Zobraziť tento text a skončiť</translation>
     </message>
@@ -107,12 +107,12 @@
         <translation>Neznámý príkaz</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="273"/>
+        <location filename="../qmmpstarter.cpp" line="271"/>
         <source>QMMP version:</source>
         <translation>Verzia QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="274"/>
+        <location filename="../qmmpstarter.cpp" line="272"/>
         <source>Qt version:</source>
         <translation>Verzia Qt:</translation>
     </message>

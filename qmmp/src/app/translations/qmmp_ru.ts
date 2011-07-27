@@ -72,32 +72,32 @@
 <context>
     <name>QMMPStarter</name>
     <message>
-        <location filename="../qmmpstarter.cpp" line="260"/>
+        <location filename="../qmmpstarter.cpp" line="258"/>
         <source>Usage: qmmp [options] [files]</source>
         <translation>Использование: qmmp [options] [files]</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="261"/>
+        <location filename="../qmmpstarter.cpp" line="259"/>
         <source>Options:</source>
         <translation>Опции:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="265"/>
+        <location filename="../qmmpstarter.cpp" line="263"/>
         <source>Don&apos;t start the application</source>
         <translation>Не запускать приложение</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="267"/>
+        <location filename="../qmmpstarter.cpp" line="265"/>
         <source>Print version number and exit</source>
         <translation>Показать версии и выйти</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="268"/>
+        <location filename="../qmmpstarter.cpp" line="266"/>
         <source>Ideas, patches, bugreports send to forkotov02@hotmail.ru</source>
         <translation>Идеи, исправления, отчёты об ошибках:  forkotov02@hotmail.ru</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="266"/>
+        <location filename="../qmmpstarter.cpp" line="264"/>
         <source>Display this text and exit</source>
         <translation>Показать этот текст и выйти</translation>
     </message>
@@ -107,12 +107,12 @@
         <translation>Неизвестная команда</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="273"/>
+        <location filename="../qmmpstarter.cpp" line="271"/>
         <source>QMMP version:</source>
         <translation>Версия QMMP:</translation>
     </message>
     <message>
-        <location filename="../qmmpstarter.cpp" line="274"/>
+        <location filename="../qmmpstarter.cpp" line="272"/>
         <source>Qt version:</source>
         <translation>Версия Qt:</translation>
     </message>

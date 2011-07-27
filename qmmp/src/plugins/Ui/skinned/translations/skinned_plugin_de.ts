@@ -1154,6 +1154,36 @@
     </message>
 </context>
 <context>
+    <name>SkinnedFactory</name>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="30"/>
+        <source>Skinned User Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="42"/>
+        <source>About Qmmp Skinned User Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="43"/>
+        <source>Qmmp Skinned User Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="44"/>
+        <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="45"/>
+        <source>Written by:
+Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
+Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SkinnedSettings</name>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="24"/>

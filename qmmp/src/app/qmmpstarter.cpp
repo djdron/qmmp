@@ -124,8 +124,6 @@ QMMPStarter::~QMMPStarter()
 {
     if (m_ui)
         delete m_ui;
-
-    //qDebug("=%d", (int)SoundCore::instance()->state());
 }
 
 void QMMPStarter::startPlayer()
@@ -142,7 +140,7 @@ void QMMPStarter::startPlayer()
     new UiHelper(this);
 
     //interface
-    UiFactory *factory = UiLoader::currentUiFactory();
+    UiFactory *factory = UiLoader::selected();
     if(factory)
         m_ui = factory->create();
     else

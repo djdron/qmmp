@@ -57,6 +57,8 @@ private slots:
     void on_outputComboBox_activated (int index);
     void on_outputPreferencesButton_clicked();
     void on_outputInformationButton_clicked();
+    void on_uiComboBox_activated (int index);
+    void on_uiInformationButton_clicked();
 
 private:
     void readSettings();

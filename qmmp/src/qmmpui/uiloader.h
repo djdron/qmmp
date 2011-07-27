@@ -42,12 +42,12 @@ public:
      * Selects active user interface factory.
      * @param factory Ui plugin factory.
      */
-    static void setCurrentUiFactory(UiFactory* factory);
+    static void select(UiFactory* factory);
     /*!
      * Returns \b true if general plugin is enabled, otherwise returns \b false
      * @param factory General plugin factory.
      */
-    static UiFactory *currentUiFactory();
+    static UiFactory *selected();
 
 private:
     static QList<UiFactory*> *m_factories;
