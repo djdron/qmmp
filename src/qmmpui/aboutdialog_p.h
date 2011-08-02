@@ -1,5 +1,5 @@
 /***************************************************************************
-*   Copyright (C) 2006 by Ilya Kotov                                      *
+*   Copyright (C) 2006-2011 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -18,8 +18,8 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#ifndef ABOUTDIALOG_H
-#define ABOUTDIALOG_H
+#ifndef ABOUTDIALOG_P_H
+#define ABOUTDIALOG_P_H
 
 #include <QDialog>
 #include "ui_aboutdialog.h"
@@ -40,6 +40,7 @@ protected slots:
 
 private:
     QString loadAbout();
+    QString getstringFromResource(const QString& res_file);
 
 };
 

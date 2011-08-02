@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #include <QAction>
 #include <QIcon>
 #include <QFile>
+#include <QApplication>
 #include <qmmp/qmmp.h>
 #include "actionmanager.h"
 
@@ -86,12 +87,13 @@ ActionManager::ActionManager(QObject *parent) :
                                               tr("P"), "view-list-details");
     //other
     m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
-    m_actions[ABOUT] = createAction(tr("&About"), "about", "", ":/32x32/qmmp.png");
+    m_actions[ABOUT] = createAction(tr("&About"), "about", "");
     m_actions[ABOUT_QT] = createAction(tr("&About Qt"), "about_qt", "");
     m_actions[QUIT] = createAction(tr("&Exit"), "exit", tr("Ctrl+Q"), "application-exit");
     m_settings->endGroup();
     delete m_settings;
     m_settings = 0;
+    m_actions[ABOUT]->setIcon(qApp->windowIcon());
 }
 
 ActionManager::~ActionManager()

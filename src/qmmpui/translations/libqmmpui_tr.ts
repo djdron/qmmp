@@ -2,6 +2,79 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="tr_TR">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="14"/>
+        <source>About Qmmp</source>
+        <translation>Qmmp Hakkında</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="40"/>
+        <source>About</source>
+        <translation>Hakkında</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="96"/>
+        <source>License Agreement</source>
+        <translation>Lisans Anlaşması</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="54"/>
+        <source>Authors</source>
+        <translation>Yazarlar</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="82"/>
+        <source>Thanks To</source>
+        <translation>Teşekkürler</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="65"/>
+        <source>Qt-based Multimedia Player (Qmmp)</source>
+        <translation>Qt tabanlı Çokluortam Oynatıcısı (Qmmp)</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="66"/>
+        <source>Version:</source>
+        <translation>Sürüm:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="67"/>
+        <source>:txt/description_en.txt</source>
+        <translation>:txt/description_tr.txt</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="68"/>
+        <source>Input plugins:</source>
+        <translation>Girdi eklentileri:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="77"/>
+        <source>Output plugins:</source>
+        <translation>Çıktı eklentileri:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="86"/>
+        <source>Visual plugins:</source>
+        <translation>Görsel eklentiler:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="95"/>
+        <source>Effect plugins:</source>
+        <translation>Efekt eklentileri:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="104"/>
+        <source>General plugins:</source>
+        <translation>Genel eklentiler:</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="68"/>
+        <source>Translators</source>
+        <translation>Çevirmenler</translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="275"/>
@@ -646,33 +719,33 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="134"/>
+        <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished">Tüm Desteklenen Bitstreamler</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="139"/>
+        <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished">Açmak için bir yada daha çok dosya seçin</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="146"/>
+        <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
         <translation type="unfinished">Bir dizin seçin</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="158"/>
-        <location filename="../uihelper.cpp" line="184"/>
+        <location filename="../uihelper.cpp" line="159"/>
+        <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
         <translation type="unfinished">Çalma Listesi Dosyaları</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="160"/>
+        <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
         <translation type="unfinished">Çalma Listesini Aç</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="185"/>
+        <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
         <translation type="unfinished">Çalma Listesini Kaydet</translation>
     </message>

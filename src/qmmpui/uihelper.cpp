@@ -30,6 +30,7 @@
 #include "general.h"
 #include "generalfactory.h"
 #include "jumptotrackdialog_p.h"
+#include "aboutdialog_p.h"
 #include "uihelper.h"
 
 UiHelper *UiHelper::m_instance = 0;
@@ -207,6 +208,13 @@ void UiHelper::jumpToTrack(QWidget *parent, PlayListModel *model)
         m_jumpDialog->refresh();
     }
     m_jumpDialog->raise();
+}
+
+void UiHelper::about(QWidget *parent)
+{
+    AboutDialog *dialog = new AboutDialog(parent);
+    dialog->exec();
+    dialog->deleteLater();
 }
 
 void UiHelper::toggleVisibility()

@@ -1,5 +1,5 @@
 /***************************************************************************
-*   Copyright (C) 2006 by Ilya Kotov                                      *
+*   Copyright (C) 2006-2011 by Ilya Kotov                                 *
 *   forkotov02@hotmail.ru                                                 *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -21,7 +21,6 @@
 
 #include <QFile>
 #include <QTextStream>
-
 #include <qmmp/decoder.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/output.h>
@@ -33,23 +32,8 @@
 #include <qmmp/qmmp.h>
 #include <qmmpui/general.h>
 #include <qmmpui/generalfactory.h>
+#include "aboutdialog_p.h"
 
-
-#include "aboutdialog.h"
-
-static QString getstringFromResource(const QString& res_file)
-{
-    QString ret_string;
-    QFile file(res_file);
-    if (file.open(QIODevice::ReadOnly))
-    {
-        QTextStream ts(&file);
-        ts.setCodec("UTF-8");
-        ret_string = ts.readAll();
-        file.close();
-    }
-    return ret_string;
-}
 
 AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
         : QDialog( parent, fl )
@@ -58,9 +42,9 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
     setAttribute(Qt::WA_QuitOnClose, false);
     licenseTextEdit->setPlainText(getstringFromResource(":COPYING"));
     aboutTextEdit->setHtml(loadAbout());
-    authorsTextEdit->setPlainText(getstringFromResource(tr(":/txt/authors_en.txt")));
-    thanksToTextEdit->setPlainText(getstringFromResource(tr(":/txt/thanks_en.txt")));
-    translatorsTextEdit->setPlainText(getstringFromResource(tr(":/txt/translators_en.txt")));
+    authorsTextEdit->setPlainText(getstringFromResource(":authors_"));
+    thanksToTextEdit->setPlainText(getstringFromResource(":thanks_"));
+    translatorsTextEdit->setPlainText(getstringFromResource(":translators_"));
 }
 
 AboutDialog::~AboutDialog()
@@ -128,4 +112,31 @@ QString AboutDialog::loadAbout()
     text.append("</ul>");
 
     return text;
+}
+
+QString AboutDialog::getstringFromResource(const QString& res_file)
+{
+    QString ret_string;
+    QStringList paths;
+    paths << res_file + Qmmp::systemLanguageID() + ".txt";
+    if(Qmmp::systemLanguageID().contains("."))
+        paths << res_file + Qmmp::systemLanguageID().split(".").at(0) + ".txt";
+    if(Qmmp::systemLanguageID().contains("_"))
+        paths << res_file + Qmmp::systemLanguageID().split("_").at(0) + ".txt";
+    paths << res_file + ".txt";
+    paths << res_file;
+
+    foreach(QString path, paths)
+    {
+        QFile file(path);
+        if (file.open(QIODevice::ReadOnly))
+        {
+            QTextStream ts(&file);
+            ts.setCodec("UTF-8");
+            ret_string = ts.readAll();
+            file.close();
+            return ret_string;
+        }
+    }
+    return ret_string;
 }

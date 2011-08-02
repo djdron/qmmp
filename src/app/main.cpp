@@ -18,15 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <QApplication>
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QIcon>
 #include <stdio.h>
 #include <stdlib.h>
 #include <qmmp/qmmp.h>
@@ -37,6 +33,7 @@ int main(int argc, char *argv[])
 {
     QApplication a (argc, argv );
     a.setApplicationName("qmmp");
+    a.setWindowIcon(QIcon(":/32x32/qmmp.png"));
 
     LXDESupport::load(); //load lxde icons
 

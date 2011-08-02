@@ -2,6 +2,79 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="nl">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="14"/>
+        <source>About Qmmp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="40"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="54"/>
+        <source>Authors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="68"/>
+        <source>Translators</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="82"/>
+        <source>Thanks To</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="96"/>
+        <source>License Agreement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="65"/>
+        <source>Qt-based Multimedia Player (Qmmp)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="66"/>
+        <source>Version:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="67"/>
+        <source>:txt/description_en.txt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="68"/>
+        <source>Input plugins:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="77"/>
+        <source>Output plugins:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="86"/>
+        <source>Visual plugins:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="95"/>
+        <source>Effect plugins:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="104"/>
+        <source>General plugins:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="275"/>
@@ -654,33 +727,33 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="134"/>
+        <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished">Alle Ondersteunde Bitstromen</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="139"/>
+        <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished">Kies een of meer bestanden om te openen</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="146"/>
+        <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
         <translation type="unfinished">Kies een map</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="158"/>
-        <location filename="../uihelper.cpp" line="184"/>
+        <location filename="../uihelper.cpp" line="159"/>
+        <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
         <translation type="unfinished">Afspeellijst Bestanden</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="160"/>
+        <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
         <translation type="unfinished">Open Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="185"/>
+        <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
         <translation type="unfinished">Bewaar Afspeellijst</translation>
     </message>

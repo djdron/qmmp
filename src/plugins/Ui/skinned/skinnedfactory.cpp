@@ -44,7 +44,9 @@ void SkinnedFactory::showAbout(QWidget *parent)
                         tr("Simple user interface with Winamp-2.x/XMMS skins support")+ "\n" +
                         tr("Written by:\n"
                            "Vladimir Kuznetsov <vovanec@gmail.com>\n"
-                           "Ilya Kotov <forkotov02@hotmail.ru>"));
+                           "Ilya Kotov <forkotov02@hotmail.ru>") +
+                           tr("Artwork:\n"
+                              "Andrey Adreev <andreev00@gmail.com>"));
 
 }
 

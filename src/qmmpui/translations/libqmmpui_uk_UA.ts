@@ -2,6 +2,79 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="uk">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="14"/>
+        <source>About Qmmp</source>
+        <translation>Про Qmmp</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="40"/>
+        <source>About</source>
+        <translation>Про програму</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="96"/>
+        <source>License Agreement</source>
+        <translation>Ліцензія</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="54"/>
+        <source>Authors</source>
+        <translation>Автори</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="82"/>
+        <source>Thanks To</source>
+        <translation>Подяки</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="65"/>
+        <source>Qt-based Multimedia Player (Qmmp)</source>
+        <translation>Мультимедійний програвач на базі Qt (Qmmp)</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="66"/>
+        <source>Version:</source>
+        <translation>Версія:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="67"/>
+        <source>:txt/description_en.txt</source>
+        <translation>:txt/description_uk_UA.txt</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="68"/>
+        <source>Input plugins:</source>
+        <translation>Модулі введення:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="77"/>
+        <source>Output plugins:</source>
+        <translation>Модулі виведення:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="86"/>
+        <source>Visual plugins:</source>
+        <translation>Модулі візуалізації:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="95"/>
+        <source>Effect plugins:</source>
+        <translation>Модулі ефектів:</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="104"/>
+        <source>General plugins:</source>
+        <translation>Загальні модулі:</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="68"/>
+        <source>Translators</source>
+        <translation>Перекладачі</translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="275"/>
@@ -646,33 +719,33 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="134"/>
+        <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
         <translation>Усі формати</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="139"/>
+        <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
         <translation>Виберіть один чи кілька файлів</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="146"/>
+        <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
         <translation>Виберіть теку</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="158"/>
-        <location filename="../uihelper.cpp" line="184"/>
+        <location filename="../uihelper.cpp" line="159"/>
+        <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
         <translation>Файли списків</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="160"/>
+        <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
         <translation>Відкрити список</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="185"/>
+        <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
         <translation>Зберегти список</translation>
     </message>

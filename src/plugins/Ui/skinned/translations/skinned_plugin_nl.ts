@@ -2,462 +2,374 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="nl">
 <context>
-    <name>AboutDialog</name>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Qmmp</source>
-        <translation>Over Qmmp</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="40"/>
-        <source>About</source>
-        <translation>Over</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="54"/>
-        <source>Authors</source>
-        <translation>Auteurs</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="82"/>
-        <source>Thanks To</source>
-        <translation>Met Dank Aan</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="96"/>
-        <source>License Agreement</source>
-        <translation>Licentie</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="61"/>
-        <source>:/txt/authors_en.txt</source>
-        <translation>:/txt/authors_nl.txt</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="62"/>
-        <source>:/txt/thanks_en.txt</source>
-        <translation>:/txt/thanks_nl.txt</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="81"/>
-        <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation>Qt MultiMedia Player (Qmmp)</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="82"/>
-        <source>Version:</source>
-        <translation>Versie:</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="83"/>
-        <source>:txt/description_en.txt</source>
-        <translation>:txt/description_nl.txt</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="84"/>
-        <source>Input plugins:</source>
-        <translation>Invoer Modules:</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="93"/>
-        <source>Output plugins:</source>
-        <translation>Uitvoer Modules:</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="102"/>
-        <source>Visual plugins:</source>
-        <translation>Visuele Modules:</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="111"/>
-        <source>Effect plugins:</source>
-        <translation>Effecten Modules:</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="120"/>
-        <source>General plugins:</source>
-        <translation>Algemene Modules:</translation>
-    </message>
-    <message>
-        <location filename="../forms/aboutdialog.ui" line="68"/>
-        <source>Translators</source>
-        <translation>Vertalers</translation>
-    </message>
-    <message>
-        <location filename="../aboutdialog.cpp" line="63"/>
-        <source>:/txt/translators_en.txt</source>
-        <translation>:/txt/translators_nl.txt</translation>
-    </message>
-</context>
-<context>
     <name>ActionManager</name>
     <message>
-        <location filename="../actionmanager.cpp" line="37"/>
+        <location filename="../actionmanager.cpp" line="38"/>
         <source>&amp;Play</source>
         <translation type="unfinished">&amp;Afspelen</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="37"/>
+        <location filename="../actionmanager.cpp" line="38"/>
         <source>X</source>
         <translation type="unfinished">X</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="38"/>
+        <location filename="../actionmanager.cpp" line="39"/>
         <source>&amp;Pause</source>
         <translation type="unfinished">&amp;Pauze</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="38"/>
+        <location filename="../actionmanager.cpp" line="39"/>
         <source>C</source>
         <translation type="unfinished">C</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="39"/>
+        <location filename="../actionmanager.cpp" line="40"/>
         <source>&amp;Stop</source>
         <translation type="unfinished">&amp;Stop</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="39"/>
+        <location filename="../actionmanager.cpp" line="40"/>
         <source>V</source>
         <translation type="unfinished">V</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="40"/>
+        <location filename="../actionmanager.cpp" line="41"/>
         <source>&amp;Previous</source>
         <translation type="unfinished">&amp;Vorige</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="40"/>
+        <location filename="../actionmanager.cpp" line="41"/>
         <source>Z</source>
         <translation type="unfinished">Z</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="41"/>
+        <location filename="../actionmanager.cpp" line="42"/>
         <source>&amp;Next</source>
         <translation type="unfinished">&amp;Volgende</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="41"/>
+        <location filename="../actionmanager.cpp" line="42"/>
         <source>B</source>
         <translation type="unfinished">B</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="42"/>
+        <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Play/Pause</source>
         <translation type="unfinished">&amp;Afspelen/Pauze</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="42"/>
+        <location filename="../actionmanager.cpp" line="43"/>
         <source>Space</source>
         <translation type="unfinished">Spatie</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="43"/>
+        <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="43"/>
+        <location filename="../actionmanager.cpp" line="44"/>
         <source>J</source>
         <translation type="unfinished">J</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="44"/>
+        <location filename="../actionmanager.cpp" line="45"/>
         <source>&amp;Repeat Playlist</source>
         <translation type="unfinished">&amp;Herhaal Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="44"/>
+        <location filename="../actionmanager.cpp" line="45"/>
         <source>R</source>
         <translation type="unfinished">R</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="45"/>
+        <location filename="../actionmanager.cpp" line="46"/>
         <source>&amp;Repeat Track</source>
         <translation type="unfinished">&amp;Herhaal Nummer</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="45"/>
+        <location filename="../actionmanager.cpp" line="46"/>
         <source>Ctrl+R</source>
         <translation type="unfinished">Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="46"/>
+        <location filename="../actionmanager.cpp" line="47"/>
         <source>&amp;Shuffle</source>
         <translation type="unfinished">&amp;Willekeurig</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="46"/>
+        <location filename="../actionmanager.cpp" line="47"/>
         <source>S</source>
         <translation type="unfinished">S</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="47"/>
+        <location filename="../actionmanager.cpp" line="48"/>
         <source>&amp;No Playlist Advance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="48"/>
+        <location filename="../actionmanager.cpp" line="49"/>
         <source>Ctrl+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="49"/>
+        <location filename="../actionmanager.cpp" line="50"/>
         <source>&amp;Stop After Selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="50"/>
+        <location filename="../actionmanager.cpp" line="51"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="51"/>
+        <location filename="../actionmanager.cpp" line="52"/>
         <source>&amp;Clear Queue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="51"/>
+        <location filename="../actionmanager.cpp" line="52"/>
         <source>Alt+Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="53"/>
+        <location filename="../actionmanager.cpp" line="54"/>
         <source>Show Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="53"/>
+        <location filename="../actionmanager.cpp" line="54"/>
         <source>Alt+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="54"/>
+        <location filename="../actionmanager.cpp" line="55"/>
         <source>Show Equalizer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="54"/>
+        <location filename="../actionmanager.cpp" line="55"/>
         <source>Alt+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="55"/>
+        <location filename="../actionmanager.cpp" line="56"/>
         <source>Always on Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="56"/>
+        <location filename="../actionmanager.cpp" line="57"/>
         <source>Put on All Workspaces</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="57"/>
+        <location filename="../actionmanager.cpp" line="58"/>
         <source>Double Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="57"/>
+        <location filename="../actionmanager.cpp" line="58"/>
         <source>Meta+D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="59"/>
+        <location filename="../actionmanager.cpp" line="60"/>
         <source>&amp;Add File</source>
         <translation type="unfinished">&amp;Voeg Bestand Toe</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="59"/>
+        <location filename="../actionmanager.cpp" line="60"/>
         <source>F</source>
         <translation type="unfinished">F</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="60"/>
+        <location filename="../actionmanager.cpp" line="61"/>
         <source>&amp;Add Directory</source>
         <translation type="unfinished">&amp;Voeg Map toe</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="60"/>
+        <location filename="../actionmanager.cpp" line="61"/>
         <source>D</source>
         <translation type="unfinished">D</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="61"/>
+        <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Add Url</source>
         <translation type="unfinished">&amp;Voeg URL toe</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="61"/>
+        <location filename="../actionmanager.cpp" line="62"/>
         <source>U</source>
         <translation type="unfinished">U</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="62"/>
+        <location filename="../actionmanager.cpp" line="63"/>
         <source>&amp;Remove Selected</source>
         <translation type="unfinished">&amp;Verwijder Geselecteerd</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="63"/>
+        <location filename="../actionmanager.cpp" line="64"/>
         <source>Del</source>
         <translation type="unfinished">Del</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="64"/>
+        <location filename="../actionmanager.cpp" line="65"/>
         <source>&amp;Remove All</source>
         <translation type="unfinished">&amp;Verwijder Alles</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="65"/>
+        <location filename="../actionmanager.cpp" line="66"/>
         <source>&amp;Remove Unselected</source>
         <translation type="unfinished">&amp;Verwijder Gedeselecteerde</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="67"/>
+        <location filename="../actionmanager.cpp" line="68"/>
         <source>Remove unavailable files</source>
         <translation type="unfinished">Verwijder niet aanwezige bestanden</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="69"/>
+        <location filename="../actionmanager.cpp" line="70"/>
         <source>Remove duplicates</source>
         <translation type="unfinished">Verwijder duplicaten</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="70"/>
+        <location filename="../actionmanager.cpp" line="71"/>
         <source>&amp;Queue Toggle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="70"/>
+        <location filename="../actionmanager.cpp" line="71"/>
         <source>Q</source>
         <translation type="unfinished">Q</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="71"/>
+        <location filename="../actionmanager.cpp" line="72"/>
         <source>Invert Selection</source>
         <translation type="unfinished">Draai Selectie Om</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="72"/>
+        <location filename="../actionmanager.cpp" line="73"/>
         <source>&amp;Select None</source>
         <translation type="unfinished">&amp;Selecteer Niets</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="73"/>
+        <location filename="../actionmanager.cpp" line="74"/>
         <source>&amp;Select All</source>
         <translation type="unfinished">&amp;Selecteer Alles</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="74"/>
+        <location filename="../actionmanager.cpp" line="75"/>
         <source>Ctrl+A</source>
         <translation type="unfinished">Ctrl+A</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="75"/>
+        <location filename="../actionmanager.cpp" line="76"/>
         <source>&amp;View Track Details</source>
         <translation type="unfinished">&amp;Bekijk Nummer Details</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="75"/>
+        <location filename="../actionmanager.cpp" line="76"/>
         <source>Alt+I</source>
         <translation type="unfinished">Alt+I</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="77"/>
+        <location filename="../actionmanager.cpp" line="78"/>
         <source>&amp;New List</source>
         <translation type="unfinished">&amp;Nieuwe Lijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="77"/>
+        <location filename="../actionmanager.cpp" line="78"/>
         <source>Ctrl+T</source>
         <translation type="unfinished">Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="79"/>
         <source>&amp;Delete List</source>
         <translation type="unfinished">&amp;Verwijder Lijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="78"/>
+        <location filename="../actionmanager.cpp" line="79"/>
         <source>Ctrl+W</source>
         <translation type="unfinished">Ctrl+W</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="79"/>
+        <location filename="../actionmanager.cpp" line="80"/>
         <source>&amp;Load List</source>
         <translation type="unfinished">&amp;Laad Lijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="79"/>
+        <location filename="../actionmanager.cpp" line="80"/>
         <source>O</source>
         <translation type="unfinished">O</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="80"/>
+        <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Save List</source>
         <translation type="unfinished">&amp;Bewaar Lijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="80"/>
+        <location filename="../actionmanager.cpp" line="81"/>
         <source>Shift+S</source>
         <translation type="unfinished">Shift+S</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="81"/>
+        <location filename="../actionmanager.cpp" line="82"/>
         <source>&amp;Select Next Playlist</source>
         <translation type="unfinished">&amp;Selecteer Volgende Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="82"/>
+        <location filename="../actionmanager.cpp" line="83"/>
         <source>Ctrl+PgDown</source>
         <translation type="unfinished">Ctrl+PgDown</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="83"/>
+        <location filename="../actionmanager.cpp" line="84"/>
         <source>&amp;Select Previous Playlist</source>
         <translation type="unfinished">&amp;Selecteer Vorige Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="84"/>
+        <location filename="../actionmanager.cpp" line="85"/>
         <source>Ctrl+PgUp</source>
         <translation type="unfinished">Ctrl+PgUp</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="85"/>
+        <location filename="../actionmanager.cpp" line="86"/>
         <source>&amp;Show Playlists</source>
         <translation type="unfinished">&amp;Toon Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="86"/>
+        <location filename="../actionmanager.cpp" line="87"/>
         <source>P</source>
         <translation type="unfinished">P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="89"/>
         <source>&amp;Settings</source>
         <translation type="unfinished">&amp;Instellingen</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="88"/>
+        <location filename="../actionmanager.cpp" line="89"/>
         <source>Ctrl+P</source>
         <translation type="unfinished">Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="89"/>
+        <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About</source>
         <translation type="unfinished">&amp;Over</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="90"/>
+        <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;About Qt</source>
         <translation type="unfinished">&amp;Over Qt</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="91"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>&amp;Exit</source>
         <translation type="unfinished">&amp;Sluit</translation>
     </message>
     <message>
-        <location filename="../actionmanager.cpp" line="91"/>
+        <location filename="../actionmanager.cpp" line="92"/>
         <source>Ctrl+Q</source>
         <translation type="unfinished">Ctrl+Q</translation>
     </message>
@@ -806,37 +718,37 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="318"/>
+        <location filename="../mainwindow.cpp" line="316"/>
         <source>Appearance</source>
         <translation type="unfinished">Vertoning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="319"/>
+        <location filename="../mainwindow.cpp" line="317"/>
         <source>Shortcuts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="377"/>
         <source>&amp;Jump To File</source>
         <translation>&amp;Spring Naar Bestand</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="378"/>
         <source>J</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="382"/>
+        <location filename="../mainwindow.cpp" line="380"/>
         <source>View</source>
         <translation type="unfinished">Weergave</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="390"/>
+        <location filename="../mainwindow.cpp" line="388"/>
         <source>Playlist</source>
         <translation type="unfinished">Afspeellijst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="410"/>
+        <location filename="../mainwindow.cpp" line="408"/>
         <source>Tools</source>
         <translation>Gereedschappen</translation>
     </message>
@@ -1180,6 +1092,12 @@
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../skinnedfactory.cpp" line="48"/>
+        <source>Artwork:
+Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

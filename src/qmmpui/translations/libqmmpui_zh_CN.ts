@@ -2,6 +2,79 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="zh_CN">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="14"/>
+        <source>About Qmmp</source>
+        <translation>关于 Qmmp</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="40"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="96"/>
+        <source>License Agreement</source>
+        <translation>许可协议</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="54"/>
+        <source>Authors</source>
+        <translation>作者</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="82"/>
+        <source>Thanks To</source>
+        <translation>感谢</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="65"/>
+        <source>Qt-based Multimedia Player (Qmmp)</source>
+        <translation>基于 Qt 的多媒体播放器 (Qmmp)</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="66"/>
+        <source>Version:</source>
+        <translation>版本：</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="67"/>
+        <source>:txt/description_en.txt</source>
+        <translation>:txt/description_zh_CN.txt</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="68"/>
+        <source>Input plugins:</source>
+        <translation>输入插件：</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="77"/>
+        <source>Output plugins:</source>
+        <translation>输出插件</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="86"/>
+        <source>Visual plugins:</source>
+        <translation>可视化插件</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="95"/>
+        <source>Effect plugins:</source>
+        <translation>特效插件：</translation>
+    </message>
+    <message>
+        <location filename="../aboutdialog.cpp" line="104"/>
+        <source>General plugins:</source>
+        <translation>常规插件：</translation>
+    </message>
+    <message>
+        <location filename="../forms/aboutdialog.ui" line="68"/>
+        <source>Translators</source>
+        <translation>翻译</translation>
+    </message>
+</context>
+<context>
     <name>ConfigDialog</name>
     <message>
         <location filename="../forms/configdialog.ui" line="275"/>
@@ -646,33 +719,33 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>UiHelper</name>
     <message>
-        <location filename="../uihelper.cpp" line="134"/>
+        <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
         <translation type="unfinished">支持的全部文件</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="139"/>
+        <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
         <translation type="unfinished">选择打开一个或更多文件</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="146"/>
+        <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
         <translation type="unfinished">选择一个目录</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="158"/>
-        <location filename="../uihelper.cpp" line="184"/>
+        <location filename="../uihelper.cpp" line="159"/>
+        <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
         <translation type="unfinished">播放列表文件</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="160"/>
+        <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
         <translation type="unfinished">打开播放列表</translation>
     </message>
     <message>
-        <location filename="../uihelper.cpp" line="185"/>
+        <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
         <translation type="unfinished">保存播放列表</translation>
     </message>

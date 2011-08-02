@@ -1,7 +1,6 @@
 include(../../plugins.pri)
 FORMS += \
     forms/preseteditor.ui \
-    forms/aboutdialog.ui \
     forms/addurldialog.ui \
     forms/playlistbrowser.ui \
     forms/popupsettings.ui \
@@ -38,7 +37,6 @@ HEADERS += mainwindow.h \
     playlistcontrol.h \
     eqpreset.h \
     preseteditor.h \
-    aboutdialog.h \
     timeindicator.h \
     keyboardmanager.h \
     addurldialog.h \
@@ -89,7 +87,6 @@ SOURCES += mainwindow.cpp \
     playlistcontrol.cpp \
     eqpreset.cpp \
     preseteditor.cpp \
-    aboutdialog.cpp \
     timeindicator.cpp \
     keyboardmanager.cpp \
     addurldialog.cpp \
@@ -131,7 +128,7 @@ TARGET = $$PLUGINS_PREFIX/Ui/skinned
 unix:LIBS += -lqmmp -lqmmpui
 win32:LIBS += -lqmmp0 -lqmmpui0
 
-RESOURCES = images/images.qrc stuff.qrc
+RESOURCES = images/skinned_images.qrc stuff.qrc
 
 unix{
 isEmpty(LIB_DIR){

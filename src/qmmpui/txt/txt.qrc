@@ -1,0 +1,72 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>../../../COPYING</file>
+
+    <file>description_en.txt</file>
+    <file>authors_en.txt</file>
+    <file>thanks_en.txt</file>
+    <file>translators_en.txt</file>
+
+    <file>authors_uk_UA.txt</file>
+    <file>thanks_uk_UA.txt</file>
+    <file>translators_uk_UA.txt</file>
+    <file>description_uk_UA.txt</file>
+
+    <file>authors_zh_TW.txt</file>
+    <file>thanks_zh_TW.txt</file>
+    <file>translators_zh_TW.txt</file>
+    <file>description_zh_TW.txt</file>
+
+    <file>description_cs.txt</file>
+    <file>authors_cs.txt</file>
+    <file>thanks_cs.txt</file>
+    <file>translators_cs.txt</file>
+
+    <file>authors_ru.txt</file>
+    <file>thanks_ru.txt</file>
+    <file>translators_ru.txt</file>
+    <file>description_ru.txt</file>
+
+    <file>authors_zh_CN.txt</file>
+    <file>thanks_zh_CN.txt</file>
+    <file>translators_zh_CN.txt</file>
+    <file>description_zh_CN.txt</file>
+
+    <file>authors_de.txt</file>
+    <file>thanks_de.txt</file>
+    <file>translators_de.txt</file>
+    <file>description_de.txt</file>
+
+    <file>authors_it.txt</file>
+    <file>thanks_it.txt</file>
+    <file>translators_it.txt</file>
+    <file>description_it.txt</file>
+
+    <file>authors_tr.txt</file>
+    <file>thanks_tr.txt</file>
+    <file>translators_tr.txt</file>
+    <file>description_tr.txt</file>
+
+    <file>authors_lt.txt</file>
+    <file>thanks_lt.txt</file>
+    <file>translators_lt.txt</file>
+    <file>description_lt.txt</file>
+
+    <file>authors_nl.txt</file>
+    <file>thanks_nl.txt</file>
+    <file>translators_nl.txt</file>
+    <file>description_nl.txt</file>
+
+    <file>authors_ja.txt</file>
+    <file>thanks_ja.txt</file>
+    <file>translators_ja.txt</file>
+    <file>description_ja.txt</file>
+
+    <file>authors_es.txt</file>
+    <file>thanks_es.txt</file>
+    <file>translators_es.txt</file>
+    <file>description_es.txt</file>
+
+  </qresource>
+</RCC>
