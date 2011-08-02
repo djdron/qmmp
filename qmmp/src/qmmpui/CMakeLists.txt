@@ -44,6 +44,7 @@ SET(libqmmpui_SRCS
     jumptotrackdialog.cpp
     configdialog.cpp
     pluginitem.cpp
+    aboutdialog.cpp
 )
 
 SET(libqmmpui_MOC_HDRS
@@ -73,6 +74,7 @@ SET(libqmmpui_MOC_HDRS
     jumptotrackdialog_p.h
     configdialog.h
     pluginitem_p.h
+    aboutdialog_p.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -104,11 +106,12 @@ SET(libqmmpui_UIS
     forms/templateeditor.ui
     forms/jumptotrackdialog.ui
     forms/configdialog.ui
+    forms/aboutdialog.ui
 )
 
 QT4_WRAP_UI(libqmmpui_UIS_H ${libqmmpui_UIS})
 
-QT4_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmpui_locales.qrc)
+QT4_ADD_RESOURCES(libqmmpui_RCC_SRCS translations/libqmmpui_locales.qrc txt/txt.qrc images/qmmpui_images.qrc)
 
 QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})
 
