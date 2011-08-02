@@ -42,9 +42,9 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
     setAttribute(Qt::WA_QuitOnClose, false);
     licenseTextEdit->setPlainText(getstringFromResource(":COPYING"));
     aboutTextEdit->setHtml(loadAbout());
-    authorsTextEdit->setPlainText(getstringFromResource(":authors_"));
-    thanksToTextEdit->setPlainText(getstringFromResource(":thanks_"));
-    translatorsTextEdit->setPlainText(getstringFromResource(":translators_"));
+    authorsTextEdit->setPlainText(getstringFromResource(":authors"));
+    thanksToTextEdit->setPlainText(getstringFromResource(":thanks"));
+    translatorsTextEdit->setPlainText(getstringFromResource(":translators"));
 }
 
 AboutDialog::~AboutDialog()
@@ -118,11 +118,11 @@ QString AboutDialog::getstringFromResource(const QString& res_file)
 {
     QString ret_string;
     QStringList paths;
-    paths << res_file + Qmmp::systemLanguageID() + ".txt";
+    paths << res_file + "_" + Qmmp::systemLanguageID() + ".txt";
     if(Qmmp::systemLanguageID().contains("."))
-        paths << res_file + Qmmp::systemLanguageID().split(".").at(0) + ".txt";
+        paths << res_file + "_" + Qmmp::systemLanguageID().split(".").at(0) + ".txt";
     if(Qmmp::systemLanguageID().contains("_"))
-        paths << res_file + Qmmp::systemLanguageID().split("_").at(0) + ".txt";
+        paths << res_file + "_" + Qmmp::systemLanguageID().split("_").at(0) + ".txt";
     paths << res_file + ".txt";
     paths << res_file;
 
