@@ -44,7 +44,6 @@
 #include "dock.h"
 #include "eqwidget.h"
 #include "mainvisual.h"
-#include "aboutdialog.h"
 #include "addurldialog.h"
 #include "listwidget.h"
 #include "visualmenu.h"
@@ -60,7 +59,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 #endif
     m_vis = 0;
     m_update = false;
-    setWindowIcon(QIcon(":/32x32/qmmp.png"));
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint |
                    Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
     setWindowTitle("Qmmp");
@@ -429,8 +427,7 @@ void MainWindow::createActions()
 
 void MainWindow::about()
 {
-    AboutDialog dlg(this);
-    dlg.exec();
+    m_uiHelper->about(this);
 }
 
 void MainWindow::updateSettings()

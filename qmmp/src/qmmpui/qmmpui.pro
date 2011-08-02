@@ -43,7 +43,8 @@ HEADERS += general.h \
     uihelper.h \
     jumptotrackdialog_p.h \
     configdialog.h \
-    pluginitem_p.h
+    pluginitem_p.h \
+    aboutdialog_p.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
@@ -64,15 +65,18 @@ SOURCES += general.cpp \
     uihelper.cpp \
     jumptotrackdialog.cpp \
     configdialog.cpp \
-    pluginitem.cpp
+    pluginitem.cpp \
+    aboutdialog.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \
     forms/jumptotrackdialog.ui \
-    forms/configdialog.ui
+    forms/configdialog.ui \
+    forms/aboutdialog.ui
 unix:DESTDIR = .
 RESOURCES += translations/libqmmpui_locales.qrc \
-    images/images.qrc
+    images/qmmpui_images.qrc \
+    txt/txt.qrc
 TRANSLATIONS = translations/libqmmpui_ru.ts \
     translations/libqmmpui_tr.ts \
     translations/libqmmpui_zh_CN.ts \

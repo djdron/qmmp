@@ -98,6 +98,7 @@ public:
                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
     void jumpToTrack(QWidget *parent = qApp->activeWindow(),
                      PlayListModel *model = PlayListManager::instance()->selectedPlayList());
+    void about(QWidget *parent = 0);
     /*!
      * Returns a pointer to the object's instance.
      */
