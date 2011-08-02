@@ -39,7 +39,6 @@ link_directories(${X11_LIBRARY_DIRS})
 
 SET(ui_SRCS
     fft.c
-    aboutdialog.cpp
     addurldialog.cpp
     balancebar.cpp
     button.cpp
@@ -91,7 +90,6 @@ SET(ui_SRCS
 )
 
 SET(ui_MOC_HDRS
-    aboutdialog.h
     addurldialog.h
     balancebar.h
     button.h
@@ -144,7 +142,7 @@ SET(ui_MOC_HDRS
     hotkeyeditor.h
 )
 
-SET(ui_RCCS images/images.qrc stuff.qrc translations/translations.qrc)
+SET(ui_RCCS images/skinned_images.qrc stuff.qrc translations/translations.qrc)
 
 QT4_ADD_RESOURCES(ui_RCC_SRCS ${ui_RCCS})
 
@@ -155,7 +153,6 @@ QT4_WRAP_CPP(ui_MOC_SRCS ${ui_MOC_HDRS})
 
 
 SET(ui_UIS
-    forms/aboutdialog.ui
     forms/addurldialog.ui
     forms/skinnedsettings.ui
     forms/preseteditor.ui

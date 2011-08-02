@@ -3,10 +3,10 @@
   <qresource>
     <file>../../../COPYING</file>
 
-    <file>description_en.txt</file>
-    <file>authors_en.txt</file>
-    <file>thanks_en.txt</file>
-    <file>translators_en.txt</file>
+    <file>description.txt</file>
+    <file>authors.txt</file>
+    <file>thanks.txt</file>
+    <file>translators.txt</file>
 
     <file>authors_uk_UA.txt</file>
     <file>thanks_uk_UA.txt</file>
