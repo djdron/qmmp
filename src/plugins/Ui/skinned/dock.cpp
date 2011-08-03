@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Ilya Kotov                                      *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,9 +21,7 @@
 #include <QAction>
 #include <QDesktopWidget>
 #include <QApplication>
-
 #include "dock.h"
-
 
 Dock *Dock::m_instance = 0;
 
@@ -51,6 +49,28 @@ void Dock::setMainWidget (QWidget *widget)
     m_mainWidget = widget;
     m_widgetList.prepend (widget);
     m_dockedList.prepend (false);
+}
+
+QPoint Dock::snapDesktop(QPoint npos, QWidget* mv)
+{
+    QRect desktopRect = QApplication::desktop()->availableGeometry(mv);
+    int nx = abs (npos.x() - desktopRect.x()); //left-top
+    int ny = abs (npos.y() - desktopRect.y());
+
+    if(nx < 13)
+        npos.rx() = desktopRect.x();
+    if(ny < 13)
+        npos.ry() = desktopRect.y();
+
+    nx = abs (npos.x() + mv->width() - desktopRect.width() - desktopRect.x()); //right-bottom
+    ny = abs (npos.y() + mv->height() - desktopRect.height() - desktopRect.y());
+
+    if(nx < 13)
+        npos.rx() = desktopRect.width() - mv->width() + desktopRect.x();
+    if(ny < 13)
+        npos.ry() = desktopRect.height() - mv->height() + desktopRect.y();
+
+    return npos;
 }
 
 
@@ -111,16 +131,15 @@ void Dock::addWidget (QWidget *widget)
     m_widgetList.append (widget);
     m_dockedList.append (false);
     widget->addActions(m_actions);
-
 }
 
 void Dock::move (QWidget* mv, QPoint npos)
 {
-    QRect DesktopRect = QApplication::desktop()->availableGeometry(m_mainWidget);
-    if(npos.y() < DesktopRect.y())
-        npos.setY(DesktopRect.y());
-    if(npos.x() < DesktopRect.x())
-        npos.setX(DesktopRect.x());
+    QRect desktopRect = QApplication::desktop()->availableGeometry(m_mainWidget);
+
+    if(npos.y() < desktopRect.y())
+        npos.setY(desktopRect.y());
+
     if (mv == m_mainWidget)
     {
 
@@ -130,30 +149,32 @@ void Dock::move (QWidget* mv, QPoint npos)
             {
                 if (m_widgetList.at (i)->isVisible())
                     npos = snap (npos, mv, m_widgetList.at (i));
-
             }
             else
             {
-                QPoint pos = QPoint (npos.x() + x_list.at (i),
-                                      npos.y() + y_list.at (i));
+                QPoint pos = npos + m_delta_list.at(i);
                 for (int j = 1; j<m_widgetList.size(); ++j)
                 {
                     if (!m_dockedList.at (j) && m_widgetList.at (j)->isVisible())
                     {
                         pos = snap (pos, m_widgetList.at (i), m_widgetList.at (j));
-                        npos = QPoint (pos.x() - x_list.at (i),
-                                        pos.y() - y_list.at (i));
+                        npos = pos - m_delta_list.at(i);
                     }
                 }
             }
         }
-        mv->move (npos);
+        npos = snapDesktop(npos, mv);
         for (int i = 1; i<m_widgetList.size(); ++i)
         {
             if (m_dockedList.at (i))
-                m_widgetList.at (i)->move(npos.x() + x_list.at (i),
-                                          npos.y() + y_list.at (i));
+            {
+                QPoint pos = npos + m_delta_list.at(i);
+                pos = snapDesktop(pos, m_widgetList.at(i));
+                m_widgetList.at (i)->move(pos);
+                npos = pos - m_delta_list.at(i);
+            }
         }
+        mv->move (npos);
     }
     else
     {
@@ -163,6 +184,7 @@ void Dock::move (QWidget* mv, QPoint npos)
             if (mv != m_widgetList.at (i) && !m_dockedList.at (i) && m_widgetList.at (i)->isVisible())
             {
                 npos = snap (npos, mv, m_widgetList.at (i));
+                npos = snapDesktop(npos, mv);
             }
         }
         mv->move (npos);
@@ -171,20 +193,13 @@ void Dock::move (QWidget* mv, QPoint npos)
 
 void Dock::calculateDistances()
 {
-    x_list.clear();
-    y_list.clear();
+    m_delta_list.clear();
     foreach (QWidget *w, m_widgetList)
     {
-        if (w!=m_mainWidget)
-        {
-            x_list.append (- m_mainWidget->x() + w->x());
-            y_list.append (- m_mainWidget->y() + w->y());
-        }
+        if (w == m_mainWidget)
+            m_delta_list.append(QPoint(0,0));
         else
-        {
-            x_list.prepend (0);
-            y_list.prepend (0);
-        }
+            m_delta_list.append(w->pos() - m_mainWidget->pos());
     }
 }
 
@@ -209,7 +224,6 @@ void Dock::updateDock()
                 }
             }
     }
-
 }
 
 bool Dock::isDocked (QWidget* mv, QWidget* st)
