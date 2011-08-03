@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,19 +42,21 @@ public:
     void move(QWidget*, QPoint);
     void calculateDistances();
     void updateDock();
-    QPoint snap(QPoint, QWidget*, QWidget*);
     void addActions(QList<QAction *> actions);
     void align(QWidget*, int dy);
 
 private:
+    QPoint snapDesktop(QPoint, QWidget*);
+    QPoint snap(QPoint, QWidget*, QWidget*);
     bool isDocked(QWidget*, QWidget*);
     bool isUnder(QWidget*, QWidget*, int);
     static Dock *m_instance;
     QWidget *m_mainWidget;
     QList <QWidget *> m_widgetList;
     QList <bool> m_dockedList;
-    QList <int> x_list;
-    QList <int> y_list;
+    /*QList <int> x_list;
+    QList <int> y_list;*/
+    QList <QPoint> m_delta_list;
     QList <QAction *> m_actions;
 };
 
