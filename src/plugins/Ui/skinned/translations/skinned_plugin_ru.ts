@@ -1100,7 +1100,8 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <location filename="../skinnedfactory.cpp" line="48"/>
         <source>Artwork:
 Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Графика:
+Андрей Андреев &lt;andreev00@gmail.com&gt;</translation>
     </message>
 </context>
 <context>

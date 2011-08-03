@@ -31,10 +31,13 @@
 #include <stdio.h>
 #include <string.h>
 
+#define JACK_TIMEOUT 500000L
+
 OutputJACK::OutputJACK(QObject *parent)
         : Output(parent), m_inited(false), m_configure(false)
 {
     JACK_Init();
+    m_wait_time = 0;
 }
 
 OutputJACK::~OutputJACK()
@@ -89,8 +92,17 @@ qint64 OutputJACK::writeAudio(unsigned char *data, qint64 maxSize)
     if(!m_configure)
          return -1;
     m = JACK_Write(jack_device, (unsigned char*)data, maxSize);
+
     if (!m)
+    {
         usleep(2000);
+        if(JACK_GetState(jack_device) != PLAYING)
+            m_wait_time += 2000;
+        if(m_wait_time > JACK_TIMEOUT)
+            return -1;
+    }
+    else
+        m_wait_time = 0;
     return m;
 }
 
@@ -107,4 +119,3 @@ void OutputJACK::uninitialize()
     if (m_configure)
         JACK_Close(jack_device);
 }
-

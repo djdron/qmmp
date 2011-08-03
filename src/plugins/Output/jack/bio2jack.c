@@ -261,7 +261,7 @@ TimeValDifference(struct timeval *start, struct timeval *end)
    trying to trace mutexes it's more important to know *who* called us than just that
    we were called.  This uses from pre-processor trickery so that the fprintf is actually
    placed in the function making the getDriver call.  Thus, the __FUNCTION__ and __LINE__
-   macros will actually reference our caller, rather than getDriver.  The reason the 
+   macros will actually reference our caller, rather than getDriver.  The reason the
    fprintf call is passes as a parameter is because this macro has to still return a
    jack_driver_t* and we want to log both before *and* after the getDriver call for
    easier detection of blocked calls.
@@ -792,7 +792,7 @@ JACK_callback(nframes_t nframes, void *arg)
           /* the ringbuffer is designed such that only one thread should ever access each pointer.
              since calling read_advance here will be touching the read pointer which is also accessed
              by JACK_Read, we need to lock the mutex first for safety */
-	        jack_driver_t *d = tryGetDriver(drv->deviceID);
+            jack_driver_t *d = tryGetDriver(drv->deviceID);
           if( d )
           {
             /* double check the write space after we've gained the lock, just
@@ -803,7 +803,7 @@ JACK_callback(nframes_t nframes, void *arg)
              ERR("buffer overrun of %ld bytes\n", jack_bytes - write_space);
              jack_ringbuffer_read_advance(drv->pRecPtr, jack_bytes - write_space);
             }
-	          releaseDriver(drv);
+              releaseDriver(drv);
           }
         }
 
@@ -917,10 +917,10 @@ JACK_shutdown(void *arg)
 
   TRACE("trying to reconnect right now\n");
   /* lets see if we can't reestablish the connection */
-  if(JACK_OpenDevice(drv) != ERR_SUCCESS)
+  /*if(JACK_OpenDevice(drv) != ERR_SUCCESS)
   {
     ERR("unable to reconnect with jack\n");
-  }
+  }*/
 
   releaseDriver(drv);
 }
@@ -1423,7 +1423,7 @@ JACK_Reset(int deviceID)
  * deviceID is set to the opened device
  * if client is non-zero and in_use is FALSE then just set in_use to TRUE
  *
- * return value is zero upon success, non-zero upon failure 
+ * return value is zero upon success, non-zero upon failure
  *
  * if ERR_RATE_MISMATCH (*rate) will be updated with the jack servers rate
  */
@@ -1521,7 +1521,7 @@ JACK_OpenEx(int *deviceID, unsigned int bits_per_channel,
   drv->jack_output_port_flags = jack_port_flags | JackPortIsInput;      /* port must be input(ie we can put data into it), so mask this in */
   drv->jack_input_port_flags = jack_port_flags | JackPortIsOutput;      /* port must be output(ie we can get data from it), so mask this in */
 
-  /* check that we have the correct number of port names 
+  /* check that we have the correct number of port names
      FIXME?: not sure how we should handle output ports vs input ports....
    */
   if((jack_port_name_count > 1)
@@ -1759,7 +1759,7 @@ JACK_Write(int deviceID, unsigned char *data, unsigned long bytes)
   TRACE("frames free == %ld, bytes = %lu\n", frames_free, bytes);
 
   TRACE("state = '%s'\n", DEBUGSTATE(drv->state));
-  /* if we are currently STOPPED we should start playing now... 
+  /* if we are currently STOPPED we should start playing now...
      do this before the check for bytes == 0 since some clients like
      to write 0 bytes the first time out */
   if(drv->state == STOPPED)
