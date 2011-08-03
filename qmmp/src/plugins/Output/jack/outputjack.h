@@ -46,12 +46,12 @@ public:
 private:
      //output api
     qint64 writeAudio(unsigned char *data, qint64 maxSize);
-    void drain(){};
+    void drain(){}
     void reset();
 
     // helper functions
     void uninitialize();
-    qint64 m;
+    qint64 m, m_wait_time;
     bool m_inited, m_configure;
     int jack_device;
 };
