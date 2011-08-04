@@ -1070,35 +1070,38 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="30"/>
         <source>Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Інтерфейс з підтримкою обкладинок</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="42"/>
         <source>About Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Про інтерфейс з підтримкою обкладинок</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="43"/>
         <source>Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Інтерфейс з підтримкою обкладинок для Qmmp</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="44"/>
         <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
-        <translation type="unfinished"></translation>
+        <translation>Простий інтерфейс користувача з підтримкою обкладинок Winamp-2.x/XMMS</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="45"/>
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Розробники:
+Володимир Кузнецов &lt;vovanec@gmail.com&gt;
+Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="48"/>
         <source>Artwork:
 Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Графіка:
+Андрій Андрєєв &lt;andreev00@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
