@@ -94,8 +94,13 @@ OutputWaveOut::~OutputWaveOut()
     uninitialize();
 }
 
-void OutputWaveOut::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputWaveOut::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
+    if (!waveOutGetNumDevs ())
+    {
+        qWarning("OutputWaveOut: no audio device found");
+        return false;
+    }
     WAVEFORMATEX fmt;
     UINT deviceID = WAVE_MAPPER;
 
@@ -109,36 +114,33 @@ void OutputWaveOut::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     switch (waveOutOpen (&dev, deviceID, &fmt, (DWORD)wave_callback, 0, CALLBACK_FUNCTION))
     {
     case MMSYSERR_ALLOCATED:
-        return qWarning("OutputWaveOut: Device is already open.");
+        qWarning("OutputWaveOut: Device is already open.");
+        return false;
     case MMSYSERR_BADDEVICEID:
-        return qWarning("OutputWaveOut: The specified device is out of range.");
+        qWarning("OutputWaveOut: The specified device is out of range.");
+        return false;
     case MMSYSERR_NODRIVER:
-        return qWarning("OutputWaveOut: There is no audio driver in this system.");
+        qWarning("OutputWaveOut: There is no audio driver in this system.");
+        return false;
     case MMSYSERR_NOMEM:
-        return qWarning("OutputWaveOut: Unable to allocate sound memory.");
+        qWarning("OutputWaveOut: Unable to allocate sound memory.");
+        return false;
     case WAVERR_BADFORMAT:
-        return qWarning("OutputWaveOut: This audio format is not supported.");
+        qWarning("OutputWaveOut: This audio format is not supported.");
+        return false; 
     case WAVERR_SYNC:
-        return qWarning("OutputWaveOut: The device is synchronous.");
+        qWarning("OutputWaveOut: The device is synchronous.");
+        return false; 
     default:
-        return qWarning("OutputWaveOut: Unknown media error.");
+        qWarning("OutputWaveOut: Unknown media error.");
+        return false;
     case MMSYSERR_NOERROR:
         break;
     }
 
     waveOutReset (dev);
     InitializeCriticalSection ( &cs );
-    Output::configure(freq, chan, format);
-    return;
-}
-
-bool OutputWaveOut::initialize()
-{
-    if (!waveOutGetNumDevs ())
-    {
-        qWarning("OutputWaveOut: no audio device found");
-        return false;
-    }
+    configure(freq, chan, format);
 
     return true;
 }
