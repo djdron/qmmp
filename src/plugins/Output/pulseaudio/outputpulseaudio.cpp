@@ -34,7 +34,7 @@ OutputPulseAudio::~OutputPulseAudio()
     uninitialize();
 }
 
-void OutputPulseAudio::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputPulseAudio::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     pa_sample_spec ss;
 
@@ -72,13 +72,9 @@ void OutputPulseAudio::configure(quint32 freq, int chan, Qmmp::AudioFormat forma
     if (!m_connection)
     {
         qWarning("OutputPulseAudio: pa_simple_new() failed: %s", pa_strerror(error));
-        return;
+        return false;
     }
     Output::configure(freq, chan, format);
-}
-
-bool OutputPulseAudio::initialize()
-{
     return true;
 }
 

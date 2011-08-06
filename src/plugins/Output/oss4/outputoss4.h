@@ -39,7 +39,6 @@ public:
 
     bool initialize();
     void configure(quint32, int, Qmmp::AudioFormat format);
-    qint64 latency();
     int fd();
 
     static OutputOSS4 *instance();
