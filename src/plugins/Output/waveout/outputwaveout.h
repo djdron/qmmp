@@ -36,8 +36,7 @@ public:
     OutputWaveOut(QObject * parent = 0);
     ~OutputWaveOut();
 
-    bool initialize();
-    void configure(quint32, int,  Qmmp::AudioFormat format);
+    bool initialize(quint32, int,  Qmmp::AudioFormat format);
     qint64 latency();
 
 private:
