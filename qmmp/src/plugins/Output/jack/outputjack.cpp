@@ -33,8 +33,7 @@
 
 #define JACK_TIMEOUT 500000L
 
-OutputJACK::OutputJACK(QObject *parent)
-        : Output(parent), m_inited(false), m_configure(false)
+OutputJACK::OutputJACK(QObject *parent) : Output(parent), m_inited(false)
 {
     JACK_Init();
     m_wait_time = 0;
@@ -45,40 +44,16 @@ OutputJACK::~OutputJACK()
     uninitialize();
 }
 
-void OutputJACK::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputJACK::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
-    qDebug("OutputJACK: configure");
+    qDebug("OutputJACK: initialize");
     if(JACK_Open(&jack_device, AudioParameters::sampleSize(format)*8, (unsigned long *)&freq, chan))
     {
-        m_configure = false;
         m_inited = false;
-        return;
-    }
-    else
-        m_configure = true;
-    m_inited = true;
-    Output::configure(freq, chan, format);
-    qDebug("OutputJACK: configure end");
-}
-
-bool OutputJACK::initialize()
-{
-    m_inited = false;
-    m_configure = false;
-    jack_options_t options = JackNoStartServer;
-    jack_status_t status;
-    jack_client_t *client = jack_client_open ("test_qmmp", options, &status, NULL);
-    if (client == NULL)
-    {
-        qDebug("jack_client_open() failed.");
-        if (status & JackServerFailed)
-        {
-            qDebug("Unable to connect to JACK server.");
-        }
         return false;
     }
-    jack_client_close (client);
     m_inited = true;
+    configure(freq, chan, format);
     return true;
 }
 
@@ -89,7 +64,7 @@ qint64 OutputJACK::latency()
 
 qint64 OutputJACK::writeAudio(unsigned char *data, qint64 maxSize)
 {
-    if(!m_configure)
+    if(!m_inited)
          return -1;
     m = JACK_Write(jack_device, (unsigned char*)data, maxSize);
 
@@ -115,7 +90,5 @@ void OutputJACK::uninitialize()
 {
     if (!m_inited)
         return;
-
-    if (m_configure)
-        JACK_Close(jack_device);
+    JACK_Close(jack_device);
 }

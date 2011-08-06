@@ -41,22 +41,18 @@ public:
      */
     ~Output();
     /*!
-     * Prepares object for usage.
+     * Prepares object for usage and setups required audio parameters.
      * Subclass should reimplement this function.
+     * @param freq Sample rate.
+     * @param chan Number of channels.
+     * @param format Audio format
      * @return initialization result (\b true - success, \b false - failure)
      */
-    virtual bool initialize() = 0;
+    virtual bool initialize(quint32 freq, int chan, Qmmp::AudioFormat format) = 0;
     /*!
      * Returns output interface latency in milliseconds.
      */
     virtual qint64 latency() = 0;
-    /*!
-     * Setups audio parameters of output interface.
-     * @param freq Sample rate.
-     * @param chan Number of channels.
-     * @param format Audio format
-     */
-    virtual void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
     /*!
      * Requests playback to pause. If it was paused already, playback should resume.
      * Subclasses that reimplement this function must call the base implementation.
@@ -165,6 +161,13 @@ protected:
      * Resumes processing audio data.
      */
     virtual void resume();
+    /*!
+     * Use this function inside initialize() reimplementation to tell about accepted audio parameters.
+     * @param freq Sample rate.
+     * @param chan Number of channels.
+     * @param format Audio format.
+     */
+    void configure(quint32 freq, int chan, Qmmp::AudioFormat format);
 
 private slots:
     void updateEqSettings();

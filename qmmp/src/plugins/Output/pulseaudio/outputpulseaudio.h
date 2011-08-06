@@ -37,8 +37,7 @@ public:
     OutputPulseAudio(QObject * parent = 0);
     ~OutputPulseAudio();
 
-    bool initialize();
-    void configure(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
 
 private:
@@ -49,9 +48,7 @@ private:
 
     // helper functions
     void uninitialize();
-
     pa_simple *m_connection;
 };
-
 
 #endif // OUTPUTPULSEAUDIO_H

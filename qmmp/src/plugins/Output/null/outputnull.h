@@ -34,10 +34,8 @@ public:
     OutputNull(QObject * parent = 0);
     ~OutputNull();
 
-    bool initialize();
-    void configure(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
-
 
 private:
     //output api

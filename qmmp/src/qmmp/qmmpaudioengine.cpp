@@ -520,7 +520,8 @@ Output *QmmpAudioEngine::createOutput()
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return 0;
     }
-    if (!output->initialize())
+    if (!output->initialize(m_ap.sampleRate(), m_ap.channels(), m_ap.format()) ||
+            output->audioParameters() != m_ap) //TODO add soundconverter
     {
         qWarning("QmmpAudioEngine: unable to initialize output");
         delete output;
@@ -528,7 +529,6 @@ Output *QmmpAudioEngine::createOutput()
         StateHandler::instance()->dispatch(Qmmp::FatalError);
         return false;
     }
-    output->configure(m_ap.sampleRate(), m_ap.channels(), m_ap.format());
     if(m_output_buf)
         delete [] m_output_buf;
     m_bks = QMMP_BLOCK_FRAMES * m_ap.channels() * m_ap.sampleSize();

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -29,7 +29,7 @@ OutputNull::OutputNull(QObject * parent) : Output(parent)
 OutputNull::~OutputNull()
 {}
 
-void OutputNull::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
+bool OutputNull::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
 {
     switch (format)
     {
@@ -44,11 +44,7 @@ void OutputNull::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     default:
          m_bytes_per_second = freq * chan * 2;
     }
-    Output::configure(freq, chan, format);
-}
-
-bool OutputNull::initialize()
-{
+    configure(freq, chan, format);
     return true;
 }
 

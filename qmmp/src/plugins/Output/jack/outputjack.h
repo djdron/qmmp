@@ -39,8 +39,7 @@ public:
     OutputJACK(QObject * parent = 0);
     ~OutputJACK();
 
-    bool initialize();
-    void configure(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, int, Qmmp::AudioFormat format);
     qint64 latency();
 
 private:
@@ -52,7 +51,7 @@ private:
     // helper functions
     void uninitialize();
     qint64 m, m_wait_time;
-    bool m_inited, m_configure;
+    bool m_inited;
     int jack_device;
 };
 
