@@ -87,7 +87,7 @@ TRANSLATIONS = translations/libqmmpui_ru.ts \
     translations/libqmmpui_de.ts \
     translations/libqmmpui_it.ts \
     translations/libqmmpui_lt.ts \
-    translations/libqmmpui_pl.ts \
+    translations/libqmmpui_pl_PL.ts \
     translations/libqmmpui_nl.ts \
     translations/libqmmpui_ja.ts \
     translations/libqmmpui_es.ts \
