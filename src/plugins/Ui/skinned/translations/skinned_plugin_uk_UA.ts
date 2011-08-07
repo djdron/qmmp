@@ -1270,12 +1270,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="52"/>
+        <location filename="../textscroller.cpp" line="54"/>
         <source>Autoscroll Songname</source>
         <translation>Автопрокрутка назви пісні</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="117"/>
+        <location filename="../textscroller.cpp" line="55"/>
+        <source>Transparent Background</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../textscroller.cpp" line="124"/>
         <source>Buffering: %1%</source>
         <translation>Буферизація: %1%</translation>
     </message>

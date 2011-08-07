@@ -74,7 +74,7 @@ private:
     QColor m_color;
     QTimer *m_timer;
     QMenu *m_menu;
-    QAction *m_scrollAction;
+    QAction *m_scrollAction, *m_transparencyAction;
     SoundCore *m_core;
 };
 
