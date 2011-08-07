@@ -49,8 +49,6 @@ TextScroller::TextScroller (QWidget *parent) : QWidget (parent)
     m_timer->start();
 
     m_menu = new QMenu(this);
-    m_menu->addAction(ACTION(ActionManager::PL_SHOW_INFO));
-    m_menu->addSeparator();
     m_scrollAction = m_menu->addAction(tr("Autoscroll Songname"), this, SLOT(updateText()));
     m_transparencyAction = m_menu->addAction(tr("Transparent Background"), this, SLOT(updateText()));
     m_scrollAction->setCheckable(true);
