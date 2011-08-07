@@ -28,13 +28,13 @@
 #include <qmmp/soundcore.h>
 #include <qmmpui/metadataformatter.h>
 #include "skin.h"
+#include "actionmanager.h"
 #include "textscroller.h"
 
 #define SCROLL_SEP "   *** "
 #define TITLE_FORMAT "%if(%p&%t,%p - %t,%p%t)%if(%p&%t,,%f)%if(%l, - %l,)"
 
-TextScroller::TextScroller (QWidget *parent)
-        : QWidget (parent)
+TextScroller::TextScroller (QWidget *parent) : QWidget (parent)
 {
     m_pressed = false;
     m_press_pos = 0;
@@ -49,14 +49,17 @@ TextScroller::TextScroller (QWidget *parent)
     m_timer->start();
 
     m_menu = new QMenu(this);
-    m_scrollAction = m_menu->addAction(tr("Autoscroll Songname"));
+    m_menu->addAction(ACTION(ActionManager::PL_SHOW_INFO));
+    m_menu->addSeparator();
+    m_scrollAction = m_menu->addAction(tr("Autoscroll Songname"), this, SLOT(updateText()));
+    m_transparencyAction = m_menu->addAction(tr("Transparent Background"), this, SLOT(updateText()));
     m_scrollAction->setCheckable(true);
+    m_transparencyAction->setCheckable(true);
     connect(m_scrollAction, SIGNAL(toggled(bool)), SLOT(updateText()));
     connect(m_timer, SIGNAL (timeout()), SLOT (addOffset()));
     connect(m_skin, SIGNAL(skinChanged()), SLOT(updateSkin()));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(processState(Qmmp::State)));
     connect(m_core, SIGNAL(metaDataChanged()), SLOT(processMetaData()));
-    //readSettings();
     updateSkin();
 }
 
@@ -64,6 +67,7 @@ TextScroller::~TextScroller()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Skinned/autoscroll", m_scrollAction->isChecked());
+    settings.setValue("Skinned/scroller_transparency", m_transparencyAction->isChecked());
     if(m_metrics)
         delete m_metrics;
 }
@@ -107,7 +111,10 @@ void TextScroller::updateSkin()
     if (m_metrics)
         delete m_metrics;
     else
+    {
         m_scrollAction->setChecked(settings.value("Skinned/autoscroll", true).toBool());
+        m_transparencyAction->setChecked(settings.value("Skinned/scroller_transparency", true).toBool());
+    }
     m_metrics = new QFontMetrics(m_font);
     updateText();
 }
@@ -256,7 +263,10 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
              fullText.append(text + SCROLL_SEP);
          }
          m_pixmap = QPixmap(width,15*m_ratio);
-         m_pixmap.fill(Qt::transparent);
+         if(m_transparencyAction->isChecked())
+             m_pixmap.fill(Qt::transparent);
+         else
+             m_pixmap.fill(QString(Skin::instance()->getPLValue("normalbg")));
          QPainter painter(&m_pixmap);
          painter.setPen(m_color);
          painter.setFont(m_font);
@@ -270,7 +280,10 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
     else
     {
         m_pixmap = QPixmap(150*m_ratio,15*m_ratio);
-        m_pixmap.fill(Qt::transparent);
+        if(m_transparencyAction->isChecked())
+            m_pixmap.fill(Qt::transparent);
+        else
+            m_pixmap.fill(QString(Skin::instance()->getPLValue("normalbg")));
         QPainter painter(&m_pixmap);
         painter.setPen(m_color);
         painter.setFont(m_font);
