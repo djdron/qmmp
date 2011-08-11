@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2008 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -135,6 +135,8 @@ qint64 MMSStreamReader::bytesAvailable() const
 
 void MMSStreamReader::run()
 {
+    int to_read = 1024;
+    char prebuf[to_read];
     m_handle = mmsx_connect (0, 0, m_url.toLocal8Bit().constData(), 128 * 1024);
     if(!m_handle)
     {
@@ -155,13 +157,15 @@ void MMSStreamReader::run()
     forever
     {
         m_mutex.lock();
-        int to_read = 1024;
+
         if(m_buffer_at + to_read > m_buffer_size)
         {
             m_buffer_size = m_buffer_at + to_read;
             m_buffer = (char *)realloc(m_buffer, m_buffer_size);
         }
-        len = mmsx_read (0, m_handle, m_buffer + m_buffer_at, to_read);
+        m_mutex.unlock();
+        len = mmsx_read (0, m_handle, prebuf, to_read);
+        m_mutex.lock();
         if(len < 0)
         {
             m_mutex.unlock();
@@ -173,6 +177,7 @@ void MMSStreamReader::run()
             }
             break;
         }
+        memcpy(m_buffer + m_buffer_at, prebuf, len);
         m_buffer_at += len;
         if(!m_ready)
             checkBuffer();
