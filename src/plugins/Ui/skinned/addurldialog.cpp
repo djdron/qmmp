@@ -83,7 +83,7 @@ void AddUrlDialog::accept( )
 {
     if (!urlComboBox->currentText().isEmpty())
     {
-        QString s = urlComboBox->currentText();
+        QString s = urlComboBox->currentText().trimmed();
         if (!s.startsWith("http://") && !s.contains("://"))
             s.prepend("http://");
         m_history.removeAll(s);
