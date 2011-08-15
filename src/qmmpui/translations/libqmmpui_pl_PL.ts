@@ -6,72 +6,72 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="14"/>
         <source>About Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>O programie</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="40"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O programie</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="54"/>
         <source>Authors</source>
-        <translation type="unfinished"></translation>
+        <translation>Autorzy</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="68"/>
         <source>Translators</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="82"/>
         <source>Thanks To</source>
-        <translation type="unfinished"></translation>
+        <translation>Podziękowania</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="96"/>
         <source>License Agreement</source>
-        <translation type="unfinished"></translation>
+        <translation>Licencja</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="65"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Oparty na bibliotekach QT odtwarzacz (Qmmp)</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="66"/>
         <source>Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wersja:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="67"/>
         <source>:txt/description_en.txt</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="68"/>
         <source>Input plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczki wejściowe:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="77"/>
         <source>Output plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczki wyjściowe:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="86"/>
         <source>Visual plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wizualizacje:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="95"/>
         <source>Effect plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczki efektów:</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="104"/>
         <source>General plugins:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wtyczki ogólne:</translation>
     </message>
 </context>
 <context>
@@ -361,7 +361,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="423"/>
         <source>User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Interfejs użytkownika</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="471"/>
@@ -491,50 +491,50 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation type="unfinished">Skocz do utworu</translation>
+        <translation>Skocz do utworu</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
-        <translation type="unfinished">Filtr</translation>
+        <translation>Filtr</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
         <location filename="../jumptotrackdialog.cpp" line="145"/>
         <source>Queue</source>
-        <translation type="unfinished">Kolejkuj</translation>
+        <translation>Kolejkuj</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation type="unfinished">Odśwież</translation>
+        <translation>Odśwież</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation type="unfinished">Skocz do</translation>
+        <translation>Skocz do</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="60"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="143"/>
         <source>Unqueue</source>
-        <translation type="unfinished">Wykolejkuj</translation>
+        <translation>Wykolejkuj</translation>
     </message>
 </context>
 <context>
@@ -721,33 +721,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished">Wszystkie wspierane formaty</translation>
+        <translation>Wszystkie wspierane formaty</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
-        <translation type="unfinished">Wybierz jeden lub więcej plików do otwarcia</translation>
+        <translation>Wybierz jeden lub więcej plików do otwarcia</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">Wybierz katalog</translation>
+        <translation>Wybierz katalog</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="159"/>
         <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
-        <translation type="unfinished">Pliki listy odtwarzania</translation>
+        <translation>Pliki listy odtwarzania</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
-        <translation type="unfinished">Otwórz listę odtwarzania</translation>
+        <translation>Otwórz listę odtwarzania</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
-        <translation type="unfinished">Zapisz listę odtwarzania</translation>
+        <translation>Zapisz listę odtwarzania</translation>
     </message>
 </context>
 </TS>
