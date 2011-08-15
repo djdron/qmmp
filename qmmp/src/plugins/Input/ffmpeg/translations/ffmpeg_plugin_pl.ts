@@ -117,7 +117,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="96"/>
         <source>MPEG-4 AAC/ALAC</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="103"/>
@@ -132,7 +132,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
         <source>AC-3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

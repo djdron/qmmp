@@ -46,7 +46,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Quit application</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamknij program</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
