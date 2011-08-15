@@ -48,6 +48,7 @@ Thanks to:
     Vadim Kalinnikov <moose@ylsoftware.com> - project hosting
     Erik Ölsar <erlk.ozlr@gmail.com> - skinned cursors, ui improvements
     Funda Wang <fundawang@gmail.com> - cmake files fixes
+    Makis Kalofolias <makskafl@gmail.com> - EAC3, DTS, and Dolby TrueHD support
     Michail Zheludkov <zheludkovm@mail.ru> - ffmpeg plugin fixes
     Michał Grosicki <grosik88@o2.pl> - alsa plugin fixes
     Panagiotis Papadopoulos <pano_90@gmx.net> - ui fixes, bug reports

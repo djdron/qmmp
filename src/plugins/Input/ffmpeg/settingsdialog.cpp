@@ -58,8 +58,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.raCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_RA_288));
     ui.raCheckBox->setChecked(filters.contains("*.ra") && avcodec_find_decoder(CODEC_ID_RA_288));
     ui.shCheckBox->setChecked(filters.contains("*.shn") && avcodec_find_decoder(CODEC_ID_SHORTEN));
-    ui.ac3CheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_AC3));
-    ui.ac3CheckBox->setChecked(filters.contains("*.ac3") && avcodec_find_decoder(CODEC_ID_AC3));
+    ui.ac3CheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_EAC3));
+    ui.ac3CheckBox->setChecked(filters.contains("*.ac3") && avcodec_find_decoder(CODEC_ID_EAC3));
+    ui.dtsCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_DTS));
+    ui.dtsCheckBox->setChecked(filters.contains("*.dts") && avcodec_find_decoder(CODEC_ID_DTS));
+    ui.mkaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TRUEHD));
+    ui.mkaCheckBox->setChecked(filters.contains("*.mka") && avcodec_find_decoder(CODEC_ID_TRUEHD));
 }
 
 SettingsDialog::~SettingsDialog()
@@ -87,6 +91,10 @@ void SettingsDialog::accept()
         filters << "*.shn";
     if (ui.ac3CheckBox->isChecked())
         filters << "*.ac3";
+    if (ui.dtsCheckBox->isChecked())
+        filters << "*.dts";
+    if (ui.mkaCheckBox->isChecked())
+        filters << "*.mka";
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FFMPEG/filters", filters);
     QDialog::accept();

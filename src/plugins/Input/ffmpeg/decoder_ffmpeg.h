@@ -27,6 +27,7 @@ extern "C"{
 }
 #include <qmmp/decoder.h>
 
+#define PROBE_BUFFER_SIZE 8192
 #define INPUT_BUFFER_SIZE 16384
 
 class DecoderFFmpeg : public Decoder
