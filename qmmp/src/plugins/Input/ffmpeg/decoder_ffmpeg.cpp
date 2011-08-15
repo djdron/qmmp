@@ -104,11 +104,11 @@ bool DecoderFFmpeg::initialize()
     av_register_all();
 
     AVProbeData  pd;
-    uint8_t buf[8192 + AVPROBE_PADDING_SIZE];
+    uint8_t buf[PROBE_BUFFER_SIZE + AVPROBE_PADDING_SIZE];
     pd.filename = m_path.toLocal8Bit().constData();
     pd.buf_size = input()->peek((char*)buf, sizeof(buf) - AVPROBE_PADDING_SIZE);
     pd.buf = buf;
-    if(pd.buf_size < 8192)
+    if(pd.buf_size < PROBE_BUFFER_SIZE)
     {
         qWarning("DecoderFFmpeg: too small buffer size: %d bytes", pd.buf_size);
         return false;

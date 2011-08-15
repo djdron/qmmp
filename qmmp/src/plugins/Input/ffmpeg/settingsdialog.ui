@@ -114,7 +114,21 @@
       <item>
        <widget class="QCheckBox" name="ac3CheckBox">
         <property name="text">
-         <string>AC-3</string>
+         <string>AC3/EAC</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="dtsCheckBox">
+        <property name="text">
+         <string>DTS/DTS-Core</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mkaCheckBox">
+        <property name="text">
+         <string>Matroska Audio (Dolby TrueHD Lossless)</string>
         </property>
        </widget>
       </item>

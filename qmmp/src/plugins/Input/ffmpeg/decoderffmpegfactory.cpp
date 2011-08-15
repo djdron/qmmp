@@ -51,11 +51,11 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
     QStringList filters = properties().filters;
 
     AVProbeData  pd;
-    uint8_t buf[8192 + AVPROBE_PADDING_SIZE];
+    uint8_t buf[PROBE_BUFFER_SIZE + AVPROBE_PADDING_SIZE];
     pd.filename = 0;
     pd.buf_size = i->peek((char*)buf, sizeof(buf) - AVPROBE_PADDING_SIZE);
     pd.buf = buf;
-    if(pd.buf_size < 8192)
+    if(pd.buf_size < PROBE_BUFFER_SIZE)
         return false;
     AVInputFormat *fmt = av_probe_input_format(&pd, 1);
     if(!fmt)
@@ -69,7 +69,11 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
         return true;
     if(filters.contains("*.aac") && !memcmp(fmt->name, "aac", 3))
         return true;
-    if(filters.contains("*.ac3") && !memcmp(fmt->name, "ac3", 3))
+    if(filters.contains("*.ac3") && !memcmp(fmt->name, "eac3", 4))
+        return true;
+    if(filters.contains("*.dts") && !memcmp(fmt->name, "dts", 3))
+        return true;
+    if(filters.contains("*.mka") && !memcmp(fmt->name, "mka", 3))
         return true;
     return false;
 }
@@ -99,7 +103,11 @@ const DecoderProperties DecoderFFmpegFactory::properties() const
         properties.contentTypes << "audio/m4a";
     }
     if(filters.contains("*.ac3"))
-        properties.contentTypes << "audio/ac3";
+        properties.contentTypes << "audio/ac3" << "audio/eac3";
+    if(filters.contains("*.dts"))
+        properties.contentTypes << "audio/dts";
+    if(filters.contains("*.mka"))
+        properties.contentTypes << "audio/true-hd" << "audio/x-matroska";
     properties.shortName = "ffmpeg";
     properties.hasAbout = true;
     properties.hasSettings = true;

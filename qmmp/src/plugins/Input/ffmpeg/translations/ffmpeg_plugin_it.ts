@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="187"/>
+        <location filename="../decoderffmpegfactory.cpp" line="195"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>Info sul modulo audi FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="189"/>
+        <location filename="../decoderffmpegfactory.cpp" line="197"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Modulo audio FFmpeg per Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="199"/>
+        <location filename="../decoderffmpegfactory.cpp" line="207"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="84"/>
+        <location filename="../decoderffmpegfactory.cpp" line="88"/>
         <source>FFmpeg Plugin</source>
         <translation>Modulo FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="86"/>
+        <location filename="../decoderffmpegfactory.cpp" line="90"/>
         <source>FFmpeg Formats</source>
         <translation>Formati FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="191"/>
+        <location filename="../decoderffmpegfactory.cpp" line="199"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Compilato con libavformat-%1.%2.%3 e libavcodec-%4.%5.%6</translation>
     </message>
@@ -121,7 +121,17 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="117"/>
-        <source>AC-3</source>
+        <source>AC3/EAC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="124"/>
+        <source>DTS/DTS-Core</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="131"/>
+        <source>Matroska Audio (Dolby TrueHD Lossless)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
