@@ -891,12 +891,12 @@
         <translation>L&amp;öschen</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Rename Playlist</source>
         <translation>Wiedergabeliste umbenennen</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Playlist name:</source>
         <translation>Name der Wiedergabeliste:</translation>
     </message>
@@ -1219,7 +1219,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Titelnummern anzeigen</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
         <translation type="unfinished">Wiedergabelisten anzeigen</translation>
     </message>
@@ -1229,12 +1229,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Informationen in einem Aufklapp-Fenster anzeigen</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="404"/>
+        <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
         <translation type="unfinished">Vorlage bearbeiten</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="387"/>
+        <location filename="../forms/skinnedsettings.ui" line="430"/>
+        <source>Playlist separator:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation type="unfinished"></translation>
     </message>

@@ -73,7 +73,9 @@ void PlayListSelector::readSettings()
         m_update = true;
     }
     m_metrics = new QFontMetrics(m_font);
-
+    m_pl_separator = settings.value("Skinned/pl_separator", "::").toString();
+    m_pl_separator.append(" ");
+    m_pl_separator.prepend(" ");
     resize(width(), m_metrics->height () +1);
     drawButtons();
 }
@@ -87,7 +89,7 @@ void PlayListSelector::updateTabs()
         if(m_rects.isEmpty())
             rect.setX(9);
         else
-            rect.setX(m_rects.last().right() + m_metrics->width(" | "));
+            rect.setX(m_rects.last().right() + m_metrics->width(m_pl_separator));
         rect.setY(0);
         rect.setWidth(m_metrics->width(text));
         rect.setHeight(m_metrics->ascent ());
@@ -139,7 +141,8 @@ void PlayListSelector::paintEvent(QPaintEvent *)
         if(i < m_rects.size() - 1)
         {
             painter.setPen(m_normal);
-            painter.drawText(m_rects[i].x() + m_rects[i].width() - m_offset, m_metrics->ascent(), " | ");
+            painter.drawText(m_rects[i].x() + m_rects[i].width() - m_offset, m_metrics->ascent(),
+                             m_pl_separator);
         }
     }
     if(m_scrollable)
@@ -249,6 +252,7 @@ void PlayListSelector::drawButtons()
     m_pixmap = QPixmap(40, height());
     m_pixmap.fill(m_normal_bg);
     QPainter painter(&m_pixmap);
+    painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setPen(m_left_pressed ? m_current : m_normal);
     painter.setBrush(QBrush(m_left_pressed ? m_current : m_normal));
     QPoint points[3] = {

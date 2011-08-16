@@ -891,12 +891,12 @@
         <translation>&amp;Elimina</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Rename Playlist</source>
         <translation>Rinomina lista brani</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Playlist name:</source>
         <translation>Nome della lista brani:</translation>
     </message>
@@ -1219,7 +1219,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Mostra numero brani</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
         <translation type="unfinished">Mostra lista esecuzione brani</translation>
     </message>
@@ -1229,12 +1229,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Mostra informazioni popup</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="404"/>
+        <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="387"/>
+        <location filename="../forms/skinnedsettings.ui" line="430"/>
+        <source>Playlist separator:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation type="unfinished"></translation>
     </message>

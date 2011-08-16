@@ -891,12 +891,12 @@
         <translation>削除(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Rename Playlist</source>
         <translation>プレイリスト名を変更</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Playlist name:</source>
         <translation>プレイリスト名:</translation>
     </message>
@@ -1219,7 +1219,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">曲番号つきで表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
         <translation type="unfinished">プレイリストを表示</translation>
     </message>
@@ -1229,12 +1229,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">情報吹き出しを表示</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="404"/>
+        <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
         <translation type="unfinished">ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="387"/>
+        <location filename="../forms/skinnedsettings.ui" line="430"/>
+        <source>Playlist separator:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation type="unfinished">アンカーを表示</translation>
     </message>

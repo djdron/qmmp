@@ -74,6 +74,7 @@ private:
     bool m_showButtons;
     int m_offset, m_offset_max;
     bool m_left_pressed, m_right_pressed;
+    QString m_pl_separator;
 };
 
 #endif // PLAYLISTSELECTOR_H

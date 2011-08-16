@@ -891,12 +891,12 @@
         <translation>&amp;Видалити</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Rename Playlist</source>
         <translation>Переіменувати список</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Playlist name:</source>
         <translation>Ім&apos;я списка:</translation>
     </message>
@@ -1222,7 +1222,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Відображати номера пісень</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
         <translation>Показати списки</translation>
     </message>
@@ -1232,12 +1232,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Показувати спливаюче вікно з інформацією</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="404"/>
+        <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
         <translation>Редагувати шаблон</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="387"/>
+        <location filename="../forms/skinnedsettings.ui" line="430"/>
+        <source>Playlist separator:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation>Показувати &quot;якір&quot;</translation>
     </message>

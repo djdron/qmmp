@@ -891,12 +891,12 @@
         <translation>&amp;Vymazať</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Rename Playlist</source>
         <translation>Premenovať playlist</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="111"/>
+        <location filename="../playlistselector.cpp" line="113"/>
         <source>Playlist name:</source>
         <translation>Název playlistu:</translation>
     </message>
@@ -1219,7 +1219,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Zobrazovať čísla piesní</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="380"/>
+        <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
         <translation type="unfinished">Zobrazovať playlisty</translation>
     </message>
@@ -1229,12 +1229,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Zobrazovať upozornenia s informáciami</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="404"/>
+        <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
         <translation type="unfinished">Upraviť šablónu</translation>
     </message>
     <message>
-        <location filename="../forms/skinnedsettings.ui" line="387"/>
+        <location filename="../forms/skinnedsettings.ui" line="430"/>
+        <source>Playlist separator:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
         <translation type="unfinished">Zobrazovať ukotvenie</translation>
     </message>
