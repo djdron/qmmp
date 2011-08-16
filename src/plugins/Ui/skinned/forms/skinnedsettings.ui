@@ -350,21 +350,21 @@
           <string>Song Display</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="0" colspan="2">
+          <item row="0" column="0">
            <widget class="QCheckBox" name="protocolCheckBox">
             <property name="text">
              <string>Show protocol</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0" colspan="2">
+          <item row="1" column="0">
            <widget class="QCheckBox" name="numbersCheckBox">
             <property name="text">
              <string>Show song numbers</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0" colspan="2">
+          <item row="2" column="0">
            <widget class="QCheckBox" name="alignCheckBox">
             <property name="enabled">
              <bool>false</bool>
@@ -374,21 +374,21 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0" colspan="2">
-           <widget class="QCheckBox" name="playlistsCheckBox">
-            <property name="text">
-             <string>Show playlists</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0" colspan="2">
+          <item row="3" column="0">
            <widget class="QCheckBox" name="anchorCheckBox">
             <property name="text">
              <string>Show anchor</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0" colspan="2">
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="playlistsCheckBox">
+            <property name="text">
+             <string>Show playlists</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
            <widget class="QCheckBox" name="popupCheckBox">
             <property name="text">
              <string>Show popup information</string>
@@ -396,27 +396,68 @@
            </widget>
           </item>
           <item row="6" column="0">
-           <widget class="QPushButton" name="popupTemplateButton">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Edit template</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QPushButton" name="popupTemplateButton">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Edit template</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
-          <item row="6" column="1">
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>291</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
+          <item row="7" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Playlist separator:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="plSeplineEdit">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -449,8 +490,8 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>366</x>
-     <y>287</y>
+     <x>385</x>
+     <y>284</y>
     </hint>
     <hint type="destinationlabel">
      <x>393</x>
@@ -465,12 +506,12 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>377</x>
-     <y>312</y>
+     <x>385</x>
+     <y>310</y>
     </hint>
     <hint type="destinationlabel">
-     <x>393</x>
-     <y>311</y>
+     <x>416</x>
+     <y>310</y>
     </hint>
    </hints>
   </connection>
@@ -497,12 +538,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>130</x>
-     <y>198</y>
+     <x>151</x>
+     <y>189</y>
     </hint>
     <hint type="destinationlabel">
-     <x>210</x>
-     <y>200</y>
+     <x>117</x>
+     <y>221</y>
     </hint>
    </hints>
   </connection>
@@ -519,6 +560,22 @@
     <hint type="destinationlabel">
      <x>151</x>
      <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playlistsCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plSeplineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>201</x>
+     <y>161</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>197</x>
+     <y>243</y>
     </hint>
    </hints>
   </connection>
