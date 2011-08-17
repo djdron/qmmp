@@ -388,14 +388,14 @@
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
+          <item row="6" column="0">
            <widget class="QCheckBox" name="popupCheckBox">
             <property name="text">
              <string>Show popup information</string>
             </property>
            </widget>
           </item>
-          <item row="6" column="0">
+          <item row="7" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <widget class="QPushButton" name="popupTemplateButton">
@@ -422,7 +422,7 @@
             </item>
            </layout>
           </item>
-          <item row="7" column="0">
+          <item row="5" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QLabel" name="label_4">
