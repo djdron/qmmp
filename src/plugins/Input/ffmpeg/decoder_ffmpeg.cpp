@@ -145,11 +145,50 @@ bool DecoderFFmpeg::initialize()
         qDebug("DecoderFFmpeg: av_open_input_stream() failed");
         return false;
     }
-    AVCodec *codec;
-
     av_find_stream_info(ic);
     if(ic->pb)
         ic->pb->eof_reached = 0;
+
+    if (input()->isSequential())
+    {
+        QMap<Qmmp::MetaData, QString> metaData;
+        AVMetadataTag *album = av_metadata_get(ic->metadata,"album",0,0);
+        if(!album)
+            album = av_metadata_get(ic->metadata,"WM/AlbumTitle",0,0);
+        AVMetadataTag *artist = av_metadata_get(ic->metadata,"artist",0,0);
+        if(!artist)
+            artist = av_metadata_get(ic->metadata,"author",0,0);
+        AVMetadataTag *comment = av_metadata_get(ic->metadata,"comment",0,0);
+        AVMetadataTag *genre = av_metadata_get(ic->metadata,"genre",0,0);
+        AVMetadataTag *title = av_metadata_get(ic->metadata,"title",0,0);
+        AVMetadataTag *year = av_metadata_get(ic->metadata,"WM/Year",0,0);
+        if(!year)
+            year = av_metadata_get(ic->metadata,"year",0,0);
+        if(!year)
+            year = av_metadata_get(ic->metadata,"date",0,0);
+        AVMetadataTag *track = av_metadata_get(ic->metadata,"track",0,0);
+        if(!track)
+            track = av_metadata_get(ic->metadata,"WM/Track",0,0);
+        if(!track)
+            track = av_metadata_get(ic->metadata,"WM/TrackNumber",0,0);
+
+        if(album)
+            metaData.insert(Qmmp::ALBUM, QString::fromUtf8(album->value).trimmed());
+        if(artist)
+            metaData.insert(Qmmp::ARTIST, QString::fromUtf8(artist->value).trimmed());
+        if(comment)
+            metaData.insert(Qmmp::COMMENT, QString::fromUtf8(comment->value).trimmed());
+        if(genre)
+            metaData.insert(Qmmp::GENRE, QString::fromUtf8(genre->value).trimmed());
+        if(title)
+            metaData.insert(Qmmp::TITLE, QString::fromUtf8(title->value).trimmed());
+        if(year)
+            metaData.insert(Qmmp::YEAR, year->value);
+        if(track)
+            metaData.insert(Qmmp::TRACK, track->value);
+        metaData.insert(Qmmp::URL, m_path);
+        StateHandler::instance()->dispatch(metaData);
+    }
 
     ic->flags |= AVFMT_FLAG_GENPTS;
     av_read_play(ic);
@@ -174,7 +213,7 @@ bool DecoderFFmpeg::initialize()
 #else
     dump_format(ic,0,0,0);
 #endif
-    codec = avcodec_find_decoder(c->codec_id);
+    AVCodec *codec = avcodec_find_decoder(c->codec_id);
 
     if (!codec)
     {
