@@ -46,6 +46,7 @@ private slots:
     void on_popupTemplateButton_clicked();
 
 private:
+    void showEvent(QShowEvent *);
     void loadFonts();
     void findSkins(const QString &path);
     void readSettings();

@@ -23,6 +23,7 @@
 #include <QFontDialog>
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
+#include <qmmpui/uihelper.h>
 #include "skinreader.h"
 #include "skin.h"
 #include "popupsettings.h"
@@ -105,6 +106,12 @@ void SkinnedSettings::on_skinInstallButton_clicked()
         file.copy(QDir::homePath() +"/.qmmp/skins/" + QFileInfo(path).fileName());
     }
     loadSkins();
+}
+
+void SkinnedSettings::showEvent(QShowEvent *)
+{
+    ui.hiddenCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
+    ui.hideOnCloseCheckBox->setEnabled(UiHelper::instance()->visibilityControl());
 }
 
 void SkinnedSettings::loadFonts()
