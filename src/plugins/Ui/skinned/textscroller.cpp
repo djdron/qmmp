@@ -32,7 +32,7 @@
 #include "textscroller.h"
 
 #define SCROLL_SEP "   *** "
-#define TITLE_FORMAT "%if(%p&%t,%p - %t,%p%t)%if(%p&%t,,%f)%if(%l, - %l,)"
+#define TITLE_FORMAT "%p%if(%p&%t, - ,)%t%if(%p,,%if(%t,,%f))%if(%l, - %l,)"
 
 TextScroller::TextScroller (QWidget *parent) : QWidget (parent)
 {
