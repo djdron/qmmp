@@ -62,8 +62,12 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.ac3CheckBox->setChecked(filters.contains("*.ac3") && avcodec_find_decoder(CODEC_ID_EAC3));
     ui.dtsCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_DTS));
     ui.dtsCheckBox->setChecked(filters.contains("*.dts") && avcodec_find_decoder(CODEC_ID_DTS));
+#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(22<<8)+0))
     ui.mkaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TRUEHD));
     ui.mkaCheckBox->setChecked(filters.contains("*.mka") && avcodec_find_decoder(CODEC_ID_TRUEHD));
+#else
+    ui.mkaCheckBox->setEnabled(false);
+#endif
 }
 
 SettingsDialog::~SettingsDialog()
