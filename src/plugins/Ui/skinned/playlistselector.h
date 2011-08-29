@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -73,9 +73,9 @@ private:
     QColor m_normal, m_current, m_normal_bg, m_selected_bg;
     QPixmap m_pixmap;
     bool m_showButtons;
-    int m_offset, m_offset_max;
-    int m_dest_index;
-    bool m_left_pressed, m_right_pressed;
+    int m_offset, m_offset_max, m_press_offset;
+    bool m_moving, m_left_pressed, m_right_pressed;
+    QPoint m_mouse_pos;
     QString m_pl_separator;
 };
 
