@@ -60,41 +60,44 @@ SET(libqmmp_SRCS
     qmmpevents.cpp
 )
 
-SET(libqmmp_MOC_HDRS
-    visual.h
-    visualfactory.h
-    recycler.h
-    buffer.h
-    decoder.h
-    output.h
-    fileinfo.h
+SET(libqmmp_HDRS
+    qmmpevents_p.h
     outputfactory.h
+    decoderfactory.h
+    effectfactory.h
     equ/iir_cfs.h
     equ/iir_fpu.h
     equ/iir.h
-    decoderfactory.h
-    soundcore.h
-    effectfactory.h
+    visualfactory.h
+    recycler.h
+    buffer.h
     effect.h
     qmmp.h
+    replaygain_p.h
+    fileinfo.h
+    audioconverter_p.h
+    eqsettings.h
+    decoder.h
+    tagmodel.h
+    audioparameters.h
+    inputsourcefactory.h
+    enginefactory.h
+    metadatamanager.h
+)
+
+SET(libqmmp_MOC_HDRS
+    visual.h
+    output.h
+    soundcore.h
     statehandler.h
     volumecontrol.h
     metadatamodel.h
-    tagmodel.h
     qmmpaudioengine_p.h
     abstractengine.h
-    audioparameters.h
     inputsource.h
-    inputsourcefactory.h
     fileinputsource_p.h
     emptyinputsource_p.h
-    enginefactory.h
-    metadatamanager.h
-    replaygain_p.h
-    qmmpsettings.h
-    audioconverter_p.h
-    eqsettings.h
-    qmmpevents_p.h
+    qmmpsettings.h 
 )
 
 SET(libqmmp_DEVEL_HDRS
@@ -131,7 +134,7 @@ QT4_WRAP_CPP(libqmmp_MOC_SRCS ${libqmmp_MOC_HDRS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS})
+ADD_LIBRARY(libqmmp SHARED ${libqmmp_SRCS} ${libqmmp_MOC_SRCS} ${libqmmp_HDRS})
 target_link_libraries(libqmmp ${QT_LIBRARIES})
 SET_TARGET_PROPERTIES(libqmmp PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION} OUTPUT_NAME qmmp)
 install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}

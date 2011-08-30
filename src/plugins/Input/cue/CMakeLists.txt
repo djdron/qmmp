@@ -40,11 +40,14 @@ SET(libcue_SRCS
   cuemetadatamodel.cpp
 )
 
+SET(libcue_HDRS
+  decoder_cue.h
+  cueparser.h
+)
+
 SET(libcue_MOC_HDRS
   decodercuefactory.h
-  decoder_cue.h
   settingsdialog.h
-  cueparser.h
   cuemetadatamodel.h
 )
 
@@ -66,7 +69,7 @@ QT4_WRAP_UI(libcue_UIS_H ${libcue_UIS})
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(cue MODULE ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS} ${libcue_UIS_H})
+ADD_LIBRARY(cue MODULE ${libcue_SRCS} ${libcue_MOC_SRCS} ${libcue_RCC_SRCS} ${libcue_UIS_H} ${libcue_HDRS})
 add_dependencies(cue qmmp)
 IF(USE_ENCA AND ENCA_FOUND)
 target_link_libraries(cue ${QT_LIBRARIES} -lqmmp ${ENCA_LDFLAGS} ${ENCA_CFLAGS})

@@ -1,4 +1,4 @@
-project(ui)
+project(skinned)
 
 cmake_minimum_required(VERSION 2.4.7)
 
@@ -37,7 +37,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 include_directories(${X11_INCLUDE_DIRS})
 link_directories(${X11_LIBRARY_DIRS})
 
-SET(ui_SRCS
+SET(skinned_SRCS
     fft.c
     addurldialog.cpp
     balancebar.cpp
@@ -89,7 +89,17 @@ SET(ui_SRCS
     hotkeyeditor.cpp
 )
 
-SET(ui_MOC_HDRS
+SET(skinned_HDRS
+    eqpreset.h
+    fft.h
+    inlines.h
+    keyboardmanager.h
+    cursorimage.h
+    windowsystem.h
+    shortcutitem.h
+)
+
+SET(skinned_MOC_HDRS
     addurldialog.h
     balancebar.h
     button.h
@@ -97,13 +107,9 @@ SET(ui_MOC_HDRS
     display.h
     dock.h
     eqgraph.h
-    eqpreset.h
     eqslider.h
     eqtitlebar.h
     eqwidget.h
-    fft.h
-    inlines.h
-    keyboardmanager.h
     listwidget.h
     mainvisual.h
     mainwindow.h
@@ -129,30 +135,26 @@ SET(ui_MOC_HDRS
     togglebutton.h
     visualmenu.h
     volumebar.h
-    cursorimage.h
     playlistbrowser.h
     playlistselector.h
     popupwidget.h
     popupsettings.h
-    windowsystem.h
-    shortcutitem.h
     actionmanager.h
     shortcutdialog.h
     skinnedfactory.h
     hotkeyeditor.h
 )
 
-SET(ui_RCCS images/skinned_images.qrc stuff.qrc translations/translations.qrc)
+SET(skinned_RCCS images/skinned_images.qrc stuff.qrc translations/translations.qrc)
 
-QT4_ADD_RESOURCES(ui_RCC_SRCS ${ui_RCCS})
+QT4_ADD_RESOURCES(skinned_RCC_SRCS ${skinned_RCCS})
 
-QT4_AUTOMOC(${ui_MOC_SRC})
-QT4_WRAP_CPP(ui_MOC_SRCS ${ui_MOC_HDRS})
+QT4_AUTOMOC(${skinned_MOC_SRC})
+QT4_WRAP_CPP(skinned_MOC_SRCS ${skinned_MOC_HDRS})
 
 # user interface
 
-
-SET(ui_UIS
+SET(skinned_UIS
     forms/addurldialog.ui
     forms/skinnedsettings.ui
     forms/preseteditor.ui
@@ -162,13 +164,13 @@ SET(ui_UIS
     forms/hotkeyeditor.ui
 )
 
-QT4_WRAP_UI(ui_UIS_H ${ui_UIS})
+QT4_WRAP_UI(skinned_UIS_H ${skinned_UIS})
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(X11_FOUND)
-ADD_LIBRARY(skinned MODULE ${ui_SRCS} ${ui_MOC_SRCS} ${ui_UIS_H} ${ui_RCC_SRCS})
+ADD_LIBRARY(skinned MODULE ${skinned_SRCS} ${skinned_MOC_SRCS} ${skinned_UIS_H} ${skinned_RCC_SRCS} ${skinned_HDRS})
 target_link_libraries(skinned ${QT_LIBRARIES} libqmmp qmmpui ${X11_LDFLAGS})
 add_dependencies(skinned qmmpui libqmmp)
 target_link_libraries(skinned ${QT_LIBRARIES} -lqmmpui -lqmmp ${X11_LDFLAGS})

@@ -31,8 +31,11 @@ SET(libcrossfade_SRCS
     effectcrossfadefactory.cpp
 )
 
-SET(libcrossfade_MOC_HDRS
+SET(libcrossfade_HDRS
     crossfadeplugin.h
+)
+
+SET(libcrossfade_MOC_HDRS
     settingsdialog.h
     effectcrossfadefactory.h
 )
@@ -55,7 +58,8 @@ QT4_WRAP_UI(libcrossfade_UIS_H ${libcrossfade_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 
-ADD_LIBRARY(crossfade MODULE ${libcrossfade_SRCS} ${libcrossfade_MOC_SRCS} ${libcrossfade_UIS_H} ${libcrossfade_RCC_SRCS})
+ADD_LIBRARY(crossfade MODULE ${libcrossfade_SRCS} ${libcrossfade_MOC_SRCS} ${libcrossfade_UIS_H} ${libcrossfade_RCC_SRCS}
+${libcrossfade_HDRS})
 add_dependencies(crossfade qmmp)
 target_link_libraries(crossfade ${QT_LIBRARIES} -lqmmp)
 install(TARGETS crossfade DESTINATION ${LIB_DIR}/qmmp/Effect)

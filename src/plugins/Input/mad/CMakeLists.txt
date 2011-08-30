@@ -41,13 +41,16 @@ SET(libmad_SRCS
   replaygainreader.cpp
 )
 
+SET(libmad_HDRS
+  decoder_mad.h
+  tagextractor.h
+  replaygainreader.h
+)
+
 SET(libmad_MOC_HDRS
   settingsdialog.h
   decodermadfactory.h
-  decoder_mad.h
-  tagextractor.h
   mpegmetadatamodel.h
-  replaygainreader.h
 )
 
 SET(libmad_RCCS translations/translations.qrc)
@@ -69,7 +72,7 @@ QT4_WRAP_UI(libmad_UIS_H ${libmad_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MAD_FOUND)
-ADD_LIBRARY(mad MODULE ${libmad_SRCS} ${libmad_MOC_SRCS} ${libmad_UIS_H} ${libmad_RCC_SRCS})
+ADD_LIBRARY(mad MODULE ${libmad_SRCS} ${libmad_MOC_SRCS} ${libmad_UIS_H} ${libmad_RCC_SRCS} ${libmad_HDRS})
 add_dependencies(mad qmmp)
 target_link_libraries(mad ${QT_LIBRARIES} -lqmmp ${MAD_LDFLAGS} ${MAD_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS mad DESTINATION ${LIB_DIR}/qmmp/Input)

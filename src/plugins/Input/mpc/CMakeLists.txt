@@ -48,9 +48,13 @@ SET(libmpc_SRCS
   mpcmetadatamodel.cpp
 )
 
+SET(libmpc_HDRS
+  decoder_mpc.h
+)
+
 SET(libmpc_MOC_HDRS
   decodermpcfactory.h
-  decoder_mpc.h
+  
   mpcmetadatamodel.h
 )
 
@@ -63,7 +67,7 @@ QT4_WRAP_CPP(libmpc_MOC_SRCS ${libmpc_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MPC_FOUND)
-ADD_LIBRARY(mpc MODULE ${libmpc_SRCS} ${libmpc_MOC_SRCS} ${libmpc_RCC_SRCS})
+ADD_LIBRARY(mpc MODULE ${libmpc_SRCS} ${libmpc_MOC_SRCS} ${libmpc_RCC_SRCS} ${libmpc_HDRS})
 add_dependencies(mpc qmmp)
 target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp -lmpcdec ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
 install(TARGETS mpc DESTINATION ${LIB_DIR}/qmmp/Input)

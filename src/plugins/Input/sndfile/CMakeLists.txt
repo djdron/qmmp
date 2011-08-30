@@ -36,9 +36,12 @@ SET(libsndfile_SRCS
   decodersndfilefactory.cpp
 )
 
+SET(libsndfile_HDRS
+  decoder_sndfile.h
+)
+
 SET(libsndfile_MOC_HDRS
   decodersndfilefactory.h
-  decoder_sndfile.h
 )
 
 SET(libsndfile_RCCS translations/translations.qrc)
@@ -54,7 +57,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(SNDFILE_FOUND)
 ADD_LIBRARY(sndfile MODULE ${libsndfile_SRCS} ${libsndfile_MOC_SRCS} ${libsndfile_UIS_H}
-  ${libsndfile_RCC_SRCS})
+  ${libsndfile_RCC_SRCS} ${libsndfile_HDRS})
 add_dependencies(sndfile qmmp)
 target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LDFLAGS} ${SNDFILE_CFLAGS})
 install(TARGETS sndfile DESTINATION ${LIB_DIR}/qmmp/Input)

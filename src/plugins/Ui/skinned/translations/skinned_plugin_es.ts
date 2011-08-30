@@ -871,32 +871,32 @@
 <context>
     <name>PlayListSelector</name>
     <message>
-        <location filename="../playlistselector.cpp" line="51"/>
+        <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Load</source>
         <translation>&amp;Cargar</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="52"/>
+        <location filename="../playlistselector.cpp" line="53"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Guardar como...</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="54"/>
+        <location filename="../playlistselector.cpp" line="55"/>
         <source>Rename</source>
         <translation>Renombrar</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="55"/>
+        <location filename="../playlistselector.cpp" line="56"/>
         <source>&amp;Delete</source>
         <translation>&amp;Borrar</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Rename Playlist</source>
         <translation>Renombrar lista</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Playlist name:</source>
         <translation>Nombre de la lista:</translation>
     </message>
@@ -1249,22 +1249,22 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Alinear los números de canción</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="100"/>
+        <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
         <translation type="unfinished">Seleccionar archivos de pieles</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="101"/>
+        <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
         <translation type="unfinished">Archivos de pieles</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="143"/>
+        <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
         <translation type="unfinished">Piel no archivada</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="174"/>
+        <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
         <translation type="unfinished">Piel archivada</translation>
     </message>
