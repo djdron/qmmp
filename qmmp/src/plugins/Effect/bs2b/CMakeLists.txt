@@ -31,8 +31,11 @@ SET(libbs2b_SRCS
     effectbs2bfactory.cpp
 )
 
-SET(libbs2b_MOC_HDRS
+SET(libbs2b_HDRS
     bs2bplugin.h
+)
+
+SET(libbs2b_MOC_HDRS
     settingsdialog.h
     effectbs2bfactory.h
 )
@@ -61,7 +64,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(BS2B_FOUND)
 ADD_LIBRARY(bs2b MODULE ${libbs2b_SRCS} ${libbs2b_MOC_SRCS} ${libbs2b_UIS_H}
-  ${libbs2b_RCC_SRCS})
+  ${libbs2b_RCC_SRCS} ${libbs2b_HDRS})
 add_dependencies(bs2b qmmp)
 target_link_libraries(bs2b ${QT_LIBRARIES} -lqmmp ${BS2B_LDFLAGS} ${BS2B_CFLAGS})
 install(TARGETS bs2b DESTINATION ${LIB_DIR}/qmmp/Effect)

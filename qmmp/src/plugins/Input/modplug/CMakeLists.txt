@@ -53,9 +53,13 @@ SET(libmodplug_SRCS
   archivereader.cpp
 )
 
+SET(libmodplug_HDRS
+  decoder_modplug.h
+)
+
 SET(libmodplug_MOC_HDRS
   decodermodplugfactory.h
-  decoder_modplug.h
+  
   modplugmetadatamodel.h
   settingsdialog.h
   archivereader.h
@@ -80,7 +84,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MODPLUG_FOUND)
 ADD_LIBRARY(modplug MODULE ${libmodplug_SRCS} ${libmodplug_MOC_SRCS} ${libmodplug_UIS_H}
-  ${libmodplug_RCC_SRCS})
+  ${libmodplug_RCC_SRCS} ${libmodplug_HDRS})
 add_dependencies(modplug qmmp)
 target_link_libraries(modplug ${QT_LIBRARIES} -lqmmp ${MODPLUG_LDFLAGS} ${MODPLUG_CFLAGS})
 install(TARGETS modplug DESTINATION ${LIB_DIR}/qmmp/Input)

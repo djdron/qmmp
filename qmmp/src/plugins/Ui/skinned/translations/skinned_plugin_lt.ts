@@ -872,32 +872,32 @@
 <context>
     <name>PlayListSelector</name>
     <message>
-        <location filename="../playlistselector.cpp" line="51"/>
+        <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Load</source>
         <translation>&amp;Įkelti</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="52"/>
+        <location filename="../playlistselector.cpp" line="53"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Įrašyti kaip...</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="54"/>
+        <location filename="../playlistselector.cpp" line="55"/>
         <source>Rename</source>
         <translation>Pervadinti</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="55"/>
+        <location filename="../playlistselector.cpp" line="56"/>
         <source>&amp;Delete</source>
         <translation>&amp;Ištrinti</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Rename Playlist</source>
         <translation>Pervadinti grojaraštį</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Playlist name:</source>
         <translation>Grojaraščio pavadinimas</translation>
     </message>
@@ -1250,22 +1250,22 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished">Lygiuoti dainų numerius</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="100"/>
+        <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
         <translation type="unfinished">Pasirinkti temų bylas</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="101"/>
+        <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
         <translation type="unfinished">Temų bylos</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="143"/>
+        <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
         <translation type="unfinished">Išskleista tema</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="174"/>
+        <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
         <translation type="unfinished">Suspausta tema</translation>
     </message>

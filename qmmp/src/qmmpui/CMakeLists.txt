@@ -47,33 +47,36 @@ SET(libqmmpui_SRCS
     aboutdialog.cpp
 )
 
-SET(libqmmpui_MOC_HDRS
+SET(libqmmpui_HDRS
     generalfactory.h
-    general.h
-    uihelper.h
-    playlistparser.h
     playlistformat.h
     commandlinemanager.h
     commandlineoption.h
-    filedialog.h
     filedialogfactory.h
+    playstate_p.h
+    playlistitem.h
+    playlistsettings_p.h
+    metadataformatter.h
+    uiloader.h
+    uifactory.h
+    pluginitem_p.h
+)
+
+SET(libqmmpui_MOC_HDRS
+    general.h
+    uihelper.h
+    playlistparser.h
+    filedialog.h
     qtfiledialog_p.h
     fileloader_p.h
-    playstate_p.h
     playlistmodel.h
-    playlistitem.h
     mediaplayer.h
-    playlistsettings_p.h
     detailsdialog.h
     tageditor_p.h
     playlistmanager.h
-    metadataformatter.h
     templateeditor.h
-    uiloader.h
-    uifactory.h
     jumptotrackdialog_p.h
     configdialog.h
-    pluginitem_p.h
     aboutdialog_p.h
 )
 
@@ -117,7 +120,7 @@ QT4_WRAP_CPP(libqmmpui_MOC_SRCS ${libqmmpui_MOC_HDRS})
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RCC_SRCS} ${libqmmpui_UIS_H})
+ADD_LIBRARY(qmmpui SHARED ${libqmmpui_SRCS} ${libqmmpui_MOC_SRCS} ${libqmmpui_RCC_SRCS} ${libqmmpui_UIS_H} ${libqmmpui_HDRS})
 target_link_libraries(qmmpui ${QT_LIBRARIES} -lqmmp)
 add_dependencies(qmmpui libqmmp)
 SET_TARGET_PROPERTIES(qmmpui PROPERTIES VERSION ${QMMP_VERSION} SOVERSION ${QMMP_SOVERSION})

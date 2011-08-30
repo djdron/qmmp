@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
 <context>
     <name>ActionManager</name>
     <message>
@@ -400,6 +400,7 @@
 <context>
     <name>EqWidget</name>
     <message>
+        <location filename="../eqwidget.cpp" line="154"/>
         <location filename="../eqwidget.cpp" line="177"/>
         <source>preset</source>
         <translation>предвстановлення</translation>
@@ -669,26 +670,31 @@
         <translation>Падіння аналізатора</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="333"/>
         <location filename="../mainvisual.cpp" line="347"/>
         <source>Slowest</source>
         <translation>Найповільніше</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="334"/>
         <location filename="../mainvisual.cpp" line="348"/>
         <source>Slow</source>
         <translation>Повільне</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="335"/>
         <location filename="../mainvisual.cpp" line="349"/>
         <source>Medium</source>
         <translation>Середнє</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="336"/>
         <location filename="../mainvisual.cpp" line="350"/>
         <source>Fast</source>
         <translation>Швидке</translation>
     </message>
     <message>
+        <location filename="../mainvisual.cpp" line="337"/>
         <location filename="../mainvisual.cpp" line="351"/>
         <source>Fastest</source>
         <translation>Найшвидше</translation>
@@ -760,31 +766,37 @@
         <translation>Сортувати</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="207"/>
         <location filename="../playlist.cpp" line="242"/>
         <source>By Title</source>
         <translation>За назвою</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="211"/>
         <location filename="../playlist.cpp" line="246"/>
         <source>By Album</source>
         <translation>За альбомом</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="215"/>
         <location filename="../playlist.cpp" line="250"/>
         <source>By Artist</source>
         <translation>За артистом</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="219"/>
         <location filename="../playlist.cpp" line="254"/>
         <source>By Filename</source>
         <translation>За ім&apos;ям файлу</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="223"/>
         <location filename="../playlist.cpp" line="258"/>
         <source>By Path + Filename</source>
         <translation>За шляхом та файлом</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="227"/>
         <location filename="../playlist.cpp" line="262"/>
         <source>By Date</source>
         <translation>За датою</translation>
@@ -810,6 +822,7 @@
         <translation>&amp;Новий список</translation>
     </message>
     <message>
+        <location filename="../playlist.cpp" line="231"/>
         <location filename="../playlist.cpp" line="266"/>
         <source>By Track Number</source>
         <translation></translation>
@@ -838,11 +851,13 @@
         <translation>Новий</translation>
     </message>
     <message>
+        <location filename="../forms/playlistbrowser.ui" line="52"/>
         <location filename="../playlistbrowser.cpp" line="39"/>
         <source>Delete</source>
         <translation>Видалити</translation>
     </message>
     <message>
+        <location filename="../forms/playlistbrowser.ui" line="69"/>
         <location filename="../forms/playlistbrowser.ui" line="79"/>
         <source>...</source>
         <translation>...</translation>
@@ -856,32 +871,32 @@
 <context>
     <name>PlayListSelector</name>
     <message>
-        <location filename="../playlistselector.cpp" line="51"/>
+        <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Load</source>
         <translation>&amp;Завантажити</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="52"/>
+        <location filename="../playlistselector.cpp" line="53"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Зберегти як...</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="54"/>
+        <location filename="../playlistselector.cpp" line="55"/>
         <source>Rename</source>
         <translation>Переіменувати</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="55"/>
+        <location filename="../playlistselector.cpp" line="56"/>
         <source>&amp;Delete</source>
         <translation>&amp;Видалити</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Rename Playlist</source>
         <translation>Переіменувати список</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Playlist name:</source>
         <translation>Ім&apos;я списка:</translation>
     </message>
@@ -1107,6 +1122,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Поновити</translation>
     </message>
     <message>
+        <location filename="../forms/skinnedsettings.ui" line="89"/>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>View</source>
         <translation>Вигляд</translation>
@@ -1137,11 +1153,13 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Програвач:</translation>
     </message>
     <message>
+        <location filename="../forms/skinnedsettings.ui" line="171"/>
         <location filename="../forms/skinnedsettings.ui" line="219"/>
         <source>???</source>
         <translation>???</translation>
     </message>
     <message>
+        <location filename="../forms/skinnedsettings.ui" line="178"/>
         <location filename="../forms/skinnedsettings.ui" line="226"/>
         <source>...</source>
         <translation>...</translation>
@@ -1167,6 +1185,8 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Головне вікно</translation>
     </message>
     <message>
+        <location filename="../forms/skinnedsettings.ui" line="272"/>
+        <location filename="../forms/skinnedsettings.ui" line="296"/>
         <location filename="../forms/skinnedsettings.ui" line="320"/>
         <source>0</source>
         <translation></translation>
@@ -1232,22 +1252,22 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Вирівнювати номери фрагментів</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="100"/>
+        <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
         <translation>Вибрати файли скінів</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="101"/>
+        <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
         <translation>Файли скінів</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="143"/>
+        <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
         <translation>Розпакована тема</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="174"/>
+        <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
         <translation>Упакована тема</translation>
     </message>

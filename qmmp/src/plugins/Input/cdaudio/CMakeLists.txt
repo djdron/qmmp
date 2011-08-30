@@ -33,10 +33,13 @@ SET(libcdaudio_SRCS
   settingsdialog.cpp
 )
 
+SET(libcdaudio_HDRS
+  decoder_cdaudio.h
+)
+
 SET(libcdaudio_MOC_HDRS
   settingsdialog.h
   decodercdaudiofactory.h
-  decoder_cdaudio.h
 )
 
 SET(libcdaudio_RCCS translations/translations.qrc)
@@ -57,7 +60,8 @@ QT4_WRAP_UI(libcdaudio_UIS_H ${libcdaudio_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(CDIO_FOUND)
-ADD_LIBRARY(cdaudio MODULE ${libcdaudio_SRCS} ${libcdaudio_MOC_SRCS} ${libcdaudio_UIS_H} ${libcdaudio_RCC_SRCS})
+ADD_LIBRARY(cdaudio MODULE ${libcdaudio_SRCS} ${libcdaudio_MOC_SRCS} ${libcdaudio_UIS_H} ${libcdaudio_RCC_SRCS}
+${libcdaudio_HDRS})
 add_dependencies(cdaudio qmmp)
 target_link_libraries(cdaudio ${QT_LIBRARIES} -lqmmp ${CDIO_LDFLAGS} ${CDIO_CFLAGS})
 install(TARGETS cdaudio DESTINATION ${LIB_DIR}/qmmp/Input)

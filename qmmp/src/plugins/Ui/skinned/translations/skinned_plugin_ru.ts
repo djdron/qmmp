@@ -871,32 +871,32 @@
 <context>
     <name>PlayListSelector</name>
     <message>
-        <location filename="../playlistselector.cpp" line="51"/>
+        <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Load</source>
         <translation>&amp;Загрузить</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="52"/>
+        <location filename="../playlistselector.cpp" line="53"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="54"/>
+        <location filename="../playlistselector.cpp" line="55"/>
         <source>Rename</source>
         <translation>Переименовать</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="55"/>
+        <location filename="../playlistselector.cpp" line="56"/>
         <source>&amp;Delete</source>
         <translation>&amp;Удалить</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Rename Playlist</source>
         <translation>Переименовать список</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Playlist name:</source>
         <translation>Имя списка:</translation>
     </message>
@@ -1252,22 +1252,22 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Выравнивать номера фрагментов</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="100"/>
+        <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
         <translation>Выберите файлы обложек</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="101"/>
+        <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
         <translation>Файлы обложек</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="143"/>
+        <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
         <translation>Распакованная тема</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="174"/>
+        <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
         <translation>Упакованная тема</translation>
     </message>

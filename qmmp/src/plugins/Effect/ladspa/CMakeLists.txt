@@ -34,9 +34,12 @@ SET(libladspa_SRCS
     effectladspafactory.cpp
 )
 
+SET(libladspa_HDRS
+    ladspahelper.h
+)
+
 SET(libladspa_MOC_HDRS
     ladspahost.h
-    ladspahelper.h
     ladspaslider.h
     ladspabutton.h
     settingsdialog.h
@@ -61,7 +64,7 @@ QT4_WRAP_UI(libladspa_UIS_H ${libladspa_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(ladspa MODULE ${libladspa_SRCS} ${libladspa_MOC_SRCS} ${libladspa_UIS_H}
-  ${libladspa_RCC_SRCS})
+  ${libladspa_RCC_SRCS} ${libladspa_HDRS})
 add_dependencies(ladspa qmmp)
 target_link_libraries(ladspa ${QT_LIBRARIES} -lqmmp -ldl)
 install(TARGETS ladspa DESTINATION ${LIB_DIR}/qmmp/Effect)

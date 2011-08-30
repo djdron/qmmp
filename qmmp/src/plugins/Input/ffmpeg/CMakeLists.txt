@@ -43,9 +43,12 @@ SET(libffmpeg_SRCS
   settingsdialog.cpp
 )
 
+SET(libffmpeg_HDRS
+  decoder_ffmpeg.h
+)
+
 SET(libffmpeg_MOC_HDRS
   decoderffmpegfactory.h
-  decoder_ffmpeg.h
   ffmpegmetadatamodel.h
   settingsdialog.h
 )
@@ -70,7 +73,7 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(FFMPEG_FOUND)
 ADD_LIBRARY(ffmpeg MODULE ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libffmpeg_UIS_H}
-  ${libffmpeg_RCC_SRCS})
+  ${libffmpeg_RCC_SRCS} ${libffmpeg_HDRS})
 add_dependencies(ffmpeg qmmp)
 target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS} ${FFMPEG_CFLAGS})
 install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input)

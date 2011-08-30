@@ -871,32 +871,32 @@
 <context>
     <name>PlayListSelector</name>
     <message>
-        <location filename="../playlistselector.cpp" line="51"/>
+        <location filename="../playlistselector.cpp" line="52"/>
         <source>&amp;Load</source>
         <translation>&amp;Carica</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="52"/>
+        <location filename="../playlistselector.cpp" line="53"/>
         <source>&amp;Save As...</source>
         <translation>&amp;Salva come</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="54"/>
+        <location filename="../playlistselector.cpp" line="55"/>
         <source>Rename</source>
         <translation>Rinomina</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="55"/>
+        <location filename="../playlistselector.cpp" line="56"/>
         <source>&amp;Delete</source>
         <translation>&amp;Elimina</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Rename Playlist</source>
         <translation>Rinomina lista brani</translation>
     </message>
     <message>
-        <location filename="../playlistselector.cpp" line="113"/>
+        <location filename="../playlistselector.cpp" line="114"/>
         <source>Playlist name:</source>
         <translation>Nome della lista brani:</translation>
     </message>
@@ -1249,22 +1249,22 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="100"/>
+        <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
         <translation type="unfinished">Seleziona aspetto</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="101"/>
+        <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
         <translation type="unfinished">Aspetto</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="143"/>
+        <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
         <translation type="unfinished">Tema non archiviato</translation>
     </message>
     <message>
-        <location filename="../skinnedsettings.cpp" line="174"/>
+        <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
         <translation type="unfinished">Tema archiviato</translation>
     </message>

@@ -33,11 +33,14 @@ SET(libanalyzer_SRCS
     fft.c
 )
 
+SET(libanalyzer_HDRS
+   inlines.h
+   fft.h
+)
+
 SET(libanalyzer_MOC_HDRS
     analyzer.h
     colorwidget.h
-    fft.h
-    inlines.h
     settingsdialog.h
     visualanalyzerfactory.h
 )
@@ -61,7 +64,7 @@ QT4_WRAP_UI(libanalyzer_UIS_H ${libanalyzer_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(analyzer MODULE ${libanalyzer_SRCS} ${libanalyzer_MOC_SRCS} ${libanalyzer_UIS_H}
-  ${libanalyzer_RCC_SRCS})
+  ${libanalyzer_RCC_SRCS} ${libanalyzer_HDRS})
 add_dependencies(analyzer qmmp)
 target_link_libraries(analyzer ${QT_LIBRARIES} -lqmmp)
 install(TARGETS analyzer DESTINATION ${LIB_DIR}/qmmp/Visual)

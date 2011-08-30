@@ -31,8 +31,11 @@ SET(libstereo_SRCS
     effectstereofactory.cpp
 )
 
-SET(libstereo_MOC_HDRS
+SET(libstereo_HDRS
     stereoplugin.h
+)
+
+SET(libstereo_MOC_HDRS
     settingsdialog.h
     effectstereofactory.h
 )
@@ -55,7 +58,7 @@ QT4_WRAP_UI(libstereo_UIS_H ${libstereo_UIS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 
-ADD_LIBRARY(stereo MODULE ${libstereo_SRCS} ${libstereo_MOC_SRCS} ${libstereo_UIS_H} ${libstereo_RCC_SRCS})
+ADD_LIBRARY(stereo MODULE ${libstereo_SRCS} ${libstereo_MOC_SRCS} ${libstereo_UIS_H} ${libstereo_RCC_SRCS} ${libstereo_HDRS})
 add_dependencies(stereo qmmp)
 target_link_libraries(stereo ${QT_LIBRARIES} -lqmmp)
 install(TARGETS stereo DESTINATION ${LIB_DIR}/qmmp/Effect)
