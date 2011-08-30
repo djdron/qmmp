@@ -144,6 +144,8 @@ bool OutputOSS4::initialize(quint32 freq, int chan, Qmmp::AudioFormat format)
     if (ioctl(m_audio_fd, SNDCTL_DSP_SPEED, &freq) < 0)
         qWarning("OutputOSS4: ioctl SNDCTL_DSP_SPEED failed: %s", strerror(errno));
 
+    ioctl(m_audio_fd, SNDCTL_DSP_RESET, 0);
+
     configure(freq, chan, format);
     return true;
 }
