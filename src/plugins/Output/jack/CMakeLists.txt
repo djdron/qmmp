@@ -31,6 +31,27 @@ pkg_check_modules(JACK jack samplerate)
 include_directories(${JACK_INCLUDE_DIRS})
 link_directories(${JACK_LIBRARY_DIRS})
 
+
+IF(JACK_FOUND)
+CHECK_CXX_SOURCE_COMPILES("
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <jack/jack.h>
+
+int main (int argc, char **argv)
+{
+   jack_latency_range_t range;
+   exit(0);
+}" JACK_NEW_API)
+
+ENDIF(JACK_FOUND)
+
+IF(JACK_NEW_API)
+ADD_DEFINITIONS(-DJACK_NEW_API)
+ENDIF(JACK_NEW_API)
+
+
 SET(libjack_SRCS
   outputjackfactory.cpp
   outputjack.cpp
