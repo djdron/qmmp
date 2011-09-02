@@ -2579,10 +2579,6 @@ JACK_GetJackInputLatency(int deviceID)
 
   if(drv->client && drv->num_input_channels)
   {
-    jack_latency_range_t range;
-    jack_port_get_latency_range(drv->output_port[0], JackPlaybackLatency, &range);
-    return_val = range.max;
-
 #ifdef JACK_NEW_API
     jack_latency_range_t range;
     jack_port_get_latency_range(drv->output_port[0], JackPlaybackLatency, &range);

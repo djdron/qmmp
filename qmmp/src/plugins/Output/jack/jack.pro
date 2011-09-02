@@ -12,6 +12,9 @@ TARGET=$$PLUGINS_PREFIX/Output/jack
 QMAKE_CLEAN =$$PLUGINS_PREFIX/Output/libjack.so
 
 
+DEFINES += JACK_NEW_API
+
+
 INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../../lib
 CONFIG += release \
