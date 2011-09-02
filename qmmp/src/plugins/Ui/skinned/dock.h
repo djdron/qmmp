@@ -54,8 +54,6 @@ private:
     QWidget *m_mainWidget;
     QList <QWidget *> m_widgetList;
     QList <bool> m_dockedList;
-    /*QList <int> x_list;
-    QList <int> y_list;*/
     QList <QPoint> m_delta_list;
     QList <QAction *> m_actions;
 };
