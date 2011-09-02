@@ -1655,16 +1655,18 @@ JACK_OpenEx(int *deviceID, unsigned int bits_per_channel,
   /* FIXME: maybe we should keep different latency values for input vs output? */
   if(drv->num_output_channels > 0)
   {
-    periods = jack_port_get_total_latency(drv->client,
-                                          drv->output_port[0]) / periodSize;
+    jack_latency_range_t range;
+    jack_port_get_latency_range(drv->output_port[0], JackPlaybackLatency, &range);
+    periods = range.max / periodSize;
     drv->latencyMS = periodSize * periods * 1000 / (drv->jack_sample_rate *
                                                     (drv->bits_per_channel / 8 *
                                                      drv->num_output_channels));
   }
   else if(drv->num_input_channels > 0)
   {
-    periods = jack_port_get_total_latency(drv->client,
-                                          drv->input_port[0]) / periodSize;
+    jack_latency_range_t range;
+    jack_port_get_latency_range(drv->output_port[0], JackPlaybackLatency, &range);
+    periods = range.max / periodSize;
     drv->latencyMS =
       periodSize * periods * 1000 / (drv->jack_sample_rate *
                                      (drv->bits_per_channel / 8 *
@@ -2542,8 +2544,12 @@ JACK_GetJackOutputLatency(int deviceID)
   jack_driver_t *drv = getDriver(deviceID);
   long return_val = 0;
 
-  if(drv->client && drv->num_output_channels)
-    return_val = jack_port_get_total_latency(drv->client, drv->output_port[0]);
+  if(drv->client && drv->num_input_channels)
+  {
+    jack_latency_range_t range;
+    jack_port_get_latency_range(drv->output_port[0], JackCaptureLatency, &range);
+    return_val = range.max;
+  }
 
   TRACE("got latency of %ld frames\n", return_val);
 
@@ -2559,8 +2565,11 @@ JACK_GetJackInputLatency(int deviceID)
   long return_val = 0;
 
   if(drv->client && drv->num_input_channels)
-    return_val = jack_port_get_total_latency(drv->client, drv->input_port[0]);
-
+  {
+    jack_latency_range_t range;
+    jack_port_get_latency_range(drv->output_port[0], JackPlaybackLatency, &range);
+    return_val = range.max;
+  }
   TRACE("got latency of %ld frames\n", return_val);
 
   releaseDriver(drv);
