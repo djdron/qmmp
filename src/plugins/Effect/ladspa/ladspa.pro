@@ -25,7 +25,7 @@ LIBS += -lqmmp \
     -L/usr/lib \
     -I/usr/include
 
-linux-g++:LIBS += -ldl
+linux-g++|linux-g++-32|linux-g++-64:LIBS += -ldl
 
 TRANSLATIONS = translations/ladspa_plugin_cs.ts \
     translations/ladspa_plugin_de.ts \
