@@ -25,9 +25,9 @@
 #include <stdio.h>
 #include <math.h>
 
-/*************************** 
+/***************************
  * IIR filter coefficients *
- ***************************/ 
+ ***************************/
 static sIIRCoefficients iir_cf10_11k_11025[10] __attribute__((aligned));
 static sIIRCoefficients iir_cf10_22k_22050[10] __attribute__((aligned));
 static sIIRCoefficients iir_cforiginal10_44100[10] __attribute__((aligned));
@@ -37,25 +37,28 @@ static sIIRCoefficients iir_cf10_48000[10] __attribute__((aligned));
 static sIIRCoefficients iir_cf10_96000[10] __attribute__((aligned));
 static sIIRCoefficients iir_cf15_44100[15] __attribute__((aligned));
 static sIIRCoefficients iir_cf15_48000[15] __attribute__((aligned));
+static sIIRCoefficients iir_cf15_96000[15] __attribute__((aligned));
 static sIIRCoefficients iir_cf25_44100[25] __attribute__((aligned));
 static sIIRCoefficients iir_cf25_48000[25] __attribute__((aligned));
+static sIIRCoefficients iir_cf25_96000[25] __attribute__((aligned));
 static sIIRCoefficients iir_cf31_44100[31] __attribute__((aligned));
 static sIIRCoefficients iir_cf31_48000[31] __attribute__((aligned));
+static sIIRCoefficients iir_cf31_96000[31] __attribute__((aligned));
 
-/****************************************************************** 
+/******************************************************************
  * Definitions and data structures to calculate the coefficients
  ******************************************************************/
 static const double band_f011k[] =
-{ 31, 62, 125, 250, 500, 1000, 2000, 3000, 4000, 5500 
+{ 31, 62, 125, 250, 500, 1000, 2000, 3000, 4000, 5500
 };
 static const double band_f022k[] =
-{ 31, 62, 125, 250, 500, 1000, 2000, 4000, 8000, 11000 
+{ 31, 62, 125, 250, 500, 1000, 2000, 4000, 8000, 11000
 };
 static const double band_f010[] =
-{ 31, 62, 125, 250, 500, 1000, 2000, 4000, 8000, 16000 
+{ 31, 62, 125, 250, 500, 1000, 2000, 4000, 8000, 16000
 };
 static const double band_original_f010[] =
-{ 60, 170, 310, 600, 1000, 3000, 6000, 12000, 14000, 16000 
+{ 60, 170, 310, 600, 1000, 3000, 6000, 12000, 14000, 16000
 };
 static const double band_f015[] =
 { 25,40,63,100,160,250,400,630,1000,1600,2500,4000,6300,10000,16000
@@ -111,10 +114,13 @@ struct {
   { iir_cf10_96000,         band_f010,          1.0,     10, 96000.0 },
   { iir_cf15_44100,         band_f015,          2.0/3.0, 15, 44100.0 },
   { iir_cf15_48000,         band_f015,          2.0/3.0, 15, 48000.0 },
+  { iir_cf15_96000,         band_f015,          2.0/3.0, 15, 96000.0 },
   { iir_cf25_44100,         band_f025,          1.0/3.0, 25, 44100.0 },
   { iir_cf25_48000,         band_f025,          1.0/3.0, 25, 48000.0 },
+  { iir_cf25_96000,         band_f025,          1.0/3.0, 25, 96000.0 },
   { iir_cf31_44100,         band_f031,          1.0/3.0, 31, 44100.0 },
   { iir_cf31_48000,         band_f031,          1.0/3.0, 31, 48000.0 },
+  { iir_cf31_96000,         band_f031,          1.0/3.0, 31, 96000.0 },
   { 0, 0, 0, 0, 0 }
 };
 
@@ -134,37 +140,34 @@ sIIRCoefficients* get_coeffs(int *bands, unsigned int sfreq)
     case 22050: iir_cf = iir_cf10_22k_22050;
                 *bands = 10;
                 break;
-    case 48000: 
+    case 48000:
                 switch(*bands)
                 {
                   case 31: iir_cf = iir_cf31_48000; break;
                   case 25: iir_cf = iir_cf25_48000; break;
                   case 15: iir_cf = iir_cf15_48000; break;
-                  default:
-                           /*iir_cf = use_xmms_original_freqs ? 
-                             iir_cforiginal10_48000 :
-                             iir_cf10_48000;*/
-                             iir_cf = iir_cforiginal10_48000;
-                           break;
+                  default: iir_cf = iir_cforiginal10_48000; break;
                 }
                 break;
     case 96000:
-                iir_cf = iir_cf10_96000;
+               switch(*bands)
+               {
+                 case 31: iir_cf = iir_cf31_96000; break;
+                 case 25: iir_cf = iir_cf25_96000; break;
+                 case 15: iir_cf = iir_cf15_96000; break;
+                 default: iir_cf = iir_cf10_96000; break;
+               }
+               break;
 
     default:
-                switch(*bands)
-                {
+               switch(*bands)
+               {
                   case 31: iir_cf = iir_cf31_44100; break;
                   case 25: iir_cf = iir_cf25_44100; break;
                   case 15: iir_cf = iir_cf15_44100; break;
-                  default:
-                           /*iir_cf = use_xmms_original_freqs ? 
-                             iir_cforiginal10_44100 :
-                             iir_cf10_44100;*/
-                             iir_cf = iir_cforiginal10_44100;
-                           break;
-                }
-                break;
+                  default: iir_cf = iir_cforiginal10_44100; break;
+               }
+               break;
   }
   return iir_cf;
 }
@@ -184,7 +187,7 @@ static int find_root(double a, double b, double c, double *x0) {
   double h = -(b/(2.*a));
   double x1 = 0.;
   if (-(k/a) < 0.)
-    return -1; 
+    return -1;
   *x0 = h - sqrt(-(k/a));
   x1 = h + sqrt(-(k/a));
   if (x1 < *x0)
@@ -209,9 +212,9 @@ void calc_coeffs()
       find_f1_and_f2(freqs[i], bands[n].octave, &f1, &f2);
       /* Find Beta */
       if ( find_root(
-            BETA2(TETA(freqs[i]), TETA(f1)), 
-            BETA1(TETA(freqs[i]), TETA(f1)), 
-            BETA0(TETA(freqs[i]), TETA(f1)), 
+            BETA2(TETA(freqs[i]), TETA(f1)),
+            BETA1(TETA(freqs[i]), TETA(f1)),
+            BETA0(TETA(freqs[i]), TETA(f1)),
             &x0) == 0)
       {
         /* Got a solution, now calculate the rest of the factors */
