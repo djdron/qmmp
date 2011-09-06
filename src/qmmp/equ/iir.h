@@ -27,7 +27,7 @@
 #include "iir_cfs.h"
 
 /*
- * Flush-to-zero to avoid flooding the CPU with underflow exceptions 
+ * Flush-to-zero to avoid flooding the CPU with underflow exceptions
  */
 #ifdef SSE_MATH
 #define FTZ 0x8000
@@ -67,7 +67,7 @@ __inline__ int round_ppc(float x);
 #endif
 
 #define EQ_CHANNELS 6
-#define EQ_MAX_BANDS 10
+#define EQ_MAX_BANDS 32
 
 extern float preamp[EQ_CHANNELS];
 extern sIIRCoefficients *iir_cf;
