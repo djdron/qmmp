@@ -116,11 +116,6 @@ public slots:
 
 signals:
     /*!
-     * Emitted when some general plugin requires to exit.
-     * Use it to quit application.
-     */
-    void exitCalled();
-    /*!
      * Emitted when some general plugin requires to toggle visibility.
      * Use it to show/hide player's window.
      */
