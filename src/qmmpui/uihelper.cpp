@@ -224,7 +224,8 @@ void UiHelper::toggleVisibility()
 
 void UiHelper::exit()
 {
-    emit exitCalled();
+    qApp->closeAllWindows();
+    qApp->quit();
 }
 
 UiHelper* UiHelper::instance()

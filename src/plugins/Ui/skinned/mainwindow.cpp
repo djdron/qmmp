@@ -107,7 +107,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_playlist, SLOT(setTime(qint64)));
     connect(m_core, SIGNAL(metaDataChanged()),SLOT(showMetaData()));
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
-    connect(m_uiHelper, SIGNAL(exitCalled()), SLOT(close()));
 
     readSettings();
     m_display->setEQ(m_equalizer);
@@ -205,7 +204,8 @@ void MainWindow::closeEvent (QCloseEvent *)
     writeSettings();
     m_playlist->close();
     m_equalizer->close();
-    QApplication::quit ();
+    if (!m_hideOnClose || !m_uiHelper->visibilityControl())
+        m_uiHelper->exit();
 }
 
 void MainWindow::addDir()
@@ -465,14 +465,6 @@ void MainWindow::playPause()
 void MainWindow::jumpToFile()
 {
     m_uiHelper->jumpToTrack(this);
-}
-
-void MainWindow::handleCloseRequest()
-{
-    if (m_hideOnClose && m_uiHelper->visibilityControl())
-        toggleVisibility();
-    else
-        QApplication::closeAllWindows();
 }
 
 void MainWindow::addUrl()

@@ -89,7 +89,6 @@ private slots:
     void showSettings();
     void forward();
     void backward();
-    void handleCloseRequest();
 
 private:
     void readSettings();

@@ -49,5 +49,6 @@ int main(int argc, char *argv[])
     QMMPStarter starter(argc,argv);
     Q_UNUSED(starter)
 
+    a.setQuitOnLastWindowClosed(false);
     return a.exec();
 }
