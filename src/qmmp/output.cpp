@@ -88,7 +88,7 @@ void Output::configure(quint32 freq, int chan, Qmmp::AudioFormat format)
     m_visBuffer = new unsigned char [m_visBufferSize];
     m_useEq = m_eqEnabled && m_frequency && m_format == Qmmp::PCM_S16LE;
     if(m_frequency)
-        init_iir(m_frequency);
+        init_iir(m_frequency, m_settings->eqSettings().bands());
 }
 
 void Output::pause()
@@ -374,9 +374,14 @@ void Output::updateEqSettings()
     mutex()->lock();
     m_eqEnabled = m_settings->eqSettings().isEnabled();
     double preamp = m_settings->eqSettings().preamp();
+    int bands =  m_settings->eqSettings().bands();
+
+    if(band_count != bands)
+        init_iir(m_frequency, bands);
+
     set_preamp(0, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
     set_preamp(1, 1.0 + 0.0932471 *preamp + 0.00279033 * preamp * preamp);
-    for(int i = 0; i < 10; ++i)
+    for(int i = 0; i < bands; ++i)
     {
         double value =  m_settings->eqSettings().gain(i);
         set_gain(i,0, 0.03*value+0.000999999*value*value);

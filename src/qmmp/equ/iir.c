@@ -26,8 +26,8 @@
 /* Coefficients */
 sIIRCoefficients *iir_cf;
 
-/* Volume gain 
- * values should be between 0.0 and 1.0 
+/* Volume gain
+ * values should be between 0.0 and 1.0
  * Use the preamp from XMMS for now
  * */
 float preamp[EQ_CHANNELS];
@@ -39,7 +39,7 @@ int count = 0;
 unsigned int blength = 0;
 #endif
 
-/* 
+/*
  * Global vars
  */
 unsigned int rate;
@@ -51,14 +51,14 @@ void set_preamp(int chn, float val)
 }
 
 /* Init the filters */
-void init_iir(unsigned int srate)
+void init_iir(unsigned int srate, int band_num)
 {
   calc_coeffs();
 #if 0
   band_count = cfg.band_num;
 #endif
 
-  band_count = 10;
+  band_count = band_num;
 
   rate = srate;
 
