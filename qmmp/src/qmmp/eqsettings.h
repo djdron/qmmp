@@ -22,15 +22,16 @@
 #define EQSETTINGS_H
 
 /*! @brief The EqSettings class helps to work with equalizer settings.
- * @author Ilya Kotov <forkotov02@hotmail.ru>
- */
+     * @author Ilya Kotov <forkotov02@hotmail.ru>
+     */
 class EqSettings
 {
 public:
     /*!
      * Constructs an empty equalizer settings (0 dB, disabled)
+     * @param bands - Number of bands (supported: 10, 15, 25, 31)
      */
-    EqSettings();
+    EqSettings(int bands = 10);
     /*!
      * Returns \b true if equalizer os enabled, otherwise returns \b false.
      */
@@ -44,15 +45,19 @@ public:
      */
     double preamp() const;
     /*!
+     * Returns number of bands
+     */
+    int bands() const;
+    /*!
      *  Enables equalizer if \p enabled is \b true or disables it if \p enabled is \b false.
      */
     void setEnabled(bool enabled = true);
     /*!
      * Sets gain of the equalizer channel.
-     * @param chan Number of equalizer channel.
+     * @param band Number of equalizer band.
      * @param gain Channel gain (-20.0..20.0 dB)
      */
-    void setGain(int chan, double gain);
+    void setGain(int band, double gain);
     /*!
      * Sets equalizer preamp to \b preamp.
      */
@@ -71,9 +76,10 @@ public:
     bool operator!=(const EqSettings &s) const;
 
 private:
-    double m_gain[10];
+    double m_gains[31];
     double m_preamp;
     bool m_is_enabled;
+    int m_bands;
 };
 
 #endif // EQSETTINGS_H

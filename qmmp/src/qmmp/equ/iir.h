@@ -51,13 +51,13 @@
 /*
  * Function prototypes
  */
-void init_iir(unsigned int srate);
+void init_iir(unsigned int srate, int band_num);
 void clean_history();
 void set_gain(int index, int chn, float val);
 void set_preamp(int chn, float val);
 
 
- int iir(void * d, int length, int nch);
+int iir(void * d, int length, int nch);
 
 #ifdef ARCH_X86
 __inline__ int round_trick(float floatvalue_to_round);
