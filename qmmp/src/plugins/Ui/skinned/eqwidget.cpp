@@ -235,7 +235,7 @@ void EqWidget::readEq()
     EqSettings eqSettings = SoundCore::instance()->eqSettings();
     if(eqSettings.bands() != 10)
     {
-        m_on->setON(false);
+        m_on->setChecked(false);
         return;
     }
     m_preamp->setValue(eqSettings.preamp());
@@ -244,7 +244,7 @@ void EqWidget::readEq()
         m_sliders.at(i)->setValue(eqSettings.gain(i));
         m_eqg->addValue(m_sliders.at(i)->value());
     }
-    m_on->setON(eqSettings.isEnabled());
+    m_on->setChecked(eqSettings.isEnabled());
 }
 
 void EqWidget::writeEq()

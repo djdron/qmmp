@@ -249,7 +249,7 @@ void MainDisplay::setSampleRate(quint32 rate)
 void MainDisplay::setEQ (QWidget* w)
 {
     m_equlizer = w;
-    m_eqButton->setON (m_equlizer->isVisible());
+    m_eqButton->setChecked (m_equlizer->isVisible());
     ACTION(ActionManager::SHOW_EQUALIZER)->setChecked(m_equlizer->isVisible());
 
     connect (ACTION(ActionManager::SHOW_EQUALIZER), SIGNAL(triggered(bool)),
@@ -266,7 +266,7 @@ void MainDisplay::setEQ (QWidget* w)
 void MainDisplay::setPL (QWidget* w)
 {
     m_playlist = w;
-    m_plButton->setON (m_playlist->isVisible());
+    m_plButton->setChecked (m_playlist->isVisible());
     ACTION(ActionManager::SHOW_PLAYLIST)->setChecked(m_playlist->isVisible());
 
     connect (ACTION(ActionManager::SHOW_PLAYLIST), SIGNAL(triggered(bool)),
@@ -338,12 +338,12 @@ bool MainDisplay::isShuffle() const
 
 void MainDisplay::setIsRepeatable(bool yes)
 {
-    m_repeatButton->setON(yes);
+    m_repeatButton->setChecked(yes);
 }
 
 void MainDisplay::setIsShuffle(bool yes)
 {
-    m_shuffleButton->setON(yes);
+    m_shuffleButton->setChecked(yes);
 }
 
 void MainDisplay::mousePressEvent(QMouseEvent *e)

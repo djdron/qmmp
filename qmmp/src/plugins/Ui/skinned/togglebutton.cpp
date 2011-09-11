@@ -34,7 +34,7 @@ ToggleButton::ToggleButton ( QWidget *parent,uint on_n,uint on_p,uint off_n,uint
    m_off_p = off_p;
    m_on = false;
    skin = Skin::instance();
-   setON ( false );
+   setChecked ( false );
    connect ( skin, SIGNAL ( skinChanged() ), this, SLOT ( updateSkin() ) );
 }
 
@@ -50,17 +50,17 @@ bool ToggleButton::isChecked()
 void ToggleButton::updateSkin()
 {
    //setPixmap ( skin->getButton ( name_normal ) );
-   setON ( m_on );
+   setChecked ( m_on );
 }
 
 void ToggleButton::click()
 {
     m_on = !m_on;
-    setON (m_on);
+    setChecked (m_on);
     emit clicked(m_on);
 }
 
-void ToggleButton::setON ( bool on )
+void ToggleButton::setChecked ( bool on )
 {
    m_on = on;
    if ( on )
@@ -82,11 +82,11 @@ void ToggleButton::mouseReleaseEvent ( QMouseEvent* )
 {
    if ( m_cursorin ) {
        m_on = !m_old_on;
-       setON ( m_on );
+       setChecked ( m_on );
        emit clicked( m_on );
    } else {
        m_on = m_old_on;
-       setON ( m_on );
+       setChecked ( m_on );
    }
 }
 

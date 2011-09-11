@@ -32,7 +32,6 @@ class Button : public PixmapWidget
 Q_OBJECT
 public:
     Button(QWidget *parent, uint normal, uint pressed, uint cursor);
-
     ~Button();
 
 signals:

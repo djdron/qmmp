@@ -23,7 +23,7 @@
 #include "pixmapwidget.h"
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 class Skin;
 
@@ -31,18 +31,17 @@ class ToggleButton : public PixmapWidget
 {
 Q_OBJECT
 public:
-  ToggleButton( QWidget *parent, uint on_n, uint on_p, uint off_n, uint off_p );
-
-    ~ToggleButton();
+   ToggleButton( QWidget *parent, uint on_n, uint on_p, uint off_n, uint off_p );
+   ~ToggleButton();
 
     bool isChecked();
 
+public slots:
+    void setChecked(bool);
+    void click();
+
 signals:
     void clicked(bool);
-
-public slots:
-    void setON(bool);
-    void click();
 
 private slots:
     void updateSkin();
