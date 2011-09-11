@@ -233,6 +233,11 @@ void EqWidget::readEq()
 {
     m_eqg->clear();
     EqSettings eqSettings = SoundCore::instance()->eqSettings();
+    if(eqSettings.bands() != 10)
+    {
+        m_on->setON(false);
+        return;
+    }
     m_preamp->setValue(eqSettings.preamp());
     for (int i=0; i<10; ++i)
     {
