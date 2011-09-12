@@ -132,10 +132,13 @@ RESOURCES = resources/resources.qrc default/default.qrc
 
 unix{
 isEmpty(LIB_DIR){
-    LIB_DIR = /lib
+LIB_DIR = /lib
 }
+
 target.path = $$LIB_DIR/qmmp/Ui
 INSTALLS += target
+CONFIG += link_pkgconfig
+PKGCONFIG += x11
 }
 
 INCLUDEPATH += ../../../
@@ -158,5 +161,4 @@ TRANSLATIONS = translations/skinned_plugin_ru.ts \
     translations/skinned_plugin_es.ts \
     translations/skinned_plugin_sk.ts
 
-CONFIG += link_pkgconfig
-PKGCONFIG += x11
+
