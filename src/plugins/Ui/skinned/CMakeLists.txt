@@ -145,7 +145,7 @@ SET(skinned_MOC_HDRS
     hotkeyeditor.h
 )
 
-SET(skinned_RCCS images/skinned_images.qrc stuff.qrc translations/translations.qrc)
+SET(skinned_RCCS default/default.qrc resources/resources.qrc translations/translations.qrc)
 
 QT4_ADD_RESOURCES(skinned_RCC_SRCS ${skinned_RCCS})
 

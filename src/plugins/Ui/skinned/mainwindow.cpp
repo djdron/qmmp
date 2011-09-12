@@ -313,8 +313,8 @@ void MainWindow::showSettings()
 {
     ConfigDialog *confDialog = new ConfigDialog(this);
     SkinnedSettings *skinnedSettings = new SkinnedSettings(this);
-    confDialog->addPage(tr("Appearance"), skinnedSettings, QIcon(":/interface.png"));
-    confDialog->addPage(tr("Shortcuts"), new HotkeyEditor(this), QIcon(":/shortcuts.png"));
+    confDialog->addPage(tr("Appearance"), skinnedSettings, QIcon(":/skinned/interface.png"));
+    confDialog->addPage(tr("Shortcuts"), new HotkeyEditor(this), QIcon(":/skinned/shortcuts.png"));
     confDialog->exec();
     skinnedSettings->writeSettings();
     confDialog->deleteLater();

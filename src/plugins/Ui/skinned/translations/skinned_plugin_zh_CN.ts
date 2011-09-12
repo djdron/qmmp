@@ -400,58 +400,58 @@
 <context>
     <name>EqWidget</name>
     <message>
-        <location filename="../eqwidget.cpp" line="154"/>
-        <location filename="../eqwidget.cpp" line="177"/>
+        <location filename="../eqwidget.cpp" line="157"/>
+        <location filename="../eqwidget.cpp" line="178"/>
         <source>preset</source>
         <translation>预设</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="261"/>
+        <location filename="../eqwidget.cpp" line="264"/>
         <source>&amp;Load/Delete</source>
         <translation>载入/删除(&amp;L)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="263"/>
+        <location filename="../eqwidget.cpp" line="266"/>
         <source>&amp;Save Preset</source>
         <translation>保存预设(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="265"/>
+        <location filename="../eqwidget.cpp" line="268"/>
         <source>&amp;Save Auto-load Preset</source>
         <translation>保存自动载入预设(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="270"/>
+        <location filename="../eqwidget.cpp" line="273"/>
         <source>&amp;Clear</source>
         <translation>清除(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="299"/>
+        <location filename="../eqwidget.cpp" line="302"/>
         <source>Saving Preset</source>
         <translation>保存预设</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="300"/>
+        <location filename="../eqwidget.cpp" line="303"/>
         <source>Preset name:</source>
         <translation>预设名称：</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="301"/>
+        <location filename="../eqwidget.cpp" line="304"/>
         <source>preset #</source>
         <translation>预设 #</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="267"/>
+        <location filename="../eqwidget.cpp" line="270"/>
         <source>&amp;Import</source>
         <translation>导入(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="43"/>
+        <location filename="../eqwidget.cpp" line="44"/>
         <source>Equalizer</source>
         <translation type="unfinished">均衡器</translation>
     </message>
     <message>
-        <location filename="../eqwidget.cpp" line="392"/>
+        <location filename="../eqwidget.cpp" line="395"/>
         <source>Import Preset</source>
         <translation>导入预设</translation>
     </message>

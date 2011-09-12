@@ -128,7 +128,7 @@ TARGET = $$PLUGINS_PREFIX/Ui/skinned
 unix:LIBS += -lqmmp -lqmmpui
 win32:LIBS += -lqmmp0 -lqmmpui0
 
-RESOURCES = images/skinned_images.qrc stuff.qrc
+RESOURCES = resources/resources.qrc default/default.qrc
 
 unix{
 isEmpty(LIB_DIR){
