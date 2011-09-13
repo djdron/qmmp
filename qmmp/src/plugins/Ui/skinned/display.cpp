@@ -125,8 +125,8 @@ MainDisplay::MainDisplay (QWidget *parent)
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(setVolume(int, int)));
     connect(m_core, SIGNAL(elapsedChanged(qint64)),m_titlebar, SLOT(setTime(qint64)));
     PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
-    connect(pl_manager, SIGNAL(repeatableListChanged(bool)), m_repeatButton, SLOT(setON(bool)));
-    connect(pl_manager, SIGNAL(shuffleChanged(bool)), m_shuffleButton, SLOT(setON(bool)));
+    connect(pl_manager, SIGNAL(repeatableListChanged(bool)), m_repeatButton, SLOT(setChecked(bool)));
+    connect(pl_manager, SIGNAL(shuffleChanged(bool)), m_shuffleButton, SLOT(setChecked(bool)));
     updatePositions();
     updateMask();
 }
@@ -255,7 +255,7 @@ void MainDisplay::setEQ (QWidget* w)
     connect (ACTION(ActionManager::SHOW_EQUALIZER), SIGNAL(triggered(bool)),
              m_equlizer, SLOT (setVisible (bool)));
     connect (ACTION(ActionManager::SHOW_EQUALIZER), SIGNAL(triggered(bool)),
-             m_eqButton, SLOT (setON (bool)));
+             m_eqButton, SLOT (setChecked (bool)));
 
     connect (m_eqButton, SIGNAL(clicked(bool)),
              ACTION(ActionManager::SHOW_EQUALIZER), SLOT(setChecked (bool)));
@@ -272,7 +272,7 @@ void MainDisplay::setPL (QWidget* w)
     connect (ACTION(ActionManager::SHOW_PLAYLIST), SIGNAL(triggered(bool)),
              m_playlist, SLOT (setVisible (bool)));
     connect (ACTION(ActionManager::SHOW_PLAYLIST), SIGNAL(triggered(bool)),
-             m_plButton, SLOT (setON (bool)));
+             m_plButton, SLOT (setChecked (bool)));
 
     connect (m_plButton, SIGNAL(clicked(bool)),
              ACTION(ActionManager::SHOW_PLAYLIST), SLOT(setChecked (bool)));
