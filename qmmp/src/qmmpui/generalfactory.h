@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -66,7 +66,7 @@ public:
     /*!
      * Creates object of the General class.
      */
-    virtual General *create(QObject *parent) = 0;
+    virtual QObject *create(QObject *parent) = 0;
     /*!
      * Creates configuration dialog.
      * @param parent Parent widget.
@@ -85,5 +85,5 @@ public:
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
-Q_DECLARE_INTERFACE(GeneralFactory, "GeneralFactory/1.0");
+Q_DECLARE_INTERFACE(GeneralFactory, "GeneralFactory/1.0")
 #endif

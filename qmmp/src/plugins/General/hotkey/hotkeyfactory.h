@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,10 +32,10 @@
 class HotkeyFactory : public QObject, public GeneralFactory
 {
 Q_OBJECT
-Q_INTERFACES(GeneralFactory);
+Q_INTERFACES(GeneralFactory)
 public:
     const GeneralProperties properties() const;
-    General *create(QObject *parent);
+    QObject *create(QObject *parent);
     QDialog *createConfigDialog(QWidget *parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);

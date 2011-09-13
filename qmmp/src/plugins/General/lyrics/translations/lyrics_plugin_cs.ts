@@ -4,12 +4,12 @@
 <context>
     <name>Lyrics</name>
     <message>
-        <location filename="../lyrics.cpp" line="35"/>
+        <location filename="../lyrics.cpp" line="33"/>
         <source>View Lyrics</source>
         <translation>Zobrazit text</translation>
     </message>
     <message>
-        <location filename="../lyrics.cpp" line="36"/>
+        <location filename="../lyrics.cpp" line="34"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>

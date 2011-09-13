@@ -29,10 +29,10 @@ class QActionGroup;
 class QAction;
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class UDisksPlugin : public General
+class UDisksPlugin : public QObject
 {
 Q_OBJECT
 public:

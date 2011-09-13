@@ -37,8 +37,7 @@
 
 #define COPY_BLOCK_SIZE 102400
 
-FileOps::FileOps(QObject *parent)
-        : General(parent)
+FileOps::FileOps(QObject *parent) : QObject(parent)
 {
     //separators
     QAction *separator1 = new QAction(this);

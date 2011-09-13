@@ -30,7 +30,7 @@
 #include "coverwidget.h"
 #include "covermanager.h"
 
-CoverManager::CoverManager(QObject *parent) : General(parent)
+CoverManager::CoverManager(QObject *parent) : QObject(parent)
 {
     m_action = new QAction(tr("Show Cover"), this);
     m_action->setShortcut(tr("Ctrl+M"));

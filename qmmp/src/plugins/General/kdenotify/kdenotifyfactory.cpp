@@ -35,7 +35,7 @@ const GeneralProperties KdeNotifyFactory::properties() const
     return properties;
 }
 
-General *KdeNotifyFactory::create(QObject *parent)
+QObject *KdeNotifyFactory::create(QObject *parent)
 {
     return new KdeNotify(parent);
 }

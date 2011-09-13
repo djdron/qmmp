@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,7 +31,7 @@ class PlayListItem;
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class FileOps : public General
+class FileOps : public QObject
 {
     Q_OBJECT
 public:

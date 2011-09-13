@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ const GeneralProperties ScrobblerFactory::properties() const
     return properties;
 }
 
-General *ScrobblerFactory::create(QObject *parent)
+QObject *ScrobblerFactory::create(QObject *parent)
 {
     return new ScrobblerHandler(parent);
 }

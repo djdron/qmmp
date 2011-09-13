@@ -31,8 +31,7 @@
 #include "udisksmanager.h"
 #include "udisksplugin.h"
 
-UDisksPlugin::UDisksPlugin(QObject *parent)
-        : General(parent)
+UDisksPlugin::UDisksPlugin(QObject *parent) : QObject(parent)
 {
     m_manager = new UDisksManager(this);
     m_actions = new QActionGroup(this);

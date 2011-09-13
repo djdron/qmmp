@@ -32,9 +32,9 @@
 
 class QDBusInterface;
 
-class KdeNotify : public General
+class KdeNotify : public QObject
 {
-    Q_OBJECT;
+    Q_OBJECT
 public:
     KdeNotify(QObject *parent = 0);
     ~KdeNotify();

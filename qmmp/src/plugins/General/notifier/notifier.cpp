@@ -27,8 +27,7 @@
 #include "popupwidget.h"
 #include "notifier.h"
 
-Notifier::Notifier(QObject *parent)
-        : General(parent)
+Notifier::Notifier(QObject *parent) : QObject(parent)
 {
     m_popupWidget = 0;
     m_l = -1;

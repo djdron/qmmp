@@ -36,7 +36,7 @@
 
 #include "kdenotify.h"
 
-KdeNotify::KdeNotify(QObject *parent) : General(parent),m_useFreedesktopSpec(false)
+KdeNotify::KdeNotify(QObject *parent) : QObject(parent),m_useFreedesktopSpec(false)
 {
     m_notifier = new QDBusInterface("org.kde.VisualNotifications",
                                       "/VisualNotifications", "org.kde.VisualNotifications",
@@ -44,7 +44,7 @@ KdeNotify::KdeNotify(QObject *parent) : General(parent),m_useFreedesktopSpec(fal
     if(m_notifier->lastError().type() != QDBusError::NoError)
     {
         delete(m_notifier);
-	m_notifier = new QDBusInterface("org.freedesktop.Notifications",
+    m_notifier = new QDBusInterface("org.freedesktop.Notifications",
                                   "/org/freedesktop/Notifications","org.freedesktop.Notifications",
                                   QDBusConnection::sessionBus(), this);
         if(m_notifier->lastError().type() != QDBusError::NoError)

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   Copyright (C) 2003-2007 by Justin Karneges and Michail Pishchagin     *
@@ -69,7 +69,7 @@ quint32 Hotkey::defaultKey(int act)
     return keyMap[act];
 }
 
-HotkeyManager::HotkeyManager(QObject *parent) : General(parent)
+HotkeyManager::HotkeyManager(QObject *parent) : QObject(parent)
 {
     QCoreApplication::instance()->installEventFilter(this);
     WId rootWindow = QX11Info::appRootWindow();
