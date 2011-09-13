@@ -4,37 +4,37 @@
 <context>
     <name>FileOps</name>
     <message>
-        <location filename="../fileops.cpp" line="98"/>
+        <location filename="../fileops.cpp" line="97"/>
         <source>Error</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="99"/>
+        <location filename="../fileops.cpp" line="98"/>
         <source>Destination directory doesn&apos;t exist</source>
         <translation>目標目錄早已存在</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="104"/>
+        <location filename="../fileops.cpp" line="103"/>
         <source>Copying</source>
         <translation>正在復制</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="105"/>
+        <location filename="../fileops.cpp" line="104"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="146"/>
+        <location filename="../fileops.cpp" line="145"/>
         <source>Copying file %1/%2</source>
         <translation>復制檔案 %1/%2</translation>
     </message>
     <message>
-        <location filename="../fileops.cpp" line="189"/>
+        <location filename="../fileops.cpp" line="188"/>
         <source>Remove files</source>
         <translation>刪除檔案</translation>
     </message>
     <message numerus="yes">
-        <location filename="../fileops.cpp" line="190"/>
+        <location filename="../fileops.cpp" line="189"/>
         <source>Are you sure you want to remove %n file(s) from disk?</source>
         <translation>
             <numerusform>你確認要從磁盤中刪除%n文件？</numerusform>

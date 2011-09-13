@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,7 +20,6 @@
 
 #include <QAction>
 #include <QApplication>
-
 #include <qmmp/soundcore.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/playlistmanager.h>
@@ -29,8 +28,7 @@
 #include "lyricswindow.h"
 #include "lyrics.h"
 
-Lyrics::Lyrics(QObject *parent)
-        : General(parent)
+Lyrics::Lyrics(QObject *parent) : QObject(parent)
 {
     m_action = new QAction(tr("View Lyrics"), this);
     m_action->setShortcut(tr("Ctrl+L"));

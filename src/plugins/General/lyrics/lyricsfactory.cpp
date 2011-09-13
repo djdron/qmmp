@@ -34,7 +34,7 @@ const GeneralProperties LyricsFactory::properties() const
     return properties;
 }
 
-General *LyricsFactory::create(QObject *parent)
+QObject *LyricsFactory::create(QObject *parent)
 {
     return new Lyrics(parent);
 }

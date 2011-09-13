@@ -73,37 +73,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="66"/>
+        <location filename="../statusicon.cpp" line="65"/>
         <source>Play</source>
         <translation>Groti</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="66"/>
         <source>Pause</source>
         <translation>Pauzė</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="68"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Stop</source>
         <translation>Stop</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="70"/>
+        <location filename="../statusicon.cpp" line="69"/>
         <source>Next</source>
         <translation>Sekantis takelis</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="71"/>
+        <location filename="../statusicon.cpp" line="70"/>
         <source>Previous</source>
         <translation>Ankstesnis takelis</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="73"/>
+        <location filename="../statusicon.cpp" line="72"/>
         <source>Exit</source>
         <translation>Uždaryti</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="126"/>
+        <location filename="../statusicon.cpp" line="125"/>
         <source>Now Playing</source>
         <translation>Dabar groju</translation>
     </message>

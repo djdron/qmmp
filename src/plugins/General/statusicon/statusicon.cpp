@@ -35,8 +35,7 @@
 #include "qmmptrayicon.h"
 #include "statusicon.h"
 
-StatusIcon::StatusIcon(QObject *parent)
-        : General(parent)
+StatusIcon::StatusIcon(QObject *parent) : QObject(parent)
 {
     m_tray = new QmmpTrayIcon(this);
     connect(m_tray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), SLOT(trayActivated(QSystemTrayIcon::ActivationReason)));

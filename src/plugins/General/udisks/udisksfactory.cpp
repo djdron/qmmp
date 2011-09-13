@@ -35,7 +35,7 @@ const GeneralProperties UDisksFactory::properties() const
     return properties;
 }
 
-General *UDisksFactory::create(QObject *parent)
+QObject *UDisksFactory::create(QObject *parent)
 {
     return new UDisksPlugin(parent);
 }

@@ -28,7 +28,7 @@
   @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class ScrobblerHandler : public General
+class ScrobblerHandler : public QObject
 {
 Q_OBJECT
 

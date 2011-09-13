@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -63,7 +63,7 @@ public:
     static quint32 defaultKey(int act);
 };
 
-class HotkeyManager : public General
+class HotkeyManager : public QObject
 {
     Q_OBJECT
 public:

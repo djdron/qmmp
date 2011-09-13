@@ -26,7 +26,7 @@
 #include "mpris2/player2object.h"
 #include "mpris.h"
 
-MPRIS::MPRIS(QObject *parent) : General(parent)
+MPRIS::MPRIS(QObject *parent) : QObject(parent)
 {
     QDBusConnection connection = QDBusConnection::sessionBus();
     //MPRISv1.0

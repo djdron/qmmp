@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,7 +26,7 @@
 #include "scrobbler2.h"
 #include "scrobblerhandler.h"
 
-ScrobblerHandler::ScrobblerHandler(QObject *parent) : General(parent)
+ScrobblerHandler::ScrobblerHandler(QObject *parent) : QObject(parent)
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("Scrobbler");

@@ -31,10 +31,10 @@ class QEvent;
 
 
 /**
-	@author Ilya Kotov <forkotov02@hotmail.ru>
+    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
 
-class StatusIcon : public General
+class StatusIcon : public QObject
 {
 Q_OBJECT
 public:

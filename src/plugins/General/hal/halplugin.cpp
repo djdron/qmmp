@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -31,8 +31,7 @@
 #include "halmanager.h"
 #include "halplugin.h"
 
-HalPlugin::HalPlugin(QObject *parent)
-        : General(parent)
+HalPlugin::HalPlugin(QObject *parent) : QObject(parent)
 {
     m_manager = new HalManager(this);
     m_actions = new QActionGroup(this);
@@ -57,7 +56,6 @@ HalPlugin::HalPlugin(QObject *parent)
     m_removeFiles = settings.value("remove_files", false).toBool();
     settings.endGroup();
 }
-
 
 HalPlugin::~HalPlugin()
 {

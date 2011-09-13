@@ -73,37 +73,37 @@
 <context>
     <name>StatusIcon</name>
     <message>
-        <location filename="../statusicon.cpp" line="66"/>
+        <location filename="../statusicon.cpp" line="65"/>
         <source>Play</source>
         <translation>再生</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="67"/>
+        <location filename="../statusicon.cpp" line="66"/>
         <source>Pause</source>
         <translation>一時停止</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="68"/>
+        <location filename="../statusicon.cpp" line="67"/>
         <source>Stop</source>
         <translation>終止</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="70"/>
+        <location filename="../statusicon.cpp" line="69"/>
         <source>Next</source>
         <translation>次の曲</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="71"/>
+        <location filename="../statusicon.cpp" line="70"/>
         <source>Previous</source>
         <translation>前の曲</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="73"/>
+        <location filename="../statusicon.cpp" line="72"/>
         <source>Exit</source>
         <translation>終了</translation>
     </message>
     <message>
-        <location filename="../statusicon.cpp" line="126"/>
+        <location filename="../statusicon.cpp" line="125"/>
         <source>Now Playing</source>
         <translation>今の曲</translation>
     </message>

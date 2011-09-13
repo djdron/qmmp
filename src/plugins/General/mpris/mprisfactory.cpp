@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,7 +34,7 @@ const GeneralProperties MPRISFactory::properties() const
     return properties;
 }
 
-General *MPRISFactory::create(QObject *parent)
+QObject *MPRISFactory::create(QObject *parent)
 {
     return new MPRIS(parent);
 }

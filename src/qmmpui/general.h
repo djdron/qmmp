@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,22 +25,12 @@
 #include <QMap>
 #include "generalfactory.h"
 
-/*! @brief The General class provides the basic functionality for the general plugin objects
+/*! @brief The General class provides simple access to general plugins
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class General : public QObject
+class General
 {
-    Q_OBJECT
 public:
-    /*!
-     * Object constructor,
-     * @param parent Parent object
-     */
-    General(QObject *parent = 0);
-    /*!
-     * Destructor
-     */
-    ~General();
     /*!
      * Prepares general plugins for usage.
      * @param parent Parent object.
@@ -72,14 +62,11 @@ public:
      */
     static bool isEnabled(GeneralFactory* factory);
 
-
 private:
-    QMap <uint, QString> m_strValues;
-    QMap <uint, uint> m_numValues;
     static QList<GeneralFactory*> *m_factories;
     static QStringList m_files;
     static void checkFactories();
-    static QMap <GeneralFactory*, General*> *m_generals;
+    static QMap <GeneralFactory*, QObject*> *m_generals;
     static QObject *m_parent;
 };
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ const GeneralProperties HotkeyFactory::properties() const
     return properties;
 }
 
-General *HotkeyFactory::create(QObject *parent)
+QObject *HotkeyFactory::create(QObject *parent)
 {
     return new HotkeyManager(parent);
 }

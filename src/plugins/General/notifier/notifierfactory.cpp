@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -35,7 +35,7 @@ const GeneralProperties NotifierFactory::properties() const
     return properties;
 }
 
-General *NotifierFactory::create(QObject *parent)
+QObject *NotifierFactory::create(QObject *parent)
 {
     return new Notifier(parent);
 }
