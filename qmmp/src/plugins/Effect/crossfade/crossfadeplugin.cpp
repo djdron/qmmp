@@ -56,7 +56,7 @@ void CrossfadePlugin::applyEffect(Buffer *b)
         return;
     case CHECKING:
         //next source has been received and current engine will be used to play it
-        if(m_handler->nextEngine() == m_handler->currentEngine())
+        if(SoundCore::instance()->nextTrackAccepted())
             m_state = PREPARING;
         else
             return;
