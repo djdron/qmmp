@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2006-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QQueue>
 #include "decoder.h"
 #include "output.h"
 #include "visual.h"
@@ -62,7 +63,6 @@ public:
      * Chages equalizer settings to \b settings.
      */
     void setEqSettings(const EqSettings &settings);
-
     /*!
      * Returns left volume level.
      */
@@ -136,7 +136,12 @@ public slots:
     /*!
      *  This function returns file path or stream url.
      */
-    const QString url();
+    const QString url() const;
+    /*!
+     *  Indicates that the current active engine will be used for the next queued track.
+     *  May be useful for some effect plugins.
+     */
+    bool nextTrackAccepted() const;
 
 signals:
     /*!
@@ -197,24 +202,30 @@ signals:
     void nextTrackRequest();
 
 private slots:
-    bool enqueue();
-    void startPendingEngine();
+    void startNextSource();
+    void startNextEngine();
     void updateVolume();
 
 private:
     bool event(QEvent *e);
+    enum NextEngineState
+    {
+        NO_ENGINE = 0,
+        SAME_ENGINE,
+        ANOTHER_ENGINE,
+        INVALID_SOURCE
+    };
     QMap <Qmmp::MetaData, QString> m_metaData;
     Decoder* m_decoder;
     QString m_url;
-    bool m_error;
     QList <Visual*> m_visuals;
     QWidget *m_parentWidget;
     static SoundCore* m_instance;
     StateHandler *m_handler;
     VolumeControl *m_volumeControl;
     AbstractEngine *m_engine;
-    AbstractEngine *m_pendingEngine;
-    QList<InputSource *> m_pendingSources;
+    QQueue<InputSource *> m_sources;
+    int m_nextState;
 };
 
 #endif
