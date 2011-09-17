@@ -404,7 +404,7 @@ bool DecoderCDAudio::initialize()
     m_first_sector = tracks[track_at].first_sector;
     m_current_sector = tracks[track_at].first_sector;
     m_last_sector = tracks[track_at].last_sector;
-    StateHandler::instance()->dispatch(tracks[track_at].info.metaData()); //send metadata
+    addMetaData(tracks[track_at].info.metaData()); //send metadata
     qDebug("DecoderCDAudio: initialize succes");
     return true;
 }

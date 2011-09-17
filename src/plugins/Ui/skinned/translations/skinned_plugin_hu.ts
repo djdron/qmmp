@@ -585,132 +585,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="281"/>
+        <location filename="../mainvisual.cpp" line="282"/>
         <source>Visualization Mode</source>
         <translation>Vizualizációs mód</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="284"/>
+        <location filename="../mainvisual.cpp" line="285"/>
         <source>Analyzer</source>
         <translation>Analyzer</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="285"/>
+        <location filename="../mainvisual.cpp" line="286"/>
         <source>Scope</source>
         <translation>Scope</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="286"/>
+        <location filename="../mainvisual.cpp" line="287"/>
         <source>Off</source>
         <translation>Ki</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="293"/>
+        <location filename="../mainvisual.cpp" line="294"/>
         <source>Analyzer Mode</source>
         <translation>Analyzer mód</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="296"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Normal</source>
         <translation>Hagyományos</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Fire</source>
         <translation>Tűz</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Vertical Lines</source>
         <translation>Függőleges vonalak</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="299"/>
+        <location filename="../mainvisual.cpp" line="300"/>
         <source>Lines</source>
         <translation>Vonalak</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="300"/>
+        <location filename="../mainvisual.cpp" line="301"/>
         <source>Bars</source>
         <translation>Csíkok</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="313"/>
+        <location filename="../mainvisual.cpp" line="314"/>
         <source>Peaks</source>
         <translation>Csúcsok</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="317"/>
+        <location filename="../mainvisual.cpp" line="318"/>
         <source>Refresh Rate</source>
         <translation>Ráta frissítése</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="320"/>
+        <location filename="../mainvisual.cpp" line="321"/>
         <source>50 fps</source>
         <translation>50 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="321"/>
+        <location filename="../mainvisual.cpp" line="322"/>
         <source>25 fps</source>
         <translation>25 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="322"/>
+        <location filename="../mainvisual.cpp" line="323"/>
         <source>10 fps</source>
         <translation>10 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="323"/>
+        <location filename="../mainvisual.cpp" line="324"/>
         <source>5 fps</source>
         <translation>5 fps</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="330"/>
+        <location filename="../mainvisual.cpp" line="331"/>
         <source>Analyzer Falloff</source>
         <translation>Analízer esése</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
-        <location filename="../mainvisual.cpp" line="347"/>
+        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="348"/>
         <source>Slowest</source>
         <translation>Lassabb</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
-        <location filename="../mainvisual.cpp" line="348"/>
+        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="349"/>
         <source>Slow</source>
         <translation>Lassú</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
-        <location filename="../mainvisual.cpp" line="349"/>
+        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="350"/>
         <source>Medium</source>
         <translation>Közepes</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="336"/>
-        <location filename="../mainvisual.cpp" line="350"/>
+        <location filename="../mainvisual.cpp" line="337"/>
+        <location filename="../mainvisual.cpp" line="351"/>
         <source>Fast</source>
         <translation>Gyors</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="337"/>
-        <location filename="../mainvisual.cpp" line="351"/>
+        <location filename="../mainvisual.cpp" line="338"/>
+        <location filename="../mainvisual.cpp" line="352"/>
         <source>Fastest</source>
         <translation>Gyorsabb</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="344"/>
+        <location filename="../mainvisual.cpp" line="345"/>
         <source>Peaks Falloff</source>
         <translation>Csúcsok esése</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="357"/>
+        <location filename="../mainvisual.cpp" line="358"/>
         <source>Background</source>
         <translation>Háttér</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="358"/>
+        <location filename="../mainvisual.cpp" line="359"/>
         <source>Transparent</source>
         <translation>Átlátszóság</translation>
     </message>

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include <QApplication>
 #include "enginefactory.h"
 #include "qmmpaudioengine_p.h"
+#include "statehandler.h"
 #include "qmmp.h"
 #include "abstractengine.h"
 
@@ -35,11 +36,6 @@ QMutex *AbstractEngine::mutex()
 {
     return &m_mutex;
 }
-
-/*QWaitCondition *AbstractEngine::cond()
-{
-    return &m_waitCondition;
-}*/
 
 // static methods
 QList<EngineFactory*> *AbstractEngine::m_factories = 0;

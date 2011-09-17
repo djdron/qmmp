@@ -23,7 +23,6 @@ static size_t oggread (void *buf, size_t size, size_t nmemb, void *src)
     return len / size;
 }
 
-
 static int oggseek(void *src, int64_t offset, int whence)
 {
     DecoderVorbis *dogg = (DecoderVorbis *) src;
@@ -215,7 +214,7 @@ void DecoderVorbis::updateTags()
                             + strlen ("discnumber="))));
     }
     metaData.insert(Qmmp::URL, m_url);
-    StateHandler::instance()->dispatch(metaData);
+    addMetaData(metaData);
 }
 
 void DecoderVorbis::seek(qint64 time)

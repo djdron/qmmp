@@ -324,13 +324,13 @@ void QmmpAudioEngine::run()
     m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
     mutex()->unlock();
     m_output->start();
+    StateHandler::instance()->dispatch(Qmmp::Playing);
     sendMetaData();
 
     while (! m_done && ! m_finish)
     {
         mutex()->lock ();
-        // decode
-
+        //seek
         if (m_seekTime >= 0)
         {
             m_decoder->seek(m_seekTime);
@@ -340,7 +340,12 @@ void QmmpAudioEngine::run()
             m_output->recycler()->mutex()->unlock ();
             m_output_at = 0;
         }
-
+        //metadata
+        if(m_decoder->hasMetaData())
+            StateHandler::instance()->dispatch(m_decoder->takeMetaData());
+        if(m_inputs[m_decoder]->hasMetaData())
+            StateHandler::instance()->dispatch(m_inputs[m_decoder]->takeMetaData());
+        // decode
         len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
 
         if (len > 0)
@@ -403,6 +408,7 @@ void QmmpAudioEngine::run()
                     if(m_output)
                     {
                         m_output->start();
+                        StateHandler::instance()->dispatch(Qmmp::Playing);
                         sendMetaData();
                         addOffset(); //offset
                         continue;

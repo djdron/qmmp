@@ -585,132 +585,132 @@
 <context>
     <name>MainVisual</name>
     <message>
-        <location filename="../mainvisual.cpp" line="281"/>
+        <location filename="../mainvisual.cpp" line="282"/>
         <source>Visualization Mode</source>
         <translation>Режим візуалізації</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="284"/>
+        <location filename="../mainvisual.cpp" line="285"/>
         <source>Analyzer</source>
         <translation>Аналізатор</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="285"/>
+        <location filename="../mainvisual.cpp" line="286"/>
         <source>Scope</source>
         <translation>Осцилограф</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="286"/>
+        <location filename="../mainvisual.cpp" line="287"/>
         <source>Off</source>
         <translation>Вимкнено</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="293"/>
+        <location filename="../mainvisual.cpp" line="294"/>
         <source>Analyzer Mode</source>
         <translation>Режим аналізатора</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="296"/>
+        <location filename="../mainvisual.cpp" line="297"/>
         <source>Normal</source>
         <translation>Звичайний</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="297"/>
+        <location filename="../mainvisual.cpp" line="298"/>
         <source>Fire</source>
         <translation>Вогонь</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="298"/>
+        <location filename="../mainvisual.cpp" line="299"/>
         <source>Vertical Lines</source>
         <translation>Вертикальні лінії</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="299"/>
+        <location filename="../mainvisual.cpp" line="300"/>
         <source>Lines</source>
         <translation>Лінії</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="300"/>
+        <location filename="../mainvisual.cpp" line="301"/>
         <source>Bars</source>
         <translation>Смужки</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="313"/>
+        <location filename="../mainvisual.cpp" line="314"/>
         <source>Peaks</source>
         <translation>Піки</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="317"/>
+        <location filename="../mainvisual.cpp" line="318"/>
         <source>Refresh Rate</source>
         <translation>Частота оновлення</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="320"/>
+        <location filename="../mainvisual.cpp" line="321"/>
         <source>50 fps</source>
         <translation>50 ф/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="321"/>
+        <location filename="../mainvisual.cpp" line="322"/>
         <source>25 fps</source>
         <translation>25 ф/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="322"/>
+        <location filename="../mainvisual.cpp" line="323"/>
         <source>10 fps</source>
         <translation>10 ф/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="323"/>
+        <location filename="../mainvisual.cpp" line="324"/>
         <source>5 fps</source>
         <translation>5 ф/с</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="330"/>
+        <location filename="../mainvisual.cpp" line="331"/>
         <source>Analyzer Falloff</source>
         <translation>Падіння аналізатора</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="333"/>
-        <location filename="../mainvisual.cpp" line="347"/>
+        <location filename="../mainvisual.cpp" line="334"/>
+        <location filename="../mainvisual.cpp" line="348"/>
         <source>Slowest</source>
         <translation>Найповільніше</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="334"/>
-        <location filename="../mainvisual.cpp" line="348"/>
+        <location filename="../mainvisual.cpp" line="335"/>
+        <location filename="../mainvisual.cpp" line="349"/>
         <source>Slow</source>
         <translation>Повільне</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="335"/>
-        <location filename="../mainvisual.cpp" line="349"/>
+        <location filename="../mainvisual.cpp" line="336"/>
+        <location filename="../mainvisual.cpp" line="350"/>
         <source>Medium</source>
         <translation>Середнє</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="336"/>
-        <location filename="../mainvisual.cpp" line="350"/>
+        <location filename="../mainvisual.cpp" line="337"/>
+        <location filename="../mainvisual.cpp" line="351"/>
         <source>Fast</source>
         <translation>Швидке</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="337"/>
-        <location filename="../mainvisual.cpp" line="351"/>
+        <location filename="../mainvisual.cpp" line="338"/>
+        <location filename="../mainvisual.cpp" line="352"/>
         <source>Fastest</source>
         <translation>Найшвидше</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="344"/>
+        <location filename="../mainvisual.cpp" line="345"/>
         <source>Peaks Falloff</source>
         <translation>Падіння піків</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="357"/>
+        <location filename="../mainvisual.cpp" line="358"/>
         <source>Background</source>
         <translation>Тло</translation>
     </message>
     <message>
-        <location filename="../mainvisual.cpp" line="358"/>
+        <location filename="../mainvisual.cpp" line="359"/>
         <source>Transparent</source>
         <translation>Прозорість</translation>
     </message>

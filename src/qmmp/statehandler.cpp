@@ -108,8 +108,14 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
         m_mutex.unlock();
         return;
     }
-    if (m_state == Qmmp::Playing &&
-        (m_metaData.isEmpty() || m_metaData.value(Qmmp::URL) == metaData.value(Qmmp::URL)))
+    if(m_state != Qmmp::Playing && m_state != Qmmp::Paused)
+    {
+        qWarning("StateHandler: metadata is ignored");
+        m_mutex.unlock();
+        return;
+    }
+
+    if(m_metaData.isEmpty() || m_metaData.value(Qmmp::URL) == metaData.value(Qmmp::URL))
     {
         if (m_metaData != tmp)
         {
@@ -117,8 +123,6 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
             qApp->postEvent(parent(), new MetaDataChangedEvent(m_metaData));
         }
     }
-    else
-        m_cachedMetaData = tmp;
     m_mutex.unlock();
 }
 
@@ -148,13 +152,13 @@ void StateHandler::dispatch(Qmmp::State state)
         m_state = state;
         qApp->postEvent(parent(), new StateChangedEvent(m_state, prevState));
 
-        if(m_state == Qmmp::Playing && !m_cachedMetaData.isEmpty())
+        /*if(m_state == Qmmp::Playing && !m_cachedMetaData.isEmpty())
         {
             m_mutex.unlock();
             dispatch(m_cachedMetaData);
             m_mutex.lock();
             m_cachedMetaData.clear();
-        }
+        }*/
     }
     m_mutex.unlock();
 }

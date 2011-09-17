@@ -79,7 +79,7 @@ bool DecoderMAD::initialize()
     {
         TagExtractor extractor(input());
         if(!extractor.id3v2tag().isEmpty())
-            StateHandler::instance()->dispatch(extractor.id3v2tag());
+            addMetaData(extractor.id3v2tag());
     }
 
     mad_stream_init(&stream);
