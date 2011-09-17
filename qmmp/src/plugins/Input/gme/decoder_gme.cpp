@@ -65,7 +65,7 @@ bool DecoderGme::initialize()
     metadata.insert(Qmmp::COMMENT, track_info->comment);
     metadata.insert(Qmmp::TRACK, QString("%1").arg(track));
     metadata.insert(Qmmp::URL, m_path);
-    StateHandler::instance()->dispatch(metadata);
+    addMetaData(metadata);
     m_totalTime = track_info->length;
     gme_free_info(track_info);
     configure(44100, 2);

@@ -301,7 +301,7 @@ bool DecoderFLAC::initialize()
                 data()->input = new QFile(p);
                 data()->input->open(QIODevice::ReadOnly);
                 QMap<Qmmp::MetaData, QString> metaData = m_parser->info(m_track)->metaData();
-                StateHandler::instance()->dispatch(metaData); //send metadata
+                addMetaData(metaData); //send metadata
                 ReplayGainReader rg(p);
                 setReplayGainInfo(rg.replayGainInfo());
             }
@@ -541,7 +541,7 @@ void DecoderFLAC::next()
         length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
                           audioParameters().sampleSize() * m_length/1000;
-        StateHandler::instance()->dispatch(m_parser->info(m_track)->metaData());
+        addMetaData(m_parser->info(m_track)->metaData());
         m_totalBytes = 0;
     }
 }

@@ -27,7 +27,9 @@ extern "C"
 #include "decoder.h"
 
 Decoder::Decoder(QIODevice *input) : m_input(input)
-{}
+{
+    m_hasMetaData = false;
+}
 
 Decoder::~Decoder()
 {}
@@ -60,9 +62,26 @@ QMap<Qmmp::ReplayGainKey, double> Decoder::replayGainInfo() const
     return m_rg;
 }
 
+void Decoder::addMetaData(const QMap<Qmmp::MetaData, QString> &metaData)
+{
+    m_metaData = metaData;
+    m_hasMetaData = true;
+}
+
 QIODevice *Decoder::input()
 {
     return m_input;
+}
+
+bool Decoder::hasMetaData() const
+{
+    return m_hasMetaData;
+}
+
+QMap<Qmmp::MetaData, QString> Decoder::takeMetaData()
+{
+    m_hasMetaData = false;
+    return m_metaData;
 }
 
 // static methods

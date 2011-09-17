@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -76,10 +76,6 @@ public:
      */
     QMutex *mutex();
     /*!
-     * Returns wait condition pointer.
-     */
-    //QWaitCondition *cond();
-    /*!
      * Creates Engine object.
      * @param s InputSource object.
      * @param parent Parent object.
@@ -115,16 +111,8 @@ public:
      */
     static QStringList protocols();
 
-signals:
-    /*!
-     * Emitted when the decoder has finished playback.
-     */
-    //void playbackFinished();
-
 private:
     QMutex m_mutex;
-    //QWaitCondition m_waitCondition;
-
     static void checkFactories();
     static QList<EngineFactory*> *m_factories;
     static QList<EngineFactory*> *m_disabledFactories;

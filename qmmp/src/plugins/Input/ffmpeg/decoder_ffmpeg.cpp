@@ -187,7 +187,7 @@ bool DecoderFFmpeg::initialize()
         if(track)
             metaData.insert(Qmmp::TRACK, track->value);
         metaData.insert(Qmmp::URL, m_path);
-        StateHandler::instance()->dispatch(metaData);
+        addMetaData(metaData);
     }
 
     ic->flags |= AVFMT_FLAG_GENPTS;

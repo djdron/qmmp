@@ -31,6 +31,7 @@ InputSource::InputSource(const QString &source, QObject *parent) : QObject(paren
 {
     m_url = source;
     m_offset = -1;
+    m_hasMetaData = false;
 }
 
 QString InputSource::contentType() const
@@ -50,6 +51,23 @@ qint64 InputSource::offset() const
 void InputSource::setOffset(qint64 offset)
 {
     m_offset = offset;
+}
+
+bool InputSource::hasMetaData() const
+{
+    return m_hasMetaData;
+}
+
+QMap<Qmmp::MetaData, QString> InputSource::takeMetaData()
+{
+    m_hasMetaData = false;
+    return m_metaData;
+}
+
+void InputSource::addMetaData(const QMap<Qmmp::MetaData, QString> &metaData)
+{
+    m_metaData = metaData;
+    m_hasMetaData = true;
 }
 
 // static methods

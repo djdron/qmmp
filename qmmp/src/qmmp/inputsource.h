@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,6 +25,8 @@
 #include <QString>
 #include <QStringList>
 #include <QIODevice>
+#include <QMap>
+#include "qmmp.h"
 #include "inputsourcefactory.h"
 
 /*! @brief The InputSource class provides the base interface class of transports.
@@ -71,6 +73,21 @@ public:
      */
     void setOffset(qint64 offset);
     /*!
+     * Informs input source object about new received metadata.
+     * Call of this function is required for all non-local streams/files
+     * @param metaData Metadata map.
+     */
+    void addMetaData(const QMap<Qmmp::MetaData, QString> &metaData);
+    /*!
+     * Returns \b true when new metadata has received, otherwise returns \b false.
+     */
+    bool hasMetaData() const;
+    /*!
+     * Takes metadata out of decoder and returns it.
+     * Attention: hasMetaData() should return \b true before use of this fuction.
+     */
+    QMap<Qmmp::MetaData, QString> takeMetaData();
+    /*!
      * Creates InputSource object.
      * @param url Input source path or url.
      * @param parent Parent object.
@@ -103,6 +120,8 @@ signals:
 private:
     QString m_url;
     qint64 m_offset;
+    QMap<Qmmp::MetaData, QString> m_metaData;
+    bool m_hasMetaData;
     static void checkFactories();
     static QList<InputSourceFactory*> *m_factories;
     static QStringList m_files;

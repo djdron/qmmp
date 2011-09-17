@@ -142,7 +142,6 @@ private:
     int m_bitrate, m_precision, m_channels;
     static StateHandler* m_instance;
     QMap <Qmmp::MetaData, QString> m_metaData;
-    QMap <Qmmp::MetaData, QString> m_cachedMetaData;
     Qmmp::State m_state;
     QMutex m_mutex;
 };

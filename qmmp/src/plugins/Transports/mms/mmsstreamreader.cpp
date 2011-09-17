@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <qmmp/qmmp.h>
 #include <qmmp/statehandler.h>
+#include <qmmp/inputsource.h>
 #include "mmsstreamreader.h"
 
 MMSStreamReader::MMSStreamReader(const QString &url, QObject *parent)
@@ -196,7 +197,7 @@ void MMSStreamReader::checkBuffer()
         qDebug("MMSStreamReader: ready");
         QMap<Qmmp::MetaData, QString> metaData;
         metaData.insert(Qmmp::URL, m_url);
-        StateHandler::instance()->dispatch(metaData);
+        (qobject_cast<InputSource *>(parent()))->addMetaData(metaData);
         emit ready();
     }
     else if (!m_ready)

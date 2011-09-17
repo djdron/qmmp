@@ -92,6 +92,21 @@ public:
      */
     QIODevice *input();
     /*!
+     * Informs decoder about new received metadata.
+     * Call of this function is required for all non-local streams/files
+     * @param metaData Metadata map.
+     */
+    void addMetaData(const QMap<Qmmp::MetaData, QString> &metaData);
+    /*!
+     * Returns \b true when new metadata has received, otherwise returns \b false.
+     */
+    bool hasMetaData() const;
+    /*!
+     * Takes metadata out of decoder and returns it.
+     * Attention: hasMetaData() should return \b true before use of this fuction.
+     */
+    QMap<Qmmp::MetaData, QString> takeMetaData();
+    /*!
      * Returns DecoderFactory pointer which supports file \b path or 0 if file \b path is unsupported
      */
     static DecoderFactory *findByPath(const QString &path);
@@ -150,6 +165,8 @@ private:
     static QStringList m_files;
     AudioParameters m_parameters;
     QIODevice *m_input;
+    bool m_hasMetaData;
+    QMap<Qmmp::MetaData, QString> m_metaData;
     QMap <Qmmp::ReplayGainKey, double> m_rg; //replay gain information
 };
 
