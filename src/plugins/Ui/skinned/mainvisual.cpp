@@ -70,7 +70,8 @@ MainVisual::~MainVisual()
         m_vis = 0;
     }
     else
-        settings.setValue("vis_rate", 1000/m_timer->interval());
+        settings.setValue("vis_type", "None");
+    settings.setValue("vis_rate", 1000/m_timer->interval());
     delete [] m_left_buffer;
     m_instance = 0;
 }
