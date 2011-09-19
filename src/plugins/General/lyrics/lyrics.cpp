@@ -42,7 +42,7 @@ Lyrics::~Lyrics()
 void Lyrics::showLyrics()
 {
     PlayListManager *pl_manager = MediaPlayer::instance()->playListManager();
-    QList <PlayListItem *> items = pl_manager->selectedPlayList()->getSelectedItems();
+    QList <PlayListItem *> items = pl_manager->selectedPlayList()->selectedItems();
     if (!items.isEmpty())
     {
         if (items.at(0)->value(Qmmp::ARTIST).isEmpty() || items.at(0)->value(Qmmp::TITLE).isEmpty())

@@ -465,7 +465,7 @@ void PlayListModel::moveItems(int from, int to)
     if (from == to)
         return;
 
-    QList<int> selected_rows = getSelectedRows();
+    QList<int> selected_rows = selectedRows();
 
     if (!(bottommostInSelection(from) == INVALID_ROW ||
             from == INVALID_ROW ||
@@ -526,11 +526,11 @@ const SimpleSelection& PlayListModel::getSelection(int row)
     m_selection.m_top = topmostInSelection(row);
     m_selection.m_anchor = row;
     m_selection.m_bottom = bottommostInSelection(row);
-    m_selection.m_selected_rows = getSelectedRows();
+    m_selection.m_selected_rows = selectedRows();
     return m_selection;
 }
 
-QList<int> PlayListModel::getSelectedRows() const
+QList<int> PlayListModel::selectedRows() const
 {
     QList<int>selected_rows;
     for (int i = 0;i<m_items.count();i++)
@@ -543,7 +543,7 @@ QList<int> PlayListModel::getSelectedRows() const
     return selected_rows;
 }
 
-QList< PlayListItem * > PlayListModel::getSelectedItems() const
+QList< PlayListItem * > PlayListModel::selectedItems() const
 {
     QList<PlayListItem*>selected_items;
     for (int i = 0;i<m_items.count();i++)
@@ -558,7 +558,7 @@ QList< PlayListItem * > PlayListModel::getSelectedItems() const
 
 void PlayListModel::addToQueue()
 {
-    QList<PlayListItem*> selected_items = getSelectedItems();
+    QList<PlayListItem*> selected_items = selectedItems();
     foreach(PlayListItem* file,selected_items)
         setQueued(file);
     emit listChanged();
@@ -766,8 +766,8 @@ void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
 
 void PlayListModel::sortSelection(int mode)
 {
-    QList<PlayListItem*>selected_items = getSelectedItems();
-    QList<int>selected_rows = getSelectedRows();
+    QList<PlayListItem*>selected_items = selectedItems();
+    QList<int>selected_rows = selectedRows();
 
     doSort(mode,selected_items);
 
@@ -919,7 +919,7 @@ void PlayListModel::clearQueue()
 
 void PlayListModel::stopAfterSelected()
 {
-    QList<PlayListItem*> selected_items = getSelectedItems();
+    QList<PlayListItem*> selected_items = selectedItems();
     if(!m_queued_songs.isEmpty())
     {
         m_stop_item = m_stop_item != m_queued_songs.last() ? m_queued_songs.last() : 0;

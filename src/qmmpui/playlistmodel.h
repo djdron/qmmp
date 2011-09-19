@@ -183,7 +183,7 @@ public:
      */
     QStringList getTitles(int first,int last);
     /*!
-     * Returns a list of the formated durations.
+     * Returns a list of the formatted durations.
      * @param first First item.
      * @param last Last item.
      */
@@ -224,11 +224,11 @@ public:
     /*!
      * Returns list with selected rows indexes.
      */
-    QList<int> getSelectedRows() const;
+    QList<int> selectedRows() const;
     /*!
      * Returns list of \b PlayListItem pointers that are selected.
      */
-    QList<PlayListItem*> getSelectedItems() const;
+    QList<PlayListItem*> selectedItems() const;
     /*!
      * Returns list of all \b PlayListItem pointers.
      */

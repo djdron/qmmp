@@ -40,7 +40,7 @@ CoverManager::CoverManager(QObject *parent) : QObject(parent)
 
 void CoverManager::showWindow()
 {
-    QList <PlayListItem *> items = MediaPlayer::instance()->playListManager()->selectedPlayList()->getSelectedItems();
+    QList <PlayListItem *> items = MediaPlayer::instance()->playListManager()->selectedPlayList()->selectedItems();
     if (!items.isEmpty())
     {
         CoverWidget *w = new CoverWidget(qApp->activeWindow ());

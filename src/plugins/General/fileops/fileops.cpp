@@ -85,7 +85,7 @@ void FileOps::execAction(int n)
     QString destination = m_destinations.at(n);
 
     PlayListModel *model = MediaPlayer::instance()->playListManager()->selectedPlayList();
-    QList<PlayListItem*> items = model->getSelectedItems();
+    QList<PlayListItem*> items = model->selectedItems();
 
     switch (type)
     {
