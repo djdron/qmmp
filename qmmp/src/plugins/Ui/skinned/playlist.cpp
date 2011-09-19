@@ -582,7 +582,7 @@ void PlayList::copySelectedMenuActionTriggered( QAction * action)
         return;
     }
     QList <PlayListItem *> theCopy;
-    foreach(PlayListItem *item, m_pl_manager->selectedPlayList()->getSelectedItems())
+    foreach(PlayListItem *item, m_pl_manager->selectedPlayList()->selectedItems())
     {
         PlayListItem *newItem = new PlayListItem(*item);
         theCopy << newItem;

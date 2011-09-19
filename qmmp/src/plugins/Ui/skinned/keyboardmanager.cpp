@@ -72,7 +72,7 @@ bool KeyboardManager::handleKeyRelease (QKeyEvent*)
 
 void KeyboardManager::keyUp (QKeyEvent * ke)
 {
-    QList<int> rows = m_playlist->listWidget()->model()->getSelectedRows();
+    QList<int> rows = m_playlist->listWidget()->model()->selectedRows();
     ListWidget* list_widget = m_playlist->listWidget();
 
     if (rows.count() > 0)
@@ -132,7 +132,7 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
             list_widget->setAnchorRow(list_widget->firstVisibleRow());
         }
 
-        rows = m_playlist->listWidget()->model()->getSelectedRows();
+        rows = m_playlist->listWidget()->model()->selectedRows();
 
         if (rows[0]  < list_widget->firstVisibleRow() && list_widget->firstVisibleRow() > 0)
         {
@@ -153,7 +153,7 @@ void KeyboardManager::keyUp (QKeyEvent * ke)
 
 void KeyboardManager::keyDown (QKeyEvent * ke)
 {
-    QList<int> rows = m_playlist->listWidget()->model()->getSelectedRows();
+    QList<int> rows = m_playlist->listWidget()->model()->selectedRows();
     ListWidget* list_widget = m_playlist->listWidget();
     //qWarning("count: %d",rows.count());
     if (rows.count() > 0)
@@ -210,7 +210,7 @@ void KeyboardManager::keyDown (QKeyEvent * ke)
             list_widget->setAnchorRow(list_widget->firstVisibleRow());
         }
 
-        rows = m_playlist->listWidget()->model()->getSelectedRows();
+        rows = m_playlist->listWidget()->model()->selectedRows();
 
         if (!rows.isEmpty() && rows.last() >= list_widget->visibleRows() + list_widget->firstVisibleRow())
         {
@@ -249,7 +249,7 @@ void KeyboardManager::keyPgDown (QKeyEvent *)
 
 void KeyboardManager::keyEnter (QKeyEvent *)
 {
-    QList<int> rows = m_playlist->listWidget()->model()->getSelectedRows();
+    QList<int> rows = m_playlist->listWidget()->model()->selectedRows();
     MainWindow* mw = qobject_cast<MainWindow*> (m_playlist->parentWidget());
     if (mw && rows.count() > 0)
     {
