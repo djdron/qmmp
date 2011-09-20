@@ -151,14 +151,6 @@ void StateHandler::dispatch(Qmmp::State state)
         Qmmp::State prevState = state;
         m_state = state;
         qApp->postEvent(parent(), new StateChangedEvent(m_state, prevState));
-
-        /*if(m_state == Qmmp::Playing && !m_cachedMetaData.isEmpty())
-        {
-            m_mutex.unlock();
-            dispatch(m_cachedMetaData);
-            m_mutex.lock();
-            m_cachedMetaData.clear();
-        }*/
     }
     m_mutex.unlock();
 }
