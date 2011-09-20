@@ -282,8 +282,14 @@ void SoundCore::startNextEngine()
     {
     case NO_ENGINE:
     case SAME_ENGINE:
+    {
+        if(m_sources.isEmpty())
+            m_nextState = NO_ENGINE;
         break;
+    }
     case ANOTHER_ENGINE:
+    {
+        m_nextState = NO_ENGINE;
         if(m_engine)
         {
             m_engine->deleteLater();
@@ -295,6 +301,7 @@ void SoundCore::startNextEngine()
             startNextSource();
         }
         break;
+    }
     case INVALID_SOURCE:
         m_handler->dispatch(Qmmp::NormalError);
     }
