@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,6 +24,7 @@
 #include <QMenu>
 #include <QHeaderView>
 #include <QApplication>
+#include <QDesktopServices>
 #include <qmmp/qmmp.h>
 #include <qmmpui/filedialog.h>
 #include "fileops.h"
@@ -136,8 +137,8 @@ void SettingsDialog::createAction()
     comboBox->setFocusPolicy (Qt::NoFocus);
 
     ActionItem *item = new ActionItem(tr("New action"));
-    //item->setPattern(settings.value(QString("pattern_%1").arg(i)).toString());
-    //item->setDestination(settings.value(QString("destination_%1").arg(i)).toString());
+    item->setDestination(QDesktopServices::storageLocation(QDesktopServices::MusicLocation));
+    item->setPattern("%p - %t");
 
     ui.tableWidget->setCellWidget (row, 0, checkBox);
     ui.tableWidget->setCellWidget (row, 1, comboBox);
