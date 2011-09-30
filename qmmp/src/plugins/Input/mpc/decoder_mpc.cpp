@@ -129,7 +129,6 @@ DecoderMPC::DecoderMPC(QIODevice *i)
     m_data = 0;
 }
 
-
 DecoderMPC::~DecoderMPC()
 {
     m_len = 0;

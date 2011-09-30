@@ -120,6 +120,6 @@ public:
     virtual QTranslator *createTranslator(QObject *parent) = 0;
 };
 
-Q_DECLARE_INTERFACE(DecoderFactory, "DecoderFactory/1.0");
+Q_DECLARE_INTERFACE(DecoderFactory, "DecoderFactory/1.0")
 
 #endif
