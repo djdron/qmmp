@@ -248,7 +248,7 @@ QString HttpStreamReader::contentType()
 void HttpStreamReader::abort()
 {
     m_mutex.lock();
-
+    m_ready = false;
     if (m_stream.aborted)
     {
         m_mutex.unlock();

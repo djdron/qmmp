@@ -233,6 +233,8 @@ void SoundCore::startNextSource()
         m_url.clear();
         s->deleteLater();
         m_nextState = INVALID_SOURCE;
+        if(m_handler->state() == Qmmp::Stopped || m_handler->state() == Qmmp::Buffering)
+            m_handler->dispatch(Qmmp::NormalError);
         return;
     }
 
