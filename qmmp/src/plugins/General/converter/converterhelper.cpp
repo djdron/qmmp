@@ -43,6 +43,7 @@ ConverterHelper::ConverterHelper(QObject *parent) : QObject(parent)
     m_progress->setCancelButtonText(tr("Cancel"));
     connect(m_converter,SIGNAL(progress(int)),m_progress,SLOT(setValue(int)));
     connect(m_converter, SIGNAL(finished()), m_progress, SLOT(reset()));
+    connect(m_converter, SIGNAL(desriptionChanged(QString)), m_progress, SLOT(setLabelText(QString)));
 }
 
 ConverterHelper::~ConverterHelper()
