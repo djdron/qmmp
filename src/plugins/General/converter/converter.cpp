@@ -94,6 +94,7 @@ void Converter::run()
     QString path = settings.value("Converter/out_dir", music_path).toString();
     QString pattern = settings.value("Converter/file_name","%p - %t").toString();
     MetaDataFormatter formatter(pattern);
+    MetaDataFormatter desc_formatter("%p%if(%p&%t, - ,)%t [%l]");
 
     while(!m_decoders.isEmpty())
     {
@@ -108,10 +109,16 @@ void Converter::run()
             //ignore
         }
 
+        QString desc = desc_formatter.parse(list[0]->metaData(), list[0]->length());
+        emit desriptionChanged(desc);
+
         QString name = formatter.parse(list[0]->metaData(), list[0]->length());
         QString full_path = path + "/" + name + ".ogg";
-        QString command = "oggenc -q 1 -o %f -";
-        command.replace("%f", "\"" + full_path + "\"");
+        QString command = "oggenc -q 1 -o %o -";
+        command.replace("%o", "\"" + full_path + "\"");
+
+        qDeleteAll(list);
+        list.clear();
 
         char wave_header[] = { 0x52, 0x49, 0x46, 0x46, //"RIFF"
                               0x00, 0x00, 0x00, 0x00, //(file size) - 8
@@ -143,6 +150,7 @@ void Converter::run()
         if(!enc_pipe)
         {
             qWarning("Converter: unable to open pipe");
+            m_inputs.take(decoder)->deleteLater();
             delete decoder;
             continue;
 
@@ -150,6 +158,7 @@ void Converter::run()
         size_t to_write = sizeof(wave_header);
         if(to_write != fwrite(&wave_header, 1, to_write, enc_pipe))
         {
+             m_inputs.take(decoder)->deleteLater();
             delete decoder;
             pclose(enc_pipe);
             continue;
@@ -158,6 +167,7 @@ void Converter::run()
         convert(decoder, enc_pipe);
         pclose(enc_pipe);
         //fclose(enc_pipe);
+        m_inputs.take(decoder)->deleteLater();
         delete decoder;
     }
 }
@@ -171,6 +181,8 @@ bool Converter::convert(Decoder *decoder, FILE *file)
     quint64 len = 0;
     AudioParameters ap = decoder->audioParameters();
     qint64 size = decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
+    int percent = 0;
+    int prev_percent = 0;
     forever
     {
         // decode
@@ -191,7 +203,12 @@ bool Converter::convert(Decoder *decoder, FILE *file)
                 output_at -= len;
                 memmove(output_buf, output_buf + len, output_at);
             }
-            emit progress(floor(100*total/size));
+            percent = 100 * total / size;
+            if(percent != prev_percent)
+            {
+                prev_percent = percent;
+                emit progress(percent);
+            }
         }
         else if (len <= 0)
         {
@@ -202,4 +219,3 @@ bool Converter::convert(Decoder *decoder, FILE *file)
     }
     return false;
 }
-

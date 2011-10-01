@@ -39,6 +39,8 @@ public:
 
 signals:
     void progress(int percent);
+    void desriptionChanged(QString text);
+    void error(QString text);
 
 private:
     void run();
