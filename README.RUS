@@ -108,7 +108,7 @@ cmake ./ -DUSE_JACK:BOOL=FALSE
 - USE_SRC, USE_BS2B, USE_LADSPA, USE_CROSSFADE, USE_STEREO (эффекты);
 - USE_ANALYZER, USE_PROJECTM (визуализация);
 - USE_MPRIS, USE_SCROBBLER, USE_STATICON, USE_NOTIFIER, USE_LYRICS, USE_HAL, USE_HOTKEY, USE_FILEOPS, USE_COVER,
-  USE_KDENOTIFY, USE_UDISKS (модули общего назначения);
+  USE_KDENOTIFY, USE_UDISKS, USE_CONVERTER (модули общего назначения);
 - USE_QMMP_DIALOG (файловый диалог);
 - USE_ENCA (автоматическое определение кодировки);
 - USE_SKINNED (стандартный пользовательский интерфейс)

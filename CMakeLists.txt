@@ -151,6 +151,7 @@ PRINT_SUMMARY ("Global hotkey support ............." USE_HOTKEY X11_FOUND)
 PRINT_SUMMARY ("File operations ..................." USE_FILEOPS 1)
 PRINT_SUMMARY ("Cover manager ....................." USE_COVER 1)
 PRINT_SUMMARY ("KDE4 notifications support ........" USE_KDENOTIFY 1)
+PRINT_SUMMARY ("Audio converter ..................." USE_CONVERTER 1)
 
 MESSAGE("")
 MESSAGE("File Dialogs:")

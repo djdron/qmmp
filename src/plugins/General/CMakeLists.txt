@@ -9,6 +9,7 @@ SET(USE_HOTKEY TRUE CACHE BOOL "enable/disable global hotkey plugin")
 SET(USE_FILEOPS TRUE CACHE BOOL "enable/disable fileops plugin")
 SET(USE_COVER TRUE CACHE BOOL "enable/disable cover manager plugin")
 SET(USE_KDENOTIFY TRUE CACHE BOOL "enable/disable kde notification plugin")
+SET(USE_CONVERTER TRUE CACHE BOOL "enable/disable audio converter plugin")
 
 IF(USE_MPRIS)
 add_subdirectory(mpris)
