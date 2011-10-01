@@ -22,7 +22,11 @@
 #include <QStringList>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
+#include <qmmp/metadatamanager.h>
+#include <qmmpui/metadataformatter.h>
 #include <QtEndian>
+#include <QSettings>
+#include <QDesktopServices>
 #include <math.h>
 #include "converter.h"
 
@@ -85,10 +89,29 @@ void Converter::add(const QString &url)
 
 void Converter::run()
 {
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    QString music_path = QDesktopServices::storageLocation(QDesktopServices::MusicLocation);
+    QString path = settings.value("Converter/out_dir", music_path).toString();
+    QString pattern = settings.value("Converter/file_name","%p - %t").toString();
+    MetaDataFormatter formatter(pattern);
+
     while(!m_decoders.isEmpty())
     {
         Decoder *decoder = m_decoders.dequeue();
         AudioParameters ap = decoder->audioParameters();
+        QString url = m_inputs[decoder]->url();
+
+        QList <FileInfo *> list = MetaDataManager::instance()->createPlayList(url);
+
+        if(list.isEmpty())
+        {
+            //ignore
+        }
+
+        QString name = formatter.parse(list[0]->metaData(), list[0]->length());
+        QString full_path = path + "/" + name + ".ogg";
+        QString command = "oggenc -q 1 -o %f -";
+        command.replace("%f", "\"" + full_path + "\"");
 
         char wave_header[] = { 0x52, 0x49, 0x46, 0x46, //"RIFF"
                               0x00, 0x00, 0x00, 0x00, //(file size) - 8
@@ -116,7 +139,7 @@ void Converter::run()
         memcpy(&wave_header[40], &size, 4);
 
         //FILE *enc_pipe = fopen("/mnt/win_e/out.wav", "w");
-        FILE *enc_pipe = popen("oggenc -q 1 -o \"/mnt/win_e/out 55.ogg\" -", "w");
+        FILE *enc_pipe = popen(qPrintable(command), "w");
         if(!enc_pipe)
         {
             qWarning("Converter: unable to open pipe");
