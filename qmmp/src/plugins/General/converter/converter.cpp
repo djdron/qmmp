@@ -27,7 +27,6 @@
 #include <QtEndian>
 #include <QSettings>
 #include <QDesktopServices>
-#include <math.h>
 #include "converter.h"
 
 Converter::Converter(QObject *parent) : QThread(parent)
@@ -37,7 +36,6 @@ void Converter::add(const QStringList &urls)
 {
     foreach(QString url, urls)
         add(url);
-
 }
 
 void Converter::add(const QString &url)
@@ -52,7 +50,13 @@ void Converter::add(const QString &url)
 
     if(source->ioDevice())
     {
-        source->ioDevice()->open(QIODevice::ReadOnly);
+        if(source->ioDevice()->open(QIODevice::ReadOnly))
+        {
+            source->deleteLater();
+            qWarning("Converter: cannot open input stream, error: %s",
+                     qPrintable(source->ioDevice()->errorString()));
+            return;
+        }
     }
 
     DecoderFactory *factory = 0;
@@ -68,6 +72,7 @@ void Converter::add(const QString &url)
     if(!factory)
     {
         qWarning("Converter: unsupported file format");
+        source->deleteLater();
         return;
     }
     qDebug("Converter: selected decoder: %s",qPrintable(factory->properties().shortName));
@@ -77,6 +82,7 @@ void Converter::add(const QString &url)
     if(!decoder->initialize())
     {
         qWarning("Converter: invalid file format");
+        source->deleteLater();
         delete decoder;
         return;
     }
@@ -121,16 +127,16 @@ void Converter::run()
         list.clear();
 
         char wave_header[] = { 0x52, 0x49, 0x46, 0x46, //"RIFF"
-                              0x00, 0x00, 0x00, 0x00, //(file size) - 8
-                              0x57, 0x41, 0x56, 0x45, //WAVE
-                              0x66, 0x6d, 0x74, 0x20, //"fmt "
-                              0x10, 0x00, 0x00, 0x00, //16 + extra format bytes
-                              0x01, 0x00, 0x02, 0x00, //PCM/uncompressed, channels
-                              0x00, 0x00, 0x00, 0x00, //sample rate
-                              0x00, 0x00, 0x00, 0x00, //average bytes per second
-                              0x04, 0x00, 0x10, 0x00, //block align, significant bits per sample
-                              0x64, 0x61, 0x74, 0x61, //"data"
-                              0x00, 0x00, 0x00, 0x00 }; //chunk size*/
+                               0x00, 0x00, 0x00, 0x00, //(file size) - 8
+                               0x57, 0x41, 0x56, 0x45, //WAVE
+                               0x66, 0x6d, 0x74, 0x20, //"fmt "
+                               0x10, 0x00, 0x00, 0x00, //16 + extra format bytes
+                               0x01, 0x00, 0x02, 0x00, //PCM/uncompressed, channels
+                               0x00, 0x00, 0x00, 0x00, //sample rate
+                               0x00, 0x00, 0x00, 0x00, //average bytes per second
+                               0x04, 0x00, 0x10, 0x00, //block align, significant bits per sample
+                               0x64, 0x61, 0x74, 0x61, //"data"
+                               0x00, 0x00, 0x00, 0x00 }; //chunk size*/
 
         quint32 sample_rate = qToLittleEndian(ap.sampleRate());
         quint16 channels = qToLittleEndian((quint16)ap.channels());
@@ -158,7 +164,7 @@ void Converter::run()
         size_t to_write = sizeof(wave_header);
         if(to_write != fwrite(&wave_header, 1, to_write, enc_pipe))
         {
-             m_inputs.take(decoder)->deleteLater();
+            m_inputs.take(decoder)->deleteLater();
             delete decoder;
             pclose(enc_pipe);
             continue;

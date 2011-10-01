@@ -32,6 +32,8 @@ ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent)
     MetaDataFormatter formatter("%p%if(%p&%t, - ,)%t - %l");
     foreach(PlayListItem *item , items)
     {
+        if(item->length() == 0)
+            continue;
         QString text = formatter.parse(item);
         QListWidgetItem *listItem = new QListWidgetItem(text);
         listItem->setData(Qt::UserRole, item->url());
