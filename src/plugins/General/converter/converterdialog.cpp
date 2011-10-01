@@ -18,16 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QSettings>
+#include <QDesktopServices>
+#include <QMenu>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/metadataformatter.h>
+#include <qmmpui/filedialog.h>
 #include "converterdialog.h"
 
 ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent) : QDialog(parent)
 {
     ui.setupUi(this);
-
     MetaDataFormatter formatter("%p%if(%p&%t, - ,)%t - %l");
-
     foreach(PlayListItem *item , items)
     {
         QString text = formatter.parse(item);
@@ -36,6 +38,13 @@ ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent)
         listItem->setCheckState(Qt::Checked);
         ui.itemsListWidget->addItem(listItem);
     }
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Converter");
+    QString music_path = QDesktopServices::storageLocation(QDesktopServices::MusicLocation);
+    ui.outDirEdit->setText(settings.value("out_dir", music_path).toString());
+    ui.outFileEdit->setText(settings.value("file_name","%p - %t").toString());
+    settings.endGroup();
+    createMenus();
 }
 
 QStringList ConverterDialog::selectedUrls() const
@@ -47,4 +56,52 @@ QStringList ConverterDialog::selectedUrls() const
             out << ui.itemsListWidget->item(i)->data(Qt::UserRole).toString();
     }
     return out;
+}
+
+void ConverterDialog::on_dirButton_clicked()
+{
+    QString dir = FileDialog::getExistingDirectory(this, tr("Choose a directory"),
+                                        ui.outDirEdit->text());
+    if(!dir.isEmpty())
+        ui.outDirEdit->setText(dir);
+}
+
+void ConverterDialog::accept()
+{
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Converter");
+    settings.setValue("out_dir", ui.outDirEdit->text());
+    settings.value("file_name", ui.outFileEdit->text());
+    settings.endGroup();
+    QDialog::accept();
+}
+
+void ConverterDialog::createMenus()
+{
+    QMenu *menu = new QMenu(this);
+    menu->addAction(tr("Artist"))->setData("%p");
+    menu->addAction(tr("Album"))->setData("%a");
+    menu->addAction(tr("Title"))->setData("%t");
+    menu->addAction(tr("Track number"))->setData("%n");
+    menu->addAction(tr("Two-digit track number"))->setData("%NN");
+    menu->addAction(tr("Genre"))->setData("%g");
+    menu->addAction(tr("Comment"))->setData("%c");
+    menu->addAction(tr("Composer"))->setData("%C");
+    menu->addAction(tr("Duration"))->setData("%l");
+    menu->addAction(tr("Disc number"))->setData("%D");
+    menu->addAction(tr("File name"))->setData("%f");
+    menu->addAction(tr("File path"))->setData("%F");
+    menu->addAction(tr("Year"))->setData("%y");
+    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
+    ui.fileNameButton->setMenu(menu);
+    ui.fileNameButton->setPopupMode(QToolButton::InstantPopup);
+    connect(menu, SIGNAL(triggered(QAction *)), SLOT(addTitleString(QAction *)));
+}
+
+void ConverterDialog::addTitleString(QAction *a)
+{
+    if (ui.outFileEdit->cursorPosition () < 1)
+        ui.outFileEdit->insert(a->data().toString());
+    else
+        ui.outFileEdit->insert(" - "+a->data().toString());
 }

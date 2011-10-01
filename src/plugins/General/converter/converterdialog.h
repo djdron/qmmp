@@ -25,6 +25,7 @@
 #include <QStringList>
 #include "ui_converterdialog.h"
 
+class QAction;
 class PlayListItem;
 
 /**
@@ -37,7 +38,16 @@ public:
     explicit ConverterDialog(QList <PlayListItem *> items,  QWidget *parent = 0);
     QStringList selectedUrls() const;
 
+public slots:
+    virtual void accept();
+
+private slots:
+    void on_dirButton_clicked();
+    void addTitleString(QAction *a);
+
 private:
+    void createMenus();
+
     Ui::ConverterDialog ui;
 
 };

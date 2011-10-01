@@ -8,5 +8,6 @@ unix:SUBDIRS += mpris \
                 udisks \
                 hotkey \
                 covermanager \
-                kdenotify
+                kdenotify \
+                converter
 TEMPLATE = subdirs

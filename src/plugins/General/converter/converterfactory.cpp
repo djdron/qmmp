@@ -27,7 +27,7 @@ const GeneralProperties ConverterFactory::properties() const
     GeneralProperties properties;
     properties.name = tr("Converter Plugin");
     properties.shortName = "converter";
-    properties.hasAbout = true;
+    properties.hasAbout = false;
     properties.hasSettings = false;
     properties.visibilityControl = false;
     return properties;
@@ -46,10 +46,10 @@ QDialog *ConverterFactory::createConfigDialog(QWidget *parent)
 
 void ConverterFactory::showAbout(QWidget *parent)
 {
-    /*QMessageBox::about (parent, tr("About Converter Plugin"),
+    QMessageBox::about (parent, tr("About Converter Plugin"),
                         tr("Qmmp Converter Plugin")+"\n"+
                         tr("")+"\n"+
-                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 
 QTranslator *ConverterFactory::createTranslator(QObject *parent)
