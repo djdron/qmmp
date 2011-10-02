@@ -106,7 +106,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="48"/>
         <source>&amp;No Playlist Advance</source>
-        <translation type="unfinished"></translation>
+        <translation>Kei&amp;n voranschreiten in der Wiedergabeliste</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="49"/>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="50"/>
         <source>&amp;Stop After Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiedergabe nach dem au&amp;sgewähltem Titel beenden</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="51"/>
@@ -236,7 +236,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
         <source>&amp;Queue Toggle</source>
-        <translation type="unfinished"></translation>
+        <translation>Zur &amp;Warteschlange hinzufügen/Aus der Warteschlange entfernen</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
@@ -461,37 +461,37 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="27"/>
         <source>Action</source>
-        <translation type="unfinished">Aktion</translation>
+        <translation>Aktion</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="32"/>
         <source>Shortcut</source>
-        <translation type="unfinished">Kurzbefehl</translation>
+        <translation>Kurzbefehl</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">Kurzbefehl ändern ...</translation>
+        <translation>Kurzbefehl ändern …</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Playback</source>
-        <translation type="unfinished">Wiedergabe</translation>
+        <translation>Wiedergabe</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="61"/>
         <source>View</source>
-        <translation type="unfinished">Ansicht</translation>
+        <translation>Ansicht</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Playlist</source>
-        <translation type="unfinished">Wiedergabeliste</translation>
+        <translation>Wiedergabeliste</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Misc</source>
-        <translation type="unfinished">Verschiedenes</translation>
+        <translation>Verschiedenes</translation>
     </message>
 </context>
 <context>
@@ -720,12 +720,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="316"/>
         <source>Appearance</source>
-        <translation type="unfinished">Erscheinungsbild</translation>
+        <translation>Erscheinungsbild</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="317"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">Kurzbefehle</translation>
+        <translation>Kurzbefehle</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="377"/>
@@ -1070,35 +1070,38 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="30"/>
         <source>Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Designte Benutzeroberfläche</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="42"/>
         <source>About Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Qmmp „Designte Benutzeroberfläche“</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="43"/>
         <source>Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp „Designte Benutzeroberfläche“</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="44"/>
         <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
-        <translation type="unfinished"></translation>
+        <translation>Einfache Benutzeroberfläche mit Unterstützung für Designs von Winamp 2.x und XMMS</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="45"/>
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Autoren:
+Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
+Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="48"/>
         <source>Artwork:
 Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Design:
+Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
@@ -1106,137 +1109,137 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="24"/>
         <source>Skins</source>
-        <translation type="unfinished">Designs</translation>
+        <translation>Designs</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="55"/>
         <source>Add...</source>
-        <translation type="unfinished">Hinzufügen...</translation>
+        <translation>Hinzufügen...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="68"/>
         <source>Refresh</source>
-        <translation type="unfinished">Aktualisieren</translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>View</source>
-        <translation type="unfinished">Ansicht</translation>
+        <translation>Ansicht</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
         <source>Hide on close</source>
-        <translation type="unfinished">Beim Schließen in den Systemabschnitt der Kontrollleiste minimieren</translation>
+        <translation>Beim Schließen in den Systemabschnitt der Kontrollleiste minimieren</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="108"/>
         <source>Start hidden</source>
-        <translation type="unfinished">Minimiert starten</translation>
+        <translation>Minimiert starten</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="115"/>
         <source>Use skin cursors</source>
-        <translation type="unfinished">Design-Mauszeiger verwenden</translation>
+        <translation>Design-Mauszeiger verwenden</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="131"/>
         <source>Fonts</source>
-        <translation type="unfinished">Schriftarten</translation>
+        <translation>Schriftarten</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="149"/>
         <source>Player:</source>
-        <translation type="unfinished">Player:</translation>
+        <translation>Player:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="171"/>
         <location filename="../forms/skinnedsettings.ui" line="219"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="178"/>
         <location filename="../forms/skinnedsettings.ui" line="226"/>
         <source>...</source>
-        <translation type="unfinished">…</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="197"/>
         <source>Playlist:</source>
-        <translation type="unfinished">Wiedergabeliste:</translation>
+        <translation>Wiedergabeliste:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="233"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished">Bitmap-Schriftart verwenden, falls verfügbar</translation>
+        <translation>Bitmap-Schriftart verwenden, falls verfügbar</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="243"/>
         <source>Transparency</source>
-        <translation type="unfinished">Transparenz</translation>
+        <translation>Transparenz</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="249"/>
         <source>Main window</source>
-        <translation type="unfinished">Hauptfenster</translation>
+        <translation>Hauptfenster</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="272"/>
         <location filename="../forms/skinnedsettings.ui" line="296"/>
         <location filename="../forms/skinnedsettings.ui" line="320"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="279"/>
         <source>Equalizer</source>
-        <translation type="unfinished">Equalizer</translation>
+        <translation>Equalizer</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="303"/>
         <source>Playlist</source>
-        <translation type="unfinished">Wiedergabeliste</translation>
+        <translation>Wiedergabeliste</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="344"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished">Verschiedenes</translation>
+        <translation>Verschiedenes</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="350"/>
         <source>Song Display</source>
-        <translation type="unfinished">Titelanzeige</translation>
+        <translation>Titelanzeige</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="356"/>
         <source>Show protocol</source>
-        <translation type="unfinished">Protokoll anzeigen</translation>
+        <translation>Protokoll anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="363"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">Titelnummern anzeigen</translation>
+        <translation>Titelnummern anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
-        <translation type="unfinished">Wiedergabelisten anzeigen</translation>
+        <translation>Wiedergabelisten anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="394"/>
         <source>Show popup information</source>
-        <translation type="unfinished">Informationen in einem Aufklapp-Fenster anzeigen</translation>
+        <translation>Informationen in einem Aufklapp-Fenster anzeigen</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
-        <translation type="unfinished">Vorlage bearbeiten</translation>
+        <translation>Vorlage bearbeiten</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="430"/>
         <source>Playlist separator:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiedergabelisten-Trenner:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
@@ -1246,27 +1249,27 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="373"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">Stücknummern ausrichten</translation>
+        <translation>Stücknummern ausrichten</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished">Design-Dateien auswählen</translation>
+        <translation>Design-Dateien auswählen</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
-        <translation type="unfinished">Design-Dateien</translation>
+        <translation>Design-Dateien</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished">Nicht archiviertes Design</translation>
+        <translation>Nicht archiviertes Design</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
-        <translation type="unfinished">Archiviertes Design</translation>
+        <translation>Archiviertes Design</translation>
     </message>
 </context>
 <context>
@@ -1279,7 +1282,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../textscroller.cpp" line="53"/>
         <source>Transparent Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparenter Hintergrund</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="122"/>

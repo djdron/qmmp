@@ -279,7 +279,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="423"/>
         <source>User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzeroberfläche</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="579"/>
@@ -495,50 +495,50 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation type="unfinished">Zu Titel springen</translation>
+        <translation>Zu Titel springen</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
-        <translation type="unfinished">Filter</translation>
+        <translation>Filter</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
         <location filename="../jumptotrackdialog.cpp" line="145"/>
         <source>Queue</source>
-        <translation type="unfinished">In Warteschlange</translation>
+        <translation>In Warteschlange</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation type="unfinished">Aktualisieren</translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation type="unfinished">Springen zu</translation>
+        <translation>Springen zu</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="60"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>F5</source>
-        <translation type="unfinished">F5</translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="143"/>
         <source>Unqueue</source>
-        <translation type="unfinished">Aus Warteschlange entfernen</translation>
+        <translation>Aus Warteschlange entfernen</translation>
     </message>
 </context>
 <context>
@@ -729,33 +729,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished">Alle unterstützten Formate</translation>
+        <translation>Alle unterstützten Formate</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
-        <translation type="unfinished">Dateien hinzufügen</translation>
+        <translation>Dateien hinzufügen</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">Verzeichnis wählen</translation>
+        <translation>Verzeichnis wählen</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="159"/>
         <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
-        <translation type="unfinished">Wiedergabelisten</translation>
+        <translation>Wiedergabelisten</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
-        <translation type="unfinished">Wiedergabeliste öffnen</translation>
+        <translation>Wiedergabeliste öffnen</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
-        <translation type="unfinished">Wiedergabeliste speichern</translation>
+        <translation>Wiedergabeliste speichern</translation>
     </message>
 </context>
 </TS>

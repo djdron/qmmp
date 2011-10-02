@@ -8,7 +8,7 @@ Plugin-Entwickler:
     Artur Guzik <aguzik88@gmail.com> (KDE-4-Benachrichtigungs-Modul, Verbesserungen am Statussymbol-Modul)
     Yuriy Zhuravlev <stalkerg@gmail.com> (JACK- und OSS-Plugin)
 
-Artwork:
+Design:
 
     Andrey Adreev <andreev00@gmail.com>
 
