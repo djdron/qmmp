@@ -6,114 +6,114 @@
     <message>
         <location filename="../converterdialog.ui" line="14"/>
         <source>Converter Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування конвертера</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="29"/>
         <source>Select files to convert:</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть файли для конвертування:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
         <source>Output file directory:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тека для вихідного файлу:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="53"/>
         <source>Output file name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я вихідного файлу:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="63"/>
         <source>Preset:</source>
-        <translation type="unfinished"></translation>
+        <translation>Предвстановлення:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="73"/>
         <source>Overwrite existing files</source>
-        <translation type="unfinished"></translation>
+        <translation>Переписати існуючі файли</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="87"/>
         <location filename="../converterdialog.ui" line="94"/>
         <location filename="../converterdialog.ui" line="101"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="63"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">Виберіть теку</translation>
+        <translation>Виберіть теку</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="82"/>
         <source>Artist</source>
-        <translation type="unfinished">Виконавець</translation>
+        <translation>Виконавець</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="83"/>
         <source>Album</source>
-        <translation type="unfinished">Альбом</translation>
+        <translation>Альбом</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="84"/>
         <source>Title</source>
-        <translation type="unfinished">Назва</translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="85"/>
         <source>Track number</source>
-        <translation type="unfinished">Номер трека</translation>
+        <translation>Номер трека</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="86"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished">2-розрядний номер трека</translation>
+        <translation>2-розрядний номер трека</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="87"/>
         <source>Genre</source>
-        <translation type="unfinished">Жанр</translation>
+        <translation>Жанр</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="88"/>
         <source>Comment</source>
-        <translation type="unfinished">Коментар</translation>
+        <translation>Коментар</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="89"/>
         <source>Composer</source>
-        <translation type="unfinished">Композитор</translation>
+        <translation>Композитор</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="90"/>
         <source>Duration</source>
-        <translation type="unfinished">Тривалість</translation>
+        <translation>Тривалість</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="91"/>
         <source>Disc number</source>
-        <translation type="unfinished">Номер диска</translation>
+        <translation>Номер диска</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="92"/>
         <source>File name</source>
-        <translation type="unfinished">Ім&apos;я файла</translation>
+        <translation>Ім&apos;я файла</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="93"/>
         <source>File path</source>
-        <translation type="unfinished">Шлях до файла</translation>
+        <translation>Шлях до файла</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="94"/>
         <source>Year</source>
-        <translation type="unfinished">Рік</translation>
+        <translation>Рік</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="95"/>
         <source>Condition</source>
-        <translation type="unfinished">Умова</translation>
+        <translation>Умова</translation>
     </message>
 </context>
 <context>
@@ -121,22 +121,22 @@
     <message>
         <location filename="../converterfactory.cpp" line="28"/>
         <source>Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль конвертера</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="49"/>
         <source>About Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Про модуль конвертера</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="50"/>
         <source>Qmmp Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль конвертера для Qmmp</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="52"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Розробник: Ілля Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -144,22 +144,22 @@
     <message>
         <location filename="../converterhelper.cpp" line="35"/>
         <source>Convert</source>
-        <translation type="unfinished"></translation>
+        <translation>Конвертувати</translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="36"/>
         <source>Meta+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="42"/>
         <source>Converting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Конвертування...</translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Відміна</translation>
     </message>
 </context>
 </TS>
