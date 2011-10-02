@@ -2,13 +2,18 @@ Dank an:
 
     Adria Arrufat <swiftscythe@gmail.com> – Fehlerberichte
     Adrian Knoth <adi@drcomp.erfurt.thur.de> – Korrekturen am JACK-Modul, Fehlerberichte
+    Anton Petrusevich <casus@casus.us> – Verschiedene Verbesserungen der Wiedergabe
+    Avihay Baratz <avihayb@gmail.com> – Autostop-Funktion, Fehlerkorrekturen
     Csaba Hruska <csaba.hruska@gmail.com> – Korrekturen am FFmpeg-Modul
     Dmitry Kostin <kostindima@gmail.com> – Unterstützung für iso.wv
+    Evgeny Gleyzerman <evgley@gmail.com> – Verbesserungen an der CUE-Verarbeitung
     Gennadi Motsyo <drool@altlinux.ru> – Fehlerberichte
     Vadim Kalinnikov <moose@ylsoftware.com> – Projekt-Hosting
     Erik Ölsar <erlk.ozlr@gmail.com> – Designte Mauszeiger, Verbesserungen an der Oberfläche
     Funda Wang <fundawang@gmail.com> – Korrekturen an den CMake-Dateien
+    Makis Kalofolias <makskafl@gmail.com> – Unterstützung für EAC3, DTS und Dolby TrueHD
     Michail Zheludkov <zheludkovm@mail.ru> – Korrekturen am FFmpeg-Modul
+    Michał Grosicki <grosik88@o2.pl> – Fehlerkorrekturem im ALSA-Modul
     Panagiotis Papadopoulos <pano_90@gmx.net> – Korrekturen an der Oberfläche, Fehlerberichte
     Pino Toscano <toscano.pino@tiscali.it> – Verbesserungen der Portabilität
     Karel Volný <kvolny@redhat.com> – Verschiedene Korrekturen

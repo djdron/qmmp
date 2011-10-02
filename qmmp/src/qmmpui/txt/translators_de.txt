@@ -19,7 +19,7 @@ Italienisch:
     Gian Paolo Renello <emmerkar@gmail.com>
 
 Japanisch:
-    SimaMoto,RyoTa <liangtai.s4@gmail.com>
+    Ryota Shimamoto <liangtai.s4@gmail.com>
 
 Kasachisch:
     Baurzhan Muftakhidinov <baurthefirst@gmail.com>
@@ -35,6 +35,9 @@ Polnisch:
 
 Russisch:
     Ilya Kotov <forkotov02@hotmail.ru>
+
+Slowakisch:
+    Ján Ďanovský <dagsoftware@yahoo.com>
 
 Spanisch:
     Félix Medrano <xukosky@yahoo.es>
