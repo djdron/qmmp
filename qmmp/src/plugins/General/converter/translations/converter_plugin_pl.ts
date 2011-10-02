@@ -41,79 +41,99 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="63"/>
+        <location filename="../converterdialog.cpp" line="65"/>
         <source>Choose a directory</source>
         <translation type="unfinished">Wybierz katalog</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="82"/>
+        <location filename="../converterdialog.cpp" line="84"/>
         <source>Artist</source>
         <translation type="unfinished">Artysta</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="83"/>
+        <location filename="../converterdialog.cpp" line="85"/>
         <source>Album</source>
         <translation type="unfinished">Album</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="84"/>
+        <location filename="../converterdialog.cpp" line="86"/>
         <source>Title</source>
         <translation type="unfinished">Tytuł</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="85"/>
+        <location filename="../converterdialog.cpp" line="87"/>
         <source>Track number</source>
         <translation type="unfinished">Numer utworu</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="86"/>
+        <location filename="../converterdialog.cpp" line="88"/>
         <source>Two-digit track number</source>
         <translation type="unfinished">Dwucyfrowy numer utworu</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="87"/>
+        <location filename="../converterdialog.cpp" line="89"/>
         <source>Genre</source>
         <translation type="unfinished">Gatunek</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="88"/>
+        <location filename="../converterdialog.cpp" line="90"/>
         <source>Comment</source>
         <translation type="unfinished">Komentarz</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="89"/>
+        <location filename="../converterdialog.cpp" line="91"/>
         <source>Composer</source>
         <translation type="unfinished">Kompozytor</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="90"/>
+        <location filename="../converterdialog.cpp" line="92"/>
         <source>Duration</source>
         <translation type="unfinished">Długość</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="91"/>
+        <location filename="../converterdialog.cpp" line="93"/>
         <source>Disc number</source>
         <translation type="unfinished">Numer płyty</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="92"/>
+        <location filename="../converterdialog.cpp" line="94"/>
         <source>File name</source>
         <translation type="unfinished">Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="93"/>
+        <location filename="../converterdialog.cpp" line="95"/>
         <source>File path</source>
         <translation type="unfinished">Ścieżka pliku</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="94"/>
+        <location filename="../converterdialog.cpp" line="96"/>
         <source>Year</source>
         <translation type="unfinished">Rok</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="95"/>
+        <location filename="../converterdialog.cpp" line="97"/>
         <source>Condition</source>
         <translation type="unfinished">Warunek</translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="103"/>
+        <source>Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="104"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="105"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterdialog.cpp" line="106"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -159,6 +179,59 @@
     <message>
         <location filename="../converterhelper.cpp" line="43"/>
         <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PresetEditor</name>
+    <message>
+        <location filename="../preseteditor.ui" line="14"/>
+        <source>Preset Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="20"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="26"/>
+        <source>Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="36"/>
+        <source>Extension:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="49"/>
+        <source>Command</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="58"/>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="68"/>
+        <source>Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="74"/>
+        <source>Write tags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="81"/>
+        <source>Convert to 16 bit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.ui" line="88"/>
+        <source>CheckBox</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

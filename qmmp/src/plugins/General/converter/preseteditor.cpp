@@ -18,42 +18,17 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONVERTERDIALOG_H
-#define CONVERTERDIALOG_H
+#include "preseteditor.h"
+#include "ui_preseteditor.h"
 
-#include <QDialog>
-#include <QStringList>
-#include "ui_converterdialog.h"
-
-class QAction;
-class PlayListItem;
-
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
-class ConverterDialog : public QDialog
+PresetEditor::PresetEditor(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::PresetEditor)
 {
-    Q_OBJECT
-public:
-    explicit ConverterDialog(QList <PlayListItem *> items,  QWidget *parent = 0);
-    QStringList selectedUrls() const;
+    ui->setupUi(this);
+}
 
-public slots:
-    virtual void accept();
-
-private slots:
-    void on_dirButton_clicked();
-    void addTitleString(QAction *a);
-    void createPreset();
-    void editPreset();
-    void copyPreset();
-    void deletePreset();
-
-private:
-    void createMenus();
-
-    Ui::ConverterDialog ui;
-
-};
-
-#endif // CONVERTERDIALOG_H
+PresetEditor::~PresetEditor()
+{
+    delete ui;
+}

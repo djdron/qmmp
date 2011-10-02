@@ -80,24 +80,32 @@ void ConverterDialog::accept()
 
 void ConverterDialog::createMenus()
 {
-    QMenu *menu = new QMenu(this);
-    menu->addAction(tr("Artist"))->setData("%p");
-    menu->addAction(tr("Album"))->setData("%a");
-    menu->addAction(tr("Title"))->setData("%t");
-    menu->addAction(tr("Track number"))->setData("%n");
-    menu->addAction(tr("Two-digit track number"))->setData("%NN");
-    menu->addAction(tr("Genre"))->setData("%g");
-    menu->addAction(tr("Comment"))->setData("%c");
-    menu->addAction(tr("Composer"))->setData("%C");
-    menu->addAction(tr("Duration"))->setData("%l");
-    menu->addAction(tr("Disc number"))->setData("%D");
-    menu->addAction(tr("File name"))->setData("%f");
-    menu->addAction(tr("File path"))->setData("%F");
-    menu->addAction(tr("Year"))->setData("%y");
-    menu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
-    ui.fileNameButton->setMenu(menu);
+    QMenu *fileNameMenu = new QMenu(this);
+    fileNameMenu->addAction(tr("Artist"))->setData("%p");
+    fileNameMenu->addAction(tr("Album"))->setData("%a");
+    fileNameMenu->addAction(tr("Title"))->setData("%t");
+    fileNameMenu->addAction(tr("Track number"))->setData("%n");
+    fileNameMenu->addAction(tr("Two-digit track number"))->setData("%NN");
+    fileNameMenu->addAction(tr("Genre"))->setData("%g");
+    fileNameMenu->addAction(tr("Comment"))->setData("%c");
+    fileNameMenu->addAction(tr("Composer"))->setData("%C");
+    fileNameMenu->addAction(tr("Duration"))->setData("%l");
+    fileNameMenu->addAction(tr("Disc number"))->setData("%D");
+    fileNameMenu->addAction(tr("File name"))->setData("%f");
+    fileNameMenu->addAction(tr("File path"))->setData("%F");
+    fileNameMenu->addAction(tr("Year"))->setData("%y");
+    fileNameMenu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
+    ui.fileNameButton->setMenu(fileNameMenu);
     ui.fileNameButton->setPopupMode(QToolButton::InstantPopup);
-    connect(menu, SIGNAL(triggered(QAction *)), SLOT(addTitleString(QAction *)));
+    connect(fileNameMenu, SIGNAL(triggered(QAction *)), SLOT(addTitleString(QAction *)));
+
+    QMenu *presetMenu = new QMenu(this);
+    presetMenu->addAction(tr("Create"), this, SLOT(copyPreset()));
+    presetMenu->addAction(tr("Edit"), this, SLOT(editPreset()));
+    presetMenu->addAction(tr("Copy"), this, SLOT(copyPreset()));
+    presetMenu->addAction(tr("Delete"), this, SLOT(deletePreset()));
+    ui.presetButton->setMenu(presetMenu);
+    ui.presetButton->setPopupMode(QToolButton::InstantPopup);
 }
 
 void ConverterDialog::addTitleString(QAction *a)
@@ -106,4 +114,24 @@ void ConverterDialog::addTitleString(QAction *a)
         ui.outFileEdit->insert(a->data().toString());
     else
         ui.outFileEdit->insert(" - "+a->data().toString());
+}
+
+void ConverterDialog::createPreset()
+{
+
+}
+
+void ConverterDialog::editPreset()
+{
+
+}
+
+void ConverterDialog::copyPreset()
+{
+
+}
+
+void ConverterDialog::deletePreset()
+{
+
 }
