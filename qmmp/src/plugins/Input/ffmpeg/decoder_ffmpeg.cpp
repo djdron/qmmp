@@ -246,7 +246,10 @@ bool DecoderFFmpeg::initialize()
     else
         configure(c->sample_rate, c->request_channels, Qmmp::PCM_S16LE);
 #endif
-    m_bitrate = c->bit_rate;
+    if(ic->bit_rate)
+        m_bitrate = ic->bit_rate;
+    if(c->bit_rate)
+        m_bitrate = c->bit_rate;
     qDebug("DecoderFFmpeg: initialize succes");
     return true;
 }
@@ -293,7 +296,8 @@ qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
 #else
         int l = avcodec_decode_audio2(c, (int16_t *)(audio), &out_size, m_temp_pkt.data, m_temp_pkt.size);
 #endif
-        m_bitrate = c->bit_rate/1024;
+        if(c->bit_rate)
+            m_bitrate = c->bit_rate/1000;
         if(l < 0)
             return l;
         m_temp_pkt.data += l;
