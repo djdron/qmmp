@@ -54,3 +54,7 @@ ENDIF(USE_COVER)
 IF(USE_KDENOTIFY)
 add_subdirectory(kdenotify)
 ENDIF(USE_KDENOTIFY)
+
+IF(USE_CONVERTER)
+add_subdirectory(converter)
+ENDIF(USE_CONVERTER)
