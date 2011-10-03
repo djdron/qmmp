@@ -268,7 +268,7 @@ void TextScroller::preparePixmap(const QString &text, bool scrollable)
          QPainter painter(&m_pixmap);
          painter.setPen(m_color);
          painter.setFont(m_font);
-         if(m_bitmap)
+         if(bitmap)
              drawBitmapText (0,12, fullText, &painter, m_skin);
          else
              painter.drawText (0,12, fullText);
