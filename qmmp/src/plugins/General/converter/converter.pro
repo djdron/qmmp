@@ -41,7 +41,8 @@ HEADERS += converterfactory.h \
     converterhelper.h \
     converterdialog.h \
     converter.h \
-    preseteditor.h
+    preseteditor.h \
+    preset.h
 win32:HEADERS += ../../../../src/qmmpui/general.h
 SOURCES += converterfactory.cpp \
     converterhelper.cpp \
@@ -51,6 +52,7 @@ SOURCES += converterfactory.cpp \
 
 FORMS += converterdialog.ui \
     preseteditor.ui
+
 
 
 

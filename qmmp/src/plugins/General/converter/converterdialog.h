@@ -51,6 +51,7 @@ private slots:
 
 private:
     void createMenus();
+    void readSettings();
 
     Ui::ConverterDialog ui;
 

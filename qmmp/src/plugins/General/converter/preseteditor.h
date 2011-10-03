@@ -27,6 +27,9 @@ namespace Ui {
     class PresetEditor;
 }
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class PresetEditor : public QDialog
 {
     Q_OBJECT

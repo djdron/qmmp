@@ -20,15 +20,16 @@
 #ifndef CONVERTERFACTORY_H
 #define CONVERTERFACTORY_H
 
-/**
-    @author Ilya Kotov <forkotov02@hotmail.ru>
-*/
+
 #include <QObject>
 #include <QTranslator>
 #include <QDialog>
 #include <qmmpui/general.h>
 #include <qmmpui/generalfactory.h>
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class ConverterFactory : public QObject, public GeneralFactory
 {
 Q_OBJECT
