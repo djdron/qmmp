@@ -118,22 +118,22 @@
     <message>
         <location filename="../converterdialog.cpp" line="103"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Створити</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="104"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="105"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Копіювати</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="106"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити</translation>
     </message>
 </context>
 <context>
@@ -187,52 +187,52 @@
     <message>
         <location filename="../preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактор предвстановлень</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="20"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Головне</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="26"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ім&apos;я:</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="36"/>
         <source>Extension:</source>
-        <translation type="unfinished"></translation>
+        <translation>Розширення:</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="49"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Команда</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="58"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="68"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Опції</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="74"/>
         <source>Write tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Записати теги</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="81"/>
         <source>Convert to 16 bit</source>
-        <translation type="unfinished"></translation>
+        <translation>Конвертувати в 16 біт</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="88"/>
         <source>CheckBox</source>
-        <translation type="unfinished"></translation>
+        <translation>Прапорець</translation>
     </message>
 </context>
 </TS>
