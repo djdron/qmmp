@@ -32,7 +32,6 @@ class Converter;
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
 class ConverterHelper : public QObject
 {
 Q_OBJECT

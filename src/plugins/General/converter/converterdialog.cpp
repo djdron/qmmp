@@ -135,3 +135,8 @@ void ConverterDialog::deletePreset()
 {
 
 }
+
+void ConverterDialog::readSettings()
+{
+
+}

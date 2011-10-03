@@ -18,39 +18,21 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef CONVERTER_H
-#define CONVERTER_H
+#ifndef PRESET_H
+#define PRESET_H
 
-#include <QThread>
-#include <QQueue>
-#include <QHash>
-#include <stdio.h>
-#include <qmmp/decoder.h>
-#include <qmmp/inputsource.h>
+#include <QString>
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class Converter : public QThread
+struct ConverterPreset
 {
-    Q_OBJECT
-public:
-    explicit Converter(QObject *parent = 0);
-
-    void add(const QStringList &urls);
-    void add(const QString &url);
-
-signals:
-    void progress(int percent);
-    void desriptionChanged(QString text);
-    void error(QString text);
-
-private:
-    void run();
-    bool convert(Decoder *decoder, FILE *file);
-    QQueue <Decoder*> m_decoders;
-    QHash <Decoder*, InputSource*> m_inputs;
-
+    QString name;
+    QString extension;
+    QString command;
+    bool use16bit;
+    bool tags;
 };
 
-#endif // CONVERTER_H
+#endif // PRESET_H
