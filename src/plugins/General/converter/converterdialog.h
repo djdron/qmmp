@@ -27,6 +27,7 @@
 
 class QAction;
 class PlayListItem;
+class ConverterPreset;
 
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -51,9 +52,11 @@ private slots:
 
 private:
     void createMenus();
-    void readSettings();
+    void readPresets(const QString &path);
+    QString uniqueName(const QString &name);
 
     Ui::ConverterDialog ui;
+    QList <ConverterPreset* > m_presets;
 
 };
 

@@ -393,7 +393,7 @@ void EqWidget::importWinampEQF()
     char name[257];
     char bands[11];
     QString path = FileDialog::getOpenFileName(this, tr("Import Preset"),
-                   "/home",
+                   QDir::homePath(),
                    QString("Winamp EQF (*.q1)"));
 
     QFile file(path);
