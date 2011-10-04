@@ -24,6 +24,7 @@
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/filedialog.h>
+#include "preseteditor.h"
 #include "converterdialog.h"
 
 ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent) : QDialog(parent)
@@ -47,6 +48,8 @@ ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent)
     ui.outFileEdit->setText(settings.value("file_name","%p - %t").toString());
     settings.endGroup();
     createMenus();
+    readPresets(":/default_converter_preset");
+    readPresets(QDir::homePath() + "/.qmmp/converterrc");
 }
 
 QStringList ConverterDialog::selectedUrls() const
@@ -75,6 +78,22 @@ void ConverterDialog::accept()
     settings.setValue("out_dir", ui.outDirEdit->text());
     settings.value("file_name", ui.outFileEdit->text());
     settings.endGroup();
+
+    QSettings preset_settings(QDir::homePath() + "/.qmmp/converterrc", QSettings::IniFormat);
+    preset_settings.clear();
+    for(int i = 0; i < ui.presetComboBox->count(); ++i)
+    {
+        QString name = ui.presetComboBox->itemText(i);
+        QVariantMap data = ui.presetComboBox->itemData(i).toMap();
+        if(data["read_only"].toBool())
+            continue;
+        preset_settings.beginGroup(name);
+        preset_settings.setValue("ext", data["ext"].toString());
+        preset_settings.setValue("command", data["command"].toString());
+        preset_settings.setValue("use_16bit", data["use_16bit"].toBool());
+        preset_settings.setValue("tags", data["tags"].toBool());
+        preset_settings.endGroup();
+    }
     QDialog::accept();
 }
 
@@ -92,7 +111,6 @@ void ConverterDialog::createMenus()
     fileNameMenu->addAction(tr("Duration"))->setData("%l");
     fileNameMenu->addAction(tr("Disc number"))->setData("%D");
     fileNameMenu->addAction(tr("File name"))->setData("%f");
-    fileNameMenu->addAction(tr("File path"))->setData("%F");
     fileNameMenu->addAction(tr("Year"))->setData("%y");
     fileNameMenu->addAction(tr("Condition"))->setData("%if(%p&%t,%p - %t,%f)");
     ui.fileNameButton->setMenu(fileNameMenu);
@@ -100,9 +118,9 @@ void ConverterDialog::createMenus()
     connect(fileNameMenu, SIGNAL(triggered(QAction *)), SLOT(addTitleString(QAction *)));
 
     QMenu *presetMenu = new QMenu(this);
-    presetMenu->addAction(tr("Create"), this, SLOT(copyPreset()));
+    presetMenu->addAction(tr("Create"), this, SLOT(createPreset()));
     presetMenu->addAction(tr("Edit"), this, SLOT(editPreset()));
-    presetMenu->addAction(tr("Copy"), this, SLOT(copyPreset()));
+    presetMenu->addAction(tr("Create a copy"), this, SLOT(copyPreset()));
     presetMenu->addAction(tr("Delete"), this, SLOT(deletePreset()));
     ui.presetButton->setMenu(presetMenu);
     ui.presetButton->setPopupMode(QToolButton::InstantPopup);
@@ -118,25 +136,84 @@ void ConverterDialog::addTitleString(QAction *a)
 
 void ConverterDialog::createPreset()
 {
-
+    PresetEditor *editor = new PresetEditor(QString(), QVariantMap(), this);
+    if(editor->exec() == QDialog::Accepted)
+    {
+        QString name = uniqueName(editor->name());
+        QVariantMap data = editor->data();
+        if(!name.isEmpty() && data["ext"].isValid() && data["command"].isValid())
+            ui.presetComboBox->addItem (name, data);
+    }
+    editor->deleteLater();
 }
 
 void ConverterDialog::editPreset()
 {
-
+    if(ui.presetComboBox->currentIndex() == -1)
+        return;
+    int index = ui.presetComboBox->currentIndex();
+    if(ui.presetComboBox->itemData(index).toMap()["read_only"].toBool())
+        return;
+    PresetEditor *editor = new PresetEditor(ui.presetComboBox->currentText(),
+                                            ui.presetComboBox->itemData(index).toMap(), this);
+    if(editor->exec() == QDialog::Accepted)
+    {
+        QString name = uniqueName(editor->name());
+        QVariantMap data = editor->data();
+        if(!name.isEmpty() && data["ext"].isValid() && data["command"].isValid())
+        {
+            ui.presetComboBox->setItemText(index, name);
+            ui.presetComboBox->setItemData(index, data);
+        }
+    }
+    editor->deleteLater();
 }
 
 void ConverterDialog::copyPreset()
 {
-
+    if(ui.presetComboBox->currentIndex() == -1)
+        return;
+    int index = ui.presetComboBox->currentIndex();
+    QString name = ui.presetComboBox->currentText();
+    QVariant data = ui.presetComboBox->itemData(index);
+    ui.presetComboBox->addItem (uniqueName(name), data);
 }
 
 void ConverterDialog::deletePreset()
 {
-
+    if(ui.presetComboBox->currentIndex() == -1)
+        return;
+    if(ui.presetComboBox->itemData(ui.presetComboBox->currentIndex()).toMap()["read_only"].toBool())
+        return;
+    ui.presetComboBox->removeItem(ui.presetComboBox->currentIndex());
 }
 
-void ConverterDialog::readSettings()
+void ConverterDialog::readPresets(const QString &path)
 {
+    QSettings settings(path, QSettings::IniFormat);
+    foreach(QString group_name, settings.childGroups())
+    {
+        settings.beginGroup(group_name);
+        QVariantMap data;
+        data.insert("ext", settings.value("ext").toString());
+        data.insert("command", settings.value("command").toString());
+        data.insert("use_16bit", settings.value("use_16bit").toBool());
+        data.insert("tags", settings.value("tags").toBool());
+        data.insert("read_only", path.startsWith(":/"));
+        ui.presetComboBox->addItem (group_name, data);
+        settings.endGroup();
+    }
+}
 
+QString ConverterDialog::uniqueName(const QString &name)
+{
+    QString unique_name = name;
+    int i = 0;
+    forever
+    {
+        if(ui.presetComboBox->findText(unique_name) == -1)
+            break;
+        unique_name = name + QString("_%1").arg(++i);
+    }
+    return unique_name;
 }

@@ -22,6 +22,7 @@
 #define PRESETEDITOR_H
 
 #include <QDialog>
+#include <QVariantMap>
 
 namespace Ui {
     class PresetEditor;
@@ -35,11 +36,14 @@ class PresetEditor : public QDialog
     Q_OBJECT
 
 public:
-    explicit PresetEditor(QWidget *parent = 0);
-    ~PresetEditor();
+    explicit PresetEditor(const QString &name, const QVariantMap &data, QWidget *parent = 0);
+    virtual ~PresetEditor();
+
+    const QString name() const;
+    const QVariantMap data() const;
 
 private:
-    Ui::PresetEditor *ui;
+    Ui::PresetEditor *m_ui;
 };
 
 #endif // PRESETEDITOR_H
