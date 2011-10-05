@@ -21,6 +21,8 @@
 #include <QSettings>
 #include <QDesktopServices>
 #include <QMenu>
+#include <QFile>
+#include <QDir>
 #include <qmmpui/playlistitem.h>
 #include <qmmpui/metadataformatter.h>
 #include <qmmpui/filedialog.h>
@@ -48,8 +50,14 @@ ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent)
     ui.outFileEdit->setText(settings.value("file_name","%p - %t").toString());
     settings.endGroup();
     createMenus();
-    readPresets(":/default_converter_preset");
-    readPresets(QDir::homePath() + "/.qmmp/converterrc");
+
+    readPresets(":/converter/presets.conf");
+    readPresets(QDir::homePath() + "/.qmmp/converter/presets.conf");
+}
+
+ConverterDialog::~ConverterDialog()
+{
+    savePresets();
 }
 
 QStringList ConverterDialog::selectedUrls() const
@@ -79,7 +87,7 @@ void ConverterDialog::accept()
     settings.value("file_name", ui.outFileEdit->text());
     settings.endGroup();
 
-    QSettings preset_settings(QDir::homePath() + "/.qmmp/converterrc", QSettings::IniFormat);
+    /*QSettings preset_settings(QDir::homePath() + "/.qmmp/converterrc", QSettings::IniFormat);
     preset_settings.clear();
     for(int i = 0; i < ui.presetComboBox->count(); ++i)
     {
@@ -93,7 +101,7 @@ void ConverterDialog::accept()
         preset_settings.setValue("use_16bit", data["use_16bit"].toBool());
         preset_settings.setValue("tags", data["tags"].toBool());
         preset_settings.endGroup();
-    }
+    }*/
     QDialog::accept();
 }
 
@@ -136,13 +144,13 @@ void ConverterDialog::addTitleString(QAction *a)
 
 void ConverterDialog::createPreset()
 {
-    PresetEditor *editor = new PresetEditor(QString(), QVariantMap(), this);
+    PresetEditor *editor = new PresetEditor(QVariantMap(), this);
     if(editor->exec() == QDialog::Accepted)
     {
-        QString name = uniqueName(editor->name());
         QVariantMap data = editor->data();
-        if(!name.isEmpty() && data["ext"].isValid() && data["command"].isValid())
-            ui.presetComboBox->addItem (name, data);
+        data["name"] = uniqueName(data["name"].toString());
+        if(data["name"].isValid() && data["ext"].isValid() && data["command"].isValid())
+            ui.presetComboBox->addItem (data["name"].toString(), data);
     }
     editor->deleteLater();
 }
@@ -154,15 +162,15 @@ void ConverterDialog::editPreset()
     int index = ui.presetComboBox->currentIndex();
     if(ui.presetComboBox->itemData(index).toMap()["read_only"].toBool())
         return;
-    PresetEditor *editor = new PresetEditor(ui.presetComboBox->currentText(),
-                                            ui.presetComboBox->itemData(index).toMap(), this);
+    PresetEditor *editor = new PresetEditor(ui.presetComboBox->itemData(index).toMap(), this);
     if(editor->exec() == QDialog::Accepted)
     {
-        QString name = uniqueName(editor->name());
         QVariantMap data = editor->data();
-        if(!name.isEmpty() && data["ext"].isValid() && data["command"].isValid())
+        if(ui.presetComboBox->currentText() != data["name"].toString())
+            data["name"] = uniqueName(data["name"].toString());
+        if(data["name"].isValid() && data["ext"].isValid() && data["command"].isValid())
         {
-            ui.presetComboBox->setItemText(index, name);
+            ui.presetComboBox->setItemText(index, data["name"].toString());
             ui.presetComboBox->setItemData(index, data);
         }
     }
@@ -174,9 +182,9 @@ void ConverterDialog::copyPreset()
     if(ui.presetComboBox->currentIndex() == -1)
         return;
     int index = ui.presetComboBox->currentIndex();
-    QString name = ui.presetComboBox->currentText();
-    QVariant data = ui.presetComboBox->itemData(index);
-    ui.presetComboBox->addItem (uniqueName(name), data);
+    QVariantMap data = ui.presetComboBox->itemData(index).toMap();
+    data["name"] = uniqueName(data["name"].toString());
+    ui.presetComboBox->addItem (data["name"].toString(), data);
 }
 
 void ConverterDialog::deletePreset()
@@ -190,18 +198,63 @@ void ConverterDialog::deletePreset()
 
 void ConverterDialog::readPresets(const QString &path)
 {
-    QSettings settings(path, QSettings::IniFormat);
-    foreach(QString group_name, settings.childGroups())
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly))
+        return;
+
+    QList <QVariantMap> dataList;
+    while(!file.atEnd())
     {
-        settings.beginGroup(group_name);
-        QVariantMap data;
-        data.insert("ext", settings.value("ext").toString());
-        data.insert("command", settings.value("command").toString());
-        data.insert("use_16bit", settings.value("use_16bit").toBool());
-        data.insert("tags", settings.value("tags").toBool());
-        data.insert("read_only", path.startsWith(":/"));
-        ui.presetComboBox->addItem (group_name, data);
-        settings.endGroup();
+        QString line = QString::fromUtf8(file.readLine().trimmed());
+        if(!line.contains("="))
+            continue;
+        QString key = line.split("=").at(0);
+        QString value = line.split("=").at(1);
+        if(key == "name")
+            dataList.append(QVariantMap());
+        if(dataList.isEmpty())
+            continue;
+        if(key == "use_16bit" && key == "tags") //boolean keys
+            dataList.last()[key] = (value == "true");
+        else
+            dataList.last()[key] = value;
+    }
+
+    foreach(QVariantMap data, dataList)
+    {
+        data["read_only"] = path.startsWith(":/");
+        QString title = data["name"].toString();
+        if(data["read_only"].toBool())
+            title += " *" ;
+        ui.presetComboBox->addItem (title, data);
+    }
+}
+
+void ConverterDialog::savePresets()
+{
+    QDir dir(QDir::homePath() + "/.qmmp/");
+    dir.mkdir("converter");
+
+    QFile file(QDir::homePath() + "/.qmmp/converter/presets.conf");
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
+    {
+        qWarning("ConverterDialog: unable to save presets; error %s", qPrintable(file.errorString()));
+        return;
+    }
+
+    for(int i = 0; i < ui.presetComboBox->count(); ++i)
+    {
+        QVariantMap data = ui.presetComboBox->itemData(i).toMap();
+        if(data["read_only"].toBool())
+            continue;
+        file.write(QString("%1=%2\n").arg("name").arg(data["name"].toString()).toUtf8());
+        file.write(QString("%1=%2\n").arg("ext").arg(data["ext"].toString()).toUtf8());
+        file.write(QString("%1=%2\n").arg("command").arg(data["command"].toString()).toUtf8());
+        file.write(QString("%1=%2\n").arg("use_16bit")
+                   .arg(data["use_16bit"].toBool() ? "true" : "false" ).toUtf8());
+        file.write(QString("%1=%2\n").arg("tags")
+                   .arg(data["tags"].toBool() ? "true" : "false" ).toUtf8());
+        file.write("\n");
     }
 }
 

@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../converterdialog.ui" line="29"/>
-        <source>Select files to convert:</source>
-        <translation>Wählen Sie die zu konvertierenden Dateien aus:</translation>
+        <source>Select tracks to convert:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
@@ -41,92 +41,92 @@
         <translation>…</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="68"/>
+        <location filename="../converterdialog.cpp" line="76"/>
         <source>Choose a directory</source>
         <translation>Ein Verzeichnis wählen</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="103"/>
+        <location filename="../converterdialog.cpp" line="111"/>
         <source>Artist</source>
         <translation>Interpret</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="104"/>
+        <location filename="../converterdialog.cpp" line="112"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="105"/>
+        <location filename="../converterdialog.cpp" line="113"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="106"/>
+        <location filename="../converterdialog.cpp" line="114"/>
         <source>Track number</source>
         <translation>Stücknummer</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="107"/>
+        <location filename="../converterdialog.cpp" line="115"/>
         <source>Two-digit track number</source>
         <translation>Zweistellige Stücknummer</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="108"/>
+        <location filename="../converterdialog.cpp" line="116"/>
         <source>Genre</source>
         <translation>Genre</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="109"/>
+        <location filename="../converterdialog.cpp" line="117"/>
         <source>Comment</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="110"/>
+        <location filename="../converterdialog.cpp" line="118"/>
         <source>Composer</source>
         <translation>Komponist</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="111"/>
+        <location filename="../converterdialog.cpp" line="119"/>
         <source>Duration</source>
         <translation>Abspieldauer</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="112"/>
+        <location filename="../converterdialog.cpp" line="120"/>
         <source>Disc number</source>
         <translation>CD-Nummer</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="113"/>
+        <location filename="../converterdialog.cpp" line="121"/>
         <source>File name</source>
         <translation>Dateiname</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="123"/>
+        <location filename="../converterdialog.cpp" line="131"/>
         <source>Create a copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="114"/>
+        <location filename="../converterdialog.cpp" line="122"/>
         <source>Year</source>
         <translation>Jahr</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="115"/>
+        <location filename="../converterdialog.cpp" line="123"/>
         <source>Condition</source>
         <translation>Zustand</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="121"/>
+        <location filename="../converterdialog.cpp" line="129"/>
         <source>Create</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="122"/>
+        <location filename="../converterdialog.cpp" line="130"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="124"/>
+        <location filename="../converterdialog.cpp" line="132"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>

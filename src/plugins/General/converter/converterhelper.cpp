@@ -37,7 +37,7 @@ ConverterHelper::ConverterHelper(QObject *parent) : QObject(parent)
     UiHelper::instance()->addAction(m_action, UiHelper::PLAYLIST_MENU);
     connect (m_action, SIGNAL(triggered ()), SLOT(openConverter()));
     m_converter = new Converter(this);
-    m_progress = new QProgressDialog(qApp->activeWindow());
+    m_progress = new QProgressDialog();
     m_progress->setRange(0,100);
     m_progress->setWindowTitle(tr("Converting..."));
     m_progress->setCancelButtonText(tr("Cancel"));
@@ -59,7 +59,7 @@ void ConverterHelper::openConverter()
         return;
 
     ConverterDialog *d = new ConverterDialog(items, qApp->activeWindow ());
-    if(QDialog::Accepted == d->exec())
+    if(d->exec() == QDialog::Accepted)
     {
         QStringList urls = d->selectedUrls();
         m_converter->add(urls);

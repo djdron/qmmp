@@ -21,11 +21,11 @@
 #include "preseteditor.h"
 #include "ui_preseteditor.h"
 
-PresetEditor::PresetEditor(const QString &name, const QVariantMap &data, QWidget *parent) :
+PresetEditor::PresetEditor(const QVariantMap &data, QWidget *parent) :
     QDialog(parent), m_ui(new Ui::PresetEditor)
 {
     m_ui->setupUi(this);
-    m_ui->nameLineEdit->setText(name);
+    m_ui->nameLineEdit->setText(data.value("name").toString());
     m_ui->extensionLineEdit->setText(data.value("ext").toString());
     m_ui->commandLineEdit->setText(data.value("command").toString());
     m_ui->us16bitCheckBox->setChecked(data.value("use_16bit").toBool());
@@ -37,14 +37,10 @@ PresetEditor::~PresetEditor()
     delete m_ui;
 }
 
-const QString PresetEditor::name() const
-{
-    return m_ui->nameLineEdit->text();
-}
-
 const QVariantMap PresetEditor::data() const
 {
     QVariantMap data;
+    data.insert("name", m_ui->nameLineEdit->text());
     data.insert("ext", m_ui->extensionLineEdit->text());
     data.insert("command", m_ui->commandLineEdit->text());
     data.insert("use_16bit",  m_ui->us16bitCheckBox->isChecked());

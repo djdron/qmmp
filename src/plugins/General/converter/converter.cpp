@@ -50,7 +50,7 @@ void Converter::add(const QString &url)
 
     if(source->ioDevice())
     {
-        if(source->ioDevice()->open(QIODevice::ReadOnly))
+        if(!source->ioDevice()->open(QIODevice::ReadOnly))
         {
             source->deleteLater();
             qWarning("Converter: cannot open input stream, error: %s",
