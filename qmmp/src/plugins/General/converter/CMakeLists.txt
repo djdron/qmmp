@@ -44,7 +44,7 @@ SET(libconverter_MOC_HDRS
 )
 
 SET(libconverter_RCCS 
-    translations/translations.qrc)
+    translations/translations.qrc presets.qrc)
 
 QT4_ADD_RESOURCES(libconverter_RCC_SRCS ${libconverter_RCCS})
 

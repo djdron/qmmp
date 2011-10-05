@@ -37,6 +37,8 @@ class ConverterDialog : public QDialog
     Q_OBJECT
 public:
     explicit ConverterDialog(QList <PlayListItem *> items,  QWidget *parent = 0);
+    virtual ~ConverterDialog();
+
     QStringList selectedUrls() const;
 
 public slots:
@@ -53,6 +55,7 @@ private slots:
 private:
     void createMenus();
     void readPresets(const QString &path);
+    void savePresets();
     QString uniqueName(const QString &name);
 
     Ui::ConverterDialog ui;
