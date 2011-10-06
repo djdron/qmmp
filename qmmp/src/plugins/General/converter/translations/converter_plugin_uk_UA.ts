@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="uk">
+<!DOCTYPE TS><TS version="1.1" language="uk">
+<defaultcodec></defaultcodec>
 <context>
     <name>ConverterDialog</name>
     <message>
@@ -11,7 +11,7 @@
     <message>
         <location filename="../converterdialog.ui" line="29"/>
         <source>Select tracks to convert:</source>
-        <translation type="unfinished"></translation>
+        <translation>Вкажіть треки для конвертування:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
@@ -34,11 +34,9 @@
         <translation>Переписати існуючі файли</translation>
     </message>
     <message>
-        <location filename="../converterdialog.ui" line="87"/>
-        <location filename="../converterdialog.ui" line="94"/>
         <location filename="../converterdialog.ui" line="101"/>
         <source>...</source>
-        <translation></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="76"/>
@@ -103,7 +101,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Create a copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Створити копію</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="122"/>
