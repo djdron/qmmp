@@ -40,7 +40,7 @@
    <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Output file directory:</string>
+      <string>Output directory:</string>
      </property>
     </widget>
    </item>
@@ -84,21 +84,21 @@
    <item row="2" column="2">
     <widget class="QToolButton" name="dirButton">
      <property name="text">
-      <string>...</string>
+      <string notr="true">...</string>
      </property>
     </widget>
    </item>
    <item row="3" column="2">
     <widget class="QToolButton" name="fileNameButton">
      <property name="text">
-      <string>...</string>
+      <string notr="true">...</string>
      </property>
     </widget>
    </item>
    <item row="4" column="2">
     <widget class="QToolButton" name="presetButton">
      <property name="text">
-      <string>...</string>
+      <string notr="true">...</string>
      </property>
     </widget>
    </item>

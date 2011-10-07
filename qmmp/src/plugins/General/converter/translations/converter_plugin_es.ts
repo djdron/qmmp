@@ -28,7 +28,7 @@
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
-        <source>Output file directory:</source>
+        <source>Output directory:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -45,13 +45,6 @@
         <location filename="../converterdialog.ui" line="73"/>
         <source>Overwrite existing files</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.ui" line="87"/>
-        <location filename="../converterdialog.ui" line="94"/>
-        <location filename="../converterdialog.ui" line="101"/>
-        <source>...</source>
-        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="88"/>
@@ -162,7 +155,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converterfactory.cpp" line="52"/>
+        <location filename="../converterfactory.cpp" line="51"/>
+        <source>This plugin converts supported audio files to other file formats
+using external command-line encoders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converterfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation type="unfinished">Escrito por: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -216,11 +215,6 @@
         <location filename="../preseteditor.ui" line="58"/>
         <source>Command</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../preseteditor.ui" line="67"/>
-        <source>...</source>
-        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="77"/>
