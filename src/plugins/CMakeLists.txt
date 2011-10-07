@@ -1,6 +1,7 @@
 SET(USE_ENCA TRUE CACHE BOOL "enable/disable libenca support")
 include(FindPkgConfig)
 pkg_search_module(ENCA enca>=1.9)
+pkg_search_module(TAGLIB taglib)
 add_subdirectory(Input)
 add_subdirectory(Output)
 add_subdirectory(Visual)
