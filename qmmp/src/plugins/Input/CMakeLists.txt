@@ -1,6 +1,4 @@
 
-INCLUDE(FindPkgConfig)
-
 SET(USE_MAD     TRUE CACHE BOOL "enable/disable mad plugin")
 SET(USE_FLAC    TRUE CACHE BOOL "enable/disable flac plugin")
 SET(USE_VORBIS  TRUE CACHE BOOL "enable/disable ogg vorbis plugin")
@@ -15,7 +13,6 @@ SET(USE_CDA     TRUE CACHE BOOL "enable/disable cd audio support")
 SET(USE_MIDI    TRUE CACHE BOOL "enable/disable midi support")
 SET(USE_GME     TRUE CACHE BOOL "enable/disable game music plugin")
 
-pkg_check_modules(TAGLIB taglib)
 
 IF(USE_MAD AND TAGLIB_FOUND)
 add_subdirectory(mad)
