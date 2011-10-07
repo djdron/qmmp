@@ -28,8 +28,8 @@
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
-        <source>Output file directory:</source>
-        <translation>Директория результирующего файла:</translation>
+        <source>Output directory:</source>
+        <translation>Выходная директория:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="53"/>
@@ -45,13 +45,6 @@
         <location filename="../converterdialog.ui" line="73"/>
         <source>Overwrite existing files</source>
         <translation>Перезаписывать существующие файлы</translation>
-    </message>
-    <message>
-        <location filename="../converterdialog.ui" line="87"/>
-        <location filename="../converterdialog.ui" line="94"/>
-        <location filename="../converterdialog.ui" line="101"/>
-        <source>...</source>
-        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="88"/>
@@ -149,22 +142,30 @@
     <message>
         <location filename="../converterfactory.cpp" line="28"/>
         <source>Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль преобр. форматов</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="49"/>
         <source>About Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>О преобразователе форматов</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="50"/>
         <source>Qmmp Converter Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Модуль преобразования аудио-форматов для Qmmp</translation>
     </message>
     <message>
-        <location filename="../converterfactory.cpp" line="52"/>
+        <location filename="../converterfactory.cpp" line="51"/>
+        <source>This plugin converts supported audio files to other file formats
+using external command-line encoders</source>
+        <translation>Этот модуль предназначен для преобразования поддерживаемых
+аудио-файлов в другой формат с использованием внешних консольных
+программ</translation>
+    </message>
+    <message>
+        <location filename="../converterfactory.cpp" line="53"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -172,7 +173,7 @@
     <message>
         <location filename="../converterhelper.cpp" line="35"/>
         <source>Convert</source>
-        <translation>Конвертировать</translation>
+        <translation>Преобразовать</translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="36"/>
@@ -182,7 +183,7 @@
     <message>
         <location filename="../converterhelper.cpp" line="42"/>
         <source>Converting...</source>
-        <translation type="unfinished"></translation>
+        <translation>Преобразование...</translation>
     </message>
     <message>
         <location filename="../converterhelper.cpp" line="43"/>
@@ -218,14 +219,9 @@
         <translation>Команда</translation>
     </message>
     <message>
-        <location filename="../preseteditor.ui" line="67"/>
-        <source>...</source>
-        <translation type="unfinished">...</translation>
-    </message>
-    <message>
         <location filename="../preseteditor.ui" line="77"/>
         <source>Options</source>
-        <translation>Опции</translation>
+        <translation>Параметры</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="83"/>
