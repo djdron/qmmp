@@ -32,13 +32,18 @@
 Converter::Converter(QObject *parent) : QThread(parent)
 {}
 
-void Converter::add(const QStringList &urls)
+Converter::~Converter()
 {
-    foreach(QString url, urls)
-        add(url);
+    stop();
 }
 
-void Converter::add(const QString &url)
+void Converter::add(const QStringList &urls, const QVariantMap &preset)
+{
+    foreach(QString url, urls)
+        add(url, preset);
+}
+
+void Converter::add(const QString &url, const QVariantMap &preset)
 {
     InputSource *source = InputSource::create(url, this);
     if(!source->initialize())
@@ -88,40 +93,63 @@ void Converter::add(const QString &url)
     }
     m_decoders.enqueue(decoder);
     m_inputs.insert(decoder, source);
+    m_presets.insert(decoder, preset);
     if(!decoder->totalTime())
         source->setOffset(-1);
     source->setParent(this);
 }
 
+void Converter::stop()
+{
+    m_mutex.lock();
+    m_user_stop = true;
+    m_mutex.unlock();
+    wait();
+    m_presets.clear();
+    qDeleteAll(m_inputs.values());
+    m_inputs.clear();
+    qDeleteAll(m_decoders);
+    m_decoders.clear();
+}
+
 void Converter::run()
 {
-    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    QString music_path = QDesktopServices::storageLocation(QDesktopServices::MusicLocation);
-    QString path = settings.value("Converter/out_dir", music_path).toString();
-    QString pattern = settings.value("Converter/file_name","%p - %t").toString();
-    MetaDataFormatter formatter(pattern);
+    qDebug("Converter: staring thread");
+    m_user_stop = false;
     MetaDataFormatter desc_formatter("%p%if(%p&%t, - ,)%t [%l]");
 
     while(!m_decoders.isEmpty())
     {
         Decoder *decoder = m_decoders.dequeue();
+        QVariantMap preset = m_presets.take(decoder);
         AudioParameters ap = decoder->audioParameters();
         QString url = m_inputs[decoder]->url();
+        QString out_path = preset["out_dir"].toString();
+        QString pattern = preset["file_name"].toString();
 
         QList <FileInfo *> list = MetaDataManager::instance()->createPlayList(url);
 
-        if(list.isEmpty())
+        if(list.isEmpty() || out_path.isEmpty() || pattern.isEmpty())
         {
-            //ignore
+            qWarning("Converter: invalid parameters");
+            m_inputs.take(decoder)->deleteLater();
+            delete decoder;
+            continue;
         }
 
-        QString desc = desc_formatter.parse(list[0]->metaData(), list[0]->length());
+        MetaDataFormatter formatter(pattern);
+
+        QString desc = tr("Track: %1").arg(desc_formatter.parse(list[0]->metaData(), list[0]->length()));
+        desc += "\n";
+        desc += tr("Preset: %1").arg(preset["name"].toString());
         emit desriptionChanged(desc);
 
         QString name = formatter.parse(list[0]->metaData(), list[0]->length());
-        QString full_path = path + "/" + name + ".ogg";
-        QString command = "oggenc -q 1 -o %o -";
+        QString full_path = out_path + "/" + name + "." + preset["ext"].toString();
+        QString command = preset["command"].toString();
         command.replace("%o", "\"" + full_path + "\"");
+
+        qDebug("Converter: starting task '%s'", qPrintable(preset["name"].toString()));
 
         qDeleteAll(list);
         list.clear();
@@ -164,6 +192,7 @@ void Converter::run()
         size_t to_write = sizeof(wave_header);
         if(to_write != fwrite(&wave_header, 1, to_write, enc_pipe))
         {
+            qWarning("Converter: output file write erro");
             m_inputs.take(decoder)->deleteLater();
             delete decoder;
             pclose(enc_pipe);
@@ -175,7 +204,18 @@ void Converter::run()
         //fclose(enc_pipe);
         m_inputs.take(decoder)->deleteLater();
         delete decoder;
+        m_mutex.lock();
+        if(m_user_stop)
+        {
+            qDebug("Converter: task '%s' aborted", qPrintable(preset["name"].toString()));
+            m_mutex.unlock();
+            return;
+        }
+        else
+            qDebug("Converter: task '%s' finished with success", qPrintable(preset["name"].toString()));
+        m_mutex.unlock();
     }
+    qDebug("Converter: thread finished");
 }
 
 bool Converter::convert(Decoder *decoder, FILE *file)
@@ -222,6 +262,14 @@ bool Converter::convert(Decoder *decoder, FILE *file)
             qDebug("finished!");
             return true;
         }
+
+        m_mutex.lock();
+        if(m_user_stop)
+        {
+            m_mutex.unlock();
+            return false;
+        }
+        m_mutex.unlock();
     }
     return false;
 }

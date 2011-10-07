@@ -40,6 +40,7 @@ public:
     virtual ~ConverterDialog();
 
     QStringList selectedUrls() const;
+    QVariantMap preset() const;
 
 public slots:
     virtual void accept();

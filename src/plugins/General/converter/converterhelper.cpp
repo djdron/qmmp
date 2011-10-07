@@ -44,6 +44,7 @@ ConverterHelper::ConverterHelper(QObject *parent) : QObject(parent)
     connect(m_converter,SIGNAL(progress(int)),m_progress,SLOT(setValue(int)));
     connect(m_converter, SIGNAL(finished()), m_progress, SLOT(reset()));
     connect(m_converter, SIGNAL(desriptionChanged(QString)), m_progress, SLOT(setLabelText(QString)));
+    connect(m_progress, SIGNAL(canceled()), m_converter, SLOT(stop()));
 }
 
 ConverterHelper::~ConverterHelper()
@@ -62,7 +63,13 @@ void ConverterHelper::openConverter()
     if(d->exec() == QDialog::Accepted)
     {
         QStringList urls = d->selectedUrls();
-        m_converter->add(urls);
+        QVariantMap preset = d->preset();
+        if(preset.isEmpty())
+        {
+            d->deleteLater();
+            return;
+        }
+        m_converter->add(urls, preset);
         if(!m_converter->isRunning())
             m_converter->start();
 
