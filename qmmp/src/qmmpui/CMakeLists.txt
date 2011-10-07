@@ -60,10 +60,10 @@ SET(libqmmpui_HDRS
     uiloader.h
     uifactory.h
     pluginitem_p.h
+    general.h
 )
 
 SET(libqmmpui_MOC_HDRS
-    general.h
     uihelper.h
     playlistparser.h
     filedialog.h
