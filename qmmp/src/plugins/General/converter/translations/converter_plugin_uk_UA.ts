@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="uk">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="uk">
+<context>
+    <name>Converter</name>
+    <message>
+        <location filename="../converter.cpp" line="142"/>
+        <source>Track: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../converter.cpp" line="144"/>
+        <source>Preset: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 <context>
     <name>ConverterDialog</name>
     <message>
@@ -34,97 +47,99 @@
         <translation>Переписати існуючі файли</translation>
     </message>
     <message>
+        <location filename="../converterdialog.ui" line="87"/>
+        <location filename="../converterdialog.ui" line="94"/>
         <location filename="../converterdialog.ui" line="101"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="76"/>
+        <location filename="../converterdialog.cpp" line="88"/>
         <source>Choose a directory</source>
         <translation>Виберіть теку</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="111"/>
+        <location filename="../converterdialog.cpp" line="107"/>
         <source>Artist</source>
         <translation>Виконавець</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="112"/>
+        <location filename="../converterdialog.cpp" line="108"/>
         <source>Album</source>
         <translation>Альбом</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="113"/>
+        <location filename="../converterdialog.cpp" line="109"/>
         <source>Title</source>
         <translation>Назва</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="114"/>
+        <location filename="../converterdialog.cpp" line="110"/>
         <source>Track number</source>
         <translation>Номер трека</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="115"/>
+        <location filename="../converterdialog.cpp" line="111"/>
         <source>Two-digit track number</source>
         <translation>2-розрядний номер трека</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="116"/>
+        <location filename="../converterdialog.cpp" line="112"/>
         <source>Genre</source>
         <translation>Жанр</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="117"/>
+        <location filename="../converterdialog.cpp" line="113"/>
         <source>Comment</source>
         <translation>Коментар</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="118"/>
+        <location filename="../converterdialog.cpp" line="114"/>
         <source>Composer</source>
         <translation>Композитор</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="119"/>
+        <location filename="../converterdialog.cpp" line="115"/>
         <source>Duration</source>
         <translation>Тривалість</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="120"/>
+        <location filename="../converterdialog.cpp" line="116"/>
         <source>Disc number</source>
         <translation>Номер диска</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="121"/>
+        <location filename="../converterdialog.cpp" line="117"/>
         <source>File name</source>
         <translation>Ім&apos;я файла</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="131"/>
+        <location filename="../converterdialog.cpp" line="127"/>
         <source>Create a copy</source>
         <translation>Створити копію</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="122"/>
+        <location filename="../converterdialog.cpp" line="118"/>
         <source>Year</source>
         <translation>Рік</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="123"/>
+        <location filename="../converterdialog.cpp" line="119"/>
         <source>Condition</source>
         <translation>Умова</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="129"/>
+        <location filename="../converterdialog.cpp" line="125"/>
         <source>Create</source>
         <translation>Створити</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="130"/>
+        <location filename="../converterdialog.cpp" line="126"/>
         <source>Edit</source>
         <translation>Редагувати</translation>
     </message>
     <message>
-        <location filename="../converterdialog.cpp" line="132"/>
+        <location filename="../converterdialog.cpp" line="128"/>
         <source>Delete</source>
         <translation>Видалити</translation>
     </message>

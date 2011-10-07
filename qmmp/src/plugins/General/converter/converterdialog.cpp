@@ -71,6 +71,18 @@ QStringList ConverterDialog::selectedUrls() const
     return out;
 }
 
+QVariantMap ConverterDialog::preset() const
+{
+    if(ui.presetComboBox->currentIndex() == -1)
+        return QVariantMap();
+    int index = ui.presetComboBox->currentIndex();
+    //aditional parameters
+    QVariantMap preset = ui.presetComboBox->itemData(index).toMap();
+    preset["out_dir"] = ui.outDirEdit->text();
+    preset["file_name"] = ui.outFileEdit->text();
+    return preset;
+}
+
 void ConverterDialog::on_dirButton_clicked()
 {
     QString dir = FileDialog::getExistingDirectory(this, tr("Choose a directory"),
@@ -86,22 +98,6 @@ void ConverterDialog::accept()
     settings.setValue("out_dir", ui.outDirEdit->text());
     settings.value("file_name", ui.outFileEdit->text());
     settings.endGroup();
-
-    /*QSettings preset_settings(QDir::homePath() + "/.qmmp/converterrc", QSettings::IniFormat);
-    preset_settings.clear();
-    for(int i = 0; i < ui.presetComboBox->count(); ++i)
-    {
-        QString name = ui.presetComboBox->itemText(i);
-        QVariantMap data = ui.presetComboBox->itemData(i).toMap();
-        if(data["read_only"].toBool())
-            continue;
-        preset_settings.beginGroup(name);
-        preset_settings.setValue("ext", data["ext"].toString());
-        preset_settings.setValue("command", data["command"].toString());
-        preset_settings.setValue("use_16bit", data["use_16bit"].toBool());
-        preset_settings.setValue("tags", data["tags"].toBool());
-        preset_settings.endGroup();
-    }*/
     QDialog::accept();
 }
 
@@ -184,6 +180,7 @@ void ConverterDialog::copyPreset()
     int index = ui.presetComboBox->currentIndex();
     QVariantMap data = ui.presetComboBox->itemData(index).toMap();
     data["name"] = uniqueName(data["name"].toString());
+    data["read_only"] = false;
     ui.presetComboBox->addItem (data["name"].toString(), data);
 }
 

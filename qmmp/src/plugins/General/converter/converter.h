@@ -24,6 +24,8 @@
 #include <QThread>
 #include <QQueue>
 #include <QHash>
+#include <QVariantMap>
+#include <QMutex>
 #include <stdio.h>
 #include <qmmp/decoder.h>
 #include <qmmp/inputsource.h>
@@ -36,9 +38,13 @@ class Converter : public QThread
     Q_OBJECT
 public:
     explicit Converter(QObject *parent = 0);
+    virtual ~Converter();
 
-    void add(const QStringList &urls);
-    void add(const QString &url);
+    void add(const QStringList &urls, const QVariantMap &preset);
+    void add(const QString &url, const QVariantMap &preset);
+
+public slots:
+    void stop();
 
 signals:
     void progress(int percent);
@@ -50,6 +56,9 @@ private:
     bool convert(Decoder *decoder, FILE *file);
     QQueue <Decoder*> m_decoders;
     QHash <Decoder*, InputSource*> m_inputs;
+    QHash <Decoder*, QVariantMap> m_presets;
+    QMutex m_mutex;
+    bool m_user_stop;
 
 };
 
