@@ -3,7 +3,8 @@ include(../../plugins.pri)
 INCLUDEPATH += ../../../../src
 CONFIG += release \
 warn_on \
-plugin
+plugin \
+link_pkgconfig
 
 TARGET =$$PLUGINS_PREFIX/General/converter
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libconverter.so
@@ -12,6 +13,8 @@ unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libconverter.so
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib
 unix:LIBS += -lqmmpui -lqmmp
+
+PKGCONFIG += taglib
 
 win32:QMAKE_LIBDIR += ../../../../bin
 win32:LIBS += -lqmmpui0 -lqmmp0
