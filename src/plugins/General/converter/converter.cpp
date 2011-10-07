@@ -25,9 +25,11 @@
 #include <qmmp/metadatamanager.h>
 #include <qmmpui/metadataformatter.h>
 #include <QtEndian>
-#include <QSettings>
-#include <QDesktopServices>
+#include <taglib/fileref.h>
+#include <taglib/tag.h>
 #include "converter.h"
+
+#define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
 
 Converter::Converter(QObject *parent) : QThread(parent)
 {}
@@ -137,6 +139,7 @@ void Converter::run()
             continue;
         }
 
+        QMap<Qmmp::MetaData, QString> metadata = list[0]->metaData();
         MetaDataFormatter formatter(pattern);
 
         QString desc = tr("Track: %1").arg(desc_formatter.parse(list[0]->metaData(), list[0]->length()));
@@ -214,6 +217,23 @@ void Converter::run()
         else
             qDebug("Converter: task '%s' finished with success", qPrintable(preset["name"].toString()));
         m_mutex.unlock();
+
+        if(preset["tags"].toBool())
+        {
+            qDebug("Converter: writing tags");
+            TagLib::FileRef file(qPrintable(full_path));
+            if(file.tag())
+            {
+                file.tag()->setTitle(QStringToTString_qt4(metadata[Qmmp::TITLE]));
+                file.tag()->setArtist(QStringToTString_qt4(metadata[Qmmp::ARTIST]));
+                file.tag()->setAlbum(QStringToTString_qt4(metadata[Qmmp::ALBUM]));
+                file.tag()->setGenre(QStringToTString_qt4(metadata[Qmmp::GENRE]));
+                file.tag()->setComment(QStringToTString_qt4(metadata[Qmmp::COMMENT]));
+                file.tag()->setYear(metadata[Qmmp::YEAR].toUInt());
+                file.tag()->setTrack(metadata[Qmmp::TRACK].toUInt());
+                file.save();
+            }
+        }
     }
     qDebug("Converter: thread finished");
 }
