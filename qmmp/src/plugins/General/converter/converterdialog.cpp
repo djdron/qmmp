@@ -48,6 +48,7 @@ ConverterDialog::ConverterDialog(QList <PlayListItem *> items,  QWidget *parent)
     QString music_path = QDesktopServices::storageLocation(QDesktopServices::MusicLocation);
     ui.outDirEdit->setText(settings.value("out_dir", music_path).toString());
     ui.outFileEdit->setText(settings.value("file_name","%p - %t").toString());
+    ui.overwriteCheckBox->setChecked(settings.value("overwrite",false).toBool());
     settings.endGroup();
     createMenus();
 
@@ -80,6 +81,7 @@ QVariantMap ConverterDialog::preset() const
     QVariantMap preset = ui.presetComboBox->itemData(index).toMap();
     preset["out_dir"] = ui.outDirEdit->text();
     preset["file_name"] = ui.outFileEdit->text();
+    preset["overwrite"] = ui.overwriteCheckBox->isChecked();
     return preset;
 }
 
@@ -97,6 +99,7 @@ void ConverterDialog::accept()
     settings.beginGroup("Converter");
     settings.setValue("out_dir", ui.outDirEdit->text());
     settings.value("file_name", ui.outFileEdit->text());
+    settings.setValue("overwrite", ui.overwriteCheckBox->isChecked());
     settings.endGroup();
     QDialog::accept();
 }

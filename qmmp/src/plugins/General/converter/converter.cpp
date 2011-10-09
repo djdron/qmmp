@@ -149,6 +149,22 @@ void Converter::run()
 
         QString name = formatter.parse(list[0]->metaData(), list[0]->length());
         QString full_path = out_path + "/" + name + "." + preset["ext"].toString();
+
+        if(QFile::exists(full_path))
+        {
+            if(preset["overwrite"].toBool()) //remove previous file
+                QFile::remove(full_path);
+            else
+            {
+                int i = 0;
+                while(QFile::exists(full_path)) //create file with another name
+                {
+                    ++i;
+                    full_path = out_path + "/" + name + QString("_%1.").arg(i) + preset["ext"].toString();
+                }
+            }
+        }
+
         QString command = preset["command"].toString();
         command.replace("%o", "\"" + full_path + "\"");
 
