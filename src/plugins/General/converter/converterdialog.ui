@@ -68,7 +68,7 @@
     <widget class="QComboBox" name="presetComboBox"/>
    </item>
    <item row="5" column="0" colspan="3">
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="overwriteCheckBox">
      <property name="text">
       <string>Overwrite existing files</string>
      </property>
