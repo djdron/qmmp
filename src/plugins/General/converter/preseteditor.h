@@ -41,7 +41,11 @@ public:
 
     const QVariantMap data() const;
 
+private slots:
+    void addCommandString(QAction *);
+
 private:
+    void createMenus();
     Ui::PresetEditor *m_ui;
 };
 

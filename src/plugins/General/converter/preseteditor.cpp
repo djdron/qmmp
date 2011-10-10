@@ -18,6 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QMenu>
 #include "preseteditor.h"
 #include "ui_preseteditor.h"
 
@@ -30,6 +31,7 @@ PresetEditor::PresetEditor(const QVariantMap &data, QWidget *parent) :
     m_ui->commandLineEdit->setText(data.value("command").toString());
     m_ui->us16bitCheckBox->setChecked(data.value("use_16bit").toBool());
     m_ui->tagsCheckBox->setChecked(data.value("tags").toBool());
+    createMenus();
 }
 
 PresetEditor::~PresetEditor()
@@ -47,4 +49,20 @@ const QVariantMap PresetEditor::data() const
     data.insert("tags", m_ui->tagsCheckBox->isChecked());
     data.insert("read_only", false);
     return data;
+}
+
+void PresetEditor::createMenus()
+{
+    QMenu *commandMenu = new QMenu(this);
+    commandMenu->addAction(tr("Output file"))->setData("%o");
+    commandMenu->addAction(tr("Input file"))->setData("%i");
+
+    m_ui->commandToolButton->setMenu(commandMenu);
+    m_ui->commandToolButton->setPopupMode(QToolButton::InstantPopup);
+    connect(commandMenu, SIGNAL(triggered(QAction *)), SLOT(addCommandString(QAction *)));
+}
+
+void PresetEditor::addCommandString(QAction *a)
+{
+    m_ui->commandLineEdit->insert(a->data().toString());
 }
