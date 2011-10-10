@@ -231,5 +231,15 @@ using external command-line encoders</source>
         <source>Convert to 16 bit</source>
         <translation>Конвертувати в 16 біт</translation>
     </message>
+    <message>
+        <location filename="../preseteditor.cpp" line="57"/>
+        <source>Output file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.cpp" line="58"/>
+        <source>Input file</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

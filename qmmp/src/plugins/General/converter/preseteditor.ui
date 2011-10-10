@@ -62,7 +62,7 @@
        <widget class="QLineEdit" name="commandLineEdit"/>
       </item>
       <item>
-       <widget class="QToolButton" name="toolButton">
+       <widget class="QToolButton" name="commandToolButton">
         <property name="text">
          <string notr="true">...</string>
         </property>
