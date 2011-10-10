@@ -1,7 +1,7 @@
 /*
  *   PCM time-domain equalizer
  *
- *   Copyright (C) 2002-2005  Felipe Rivera <liebremx at users.sourceforge.net>
+ *   Copyright (C) 2002-2006  Felipe Rivera <liebremx at users.sourceforge.net>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
  *   along with this program; if not, write to the Free Software
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- *   $Id: iir_fpu.h,v 1.2 2005/11/01 15:59:20 lisanet Exp $$
+ *   $Id: iir_fpu.h,v 1.3 2006/01/15 00:26:32 liebremx Exp $$
  */
 #ifndef IIR_FPU_H
 #define IIR_FPU_H
