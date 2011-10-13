@@ -34,6 +34,7 @@ SET(libconverter_SRCS
     converter.cpp
     converterhelper.cpp
     converterdialog.cpp
+    preseteditor.cpp
 )
 
 SET(libconverter_MOC_HDRS
@@ -41,6 +42,7 @@ SET(libconverter_MOC_HDRS
     converter.h
     converterhelper.h
     converterdialog.h
+    preseteditor.h
 )
 
 SET(libconverter_RCCS 
@@ -54,6 +56,7 @@ QT4_WRAP_CPP(libconverter_MOC_SRCS ${libconverter_MOC_HDRS})
 
 SET(libconverter_UIS
     converterdialog.ui
+    preseteditor.ui
 )
 
 QT4_WRAP_UI(libconverter_UIS_H ${libconverter_UIS})
