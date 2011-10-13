@@ -6,12 +6,12 @@
     <message>
         <location filename="../converter.cpp" line="145"/>
         <source>Track: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Доріжка: %1</translation>
     </message>
     <message>
         <location filename="../converter.cpp" line="147"/>
         <source>Preset: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Предвстановлення: %1</translation>
     </message>
 </context>
 <context>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../converterdialog.ui" line="43"/>
         <source>Output directory:</source>
-        <translation type="unfinished"></translation>
+        <translation>Вихідна тека:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="53"/>
@@ -158,7 +158,9 @@
         <location filename="../converterfactory.cpp" line="51"/>
         <source>This plugin converts supported audio files to other file formats
 using external command-line encoders</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей модуль призначений для конвертування аудіофайлів,
+що підтримуються, в інший формат з використанням зовнішніх консольних
+програм</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="53"/>
@@ -234,12 +236,12 @@ using external command-line encoders</source>
     <message>
         <location filename="../preseteditor.cpp" line="57"/>
         <source>Output file</source>
-        <translation type="unfinished"></translation>
+        <translation>Вихідний файл</translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="58"/>
         <source>Input file</source>
-        <translation type="unfinished"></translation>
+        <translation>Вхідний файл</translation>
     </message>
 </context>
 </TS>
