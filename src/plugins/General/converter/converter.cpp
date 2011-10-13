@@ -31,6 +31,28 @@
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
 
+//static functions
+static inline void s8_to_s16_2(qint8 *in, qint16 *out, qint64 samples)
+{
+    for(qint64 i = 0; i < samples; ++i)
+        out[i] = in[i] << 8;
+    return;
+}
+
+static inline void s24_to_s16_2(qint32 *in, qint16 *out, qint64 samples)
+{
+    for(qint64 i = 0; i < samples; ++i)
+        out[i] = in[i] >> 8;
+    return;
+}
+
+static inline void s32_to_s16_2(qint32 *in, qint16 *out, qint64 samples)
+{
+    for(qint64 i = 0; i < samples; ++i)
+        out[i] = in[i] >> 16;
+    return;
+}
+
 Converter::Converter(QObject *parent) : QThread(parent)
 {}
 
@@ -218,7 +240,7 @@ void Converter::run()
             continue;
         }
 
-        convert(decoder, enc_pipe);
+        convert(decoder, enc_pipe, preset["use_16bit"].toBool());
         pclose(enc_pipe);
         //fclose(enc_pipe);
         m_inputs.take(decoder)->deleteLater();
@@ -254,15 +276,17 @@ void Converter::run()
     qDebug("Converter: thread finished");
 }
 
-bool Converter::convert(Decoder *decoder, FILE *file)
+bool Converter::convert(Decoder *decoder, FILE *file, bool use16bit)
 {
     const int buf_size = 8192;
-    unsigned char output_buf[buf_size];
+    AudioParameters ap = decoder->audioParameters();
+    Qmmp::AudioFormat format = ap.format();
+    unsigned char output_buf[(use16bit && format == Qmmp::PCM_S8) ? buf_size : buf_size * 2];
     qint64 output_at = 0;
     qint64 total = 0;
     quint64 len = 0;
-    AudioParameters ap = decoder->audioParameters();
-    qint64 size = decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
+    qint64 totalSize = decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
+
     int percent = 0;
     int prev_percent = 0;
     forever
@@ -274,6 +298,25 @@ bool Converter::convert(Decoder *decoder, FILE *file)
         {
             output_at += len;
             total += len;
+
+            if(use16bit) //TODO dithering support
+            {
+                if(format == Qmmp::PCM_S8)
+                {
+                    s8_to_s16_2((qint8 *)output_buf, (qint16 *)output_buf, output_at);
+                    output_at <<= 1;
+                }
+                else if(format == Qmmp::PCM_S24LE)
+                {
+                    s24_to_s16_2((qint32 *)output_buf, (qint16 *)output_buf, output_at >> 2);
+                    output_at >>= 1;
+                }
+                else if(format == Qmmp::PCM_S32LE)
+                {
+                    s32_to_s16_2((qint32 *)output_buf, (qint16 *)output_buf, output_at >> 2);
+                    output_at >>= 1;
+                }
+            }
             while(output_at > 0)
             {
                 len = fwrite(output_buf, 1, output_at, file);
@@ -285,7 +328,7 @@ bool Converter::convert(Decoder *decoder, FILE *file)
                 output_at -= len;
                 memmove(output_buf, output_buf + len, output_at);
             }
-            percent = 100 * total / size;
+            percent = 100 * total / totalSize;
             if(percent != prev_percent)
             {
                 prev_percent = percent;
