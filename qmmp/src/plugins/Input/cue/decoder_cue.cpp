@@ -108,7 +108,7 @@ bool DecoderCUE::initialize()
                       audioParameters().sampleSize() * m_length/1000;
     m_totalBytes = 0;
 
-    m_sz = audioParameters().sampleSize();
+    m_sz = audioParameters().sampleSize() * audioParameters().sampleSize();
 
     addMetaData(m_parser->info(m_track)->metaData());
     return true;
@@ -160,7 +160,7 @@ qint64 DecoderCUE::read(char *data, qint64 size)
     }
 
     qint64 len2 = qMax(qint64(0), length_in_bytes - m_totalBytes);
-    len2 = (len2 / m_sz) * m_sz; //returned size must contain integer number of samples
+    len2 = (len2 / m_sz) * m_sz; //whole of samples of each channel
     m_totalBytes += len2;
     //save data of the next track
     if(m_buf)
