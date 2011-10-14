@@ -207,11 +207,12 @@ void Converter::run()
                                0x64, 0x61, 0x74, 0x61, //"data"
                                0x00, 0x00, 0x00, 0x00 }; //chunk size*/
 
+        quint16 sample_size = preset["use_16bit"].toBool() ? 2 : ap.sampleSize(); 
         quint32 sample_rate = qToLittleEndian(ap.sampleRate());
         quint16 channels = qToLittleEndian((quint16)ap.channels());
-        quint16 block_align = qToLittleEndian((quint16)ap.sampleSize() * ap.channels());
-        quint16 bps = qToLittleEndian((quint16)ap.sampleSize() * 8);
-        quint32 size = decoder->totalTime() * ap.sampleRate() * ap.channels() * ap.sampleSize() / 1000;
+        quint16 block_align = qToLittleEndian((quint16)sample_size * ap.channels());
+        quint16 bps = qToLittleEndian((quint16)sample_size * 8);
+        quint32 size = decoder->totalTime() * ap.sampleRate() * ap.channels() * sample_size / 1000;
         size = qToLittleEndian(size);
 
         memcpy(&wave_header[22], &channels, 2);
