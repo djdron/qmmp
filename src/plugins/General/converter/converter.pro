@@ -12,7 +12,7 @@ unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libconverter.so
 
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib
-unix:LIBS += -lqmmpui -lqmmp
+unix:LIBS += -lqmmpui -lqmmp -ltag
 
 PKGCONFIG += taglib
 

@@ -66,5 +66,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(converter MODULE ${libconverter_SRCS} ${libconverter_MOC_SRCS} ${libconverter_UIS_H} ${libconverter_RCC_SRCS})
 add_dependencies(converter qmmpui)
-target_link_libraries(converter ${QT_LIBRARIES} -lqmmpui -lqmmp)
+target_link_libraries(converter ${QT_LIBRARIES} -lqmmpui -lqmmp -ltag)
 install(TARGETS converter DESTINATION ${LIB_DIR}/qmmp/General)
