@@ -234,14 +234,19 @@ using external command-line encoders</source>
         <translation>Преобразовать в 16 бит</translation>
     </message>
     <message>
-        <location filename="../preseteditor.cpp" line="57"/>
-        <source>Output file</source>
-        <translation type="unfinished"></translation>
+        <location filename="../preseteditor.cpp" line="37"/>
+        <source>%1 (Read Only)</source>
+        <translation>%1 (только для чтения)</translation>
     </message>
     <message>
-        <location filename="../preseteditor.cpp" line="58"/>
+        <location filename="../preseteditor.cpp" line="70"/>
+        <source>Output file</source>
+        <translation>Выходной файл</translation>
+    </message>
+    <message>
+        <location filename="../preseteditor.cpp" line="71"/>
         <source>Input file</source>
-        <translation type="unfinished"></translation>
+        <translation>Входной файл</translation>
     </message>
 </context>
 </TS>

@@ -159,8 +159,7 @@ void ConverterDialog::editPreset()
     if(ui.presetComboBox->currentIndex() == -1)
         return;
     int index = ui.presetComboBox->currentIndex();
-    if(ui.presetComboBox->itemData(index).toMap()["read_only"].toBool())
-        return;
+
     PresetEditor *editor = new PresetEditor(ui.presetComboBox->itemData(index).toMap(), this);
     if(editor->exec() == QDialog::Accepted)
     {
