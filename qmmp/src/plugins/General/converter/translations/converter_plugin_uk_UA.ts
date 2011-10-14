@@ -236,7 +236,8 @@ using external command-line encoders</source>
     <message>
         <location filename="../preseteditor.cpp" line="37"/>
         <source>%1 (Read Only)</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>%1 (тільки читання)</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="70"/>
