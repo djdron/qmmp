@@ -31,7 +31,20 @@ PresetEditor::PresetEditor(const QVariantMap &data, QWidget *parent) :
     m_ui->commandLineEdit->setText(data.value("command").toString());
     m_ui->us16bitCheckBox->setChecked(data.value("use_16bit").toBool());
     m_ui->tagsCheckBox->setChecked(data.value("tags").toBool());
-    createMenus();
+
+    if(data["read_only"].toBool())
+    {
+        setWindowTitle(tr("%1 (Read Only)").arg(windowTitle()));
+        m_ui->buttonBox->setStandardButtons(QDialogButtonBox::Close);
+        m_ui->nameLineEdit->setReadOnly(true);
+        m_ui->extensionLineEdit->setReadOnly(true);
+        m_ui->commandLineEdit->setReadOnly(true);
+        m_ui->us16bitCheckBox->setDisabled(true);
+        m_ui->tagsCheckBox->setDisabled(true);
+        m_ui->commandToolButton->setDisabled(true);
+    }
+    else
+        createMenus();
 }
 
 PresetEditor::~PresetEditor()
