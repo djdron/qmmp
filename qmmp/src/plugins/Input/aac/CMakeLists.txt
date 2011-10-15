@@ -60,6 +60,7 @@ ENDIF(FAAD_FOUND)
 
 include_directories(${TAGLIB_INCLUDE_DIRS})
 link_directories(${TAGLIB_LIBRARY_DIRS})
+ADD_DEFINITIONS(${TAGLIB_CFLAGS})
 
 SET(libaac_SRCS
   decoder_aac.cpp
@@ -91,6 +92,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(FAAD_FOUND)
 ADD_LIBRARY(aac MODULE ${libaac_SRCS} ${libaac_MOC_SRCS} ${libaac_RCC_SRCS} ${libaac_HDRS})
 add_dependencies(aac qmmp)
-target_link_libraries(aac ${QT_LIBRARIES} -lqmmp -lfaad ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+target_link_libraries(aac ${QT_LIBRARIES} -lqmmp -lfaad ${TAGLIB_LDFLAGS})
 install(TARGETS aac DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FAAD_FOUND)

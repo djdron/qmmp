@@ -29,6 +29,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 pkg_search_module(ALSA alsa)
 include_directories(${ALSA_INCLUDE_DIRS})
 link_directories(${ALSA_LIBRARY_DIRS})
+ADD_DEFINITIONS(${ALSA_CFLAGS})
 
 SET(libalsa_SRCS
   outputalsa.cpp
@@ -64,7 +65,7 @@ IF(ALSA_FOUND)
 ADD_LIBRARY(alsa MODULE ${libalsa_SRCS} ${libalsa_MOC_SRCS} ${libalsa_UIS_H}
   ${libalsa_RCC_SRCS})
 add_dependencies(alsa qmmp)
-target_link_libraries(alsa ${QT_LIBRARIES} -lqmmp ${ALSA_LDFLAGS} ${ALSA_CFLAGS})
+target_link_libraries(alsa ${QT_LIBRARIES} -lqmmp ${ALSA_LDFLAGS})
 install(TARGETS alsa DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(ALSA_FOUND)
 

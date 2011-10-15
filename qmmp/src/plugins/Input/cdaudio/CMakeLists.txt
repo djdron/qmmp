@@ -26,6 +26,7 @@ pkg_check_modules(CDIO libcdio libcdio_cdda libcdio_paranoia libcddb)
 
 include_directories(${CDIO_INCLUDE_DIRS})
 link_directories(${CDIO_LIBRARY_DIRS})
+ADD_DEFINITIONS(${CDIO_CFLAGS})
 
 SET(libcdaudio_SRCS
   decoder_cdaudio.cpp
@@ -63,6 +64,6 @@ IF(CDIO_FOUND)
 ADD_LIBRARY(cdaudio MODULE ${libcdaudio_SRCS} ${libcdaudio_MOC_SRCS} ${libcdaudio_UIS_H} ${libcdaudio_RCC_SRCS}
 ${libcdaudio_HDRS})
 add_dependencies(cdaudio qmmp)
-target_link_libraries(cdaudio ${QT_LIBRARIES} -lqmmp ${CDIO_LDFLAGS} ${CDIO_CFLAGS})
+target_link_libraries(cdaudio ${QT_LIBRARIES} -lqmmp ${CDIO_LDFLAGS})
 install(TARGETS cdaudio DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(CDIO_FOUND)

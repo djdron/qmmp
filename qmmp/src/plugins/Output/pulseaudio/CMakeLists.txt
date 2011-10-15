@@ -30,6 +30,7 @@ pkg_check_modules(PULSE libpulse-simple>=0.9.15)
 
 include_directories(${PULSE_INCLUDE_DIRS})
 link_directories(${PULSE_LIBRARY_DIRS})
+ADD_DEFINITIONS(${PULSE_CFLAGS})
 
 SET(libpulseaudio_SRCS
   outputpulseaudio.cpp
@@ -56,7 +57,7 @@ IF(PULSE_FOUND)
 ADD_LIBRARY(pulseaudio MODULE ${libpulseaudio_SRCS} ${libpulseaudio_MOC_SRCS} ${libpulseaudio_UIS_H}
   ${libpulseaudio_RCC_SRCS})
 add_dependencies(pulseaudio qmmp)
-target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LDFLAGS} ${PULSE_CFLAGS})
+target_link_libraries(pulseaudio ${QT_LIBRARIES} -lqmmp ${PULSE_LDFLAGS})
 install(TARGETS pulseaudio DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(PULSE_FOUND)
 

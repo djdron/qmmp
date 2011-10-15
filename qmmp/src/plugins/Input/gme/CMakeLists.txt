@@ -34,8 +34,6 @@ IF(GME_FOUND)
 
 ENDIF(GME_FOUND)
 
-include_directories(${TAGLIB_INCLUDE_DIRS})
-link_directories(${TAGLIB_LIBRARY_DIRS})
 
 SET(libgme_SRCS
   decoder_gme.cpp
@@ -65,6 +63,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(GME_FOUND)
 ADD_LIBRARY(gme MODULE ${libgme_SRCS} ${libgme_MOC_SRCS} ${libgme_RCC_SRCS} ${libgme_HDRS})
 add_dependencies(gme qmmp)
-target_link_libraries(gme ${QT_LIBRARIES} -lqmmp -lgme ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+target_link_libraries(gme ${QT_LIBRARIES} -lqmmp -lgme)
 install(TARGETS gme DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(GME_FOUND)

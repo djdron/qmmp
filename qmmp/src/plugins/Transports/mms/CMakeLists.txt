@@ -30,6 +30,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 pkg_search_module(MMS libmms>=0.4)
 include_directories(${MMS_INCLUDE_DIRS})
 link_directories(${MMS_LIBRARY_DIRS})
+ADD_DEFINITIONS(${MMS_CFLAGS})
 
 
 SET(libmms_SRCS
@@ -65,7 +66,7 @@ QT4_WRAP_CPP(libmms_MOC_SRCS ${libmms_MOC_HDRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(MMS_FOUND)
 ADD_LIBRARY(mms MODULE ${libmms_SRCS} ${libmms_MOC_SRCS} ${libmms_UIS_H} ${libmms_RCC_SRCS})
-target_link_libraries(mms ${QT_LIBRARIES} -lqmmp ${MMS_LDFLAGS} ${MMS_CFLAGS})
+target_link_libraries(mms ${QT_LIBRARIES} -lqmmp ${MMS_LDFLAGS})
 add_dependencies(mms qmmp)
 install(TARGETS mms DESTINATION ${LIB_DIR}/qmmp/Transports)
 ENDIF(MMS_FOUND)

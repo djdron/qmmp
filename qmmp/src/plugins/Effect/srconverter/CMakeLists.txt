@@ -29,6 +29,7 @@ pkg_check_modules(SAMPLERATE samplerate)
 
 include_directories(${SAMPLERATE_INCLUDE_DIRS})
 link_directories(${SAMPLERATE_LIBRARY_DIRS})
+ADD_DEFINITIONS(${SAMPLERATE_CFLAGS})
 
 SET(libsrconverter_SRCS
     srconverter.cpp
@@ -68,6 +69,6 @@ IF(SAMPLERATE_FOUND)
 ADD_LIBRARY(srconverter MODULE ${libsrconverter_SRCS} ${libsrconverter_MOC_SRCS} ${libsrconverter_UIS_H}
   ${libsrconverter_RCC_SRCS} ${libsrconverter_HDRS})
 add_dependencies(srconverter qmmp)
-target_link_libraries(srconverter ${QT_LIBRARIES} -lqmmp ${SAMPLERATE_LDFLAGS} ${SAMPLERATE_CFLAGS})
+target_link_libraries(srconverter ${QT_LIBRARIES} -lqmmp ${SAMPLERATE_LDFLAGS})
 install(TARGETS srconverter DESTINATION ${LIB_DIR}/qmmp/Effect)
 ENDIF(SAMPLERATE_FOUND)

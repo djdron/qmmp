@@ -27,14 +27,12 @@ SET(QT_INCLUDES
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
-# libffmpeg
+# ffmpeg
 pkg_check_modules(FFMPEG libavcodec>=52.20.0 libavformat>=52.31.0 libavutil>=49.15.0)
 
 include_directories(${FFMPEG_INCLUDE_DIRS})
 link_directories(${FFMPEG_LIBRARY_DIRS})
-
-ADD_DEFINITIONS(${LIBAVCODEC_CFLAGS})
-ADD_DEFINITIONS(${LIBAVFORMAT_CFLAGS})
+ADD_DEFINITIONS(${FFMPEG_CFLAGS})
 
 SET(libffmpeg_SRCS
   decoder_ffmpeg.cpp
@@ -75,6 +73,6 @@ IF(FFMPEG_FOUND)
 ADD_LIBRARY(ffmpeg MODULE ${libffmpeg_SRCS} ${libffmpeg_MOC_SRCS} ${libffmpeg_UIS_H}
   ${libffmpeg_RCC_SRCS} ${libffmpeg_HDRS})
 add_dependencies(ffmpeg qmmp)
-target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS} ${FFMPEG_CFLAGS})
+target_link_libraries(ffmpeg ${QT_LIBRARIES} -lqmmp ${FFMPEG_LDFLAGS})
 install(TARGETS ffmpeg DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FFMPEG_FOUND)

@@ -30,6 +30,7 @@ pkg_check_modules(JACK jack samplerate)
 
 include_directories(${JACK_INCLUDE_DIRS})
 link_directories(${JACK_LIBRARY_DIRS})
+ADD_DEFINITIONS(${JACK_CFLAGS})
 
 
 IF(JACK_FOUND)
@@ -81,7 +82,7 @@ set_target_properties(jack PROPERTIES
                            COMPILE_FLAGS -pthread
                            LINK_FLAGS -pthread
 )
-target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LDFLAGS} ${JACK_CFLAGS})
+target_link_libraries(jack ${QT_LIBRARIES} -lqmmp ${JACK_LDFLAGS})
 install(TARGETS jack DESTINATION ${LIB_DIR}/qmmp/Output)
 ENDIF(JACK_FOUND)
 
