@@ -61,6 +61,10 @@ Thanks to:
 
 Based on:
 
+madplay - MPEG audio decoder and player (c) 2000-2004
+
+    Robert Leslie <rob@mars.org>
+
 Mq3 - simple mp3 player using Qt (c) 2000
 
     Brad Hughes <bhughes@trolltech.com>
