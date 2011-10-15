@@ -85,6 +85,8 @@ ADD_CUSTOM_COMMAND(
     COMMAND find
     ARGS ${CMAKE_CURRENT_SOURCE_DIR} -name "*.qm" | xargs rm -rf
     COMMAND find
+    ARGS ${CMAKE_CURRENT_BINARY_DIR} -name "*.pc" | xargs rm -rf
+    COMMAND find
     ARGS ${CMAKE_CURRENT_SOURCE_DIR} -name "*.depends" | xargs rm -rf
     COMMAND rm
     ARGS -rf ${CMAKE_CURRENT_BINARY_DIR}/install_manifest.txt

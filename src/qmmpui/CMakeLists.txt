@@ -128,3 +128,6 @@ install(TARGETS qmmpui LIBRARY DESTINATION ${LIB_DIR}
                        RUNTIME DESTINATION bin
                        ARCHIVE DESTINATION ${LIB_DIR})
 install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION include/qmmpui)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmmpui.pc.in ${CMAKE_CURRENT_BINARY_DIR}/qmmpui.pc @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qmmpui.pc DESTINATION ${LIB_DIR}/pkgconfig)
