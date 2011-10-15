@@ -141,3 +141,7 @@ install(TARGETS libqmmp LIBRARY DESTINATION ${LIB_DIR}
                         RUNTIME DESTINATION bin
                         ARCHIVE DESTINATION ${LIB_DIR})
 install(FILES ${libqmmp_DEVEL_HDRS} DESTINATION include/qmmp)
+
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmmp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/qmmp.pc @ONLY)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qmmp.pc DESTINATION ${LIB_DIR}/pkgconfig)
