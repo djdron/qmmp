@@ -41,6 +41,7 @@ ENDIF(MPC_NEW_FOUND OR MPC_OLD_FOUND)
 
 include_directories(${TAGLIB_INCLUDE_DIRS})
 link_directories(${TAGLIB_LIBRARY_DIRS})
+ADD_DEFINITIONS(${TAGLIB_CFLAGS})
 
 SET(libmpc_SRCS
   decoder_mpc.cpp
@@ -69,6 +70,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(MPC_FOUND)
 ADD_LIBRARY(mpc MODULE ${libmpc_SRCS} ${libmpc_MOC_SRCS} ${libmpc_RCC_SRCS} ${libmpc_HDRS})
 add_dependencies(mpc qmmp)
-target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp -lmpcdec ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+target_link_libraries(mpc ${QT_LIBRARIES} -lqmmp -lmpcdec ${TAGLIB_LDFLAGS})
 install(TARGETS mpc DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(MPC_FOUND)

@@ -36,6 +36,7 @@ link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 # X11
 include_directories(${X11_INCLUDE_DIRS})
 link_directories(${X11_LIBRARY_DIRS})
+ADD_DEFINITIONS(${X11_CFLAGS})
 
 SET(skinned_SRCS
     fft.c

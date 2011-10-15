@@ -12,7 +12,7 @@ unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/General/libconverter.so
 
 TEMPLATE = lib
 unix:QMAKE_LIBDIR += ../../../../lib
-unix:LIBS += -lqmmpui -lqmmp -ltag
+unix:LIBS += -lqmmpui -lqmmp
 
 PKGCONFIG += taglib
 
@@ -54,8 +54,3 @@ SOURCES += converterfactory.cpp \
 
 FORMS += converterdialog.ui \
     preseteditor.ui
-
-
-
-
-

@@ -35,6 +35,8 @@ ENDIF(NOT FLAC_LINK_FLAGS)
 
 include_directories(${FLAC_INCLUDE_DIRS} ${TAGLIB_INCLUDE_DIRS})
 link_directories(${FLAC_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
+ADD_DEFINITIONS(${FLAC_CFLAGS})
+ADD_DEFINITIONS(${TAGLIB_CFLAGS})
 
 SET(libflac_SRCS
   decoder_flac.cpp
@@ -68,6 +70,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(FLAC_FOUND)
 ADD_LIBRARY(flac MODULE ${libflac_SRCS} ${libflac_MOC_SRCS} ${libflac_RCC_SRCS} ${libflac_HDRS})
 add_dependencies(flac qmmp)
-target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LDFLAGS} ${FLAC_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+target_link_libraries(flac ${QT_LIBRARIES} -lqmmp ${FLAC_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS flac DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(FLAC_FOUND)

@@ -30,6 +30,7 @@ pkg_search_module(SNDFILE sndfile)
 
 include_directories(${SNDFILE_INCLUDE_DIRS})
 link_directories(${SNDFILE_LIBRARY_DIRS})
+ADD_DEFINITIONS(${SNDFILE_CFLAGS})
 
 SET(libsndfile_SRCS
   decoder_sndfile.cpp
@@ -59,7 +60,7 @@ IF(SNDFILE_FOUND)
 ADD_LIBRARY(sndfile MODULE ${libsndfile_SRCS} ${libsndfile_MOC_SRCS} ${libsndfile_UIS_H}
   ${libsndfile_RCC_SRCS} ${libsndfile_HDRS})
 add_dependencies(sndfile qmmp)
-target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LDFLAGS} ${SNDFILE_CFLAGS})
+target_link_libraries(sndfile ${QT_LIBRARIES} -lqmmp ${SNDFILE_LDFLAGS})
 install(TARGETS sndfile DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(SNDFILE_FOUND)
 

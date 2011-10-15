@@ -44,6 +44,7 @@ ENDIF(INTTYPES_FOUND)
 
 include_directories(${MODPLUG_INCLUDE_DIRS})
 link_directories(${MODPLUG_LIBRARY_DIRS})
+ADD_DEFINITIONS(${MODPLUG_CFLAGS})
 
 SET(libmodplug_SRCS
   decoder_modplug.cpp
@@ -86,7 +87,7 @@ IF(MODPLUG_FOUND)
 ADD_LIBRARY(modplug MODULE ${libmodplug_SRCS} ${libmodplug_MOC_SRCS} ${libmodplug_UIS_H}
   ${libmodplug_RCC_SRCS} ${libmodplug_HDRS})
 add_dependencies(modplug qmmp)
-target_link_libraries(modplug ${QT_LIBRARIES} -lqmmp ${MODPLUG_LDFLAGS} ${MODPLUG_CFLAGS})
+target_link_libraries(modplug ${QT_LIBRARIES} -lqmmp ${MODPLUG_LDFLAGS})
 install(TARGETS modplug DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(MODPLUG_FOUND)
 

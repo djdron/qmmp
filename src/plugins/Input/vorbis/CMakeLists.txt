@@ -30,6 +30,7 @@ pkg_check_modules(VORBIS ogg vorbis vorbisfile)
 
 include_directories(${VORBIS_INCLUDE_DIRS}  ${TAGLIB_INCLUDE_DIRS})
 link_directories(${VORBIS_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
+ADD_DEFINITIONS(${VORBIS_CFLAGS} ${TAGLIB_CFLAGS})
 
 SET(libvorbis_SRCS
   decoder_vorbis.cpp
@@ -64,6 +65,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 IF(VORBIS_FOUND)
 ADD_LIBRARY(vorbis MODULE ${libvorbis_SRCS} ${libvorbis_MOC_SRCS} ${libvorbis_RCC_SRCS} ${libvorbis_HDRS})
 add_dependencies(vorbis qmmp)
-target_link_libraries(vorbis ${QT_LIBRARIES} -lqmmp ${VORBIS_LDFLAGS} ${VORBIS_CFLAGS} ${TAGLIB_LDFLAGS} ${TAGLIB_CFLAGS})
+target_link_libraries(vorbis ${QT_LIBRARIES} -lqmmp ${VORBIS_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS vorbis DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(VORBIS_FOUND)

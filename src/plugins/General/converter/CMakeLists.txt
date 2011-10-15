@@ -29,6 +29,12 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmpui)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
+# taglib
+include_directories(${TAGLIB_INCLUDE_DIRS})
+link_directories(${TAGLIB_LIBRARY_DIRS})
+ADD_DEFINITIONS(${TAGLIB_CFLAGS})
+
+
 SET(libconverter_SRCS
     converterfactory.cpp
     converter.cpp
@@ -66,5 +72,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 ADD_LIBRARY(converter MODULE ${libconverter_SRCS} ${libconverter_MOC_SRCS} ${libconverter_UIS_H} ${libconverter_RCC_SRCS})
 add_dependencies(converter qmmpui)
-target_link_libraries(converter ${QT_LIBRARIES} -lqmmpui -lqmmp -ltag)
+target_link_libraries(converter ${QT_LIBRARIES} -lqmmpui -lqmmp ${TAGLIB_LDFLAGS})
 install(TARGETS converter DESTINATION ${LIB_DIR}/qmmp/General)
