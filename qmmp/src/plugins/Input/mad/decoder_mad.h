@@ -1,8 +1,25 @@
-// Copyright (c) 2000-2001 Brad Hughes <bhughes@trolltech.com>
-//
-// Use, modification and distribution is allowed without limitation,
-// warranty, or liability of any kind.
-//
+/***************************************************************************
+ *  Based on mq3 and madplay progects                                      *
+ *                                                                         *
+ * Copyright (c) 2000-2001 Brad Hughes <bhughes@trolltech.com>             *
+ * Copyright (C) 2000-2004 Robert Leslie <rob@mars.org>                    *
+ * Copyright (C) 2009-2011 Ilya Kotov forkotov02@hotmail.ru                *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #ifndef   DECODER_MAD_H
 #define   DECODER_MAD_H
@@ -17,7 +34,6 @@ extern "C"
 {
 #include <mad.h>
 }
-
 
 class DecoderMAD : public Decoder
 {
@@ -34,7 +50,7 @@ public:
 
 private:
     // helper functions
-    qint64 madOutput(char *data, qint64 size);    
+    qint64 madOutput(char *data, qint64 size);
     bool fillBuffer();
     void deinit();
     bool findHeader();
@@ -69,9 +85,22 @@ private:
         XING_SCALE  = 0x0008
     };
 
-    struct mad_stream stream;
-    struct mad_frame frame;
-    struct mad_synth synth;
+    struct audio_dither
+    {
+        mad_fixed_t error[3];
+        mad_fixed_t random;
+    };
+
+    struct mad_stream m_stream;
+    struct mad_frame m_frame;
+    struct mad_synth m_synth;
+    struct audio_dither m_left_dither, m_right_dither;
+
+    //converter functions
+    unsigned long prng(unsigned long state);
+    void clip(mad_fixed_t *sample);
+    long audio_linear_dither(unsigned int bits, mad_fixed_t sample, struct audio_dither *dither);
+    long audio_linear_round(unsigned int bits, mad_fixed_t sample);
 };
 
 

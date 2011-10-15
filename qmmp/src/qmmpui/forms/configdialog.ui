@@ -58,7 +58,7 @@
         <string>Playlist</string>
        </property>
        <property name="icon">
-        <iconset resource="../images/images.qrc">
+        <iconset resource="../images/qmmpui_images.qrc">
          <normaloff>:/playlist.png</normaloff>:/playlist.png</iconset>
        </property>
       </item>
@@ -67,7 +67,7 @@
         <string>Plugins</string>
        </property>
        <property name="icon">
-        <iconset resource="../images/images.qrc">
+        <iconset resource="../images/qmmpui_images.qrc">
          <normaloff>:/plugins.png</normaloff>:/plugins.png</iconset>
        </property>
       </item>
@@ -76,7 +76,7 @@
         <string>Advanced</string>
        </property>
        <property name="icon">
-        <iconset resource="../images/images.qrc">
+        <iconset resource="../images/qmmpui_images.qrc">
          <normaloff>:/advanced.png</normaloff>:/advanced.png</iconset>
        </property>
       </item>
@@ -85,7 +85,7 @@
         <string>Connectivity</string>
        </property>
        <property name="icon">
-        <iconset resource="../images/images.qrc">
+        <iconset resource="../images/qmmpui_images.qrc">
          <normaloff>:/network.png</normaloff>:/network.png</iconset>
        </property>
       </item>
@@ -94,7 +94,7 @@
         <string>Audio</string>
        </property>
        <property name="icon">
-        <iconset resource="../images/images.qrc">
+        <iconset resource="../images/qmmpui_images.qrc">
          <normaloff>:/replaygain.png</normaloff>:/replaygain.png</iconset>
        </property>
       </item>
@@ -842,7 +842,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../images/images.qrc"/>
+  <include location="../images/qmmpui_images.qrc"/>
  </resources>
  <connections>
   <connection>

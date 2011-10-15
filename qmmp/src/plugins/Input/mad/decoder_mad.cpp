@@ -1,8 +1,25 @@
-// Copyright (c) 2000-2001 Brad Hughes <bhughes@trolltech.com>
-//
-// Use, modification and distribution is allowed without limitation,
-// warranty, or liability of any kind.
-//
+/***************************************************************************
+ *  Based on mq3 and madplay progects                                      *
+ *                                                                         *
+ * Copyright (c) 2000-2001 Brad Hughes <bhughes@trolltech.com>             *
+ * Copyright (C) 2000-2004 Robert Leslie <rob@mars.org>                    *
+ * Copyright (C) 2009-2011 Ilya Kotov forkotov02@hotmail.ru                *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 
 #include <QtGui>
@@ -17,6 +34,7 @@
 
 #define XING_MAGIC (('X' << 24) | ('i' << 16) | ('n' << 8) | 'g')
 #define INPUT_BUFFER_SIZE (32*1024)
+#define USE_DITHERING
 
 DecoderMAD::DecoderMAD(QIODevice *i) : Decoder(i)
 {
@@ -32,6 +50,16 @@ DecoderMAD::DecoderMAD(QIODevice *i) : Decoder(i)
     m_output_at = 0;
     m_skip_frames = 0;
     m_eof = false;
+
+    m_left_dither.random = 0;
+    m_left_dither.error[0] = 0;
+    m_left_dither.error[1] = 0;
+    m_left_dither.error[2] = 0;
+
+    m_right_dither.random = 0;
+    m_right_dither.error[0] = 0;
+    m_right_dither.error[1] = 0;
+    m_right_dither.error[2] = 0;
 }
 
 DecoderMAD::~DecoderMAD()
@@ -42,7 +70,7 @@ DecoderMAD::~DecoderMAD()
         qDebug("DecoderMAD: deleting input_buf");
         delete [] m_input_buf;
         m_input_buf = 0;
-    }    
+    }
 }
 
 bool DecoderMAD::initialize()
@@ -82,20 +110,20 @@ bool DecoderMAD::initialize()
             addMetaData(extractor.id3v2tag());
     }
 
-    mad_stream_init(&stream);
-    mad_frame_init(&frame);
-    mad_synth_init(&synth);
+    mad_stream_init(&m_stream);
+    mad_frame_init(&m_frame);
+    mad_synth_init(&m_synth);
 
     if (!findHeader())
     {
         qDebug("DecoderMAD: Can't find a valid MPEG header.");
         return false;
     }
-    mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
-    stream.error = MAD_ERROR_BUFLEN;
-    mad_frame_mute (&frame);
-    stream.next_frame = 0;
-    stream.sync = 0;
+    mad_stream_buffer(&m_stream, (unsigned char *) m_input_buf, m_input_bytes);
+    m_stream.error = MAD_ERROR_BUFLEN;
+    mad_frame_mute (&m_frame);
+    m_stream.next_frame = 0;
+    m_stream.sync = 0;
     configure(m_freq, m_channels, Qmmp::PCM_S16LE);
     m_inited = true;
     return true;
@@ -107,9 +135,9 @@ void DecoderMAD::deinit()
     if (!m_inited)
         return;
 
-    mad_synth_finish(&synth);
-    mad_frame_finish(&frame);
-    mad_stream_finish(&stream);
+    mad_synth_finish(&m_synth);
+    mad_frame_finish(&m_frame);
+    mad_stream_finish(&m_stream);
 
     m_inited = false;
     m_totalTime = 0;
@@ -195,14 +223,14 @@ bool DecoderMAD::findHeader()
     forever
     {
         m_input_bytes = 0;
-        if (stream.error == MAD_ERROR_BUFLEN || !stream.buffer)
+        if (m_stream.error == MAD_ERROR_BUFLEN || !m_stream.buffer)
         {
             size_t remaining = 0;
 
-            if (!stream.next_frame)
+            if (!m_stream.next_frame)
             {
-                remaining = stream.bufend - stream.next_frame;
-                memmove (m_input_buf, stream.next_frame, remaining);
+                remaining = m_stream.bufend - m_stream.next_frame;
+                memmove (m_input_buf, m_stream.next_frame, remaining);
             }
 
             m_input_bytes = input()->read(m_input_buf + remaining, INPUT_BUFFER_SIZE - remaining);
@@ -210,25 +238,25 @@ bool DecoderMAD::findHeader()
             if (m_input_bytes <= 0)
                 break;
 
-            mad_stream_buffer(&stream, (unsigned char *) m_input_buf + remaining, m_input_bytes);
-            stream.error = MAD_ERROR_NONE;
+            mad_stream_buffer(&m_stream, (unsigned char *) m_input_buf + remaining, m_input_bytes);
+            m_stream.error = MAD_ERROR_NONE;
         }
 
-        if (mad_header_decode(&header, &stream) < 0)
+        if (mad_header_decode(&header, &m_stream) < 0)
         {
-            if(stream.error == MAD_ERROR_LOSTSYNC)
+            if(m_stream.error == MAD_ERROR_LOSTSYNC)
             {
-                uint tagSize = findID3v2((uchar *)stream.this_frame,
-                                         (ulong) (stream.bufend - stream.this_frame));
+                uint tagSize = findID3v2((uchar *)m_stream.this_frame,
+                                         (ulong) (m_stream.bufend - m_stream.this_frame));
                 if (tagSize > 0)
-                    mad_stream_skip(&stream, tagSize);
+                    mad_stream_skip(&m_stream, tagSize);
                 continue;
             }
-            else if (stream.error == MAD_ERROR_BUFLEN || MAD_RECOVERABLE(stream.error))
+            else if (m_stream.error == MAD_ERROR_BUFLEN || MAD_RECOVERABLE(m_stream.error))
                 continue;
             else
             {
-                qDebug ("DecoderMAD: Can't decode header: %s", mad_stream_errorstr(&stream));
+                qDebug ("DecoderMAD: Can't decode header: %s", mad_stream_errorstr(&m_stream));
                 break;
             }
         }
@@ -241,9 +269,9 @@ bool DecoderMAD::findHeader()
         //try to detect xing header
         if (count == 1)
         {
-            frame.header = header;
-            if (mad_frame_decode(&frame, &stream) != -1 &&
-                    findXingHeader(stream.anc_ptr, stream.anc_bitlen))
+            m_frame.header = header;
+            if (mad_frame_decode(&m_frame, &m_stream) != -1 &&
+                    findXingHeader(m_stream.anc_ptr, m_stream.anc_bitlen))
             {
                 is_vbr = true;
 
@@ -318,35 +346,35 @@ qint64 DecoderMAD::read(char *data, qint64 size)
 {
     forever
     {
-        if(((stream.error == MAD_ERROR_BUFLEN) || !stream.buffer) && !m_eof)
+        if(((m_stream.error == MAD_ERROR_BUFLEN) || !m_stream.buffer) && !m_eof)
         {
             m_eof = !fillBuffer();
         }
-        if(mad_frame_decode(&frame, &stream) < 0)
+        if(mad_frame_decode(&m_frame, &m_stream) < 0)
         {
-            switch((int) stream.error)
+            switch((int) m_stream.error)
             {
-                case MAD_ERROR_LOSTSYNC:
+            case MAD_ERROR_LOSTSYNC:
+            {
+                //skip ID3v2 tag
+                uint tagSize = findID3v2((uchar *)m_stream.this_frame,
+                                         (ulong) (m_stream.bufend - m_stream.this_frame));
+                if (tagSize > 0)
                 {
-                    //skip ID3v2 tag
-                    uint tagSize = findID3v2((uchar *)stream.this_frame,
-                                             (ulong) (stream.bufend - stream.this_frame));
-                    if (tagSize > 0)
-                    {
-                        mad_stream_skip(&stream, tagSize);
-                        qDebug("DecoderMAD: %d bytes skipped", tagSize);
-                    }
-                    continue;
+                    mad_stream_skip(&m_stream, tagSize);
+                    qDebug("DecoderMAD: %d bytes skipped", tagSize);
                 }
-                case MAD_ERROR_BUFLEN:
-                    if(m_eof)
-                        return 0;
+                continue;
+            }
+            case MAD_ERROR_BUFLEN:
+                if(m_eof)
+                    return 0;
+                continue;
+            default:
+                if (!MAD_RECOVERABLE(m_stream.error))
+                    return 0;
+                else
                     continue;
-                default:
-                    if (!MAD_RECOVERABLE(stream.error))
-                        return 0;
-                    else
-                        continue;
             }
         }
         if(m_skip_frames)
@@ -354,7 +382,7 @@ qint64 DecoderMAD::read(char *data, qint64 size)
             m_skip_frames--;
             continue;
         }
-        mad_synth_frame(&synth, &frame);
+        mad_synth_frame(&m_synth, &m_frame);
         return madOutput(data, size);
     }
 }
@@ -364,22 +392,22 @@ void DecoderMAD::seek(qint64 pos)
     {
         qint64 seek_pos = qint64(pos * input()->size() / m_totalTime);
         input()->seek(seek_pos);
-        mad_frame_mute(&frame);
-        mad_synth_mute(&synth);
-        stream.error = MAD_ERROR_BUFLEN;
-        stream.sync = 0;
+        mad_frame_mute(&m_frame);
+        mad_synth_mute(&m_synth);
+        m_stream.error = MAD_ERROR_BUFLEN;
+        m_stream.sync = 0;
         m_input_bytes = 0;
-        stream.next_frame = 0;
+        m_stream.next_frame = 0;
         m_skip_frames = 2;
     }
 }
 
 bool DecoderMAD::fillBuffer()
 {
-    if (stream.next_frame)
+    if (m_stream.next_frame)
     {
-        m_input_bytes = &m_input_buf[m_input_bytes] - (char *) stream.next_frame;
-        memmove(m_input_buf, stream.next_frame, m_input_bytes);
+        m_input_bytes = &m_input_buf[m_input_bytes] - (char *) m_stream.next_frame;
+        memmove(m_input_buf, m_stream.next_frame, m_input_bytes);
     }
     int len = input()->read((char *) m_input_buf + m_input_bytes, INPUT_BUFFER_SIZE - m_input_bytes);
     if (!len)
@@ -393,7 +421,7 @@ bool DecoderMAD::fillBuffer()
         return false;
     }
     m_input_bytes += len;
-    mad_stream_buffer(&stream, (unsigned char *) m_input_buf, m_input_bytes);
+    mad_stream_buffer(&m_stream, (unsigned char *) m_input_buf, m_input_bytes);
     return true;
 }
 
@@ -403,7 +431,7 @@ uint DecoderMAD::findID3v2(uchar *data, ulong size) //retuns ID3v2 tag size
         return 0;
 
     if (((data[0] == 'I' && data[1] == 'D' && data[2] == '3') || //ID3v2 tag
-            (data[0] == '3' && data[1] == 'D' && data[2] == 'I')) && //ID3v2 footer
+         (data[0] == '3' && data[1] == 'D' && data[2] == 'I')) && //ID3v2 footer
             data[3] < 0xff && data[4] < 0xff && data[6] < 0x80 &&
             data[7] < 0x80 && data[8] < 0x80 && data[9] < 0x80)
     {
@@ -414,38 +442,74 @@ uint DecoderMAD::findID3v2(uchar *data, ulong size) //retuns ID3v2 tag size
     return 0;
 }
 
-static inline signed int scale(mad_fixed_t sample)
+unsigned long DecoderMAD::prng(unsigned long state) // 32-bit pseudo-random number generator
 {
-    /* round */
-    sample += (1L << (MAD_F_FRACBITS - 16));
-
-    /* clip */
-    if (sample >= MAD_F_ONE)
-        sample = MAD_F_ONE - 1;
-    else if (sample < -MAD_F_ONE)
-        sample = -MAD_F_ONE;
-
-    /* quantize */
-    return sample >> (MAD_F_FRACBITS + 1 - 16);
+    return (state * 0x0019660dL + 0x3c6ef35fL) & 0xffffffffL;
 }
 
-static inline signed long fix_sample(unsigned int bits, mad_fixed_t sample)
+// gather signal statistics while clipping
+void DecoderMAD::clip(mad_fixed_t *sample)
 {
-    mad_fixed_t quantized, check;
-    // clip
-    quantized = sample;
-    check = (sample >> MAD_F_FRACBITS) + 1;
-    if (check & ~1)
+    enum
     {
-        if (sample >= MAD_F_ONE)
-            quantized = MAD_F_ONE - 1;
-        else if (sample < -MAD_F_ONE)
-            quantized = -MAD_F_ONE;
-    }
-    // quantize
-    quantized &= ~((1L << (MAD_F_FRACBITS + 1 - bits)) - 1);
-    // scale
-    return quantized >> (MAD_F_FRACBITS + 1 - bits);
+        MIN = -MAD_F_ONE,
+        MAX =  MAD_F_ONE - 1
+    };
+
+    if (*sample > MAX)
+        *sample = MAX;
+    else if (*sample < MIN)
+        *sample = MIN;
+}
+
+long DecoderMAD::audio_linear_dither(unsigned int bits, mad_fixed_t sample,
+                                     struct audio_dither *dither)
+{
+    unsigned int scalebits;
+    mad_fixed_t output, mask, random;
+
+    /* noise shape */
+    sample += dither->error[0] - dither->error[1] + dither->error[2];
+
+    dither->error[2] = dither->error[1];
+    dither->error[1] = dither->error[0] / 2;
+
+    /* bias */
+    output = sample + (1L << (MAD_F_FRACBITS + 1 - bits - 1));
+
+    scalebits = MAD_F_FRACBITS + 1 - bits;
+    mask = (1L << scalebits) - 1;
+
+    /* dither */
+    random  = prng(dither->random);
+    output += (random & mask) - (dither->random & mask);
+
+    dither->random = random;
+
+    /* clip */
+    clip(&output);
+
+    /* quantize */
+    output &= ~mask;
+
+    /* error feedback */
+    dither->error[0] = sample - output;
+
+    /* scale */
+    return output >> scalebits;
+}
+
+//generic linear sample quantize routine
+long DecoderMAD::audio_linear_round(unsigned int bits, mad_fixed_t sample)
+{
+    /* round */
+    sample += (1L << (MAD_F_FRACBITS - bits));
+
+    /* clip */
+    clip(&sample);
+
+    /* quantize and scale */
+    return sample >> (MAD_F_FRACBITS + 1 - bits);
 }
 
 qint64 DecoderMAD::madOutput(char *data, qint64 size)
@@ -453,11 +517,11 @@ qint64 DecoderMAD::madOutput(char *data, qint64 size)
     unsigned int samples, channels;
     mad_fixed_t const *left, *right;
 
-    samples = synth.pcm.length;
-    channels = synth.pcm.channels;
-    left = synth.pcm.samples[0];
-    right = synth.pcm.samples[1];
-    m_bitrate = frame.header.bitrate / 1000;
+    samples = m_synth.pcm.length;
+    channels = m_synth.pcm.channels;
+    left = m_synth.pcm.samples[0];
+    right = m_synth.pcm.samples[1];
+    m_bitrate = m_frame.header.bitrate / 1000;
     m_output_at = 0;
     m_output_bytes = 0;
 
@@ -470,15 +534,22 @@ qint64 DecoderMAD::madOutput(char *data, qint64 size)
     while (samples--)
     {
         signed int sample;
-
-        sample = fix_sample(16, *left++);
+#ifdef USE_DITHERING
+        sample = audio_linear_dither(16, *left++,  &m_left_dither);
+#else
+        sample = audio_linear_round(16, *left++);
+#endif
         *(data + m_output_at++) = ((sample >> 0) & 0xff);
         *(data + m_output_at++) = ((sample >> 8) & 0xff);
         m_output_bytes += 2;
 
         if (channels == 2)
         {
-            sample = fix_sample(16, *right++);
+#ifdef USE_DITHERING
+            sample = audio_linear_dither(16, *right++, &m_right_dither);
+#else
+            sample = audio_linear_round(16, *right++);
+#endif
             *(data + m_output_at++) = ((sample >> 0) & 0xff);
             *(data + m_output_at++) = ((sample >> 8) & 0xff);
             m_output_bytes += 2;
