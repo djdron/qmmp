@@ -65,6 +65,9 @@ bool DecoderSndFile::initialize()
     m_totalTime = snd_info.frames * 1000 / m_freq;
     m_bitrate =  QFileInfo(m_path).size () * 8.0 / m_totalTime + 0.5;
 
+    if((snd_info.format & SF_FORMAT_SUBMASK) == SF_FORMAT_FLOAT)
+        sf_command (m_sndfile, SFC_SET_SCALE_FLOAT_INT_READ, NULL, SF_TRUE);
+
     configure(m_freq, chan, Qmmp::PCM_S16LE);
     qDebug("DecoderSndFile: detected format: %08X", snd_info.format);
     qDebug("DecoderSndFile: initialize succes");
