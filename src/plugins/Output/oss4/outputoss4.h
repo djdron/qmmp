@@ -37,9 +37,9 @@ public:
     OutputOSS4(QObject * parent);
     virtual ~OutputOSS4();
 
-    bool initialize();
-    void configure(quint32, int, Qmmp::AudioFormat format);
+    bool initialize(quint32, int, Qmmp::AudioFormat format);
     int fd();
+    qint64 latency();
 
     static OutputOSS4 *instance();
 
