@@ -35,8 +35,8 @@
     </message>
     <message>
         <location filename="../decodermadfactory.cpp" line="227"/>
-        <source>Source code based on mq3 progect</source>
-        <translation>Kaynak kodu mq3 projesi temellidir</translation>
+        <source>Source code based on mq3 and madplay progects</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

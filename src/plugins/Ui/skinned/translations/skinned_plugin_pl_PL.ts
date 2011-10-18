@@ -1239,7 +1239,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="430"/>
         <source>Playlist separator:</source>
-        <translation type="unfinished"></translation>
+        <translation>Separator listy:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
@@ -1282,7 +1282,7 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
     <message>
         <location filename="../textscroller.cpp" line="53"/>
         <source>Transparent Background</source>
-        <translation type="unfinished"></translation>
+        <translation>Przeźroczyste tło</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="122"/>
