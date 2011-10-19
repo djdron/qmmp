@@ -366,6 +366,7 @@ void QmmpAudioEngine::run()
                 StateHandler::instance()->dispatch(Qmmp::Buffering);
                 StateHandler::instance()->dispatch(Qmmp::Playing);
                 m_decoder->next();
+                m_replayGain->setReplayGainInfo(m_decoder->replayGainInfo());
                 m_output->seek(0); //reset counter
                 addOffset(); //offset
                 mutex()->unlock();

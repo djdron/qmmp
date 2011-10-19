@@ -40,12 +40,12 @@ public:
     ~CUEParser();
 
     QList<FileInfo*> createPlayList();
-    const QString filePath();
-    qint64 offset(int track);
-    qint64 length(int track);
-    int count();
+    const QString filePath() const;
+    qint64 offset(int track) const;
+    qint64 length(int track) const;
+    int count() const;
     FileInfo *info(int track);
-    const QString trackURL(int track);
+    const QString trackURL(int track) const;
 
 private:
     QString m_filePath;
