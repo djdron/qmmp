@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,7 +25,7 @@
 #include <QString>
 #include <QStringList>
 #include <QUrl>
-
+#include <qmmp/qmmp.h>
 #include <qmmp/fileinfo.h>
 
 
@@ -40,10 +40,10 @@ public:
     ~CUEParser();
 
     QList<FileInfo*> createPlayList();
-    const QString filePath(int track);
-    qint64 offset(int track);
-    qint64 length(int track);
-    int count();
+    const QString filePath(int track) const;
+    qint64 offset(int track) const;
+    qint64 length(int track) const;
+    int count() const;
     FileInfo *info(int track);
     const QString trackURL(int track);
 

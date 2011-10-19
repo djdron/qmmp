@@ -118,22 +118,22 @@ QList<FileInfo*> CUEParser::createPlayList()
     return list;
 }
 
-const QString CUEParser::filePath()
+const QString CUEParser::filePath() const
 {
     return m_filePath;
 }
 
-qint64 CUEParser::offset(int track)
+qint64 CUEParser::offset(int track) const
 {
     return m_offsets.at(track - 1);
 }
 
-qint64 CUEParser::length(int track)
+qint64 CUEParser::length(int track) const
 {
     return m_infoList.at(track - 1).length();
 }
 
-int CUEParser::count()
+int CUEParser::count() const
 {
     return m_infoList.count();
 }
@@ -143,7 +143,7 @@ FileInfo *CUEParser::info(int track)
     return &m_infoList[track - 1];
 }
 
-const QString CUEParser::trackURL(int track)
+const QString CUEParser::trackURL(int track) const
 {
     return m_infoList[track - 1].path();
 }
