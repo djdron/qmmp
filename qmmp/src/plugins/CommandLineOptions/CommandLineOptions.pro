@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 SUBDIRS = IncDecVolumeOption \
           SeekOption \
-          StatusOption
+          StatusOption \
+          PlayListOption

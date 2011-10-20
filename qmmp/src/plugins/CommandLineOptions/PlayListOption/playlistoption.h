@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef STATUSOPTION_H
-#define STATUSOPTION_H
+#ifndef PLAYLISTOPTION_H
+#define PLAYLISTOPTION_H
 
 #include <QString>
 #include <QObject>
@@ -27,11 +27,10 @@
 #include <qmmpui/commandlineoption.h>
 #include <qmmpui/commandlinemanager.h>
 
-
 /**
     @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-class StatusOption : public QObject, public CommandLineOption
+class PlayListOption : public QObject, public CommandLineOption
 {
 Q_OBJECT
 Q_INTERFACES(CommandLineOption)
@@ -41,9 +40,6 @@ public:
     virtual const QString helpString()const;
     virtual QString executeCommand(const QString& opt_str, const QStringList &args);
     virtual QTranslator *createTranslator(QObject *parent);
-
-private:
-    QString genProgressBar();
 };
 
 #endif

@@ -1,0 +1,18 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+  <file>playlist_plugin_it.qm</file>
+  <file>playlist_plugin_pl.qm</file>
+  <file>playlist_plugin_ru.qm</file>
+  <file>playlist_plugin_de.qm</file>
+  <file>playlist_plugin_cs.qm</file>
+  <file>playlist_plugin_uk_UA.qm</file>
+  <file>playlist_plugin_zh_TW.qm</file>
+  <file>playlist_plugin_zh_CN.qm</file>
+  <file>playlist_plugin_tr.qm</file>
+  <file>playlist_plugin_lt.qm</file>
+  <file>playlist_plugin_nl.qm</file>
+  <file>playlist_plugin_ja.qm</file>
+  <file>playlist_plugin_es.qm</file>
+  </qresource>
+</RCC>
