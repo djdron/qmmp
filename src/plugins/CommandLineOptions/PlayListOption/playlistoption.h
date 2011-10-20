@@ -40,6 +40,9 @@ public:
     virtual const QString helpString()const;
     virtual QString executeCommand(const QString& opt_str, const QStringList &args);
     virtual QTranslator *createTranslator(QObject *parent);
+
+private:
+    QString boolToText(bool enabled);
 };
 
 #endif
