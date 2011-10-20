@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,10 +22,10 @@
 
 #include <QList>
 #include <QMap>
-#include <QByteArray>
 #include <QString>
 #include <QStringList>
-
+#include <QUrl>
+#include <qmmp/qmmp.h>
 #include <qmmp/fileinfo.h>
 
 
@@ -46,13 +46,21 @@ public:
     int count() const;
     FileInfo *info(int track);
     const QString trackURL(int track) const;
+    const QMap<Qmmp::ReplayGainKey, double> replayGain(int track) const;
 
 private:
-    QString m_filePath;
-    QList <FileInfo> m_infoList;
-    QList <qint64> m_offsets;
+    struct CUETrack
+    {
+        FileInfo info;
+        qint64 offset;
+        QMap<Qmmp::ReplayGainKey, double> replayGain;
+    };
+    QList <CUETrack * > m_tracks;
+    bool m_dirty;
     QStringList splitLine(const QString &line);
     qint64 getLength(const QString &str);
+    QString getDirtyPath(const QString &cue, const QString &path);
+    QString m_filePath;
 };
 
 #endif
