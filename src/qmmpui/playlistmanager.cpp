@@ -239,7 +239,7 @@ int PlayListManager::indexOf(PlayListModel *model) const
 
 PlayListModel *PlayListManager::playListAt(int i) const
 {
-    if(i >= 0 || i < m_models.count())
+    if(i >= 0 && i < m_models.count())
         return m_models.at(i);
     return 0;
 }
