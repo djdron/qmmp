@@ -45,12 +45,18 @@ public:
     qint64 length(int track) const;
     int count() const;
     FileInfo *info(int track);
-    const QString trackURL(int track);
+    const QString trackURL(int track) const;
+    const QMap<Qmmp::ReplayGainKey, double> replayGain(int track) const;
 
 private:
-    QList <FileInfo> m_infoList;
-    QList <qint64> m_offsets;
-    QStringList m_files;
+    struct CUETrack
+    {
+        FileInfo info;
+        qint64 offset;
+        QString file;
+        QMap<Qmmp::ReplayGainKey, double> replayGain;
+    };
+    QList <CUETrack * > m_tracks;
     bool m_dirty;
     QStringList splitLine(const QString &line);
     qint64 getLength(const QString &str);

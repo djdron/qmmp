@@ -127,6 +127,7 @@ bool DecoderWavPack::initialize()
         length_in_bytes = audioParameters().sampleRate() *
                           audioParameters().channels() *
                           audioParameters().sampleSize() * m_length/1000;
+        setReplayGainInfo(m_parser->replayGain(m_track));
         seek(0);
     }
     m_totalBytes = 0;
@@ -241,6 +242,7 @@ void DecoderWavPack::next()
                           audioParameters().channels() *
                           audioParameters().sampleSize() * m_length/1000;
         addMetaData(m_parser->info(m_track)->metaData());
+        setReplayGainInfo(m_parser->replayGain(m_track));
         m_totalBytes = 0;
     }
 }

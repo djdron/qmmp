@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,16 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QObject>
+#include <QFile>
 #include <qmmp/buffer.h>
 #include <qmmp/output.h>
 #include <qmmp/recycler.h>
 #include <qmmp/fileinfo.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/soundcore.h>
-
-#include <QObject>
-#include <QFile>
-
 #include "cueparser.h"
 #include "decoder_cue.h"
 
@@ -102,7 +100,7 @@ bool DecoderCUE::initialize()
     configure(m_decoder->audioParameters().sampleRate(),
               m_decoder->audioParameters().channels(),
               m_decoder->audioParameters().format());
-    setReplayGainInfo(m_decoder->replayGainInfo());
+    setReplayGainInfo(m_parser->replayGain(m_track));
     length_in_bytes = audioParameters().sampleRate() *
                       audioParameters().channels() *
                       audioParameters().sampleSize() * m_length/1000;
@@ -195,6 +193,7 @@ void DecoderCUE::next()
                           audioParameters().channels() *
                           audioParameters().sampleSize() * m_length/1000;
         addMetaData(m_parser->info(m_track)->metaData());
+        setReplayGainInfo(m_parser->replayGain(m_track));
         m_totalBytes = 0;
     }
 }
