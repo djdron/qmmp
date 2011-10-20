@@ -6,23 +6,23 @@
     <message>
         <location filename="../playlistoption.cpp" line="39"/>
         <source>List all available playlists</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать все доступные списки воспроизведения</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="40"/>
         <source>Show playlist content</source>
-        <translation type="unfinished"></translation>
+        <translation>Показать содержимое списка воспроизведения</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="41"/>
         <source>Clear playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить список воспроизведения</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="68"/>
         <location filename="../playlistoption.cpp" line="82"/>
         <source>Invalid playlist ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Неправильный номер списка воспроизведения</translation>
     </message>
 </context>
 </TS>
