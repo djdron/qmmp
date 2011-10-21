@@ -1,0 +1,18 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>mpg132_plugin_it.qm</file>
+    <file>mpg132_plugin_ru.qm</file>
+    <file>mpg132_plugin_uk_UA.qm</file>
+    <file>mpg132_plugin_zh_CN.qm</file>
+    <file>mpg132_plugin_zh_TW.qm</file>
+    <file>mpg132_plugin_cs.qm</file>
+    <file>mpg132_plugin_de.qm</file>
+    <file>mpg132_plugin_pl.qm</file>
+    <file>mpg132_plugin_tr.qm</file>
+    <file>mpg132_plugin_lt.qm</file>
+    <file>mpg132_plugin_nl.qm</file>
+    <file>mpg132_plugin_ja.qm</file>
+    <file>mpg132_plugin_es.qm</file>
+  </qresource>
+</RCC>
