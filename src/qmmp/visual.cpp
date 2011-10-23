@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Ilya Kotov                                      *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,12 +23,9 @@
 #include <QList>
 #include <QMetaObject>
 #include <QApplication>
-
 #include "visualfactory.h"
 #include "output.h"
-
 #include "visual.h"
-
 
 Visual::Visual(QWidget *parent) : QWidget(parent)
 {
@@ -71,9 +68,9 @@ void Visual::closeEvent (QCloseEvent *event)
 
 //static members
 QList<VisualFactory*> *Visual::m_factories = 0;
-QStringList Visual::m_files;
+QHash <VisualFactory*, QString> *Visual::m_files = 0;
 QList<Visual*> Visual::m_visuals;
-QMap<VisualFactory*, Visual*> Visual::m_vis_map;
+QHash<VisualFactory*, Visual*> Visual::m_vis_map;
 QWidget *Visual::m_parentWidget = 0;
 QObject *Visual::m_receiver = 0;
 const char *Visual::m_member = 0;
@@ -84,10 +81,10 @@ QList<VisualFactory*> *Visual::factories()
     return m_factories;
 }
 
-QStringList Visual::files()
+QString Visual::file(VisualFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 void Visual::setEnabled(VisualFactory* factory, bool enable)
@@ -200,8 +197,8 @@ void Visual::checkFactories()
 {
     if (!m_factories)
     {
-        m_files.clear();
         m_factories = new QList<VisualFactory *>;
+        m_files = new QHash <VisualFactory*, QString>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Visual");
@@ -221,7 +218,7 @@ void Visual::checkFactories()
             if (factory)
             {
                 m_factories->append(factory);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }

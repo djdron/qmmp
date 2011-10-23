@@ -395,13 +395,13 @@ void Output::updateEqSettings()
 // static methods
 
 QList<OutputFactory*> *Output::m_factories = 0;
-QStringList Output::m_files;
+QHash <OutputFactory*, QString> *Output::m_files = 0;
 
 void Output::checkFactories()
 {
     if (!m_factories)
     {
-        m_files.clear();
+        m_files = new QHash <OutputFactory*, QString>;
         m_factories = new QList<OutputFactory *>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
@@ -421,17 +421,12 @@ void Output::checkFactories()
 
             if (factory)
             {
-                Output::registerFactory ( factory );
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_factories->append (factory);
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
     }
-}
-
-void Output::registerFactory (OutputFactory *fact)
-{
-    m_factories->append (fact);
 }
 
 Output *Output::create (QObject *parent)
@@ -458,10 +453,10 @@ QList<OutputFactory*> *Output::factories()
     return m_factories;
 }
 
-QStringList Output::files()
+QString Output::file(OutputFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 void Output::setCurrentFactory(OutputFactory* factory)

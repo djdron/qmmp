@@ -160,10 +160,10 @@ void ConfigDialog::loadPluginsInfo()
         load transport plugin information
      */
     QTreeWidgetItem *item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Transports"));
-    QList <InputSourceFactory *> *transports = InputSource::factories();
-    QStringList files = InputSource::files();
-    for (int i = 0; i < transports->count (); ++i)
-        new PluginItem (item, transports->at(i), files.at (i));
+    foreach(InputSourceFactory *factory, *InputSource::factories())
+    {
+        new PluginItem (item, factory,  InputSource::file(factory));
+    }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
     /*
@@ -172,7 +172,7 @@ void ConfigDialog::loadPluginsInfo()
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Decoders"));
     foreach(DecoderFactory *factory, *Decoder::factories())
     {
-        new PluginItem (item, factory,  Decoder::filePath(factory));
+        new PluginItem (item, factory,  Decoder::file(factory));
     }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
@@ -180,40 +180,40 @@ void ConfigDialog::loadPluginsInfo()
         load audio engines information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Engines"));
-    QList <EngineFactory *> *engines = AbstractEngine::factories();
-    files = AbstractEngine::files();
-    for (int i = 0; i < engines->count (); ++i)
-        new PluginItem (item, engines->at(i), files.at (i));
+    foreach(EngineFactory *factory, *AbstractEngine::factories())
+    {
+        new PluginItem (item, factory,  AbstractEngine::file(factory));
+    }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
     /*
         load effect plugin information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Effects"));
-    QList <EffectFactory *> *effects = Effect::factories();
-    files = Effect::files();
-    for (int i = 0; i < effects->count (); ++i)
-        new PluginItem (item, effects->at(i), files.at (i));
+    foreach(EffectFactory *factory, *Effect::factories())
+    {
+        new PluginItem (item, factory, Effect::file(factory));
+    }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
     /*
         load visual plugin information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Visualization"));
-    QList <VisualFactory *> *visuals = Visual::factories();
-    files = Visual::files();
-    for (int i = 0; i < visuals->count (); ++i)
-        new PluginItem (item, visuals->at(i), files.at (i));
+    foreach(VisualFactory *factory, *Visual::factories())
+    {
+        new PluginItem (item, factory, Visual::file(factory));
+    }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
     /*
         load general plugin information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("General"));
-    QList <GeneralFactory *> *generals = General::factories();
-    files = General::files();
-    for (int i = 0; i < generals->count (); ++i)
-        new PluginItem (item, generals->at(i), files.at (i));
+    foreach(GeneralFactory *factory, *General::factories())
+    {
+        new PluginItem (item, factory, General::file(factory));
+    }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
 

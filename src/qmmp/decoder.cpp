@@ -147,7 +147,7 @@ void Decoder::checkFactories()
     }
 }
 
-QString Decoder::filePath(DecoderFactory *factory)
+QString Decoder::file(DecoderFactory *factory)
 {
     checkFactories();
     return m_files->value(factory);

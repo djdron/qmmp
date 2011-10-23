@@ -21,7 +21,7 @@
 #define UI_H
 
 #include <QStringList>
-#include <QMap>
+#include <QHash>
 #include "uifactory.h"
 
 /*! @brief The UiLoader provides user interface plugins access
@@ -35,9 +35,10 @@ public:
      */
     static QList<UiFactory*> *factories();
     /*!
-     * Returns a list of the loaded ui plugin files.
+     * Returns plugin file path.
+     * @param factory User interface plugin factory.
      */
-    static QStringList files();
+    static QString file(UiFactory *factory);
     /*!
      * Selects active user interface factory.
      * @param factory Ui plugin factory.
@@ -51,7 +52,7 @@ public:
 
 private:
     static QList<UiFactory*> *m_factories;
-    static QStringList m_files;
+    static QHash <UiFactory*, QString> *m_files;
     static void checkFactories();
 };
 

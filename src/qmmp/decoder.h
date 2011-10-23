@@ -128,9 +128,10 @@ public:
      */
     static QList<DecoderFactory*> *factories();
     /*!
-     * Returns file path of the \b factory
+     * Returns plugin file path.
+     * @param factory Decoder plugin factory.
      */
-    static QString filePath(DecoderFactory *factory);
+    static QString file(DecoderFactory *factory);
     /*!
      * Returns a list of supported protocols (including meta-protocols).
      * This fuction ignores disabled decoders.

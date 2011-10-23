@@ -72,7 +72,7 @@ void InputSource::addMetaData(const QMap<Qmmp::MetaData, QString> &metaData)
 
 // static methods
 QList<InputSourceFactory*> *InputSource::m_factories = 0;
-QStringList InputSource::m_files;
+QHash <InputSourceFactory*, QString> *InputSource::m_files = 0;
 
 InputSource *InputSource::create(const QString &url, QObject *parent)
 {
@@ -109,10 +109,10 @@ QList<InputSourceFactory*> *InputSource::factories()
     return m_factories;
 }
 
-QStringList InputSource::files()
+QString InputSource::file(InputSourceFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 QStringList InputSource::protocols()
@@ -131,7 +131,7 @@ void InputSource::checkFactories()
 {
     if (!m_factories)
     {
-        m_files.clear();
+        m_files = new QHash <InputSourceFactory*, QString>;
         m_factories = new QList<InputSourceFactory *>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
@@ -151,7 +151,7 @@ void InputSource::checkFactories()
             if (factory)
             {
                 m_factories->append(factory);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }

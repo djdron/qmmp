@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2009 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -23,7 +23,7 @@
 #include <QMutex>
 #include <QStringList>
 #include <QWidget>
-#include <QMap>
+#include <QHash>
 
 class Buffer;
 class Decoder;
@@ -68,9 +68,10 @@ public:
     */
     static QList<VisualFactory*> *factories();
     /*!
-     * Returns a list of visual plugin file names.
+     * Returns plugin file path.
+     * @param factory Visual plugin factory.
      */
-    static QStringList files();
+    static QString file(VisualFactory *factory);
     /*!
      * Sets whether the visual plugin is enabled.
      * @param factory Visual plugin factory.
@@ -127,10 +128,10 @@ private:
     QMutex m_mutex;
 
     static QList<VisualFactory*> *m_factories;
-    static QStringList m_files;
+    static QHash <VisualFactory*, QString> *m_files;
     static void checkFactories();
     static QList<Visual*>  m_visuals;
-    static QMap<VisualFactory*, Visual*> m_vis_map; //internal visualization
+    static QHash<VisualFactory*, Visual*> m_vis_map; //internal visualization
     static QWidget *m_parentWidget;
     static QObject *m_receiver;
     static const char *m_member;
