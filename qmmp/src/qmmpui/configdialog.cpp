@@ -223,7 +223,6 @@ void ConfigDialog::loadPluginsInfo()
     /*
         load output plugins information
     */
-
     m_ui->outputInformationButton->setEnabled(false);
     m_ui->outputPreferencesButton->setEnabled(false);
     QList <OutputFactory *> *outputs = Output::factories();
@@ -400,6 +399,7 @@ void ConfigDialog::on_uiComboBox_activated (int index)
 {
     UiFactory *factory =  UiLoader::factories()->at(index);
     m_ui->uiInformationButton->setEnabled(factory->properties().hasAbout);
+    UiLoader::select(factory);
 }
 
 void ConfigDialog::on_outputInformationButton_clicked()
