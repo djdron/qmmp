@@ -33,6 +33,7 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
+#include <qmmpui/configdialog.h>
 #include "visualmenu.h"
 #include "listwidget.h"
 #include "mainwindow.h"
@@ -107,7 +108,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_pl_manager, SIGNAL(playListRemoved(int)), SLOT(removeTab(int)));
     connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
     connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
-    ui.tabWidget->setTabsClosable(1);
     connect(ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
 
     show();
@@ -119,20 +119,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::addDir()
 {
-    FileDialog::popup(this, FileDialog::AddDirs, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
-                      tr("Choose a directory"));
+    m_uiHelper->addDirectory(this);
 }
 
 void MainWindow::addFiles()
 {
-    QStringList filters;
-    filters << tr("All Supported Bitstreams")+" (" +
-               MetaDataManager::instance()->nameFilters().join (" ") +")";
-    filters << MetaDataManager::instance()->filters();
-    FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
-                      m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
-                      tr("Select one or more files to open"), filters.join(";;"));
+    m_uiHelper->addFile(this);
 }
 
 void MainWindow::updatePosition(qint64 pos)
@@ -243,30 +235,23 @@ void MainWindow::toggleVisibility()
     if (isHidden())
     {
         show();
-        //raise();
-        //activateWindow();
-        qApp->processEvents();
-        setFocus ();
-        if (isMinimized())
-        {
-            if (isMaximized())
-                showMaximized();
-            else
-                showNormal();
-        }
+
     }
     else
         hide();
-    qApp->processEvents();
 }
 
 void MainWindow::showSettings()
-{}
+{
+    ConfigDialog *confDialog = new ConfigDialog(this);
+    confDialog->exec();
+    confDialog->deleteLater();
+}
 
 void MainWindow::showBitrate(int)
 {
     ui.statusbar->showMessage(QString(tr("Playing [%1 kbps/%2 bit/%3]")).arg(m_core->bitrate())
-                              .arg(m_core->frequency())
+                              .arg(m_core->sampleSize())
                               .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
 }
 
