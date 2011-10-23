@@ -48,6 +48,7 @@ public:
         hasSettings = false;
         noInput = false;
         noOutput = false;
+        priority = 0;
     }
     QString name;             /*!< Input plugin full name */
     QString shortName;        /*!< Input plugin short name for internal usage */
@@ -60,6 +61,7 @@ public:
     bool hasSettings;         /*!< Should be \b true if plugin has settings dialog, otherwise \b false */
     bool noInput;             /*!< Should be \b true if plugin has own input, otherwise \b false */
     bool noOutput;            /*!< Should be \b true if plugin has own output, otherwise \b false */
+    int priority;             /*!< Decoder priority. Decoders with lowest value will be used first */
 };
 /*! @brief Input plugin interface (decoder factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>

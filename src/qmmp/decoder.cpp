@@ -88,7 +88,13 @@ QMap<Qmmp::MetaData, QString> Decoder::takeMetaData()
 QList<DecoderFactory*> *Decoder::m_factories = 0;
 QList<DecoderFactory*> *Decoder::m_disabledFactories = 0;
 DecoderFactory *Decoder::m_lastFactory = 0;
-QStringList Decoder::m_files;
+QHash <DecoderFactory*, QString> *Decoder::m_files = 0;
+
+//sort factories by priority
+static bool _decoderLessComparator(DecoderFactory* f1, DecoderFactory* f2)
+{
+    return f1->properties().priority < f2->properties().priority;
+}
 
 void Decoder::checkFactories()
 {
@@ -97,9 +103,9 @@ void Decoder::checkFactories()
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         QStringList disabledNames  = settings.value("Decoder/disabled_plugins").toStringList ();
 
-        m_files.clear();
         m_factories = new QList<DecoderFactory *>;
         m_disabledFactories = new QList<DecoderFactory *>;
+        m_files = new QHash <DecoderFactory*, QString>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Input");
@@ -112,13 +118,14 @@ void Decoder::checkFactories()
             else
                 qWarning("Decoder: %s", qPrintable(loader.errorString ()));
             DecoderFactory *factory = 0;
+
             if (plugin)
                 factory = qobject_cast<DecoderFactory *>(plugin);
 
             if (factory)
             {
                 m_factories->append(factory);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
                 if(disabledNames.contains(factory->properties().shortName))
                     m_disabledFactories->append(factory);
@@ -136,17 +143,19 @@ void Decoder::checkFactories()
                 disabledNames.removeAll(name);
         }
         settings.setValue("Decoder/disabled_plugins",disabledNames);
+        qSort(m_factories->begin(), m_factories->end(), _decoderLessComparator);
     }
 }
 
-QStringList Decoder::files()
+QString Decoder::filePath(DecoderFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 QStringList Decoder::protocols()
 {
+    checkFactories();
     QStringList protocolsList;
     foreach(DecoderFactory *f, *m_factories)
     {
