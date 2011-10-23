@@ -55,7 +55,7 @@ public:
     QString shortName; /*!< Effect plugin short name for internal usage */
     bool hasAbout;     /*!< Should be \b true if plugin has about dialog, otherwise returns \b false */
     bool hasSettings;  /*!< Should be \b true if plugin has settings dialog, otherwise returns \b false */
-    int priority;      /*!< Effect priority. Effecs with higher priority are applied first */
+    int priority;      /*!< Effect priority. Effecs with higher priority will be applied first */
 };
 /*! @brief Effect plugin interface (effect factory).
  * @author Ilya Kotov <forkotov02@hotmail.ru>

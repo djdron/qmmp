@@ -170,10 +170,10 @@ void ConfigDialog::loadPluginsInfo()
         load input plugins information
     */
     item = new QTreeWidgetItem (m_ui->treeWidget, QStringList() << tr("Decoders"));
-    QList <DecoderFactory *> *decoders = Decoder::factories();
-    files = Decoder::files();
-    for (int i = 0; i < decoders->count (); ++i)
-        new PluginItem (item, decoders->at(i), files.at (i));
+    foreach(DecoderFactory *factory, *Decoder::factories())
+    {
+        new PluginItem (item, factory,  Decoder::filePath(factory));
+    }
     m_ui->treeWidget->addTopLevelItem(item);
     item->setExpanded(true);
     /*

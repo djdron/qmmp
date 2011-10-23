@@ -128,9 +128,9 @@ public:
      */
     static QList<DecoderFactory*> *factories();
     /*!
-     * Returns a list of input plugin file names.
+     * Returns file path of the \b factory
      */
-    static QStringList files();
+    static QString filePath(DecoderFactory *factory);
     /*!
      * Returns a list of supported protocols (including meta-protocols).
      * This fuction ignores disabled decoders.
@@ -162,7 +162,7 @@ private:
     static QList<DecoderFactory*> *m_factories;
     static QList<DecoderFactory*> *m_disabledFactories;
     static DecoderFactory *m_lastFactory;
-    static QStringList m_files;
+    static QHash <DecoderFactory*, QString> *m_files;
     AudioParameters m_parameters;
     QIODevice *m_input;
     bool m_hasMetaData;
