@@ -14,7 +14,6 @@ SOURCES += decoder_mpg123.cpp \
     replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/mpg123
 unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmpg123.so
-INCLUDEPATH += /home/user/qmmp-0.6/include
 
 win32:INCLUDEPATH += D:\qt4\MINGW\include\taglib
 CONFIG += release \
@@ -40,7 +39,7 @@ TRANSLATIONS = translations/mpg123_plugin_ru.ts \
     translations/mpg123_plugin_ja.ts \
     translations/mpg123_plugin_es.ts
 
-#RESOURCES = translations/translations.qrc
+RESOURCES = translations/translations.qrc
 unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/Input

@@ -1,3 +1,16 @@
+include(../../plugins.pri)
+
+TARGET = $$PLUGINS_PREFIX/Ui/simple
+unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Ui/libsimple.so
+
+CONFIG += release \
+    warn_on \
+    plugin \
+    link_pkgconfig
+TEMPLATE = lib
+
+PKGCONFIG += qmmp qmmpui
+
 SOURCES += main.cpp \
     mainwindow.cpp \
     listwidget.cpp \
@@ -13,10 +26,7 @@ HEADERS += mainwindow.h \
     visualmenu.h \
     renamedialog.h \
     simplefactory.h
-TEMPLATE = app
-CONFIG += warn_on \
-
-TARGET = simple
+TEMPLATE = lib
 
 FORMS += mainwindow.ui \
     forms/configdialog.ui \

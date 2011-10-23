@@ -6,6 +6,8 @@ MOC_DIR=./.build/moc/
 OBJECTS_DIR=./.build/obj
 
 INCLUDEPATH += /home/user/qmmp-0.6/include
+INCLUDEPATH += /usr/include
+INCLUDEPATH += /usr/local/include
 
 #Version
 
@@ -16,3 +18,4 @@ CONFIG += SVN_VERSION
 #Comment/uncomment this if you want to change plugins list
 
 CONFIG += MPG123_PLUGIN
+#CONFIG += SIMPLE_UI_PLUGIN
