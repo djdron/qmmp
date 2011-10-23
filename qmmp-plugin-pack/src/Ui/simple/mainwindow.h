@@ -23,11 +23,11 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <qmmp/qmmp.h>
-#include <ui_mainwindow.h>
+#include "ui_mainwindow.h"
 
 class QSlider;
 class QLabel;
-
+class UiHelper;
 class PlayListModel;
 class MediaPlayer;
 class SoundCore;
@@ -68,8 +68,8 @@ private:
 	QSlider *m_slider;
 	QLabel *m_label;
 	SoundCore *m_core;
-	GeneralHandler *m_generalHandler;
 	VisualMenu *m_visMenu;
+	UiHelper *m_uiHelper;
 
 };
 

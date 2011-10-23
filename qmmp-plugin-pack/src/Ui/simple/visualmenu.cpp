@@ -22,8 +22,6 @@
 
 #include <qmmp/visual.h>
 #include <qmmp/visualfactory.h>
-
-#include "pluginitem.h"
 #include "visualmenu.h"
 
 VisualMenu::VisualMenu(QWidget *parent) : QMenu(tr("Visualization"), parent)

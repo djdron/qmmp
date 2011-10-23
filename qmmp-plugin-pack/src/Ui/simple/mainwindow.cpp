@@ -32,26 +32,22 @@
 #include <qmmpui/filedialog.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
-#include <qmmpui/generalhandler.h>
-#include "configdialog.h"
+#include <qmmpui/uihelper.h>
 #include "visualmenu.h"
 #include "listwidget.h"
 #include "mainwindow.h"
 #include "renamedialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
-        : QMainWindow(parent)
+    : QMainWindow(parent)
 {
     ui.setupUi(this);
     //qmmp objects
-    m_player = new MediaPlayer(this);
-    m_core = new SoundCore(this);
-    m_pl_manager = new PlayListManager(this);
-    m_player->initialize(m_core, m_pl_manager);
-    new PlaylistParser(this);
-    m_generalHandler = new GeneralHandler(this);
-    connect(m_generalHandler, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
-    connect(m_generalHandler, SIGNAL(exitCalled()), qApp, SLOT(closeAllWindows()));
+    m_player = MediaPlayer::instance();
+    m_core = SoundCore::instance();
+    m_pl_manager = PlayListManager::instance();
+    m_uiHelper = UiHelper::instance();
+    connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     m_visMenu = new VisualMenu(this); //visual menu
     //actions
     //playback
@@ -113,6 +109,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
     ui.tabWidget->setTabsClosable(1);
     connect(ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
+
+    show();
 }
 
 MainWindow::~MainWindow()
@@ -130,7 +128,7 @@ void MainWindow::addFiles()
 {
     QStringList filters;
     filters << tr("All Supported Bitstreams")+" (" +
-            MetaDataManager::instance()->nameFilters().join (" ") +")";
+               MetaDataManager::instance()->nameFilters().join (" ") +")";
     filters << MetaDataManager::instance()->filters();
     FileDialog::popup(this, FileDialog::AddDirsFiles, &m_lastDir,
                       m_pl_manager->selectedPlayList(), SLOT(add(const QStringList&)),
@@ -143,9 +141,9 @@ void MainWindow::updatePosition(qint64 pos)
     if(!m_slider->isSliderDown())
         m_slider->setValue(pos/1000);
     m_label->setText(QString("%1:%2/%3:%4").arg(pos/1000/60, 2, 10, QChar('0'))
-                                   .arg(pos/1000%60, 2, 10, QChar('0'))
-                                   .arg(m_core->totalTime()/1000/60, 2, 10, QChar('0'))
-                                   .arg(m_core->totalTime()/1000%60, 2, 10, QChar('0')));
+                     .arg(pos/1000%60, 2, 10, QChar('0'))
+                     .arg(m_core->totalTime()/1000/60, 2, 10, QChar('0'))
+                     .arg(m_core->totalTime()/1000%60, 2, 10, QChar('0')));
 }
 
 void MainWindow::seek()
@@ -166,7 +164,7 @@ void MainWindow::showState(Qmmp::State state)
         ui.statusbar->showMessage(tr("Paused"));
         break;
     case Qmmp::Stopped:
-         ui.statusbar->showMessage(tr("Stopped"));
+        ui.statusbar->showMessage(tr("Stopped"));
         m_label->setText("--:--/--:--");
         m_slider->setValue(0);
         break;
@@ -194,7 +192,7 @@ void MainWindow::addPlaylist()
 
 void MainWindow::removePlaylist()
 {
-     m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
+    m_pl_manager->removePlayList(m_pl_manager->selectedPlayList());
 }
 
 void MainWindow::removePlaylistWithIndex(int index)
@@ -209,71 +207,66 @@ void MainWindow::addTab(int index)
     updateTabs();
 }
 
- void MainWindow::removeTab(int index)
- {
-     ui.tabWidget->widget(index)->deleteLater();
-     ui.tabWidget->removeTab(index);
-     updateTabs();
- }
+void MainWindow::removeTab(int index)
+{
+    ui.tabWidget->widget(index)->deleteLater();
+    ui.tabWidget->removeTab(index);
+    updateTabs();
+}
 
- void MainWindow::renameTab()
- {
-	renameDialog *dialog = new renameDialog(this);
-	if(dialog->exec()==QDialog::Accepted)
-	{
-		if(!dialog->ui.nameLineEdit->text().isEmpty())
-		{
-			m_pl_manager->playListAt(ui.tabWidget->currentIndex())->setName(dialog->ui.nameLineEdit->text());
-			updateTabs();
-		}
-	}
-	dialog->deleteLater();
- }
+void MainWindow::renameTab()
+{
+    RenameDialog *dialog = new RenameDialog(this);
+    if(dialog->exec()==QDialog::Accepted)
+    {
+        if(!dialog->ui.nameLineEdit->text().isEmpty())
+        {
+            m_pl_manager->playListAt(ui.tabWidget->currentIndex())->setName(dialog->ui.nameLineEdit->text());
+            updateTabs();
+        }
+    }
+    dialog->deleteLater();
+}
 
- void MainWindow::about()
- {
-     QMessageBox::about (this, tr("About Qmmp UI example"),
-                         tr("<p>The <b>Qmmp UI example</b> shows how to develop an alternative "
-                            "user interface for <a href=\"http://qmmp.ylsoftware.com\">"
-                            "Qt-based Multimedia Player</a></p>"
-                            "<p>Written by Ilya Kotov "
-                            "<a href=\"mailto:trialuser02@gmail.com\">trialuser02@gmail.com</a></p>"));
- }
+void MainWindow::about()
+{
+    /*QMessageBox::about (this, tr("About Qmmp UI example"),
+                        tr("<p>The <b>Qmmp UI example</b> shows how to develop an alternative "
+                           "user interface for <a href=\"http://qmmp.ylsoftware.com\">"
+                           "Qt-based Multimedia Player</a></p>"
+                           "<p>Written by Ilya Kotov "
+                           "<a href=\"mailto:trialuser02@gmail.com\">trialuser02@gmail.com</a></p>"));*/
+}
 
- void MainWindow::toggleVisibility()
- {
-     if (isHidden())
-     {
-         show();
-         raise();
-         activateWindow();
-         qApp->processEvents();
-         setFocus ();
-         if (isMinimized())
-         {
-             if (isMaximized())
-                 showMaximized();
-             else
-                 showNormal();
-         }
-     }
-     else
-         hide();
-     qApp->processEvents();
- }
+void MainWindow::toggleVisibility()
+{
+    if (isHidden())
+    {
+        show();
+        //raise();
+        //activateWindow();
+        qApp->processEvents();
+        setFocus ();
+        if (isMinimized())
+        {
+            if (isMaximized())
+                showMaximized();
+            else
+                showNormal();
+        }
+    }
+    else
+        hide();
+    qApp->processEvents();
+}
 
- void MainWindow::showSettings()
- {
-     ConfigDialog *confDialog = new ConfigDialog(this);
-     confDialog->exec();
-     m_visMenu->updateActions();
-     confDialog->deleteLater();
- }
+void MainWindow::showSettings()
+{}
 
 void MainWindow::showBitrate(int)
 {
     ui.statusbar->showMessage(QString(tr("Playing [%1 kbps/%2 bit/%3]")).arg(m_core->bitrate())
-                                    .arg(m_core->precision())
-                                    .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
+                              .arg(m_core->frequency())
+                              .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
 }
 

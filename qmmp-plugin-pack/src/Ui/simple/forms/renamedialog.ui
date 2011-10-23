@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>RenameDialog</class>
+ <widget class="QDialog" name="RenameDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>185</width>
-    <height>65</height>
+    <height>73</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -49,7 +49,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>RenameDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -65,7 +65,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>RenameDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

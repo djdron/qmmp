@@ -17,18 +17,17 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef SKINNEDFACTORY_H
-#define SKINNEDFACTORY_H
+#ifndef SIMPLEFACTORY_H
+#define SIMPLEFACTORY_H
 
 #include <QObject>
 #include <QTranslator>
 #include <qmmpui/uifactory.h>
 
-
 /*!
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
-class SkinnedFactory : public QObject, public UiFactory
+class SimpleFactory : public QObject, public UiFactory
 {
     Q_OBJECT
     Q_INTERFACES(UiFactory)

@@ -21,41 +21,31 @@
 #include <QtPlugin>
 #include <QMessageBox>
 #include "mainwindow.h"
-#include "skinnedfactory.h"
+#include "simplefactory.h"
 
-const UiProperties SkinnedFactory::properties() const
+const UiProperties SimpleFactory::properties() const
 {
     UiProperties props;
-    props.hasAbout = true;
-    props.name = tr("Skinned User Interface");
-    props.shortName = "skinned";
+    props.hasAbout = false;
+    props.name = tr("Simple User Interface");
+    props.shortName = "simple";
     return props;
 }
 
-QObject *SkinnedFactory::SkinnedFactory::create()
+QObject *SimpleFactory::SimpleFactory::create()
 {
     return new MainWindow();
 }
 
-void SkinnedFactory::showAbout(QWidget *parent)
-{
-    QMessageBox::about (parent, tr("About Qmmp Skinned User Interface"),
-                        tr("Qmmp Skinned User Interface")+"\n"+
-                        tr("Simple user interface with Winamp-2.x/XMMS skins support") + "\n" +
-                        tr("Written by:\n"
-                           "Vladimir Kuznetsov <vovanec@gmail.com>\n"
-                           "Ilya Kotov <forkotov02@hotmail.ru>") + "\n" +
-                           tr("Artwork:\n"
-                              "Andrey Adreev <andreev00@gmail.com>"));
+void SimpleFactory::showAbout(QWidget *)
+{}
 
-}
-
-QTranslator *SkinnedFactory::createTranslator(QObject *parent)
+QTranslator *SimpleFactory::createTranslator(QObject *parent)
 {
     QTranslator *translator = new QTranslator(parent);
     QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/skinned_plugin_") + locale);
+    translator->load(QString(":/simple_plugin_") + locale);
     return translator;
 }
 
-Q_EXPORT_PLUGIN2(skinned, SkinnedFactory)
+Q_EXPORT_PLUGIN2(simple, SimpleFactory)

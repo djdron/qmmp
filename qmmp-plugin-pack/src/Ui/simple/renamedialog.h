@@ -1,15 +1,15 @@
 #ifndef RENAMEDIALOG_H
 #define RENAMEDIALOG_H
 
-#include "ui_dialog.h"
+#include "ui_renamedialog.h"
 
-class renameDialog : public QDialog
+class RenameDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-	renameDialog(QWidget *parent = 0);
-	~renameDialog();
-	Ui::Dialog ui;
+	RenameDialog(QWidget *parent = 0);
+	~RenameDialog();
+	Ui::RenameDialog ui;
 };
 
 #endif

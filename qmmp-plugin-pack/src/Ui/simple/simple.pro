@@ -14,22 +14,24 @@ PKGCONFIG += qmmp qmmpui
 SOURCES += main.cpp \
     mainwindow.cpp \
     listwidget.cpp \
-    configdialog.cpp \
-    pluginitem.cpp \
     visualmenu.cpp \
     renamedialog.cpp \
     simplefactory.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
-    configdialog.h \
-    pluginitem.h \
     visualmenu.h \
     renamedialog.h \
     simplefactory.h
 TEMPLATE = lib
 
-FORMS += mainwindow.ui \
-    forms/configdialog.ui \
-    forms/renamedialog.ui
+
+isEmpty(LIB_DIR):LIB_DIR = /lib
+target.path = $$LIB_DIR/qmmp/Ui
+INSTALLS += target
+
+FORMS += forms/mainwindow.ui \
+         forms/renamedialog.ui
 RESOURCES += stuff.qrc
+
+
 
