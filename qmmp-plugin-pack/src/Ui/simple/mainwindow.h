@@ -61,6 +61,7 @@ private slots:
 	void showSettings();
 
 private:
+	void closeEvent(QCloseEvent *);
 	QString m_lastDir;
 	PlayListManager *m_pl_manager;
 	Ui::MainWindow ui;
@@ -68,6 +69,7 @@ private:
 	QSlider *m_slider;
 	QLabel *m_label;
 	SoundCore *m_core;
+	QLabel *m_statusLabel;
 	VisualMenu *m_visMenu;
 	UiHelper *m_uiHelper;
 

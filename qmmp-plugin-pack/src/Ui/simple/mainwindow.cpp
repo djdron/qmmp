@@ -110,6 +110,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
     connect(ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
 
+
+    m_statusLabel = new QLabel(this);
+    ui.statusbar->addPermanentWidget(m_statusLabel, 1);
+
     show();
 }
 
@@ -148,16 +152,13 @@ void MainWindow::showState(Qmmp::State state)
     switch((int) state)
     {
     case Qmmp::Playing:
-        ui.statusbar->showMessage(tr("Playing"));
-        if(m_label->text() != "--:--/--:--")
-            showBitrate(m_core->bitrate());
+        showBitrate(m_core->bitrate());
         break;
     case Qmmp::Paused:
-        ui.statusbar->showMessage(tr("Paused"));
+        m_statusLabel->setText(tr("Paused"));
         break;
     case Qmmp::Stopped:
-        ui.statusbar->showMessage(tr("Stopped"));
-        m_label->setText("--:--/--:--");
+        m_statusLabel->setText(tr("Stopped"));
         m_slider->setValue(0);
         break;
     }
@@ -222,12 +223,7 @@ void MainWindow::renameTab()
 
 void MainWindow::about()
 {
-    /*QMessageBox::about (this, tr("About Qmmp UI example"),
-                        tr("<p>The <b>Qmmp UI example</b> shows how to develop an alternative "
-                           "user interface for <a href=\"http://qmmp.ylsoftware.com\">"
-                           "Qt-based Multimedia Player</a></p>"
-                           "<p>Written by Ilya Kotov "
-                           "<a href=\"mailto:trialuser02@gmail.com\">trialuser02@gmail.com</a></p>"));*/
+    m_uiHelper->about(this);
 }
 
 void MainWindow::toggleVisibility()
@@ -250,8 +246,14 @@ void MainWindow::showSettings()
 
 void MainWindow::showBitrate(int)
 {
-    ui.statusbar->showMessage(QString(tr("Playing [%1 kbps/%2 bit/%3]")).arg(m_core->bitrate())
+    m_statusLabel->setText(tr("<b>Playing</b> [%1 kbps/%2 bit/%3/%4 Hz]").arg(m_core->bitrate())
                               .arg(m_core->sampleSize())
-                              .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono")));
+                              .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono"))
+                              .arg(m_core->frequency()));
+}
+
+void MainWindow::closeEvent(QCloseEvent *)
+{
+    m_uiHelper->exit();
 }
 
