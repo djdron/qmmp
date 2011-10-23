@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -26,16 +26,16 @@
 #include "general.h"
 
 QList<GeneralFactory*> *General::m_factories = 0;
-QStringList General::m_files;
-QMap <GeneralFactory*, QObject*> *General::m_generals = 0;
+QHash <GeneralFactory*, QString> *General::m_files = 0;
+QHash <GeneralFactory*, QObject*> *General::m_generals = 0;
 QObject *General::m_parent = 0;
 
 void General::checkFactories()
 {
     if (!m_factories)
     {
-        m_files.clear();
         m_factories = new QList<GeneralFactory *>;
+        m_files = new QHash <GeneralFactory*, QString>;
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("General");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
@@ -54,7 +54,7 @@ void General::checkFactories()
             if (factory)
             {
                 m_factories->append(factory);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
@@ -65,7 +65,7 @@ void General::create(QObject *parent)
 {
     if(m_generals)
         return;
-    m_generals = new QMap <GeneralFactory*, QObject*>();
+    m_generals = new QHash <GeneralFactory*, QObject*>();
     m_parent = parent;
     checkFactories();
     foreach(GeneralFactory* factory, *General::factories())
@@ -84,10 +84,10 @@ QList<GeneralFactory*> *General::factories()
     return m_factories;
 }
 
-QStringList General::files()
+QString General::file(GeneralFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 void General::setEnabled(GeneralFactory* factory, bool enable)

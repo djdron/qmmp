@@ -63,6 +63,6 @@ public:
     virtual ~CommandLineOption() {}
 };
 
-Q_DECLARE_INTERFACE(CommandLineOption,"CommandLineOptionInterface/1.0");
+Q_DECLARE_INTERFACE(CommandLineOption,"CommandLineOptionInterface/1.0")
 
 #endif

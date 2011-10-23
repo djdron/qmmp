@@ -22,7 +22,7 @@
 
 #include <QObject>
 #include <QStringList>
-#include <QMap>
+#include <QHash>
 #include "generalfactory.h"
 
 /*! @brief The General class provides simple access to general plugins
@@ -41,9 +41,10 @@ public:
      */
     static QList<GeneralFactory*> *factories();
     /*!
-     * Returns a list of the loaded general plugin files.
+     * Returns plugin file path.
+     * @param factory General plugin factory.
      */
-    static QStringList files();
+    static QString file(GeneralFactory *factory);
     /*!
      * Sets whether the general plugin is enabled.
      * @param factory General plugin factory.
@@ -63,10 +64,10 @@ public:
     static bool isEnabled(GeneralFactory* factory);
 
 private:
-    static QList<GeneralFactory*> *m_factories;
-    static QStringList m_files;
     static void checkFactories();
-    static QMap <GeneralFactory*, QObject*> *m_generals;
+    static QList<GeneralFactory*> *m_factories;
+    static QHash <GeneralFactory*, QObject*> *m_generals;
+    static QHash <GeneralFactory*, QString> *m_files;
     static QObject *m_parent;
 };
 

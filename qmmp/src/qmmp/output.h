@@ -12,6 +12,7 @@
 #include <QThread>
 #include <QEvent>
 #include <QList>
+#include <QHash>
 #include <QIODevice>
 #include "visual.h"
 #include "outputfactory.h"
@@ -124,9 +125,10 @@ public:
      */
     static QList<OutputFactory*> *factories();
     /*!
-     * Returns a list of output plugin file names.
+     * Returns plugin file path.
+     * @param factory Output plugin factory.
      */
-    static QStringList files();
+    static QString file(OutputFactory *factory);
     /*!
      * Selects current output \b factory.
      */
@@ -200,10 +202,8 @@ private:
     qint64 m_visBufferSize;
     QmmpSettings *m_settings;
     static void checkFactories();
-    static void registerFactory(OutputFactory *);
-    //TODO use QMap instead
     static QList<OutputFactory*> *m_factories;
-    static QStringList m_files;
+    static QHash <OutputFactory*, QString> *m_files;
 };
 
 

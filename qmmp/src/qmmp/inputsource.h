@@ -26,6 +26,7 @@
 #include <QStringList>
 #include <QIODevice>
 #include <QMap>
+#include <QHash>
 #include "qmmp.h"
 #include "inputsourcefactory.h"
 
@@ -99,9 +100,10 @@ public:
      */
     static QList<InputSourceFactory *> *factories();
     /*!
-     * Returns a list of transport plugin file names.
+     * Returns plugin file path.
+     * @param factory Transport plugin factory.
      */
-    static QStringList files();
+    static QString file(InputSourceFactory *factory);
     /*!
      * Returns a list of supported protocols.
      */
@@ -124,7 +126,7 @@ private:
     bool m_hasMetaData;
     static void checkFactories();
     static QList<InputSourceFactory*> *m_factories;
-    static QStringList m_files;
+    static QHash <InputSourceFactory*, QString> *m_files;
 };
 
 #endif // INPUTSOURCE_H

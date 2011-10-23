@@ -26,14 +26,14 @@
 #include "uiloader.h"
 
 QList<UiFactory*> *UiLoader::m_factories = 0;
-QStringList UiLoader::m_files;
+QHash <UiFactory*, QString> *UiLoader::m_files = 0;
 
 void UiLoader::checkFactories()
 {
     if (!m_factories)
     {
-        m_files.clear();
         m_factories = new QList<UiFactory *>;
+        m_files = new QHash <UiFactory*, QString>;
         QDir pluginsDir(Qmmp::pluginsPath());
         pluginsDir.cd("Ui");
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
@@ -52,7 +52,7 @@ void UiLoader::checkFactories()
             if (factory)
             {
                 m_factories->append(factory);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
@@ -65,10 +65,10 @@ QList<UiFactory*> *UiLoader::factories()
     return m_factories;
 }
 
-QStringList UiLoader::files()
+QString UiLoader::file(UiFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 void UiLoader::select(UiFactory* factory)

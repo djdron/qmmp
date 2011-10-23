@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 #ifndef COMMANDLINEMANAGER_H
 #define COMMANDLINEMANAGER_H
 
+#include <QHash>
 #include "general.h"
 #include "commandlineoption.h"
 
@@ -49,7 +50,7 @@ public:
 private:
     static void checkOptions();
     static QList<CommandLineOption *> *m_options;
-    static QStringList m_files;
+    static QHash<CommandLineOption*, QString> *m_files;
 };
 
 #endif

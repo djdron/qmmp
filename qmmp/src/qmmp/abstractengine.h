@@ -102,9 +102,10 @@ public:
      */
     static bool isEnabled(EngineFactory* factory);
     /*!
-     * Returns a list of engine plugin files.
+     * Returns plugin file path.
+     * @param factory Engine plugin factory.
      */
-    static QStringList files();
+    static QString file(EngineFactory *factory);
     /*!
      * Returns a list of supported protocols (including meta-protocols).
      * This fuction ignores disabled engines.
@@ -116,7 +117,7 @@ private:
     static void checkFactories();
     static QList<EngineFactory*> *m_factories;
     static QList<EngineFactory*> *m_disabledFactories;
-    static QStringList m_files;
+    static QHash <EngineFactory*, QString> *m_files;
 };
 
 

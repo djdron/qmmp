@@ -78,18 +78,18 @@ bool effectCompareFunc(EffectFactory *e1, EffectFactory *e2)
 //static members
 
 QList<EffectFactory*> *Effect::m_factories = 0;
-QStringList Effect::m_files;
+QHash <EffectFactory*, QString> *Effect::m_files = 0;
 
 void Effect::checkFactories()
 {
     if (!m_factories)
     {
-        m_files.clear();
         m_factories = new QList<EffectFactory *>;
+        m_files = new QHash <EffectFactory*, QString>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("Effect");
-        QHash <EffectFactory*, QString> m_hash;
+
         foreach (QString fileName, pluginsDir.entryList(QDir::Files))
         {
             QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
@@ -106,15 +106,11 @@ void Effect::checkFactories()
             if (factory)
             {
                 m_factories->append(factory);
-                m_hash.insert(factory, pluginsDir.absoluteFilePath(fileName));
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
             }
         }
         qSort(m_factories->begin(), m_factories->end(), effectCompareFunc);
-        foreach(EffectFactory *factory, *m_factories) //generate files list with same order
-        {
-            m_files << m_hash.value(factory);
-        }
     }
 }
 
@@ -132,10 +128,10 @@ QList<EffectFactory*> *Effect::factories()
     return m_factories;
 }
 
-QStringList Effect::files()
+QString Effect::file(EffectFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 void Effect::setEnabled(EffectFactory* factory, bool enable)

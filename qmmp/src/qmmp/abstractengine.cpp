@@ -40,7 +40,7 @@ QMutex *AbstractEngine::mutex()
 // static methods
 QList<EngineFactory*> *AbstractEngine::m_factories = 0;
 QList<EngineFactory*> *AbstractEngine::m_disabledFactories = 0;
-QStringList AbstractEngine::m_files;
+QHash <EngineFactory*, QString> *AbstractEngine::m_files = 0;
 
 void AbstractEngine::checkFactories()
 {
@@ -48,7 +48,7 @@ void AbstractEngine::checkFactories()
     {
         QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
         QStringList disabledNames  = settings.value("Engine/disabled_plugins").toStringList ();
-        m_files.clear();
+        m_files = new QHash <EngineFactory*, QString>;
         m_factories = new QList<EngineFactory *>;
         m_disabledFactories = new QList<EngineFactory *>;
 
@@ -69,7 +69,7 @@ void AbstractEngine::checkFactories()
             if (factory)
             {
                 m_factories->append(factory);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_files->insert(factory, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(factory->createTranslator(qApp));
                 if(disabledNames.contains(factory->properties().shortName))
                     m_disabledFactories->append(factory);
@@ -166,10 +166,10 @@ bool AbstractEngine::isEnabled(EngineFactory* factory)
     return !m_disabledFactories->contains(factory);
 }
 
-QStringList AbstractEngine::files()
+QString AbstractEngine::file(EngineFactory *factory)
 {
     checkFactories();
-    return m_files;
+    return m_files->value(factory);
 }
 
 QStringList AbstractEngine::protocols()

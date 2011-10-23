@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -33,14 +33,14 @@
 using namespace std;
 
 QList<CommandLineOption *> *CommandLineManager::m_options = 0;
-QStringList CommandLineManager::m_files;
+QHash<CommandLineOption*, QString> *CommandLineManager::m_files = 0;
 
 void CommandLineManager::checkOptions()
 {
     if (!m_options)
     {
-        m_files.clear();
         m_options = new QList<CommandLineOption *>;
+        m_files = new QHash<CommandLineOption*, QString>;
 
         QDir pluginsDir (Qmmp::pluginsPath());
         pluginsDir.cd("CommandLineOptions");
@@ -60,7 +60,7 @@ void CommandLineManager::checkOptions()
             if (option)
             {
                 m_options->append(option);
-                m_files << pluginsDir.absoluteFilePath(fileName);
+                m_files->insert(option, pluginsDir.absoluteFilePath(fileName));
                 qApp->installTranslator(option->createTranslator(qApp));
             }
         }

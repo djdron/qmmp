@@ -22,6 +22,7 @@
 
 #include <QList>
 #include <QStringList>
+#include <QHash>
 #include "audioparameters.h"
 #include "buffer.h"
 
@@ -84,9 +85,10 @@ public:
      */
     static QList<EffectFactory*> *factories();
     /*!
-     * Returns a list of effect plugin file names.
+     * Returns plugin file path.
+     * @param factory Effect plugin factory.
      */
-    static QStringList files();
+    static QString file(EffectFactory *factory);
     /*!
      * Sets whether the effect plugin is enabled.
      * @param factory Effect plugin factory.
@@ -106,7 +108,7 @@ private:
     Qmmp::AudioFormat m_format;
     static void checkFactories();
     static QList<EffectFactory*> *m_factories;
-    static QStringList m_files;
+    static QHash <EffectFactory*, QString> *m_files;
 };
 
 #endif
