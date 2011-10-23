@@ -79,6 +79,7 @@ const DecoderProperties DecoderMPG123Factory::properties() const
     properties.hasAbout = true;
     properties.hasSettings = true;
     properties.noInput = true;
+    properties.priority = 10; //lowest priority
     return properties;
 }
 
