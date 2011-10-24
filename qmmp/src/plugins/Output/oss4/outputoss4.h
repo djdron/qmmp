@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2010 by Ilya Kotov                                      *
+ *   Copyright (C) 2010-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -27,6 +27,8 @@
 #define DEFAULT_DEV "/dev/dsp"
 #define DEFAULT_MIXER "/dev/mixer"
 
+class VolumeControlOSS4;
+
 /**
     @author Ilya Kotov <forkotov@hotmail.ru>
 */
@@ -42,6 +44,7 @@ public:
     qint64 latency();
 
     static OutputOSS4 *instance();
+    static VolumeControlOSS4 *m_vc;
 
 private:
     //output api
@@ -56,6 +59,7 @@ private:
     bool m_do_select;
     int m_audio_fd;
     static OutputOSS4 *m_instance;
+
 };
 
 class VolumeControlOSS4 : public VolumeControl
@@ -67,6 +71,10 @@ public:
 
     void setVolume(int left, int right);
     void volume(int *left, int *right);
+    void restore();
+
+private:
+    int m_volume;
 };
 
 #endif
