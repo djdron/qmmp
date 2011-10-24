@@ -36,6 +36,7 @@
 #include <qmmpui/configdialog.h>
 #include "visualmenu.h"
 #include "listwidget.h"
+#include "positionslider.h"
 #include "mainwindow.h"
 #include "renamedialog.h"
 
@@ -50,7 +51,6 @@ MainWindow::MainWindow(QWidget *parent)
     m_uiHelper = UiHelper::instance();
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     m_visMenu = new VisualMenu(this); //visual menu
-    //actions
     //playback
     connect(ui.actionPlay, SIGNAL(triggered()), m_player, SLOT(play()));
     connect(ui.actionPause, SIGNAL(triggered()), m_core, SLOT(pause()));
@@ -91,14 +91,11 @@ MainWindow::MainWindow(QWidget *parent)
             ui.tabWidget->setCurrentWidget(list);
         }
     }
-    m_slider = new QSlider (Qt::Horizontal, this);
-    m_label = new QLabel(this);
-    m_label->setText("--:--/--:--");
+    m_slider = new PositionSlider(this);
+    m_timeLabel = new QLabel(this);
     ui.progressToolBar->addWidget(m_slider);
-    ui.progressToolBar->addWidget(m_label);
     //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
-
     //playlist manager
     connect(m_slider, SIGNAL(sliderReleased()), SLOT(seek()));
     connect(m_pl_manager, SIGNAL(currentPlayListChanged(PlayListModel*,PlayListModel*)),
@@ -112,8 +109,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     m_statusLabel = new QLabel(this);
-    ui.statusbar->addPermanentWidget(m_statusLabel, 1);
-
+    ui.statusbar->addPermanentWidget(m_statusLabel, 0);
+    ui.statusbar->addPermanentWidget(m_timeLabel, 1);
     show();
 }
 
@@ -136,7 +133,7 @@ void MainWindow::updatePosition(qint64 pos)
     m_slider->setMaximum(m_core->totalTime()/1000);
     if(!m_slider->isSliderDown())
         m_slider->setValue(pos/1000);
-    m_label->setText(QString("%1:%2/%3:%4").arg(pos/1000/60, 2, 10, QChar('0'))
+    m_timeLabel->setText(QString("%1:%2/%3:%4").arg(pos/1000/60, 2, 10, QChar('0'))
                      .arg(pos/1000%60, 2, 10, QChar('0'))
                      .arg(m_core->totalTime()/1000/60, 2, 10, QChar('0'))
                      .arg(m_core->totalTime()/1000%60, 2, 10, QChar('0')));

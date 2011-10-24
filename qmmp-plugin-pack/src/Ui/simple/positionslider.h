@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,63 +17,23 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <QDebug>
-#include <qmmp/qmmp.h>
-#include "ui_mainwindow.h"
+#ifndef POSITIONSLIDER_H
+#define POSITIONSLIDER_H
 
-class QSlider;
-class QLabel;
-class UiHelper;
-class PlayListModel;
-class MediaPlayer;
-class SoundCore;
-class PlayListManager;
-class GeneralHandler;
-class VisualMenu;
-class PositionSlider;
+#include <QSlider>
+#include <QMouseEvent>
 
-class MainWindow : public QMainWindow
+class PositionSlider : public QSlider
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-	MainWindow(QWidget *parent = 0);
-	~MainWindow();
+    explicit PositionSlider(QWidget *parent = 0);
+    virtual ~PositionSlider(){}
 
-private slots:
-	void addDir();
-	void addFiles();
-	void updatePosition(qint64 pos);
-	void seek();
-	void showState(Qmmp::State);
-	void showBitrate(int);
-	void updateTabs();
-	void addPlaylist();
-	void removePlaylist();
-	void removePlaylistWithIndex(int);
-	void addTab(int);
-	void removeTab(int);
-	void renameTab();
-	void about();
-	void toggleVisibility();
-	void showSettings();
 
-private:
-	void closeEvent(QCloseEvent *);
-	QString m_lastDir;
-	PlayListManager *m_pl_manager;
-	Ui::MainWindow ui;
-	MediaPlayer *m_player;
-	PositionSlider *m_slider;
-	QLabel *m_timeLabel;
-	SoundCore *m_core;
-	QLabel *m_statusLabel;
-	VisualMenu *m_visMenu;
-	UiHelper *m_uiHelper;
-
+protected:
+    virtual void mousePressEvent (QMouseEvent *event);
 };
 
-#endif
+#endif // POSITIONSLIDER_H

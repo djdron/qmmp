@@ -130,8 +130,8 @@ private:
     QList <QString> m_titles;
     QList <QString> m_times;
     //PlayList *m_pl;
-    QFont m_font;
-    QFontMetrics *m_metrics;
+    QFont m_font, m_extra_font;
+    QFontMetrics *m_metrics, *m_extra_metrics;
     //Skin *m_skin;
     QColor m_normal, m_current, m_highlighted, m_normal_bg, m_selected_bg;
     int m_anchor_row;
@@ -153,6 +153,8 @@ private:
     //PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
     QScrollBar *m_scrollBar;
+    bool m_show_anchor;
+    int m_number_width;
 };
 
 #endif

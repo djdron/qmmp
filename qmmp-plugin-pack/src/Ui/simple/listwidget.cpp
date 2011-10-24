@@ -75,12 +75,15 @@ void ListWidget::readSettings()
     m_font = QApplication::font();
     m_show_protocol = true;
     m_show_number = true;
+    m_show_anchor = true;
     //bool show_popup = settings.value("PlayList/show_popup", false).toBool();
 
     if (m_update)
     {
         delete m_metrics;
+        delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
+        m_extra_metrics = new QFontMetrics(m_extra_font);
         m_rows = (height() - 10) / m_metrics->ascent ();
         updateList();
         /*if(m_popupWidget)
@@ -93,7 +96,9 @@ void ListWidget::readSettings()
     {
         m_update = true;
         m_metrics = new QFontMetrics(m_font);
+        m_extra_metrics = new QFontMetrics(m_extra_font);
     }
+
     /*if(show_popup)
         m_popupWidget = new PlayListPopup::PopupWidget(this);*/
     m_normal = palette().color(QPalette::Text);
@@ -110,6 +115,7 @@ void ListWidget::paintEvent(QPaintEvent *)
     m_painter.setFont(m_font);
     m_painter.setBrush(QBrush(m_normal_bg));
     int x = width() - m_scrollBar->sizeHint().width();
+    int font_y = 0;
 
     m_painter.drawRect(-1,-1, x + 1, height()+1);
 
@@ -119,21 +125,35 @@ void ListWidget::paintEvent(QPaintEvent *)
         {
             m_painter.setBrush(QBrush(palette().color(QPalette::AlternateBase)));
             m_painter.setPen(palette().color(QPalette::AlternateBase));
-            m_painter.drawRect (6, 15+(i-1)*m_metrics->height () + 2, x - 10, m_metrics->height());
+            m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                                x - 10, m_metrics->lineSpacing() + 1);
         }
         else
         {
             m_painter.setPen(m_normal_bg);
             m_painter.setBrush(QBrush(m_normal_bg));
-            m_painter.drawRect (6, 15+(i-1)*m_metrics->height () + 2, x - 10, m_metrics->height());
+            m_painter.drawRect (6,  i * (m_metrics->lineSpacing() + 2),
+                                x - 10, m_metrics->lineSpacing() + 1);
         }
 
-        if (m_model->isSelected(i + m_first))
+        if (m_show_anchor && i == m_anchor_row - m_first)
         {
-            m_painter.setBrush(palette().highlight ());
-            m_painter.setPen(m_selected_bg);
-            m_painter.drawRect (6, 15+(i-1)*m_metrics->height () + 2, x - 10, m_metrics->height());
+            m_painter.setBrush(m_model->isSelected(i + m_first) ? m_selected_bg : m_normal_bg);
+            m_painter.setPen(m_normal);
+            m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                                x - 10, m_metrics->lineSpacing() + 1);
         }
+        else
+        {
+            if (m_model->isSelected(i + m_first))
+            {
+                m_painter.setBrush(QBrush(m_selected_bg));
+                m_painter.setPen(m_selected_bg);
+                m_painter.drawRect (6, i * (m_metrics->lineSpacing() + 2),
+                                    x - 10, m_metrics->lineSpacing() + 1);
+            }
+        }
+
 
         if (m_model->currentRow() == i + m_first)
         {
@@ -142,32 +162,47 @@ void ListWidget::paintEvent(QPaintEvent *)
             m_font.setBold(false);
             m_painter.setPen(m_current);
         }
+        else
+            m_painter.setFont(m_font);
+
         if (m_model->isSelected(i + m_first))
             m_painter.setPen(m_highlighted);
         else
             m_painter.setPen(m_normal);
 
+        font_y = (i + 1) * (2 + m_metrics->lineSpacing()) - 2 - m_metrics->descent();
 
-        m_painter.drawText(10,14+i*m_metrics->height(),m_titles.at(i));
-
-        if (m_model->isQueued(m_model->item(i + m_first)) ||
-                (m_player->isRepeatable() && (m_model->currentRow() == m_first + i)) || m_show_protocol)
+        if(m_number_width)
         {
-            QString extra_string = getExtraString(m_first + i);
-
-            int old_size = m_font.pointSize();
-            m_font.setPointSize(old_size - 1 );
-            m_painter.setFont(m_font);
-
-            m_painter.drawText(x - 10 - m_metrics->width(extra_string) - m_metrics->width(m_times.at(i)),
-                               14+i*m_metrics->height (), extra_string);
-            m_font.setPointSize(old_size);
-            m_painter.setFont(m_font);
-            m_painter.setBrush(QBrush(m_normal_bg));
+            QString number = QString("%1").arg(m_first+i+1);
+            m_painter.drawText(10 + m_number_width - m_extra_metrics->width(number),
+                               font_y, number);
+            m_painter.drawText(10 + m_number_width + m_metrics->width("9"), font_y, m_titles.at(i));
         }
+        else
+            m_painter.drawText(10, font_y, m_titles.at(i));
 
-        m_painter.drawText(x - 7 - m_metrics->width(m_times.at(i)),
-                           14+i*m_metrics->height (), m_times.at(i));
+        QString extra_string = getExtraString(m_first + i);
+        if(!extra_string.isEmpty())
+        {
+            m_painter.setFont(m_extra_font);
+
+            if(m_times.at(i).isEmpty())
+                m_painter.drawText(x - 7 - m_extra_metrics->width(extra_string),
+                                   font_y, extra_string);
+            else
+                m_painter.drawText(x - 10 - m_extra_metrics->width(extra_string) -
+                                   m_metrics->width(m_times.at(i)), font_y, extra_string);
+            m_painter.setFont(m_font);
+        }
+        m_painter.drawText(x - 7 - m_metrics->width(m_times.at(i)), font_y, m_times.at(i));
+    }
+    //draw line
+    if(m_number_width)
+    {
+        m_painter.setPen(m_normal);
+        m_painter.drawLine(10 + m_number_width + m_metrics->width("9") / 2, 2,
+                           10 + m_number_width + m_metrics->width("9") / 2, font_y);
     }
 }
 
@@ -198,47 +233,55 @@ void ListWidget::mousePressEvent(QMouseEvent *e)
 
     if (INVALID_ROW != row && m_model->count() > row)
     {
-        if (!(Qt::ControlModifier & e->modifiers () ||
-                Qt::ShiftModifier & e->modifiers () ||
-                m_model->isSelected(row)))
+        m_pressed_row = row;
+        if(e->button() == Qt::RightButton && !m_model->isSelected(row))
+        {
             m_model->clearSelection();
+            m_model->setSelected(row, true);
+            m_anchor_row = m_pressed_row;
+            QWidget::mousePressEvent(e);
+            return;
+        }
 
         if (m_model->isSelected(row) && (e->modifiers() == Qt::NoModifier))
+        {
             m_select_on_release = true;
+            QWidget::mousePressEvent(e);
+            return;
+        }
 
-        //qWarning("m_prev_clicked_row: %d",m_prev_clicked_row);
-
-        m_pressed_row = row;
         if ((Qt::ShiftModifier & e->modifiers()))
         {
-
+            bool select = true;
             if (m_pressed_row > m_anchor_row)
             {
-                m_model->clearSelection();
                 for (int j = m_anchor_row;j <= m_pressed_row;j++)
                 {
-                    m_model->setSelected(j, true);
+                    m_model->setSelected(j, select);
                 }
             }
             else
             {
-                m_model->clearSelection();
                 for (int j = m_anchor_row;j >= m_pressed_row;j--)
                 {
-                    m_model->setSelected(j, true);
+                    m_model->setSelected(j, select);
                 }
             }
-        }
-        else
-        {
-            if (!m_model->isSelected(row) || (Qt::ControlModifier & e->modifiers()))
-                m_model->setSelected(row, !m_model->isSelected(row));
-        }
-
-        if (m_model->getSelection(m_pressed_row).count() == 1)
             m_anchor_row = m_pressed_row;
-        //qWarning("m_anchor_row: %d",m_anchor_row);
-
+        }
+        else //ShiftModifier released
+        {
+            if ((Qt::ControlModifier & e->modifiers()))
+            {
+                m_model->setSelected(row, !m_model->isSelected(row));
+            }
+            else //ControlModifier released
+            {
+                m_model->clearSelection();
+                m_model->setSelected(row, true);
+            }
+            m_anchor_row = m_pressed_row;
+        }
         update();
     }
     QWidget::mousePressEvent(e);
@@ -248,7 +291,7 @@ void ListWidget::resizeEvent(QResizeEvent *e)
 {
     m_scrollBar->setGeometry(width() - m_scrollBar->sizeHint().width(), 0,
                              m_scrollBar->sizeHint().width(), height());
-    
+
     m_rows = (e->size().height() - 10) / m_metrics->height ();
 
     //m_scroll = true;
@@ -329,22 +372,33 @@ void ListWidget::updateList()
     m_times  = m_model->getTimes(m_first, m_rows);
     m_scroll = false;
     //add numbers
-    for (int i = 0; i < m_titles.size() && m_show_number; ++i)
+    bool m_align_numbres = true;
+    for (int i = 0; i < m_titles.size() && m_show_number && !m_align_numbres; ++i)
     {
         QString title = m_titles.at(i);
         m_titles.replace(i, title.prepend(QString("%1").arg(m_first+i+1)+". "));
 
     }
+    //song numbers width
+    if(m_show_number && m_align_numbres && m_model->count())
+    {
+        m_number_width = m_metrics->width("9") * QString::number(m_model->count()).size();
+    }
+    else
+        m_number_width = 0;
+
     //elide title
     QString extra_string;
-    int x = width() - m_scrollBar->width();
     for (int i=0; i<m_titles.size(); ++i)
     {
         extra_string = getExtraString(m_first + i);
         int extra_string_space = extra_string.isEmpty() ? 0 : m_metrics->width(extra_string);
+        if(m_number_width)
+            extra_string_space += m_number_width + m_metrics->width("9");
         m_titles.replace(i, m_metrics->elidedText (m_titles.at(i), Qt::ElideRight,
-                            x -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
+                                                   width() -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
     }
+
     update();
 }
 
@@ -352,7 +406,7 @@ void ListWidget::autoscroll()
 {
     SimpleSelection sel = m_model->getSelection(m_pressed_row);
     if ((sel.m_top == 0 && m_scroll_direction == TOP && sel.count() > 1) ||
-        (sel.m_bottom == m_model->count() - 1 && m_scroll_direction == DOWN && sel.count() > 1))
+            (sel.m_bottom == m_model->count() - 1 && m_scroll_direction == DOWN && sel.count() > 1))
         return;
 
     if(m_scroll_direction == DOWN)
@@ -429,15 +483,20 @@ const QString ListWidget::getExtraString(int i)
     if (m_show_protocol && m_model->item(i)->url().contains("://"))
         extra_string = "[" + m_model->item(i)->url().split("://").at(0) + "]";
 
-    if (m_player->isRepeatable() && (m_model->currentRow() == i))
-        extra_string += " |R|";
-
     if (m_model->isQueued(m_model->item(i)))
     {
         int index = m_model->queuedIndex(m_model->item(i));
-        extra_string += " |"+QString::number(index + 1)+"|";
+        extra_string += "|"+QString::number(index + 1)+"|";
     }
+
+    if(m_model->currentRow() == i && m_player->isRepeatable())
+        extra_string += "|R|";
+    else if(m_model->isStopAfter(m_model->item(i)))
+        extra_string += "|S|";
+
     extra_string = extra_string.trimmed(); //remove white space
+    if(!extra_string.isEmpty())
+        extra_string.prepend(" ");
     return extra_string;
 }
 
@@ -510,13 +569,10 @@ void ListWidget::mouseReleaseEvent(QMouseEvent *e)
 
 int ListWidget::rowAt(int y) const
 {
-    if (y <= 14 && y >= 2 && m_model->count())
-        return m_first;
-
-    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first) - 1; ++i)
+    for (int i = 0; i < qMin(m_rows, m_model->count() - m_first); ++i)
     {
-        if ((y >= 14 + i * m_metrics->height ()) && (y <= 14 + (i+1) * m_metrics->height()))
-            return m_first + i + 1;
+        if ((y >= i * (m_metrics->lineSpacing() + 2)) && (y <= (i+1) * (m_metrics->lineSpacing() + 2)))
+            return m_first + i;
     }
     return INVALID_ROW;
 }
