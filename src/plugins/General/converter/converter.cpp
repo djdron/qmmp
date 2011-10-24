@@ -27,6 +27,7 @@
 #include <QtEndian>
 #include <taglib/fileref.h>
 #include <taglib/tag.h>
+#include <taglib/mpegfile.h>
 #include "converter.h"
 
 #define QStringToTString_qt4(s) TagLib::String(s.toUtf8().constData(), TagLib::String::UTF8)
@@ -207,7 +208,7 @@ void Converter::run()
                                0x64, 0x61, 0x74, 0x61, //"data"
                                0x00, 0x00, 0x00, 0x00 }; //chunk size*/
 
-        quint16 sample_size = preset["use_16bit"].toBool() ? 2 : ap.sampleSize(); 
+        quint16 sample_size = preset["use_16bit"].toBool() ? 2 : ap.sampleSize();
         quint32 sample_rate = qToLittleEndian(ap.sampleRate());
         quint16 channels = qToLittleEndian((quint16)ap.channels());
         quint16 block_align = qToLittleEndian((quint16)sample_size * ap.channels());
@@ -270,7 +271,14 @@ void Converter::run()
                 file.tag()->setComment(QStringToTString_qt4(metadata[Qmmp::COMMENT]));
                 file.tag()->setYear(metadata[Qmmp::YEAR].toUInt());
                 file.tag()->setTrack(metadata[Qmmp::TRACK].toUInt());
-                file.save();
+
+                if(full_path.endsWith(".mp3"))
+                {
+                    TagLib::MPEG::File *mpeg_file = dynamic_cast <TagLib::MPEG::File *> (file.file());
+                    mpeg_file->save(TagLib::MPEG::File::ID3v2, true);
+                }
+                else
+                    file.save();
             }
         }
     }
