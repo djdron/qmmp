@@ -199,6 +199,7 @@ VolumeControlOSS4::VolumeControlOSS4(QObject *parent) : VolumeControl(parent)
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_volume = settings.value("OSS4/volume", 0x3232).toInt();
     OutputOSS4::m_vc = this;
+    restore();
 }
 
 VolumeControlOSS4::~VolumeControlOSS4()
