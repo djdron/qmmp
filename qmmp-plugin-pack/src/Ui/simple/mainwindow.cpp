@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -144,12 +144,14 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
         showBitrate(m_core->bitrate());
+        setWindowTitle(m_pl_manager->selectedPlayList()->currentItem()->text());
         break;
     case Qmmp::Paused:
-        m_statusLabel->setText(tr("Paused"));
+        m_statusLabel->setText("<b>" + tr("Paused") + "</b>");
         break;
     case Qmmp::Stopped:
-        m_statusLabel->setText(tr("Stopped"));
+        m_statusLabel->setText("<b>" + tr("Stopped") + "</b>");
+        m_timeLabel->clear();
         m_slider->setValue(0);
         break;
     }
