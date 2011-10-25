@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to File</source>
-        <translation></translation>
+        <source>J</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Jump to Track</source>
+        <translation>&amp;Перейти к треку</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -728,27 +728,17 @@
         <translation>Сочетания клавиш</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="377"/>
-        <source>&amp;Jump To File</source>
-        <translation>&amp;Перейти к файлу</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="378"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="388"/>
+        <location filename="../mainwindow.cpp" line="387"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="408"/>
+        <location filename="../mainwindow.cpp" line="407"/>
         <source>Tools</source>
         <translation>Сервис</translation>
     </message>
@@ -817,7 +807,7 @@
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="548"/>
+        <location filename="../playlist.cpp" line="542"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новый список</translation>
     </message>

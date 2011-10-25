@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to File</source>
-        <translation>ファイルを指定して即刻再生(&amp;J)</translation>
+        <source>J</source>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation>J</translation>
+        <source>&amp;Jump to Track</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -718,14 +718,9 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="388"/>
+        <location filename="../mainwindow.cpp" line="387"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="377"/>
-        <source>&amp;Jump To File</source>
-        <translation>ファイルを指定して即刻再生(&amp;J)</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="316"/>
@@ -738,17 +733,12 @@
         <translation type="unfinished">ショートカット</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="378"/>
-        <source>J</source>
-        <translation>J</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>View</source>
         <translation>観容</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="408"/>
+        <location filename="../mainwindow.cpp" line="407"/>
         <source>Tools</source>
         <translation>ツール</translation>
     </message>
@@ -833,7 +823,7 @@
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="548"/>
+        <location filename="../playlist.cpp" line="542"/>
         <source>&amp;New PlayList</source>
         <translation>新しいプレイリスト(&amp;N)</translation>
     </message>

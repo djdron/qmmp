@@ -66,7 +66,7 @@ public slots:
     void stop();
     void next();
     void replay();
-    void jumpToFile();
+    void jumpToTrack();
     void toggleVisibility();
 
     void addDir();

@@ -374,8 +374,7 @@ void MainWindow::createActions()
     m_mainMenu->addAction(SET_ACTION(ActionManager::NEXT, this, SLOT(next())));
     m_mainMenu->addAction(SET_ACTION(ActionManager::PLAY_PAUSE, this, SLOT(playPause())));
     m_mainMenu->addSeparator();
-    m_mainMenu->addAction(QIcon::fromTheme("go-up"), tr("&Jump To File"),
-                          this, SLOT(jumpToFile()), tr("J"));
+    m_mainMenu->addAction(SET_ACTION(ActionManager::JUMP, this, SLOT(jumpToTrack())));
     m_mainMenu->addSeparator();
     QMenu *viewMenu = m_mainMenu->addMenu(tr("View"));
     viewMenu->addAction(ACTION(ActionManager::SHOW_PLAYLIST));
@@ -462,7 +461,7 @@ void MainWindow::playPause()
         play();
 }
 
-void MainWindow::jumpToFile()
+void MainWindow::jumpToTrack()
 {
     m_uiHelper->jumpToTrack(this);
 }

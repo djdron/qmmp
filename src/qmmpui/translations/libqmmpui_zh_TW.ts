@@ -87,13 +87,13 @@
         <translation>檔名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="282"/>
+        <location filename="../configdialog.cpp" line="281"/>
         <source>Artist</source>
         <translation>藝術家</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="66"/>
-        <location filename="../configdialog.cpp" line="283"/>
+        <location filename="../configdialog.cpp" line="282"/>
         <source>Album</source>
         <translation>專輯</translation>
     </message>
@@ -123,57 +123,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="284"/>
+        <location filename="../configdialog.cpp" line="283"/>
         <source>Title</source>
         <translation>標題</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="285"/>
+        <location filename="../configdialog.cpp" line="284"/>
         <source>Track number</source>
         <translation type="unfinished">音軌編號</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="286"/>
+        <location filename="../configdialog.cpp" line="285"/>
         <source>Two-digit track number</source>
         <translation type="unfinished">兩位數音軌編號</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="289"/>
         <source>Disc number</source>
         <translation type="unfinished">光槃編號</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="293"/>
         <source>Condition</source>
         <translation type="unfinished">條件</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
+        <location filename="../configdialog.cpp" line="286"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="288"/>
         <source>Composer</source>
         <translation type="unfinished">作曲</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="290"/>
         <source>File name</source>
         <translation type="unfinished">文件名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
+        <location filename="../configdialog.cpp" line="291"/>
         <source>File path</source>
         <translation type="unfinished">文件路徑</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
+        <location filename="../configdialog.cpp" line="292"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="288"/>
+        <location filename="../configdialog.cpp" line="287"/>
         <source>Comment</source>
         <translation>備註</translation>
     </message>

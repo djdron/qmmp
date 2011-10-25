@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to File</source>
-        <translation>&amp;Перейти до файлу</translation>
+        <source>J</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation></translation>
+        <source>&amp;Jump to Track</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -728,27 +728,17 @@
         <translation>Комбінації клавіш</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="377"/>
-        <source>&amp;Jump To File</source>
-        <translation>&amp;Перейти до файлу</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="378"/>
-        <source>J</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>View</source>
         <translation>Вигляд</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="388"/>
+        <location filename="../mainwindow.cpp" line="387"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="408"/>
+        <location filename="../mainwindow.cpp" line="407"/>
         <source>Tools</source>
         <translation>Утиліти</translation>
     </message>
@@ -817,7 +807,7 @@
         <translation>Перевернути</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="548"/>
+        <location filename="../playlist.cpp" line="542"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новий список</translation>
     </message>

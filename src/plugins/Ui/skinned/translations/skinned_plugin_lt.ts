@@ -65,12 +65,12 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to File</source>
-        <translation>&amp;Peršokti prie failo</translation>
+        <source>J</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
+        <source>&amp;Jump to Track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -729,27 +729,17 @@
         <translation type="unfinished">Santrumpos</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="377"/>
-        <source>&amp;Jump To File</source>
-        <translation>&amp;Pereiti prie bylos</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="378"/>
-        <source>J</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>View</source>
         <translation>Rodyti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="388"/>
+        <location filename="../mainwindow.cpp" line="387"/>
         <source>Playlist</source>
         <translation>Grojaraštis</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="408"/>
+        <location filename="../mainwindow.cpp" line="407"/>
         <source>Tools</source>
         <translation>Įrankiai</translation>
     </message>
@@ -818,7 +808,7 @@
         <translation>Apversti</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="548"/>
+        <location filename="../playlist.cpp" line="542"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Naujas grojaraštis</translation>
     </message>

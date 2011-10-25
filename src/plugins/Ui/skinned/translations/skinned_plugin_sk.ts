@@ -65,13 +65,13 @@
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>&amp;Jump to File</source>
-        <translation>P&amp;resjočiť na súbor</translation>
+        <source>J</source>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
-        <source>J</source>
-        <translation>J</translation>
+        <source>&amp;Jump to Track</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -728,27 +728,17 @@
         <translation type="unfinished">Skratky</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="377"/>
-        <source>&amp;Jump To File</source>
-        <translation>&amp;Preskočiť na súbor</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="378"/>
-        <source>J</source>
-        <translation>J</translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="380"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>View</source>
         <translation>Zobraziť</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="388"/>
+        <location filename="../mainwindow.cpp" line="387"/>
         <source>Playlist</source>
         <translation>Playlist</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="408"/>
+        <location filename="../mainwindow.cpp" line="407"/>
         <source>Tools</source>
         <translation>Nástroje</translation>
     </message>
@@ -812,7 +802,7 @@
         <translation>Otočiť zoznam</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="548"/>
+        <location filename="../playlist.cpp" line="542"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Nový playlist</translation>
     </message>
