@@ -4,12 +4,12 @@
 <context>
     <name>Converter</name>
     <message>
-        <location filename="../converter.cpp" line="167"/>
+        <location filename="../converter.cpp" line="168"/>
         <source>Track: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../converter.cpp" line="169"/>
+        <location filename="../converter.cpp" line="170"/>
         <source>Preset: %1</source>
         <translation type="unfinished"></translation>
     </message>
