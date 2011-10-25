@@ -86,6 +86,11 @@ public:
         return m_model;
     }
 
+    void setMenu(QMenu *menu)
+    {
+        m_menu = menu;
+    }
+
 
 public slots:
     void updateList();

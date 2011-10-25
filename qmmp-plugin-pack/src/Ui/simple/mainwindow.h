@@ -21,12 +21,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QDebug>
 #include <qmmp/qmmp.h>
 #include "ui_mainwindow.h"
 
 class QSlider;
 class QLabel;
+class QMenu;
 class UiHelper;
 class PlayListModel;
 class MediaPlayer;
@@ -76,6 +76,7 @@ private:
 	QLabel *m_statusLabel;
 	VisualMenu *m_visMenu;
 	UiHelper *m_uiHelper;
+	QMenu *m_pl_menu;
 
 };
 

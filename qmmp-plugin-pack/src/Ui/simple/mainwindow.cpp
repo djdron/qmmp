@@ -24,6 +24,7 @@
 #include <QTreeView>
 #include <QMessageBox>
 #include <QSignalMapper>
+#include <QMenu>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
 #include <qmmp/metadatamanager.h>
@@ -54,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     m_visMenu = new VisualMenu(this); //visual menu
     ui.actionVisualization->setMenu(m_visMenu);
+    m_pl_menu = new QMenu(this); //playlist menu
     new ActionManager(this); //action manager
     //status
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(updatePosition(qint64)));
@@ -63,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     foreach(PlayListModel *model, m_pl_manager->playLists())
     {
         ListWidget *list = new ListWidget(model, this);
+        list->setMenu(m_pl_menu);
         if(m_pl_manager->currentPlayList() != model)
             ui.tabWidget->addTab(list, model->name());
         else
@@ -358,5 +361,17 @@ void MainWindow::createActions()
     //help menu
     ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
     ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
+    //playlist menu
+    m_pl_menu->addAction(SET_ACTION(ActionManager::PL_SHOW_INFO, m_pl_manager, SLOT(showDetails())));
+    m_pl_menu->addSeparator();
+    m_pl_menu->addAction(ACTION(ActionManager::PL_REMOVE_SELECTED));
+    m_pl_menu->addAction(ACTION(ActionManager::PL_REMOVE_ALL));
+    m_pl_menu->addAction(ACTION(ActionManager::PL_REMOVE_UNSELECTED));
+    m_pl_menu->addMenu(UiHelper::instance()->createMenu(UiHelper::PLAYLIST_MENU,
+                                                        tr("Actions"), this));
+    m_pl_menu->addSeparator();
+    m_pl_menu->addAction(SET_ACTION(ActionManager::PL_ENQUEUE, m_pl_manager, SLOT(addToQueue())));
+
+    addActions(ActionManager::instance()->actions());
 }
 

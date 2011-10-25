@@ -42,7 +42,7 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
     m_update = false;
     //m_skin = Skin::instance();
     //m_popupWidget = 0;
-    m_menu = new QMenu(this);
+    m_menu = 0;//new QMenu(this);
     m_scroll_direction = NONE;
     m_prev_y = 0;
     m_anchor_row = INVALID_ROW;
