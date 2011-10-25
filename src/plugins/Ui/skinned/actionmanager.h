@@ -89,12 +89,12 @@ public:
         SETTINGS,
         ABOUT,
         ABOUT_QT,
-        QUIT,
+        QUIT
     };
 
     QAction *action(int type);
     QAction *use(int type, const QObject *receiver, const char *member);
-    QList<int> actions();
+    QList<QAction *> actions();
     void saveActions();
     static ActionManager* instance();
 

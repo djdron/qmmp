@@ -422,7 +422,7 @@ void MainWindow::createActions()
     connect(backward,SIGNAL(triggered(bool)),this,SLOT(backward()));
 
     Dock::instance()->addActions(QList<QAction*>() << forward << backward);
-    Dock::instance()->addActions(m_mainMenu->actions());
+    Dock::instance()->addActions(ActionManager::instance()->actions());
 }
 
 void MainWindow::about()
