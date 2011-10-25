@@ -113,6 +113,11 @@ QAction *ActionManager::use(int type, const QObject *receiver, const char *membe
     return act;
 }
 
+QList<QAction *> ActionManager::actions()
+{
+    return m_actions.values();
+}
+
 ActionManager* ActionManager::instance()
 {
     return m_instance;

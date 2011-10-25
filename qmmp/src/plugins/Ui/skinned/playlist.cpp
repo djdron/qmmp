@@ -302,12 +302,6 @@ void PlayList::createActions()
     m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
                                      SLOT(selectPreviousPlayList())));
     m_playlistMenu->addAction(SET_ACTION(ActionManager::PL_SHOW_MANAGER, this, SLOT(showPlayLists())));
-    Dock::instance()->addActions (m_addMenu->actions());
-    Dock::instance()->addActions (m_subMenu->actions());
-    Dock::instance()->addActions (m_sortMenu->actions());
-    Dock::instance()->addActions (m_listWidget->menu()->actions());
-    Dock::instance()->addActions (m_selectMenu->actions());
-    Dock::instance()->addActions (m_playlistMenu->actions());
 }
 
 void PlayList::closeEvent (QCloseEvent *e)
