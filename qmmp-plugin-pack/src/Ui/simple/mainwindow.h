@@ -65,6 +65,7 @@ private slots:
 	void showSettings();
 	void setVolume(int volume);
 	void updateVolume();
+	void jumpTo();
 
 private:
 	void closeEvent(QCloseEvent *);
@@ -81,6 +82,7 @@ private:
 	UiHelper *m_uiHelper;
 	QMenu *m_pl_menu;
 	VolumeSlider *m_volumeSlider;
+	int m_balance;
 
 };
 

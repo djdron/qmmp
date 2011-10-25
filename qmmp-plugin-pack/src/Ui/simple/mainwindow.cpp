@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
+    m_balance = 0;
     //qmmp objects
     m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
@@ -137,9 +138,9 @@ void MainWindow::updatePosition(qint64 pos)
     if(!m_slider->isSliderDown())
         m_slider->setValue(pos/1000);
     m_timeLabel->setText(QString("%1:%2/%3:%4").arg(pos/1000/60, 2, 10, QChar('0'))
-                     .arg(pos/1000%60, 2, 10, QChar('0'))
-                     .arg(m_core->totalTime()/1000/60, 2, 10, QChar('0'))
-                     .arg(m_core->totalTime()/1000%60, 2, 10, QChar('0')));
+                         .arg(pos/1000%60, 2, 10, QChar('0'))
+                         .arg(m_core->totalTime()/1000/60, 2, 10, QChar('0'))
+                         .arg(m_core->totalTime()/1000%60, 2, 10, QChar('0')));
 }
 
 void MainWindow::seek()
@@ -249,17 +250,29 @@ void MainWindow::showSettings()
 
 void MainWindow::setVolume(int volume)
 {
-    int balance = 0;
-    m_core->setVolume(volume-qMax(balance,0)*volume/100,
-                      volume+qMin(balance,0)*volume/100);
+    m_core->setVolume(volume-qMax(m_balance,0)*volume/100,
+                      volume+qMin(m_balance,0)*volume/100);
+}
+
+void MainWindow::updateVolume()
+{
+    int maxVol = qMax(m_core->leftVolume(), m_core->rightVolume());
+    m_volumeSlider->setValue(maxVol);
+    if (maxVol)
+        m_balance = (m_core->leftVolume() - m_core->rightVolume()) * 100 / maxVol;
+}
+
+void MainWindow::jumpTo()
+{
+    m_uiHelper->jumpToTrack(this);
 }
 
 void MainWindow::showBitrate(int)
 {
     m_statusLabel->setText(tr("<b>Playing</b> [%1 kbps/%2 bit/%3/%4 Hz]").arg(m_core->bitrate())
-                              .arg(m_core->sampleSize())
-                              .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono"))
-                              .arg(m_core->frequency()));
+                           .arg(m_core->sampleSize())
+                           .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono"))
+                           .arg(m_core->frequency()));
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
@@ -392,9 +405,9 @@ void MainWindow::createActions()
     ui.menuEdit->addMenu (sort_mode_menu);
     ui.menuEdit->addSeparator();
     ui.menuEdit->addAction (QIcon::fromTheme("media-playlist-shuffle"), tr("Randomize List"),
-                               m_pl_manager, SLOT(randomizeList()));
+                            m_pl_manager, SLOT(randomizeList()));
     ui.menuEdit->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
-                               m_pl_manager, SLOT(reverseList()));
+                            m_pl_manager, SLOT(reverseList()));
     ui.menuEdit->addSeparator();
     ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     //tools
@@ -405,6 +418,8 @@ void MainWindow::createActions()
     ui.menuPlayback->addAction(ACTION(ActionManager::PAUSE));
     ui.menuPlayback->addAction(ACTION(ActionManager::NEXT));
     ui.menuPlayback->addAction(ACTION(ActionManager::PREVIOUS));
+    ui.menuPlayback->addSeparator();
+    ui.menuPlayback->addAction(SET_ACTION(ActionManager::JUMP, this, SLOT(jumpTo())));
     ui.menuPlayback->addSeparator();
     ui.menuPlayback->addAction(ACTION(ActionManager::PL_ENQUEUE));
     ui.menuPlayback->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
@@ -432,7 +447,3 @@ void MainWindow::createActions()
     addActions(ActionManager::instance()->actions());
 }
 
-void MainWindow::updateVolume()
-{
-    m_volumeSlider->setValue(qMax(m_core->leftVolume(), m_core->rightVolume()));
-}
