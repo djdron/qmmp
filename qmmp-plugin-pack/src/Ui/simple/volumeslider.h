@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
+ *   Copyright (C) 2011 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,71 +17,24 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
 
-#include <QMainWindow>
-#include <qmmp/qmmp.h>
-#include "ui_mainwindow.h"
+#ifndef VOLUMESLIDER_H
+#define VOLUMESLIDER_H
 
-class QSlider;
-class QLabel;
-class QMenu;
-class UiHelper;
-class PlayListModel;
-class MediaPlayer;
-class SoundCore;
-class PlayListManager;
-class GeneralHandler;
-class VisualMenu;
-class PositionSlider;
-class VolumeSlider;
+#include <QAbstractSlider>
 
-class MainWindow : public QMainWindow
+class VolumeSlider : public QAbstractSlider
 {
-Q_OBJECT
 public:
-	MainWindow(QWidget *parent = 0);
-	~MainWindow();
-
-private slots:
-	void addDir();
-	void addFiles();
-	void addUrl();
-	void showPlManager();
-	void updatePosition(qint64 pos);
-	void seek();
-	void showState(Qmmp::State);
-	void showBitrate(int);
-	void updateTabs();
-	void addPlaylist();
-	void removePlaylist();
-	void removePlaylistWithIndex(int);
-	void addTab(int);
-	void removeTab(int);
-	void renameTab();
-	void about();
-	void toggleVisibility();
-	void showSettings();
-	void setVolume(int volume);
-	void updateVolume();
+    VolumeSlider(QWidget *parent);
 
 private:
-	void closeEvent(QCloseEvent *);
-	void createActions();
-	QString m_lastDir;
-	PlayListManager *m_pl_manager;
-	Ui::MainWindow ui;
-	MediaPlayer *m_player;
-	PositionSlider *m_slider;
-	QLabel *m_timeLabel;
-	SoundCore *m_core;
-	QLabel *m_statusLabel;
-	VisualMenu *m_visMenu;
-	UiHelper *m_uiHelper;
-	QMenu *m_pl_menu;
-	VolumeSlider *m_volumeSlider;
-
+    void mousePressEvent(QMouseEvent *);
+    void mouseMoveEvent(QMouseEvent *);
+    void wheelEvent(QWheelEvent *);
+    void paintEvent(QPaintEvent *e);
+    int xToValue(int x);
+    int xFromValue();
 };
 
-#endif
+#endif // VOLUMESLIDER_H

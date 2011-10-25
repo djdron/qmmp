@@ -18,14 +18,16 @@ SOURCES += main.cpp \
     renamedialog.cpp \
     simplefactory.cpp \
     positionslider.cpp \
-    actionmanager.cpp
+    actionmanager.cpp \
+    volumeslider.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
     renamedialog.h \
     simplefactory.h \
     positionslider.h \
-    actionmanager.h
+    actionmanager.h \
+    volumeslider.h
 TEMPLATE = lib
 
 
@@ -36,6 +38,8 @@ INSTALLS += target
 FORMS += forms/mainwindow.ui \
          forms/renamedialog.ui
 RESOURCES += stuff.qrc
+
+
 
 
 

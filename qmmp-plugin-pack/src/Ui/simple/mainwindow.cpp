@@ -41,6 +41,7 @@
 #include "listwidget.h"
 #include "positionslider.h"
 #include "mainwindow.h"
+#include "volumeslider.h"
 #include "renamedialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -94,6 +95,14 @@ MainWindow::MainWindow(QWidget *parent)
     m_statusLabel = new QLabel(this);
     ui.statusbar->addPermanentWidget(m_statusLabel, 0);
     ui.statusbar->addPermanentWidget(m_timeLabel, 1);
+    //volume
+    m_volumeSlider = new VolumeSlider(this);
+    m_volumeSlider->setFixedWidth(80);
+    connect(m_volumeSlider, SIGNAL(sliderMoved(int)), SLOT(setVolume(int)));
+    connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(updateVolume()));
+    ui.progressToolBar->addWidget(m_volumeSlider);
+    updateVolume();
+
     createActions();
     show();
 }
@@ -236,6 +245,13 @@ void MainWindow::showSettings()
     ConfigDialog *confDialog = new ConfigDialog(this);
     confDialog->exec();
     confDialog->deleteLater();
+}
+
+void MainWindow::setVolume(int volume)
+{
+    int balance = 0;
+    m_core->setVolume(volume-qMax(balance,0)*volume/100,
+                      volume+qMin(balance,0)*volume/100);
 }
 
 void MainWindow::showBitrate(int)
@@ -416,3 +432,7 @@ void MainWindow::createActions()
     addActions(ActionManager::instance()->actions());
 }
 
+void MainWindow::updateVolume()
+{
+    m_volumeSlider->setValue(qMax(m_core->leftVolume(), m_core->rightVolume()));
+}
