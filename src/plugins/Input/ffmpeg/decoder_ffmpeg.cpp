@@ -247,9 +247,9 @@ bool DecoderFFmpeg::initialize()
         configure(c->sample_rate, c->request_channels, Qmmp::PCM_S16LE);
 #endif
     if(ic->bit_rate)
-        m_bitrate = ic->bit_rate;
+        m_bitrate = ic->bit_rate/1000;
     if(c->bit_rate)
-        m_bitrate = c->bit_rate;
+        m_bitrate = c->bit_rate/1000;
     qDebug("DecoderFFmpeg: initialize succes");
     return true;
 }
