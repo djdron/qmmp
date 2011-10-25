@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
                    Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint);
     setWindowTitle("Qmmp");
 
-    new ActionManager();
+    new ActionManager(this);
 
     m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
