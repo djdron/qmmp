@@ -71,7 +71,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Перейти до треку</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
