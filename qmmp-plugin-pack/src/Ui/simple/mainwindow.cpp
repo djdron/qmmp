@@ -23,6 +23,7 @@
 #include <QLabel>
 #include <QTreeView>
 #include <QMessageBox>
+#include <QSignalMapper>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
 #include <qmmp/metadatamanager.h>
@@ -34,6 +35,7 @@
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/configdialog.h>
+#include "actionmanager.h"
 #include "visualmenu.h"
 #include "listwidget.h"
 #include "positionslider.h"
@@ -51,30 +53,8 @@ MainWindow::MainWindow(QWidget *parent)
     m_uiHelper = UiHelper::instance();
     connect(m_uiHelper, SIGNAL(toggleVisibilityCalled()), SLOT(toggleVisibility()));
     m_visMenu = new VisualMenu(this); //visual menu
-    //playback
-    connect(ui.actionPlay, SIGNAL(triggered()), m_player, SLOT(play()));
-    connect(ui.actionPause, SIGNAL(triggered()), m_core, SLOT(pause()));
-    connect(ui.actionNext, SIGNAL(triggered()), m_player, SLOT(next()));
-    connect(ui.actionPrevious, SIGNAL(triggered()), m_player, SLOT(previous()));
-    connect(ui.actionStop, SIGNAL(triggered()), m_player, SLOT(stop()));
-    //file menu
-    connect(ui.actionAddFile, SIGNAL(triggered()),SLOT(addFiles()));
-    connect(ui.actionAddDirectory, SIGNAL(triggered()),SLOT(addDir()));
-    connect(ui.actionNewPlayList, SIGNAL(triggered()),SLOT(addPlaylist()));
-    connect(ui.actionClosePlayList,SIGNAL(triggered()),SLOT(removePlaylist()));
-    connect(ui.actionRenamePlayList,SIGNAL(triggered()),SLOT(renameTab()));
-    connect(ui.actionExit, SIGNAL(triggered()),qApp, SLOT(closeAllWindows()));
-    //edit menu
-    connect(ui.actionSelectAll, SIGNAL(triggered()), m_pl_manager, SLOT(selectAll()));
-    connect(ui.actionRemoveSelected, SIGNAL(triggered()), m_pl_manager, SLOT(removeSelected()));
-    connect(ui.actionRemoveUnselected, SIGNAL(triggered()), m_pl_manager, SLOT(removeUnselected()));
-    connect(ui.actionClearPlayList, SIGNAL(triggered()),m_pl_manager, SLOT(clear()));
-    //tools menu
-    connect(ui.actionSettings, SIGNAL(triggered()),SLOT(showSettings()));
     ui.actionVisualization->setMenu(m_visMenu);
-    //help menu
-    connect(ui.actionAbout, SIGNAL(triggered()), SLOT(about()));
-    connect(ui.actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    new ActionManager(this); //action manager
     //status
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(updatePosition(qint64)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
@@ -92,7 +72,7 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     m_slider = new PositionSlider(this);
-    m_timeLabel = new QLabel(this);
+
     ui.progressToolBar->addWidget(m_slider);
     //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
@@ -106,11 +86,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
     connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
     connect(ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
-
-
+    //status bar
+    m_timeLabel = new QLabel(this);
     m_statusLabel = new QLabel(this);
     ui.statusbar->addPermanentWidget(m_statusLabel, 0);
     ui.statusbar->addPermanentWidget(m_timeLabel, 1);
+    createActions();
     show();
 }
 
@@ -126,6 +107,16 @@ void MainWindow::addDir()
 void MainWindow::addFiles()
 {
     m_uiHelper->addFile(this);
+}
+
+void MainWindow::addUrl()
+{
+    //m_uiHelper->
+}
+
+void MainWindow::showPlManager()
+{
+    //TODO add playlist manager
 }
 
 void MainWindow::updatePosition(qint64 pos)
@@ -252,5 +243,120 @@ void MainWindow::showBitrate(int)
 void MainWindow::closeEvent(QCloseEvent *)
 {
     m_uiHelper->exit();
+}
+
+void MainWindow::createActions()
+{
+    //main toolbar
+    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
+    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
+    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PAUSE, m_core, SLOT(pause())));
+    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::STOP, m_player, SLOT(stop())));
+    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::NEXT, m_player, SLOT(next())));
+    ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::EJECT,this, SLOT(addFiles())));
+    //file menu
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_FILE, this, SLOT(addFiles())));
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_DIRECTORY, this, SLOT(addDir())));
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_URL, this, SLOT(addUrl())));
+    ui.menuFile->addSeparator();
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_NEW, this, SLOT(addPlaylist())));
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(removePlaylist())));
+    //ui.menuFile->addAction(SET_ACTION(ActionManager::PL_R, this, SLOT(removePlaylist()))); //TODO rename
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SHOW_MANAGER, this, SLOT(showPlManager())));
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,
+                                      SLOT(selectNextPlayList())));
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
+                                      SLOT(selectPreviousPlayList())));
+    ui.menuFile->addSeparator();
+    ui.menuFile->addAction(SET_ACTION(ActionManager::QUIT, m_uiHelper, SLOT(exit())));
+    //edit menu
+    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_SELECT_ALL, m_pl_manager, SLOT(selectAll())));
+    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_SELECTED, m_pl_manager,
+                                      SLOT(removeSelected())));
+    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_UNSELECTED, m_pl_manager,
+                                      SLOT(removeUnselected())));
+    ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
+    ui.menuEdit->addSeparator();
+
+    QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
+    sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
+    QSignalMapper* signalMapper = new QSignalMapper (this);
+    QAction* titleAct = sort_mode_menu->addAction (tr ("By Title"));
+    connect (titleAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (titleAct, PlayListModel::TITLE);
+
+    QAction* albumAct = sort_mode_menu->addAction (tr ("By Album"));
+    connect (albumAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (albumAct, PlayListModel::ALBUM);
+
+    QAction* artistAct = sort_mode_menu->addAction (tr ("By Artist"));
+    connect (artistAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (artistAct, PlayListModel::ARTIST);
+
+    QAction* nameAct = sort_mode_menu->addAction (tr ("By Filename"));
+    connect (nameAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (nameAct, PlayListModel::FILENAME);
+
+    QAction* pathnameAct = sort_mode_menu->addAction (tr ("By Path + Filename"));
+    connect (pathnameAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (pathnameAct, PlayListModel::PATH_AND_FILENAME);
+
+    QAction* dateAct = sort_mode_menu->addAction (tr ("By Date"));
+    connect (dateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (dateAct, PlayListModel::DATE);
+
+    QAction* trackAct = sort_mode_menu->addAction (tr("By Track Number"));
+    connect (trackAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (trackAct, PlayListModel::TRACK);
+
+    connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sort (int)));
+
+    ui.menuEdit->addMenu (sort_mode_menu);
+
+    sort_mode_menu = new QMenu (tr("Sort Selection"), this);
+    sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
+    signalMapper = new QSignalMapper (this);
+    titleAct = sort_mode_menu->addAction (tr ("By Title"));
+    connect (titleAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (titleAct, PlayListModel::TITLE);
+
+    albumAct = sort_mode_menu->addAction (tr ("By Album"));
+    connect (albumAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (albumAct, PlayListModel::ALBUM);
+
+    artistAct = sort_mode_menu->addAction (tr ("By Artist"));
+    connect (artistAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (artistAct, PlayListModel::ARTIST);
+
+    nameAct = sort_mode_menu->addAction (tr ("By Filename"));
+    connect (nameAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (nameAct, PlayListModel::FILENAME);
+
+    pathnameAct = sort_mode_menu->addAction (tr ("By Path + Filename"));
+    connect (pathnameAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (pathnameAct, PlayListModel::PATH_AND_FILENAME);
+
+    dateAct = sort_mode_menu->addAction (tr ("By Date"));
+    connect (dateAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (dateAct, PlayListModel::DATE);
+
+    trackAct = sort_mode_menu->addAction (tr ("By Track Number"));
+    connect (trackAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (trackAct, PlayListModel::TRACK);
+
+    connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sortSelection (int)));
+    ui.menuEdit->addMenu (sort_mode_menu);
+    ui.menuEdit->addSeparator();
+    ui.menuEdit->addAction (QIcon::fromTheme("media-playlist-shuffle"), tr("Randomize List"),
+                               m_pl_manager, SLOT(randomizeList()));
+    ui.menuEdit->addAction (QIcon::fromTheme("view-sort-descending"), tr("Reverse List"),
+                               m_pl_manager, SLOT(reverseList()));
+    ui.menuEdit->addSeparator();
+    ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
+    //tools
+    ui.menuTools->addMenu(m_uiHelper->createMenu(UiHelper::TOOLS_MENU, tr("Actions"), this));
+    //help menu
+    ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
+    ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
 }
 

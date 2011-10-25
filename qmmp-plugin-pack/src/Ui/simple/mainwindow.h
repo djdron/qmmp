@@ -46,6 +46,8 @@ public:
 private slots:
 	void addDir();
 	void addFiles();
+	void addUrl();
+	void showPlManager();
 	void updatePosition(qint64 pos);
 	void seek();
 	void showState(Qmmp::State);
@@ -63,6 +65,7 @@ private slots:
 
 private:
 	void closeEvent(QCloseEvent *);
+	void createActions();
 	QString m_lastDir;
 	PlayListManager *m_pl_manager;
 	Ui::MainWindow ui;
