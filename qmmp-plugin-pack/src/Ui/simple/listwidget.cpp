@@ -114,7 +114,7 @@ void ListWidget::paintEvent(QPaintEvent *)
     //m_painter.setPen(Qt::white);
     m_painter.setFont(m_font);
     m_painter.setBrush(QBrush(m_normal_bg));
-    int x = width() - m_scrollBar->sizeHint().width();
+    int x = width() - (m_scrollBar->isVisible() ? m_scrollBar->sizeHint().width() : 0);
     int font_y = 0;
 
     m_painter.drawRect(-1,-1, x + 1, height()+1);
@@ -398,6 +398,8 @@ void ListWidget::updateList()
         m_titles.replace(i, m_metrics->elidedText (m_titles.at(i), Qt::ElideRight,
                                                    width() -  m_metrics->width(m_times.at(i)) - 22 - extra_string_space));
     }
+
+    m_scrollBar->setVisible(m_model->count() > m_rows);
 
     update();
 }

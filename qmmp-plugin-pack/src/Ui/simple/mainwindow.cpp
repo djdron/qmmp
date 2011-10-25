@@ -187,6 +187,7 @@ void MainWindow::removePlaylistWithIndex(int index)
 void MainWindow::addTab(int index)
 {
     ListWidget *list = new ListWidget(m_pl_manager->playListAt(index), this);
+    list->setMenu(m_pl_menu);
     ui.tabWidget->insertTab(index, list, m_pl_manager->playListAt(index)->name());
     updateTabs();
 }
