@@ -251,6 +251,27 @@ void MainWindow::closeEvent(QCloseEvent *)
 
 void MainWindow::createActions()
 {
+    //preprare cheackable actions
+    connect(ACTION(ActionManager::REPEAT_ALL), SIGNAL(triggered(bool)),
+            m_pl_manager, SLOT(setRepeatableList(bool)));
+    connect(ACTION(ActionManager::REPEAT_TRACK), SIGNAL(triggered(bool)),
+            m_player, SLOT(setRepeatable(bool)));
+    connect(ACTION(ActionManager::SHUFFLE), SIGNAL(triggered(bool)),
+            m_pl_manager, SLOT(setShuffle(bool)));
+    connect(ACTION(ActionManager::NO_PL_ADVANCE), SIGNAL(triggered(bool)),
+            m_player, SLOT(setNoPlaylistAdvance(bool)));
+
+    ACTION(ActionManager::REPEAT_ALL)->setChecked(m_pl_manager->isRepeatableList());
+    ACTION(ActionManager::SHUFFLE)->setChecked(m_pl_manager->isShuffle());
+
+    connect(m_pl_manager, SIGNAL(repeatableListChanged(bool)),
+            ACTION(ActionManager::REPEAT_ALL), SLOT(setChecked(bool)));
+    connect(m_player, SIGNAL (repeatableChanged(bool)),
+            ACTION(ActionManager::REPEAT_TRACK), SLOT(setChecked(bool)));
+    connect(m_player, SIGNAL (noPlaylistAdvanceChanged(bool)),
+            ACTION(ActionManager::NO_PL_ADVANCE), SLOT(setChecked(bool)));
+    connect(m_pl_manager, SIGNAL(shuffleChanged(bool)),
+            ACTION(ActionManager::SHUFFLE), SLOT(setChecked(bool)));
     //main toolbar
     ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PREVIOUS, m_player, SLOT(previous())));
     ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::PLAY, m_player, SLOT(play())));
@@ -258,6 +279,7 @@ void MainWindow::createActions()
     ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::STOP, m_player, SLOT(stop())));
     ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::NEXT, m_player, SLOT(next())));
     ui.buttonsToolBar->addAction(SET_ACTION(ActionManager::EJECT,this, SLOT(addFiles())));
+
     //file menu
     ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_FILE, this, SLOT(addFiles())));
     ui.menuFile->addAction(SET_ACTION(ActionManager::PL_ADD_DIRECTORY, this, SLOT(addDir())));
@@ -359,6 +381,22 @@ void MainWindow::createActions()
     ui.menuEdit->addAction(SET_ACTION(ActionManager::SETTINGS, this, SLOT(showSettings())));
     //tools
     ui.menuTools->addMenu(m_uiHelper->createMenu(UiHelper::TOOLS_MENU, tr("Actions"), this));
+    //playback menu
+    ui.menuPlayback->addAction(ACTION(ActionManager::PLAY));
+    ui.menuPlayback->addAction(ACTION(ActionManager::STOP));
+    ui.menuPlayback->addAction(ACTION(ActionManager::PAUSE));
+    ui.menuPlayback->addAction(ACTION(ActionManager::NEXT));
+    ui.menuPlayback->addAction(ACTION(ActionManager::PREVIOUS));
+    ui.menuPlayback->addSeparator();
+    ui.menuPlayback->addAction(ACTION(ActionManager::PL_ENQUEUE));
+    ui.menuPlayback->addAction(SET_ACTION(ActionManager::CLEAR_QUEUE, m_pl_manager, SLOT(clearQueue())));
+    ui.menuPlayback->addSeparator();
+    ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_ALL));
+    ui.menuPlayback->addAction(ACTION(ActionManager::REPEAT_TRACK));
+    ui.menuPlayback->addAction(ACTION(ActionManager::SHUFFLE));
+    ui.menuPlayback->addAction(ACTION(ActionManager::NO_PL_ADVANCE));
+    ui.menuPlayback->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
+                                          SLOT(stopAfterSelected())));
     //help menu
     ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
     ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
