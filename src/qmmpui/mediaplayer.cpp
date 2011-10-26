@@ -182,7 +182,7 @@ void MediaPlayer::updateNextUrl()
         bool ok = m_core->play(item->url(), true);
         if(ok)
         {
-            m_nextUrl = m_pl_manager->currentPlayList()->nextItem()->url();
+            m_nextUrl = item->url();
             qDebug("MediaPlayer: next track state: received");
         }
         else
