@@ -29,15 +29,15 @@
          <property name="title">
           <string>View</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
            <widget class="QCheckBox" name="hideOnCloseCheckBox">
             <property name="text">
              <string>Hide on close</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item>
            <widget class="QCheckBox" name="hiddenCheckBox">
             <property name="text">
              <string>Start hidden</string>
@@ -111,46 +111,26 @@
         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tab_5">
-      <attribute name="title">
-       <string>Miscellaneous</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
         <widget class="QGroupBox" name="groupBox_2">
          <property name="title">
           <string>Song Display</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="0">
+          <item row="1" column="0">
            <widget class="QCheckBox" name="protocolCheckBox">
             <property name="text">
              <string>Show protocol</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QCheckBox" name="numbersCheckBox">
             <property name="text">
              <string>Show song numbers</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QCheckBox" name="alignCheckBox">
             <property name="enabled">
              <bool>false</bool>
@@ -160,21 +140,21 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="0">
            <widget class="QCheckBox" name="anchorCheckBox">
             <property name="text">
              <string>Show anchor</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
+          <item row="6" column="0">
            <widget class="QCheckBox" name="popupCheckBox">
             <property name="text">
              <string>Show popup information</string>
             </property>
            </widget>
           </item>
-          <item row="5" column="0">
+          <item row="8" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <widget class="QPushButton" name="popupTemplateButton">
@@ -201,18 +181,72 @@
             </item>
            </layout>
           </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="tabsClosableCheckBox">
+            <property name="text">
+             <string>Show close buttons on tabs</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer_2">
+        <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>144</height>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>Shortcuts</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0" colspan="2">
+        <widget class="QTreeWidget" name="shortcutTreeWidget">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="animated">
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text">
+           <string>Action</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Shortcut</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="changeShortcutButton">
+         <property name="text">
+          <string>Change shortcut...</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <spacer name="horizontalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>281</width>
+           <height>20</height>
           </size>
          </property>
         </spacer>
@@ -224,38 +258,5 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>popupCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>popupTemplateButton</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>151</x>
-     <y>189</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>117</x>
-     <y>221</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>numbersCheckBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>alignCheckBox</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>148</x>
-     <y>103</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>151</x>
-     <y>118</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

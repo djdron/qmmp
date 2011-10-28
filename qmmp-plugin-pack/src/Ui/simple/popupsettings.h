@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2009 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,35 +17,36 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
-#ifndef SIMPLESETTINGS_H
-#define SIMPLESETTINGS_H
+#include <QDialog>
+#include "ui_popupsettings.h"
 
-#include <QWidget>
-#include <QFileInfo>
-#include "ui_simplesettings.h"
+class Action;
 
-class SimpleSettings : public QWidget
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class PopupSettings : public QDialog
 {
-    Q_OBJECT
+Q_OBJECT
 public:
-    explicit SimpleSettings(QWidget *parent = 0);
-    virtual ~SimpleSettings();
-    void writeSettings();
+    PopupSettings(QWidget *parent = 0);
+    ~PopupSettings();
 
+
+public slots:
+    virtual void accept();
 
 private slots:
-    void on_plFontButton_clicked();
-    void on_popupTemplateButton_clicked();
-    void on_changeShortcutButton_clicked();
+    void insertExpression(QAction *);
+    void on_resetButton_clicked();
 
 private:
-    void showEvent(QShowEvent *);
-    void loadFonts();
-    void readSettings();
-    void loadShortcuts();
-
-    Ui::SimpleSettings m_ui;
+    void createMenu();
+    Ui::PopupSettings ui;
+    QMap<uint, QPushButton*> m_buttons;
 };
 
-#endif // SIMPLESETTINGS_H
+#endif

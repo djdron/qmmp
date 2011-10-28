@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,34 +18,22 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SIMPLESETTINGS_H
-#define SIMPLESETTINGS_H
+#include <QAction>
+#include "actionmanager.h"
+#include "shortcutitem.h"
 
-#include <QWidget>
-#include <QFileInfo>
-#include "ui_simplesettings.h"
-
-class SimpleSettings : public QWidget
+ShortcutItem::ShortcutItem(QTreeWidgetItem *parent, int type) : QTreeWidgetItem(parent, QStringList()
+        << ActionManager::instance()->action(type)->text().remove("&")
+        << ActionManager::instance()->action(type)->shortcut())
 {
-    Q_OBJECT
-public:
-    explicit SimpleSettings(QWidget *parent = 0);
-    virtual ~SimpleSettings();
-    void writeSettings();
+    m_action = ActionManager::instance()->action(type);
+    setIcon(0, m_action->icon());
+}
 
+ShortcutItem::~ShortcutItem()
+{}
 
-private slots:
-    void on_plFontButton_clicked();
-    void on_popupTemplateButton_clicked();
-    void on_changeShortcutButton_clicked();
-
-private:
-    void showEvent(QShowEvent *);
-    void loadFonts();
-    void readSettings();
-    void loadShortcuts();
-
-    Ui::SimpleSettings m_ui;
-};
-
-#endif // SIMPLESETTINGS_H
+QAction *ShortcutItem::action()
+{
+    return m_action;
+}

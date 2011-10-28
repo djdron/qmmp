@@ -364,84 +364,89 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="276"/>
-        <source>&lt;b&gt;Playing&lt;/b&gt; [%1 kbps/%2 bit/%3/%4 Hz]</source>
+        <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="278"/>
+        <location filename="../mainwindow.cpp" line="277"/>
+        <source>Playing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="279"/>
         <source>Stereo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="278"/>
+        <location filename="../mainwindow.cpp" line="279"/>
         <source>Mono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="349"/>
+        <location filename="../mainwindow.cpp" line="351"/>
         <source>Sort List</source>
         <translation type="unfinished">Riordina la lista</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="352"/>
-        <location filename="../mainwindow.cpp" line="387"/>
+        <location filename="../mainwindow.cpp" line="354"/>
+        <location filename="../mainwindow.cpp" line="389"/>
         <source>By Title</source>
         <translation type="unfinished">Per titolo</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="356"/>
-        <location filename="../mainwindow.cpp" line="391"/>
+        <location filename="../mainwindow.cpp" line="358"/>
+        <location filename="../mainwindow.cpp" line="393"/>
         <source>By Album</source>
         <translation type="unfinished">Per album</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="360"/>
-        <location filename="../mainwindow.cpp" line="395"/>
+        <location filename="../mainwindow.cpp" line="362"/>
+        <location filename="../mainwindow.cpp" line="397"/>
         <source>By Artist</source>
         <translation type="unfinished">PEr interprete</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="364"/>
-        <location filename="../mainwindow.cpp" line="399"/>
+        <location filename="../mainwindow.cpp" line="366"/>
+        <location filename="../mainwindow.cpp" line="401"/>
         <source>By Filename</source>
         <translation type="unfinished">Per titolo del brano</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="368"/>
-        <location filename="../mainwindow.cpp" line="403"/>
+        <location filename="../mainwindow.cpp" line="370"/>
+        <location filename="../mainwindow.cpp" line="405"/>
         <source>By Path + Filename</source>
         <translation type="unfinished">per percorso più titolo del brano</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="372"/>
-        <location filename="../mainwindow.cpp" line="407"/>
+        <location filename="../mainwindow.cpp" line="374"/>
+        <location filename="../mainwindow.cpp" line="409"/>
         <source>By Date</source>
         <translation type="unfinished">Per data</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="376"/>
-        <location filename="../mainwindow.cpp" line="411"/>
+        <location filename="../mainwindow.cpp" line="378"/>
+        <location filename="../mainwindow.cpp" line="413"/>
         <source>By Track Number</source>
         <translation type="unfinished">Per numero di traccia</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="384"/>
+        <location filename="../mainwindow.cpp" line="386"/>
         <source>Sort Selection</source>
         <translation type="unfinished">Riordina la selezione</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>Randomize List</source>
         <translation type="unfinished">Mescola i brnai della lista</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Reverse List</source>
         <translation type="unfinished">Inverti la lista</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="425"/>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="427"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>Actions</source>
         <translation type="unfinished">Azioni</translation>
     </message>
@@ -487,12 +492,12 @@
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="88"/>
-        <source>toolBar</source>
+        <source>Playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="105"/>
-        <source>toolBar_2</source>
+        <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -592,6 +597,124 @@
     </message>
 </context>
 <context>
+    <name>PopupSettings</name>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="14"/>
+        <source>Popup Information Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="29"/>
+        <source>Template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="58"/>
+        <source>Reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="65"/>
+        <source>Insert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="75"/>
+        <source>Show cover</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="89"/>
+        <source>Cover size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="115"/>
+        <source>Transparency:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="145"/>
+        <source>Delay:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/popupsettings.ui" line="178"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="62"/>
+        <source>Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="63"/>
+        <source>Album</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="64"/>
+        <source>Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="65"/>
+        <source>Track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="66"/>
+        <source>Two-digit track number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="67"/>
+        <source>Genre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="68"/>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="69"/>
+        <source>Composer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="70"/>
+        <source>Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="71"/>
+        <source>Disc number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="72"/>
+        <source>File name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="73"/>
+        <source>File path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="74"/>
+        <source>Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../popupsettings.cpp" line="75"/>
+        <source>Condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RenameDialog</name>
     <message>
         <location filename="../forms/renamedialog.ui" line="14"/>
@@ -601,6 +724,24 @@
     <message>
         <location filename="../forms/renamedialog.ui" line="24"/>
         <source>New name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ShortcutDialog</name>
+    <message>
+        <location filename="../forms/shortcutdialog.ui" line="14"/>
+        <source>Change Shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/shortcutdialog.ui" line="29"/>
+        <source>Press the key combination you want to assign</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/shortcutdialog.ui" line="43"/>
+        <source>Clear</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -617,6 +758,7 @@
     <message>
         <location filename="../forms/simplesettings.ui" line="24"/>
         <location filename="../forms/simplesettings.ui" line="30"/>
+        <location filename="../simplesettings.cpp" line="125"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
@@ -651,43 +793,78 @@
         <translation type="unfinished">...</translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="130"/>
-        <source>Miscellaneous</source>
-        <translation type="unfinished">Varie</translation>
+        <location filename="../forms/simplesettings.ui" line="187"/>
+        <source>Show close buttons on tabs</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="136"/>
+        <location filename="../forms/simplesettings.ui" line="211"/>
+        <source>Shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/simplesettings.ui" line="224"/>
+        <source>Action</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/simplesettings.ui" line="229"/>
+        <source>Shortcut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/simplesettings.ui" line="237"/>
+        <source>Change shortcut...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/simplesettings.ui" line="116"/>
         <source>Song Display</source>
         <translation type="unfinished">Mostra il brano</translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="142"/>
+        <location filename="../forms/simplesettings.ui" line="122"/>
         <source>Show protocol</source>
         <translation type="unfinished">Motra protocollo</translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="149"/>
+        <location filename="../forms/simplesettings.ui" line="129"/>
         <source>Show song numbers</source>
         <translation type="unfinished">Mostra numero brani</translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="159"/>
+        <location filename="../forms/simplesettings.ui" line="139"/>
         <source>Align song numbers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="166"/>
+        <location filename="../forms/simplesettings.ui" line="146"/>
         <source>Show anchor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="173"/>
+        <location filename="../forms/simplesettings.ui" line="153"/>
         <source>Show popup information</source>
         <translation type="unfinished">Mostra informazioni popup</translation>
     </message>
     <message>
-        <location filename="../forms/simplesettings.ui" line="185"/>
+        <location filename="../forms/simplesettings.ui" line="165"/>
         <source>Edit template</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../simplesettings.cpp" line="119"/>
+        <source>Playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../simplesettings.cpp" line="131"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Lista brani</translation>
+    </message>
+    <message>
+        <location filename="../simplesettings.cpp" line="137"/>
+        <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

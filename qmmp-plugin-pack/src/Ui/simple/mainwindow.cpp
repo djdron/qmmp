@@ -273,10 +273,12 @@ void MainWindow::jumpTo()
 
 void MainWindow::showBitrate(int)
 {
-    m_statusLabel->setText(tr("<b>Playing</b> [%1 kbps/%2 bit/%3/%4 Hz]").arg(m_core->bitrate())
+    m_statusLabel->setText(tr("<b>%1</b> [%2 bit/%3/%4 Hz/%5 kbps]")
+                           .arg(tr("Playing"))
                            .arg(m_core->sampleSize())
                            .arg(m_core->channels() > 1 ? tr("Stereo"):tr("Mono"))
-                           .arg(m_core->frequency()));
+                           .arg(m_core->frequency())
+                           .arg(m_core->bitrate()));
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
@@ -494,6 +496,7 @@ void MainWindow::readSettings()
 
     }
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
+    ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
     settings.endGroup();
 }
 
@@ -527,4 +530,9 @@ void MainWindow::savePlayList()
 void MainWindow::loadPlayList()
 {
     m_uiHelper->loadPlayList(this);
+}
+
+void MainWindow::on_tabWidget_tabCloseRequested(int index)
+{
+    m_pl_manager->removePlayList(index);
 }

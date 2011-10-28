@@ -18,34 +18,46 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SIMPLESETTINGS_H
-#define SIMPLESETTINGS_H
+#include <QKeyEvent>
+#include "shortcutdialog.h"
 
-#include <QWidget>
-#include <QFileInfo>
-#include "ui_simplesettings.h"
-
-class SimpleSettings : public QWidget
+ShortcutDialog::ShortcutDialog(const QString &key, QWidget *parent)
+        : QDialog(parent)
 {
-    Q_OBJECT
-public:
-    explicit SimpleSettings(QWidget *parent = 0);
-    virtual ~SimpleSettings();
-    void writeSettings();
+    ui.setupUi(this);
+    ui.keyLineEdit->setText(key);
+}
 
+ShortcutDialog::~ShortcutDialog()
+{
+}
 
-private slots:
-    void on_plFontButton_clicked();
-    void on_popupTemplateButton_clicked();
-    void on_changeShortcutButton_clicked();
+void ShortcutDialog::keyPressEvent (QKeyEvent *event)
+{
+    int key = event->key();
+    switch (key)
+    {
+    case Qt::Key_Shift:
+    case Qt::Key_Control:
+    case Qt::Key_Meta:
+    case Qt::Key_Alt:
+    case Qt::Key_AltGr:
+    case Qt::Key_Super_L:
+    case Qt::Key_Super_R:
+    case Qt::Key_Menu:
+    case 0:
+    case Qt::Key_unknown:
+        key = 0;
+        ui.keyLineEdit->clear();
+        QWidget::keyPressEvent(event);
+        return;
+    }
+    QKeySequence seq(event->modifiers() + event->key());
+    ui.keyLineEdit->setText(seq.toString());
+    QWidget::keyPressEvent(event);
+}
 
-private:
-    void showEvent(QShowEvent *);
-    void loadFonts();
-    void readSettings();
-    void loadShortcuts();
-
-    Ui::SimpleSettings m_ui;
-};
-
-#endif // SIMPLESETTINGS_H
+const QString ShortcutDialog::key()
+{
+    return ui.keyLineEdit->text();
+}

@@ -70,6 +70,7 @@ private slots:
 	void showTabMenu(QPoint pos);
 	void savePlayList();
 	void loadPlayList();
+	void on_tabWidget_tabCloseRequested(int index);
 
 private:
 	void closeEvent(QCloseEvent *);

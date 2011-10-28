@@ -17,35 +17,33 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SHORTCUTDIALOG_H
+#define SHORTCUTDIALOG_H
 
-#ifndef SIMPLESETTINGS_H
-#define SIMPLESETTINGS_H
+#include <QDialog>
+#include "ui_shortcutdialog.h"
 
-#include <QWidget>
-#include <QFileInfo>
-#include "ui_simplesettings.h"
+class QKeyEvent;
 
-class SimpleSettings : public QWidget
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+class ShortcutDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit SimpleSettings(QWidget *parent = 0);
-    virtual ~SimpleSettings();
-    void writeSettings();
+    ShortcutDialog(const QString &key, QWidget *parent = 0);
 
+    ~ShortcutDialog();
 
-private slots:
-    void on_plFontButton_clicked();
-    void on_popupTemplateButton_clicked();
-    void on_changeShortcutButton_clicked();
+    const QString key();
+
+protected:
+    virtual void keyPressEvent (QKeyEvent *event);
 
 private:
-    void showEvent(QShowEvent *);
-    void loadFonts();
-    void readSettings();
-    void loadShortcuts();
+    Ui::ShortcutDialog ui;
 
-    Ui::SimpleSettings m_ui;
 };
 
-#endif // SIMPLESETTINGS_H
+#endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2010 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,35 +17,29 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#ifndef SHORTCUTITEM_H
+#define SHORTCUTITEM_H
 
-#ifndef SIMPLESETTINGS_H
-#define SIMPLESETTINGS_H
+#include <QTreeWidgetItem>
 
-#include <QWidget>
-#include <QFileInfo>
-#include "ui_simplesettings.h"
+class QWidget;
+class QAction;
 
-class SimpleSettings : public QWidget
+/**
+   @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
+
+class ShortcutItem : public QTreeWidgetItem
 {
-    Q_OBJECT
 public:
-    explicit SimpleSettings(QWidget *parent = 0);
-    virtual ~SimpleSettings();
-    void writeSettings();
 
-
-private slots:
-    void on_plFontButton_clicked();
-    void on_popupTemplateButton_clicked();
-    void on_changeShortcutButton_clicked();
+    ShortcutItem(QTreeWidgetItem *parent, int type);
+    ~ShortcutItem();
+    QAction *action();
 
 private:
-    void showEvent(QShowEvent *);
-    void loadFonts();
-    void readSettings();
-    void loadShortcuts();
+    QAction *m_action;
 
-    Ui::SimpleSettings m_ui;
 };
 
-#endif // SIMPLESETTINGS_H
+#endif //SHORTCUTITEM_H

@@ -20,7 +20,10 @@ SOURCES += main.cpp \
     positionslider.cpp \
     actionmanager.cpp \
     volumeslider.cpp \
-    simplesettings.cpp
+    simplesettings.cpp \
+    shortcutdialog.cpp \
+    shortcutitem.cpp \
+    popupsettings.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -29,7 +32,10 @@ HEADERS += mainwindow.h \
     positionslider.h \
     actionmanager.h \
     volumeslider.h \
-    simplesettings.h
+    simplesettings.h \
+    shortcutdialog.h \
+    shortcutitem.h \
+    popupsettings.h
 TEMPLATE = lib
 
 
@@ -39,7 +45,9 @@ INSTALLS += target
 
 FORMS += forms/mainwindow.ui \
          forms/renamedialog.ui \
-    forms/simplesettings.ui
+    forms/simplesettings.ui \
+    forms/shortcutdialog.ui \
+    forms/popupsettings.ui
 RESOURCES += stuff.qrc translations/translations.qrc
 
 TRANSLATIONS = translations/simple_plugin_ru.ts \
@@ -58,4 +66,12 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_ja.ts \
     translations/simple_plugin_es.ts \
     translations/simple_plugin_sk.ts
+
+
+
+
+
+
+
+
 
