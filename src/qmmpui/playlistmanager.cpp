@@ -195,6 +195,11 @@ void PlayListManager::removePlayList(PlayListModel *model)
      emit playListsChanged();
 }
 
+void PlayListManager::removePlayList(int index)
+{
+    removePlayList(playListAt(index));
+}
+
 void PlayListManager::move(int i, int j)
 {
     if(i < 0 || j < 0 || i == j)

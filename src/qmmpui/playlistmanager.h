@@ -191,7 +191,7 @@ public slots:
      */
     void activatePlayList(PlayListModel *model);
     /*!
-     * Sets current playlist by \b index.
+     * Sets current playlist with index \b index.
      */
     void activatePlayList(int index);
     /*!
@@ -202,6 +202,10 @@ public slots:
      * Removes playlist \b model.
      */
     void removePlayList(PlayListModel *model);
+    /*!
+     * Removes playlist with index \b index.
+     */
+    void removePlayList(int index);
     /*!
      * Moves playlist with index \b i to index \b j.
      */
