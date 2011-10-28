@@ -160,6 +160,7 @@ private:
     QScrollBar *m_scrollBar;
     bool m_show_anchor;
     int m_number_width;
+    bool m_align_numbres;
 };
 
 #endif

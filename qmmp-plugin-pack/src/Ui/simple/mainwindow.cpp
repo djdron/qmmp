@@ -25,6 +25,7 @@
 #include <QMessageBox>
 #include <QSignalMapper>
 #include <QMenu>
+#include <QSettings>
 #include <qmmp/soundcore.h>
 #include <qmmp/decoder.h>
 #include <qmmp/metadatamanager.h>
@@ -43,12 +44,14 @@
 #include "mainwindow.h"
 #include "volumeslider.h"
 #include "renamedialog.h"
+#include "simplesettings.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
     m_balance = 0;
+    m_update = false;
     //qmmp objects
     m_player = MediaPlayer::instance();
     m_core = SoundCore::instance();
@@ -91,6 +94,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_pl_manager, SIGNAL(playListAdded(int)), SLOT(addTab(int)));
     connect(ui.tabWidget,SIGNAL(currentChanged(int)), m_pl_manager, SLOT(selectPlayList(int)));
     connect(ui.tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(removePlaylistWithIndex(int)));
+    ui.tabWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui.tabWidget, SIGNAL(customContextMenuRequested(QPoint)), SLOT(showTabMenu(QPoint)));
+    m_tab_menu = new QMenu(ui.tabWidget);
     //status bar
     m_timeLabel = new QLabel(this);
     m_statusLabel = new QLabel(this);
@@ -103,9 +109,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(updateVolume()));
     ui.progressToolBar->addWidget(m_volumeSlider);
     updateVolume();
-
     createActions();
-    show();
+    readSettings();
 }
 
 MainWindow::~MainWindow()
@@ -232,20 +237,19 @@ void MainWindow::about()
 
 void MainWindow::toggleVisibility()
 {
-    if (isHidden())
-    {
-        show();
-
-    }
-    else
-        hide();
+    isHidden() ? show() : hide();
 }
 
 void MainWindow::showSettings()
 {
     ConfigDialog *confDialog = new ConfigDialog(this);
+    SimpleSettings *simpleSettings = new SimpleSettings(this);
+    confDialog->addPage(tr("Appearance"), simpleSettings, QIcon(":/skinned/interface.png"));
     confDialog->exec();
+    simpleSettings->writeSettings();
     confDialog->deleteLater();
+    readSettings();
+    ActionManager::instance()->saveActions();
 }
 
 void MainWindow::setVolume(int volume)
@@ -277,7 +281,10 @@ void MainWindow::showBitrate(int)
 
 void MainWindow::closeEvent(QCloseEvent *)
 {
-    m_uiHelper->exit();
+    writeSettings();
+    if(!m_hideOnClose || !m_uiHelper->visibilityControl())
+        m_uiHelper->exit();
+
 }
 
 void MainWindow::createActions()
@@ -318,12 +325,14 @@ void MainWindow::createActions()
     ui.menuFile->addSeparator();
     ui.menuFile->addAction(SET_ACTION(ActionManager::PL_NEW, this, SLOT(addPlaylist())));
     ui.menuFile->addAction(SET_ACTION(ActionManager::PL_CLOSE, this, SLOT(removePlaylist())));
-    //ui.menuFile->addAction(SET_ACTION(ActionManager::PL_R, this, SLOT(removePlaylist()))); //TODO rename
-    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SHOW_MANAGER, this, SLOT(showPlManager())));
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_RENAME, this, SLOT(renameTab())));
     ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_NEXT, m_pl_manager,
                                       SLOT(selectNextPlayList())));
     ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SELECT_PREVIOUS, m_pl_manager,
                                       SLOT(selectPreviousPlayList())));
+    ui.menuFile->addSeparator();
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_LOAD, this, SLOT(loadPlayList())));
+    ui.menuFile->addAction(SET_ACTION(ActionManager::PL_SAVE, this, SLOT(savePlayList())));
     ui.menuFile->addSeparator();
     ui.menuFile->addAction(SET_ACTION(ActionManager::QUIT, m_uiHelper, SLOT(exit())));
     //edit menu
@@ -334,6 +343,8 @@ void MainWindow::createActions()
                                       SLOT(removeUnselected())));
     ui.menuEdit->addAction(SET_ACTION(ActionManager::PL_REMOVE_ALL, m_pl_manager, SLOT(clear())));
     ui.menuEdit->addSeparator();
+    //view menu
+    ui.menuView->addAction(SET_ACTION(ActionManager::WM_ALLWAYS_ON_TOP, this, SLOT(readSettings())));
 
     QMenu* sort_mode_menu = new QMenu (tr("Sort List"), this);
     sort_mode_menu->setIcon(QIcon::fromTheme("view-sort-ascending"));
@@ -443,7 +454,77 @@ void MainWindow::createActions()
                                                         tr("Actions"), this));
     m_pl_menu->addSeparator();
     m_pl_menu->addAction(SET_ACTION(ActionManager::PL_ENQUEUE, m_pl_manager, SLOT(addToQueue())));
+    //tab menu
+    m_tab_menu->addAction(ACTION(ActionManager::PL_RENAME));
+    m_tab_menu->addAction(ACTION(ActionManager::PL_CLOSE));
 
     addActions(ActionManager::instance()->actions());
 }
 
+void MainWindow::readSettings()
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    if(!m_update)
+    {
+        restoreGeometry(settings.value("mw_geometry").toByteArray());
+        restoreState(settings.value("mw_state").toByteArray());
+        show();
+        qApp->processEvents();
+        if(settings.value("start_hidden").toBool())
+            hide();
+        if(settings.value("always_on_top", false).toBool())
+        {
+            ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->setChecked(true);
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+        }
+        m_update = true;
+    }
+    else
+    {
+        for(int i = 0; i < ui.tabWidget->count(); ++i)
+        {
+            qobject_cast<ListWidget *>(ui.tabWidget->widget(i))->readSettings();
+        }
+        if(ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked())
+            setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
+        else
+            setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
+        show();
+
+    }
+    m_hideOnClose = settings.value("hide_on_close", false).toBool();
+    settings.endGroup();
+}
+
+void MainWindow::showTabMenu(QPoint pos)
+{
+    QTabBar *tabBar = qobject_cast<QTabBar *> (ui.tabWidget->childAt(pos));
+    if(!tabBar)
+        return;
+
+    int index = tabBar->tabAt(pos);
+    if(index == -1)
+        return;
+
+    m_pl_manager->selectPlayList(index);
+    m_tab_menu->popup(ui.tabWidget->mapToGlobal(pos));
+}
+
+void MainWindow::writeSettings()
+{
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.setValue("Simple/mw_geometry", saveGeometry());
+    settings.setValue("Simple/mw_state", saveState());
+    settings.setValue("Simple/always_on_top", ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->isChecked());
+}
+
+void MainWindow::savePlayList()
+{
+    m_uiHelper->savePlayList(this);
+}
+
+void MainWindow::loadPlayList()
+{
+    m_uiHelper->loadPlayList(this);
+}

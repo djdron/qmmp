@@ -42,7 +42,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[NEXT] = createAction(tr("&Next"), "next", tr("B"), "media-skip-forward");
     m_actions[PLAY_PAUSE] = createAction(tr("&Play/Pause"), "play_pause", tr("Space"));
     m_actions[JUMP] = createAction(tr("&Jump to Track"), "jump", tr("J"), "go-up");
-    m_actions[EJECT] = createAction(tr("&Eject"), "eject", tr("E"), "media-eject");
+    m_actions[EJECT] = createAction(tr("&Add File"), "eject", tr("E"), "media-eject");
 
     m_actions[REPEAT_ALL] = createAction2(tr("&Repeat Playlist"), "repeate_playlist", tr("R"));
     m_actions[REPEAT_TRACK] = createAction2(tr("&Repeat Track"), "repeate_track", tr("Ctrl+R"));
@@ -78,12 +78,12 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[PL_CLOSE] = createAction(tr("&Delete List"), "close_pl", tr("Ctrl+W"), "window-close");
     m_actions[PL_LOAD] = createAction(tr("&Load List"), "load_pl", tr("O"), "document-open");
     m_actions[PL_SAVE] = createAction(tr("&Save List"), "save_pl", tr("Shift+S"), "document-save-as");
+    m_actions[PL_RENAME] = createAction(tr("&Rename List"), "", "pl_rename");
+
     m_actions[PL_SELECT_NEXT] = createAction(tr("&Select Next Playlist"), "next_pl",
                                              tr("Ctrl+PgDown"), "go-next");
     m_actions[PL_SELECT_PREVIOUS] = createAction(tr("&Select Previous Playlist"), "prev_pl",
                                                  tr("Ctrl+PgUp"), "go-previous");
-    m_actions[PL_SHOW_MANAGER] = createAction(tr("&Show Playlists"), "show_playlists",
-                                              tr("P"), "view-list-details");
     //other
     m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
     m_actions[ABOUT] = createAction(tr("&About"), "about", "");

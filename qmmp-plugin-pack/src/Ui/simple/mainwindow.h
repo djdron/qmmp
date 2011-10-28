@@ -66,10 +66,15 @@ private slots:
 	void setVolume(int volume);
 	void updateVolume();
 	void jumpTo();
+	void readSettings();
+	void showTabMenu(QPoint pos);
+	void savePlayList();
+	void loadPlayList();
 
 private:
 	void closeEvent(QCloseEvent *);
 	void createActions();
+	void writeSettings();
 	QString m_lastDir;
 	PlayListManager *m_pl_manager;
 	Ui::MainWindow ui;
@@ -81,8 +86,11 @@ private:
 	VisualMenu *m_visMenu;
 	UiHelper *m_uiHelper;
 	QMenu *m_pl_menu;
+	QMenu *m_tab_menu;
 	VolumeSlider *m_volumeSlider;
 	int m_balance;
+	bool m_update;
+	bool m_hideOnClose;
 
 };
 

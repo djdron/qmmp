@@ -79,9 +79,9 @@ public:
         PL_CLOSE,
         PL_LOAD,
         PL_SAVE,
+        PL_RENAME,
         PL_SELECT_NEXT,
         PL_SELECT_PREVIOUS,
-        PL_SHOW_MANAGER,
 
         SETTINGS,
         ABOUT,

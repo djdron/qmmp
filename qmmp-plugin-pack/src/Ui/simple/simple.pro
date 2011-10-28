@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     simplefactory.cpp \
     positionslider.cpp \
     actionmanager.cpp \
-    volumeslider.cpp
+    volumeslider.cpp \
+    simplesettings.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -27,7 +28,8 @@ HEADERS += mainwindow.h \
     simplefactory.h \
     positionslider.h \
     actionmanager.h \
-    volumeslider.h
+    volumeslider.h \
+    simplesettings.h
 TEMPLATE = lib
 
 
@@ -36,8 +38,12 @@ target.path = $$LIB_DIR/qmmp/Ui
 INSTALLS += target
 
 FORMS += forms/mainwindow.ui \
-         forms/renamedialog.ui
+         forms/renamedialog.ui \
+    forms/simplesettings.ui
 RESOURCES += stuff.qrc
+
+
+
 
 
 

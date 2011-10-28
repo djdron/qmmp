@@ -72,11 +72,22 @@ ListWidget::~ListWidget()
 
 void ListWidget::readSettings()
 {
-    m_font = QApplication::font();
-    m_show_protocol = true;
-    m_show_number = true;
-    m_show_anchor = true;
-    //bool show_popup = settings.value("PlayList/show_popup", false).toBool();
+    QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup("Simple");
+    m_font.fromString(settings.value("pl_font", QApplication::font().toString()).toString());
+    m_extra_font = m_font;
+    m_extra_font.setPointSize(m_font.pointSize() - 1);
+    m_show_protocol = settings.value ("pl_show_protocol", false).toBool();
+    m_show_number = settings.value ("pl_show_numbers", true).toBool();
+    m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
+    m_show_anchor = settings.value("pl_show_anchor", false).toBool();
+    //bool show_popup = settings.value("pl_show_popup", false).toBool();
+
+    m_normal = palette().color(QPalette::Text);
+    m_current = palette().color(QPalette::Text);
+    m_highlighted = palette().color(QPalette::HighlightedText);
+    m_normal_bg = palette().color(QPalette::Base);
+    m_selected_bg = palette().color(QPalette::Highlight);
 
     if (m_update)
     {
@@ -84,7 +95,7 @@ void ListWidget::readSettings()
         delete m_extra_metrics;
         m_metrics = new QFontMetrics(m_font);
         m_extra_metrics = new QFontMetrics(m_extra_font);
-        m_rows = (height() - 10) / m_metrics->ascent ();
+        m_rows = height() / (m_metrics->lineSpacing() + 2);
         updateList();
         /*if(m_popupWidget)
         {
@@ -98,14 +109,9 @@ void ListWidget::readSettings()
         m_metrics = new QFontMetrics(m_font);
         m_extra_metrics = new QFontMetrics(m_extra_font);
     }
-
     /*if(show_popup)
         m_popupWidget = new PlayListPopup::PopupWidget(this);*/
-    m_normal = palette().color(QPalette::Text);
-    m_current = palette().color(QPalette::Text);
-    m_highlighted = palette().color(QPalette::HighlightedText);
-    m_normal_bg = palette().color(QPalette::Base);
-    m_selected_bg = palette().color(QPalette::Highlight);
+
 }
 
 void ListWidget::paintEvent(QPaintEvent *)
@@ -372,7 +378,6 @@ void ListWidget::updateList()
     m_times  = m_model->getTimes(m_first, m_rows);
     m_scroll = false;
     //add numbers
-    bool m_align_numbres = true;
     for (int i = 0; i < m_titles.size() && m_show_number && !m_align_numbres; ++i)
     {
         QString title = m_titles.at(i);
