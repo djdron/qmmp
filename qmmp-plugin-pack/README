@@ -5,6 +5,7 @@ Official home page: http://qmmp.ylsoftware.com/
 
 Description:
 - MPG123: provides MPEG v1/2 layer1/2/3 support with use of libmpg123 library
+- Simple Ui: simple user interface based on standard widgets set
 
 Requirements:
 - OS GNU Linux
@@ -25,12 +26,12 @@ make
 Installation:
 make install
 
-If someone plugin (for example, Jack plugin) doesn't build or doesn't needed you can disable it
+If someone plugin (for example, MPG123 plugin) doesn't build or doesn't needed you can disable it
 by running:
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
 Available options:
-- USE_MPG123;
+- USE_MPG123; USE_SIMPLE
 
 
 Also you can use ccmake for changing plugins configuration.
