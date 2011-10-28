@@ -40,7 +40,7 @@ INSTALLS += target
 FORMS += forms/mainwindow.ui \
          forms/renamedialog.ui \
     forms/simplesettings.ui
-RESOURCES += stuff.qrc translations.qrc
+RESOURCES += stuff.qrc translations/translations.qrc
 
 TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_tr.ts \
