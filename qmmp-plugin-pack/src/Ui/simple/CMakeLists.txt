@@ -1,0 +1,84 @@
+project(libsimple)
+
+cmake_minimum_required(VERSION 2.4.7)
+
+if(COMMAND cmake_policy)
+    cmake_policy(SET CMP0003 NEW)
+    cmake_policy(SET CMP0005 NEW)
+endif(COMMAND cmake_policy) 
+
+# qt plugin
+ADD_DEFINITIONS( -Wall )
+ADD_DEFINITIONS(${QT_DEFINITIONS})
+ADD_DEFINITIONS(-DQT_PLUGIN)
+ADD_DEFINITIONS(-DQT_NO_DEBUG)
+ADD_DEFINITIONS(-DQT_SHARED)
+ADD_DEFINITIONS(-DQT_THREAD)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+# libqmmp
+include_directories(${QMMP_INCLUDE_DIRS})
+link_directories( ${QMMP_LIBRARY_DIRS})
+
+# libqmmpui
+include_directories(${QMMPUI_INCLUDE_DIRS})
+link_directories( ${QMMPUI_LIBRARY_DIRS})
+
+include_directories(${MPG123_INCLUDE_DIRS} ${TAGLIB_INCLUDE_DIRS})
+link_directories(${MPG123_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
+ADD_DEFINITIONS(${MPG123_CFLAGS} ${TAGLIB_CFLAGS})
+
+SET(libsimple_SRCS
+  actionmanager.cpp
+  listwidget.cpp
+  main.cpp
+  mainwindow.cpp
+  positionslider.cpp
+  renamedialog.cpp
+  simplefactory.cpp
+  simplesettings.cpp
+  visualmenu.cpp
+  volumeslider.cpp
+)
+
+SET(libsimple_HDRS
+
+)
+
+SET(libsimple_MOC_HDRS
+  actionmanager.h
+  listwidget.h
+  mainwindow.h
+  positionslider.h
+  renamedialog.h
+  simplefactory.h
+  simplesettings.h
+  visualmenu.h
+  volumeslider.h
+)
+
+SET(libsimple_RCCS translations/translations.qrc)
+
+QT4_ADD_RESOURCES(libsimple_RCC_SRCS ${libsimple_RCCS})
+
+QT4_WRAP_CPP(libsimple_MOC_SRCS ${libsimple_MOC_HDRS})
+
+# user interface
+
+
+SET(libsimple_UIS
+    forms/mainwindow.ui
+    forms/renamedialog.ui
+    forms/simplesettings.ui
+)
+
+QT4_WRAP_UI(libsimple_UIS_H ${libsimple_UIS})
+# Don't forget to include output directory, otherwise
+# the UI file won't be wrapped!
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
+ADD_LIBRARY(simple MODULE ${libsimple_SRCS} ${libsimple_MOC_SRCS} ${libsimple_UIS_H} ${libsimple_RCC_SRCS} ${libsimple_HDRS})
+target_link_libraries(simple ${QT_LIBRARIES} ${QMMP_LDFLAGS} ${QMMPUI_LDFLAGS})
+install(TARGETS simple DESTINATION ${LIB_DIR}/qmmp/Ui)
+

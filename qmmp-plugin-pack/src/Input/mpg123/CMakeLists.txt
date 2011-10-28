@@ -69,7 +69,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 IF(MPG123_FOUND)
 ADD_LIBRARY(mpg123 MODULE ${libmpg123_SRCS} ${libmpg123_MOC_SRCS} ${libmpg123_UIS_H} ${libmpg123_RCC_SRCS} ${libmpg123_HDRS})
-add_dependencies(mpg123 qmmp)
 target_link_libraries(mpg123 ${QT_LIBRARIES} ${QMMP_LDFLAGS} ${MPG123_LDFLAGS} ${TAGLIB_LDFLAGS})
 install(TARGETS mpg123 DESTINATION ${LIB_DIR}/qmmp/Input)
 ENDIF(MPG123_FOUND)

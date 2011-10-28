@@ -25,6 +25,7 @@
 
 class VolumeSlider : public QAbstractSlider
 {
+Q_OBJECT
 public:
     VolumeSlider(QWidget *parent);
 

@@ -90,6 +90,7 @@ ENDIF(UNIX)
 MESSAGE("")
 MESSAGE("Plugins:")
 PRINT_SUMMARY ("mpg123 plugin ..................." USE_MPG123  MPG123_FOUND)
+PRINT_SUMMARY ("simple UI plugin ................" USE_SIMPLE  QMMPUI_FOUND)
 
 
 MESSAGE("")
