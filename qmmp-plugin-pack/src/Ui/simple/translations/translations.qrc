@@ -1,0 +1,22 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>simple_plugin_ru.qm</file>
+    <file>simple_plugin_tr.qm</file>
+    <file>simple_plugin_zh_CN.qm</file>
+    <file>simple_plugin_uk_UA.qm</file>
+    <file>simple_plugin_zh_TW.qm</file>
+    <file>simple_plugin_cs.qm</file>
+    <file>simple_plugin_pt_BR.qm</file>
+    <file>simple_plugin_de.qm</file>
+    <file>simple_plugin_pl_PL.qm</file>
+    <file>simple_plugin_fr.qm</file>
+    <file>simple_plugin_it.qm</file>
+    <file>simple_plugin_kk.qm</file>
+    <file>simple_plugin_lt.qm</file>
+    <file>simple_plugin_hu.qm</file>
+    <file>simple_plugin_nl.qm</file>
+    <file>simple_plugin_ja.qm</file>
+    <file>simple_plugin_sk.qm</file>
+  </qresource>
+</RCC>
