@@ -33,9 +33,9 @@ class QScrollBar;
 class PlayListModel;
 class PlayListItem;
 class MediaPlayer;
-/*namespace PlayListPopup{
+namespace PlayListPopup{
 class PopupWidget;
-}*/
+}
 
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -155,7 +155,7 @@ private:
     bool m_show_protocol;
     bool m_show_number;
     MediaPlayer *m_player;
-    //PlayListPopup::PopupWidget *m_popupWidget;
+    PlayListPopup::PopupWidget *m_popupWidget;
     QTimer *m_timer;
     QScrollBar *m_scrollBar;
     bool m_show_anchor;

@@ -21,7 +21,7 @@
 #include <QSettings>
 #include <QMenu>
 #include <qmmp/qmmp.h>
-//#include "popupwidget.h"
+#include "popupwidget.h"
 #include "popupsettings.h"
 
 PopupSettings::PopupSettings(QWidget *parent)
@@ -29,10 +29,10 @@ PopupSettings::PopupSettings(QWidget *parent)
 {
     ui.setupUi(this);
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("Skinned");
+    settings.beginGroup("Simple");
     ui.transparencySlider->setValue(100 - settings.value("popup_opacity", 1.0).toDouble()*100);
     ui.coverSizeSlider->setValue(settings.value ("popup_cover_size", 48).toInt());
-    //ui.textEdit->setPlainText(settings.value ("popup_template", DEFAULT_TEMPLATE).toString());
+    ui.textEdit->setPlainText(settings.value ("popup_template", DEFAULT_TEMPLATE).toString());
     ui.delaySpinBox->setValue(settings.value("popup_delay", 2500).toInt());
     ui.coverCheckBox->setChecked(settings.value("popup_show_cover",true).toBool());
     settings.endGroup();
@@ -46,7 +46,7 @@ PopupSettings::~PopupSettings()
 void PopupSettings::accept()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
-    settings.beginGroup("Skinned");
+    settings.beginGroup("Simple");
     settings.setValue("popup_opacity", 1.0 -  (double)ui.transparencySlider->value()/100);
     settings.setValue("popup_cover_size", ui.coverSizeSlider->value());
     settings.setValue("popup_template", ui.textEdit->toPlainText());
@@ -84,5 +84,5 @@ void PopupSettings::insertExpression(QAction *a)
 
 void PopupSettings::on_resetButton_clicked()
 {
-    //ui.textEdit->setPlainText(DEFAULT_TEMPLATE);
+    ui.textEdit->setPlainText(DEFAULT_TEMPLATE);
 }

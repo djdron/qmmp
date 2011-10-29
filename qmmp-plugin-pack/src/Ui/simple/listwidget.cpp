@@ -33,6 +33,7 @@
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/playlistmanager.h>
+#include "popupwidget.h"
 #include "listwidget.h"
 
 #define INVALID_ROW -1
@@ -40,9 +41,8 @@
 ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
 {
     m_update = false;
-    //m_skin = Skin::instance();
-    //m_popupWidget = 0;
-    m_menu = 0;//new QMenu(this);
+    m_popupWidget = 0;
+    m_menu = 0;
     m_scroll_direction = NONE;
     m_prev_y = 0;
     m_anchor_row = INVALID_ROW;
@@ -53,7 +53,6 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
     m_scroll = false;
     m_select_on_release = false;
     readSettings();
-    //connect(m_skin, SIGNAL(skinChanged()), this, SLOT(updateSkin()));
     setAcceptDrops(true);
     setMouseTracking(true);
     m_timer = new QTimer(this);
@@ -81,7 +80,7 @@ void ListWidget::readSettings()
     m_show_number = settings.value ("pl_show_numbers", true).toBool();
     m_align_numbres = settings.value ("pl_align_numbers", false).toBool();
     m_show_anchor = settings.value("pl_show_anchor", false).toBool();
-    //bool show_popup = settings.value("pl_show_popup", false).toBool();
+    bool show_popup = settings.value("pl_show_popup", false).toBool();
 
     m_normal = palette().color(QPalette::Text);
     m_current = palette().color(QPalette::Text);
@@ -97,11 +96,11 @@ void ListWidget::readSettings()
         m_extra_metrics = new QFontMetrics(m_extra_font);
         m_rows = height() / (m_metrics->lineSpacing() + 2);
         updateList();
-        /*if(m_popupWidget)
+        if(m_popupWidget)
         {
             m_popupWidget->deleteLater();
             m_popupWidget = 0;
-        }*/
+        }
     }
     else
     {
@@ -109,8 +108,8 @@ void ListWidget::readSettings()
         m_metrics = new QFontMetrics(m_font);
         m_extra_metrics = new QFontMetrics(m_extra_font);
     }
-    /*if(show_popup)
-        m_popupWidget = new PlayListPopup::PopupWidget(this);*/
+    if(show_popup)
+        m_popupWidget = new PlayListPopup::PopupWidget(this);
 
 }
 
@@ -234,8 +233,8 @@ void ListWidget::mouseDoubleClickEvent (QMouseEvent *e)
 
 void ListWidget::mousePressEvent(QMouseEvent *e)
 {
-    /*if(m_popupWidget)
-        m_popupWidget->hide();*/
+    if(m_popupWidget)
+        m_popupWidget->hide();
     m_scroll = true;
     int y = e->y();
     int row = rowAt(y);
@@ -329,7 +328,7 @@ void ListWidget::wheelEvent (QWheelEvent *e)
 
 bool ListWidget::event (QEvent *e)
 {
-    /*if(m_popupWidget)
+    if(m_popupWidget)
     {
         if(e->type() == QEvent::ToolTip)
         {
@@ -346,7 +345,7 @@ bool ListWidget::event (QEvent *e)
         }
         else if(e->type() == QEvent::Leave)
             m_popupWidget->deactivate();
-    }*/
+    }
     return QWidget::event(e);
 }
 
@@ -552,12 +551,12 @@ void ListWidget::mouseMoveEvent(QMouseEvent *e)
             m_pressed_row = row;
         }
     }
-    /*else if(m_popupWidget)
+    else if(m_popupWidget)
     {
         int row = rowAt(e->y());
         if(row < 0 || m_popupWidget->item() != m_model->item(row))
             m_popupWidget->deactivate();
-    }*/
+    }
 }
 
 void ListWidget::mouseReleaseEvent(QMouseEvent *e)

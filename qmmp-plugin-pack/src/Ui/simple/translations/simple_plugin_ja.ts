@@ -758,7 +758,7 @@
     <message>
         <location filename="../forms/simplesettings.ui" line="24"/>
         <location filename="../forms/simplesettings.ui" line="30"/>
-        <location filename="../simplesettings.cpp" line="125"/>
+        <location filename="../simplesettings.cpp" line="126"/>
         <source>View</source>
         <translation type="unfinished">観容</translation>
     </message>
@@ -853,17 +853,17 @@
         <translation type="unfinished">ひな型を編集</translation>
     </message>
     <message>
-        <location filename="../simplesettings.cpp" line="119"/>
+        <location filename="../simplesettings.cpp" line="120"/>
         <source>Playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../simplesettings.cpp" line="131"/>
+        <location filename="../simplesettings.cpp" line="132"/>
         <source>Playlist</source>
         <translation type="unfinished">プレイリスト</translation>
     </message>
     <message>
-        <location filename="../simplesettings.cpp" line="137"/>
+        <location filename="../simplesettings.cpp" line="138"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>

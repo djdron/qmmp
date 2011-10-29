@@ -27,6 +27,7 @@
 #include "actionmanager.h"
 #include "shortcutitem.h"
 #include "shortcutdialog.h"
+#include "popupsettings.h"
 #include "simplesettings.h"
 
 SimpleSettings::SimpleSettings(QWidget *parent) : QWidget(parent)
@@ -76,9 +77,9 @@ void SimpleSettings::loadFonts()
 
 void SimpleSettings::on_popupTemplateButton_clicked()
 {
-    /*PopupSettings *p = new PopupSettings(this);
+    PopupSettings *p = new PopupSettings(this);
     p->exec();
-    p->deleteLater();*/
+    p->deleteLater();
 }
 
 void SimpleSettings::readSettings()
