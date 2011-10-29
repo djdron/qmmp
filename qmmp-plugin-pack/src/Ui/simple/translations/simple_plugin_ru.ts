@@ -348,110 +348,120 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="165"/>
+        <location filename="../mainwindow.cpp" line="111"/>
+        <source>Volume</source>
+        <translation>Громкость</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="169"/>
         <source>Paused</source>
         <translation>Приостановлено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="168"/>
+        <location filename="../mainwindow.cpp" line="172"/>
         <source>Stopped</source>
         <translation>Остановлено</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="247"/>
+        <location filename="../mainwindow.cpp" line="251"/>
         <source>Appearance</source>
         <translation>Внешний вид</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="276"/>
+        <location filename="../mainwindow.cpp" line="291"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation>&lt;b&gt;%1&lt;/b&gt; [%2 бит/%3/%4 Гц/%5 кбит/с]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="277"/>
+        <location filename="../mainwindow.cpp" line="292"/>
         <source>Playing</source>
         <translation>Воспроизводится</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="279"/>
+        <location filename="../mainwindow.cpp" line="294"/>
         <source>Stereo</source>
         <translation>Стерео</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="279"/>
+        <location filename="../mainwindow.cpp" line="294"/>
         <source>Mono</source>
         <translation>Моно</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="351"/>
+        <location filename="../mainwindow.cpp" line="366"/>
         <source>Sort List</source>
         <translation>Сортировать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
-        <location filename="../mainwindow.cpp" line="389"/>
+        <location filename="../mainwindow.cpp" line="369"/>
+        <location filename="../mainwindow.cpp" line="404"/>
         <source>By Title</source>
         <translation>По названию</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="358"/>
-        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="408"/>
         <source>By Album</source>
         <translation>По альбому</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
-        <location filename="../mainwindow.cpp" line="397"/>
+        <location filename="../mainwindow.cpp" line="377"/>
+        <location filename="../mainwindow.cpp" line="412"/>
         <source>By Artist</source>
         <translation>По исполнителю</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="366"/>
-        <location filename="../mainwindow.cpp" line="401"/>
+        <location filename="../mainwindow.cpp" line="381"/>
+        <location filename="../mainwindow.cpp" line="416"/>
         <source>By Filename</source>
         <translation>По имени файла</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="370"/>
-        <location filename="../mainwindow.cpp" line="405"/>
+        <location filename="../mainwindow.cpp" line="385"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>By Path + Filename</source>
         <translation>По пути и файлу</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="374"/>
-        <location filename="../mainwindow.cpp" line="409"/>
+        <location filename="../mainwindow.cpp" line="389"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>By Date</source>
         <translation>По дате</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="378"/>
-        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="428"/>
         <source>By Track Number</source>
         <translation>По номеру трека</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="386"/>
+        <location filename="../mainwindow.cpp" line="401"/>
         <source>Sort Selection</source>
         <translation>Сортировать выделенное</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Randomize List</source>
         <translation>Перемешать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="437"/>
         <source>Reverse List</source>
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="427"/>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="442"/>
+        <location filename="../mainwindow.cpp" line="471"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="191"/>
+        <location filename="../mainwindow.cpp" line="559"/>
+        <source>Buffering: %1</source>
+        <translation>Буферизация: %1</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="195"/>
         <source>Playlist</source>
         <translation>Список</translation>
     </message>
@@ -493,105 +503,105 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="88"/>
         <source>Playback</source>
-        <translation type="unfinished">Воспроизведение</translation>
+        <translation>Воспроизведение</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="105"/>
+        <location filename="../forms/mainwindow.ui" line="111"/>
         <source>Progress</source>
         <translation>Прогресс</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="121"/>
+        <location filename="../forms/mainwindow.ui" line="133"/>
         <source>Previous</source>
         <translation>Предыдущий фрагмент</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="131"/>
+        <location filename="../forms/mainwindow.ui" line="143"/>
         <source>Play</source>
         <translation>Воспроизвести</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="141"/>
+        <location filename="../forms/mainwindow.ui" line="153"/>
         <source>Pause</source>
         <translation>Приостановить</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="151"/>
+        <location filename="../forms/mainwindow.ui" line="163"/>
         <source>Next</source>
         <translation>Следующий фрагмент</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="161"/>
+        <location filename="../forms/mainwindow.ui" line="173"/>
         <source>Stop</source>
         <translation>Остановить</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="166"/>
+        <location filename="../forms/mainwindow.ui" line="178"/>
         <source>&amp;Add File</source>
         <translation>&amp;Добавить файл</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="171"/>
+        <location filename="../forms/mainwindow.ui" line="183"/>
         <source>&amp;Remove All</source>
         <translation>&amp;Удалить всё</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="176"/>
+        <location filename="../forms/mainwindow.ui" line="188"/>
         <source>New Playlist</source>
         <translation>Создать список</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="181"/>
+        <location filename="../forms/mainwindow.ui" line="193"/>
         <source>Remove Playlist</source>
         <translation>Удалить список</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="186"/>
+        <location filename="../forms/mainwindow.ui" line="198"/>
         <source>&amp;Add Directory</source>
         <translation>&amp;Добавить директорию</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="191"/>
+        <location filename="../forms/mainwindow.ui" line="203"/>
         <source>&amp;Exit</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="196"/>
+        <location filename="../forms/mainwindow.ui" line="208"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="201"/>
+        <location filename="../forms/mainwindow.ui" line="213"/>
         <source>About Qt</source>
         <translation>О Qt</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="206"/>
+        <location filename="../forms/mainwindow.ui" line="218"/>
         <source>&amp;Select All</source>
         <translation>&amp;Выделить всё</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="211"/>
+        <location filename="../forms/mainwindow.ui" line="223"/>
         <source>&amp;Remove Selected</source>
         <translation>&amp;Удалить выделенное</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="216"/>
+        <location filename="../forms/mainwindow.ui" line="228"/>
         <source>&amp;Remove Unselected</source>
         <translation>&amp;Удалить невыделенное</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="221"/>
+        <location filename="../forms/mainwindow.ui" line="233"/>
         <source>Visualization</source>
         <translation>Визуализация</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="226"/>
+        <location filename="../forms/mainwindow.ui" line="238"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="231"/>
+        <location filename="../forms/mainwindow.ui" line="243"/>
         <source>Rename Playlist</source>
         <translation>Переименовать список</translation>
     </message>
@@ -830,7 +840,7 @@
     <message>
         <location filename="../forms/simplesettings.ui" line="187"/>
         <source>Show close buttons on tabs</source>
-        <translation></translation>
+        <translation>Показывать кнопки закрытия на вкладках</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="211"/>

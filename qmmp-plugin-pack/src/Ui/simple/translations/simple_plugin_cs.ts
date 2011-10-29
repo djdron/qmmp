@@ -348,110 +348,120 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../mainwindow.cpp" line="165"/>
+        <location filename="../mainwindow.cpp" line="111"/>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="169"/>
         <source>Paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="168"/>
+        <location filename="../mainwindow.cpp" line="172"/>
         <source>Stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="247"/>
+        <location filename="../mainwindow.cpp" line="251"/>
         <source>Appearance</source>
         <translation type="unfinished">Vzhled</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="276"/>
+        <location filename="../mainwindow.cpp" line="291"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="277"/>
+        <location filename="../mainwindow.cpp" line="292"/>
         <source>Playing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="279"/>
+        <location filename="../mainwindow.cpp" line="294"/>
         <source>Stereo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="279"/>
+        <location filename="../mainwindow.cpp" line="294"/>
         <source>Mono</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="351"/>
+        <location filename="../mainwindow.cpp" line="366"/>
         <source>Sort List</source>
         <translation type="unfinished">Seřadit seznam</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="354"/>
-        <location filename="../mainwindow.cpp" line="389"/>
+        <location filename="../mainwindow.cpp" line="369"/>
+        <location filename="../mainwindow.cpp" line="404"/>
         <source>By Title</source>
         <translation type="unfinished">Podle názvu skladby</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="358"/>
-        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="373"/>
+        <location filename="../mainwindow.cpp" line="408"/>
         <source>By Album</source>
         <translation type="unfinished">Podle alba</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="362"/>
-        <location filename="../mainwindow.cpp" line="397"/>
+        <location filename="../mainwindow.cpp" line="377"/>
+        <location filename="../mainwindow.cpp" line="412"/>
         <source>By Artist</source>
         <translation type="unfinished">Podle umělce</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="366"/>
-        <location filename="../mainwindow.cpp" line="401"/>
+        <location filename="../mainwindow.cpp" line="381"/>
+        <location filename="../mainwindow.cpp" line="416"/>
         <source>By Filename</source>
         <translation type="unfinished">Podle názvu souboru</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="370"/>
-        <location filename="../mainwindow.cpp" line="405"/>
+        <location filename="../mainwindow.cpp" line="385"/>
+        <location filename="../mainwindow.cpp" line="420"/>
         <source>By Path + Filename</source>
         <translation type="unfinished">Podle cesty a názvu souboru</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="374"/>
-        <location filename="../mainwindow.cpp" line="409"/>
+        <location filename="../mainwindow.cpp" line="389"/>
+        <location filename="../mainwindow.cpp" line="424"/>
         <source>By Date</source>
         <translation type="unfinished">Podle data</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="378"/>
-        <location filename="../mainwindow.cpp" line="413"/>
+        <location filename="../mainwindow.cpp" line="393"/>
+        <location filename="../mainwindow.cpp" line="428"/>
         <source>By Track Number</source>
         <translation type="unfinished">Podle čísla skladby</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="386"/>
+        <location filename="../mainwindow.cpp" line="401"/>
         <source>Sort Selection</source>
         <translation type="unfinished">Seřadit výběr</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="420"/>
+        <location filename="../mainwindow.cpp" line="435"/>
         <source>Randomize List</source>
         <translation type="unfinished">Zamíchat seznam</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="437"/>
         <source>Reverse List</source>
         <translation type="unfinished">Obrátit pořadí seznamu</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="427"/>
-        <location filename="../mainwindow.cpp" line="456"/>
+        <location filename="../mainwindow.cpp" line="442"/>
+        <location filename="../mainwindow.cpp" line="471"/>
         <source>Actions</source>
         <translation type="unfinished">Činnosti</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="191"/>
+        <location filename="../mainwindow.cpp" line="559"/>
+        <source>Buffering: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="195"/>
         <source>Playlist</source>
         <translation type="unfinished">Seznam skladeb</translation>
     </message>
@@ -496,102 +506,102 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="105"/>
+        <location filename="../forms/mainwindow.ui" line="111"/>
         <source>Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="121"/>
+        <location filename="../forms/mainwindow.ui" line="133"/>
         <source>Previous</source>
         <translation type="unfinished">Předchozí</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="131"/>
+        <location filename="../forms/mainwindow.ui" line="143"/>
         <source>Play</source>
         <translation type="unfinished">Přehrát</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="141"/>
+        <location filename="../forms/mainwindow.ui" line="153"/>
         <source>Pause</source>
         <translation type="unfinished">Pozastavit</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="151"/>
+        <location filename="../forms/mainwindow.ui" line="163"/>
         <source>Next</source>
         <translation type="unfinished">Další</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="161"/>
+        <location filename="../forms/mainwindow.ui" line="173"/>
         <source>Stop</source>
         <translation type="unfinished">Zastavit</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="166"/>
+        <location filename="../forms/mainwindow.ui" line="178"/>
         <source>&amp;Add File</source>
         <translation type="unfinished">Přidat &amp;soubor</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="171"/>
+        <location filename="../forms/mainwindow.ui" line="183"/>
         <source>&amp;Remove All</source>
         <translation type="unfinished">Odstranit &amp;vše</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="176"/>
+        <location filename="../forms/mainwindow.ui" line="188"/>
         <source>New Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="181"/>
+        <location filename="../forms/mainwindow.ui" line="193"/>
         <source>Remove Playlist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="186"/>
+        <location filename="../forms/mainwindow.ui" line="198"/>
         <source>&amp;Add Directory</source>
         <translation type="unfinished">Přidat &amp;adresář</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="191"/>
+        <location filename="../forms/mainwindow.ui" line="203"/>
         <source>&amp;Exit</source>
         <translation type="unfinished">U&amp;končit</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="196"/>
+        <location filename="../forms/mainwindow.ui" line="208"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="201"/>
+        <location filename="../forms/mainwindow.ui" line="213"/>
         <source>About Qt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="206"/>
+        <location filename="../forms/mainwindow.ui" line="218"/>
         <source>&amp;Select All</source>
         <translation type="unfinished">&amp;Vybrat vše</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="211"/>
+        <location filename="../forms/mainwindow.ui" line="223"/>
         <source>&amp;Remove Selected</source>
         <translation type="unfinished">&amp;Odstranit vybrané</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="216"/>
+        <location filename="../forms/mainwindow.ui" line="228"/>
         <source>&amp;Remove Unselected</source>
         <translation type="unfinished">Odstranit &amp;nevybrané</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="221"/>
+        <location filename="../forms/mainwindow.ui" line="233"/>
         <source>Visualization</source>
         <translation type="unfinished">Vizualizace</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="226"/>
+        <location filename="../forms/mainwindow.ui" line="238"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="231"/>
+        <location filename="../forms/mainwindow.ui" line="243"/>
         <source>Rename Playlist</source>
         <translation type="unfinished">Přejmenovat seznam skladeb</translation>
     </message>

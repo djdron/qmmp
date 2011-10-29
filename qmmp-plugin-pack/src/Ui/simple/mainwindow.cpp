@@ -65,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_core, SIGNAL(elapsedChanged(qint64)), SLOT(updatePosition(qint64)));
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(showBitrate(int)));
+    connect(m_core, SIGNAL(bufferingProgress(int)), SLOT(showBuffering(int)));
     //create tabs
     foreach(PlayListModel *model, m_pl_manager->playLists())
     {
@@ -550,4 +551,10 @@ void MainWindow::loadPlayList()
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
     m_pl_manager->removePlayList(index);
+}
+
+void MainWindow::showBuffering(int percent)
+{
+    if(m_core->state() == Qmmp::Buffering)
+        m_statusLabel->setText(tr("Buffering: %1").arg(percent));
 }
