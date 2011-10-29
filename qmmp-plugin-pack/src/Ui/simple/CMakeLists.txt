@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.4.7)
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
     cmake_policy(SET CMP0005 NEW)
-endif(COMMAND cmake_policy) 
+endif(COMMAND cmake_policy)
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -30,32 +30,41 @@ link_directories(${MPG123_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
 ADD_DEFINITIONS(${MPG123_CFLAGS} ${TAGLIB_CFLAGS})
 
 SET(libsimple_SRCS
-  actionmanager.cpp
-  listwidget.cpp
-  main.cpp
-  mainwindow.cpp
-  positionslider.cpp
-  renamedialog.cpp
-  simplefactory.cpp
-  simplesettings.cpp
-  visualmenu.cpp
-  volumeslider.cpp
+    actionmanager.cpp
+    listwidget.cpp
+    main.cpp
+    mainwindow.cpp
+    popupsettings.cpp
+    popupwidget.cpp
+    positionslider.cpp
+    renamedialog.cpp
+    shortcutdialog.cpp
+    shortcutitem.cpp
+    simplefactory.cpp
+    simplesettings.cpp
+    visualmenu.cpp
+    volumeslider.cpp
 )
 
 SET(libsimple_HDRS
-
+    shortcutitem.h
 )
 
 SET(libsimple_MOC_HDRS
-  actionmanager.h
-  listwidget.h
-  mainwindow.h
-  positionslider.h
-  renamedialog.h
-  simplefactory.h
-  simplesettings.h
-  visualmenu.h
-  volumeslider.h
+    actionmanager.h
+    listwidget.h
+    mainwindow.h
+    popupsettings.h
+    popupwidget.h
+    positionslider.h
+    renamedialog.h
+    shortcutdialog.cpp
+    shortcutdialog.h
+    shortcutitem.cpp
+    simplefactory.h
+    simplesettings.h
+    visualmenu.h
+    volumeslider.h
 )
 
 SET(libsimple_RCCS translations/translations.qrc)
@@ -69,7 +78,9 @@ QT4_WRAP_CPP(libsimple_MOC_SRCS ${libsimple_MOC_HDRS})
 
 SET(libsimple_UIS
     forms/mainwindow.ui
+    forms/popupsettings.ui
     forms/renamedialog.ui
+    forms/shortcutdialog.ui
     forms/simplesettings.ui
 )
 
