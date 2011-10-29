@@ -471,15 +471,16 @@ void MainWindow::readSettings()
     {
         restoreGeometry(settings.value("mw_geometry").toByteArray());
         restoreState(settings.value("mw_state").toByteArray());
-        show();
-        qApp->processEvents();
-        if(settings.value("start_hidden").toBool())
-            hide();
         if(settings.value("always_on_top", false).toBool())
         {
             ACTION(ActionManager::WM_ALLWAYS_ON_TOP)->setChecked(true);
             setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint);
         }
+        show();
+        qApp->processEvents();
+        if(settings.value("start_hidden").toBool())
+            hide();
+
         m_update = true;
     }
     else

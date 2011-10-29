@@ -116,6 +116,9 @@ void ListWidget::readSettings()
 
 void ListWidget::paintEvent(QPaintEvent *)
 {
+    m_selected_bg = palette().color(QPalette::Highlight);
+
+
     QPainter m_painter(this);
     //m_painter.setPen(Qt::white);
     m_painter.setFont(m_font);
