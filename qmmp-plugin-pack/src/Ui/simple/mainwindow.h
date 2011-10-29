@@ -35,7 +35,6 @@ class PlayListManager;
 class GeneralHandler;
 class VisualMenu;
 class PositionSlider;
-class VolumeSlider;
 
 class MainWindow : public QMainWindow
 {
@@ -88,7 +87,8 @@ private:
 	UiHelper *m_uiHelper;
 	QMenu *m_pl_menu;
 	QMenu *m_tab_menu;
-	VolumeSlider *m_volumeSlider;
+	QSlider *m_volumeSlider;
+	QAction *m_volumeAction;
 	int m_balance;
 	bool m_update;
 	bool m_hideOnClose;

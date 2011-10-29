@@ -40,7 +40,6 @@ SET(libsimple_SRCS
     simplefactory.cpp
     simplesettings.cpp
     visualmenu.cpp
-    volumeslider.cpp
 )
 
 SET(libsimple_HDRS
@@ -59,7 +58,6 @@ SET(libsimple_MOC_HDRS
     simplefactory.h
     simplesettings.h
     visualmenu.h
-    volumeslider.h
 )
 
 SET(libsimple_RCCS translations/translations.qrc)

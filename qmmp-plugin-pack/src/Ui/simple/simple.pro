@@ -19,7 +19,6 @@ SOURCES += main.cpp \
     simplefactory.cpp \
     positionslider.cpp \
     actionmanager.cpp \
-    volumeslider.cpp \
     simplesettings.cpp \
     shortcutdialog.cpp \
     shortcutitem.cpp \
@@ -32,7 +31,6 @@ HEADERS += mainwindow.h \
     simplefactory.h \
     positionslider.h \
     actionmanager.h \
-    volumeslider.h \
     simplesettings.h \
     shortcutdialog.h \
     shortcutitem.h \
@@ -68,6 +66,8 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_ja.ts \
     translations/simple_plugin_es.ts \
     translations/simple_plugin_sk.ts
+
+
 
 
 

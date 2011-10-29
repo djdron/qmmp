@@ -42,7 +42,6 @@
 #include "listwidget.h"
 #include "positionslider.h"
 #include "mainwindow.h"
-#include "volumeslider.h"
 #include "renamedialog.h"
 #include "simplesettings.h"
 
@@ -80,7 +79,7 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     m_slider = new PositionSlider(this);
-
+    m_slider->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     ui.progressToolBar->addWidget(m_slider);
     //prepare visualization
     Visual::initialize(this, m_visMenu, SLOT(updateActions()));
@@ -103,11 +102,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui.statusbar->addPermanentWidget(m_statusLabel, 0);
     ui.statusbar->addPermanentWidget(m_timeLabel, 1);
     //volume
-    m_volumeSlider = new VolumeSlider(this);
-    m_volumeSlider->setFixedWidth(80);
-    connect(m_volumeSlider, SIGNAL(sliderMoved(int)), SLOT(setVolume(int)));
-    connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(updateVolume()));
+    m_volumeSlider = new QSlider(Qt::Horizontal, this);
+    m_volumeSlider->setFixedWidth(100);
+    m_volumeSlider->setRange(0,100);
+    ui.progressToolBar->addSeparator();
     ui.progressToolBar->addWidget(m_volumeSlider);
+    m_volumeAction = ui.progressToolBar->addAction(QIcon::fromTheme("audio-volume-high"), tr("Volume"));
+    connect(m_volumeSlider, SIGNAL(valueChanged(int)), SLOT(setVolume(int)));
+    connect(m_core, SIGNAL(volumeChanged(int,int)), SLOT(updateVolume()));
+
     updateVolume();
     createActions();
     readSettings();
@@ -262,6 +265,17 @@ void MainWindow::updateVolume()
 {
     int maxVol = qMax(m_core->leftVolume(), m_core->rightVolume());
     m_volumeSlider->setValue(maxVol);
+
+    QString iconName = "audio-volume-high";
+    if(maxVol == 0)
+        iconName = "audio-volume-muted";
+    else if(maxVol < 30)
+        iconName = "audio-volume-low";
+    else if(maxVol >= 30 && maxVol < 60)
+        iconName = "audio-volume-medium";
+
+    m_volumeAction->setIcon(QIcon::fromTheme(iconName));
+
     if (maxVol)
         m_balance = (m_core->leftVolume() - m_core->rightVolume()) * 100 / maxVol;
 }
