@@ -25,9 +25,6 @@ link_directories( ${QMMP_LIBRARY_DIRS})
 include_directories(${QMMPUI_INCLUDE_DIRS})
 link_directories( ${QMMPUI_LIBRARY_DIRS})
 
-include_directories(${MPG123_INCLUDE_DIRS} ${TAGLIB_INCLUDE_DIRS})
-link_directories(${MPG123_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
-ADD_DEFINITIONS(${MPG123_CFLAGS} ${TAGLIB_CFLAGS})
 
 SET(libsimple_SRCS
     actionmanager.cpp
@@ -58,9 +55,7 @@ SET(libsimple_MOC_HDRS
     popupwidget.h
     positionslider.h
     renamedialog.h
-    shortcutdialog.cpp
     shortcutdialog.h
-    shortcutitem.cpp
     simplefactory.h
     simplesettings.h
     visualmenu.h
