@@ -9,6 +9,8 @@ CONFIG += release \
     link_pkgconfig
 TEMPLATE = lib
 
+QT += network
+
 PKGCONFIG += qmmp qmmpui
 
 SOURCES += main.cpp \
@@ -23,7 +25,8 @@ SOURCES += main.cpp \
     shortcutdialog.cpp \
     shortcutitem.cpp \
     popupsettings.cpp \
-    popupwidget.cpp
+    popupwidget.cpp \
+    addurldialog.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -35,7 +38,8 @@ HEADERS += mainwindow.h \
     shortcutdialog.h \
     shortcutitem.h \
     popupsettings.h \
-    popupwidget.h
+    popupwidget.h \
+    addurldialog.h
 TEMPLATE = lib
 
 
@@ -47,7 +51,8 @@ FORMS += forms/mainwindow.ui \
          forms/renamedialog.ui \
     forms/simplesettings.ui \
     forms/shortcutdialog.ui \
-    forms/popupsettings.ui
+    forms/popupsettings.ui \
+    forms/addurldialog.ui
 RESOURCES += stuff.qrc translations/translations.qrc
 
 TRANSLATIONS = translations/simple_plugin_ru.ts \
@@ -66,16 +71,4 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_ja.ts \
     translations/simple_plugin_es.ts \
     translations/simple_plugin_sk.ts
-
-
-
-
-
-
-
-
-
-
-
-
 

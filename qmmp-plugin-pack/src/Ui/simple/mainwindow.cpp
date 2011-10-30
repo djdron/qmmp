@@ -37,6 +37,7 @@
 #include <qmmpui/mediaplayer.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/configdialog.h>
+#include "addurldialog.h"
 #include "actionmanager.h"
 #include "visualmenu.h"
 #include "listwidget.h"
@@ -133,12 +134,7 @@ void MainWindow::addFiles()
 
 void MainWindow::addUrl()
 {
-    //m_uiHelper->
-}
-
-void MainWindow::showPlManager()
-{
-    //TODO add playlist manager
+    AddUrlDialog::popup(this, m_pl_manager->selectedPlayList());
 }
 
 void MainWindow::updatePosition(qint64 pos)

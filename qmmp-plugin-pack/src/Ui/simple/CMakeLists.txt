@@ -7,6 +7,9 @@ if(COMMAND cmake_policy)
     cmake_policy(SET CMP0005 NEW)
 endif(COMMAND cmake_policy)
 
+SET(QT_USE_QTNETWORK TRUE)
+INCLUDE(FindQt4)
+
 # qt plugin
 ADD_DEFINITIONS( -Wall )
 ADD_DEFINITIONS(${QT_DEFINITIONS})
@@ -40,6 +43,7 @@ SET(libsimple_SRCS
     simplefactory.cpp
     simplesettings.cpp
     visualmenu.cpp
+    addurldialog.cpp
 )
 
 SET(libsimple_HDRS
@@ -58,6 +62,7 @@ SET(libsimple_MOC_HDRS
     simplefactory.h
     simplesettings.h
     visualmenu.h
+    addurldialog.h
 )
 
 SET(libsimple_RCCS translations/translations.qrc)
@@ -75,6 +80,7 @@ SET(libsimple_UIS
     forms/renamedialog.ui
     forms/shortcutdialog.ui
     forms/simplesettings.ui
+    forms/addurldialog.ui
 )
 
 QT4_WRAP_UI(libsimple_UIS_H ${libsimple_UIS})

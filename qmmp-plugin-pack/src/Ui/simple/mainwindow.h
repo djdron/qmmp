@@ -47,7 +47,6 @@ private slots:
 	void addDir();
 	void addFiles();
 	void addUrl();
-	void showPlManager();
 	void updatePosition(qint64 pos);
 	void seek();
 	void showState(Qmmp::State);
