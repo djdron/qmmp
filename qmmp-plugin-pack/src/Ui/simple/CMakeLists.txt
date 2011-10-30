@@ -9,6 +9,7 @@ endif(COMMAND cmake_policy)
 
 SET(QT_USE_QTNETWORK TRUE)
 INCLUDE(FindQt4)
+include(${QT_USE_FILE})
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
