@@ -72,7 +72,7 @@ void EqSettings::setPreamp(double preamp)
 
 void EqSettings::operator=(const EqSettings &s)
 {
-    for(int i = 0; i < 10; ++i)
+    for(int i = 0; i < m_bands; ++i)
         m_gains[i] = s.m_gains[i];
     m_preamp = s.m_preamp;
     m_is_enabled = s.m_is_enabled;
@@ -81,7 +81,7 @@ void EqSettings::operator=(const EqSettings &s)
 
 bool EqSettings::operator==(const EqSettings &s) const
 {
-    for(int i = 0; i < 10; ++i)
+    for(int i = 0; i < m_bands; ++i)
     {
         if(m_gains[i] != s.m_gains[i])
             return false;
