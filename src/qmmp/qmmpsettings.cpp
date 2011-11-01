@@ -174,7 +174,7 @@ void QmmpSettings::readEqSettings(int bands)
     for (int i = 0; i < bands; ++i)
         m_eq_settings.setGain(i, settings.value("band_"+ QString("%1").arg(i), 0).toDouble());
     m_eq_settings.setPreamp(settings.value("preamp", 0).toDouble());
-    m_eq_settings.setEnabled(settings.value("enabled", true).toBool());
+    m_eq_settings.setEnabled(settings.value("enabled", false).toBool());
     settings.endGroup();
     emit eqSettingsChanged();
 }
