@@ -20,6 +20,7 @@
 
 #include <QtPlugin>
 #include <QMessageBox>
+#include <qmmp/qmmpsettings.h>
 #include "mainwindow.h"
 #include "skinnedfactory.h"
 
@@ -34,6 +35,7 @@ const UiProperties SkinnedFactory::properties() const
 
 QObject *SkinnedFactory::SkinnedFactory::create()
 {
+    QmmpSettings::instance()->readEqSettings(EqSettings::EQ_BANDS_10);
     return new MainWindow();
 }
 
