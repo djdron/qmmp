@@ -32,6 +32,7 @@ EqSettings::EqSettings(int bands)
         m_gains[i] = 0;
     m_bands = bands;
     m_preamp = 0;
+    m_is_enabled = false;
 }
 
 bool EqSettings::isEnabled() const

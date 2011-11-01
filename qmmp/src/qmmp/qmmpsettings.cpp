@@ -51,11 +51,7 @@ QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
     m_proxy_enabled = settings.value("Proxy/use_proxy", false).toBool();
     m_proxy_auth = settings.value("Proxy/authentication", false).toBool();
     m_proxy_url = settings.value("Proxy/url").toUrl();
-    //equalizer settings
-    for (int i = 0; i < 10; ++i)
-        m_eq_settings.setGain(i, settings.value("Equalizer/band_"+ QString("%1").arg(i), 0).toDouble());
-    m_eq_settings.setPreamp(settings.value("Equalizer/preamp", 0).toDouble());
-    m_eq_settings.setEnabled(settings.value("Equalizer/enabled", true).toBool());
+    //buffer
     m_buffer_size = settings.value("Output/buffer_size", 500).toInt();
 }
 
@@ -170,6 +166,19 @@ void QmmpSettings::setEqSettings(const EqSettings &settings)
     emit eqSettingsChanged();
 }
 
+void QmmpSettings::readEqSettings(int bands)
+{
+    m_eq_settings = EqSettings(bands);
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
+    settings.beginGroup(QString("Equalizer_%1").arg(bands));
+    for (int i = 0; i < bands; ++i)
+        m_eq_settings.setGain(i, settings.value("band_"+ QString("%1").arg(i), 0).toDouble());
+    m_eq_settings.setPreamp(settings.value("preamp", 0).toDouble());
+    m_eq_settings.setEnabled(settings.value("enabled", true).toBool());
+    settings.endGroup();
+    emit eqSettingsChanged();
+}
+
 int QmmpSettings:: bufferSize() const
 {
     return m_buffer_size;
@@ -205,10 +214,12 @@ void QmmpSettings::sync()
     settings.setValue("Proxy/authentication", m_proxy_auth);
     settings.setValue("Proxy/url", m_proxy_url);
     //equalizer settings
-    for (int i = 0; i < 10; ++i)
-        settings.setValue("Equalizer/band_"+ QString("%1").arg(i), m_eq_settings.gain(i));
-    settings.setValue("Equalizer/preamp", m_eq_settings.preamp());
-    settings.setValue("Equalizer/enabled", m_eq_settings.isEnabled());
+    settings.beginGroup(QString("Equalizer_%1").arg(m_eq_settings.bands()));
+    for (int i = 0; i < m_eq_settings.bands(); ++i)
+        settings.setValue("band_"+ QString("%1").arg(i), m_eq_settings.gain(i));
+    settings.setValue("preamp", m_eq_settings.preamp());
+    settings.setValue("enabled", m_eq_settings.isEnabled());
+    settings.endGroup();
     //buffer size
     settings.setValue("Output/buffer_size", m_buffer_size);
 }
