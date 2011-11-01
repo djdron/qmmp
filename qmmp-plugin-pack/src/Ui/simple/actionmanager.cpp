@@ -85,6 +85,7 @@ ActionManager::ActionManager(QObject *parent) :
     m_actions[PL_SELECT_PREVIOUS] = createAction(tr("&Select Previous Playlist"), "prev_pl",
                                                  tr("Ctrl+PgUp"), "go-previous");
     //other
+    m_actions[EQUALIZER] = createAction(tr("&Equalizer"), "equalizer", tr("Ctrl+E"));
     m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
     m_actions[ABOUT] = createAction(tr("&About"), "about", "");
     m_actions[ABOUT_QT] = createAction(tr("&About Qt"), "about_qt", "");

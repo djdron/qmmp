@@ -136,7 +136,7 @@ void SimpleSettings::loadShortcuts()
     m_ui.shortcutTreeWidget->addTopLevelItem(item);
     //misc
     item = new QTreeWidgetItem (m_ui.shortcutTreeWidget, QStringList() << tr("Misc"));
-    for(int i = ActionManager::SETTINGS; i <= ActionManager::QUIT; ++i)
+    for(int i = ActionManager::EQUALIZER; i <= ActionManager::QUIT; ++i)
         new ShortcutItem(item, i);
     item->setExpanded(true);
     m_ui.shortcutTreeWidget->addTopLevelItem(item);

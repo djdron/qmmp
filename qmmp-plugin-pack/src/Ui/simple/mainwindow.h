@@ -70,6 +70,7 @@ private slots:
 	void loadPlayList();
 	void on_tabWidget_tabCloseRequested(int index);
 	void showBuffering(int percent);
+	void showEqualizer();
 
 private:
 	void closeEvent(QCloseEvent *);

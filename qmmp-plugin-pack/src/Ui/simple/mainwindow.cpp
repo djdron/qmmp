@@ -45,6 +45,7 @@
 #include "mainwindow.h"
 #include "renamedialog.h"
 #include "simplesettings.h"
+#include "equalizer.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -467,6 +468,9 @@ void MainWindow::createActions()
                                                         tr("Actions"), this));
     m_pl_menu->addSeparator();
     m_pl_menu->addAction(SET_ACTION(ActionManager::PL_ENQUEUE, m_pl_manager, SLOT(addToQueue())));
+    //tools menu
+    ui.menuTools->addAction(SET_ACTION(ActionManager::EQUALIZER, this, SLOT(showEqualizer())));
+
     //tab menu
     m_tab_menu->addAction(ACTION(ActionManager::PL_RENAME));
     m_tab_menu->addAction(ACTION(ActionManager::PL_CLOSE));
@@ -505,7 +509,6 @@ void MainWindow::readSettings()
         else
             setWindowFlags(windowFlags() & ~Qt::WindowStaysOnTopHint);
         show();
-
     }
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
     ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
@@ -553,4 +556,10 @@ void MainWindow::showBuffering(int percent)
 {
     if(m_core->state() == Qmmp::Buffering)
         m_statusLabel->setText(tr("Buffering: %1").arg(percent));
+}
+
+void MainWindow::showEqualizer()
+{
+    Equalizer equalizer(this);
+    equalizer.exec();
 }

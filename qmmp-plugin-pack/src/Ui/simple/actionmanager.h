@@ -83,6 +83,7 @@ public:
         PL_SELECT_NEXT,
         PL_SELECT_PREVIOUS,
 
+        EQUALIZER,
         SETTINGS,
         ABOUT,
         ABOUT_QT,

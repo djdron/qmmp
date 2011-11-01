@@ -18,36 +18,33 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtPlugin>
-#include <QMessageBox>
-#include <qmmp/qmmpsettings.h>
-#include "mainwindow.h"
-#include "simplefactory.h"
+#ifndef EQUALIZER_H
+#define EQUALIZER_H
 
-const UiProperties SimpleFactory::properties() const
+#include <QDialog>
+#include <QList>
+
+class QVBoxLayout;
+class QCheckBox;
+class QSlider;
+
+class Equalizer : public QDialog
 {
-    UiProperties props;
-    props.hasAbout = false;
-    props.name = tr("Simple User Interface");
-    props.shortName = "simple";
-    return props;
-}
+    Q_OBJECT
+public:
+    explicit Equalizer(QWidget *parent = 0);
 
-QObject *SimpleFactory::SimpleFactory::create()
-{
-    QmmpSettings::instance()->readEqSettings(EqSettings::EQ_BANDS_15);
-    return new MainWindow();
-}
 
-void SimpleFactory::showAbout(QWidget *)
-{}
+private slots:
+    void writeSettings();
+    void resetSettings();
 
-QTranslator *SimpleFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/simple_plugin_") + locale);
-    return translator;
-}
+private:
+    void readSettigs();
+    QVBoxLayout *m_layout;
+    QCheckBox *m_enabled;
+    QList <QSlider *> m_sliders;
 
-Q_EXPORT_PLUGIN2(simple, SimpleFactory)
+};
+
+#endif // EQUALIZER_H

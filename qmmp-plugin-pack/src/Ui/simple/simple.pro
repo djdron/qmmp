@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     shortcutitem.cpp \
     popupsettings.cpp \
     popupwidget.cpp \
-    addurldialog.cpp
+    addurldialog.cpp \
+    equalizer.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -39,7 +40,8 @@ HEADERS += mainwindow.h \
     shortcutitem.h \
     popupsettings.h \
     popupwidget.h \
-    addurldialog.h
+    addurldialog.h \
+    equalizer.h
 TEMPLATE = lib
 
 
@@ -71,4 +73,6 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_ja.ts \
     translations/simple_plugin_es.ts \
     translations/simple_plugin_sk.ts
+
+
 

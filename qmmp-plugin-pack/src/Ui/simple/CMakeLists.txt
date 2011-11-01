@@ -45,6 +45,7 @@ SET(libsimple_SRCS
     simplesettings.cpp
     visualmenu.cpp
     addurldialog.cpp
+    equalizer.cpp
 )
 
 SET(libsimple_HDRS
@@ -64,6 +65,7 @@ SET(libsimple_MOC_HDRS
     simplesettings.h
     visualmenu.h
     addurldialog.h
+    equalizer.h
 )
 
 SET(libsimple_RCCS translations/translations.qrc)
