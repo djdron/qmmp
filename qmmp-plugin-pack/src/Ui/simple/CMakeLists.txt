@@ -73,7 +73,7 @@ SET(libsimple_MOC_HDRS
     aboutsimpleuidialog.h
 )
 
-SET(libsimple_RCCS translations/translations.qrc)
+SET(libsimple_RCCS translations/translations.qrc txt/simple_txt.qrc images/simple_images.qrc)
 
 QT4_ADD_RESOURCES(libsimple_RCC_SRCS ${libsimple_RCCS})
 
