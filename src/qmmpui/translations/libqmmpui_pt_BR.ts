@@ -35,7 +35,7 @@
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="66"/>
-        <source>Version:</source>
+        <source>Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -541,7 +541,7 @@ p, li { white-space: pre-wrap; }
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="149"/>
-        <location filename="../playlistmanager.cpp" line="384"/>
+        <location filename="../playlistmanager.cpp" line="389"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de músicas</translation>
     </message>

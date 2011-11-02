@@ -40,7 +40,7 @@ protected slots:
 
 private:
     QString loadAbout();
-    QString getstringFromResource(const QString& res_file);
+    QString getStringFromResource(const QString& res_file);
 
 };
 

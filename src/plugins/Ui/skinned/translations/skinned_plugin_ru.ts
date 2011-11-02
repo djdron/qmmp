@@ -1058,27 +1058,27 @@
 <context>
     <name>SkinnedFactory</name>
     <message>
-        <location filename="../skinnedfactory.cpp" line="30"/>
+        <location filename="../skinnedfactory.cpp" line="31"/>
         <source>Skinned User Interface</source>
         <translation>Интерфейс с поддержкой обложек</translation>
     </message>
     <message>
-        <location filename="../skinnedfactory.cpp" line="42"/>
+        <location filename="../skinnedfactory.cpp" line="44"/>
         <source>About Qmmp Skinned User Interface</source>
         <translation>Об интерфейсе с поддержкой обложек</translation>
     </message>
     <message>
-        <location filename="../skinnedfactory.cpp" line="43"/>
+        <location filename="../skinnedfactory.cpp" line="45"/>
         <source>Qmmp Skinned User Interface</source>
         <translation>Интерфейс с поддержкой обложек для Qmmp</translation>
     </message>
     <message>
-        <location filename="../skinnedfactory.cpp" line="44"/>
+        <location filename="../skinnedfactory.cpp" line="46"/>
         <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
         <translation>Простой пользовательский интерфейс с поддержкой обложек Winamp-2.x/XMMS</translation>
     </message>
     <message>
-        <location filename="../skinnedfactory.cpp" line="45"/>
+        <location filename="../skinnedfactory.cpp" line="47"/>
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
@@ -1087,7 +1087,7 @@ Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
 Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../skinnedfactory.cpp" line="48"/>
+        <location filename="../skinnedfactory.cpp" line="50"/>
         <source>Artwork:
 Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
         <translation>Графика:
