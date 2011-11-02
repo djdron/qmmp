@@ -23,7 +23,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../images/images.qrc">:/logo-qmmp.png</pixmap>
+      <pixmap resource="../images/qmmpui_images.qrc">:/logo-qmmp.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -123,7 +123,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../images/images.qrc"/>
+  <include location="../images/qmmpui_images.qrc"/>
  </resources>
  <connections>
   <connection>
