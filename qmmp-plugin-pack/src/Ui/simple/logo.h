@@ -18,40 +18,38 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtPlugin>
-#include <QMessageBox>
-#include <qmmp/qmmpsettings.h>
-#include "mainwindow.h"
-#include "aboutsimpleuidialog.h"
-#include "simplefactory.h"
+#ifndef LOGO_H
+#define LOGO_H
 
-const UiProperties SimpleFactory::properties() const
+#include <QWidget>
+#include <QHash>
+#include <QChar>
+#include <QStringList>
+#include <QPixmap>
+#include <qmmp/visual.h>
+
+class Logo : public Visual
 {
-    UiProperties props;
-    props.hasAbout = true;
-    props.name = tr("Simple User Interface");
-    props.shortName = "simple";
-    return props;
-}
+    Q_OBJECT
+public:
+    explicit Logo(QWidget *parent = 0);
+    virtual ~Logo();
 
-QObject *SimpleFactory::SimpleFactory::create()
-{
-    QmmpSettings::instance()->readEqSettings(EqSettings::EQ_BANDS_15);
-    return new MainWindow();
-}
+    void add(unsigned char *data, qint64 size, int chan);
+    void clear();
 
-void SimpleFactory::showAbout(QWidget *parent)
-{
-    AboutSimpleUiDialog about(parent);
-    about.exec();
-}
+private slots:
+    void updateLetters();
 
-QTranslator *SimpleFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/simple_plugin_") + locale);
-    return translator;
-}
+private:
+    void paintEvent(QPaintEvent *);
+    QHash <QChar, QPixmap> m_letters;
+    QStringList m_lines;
+    QStringList m_source_lines;
+    int max_steps;
+    unsigned char m_buf[2048];
+    int m_buf_size;
 
-Q_EXPORT_PLUGIN2(simple, SimpleFactory)
+};
+
+#endif // LOGO_H

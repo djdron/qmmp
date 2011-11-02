@@ -18,40 +18,22 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtPlugin>
-#include <QMessageBox>
-#include <qmmp/qmmpsettings.h>
-#include "mainwindow.h"
-#include "aboutsimpleuidialog.h"
-#include "simplefactory.h"
+#ifndef ABOUTSIMPLEUIDIALOG_H
+#define ABOUTSIMPLEUIDIALOG_H
 
-const UiProperties SimpleFactory::properties() const
+#include <QDialog>
+#include "ui_aboutsimpleuidialog.h"
+
+class AboutSimpleUiDialog : public QDialog
 {
-    UiProperties props;
-    props.hasAbout = true;
-    props.name = tr("Simple User Interface");
-    props.shortName = "simple";
-    return props;
-}
+    Q_OBJECT
+public:
+    explicit AboutSimpleUiDialog(QWidget *parent = 0);
+    virtual ~AboutSimpleUiDialog();
 
-QObject *SimpleFactory::SimpleFactory::create()
-{
-    QmmpSettings::instance()->readEqSettings(EqSettings::EQ_BANDS_15);
-    return new MainWindow();
-}
+private:
+    Ui::AboutSimpleUiDialog m_ui;
+    QString loadAbout();
+};
 
-void SimpleFactory::showAbout(QWidget *parent)
-{
-    AboutSimpleUiDialog about(parent);
-    about.exec();
-}
-
-QTranslator *SimpleFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/simple_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN2(simple, SimpleFactory)
+#endif // ABOUTSIMPLEUIDIALOG_H

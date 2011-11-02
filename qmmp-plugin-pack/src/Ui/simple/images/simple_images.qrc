@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>terminus.png</file>
+        <file>simple_settings.png</file>
+    </qresource>
+</RCC>

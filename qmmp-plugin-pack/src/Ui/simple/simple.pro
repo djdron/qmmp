@@ -27,7 +27,9 @@ SOURCES += main.cpp \
     popupsettings.cpp \
     popupwidget.cpp \
     addurldialog.cpp \
-    equalizer.cpp
+    equalizer.cpp \
+    logo.cpp \
+    aboutsimpleuidialog.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -41,7 +43,9 @@ HEADERS += mainwindow.h \
     popupsettings.h \
     popupwidget.h \
     addurldialog.h \
-    equalizer.h
+    equalizer.h \
+    logo.h \
+    aboutsimpleuidialog.h
 TEMPLATE = lib
 
 
@@ -54,8 +58,9 @@ FORMS += forms/mainwindow.ui \
     forms/simplesettings.ui \
     forms/shortcutdialog.ui \
     forms/popupsettings.ui \
-    forms/addurldialog.ui
-RESOURCES += stuff.qrc translations/translations.qrc
+    forms/addurldialog.ui \
+    forms/aboutsimpleuidialog.ui
+RESOURCES += translations/translations.qrc images/simple_images.qrc txt/simple_txt.qrc
 
 TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_tr.ts \
@@ -73,6 +78,11 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_ja.ts \
     translations/simple_plugin_es.ts \
     translations/simple_plugin_sk.ts
+
+
+
+
+
 
 
 

@@ -85,6 +85,7 @@ public:
 
         EQUALIZER,
         SETTINGS,
+        ABOUT_UI,
         ABOUT,
         ABOUT_QT,
         QUIT

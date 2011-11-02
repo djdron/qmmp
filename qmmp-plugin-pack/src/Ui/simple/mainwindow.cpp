@@ -45,6 +45,7 @@
 #include "mainwindow.h"
 #include "renamedialog.h"
 #include "simplesettings.h"
+#include "aboutsimpleuidialog.h"
 #include "equalizer.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -231,6 +232,12 @@ void MainWindow::renameTab()
     dialog->deleteLater();
 }
 
+void MainWindow::aboutUi()
+{
+    AboutSimpleUiDialog dialog(this);
+    dialog.exec();
+}
+
 void MainWindow::about()
 {
     m_uiHelper->about(this);
@@ -245,7 +252,7 @@ void MainWindow::showSettings()
 {
     ConfigDialog *confDialog = new ConfigDialog(this);
     SimpleSettings *simpleSettings = new SimpleSettings(this);
-    confDialog->addPage(tr("Appearance"), simpleSettings, QIcon(":/skinned/interface.png"));
+    confDialog->addPage(tr("Appearance"), simpleSettings, QIcon(":/simple_settings.png"));
     confDialog->exec();
     simpleSettings->writeSettings();
     confDialog->deleteLater();
@@ -456,6 +463,7 @@ void MainWindow::createActions()
     ui.menuPlayback->addAction(SET_ACTION(ActionManager::STOP_AFTER_SELECTED, m_pl_manager,
                                           SLOT(stopAfterSelected())));
     //help menu
+    ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_UI, this, SLOT(aboutUi())));
     ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT, this, SLOT(about())));
     ui.menuHelp->addAction(SET_ACTION(ActionManager::ABOUT_QT, qApp, SLOT(aboutQt())));
     //playlist menu

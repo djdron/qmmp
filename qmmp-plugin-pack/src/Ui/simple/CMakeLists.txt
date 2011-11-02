@@ -46,6 +46,8 @@ SET(libsimple_SRCS
     visualmenu.cpp
     addurldialog.cpp
     equalizer.cpp
+    logo.cpp
+    aboutsimpleuidialog.cpp
 )
 
 SET(libsimple_HDRS
@@ -66,6 +68,8 @@ SET(libsimple_MOC_HDRS
     visualmenu.h
     addurldialog.h
     equalizer.h
+    logo.h
+    aboutsimpleuidialog.h
 )
 
 SET(libsimple_RCCS translations/translations.qrc)
@@ -84,6 +88,7 @@ SET(libsimple_UIS
     forms/shortcutdialog.ui
     forms/simplesettings.ui
     forms/addurldialog.ui
+    forms/aboutsimpleuidialog.ui
 )
 
 QT4_WRAP_UI(libsimple_UIS_H ${libsimple_UIS})

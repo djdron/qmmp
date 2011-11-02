@@ -87,6 +87,7 @@ ActionManager::ActionManager(QObject *parent) :
     //other
     m_actions[EQUALIZER] = createAction(tr("&Equalizer"), "equalizer", tr("Ctrl+E"));
     m_actions[SETTINGS] = createAction(tr("&Settings"), "show_settings", tr("Ctrl+P"), "configure");
+    m_actions[ABOUT_UI] = createAction(tr("&About Ui"), "about_ui", "");
     m_actions[ABOUT] = createAction(tr("&About"), "about", "");
     m_actions[ABOUT_QT] = createAction(tr("&About Qt"), "about_qt", "");
     m_actions[QUIT] = createAction(tr("&Exit"), "exit", tr("Ctrl+Q"), "application-exit");

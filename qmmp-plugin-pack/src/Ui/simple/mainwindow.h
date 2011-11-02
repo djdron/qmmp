@@ -58,6 +58,7 @@ private slots:
 	void addTab(int);
 	void removeTab(int);
 	void renameTab();
+	void aboutUi();
 	void about();
 	void toggleVisibility();
 	void showSettings();

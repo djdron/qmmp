@@ -18,40 +18,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QtPlugin>
-#include <QMessageBox>
-#include <qmmp/qmmpsettings.h>
-#include "mainwindow.h"
+#include <QFile>
+#include <QTextStream>
+#include <qmmp/qmmp.h>
 #include "aboutsimpleuidialog.h"
-#include "simplefactory.h"
 
-const UiProperties SimpleFactory::properties() const
+AboutSimpleUiDialog::AboutSimpleUiDialog(QWidget *parent) :
+    QDialog(parent)
 {
-    UiProperties props;
-    props.hasAbout = true;
-    props.name = tr("Simple User Interface");
-    props.shortName = "simple";
-    return props;
+    m_ui.setupUi(this);
+    m_ui.aboutTextEdit->setHtml(loadAbout());
 }
 
-QObject *SimpleFactory::SimpleFactory::create()
-{
-    QmmpSettings::instance()->readEqSettings(EqSettings::EQ_BANDS_15);
-    return new MainWindow();
-}
+AboutSimpleUiDialog::~AboutSimpleUiDialog(){}
 
-void SimpleFactory::showAbout(QWidget *parent)
+QString AboutSimpleUiDialog::loadAbout()
 {
-    AboutSimpleUiDialog about(parent);
-    about.exec();
+    QString text;
+    text.append("<head>");
+    text.append("<META content=\"text/html; charset=UTF-8\">");
+    text.append("</head>");
+    text.append("<h3>"+tr("Qmmp Simple User Interface (QSUI)")+"</h3>");
+    text.append(tr("Qmmp version: <b>%1</b>").arg(Qmmp::strVersion()));
+    text.append("<br>");
+    text.append(tr("User interface version: <b>%1</b>").arg("0.6.0"));
+    text.append("<p>");
+    text.append(tr("Simple user interface based on standard widgets set."));
+    text.append("</p>");
+    text.append("<p>");
+    text.append(tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>").replace("<", "&lt;")
+                .replace(">", "&gt;"));
+    text.append("</p>");
+    return text;
 }
-
-QTranslator *SimpleFactory::createTranslator(QObject *parent)
-{
-    QTranslator *translator = new QTranslator(parent);
-    QString locale = Qmmp::systemLanguageID();
-    translator->load(QString(":/simple_plugin_") + locale);
-    return translator;
-}
-
-Q_EXPORT_PLUGIN2(simple, SimpleFactory)
