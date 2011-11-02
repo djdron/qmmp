@@ -6,32 +6,32 @@
     <message>
         <location filename="../forms/aboutsimpleuidialog.ui" line="14"/>
         <source>About Qmmp Simpe User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>О простом интерфейсе пользователя для Qmmp</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
-        <translation type="unfinished"></translation>
+        <translation>Простой пользовательский интерфейс для Qmmp</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия Qmmp: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="44"/>
         <source>User interface version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Версия польз. интерфеса: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished"></translation>
+        <translation>Простой интерфейс пользователя, постороенный с использованием стандартных элементов.</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="49"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Разработчик: Илья Котов &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -370,7 +370,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Ui</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Об интерфейсе</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>

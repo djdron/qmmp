@@ -79,10 +79,5 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_es.ts \
     translations/simple_plugin_sk.ts
 
-
-
-
-
-
-
+DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION\\\"
 

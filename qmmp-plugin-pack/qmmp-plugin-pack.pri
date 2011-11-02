@@ -11,7 +11,7 @@ INCLUDEPATH += /usr/local/include
 
 #Version
 
-QMMP_VERSION = 0.6.0
+QMMP_PLUGIN_PACK_VERSION = 0.6.0
 CONFIG += SVN_VERSION
 
 

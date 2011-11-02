@@ -41,7 +41,7 @@ QString AboutSimpleUiDialog::loadAbout()
     text.append("<h3>"+tr("Qmmp Simple User Interface (QSUI)")+"</h3>");
     text.append(tr("Qmmp version: <b>%1</b>").arg(Qmmp::strVersion()));
     text.append("<br>");
-    text.append(tr("User interface version: <b>%1</b>").arg("0.6.0"));
+    text.append(tr("User interface version: <b>%1</b>").arg(QMMP_PLUGIN_PACK_VERSION));
     text.append("<p>");
     text.append(tr("Simple user interface based on standard widgets set."));
     text.append("</p>");
