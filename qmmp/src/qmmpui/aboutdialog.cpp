@@ -40,11 +40,11 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl)
 {
     setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
-    licenseTextEdit->setPlainText(getstringFromResource(":COPYING"));
+    licenseTextEdit->setPlainText(getStringFromResource(":COPYING"));
     aboutTextEdit->setHtml(loadAbout());
-    authorsTextEdit->setPlainText(getstringFromResource(":authors"));
-    thanksToTextEdit->setPlainText(getstringFromResource(":thanks"));
-    translatorsTextEdit->setPlainText(getstringFromResource(":translators"));
+    authorsTextEdit->setPlainText(getStringFromResource(":authors"));
+    thanksToTextEdit->setPlainText(getStringFromResource(":thanks"));
+    translatorsTextEdit->setPlainText(getStringFromResource(":translators"));
 }
 
 AboutDialog::~AboutDialog()
@@ -63,8 +63,8 @@ QString AboutDialog::loadAbout()
     text.append("<META content=\"text/html; charset=UTF-8\">");
     text.append("</head>");
     text.append("<h3>"+tr("Qt-based Multimedia Player (Qmmp)")+"</h3>");
-    text.append("<h4>"+tr("Version:")+" "+ Qmmp::strVersion() + "</h4>");
-    text.append("<p>"+getstringFromResource(tr(":txt/description_en.txt"))+"</p>");
+    text.append("<h4>"+tr("Version: %1").arg(Qmmp::strVersion()) + "</h4>");
+    text.append("<p>"+getStringFromResource(tr(":txt/description_en.txt"))+"</p>");
     text.append("<h5>"+tr("Input plugins:")+"</h5>");
     text.append("<ul type=\"square\">");
     foreach(DecoderFactory *fact, *Decoder::factories())
@@ -114,7 +114,7 @@ QString AboutDialog::loadAbout()
     return text;
 }
 
-QString AboutDialog::getstringFromResource(const QString& res_file)
+QString AboutDialog::getStringFromResource(const QString& res_file)
 {
     QString ret_string;
     QStringList paths;
