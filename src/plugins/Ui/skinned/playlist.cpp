@@ -508,8 +508,7 @@ void PlayList::showPlaylistMenu()
 
 void PlayList::keyPressEvent (QKeyEvent *ke)
 {
-    if (m_keyboardManager->handleKeyPress (ke))
-        update();
+    m_keyboardManager->handleKeyPress (ke);
 }
 
 void PlayList::updateSkin()

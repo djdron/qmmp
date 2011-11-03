@@ -75,6 +75,7 @@ public:
     void setAnchorRow(int r)
     {
         m_anchor_row = r;
+        update();
     }
 
     QMenu *menu()

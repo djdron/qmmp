@@ -165,7 +165,7 @@ public:
      * @param row Number of item.
      * @param select Selection state (\b true - select, \b false - unselect)
      */
-    void setSelected(int row, bool select);
+    void setSelected(int row, bool selected = true);
     /*!
      * Advances to the next item. Returns \b false if next iten doesn't exist,
      * otherwise returns \b true

@@ -310,10 +310,13 @@ bool PlayListModel::contains(const QString &url)
     return false;
 }
 
-void PlayListModel::setSelected(int row, bool yes)
+void PlayListModel::setSelected(int row, bool selected)
 {
     if (m_items.count() > row && row >= 0)
-        m_items.at(row)->setSelected(yes);
+    {
+        m_items.at(row)->setSelected(selected);
+        emit listChanged();
+    }
 }
 
 void PlayListModel::removeSelected()
@@ -402,7 +405,8 @@ void PlayListModel::removeSelection(bool inverted)
     if (select_after_delete >= m_items.count())
         select_after_delete = m_items.count() - 1;
 
-    setSelected(select_after_delete,true);
+    if(select_after_delete != -1)
+        m_items.at(select_after_delete)->setSelected(true);
 
     m_play_state->prepare();
 
