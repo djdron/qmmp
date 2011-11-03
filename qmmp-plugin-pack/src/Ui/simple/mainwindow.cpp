@@ -48,6 +48,8 @@
 #include "aboutsimpleuidialog.h"
 #include "equalizer.h"
 
+#define KEY_OFFSET 10000
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -482,7 +484,15 @@ void MainWindow::createActions()
     //tab menu
     m_tab_menu->addAction(ACTION(ActionManager::PL_RENAME));
     m_tab_menu->addAction(ACTION(ActionManager::PL_CLOSE));
+    //seeking
+    QAction* forward = new QAction(this);
+    forward->setShortcut(QKeySequence(Qt::Key_Right));
+    connect(forward,SIGNAL(triggered(bool)),this,SLOT(forward()));
+    QAction* backward = new QAction(this);
+    backward->setShortcut(QKeySequence(Qt::Key_Left));
+    connect(backward,SIGNAL(triggered(bool)),this,SLOT(backward()));
 
+    addActions(QList<QAction*>() << forward << backward);
     addActions(ActionManager::instance()->actions());
 }
 
@@ -571,3 +581,14 @@ void MainWindow::showEqualizer()
     Equalizer equalizer(this);
     equalizer.exec();
 }
+
+void MainWindow::forward()
+{
+    m_core->seek(m_core->elapsed() + KEY_OFFSET);
+}
+
+void MainWindow::backward()
+{
+    m_core->seek(qMax(qint64(0), m_core->elapsed() - KEY_OFFSET));
+}
+

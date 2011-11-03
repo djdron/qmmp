@@ -72,6 +72,8 @@ private slots:
 	void on_tabWidget_tabCloseRequested(int index);
 	void showBuffering(int percent);
 	void showEqualizer();
+	void forward();
+	void backward();
 
 private:
 	void closeEvent(QCloseEvent *);
