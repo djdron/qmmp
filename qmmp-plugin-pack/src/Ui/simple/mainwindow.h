@@ -35,6 +35,7 @@ class PlayListManager;
 class GeneralHandler;
 class VisualMenu;
 class PositionSlider;
+class KeyboardManager;
 
 class MainWindow : public QMainWindow
 {
@@ -93,6 +94,7 @@ private:
 	QMenu *m_tab_menu;
 	QSlider *m_volumeSlider;
 	QAction *m_volumeAction;
+	KeyboardManager *m_key_manager;
 	int m_balance;
 	bool m_update;
 	bool m_hideOnClose;

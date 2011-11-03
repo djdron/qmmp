@@ -49,6 +49,7 @@ SET(libsimple_SRCS
     equalizer.cpp
     logo.cpp
     aboutsimpleuidialog.cpp
+    keyboardmanager.cpp
 )
 
 SET(libsimple_HDRS
@@ -71,6 +72,7 @@ SET(libsimple_MOC_HDRS
     equalizer.h
     logo.h
     aboutsimpleuidialog.h
+    keyboardmanager.h
 )
 
 SET(libsimple_RCCS translations/translations.qrc txt/simple_txt.qrc images/simple_images.qrc)

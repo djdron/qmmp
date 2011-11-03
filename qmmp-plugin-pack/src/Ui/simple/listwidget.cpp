@@ -65,7 +65,6 @@ ListWidget::ListWidget(PlayListModel *model, QWidget *parent): QWidget(parent)
     connect(m_scrollBar, SIGNAL(valueChanged (int)), SLOT(scroll(int)));
 }
 
-
 ListWidget::~ListWidget()
 {}
 

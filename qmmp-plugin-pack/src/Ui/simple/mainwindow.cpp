@@ -46,6 +46,7 @@
 #include "renamedialog.h"
 #include "simplesettings.h"
 #include "aboutsimpleuidialog.h"
+#include "keyboardmanager.h"
 #include "equalizer.h"
 
 #define KEY_OFFSET 10000
@@ -71,6 +72,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(showBitrate(int)));
     connect(m_core, SIGNAL(bufferingProgress(int)), SLOT(showBuffering(int)));
+    //keyboard manager
+    m_key_manager = new KeyboardManager(this);
     //create tabs
     foreach(PlayListModel *model, m_pl_manager->playLists())
     {
@@ -82,6 +85,11 @@ MainWindow::MainWindow(QWidget *parent)
         {
             ui.tabWidget->addTab(list, "[" + model->name() + "]");
             ui.tabWidget->setCurrentWidget(list);
+        }
+        if(model == m_pl_manager->selectedPlayList())
+        {
+            ui.tabWidget->setCurrentWidget(list);
+            m_key_manager->setListWidget(list);
         }
     }
     m_slider = new PositionSlider(this);
@@ -186,7 +194,10 @@ void MainWindow::updateTabs()
         else
             ui.tabWidget->setTabText(i, model->name());
         if(model == m_pl_manager->selectedPlayList())
+        {
             ui.tabWidget->setCurrentIndex(i);
+            m_key_manager->setListWidget(qobject_cast<ListWidget *>(ui.tabWidget->widget(i)));
+        }
     }
 }
 
@@ -494,6 +505,7 @@ void MainWindow::createActions()
 
     addActions(QList<QAction*>() << forward << backward);
     addActions(ActionManager::instance()->actions());
+    addActions(m_key_manager->actions());
 }
 
 void MainWindow::readSettings()

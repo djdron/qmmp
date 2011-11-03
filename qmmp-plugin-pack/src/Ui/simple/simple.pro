@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     addurldialog.cpp \
     equalizer.cpp \
     logo.cpp \
-    aboutsimpleuidialog.cpp
+    aboutsimpleuidialog.cpp \
+    keyboardmanager.cpp
 HEADERS += mainwindow.h \
     listwidget.h \
     visualmenu.h \
@@ -45,7 +46,8 @@ HEADERS += mainwindow.h \
     addurldialog.h \
     equalizer.h \
     logo.h \
-    aboutsimpleuidialog.h
+    aboutsimpleuidialog.h \
+    keyboardmanager.h
 TEMPLATE = lib
 
 
@@ -80,4 +82,6 @@ TRANSLATIONS = translations/simple_plugin_ru.ts \
     translations/simple_plugin_sk.ts
 
 DEFINES += QMMP_PLUGIN_PACK_VERSION=\\\"$$QMMP_PLUGIN_PACK_VERSION\\\"
+
+
 

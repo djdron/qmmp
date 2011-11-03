@@ -65,7 +65,7 @@ public:
         return m_first;
     }
 
-    int getAnchorRow()const
+    int anchorRow()const
     {
         return m_anchor_row;
     }
@@ -73,6 +73,7 @@ public:
     void setAnchorRow(int r)
     {
         m_anchor_row = r;
+        update();
     }
 
     QMenu *menu()
