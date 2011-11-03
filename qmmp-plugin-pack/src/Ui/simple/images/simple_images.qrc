@@ -1,6 +1,7 @@
 <RCC>
-    <qresource prefix="/" >
+    <qresource prefix="/simple" >
         <file>terminus.png</file>
         <file>simple_settings.png</file>
+        <file>ui_no_cover.png</file>
     </qresource>
 </RCC>

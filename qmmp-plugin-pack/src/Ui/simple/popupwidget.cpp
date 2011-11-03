@@ -126,7 +126,7 @@ void PopupWidget::loadCover()
         return;
     QPixmap pix = MetaDataManager::instance()->getCover(m_item->url());
     if(pix.isNull())
-        pix = QPixmap(":/Simple/ui_no_cover.png");
+        pix = QPixmap(":/simple/ui_no_cover.png");
     m_pixlabel->setFixedSize(m_coverSize,m_coverSize);
     m_pixlabel->setPixmap(pix.scaled(m_coverSize,m_coverSize));
     qApp->processEvents();

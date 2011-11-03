@@ -252,7 +252,7 @@ void MainWindow::showSettings()
 {
     ConfigDialog *confDialog = new ConfigDialog(this);
     SimpleSettings *simpleSettings = new SimpleSettings(this);
-    confDialog->addPage(tr("Appearance"), simpleSettings, QIcon(":/simple_settings.png"));
+    confDialog->addPage(tr("Appearance"), simpleSettings, QIcon(":/simple/simple_settings.png"));
     confDialog->exec();
     simpleSettings->writeSettings();
     confDialog->deleteLater();

@@ -25,7 +25,7 @@
 
 Logo::Logo(QWidget *parent) : Visual(parent)
 {
-    QPixmap pixmap(":/terminus.png");
+    QPixmap pixmap(":/simple/terminus.png");
     m_letters.insert('0', pixmap.copy(0, 0, 8, 14));
     m_letters.insert('1', pixmap.copy(8, 0, 8, 14));
     m_letters.insert('2', pixmap.copy(16, 0, 8, 14));
