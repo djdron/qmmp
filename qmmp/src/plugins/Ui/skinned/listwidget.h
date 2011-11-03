@@ -67,7 +67,7 @@ public:
         return m_first;
     }
 
-    int getAnchorRow()const
+    int anchorRow() const
     {
         return m_anchor_row;
     }
