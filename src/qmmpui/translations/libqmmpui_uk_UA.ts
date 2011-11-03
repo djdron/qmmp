@@ -36,7 +36,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="66"/>
         <source>Version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Версія: %1</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="67"/>
