@@ -585,7 +585,7 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 void MainWindow::showBuffering(int percent)
 {
     if(m_core->state() == Qmmp::Buffering)
-        m_statusLabel->setText(tr("Buffering: %1").arg(percent));
+        m_statusLabel->setText(tr("Buffering: %1%").arg(percent));
 }
 
 void MainWindow::showEqualizer()
