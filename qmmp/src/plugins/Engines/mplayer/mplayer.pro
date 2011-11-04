@@ -32,6 +32,6 @@ TRANSLATIONS = translations/mplayer_plugin_ru.ts \
     translations/mplayer_plugin_es.ts
 RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
-target.path = $$LIB_DIR/qmmp/Input
+target.path = $$LIB_DIR/qmmp/Engines
 INSTALLS += target
 FORMS += settingsdialog.ui
