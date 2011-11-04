@@ -24,6 +24,9 @@
 #include <QSlider>
 #include <QMouseEvent>
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class PositionSlider : public QSlider
 {
     Q_OBJECT

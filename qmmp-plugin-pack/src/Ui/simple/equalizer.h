@@ -28,6 +28,9 @@ class QVBoxLayout;
 class QCheckBox;
 class QSlider;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class Equalizer : public QDialog
 {
     Q_OBJECT

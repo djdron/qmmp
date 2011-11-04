@@ -28,7 +28,6 @@ class QAction;
 /**
    @author Ilya Kotov <forkotov02@hotmail.ru>
 */
-
 class ShortcutItem : public QTreeWidgetItem
 {
 public:

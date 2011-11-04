@@ -37,6 +37,9 @@ class VisualMenu;
 class PositionSlider;
 class KeyboardManager;
 
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class MainWindow : public QMainWindow
 {
 Q_OBJECT
@@ -75,6 +78,7 @@ private slots:
 	void showEqualizer();
 	void forward();
 	void backward();
+	void showMetaData();
 
 private:
 	void closeEvent(QCloseEvent *);

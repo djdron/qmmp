@@ -27,6 +27,9 @@
 class QAction;
 class ListWidget;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class KeyboardManager : public QObject
 {
     Q_OBJECT

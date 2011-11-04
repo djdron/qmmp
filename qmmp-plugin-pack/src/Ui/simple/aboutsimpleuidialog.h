@@ -24,6 +24,9 @@
 #include <QDialog>
 #include "ui_aboutsimpleuidialog.h"
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class AboutSimpleUiDialog : public QDialog
 {
     Q_OBJECT

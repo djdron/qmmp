@@ -25,6 +25,9 @@
 #include <QFileInfo>
 #include "ui_simplesettings.h"
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class SimpleSettings : public QWidget
 {
     Q_OBJECT

@@ -3,6 +3,9 @@
 
 #include "ui_renamedialog.h"
 
+/**
+	@author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class RenameDialog : public QDialog
 {
 	Q_OBJECT

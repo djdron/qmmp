@@ -51,8 +51,7 @@
 
 #define KEY_OFFSET 10000
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     ui.setupUi(this);
     m_balance = 0;
@@ -72,6 +71,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_core, SIGNAL(stateChanged(Qmmp::State)), SLOT(showState(Qmmp::State)));
     connect(m_core, SIGNAL(bitrateChanged(int)), SLOT(showBitrate(int)));
     connect(m_core, SIGNAL(bufferingProgress(int)), SLOT(showBuffering(int)));
+    connect(m_core, SIGNAL(metaDataChanged()), SLOT(showMetaData()));
     //keyboard manager
     m_key_manager = new KeyboardManager(this);
     //create tabs
@@ -171,7 +171,6 @@ void MainWindow::showState(Qmmp::State state)
     {
     case Qmmp::Playing:
         showBitrate(m_core->bitrate());
-        setWindowTitle(m_pl_manager->selectedPlayList()->currentItem()->text());
         break;
     case Qmmp::Paused:
         m_statusLabel->setText("<b>" + tr("Paused") + "</b>");
@@ -180,6 +179,7 @@ void MainWindow::showState(Qmmp::State state)
         m_statusLabel->setText("<b>" + tr("Stopped") + "</b>");
         m_timeLabel->clear();
         m_slider->setValue(0);
+        setWindowTitle("Qmmp");
         break;
     }
 }
@@ -602,5 +602,14 @@ void MainWindow::forward()
 void MainWindow::backward()
 {
     m_core->seek(qMax(qint64(0), m_core->elapsed() - KEY_OFFSET));
+}
+
+void MainWindow::showMetaData()
+{
+    PlayListModel *model = m_pl_manager->currentPlayList();
+    if(model->currentItem() && model->currentItem()->url() == m_core->metaData().value(Qmmp::URL))
+    {
+        setWindowTitle(model->currentItem()->text());
+    }
 }
 

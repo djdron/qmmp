@@ -28,6 +28,9 @@
 #include <QPixmap>
 #include <qmmp/visual.h>
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class Logo : public Visual
 {
     Q_OBJECT
