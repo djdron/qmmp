@@ -6,32 +6,32 @@
     <message>
         <location filename="../forms/aboutsimpleuidialog.ui" line="14"/>
         <source>About Qmmp Simpe User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP 簡易ユーザーインターフェイスについて</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="41"/>
         <source>Qmmp Simple User Interface (QSUI)</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP 簡易ユーザーインターフェイス (QSUI)</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="42"/>
         <source>Qmmp version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP のバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="44"/>
         <source>User interface version: &lt;b&gt;%1&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーインターフェイスのバージョン: &lt;b&gt;%1&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="46"/>
         <source>Simple user interface based on standard widgets set.</source>
-        <translation type="unfinished"></translation>
+        <translation>簡易ユーザーインターフェイスは標準ウィジェットをもとに作られています。</translation>
     </message>
     <message>
         <location filename="../aboutsimpleuidialog.cpp" line="49"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>指定のトラックまで移動(&amp;J)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="47"/>
@@ -185,7 +185,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
         <source>E</source>
-        <translation type="unfinished"></translation>
+        <translation>E</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="59"/>
@@ -325,7 +325,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="81"/>
         <source>&amp;Rename List</source>
-        <translation type="unfinished"></translation>
+        <translation>リストの名前を変更(&amp;R)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="83"/>
@@ -350,12 +350,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>&amp;Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>イコライザー(&amp;E)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="88"/>
         <source>Ctrl+E</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="89"/>
@@ -370,7 +370,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About Ui</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーインターフェイスについて(&amp;U)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
@@ -398,22 +398,22 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation type="unfinished"></translation>
+        <translation>追加したい URL を記入</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>追加(&amp;A)</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="58"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>キャンセル(&amp;C)</translation>
     </message>
     <message>
         <location filename="../addurldialog.cpp" line="117"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>事故</translation>
     </message>
 </context>
 <context>
@@ -421,22 +421,22 @@
     <message>
         <location filename="../equalizer.cpp" line="35"/>
         <source>Equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>イコライザー</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="43"/>
         <source>Enable equalizer</source>
-        <translation type="unfinished"></translation>
+        <translation>イコライザー稼動</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="45"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>リセット</translation>
     </message>
     <message>
         <location filename="../equalizer.cpp" line="56"/>
         <source>Preamp</source>
-        <translation type="unfinished"></translation>
+        <translation>プリアンプ</translation>
     </message>
 </context>
 <context>
@@ -444,17 +444,17 @@
     <message>
         <location filename="../mainwindow.cpp" line="114"/>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>音量</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="167"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation>一時停止しています</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="170"/>
         <source>Stopped</source>
-        <translation type="unfinished"></translation>
+        <translation>終止しました</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="193"/>
@@ -464,240 +464,240 @@
     <message>
         <location filename="../mainwindow.cpp" line="255"/>
         <source>Appearance</source>
-        <translation type="unfinished">外観</translation>
+        <translation>外観</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="295"/>
         <source>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; [%2 bit/%3/%4 Hz/%5 kbps]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="296"/>
         <source>Playing</source>
-        <translation type="unfinished"></translation>
+        <translation>演奏中</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="298"/>
         <source>Stereo</source>
-        <translation type="unfinished"></translation>
+        <translation>ステレオ</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="298"/>
         <source>Mono</source>
-        <translation type="unfinished"></translation>
+        <translation>モノラル</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="370"/>
         <source>Sort List</source>
-        <translation type="unfinished">リストを並び換え</translation>
+        <translation>リストを並び換え</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="373"/>
         <location filename="../mainwindow.cpp" line="408"/>
         <source>By Title</source>
-        <translation type="unfinished">タイトル順に</translation>
+        <translation>タイトル名順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="377"/>
         <location filename="../mainwindow.cpp" line="412"/>
         <source>By Album</source>
-        <translation type="unfinished">アルバム名順に</translation>
+        <translation>アルバム名順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="381"/>
         <location filename="../mainwindow.cpp" line="416"/>
         <source>By Artist</source>
-        <translation type="unfinished">アーティスト名順に</translation>
+        <translation>アーティスト名順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="385"/>
         <location filename="../mainwindow.cpp" line="420"/>
         <source>By Filename</source>
-        <translation type="unfinished">ファイル名順に</translation>
+        <translation>ファイル名順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="389"/>
         <location filename="../mainwindow.cpp" line="424"/>
         <source>By Path + Filename</source>
-        <translation type="unfinished">パスとファイル名の順に</translation>
+        <translation>パスとファイル名の順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="393"/>
         <location filename="../mainwindow.cpp" line="428"/>
         <source>By Date</source>
-        <translation type="unfinished">日付順に</translation>
+        <translation>日付順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="397"/>
         <location filename="../mainwindow.cpp" line="432"/>
         <source>By Track Number</source>
-        <translation type="unfinished">トラック番号順に</translation>
+        <translation>トラック番号順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="405"/>
         <source>Sort Selection</source>
-        <translation type="unfinished">選択範囲内で並び換え</translation>
+        <translation>選択範囲内で並び換え</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="439"/>
         <source>Randomize List</source>
-        <translation type="unfinished">リストを順不同に</translation>
+        <translation>リストを順不同に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="441"/>
         <source>Reverse List</source>
-        <translation type="unfinished">リストを逆順に</translation>
+        <translation>リストを逆順に</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="446"/>
         <location filename="../mainwindow.cpp" line="476"/>
         <source>Actions</source>
-        <translation type="unfinished">動作</translation>
+        <translation>動作</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="566"/>
         <source>Buffering: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>バッファーへ先読み: %1</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="14"/>
         <source>Qmmp</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="48"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル(&amp;F)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="53"/>
         <source>&amp;Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>ツール(&amp;T)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="61"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="66"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>編集(&amp;E)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="71"/>
         <source>&amp;Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>再生(&amp;P)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="76"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>表示(&amp;V)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="88"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>再生</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="111"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>進捗</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="133"/>
         <source>Previous</source>
-        <translation type="unfinished">前の曲</translation>
+        <translation>前の曲</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="143"/>
         <source>Play</source>
-        <translation type="unfinished">再生</translation>
+        <translation>再生</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="153"/>
         <source>Pause</source>
-        <translation type="unfinished">一時停止</translation>
+        <translation>一時停止</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="163"/>
         <source>Next</source>
-        <translation type="unfinished">次の曲</translation>
+        <translation>次の曲</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="173"/>
         <source>Stop</source>
-        <translation type="unfinished">終止</translation>
+        <translation>終止</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="178"/>
         <source>&amp;Add File</source>
-        <translation type="unfinished">ファイルを追加(&amp;F)</translation>
+        <translation>ファイルを追加(&amp;F)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="183"/>
         <source>&amp;Remove All</source>
-        <translation type="unfinished">すべて除去(&amp;M)</translation>
+        <translation>すべて除去(&amp;M)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="188"/>
         <source>New Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいプレイリスト</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="193"/>
         <source>Remove Playlist</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストを削除</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="198"/>
         <source>&amp;Add Directory</source>
-        <translation type="unfinished">ディレクトリを追加(&amp;D)</translation>
+        <translation>ディレクトリを追加(&amp;D)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="203"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished">終了(&amp;X)</translation>
+        <translation>終了(&amp;X)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="208"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP について</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="213"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt について</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="218"/>
         <source>&amp;Select All</source>
-        <translation type="unfinished">すべて選択(&amp;E)</translation>
+        <translation>すべて選択(&amp;E)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="223"/>
         <source>&amp;Remove Selected</source>
-        <translation type="unfinished">選択したものを除去(&amp;V)</translation>
+        <translation>選択したものを除去(&amp;V)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="228"/>
         <source>&amp;Remove Unselected</source>
-        <translation type="unfinished">選択外のものを除去(&amp;N)</translation>
+        <translation>選択外のものを除去(&amp;N)</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="233"/>
         <source>Visualization</source>
-        <translation type="unfinished">視覚効果</translation>
+        <translation>視覚効果</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="238"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <location filename="../forms/mainwindow.ui" line="243"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">プレイリスト名を変更</translation>
+        <translation>プレイリスト名を変更</translation>
     </message>
 </context>
 <context>
@@ -705,117 +705,117 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="14"/>
         <source>Popup Information Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>情報吹き出しの設定</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
-        <translation type="unfinished"></translation>
+        <translation>ひな型</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="58"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>リセット</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="65"/>
         <source>Insert</source>
-        <translation type="unfinished"></translation>
+        <translation>挿入</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation type="unfinished"></translation>
+        <translation>表紙画像を表示</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
-        <translation type="unfinished"></translation>
+        <translation>表紙画像の大きさ:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
         <source>Transparency:</source>
-        <translation type="unfinished"></translation>
+        <translation>透明度:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation type="unfinished"></translation>
+        <translation>残映時間:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ミリ秒</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="62"/>
         <source>Artist</source>
-        <translation type="unfinished"></translation>
+        <translation>アーティスト</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="63"/>
         <source>Album</source>
-        <translation type="unfinished"></translation>
+        <translation>アルバム</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="64"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="65"/>
         <source>Track number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="66"/>
         <source>Two-digit track number</source>
-        <translation type="unfinished"></translation>
+        <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="67"/>
         <source>Genre</source>
-        <translation type="unfinished"></translation>
+        <translation>ジャンル</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="68"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>コメント</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="69"/>
         <source>Composer</source>
-        <translation type="unfinished"></translation>
+        <translation>作曲者</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="70"/>
         <source>Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>演奏時間</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="71"/>
         <source>Disc number</source>
-        <translation type="unfinished"></translation>
+        <translation>ディスク番号</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="72"/>
         <source>File name</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイル名</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="73"/>
         <source>File path</source>
-        <translation type="unfinished"></translation>
+        <translation>ファイルパス</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="74"/>
         <source>Year</source>
-        <translation type="unfinished"></translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../popupsettings.cpp" line="75"/>
         <source>Condition</source>
-        <translation type="unfinished"></translation>
+        <translation>定番</translation>
     </message>
 </context>
 <context>
@@ -823,12 +823,12 @@
     <message>
         <location filename="../forms/renamedialog.ui" line="14"/>
         <source>Rename Playlist</source>
-        <translation type="unfinished">プレイリスト名を変更</translation>
+        <translation>プレイリスト名を変更</translation>
     </message>
     <message>
         <location filename="../forms/renamedialog.ui" line="24"/>
         <source>New name:</source>
-        <translation type="unfinished"></translation>
+        <translation>新しい名前:</translation>
     </message>
 </context>
 <context>
@@ -836,17 +836,17 @@
     <message>
         <location filename="../forms/shortcutdialog.ui" line="14"/>
         <source>Change Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカットを変更</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="29"/>
         <source>Press the key combination you want to assign</source>
-        <translation type="unfinished"></translation>
+        <translation>割り当てたいキーの組み合わせを押します</translation>
     </message>
     <message>
         <location filename="../forms/shortcutdialog.ui" line="43"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>消去</translation>
     </message>
 </context>
 <context>
@@ -854,7 +854,7 @@
     <message>
         <location filename="../simplefactory.cpp" line="32"/>
         <source>Simple User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>簡易ユーザーインターフェイス</translation>
     </message>
 </context>
 <context>
@@ -864,112 +864,112 @@
         <location filename="../forms/simplesettings.ui" line="30"/>
         <location filename="../simplesettings.cpp" line="126"/>
         <source>View</source>
-        <translation type="unfinished">観容</translation>
+        <translation>観容</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="36"/>
         <source>Hide on close</source>
-        <translation type="unfinished">「閉じる」で隠す</translation>
+        <translation>「閉じる」で隠す</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="43"/>
         <source>Start hidden</source>
-        <translation type="unfinished">開始時に隠す</translation>
+        <translation>開始時に隠す</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="59"/>
         <source>Fonts</source>
-        <translation type="unfinished">書体</translation>
+        <translation>書体</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="77"/>
         <source>Playlist:</source>
-        <translation type="unfinished">プレイリスト:</translation>
+        <translation>プレイリスト:</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="99"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="106"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="187"/>
         <source>Show close buttons on tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>各タブに閉じるボタンを表示</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="211"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="224"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>動作</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="229"/>
         <source>Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="237"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished"></translation>
+        <translation>ショートカットを変更...</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="116"/>
         <source>Song Display</source>
-        <translation type="unfinished">演目表示</translation>
+        <translation>演目表示</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="122"/>
         <source>Show protocol</source>
-        <translation type="unfinished">プロトコルを表示</translation>
+        <translation>プロトコルを表示</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="129"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">曲番号つきで表示</translation>
+        <translation>曲番号つきで表示</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="139"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">曲番号のみを表示</translation>
+        <translation>曲番号のみを表示</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="146"/>
         <source>Show anchor</source>
-        <translation type="unfinished">アンカーを表示</translation>
+        <translation>アンカーを表示</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="153"/>
         <source>Show popup information</source>
-        <translation type="unfinished">情報吹き出しを表示</translation>
+        <translation>情報吹き出しを表示</translation>
     </message>
     <message>
         <location filename="../forms/simplesettings.ui" line="165"/>
         <source>Edit template</source>
-        <translation type="unfinished">ひな型を編集</translation>
+        <translation>ひな型を編集</translation>
     </message>
     <message>
         <location filename="../simplesettings.cpp" line="120"/>
         <source>Playback</source>
-        <translation type="unfinished"></translation>
+        <translation>再生</translation>
     </message>
     <message>
         <location filename="../simplesettings.cpp" line="132"/>
         <source>Playlist</source>
-        <translation type="unfinished">プレイリスト</translation>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../simplesettings.cpp" line="138"/>
         <source>Misc</source>
-        <translation type="unfinished"></translation>
+        <translation>いろいろ</translation>
     </message>
 </context>
 <context>

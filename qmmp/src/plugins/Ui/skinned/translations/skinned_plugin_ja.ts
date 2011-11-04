@@ -56,7 +56,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
         <source>&amp;Play/Pause</source>
-        <translation>再生/停止(&amp;A)</translation>
+        <translation>再生/一時停止(&amp;A)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="43"/>
@@ -71,7 +71,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="44"/>
         <source>&amp;Jump to Track</source>
-        <translation type="unfinished"></translation>
+        <translation>指定のトラックへ移動(&amp;J)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="45"/>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
         <source>Show Equalizer</source>
-        <translation>イコライザを表示</translation>
+        <translation>イコライザーを表示</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="55"/>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
         <source>&amp;Add Url</source>
-        <translation>URLを追加(&amp;U)</translation>
+        <translation>URL を追加(&amp;U)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="62"/>
@@ -236,7 +236,7 @@
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
         <source>&amp;Queue Toggle</source>
-        <translation>選んだプレイリストをキューに追加/キューから撤去</translation>
+        <translation>選んだプレイリストを キューに追加/キューから撤去</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="71"/>
@@ -356,12 +356,12 @@
     <message>
         <location filename="../actionmanager.cpp" line="90"/>
         <source>&amp;About</source>
-        <translation>QMMPについて(&amp;A)</translation>
+        <translation>QMMP について(&amp;A)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="91"/>
         <source>&amp;About Qt</source>
-        <translation>Qtについて(&amp;Q)</translation>
+        <translation>Qt について(&amp;Q)</translation>
     </message>
     <message>
         <location filename="../actionmanager.cpp" line="92"/>
@@ -379,7 +379,7 @@
     <message>
         <location filename="../forms/addurldialog.ui" line="13"/>
         <source>Enter URL to add</source>
-        <translation>追加したいURLを記入</translation>
+        <translation>追加したい URL を記入</translation>
     </message>
     <message>
         <location filename="../forms/addurldialog.ui" line="51"/>
@@ -402,7 +402,7 @@
     <message>
         <location filename="../eqwidget.cpp" line="44"/>
         <source>Equalizer</source>
-        <translation>イコライザ</translation>
+        <translation>イコライザー</translation>
     </message>
     <message>
         <location filename="../eqwidget.cpp" line="157"/>
@@ -461,37 +461,37 @@
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="27"/>
         <source>Action</source>
-        <translation type="unfinished">動作</translation>
+        <translation>動作</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="32"/>
         <source>Shortcut</source>
-        <translation type="unfinished">ショートカット</translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../forms/hotkeyeditor.ui" line="40"/>
         <source>Change shortcut...</source>
-        <translation type="unfinished">変更</translation>
+        <translation>ショートカットを変更...</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="55"/>
         <source>Playback</source>
-        <translation type="unfinished">再生</translation>
+        <translation>再生</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="61"/>
         <source>View</source>
-        <translation type="unfinished">観容</translation>
+        <translation>観容</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="67"/>
         <source>Playlist</source>
-        <translation type="unfinished">プレイリスト</translation>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../hotkeyeditor.cpp" line="73"/>
         <source>Misc</source>
-        <translation type="unfinished">いろいろ</translation>
+        <translation>いろいろ</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@
     <message>
         <location filename="../display.cpp" line="80"/>
         <source>Equalizer</source>
-        <translation>イコライザ</translation>
+        <translation>イコライザー</translation>
     </message>
     <message>
         <location filename="../display.cpp" line="83"/>
@@ -592,7 +592,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="285"/>
         <source>Analyzer</source>
-        <translation>スペクトルアナライザ</translation>
+        <translation>スペクトルアナライザー</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="286"/>
@@ -607,7 +607,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="294"/>
         <source>Analyzer Mode</source>
-        <translation>アナライザモード</translation>
+        <translation>アナライザーモード</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="297"/>
@@ -622,6 +622,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="299"/>
         <source>Vertical Lines</source>
+        <translatorcomment>Winamp の表示どおりに</translatorcomment>
         <translation>線</translation>
     </message>
     <message>
@@ -667,7 +668,7 @@
     <message>
         <location filename="../mainvisual.cpp" line="331"/>
         <source>Analyzer Falloff</source>
-        <translation>アナライザ減衰速度</translation>
+        <translation>アナライザー減衰速度</translation>
     </message>
     <message>
         <location filename="../mainvisual.cpp" line="334"/>
@@ -725,12 +726,12 @@
     <message>
         <location filename="../mainwindow.cpp" line="316"/>
         <source>Appearance</source>
-        <translation type="unfinished">外観</translation>
+        <translation>外観</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="317"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">ショートカット</translation>
+        <translation>ショートカット</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="379"/>
@@ -833,7 +834,7 @@
     <message>
         <location filename="../forms/playlistbrowser.ui" line="14"/>
         <source>Playlist Browser</source>
-        <translation>プレイリストブラウザ</translation>
+        <translation>プレイリストブラウザー</translation>
     </message>
     <message>
         <location filename="../forms/playlistbrowser.ui" line="45"/>
@@ -901,7 +902,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="29"/>
         <source>Template</source>
-        <translation>雛形</translation>
+        <translation>ひな形</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="58"/>
@@ -916,12 +917,12 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="75"/>
         <source>Show cover</source>
-        <translation>表紙を表示</translation>
+        <translation>表紙画像を表示</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="89"/>
         <source>Cover size:</source>
-        <translation>表紙の大きさ:</translation>
+        <translation>表紙画像の大きさ:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="115"/>
@@ -931,7 +932,7 @@
     <message>
         <location filename="../forms/popupsettings.ui" line="145"/>
         <source>Delay:</source>
-        <translation>待ち時間:</translation>
+        <translation>残映時間:</translation>
     </message>
     <message>
         <location filename="../forms/popupsettings.ui" line="178"/>
@@ -1014,7 +1015,7 @@
     <message>
         <location filename="../forms/preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation>プリセットエディタ</translation>
+        <translation>プリセットエディター</translation>
     </message>
     <message>
         <location filename="../forms/preseteditor.ui" line="36"/>
@@ -1060,35 +1061,38 @@
     <message>
         <location filename="../skinnedfactory.cpp" line="31"/>
         <source>Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>スキンつきユーザーインターフェイス</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="44"/>
         <source>About Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP スキンつきユーザーインターフェイスについて</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="45"/>
         <source>Qmmp Skinned User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP スキンつきユーザーインターフェイス</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="46"/>
         <source>Simple user interface with Winamp-2.x/XMMS skins support</source>
-        <translation type="unfinished"></translation>
+        <translation>WinAmp-2.x や XMMS1 用のスキンを介した簡素なユーザーインターフェイス</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="47"/>
         <source>Written by:
 Vladimir Kuznetsov &lt;vovanec@gmail.com&gt;
 Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>制作者:
+Владимир Кузнецов (Vladimir Kuznetsov) &lt;vovanec@gmail.com&gt;
+Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
         <location filename="../skinnedfactory.cpp" line="50"/>
         <source>Artwork:
 Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>美術:
+Андрей Андреев (Andrey Adreev) &lt;andreev00@gmail.com&gt;</translation>
     </message>
 </context>
 <context>
@@ -1096,167 +1100,167 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="24"/>
         <source>Skins</source>
-        <translation type="unfinished">スキン</translation>
+        <translation>スキン</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="55"/>
         <source>Add...</source>
-        <translation type="unfinished">追加...</translation>
+        <translation>追加...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="68"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>回復</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="89"/>
         <location filename="../forms/skinnedsettings.ui" line="95"/>
         <source>View</source>
-        <translation type="unfinished">観容</translation>
+        <translation>観容</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="101"/>
         <source>Hide on close</source>
-        <translation type="unfinished">「閉じる」で隠す</translation>
+        <translation>「閉じる」で隠す</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="108"/>
         <source>Start hidden</source>
-        <translation type="unfinished">開始時に隠す</translation>
+        <translation>開始時に隠す</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="115"/>
         <source>Use skin cursors</source>
-        <translation type="unfinished">スキンカーソルを使用</translation>
+        <translation>スキンカーソルを使用</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="131"/>
         <source>Fonts</source>
-        <translation type="unfinished">書体</translation>
+        <translation>書体</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="149"/>
         <source>Player:</source>
-        <translation type="unfinished">プレイヤ:</translation>
+        <translation>プレイヤー:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="171"/>
         <location filename="../forms/skinnedsettings.ui" line="219"/>
         <source>???</source>
-        <translation type="unfinished">???</translation>
+        <translation>???</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="178"/>
         <location filename="../forms/skinnedsettings.ui" line="226"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="197"/>
         <source>Playlist:</source>
-        <translation type="unfinished">プレイリスト:</translation>
+        <translation>プレイリスト:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="233"/>
         <source>Use bitmap font if available</source>
-        <translation type="unfinished">あればビットマップフォントを使用</translation>
+        <translation>あればビットマップフォントを使用</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="243"/>
         <source>Transparency</source>
-        <translation type="unfinished">透過効果</translation>
+        <translation>透過効果</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="249"/>
         <source>Main window</source>
-        <translation type="unfinished">メインウィンドウ</translation>
+        <translation>メインウィンドウ</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="272"/>
         <location filename="../forms/skinnedsettings.ui" line="296"/>
         <location filename="../forms/skinnedsettings.ui" line="320"/>
         <source>0</source>
-        <translation type="unfinished">0</translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="279"/>
         <source>Equalizer</source>
-        <translation type="unfinished">イコライザ</translation>
+        <translation>イコライザー</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="303"/>
         <source>Playlist</source>
-        <translation type="unfinished">プレイリスト</translation>
+        <translation>プレイリスト</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="344"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished">各種設定</translation>
+        <translation>各種設定</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="350"/>
         <source>Song Display</source>
-        <translation type="unfinished">演目表示</translation>
+        <translation>演目表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="356"/>
         <source>Show protocol</source>
-        <translation type="unfinished">プロトコルを表示</translation>
+        <translation>プロトコルを表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="363"/>
         <source>Show song numbers</source>
-        <translation type="unfinished">曲番号つきで表示</translation>
+        <translation>曲番号つきで表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="387"/>
         <source>Show playlists</source>
-        <translation type="unfinished">プレイリストを表示</translation>
+        <translation>プレイリストを表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="394"/>
         <source>Show popup information</source>
-        <translation type="unfinished">情報吹き出しを表示</translation>
+        <translation>情報吹き出しを表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="406"/>
         <source>Edit template</source>
-        <translation type="unfinished">ひな型を編集</translation>
+        <translation>ひな型を編集</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="430"/>
         <source>Playlist separator:</source>
-        <translation type="unfinished"></translation>
+        <translation>プレイリストの区切り:</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="380"/>
         <source>Show anchor</source>
-        <translation type="unfinished">アンカーを表示</translation>
+        <translation>アンカーを表示</translation>
     </message>
     <message>
         <location filename="../forms/skinnedsettings.ui" line="373"/>
         <source>Align song numbers</source>
-        <translation type="unfinished">曲番号のみを表示</translation>
+        <translation>曲番号のみを表示</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="101"/>
         <source>Select Skin Files</source>
-        <translation type="unfinished">スキンファイルを選択</translation>
+        <translation>スキンファイルを選択</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="102"/>
         <source>Skin files</source>
-        <translation type="unfinished">スキンファイル</translation>
+        <translation>スキンファイル</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="150"/>
         <source>Unarchived skin</source>
-        <translation type="unfinished">非書庫化スキン</translation>
+        <translation>非書庫化スキン</translation>
     </message>
     <message>
         <location filename="../skinnedsettings.cpp" line="181"/>
         <source>Archived skin</source>
-        <translation type="unfinished">書庫化スキン</translation>
+        <translation>書庫化スキン</translation>
     </message>
 </context>
 <context>
@@ -1269,12 +1273,12 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
     <message>
         <location filename="../textscroller.cpp" line="53"/>
         <source>Transparent Background</source>
-        <translation type="unfinished"></translation>
+        <translation>背景を透過</translation>
     </message>
     <message>
         <location filename="../textscroller.cpp" line="122"/>
         <source>Buffering: %1%</source>
-        <translation>バッファへ先読み: %1%</translation>
+        <translation>バッファーへ先読み: %1%</translation>
     </message>
 </context>
 <context>

@@ -39,7 +39,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation>バッファの大きさ:</translation>
+        <translation>バッファーの大きさ:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>

@@ -39,7 +39,7 @@
     <message>
         <location filename="../halplugin.cpp" line="160"/>
         <source>Add CD &quot;%1&quot;</source>
-        <translation>Cd &quot;%1&quot; を追加</translation>
+        <translation>CD &quot;%1&quot; を追加</translation>
     </message>
     <message>
         <location filename="../halplugin.cpp" line="166"/>

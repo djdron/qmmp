@@ -36,7 +36,7 @@
     <message>
         <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Quit application</source>
-        <translation type="unfinished"></translation>
+        <translation>アプリケーションを終了</translation>
     </message>
     <message>
         <location filename="../builtincommandlineoption.cpp" line="66"/>
@@ -109,12 +109,12 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="271"/>
         <source>QMMP version:</source>
-        <translation>QMMP 版番号:</translation>
+        <translation>QMMP のバージョン:</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="272"/>
         <source>Qt version:</source>
-        <translation>Qt 版番号:</translation>
+        <translation>Qt のバージョン:</translation>
     </message>
 </context>
 </TS>

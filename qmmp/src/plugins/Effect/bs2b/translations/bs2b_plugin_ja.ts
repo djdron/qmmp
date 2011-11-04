@@ -6,12 +6,12 @@
     <message>
         <location filename="../effectbs2bfactory.cpp" line="31"/>
         <source>BS2B Plugin</source>
-        <translation>BS2Bプラグイン</translation>
+        <translation>BS2B プラグイン</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="51"/>
         <source>About BS2B Effect Plugin</source>
-        <translation>BS2B効果プラグインについて</translation>
+        <translation>BS2B 効果プラグインについて</translation>
     </message>
     <message>
         <location filename="../effectbs2bfactory.cpp" line="52"/>

@@ -34,7 +34,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Buffer size:</source>
-        <translation>バッファ容量:</translation>
+        <translation>バッファー容量:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="64"/>

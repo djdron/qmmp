@@ -6,33 +6,33 @@
     <message>
         <location filename="../decodermpg123factory.cpp" line="74"/>
         <source>MPG123 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MPG123 プラグイン</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="77"/>
         <source>MPEG Files</source>
-        <translation type="unfinished">MPEG ファイル</translation>
+        <translation>MPEG ファイル</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="209"/>
         <source>About MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MPG123 音響プラグインについて</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="210"/>
         <source>Qmmp MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>QMMP MPG123 音響プラグイン</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="211"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
-        <translation type="unfinished"></translation>
+        <translation>このプラグインにより libmpg123 ライブラリを利用して MPEG v1/2 レイヤー 1/2/3 がサポートできます</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="213"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>制作: Илья Котов (Ilya Kotov) &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>

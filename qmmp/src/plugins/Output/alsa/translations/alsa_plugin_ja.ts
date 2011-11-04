@@ -69,7 +69,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="121"/>
         <source>Buffer time (ms):</source>
-        <translation>バッファ時間 (ミリ秒):</translation>
+        <translation>バッファー時間 (ミリ秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="157"/>

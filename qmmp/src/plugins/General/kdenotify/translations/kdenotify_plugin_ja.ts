@@ -14,12 +14,12 @@
     <message>
         <location filename="../kdenotifyfactory.cpp" line="30"/>
         <source>KDE 4 notification plugin</source>
-        <translation>KDE4 通知プラグイン</translation>
+        <translation>KDE 4 通知プラグイン</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="50"/>
         <source>About KDE Notification Plugin</source>
-        <translation>KDE4 通知プラグインについて</translation>
+        <translation>KDE 通知プラグインについて</translation>
     </message>
     <message>
         <location filename="../kdenotifyfactory.cpp" line="51"/>
@@ -33,7 +33,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
         <source>KDE 4 Notification Plugin Settings</source>
-        <translation>KDE4 通知プラグイン設定</translation>
+        <translation>KDE 4 通知プラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="39"/>
@@ -43,12 +43,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="45"/>
         <source>Notification delay [s]:</source>
-        <translation>通知出現時間 (秒):</translation>
+        <translation>通知窓残映時間 (秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>Update visible notification instead create new</source>
-        <translation>新たな通知を示すとき表示窓の追加よりも現存する通知の更新を優先</translation>
+        <translation>新たな通知を示すとき表示窓の追加よりも先に出した通知の更新を優先</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="85"/>
@@ -58,7 +58,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="91"/>
         <source>Show covers</source>
-        <translation>カバー絵を表示</translation>
+        <translation>表紙画像を表示</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="100"/>
@@ -68,7 +68,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="75"/>
         <source>Notification Template</source>
-        <translation>通知の雛形</translation>
+        <translation>通知のひな形</translation>
     </message>
 </context>
 </TS>

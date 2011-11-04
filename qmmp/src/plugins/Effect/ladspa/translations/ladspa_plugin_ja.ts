@@ -79,7 +79,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="126"/>
         <source>This LADSPA plugin has no user controls</source>
-        <translation>この LADSPA プラグインにユーザが制御できる部分はありません</translation>
+        <translation>この LADSPA プラグインにユーザーが制御できる部分はありません</translation>
     </message>
 </context>
 </TS>

@@ -13,6 +13,9 @@
 スペイン語:
     Félix Medrano <xukosky@yahoo.es>
 
+スロバキア語:
+    Ján Ďanovský <dagsoftware@yahoo.com>
+
 チェコ語:
     Karel Volný <kvolny@redhat.com>
 

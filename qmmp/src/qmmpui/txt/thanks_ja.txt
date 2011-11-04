@@ -11,6 +11,7 @@
     Вадим Калинников (Vadim Kalinnikov) <moose@ylsoftware.com> - ホスト提供
     Erik Ölsar <erlk.ozlr@gmail.com> - スキン化カーソル, UI改良
     Funda Wang <fundawang@gmail.com> - cmake files 改修
+    Makis Kalofolias <makskafl@gmail.com> - EAC3, DTS, Dolby TrueHD のサポート
     Михаил Желудков (Michail Zheludkov) <zheludkovm@mail.ru> - ffmpeg プラグイン改修
     Michał Grosicki <grosik88@o2.pl> - alsa プラグイン改修
     Panagiotis Papadopoulos <pano_90@gmx.net> - UI改修, バグ報告

@@ -129,12 +129,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="51"/>
         <source>16 bit</source>
-        <translation>16 ビット</translation>
+        <translation>16ビット</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="58"/>
         <source>8 bit</source>
-        <translation>8 ビット</translation>
+        <translation>8ビット</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="74"/>
@@ -229,7 +229,7 @@
         <location filename="../settingsdialog.ui" line="260"/>
         <location filename="../settingsdialog.ui" line="519"/>
         <source>Delay (ms)</source>
-        <translation>待ち時間 (ミリ秒)</translation>
+        <translation>残響時間 (ミリ秒)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="292"/>
@@ -326,13 +326,13 @@ too high may cause clipping!</source>
     <message>
         <location filename="../settingsdialog.ui" line="733"/>
         <source>Loop</source>
-        <translatorcomment>もう [n] 回繰り返す</translatorcomment>
-        <translation>もう</translation>
+        <translatorcomment>繰り返しを [n] 回行なう</translatorcomment>
+        <translation>繰り返しを</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="750"/>
         <source>time(s)</source>
-        <translation>回繰り返す</translation>
+        <translation>回行なう</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="770"/>
