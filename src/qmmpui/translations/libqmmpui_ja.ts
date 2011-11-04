@@ -6,12 +6,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="14"/>
         <source>About Qmmp</source>
-        <translation>QMMPについて</translation>
+        <translation>QMMP について</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="40"/>
         <source>About</source>
-        <translation>QMMPについて</translation>
+        <translation>QMMP について</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="54"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../aboutdialog.cpp" line="65"/>
         <source>Qt-based Multimedia Player (Qmmp)</source>
-        <translation>Qt製マルティミディアプレイヤ QMMP</translation>
+        <translation>Qt 製マルティミディアプレイヤー QMMP</translation>
     </message>
     <message>
         <location filename="../aboutdialog.cpp" line="66"/>
@@ -79,7 +79,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="14"/>
         <source>Qmmp Settings</source>
-        <translation>QMMP設定</translation>
+        <translation>QMMP 設定</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="58"/>
@@ -135,12 +135,12 @@
     <message>
         <location filename="../forms/configdialog.ui" line="171"/>
         <source>Convert underscores to blanks</source>
-        <translation>下線記号_を空白文字で表示</translation>
+        <translation>下線記号 _ を空白文字で表示</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="178"/>
         <source>Convert %20 to blanks</source>
-        <translation>%20を空白文字で表示</translation>
+        <translation>%20 を空白文字で表示</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="226"/>
@@ -209,7 +209,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="423"/>
         <source>User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>ユーザーインターフェイス</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="471"/>
@@ -239,7 +239,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="523"/>
         <source>Proxy user name:</source>
-        <translation>代理者ユーザ名:</translation>
+        <translation>代理者ユーザー名:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="536"/>
@@ -285,7 +285,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="761"/>
         <source>Buffer size:</source>
-        <translation>バッファサイズ:</translation>
+        <translation>バッファーサイズ:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="774"/>
@@ -326,7 +326,7 @@
     <message>
         <location filename="../configdialog.cpp" line="172"/>
         <source>Decoders</source>
-        <translation>デコーダ</translation>
+        <translation>デコーダー</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="182"/>
@@ -495,50 +495,50 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="14"/>
         <source>Jump To Track</source>
-        <translation type="unfinished">トラックを指定して即刻再生</translation>
+        <translation>トラックを指定して即刻再生</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="37"/>
         <source>Filter</source>
-        <translation type="unfinished">フィルタ</translation>
+        <translation>フィルター</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="70"/>
         <location filename="../jumptotrackdialog.cpp" line="92"/>
         <location filename="../jumptotrackdialog.cpp" line="145"/>
         <source>Queue</source>
-        <translation type="unfinished">キューに入れる</translation>
+        <translation>キューに入れる</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="83"/>
         <source>Refresh</source>
-        <translation type="unfinished">再実行</translation>
+        <translation>再実行</translation>
     </message>
     <message>
         <location filename="../forms/jumptotrackdialog.ui" line="96"/>
         <source>Jump To</source>
-        <translation type="unfinished">この曲に跳ぶ</translation>
+        <translation>この曲に跳ぶ</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="59"/>
         <source>Q</source>
-        <translation type="unfinished">Q</translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="60"/>
         <source>J</source>
-        <translation type="unfinished">J</translation>
+        <translation>J</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="61"/>
         <source>F5</source>
-        <translation type="unfinished">F5</translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../jumptotrackdialog.cpp" line="90"/>
         <location filename="../jumptotrackdialog.cpp" line="143"/>
         <source>Unqueue</source>
-        <translation type="unfinished">キューから除く</translation>
+        <translation>キューから除く</translation>
     </message>
 </context>
 <context>
@@ -555,7 +555,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qtfiledialog.cpp" line="34"/>
         <source>Qt File Dialog</source>
-        <translation>Qtファイルダイアログ</translation>
+        <translation>Qt ファイルダイアログ</translation>
     </message>
 </context>
 <context>
@@ -563,7 +563,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/tageditor.ui" line="14"/>
         <source>Tag Editor</source>
-        <translation>タグエディタ</translation>
+        <translation>タグエディター</translation>
     </message>
     <message>
         <location filename="../forms/tageditor.ui" line="38"/>
@@ -641,7 +641,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../forms/templateeditor.ui" line="14"/>
         <source>Template Editor</source>
-        <translation>テンプレートエディタ</translation>
+        <translation>テンプレートエディター</translation>
     </message>
     <message>
         <location filename="../forms/templateeditor.ui" line="39"/>
@@ -729,33 +729,33 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../uihelper.cpp" line="135"/>
         <source>All Supported Bitstreams</source>
-        <translation type="unfinished">サポート対象のすべてのデジタル録音物</translation>
+        <translation>サポート対象のすべてのデジタル録音物</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="140"/>
         <source>Select one or more files to open</source>
-        <translation type="unfinished">開きたいファイルを選ぶ (複数可)</translation>
+        <translation>開きたいファイルを選ぶ (複数可)</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="147"/>
         <source>Choose a directory</source>
-        <translation type="unfinished">ディレクトリを選択</translation>
+        <translation>ディレクトリを選択</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="159"/>
         <location filename="../uihelper.cpp" line="185"/>
         <source>Playlist Files</source>
-        <translation type="unfinished">プレイリストファイル</translation>
+        <translation>プレイリストファイル</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="161"/>
         <source>Open Playlist</source>
-        <translation type="unfinished">プレイリストを開く</translation>
+        <translation>プレイリストを開く</translation>
     </message>
     <message>
         <location filename="../uihelper.cpp" line="186"/>
         <source>Save Playlist</source>
-        <translation type="unfinished">プレイリストを保存</translation>
+        <translation>プレイリストを保存</translation>
     </message>
 </context>
 </TS>

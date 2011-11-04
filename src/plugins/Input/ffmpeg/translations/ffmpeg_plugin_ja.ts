@@ -92,22 +92,22 @@
     <message>
         <location filename="../settingsdialog.ui" line="61"/>
         <source>Windows Media Audio</source>
-        <translation>Windows Media Audio</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
         <source>Monkey&apos;s Audio</source>
-        <translation>Monkey&apos; Audio</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
         <source>True Audio</source>
-        <translation>True Audio</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="82"/>
         <source>ADTS AAC</source>
-        <translation>ADTS AAC</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="89"/>

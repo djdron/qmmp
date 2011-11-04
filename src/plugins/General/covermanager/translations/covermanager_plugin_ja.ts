@@ -6,7 +6,7 @@
     <message>
         <location filename="../covermanager.cpp" line="35"/>
         <source>Show Cover</source>
-        <translation>カバー絵を表示</translation>
+        <translation>表紙画像を表示</translation>
     </message>
     <message>
         <location filename="../covermanager.cpp" line="36"/>
@@ -19,17 +19,17 @@
     <message>
         <location filename="../covermanagerfactory.cpp" line="29"/>
         <source>Cover Manager Plugin</source>
-        <translation>カバーマネージャプラグイン</translation>
+        <translation>カバーマネージャープラグイン</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="49"/>
         <source>About Cover Manager Plugin</source>
-        <translation>カバーマネージャプラグインについて</translation>
+        <translation>カバーマネージャープラグインについて</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="50"/>
         <source>Qmmp Cover Manager Plugin</source>
-        <translation>QMMP カバーマネージャプラグイン</translation>
+        <translation>QMMP カバーマネージャープラグイン</translation>
     </message>
     <message>
         <location filename="../covermanagerfactory.cpp" line="51"/>
@@ -92,7 +92,7 @@
     <message>
         <location filename="../coverwidget.cpp" line="90"/>
         <source>Save Cover As</source>
-        <translation>名前を付けてカバー絵を保存</translation>
+        <translation>名前を付けて表紙画像を保存</translation>
     </message>
     <message>
         <location filename="../coverwidget.cpp" line="92"/>

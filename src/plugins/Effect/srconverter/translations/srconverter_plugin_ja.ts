@@ -11,12 +11,12 @@
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="51"/>
         <source>About Sample Rate Converter Plugin</source>
-        <translation>サンプルレートコンバータプラグインについて</translation>
+        <translation>サンプルレートコンバータープラグインについて</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="52"/>
         <source>Qmmp Sample Rate Converter Plugin</source>
-        <translation>QMMP サンプルレートコンバータプラグイン</translation>
+        <translation>QMMP サンプルレートコンバータープラグイン</translation>
     </message>
     <message>
         <location filename="../effectsrconverterfactory.cpp" line="53"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Sample Rate Converter Plugin Settings</source>
-        <translation>サンプルレートコンバータの設定</translation>
+        <translation>サンプルレートコンバーターの設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="19"/>

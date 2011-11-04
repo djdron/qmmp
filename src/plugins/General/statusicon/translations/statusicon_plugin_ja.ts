@@ -17,7 +17,7 @@
         <location filename="../settingsdialog.ui" line="38"/>
         <location filename="../settingsdialog.ui" line="105"/>
         <source>Delay, ms:</source>
-        <translation>表示時間 (ミリ秒):</translation>
+        <translation>残映時間 (ミリ秒):</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="79"/>
@@ -47,7 +47,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="174"/>
         <source>Cover size:</source>
-        <translation>カバー絵の大きさ:</translation>
+        <translation>表紙画像の大きさ:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="214"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../settingsdialog.cpp" line="70"/>
         <source>Tooltip Template</source>
-        <translation>ツールティップの雛形</translation>
+        <translation>ツールティップのひな形</translation>
     </message>
 </context>
 <context>
@@ -146,7 +146,7 @@
     <message>
         <location filename="../statusiconpopupwidget.cpp" line="135"/>
         <source>Stopped</source>
-        <translation>停止中</translation>
+        <translation>終止しました</translation>
     </message>
 </context>
 </TS>

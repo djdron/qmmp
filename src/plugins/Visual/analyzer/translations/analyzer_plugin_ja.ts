@@ -6,7 +6,7 @@
     <message>
         <location filename="../analyzer.cpp" line="51"/>
         <source>Qmmp Analyzer</source>
-        <translation>QMMP アナライザ</translation>
+        <translation>QMMP アナライザー</translation>
     </message>
 </context>
 <context>
@@ -14,7 +14,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="13"/>
         <source>Analyzer Plugin Settings</source>
-        <translation>アナライザプラグイン設定</translation>
+        <translation>アナライザープラグイン設定</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="25"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="41"/>
         <source>Analyzer falloff:</source>
-        <translation>アナライザ減衰速度:</translation>
+        <translation>アナライザー減衰速度:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="55"/>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="203"/>
         <source>Analyzer #1:</source>
-        <translation>第一アナライザ:</translation>
+        <translation>第一アナライザー:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="229"/>
@@ -114,12 +114,12 @@
     <message>
         <location filename="../settingsdialog.ui" line="255"/>
         <source>Analyzer #2:</source>
-        <translation>第二アナライザ:</translation>
+        <translation>第二アナライザー:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="294"/>
         <source>Analyzer #3:</source>
-        <translation>第三アナライザ:</translation>
+        <translation>第三アナライザー:</translation>
     </message>
 </context>
 <context>
@@ -127,17 +127,17 @@
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="30"/>
         <source>Analyzer Plugin</source>
-        <translation>アナライザプラグイン</translation>
+        <translation>アナライザープラグイン</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="49"/>
         <source>About Analyzer Visual Plugin</source>
-        <translation>アナライザ視覚効果プラグインについて</translation>
+        <translation>アナライザー視覚効果プラグインについて</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="50"/>
         <source>Qmmp Analyzer Visual Plugin</source>
-        <translation>QMMP アナライザ視覚効果プラグイン</translation>
+        <translation>QMMP アナライザー視覚効果プラグイン</translation>
     </message>
     <message>
         <location filename="../visualanalyzerfactory.cpp" line="51"/>

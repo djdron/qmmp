@@ -54,7 +54,7 @@
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="77"/>
         <source>Demuxer</source>
-        <translation>デマルチプレクサ</translation>
+        <translation>デマルチプレクサー</translation>
     </message>
     <message>
         <location filename="../mplayermetadatamodel.cpp" line="80"/>

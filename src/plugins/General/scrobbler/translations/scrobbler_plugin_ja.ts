@@ -49,7 +49,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="70"/>
         <source>User name:</source>
-        <translation>ユーザ名:</translation>
+        <translation>ユーザー名:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="80"/>

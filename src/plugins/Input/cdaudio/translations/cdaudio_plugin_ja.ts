@@ -44,7 +44,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="29"/>
         <source>Override device:</source>
-        <translation>オーバライドするデバイス:</translation>
+        <translation>オーバーライドするデバイス:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="42"/>
@@ -69,7 +69,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="88"/>
         <source>Server:</source>
-        <translation>サーバ:</translation>
+        <translation>サーバー:</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="95"/>
