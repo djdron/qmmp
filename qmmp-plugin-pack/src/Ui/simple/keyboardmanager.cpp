@@ -18,9 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QKeySequence>
 #include <QAction>
-#include <QSignalMapper>
+#include <QKeySequence>
 #include <qmmpui/playlistmanager.h>
 #include <qmmpui/playlistmodel.h>
 #include <qmmpui/mediaplayer.h>
@@ -33,40 +32,19 @@ KeyboardManager::KeyboardManager(QObject *parent) :
 {
     m_listWidget = 0;
 
-    QAction *action = new QAction(this);
-    action->setShortcut(QKeySequence(Qt::Key_Up));
-    connect(action, SIGNAL(triggered()), SLOT(processUp()));
-    m_actions << action;
+    addAction(Qt::Key_Up, SLOT(processUp()));
+    addAction(Qt::Key_Up + Qt::ShiftModifier, SLOT(processUp()));
+    addAction(Qt::Key_Up + Qt::AltModifier, SLOT(processUp()));
 
-    action = new QAction(this);
-    action->setShortcut(QKeySequence(Qt::Key_Up + Qt::ShiftModifier));
-    connect(action, SIGNAL(triggered()), SLOT(processUp()));
-    m_actions << action;
+    addAction(Qt::Key_Down, SLOT(processDown()));
+    addAction(Qt::Key_Down + Qt::ShiftModifier, SLOT(processDown()));
+    addAction(Qt::Key_Down + Qt::AltModifier, SLOT(processDown()));
 
-    action = new QAction(this);
-    action->setShortcut(QKeySequence(Qt::Key_Up + Qt::AltModifier));
-    connect(action, SIGNAL(triggered()), SLOT(processUp()));
-    m_actions << action;
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence(Qt::Key_Down));
-    connect(action, SIGNAL(triggered()), SLOT(processDown()));
-    m_actions << action;
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence(Qt::Key_Down + Qt::ShiftModifier));
-    connect(action, SIGNAL(triggered()), SLOT(processDown()));
-    m_actions << action;
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence(Qt::Key_Down + Qt::AltModifier));
-    connect(action, SIGNAL(triggered()), SLOT(processDown()));
-    m_actions << action;
-
-    action = new QAction(this);
-    action->setShortcut(QKeySequence(Qt::Key_Return));
-    connect(action, SIGNAL(triggered()), SLOT(processEnter()));
-    m_actions << action;
+    addAction(Qt::Key_Return, SLOT(processEnter()));
+    addAction(Qt::Key_PageUp, SLOT(processPgUp()));
+    addAction(Qt::Key_PageDown, SLOT(processPgDown()));
+    addAction(Qt::Key_Home, SLOT(processHome()));
+    addAction(Qt::Key_End, SLOT(processEnd()));
 }
 
 QList<QAction *> KeyboardManager::actions()
@@ -217,4 +195,49 @@ void KeyboardManager::processEnter()
     PlayListManager::instance()->activatePlayList(m_listWidget->model());
     m_listWidget->model()->setCurrent (rows.first());
     MediaPlayer::instance()->play();
+}
+
+void KeyboardManager::processPgUp()
+{
+    if(!m_listWidget)
+        return;
+
+    int offset = qMax(m_listWidget->firstVisibleRow() - m_listWidget->visibleRows(), 0);
+    m_listWidget->scroll (offset);
+}
+
+void KeyboardManager::processPgDown()
+{
+    if(!m_listWidget)
+        return;
+
+    int offset = qMin(m_listWidget->firstVisibleRow() + m_listWidget->visibleRows(),
+                      m_listWidget->model()->count() - 1);
+    m_listWidget->scroll (offset);
+}
+
+void KeyboardManager::processHome()
+{
+    if(!m_listWidget)
+        return;
+    m_listWidget->scroll (0);
+}
+
+void KeyboardManager::processEnd()
+{
+    if(!m_listWidget)
+        return;
+    m_listWidget->scroll (0);
+
+    int scroll_to = m_listWidget->model()->count() - m_listWidget->visibleRows();
+    if(scroll_to >= 0)
+        m_listWidget->scroll(scroll_to);
+}
+
+void KeyboardManager::addAction(int keys, const char *method)
+{
+    QAction *action = new QAction(this);
+    action->setShortcut(QKeySequence(keys));
+    connect(action, SIGNAL(triggered()), method);
+    m_actions << action;
 }

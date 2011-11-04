@@ -40,10 +40,15 @@ private slots:
     void processUp();
     void processDown();
     void processEnter();
+    void processPgUp();
+    void processPgDown();
+    void processHome();
+    void processEnd();
 
 private:
     QList<QAction*> m_actions;
     ListWidget *m_listWidget;
+    void addAction(int keys, const char * method);
 
 };
 
