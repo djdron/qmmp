@@ -24,6 +24,7 @@
 #include <QMenu>
 #include <QMouseEvent>
 #include <QSettings>
+#include <QApplication>
 #include <qmmp/qmmp.h>
 #include <qmmp/soundcore.h>
 #include <qmmpui/metadataformatter.h>
@@ -104,7 +105,7 @@ void TextScroller::updateSkin()
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     m_bitmap = settings.value("Skinned/bitmap_font", false).toBool();
     m_ratio = m_skin->ratio();
-    QString fontname = settings.value("Skinned/mw_font").toString();
+    QString fontname = settings.value("Skinned/mw_font", QApplication::font().toString()).toString();
     m_font.fromString(fontname);
     if (m_metrics)
         delete m_metrics;
