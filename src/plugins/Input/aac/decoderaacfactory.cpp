@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2011 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -34,8 +34,29 @@ bool DecoderAACFactory::supports(const QString &source) const
     return (source.right(4).toLower() == ".aac");
 }
 
-bool DecoderAACFactory::canDecode(QIODevice *) const
+bool DecoderAACFactory::canDecode(QIODevice *input) const
 {
+    uchar buf[4096];
+    qint64 buf_at = input->peek((char *) buf, 4096);
+
+    int tag_size = 0;
+    if (!memcmp(buf, "ID3", 3)) //skip ID3 tag
+    {
+        /* high bit is not used */
+        tag_size = (buf[6] << 21) | (buf[7] << 14) |
+                   (buf[8] <<  7) | (buf[9] <<  0);
+
+        tag_size += 10;
+        if (buf_at - tag_size < 4)
+            return false;
+
+        memmove (buf, buf + tag_size, buf_at - tag_size);
+    }
+    //try to determnate header type;
+    if (buf[0] == 0xff && ((buf[1] & 0xf6) == 0xf0)) //ADTS header
+        return true;
+    else if (!memcmp(buf, "ADIF", 4)) //ADIF header
+        return true;
     return false;
 }
 
