@@ -807,7 +807,7 @@
         <translation>Перевернути</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="542"/>
+        <location filename="../playlist.cpp" line="541"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Новий список</translation>
     </message>
@@ -1265,17 +1265,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</source>
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="52"/>
+        <location filename="../textscroller.cpp" line="53"/>
         <source>Autoscroll Songname</source>
         <translation>Автопрокрутка назви пісні</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="53"/>
+        <location filename="../textscroller.cpp" line="54"/>
         <source>Transparent Background</source>
         <translation>Прозоре тло</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="122"/>
+        <location filename="../textscroller.cpp" line="123"/>
         <source>Buffering: %1%</source>
         <translation>Буферизація: %1%</translation>
     </message>

@@ -155,6 +155,16 @@ public:
      */
     void setBufferSize(int msec);
     /*!
+     * Enables/Desables file type determination by content
+     * @param enabled State of the content based type determination
+     * (\b true - enabled, \b false - disabled)
+     */
+    void setDetermineFileTypeByContent(bool enabled);
+    /*!
+     * Return \b true if content based file type determination is enabled. Otherwise returns \b false.
+     */
+    bool determineFileTypeByContent() const;
+    /*!
      * Returns a pointer to the QmmpSettings instance.
      */
     static QmmpSettings* instance();
@@ -206,6 +216,8 @@ private:
     EqSettings m_eq_settings;
     //buffer size
     int m_buffer_size;
+    //file type determination
+    bool m_determine_by_content;
 
     static QmmpSettings* m_instance;
 

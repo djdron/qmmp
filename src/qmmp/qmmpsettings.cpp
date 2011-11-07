@@ -53,6 +53,8 @@ QmmpSettings::QmmpSettings(QObject *parent) : QObject(parent)
     m_proxy_url = settings.value("Proxy/url").toUrl();
     //buffer
     m_buffer_size = settings.value("Output/buffer_size", 500).toInt();
+    //file type determination
+    m_determine_by_content = settings.value("Misc/determine_file_by_content", false).toBool();
 }
 
 QmmpSettings::~QmmpSettings()
@@ -222,6 +224,8 @@ void QmmpSettings::sync()
     settings.endGroup();
     //buffer size
     settings.setValue("Output/buffer_size", m_buffer_size);
+    //file type determination
+    settings.setValue("Misc/determine_file_by_content", m_determine_by_content);
 }
 
 QmmpSettings* QmmpSettings::instance()
@@ -229,4 +233,14 @@ QmmpSettings* QmmpSettings::instance()
     if(!m_instance)
         return new QmmpSettings(qApp);
     return m_instance;
+}
+
+void QmmpSettings::setDetermineFileTypeByContent(bool enabled)
+{
+    m_determine_by_content = enabled;
+}
+
+bool QmmpSettings::determineFileTypeByContent() const
+{
+    return m_determine_by_content;
 }

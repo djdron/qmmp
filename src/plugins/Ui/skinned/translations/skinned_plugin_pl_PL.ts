@@ -807,7 +807,7 @@
         <translation>Odwróć listę</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="542"/>
+        <location filename="../playlist.cpp" line="541"/>
         <source>&amp;New PlayList</source>
         <translation>&amp;Nowa lista odtwarzania</translation>
     </message>
@@ -1265,17 +1265,17 @@ Andrey Adreev &lt;andreev00@gmail.com&gt;</translation>
 <context>
     <name>TextScroller</name>
     <message>
-        <location filename="../textscroller.cpp" line="52"/>
+        <location filename="../textscroller.cpp" line="53"/>
         <source>Autoscroll Songname</source>
         <translation>Automatyczne przewijanie tytułu utworu</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="53"/>
+        <location filename="../textscroller.cpp" line="54"/>
         <source>Transparent Background</source>
         <translation>Przeźroczyste tło</translation>
     </message>
     <message>
-        <location filename="../textscroller.cpp" line="122"/>
+        <location filename="../textscroller.cpp" line="123"/>
         <source>Buffering: %1%</source>
         <translation>Buforowanie: : %1%</translation>
     </message>
