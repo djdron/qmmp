@@ -36,8 +36,20 @@ bool DecoderMPCFactory::supports(const QString &source) const
     return (source.right(4).toLower() == ".mpc");
 }
 
-bool DecoderMPCFactory::canDecode(QIODevice *) const
+bool DecoderMPCFactory::canDecode(QIODevice *input) const
 {
+    char buf[36];
+    if (input->peek(buf, 4) != 4)
+        return false;
+
+    if(!memcmp(buf, "MP+", 3))
+            return true;
+
+#ifndef MPC_OLD_API
+    if(!memcmp(buf, "MPCK", 4))
+        return true;
+#endif
+
     return false;
 }
 

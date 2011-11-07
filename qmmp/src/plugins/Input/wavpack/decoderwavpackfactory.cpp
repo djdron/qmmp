@@ -33,9 +33,10 @@ bool DecoderWavPackFactory::supports(const QString &source) const
     return (source.right(3).toLower() == ".wv");
 }
 
-bool DecoderWavPackFactory::canDecode(QIODevice *) const
+bool DecoderWavPackFactory::canDecode(QIODevice *input) const
 {
-    return false;
+    char buf[4];
+    return (input->peek(buf, 4) == 4 && !memcmp(buf, "wvpk", 4));
 }
 
 const DecoderProperties DecoderWavPackFactory::properties() const

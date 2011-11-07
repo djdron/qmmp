@@ -41,7 +41,13 @@ bool DecoderFLACFactory::supports(const QString &source) const
 
 bool DecoderFLACFactory::canDecode(QIODevice *input) const
 {
-    Q_UNUSED(input);
+    char buf[36];
+    if (input->peek(buf, 36) != 36)
+        return false;
+    if(!memcmp(buf, "fLaC", 4)) //native flac
+        return true;
+    if(!memcmp(buf, "OggS", 4) && !memcmp(buf + 29, "FLAC", 4)) //ogg flac
+        return true;
     return false;
 }
 
@@ -51,7 +57,7 @@ const DecoderProperties DecoderFLACFactory::properties() const
     properties.name = tr("FLAC Plugin");
     properties.filters << "*.flac" << "*.oga";
     properties.description = tr("FLAC Files");
-    //properties.contentType = ;
+    properties.contentTypes << "audio/x-flac";
     properties.shortName = "flac";
     properties.protocols << "flac";
     properties.hasAbout = true;
