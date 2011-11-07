@@ -118,6 +118,8 @@ void ConfigDialog::readSettings()
     //resume playback
     QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     m_ui->continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", false).toBool());
+    //file type determination
+    m_ui->byContentCheckBox->setChecked(gs->determineFileTypeByContent());
     //cover options
     m_ui->coverIncludeLineEdit->setText(gs->coverNameFilters(true).join(","));
     m_ui->coverExcludeLineEdit->setText(gs->coverNameFilters(false).join(","));
@@ -341,6 +343,7 @@ void ConfigDialog::saveSettings()
                               m_ui->clippingCheckBox->isChecked());
     gs->setAudioSettings(m_ui->softVolumeCheckBox->isChecked(), m_ui->use16BitCheckBox->isChecked());
     gs->setBufferSize(m_ui->bufferSizeSpinBox->value());
+    gs->setDetermineFileTypeByContent(m_ui->byContentCheckBox->isChecked());
     QList <OutputFactory *> *outputs = Output::factories();
     if(m_ui->outputComboBox->currentIndex() >= 0 && outputs->count())
         Output::setCurrentFactory(outputs->at(m_ui->outputComboBox->currentIndex()));
