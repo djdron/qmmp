@@ -108,14 +108,16 @@ public:
     QMap<Qmmp::MetaData, QString> takeMetaData();
     /*!
      * Returns DecoderFactory pointer which supports file \b path or 0 if file \b path is unsupported
+     * @param path Full local file path
+     * @param useContent Content-based file type determination (\b true - enabled, \b false - disabled)
      */
-    static DecoderFactory *findByPath(const QString &path);
+    static DecoderFactory *findByPath(const QString &path, bool useContent = false);
     /*!
      * Returns DecoderFactory pointer which supports mime type \b mime or \b 0 if mime type \b mime is unsupported
      */
     static DecoderFactory *findByMime(const QString &mime);
     /*!
-     * Returns DecoderFactory pointer which supports data provided by QIODevice \b input
+     * Returns DecoderFactory pointer which supports data provided by \b input
      * or \b 0 if data is unsupported.
      */
     static DecoderFactory *findByContent(QIODevice *input);
