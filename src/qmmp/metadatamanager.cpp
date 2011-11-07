@@ -20,6 +20,7 @@
 
 #include <QFile>
 #include <QFileInfo>
+#include <QBuffer>
 #include <QMutexLocker>
 #include "decoder.h"
 #include "decoderfactory.h"
@@ -54,7 +55,7 @@ QList <FileInfo *> MetaDataManager::createPlayList(const QString &fileName, bool
     {
         if(!QFile::exists(fileName))
             return list;
-        if((fact = Decoder::findByPath(fileName)))
+        else if((fact = Decoder::findByPath(fileName, m_settings->determineFileTypeByContent())))
             return fact->createPlayList(fileName, useMetaData);
         else if((efact = AbstractEngine::findByPath(fileName)))
             return efact->createPlayList(fileName, useMetaData);
@@ -86,7 +87,7 @@ MetaDataModel* MetaDataManager::createMetaDataModel(const QString &path, QObject
     {
         if(!QFile::exists(path))
             return 0;
-        if((fact = Decoder::findByPath(path)))
+        else if((fact = Decoder::findByPath(path, m_settings->determineFileTypeByContent())))
             return fact->createMetaDataModel(path, parent);
         else if((efact = AbstractEngine::findByPath(path)))
             return efact->createMetaDataModel(path, parent);
@@ -140,6 +141,8 @@ QStringList MetaDataManager::nameFilters() const
         if (AbstractEngine::isEnabled(fact))
             filters << fact->properties().filters;
     }
+    if(m_settings->determineFileTypeByContent())
+        filters << "*";
     return filters;
 }
 

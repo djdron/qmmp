@@ -166,10 +166,38 @@ QStringList Decoder::protocols()
     return protocolsList;
 }
 
-DecoderFactory *Decoder::findByPath(const QString& source)
+DecoderFactory *Decoder::findByPath(const QString& source, bool useContent)
 {
     checkFactories();
     DecoderFactory *fact = m_lastFactory;
+    if(useContent)
+    {
+        QFile file(source);
+        if(!file.open(QIODevice::ReadOnly))
+        {
+            qWarning("Decoder: file open error: %s", qPrintable(file.errorString()));
+            return 0;
+        }
+        QByteArray array = file.read(8192);
+        QBuffer buffer(&array);
+        buffer.open(QIODevice::ReadOnly);
+
+        //try last factory with stream based input or local files support
+        if (fact && isEnabled(fact) && (!fact->properties().noInput ||
+                                        fact->properties().protocols.contains("file")))
+            return fact;
+
+        foreach(DecoderFactory *fact, *m_factories)
+        {
+            if(fact->properties().noInput && !fact->properties().protocols.contains("file"))
+                continue;
+
+            if (isEnabled(fact) && fact->canDecode(&buffer))
+            {
+                return fact;
+            }
+        }
+    }
     if (fact && fact->supports(source) && isEnabled(fact)) //try last factory
         return fact;
     foreach(fact, *m_factories)
@@ -197,12 +225,27 @@ DecoderFactory *Decoder::findByMime(const QString& type)
     return 0;
 }
 
+/*DecoderFactory *Decoder::findByContent(const QString &path)
+{
+    checkFactories();
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qWarning("Decoder: file open error: %s", qPrintable(file.errorString()));
+        return 0;
+    }
+    QByteArray array = file.read(8192);
+    QBuffer buffer(&array);
+    buffer.open(QIODevice::ReadOnly);
+    return findByContent(&buffer);
+}*/
+
 DecoderFactory *Decoder::findByContent(QIODevice *input)
 {
     checkFactories();
     foreach(DecoderFactory *fact, *m_factories)
     {
-        if (isEnabled(fact) && fact->canDecode(input))
+        if (isEnabled(fact) && !fact->properties().noInput && fact->canDecode(input))
         {
             return fact;
         }
