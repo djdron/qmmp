@@ -4,32 +4,32 @@
 <context>
     <name>DecoderWavPackFactory</name>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="44"/>
+        <location filename="../decoderwavpackfactory.cpp" line="45"/>
         <source>WavPack Plugin</source>
         <translation>Modulo WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="153"/>
+        <location filename="../decoderwavpackfactory.cpp" line="154"/>
         <source>About WavPack Audio Plugin</source>
         <translation>Info sul modulo audio WavPack</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="154"/>
+        <location filename="../decoderwavpackfactory.cpp" line="155"/>
         <source>Qmmp WavPack Audio Plugin</source>
         <translation>Modulo audio WavPack per Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="155"/>
+        <location filename="../decoderwavpackfactory.cpp" line="156"/>
         <source>WavPack library version:</source>
         <translation>Versione libreria per WavPack:</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="157"/>
+        <location filename="../decoderwavpackfactory.cpp" line="158"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autore: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderwavpackfactory.cpp" line="46"/>
+        <location filename="../decoderwavpackfactory.cpp" line="47"/>
         <source>WavPack Files</source>
         <translation>Brani WavPack</translation>
     </message>

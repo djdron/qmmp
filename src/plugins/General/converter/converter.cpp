@@ -20,6 +20,7 @@
 
 #include <stdio.h>
 #include <QStringList>
+#include <QDesktopServices>
 #include <qmmp/inputsourcefactory.h>
 #include <qmmp/decoderfactory.h>
 #include <qmmp/metadatamanager.h>
@@ -190,6 +191,9 @@ void Converter::run()
 
         QString command = preset["command"].toString();
         command.replace("%o", "\"" + full_path + "\"");
+        QString tmp_path = QDesktopServices::storageLocation(QDesktopServices::TempLocation) + "/tmp.wav";
+        bool use_file = command.contains("%i");
+        command.replace("%i", "\"" + tmp_path + "\"");
 
         qDebug("Converter: starting task '%s'", qPrintable(preset["name"].toString()));
 
@@ -222,8 +226,7 @@ void Converter::run()
         memcpy(&wave_header[34], &bps, 2);
         memcpy(&wave_header[40], &size, 4);
 
-        //FILE *enc_pipe = fopen("/mnt/win_e/out.wav", "w");
-        FILE *enc_pipe = popen(qPrintable(command), "w");
+        FILE *enc_pipe = use_file ? fopen(qPrintable(tmp_path), "w+b") : popen(qPrintable(command), "w");
         if(!enc_pipe)
         {
             qWarning("Converter: unable to open pipe");
@@ -235,16 +238,15 @@ void Converter::run()
         size_t to_write = sizeof(wave_header);
         if(to_write != fwrite(&wave_header, 1, to_write, enc_pipe))
         {
-            qWarning("Converter: output file write erro");
+            qWarning("Converter: output file write error");
             m_inputs.take(decoder)->deleteLater();
             delete decoder;
-            pclose(enc_pipe);
+            use_file ? fclose(enc_pipe) : pclose(enc_pipe);
             continue;
         }
 
         convert(decoder, enc_pipe, preset["use_16bit"].toBool());
-        pclose(enc_pipe);
-        //fclose(enc_pipe);
+        use_file ? fclose(enc_pipe) : pclose(enc_pipe);
         m_inputs.take(decoder)->deleteLater();
         delete decoder;
         m_mutex.lock();
@@ -257,6 +259,22 @@ void Converter::run()
         else
             qDebug("Converter: task '%s' finished with success", qPrintable(preset["name"].toString()));
         m_mutex.unlock();
+
+        if(use_file)
+        {
+            qDebug("Converter: starting file encoding...");
+            emit desriptionChanged(tr("Encoding..."));
+            enc_pipe = popen(qPrintable(command), "w");
+            if(!enc_pipe)
+            {
+                qWarning("Converter: unable to start encoder");
+                QFile::remove(tmp_path);
+                continue;
+            }
+            pclose(enc_pipe);
+            qDebug("Converter: encoding finished");
+            QFile::remove(tmp_path);
+        }
 
         if(preset["tags"].toBool())
         {
