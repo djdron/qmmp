@@ -4,14 +4,19 @@
 <context>
     <name>Converter</name>
     <message>
-        <location filename="../converter.cpp" line="168"/>
+        <location filename="../converter.cpp" line="169"/>
         <source>Track: %1</source>
         <translation>Трек: %1</translation>
     </message>
     <message>
-        <location filename="../converter.cpp" line="170"/>
+        <location filename="../converter.cpp" line="171"/>
         <source>Preset: %1</source>
         <translation>Предустановка: %1</translation>
+    </message>
+    <message>
+        <location filename="../converter.cpp" line="266"/>
+        <source>Encoding...</source>
+        <translation>Кодирование...</translation>
     </message>
 </context>
 <context>
@@ -226,7 +231,7 @@ using external command-line encoders</source>
     <message>
         <location filename="../preseteditor.ui" line="83"/>
         <source>Write tags</source>
-        <translation>Прописывать теги</translation>
+        <translation>Добавлять теги</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="90"/>

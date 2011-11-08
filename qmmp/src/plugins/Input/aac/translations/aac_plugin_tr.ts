@@ -42,27 +42,27 @@
 <context>
     <name>DecoderAACFactory</name>
     <message>
-        <location filename="../decoderaacfactory.cpp" line="45"/>
+        <location filename="../decoderaacfactory.cpp" line="66"/>
         <source>AAC Plugin</source>
         <translation>AAC Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderaacfactory.cpp" line="47"/>
+        <location filename="../decoderaacfactory.cpp" line="68"/>
         <source>AAC Files</source>
         <translation>AAC Dosyaları</translation>
     </message>
     <message>
-        <location filename="../decoderaacfactory.cpp" line="87"/>
+        <location filename="../decoderaacfactory.cpp" line="108"/>
         <source>About AAC Audio Plugin</source>
         <translation>AAC Ses Eklentisi Hakkında</translation>
     </message>
     <message>
-        <location filename="../decoderaacfactory.cpp" line="88"/>
+        <location filename="../decoderaacfactory.cpp" line="109"/>
         <source>Qmmp AAC Audio Plugin</source>
         <translation>Qmmp AAC Ses Eklentisi</translation>
     </message>
     <message>
-        <location filename="../decoderaacfactory.cpp" line="89"/>
+        <location filename="../decoderaacfactory.cpp" line="110"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Yazan: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
