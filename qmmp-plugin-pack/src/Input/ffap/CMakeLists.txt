@@ -5,7 +5,10 @@ cmake_minimum_required(VERSION 2.6.0)
 if(COMMAND cmake_policy)
     cmake_policy(SET CMP0003 NEW)
     cmake_policy(SET CMP0005 NEW)
-endif(COMMAND cmake_policy) 
+endif(COMMAND cmake_policy)
+
+enable_language(ASM_NASM)
+set(CMAKE_ASM_NASM_COMPILER "yasm")
 
 # qt plugin
 ADD_DEFINITIONS( -Wall )
@@ -17,25 +20,13 @@ ADD_DEFINITIONS(-DQT_THREAD)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-SET(QT_INCLUDES
-  ${QT_INCLUDES}
-  ${CMAKE_CURRENT_SOURCE_DIR}/../../../
-)
-
 # libqmmp
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
+include_directories(${QMMP_INCLUDE_DIRS})
+link_directories( ${QMMP_LIBRARY_DIRS})
 
-# libffap
-pkg_search_module(ffap ffap)
 
-IF(NOT ffap_LINK_FLAGS)
-  SET(ffap_LINK_FLAGS -lffap)
-ENDIF(NOT ffap_LINK_FLAGS)
-
-include_directories(${ffap_INCLUDE_DIRS} ${TAGLIB_INCLUDE_DIRS})
-link_directories(${ffap_LIBRARY_DIRS} ${TAGLIB_LIBRARY_DIRS})
-ADD_DEFINITIONS(${ffap_CFLAGS})
+include_directories(${TAGLIB_INCLUDE_DIRS})
+link_directories(${TAGLIB_LIBRARY_DIRS})
 ADD_DEFINITIONS(${TAGLIB_CFLAGS})
 
 SET(libffap_SRCS
@@ -45,6 +36,8 @@ SET(libffap_SRCS
   cueparser.cpp
   replaygainreader.cpp
   ffap.c
+  dsputil_yasm.asm
+  x86inc.asm
 )
 
 SET(libffap_HDRS
@@ -58,6 +51,13 @@ SET(libffap_MOC_HDRS
   decoderffapfactory.h
   ffapmetadatamodel.h
 )
+
+
+#foreach (SOURCE ${libffap_SRCS})
+#    if (${SOURCE} MATCHES "asm$")
+        set_source_files_properties(x86inc.asm PROPERTIES COMPILE_FLAGS "-w")
+#    endif()
+#endforeach() 
 
 SET(libffap_RCCS translations/translations.qrc)
 
