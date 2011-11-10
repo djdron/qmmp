@@ -16,7 +16,7 @@
     <message>
         <location filename="../converter.cpp" line="266"/>
         <source>Encoding...</source>
-        <translation type="unfinished"></translation>
+        <translation>Кодування...</translation>
     </message>
 </context>
 <context>

@@ -356,7 +356,7 @@
     <message>
         <location filename="../forms/configdialog.ui" line="408"/>
         <source>Determine file type by content</source>
-        <translation type="unfinished"></translation>
+        <translation>Визначати тип файлу за вмістом</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="418"/>
