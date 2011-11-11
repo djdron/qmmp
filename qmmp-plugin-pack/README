@@ -12,7 +12,7 @@ Requirements:
 - Qt >= 4.6
 - qmmp >= 0.6
 - libmpg123 (Optional)
-- cmake >= 2.6.0 (for build only)
+- cmake >= 2.8.0 (for build only)
 
 
 Attention! Plugin Pack build needs lrelease installed. The libqt4-devel package often contains this utility.
