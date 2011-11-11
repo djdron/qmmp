@@ -25,6 +25,8 @@ QMAKE_EXTRA_COMPILERS += asm_compiler
 
 contains(QMAKE_CXXFLAGS, -msse2):DEFINES += HAVE_SSE2
 
+#DEFINES += HAVE_SSE2
+
 contains(QMAKE_CXXFLAGS, -m32) {
   message(Architecture is x86)
   DEFINES += ARCH_X86_32

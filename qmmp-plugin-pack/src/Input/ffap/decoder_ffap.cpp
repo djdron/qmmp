@@ -108,7 +108,6 @@ bool DecoderFFap::initialize()
         return false;
     }
     configure(m_ffap_decoder->samplerate, m_ffap_decoder->channels, format);
-    qDebug("++ %d - %d", m_ffap_decoder->samplerate, m_ffap_decoder->channels);
     qDebug("DecoderFFap: initialize succes");
     return true;
 }

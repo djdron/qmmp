@@ -602,7 +602,9 @@ static int ape_read_packet(FFap_decoder *decoder)
 
     if (ape->currentframe > ape->totalframes)
         return -1;
-    trace ("seeking to packet %d (%lld + %d)\n", ape->currentframe, ape->frames[ape->currentframe].pos, ape->skip_header);
+#if ENABLE_DEBUG
+    trace ("ffap: seeking to packet %d (%lld + %d)\n", ape->currentframe, ape->frames[ape->currentframe].pos, ape->skip_header);
+#endif
     if (decoder->seek(ape->frames[ape->currentframe].pos + ape->skip_header, SEEK_SET,
                       decoder->client_data) != 0){
         return -1;
@@ -1687,7 +1689,7 @@ static int
 ffap_seek_sample (FFap_decoder *decoder, int sample) {
     //ape_info_t *info = (ape_info_t*)_info;
     //sample += info->startsample;
-    trace ("seeking to %d/%d\n", sample, decoder->ape_ctx->totalsamples);
+    trace ("ffap: seeking to %d/%d\n", sample, decoder->ape_ctx->totalsamples);
     uint32_t newsample = sample;
     if (newsample > decoder->ape_ctx->totalsamples) {
         trace ("eof\n");
@@ -1700,8 +1702,8 @@ ffap_seek_sample (FFap_decoder *decoder, int sample) {
     }
     decoder->ape_ctx->currentframe = nframe;
     decoder->ape_ctx->samplestoskip = newsample - nframe * decoder->ape_ctx->blocksperframe;
-    trace ("seek to sample %d at blockstart\n", nframe * decoder->ape_ctx->blocksperframe);
-    trace ("samples to skip: %d\n", decoder->ape_ctx->samplestoskip);
+    trace ("ffap: seek to sample %d at blockstart\n", nframe * decoder->ape_ctx->blocksperframe);
+    trace ("ffap: samples to skip: %d\n", decoder->ape_ctx->samplestoskip);
 
     // reset decoder
     decoder->ape_ctx->remaining = 0;
