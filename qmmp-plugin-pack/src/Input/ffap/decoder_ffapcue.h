@@ -17,36 +17,45 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef DECODERFFAPFACTORY_H
-#define DECODERFFAPFACTORY_H
 
-#include <QObject>
-#include <QString>
-#include <QIODevice>
-#include <QWidget>
+#ifndef DECODER_FFAPCUE_H
+#define DECODER_FFAPCUE_H
 
 #include <qmmp/decoder.h>
-#include <qmmp/output.h>
-#include <qmmp/decoderfactory.h>
-#include <qmmp/fileinfo.h>
+#include <qmmp/statehandler.h>
 
+class Output;
+class QIDevice;
+class CUEParser;
 
-class DecoderFFapFactory : public QObject,
-            DecoderFactory
+class DecoderFFapCUE : public Decoder
 {
-    Q_OBJECT
-    Q_INTERFACES(DecoderFactory)
-
 public:
-    bool supports(const QString &source) const;
-    bool canDecode(QIODevice *input) const;
-    const DecoderProperties properties() const;
-    Decoder *create(const QString &url, QIODevice *i);
-    QList<FileInfo *> createPlayList(const QString &fileName, bool useMetaData);
-    MetaDataModel* createMetaDataModel(const QString &path, QObject *parent = 0);
-    void showSettings(QWidget *parent);
-    void showAbout(QWidget *parent);
-    QTranslator *createTranslator(QObject *parent);
+    DecoderFFapCUE(const QString &url);
+    virtual ~DecoderFFapCUE();
+
+    // Standard Decoder API
+    bool initialize();
+    qint64 totalTime();
+    void seek(qint64);
+    qint64 read(char *data, qint64 size);
+    int bitrate();
+    const QString nextURL();
+    void next();
+
+private:
+    Decoder *m_decoder;
+    qint64 m_length;
+    qint64 m_offset;
+    qint64 length_in_bytes;
+    qint64 m_totalBytes;
+    QString m_path;
+    CUEParser *m_parser;
+    int m_track;
+    char *m_buf; //buffer for remainig data
+    qint64 m_buf_size;
+    qint64 m_sz; //sample size
+    QIODevice *m_input;
 };
 
-#endif
+#endif // DECODER_FFAPCUE_H

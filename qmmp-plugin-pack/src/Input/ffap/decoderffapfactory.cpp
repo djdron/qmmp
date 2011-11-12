@@ -21,9 +21,11 @@
 #include <QtGui>
 #include <taglib/apefile.h>
 #include <taglib/apetag.h>
+#include "replaygainreader.h"
 #include "ffapmetadatamodel.h"
-#include "decoder_ffap.h"
 #include "decoderffapfactory.h"
+#include "decoder_ffap.h"
+#include "decoder_ffapcue.h"
 #include "cueparser.h"
 
 // DecoderFFapFactory
@@ -53,14 +55,23 @@ const DecoderProperties DecoderFFapFactory::properties() const
     properties.hasAbout = true;
     properties.hasSettings = false;
     properties.noInput = false;
-    //properties.protocols << "ape";
+    properties.protocols << "ape";
     properties.priority = 10;
     return properties;
 }
 
-Decoder *DecoderFFapFactory::create(const QString &p, QIODevice *i)
+Decoder *DecoderFFapFactory::create(const QString &url, QIODevice *i)
 {
-    return new DecoderFFap(p, i);
+    Decoder *d;
+    if(url.contains("://"))
+        d = new DecoderFFapCUE(url);
+    else
+    {
+        d = new DecoderFFap(url, i);
+        ReplayGainReader rg(url);
+        d->setReplayGainInfo(rg.replayGainInfo());
+    }
+    return d;
 }
 
 QList<FileInfo *> DecoderFFapFactory::createPlayList(const QString &fileName, bool useMetaData)

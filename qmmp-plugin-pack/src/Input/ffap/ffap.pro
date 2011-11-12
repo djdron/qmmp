@@ -4,11 +4,13 @@ include(../../plugins.pri)
 HEADERS += decoderffapfactory.h ffap.h decoder_ffap.h \
     cueparser.h \
     ffapmetadatamodel.h \
-    replaygainreader.h
+    replaygainreader.h \
+    decoder_ffapcue.h
 SOURCES += decoderffapfactory.cpp ffap.c decoder_ffap.cpp \
     cueparser.cpp \
     ffapmetadatamodel.cpp \
-    replaygainreader.cpp
+    replaygainreader.cpp \
+    decoder_ffapcue.cpp
 
 ASM_SOURCES += dsputil_yasm.asm x86inc.asm
 
@@ -74,3 +76,5 @@ unix {
 }
 win32:HEADERS += ../../../../src/qmmp/metadatamodel.h \
     ../../../../src/qmmp/decoderfactory.h
+
+
