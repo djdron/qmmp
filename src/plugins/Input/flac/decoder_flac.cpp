@@ -302,8 +302,6 @@ bool DecoderFLAC::initialize()
                 data()->input->open(QIODevice::ReadOnly);
                 QMap<Qmmp::MetaData, QString> metaData = m_parser->info(m_track)->metaData();
                 addMetaData(metaData); //send metadata
-                ReplayGainReader rg(p);
-                setReplayGainInfo(rg.replayGainInfo());
             }
             else
             {
