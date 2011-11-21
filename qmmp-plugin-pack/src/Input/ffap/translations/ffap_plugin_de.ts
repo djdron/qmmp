@@ -4,13 +4,38 @@
 <context>
     <name>DecoderFFapFactory</name>
     <message>
-        <location filename="../decoderffapfactory.cpp" line="48"/>
+        <location filename="../decoderffapfactory.cpp" line="47"/>
         <source>FFap Plugin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../decoderffapfactory.cpp" line="50"/>
+        <location filename="../decoderffapfactory.cpp" line="49"/>
         <source>Monkey&apos;s Audio Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffapfactory.cpp" line="154"/>
+        <source>About FFap Audio Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffapfactory.cpp" line="155"/>
+        <source>Qmmp FFap Audio Plugin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffapfactory.cpp" line="156"/>
+        <source>This plugin provides Monkey&apos;s Audio (APE) support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffapfactory.cpp" line="157"/>
+        <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../decoderffapfactory.cpp" line="158"/>
+        <source>Based on code from deadbeef, libavc and rockbox</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -31,6 +31,9 @@
 #include <qmmp/fileinfo.h>
 
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class DecoderFFapFactory : public QObject,
             DecoderFactory
 {

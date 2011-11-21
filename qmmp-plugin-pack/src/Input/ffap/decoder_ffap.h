@@ -24,8 +24,9 @@
 #include <qmmp/decoder.h>
 #include "ffap.h"
 
-//class CUEParser;
-
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class DecoderFFap : public Decoder
 {
 public:

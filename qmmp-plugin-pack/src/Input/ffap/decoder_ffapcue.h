@@ -28,6 +28,9 @@ class Output;
 class QIDevice;
 class CUEParser;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class DecoderFFapCUE : public Decoder
 {
 public:

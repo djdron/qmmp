@@ -27,6 +27,9 @@
 
 class QTextCodec;
 
+/**
+    @author Ilya Kotov <forkotov02@hotmail.ru>
+*/
 class FFapMetaDataModel : public MetaDataModel
 {
 Q_OBJECT

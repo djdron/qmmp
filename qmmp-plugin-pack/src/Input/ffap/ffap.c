@@ -27,6 +27,13 @@
      24bit support merged from rockbox
 */
 
+/*
+   main changes compared to DeaDBeeF:
+     removed deadbeef functions and structures
+     added public callback api
+     fixed some gcc warnings
+*/
+
 #if HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -1717,11 +1724,6 @@ ffap_seek_sample (FFap_decoder *decoder, int sample) {
 int ffap_seek(FFap_decoder *decoder, float seconds) {
     return ffap_seek_sample (decoder, seconds * decoder->samplerate);
 }
-
-/*static int
-ffap_seek (DB_fileinfo_t *_info, float seconds) {
-    return ffap_seek_sample (_info, seconds * _info->fmt.samplerate);
-}*/
 
 FFap_decoder *ffap_new(ffap_read_callback read_callback,
                        ffap_seek_callback seek_callback,

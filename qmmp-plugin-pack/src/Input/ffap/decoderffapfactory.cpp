@@ -32,16 +32,13 @@
 
 bool DecoderFFapFactory::supports(const QString &source) const
 {
-
     return (source.right(4).toLower() == ".ape");
 }
 
 bool DecoderFFapFactory::canDecode(QIODevice *input) const
 {
-    /*char buf[4];
-    return (input->peek(buf, 4) == 4 && !memcmp(buf, "wvpk", 4));*/
-    Q_UNUSED(input);
-    return false;
+    char buf[3];
+    return (input->peek(buf, 3) == 3 && !memcmp(buf, "MAC", 3));
 }
 
 const DecoderProperties DecoderFFapFactory::properties() const
@@ -154,12 +151,11 @@ void DecoderFFapFactory::showSettings(QWidget *)
 
 void DecoderFFapFactory::showAbout(QWidget *parent)
 {
-    Q_UNUSED(parent);
-    /*QMessageBox::about (parent, tr("About FFap Audio Plugin"),
+    QMessageBox::about (parent, tr("About FFap Audio Plugin"),
                         tr("Qmmp FFap Audio Plugin")+"\n"+
-                        tr("FFap library version:") +
-                        QString(" %1").arg(FFapGetLibraryVersionString ())+"\n"+
-                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));*/
+                        tr("This plugin provides Monkey's Audio (APE) support") +"\n"+
+                        tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")  +"\n"+
+                        tr("Based on code from deadbeef, libavc and rockbox"));
 }
 
 QTranslator *DecoderFFapFactory::createTranslator(QObject *parent)
