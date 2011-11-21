@@ -5,6 +5,7 @@ Qmmp Plugin Pack
 
 Список модулей:
 - MPG123: предоставляет поддержку MPEG v1/2 layer1/2/3 с использованием библиотеки libmpg123
+- FFap: предоставляет улучшенную поддержку Monkey's Audio (APE) (поддержка 24-х бит и встроенного cue)
 - Simple Ui: простой пользовательский интерфейс с использованием стандартных элементов
 
 Требования:
@@ -30,7 +31,7 @@ make install
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
 Available options:
-- USE_MPG123; USE_SIMPLE
+- USE_MPG123; USE_FFAP; USE_SIMPLE
 
 
 Также вы можете использовать ccmake для изменения конфигурации модулей.
@@ -62,6 +63,9 @@ cmake ./ -DLIB_DIR=lib64
 Как включить модуль MPG123.
 По-умолчанию основанный на libmad модуль mpeg имеет более высокий приоритет чем mpg123.
 Для исправления этого перейдите в "настройки"->"модули" и отключите "Модуль MPEG".
+
+Как включить модуль FFap.
+Перейдите в настройки модуля FFmpeg и отключите поддержку Monkey's Audio.
 
 
 All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker

@@ -5,6 +5,7 @@ Official home page: http://qmmp.ylsoftware.com/
 
 Description:
 - MPG123: provides MPEG v1/2 layer1/2/3 support with use of libmpg123 library
+- FFap: provides enhanced Monkey's Audio (APE) support (24-bit samples and embedded cue support)
 - Simple Ui: simple user interface based on standard widgets set
 
 Requirements:
@@ -31,7 +32,7 @@ by running:
 cmake ./ -DUSE_MPG123:BOOL=FALSE
 
 Available options:
-- USE_MPG123; USE_SIMPLE
+- USE_MPG123; USE_FFAP; USE_SIMPLE
 
 
 Also you can use ccmake for changing plugins configuration.
@@ -68,6 +69,9 @@ To avoid some problems please read below carefully.
 How to enable MPG123 plugin.
 By default libmad-based mpeg plugin has higher priority than mpg123.
 To fix this go to the settings->plugins and disable "MPEG plugin".
+
+How to enabled FFap plugin.
+Go to FFmpeg plugin settings and disable Monkey's Audio support.
 
 
 All patches, bug reports, ideas etc. send to forkotov02@hotmail.ru or use issue tracker
