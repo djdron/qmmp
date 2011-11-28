@@ -543,6 +543,9 @@ void MainWindow::readSettings()
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
     ui.tabWidget->setTabsClosable(settings.value("pl_tabs_closable", false).toBool());
     settings.endGroup();
+
+    addActions(m_uiHelper->actions(UiHelper::TOOLS_MENU));
+    addActions(m_uiHelper->actions(UiHelper::PLAYLIST_MENU));
 }
 
 void MainWindow::showTabMenu(QPoint pos)
