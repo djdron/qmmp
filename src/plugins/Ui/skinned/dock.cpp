@@ -73,7 +73,6 @@ QPoint Dock::snapDesktop(QPoint npos, QWidget* mv)
     return npos;
 }
 
-
 QPoint Dock::snap (QPoint npos, QWidget* mv, QWidget* st)
 {
     int nx = npos.x() - st->x();
@@ -130,7 +129,8 @@ void Dock::addWidget (QWidget *widget)
 {
     m_widgetList.append (widget);
     m_dockedList.append (false);
-    widget->addActions(m_actions);
+    if(m_mainWidget)
+        widget->addActions(m_mainWidget->actions());
 }
 
 void Dock::move (QWidget* mv, QPoint npos)
@@ -255,18 +255,12 @@ bool Dock::isDocked (QWidget* mv, QWidget* st)
 
 void Dock::addActions (QList<QAction *> actions)
 {
-    QList<QAction *> new_actions;
-    foreach(QAction *action, actions)
+    if(!m_mainWidget)
     {
-        if(!m_actions.contains(action))
-        {
-            connect(action, SIGNAL(destroyed(QObject *)), SLOT(removeAction(QObject *)));
-            new_actions.append(action);
-            m_actions.append(action);
-        }
+        qFatal("Dock: main widget is null");
     }
     for (int i = 0; i<m_widgetList.size(); ++i)
-        m_widgetList.at (i)->addActions (new_actions);
+        m_widgetList.at (i)->addActions (actions);
 }
 
 bool Dock::isUnder(QWidget* upper, QWidget* nether, int dy)
@@ -286,9 +280,4 @@ void Dock::align(QWidget* w, int dy)
             align(m_widgetList.at(i), dy);
         }
     }
-}
-
-void Dock::removeAction(QObject *action)
-{
-    m_actions.removeAll(qobject_cast<QAction *> (action));
 }
