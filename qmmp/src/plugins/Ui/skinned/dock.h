@@ -45,9 +45,6 @@ public:
     void addActions(QList<QAction *> actions);
     void align(QWidget*, int dy);
 
-private slots:
-    void removeAction(QObject *action);
-
 private:
     QPoint snapDesktop(QPoint, QWidget*);
     QPoint snap(QPoint, QWidget*, QWidget*);
@@ -58,7 +55,6 @@ private:
     QList <QWidget *> m_widgetList;
     QList <bool> m_dockedList;
     QList <QPoint> m_delta_list;
-    QList <QAction *> m_actions;
 };
 
 #endif
