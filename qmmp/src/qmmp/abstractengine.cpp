@@ -174,6 +174,7 @@ QString AbstractEngine::file(EngineFactory *factory)
 
 QStringList AbstractEngine::protocols()
 {
+    checkFactories();
     QStringList protocolsList;
     foreach(EngineFactory *f, *m_factories)
     {
