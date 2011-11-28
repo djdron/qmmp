@@ -294,6 +294,9 @@ void MainWindow::readSettings()
 
     m_hideOnClose = settings.value("hide_on_close", false).toBool();
     settings.endGroup();
+
+    Dock::instance()->addActions(m_uiHelper->actions(UiHelper::PLAYLIST_MENU));
+    Dock::instance()->addActions(m_uiHelper->actions(UiHelper::TOOLS_MENU));
 }
 
 void MainWindow::writeSettings()
