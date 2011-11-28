@@ -45,6 +45,9 @@ public:
     void addActions(QList<QAction *> actions);
     void align(QWidget*, int dy);
 
+private slots:
+    void removeAction(QObject *action);
+
 private:
     QPoint snapDesktop(QPoint, QWidget*);
     QPoint snap(QPoint, QWidget*, QWidget*);

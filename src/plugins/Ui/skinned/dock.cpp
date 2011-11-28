@@ -255,9 +255,18 @@ bool Dock::isDocked (QWidget* mv, QWidget* st)
 
 void Dock::addActions (QList<QAction *> actions)
 {
-    m_actions << actions;
+    QList<QAction *> new_actions;
+    foreach(QAction *action, actions)
+    {
+        if(!m_actions.contains(action))
+        {
+            connect(action, SIGNAL(destroyed(QObject *)), SLOT(removeAction(QObject *)));
+            new_actions.append(action);
+            m_actions.append(action);
+        }
+    }
     for (int i = 0; i<m_widgetList.size(); ++i)
-        m_widgetList.at (i)->addActions (actions);
+        m_widgetList.at (i)->addActions (new_actions);
 }
 
 bool Dock::isUnder(QWidget* upper, QWidget* nether, int dy)
@@ -277,4 +286,9 @@ void Dock::align(QWidget* w, int dy)
             align(m_widgetList.at(i), dy);
         }
     }
+}
+
+void Dock::removeAction(QObject *action)
+{
+    m_actions.removeAll(qobject_cast<QAction *> (action));
 }
