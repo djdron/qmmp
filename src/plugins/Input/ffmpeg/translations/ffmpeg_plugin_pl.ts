@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="88"/>
+        <location filename="../decoderffmpegfactory.cpp" line="91"/>
         <source>FFmpeg Plugin</source>
         <translation>Wtyczka FFMPEG</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="90"/>
+        <location filename="../decoderffmpegfactory.cpp" line="93"/>
         <source>FFmpeg Formats</source>
         <translation>Formaty FFmpeg</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="195"/>
+        <location filename="../decoderffmpegfactory.cpp" line="198"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>O wtyczce FFmpeg Audio</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="197"/>
+        <location filename="../decoderffmpegfactory.cpp" line="200"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Wtyczka FFmpeg Audio dla Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="199"/>
+        <location filename="../decoderffmpegfactory.cpp" line="201"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>Skompilowane przy użyciu libavformat-%1.%2.%3 i libavcodec-%4.%5.%6</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="207"/>
+        <location filename="../decoderffmpegfactory.cpp" line="208"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Autor: Ilja Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -62,17 +62,17 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="62"/>
         <source>Sample rate</source>
         <translation>Próbkowanie</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="62"/>
         <source>Hz</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="67"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="63"/>
         <source>Channels</source>
         <translation>Kanały</translation>
     </message>
@@ -96,8 +96,8 @@
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
-        <source>Monkey&apos;s Audio</source>
-        <translation></translation>
+        <source>Monkey&apos;s Audio (APE)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="75"/>
@@ -143,6 +143,11 @@
         <location filename="../settingsdialog.ui" line="131"/>
         <source>Matroska Audio (Dolby TrueHD Lossless)</source>
         <translation>Matroska Audio (Dolby TrueHD Bezstratny)</translation>
+    </message>
+    <message>
+        <location filename="../settingsdialog.ui" line="138"/>
+        <source>VQF</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -189,11 +189,7 @@ bool DecoderFFmpeg::initialize()
     for (wma_idx = 0; wma_idx < (int)ic->nb_streams; wma_idx++)
     {
         c = ic->streams[wma_idx]->codec;
-#if LIBAVCODEC_VERSION_MAJOR < 53
-        if (c->codec_type == CODEC_TYPE_AUDIO)
-#else
         if (c->codec_type == AVMEDIA_TYPE_AUDIO)
-#endif
             break;
     }
 
@@ -202,11 +198,8 @@ bool DecoderFFmpeg::initialize()
     else
          c->request_channels = 2;
 
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(101<<8)+0))
     av_dump_format(ic,0,0,0);
-#else
-    dump_format(ic,0,0,0);
-#endif
+
     AVCodec *codec = avcodec_find_decoder(c->codec_id);
 
     if (!codec)
@@ -224,27 +217,38 @@ bool DecoderFFmpeg::initialize()
     m_totalTime = input()->isSequential() ? 0 : ic->duration * 1000 / AV_TIME_BASE;
     m_output_buf = (uint8_t *)av_malloc(AVCODEC_MAX_AUDIO_FRAME_SIZE*2);
 
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(20<<8)+0))
+
     if(c->codec_id == CODEC_ID_SHORTEN) //ffmpeg bug workaround
         m_totalTime = 0;
-#endif
 
-#if (LIBAVUTIL_VERSION_INT >= ((50<<16)+(38<<8)+0))
-    if(c->sample_fmt == AV_SAMPLE_FMT_S32)
-        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S32LE);
-    else
-        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S16LE);
-#else
-    if(c->sample_fmt == SAMPLE_FMT_S32)
-        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S32LE);
-    else
-        configure(c->sample_rate, c->request_channels, Qmmp::PCM_S16LE);
-#endif
+    Qmmp::AudioFormat format = Qmmp::PCM_UNKNOWM;
+
+    switch(c->sample_fmt)
+    {
+    case AV_SAMPLE_FMT_U8:
+        format = Qmmp::PCM_S8;
+        break;
+    case AV_SAMPLE_FMT_S16:
+        format = Qmmp::PCM_S16LE;
+        break;
+    case AV_SAMPLE_FMT_S32:
+    case AV_SAMPLE_FMT_FLT:
+        format = Qmmp::PCM_S32LE;
+        break;
+    default:
+        qWarning("DecoderFFmpeg: unsupported audio format");
+        return false;
+    }
+
+    configure(c->sample_rate, c->request_channels, format);
+
     if(ic->bit_rate)
         m_bitrate = ic->bit_rate/1000;
     if(c->bit_rate)
         m_bitrate = c->bit_rate/1000;
     qDebug("DecoderFFmpeg: initialize succes");
+
+    qDebug("total time = %lld ", m_totalTime);
     return true;
 }
 
@@ -271,12 +275,14 @@ qint64 DecoderFFmpeg::read(char *audio, qint64 maxSize)
     }
     if(!m_output_at)
         fillBuffer();
+
     if(!m_output_at)
         return 0;
     qint64 len = qMin(m_output_at, maxSize);
     memcpy(audio, m_output_buf, len);
     m_output_at -= len;
     memmove(m_output_buf, m_output_buf + len, m_output_at);
+
     return len;
 }
 
@@ -285,11 +291,19 @@ qint64 DecoderFFmpeg::ffmpeg_decode(uint8_t *audio)
     int out_size = AVCODEC_MAX_AUDIO_FRAME_SIZE * 2;
     if((m_pkt.stream_index == wma_idx))
     {
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(23<<8)+0))
         int l = avcodec_decode_audio3(c, (int16_t *)(audio), &out_size, &m_temp_pkt);
-#else
-        int l = avcodec_decode_audio2(c, (int16_t *)(audio), &out_size, m_temp_pkt.data, m_temp_pkt.size);
-#endif
+
+        if(c->sample_fmt == AV_SAMPLE_FMT_FLT)
+        {
+            //convert float to signed 32 bit LE
+            for(int i = 0; i < out_size >> 2; i++)
+            {
+                int32_t *out = (int32_t *)audio;
+                float *in = (float *) audio;
+                out[i] = qBound(-1.0f, in[i], +1.0f) * (double) 0x7fffffff;
+            }
+        }
+
         if(c->bit_rate)
             m_bitrate = c->bit_rate/1000;
         if(l < 0)
@@ -375,7 +389,7 @@ void DecoderFFmpeg::fillBuffer()
             m_output_at = 0;
             m_temp_pkt.size = 0;
 
-            if(c->codec_id == CODEC_ID_SHORTEN)
+            if(c->codec_id == CODEC_ID_SHORTEN || c->codec_id == CODEC_ID_TWINVQ)
             {
                 if(m_pkt.data)
                     av_free_packet(&m_pkt);
@@ -386,7 +400,7 @@ void DecoderFFmpeg::fillBuffer()
         }
         else if(m_output_at == 0)
         {
-            if(c->codec_id == CODEC_ID_SHORTEN)
+            if(c->codec_id == CODEC_ID_SHORTEN || c->codec_id == CODEC_ID_TWINVQ)
                 continue;
 
             if(m_pkt.data)

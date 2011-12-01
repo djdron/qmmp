@@ -63,9 +63,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui.ac3CheckBox->setChecked(filters.contains("*.ac3") && avcodec_find_decoder(CODEC_ID_EAC3));
     ui.dtsCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_DTS));
     ui.dtsCheckBox->setChecked(filters.contains("*.dts") && avcodec_find_decoder(CODEC_ID_DTS));
-
     ui.mkaCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TRUEHD));
     ui.mkaCheckBox->setChecked(filters.contains("*.mka") && avcodec_find_decoder(CODEC_ID_TRUEHD));
+    ui.vqfCheckBox->setEnabled(avcodec_find_decoder(CODEC_ID_TWINVQ));
+    ui.vqfCheckBox->setChecked(filters.contains("*.vqf") && avcodec_find_decoder(CODEC_ID_TWINVQ));
 }
 
 SettingsDialog::~SettingsDialog()
@@ -97,6 +98,8 @@ void SettingsDialog::accept()
         filters << "*.dts";
     if (ui.mkaCheckBox->isChecked())
         filters << "*.mka";
+    if (ui.vqfCheckBox->isChecked())
+        filters << "*.vqf";
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("FFMPEG/filters", filters);
     QDialog::accept();
