@@ -66,15 +66,17 @@ bool DecoderFFmpegFactory::canDecode(QIODevice *i) const
     }
     if(filters.contains("*.wma") && !memcmp(fmt->name, "asf", 3))
         return true;
-    if(filters.contains("*.mp3") && !memcmp(fmt->name, "mp3", 3))
+    else if(filters.contains("*.mp3") && !memcmp(fmt->name, "mp3", 3))
         return true;
-    if(filters.contains("*.aac") && !memcmp(fmt->name, "aac", 3))
+    else if(filters.contains("*.aac") && !memcmp(fmt->name, "aac", 3))
         return true;
-    if(filters.contains("*.ac3") && !memcmp(fmt->name, "eac3", 4))
+    else if(filters.contains("*.ac3") && !memcmp(fmt->name, "eac3", 4))
         return true;
-    if(filters.contains("*.dts") && !memcmp(fmt->name, "dts", 3))
+    else if(filters.contains("*.dts") && !memcmp(fmt->name, "dts", 3))
         return true;
-    if(filters.contains("*.mka") && !memcmp(fmt->name, "mka", 3))
+    else if(filters.contains("*.mka") && !memcmp(fmt->name, "mka", 3))
+        return true;
+    else if(filters.contains("*.vqf") && !memcmp(fmt->name, "vqf", 3))
         return true;
     return false;
 }
