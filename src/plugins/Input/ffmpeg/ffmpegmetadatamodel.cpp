@@ -26,7 +26,7 @@ FFmpegMetaDataModel::FFmpegMetaDataModel(const QString &path, QObject *parent) :
     avcodec_init();
     avcodec_register_all();
     av_register_all();
-    if (av_open_input_file(&m_in, path.toLocal8Bit(), NULL,0, NULL) < 0)
+    if (avformat_open_input(&m_in, path.toLocal8Bit().constData(), 0, 0) < 0)
         return;
     av_find_stream_info(m_in);
     av_read_play(m_in);
@@ -54,11 +54,7 @@ QHash<QString, QString> FFmpegMetaDataModel::audioProperties()
     for (wma_idx = 0; wma_idx < m_in->nb_streams; wma_idx++)
     {
         c = m_in->streams[wma_idx]->codec;
-#if LIBAVCODEC_VERSION_MAJOR < 53
-        if (c->codec_type == CODEC_TYPE_AUDIO)
-#else
         if (c->codec_type == AVMEDIA_TYPE_AUDIO)
-#endif
             break;
     }
     if (c)
