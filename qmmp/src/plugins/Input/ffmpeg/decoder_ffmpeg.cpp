@@ -122,7 +122,6 @@ bool DecoderFFmpeg::initialize()
     qDebug("DecoderFFmpeg: detected format: %s", fmt->long_name);
     qDebug("=%s=", fmt->name);
 
-#if (LIBAVFORMAT_VERSION_INT >= ((52<<16)+(105<<8)+0))
     m_stream = avio_alloc_context(m_input_buf, INPUT_BUFFER_SIZE, 0, this, ffmpeg_read, NULL, ffmpeg_seek);
     if(!m_stream)
     {
@@ -130,17 +129,12 @@ bool DecoderFFmpeg::initialize()
         return false;
     }
     m_stream->seekable = !input()->isSequential();
-#else
-    m_stream = (ByteIOContext *)av_malloc(sizeof(ByteIOContext));
-    init_put_byte(m_stream, m_input_buf, INPUT_BUFFER_SIZE, 0, this, ffmpeg_read, NULL, ffmpeg_seek);
-    m_stream->is_streamed = input()->isSequential();
-#endif
     m_stream->max_packet_size = INPUT_BUFFER_SIZE;
 
     AVFormatParameters ap;
     memset(&ap, 0, sizeof(ap));
 
-    if(av_open_input_stream(&ic, m_stream, m_path.toLocal8Bit(), fmt, &ap) != 0)
+    if(avformat_open_input(&ic, m_path.toLocal8Bit().constData(), fmt, 0) != 0)
     {
         qDebug("DecoderFFmpeg: av_open_input_stream() failed");
         return false;
@@ -152,25 +146,25 @@ bool DecoderFFmpeg::initialize()
     if (input()->isSequential())
     {
         QMap<Qmmp::MetaData, QString> metaData;
-        AVMetadataTag *album = av_metadata_get(ic->metadata,"album",0,0);
+        AVDictionaryEntry *album = av_dict_get(ic->metadata,"album",0,0);
         if(!album)
-            album = av_metadata_get(ic->metadata,"WM/AlbumTitle",0,0);
-        AVMetadataTag *artist = av_metadata_get(ic->metadata,"artist",0,0);
+            album = av_dict_get(ic->metadata,"WM/AlbumTitle",0,0);
+        AVDictionaryEntry *artist = av_dict_get(ic->metadata,"artist",0,0);
         if(!artist)
-            artist = av_metadata_get(ic->metadata,"author",0,0);
-        AVMetadataTag *comment = av_metadata_get(ic->metadata,"comment",0,0);
-        AVMetadataTag *genre = av_metadata_get(ic->metadata,"genre",0,0);
-        AVMetadataTag *title = av_metadata_get(ic->metadata,"title",0,0);
-        AVMetadataTag *year = av_metadata_get(ic->metadata,"WM/Year",0,0);
+            artist = av_dict_get(ic->metadata,"author",0,0);
+        AVDictionaryEntry *comment = av_dict_get(ic->metadata,"comment",0,0);
+        AVDictionaryEntry *genre = av_dict_get(ic->metadata,"genre",0,0);
+        AVDictionaryEntry *title = av_dict_get(ic->metadata,"title",0,0);
+        AVDictionaryEntry *year = av_dict_get(ic->metadata,"WM/Year",0,0);
         if(!year)
-            year = av_metadata_get(ic->metadata,"year",0,0);
+            year = av_dict_get(ic->metadata,"year",0,0);
         if(!year)
-            year = av_metadata_get(ic->metadata,"date",0,0);
-        AVMetadataTag *track = av_metadata_get(ic->metadata,"track",0,0);
+            year = av_dict_get(ic->metadata,"date",0,0);
+        AVDictionaryEntry *track = av_dict_get(ic->metadata,"track",0,0);
         if(!track)
-            track = av_metadata_get(ic->metadata,"WM/Track",0,0);
+            track = av_dict_get(ic->metadata,"WM/Track",0,0);
         if(!track)
-            track = av_metadata_get(ic->metadata,"WM/TrackNumber",0,0);
+            track = av_dict_get(ic->metadata,"WM/TrackNumber",0,0);
 
         if(album)
             metaData.insert(Qmmp::ALBUM, QString::fromUtf8(album->value).trimmed());

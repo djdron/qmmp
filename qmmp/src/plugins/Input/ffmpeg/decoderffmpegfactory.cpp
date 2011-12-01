@@ -24,6 +24,7 @@
 extern "C"{
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
+#include <libavutil/dict.h>
 }
 
 #include "ffmpegmetadatamodel.h"
@@ -128,7 +129,7 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
     av_register_all();
     AVFormatContext *in = 0;
 
-    if (av_open_input_file(&in, fileName.toLocal8Bit(), 0, 0, 0) < 0)
+    if (avformat_open_input(&in,fileName.toLocal8Bit().constData(), 0, 0) < 0)
     {
         qDebug("DecoderFFmpegFactory: unable to open file");
         return list;
@@ -138,25 +139,25 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
 
     if (useMetaData)
     {
-        AVMetadataTag *album = av_metadata_get(in->metadata,"album",0,0);
+        AVDictionaryEntry *album = av_dict_get(in->metadata,"album",0,0);
         if(!album)
-            album = av_metadata_get(in->metadata,"WM/AlbumTitle",0,0);
-        AVMetadataTag *artist = av_metadata_get(in->metadata,"artist",0,0);
+            album = av_dict_get(in->metadata,"WM/AlbumTitle",0,0);
+        AVDictionaryEntry *artist = av_dict_get(in->metadata,"artist",0,0);
         if(!artist)
-            artist = av_metadata_get(in->metadata,"author",0,0);
-        AVMetadataTag *comment = av_metadata_get(in->metadata,"comment",0,0);
-        AVMetadataTag *genre = av_metadata_get(in->metadata,"genre",0,0);
-        AVMetadataTag *title = av_metadata_get(in->metadata,"title",0,0);
-        AVMetadataTag *year = av_metadata_get(in->metadata,"WM/Year",0,0);
+            artist = av_dict_get(in->metadata,"author",0,0);
+        AVDictionaryEntry *comment = av_dict_get(in->metadata,"comment",0,0);
+        AVDictionaryEntry *genre = av_dict_get(in->metadata,"genre",0,0);
+        AVDictionaryEntry *title = av_dict_get(in->metadata,"title",0,0);
+        AVDictionaryEntry *year = av_dict_get(in->metadata,"WM/Year",0,0);
         if(!year)
-            year = av_metadata_get(in->metadata,"year",0,0);
+            year = av_dict_get(in->metadata,"year",0,0);
         if(!year)
-            year = av_metadata_get(in->metadata,"date",0,0);
-        AVMetadataTag *track = av_metadata_get(in->metadata,"track",0,0);
+            year = av_dict_get(in->metadata,"date",0,0);
+        AVDictionaryEntry *track = av_dict_get(in->metadata,"track",0,0);
         if(!track)
-            track = av_metadata_get(in->metadata,"WM/Track",0,0);
+            track = av_dict_get(in->metadata,"WM/Track",0,0);
         if(!track)
-            track = av_metadata_get(in->metadata,"WM/TrackNumber",0,0);
+            track = av_dict_get(in->metadata,"WM/TrackNumber",0,0);
 
         if(album)
             info->setMetaData(Qmmp::ALBUM, QString::fromUtf8(album->value).trimmed());
@@ -195,7 +196,6 @@ void DecoderFFmpegFactory::showAbout(QWidget *parent)
     QMessageBox::about (parent, tr("About FFmpeg Audio Plugin"),
 
                         tr("Qmmp FFmpeg Audio Plugin")+"\n"+
-#if (LIBAVFORMAT_VERSION_INT >= ((52<<16)+(17<<8)+0)) && (LIBAVCODEC_VERSION_INT >= ((51<<16)+(60<<8)+0))
                         QString(tr("Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6"))
                         .arg(LIBAVFORMAT_VERSION_MAJOR)
                         .arg(LIBAVFORMAT_VERSION_MINOR)
@@ -203,7 +203,6 @@ void DecoderFFmpegFactory::showAbout(QWidget *parent)
                         .arg(LIBAVCODEC_VERSION_MAJOR)
                         .arg(LIBAVCODEC_VERSION_MINOR)
                         .arg(LIBAVCODEC_VERSION_MICRO)+"\n"+
-#endif
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>"));
 }
 

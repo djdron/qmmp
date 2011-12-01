@@ -34,7 +34,7 @@ class DecoderFFmpegFactory : public QObject,
                           DecoderFactory
 {
 Q_OBJECT
-Q_INTERFACES(DecoderFactory);
+Q_INTERFACES(DecoderFactory)
 
 public:
     bool supports(const QString &source) const;

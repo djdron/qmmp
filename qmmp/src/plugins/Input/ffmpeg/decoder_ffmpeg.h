@@ -25,6 +25,7 @@ extern "C"{
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
 #include <libavutil/mathematics.h>
+#include <libavutil/dict.h>
 }
 #include <qmmp/decoder.h>
 
