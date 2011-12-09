@@ -58,6 +58,7 @@ SET(libffap_MOC_HDRS
 IF(CMAKE_SYSTEM_PROCESSOR MATCHES "^(i.86|x86_64)$")
   set(CMAKE_ASM_NASM_COMPILER "yasm")
   enable_language(ASM_NASM)
+  ADD_DEFINITIONS(-DHAVE_SSE2)
   SET(libffap_SRCS ${libffap_SRCS} dsputil_yasm.asm x86inc.asm)
   IF(CMAKE_SYSTEM_PROCESSOR MATCHES "^(i.86)$")
      ADD_DEFINITIONS(-DARCH_X86_32)
