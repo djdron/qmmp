@@ -29,11 +29,11 @@ contains(QMAKE_CXXFLAGS, -m32)|contains(QMAKE_CXXFLAGS, -m64) {
   contains(QMAKE_CXXFLAGS, -m32) {
     message(Architecture is x86)
     DEFINES += ARCH_X86_32
-    asm_compiler.commands += -f elf -m x86
+    asm_compiler.commands += -f elf -m x86 -DARCH_X86_32
   } else:contains(QMAKE_CXXFLAGS, -m64) {
     message(Architecture is x86_64)
     DEFINES += ARCH_X86_64
-    asm_compiler.commands += -f elf64 -m amd64
+    asm_compiler.commands += -f elf64 -m amd64 -DARCH_X86_64 -DPIC
   }
 } else {
   message(Architecture is unknown)
