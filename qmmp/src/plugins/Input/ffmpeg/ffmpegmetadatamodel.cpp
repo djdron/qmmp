@@ -23,12 +23,14 @@
 FFmpegMetaDataModel::FFmpegMetaDataModel(const QString &path, QObject *parent) : MetaDataModel(parent)
 {
     m_in = 0;
-    avcodec_init();
     avcodec_register_all();
+    avformat_network_init();
     av_register_all();
+
+
     if (avformat_open_input(&m_in, path.toLocal8Bit().constData(), 0, 0) < 0)
         return;
-    av_find_stream_info(m_in);
+    avformat_find_stream_info(m_in, 0);
     av_read_play(m_in);
 }
 
@@ -46,7 +48,7 @@ QHash<QString, QString> FFmpegMetaDataModel::audioProperties()
     QString text = QString("%1").arg(int(m_in->duration/AV_TIME_BASE)/60);
     text +=":"+QString("%1").arg(int(m_in->duration/AV_TIME_BASE)%60,2,10,QChar('0'));
     ap.insert(tr("Length"), text);
-    ap.insert(tr("File size"),  QString("%1 ").arg(m_in->file_size/1024)+" "+tr("KB"));
+    ap.insert(tr("File size"),  QString("%1 ").arg(avio_size(m_in->pb)) + " " + tr("KB"));
     ap.insert(tr("Bitrate"), QString("%1 "+tr("kbps")).arg(m_in->bit_rate/1000));
 
     AVCodecContext *c = 0;

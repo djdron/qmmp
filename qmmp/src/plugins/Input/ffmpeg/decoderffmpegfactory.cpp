@@ -126,8 +126,8 @@ Decoder *DecoderFFmpegFactory::create(const QString &path, QIODevice *input)
 QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, bool useMetaData)
 {
     QList <FileInfo*> list;
-    avcodec_init();
     avcodec_register_all();
+    avformat_network_init();
     av_register_all();
     AVFormatContext *in = 0;
 
@@ -137,7 +137,7 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
         return list;
     }
     FileInfo *info = new FileInfo(fileName);
-    av_find_stream_info(in);
+    avformat_find_stream_info(in, 0);
 
     if (useMetaData)
     {

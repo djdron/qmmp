@@ -48,26 +48,21 @@ public:
 private:
     //helper functions
     void fillBuffer();
-    qint64 ffmpeg_decode(uint8_t *audio);
+    qint64 ffmpeg_decode();
 
     AVFormatContext *ic;
     AVCodecContext *c;
     uint wma_st_buff, wma_idx2;
     int m_bitrate, wma_idx;
     QString m_path;
-    bool m_skip;
     qint64 m_totalTime;
 
     AVPacket m_pkt;
     AVPacket m_temp_pkt;
 
-#if (LIBAVCODEC_VERSION_INT >= ((52<<16)+(102<<8)+0))
     AVIOContext *m_stream;
-#else
-    ByteIOContext *m_stream;
-#endif
+    AVFrame *m_decoded_frame;
 
-    uint8_t *m_output_buf;
     qint64 m_output_at;
     uchar m_input_buf[INPUT_BUFFER_SIZE + FF_INPUT_BUFFER_PADDING_SIZE];
 
