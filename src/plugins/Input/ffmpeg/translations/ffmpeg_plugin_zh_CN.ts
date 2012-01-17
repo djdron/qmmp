@@ -4,32 +4,32 @@
 <context>
     <name>DecoderFFmpegFactory</name>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="198"/>
+        <location filename="../decoderffmpegfactory.cpp" line="256"/>
         <source>About FFmpeg Audio Plugin</source>
         <translation>关于 FFmpeg 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="200"/>
+        <location filename="../decoderffmpegfactory.cpp" line="258"/>
         <source>Qmmp FFmpeg Audio Plugin</source>
         <translation>Qmmp FFmpeg 音频插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="208"/>
+        <location filename="../decoderffmpegfactory.cpp" line="266"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>作者：Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="91"/>
+        <location filename="../decoderffmpegfactory.cpp" line="93"/>
         <source>FFmpeg Plugin</source>
         <translation>FFmpeg 插件</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="93"/>
+        <location filename="../decoderffmpegfactory.cpp" line="95"/>
         <source>FFmpeg Formats</source>
         <translation>FFmpeg 格式</translation>
     </message>
     <message>
-        <location filename="../decoderffmpegfactory.cpp" line="201"/>
+        <location filename="../decoderffmpegfactory.cpp" line="259"/>
         <source>Compiled against libavformat-%1.%2.%3 and libavcodec-%4.%5.%6</source>
         <translation>编译依赖 libavformat-%1.%2.%3 和 libavcodec-%4.%5.%6</translation>
     </message>
@@ -37,42 +37,50 @@
 <context>
     <name>FFmpegMetaDataModel</name>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="48"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="52"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="99"/>
         <source>Length</source>
         <translation>长度</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="49"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="53"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="100"/>
         <source>File size</source>
         <translation>文件大小</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="49"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="53"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="100"/>
         <source>KB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="50"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="101"/>
         <source>Bitrate</source>
         <translation>比特率</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="50"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="54"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="101"/>
         <source>kbps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="62"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="117"/>
         <source>Sample rate</source>
         <translation>取样率</translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="62"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="66"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="117"/>
         <source>Hz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ffmpegmetadatamodel.cpp" line="63"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="67"/>
+        <location filename="../ffmpegmetadatamodel.cpp" line="118"/>
         <source>Channels</source>
         <translation>声音通道</translation>
     </message>
