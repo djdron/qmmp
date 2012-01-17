@@ -177,7 +177,7 @@ QList<FileInfo *> DecoderFFmpegFactory::createPlayList(const QString &fileName, 
             info->setMetaData(Qmmp::TRACK, track->value);
     }
     info->setLength(in->duration/AV_TIME_BASE);
-    av_close_input_file(in);
+    avformat_close_input(&in);
     list << info;
     return list;
 }
