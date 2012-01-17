@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009-2011 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -24,7 +24,9 @@
 extern "C"{
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
+#if (LIBAVUTIL_VERSION_INT >= ((51<<16)+(32<<8)+0))
 #include <libavutil/dict.h>
+#endif
 }
 
 #include <qmmp/metadatamodel.h>
