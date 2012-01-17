@@ -37,7 +37,7 @@ FFmpegMetaDataModel::FFmpegMetaDataModel(const QString &path, QObject *parent) :
 FFmpegMetaDataModel::~FFmpegMetaDataModel()
 {
     if(m_in)
-        av_close_input_file(m_in);
+        avformat_close_input(&m_in);
 }
 
 QHash<QString, QString> FFmpegMetaDataModel::audioProperties()
