@@ -348,7 +348,11 @@ void Output::run()
     if(m_finish)
     {
         drain();
+#ifdef Q_OS_WIN
+        qDebug("Output: total written %I64d", m_totalWritten);
+#else
         qDebug("Output: total written %lld", m_totalWritten);
+#endif
     }
     dispatch(Qmmp::Stopped);
     mutex()->unlock();

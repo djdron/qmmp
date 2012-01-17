@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -42,10 +42,10 @@ public:
 private:
     //output api
     qint64 writeAudio(unsigned char *data, qint64 size);
-    void drain(){};
-    void suspend(){};
-    void resume(){};
-    void reset(){}; 
+    void drain();
+    void suspend();
+    void resume();
+    void reset(); 
 
     // helper functions
     void status();

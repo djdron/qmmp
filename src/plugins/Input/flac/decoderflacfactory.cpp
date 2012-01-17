@@ -102,13 +102,13 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
 
     if(fileName.endsWith(".flac", Qt::CaseInsensitive))
     {
-        flacFile = new TagLib::FLAC::File(fileName.toLocal8Bit ());
+        flacFile = new TagLib::FLAC::File(fileName.toLocal8Bit().constData());
         tag = useMetaData ? flacFile->xiphComment() : 0;
         ap = flacFile->audioProperties();
     }
     else if(fileName.endsWith(".oga", Qt::CaseInsensitive))
     {
-        oggFlacFile = new TagLib::Ogg::FLAC::File(fileName.toLocal8Bit ());
+        oggFlacFile = new TagLib::Ogg::FLAC::File(fileName.toLocal8Bit().constData());
         tag = useMetaData ? oggFlacFile->tag() : 0;
         ap = oggFlacFile->audioProperties();
     }

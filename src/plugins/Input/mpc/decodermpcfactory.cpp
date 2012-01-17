@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -75,7 +75,7 @@ QList<FileInfo *> DecoderMPCFactory::createPlayList(const QString &fileName, boo
 {
     FileInfo *info = new FileInfo(fileName);
 
-    TagLib::MPC::File fileRef(fileName.toLocal8Bit ());
+    TagLib::MPC::File fileRef(fileName.toLocal8Bit().constData());
     TagLib::APE::Tag *tag = useMetaData ? fileRef.APETag() : 0;
     if (tag && !tag->isEmpty())
     {

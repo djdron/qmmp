@@ -3,9 +3,10 @@ include(../../../qmmp.pri)
 CONFIG += release warn_on
 TEMPLATE = subdirs
 win32:SUBDIRS += waveout
-unix{
 
 SUBDIRS += null
+
+unix{
 
 contains(CONFIG, JACK_PLUGIN){
     SUBDIRS += jack

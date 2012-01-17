@@ -11,7 +11,7 @@ SOURCES += decoder_wavpack.cpp \
     wavpackmetadatamodel.cpp \
     replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/wavpack
-QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libwavpack.so
+
 INCLUDEPATH += ../../../
 CONFIG += release \
     warn_on \
@@ -19,10 +19,8 @@ CONFIG += release \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp \
-    -L/usr/lib \
-    -I/usr/include
-PKGCONFIG += wavpack
+
+
 TRANSLATIONS = translations/wavpack_plugin_cs.ts \
     translations/wavpack_plugin_de.ts \
     translations/wavpack_plugin_zh_CN.ts \
@@ -38,6 +36,21 @@ TRANSLATIONS = translations/wavpack_plugin_cs.ts \
     translations/wavpack_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
-isEmpty (LIB_DIR):LIB_DIR = /lib
-target.path = $$LIB_DIR/qmmp/Input
-INSTALLS += target
+
+unix {
+    isEmpty(LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR/qmmp/Input
+    INSTALLS += target
+
+    QMAKE_LIBDIR += ../../../../lib
+    LIBS += -lqmmp
+    PKGCONFIG += wavpack
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libwavpack.so
+}
+
+win32 {
+    HEADERS += ../../../../src/qmmp/metadatamodel.h \
+               ../../../../src/qmmp/decoderfactory.h
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lwavpack
+}

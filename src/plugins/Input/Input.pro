@@ -1,21 +1,21 @@
 include(../../../qmmp.pri)
 
-SUBDIRS += mad cue
+SUBDIRS += mad cue vorbis sndfile wavpack
 TEMPLATE = subdirs
 
-unix{
-SUBDIRS += vorbis sndfile wavpack
-contains(CONFIG, MODPLUG_PLUGIN){
-    SUBDIRS += modplug
+contains(CONFIG, FLAC_PLUGIN){
+    SUBDIRS += flac
 }
 
 contains(CONFIG, MUSEPACK_PLUGIN){
     SUBDIRS += mpc
 }
 
-contains(CONFIG, FLAC_PLUGIN){
-    SUBDIRS += flac
+contains(CONFIG, MODPLUG_PLUGIN){
+    SUBDIRS += modplug
 }
+
+unix{
 
 contains(CONFIG, FFMPEG_PLUGIN){
    SUBDIRS += ffmpeg

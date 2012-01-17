@@ -8,7 +8,6 @@ SOURCES += outputnullfactory.cpp \
 
 
 TARGET=$$PLUGINS_PREFIX/Output/null
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Output/libnull.so
 
 INCLUDEPATH += ../../../
 QMAKE_LIBDIR += ../../../../lib
@@ -19,8 +18,6 @@ thread \
 plugin
 
 TEMPLATE = lib
-LIBS += -lqmmp
-
 
 TRANSLATIONS = translations/null_plugin_cs.ts \
                translations/null_plugin_de.ts \
@@ -38,9 +35,18 @@ TRANSLATIONS = translations/null_plugin_cs.ts \
 
 RESOURCES = translations/translations.qrc
 
-isEmpty (LIB_DIR){
-LIB_DIR = /lib
+unix {
+    isEmpty (LIB_DIR){
+    LIB_DIR = /lib
+    }
+
+    target.path = $$LIB_DIR/qmmp/Output
+    INSTALLS += target
+    LIBS += -lqmmp
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/Output/libnull.so
 }
 
-target.path = $$LIB_DIR/qmmp/Output
-INSTALLS += target
+win32 {
+    LIBS += -lqmmp0
+    QMAKE_LIBDIR += ../../../../bin
+}
