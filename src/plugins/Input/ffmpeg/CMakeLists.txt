@@ -28,7 +28,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../../../)
 link_directories(${CMAKE_CURRENT_BINARY_DIR}/../../../qmmp)
 
 # ffmpeg
-pkg_check_modules(FFMPEG libavcodec>=53.42.4 libavformat>=53.24.2 libavutil>=51.32.0)
+pkg_check_modules(FFMPEG libavcodec>=52.72.2 libavformat>=52.64.2 libavutil>=50.15.1)
 
 include_directories(${FFMPEG_INCLUDE_DIRS})
 link_directories(${FFMPEG_LIBRARY_DIRS})
