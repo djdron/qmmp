@@ -9,7 +9,7 @@ SOURCES += decoder_vorbis.cpp \
     vorbismetadatamodel.cpp \
     replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/vorbis
-QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libvorbis.so
+
 INCLUDEPATH += ../../../
 CONFIG += release \
     warn_on \
@@ -17,12 +17,8 @@ CONFIG += release \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp \
-    -L/usr/lib
-PKGCONFIG += taglib \
-    ogg \
-    vorbisfile \
-    vorbis
+
+
 TRANSLATIONS = translations/vorbis_plugin_ru.ts \
     translations/vorbis_plugin_uk_UA.ts \
     translations/vorbis_plugin_zh_CN.ts \
@@ -38,6 +34,21 @@ TRANSLATIONS = translations/vorbis_plugin_ru.ts \
     translations/vorbis_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
-isEmpty (LIB_DIR):LIB_DIR = /lib
-target.path = $$LIB_DIR/qmmp/Input
-INSTALLS += target
+
+unix {
+    isEmpty (LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR/qmmp/Input
+    INSTALLS += target
+
+    PKGCONFIG += taglib ogg vorbisfile vorbis
+    LIBS += -lqmmp
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libvorbis.so
+}
+
+win32 {
+    HEADERS += ../../../../src/qmmp/metadatamodel.h \
+               ../../../../src/qmmp/decoderfactory.h
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lvorbisfile -lvorbis -logg -ltag.dll -lm
+    LD_FLAGS += -no-undefined
+}

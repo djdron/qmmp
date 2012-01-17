@@ -43,7 +43,7 @@ VorbisMetaDataModel::~VorbisMetaDataModel()
 QHash<QString, QString> VorbisMetaDataModel::audioProperties()
 {
     QHash<QString, QString> ap;
-    TagLib::Ogg::Vorbis::File f (m_path.toLocal8Bit());
+    TagLib::Ogg::Vorbis::File f (m_path.toLocal8Bit().constData());
     if(f.audioProperties())
     {
         QString text = QString("%1").arg(f.audioProperties()->length()/60);
@@ -208,6 +208,6 @@ void VorbisCommentModel::save()
     //taglib bug workarround
     QString path = QString::fromLocal8Bit(m_file->name());
     delete m_file;
-    m_file = new TagLib::Ogg::Vorbis::File(path.toLocal8Bit());
+    m_file = new TagLib::Ogg::Vorbis::File(path.toLocal8Bit().constData());
     m_tag = m_file->tag();
 }

@@ -1,10 +1,15 @@
 include (../../../qmmp.pri)
 TEMPLATE = subdirs
 
-SUBDIRS += srconverter crossfade stereo
+SUBDIRS += crossfade stereo
+
 contains(CONFIG, BS2B_PLUGIN){
 SUBDIRS += bs2b
 }
-contains(CONFIG, LADSPA_PLUGIN){
-SUBDIRS += ladspa
+
+unix {
+    SUBDIRS += srconverter
+    contains(CONFIG, LADSPA_PLUGIN){
+    SUBDIRS += ladspa
+    }
 }

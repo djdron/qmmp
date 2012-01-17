@@ -13,25 +13,16 @@ SOURCES += decoder_mad.cpp \
     mpegmetadatamodel.cpp \
     replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/mad
-unix:QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmad.so
-INCLUDEPATH += ../../../ \
-    ./
-win32:INCLUDEPATH += D:\qt4\MINGW\include\taglib
+
+INCLUDEPATH += ../../../
+
 CONFIG += release \
     warn_on \
     plugin \
     link_pkgconfig
 TEMPLATE = lib
-unix:QMAKE_LIBDIR += ../../../../lib
-win32:QMAKE_LIBDIR += ../../../../bin
-unix:LIBS += -lqmmp \
-    -lmad
-unix:PKGCONFIG += taglib \
-    mad
-win32:LIBS += -lqmmp0 \
-    -lmad \
-    -ltag.dll \
-    -ltag_c.dll
+
+
 TRANSLATIONS = translations/mad_plugin_ru.ts \
     translations/mad_plugin_uk_UA.ts \
     translations/mad_plugin_zh_CN.ts \
@@ -52,6 +43,16 @@ unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
     target.path = $$LIB_DIR/qmmp/Input
     INSTALLS += target
+
+    QMAKE_LIBDIR += ../../../../lib
+    LIBS += -lqmmp -lmad
+    PKGCONFIG += taglib mad
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmad.so
 }
-win32:HEADERS += ../../../../src/qmmp/metadatamodel.h \
-    ../../../../src/qmmp/decoderfactory.h
+
+win32 {
+    HEADERS += ../../../../src/qmmp/metadatamodel.h \
+               ../../../../src/qmmp/decoderfactory.h
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lmad -ltag.dll
+}

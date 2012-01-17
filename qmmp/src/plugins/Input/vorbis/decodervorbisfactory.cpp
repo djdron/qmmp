@@ -78,7 +78,7 @@ QList<FileInfo *> DecoderVorbisFactory::createPlayList(const QString &fileName, 
 {
     FileInfo *info = new FileInfo(fileName);
 
-    TagLib::Ogg::Vorbis::File fileRef(fileName.toLocal8Bit ());
+    TagLib::Ogg::Vorbis::File fileRef(fileName.toLocal8Bit().constData());
     TagLib::Ogg::XiphComment *tag = useMetaData ? fileRef.tag() : 0;
 
     if (tag && !tag->isEmpty())

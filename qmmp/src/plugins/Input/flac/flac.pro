@@ -11,7 +11,7 @@ SOURCES += decoder_flac.cpp \
     flacmetadatamodel.cpp \
     replaygainreader.cpp
 TARGET = $$PLUGINS_PREFIX/Input/flac
-QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libflac.so
+
 INCLUDEPATH += ../../../
 CONFIG += release \
     warn_on \
@@ -19,11 +19,8 @@ CONFIG += release \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp \
-    -L/usr/lib \
-    -I/usr/include
-PKGCONFIG += taglib \
-    flac
+
+
 TRANSLATIONS = translations/flac_plugin_ru.ts \
     translations/flac_plugin_uk_UA.ts \
     translations/flac_plugin_zh_CN.ts \
@@ -39,6 +36,19 @@ TRANSLATIONS = translations/flac_plugin_ru.ts \
     translations/flac_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
-isEmpty(LIB_DIR):LIB_DIR = /lib
-target.path = $$LIB_DIR/qmmp/Input
-INSTALLS += target
+
+unix {
+    isEmpty(LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR/qmmp/Input
+    INSTALLS += target
+    PKGCONFIG += taglib flac
+    LIBS += -lqmmp
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libflac.so
+}
+
+win32 {
+    HEADERS += ../../../../src/qmmp/metadatamodel.h \
+               ../../../../src/qmmp/decoderfactory.h
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lflac -logg -ltag.dll -lm
+}

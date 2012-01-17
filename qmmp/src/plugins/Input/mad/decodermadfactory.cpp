@@ -224,7 +224,7 @@ void DecoderMADFactory::showAbout(QWidget *parent)
                         .arg(MAD_VERSION_MINOR)
                         .arg(MAD_VERSION_PATCH).arg(MAD_VERSION_EXTRA)+"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")+"\n"+
-                        tr("Source code based on mq3 and madplay progects")
+                        tr("Source code based on mq3 and madplay projects")
                        );
 }
 

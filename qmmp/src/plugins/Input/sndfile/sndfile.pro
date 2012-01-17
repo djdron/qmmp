@@ -6,18 +6,19 @@ SOURCES += decoder_sndfile.cpp \
            decodersndfilefactory.cpp
 
 TARGET=$$PLUGINS_PREFIX/Input/sndfile
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libsndfile.so
+
 
 INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin \
 link_pkgconfig
-TEMPLATE = lib
-QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp -L/usr/lib -I/usr/include
 
-PKGCONFIG += sndfile
+TEMPLATE = lib
+
+QMAKE_LIBDIR += ../../../../lib
+
+
 TRANSLATIONS = translations/sndfile_plugin_cs.ts \
                translations/sndfile_plugin_de.ts \
                translations/sndfile_plugin_zh_CN.ts \
@@ -34,8 +35,20 @@ TRANSLATIONS = translations/sndfile_plugin_cs.ts \
 
 RESOURCES = translations/translations.qrc
 
-isEmpty (LIB_DIR){
-LIB_DIR = /lib
+unix {
+    isEmpty(LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR/qmmp/Input
+    INSTALLS += target
+
+    QMAKE_LIBDIR += ../../../../lib
+    LIBS += -lqmmp
+    PKGCONFIG += sndfile
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/Input/libsndfile.so
 }
-target.path = $$LIB_DIR/qmmp/Input
-INSTALLS += target
+
+win32 {
+    HEADERS += ../../../../src/qmmp/metadatamodel.h \
+               ../../../../src/qmmp/decoderfactory.h
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lsndfile -lflac -lvorbisenc -lvorbis -logg
+}

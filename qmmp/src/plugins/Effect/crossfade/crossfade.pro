@@ -9,7 +9,7 @@ SOURCES += crossfadeplugin.cpp \
            settingsdialog.cpp
 
 TARGET =$$PLUGINS_PREFIX/Effect/crossfade
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Effect/libcrossfade.so
+
 INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
@@ -17,7 +17,7 @@ plugin
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp -L/usr/lib -I/usr/include
+
 
 TRANSLATIONS = translations/crossfade_plugin_cs.ts \
                translations/crossfade_plugin_de.ts \
@@ -34,11 +34,21 @@ TRANSLATIONS = translations/crossfade_plugin_cs.ts \
                translations/crossfade_plugin_es.ts
 RESOURCES = translations/translations.qrc
 
-isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
-target.path = $$LIB_DIR/qmmp/Effect
-INSTALLS += target
-
-
 FORMS += settingsdialog.ui
+
+unix {
+    isEmpty(LIB_DIR){
+        LIB_DIR = /lib
+    }
+    target.path = $$LIB_DIR/qmmp/Effect
+    INSTALLS += target
+
+    LIBS += -lqmmp -L/usr/lib -I/usr/include
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/Effect/libcrossfade.so
+}
+
+win32 {
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0
+}
+

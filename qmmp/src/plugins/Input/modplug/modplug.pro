@@ -11,7 +11,7 @@ SOURCES += decoder_modplug.cpp \
     archivereader.cpp \
     modplugmetadatamodel.cpp
 TARGET = $$PLUGINS_PREFIX/Input/modplug
-QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmodplug.so
+
 DEFINES += HAVE_STDINT_H \
     HAVE_INTTYPES_H
 INCLUDEPATH += ../../../
@@ -21,10 +21,8 @@ CONFIG += release \
     link_pkgconfig
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp \
-    -L/usr/lib \
-    -I/usr/include
-PKGCONFIG += libmodplug
+
+
 TRANSLATIONS = translations/modplug_plugin_cs.ts \
     translations/modplug_plugin_de.ts \
     translations/modplug_plugin_zh_CN.ts \
@@ -43,3 +41,22 @@ RESOURCES = translations/translations.qrc
 isEmpty(LIB_DIR):LIB_DIR = /lib
 target.path = $$LIB_DIR/qmmp/Input
 INSTALLS += target
+
+unix {
+    isEmpty(LIB_DIR):LIB_DIR = /lib
+    target.path = $$LIB_DIR/qmmp/Input
+    INSTALLS += target
+
+    QMAKE_LIBDIR += ../../../../lib
+    LIBS += -lqmmp
+    PKGCONFIG += libmodplug
+    QMAKE_CLEAN = $$PLUGINS_PREFIX/Input/libmodplug.so
+}
+
+win32 {
+    HEADERS += ../../../../src/qmmp/metadatamodel.h \
+               ../../../../src/qmmp/decoderfactory.h
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lmodplug
+    DEFINES -= UNICODE
+}

@@ -9,17 +9,17 @@ SOURCES += bs2bplugin.cpp \
            settingsdialog.cpp
 
 TARGET =$$PLUGINS_PREFIX/Effect/bs2b
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Effect/libbs2b.so
+
 INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
 plugin \
 link_pkgconfig
 
-PKGCONFIG += libbs2b
+
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp -L/usr/lib -I/usr/include
+
 
 TRANSLATIONS = translations/bs2b_plugin_cs.ts \
                translations/bs2b_plugin_de.ts \
@@ -36,11 +36,21 @@ TRANSLATIONS = translations/bs2b_plugin_cs.ts \
                translations/bs2b_plugin_es.ts
 RESOURCES = translations/translations.qrc
 
-isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
-target.path = $$LIB_DIR/qmmp/Effect
-INSTALLS += target
-
-
 FORMS += settingsdialog.ui
+
+unix {
+    isEmpty(LIB_DIR){
+        LIB_DIR = /lib
+    }
+    target.path = $$LIB_DIR/qmmp/Effect
+    INSTALLS += target
+
+    PKGCONFIG += libbs2b
+    LIBS += -lqmmp -L/usr/lib -I/usr/include
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/Effect/libbs2b.so
+}
+
+win32 {
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0 -lbs2b
+}

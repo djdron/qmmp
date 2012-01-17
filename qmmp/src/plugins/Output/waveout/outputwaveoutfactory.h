@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,21 +20,18 @@
 #ifndef OUTPUTPULSEAUDIOFACTORY_H
 #define OUTPUTPULSEAUDIOFACTORY_H
 
-
 #include <QObject>
 #include <QString>
 #include <QIODevice>
 #include <QWidget>
-
 #include <qmmp/output.h>
 #include <qmmp/outputfactory.h>
 
 
-class OutputWaveOutFactory : public QObject,
-                          OutputFactory
+class OutputWaveOutFactory : public QObject, OutputFactory
 {
 Q_OBJECT
-Q_INTERFACES(OutputFactory);
+Q_INTERFACES(OutputFactory)
 
 public:
     const OutputProperties properties() const;
@@ -43,7 +40,6 @@ public:
     void showSettings(QWidget* parent);
     void showAbout(QWidget *parent);
     QTranslator *createTranslator(QObject *parent);
-
 };
 
 #endif

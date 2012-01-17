@@ -3,7 +3,7 @@ include(../../plugins.pri)
 INCLUDEPATH += ../../../../src
 
 TARGET =$$PLUGINS_PREFIX/FileDialogs/qmmpfiledialog
-QMAKE_CLEAN =$$PLUGINS_PREFIX/FileDialogs/libqmmpfiledialog.so
+
 
 HEADERS += qmmpfiledialog.h \
            qmmpfiledialogimpl.h
@@ -14,22 +14,12 @@ SOURCES += qmmpfiledialog.cpp \
 
 FORMS += qmmpfiledialog.ui
 
-
-QMAKE_CLEAN += $$PLUGINS_PREFIX/FileDialogs/libqmmpfiledialog.so
-
-
 CONFIG += release warn_on plugin
 
 TEMPLATE = lib
 
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmpui -lqmmp
 
-isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
-target.path = $$LIB_DIR/qmmp/FileDialogs
-INSTALLS += target
 
 TRANSLATIONS = translations/qmmp_file_dialog_plugin_ru.ts \
                translations/qmmp_file_dialog_plugin_tr.ts \
@@ -47,3 +37,19 @@ TRANSLATIONS = translations/qmmp_file_dialog_plugin_ru.ts \
                translations/qmmp_file_dialog_plugin_es.ts
 
 RESOURCES += translations/translations.qrc
+
+unix {
+    isEmpty(LIB_DIR){
+        LIB_DIR = /lib
+    }
+    target.path = $$LIB_DIR/qmmp/FileDialogs
+    INSTALLS += target
+
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/FileDialogs/libqmmpfiledialog.so
+    LIBS += -lqmmpui -lqmmp
+}
+
+win32 {
+    LIBS += -lqmmpui0 -lqmmp0
+    QMAKE_LIBDIR += ../../../../bin
+}

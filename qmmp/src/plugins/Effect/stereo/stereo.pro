@@ -9,7 +9,7 @@ SOURCES += stereoplugin.cpp \
            settingsdialog.cpp
 
 TARGET =$$PLUGINS_PREFIX/Effect/stereo
-QMAKE_CLEAN =$$PLUGINS_PREFIX/Effect/libstereo.so
+
 INCLUDEPATH += ../../../
 CONFIG += release \
 warn_on \
@@ -17,7 +17,6 @@ plugin
 
 TEMPLATE = lib
 QMAKE_LIBDIR += ../../../../lib
-LIBS += -lqmmp -L/usr/lib -I/usr/include
 
 TRANSLATIONS = translations/stereo_plugin_cs.ts \
                translations/stereo_plugin_de.ts \
@@ -34,11 +33,20 @@ TRANSLATIONS = translations/stereo_plugin_cs.ts \
                translations/stereo_plugin_es.ts
 RESOURCES = translations/translations.qrc
 
-isEmpty(LIB_DIR){
-    LIB_DIR = /lib
-}
-target.path = $$LIB_DIR/qmmp/Effect
-INSTALLS += target
-
-
 FORMS += settingsdialog.ui
+
+unix {
+    isEmpty(LIB_DIR){
+        LIB_DIR = /lib
+    }
+    target.path = $$LIB_DIR/qmmp/Effect
+    INSTALLS += target
+
+    LIBS += -lqmmp -L/usr/lib -I/usr/include
+    QMAKE_CLEAN =$$PLUGINS_PREFIX/Effect/libstereo.so
+}
+
+win32 {
+    QMAKE_LIBDIR += ../../../../bin
+    LIBS += -lqmmp0
+}

@@ -283,10 +283,10 @@ bool DecoderFLAC::initialize()
             p.replace(QString(QUrl::toPercentEncoding("?")), "?");
             p.replace(QString(QUrl::toPercentEncoding("%")), "%");
             p.replace(QString(QUrl::toPercentEncoding(":")), ":");
-            TagLib::FLAC::File fileRef(p.toLocal8Bit ());
+            TagLib::FLAC::File fileRef(p.toLocal8Bit().constData());
             //looking for cuesheet comment
             TagLib::Ogg::XiphComment *xiph_comment = fileRef.xiphComment();
-            QList <FileInfo*> list;
+
             if (xiph_comment && xiph_comment->fieldListMap().contains("CUESHEET"))
             {
                 qDebug("DecoderFLAC: using cuesheet xiph comment.");

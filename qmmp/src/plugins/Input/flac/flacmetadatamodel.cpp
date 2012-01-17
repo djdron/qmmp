@@ -62,13 +62,13 @@ QHash<QString, QString> FLACMetaDataModel::audioProperties()
     qint64 size = 0;
     if(m_path.endsWith(".flac"))
     {
-        flacFile = new TagLib::FLAC::File(m_path.toLocal8Bit ());
+        flacFile = new TagLib::FLAC::File(m_path.toLocal8Bit().constData());
         taglib_ap = flacFile->audioProperties();
         size = flacFile->length();
     }
     else if(m_path.endsWith(".oga"))
     {
-        oggFlacFile = new TagLib::Ogg::FLAC::File(m_path.toLocal8Bit ());
+        oggFlacFile = new TagLib::Ogg::FLAC::File(m_path.toLocal8Bit().constData());
         taglib_ap = oggFlacFile->audioProperties();
         size = oggFlacFile->length();
     }

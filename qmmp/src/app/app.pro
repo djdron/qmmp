@@ -31,6 +31,9 @@ unix:LIBS += -L../../lib \
 win32:LIBS += -L../../bin \
     -lqmmp0 \
     -lqmmpui0
+
+win32:RC_FILE = images/56x56/icon.rc
+
 INCLUDEPATH += ../
 RESOURCES = images/images.qrc
 TEMPLATE = app
