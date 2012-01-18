@@ -49,9 +49,10 @@ void Qmmp::setConfigFile(const QString &path)
 const QString Qmmp::strVersion()
 {
 #ifdef SVN_REVISION
-    return QString("%1-%2").arg(QMMP_STR_VERSION).arg(SVN_REVISION);
+    return QString("%1.%2.%3-%4").arg(QMMP_VERSION_MAJOR).arg(QMMP_VERSION_MINOR).arg(QMMP_VERSION_PATCH)
+            .arg(SVN_REVISION);
 #else
-    return QMMP_STR_VERSION;
+    return QString("%1.%2.%3").arg(QMMP_VERSION_MAJOR).arg(QMMP_VERSION_MINOR).arg(QMMP_VERSION_PATCH);
 #endif
 }
 
