@@ -38,9 +38,6 @@ TRANSLATIONS = translations/modplug_plugin_cs.ts \
     translations/modplug_plugin_es.ts
 
 RESOURCES = translations/translations.qrc
-isEmpty(LIB_DIR):LIB_DIR = /lib
-target.path = $$LIB_DIR/qmmp/Input
-INSTALLS += target
 
 unix {
     isEmpty(LIB_DIR):LIB_DIR = /lib
