@@ -36,7 +36,7 @@
     <message>
         <location filename="../decodermadfactory.cpp" line="227"/>
         <source>Source code based on mq3 and madplay projects</source>
-        <translation type="unfinished"></translation>
+        <translation>Вихідні коди базуються на проектах mq3 та madplay</translation>
     </message>
 </context>
 <context>
