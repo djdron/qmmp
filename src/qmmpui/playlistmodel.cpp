@@ -906,10 +906,12 @@ void PlayListModel::removeDuplicates()
 {
     for(int i = 0; i < m_items.size(); ++i)
     {
-        for(int j = i + 1; j < m_items.size(); ++j)
+        int j = m_items.size() - 1;
+        while(j > i)
         {
             if(m_items.at(i)->url() == m_items.at(j)->url())
                 removeItem(m_items.at(j));
+            j--;
         }
     }
 }
