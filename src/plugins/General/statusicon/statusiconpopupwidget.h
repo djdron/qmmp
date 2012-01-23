@@ -2,7 +2,7 @@
  *   Copyright (C) 2009 by Artur Guzik                                     *
  *   a.guzik88@gmail.com                                                   *
  *                                                                         *
- *   Copyright (C) 2009-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2009-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
