@@ -260,14 +260,15 @@ void QMMPStarter::printUsage()
     cout << "--------" << endl;
     cout << qPrintable(m_option_manager->helpString()) << endl;
     CommandLineManager::printUsage();
-    cout << "--no-start           " << qPrintable(tr("Don't start the application")) << endl;
-    cout << "--help               " << qPrintable(tr("Display this text and exit")) << endl;
-    cout << "--version            " << qPrintable(tr("Print version number and exit")) << endl;
+    cout << "--no-start               " << qPrintable(tr("Don't start the application")) << endl;
+    cout << "--help                   " << qPrintable(tr("Display this text and exit")) << endl;
+    cout << "--version                " << qPrintable(tr("Print version number and exit")) << endl;
     cout << qPrintable(tr("Ideas, patches, bugreports send to forkotov02@hotmail.ru")) << endl;
 }
 
 void QMMPStarter::printVersion()
 {
-    cout << qPrintable(tr("QMMP version:")) << " " << qPrintable(Qmmp::strVersion()) << endl;
-    cout << qPrintable(tr("Qt version:")) << " " << QT_VERSION_STR << endl;
+    cout << qPrintable(tr("QMMP version: %1").arg(Qmmp::strVersion())) << endl;
+    cout << qPrintable(tr("Compiled with Qt version: %1").arg(QT_VERSION_STR)) << endl;
+    cout << qPrintable(tr("Using Qt version: %1").arg(qVersion())) << endl;
 }

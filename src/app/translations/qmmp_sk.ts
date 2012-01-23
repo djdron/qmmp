@@ -97,6 +97,21 @@
         <translation>Nápady, záplaty, hlásenie chýb posílejte na forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="271"/>
+        <source>QMMP version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="272"/>
+        <source>Compiled with Qt version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="273"/>
+        <source>Using Qt version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qmmpstarter.cpp" line="264"/>
         <source>Display this text and exit</source>
         <translation>Zobraziť tento text a skončiť</translation>
@@ -105,16 +120,6 @@
         <location filename="../qmmpstarter.cpp" line="79"/>
         <source>Unknown command</source>
         <translation>Neznámý príkaz</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="271"/>
-        <source>QMMP version:</source>
-        <translation>Verzia QMMP:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="272"/>
-        <source>Qt version:</source>
-        <translation>Verzia Qt:</translation>
     </message>
 </context>
 </TS>

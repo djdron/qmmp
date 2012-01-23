@@ -36,10 +36,10 @@ bool StatusOption::identify(const QString &str) const
 const QString StatusOption::helpString() const
 {
     QString help;
-    help += QString("--status             ") + tr("Print playback status") + "\n";
-    help += QString("--nowplaying <fmt>   ")
+    help += QString("--status                 ") + tr("Print playback status") + "\n";
+    help += QString("--nowplaying <fmt>       ")
             + tr("Print formatted track name (example: qmmp --nowplaying \"%t - %a\")") + "\n";
-    help += QString("--nowplaying-syntax  ") + tr("Print --nowplaying syntax") + "\n";
+    help += QString("--nowplaying-syntax      ") + tr("Print --nowplaying syntax") + "\n";
     return  help;
 }
 

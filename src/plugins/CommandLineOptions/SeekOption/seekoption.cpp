@@ -35,9 +35,9 @@ bool SeekOption::identify(const QString &str) const
 const QString SeekOption::helpString() const
 {
     QString help;
-    help += QString("--seek <time>        ") + tr("Seek to position in the current track") + "\n";
-    help += QString("--seek-fwd <time>    ") + tr("Seek forward") + "\n";
-    help += QString("--seek-bwd <time>    ") + tr("Seek backwards") + "\n";
+    help += QString("--seek <time>            ") + tr("Seek to position in the current track") + "\n";
+    help += QString("--seek-fwd <time>        ") + tr("Seek forward") + "\n";
+    help += QString("--seek-bwd <time>        ") + tr("Seek backwards") + "\n";
     return  help;
 }
 

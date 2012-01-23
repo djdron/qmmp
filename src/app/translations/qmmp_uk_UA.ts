@@ -97,6 +97,21 @@
         <translation>Ідеї, виправлення, звіти про помилки:  forkotov02@hotmail.ru</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="271"/>
+        <source>QMMP version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="272"/>
+        <source>Compiled with Qt version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="273"/>
+        <source>Using Qt version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qmmpstarter.cpp" line="264"/>
         <source>Display this text and exit</source>
         <translation>Показати цей текст та вийти</translation>
@@ -105,16 +120,6 @@
         <location filename="../qmmpstarter.cpp" line="79"/>
         <source>Unknown command</source>
         <translation>Невідома команда</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="271"/>
-        <source>QMMP version:</source>
-        <translation>Версія QMMP:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="272"/>
-        <source>Qt version:</source>
-        <translation>Версія Qt:</translation>
     </message>
 </context>
 </TS>

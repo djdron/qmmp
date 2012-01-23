@@ -108,13 +108,18 @@
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="271"/>
-        <source>QMMP version:</source>
-        <translation>QMMP verzió:</translation>
+        <source>QMMP version: %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="272"/>
-        <source>Qt version:</source>
-        <translation>Qt verzió:</translation>
+        <source>Compiled with Qt version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="273"/>
+        <source>Using Qt version: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
