@@ -32,6 +32,7 @@ bool PlayListOption::identify(const QString & str) const
     return  str == QString("--pl-help") ||
             str == QString("--pl-list") ||
             str == QString("--pl-dump") ||
+            str == QString("--pl-play") ||
             str == QString("--pl-clear") ||
             str == QString("--pl-repeat-toggle") ||
             str == QString("--pl-shuffle-toggle") ||
@@ -41,7 +42,7 @@ bool PlayListOption::identify(const QString & str) const
 const QString PlayListOption::helpString() const
 {
     return QString(
-                "--pl-help            " + tr("Show playlist manipulation commands")+"\n"
+                "--pl-help                " + tr("Show playlist manipulation commands")+"\n"
                 );
 }
 
@@ -54,12 +55,13 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
 
     if(opt_str == "--pl-help")
     {
-        out = "--pl-list            " + tr("List all available playlists")+"\n"+
-              "--pl-dump <id>       " + tr("Show playlist content")+"\n" +
-              "--pl-clear <id>      " + tr("Clear playlist")+"\n"+
-              "--pl-repeat-toggle   " + tr("Toggle playlist repeat")+"\n"+
-              "--pl-shuffle-toggle  " + tr("Toggle playlist shuffle")+"\n"+
-              "--pl-state           " + tr("Show playlist options")+"\n";
+        out = "--pl-list                " + tr("List all available playlists")+"\n"+
+              "--pl-dump <id>           " + tr("Show playlist content")+"\n" +
+              "--pl-play <id> <track>   " + tr("Play track <track> in playlist <id>")+"\n" +
+              "--pl-clear <id>          " + tr("Clear playlist")+"\n"+
+              "--pl-repeat-toggle       " + tr("Toggle playlist repeat")+"\n"+
+              "--pl-shuffle-toggle      " + tr("Toggle playlist shuffle")+"\n"+
+              "--pl-state               " + tr("Show playlist options")+"\n";
     }
     else if(opt_str == "--pl-list")
     {
@@ -86,6 +88,25 @@ QString PlayListOption::executeCommand(const QString& opt_str, const QStringList
                 out += " [*]";
             out += "\n";
         }
+    }
+    else if(opt_str == "--pl-play")
+    {
+        if(args.count() > 2 || args.isEmpty())
+            return tr("Invalid number of arguments") + "\n";
+
+        int pl_id = (args.count() == 1) ? pl_manager->currentPlayListIndex() : args.at(0).toInt() - 1;
+        int track_id = (args.count() == 1) ? args.at(0).toInt() - 1 : args.at(1).toInt() - 1;
+        PlayListModel *model = pl_manager->playListAt(pl_id);
+        if(!model)
+            return tr("Invalid playlist ID") + "\n";
+        PlayListItem *item = model->item(track_id);
+        if(!item)
+            return tr("Invalid track ID") + "\n";
+        player->stop();
+        pl_manager->activatePlayList(model);
+        pl_manager->selectPlayList(model);
+        model->setCurrent(item);
+        player->play();
     }
     else if(opt_str == "--pl-clear")
     {
