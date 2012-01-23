@@ -97,6 +97,21 @@
         <translation>Ideëen, patches, foutrapporten zenden naar forkotov02@hotmail.ru (anglicky)</translation>
     </message>
     <message>
+        <location filename="../qmmpstarter.cpp" line="271"/>
+        <source>QMMP version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="272"/>
+        <source>Compiled with Qt version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qmmpstarter.cpp" line="273"/>
+        <source>Using Qt version: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qmmpstarter.cpp" line="264"/>
         <source>Display this text and exit</source>
         <translation>Toon dit tekstje en sluit</translation>
@@ -105,16 +120,6 @@
         <location filename="../qmmpstarter.cpp" line="79"/>
         <source>Unknown command</source>
         <translation>Onbekend commando</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="271"/>
-        <source>QMMP version:</source>
-        <translation>QMMP versie:</translation>
-    </message>
-    <message>
-        <location filename="../qmmpstarter.cpp" line="272"/>
-        <source>Qt version:</source>
-        <translation>Qt versie:</translation>
     </message>
 </context>
 </TS>

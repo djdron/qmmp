@@ -56,19 +56,19 @@ bool BuiltinCommandLineOption::identify(const QString &str) const
 const QString BuiltinCommandLineOption::helpString() const
 {
     return QString(
-               "-e, --enqueue        "+tr("Don't clear the playlist") + "\n" +
-               "-p, --play           "+tr("Start playing current song")+"\n" +
-               "-u, --pause          "+tr("Pause current song")+ "\n"
-               "-t, --play-pause     "+tr("Pause if playing, play otherwise")+ "\n"
-               "-s, --stop           "+tr("Stop current song")+ "\n" +
-               "-j, --jump-to-file   "+tr("Display Jump to File dialog")+ "\n" +
-               "-q, --quit           "+tr("Quit application") + "\n" +
-               "--volume <0..100>    "+tr("Set playback volume (example: qmmp --volume 20)") + "\n"
-               "--next               "+tr("Skip forward in playlist")+ "\n" +
-               "--previous           "+tr("Skip backwards in playlist")+"\n" +
-               "--toggle-visibility  "+tr("Show/hide application")+ "\n" +
-               "--add-file           "+tr("Display Add File dialog")+ "\n" +
-               "--add-dir            "+tr("Display Add Directory dialog")
+               "-e, --enqueue            "+tr("Don't clear the playlist") + "\n" +
+               "-p, --play               "+tr("Start playing current song")+"\n" +
+               "-u, --pause              "+tr("Pause current song")+ "\n"
+               "-t, --play-pause         "+tr("Pause if playing, play otherwise")+ "\n"
+               "-s, --stop               "+tr("Stop current song")+ "\n" +
+               "-j, --jump-to-file       "+tr("Display Jump to File dialog")+ "\n" +
+               "-q, --quit               "+tr("Quit application") + "\n" +
+               "--volume <0..100>        "+tr("Set playback volume (example: qmmp --volume 20)") + "\n"
+               "--next                   "+tr("Skip forward in playlist")+ "\n" +
+               "--previous               "+tr("Skip backwards in playlist")+"\n" +
+               "--toggle-visibility      "+tr("Show/hide application")+ "\n" +
+               "--add-file               "+tr("Display Add File dialog")+ "\n" +
+               "--add-dir                "+tr("Display Add Directory dialog")
            );
 }
 

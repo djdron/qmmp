@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008-2010 by Ilya Kotov                                 *
+ *   Copyright (C) 2008-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -41,8 +41,8 @@ bool IncDecVolumeCommandLineOption::identify(const QString & str) const
 const QString IncDecVolumeCommandLineOption::helpString() const
 {
     return  QString(
-                "--volume-inc         " + tr("Increase volume with step 5")+"\n"
-                "--volume-dec         " + tr("Decrease volume with step 5")+"\n"
+                "--volume-inc             " + tr("Increase volume with step 5")+"\n"
+                "--volume-dec             " + tr("Decrease volume with step 5")+"\n"
             );
 }
 
