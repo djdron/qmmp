@@ -99,17 +99,17 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="271"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Версія QMMP: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="272"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Зібрано з Qt версії: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="273"/>
         <source>Using Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Використовується Qt версії: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="264"/>
