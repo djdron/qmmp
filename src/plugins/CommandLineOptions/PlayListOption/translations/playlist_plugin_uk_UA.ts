@@ -21,7 +21,7 @@
     <message>
         <location filename="../playlistoption.cpp" line="60"/>
         <source>Play track &lt;track&gt; in playlist &lt;id&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Відтворити трек &lt;track&gt; в списку &lt;id&gt;</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="61"/>
@@ -53,12 +53,12 @@
     <message>
         <location filename="../playlistoption.cpp" line="95"/>
         <source>Invalid number of arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>Невірне число аргументів</translation>
     </message>
     <message>
         <location filename="../playlistoption.cpp" line="104"/>
         <source>Invalid track ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Невірний номер трека</translation>
     </message>
 </context>
 </TS>
