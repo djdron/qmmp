@@ -89,6 +89,10 @@ class DownloadThread : public QThread
 public:
     DownloadThread(MMSStreamReader *parent);
     virtual ~DownloadThread ();
+    static void usleep(unsigned long usecs)
+        {
+            QThread::usleep(usecs);
+        }
 
 private:
     virtual void run();
