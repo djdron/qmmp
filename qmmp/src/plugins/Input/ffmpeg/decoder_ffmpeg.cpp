@@ -84,7 +84,7 @@ DecoderFFmpeg::~DecoderFFmpeg()
     m_bitrate = 0;
     m_temp_pkt.size = 0;
     if (ic)
-        av_close_input_stream(ic);
+        avformat_close_input(&ic);
    if(m_pkt.data)
         av_free_packet(&m_pkt);
     if(m_stream)
