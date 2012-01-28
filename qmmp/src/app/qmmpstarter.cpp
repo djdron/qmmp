@@ -37,7 +37,7 @@
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
 
-#ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN
 #define UDS_PATH QString("qmmp")
 #else
 #define UDS_PATH QString("/tmp/qmmp.sock.%1").arg(getuid()).toAscii().constData()
@@ -50,6 +50,9 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     m_player = 0;
     m_core = 0;
     m_ui = 0;
+#ifdef Q_OS_WIN
+    m_named_mutex = 0;
+#endif
     m_option_manager = new BuiltinCommandLineOption(this);
     QStringList tmp;
     for (int i = 1;i < argc;i++)
@@ -86,6 +89,26 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     m_socket = new QLocalSocket(this);
     bool noStart = commands.keys().contains("--no-start");
 
+#ifdef Q_OS_WIN
+    //Windows IPC implementation (named mutex and named pipe)
+    m_named_mutex = CreateMutexA(NULL, TRUE, "QMMP-403cd318-cc7b-4622-8dfd-df18d1e70057");
+    if(GetLastError() == NO_ERROR && !noStart)
+    {
+        m_server->listen (UDS_PATH);
+        startPlayer();
+    }
+    else
+    {
+        m_socket->connectToServer(UDS_PATH); //connecting
+        m_socket->waitForConnected();
+        if(!m_socket->isValid()) //invalid connection
+        {
+            qWarning("QMMPStarter: unable to connect to server");
+            exit(0);
+        }
+        writeCommand();
+    }
+#else
     if(!noStart && m_server->listen (UDS_PATH)) //trying to create server
     {
         startPlayer();
@@ -118,12 +141,17 @@ QMMPStarter::QMMPStarter(int argc,char **argv, QObject* parent) : QObject(parent
     }
     else
         exit(0);
+#endif
 }
 
 QMMPStarter::~QMMPStarter()
 {
     if (m_ui)
         delete m_ui;
+#ifdef Q_OS_WIN
+    if(m_named_mutex)
+        ReleaseMutex(m_named_mutex);
+#endif
 }
 
 void QMMPStarter::startPlayer()
