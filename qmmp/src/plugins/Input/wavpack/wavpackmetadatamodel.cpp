@@ -26,18 +26,16 @@ WavPackMetaDataModel::WavPackMetaDataModel(const QString &path, QObject *parent)
 {
     if(path.contains("://"))
     {
-        QString p = QUrl(path).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        p.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        QString p = path;
+        p.remove("wvpack://");
+        p.remove(QRegExp("#\\d+$"));
         m_path = p;
     }
     else
         m_path = path;
 
     char err[80];
-    m_ctx = WavpackOpenFileInput (m_path.toLocal8Bit(), err,
+    m_ctx = WavpackOpenFileInput (m_path.toLocal8Bit().constData(), err,
                                   OPEN_WVC | OPEN_EDIT_TAGS, 0);
     if (!m_ctx)
     {

@@ -68,11 +68,9 @@ QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName,
     //extract metadata of one cue track
     if(fileName.contains("://"))
     {
-        QString path = QUrl(fileName).path();
-        path.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        path.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        path.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        path.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        QString path = fileName;
+        path.remove("wvpack://");
+        path.remove(QRegExp("#\\d+$"));
         int track = fileName.section("#", -1).toInt();
         list = createPlayList(path, true);
         if (list.isEmpty() || track <= 0 || track > list.count())
@@ -86,7 +84,8 @@ QList<FileInfo *> DecoderWavPackFactory::createPlayList(const QString &fileName,
         return QList<FileInfo *>() << info;
     }
 
-    WavpackContext *ctx = WavpackOpenFileInput (fileName.toLocal8Bit(), err, OPEN_WVC | OPEN_TAGS, 0);
+    WavpackContext *ctx = WavpackOpenFileInput (fileName.toLocal8Bit().constData(),
+                                                err, OPEN_WVC | OPEN_TAGS, 0);
     if (!ctx)
     {
         qWarning("DecoderWavPackFactory: error: %s", err);
