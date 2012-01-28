@@ -24,7 +24,6 @@
 #include <QMap>
 #include <QString>
 #include <QStringList>
-#include <QUrl>
 #include <qmmp/qmmp.h>
 #include <qmmp/fileinfo.h>
 

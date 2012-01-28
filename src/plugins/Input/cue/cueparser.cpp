@@ -36,11 +36,9 @@ CUEParser::CUEParser(const QString &url)
     QString fileName = url;
     if(url.contains("://"))
     {
-        QString p = QUrl(url).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        p.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        QString p = fileName;
+        p.remove("cue://");
+        p.remove(QRegExp("#\\d+$"));
         fileName = p;
     }
     QFile file(fileName);
@@ -122,10 +120,10 @@ CUEParser::CUEParser(const QString &url)
         else if (words[0] == "TRACK")
         {
             QString path = fileName;
-            path.replace("%", QString(QUrl::toPercentEncoding("%"))); //replace special symbols
-            path.replace("#", QString(QUrl::toPercentEncoding("#")));
-            path.replace("?", QString(QUrl::toPercentEncoding("?")));
-            path.replace(":", QString(QUrl::toPercentEncoding(":")));
+            //path.replace("%", QString(QUrl::toPercentEncoding("%"))); //replace special symbols
+            //path.replace("#", QString(QUrl::toPercentEncoding("#")));
+            //path.replace("?", QString(QUrl::toPercentEncoding("?")));
+            //path.replace(":", QString(QUrl::toPercentEncoding(":")));
             FileInfo info("cue://" + path + QString("#%1").arg(words[1].toInt()));
             info.setMetaData(Qmmp::TRACK, words[1].toInt());
             info.setMetaData(Qmmp::ALBUM, album);
