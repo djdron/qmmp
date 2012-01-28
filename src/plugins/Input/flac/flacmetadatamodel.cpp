@@ -33,11 +33,9 @@ FLACMetaDataModel::FLACMetaDataModel(const QString &path, QObject *parent) : Met
 {
     if(path.startsWith("flac://"))
     {
-        QString p = QUrl(path).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        p.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        QString p = path;
+        p.remove("flac://");
+        p.remove(QRegExp("#\\d+$"));
         m_path = p;
     }
     else

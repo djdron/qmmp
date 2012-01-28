@@ -270,19 +270,11 @@ bool DecoderFLAC::initialize()
 {
     if (!data()->input)
     {
-        QString p = m_path;
         if (m_path.startsWith("flac://")) //embeded cue track
         {
-            p = QUrl(m_path).path();
-            if (!p.endsWith(".flac"))
-            {
-                qWarning("DecoderFLAC: invalid url.");
-                return false;
-            }
-            p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-            p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-            p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-            p.replace(QString(QUrl::toPercentEncoding(":")), ":");
+            QString p = m_path;
+            p.remove("flac://");
+            p.remove(QRegExp("#\\d+$"));
             TagLib::FLAC::File fileRef(p.toLocal8Bit().constData());
             //looking for cuesheet comment
             TagLib::Ogg::XiphComment *xiph_comment = fileRef.xiphComment();

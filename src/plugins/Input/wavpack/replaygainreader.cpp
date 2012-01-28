@@ -19,16 +19,16 @@
  ***************************************************************************/
 
 #include <QtGlobal>
+#include <QRegExp>
 #include "replaygainreader.h"
 
 ReplayGainReader::ReplayGainReader(const QString &path)
 {
     if(path.contains("://"))
     {
-        QString p = QUrl(path).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
+        QString p = m_path;
+        p.remove("wvpack://");
+        p.remove(QRegExp("#\\d+$"));
         m_path = p;
     }
     else
@@ -39,7 +39,7 @@ ReplayGainReader::ReplayGainReader(const QString &path)
                                   OPEN_WVC | OPEN_EDIT_TAGS, 0);
     if (!m_ctx)
     {
-        qWarning("WavPackMetaDataModel: error: %s", err);
+        qWarning("ReplayGainReader: error: %s", err);
         return;
     }
     readAPE();

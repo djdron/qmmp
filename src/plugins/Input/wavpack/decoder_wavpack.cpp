@@ -22,6 +22,7 @@
 #include <QObject>
 #include <QIODevice>
 #include <QFile>
+#include <QRegExp>
 #include <math.h>
 #include <stdint.h>
 #include <qmmp/buffer.h>
@@ -67,12 +68,15 @@ bool DecoderWavPack::initialize()
     char err [80];
     if (m_path.startsWith("wvpack://")) //embeded cue track
     {
-        QString p = QUrl(m_path).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        p.replace(QString(QUrl::toPercentEncoding(":")), ":");
-        m_context = WavpackOpenFileInput (p.toLocal8Bit(), err, OPEN_WVC | OPEN_TAGS, 0);
+        QString p = m_path;
+        p.remove("wvpack://");
+        p.remove(QRegExp("#\\d+$"));
+        m_context = WavpackOpenFileInput (p.toLocal8Bit().constData(), err, OPEN_WVC | OPEN_TAGS, 0);
+        if (!m_context)
+        {
+            qWarning("DecoderWavPack: error: %s", err);
+            return false;
+        }
         int cue_len = WavpackGetTagItem (m_context, "cuesheet", NULL, 0);
         char *value;
         if (cue_len)
