@@ -24,6 +24,9 @@
 #include <QObject>
 #include <QAbstractSocket>
 #include <QStringList>
+#ifdef Q_OS_WIN
+#include <windows.h>
+#endif
 
 class QLocalServer;
 class QLocalSocket;
@@ -73,6 +76,9 @@ private:
     BuiltinCommandLineOption* m_option_manager;
     QLocalServer *m_server;
     QLocalSocket *m_socket;
+#ifdef Q_OS_WIN
+    HANDLE m_named_mutex;
+#endif
 };
 
 #endif
