@@ -15,11 +15,11 @@ contains(CONFIG, MODPLUG_PLUGIN){
     SUBDIRS += modplug
 }
 
-unix{
-
 contains(CONFIG, FFMPEG_PLUGIN){
    SUBDIRS += ffmpeg
 }
+
+unix{
 
 contains(CONFIG, AAC_PLUGIN){
   SUBDIRS += aac
