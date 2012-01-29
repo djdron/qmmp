@@ -249,7 +249,11 @@ bool DecoderFFmpeg::initialize()
         m_bitrate = c->bit_rate/1000;
     qDebug("DecoderFFmpeg: initialize succes");
 
+#ifdef Q_OS_WIN
+    qDebug("total time = %I64d", m_totalTime);
+#else
     qDebug("total time = %lld ", m_totalTime);
+#endif
     return true;
 }
 
