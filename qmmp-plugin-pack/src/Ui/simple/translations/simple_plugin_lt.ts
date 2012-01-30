@@ -551,7 +551,7 @@
         <translation type="unfinished">Veiksmai</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="588"/>
+        <location filename="../mainwindow.cpp" line="591"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished"></translation>
     </message>

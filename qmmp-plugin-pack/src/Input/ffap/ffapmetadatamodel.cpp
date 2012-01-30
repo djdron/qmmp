@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QTextCodec>
+#include <QRegExp>
 #include <taglib/tag.h>
 #include <taglib/id3v1tag.h>
 #include <taglib/apetag.h>
@@ -29,10 +30,8 @@ FFapMetaDataModel::FFapMetaDataModel(const QString &path, QObject *parent) : Met
     if(path.contains("://"))
     {
         QString p = QUrl(path).path();
-        p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        p.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        p.remove("ape://");
+        p.remove(QRegExp("#\\d+$"));
         m_path = p;
     }
     else

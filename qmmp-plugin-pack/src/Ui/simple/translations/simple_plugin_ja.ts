@@ -555,7 +555,7 @@
         <translation>動作</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="588"/>
+        <location filename="../mainwindow.cpp" line="591"/>
         <source>Buffering: %1%</source>
         <translation type="unfinished">バッファーへ先読み: %1%</translation>
     </message>

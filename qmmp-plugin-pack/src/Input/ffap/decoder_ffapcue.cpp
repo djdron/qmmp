@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,6 +20,7 @@
 
 #include <QObject>
 #include <QFile>
+#include <QRegExp>
 #include <taglib/apefile.h>
 #include <taglib/apetag.h>
 #include "cueparser.h"
@@ -56,16 +57,14 @@ DecoderFFapCUE::~DecoderFFapCUE()
 
 bool DecoderFFapCUE::initialize()
 {
-    QString p = QUrl(m_path).path();
+    QString p = m_path;
     if(!(m_path.startsWith("ape://") && p.endsWith(".ape")))
     {
         qWarning("DecoderFFapCUE: invalid url.");
         return false;
     }
-    p.replace(QString(QUrl::toPercentEncoding("#")), "#");
-    p.replace(QString(QUrl::toPercentEncoding("?")), "?");
-    p.replace(QString(QUrl::toPercentEncoding("%")), "%");
-    p.replace(QString(QUrl::toPercentEncoding(":")), ":");
+    p.remove("ape://");
+    p.remove(QRegExp("#\\d+$"));
 
 
     TagLib::APE::File file(p.toLocal8Bit().constData());

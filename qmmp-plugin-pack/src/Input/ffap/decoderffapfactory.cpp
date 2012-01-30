@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QtGui>
+#include <QRegExp>
 #include <taglib/apefile.h>
 #include <taglib/apetag.h>
 #include "replaygainreader.h"
@@ -81,11 +82,9 @@ QList<FileInfo *> DecoderFFapFactory::createPlayList(const QString &fileName, bo
     //extract metadata of one cue track
     if(fileName.contains("://"))
     {
-        QString path = QUrl(fileName).path();
-        path.replace(QString(QUrl::toPercentEncoding("#")), "#");
-        path.replace(QString(QUrl::toPercentEncoding("?")), "?");
-        path.replace(QString(QUrl::toPercentEncoding("%")), "%");
-        path.replace(QString(QUrl::toPercentEncoding(":")), ":");
+        QString path = fileName;
+        path.remove("ape://");
+        path.remove(QRegExp("#\\d+$"));
         int track = fileName.section("#", -1).toInt();
         list = createPlayList(path, true);
         if (list.isEmpty() || track <= 0 || track > list.count())
