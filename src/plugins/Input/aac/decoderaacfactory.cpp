@@ -52,7 +52,7 @@ bool DecoderAACFactory::canDecode(QIODevice *input) const
 
         memmove (buf, buf + tag_size, buf_at - tag_size);
     }
-    //try to determnate header type;
+    //try to determinate header type;
     if (buf[0] == 0xff && ((buf[1] & 0xf6) == 0xf0)) //ADTS header
         return true;
     else if (!memcmp(buf, "ADIF", 4)) //ADIF header
