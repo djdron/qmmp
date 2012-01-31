@@ -14,17 +14,17 @@
         <translation>FLAC Bestanden</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="178"/>
+        <location filename="../decoderflacfactory.cpp" line="176"/>
         <source>About FLAC Audio Plugin</source>
         <translation>Over de FLAC Audio Module</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="179"/>
+        <location filename="../decoderflacfactory.cpp" line="177"/>
         <source>Qmmp FLAC Audio Plugin</source>
         <translation>FLAC Audio Module voor Qmmp</translation>
     </message>
     <message>
-        <location filename="../decoderflacfactory.cpp" line="180"/>
+        <location filename="../decoderflacfactory.cpp" line="178"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
         <translation>Auteur: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
@@ -32,42 +32,42 @@
 <context>
     <name>FLACMetaDataModel</name>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="82"/>
+        <location filename="../flacmetadatamodel.cpp" line="80"/>
         <source>Length</source>
         <translation>Duur</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="83"/>
+        <location filename="../flacmetadatamodel.cpp" line="81"/>
         <source>Sample rate</source>
         <translation>Sample frequentie</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="83"/>
+        <location filename="../flacmetadatamodel.cpp" line="81"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="84"/>
+        <location filename="../flacmetadatamodel.cpp" line="82"/>
         <source>Channels</source>
         <translation>Kanalen</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="85"/>
+        <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>Bitrate</source>
         <translation>Bitsnelheid</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="85"/>
+        <location filename="../flacmetadatamodel.cpp" line="83"/>
         <source>kbps</source>
         <translation>kbps</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="87"/>
+        <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>File size</source>
         <translation>Bestandsgrootte</translation>
     </message>
     <message>
-        <location filename="../flacmetadatamodel.cpp" line="87"/>
+        <location filename="../flacmetadatamodel.cpp" line="85"/>
         <source>KB</source>
         <translation>KB</translation>
     </message>

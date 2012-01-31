@@ -161,11 +161,8 @@
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
-        <source>This plugin converts supported audio files to other file formats
-using external command-line encoders</source>
-        <translation>Цей модуль призначений для конвертування аудіофайлів,
-що підтримуються, в інший формат з використанням зовнішніх консольних
-програм</translation>
+        <source>This plugin converts supported audio files to other file formats using external command-line encoders</source>
+        <translation>Цей модуль призначений для конвертування аудіофайлів, що підтримуються, в інший формат з використанням зовнішніх консольних програм</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="53"/>
