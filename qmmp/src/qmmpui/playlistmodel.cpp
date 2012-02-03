@@ -653,7 +653,7 @@ static bool _albumGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 //by artist
 static bool _artistLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
-    return QString::localeAwareCompare (s1->value(Qmmp::ALBUM), s2->value(Qmmp::ALBUM)) < 0;
+    return QString::localeAwareCompare (s1->value(Qmmp::ARTIST), s2->value(Qmmp::ARTIST)) < 0;
 }
 
 static bool _artistGreaterComparator(PlayListItem* s1,PlayListItem* s2)
@@ -756,12 +756,12 @@ void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
     static bool sorted_asc = false;
     if (!sorted_asc)
     {
-        qSort(begin,end,compareLessFunc);
+        qStableSort(begin,end,compareLessFunc);
         sorted_asc = true;
     }
     else
     {
-        qSort(begin,end,compareGreaterFunc);
+        qStableSort(begin,end,compareGreaterFunc);
         sorted_asc = false;
     }
 
