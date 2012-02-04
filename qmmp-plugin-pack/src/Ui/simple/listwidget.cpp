@@ -462,25 +462,13 @@ void ListWidget::dropEvent(QDropEvent *event)
         event->acceptProposedAction();
         QApplication::restoreOverrideCursor();
 
-        foreach(QUrl u,list_urls)
+        foreach(QUrl u, list_urls)
         {
-            QString add_string = u.toString(QUrl::RemoveScheme);
-            if (!add_string.isEmpty())
-                processFileInfo(QFileInfo(add_string));
+            if(u.scheme() == "file")
+                m_model->add(QFileInfo(u.toLocalFile()).absoluteFilePath());
+            else
+                m_model->add(u.toString());
         }
-    }
-}
-
-void ListWidget::processFileInfo(const QFileInfo& info)
-{
-    if (info.isDir())
-    {
-        m_model->add(info.absoluteFilePath());
-    }
-    else
-    {
-        m_model->add(info.absoluteFilePath());
-        m_model->loadPlaylist(info.absoluteFilePath());
     }
 }
 
