@@ -819,7 +819,7 @@ void PlayListModel::loadPlaylist(const QString &f_name)
     PlaylistFormat* prs = PlaylistParser::instance()->findByPath(f_name);
     if(!prs)
     {
-        qWarning("PlayListModel: unsupported playlist format");
+        //qWarning("PlayListModel: unsupported playlist format");
         return;
     }
 
