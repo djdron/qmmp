@@ -121,7 +121,6 @@ private slots:
 
 private:
     void loadColors();
-    void processFileInfo(const QFileInfo&);
     bool m_update;
     bool m_scroll;
     int m_pressed_row;
