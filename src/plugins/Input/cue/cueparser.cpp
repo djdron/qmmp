@@ -120,10 +120,6 @@ CUEParser::CUEParser(const QString &url)
         else if (words[0] == "TRACK")
         {
             QString path = fileName;
-            //path.replace("%", QString(QUrl::toPercentEncoding("%"))); //replace special symbols
-            //path.replace("#", QString(QUrl::toPercentEncoding("#")));
-            //path.replace("?", QString(QUrl::toPercentEncoding("?")));
-            //path.replace(":", QString(QUrl::toPercentEncoding(":")));
             FileInfo info("cue://" + path + QString("#%1").arg(words[1].toInt()));
             info.setMetaData(Qmmp::TRACK, words[1].toInt());
             info.setMetaData(Qmmp::ALBUM, album);
@@ -282,7 +278,7 @@ qint64 CUEParser::getLength(const QString &str)
 QString CUEParser::getDirtyPath(const QString &cue, const QString &path)
 {
 
-    if (Decoder::findByPath(path) || ! m_dirty)
+    if (Decoder::findByPath(path) || !m_dirty)
         return path;
 
     QStringList candidates;
