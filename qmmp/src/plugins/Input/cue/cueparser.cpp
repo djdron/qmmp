@@ -182,6 +182,17 @@ CUEParser::CUEParser(const QString &url)
         m_tracks.last()->info.setLength(l - m_tracks.last()->offset);
     else
         m_tracks.last()->info.setLength(0);
+
+    //skip invalid cue sheet
+    foreach(CUETrack *track, m_tracks)
+    {
+        if(!QFile::exists(track->file))
+        {
+            qDeleteAll(m_tracks);
+            m_tracks.clear();
+            break;
+        }
+    }
 }
 
 CUEParser::~CUEParser()
