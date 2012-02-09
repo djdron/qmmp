@@ -344,6 +344,7 @@ void ConfigDialog::saveSettings()
     gs->setAudioSettings(m_ui->softVolumeCheckBox->isChecked(), m_ui->use16BitCheckBox->isChecked());
     gs->setBufferSize(m_ui->bufferSizeSpinBox->value());
     gs->setDetermineFileTypeByContent(m_ui->byContentCheckBox->isChecked());
+    gs->sync();
     QList <OutputFactory *> *outputs = Output::factories();
     if(m_ui->outputComboBox->currentIndex() >= 0 && outputs->count())
         Output::setCurrentFactory(outputs->at(m_ui->outputComboBox->currentIndex()));

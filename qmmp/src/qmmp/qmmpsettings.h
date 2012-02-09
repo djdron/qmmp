@@ -191,7 +191,10 @@ signals:
      */
     void eqSettingsChanged();
 
-private slots:
+public slots:
+    /*!
+     * Writes all unsaved settings to configuration file
+     */
     void sync();
 
 private:

@@ -125,6 +125,7 @@ public:
      */
     bool isShuffle() const;
 
+
 signals:
     /*!
      * Emitted when current playlist changes.
