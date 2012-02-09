@@ -77,12 +77,12 @@
 <context>
     <name>ConfigDialog</name>
     <message>
-        <location filename="../forms/configdialog.ui" line="333"/>
+        <location filename="../forms/configdialog.ui" line="362"/>
         <source>Description</source>
         <translation>Açıklama</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="338"/>
+        <location filename="../forms/configdialog.ui" line="367"/>
         <source>Filename</source>
         <translation>Dosya adı</translation>
     </message>
@@ -203,16 +203,16 @@
         <translation>Başlık formatı:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="284"/>
-        <location filename="../forms/configdialog.ui" line="720"/>
+        <location filename="../forms/configdialog.ui" line="313"/>
+        <location filename="../forms/configdialog.ui" line="759"/>
         <source>Preferences</source>
         <translation>Tercihler</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="297"/>
-        <location filename="../forms/configdialog.ui" line="359"/>
-        <location filename="../forms/configdialog.ui" line="427"/>
-        <location filename="../forms/configdialog.ui" line="733"/>
+        <location filename="../forms/configdialog.ui" line="326"/>
+        <location filename="../forms/configdialog.ui" line="388"/>
+        <location filename="../forms/configdialog.ui" line="420"/>
+        <location filename="../forms/configdialog.ui" line="772"/>
         <source>Information</source>
         <translation>Bilgi</translation>
     </message>
@@ -232,7 +232,7 @@
         <translation>Gelişmiş</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="805"/>
+        <location filename="../forms/configdialog.ui" line="844"/>
         <source>16-bit output</source>
         <translation type="unfinished"></translation>
     </message>
@@ -257,144 +257,160 @@
         <translation>Genel</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="350"/>
+        <location filename="../forms/configdialog.ui" line="411"/>
         <source>File Dialog</source>
         <translation>Dosya Diyaloğu</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="94"/>
-        <location filename="../forms/configdialog.ui" line="698"/>
+        <location filename="../forms/configdialog.ui" line="737"/>
         <source>Audio</source>
         <translation>Ses</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="568"/>
-        <source>Replay Gain</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="574"/>
-        <source>Replay Gain mode:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="591"/>
-        <source>Preamp:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="623"/>
-        <location filename="../forms/configdialog.ui" line="668"/>
-        <source>dB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="636"/>
-        <source>Default gain:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="688"/>
-        <source>Use  peak info to prevent clipping</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="704"/>
-        <source>Output:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="756"/>
-        <source>Buffer size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="769"/>
-        <source>ms</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../forms/configdialog.ui" line="798"/>
-        <source>Use software volume control</source>
-        <translation>Yazılımsal ses kontrolünü kullan</translation>
-    </message>
-    <message>
         <location filename="../forms/configdialog.ui" line="176"/>
-        <source>Cover Image Retrieve</source>
+        <source>Directory Scanning Options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="182"/>
+        <source>Restrict files to:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="463"/>
+        <source>Add files from command line to this playlist:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="607"/>
+        <source>Replay Gain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="613"/>
+        <source>Replay Gain mode:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="630"/>
+        <source>Preamp:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="662"/>
+        <location filename="../forms/configdialog.ui" line="707"/>
+        <source>dB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="675"/>
+        <source>Default gain:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="727"/>
+        <source>Use  peak info to prevent clipping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="743"/>
+        <source>Output:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="795"/>
+        <source>Buffer size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="808"/>
+        <source>ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="837"/>
+        <source>Use software volume control</source>
+        <translation>Yazılımsal ses kontrolünü kullan</translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="205"/>
+        <source>Cover Image Retrieve</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/configdialog.ui" line="211"/>
         <source>Use separate image files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="192"/>
+        <location filename="../forms/configdialog.ui" line="221"/>
         <source>Include files:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="202"/>
+        <location filename="../forms/configdialog.ui" line="192"/>
+        <location filename="../forms/configdialog.ui" line="231"/>
         <source>Exclude files:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="214"/>
+        <location filename="../forms/configdialog.ui" line="243"/>
         <source>Recursive search depth:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="395"/>
+        <location filename="../forms/configdialog.ui" line="443"/>
         <source>Playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="401"/>
+        <location filename="../forms/configdialog.ui" line="449"/>
         <source>Continue playback on startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="408"/>
+        <location filename="../forms/configdialog.ui" line="456"/>
         <source>Determine file type by content</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="418"/>
+        <location filename="../forms/configdialog.ui" line="379"/>
         <source>User Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="466"/>
+        <location filename="../forms/configdialog.ui" line="505"/>
         <source>Proxy</source>
         <translation>Vekil sunucu</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="478"/>
+        <location filename="../forms/configdialog.ui" line="517"/>
         <source>Enable proxy usage</source>
         <translation>Vekil sunucu kullanımını etkinleştir</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="485"/>
+        <location filename="../forms/configdialog.ui" line="524"/>
         <source>Proxy host name:</source>
         <translation>Vekil sunucu adı:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="498"/>
+        <location filename="../forms/configdialog.ui" line="537"/>
         <source>Proxy port:</source>
         <translation>Vekil sunucu portu:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="511"/>
+        <location filename="../forms/configdialog.ui" line="550"/>
         <source>Use authentication with proxy</source>
         <translation>Vekil sunucu yetkilendirmesi kullan</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="518"/>
+        <location filename="../forms/configdialog.ui" line="557"/>
         <source>Proxy user name:</source>
         <translation>Vekil sunucu kullanıcı adı:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="531"/>
+        <location filename="../forms/configdialog.ui" line="570"/>
         <source>Proxy password:</source>
         <translation>Vekil sunucu parolası:</translation>
     </message>
