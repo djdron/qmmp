@@ -32,7 +32,6 @@ HEADERS += general.h \
     playstate_p.h \
     fileloader_p.h \
     mediaplayer.h \
-    playlistsettings_p.h \
     detailsdialog.h \
     tageditor_p.h \
     playlistmanager.h \
@@ -44,7 +43,8 @@ HEADERS += general.h \
     jumptotrackdialog_p.h \
     configdialog.h \
     pluginitem_p.h \
-    aboutdialog_p.h
+    aboutdialog_p.h \
+    qmmpuisettings.h
 SOURCES += general.cpp \
     playlistparser.cpp \
     commandlinemanager.cpp \
@@ -55,7 +55,6 @@ SOURCES += general.cpp \
     playlistitem.cpp \
     fileloader.cpp \
     mediaplayer.cpp \
-    playlistsettings.cpp \
     detailsdialog.cpp \
     tageditor.cpp \
     playlistmanager.cpp \
@@ -66,7 +65,8 @@ SOURCES += general.cpp \
     jumptotrackdialog.cpp \
     configdialog.cpp \
     pluginitem.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    qmmpuisettings.cpp
 FORMS += forms/detailsdialog.ui \
     forms/tageditor.ui \
     forms/templateeditor.ui \
@@ -110,8 +110,13 @@ unix {
                    templateeditor.h \
                    uifactory.h \
                    uiloader.h \
-                   uihelper.h
+                   uihelper.h \
+                   qmmpuisettings.h
     devel.path = /include/qmmpui
     INSTALLS += target \
         devel
 }
+
+
+
+

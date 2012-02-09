@@ -48,6 +48,7 @@
 #include "uiloader.h"
 #include "filedialog.h"
 #include "mediaplayer.h"
+#include "qmmpuisettings.h"
 #include "playlistmodel.h"
 #include "configdialog.h"
 
@@ -95,11 +96,14 @@ void ConfigDialog::readSettings()
 {
     if (MediaPlayer::instance())
     {
-        MediaPlayer *player = MediaPlayer::instance();
-        m_ui->formatLineEdit->setText(player->playListManager()->format());
-        m_ui->metadataCheckBox->setChecked(player->playListManager()->useMetadata());
-        m_ui->underscoresCheckBox->setChecked(player->playListManager()->convertUnderscore());
-        m_ui->per20CheckBox->setChecked(player->playListManager()->convertTwenty());
+        //playlist options
+        QmmpUiSettings *guis = QmmpUiSettings::instance();
+        m_ui->formatLineEdit->setText(guis->format());
+        m_ui->metadataCheckBox->setChecked(guis->useMetadata());
+        m_ui->underscoresCheckBox->setChecked(guis->convertUnderscore());
+        m_ui->per20CheckBox->setChecked(guis->convertTwenty());
+        //resume playback on startup
+        m_ui->continuePlaybackCheckBox->setChecked(guis->resumeOnStartup());
     }
     //proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
@@ -115,9 +119,6 @@ void ConfigDialog::readSettings()
     m_ui->portLineEdit->setEnabled(m_ui->enableProxyCheckBox->isChecked());
     m_ui->proxyUserLineEdit->setEnabled(m_ui->authProxyCheckBox->isChecked());
     m_ui->proxyPasswLineEdit->setEnabled(m_ui->authProxyCheckBox->isChecked());
-    //resume playback
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    m_ui->continuePlaybackCheckBox->setChecked(settings.value("General/resume_on_startup", false).toBool());
     //file type determination
     m_ui->byContentCheckBox->setChecked(gs->determineFileTypeByContent());
     //cover options
@@ -135,6 +136,7 @@ void ConfigDialog::readSettings()
     m_ui->use16BitCheckBox->setChecked(gs->use16BitOutput());
     m_ui->bufferSizeSpinBox->setValue(gs->bufferSize());
     //geometry
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     resize(settings.value("ConfigDialog/window_size", QSize(700,470)).toSize());
     QList<QVariant> var_sizes = settings.value("ConfigDialog/splitter_sizes").toList();
     if(var_sizes.count() != 2)
@@ -309,12 +311,14 @@ void ConfigDialog::addTitleString(QAction * a)
 
 void ConfigDialog::saveSettings()
 {
-    if (MediaPlayer *player = MediaPlayer::instance())
+    if (QmmpUiSettings *guis = QmmpUiSettings::instance())
     {
-        player->playListManager()->setFormat(m_ui->formatLineEdit->text().trimmed());
-        player->playListManager()->setUseMetadata(m_ui->metadataCheckBox->isChecked());
-        player->playListManager()->setConvertUnderscore(m_ui->underscoresCheckBox->isChecked());
-        player->playListManager()->setConvertTwenty(m_ui->per20CheckBox->isChecked());
+        guis->setFormat(m_ui->formatLineEdit->text().trimmed());
+        guis->setUseMetadata(m_ui->metadataCheckBox->isChecked());
+        guis->setConvertUnderscore(m_ui->underscoresCheckBox->isChecked());
+        guis->setConvertTwenty(m_ui->per20CheckBox->isChecked());
+        guis->setResumeOnStartup(m_ui->continuePlaybackCheckBox->isChecked());
+        guis->sync();
     }
 
     FileDialog::setEnabled(FileDialog::registeredFactories().at(m_ui->fileDialogComboBox->currentIndex()));
@@ -329,8 +333,6 @@ void ConfigDialog::saveSettings()
                            m_ui->authProxyCheckBox->isChecked(),
                            proxyUrl);
 
-    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
-    settings.setValue ("General/resume_on_startup",  m_ui->continuePlaybackCheckBox->isChecked());
     gs->setCoverSettings(m_ui->coverIncludeLineEdit->text().split(","),
                          m_ui->coverExcludeLineEdit->text().split(","),
                          m_ui->coverDepthSpinBox->value(),
@@ -351,6 +353,7 @@ void ConfigDialog::saveSettings()
 
     QList<QVariant> var_sizes;
     var_sizes << m_ui->splitter->sizes().first() << m_ui->splitter->sizes().last();
+    QSettings settings (Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("ConfigDialog/splitter_sizes", var_sizes);
     settings.setValue("ConfigDialog/window_size", size());
 }

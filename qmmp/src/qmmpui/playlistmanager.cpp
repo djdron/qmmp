@@ -24,7 +24,6 @@
 #include <QDir>
 #include <QSettings>
 #include <qmmp/fileinfo.h>
-#include "playlistsettings_p.h"
 #include "playlistmanager.h"
 
 
@@ -48,7 +47,6 @@ PlayListManager::PlayListManager(QObject *parent) : QObject(parent)
 PlayListManager::~PlayListManager()
 {
     writePlayLists();
-    delete PlaylistSettings::instance();
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.setValue("Playlist/repeatable", m_repeatable);
     settings.setValue("Playlist/shuffle", m_shuffle);
@@ -247,59 +245,6 @@ PlayListModel *PlayListManager::playListAt(int i) const
     if(i >= 0 && i < m_models.count())
         return m_models.at(i);
     return 0;
-}
-
-bool PlayListManager::convertUnderscore() const
-{
-    return PlaylistSettings::instance()->convertUnderscore();
-}
-
-bool PlayListManager::convertTwenty() const
-{
-    return PlaylistSettings::instance()->convertTwenty();
-}
-
-bool PlayListManager::useMetadata() const
-{
-    return PlaylistSettings::instance()->useMetadata();
-}
-
-const QString PlayListManager::format() const
-{
-    return PlaylistSettings::instance()->format();
-}
-
-void PlayListManager::setConvertUnderscore(bool yes)
-{
-    PlaylistSettings::instance()->setConvertUnderscore(yes);
-    emit settingsChanged();
-}
-
-void PlayListManager::setConvertTwenty(bool yes)
-{
-    PlaylistSettings::instance()->setConvertTwenty(yes);
-    emit settingsChanged();
-}
-
-void PlayListManager::setUseMetadata(bool yes)
-{
-    PlaylistSettings::instance()->setUseMetadata(yes);
-    emit settingsChanged();
-}
-
-void PlayListManager::setFormat(const QString &format)
-{
-    if(format != PlaylistSettings::instance()->format())
-    {
-        PlaylistSettings::instance()->setFormat(format);
-        emit settingsChanged();
-        foreach(PlayListModel *model, m_models)
-        {
-            foreach(PlayListItem *item, model->items())
-                item->setText(QString());
-            model->doCurrentVisibleRequest();
-        }
-    }
 }
 
 bool PlayListManager::isRepeatableList() const

@@ -20,7 +20,7 @@
 #include <QDir>
 #include <qmmp/metadatamanager.h>
 #include "metadataformatter.h"
-#include "playlistsettings_p.h"
+#include "qmmpuisettings.h"
 #include "playlistitem.h"
 
 PlayListItem::PlayListItem() : QMap<Qmmp::MetaData, QString>(), m_flag(FREE)
@@ -144,7 +144,7 @@ const QString PlayListItem::url() const
 
 void PlayListItem::readMetadata()
 {
-    MetaDataFormatter f(PlaylistSettings::instance()->format());
+    MetaDataFormatter f(QmmpUiSettings::instance()->format());
     m_title = f.parse(this);
     //TODO rewrite this
     if (m_title.isEmpty())
@@ -155,8 +155,8 @@ void PlayListItem::readMetadata()
     if (m_info)
         delete m_info;
     m_info = 0;
-    if (PlaylistSettings::instance()->convertUnderscore())
+    if (QmmpUiSettings::instance()->convertUnderscore())
         m_title.replace("_", " ");
-    if (PlaylistSettings::instance()->convertTwenty())
+    if (QmmpUiSettings::instance()->convertTwenty())
         m_title.replace("%20", " ");
 }

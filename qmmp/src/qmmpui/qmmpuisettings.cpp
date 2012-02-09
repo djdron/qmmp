@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2009 by Ilya Kotov                                      *
+ *   Copyright (C) 2012 by Ilya Kotov                                      *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -19,73 +19,108 @@
  ***************************************************************************/
 
 #include <QSettings>
+#include <QApplication>
 #include <qmmp/qmmp.h>
-#include "playlistsettings_p.h"
+#include "playlistmanager.h"
+#include "qmmpuisettings.h"
 
-PlaylistSettings *PlaylistSettings::m_instance = 0;
+QmmpUiSettings *QmmpUiSettings::m_instance = 0;
 
-PlaylistSettings::PlaylistSettings()
+QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
 {
+    m_instance = this;
     QSettings s (Qmmp::configFile(), QSettings::IniFormat);
     m_format = s.value("PlayList/title_format", "%p%if(%p&%t, - ,)%t").toString();
     m_convertUnderscore = s.value ("PlayList/convert_underscore", true).toBool();
     m_convertTwenty = s.value ("PlayList/convert_twenty", true).toBool();
     m_useMetadata = s.value ("PlayList/load_metadata", true).toBool();
+    m_resume_on_startup = s.value("General/resume_on_startup", false).toBool();
 }
 
-PlaylistSettings::~PlaylistSettings()
+QmmpUiSettings::~QmmpUiSettings()
 {
     m_instance = 0;
+    sync();
+}
+
+const QString QmmpUiSettings::format() const
+{
+    return m_format;
+}
+
+bool QmmpUiSettings::convertUnderscore() const
+{
+    return m_convertUnderscore;
+}
+
+bool QmmpUiSettings::convertTwenty() const
+{
+    return m_convertTwenty;
+}
+
+bool QmmpUiSettings::useMetadata() const
+{
+    return m_useMetadata;
+}
+
+void QmmpUiSettings::setConvertUnderscore(bool yes)
+{
+    m_convertUnderscore = yes;
+}
+
+void  QmmpUiSettings::setConvertTwenty(bool yes)
+{
+    m_convertTwenty = yes;
+}
+
+void QmmpUiSettings::setFormat(const QString &format)
+{
+    m_format = format;
+    if(format != m_format)
+    {
+        m_format = format;
+        //emit settingsChanged();
+        foreach(PlayListModel *model, PlayListManager::instance()->playLists())
+        {
+            foreach(PlayListItem *item, model->items())
+                item->setText(QString());
+            model->doCurrentVisibleRequest();
+        }
+    }
+}
+
+void QmmpUiSettings::setUseMetadata(bool yes)
+{
+    m_useMetadata = yes;
+}
+
+bool QmmpUiSettings::resumeOnStartup() const
+{
+    return m_resume_on_startup;
+}
+
+void QmmpUiSettings::setResumeOnStartup(bool enabled)
+{
+    m_resume_on_startup = enabled;
+}
+
+void QmmpUiSettings::sync()
+{
     QSettings s(Qmmp::configFile(), QSettings::IniFormat);
     s.setValue("PlayList/title_format", m_format);
     s.setValue("PlayList/convert_underscore", m_convertUnderscore);
     s.setValue("PlayList/convert_twenty", m_convertTwenty);
     s.setValue("PlayList/load_metadata", m_useMetadata);
+    s.setValue("General/resume_on_startup", m_resume_on_startup);
 }
 
-PlaylistSettings *PlaylistSettings::instance()
+QmmpUiSettings * QmmpUiSettings::instance()
 {
-    if (!m_instance)
-        m_instance = new PlaylistSettings();
+    if(!m_instance)
+        return new QmmpUiSettings(qApp);
     return m_instance;
 }
 
-const QString PlaylistSettings::format() const
-{
-    return m_format;
-}
 
-bool PlaylistSettings::convertUnderscore()
-{
-    return m_convertUnderscore;
-}
 
-bool PlaylistSettings::convertTwenty()
-{
-    return m_convertTwenty;
-}
 
-bool PlaylistSettings::useMetadata()
-{
-    return m_useMetadata;
-}
-
-void PlaylistSettings::setConvertUnderscore(bool yes)
-{
-    m_convertUnderscore = yes;
-}
-
-void  PlaylistSettings::setConvertTwenty(bool yes)
-{
-    m_convertTwenty = yes;
-}
-
-void PlaylistSettings::setFormat(const QString &format)
-{
-    m_format = format;
-}
-
-void PlaylistSettings::setUseMetadata(bool yes)
-{
-    m_useMetadata = yes;
-}

@@ -34,7 +34,6 @@ SET(libqmmpui_SRCS
     playlistmodel.cpp
     playlistitem.cpp
     mediaplayer.cpp
-    playlistsettings.cpp
     detailsdialog.cpp
     tageditor.cpp
     playlistmanager.cpp
@@ -45,6 +44,7 @@ SET(libqmmpui_SRCS
     configdialog.cpp
     pluginitem.cpp
     aboutdialog.cpp
+    qmmpuisettings.cpp
 )
 
 SET(libqmmpui_HDRS
@@ -55,7 +55,6 @@ SET(libqmmpui_HDRS
     filedialogfactory.h
     playstate_p.h
     playlistitem.h
-    playlistsettings_p.h
     metadataformatter.h
     uiloader.h
     uifactory.h
@@ -78,6 +77,7 @@ SET(libqmmpui_MOC_HDRS
     jumptotrackdialog_p.h
     configdialog.h
     aboutdialog_p.h
+    qmmpuisettings.h
 )
 
 SET(libqmmpui_DEVEL_HDRS
@@ -100,6 +100,7 @@ SET(libqmmpui_DEVEL_HDRS
     uiloader.h
     uifactory.h
     configdialog.h
+    qmmpuisettings.h
 )
 
 

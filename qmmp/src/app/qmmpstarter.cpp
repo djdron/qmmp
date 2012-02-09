@@ -34,6 +34,7 @@
 #include <qmmpui/playlistparser.h>
 #include <qmmpui/uihelper.h>
 #include <qmmpui/uiloader.h>
+#include <qmmpui/qmmpuisettings.h>
 #include "qmmpstarter.h"
 #include "builtincommandlineoption.h"
 
@@ -195,8 +196,8 @@ void QMMPStarter::savePosition()
 {
     QSettings settings(Qmmp::configFile(), QSettings::IniFormat);
     settings.beginGroup("General");
-    settings.setValue("resume_playback", m_core->state() == Qmmp::Playing &&
-                      settings.value("resume_on_startup", false).toBool());
+    settings.setValue("resume_playback",m_core->state() == Qmmp::Playing &&
+                      QmmpUiSettings::instance()->resumeOnStartup());
     settings.setValue("resume_playback_time", m_core->totalTime() > 0 ? m_core->elapsed() : 0);
     settings.endGroup();
     m_core->stop();

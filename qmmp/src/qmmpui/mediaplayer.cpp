@@ -23,6 +23,7 @@
 #include <QTranslator>
 #include <QLocale>
 #include "playlistitem.h"
+#include "qmmpuisettings.h"
 #include "mediaplayer.h"
 
 #define MAX_ERRORS 4
@@ -45,6 +46,7 @@ MediaPlayer::MediaPlayer(QObject *parent)
     translator->load(QString(":/libqmmpui_") + locale);
     qApp->installTranslator(translator);
     m_core = new SoundCore(this);
+    m_settings = new QmmpUiSettings(this);
     m_pl_manager = new PlayListManager(this);
     connect(m_core, SIGNAL(nextTrackRequest()), SLOT(updateNextUrl()));
     connect(m_core, SIGNAL(finished()), SLOT(playNext()));

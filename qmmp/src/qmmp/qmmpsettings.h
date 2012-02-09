@@ -42,7 +42,7 @@ public:
     /*!
      * Destructor.
      */
-    ~QmmpSettings();
+    virtual ~QmmpSettings();
     /*!
      * This enum describes possible replaygain modes.
      */
