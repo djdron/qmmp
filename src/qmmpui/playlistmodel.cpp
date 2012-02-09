@@ -36,7 +36,6 @@
 #include "playlistitem.h"
 #include "playstate_p.h"
 #include "detailsdialog.h"
-#include "playlistsettings_p.h"
 #include "playlistmodel.h"
 
 

@@ -25,6 +25,9 @@
 #include "playlistmanager.h"
 
 
+class QmmpUiSettings;
+
+
 /*! @brief The MediaPlayer class provides a simple way to use SoundCore and PlayListModel together.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
  */
@@ -107,6 +110,7 @@ private slots:
     void showMetaData();
 
 private:
+    QmmpUiSettings *m_settings;
     PlayListManager *m_pl_manager;
     SoundCore *m_core;
     static MediaPlayer* m_instance;

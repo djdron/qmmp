@@ -81,42 +81,6 @@ public:
      */
     PlayListModel *playListAt(int i) const;
     /*!
-     * Returns state of the "Convert underscores to blanks" option (\b true - enabled, \b false - disabled).
-     */
-    bool convertUnderscore() const;
-    /*!
-     * Returns state of the "Convert %20 to blanks" option (\b true - enabled, \b false - disabled).
-     */
-    bool convertTwenty() const;
-    /*!
-     * Returns the state of metadata usage (\b true - use, \b false - not use).
-     */
-    bool useMetadata() const;
-    /*!
-     * Returns title format string.
-     */
-    const QString format() const;
-    /*!
-     * Sets the "Convert underscores to blanks" option state to \b enabled
-     * @param enabled Option state (\b true - enabled, \b false - disabled)
-     */
-    void setConvertUnderscore(bool enabled);
-    /*!
-     * Sets the "Convert %20 to blanks" option state to \b enabled
-     * @param enabled Option state (\b true - enabled, \b false - disabled)
-     */
-    void setConvertTwenty(bool enabled);
-    /*!
-     * Sets metadata usage option state to \b enabled
-     * @param enabled Option state (\b true - enabled, \b false - disabled)
-     */
-    void setUseMetadata(bool enabled);
-    /*!
-     * Sets short title template.
-     * @param format title template. \sa MetaDataFormatter
-     */
-    void setFormat(const QString &format);
-    /*!
      * Returns state of "Repeat All" option.
      */
     bool isRepeatableList() const;
@@ -124,7 +88,6 @@ public:
      * Returns state of "Shuffle" option.
      */
     bool isShuffle() const;
-
 
 signals:
     /*!
@@ -165,10 +128,6 @@ signals:
      * @param state New state of the "Shuffle" option (\b true - enabled, \b false disabled)
      */
     void shuffleChanged(bool state);
-    /*!
-     * Emitted when other settings (format, metadata, etc) have changed.
-     */
-    void settingsChanged();
 
 public slots:
     /*!
@@ -297,7 +256,6 @@ public slots:
      * This is a convenience function and is the same as calling \b selectedPlayList()->stopAfterSelected()
      */
     void stopAfterSelected();
-
 
 private:
     void readPlayLists();

@@ -20,7 +20,7 @@
 
 #include <qmmp/metadatamanager.h>
 #include "fileloader_p.h"
-#include "playlistsettings_p.h"
+#include "qmmpuisettings.h"
 #include "playlistitem.h"
 
 FileLoader::FileLoader(QObject *parent) : QThread(parent)
@@ -33,7 +33,7 @@ FileLoader::~FileLoader()
 
 void FileLoader::addFile(const QString &path)
 {
-    bool use_meta = PlaylistSettings::instance()->useMetadata();
+    bool use_meta = QmmpUiSettings::instance()->useMetadata();
     QList <FileInfo *> playList = MetaDataManager::instance()->createPlayList(path, use_meta);
     foreach(FileInfo *info, playList)
         emit newPlayListItem(new PlayListItem(info));
