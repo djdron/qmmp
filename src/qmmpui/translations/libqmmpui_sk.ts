@@ -87,13 +87,13 @@
         <translation>Názov súboru</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="285"/>
+        <location filename="../configdialog.cpp" line="288"/>
         <source>Artist</source>
         <translation>Interprét</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="67"/>
-        <location filename="../configdialog.cpp" line="286"/>
+        <location filename="../configdialog.cpp" line="289"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
@@ -108,72 +108,72 @@
         <translation>Zakázané</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="166"/>
+        <location filename="../configdialog.cpp" line="169"/>
         <source>Transports</source>
         <translation>Protokoly</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="176"/>
+        <location filename="../configdialog.cpp" line="179"/>
         <source>Decoders</source>
         <translation>Dekodéry</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="186"/>
+        <location filename="../configdialog.cpp" line="189"/>
         <source>Engines</source>
         <translation>Prehrávače</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
+        <location filename="../configdialog.cpp" line="290"/>
         <source>Title</source>
         <translation>Názov</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="288"/>
+        <location filename="../configdialog.cpp" line="291"/>
         <source>Track number</source>
         <translation>Číslo skladby</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="292"/>
         <source>Two-digit track number</source>
         <translation>Dvojmiestne číslo skladby</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
+        <location filename="../configdialog.cpp" line="296"/>
         <source>Disc number</source>
         <translation>Číslo disku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="300"/>
         <source>Condition</source>
         <translation>Stav</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
+        <location filename="../configdialog.cpp" line="295"/>
         <source>Composer</source>
         <translation>Skladateľ</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>File name</source>
         <translation>Názov súboru</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>File path</source>
         <translation>Cesta k súboru</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="293"/>
         <source>Genre</source>
         <translation>Žáner</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="294"/>
         <source>Comment</source>
         <translation>Poznámka</translation>
     </message>
@@ -389,17 +389,17 @@
         <translation>Proxy heslo:</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="206"/>
+        <location filename="../configdialog.cpp" line="209"/>
         <source>Visualization</source>
         <translation>Vizualizácie</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="196"/>
+        <location filename="../configdialog.cpp" line="199"/>
         <source>Effects</source>
         <translation>Efekty</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="216"/>
+        <location filename="../configdialog.cpp" line="219"/>
         <source>General</source>
         <translation>Všeobecné</translation>
     </message>

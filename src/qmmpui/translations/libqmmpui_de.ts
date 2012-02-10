@@ -87,13 +87,13 @@
         <translation>Dateiname</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="285"/>
+        <location filename="../configdialog.cpp" line="288"/>
         <source>Artist</source>
         <translation>Interpret</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="67"/>
-        <location filename="../configdialog.cpp" line="286"/>
+        <location filename="../configdialog.cpp" line="289"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
@@ -108,72 +108,72 @@
         <translation>Deaktiviert</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="166"/>
+        <location filename="../configdialog.cpp" line="169"/>
         <source>Transports</source>
         <translation>Transporte</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="176"/>
+        <location filename="../configdialog.cpp" line="179"/>
         <source>Decoders</source>
         <translation>Dekoder</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="186"/>
+        <location filename="../configdialog.cpp" line="189"/>
         <source>Engines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
+        <location filename="../configdialog.cpp" line="290"/>
         <source>Title</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="288"/>
+        <location filename="../configdialog.cpp" line="291"/>
         <source>Track number</source>
         <translation>Stücknummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="292"/>
         <source>Two-digit track number</source>
         <translation>Zweistellige Stücknummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
+        <location filename="../configdialog.cpp" line="296"/>
         <source>Disc number</source>
         <translation>CD-Nummer</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="300"/>
         <source>Condition</source>
         <translation>Zustand</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="293"/>
         <source>Genre</source>
         <translation>Genre</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
+        <location filename="../configdialog.cpp" line="295"/>
         <source>Composer</source>
         <translation>Komponist</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>File name</source>
         <translation>Dateiname</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>File path</source>
         <translation>Dateipfad</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Year</source>
         <translation>Jahr</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="294"/>
         <source>Comment</source>
         <translation>Kommentar</translation>
     </message>
@@ -389,17 +389,17 @@
         <translation>Passwort:</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="206"/>
+        <location filename="../configdialog.cpp" line="209"/>
         <source>Visualization</source>
         <translation>Visualisierung</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="196"/>
+        <location filename="../configdialog.cpp" line="199"/>
         <source>Effects</source>
         <translation>Effekte</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="216"/>
+        <location filename="../configdialog.cpp" line="219"/>
         <source>General</source>
         <translation>Sonstige</translation>
     </message>

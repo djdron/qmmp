@@ -35,6 +35,8 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_convertTwenty = s.value ("PlayList/convert_twenty", true).toBool();
     m_useMetadata = s.value ("PlayList/load_metadata", true).toBool();
     m_resume_on_startup = s.value("General/resume_on_startup", false).toBool();
+    m_restrict_filters = s.value("General/restrict_filters").toStringList();
+    m_exclude_filters = s.value("General/exclude_filters", QStringList() << "*.cue").toStringList();
 }
 
 QmmpUiSettings::~QmmpUiSettings()
@@ -112,6 +114,28 @@ void QmmpUiSettings::sync()
     s.setValue("PlayList/convert_twenty", m_convertTwenty);
     s.setValue("PlayList/load_metadata", m_useMetadata);
     s.setValue("General/resume_on_startup", m_resume_on_startup);
+    s.setValue("General/restrict_filters", m_restrict_filters);
+    s.setValue("General/exclude_filters", m_exclude_filters);
+}
+
+QStringList QmmpUiSettings::restrictFilters() const
+{
+    return m_restrict_filters;
+}
+
+void QmmpUiSettings::setRestrictFilters(const QString &filters)
+{
+    m_restrict_filters = filters.trimmed().split(";", QString::SkipEmptyParts);
+}
+
+QStringList QmmpUiSettings::excludeFilters() const
+{
+    return m_exclude_filters;
+}
+
+void QmmpUiSettings::setExcludeFilters(const QString &filters)
+{
+    m_exclude_filters = filters.trimmed().split(";", QString::SkipEmptyParts);
 }
 
 QmmpUiSettings * QmmpUiSettings::instance()
@@ -120,7 +144,3 @@ QmmpUiSettings * QmmpUiSettings::instance()
         return new QmmpUiSettings(qApp);
     return m_instance;
 }
-
-
-
-

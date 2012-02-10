@@ -87,13 +87,13 @@
         <translation>Bylos pavadinimas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="285"/>
+        <location filename="../configdialog.cpp" line="288"/>
         <source>Artist</source>
         <translation>Atlikėjas</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="67"/>
-        <location filename="../configdialog.cpp" line="286"/>
+        <location filename="../configdialog.cpp" line="289"/>
         <source>Album</source>
         <translation>Albumas</translation>
     </message>
@@ -108,72 +108,72 @@
         <translation>Išjungta</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="166"/>
+        <location filename="../configdialog.cpp" line="169"/>
         <source>Transports</source>
         <translation>Transportas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="176"/>
+        <location filename="../configdialog.cpp" line="179"/>
         <source>Decoders</source>
         <translation>Dekoderiai</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="186"/>
+        <location filename="../configdialog.cpp" line="189"/>
         <source>Engines</source>
         <translation>Varikliai</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="287"/>
+        <location filename="../configdialog.cpp" line="290"/>
         <source>Title</source>
         <translation>Pavadinimas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="288"/>
+        <location filename="../configdialog.cpp" line="291"/>
         <source>Track number</source>
         <translation>Takelio numeris</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="292"/>
         <source>Two-digit track number</source>
         <translation>Dviejų skaičių takelio numeris</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
+        <location filename="../configdialog.cpp" line="296"/>
         <source>Disc number</source>
         <translation>Disko numeris</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="300"/>
         <source>Condition</source>
         <translation>Būklė</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
+        <location filename="../configdialog.cpp" line="295"/>
         <source>Composer</source>
         <translation>Autorius</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>File name</source>
         <translation>Bylos pavadinimas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>File path</source>
         <translation>Bylos kelias</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="293"/>
         <source>Genre</source>
         <translation>Žanras</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Year</source>
         <translation>Metai</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="294"/>
         <source>Comment</source>
         <translation>Komentaras</translation>
     </message>
@@ -242,17 +242,17 @@
         <translation>Tinklas</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="206"/>
+        <location filename="../configdialog.cpp" line="209"/>
         <source>Visualization</source>
         <translation>Vizualizacija</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="196"/>
+        <location filename="../configdialog.cpp" line="199"/>
         <source>Effects</source>
         <translation>Efektai</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="216"/>
+        <location filename="../configdialog.cpp" line="219"/>
         <source>General</source>
         <translation>Bendri</translation>
     </message>

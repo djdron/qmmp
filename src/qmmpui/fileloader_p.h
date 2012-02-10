@@ -23,9 +23,11 @@
 #include <QObject>
 #include <QDir>
 #include <QQueue>
+#include <QFileInfo>
 #include <QThread>
 
 class PlayListItem;
+class QmmpUiSettings;
 
 /*! @internal
  * @brief File loader class.
@@ -79,9 +81,12 @@ protected:
     void addDirectory(const QString &s);
 
 private:
+    bool checkRestrictFilters(const QFileInfo &info);
+    bool checkExcludeFilters(const QFileInfo &info);
     QQueue <QString> m_files;
     QQueue <QString> m_directories;
     QStringList m_filters;
+    QmmpUiSettings *m_settings;
     bool m_finished;
 };
 

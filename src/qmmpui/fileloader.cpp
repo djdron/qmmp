@@ -19,12 +19,14 @@
  ***************************************************************************/
 
 #include <qmmp/metadatamanager.h>
+#include <QRegExp>
 #include "fileloader_p.h"
 #include "qmmpuisettings.h"
 #include "playlistitem.h"
 
 FileLoader::FileLoader(QObject *parent) : QThread(parent)
 {
+    m_settings = QmmpUiSettings::instance();
     m_finished = false;
 }
 
@@ -33,7 +35,7 @@ FileLoader::~FileLoader()
 
 void FileLoader::addFile(const QString &path)
 {
-    bool use_meta = QmmpUiSettings::instance()->useMetadata();
+    bool use_meta = m_settings->useMetadata();
     QList <FileInfo *> playList = MetaDataManager::instance()->createPlayList(path, use_meta);
     foreach(FileInfo *info, playList)
         emit newPlayListItem(new PlayListItem(info));
@@ -47,7 +49,8 @@ void FileLoader::addDirectory(const QString& s)
     QFileInfoList l = dir.entryInfoList(m_filters);
     foreach(QFileInfo info, l)
     {
-        addFile(info.absoluteFilePath ());
+        if(checkRestrictFilters(info) && checkExcludeFilters(info))
+            addFile(info.absoluteFilePath ());
         if (m_finished) return;
     }
     dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot);
@@ -111,4 +114,32 @@ void FileLoader::finish()
     m_files.clear();
     m_directories.clear();
     wait();
+}
+
+bool FileLoader::checkRestrictFilters(const QFileInfo &info)
+{
+    if(m_settings->restrictFilters().isEmpty())
+        return true;
+
+    foreach(QString filter, m_settings->restrictFilters())
+    {
+        QRegExp regexp (filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+        if(regexp.exactMatch(info.absoluteFilePath()))
+            return true;
+    }
+    return false;
+}
+
+bool FileLoader::checkExcludeFilters(const QFileInfo &info)
+{
+    if(m_settings->excludeFilters().isEmpty())
+        return true;
+
+    foreach(QString filter, m_settings->excludeFilters())
+    {
+        QRegExp regexp (filter, Qt::CaseInsensitive, QRegExp::Wildcard);
+        if(regexp.exactMatch(info.absoluteFilePath()))
+            return false;
+    }
+    return true;
 }
