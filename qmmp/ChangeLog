@@ -519,3 +519,29 @@ Version 0.5.0
 * updated German translation (Panagiotis Papadopoulos)
 * updated Spanish translation (Félix Medrano)
 * updated Lithuanian translation (Algirdas Butkus)
+
+Version 0.6.0
+* added converter plugin
+* added file type determination by content
+* added '--quit' command line option
+* added text scroller background option
+* added playlists separator option
+* added multiband equalizer api
+* added equalizer presets from Amarok (Thanks to Panagiotis Papadopoulos)
+* added playlits access from command line
+* added dithering to MPEG plugin
+* added priority support to decoder api
+* added user interface api
+* added default destination and file name pattern to fileops plugin
+* added additional directory filters
+* added feature to add files from command line to specific playlist
+* added pkg-config support
+* added vqf support
+* changed playlist insertion behaviour
+* improved cue plugin
+* moved skinned ui to separate plugin
+* fixed 'hide on close' feature
+* fixed moc warnings during compilation
+* fixed IPC under windows
+* fixed windows-specific bugs
+* fixed problems with some asynchronous calls
