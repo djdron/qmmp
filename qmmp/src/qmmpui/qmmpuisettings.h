@@ -22,6 +22,7 @@
 #define QMMPUISETTINGS_H
 
 #include <QObject>
+#include <QStringList>
 
 /*! @brief The QmmpUiSettings class provides access to global libqmmpui library settings.
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -86,6 +87,23 @@ public:
      */
     void setResumeOnStartup(bool enabled);
     /*!
+     * Returns a list of filters which should be used for directory scanning.
+     */
+    QStringList restrictFilters() const;
+    /*!
+     * Disables all builtin directory scanning filters and sets them to \b filters (Example: *.mp3;*.ogg).
+     */
+    void setRestrictFilters(const QString &filters);
+    /*!
+     * Returns a list of filters which should be excluded from incoming files while directory scanning.
+     */
+    QStringList excludeFilters() const;
+    /*!
+     * Sets a list of filters which should be excluded from incoming files while directory scanning.
+     * @param filters A set of filters separated by semicolon (Example: *.cue;*.ogg).
+     */
+    void setExcludeFilters(const QString &filters);
+    /*!
      * Returns a pointer to the QmmpUiSettings instance.
      */
     static QmmpUiSettings* instance();
@@ -111,6 +129,7 @@ private:
     QString m_format;
     //general
     bool m_resume_on_startup;
+    QStringList m_exclude_filters, m_restrict_filters;
 
 };
 

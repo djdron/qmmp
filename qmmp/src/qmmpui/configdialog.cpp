@@ -104,6 +104,9 @@ void ConfigDialog::readSettings()
         m_ui->per20CheckBox->setChecked(guis->convertTwenty());
         //resume playback on startup
         m_ui->continuePlaybackCheckBox->setChecked(guis->resumeOnStartup());
+        //directory filters
+        m_ui->dirRestrictLineEdit->setText(guis->restrictFilters().join(";").trimmed());
+        m_ui->dirExcludeLineEdit->setText(guis->excludeFilters().join(";").trimmed());
     }
     //proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
@@ -318,6 +321,8 @@ void ConfigDialog::saveSettings()
         guis->setConvertUnderscore(m_ui->underscoresCheckBox->isChecked());
         guis->setConvertTwenty(m_ui->per20CheckBox->isChecked());
         guis->setResumeOnStartup(m_ui->continuePlaybackCheckBox->isChecked());
+        guis->setRestrictFilters(m_ui->dirRestrictLineEdit->text());
+        guis->setExcludeFilters(m_ui->dirExcludeLineEdit->text());
         guis->sync();
     }
 
