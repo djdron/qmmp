@@ -4,67 +4,67 @@
 <context>
     <name>BuiltinCommandLineOption</name>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="59"/>
+        <location filename="../builtincommandlineoption.cpp" line="60"/>
         <source>Don&apos;t clear the playlist</source>
         <translation type="unfinished">Ne töröld a lejátszási listát</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="60"/>
+        <location filename="../builtincommandlineoption.cpp" line="61"/>
         <source>Start playing current song</source>
         <translation>Aktuális szám lejátszásának indítása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="61"/>
+        <location filename="../builtincommandlineoption.cpp" line="62"/>
         <source>Pause current song</source>
         <translation>Aktuális szám szüneteltetése</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="62"/>
+        <location filename="../builtincommandlineoption.cpp" line="63"/>
         <source>Pause if playing, play otherwise</source>
         <translation>Szünet ha lejátszás van, különben lejátszás</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="63"/>
+        <location filename="../builtincommandlineoption.cpp" line="64"/>
         <source>Stop current song</source>
         <translation>Aktuális szám megállítása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="64"/>
+        <location filename="../builtincommandlineoption.cpp" line="65"/>
         <source>Display Jump to File dialog</source>
         <translation>Számra ugrás ablak mutatása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="65"/>
+        <location filename="../builtincommandlineoption.cpp" line="66"/>
         <source>Quit application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="66"/>
+        <location filename="../builtincommandlineoption.cpp" line="67"/>
         <source>Set playback volume (example: qmmp --volume 20)</source>
         <translation>Lejátszási hangerő beállítása (pl.: qmmp --volume 20)</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="67"/>
+        <location filename="../builtincommandlineoption.cpp" line="68"/>
         <source>Skip forward in playlist</source>
         <translation>Lejátszási lista következő számának kihagyása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="68"/>
+        <location filename="../builtincommandlineoption.cpp" line="69"/>
         <source>Skip backwards in playlist</source>
         <translation>Lejátszási lista előző számainak kihagyása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="69"/>
+        <location filename="../builtincommandlineoption.cpp" line="70"/>
         <source>Show/hide application</source>
         <translation>Alkalmazás mutatása/elrejtése</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="70"/>
+        <location filename="../builtincommandlineoption.cpp" line="71"/>
         <source>Display Add File dialog</source>
         <translation>Fájl hozzáadása ablak mutatása</translation>
     </message>
     <message>
-        <location filename="../builtincommandlineoption.cpp" line="71"/>
+        <location filename="../builtincommandlineoption.cpp" line="72"/>
         <source>Display Add Directory dialog</source>
         <translation>Könyvtár hozzáadása ablak mutatása</translation>
     </message>

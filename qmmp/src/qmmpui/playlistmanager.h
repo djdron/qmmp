@@ -139,6 +139,10 @@ public slots:
      */
     void selectPlayList(int index);
     /*!
+     * Selects playlist with name \b name.
+     */
+    void selectPlayList(const QString &name);
+    /*!
      * Selects next playlist if possible.
      */
     void selectNextPlayList();

@@ -110,6 +110,13 @@ void PlayListManager::selectPlayList(int i)
     selectPlayList(playListAt(i));
 }
 
+void PlayListManager::selectPlayList(const QString &name)
+{
+    int index = playListNames().indexOf(name);
+    if(index >= 0)
+        selectPlayList(playListAt(index));
+}
+
 void PlayListManager::selectNextPlayList()
 {
     int i = m_models.indexOf(m_selected);

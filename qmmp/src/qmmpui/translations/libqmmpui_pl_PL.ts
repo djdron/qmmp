@@ -87,13 +87,13 @@
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="288"/>
+        <location filename="../configdialog.cpp" line="291"/>
         <source>Artist</source>
         <translation>Artysta</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="67"/>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="292"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
@@ -108,72 +108,72 @@
         <translation>Wyłączone</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="169"/>
+        <location filename="../configdialog.cpp" line="172"/>
         <source>Transports</source>
         <translation>Transporty</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="179"/>
+        <location filename="../configdialog.cpp" line="182"/>
         <source>Decoders</source>
         <translation>Dekodery</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="189"/>
+        <location filename="../configdialog.cpp" line="192"/>
         <source>Engines</source>
         <translation>Silniki</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="293"/>
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="294"/>
         <source>Track number</source>
         <translation>Numer utworu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
+        <location filename="../configdialog.cpp" line="295"/>
         <source>Two-digit track number</source>
         <translation>Dwuznakowy numer utworu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Disc number</source>
         <translation>Numer albumu</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="300"/>
+        <location filename="../configdialog.cpp" line="303"/>
         <source>Condition</source>
         <translation>Warunek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
+        <location filename="../configdialog.cpp" line="296"/>
         <source>Genre</source>
         <translation>Gatunek</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>Composer</source>
         <translation>Kompozytor</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="300"/>
         <source>File name</source>
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="298"/>
+        <location filename="../configdialog.cpp" line="301"/>
         <source>File path</source>
         <translation>Lokalizacja</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="302"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>Comment</source>
         <translation>Komentarz</translation>
     </message>
@@ -242,17 +242,17 @@
         <translation>Sieć</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="209"/>
+        <location filename="../configdialog.cpp" line="212"/>
         <source>Visualization</source>
         <translation>Wizualizacje</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="199"/>
+        <location filename="../configdialog.cpp" line="202"/>
         <source>Effects</source>
         <translation>Efekty</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="219"/>
+        <location filename="../configdialog.cpp" line="222"/>
         <source>General</source>
         <translation>Ogólne</translation>
     </message>
@@ -556,10 +556,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="147"/>
-        <location filename="../playlistmanager.cpp" line="334"/>
+        <location filename="../playlistmanager.cpp" line="154"/>
+        <location filename="../playlistmanager.cpp" line="341"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
+    </message>
+</context>
+<context>
+    <name>QmmpUiSettings</name>
+    <message>
+        <location filename="../qmmpuisettings.cpp" line="41"/>
+        <source>Playlist</source>
+        <translation type="unfinished">Lista odtwarzania</translation>
     </message>
 </context>
 <context>

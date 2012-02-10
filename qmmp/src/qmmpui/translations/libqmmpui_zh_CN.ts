@@ -87,13 +87,13 @@
         <translation>文件名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="288"/>
+        <location filename="../configdialog.cpp" line="291"/>
         <source>Artist</source>
         <translation>艺术家</translation>
     </message>
     <message>
         <location filename="../configdialog.cpp" line="67"/>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="292"/>
         <source>Album</source>
         <translation>专辑</translation>
     </message>
@@ -108,72 +108,72 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="169"/>
+        <location filename="../configdialog.cpp" line="172"/>
         <source>Transports</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="179"/>
+        <location filename="../configdialog.cpp" line="182"/>
         <source>Decoders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="189"/>
+        <location filename="../configdialog.cpp" line="192"/>
         <source>Engines</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="293"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="294"/>
         <source>Track number</source>
         <translation type="unfinished">音轨编号</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
+        <location filename="../configdialog.cpp" line="295"/>
         <source>Two-digit track number</source>
         <translation type="unfinished">两位数音轨编号</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Disc number</source>
         <translation type="unfinished">光盘编号</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="300"/>
+        <location filename="../configdialog.cpp" line="303"/>
         <source>Condition</source>
         <translation type="unfinished">条件</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
+        <location filename="../configdialog.cpp" line="296"/>
         <source>Genre</source>
         <translation>流派</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>Composer</source>
         <translation type="unfinished">作曲</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="300"/>
         <source>File name</source>
         <translation type="unfinished">文件名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="298"/>
+        <location filename="../configdialog.cpp" line="301"/>
         <source>File path</source>
         <translation type="unfinished">文件路径</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="302"/>
         <source>Year</source>
         <translation>年代</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>Comment</source>
         <translation>备注</translation>
     </message>
@@ -242,17 +242,17 @@
         <translation>连接</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="209"/>
+        <location filename="../configdialog.cpp" line="212"/>
         <source>Visualization</source>
         <translation>可视化</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="199"/>
+        <location filename="../configdialog.cpp" line="202"/>
         <source>Effects</source>
         <translation>特效</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="219"/>
+        <location filename="../configdialog.cpp" line="222"/>
         <source>General</source>
         <translation>常规</translation>
     </message>
@@ -556,10 +556,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="147"/>
-        <location filename="../playlistmanager.cpp" line="334"/>
+        <location filename="../playlistmanager.cpp" line="154"/>
+        <location filename="../playlistmanager.cpp" line="341"/>
         <source>Playlist</source>
         <translation>播放列表</translation>
+    </message>
+</context>
+<context>
+    <name>QmmpUiSettings</name>
+    <message>
+        <location filename="../qmmpuisettings.cpp" line="41"/>
+        <source>Playlist</source>
+        <translation type="unfinished">播放列表</translation>
     </message>
 </context>
 <context>

@@ -104,22 +104,30 @@ public:
      */
     void setExcludeFilters(const QString &filters);
     /*!
+     * Returns \b true if defaut playlist is enabled, othewise returns \b false.
+     * Default playlist receives files from command line.
+     */
+    bool useDefaultPlayList() const;
+    /*!
+     * Returns default playlist name.
+     */
+    QString defaultPlayListName() const;
+    /*!
+     * Sets default playlist options.
+     * @param name Default playlist name.
+     * @param enabled Default playlist state (\b true - enabled, \b false - disabled).
+     */
+    void setDefaultPlayList(const QString &name, bool enabled = true);
+    /*!
      * Returns a pointer to the QmmpUiSettings instance.
      */
     static QmmpUiSettings* instance();
-
-signals:
-    /*!
-     * Emitted when other settings (format, metadata, etc) have changed.
-     */
-    //void settingsChanged();
 
 public slots:
     /*!
      * Writes all unsaved settings to configuration file
      */
     void sync();
-
 
 private:
     static QmmpUiSettings* m_instance;
@@ -130,6 +138,10 @@ private:
     //general
     bool m_resume_on_startup;
     QStringList m_exclude_filters, m_restrict_filters;
+    //default playlist
+    bool m_use_default_pl;
+    QString m_default_pl_name;
+
 
 };
 

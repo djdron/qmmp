@@ -325,7 +325,7 @@
     </message>
     <message>
         <location filename="../configdialog.cpp" line="67"/>
-        <location filename="../configdialog.cpp" line="289"/>
+        <location filename="../configdialog.cpp" line="292"/>
         <source>Album</source>
         <translation>アルバム</translation>
     </message>
@@ -335,92 +335,92 @@
         <translation>無効</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="169"/>
+        <location filename="../configdialog.cpp" line="172"/>
         <source>Transports</source>
         <translation>転送</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="179"/>
+        <location filename="../configdialog.cpp" line="182"/>
         <source>Decoders</source>
         <translation>デコーダー</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="189"/>
+        <location filename="../configdialog.cpp" line="192"/>
         <source>Engines</source>
         <translation>エンジン</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="199"/>
+        <location filename="../configdialog.cpp" line="202"/>
         <source>Effects</source>
         <translation>音響効果</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="209"/>
+        <location filename="../configdialog.cpp" line="212"/>
         <source>Visualization</source>
         <translation>視覚効果</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="219"/>
+        <location filename="../configdialog.cpp" line="222"/>
         <source>General</source>
         <translation>一般</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="288"/>
+        <location filename="../configdialog.cpp" line="291"/>
         <source>Artist</source>
         <translation>アーティスト</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="290"/>
+        <location filename="../configdialog.cpp" line="293"/>
         <source>Title</source>
         <translation>タイトル</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="291"/>
+        <location filename="../configdialog.cpp" line="294"/>
         <source>Track number</source>
         <translation>トラック番号</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="292"/>
+        <location filename="../configdialog.cpp" line="295"/>
         <source>Two-digit track number</source>
         <translation>トラック番号 数字2桁</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="293"/>
+        <location filename="../configdialog.cpp" line="296"/>
         <source>Genre</source>
         <translation>ジャンル</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="294"/>
+        <location filename="../configdialog.cpp" line="297"/>
         <source>Comment</source>
         <translation>コメント</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="295"/>
+        <location filename="../configdialog.cpp" line="298"/>
         <source>Composer</source>
         <translation>作曲者</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="296"/>
+        <location filename="../configdialog.cpp" line="299"/>
         <source>Disc number</source>
         <translation>ディスク番号</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="297"/>
+        <location filename="../configdialog.cpp" line="300"/>
         <source>File name</source>
         <translation>ファイル名</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="298"/>
+        <location filename="../configdialog.cpp" line="301"/>
         <source>File path</source>
         <translation>ファイルパス</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="299"/>
+        <location filename="../configdialog.cpp" line="302"/>
         <source>Year</source>
         <translation>年</translation>
     </message>
     <message>
-        <location filename="../configdialog.cpp" line="300"/>
+        <location filename="../configdialog.cpp" line="303"/>
         <source>Condition</source>
         <translation>定番</translation>
     </message>
@@ -560,10 +560,18 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>PlayListManager</name>
     <message>
-        <location filename="../playlistmanager.cpp" line="147"/>
-        <location filename="../playlistmanager.cpp" line="334"/>
+        <location filename="../playlistmanager.cpp" line="154"/>
+        <location filename="../playlistmanager.cpp" line="341"/>
         <source>Playlist</source>
         <translation>プレイリスト</translation>
+    </message>
+</context>
+<context>
+    <name>QmmpUiSettings</name>
+    <message>
+        <location filename="../qmmpuisettings.cpp" line="41"/>
+        <source>Playlist</source>
+        <translation type="unfinished">プレイリスト</translation>
     </message>
 </context>
 <context>
