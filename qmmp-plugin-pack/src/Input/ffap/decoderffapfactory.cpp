@@ -154,7 +154,7 @@ void DecoderFFapFactory::showAbout(QWidget *parent)
                         tr("Qmmp FFap Audio Plugin")+"\n"+
                         tr("This plugin provides Monkey's Audio (APE) support") +"\n"+
                         tr("Written by: Ilya Kotov <forkotov02@hotmail.ru>")  +"\n"+
-                        tr("Based on code from deadbeef, libavc and rockbox"));
+                        tr("Based on code from deadbeef, FFmpeg and rockbox"));
 }
 
 QTranslator *DecoderFFapFactory::createTranslator(QObject *parent)

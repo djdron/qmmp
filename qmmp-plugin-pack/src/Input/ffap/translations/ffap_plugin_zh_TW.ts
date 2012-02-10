@@ -35,7 +35,7 @@
     </message>
     <message>
         <location filename="../decoderffapfactory.cpp" line="157"/>
-        <source>Based on code from deadbeef, libavc and rockbox</source>
+        <source>Based on code from deadbeef, FFmpeg and rockbox</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
