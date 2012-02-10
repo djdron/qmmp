@@ -37,6 +37,8 @@ QmmpUiSettings::QmmpUiSettings(QObject *parent) : QObject(parent)
     m_resume_on_startup = s.value("General/resume_on_startup", false).toBool();
     m_restrict_filters = s.value("General/restrict_filters").toStringList();
     m_exclude_filters = s.value("General/exclude_filters", QStringList() << "*.cue").toStringList();
+    m_use_default_pl = s.value("General/use_default_pl", false).toBool();
+    m_default_pl_name = s.value("General/default_pl_name", tr("Playlist")).toString();
 }
 
 QmmpUiSettings::~QmmpUiSettings()
@@ -116,6 +118,8 @@ void QmmpUiSettings::sync()
     s.setValue("General/resume_on_startup", m_resume_on_startup);
     s.setValue("General/restrict_filters", m_restrict_filters);
     s.setValue("General/exclude_filters", m_exclude_filters);
+    s.setValue("General/use_default_pl", m_use_default_pl);
+    s.setValue("General/default_pl_name", m_default_pl_name);
 }
 
 QStringList QmmpUiSettings::restrictFilters() const
@@ -138,9 +142,25 @@ void QmmpUiSettings::setExcludeFilters(const QString &filters)
     m_exclude_filters = filters.trimmed().split(";", QString::SkipEmptyParts);
 }
 
+bool QmmpUiSettings::useDefaultPlayList() const
+{
+    return m_use_default_pl;
+}
+
+QString QmmpUiSettings::defaultPlayListName() const
+{
+    return m_default_pl_name;
+}
+
 QmmpUiSettings * QmmpUiSettings::instance()
 {
     if(!m_instance)
         return new QmmpUiSettings(qApp);
     return m_instance;
+}
+
+void QmmpUiSettings::setDefaultPlayList(const QString &name, bool enabled)
+{
+    m_use_default_pl = enabled;
+    m_default_pl_name = name;
 }

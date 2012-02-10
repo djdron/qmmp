@@ -107,6 +107,9 @@ void ConfigDialog::readSettings()
         //directory filters
         m_ui->dirRestrictLineEdit->setText(guis->restrictFilters().join(";").trimmed());
         m_ui->dirExcludeLineEdit->setText(guis->excludeFilters().join(";").trimmed());
+        //default playlist
+        m_ui->defaultPlayListCheckBox->setChecked(guis->useDefaultPlayList());
+        m_ui->defaultPlayListLineEdit->setText(guis->defaultPlayListName());
     }
     //proxy settings
     QmmpSettings *gs = QmmpSettings::instance();
@@ -323,6 +326,8 @@ void ConfigDialog::saveSettings()
         guis->setResumeOnStartup(m_ui->continuePlaybackCheckBox->isChecked());
         guis->setRestrictFilters(m_ui->dirRestrictLineEdit->text());
         guis->setExcludeFilters(m_ui->dirExcludeLineEdit->text());
+        guis->setDefaultPlayList(m_ui->defaultPlayListLineEdit->text(),
+                                 m_ui->defaultPlayListCheckBox->isChecked());
         guis->sync();
     }
 

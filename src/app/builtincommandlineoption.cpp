@@ -24,6 +24,7 @@
 #include <qmmpui/uihelper.h>
 #include <qmmpui/filedialog.h>
 #include <qmmpui/uihelper.h>
+#include <qmmpui/qmmpuisettings.h>
 #include <qmmp/metadatamanager.h>
 #include "builtincommandlineoption.h"
 
@@ -92,6 +93,14 @@ void BuiltinCommandLineOption::executeCommand(const QString &option_string,
                 full_path_list << s;
             else
                 full_path_list << cwd + "/" + s;
+        }
+        //default playlist
+        QmmpUiSettings *settings = QmmpUiSettings::instance();
+        if(settings->useDefaultPlayList())
+        {
+            if(!pl_manager->playListNames().contains(settings->defaultPlayListName()))
+                pl_manager->createPlayList(settings->defaultPlayListName());
+            pl_manager->selectPlayList(settings->defaultPlayListName());
         }
         pl_manager->activatePlayList(pl_manager->selectedPlayList());
         if(option_string.isEmpty()) //clear playlist if option is empty

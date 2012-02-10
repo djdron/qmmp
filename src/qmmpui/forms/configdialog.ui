@@ -442,7 +442,7 @@
           <property name="title">
            <string>Playback</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_21">
+          <layout class="QGridLayout" name="gridLayout_70">
            <item row="0" column="0" colspan="2">
             <widget class="QCheckBox" name="continuePlaybackCheckBox">
              <property name="text">
@@ -458,14 +458,14 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="label_3">
+            <widget class="QCheckBox" name="defaultPlayListCheckBox">
              <property name="text">
               <string>Add files from command line to this playlist:</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="defaultPlayListLineEdit"/>
            </item>
           </layout>
          </widget>
@@ -982,12 +982,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>357</x>
-     <y>177</y>
+     <x>616</x>
+     <y>271</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>200</y>
+     <x>654</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -998,12 +998,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>327</x>
-     <y>179</y>
+     <x>586</x>
+     <y>271</y>
     </hint>
     <hint type="destinationlabel">
-     <x>354</x>
-     <y>228</y>
+     <x>654</x>
+     <y>321</y>
     </hint>
    </hints>
   </connection>
@@ -1014,12 +1014,28 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>301</x>
-     <y>177</y>
+     <x>560</x>
+     <y>271</y>
     </hint>
     <hint type="destinationlabel">
-     <x>419</x>
-     <y>255</y>
+     <x>458</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultPlayListCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>defaultPlayListLineEdit</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>457</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>580</x>
+     <y>227</y>
     </hint>
    </hints>
   </connection>

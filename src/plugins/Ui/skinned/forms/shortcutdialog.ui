@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Change Shortcut</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_67">
    <property name="leftMargin">
     <number>6</number>
    </property>
