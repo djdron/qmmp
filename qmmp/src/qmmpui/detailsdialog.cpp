@@ -26,6 +26,7 @@
 #include <qmmp/metadatamanager.h>
 #include <qmmp/metadatamodel.h>
 #include <qmmp/tagmodel.h>
+#include <qmmp/soundcore.h>
 #include "ui_detailsdialog.h"
 #include "playlistitem.h"
 #include "tageditor_p.h"
@@ -92,6 +93,7 @@ void DetailsDialog:: on_directoryButton_clicked()
 
 void DetailsDialog::printInfo()
 {
+    SoundCore *core = SoundCore::instance();
     QList <FileInfo *> flist = MetaDataManager::instance()->createPlayList(m_path, true);
     QMap <Qmmp::MetaData, QString> metaData;
     if(!flist.isEmpty() && QFile::exists(m_item->url()))
@@ -113,6 +115,21 @@ void DetailsDialog::printInfo()
         formattedText += formatRow(tr("Track"), metaData[Qmmp::TRACK]);
     if(metaData[Qmmp::DISCNUMBER] != "0")
         formattedText += formatRow(tr("Disc number"), metaData[Qmmp::DISCNUMBER]);
+    //stream information
+    if(core->state() == Qmmp::Playing && core->url() == metaData.value(Qmmp::URL))
+    {
+        if(!core->streamInfo().isEmpty())
+        {
+            formattedText.append("<tr>");
+            formattedText.append("<td colspan=2>");
+            formattedText.append("<hr>");
+            formattedText.append("</td>");
+            formattedText.append("</tr>");
+
+            foreach(QString key, core->streamInfo().keys())
+                formattedText += formatRow(key, core->streamInfo().value(key));
+        }
+    }
     //audio info
     if(!m_metaDataModel)
     {

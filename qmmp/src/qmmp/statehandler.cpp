@@ -50,11 +50,7 @@ StateHandler::~StateHandler()
     m_instance = 0;
 }
 
-void StateHandler::dispatch(qint64 elapsed,
-                            int bitrate,
-                            quint32 frequency,
-                            int precision,
-                            int channels)
+void StateHandler::dispatch(qint64 elapsed, int bitrate, quint32 frequency, int precision, int channels)
 {
     m_mutex.lock();
     if (qAbs(m_elapsed - elapsed) > TICK_INTERVAL)
@@ -126,6 +122,23 @@ void StateHandler::dispatch(const QMap<Qmmp::MetaData, QString> &metaData)
     m_mutex.unlock();
 }
 
+void StateHandler::dispatch(const QHash<QString, QString> &info)
+{
+    m_mutex.lock();
+    QHash<QString, QString> tmp = info;
+    foreach(QString value, tmp.values()) //remove empty keys
+    {
+        if (value.isEmpty())
+            tmp.remove(tmp.key(value));
+    }
+    if(m_streamInfo != tmp)
+    {
+        m_streamInfo = tmp;
+        qApp->postEvent(parent(), new StreamInfoChangedEvent(m_streamInfo));
+    }
+    m_mutex.unlock();
+}
+
 void StateHandler::dispatch(Qmmp::State state)
 {
     m_mutex.lock();
@@ -140,6 +153,7 @@ void StateHandler::dispatch(Qmmp::State state)
         m_precision = 0;
         m_channels = 0;
         m_metaData.clear();
+        m_streamInfo.clear();
         m_sendAboutToFinish = true;
     }
     if (m_state != state)

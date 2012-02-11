@@ -345,6 +345,9 @@ void QmmpAudioEngine::run()
             StateHandler::instance()->dispatch(m_decoder->takeMetaData());
         if(m_inputs[m_decoder]->hasMetaData())
             StateHandler::instance()->dispatch(m_inputs[m_decoder]->takeMetaData());
+        if(m_inputs[m_decoder]->hasStreamInfo())
+            StateHandler::instance()->dispatch(m_inputs[m_decoder]->takeStreamInfo());
+
         // decode
         len = m_decoder->read((char *)(m_output_buf + m_output_at), m_output_size - m_output_at);
 

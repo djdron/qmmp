@@ -209,14 +209,19 @@ Qmmp::State SoundCore::state() const
     return m_handler->state();
 }
 
-QMap <Qmmp::MetaData, QString> SoundCore::metaData()
+QMap <Qmmp::MetaData, QString> SoundCore::metaData() const
 {
     return m_metaData;
 }
 
-QString SoundCore::metaData(Qmmp::MetaData key)
+QString SoundCore::metaData(Qmmp::MetaData key) const
 {
     return m_metaData[key];
+}
+
+QHash<QString, QString> SoundCore::streamInfo() const
+{
+    return m_streamInfo;
 }
 
 void SoundCore::startNextSource()
@@ -321,12 +326,20 @@ bool SoundCore::event(QEvent *e)
         Qmmp::State st = ((StateChangedEvent *) e)->currentState();
         emit stateChanged(st);
         if(st == Qmmp::Stopped)
+        {
+            m_streamInfo.clear();
             startNextEngine();
+        }
     }
     else if(e->type() == EVENT_METADATA_CHANGED)
     {
         m_metaData = ((MetaDataChangedEvent *) e)->metaData();
         emit metaDataChanged();
+    }
+    else if(e->type() == EVENT_STREAM_INFO_CHANGED)
+    {
+        m_streamInfo = ((StreamInfoChangedEvent *) e)->streamInfo();
+        emit streamInfoChanged();
     }
     else if(e->type() == EVENT_NEXT_TRACK_REQUEST)
         emit nextTrackRequest();
