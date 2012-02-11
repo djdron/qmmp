@@ -204,7 +204,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="313"/>
-        <location filename="../forms/configdialog.ui" line="759"/>
+        <location filename="../forms/configdialog.ui" line="763"/>
         <source>Preferences</source>
         <translation>Ustawienia</translation>
     </message>
@@ -212,7 +212,7 @@
         <location filename="../forms/configdialog.ui" line="326"/>
         <location filename="../forms/configdialog.ui" line="388"/>
         <location filename="../forms/configdialog.ui" line="420"/>
-        <location filename="../forms/configdialog.ui" line="772"/>
+        <location filename="../forms/configdialog.ui" line="776"/>
         <source>Information</source>
         <translation>Informacje</translation>
     </message>
@@ -232,7 +232,7 @@
         <translation>Zaawansowane</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="844"/>
+        <location filename="../forms/configdialog.ui" line="848"/>
         <source>16-bit output</source>
         <translation>16-bitowe odtwarzanie</translation>
     </message>
@@ -263,7 +263,7 @@
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="94"/>
-        <location filename="../forms/configdialog.ui" line="737"/>
+        <location filename="../forms/configdialog.ui" line="741"/>
         <source>Audio</source>
         <translation>Dźwięk</translation>
     </message>
@@ -283,53 +283,53 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="607"/>
+        <location filename="../forms/configdialog.ui" line="611"/>
         <source>Replay Gain</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="613"/>
+        <location filename="../forms/configdialog.ui" line="617"/>
         <source>Replay Gain mode:</source>
         <translation>Tryb Replay Gain:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="630"/>
+        <location filename="../forms/configdialog.ui" line="634"/>
         <source>Preamp:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="662"/>
-        <location filename="../forms/configdialog.ui" line="707"/>
+        <location filename="../forms/configdialog.ui" line="666"/>
+        <location filename="../forms/configdialog.ui" line="711"/>
         <source>dB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="675"/>
+        <location filename="../forms/configdialog.ui" line="679"/>
         <source>Default gain:</source>
         <translation>Domyślne wzmocnienie:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="727"/>
+        <location filename="../forms/configdialog.ui" line="731"/>
         <source>Use  peak info to prevent clipping</source>
         <translation>Użyj informacji peak by zapobiec &quot;klipnięciom&quot;</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="743"/>
+        <location filename="../forms/configdialog.ui" line="747"/>
         <source>Output:</source>
         <translation>Wyjście:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="795"/>
+        <location filename="../forms/configdialog.ui" line="799"/>
         <source>Buffer size:</source>
         <translation>Rozmiar bufora:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="808"/>
+        <location filename="../forms/configdialog.ui" line="812"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="837"/>
+        <location filename="../forms/configdialog.ui" line="841"/>
         <source>Use software volume control</source>
         <translation>Użyj programowej regulacji głośności</translation>
     </message>
@@ -380,37 +380,37 @@
         <translation>Interfejs użytkownika</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="505"/>
+        <location filename="../forms/configdialog.ui" line="509"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="517"/>
+        <location filename="../forms/configdialog.ui" line="521"/>
         <source>Enable proxy usage</source>
         <translation>Włącz proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="524"/>
+        <location filename="../forms/configdialog.ui" line="528"/>
         <source>Proxy host name:</source>
         <translation>Nazwa hosta proxy:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="537"/>
+        <location filename="../forms/configdialog.ui" line="541"/>
         <source>Proxy port:</source>
         <translation>Port proxy:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="550"/>
+        <location filename="../forms/configdialog.ui" line="554"/>
         <source>Use authentication with proxy</source>
         <translation>Użyj autoryzacji z proxy</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="557"/>
+        <location filename="../forms/configdialog.ui" line="561"/>
         <source>Proxy user name:</source>
         <translation>Nazwa użytkownika:</translation>
     </message>
     <message>
-        <location filename="../forms/configdialog.ui" line="570"/>
+        <location filename="../forms/configdialog.ui" line="574"/>
         <source>Proxy password:</source>
         <translation>Hasło:</translation>
     </message>
@@ -428,47 +428,47 @@
 <context>
     <name>DetailsDialog</name>
     <message>
-        <location filename="../detailsdialog.cpp" line="104"/>
+        <location filename="../detailsdialog.cpp" line="106"/>
         <source>Title</source>
         <translation>Tytuł</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="105"/>
+        <location filename="../detailsdialog.cpp" line="107"/>
         <source>Artist</source>
         <translation>Artysta</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="106"/>
+        <location filename="../detailsdialog.cpp" line="108"/>
         <source>Album</source>
         <translation>Album</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="107"/>
+        <location filename="../detailsdialog.cpp" line="109"/>
         <source>Comment</source>
         <translation>Komentarz</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="108"/>
+        <location filename="../detailsdialog.cpp" line="110"/>
         <source>Genre</source>
         <translation>Gatunek</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="109"/>
+        <location filename="../detailsdialog.cpp" line="111"/>
         <source>Composer</source>
         <translation>Kompozytor</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="111"/>
+        <location filename="../detailsdialog.cpp" line="113"/>
         <source>Year</source>
         <translation>Rok</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="113"/>
+        <location filename="../detailsdialog.cpp" line="115"/>
         <source>Track</source>
         <translation>Ścieżka</translation>
     </message>
     <message>
-        <location filename="../detailsdialog.cpp" line="115"/>
+        <location filename="../detailsdialog.cpp" line="117"/>
         <source>Disc number</source>
         <translation>Numer płyty</translation>
     </message>
@@ -557,7 +557,7 @@ p, li { white-space: pre-wrap; }
     <name>PlayListManager</name>
     <message>
         <location filename="../playlistmanager.cpp" line="154"/>
-        <location filename="../playlistmanager.cpp" line="341"/>
+        <location filename="../playlistmanager.cpp" line="340"/>
         <source>Playlist</source>
         <translation>Lista odtwarzania</translation>
     </message>
