@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QMap>
+#include <QHash>
 #include <QMutex>
 #include "abstractengine.h"
 #include "qmmp.h"
@@ -50,24 +51,24 @@ public:
      * @param precision Sample size (in bits).
      * @param channels Number of channels.
      */
-    virtual void dispatch(qint64 elapsed,
-                          int bitrate,
-                          quint32 frequency,
-                          int precision,
-                          int channels);
+    void dispatch(qint64 elapsed, int bitrate, quint32 frequency, int precision, int channels);
     /*!
      * Sends metadata \b metaData
      */
-    virtual void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
+    void dispatch(const QMap<Qmmp::MetaData, QString> &metaData);
+    /*!
+     * Sends stream information \b info
+     */
+    void dispatch(const QHash<QString, QString> &info);
     /*!
      * Sends playback state.
      */
-    virtual void dispatch(Qmmp::State state);
+    void dispatch(Qmmp::State state);
     /*!
      * Sends buffering progress.
      * @param percent Indicates the current percentage of buffering completed.
      */
-    virtual void dispatchBuffer(int percent);
+    void dispatchBuffer(int percent);
     /*!
      * Returns the current time (in milliseconds).
      */
@@ -93,9 +94,12 @@ public:
      */
     Qmmp::State state() const;
     /*!
-     * Sends \b nextTrackRequest() event manually.
+     * Sends next track request.
      */
     void sendNextTrackRequest();
+    /*!
+     * Sends playback finished event.
+     */
     void sendFinished();
     /*!
      * Returns a pointer to the first created StateHandler instance.
@@ -142,6 +146,7 @@ private:
     int m_bitrate, m_precision, m_channels;
     static StateHandler* m_instance;
     QMap <Qmmp::MetaData, QString> m_metaData;
+    QHash <QString, QString> m_streamInfo;
     Qmmp::State m_state;
     QMutex m_mutex;
 };

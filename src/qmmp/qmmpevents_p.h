@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011 by Ilya Kotov                                      *
+ *   Copyright (C) 2011-2012 by Ilya Kotov                                 *
  *   forkotov02@hotmail.ru                                                 *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,6 +22,7 @@
 #define QMMPEVENTS_P_H
 
 #include <QMap>
+#include <QHash>
 #include <QEvent>
 #include "qmmp.h"
 
@@ -29,6 +30,7 @@
 #define EVENT_NEXT_TRACK_REQUEST (QEvent::Type(QEvent::User + 1)) /*!< @internal */
 #define EVENT_FINISHED (QEvent::Type(QEvent::User + 2)) /*!< @internal */
 #define EVENT_METADATA_CHANGED (QEvent::Type(QEvent::User + 3)) /*!< @internal */
+#define EVENT_STREAM_INFO_CHANGED (QEvent::Type(QEvent::User + 4)) /*!< @internal */
 
 /*! @internal
  * @author Ilya Kotov <forkotov02@hotmail.ru>
@@ -59,14 +61,31 @@ public:
     /*!
      * Returns all meta data in map.
      */
-    QMap <Qmmp::MetaData, QString> metaData();
+    QMap <Qmmp::MetaData, QString> metaData() const;
     /*!
      * Returns the metdata string associated with the given \b key.
      */
-    QString metaData(Qmmp::MetaData key);
+    QString metaData(Qmmp::MetaData key) const;
 
 private:
     QMap<Qmmp::MetaData, QString> m_metaData;
+};
+
+/*! @internal
+ * @author Ilya Kotov <forkotov02@hotmail.ru>
+ */
+class StreamInfoChangedEvent : public QEvent
+{
+public:
+    StreamInfoChangedEvent(const QHash<QString, QString> &info);
+    virtual ~StreamInfoChangedEvent();
+    /*!
+     * Returns all stream information.
+     */
+    QHash <QString, QString> streamInfo() const;
+
+private:
+    QHash<QString, QString> m_streamInfo;
 };
 
 #endif // QMMPEVENTS_P_H

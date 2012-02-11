@@ -84,10 +84,25 @@ public:
      */
     bool hasMetaData() const;
     /*!
-     * Takes metadata out of decoder and returns it.
+     * Takes metadata out of InputSource object and returns it.
      * Attention: hasMetaData() should return \b true before use of this fuction.
      */
     QMap<Qmmp::MetaData, QString> takeMetaData();
+    /*!
+     * Informs input source object about received stream information (for example icy data).
+     * Call of this function is required for all non-local streams/files
+     * @param info Stream information map.
+     */
+    void addStreamInfo(const QHash<QString, QString> &info);
+    /*!
+     * Returns \b true when stream information has received, otherwise returns \b false.
+     */
+    bool hasStreamInfo() const;
+    /*!
+     * Takes stream information out of InputSource object and returns it.
+     * Attention: hasStreamInfo() should return \b true before use of this fuction.
+     */
+    QHash<QString, QString> takeStreamInfo();
     /*!
      * Creates InputSource object.
      * @param url Input source path or url.
@@ -123,7 +138,8 @@ private:
     QString m_url;
     qint64 m_offset;
     QMap<Qmmp::MetaData, QString> m_metaData;
-    bool m_hasMetaData;
+    QHash<QString, QString> m_streamInfo;
+    bool m_hasMetaData, m_hasStreamInfo;
     static void checkFactories();
     static QList<InputSourceFactory*> *m_factories;
     static QHash <InputSourceFactory*, QString> *m_files;

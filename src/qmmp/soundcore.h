@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QString>
 #include <QQueue>
+#include <QHash>
 #include "decoder.h"
 #include "output.h"
 #include "visual.h"
@@ -98,11 +99,15 @@ public:
     /*!
      * Returns all meta data in map.
      */
-    QMap <Qmmp::MetaData, QString> metaData();
+    QMap <Qmmp::MetaData, QString> metaData() const;
     /*!
      * Returns the metdata string associated with the given \b key.
      */
-    QString metaData(Qmmp::MetaData key);
+    QString metaData(Qmmp::MetaData key) const;
+    /*!
+     * Returns a hash of stream information if available
+     */
+    QHash<QString, QString> streamInfo() const;
     /*!
      * Returns a pointer to the SoundCore instance.
      */
@@ -179,6 +184,10 @@ signals:
      */
     void metaDataChanged ();
     /*!
+     * Emitted when new stream information is available.
+     */
+    void streamInfoChanged();
+    /*!
      * This signal is emitted when the state of the SoundCore has changed.
      */
     void stateChanged (Qmmp::State newState);
@@ -216,6 +225,7 @@ private:
         INVALID_SOURCE
     };
     QMap <Qmmp::MetaData, QString> m_metaData;
+    QHash <QString, QString> m_streamInfo;
     Decoder* m_decoder;
     QString m_url;
     QList <Visual*> m_visuals;

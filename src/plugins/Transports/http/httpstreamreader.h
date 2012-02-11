@@ -25,7 +25,7 @@
 #include <QUrl>
 #include <QMutex>
 #include <QString>
-#include <QMap>
+#include <QHash>
 #include <QThread>
 #include <curl/curl.h>
 #ifdef WITH_ENCA
@@ -45,7 +45,7 @@ struct HttpStreamData
     long buf_fill;
     QString content_type;
     bool aborted;
-    QMap <QString, QString> header;
+    QHash <QString, QString> header;
     bool icy_meta_data;
     int icy_metaint;
 };

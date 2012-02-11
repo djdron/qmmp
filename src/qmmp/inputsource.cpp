@@ -32,6 +32,7 @@ InputSource::InputSource(const QString &source, QObject *parent) : QObject(paren
     m_url = source;
     m_offset = -1;
     m_hasMetaData = false;
+    m_hasStreamInfo = false;
 }
 
 QString InputSource::contentType() const
@@ -68,6 +69,23 @@ void InputSource::addMetaData(const QMap<Qmmp::MetaData, QString> &metaData)
 {
     m_metaData = metaData;
     m_hasMetaData = true;
+}
+
+void InputSource::addStreamInfo(const QHash<QString, QString> &info)
+{
+    m_streamInfo = info;
+    m_hasStreamInfo = true;
+}
+
+bool InputSource::hasStreamInfo() const
+{
+    return m_hasStreamInfo;
+}
+
+QHash<QString, QString> InputSource::takeStreamInfo()
+{
+    m_hasStreamInfo = false;
+    return m_streamInfo;
 }
 
 // static methods
@@ -157,4 +175,3 @@ void InputSource::checkFactories()
         }
     }
 }
-

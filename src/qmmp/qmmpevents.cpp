@@ -47,13 +47,26 @@ MetaDataChangedEvent::MetaDataChangedEvent(const QMap<Qmmp::MetaData, QString> &
 
 MetaDataChangedEvent::~MetaDataChangedEvent(){}
 
-QMap<Qmmp::MetaData, QString>MetaDataChangedEvent::metaData()
+QMap<Qmmp::MetaData, QString>MetaDataChangedEvent::metaData() const
 {
     return m_metaData;
 }
 
-QString MetaDataChangedEvent::metaData(Qmmp::MetaData key)
+QString MetaDataChangedEvent::metaData(Qmmp::MetaData key) const
 {
     return m_metaData.value(key);
+}
+
+StreamInfoChangedEvent::StreamInfoChangedEvent(const QHash<QString, QString> &info)
+    : QEvent (EVENT_STREAM_INFO_CHANGED)
+{
+    m_streamInfo = info;
+}
+
+StreamInfoChangedEvent::~StreamInfoChangedEvent(){}
+
+QHash<QString, QString>StreamInfoChangedEvent::streamInfo() const
+{
+    return m_streamInfo;
 }
 

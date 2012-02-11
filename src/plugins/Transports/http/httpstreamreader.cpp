@@ -372,6 +372,7 @@ void HttpStreamReader::checkBuffer()
             }
             metaData.insert(Qmmp::URL, m_url);
             (qobject_cast<InputSource *>(parent()))->addMetaData(metaData);
+            (qobject_cast<InputSource *>(parent()))->addStreamInfo(m_stream.header);
         }
         emit ready();
     }
