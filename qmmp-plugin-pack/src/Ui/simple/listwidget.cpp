@@ -81,12 +81,6 @@ void ListWidget::readSettings()
     m_show_anchor = settings.value("pl_show_anchor", false).toBool();
     bool show_popup = settings.value("pl_show_popup", false).toBool();
 
-    m_normal = palette().color(QPalette::Text);
-    m_current = palette().color(QPalette::Text);
-    m_highlighted = palette().color(QPalette::HighlightedText);
-    m_normal_bg = palette().color(QPalette::Base);
-    m_selected_bg = palette().color(QPalette::Highlight);
-
     if (m_update)
     {
         delete m_metrics;
@@ -114,6 +108,10 @@ void ListWidget::readSettings()
 
 void ListWidget::paintEvent(QPaintEvent *)
 {
+    m_normal = palette().color(QPalette::Text);
+    m_current = palette().color(QPalette::Text);
+    m_highlighted = palette().color(QPalette::HighlightedText);
+    m_normal_bg = palette().color(QPalette::Base);
     m_selected_bg = palette().color(QPalette::Highlight);
 
 
