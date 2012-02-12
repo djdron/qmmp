@@ -270,17 +270,17 @@
     <message>
         <location filename="../forms/configdialog.ui" line="176"/>
         <source>Directory Scanning Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Опції сканування тек</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="182"/>
         <source>Restrict files to:</source>
-        <translation type="unfinished"></translation>
+        <translation>Обмежити вибір файлів до:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="463"/>
         <source>Add files from command line to this playlist:</source>
-        <translation type="unfinished"></translation>
+        <translation>Додавати файли з командного рядка в цей список:</translation>
     </message>
     <message>
         <location filename="../forms/configdialog.ui" line="611"/>
@@ -567,7 +567,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../qmmpuisettings.cpp" line="41"/>
         <source>Playlist</source>
-        <translation type="unfinished">Список</translation>
+        <translation>Список</translation>
     </message>
 </context>
 <context>
