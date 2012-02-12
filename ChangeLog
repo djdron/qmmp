@@ -537,6 +537,7 @@ Version 0.6.0
 * added feature to add files from command line to specific playlist
 * added pkg-config support
 * added vqf support
+* added feature to display shoutcast stream information
 * changed playlist insertion behaviour
 * improved cue plugin
 * moved skinned ui to separate plugin
