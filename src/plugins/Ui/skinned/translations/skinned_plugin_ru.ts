@@ -771,7 +771,7 @@
         <location filename="../playlist.cpp" line="215"/>
         <location filename="../playlist.cpp" line="254"/>
         <source>By Disc Number</source>
-        <translation type="unfinished"></translation>
+        <translation>По номеру диска</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="219"/>
