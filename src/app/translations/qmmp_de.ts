@@ -99,12 +99,12 @@
     <message>
         <location filename="../qmmpstarter.cpp" line="300"/>
         <source>QMMP version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp-Version: %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="301"/>
         <source>Compiled with Qt version: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompiliert mit der Qt-Version %1</translation>
     </message>
     <message>
         <location filename="../qmmpstarter.cpp" line="302"/>

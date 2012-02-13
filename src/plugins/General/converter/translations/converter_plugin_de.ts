@@ -6,17 +6,17 @@
     <message>
         <location filename="../converter.cpp" line="169"/>
         <source>Track: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Stück: %1</translation>
     </message>
     <message>
         <location filename="../converter.cpp" line="171"/>
         <source>Preset: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Voreinstellung: %1</translation>
     </message>
     <message>
         <location filename="../converter.cpp" line="266"/>
         <source>Encoding...</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkodieren …</translation>
     </message>
 </context>
 <context>
@@ -29,12 +29,12 @@
     <message>
         <location filename="../converterdialog.ui" line="29"/>
         <source>Select tracks to convert:</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie die zu konvertierenden Dateien aus:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="43"/>
         <source>Output directory:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabeverzeichnis:</translation>
     </message>
     <message>
         <location filename="../converterdialog.ui" line="53"/>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../converterdialog.cpp" line="130"/>
         <source>Create a copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopie erstellen</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="121"/>
@@ -129,17 +129,17 @@
     <message>
         <location filename="../converterdialog.cpp" line="128"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellen</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="129"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten</translation>
     </message>
     <message>
         <location filename="../converterdialog.cpp" line="131"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
 </context>
 <context>
@@ -162,7 +162,7 @@
     <message>
         <location filename="../converterfactory.cpp" line="51"/>
         <source>This plugin converts supported audio files to other file formats using external command-line encoders</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dieses Modul konvertiert mit Hilfe von externen Enkodern (Befehlszeile), unterstützte Audiodateien in andere Formate</translation>
     </message>
     <message>
         <location filename="../converterfactory.cpp" line="53"/>
@@ -198,57 +198,57 @@
     <message>
         <location filename="../preseteditor.ui" line="14"/>
         <source>Preset Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeiten der Voreinstellungen</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="29"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgemeines</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="35"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="45"/>
         <source>Extension:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dateiendung:</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="58"/>
         <source>Command</source>
-        <translation type="unfinished"></translation>
+        <translation>Befehl</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="77"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Optionen</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="83"/>
         <source>Write tags</source>
-        <translation type="unfinished"></translation>
+        <translation>Metadaten schreiben</translation>
     </message>
     <message>
         <location filename="../preseteditor.ui" line="90"/>
         <source>Convert to 16 bit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zu 16 Bit konvertieren</translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="37"/>
         <source>%1 (Read Only)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 (Nur lesen)</translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="70"/>
         <source>Output file</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgabedatei</translation>
     </message>
     <message>
         <location filename="../preseteditor.cpp" line="71"/>
         <source>Input file</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabedatei</translation>
     </message>
 </context>
 </TS>
