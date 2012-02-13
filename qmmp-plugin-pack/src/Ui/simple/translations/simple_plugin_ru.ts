@@ -488,69 +488,74 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="386"/>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="425"/>
         <source>By Title</source>
         <translation>По названию</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="390"/>
-        <location filename="../mainwindow.cpp" line="425"/>
+        <location filename="../mainwindow.cpp" line="429"/>
         <source>By Album</source>
         <translation>По альбому</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="394"/>
-        <location filename="../mainwindow.cpp" line="429"/>
+        <location filename="../mainwindow.cpp" line="433"/>
         <source>By Artist</source>
         <translation>По исполнителю</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="398"/>
-        <location filename="../mainwindow.cpp" line="433"/>
+        <location filename="../mainwindow.cpp" line="437"/>
         <source>By Filename</source>
         <translation>По имени файла</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="402"/>
-        <location filename="../mainwindow.cpp" line="437"/>
+        <location filename="../mainwindow.cpp" line="441"/>
         <source>By Path + Filename</source>
         <translation>По пути и файлу</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="406"/>
-        <location filename="../mainwindow.cpp" line="441"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>By Date</source>
         <translation>По дате</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="410"/>
-        <location filename="../mainwindow.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="449"/>
         <source>By Track Number</source>
         <translation>По номеру трека</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="414"/>
+        <source>By Disc Number</source>
+        <translation>По номеру диска</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Sort Selection</source>
         <translation>Сортировать выделенное</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="452"/>
+        <location filename="../mainwindow.cpp" line="456"/>
         <source>Randomize List</source>
         <translation>Перемешать</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="454"/>
+        <location filename="../mainwindow.cpp" line="458"/>
         <source>Reverse List</source>
         <translation>Перевернуть</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="459"/>
-        <location filename="../mainwindow.cpp" line="489"/>
+        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="493"/>
         <source>Actions</source>
         <translation>Действия</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="591"/>
+        <location filename="../mainwindow.cpp" line="595"/>
         <source>Buffering: %1%</source>
         <translation>Буферизация: %1%</translation>
     </message>

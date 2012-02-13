@@ -411,6 +411,10 @@ void MainWindow::createActions()
     connect (trackAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (trackAct, PlayListModel::TRACK);
 
+    QAction* discAct = sort_mode_menu->addAction (tr("By Disc Number"));
+    connect (discAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (discAct, PlayListModel::DISCNUMBER);
+
     connect (signalMapper, SIGNAL (mapped (int)), m_pl_manager, SLOT (sort (int)));
 
     ui.menuEdit->addMenu (sort_mode_menu);
