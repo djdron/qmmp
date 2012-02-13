@@ -141,7 +141,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="138"/>
         <source>VQF</source>
-        <translation type="unfinished"></translation>
+        <translation>VQF</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="14"/>
@@ -151,7 +151,7 @@
     <message>
         <location filename="../settingsdialog.ui" line="68"/>
         <source>Monkey&apos;s Audio (APE)</source>
-        <translation type="unfinished"></translation>
+        <translation>Monkey’s Audio (APE)</translation>
     </message>
     <message>
         <location filename="../settingsdialog.ui" line="89"/>

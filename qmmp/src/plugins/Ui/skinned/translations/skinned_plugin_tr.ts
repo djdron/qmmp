@@ -757,63 +757,69 @@
     </message>
     <message>
         <location filename="../playlist.cpp" line="207"/>
-        <location filename="../playlist.cpp" line="242"/>
+        <location filename="../playlist.cpp" line="246"/>
         <source>By Title</source>
         <translation>Başlığa Göre</translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="211"/>
-        <location filename="../playlist.cpp" line="246"/>
+        <location filename="../playlist.cpp" line="250"/>
         <source>By Album</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="215"/>
-        <location filename="../playlist.cpp" line="250"/>
-        <source>By Artist</source>
+        <location filename="../playlist.cpp" line="254"/>
+        <source>By Disc Number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../playlist.cpp" line="219"/>
-        <location filename="../playlist.cpp" line="254"/>
+        <location filename="../playlist.cpp" line="258"/>
+        <source>By Artist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../playlist.cpp" line="223"/>
+        <location filename="../playlist.cpp" line="262"/>
         <source>By Filename</source>
         <translation>Dosya Adına Göre</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="223"/>
-        <location filename="../playlist.cpp" line="258"/>
+        <location filename="../playlist.cpp" line="227"/>
+        <location filename="../playlist.cpp" line="266"/>
         <source>By Path + Filename</source>
         <translation>Dosya Yolu + Dosya Adına Göre</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="227"/>
-        <location filename="../playlist.cpp" line="262"/>
+        <location filename="../playlist.cpp" line="231"/>
+        <location filename="../playlist.cpp" line="270"/>
         <source>By Date</source>
         <translation>Tarihe Göre</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="239"/>
+        <location filename="../playlist.cpp" line="243"/>
         <source>Sort Selection</source>
         <translation>Seçilenleri Sınıflandır</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="274"/>
+        <location filename="../playlist.cpp" line="282"/>
         <source>Randomize List</source>
         <translation>Rastgele Listele</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="276"/>
+        <location filename="../playlist.cpp" line="284"/>
         <source>Reverse List</source>
         <translation>Listeyi Ters Çevir</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="541"/>
+        <location filename="../playlist.cpp" line="549"/>
         <source>&amp;New PlayList</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="231"/>
-        <location filename="../playlist.cpp" line="266"/>
+        <location filename="../playlist.cpp" line="235"/>
+        <location filename="../playlist.cpp" line="274"/>
         <source>By Track Number</source>
         <translation>Parça Numarasına Göre</translation>
     </message>
@@ -823,7 +829,7 @@
         <translation type="unfinished">Çalma Listesi</translation>
     </message>
     <message>
-        <location filename="../playlist.cpp" line="283"/>
+        <location filename="../playlist.cpp" line="291"/>
         <source>Actions</source>
         <translation>Eylemler</translation>
     </message>

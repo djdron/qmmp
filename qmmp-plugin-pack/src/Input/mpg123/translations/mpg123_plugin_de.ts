@@ -6,33 +6,34 @@
     <message>
         <location filename="../decodermpg123factory.cpp" line="74"/>
         <source>MPG123 Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>MPG123-Modul</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="77"/>
         <source>MPEG Files</source>
-        <translation type="unfinished">MPEG-Dateien</translation>
+        <translation>MPEG-Dateien</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="209"/>
         <source>About MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Über MPG123-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="210"/>
         <source>Qmmp MPG123 Audio Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>Qmmp MPG123-Audio-Modul</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="211"/>
         <source>This plugin provides MPEG v1/2 layer1/2/3 support
 with use of libmpg123 library</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dieses Modul fügt Unterstützung für „MPEG v1/2 Layer1/2/3“
+mit Hilfe der „libmpg123“-Bibliothek hinzu</translation>
     </message>
     <message>
         <location filename="../decodermpg123factory.cpp" line="213"/>
         <source>Written by: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</source>
-        <translation type="unfinished">Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
+        <translation>Autor: Ilya Kotov &lt;forkotov02@hotmail.ru&gt;</translation>
     </message>
 </context>
 <context>
