@@ -639,6 +639,17 @@ static bool _titleGreaterComparator(PlayListItem* s1,PlayListItem* s2)
 {
     return QString::localeAwareCompare (s1->value(Qmmp::TITLE), s2->value(Qmmp::TITLE)) > 0;
 }
+
+//by album+disc
+static bool _discnumberLessComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QString::localeAwareCompare (s1->value(Qmmp::DISCNUMBER), s2->value(Qmmp::DISCNUMBER)) < 0;
+}
+
+static bool _discnumberGreaterComparator(PlayListItem* s1,PlayListItem* s2)
+{
+    return QString::localeAwareCompare (s1->value(Qmmp::DISCNUMBER), s2->value(Qmmp::DISCNUMBER)) > 0;
+}
 //by album
 static bool _albumLessComparator(PlayListItem* s1,PlayListItem* s2)
 {
@@ -721,6 +732,10 @@ void PlayListModel::doSort(int sort_mode,QList<PlayListItem*>& list_to_sort)
     case TITLE:
         compareLessFunc = _titleLessComparator;
         compareGreaterFunc = _titleGreaterComparator;
+        break;
+    case DISCNUMBER:
+        compareLessFunc = _discnumberLessComparator;
+        compareGreaterFunc = _discnumberGreaterComparator;
         break;
     case ALBUM:
         compareLessFunc = _albumLessComparator;
