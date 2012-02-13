@@ -212,6 +212,10 @@ void PlayList::createActions()
     connect (albumAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (albumAct, PlayListModel::ALBUM);
 
+    QAction* discnumberAct = sort_mode_menu->addAction (tr ("By Disc Number"));
+    connect (discnumberAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (discnumberAct, PlayListModel::DISCNUMBER);
+
     QAction* artistAct = sort_mode_menu->addAction (tr ("By Artist"));
     connect (artistAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (artistAct, PlayListModel::ARTIST);
@@ -246,6 +250,10 @@ void PlayList::createActions()
     albumAct = sort_mode_menu->addAction (tr ("By Album"));
     connect (albumAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
     signalMapper->setMapping (albumAct, PlayListModel::ALBUM);
+
+    discnumberAct = sort_mode_menu->addAction (tr ("By Disc Number"));
+    connect (discnumberAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));
+    signalMapper->setMapping (discnumberAct, PlayListModel::DISCNUMBER);
 
     artistAct = sort_mode_menu->addAction (tr ("By Artist"));
     connect (artistAct, SIGNAL (triggered (bool)), signalMapper, SLOT (map()));

@@ -132,6 +132,17 @@ QList<FileInfo *> DecoderFLACFactory::createPlayList(const QString &fileName, bo
         if (tag->fieldListMap().contains("CUESHEET"))
         {
             CUEParser parser(tag->fieldListMap()["CUESHEET"].toString().toCString(true), fileName);
+            if(tag->contains("DISCNUMBER") && !tag->fieldListMap()["DISCNUMBER"].isEmpty())
+            {
+                TagLib::StringList fld;
+                fld = tag->fieldListMap()["DISCNUMBER"];
+                int i;
+                for(i=1; i<=parser.count(); i++)
+                {
+                    parser.info(i)->setMetaData(Qmmp::DISCNUMBER,
+                              QString::fromUtf8(fld.toString().toCString(true)).trimmed());
+                }
+            }
             list = parser.createPlayList();
             delete info;
             if(flacFile)
