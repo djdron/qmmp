@@ -97,6 +97,8 @@ void SimpleSettings::readSettings()
     m_ui.hiddenCheckBox->setChecked(settings.value("start_hidden", false).toBool());
     m_ui.hideOnCloseCheckBox->setChecked(settings.value("hide_on_close", false).toBool());
     settings.endGroup();
+    //url dialog
+    m_ui.clipboardCheckBox->setChecked(settings.value("URLDialog/use_clipboard", false).toBool());
 }
 
 void SimpleSettings::writeSettings()
@@ -112,6 +114,7 @@ void SimpleSettings::writeSettings()
     settings.setValue ("start_hidden", m_ui.hiddenCheckBox->isChecked());
     settings.setValue ("hide_on_close", m_ui.hideOnCloseCheckBox->isChecked());
     settings.endGroup();
+    settings.setValue ("URLDialog/use_clipboard", m_ui.clipboardCheckBox->isChecked());
 }
 
 void SimpleSettings::loadShortcuts()

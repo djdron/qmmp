@@ -411,7 +411,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../addurldialog.cpp" line="117"/>
+        <location filename="../addurldialog.cpp" line="125"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -867,7 +867,7 @@
     <message>
         <location filename="../forms/simplesettings.ui" line="24"/>
         <location filename="../forms/simplesettings.ui" line="30"/>
-        <location filename="../simplesettings.cpp" line="126"/>
+        <location filename="../simplesettings.cpp" line="129"/>
         <source>View</source>
         <translation type="unfinished"></translation>
     </message>
@@ -927,6 +927,21 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../forms/simplesettings.ui" line="258"/>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/simplesettings.ui" line="264"/>
+        <source>URL Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../forms/simplesettings.ui" line="270"/>
+        <source>Auto-paste URL from clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../forms/simplesettings.ui" line="116"/>
         <source>Song Display</source>
         <translation type="unfinished">Mostrar música</translation>
@@ -962,17 +977,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../simplesettings.cpp" line="120"/>
+        <location filename="../simplesettings.cpp" line="123"/>
         <source>Playback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../simplesettings.cpp" line="132"/>
+        <location filename="../simplesettings.cpp" line="135"/>
         <source>Playlist</source>
         <translation type="unfinished">Lista de músicas</translation>
     </message>
     <message>
-        <location filename="../simplesettings.cpp" line="138"/>
+        <location filename="../simplesettings.cpp" line="141"/>
         <source>Misc</source>
         <translation type="unfinished"></translation>
     </message>
